@@ -13,11 +13,11 @@ public class Problem7 {
         return answer;
     }
 
-    public static void initScoreMap(){
+    public static void initScoreMap() {
         scoreMap = new HashMap<>();
     }
 
-    public static void initFriendsMap(List<List<String>> friends){
+    public static void initFriendsMap(List<List<String>> friends) {
         friendsMap = new HashMap<>();
         for (List<String> friend : friends) {
             String firstFriend = friend.get(0);
@@ -29,24 +29,24 @@ public class Problem7 {
         }
     }
 
-    public static void putScoreMap(String key, int plusValue){
-        if(! scoreMap.containsKey(key)){
+    public static void putScoreMap(String key, int plusValue) {
+        if (!scoreMap.containsKey(key)) {
             scoreMap.put(key, 0);
         }
         scoreMap.put(key, scoreMap.get(key) + plusValue);
     }
 
-    public static void putFriendsMap(String key, String value){
-        if(friendsMap.containsKey(key)){
+    public static void putFriendsMap(String key, String value) {
+        if (friendsMap.containsKey(key)) {
             friendsMap.get(key).add(value);
-        }
-        else {
+        } else {
             List<String> values = new ArrayList<>();
             values.add(value);
-            friendsMap.put(key,values);
+            friendsMap.put(key, values);
         }
     }
-    public static void plusAcquaintanceScore(String user){
+
+    public static void plusAcquaintanceScore(String user) {
         List<String> userFriends = friendsMap.get(user);
         for (String userFriend : userFriends) {
             List<String> acquaintanceList = getAcquaintanceList(user, userFriend);
@@ -54,16 +54,16 @@ public class Problem7 {
         }
     }
 
-    public static List<String> getAcquaintanceList(String user, String userFriend){
+    public static List<String> getAcquaintanceList(String user, String userFriend) {
         return friendsMap.get(userFriend).stream().
                 filter(acquaintance -> !acquaintance.equals(user)).collect(Collectors.toList());
     }
 
-    public static void plusVisitorScore(List<String> visitors){
+    public static void plusVisitorScore(List<String> visitors) {
         visitors.stream().forEach(visitor -> putScoreMap(visitor, 1));
     }
 
-    public static List<Entry<String, Integer>> getSortScoreMapEntry(){
+    public static List<Entry<String, Integer>> getSortScoreMapEntryList() {
         List<Entry<String, Integer>> entryList = new ArrayList<Entry<String, Integer>>(scoreMap.entrySet());
         Collections.sort(entryList, new Comparator<Entry<String, Integer>>() {
             @Override
@@ -74,6 +74,12 @@ public class Problem7 {
         return entryList;
     }
 
-}
+    public static List<Entry<String, Integer>> getTopThreeScoreEntry() {
+        List<Entry<String, Integer>> sortScoreMapEntryList = getSortScoreMapEntryList();
+        return sortScoreMapEntryList.stream().filter(entry -> entry.getValue() > 0)
+                .limit(3).collect(Collectors.toList());
+    }
 
+
+}
 
