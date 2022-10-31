@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -24,16 +25,16 @@ public class Problem5 {
 
     public static List<Integer> solution(int money) {
         Problem5 p5 = new Problem5();
-        List<Integer> emptyList = Collections.emptyList();
+        List<Integer> emptyList = new ArrayList<>();
         List<Integer> answer = p5.exchangeMoney(emptyList, money);
         return answer;
     }
 
     public List<Integer> exchangeMoney(List<Integer> list, int money) {
-        for (int standard : standardArr) {
-            int quotient = getQuotientMoneyDividedStandard(standard, money);
+        for (int i = 0; i < standardArr.length; i++) {
+            int quotient = getQuotientMoneyDividedStandard(standardArr[i], money);
             list.add(quotient);
-            money -= standard * quotient;
+            money -= (standardArr[i] * quotient);
         }
         return list;
     }
