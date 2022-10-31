@@ -10,7 +10,9 @@ public class Problem5 {
         // TODO: countCurrency()
 
     public static List<Integer> solution(int money) {
-        // Check valid input
+        if (money < 1 || 1_000_000 < money) {
+            return null;
+        }
 
         // Make wallet
 
