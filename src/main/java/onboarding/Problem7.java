@@ -111,6 +111,19 @@ public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+        Set<String> crews = getCrewList(friends, visitors);
+        HashMap<String, Integer> scoreBoard = initializeScoreBoard(crews);
+
+        List<String> userAcquaintance = getAcquaintance(user, friends);
+        scoreBoard = updateAcquaintancePoint(scoreBoard, userAcquaintance);
+        scoreBoard = updateVisitPoint(scoreBoard, visitors);
+
+        List<String> sortedCrew = sortScore(scoreBoard);
+        List<String> result = removeSelfAndFriend(sortedCrew, user, friends);
+
+        int answerSize = getResultSize(result);
+        answer = result.subList(0,answerSize);
+
         return answer;
     }
 }
