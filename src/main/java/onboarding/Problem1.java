@@ -17,16 +17,18 @@ class Problem1 {
                 || pobi.get(1) >= 400
                 || crong.get(1) >= 400
         ){
-            return -1;
+            answer = -1;
         }
 
         int pobi_score = get_max(pobi);
         int crong_score = get_max(crong);
 
-        if (pobi_score > crong_score){ return 1; }  // 포비가 이긴다면 1
-        else if (pobi_score < crong_score){ return 2; }  // 크롱이 이긴다면 2
-        else if (pobi_score == crong_score){ return 0; }  // 무승부 0
-        else return -1;  // 예외 -1
+        if (pobi_score > crong_score){ answer = 1; }  // 포비가 이긴다면 1
+        else if (pobi_score < crong_score){ answer = 2; }  // 크롱이 이긴다면 2
+        else if (pobi_score == crong_score){ answer = 0; }  // 무승부 0
+        else answer = -1;  // 예외 -1
+
+        return answer;
     }
 
     public static int get_max(List<Integer> list){  // int 쪽수를 string으로 바꾸고 (최대계산) 하기
