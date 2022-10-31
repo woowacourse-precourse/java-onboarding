@@ -10,7 +10,7 @@ class Decoder {
 
     public String decode() {
         while (isDuplicate()) {
-//            eraseDuplicate();
+            eraseDuplicate();
         }
         return cryptogram;
     }
@@ -24,7 +24,26 @@ class Decoder {
         return false;
     }
 
+    public void eraseDuplicate() {
+        StringBuilder sb = new StringBuilder();
+        char before = ' ';
+        char dupli = ' ';
+        for (int i = 0, len = cryptogram.length(); i < len; i++) {
+            char now = cryptogram.charAt(i);
+            if (now == dupli)
+                continue;
+            if (now == before) {
+                sb.deleteCharAt(sb.length() - 1);
+                dupli = now;
+                continue;
+            }
 
+            sb.append(now);
+            before = now;
+            dupli = ' ';
+        }
+        this.cryptogram = sb.toString();
+    }
 }
 
 /*
