@@ -20,6 +20,18 @@ public class Problem7 {
     }
 
     /**
+     * 점수 높은 순으로 정렬
+     */
+    private static List<String> orderByScore(Map<String, Integer> friendsMap){
+        List<String> orderScoreList = new ArrayList<>();
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(friendsMap.entrySet());
+        entryList.sort(Map.Entry.comparingByValue());
+        for(Map.Entry<String, Integer> entry : entryList)
+            orderScoreList.add(entry.getKey());
+        return orderScoreList;
+    }
+
+    /**
      * user에게 추천할 수 있는 사람들을 모아 map으로 반환하는 함수
      */
     private static Map<String,Integer> recommendationFriendsMap(String user, List<List<String>> friends){
