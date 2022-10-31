@@ -1,8 +1,7 @@
 package onboarding;
 
 import java.util.List;
-import onboarding.problem1.Calculator;
-import onboarding.problem1.InputException;
+import onboarding.problem1.Score;
 
 class Problem1 {
     private static final int DRAW = 0;
@@ -11,18 +10,19 @@ class Problem1 {
     private static final int EXCEPTION = -1;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if (InputException.validationCheck(pobi) && InputException.validationCheck(crong)) {
-            Calculator pobiCalculator = new Calculator(pobi);
-            Calculator crongCalculator = new Calculator(crong);
+        try {
+            Score pobiScore = new Score(pobi);
+            Score crongScore = new Score(crong);
 
-            int pobiScore = pobiCalculator.getScore();
-            int crongScore = crongCalculator.getScore();
+            int maxScoreForPobi = pobiScore.getMaxScore();
+            int maxScoreForCrong = crongScore.getMaxScore();
 
-            if (pobiScore == crongScore) {
+            if (maxScoreForPobi == maxScoreForCrong) {
                 return DRAW;
             }
-            return pobiScore > crongScore ? POBI_WIN : CRONG_WIN;
+            return maxScoreForPobi > maxScoreForCrong ? POBI_WIN : CRONG_WIN;
+        } catch (Exception e) {
+            return EXCEPTION;
         }
-        return EXCEPTION;
     }
 }
