@@ -8,15 +8,15 @@ public class Problem2 {
     public static String solution(String cryptogram) {
 
         String text = "";
-        List<String> lastList = cryptoSplit(cryptogram); // browoanoommnaon
-        while (true) {
-            List<String> newList = cryptoDedupli(lastList); //browoannaon -> browoaaon -> browoon -> brown
-            if(lastList.size() == newList.size()) break; // 중복이 제거되면 멈춰
-            lastList.clear();
-            lastList = newList; //browoannaon
-        }
-
-        for(String txt : lastList) text +=txt+"";
+//        List<String> lastList = cryptoSplit(cryptogram); // browoanoommnaon
+//        while (true) {
+//            List<String> newList = cryptoDedupli(lastList); //browoannaon -> browoaaon -> browoon -> brown
+//            if(lastList.size() == newList.size()) break; // 중복이 제거되면 멈춰
+//            lastList.clear();
+//            lastList = newList; //browoannaon
+//        }
+//
+//        for(String txt : lastList) text +=txt+"";
         return text;
 
     }

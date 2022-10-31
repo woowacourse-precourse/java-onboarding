@@ -14,24 +14,25 @@ public class Problem7 {
         // 친구 목록만들기 -> 방문자 친구만들기 -> 친구만 아니면 추천친구에 추가 +1
 
         // 추천 친구목록에는 친구의친구만 추가되어있음
+        
 
         Map<String, Integer> list = visitorCalculate(user, friends, visitors);
         // 값 정렬하기
         List<String> answer = new ArrayList<>(list.keySet());
-        answer.sort(new Comparator<String>() {
-            @Override
-            public int compare(String o1, String o2) {
-                return list.get(o1).compareTo(list.get(o2));
-            }
-        });
-        Collections.sort(answer);
-
-        // answer이 5이상의 데이터를 가지고있으면 나머지는 삭제하기
-        if(answer.size()>5) {
-            for (int i = answer.size() - 1; i > 4; i--) {
-                answer.remove(i);
-            }
-        }
+//        answer.sort(new Comparator<String>() {
+//            @Override
+//            public int compare(String o1, String o2) {
+//                return list.get(o1).compareTo(list.get(o2));
+//            }
+//        });
+//        Collections.sort(answer);
+//
+//        // answer이 5이상의 데이터를 가지고있으면 나머지는 삭제하기
+//        if(answer.size()>5) {
+//            for (int i = answer.size() - 1; i > 4; i--) {
+//                answer.remove(i);
+//            }
+//        }
 
         return answer;
     }
