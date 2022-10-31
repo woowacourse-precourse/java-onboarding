@@ -4,22 +4,22 @@ import java.util.Stack;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String password = "";
+        String decryption = "";
 
         while (true) {
-            password = deleteDuplicate(cryptogram, cryptogram.length());
+            decryption = deleteDuplicate(cryptogram, cryptogram.length());
 
-            if (cryptogram.equals(password)) break;
+            if (cryptogram.equals(decryption)) break;
 
-            cryptogram = password;
+            cryptogram = decryption;
         }
 
-        return password;
+        return decryption;
     }
 
     public static String deleteDuplicate(String cryptogram, int size) {
         Stack<Character> stack = new Stack<>();
-        String password = "";
+        String decryption = "";
 
         for (int i = 0; i < size; i++) {
             if (stack.isEmpty()) {
@@ -38,16 +38,16 @@ public class Problem2 {
         }
 
         while (!stack.isEmpty()) {
-            password = stack.pop() + password;
+            decryption = stack.pop() + decryption;
         }
 
-        return password;
+        return decryption;
     }
 
     public static int findlastDuplicateIndex(String cryptogram, int index) {
-        char target = cryptogram.charAt(index);
+        char duplicatedCharacter = cryptogram.charAt(index);
         while (index < cryptogram.length()) {
-            if (target != cryptogram.charAt(index)) {
+            if (duplicatedCharacter != cryptogram.charAt(index)) {
                 break;
             }
 
