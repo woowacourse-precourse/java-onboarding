@@ -11,6 +11,7 @@ public class Problem2 {
 
         makeStackOrigin(cryptogram, stackOrigin);
         makeStackResult(stackOrigin, stackResult);
+        makeAnswer(answer, stackResult);
 
         return answer.toString();
     }
@@ -51,6 +52,14 @@ public class Problem2 {
         stackOrigin.push('A');
         for (char crypto : cryptogram.toCharArray()) {
             stackOrigin.push(crypto);
+        }
+    }
+
+    private static void makeAnswer(StringBuilder answer, Stack<Character> stackResult) {
+        stackResult.pop();
+        int stackResultSize = stackResult.size();
+        for (int i = 0; i < stackResultSize - 1; i++) {
+            answer.append(stackResult.pop());
         }
     }
 }
