@@ -10,7 +10,7 @@ public class Problem5 {
         int[] answerCount = new int[9];
 
         while (money != 0) {
-            money = findMaxCoinUnitByMoney(money, CoinUnit, answerCount);
+            money = findAnswerCountByCurrentMoney(money, CoinUnit, answerCount);
         }
 
         return Arrays.stream(answerCount)
@@ -18,7 +18,7 @@ public class Problem5 {
                 .collect(Collectors.toList());
     }
 
-    private static int findMaxCoinUnitByMoney(int money, int[] CoinUnit, int[] answerCount) {
+    private static int findAnswerCountByCurrentMoney(int money, int[] CoinUnit, int[] answerCount) {
         for (int i = 0; i < CoinUnit.length; i++) {
             if (money >= CoinUnit[i]) {
                 money -= CoinUnit[i];
