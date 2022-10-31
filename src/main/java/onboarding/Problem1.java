@@ -19,6 +19,12 @@ class Problem1 {
         }
     }
 
+    public static boolean isInvalidData(List<Integer> list){
+        int left = list.get(0);
+        int right = list.get(1);
+        return left + 1 == right;
+    }
+
     public static int biggestScoreByPageNum(int leftPageNum, int rightPageNum){
         int leftScore = toScore(leftPageNum);
         int rightScore = toScore(rightPageNum);
