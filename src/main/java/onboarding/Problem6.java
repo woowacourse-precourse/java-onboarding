@@ -28,5 +28,10 @@ public class Problem6 {
     }
 
     // 리스트에 없는 이메일만 추가하는 함수 addEmail()
+    private void addEmail(List<String> answer, String email){
+        if(!answer.contains(email)){
+            answer.add(email);
+        }
+    }
 
 }
