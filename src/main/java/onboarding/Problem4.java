@@ -27,6 +27,17 @@ public class Problem4 {
            upperChar[i] = (char)(65+i);
        }
 
+       for(int i = 0; i<lowChar.length; i++){
+           map1.put(lowChar[i],lowChar[25-i]);
+       }
+       for(int i = 0; i<upperChar.length; i++){
+           map1.put(upperChar[i],upperChar[25-i]);
+       }
+
+
+
+
+
 
 
    }
