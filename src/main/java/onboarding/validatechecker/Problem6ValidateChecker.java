@@ -5,6 +5,7 @@ import java.util.List;
 public class Problem6ValidateChecker {
 	private static final int EMAIL = 0;
 	private static final int NICKNAME = 1;
+	private static final String EMAIL_DOMAIN = "email.com";
 	public static void isFormsValidate(List<List<String>> forms){
 		isFormsNotNull(forms);
 		isFormNotNull(forms);
@@ -12,6 +13,13 @@ public class Problem6ValidateChecker {
 		isCrewSizeInRange(forms);
 		isEmailSizeInRange(forms);
 		isNickNameSizeInRange(forms);
+		isEmailContainDomain(forms);
+	}
+
+	private static void isEmailContainDomain(List<List<String>> forms) {
+		for (List<String> form : forms)
+			if(!form.get(EMAIL).contains(EMAIL_DOMAIN))
+				throw new IllegalArgumentException("이메일의 도메인이 email.com이 아닙니다.");
 	}
 
 	private static void isNickNameSizeInRange(List<List<String>> forms) {
