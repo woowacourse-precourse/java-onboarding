@@ -31,6 +31,7 @@ public class Problem7 {
         }
 
         List<String> answer = new ArrayList<>(recommends.keySet());
+        Collections.sort(answer, String::compareTo);
         Collections.sort(answer, (o1, o2) -> (recommends.get(o2).compareTo(recommends.get(o1))));
         answer.subList(0, Math.min(answer.size(), 5));
 
