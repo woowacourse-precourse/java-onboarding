@@ -33,7 +33,6 @@ public class Recommender {
     }
 
     private void removeFriendsScore(UserId user) {
-        System.out.println(snsNetwork.getConnection(user).stream().map((id) -> id.getId()).collect(Collectors.toList()));
         snsNetwork.getConnection(user).forEach((friendId) -> score.put(friendId.getId(), 0));
     }
 
