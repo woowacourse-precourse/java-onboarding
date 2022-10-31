@@ -12,8 +12,7 @@ public class Problem6 {
      */
     public static List<String> solution(List<List<String>> forms) {
         Set<String> answerSet = checkNickName(forms);
-        List<String> answer = toSortedList(answerSet);
-        return answer;
+        return toSortedList(answerSet);
     }
 
     /**
@@ -21,8 +20,7 @@ public class Problem6 {
      */
     private static Set<String> checkNickName(List<List<String>> crews) {
         Map<String, List<String>> subNameMap = makeSubNameMap(crews);
-        Set<String> answerSet = toAnswerSet(subNameMap);
-        return answerSet;
+        return toAnswerSet(subNameMap);
     }
 
     /**
@@ -67,8 +65,7 @@ public class Problem6 {
      * @Method: getSubName
      */
     private static String getSubName(String nickName, int index) {
-        String subName = nickName.substring(index, index + 2);
-        return subName;
+        return nickName.substring(index, index + 2);
     }
 
     /**
@@ -79,9 +76,7 @@ public class Problem6 {
         for (String key : subNameMap.keySet()) {
             List<String> emailList = subNameMap.get(key);
             if (emailList.size() > 1) {
-                for (String email : emailList) {
-                    answerSet.add(email);
-                }
+                answerSet.addAll(emailList);
             }
         }
         return answerSet;
@@ -91,8 +86,7 @@ public class Problem6 {
      * @Method: toSortedList
      */
     private static List<String> toSortedList(Set<String> answerSet) {
-        // 3. Set을 사용하여 중복되는 이메일을 제거한다.
-        // 4. 결과를 정렬한다.
+        // 3. Set을 사용하여 중복되는 이메일을 제거하고, 정렬한다.
         return answerSet.stream().sorted().collect(Collectors.toList());
     }
 }
