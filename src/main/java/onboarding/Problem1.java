@@ -16,6 +16,28 @@ class Problem1 {
         return true;
     }
 
+    public static int getScore(List<Integer> page) {
+        int maxScore = 0;
+
+        for (Integer pageNum : page) {
+            int pageSum = 0; // 페이지 각 자리 숫자의 합
+            int pageProduct = 1; // 페이지 각 자리 숫자의 곱
+
+            while (pageNum > 0) {
+                pageSum += pageNum % 10;
+                pageProduct *= pageNum % 10;
+                pageNum /= 10;
+
+            }
+
+            if (maxScore < Math.max(pageSum, pageProduct)) {
+                maxScore = Math.max(pageSum, pageProduct);
+            }
+        }
+
+        return maxScore;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         /*
          * 먼저 페이지의 유효성을 체크하고, 그 다음 승자를 계산한다.
