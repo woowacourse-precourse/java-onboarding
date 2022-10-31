@@ -24,3 +24,24 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+---
+
+# 기능 목록
+
+### 점수 알고리즘
+
+점수를 얻는 데에는 두 가지 방법이 있다.
+
+1. user의 친구들(friend)을 순회한다.
+   -  friend의 친구들(nearFriend) 중에서, user와 친구가 아닌 사용자를 찾는다.
+   - 그 사용자에게 10점을 더한다.
+2. visitors를 순회한다.
+   - 방문 횟수만큼 1점을 더한다.
+
+
+
+- [ ] 친구 관계를 저장
+- [ ] 함께 아는 친구(nearFriend)로 10점 씩 더하기
+- [ ] 방문자(Visitors)로 1점 씩 더하기
+- [ ] 점수가 높은 순서, 같다면 이름순으로 정렬
