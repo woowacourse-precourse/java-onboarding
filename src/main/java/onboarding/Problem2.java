@@ -3,29 +3,33 @@ package onboarding;
 import java.util.Stack;
 
 public class Problem2 {
-    public static String solution(String cryptogram) {
-        String answer = new String();
+    public static boolean areThereDuplicateCharacters(String cryptogram) {
+        for (int i = 0; i + 1 < cryptogram.length(); i++) {
+            if (cryptogram.charAt(i) == cryptogram.charAt(i + 1)) return true;
+        }
+        return false;
+    }
 
-        // 스택을 활용해 중복 문자를 제거
-        Stack<Character> stack = new Stack<>();
+    public static String deleteDuplicateCharacters(String cryptogram) {
+        String result = new String();
 
         for (int i = 0; i < cryptogram.length(); i++) {
-            if (!stack.isEmpty() && stack.peek() == cryptogram.charAt(i)) stack.pop();
-            else stack.push(cryptogram.charAt(i));
+            if (i > 0 && cryptogram.charAt(i) == cryptogram.charAt(i - 1)) continue;
+            if (i + 1 < cryptogram.length() && cryptogram.charAt(i) == cryptogram.charAt(i + 1)) continue;
+            result = result + cryptogram.charAt(i);
         }
 
-        // 정답 문자열 저장
-        Stack<Character> getAns = new Stack<>();
-        while (!stack.isEmpty()) {
-            getAns.push(stack.peek());
-            stack.pop();
+        return result;
+    }
+
+    public static String solution(String cryptogram) {
+        while (true) {
+            if (!areThereDuplicateCharacters(cryptogram)) break;
+
+            cryptogram = deleteDuplicateCharacters(cryptogram);
         }
 
-        while (!getAns.isEmpty()) {
-            answer = answer + getAns.peek();
-            getAns.pop();
-        }
-
+        String answer = cryptogram;
         return answer;
     }
 }
