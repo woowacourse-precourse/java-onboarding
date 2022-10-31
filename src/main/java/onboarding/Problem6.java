@@ -20,6 +20,12 @@ public class Problem6 {
         for (int i=0; i<nicknamesLen-1; i++) { // 기준이 되는 닉네임 인덱스: i
             String standard = nicknames.get(i);
             int standardLen = standard.length();
+
+            if (standardLen == 1) { // 만약 기준 닉네임이 외자라면 기준 미달이므로 다음 닉네임으로 넘어감
+                continue;
+            }
+
+            System.out.println(standard);
         }
 
         List<String> answer = List.of("answer");
