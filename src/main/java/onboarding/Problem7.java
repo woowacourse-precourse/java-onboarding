@@ -15,12 +15,12 @@ public class Problem7 {
     private static Map<String, User> makeFriendConnection(List<List<String>> friends) {
         Map<String, User> userFriendsInfo = new HashMap<>();
         for (List<String> connect : friends) {
-            userFriendsInfo = addConnection(userFriendsInfo, connect);
+            addConnection(userFriendsInfo, connect);
         }
         return userFriendsInfo;
     }
 
-    private static Map<String, User> addConnection(Map<String, User> userFriendsInfo, List<String> connection) {
+    private static void addConnection(Map<String, User> userFriendsInfo, List<String> connection) {
         String user1 = connection.get(0);
         String user2 = connection.get(1);
 
@@ -33,7 +33,6 @@ public class Problem7 {
             userFriendsInfo.put(user1, new User(user2));
         }
         userFriendsInfo.get(user2).getFriends().add(user1);
-        return userFriendsInfo;
     }
 
     private static Map<String, Integer> findScoreOfAcquaintanceAllUser(String user, Map<String, User> userFriendsInfo, Map<String, Integer> score) {
