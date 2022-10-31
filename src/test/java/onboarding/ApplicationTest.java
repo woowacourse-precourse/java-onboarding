@@ -102,6 +102,22 @@ class ApplicationTest {
             String result = "R olev blf";
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
+
+        @Test
+        void word_길이() {
+            String word = "";
+            Assertions.assertThrows(IllegalArgumentException.class, () -> {
+                Problem4.solution(word);
+            });
+        }
+
+        @Test
+        void word_알파벳() {
+            String word = "1dd223";
+            Assertions.assertThrows(IllegalArgumentException.class, () -> {
+                Problem4.solution(word);
+            });
+        }
     }
 
     @Nested
