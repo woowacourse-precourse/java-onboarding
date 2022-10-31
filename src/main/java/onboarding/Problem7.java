@@ -70,8 +70,14 @@ public class Problem7 {
     private static List<String> getRecommendedFriendList() {
         List<String> answer = new ArrayList<>();
         List<Map.Entry<String, Integer>> entryList = new LinkedList<>(scoreMap.entrySet());
-        // 점수순으로 정렬
-        entryList.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
+        // 점수순 내림차순, 이름 오름차순으로 정렬
+        entryList.sort((e1, e2) -> {
+            if (e1.getValue().equals(e2.getValue())) {
+                return e1.getKey().compareTo(e2.getKey());
+            } else {
+                return e1.getValue().compareTo(e2.getValue())*(-1);
+            }
+        });
 
         // 최대 5명
         for (int i = 0; i < 5 && i < entryList.size(); i++) {
