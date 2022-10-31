@@ -26,7 +26,7 @@ public class Problem7 {
         List<String> resultRecommendation = new ArrayList<>();
         List<String> recommendationList = orderByScore(friendsMap);
 
-        for(int i=0;i<5 || i<recommendationList.size() ;i++)
+        for(int i=0;i<5 && i<recommendationList.size() ;i++)
             resultRecommendation.add(recommendationList.get(i));
 
         return resultRecommendation;
@@ -38,7 +38,7 @@ public class Problem7 {
     private static List<String> orderByScore(Map<String, Integer> friendsMap){
         List<String> orderScoreList = new ArrayList<>();
         List<Map.Entry<String, Integer>> entryList = new LinkedList<>(friendsMap.entrySet());
-        entryList.sort(Map.Entry.comparingByValue());
+        entryList.sort(Collections.reverseOrder(Map.Entry.comparingByValue()));
         for(Map.Entry<String, Integer> entry : entryList)
             orderScoreList.add(entry.getKey());
         return orderScoreList;
