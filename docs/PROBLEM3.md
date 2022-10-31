@@ -16,5 +16,4 @@
 | 33 | 14 |
 
 ### 기능 목록
-- howManyThree 메소드 : 해당 숫자에 "3"이 몇 개나 있는지 카운트한다.
-- solution에서 1부터 n까지 howManyThree 메서드에 숫자를 입력한다.
+- howManyThree method : 해당 숫자에 "3"이 몇 개나 있는지 카운트한다.

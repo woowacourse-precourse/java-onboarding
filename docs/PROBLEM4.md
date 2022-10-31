@@ -21,6 +21,6 @@
 | "I love you" | "R olev blf" |
 
 ### 기능 목록
-- alphabetJudgement 메소드 : 입력된 알파벳이 대문자면 1, 소문자면 2, 알파벳이 아니면 0을 리턴한다.
-- alphabetConversion 메소드 : 입력 String의 알파벳을 알파벳 종류와 여부에 따라 ASCII Code를 이용하여 청개구리 사전대로 변환 후 리턴한다.
+- alphabetJudgement method : 입력된 알파벳이 대문자면 1, 소문자면 2, 알파벳이 아니면 0을 리턴한다.
+- alphabetConversion method : 입력 String의 알파벳을 알파벳 종류와 여부에 따라 ASCII Code를 이용하여 청개구리 사전대로 변환 후 리턴한다.
 - solution : word String을 순회하며 answer에 알파벳을 추가한다.
