@@ -276,7 +276,7 @@ class ApplicationTest {
 
         @Test
         void case6() {
-            String user = "andole";
+            String user = "mrko";
             List<List<String>> friends = List.of(
                     List.of("donut", "andole"),
                     List.of("donut", "jun"),

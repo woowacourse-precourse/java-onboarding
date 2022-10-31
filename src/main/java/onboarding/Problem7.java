@@ -37,7 +37,11 @@ public class Problem7 {
     public static Map<String, Integer> make_score_map(String user, Map<String, List<String>> friend_map) {
         Map<String, Integer> result = new HashMap<String, Integer>();
 
-        List<String> user_friends = friend_map.get(user);
+        List<String> user_friends = new ArrayList<>();
+
+        if (friend_map.containsKey(user)) {
+            user_friends = friend_map.get(user);
+        }
 
         List<String> user_or_user_friends = user_friends;
         user_or_user_friends.add(user);
@@ -76,7 +80,11 @@ public class Problem7 {
     public static Map<String, Integer> check_visitor(String user, Map<String, List<String>> friend_map, Map<String, Integer> score_map, List<String> visitors) {
         Map<String, Integer> result = score_map;
 
-        List<String> user_friends = friend_map.get(user);
+        List<String> user_friends = new ArrayList<>();
+
+        if (friend_map.containsKey(user)) {
+            user_friends = friend_map.get(user);
+        }
 
         for (String visitor : visitors) {
             Boolean check_friend = false;
@@ -123,6 +131,9 @@ public class Problem7 {
 
         for (Entry<String, Integer> entry : check_visitor_entry) {
             sorted_recommand_friends.add(entry.getKey());
+            if (sorted_recommand_friends.size() == 5) {
+                break;
+            }
         }
 
         return sorted_recommand_friends;
