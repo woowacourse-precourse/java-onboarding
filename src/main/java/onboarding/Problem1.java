@@ -7,17 +7,20 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        // 예외사항
+        /* 예외 사항 */
         if (except(pobi, crong)) {
             return -1;
         }
 
+        /* 점수 목록 */
         List<Integer> scoresPobi = merge(mapToSum(pobi), mapToMul(crong));
         List<Integer> scoresCrong = merge(mapToSum(crong), mapToMul(crong));
 
+        /* 최대 점수 */
         int maxPobi = Collections.max(scoresPobi);
         int maxCrong = Collections.max(scoresCrong);
 
+        /* 결과 반환 */
         int answer = 0;
         if (maxPobi < maxCrong) {
             answer = 2;
@@ -28,19 +31,19 @@ class Problem1 {
     }
 
     static boolean except(List<Integer> pageList1, List<Integer> pageList2) {
-        // 1. pobi와 crong의 길이는 2여야 한다.
+        /* pobi와 crong의 길이는 2여야 한다. */
         if (pageList1.size()!=2 || pageList2.size()!=2) {
             return true;
         }
-        // 2. left는 홀수, right는 짝수
+        /* left는 홀수, right는 짝수 */
         if (pageList1.get(0)%2!=1 | pageList1.get(1)%2!=0 | pageList2.get(0)%2!=1 | pageList2.get(1)%2!=0) {
             return true;
         }
-        // 3. left = right - 1
+        /* left = right - 1 */
         if (pageList1.get(1)-pageList1.get(0)!=1 | pageList2.get(1)-pageList2.get(0)!=1) {
             return true;
         }
-        // 4. 1 <= left <= 399 and 2 <= right <= 400
+        /* 1 <= left page <= 399 and 2 <= right page <= 400 */
         if (pageList1.get(0)<1 | pageList1.get(0)>399 | pageList1.get(1)<2 | pageList1.get(1)>400) {
             return true;
         }
@@ -51,29 +54,21 @@ class Problem1 {
     }
 
     static int sumDigits(int digits){
-        // 정수 digits가 주어졌을 때 자리수별 숫자(digit)의 합을 return
-        // 정수 digits를 10으로 나누었을 때 나머지(digit)를 차례로 더한다.
+        /* 정수 digit가 주어졌을 때 자리수별 숫자의 합을 return */
         int sum = 0;
-
         while(digits!=0) {
-            // digits를 10으로 나눈 나머지(digit)를 sum에 더한다.
-            sum += digits%10;
-            // digits를 10으로 나눈 몫을 digits에 저장한다.
-            digits /= 10;
+            sum += digits%10;   // digit를 10으로 나눈 나머지(자리수 숫자)를 sum에 더한다.
+            digits /= 10;   // digit를 10으로 나눈 몫을 digit에 저장한다.
         }
         return sum;
     }
 
     static int multiplyDigits(int digits) {
-        // 숫자 digits가 주어졌을 때 자리수별 숫자(digit)의 곱을 return
-        // 정수 digits를 10으로 나누었을 때 나머지(digit)를 차례로 곱한다.
+        /* 숫자 digit가 주어졌을 때 자리수별 숫자의 곱을 return */
         int mul = 1;
-
         while(digits!=0) {
-            // digits를 10으로 나눈 나머지(digit)를 mul에 곱한다.
-            mul *= digits%10;
-            // digits를 10으로 나눈 볷을 digits에 저장한다.
-            digits /= 10;
+            mul *= digits%10;   // digit를 10으로 나눈 나머지(자리수 숫자)를 mul에 곱한다.
+            digits /= 10;   // digit를 10으로 나눈 볷을 digit에 저장한다.
         }
         return mul;
     }
