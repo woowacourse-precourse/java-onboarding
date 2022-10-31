@@ -16,10 +16,10 @@ public class Problem3 {
     public static int clapCount(int number) {
         int count = 0;
         for (int i = 1; i <= number; i++) {
-            int temp = i;
-            while(temp != 0) {
-                if((temp % 10 == 3) || (temp % 10 == 6) || (temp % 10 == 9)) count++;
-                temp = temp /10;
+            int currentNumber = i;
+            while(currentNumber != 0) {
+                if((currentNumber % 10 == 3) || (currentNumber % 10 == 6) || (currentNumber % 10 == 9)) count++;
+                currentNumber = currentNumber /10;
             }
         }
         return count;
