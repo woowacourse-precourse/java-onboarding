@@ -20,4 +20,20 @@ public class User {
         }
         return forms;
     }
+
+    public List<String> findDuplicateUser() {
+        for (Map.Entry<String, String> entry : forms.entrySet()) {
+            checkDuplicateUser(entry);
+        }
+        return convertEmailsToList();
+    }
+
+    private void checkDuplicateUser(Map.Entry<String, String> entry) {
+        String email = entry.getKey();
+        String name = entry.getValue();
+        for(int i = 0; i < name.length()-1; i++) {
+            String subName = name.substring(i, i+2);
+            getDuplicateUserEmails(email, subName);
+        }
+    }
 }
