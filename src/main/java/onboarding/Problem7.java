@@ -29,4 +29,13 @@ class User {
         }
     }
 
+    static void validateIdCase(String id) {
+        String regex = "^[a-z]*$";
+        Pattern p = Pattern.compile(regex);
+        Matcher m = p.matcher(id);
+        if(!m.matches()) {
+            throw new IllegalStateException("id는 소문자만 가능합니다.");
+        }
+    }
+
 }
