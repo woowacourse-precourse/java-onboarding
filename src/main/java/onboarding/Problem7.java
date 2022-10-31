@@ -11,15 +11,14 @@ import java.util.stream.Collectors;
  * 2. friends 리스트와 친구 리스트를 통해 친구의 친구 리스트 생성하여 반환
  * 3. visitors 리스트와 친구의 친구 리스트를 통해 추천 친구 리스트 생성하여 반환
  * 4. 추천 친구 리스트를 HashMap으로 저장
- * 5. 추천 친구 점수 계산
+ * 5. 추천 친구 점수 계산(친구의 친구에게 10점 부여)
+ * 6. 추천 친구 점수 계산(방문자에게 횟수마다 1점 부여)
  * 6. 점수가 높은 순으로 정렬하여 반환
  * */
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
-        List<String> toBeRemoved = findFriendOfUser(user, friends);
-        toBeRemoved.add(user);
         return answer;
     }
 
@@ -52,6 +51,14 @@ public class Problem7 {
         HashMap<String, Integer> recommendedFriendScore = new HashMap<>();
         for (String recommendedFriend : recommendedFriends) {
             recommendedFriendScore.put(recommendedFriend, 0);
+        }
+        return recommendedFriendScore;
+    }
+
+    private static HashMap<String, Integer> plusFriendOfFriend(HashMap<String, Integer> recommendedFriendScore, List<String> friendOfFriends) {
+        for (String friendOfFriend : friendOfFriends) {
+            if (recommendedFriendScore.containsKey(friendOfFriend))
+                recommendedFriendScore.replace(friendOfFriend, recommendedFriendScore.get(friendOfFriend) + 10);
         }
         return recommendedFriendScore;
     }
