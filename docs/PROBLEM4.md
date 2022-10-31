@@ -19,3 +19,9 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+### 필요기능
+
+- character가 영어 알파벳인지 체크
+- character가 대문자인지 소문자인지 체크
+- 알파벳 변환

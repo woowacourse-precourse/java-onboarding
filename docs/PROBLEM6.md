@@ -21,3 +21,14 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 필요기능
+
+- 현재까지 확인한 닉네임에서 가질 수 있는 연속 두글자 저장
+- 현재 보고있는 닉네임의 연속 두글자가 현재 닉네임에서 나온 것을 제외해 그전에 나왔는지 체크
+- 체크 후 이전에 두글자가 나왔다면 answer에 저장
+- 중복제거
+- 이메일 오름차순 정렬
+- 에러 검출
+  - 이메일, 닉네임 길이 제한
+  - 이메일 도메인
