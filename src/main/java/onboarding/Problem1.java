@@ -74,11 +74,11 @@ class Game {
         int page1 = pages.get(0);
         int page2 = pages.get(1);
 
-        // 시작 면이나 마지막 면이 나오도록 책을 펼치는 경우
-        if (page1 == 1 | page2 == 400) {
+        // 페이지의 범위가 1 < page < 400이 아닌 경우
+        if (page1 <= 1 | page1 >= 400 | page2 <= 1 | page2 >= 400) {
             return false;
         }
-        // [왼쪽 페이지 번호, 오른쪽 페이지 번호]가 오류가 있는 경우
+        // 연속된 두 페이지가 아닌 경우
         else if (page2 != page1 + 1) {
             return false;
         }
@@ -93,7 +93,7 @@ class Game {
         // validate()이 true일 때만 Calculator 클래스로 계산
         if (validate()) {
             Calculator cal = new Calculator(pages);
-            int result = cal.returnScore();
+            int result = cal.returnFinalScore();
             return result;
         }
         // validate()이 false일 때 -1 반환
