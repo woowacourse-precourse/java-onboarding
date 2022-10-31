@@ -4,33 +4,33 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        Map<String, List<String>> users = new HashMap<String, List<String>>();
+        Map<String, List<String>> usersFriendsList = new HashMap<String, List<String>>();
         Map<String, Integer> userScore = new LinkedHashMap<String, Integer>();
         for (List<String> friendRelationship : friends) {
-            String friendR1 = friendRelationship.get(0);
-            String friendR2 = friendRelationship.get(1);
-            if (!userScore.containsKey(friendR1) && !user.equals(friendR1)) {
-                userScore.put(friendR1, 0);
+            String firstFriendInRelation = friendRelationship.get(0);
+            String secondFriendInRelation = friendRelationship.get(1);
+            if (!userScore.containsKey(firstFriendInRelation) && !user.equals(firstFriendInRelation)) {
+                userScore.put(firstFriendInRelation, 0);
             }
-            if (!userScore.containsKey(friendR2) && !user.equals(friendR2)) {
-                userScore.put(friendR2, 0);
+            if (!userScore.containsKey(secondFriendInRelation) && !user.equals(secondFriendInRelation)) {
+                userScore.put(secondFriendInRelation, 0);
             }
-            if (!users.containsKey(friendR1)) {
-                users.put(friendR1, new ArrayList<String>());
+            if (!usersFriendsList.containsKey(firstFriendInRelation)) {
+                usersFriendsList.put(firstFriendInRelation, new ArrayList<String>());
             }
-            if (!users.containsKey(friendR2)) {
-                users.put(friendR2, new ArrayList<String>());
+            if (!usersFriendsList.containsKey(secondFriendInRelation)) {
+                usersFriendsList.put(secondFriendInRelation, new ArrayList<String>());
             }
-            users.get(friendR1).add(friendR2);
-            users.get(friendR2).add(friendR1);
+            usersFriendsList.get(firstFriendInRelation).add(secondFriendInRelation);
+            usersFriendsList.get(secondFriendInRelation).add(firstFriendInRelation);
         }
 
-        List<String> userFriend = users.get(user);
-        for (String friend : users.keySet()) {
+        List<String> userFriend = usersFriendsList.get(user);
+        for (String friend : usersFriendsList.keySet()) {
             if (!friend.equals(user) && !userFriend.contains(friend)) {
-                List<String> friendsList = users.get(friend);
+                List<String> friendsList = usersFriendsList.get(friend);
                 for (String item : friendsList) {
-                    if ((users.get(user)).contains(item)) {
+                    if ((usersFriendsList.get(user)).contains(item)) {
                         int score = userScore.get(friend);
                         userScore.put(friend, score + 10);
                     }
