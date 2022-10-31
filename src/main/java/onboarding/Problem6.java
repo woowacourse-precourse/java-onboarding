@@ -1,12 +1,22 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
+    }
+
+    public static Map<String, List<String>> toHashMap(List<List<String>> forms) {
+        Map<String, List<String>> nicknameParts = new HashMap<>();
+        for (List<String> form : forms) {
+            nicknameParts.put(form.get(0), separateNickname(form.get(1)));
+        }
+        return nicknameParts;
     }
 
     public static List<String> separateNickname(String nickname) {
