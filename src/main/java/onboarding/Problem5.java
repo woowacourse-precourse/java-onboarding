@@ -19,6 +19,8 @@ public class Problem5 {
         for(int num : currency) {
             // 큰 금액의 화폐 순서로 돈의 액수 나누어서 몫을 배열에 추가하기
             answer.add(money / num);
+            // 나눈 나머지 값을 돈의 액수 값으로 변경하기
+            money %= num;
         }
 
         return answer;
