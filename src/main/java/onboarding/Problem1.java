@@ -40,6 +40,17 @@ class Problem1 {
         return result;
     }
 
+    //가장 큰 수 구하기
+    private int getScore(List<Integer> pageArray) {
+        ArrayList<Integer> scoreList = new ArrayList<>();
+
+        for(int e: pageArray) {
+            scoreList.add(sumPage(e));
+            scoreList.add(mulPage(e));
+        }
+        return Collections.max(scoreList)
+    }
+
     //게임 결과 구하기
     private static in findResult(int pobi_score, int crong_score) {
         if(pobi_score > crong_score) {
