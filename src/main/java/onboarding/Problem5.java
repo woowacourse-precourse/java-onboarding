@@ -35,6 +35,13 @@ public class Problem5 {
         }
         return moneyTemp;
     }
+    public static List<Integer> inversemoneyList(List<Integer> list){
+        List<Integer> moneyTemp = new ArrayList<>();
+        for(int i =list.size()-1; i>-1;i--) {
+            moneyTemp.add(list.get(i));
+        }
+        return moneyTemp;
+    }
 
 
 }
