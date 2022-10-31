@@ -21,3 +21,17 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+***
+## 기능 목록
+
+### 메소드 목록
+* removeDuplicated
+    * String을 charArray로 변환
+    * 이전 index의 character를 담은 prev와 현재 index의 character를 비교
+    * 다르다면 현재 index의 character를 charArray에 삽입
+    * prev를 현재 index의 character로 갱신하고, index 증가
+    * 같다면 index 감소
+
+### 작동 과정
+* 더 이상 중복되는 문자가 없어 removeDuplicated를 수행하여도 String의 길이가 변하지 않을 때까지 수행

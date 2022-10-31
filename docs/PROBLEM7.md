@@ -24,3 +24,35 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+***
+## 기능 목록
+
+### 메소드 목록
+* isAlreadyFriend
+  * 이미 user와 친구인지 판단하는 메소드.
+  * 해당 이름이 nameAndScore에 있고, 해당 이름 key의 value가 -1이라면 이미 친구이므로 true return.
+* isUser
+  * 이름이 user와 같은지 판단하는 메소드.
+  * name이 user의 이름과 같다면 true를 return.
+* calculateFriendScore
+  * '사용자와 함께 아는 친구의 수 = 10점'을 부여하는 메소드.
+  * nameAndScore에 이미 있다면 기존 점수에 +10, 없다면 10점으로 추가한다.
+* calculateVisitorScore
+  * '타임라인 방문 횟수 = 1점'을 부여하는 메소드.
+  * nameAndScore에 이미 key가 있고, user와 친구가 아니라면 +1점을 부여한다.
+  * nameAndScore에 없다면 1점으로 추가한다.
+* getAnswer
+  * 정렬된 LinkedList<Map.Entry<String, Integer>> entries를 순회하며 List answer에 이름을 추가한다.
+  * 점수가 0점보다 크면 answer에 추가하고, answer의 크기가 5이면 탈출한다. 
+
+### 작동 과정
+* 각 친구관계의 첫번째는 user의 친구로 가정하고 기능을 구현하였다.
+* Map nameAndScore에서 user의 친구는 score를 -1로 관리한다.
+* 친구관계 List friends를 순회하며 친구 관계의 두번째 이름이 isUser, isAlreadyFriend의 경우는 continue로 통과한다.
+* nameAndScore의 key 중 친구 관계의 첫번째 이름인 것이 없다면 -1점으로 nameAndScore에 추가한다.
+* 친구 관계 두번째 이름의 점수를 calculateFriendScore로 계산하여 nameAndScore에 추가한다.
+* 타임라인 방문자 List visitors를 순회하며 calculateVisitorScore를 통해 점수를 추가한다.
+* Map nameAndScore를 entrySet으로 변환 후 이를 LinkedList에 담은 entries를 생성한다.
+* entries를 문제 요구 사항에 맞게 정렬한다.(점수순 우선, 동률 시 이름순)
+* getAnswer를 통해 List answer에 정답을 담고 return.

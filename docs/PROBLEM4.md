@@ -19,3 +19,14 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+***
+## 기능 목록
+
+### 메소드 목록
+* initializeDict
+    * [A-Z], [a-z]를 key, 각각에 대응하는 문자를 value로 갖는 Map인 dict 생성
+
+### 작동 과정
+* for문으로 파라미터인 word를 순회하며 공백일 경우 answer에 공백을 추가,
+* 문자일 경우 initializeDict로 만든 dict에서 해당하는 문자의 변환 값을 answer에 추가
