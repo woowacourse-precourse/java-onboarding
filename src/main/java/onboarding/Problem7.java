@@ -7,7 +7,7 @@ public class Problem7 {
     static Map<String, Integer> answerMap;
     static List<String> userFriend;
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
         map = new HashMap<>();
         answerMap = new HashMap<>();
         for (List<String> friend : friends) {
@@ -26,6 +26,16 @@ public class Problem7 {
         checkKnowingTogether(user);
         checkVisitors(visitors);
 
+        List<Recommendation> sortList = new ArrayList<>();
+        for (String s : answerMap.keySet()) {
+            sortList.add(new Recommendation(s, answerMap.get(s)));
+        }
+        Collections.sort(sortList);
+        for(int i=0; i<sortList.size(); i++){
+            if(i >4) break;
+            answer.add(sortList.get(i).name);
+        }
+
         return answer;
     }
     public static void checkVisitors(List<String> visitors){
@@ -41,6 +51,21 @@ public class Problem7 {
                 if(s1.equals(user)) continue;
                 answerMap.put(s1, answerMap.getOrDefault(s1, 0)+10);
             }
+        }
+    }
+    static class Recommendation implements Comparable<Recommendation>{
+        String name;
+        int score;
+        public Recommendation(String name, int score){
+            this.name = name;
+            this.score= score;
+        }
+        @Override
+        public int compareTo(Recommendation o1){
+            if(o1.score == this.score){
+                return this.name.compareTo(o1.name);
+            }
+            return o1.score - this.score;
         }
     }
 }
