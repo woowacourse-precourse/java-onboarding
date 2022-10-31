@@ -4,8 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
-    public static final int firstPage = 1;
-    public static final int LastPage = 400;
+    public static final int ERROR = -1;
+    public static final int FIRST_PAGE = 1;
+    public static final int LAST_PAGE = 400;
+    public static final int POBI_WIN = 1;
+    public static final int CRONG_WIN = 2;
+    public static final int DRAW = 0;
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
@@ -16,11 +20,11 @@ class Problem1 {
         int cRightPage = crong.get(1);
 
         if(validation(pLeftPage, pRightPage)) {
-            return -1;
+            return ERROR;
         }
 
         if(validation(cLeftPage, cRightPage)) {
-            return -1;
+            return ERROR;
         }
 
         ArrayList<Integer> pLeftList = new ArrayList<>();
@@ -52,13 +56,13 @@ class Problem1 {
 
     private static int getAnswer(int answer, int pobiNumber, int crongNumber) {
         if (pobiNumber == crongNumber) {
-            answer = 0;
+            answer = DRAW;
         }
         if (pobiNumber > crongNumber) {
-            answer = 1;
+            answer = POBI_WIN;
         }
         if (pobiNumber < crongNumber) {
-            answer = 2;
+            answer = CRONG_WIN;
         }
         return answer;
     }
@@ -82,7 +86,7 @@ class Problem1 {
     }
 
     private static boolean isFirstAndLastPage(int leftPage, int rightPage) {
-        return leftPage == firstPage || rightPage == LastPage;
+        return leftPage == FIRST_PAGE || rightPage == LAST_PAGE;
     }
 
     private static boolean isNextPage(int leftPage, int rightPage) {
