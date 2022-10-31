@@ -13,7 +13,7 @@ public class Problem6 {
         EmailVerification emailVerification = new EmailVerification();
         NickNameVerification nickNameVerification = new NickNameVerification();
         NameOverlap nameOverlap = new NameOverlap();
-        if(emailVerification.emailverification(forms)){
+        if(EmailVerification.emailverification(forms)){
             throw new IllegalArgumentException("이메일을 확인해주세요");
         }
         if(nickNameVerification.nameverification(forms)){

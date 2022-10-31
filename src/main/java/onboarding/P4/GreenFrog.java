@@ -19,7 +19,7 @@ public class GreenFrog {
     private static boolean MessageCheck(char ch){                                 //알파벳인지 판별
         if('A' <= ch && ch <= 'Z' ){
             return true;
-        }else if((int)ch >= 'a' && (int)ch <= 'z'){
+        }else if(ch >= 'a' && ch <= 'z'){
             return true;
         }
         else{

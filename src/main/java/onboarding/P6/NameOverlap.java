@@ -27,11 +27,17 @@ public class NameOverlap {
 
     }
     private static List<String> NameOverlap(){
-        return map1.values().stream().filter(list -> list.size() >=2).flatMap(Collection::stream).collect(Collectors.toList());
+        return map1.values().stream()
+                .filter(list -> list.size() >=2)
+                .flatMap(Collection::stream)
+                .collect(Collectors.toList());
     } // stream=> 데이터의 흐름 flatmap => 평면화, collection::stream => 데이터들을 컬렉션 자료구조로 만들기 , coolect는 stream의 데이터를 변형등의 처리를 하고 원하는 자료형으로 변환
 
     private static List<String> EmailSort(List<String> overlapemail){
-        return overlapemail.stream().distinct().sorted().collect(Collectors.toList());
+        return overlapemail.stream()
+                .distinct()
+                .sorted()
+                .collect(Collectors.toList());
         // distinct => 스트림에서 중복되는 요소들을 제거하고 새로운 스트림을 반환
     }
 }
