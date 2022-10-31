@@ -8,6 +8,7 @@ public class Problem7 {
     private static final ArrayList<String> numberToNickname = new ArrayList<>();
     private static final ArrayList<ArrayList<Integer>> adjList = new ArrayList<>();
     private static final Map<String, Integer> scores = new HashMap<>();
+    private static final Set<String> friends = new HashSet<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
@@ -17,7 +18,22 @@ public class Problem7 {
 
         calFriendsScore();
 
+        calVisitingScore(visitors);
+
         return answer;
+    }
+
+    private static void calVisitingScore(List<String> visitors) {
+        for (var visitor : visitors) {
+            if (friends.contains(visitor)) {
+                continue;
+            }
+            if (scores.containsKey(visitor)) {
+                scores.replace(visitor, scores.get(visitor) + 1);
+                continue;
+            }
+            scores.put(visitor, 1);
+        }
     }
 
     private static void calFriendsScore() {
