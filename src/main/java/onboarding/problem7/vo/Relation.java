@@ -8,6 +8,10 @@ import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.stream.Collectors;
 
+/**
+ * 친구관계인 두 유저의 이름을 가지고 있는 VO 클래스입니다.
+ * @author BackFoxx
+ */
 public class Relation {
     private final List<String> memberNames;
 
@@ -15,12 +19,20 @@ public class Relation {
         this.memberNames = memberNames;
     }
 
+    /**
+     * 친구관계인 두 유저의 이름으로 Relation 객체를 만드는 정적 팩토리 메소드입니다.
+     * @param memberNames 친구관계인 두 유저의 이름을 가지고 있는 String 배열입니다.
+     */
     public static Relation of(List<String> memberNames) {
         return new Relation(memberNames);
     }
 
+    /**
+     * 친구관계인 두 유저의 이름 배열이 여러 개 주어졌을 때 한 번에 Relation 으로 만들어 리스트를 반환하는 정적 팩토리 메소드입니다.
+     * @param relations '친구관계인 두 유저의 이름 배열'의 배열입니다.
+     */
     public static List<Relation> ofList(List<List<String>> relations) {
-        RelationsValidator.validateRelations(relations);
+        RelationsValidator.validate(relations);
         return relations.stream()
                 .map(Relation::of)
                 .collect(Collectors.toList());

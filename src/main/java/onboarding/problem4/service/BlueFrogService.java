@@ -10,12 +10,12 @@ import onboarding.problem4.validation.BlueFrogValidator;
 public class BlueFrogService {
     /**
      * 인자로 들어온 엄마의 문자열을 알고리즘에 따라 거꾸로 읽어 반환하는 메소드입니다.
-     * @param target 거꾸로 읽을 문자열입니다.
+     * @param speech 거꾸로 읽을 문자열입니다.
      * @return 거꾸로 읽힌 결과물입니다.
      */
-    public static String reverseMotherSaying(String target) {
-        BlueFrogValidator.validate(target);
-        Sentence sentence = Sentence.of(target);
+    public static String reverseMotherSpeech(String speech) {
+        BlueFrogValidator.validate(speech);
+        Sentence sentence = Sentence.of(speech);
         return sentence.reverse();
     }
 }

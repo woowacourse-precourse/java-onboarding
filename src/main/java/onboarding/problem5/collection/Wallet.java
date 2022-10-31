@@ -59,6 +59,6 @@ public class Wallet {
      */
     private void saveAsChange(MoneyDto money, Change change) {
         changes[change.getIndex()] = money.getMoney() / change.getValue();
-        money.setMoney(money.getMoney() % change.getValue());
+        money.changeMoney(money.getMoney() % change.getValue());
     }
 }

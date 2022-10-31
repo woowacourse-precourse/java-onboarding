@@ -1,16 +1,16 @@
 package onboarding;
 
-import onboarding.problem6.repository.UserRepository;
-import onboarding.problem6.service.UserService;
+import onboarding.problem6.repository.CrewRepository;
+import onboarding.problem6.service.CrewService;
 
 import java.util.List;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        UserRepository userRepository = new UserRepository();
-        UserService userService = new UserService(userRepository);
+        CrewRepository crewRepository = new CrewRepository();
+        CrewService crewService = new CrewService(crewRepository);
 
-        userService.saveAllUsers(forms);
-        return userService.findAllEmailByUserHavingInvalidName();
+        crewService.saveAllCrews(forms);
+        return crewService.findAllEmailByCrewsHavingInvalidName();
     }
 }

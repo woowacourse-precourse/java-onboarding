@@ -6,10 +6,12 @@ package onboarding.problem5.dto;
  * @author BackFoxx
  */
 public class MoneyDto {
-    private Integer value;
+    public static final String INVALID_MONEY_VALUE_MESSAGE = "money 값은 0보다 작아질 수 없습니다.";
+
+    private Integer money;
 
     private MoneyDto(Integer money) {
-        this.value = money;
+        this.money = money;
     }
 
     /**
@@ -20,10 +22,16 @@ public class MoneyDto {
     }
 
     public Integer getMoney() {
-        return value;
+        return money;
     }
 
-    public void setMoney(Integer money) {
-        this.value = money;
+    /**
+     * 인자로 주어진 값으로 금액을 돈의 액수를 수정합니다.
+     */
+    public void changeMoney(Integer money) {
+        if (money < 0) {
+            throw new IllegalArgumentException(INVALID_MONEY_VALUE_MESSAGE);
+        }
+        this.money = money;
     }
 }

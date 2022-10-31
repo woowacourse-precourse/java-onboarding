@@ -4,7 +4,8 @@ import onboarding.problem2.validation.CryptogramValidator;
 import onboarding.problem3.validation.ThreeSixNineValidator;
 import onboarding.problem4.validation.BlueFrogValidator;
 import onboarding.problem5.validation.WalletValidator;
-import onboarding.problem6.validation.UserValidator;
+import onboarding.problem6.validation.CrewValidator;
+import onboarding.problem7.validation.MemberValidator;
 import onboarding.problem7.validation.RelationsValidator;
 import onboarding.problem7.validation.VisitorsValidator;
 import org.junit.jupiter.api.DisplayName;
@@ -445,10 +446,10 @@ class ApplicationTest {
                 assertThatThrownBy(() -> Problem6.solution(forms))
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessage(String.format(
-                                UserValidator.INVALID_LIST_SIZE_RANGE_MESSAGE_FORMAT,
-                                UserValidator.USER,
-                                UserValidator.USER_LIST_SIZE_MIN_RANGE,
-                                UserValidator.USER_MIST_SIZE_MAX_RANGE
+                                CrewValidator.INVALID_LIST_SIZE_RANGE_MESSAGE_FORMAT,
+                                CrewValidator.CREW,
+                                CrewValidator.USER_LIST_SIZE_MIN_RANGE,
+                                CrewValidator.USER_MIST_SIZE_MAX_RANGE
                         ));
             }
 
@@ -463,10 +464,10 @@ class ApplicationTest {
                 assertThatThrownBy(() -> Problem6.solution(forms))
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessage(String.format(
-                                UserValidator.INVALID_LIST_SIZE_RANGE_MESSAGE_FORMAT,
-                                UserValidator.USER,
-                                UserValidator.USER_LIST_SIZE_MIN_RANGE,
-                                UserValidator.USER_MIST_SIZE_MAX_RANGE
+                                CrewValidator.INVALID_LIST_SIZE_RANGE_MESSAGE_FORMAT,
+                                CrewValidator.CREW,
+                                CrewValidator.USER_LIST_SIZE_MIN_RANGE,
+                                CrewValidator.USER_MIST_SIZE_MAX_RANGE
                         ));
             }
 
@@ -481,9 +482,9 @@ class ApplicationTest {
                 assertThatThrownBy(() -> Problem6.solution(forms))
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessage(String.format(
-                                UserValidator.STRING_DISMATCH_TO_REGEX_MESSAGE_FORMAT,
-                                UserValidator.EMAIL,
-                                UserValidator.EMAIL_DESCRIPTION
+                                CrewValidator.STRING_DISMATCH_TO_REGEX_MESSAGE_FORMAT,
+                                CrewValidator.EMAIL,
+                                CrewValidator.EMAIL_DESCRIPTION
                         ));
             }
 
@@ -498,8 +499,8 @@ class ApplicationTest {
                 assertThatThrownBy(() -> Problem6.solution(forms))
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessage(String.format(
-                                UserValidator.INVALID_EMAIL_DOMAIN_MESSAGE_FORMAT,
-                                UserValidator.VALID_EMAIL_DOMAIN)
+                                CrewValidator.INVALID_EMAIL_DOMAIN_MESSAGE_FORMAT,
+                                CrewValidator.VALID_EMAIL_DOMAIN)
                         );
             }
 
@@ -513,10 +514,10 @@ class ApplicationTest {
                 assertThatThrownBy(() -> Problem6.solution(forms))
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessage(String.format(
-                                UserValidator.INVALID_STRING_LENGTH_RANGE_MESSAGE_FORMAT,
-                                UserValidator.EMAIL,
-                                UserValidator.MIN_EMAIL_LENGTH,
-                                UserValidator.MAX_EMAIL_LENGTH
+                                CrewValidator.INVALID_STRING_LENGTH_RANGE_MESSAGE_FORMAT,
+                                CrewValidator.EMAIL,
+                                CrewValidator.MIN_EMAIL_LENGTH,
+                                CrewValidator.MAX_EMAIL_LENGTH
                         ));
             }
 
@@ -530,10 +531,10 @@ class ApplicationTest {
                 assertThatThrownBy(() -> Problem6.solution(forms))
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessage(String.format(
-                                UserValidator.INVALID_STRING_LENGTH_RANGE_MESSAGE_FORMAT,
-                                UserValidator.EMAIL,
-                                UserValidator.MIN_EMAIL_LENGTH,
-                                UserValidator.MAX_EMAIL_LENGTH
+                                CrewValidator.INVALID_STRING_LENGTH_RANGE_MESSAGE_FORMAT,
+                                CrewValidator.EMAIL,
+                                CrewValidator.MIN_EMAIL_LENGTH,
+                                CrewValidator.MAX_EMAIL_LENGTH
                         ));
             }
 
@@ -547,10 +548,10 @@ class ApplicationTest {
                 assertThatThrownBy(() -> Problem6.solution(forms))
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessage(String.format(
-                                UserValidator.INVALID_STRING_LENGTH_RANGE_MESSAGE_FORMAT,
-                                UserValidator.NAME,
-                                UserValidator.MIN_NAME_LENGTH,
-                                UserValidator.MAX_NAME_LENGTH
+                                CrewValidator.INVALID_STRING_LENGTH_RANGE_MESSAGE_FORMAT,
+                                CrewValidator.NAME,
+                                CrewValidator.MIN_NAME_LENGTH,
+                                CrewValidator.MAX_NAME_LENGTH
                         ));
             }
 
@@ -564,10 +565,10 @@ class ApplicationTest {
                 assertThatThrownBy(() -> Problem6.solution(forms))
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessage(String.format(
-                                UserValidator.INVALID_STRING_LENGTH_RANGE_MESSAGE_FORMAT,
-                                UserValidator.NAME,
-                                UserValidator.MIN_NAME_LENGTH,
-                                UserValidator.MAX_NAME_LENGTH
+                                CrewValidator.INVALID_STRING_LENGTH_RANGE_MESSAGE_FORMAT,
+                                CrewValidator.NAME,
+                                CrewValidator.MIN_NAME_LENGTH,
+                                CrewValidator.MAX_NAME_LENGTH
                         ));
             }
 
@@ -581,9 +582,9 @@ class ApplicationTest {
                 assertThatThrownBy(() -> Problem6.solution(forms))
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessage(String.format(
-                                UserValidator.STRING_DISMATCH_TO_REGEX_MESSAGE_FORMAT,
-                                UserValidator.NAME,
-                                UserValidator.KOREAN_ONLY_DESCRIPTION
+                                CrewValidator.STRING_DISMATCH_TO_REGEX_MESSAGE_FORMAT,
+                                CrewValidator.NAME,
+                                CrewValidator.KOREAN_ONLY_DESCRIPTION
                         ));
             }
         }
@@ -664,7 +665,7 @@ class ApplicationTest {
         class Problem7FailureTest {
             @Nested
             @DisplayName("문제 7 실패 케이스 테스트 - user 입력값")
-            class Problem7UserFailureTest {
+            class Problem7CrewFailureTest {
                 @Test
                 @DisplayName("user가 null이면 예외 발생")
                 void test1() {
@@ -682,10 +683,10 @@ class ApplicationTest {
                             .isInstanceOf(IllegalArgumentException.class)
                             .hasMessage(
                                     String.format(
-                                            onboarding.problem7.validation.UserValidator.INVALID_STRING_LENGTH_RANGE_MESSAGE_FORMAT,
-                                            onboarding.problem7.validation.UserValidator.USER_ID,
-                                            onboarding.problem7.validation.UserValidator.MIN_ID_LENGTH_RANGE,
-                                            onboarding.problem7.validation.UserValidator.MAX_ID_LENGTH_RANGE
+                                            MemberValidator.INVALID_STRING_LENGTH_RANGE_MESSAGE_FORMAT,
+                                            MemberValidator.USER_ID,
+                                            MemberValidator.MIN_ID_LENGTH_RANGE,
+                                            MemberValidator.MAX_ID_LENGTH_RANGE
                                     ));
                 }
 
@@ -706,10 +707,10 @@ class ApplicationTest {
                             .isInstanceOf(IllegalArgumentException.class)
                             .hasMessage(
                                     String.format(
-                                            onboarding.problem7.validation.UserValidator.INVALID_STRING_LENGTH_RANGE_MESSAGE_FORMAT,
-                                            onboarding.problem7.validation.UserValidator.USER_ID,
-                                            onboarding.problem7.validation.UserValidator.MIN_ID_LENGTH_RANGE,
-                                            onboarding.problem7.validation.UserValidator.MAX_ID_LENGTH_RANGE
+                                            MemberValidator.INVALID_STRING_LENGTH_RANGE_MESSAGE_FORMAT,
+                                            MemberValidator.USER_ID,
+                                            MemberValidator.MIN_ID_LENGTH_RANGE,
+                                            MemberValidator.MAX_ID_LENGTH_RANGE
                                     ));
                 }
 
@@ -730,10 +731,10 @@ class ApplicationTest {
                             .isInstanceOf(IllegalArgumentException.class)
                             .hasMessage(
                                     String.format(
-                                            onboarding.problem7.validation.UserValidator.INVALID_STRING_LENGTH_RANGE_MESSAGE_FORMAT,
-                                            onboarding.problem7.validation.UserValidator.USER_ID,
-                                            onboarding.problem7.validation.UserValidator.MIN_ID_LENGTH_RANGE,
-                                            onboarding.problem7.validation.UserValidator.MAX_ID_LENGTH_RANGE
+                                            MemberValidator.INVALID_STRING_LENGTH_RANGE_MESSAGE_FORMAT,
+                                            MemberValidator.USER_ID,
+                                            MemberValidator.MIN_ID_LENGTH_RANGE,
+                                            MemberValidator.MAX_ID_LENGTH_RANGE
                                     ));
                 }
             }
@@ -830,9 +831,9 @@ class ApplicationTest {
                     assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
                             .isInstanceOf(IllegalArgumentException.class)
                             .hasMessage(String.format(
-                                    onboarding.problem7.validation.UserValidator.STRING_DISMATCH_TO_REGEX_MESSAGE_FORMAT,
-                                    onboarding.problem7.validation.UserValidator.USER_ID,
-                                    onboarding.problem7.validation.UserValidator.ALPHABET_LOWERCASE_ONLY_DESCRIPTION
+                                    MemberValidator.STRING_DISMATCH_TO_REGEX_MESSAGE_FORMAT,
+                                    MemberValidator.USER_ID,
+                                    MemberValidator.ALPHABET_LOWERCASE_ONLY_DESCRIPTION
                             ));
                 }
             }
@@ -904,9 +905,9 @@ class ApplicationTest {
                     assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
                             .isInstanceOf(IllegalArgumentException.class)
                             .hasMessage(String.format(
-                                    onboarding.problem7.validation.UserValidator.STRING_DISMATCH_TO_REGEX_MESSAGE_FORMAT,
-                                    onboarding.problem7.validation.UserValidator.USER_ID,
-                                    onboarding.problem7.validation.UserValidator.ALPHABET_LOWERCASE_ONLY_DESCRIPTION
+                                    MemberValidator.STRING_DISMATCH_TO_REGEX_MESSAGE_FORMAT,
+                                    MemberValidator.USER_ID,
+                                    MemberValidator.ALPHABET_LOWERCASE_ONLY_DESCRIPTION
                             ));
                 }
 
