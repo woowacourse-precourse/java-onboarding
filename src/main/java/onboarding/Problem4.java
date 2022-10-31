@@ -30,11 +30,8 @@ public class Problem4 {
     }
 
     private static void addValueToOutput(char key, StringBuilder sb) {
-        if (!Character.isAlphabetic(key)) {
-            sb.append(key);
-            return;
-        }
-        sb.append(getOriginCaseValue(createReverseDict(), key));
+        char getValue = !Character.isAlphabetic(key) ? key : getOriginCaseValue(createReverseDict(), key);
+        sb.append(getValue);
     }
 
     private static char getReverseValue(char base) {
