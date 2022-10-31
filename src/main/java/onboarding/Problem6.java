@@ -5,12 +5,17 @@ import java.util.Collections;
 import java.util.LinkedHashSet;
 import java.util.List;
 
+/*
+Brute-Force 방식을 사용했습니다.
+첫번째 문자열을 for문을 통해 순회하면서 각 문자가 두번째 문자열의 어디에 있는지 전부 파악한 뒤, 그 문자 다음 문자에 어떤 문자가 오는지 확인 후,
+첫번째 문자열에서 뽑은 문자의 다음 문자와 같은 것이 나왔다면, 그 두 문자열은 같은 글자가 연속적으로 포함된 것입니다.
+*/
+
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<String>();
         int form_size = forms.size();
         String x = "  b ";
-        System.out.println(x.indexOf('z'));
 
         for (int i = 0; i < form_size - 1; i++) {
             for (int j = i + 1; j < form_size; j++) {
@@ -61,7 +66,6 @@ public class Problem6 {
             }
             int sub_cnt = subStrs.size();
             for (int j = 0; j < sub_cnt; j++) {
-                System.out.println(subStrs.get(j));
                 if(Y.contains(subStrs.get(j))) {
                     return true;
                 }
