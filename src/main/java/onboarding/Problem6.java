@@ -14,6 +14,10 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         return null;
     }
+    // 리스트배열의 이메일 문자열을 반환하는 기능
+    private static String getEmail(List<String> list) {
+        return list.get(0);
+    }
     // 리스트배열의 닉네임 문자열을 반환하는 기능
     private static String getNickname(List<String> list) {
         return list.get(1);
