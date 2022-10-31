@@ -43,7 +43,7 @@ public class Problem7 {
         }
     };
 
-    //친구 목록 생성
+
     public static Map<String, List<String>> getFriendList(List<List<String>> friends) {
         Map<String, List<String>> network = new HashMap<>();
         for (List<String> friend : friends) {
