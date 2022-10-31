@@ -48,7 +48,7 @@ public class Problem7 {
 
         for (List<String> friend : friends) {           //친구 점수 업데이트
             if (friend.get(0).equals(user) || friend.get(1).equals(user)) {
-                continue;
+                break;
             } else if (userFriends.contains(friend.get(0)) && !userFriends.contains(friend.get(1))) {
                 addScore(friend.get(1), 10);
             } else if (userFriends.contains(friend.get(1)) && !userFriends.contains(friend.get(0))) {
