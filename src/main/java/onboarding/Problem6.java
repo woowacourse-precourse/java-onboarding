@@ -32,11 +32,11 @@ public class Problem6 {
                             }
                         }
                     }
-                }
+                } else return answer;
             }
             for_final.sort(Comparator.naturalOrder());
             answer = for_final.stream().distinct().collect(Collectors.toList());
-        }
+        } else return answer;
         return answer;
     }
 
