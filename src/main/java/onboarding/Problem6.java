@@ -21,4 +21,18 @@ public class Problem6 {
 		return format.equals("email.com");
 	}
 
+	public static Map<String, Set<String>> mapByNicknameMapSet(List<List<String>> forms) {
+		Map<String, Set<String>> nicknameSetMap = new HashMap<>();
+
+		for (List<String> form : forms) {
+			String nickname = form.get(1);
+			for (int i = 0; i < nickname.length() - 1; i++) {
+				Set<String> nicknameSet = nicknameSetMap.getOrDefault(nickname.substring(i, i + 2), new HashSet<>());
+				nicknameSet.add(nickname);
+				nicknameSetMap.put(nickname.substring(i, i + 2), nicknameSet);
+			}
+		}
+
+		return nicknameSetMap;
+	}
 }
