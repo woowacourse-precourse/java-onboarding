@@ -20,7 +20,7 @@ public class Problem5 {
             number = (money/bill>0)?money/bill:0;
             result.add(number);
             money -= bill*number;
-        }
+        }  
         return result;
     }
 
