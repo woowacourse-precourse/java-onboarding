@@ -33,46 +33,51 @@ public class Problem6 {
 
         String prev = "";
         String next = "";
-        int cnt = -1;
+        int cnt = 0;
+        int inCnt = 0;
         boolean canCal = false;
+        boolean inCanCal = false;
+
+        answer.add(forms.get(0).get(0));
 
         for (int i = 0; i < arr.size(); i++) {
             if(cnt+1 < arr.get(i).length()){
-                cnt++;
-                canCal = false;
+                // 비교 대상 명단의 두 글자
+                prev = arr.get(i).substring(cnt, cnt + 2);
+                canCal = true;
             } else continue;
 
-            // 비교 대상 명단의 두 글자
-            prev += arr.get(i).charAt(cnt);
-            prev += arr.get(i).charAt(cnt+1);
-
             for (int j = i+1; j < arr.size(); j++) {
-                if (cnt+1 >= arr.get(j).length()) {
-                    continue;
-                }
-                else {
-                    canCal = true;
+
+                if (inCnt+1 < arr.get(j).length()) {
+                    inCanCal = true;
                     // 다음 명단의 두 글자
-                    next += arr.get(j).charAt(cnt);
-                    next += arr.get(j).charAt(cnt+1);
+                    next = arr.get(j).substring(inCnt, inCnt + 2);
 
                     if (prev.equals(next)) {
                         String inputNext = arr.get(j);
                         answer.add(hashMap.get(inputNext));
                     }
-                    next = "";
+                }
+                else {
+
+                    continue;
                 }
             }
 
-            prev = "";
+            if(!canCal) break; // 순환할 수 있는 배열 원소가 없음
 
-            if(canCal==false) break; // 순환할 수 있는 배열 원소가 없음
+            if(!inCanCal){
+                cnt++;
+                inCnt = 0;
+                canCal = false;
+            } else {
+                inCnt++;
+                inCanCal = false;
+            }
         }
 
-        hashMap.entrySet().stream() // hashmap을 스트림을 이용해 정렬, add완료 후 마다 정렬
-                .sorted(Map.Entry.comparingByKey())
-                .forEach(entry -> System.out.println(entry.getKey() + " " + entry.getValue()));
-
+        Collections.sort(answer);
         return answer;
     }
 }
