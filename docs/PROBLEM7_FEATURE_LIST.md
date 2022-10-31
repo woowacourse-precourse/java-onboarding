@@ -27,7 +27,7 @@ problem7(string user, list<list<string>> friends, list<string> visitors){
 
 ## 기능 요구 사항
 
-- 모든 유저 이름을 반환하는 Set<String> getAllUserSet() 함수
+- ~~모든 유저 이름을 반환하는 Set<String> getAllUserSet() 함수~~
 - 해당 유저의 친구 정보를 리스트로 갖고 있는 Map<String, List<String>> makeFriendGraph() 함수
 - 각 user에 대한 점수를 갖고 있는 Map<String, Integer> getScoreMap() 함수
 - 모든 ScoreInfo를 가져오는 List<ScoreInfo> getScoreInfo() 함수
