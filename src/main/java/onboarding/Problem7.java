@@ -34,7 +34,6 @@ public class Problem7 {
 				.sorted(Collections.reverseOrder(Map.Entry.<String, Integer>comparingByValue())
 						.thenComparing(Map.Entry.comparingByKey()))
 				.limit(5)
-				.filter(recommendFriend -> recommendFriend.getValue() != 0)
 				.map(Map.Entry::getKey)
 				.collect(toList());
 	}
