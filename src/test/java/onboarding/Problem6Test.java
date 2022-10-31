@@ -17,4 +17,13 @@ class Problem6Test {
     );
     static Set<String> emails = new HashSet<>();
     static Map<String, String> nameMap = new HashMap<>();
+
+    // solution 테스트
+    @Test
+    void solution() {
+        checkNicknames(forms);
+        List<String> answer = new ArrayList<>(emails);
+        answer.sort(Comparator.naturalOrder());
+        System.out.println("end");
+    }
 }
