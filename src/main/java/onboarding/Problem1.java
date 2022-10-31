@@ -36,6 +36,7 @@ $ 예외처리
  2. 왼쪽, 오른쪽 각 자리를 더하거나 , 곱해서 , 더큰수를 담는다.
  3. 덧셈과 곱셈을 비교 후 더 큰 값을 고른다.
  4. 포비와 크롱의 값을 비교 후 승자를 찾는다
+ 5. 예외 사항
  */
 package onboarding;
 
@@ -46,11 +47,57 @@ class Problem1 {
 
         int pobiValue = maxValue(pobi);
         int crongValue = maxValue(crong);
-        int answer = winner(pobiValue, crongValue);
-
-        return answer;
+        if ((exceptionTotal(pobi) || exceptionTotal(crong))){
+            return -1;
+        }
+        return winner(pobiValue, crongValue);
     }
-    
+
+    public static boolean exceptionTotal(List<Integer> pageList){
+        if (exception2(pageList)){
+            return true;
+        }
+
+        if (exception3(pageList)){
+            return true;
+        }
+
+        if (exception4(pageList)){
+            return true;
+        }
+
+        if (exception5(pageList)){
+            return true;
+        }
+
+        for(Integer pageNumber : pageList){
+            if(exception1(pageNumber)){
+                return true;
+            }
+        } 
+        return false;
+    }
+
+    public static boolean exception1(Integer pageNumber){
+        return (1 > pageNumber || 400 < pageNumber);
+    }
+
+    public static boolean exception2(List<Integer> pageList){
+       return (pageList.get(1) < pageList.get(0));
+    }
+
+    public static boolean exception3(List<Integer> pageList){
+        return ((pageList.get(1) - pageList.get(0)) != 1);
+    }
+
+    public static boolean exception4(List<Integer> pageList){
+        return (pageList.size() != 2);
+    }
+
+    public static boolean exception5(List<Integer> pageList){
+        return ((pageList.get(0) % 2 != 1) && (pageList.get(1) % 2 != 0));
+    }
+
     public static int addition(int pageNumber){
         int additionSum = 0;
         while(0 < pageNumber){
@@ -97,9 +144,5 @@ class Problem1 {
         }
         return 0;
     }
-    
-    // public static void main(String[] args){
-    //     List<Integer> pobi = List.of(97, 98);
-    //     List<Integer> crong = List.of(197, 198);
-    // }
+
 }
