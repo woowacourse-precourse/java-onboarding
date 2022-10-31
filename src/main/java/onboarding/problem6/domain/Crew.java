@@ -2,6 +2,7 @@ package onboarding.problem6.domain;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Crew {
     private String email;
@@ -67,5 +68,18 @@ public class Crew {
             index++;
         }
         return duplicateStatus;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Crew crew = (Crew) o;
+        return nickname.equals(crew.nickname) && email.equals(crew.email);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(nickname, email);
     }
 }
