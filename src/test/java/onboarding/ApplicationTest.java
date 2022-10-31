@@ -317,5 +317,22 @@ class ApplicationTest {
       List<String> result = List.of("andole", "jun", "bedi");
       assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
     }
+
+    @Test
+    void isAllowedIdTest() {
+      //given
+      String id1 = "qwln";
+      String id2 = "asnjvkamsdncvsdhaasndasdfasdfvwklradf";
+      String id3 = "qASWWC";
+
+      //then
+      assertThat(Problem7.isAllowedId(id1)).isEqualTo(true);
+      assertThrows(IllegalStateException.class, () -> {
+        Problem7.isAllowedId(id2);
+      });
+      assertThrows(IllegalStateException.class, () -> {
+        Problem7.isAllowedId(id3);
+      });
+     }
   }
 }
