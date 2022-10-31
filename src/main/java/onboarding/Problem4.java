@@ -8,13 +8,13 @@ public class Problem4 {
     	String answer = charArrToString(wordArr);
         return answer;
     }
-    public static void convertCharArrReverse(char[] wordArr) {
+    private static void convertCharArrReverse(char[] wordArr) {
     	for(int i=0; i<wordArr.length; i++) {
     		if(wordArr[i] == ' ') continue;
     		wordArr[i] = convertCharReverse(wordArr[i]);
     	}
     }
-    public static char convertCharReverse(char target) {
+    private static char convertCharReverse(char target) {
     	char convertedChar = target;
     	if(isUpperCase(target)) {
     		convertedChar = (char) ('Z'-target+'A');
@@ -35,7 +35,7 @@ public class Problem4 {
     	}
     	return false;
     }
-    public static String charArrToString(char[] wordArr) {
+    private static String charArrToString(char[] wordArr) {
     	String result;
     	StringBuilder sb = new StringBuilder();
     	for(int i=0; i<wordArr.length; i++) {
