@@ -16,11 +16,12 @@ public class Problem4 {
         List<Character> chars = word.chars()
                 .mapToObj(c -> (char) c)
                 .collect(Collectors.toList());
+
         chars.replaceAll(c -> Character.isAlphabetic(c) ? (char) changeAsciiValue(c) : c);
         return joiningChars(chars);
     }
 
-    private static int changeAsciiValue(int ascii) {
+    private static int changeAsciiValue(char ascii) {
         int val = ascii + 25;
 
         if (val > Z_LOWER_CASE) {
