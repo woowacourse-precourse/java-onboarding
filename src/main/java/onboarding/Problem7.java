@@ -37,8 +37,8 @@ class User implements Comparable<User>{
         }
     }
 
-    public boolean isFriendWith(User user){
-        return this.friends.contains(user);
+    public boolean isNotFriendWith(User user){
+        return !this.friends.contains(user);
     }
 
     @Override
