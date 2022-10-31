@@ -12,8 +12,7 @@ public class Problem6 {
      * 중복되는 이메일 List에 넣는 함수
      */
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+        return nik_check(forms);
     }
 
     /**
