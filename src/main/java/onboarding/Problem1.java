@@ -11,8 +11,15 @@ class Problem1 {
         int crongMax = 0;
 
         try {
-
             if (pobi.get(0)+1!=pobi.get(1) || crong.get(0)+1!=crong.get(1)) {
+                throw new Exception();
+            }
+
+            if (pobi.get(0) <= 1 || pobi.get(0) >=400) {
+                throw new Exception();
+            }
+
+            if (crong.get(0) <= 1 || crong.get(0) >=400) {
                 throw new Exception();
             }
 
