@@ -4,15 +4,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Wallet {
-    private static final int[] moneyTypes = {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
     private final List<Integer> moneyCounts;
 
     public Wallet(int money) {
         moneyCounts = new ArrayList<>();
-        for (int type : moneyTypes) {
-            int usedMoney = getUsedMoney(money, type);
+        for (MoneyType type : MoneyType.values()) {
+            int usedMoney = getUsedMoney(money, type.getMoney());
             money -= usedMoney;
-            moneyCounts.add(usedMoney / type);
+            moneyCounts.add(usedMoney / type.getMoney());
         }
     }
 
