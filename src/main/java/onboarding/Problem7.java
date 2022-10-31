@@ -22,11 +22,17 @@ public class Problem7 {
         List<Map.Entry<String, Integer>> entryList = new ArrayList<>(peopleAndPointMap.entrySet());
         entryList.sort(Map.Entry.comparingByKey());
         entryList.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
+        removeZeroValue(entryList);
         for (int i = 0; i < 5; i++) {
             rankingList.add(entryList.get(i).getKey());
         }
         return rankingList;
     }
+
+    private static void removeZeroValue(List<Map.Entry<String, Integer>> entryList) {
+        entryList.removeIf(x -> x.getValue() == 0);
+    }
+
     private static void plusVisitPoint(List<String> visitors, HashMap<String, Integer> peopleAndPointMap) {
         visitors.forEach(visitor -> peopleAndPointMap.computeIfPresent(visitor, (people, point) -> point + 1));
     }
