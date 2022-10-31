@@ -1,61 +1,20 @@
 package onboarding;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Problem7 {
 
     private static HashMap<String, ArrayList<String>> friendListMap = new HashMap<>();
     private static HashMap<String, Integer> scoreMap = new HashMap<>();
 
-    public static void main(String[] args) {
-        List<List<String>> friends = List.of(
-                List.of("donut", "andole"),
-                List.of("donut", "jun"),
-                List.of("donut", "mrko"),
-                List.of("shakevan", "andole"),
-                List.of("shakevan", "jun"),
-                List.of("shakevan", "mrko")
-        );
-        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
-        solution("mrko",friends, visitors);
-    }
-
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        List<UserInfo> processList = new ArrayList<>();
+        List<String> answer = new ArrayList<>();
 
         initFriendListMap(friends);
         initScoreMap(visitors);
         setCommonFriendScore(user);
-        setVisitorScore(visitors);
-
-        for (String userName : scoreMap.keySet()) {
-            processList.add(new UserInfo(userName, scoreMap.get(userName)));
-        }
-
-        for (String s : scoreMap.keySet()) {
-            System.out.println("s = " + s);
-            System.out.println(scoreMap.get(s));
-            System.out.println();
-        }
-
-//        Collections.sort(processList, new Comparator<UserInfo>() {
-//            @Override
-//            public int compare(UserInfo o1, UserInfo o2) {
-//                return o2.score - o1.score;
-//            }
-//        });
-//
-//        for (UserInfo userInfo : processList) {
-//            if (answer.size() >= 5) {
-//                break;
-//            } else {
-//                if (userInfo.score > 0) {
-//                    answer.add(userInfo.userName);
-//                }
-//            }
-//        }
+        setVisitorScore(user, visitors);
+        answer = compareAndSort();
 
         return answer;
     }
@@ -67,15 +26,13 @@ public class Problem7 {
 
             if (!friendListMap.keySet().contains(friendA)) {
                 friendListMap.put(friendA, new ArrayList<>());
-            }else{
-                friendListMap.get(friendA).add(friendB);
             }
+            friendListMap.get(friendA).add(friendB);
 
             if (!friendListMap.keySet().contains(friendB)) {
                 friendListMap.put(friendB, new ArrayList<>());
-            }else{
-                friendListMap.get(friendB).add(friendA);
             }
+            friendListMap.get(friendB).add(friendA);
         }
     }
 
@@ -107,20 +64,52 @@ public class Problem7 {
         }
     }
 
-    private static void setVisitorScore(List<String> visitors) {
+    private static void setVisitorScore(String user, List<String> visitors) {
+        ArrayList<String> userFriendList = friendListMap.get(user);
+
         for (String visitor : visitors) {
-            int curScore = scoreMap.get(visitor);
-            scoreMap.put(visitor, curScore + 1);
+            if (!userFriendList.contains(visitor)) {
+                int curScore = scoreMap.get(visitor);
+                scoreMap.put(visitor, curScore + 1);
+            }
         }
     }
 
-    private static class UserInfo{
+    private static List<String> compareAndSort() {
+        List<UserInfo> processList = new ArrayList<>();
+        List<String> rtnList = new ArrayList<>();
+
+        for (String userName : scoreMap.keySet()) {
+            processList.add(new UserInfo(userName, scoreMap.get(userName)));
+        }
+
+        Collections.sort(processList);
+
+        for (UserInfo userInfo : processList) {
+            if (rtnList.size() >= 5) {
+                break;
+            } else {
+                if (userInfo.score > 0) {
+                    rtnList.add(userInfo.userName);
+                }
+            }
+        }
+
+        return rtnList;
+    }
+
+    private static class UserInfo implements Comparable<UserInfo>{
         String userName;
         Integer score;
 
         public UserInfo(String userName, Integer score) {
             this.userName = userName;
             this.score = score;
+        }
+
+        @Override
+        public int compareTo(UserInfo o) {
+            return Integer.compare(o.score, this.score);
         }
     }
 }
