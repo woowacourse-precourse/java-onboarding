@@ -58,9 +58,14 @@ class Spread {
             return Math.max(addDigits(), multiplyDigits());
         }
 
-        // TODO: addDigits()
         private int addDigits() {
-            return 0;
+            int number = NUMBER;
+            int sum = 0;
+            while (number > 0) {
+                sum += number % 10;
+                number /= 10;
+            }
+            return sum;
         }
 
         // TODO: multiplyDigits()
