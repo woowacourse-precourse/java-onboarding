@@ -34,6 +34,8 @@ public class Problem2 {
                 }
             }
         }
+
+        answer = cryptoAvail;
         return answer;
     }
 }
