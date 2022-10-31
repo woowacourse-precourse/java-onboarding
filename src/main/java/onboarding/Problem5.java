@@ -33,6 +33,8 @@ public class Problem5 {
         answer.add(remain/10);
         remain = remain%10;
 
+        answer.add(remain/1);
+
         return answer;
     }
 }
