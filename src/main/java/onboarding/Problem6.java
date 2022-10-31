@@ -3,6 +3,7 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -37,10 +38,6 @@ public class Problem6 {
         return answer;
     }
     public static List<String> valueExtraction(List<List<String>> forms,int index){
-        List<String> responseList = new ArrayList<>();
-        for(int i=0;i<forms.size();i++){
-            responseList.add(forms.get(i).get(index));
-        }
-        return responseList;
+        return  forms.stream().map(o-> o.get(index)).collect(Collectors.toList());
     }
 }
