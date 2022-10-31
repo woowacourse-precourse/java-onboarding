@@ -1,6 +1,5 @@
 package onboarding.problem7;
 
-import java.util.Comparator;
 import java.util.Objects;
 
 public class CrewId implements Comparable<CrewId> {
@@ -8,6 +7,9 @@ public class CrewId implements Comparable<CrewId> {
     protected final String id;
 
     public CrewId(String id) {
+        validateIdLength(id);
+        assertIdIsLowerAlphabet(id);
+
         this.id = id;
     }
 
@@ -33,5 +35,17 @@ public class CrewId implements Comparable<CrewId> {
     @Override
     public int compareTo(CrewId o) {
         return this.id.compareTo(o.getId());
+    }
+
+    private void validateIdLength(String id) throws IllegalArgumentException {
+        if (!(1<=id.length() && id.length()<=30)) {
+            throw new IllegalArgumentException("id의 길이는 1이상 30이하여야 합니다.");
+        }
+    }
+
+    private void assertIdIsLowerAlphabet(String id) throws IllegalArgumentException {
+        if (!id.matches("^[a-z]+$")) {
+            throw new IllegalArgumentException("id는 알파벳 소문자로만 이루어져야 합니다.");
+        }
     }
 }
