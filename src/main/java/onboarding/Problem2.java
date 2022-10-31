@@ -3,10 +3,14 @@ package onboarding;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
+        int cryptogramLength = 0;
 
         /*
         1. 기능 목록 1~4를 cryptogram 길이가 짧아지고 1보다 클 동안 반복
          */
+        do {
+
+        } while (cryptogramLength > cryptogram.length() && cryptogram.length() > 1);
 
         /*
         2. 필요한 변수 셋팅
