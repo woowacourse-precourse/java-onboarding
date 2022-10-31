@@ -8,19 +8,17 @@ public class Problem2 {
 
     public static String solution(String cryptogram) {
         StringBuilder sb=new StringBuilder();
+        if (validation("cryptogram_length",cryptogram.length())
+                &&
+                validation("cryptogram_regex",cryptogram)){
 
-        try{
-            checkCryptogramLength(cryptogram);
-            checkCryptogramRegex(cryptogram);
             distinctElement(cryptogram);
+
             while (!stack.isEmpty()){
                 sb.append(stack.pop());
             }
-
-            return sb.reverse().toString();
-        }catch (Exception e){
-            return e.getMessage();
         }
+        return sb.reverse().toString();
     }
 
     public static void distinctElement(String cryptogram){
@@ -36,13 +34,20 @@ public class Problem2 {
             }
         }
     }
-    public static void checkCryptogramLength(String cryptogram) throws Exception {
-        int length = cryptogram.length();
-        if (length<1||length>1000) throw new Exception("문자열의 길이가 범위를 벗어났습니다.");
-    }
 
-    public static void checkCryptogramRegex(String cryptogram) throws Exception{
-        boolean matches = cryptogram.matches("^[a-z]*$");
-        if(!matches) throw new Exception("암호문이 소문자로만 구성되지 않았습니다");
+    private static <T> boolean validation(String err_type,T err_param){
+
+        if (err_type.equals("cryptogram_length")&&err_param instanceof Integer){
+            int crypto_length = (int) err_param;
+            return 0<crypto_length&&crypto_length<1001;
+        }
+
+        else if (err_type.equals("cryptogram_regex")&&err_param instanceof String){
+            String cryptogram = (String) err_param;
+            if (cryptogram.matches("^[a-z]*$")) return true;
+            else return false;
+        }
+
+        return false;
     }
 }
