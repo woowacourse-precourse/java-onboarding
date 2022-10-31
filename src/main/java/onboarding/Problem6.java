@@ -30,7 +30,7 @@ public class Problem6 {
             String email = form.get(0);
             String name = form.get(1);
 
-            if (name.contains(checkName) && !originEmail.equals(email) && !originName.equals(name)) {
+            if (name.contains(checkName) == true && originEmail.equals(email) == false && originName.equals(name) == false) {
                 duplicateList.add(email);
                 isDuplicate = true;
             }
