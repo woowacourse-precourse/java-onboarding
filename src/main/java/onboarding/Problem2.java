@@ -3,7 +3,7 @@ package onboarding;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
-        int cryptogramLength = 0;
+        int cryptogramLength;
 
         /*
         1. 기능 목록 1~4를 cryptogram 길이가 짧아지고 1보다 클 동안 반복
@@ -21,11 +21,17 @@ public class Problem2 {
             String tmp = "";
             int count = 1;
 
+            cryptogramLength = cryptogram.length();
+            for(int i = 1; i < cryptogramLength; i++) {
+                /*
+                3. cryptogram에서 i번째 문자 추출
+                 */
+                nowCharacter = cryptogram.charAt(i);
+            }
+
         } while (cryptogramLength > cryptogram.length() && cryptogram.length() > 1);
 
-        /*
-        3. cryptogram에서 i번째 문자 추출
-         */
+
 
         /*
         4. nowCharacter가 preCharacter와 같지 않은 경우
