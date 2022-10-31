@@ -78,7 +78,12 @@ public class Problem7 {
         List<String> friendList = getFriendsList(user, friends);
         Map<String, Integer> scoreMap = getScoreMap(user, friends, visitors, friendList);
         List<String> keySet = getKeySet(scoreMap);
-        List<String> answer = Collections.emptyList();
-        return answer;
+        
+        // 상위 5명만 뽑기
+        List<String> result = new ArrayList<>();
+        for (int i = 0; i < 5 && i < keySet.size(); i++) {
+            result.add(keySet.get(i));
+        }
+        return result;
     }
 }
