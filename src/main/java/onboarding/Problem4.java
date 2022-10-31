@@ -14,4 +14,13 @@ public class Problem4 {
         else
             return ch;
     }
+
+    private static String getConverseString(String target) {
+        StringBuilder result = new StringBuilder();
+        for(int i=0;i<target.length();i++){
+            char conversedChar=converseChar(target.charAt(i));
+            result.append(conversedChar);
+        }
+        return result.toString();
+    }
 }
