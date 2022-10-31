@@ -4,7 +4,7 @@ import java.util.ArrayDeque;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String answer="answer";
         return answer;
     }
 }
@@ -61,5 +61,18 @@ class Decoder {
         }
         cryptogramQueue.forEach(sb::append);
         return sb.toString();
+    }
+}
+
+class Game2{
+    private final Cryptogram cryptogram;
+
+    public Game2(String plainText){
+        cryptogram=new Cryptogram(plainText);
+    }
+
+    public String gameResult(){
+        Decoder decoder = new Decoder();
+        return decoder.decode(cryptogram);
     }
 }
