@@ -75,15 +75,11 @@ public class Problem7 {
         return entryList;
     }
 
-    public static List<Entry<String, Integer>> getTopThreeScoreEntry() {
+    public static List<String> getTopThreeFriends() {
         List<Entry<String, Integer>> sortScoreMapEntryList = getSortScoreMapEntryList();
         return sortScoreMapEntryList.stream().filter(entry -> entry.getValue() > 0)
-                .limit(3).collect(Collectors.toList());
+                .limit(3).map(entry -> entry.getKey()).collect(Collectors.toList());
     }
 
-    public static List<String> getTopThreeFriends(){
-        List<Entry<String, Integer>> topThreeScoreEntry = getTopThreeScoreEntry();
-
-    }
 }
 
