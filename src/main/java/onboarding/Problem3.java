@@ -1,6 +1,10 @@
 package onboarding;
 
 public class Problem3 {
+    private static final char THREE = 3;
+    private static final char SIX = 3;
+    private static final char NINE = 3;
+
     public static int solution(int number) {
         int answer = 0;
 
@@ -28,7 +32,7 @@ public class Problem3 {
 
         for (int i = 0; i < inputString.length(); i++) {
             nowChar = inputString.charAt(i);
-            if (nowChar == '3' || nowChar == '6' || nowChar == '9') {
+            if (nowChar == THREE || nowChar == SIX || nowChar == NINE) {
                 result++;
             }
         }

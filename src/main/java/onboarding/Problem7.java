@@ -4,6 +4,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Problem7 {
+    private static final int MAX_PRINT_FRIEND_LENGTH = 5;
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
 
@@ -127,7 +129,7 @@ public class Problem7 {
     }
 
     private static List<String> getFiveRecommendFriend(List<String> sortedRecommendFriend) {
-        int maxLength = Math.min(sortedRecommendFriend.size(), 5);
+        int maxLength = Math.min(sortedRecommendFriend.size(), MAX_PRINT_FRIEND_LENGTH);
         List<String> result = sortedRecommendFriend.subList(0, maxLength);
 
         return result;

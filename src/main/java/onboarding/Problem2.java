@@ -2,10 +2,11 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.regex.Pattern;
 import java.util.stream.IntStream;
 
 public class Problem2 {
+    private static final int FIND_DUPLICATION = -1;
+
     public static String solution(String cryptogram) {
         String answer = "answer";
 
@@ -19,7 +20,7 @@ public class Problem2 {
 
     private static boolean checkDuplicateString(String inputString) {
         IntStream inputIntStream = inputString.chars();
-        int result = inputIntStream.reduce(0, (a, b) -> a == -1 ? a : (a == b) ? -1 : b);
+        int result = inputIntStream.reduce(0, (a, b) -> a == FIND_DUPLICATION ? a : (a == b) ? FIND_DUPLICATION : b);
 
         return result == -1;
     }

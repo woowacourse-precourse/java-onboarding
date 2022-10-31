@@ -4,6 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
+    private static final int MIN_BOOK_PAGE = 1;
+    private static final int MAX_BOOK_PAGE = 400;
+    private static final int POBI_WIN = 1;
+    private static final int CRONG_WIN = 2;
+    private static final int DRAW = 0;
+    private static final int INVALID = -1;
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         int pobiScore = 0;
@@ -15,7 +22,7 @@ class Problem1 {
 
             answer = getProblemAnswer(pobiScore, crongScore);
         } else {
-            answer = -1;
+            answer = INVALID;
         }
 
         return answer;
@@ -34,7 +41,7 @@ class Problem1 {
             return false;
         }
 
-        // 길이가 2이고, 정수라면 변수에 값을 설정해준다.
+        // 정수라면 변수에 값을 설정해준다.
         try {
             leftPage = inputPage.get(0);
             rightPage = inputPage.get(1);
@@ -59,12 +66,12 @@ class Problem1 {
 
         // 시작 면이나 마지막 면이 나오지 않도록 해야 한다.
         // 왼쪽 페이지는 1페이지 ~ 400페이지가 나와야 한다.
-        if (!(1 <= leftPage && leftPage <= 400)) {
+        if (!(MIN_BOOK_PAGE <= leftPage && leftPage <= MAX_BOOK_PAGE)) {
             return false;
         }
 
         // 오른쪽 페이지는 1페이지 ~ 400페이지가 나와야 한다.
-        if (!(1 <= rightPage && rightPage <= 400)) {
+        if (!(MIN_BOOK_PAGE <= rightPage && rightPage <= MAX_BOOK_PAGE)) {
             return false;
         }
 
@@ -123,11 +130,11 @@ class Problem1 {
         int result = -1;
 
         if (userA > userB) {
-            result = 1;
+            result = POBI_WIN;
         } else if (userA < userB) {
-            result = 2;
+            result = CRONG_WIN;
         } else if (userA.equals(userB)) {
-            result = 0;
+            result = DRAW;
         }
 
         return result;
