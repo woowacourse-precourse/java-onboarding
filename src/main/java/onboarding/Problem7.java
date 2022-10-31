@@ -45,6 +45,7 @@ public class Problem7 {
         Queue<String> friendQueue = new LinkedList<>();
         List<String> resultTwoLevelFriend;
 
+        adjacencyList.putIfAbsent(user, new ArrayList<>());
         friendQueue.add(user);
         friendVisited.put(user, true);
         friendLevel.put(user, 0);
