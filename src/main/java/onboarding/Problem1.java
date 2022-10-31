@@ -20,12 +20,11 @@ class Problem1 {
         int crongFinalScore = Math.max(crongLeftMax, crongRightMax);
 
         /* 최종점수 비교해 정답 도출하기 */
+        answer = 0;
         if (pobiFinalScore > crongFinalScore)
             answer = 1;
         else if (pobiFinalScore < crongFinalScore)
             answer = 2;
-        else
-            answer = 0;
 
         return answer;
     }
