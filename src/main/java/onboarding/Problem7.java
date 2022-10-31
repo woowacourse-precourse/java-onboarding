@@ -19,74 +19,89 @@ public class Problem7 {
      * 7. 최대 상위 5명까지의 이름을 List로 반환한다.
      */
 
+    private static final int POINT_OF_VISITOR = 1;             // 방문자 추천 점수
+    private static final int POINT_OF_FRIEND_OF_FRIEND = 10;   // 친구의 친구 추천 점수
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        Map<String, List<String>> friendMap = getFriendMap(friends);
+        Map<String, Integer> pointOfFriend = getPointOfFriend(user, visitors, friendMap);
+        return getAnswer(pointOfFriend);
+    }
+
+    private static Map<String, Integer> getPointOfFriend(String user, List<String> visitors, Map<String, List<String>> friendMap) {
+        // 3. Name, Point를 각각 key, value로 갖는 Map을 만든다.
+        Map<String, Integer> pointOfFriend = new HashMap<>();
+        List<String> friendsOfUser = friendMap.getOrDefault(user, new ArrayList<>());
+        countFriendOfFriendPoint(user, friendMap, pointOfFriend, friendsOfUser);
+        countVisitorPoint(visitors, pointOfFriend, friendsOfUser);
+        return pointOfFriend;
+    }
+
+    private static Map<String, List<String>> getFriendMap(List<List<String>> friends) {
         // 1. 이름을 key, 친구의 이름 List value로 갖는 Map을 만든다.
         Map<String, List<String>> friendMap = new HashMap<>();
         // 2. friends의 0, 1 인덱스를 각각 key로 두고, 서로를 value에 추가한다.
         for(List<String> friend : friends) {
-            if (friendMap.containsKey(friend.get(0))) {
-                List<String> friendList = friendMap.get(friend.get(0));
-                friendList.add(friend.get(1));
-                friendMap.replace(friend.get(0), friendList);
-            } else {
-                List<String> friendList = new ArrayList<>();
-                friendList.add(friend.get(1));
-                friendMap.put(friend.get(0), friendList);
-            }
-
-            if (friendMap.containsKey(friend.get(1))) {
-                List<String> friendList = friendMap.get(friend.get(1));
-                friendList.add(friend.get(0));
-                friendMap.replace(friend.get(1), friendList);
-            } else {
-                List<String> friendList = new ArrayList<>();
-                friendList.add(friend.get(0));
-                friendMap.put(friend.get(1), friendList);
-            }
+            putFriendAtMap(friendMap, friend, 0, 1);
+            putFriendAtMap(friendMap, friend, 1, 0);
         }
+        return friendMap;
+    }
 
+    private static void putFriendAtMap(Map<String, List<String>> friendMap, List<String> friend, int indexOfUser, int indexOfFriend) {
+        if (friendMap.containsKey(friend.get(indexOfUser))) {
+            List<String> friendList = friendMap.get(friend.get(indexOfUser));
+            friendList.add(friend.get(indexOfFriend));
+            friendMap.replace(friend.get(indexOfUser), friendList);
+        } else {
+            List<String> friendList = new ArrayList<>();
+            friendList.add(friend.get(indexOfFriend));
+            friendMap.put(friend.get(indexOfUser), friendList);
+        }
+    }
 
-
-        Map<String, Integer> pointOfFriend = new HashMap<>(); // 3. Name, Point를 각각 key, value로 갖는 Map을 만든다.
-
-        // 4. user의 친구 List에 있는 사람들의 친구(친구의 친구)의 이름을 key에 추가하고, 점수를 10점씩 추가한다.
-        List<String> friendsOfUser = friendMap.getOrDefault(user, new ArrayList<>());
+    private static void countFriendOfFriendPoint(String user, Map<String, List<String>> friendMap, Map<String, Integer> pointOfFriend, List<String> friendsOfUser) {
         for (String friend : friendsOfUser) {
             List<String> friendsOfFriend = friendMap.get(friend);
             for (String friendOfFriend : friendsOfFriend) {
                 if (!friendsOfUser.contains(friendOfFriend) && !friendOfFriend.equals(user)) {  // 4 - 1, User 자신과, 이미 친구인 사람은 제외 한다.
-                    if (pointOfFriend.containsKey(friendOfFriend)) {
-                        pointOfFriend.replace(friendOfFriend, pointOfFriend.get(friendOfFriend) + 10);
-                    } else {
-                        pointOfFriend.put(friendOfFriend, 10);
-                    }
+                    putPointAtMap(pointOfFriend, friendOfFriend, POINT_OF_FRIEND_OF_FRIEND);
                 }
             }
         }
+    }
 
-
+    private static void countVisitorPoint(List<String> visitors, Map<String, Integer> pointOfFriend, List<String> friendsOfUser) {
         // 6. visitors를 참고하여, 해당하는 사람에게 점수를 1점씩 추가한다.
         for (String visitor : visitors) {
             if (!friendsOfUser.contains(visitor)) {
-                if (pointOfFriend.containsKey(visitor)) {
-                    pointOfFriend.replace(visitor, pointOfFriend.get(visitor) + 1);
-                } else {
-                    pointOfFriend.put(visitor, 1);
-                }
+                putPointAtMap(pointOfFriend, visitor, POINT_OF_VISITOR);
             }
         }
+    }
 
-        List<String> answer = pointOfFriend.keySet().stream()
+    private static void putPointAtMap(Map<String, Integer> pointOfFriend, String visitor, int point) {
+        if (pointOfFriend.containsKey(visitor)) {
+            pointOfFriend.replace(visitor, pointOfFriend.get(visitor) + point);
+        } else {
+            pointOfFriend.put(visitor, point);
+        }
+    }
+
+    private static List<String> getAnswer(Map<String, Integer> pointOfFriend) {
+        return pointOfFriend.keySet().stream()
                 .sorted(((o1, o2) -> {      // 7. 점수 순서, 동점인 경우, 알파벳 순서로 정렬한다.
-                    int compare = pointOfFriend.get(o2) - pointOfFriend.get(o1);
-                    if (compare == 0) {
-                        return o1.compareTo(o2);
-                    }
-                    return compare;
+                    return compareStringByInteger(pointOfFriend, o1, o2);
                 }))
                 .limit(5)       // 8. 최대 상위 5명까지의 이름을 List로 반환한다.
                 .collect(Collectors.toList());
+    }
 
-        return answer;
+    private static int compareStringByInteger(Map<String, Integer> pointOfFriend, String o1, String o2) {
+        int compare = pointOfFriend.get(o2) - pointOfFriend.get(o1);
+        if (compare == 0) {
+            return o1.compareTo(o2);
+        }
+        return compare;
     }
 }
