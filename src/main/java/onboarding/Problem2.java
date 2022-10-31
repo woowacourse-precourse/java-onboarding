@@ -24,4 +24,19 @@ public class Problem2 {
         }
     }
 
+    public static String createNewCryptogram(String cryptogram){
+        clearStringBuilder();
+
+        for(int index = 0; index < cryptogram.length(); index++){
+            if(duplicatedIndexList.contains(index)){
+                continue;
+            }
+            sb.append(cryptogram.charAt(index));
+        }
+        return sb.toString();
+    }
+
+    public static void clearStringBuilder(){
+        sb.setLength(0);
+    }
 }
