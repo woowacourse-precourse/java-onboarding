@@ -31,7 +31,8 @@
 4) 문자를 key 값으로 value를 반환
 5) 알파벳인지 아닌지 검사
 
-FrogDictionary 클래스
+FrogDictionary 클래스  
+
 기능 #1
 - 함수 이름: makeDictionary
 - 입력: A~Z까지 알파벳 배열
@@ -56,6 +57,12 @@ FrogDictionary 클래스
 - 기능: z~a까지 알파벳 배열을 생성
 - 출력: z~a까지 알파벳 배열
 
+기능 #4
+- 함수 이름: isUpperLetter
+- 입력: 문자
+- 기능: 주어진 문자의 대문자 여부 판별
+- 출력: 주어진 문자의 대문자 여부
+
 Translation 클래스
 
 기능 #3
@@ -63,12 +70,6 @@ Translation 클래스
 - 입력: 문자열
 - 기능: 주어진 문자열을 번역
 - 출력: 청개구리 사전을 참고해 번역된 문자열
-
-기능 #4
-- 함수 이름: isUpperLetter
-- 입력: 문자
-- 기능: 주어진 문자의 대문자 여부 판별
-- 출력: 주어진 문자의 대문자 여부
 
 기능 #5
 - 함수 이름: isAlphabet
