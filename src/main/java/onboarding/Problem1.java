@@ -29,6 +29,8 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
+
+
         int pobiScore = 0;
         int crongScore = 0;
         BookPage pobiBookPage;
