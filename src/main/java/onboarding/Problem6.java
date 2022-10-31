@@ -16,6 +16,7 @@ public class Problem6 {
                 duplicatedList.addAll(findDuplicate(word,nickname,forms));
             }
         }
+        List<String> similarEmailList = duplicatedList.stream().distinct().collect(Collectors.toList());
         return answer;
     }
 
