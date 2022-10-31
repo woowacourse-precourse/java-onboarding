@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Problem6 {
@@ -29,9 +30,23 @@ public class Problem6 {
         }
         return isDuplicated;
     }
-    
+
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        ArrayList<String> nicknames = new ArrayList<>();
+
+        for(int i=0; i<forms.size(); i++){
+            nicknames.add(forms.get(i).get(1));
+        }
+
+        ArrayList<String> answer = new ArrayList<>();
+        ArrayList<Boolean> isDuplicated = checkDuplication(nicknames);
+
+        for(int i=0; i< isDuplicated.size(); i++){
+            if(isDuplicated.get(i)){
+                answer.add(forms.get(i).get(0));
+            }
+        }
+        answer.sort(Comparator.naturalOrder());
         return answer;
     }
 }
