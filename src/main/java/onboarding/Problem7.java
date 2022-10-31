@@ -1,11 +1,84 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
+    static Map<String,Integer> foaf = new HashMap<>();
+    static Set<String> userfriends = new HashSet<>();
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+        answer = new ArrayList<>();
+
+        userfriends = friendsWithUser(friends,user);
+        friendsOfFriends(user,friends);
+        plusVisitors(visitors,user);
+        List<Map.Entry<String,Integer>> rem = sortValues();
+        answer = addAnswer(rem);
+
+        return answer;
+    }
+
+    public static Set<String> friendsWithUser(List<List<String>> friends,String user) {
+        Set<String> userfriends = new HashSet<>();
+        for(List<String> strings : friends) {
+            if(strings.get(0).equals(user)) {
+                userfriends.add(user + strings.get(1));
+            }
+            else if(strings.get(1).equals(user)) {
+                userfriends.add(strings.get(0) + user);
+            }
+        }
+        return userfriends;
+    }
+
+    public static void insertMapValue(String strings,Integer value,String user) {
+        if(foaf.get(strings) == null) {
+            if(!userfriends.contains(strings + user)) { foaf.put(strings,value);}
+        }
+        else {
+            int v = value + foaf.get(strings);
+            foaf.put(strings,v);
+        }
+    }
+
+    public static void friendsOfFriends(String user,List<List<String>> friends) {
+        for(List<String> strings : friends) {
+            if(strings.get(0).equals(user) || strings.get(1).equals(user)) {continue; }
+            if(userfriends.contains(strings.get(0) + user)) {
+                insertMapValue(strings.get(1),10,user);
+            }
+            else if(userfriends.contains(strings.get(1) + user)) {
+                insertMapValue(strings.get(0),10,user);
+            }
+        }
+    }
+
+    public static void plusVisitors(List<String> visitors,String user) {
+        for(String strings : visitors) {
+            insertMapValue(strings,1,user);
+        }
+    }
+
+    public static List<Map.Entry<String,Integer>> sortValues() {
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(foaf.entrySet());
+        entryList.sort((o1, o2) -> {
+            if (o1.getValue() == o2.getValue()) {
+                return o1.getKey().compareTo(o2.getKey());
+            } else {
+                return o2.getValue() - o1.getValue();
+            }
+        });
+        return entryList;
+    }
+
+    public static List<String> addAnswer(List<Map.Entry<String,Integer>> entryList) {
+        int cnt = 0;
+        List<String> answer = new ArrayList<>();
+        for(Map.Entry<String,Integer> rem : entryList) {
+            if(cnt == 5)    break;
+            answer.add(rem.getKey());
+            cnt++;
+        }
         return answer;
     }
 }
