@@ -20,5 +20,30 @@ public class Problem6 {
                 }
             }
         }
+
+        for (Map.Entry<String, Integer> e : name.entrySet()) {
+            int temp = e.getValue();
+            String str = e.getKey();
+
+            for (int j = 0; j < forms.size(); j++) {
+                if (temp == j) {
+                    continue;
+                }
+                boolean check = false;
+
+                for (int k = 0; k < forms.get(j).get(1).length() - 1; k++) {
+                    String subName = forms.get(j).get(1).substring(k, k + 2);
+
+                    if (str.equals(subName)) {
+                        result.add(forms.get(j).get(0));
+                        check = true;
+                        break;
+                    }
+                }
+                
+                }
+            }
+        }
+
     }
 }
