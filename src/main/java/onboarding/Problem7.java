@@ -6,11 +6,58 @@ import java.util.regex.Pattern;
 public class Problem7 {
     private final static int MAX_RECOMMEND_FRIENDS = 5;
 
-    private static Map<String, Integer> preFriends = new HashMap<>();
+    private static Map<String, Integer> preFriends;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+
         return answer;
+    }
+
+    /**
+     * 친구 목록 갯수 검증
+     * @param friends 데이터
+     */
+    private static void validateFriends(List<List<String>> friends) {
+        int sizeForms = friends.size();
+
+        if (sizeForms == 0 || sizeForms >= 10_000) {
+            throw new RuntimeException("친구 목록이 1명 이상 10,000명 이하여야 합니다.");
+        }
+
+        for (List<String> friend : friends) {
+            if (friend.size() != 2) {
+                throw new RuntimeException("친구 목록 중 친구 관계가 올바르게 설정되지 않은 요소가 있습니다.");
+            }
+
+            validateUsers(friend);
+        }
+    }
+
+    /**
+     * 방문자 목록 갯수 검증
+     * @param visitors 데이터
+     */
+    private static void validateVisitors(List<String> visitors) {
+        int sizeForms = visitors.size();
+
+        if (sizeForms == 0 || sizeForms >= 10_000) {
+            throw new RuntimeException("방문자 목록이 1명 이상 10,000명 이하여야 합니다.");
+        }
+
+        validateUsers(visitors);
+    }
+
+    /**
+     * 유저 목록에서 유저 검증
+     * @param users 유저 목록
+     */
+    private static void validateUsers(List<String> users) {
+        for (String user: users) {
+            if (!validateUser(user)) {
+                throw new RuntimeException("유저 데이터 중 올바르지 않는 형식의 유저가 있습니다.");
+            }
+        }
     }
 
     /**
@@ -29,6 +76,7 @@ public class Problem7 {
      */
     private static void addPreFriendPoint(String user, int point) {
         int previousPoint = getPreFriendsPoint(user);
+
         putPreFriendAndPoint(user, previousPoint + point);
     }
 
@@ -93,5 +141,12 @@ public class Problem7 {
      */
     private static int getPreFriendsPoint(String user) {
         return preFriends.getOrDefault(user, 0);
+    }
+
+    /**
+     * 초기화
+     */
+    private static void initialize() {
+        preFriends = new HashMap<>();
     }
 }
