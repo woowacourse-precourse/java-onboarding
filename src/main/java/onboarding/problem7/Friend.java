@@ -12,4 +12,12 @@ public class Friend {
         this.score += score;
         return this;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getScore() {
+        return score;
+    }
 }
