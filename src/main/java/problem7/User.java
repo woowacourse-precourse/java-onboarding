@@ -48,7 +48,7 @@ public class User {
         return processedRecommendations;
     }
 
-    private int checkTimeline(FriendDto friendDto, HashMap<String, Integer> score, int cnt) {
+    public int checkTimeline(FriendDto friendDto, HashMap<String, Integer> score, int cnt) {
         for (String visitor : visitors.getVisitors()) {
             score.put(visitor, score.getOrDefault(visitor, 0) + 1);
             cnt = setConnection(friendDto, cnt, visitor);
@@ -56,7 +56,7 @@ public class User {
         return cnt;
     }
 
-    private void checkHaveSameFriends(FriendDto friendDto, boolean[] isFriend, HashMap<String, Integer> score) {
+    public void checkHaveSameFriends(FriendDto friendDto, boolean[] isFriend, HashMap<String, Integer> score) {
         if (hasConnection(name, getConnection(friendDto))) {
             check(isFriend, score, friendDto);
         }
@@ -85,7 +85,7 @@ public class User {
         }
     }
 
-    private int addFriends(List<List<String>> friends, FriendDto friendDto, int cnt) {
+    public int addFriends(List<List<String>> friends, FriendDto friendDto, int cnt) {
         for (List<String> relationship : friends) {
             String leftUser = getFriend(relationship, 0);
             String rightUser = getFriend(relationship, 1);
