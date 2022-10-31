@@ -13,7 +13,7 @@ class Problem1 {
         int pobiMax = getPlayerMax(pobi);
         int crongMax = getPlayerMax(crong);
 
-        return -1;
+        return compareMax(pobiMax, crongMax);
     }
 
     private static boolean isValidInput(List<Integer> pages) {
@@ -88,5 +88,15 @@ class Problem1 {
         }
 
         return result;
+    }
+
+    private static int compareMax(int pobiMax, int crongMax) {
+        if (crongMax > pobiMax) {
+            return 2;
+        } else if (pobiMax > crongMax) {
+            return 1;
+        } else {
+            return 0;
+        }
     }
 }
