@@ -17,7 +17,7 @@ class Problem1 {
 
         int pobiScore = findMaxScore(pobiLeftPage, pobiRightPage);
         int crongScore = findMaxScore(crongLeftPage, crongRightPage);
-        answer = compareScore(pobiScore, crongScore);
+        answer = whoWin(pobiScore, crongScore);
 
         return answer;
     }
@@ -64,7 +64,7 @@ class Problem1 {
         return compareSumNumber(leftPage, rightPage);
     }
 
-    public static int compareScore(int pobiScore, int crongScore) {
+    public static int whoWin(int pobiScore, int crongScore) {
         if (pobiScore > crongScore) return 1;
         if (pobiScore < crongScore) return 2;
         return 0;
