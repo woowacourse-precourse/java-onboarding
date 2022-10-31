@@ -1,17 +1,18 @@
 package onboarding;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
 
 public class Problem3 {
 
     static int answer;
-    static HashSet<Integer> set369 = new HashSet<Integer>(Arrays.asList(3,6,9));
+    static HashSet<Integer> set369 = new HashSet<>(Arrays.asList(3,6,9));
 
     public static int solution(int number) {
+
         answer = 0;
+
+        Number input = new Number(number);
 
         for (int i = 1; i <= number; i++) {
             check369(i);
@@ -32,3 +33,24 @@ public class Problem3 {
         }
     }
 }
+
+class Number {
+    private int number;
+
+    public Number(int input) {
+        validateSize(input);
+        this.number = input;
+    }
+
+    private void validateSize(int input) {
+        if(input < 1) {
+            throw new IllegalArgumentException("1이상 값을 입력하세요.");
+        }
+        if (input > 10000) {
+            throw new IllegalArgumentException("10000이하 값을 입력하세요");
+        }
+    }
+
+
+}
+
