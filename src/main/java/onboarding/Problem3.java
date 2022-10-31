@@ -12,6 +12,17 @@ public class Problem3 {
 		return answer;
 	}
 
+	public static int checkNumber(int number) {
+		int tmp = 0;
+		char[] num = String.valueOf(number).toCharArray();
+		for (char c : num) {
+			if (isClap(c)) {
+				tmp += 1;
+			}
+		}
+		return tmp;
+	}
+
 	public static boolean isClap(char c) {
 		if (clap.contains(c)) {
 			return true;
