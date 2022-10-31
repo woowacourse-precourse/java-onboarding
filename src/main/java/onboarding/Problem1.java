@@ -65,4 +65,22 @@ class Problem1 {
         return result;
     }
 
+
+    /*
+    public static void main(String[] args) { // TEST
+        Scanner sc = new Scanner(System.in);
+        List<Integer> pobi = new ArrayList<>();
+        List<Integer> crong = new ArrayList<>();
+
+        pobi.add(131);
+        pobi.add(132);
+
+        crong.add(211);
+        crong.add(212);
+
+        solution(pobi, crong);
+    }
+
+     */
+
 }
