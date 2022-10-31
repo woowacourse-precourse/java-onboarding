@@ -9,12 +9,12 @@ public class Problem4 {
   private static final Dictionary dictionary = new FrogDictionary();
 
   public static String solution(String word) {
-    return dictionary.speak(word);
+    return dictionary.translate(word);
   }
 
   interface Dictionary {
 
-    String speak(String word);
+    String translate(String word);
   }
 
   static class FrogDictionary implements Dictionary {
@@ -33,7 +33,7 @@ public class Problem4 {
     }
 
     @Override
-    public String speak(String word) {
+    public String translate(String word) {
       StringBuilder translateResult = new StringBuilder();
       for (int i = 0; i < word.length(); i++) {
         char currentChar = word.charAt(i);
