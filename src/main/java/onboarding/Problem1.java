@@ -25,4 +25,11 @@ class Problem1 {
         }
         return result;
     }
+
+    public static int getResult(int left, int right){
+        int left_result = Integer.max(addNumber(left), multiNumber(left));
+        int right_result = Integer.max(addNumber(right), multiNumber(right));
+
+        return Integer.max(left_result, right_result);
+    }
 }
