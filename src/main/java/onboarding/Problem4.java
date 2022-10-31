@@ -1,6 +1,9 @@
 package onboarding;
 
 public class Problem4 {
+
+    private static final int UPPER_CASE_STANDARD = 155;
+
     public static String solution(String word) {
         char[] wordToChars = word.toCharArray();
         char[] reverseChars = new char[wordToChars.length];
