@@ -21,6 +21,20 @@ public class Problem6 {
         }
         return false;
     }
+
+    // 같은 글자가 연속적으로 중복된 닉네임을 찾는 함수
+    public static void findOverLapNickName(List<String> user){
+        String name = user.get(1);
+
+        for(String user1 : map.keySet()){
+            for(int i=0; i<name.length()-1; i++){
+                if(user1.contains(name.substring(i,i+2))){
+                    setOverLapEmail(user.get(0),map.get(user1));
+                    return;
+                }
+            }
+        }
+    }
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
