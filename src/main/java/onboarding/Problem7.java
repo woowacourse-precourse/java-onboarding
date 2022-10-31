@@ -19,8 +19,30 @@ public class Problem7 {
         scoresMap = toVisit(visitors, scoresMap);
         scoresMap = toRemoveZero(scoresMap);
 
+        scoresMap = sortMap(scoresMap);
+        answer = new ArrayList<>(scoresMap.keySet());
+
+        if (answer.size() > size) {
+            answer = answer.subList(0, size);
+        }
 
         return answer;
+    }
+    private static HashMap<String, Integer> sortMap(HashMap<String, Integer> scoresMap) {
+
+        List<Map.Entry<String, Integer>> entries = new LinkedList<>(scoresMap.entrySet());
+        Collections.sort(entries, (o1, o2) -> {
+            int state = (o1.getValue() - o2.getValue()) * -1;
+            int resultState = (state == 0) ? o1.getKey().compareTo(o2.getKey()) : state;
+            return resultState;
+        });
+
+        HashMap<String, Integer> result = new HashMap<>();
+        for (Map.Entry<String, Integer> entry : entries) {
+            result.put(entry.getKey(), entry.getValue());
+        }
+
+        return result;
     }
     private static HashMap<String, Integer> toRemoveZero(HashMap<String, Integer> scoresMap) {
 
