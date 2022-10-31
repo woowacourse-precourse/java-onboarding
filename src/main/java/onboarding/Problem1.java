@@ -42,7 +42,7 @@ class Problem1 {
         int num = 1;
         String page_str = Integer.toString(page);
 
-        for(int i = 0; i < page_str.length(); i++){
+        for (int i = 0; i < page_str.length(); i++){
             num *= Integer.parseInt(page_str.substring(i, i+1));
         }
 
