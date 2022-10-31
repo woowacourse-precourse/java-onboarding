@@ -1,10 +1,12 @@
 package onboarding;
 
+import org.assertj.core.util.Lists;
+
 import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
 
         HashMap<String, Set<String>> friendsMap = new HashMap<>();
         HashMap<String, Integer> recommendScore = new HashMap<>();
@@ -49,15 +51,19 @@ public class Problem7 {
             recommendList.add(Arrays.asList(key, Integer.toString(recommendScore.get(key))));
         }
         Collections.sort(recommendList, (o1, o2) -> {
-            if (o1.get(1) == o2.get(1)) {
-                return o2.get(0).compareTo(o1.get(0));
+            if (o1.get(1).equals(o2.get(1))) {
+                return o1.get(0).compareTo(o2.get(0));
             } else {
                 return Integer.parseInt(o2.get(1)) - Integer.parseInt(o1.get(1));
             }
         });
 
+        if(recommendList.size() > 5) {
+            recommendList = Lists.newArrayList(recommendList.subList(0, 5));
+        }
+
         for (int i = 0; i < recommendList.size(); i++) {
-            System.out.println(recommendList.get(i).get(0));
+            answer.add(recommendList.get(i).get(0));
         }
 
         return answer;
