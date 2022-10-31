@@ -11,21 +11,21 @@ class Problem1 {
         int left_crong = crong.get(0);
         int right_crong = crong.get(1);
 
-        if(pobi.size() != 2 || crong.size() != 2){
+        if (pobi.size() != 2 || crong.size() != 2) {
             return check_exception("리스트 요소가 2가 아님");
         }
 
-        if(!page_range(left_pobi) || !page_range(right_pobi) || !page_range(left_crong) || !page_range(right_crong)) {
+        if (!page_range(left_pobi) || !page_range(right_pobi) || !page_range(left_crong) || !page_range(right_crong)) {
             return check_exception("페이지 범위가 틀렸습니다.");
         }
 
 
-        if(left_pobi % 2 != 1 || left_crong % 2 != 1) {
+        if (left_pobi % 2 != 1 || left_crong % 2 != 1) {
             return check_exception("left page가 홀수가 아님.");
         }
 
 
-        if(right_pobi != left_pobi + 1 || right_crong != left_crong + 1){
+        if (right_pobi != left_pobi + 1 || right_crong != left_crong + 1) {
             return check_exception("right page가 left page 다음 페이지가 아님.");
         }
 
@@ -33,15 +33,14 @@ class Problem1 {
         int crong_score = Integer.max(max_score(left_crong), max_score(right_crong));
         System.out.println("pobi: " + pobi_score + " crong: " + crong_score);
 
-        if(pobi_score == crong_score) {
+        if (pobi_score == crong_score) {
             return 0;
-        }else if(pobi_score > crong_score) {
+        } else if (pobi_score > crong_score) {
             return 1;
         } else {
             return 2;
         }
     }
-
     static int check_exception(String word){
         System.out.println(word);
         return -1;

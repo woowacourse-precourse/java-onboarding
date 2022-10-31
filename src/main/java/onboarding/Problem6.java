@@ -15,7 +15,6 @@ public class Problem6 {
             System.out.println("크루는 1명 이상 10,000명 이하이다.");
             return null;
         }
-
         for (List<String> input : forms) {
             if(!pattern_email.matcher(input.get(0)).matches()) {
                 System.out.println("이메일 도메인이 틀렸습니다.");
