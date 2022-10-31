@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public class Decoder {
 
-	private final static String REGEX = "(([a-z])\\2+)";
+	private static final String REGEX = "(([a-z])\\2+)";
 
 	private final Pattern pattern;
 
@@ -14,6 +14,8 @@ public class Decoder {
 	}
 
 	public String decode(String cryptogram) {
+		validateCryptogram(cryptogram);
+
 		while (hasDuplicates(cryptogram)) {
 			cryptogram = deleteDuplicates(cryptogram);
 		}
@@ -27,5 +29,13 @@ public class Decoder {
 
 	private String deleteDuplicates(String cryptogram) {
 		return cryptogram.replaceAll(REGEX, "");
+	}
+
+	private void validateCryptogram(String cryptogram) {
+		if (cryptogram.length() < 1 || cryptogram.length() > 1000) {
+			throw new RuntimeException("cryptogram 은 1 이상 1000 미만의 길이만 사용 가능합니다.");
+		} else if (!cryptogram.matches("^[a-z]*$")) {
+			throw new RuntimeException("cryptogram 은 소문자만 사용 가능합니다.");
+		}
 	}
 }
