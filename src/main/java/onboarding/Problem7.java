@@ -8,7 +8,6 @@ public class Problem7 {
     public static Map<String, List<String>> friendsMap;
     public static Map<String, Integer> scoreMap;
 
-
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         initScoreMap();
         initFriendsMap(friends);
@@ -16,7 +15,7 @@ public class Problem7 {
         plusAcquaintanceScore(user);
         plusVisitorScore(visitors);
 
-        return getTopThreeFriends();
+        return getTopThreeFriends(user);
     }
 
     public static void initScoreMap() {
@@ -31,7 +30,6 @@ public class Problem7 {
 
             putFriendsMap(firstFriend, secondFriend);
             putFriendsMap(secondFriend, firstFriend);
-
         }
     }
 
@@ -53,7 +51,7 @@ public class Problem7 {
     }
 
     public static void plusAcquaintanceScore(String user) {
-        if(!friendsMap.containsKey(user)){
+        if(!isUserHasFriend(user)){
             return;
         }
         List<String> userFriends = friendsMap.get(user);
@@ -84,10 +82,18 @@ public class Problem7 {
         return entryList;
     }
 
-    public static List<String> getTopThreeFriends() {
+    public static List<String> getTopThreeFriends(String user) {
         List<Entry<String, Integer>> sortScoreMapEntryList = getSortScoreMapEntryList();
+        if(isUserHasFriend(user)){
+            return sortScoreMapEntryList.stream().filter(entry -> entry.getValue() > 0).filter(entry -> !friendsMap.get(user).contains(entry.getKey()))
+                    .limit(3).map(entry -> entry.getKey()).collect(Collectors.toList());
+        }
         return sortScoreMapEntryList.stream().filter(entry -> entry.getValue() > 0)
                 .limit(3).map(entry -> entry.getKey()).collect(Collectors.toList());
+    }
+
+    public static boolean isUserHasFriend(String user){
+        return friendsMap.containsKey(user);
     }
 
 }
