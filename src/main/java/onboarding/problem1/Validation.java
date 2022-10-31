@@ -12,17 +12,17 @@ public class Validation {
     private static final int RIGHT_PAGE = 1;
 
     public static boolean check(List<Integer> user) {
+        int pageSize = user.size();
+        if (pageSize != PAGE_SIZE) {
+            return false;
+        }
         int leftPage = user.get(LEFT_PAGE);
         int rightPage = user.get(RIGHT_PAGE);
-        int pageSize = user.size();
-
         if (leftPage <= LEFT_PAGE_LIMIT || rightPage >= RIGHT_PAGE_LIMIT) {
             return false;
         } else if (rightPage != leftPage + ONE_PAGE) {
             return false;
         } else if (leftPage % PAGE_SIZE != 1) {
-            return false;
-        } else if (pageSize != PAGE_SIZE) {
             return false;
         }
         return true;
