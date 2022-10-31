@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     private static Map<String, String> sequenceNamesMap = new HashMap<>();
@@ -13,7 +14,7 @@ public class Problem6 {
             addSequenceName(crew);
         }
 
-        List<String> answer = List.of();
+        List<String> answer = getSortList();
         return answer;
     }
 
@@ -61,6 +62,12 @@ public class Problem6 {
             return true;
         }
 
+    }
+
+    private static List<String> getSortList() {
+        return reportEmailsSet.stream()
+                .sorted(String::compareTo)
+                .collect(Collectors.toList());
     }
 
 }
