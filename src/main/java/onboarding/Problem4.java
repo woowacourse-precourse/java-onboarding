@@ -1,15 +1,15 @@
 package onboarding;
 
 public class Problem4 {
-    public static String solution(String word) {
+    public static String solution(String sentence) {
         String blank="\\s+";
-        String[] strings = word.split(blank);
+        String[] words = sentence.split(blank);
 
-        for(int i=0;i<strings.length;i++){
-            strings[i]=changeAlpha(strings[i]);
+        for(int i=0;i<words.length;i++){
+            words[i]=changeAlpha(words[i]);
         }
 
-        return String.join(" ",strings);
+        return String.join(" ",words);
     }
     public static String changeAlpha (String word){
         char[] chars=word.toCharArray();
