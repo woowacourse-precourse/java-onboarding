@@ -23,6 +23,11 @@ public class Problem4 {
         return result;
     }
 
+    public char convertSmallAlphabet(char alphabet) {
+        char result = (char) (219 - alphabet);
+        return result;
+    }
+
     // 대문자 1, 소문자 0, 둘다 아닐경우 -1
     public int checkAlphabetWhatType(char alphabet) {
         if (checkIsBigAlphabet(alphabet)) {
