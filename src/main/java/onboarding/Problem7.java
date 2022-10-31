@@ -23,4 +23,14 @@ public class Problem7 {
         return userfriends;
     }
 
+    public static void insertMapValue(String strings,Integer value,String user) {
+        if(foaf.get(strings) == null) {
+            if(!userfriends.contains(strings + user)) { foaf.put(strings,value);}
+        }
+        else {
+            int v = value + foaf.get(strings);
+            foaf.put(strings,v);
+        }
+    }
+
 }
