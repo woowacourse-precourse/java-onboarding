@@ -1,7 +1,7 @@
 package onboarding;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Problem5 {
     public static List<Integer> solution(int money) {

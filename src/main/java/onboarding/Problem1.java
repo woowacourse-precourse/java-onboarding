@@ -6,12 +6,6 @@ import java.util.stream.Collectors;
 
 class Problem1 {
 
-    /**포비와 크롱의 한판 승부
-     *
-     * @param pobi
-     * @param crong
-     * @return
-     */
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
         int pobisNumber;
@@ -22,7 +16,6 @@ class Problem1 {
         } catch (Exception e) {
             return -1;
         }
-        System.out.println(pobisNumber+"////"+crongsNumber);
         return pobisNumber>crongsNumber?1:(pobisNumber==crongsNumber?0:2);
     }
 
@@ -50,14 +43,14 @@ class Problem1 {
         return Math.max(Math.max(leftMult,leftPlus),Math.max(rightMult,rightPlus));
     }
 
-    public static int recursive(List<Integer> list,String simpol,int result){
-
-        result = Integer.parseInt( simpol+list.get(0));
-        list.remove(0);
-        //최종 값까지 추출한 다음 list가 비었을 경우 누적된 결과값을 가져간다.
-        if(list.isEmpty()) return result;
-
-        return Math.max(recursive(list, "+",result), recursive(list, "*",result));
-    }
+//    public static int recursive(List<Integer> list,String simpol,int result){
+//
+//        result = Integer.parseInt( simpol+list.get(0));
+//        list.remove(0);
+//        //최종 값까지 추출한 다음 list가 비었을 경우 누적된 결과값을 가져간다.
+//        if(list.isEmpty()) return result;
+//
+//        return Math.max(recursive(list, "+",result), recursive(list, "*",result));
+//    }
 }
 
