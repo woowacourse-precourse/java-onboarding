@@ -30,4 +30,13 @@ public class Problem6 {
             counter.put(partialNickname, count - 1);
         }
     }
+    private static boolean isRestricted(String nickname, HashMap<String, Integer> counter) {
+        for (int i = 0; i < nickname.length() - 1; i++) {
+            String partialNickname = nickname.substring(i, i + 2);
+            int count = counter.get(partialNickname);
+            if (count > 0)
+                return true;
+        }
+        return false;
+    }
 }
