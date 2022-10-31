@@ -10,6 +10,7 @@ import java.util.*;
  * calcVisitScore : 방문자들의 방문 점수를 확인
  */
 public class Problem7 {
+    private static final int SAME_FRIEND_SCORE = 10;
     private static Map<String, Set<String>> friendMap;
     private static Map<String, Integer> scores;
 
@@ -57,7 +58,7 @@ public class Problem7 {
             if(name.equals(user) || friendMap.get(user).contains(name))
                 continue;
 
-            scores.put(name, countSameFriends(user, name) * 10);
+            scores.put(name, countSameFriends(user, name) * SAME_FRIEND_SCORE);
         }
     }
 
