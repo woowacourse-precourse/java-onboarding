@@ -28,13 +28,13 @@ class Friend {
   }
 
   private HashMap<String, Integer> makeScoreTable() {
-      for (List<String> friend : friends) {
-          scoreTable.put(friend.get(0), 0);
-          scoreTable.put(friend.get(1), 0);
-      }
-      for (String visitor : visitors) {
-          scoreTable.put(visitor, 0);
-      }
+    for (List<String> friend : friends) {
+      scoreTable.put(friend.get(0), 0);
+      scoreTable.put(friend.get(1), 0);
+    }
+    for (String visitor : visitors) {
+      scoreTable.put(visitor, 0);
+    }
     return scoreTable;
   }
 
@@ -43,15 +43,15 @@ class Friend {
     if (!relationTable.containsKey(user)) {
       List<String> ExceptionCase = new ArrayList<>();
       HashMap<String, Integer> exceptionTable = new HashMap<>();
-        for (String visitor : visitors) {
-            if (!exceptionTable.containsKey(visitor)) {
-                exceptionTable.put(visitor, 1);
-            }
-            if (exceptionTable.containsKey(visitor)) {
-                int score = exceptionTable.get(visitor);
-                exceptionTable.put(visitor, score + 1);
-            }
+      for (String visitor : visitors) {
+        if (!exceptionTable.containsKey(visitor)) {
+          exceptionTable.put(visitor, 1);
         }
+        if (exceptionTable.containsKey(visitor)) {
+          int score = exceptionTable.get(visitor);
+          exceptionTable.put(visitor, score + 1);
+        }
+      }
       if (exceptionTable.containsKey(user)) {
         throw new IllegalArgumentException("user is in visitor list");
       }
@@ -59,11 +59,10 @@ class Friend {
           exceptionTable.entrySet());
       Collections.sort(list_entries, new Comparator<Entry<String, Integer>>() {
         public int compare(Entry<String, Integer> obj1, Entry<String, Integer> obj2) {
-          // 내림 차순 정렬
           int res = obj2.getValue() - obj1.getValue();
-            if (res != 0) {
-                return res;
-            }
+          if (res != 0) {
+            return res;
+          }
           return obj1.getKey().compareTo(obj2.getKey());
         }
       });
@@ -93,20 +92,20 @@ class RelationMaker {
 
   HashMap<String, HashSet<String>> makeRelationTable() {
     HashMap<String, HashSet<String>> relationTable = new HashMap<>();
-      for (List<String> friend : friends) {
-          if (!relationTable.containsKey(friend.get(0))) {
-              HashSet<String> nameSet = new HashSet<>();
-              nameSet.add(friend.get(1));
-              relationTable.put(friend.get(0), nameSet);
-          }
-          if (!relationTable.containsKey(friend.get(1))) {
-              HashSet<String> nameSet = new HashSet<>();
-              nameSet.add(friend.get(0));
-              relationTable.put(friend.get(1), nameSet);
-          }
-          relationTable.get(friend.get(0)).add(friend.get(1));
-          relationTable.get(friend.get(1)).add(friend.get(0));
+    for (List<String> friend : friends) {
+      if (!relationTable.containsKey(friend.get(0))) {
+        HashSet<String> nameSet = new HashSet<>();
+        nameSet.add(friend.get(1));
+        relationTable.put(friend.get(0), nameSet);
       }
+      if (!relationTable.containsKey(friend.get(1))) {
+        HashSet<String> nameSet = new HashSet<>();
+        nameSet.add(friend.get(0));
+        relationTable.put(friend.get(1), nameSet);
+      }
+      relationTable.get(friend.get(0)).add(friend.get(1));
+      relationTable.get(friend.get(1)).add(friend.get(0));
+    }
     return relationTable;
   }
 }
@@ -148,11 +147,11 @@ class ValidityCheckerProb7 {
   }
 
   private void visitorsValidityCheck(List<String> visitors) {
-      for (String visitor : visitors) {
-          if (visitor.length() > 10000) {
-              throw new IllegalArgumentException("visitor length out of range.");
-          }
+    for (String visitor : visitors) {
+      if (visitor.length() > 10000) {
+        throw new IllegalArgumentException("visitor length out of range.");
       }
+    }
   }
 }
 
@@ -198,13 +197,12 @@ class ScoreCalculator {
     List<Entry<String, Integer>> list_entries = new ArrayList<Entry<String, Integer>>(
         scoreTable.entrySet());
     Collections.sort(list_entries, new Comparator<Entry<String, Integer>>() {
-      // compare로 값을 비교
       public int compare(Entry<String, Integer> obj1, Entry<String, Integer> obj2) {
         // 내림 차순 정렬
         int res = obj2.getValue() - obj1.getValue();
-          if (res != 0) {
-              return res;
-          }
+        if (res != 0) {
+          return res;
+        }
         return obj1.getKey().compareTo(obj2.getKey());
 
       }
