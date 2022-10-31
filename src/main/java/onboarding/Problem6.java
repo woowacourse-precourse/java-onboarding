@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Problem6 {
 
-    private static ArrayList<HashMap<Character,ArrayList<Character>>> crewSubstring;
+    private static ArrayList<HashMap<Character,ArrayList<Character>>> crewSubstring = new ArrayList<>();
     private static boolean[] crewDuplication = new boolean[10000];
     public static List<String> solution(List<List<String>> forms) {
 
