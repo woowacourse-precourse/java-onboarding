@@ -11,6 +11,10 @@ public class Problem2 {
         private boolean isValidLength(int cryptogramLength) {
             return cryptogramLength>0 &&cryptogramLength<=1000;
         }
+        private boolean isSmallLetter(char c){
+            return c >= 97 && c <= 122;
+        }
+
 
     }
     public static String solution(String cryptogram) {
