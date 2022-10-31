@@ -27,6 +27,7 @@ public class Problem2 {
             while (true) {
                 String[] stringArray = decrypted.split("([a-z])\\1{1,}");
                 if (stringArray.length == 1) {
+                    decrypted = stringArray[0];
                     break;
                 }
                 StringBuilder builder = new StringBuilder();
