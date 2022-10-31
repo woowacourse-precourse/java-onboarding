@@ -97,7 +97,7 @@
     - 닉네임이 조건에 부합하는지 검사한다.
       - [X] hasValidNicknameLength
       - 닉네임의 길이가 1 ~ 19 사이의 값인지 검사한다.
-      - [ ] hasValidNicknameForm
+      - [X] hasValidNicknameForm
       - 닉네임이 오로지 한글로만 이루어져있는지 검사한다.
 - [ ] getDuplicateNicknameUsers
 - 중복 닉네임을 가진 유저들의 이메일을 알려준다.

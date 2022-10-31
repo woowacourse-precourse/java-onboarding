@@ -153,20 +153,29 @@ public class Problem6 {
         return valid;
     }
 
+    /**
+     * 닉네임이 한글로만 이루어져있는지 확인합니다.
+     *
+     * @param nickname 신청서의 두 번째 정보입니다.
+     * @return 해당 정보가 한글만 포함한다면 참, 아니면 거짓을 반환합니다.
+     */
     private static boolean hasValidNicknameForm(String nickname) {
-        return false;
+        String koreanPattern = "^[ㄱ-ㅎㅏ-ㅣ가-힣]+$";
+        boolean valid = nickname.matches(koreanPattern);
+        return valid;
     }
 
     private static List<String> getDuplicateNicknameUsers(List<List<String>> forms) {
         return Collections.emptyList();
     }
 
-    /*
+    /**
      * Problem5의 솔루션 코드입니다.
      *
-     * @param 중복 닉네임 검사를 진행할 크루원 배열입니다.
+     * @param forms 중복 닉네임 검사를 진행할 크루원 배열입니다.
      * @return 중복 닉네임을 가진 크루원들의 이메일 배열입니다.
-     *  */    public static List<String> solution(List<List<String>> forms) {
+     */
+    public static List<String> solution(List<List<String>> forms) {
         if (isValidInput(forms) == false) {
             return Collections.emptyList();
         }
