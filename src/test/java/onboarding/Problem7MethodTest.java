@@ -63,4 +63,23 @@ class Problem7MethodTest {
                 "jun", 10
         ));
     }
+
+    @Test
+    void getScoreVisitFriendTest() {
+        String user1 = "mrko";
+        List<List<String>> friends1 = new ArrayList<>(List.of());
+        friends1.add(List.of("donut", "andole"));
+        friends1.add(List.of("donut", "jun"));
+        friends1.add(List.of("donut", "mrko"));
+        friends1.add(List.of("shakevan", "andole"));
+        friends1.add(List.of("shakevan", "jun"));
+        friends1.add(List.of("shakevan", "mrko"));
+        List<String> visitors1 = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+
+        HashMap<String, Integer> result1 = getScoreVisitFriend(user1, friends1, visitors1);
+
+        assertThat(result1).isEqualTo(Map.of(
+                "bedi", 3
+        ));
+    }
 }
