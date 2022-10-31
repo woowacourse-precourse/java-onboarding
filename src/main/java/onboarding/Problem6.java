@@ -20,65 +20,74 @@
  */
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.Arrays;
+import java.util.regex.Pattern;
 
 public class Problem6 {
+    public static List<String> list;
+    public static String[] NikeNameList;
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer = new ArrayList<>();
+        
+        
         return answer;
     }
-    public static boolean email_check(String email){
-           if(email.contains("@email.com")){
-            return true;
-           }
-           return false;
-        }
+
+    // public static boolean email_check(String email){ // email format check list method
+    //        if(email.contains("@email.com")){
+    //         return true;
+    //        }
+    //        return false;
+    //     }
         
-    public static boolean email_lenght_check(String email){
-        int email_lenght = email.length();
-        if(11 <= email_lenght && email_lenght < 20){
-            return true;
-        }
-        return false;
-    }
-    // public static boolean Hangeul_check(String nickname){
+    // public static boolean email_lenght_check(String email){ // email lenght check method
+    //     int email_lenght = email.length();
+    //     if(11 <= email_lenght && email_lenght < 20){
+    //         return true;
+    //     }
+    //     return false;
+    // }
+    // public static boolean nikName(){
+    //     return false;
+    // }
+    // public static boolean sameLetter(){
 
     // }
-           
+
+
     public static void main(String[] args){
-        String[][] email = {{"jm@email.com", "제이엠"},{"jason@email.com", "제이슨"},{"woniee@email.com", "워니"},{"mj@email.com", "엠제이"},{"nowm@email.com", "이제엠"}};
-        for(int i = 0; i < email.length;i++){
-            char[] arr = email[i][0].toCharArray();
-            System.out.print(arr[i]);
-        // if ( (email_check(email[i][0])) && (email_lenght_check(email[i][0]))){
-        //     System.out.print("성공");
+        List<List<String>> forms = Arrays.asList(Arrays.asList("jm@email.com", "제이엠"),
+        Arrays.asList("jason@email.com", "제이슨"),
+        Arrays.asList("woniee@email.com", "워니"),
+        Arrays.asList("mj@email.com", "엠제이"),
+        Arrays.asList("nowm@email.com", "이제엠"));
+
+        
+        for(int index = 0; index < forms.size();index++){
+            list = forms.get(index); // forms list
+            NikeNameList = list.get(1).split(""); // 닉네임 리스트
+            // int len = list.get(1).length();
+            // System.out.println(len);
+            // System.out.println(list);
+            // System.out.print(Arrays.toString(NikeNameList)); // 닉네임 리스트 출력값
+        }
+        
+        // for(int i = 0; i < forms.size();i++){ // 닉네임 길이 (1 ~ 19)
+        //     int len = forms.get(i).get(1).length();
+        //     if((1 <= len) && (len < 20)){
+        //         System.out.println(true);
+        //     }
         // }
-        // else{
-        //     System.out.print("실패");
+        // for(int i = 0; i < forms.size();i++){ // 닉네임 한글 체크
+        //     String name = forms.get(i).get(1);
+        //     if(Pattern.matches("^[가-힣]*$", name) == true){
+        //         System.out.println("참");            
+        //     }
         // }
 
-        // for(int j = 0; j < email.length;j++){
-        //     if (Hangeul_check(email[j][1])){
-        //         System.out.print("성공");
-        //     }
-        //     else{
-        //         System.out.print("실패");
-        //     }
-        // }
-            // String target = "@";
-            // int target_num = email[i][0].indexOf(target);
-            
-            // System.out.print(email[i][0]);
-            // System.out.print(email[i][0]);
-            // System.out.print(',');
-            // System.out.print(email[i][0].substring(0,target_num)); // @ 앞 문자열만 파싱
-            // System.out.print(',');
-            // System.out.print(email[i][0].substring(target_num)); // @ 부터 끝까지 파싱 <- 이메일 양식이 맞는 확인에 쓸 것
-            // System.out.print(',');
-            // for(int j = 0; j <email[i].length;j++){
-            //     System.out.print(email[i][0]);
-            //     System.out.print(',');
-            // }
-        }
     }
 }
