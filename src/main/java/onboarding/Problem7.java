@@ -11,8 +11,10 @@ public class Problem7 {
         List<String> friendOfFriend = getFriendOfFriend(user, friends);
 
         Map<String, Integer> scoreRecommendFriend = getScoreRecommendFriend(friendOfFriend, visitors);
+        Map<String, Integer> refineScoreRecommendFriend = getRefineScoreRecommendFriend(scoreRecommendFriend, friendOfUser);
 
-        List<String> sortedRecommendFriend = getSortedRecommendFriend(scoreRecommendFriend);
+        List<String> sortedRecommendFriend = getSortedRecommendFriend(refineScoreRecommendFriend);
+        answer = sortedRecommendFriend;
 
         return answer;
     }
@@ -97,6 +99,18 @@ public class Problem7 {
         });
 
         return resultScoreRecommendFriend;
+    }
+
+    private static Map<String, Integer> getRefineScoreRecommendFriend(
+            Map<String, Integer> scoreRecommendFriend,
+            List<String> friendOfUser) {
+        Map<String, Integer> result = scoreRecommendFriend;
+
+        for(String friend : friendOfUser) {
+            result.remove(friend);
+        }
+
+        return result;
     }
 
     private static List<String> getSortedRecommendFriend(Map<String, Integer> scoreRecommendFriendMap) {
