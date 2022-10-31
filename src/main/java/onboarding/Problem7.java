@@ -11,6 +11,17 @@ public class Problem7 {
         List<String> alreadyFriends = new ArrayList<>();
         List<ScoreList> scoreLists = new ArrayList<>();
         HashMap<String, Integer> candidates = new HashMap<>();
+
+        for (int i = 0; i < friends.size(); i++) {
+            String leftFriend = friends.get(i).get(0);
+            String rightFriend = friends.get(i).get(1);
+            if (leftFriend.equals(user))
+                alreadyFriends.add(rightFriend);
+            else if (rightFriend.equals(user))
+                alreadyFriends.add(leftFriend);
+            candidates.put(leftFriend, 0);
+            candidates.put(rightFriend, 0);
+        }
         
         return answer;
     }
