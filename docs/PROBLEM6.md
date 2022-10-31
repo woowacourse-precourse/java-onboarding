@@ -28,12 +28,12 @@
 
 - 아래서부터 차례로 로직 구현
 
-1. forms 사이즈가 1이하면 빈 배열 반환
+1. forms 사이즈가 1이하면, 빈 배열 반환
 2. forms 배열 순회
 - 처음 순회시 멤버 정보 memberRepository 에 저장후 continue
-- memberRepository 에 있는 멤버 이름과 순회하는 forms 의 멤버이름과 중복된 문자열이 있는지 비교
+- "memberRepository 에 있는 멤버 이름"과 "순회하는 forms 의 멤버이름"과 중복된 문자열이 있는지 비교
     - 있으면 emailHashSet 에 중복된 멤버 이메일 저장
-- 위의 로직 수행하면, forms 의 멤버 정보를 memberRepository에 저장
+- 위의 로직 수행하면서, forms 의 멤버 정보를 memberRepository 에 저장
 3. emailHashSet 이름순으로 정렬후 반환
 
 

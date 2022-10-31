@@ -55,31 +55,31 @@
 
 ### ✅ 사용자 정보 객체 구현 (Member 클래스)
 
-- [] 이름 , 점수 필드 생성, 친구 리스트 필드 구현 및 각 필드의 getter 구현
-- [] 점수 업데이트 메서드 구현
+- [X] 이름 , 점수 필드 생성, 친구 리스트 필드 구현 및 각 필드의 getter 구현
+- [X] 점수 업데이트 메서드 구현
 
 ### ✅ 친구목록 저장 리포지토리 기능 구현 (MemberRepository 구현)
 
-- [] Map 형식으로 key는 사용자 이름, value는 해당 유저 클래스 
-- [] 유저 및 친구 추가 메서드 (addFriend)
-- [] 유저 삭제 메서드 (deleteMember)
-- [] MemberRepository 에 해당 유저 있는지 확인 메서드 (containUsername)
-- [] 유저 이름을 가진 Member 객체 반환 (findMemberByUsername)
-- [] MemberRepository 에 있는 멤버 목록 arraylist로 반환하는 메서드 (findAll)
-- [] 유저 이름으로 해당 유저의 친구 목록 반환하는 메서드 (findFriendListByUsername)
+- [X] Map 형식으로 key는 사용자 이름, value는 해당 유저 클래스 
+- [X] 유저 및 친구 추가 메서드 (addFriend)
+- [X] 유저 삭제 메서드 (deleteMember)
+- [X] MemberRepository 에 해당 유저 있는지 확인 메서드 (containUsername)
+- [X] 유저 이름을 가진 Member 객체 반환 (findMemberByUsername)
+- [X] MemberRepository 에 있는 멤버 목록 arraylist로 반환하는 메서드 (findAll)
+- [X] 유저 이름으로 해당 유저의 친구 목록 반환하는 메서드 (findFriendListByUsername)
 
 
 ### ✅ 방문자에 따른 유저별 점수 업데이트 기능
 
-- [] 방문자에 따른 유저별 점수 업데이트 기능
+- [X] 방문자에 따른 유저별 점수 업데이트 기능
 
 ### ✅ 사용자와 함께 아는 친구의 수에 따른 유저별 점수 업데이트 기능
 
-- [] 사용자와 함께 아는 친구의 수에 따른 유저별 점수 업데이트 기능
+- [X] 사용자와 함께 아는 친구의 수에 따른 유저별 점수 업데이트 기능
 
 ### ✅ 사용자의 직접적인 친구들 점수 리스트에서 제거
 
-- [] 사용자의 직접적인 친구들 점수 리스트에서 제거
+- [X] 사용자의 직접적인 친구들 점수 리스트에서 제거
 
 
 
