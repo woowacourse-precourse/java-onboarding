@@ -11,8 +11,8 @@ class Problem1 {
             return -1;
         }
 
-        int pobiScore = maxScore(pobi);
-        int crongScore = maxScore(crong);
+        int pobiScore = Math.max(pageMax(pobi.get(0)), pageMax(pobi.get(1)));
+        int crongScore = Math.max(pageMax(crong.get(0)), pageMax(crong.get(1)));
 
         if (pobiScore > crongScore) {
             answer = 1;
@@ -39,14 +39,6 @@ class Problem1 {
         }
 
         return result;
-    }
-
-
-    public static int maxScore(List<Integer> pages) {
-        int page1 = pageMax(pages.get(0));
-        int page2 = pageMax(pages.get(1));
-
-        return Math.max(page1, page2);
     }
 
 
