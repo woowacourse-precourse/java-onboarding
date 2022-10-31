@@ -18,7 +18,8 @@ public class Problem7 {
                     } else {
                         result.put(friends.get(i).get(0), 10);
                     }
-                } else if (friends.get(i).get(0) == friendList.get(j)) {
+                }
+                if (friends.get(i).get(0) == friendList.get(j)) {
                     if (result.containsKey(friends.get(i).get(1))) {
                         result.put(friends.get(i).get(1), result.get(friends.get(i).get(1)) + 10);
                     } else {
@@ -36,6 +37,27 @@ public class Problem7 {
             }
         }
 
+        return formatTheAnswer(result, user, friendList);
+    }
+
+    public static List<String> getFriendList(List<List<String>> friends, String user) {
+        List<String> list = new ArrayList<>();
+        for (int i = 0; i < friends.size(); i += 1) {
+            getFriendName(list, friends, user, i);
+        }
+        return list;
+    }
+
+    public static void getFriendName(List<String> list, List<List<String>> friends, String user, int index) {
+        if (friends.get(index).get(1) == user) {
+            list.add(friends.get(index).get(0));
+        }
+        if (friends.get(index).get(0) == user) {
+            list.add(friends.get(index).get(1));
+        }
+    }
+
+    public static List<String> formatTheAnswer(HashMap<String, Integer> result, String user, List<String> friendList){
         if (result.containsKey(user)) {
             result.remove(user);
         }
@@ -65,20 +87,4 @@ public class Problem7 {
         return answer;
     }
 
-    public static List<String> getFriendList(List<List<String>> friends, String user) {
-        List<String> list = new ArrayList<>();
-        for (int i = 0; i < friends.size(); i += 1) {
-            getFriendName(list, friends, user, i);
-        }
-        return list;
-    }
-
-    public static void getFriendName(List<String> list, List<List<String>> friends, String user, int index) {
-        if (friends.get(index).get(1) == user) {
-            list.add(friends.get(index).get(0));
-        }
-        if (friends.get(index).get(0) == user) {
-            list.add(friends.get(index).get(1));
-        }
-    }
 }
