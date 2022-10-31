@@ -1,44 +1,39 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem6 {
-    static List<List<String>> forms = new ArrayList<>();
-    static Set<String> setResult = new HashSet<>();
+    private static final int EMAIL = 0;
+    private static final int NAME = 1;
 
     public static List<String> solution(List<List<String>> forms) {
-        for (int i = 0; i < forms.size() - 1; i++) {
-            for (int j = i + 1; j < forms.size(); j++) {
-                if (nameCheck(forms.get(i).get(1), forms.get(j).get(1))) {
-                    setResult.add(forms.get(i).get(0));
-                    setResult.add(forms.get(j).get(0));
-                }
+        Set<String> result = new HashSet<>();
+        forms.forEach(form -> {
+            List<List<String>> duplicatedForms = forms.stream()
+                    .filter(targetForm -> targetForm != form)
+                    .filter(targetForm -> checkDuplicatedName(form.get(NAME), targetForm.get(NAME)))
+                    .collect(Collectors.toList());
+
+            if (!duplicatedForms.isEmpty()) {
+                duplicatedForms.forEach(duplicated -> result.add(duplicated.get(EMAIL)));
+                result.add(form.get(EMAIL));
             }
-        }
-        List<String> result = new ArrayList<>(setResult);
-        Collections.sort(result);
-        return result;
+        });
+
+        return result.stream()
+                .sorted()
+                .collect(Collectors.toList());
     }
 
-    static boolean nameCheck(String name1, String name2) {
-        outLoop:
+    static boolean checkDuplicatedName(String name1, String name2) {
         for (int i = 0; i < name1.length() - 1; i++) {
-            String subStr1 = name1.substring(i, i + 2);
-            for (int j = 0; j < name2.length() - 1; j++) {
-                String subStr2 = name2.substring(j, j + 2);
-                if (subStr1.equals(subStr2)) {
-                    return true;
-                }
+            String subStr = name1.substring(i, i + 2);
+            if (name2.contains(subStr)) {
+                return true;
             }
         }
         return false;
-    }
-
-    static List<String> info(String email, String name) {
-        List<String> user = new ArrayList<>();
-        user.add(email);
-        user.add(name);
-        return user;
     }
 
 }
