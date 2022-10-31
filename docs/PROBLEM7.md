@@ -24,3 +24,10 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+
+### 구현 기능
+1. 친구 관계 정보 저장 기능 
+2. 사용자와 함께 아는 친구 점수 부여 기능
+3. 사용자 타임 라인 방문 점수 부여 기능
+4. top5 정렬 및 추출 기능 
