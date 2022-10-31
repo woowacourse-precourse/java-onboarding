@@ -13,7 +13,8 @@ public class Problem3 {
         String n_str = String.valueOf(n);
         int cnt = 0;
         for (int i=0; i<n_str.length(); i++) {
-            if (n_str.charAt(i) == '3' | n_str.charAt(i) == '6' | n_str.charAt(i) == '9') {
+            char digit = n_str.charAt(i);
+            if (digit == '3' | digit == '6' | digit == '9') {
                 cnt += 1;
             }
         }
