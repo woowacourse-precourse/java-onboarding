@@ -5,8 +5,8 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
 
+        // 포비의 왼쪽 오른쪽 페이지 수를 저장하는 변수
         int pobiLeft = dividNum(pobi.get(0));
         int pobiRight = dividNum(pobi.get(1));
 
@@ -34,8 +34,8 @@ class Problem1 {
     }
 
     public static int dividNum(Integer num){
-        int sum = 0;
-        int multi = 1;
+        int sum = 0; // 합계를 저장하는 변수
+        int multi = 1;  // 곱을 저장하는 변수
 
         int dividOfNum = num; // 몫을 저장하는 변수
         int remain = 0;  // 나머지를 저장하는 변수
