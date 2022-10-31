@@ -30,6 +30,11 @@ class Classifier {
   private static final int LOWERSUM = 'a' + 'z';
   private static final int ISUPPERCASE = 0;
   private static final int ISLOWERCASE = 1;
+  private static final int ISERROR = 2;
+  private static final char LOWERA = 'a';
+  private static final char LOWERZ = 'z';
+  private static final char UPPERA = 'A';
+  private static final char UPPERZ = 'Z';
   private String classifier;
 
   Classifier(String word) {
@@ -37,23 +42,23 @@ class Classifier {
   }
 
   String getChangedString() {
-    StringBuilder sb = new StringBuilder();
+    StringBuilder stringbuilder = new StringBuilder();
     char chunk;
     for (int i = 0; i < classifier.length(); i++) {
       int classifyId = checkUpperLowerElse(classifier.charAt(i));
-      sb.append(changeChunk(classifyId, classifier.charAt(i)));
+      stringbuilder.append(changeChunk(classifyId, classifier.charAt(i)));
     }
-    return sb.toString();
+    return stringbuilder.toString();
   }
 
   int checkUpperLowerElse(char chunk) {
-    if (chunk >= 'a' && chunk <= 'z') {
+    if (chunk >= LOWERA && chunk <= LOWERZ) {
       return ISLOWERCASE;
     }
-    if (chunk >= 'A' && chunk <= 'Z') {
+    if (chunk >= UPPERA && chunk <= UPPERZ) {
       return ISUPPERCASE;
     }
-    return 2;
+    return ISERROR;
   }
 
   char changeChunk(int Id, char chunk) {
