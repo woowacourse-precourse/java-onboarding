@@ -98,6 +98,12 @@ class ExceptionProblem7 {
 
     public static void validateFriends(List<List<String>> friends) {
         validateFriendsListSize(friends);
+
+        for (List<String> friend : friends) {
+            for (String id : friend) {
+                validateUser(id);
+            }
+        }
     }
 
     private static void validateUserLength(String user) {
