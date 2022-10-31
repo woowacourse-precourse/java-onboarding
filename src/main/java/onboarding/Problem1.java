@@ -32,4 +32,15 @@ class Problem1 {
 
         return addScore;
     }
+
+    public static int calculateMult(int num) {
+        int multScore = 1;
+
+        while (num != 0) {
+            multScore *= num % 10;
+            num /= 10;
+        }
+
+        return multScore;
+    }
 }
