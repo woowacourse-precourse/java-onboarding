@@ -1,5 +1,10 @@
 package onboarding;
 
+/*
+기능 목록
+1. 기능 요구 사항대로 문자를 뒤집는 기능
+2. answer에 뒤집힌 문자들을 추가하는 기능
+ */
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
