@@ -12,7 +12,10 @@ public class Problem7 {
     }
 
     private static void initializeTotalUserSet(List<List<String>> friends, Set<String> totalUserSet) {
-
+        for (List<String> friend : friends) {
+            totalUserSet.add(friend.get(0));
+            totalUserSet.add(friend.get(1));
+        }
     }
 
     private static void initializeEachUserFriendMap(List<List<String>> friends, Set<String> totalUserSet,
