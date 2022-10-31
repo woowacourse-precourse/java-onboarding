@@ -3,34 +3,21 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
+
+    private static HashMap<String, ArrayList<String>> friendship = new HashMap<>();
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Map<String, Integer> scoreList = new HashMap<>();
-        HashMap<String, ArrayList<String>> sns = new HashMap<>();
 
         // 친구 관계  넣기
         for (List<String> friend : friends) {
-            ArrayList<String> list = new ArrayList<>();
-            if(sns.containsKey(friend.get(0))) {
-                list = sns.get(friend.get(0));
-                list.add(friend.get(1));
-            } else {
-                list.add(friend.get(1));
-            }
-            sns.put(friend.get(0), list);
-            list = new ArrayList<>();
-            if(sns.containsKey(friend.get(1))) {
-                list = sns.get(friend.get(1));
-                list.add(friend.get(0));
-            } else{
-                list.add(friend.get(0));
-            }
-            sns.put(friend.get(1), list);
+            setFriendship(friend.get(0), friend.get(1));
+            setFriendship(friend.get(1), friend.get(0));
         }
-
         // 친구의 친구에 점수 부여
-        ArrayList<String> friendsOfUser = sns.get(user);
+        ArrayList<String> friendsOfUser = friendship.get(user);
         for(String friend : friendsOfUser) {
-            for(String together : sns.get(friend)) {
+            for(String together : friendship.get(friend)) {
                 if(together.equals(user))
                     continue;
                 if(scoreList.containsKey(together))
@@ -67,5 +54,16 @@ public class Problem7 {
             return scoreListKeySet;
         else
             return scoreListKeySet.subList(0,5);
+    }
+
+    private static void setFriendship(String userA, String userB) {
+        ArrayList<String> list = new ArrayList<>();
+        if(friendship.containsKey(userA)) {
+            list = friendship.get(userA);
+            list.add(userA);
+        } else {
+            list.add(userB);
+        }
+        friendship.put(userA, list);
     }
 }
