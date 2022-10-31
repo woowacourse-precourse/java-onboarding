@@ -77,7 +77,7 @@
 6. [문제 6](./docs/PROBLEM6.md)
 - [X] isValidInput
 - 인자값이 유효한지 검사한다.
-  - [ ] isValidForms
+  - [X] isValidForms
   - 신청서 배열이 조건에 부합하는지 검사한다.
     - [ ] hasValidCrewsLength
     - 신청서 배열의 크기가 1 ~ 10000 사이의 값인지 검사한다.

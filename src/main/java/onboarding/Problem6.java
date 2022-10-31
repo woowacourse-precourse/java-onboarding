@@ -20,8 +20,25 @@ public class Problem6 {
         return valid;
     }
 
+    /*
+     * 숫자가 특정 범위 안의 숫자인지 알려줍니다.
+     *
+     * @param 확인할 숫자, 범위의 왼쪽 숫자, 범위의 오른쪽 숫자입니다.
+     * @return 범위 안에 있으면 참, 아니면 거짓을 반환합니다.
+     * */
+    private static boolean isInRange(int toCheck, int leftBound, int rightBound) {
+        return leftBound <= toCheck && toCheck <= rightBound;
+    }
+
+    /*
+     * 신청서 배열의 크기가 올바른지 확인합니다.
+     *
+     * @param 신청서 배열입니다.
+     * @return 신청서 배열의 크기가 1~10000 사이라면 참, 아니면 거짓을 반환합니다.
+     * */
     private static boolean isValidForms(List<List<String>> forms) {
-        return false;
+        boolean valid = isInRange(forms.size(), 1, 10000);
+        return valid;
     }
 
     private static boolean isValidForm(List<String> form) {
