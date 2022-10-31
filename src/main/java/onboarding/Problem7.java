@@ -32,6 +32,16 @@ class FriendRecommender{
         }
     }
 
+    private void addVisitorScore(List<String> visitors){
+        final Integer visitorScore = 1;
+        for (String visitor : visitors){
+            recommendationScores.put(visitor,
+                    recommendationScores.getOrDefault(visitor, 0)
+                            + visitorScore);
+        }
+    }
+
+
 
 
     public static class Builder {
