@@ -41,6 +41,14 @@ class Problem1 {
             crongTop = Math.max(Math.max(crongsum, crongmul), crongTop);
         }
 
+        if(pobiTop > crongTop) {
+            answer = 1;
+        } else if(pobiTop < crongTop) {
+            answer = 2;
+        } else if(pobiTop == crongTop) {
+            answer = 0;
+        }
+
         return answer;
     }
 }
