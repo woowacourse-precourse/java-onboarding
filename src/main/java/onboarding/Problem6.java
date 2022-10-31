@@ -58,10 +58,9 @@ class IsValidEmail {
         if (emailLength < 11 || 20 <= emailLength) {
             return false;
         }
-        return true;
-    }
-    public boolean isValidHOST (String HOST) {
-        if (! HOST.equals("email.com")) {
+
+        String host = email.substring(emailLength-9);
+        if( ! host.equals("email.com")) {
             return false;
         }
         return true;
