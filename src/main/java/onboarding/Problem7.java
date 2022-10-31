@@ -45,6 +45,13 @@ public class Problem7 {
             friendOfFriendMap.put(friendOfFriend ,  friendOfFriendMap.getOrDefault(friendOfFriend,0) + 10);
         }
 
+        //타임라인방문 점수 계산
+        for (String visitor : visitors) {
+            //방문자가 유저의 친구가 아닐시
+            if(!userFriend.contains(visitor)){
+                friendOfFriendMap.put(visitor ,  friendOfFriendMap.getOrDefault(visitor,0) + 1);
+            }
+        }
         return answer;
     }
 }
