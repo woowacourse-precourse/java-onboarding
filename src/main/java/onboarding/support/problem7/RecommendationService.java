@@ -25,6 +25,32 @@ public class RecommendationService {
             calculateAcquaintanceScore(friendRelationMap, scoreMap, friendEntry);
         }
 
+        Set<String> userFriendRelation = friendRelationMap.get(user);
+        for (String visitor : visitors) {
+            calculateTimelineVisitScore(scoreMap, userFriendRelation, visitor);
+        }
+
+        List<Map.Entry<String, Integer>> sortedScoreMap = sortList(scoreMap);
+
+        for (Map.Entry<String, Integer> scoreMapEntry : sortedScoreMap) {
+            this.sortedFriends.add(scoreMapEntry.getKey());
+        }
+    }
+
+    private static List<Map.Entry<String, Integer>> sortList(Map<String, Integer> scoreMap) {
+        return scoreMap
+                .entrySet()
+                .stream()
+                .sorted(Comparator
+                        .comparing(Map.Entry<String, Integer>::getValue)
+                        .reversed().thenComparing(Map.Entry::getKey))
+                .collect(Collectors.toList());
+    }
+
+    private static void calculateTimelineVisitScore(Map<String, Integer> scoreMap, Set<String> userFriendRelation, String visitor) {
+        if (!userFriendRelation.contains(visitor)) {
+            scoreMap.merge(visitor, TIME_LINE_VISIT_SCORE, Integer::sum);
+        }
     }
 
     private void calculateAcquaintanceScore(Map<String, Set<String>> friendRelationMap, Map<String, Integer> scoreMap, Map.Entry<String, Set<String>> friendEntry) {
