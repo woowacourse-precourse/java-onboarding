@@ -11,7 +11,7 @@ class Problem1 {
         int pobiLeftPage = pobi.get(0);
         int pobiRightPage = pobi.get(1);
         int crongLeftPage = crong.get(0);
-        int crongRightPage = pobi.get(1);
+        int crongRightPage = crong.get(1);
 
         // 예외사항 작성
         if ( pobiLeftPage < 3 || crongLeftPage < 3 || pobiLeftPage > 397 || crongLeftPage > 397 ) {
@@ -100,6 +100,9 @@ class Problem1 {
         }
 
 
+        return 0;
     }
+
+    //수정해야하는 부분 1) return 값을 answer로 받아오는 (처음 있는 그대로로), 2) 더 간단하게 코딩할 수 없는지
 
 }
