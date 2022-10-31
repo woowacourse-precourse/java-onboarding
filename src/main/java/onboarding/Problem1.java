@@ -11,11 +11,23 @@ class Problem1 {
     }
 
     public static int getEachMaximumNumber(Integer page) {
+        int numberAddSum = 0;
+        int numberProductSum = 1;
 
+        for (char eachNumber: Integer.toString(page).toCharArray()) {
+            int number = (eachNumber - '0');
+            numberAddSum += number;
+            numberProductSum *= number;
+        }
+
+        return Math.max(numberAddSum, numberProductSum);
     }
 
     public static int getMaximumNumber(List<Integer> pages) {
+        int leftMax = getEachMaximumNumber(pages.get(0));
+        int rightMax = getEachMaximumNumber(pages.get(1));
 
+        return Math.max(leftMax, rightMax);
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
