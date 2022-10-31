@@ -21,3 +21,12 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+## 🚀 구현 기능 목록
+### 🛰 로직 구현
+- 부분 문자열을 찾는 메서드
+  - 동일한 문자인지 확인하는 메서드
+- 같은 글자가 연속되는 크루원의 이메일을 리스트에 담는 메서드
+  - forms에서 특정 원소의 이메일을 반환하는 메서드
+- forms에서 특정 원소의 닉네임을 반환하는 메서드
+- 중복이 제거된 리스트를 반환하는 메서드
