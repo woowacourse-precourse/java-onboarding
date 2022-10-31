@@ -52,16 +52,14 @@ public class Problem7 {
         List<String> pivotFriends = userInformation.get(user).friends;
         userInformation.remove(user);
 
-        if (pivotFriends.size() > 0) {
-            Set<Map.Entry<String, User>> entries = userInformation.entrySet();
+        Set<Map.Entry<String, User>> entries = userInformation.entrySet();
 
-            for (Map.Entry<String, User> entry : entries) {
-                String name = entry.getKey();
-                User information = entry.getValue();
+        for (Map.Entry<String, User> entry : entries) {
+            String name = entry.getKey();
+            User information = entry.getValue();
 
-                information.friends.retainAll(pivotFriends);
-                userInformation.get(name).score += information.friends.size() * SCORE_FRIEND;
-            }
+            information.friends.retainAll(pivotFriends);
+            userInformation.get(name).score += information.friends.size() * SCORE_FRIEND;
         }
 
         List<User> before = new ArrayList<>();
@@ -70,16 +68,11 @@ public class Problem7 {
             String name = entry.getKey();
             Integer score = entry.getValue().score;
 
-            if (pivotFriends.size() > 0) {
-                if (!pivotFriends.contains(name) && score != 0) {
-                    before.add(entry.getValue());
-                }
-            } else {
-                if (score != 0) {
-                    before.add(entry.getValue());
-                }
+            if (!pivotFriends.contains(name) && score != 0) {
+                before.add(entry.getValue());
             }
         }
+
 
         before.sort(new ResultComparator());
 
