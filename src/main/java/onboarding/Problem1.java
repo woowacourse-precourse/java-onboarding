@@ -11,9 +11,33 @@ import java.util.List;
  * 4.비교한다.
  *
  * 5.점수를 비교해 가장 높은 사람이 게임의 승자가 된다.
- * 6.시작 면이나 마지막 면이 나오도록 책을 펼치지 않는다.
+ * 6.시작 면이나 마지막 면이 나오도록 책을 펼치지 않는다. (예외처리)
  */
 class Problem1 {
+
+    private boolean checkException(int page) {
+        if (page == 1 && page == 399) {
+            return false;
+        }
+        return true;
+    }
+
+    private boolean checkDifferenceIsOne(List<Integer> list) {
+        if ((list.get(1) - list.get(0)) != 1) {
+            return false;
+        }
+        return true;
+    }
+
+    public boolean checkPagesIsNotFirstOrLast(List<Integer> pobi, List<Integer> crong) {
+        if (checkException(pobi.get(0)) == false || checkException(crong.get(0)) == false) {
+            return false;
+        }
+        if (checkDifferenceIsOne(pobi) == false || checkDifferenceIsOne(crong) == false) {
+            return false;
+        }
+        return true;
+    }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
