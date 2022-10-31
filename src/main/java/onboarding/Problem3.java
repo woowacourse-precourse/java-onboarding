@@ -47,6 +47,11 @@ class Clap369 {
 public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
+
+        for (int i = 1; i <= number; i++) {
+            answer += Clap369.howManyClap(Clap369.getDigitList(i));
+        }
+
         return answer;
     }
 }
