@@ -118,9 +118,6 @@ public class Problem7 {
         Set<String> excludeSet = createExcluder(user, friends);
 
 
-        //test
-        System.out.println("unsorteed unremoved resukt : " + finalScorePare.keySet());
-        //test end
 
         List<List<String>> listPare = new ArrayList<>(finalScorePare.size());
 
@@ -141,9 +138,6 @@ public class Problem7 {
 
         Collections.sort(listPare, new experiment7.recComparator());
 
-        //test
-        System.out.println("sorted resukt : " + listPare.toString());
-        //test end
 
         List<String> answer = new ArrayList<String>();
         for (List<String> pare : listPare) {
