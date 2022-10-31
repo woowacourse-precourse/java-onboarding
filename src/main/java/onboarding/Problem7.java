@@ -127,9 +127,7 @@ public class Problem7 {
         // 더 이상 추천할 유저가 없거나 5명을 추천했으면 종료
         while (!recommendScoreMap.isEmpty() && result.size() < 5){
             // 최고 점수를 가진 유저를 리스트에 등록
-            String maxScoreUser = Collections.max(recommendScoreMap.entrySet(),
-                    Comparator.comparingInt(Map.Entry::getValue)
-            ).getKey();
+            String maxScoreUser = Collections.max(recommendScoreMap.entrySet(), comparator).getKey();
             result.add(maxScoreUser);
             // 해당 유저를 추천 유저 맵에서 제외
             recommendScoreMap.remove(maxScoreUser);
@@ -137,4 +135,21 @@ public class Problem7 {
 
         return result;
     }
+
+    // map 비교를 위한 comparator
+    // value 를 먼저 비교한 후, value가 같을 경우 key값이 더 빠른 경우를 반환
+    private static Comparator<Map.Entry<String , Integer>> comparator = new Comparator<Map.Entry<String , Integer>>() {
+        @Override
+        public int compare(Map.Entry<String , Integer> o1, Map.Entry<String , Integer> o2) {
+            // Value로 먼저 비교한 후 Value가 같을 경우 key 값으로 비교
+            if (o1.getValue() > o2.getValue()){
+                return 1;
+            } else if (o1.getValue() == o2.getValue()) {
+                // 빠른 키값이 더 큰 우선순위를 가지도록 비교
+                return -1 * o1.getKey().compareTo(o2.getKey());
+            } else {
+                return -1;
+            }
+        }
+    };
 }
