@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -40,6 +41,15 @@ public class Problem6 {
         for (String value : emailNicknameMap.values()) {
             nicknameOverlapStatusMap.put(value, false);
         }
+    }
+
+    // forms 에서 모든 닉네임을 리스트로 추출하는 메서드
+    public static List<String> extractNicknameList(List<List<String>> forms) {
+        List<String> nicknameList = new ArrayList<>();
+        for (List<String> form : forms) {
+            nicknameList.add(form.get(1));
+        }
+        return nicknameList;
     }
 
     public static List<String> solution(List<List<String>> forms) {
