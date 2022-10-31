@@ -9,6 +9,7 @@ public class Problem6 {
     private static final int MAX_EMAIL_SIZE = 20;
     private static final int MIN_NICKNAME_SIZE = 1;
     private static final int MAX_NICKNAME_SIZE = 20;
+    private static final String EMAIL_DOMAIN = "@email.com";
 
     public static List<String> solution(List<List<String>> forms) {
         Map<String, List<String>> nicknames = createNicknameMap(forms);
@@ -76,12 +77,14 @@ public class Problem6 {
     }
 
     private static boolean isValidEmail(String email) {
-        String emailExp = "^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@email.com";
+        int emailLength = email.length();
+        int domainLength = EMAIL_DOMAIN.length();
+
         if (email.length() < MIN_EMAIL_SIZE || email.length() >= MAX_EMAIL_SIZE) {
             return false;
         }
 
-        if (!email.matches(emailExp)) {
+        if (!email.startsWith(EMAIL_DOMAIN, emailLength - domainLength)) {
             return false;
         }
 
