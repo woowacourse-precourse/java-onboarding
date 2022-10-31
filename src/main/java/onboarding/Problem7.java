@@ -93,4 +93,15 @@ public class Problem7 {
         return friendsMap;
     }
 
+    /**
+     * visitors에게 1점 주는 함수
+     */
+    private static Map<String,Integer> addOnePoint(Map<String,Integer> friendsMap,List<String> userFriendList,List<String> visitors){
+        for (String visitor : visitors) {
+            if(!friendsMap.containsKey(visitor) && !userFriendList.contains(visitor)) friendsMap.put(visitor,1);
+            else friendsMap.replace(visitor,friendsMap.get(visitor) + 1);
+        }
+        return friendsMap;
+    }
+
 }
