@@ -18,19 +18,31 @@ public class Email {
 
     public Email(String email){
         this.email = email;
-        if (!isEmailForm()) throw new InputException(Problem6ExceptionMessage.NOT_EMAIL_FORM);
-        if (!isDomainAllowed()) throw new InputException(Problem6ExceptionMessage.NOT_ALLOWED_DOMAIN);
+        checkEmailIsVerified();
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    private void checkEmailIsVerified(){
+        if (!isEmailForm())
+            throw new InputException(Problem6ExceptionMessage.NOT_EMAIL_FORM);
+        if (!isNumberOfCharacterFrom11to20())
+            throw new InputException(Problem6ExceptionMessage.NOT_EMAIL_LENGTH_ALLOWED);
+        if (!isDomainAllowed())
+            throw new InputException(Problem6ExceptionMessage.NOT_ALLOWED_DOMAIN);
     }
 
     private boolean isEmailForm(){
         return Pattern.compile(EMAIL_REGULAR_EXPRESSION).matcher(email).matches();
     }
 
-    private boolean isDomainAllowed(){
-        return Pattern.compile(DOMAIN_MATCH_REGULAR_EXPRESSION).matcher(email).matches();
+    private boolean isNumberOfCharacterFrom11to20() {
+        return 11 <= email.length() && email.length() <= 20;
     }
 
-    public String getEmail() {
-        return email;
+    private boolean isDomainAllowed(){
+        return Pattern.compile(DOMAIN_MATCH_REGULAR_EXPRESSION).matcher(email).matches();
     }
 }

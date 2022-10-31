@@ -44,7 +44,7 @@ public class EmailTest {
         @ArgumentsSource(AbnormalEmailTestData.class)
         void emailTestWhenAbnormal(String email){
             try {
-                Email errorEmail = new Email(email);
+                new Email(email);
                 fail("Not Occur Exception");
             } catch (InputException e){
 
@@ -58,7 +58,8 @@ public class EmailTest {
         public Stream<? extends Arguments> provideArguments(ExtensionContext context) throws Exception {
             return Stream.of(
                     Arguments.of("@@email.comwoowa"),
-                    Arguments.of("leegwichan@naver.com")
+                    Arguments.of("leegwichan@naver.com"),
+                    Arguments.of("AAAAAAAAAAAAAAAAAAA@email.com")
             );
         }
     }
