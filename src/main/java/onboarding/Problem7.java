@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -31,6 +28,25 @@ public class Problem7 {
         }
 
         return answer;
+    }
+    // 추천 점수 테이블에 대한 내림차순 정렬
+    private static ArrayList<String> sort_recommand(HashMap<String, Integer> recommand){
+        ArrayList<String> result = new ArrayList<>();
+
+        List<Map.Entry<String, Integer>> entries = new ArrayList<>(recommand.entrySet());
+
+        Collections.sort(entries, new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                return o2.getValue().compareTo(o1.getValue());
+            }
+        });
+
+        for(Map.Entry<String, Integer> entry : entries){
+            result.add(entry.getKey());
+        }
+
+        return result;
     }
 
     // 모든 유저의 친구 관계를 Map에 저장
