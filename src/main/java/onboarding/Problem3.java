@@ -10,6 +10,8 @@ public class Problem3 {
             sb.append(i);
         }
 
+        String clap = sb.toString().replaceAll("[^369]", "");
+
         return answer;
     }
 }
