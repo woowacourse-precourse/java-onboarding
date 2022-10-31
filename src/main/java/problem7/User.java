@@ -25,7 +25,9 @@ public class User {
 
     public List<String> getMostRecommendedAsFriend(List<String> visitors) {
         calculateRecommendationScoreWith(visitors);
+
         calculateRecommendationScoreWithCommonFriends();
+
         return getMostRecommended();
     }
 
@@ -59,11 +61,13 @@ public class User {
 
     private List<Map.Entry<String, Integer>> sortRecommendationScores() {
         List<Map.Entry<String, Integer>> recommendationScoresList = new ArrayList<>(recommendationScores.entrySet());
+
         Collections.sort(recommendationScoresList, (leftEntry, rightEntry) -> {
             if (leftEntry.getValue() != rightEntry.getValue())
                 return rightEntry.getValue() - leftEntry.getValue();
             return leftEntry.getKey().compareTo(rightEntry.getKey());
         });
+
         return recommendationScoresList;
     }
 }
