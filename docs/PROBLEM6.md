@@ -21,3 +21,9 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+## 기능 목록 만들기
+
+1. 모든 문자열에 대해 두 개씩 서로 비교할 수 있는 반복문 생성 (2중 중첩 반복문)
+2. 두 문자열을 두 글자씩 비교하며 중복되는 부분이 있는지 확인하는 함수 작성
+3. 닉네임이 중복되는 사람들의 이메일을 세트에 저장, 이후 리스트로 변환하여 오름차순으로 정렬하여 반환
