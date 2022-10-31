@@ -8,9 +8,14 @@ public class Problem6 {
         Map<String, String> crewInfo = new HashMap<>();
         List<String> answer = new ArrayList<>();
 
-        forms.forEach(form ->
-                crewInfo.put(form.get(1), form.get(0))
+        forms.forEach(form -> {
+                    String nickName = form.get(1);
+                    String email = form.get(0);
+                    checkValidForm(nickName, email);
+                    crewInfo.put(nickName, email);
+                }
         );
+
         List<String> nameList = new ArrayList<>(crewInfo.keySet());
         for (String name : nameList) {
             String email = crewInfo.get(name);
@@ -23,6 +28,15 @@ public class Problem6 {
         answer = new ArrayList<>(new HashSet<>(answer));
         Collections.sort(answer);
         return answer;
+    }
+
+    private static void checkValidForm(String nickName, String email) {
+        if (!nickName.matches("[가-힣]+") || nickName.length() < 1 || nickName.length() >= 20) {
+            throw new IllegalArgumentException("닉네임 형식에 부합하지 않습니다");
+        }
+        if (!email.matches("^[A-Za-z0-9]*@email.com") || email.length() < 11 || email.length() >= 20) {
+            throw new IllegalArgumentException("이메일 형식에 부합하지 않습니다");
+        }
     }
 
     private static List<String> getDuplicateNickNames(List<String> nameList, String name) {
