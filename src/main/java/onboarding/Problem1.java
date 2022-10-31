@@ -22,15 +22,20 @@ class Problem1 {
     private static int maxScoreOfCrong;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if (!isCorrectPages(pobi) || !isCorrectPages(crong)) return EXCEPTION;
+        if (isCorrectPages(pobi) || isCorrectPages(crong)) return EXCEPTION;
         maxScoreOfPobi = getMaxOfPages(pobi);
         maxScoreOfCrong = getMaxOfPages(crong);
         return compareOfResult(maxScoreOfPobi, maxScoreOfCrong);
     }
 
     private static boolean isCorrectPages(List<Integer> pages) {
-        return (pages.get(RIGHT_PAGE) - pages.get(LEFT_PAGE) == 1);
+        if (pages.get(RIGHT_PAGE) - pages.get(LEFT_PAGE) != 1) return true;
+        if (pages.get(LEFT_PAGE) < 1 || pages.get(RIGHT_PAGE) > 400) return true;
+        if (pages.size() != 2) return true;
+        if (pages.get(LEFT_PAGE) % 2 != 1 || pages.get(RIGHT_PAGE) % 2 != 0) return true;
+        return false;
     }
+
 
     private static int compareOfResult(int maxOfPobi, int maxOfCrong) {
         if (maxOfPobi == maxOfCrong) return DRAW;
@@ -56,6 +61,7 @@ class Problem1 {
         }
         return sumOfPages;
     }
+
     private static int getMultiplyOfPages(String pages) {
         int multiplyOfPages = 1;
         for (int i = 0; i < pages.length(); i++) {
