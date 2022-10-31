@@ -1,10 +1,15 @@
 package onboarding;
 
+import onboarding.exception.InputRangeException;
+
 public class Problem3 {
     static final String[] NUM_FOR_CLAPS = {"3", "6", "9"};
 
     public static int solution(int number) {
         int answer = 0;
+
+        // 입력된 숫자에 대한 검증 작업을 진행한다.
+        checkInputNumber(number);
 
         // 1부터 입력으로 주어진 번호까지 순회를 진행한다.
         for (int num = 1; num <= number; num++) {
@@ -16,6 +21,17 @@ public class Problem3 {
             answer += getClapCount(strNum, originLen);
         }
         return answer;
+    }
+
+    /**
+     * 입력 number에 대해 검증을 진행한다.
+     *
+     * @param number 입력으로 들어온 number
+     */
+    private static void checkInputNumber(int number) {
+        if (number < 1 || number > 10000) {
+            throw new InputRangeException("number는 1~10000 사이여야 합니다.");
+        }
     }
 
     /**
