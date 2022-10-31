@@ -26,7 +26,7 @@ public class Friend {
     public static List<String> recommendedList(String user) {
         List<Map.Entry<String, Integer>> entryList = new LinkedList<>(weight.entrySet());
         entryList.sort(Map.Entry.comparingByValue());
-        entryList = Util.sameScoreSort(entryList);
+        entryList = Util.sameEntryValueSort(entryList);
         List<String> resultList = new ArrayList<>();
         int count = 0;
         for (int i = entryList.size() - 1; i >= 0; i--) {

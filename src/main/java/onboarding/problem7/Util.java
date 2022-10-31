@@ -1,6 +1,7 @@
 package onboarding.problem7;
 
 import java.util.*;
+import java.util.Map.Entry;
 
 public class Util {
     public static List<String> removeOverlap(List<String> target) {
@@ -8,22 +9,20 @@ public class Util {
         ArrayList<String> removedList = new ArrayList<>(removedSet);
         return removedList;
     }
-    public static List<Map.Entry<String, Integer>> sameScoreSort(List<Map.Entry<String, Integer>> entryList) {
+    public static List<Map.Entry<String, Integer>> sameEntryValueSort(List<Map.Entry<String, Integer>> entryList) {
         List<Map.Entry<String, Integer>> newEntryList = new LinkedList<>();
-        int value = entryList.get(0).getValue();
+        int beforeValue = entryList.get(0).getValue();
         List<Map.Entry<String, Integer>> temp = new LinkedList<>();
         for (int i = 0; i < entryList.size(); i++) {
-            if (entryList.get(i).getValue() != value) {
-                temp.sort(Map.Entry.comparingByKey());
+            Entry<String, Integer> entry = entryList.get(i);
+            if (entry.getValue() != beforeValue || i == entryList.size() - 1) {
+                temp.sort(Map.Entry.comparingByKey(Collections.reverseOrder()));
                 newEntryList.addAll(temp);
                 temp.clear();
             }
-            temp.add(entryList.get(i));
-            value = entryList.get(i).getValue();
+            temp.add(entry);
+            beforeValue = entry.getValue();
         }
-        temp.sort(Map.Entry.comparingByKey());
-        Collections.reverse(temp);
-        newEntryList.addAll(temp);
         return newEntryList;
     }
 }
