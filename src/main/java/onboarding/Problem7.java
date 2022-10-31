@@ -80,25 +80,14 @@ public class Problem7 {
 
 		removeAlreadyFriends(data, userFriends);
 		removeZeroScore(data);
-
-		//점수가 큰 순으로 정렬, 점수가 같다면 사전순으로 정렬
-		List<Map.Entry<String, Integer>> list = new ArrayList<>(data.entrySet());
-		Collections.sort(list, (first, second) -> {
-			if (first.getValue() > second.getValue()) {
-				return -1;
-			}
-			if (first.getValue() < second.getValue()) {
-				return 1;
-			}
-			return first.getKey().compareTo(second.getKey());
-		});
+		List<Map.Entry<String, Integer>> recommendedFriendsList = getSortedList(data);
 
 		//추천 리스트 추출
 		List<String> result = new ArrayList<>();
-		for (int i = 0; i < list.size(); i++) {
+		for (int i = 0; i < recommendedFriendsList.size(); i++) {
 			if (i == 5)
 				break;
-			result.add(list.get(i).getKey());
+			result.add(recommendedFriendsList.get(i).getKey());
 		}
 		return result;
 	}
@@ -114,5 +103,19 @@ public class Problem7 {
 	private static void removeZeroScore(Map<String, Integer> scoreInfo){
 		scoreInfo.entrySet().removeIf(
 				entry -> entry.getValue().equals(0));
+	}
+
+	private static List<Map.Entry<String, Integer>> getSortedList(Map<String, Integer> scoreInfo) {
+		List<Map.Entry<String, Integer>> list = new ArrayList<>(scoreInfo.entrySet());
+		Collections.sort(list, (first, second) -> {
+			if (first.getValue() > second.getValue()) {
+				return -1;
+			}
+			if (first.getValue() < second.getValue()) {
+				return 1;
+			}
+			return first.getKey().compareTo(second.getKey());
+		});
+		return list;
 	}
 }
