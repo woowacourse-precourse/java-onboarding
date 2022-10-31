@@ -1,9 +1,13 @@
 package onboarding;
 
+import onboarding.p2.Cryptogram;
+
 public class Problem2 {
 
 
     public static String solution(String cryptogram) {
+        Cryptogram input = new Cryptogram(cryptogram);
+
         String answer = deduplication(cryptogram);
         return answer;
     }
@@ -46,6 +50,7 @@ public class Problem2 {
         // 더이상 줄일 필요가 없다면 해당 값을 return
         return nextCryptogram;
     }
+
 
 }
 
