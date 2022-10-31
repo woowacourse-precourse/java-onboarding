@@ -7,18 +7,20 @@ public class Problem4 {
     public static String solution(String word) {
         if(CheckInput(word)){
             char[] charArray = word.toCharArray();
+            String ans = "";
 
             for(char c : charArray){
                 if( Classification(c) == BIG){
                     System.out.println("BIG");
                 }
                 if( Classification(c) == SMALL){
-                    System.out.println("SMALL");
+                    ans += ReverseSmall(c);
                 }
                 if( Classification(c) == ETC){
                     System.out.println("ETC");
                 }
             }
+            return ans;
 
         }throw new IllegalArgumentException("잘못된 입력값");
     }
@@ -36,5 +38,10 @@ public class Problem4 {
         if(charvalue >= 65 && charvalue <=90) return BIG;
         if(charvalue >= 97 && charvalue <= 122) return SMALL;
         return ETC;
+    }
+
+    /* 기능3 : 소문자 변환 */
+    private static char ReverseSmall(char small){
+        return (char)(122-(small-97));
     }
 }
