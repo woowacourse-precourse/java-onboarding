@@ -25,6 +25,22 @@ class Problem1 {
         else if(crong.get(0) == 1 || crong.get(0) == 399 || crong.get(1) == 2 || crong.get(1) == 400) { return -1; }
 
 
+    // 예외사항 모두 통과시 게임 승자 정하기
+        // 각 자리 숫자를 모두 더한 값을 저장할 배열
+        int[] page_nums_sum = {0, 0, 0, 0};
+
+        // 각 자리 숫자를 모두 곱한 값을 저장할 배열
+        int[] page_nums_multi = {1, 1, 1, 1};
+
+        // 각 자리 숫자를 모두 더하거나 모두 곱해서 배열에 저장
+        for (int i = 0; i < page_nums.length; i++) {
+            while(page_nums[i] > 0) {
+                page_nums_sum[i] += page_nums[i] % 10;
+                page_nums_multi[i] *= page_nums[i] % 10;
+                page_nums[i] /= 10;
+            }
+        }
+
         return answer;
     }
 }
