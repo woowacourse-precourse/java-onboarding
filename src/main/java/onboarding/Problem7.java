@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 public class Problem7 {
     private static final int MAX_RECOMMENDATION_COUNT = 5;
-    private static final int NOT_RECOMMENDATION_SCORE = 0;
+    private static final int MIN_RECOMMENDATION_SCORE = 0;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Map<String, Friends> userFriends = new HashMap<>();
@@ -64,7 +64,7 @@ public class Problem7 {
 
     private static Predicate<Map.Entry<String, Integer>> predicate(String user, Friends myFriends) {
         return score -> notMe(user, score)
-                && score.getValue() != NOT_RECOMMENDATION_SCORE
+                && score.getValue() > MIN_RECOMMENDATION_SCORE
                 && myFriends.notContains(score.getKey());
     }
 
