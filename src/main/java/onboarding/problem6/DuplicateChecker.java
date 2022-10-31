@@ -3,7 +3,7 @@ package onboarding.problem6;
 import java.util.List;
 
 public class DuplicateChecker {
-    UserRepository userRepository;
+    UserRepository userRepository = new UserRepository();
     //입력받은 정보 저장 리스트 클래스
 
 
@@ -14,6 +14,6 @@ public class DuplicateChecker {
 
     //리스트 클래스를 반환하는 함수
     public List<String> getUsers(){
-        return this.userRepository.getUsers();
+        return this.userRepository.getDuplicatedUsers();
     }
 }

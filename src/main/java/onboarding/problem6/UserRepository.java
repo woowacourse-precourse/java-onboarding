@@ -8,14 +8,17 @@ public class UserRepository {
     List<User> userRepository = new ArrayList<>();
 
     public void create(List<String> data) {
-        boolean isDuplicated = false;
         User user1 = new User(data);
-        for(var user: userRepository)if(isDuplicated = user.checkDuplicated(user1))return;
         userRepository.add(user1);
     }
 
-    public List<String> getUsers() {
-        return this.userRepository.stream().map(User::getEmail).collect(Collectors.toList());
+    public List<String> getDuplicatedUsers() {
+        return this.userRepository.stream().filter(user1->{
+            boolean isDuplicated = false;
+            for(var user2: userRepository)
+                if(user1 != user2 && user1.checkDuplicated(user2))isDuplicated = true;
+            return isDuplicated;
+        }).map(User::getEmail).sorted().collect(Collectors.toList());
     }
 
     //userRepository에 User 추가하는 함수 이 때 모든 배열 요소에 체크 함수를 검사한다.
