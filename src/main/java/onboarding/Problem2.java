@@ -53,7 +53,6 @@ public class Problem2 {
         if (indexNew != word.length) {  // 결과문자와 기준문자 길이 다르다면, 중복제거작업이 있었으므로 다시 확인
             return deduplication(revisionWords);    // 합쳐진 결과값 앞부분 재검토 필요, 앞순서부터 다시 연속 없을떄까지 재귀 반복
         }
-        System.out.println(revisionWords);  // 문자 확인용 (임시)
         return revisionWords;
     }
 }
