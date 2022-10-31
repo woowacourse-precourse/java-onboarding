@@ -8,25 +8,8 @@ public class Problem6 {
         // 분리된 닉네임들과 어떤 닉네임에서 사용되었는지를 표시하는 List를 함께 Mapping한다.
         Map<String, List<Integer>> stringToDuplicated = makeDuplicatedMap(forms);
 
-        System.out.println(stringToDuplicated);
-
-        //3글자 이상 겹치면 중복으로 이메일이 출력되는 현상을 막기위해 Set 사용
-        Set<String> duplicatedEmails = new HashSet<>();
-
-        for (String check : stringToDuplicated.keySet()){
-            //중복 값이 2개 이상 있는 경우
-            if(Collections.frequency(stringToDuplicated.get(check),1) > 1 ){
-                //중복 체크된 닉네임의 이메일 주소를 duplicatedEmails에 저장한다.
-                for (int i=0;i < stringToDuplicated.get(check).size(); i++ ){
-                    if(stringToDuplicated.get(check).get(i) == 1 ) {
-                        duplicatedEmails.add(forms.get(i).get(0));
-                    }
-                }
-            }
-        }
-
         //answer에 담아서 리턴
-        List<String> answer = new ArrayList<>(duplicatedEmails);
+        List<String> answer = new ArrayList<>(findDuplicatedNickNamesForEmail(stringToDuplicated,forms));
 
         return answer;
     }
@@ -83,16 +66,23 @@ public class Problem6 {
         return checkList;
     }
 
-    public static void main(String[] args) {
-        List<List<String>> forms = List.of(
-                List.of("jm@email.com", "제이슨슨"),
-                List.of("jason@email.com", "제이슨"),
-                List.of("woniee@email.com", "워니"),
-                List.of("mj@email.com", "엠제1이"),
-                List.of("nowm@email.com", "이제엠")
-        );
+    //중복된 닉네임의 이메일을 반환
+    public static Set<String> findDuplicatedNickNamesForEmail(Map<String, List<Integer>> stringToDuplicated,List<List<String>> forms){
+        //3글자 이상 겹치면 중복으로 이메일이 출력되는 현상을 막기위해 Set 사용
+        Set<String> duplicatedEmails = new HashSet<>();
 
-        System.out.println(solution(forms));
+        for (String check : stringToDuplicated.keySet()){
+            //중복 값이 2개 이상 있는 경우
+            if(Collections.frequency(stringToDuplicated.get(check),1) > 1 ){
+                //중복 체크된 닉네임의 이메일 주소를 duplicatedEmails에 저장한다.
+                for (int i=0;i < stringToDuplicated.get(check).size(); i++ ){
+                    if(stringToDuplicated.get(check).get(i) == 1 ) {
+                        duplicatedEmails.add(forms.get(i).get(0));
+                    }
+                }
+            }
+        }
+
+        return duplicatedEmails;
     }
-
 }
