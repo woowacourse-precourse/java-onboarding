@@ -20,6 +20,10 @@ public class Problem7 {
         // user, user의 친구, 점수가 0점인 사람 제거
         removeRecommendFriends(user, alreadyFds, recommendFds);
 
+        // 정렬 (점수 내림차순, 점수 같을 시 이름 오름차순)
+        List<Map.Entry<String, Integer>> entryList = new ArrayList<>(recommendFds.entrySet());
+        sortScore(entryList);
+
         return answer;
     }
 
@@ -80,5 +84,12 @@ public class Problem7 {
             if (recommendFds.get(entry.getKey()) == 0) keys.add(entry.getKey());
         }
         for (String key : keys) recommendFds.remove(key);
+    }
+
+    public static void sortScore(List<Map.Entry<String, Integer>> entryList) {
+        entryList.sort((o1, o2) -> {
+            if (Objects.equals(o2.getValue(), o1.getValue())) return o1.getKey().compareTo(o2.getKey());
+            return o2.getValue() - o1.getValue();
+        });
     }
 }
