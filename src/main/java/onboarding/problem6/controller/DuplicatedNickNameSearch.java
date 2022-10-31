@@ -8,14 +8,22 @@ import java.util.List;
 
 public class DuplicatedNickNameSearch {
     private List<List<String>> forms;
-    private ArrayList<Integer> duplicatedCrewsIndex;
-    private List<String> duplicatedCrewsEmail;
+    private ArrayList<Integer> duplicatedCrewsIndex = new ArrayList<>();
+    private List<String> duplicatedCrewsEmail = new ArrayList<>();
 
     public DuplicatedNickNameSearch setNewForms(List<List<String>> forms){
         this.forms = forms;
         return this;
     }
-    public void checkCrewForm(int crewIndex){
+
+    public DuplicatedNickNameSearch checkAllCrewForm(){
+        for (int currentCrewIndex = 0; currentCrewIndex < forms.size(); currentCrewIndex++) {
+            checkCrewForm(currentCrewIndex);
+        }
+        return this;
+    }
+
+    private void checkCrewForm(int crewIndex){
         String currentCrewNickname= NicknameListService.getNicknameFromList(forms.get(crewIndex));
         for(int index = 0; index<currentCrewNickname.length()-1; index++){
             addDuplicatedCrew(DuplicatedCrewService.getSubString(currentCrewNickname, index), crewIndex);
