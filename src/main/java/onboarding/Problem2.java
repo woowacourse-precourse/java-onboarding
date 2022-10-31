@@ -39,7 +39,13 @@ public class Problem2 {
     }
 
     private static String decode(String cryptogram) {
+        StringBuffer newCryptogram = new StringBuffer(cryptogram);
 
+        while (findConsecutiveChar(newCryptogram).size() != 0) {
+            newCryptogram = removeConsecutiveChar(newCryptogram);
+        }
+
+        return newCryptogram.toString();
     }
 
 }
