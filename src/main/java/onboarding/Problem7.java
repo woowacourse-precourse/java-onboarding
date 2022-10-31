@@ -1,5 +1,7 @@
 package onboarding;
 
+import onboarding.problem7.CrewId;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -9,53 +11,71 @@ public class Problem7 {
         return cntOfSameFriendsWithMe * 10 + cntOfVisit;
     }
 
-    public static Set<String> getAllCrews(List<List<String>> friendRelations, List<String> visitors) {
-        HashSet<String> allCrews = new HashSet<>();
-
-        // 관계에 있는 모든 크루들 저장
-        friendRelations.forEach(allCrews::addAll);
-        // 관계가 없는 크루도 있으니 방문한 크루들도 저장
-        allCrews.addAll(visitors);
-
-        return allCrews;
+    public static List<List<CrewId>> cast2DListStrToCrewId(List<List<String>> friendIdRelations) {
+        return friendIdRelations.stream()
+                .map(Problem7::castListStrToCrewId)
+                .collect(Collectors.toList());
     }
 
-    public static Map<String, Set<String>> createFriendGraph(Set<String> crews, List<List<String>> friendRelations) {
-        HashMap<String, Set<String>> friendGraph = new HashMap<>();
+    public static List<CrewId> castListStrToCrewId(List<String> ids) {
+        return ids.stream()
+                .map(CrewId::new)
+                .collect(Collectors.toList());
+    }
+
+    public static Set<CrewId> getAllCrewIds(List<List<CrewId>> crewRelations, List<CrewId> visitors) {
+        Set<CrewId> allCrewIds = new HashSet<>();
+
+        // 관계에 있는 모든 크루들 저장
+        crewRelations.forEach(crewRelation -> {
+            CrewId crew1 = crewRelation.get(0);
+            CrewId crew2 = crewRelation.get(1);
+
+            allCrewIds.add(crew2);
+            allCrewIds.add(crew1);
+        });
+        // 관계가 없는 크루도 있으니 방문한 크루들도 저장
+        allCrewIds.addAll(visitors);
+
+        return allCrewIds;
+    }
+
+    public static Map<CrewId, Set<CrewId>> createFriendGraph(Set<CrewId> crewIds, List<List<CrewId>> friendRelations) {
+        HashMap<CrewId, Set<CrewId>> friendGraph = new HashMap<>();
 
         // init graph
-        crews.forEach(crew -> friendGraph.put(crew, new HashSet<>()));
+        crewIds.forEach(crewId -> friendGraph.put(crewId, new HashSet<>()));
 
         // add line in graph
         friendRelations.forEach(friendRelation -> {
-            String crew1 = friendRelation.get(0);
-            String crew2 = friendRelation.get(1);
+            CrewId crewId1 = friendRelation.get(0);
+            CrewId crewId2 = friendRelation.get(1);
 
-            friendGraph.get(crew1).add(crew2);
-            friendGraph.get(crew2).add(crew1);
+            friendGraph.get(crewId1).add(crewId2);
+            friendGraph.get(crewId2).add(crewId1);
         });
 
         return friendGraph;
     }
 
-    public static int getCntOfSameFriendsWithMe(String me, Map<String, Set<String>> friendGraph, String crew) {
+    public static int getCntOfSameFriendsWithMe(CrewId me, Map<CrewId, Set<CrewId>> friendGraph, CrewId crew) {
         if (me.equals(crew))
             return 0;
 
-        Set<String> myFriends = friendGraph.get(me);
-        Set<String> crewFriends = friendGraph.get(crew);
+        Set<CrewId> myFriends = friendGraph.get(me);
+        Set<CrewId> crewFriends = friendGraph.get(crew);
 
-        Set<String> intersection = new HashSet<>(myFriends);
+        Set<CrewId> intersection = new HashSet<>(myFriends);
         intersection.retainAll(crewFriends);
         return intersection.size();
     }
 
-    public static int getCntOfVisit(List<String> visitors, String crew) {
+    public static int getCntOfVisit(List<CrewId> visitors, CrewId crew) {
         return (int)visitors.stream().filter(visitor -> visitor.equals(crew)).count();
     }
 
-    public static Map<String, Integer> getRecommendScoreByCrew(String me, Map<String, Set<String>> friendGraph, List<String> visitors) {
-        Map<String, Integer> recommendScoreByCrew = new HashMap<>();
+    public static Map<CrewId, Integer> getRecommendScoreByCrew(CrewId me, Map<CrewId, Set<CrewId>> friendGraph, List<CrewId> visitors) {
+        Map<CrewId, Integer> recommendScoreByCrew = new HashMap<>();
 
         friendGraph.keySet().forEach(crew -> {
             int cntOfSameFriendsWithMe = getCntOfSameFriendsWithMe(me, friendGraph, crew);
@@ -67,8 +87,8 @@ public class Problem7 {
         return recommendScoreByCrew;
     }
 
-    public static List<String> getRecommendCrews(Map<String, Integer> recommendScoreByCrew) {
-        ArrayList<String> recommendCrews = new ArrayList<>();
+    public static List<CrewId> getRecommendCrews(Map<CrewId, Integer> recommendScoreByCrew) {
+        List<CrewId> recommendCrews = new ArrayList<>();
 
         // 추천점수 0 초과만 추천리스트에 들어감
         recommendScoreByCrew.forEach((crew, recommendScore) -> {
@@ -77,28 +97,35 @@ public class Problem7 {
         });
 
         // 추천점수로 정렬
-        Comparator<String> comparator = Comparator.comparingInt(crew -> -recommendScoreByCrew.get(crew));
+        Comparator<CrewId> comparator = Comparator.comparingInt(crew -> -recommendScoreByCrew.get(crew));
         comparator = comparator.thenComparing(Comparator.naturalOrder());
         recommendCrews.sort(comparator);
 
         return recommendCrews;
     }
 
-    public static List<String> removeFriends(List<String> crews, Set<String> friends) {
+    public static List<CrewId> removeFriends(List<CrewId> crews, Set<CrewId> friends) {
         return crews.stream()
                 .filter(crew -> !friends.contains(crew))
                 .collect(Collectors.toList());
     }
 
-    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        Set<String> crews = getAllCrews(friends, visitors);
-        Map<String, Set<String>> friendGraph = createFriendGraph(crews, friends);
+    public static List<String> solution(String userStr, List<List<String>> friendsStr, List<String> visitorsStr) {
+        CrewId userId = new CrewId(userStr);
 
-        Map<String, Integer> recommendScoreByCrew = getRecommendScoreByCrew(user, friendGraph, visitors);
-        List<String> recommendCrews = getRecommendCrews(recommendScoreByCrew);
+        List<List<CrewId>> crewRelations = cast2DListStrToCrewId(friendsStr);
+        List<CrewId> crewVisitors = castListStrToCrewId(visitorsStr);
+
+        Set<CrewId> crewIds = getAllCrewIds(crewRelations, crewVisitors);
+        Map<CrewId, Set<CrewId>> friendGraph = createFriendGraph(crewIds, crewRelations);
+
+        Map<CrewId, Integer> recommendScoreByCrew = getRecommendScoreByCrew(userId, friendGraph, crewVisitors);
+        List<CrewId> recommendCrews = getRecommendCrews(recommendScoreByCrew);
         // TODO: 최대 5명 반환 구현
-        recommendCrews = removeFriends(recommendCrews, friendGraph.get(user));
+        recommendCrews = removeFriends(recommendCrews, friendGraph.get(userId));
 
-        return recommendCrews;
+        return recommendCrews.stream()
+                .map(CrewId::getId)
+                .collect(Collectors.toList());
     }
 }
