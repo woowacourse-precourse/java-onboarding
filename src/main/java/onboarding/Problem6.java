@@ -34,4 +34,28 @@ public class Problem6 {
         List<String> answer = emails.stream().sorted().collect(Collectors.toList());
         return answer;
     }
+    // 중복 글자 찾는 함수
+
+    public static void main(String[] args) {
+        List<List<String>> str = new ArrayList<>();
+
+        ArrayList<String> data1 = new ArrayList<>();
+        data1.add("jm@email.com");
+        data1.add("jason@email.com");
+        data1.add("woniee@email.com");
+        data1.add("mj@email.com");
+        data1.add("nowm@email.com");
+
+        ArrayList<String> data2 = new ArrayList<>();
+        data2.add("제이엠");
+        data2.add("제이슨");
+        data2.add("워니");
+        data2.add("엠제이");
+        data2.add("이제엠");
+
+        str.add(data1);
+        str.add(data2);
+
+        System.out.println(solution(str));
+    }
 }
