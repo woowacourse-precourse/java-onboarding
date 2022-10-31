@@ -5,6 +5,11 @@ import java.util.List;
 
 class Problem1 {
 
+    private static final int POBI_WIN = 1;
+    private static final int CRONG_WIN = 2;
+    private static final int DRAW = 0;
+    private static final int EXCEPTION_CASE = -1;
+
     /**
      * 좌,우측 페이지가 올바른 페이지 인지 확인하는 함수
      *
@@ -44,6 +49,25 @@ class Problem1 {
         return Math.max(add_result, max_result);
     }
 
+    /**
+     * 게임의 승자를 확인하는 함수
+     * @param pobiMaxNum : 포비가 가진 가장 큰 값
+     * @param crongMaxNum : 크롱이 가진 가장 큰값
+     * @return : 게임 결과
+     */
+    public static int checkWinner(int pobiMaxNum, int crongMaxNum){
+        if (pobiMaxNum > crongMaxNum) {
+            return POBI_WIN;
+        }
+        if (pobiMaxNum == crongMaxNum) {
+            return DRAW;
+        }
+        if (pobiMaxNum < crongMaxNum) {
+            return CRONG_WIN;
+        }
+        return EXCEPTION_CASE;
+    }
+
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
@@ -54,6 +78,7 @@ class Problem1 {
         int pobiMaxNum = Math.max(pageMaxNum(pobi.get(0)), pageMaxNum(pobi.get(1)));
         int crongMaxNum = Math.max(pageMaxNum(crong.get(0)), pageMaxNum(crong.get(1)));
 
+        answer = checkWinner(pobiMaxNum, crongMaxNum);
         return answer;
     }
 }
