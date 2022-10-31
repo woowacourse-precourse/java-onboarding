@@ -2,25 +2,24 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.regex.Pattern;
 
 public class Problem3 {
     public static int solution(int number) {
-        if (!validateNumber(number)) {
-            return 0;
-        }
+        checkNumberCollect(number);
 
         return countClap(number);
     }
 
     /**
-     * 올바른 숫자가 입력되었는지 검증합니다.
+     * 올바른 숫자가 입력되었는지 확인.
+     *
      * @param number 숫자
-     * @return 올바른 숫자라면 TRUE 반환
+     * @throws RuntimeException 오류 메세지
      */
-    private static boolean validateNumber(int number) {
-        // 숫자가 1 이상 ~ 10,000 이하 자연수 인지 확인
-        return (number >= 1 && number <= 10000);
+    private static void checkNumberCollect(int number) {
+        if (number < 1 || number > 10_000) {
+            throw new RuntimeException("1 ~ 10,000 숫자가 입력되어야 합니다.");
+        }
     }
 
     /**
@@ -31,7 +30,6 @@ public class Problem3 {
     private static int countClap(int number) {
         int countClap = 0;
 
-        // 3,6,9 존재 확인 및 갯수 체크
         for(int i = 1; i <= number; i++) {
             int[] splitNumber = getOneLetterNumbers(i);
 
