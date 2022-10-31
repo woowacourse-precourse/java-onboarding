@@ -11,7 +11,8 @@ public class Problem7 {
 		List<String> userFriends = new ArrayList<>();
 		Map<String, Integer> friendScore = new HashMap<>();
 		findUserFriend(friends, userFriends, user);
-		calcFriendsScore(friendScore, friends, userFriends);
+		calcFriendsScore(user, friendScore, friends, userFriends);
+		calcVisitorScore(visitors, friendScore);
 		return answer;
 	}
 
@@ -28,13 +29,26 @@ public class Problem7 {
 		}
 	}
 
-	public static void calcFriendsScore(Map<String, Integer> friendScore, List<List<String>> friends,
+	public static void calcFriendsScore(String user, Map<String, Integer> friendScore, List<List<String>> friends,
 		List<String> userFriends) {
-		
+		for (List<String> friend : friends) {
+			String friendA = friend.get(0);
+			String friendB = friend.get(1);
+			if (isFriendsFriend(user, friendA, friendB, userFriends)) {
+				friendScore.put(friendB, friendScore.getOrDefault(friendB, 10) + 10);
+			}
+			if (isFriendsFriend(user, friendB, friendA, userFriends)) {
+				friendScore.put(friendA, friendScore.getOrDefault(friendA, 10) + 10);
+			}
+		}
 	}
 
 	public static boolean isFriendsFriend(String user, String friendA, String friendB, List<String> userFriends) {
 		return userFriends.contains(friendA) && !friendB.equals(user);
+	}
+
+	public static void calcVisitorScore(List<String> visitors, Map<String, Integer> friendScore) {
+
 	}
 
 	public static void sortScore() {
