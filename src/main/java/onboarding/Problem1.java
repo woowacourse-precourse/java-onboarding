@@ -9,6 +9,18 @@ class Problem1 {
     return answer;
   }
 
+  public static int getScoreWithDigits(Integer page) {
+    List<Integer> digitList = getDigitListByPageList(page);
+    int sum = 0;
+    int duplicate = 1;
+
+    for (int digit : digitList) {
+      sum += digit;
+      duplicate *= digit;
+    }
+    return Math.max(sum, duplicate);
+  }
+
   public static List<Integer> getDigitListByPageList(Integer page) {
     List<Integer> digitList = new ArrayList<>();
     while (page > 0) {
@@ -17,5 +29,4 @@ class Problem1 {
     }
     return digitList;
   }
-
 }
