@@ -17,6 +17,12 @@ public class Problem7 {
         return answer;
     }
 
+    public static void initData(String userName){
+        recommendationPoiont = new HashMap<String, Integer>();
+        user = userName;
+    }
+
+
     public static void sort(Map<String, Integer> recommendationPoiont){
         List<Map.Entry<String, Integer>> entryList = new ArrayList<Map.Entry<String, Integer>>(recommendationPoiont.entrySet());
         Collections.sort(entryList, new recommendationPointComparator());
