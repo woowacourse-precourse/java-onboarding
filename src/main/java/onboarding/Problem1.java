@@ -3,7 +3,9 @@ package onboarding;
 import java.util.List;
 
 class InvalidatePageException extends Exception {
+}
 
+class InvalidatePersonException extends Exception {
 }
 
 
@@ -12,12 +14,12 @@ class Problem1 {
     private static final int MAX_PAGE = 400;
 
     private static boolean checkPage(int leftPage, int rightPage) {
-        boolean validate = checkMinMaxPage(leftPage) && checkMinMaxPage(rightPage);
+        boolean validate = checkRangeInPage(leftPage) && checkRangeInPage(rightPage);
         validate &= Math.abs(leftPage - rightPage) == 1;
         return validate;
     }
 
-    private static boolean checkMinMaxPage(int page) {
+    private static boolean checkRangeInPage(int page) {
         return page >= MIN_PAGE && page <= MAX_PAGE;
     }
 
@@ -33,7 +35,10 @@ class Problem1 {
         return Math.max(sum, mul);
     }
 
-    private static int getMaxScore(List<Integer> person) throws InvalidatePageException {
+    private static int getMaxScore(List<Integer> person) throws InvalidatePageException, InvalidatePersonException {
+        if (person == null || person.size() != 2) {
+            throw new InvalidatePersonException();
+        }
         int leftPage = person.get(0);
         int rightPage = person.get(1);
         if (!checkPage(leftPage, rightPage)) {
@@ -54,7 +59,7 @@ class Problem1 {
             } else {
                 answer = 0;
             }
-        } catch (InvalidatePageException e) {
+        } catch (Exception e) {
             answer = -1;
         }
         return answer;
