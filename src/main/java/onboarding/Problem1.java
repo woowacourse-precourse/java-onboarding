@@ -93,5 +93,4 @@ class Problem1 {
         System.out.println(answer);
         return answer;
     }
-
 }
