@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     static HashMap<String, List<String>> friendship = new HashMap<>();
@@ -25,6 +22,26 @@ public class Problem7 {
         System.out.println("scores = " + scores);
         //TODO: 가장 큰 5개 뽑는 것과 정렬 만들기
         return answer;
+    }
+
+    public static List<Map.Entry<String, Integer>> sortScores() {
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(scores.entrySet());
+
+        sort(entryList);
+        return entryList;
+    }
+
+    private static void sort(List<Map.Entry<String, Integer>> entryList) {
+        entryList.sort((o1, o2) -> {
+            String key1, key2;
+
+            if (o2.getValue() != o1.getValue()) {
+                return o2.getValue() - o1.getValue();
+            }
+            key1 = o1.getKey();
+            key2 = o2.getKey();
+            return key1.compareTo(key2);
+        });
     }
 
     public static void makeScoresWithFriendship(List<String> userFriends, String crew) {
