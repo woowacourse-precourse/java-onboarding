@@ -12,8 +12,8 @@ public class Problem6 {
   public static List<String> solution(List<List<String>> forms) {
     Map<String, List<Integer>> nicknameParseMap = new HashMap<>();
     parseNickname(forms, nicknameParseMap);
-    Set<String> answer = getAnswer(forms, nicknameParseMap);
-    return new ArrayList<>(answer);
+    List<String> answer = getAnswer(forms, nicknameParseMap);
+    return answer;
   }
 
   private static void parseNickname(List<List<String>> forms,
@@ -32,7 +32,7 @@ public class Problem6 {
     }
   }
 
-  private static Set<String> getAnswer(List<List<String>> forms,
+  private static List<String> getAnswer(List<List<String>> forms,
       Map<String, List<Integer>> nicknameParseMap) {
     Set<String> answer = new TreeSet<>();
     for (List<Integer> crewList : nicknameParseMap.values()) {
@@ -43,6 +43,6 @@ public class Problem6 {
         }
       }
     }
-    return answer;
+    return new ArrayList<>(answer);
   }
 }
