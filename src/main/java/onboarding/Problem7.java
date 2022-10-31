@@ -52,6 +52,23 @@ public class Problem7 {
             scoreMap.put(friend, score);
         }
     }
+    // 타임라인에 방문한 횟수 점수 계산
+    public static void getScoreFromTimeline(String user, List<String> visitors) {
+        List<String> myFriends = new ArrayList<>();
+        if (friendMap.containsKey(user)) {
+            myFriends = friendMap.get(user);
+        }
+        for (String visitor : visitors) {
+            // 이미 친구인 경우 추천하지 않음
+            if (myFriends.contains(visitor)) continue;
+
+            if (scoreMap.containsKey(visitor)) {
+                scoreMap.put(visitor, scoreMap.get(visitor)+1);
+            } else {
+                scoreMap.put(visitor, 1);
+            }
+        }
+    }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
