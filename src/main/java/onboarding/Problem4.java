@@ -15,6 +15,10 @@ public class Problem4 {
             frogAlphabet.put(convertMessage[0][j],convertMessage[1][j]);
             frogAlphabet.put(convertMessage[1][j],convertMessage[0][j]);
         }
+        for (int i = 0 ; i < word.length(); i++){
+            String ch = String.valueOf(word.charAt(i));
+            sb.append(ch.replace(ch,frogAlphabet.getOrDefault(ch,ch)));
+        }
         return sb.toString();
     }
 }
