@@ -7,9 +7,11 @@ public class Problem2 {
         }
     }
 
-    public static boolean hasException(String crytogram){
-        if(crytogram.length() < 1 || crytogram.length() > 1000)
+    public static boolean hasException(String crytogram) {
+        if (crytogram.length() < 1 || crytogram.length() > 1000)
             return true;
-
+        else if (crytogram.equals(crytogram.toLowerCase()) == false)
+            return true;
         return false;
+    }
 }
