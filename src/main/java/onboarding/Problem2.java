@@ -1,6 +1,6 @@
 package onboarding;
 
-import onboarding.helper.TypeConverter;
+import onboarding.problem2.TypeConverter;
 import onboarding.problem2.CryptogramDecoder;
 
 import java.util.List;

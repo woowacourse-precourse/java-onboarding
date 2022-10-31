@@ -45,7 +45,7 @@ public class FriendRecommender {
             if (isUser(relation.get(0)) || isUser(relation.get(1))) continue;
             if (isFriend(relation.get(0)) && !isFriend(relation.get(1)))
                 repository.addPoint(relation.get(1), COMMON_FRIENDS_SCORE);
-            if (isFriend(relation.get(1)) && !!isFriend(relation.get(0)))
+            if (isFriend(relation.get(1)) && !isFriend(relation.get(0)))
                 repository.addPoint(relation.get(0), COMMON_FRIENDS_SCORE);
         }
     }

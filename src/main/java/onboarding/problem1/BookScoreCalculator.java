@@ -1,12 +1,11 @@
 package onboarding.problem1;
 
 import java.util.Arrays;
-import java.util.List;
 
 public class BookScoreCalculator {
 
     public static int score(BookPage bookPage){
-        return Math.max(pageScore(bookPage.getLeftPage()), pageScore(bookPage.getRightPage());
+        return Math.max(pageScore(bookPage.getLeftPage()), pageScore(bookPage.getRightPage()));
     }
 
     private static int pageScore(Integer pageNumber){

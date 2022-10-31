@@ -20,9 +20,6 @@ import static org.mockito.Mockito.*;
 @Nested
 public class CrewTest {
 
-    private final Email VALID_EMAIL = new Email("pobi@email.com");
-    private final Nickname VALID_NICKNAME = new Nickname("포비");
-
     @DisplayName("CrewConstructor Test")
     @ParameterizedTest(name = "{displayName} : Case {index}")
     @ArgumentsSource(CrewFromTestData.class)
