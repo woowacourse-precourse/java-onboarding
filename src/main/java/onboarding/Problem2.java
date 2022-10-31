@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
@@ -44,7 +45,11 @@ public class Problem2 {
         }
     }
 
-    private String charListToString(List<Character> characterList) {
-        return null;
+    private static String charListToString(List<Character> characterList) {
+        String str;
+        str = characterList.stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining());
+        return str;
     }
 }
