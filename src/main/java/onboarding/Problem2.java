@@ -1,8 +1,10 @@
 package onboarding;
 
+import static onboarding.problem2.Decryptor.decrypt;
+
 public class Problem2 {
+
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        return decrypt(cryptogram);
     }
 }
