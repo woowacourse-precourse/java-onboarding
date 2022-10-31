@@ -6,6 +6,9 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        if(checkException(pobi, crong)) {
+            return -1;
+        }
         int pobiPoint = getMyPoint(pobi);
         int crongPoint = getMyPoint(crong);
         answer = whoIsWinner(pobiPoint, crongPoint);
@@ -56,5 +59,24 @@ class Problem1 {
         }
 
         return -1;
+    }
+
+    private static boolean checkException(List<Integer> gamer1, List<Integer> gamer2) {
+        // 왼쪽 페이지가 홀수, 오른쪽 페이지가 짝수 인지 검증
+        if(gamer1.get(0) % 2 == 0 || gamer1.get(1) % 2 == 1) {
+            return true;
+        }
+        if(gamer2.get(0) % 2 == 0 || gamer2.get(1) % 2 == 1) {
+            return true;
+        }
+        // 인접한 페이지인지 검증
+        if(gamer1.get(1) - gamer1.get(0) != 1) {
+            return true;
+        }
+        if(gamer2.get(1) - gamer2.get(0) != 1) {
+            return true;
+        }
+
+        return false;
     }
 }
