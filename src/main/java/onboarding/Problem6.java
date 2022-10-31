@@ -20,6 +20,10 @@ public class Problem6 {
         }
     }
     static void addData(List<String> data) {
+        for (int i = 0; i < data.size(); i++) {
+            if (i == 0) email.add(data.get(i));
+            if (i == 1) nickname.add(data.get(i));
+        }
     }
     static void findNickname(List<String> nickname) {
     }
