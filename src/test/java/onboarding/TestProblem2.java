@@ -40,4 +40,12 @@ public class TestProblem2 {
         assertThat(Problem2.isException(T3)).isEqualTo(false);
         assertThat(Problem2.isException(T4)).isEqualTo(false);
     }
+
+    @Test
+    void TsetdeleteDuplicate(){
+        assertThat(Problem2.deleteDuplicate("abcdee", 4, 5)).isEqualTo("abcd");
+        assertThat(Problem2.deleteDuplicate("aacdef", 0, 1)).isEqualTo("cdef");
+        assertThat(Problem2.deleteDuplicate("aaaef", 0, 2)).isEqualTo("ef");
+
+    }
 }

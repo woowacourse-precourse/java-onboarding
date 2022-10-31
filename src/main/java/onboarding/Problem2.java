@@ -29,4 +29,9 @@ public class Problem2 {
             return true;
         return false;
     }
+
+    public static String deleteDuplicate(String cryptogram, Integer startIdx, Integer endIdx){
+        String Duplicate = cryptogram.substring(startIdx, endIdx+1);
+        return cryptogram.replaceAll(Duplicate, "");
+    }
 }
