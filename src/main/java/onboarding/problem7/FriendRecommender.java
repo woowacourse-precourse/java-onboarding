@@ -41,4 +41,25 @@ public class FriendRecommender {
         // Create new friend list(maximum 5) and return
         return new ArrayList<>();
     }
+
+    /**
+     * Search relationships in friend list and add relationships
+     * @param relationships relationship list created by friends
+     */
+    private void searchRelationships(Map<String, List<String>> relationships) {
+        for (List<String> relationship : friends) {
+            String idA = relationship.get(0);
+            String idB = relationship.get(1);
+            if (relationships.containsKey(idA)) {
+                relationships.get(idA).add(idB);
+            } else {
+                relationships.put(idA, new ArrayList<>(List.of(idB)));
+            }
+            if (relationships.containsKey(idB)) {
+                relationships.get(idB).add(idA);
+            } else {
+                relationships.put(idB, new ArrayList<>(List.of(idA)));
+            }
+        }
+    }
 }
