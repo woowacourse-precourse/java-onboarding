@@ -7,10 +7,6 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
-        if(pobi.size()!=2 || crong.size()!=2){
-            return -1;
-        }
-
         int pobi_left = (int)pobi.get(0);
         int pobi_right = (int)pobi.get(1);
         int crong_left = (int)crong.get(0);
@@ -34,42 +30,10 @@ class Problem1 {
             return -1;
         }
 
-
-        if(pobi_left/100 !=0){ // 3자리 수인 경우
-            pobi_left = Math.max( (pobi_left/100) + (pobi_left%100/10) + (pobi_left%10), (pobi_left/100) * (pobi_left%100/10) * (pobi_left%10));
-
-        } else if( pobi_left/100 ==0 && pobi_left%100/10 != 0){ // 2자리수인 경우
-            pobi_left = Math.max( (pobi_left%100/10) + (pobi_left%10),   (pobi_left%100/10) * (pobi_left%10));
-
-        }
-
-
-        if(pobi_right/100 !=0){ // 3자리 수인 경우
-            pobi_right = Math.max( (pobi_right/100) + (pobi_right%100/10) + (pobi_right%10), (pobi_right/100) * (pobi_right%100/10) * (pobi_right%10));
-
-        } else if( pobi_right/100 ==0 && pobi_right%100/10 != 0){ // 2자리수인 경우
-            pobi_right = Math.max( (pobi_right%100/10) + (pobi_right%10),   (pobi_right%100/10) * (pobi_right%10));
-
-        }
-
-
-        if(crong_left/100 !=0){ // 3자리 수인 경우
-            crong_left = Math.max( (crong_left/100) + (crong_left%100/10) + (crong_left%10), (crong_left/100) * (crong_left%100/10) * (crong_left%10));
-
-        } else if( crong_left/100 ==0 && crong_left%100/10 != 0){ // 2자리수인 경우
-            crong_left = Math.max( (crong_left%100/10) + (crong_left%10),   (crong_left%100/10) * (crong_left%10));
-
-        }
-
-
-        if(crong_right/100 !=0){ // 3자리 수인 경우
-            crong_right = Math.max( (crong_right/100) + (crong_right%100/10) + (crong_right%10), (crong_right/100) * (crong_right%100/10) * (crong_right%10));
-
-        } else if( crong_right/100 ==0 && crong_right%100/10 != 0){ // 2자리수인 경우
-            crong_right = Math.max( (crong_right%100/10) + (crong_right%10),   (crong_right%100/10) * (crong_right%10));
-
-        }
-
+        pobi_left = max_input(pobi_left);
+        pobi_right = max_input(pobi_right);
+        crong_left = max_input(crong_left);
+        crong_right = max_input(crong_right);
 
         pobi_result = Math.max(pobi_left, pobi_right);
         crong_result = Math.max(crong_left, crong_right);
@@ -86,10 +50,16 @@ class Problem1 {
         return answer;
     }
 
-    /*public static void main(String[] args){
-        List<Integer> pobi = List.of(98, 99);
-        List<Integer> crong = List.of(1, 2);
 
-        System.out.println(solution(pobi, crong));
-    }*/
+    public static int max_input(int input){
+        if(input/100 !=0){ // 3자리 수인 경우
+            input = Math.max( (input/100) + (input%100/10) + (input%10), (input/100) * (input%100/10) * (input%10));
+
+        } else if( input/100 ==0 && input%100/10 != 0){ // 2자리수인 경우
+            input = Math.max( (input%100/10) + (input%10),   (input%100/10) * (input%10));
+
+        }
+        return input;
+    }
+
 }

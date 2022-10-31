@@ -25,8 +25,4 @@ public class Problem3 {
         return answer;
     }
 
-    /*public static void main(String[] args){
-        int test = 99;
-        System.out.println(solution(test));
-    }*/
 }

@@ -17,57 +17,76 @@ public class Problem7 {
             }
         }
 
-        // 2. 친구의 친구 맵에 포인트와 함께 저장하기
         HashMap<String , Integer> friendsFriendsMap = new HashMap<>();
 
-        for( String userFriend : userFriendsList){
-            for(List<String> list : friends){
-                for(int i =0; i<list.size(); i++){
-                    // 중복값이라면
-                    if( friendsFriendsMap.get(list.get(1-i)) != null && list.get(i) == userFriend && list.get(1-i)!=user){
-                        int point = friendsFriendsMap.get(list.get(1-i));
-                        friendsFriendsMap.put(list.get(1-i), point+ 10);
-                    }
-                    // 처음 입력이라면
-                    if( friendsFriendsMap.get(list.get(1-i)) == null && list.get(i) == userFriend && list.get(1-i)!=user){
-                        friendsFriendsMap.put(list.get(1-i), 10);
+        // 2. 친구의 친구 맵에 포인트와 함께 저장하기 (user의 친구가 한명도 없는 경우)
+        if(userFriendsList.size()==0){
+
+            // a. 방문객 리스트를 친구의 친구 맵에 넣어준다 (추천할 친구가 없는 경우는 주어지지 않기 때문에 visitors은 무조건 0보다 크다)
+            for(String visitor : visitors){
+                // 중복값이라면
+                if(friendsFriendsMap.get(visitor)!=null){
+                    int point = friendsFriendsMap.get(visitor);
+                    friendsFriendsMap.put(visitor, point+ 1);
+                }
+                // 처음입력이라면
+                if(friendsFriendsMap.get(visitor)==null){
+                    friendsFriendsMap.put(visitor, 1);
+                }
+            }
+
+        } else {  // 2.친구의 친구 맵에 포인트와 함께 저장하기 (user의 친구가 존재하는 경우)
+            // a. 친구리스트로 친구의 친구 맵을 만들어 포인트를 준다 (중복값 있음 중복이면 점수가 중복인거임!!)
+            for( String userFriend : userFriendsList){
+                for(List<String> list : friends){
+                    for(int i =0; i<list.size(); i++){
+                        // 중복값이라면
+                        if( friendsFriendsMap.get(list.get(1-i)) != null && list.get(i) == userFriend && list.get(1-i)!=user){
+                            int point = friendsFriendsMap.get(list.get(1-i));
+                            friendsFriendsMap.put(list.get(1-i), point+ 10);
+                        }
+                        // 처음 입력이라면
+                        if( friendsFriendsMap.get(list.get(1-i)) == null && list.get(i) == userFriend && list.get(1-i)!=user){
+                            friendsFriendsMap.put(list.get(1-i), 10);
+                        }
                     }
                 }
             }
-        }
 
-        // 3. 2의 맵에서 친구리스트에 있는 사람이 있다면 빼준다
-        for( String userFriend : userFriendsList){
-            if(friendsFriendsMap.get(userFriend) != null){
-                friendsFriendsMap.remove(userFriend);
+            // b. a의 맵에서 친구 리스트와 공통된 사람이 있다면 빼준다
+            for( String userFriend : userFriendsList){
+                if(friendsFriendsMap.get(userFriend) != null){
+                    friendsFriendsMap.remove(userFriend);
+                }
             }
-        }
 
-        // 4. 방문객 리스트를 친구의 친구 맵에 넣어준다
-        for(String visitor : visitors){
-            // 중복값이라면
-            if(friendsFriendsMap.get(visitor)!=null){
-                int point = friendsFriendsMap.get(visitor);
-                friendsFriendsMap.put(visitor, point+ 1);
-            }
-            // 처음입력이라면
-            if(friendsFriendsMap.get(visitor)==null){
-                friendsFriendsMap.put(visitor, 1);
-            }
-        }
+            // c. 방문객 리스트의 크기가 0이아니라면, 친구의 친구맵에 추가한다 (이미 존재하는 사람이라면 1을 올려주고, 없는 사람이라면 1 포인트와 함께 새로 입력해준다)
+            if(visitors.size()>0){
+                for(String visitor : visitors){
+                    // 중복값이라면
+                    if(friendsFriendsMap.get(visitor)!=null){
+                        int point = friendsFriendsMap.get(visitor);
+                        friendsFriendsMap.put(visitor, point+ 1);
+                    }
+                    // 처음입력이라면
+                    if(friendsFriendsMap.get(visitor)==null){
+                        friendsFriendsMap.put(visitor, 1);
+                    }
+                }
 
-        // 4의 맵에서 친구가 있다면 빼준다
-        for( String userFriend : userFriendsList){
-            if(friendsFriendsMap.get(userFriend) != null){
-                friendsFriendsMap.remove(userFriend);
+                // d. 방문객 리스트의 크기가 0이아니라면, 친구의 친구맵에 중에 친구리스트에 포함된 사람을 뺴준다
+                for( String userFriend : userFriendsList){
+                    if(friendsFriendsMap.get(userFriend) != null){
+                        friendsFriendsMap.remove(userFriend);
+                    }
+                }
             }
-        }
 
-        // System.out.println(friendsFriendsMap);
+        } // end of else
 
         answer = new ArrayList<>();
 
-        // 정렬해서 리스트에 넣어준다
+        // 3. 리스트에 넣어서 포인트가 높은 순으로 정렬한뒤 최대 5명 까지만 담아준다
         List<Map.Entry<String, Integer>> entryList = new LinkedList<>(friendsFriendsMap.entrySet());
         entryList.sort(((o1, o2) -> friendsFriendsMap.get(o2.getKey()) - friendsFriendsMap.get(o1.getKey()) ));
         int cnt = 0 ;
@@ -77,24 +96,9 @@ public class Problem7 {
             if(cnt == 5){
                 break;
             }
-            // System.out.println("key : " + entry.getKey() + ", value : " + entry.getValue());
         }
 
         return answer;
     }
 
-    /*public static void main(String[] args) {
-        String user = "mrko";
-        List<List<String>> friends = List.of(
-                List.of("donut", "andole"),
-                List.of("donut", "jun"),
-                List.of("donut", "mrko"),
-                List.of("shakevan", "andole"),
-                List.of("shakevan", "jun"),
-                List.of("shakevan", "mrko")
-        );
-        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
-
-        System.out.println(solution(user, friends, visitors).toString());
-    }*/
 }

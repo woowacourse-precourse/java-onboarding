@@ -19,8 +19,4 @@ public class Problem4 {
         return answer;
     }
 
-    /*public static void main(String[] args) {
-        String test = "I love you";
-        System.out.println(solution(test));
-    }*/
 }

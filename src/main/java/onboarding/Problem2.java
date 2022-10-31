@@ -13,25 +13,24 @@ public class Problem2 {
 
         char[] arrChars = cryptogram.toCharArray();
         List<Integer> sameIdxList = null;
-        Set SameIdeSet = null;
+        Set SameIdxSet = null;
         char[] resultChars = null;
 
 
         do {
-            SameIdeSet = new HashSet();
+            SameIdxSet = new HashSet();
 
             for (int i = 0 ; i < arrChars.length-1; i++) {
 
                 if(arrChars[i] == arrChars[i + 1]){
-                    SameIdeSet.add(i);
-                    SameIdeSet.add(i+1);
+                    SameIdxSet.add(i);
+                    SameIdxSet.add(i+1);
                 }
             }
-            // System.out.println(SameIdeSet);
 
 
-            if(SameIdeSet.size()!=0){
-                sameIdxList = new ArrayList<>(SameIdeSet);
+            if(SameIdxSet.size()>0){
+                sameIdxList = new ArrayList<>(SameIdxSet);
             } else {
                 return new String(arrChars);
             }
@@ -53,18 +52,11 @@ public class Problem2 {
             arrChars = new char[resultChars.length];
             arrChars = resultChars;
 
-            // System.out.println(arrChars);
 
-        } while(SameIdeSet.size() > 0);
+        } while(SameIdxSet.size() > 0);
 
         answer = new String(arrChars);
         return answer;
     }
-
-    /*public static void main(String[] args){
-        String cryptogram =  "browoanoommnaon";
-        System.out.println(solution(cryptogram));
-    }*/
-
 
 }
