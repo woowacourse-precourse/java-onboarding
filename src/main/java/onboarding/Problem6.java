@@ -32,32 +32,22 @@ public class Problem6 {
         	
         	answer = newList;	
 		} 
-		return answer;
+		return answer; 
     }
     
     // 글자 비교
     public static int equals(String nickname1, String nickname2) {
     	int result = 0;
     	String a = null;
-		for(int i = 0; i < nickname1.length(); i++) {
-			
-			if(i != nickname1.length()-1) {
-				a = nickname1.substring(i,i+2);
-			}
-			
-			for(int j = 0; j < nickname2.length(); j++) {
-				
-				if(j != nickname2.length()-1) {
+		for(int i = 0; i < nickname1.length()-1; i++) {
+			a = nickname1.substring(i,i+2);
+			for(int j = 0; j < nickname2.length()-1; j++) {
 					String b = nickname2.substring(j,j+2);
-					
 					if(a.contains(b)) {
 						result = 1;
 						break;
 					}
-					
-				}
 			}
-			
 			if(result == 1) {
 				break;
 			}
