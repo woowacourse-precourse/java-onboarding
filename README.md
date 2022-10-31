@@ -1,35 +1,89 @@
 # 미션 - 온보딩
 
-## 🔍 진행 방식
+## ✅ 기능목록
 
-- 미션은 **기능 요구 사항, 프로그래밍 요구 사항, 과제 진행 요구 사항** 세 가지로 구성되어 있다.
-- 세 개의 요구 사항을 만족하기 위해 노력한다. 특히 기능을 구현하기 전에 기능 목록을 만들고, 기능 단위로 커밋 하는 방식으로 진행한다.
-- 기능 요구 사항에 기재되지 않은 내용은 스스로 판단하여 구현한다.
+<details>
+<summary style="font-size: large">문제 1</summary>
+<div markdown="1">
 
-## 📮 미션 제출 방법
+- 인자값에 대한 유효성검사 기능
+- 숫자의 각 자릿수의 합과 곱을 비교하는 기능
+- 두개의 숫자의 크기를 비교하는 기능
 
-- 미션 구현을 완료한 후 GitHub을 통해 제출해야 한다.
-    - GitHub을 활용한 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고해
-      제출한다.
-- GitHub에 미션을 제출한 후 [우아한테크코스 지원](https://apply.techcourse.co.kr) 사이트에 접속하여 프리코스 과제를 제출한다.
-    - 자세한 방법은 [제출 가이드](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse#제출-가이드) 참고
-    - **Pull Request만 보내고 지원 플랫폼에서 과제를 제출하지 않으면 최종 제출하지 않은 것으로 처리되니 주의한다.**
+</div>
+</details>
 
-## 🚨 과제 제출 전 체크 리스트 - 0점 방지
+<details>
+<summary style="font-size: large">문제 2</summary>
+<div markdown="1">
 
-- 기능 구현을 모두 정상적으로 했더라도 **요구 사항에 명시된 출력값 형식을 지키지 않을 경우 0점으로 처리**한다.
-- 기능 구현을 완료한 뒤 아래 가이드에 따라 테스트를 실행했을 때 모든 테스트가 성공하는지 확인한다.
-- **테스트가 실패할 경우 0점으로 처리**되므로, 반드시 확인 후 제출한다.
+1. 반복문을 통해 현재글자와 이전글자, 다음 글자를 비교하여 겹치지 않은 글자를 찾는 기능
+   2-1. 현재 글자와 앞글자를 비교하는 기능
+   2-2. 현재 글자와 다음글자를 비교하는 기능
+2. 1의 결과들을 String으로 변환하는 기능
+3. 2 결과값이 입력값과 차이가 있는지 확인하고 변화가 있으면 1번부터 다시반복
 
-### 테스트 실행 가이드
 
-- 터미널에서 `java -version`을 실행하여 Java 버전이 11인지 확인한다. 또는 Eclipse 또는 IntelliJ IDEA와 같은 IDE에서 Java 11로 실행되는지 확인한다.
-- 터미널에서 Mac 또는 Linux 사용자의 경우 `./gradlew clean test` 명령을 실행하고,   
-  Windows 사용자의 경우  `gradlew.bat clean test` 명령을 실행할 때 모든 테스트가 아래와 같이 통과하는지 확인한다.
+</div>
+</details>
+<details>
 
-```
-BUILD SUCCESSFUL in 0s
-```
+<summary style="font-size: large">문제 3</summary>
+<div markdown="1">
+
+1. 입력값이 Multiple number(3) 보다 작으면 0을 리턴
+2. 반복문을 통해 multiple number 부터 입력값까지 총 박수횟구 구하는 기능
+    2-1. 각각의 숫자의 박수횟수를 구하는 기능
+    2-2. 숫자의 일의 자리부터 마지막 자리까지 multiple number의 배수인지 확인하는 기능
+
+</div>
+</details>
+<details>
+
+<summary style="font-size: large">문제 4</summary>
+<div markdown="1">
+
+- 해당 글자가 대문자인지, 소문자인지 구분하는 기능
+- 대문자 혹은 소문자인 경우 매칭되는 글자로 변환하는 기능
+- 아스키 코드를 통해 글자를 변환하는 기능
+
+</div>
+</details>
+<details>
+
+<summary style="font-size: large">문제 5</summary>
+<div markdown="1">
+
+number를 가장큰 화폐단위부터 순서대로 나누고 나눈 몫을 answerList에 추가,
+나머지를 Number로 재할당
+
+</div>
+</details>
+<details>
+
+<summary style="font-size: large">문제 6</summary>
+<div markdown="1">
+
+- String을 length2 단위로 나눠서 List에 저장하는 기능
+- 위의 결과(List)가 다른 String에 포함되는지 확인하는 기능
+
+</div>
+</details>
+<details>
+
+<summary style="font-size: large">문제 7</summary>
+<div markdown="1">
+
+1. user의 친구 리스트 만드는 기능
+2. friends에서 user의 친구의 친구를 List로 저장
+3. visitor에서 user의 친구를 제외하는 기능
+4. 2와 3의 결과에따라 각각의 사용자에 점수를 할당하는기능
+5. 4의 결과에 따라 점수순(내림차순)으로 정렬하고, 동점일 경우 이름(오름차순)으로 정렬하는 기능
+6. 5의 결과의 length가 5를 초과하는 경우 length5 로 slice하는 기능
+    
+
+</div>
+</details>
 
 ---
 

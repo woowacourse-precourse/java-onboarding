@@ -1,11 +1,22 @@
 package onboarding;
 
-import java.util.Collections;
+import onboarding.problem7.User;
+import onboarding.problem7.utils.Slicer;
+
 import java.util.List;
 
+
 public class Problem7 {
+    private static final int RECOMMEND_COUNT = 5;
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        User userInfo = new User(user, friends, visitors);
+        List<String> recommendUserList = userInfo.getRecommendUserList();
+
+        if (recommendUserList.size() > RECOMMEND_COUNT) {
+            return Slicer.sliceList(recommendUserList, RECOMMEND_COUNT);
+        }
+
+        return recommendUserList;
     }
 }
