@@ -12,23 +12,23 @@ public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
-        //1. 친구 맵 만들기
+        //1. 친구 맵 만들기 -> 2. user의 친구 리스트 뽑기 (user가 없으면 빈 리스트)
         Map<String, List<String>> friendMap = createFriendMap(friends);
-        //2. user의 친구 리스트 뽑기 (user가 없으면 빈 리스트)
         List<String> userFriendList = friendMap.getOrDefault(user, Collections.emptyList());
 
-        //3. 추천 맵 만들기.
+        //3. 추천맵(추천친구-포인트) 만들기.
         Map<String,Integer> recommendFriendPoint = new HashMap<>();
         //4. 아는사이, 방문자 추가하고 점수 주기.
         recommendAcquaintance(user, userFriendList,friendMap, recommendFriendPoint);
         recommendVisitors(user, userFriendList, visitors, recommendFriendPoint);
 
-        //체크
-        System.out.println(recommendFriendPoint);
 
-        //5. 정렬한 리스트 제공
+        //5. 정렬한 최대 5개 리스트 제공
         return createRecommendList(recommendFriendPoint);
     }
+
+
+
 
     //1. 친구 맵 만들기
     public static Map<String, List<String>> createFriendMap (List<List<String>> friends){
