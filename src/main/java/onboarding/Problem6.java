@@ -71,7 +71,7 @@ public class Problem6 {
     static HashSet<String> hashSet = new HashSet<String>();
     List<List<String>> list;
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("");
+        List<String> answer = new ArrayList<>();
         if(!isValidPersonal(forms.size())) return answer;
         List<List<String>> list = new ArrayList<>();
         for (List<String> strings : forms) {
@@ -93,11 +93,10 @@ public class Problem6 {
         for (String s : hashSet) {
             putTreeSet(s, list);
         }
-        System.out.println(treeSet);
 
-
-
-
+        for (String s : treeSet) {
+            answer.add(s);
+        }
 
 
         return answer;
