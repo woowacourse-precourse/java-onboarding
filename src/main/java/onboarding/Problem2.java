@@ -17,6 +17,7 @@ public class Problem2 {
                     tempStr.deleteCharAt(i);
                     tempStr.deleteCharAt(i);
                     len -= 2;
+                    if(len == 0) return "";
                     checkOverLapByRecur(tempStr,len);
                 }
             }
