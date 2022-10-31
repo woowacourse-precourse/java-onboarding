@@ -30,10 +30,14 @@ public class Problem6 {
 
         for (int i = 0; i< name.length()-1; i++){
             String nameToken = getNameToken(name, i, i + 1);
-            if (nameTokenMap.get(nameToken) >= 2){
+            if (isNameDuplicate(nameTokenMap, nameToken)){
                 addDupNameList(dupNameLists, email);
             }
         }
+    }
+
+    private static boolean isNameDuplicate(Map<String, Integer> nameTokenMap, String nameToken) {
+        return nameTokenMap.get(nameToken) >= 2;
     }
 
     private static void addDupNameList(List<String> dupNameLists, String email) {
