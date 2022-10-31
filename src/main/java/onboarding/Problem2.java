@@ -1,5 +1,8 @@
 package onboarding;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 public class Problem2 {
 
     public static String solution(String cryptogram) {
@@ -31,5 +34,4 @@ public class Problem2 {
         }
         return pro(new_cryptogram);  // 재귀 호출
     }
-
 }
