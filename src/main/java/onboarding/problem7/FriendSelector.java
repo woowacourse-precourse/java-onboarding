@@ -29,4 +29,14 @@ public class FriendSelector {
         // Select maximum 5 friends
         return new ArrayList<>();
     }
+
+    /**
+     * Extract candidate list from candidate map and sort(descending order of score -> if same ascending order of name)
+     * @return list of friend candidates sorted
+     */
+    private List<Friend> sortCandidates() {
+        ArrayList<Friend> candidates = new ArrayList<>(candidateMap.values());
+        candidates.sort((o1, o2) -> o1.getScore() == o2.getScore() ? o1.getName().compareTo(o2.getName()) : o2.getScore() - o1.getScore());
+        return candidates;
+    }
 }
