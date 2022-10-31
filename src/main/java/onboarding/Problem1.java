@@ -80,4 +80,15 @@ class Problem1 {
         }
         return false;
     }
+    public static boolean checkRange(List<Integer> pobi, List<Integer> crong){
+        for(int i = 0; i < size; i++){
+            if(!(pobi.get(i) > 1 && pobi.get(i) < 400)){
+                return false;
+            }
+            if(!(crong.get(i) > 1 && crong.get(i) < 400)){
+                return false;
+            }
+        }
+        return true;
+    }
 }
