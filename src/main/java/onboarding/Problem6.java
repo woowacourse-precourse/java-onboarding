@@ -96,45 +96,45 @@ public class Problem6 {
     }
 
     private static void validateCrewInfo(List<List<String>> crewForms) {
-        if(!validateNumberOfCrew(crewForms)) {
+        if(validateNumberOfCrewFail(crewForms)) {
             throw new IllegalArgumentException(EXCEPTION_MESSAGE_PREFIX + WRONG_NUMBER_OF_CREW_EXCEPTION_MESSAGE);
         }
         crewForms.forEach(crewForm -> {
                     String crewEmail = crewForm.get(0);
                     String crewNickname = crewForm.get(1);
-                    if(!validateEmailType(crewEmail)) {
+                    if(validateEmailTypeFail(crewEmail)) {
                         throw new IllegalArgumentException(EXCEPTION_MESSAGE_PREFIX + WRONG_CREW_EMAIL_TYPE_EXCEPTION_MESSAGE);
                     }
-                    if(!validateEmailLength(crewEmail)) {
+                    if(validateEmailLengthFail(crewEmail)) {
                         throw new IllegalArgumentException(EXCEPTION_MESSAGE_PREFIX + WRONG_CREW_EMAIL_LENGTH_EXCEPTION_MESSAGE);
                     }
-                    if(!validateNicknameType(crewNickname)) {
+                    if(validateNicknameTypeFail(crewNickname)) {
                         throw new IllegalArgumentException(EXCEPTION_MESSAGE_PREFIX + WRONG_CREW_NICKNAME_TYPE_EXCEPTION_MESSAGE);
                     }
-                    if(!validateNicknameLength(crewNickname)) {
+                    if(validateNicknameLengthFail(crewNickname)) {
                         throw new IllegalArgumentException(EXCEPTION_MESSAGE_PREFIX + WRONG_CREW_NICKNAME_LENGTH_EXCEPTION_MESSAGE);
                     }
                 });
     }
 
-    private static boolean validateNumberOfCrew(List<List<String>> crewForms) {
-        return (crewForms.size() >= MIN_NUMBER_OF_CREW && crewForms.size() <=MAX_NUMBER_OF_CREW);
+    private static boolean validateNumberOfCrewFail(List<List<String>> crewForms) {
+        return (crewForms.size() < MIN_NUMBER_OF_CREW || crewForms.size() > MAX_NUMBER_OF_CREW);
     }
 
-    private static boolean validateEmailType(String crewEmail) {
-        return Pattern.compile(CREW_EMAIL_REGEX).matcher(crewEmail).matches();
+    private static boolean validateEmailTypeFail(String crewEmail) {
+        return !Pattern.compile(CREW_EMAIL_REGEX).matcher(crewEmail).matches();
     }
 
-    private static boolean validateEmailLength(String crewEmail) {
-        return (crewEmail.length() >= MIN_CREW_EMAIL_LENGTH && crewEmail.length() < MAX_CREW_EMAIL_LENGTH);
+    private static boolean validateEmailLengthFail(String crewEmail) {
+        return (crewEmail.length() < MIN_CREW_EMAIL_LENGTH || crewEmail.length() >= MAX_CREW_EMAIL_LENGTH);
     }
 
 
-    private static boolean validateNicknameType(String crewNickname) {
-        return Pattern.compile(CREW_NICKNAME_REGEX).matcher(crewNickname).matches();
+    private static boolean validateNicknameTypeFail(String crewNickname) {
+        return !Pattern.compile(CREW_NICKNAME_REGEX).matcher(crewNickname).matches();
     }
 
-    private static boolean validateNicknameLength(String crewNickname) {
-        return (crewNickname.length() >= MIN_CREW_NICKNAME_LENGTH && crewNickname.length() < MAX_CREW_NICKNAME_LENGTH);
+    private static boolean validateNicknameLengthFail(String crewNickname) {
+        return (crewNickname.length() < MIN_CREW_NICKNAME_LENGTH || crewNickname.length() >= MAX_CREW_NICKNAME_LENGTH);
     }
 }
