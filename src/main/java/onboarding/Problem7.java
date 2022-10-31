@@ -1,9 +1,8 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+
+import java.util.*;
+import java.util.Map.Entry;
 
 /**
  * 기능 구현 목록
@@ -151,6 +150,15 @@ public class Problem7 {
         HashMap<String, Integer> friendsScore = getFriendsScore(userFriends, userFriendsOfFriends);
         HashMap<String, Integer> visitorsScore = getVisitorsScore(userFriends, visitors);
         HashMap<String, Integer> allScore = sumScore(friendsScore, visitorsScore);
+
+        List<Entry<String,Integer>> entryList = new ArrayList<Entry<String,Integer>>(allScore.entrySet());
+        Collections.sort(entryList, new Comparator<Entry<String, Integer>>() {
+            @Override
+            public int compare(Entry<String, Integer> o1, Entry<String, Integer> o2) {
+                int comparision = o2.getValue().compareTo(o1.getValue());
+                return comparision == 0 ? o1.getKey().compareTo(o2.getKey()) : comparision;
+            }
+        });
 
         List<String> answer = Collections.emptyList();
         return answer;
