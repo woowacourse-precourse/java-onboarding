@@ -63,4 +63,28 @@ class Problem1 {
 
         return winner;
     }
+
+    private static int getScore(BookPage person) {
+        int score = 0;
+        int leftScore = comparePlusMultiple(person.leftPage);
+        int rightScore = comparePlusMultiple(person.rightPage);
+
+        score = Math.max(leftScore, rightScore);
+        return score;
+    }
+
+    private static int comparePlusMultiple(int page) {
+        int maxNum;
+        int plusNum = 0;
+        int multipleNum = 1;
+
+        while (page > 0) {
+            plusNum += page % 10;
+            multipleNum *= page % 10;
+            page /= 10;
+        }
+
+        maxNum = Math.max(plusNum, multipleNum);
+        return maxNum;
+    }
 }
