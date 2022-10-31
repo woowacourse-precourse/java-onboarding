@@ -25,8 +25,11 @@ public class Problem6 {
             for (int j=0; j<name.length()-1; j++) {
                 String nameSubString = name.substring(j, j+2);
                 if (nameMap.containsKey(nameSubString)) {
-                    result.add(nameMap.get(nameSubString));
-                    result.add(email);
+                    if (!(nameMap.get(nameSubString) == email)) {
+                        //this checks whether the substring is from the same nickname ex. "제이제이" has two "제이"
+                        result.add(nameMap.get(nameSubString));
+                        result.add(email);
+                    }
                 } else {
                     nameMap.put(nameSubString, email);
                 }
