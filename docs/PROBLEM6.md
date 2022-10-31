@@ -21,3 +21,12 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+<br>
+
+---
+
+## 기능 목록
+
+- [ ] 닉네임을 두 문자씩 자르기
+- [ ] 자른 문자열과 같은 닉네임이 존재할 경우, 해당 이메일을 반환
