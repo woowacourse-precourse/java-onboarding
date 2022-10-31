@@ -2,7 +2,6 @@ package onboarding;
 
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Problem7 {
 
@@ -61,20 +60,9 @@ public class Problem7 {
 
         Collections.sort(friends);
 
-        List<String> answer = new ArrayList<>();
-        int count = 0;
-        for (Friend friend : friends) {
-            if (friend.isNotMyFriend(user) && friend.score != 0) {
-                if (count < 5) {
-                    answer.add(friend.name);
-                    count++;
-                }
-            }
-        }
-
-        return answer;
+        return getAnswer(user, friends);
     }
-
+    
     private static void addScore(Map<String, Integer> numberOfFriends, List<Friend> friends, String user, int index) {
         List<String> userFriends = friends.get(numberOfFriends.get(user)).getMyFriends();
         Friend friend = friends.get(index);
@@ -125,5 +113,19 @@ public class Problem7 {
 
     private static void addMyFriend(Map<String, Integer> numberOfFriends, List<Friend> friends, String friendA, String friendB) {
         friends.get(numberOfFriends.get(friendA)).addMyFriend(friendB);
+    }
+
+    private static List<String> getAnswer(String user, List<Friend> friends) {
+        List<String> answer = new ArrayList<>();
+        int count = 0;
+        for (Friend friend : friends) {
+            if (friend.isNotMyFriend(user) && friend.score != 0) {
+                if (count < 5) {
+                    answer.add(friend.name);
+                    count++;
+                }
+            }
+        }
+        return answer;
     }
 }
