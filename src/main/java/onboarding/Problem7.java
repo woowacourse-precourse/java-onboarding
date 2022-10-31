@@ -16,6 +16,27 @@ public class Problem7 {
         }
         return friendList;
     }
+    
+    // 유저의 친구와 친구인지 체크
+    private static Map<String, Integer> checkFriends(Map<String, Integer> scoreMap, String user, List<List<String>> friends, List<String> friendList) {
+        for (List<String> friend : friends) {
+            if (friend.contains(user))
+                continue;
+            if (friendList.contains(friend.get(0))) {
+                if (scoreMap.containsKey(friend.get(1)))
+                    scoreMap.put(friend.get(1), scoreMap.get(friend.get(1)) + 10);
+                else
+                    scoreMap.put(friend.get(1), 10);
+            }
+            else if (friendList.contains(friend.get(1))) {
+                if (scoreMap.containsKey(friend.get(0)))
+                    scoreMap.put(friend.get(0), scoreMap.get(friend.get(0)) + 10);
+                else
+                    scoreMap.put(friend.get(0), 10);
+            }
+        }
+        return scoreMap;
+    }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> friendList = getFriendsList(user, friends);
