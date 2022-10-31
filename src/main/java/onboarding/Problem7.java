@@ -62,6 +62,12 @@ public class Problem7 {
             }
         });
 
+        for (int i = 0; i < listkeyset.size(); i++) {
+            if (i > 4)
+                break;
+            result.add(listkeyset.get(i).getKey());
+        }
 
+        return result;
     }
 }
