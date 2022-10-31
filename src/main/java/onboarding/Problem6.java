@@ -9,6 +9,7 @@ public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
         init();
+        putFormsToMap(forms);
         return output;
     }
 
@@ -16,6 +17,12 @@ public class Problem6 {
         map = new HashMap<>();
         duplicationCountMap = new HashMap<>();
         output = new ArrayList<>();
+    }
+
+    private static void putFormsToMap(List<List<String>> forms) {
+        for (List<String> list : forms) {
+            map.put(list.get(1), list.get(0));
+        }
     }
 
 }
