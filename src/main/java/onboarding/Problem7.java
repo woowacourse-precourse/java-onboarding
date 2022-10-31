@@ -15,12 +15,18 @@ class User {
 
     private final String id;
 
+    private SNS sns;
+
     User(String id) {
         this.id = id;
     }
 
     public String getId() {
         return id;
+    }
+
+    public SNS getSns() {
+        return sns;
     }
 
     static void validateIdLength(String id) {
@@ -38,6 +44,9 @@ class User {
         }
     }
 
+    public void addSNS(SNS sns) {
+        this.sns = sns;
+    }
 }
 
 class SNS {
