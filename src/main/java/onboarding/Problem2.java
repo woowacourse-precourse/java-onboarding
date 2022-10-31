@@ -34,8 +34,8 @@ public class Problem2 {
                 cryptogram = overlapCharsDelete(cryptogram, i + 1, overlapCount);
                 overlapCheck = false;
                 overlapCount = 1;
-                pastChar = cryptogram.charAt(i);
             }
+            pastChar = cryptogram.charAt(i);
         }
         if (overlapCheck) {
             cryptogram = overlapCharsDelete(cryptogram, cryptogram.length() - overlapCount, overlapCount);
