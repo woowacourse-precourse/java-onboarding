@@ -9,6 +9,8 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         findFriends(user, friends);
         findAcquaintances(friends);
+        findVisitors(visitors);
+        return sortDict(user);
     }
 
     private static void findFriends(String user, List<List<String>> friends) {
@@ -57,5 +59,19 @@ public class Problem7 {
         }
     }
 
+    private static List<String> sortDict(String user) {
+        List<String> recommendFrieds = new ArrayList<>();
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(recommendDict.entrySet());
+        entryList.sort(Map.Entry.comparingByKey());
+        entryList.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
+
+        for (Map.Entry<String, Integer> entry : entryList) {
+            if (!userFriends.contains(entry.getKey()) && entry.getKey() != user) {
+                recommendFrieds.add(entry.getKey());
+            }
+        }
+
+        return recommendFrieds;
+    }
 
 }
