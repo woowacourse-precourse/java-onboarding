@@ -6,6 +6,7 @@ import java.util.*;
 public class Problem7 {
 
     private static final int NEIGHBOR_POINT = 10;
+    private static final int VISITOR_POINT = 1;
     private static final List<String> USER_FRIENDS = new ArrayList<>();
     private static final Map<String, Integer> RECOMMEND_SCORE = new HashMap<>();
 
@@ -13,6 +14,7 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         getUserFriends(user, friends);
         getRecommendScoreByRelationship(user, friends);
+        getRecommendScoreByVisitor(visitors);
         return new ArrayList<>();
     }
 
@@ -51,6 +53,19 @@ public class Problem7 {
                 } else {
                     RECOMMEND_SCORE.put(userA,RECOMMEND_SCORE.get(userA) + NEIGHBOR_POINT);
                 }
+            }
+        }
+    }
+
+    private static void getRecommendScoreByVisitor(List<String> visitors) {
+        for (String visitor : visitors) {
+            if (USER_FRIENDS.contains(visitor)) {
+                continue;
+            }
+            if (!RECOMMEND_SCORE.containsKey(visitor)) {
+                RECOMMEND_SCORE.put(visitor, VISITOR_POINT);
+            } else {
+                RECOMMEND_SCORE.put(visitor, RECOMMEND_SCORE.get(visitor) + VISITOR_POINT);
             }
         }
     }
