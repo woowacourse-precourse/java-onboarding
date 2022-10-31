@@ -115,7 +115,7 @@ public class Problem7 {
             }
         }
 
-        public Map<String, Integer> sortUserScoreMap(){
+        private Map<String, Integer> sortUserScoreMap(){
             List<Map.Entry<String, Integer>> list = new LinkedList<>(userScoreMap.entrySet());
             Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
                 @Override
@@ -154,6 +154,13 @@ public class Problem7 {
                 '}';
         }
     }
+
+    // static class User{
+    //     private final String name;
+    //     private final List<String> friends;
+    //
+    //
+    // }
 
 
     static class RelationShip {
