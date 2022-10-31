@@ -66,7 +66,7 @@ public class Problem7 {
         Collections.sort(recommendFriends);
         for (int i = 0; i < recommendFriends.size(); i++) {
             String name = recommendFriends.get(i).name;
-            if (answer.size() >= 5 && recommendFriends.get(i).point == 0) {
+            if (answer.size() >= 5 || recommendFriends.get(i).point == 0) {
                 break;
             }
             if (!check.contains(name)) {
