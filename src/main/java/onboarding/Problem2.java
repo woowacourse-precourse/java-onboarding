@@ -59,4 +59,10 @@ public class Problem2 {
 
         return index;
     }
+
+    private static void buildString(StringBuilder sb, char[] c, int i) {
+        if (c[i] != '0') {
+            sb.append(c[i]);
+        }
+    }
 }
