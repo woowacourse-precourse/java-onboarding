@@ -160,7 +160,17 @@ public class Problem7 {
             }
         });
 
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
+        int cnt = 1;
+        for (Entry<String,Integer> entry : entryList){
+            if (cnt <= 5){
+                answer.add(entry.getKey());
+                cnt += 1;
+                continue;
+            }
+            break;
+        }
+
         return answer;
     }
 }
