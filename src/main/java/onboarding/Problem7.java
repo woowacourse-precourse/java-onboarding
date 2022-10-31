@@ -12,6 +12,7 @@ public class Problem7 {
         friendScore = new HashMap<>();
         findPotentialFriendAndScore(user, friends);
         findVisitedFriendAndScore(visitors);
+        arrangeList(answer);
         return answer;
     }
     /*
@@ -39,5 +40,15 @@ public class Problem7 {
                 friendScore.put(visitor, friendScore.getOrDefault(visitor, 0) + 1);
             }
         }
+    }
+    /*
+   점수 순으로 정렬
+    */
+    private static void arrangeList(List<String> answer) {
+        for (String Key : friendScore.keySet()) if (friendScore.get(Key)!=-1) answer.add(Key);
+        answer.sort((o1, o2) -> {
+            if (friendScore.get(o2) - friendScore.get(o1) > 0) return 1;
+            else return 0;
+        });
     }
 }
