@@ -11,7 +11,11 @@ public class Problem6 {
         List<Boolean> isdup_list = dc.check();
         for (int i = 0; i < forms.size(); i++) {
             if (isdup_list.get(i)) {
-                answer.add(forms.get(i).get(0));
+                String email = forms.get(i).get(0);
+                if (answer.contains(email)) {
+                    continue;
+                }
+                answer.add(email);
             }
         }
         Collections.sort(answer);
