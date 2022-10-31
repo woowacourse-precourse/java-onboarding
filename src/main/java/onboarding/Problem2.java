@@ -21,22 +21,26 @@ public class Problem2 {
     //인접한 중복문자 제거함수
     public static String removeDuplicate(String cryptogram){
         char[] tempResult = cryptogram.toCharArray();
-        int i = 0;
-        char prev = 0;
+        int idx = 0;
+        int nextIdx = 0;
 
-        for (char c : tempResult) {
-            /*
-            인접한 문자가 같지않으면 임시문자열에 더해준다.
-             */
-            if(prev != c){
-                tempResult[i++] = c;
-                prev = c;
+        for(idx = 1 ; idx < cryptogram.length() ; idx++ ){
+
+            //앞뒤문자가 동일하지않은경우
+            //결과에 추가해준다.
+            if(tempResult[idx-1] != tempResult[idx]){
+                tempResult[nextIdx++] = tempResult[idx-1];
             }else{
-                i -= 1;
+                //앞뒤문자가 동일한경우 인접한 모든 중복문자 제거
+                while(idx < cryptogram.length() && tempResult[idx-1] == tempResult[idx]){
+                    idx++;
+                }
             }
         }
 
-        return new String(tempResult).substring(0,i);
+        tempResult[nextIdx] = tempResult[idx-1];
+
+        return new String(tempResult).substring(0,nextIdx+1);
     }
 
 
