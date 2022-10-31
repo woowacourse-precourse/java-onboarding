@@ -8,6 +8,7 @@ public class Problem6 {
     private static final int NICKNAME_INDEX_OF_FORM = 1;
     private static final String EMAIL_CHECK = "@";
     private static final String EMAIL_RULE = "@email.com";
+    private static final int NAME_DUPLICATE_LENGTH_RULE = 2;
 
     public static List<String> solution(List<List<String>> forms) {
         Map<String, String> namesAlreadyApplied = new HashMap<>();
@@ -32,6 +33,9 @@ public class Problem6 {
             }
 
             Set<String> nicknameCombinations = new HashSet<>();
+            for (int i = 0; i < nickname.length() - 1; i++) {
+                String partialNickname = nickname.substring(i, i + NAME_DUPLICATE_LENGTH_RULE);
+            }
         }
 
         List<String> answer = List.of("answer");
