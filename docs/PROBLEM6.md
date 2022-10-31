@@ -21,3 +21,38 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+---
+
+## Duplicate Nickname Limit
+
+
+### 설명 요약
+
+    - 닉네임 중 같은 글자가 연속적으로 포함 되는 
+      지원자의 이메일 목록 반환
+<br/>
+
+### 기능 설계
+
+    - solution
+        주어진 입력값을 User[] 로 바꾸고 해쉬맵을 이용하여
+        중복 닉네임을 찾아 해당되는 유저의 이메일리스트 정렬하여
+        반환
+
+    - inItUsers
+        forms 를 유저 배열 형태로 초기화하여 반환
+
+    - getCandidateNicks
+        각 유저의 nick 을 두 글자의 형태로 분리해서
+        key 로 만들어 map 형태로 저장
+
+    - checkUsers
+        닉이 중복됐는지 check 후 이메일 리스트 형태로 반환
+
+    - getDuplicateNicks
+        중복된 닉 표시 후 map 갱신
+
+    - getEmails
+        중복된 닉을 가진 이메일 리스트 형태로 반환
+
