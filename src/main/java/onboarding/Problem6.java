@@ -24,15 +24,14 @@ public class Problem6 {
 
         // 매개변수로 들어온 forms를 HashMap으로 변환
         for (int i = 0; i < forms.size(); i++) {
-            for (int j = 0; j < forms.get(i).size(); j++)
+            for (int j = 0; j < forms.get(i).size(); j++) {
                 email = forms.get(i).get(0);
                 name = forms.get(i).get(1);
                 info.put(email, name);
+            }
         }
 
 
         return answer;
     }
-
-
 }
