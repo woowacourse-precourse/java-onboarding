@@ -24,10 +24,12 @@ public class Problem5 {
         List<Integer> answer = new ArrayList<>();
         int bankMoney = money;
         int paperMoney = MAX_PAPER;
+        int paperNumber;
 
         while (true) {
-            answer.add(withdrawPaper(bankMoney, paperMoney));
-            bankMoney %= paperMoney;
+            paperNumber = withdrawPaper(bankMoney, paperMoney);
+            answer.add(paperNumber);
+            bankMoney -= (paperMoney*paperNumber);
 
             if (paperMoney == 10) {
                 answer.add(bankMoney);
