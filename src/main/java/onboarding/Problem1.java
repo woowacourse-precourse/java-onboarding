@@ -9,10 +9,10 @@ class Problem1 {
             return -1;
         int bigPobi = compareNumberAndReturn(
                 calcForGetBigger(splitEachNumber(pobi.get(0))),
-                calcForGetBigger(splitEachNumber(pobi.get(0))));
+                calcForGetBigger(splitEachNumber(pobi.get(1))));
         int bigCrong = compareNumberAndReturn(
                 calcForGetBigger(splitEachNumber(crong.get(0))),
-                calcForGetBigger(splitEachNumber(crong.get(0))));
+                calcForGetBigger(splitEachNumber(crong.get(1))));
         if (bigPobi == bigCrong)
             return 0;
         if (bigPobi > bigCrong) {
