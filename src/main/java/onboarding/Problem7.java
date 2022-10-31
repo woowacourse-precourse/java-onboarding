@@ -9,3 +9,13 @@ public class Problem7 {
         return answer;
     }
 }
+
+/**
+ * 기능 요구사항
+ * 1. friends별 친구 저장
+ * 2. score 계산
+ *  - 함께 아는 친구 score 계산
+ *  - 방문자 score 계산
+ *      - user의 친구 제외해야함
+ * 3. 추천 친구 정렬
+ * **/
