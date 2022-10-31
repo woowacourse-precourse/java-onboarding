@@ -1,10 +1,11 @@
 package onboarding;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 public class Problem5 {
-    public static int[] withdraw(int money){
+    public static Integer[] withdraw(int money){
         int oman = money / 50000;
         money = money % 50000;
         int man = money / 10000;
@@ -22,11 +23,10 @@ public class Problem5 {
         int sib = money / 10;
         int ill = money % 10;
 
-        return new int[]{oman, man,ochun,chun,obaek,baek,osib,sib,ill};
+        return new Integer[]{oman, man,ochun,chun,obaek,baek,osib,sib,ill};
     }
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
-
+        List<Integer> answer = Arrays.asList(withdraw(money));
         return answer;
     }
 }
