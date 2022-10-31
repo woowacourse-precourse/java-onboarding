@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -82,6 +83,20 @@ class Problem1 {
         return true;
     }
 
+    /**
+     * 주어진 왼쪽 페이지와 오른쪽 페이지의 각 자릿수 합을 리턴합니다.
+     *
+     * @param leftPage  왼쪽 페이지
+     * @param rightPage 오른쪽 페이지
+     * @return 왼쪽 페이지와 오른쪽 페이지의 각 자릿수를 합한 값
+     */
+    public static int getPageSum(int leftPage, int rightPage) {
+        String combined = String.valueOf(leftPage) + rightPage;
+        return Arrays.stream(Integer.valueOf(combined).toString().split(""))
+                .map(Integer::valueOf)
+                .mapToInt(i -> i)
+                .sum();
+    }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
