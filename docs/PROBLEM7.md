@@ -24,3 +24,44 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+
+
+## 도메인 목록
+
+### User
+SNS 서비스 유저 하나의 정보를 담고있는 DTO 객체
+- 멤버
+  - 아이디(id)
+- 메서드
+  - 아이디 반환(getId) 
+
+### UserConnection
+모든 유저의 친구 관계를 저장하고 있는 저장소 객체
+- 멤버
+  - 모든 유저 데이터(UserList)  
+  - 유저별 친구 목록(FriendsOfEachUser)
+- 메서드
+  - 친구 추가(connectNewFriendship)
+  - 친구 여부 확인(isFriendWith)
+  - 서로 공유하고 있는 친구 목록 반환(getCommonFriends)
+  - 모든 유저 목록 반환(getUserList)
+ 
+
+### Timeline
+각 유저의 타임라인에 방문한 방문 유저의 이름과 횟수를 저장하고 있는 저장소 객체
+- 멤버
+  - 타임라인 로거(visitLoggerOfEachTimeline)
+- 기능
+  - visitor가 host의 타임라인에 방문한 횟수를 반환(getVisitTimes(host, visitor))
+  - 새로운 유저의 타임라인을 등록(addUserTimeline)
+  - 새로운 방문 정보를 등록(addVisitInfo)
+  - 원하는 유저의 타임라인을 반환(getUserTimeline)
+
+### FriendRecommender
+주어진 정보를 바탕으로 친구를 추천해주는 서비스 객체
+- 멤버
+  - UserConnection
+  - TimeLine
+- 기능
+  - 입력으로 주어진 유저의 추천 친구 목록을 반환(최대 5명)
