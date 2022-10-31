@@ -8,12 +8,12 @@ public class TreeFrogDictionary {
 
     public TreeFrogDictionary() {
         int tmp = 0;
-        for (char key = 'A'; key <= 'Z'; key++, tmp++) {
-            DICTIONARY.put(key, (char) ('Z' - tmp));
+        for (char upperAlpha = 'A'; upperAlpha <= 'Z'; upperAlpha++, tmp++) {
+            DICTIONARY.put(upperAlpha, (char) ('Z' - tmp));
         }
         tmp = 0;
-        for (char key = 'a'; key <= 'z'; key++, tmp++) {
-            DICTIONARY.put(key, (char) ('z' - tmp));
+        for (char lowerAlpha = 'a'; lowerAlpha <= 'z'; lowerAlpha++, tmp++) {
+            DICTIONARY.put(lowerAlpha, (char) ('z' - tmp));
         }
     }
 
