@@ -6,39 +6,14 @@ import java.util.List;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer = answer = new ArrayList<String>();
 
         if (forms.size()<1 || forms.size()>10000)
-            return null;
-
-        answer = new ArrayList<String>();
+            return List.of("answer");
 
         for(int i = 0; i<forms.size()-1;i++){
-            String email = forms.get(i).get(0);
-            //@이후 email.com인지 확인하는 Regex
-            String nickname = forms.get(i).get(1);
-            //nickname 길이 확인 필요
-            if (nickname.length()<1 || nickname.length()>=20)
-                return null;
-
-            //리스트에서 현재 닉네임에서의 연속된 2글자와 비교할 닉네임을 가져온다.
-            for (int j=0;j<nickname.length();j++){
-                if (j+2>nickname.length())
-                    break;
-                for (int k=i+1; k<forms.size()-1;k++){
-                    //만약 이미 중복된 닉네임이라면 다음 닉네임으로 이동
-                    if (answer.contains(forms.get(k).get(0)))
-                        break;
-                    //아니라면 현재 닉네임의 연속된 2글자와 중복되는 확인
-                    if (forms.get(k).get(1).contains(nickname.substring(j,j+2))) {
-                        //중복될 경우 현재 닉네임과 비교대상 같이 중복자에 추가
-                        //만약 현재 닉네임 이미 들어가 있다면 비교대상만 추가
-                        if (!answer.contains(forms.get(i).get(0)))
-                            answer.add(forms.get(i).get(0));
-                        answer.add(forms.get(k).get(0));
-                        break;
-                    }
-                }
+            for (int k=i+1; k<forms.size()-1;k++){
+                answer = getRestrictedUserList(answer,forms.get(i),forms.get(k));
             }
         }
         answer.sort(new Comparator<String>() {
@@ -49,5 +24,64 @@ public class Problem6 {
         });
 
         return answer;
+    }
+
+    public static boolean checkEmailValid(String email){
+        boolean check=true;
+        String[] atSplit = email.split("@");
+        if (atSplit.length!=2){
+            check = false;
+            return check;
+        }
+        if (!atSplit[1].equals("email.com")) {
+            check = false;
+            return check;
+        }
+        if (email.length() <11 || email.length()>=20){
+            check = false;
+            return check;
+        }
+
+        return check;
+    }
+
+    public static boolean checkNicknameValid(String nickname){
+        String regExp = "^[가-힣]*$";
+        boolean check=nickname.matches(regExp);
+
+        if (nickname.length()<1 || nickname.length()>=20){
+            check = false;
+            return check;
+        }
+
+        return check;
+    }
+
+    public static List<String> getRestrictedUserList(List<String> restritedUsers, List<String> selectedForm,
+                                                     List<String> comparedForm) {
+        String email = selectedForm.get(0);
+        String nickname = selectedForm.get(1);
+
+        if (!checkEmailValid(email)){
+            return List.of("answer");
+        }
+        if (!checkNicknameValid(nickname)){
+            return List.of("answer");
+        }
+        for (int j=0;j<selectedForm.get(1).length()-2;j++){
+            //만약 이미 중복된 유저 닉네임이라면 다음 닉네임으로 이동
+            if (restritedUsers.contains(comparedForm.get(0)))
+                break;
+            if (comparedForm.get(1).contains(nickname.substring(j,j+2))) {
+                //중복될 경우 현재 닉네임과 비교대상 같이 중복자에 추가
+                //만약 현재 닉네임 이미 들어가 있다면 비교대상만 추가
+                if (!restritedUsers.contains(selectedForm.get(0)))
+                    restritedUsers.add(email);
+                restritedUsers.add(comparedForm.get(0));
+                break;
+            }
+        }
+
+        return restritedUsers;
     }
 }
