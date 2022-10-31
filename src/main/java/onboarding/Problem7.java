@@ -7,17 +7,17 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
 
-        List<String> friendOfUserList = getFriendOfUserList(user, friends);
+        List<String> friendOfUser = getFriendOfUser(user, friends);
         List<String> friendOfFriend = getFriendOfFriend(user, friends);
 
-        Map<String, Integer> scoreRecommendFriendMap = getScoreRecommendFriend(friendOfFriend, visitors);
+        Map<String, Integer> scoreRecommendFriend = getScoreRecommendFriend(friendOfFriend, visitors);
 
-        List<String> sortedRecommendFriendList = getSortedRecommendFriend(scoreRecommendFriendMap);
+        List<String> sortedRecommendFriend = getSortedRecommendFriend(scoreRecommendFriend);
 
         return answer;
     }
 
-    public static List<String> getFriendOfUserList(String user, List<List<String>> friends) {
+    public static List<String> getFriendOfUser(String user, List<List<String>> friends) {
         List<String> result = new ArrayList<>();
 
         friends.forEach(friend -> {
