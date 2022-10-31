@@ -23,7 +23,7 @@ class Problem1 {
     }
 
     private static int divideNumberMultiple(int number) {
-        int sum = 0;
+        int sum = 1;
         while (number > 0) {
             sum *= number % 10;
             number /= 10;
@@ -48,12 +48,22 @@ class Problem1 {
         return 0;
     }
 
+    private static int listMax (List<Integer> someone) {
+        int tmp = -1;
+        for (Integer integer : someone) {
+            int max = findMax(divideNumberMultiple(integer), divideNumberPlus(integer));
+            tmp = findMax(tmp, max);
+        }
+        return tmp;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         if (isException(pobi, crong)) {
             answer = -1;
             return answer;
         }
+        answer = isWinner(listMax(pobi), listMax(crong));
         return answer;
     }
 }
