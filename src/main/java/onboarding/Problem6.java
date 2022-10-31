@@ -30,6 +30,8 @@ public class Problem6 {
             if (nickname.length() == 1) {
                 continue;
             }
+
+            Set<String> nicknameCombinations = new HashSet<>();
         }
 
         List<String> answer = List.of("answer");
