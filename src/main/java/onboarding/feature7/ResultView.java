@@ -1,5 +1,6 @@
 package onboarding.feature7;
 
+import java.net.Inet4Address;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -15,11 +16,14 @@ public class ResultView {
     }
 
     public List<String> getResultIdsFromScores() {
-        Collections.sort(results, myComparator);
         List<String> resultIds = new ArrayList<>();
+
+        filterZeroScore(results);
+        Collections.sort(results, myComparator);
         for (Entry<String, Integer> result : results) {
             resultIds.add(result.getKey());
         }
+        cutToSize(5, resultIds);
         return resultIds;
     }
 
@@ -40,4 +44,20 @@ public class ResultView {
             return scoreOfNextPerson.compareTo(scoreOfCurrentPerson);
         }
     };
+
+    public void filterZeroScore(List<Entry<String, Integer>> results) {
+        for (int i = 0; i < results.size(); i++) {
+            Entry<String, Integer> person = results.get(i);
+            if (person.getValue() == 0) {
+                results.remove(i);
+            }
+        }
+    }
+
+    public void cutToSize(int sizeNumber, List<String> resultIds) {
+        while (resultIds.size() > 5) {
+            int lastIndex = resultIds.size() - 1;
+            resultIds.remove(lastIndex);
+        }
+    }
 }
