@@ -1,11 +1,37 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        if (!checkException(pobi) || !checkException(crong)){
+            return -1;
+        }
+        List<Integer> pobiLeftPageSplits = splitPagenumber(pobi.get(0));
+        int pobiLeftSum = pagenumberSum(pobiLeftPageSplits);
+        int pobiLeftMultiple = pagenumberMultiply(pobiLeftPageSplits);
+        int pobiLeftScore = decideBiggest(pobiLeftSum, pobiLeftMultiple);
+
+        List<Integer> pobiRightPageSplits = splitPagenumber(pobi.get(1));
+        int pobiRightSum = pagenumberSum(pobiRightPageSplits);
+        int pobiRightMultiple = pagenumberMultiply(pobiRightPageSplits);
+        int pobiRightScore = decideBiggest(pobiRightSum, pobiRightMultiple);
+
+        List<Integer> crongLeftPageSplits = splitPagenumber(crong.get(0));
+        int crongLeftSum = pagenumberSum(crongLeftPageSplits);
+        int crongLeftMultiple = pagenumberMultiply(crongLeftPageSplits);
+        int crongLeftScore = decideBiggest(crongLeftSum, crongLeftMultiple);
+
+        List<Integer> crongRightPageSplits = splitPagenumber(crong.get(1));
+        int crongRightSum = pagenumberSum(crongRightPageSplits);
+        int crongRightMultiple = pagenumberMultiply(crongRightPageSplits);
+        int crongRightScore = decideBiggest(crongRightSum, crongRightMultiple);
+
+        int scorePobi = decideBiggest(pobiLeftScore, pobiRightScore);
+        int scoreCrong = decideBiggest(crongLeftScore, crongRightScore);
+
+        return decideWinner(scorePobi, scoreCrong);
     }
     public static boolean checkException(List<Integer> player){
         if(player.get(0) < 1 || player.get(1) < 1 || player.get(0) > 400 || player.get(1) > 400){
