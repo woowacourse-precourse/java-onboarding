@@ -7,6 +7,11 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
+    public static int biggestScoreByPageNum(int leftPageNum, int rightPageNum){
+        int leftScore = toScore(leftPageNum);
+        int rightScore = toScore(rightPageNum);
+        return leftScore > rightScore ? leftScore : rightScore;
+    }
     public static int toScore(int pageNum){
         int sum = 0;
         int mul = 1;
