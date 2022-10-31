@@ -3,21 +3,21 @@ package onboarding;
 import java.util.*;
 
 class Problem1 {
-
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         if(verificationNumber(pobi)<0 || verificationNumber(crong)<0){
             answer=-1;
             return answer;
         }
-
+        //유저의 최대값 계산
         int firstUserScore = Math.max(numMaxSumMul(pobi.get(0)),numMaxSumMul(pobi.get(1)));
         int SecondUserScore = Math.max(numMaxSumMul(crong.get(0)),numMaxSumMul(crong.get(1)));
 
         answer = calResult(answer, firstUserScore, SecondUserScore);
         return answer;
     }
-    public static int verificationNumber(List<Integer> page){
+    //페이지 유효성 검사
+    private static int verificationNumber(List<Integer> page){
         if(page.size()!=2){ // 입력 page의 값이 2개인지
             return -1;
         }
@@ -32,7 +32,8 @@ class Problem1 {
         }
         return 0;
     }
-    public static int numMaxSumMul(int page){
+    //페이지의 각자리 덧셈,곱셈 함수
+    private static int numMaxSumMul(int page){
         int sum=0, mul=1;
         while (page>0){
             sum += page%10;
@@ -41,7 +42,8 @@ class Problem1 {
         }
         return Math.max(sum,mul);
     }
-    public static int calResult(int answer, int firstScore, int secondScore){
+    //결과 계산
+    private static int calResult(int answer, int firstScore, int secondScore){
         if(firstScore>secondScore){
             answer = 1;
         }
