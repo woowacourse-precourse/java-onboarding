@@ -19,6 +19,7 @@ public class Problem7 {
         List<String> userFriendList = relation.get(user);
         relation.remove(user);
         calculatePointByFirstRule(userFriendList, point, relation);
+        calculatePointBySecondRule(userFriendList, point, visitors);
         return answer;
     }
 
@@ -56,6 +57,17 @@ public class Problem7 {
                 }
                 Integer newPoint = point.get(key) + 10 * p;
                 point.put(key, newPoint);
+            }
+        }
+    }
+
+    public static void calculatePointBySecondRule(List<String> userFriendList, HashMap<String, Integer> point, List<String> visitors) {
+        for (String user : visitors) {
+            if (!userFriendList.contains(user)) {
+                if (!point.containsKey(user)) {
+                    point.put(user, 0);
+                }
+                point.put(user, point.get(user) + 1);
             }
         }
     }
