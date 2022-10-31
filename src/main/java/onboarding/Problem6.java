@@ -33,5 +33,17 @@ public class Problem6 {
         duplicatedIndex = new ArrayList<>();
     }
 
+    public static void findDuplicated(int index, String nickname){
+        for(int i=0; i<nickname.length() -1; i++){
+            String subStr = nickname.substring(i, i+2);
+            if(subStrIndexMap.containsKey(subStr)){
+                duplicatedIndex.add(index);
+                duplicatedIndex.add(subStrIndexMap.get(subStr));
+            }
+            else{
+                subStrIndexMap.put(subStr, index);
+            }
+        }
+    }
 
 }
