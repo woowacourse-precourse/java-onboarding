@@ -94,50 +94,48 @@ public class Problem7 {
         return userScore;
     }
 
+    public static void quickSort(List<String> allId, List<Integer> userScore, int start, int end) {
+        if(start < end) {
+            int pivot = start;
+            int left = start + 1;
+            int right = end;
+
+            while(left <= right) {
+                while(left <= end && userScore.get(left) <= userScore.get(pivot)) {
+                    left += 1;
+                }
+                while(right > start && userScore.get(right) >= userScore.get(pivot)) {
+                    right -= 1;
+                }
+                if(left > right) {
+                    int temp1 = userScore.get(right);
+                    userScore.set(right, userScore.get(pivot));
+                    userScore.set(pivot, temp1);
+                    String temp2 = allId.get(right);
+                    allId.set(right, allId.get(pivot));
+                    allId.set(pivot, temp2);
+
+                } else {
+                    int temp = userScore.get(right);
+                    userScore.set(right, userScore.get(left));
+                    userScore.set(left, temp);
+                    String temp2 = allId.get(right);
+                    allId.set(right, allId.get(left));
+                    allId.set(pivot, temp2);
+                }
+                quickSort(allId, userScore, start, right -1);
+                quickSort(allId, userScore, right +1, end);
+            }
+        }
+    }
+
     public static List<String> setRecommendList(List<String> allId, List<Integer> userScore) {
         Map<String, Integer> idAndScore = new HashMap<>();
         List<String> recommendList = new ArrayList<>();
         for(int i = 0; i < allId.size(); i++) {
-            if(userScore.get(i) > 0) {
-                idAndScore.put(allId.get(i), userScore.get(i));
-            }
+            idAndScore.put(allId.get(i), userScore.get(i));
         }
-
-        for(int i = 0; i < allId.size(); i++){
-            if(userScore.get(i) == 0){
-                userScore.remove(i);
-                allId.remove(i);
-            }
-        }
-
-        for(int i = 0; i < allId.size(); i++){
-            for(int j = 1; j < allId.size(); j++){
-                if(userScore.get(j-1) < userScore.get(j)){
-                    int tempScore = userScore.get(j-1);
-                    userScore.set(j-1,userScore.get(j));
-                    userScore.set(j,tempScore);
-
-                    String temp = allId.get(j);
-                    allId.set(j,allId.get(j-1));
-                    allId.set(j-1, temp);
-                }
-            }
-        }
-
-
-
-//        userScore.sort(Collections.reverseOrder());
-//        for(int i = 0; i < userScore.size(); i++) {
-//            for(int j = 0; j < allId.size(); j++) {
-//                if(userScore.get(i) == idAndScore.get(allId.get(j))) {
-//                    if(Collections.frequency(allId, idAndScore.get(allId.get(j))) >= 2) {
-//                        recommendList.add(allId.get(j));
-//                    } else {
-//                        recommendList.add(allId.get(j));
-//                    }
-//                }
-//            }
-//        }
+        quickSort(allId, userScore, 0, allId.size()-1);
         return allId;
     }
 
@@ -147,7 +145,8 @@ public class Problem7 {
         List<List<String>> friendsList = getNewFriend(allId, friends); //사용자이외 친구들의 친구 리스트
         List<Integer> userScore = findFriendNumber(friendsList, userFriend, allId, visitors);
         List<String> recommendList = setRecommendList(allId, userScore);
-//        return List.of(new String[]{"friendCommon"});
+        Collections.reverse(recommendList);
+
         return recommendList;
     }
 }
