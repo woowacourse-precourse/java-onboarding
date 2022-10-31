@@ -9,11 +9,13 @@ package onboarding;
 - 닉네임은 한글만 가능하고, 전체 길이는 1자 이상 20자 미만
 - 결과는 이메일을 오름차순 정렬하고 중복 제거
 
+
+- [X] 중복 문자열 포함 닉네임 체크
+- [X] 정렬 구현
  */
 
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -31,7 +33,12 @@ public class Problem6 {
             }
         }
 
-        return ans;
+        Set<String> set = new HashSet<String>(ans);
+        List<String> nonduplist = new ArrayList<String>(set);
+
+        nonduplist.sort(Comparator.naturalOrder());
+
+        return nonduplist;
     }
 
     public static int checkNickname(String one, String two) {
