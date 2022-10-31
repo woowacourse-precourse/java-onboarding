@@ -7,6 +7,13 @@ public class Problem4 {
     }
 
     private static void convert(char[] chars) {
-
+        for (int i = 0; i < chars.length; i++) {
+            int charToAscii = (int) chars[i];
+            if (charToAscii >= 97 && charToAscii <= 122) {
+                chars[i] = (char) (219 - charToAscii);
+            } else if (charToAscii >= 65 && charToAscii <= 90) {
+                chars[i] = (char) (155 - charToAscii);
+            }
+        }
     }
 }
