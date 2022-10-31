@@ -22,12 +22,14 @@ public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         validateInput(user, friends, visitors);
-        Map<String, List<String>> userAndFriends = parseFriendsInput(user, friends);
-        Map<String, Integer> userAndBothKnowFriendsScore = computeBothKnowFriendsScore(user, userAndFriends);
-        Map<String, Integer> userAndVisitScore = computeVisitScore(visitors);
-        Map<String, Integer> userAndRecommendScore = computeRecommendScore(userAndBothKnowFriendsScore, userAndVisitScore);
+        Friends userAndFriends = new Friends(user, friends);
+        BothKnowFriendsScore userAndBothKnowFriendsScore = new BothKnowFriendsScore(user, userAndFriends.get());
+        VisitScore userAndVisitScore = new VisitScore(visitors);
+        RecommendScore userAndRecommendScore = new RecommendScore(userAndBothKnowFriendsScore.get(), userAndVisitScore.get());
+        Answer answer = new Answer(user, userAndFriends.get()
+            .get(user), userAndRecommendScore.get());
 
-        return computeAnswer(user, userAndFriends.get(user), userAndRecommendScore);
+        return answer.get();
     }
 
     private static void validateInput(String user, List<List<String>> friends, List<String> visitors) {
@@ -84,76 +86,115 @@ public class Problem7 {
         return Pattern.matches(LOWER_ALPHABET_REGEX, id);
     }
 
-    static List<String> computeAnswer(String mainCharacter, List<String> mainCharacterFriends, Map<String, Integer> userAndRecommendScore) {
-        List<Map.Entry<String, Integer>> userAndRecommendScoreList = new ArrayList<>(userAndRecommendScore.entrySet());
+    public static class Answer {
 
-        userAndRecommendScoreList.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
-        return userAndRecommendScoreList.stream()
-            .filter(entry -> entry.getKey() != mainCharacter)
-            .filter(entry -> !mainCharacterFriends.contains(entry.getKey()))
-            .filter(entry -> entry.getValue() > 0)
-            .map(entry -> entry.getKey())
-            .limit(ANSWER_SIZE_MAX)
-            .collect(Collectors.toList());
+        private static List<String> answer;
+
+        public Answer(String mainCharacter, List<String> mainCharacterFriends, Map<String, Integer> userAndRecommendScore) {
+            List<Map.Entry<String, Integer>> userAndRecommendScoreList = new ArrayList<>(userAndRecommendScore.entrySet());
+
+            userAndRecommendScoreList.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
+            answer = userAndRecommendScoreList.stream()
+                .filter(entry -> entry.getKey() != mainCharacter)
+                .filter(entry -> !mainCharacterFriends.contains(entry.getKey()))
+                .filter(entry -> entry.getValue() > 0)
+                .map(entry -> entry.getKey())
+                .limit(ANSWER_SIZE_MAX)
+                .collect(Collectors.toList());
+        }
+
+        public static List<String> get() {
+            return answer;
+        }
     }
 
-    static Map<String, Integer> computeRecommendScore(Map<String, Integer> userAndBothKnowFriendsScore, Map<String, Integer> userAndVisitScore) {
-        Map<String, Integer> userAndRecommendScore = new HashMap<>(userAndBothKnowFriendsScore);
+    public static class RecommendScore {
 
-        userAndVisitScore.forEach((user, score) -> {
-            if (!userAndRecommendScore.containsKey(user)) {
-                userAndRecommendScore.put(user, 0);
+        private static Map<String, Integer> userAndRecommendScore;
+
+        public RecommendScore(Map<String, Integer> userAndBothKnowFriendsScore, Map<String, Integer> userAndVisitScore) {
+            userAndRecommendScore = new HashMap<>(userAndBothKnowFriendsScore);
+
+            userAndVisitScore.forEach((user, score) -> {
+                if (!userAndRecommendScore.containsKey(user)) {
+                    userAndRecommendScore.put(user, 0);
+                }
+                userAndRecommendScore.put(user, userAndRecommendScore.get(user) + score);
+            });
+        }
+
+        public static Map<String, Integer> get() {
+            return userAndRecommendScore;
+        }
+    }
+
+    public static class VisitScore {
+
+        private static Map<String, Integer> userAndVisitScore;
+
+        public VisitScore(List<String> visitors) {
+            userAndVisitScore = visitors.stream()
+                .distinct()
+                .collect(Collectors.toMap(visitor -> visitor, visitor -> 0));
+
+            visitors.forEach(visitor -> userAndVisitScore.put(visitor, userAndVisitScore.get(visitor) + 1));
+        }
+
+        public static Map<String, Integer> get() {
+            return userAndVisitScore;
+        }
+    }
+
+    public static class Friends {
+
+        private static final Map<String, List<String>> userAndFriends = new HashMap<>();
+
+        public Friends(String mainCharacter, List<List<String>> friends) {
+
+            friends.forEach(user -> {
+                addFriend(userAndFriends, user.get(0), user.get(1));
+                addFriend(userAndFriends, user.get(1), user.get(0));
+            });
+            if (!userAndFriends.containsKey(mainCharacter)) {
+                userAndFriends.put(mainCharacter, new ArrayList<>());
             }
-            userAndRecommendScore.put(user, userAndRecommendScore.get(user) + score);
-        });
-        return userAndRecommendScore;
-    }
-
-    static Map<String, Integer> computeVisitScore(List<String> visitors) {
-        Map<String, Integer> userAndVisitScore = visitors.stream()
-            .distinct()
-            .collect(Collectors.toMap(visitor -> visitor, visitor -> 0));
-
-        visitors.forEach(visitor -> userAndVisitScore.put(visitor, userAndVisitScore.get(visitor) + 1));
-        return userAndVisitScore;
-    }
-
-    static Map<String, Integer> computeBothKnowFriendsScore(String mainCharacter, Map<String, List<String>> userAndFriends) {
-        Map<String, Integer> userAndBothKnowFriendsScore = new HashMap<>();
-        List<String> mainCharacterFriends = userAndFriends.get(mainCharacter);
-
-        userAndFriends.forEach((user, friends) -> {
-            int bothKnowFriendsCount = countBothKnowFriends(mainCharacterFriends, friends);
-            userAndBothKnowFriendsScore.put(user, BOTH_KNOW_FRIEND_SCORE * bothKnowFriendsCount);
-        });
-        return userAndBothKnowFriendsScore;
-    }
-
-    private static int countBothKnowFriends(List<String> friends1, List<String> friends2) {
-        return (int) friends1.stream()
-            .filter(friend1 -> friends2.contains(friend1))
-            .count();
-    }
-
-    static Map<String, List<String>> parseFriendsInput(String mainCharacter, List<List<String>> friends) {
-        Map<String, List<String>> userAndFriends = new HashMap<>();
-
-        friends.forEach(user -> {
-            addFriend(userAndFriends, user.get(0), user.get(1));
-            addFriend(userAndFriends, user.get(1), user.get(0));
-        });
-        if (!userAndFriends.containsKey(mainCharacter)) {
-            userAndFriends.put(mainCharacter, new ArrayList<>());
         }
-        return userAndFriends;
+
+        private void addFriend(Map<String, List<String>> userAndFriends, String user1, String user2) {
+            if (!userAndFriends.containsKey(user1)) {
+                userAndFriends.put(user1, new ArrayList<>());
+            }
+            List<String> friends = userAndFriends.get(user1);
+            friends.add(user2);
+            userAndFriends.put(user1, friends);
+        }
+
+        public Map<String, List<String>> get() {
+            return userAndFriends;
+        }
     }
 
-    private static void addFriend(Map<String, List<String>> userAndFriends, String user1, String user2) {
-        if (!userAndFriends.containsKey(user1)) {
-            userAndFriends.put(user1, new ArrayList<>());
+    public static class BothKnowFriendsScore {
+
+        private static Map<String, Integer> userAndBothKnowFriendsScore = new HashMap<>();
+
+        public BothKnowFriendsScore(String mainCharacter, Map<String, List<String>> userAndFriends) {
+            List<String> mainCharacterFriends = userAndFriends.get(mainCharacter);
+
+            userAndFriends.forEach((user, friends) -> {
+                int bothKnowFriendsCount = countBothKnowFriends(mainCharacterFriends, friends);
+                userAndBothKnowFriendsScore.put(user, BOTH_KNOW_FRIEND_SCORE * bothKnowFriendsCount);
+            });
         }
-        List<String> friends = userAndFriends.get(user1);
-        friends.add(user2);
-        userAndFriends.put(user1, friends);
+
+        private static int countBothKnowFriends(List<String> friends1, List<String> friends2) {
+            return (int) friends1.stream()
+                .filter(friend1 -> friends2.contains(friend1))
+                .count();
+        }
+
+        public static Map<String, Integer> get() {
+            return userAndBothKnowFriendsScore;
+        }
     }
 }
