@@ -62,7 +62,28 @@ public class Problem7 {
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> recommendList;
+
+        // 친구 관계 생성
+        getFriendMap(friends);
+        // 친구추천 점수 Map 생성
+        getRecommendScore(visitors, user);
+
+        recommendList = new ArrayList<>(recommendScore.keySet());
+        // 점수 기준 내림차순 정렬
+        recommendList.sort((o1, o2) -> {
+            // 점수가 같을 시 이름으로 오름차 정렬
+            if (recommendScore.get(o1).equals(recommendScore.get(o2))) return o1.compareTo(o2);
+            return recommendScore.get(o2) - recommendScore.get(o1);
+        });
+
+        List<String> answer = new ArrayList<>();
+
+        int cnt = 0; // 최대 5개 추천 조건 카운팅
+        for (String friend : recommendList) {
+            if (cnt < 5) answer.add(friend);
+        }
+
         return answer;
     }
 }
