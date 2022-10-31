@@ -31,7 +31,7 @@ public class Problem7 {
         }
 
         // if my friend's friend, add score
-        for(int i=0; i<theirFriend.size(); i++){
+        for(int i=0; i<theirFriend.size()-1; i++){
             for(int j=0; j<myFriend.size(); j++){
                 if(theirFriend.get(i).get(0).equals(myFriend.get(j))){
                     if(listName.contains(theirFriend.get(i).get(1))){
@@ -41,6 +41,17 @@ public class Problem7 {
                     }
                     else{
                         listName.add(theirFriend.get(i).get(1));
+                        listScore.add(10);
+                    }
+                }
+                else if(theirFriend.get(i).get(1).equals(myFriend.get(j))){
+                    if(listName.contains(theirFriend.get(i).get(0))){
+                        idx=listName.indexOf(theirFriend.get(i).get(0));
+                        temp=listScore.get(i)+10;
+                        listScore.set(idx,temp);
+                    }
+                    else{
+                        listName.add(theirFriend.get(i).get(0));
                         listScore.add(10);
                     }
                 }
@@ -61,13 +72,11 @@ public class Problem7 {
         }
 
         // remove my friend in listName
-        for (int i = 0; i < listName.size(); i++) {
-            for (int j = 0; j < myFriend.size(); j++) {
-                if(listName.contains(myFriend.get(j))){
-                    idx=listName.indexOf(myFriend.get(j));
-                    listName.remove(idx);
-                    listScore.remove(idx);
-                }
+        for (int j = 0; j < myFriend.size(); j++) {
+            if(listName.contains(myFriend.get(j))){
+                idx=listName.indexOf(myFriend.get(j));
+                listName.remove(idx);
+                listScore.remove(idx);
             }
         }
 
