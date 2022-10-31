@@ -1,5 +1,6 @@
 package onboarding.problem7;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -31,18 +32,15 @@ public class Relations {
     }
 
     public List<String> getFriendsList(String user) {
-        List<String> friendsList = new ArrayList<>();
+        ArrayList<String> friendsList = new ArrayList<>();
         for (int i = 0; i < relation.size(); i++) {
             List<String> friends = getRelation(i);
-            String friend1 = friends.get(0);
-            String friend2 = friends.get(1);
-
-            if (friend1.equals(user)) {
-                friendsList.add(friend2);
-            } else if (friend2.equals(user)) {
-                friendsList.add(friend1);
+            if (friends.contains(user)) {
+                friendsList.addAll(friends);
             }
         }
-        return friendsList;
+        List<String> resultList = Util.removeOverlap(friendsList);
+        resultList.remove(user);
+        return resultList;
     }
 }
