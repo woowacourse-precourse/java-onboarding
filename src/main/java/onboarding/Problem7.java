@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 public class Problem7 {
     enum User{
@@ -21,142 +22,78 @@ public class Problem7 {
         }
     }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        List<String> result = new ArrayList<>();
         Map<String, Integer> friendsPoint_map = new HashMap<>();
-        Integer [] point_array;
+        List<String> answer;
+        List<String> friendsOfFriend_list;
+        List<String> userFriends_list;
+        List<String> visitors_list;
 
-        //예외 확인
         checkException(user, friends, visitors);
 
         //사용자와 이미 친구인 목록을 구함
-        List<String> userFriends_list = findUserFriends(user, friends);
+        userFriends_list = findFriendsByUser(user, friends);
 
         //친구의 친구인 목록을 구함
-        List<String> friendsOfFriend_list = findFriendsOfFriend(userFriends_list, friends);
+        friendsOfFriend_list = findFriendsOfFriend(userFriends_list, friends);
+        removeDuplication(user, friendsOfFriend_list);
+        visitors_list = saveVisitorList(visitors);
 
-        friendsOfFriend_list = removeDuplication(user, friendsOfFriend_list);
+        saveFriendsForRecommend(friendsOfFriend_list, visitors_list, userFriends_list);
 
-        for (int i = 0; i < userFriends_list.size(); i++)
-            friendsOfFriend_list = removeDuplication(userFriends_list.get(i), friendsOfFriend_list);
+        savePointByRules(friendsPoint_map, friendsOfFriend_list, visitors_list);
 
-
-        //친구의 점수표를 Map에 저장
-        friendsPoint_map = saveUserPoint(friendsPoint_map, friendsOfFriend_list, User.knowPoint.info);
-
-        //visitor 점수를 추가하기 위해
-        //단, 이미 친구인 사람은 제거함
-        //visitor UnsupportedOperationException error 발생해서 list를 복제함
-
-        List<String> visitors_list = saveVisitorList(visitors);
-
-        for (int i = 0; i < userFriends_list.size(); i++) {
-            visitors_list = removeDuplication(userFriends_list.get(i), visitors_list);
-        }
-
-        //친구의 점수표를 MAP에 저장
-        friendsPoint_map = saveUserPoint(friendsPoint_map, visitors_list, User.visitPoint.info);
-
-        //point가 가장 높은 순으로 배열로 저장
-        point_array = sortByPoint(friendsPoint_map);
-
-        int cnt = Math.max(point_array.length , User.recommendNum.info);
-        if (cnt == point_array.length)
-            cnt = saveDuplicationRange(point_array);
-        if (cnt == User.recommendNum.info)
-            cnt = point_array.length;
-
-
-        //point가 가장 높은 순으로 리스트를 정렬
-        List<String> recommedList = findUserByPoint(point_array, friendsPoint_map, cnt);
-
-        recommedList = sortByUser(saveCheckpointForSort(point_array, recommedList.size()), recommedList);
-
-        int min = Math.min(recommedList.size(), User.recommendNum.info);
-
-        for (int i = 0; i < min; i++)
-            result.add(recommedList.get(i));
-
-        answer = result;
+        answer = saveRecommendUser(findRecommendUserByPoint(friendsPoint_map));
 
         return answer;
     }
-
-    //특정 사람과 친구인 사람 구하기
-    public static List<String> findUserFriends(String user, List<List<String>> friends_list) {
-        List<String> userFriends_list = new ArrayList<>();
-
-        for (int i = 0; i < friends_list.size(); i++) {
-            if (user.equals(friends_list.get(i).get(User.first.info))) {
-                userFriends_list.add(friends_list.get(i).get(User.second.info));
-            }
-            if (user.equals((friends_list.get(i).get(User.second.info)))) {
-                userFriends_list.add(friends_list.get(i).get(User.first.info));
-            }
+    public static void excludeCloseFriends(List<String> userFriends_list, List<String> user_list) {
+        for (String s : userFriends_list) {
+            removeDuplication(s, user_list);
         }
-
-        return userFriends_list;
     }
-    //친구의 친구 목록 저장
-    public static List<String> findFriendsOfFriend(List<String> userFriends_list, List<List<String>> friends_list) {
-        List<String> friendsOfFriends_list = new ArrayList<>();
-
-        for (int i = 0; i < userFriends_list.size(); i++)
-            friendsOfFriends_list.addAll(findUserFriends(userFriends_list.get(i), friends_list));
-
-        return friendsOfFriends_list;
-    }
-    //point별로 user 찾기
-    public static List<String> findUserByPoint(Integer[] point_array, Map<String, Integer> friendsPoint_map, int length) {
-        List<String> recommendFriends_list = new ArrayList<>();
-
-        for (int i = 0; i < length; i++) {
-            for (String key : friendsPoint_map.keySet()) {
-                if (point_array[i] == friendsPoint_map.get(key)) {
-                    if (recommendFriends_list.contains(key))
-                        continue;
-                    recommendFriends_list.add(key);
-                    break;
-                }
-            }
-        }
-
-        return recommendFriends_list;
-    }
-    public static List<String> removeDuplication(String user, List<String> friendsOfFiends_list) {
+    //중복인 사용자 찾아서 제거
+    public static void removeDuplication(String user, List<String> friendsOfFiends_list) {
         for (int i = 0; i < friendsOfFiends_list.size(); i++) {
             if (friendsOfFiends_list.get(i).equals(user)) {
                 friendsOfFiends_list.remove(i);
                 i--;
             }
         }
-
-        return friendsOfFiends_list;
     }
-    //visitor UnsupportedOperationException error 발생해서 list를 복제함
-    public static List<Integer> saveCheckpointForSort(Integer[] point_array, int length) {
-        boolean isVisited = false;
-        List<Integer> checkpoint_list = new ArrayList<>();
+    public static void saveFriendsForRecommend(List<String> friendsOfFriend, List<String> visitors, List<String> userFriends) {
+        excludeCloseFriends(userFriends, friendsOfFriend);
+        excludeCloseFriends(userFriends, visitors);
+    }
+    public static void saveUserPoint(Map<String,Integer> friendsPoint_map, List<String> friends_list, int point) {
+        String key;
+        int tmp = point;
 
-        for (int i = 0; i < length - 1; i++) {
-            int cnt = 0;
-            for (int j = i + 1; j < length; j++) {
-                if (point_array[i] == point_array[j]) {
-                    isVisited = true;
-                    cnt++;
-                }
-                if (point_array[i] != point_array[j])
-                    break;
-            }
-            if (!isVisited)
-                checkpoint_list.add(i);
-            if (isVisited) {
-                checkpoint_list.add(i + cnt);
-                i += cnt;
-            }
+        for (String s : friends_list) {
+            point = tmp;
+            key = s;
+
+            if (friendsPoint_map.containsKey(key))
+                point = friendsPoint_map.get(key) + point;
+
+            friendsPoint_map.put(key, point);
         }
 
-        return checkpoint_list;
+    }
+    public static void savePointByRules(Map<String, Integer> friendsPoint, List<String> friendsOfFriend, List<String> visitors) {
+        savePointByFriends(friendsPoint, friendsOfFriend, User.knowPoint.info);
+        savePointByFriends(friendsPoint, visitors, User.visitPoint.info);
+    }
+    public static void savePointByFriends(Map<String,Integer> friendsPoint_map, List<String> friends_list, int point) {
+        saveUserPoint(friendsPoint_map, friends_list, point);
+    }
+    public static int saveRecommendLength(Integer[] point) {
+        int length = Math.max(point.length , User.recommendNum.info);
+        if (length == point.length)
+            length = saveDuplicationRange(point);
+        if (length == User.recommendNum.info)
+            length = point.length;
+
+        return length;
     }
     public static int saveDuplicationRange(Integer[] point_array) {
         int cnt = User.recommendNum.info;
@@ -171,30 +108,6 @@ public class Problem7 {
 
         return cnt;
     }
-    public static Map<String, Integer> saveUserPoint(Map<String,Integer> friendsPoint_map, List<String> friends_list, int point) {
-        String key;
-        int tmp = point;
-
-        for (int i = 0; i < friends_list.size(); i++) {
-            point = tmp;
-            key = friends_list.get(i);
-
-            if (friendsPoint_map.containsKey(key))
-                point = friendsPoint_map.get(key) + point;
-
-            friendsPoint_map.put(key, point);
-        }
-
-        return friendsPoint_map;
-    }
-    public static List<String> saveVisitorList(List<String> visitors) {
-        List<String> visitors_list = new ArrayList<>();
-
-        for (int i = 0; i < visitors.size(); i++)
-            visitors_list.add(visitors.get(i));
-
-        return visitors_list;
-    }
     public static Integer[] sortByPoint(Map<String, Integer> friendsPoint_map) {
         Collection <Integer> values = friendsPoint_map.values();
         Integer [] point_array = values.toArray(new Integer[0]);
@@ -205,7 +118,7 @@ public class Problem7 {
     }
     public static List<String> sortByUser(List<Integer> checkPointList, List<String> recommendFriends_list) {
         int cnt = 0;
-        String recommendFriends_array[] = recommendFriends_list.toArray(new String[recommendFriends_list.size()]);
+        String[] recommendFriends_array = recommendFriends_list.toArray(new String[0]);
 
         for (int i = 0; i < checkPointList.size(); i++) {
             if (i == 0) {
@@ -220,7 +133,91 @@ public class Problem7 {
 
         return recommendFriends_list;
     }
+    //친구의 친구 목록 저장
+    public static List<String> findFriendsOfFriend(List<String> userFriends, List<List<String>> friends) {
+        List<String> friendsOfFriends = new ArrayList<>();
 
+        for (String closeFriends : userFriends)
+            friendsOfFriends.addAll(findFriendsByUser(closeFriends, friends));
+
+        return friendsOfFriends;
+    }
+    //point별로 user 찾기
+    public static List<String> findFriendsByUser(String user, List<List<String>> friends) {
+        List<String> userFriends = new ArrayList<>();
+
+        for (List<String> closeFriends : friends) {
+            if (user.equals(closeFriends.get(User.first.info))) {
+                userFriends.add(closeFriends.get(User.second.info));
+            }
+            if (user.equals((closeFriends.get(User.second.info)))) {
+                userFriends.add(closeFriends.get(User.first.info));
+            }
+        }
+
+        return userFriends;
+    }
+    public static List<String> findUserByPoint(Integer[] point_array, Map<String, Integer> friendsPoint_map, int length) {
+        List<String> recommendFriends_list = new ArrayList<>();
+
+        for (int i = 0; i < length; i++) {
+            for (String key : friendsPoint_map.keySet()) {
+                if (Objects.equals(point_array[i], friendsPoint_map.get(key))) {
+                    if (recommendFriends_list.contains(key))
+                        continue;
+                    recommendFriends_list.add(key);
+                    break;
+                }
+            }
+        }
+
+        return recommendFriends_list;
+    }
+    public static List<String> saveRecommendUser(List<String> recommend) {
+        List<String> recommendUser = new ArrayList<>();
+        int min = Math.min(recommend.size(), User.recommendNum.info);
+
+        for (int i = 0; i < min; i++)
+            recommendUser.add(recommend.get(i));
+
+        return recommendUser;
+    }
+    public static List<String> findRecommendUserByPoint(Map<String, Integer> friendsPoint_map) {
+        Integer[] point = sortByPoint(friendsPoint_map);
+
+        //point가 가장 높은 순으로 리스트를 정렬
+        List<String> recommedUser = findUserByPoint(point, friendsPoint_map, saveRecommendLength(point));
+
+        return sortByUser(saveCheckpointForSort(point, recommedUser.size()), recommedUser);
+    }
+    public static List<Integer> saveCheckpointForSort(Integer[] point_array, int length) {
+        boolean isVisited = false;
+        List<Integer> checkpoint_list = new ArrayList<>();
+
+        for (int i = 0; i < length - 1; i++) {
+            int cnt = 0;
+            for (int j = i + 1; j < length; j++) {
+                if (Objects.equals(point_array[i], point_array[j])) {
+                    isVisited = true;
+                    cnt++;
+                }
+                if (!Objects.equals(point_array[i], point_array[j]))
+                    break;
+            }
+            if (!isVisited)
+                checkpoint_list.add(i);
+            if (isVisited) {
+                checkpoint_list.add(i + cnt);
+                i += cnt;
+            }
+        }
+
+        return checkpoint_list;
+    }
+    public static List<String> saveVisitorList(List<String> visitors) {
+
+        return new ArrayList<>(visitors);
+    }
     /*
     예외 처리 함수
      */
@@ -228,13 +225,13 @@ public class Problem7 {
         checkNullException(user ,friends, visitors);
         checkUserNameException(user);
 
-        for (int i = 0; i < friends.size(); i++) {
-            checkUserNameException(friends.get(i).get(User.first.info));
-            checkUserNameException(friends.get(i).get(User.second.info));
+        for (List<String> friend : friends) {
+            checkUserNameException(friend.get(User.first.info));
+            checkUserNameException(friend.get(User.second.info));
         }
 
-        for (int i = 0; i < visitors.size(); i++)
-            checkUserNameException(visitors.get(i));
+        for (String visitor : visitors)
+            checkUserNameException(visitor);
 
         checkListException(friends.size());
         checkListException(visitors.size());
