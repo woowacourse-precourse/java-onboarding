@@ -25,6 +25,17 @@ class Problem1 {
         return sum;
     }
 
+    public static int mul_each_digit(int num) {
+        int sum = 1;
+        while(num / 10 != 0){
+            sum *= num % 10;
+            num /= 10;
+        }
+        sum *= num % 10;
+
+        return sum;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         int pobi_left = pobi.get(0);
