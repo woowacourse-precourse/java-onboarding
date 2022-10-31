@@ -50,7 +50,8 @@ public class Problem7 {
                 getPerson(visitor).count();
             }
         }
-        int getScore(String name) {
+        int getScore(Person p) {
+            String name = p.name;
             int score = 0;
             score += numOfFriends(name) * 10;
             score += getPerson(name).getVisit();
