@@ -47,6 +47,11 @@ public class Problem7 {
     }
 
 
+    public static List<String> getAcquaintanceList(String user, String userFriend){
+        return friendsMap.get(userFriend).stream().
+                filter(acquaintance -> !acquaintance.equals(user)).collect(Collectors.toList());
+    }
+
 
 }
 
