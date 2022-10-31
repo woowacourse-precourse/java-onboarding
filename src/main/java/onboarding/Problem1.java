@@ -6,7 +6,20 @@ import java.util.List;
 class Problem1 {
   public static int solution(List<Integer> pobi, List<Integer> crong) {
     int answer = Integer.MAX_VALUE;
+    answer = getWinnerResult(pobi, crong);
     return answer;
+  }
+
+  public static int getWinnerResult(List<Integer> pobi, List<Integer> crong) {
+    int pobiScore = getScoreWithDigits(pobi.get(0));
+    int crongScore = getScoreWithDigits(crong.get(0));
+    if (pobiScore > crongScore) {
+      return 1;
+    }
+    if (pobiScore < crongScore) {
+      return 2;
+    }
+    return 0;
   }
 
   public static int getScoreWithDigits(Integer page) {
