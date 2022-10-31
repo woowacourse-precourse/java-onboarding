@@ -26,4 +26,12 @@ public class Problem6 {
         }
         return parts;
     }
+
+    public static List<List<String>> separateNicknameList(Map<String, List<String>> mapForms) {
+        List<List<String>> duplicateNickname = new ArrayList<>();
+        for (Map.Entry<String, List<String>> elements : mapForms.entrySet()) {
+            duplicateNickname.add(elements.getValue());
+        }
+        return duplicateNickname;
+    }
 }
