@@ -95,4 +95,16 @@ public class Problem7 {
         return entrySet;
     }
 
+    /**
+     * @param map : Map<String, Integer>(지우고자 하는 object가 있는 map)
+     * @param keyList : 문자열 리스트(지우고자 하는 Key 리스트)
+     * @return map에서 keyList를 지우고 반환
+     */
+    private static Map<String, Integer> removeByKey(Map<String, Integer> map, List<String> keyList){
+        for(String key : keyList){
+            map.remove(key);
+        }
+        return map;
+    }
+
 }
