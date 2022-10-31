@@ -21,11 +21,17 @@ public class Problem4 {
         }
         // 소문자인 경우
         if (c >= 97 && c <= 122) {
-
+            return getConvertedLowerCase(c);
         }
+        // 알파벳 아닌 경우
+        return (char)c;
     }
 
     private static char getConvertedUpperCase(int c) {
         return (char)(155 - c);
+    }
+
+    private static char getConvertedLowerCase(int c) {
+        return (char)(219 - c);
     }
 }
