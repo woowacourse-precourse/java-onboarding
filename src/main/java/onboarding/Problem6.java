@@ -29,7 +29,7 @@ public class Problem6 {
     private static List<String> collectTwoCharacters(String name) {
         ArrayList<String> words = new ArrayList<>();
         for(int i=0; i<name.length()-1; i++) {
-            String twoCharacter = String.valueOf(name.charAt(i) + name.charAt(i+1));
+            String twoCharacter = String.valueOf(name.substring(i,i+2));
             words.add(twoCharacter);
         }
 
