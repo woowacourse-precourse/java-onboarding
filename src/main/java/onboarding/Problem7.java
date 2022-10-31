@@ -71,10 +71,14 @@ public class Problem7 {
                 break;
 
             Map.Entry<String, Integer> entry = scoreList.get(i);
-            if (entry.getValue() != 0)
-                answer.add(entry.getKey());
+            addNameToAnswer(answer, entry);
         }
         return answer;
+    }
+    public static void addNameToAnswer(List<String> answer,
+                                       Map.Entry<String, Integer> entry) {
+        if (entry.getValue() != 0)
+            answer.add(entry.getKey());
     }
 }
 
