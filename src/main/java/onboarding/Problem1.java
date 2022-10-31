@@ -16,6 +16,16 @@ class Problem1 {
     }
 
     /**
+     * 페이지 값이 2개 주어졌는지 확인
+     * @param pages 페이지 정보
+     */
+    private static void validatePages(List<String> pages) {
+        if (pages.size() != 2) {
+            throw new RuntimeException("페이지 값이 2개가 아닙니다.");
+        }
+    }
+
+    /**
      * 두 참가자의 승자 가리기
      * @param pobi 포비의 페이지 정보
      * @param crong 크롱의 페이지 정보
@@ -106,6 +116,4 @@ class Problem1 {
 
         return oneLetterNumber.stream().mapToInt(i -> i).toArray();
     }
-
-
 }
