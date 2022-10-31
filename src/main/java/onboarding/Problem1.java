@@ -14,15 +14,14 @@ class Problem1 {
         }
         //pobi, crong 점수 구하기
         for (int i : pobi) {
-            pobiScore = Math.max(makeScore(i), pobiScore);
+            pobiScore = Math.max(compareScore(i), pobiScore);
         }
         for (int i : crong) {
-            crongScore = Math.max(makeScore(i), crongScore);
+            crongScore = Math.max(compareScore(i), crongScore);
         }
 
         //포비가 이긴다면 1, 크롱이 이긴다면 2, 무승부는 0
         int answer = makeAnswer(pobiScore, crongScore);
-
         return answer;
     }
     private static int makeAnswer(int pobiScore, int crongScore) {
@@ -49,7 +48,7 @@ class Problem1 {
        return false;
     }
 
-    private static int makeScore(int score) {
+    private static int compareScore(int score) {
         return Math.max(sumOfDigits(score), multiplicationOfDigits(score));
     }
 
