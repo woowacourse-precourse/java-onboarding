@@ -15,4 +15,18 @@ public class Problem4 {
         answer = sb.toString();
         return answer;
     }
+    private static char reverse_char(char c) {
+        int tmp = 0;
+
+        if(Character.isLowerCase(c)) {
+            tmp = c - 97;
+            return (char)(122 - tmp);
+        }
+
+        else{
+            tmp = c - 65;
+            return (char)(90 - tmp);
+        }
+    }
+
 }
