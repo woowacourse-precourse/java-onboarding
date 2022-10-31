@@ -78,5 +78,16 @@ public class Problem7 {
         return false;
     }
 
+    /**
+     * 사용자와 함께 아는 친구의 수 * 10점 주는 함수
+     */
+    private static Map<String,Integer> addTenPoint(Map<String,Integer> friendsMap,List<String> userFriendList,List<List<String>> friends){
+        for (String target : friendsMap.keySet()) {
+            if(checkFriend(target,userFriendList,friends)){
+                friendsMap.replace(target,friendsMap.get(target)+10);
+            }
+        }
+        return friendsMap;
+    }
 
 }
