@@ -12,10 +12,21 @@ public class Problem7 {
         for (List<String> friend : friends) {
             if (friend.get(0).contains(user)) {
                 friendsList.add(friend.get(1));
-            } else if (friend.get(1).contains(user)) {
+            }
+            else if (friend.get(1).contains(user)) {
                 friendsList.add(friend.get(0));
             }
         }
-        return;
+        return ;
+    }
+    private static void checkVisitors(List<String> visitors) {
+        for (String visitor : visitors ) {
+            if (friendsBook.containsKey(visitor)) {
+                friendsBook.put(visitor, friendsBook.get(visitor) + 1);
+            }
+            else {
+                friendsBook.put(visitor, 1);
+            }
+        }
     }
 }
