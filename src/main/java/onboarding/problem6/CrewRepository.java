@@ -21,7 +21,6 @@ public class CrewRepository {
      * 크루의 정보를 초기화하는 생성자
      *
      * @param forms String 타입의 크루 이메일, 닉네임 정보
-     * @see #initCrews(List form)
      */
     public CrewRepository(List<List<String>> forms) {
         this.crews = initCrews(forms);
@@ -32,7 +31,6 @@ public class CrewRepository {
      *
      * @param forms 크루의 이메일, 닉네임 정보
      * @return Crew 타입의 크루 정보 List
-     * @see onboarding.problem6.consts.FormIndexConst
      */
     private List<Crew> initCrews(List<List<String>> forms) {
         return forms.stream()

@@ -5,7 +5,14 @@ package onboarding.problem6;
  */
 class Crew {
 
+    /**
+     * 크루의 이메일
+     */
     private final String email;
+
+    /**
+     * 크루의 닉네임
+     */
     private final String nickname;
 
     /**

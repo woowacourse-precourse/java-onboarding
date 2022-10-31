@@ -47,7 +47,6 @@ public class CrewDuplicateNicknameService {
      * 모든 크루의 닉네임을 확인해 중복된 닉네임을 가진 크루 이메일을 구하는 메소드
      *
      * @return 중복된 닉네임을 가진 크루의 이메일
-     * @see #processDuplicateCrewNickname(Crew crew)
      */
     public List<String> findDuplicateCrews() {
         crewRepository.findAllCrewStream().forEach(this::processDuplicateCrewNickname);
@@ -59,9 +58,6 @@ public class CrewDuplicateNicknameService {
      * 크루의 닉네임 길이만큼 반복하며 크루의 닉네임이 중복되었는지 확인하는 메소드
      *
      * @param crew 중복 닉네임 유무를 확인하기 위한 크루
-     * @see #validateCrewNickname(String nickname)
-     * @see #calculatePartOfNickname(String nickname, int index)
-     * @see onboarding.problem6.consts.NicknameConst
      */
     private void processDuplicateCrewNickname(Crew crew) {
         String nickname = crew.getNickname();
@@ -81,7 +77,6 @@ public class CrewDuplicateNicknameService {
      *
      * @param crew 중복 닉네임 유무를 확인하기 위한 크루
      * @param partOfNickname 크루의 닉네임 중 연속적인 2글자
-     * @see #addDuplicateCrewEmail(Crew crew, String email)
      */
     private void validateDuplicateNickname(Crew crew, String partOfNickname) {
         if (partOfNicknameMap.containsKey(partOfNickname)) {
