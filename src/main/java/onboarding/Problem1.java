@@ -41,7 +41,11 @@ class Spread {
         RIGHT = new Page(right);
     }
 
-    // TODO: int score()
+    int score() {
+        int leftScore = LEFT.getScore();
+        int rightScore = RIGHT.getScore();
+        return Math.max(leftScore, rightScore);
+    }
 
     private static class Page {
         private final int NUMBER;
@@ -51,6 +55,9 @@ class Spread {
         }
 
         // TODO: getScore()
+        int getScore() {
+            return 0;
+        }
 
         // TODO: addDigits()
 
