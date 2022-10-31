@@ -231,12 +231,21 @@ public class Problem7 {
   public static List<String> sortKeys(Map<String, Integer> scoreMap) {
     List<String> keyList = new ArrayList<>(scoreMap.keySet());
     keyList.sort(((o1, o2) -> {
-      int res = scoreMap.get(o2) - scoreMap.get(o1);
-      if (res == 0) {
+      int result = scoreMap.get(o2) - scoreMap.get(o1);
+      if (result == 0) {
         return o1.compareTo(o2);
       }
-      return res;
+      return result;
     }));
-    return keyList;
+    List<String> ansList = new ArrayList<>();
+    int i = 0;
+    for (String element : keyList) {
+      ansList.add(element);
+      if (i == 4) {
+        break;
+      }
+      i++;
+    }
+    return ansList;
   }
 }
