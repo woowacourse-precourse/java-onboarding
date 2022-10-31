@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -7,6 +8,15 @@ import java.util.stream.IntStream;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+        List<Integer> pobiRL = new ArrayList<>(pobi);
+        List<Integer> crongML = new ArrayList<>(crong);
+        int answer = combiner(pobiRL, crongML);
+
+        return answer;
+    }
+
+
+    public static int combiner(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
         if (checker(pobi) == -1 || checker(crong) == -1) {
@@ -25,14 +35,13 @@ class Problem1 {
         }
 
 
-        return answer;    }
-
-
+        return answer;
+    }
     public static int adder(int value) {
         if (value / 10 == 0) {
             return value;
         } else {
-            return adder(value / 10) + value % 10;
+            return adder(value / 10) + (value % 10);
         }
     }
 
