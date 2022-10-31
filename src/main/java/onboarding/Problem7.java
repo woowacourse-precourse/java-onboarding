@@ -25,7 +25,11 @@ public class Problem7 {
         // 점수 부여
         setScore(visitors);
 
-        return new ArrayList<>();
+        return score.entrySet().stream()
+                .sorted(Problem7::byScoreAndName)
+                .map(Map.Entry::getKey)
+                .limit(LIMIT_RESULT_NUM)
+                .collect(Collectors.toList());
     }
 
     private static void buildRelations(List<List<String>> friends) {
@@ -68,5 +72,12 @@ public class Problem7 {
             values.retainAll(userFriends);
             score.put(key, score.getOrDefault(key, 0) + (values.size() * 10));
         });
+    }
+
+    private static int byScoreAndName(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+        if (o1.getValue() - o2.getValue() == 0) {
+            return o1.getKey().compareTo(o2.getKey());
+        }
+        return o2.getValue() - o1.getValue();
     }
 }
