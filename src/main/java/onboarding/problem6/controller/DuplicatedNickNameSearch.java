@@ -18,13 +18,15 @@ public class DuplicatedNickNameSearch {
 
     public DuplicatedNickNameSearch checkAllCrewForm(){
         for (int currentCrewIndex = 0; currentCrewIndex < forms.size(); currentCrewIndex++) {
-            checkCrewForm(currentCrewIndex);
+            String currentCrewNickname= NicknameListService.getNicknameFromList(forms.get(currentCrewIndex));
+            if(!NicknameListService.checkOneWordNickname(currentCrewNickname)){
+                checkCrewForm(currentCrewNickname, currentCrewIndex);
+            }
         }
         return this;
     }
 
-    private void checkCrewForm(int crewIndex){
-        String currentCrewNickname= NicknameListService.getNicknameFromList(forms.get(crewIndex));
+    private void checkCrewForm(String currentCrewNickname, int crewIndex){
         for(int index = 0; index<currentCrewNickname.length()-1; index++){
             addDuplicatedCrew(DuplicatedCrewService.getSubString(currentCrewNickname, index), crewIndex);
         }

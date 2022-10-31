@@ -15,6 +15,9 @@ public class NicknameListService {
             crewIndexList.add(crewIndex);
         }
     }
+    public static boolean checkOneWordNickname(String nickname){
+        return (nickname.length()==1);
+    }
     private static boolean isNicknameInList(ArrayList<Integer> crewIndexList, int crewIndex){
         return crewIndexList.contains(crewIndex);
     }
