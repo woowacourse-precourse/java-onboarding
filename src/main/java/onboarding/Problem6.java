@@ -1,13 +1,16 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<String>();
         answer = checkString(forms);
         answer.addAll(reverse_checkString(forms));
+        List_set_List(answer);
 
 
         return answer;
@@ -55,6 +58,13 @@ public class Problem6 {
         }
 
         return strlist;
+    }
+
+    public static List<String> List_set_List(List<String> SList){
+        Set<String> set = new HashSet<String>(SList);
+        List<String> return_list = new ArrayList<String>(set);
+
+        return return_list;
     }
 
 }
