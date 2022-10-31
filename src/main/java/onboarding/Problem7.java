@@ -12,7 +12,7 @@ public class Problem7 {
         for (int i = 0; i < checkF.size(); i++) {
             for (int j = 0; j < checkF.get(i).size(); j++) {
                 String name = checkF.get(i).get(j);
-                if (!userFriend.contains(name) && !name.contains(user))
+                if (!userFriend.contains(name) && !name.equalsIgnoreCase(user))
                     userFriend.add(name);
             }
         }
@@ -24,7 +24,7 @@ public class Problem7 {
         for (int i = 0; i < friends.size(); i++) {
             for (int j = 0; j < friends.get(i).size(); j++) {
                 String name = friends.get(i).get(j);
-                if (!user.contains(name) && !userFriend.contains(name))
+                if (!(user.equalsIgnoreCase(name)) && !userFriend.contains(name))
                     friendScoreCheck.add(name);
             }
         }
