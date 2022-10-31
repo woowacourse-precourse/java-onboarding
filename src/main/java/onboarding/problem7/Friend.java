@@ -1,7 +1,7 @@
 package onboarding.problem7;
 
 import java.util.*;
-
+import java.util.stream.Collectors;
 public class Friend {
     private static HashMap<String, Integer> weight = new HashMap<>();
 
@@ -23,26 +23,17 @@ public class Friend {
         }
     }
 
-    public static List<String> recommendedList(String user) {
+    public static List<String> getRecommendedList(String user) {
         List<Map.Entry<String, Integer>> entryList = new LinkedList<>(weight.entrySet());
         entryList.sort(Map.Entry.comparingByValue());
         entryList = Util.sameEntryValueSort(entryList);
+        Collections.reverse(entryList);
         List<String> resultList = new ArrayList<>();
-        int count = 0;
-        for (int i = entryList.size() - 1; i >= 0; i--) {
-            if (entryList.get(i).getKey() == user) {
-                count++;
-                continue;
-            }
-            if (count >= Constant.MAX_RECOMMEND) {
-                break;
-            }
-            if (entryList.get(i).getValue() != 0) {
-                String name = entryList.get(i).getKey();
-                resultList.add(name);
-            }
-            count++;
-        }
+        entryList.stream()
+                .limit(Constant.MAX_RECOMMEND)
+                .filter(entry -> !entry.getKey().equals(user))
+                .filter(entry -> entry.getValue() != 0)
+                .forEach(entry -> resultList.add(entry.getKey()));
         return resultList;
     }
 }

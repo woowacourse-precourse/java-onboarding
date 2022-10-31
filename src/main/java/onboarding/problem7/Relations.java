@@ -13,10 +13,6 @@ public class Relations {
         this.relation = relation;
     }
 
-    public int size() {
-        return relation.size();
-    }
-
     public List<String> getRelation(int index) {
         return relation.get(index);
     }
