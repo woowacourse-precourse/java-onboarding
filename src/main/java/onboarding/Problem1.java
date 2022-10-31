@@ -15,6 +15,9 @@ class Problem1 {
         int pobi_multiple_value, crong_multiple_value; //각 자리수의 값을 곱한 것 중 가장 큰 값
         int pobi_max_value, crong_max_value; //가장 큰 결과
 
+        if(pobi.get(1) - pobi.get(0) != 1 || crong.get(1) - crong.get(0) != 1 )
+            return -1;
+
         /**
          * 각 자리수를 더한 것 중 더 큰 페이지의 값 구하기
          * */
@@ -33,7 +36,8 @@ class Problem1 {
         pobi_max_value = pobi_multiple_value > pobi_plus_value ? pobi_multiple_value : pobi_plus_value;
         crong_max_value = crong_multiple_value > crong_plus_value ? crong_multiple_value : crong_plus_value;
 
-        System.out.println(pobi_max_value + " " + crong_max_value);
+        System.out.println("pobi" + "\t" + "crong" + "\t" + "result");
+
         /**
          * 승자 가리기
          * */
@@ -46,10 +50,9 @@ class Problem1 {
         else if(pobi_max_value == crong_max_value) {
             answer = 0;
         }
-        else
-        {
-            answer = -1;
-        }
+
+        System.out.println("[" + pobi.get(0) + ", " + pobi.get(1) + "]\t" + "[" + crong.get(0) + ", " + crong.get(1) + "]\t" + answer);
+
         return answer;
     }
 
