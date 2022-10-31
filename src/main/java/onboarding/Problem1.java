@@ -5,6 +5,18 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        if (hasError(pobi) || hasError(crong))
+            answer = -1;
+        else {
+            int pobiMax = findMax(pobi);
+            int crongMax = findMax(crong);
+            if (pobiMax > crongMax)
+                answer = 1;
+            else if (pobiMax < crongMax)
+                answer = 2;
+            else
+                answer = 0;
+        }
         return answer;
     }
 
