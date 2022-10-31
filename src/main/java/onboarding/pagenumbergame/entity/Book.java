@@ -22,6 +22,10 @@ public class Book {
     }
   }
 
+  public static Book of(List<Integer> pages) {
+    return new Book(pages);
+  }
+
   private void settingWrongBook(List<Integer> pagesInt) {
     for (Integer page : pagesInt) {
       pages.add(Page.from(ConsoleOut.WRONG_EXCEPTION_NUMBER));
@@ -34,11 +38,25 @@ public class Book {
     }
   }
 
-  public static Book of(List<Integer> pages) {
-    return new Book(pages);
-  }
-
   public List<Page> printPages() {
     return pages;
+  }
+
+  public boolean isNotBook() {
+    for (Page page : pages) {
+      if (page.currentPageMinus()) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  public Integer gameValue() {
+    int leftValue = pages.get(0).pageValue();
+    int rightValue = pages.get(1).pageValue();
+    if (leftValue > rightValue) {
+      return leftValue;
+    }
+    return rightValue;
   }
 }

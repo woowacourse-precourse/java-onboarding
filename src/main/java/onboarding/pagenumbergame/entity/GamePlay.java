@@ -15,4 +15,24 @@ public class GamePlay {
   public static GamePlay of(List<Integer> pobi, List<Integer> crong) {
     return new GamePlay(pobi, crong);
   }
+
+  public Integer play() {
+    // check pobi list crong list not -1
+    if (pobi.isNotBook() || crong.isNotBook()) {
+      return -1;
+    }
+
+    // play game logic
+    Integer pobiGameValue = pobi.gameValue();
+    Integer crongGameValue = crong.gameValue();
+
+    if (pobiGameValue > crongGameValue) {
+      return 1;
+    } else if (pobiGameValue < crongGameValue) {
+      return 2;
+    } else if (pobiGameValue == crongGameValue) {
+      return 0;
+    }
+    return -1;
+  }
 }

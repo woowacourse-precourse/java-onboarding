@@ -17,6 +17,40 @@ public class Page {
     return new Page(page);
   }
 
+  public Integer pageValue() {
+    if (plusPage() >= multiPage()) {
+      return plusPage();
+    }
+    return multiPage();
+  }
+
+  private Integer plusPage() {
+    int tempPage = page;
+    int result = 0;
+    while (tempPage != 0) {
+      result += tempPage % 10;
+      tempPage /= 10;
+    }
+    return result;
+  }
+
+  private Integer multiPage() {
+    int tempPage = page;
+    int result = 1;
+    while (tempPage != 0) {
+      result *= tempPage % 10;
+      tempPage /= 10;
+    }
+    return result;
+  }
+
+  public boolean  currentPageMinus() {
+    if (page == ConsoleOut.WRONG_EXCEPTION_NUMBER) {
+      return true;
+    }
+    return false;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
