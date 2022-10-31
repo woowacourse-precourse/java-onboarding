@@ -1,6 +1,8 @@
 package onboarding;
 
-import java.util.*;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
@@ -25,7 +27,6 @@ public class Problem2 {
 		String answer = list.toString().replaceAll("[^a-z0-9]", "");
 		
 		return answer;
-
-         
+       
     }
 }

@@ -5,14 +5,13 @@ public class Problem3 {
 		int answer = 0;
         
 		for (int i=1; i<number+1; i++) {
-			String strNum = String.valueOf(i);
-			
-			answer += strNum.length() - strNum.replace("3", "").length();
-			answer += strNum.length() - strNum.replace("6", "").length();
-			answer += strNum.length() - strNum.replace("9", "").length();
-		
+			String[] strArray = String.valueOf(i).split("");
+			for (String str : strArray) {
+				if (str.equals("3") || str.equals("6") || str.equals("9")) {
+					answer += 1;
+				}
+			}
 		}
-		
-		return answer; 
+		return answer;
     }
 }

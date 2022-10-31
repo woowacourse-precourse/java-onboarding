@@ -1,47 +1,39 @@
 package onboarding;
 
-import java.util.*;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
  
-        int answer = 0;
-        
-        // 예외 처리
-    	if (exception(pobi) || exception(crong)) {
-    		answer = -1;
-    		return answer;
+    	if (isException(pobi) || isException(crong)) {
+    		return -1;
     	}
-    	
-    	
-    	// max값 계산 
-    	if (maxPages(pobi) > maxPages(crong)) {
-    		answer = 1;
-    	}else if (maxPages(pobi) < maxPages(crong)){
-    		answer = 2;
-    	}else {
-    		answer = 0;
+    	if (maxPage(pobi) > maxPage(crong)) {
+    		return 1;
+    	} 
+		if (maxPage(pobi) < maxPage(crong)){
+    		return 2;
     	}
-    	
-
-    	return answer;
-
-    
+		if (maxPage(pobi) == maxPage(crong)) {
+    		return 0;
+    	}
+		
+		return -1;
     }
    
-    static boolean exception( List<Integer> pages) {
+    static boolean isException( List<Integer> pages) {
     	int left = pages.get(0);
     	int right = pages.get(1);
     	
     	if (left != right-1 || left % 2 != 1 || right % 2 != 0) {
     		return true;
-    	}else {
-    		return false;
     	}
-    			
+		return false;		
     }
-    
-    static int maxPages(List<Integer> pages) {
+     
+    static int maxPage(List<Integer> pages) {
     	
     	List<Integer> pageSum = new ArrayList<>();
     	
@@ -60,6 +52,6 @@ class Problem1 {
     	}	
     	return Collections.max(pageSum);
 
-	
-    }	
+    }
+    	
 }
