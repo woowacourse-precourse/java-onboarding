@@ -1,5 +1,6 @@
 package onboarding;
 
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
@@ -156,6 +157,10 @@ class ApplicationTest {
 
     @Nested
     class Problem6Test {
+        @AfterEach
+        void initData(){
+            Problem6.initData();
+        }
         @Test
         void case1() {
             List<List<String>> forms = List.of(

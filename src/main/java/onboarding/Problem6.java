@@ -12,7 +12,6 @@ public class Problem6 {
         findNickName(nickname);
         answer = findEmail();
         sortEmail(answer);
-        initData();
         return answer;
     }
     static void checkForms(List<List<String>> forms) {
