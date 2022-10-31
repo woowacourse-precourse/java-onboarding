@@ -102,29 +102,4 @@ public class GroupGenerator {
             }
         }
     }
-
-    public static void main(String[] args) {
-        String user = "mrko";
-        List<List<String>> friends = List.of(
-            List.of("donut", "andole"),
-            List.of("donut", "jun"),
-            List.of("donut", "mrko"),
-            List.of("shakevan", "andole"),
-            List.of("shakevan", "jun"),
-            List.of("shakevan", "mrko")
-        );
-        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
-
-        GroupGenerator groupGenerator = new GroupGenerator(user, friends, visitors);
-        Set<String> myFriends = groupGenerator.getMyFriends();
-        Set<String> notMyFriends = groupGenerator.getNotMyFriends();
-        Map<String, Integer> recommendationScores = groupGenerator.getRecommendationScores();
-
-        System.out.println(notMyFriends);
-        System.out.println(myFriends);
-        System.out.println(recommendationScores);
-
-        groupGenerator.updateRecommendationScores();
-        System.out.println(recommendationScores);
-    }
 }
