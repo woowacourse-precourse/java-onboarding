@@ -23,9 +23,9 @@ public class Problem4 {
 
     public static char changeAlpha(char chr){
         if(Character.isUpperCase(chr))
-            return (char)(219 - chr);
-        else
             return (char)(155 - chr);
+        else
+            return (char)(219 - chr);
     }
 
     public static String reverseString(String str){
