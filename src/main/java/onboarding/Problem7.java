@@ -9,10 +9,11 @@ import java.util.stream.Collectors;
  * getVisitorsPoint 메서드 값을 해당 유저들의 점수를 1점 올림
  * getAcquaintanceList 메서드 선택한 유저와 이미 친구사이라면 제거, 점수가 0이면 제거
  * getResult 메서드 점수순으로 정렬, 점수가 같으면 이름순으로 정렬, 최대 5까지 반환
+ * checkException 메서드 예외를 처리함
  */
 
 public class Problem7 {
-    private static Set<String> friendOfUserSet = new HashSet();
+    private static Set<String> friendOfUserSet = new HashSet<>();
 
     private static Map<String, Integer> friendsAndScoreMap = new HashMap<>();
 
@@ -31,8 +32,9 @@ public class Problem7 {
     private static final String LOWERCASE_ID = "^[a-z]*$";
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        checkException(user, friends, visitors);
         getMyFriends(friends, user);
-        getAcquaintancePoint(friends, user);
+        getAcquaintancePoint(friends);
         getVisitorsPoint(visitors);
         getAcquaintanceList();
 
@@ -67,7 +69,7 @@ public class Problem7 {
         }
     }
 
-    private static void getAcquaintancePoint(List<List<String>> friends, String user) {
+    private static void getAcquaintancePoint(List<List<String>> friends) {
         for (List<String> friend : friends) {
             String firstFriend = friend.get(0);
             String secondFriend = friend.get(1);
@@ -83,5 +85,27 @@ public class Problem7 {
             friendsAndScoreMap.put(friend, friendsAndScoreMap.getOrDefault(friend, 0) + VISITORS_POINT);
         }
     }
+    private static void checkException(String user, List<List<String>> friends, List<String> visitors){
+        if (user.length()<MIN_USER_LENGTH||user.length()>MAX_USER_LENGTH)throw new IllegalArgumentException("user의 길이는 1이상 30이하인 문자열입니다.");
+        if (!user.matches(LOWERCASE_ID))throw new IllegalArgumentException("아이디는 소문자로만 이루어져 있어야합니다.");
+
+        if (friends.size()<MIN_FRIENDS_LENGTH||friends.size()>MAX_FRIENDS_LENGTH)throw new IllegalArgumentException("friends는 1이상 10000이하인 리스트/배열입니다.");
+
+        for (List<String> friend : friends){
+            for (String id : friend){
+                if (id.length()<MIN_ID_LENGTH||id.length()>MAX_ID_LENGTH)throw new IllegalArgumentException("아이디는 길이가 1이상 30이하인 문자열입니다.");
+                if (!id.matches(LOWERCASE_ID))throw new IllegalArgumentException("아이디는 소문자로만 이루어져 있어야합니다.");
+            }
+        }
+
+        if (visitors.size()<MIN_VISITOR_LENGTH || visitors.size()>MAX_VISITOR_LENGTH)throw new IllegalArgumentException("visior는 길이가 0이상 10000이하인 리스트/배열입니다.");
+
+        for (String visitor : visitors){
+            if (visitor.length()<MIN_ID_LENGTH || visitor.length()>MAX_ID_LENGTH)throw new IllegalArgumentException("아이디는 길이가 1이상 30이하인 문자열입니다.");
+            if (!visitor.matches(LOWERCASE_ID))throw new IllegalArgumentException("아이디는 소문자로만 이루어져 있어야합니다.");
+        }
+
+    }
+
 
 }
