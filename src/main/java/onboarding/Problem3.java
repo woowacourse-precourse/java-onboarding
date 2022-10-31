@@ -30,9 +30,4 @@ public class Problem3 {
         }
         return answer;
     }
-
-    public static void main(String[] args) {
-        int solution = Problem3.solution(10001);
-        System.out.println(solution);
-    }
 }
