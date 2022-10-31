@@ -21,3 +21,9 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+---
+## 기능 목록
+- 닉네임이 연속적으로 두 글자 이상 같은지 구분한다.
+- 닉네임이 연속적으로 두 글자 이상 같다면 대응되는 이메일을 저장한다.
+- 이메일을 오름차순 정렬하고 중복은 제거하여 리스트로 반환한다. 

@@ -24,3 +24,11 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+---
+## 기능 목록
+- 사용자와 함께 아는 친구를 찾아, 해당 친구의 점수를 10점 더한다.
+- 사용자의 타임라인에 방문한 친구를 찾아, 해당 친구의 점수를 1점 더한다.
+- 친구들의 점수가 큰 순서대로 최대 5개까지 구하고, 그들의 이름을 결과값으로 반환한다.
+  - 만약 점수가 0이라면 결과값에 포함시키지 않는다.
+  - 만약 두 친구의 점수가 같다면 이름 순서대로 결과값에 포함시킨다.
