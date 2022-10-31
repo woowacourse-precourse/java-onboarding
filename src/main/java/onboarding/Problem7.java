@@ -70,7 +70,7 @@ public class Problem7 {
     public static HashMap<String, Integer> updateVisitPoint(HashMap<String, Integer> scoreBoard, List<String> visitors) {
         for (String visitor : visitors) {
             int score = scoreBoard.get(visitor);
-            score++;
+            score += visitPoint;
             scoreBoard.put(visitor, score);
         }
 
