@@ -23,8 +23,7 @@ public class UserRepository implements SnsRepository {
 
     @Override
     public User update(User user) {
-        User dataUser = dataBase.get(user.getIndex());
-        dataUser.setNickName(user.getNickName());
+        User dataUser = dataBase.put(user.getIndex(),user);
         return dataUser;
     }
 
