@@ -25,7 +25,7 @@ public class Problem7 {
 
         initPriorityQueue();
 
-        //recommendScore에 전체를 pq에 넣기
+        //recommendScore 전체를 pq에 넣기
         for (String name : recommendScore.keySet()) {
             int score = recommendScore.get(name);
             if(isFriend.get(name) == null && score != 0){
@@ -53,9 +53,11 @@ public class Problem7 {
         pq = new PriorityQueue<>(new Comparator<User>() {
             @Override
             public int compare(User user1, User user2) {
+                //점수가 같다면 이름 오름차순 정렬
                 if(user1.score == user2.score){
                     return user1.name.compareTo(user2.name) > 0 ? 1 : -1;
                 }
+                //점수가 높은 순서대로 정렬
                 return user1.score < user2.score ? 1 : -1;
             }
         });
