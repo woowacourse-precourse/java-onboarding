@@ -19,6 +19,10 @@ class Problem1 {
         return answer;
     }
 
+    private int getLargeInt(int a, int b) {
+        return a > b ? a : b;
+    }
+
     private int getTotalByAdd(List<Integer> eachDigit) {
         int total = 0;
         for (Integer num : eachDigit) {
