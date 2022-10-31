@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.io.File;
 import java.util.List;
 
 class Problem1 {
@@ -7,15 +8,17 @@ class Problem1 {
     private static final int DRAW_NUMBER = 0;
     private static final int WIN_POBI_NUMBER = 1;
     private static final int WIN_CRONG_NUMBER = 2;
+    private static final int FIRST_PAGE_OF_BOOK = 1;
+    private static final int LAST_PAGE_OF_BOOK = 400;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer;
 
-        if (isNotTwoElements(pobi) || isNotSidePage(pobi)) {
+        if (isNotTwoElements(pobi) || isNotBookPage(pobi) || isNotSidePage(pobi)) {
             return EXCEPTION_NUMBER;
         }
 
-        if (isNotTwoElements(crong) || isNotSidePage(crong)) {
+        if (isNotTwoElements(crong) || isNotBookPage(crong) || isNotSidePage(crong)) {
             return EXCEPTION_NUMBER;
         }
 
@@ -25,6 +28,11 @@ class Problem1 {
         answer = getAnswerByCompareNumber(pobiLargerNumber, crongLargerNumber);
 
         return answer;
+    }
+
+    private static boolean isNotBookPage(List<Integer> checkList) {
+        return FIRST_PAGE_OF_BOOK > checkList.get(0) || checkList.get(0) > LAST_PAGE_OF_BOOK
+                || FIRST_PAGE_OF_BOOK > checkList.get(1) || checkList.get(1) > LAST_PAGE_OF_BOOK;
     }
 
     private static boolean isNotTwoElements(List<Integer> checkList) {
