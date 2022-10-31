@@ -60,6 +60,21 @@ public class Problem7 {
         	reverseCandidatesMap.put(entry.getValue(), list);
         }
         
+        List<Integer> keyList = new ArrayList<Integer>(reverseCandidatesMap.keySet());
+        Collections.sort(keyList, Collections.reverseOrder());
+        for(Integer key : keyList) {
+        	if(key == 0) {
+        		return answerList;
+        	}else {
+        		for(String candidate : reverseCandidatesMap.get(key)) {
+        			answerList.add(candidate);
+        			if(answerList.size() == 5) {
+        				return answerList;
+        			}
+        		}
+        	}
+        }
+        
         return answerList;
     }
 }
