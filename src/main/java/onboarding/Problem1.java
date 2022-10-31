@@ -4,6 +4,9 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+        if(!isValidInput(pobi) || !isValidInput(crong)){
+            return -1;
+        }
         int pobiMaxScore  = getPlayerMaxScore(pobi);
         int crongMaxScore = getPlayerMaxScore(crong);
 
@@ -16,6 +19,23 @@ class Problem1 {
         else{
             return 0;
         }
+    }
+
+    public static boolean isValidInput(List<Integer> pages){
+        if(!isValidNumber(pages)){
+            return false;
+        }
+
+        Integer leftPage = pages.get(0);
+        Integer rightPage = pages.get(1);
+
+        if(!isOddNumber(leftPage) || !isEvenNumber(rightPage)){
+            return false;
+        }
+        if(!isValidRange(leftPage) || !isValidRange(rightPage)){
+            return false;
+        }
+        return true;
     }
 
     public static boolean isOddNumber(int page){
