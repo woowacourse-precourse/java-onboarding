@@ -77,6 +77,14 @@ class Problem1 {
         rightMax = compareNum(plusPage(crong.get(1)), multiplyPage(crong.get(1)));
         crongMaxNum = compareNum(leftMax, rightMax);
 
+        if (pobiMaxNum < crongMaxNum) {
+            answer = 2;
+        } else (pobiMaxNum > crongMaxNum) {
+            answer = 1;
+        } else {
+            answer = 0;
+        }
+
         return answer;
     }
 }
