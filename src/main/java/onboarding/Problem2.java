@@ -14,7 +14,7 @@ public class Problem2 {
         }
         for(int i = 0 ; i < password.length() ; i++){
             now_char = password.charAt(i);
-            next_char = password.charAt(i + 1);
+            if(i!=password.length()-1) next_char = password.charAt(i + 1);
             if(i == password.length()-1){
                 if(Character.compare(before, now_char) != 0){
                     D_password += now_char;
