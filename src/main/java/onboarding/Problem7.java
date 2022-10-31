@@ -48,7 +48,9 @@ public class Problem7 {
 	}
 
 	public static void calcVisitorScore(List<String> visitors, Map<String, Integer> friendScore) {
-
+		for (String visitor : visitors) {
+			friendScore.put(visitor, friendScore.getOrDefault(visitor, 0) + 1);
+		}
 	}
 
 	public static void sortScore() {

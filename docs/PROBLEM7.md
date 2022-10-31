@@ -48,11 +48,11 @@ return 하도록 solution 메서드를 완성하라. 이때 추천 점수가 0�
 - [x] List<String> userFriends 배열을 선언해줍니다.
 - [x] findUserFriend(List<List<String>> friends, List<String> userFriends, String user) 메서드를 구현합니다.
     - [x] friends배열을 탐색하며 user의 친구를 userFrineds배열에 저장해줍니다.
-- [ ] 점수를 계산할 calcFriendsScore(Map<String, Integer> friendScore, List<List<String>> friends, List<String> userFriends)
+- [x] 점수를 계산할 calcFriendsScore(Map<String, Integer> friendScore, List<List<String>> friends, List<String> userFriends)
   메서드를 구현합니다.
     - [x] isFriendsFriend() 메서드를 통해 user와 직접 친구가 아니면서 user의 친구의 친구인지 확인합니다.
-    - [ ] friends배열을 탐색하며 user와 직접 친구가 아니면서 userFriedns배열에 있는 친구와 친구인 친구의 점수를 갱신해줍니다.
-    - [ ] user에게 방문한 친구의 점수를 갱신해줍니다.
+    - [x] friends배열을 탐색하며 user와 직접 친구가 아니면서 userFriedns배열에 있는 친구와 친구인 친구의 점수를 갱신해줍니다.
+- [x] user에게 방문한 친구의 점수를 갱신해줍니다.
 - [ ] friendScore() 메서드를 통해점수가 높은 순서대로, 점수가 같다면 이름 순서대로 정렬해줍니다.
 - [ ] recommendFriend()메서드를 통해추천할 친구가 있다면 최대 5명까지 배열에 넣어 return합니다.
     - [ ] 점수가 0점이상이고 직접 친구가 아닌 추천친구를 추가합니다.
