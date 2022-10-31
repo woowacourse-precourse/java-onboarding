@@ -23,6 +23,7 @@ public class Problem7 {
         List<String> userFriends = new ArrayList<>();
 
         findFriends(user, friends, recommendFriendsMap, userFriends);
+        findVisitors(visitors, recommendFriendsMap, userFriends);
 
         List<RecommendFriend> recommendFriends = new ArrayList<>(recommendFriendsMap.values());
 
@@ -65,6 +66,22 @@ public class Problem7 {
         }
     }
 
+    private static void findVisitors(List<String> visitors, Map<String, RecommendFriend> recommendFriendsMap,
+                                     List<String> userFriends) {
+
+        for (String visitor : visitors) {
+            if (isContains(visitor, userFriends)) {
+                continue;
+            }
+
+            if (getRecommendFriend(recommendFriendsMap, visitor) == null) {
+                putRecommendFriend(recommendFriendsMap, visitor, VISITOR_SCORE);
+            } else {
+                getRecommendFriend(recommendFriendsMap, visitor).visitPlusScore();
+            }
+
+        }
+    }
 
     private static void putRecommendFriend(Map<String, RecommendFriend> recommendFriendsMap, String friendCandidate, Integer friendScore) {
         recommendFriendsMap.put(friendCandidate, new RecommendFriend(friendCandidate, friendScore));

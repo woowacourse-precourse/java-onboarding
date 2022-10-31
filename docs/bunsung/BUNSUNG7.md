@@ -91,5 +91,13 @@ class RecommendFriend implements Comparable<RecommendFriend> {
 - 이때 RecommendFriends 는 Comparable<RecommendFriend> 구현한다.
 - compareTo(Recommend o) 메서드를 Override 하여 파라미터로 들어온 객체의 점수와 현재 객체의 점수가 같은지 비교한다.
 
+## `findVisitors()` 메서드 사용
+- 파라미터로 List<String> visitors, Map<String, RecommendFriend> recommendFriendsMap,
+  List<String> userFriends 가진다.
+  - 해당 메서드는 방문자이면서 친구일 경우를 먼저 검증한다. 
+  - 만약 친구가 아니고 방문자일 경우, 방문자 점수를 가진 생성자를 만든다.
+  - 위에서 생성자가 만들어 진 뒤, 다시 확인하여 방문자일 경우는 방문자 점수를 추가하는 메서드가 동작한다.
+
 ### Commit
 - [x] feat: add find friend method and recommend friend class
+- [x] feat: add find visitors method
