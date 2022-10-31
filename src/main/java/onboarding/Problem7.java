@@ -35,6 +35,9 @@ public class Problem7 {
         // 3. 구성한 친구관계 Graph를 탐색하며 함께 아는 친구에 대한 점수를 갱신
         countFriendNetworkScore(user, al);
 
+        // 4. 방문자 정보를 탐색하며 방문 이력에 대한 점수를 갱신함
+        countVisitHistScore(candidates, visitors);
+
 
         return answer;
     }
@@ -86,5 +89,11 @@ public class Problem7 {
                 c.updateWeight(10);
             queue.poll();
         }
+    }
+
+    // 방문자 정보를 탐색하며 방문 이력에 대한 점수를 갱신
+    private static void countVisitHistScore(HashMap<String, Candidate> candidates, List<String> visitors) {
+        for(String visit : visitors)
+            candidates.get(visit).updateWeight(1);
     }
 }
