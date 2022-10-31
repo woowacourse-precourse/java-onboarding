@@ -1,12 +1,15 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         List<String> twoWords = getTwoWords(forms);
+        Set<String> duplicatedWords = findDuplicatedWords(twoWords);
 
         return answer;
     }
@@ -25,5 +28,15 @@ public class Problem6 {
         }
 
         return list;
+    }
+
+    public static Set<String> findDuplicatedWords(List<String> twoWords) {
+        Set<String> duplicatedWords = new HashSet<>();
+
+        for (String str : twoWords) {
+            if (twoWords.indexOf(str) != twoWords.lastIndexOf(str)) duplicatedWords.add(str);
+        }
+
+        return duplicatedWords;
     }
 }
