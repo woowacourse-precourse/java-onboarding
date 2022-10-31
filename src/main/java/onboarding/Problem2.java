@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Problem2 {
+    private static List<Integer[]> duplicateIndexList;
+    private static Integer[] duplicateIndex;
+    private static boolean duplicateCheck;
+
     public static String solution(String cryptogram) {
         while (duplicateStringFind(cryptogram).size() != 0) {
             cryptogram = removeDuplication(cryptogram, duplicateStringFind(cryptogram));
@@ -13,19 +17,17 @@ public class Problem2 {
 
     private static List<Integer[]> duplicateStringFind(String cryptogram) {
         String[] charList = cryptogram.split("(?<=.)");
-        List<Integer[]> duplicateIndexList = new ArrayList<>();
-        Integer[] duplicateIndex = new Integer[2];
+        duplicateIndexList = new ArrayList<>();
+        duplicateIndex = new Integer[2];
+        duplicateCheck = false;
 
-        if (putDuplicateIndexList(duplicateIndexList, charList, duplicateIndex)) {
+        if (putDuplicateIndexList(charList)) {
             duplicateIndex[1] = charList.length - 1;
             duplicateIndexList.add(duplicateIndex);
         }
         return duplicateIndexList;
     }
-
-    private static boolean putDuplicateIndexList(List<Integer[]> duplicateIndexList, String[] charList, Integer[] duplicateIndex) {
-        boolean duplicateCheck = false;
-
+    private static boolean putDuplicateIndexList(String[] charList) {
         for (int i = 0; i < charList.length - 1; i++) {
             if (charList[i].equals(charList[i + 1]) && !duplicateCheck) {
                 duplicateCheck = updateDuplication(duplicateIndex, false, i);
