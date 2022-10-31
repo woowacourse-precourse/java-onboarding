@@ -7,12 +7,15 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import onboarding.validatechecker.Problem6ValidateChecker;
+
 public class Problem6 {
 	private static final int EMAIL = 0;
 	private static final int NICKNAME = 1;
 	private static final int UNDUPLICATED = 1;
 
 	public static List<String> solution(List<List<String>> forms) {
+		Problem6ValidateChecker.isFormsValidate(forms);
 		Map<String,String> nickEmailMapper = genNickEmailMapper(forms);
 		List<String> nickNameList = genNickNameList(forms);
 		List<String> patternList = genPatternList(nickNameList);
