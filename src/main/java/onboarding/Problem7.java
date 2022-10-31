@@ -69,11 +69,7 @@ public class Problem7 {
                     .filter(friendPair -> !this.getFriends().contains(friendPair))
                     .collect(Collectors.toList());
         }
-
-        public boolean isContainInRecommendList(String username) {
-            return this.getFriendRecommendScore().containsKey(username);
-        }
-
+        
         public List<String> findToRecommendedFriends(int maxElementNum) {
             return this.getFriendRecommendScore().entrySet().stream()
                     .sorted(Collections.reverseOrder(Map.Entry.<String, Integer>comparingByValue())
