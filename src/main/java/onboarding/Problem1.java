@@ -16,16 +16,9 @@ class Problem1 {
         if((pobi.get(0) < 1 || pobi.get(0) > 400) || (crong.get(0) < 1 || crong.get(0) > 400)) return -1;
 
         // 포비 점수
-        List<Integer> calRes = calculateDigitSum(pobi.get(0));
-        pobiMax = Math.max(calRes.get(0), calRes.get(1));
-        calRes = calculateDigitSum(pobi.get(1));
-        pobiMax = Math.max(pobiMax, Math.max(calRes.get(0), calRes.get(1)));
-
+        pobiMax = getMaxScore(pobi);
         // 크롱 점수
-        calRes = calculateDigitSum(crong.get(0));
-        crongMax = Math.max(calRes.get(0), calRes.get(1));
-        calRes = calculateDigitSum(crong.get(1));
-        crongMax = Math.max(crongMax, Math.max(calRes.get(0), calRes.get(1)));
+        crongMax = getMaxScore(crong);
 
         if(pobiMax > crongMax) answer = 1;
         else if(pobiMax == crongMax) answer = 0;
@@ -44,5 +37,17 @@ class Problem1 {
         }
 
         return List.of(sum, multi);
+    }
+
+    private static int getMaxScore(List<Integer> person) {
+        int max;
+        // 왼쪽 페이지의 자릿수 합과 곱
+        List<Integer> calculatedValue = calculateDigitSum(person.get(0));
+        max = Math.max(calculatedValue.get(0), calculatedValue.get(1));
+        // 오른쪽 페이지의 자릿수 합과 곱
+        calculatedValue = calculateDigitSum(person.get(1));
+        // 더 큰 값을 취함
+        max = Math.max(max, Math.max(calculatedValue.get(0), calculatedValue.get(1)));
+        return max;
     }
 }
