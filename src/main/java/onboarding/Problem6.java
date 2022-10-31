@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Problem6 {
@@ -44,14 +45,40 @@ public class Problem6 {
         return nickname.matches(pattern);
     }
 
+    // 중복 유효성 검사 함수.
+    public static boolean isDuplicate(String cryptomgram){
+        if(cryptomgram != null){
+            for(int i = 1; i < cryptomgram.length(); i++){
+                if(cryptomgram.charAt(i-1) != 0){
+                    if(cryptomgram.charAt(i) == cryptomgram.charAt(i-1)){
+                        return true;
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
+    // 2. 이메일 중복을 체크하는 함수 만들기.
+    public static  List<String> checkMultiEmail(List<List<String>> list){
+        List<String> result_list = new ArrayList<>();
+        int k = 0;
+        for(List<String> li : list){
+            String email = li.get(0);
+            String email_first = email.substring(0, email.indexOf("@"));
+
+        }
+
+        return result_list;
+    }
+
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
-        // 1. 예외처리 : 크루 인원이 1~10000 사이인지 체크하기.
-        // 이메일 : 11자이상 20자 미만 체크하기.
-        // email.com 도메인 제한 체크하기.
-        // 닉네임은 한글만 가능. 길이는 1~20 사이 체크하기.
-        // result는 문자열을 오름차순으로 정렬
-        // 2. 이름중복을 체크하는 함수 만들기.
+        if(isException(forms)){
+            // result는 문자열을 오름차순으로 정렬
+        }
+
         return answer;
     }
 }
