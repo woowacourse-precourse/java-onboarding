@@ -30,6 +30,17 @@ public class Problem7 {
             }
         }
 
+        for (int i = 0; i < visitors.size(); i++) {
+            if (!closeFriends.contains(visitors.get(i))) {
+                if (friendScore.containsKey(visitors.get(i))) {
+                    friendScore.put(visitors.get(i), friendScore.get(visitors.get(i)) + 1);
+                }else {
+                    friendScore.put(visitors.get(i), 1);
+                }
+            }
+        }
+
+
 
         return answer;
     }
