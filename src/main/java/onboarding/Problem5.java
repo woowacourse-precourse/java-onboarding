@@ -9,9 +9,9 @@ public class Problem5 {
 		List<Integer> answer = new ArrayList<>(Collections.emptyList());
 		int[] amountOfMoney = new int[] {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
 
-		for (int i : amountOfMoney) {
-			answer.add(money / i);
-			money %= i;
+		for (int unit : amountOfMoney) {
+			answer.add(money / unit);
+			money %= unit;
 		}
 
 		return answer;
