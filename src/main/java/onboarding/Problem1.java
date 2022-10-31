@@ -5,7 +5,7 @@ import java.util.stream.Stream;
 
 class Problem1 {
 	public static int solution(List<Integer> pobi, List<Integer> crong) {
-		// 책의 범위가 1에서 400 사이 인지 확인
+		// input 값 확인 후 예외 처리
 		if (is1to400(pobi) || is1to400(crong) || isException(pobi) || isException(crong)) {
 			return -1;
 		}

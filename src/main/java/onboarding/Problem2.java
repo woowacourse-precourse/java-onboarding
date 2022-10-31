@@ -5,11 +5,6 @@ import java.util.Stack;
 public class Problem2 {
 	public static String solution(String cryptogram) {
 
-		// 해독할때까지 재귀
-		return decryptionRecursion(cryptogram);
-	}
-
-	static String decryptionRecursion(String cryptogram) {
 		// 문자열을 배열로 변환
 		char[] chars = cryptogram.toCharArray();
 		// 배열의 길이 및 인접 중복 문자열 존재 여부 확인
@@ -21,8 +16,8 @@ public class Problem2 {
 		Stack<Character> decryptionStack = removeDuplicates(chars);
 		// stack 문자열로 변환
 		String answer = stackToString(decryptionStack);
-
-		return decryptionRecursion(answer);
+		// 해독할때까지 재귀
+		return solution(answer);
 	}
 
 	static String stackToString(Stack<Character> stack) {
