@@ -1,11 +1,11 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
-    private static HashMap<String, Integer> preFriends = new HashMap<>();
+    private final static int MAX_RECOMMEND_FRIENDS = 5;
+
+    private static Map<String, Integer> preFriends = new HashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
@@ -20,6 +20,42 @@ public class Problem7 {
     private static void addPreFriendPoint(String user, int point) {
         int previousPoint = getPreFriendsPoint(user);
         putPreFriendAndPoint(user, previousPoint + point);
+    }
+
+    /**
+     * 추천 친구 구하기
+     * @param maxRecommendFriends 최대 추천 친구
+     * @return 추천 친구 목록
+     */
+    private static List<String> getTopPreFriends(int maxRecommendFriends) {
+        Map<Integer, List<String>> pointAndUsers = new TreeMap<>((i, j) -> (j - i));
+        List<String> topPreFriends = new ArrayList<>();
+
+        for (Map.Entry<String, Integer> preFriend : preFriends.entrySet()) {
+            String user = preFriend.getKey();
+            int point = preFriend.getValue();
+
+            List<String> friends = pointAndUsers.getOrDefault(point, new ArrayList<>());
+            friends.add(user);
+
+            pointAndUsers.put(point, friends);
+        }
+
+        int rotateKeyPointAndUsers = 0;
+
+        for (int keyPointAndUsers : pointAndUsers.keySet()) {
+            if (rotateKeyPointAndUsers >= maxRecommendFriends) {
+                break;
+            }
+
+            List<String> users = pointAndUsers.get(keyPointAndUsers);
+            users.sort(String.CASE_INSENSITIVE_ORDER);
+            topPreFriends.addAll(users);
+
+            rotateKeyPointAndUsers++;
+        }
+
+        return topPreFriends;
     }
 
     /**
@@ -39,7 +75,7 @@ public class Problem7 {
     private static boolean existPreFriend(String user) {
         return preFriends.containsKey(user);
     }
-    
+
     /**
      * 예비 친구의 점수 가져오기
      * @param user 유저 정보
