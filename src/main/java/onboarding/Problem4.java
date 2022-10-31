@@ -52,4 +52,22 @@ public class Problem4 {
         return changeLetter;
     }
 
+    /**
+     * 이중배열 글자를 문자열로 만들기
+     * @param changeLetter
+     * @return String
+     */
+    private static String changeWord(String[][] changeLetter) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < changeLetter.length; i++) {
+            for (int j = 0; j < changeLetter[i].length; j++) {
+                sb.append(changeLetter[i][j]);
+            }
+            if (i == changeLetter.length - 1) {
+                break;
+            }
+            sb.append(" ");
+        }
+        return String.valueOf(sb);
+    }
 }
