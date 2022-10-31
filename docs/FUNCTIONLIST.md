@@ -50,7 +50,7 @@
 ### 문제 풀이 방법,
 #### user와 연결된 친구와 연결된 친구가 10점을 가지게 되는 것이다.
 #### 양방향 그래프를 만들고 user로 부터 2칸을 탐색하도록 구현한다.
-- [ ] friends, visitors로 HashMap을 만드는 기능 (result에 사용, user 제외) 
+- [x] friends, visitors로 HashMap을 만드는 기능 (result에 사용, user 제외) 
 - [ ] user와 friends로 그래프를 만드는 기능
 - [ ] user부터 순회하며 2칸 떨어진 친구에게 10점을 추가하는 기능
 - [ ] visitors를 순회하며 방문한 사람에게 1점을 추가하는 기능 
