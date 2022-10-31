@@ -21,3 +21,8 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능 목록
+1. 각 멤버들의 이름을 연속된 두글자 씩 잘라서 map 형태로 각 멤버가 저장된 이름과 이메일 함께 저장
+이때, 이미 있는 키 값이라면 이메일을 set에 저장.
+2. 이메일에 해당하는 부분의 문자열을 오름차순으로 정렬
