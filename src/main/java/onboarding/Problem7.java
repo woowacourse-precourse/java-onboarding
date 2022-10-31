@@ -14,6 +14,8 @@ public class Problem7 {
             addFriendsScore(user, userFriend);
         }
 
+        addVisitScore(visitors);
+
         List<String> answer = Collections.emptyList();
         return answer;
     }
@@ -51,6 +53,12 @@ public class Problem7 {
                 addScore(friendName, 10);
             }
 
+        }
+    }
+
+    private static void addVisitScore(List<String> visitors) {
+        for (String visitor : visitors) {
+            addScore(visitor, 1);
         }
     }
 
