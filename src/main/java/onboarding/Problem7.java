@@ -67,4 +67,11 @@ public class Problem7 {
         }
         return visitScoreMap;
     }
+
+    public static Map<String, Integer> calculateTotalScoreMap(Map<String, Integer> knowTogetherScoreMap, Map<String, Integer> visitScoreMap) {
+        Map<String, Integer> totalScoreMap = new HashMap<>();
+        visitScoreMap.forEach((key, value) -> knowTogetherScoreMap.merge(key, value, (v1, v2) -> v1 + v2));
+        totalScoreMap = knowTogetherScoreMap;
+        return totalScoreMap;
+    }
 }
