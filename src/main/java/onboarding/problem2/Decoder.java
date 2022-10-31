@@ -58,6 +58,7 @@ public class Decoder {
 
     /**
      * Building plain text from plain stack
+     *
      * @param plainStack non duplicated character stack
      * @return plain text
      */
