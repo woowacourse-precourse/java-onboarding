@@ -6,6 +6,10 @@ public class Problem7 {
         return Point.calcTotalPotint(user, friends, visitors);
     }
 }
+class tempDto {
+    Object o;
+    int i;
+}
 class UserInfo{
     private static final int MINIMUM_LENGTH_ID = 1;
     private static final int MAXIMUM_LENGTH_ID = 30;
@@ -49,12 +53,35 @@ class Point{
 
         getFriendsPoint(scoreTable, friendsInfoTable, userIndex);
         getVisitorsPoint(visitors, scoreTable, friendsInfoTable, arrayFriends, userIndex);
-        return getTopFiveList(scoreTable, arrayFriends, userIndex);
+        return getTopFiveList(scoreTable, arrayFriends, user);
     }
 
-    private static List<String> getTopFiveList(int[] scoreTable, Object[] arrayFriends, int userIndex) {
+    private static List<String> getTopFiveList(int[] scoreTable, Object[] arrayFriends, String userName) {
+        tempDto[] a = new tempDto[scoreTable.length];
+        for (int i = 0; i < arrayFriends.length; i++) {
+            a[i] = new tempDto();
+            a[i].o = arrayFriends[i];
+        }
+        for (int i = 0; i < scoreTable.length; i++) {
+            a[i].i = scoreTable[i];
+        }
+        Object[] objects = Arrays.stream(a).sorted((aa, ab) -> {
+            String c, d;
+            c = (String)aa.o;
+            d = (String)ab.o;
+            return c.compareTo(d);
+        }).toArray();
+        for (int i = 0; i < objects.length; i++) {
+            a[i] = tempDto.class.cast(objects[i]);
+        }
+        //        arrayFriends 와 scoreTable의 글자순으로 정렬을 싱크해주자.
+        for (int i = 0; i < a.length; i++) {
+            scoreTable[i] = a[i].i;
+            arrayFriends[i] = a[i].o;
+        }
         List<String> answer = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
+            int userIndex = getUserIndex(userName, arrayFriends);
             int maxIndex = findIndexByMaxValue(scoreTable, userIndex);
             // 점수가 0인 경우
             if(maxIndex == -1) continue;
@@ -97,6 +124,7 @@ class Point{
                 maxIndex = i;
             }
         }
+
         if(max == 0) return -1;
         return maxIndex;
     }
