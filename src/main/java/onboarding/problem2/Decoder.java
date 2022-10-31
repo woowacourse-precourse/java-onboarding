@@ -1,5 +1,7 @@
 package onboarding.problem2;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 /**
@@ -8,6 +10,7 @@ import java.util.Stack;
 public class Decoder {
 
     private final String CIPHERTEXT;
+    private final Queue<Character> text = new LinkedList<>();
 
     /**
      * Constructor with cryptogram string
@@ -16,6 +19,8 @@ public class Decoder {
      */
     public Decoder(String cryptogram) {
         CIPHERTEXT = cryptogram;
+        for (int i = 0; i < CIPHERTEXT.length(); i++)
+            text.add(CIPHERTEXT.charAt(i));
     }
 
     /**
@@ -24,47 +29,45 @@ public class Decoder {
      * @return plain text
      */
     public String decode() {
-        Stack<Character> plainStack = new Stack<>();
-        plainStack.push(CIPHERTEXT.charAt(0));
-        treatDuplication(plainStack);
-        return buildPlain(plainStack);
+        int size;
+        do {
+            size = text.size();
+            treatDuplication(size);
+        } while (size != text.size() && !text.isEmpty());
+        return buildPlain();
     }
 
     /**
-     * Search continuous duplication and remove treat
-     *
-     * @param plainStack non duplicated character stack
+     * Search continuous duplication and remove
      */
-    private void treatDuplication(Stack<Character> plainStack) {
-        boolean duplicate = false;
-        for (int i = 1; i < CIPHERTEXT.length(); i++) {
-            char c = CIPHERTEXT.charAt(i);
+    private void treatDuplication(int size) {
+        boolean duplicated = false;
 
-            if (plainStack.peek() == c) {
-                duplicate = true;
-            } else if (duplicate) {
-                plainStack.pop();
-                duplicate = false;
-                i--;
-            } else {
-                plainStack.push(c);
-            }
+        for (int i = 0; i < size - 1; i++) {
+            Character poll = text.poll();
+            if (text.peek() == poll)
+                duplicated = true;
+            else if (duplicated)
+                duplicated = false;
+            else
+                text.add(poll);
         }
 
-        if (duplicate) {
-            plainStack.pop();
-        }
+        if (duplicated)
+            text.poll();
+        else
+            text.add(text.poll());
     }
 
     /**
      * Building plain text from plain stack
      *
-     * @param plainStack non duplicated character stack
      * @return plain text
      */
-    private String buildPlain(Stack<Character> plainStack) {
-        StringBuilder builder = new StringBuilder();
-        while (!plainStack.isEmpty()) builder.append(plainStack.pop());
-        return builder.reverse().toString();
+    private String buildPlain() {
+        StringBuilder plainBuilder = new StringBuilder();
+        while (!text.isEmpty())
+            plainBuilder.append(text.poll());
+        return plainBuilder.toString();
     }
 }
