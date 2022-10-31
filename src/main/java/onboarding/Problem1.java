@@ -13,5 +13,10 @@ class Problem1 {
         return answer;
     }
 
+    public static boolean checkPage(List<Integer> list){ // 페이지 연속 확인하는 메소드
+        if(list.get(1)-list.get(0)==1) return true;
+        else return false;
+    }
+
 
 }
