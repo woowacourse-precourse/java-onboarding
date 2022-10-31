@@ -5,21 +5,21 @@ import java.util.stream.Collectors;
 
 public class Problem6 {
 
-    public static boolean validCheck(List<List<String>> list){
-        if(list.size()< 1 || list.size() > 10000){
+    public static boolean validCheck(List<List<String>> list) {
+        if (list.size() < 1 || list.size() > 10000) {
             return false;
         }
-        for(List<String> user : list){
-            if(user.get(0).length() < 11 || user.get(0).length() >= 20){
+        for (List<String> user : list) {
+            if (user.get(0).length() < 11 || user.get(0).length() >= 20) {
                 return false;
             }
-            if(!user.get(0).substring(user.get(0).length() - 9, user.get(0).length()).equals("email.com")){
+            if (!user.get(0).substring(user.get(0).length() - 9, user.get(0).length()).equals("email.com")) {
                 return false;
             }
-            if(!isItKorean(user.get(1))){
+            if (!isItKorean(user.get(1))) {
                 return false;
             }
-            if(user.get(1).length() < 1 || user.get(1).length() >= 20){
+            if (user.get(1).length() < 1 || user.get(1).length() >= 20) {
                 return false;
             }
         }
@@ -27,26 +27,25 @@ public class Problem6 {
     }
 
     private static boolean isItKorean(String s) {
-        for(int i=0;i<s.length();i++){
-            if(Character.getType(s.charAt(i)) != 5){
+        for (int i = 0; i < s.length(); i++) {
+            if (Character.getType(s.charAt(i)) != 5) {
                 return false;
             }
         }
         return true;
     }
 
-    public static HashSet<String> nameSeparation(List<List<String>> list){
-        HashMap<String, Integer> nameMap =  new HashMap<>();
+    public static HashSet<String> nameSeparation(List<List<String>> list) {
+        HashMap<String, Integer> nameMap = new HashMap<>();
         HashSet<String> duplicateNameSet = new HashSet<>();
 
-        for(List<String> user : list){
+        for (List<String> user : list) {
             String name = user.get(1);
-            for(int i = 0; i<name.length()-1; i++){
-                String twoLetters = name.substring(i, i+2);
-                if(!nameMap.containsKey(twoLetters)){
+            for (int i = 0; i < name.length() - 1; i++) {
+                String twoLetters = name.substring(i, i + 2);
+                if (!nameMap.containsKey(twoLetters)) {
                     nameMap.put(twoLetters, 1);
-                }
-                else{
+                } else {
                     duplicateNameSet.add(twoLetters);
                 }
             }
@@ -54,16 +53,16 @@ public class Problem6 {
         return duplicateNameSet;
     }
 
-    public static List<String> getDuplicateEmail(List<List<String>> list){
+    public static List<String> getDuplicateEmail(List<List<String>> list) {
         HashSet<String> duplicateNameSet = nameSeparation(list);
         List<String> duplicateEmail = new ArrayList<>();
 
-        for(List<String> user : list){
+        for (List<String> user : list) {
             String email = user.get(0);
             String name = user.get(1);
-            for(int i = 0; i<name.length()-1; i++){
-                String twoLetters = name.substring(i, i+2);
-                if(duplicateNameSet.contains(twoLetters)){
+            for (int i = 0; i < name.length() - 1; i++) {
+                String twoLetters = name.substring(i, i + 2);
+                if (duplicateNameSet.contains(twoLetters)) {
                     duplicateEmail.add(email);
                 }
             }
