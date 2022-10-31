@@ -10,6 +10,10 @@
    
 
 2. Problem 2 
+   - [ ] cryptogram에 중복이 있는 지 확인하는 기능
+   - [ ] cryptogram에 중복이 있다면 이를 제거하는 기능
+   
+
 3. Problem 3
 4. Problem 4 
 5. Problem 5 
