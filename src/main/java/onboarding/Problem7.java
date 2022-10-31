@@ -36,4 +36,29 @@ public class Problem7 {
             relation.put(person, friends);
         }
     }
+
+    public static void getScore(Map<String, Integer> friendScore, List<String> userFriends, List<String> friends, int score) {
+        for (String friend : friends) {
+            if (userFriends.contains(friend)) {
+                continue;
+            }
+
+            if (friendScore.containsKey(friend)) {
+                friendScore.replace(friend, friendScore.get(friend) + score);
+            } else {
+                friendScore.put(friend, score);
+            }
+        }
+    }
+
+    public static void scoreFriendFriend(Map<String, List<String>> relation, List<String> userFriends, Map<String, Integer> friendScore) {
+        for (String friend : userFriends) {
+            List<String> friendFriend = relation.get(friend);
+            getScore(friendScore, userFriends, friendFriend, 10);
+        }
+    }
+
+    public static void scoreVisitFriend(Map<String, Integer> friendScore, List<String> userFriends, List<String> visitors) {
+        getScore(friendScore, userFriends, visitors, 1);
+    }
 }
