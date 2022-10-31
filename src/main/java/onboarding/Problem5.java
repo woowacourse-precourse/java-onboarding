@@ -10,8 +10,7 @@ public class Problem5 {
         answer = new ArrayList<>();
         String moneyString = Integer.toString(money);
         int moneySize = moneyString.length();
-        int[] arrMoney = new int[moneySize+1];
-        money = 1000000;
+        int[] arrMoney = new int[moneySize+1];        
         arrMoney[0] = money/50000;
         arrMoney[1] = money%50000/10000;
         arrMoney[2] = money%50000%10000/5000;
