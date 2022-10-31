@@ -32,6 +32,9 @@ public class Problem7 {
         // 2. 제공된 친구 관계 정보를 Graph로 구성
         HashMap<String, ArrayList<Candidate>> al = buildFriendsNetworkGraph(friends, candidates);
 
+        // 3. 구성한 친구관계 Graph를 탐색하며 함께 아는 친구에 대한 점수를 갱신
+        countFriendNetworkScore(user, al);
+
 
         return answer;
     }
@@ -73,5 +76,15 @@ public class Problem7 {
             al.get(friend.get(1)).add(candidates.get(friend.get(0)));
         }
         return al;
+    }
+
+    // 구성한 친구관계 Graph를 탐색하며 함께 아는 친구에 대한 점수를 갱신
+    private static void countFriendNetworkScore(String user, HashMap<String, ArrayList<Candidate>> al) {
+        Queue<Candidate> queue = new LinkedList<>(al.get(user)); // 탐색에 사용하는 queue
+        while(!queue.isEmpty()) {
+            for(Candidate c : al.get(queue.peek().getName()))
+                c.updateWeight(10);
+            queue.poll();
+        }
     }
 }
