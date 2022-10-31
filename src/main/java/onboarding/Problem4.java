@@ -1,8 +1,5 @@
 package onboarding;
 
-import java.util.Arrays;
-import java.util.Locale;
-
 public class Problem4 {
     /**
      * 일반 알파벳 배열
