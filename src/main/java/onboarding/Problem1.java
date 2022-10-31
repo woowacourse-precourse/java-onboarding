@@ -18,11 +18,15 @@ class Problem1 {
     /**
      * 페이지 값이 2개 주어졌는지 확인
      * @param pages 페이지 정보
+     * @return 결과
      */
-    private static void validatePages(List<String> pages) {
+    private static boolean validatePages(List<String> pages) {
         if (pages.size() != 2) {
-            throw new RuntimeException("페이지 값이 2개가 아닙니다.");
+            System.out.println("페이지 값이 2개가 아닙니다.");
+            return false;
         }
+
+        return true;
     }
 
     /**
