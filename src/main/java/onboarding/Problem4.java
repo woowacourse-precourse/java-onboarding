@@ -23,6 +23,15 @@ public class Problem4 {
         char result = (char)((int)frog + 32);
         return result;
     }
+
+    public static char changeFrog(char alphabet) {
+        int ascii = (int)alphabet;
+        int frog = ascii-65;
+        char result = (char)(90-frog) ;
+        return result;
+    }
+
+    
     public static String solution(String word) {
         String answer = "";
         return answer;
