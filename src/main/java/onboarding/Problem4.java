@@ -14,7 +14,7 @@ public class Problem4 {
         return answer;
     }
 
-    public static StringBuilder toStringBuilder(String word) {
+    private static StringBuilder toStringBuilder(String word) {
         return new StringBuilder(word);
     }
 
@@ -56,7 +56,7 @@ public class Problem4 {
         return frogWord;
     }
 
-    public static String toString(StringBuilder stringBuilder) {
+    private static String toString(StringBuilder stringBuilder) {
         return stringBuilder.toString();
     }
 }
