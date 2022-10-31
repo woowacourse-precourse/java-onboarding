@@ -78,7 +78,7 @@ public class Problem7 {
 		}
 	}
 
-	static List<String> findMaxValueKeys(HashMap<String, Integer> friendshipScore) {
+	private static List<String> findMaxValueKeys(HashMap<String, Integer> friendshipScore) {
 		int maxValue = Collections.max(friendshipScore.values());
 		List<String> maxValueKeys = new ArrayList<>();
 		for (Map.Entry<String, Integer> entry : friendshipScore.entrySet()) {
@@ -91,7 +91,7 @@ public class Problem7 {
 		return maxValueKeys;
 	}
 
-	static List<String> makeUserList(List<List<String>> friends, List<String> visitors) {
+	private static List<String> makeUserList(List<List<String>> friends, List<String> visitors) {
 		List<String> userList = new ArrayList<>();
 		for (List<String> friend : friends) {
 			userList.addAll(friend);
@@ -100,7 +100,7 @@ public class Problem7 {
 		return Problem6.removeListDuplication(userList);
 	}
 
-	static List<String> makeFriendList(List<List<String>> friends, String user) {
+	private static List<String> makeFriendList(List<List<String>> friends, String user) {
 		List<String> friendList = new ArrayList<>();
 		for (List<String> friend : friends) {
 			if (friend.get(0).equals(user))
@@ -111,7 +111,7 @@ public class Problem7 {
 		return friendList;
 	}
 
-	static List<List<String>> makeFriendFriendList(String user, List<List<String>> friends,
+	private static List<List<String>> makeFriendFriendList(String user, List<List<String>> friends,
 		List<String> userFriendsList) {
 		List<List<String>> userFriendsFriendsList = new ArrayList<>();
 		for (String friend : userFriendsList) {
@@ -122,7 +122,7 @@ public class Problem7 {
 		return userFriendsFriendsList;
 	}
 
-	static List<String> makeNoFriendList(List<String> userList, List<String> userFriendsList) {
+	private static List<String> makeNoFriendList(List<String> userList, List<String> userFriendsList) {
 		List<String> noFriendList = new ArrayList<>(userList);
 		for (String friend : userFriendsList) {
 			noFriendList.remove(friend);
