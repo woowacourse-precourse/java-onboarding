@@ -10,7 +10,7 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         HashMap<String, ArrayList<String>> friendGraph = initFriendGraph(friends);
-        HashMap<String, Integer> recommendScoreList = initRecommendScoreList();
+        HashMap<String, Integer> recommendScore = initRecommendScoreList();
         return answer;
     }
 
@@ -38,9 +38,9 @@ public class Problem7 {
     }
 
     // user의 추천친구 리스트에 파라미터로 전달된 유저가 있는지 확인하는 함수
-    public static boolean checkUserInRecommendScoreList(HashMap<String, Integer> recommendScoreList, String user) {
-        for (int i = 0; i < recommendScoreList.size(); i++) {
-            if (recommendScoreList.keySet().contains(user)) return true;
+    public static boolean checkUserInRecommendScoreList(HashMap<String, Integer> recommendScore, String user) {
+        for (int i = 0; i < recommendScore.size(); i++) {
+            if (recommendScore.keySet().contains(user)) return true;
         }
         return false;
     }
@@ -49,5 +49,10 @@ public class Problem7 {
     public static boolean checkUserInRecommendScoreList(HashMap<String, ArrayList<String>> friendGraph, String user, String other) {
         if (friendGraph.get(user).contains(other)) return true;
         return false;
+    }
+
+    // 점수를 갱신할 때 제한조건을 체크하는 함수
+    public static boolean checkBeforeAddRecommendScore(HashMap<String, Integer> recommendScore, HashMap<String, ArrayList<String>> friendGraph, String user, String other) {
+        return checkUserInRecommendScoreList(recommendScore, user) && checkUserInRecommendScoreList(friendGraph, user, other);
     }
 }
