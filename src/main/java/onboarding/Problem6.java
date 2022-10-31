@@ -4,36 +4,13 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /*
-1. 형식 체크하기
-2. 문자열 토큰 얻기
-3. 중복 확인하기
-4. 중복이라면 이메일 추가하기
-5. 정렬하기
+1. 문자열 토큰 얻기
+2. 중복 확인하기
+3. 중복이라면 이메일 추가하기
+4. 정렬하기
  */
 
 public class Problem6 {
-
-    private static boolean isValidEmail(String email) {
-        if (email.matches(".*@email.com") && 10 < email.length() && email.length() < 20)
-            return true;
-        return false;
-    }
-
-    private static boolean isValidName(String name) {
-        if (name.matches("^[가-힣]*$") && 0 < name.length() && name.length() < 20)
-            return true;
-        return false;
-    }
-
-    private static Map<String, String> getInvaliFormdMap(List<List<String>> forms) {
-        Map<String, String> invalidFormMap = new HashMap<>();
-        for (List<String> form : forms) {
-            if (!isValidEmail(form.get(0)) && !isValidName(form.get(1))) {
-                invalidFormMap.put(form.get(0), form.get(1));
-            }
-        }
-        return invalidFormMap;
-    }
 
     private static Map<String, Integer> getNameTokenMap(List<List<String>> forms) {
         Map<String, Integer> nameTokenMap = new HashMap<>();
@@ -47,26 +24,24 @@ public class Problem6 {
         return nameTokenMap;
     }
 
-    private static List<String> getDuplicationEmails(List<List<String>> forms, Map<String, Integer> nameTokenMap) {
-        List<String> duplicationEmails = new ArrayList<>();
+    private static List<String> getRemoveEmails(List<List<String>> forms, Map<String, Integer> nameTokenMap) {
+        List<String> removeEmails = new ArrayList<>();
         for (List<String> form : forms) {
             String email = form.get(0);
             String name = form.get(1);
             for (String token : nameTokenMap.keySet()) {
                 if (name.contains(token)) {
-                    duplicationEmails.add(email);
+                    removeEmails.add(email);
                 }
             }
         }
-        return duplicationEmails;
+        return removeEmails;
     }
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = new ArrayList();
-        Map<String, String> invalidFormMap = getInvaliFormdMap(forms);
         Map<String, Integer> nameTokenMap = getNameTokenMap(forms);
-        List<String> duplicationEmails = getDuplicationEmails(forms, nameTokenMap);
-        answer = duplicationEmails.stream()
+        List<String> duplicationEmails = getRemoveEmails(forms, nameTokenMap);
+        List<String> answer = duplicationEmails.stream()
                 .sorted()
                 .collect(Collectors.toList());
         return answer;
