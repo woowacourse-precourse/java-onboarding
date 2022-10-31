@@ -22,7 +22,7 @@
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
 
-## 📄 기능 구현 단위
+## 📄 기능 구현 단위 ✅
 1. ✅form에서 이름과 이메일 추출
 2. ✅이름을 두 글자씩 비교하여 2번 이상 출현한 문자 저장
 3. ✅2번 이상 출현한 문자를 가진 이름의 이메일 저장
