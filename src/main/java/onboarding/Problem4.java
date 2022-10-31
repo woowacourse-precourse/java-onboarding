@@ -5,4 +5,9 @@ public class Problem4 {
         String answer = "";
         return answer;
     }
+
+    private static boolean isAlphabetUpperCase(char alphabet) {
+        return Character.isUpperCase(alphabet);
+    }
+
 }
