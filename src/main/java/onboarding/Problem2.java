@@ -5,13 +5,11 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         StringBuffer str = new StringBuffer(cryptogram);
         String answer = checkOverLapByRecur(str, str.length());
-        System.out.println(answer);
         return answer;
     }
     public static String checkOverLapByRecur(StringBuffer str, int len){
         StringBuffer tempStr = str;
         for(int i=0; i<len; i++){
-            System.out.println("i : " + i);
             if(i+1<tempStr.length()){
                 if(tempStr.charAt(i) == tempStr.charAt(i+1)){
                     tempStr.deleteCharAt(i);
