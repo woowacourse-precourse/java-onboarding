@@ -26,6 +26,10 @@ public class Problem7 {
             return o.score - score;
         }
 
+        public boolean isNotMyFriend(String user) {
+            return !this.getMyFriends().contains(user);
+        }
+
         public void addScore(int score) {
             this.score += score;
         }
@@ -57,10 +61,18 @@ public class Problem7 {
 
         Collections.sort(friends);
 
-        return friends.stream()
-                .limit(3)
-                .map(Friend::getName)
-                .collect(Collectors.toList());
+        List<String> answer = new ArrayList<>();
+        int count = 0;
+        for (Friend friend : friends) {
+            if (friend.isNotMyFriend(user) && friend.score != 0) {
+                if (count < 5) {
+                    answer.add(friend.name);
+                    count++;
+                }
+            }
+        }
+
+        return answer;
     }
 
     private static void addScore(Map<String, Integer> numberOfFriends, List<Friend> friends, String user, int index) {
