@@ -8,4 +8,15 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
         return answer;
     }
+
+    /**
+     * user의 친구를 찾아주는 함수
+     */
+    private static List<String> isUserFriend(String user, List<String> friend,List<String> userFriendList){
+        if (friend.contains(user)){
+            int friendIndex = (friend.indexOf(user) + 1)%2;
+            userFriendList.add(friend.get(friendIndex));
+        }
+        return userFriendList;
+    }
 }
