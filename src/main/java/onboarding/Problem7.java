@@ -37,6 +37,15 @@ public class Problem7 {
                 scores.put(tempfriends.get(i), scores.getOrDefault(tempfriends.get(i), 10) + 10);
             }
         }
+
+        scores.remove(user);
+        return scores;
+    }
+
+    public static HashMap<String, Integer> removeFriend(HashMap<String, Integer> scores, List<String> friends) {
+        for(String friend : friends) {
+            scores.remove(friend);
+        }
         return scores;
     }
     
