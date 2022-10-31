@@ -4,7 +4,8 @@ import java.util.*;
 
 public class Problem6 {
 
-    private static Map<String, HashSet<Integer>> twoCharCnt = new HashMap<>();
+    //<twoChar, 처음으로 twoChar를 가진 email>
+    private static Map<String, String> twoChar = new HashMap<>();
 
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
@@ -26,25 +27,11 @@ public class Problem6 {
         return false;
     }
 
-    private static void convertList2TwoCharCount(String str, int idx){
-        for(int i=0;i<str.length() - 1;i++){
-            String twoChar = str.substring(i,i+2);
+    private static boolean isDuplicateOtherNickname(List<String> form){
 
-            twoCharCnt.get(twoChar).add(idx);
-        }
     }
 
-    private static Set<Integer> getAnswerIndex(){
-        Set<Integer> ret = new HashSet<>();
+    private static void storeTwoChar(String twoChar){
 
-        for(String key: twoCharCnt.keySet()){
-            Set<Integer> list = twoCharCnt.get(key);
-
-            if(list.size()>1){
-                ret.addAll(list);
-            }
-        }
-
-        return ret;
     }
 }
