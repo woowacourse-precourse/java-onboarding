@@ -27,6 +27,10 @@ public class Problem7 {
             }
         }
 
+        for (String visitor : visitors) {
+            friendsScoreMap.merge(visitor, 1, (oldValue, newValue) -> oldValue + 1);
+        }
+
 
         return null;
     }
