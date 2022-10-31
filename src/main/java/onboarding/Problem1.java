@@ -9,21 +9,21 @@ class Problem1 {
     private static final int POBI_WIN = 1;
     private static final int CRONG_WIN = 2;
 
-    public static boolean isValidRange(int number) {
+    private static boolean isValidRange(int number) {
         if (number < 1 || number > 400) {
             return false;
         }
         return true;
     }
-    public static boolean isOdd(int number) {
+    private static boolean isOdd(int number) {
         return number % 2 == 1;
     }
 
-    public static boolean isEven(int number) {
+    private static boolean isEven(int number) {
         return number % 2 == 0;
     }
 
-    public static boolean isValidPageNumber(List<Integer> pages) {
+    private static boolean isValidPageNumber(List<Integer> pages) {
         int left = pages.get(LEFT);
         int right = pages.get(RIGHT);
 
@@ -50,7 +50,7 @@ class Problem1 {
         return true;
     }
 
-    public static int getBiggestValue(int page) {
+    private static int getBiggestValue(int page) {
         int sum = 0;
         int multiply = 1;
 
@@ -63,7 +63,7 @@ class Problem1 {
         return Math.max(sum, multiply);
     }
 
-    public static int getScore(List<Integer> pages) {
+    private static int getScore(List<Integer> pages) {
         int score = -1;
 
         for (int i = 0; i < pages.size(); i++) {
@@ -75,7 +75,7 @@ class Problem1 {
         return score;
     }
 
-    public static int getWinner(List<Integer> pobi, List<Integer> crong) {
+    private static int getWinner(List<Integer> pobi, List<Integer> crong) {
         int pobiScore = getScore(pobi);
         int crongScore = getScore(crong);
 
