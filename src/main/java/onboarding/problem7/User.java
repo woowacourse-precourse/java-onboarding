@@ -1,5 +1,7 @@
 package onboarding.problem7;
 
+import static onboarding.problem7.Constance.*;
+
 public class User {
 
     private final String name;
@@ -22,10 +24,10 @@ public class User {
     }
 
     public void addFriendScore() {
-        this.score += 10;
+        this.score += FRIEND_OF_USER_FRIEND_SCORE;
     }
 
     public void addVisitsScore() {
-        this.score += 1;
+        this.score += VISITORS_SCORE;
     }
 }
