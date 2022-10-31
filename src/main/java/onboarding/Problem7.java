@@ -21,4 +21,18 @@ public class Problem7 {
         friendList.removeAll(Collections.singleton(user));
         return friendList;
     }
+
+    public static List<String> getKnowTogetherList(String user, List<String> friendList, List<List<String>> friends) {
+        List<String> knowTogetherList = new ArrayList<>();
+        for (int i = 0; i < friendList.size(); i++) {
+            for (List<String> friend : friends) {
+                if (friend.containsAll(friendList.subList(i, i + 1))) {
+                    knowTogetherList.addAll(friend);
+                }
+            }
+        }
+        knowTogetherList.removeAll(friendList);
+        knowTogetherList.removeAll(Collections.singleton(user));
+        return knowTogetherList;
+    }
 }
