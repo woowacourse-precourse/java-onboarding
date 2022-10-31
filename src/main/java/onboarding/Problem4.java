@@ -29,6 +29,22 @@ public class Problem4 {
     public static String solution(String word) {
         String answer = "";
 
+        for (int i = 0; i < word.length(); i++) {
+            char letter = word.charAt(i);
+
+            if (!isAlphabet(letter)) {
+                answer += word.charAt(i);
+            }
+
+            if (Character.isLowerCase(letter)) {
+                answer += convertLowerCase(word.charAt(i));
+            }
+
+            if (Character.isUpperCase(letter)) {
+                answer += convertUpperCase(word.charAt(i));
+            }
+        }
+
         return answer;
     }
 }
