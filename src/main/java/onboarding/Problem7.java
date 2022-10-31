@@ -1,48 +1,40 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
-        HashMap<String, Integer> point = new HashMap<String, Integer>();
+        HashMap<String, Integer> point = new HashMap<>();
 
-        for(int i=0;i<friends.size();i++) {
-            point.put(friends.get(i).get(1),
-                    point.getOrDefault(friends.get(i).get(1), 0)+10);
+        for (List<String> friend : friends) {
+            point.put(friend.get(1),
+                    point.getOrDefault(friend.get(1), 0) + 10);
         }
 
-        for(int i =0; i<visitors.size();i++) {
-            point.put(visitors.get(i),
-                    point.getOrDefault(visitors.get(i), 0)+1);
+        for (String visitor : visitors) {
+            point.put(visitor,
+                    point.getOrDefault(visitor, 0) + 1);
         }
 
-        for(int i=0;i<friends.size();i++) {
-            if(friends.get(i).get(1)==user)
-                point.remove(friends.get(i).get(0));
+        for (List<String> friend : friends) {
+            if (friend.get(1).equals(user))
+                point.remove(friend.get(0));
         }
         point.remove(user);
 
 
-        List<String> answer =new ArrayList<>(point.keySet());
-        Collections.sort(answer,new Comparator<String>() {
-            @Override
-            public int compare(String o1, String o2) {
-                if(point.get(o2)==point.get(o1)) {
-                    return o1.compareTo(o2);
-                }
-                else return point.get(o2)-point.get(o1);
-            }
+        List<String> answer = new ArrayList<>(point.keySet());
+        answer.sort((o1, o2) -> {
+            if (point.get(o2).equals(point.get(o1))) {
+                return o1.compareTo(o2);
+            } else return point.get(o2) - point.get(o1);
         });
 
-        if(answer.size()>5) {
-            for(int i=5;i<answer.size();i++) {
-                answer.remove(i);
-            }
+        if (answer.size() >= 6) {
+            answer.subList(6, answer.size() + 1).clear();
         }
         return answer;
     }

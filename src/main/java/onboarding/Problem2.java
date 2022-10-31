@@ -3,21 +3,21 @@ package onboarding;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = cryptogram;
-        String temp = "";
-        boolean flag = false;
+        boolean flag;
         do {
-            temp = "";
+            StringBuilder temp = new StringBuilder();
             flag = false;
-            temp += answer.charAt(0);
+            temp.append(answer.charAt(0));
             for (int i = 1; i < answer.length(); i++) {
                 if (answer.charAt(i - 1) != answer.charAt(i)) {
-                    temp += answer.charAt(i);
+                    temp.append(answer.charAt(i));
                 } else {
-                    temp = temp.substring(0, temp.length() - 1);
+                    temp = new StringBuilder(temp.substring(0, temp.length() - 1));
                     flag = true;
                 }
             }
-            answer = temp;
-        } while (flag == true & answer.length()!=0);        return answer;
+            answer = temp.toString();
+        } while (flag & answer.length() != 0);
+        return answer;
     }
 }
