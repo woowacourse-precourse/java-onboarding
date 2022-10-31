@@ -36,7 +36,11 @@ public class Problem7 {
             for (String name : mates.get(user))
                 mates.remove(name);
 
-
+            for (String name : mates.keySet()) {
+                if (name.equals(user))
+                    continue;
+                score.put(name, mates.get(name).size() * 10);
+            }
 
 
 
