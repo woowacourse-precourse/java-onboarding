@@ -64,7 +64,11 @@ public class Problem7 {
         }
 
         for (Map.Entry<String, HashSet<String>> stringHashSetEntry : hashMap.entrySet()) {
-            countDuplicateFriends(stringHashSetEntry, user);
+            countDuplicateFriends(stringHashSetEntry);
+        }
+
+        for (String visitor : visitors) {
+            visitorScore(visitor);
         }
 
         System.out.println(answerMap);
@@ -74,7 +78,7 @@ public class Problem7 {
         return answer;
     }
 
-    private static void countDuplicateFriends(Map.Entry<String, HashSet<String>> stringHashSetEntry, String user) {
+    private static void countDuplicateFriends(Map.Entry<String, HashSet<String>> stringHashSetEntry) {
         if (userFriends.contains(stringHashSetEntry.getKey())) {
             return;
         }
@@ -109,5 +113,13 @@ public class Problem7 {
         temp = hashMap.getOrDefault(b, new HashSet<>());
         temp.add(a);
         hashMap.put(b, temp);
+    }
+
+    private static void visitorScore(String s) {
+        if(!userFriends.contains(s))
+        {
+            int temp = answerMap.getOrDefault(s,0)+1;
+            answerMap.put(s, temp);
+        }
     }
 }
