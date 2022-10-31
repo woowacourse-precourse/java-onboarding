@@ -88,13 +88,26 @@ public class Problem7 {
         return false;
     }
 
+    static HashMap<String, Integer> visitorsScore(String user, List<String> visitors, List<String> alreadyFriends, HashMap<String, Integer> friendsRecommendation) {
+
+        for (int i = 0; i < visitors.size(); i++) {
+            if (friendsRecommendation.containsKey(visitors.get(i)) && !alreadyFriends.contains(visitors.get(i))) {
+                friendsRecommendation.put(visitors.get(i), friendsRecommendation.get(visitors.get(i)) + 1);
+            } else if (!alreadyFriends.contains(visitors.get(i))) {
+                friendsRecommendation.put(visitors.get(i), 1);
+            }
+        }
+        return friendsRecommendation;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
+        List<String> alreadyFriends = new ArrayList<>();
         HashMap<String, Integer> friendsRecommendation = new HashMap<>();
-        List<String> alreadyFriends = new ArrayList<>(); // 이건 확인용(이미 친구)
         isCheck(user, friends, visitors);
 
         friendsScore(user, friends, alreadyFriends, friendsRecommendation);
+        visitorsScore(user, visitors, alreadyFriends, friendsRecommendation);
 
         return answer;
     }
