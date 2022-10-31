@@ -4,14 +4,42 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-
         HashSet<String> userFriends = makeUserFriendList(user, friends);
+
         HashMap<String, Integer> notUserFriendsScore = makeNotUserFriendList(user, friends, visitors, userFriends);
 
         calcFriendsScore(userFriends, notUserFriendsScore, friends);
 
         calcVisitScore(notUserFriendsScore, visitors);
+
+        List<String> answer = makeRecommendList(notUserFriendsScore);
+
+        return answer;
+    }
+
+    public static List<String> makeRecommendList(HashMap<String, Integer> notUserFriendsScore) {
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(notUserFriendsScore.entrySet());
+
+        entryList.sort(new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                return o2.getValue() != o1.getValue() ? o2.getValue() - o1.getValue() : o1.getKey().compareTo(o2.getKey());
+            }
+        });
+
+        List<String> answer = new ArrayList<>();
+
+        for(Map.Entry<String, Integer> entry : entryList){
+            if (entry.getValue() == 0) {
+                break;
+            }
+
+            answer.add(entry.getKey());
+
+            if (answer.size() == 5) {
+                break;
+            }
+        }
 
         return answer;
     }
