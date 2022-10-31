@@ -160,7 +160,7 @@ class ExceptionClassForPro7 {
       List<String> visitors) {
     validateUser(user);
     validatefriends(friends);
-    validateVisitors(visitors);
+    validateVisitors(visitors, user);
   }
 
   private void validateUser(String user) {
@@ -203,11 +203,12 @@ class ExceptionClassForPro7 {
     validateSmallAlpha(name);
   }
 
-  private void validateVisitors(List<String> visitors) {
+  private void validateVisitors(List<String> visitors, String user) {
     if (VISITOR_LENGTH_MAX < visitors.size()) {
       throw new IllegalArgumentException(
           "visitors의 길이는 " + VISITOR_LENGTH_MIN + "이상 " + VISITOR_LENGTH_MAX + "이하의 정수여야 합니다.");
     }
+    validateNoUserInVisitor(visitors, user);
     for (String name : visitors) {
       validateSmallAlpha(name);
     }
@@ -216,6 +217,12 @@ class ExceptionClassForPro7 {
   private void validateSmallAlpha(String name) {
     if (!name.matches("^[a-z]*$")) {
       throw new IllegalArgumentException("아이디는 알파벳 소문자로만 이루어져야 합니다.");
+    }
+  }
+
+  private void validateNoUserInVisitor(List<String> visitors, String user) {
+    if (visitors.contains(user)) {
+      throw new IllegalArgumentException("visitors에는 " + user + "가 포함되어 있으면 안됩니다.");
     }
   }
 }
