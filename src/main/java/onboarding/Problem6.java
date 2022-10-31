@@ -63,7 +63,7 @@ public class Problem6 {
                 }
             }
         }
-        removeDuplication(answer);
+        answer = removeDuplication(answer);
         Collections.sort(answer);
         return answer;
     }
