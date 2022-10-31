@@ -12,7 +12,7 @@ public class Problem4 {
             throw new IllegalArgumentException();
         }
         setMap();
-        return "";
+        return changeWord(word);
     }
     public static void setMap(){
         int i = 97;
@@ -31,7 +31,21 @@ public class Problem4 {
             z--;
         }
     }
-
+    public static String changeWord(String word){
+        String answer = "";
+        for(int q=0; q<word.length();q++){
+            if(word.charAt(q) == ' '){
+                answer += " ";
+            }else{
+                if(Character.isUpperCase(word.charAt(q))){
+                    answer += upperCase.get(word.charAt(q));
+                }else{
+                    answer += lowerCase.get(word.charAt(q));
+                }
+            }
+        }
+        return answer;
+    }
     public static boolean checkException(String word){
         if(word == null || checkLength(word.length()) || !checkAlpa(word)){
             return true;
