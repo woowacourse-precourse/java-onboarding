@@ -35,6 +35,13 @@ public class Problem7 {
             addPointByVisit(visitor);
         }
 
+        // 1촌친구, 본인 삭제
+        for (String f : firstFriends) {
+            friendPoint.remove(f);
+        }
+        friendPoint.remove(user);
+
+
         List<String> answer = Collections.emptyList();
         return answer;
     }
