@@ -22,8 +22,11 @@ public class Problem4 {
         return result;
     }
     public static String solution(String word) {
-
+        ArrayList<Character> result = frog(word);
         String answer = "";
+        for(int i = 0;i< result.size();i++){
+            answer += String.valueOf(result.get(i));
+        }
         return answer;
     }
 }
