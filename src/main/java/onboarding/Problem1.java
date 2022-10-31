@@ -42,4 +42,16 @@ class Problem1 {
         int point = Math.max(leftMax, rightMax);
         return point;
     }
+
+    private static int whoIsWinner(int gamer1, int gamer2) {
+        if (gamer1 > gamer2) {
+            return 1;
+        } else if (gamer1 < gamer2) {
+            return 2;
+        } else if (gamer1 == gamer2) {
+            return 0;
+        }
+
+        return -1;
+    }
 }
