@@ -99,30 +99,20 @@ class Problem1 {
 
 	private static int getDigitsInThreeFigures(int number, int position) {
 
-		if (position == 1) {
-			return number / 100;
-		}
+		if (position == 1) { return number / 100; }
 
-		if (position == 2) {
-			return (number % 100) / 10;
-		}
+		if (position == 2) { return (number % 100) / 10; }
 
-		if (position == 3) {
-			return (number % 100) % 10;
-		}
+		if (position == 3) { return (number % 100) % 10; }
 
 		throw new IllegalArgumentException("자리수 입력 오류");
 	}
 
 	private static int getDigitsInTwoFigures(int number, int position) {
 
-		if (position == 1) {
-			return (number % 100) / 10;
-		}
+		if (position == 1) { return (number % 100) / 10; }
 
-		if (position == 2) {
-			return (number % 100) % 10;
-		}
+		if (position == 2) { return (number % 100) % 10; }
 
 		throw new IllegalArgumentException("자리수 입력 오류");
 	}
