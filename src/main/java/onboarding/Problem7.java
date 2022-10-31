@@ -110,19 +110,11 @@ public class Problem7 {
     }
 
     static List<String> getCoFriends(String user, List<List<String>> friends, List<String> directFriends) {
-        List<String> coFriends = new ArrayList<>();
-        for (List<String> f : friends) {
-            for (String name : directFriends) {
-                if (f.get(0).equals(name) & !f.get(1).equals(user)) {
-                    coFriends.add(f.get(1));
-                    continue;
-                }
-                if (f.get(1).equals(name) & !f.get(0).equals(user)) {
-                    coFriends.add(f.get(0));
-                }
-            }
-        }
-        return coFriends;
+        return friends.stream()
+                .filter(f -> !f.contains(user)) // 사용자와 직접 친구 제외
+                .filter(f -> directFriends.contains(f.get(0)) || directFriends.contains(f.get(1)))  // 친구를 공유하고 있는 경우
+                .map(f -> directFriends.contains(f.get(0)) ? f.get(1) : f.get(0))
+                .collect(Collectors.toList());
     }
 
     void updateScore(String name, int score) {
