@@ -28,8 +28,4 @@ public class Problem5 {
         answer = cnt;
         return answer;
     }
-
-    public static void main(String[] args) {
-        solution(15000);
-    }
 }
