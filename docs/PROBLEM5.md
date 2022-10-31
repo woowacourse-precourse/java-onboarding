@@ -1,3 +1,37 @@
+#### 기능목록
+
+`startChange`: 돈 변환 시작
+
+`getFiftyThousand`: 오만 원권 받기
+
+`getTenThousand`: 일만 원권 받기, 
+
+`getFiveThousand`: 오천 원권 받기
+
+`getOneThousand`: 천 원권 받기
+
+`getFiveHundread`: 오백원 동전 받기
+
+`getOneHundread`: 백원 동전 받기
+
+`getFifty`: 오십원 동전 받기
+
+`getTen`: 십원 동전 받기
+
+`getOne`: 일원 동전 받기
+
+※매 거스름 돈 받을 때 마다, `totalMoney` 갱신
+
+
+
+
+
+
+
+
+
+
+
 ## 🚀 기능 요구 사항
 
 계좌에 들어있는 돈 일부를 은행에서 출금하고자 한다. 돈 담을 지갑이 최대한 가볍도록 큰 금액의 화폐 위주로 받는다.
