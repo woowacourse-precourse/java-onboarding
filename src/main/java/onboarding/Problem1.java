@@ -19,7 +19,15 @@ class Problem1 {
         }
 
         //crong 큰 수 구하기
-
+        for(int cr:crong){
+            int sum=0,mul=1;
+            while(cr>0){
+                sum+=cr%10;
+                mul*=cr%10;
+                cr=cr/10;
+            }
+            crongNum=Math.max(crongNum,Math.max(sum,mul));
+        }
 
         //포비가 이긴다면 1, 크롱이 이긴다면 2, 무승부는 0
         return answer;
