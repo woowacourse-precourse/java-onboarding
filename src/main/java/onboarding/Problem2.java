@@ -5,32 +5,26 @@ import java.util.regex.Pattern;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        if (!validateCryptogram(cryptogram)) {
-            return cryptogram;
-        }
+        checkCorrectCryptogram(cryptogram);
 
         return removeDuplicateString(cryptogram);
     }
 
     /**
-     * 올바른 암호문이 입력되었는지 검증합니다.
-     * @param cryptogram 암호문
-     * @return 올바른 암호문이라면 TRUE 반환
+     * 암호가 올바른지 검증
+     * @param cryptogram 암호
+     * @throws RuntimeException 오류 메세지를 반환
      */
-    private static boolean validateCryptogram(String cryptogram) {
+    private static void checkCorrectCryptogram(String cryptogram) {
         int lengthCryptogram = cryptogram.length();
 
-        // 문자열 길이가 1 이상 ~ 1000 이하인지 확인
-        if (lengthCryptogram < 1 || lengthCryptogram > 1000) {
-            return false;
+        if (lengthCryptogram == 0 || lengthCryptogram > 1000) {
+            throw new RuntimeException("암호문은 1 ~ 1000 글자여야 합니다.");
         }
 
-        // 문자열이 알파벳 소문자인지 확인
         if (!Pattern.matches("^[a-z]*$", cryptogram)) {
-            return false;
+            throw new RuntimeException("암호문은 알파벳 소문자로만 구성되어야 합니다.");
         }
-
-        return true;
     }
 
     /**
