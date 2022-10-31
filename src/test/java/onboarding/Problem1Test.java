@@ -1,15 +1,14 @@
 package onboarding;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.InputMismatchException;
 import java.util.List;
-import onboarding.Problem1.Page;
 import org.junit.jupiter.api.Test;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 class Problem1Test {
 
@@ -59,13 +58,13 @@ class Problem1Test {
     void 결과테스트() {
         List<Integer> user1 = new ArrayList<>(Arrays.asList(123, 124));
         List<Integer> user2 = new ArrayList<>(Arrays.asList(199, 200));
-        List<Integer> user3 = new ArrayList<>(Arrays.asList(99,100));
+        List<Integer> user3 = new ArrayList<>(Arrays.asList(99, 100));
         List<Integer> exceptinUser = new ArrayList<>(Arrays.asList(1, 2));
 
-        assertEquals(2, Problem1.solution(user1,user2));
-        assertEquals(1, Problem1.solution(user2,user1));
-        assertEquals(0, Problem1.solution(user3,user2));
-        assertEquals(-1, Problem1.solution(user1,exceptinUser));
+        assertEquals(2, Problem1.solution(user1, user2));
+        assertEquals(1, Problem1.solution(user2, user1));
+        assertEquals(0, Problem1.solution(user3, user2));
+        assertEquals(-1, Problem1.solution(user1, exceptinUser));
 
     }
 }

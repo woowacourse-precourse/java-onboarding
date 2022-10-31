@@ -1,16 +1,10 @@
 package onboarding;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.InputMismatchException;
-import java.util.List;
 import org.junit.jupiter.api.Test;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 class Problem2Test {
 
@@ -33,8 +27,8 @@ class Problem2Test {
         //then
         assertThat(Problem2.solution(normal)).isEqualTo("abcd");
         assertThat(Problem2.solution(multiple)).isEqualTo("");
-        assertThrows(InputMismatchException.class,() -> Problem2.solution(invalid));
-        assertThrows(InputMismatchException.class,() -> Problem2.solution(shortStr));
-        assertThrows(InputMismatchException.class,() -> Problem2.solution(longStr));
+        assertThrows(InputMismatchException.class, () -> Problem2.solution(invalid));
+        assertThrows(InputMismatchException.class, () -> Problem2.solution(shortStr));
+        assertThrows(InputMismatchException.class, () -> Problem2.solution(longStr));
     }
 }
