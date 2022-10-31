@@ -7,20 +7,22 @@ class Problem1 {
     static int crong_score; // crong의 점수
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+        return determineWinner(pobi, crong);
+    }
+
+    static int determineWinner(List<Integer> pobi, List<Integer> crong) {
+        // 예외 사항 체크
         if(exceptionCheck(pobi.get(0), pobi.get(1))) return -1;    // pobi 에서 예외상황
         if(exceptionCheck(crong.get(0), crong.get(1))) return -1;  // crong 에서 예외상황
 
+        // pobi와 crong의 최고 점수 계산
         calcPobiScore(pobi.get(0), pobi.get(1));
         calcCrongScore(crong.get(0), crong.get(1));
 
-        int answer = determineWinner(pobi_score, crong_score);
+        // 결과 리턴
+        if(pobi_score > crong_score) return 1;
+        if(pobi_score < crong_score) return 2;
 
-        return answer;
-    }
-
-    static int determineWinner(int pobi, int crong) {
-        if(pobi > crong) return 1;
-        if(pobi < crong) return 2;
         return 0;
     }
 
