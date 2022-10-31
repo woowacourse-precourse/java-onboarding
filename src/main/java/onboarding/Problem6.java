@@ -21,12 +21,10 @@ public class Problem6 {
             }
         }
 
-        result = result.stream()
+        return result.stream()
                 .distinct()
                 .sorted()
                 .collect(Collectors.toList());
-
-        return result;
     }
 
     private static class User {
