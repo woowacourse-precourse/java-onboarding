@@ -11,8 +11,7 @@ public class Problem3 {
     }
 
     /**
-     * 올바른 숫자가 입력되었는지 확인.
-     *
+     * 올바른 숫자가 입력되었는지 확인
      * @param number 숫자
      * @throws RuntimeException 오류 메세지
      */
@@ -31,9 +30,9 @@ public class Problem3 {
         int countClap = 0;
 
         for(int i = 1; i <= number; i++) {
-            int[] splitNumber = getOneLetterNumbers(i);
+            int[] oneLetterNumbers = getOneLetterNumbers(i);
 
-            for(int j : splitNumber) {
+            for(int j : oneLetterNumbers) {
                 if (j == 3 || j == 6 || j == 9) {
                     countClap ++;
                 }
@@ -41,6 +40,23 @@ public class Problem3 {
         }
 
         return countClap;
+    }
+
+    /**
+     * 박수 치는 숫자인지 여부
+     * @param number 숫자
+     * @return 박수 여부
+     */
+    private static boolean isClapNumber(int number) {
+        int[] oneLetterNumbers = getOneLetterNumbers(number);
+
+        for (int oneLetterNumber : oneLetterNumbers) {
+            if (oneLetterNumber == 3 || oneLetterNumber == 6 || oneLetterNumber == 9) {
+                return true;
+            }
+        }
+
+        return false
     }
 
     /**
