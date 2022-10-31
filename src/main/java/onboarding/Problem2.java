@@ -29,6 +29,9 @@ public class Problem2 {
             if(!check) {
                 break;
             }
+
+            // 공백 문자 제거하여 결과 리턴하기
+            str = String.valueOf(array).replaceAll(" ", "");
         }
         return str;
     }
