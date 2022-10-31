@@ -65,8 +65,8 @@ class Problem1 {
     }
 
     private static int getMaxScore(List<Integer> numbers) {
-        Integer maxNumber = Collections.max(numbers);
-        return maxNumber;
+        Integer maxScore = Collections.max(numbers);
+        return maxScore;
     }
 
     private static int getAnswer(int pobiScore, int crongScore) {
