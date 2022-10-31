@@ -9,7 +9,7 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         checkForms(forms);
-        findNickname(nickname);
+        findNickName(nickname);
         answer = findEmail();
         sortEmail(answer);
         return answer;
@@ -25,12 +25,23 @@ public class Problem6 {
             if (i == 1) nickname.add(data.get(i));
         }
     }
-    static void findNickname(List<String> nickname) {
+    static void findNickName(List<String> nickname) {
         for(int i=0; i<nickname.size(); i++){
             compareNickName(nickname.get(i), i);
         }
     }
     static void compareNickName(String nickname, int mypos){
+        String tmp = "";
+        HashSet<String> substr = new HashSet<>();
+        String[] stringarr = nickname.split("");
+        for(int i=0; i<stringarr.length; i++){
+            tmp += stringarr[i];
+            if(tmp.length()==2) {
+                checkEmailIndex(tmp, mypos);
+                tmp = "";
+                i--;
+            }
+        }
     }
     static void checkEmailIndex(String substr, int mypos ) {
     }
