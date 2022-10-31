@@ -120,15 +120,37 @@ public class Problem7 {
         }
     }
 
+    public static void sortScoreBoard(List<String> answer, Map<String, Integer> friendScoreBoard) {
+        List<Map.Entry<String, Integer>> sortList = new LinkedList<>(friendScoreBoard.entrySet());
+        sortList.sort(Map.Entry.comparingByKey());
+        sortList.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
 
-
-
+        for(int i=0 ; i< sortList.size() ; i++) {
+            if(i >= 5) break;
+            answer.add(sortList.get(i).getKey());
+        }
+        return;
+    }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         if(!checkParameter(user, friends, visitors)) {
             return answer;
         }
+
+        Map<String, Integer> friendScoreBoard = new HashMap<>();
+        List<String> userFriendList = new ArrayList<>();
+
+        if(!makeUserFriendList(user, friends, userFriendList)) {
+            return answer;
+        }
+        answer = new ArrayList<>();
+        makeFriendScore(user, userFriendList, friendScoreBoard, friends);
+        makeVisitorScore(userFriendList, friendScoreBoard, visitors);
+        sortScoreBoard(answer, friendScoreBoard);
+
+        return answer;
+
 
     }
 }
