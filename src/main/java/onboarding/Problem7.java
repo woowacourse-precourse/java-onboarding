@@ -4,8 +4,6 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-
         // HashMap에 아이디 & 점수 초기화
         HashMap<String, Integer> recommendFds = initRecommendFriends(friends, visitors);
 
@@ -24,7 +22,7 @@ public class Problem7 {
         List<Map.Entry<String, Integer>> entryList = new ArrayList<>(recommendFds.entrySet());
         sortScore(entryList);
 
-        return answer;
+        return getTop5(entryList);
     }
 
     public static HashMap<String, Integer> initRecommendFriends(List<List<String>> friends, List<String> visitors) {
@@ -91,5 +89,18 @@ public class Problem7 {
             if (Objects.equals(o2.getValue(), o1.getValue())) return o1.getKey().compareTo(o2.getKey());
             return o2.getValue() - o1.getValue();
         });
+    }
+
+    public static List<String> getTop5(List<Map.Entry<String, Integer>> entryList) {
+        List<String> top5 = new ArrayList<>();
+        int i = 0;
+
+        for (Map.Entry<String, Integer> entry : entryList) {
+            if (i == 5) break;
+            top5.add(entry.getKey());
+            i++;
+        }
+
+        return top5;
     }
 }
