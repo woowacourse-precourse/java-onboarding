@@ -46,6 +46,22 @@ public class Sns {
         return extractFiveMember(recommendedMemberQueue);
     }
 
+    private List<String> extractFiveMember(PriorityQueue<RecommendedMember> memberQueue) {
+        List<String> list = new ArrayList<>();
+        while (!memberQueue.isEmpty() && list.size() <= RECOMMEND_NUMBER) {
+            extractMemberToList(memberQueue, list);
+        }
+        return list;
+    }
+
+    private static void extractMemberToList(PriorityQueue<RecommendedMember> memberQueue, List<String> list) {
+        RecommendedMember recommendedMember = memberQueue.poll();
+        assert recommendedMember != null;
+        if (recommendedMember.score > 0) {
+            list.add(recommendedMember.name);
+        }
+    }
+
     private void updateRecommendMap(String user, HashMap<String, Integer> recommendMap) {
         List<String> membersNotFriendWithUser = findMembersNotFriendWith(user);
 
