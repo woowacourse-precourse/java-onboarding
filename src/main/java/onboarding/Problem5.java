@@ -22,6 +22,20 @@ public class Problem5 {
     }
 
     // 돈의 액수를 바꿔주는 함수
+    static int coin_change(int i, int money){
+        if(i==7) {
+            return 1;
+        }
+        else if(i%2 == 0) {
+            return money = money/5;
+        }
+
+        else if(i%2 == 1){
+            return money = money/2;
+        }
+
+        return 0;
+    }
 
 }
 
