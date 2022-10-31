@@ -9,6 +9,10 @@ public class Problem7 {
         return answer;
     }
 
+    private static boolean isSameName(String friendName, String userName) {
+        return friendName.equals(userName);
+    }
+
     private static boolean isAlreadyFriend(List<String> userFriends, String friendName) {
         return userFriends.contains(friendName);
     }
