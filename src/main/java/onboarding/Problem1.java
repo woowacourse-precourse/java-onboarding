@@ -20,7 +20,6 @@ class Problem1 {
     }
 }
 
-
 class Game {
     List<Integer> pages;
 
@@ -32,8 +31,8 @@ class Game {
         int page1 = pages.get(0);
         int page2 = pages.get(1);
 
-        if (page1 <= 1 | page1 >= 400 | page2 <= 1 | page2 >= 400) {
-            return false;  // 페이지의 범위가 1 < page < 400이 아닌 경우
+        if (page1 < 1 | page1 > 400 | page2 < 1 | page2 > 400) {
+            return false;  // 페이지의 범위가 1 <= page <= 400이 아닌 경우
         } else if (page2 != page1 + 1) {
             return false;  // 연속된 두 페이지가 아닌 경우
         } else if (page1 % 2 != 1 | page2 % 2 != 0) {
@@ -53,7 +52,6 @@ class Game {
         }
     }
 }
-
 
 class Calculator {
     List<Integer> pages;
