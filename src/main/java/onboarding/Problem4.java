@@ -2,14 +2,13 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        char[] chars = word.toCharArray();
-        return getDecryptedWord(word, chars);
+        return getDecryptedWord(word);
     }
 
-    private static String getDecryptedWord(String word, char[] chars) {
+    private static String getDecryptedWord(String word) {
         StringBuilder buffer = new StringBuilder("");
-        for (char c : chars) {
-            buffer.append(getChar(c));
+        for (int i = 0; i < word.length(); i++) {
+            buffer.append(getChar(word.charAt(i)));
         }
         return buffer.toString();
     }
