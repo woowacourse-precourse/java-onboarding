@@ -19,11 +19,8 @@ class Problem1 {
             return -1;
         }
 
-        List<Integer> pobiMax = new ArrayList<>();
-        List<Integer> crongMax = new ArrayList<>();
-
-        pobiMax = getOpMax(pobi);
-        crongMax = getOpMax(crong);
+        List<Integer> pobiMax = getOpMax(pobi);
+        List<Integer> crongMax = getOpMax(crong);
 
         int pobiMaxVal = Collections.max(pobiMax);
         int crongMaxVal = Collections.max(crongMax);
@@ -32,9 +29,10 @@ class Problem1 {
             answer = 1;
         } else if(pobiMaxVal < crongMaxVal) {
             answer = 2;
-        } else {
+        } else if(pobiMaxVal == crongMaxVal) {
             answer = 0;
         }
+
         return answer;
     }
 
@@ -82,4 +80,5 @@ class Problem1 {
 
         return playerMax;
     }
+
 }
