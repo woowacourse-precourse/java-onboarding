@@ -10,7 +10,11 @@ public class Problem6 {
         for (int i = 0; i < forms.size(); i += 1) {
             for (int j = 0; j < forms.get(i).get(1).length() - 1; j += 1) {
                 String slicedName = forms.get(i).get(1).substring(j, j + 2);
-
+                if (nameCount.containsKey(slicedName)) {
+                    nameCount.put(slicedName, nameCount.get(slicedName) + 1);
+                } else {
+                    nameCount.put(slicedName, 1);
+                }
             }
         }
 
