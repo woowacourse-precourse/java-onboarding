@@ -23,6 +23,12 @@ public class Problem6 {
         return convertMapToListAndSort(alarmSet);
     }
 
+    private static ArrayList<String> convertMapToListAndSort(HashSet<String> alarmSet) {
+        ArrayList<String> alarmList = new ArrayList<>(alarmSet);
+        Collections.sort(alarmList);
+        return alarmList;
+    }
+
     private static void checkAndEnrollPartialNickNameList(List<String> partialNickNameList, String email, HashSet<String> alarmSet, HashMap<String, String> partialNickNameEmailMap) {
         for (String partialNickName : partialNickNameList) {
             checkAndEnrollPartialNickName(partialNickName, email, alarmSet, partialNickNameEmailMap);
