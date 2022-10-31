@@ -11,8 +11,8 @@ public class Problem2 {
             //연속하는 중복 문자 앞의 문자들과 뒤의 문자들을 저장
             for(int i=0; i<cryptogram.length()-1; i++) {
                 if(cryptogram.charAt(i)==cryptogram.charAt(i+1)) {
-                    cryptogram = "" + cryptogram.subSequence(0, i)
-                            + cryptogram.subSequence(i+2, cryptogram.length());
+                    cryptogram = "" + cryptogram.substring(0, i)
+                            + cryptogram.substring(i+2);
                 }
             }
         }
@@ -28,5 +28,4 @@ public class Problem2 {
         }
         return false;
     }
-
 }
