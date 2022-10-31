@@ -17,11 +17,15 @@ public class Problem4 {
     private static char getConvertedChar(int c) {
         // 대문자인 경우
         if (c >= 65 && c <= 90) {
-
+            return getConvertedUpperCase(c);
         }
         // 소문자인 경우
         if (c >= 97 && c <= 122) {
 
         }
+    }
+
+    private static char getConvertedUpperCase(int c) {
+        return (char)(155 - c);
     }
 }
