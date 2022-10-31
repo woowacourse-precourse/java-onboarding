@@ -14,46 +14,13 @@ public class Problem7 {
     private static int _first_user = 0;
     private static int _second_user = 1;
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        HashMap<String, Integer> usersPoint = new HashMap<String, Integer>();
-        List<String> answer = Collections.emptyList();
+        HashMap<String, Integer> usersPoint = new HashMap<>();
 
         List<String> myFriends = getFriends(user, friends);
         usersPoint = calcFriendPoint(user, myFriends, friends, usersPoint);
         usersPoint = calcVisitorPoint(user, myFriends, visitors, usersPoint);
 
-        answer = getRecommendedFriends(usersPoint);
-
-        return answer;
-    }
-
-    private static List<String> getFriends(String user, List<List<String>> friends) {
-        List<String> myFriends = new ArrayList<String>();
-        for (int i = 0; i < friends.size(); ++i)
-        {
-            List<String> friend = friends.get(i);
-            if (isMyFriend(user, friend))
-            {
-                myFriends.add(getMyFriend(user, friend));
-            }
-        }
-        return myFriends;
-    }
-
-    private static boolean isMyFriend(String user, List<String> friend)
-    {
-        if (friend.get(_first_user) == user || friend.get(_second_user) == user) {
-            return true;
-        }
-        return false;
-    }
-
-    private static String getMyFriend(String user, List<String> friend)
-    {
-        if (friend.get(_first_user) == user)
-        {
-            return friend.get(_second_user);
-        }
-        return friend.get(_first_user);
+        return getRecommendedList(usersPoint);
     }
 
     private static HashMap<String, Integer> calcFriendPoint(String user, List<String> myFriends
@@ -66,19 +33,16 @@ public class Problem7 {
             for (int j = 0; j < friendFriends.size(); ++j)
             {
                 String ff = friendFriends.get(j);
-                if (user != ff)
+                if (user != ff && !isFriend(ff, myFriends))
                 {
-                    if (!isFriend(ff, myFriends))
+                    if (usersPoint.get(ff) != null)
                     {
-                        if (usersPoint.get(ff) != null)
-                        {
-                            int point = usersPoint.get(ff);
-                            usersPoint.put(ff, point + 10);
-                        }
-                        else
-                        {
-                            usersPoint.put(ff, 10);
-                        }
+                        int point = usersPoint.get(ff);
+                        usersPoint.put(ff, point + 10);
+                    }
+                    else
+                    {
+                        usersPoint.put(ff, 10);
                     }
                 }
             }
@@ -108,6 +72,51 @@ public class Problem7 {
         return usersPoint;
     }
 
+    private static List<String> getRecommendedList(HashMap<String, Integer> usersPoint)
+    {
+        List<String> ret = new ArrayList<>();
+        List<Map.Entry<String, Integer>> entry = sortRecommendedList(usersPoint);
+
+        int limit = 5;
+        for(Map.Entry<String, Integer> entryElement: entry)
+        {
+            if (limit > 0)
+            {
+                ret.add(entryElement.getKey());
+                --limit;
+            }
+            else
+            {
+                break;
+            }
+        }
+
+
+        return ret;
+    }
+
+    private static List<String> getFriends(String user, List<List<String>> friends) {
+        List<String> myFriends = new ArrayList<>();
+        for (int i = 0; i < friends.size(); ++i)
+        {
+            List<String> friend = friends.get(i);
+            if (isFriend(user, friend))
+            {
+                myFriends.add(getMyFriend(user, friend));
+            }
+        }
+        return myFriends;
+    }
+
+    private static String getMyFriend(String user, List<String> friend)
+    {
+        if (friend.get(_first_user) == user)
+        {
+            return friend.get(_second_user);
+        }
+        return friend.get(_first_user);
+    }
+
     private static boolean isFriend(String user, List<String> friends)
     {
         for (int i = 0; i < friends.size(); ++i)
@@ -120,23 +129,19 @@ public class Problem7 {
         return false;
     }
 
-    private static List<String> getRecommendedFriends(HashMap<String, Integer> usersPoint)
+    private static List<Map.Entry<String, Integer>> sortRecommendedList(HashMap<String, Integer> usersPoint)
     {
-        List<String> ret = new ArrayList<String>();
-        List<Map.Entry<String, Integer>> entry = new ArrayList<Map.Entry<String, Integer>>(usersPoint.entrySet());
-        Collections.sort(entry, new Comparator<Map.Entry<String, Integer>>() {
-            @Override
-            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
-                return o2.getValue().compareTo(o1.getValue());
+        List<String> ret = new ArrayList<>();
+        List<Map.Entry<String, Integer>> entry = new ArrayList<>(usersPoint.entrySet());
+
+        Collections.sort(entry, (o1, o2) -> {
+            if (o2.getValue().compareTo(o1.getValue()) == 0) {
+                return o1.getKey().compareTo(o2.getKey());
             }
+            return o2.getValue().compareTo(o1.getValue());
         });
 
-        for(Map.Entry<String, Integer> entryElement: entry)
-        {
-            ret.add(entryElement.getKey());
-//            System.out.print("Element: " + entryElement + "\n");
-        }
-        return ret;
+        return entry;
     }
 }
 
