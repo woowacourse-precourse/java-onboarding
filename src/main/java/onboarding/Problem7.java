@@ -6,7 +6,7 @@ public class Problem7 {
     private static final int MUTUAL_SCORE = 10;
     private static final int VISIT_SCORE = 1;
 
-
+    private static final int MAX_RESULT = 5;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<List<String>> friendRelations = new ArrayList<>();
@@ -58,7 +58,19 @@ public class Problem7 {
             }
         });
 
-        List<String> answer = Collections.emptyList();
-        return answer;
+        List<String> result = new ArrayList<>();
+
+        int iteration = 0;
+        if (recommendedFriends.size() > MAX_RESULT) {
+            iteration = MAX_RESULT;
+        } else {
+            iteration = recommendedFriends.size();
+        }
+
+        for (int i=0; i<iteration; i++) {
+            result.add(recommendedFriends.get(i).getKey());
+        }
+
+        return result;
     }
 }
