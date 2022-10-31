@@ -44,11 +44,11 @@ class Result {
         for(char wordChar:wordArray){
             if(isAlphaLower(wordChar)){
                 char replaceChar= (char)(155-(int)wordChar);
-                toUpperCase(wordChar);
+                toUpperCase(replaceChar);
             }
             if(isAlphaUpper(wordChar)){
                 char replaceChar= (char)(219-(int)wordChar);
-                toLowerCase(wordChar);
+                toLowerCase(replaceChar);
             }
         }
     }
