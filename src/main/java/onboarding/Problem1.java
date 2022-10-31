@@ -18,8 +18,14 @@ class Problem1 {
     }
 
     public static int mul(int pageNum) {
+        int result = 1;
 
+        while(pageNum>0) {
+            result *= pageNum%10;
+            pageNum /= 10;
+        }
 
+        return result;
     }
 
     public static int check(List<Integer> who) {
