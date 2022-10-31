@@ -3,7 +3,9 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Problem6 {
 
@@ -13,20 +15,21 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
 
-        if(!verificationCheckAboutCrews(forms)) {
+        if (!verificationCheckAboutCrews(forms)) {
             return List.of("Check Restrictions");
         }
 
         HashMap<String, Integer> twoLetterHashMap = new HashMap<>();
 
         for (List<String> form : forms) {
-            if(!verificationCheckAboutEmail(form) || !verificationCheckAboutNickname(form)) {
+            if (!verificationCheckAboutEmail(form) || !verificationCheckAboutNickname(form)) {
                 return List.of("Check Restrictions");
             }
             twoLetterHashMap = putTwoLetters(form, twoLetterHashMap);
         }
 
         answer = getRepetitionEmail(forms, twoLetterHashMap);
+        answer = deleteRepetition(answer);
         answer = sortASC(answer);
 
         return answer;
@@ -45,11 +48,11 @@ public class Problem6 {
         String emailRegex = "^.*@email.com$";
         int emailLength = email.length();
 
-        if(emailLength < 11 || emailLength >= 20) {
+        if (emailLength < 11 || emailLength >= 20) {
             return false;
         }
 
-        if(!email.matches(emailRegex)) {
+        if (!email.matches(emailRegex)) {
             return false;
         }
         return true;
@@ -60,11 +63,11 @@ public class Problem6 {
         String nicknameRegex = "^[가-힣]*$";
         int nicknameLength = nickname.length();
 
-        if(nicknameLength < 1 || nicknameLength >= 20) {
+        if (nicknameLength < 1 || nicknameLength >= 20) {
             return false;
         }
 
-        if(!nickname.matches(nicknameRegex)) {
+        if (!nickname.matches(nicknameRegex)) {
             return false;
         }
 
@@ -101,6 +104,11 @@ public class Problem6 {
         }
 
         return emailList;
+    }
+
+    public static List<String> deleteRepetition(List<String> target) {
+        Set<String> deleteRepetitionSet = new HashSet<>(target);
+        return new ArrayList<>(deleteRepetitionSet);
     }
 
     public static List<String> sortASC(List<String> target) {
