@@ -44,14 +44,14 @@
 
 ## Test Code
 ### 1. void isStringContainingRegularExpressionTest()
-- regex = "(\w)\2"
-- 실패 테스트 입력 시 `false` 반환 확인
+- regex = "(.*)(\w)\2{1,}(.*)"
+- 거짓 테스트 입력 시 `false` 반환 확인
   - 테스트 : "brown", "", "ab"
-- 성공 테스트 입력 시 `true` 반환 확인
-  - 테스트 : "browoanoommnaon", "ababb", "  "
+- 참 테스트 입력 시 `true` 반환 확인
+  - 테스트 : "browoanoommnaon", "ababb", ""
    
 ### 2. void deleteStringByRegularExpressionTest()
-- regex = "(\w)\2"
+- regex = "(\w)\1{1,}"
 - 테스트 입력 시 연속되는 중복 문자 제거 확인
   - 테스트 : "browoanoommnaon", "aabbb", "brown"
   - 정답 : "browoannaon", "", "brown"

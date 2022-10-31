@@ -86,7 +86,7 @@
 - 일급컬렉션 crews을 순회하며 getCrewSetOverlappingWith()을 호출해 Set에 그 반환값을 저장한다.
 - Set을 List로 변환해 반환한다.
 
-### Class Problem6
+### Class Main
 
 #### 1. makeCrewByNicknameAndEmail(String email, String nickname)
 - 매개변수로 email과 nickname을 받아 Crew 객체를 생성해 반환한다.
@@ -116,9 +116,8 @@
 2. getCrewListWithOverlappingNickname() 컬렉션 전체에서 nickname이 중복되는 크루원들의 List를 반환하는지 확인한다.
 
 #### MainTest
-- Problem6 클래스를 테스트한다.
+- Main 클래스를 테스트한다.
 
-1. makeCrewByNicknameAndEmail(String email, String nickname) 메소드가 Crew 객체를 반환하는지 확인한다.
+1. makeCrewByEmailAndNickname(String email, String nickname) 메소드가 Crew 객체를 반환하는지 확인한다.
 2. makeCollectionCrews(List<List\<String>> emailAndNicknames) Crews 일급 컬렉션을 반환하는지 확인한다.
 3. getAscendingEmailListFrom(List\<Crew> overlappingCrewList) Crew의 이메일만 오름차순 정렬해서 List로 반환하는지 확인한다.
-
