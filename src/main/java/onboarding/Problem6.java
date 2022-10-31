@@ -5,6 +5,10 @@ import java.util.*;
 public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
+        return getRestrictedNicknames(forms);
+    }
+
+    private static List<String> getRestrictedNicknames(List<List<String>> forms) {
         Set<String> restrictedNicknames = new HashSet<>();
 
         for (int i = 0; i < forms.size() - 1; i++) {
