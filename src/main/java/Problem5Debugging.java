@@ -17,7 +17,7 @@ public class Problem5Debugging {
                 money %= moneyUnit;
                 moneyUnit /= 5;
 
-            } else if (numberOfKindOfMoney>2 && (numberOfKindOfMoney&2) == 0) {
+            } else if (numberOfKindOfMoney>2 && numberOfKindOfMoney%2 == 0) {
                 answer.add(money/moneyUnit);
                 money %= moneyUnit;
                 moneyUnit /= 2;
