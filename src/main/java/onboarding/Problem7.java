@@ -16,8 +16,7 @@ public class Problem7 {
         removeUserFriends(friendsMap.get(user), scoreMap);
         removeZeroScore(scoreMap);
         List<String> recommendedFriends = sortMapByScoreAndName(new ArrayList<>(scoreMap.keySet()), scoreMap);
-        List<String> answer = Collections.emptyList();
-        return answer;
+        return selectTop5Recommend(recommendedFriends);
     }
 
     public static void findFriendShip(List<List<String>> friends, HashMap<String, List<String>> friendsMap){
@@ -77,6 +76,16 @@ public class Problem7 {
             return scoreMap.get(user2) - scoreMap.get(user1);
         });
         return recommendedFriends;
+    }
+
+    public static List<String> selectTop5Recommend(List<String> recommendedFriends){
+        List<String> top5Recommendation = new ArrayList<>();
+
+        for(int i=0; i< Math.min(recommendedFriends.size(), 5); i++) {
+            top5Recommendation.add(recommendedFriends.get(i));
+        }
+
+        return top5Recommendation;
     }
 
     public static int countRelatedFriendsWithUser(String user, String other, HashMap<String, List<String>> friendsMap){
