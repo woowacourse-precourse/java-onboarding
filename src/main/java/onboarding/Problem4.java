@@ -43,28 +43,24 @@ class FrogDictionary{
     boolean isUpperLetter(String letter){
         return letter.matches("^[A-Z]*$");
     }
-    String getFrogLetter(String letter,HashMap<String, String> frogDictionary ){
+    String getFrogLetter(String letter){
         String frogLetter;
         if(isUpperLetter(letter)){
             String lowerLetter=letter.toLowerCase();
-            frogLetter=frogDictionary.get(lowerLetter);
+            frogLetter=FROG_DICTIONARY.get(lowerLetter);
             return frogLetter.toUpperCase();
         }
         else{
-            return frogDictionary.get(letter);
+            return FROG_DICTIONARY.get(letter);
         }
     }
 }
 class Translation{
-    boolean isUpperLetter(char letter){
-        final char LAST_CAPITAL_LETTER='Z';
-        return ((int)letter)>=((int)LAST_CAPITAL_LETTER);
-    }
-    boolean isAlphabet(char alphabet){
-        String letter= String.valueOf(alphabet);
+
+    boolean isAlphabet(String letter){
         return letter.matches("^[a-zA-Z]*$");
     }
-
+    
 
 }
 public class Problem4 {
