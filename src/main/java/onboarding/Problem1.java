@@ -11,6 +11,15 @@ class Problem1 {
         return true;
     }
     
+    private static int getDigit(int num) {
+        int digit = 0;
+        while (num > 0) {
+            digit++;
+            num /= 10;
+        }
+        return digit;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if (!checkPage(pobi) || !checkPage(crong))
             return -1;
