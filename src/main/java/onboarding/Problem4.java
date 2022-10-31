@@ -1,6 +1,9 @@
 package onboarding;
 
 public class Problem4 {
+    public static void main(String[] args) {
+        System.out.println(solution("I love you"));
+    }
     public static String solution(String word) {
         StringBuilder answer = new StringBuilder(); //문자열 저장을 위한 스트링 빌더
         for (int i = 0; i < word.length(); i++){ // 각 문자열 확인
