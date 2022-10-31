@@ -11,8 +11,9 @@ public class Problem2 {
     }
 
     public static void addDuplicatedIndex(String cryptogram) {
-//       duplicatedIndexList.clear();
         char first = ' ', second = ' ';
+        duplicatedIndexList.clear();
+
         for (int index = 0; index < cryptogram.length() - 1; index++) {
             first = cryptogram.charAt(index);
             second = cryptogram.charAt(index + 1);
@@ -22,4 +23,5 @@ public class Problem2 {
             }
         }
     }
+
 }
