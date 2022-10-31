@@ -10,6 +10,11 @@ public class Problem7 {
 
         List<String> friendsFriends = getFriendsFriends(user, friendships);
         System.out.println(friendsFriends);
+
+        Map<String, Integer> score = getRelationScore(friendsFriends);
+        System.out.println(score);
+
+
         List<String> answer = Collections.emptyList();
         return answer;
 
@@ -50,12 +55,21 @@ public class Problem7 {
                 temp.add(currentFriendsFriends.get(i));
             }
         }
-        temp.remove(user);
-        HashSet<String> set = new HashSet<>(temp);
-        temp = new ArrayList<>(set);
         return temp;
     }
-    private static int getRelationScore(String user, Map<String,List<String>> friendships){
-        return 0;
+
+    private static Map<String, Integer> getRelationScore(List<String> friendsFriends){
+        Map<String, Integer> temp = new HashMap<>();
+        for (int i = 0; i < friendsFriends.size(); i++) {
+            String key = friendsFriends.get(i);
+            System.out.println(temp.containsKey(key));
+            if (temp.containsKey(key)){
+                temp.put(key, temp.get(key) + 10);
+            }
+            else{
+                temp.put(key, 10);
+            }
+        }
+        return temp;
     }
 }
