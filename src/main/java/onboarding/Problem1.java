@@ -6,6 +6,7 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
+
         if (pobi.get(1) - pobi.get(0) != 1) {
             return -1;
         }
