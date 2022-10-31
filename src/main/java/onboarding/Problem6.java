@@ -1,13 +1,32 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Problem6 {
-	static List<String> answer = List.of("answer");
+	static Set<String> duplicateEmailSet = new HashSet<>();
 	static HashMap<String, String> duplicateMap = new HashMap<>();
 
-	@SuppressWarnings("checkstyle:WhitespaceAround")
+	public static List<String> solution(List<List<String>> forms) {
+		List<String> answer;
+		String email;
+		String nickName;
+
+		for (List<String> member : forms) {
+			email = member.get(0);
+			nickName = member.get(1);
+			checkDuplicate(nickName, email);
+		}
+		answer = new ArrayList<>(duplicateEmailSet);
+		answer.sort(Comparator.naturalOrder());
+
+		return answer;
+	}
+
 	public static void checkDuplicate(String nickName, String email) {
 		String twoLetters;
 		for (int i = 0; i < nickName.length() - 1; i++) {
@@ -16,22 +35,11 @@ public class Problem6 {
 				if (duplicateMap.get(twoLetters).equals(email)) {
 					continue;
 				}
-				answer.add(email);
+				duplicateEmailSet.add(email);
+				duplicateEmailSet.add(duplicateMap.get(twoLetters));
 				continue;
 			}
 			duplicateMap.put(twoLetters, email);
 		}
-	}
-
-	public static List<String> solution(List<List<String>> forms) {
-		String email;
-		String nickName;
-		int index = 0;
-		for (List<String> member : forms) {
-			email = member.get(0);
-			nickName = member.get(1);
-			checkDuplicate(nickName, email);
-		}
-		return answer;
 	}
 }
