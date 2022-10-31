@@ -1,8 +1,11 @@
 package onboarding;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -50,6 +53,22 @@ class ApplicationTest {
             String result = "";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
+
+        @Test
+        void 입력값_숫자() {
+            String cryptogram = "sagsd12";
+            Assertions.assertThrows(IllegalArgumentException.class, () -> {
+                Problem2.solution(cryptogram);
+            });
+        }
+
+        @Test
+        void 입력값_길이() {
+            String cryptogram = "";
+            Assertions.assertThrows(IllegalArgumentException.class, () -> {
+                Problem2.solution(cryptogram);
+            });
+        }
     }
 
     @Nested
@@ -67,6 +86,14 @@ class ApplicationTest {
             int result = 14;
             assertThat(Problem3.solution(number)).isEqualTo(result);
         }
+
+        @Test
+        void number_범위_예외처리() {
+            int number = 10_0000;
+            Assertions.assertThrows(IllegalArgumentException.class, () -> {
+                Problem3.solution(number);
+            });
+        }
     }
 
     @Nested
@@ -76,6 +103,22 @@ class ApplicationTest {
             String word = "I love you";
             String result = "R olev blf";
             assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+
+        @Test
+        void word_길이() {
+            String word = "";
+            Assertions.assertThrows(IllegalArgumentException.class, () -> {
+                Problem4.solution(word);
+            });
+        }
+
+        @Test
+        void word_알파벳() {
+            String word = "1dd223";
+            Assertions.assertThrows(IllegalArgumentException.class, () -> {
+                Problem4.solution(word);
+            });
         }
     }
 
@@ -94,6 +137,14 @@ class ApplicationTest {
             List<Integer> result = List.of(0, 1, 1, 0, 0, 0, 0, 0, 0);
             assertThat(Problem5.solution(money)).isEqualTo(result);
         }
+
+        @Test
+        void money_출금액수() {
+            int money = 1_100_000;
+            Assertions.assertThrows(IllegalArgumentException.class, () -> {
+                Problem5.solution(money);
+            });
+        }
     }
 
     @Nested
@@ -110,6 +161,46 @@ class ApplicationTest {
             List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com");
             assertThat(Problem6.solution(forms)).isEqualTo(result);
         }
+
+        @Test
+        void 이메일_양식_예외처리() {
+            List<List<String>> forms = List.of(
+                    List.of("jmddddddddddddd@email.com", "제이엠"),
+                    List.of("jason@email.com", "제이슨"),
+                    List.of("woniee@email.com", "워니"),
+                    List.of("mj@email.com", "엠제이"),
+                    List.of("nowm@email.com", "이제엠")
+            );
+
+            Assertions.assertThrows(IllegalArgumentException.class, () -> {
+                Problem6.solution(forms);
+            });
+        }
+
+        @Test
+        void 닉네임_양식_예외처리() {
+            List<List<String>> forms = List.of(
+                    List.of("jm@email.com", "제이dldldldlddd엠"),
+                    List.of("jason@email.com", "제이슨"),
+                    List.of("woniee@email.com", "워니"),
+                    List.of("mj@email.com", "엠제이"),
+                    List.of("nowm@email.com", "이제엠")
+            );
+
+            Assertions.assertThrows(IllegalArgumentException.class, () -> {
+                Problem6.solution(forms);
+            });
+        }
+
+        @Test
+        void 크루_인원수_예외처리() {
+            List<List<String>> forms = new ArrayList<>(10001);
+
+            Assertions.assertThrows(IllegalArgumentException.class, () -> {
+                Problem6.solution(forms);
+            });
+        }
+
     }
 
     @Nested
@@ -128,6 +219,84 @@ class ApplicationTest {
             List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
             List<String> result = List.of("andole", "jun", "bedi");
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+        }
+
+        @Test
+        void user_길이_예외처리() {
+            String user = "sdasgljlsjglksjlgjlsjglsjlgjlsjglsjgljslgkdjkgjdkjalddddddkgjas";
+            List<List<String>> friends = List.of(
+                    List.of("donut", "andole"),
+                    List.of("donut", "jun"),
+                    List.of("donut", "mrko"),
+                    List.of("shakevan", "andole"),
+                    List.of("shakevan", "jun"),
+                    List.of("shakevan", "mrko")
+            );
+            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+            Assertions.assertThrows(IllegalArgumentException.class, () -> {
+                Problem7.solution(user, friends, visitors);
+            });
+        }
+
+        @Test
+        void friends_길이_예외처리() {
+            String user = "mrko";
+            List<List<String>> friends = new ArrayList<>(10_001);
+            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+            Assertions.assertThrows(IllegalArgumentException.class, () -> {
+                Problem7.solution(user, friends, visitors);
+            });
+        }
+
+        @Test
+        void friends_id_소문자_예외처리() {
+            String user = "mrko";
+            List<List<String>> friends = List.of(
+                    List.of("DDDDD", "AAAAA"),
+                    List.of("Ttttt", "jsTun"),
+                    List.of("donut", "mrko"),
+                    List.of("shakevan", "andole"),
+                    List.of("shakevan", "jun"),
+                    List.of("shakevan", "mrko")
+            );
+            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+            Assertions.assertThrows(IllegalArgumentException.class, () -> {
+                Problem7.solution(user, friends, visitors);
+            });
+        }
+
+        @Test
+        void friends_id_길이() {
+            String user = "mrko";
+            List<List<String>> friends = List.of(
+                    List.of("sdasgljlsjglksjlgjlsjglsjlgjlsjglsjgljslgkdjkgjdkjalddddddkgjas", "andole"),
+                    List.of("donut", "jun"),
+                    List.of("donut", "mrko"),
+                    List.of("shakevan", "andole"),
+                    List.of("shakevan", "jun"),
+                    List.of("shakevan", "mrko")
+            );
+            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+            Assertions.assertThrows(IllegalArgumentException.class, () -> {
+                Problem7.solution(user, friends, visitors);
+            });
+        }
+
+        @Test
+        void visitors_수_예외처리() {
+            String user = "mrko";
+            List<List<String>> friends = List.of(
+                    List.of("donut", "andole"),
+                    List.of("donut", "jun"),
+                    List.of("donut", "mrko"),
+                    List.of("shakevan", "andole"),
+                    List.of("shakevan", "jun"),
+                    List.of("shakevan", "mrko")
+            );
+            List<String> visitors = new ArrayList<>(Collections.nCopies(10_001, ""));
+            Assertions.assertThrows(IllegalArgumentException.class, () -> {
+                Problem7.solution(user, friends, visitors);
+            });
         }
     }
 }
