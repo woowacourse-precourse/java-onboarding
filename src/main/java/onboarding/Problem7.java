@@ -13,9 +13,19 @@ public class Problem7 {
         getScoreSameFriends(friendsMap, user, scoreMap);
         System.out.println(friendsMap);
         getVisitScore(visitors, scoreMap);
+        alreadyFriendRemoveScore(friendsMap, scoreMap, user);
         System.out.println(scoreMap);
         makeRecommendFriend(scoreMap);
+
+
         return answer;
+    }
+
+    private static void alreadyFriendRemoveScore(Map<String, List<String>> friendsMap, Map<String, Integer> scoreMap, String user){
+        List<String> alreadyFriends = friendsMap.get(user);
+        for (String friend : alreadyFriends){
+            scoreMap.remove(friend);
+        }
     }
 
     private static List<String> makeRecommendFriend(Map<String, Integer> scoreMap){
@@ -33,7 +43,7 @@ public class Problem7 {
             }
         });
 
-        
+
         return null;
     }
 
