@@ -41,6 +41,13 @@ class Problem1 {
         return true;
     }
 
+    public static int findMaxScoreHelper(int left, int right) {
+        int[] leftNumArr = Stream.of(String.valueOf(left).split("")).mapToInt(Integer::parseInt).toArray();
+        int[] rightNumArr = Stream.of(String.valueOf(right).split("")).mapToInt(Integer::parseInt).toArray();
+
+        return Math.max(findMaxScore(leftNumArr), findMaxScore(rightNumArr));
+    }
+
     public static int findMaxScore(int[] numArr) {
         int addSum = 0, multiSum = 1;
 
