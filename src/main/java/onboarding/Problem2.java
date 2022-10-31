@@ -17,7 +17,7 @@ public class Problem2 {
             if(stack.empty()) stack.push(c);
             else if(stack.peek() != c) stack.push(c);
             else{
-                while(stack.peek() != c) stack.pop();
+                while(!stack.empty() && stack.peek() == c)  stack.pop();
             }
         }
     }
