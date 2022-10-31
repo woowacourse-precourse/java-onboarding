@@ -2,6 +2,9 @@ package onboarding.pagenumbergame.entity;
 
 import java.util.ArrayList;
 import java.util.List;
+import onboarding.pagenumbergame.infra.util.BookNumberCheck;
+import onboarding.pagenumbergame.infra.util.BookPositionCheck;
+import onboarding.pagenumbergame.infra.util.BookSizeCheck;
 import onboarding.pagenumbergame.infra.util.ConsoleOut;
 
 public class Book {
@@ -10,7 +13,9 @@ public class Book {
 
   private Book(List<Integer> pagesInt) {
     pages = new ArrayList<>();
-    if (bookSizeCheck(pagesInt)) {
+
+    if (BookSizeCheck.check(pagesInt) && BookNumberCheck.check(pagesInt) && BookPositionCheck.check(
+        pagesInt)) {
       settingBook(pagesInt);
     } else {
       settingWrongBook(pagesInt);
@@ -27,13 +32,6 @@ public class Book {
     for (Integer page : pagesInt) {
       pages.add(Page.from(page));
     }
-  }
-
-  private boolean bookSizeCheck(List<Integer> pagesInt) {
-    if (pagesInt.size() == ConsoleOut.PAGE_SIZE) {
-      return true;
-    }
-    return false;
   }
 
   public static Book of(List<Integer> pages) {
