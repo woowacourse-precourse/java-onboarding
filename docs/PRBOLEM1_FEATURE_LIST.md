@@ -39,7 +39,7 @@ TODO
 - ~~슈도코드에 맞게 개발한 함수를 조합하기~~
 - ~~테스트 성공 확인~~
 - 리팩터링 
-1. validCheck(int[], int[])를 일반화하여 validCheck(int[])로 만들기
+1. ~~validCheck(int[], int[])를 일반화하여 validCheck(int[])로 만들기~~
 2. 게임 로직 함수화
 3. 승자 판단 로직 함수화
 4. 상수 static final const 화
