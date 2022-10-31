@@ -17,7 +17,8 @@ class Problem1 {
 
     private static boolean validate(List<Integer> pages) {
         if (pages.get(1) - pages.get(0) > 1) return true;
-        if (pages.get(1) == 400 || pages.get(0) == 1) return true;
+        if (pages.get(1) >= 400 || pages.get(0) <= 1) return true;
+        if (pages.get(1) <= pages.get(0)) return true;
 
         return false;
     }
