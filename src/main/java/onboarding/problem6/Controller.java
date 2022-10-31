@@ -8,21 +8,18 @@ public class Controller {
         if (Validation.check(forms)) {
             LeximRepository leximRepo = new LeximRepository();
             EmailRepository emailRepo = new EmailRepository();
-
-            for (int i = 0; i < forms.size(); i++) {
-                List<String> personInfo = forms.get(i);
-                String personName = personInfo.get(1);
+            forms.forEach(pair -> {
+                String personName = pair.get(1);
                 List<String> leximsFromName = Name.nameToLexims(personName);
                 leximRepo.addLexim(leximsFromName);
-            }
-            for (int i = 0; i < forms.size(); i++) {
-                List<String> personInfo = forms.get(i);
-                String personEmail = personInfo.get(0);
-                String personName = personInfo.get(1);
+            });
+            forms.forEach(pair -> {
+                String personEmail = pair.get(0);
+                String personName = pair.get(1);
                 if (leximRepo.isNameExistsInRepo(personName)) {
                     emailRepo.addEmail(personEmail);
                 }
-            }
+            });
             emailRepo.sort();
             return emailRepo.getDistinctEmails();
         }

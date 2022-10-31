@@ -10,9 +10,6 @@ public class LeximRepository {
         repository = new ArrayList<>();
     }
 
-    void addLexim(String lexim) {
-        repository.add(lexim);
-    }
     void addLexim(List<String> lexims) {
         repository.addAll(lexims);
     }
