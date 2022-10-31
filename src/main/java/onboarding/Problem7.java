@@ -84,30 +84,36 @@ public class Problem7 {
         private String name;
         private int recommendScore;
 
+        /*
         public RecommendFriend(String name) {
             this(name, 0);
         }
+        */
 
         public RecommendFriend(String name, int recommendScore) {
             this.name = name;
             this.recommendScore = recommendScore;
         }
 
+        /*
         public void setRecommendScore(int score) {
             this.recommendScore = score;
         }
+        */
 
         public void addRecommendScore(int score) {
             this.recommendScore += score;
         }
 
         public String getName() {
-            return this. name;
+            return this.name;
         }
 
+        /*
         public int getRecommendScore() {
             return this.recommendScore;
         }
+        */
 
         @Override
         public int compareTo(RecommendFriend o) {
