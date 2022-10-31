@@ -55,6 +55,6 @@ public class FriendsRecommendation {
     }
 
     private void removeExistFriends() {
-        // TODO: User의 기존 친구들은 제거해주는 알고리즘이 필요하다.
+        friendsOfUser.forEach(friend -> recommendationsForUser.remove(friend));
     }
 }
