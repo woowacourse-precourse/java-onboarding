@@ -18,16 +18,16 @@ public class Problem4 {
     }
 
     private static void checkInput(String word){
-        inputTooShortException(word);
-        inputTooLongException(word);
+        if(word.length() < INPUT_MINIMUM_LENGTH) inputTooShortException();
+        if(word.length() > INPUT_MAXIMUM_LENGTH) inputTooLongException();
     }
 
-    private static void inputTooShortException(String word){
-        if(word.length() < INPUT_MINIMUM_LENGTH) throw new IllegalArgumentException(INPUT_TOO_SHORT_EXCEPTION);
+    private static void inputTooShortException(){
+        throw new IllegalArgumentException(INPUT_TOO_SHORT_EXCEPTION);
     }
 
-    private static void inputTooLongException(String word){
-        if(word.length() > INPUT_MAXIMUM_LENGTH) throw new IllegalArgumentException(INPUT_TOO_LONG_EXCEPTION);
+    private static void inputTooLongException(){
+        throw new IllegalArgumentException(INPUT_TOO_LONG_EXCEPTION);
     }
 
     private static String transferWordToOpposite(String word){
