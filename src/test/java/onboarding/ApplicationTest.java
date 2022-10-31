@@ -50,6 +50,13 @@ class ApplicationTest {
             String result = "";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
+
+        @Test
+        void case3() {
+            String cryptogram = "addaa";
+            String result = "a";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
     }
 
     @Nested
@@ -75,6 +82,12 @@ class ApplicationTest {
         void case1() {
             String word = "I love you";
             String result = "R olev blf";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+        @Test
+        void case2() {
+            String word = "안녕하세요 z";
+            String result = "안녕하세요 a";
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
     }
@@ -110,6 +123,15 @@ class ApplicationTest {
             List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com");
             assertThat(Problem6.solution(forms)).isEqualTo(result);
         }
+//        @Test
+//        void case2() {
+//            List<List<String>> forms = List.of(
+//                    List.of("jm@email.com", "제이엠"),
+//                    List.of("abs@email.com", "제이제이제이")
+//            );
+//            List<String> result = List.of("abs@email.com","jason@email.com");
+//            assertThat(Problem6.solution(forms)).isEqualTo(result);
+//        }
     }
 
     @Nested
@@ -129,5 +151,7 @@ class ApplicationTest {
             List<String> result = List.of("andole", "jun", "bedi");
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
         }
+
+
     }
 }
