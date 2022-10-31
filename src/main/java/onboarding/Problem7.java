@@ -1,6 +1,7 @@
 package onboarding;
 
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -19,6 +20,7 @@ public class Problem7 {
         saveUserFriendList(user, friends);
         addMutualFriend(user, friends);
         addVisitedPerson(user, visitors);
+        List<String> sortedRecommendList = getSortedRecommendList();
         return Collections.emptyList();
     }
 
@@ -72,5 +74,22 @@ public class Problem7 {
                 addRecommendScore(visitor, VISITED_SCORE);
             }
         }
+    }
+
+
+    private static List<String> getSortedRecommendList() {
+        List<String> recommendList = new ArrayList<>(recommendScore.keySet());
+
+        recommendList.sort((o1, o2) -> {
+            if (recommendScore.get(o1) > recommendScore.get(o2)) {
+                return -1;
+            } else if (recommendScore.get(o1) < recommendScore.get(o2)) {
+                return 1;
+            } else {
+                return o1.compareTo(o2);
+            }
+        });
+
+        return recommendList;
     }
 }
