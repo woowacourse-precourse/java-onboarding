@@ -92,6 +92,7 @@ public class Problem7 {
         }
 
         List<Integer> keySet = new ArrayList<>(reverseScoreMap.keySet());
+        Collections.sort(keySet);
         Collections.reverse(keySet);
 
         for (Integer key : keySet) {
