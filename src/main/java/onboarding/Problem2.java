@@ -1,7 +1,12 @@
 package onboarding;
 
+import onboarding.exception.LengthRangeException;
+
 public class Problem2 {
     public static String solution(String cryptogram) {
+        // 입력 문자에 대한 제한사항을 검증한다.
+        checkCryptogramValidation(cryptogram);
+
         // 입력으로 들어온 문자열을 char형 배열로 분해한다.
         char[] cryptogramArr = getCharArr(cryptogram);
 
@@ -12,6 +17,29 @@ public class Problem2 {
         }
 
         return cryptogram;
+    }
+
+    /**
+     * 입력 암호문에 대한 검증을 진행한다.
+     *
+     * @param cryptogram 입력 암호문
+     */
+    private static void checkCryptogramValidation(String cryptogram) {
+        // 문자열의 길이를 검증한다.
+        if(isNotStrLengthRange(cryptogram)) {
+            throw new LengthRangeException("문자열의 길이는 1~1000 사이여야 합니다.");
+        }
+    }
+
+    /**
+     * 암호문의 길이에 대해 검증을 진행한다.
+     *
+     * @param cryptogram 입력 암호문
+     * @return 1~1000 사이를 벗어난다면 true, 아니라면 false
+     */
+    private static boolean isNotStrLengthRange(String cryptogram) {
+        return cryptogram.length() < 1 || cryptogram.length() > 1000;
+
     }
 
     /**
