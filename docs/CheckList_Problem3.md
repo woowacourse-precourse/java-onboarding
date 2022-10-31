@@ -4,4 +4,4 @@
 
 | 기능         | function   | 구현여부 |
 |------------|------------|------|
-| 3,6,9인지 체크 | isThreeSixNine | X    |
+| 3,6,9인지 체크 | isThreeSixNine | O    |
