@@ -9,6 +9,15 @@ public class ReverseWord {
         this.word = word;
     }
 
+    public String reverse() {
+        StringBuilder result = new StringBuilder();
+        for(int i = 0; i < word.length(); i++) {
+            char reverseCharacter = getReverseCharacter(i);
+            result.append(reverseCharacter);
+        }
+        return result.toString();
+    }
+
     private char getReverseCharacter(int index) {
         if(isOtherCase(index)) {
             return word.charAt(index);
