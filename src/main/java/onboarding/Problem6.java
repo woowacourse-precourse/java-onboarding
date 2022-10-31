@@ -11,22 +11,7 @@ import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = new ArrayList<>();
-        HashMap<String, Boolean> duplications = new HashMap<>();
-
-        for (List<String> form : forms) {
-            getDuplications(form, duplications);
-        }
-
-        for (List<String> form : forms) {
-            for (int i = 0; i < form.get(1).length() - 1; i++) {
-                if (duplications.get(form.get(1).substring(i, i + 2))) {
-                    answer.add(form.get(0));
-                    break;
-                }
-            }
-        }
-
+        List<String> answer = getDuplicatedEmails(forms);
         answer.sort(Comparator.naturalOrder());
         return answer;
     }
@@ -45,5 +30,31 @@ public class Problem6 {
                 duplications.put(form.get(1).substring(i, i + 2), Boolean.FALSE);
             }
         }
+    }
+
+    /**
+     * 닉네임의 중복 여부 검사
+     *
+     * @param forms
+     * @return 중복된 닉네임의 이메일
+     */
+    private static List<String> getDuplicatedEmails(List<List<String>> forms) {
+        List<String> duplicatedEmails = new ArrayList<>();
+        HashMap<String, Boolean> duplications = new HashMap<>();
+
+        for (List<String> form : forms) {
+            getDuplications(form, duplications);
+        }
+
+        for (List<String> form : forms) {
+            for (int i = 0; i < form.get(1).length() - 1; i++) {
+                if (duplications.get(form.get(1).substring(i, i + 2))) {
+                    duplicatedEmails.add(form.get(0));
+                    break;
+                }
+            }
+        }
+
+        return duplicatedEmails;
     }
 }
