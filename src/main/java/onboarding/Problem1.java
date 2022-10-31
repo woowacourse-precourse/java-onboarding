@@ -35,9 +35,11 @@ class Problem1 {
         if (pobiValue > crongValue) {
             answer = 1;
         } else if (pobiValue < crongValue) {
-            answer = -1;
-        } else {
+            answer = 2;
+        } else if (pobiValue == crongValue) {
             answer = 0;
+        } else {
+            answer = -1;
         }
         return answer;
     }

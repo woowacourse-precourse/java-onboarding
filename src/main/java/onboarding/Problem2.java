@@ -3,7 +3,7 @@ package onboarding;
 public class Problem2 {
     static String removeDup(String cryptoString){
         StringBuffer newString = new StringBuffer(cryptoString);
-        for (int i=0; i<newString.length(); i++){
+        for (int i=0; i<newString.length()-1; i++){
             if (newString.charAt(i) == newString.charAt(i+1)){
                 newString.deleteCharAt(i);
                 newString.deleteCharAt(i);
