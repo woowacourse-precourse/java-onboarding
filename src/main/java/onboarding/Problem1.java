@@ -7,11 +7,10 @@ class Problem1 {
         pobi = new ArrayList<>(pobi);
         crong = new ArrayList<>(crong);
 //        /수정가능을 위한 재선언/
-        if (pobi.get(1) - pobi.get(0) != 1 || crong.get(1) - crong.get(0) != 1){
-            System.out.println("페이지조건 통과x -1리턴");
+        if (pobi.get(1)-pobi.get(0)!=1 || crong.get(1)-crong.get(0)!=1){
             return -1;
         }
-        int answer = Integer.MAX_VALUE;
+        int answer;
         int sumLeftPobi = 0;
         int sumRightPobi = 0;
         int sumLeftCrong = 0;
@@ -20,7 +19,6 @@ class Problem1 {
         int mulRightPobi = 1;
         int mulLeftCrong = 1;
         int mulRightCrong = 1;
-
         do{
             mulLeftPobi *= pobi.get(0)%10;
             sumLeftPobi += pobi.get(0)%10;
@@ -58,11 +56,7 @@ class Problem1 {
         if(pobiScore>crongScore){answer = 1;}
         else if(pobiScore<crongScore){answer = 2;}
         else {answer = 0;}
-        ;
 // Pobi의 점수가 더 높으면 1,Crong의 점수가 더 높으면2, 같은값일땐 0을 answer에 할당
-        System.out.println(sumLeftPobi +","+ sumRightPobi +","+ sumLeftCrong +","+ sumRightCrong);
-        System.out.println(mulLeftPobi +","+ mulRightPobi +","+ mulLeftCrong +","+ mulRightCrong);
-
         return answer;
     }
 }
