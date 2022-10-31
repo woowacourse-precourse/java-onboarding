@@ -19,13 +19,13 @@ public class Problem6 {
 
         for (List<String> form : forms) {
 
-            if (memberRepository.size() == 0 ) {
+            if (memberRepository.size() == 0) {
                 memberRepository.add(new Member(form.get(1), form.get(0)));
                 continue;
             }
 
             for (Member member : memberRepository) {
-                if (hasConsecutiveString(form.get(1),member.name)) {
+                if (hasConsecutiveString(form.get(1), member.name)) {
                     emailHashSet.add(form.get(0));
                     emailHashSet.add(member.email);
                 }
