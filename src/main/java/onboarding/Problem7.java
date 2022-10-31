@@ -4,7 +4,6 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.HashSet;
-import java.util.LinkedList;
 
 class User implements Comparable<User>{
     private String name;
@@ -45,6 +44,16 @@ class User implements Comparable<User>{
 public class Problem7 {
     public static final HashMap<String, User> USER_MAP = new HashMap<>();
 
+    public static void processFriendsList(List<List<String>> friends){
+        for(List<String> friendPair : friends){
+            String name1 = friendPair.get(0);
+            String name2 = friendPair.get(1);
+            User user1 = getUserFromName(name1);
+            User user2 = getUserFromName(name2);
+            makeFriend(user1, user2);
+        }
+    }
+
     public static User createNewUser(String name){
         User newUser = new User(name);
         USER_MAP.put(name, newUser);
@@ -65,6 +74,7 @@ public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+        processFriendsList(friends);
         return answer;
     }
 }
