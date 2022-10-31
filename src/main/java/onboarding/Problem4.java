@@ -35,8 +35,4 @@ public class Problem4 {
             return (char)(90 - pos);
         }
     }
-
-    public static void main(String[] args) {
-        System.out.println(solution("I love you"));
-    }
 }

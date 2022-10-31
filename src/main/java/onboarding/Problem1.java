@@ -57,12 +57,4 @@ class Problem1 {
 
         return mult;
     }
-
-
-    public static void main(String[] args) {
-        List<Integer> pobi = List.of(99, 102);
-        List<Integer> crong = List.of(131, 132);
-
-        System.out.println(solution(pobi, crong));
-    }
 }

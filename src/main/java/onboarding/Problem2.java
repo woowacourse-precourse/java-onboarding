@@ -31,8 +31,4 @@ public class Problem2 {
         sb.deleteCharAt(sb.length() - 1);
         return sb.toString();
     }
-
-    public static void main(String[] args) {
-        System.out.println(solution("browoanoommnaon"));
-    }
 }

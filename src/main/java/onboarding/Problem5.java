@@ -28,9 +28,4 @@ public class Problem5 {
         }
         return answer;
     }
-
-    public static void main(String[] args) {
-        for(int change : solution(50_237))
-            System.out.print(change + " ");
-    }
 }
