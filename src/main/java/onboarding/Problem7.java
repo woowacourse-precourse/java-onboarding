@@ -68,4 +68,18 @@ public class Problem7 {
         }
         return result;
     }
+
+    /**
+     *점수 내림차순 정렬
+     */
+    static List<Map.Entry<String,Integer>> sort(Map<String,Integer> result){
+
+        List<String> keySet = new ArrayList<>(result.keySet());
+        Collections.sort(keySet);
+
+        List<Map.Entry<String,Integer>> keyList = new LinkedList<>(result.entrySet());
+        Collections.sort(keyList, (o1, o2) -> o2.getValue() - o1.getValue());
+
+        return keyList;
+    }
 }
