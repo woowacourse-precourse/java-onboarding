@@ -28,10 +28,10 @@ public class Problem7 {
     private static final String VISITORS_SIZE_EXCEPTION_MESSAGE = "방문자 목록의 길이는 0이상 10000이하여야합니다.";
     private static final Map<String, Integer> friendRecommendScoreMap = new HashMap<>();
 
-    public static List<String> solution(String user, List<List<String>> friendRelationships, List<String> userTimelineVisitors) {
+    public static List<String> solution(String userId, List<List<String>> friendRelationships, List<String> userTimelineVisitors) {
         initFriendRecommendScoreMap(friendRelationships, userTimelineVisitors);
-        Set<String> userFriends = getUserFriends(user, friendRelationships);
-        List<String> friendsOfUserFriends = getFriendsOfUserFriends(user, friendRelationships, userFriends);
+        Set<String> userFriends = getUserFriends(userId, friendRelationships);
+        List<String> friendsOfUserFriends = getFriendsOfUserFriends(userId, friendRelationships, userFriends);
         friendsOfUserFriendsAddScore(friendsOfUserFriends);
         userTimelineVisitorsAddScore(userTimelineVisitors);
         return getTopFiveScoreUser(friendRecommendScoreMap, userFriends);
