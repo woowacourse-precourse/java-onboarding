@@ -40,6 +40,17 @@ public class Problem7 {
             }
         }
 
+        // 3. 사용자와 함께 아는 친구인 경우 해쉬맵에 10점 추가하기
+        for(List<String> list : friends) {
+            for(String uf : userFriends) {
+                if(list.get(0).equals(uf)) { // 사용자와 함께 아는 친구가 친구 리스트의 0번째인 경우
+                    map.put(list.get(1), map.getOrDefault(list.get(1), 0) + 10); // 함께 아는 친구가 해쉬맵에 없으면 0을 리턴 + 10을 해서 해쉬맵에 저장
+                } else if(list.get(1).equals(uf)) {
+                    map.put(list.get(0), map.getOrDefault(list.get(0), 0) + 10);
+                }
+            }
+        }
+
         return answer;
     }
 }
