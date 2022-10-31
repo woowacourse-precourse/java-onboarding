@@ -5,18 +5,15 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        int answer;
 
-        // 포비와 크롱의 점수 구하기
-        int pobiScore = makeOutScore(pobi);
-        int crongScore = makeOutScore(crong);
+        int pobiScore = findMaxScore(pobi);
+        int crongScore = findMaxScore(crong);
 
-        // 예외처리
         if (pobiScore == -1 || crongScore == -1) {
-            return -1;
+            return -1;      // 예외처리
         }
 
-        // 승부 정하기
         int winningScore = Math.max(pobiScore, crongScore);
         if (winningScore == pobiScore && winningScore == crongScore) {
             answer = 0;     // 무승부
@@ -28,46 +25,38 @@ class Problem1 {
         return answer;
     }
 
-    private static int makeOutScore(List<Integer> pageList){
-        // 1. 왼쪽, 오른쪽 페이지 번호 추출
+    private static int findMaxScore(List<Integer> pageList){
         int left = pageList.get(0);
         int right = pageList.get(1);
 
-        // 예외처리 : 책의 시작 면이나 마지막 면 혹은 그 외의 범위가 나오면 오류
-        if (left <= 0 || right >= 400) {
+        if (left <= 0 || right >= 400) {    // 유효하지 않은 페이지 범위
             return -1;
         }
-        // 예외처리 : 페이지 번호가 잘못 되었으면 오류
-        else if (left + 1 != right || left % 2 == 0 || right % 2 == 1) {
+        else if (left + 1 != right || left % 2 == 0 || right % 2 == 1) {    // 유효하지 않은 페이지 번호
             return -1;
         }
 
-        // 2. 왼쪽, 오른쪽 페이지 번호를 처리하여 점수 후보군 리스트로 만들기
-        List<Integer> joinedTmpList = new ArrayList<>();
-        joinedTmpList.addAll(makeTmpList(left));
-        joinedTmpList.addAll(makeTmpList(right));
+        List<Integer> scoreList = new ArrayList<>();
+        scoreList.addAll(makeScores(left));
+        scoreList.addAll(makeScores(right));
 
-        // 3. 점수 리스트에서 최댓값(=최종 점수) 도출하기
-        int max = 0;
-        for (int tmp : joinedTmpList) {
-            max = Math.max(tmp, max);
+        int maxScore = 0;
+        for (int tmp : scoreList) {
+            maxScore = Math.max(tmp, maxScore);
         }
-        return max;
+        return maxScore;
     }
 
-    private static List<Integer> makeTmpList(int pageNumber) {
-        // 각 자리 숫자를 더할 경우/곱할 경우를 분리하여 진행
+    private static List<Integer> makeScores(int pageNumber) {
         int plusTmp = 0;
         int multiplyTmp = 1;
 
-        // 페이지 번호를 변환하여 각자리 숫자를 더하기/곱하기
         while(pageNumber > 0) {
             int eachNum = pageNumber % 10;
             plusTmp += eachNum;
             multiplyTmp *= eachNum;
             pageNumber /= 10;
         }
-        // 각 자리를 더한 경우, 곱한 경우 모두 return
         return List.of(plusTmp, multiplyTmp);
     }
 }
