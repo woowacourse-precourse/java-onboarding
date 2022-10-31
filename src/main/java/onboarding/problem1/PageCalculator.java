@@ -1,6 +1,6 @@
 package onboarding.problem1;
 
-public class ValueCalculator {
+public class PageCalculator {
 
     public int valueOfPages(int left, int right) {
         return Math.max(valueOfPage(left), valueOfPage(right));

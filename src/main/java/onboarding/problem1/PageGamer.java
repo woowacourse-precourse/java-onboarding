@@ -8,13 +8,13 @@ public class PageGamer {
     private final List<Integer> pagesB;
 
     private final InputValidator validator;
-    private final ValueCalculator calculator;
+    private final PageCalculator calculator;
 
     public PageGamer(List<Integer> pagesA, List<Integer> pagesB, int size) {
         this.pagesA = pagesA;
         this.pagesB = pagesB;
         validator = new InputValidator(size);
-        calculator = new ValueCalculator();
+        calculator = new PageCalculator();
     }
 
     public int play() throws WrongInputException {
