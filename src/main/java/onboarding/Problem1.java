@@ -32,7 +32,7 @@ class Problem1 {
     }
 
     private static void validatePage(int page1, int page2) {
-        if ((page1 + 1 != page2) || page1 % 2 == 0 || page2 % 2 == 1) {
+        if ((page1 + 1 != page2) || page1 % 2 == 0 || page2 % 2 == 1 || page1 < 1 || page2 > 400) {
             throw new IllegalArgumentException("페이지 번호 에러");
         }
     }
