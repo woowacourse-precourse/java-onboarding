@@ -8,18 +8,18 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        return cryptogramInterpretation(cryptogram);
+        return decryption(cryptogram);
     }
-    public static String cryptogramInterpretation(String cryptogram) {
+    public static String decryption(String cryptogram) {
         String newCryptogram = cryptogram;
         do {
             cryptogram = newCryptogram;
-            newCryptogram = overlapCheckfromStringOneTime(cryptogram);
-        }while(!cryptogram.equals(newCryptogram) && newCryptogram.length() != 0);
+            newCryptogram = overlapCheckfromString(cryptogram);
+        } while(!cryptogram.equals(newCryptogram) && newCryptogram.length() != 0);
         cryptogram = newCryptogram;
         return cryptogram;
     }
-    public static String overlapCheckfromStringOneTime(String cryptogram) {
+    public static String overlapCheckfromString(String cryptogram) {
         int stringSize = cryptogram.length();
         boolean overlapCheck = false;
         int overlapCount = 1;
@@ -34,11 +34,8 @@ public class Problem2 {
                 cryptogram = overlapCharsDelete(cryptogram, i + 1, overlapCount);
                 overlapCheck = false;
                 overlapCount = 1;
+                pastChar = cryptogram.charAt(i);
             }
-            if (i == cryptogram.length()) {
-                i = cryptogram.length() - 1;
-            }
-            pastChar = cryptogram.charAt(i);
         }
         if (overlapCheck) {
             cryptogram = overlapCharsDelete(cryptogram, cryptogram.length() - overlapCount, overlapCount);
