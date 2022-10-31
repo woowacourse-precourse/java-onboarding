@@ -69,4 +69,11 @@ public class Problem6 {
         return keyList;
     }
 
+    private static void validateForms(List<List<String>> forms) {
+        for (List<String> form : forms) {
+            isValidEmail(form.get(0));
+            isValidNickName(form.get(1));
+        }
+    }
+
 }
