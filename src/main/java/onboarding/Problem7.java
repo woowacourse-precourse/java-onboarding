@@ -44,6 +44,19 @@ public class Problem7 {
         users.addAll(visitors);
     }
 
+    public static void makeNetwork(List<List<String>> friends) {
+        for (String name : users) {
+            network.put(name, new ArrayList<>());
+        }
+        for (List<String> friend : friends) {
+            List<String> connectedFirstFriend = network.get(friend.get(0));
+            List<String> connectedSecondFriend = network.get(friend.get(1));
+            connectedFirstFriend.add(friend.get(1));
+            connectedSecondFriend.add(friend.get(0));
+            network.put(friend.get(0), connectedFirstFriend);
+            network.put(friend.get(1), connectedSecondFriend);
+        }
+    }
 
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
