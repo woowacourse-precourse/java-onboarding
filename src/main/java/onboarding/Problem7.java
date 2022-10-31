@@ -85,11 +85,26 @@ public class Problem7 {
             }
             return count;
         }
+        boolean isFriend(String a, String b) {
+            return getPerson(a).friends.contains(getPerson(b));
+        }
+        List<Person> getRecommendedFriendsList() {
+            List<Person> list = new ArrayList<>();
+            for(String name : personMap.keySet()) {
+                if(name.equals(user) || isFriend(user, name)) {
+                    continue;
+                }
+                list.add(getPerson(name));
+            }
+            return list;
+        }
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Persons persons = new Persons(user);
         persons.countVisit(visitors);
+        persons.addFriends(friends);
+
         List<String> answer = new ArrayList<>();
 
         return answer;
