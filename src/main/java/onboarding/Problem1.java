@@ -10,6 +10,14 @@ class Problem1 {
         }
         return -1;
     }
+    // 페이지의 각 자릿수의 곱셈을 반환하는 기능
+    private static int getMultiplication(String digit) {
+        int total = 1;
+        for (int i = 0; i < digit.length(); i++) {
+            total *= Integer.parseInt(String.valueOf(digit.charAt(i)));
+        }
+        return total;
+    }
     // 두 플레이어의 승부를 각 점수로 판별하는 기능
     private static int judgedScore(int pobi, int crong) {
         if (pobi > crong) {
