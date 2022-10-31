@@ -18,12 +18,24 @@ class Problem1 {
 
         return true;
     }
+
+    public static int SumOfDigit(int value){
+        int result = 0;
+        while(value != 0){
+            result += value % 10;
+            value /= 10;
+        }
+        return result;
+    }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+
         boolean pobi_valid = isValidInput(pobi);
         if(!pobi_valid) return -1;
         boolean crong_valid = isValidInput(crong);
         if(!crong_valid) return -1;
+
+
         return answer;
     }
 }
