@@ -38,7 +38,7 @@ public class User {
                         recommendationScores.put(stranger, recommendationScores.get(stranger) + 1));
     }
 
-    public void calculateRecommendationScoreWithCommonFriends() {
+    private void calculateRecommendationScoreWithCommonFriends() {
         var friends = FriendConnectionRepository.getFriends(name);
 
         friends.stream()
