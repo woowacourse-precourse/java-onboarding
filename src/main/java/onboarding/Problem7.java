@@ -6,6 +6,10 @@ class Recommend {
     private String name;
     private int score;
 
+    public Recommend(String name, int score) {
+        this.name = name;
+        this.score = score;
+    }
     // Getter
     public String getName() {
         return this.name;
@@ -14,13 +18,6 @@ class Recommend {
         return this.score;
     }
 
-    // Setter
-    public void setName(String name){
-        this.name = name;
-    }
-    public void setScore(int score){
-        this.score = score;
-    }
     public void updateScore(int addScore) {
         this.score += addScore;
     }
@@ -82,10 +79,11 @@ public class Problem7 {
     }
 
     static List<String> flatten2DimStringList(List<List<String>> string2DimList) {
-        List<String> flattenList = string2DimList.stream().reduce(new ArrayList<>(), (x, y) -> {
-            x.addAll(y);
-            return x;
-        });
+        List<String> flattenList = string2DimList.stream()
+                                                .reduce(new ArrayList<>(), (x, y) -> {
+                                                    x.addAll(y);
+                                                    return x;
+                                                });
         return flattenList;
     }
 
