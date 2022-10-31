@@ -24,6 +24,9 @@ class Problem1 {
         if (!isInRange(pageList)) {
             return false;
         }
+        if (isEdge(pageList)) {
+            return false;
+        }
         return true;
     }
 
@@ -43,5 +46,15 @@ class Problem1 {
             return false;
         }
         return true;
+    }
+
+    private static boolean isEdge(List<Integer> pageList) {
+        if (pageList.get(0) == FIRST_PAGE) {
+            return true;
+        }
+        if (pageList.get(1) == LAST_PAGE) {
+            return true;
+        }
+        return false;
     }
 }
