@@ -20,11 +20,7 @@ public class Problem7 {
             User user = new User(userName);
 
             return user.getMostRecommendedAsFriend(visitors);
-        } catch (NullPointerException e) {
-            System.out.println(e.getMessage());
-            return null;
-        } catch (IllegalArgumentException e) {
-            System.out.println(e.getMessage());
+        } catch (RuntimeException e) {
             return null;
         }
     }

@@ -13,7 +13,10 @@ public class DuplicateCryptogramDecoder {
     public static String decode(String cryptogram) {
         validateLength(cryptogram);
         validateLowerCase(cryptogram);
-        return ContinuousDuplicationDeleter.deleteFrom(cryptogram);
+        while (ContinuousDuplicationDeleter.hasDuplication(cryptogram)) {
+            cryptogram = ContinuousDuplicationDeleter.deleteFrom(cryptogram);
+        }
+        return cryptogram;
     }
 
     private static void validateLength(String cryptogram) {

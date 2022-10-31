@@ -1,44 +1,37 @@
 package problem2;
 
-import java.util.List;
-import java.util.Objects;
-import java.util.Stack;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class ContinuousDuplicationDeleter {
     public static String deleteFrom(String target) {
-        Stack<Character> result = new Stack<>();
+        List<Character> chars = Arrays.stream(target.split(""))
+                .map(str -> Character.valueOf(str.charAt(0)))
+                .collect(Collectors.toList());
 
+        List <Character> result = new ArrayList<>();
         for (int i = 0; i < target.length(); i++) {
-            Character targetCharacter = target.charAt(i);
-            Character nextCharacter = (i == target.length() - 1) ?
-                    null : target.charAt(i + 1);
-
-            deleteDuplication(result, targetCharacter, nextCharacter);
+            Character character = chars.get(i);
+            if (isDifferentWithPrev(chars, i) && isDifferentWithNext(chars, i)) {
+                result.add(character);
+            }
         }
 
         return asString(result);
     }
 
-    private static void deleteDuplication(Stack<Character> result, Character targetCharacter, Character nextCharacter) {
-        if (isSameWithPrev(result, targetCharacter) && isDifferentWithNext(targetCharacter, nextCharacter)) {
-            deleteFrom(result, targetCharacter);
-            return;
+    static boolean hasDuplication(String target) {
+        for (int i = 0; i < target.length() - 1; i++) {
+            if (target.charAt(i) == target.charAt(i + 1)) return true;
         }
-        result.push(targetCharacter);
+        return false;
+    }
+    private static boolean isDifferentWithPrev(List<Character> characters, int index) {
+        return index == 0 || !characters.get(index - 1).equals(characters.get(index));
     }
 
-    private static boolean isSameWithPrev(Stack<Character> stack, Character curr) {
-        return !stack.isEmpty() && stack.peek().equals(curr);
-    }
-
-    private static boolean isDifferentWithNext(Character curr, Character next) {
-        return !Objects.equals(curr, next);
-    }
-
-    private static void deleteFrom(Stack<Character> duplicationCharacters, char toDelete) {
-        while (isSameWithPrev(duplicationCharacters, toDelete)) {
-            duplicationCharacters.pop();
-        }
+    private static boolean isDifferentWithNext(List<Character> characters, int index) {
+        return index == characters.size() - 1 || !characters.get(index + 1).equals(characters.get(index));
     }
 
 
