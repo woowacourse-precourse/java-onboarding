@@ -30,8 +30,10 @@ class Decoder {
         char dupli = ' ';
         for (int i = 0, len = cryptogram.length(); i < len; i++) {
             char now = cryptogram.charAt(i);
-            if (now == dupli)
+
+            if (now == dupli) {
                 continue;
+            }
             if (now == before) {
                 sb.deleteCharAt(sb.length() - 1);
                 dupli = now;
