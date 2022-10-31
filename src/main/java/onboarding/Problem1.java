@@ -72,4 +72,12 @@ class Problem1 {
         }
         return false;
     }
+    public static boolean isNext(List<Integer> user){
+        int left = user.get(0);
+        int right = user.get(1);
+        if((right - left) == 1){
+            return true;
+        }
+        return false;
+    }
 }
