@@ -57,6 +57,13 @@ public class Problem7 {
         }
     }
 
+    static void exceptUserFriends(String user, Map<String, Integer> scores, List<String> userFreinds) {
+        userFreinds.add(user);
+        for (String userFriend: userFreinds) {
+            scores.remove(userFriend);
+        }
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
