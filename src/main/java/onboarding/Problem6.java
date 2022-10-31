@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Comparator;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -9,11 +10,13 @@ public class Problem6 {
 
         for(int i=0; i<forms.size()-1; i++){
             for(int j=i+1; j<forms.size();j++){
-                //if (isOverlap(forms.get(i).get(1), forms.get(j).get(1));
-                // emails에 form[i][0]과 form[j][0]을 입력한다
+                if(isOverlap(forms.get(i).get(1), forms.get(j).get(1))) {
+                    if (!emails.contains(forms.get(i).get(0))) emails.add(forms.get(i).get(0));
+                    if (!emails.contains(forms.get(j).get(0))) emails.add(forms.get(j).get(0));
+                }
             }
         }
-
+        emails.sort(Comparator.naturalOrder());
         return emails;
     }
 
