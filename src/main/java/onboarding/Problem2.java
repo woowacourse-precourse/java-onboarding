@@ -4,9 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Problem2 {
+
+    private static final int MIN_LENGTH = 1;
+    private static final int MAX_LENGTH = 1000;
+
     public static String solution(String cryptogram) {
+        if (!isValidLengthStringException(cryptogram)) {
+            throw new IllegalArgumentException("유효한 문자열의 길이를 입력해주세요. (1~1000 자)");
+        }
         String answer = getAnswer(cryptogram);
         return answer;
+    }
+
+    public static boolean isValidLengthStringException(String cryptogram) {
+        int length = cryptogram.length();
+        return length >= MIN_LENGTH && length <= MAX_LENGTH;
     }
 
     public static String getAnswer(String cryptogram) {
