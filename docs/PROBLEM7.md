@@ -25,7 +25,7 @@
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
 
-## ✅ 구현 기능 목록
+### ✅ 구현 기능 목록
 1. 전체 사용자의 “친구관계” 정보를 제공하는 기능
     - List<List<String>> 타입의 자료구조를 일급 콜렉션 FriendRelations로 구현한다.
     - 입력값으로 받은 relations를 이용해 친구 관계 관련한 여러 기능을 제공한다.

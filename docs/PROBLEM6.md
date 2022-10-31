@@ -22,7 +22,7 @@
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
 
-## ✅ 구현 기능 목록
+### ✅ 구현 기능 목록
 1. 한 지원자의 신청폼 정보를 제공하는 기능
     - 이메일, 닉네임을 멤버변수로 가지는 클래스 Form으로 구현한다.
     - 해당 객체의 이메일을 반환하는 기능을 제공한다.
