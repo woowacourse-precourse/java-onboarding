@@ -35,7 +35,7 @@ public class Problem7 {
                 }else if(f2.equals(friendName)){
                     bridge = f1;
                 }
-                
+
                 if(bridge.equals(user)||bridge.equals((""))){
                     continue;
                 }
@@ -44,6 +44,15 @@ public class Problem7 {
                     score.replace(bridge,score.get(bridge) + 10);
                 }else{
                     score.put(bridge,10);
+                }
+            }
+        }
+        for(String visitor: visitors){
+            if(friendSet.contains(visitor)){
+                if(score.containsKey(visitor)){
+                    score.replace(visitor,score.get(visitor)+1);
+                }else{
+                    score.put(visitor,1);
                 }
             }
         }
