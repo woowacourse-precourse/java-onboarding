@@ -2,6 +2,14 @@ package onboarding;
 
 import java.util.*;
 
+/*
+기능 목록
+1. 이름 속에서 중복될 수 있는 모든 단어를 저장한 Set을 반환하는 기능
+2. 닉네임이 중복 가능성이 있는 단어들을 포함하는지 확인하는 기능
+3. 닉네임이 중복 가능성이 있는 단어를 포함하지 않는 경우, HashMap에 이름과 이메일을 추가하는 기능
+4. 닉네임이 중복 가능성이 있는 단어를 포함하는 않는 경우, HashSet에 이메일을 추가하는 기능
+5. 구현한 기능들을 바탕으로 solution 메서드 작성 및 이메일 오름차순 정렬 기능
+ */
 public class Problem6 {
     public static HashMap<String, String> duplicatedWord_EmailHashMap = new HashMap<>();
     public static HashSet<String> answerEmailSet = new HashSet<>();
