@@ -15,7 +15,7 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         nicknames = new HashMap<>();
         duplicateNicknameIndexes = new HashSet<>();
-        findDuplicateNicknames(forms);
+        findDuplicationNicknames(forms);
         return parseEmails(forms);
     }
 
@@ -28,7 +28,7 @@ public class Problem6 {
         return emails.stream().sorted().collect(Collectors.toList());
     }
 
-    private static void findDuplicateNicknames(List<List<String>> forms) {
+    private static void findDuplicationNicknames(List<List<String>> forms) {
         for (int i = 0; i < forms.size(); i++) {
             List<String> crewForm = forms.get(i);
             String email = crewForm.get(0);
