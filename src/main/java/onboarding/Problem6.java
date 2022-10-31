@@ -4,27 +4,11 @@ import java.util.*;
 
 public class Problem6 {
 
-    static class Student implements Comparable<Student> {
-        String email;
-        int idx;
-
-        public Student(String email, int idx) {
-            this.email = email;
-            this.idx = idx;
-        }
-
-        @Override
-        public int compareTo(Student o) {
-            return this.email.compareTo(o.email);
-        }
-    }
-
     public static List<String> solution(List<List<String>> forms) {
         Set<Integer> indexSet = findDuplicateStudents(forms);
 
-        List<Student> duplicateStudentList = getDuplicateStudentList(forms, indexSet);
-
-        List<String> answer = extracted(forms, duplicateStudentList);
+        List<String> answer = getDuplicateStudentList(forms, indexSet);
+        Collections.sort(answer);
 
         return answer;
     }
@@ -59,28 +43,15 @@ public class Problem6 {
         return true;
     }
 
-    private static List<Student> getDuplicateStudentList(List<List<String>> forms, Set<Integer> indexSet) {
-        List<Student> duplicateStudentList = new ArrayList<>();
+    private static List<String> getDuplicateStudentList(List<List<String>> forms, Set<Integer> indexSet) {
+        List<String> duplicateStudentList = new ArrayList<>();
 
         for (int idx: indexSet) {
             String email = forms.get(idx).get(0);
-            duplicateStudentList.add(new Student(email, idx));
+            duplicateStudentList.add(email);
         }
 
         return duplicateStudentList;
     }
 
-    private static List<String> extracted(List<List<String>> forms, List<Student> duplicateStudentList) {
-        List<String> answer = new ArrayList<>();
-
-        Collections.sort(duplicateStudentList);
-        for (Student student : duplicateStudentList) {
-            int idx = student.idx;
-            String email = forms.get(idx).get(0);
-
-            answer.add(email);
-        }
-
-        return answer;
-    }
 }
