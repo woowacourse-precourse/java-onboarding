@@ -43,7 +43,9 @@ class People implements Comparable<People>{
 public class Problem7 {
 
     public void putPeopleToMap(HashMap<String,People> map, String peopleName){
-
+        if(!map.containsKey(peopleName)){
+            map.put(peopleName, new People(peopleName));
+        }
     }
 
     public void addFriendToPeople(String user, People people, String friendName){

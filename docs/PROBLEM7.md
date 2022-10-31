@@ -44,8 +44,8 @@
 
 <br/>
 
-- ⬜ putPeopleToMap 메소드 구현
-  - ⬜ HashMap 내에 찾고자하는 이름 키값이 없으면 새로운 People 객체를 생성해서 추가
+- ✅ putPeopleToMap 메소드 구현
+  - ✅ HashMap 내에 찾고자하는 이름 키값이 없으면 새로운 People 객체를 생성해서 추가
 
 <br/>
 
