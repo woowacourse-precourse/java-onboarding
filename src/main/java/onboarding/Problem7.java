@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -35,15 +32,21 @@ public class Problem7 {
             linkarr[indexMap.get(list.get(1))][indexMap.get(list.get(0))] = 1;
         }
 
-        List<String> answer = Collections.emptyList();
-        System.out.println(Arrays.toString(nameList));
-        for (int j = 0; j < linkarr.length; j++) {
-            System.out.println(Arrays.toString(linkarr[j]));
+        List<String> answer = new ArrayList<>();
+
+        for(String name : visitors){
+            if(scoreMap.containsKey(name)){
+                int score = scoreMap.get(name);
+                scoreMap.put(name,score+1);
+            }else {
+                scoreMap.put(name,1);
+            }
         }
 
         int userindex = indexMap.get(user);
         for (int j = 0; j < nameList.length; j++) {
             if(linkarr[userindex][j]==1){
+                scoreMap.remove(nameList[j]);
                 for (int k = 0; k < nameList.length; k++) {
                     if(linkarr[j][k]==1){
                         int score = scoreMap.get(nameList[k]);
@@ -52,31 +55,16 @@ public class Problem7 {
                 }
             }
         }
+        scoreMap.remove(user);
 
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(scoreMap.entrySet());
+        entryList.sort(((o1, o2) -> scoreMap.get(o2.getKey()) - scoreMap.get(o1.getKey())));
 
-
+        for(Map.Entry<String, Integer> entry : entryList){
+            System.out.println("name : " + entry.getKey() + ", score : " + entry.getValue());
+            answer.add(entry.getKey());
+        }
 
         return answer;
-    }
-
-    public static void friendScore(List<List<String>> friends){
-
-
-
-    }
-
-    public static void main(String[] args) {
-        String user = "mrko";
-        List<List<String>> friends = List.of(
-                List.of("donut", "andole"),
-                List.of("donut", "jun"),
-                List.of("donut", "mrko"),
-                List.of("shakevan", "andole"),
-                List.of("shakevan", "jun"),
-                List.of("shakevan", "mrko")
-        );
-        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
-        List<String> result = List.of("andole", "jun", "bedi");
-        solution(user, friends, visitors);
     }
 }
