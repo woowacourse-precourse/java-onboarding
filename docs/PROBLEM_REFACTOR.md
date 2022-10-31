@@ -38,3 +38,25 @@
 
 - Map에서 get할때 containsKey()로 바꾸기!
 
+### 7번 refactor 요소
+
+- 알고리즘을 단순히 할 수 있을 듯 하다.
+
+#### 기존의 기능
+
+- user + friends + visitors에 들어가있는 모든 유저의 아이디를 저장한다. --> A
+- friends를 이용하여 친구관계를 저장한다. --> B
+- B를 기준으로 함께아는 친구를 알아두기 위해 user의 친구를 저장한다. --> C
+- A에서 C와 user 값을 제외한 result 후보값으로 저장한다. --> D
+- D를 돌며 visitors * 1, 함께아는친구명수 * 10 한 결과값들을 저장해둔다. --> E
+- E 의 상위값 5개를 반환한다.
+
+
+#### 수정된 기능
+
+- user + friends + visitors에 들어가있는 모든 유저의 아이디를 저장한다. --> A
+- friends를 이용하여 친구관계를 저장한다. --> B
+- A에서 C와 user 값을 제외한 추천 순위를 만든다 --> E
+- E 의 상위값 5개를 반환한다.
+
+- containsKey로 nullPointer참조 없애기!
