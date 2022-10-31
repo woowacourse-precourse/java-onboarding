@@ -29,4 +29,8 @@ public class Problem5 {
         }
         return 0;
     }
+
+    public static int getNextMoney(int money, int unit){
+        return money % unit;
+    }
 }
