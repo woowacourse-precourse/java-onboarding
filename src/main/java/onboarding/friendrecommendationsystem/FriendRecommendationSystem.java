@@ -10,15 +10,15 @@ import java.util.stream.Stream;
 
 public class FriendRecommendationSystem {
 
+	private static final int RULE_ONE_POINT = 10;
+
+	private static final int RULE_TWO_POINT = 1;
+
 	private final String user;
 
 	private Map<String, List<String>> friendMap;
 
 	private Map<String, Integer> scoreMap;
-
-	private static final int RULE_ONE_POINT = 10;
-
-	private static final int RULE_TWO_POINT = 1;
 
 	public FriendRecommendationSystem(String user,
 		List<List<String>> friends,
@@ -27,19 +27,6 @@ public class FriendRecommendationSystem {
 		this.user = user;
 		initUsersWith(friends);
 		initRecommendationScoreWith(visitors);
-	}
-
-	private void initRecommendationScoreWith(final List<String> visitors) {
-		this.scoreMap = new HashMap<>();
-		for (String friend : friendMap.keySet()) {
-			if (!user.equals(friend)) {
-				scoreMap.put(friend, 0);
-			}
-		}
-		for (String visitor : visitors) {
-			scoreMap.merge(visitor, RULE_TWO_POINT,
-				(score, ignored) -> score + RULE_TWO_POINT);
-		}
 	}
 
 	private void initUsersWith(final List<List<String>> friends) {
@@ -65,11 +52,20 @@ public class FriendRecommendationSystem {
 			.collect(Collectors.toList());
 	}
 
-	public List<String> getFriendsOf(final String user) {
-		return friendMap.getOrDefault(user, Collections.emptyList());
+	private void initRecommendationScoreWith(final List<String> visitors) {
+		this.scoreMap = new HashMap<>();
+		for (String friend : friendMap.keySet()) {
+			if (!user.equals(friend)) {
+				scoreMap.put(friend, 0);
+			}
+		}
+		for (String visitor : visitors) {
+			scoreMap.merge(visitor, RULE_TWO_POINT,
+				(score, ignored) -> score + RULE_TWO_POINT);
+		}
 	}
 
-	public int getNumberOfFriendsKnowWith(final String other) {
+	int getNumberOfFriendsKnowWith(final String other) {
 		if (user.equals(other)) {
 			return 0;
 		}
@@ -82,14 +78,13 @@ public class FriendRecommendationSystem {
 		return numberOfFriends;
 	}
 
+	List<String> getFriendsOf(final String user) {
+		return friendMap.getOrDefault(user, Collections.emptyList());
+	}
+
 	private boolean checkUserContains(final String friend) {
 		return !user.equals(friend)
 			&& getFriendsOf(user).contains(friend);
-	}
-
-	public int getRecommendationScore(final String other) {
-		return getNumberOfFriendsKnowWith(other) * RULE_ONE_POINT
-			+ scoreMap.get(other);
 	}
 
 	public List<String> getRecommendationUsers() {
@@ -108,5 +103,10 @@ public class FriendRecommendationSystem {
 			return s1.compareTo(s2);
 		}
 		return s2Score - s1Score;
+	}
+
+	public int getRecommendationScore(final String other) {
+		return getNumberOfFriendsKnowWith(other) * RULE_ONE_POINT
+			+ scoreMap.get(other);
 	}
 }
