@@ -12,8 +12,15 @@ public class Problem7 {
 
         getScoreSameFriends(friendsMap, user, scoreMap);
         System.out.println(friendsMap);
+        getVisitScore(visitors, scoreMap);
         System.out.println(scoreMap);
         return answer;
+    }
+
+    private static void getVisitScore(List<String> visitors, Map<String, Integer> scoreMap){
+        for (String visitor: visitors){
+            scoreMap.put(visitor, scoreMap.getOrDefault(visitor, 0) + 1);
+        }
     }
 
     private static void getScoreSameFriends(Map<String, List<String>> friendsMap, String target, Map<String, Integer> scoreMap){
