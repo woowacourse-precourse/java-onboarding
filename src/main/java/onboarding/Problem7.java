@@ -1,9 +1,7 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     public static HashMap<String, ArrayList<String>> createFriendsMap(List<List<String>> friends) {
@@ -61,6 +59,19 @@ public class Problem7 {
         }
     }
 
+    public static List<String> sortByPointAndName(HashMap<String, Integer> totalPoint) {
+        return totalPoint.entrySet().stream()
+                .sorted(Map.Entry.comparingByKey()).sorted(new Comparator<Map.Entry<String, Integer>>() {
+                    @Override
+                    public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                        return o2.getValue() - o1.getValue();
+                    }
+                })
+                .map(Map.Entry::getKey)
+                .limit(5)
+                .collect(Collectors.toList());
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         HashMap<String, Integer> totalPoint = new HashMap<>();
         // 1. 친구 목록 생성
@@ -71,6 +82,6 @@ public class Problem7 {
         // 3. 타임라인 방문의 경우 1점 증가
         visitorPoint(visitors, friendPoint, friendsMap, user);
         // 4. 점수로 정렬(점수 동일한 경우 이름순) 후 5명 출력
-        return null;
+        return sortByPointAndName(friendPoint);
     }
 }
