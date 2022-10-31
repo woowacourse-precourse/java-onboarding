@@ -8,6 +8,9 @@ public class Problem4 {
             if (c >= 'A' && c <= 'Z') {
                 result += (char)('Z' - c + 'A');
             }
+            else if (c >= 'a' && c <= 'z') {
+                result += (char)('z' - c + 'a');
+            }
         }
         return result;
     }
