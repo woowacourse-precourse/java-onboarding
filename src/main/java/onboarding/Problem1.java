@@ -26,11 +26,19 @@ class Problem1 {
         return 0;
     }
 
+    public static boolean checkInput(List<Integer> pobi, List<Integer> crong) {
+        if(pobi.get(1)-pobi.get(0) != 1) return false;
+        if(crong.get(1)-crong.get(0) != 1) return false;
+        if(pobi.size() != 2) return false;
+        if(crong.size() != 2) return false;
+
+        return true;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if(pobi.get(1)-pobi.get(0) != 1) return -1;
-        if(crong.get(1)-crong.get(0) != 1) return -1;
-        if(pobi.size() != 2) return -1;
-        if(crong.size() != 2) return -1;
+        if(!checkInput(pobi,crong)) {
+            return -1;
+        }
 
         int pobiScore = Math.max(calBigNum(pobi.get(0)), calBigNum(pobi.get(1)));
         int crongScore = Math.max(calBigNum(crong.get(0)), calBigNum(crong.get(1)));
