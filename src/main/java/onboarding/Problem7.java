@@ -16,30 +16,41 @@ public class Problem7 {
 
     List<String> returnResult(String user, List<List<String>> friends, List<String> visitors) {
         List<String> result = new ArrayList<>();
-        // TODO 내부 로직을 중복해 사용해서 오히려 헷갈림. 메소드 구조 고민한 후 refactoring.
-        setVisitorScore(visitors);
-        setFriendScore(user, friends);
-        // 이미 친구인 사람 목록에서 빼기 로직 추가
-        List<String> user_friends_list = user_friends.get(user);
-        for (String friend : user_friends_list) {
-            user_score.remove(friend);
-        }
-        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(user_score.entrySet());
-        entryList.sort(Map.Entry.comparingByKey());
-        entryList.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
+        setUserScore(user, friends, visitors);
+        filterUserScore();
+        List<Map.Entry<String, Integer>> entryList = sortUserScore();
         int i = 0;
-        // looping이 entryList 범위를 넘어가는 경우 제한
         while (i < 5 & i < entryList.size()) {
-            int score = entryList.get(i).getValue();
-            if (score <= 0) {
-                break;
-            }
             result.add(entryList.get(i).getKey());
             i += 1;
         }
         return result;
     }
 
+    private List<Map.Entry<String, Integer>> sortUserScore() {
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(user_score.entrySet());
+        entryList.sort(Map.Entry.comparingByKey());
+        entryList.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
+        return entryList;
+    }
+
+    private void filterUserScore() {
+        for (String key : user_score.keySet()) {
+            if (user_score.get(key) == 0) {
+                user_score.remove(key);
+            }
+        }
+    }
+
+    private void setUserScore(String user, List<List<String>> friends, List<String> visitors) {
+        setVisitorScore(visitors);
+        setFriendScore(user, friends);
+        Map<String, List<String>> friends_map = makeFriendsMap(friends);
+        List<String> user_friends = friends_map.get(user);
+        for (String friend : user_friends) {
+            user_score.remove(friend);
+        }
+    }
 
     private void setVisitorScore(List<String> visitors) {
         for (String visitor : visitors) {
