@@ -9,8 +9,8 @@ class Problem1 {
         int pLeft = pobi.get(0);
         int pRight = pobi.get(1);
 
-        int cLeft = pobi.get(0);
-        int cRight = pobi.get(1);
+        int cLeft = crong.get(0);
+        int cRight = crong.get(1);
 
         if(pLeft %2 != 1 || cLeft %2 != 1) answer = -1;
 
