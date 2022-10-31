@@ -21,13 +21,16 @@ public class Problem6 {
         return false;
     }
 
-    // 이메일 형식체크 함수 만들기.
+    // 이메일 유효성 체크 함수 만들기.
     public static boolean checkEmail(String email){
-        if(email.length() >= 11 && email.length() < 20){
-            String pattern = "^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@email.com";
-            return email.matches(pattern);
-        }
-        return false;
+        String pattern = "^[a-zA-Z0-9]{1,9}$@email.com";
+        return email.matches(pattern);
+    }
+
+    // 닉네임 유효성 체크 함수 만들기
+    public static boolean checkNickname(String nickname){
+        String pattern = "^[가-힣]{1,19}$";
+        return nickname.matches(pattern);
     }
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
