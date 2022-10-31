@@ -41,8 +41,9 @@ public class Problem2 {
         //하나라도 있다! 그럼 그냥 싹다 걸리는거여~
         else {
             String c = "";
+            //이런 포문도 기억하자!! 파이썬에서 썻던거랑 비슷해서 손에 익는다
             for (Character item : list) {
-                c += list;
+                c += item;
             }
             answer = c;
         }
