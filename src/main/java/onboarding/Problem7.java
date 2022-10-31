@@ -78,6 +78,7 @@ public class Problem7 {
 
     public static List<String> sortByValues(Map<String, Integer> map) {
         List<String> sortedList = new ArrayList<>(map.keySet());
+        Collections.sort(sortedList);
         Collections.sort(sortedList, (value1, value2) -> (map.get(value2).compareTo(map.get(value1))));
         return sortedList;
     }
