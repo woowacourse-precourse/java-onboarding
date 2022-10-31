@@ -1,12 +1,11 @@
 package onboarding;
 
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
-
-import java.util.List;
-
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import java.util.List;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 
 class ApplicationTest {
 
@@ -102,6 +101,13 @@ class ApplicationTest {
     void case2() {
       String cryptogram = "zyelleyz";
       String result = "";
+      assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+    }
+
+    @Test
+    void case3() {
+      String cryptogram = "abbbaceed";
+      String result = "cd";
       assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
     }
 
