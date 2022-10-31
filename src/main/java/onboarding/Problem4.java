@@ -17,6 +17,10 @@ public class Problem4 {
                     reverseChars[i] = (char) (UPPER_CASE_STANDARD - aChar);
                     continue;
                 }
+
+                if (Character.isLowerCase(aChar)) {
+                }
+
             }
         }
 
