@@ -143,4 +143,10 @@ class ExceptionProblem7 {
             throw new IllegalArgumentException();
         }
     }
+
+    public static void validateVisitorsListSize(List<String> visitors) {
+        if (visitors.size() < 0 || visitors.size() > 10000) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
