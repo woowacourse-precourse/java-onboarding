@@ -26,4 +26,3 @@
 - stringChecker method : 두 문자열을 입력받아 글자가 연속적으로 포함되는 닉네임인지 여부를 확인,몇 글자나 겹치는지 리턴한다.
 - nickNameSearch method : 입력받은 forms 리스트를 순회하며 모든 닉네임의 조합을 stringChecker method를 통해 확인한다. 중복되는 닉네임이 있으면 해당 닉네임을 가진 사람의 이메일을 duplicateEmail 리스트에 저장한다.
 - duplication method : duplicationEmail에 저장된 이메일의 중복을 제거한다.
-- sort method : duplicateEmail에 저장된 이메일을 알파벳순으로 정렬한다.
