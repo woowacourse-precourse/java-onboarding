@@ -1,14 +1,10 @@
 package onboarding;
 
-import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if (checkException(pobi) == false || checkException(crong) == false){
-            return -1;
-        }
-        int answer;
+        int answer = Integer.MAX_VALUE;
         return answer;
     }
     public static boolean checkException(List<Integer> player){
@@ -20,5 +16,4 @@ class Problem1 {
         }
         return true;
     }
-    
 }
