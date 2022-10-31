@@ -7,7 +7,6 @@ public class Problem7 {
     private static final int VISIT_POINT = 1;
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         if (!isValidate(user, friends, visitors)) {
-            System.out.println("hello");
             return Collections.emptyList();
         }
         return getAnswer(user, friends, visitors);
@@ -114,6 +113,60 @@ public class Problem7 {
     /**
      * 추천친구 반환하는 기능
      */
+    private static List<String> getAnswer(String user, List<List<String>> friends, List<String> visitors) {
+        List<List<String>> results = makeRecommendList(user, friends, visitors);
+        results.sort(new RecommendListCompare());
+        List<String> answer = new ArrayList<>();
+
+        for (List<String> result : results) {
+            answer.add(result.get(0));
+            if (answer.size() == 5) {
+                break;
+            }
+        }
+        return answer;
+    }
+
+    private static List<List<String>> makeRecommendList(String user, List<List<String>> friends, List<String> visitors) {
+        List<List<String>> recommendList = new ArrayList<>();
+
+        for (String friendToRecommend : getFriendsToRecommend(user, friends, visitors)) {
+            List<String> result = new ArrayList<>();
+            setFriendPoint(result, friendToRecommend, friends);
+            setVisitPoint(result, visitors);
+            recommendList.add(result);
+        }
+        return recommendList;
+    }
+
+    private static void setFriendPoint(List<String> result, String friendToRecommend, List<List<String>> friends) {
+        List<String> freindsList = getFreindsList(friends);
+        for (List<String> friend : friends) {
+            String target = friend.get(1);
+            if (result.contains(friendToRecommend) && friendToRecommend.equals(target)) {
+                String point = result.get(1);
+                replacePoint(result, point, FRIEND_POINT);
+                continue;
+            }
+            if (freindsList.contains(friend.get(0)) && friendToRecommend.equals(target)) {
+                firstAdd(result, target, FRIEND_POINT);
+            }
+        }
+    }
+
+    private static void setVisitPoint(List<String> result, List<String> visitors) {
+        for (String visitor : visitors) {
+            if (result.contains(visitor)) {
+                String point = result.get(1);
+                replacePoint(result, point, VISIT_POINT);
+                continue;
+            }
+            if (result.size() == 0) {
+                firstAdd(result, visitor, VISIT_POINT);
+            }
+        }
+    }
+
     private static List<String> getFreindsList(List<List<String>> friends) {
         List<String> friendsList = new ArrayList<>();
         for (List<String> friend : friends) {
@@ -136,37 +189,6 @@ public class Problem7 {
         return friendsToRecommend;
     }
 
-    private static List<List<String>> makeRecommendList(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> freindsList = getFreindsList(friends);
-        List<List<String>> recommendList = new ArrayList<>();
-
-        for (String friendToRecommend : getFriendsToRecommend(user, friends, visitors)) {
-            List<String> result = new ArrayList<>();
-            for (List<String> friend : friends) {
-                if (result.contains(friendToRecommend) && friendToRecommend.equals(friend.get(1))) {
-                    String point = result.get(1);
-                    replacePoint(result, point, FRIEND_POINT);
-                    continue;
-                }
-                if (freindsList.contains(friend.get(0)) && friendToRecommend.equals(friend.get(1))) {
-                    firstAdd(result, friend.get(1), FRIEND_POINT);
-                }
-            }
-            for (String visitor : visitors) {
-                if (result.contains(visitor)) {
-                    String point = result.get(1);
-                    replacePoint(result, point, VISIT_POINT);
-                    continue;
-                }
-                if (result.size() == 0) {
-                    firstAdd(result, visitor, VISIT_POINT);
-                }
-            }
-            recommendList.add(result);
-        }
-        return recommendList;
-    }
-
     private static class RecommendListCompare implements Comparator<List<String>> {
 
         @Override
@@ -180,20 +202,6 @@ public class Problem7 {
             String name2 = list2.get(0);
             return name1.compareTo(name2);
         }
-    }
-
-    private static List<String> getAnswer(String user, List<List<String>> friends, List<String> visitors) {
-        List<List<String>> results = makeRecommendList(user, friends, visitors);
-        results.sort(new RecommendListCompare());
-        List<String> answer = new ArrayList<>();
-
-        for (List<String> result : results) {
-            answer.add(result.get(0));
-            if (answer.size() == 5) {
-                break;
-            }
-        }
-        return answer;
     }
 
     private static void addWithoutDup(List<String> list, String target) {
