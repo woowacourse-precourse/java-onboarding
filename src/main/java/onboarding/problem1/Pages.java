@@ -20,7 +20,12 @@ public class Pages {
     }
 
     private Integer getMaxValue(){
-        return 0;
+        return getPagesMaxValue(pages.get(0)) > getPagesMaxValue(pages.get(1)) ? getPagesMaxValue(pages.get(0)) : getPagesMaxValue(pages.get(1));
+    }
+    private Integer getPagesMaxValue(Integer pageNumber){
+        Integer multiplyResult = multiplyPageNumber(pageNumber);
+        Integer sumResult = sumPageNumber(pageNumber);
+        return multiplyResult > sumResult ? multiplyResult : sumResult;
         //3. 1, 2에 왼쪽 오른쪽 페이지를 넣고 최대 값을 반환하는 메소드
     }
 
