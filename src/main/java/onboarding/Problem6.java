@@ -16,15 +16,17 @@ public class Problem6 {
 
         for (List<String> crewInfo : forms) {
             String nickname = crewInfo.get(NICKNAME);
-            String email = crewInfo.get(EMAIL);
 
             for (int i = 0; i < nickname.length() - 1; i++) {
                 String piece = nickname.substring(i, i + 2);
+
                 List<String> emailList = nicknamePieces.getOrDefault(piece, new ArrayList<>());
+                String email = crewInfo.get(EMAIL);
 
                 if (emailList.contains(email)) {
                     continue;
                 }
+
                 emailList.add(email);
                 nicknamePieces.put(piece, emailList);
             }
