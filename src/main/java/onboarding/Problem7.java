@@ -82,4 +82,15 @@ public class Problem7 {
 
     }
 
+    public static Map<String, Integer> visitorScorePare(Map<String , Integer> friendScorePare, List<String> visitors){
+        for (String visitor : visitors) {
+            if (friendScorePare.keySet().contains(visitor)) {
+                friendScorePare.put(visitor, friendScorePare.get(visitor) + 1);
+            } else {
+                friendScorePare.put(visitor, 1);
+            }
+        }
+        return friendScorePare;
+    }
+
 }
