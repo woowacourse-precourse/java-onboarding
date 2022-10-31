@@ -26,4 +26,37 @@ public class Problem2 {
 
         return duplicationValue;
     }
+
+    private static String makeNewWord(String answer) {
+        StringBuilder sb = new StringBuilder();
+        char[] c = answer.toCharArray();
+
+        for (int i = 0; i < c.length - 1; i++) {
+            i = moveIndex(c, i);
+        }
+
+        for (int i = 0; i < c.length; i++) {
+            buildString(sb, c, i);
+        }
+
+        return sb.toString();
+    }
+
+    private static int moveIndex(char[] c, int index) {
+        if (c[index] == c[index + 1]) {
+            char nowLetter = c[index];
+            index = removeDuplication(c, index, nowLetter);
+        }
+
+        return index;
+    }
+
+    private static int removeDuplication(char[] c, int index, char nowLetter) {
+        while (index < c.length && c[index] == nowLetter) {
+            c[index] = '0';
+            index++;
+        }
+
+        return index;
+    }
 }
