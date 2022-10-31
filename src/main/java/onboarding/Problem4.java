@@ -3,6 +3,10 @@ package onboarding;
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
+        //answer에 뒤집힌 문자들을 추가
+        for (char c : word.toCharArray()) {
+            answer += reverse(c);
+        }
         return answer;
     }
 
