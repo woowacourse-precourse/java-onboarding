@@ -10,9 +10,9 @@ public class Problem5 {
     public static List<Integer> solution(int money) {
         List<Integer> answer = new ArrayList<>();
 
-        for (int e : unit) {
-            answer.add(money / e);
-            money %= e;
+        for (int element : unit) {
+            answer.add(money / element);
+            money %= element;
         }
 
         return answer;

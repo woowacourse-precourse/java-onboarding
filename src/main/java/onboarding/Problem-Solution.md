@@ -13,6 +13,7 @@ Problem3
 
 
 Problem4
+1. 받은 문자를 변환해주는 기능 구현 char형 연산 사용
 
 Problem5
 1. 5만원부터 1원까지 배열 unit 생성
