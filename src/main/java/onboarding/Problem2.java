@@ -5,6 +5,12 @@ import java.util.regex.Pattern;
 
 public class Problem2 {
 
+	/**
+	 * 아래 표현식은 문자의 2 이상 중복을 식별한다.
+	 *
+	 * 형식 : "<word><same-as-previous>"
+	 */
+
 	private static final String regex = "(\\w)(\\1+)";
 
 	public static String solution(String cryptogram) {
