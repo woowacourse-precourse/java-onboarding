@@ -22,18 +22,8 @@ public class Problem7 {
         HashMap<String, Integer> scoreMap = new HashMap<>();
         /* 친구 목록을 통한 점수 계산하기 */
         for (String othersName: friendList.keySet()) {
-            if (user.equals(othersName) || friendList.get(user).contains(othersName))
-                continue;
-
-            scoreMap.put(othersName, 0);
-
-            for (String userFriendName: friendList.get(user)) {
-                if (friendList.get(othersName).contains(userFriendName)) {
-                    int oldScore = scoreMap.get(othersName);
-                    int newScore = oldScore += 10;
-                    scoreMap.replace(othersName, newScore);
-                }
-            }
+            String[] names = {user, othersName};
+            calculateScoreByFriend(friendList, scoreMap, names);
         }
         /* 방문자 목록을 통해 계산하기 */
         for (String visitor: visitors) {
@@ -70,6 +60,26 @@ public class Problem7 {
                                         String name) {
         if (friendList.get(name) == null)
             friendList.put(name, new HashSet<>());
+    }
+    public static void calculateScoreByFriend(HashMap<String, HashSet<String>> friendList,
+                                              HashMap<String, Integer> scoreMap,
+                                              String[] names) {
+        String user = names[0];
+        String othersName = names[1];
+        HashSet<String> userFriendList = friendList.get(user);
+        HashSet<String> othersFriendList = friendList.get(othersName);
+        if (user.equals(othersName) || userFriendList.contains(othersName))
+            return;
+
+        scoreMap.put(othersName, 0);
+
+        for (String userFriendName: userFriendList) {
+            if (othersFriendList.contains(userFriendName)) {
+                int oldScore = scoreMap.get(othersName);
+                int newScore = oldScore += 10;
+                scoreMap.replace(othersName, newScore);
+            }
+        }
     }
     public static void calculateScoreByVisitor(HashMap<String, Integer> scoreMap,
                                                HashSet<String> userFriendList,
