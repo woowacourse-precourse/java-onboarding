@@ -33,6 +33,76 @@ class ApplicationTest {
             int result = -1;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
+        @Test
+        void case4(){
+            List<Integer> pobi = List.of(99, 103);
+            List<Integer> crong = List.of(211, 212);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+        @Test
+        void case5(){
+            List<Integer> pobi = List.of(399, 400);
+            List<Integer> crong = List.of(211, 212);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+        @Test
+        void case6(){
+            List<Integer> pobi = List.of(401, 402);
+            List<Integer> crong = List.of(211, 212);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+        @Test
+        void case7(){
+            List<Integer> pobi = List.of(99, 100);
+            List<Integer> crong = List.of(-1, 0);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+        @Test
+        void case8(){
+            List<Integer> pobi = List.of(1,2);
+            List<Integer> crong = List.of(211, 212);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+        @Test
+        void case9(){
+            List<Integer> pobi = List.of(99, 100);
+            List<Integer> crong = List.of(399, 400);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+        @Test
+        void case10(){
+            List<Integer> pobi = List.of(121,122);
+            List<Integer> crong = List.of(211, 212);
+            int result = 0;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+        @Test
+        void case11(){
+            List<Integer> pobi = List.of(121,122,123);
+            List<Integer> crong = List.of(211, 212);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+        @Test
+        void case12(){
+            List<Integer> pobi = List.of(121,122);
+            List<Integer> crong = List.of(212);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+        @Test
+        void case13(){
+            List<Integer> pobi = List.of(122,121);
+            List<Integer> crong = List.of(211,212);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
     }
 
     @Nested
@@ -48,6 +118,24 @@ class ApplicationTest {
         void case2() {
             String cryptogram = "zyelleyz";
             String result = "";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+        @Test
+        void case3(){
+            String cryptogram = "abbaa";
+            String result = "a";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+        @Test
+        void case4(){
+            String cryptogram = "aazzqweqweaaq";
+            String result = "qweqweq";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+        @Test
+        void case5(){
+            String cryptogram = "ksekkset";
+            String result = "kseset";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
     }
@@ -67,6 +155,18 @@ class ApplicationTest {
             int result = 14;
             assertThat(Problem3.solution(number)).isEqualTo(result);
         }
+        @Test
+        void case3(){
+            int number = 333;
+            int result = 228;
+            assertThat(Problem3.solution(number)).isEqualTo(result);
+        }
+        @Test
+        void case4(){
+            int number = 2;
+            int result = 0;
+            assertThat(Problem3.solution(number)).isEqualTo(result);
+        }
     }
 
     @Nested
@@ -75,6 +175,25 @@ class ApplicationTest {
         void case1() {
             String word = "I love you";
             String result = "R olev blf";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+        @Test
+        void case2(){
+            String word = "Hello Everyone!";
+            String result = "Svool Veviblmv!";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+        @Test
+        void case3(){
+            String word = "abcdefghijklmnopqrstuvwxyz";
+            String result = "zyxwvutsrqponmlkjihgfedcba";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+
+        @Test
+        void case4(){
+            String word = "abcdefghijklmnopqrstuvwxyz !@#$#";
+            String result = "zyxwvutsrqponmlkjihgfedcba !@#$#";
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
     }
@@ -108,6 +227,30 @@ class ApplicationTest {
                     List.of("nowm@email.com", "이제엠")
             );
             List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com");
+            assertThat(Problem6.solution(forms)).isEqualTo(result);
+        }
+        @Test
+        void case2() {
+            List<List<String>> forms = List.of(
+                    List.of("onepiece@email.com", "원피수"),
+                    List.of("jason@email.com", "제이슨"),
+                    List.of("onepisu@email.com", "원피수"),
+                    List.of("mj@email.com", "엠제이"),
+                    List.of("suonepi@email.com", "수원피")
+            );
+            List<String> result = List.of("jason@email.com","mj@email.com","onepiece@email.com","onepisu@email.com","suonepi@email.com");
+            assertThat(Problem6.solution(forms)).isEqualTo(result);
+        }
+        @Test
+        void case3() {
+            List<List<String>> forms = List.of(
+                    List.of("kim@email.com", "김ㅡ이"),
+                    List.of("nam@email.com", "ㅡ이야"),
+                    List.of("choi@email.com", "최강"),
+                    List.of("lee@email.com", "강합니다!"),
+                    List.of("jun@email.com", "왜ㅇㅡ이야?")
+            );
+            List<String> result = List.of("jun@email.com", "kim@email.com", "nam@email.com");
             assertThat(Problem6.solution(forms)).isEqualTo(result);
         }
     }

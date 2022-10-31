@@ -5,11 +5,10 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
-        if(!(isValidPage(pobi) && isValidPage(crong))){
-            return -1;
-        }
-
         try{
+            if(!(isValidPage(pobi) && isValidPage(crong))){
+                return -1;
+            }
             int pobiValue = maxOpenBookValue(pobi);
             int crongValue = maxOpenBookValue(crong);
 
@@ -50,7 +49,8 @@ class Problem1 {
 
         boolean isValidPageScope = !(person.get(0) <= 1 || person.get(1) >= 400);
         boolean isConsecutivePage = (person.get(1) - person.get(0) == 1);
+        boolean isPageExistOnlyTwo = person.size() == 2;
 
-        return  isValidPageScope && isConsecutivePage;
+        return  isValidPageScope && isConsecutivePage && isPageExistOnlyTwo;
     }
 }
