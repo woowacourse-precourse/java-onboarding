@@ -4,7 +4,8 @@ import java.util.regex.Pattern;
 
 public class Email {
 
-	public static final Pattern EMAIL_COM_DOMAIN_PATTERN = Pattern.compile(".+@email.com");
+	private static final Pattern EMAIL_COM_DOMAIN_PATTERN = Pattern.compile(".+@email.com");
+	private static final Pattern EMAIL_FORMAT_PATTERN = Pattern.compile(".+@.+\\..+");
 
 	private final String email;
 
@@ -36,7 +37,7 @@ public class Email {
 	}
 
 	private void validateFormat(String email) {
-		if (!email.matches(".+@.+\\..+")) {
+		if (!EMAIL_FORMAT_PATTERN.matcher(email).matches()) {
 			throw new IllegalArgumentException("이메일의 형식이 잘못되었습니다");
 		}
 	}
