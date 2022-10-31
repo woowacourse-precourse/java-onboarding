@@ -104,9 +104,9 @@ public class Problem7 {
 			@Override
 			public int compare(Friend o1, Friend o2) {
 				if(o1.score == o2.score) {
-					return o1.name.compareTo(o2.name);	//이름 오름차순
+					return o1.name.compareTo(o2.name);
 				}
-				return o2.score-o1.score;	//점수 내림차순
+				return o2.score-o1.score;
 			}
 		});
     }
