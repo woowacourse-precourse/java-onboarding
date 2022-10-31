@@ -6,6 +6,7 @@ import java.util.List;
 
 public class Problem6 {
     static List<String> nicknameList = new ArrayList<>();
+    static List<String> nicknameSubset = new ArrayList<>();
 
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
@@ -23,6 +24,18 @@ public class Problem6 {
             if (nickname.length() == 1) {
                 nicknameList.remove(nickname);
             }
+        }
+    }
+
+    public static void addNicknameSubset() {
+        for (String nickname : nicknameList) {
+            cutNickname(nickname);
+        }
+    }
+
+    public static void cutNickname(String nickname) {
+        for (int i = 0; i <= nickname.length() - 2; i++) {
+            nicknameSubset.add(nickname.substring(i, i + 2));
         }
     }
 }
