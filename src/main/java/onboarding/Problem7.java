@@ -61,7 +61,36 @@ public class Problem7 {
         return out;
     }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        Map<String, Info> map = new HashMap<>();
+        List<String> result = new ArrayList<>();
+        map.put(user,new Info(0, new ArrayList<>()));
+
+        for(List<String> friend : friends){
+            setUserFriendsMap(friend, map);
+        }
+
+        for(String visitUser : visitors){
+            setVisitorsToMap(visitUser, map);
+        }
+
+        for(String name : map.keySet()){
+            if(name.equals(user) || map.get(user).knowing.contains(name)) continue;
+            result.add(checkMapKnowingFriends(name, map, user));
+        }
+
+        result = sorting(result, map);
+
+        return result;
+    }
+
+    // 유저의 친구목록와 점수를 가진 클래스 Info
+    static class Info{
+        int point;
+        List<String> knowing;
+
+        public Info(int point, List<String> knowing){
+            this.point = point;
+            this.knowing = knowing;
+        }
     }
 }
