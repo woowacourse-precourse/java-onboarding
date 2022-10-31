@@ -6,7 +6,6 @@ public class Problem2 {
         String answer = "answer";
         String cryptoCleared = "";
         boolean flagDupli = true;
-        int idxCrypto = 0;
 
         while (flagDupli) {
 
