@@ -5,6 +5,13 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        if (!validateCondition(pobi, crong)) {
+            return -1;
+        }
+        int maxValueOfPobi = calculateMaxValue(pobi);
+        int maxValueOfCrong = calculateMaxValue(crong);
+        answer = calculateResult(maxValueOfPobi, maxValueOfCrong);
+
         return answer;
     }
 
