@@ -25,16 +25,6 @@ public class Problem6 {
             String email = forms.get(i).get(0);
             String nickName = forms.get(i).get(1);
             String frag = "";
-
-            /*
-             길이가 11미만이거나 20 이상인경우 OR 이메일 형식이 @email.com을 포함하지 않는 경우 null 리턴한다.
-             */
-            if(!(email.contains("@email.com")) || email.length()<11 || email.length()>=20) return null;
-            /*
-             길이가 1미만이거나 20 이상인경우 OR 닉네임이 한글이 아닐경우 Null 리턴
-             */
-            if(!(nickName.matches(".*[ㄱ-ㅎㅏ-ㅣ가-힣]+.*")) || nickName.isEmpty() || nickName.length()>=20) return null;
-
             for(int j=0; j<nickName.length()-1; j++){
                 frag = nickName.substring(j, j+2);
                 addToList(forms, draft, frag, i);
@@ -67,21 +57,3 @@ public class Problem6 {
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-//                    for(int k=i+1; k<forms.size(); k++){
-//                        if(forms.get(k).get(1).contains(frag)){
-//                            draft.add(forms.get(i).get(0));
-//                            draft.add(forms.get(k).get(0));
-//                        }
-//                    }

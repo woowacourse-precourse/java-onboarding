@@ -22,8 +22,6 @@ public class Problem4 {
     // using ASCII table, the sum of given letter  and the convert should be 155
     // if uppercase, 219 if lowercase
     public static String solution(String word) {
-
-        if(word.isBlank() || word.length()>1000) return null;
         List<Character> charArr = new ArrayList<>();
 
         for(int c: word.toCharArray()){
