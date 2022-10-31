@@ -3,7 +3,7 @@ package onboarding;
 import java.util.List;
 
 public class Problem3 {
-	static final List<Integer> CLAP_NUMBER_LIST = List.of(3, 6, 9);
+	static final List<Integer> CLAP_NUMBERS = List.of(3, 6, 9);
 	static final int BASE_OF_NUMERAL_SYSTEM = 10;
 
 	public static int solution(int number) {
@@ -21,7 +21,7 @@ public class Problem3 {
 	private static int countClap(int numberToCheck) {
 		int count = 0;
 		while (numberToCheck != 0) {
-			if (CLAP_NUMBER_LIST.contains(numberToCheck % BASE_OF_NUMERAL_SYSTEM)) {
+			if (CLAP_NUMBERS.contains(numberToCheck % BASE_OF_NUMERAL_SYSTEM)) {
 				count += 1;
 			}
 			numberToCheck /= BASE_OF_NUMERAL_SYSTEM;

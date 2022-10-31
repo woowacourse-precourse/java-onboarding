@@ -31,25 +31,25 @@ class Problem1 {
 		return DRAW;
 	}
 
-	private static boolean isInvalidInput(List<Integer> pageList) {
-		return isInvalidRange(pageList) || isNotContiguous(pageList) || isInvalidParity(pageList);
+	private static boolean isInvalidInput(List<Integer> pages) {
+		return isInvalidRange(pages) || isNotContiguous(pages) || isInvalidParity(pages);
 	}
 
-	private static boolean isInvalidParity(List<Integer> pageList) {
-		return pageList.get(LEFT_PAGE) % 2 == 0 || pageList.get(RIGHT_PAGE) % 2 == 1;
+	private static boolean isInvalidParity(List<Integer> pages) {
+		return pages.get(LEFT_PAGE) % 2 == 0 || pages.get(RIGHT_PAGE) % 2 == 1;
 	}
 
-	private static boolean isNotContiguous(List<Integer> pageList) {
-		return pageList.get(LEFT_PAGE) + 1 != pageList.get(RIGHT_PAGE);
+	private static boolean isNotContiguous(List<Integer> pages) {
+		return pages.get(LEFT_PAGE) + 1 != pages.get(RIGHT_PAGE);
 	}
 
-	private static boolean isInvalidRange(List<Integer> pageList) {
-		return pageList.get(LEFT_PAGE) < MINIMUM_PAGE_NUMBER || pageList.get(RIGHT_PAGE) > MAXIMUM_PAGE_NUMBER;
+	private static boolean isInvalidRange(List<Integer> pages) {
+		return pages.get(LEFT_PAGE) < MINIMUM_PAGE_NUMBER || pages.get(RIGHT_PAGE) > MAXIMUM_PAGE_NUMBER;
 	}
 
-	private static int selectSide(List<Integer> pageList) {
-		int left = selectOperation(pageList.get(LEFT_PAGE));
-		int right = selectOperation(pageList.get(RIGHT_PAGE));
+	private static int selectSide(List<Integer> pages) {
+		int left = selectOperation(pages.get(LEFT_PAGE));
+		int right = selectOperation(pages.get(RIGHT_PAGE));
 
 		return Math.max(left, right);
 	}

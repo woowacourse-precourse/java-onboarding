@@ -13,14 +13,14 @@ public class Problem2 {
 	}
 
 	private static String removeRepetition(String cryptogram) {
-		String tmp = "";
-		tmp = tmp.concat(checkFirstLetter(cryptogram));
+		String result = "";
+		result = result.concat(checkFirstLetter(cryptogram));
 
 		for (int index = 1; index < cryptogram.length() - 1; index++) {
-			tmp = tmp.concat(checkMiddleLetter(cryptogram, index));
+			result = result.concat(checkMiddleLetter(cryptogram, index));
 		}
-		tmp = tmp.concat(checkLastLetter(cryptogram));
-		return tmp;
+		result = result.concat(checkLastLetter(cryptogram));
+		return result;
 	}
 
 	private static String checkFirstLetter(String cryptogram) {

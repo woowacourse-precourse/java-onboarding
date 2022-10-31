@@ -15,20 +15,20 @@ public class Problem7 {
 	static final int VISIT_POINT = 1;
 
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-		HashMap<String, Integer> strangersAndPointMap = makeHashMap(makeStrangersList(user, friends, visitors));
-		plusFriendPoint(user, friends, strangersAndPointMap);
-		plusVisitPoint(visitors, strangersAndPointMap);
-		return returnRankingList(strangersAndPointMap);
+		HashMap<String, Integer> strangersAndPoints = makeHashMap(makeStrangersList(user, friends, visitors));
+		plusFriendPoint(user, friends, strangersAndPoints);
+		plusVisitPoint(visitors, strangersAndPoints);
+		return returnRankingList(strangersAndPoints);
 	}
 
-	private static List<String> returnRankingList(HashMap<String, Integer> strangersAndPointMap) {
+	private static List<String> returnRankingList(HashMap<String, Integer> strangersAndPoints) {
 		List<String> rankingList = new ArrayList<>();
-		List<Map.Entry<String, Integer>> strangersAndPointList = new ArrayList<>(strangersAndPointMap.entrySet());
-		preprocessEntryList(strangersAndPointList);
-		if (strangersAndPointList.size() > RANKING_LIST_SIZE_LIMIT) {
-			strangersAndPointList = strangersAndPointList.subList(0, RANKING_LIST_SIZE_LIMIT);
+		List<Map.Entry<String, Integer>> strangersAndPointsList = new ArrayList<>(strangersAndPoints.entrySet());
+		preprocessEntryList(strangersAndPointsList);
+		if (strangersAndPointsList.size() > RANKING_LIST_SIZE_LIMIT) {
+			strangersAndPointsList = strangersAndPointsList.subList(0, RANKING_LIST_SIZE_LIMIT);
 		}
-		strangersAndPointList.forEach(strangerAndPoint -> rankingList.add(strangerAndPoint.getKey()));
+		strangersAndPointsList.forEach(strangerAndPoint -> rankingList.add(strangerAndPoint.getKey()));
 		return rankingList;
 	}
 
@@ -42,49 +42,49 @@ public class Problem7 {
 		entryList.removeIf(x -> x.getValue() == 0);
 	}
 
-	private static void plusVisitPoint(List<String> visitors, HashMap<String, Integer> strangersAndPointMap) {
+	private static void plusVisitPoint(List<String> visitors, HashMap<String, Integer> strangersAndPoints) {
 		visitors.forEach(
-			visitor -> strangersAndPointMap.computeIfPresent(visitor, (stranger, point) -> point + VISIT_POINT));
+			visitor -> strangersAndPoints.computeIfPresent(visitor, (stranger, point) -> point + VISIT_POINT));
 	}
 
 	private static void plusFriendPoint(String user, List<List<String>> friends,
-		HashMap<String, Integer> strangersAndPointMap) {
-		strangersAndPointMap.forEach((stranger, point) -> strangersAndPointMap.put(stranger,
+		HashMap<String, Integer> strangersAndPoints) {
+		strangersAndPoints.forEach((stranger, point) -> strangersAndPoints.put(stranger,
 			point + returnCommonFriendNumber(user, stranger, friends) * FRIEND_POINT));
 	}
 
 	private static int returnCommonFriendNumber(String user, String person, List<List<String>> friends) {
-		List<String> userFriendList = returnFriendList(user, friends);
-		List<String> peopleFriendList = returnFriendList(person, friends);
+		List<String> userFriends = returnFriendList(user, friends);
+		List<String> personFriends = returnFriendList(person, friends);
 		int commonFriendNumber = 0;
-		commonFriendNumber += peopleFriendList.stream().filter(userFriendList::contains).count();
+		commonFriendNumber += personFriends.stream().filter(userFriends::contains).count();
 		return commonFriendNumber;
 	}
 
 	private static List<String> returnFriendList(String person, List<List<String>> friends) {
-		HashSet<String> friendList = new HashSet<>();
+		HashSet<String> friendsSet = new HashSet<>();
 		friends.stream()
 			.filter(friend -> friend.contains(person))
-			.forEach(friend -> friendList.add(
+			.forEach(friend -> friendsSet.add(
 				friend.stream().filter(someone -> !someone.equals(person)).collect(Collectors.joining())));
-		return new ArrayList<>(friendList);
+		return new ArrayList<>(friendsSet);
 	}
 
 	private static HashMap<String, Integer> makeHashMap(List<String> strangersList) {
-		HashMap<String, Integer> strangersAndPointMap = new HashMap<>();
-		strangersList.forEach(stranger -> strangersAndPointMap.put(stranger, 0));
-		return strangersAndPointMap;
+		HashMap<String, Integer> strangersAndPoints = new HashMap<>();
+		strangersList.forEach(stranger -> strangersAndPoints.put(stranger, 0));
+		return strangersAndPoints;
 	}
 
 	private static List<String> makeStrangersList(String user, List<List<String>> friends, List<String> visitors) {
-		List<String> strangersList = new ArrayList<>();
+		List<String> strangers = new ArrayList<>();
 		for (List<String> friend : friends) {
-			strangersList = addTargetToList(strangersList, friend);
+			strangers = addTargetToList(strangers, friend);
 		}
-		strangersList = addTargetToList(strangersList, visitors);
-		strangersList.remove(user);
-		strangersList = removeTargetFromList(strangersList, returnFriendList(user, friends));
-		return strangersList;
+		strangers = addTargetToList(strangers, visitors);
+		strangers.remove(user);
+		strangers = removeTargetFromList(strangers, returnFriendList(user, friends));
+		return strangers;
 	}
 
 	private static List<String> removeTargetFromList(List<String> list, List<String> target) {
@@ -92,8 +92,8 @@ public class Problem7 {
 	}
 
 	private static List<String> addTargetToList(List<String> list, List<String> target) {
-		List<String> tmp = target.stream().filter(x -> !list.contains(x)).collect(Collectors.toList());
-		tmp.addAll(list);
-		return tmp;
+		List<String> result = target.stream().filter(x -> !list.contains(x)).collect(Collectors.toList());
+		result.addAll(list);
+		return result;
 	}
 }
