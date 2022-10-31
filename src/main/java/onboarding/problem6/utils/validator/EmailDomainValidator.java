@@ -20,8 +20,8 @@ public class EmailDomainValidator {
     }
 
     private void validateCrewEmailDomain(List<String> crew) throws EmailDomainException{
-        String crewEmail = crew.get(Constants.CREW_NICNAME);
-        if(!(getDomain(crewEmail)==Constants.DOMAIN)){
+        String crewEmail = crew.get(Constants.CERW_EMAIL);
+        if(!(getDomain(crewEmail).equals(Constants.DOMAIN))){
             throw new EmailDomainException("이메일 도메인이 맞지 않는 크루가 있음");
         }
     }

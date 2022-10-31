@@ -2,6 +2,8 @@ package onboarding.problem6.controller;
 
 import onboarding.problem6.service.DuplicatedCrewService;
 import onboarding.problem6.service.NicknameListService;
+import onboarding.problem6.utils.validator.InputFormValidator;
+import onboarding.problem6.utils.validator.exception.InputFormException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,9 +11,16 @@ import java.util.List;
 public class DuplicatedNickNameSearch {
     private List<List<String>> forms;
     private ArrayList<Integer> duplicatedCrewsIndex = new ArrayList<>();
-    private List<String> duplicatedCrewsEmail = new ArrayList<>();
+    private ArrayList<String> duplicatedCrewsEmail = new ArrayList<>();
 
     public DuplicatedNickNameSearch setNewForms(List<List<String>> forms){
+//        try{
+//            new InputFormValidator(forms);
+//            this.forms = forms;
+//        }catch (InputFormException e){
+//            e.printStackTrace();
+//            System.out.println("umm?");
+//        }
         this.forms = forms;
         return this;
     }
@@ -40,6 +49,7 @@ public class DuplicatedNickNameSearch {
     }
 
     public ArrayList<String> getDuplicatedNicknameCrewEmail(){
-        return NicknameListService.crewIndexToCrewEmail(forms, duplicatedCrewsIndex);
+        duplicatedCrewsEmail = NicknameListService.crewIndexToCrewEmail(forms, duplicatedCrewsIndex);
+        return duplicatedCrewsEmail;
     }
 }

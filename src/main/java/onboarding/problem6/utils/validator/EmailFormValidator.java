@@ -21,6 +21,7 @@ public class EmailFormValidator {
 
     private void validateEmailForm(List<String> crew) throws EmailFormException{
        if(!Pattern.matches(Constants.EMAIL_REGEX, crew.get(Constants.CERW_EMAIL))){
+           System.out.println(crew.get(Constants.CERW_EMAIL));
            throw new EmailFormException("신청자 중에 이메일 형식이 다른 크루가 있음");
        }
     }

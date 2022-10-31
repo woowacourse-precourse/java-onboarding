@@ -24,5 +24,5 @@ public class Constants {
 
     public static final String HANGUL_REGEX = "^[ㄱ-ㅎ가-힣]*$";
 
-    public static final String EMAIL_REGEX = "[0-9a-zA-Z]+(.[_a-z0-9-]+)*@(?:\\\\w+\\\\.)+\\\\w+$";
+    public static final String EMAIL_REGEX = "^[0-9a-zA-Z]+(.[_a-z0-9-]+)*@(?:\\w+\\.)+\\w+$";
 }
