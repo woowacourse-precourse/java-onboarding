@@ -1,8 +1,8 @@
 package onboarding.problem2;
 
 class RangeDto {
-    private int from;
-    private int to;
+    private final int from;
+    private final int to;
 
     public RangeDto(int from, int to) {
         this.from = from;
