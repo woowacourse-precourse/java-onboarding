@@ -8,19 +8,19 @@ import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 public class Problem7 {
-    static Map<String, Integer> excludedUserMap;
-    static Map<String, List<String>> friendMap;
-    static Map<String, Integer> acquaintanceScoreMap;
+    static Map<String, Integer> excludedUsers;
+    static Map<String, List<String>> friendRelationShips;
+    static Map<String, Integer> acquaintanceScores;
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        excludedUserMap = new HashMap<>();
-        friendMap = new HashMap<>();
-        acquaintanceScoreMap = new HashMap<>();
-        initFriendMap(friends);
-        initExcludeUserMap(user);
-        List<String> friendList = friendMap.get(user);
+        excludedUsers = new HashMap<>();
+        friendRelationShips = new HashMap<>();
+        acquaintanceScores = new HashMap<>();
+        initFriendRelationShips(friends);
+        initExcludeUsers(user);
+        List<String> friendList = friendRelationShips.get(user);
         List<String> acquaintances = findAcquaintances(friendList);
         calculateAcquaintanceScore(acquaintances, visitors);
-        return sortAcquaintanceScore(acquaintanceScoreMap);
+        return sortAcquaintanceScore(acquaintanceScores);
     }
 
     private static List<String> sortAcquaintanceScore(Map<String, Integer> acquaintanceScoreMap) {
@@ -39,22 +39,22 @@ public class Problem7 {
 
     private static void addScoreWithVisitor(List<String> visitors) {
         for (String visitor : visitors) {
-            if (excludedUserMap.get(visitor) != null) {
+            if (excludedUsers.get(visitor) != null) {
                 continue;
             }
 
-            Integer originScore = acquaintanceScoreMap.putIfAbsent(visitor, 1);
+            Integer originScore = acquaintanceScores.putIfAbsent(visitor, 1);
             if (originScore != null) {
-                acquaintanceScoreMap.put(visitor, originScore + 1);
+                acquaintanceScores.put(visitor, originScore + 1);
             }
         }
     }
 
     private static void addScoreWithAcquaintances(List<String> acquaintances) {
         for (String user : acquaintances) {
-            Integer originScore = acquaintanceScoreMap.putIfAbsent(user, 10);
+            Integer originScore = acquaintanceScores.putIfAbsent(user, 10);
             if (originScore != null) {
-                acquaintanceScoreMap.put(user, originScore + 10);
+                acquaintanceScores.put(user, originScore + 10);
             }
         }
     }
@@ -69,29 +69,29 @@ public class Problem7 {
 
     private static List<String> findUnExcludedAcquaintances(String friend) {
         List<String> acquaintances = new ArrayList<>();
-        for (String acquaintance : friendMap.get(friend)) {
-            if (excludedUserMap.get(acquaintance) == null) {
+        for (String acquaintance : friendRelationShips.get(friend)) {
+            if (excludedUsers.get(acquaintance) == null) {
                 acquaintances.add(acquaintance);
             }
         }
         return acquaintances;
     }
 
-    private static void initExcludeUserMap(String user) {
-        excludedUserMap.put(user, 1);
-        for (String friend : friendMap.get(user)) {
-            excludedUserMap.put(friend, 1);
+    private static void initExcludeUsers(String user) {
+        excludedUsers.put(user, 1);
+        for (String friend : friendRelationShips.get(user)) {
+            excludedUsers.put(friend, 1);
         }
     }
 
-    private static void initFriendMap(List<List<String>> friends) {
+    private static void initFriendRelationShips(List<List<String>> friends) {
         for (List<String> friend : friends) {
             String user1 = friend.get(0);
             String user2 = friend.get(1);
-            friendMap.computeIfAbsent(user1, k -> new ArrayList<>());
-            friendMap.computeIfAbsent(user2, k -> new ArrayList<>());
-            friendMap.get(user1).add(user2);
-            friendMap.get(user2).add(user1);
+            friendRelationShips.computeIfAbsent(user1, k -> new ArrayList<>());
+            friendRelationShips.computeIfAbsent(user2, k -> new ArrayList<>());
+            friendRelationShips.get(user1).add(user2);
+            friendRelationShips.get(user2).add(user1);
 
         }
     }
