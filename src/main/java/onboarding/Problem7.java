@@ -57,20 +57,28 @@ public class Problem7 {
             }
         }
 
-        for (String userFriend : friendRelations.get(user)) {
-            for (String userFriendFriend : friendRelations.get(userFriend)) {
-                if (!friendRelations.get(user).contains(userFriendFriend) && userFriendFriend != user) {
-                    if (!scoreMap.containsKey(userFriendFriend)) {
-                        scoreMap.put(userFriendFriend, 10);
-                    } else if (scoreMap.containsKey(userFriendFriend)) {
-                        scoreMap.put(userFriendFriend, scoreMap.get(userFriendFriend) + 10);
+        if (friendRelations.containsKey(user)) {
+            for (String userFriend : friendRelations.get(user)) {
+                for (String userFriendFriend : friendRelations.get(userFriend)) {
+                    if (!friendRelations.get(user).contains(userFriendFriend) && userFriendFriend != user) {
+                        if (!scoreMap.containsKey(userFriendFriend)) {
+                            scoreMap.put(userFriendFriend, 10);
+                        } else if (scoreMap.containsKey(userFriendFriend)) {
+                            scoreMap.put(userFriendFriend, scoreMap.get(userFriendFriend) + 10);
+                        }
                     }
                 }
             }
         }
 
         for (String visitor : visitors) {
-            if (!friendRelations.get(user).contains(visitor)) {
+            if (!friendRelations.containsKey(user)) {
+                if (!scoreMap.containsKey(visitor)) {
+                    scoreMap.put(visitor, 1);
+                } else if (scoreMap.containsKey(visitor)) {
+                    scoreMap.put(visitor, scoreMap.get(visitor) + 1);
+                }
+            } else if (!friendRelations.get(user).contains(visitor)) {
                 if (!scoreMap.containsKey(visitor)) {
                     scoreMap.put(visitor, 1);
                 } else if (scoreMap.containsKey(visitor)) {
@@ -110,8 +118,8 @@ public class Problem7 {
 
     private static boolean isValidInput(String user, List<List<String>> friends, List<String> visitors) {
         if (isValidUserLength(user) && isValidFriendsLength(friends)
-             && isValidFriendsIDLength(friends) && isValidVisitorSize(visitors)
-             && isValidVisitorIDLength(visitors)) {
+            && isValidFriendsIDLength(friends) && isValidVisitorSize(visitors)
+            && isValidVisitorIDLength(visitors)) {
             return true;
         }
         return false;
@@ -153,20 +161,5 @@ public class Problem7 {
 
     private static boolean isValidUserLength(String user) {
         return user.length() >= MIN_ID_LENGTH && user.length() <= MAX_ID_LENGTH;
-    }
-
-    public static void main(String[] args) {
-        String user = "mrko";
-        List<List<String>> friends = List.of(
-            List.of("donut", "andole"),
-            List.of("donut", "jun"),
-            List.of("donut", "mrko"),
-            List.of("shakevan", "andole"),
-            List.of("shakevan", "jun"),
-            List.of("shakevan", "mrko")
-        );
-        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
-        List<String> result = List.of("andole", "jun", "bedi");
-        solution(user, friends, visitors);
     }
 }
