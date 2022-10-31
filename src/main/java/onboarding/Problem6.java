@@ -19,18 +19,14 @@ public class Problem6 {
             return List.of("Check Restrictions");
         }
 
-        HashMap<String, Integer> twoLetterHashMap = new HashMap<>();
-
         for (List<String> form : forms) {
             if (!verificationCheckAboutEmail(form) || !verificationCheckAboutNickname(form)) {
                 return List.of("Check Restrictions");
             }
-            twoLetterHashMap = putTwoLetters(form, twoLetterHashMap);
         }
 
-        answer = getRepetitionEmail(forms, twoLetterHashMap);
-        answer = deleteRepetition(answer);
-        answer = sortASC(answer);
+        TwoLetters twoLetters = new TwoLetters(forms);
+        answer = twoLetters.getAnswer();
 
         return answer;
     }
@@ -51,7 +47,6 @@ public class Problem6 {
         if (emailLength < 11 || emailLength >= 20) {
             return false;
         }
-
         if (!email.matches(emailRegex)) {
             return false;
         }
@@ -66,53 +61,71 @@ public class Problem6 {
         if (nicknameLength < 1 || nicknameLength >= 20) {
             return false;
         }
-
         if (!nickname.matches(nicknameRegex)) {
             return false;
         }
-
         return true;
     }
 
-    public static HashMap<String, Integer> putTwoLetters(List<String> form, HashMap<String, Integer> twoLetterHashMap) {
-        String targetNickname = form.get(NICKNAME);
+    public static class TwoLetters {
+        List<List<String>> forms;
+        HashMap<String, Integer> twoLetterHashMap;
+        List<String> emailList;
+        List<String> answer;
 
-        for (int i = 0; i < targetNickname.length() - 1; i++) {
-            String twoLetter = targetNickname.substring(i, i + 2);
-            twoLetterHashMap.put(twoLetter, twoLetterHashMap.getOrDefault(twoLetter, 0) + 1);
+        TwoLetters(List<List<String>> forms) {
+            this.forms = forms;
+            twoLetterHashMap = new HashMap<>();
+            emailList = new ArrayList<>();
         }
 
-        return twoLetterHashMap;
-    }
+        private void setTwoLetterHashMap() {
+            for (List<String> form : forms) {
+                putTwoLetters(form);
+            }
+        }
 
-    public static List<String> getRepetitionEmail(List<List<String>> forms, HashMap<String, Integer> twoLetterHashMap) {
-        List<String> emailList = new ArrayList<>();
-
-        String targetNickname;
-        String targetEmail;
-
-        for (List<String> form : forms) {
-            targetNickname = form.get(NICKNAME);
-            targetEmail = form.get(EMAIL);
+        private void putTwoLetters(List<String> form) {
+            String targetNickname = form.get(NICKNAME);
 
             for (int i = 0; i < targetNickname.length() - 1; i++) {
                 String twoLetter = targetNickname.substring(i, i + 2);
-                if (twoLetterHashMap.get(twoLetter) > 1) {
-                    emailList.add(targetEmail);
+                this.twoLetterHashMap.put(twoLetter, twoLetterHashMap.getOrDefault(twoLetter, 0) + 1);
+            }
+        }
+
+        private void setRepetitionEmail() {
+            for (List<String> form : forms) {
+                addRepetitionEmailToEmailList(form);
+            }
+        }
+
+        private void addRepetitionEmailToEmailList(List<String> form) {
+            String nickname = form.get(NICKNAME);
+            String email = form.get(EMAIL);
+
+            for (String twoLetterNickname : twoLetterHashMap.keySet()) {
+                if (nickname.contains(twoLetterNickname) && twoLetterHashMap.get(twoLetterNickname) > 1) {
+                    this.emailList.add(email);
                 }
             }
         }
 
-        return emailList;
-    }
+        private void deleteRepetition() {
+            Set<String> deleteRepetitionSet = new HashSet<>(emailList);
+            answer = new ArrayList<>(deleteRepetitionSet);
+        }
 
-    public static List<String> deleteRepetition(List<String> target) {
-        Set<String> deleteRepetitionSet = new HashSet<>(target);
-        return new ArrayList<>(deleteRepetitionSet);
-    }
+        private void sortASC() {
+            Collections.sort(answer);
+        }
 
-    public static List<String> sortASC(List<String> target) {
-        Collections.sort(target);
-        return target;
+        private List<String> getAnswer() {
+            setTwoLetterHashMap();
+            setRepetitionEmail();
+            deleteRepetition();
+            sortASC();
+            return answer;
+        }
     }
 }
