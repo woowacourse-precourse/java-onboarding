@@ -1,14 +1,15 @@
 package onboarding.support.problem4;
 
+import java.util.stream.IntStream;
+
 public class DictionaryConverter {
 
     private final String convertedString;
 
     public DictionaryConverter(String word) {
         StringBuilder convertedStringBuilder = new StringBuilder();
-        for (int i = 0; i < word.length(); i++) {
-            convertedStringBuilder.append(getConvertedCharacter(word.charAt(i)));
-        }
+        IntStream.range(0, word.length())
+                .forEach(i -> convertedStringBuilder.append(getConvertedCharacter(word.charAt(i))));
         this.convertedString = convertedStringBuilder.toString();
     }
 
