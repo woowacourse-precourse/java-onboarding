@@ -23,26 +23,23 @@
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
 
 ## ✅ 구현 기능 목록
-1. 신청폼 리스트(forms)를 List<Form>로 변환하는 기능
-    - Form은 한 신청폼의 정보(닉네임, 이메일)를 저장하는 VO 객체이다.
-    - Form 객체에서 2번 기능을 제공한다.
-2. 하나의 닉네임을 이루는 모든 연속된 2글자 문자열을 구하는 기능
-	- Form 클래스에서 구현
-    - HashSet getAllUsedTwoWordsByNickname()
-    - Form객체에서 이 기능을 제공하므로 파라미터 없이 this.nickname으로 닉네임 정보를 획득한다.
-    - 동일한 문자열이 여러 번 사용될 수 있으므로 중복방지를 위해 HashSet을 사용한다.
-3. 복수개의 신청폼에 존재하는 모든 연속된 2글자 문자열에 대해, 각 문자열을 사용한 모든 폼을 저장하고 있는 자료구조를 생성하는 기능
-    - FormValidator 클래스에 usedTwoWordsInfo 필드를 정의
-    - void initUsedTwoWordsInfo(List<Form> forms), void updateUsedTwoWordsInfo(Form form)
-    - key: 2글자 문자열, value: 해당 문자열이 사용된 모든 신청폼 리스트
-4. 특정 2글자 문자열이 중복되었는지 확인하는 기능
-	- FormValidator 클래스에서 구현
-    - usedTwoWordsInfo의 value에 담긴 list의 size가 1 이상인 경우를 확인한다.
-5. 중복 닉네임을 신청한 신청폼을 구하는 기능
-	- FormValidator 클래스에서 구현
-	- void initInvalidForms(), Set<Form> getInvalidForms()
-    - usedTwoWordsInfo의 value값을 이용해 해당하는 Form객체를 HashSet에 저장해 반환하는 기능
-    - 동일한 폼이 여러 번 저장될 수 있으므로 중복방지를 위해 HashSet을 사용한다.
-6. 5번에 해당하는 크루의 이메일 목록을 오름차순으로 정렬하는 기능
+1. 한 지원자의 신청폼 정보를 제공하는 기능
+    - 이메일, 닉네임을 멤버변수로 가지는 클래스 Form으로 구현한다.
+    - 해당 객체의 이메일을 반환하는 기능을 제공한다.
+    - 해당 객체의 닉네임을 이루는 모든 "연속된 2글자 문자열"을 중복없이 반환하는 기능을 제공한다.
+2. 신청폼 리스트(forms)를 List<Form>로 변환하는 기능
+    - List<Form> getFormList(List<List<String>> forms)
+3. 복수 개의 신청폼 닉네임에 사용된 모든 "연속된 2글자 문자열"에 대한 정보를 제공하는 사전 기능
+    - Map<String, List<Form>> 타입의 자료구조를 일급 콜렉션 UsedTwoWordsDictionary로 구현한다.
+        - key: 2글자 문자열, value: 해당 문자열이 닉네임에 사용된 모든 신청폼을 저장한 List<Form>
+        - 생성자에서 init(List<Form> forms) 메소드를 이용해 자료구조의 정보를 갱신한다.
+    - keySet(사용된 모든 "연속된 2글자 문자열" 목록)을 반환하는 기능을 제공한다.
+    - 주어진 "연속된 2글자 문자열"을 닉네임에 사용한 모든 신청폼 목록을 반환하는 기능을 제공한다.
+4. 중복 닉네임을 신청해 "유효하지 않은 신청폼" 정보를 제공하는 기능
+	- Set<Form> 타입의 자료구조를 일급콜렉션 InvalidForms로 구현한다.
+    	- 생성자에서 UsedTwoWordsDictionary 객체를 전달받아 자료구조의 정보를 갱신한다.
+        	- 중복 닉네임 여부를 dictionary 객체가 제공하는 정보를 이용해 확인한다.
+            - 동일한 폼이 여러 번 저장될 수 있으므로 중복방지를 위해 HashSet을 사용한다.
+    - 저장된 신청폼의 모든 이메일 목록을 반환하는 기능을 제공한다.
+5. 유효하지 않은 모든 신청폼의 이메일 목록을 오름차순으로 정렬하는 기능
 	-solution 메소드에서 구현
-	- 5번을 반환받아 Form 객체에서 email 값을 꺼내 정렬가능한 리스트에 담는다.
