@@ -3,8 +3,12 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
 
 public class Problem7 {
+    public static final Integer KNOW_TOGETHER_SCORE = 10;
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
@@ -34,5 +38,17 @@ public class Problem7 {
         knowTogetherList.removeAll(friendList);
         knowTogetherList.removeAll(Collections.singleton(user));
         return knowTogetherList;
+    }
+
+    public static Map<String, Integer> getKnowTogetherScoreMap(List<String> knowTogetherList) {
+        Map<String, Integer> knowTogetherScoreMap = new HashMap<>();
+        for (String name : knowTogetherList) {
+            if (knowTogetherScoreMap.containsKey(name)) {
+                knowTogetherScoreMap.put(name, knowTogetherScoreMap.get(name) + KNOW_TOGETHER_SCORE);
+            } else {
+                knowTogetherScoreMap.put(name, KNOW_TOGETHER_SCORE);
+            }
+        }
+        return knowTogetherScoreMap;
     }
 }
