@@ -6,8 +6,55 @@ import java.util.stream.Collectors;
 public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        Map<String, Member> members = new HashMap<>();
+
+        friends.forEach(friend -> {
+            Member member1 = getMember(members, friend.get(0));
+            Member member2 = getMember(members, friend.get(1));
+            member1.friend(member2);
+        });
+
+        Member member = getMember(members, user);
+
+        visitors.forEach(userId -> {
+            Member visitor = getMember(members, userId);
+            visitor.visit(member);
+        });
+
+        return getUserIdsByFriendProposalScoreLimit5(members, user);
+    }
+
+    private static Member getMember(Map<String, Member> members, String userId) {
+        if (!members.containsKey(userId)) {
+            members.put(userId, Member.of(userId));
+        }
+        return members.get(userId);
+    }
+
+    private static List<String> getUserIdsByFriendProposalScoreLimit5(Map<String, Member> members, String userId) {
+        Member member = getMember(members, userId);
+
+        Set<Member> friends = member.getFriends();
+
+        members.values().stream()
+                .filter(_member -> !_member.equals(member) && !friends.contains(_member))
+                .forEach(_member -> _member.getFriends().stream()
+                        .filter(friends::contains)
+                        .forEach(add -> _member.addFriendProposalScore(10))
+                );
+
+        Map<Member, Integer> visitors = member.getVisitors();
+
+        visitors.keySet().stream()
+                .filter(visitor -> !friends.contains(visitor))
+                .forEach(visitor -> visitor.addFriendProposalScore(visitors.get(visitor)));
+
+        return members.values().stream()
+                .filter(_member -> _member.getFriendProposalScore() != 0)
+                .sorted(Comparator.comparing(Member::getFriendProposalScore).reversed().thenComparing(Member::getUserId))
+                .limit(5)
+                .map(Member::getUserId)
+                .collect(Collectors.toList());
     }
 
     public static class Member {
@@ -42,7 +89,7 @@ public class Problem7 {
             member.getFriends().add(this);
         }
 
-        public void visitFriendTimeLine(Member member) {
+        public void visit(Member member) {
             if (member.getVisitors().containsKey(this)) {
                 member.getVisitors().replace(this, member.getVisitors().get(this) + 1);
             } else {
