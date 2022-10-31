@@ -5,12 +5,6 @@ import onboarding.problem1.Page;
 import java.util.List;
 
 class Problem1 {
-    private static final int RESULT_POBI = 1;
-    private static final int RESULT_CRONG = 2;
-    private static final int RESULT_DRAW = 0;
-    private static final int RESULT_EXCEPTION = -1;
-
-
     /*
     기능 목록
     1. 페이지 예외 검사 기능
@@ -19,6 +13,11 @@ class Problem1 {
     4. 페이지에서 가장 큰 점수 계산 기능
     5. 점수 비교해서 승자 결정 기능
      */
+    private static final int RESULT_POBI = 1;
+    private static final int RESULT_CRONG = 2;
+    private static final int RESULT_DRAW = 0;
+    private static final int RESULT_EXCEPTION = -1;
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         Page pobiPage = new Page(pobi);
         Page crongPage = new Page(crong);
@@ -37,9 +36,6 @@ class Problem1 {
         }
         return RESULT_DRAW;
     }
-
-
-
 
 
 }
