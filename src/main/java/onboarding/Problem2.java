@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Stack;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
@@ -9,6 +10,8 @@ public class Problem2 {
     }
 
 	private static class Code{
+		private final static char EMPTY_LETTER = '0';
+		private boolean isPerfectlyCracked = false;
 		private ArrayList<Character> code;
 
 		Code(String cryptogram) {
@@ -21,6 +24,27 @@ public class Problem2 {
 				code.add(currentLetter);
 			}
 			return code;
+		}
+
+		private void removeRepetition() {
+			char repeatedLetter = EMPTY_LETTER;
+			char formerLetter = EMPTY_LETTER;
+			Stack<Character> crackedCode = new Stack<>();
+
+			for (Character letter : code) {
+				if (formerLetter != letter) {
+					crackedCode.push(letter);
+					formerLetter = letter;
+					repeatedLetter = EMPTY_LETTER;
+					continue;
+				}
+				if (letter != repeatedLetter) {
+					repeatedLetter = crackedCode.pop();
+				}
+			}
+
+			isPerfectlyCracked = crackedCode.isEmpty() || code.equals(crackedCode);
+			code = new ArrayList<>(crackedCode);
 		}
 	}
 }
