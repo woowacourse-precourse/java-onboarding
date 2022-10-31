@@ -3,6 +3,19 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
+    public static Map<String, Integer> getFriendScore( Map<String, List<String>> friendsMap,Map<String, Integer> scoreMap,String user){
+        for(String friend: friendsMap.get(user)){
+            for(String notfriend: friendsMap.get(friend)){
+                if(notfriend!=user){
+                    if((!scoreMap.containsKey(notfriend)))
+                        scoreMap.putIfAbsent(notfriend, 10);
+                    else
+                        scoreMap.put(notfriend, scoreMap.get(notfriend) + 10);
+                }
+            }
+        }
+        return scoreMap;
+    }
     private static Map<String, Integer> sortByValue(Map<String, Integer> unSortedMap)
     {
         LinkedHashMap<String, Integer> reverseSortedMap = new LinkedHashMap<>();
@@ -21,18 +34,7 @@ public class Problem7 {
             friendsMap.putIfAbsent(right_name, new ArrayList<String>());
             friendsMap.get(right_name).add(left_name);
         }
-
-        for(String friend: friendsMap.get(user)){
-            for(String notfriend: friendsMap.get(friend)){
-                if(notfriend!=user){
-                    if((!scoreMap.containsKey(notfriend)))
-                        scoreMap.putIfAbsent(notfriend, 10);
-                    else
-                        scoreMap.put(notfriend, scoreMap.get(notfriend) + 10);
-                }
-            }
-        }
-
+        scoreMap=getFriendScore(friendsMap,scoreMap,user);
         for(String visitor: visitors){
             if(!friendsMap.get(user).contains(visitor)){
                 if((!scoreMap.containsKey(visitor)))
