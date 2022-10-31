@@ -421,7 +421,8 @@ class ApplicationTest {
                     List.of("i", "j"),
                     List.of("j", "e")
             );
-        	Problem7.solution(user, friends, null);
+        	List<String> visitor = new LinkedList<>();
+        	Problem7.solution(user, friends, visitor);
         }
         @Test
         void increaseScoreMutualFriend() {
@@ -436,8 +437,61 @@ class ApplicationTest {
                     List.of("g", "h"),
                     List.of("h", "i")
             );
-        	Problem7.solution(user, friends, null);
+        	List<String> visitor = new LinkedList<>();
+        	Problem7.solution(user, friends, visitor);
         }
-        
+        @Test
+        void test1() {
+        	//given
+        	String user = "mainuser";
+        	List<List<String>> friends = List.of(
+                    List.of("mainuser", "bbb"),
+                    List.of("ccc", "mainuser"),
+                    List.of("mainuser", "ddd"),
+                    List.of("mainuser", "eee"),
+                    List.of("abc", "bbb"),
+                    List.of("abc", "ccc"),
+                    List.of("abc", "ddd"),
+                    List.of("abc", "eee"),
+                    
+                    List.of("aba", "bbb"),
+                    List.of("aba", "ccc"),
+                    List.of("aba", "ddd"),
+                    List.of("aba", "eee"),
+                    
+                    List.of("abb", "bbb"),
+                    List.of("abb", "ccc"),
+                    List.of("abb", "ddd"),
+                    List.of("abb", "eee"),
+                    
+                    List.of("aab", "bbb"),
+                    List.of("aab", "ccc"),
+                    List.of("aab", "ddd"),
+                    List.of("aab", "eee"),
+                    
+                    List.of("a", "bbb"),
+                    List.of("a", "ccc"),
+                    List.of("a", "ddd"),
+                    List.of("a", "eee"),
+                    
+                    List.of("b", "bbb"),
+                    List.of("b", "ccc"),
+                    List.of("b", "ddd"),
+                    List.of("b", "eee")
+            );
+        	List<String> visitor = new LinkedList<>();
+        	//given
+        	List<String> result = List.of("a", "aab", "aba", "abb", "abc");
+        	//then
+        	assertThat(Problem7.solution(user, friends, visitor)).isEqualTo(result);
+        	
+        	//when
+        	for(int i=0; i<40; i++) {
+        		visitor.add("aaaa");
+        	}
+        	//given
+        	List<String> newResult = List.of("a", "aaaa", "aab", "aba", "abb");
+        	assertThat(Problem7.solution(user, friends, visitor)).isEqualTo(newResult);
+        }
     }
 }
