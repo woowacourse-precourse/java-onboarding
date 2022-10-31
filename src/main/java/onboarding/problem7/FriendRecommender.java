@@ -5,6 +5,7 @@ import java.util.*;
 public class FriendRecommender {
 
     public static List<String> getRecommendFriends(String user, List<List<String>> friends, List<String> visitors) {
+
         List<String> userFriends = new ArrayList<>();
         List<List<String>> anotherRelation = new ArrayList<>();
         HashMap<String, Integer> recommendList = new HashMap<>();
@@ -16,6 +17,12 @@ public class FriendRecommender {
         for (List<String> anotherFriend : anotherRelation) {
             if (isValidRelation(userFriends,anotherFriend)) {
                 addknowTogetherPoint(getRecommendFriend(userFriends,anotherFriend), recommendList);
+            }
+        }
+
+        for (String visitor : visitors) {
+            if (!userFriends.contains(visitor)) {
+                addPoint(visitor, 1,recommendList);
             }
         }
 
