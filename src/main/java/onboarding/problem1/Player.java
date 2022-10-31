@@ -6,16 +6,27 @@ import static onboarding.problem1.consts.CalculateGameScoreConst.ADD_SCORE_DEFAU
 import static onboarding.problem1.consts.CalculateGameScoreConst.MULTIPLY_SCORE_DEFAULT_VALUE;
 
 /**
- * 페이지 게임에 참여하는 플레이어의 정보를 저장하는 클래스
+ * 페이지 게임에 참여하는 플레이어의 정보를 정의한 클래스
  */
 public class Player {
 
+    /**
+     * 플레이어의 왼쪽 페이지
+     */
     private final int leftPageNumber;
+
+    /**
+     * 플레이어의 오른쪽 페이지
+     */
     private final int rightPageNumber;
+
+    /**
+     * 플레이어의 점수
+     */
     private final int playerScore;
 
     /**
-     * 플레이어의 페이지 정보를 초기화하고 플레이어 점수를 계산하는 생성자
+     * 플레이어의 페이지 정보, 점수를 초기화하는 생성자
      *
      * @param leftPageNumber 플레이어의 검증된 왼쪽 페이지
      * @param rightPageNumber 플레이어의 검증된 오른쪽 페이지
@@ -27,7 +38,7 @@ public class Player {
     }
 
     /**
-     * 플레이어 점수를 계산해 반환
+     * 플레이어 점수를 계산하는 메소드
      *
      * @return 모든 페이지 자릿수를 모두 곱한 값과 더한 값 중 가장 큰 값
      */

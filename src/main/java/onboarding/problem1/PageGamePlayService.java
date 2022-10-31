@@ -21,7 +21,6 @@ public class PageGamePlayService {
      * @param crong 두 번째 플레이어 crong
      * @return 게임 결과(무승부 : 0, pobi 승리 : 1, crong 승리 : 2)
      * @throws IllegalArgumentException 유효한 페이지가 아닌 경우
-     * @see onboarding.problem1.PageGameRepository
      */
     public static int play(List<Integer> pobi, List<Integer> crong) {
         PageGameRepository pageGame = new PageGameRepository();
@@ -35,7 +34,7 @@ public class PageGamePlayService {
     }
 
     /**
-     * 두 명의 플레이어를 PageGameRepository 저장하는 메소드
+     * 두 명의 플레이어를 PageGameRepository에 저장하는 메소드
      *
      * @param pageGame 플레이어의 정보를 관리하는 일급 컬렉션
      * @param pobiPage 첫 번째 플레이어(pobi)의 왼쪽, 오른쪽 페이지 정보

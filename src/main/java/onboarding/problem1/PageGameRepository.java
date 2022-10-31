@@ -22,6 +22,9 @@ import java.util.Objects;
  */
 public class PageGameRepository {
 
+    /**
+     * (플레이어 ID, Player) 방식으로 플레이어의 정보를 관리하는 컬렉션
+     */
     private final Map<String, Player> players;
 
     /**
@@ -37,8 +40,6 @@ public class PageGameRepository {
      * @param playerName 플레이어 이름
      * @param playerPage List타입의 플레이어 페이지
      * @throws IllegalArgumentException 올바른 페이지가 아닌 경우
-     * @see onboarding.problem1.consts.PageIndexConst
-     * @see onboarding.problem1.consts.ExceptionErrorMessageConst
      */
     public void registryPlayer(String playerName, List<Integer> playerPage) {
         int leftPageNumber = playerPage.get(LIST_LEFT_PAGE_INDEX_VALUE);
@@ -75,7 +76,6 @@ public class PageGameRepository {
      *
      * @param playerPage 플레이어의 모든 페이지
      * @throws IllegalArgumentException 페이지에 null이 있는 경우
-     * @see onboarding.problem1.consts.PageValidateConst
      */
     private void validatePageValue(List<Integer> playerPage) {
         if (playerPage.stream().anyMatch(Objects::isNull)) {
@@ -88,7 +88,6 @@ public class PageGameRepository {
      *
      * @param pageNumber 검증할 페이지
      * @throws IllegalArgumentException 페이지의 범위가 3 ~ 398 사이가 아닌 경우
-     * @see onboarding.problem1.consts.PageValidateConst
      */
     private void validatePageRange(int pageNumber) {
         if (!(MINIMUM_PAGE_VALUE <= pageNumber && pageNumber <= MAXIMUM_PAGE_VALUE)) {
@@ -102,7 +101,6 @@ public class PageGameRepository {
      * @param leftPageNumber 왼쪽 페이지
      * @param rightPageNumber 오른쪽 페이지
      * @throws IllegalArgumentException 두 페이지의 차가 1이 아닌 경우
-     * @see onboarding.problem1.consts.PageValidateConst
      */
     private void validateBetweenLeftAndRightPage(int leftPageNumber, int rightPageNumber) {
         if (rightPageNumber - leftPageNumber != BETWEEN_LEFT_AND_RIGHT_PAGE_VALUE) {
@@ -115,7 +113,6 @@ public class PageGameRepository {
      *
      * @param rightPageNumber 오른쪽 페이지
      * @throws IllegalArgumentException 오른쪽 페이지가 짝수가 아닌 경우
-     * @see onboarding.problem1.consts.PageValidateConst
      */
     private void validateRightPage(int rightPageNumber) {
         if (rightPageNumber % ADD_ODD_DIVISION_VALUE != ADD_ODD_REMAINDER_VALUE) {
@@ -128,7 +125,6 @@ public class PageGameRepository {
      *
      * @param leftPageNumber 왼쪽 페이지
      * @throws IllegalArgumentException 왼쪽 페이지가 홀수가 아닌 경우
-     * @see onboarding.problem1.consts.PageValidateConst
      */
     private void validateLeftPage(int leftPageNumber) {
         if (leftPageNumber % ADD_ODD_DIVISION_VALUE == ADD_ODD_REMAINDER_VALUE) {
