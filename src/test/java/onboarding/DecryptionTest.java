@@ -63,9 +63,12 @@ public class DecryptionTest {
 	public void 암호_해독_테스트() {
 	    //given
 		String cryptogram = "browoanoommnaon";
+		String cryptogram2 = "zyelleyz";
 	    //when
 		Decryption decryption = new Decryption(cryptogram);
+		Decryption decryption2 = new Decryption(cryptogram2);
 	    //then
 		assertThat("brown").isEqualTo(decryption.getResult());
+		assertThat("").isEqualTo(decryption2.getResult());
 	}
 }
