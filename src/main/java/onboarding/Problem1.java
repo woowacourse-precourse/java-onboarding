@@ -35,8 +35,6 @@ public class Problem1 {
         int leftPageScorePlus = getScorePlus(leftPage);
         int rightPageScorePlus = getScorePlus(rightPage);
 
-        // -------------여기까지 구현 완료-------------
-
         // 1. 왼쪽 페이지 곱한 수 = getScoreMultiply(leftPage);
         int leftPageScoreMultiply = getScoreMultiply(leftPage);
 
