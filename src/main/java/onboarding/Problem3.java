@@ -33,4 +33,15 @@ public class Problem3 {
 
         return count;
     }
+
+    private static int countAllNumbers(int number) {
+        int count = 0;
+
+        for (int i = 1; i <= number; i++) {
+            String stringNumber = intToString(i);
+            count += countAllNumber(stringNumber);
+        }
+
+        return count;
+    }
 }
