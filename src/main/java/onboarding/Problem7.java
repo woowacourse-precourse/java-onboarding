@@ -38,6 +38,7 @@ public class Problem7 {
                 .sorted(Comparator.comparing(UserInfo::getScore, Comparator.reverseOrder())
                         .thenComparing(UserInfo::getUsername))
                 .map(UserInfo::getUsername)
+                .limit(5)
                 .collect(Collectors.toList());
     }
 
