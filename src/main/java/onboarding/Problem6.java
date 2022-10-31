@@ -12,15 +12,17 @@ import java.util.List;
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
+        List<String> emailList = new ArrayList<>();
         IsOverlap isOverlap = new IsOverlap();
         IsValidNickName isValidNickName = new IsValidNickName();
+        IsValidEmail isValidEmail = new IsValidEmail();
 
         int totalCrews = forms.size();
         for (int i=0; i<totalCrews-1; i++) {
             for (int j=i+1; j<totalCrews; j++) {
                 String crew1 = forms.get(i).get(1);
                 String crew2 = forms.get(j).get(1);
-                
+
                 if( ! isValidNickName.isValidNickName(crew1)){
                     continue;
                 }
@@ -28,12 +30,17 @@ public class Problem6 {
                     continue;
                 }
                 if (isOverlap.isOverlap(crew1, crew2)) {
-                    answer.add(forms.get(i).get(0));
-                    answer.add(forms.get(j).get(0));
+                    emailList.add(forms.get(i).get(0));
+                    emailList.add(forms.get(j).get(0));
                 }
             }
         }
+        for(int i=0; i<emailList.size(); i++) {
+           String email = emailList.get(i);
+           if(isValidEmail.isValidEmail(email)) {
 
+           }
+        }
 
         return answer;
     }
