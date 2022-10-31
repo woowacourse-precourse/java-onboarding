@@ -19,7 +19,8 @@ public class Problem4 {
         return sb.toString();
     }
     private static void isProperLength(String word){
-        if (word.length()<MIN_LENGTH||word.length()>MAX_LENGTH)throw new IllegalArgumentException();
+        if (word.length()<MIN_LENGTH||word.length()>MAX_LENGTH)
+            throw new IllegalArgumentException("words는 길이가 1이상 1000이하인 문자열입니다.");
     }
 
     private static char reverseAlphabet(char letter) {
