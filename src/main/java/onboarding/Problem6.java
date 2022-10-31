@@ -16,6 +16,19 @@ public class Problem6 {
         partOfNicknameToEmail = new HashMap<>();
         return null;
     }
+    // 크루 전체를 탐색하는 기능
+    private static List<String> deduplication(List<List<String>> forms) {
+        List<String> answer = new ArrayList<>();
+
+        for (int i = 0; i < forms.size(); i++) { // 크루 전체탐색
+            List<String> crew = forms.get(i);
+            String applyNickName = getNickname(crew);
+            String applyEmail = getEmail(crew);
+            splitNickmame(applyNickName, applyEmail);
+        }
+        answer.addAll(duplicationList);
+        return answer;
+    }
     // 닉네임을 2글자씩 분리하는 기능
     private static void splitNickmame(String nickName, String email) {
         for (int j = 0; j < nickName.length()-1; j++) {
