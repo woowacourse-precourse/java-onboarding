@@ -23,6 +23,8 @@ public class Problem2 {
                     }
                 }
             }
+
+            cryptogram = cryptoAvail.replaceAll(" ", "");
         }
         return answer;
     }
