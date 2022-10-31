@@ -2,21 +2,21 @@ package onboarding;
 
 public class Problem3 {
     public static int solution(int number) {
-        return count369(number);
+        return count369From1ToNum(number);
     }
 
-    private static int count369(int number) {
+    private static int count369From1ToNum(int num) {
         int answer = 0;
         int totalDigit = 0;
-        for(int i = 1; i < number; i *= 10) {
-            answer += count369OnNthDigit(number, totalDigit);
+        for(int i = 1; i < num; i *= 10) {
+            answer += count369OnNthDigitFrom1ToNum(num, totalDigit);
             totalDigit++;
         }
 
         return answer;
     }
 
-    private static int count369OnNthDigit(int number, int digit) {
+    private static int count369OnNthDigitFrom1ToNum(int number, int digit) {
         int count = 0;
         int divider = 1;
 
