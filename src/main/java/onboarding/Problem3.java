@@ -5,4 +5,18 @@ public class Problem3 {
         int answer = 0;
         return answer;
     }
+
+    public static int check369(int n) {
+        String number = Integer.toString(n);
+
+        int clap = 0;
+        for(int i = 0; i < number.length(); i++) {
+            char c = number.charAt(i);
+            if (c == '3' || c == '6' || c == '9') {
+                clap += 1;
+            }
+        }
+
+        return clap;
+    }
 }
