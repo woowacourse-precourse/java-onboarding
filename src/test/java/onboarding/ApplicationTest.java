@@ -17,7 +17,6 @@ class ApplicationTest {
             int result = 0;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
-
         @Test
         void case2() {
             List<Integer> pobi = List.of(131, 132);
