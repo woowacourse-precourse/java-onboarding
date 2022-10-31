@@ -1,6 +1,5 @@
 package onboarding;
 
-import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
@@ -27,20 +26,16 @@ class Problem1 {
     }
 
     private static boolean verifyBook(List<Integer> list) {
-        // 인자가 올바르지 않을 경우
         if (list == null || list.size() != 2) {
             return false;
         }
-        // 페이지 범위가 잘못된 경우
-        if (isPageOver(list.get(0)) || isPageOver(list.get(1))) {
+        if (isPageOver(list.get(_first_page)) || isPageOver(list.get(_second_page))) {
             return false;
         }
-        // 왼쪽 페이지가 짝수일 경우
-        if (list.get(0) % 2 == 0 || list.get(1) % 2 == 1) {
+        if (list.get(_first_page) % 2 == 0 || list.get(_second_page) % 2 == 1) {
             return false;
         }
-        // 왼쪽 페이지와 오른쪽 페이지가 1페이지 이상 차이날 경우
-        if (list.get(1) - list.get(0) != 1) {
+        if (list.get(_second_page) - list.get(_first_page) != 1) {
             return false;
         }
         return true;
