@@ -5,7 +5,7 @@ public class Problem3 {
     static final char[] CLAP_NUMBER = {'3', '6', '9'};
     // 전체 기능 호출
     public static int solution(int number) {
-        return 1;
+        return countFromOneToNumber(number);
     }
     // 1부터 입력한 수 까지 박수 수를 더해주는 기능
     private static int countFromOneToNumber(int number) {
