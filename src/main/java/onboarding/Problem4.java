@@ -73,7 +73,18 @@ class Translation{
 }
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
+        String answer;
+        List<String> frogLetterArray=new ArrayList<>();
+
+        FrogDictionary frogDictionary = new FrogDictionary();
+        frogDictionary.makeDictionary();
+
+        Translation translation = new Translation();
+        for(String letter: word.split("")){
+            frogLetterArray.add(translation.translate(letter, frogDictionary));
+        }
+
+        answer=String.join("",frogLetterArray);
         return answer;
     }
 }
