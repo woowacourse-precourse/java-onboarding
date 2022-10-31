@@ -16,6 +16,9 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
         HashMap<String, List<String>> relation = initHashMap(friends);
         HashMap<String, Integer> point = new HashMap<>();
+        List<String> userFriendList = relation.get(user);
+        relation.remove(user);
+        calculatePointByFirstRule(userFriendList, point, relation);
         return answer;
     }
 
@@ -37,5 +40,23 @@ public class Problem7 {
             relation.get(userB).add(userA);
         }
         return relation;
+    }
+
+    public static void calculatePointByFirstRule(List<String> userFriendList, HashMap<String, Integer> point, HashMap<String, List<String>> relation) {
+        for (String key : relation.keySet()) {
+            if (!userFriendList.contains(key)) {
+                if (!point.containsKey(key)) {
+                    point.put(key, 0);
+                }
+                int p = 0;
+                for (String friend : relation.get(key)) {
+                    if (userFriendList.contains(friend)) {
+                        p++;
+                    }
+                }
+                Integer newPoint = point.get(key) + 10 * p;
+                point.put(key, newPoint);
+            }
+        }
     }
 }
