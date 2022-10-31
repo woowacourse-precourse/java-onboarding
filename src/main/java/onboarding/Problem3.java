@@ -1,7 +1,5 @@
 package onboarding;
 
-import java.util.List;
-
 public class Problem3 {
     public static int countHandclapByNumber(int number){
         int handclapCount=0;
@@ -14,9 +12,9 @@ public class Problem3 {
         }
         return handclapCount;
     }
-
     public static int solution(int number) {
         int answer = 0;
+
         return answer;
     }
 }
