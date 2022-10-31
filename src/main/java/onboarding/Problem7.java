@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Problem7 {
     final static int friendA = 0;
@@ -18,6 +15,11 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
+    }
+
+    public static void sort(Map<String, Integer> recommendationPoiont){
+        List<Map.Entry<String, Integer>> entryList = new ArrayList<Map.Entry<String, Integer>>(recommendationPoiont.entrySet());
+        Collections.sort(entryList, new recommendationPointComparator());
     }
 
     public static void increaseVisitorPoint(List<String> visitors, List<String> userKnowFriend){
@@ -84,6 +86,21 @@ public class Problem7 {
         }
         else{
             return -1;
+        }
+    }
+}
+
+class recommendationPointComparator implements Comparator<Map.Entry<String, Integer>> {
+    @Override
+    public int compare(Map.Entry<String, Integer> c1, Map.Entry<String, Integer> c2){
+        if(c1.getValue() > c2.getValue()){
+            return 1;
+        }
+        else if(c1.getValue() < c2.getValue()){
+            return -1;
+        }
+        else{
+            return c1.getKey().compareTo(c2.getKey());
         }
     }
 }
