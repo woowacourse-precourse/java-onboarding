@@ -17,6 +17,15 @@ public class Problem7 {
             friendMap.put(friend.get(1), addFriend(friend.get(1), friend.get(0)));
         }
     }
+
+    // 친구리스트에 친구 추가
+    public static List<String> addFriend(String leftFrined, String rightFriend) {
+        List<String> list = new ArrayList<>();
+        if (friendMap.get(leftFrined) != null) list = friendMap.get(leftFrined);
+        list.add(rightFriend);
+
+        return list;
+    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
