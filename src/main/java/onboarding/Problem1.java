@@ -21,7 +21,7 @@ class Problem1 {
 }
 
 class Game {
-    List<Integer> pages;
+    private List<Integer> pages;
 
     Game(List<Integer> pages) {
         this.pages = pages;
@@ -54,7 +54,7 @@ class Game {
 }
 
 class Calculator {
-    List<Integer> pages;
+    private List<Integer> pages;
 
     Calculator(List<Integer> pages) {
         this.pages = pages;
