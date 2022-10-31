@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 class Recommend {
     private String name;
@@ -67,14 +68,10 @@ public class Problem7 {
         List<Recommend> topScoreRecommend = friendList.subList(0, top);
 
         // score 가 0인 사람 제외하고 friend name만 추출
-        List<String> answer = new ArrayList<>();
-        for (Recommend r : topScoreRecommend) {
-            if (r.getScore()==0) {
-                break;
-            }
-            answer.add(r.getName());
-        }
-
+        List<String> answer = topScoreRecommend.stream()
+                                                .filter(r -> r.getScore()!=0)
+                                                .map(r -> r.getName())
+                                                .collect(Collectors.toList());
         return answer;
     }
 
