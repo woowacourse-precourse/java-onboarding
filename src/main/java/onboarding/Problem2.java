@@ -2,7 +2,6 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-
         StringBuilder cryptogramSb = new StringBuilder(cryptogram);
 
         String answer = getAnswer(cryptogramSb);
@@ -11,12 +10,9 @@ public class Problem2 {
     }
 
     private static String getAnswer(StringBuilder cryptogramSb) {
-        String answer;
-
         int i = 0;
         for (; i < cryptogramSb.length() - 1; ) {
             if (cryptogramSb.charAt(i) != cryptogramSb.charAt(i+1)) {
-                answer = cryptogramSb.substring(0, i+1);
                 i++;
             }
             else {
@@ -26,7 +22,6 @@ public class Problem2 {
             }
         }
 
-        answer = cryptogramSb.substring(0, i+1);
-        return answer;
+        return cryptogramSb.substring(0, i+1);
     }
 }
