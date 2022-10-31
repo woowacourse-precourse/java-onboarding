@@ -5,8 +5,9 @@ import java.util.Comparator;
 import java.util.List;
 
 public class Problem6 {
-    static List<String> emails = new ArrayList<>();
+    static List<String> emails;
     public static List<String> solution(List<List<String>> forms) {
+        emails = new ArrayList<>();
 
         for(int i = 0; i < forms.size() - 1; i++) {
             distinguishEmail(i, forms);

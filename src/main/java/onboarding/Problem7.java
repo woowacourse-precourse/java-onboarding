@@ -5,13 +5,16 @@ import java.util.stream.Collectors;
 
 public class Problem7 {
 
-    static Map<String, Integer> recommendationScore = new HashMap<>();
+    static Map<String, Integer> recommendationScore;
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        recommendationScore = new HashMap<>();
+
         List<String> existingFriends = new ArrayList<>(); //user의 기존 친구 리스트
         List<String> newFriends = new ArrayList<>(); //user의 친구의 친구 리스트
 
         for(List<String> friend : friends) {
             filterExistFriend(user, friend, existingFriends);
+            existingFriends.add(user);
         }
 
         for(String friend : existingFriends) { //user 친구의 친구 리스트에 추가
@@ -64,7 +67,9 @@ public class Problem7 {
 
 
     public static List<String> selectTop5People(Map<String, Integer> recommendationScore) {
-        List<String> result = recommendationScore.entrySet().stream()
+        List<String> answer =
+                recommendationScore.entrySet().stream()
+                .filter(score -> score.getValue() > 0)
                 .sorted((o1, o2) -> {
                     if(o1.getValue().equals(o2.getValue())) {
                         return o1.getKey().compareTo(o2.getKey());
@@ -75,6 +80,6 @@ public class Problem7 {
                 .map(Map.Entry::getKey)
                 .collect(Collectors.toList());
 
-        return result;
+        return answer;
     }
 }

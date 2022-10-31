@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Problem5 {
-    public static int count = 0;
+    public static int count;
     public static List<Integer> solution(int money) {
+        count = 0;
 
         int[] cash = new int[]{50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
         List<Integer> result = new ArrayList<>();
