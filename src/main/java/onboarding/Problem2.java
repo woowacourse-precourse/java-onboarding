@@ -32,7 +32,7 @@ class Cryptogram {
     String decrypt() {
         String decrypted = encrypted;
         while (true) {
-            String[] stringArray = decrypted.split("([a-z])\\1{1,}");
+            String[] stringArray = decrypted.split("([a-z])\\1+");
             if (stringArray.length == 1) {
                 decrypted = stringArray[0];
                 break;
