@@ -24,3 +24,23 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+
+### 기능 목록
+
+1. 전체 친구 list 만들기
+   - freinds와 visitor에 나오는 모든 아이디들을 찾아 중첩리스트에 저장한다.
+   - 각 원소의 첫 번째 원소는 아이디, 두 번째 원소는 점수이다.
+   - 이 때, user는 list에 포함되어서는 안 된다.
+
+2. freinds list에서 user 아이디가 들어있는 원소를 찾는다.
+   - user와 친구인 다른 아이디를 찾아 집합에 저장한다.
+   - freinds list에서 집합의 원소와 친구인 아이디들을 찾아 리스트로 저장한다.
+   - 친구의 친구 list에 있는 친구 아이디를 전체 친구 list에서 찾아 점수를 10점씩 추가한다.
+
+3. visitors list에서 나오는 횟수별로 전체 친구 list에서 찾아 점수를 1점씩 추가한다.
+
+4. 점수가 부여된 전체 친구 list를 점수 순으로, 이름 순으로 정렬한다.
+
+5. 정렬된 전체 친구 list에서 최대 5명까지 추천한다.
+   - 점수가 0인 경우는 추천에서 제외한다.
