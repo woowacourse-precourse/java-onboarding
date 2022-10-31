@@ -68,6 +68,29 @@ public class Problem7 {
             score.put(key, score.get(key) + 1);
         }
 
+        List<Map.Entry<String, Integer>> entryList = new ArrayList<>(score.entrySet());
+        entryList.sort(new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                if(o1.getValue() < o2.getValue()){
+                    return 1;
+                }
+                else if (o1.getValue() > o2.getValue()){
+                    return -1;
+                }
+                else{
+                    return o1.getKey().compareTo(o2.getKey());
+                }
+            }
+        });
+
+        int cnt = 0;
+        for (int i = 0; i <entryList.size() && cnt < 5; i++, cnt++) {
+            if (entryList.get(i).getValue() == 0){
+                break;
+            }
+            answer.add(entryList.get(i).getKey());
+        }
         return answer;
     }
 }
