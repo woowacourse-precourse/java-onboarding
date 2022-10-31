@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -39,8 +36,8 @@ public class Problem6 {
             }
         }
 
-        List answer = new ArrayList(email);
-        Collections.sort(answer);
+        ArrayList<String> answer = new ArrayList<>(email);
+        answer.sort(Comparator.naturalOrder());
         return answer;
     }
 }
