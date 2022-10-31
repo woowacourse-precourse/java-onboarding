@@ -22,7 +22,8 @@ class Problem1 {
     }
 
     public static int validation(List<Integer> page) { // 주어진 페이지의 유효성 검사
-        if(page.get(0) <= 1 || page.get(1) >= 400) return -1;
+        if(page.get(0)%2 == 0 || page.get(1)%2 == 1) return -1;
+        if(page.get(0) < 1 || page.get(1) > 400) return -1;
         if(page.get(0) + 1 != page.get(1)) return -1;
         return 0;
     }
