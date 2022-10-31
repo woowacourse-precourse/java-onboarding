@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.io.IOException;
 import java.util.List;
 
 
@@ -75,16 +76,11 @@ class Problem1 {
 		int HighSco = (A < B) ? B : A;
 		return HighSco;
 	}
-	
-	public static int makePage() { //makePage와 동시 3~398까지 추출
-		
-        int Page = (int) (Math.random() * (398+1)-3)+3; //(최대+1)-최소)+최소 3~398
-        do {
-        	Page = (int) (Math.random() * (398+1)-3)+3;
-        }while(Page <= 1 || Page >= 400); //조건 충족 시 리셋
-        return Page;
+	public static void main(String[] args) {
+		/* List<Integer> pobi = List.of(99, 102);
+         List<Integer> crong = List.of(211, 212);
+        System.out.println(solution(pobi,crong));*///테스트용 
 	}
-   
     }
 /*
  * 랜덤번호 3~398 첫,막페이지 x **
