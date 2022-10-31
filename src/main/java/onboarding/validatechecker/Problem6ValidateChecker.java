@@ -3,18 +3,25 @@ package onboarding.validatechecker;
 import java.util.List;
 
 public class Problem6ValidateChecker {
+	private static final int EMAIL = 0;
+	private static final int NICKNAME = 1;
 	public static void isFormValidate(List<List<String>> forms){
 		isFormsNotNull(forms);
 		isFormNotNull(forms);
 		areEmailAndNickNameNotNull(forms);
 		isCrewSizeInRange(forms);
+		isEmailSizeInRange(forms);
+	}
 
-
+	private static void isEmailSizeInRange(List<List<String>> forms) {
+		for (List<String> form : forms)
+			if(form.get(EMAIL).length() < 11 || form.get(EMAIL).length() > 20)
+				throw new IllegalArgumentException("이메일 길이가 11자 미만이거나, 20자 초과입니다.");
 	}
 
 	private static void areEmailAndNickNameNotNull(List<List<String>> forms){
 		for (List<String> form : forms)
-			if(form.get(0) == null || form.get(1) == null)
+			if(form.get(EMAIL) == null || form.get(NICKNAME) == null)
 				throw new IllegalArgumentException("닉네임 또는 이메일이 null입니다.");
 	}
 
