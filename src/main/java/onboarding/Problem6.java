@@ -5,10 +5,12 @@ import java.util.*;
 public class Problem6 {
     public static HashMap<String, String> duplicatedWord_EmailHashMap = new HashMap<>();
     public static HashSet<String> answerEmailSet = new HashSet<>();
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
     }
+
     //중복 가능성이 있는 단어들을 포함하는지 확인하는 기능 구현.
     //그다음 isContain을 notContains, contains의 인자로 넘겨준다.
     public static void checkDuplicate(Set<String> duplicatedWord, List<String> emailNameList) {
@@ -18,6 +20,14 @@ public class Problem6 {
             contains(isContain, word, emailNameList);
         }
     }
+
+    //닉네임이 중복 가능성이 있는 단어를 포함하지 않는 경우 작동하는 함수
+    public static void notContains(boolean isContain, String word, List<String> emailNameList) {
+        if (!isContain) {
+            duplicatedWord_EmailHashMap.put(word, emailNameList.get(0));
+        }
+    }
+
     //이름 속에서 중복될 수 있는 모든 단어를 저장한 Set을 반환하는 기능 구현
     public static Set<String> possibleDuplicatedWordInName(String name) {
         Set<String> duplicatedWord = new HashSet<>();
