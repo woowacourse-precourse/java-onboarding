@@ -6,72 +6,44 @@ import java.util.stream.Collectors;
 public class DuplicateNicknameChecker {
 
     private List<String> duplicateUserEmails;
-    private static final int BASE_INDEX = 0;
+    private static final int EMAIL_INDEX = 0;
+    private static final int NAME_INDEX = 1;
+    private static final int MINIMUM_DUPLICATE_RANGE = 1;
 
     public DuplicateNicknameChecker(List<List<String>> forms) {
-        this.duplicateUserEmails = new ArrayList<>();
-        checkForms(forms, BASE_INDEX, BASE_INDEX + 1);
-        this.duplicateUserEmails = toSortedList();
+        duplicateUserEmails = new ArrayList<>();
+        checkForms(forms);
+        toSortedList();
     }
 
-    private void checkForms(List<List<String>> forms, int firstIndex, int secondIndex) {
-        if (isNotFormIndexValid(forms, firstIndex, secondIndex)) {
-            return;
+    private void checkForms(List<List<String>> forms) {
+        for (int i = 0; i < forms.size(); i++) {
+            for (int j = i + 1; j < forms.size(); j++) {
+                checkDuplicate(forms.get(i).get(EMAIL_INDEX), forms.get(i).get(NAME_INDEX),
+                        forms.get(j).get(EMAIL_INDEX), forms.get(j).get(NAME_INDEX));
+            }
         }
-
-        List<String> first = forms.get(firstIndex);
-        List<String> second = forms.get(secondIndex);
-
-        checkDuplicate(first.get(BASE_INDEX), first.get(BASE_INDEX + 1),
-                second.get(BASE_INDEX), second.get(BASE_INDEX + 1), BASE_INDEX, BASE_INDEX + 1);
-
-        checkForms(forms, firstIndex, secondIndex + 1);
     }
 
-    private boolean isNotFormIndexValid(List<List<String>> forms, int firstIndex, int secondIndex) {
-        if (firstIndex >= forms.size()) {
-            return true;
+    private void checkDuplicate(String firstEmail, String firstName, String secondEmail, String secondName) {
+        for (int i = 0; i < firstName.length() - MINIMUM_DUPLICATE_RANGE; i++) {
+            for (int j = i + 1; j < secondName.length() - MINIMUM_DUPLICATE_RANGE; j++) {
+                if (isDuplicated(firstName, secondName, i, j)) {
+                    this.duplicateUserEmails.add(firstEmail);
+                    this.duplicateUserEmails.add(secondEmail);
+                    return;
+                }
+            }
         }
-        if (secondIndex >= forms.size()) {
-            checkForms(forms, firstIndex + 1, firstIndex + 2);
-            return true;
-        }
-        return false;
-    }
-
-    private void checkDuplicate(String firstEmail, String firstName,
-                                String secondEmail, String secondName, int firstIndex, int secondIndex) {
-        if (isNotNameIndexValid(firstEmail, firstName, secondEmail, secondName, firstIndex, secondIndex)) {
-            return;
-        }
-
-        if (isDuplicated(firstName, secondName, firstIndex, secondIndex)) {
-            this.duplicateUserEmails.add(firstEmail);
-            this.duplicateUserEmails.add(secondEmail);
-            return;
-        }
-        checkDuplicate(firstEmail, firstName, secondEmail, secondName, firstIndex, secondIndex + 1);
-    }
-
-    private boolean isNotNameIndexValid(String firstEmail, String firstName,
-                                        String secondEmail, String secondName, int firstIndex, int secondIndex) {
-        if (firstIndex >= firstName.length() - 1) {
-            return true;
-        }
-        if (secondIndex >= secondName.length() - 1) {
-            checkDuplicate(firstEmail, firstName, secondEmail, secondName, firstIndex + 1, firstIndex + 2);
-            return true;
-        }
-        return false;
     }
 
     private static boolean isDuplicated(String firstName, String secondName, int firstNameIndex, int secondNameIndex) {
         return firstName.charAt(firstNameIndex) == secondName.charAt(secondNameIndex)
-                && firstName.charAt(firstNameIndex + 1) == secondName.charAt(secondNameIndex + 1);
+                && firstName.charAt(firstNameIndex + MINIMUM_DUPLICATE_RANGE) == secondName.charAt(secondNameIndex + MINIMUM_DUPLICATE_RANGE);
     }
 
-    private List<String> toSortedList() {
-        return duplicateUserEmails.stream()
+    private void toSortedList() {
+        duplicateUserEmails = duplicateUserEmails.stream()
                 .distinct()
                 .sorted(Comparator.naturalOrder())
                 .collect(Collectors.toList());
