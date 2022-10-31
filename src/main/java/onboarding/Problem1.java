@@ -63,8 +63,8 @@ class Problem1 {
 
     public static int whoIsWinner(int a, int b) {
         if (a == -1 || b == -1) return -1; // 주의
-        else if (a > b) return 1;
-        else if (a < b) return 2;
+        if (a > b) return 1;
+        if (a < b) return 2;
         return 0;
     }
 }

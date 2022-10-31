@@ -23,5 +23,10 @@ class Problem3Test {
     void clapCntTest() {
         assertThat(Problem3.solution(13)).isEqualTo(4);
         assertThat(Problem3.solution(33)).isEqualTo(14);
+        assertThat(Problem3.solution(36)).isEqualTo(18);
+        assertThat(Problem3.solution(2)).isEqualTo(0);
+        assertThat(Problem3.solution(3)).isEqualTo(1);
+        assertThat(Problem3.solution(6)).isEqualTo(2);
+        assertThat(Problem3.solution(9)).isEqualTo(3);
     }
 }

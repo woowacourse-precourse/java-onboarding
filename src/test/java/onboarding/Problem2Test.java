@@ -24,6 +24,8 @@ class Problem2Test {
         @DisplayName("모두 없어지지 않는 경우")
         void case2() {
             assertThat(Problem2.solution("browoanoommnaon")).isEqualTo("brown");
+            assertThat(Problem2.solution("aabba")).isEqualTo("a");
+            assertThat(Problem2.solution("aabbaacca")).isEqualTo("a");
         }
 
         @Test

@@ -14,7 +14,8 @@ public class Problem4 {
         if (Character.isLowerCase(ch)) {
             return (char) ('z' - (ch - 'a'));
 
-        } else if (Character.isUpperCase(ch)) {
+        }
+        if (Character.isUpperCase(ch)) {
             return (char) ('Z' - (ch - 'A'));
         }
         return ch; // 알파벳이 아닌 문자는 무시

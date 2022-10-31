@@ -21,8 +21,13 @@ public class Problem3 {
         int result = 0;
         char[] chars = String.valueOf(val).toCharArray();
         for (char ch : chars) {
-            if (entry.contains(ch)) result++;
+            result = getResult(result, ch);
         }
+        return result;
+    }
+
+    private static int getResult(int result, char ch) {
+        if (entry.contains(ch)) result++;
         return result;
     }
 }

@@ -28,9 +28,7 @@ public class Problem6 {
         }
         for (String s : nickAndEmail.keySet()) {
             String key = hasDuplicatedWords(s, nickName);
-            if (key != null) {
-                nickAndEmail.get(key).add(email);
-            }
+            if (key != null) nickAndEmail.get(key).add(email);
         }
     }
 
@@ -50,9 +48,7 @@ public class Problem6 {
     private static List<String> makeResult(Map<String, Set<String>> nickAndEmail) {
         List<String> result = new ArrayList<>();
         for (Map.Entry<String, Set<String>> e : nickAndEmail.entrySet()) {
-            if (e.getValue().size() >= LIMIT) {
-                result.addAll(e.getValue());
-            }
+            if (e.getValue().size() >= LIMIT) result.addAll(e.getValue());
         }
         Collections.sort(result);
         return result;

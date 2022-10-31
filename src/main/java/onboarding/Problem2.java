@@ -21,7 +21,8 @@ public class Problem2 {
     private static char isValid(Stack<Character> stack, char history, char target) {
         if (!stack.isEmpty() && stack.peek() == target) {
             history = stack.pop();
-        } else if (history != target) {
+        }
+        if (history != target) {
             stack.push(target);
         }
         return history;
