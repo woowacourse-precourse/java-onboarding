@@ -1,29 +1,30 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class Problem5 {
 
-    public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
-        answer.set(0,money/50000);
+    public static ArrayList<Integer> solution(int money) {
+        ArrayList<Integer> answer = new ArrayList<>();
+        answer.add(money/50000);
         money%=50000;
-        answer.set(1,money/10000);
+        answer.add(money/10000);
         money%=10000;
-        answer.set(2,money/5000);
+        answer.add(money/5000);
         money%=5000;
-        answer.set(3,money/1000);
+        answer.add(money/1000);
         money%=1000;
-        answer.set(4,money/500);
+        answer.add(money/500);
         money%=500;
-        answer.set(5,money/100);
+        answer.add(money/100);
         money%=100;
-        answer.set(6,money/50);
+        answer.add(money/50);
         money%=50;
-        answer.set(7,money/10);
+        answer.add(money/10);
         money%=10;
-        answer.set(8,money);
+        answer.add(money);
         return answer;
     }
 }
