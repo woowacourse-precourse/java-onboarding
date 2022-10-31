@@ -20,6 +20,9 @@ public class Problem3 {
 
         int answer = 0;
 
+        if ((number < 1) || (number > 10000)) {
+            return -1;}
+
         for (int i = 1; i <= number; i++) {
             String str = i + "";
             answer = answer + countNum(str);
