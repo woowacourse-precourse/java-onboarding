@@ -14,27 +14,36 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         // 예외 처리
-        if(pobi.get(0) + 1 != pobi.get(1) || crong.get(0) + 1 != pobi.get(1)){
+        if (pobi.get(0) + 1 != pobi.get(1) || crong.get(0) + 1 != crong.get(1)) {
             return -1;
-        } else if( pobi.get(0) % 2 == 0 || pobi.get(1) % 2 != 0 || crong.get(0) % 2 ==0 || crong.get(1) %2 != 0 ){
+        } else if (pobi.get(0) % 2 == 0 || pobi.get(1) % 2 == 1 || crong.get(0) % 2 == 0 || crong.get(1) % 2 == 1) {
             return -1;
-        } else if(pobi.get(0) == 1 || pobi.get(1) == 400 || crong.get(0) == 1 || crong.get(1) == 400){
+        } else if (pobi.get(0) == 1 || pobi.get(1) == 400 || crong.get(0) == 1 || crong.get(1) == 400) {
             return -1;
         }
 
-        //int pobiMax = Math.max();
+        int pobiMax = Math.max(getMaxCal(pobi.get(0)), getMaxCal(pobi.get(1)));
+        int crongMax = Math.max(getMaxCal(crong.get(0)), getMaxCal(crong.get(1)));
+
+        if (pobiMax > crongMax) {
+            answer = 1;
+        } else if (pobiMax < crongMax) {
+            answer = 2;
+        } else {
+            answer = 0;
+        }
         return answer;
     }
 
     public static int getMaxCal(int n) {
         int sum = 0;
-        int mul = 0;
+        int mul = 1;
         while (n > 1) {
             sum += n % 10;
             mul *= n % 10;
             n /= 10;
         }
-        return Math.max(sum,mul);
+        return Math.max(sum, mul);
     }
 
 }
