@@ -4,15 +4,11 @@ import java.util.HashMap;
 
 public class Problem4 {
     static boolean isCheck(String word) {
-        if(word.length()<1 || word.length()>1000) {
-            return true;
-        }
-        return false;
+        return word.length()<1 || word.length()>1000;
     }
 
-    static String changeWord(String word) {
-        String changeWord ="" ;
-        HashMap<Character, Integer> wordValue = new HashMap<>();
+    static String wordChange(String word, HashMap<Character, Integer> wordValue) {
+        String wordChange ="" ;
 
         wordValue.put('A', 25);
         for(int i=66; i<=90; i++) {
@@ -20,24 +16,27 @@ public class Problem4 {
         }
 
         for(char c : word.toCharArray()) {
-            if(97 <= c && c <= 122) {
+            if(97<=c && c<=122) {
                 c = (char) (c-32);
-                changeWord += (char) (c + wordValue.get(c) + 32);
+                wordChange += (char) (c + wordValue.get(c) + 32);
             }
-            else if(65 <=c && c <= 90) {
-                changeWord += (char) (c + wordValue.get(c));
+            else if(65<=c && c<=90) {
+                wordChange += (char) (c + wordValue.get(c));
             }
-            else changeWord += c;
+            else wordChange += c;
         }
-        return changeWord;
+        return wordChange;
     }
 
     public static String solution(String word) {
+        String answer = "";
+        HashMap<Character, Integer> wordValue = new HashMap<>();
+
         if(isCheck(word)) {
-            return "문자열의 길이가 잘못되었습니다.";
+            System.out.print("암호문의 길이는 1이상 1000이하입니다.");
+        } else {
+            answer = wordChange(word, wordValue);
         }
-        word = word.replaceAll("[^a-zA-Z]", " ");
-        return changeWord(word);
+        return answer;
     }
 }
-
