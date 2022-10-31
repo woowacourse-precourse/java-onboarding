@@ -20,6 +20,17 @@ public class Problem7 {
 
         calVisitingScore(visitors);
 
+        ArrayList<Map.Entry<String, Integer>> scoreArray =  new ArrayList<>(scores.entrySet());
+
+        scoreArray.sort((o1, o2) -> {
+            if (o1.getValue().equals(o2.getValue())) {
+                return o1.getKey().compareTo(o2.getKey());
+            }
+
+            return o2.getValue() - o1.getValue();
+        });
+
+
         return answer;
     }
 
