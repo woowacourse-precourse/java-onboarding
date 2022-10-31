@@ -25,4 +25,27 @@ public class Problem6 {
 
         return answer;
     }
+
+    // "단어가 사용된 횟수를 저장"하기 위한 hashmap 을 만들기위한 메소드
+    private static void inputData(List<List<String>> forms) {
+        for (List<String> formList : forms) {
+            splitWord(formList.get(1), new HashSet<>());
+        }
+    }
+
+    // 단어를 분리하는 메소드
+    private static void splitWord(String str, Set<String> set) {
+        for (int j = 0; j < str.length() - 1; j++) {
+            String sub = str.substring(j, j + 2);
+            addWordToMap(set, sub);
+        }
+    }
+
+    // 분리된 단어가 중복되지 않도록 단어의 사용된 횟수를 HashMap 에 저장하는 메소드
+    private static void addWordToMap(Set<String> set, String sub) {
+        if (!set.contains(sub)) {
+            set.add(sub);
+            map.put(sub, map.getOrDefault(sub, 0) + 1);
+        }
+    }
 }
