@@ -28,11 +28,4 @@ public class LeximRepository {
         }
         return false;
     }
-    List<String> splitNameIntoLexim(String name) {
-        List<String> resultRepo = new ArrayList<>();
-        for (int j = 0; j < name.length()-1; j++) {
-            resultRepo.add(name.substring(j, j+2));
-        }
-        return resultRepo;
-    }
 }
