@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
         HashMap<String, Integer> score = new HashMap<>();
         chk_user_friend(user, friends, score);
 
@@ -19,8 +19,29 @@ public class Problem7 {
                 score.put(s,1);
             }
         }
+        score.remove(user); // 사용자 본인은 제외하고
 
-        return answer;
+        List<String> tmp=new ArrayList<>();
+        /*사용자와 직접 친구인 사람들 제거*/
+        for (Map.Entry<String, Integer> entry : score.entrySet()) {
+            if (entry.getValue()<=0) {          // 점수가 0점이거나 그 이하(직접적인 친구) 일 경우 제거하기 위해서
+                tmp.add(entry.getKey());
+            }
+        }
+
+        for (String s : tmp) {
+            score.remove(s);
+        }
+        /*정답행렬에 복사하기*/
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(score.entrySet());
+        entryList.sort(Map.Entry.comparingByValue(Comparator.reverseOrder())); // 이름순 정렬 구현은?
+        for (Map.Entry<String, Integer> stringIntegerEntry : entryList) {
+            answer.add(stringIntegerEntry.getKey());
+        }
+        /*제한조건 체크*/
+        if (answer.size() > 5) {
+            return answer.subList(0, 6);
+        } else return answer;
     }
     /**친구의 친구 찾아서 점수 업데이트**/
     private static void findFF(List<List<String>> friends, HashMap<String, Integer> score, List<String> alr_frd) {
