@@ -7,7 +7,7 @@ public class Problem7 {
     static HashMap<String, Integer> scores = new HashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
         List<String> userFriends;
 
         makeFriendship(friends);
@@ -20,10 +20,26 @@ public class Problem7 {
         }
         updateScoresWithVisitors(userFriends, visitors);
         System.out.println("scores = " + scores);
+        makeAnswer(answer);
         //TODO: 가장 큰 5개 뽑는 것과 정렬 만들기
         return answer;
     }
 
+    public static void makeAnswer(List<String> answer) {
+        List<Map.Entry<String, Integer>> sortedScores = sortScores();
+        int count = 0;
+
+        for (Map.Entry<String, Integer> score :sortedScores) {
+            addAnswer(answer, score, count);
+            count++;
+        }
+    }
+
+    public static void addAnswer(List<String> answer, Map.Entry<String, Integer> score, int count) {
+        if (score.getValue() != 0 && count < 5) {
+            answer.add(score.getKey());
+        }
+    }
     public static List<Map.Entry<String, Integer>> sortScores() {
         List<Map.Entry<String, Integer>> entryList = new LinkedList<>(scores.entrySet());
 
