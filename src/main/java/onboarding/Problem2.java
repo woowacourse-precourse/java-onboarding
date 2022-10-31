@@ -4,6 +4,16 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "";
 
+        while (cryptogram.length() > 1) {
+            String result = "";
+            result = removeDuplicateCharacter(cryptogram);
+            if (cryptogram.equals(result)){
+                break;
+            }
+            cryptogram = result;
+        }
+
+        answer = cryptogram;
         return answer;
     }
 
