@@ -12,6 +12,9 @@ public class Problem7 {
         // user와 이미 친구인 사람들 목록
         Set<String> alreadyFds = getAlreadyFriends(user, friends);
 
+        // user의 친구(alreadyFds)와 친구인 사람 찾아서 10점씩 점수 추가
+        addFriendsScore(friends, alreadyFds, recommendFds);
+
         return answer;
     }
 
@@ -39,5 +42,17 @@ public class Problem7 {
         }
 
         return alreadyFds;
+    }
+
+    public static void addFriendsScore(List<List<String>> friends, Set<String> alreadyFds, HashMap<String, Integer> recommendFds) {
+        for (List<String> fd : friends) {
+            String id1 = fd.get(0);
+            String id2 = fd.get(1);
+
+            for (String alreadyFd : alreadyFds) {
+                if (id1.equals(alreadyFd)) recommendFds.put(id2, recommendFds.get(id2) + 10);
+                else if (id2.equals(alreadyFd)) recommendFds.put(id1, recommendFds.get(id1) + 10);
+            }
+        }
     }
 }
