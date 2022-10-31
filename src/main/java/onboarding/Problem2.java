@@ -2,8 +2,21 @@ package onboarding;
 
 public class Problem2 {
     public static String delSame(String cryptogram, int i) {
+        char tar = cryptogram.charAt(i);
         if (cryptogram.charAt(i) == cryptogram.charAt(i + 1)){
-            cryptogram = cryptogram.substring(0, i) + cryptogram.substring(i+2);
+            int start = i;
+            int end = i;
+
+            if (cryptogram.length() == 2){
+                return "";
+            }
+
+            while (tar == cryptogram.charAt(i)){
+                end += 1;
+                i += 1;
+            }
+
+            cryptogram = cryptogram.substring(0, start) + cryptogram.substring(end);
         }
         return cryptogram;
     }
@@ -16,7 +29,9 @@ public class Problem2 {
             cryptogram = delSame(cryptogram, i);
 
             if(temp != cryptogram.length()){
-                i -= 1;
+                if (i > 0){
+                    i -= 1;
+                }
             } else {
                 i += 1;
             }
