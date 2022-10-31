@@ -17,6 +17,19 @@ public class Problem4 {
         return convertString;
     }
 
+    // 알파벳 반대로 변환
+    static char convertChar(char c) {
+        int ascii;
+
+        if (Character.isUpperCase(c)) {
+            ascii = 'Z' - (c - 'A');
+        } else {
+            ascii = 'z' - (c - 'a');
+        }
+
+        return (char)ascii;
+    }
+
     public static String solution(String word) {
         return convertString(word);
     }
