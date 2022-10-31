@@ -33,7 +33,7 @@ public class FriendRecommender {
      * @return new friend list
      */
     public List<String> recommend() {
-        // Create relationship list by friends
+        searchRelationships();
         Map<String, Friend> scores = new HashMap<>();
         List<String> userFriends = relationships.get(user);
         // Check user friends' friend list
