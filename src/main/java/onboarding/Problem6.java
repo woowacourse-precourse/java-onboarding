@@ -6,9 +6,9 @@ import java.util.HashSet;
 import java.util.List;
 
 public class Problem6 {
-    public static final int LETTERS = 2;
-    public static final int EMAIL = 0;
-    public static final int NICKNAME = 1;
+    private static final int LETTERS = 2;
+    private static final int EMAIL = 0;
+    private static final int NICKNAME = 1;
 
     public static List<String> solution(List<List<String>> forms) {
         return getEmails(forms);
