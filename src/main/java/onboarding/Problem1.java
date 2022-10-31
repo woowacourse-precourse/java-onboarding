@@ -3,8 +3,6 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
-    final int MAX_VALUE = 400;
-    final int MIN_VALUE = 1;
 
     public static int add(int pageNum) {
         int result = 0;
@@ -34,6 +32,16 @@ class Problem1 {
         int rightAdd = add(who.get(1));
         int leftMul = mul(who.get(0));
         int rightMul = mul(who.get(1));
+
+        int max = Integer.MIN_VALUE;
+        int arr[] = {leftAdd, rightAdd, leftMul, rightMul};
+
+        for (int i = 0; i < arr.length; i++) {
+            if(max < arr[i])
+                max = arr[i];
+        }
+
+        return max;
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
