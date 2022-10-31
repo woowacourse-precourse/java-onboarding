@@ -29,6 +29,11 @@ public class Problem7 {
                 scores.put(visitor, scores.getOrDefault(visitor, 0) + 1);
             }
         }
+        for (List<String> nearFriends : nearFriend.values()) {
+            for (String friend : nearFriends) {
+                scores.put(friend, scores.getOrDefault(friend, 0) + 10);
+            }
+        }
         return answer;
     }
 }
