@@ -23,6 +23,9 @@ class StringOperation {
         }
         return newCipher;
     }
+    boolean isRedundant(int startPosition, int endPosition) {
+        return startPosition != endPosition;
+    }
     boolean existsRedundantAlphabet(int numberOfRedundant){
         return numberOfRedundant!=0;
     }
