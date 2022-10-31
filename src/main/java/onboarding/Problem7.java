@@ -15,7 +15,8 @@ public class Problem7 {
     static final int VisitPoint = 1;
     static final int FriendPoint = 10;
 
-    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+    public static List<String> solution(String user, List<List<String>> friends,
+        List<String> visitors) {
         List<String> answer = new ArrayList<>();
         Map<String, Set<String>> userRelation = new HashMap<>();
         Map<String, Integer> userPoints = new HashMap<>();
@@ -35,22 +36,26 @@ public class Problem7 {
         Set<String> userFriendList = userRelation.getOrDefault(user, Collections.emptySet());
         if (!userFriendList.isEmpty()) {
             for (String key : userRelation.keySet()) {
-                if (key == user) {
+                if (key == user || userFriendList.contains(key)) {
                     continue;
                 }
-                if (userRelation.get(user).containsAll(userRelation.get(key))) {
-                    userPoints.put(key, FriendPoint);
+                Set<String> friend = userRelation.get(key);
+                friend.retainAll(userFriendList);
+                if (friend.size() != 0) {
+                    userPoints.put(key, FriendPoint * friend.size());
                 }
+
             }
         }
         for (String visitor : visitors) {
             if (userFriendList.contains(visitor)) {
                 continue;
             }
-            userPoints.put(visitor,userPoints.containsKey(visitor) ? userPoints.get(visitor) + VisitPoint : VisitPoint);
+            userPoints.put(visitor,
+                userPoints.containsKey(visitor) ? userPoints.get(visitor) + VisitPoint
+                    : VisitPoint);
         }
-        List<Entry<String, Integer>> list_userPoints = new ArrayList<Entry<String, Integer>>(
-            userPoints.entrySet());
+        List<Entry<String, Integer>> list_userPoints = new ArrayList<Entry<String, Integer>>(userPoints.entrySet());
         Collections.sort(list_userPoints, new Comparator<Entry<String, Integer>>() {
             @Override
             public int compare(Entry<String, Integer> o1, Entry<String, Integer> o2) {
