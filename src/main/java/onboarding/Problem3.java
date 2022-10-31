@@ -7,7 +7,7 @@ public class Problem3 {
         for(int i = 1; i <= number; i++){
             if(i<10) answer += check_num(i);
             else{
-
+                answer += separation_num(i);
             }
         }
 
@@ -21,5 +21,15 @@ public class Problem3 {
 
     }
 
+    static int separation_num(int num){
+        int count = 0;
+
+        while(num>0){
+            count += check_num(num%10);
+            num /= 10;
+        }
+
+        return count;
+    }
 
 }
