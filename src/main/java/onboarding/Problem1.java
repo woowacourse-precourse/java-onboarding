@@ -32,7 +32,7 @@ class Problem1 {
             return false;
         }
         // 시작 면이나 마지막 면이 나오면 안됨
-        if (pageList.get(0) == 0 || pageList.get(1) == 400) {
+        if (pageList.get(0) == 1 || pageList.get(1) == 400) {
             return false;
         }
 
