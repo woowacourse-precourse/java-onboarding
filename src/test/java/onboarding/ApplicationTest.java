@@ -3,6 +3,7 @@ package onboarding;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -159,6 +160,30 @@ class ApplicationTest {
                     List.of("nowm@email.com", "이제엠")
             );
             List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com");
+            assertThat(Problem6.solution(forms)).isEqualTo(result);
+        }
+
+        @Test
+        void case2() {
+            List<List<String>> forms = List.of(
+                    List.of("jm@email.com", "제이엠"),
+                    List.of("jason@email.com", "제이슨투"),
+                    List.of("roro@email.com", "로로"),
+                    List.of("mj@email.com", "슨투로")
+            );
+            List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com");
+            assertThat(Problem6.solution(forms)).isEqualTo(result);
+        }
+
+        @Test
+        void case3() {
+            List<List<String>> forms = List.of(
+                    List.of("jm@email.com", "가나다"),
+                    List.of("jason@email.com", "마바사"),
+                    List.of("roro@email.com", "아자차"),
+                    List.of("mj@email.com", "카타파하")
+            );
+            List<String> result = new ArrayList<>();
             assertThat(Problem6.solution(forms)).isEqualTo(result);
         }
     }
