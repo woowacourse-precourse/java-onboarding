@@ -32,10 +32,8 @@ public class Problem3 {
 
                 // 조건 1. 나눠진 자리 수가 3의 배수
                 // 조건 2. 나눠진 자리 수가 0이 아님
-                if(divided % 3 == 0 && divided != 0){
+                if(divided % 3 == 0 && divided != 0)
                     clapCount ++;
-                    break;
-                }
 
                 temp /= 10;
             }
