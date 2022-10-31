@@ -13,9 +13,9 @@ public class Problem7 {
         HashSet<String> allCrews = new HashSet<>();
 
         // 관계에 있는 모든 크루들 저장
-        friendRelations.forEach(friendRelation -> allCrews.addAll(friendRelation));
+        friendRelations.forEach(allCrews::addAll);
         // 관계가 없는 크루도 있으니 방문한 크루들도 저장
-        visitors.forEach(visitor -> allCrews.add(visitor));
+        allCrews.addAll(visitors);
 
         return allCrews;
     }
@@ -79,7 +79,7 @@ public class Problem7 {
         // 추천점수로 정렬
         Comparator<String> comparator = Comparator.comparingInt(crew -> -recommendScoreByCrew.get(crew));
         comparator = comparator.thenComparing(Comparator.naturalOrder());
-        Collections.sort(recommendCrews, comparator);
+        recommendCrews.sort(comparator);
 
         return recommendCrews;
     }
@@ -96,6 +96,7 @@ public class Problem7 {
 
         Map<String, Integer> recommendScoreByCrew = getRecommendScoreByCrew(user, friendGraph, visitors);
         List<String> recommendCrews = getRecommendCrews(recommendScoreByCrew);
+        // TODO: 최대 5명 반환 구현
         recommendCrews = removeFriends(recommendCrews, friendGraph.get(user));
 
         return recommendCrews;
