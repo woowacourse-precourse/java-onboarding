@@ -15,6 +15,14 @@ public class Problem4 {
         }
         return false;
     }
+
+    public static char toLowerCase(char alphabet) {
+        int ascii = (int)alphabet;
+        char lowerCase = (char)(ascii - 32);
+        char frog = changeFrog(lowerCase);
+        char result = (char)((int)frog + 32);
+        return result;
+    }
     public static String solution(String word) {
         String answer = "";
         return answer;
