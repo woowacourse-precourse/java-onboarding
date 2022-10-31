@@ -16,14 +16,14 @@ public class Problem4 {
 
     /**
      * 청개구리 사전 기준으로 변환된 문자열을 반환하는 메소드
-     * @param chunk
+     * @param str
      * @return 변환된 문자열을 반환
      */
-    static String changeCharacter(String chunk){
+    static String changeCharacter(String str){
         String result = "";
 
-        for(int i=0; i<chunk.length(); i++){
-            char c = chunk.charAt(i);
+        for(int i=0; i<str.length(); i++){
+            char c = str.charAt(i);
             if(Character.isUpperCase(c)){
                 result += changeUpperChar(c);
             } else if(Character.isLowerCase(c)){
