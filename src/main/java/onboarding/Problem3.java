@@ -12,6 +12,7 @@ class Num {
   private static final String THREE = "3";
   private static final String SIX = "6";
   private static final String NINE = "9";
+
   Num(int num) {
     rangeValidityCheck(num);
     this.num = num;
