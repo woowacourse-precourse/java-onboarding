@@ -10,9 +10,10 @@ public class Problem5 {
     // 1. 1 ~ 50,000까지 9가지 화폐를 설정한다.
     private static final int[] currencies = new int[]{50_000, 10_000, 5_000, 1_000, 500, 100, 50, 10, 1};
 
-    /**
-     * @Method: getMoney
-     */
+    public static List<Integer> solution(int money) {
+        return getMoney(money);
+    }
+
     private static List<Integer> getMoney(int money) {
         List<Integer> answer = new ArrayList<>();
         int temp = money;
@@ -21,9 +22,5 @@ public class Problem5 {
             temp = temp % currency;
         }
         return answer;
-    }
-
-    public static List<Integer> solution(int money) {
-        return getMoney(money);
     }
 }

@@ -1,6 +1,8 @@
 package onboarding;
 
-// @Problem: 연속하는 중복 문자들을 삭제한 결과를 return 하도록 solution 메서드를 완성하라.
+/**
+ * @Problem: 연속하는 중복 문자들을 삭제한 결과를 return 하도록 solution 메서드를 완성하라.
+ */
 public class Problem2 {
     private static String deleteContinuousCharacter(String cryptogram) {
         StringBuilder sb = new StringBuilder();
@@ -28,7 +30,7 @@ public class Problem2 {
             }
             tempCryptogram = nextCryptogram;
         }
-        return "";
+        return null;
     }
 
     public static String solution(String cryptogram) {

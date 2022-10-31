@@ -3,7 +3,9 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.List;
 
-
+/**
+ * @Problem: 포비가 이긴다면 1, 크롱이 이긴다면 2, 무승부는 0, 예외사항은 -1로 return 하도록 solution 메서드를 완성하라.
+ */
 class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {

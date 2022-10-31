@@ -10,9 +10,6 @@ public class Problem7 {
     private static final int POINT_OF_VISITOR = 1;             // 방문자 추천 점수
     private static final int POINT_OF_FRIEND_OF_FRIEND = 10;   // 친구의 친구 추천 점수
 
-    /**
-     * @Method: solution
-     */
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Map<String, List<String>> friendMap = getFriendMap(friends);
         Map<String, Integer> pointOfFriend = getPointOfFriend(user, visitors, friendMap);

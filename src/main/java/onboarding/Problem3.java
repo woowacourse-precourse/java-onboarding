@@ -4,9 +4,10 @@ package onboarding;
  * @Problem: 숫자 number가 매개변수로 주어질 때, 1부터 number까지 손뼉을 몇 번 쳐야 하는지 횟수를 return 하도록 solution 메서드를 완성하라.
  */
 public class Problem3 {
-    /**
-     * @Method: calcAlgorithm
-     */
+    public static int solution(int number) {
+        return calcAlgorithm(number);
+    }
+
     private static int calcAlgorithm(int number) {
         int answer = 0;
         String[] digits = String.valueOf(number).split("");
@@ -39,9 +40,5 @@ public class Problem3 {
         // 4. 재귀 함수로 3번을 구현하면, 1000까지, 200까지, 30까지 4까지 의 값을 구하고, 더해주면 총 박수의 수를 구 할 수 있다.
         answer += calcAlgorithm(seconds);   // 하위 값이 존재하는 경우, 재귀로 처리
         return answer;
-    }
-
-    public static int solution(int number) {
-        return calcAlgorithm(number);
     }
 }

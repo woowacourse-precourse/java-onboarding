@@ -3,29 +3,20 @@ package onboarding;
 import java.util.*;
 import java.util.stream.Collectors;
 
-/**\
+/**
  * @Problem: 신청받은 닉네임 중 같은 글자가 연속적으로 포함 되는 닉네임을 작성한 지원자의 이메일 목록을 return 하도록 solution 메서드를 완성하라.
  */
 public class Problem6 {
-    /**
-     * @Method: solution
-     */
     public static List<String> solution(List<List<String>> forms) {
         Set<String> answerSet = checkNickName(forms);
         return toSortedList(answerSet);
     }
 
-    /**
-     * @Method: checkNickName
-     */
     private static Set<String> checkNickName(List<List<String>> crews) {
         Map<String, List<String>> subNameMap = makeSubNameMap(crews);
         return toAnswerSet(subNameMap);
     }
 
-    /**
-     * @Method: makeSubNameMap
-     */
     private static Map<String, List<String>> makeSubNameMap(List<List<String>> crews) {
         Map<String, List<String>> subNameMap = new HashMap<>();
 
@@ -41,9 +32,6 @@ public class Problem6 {
         return subNameMap;
     }
 
-    /**
-     * @Method: addSubNameToMap
-     */
     private static void addSubNameToMap(Map<String, List<String>> subNameMap, String email, String subName) {
         // 2. HashMap에서 Key가 겹치는 경우, 겹치는 닉네임이 존재하는 것이므로 판단한다.
         if(subNameMap.containsKey(subName)) {
@@ -61,16 +49,10 @@ public class Problem6 {
         }
     }
 
-    /**
-     * @Method: getSubName
-     */
     private static String getSubName(String nickName, int index) {
         return nickName.substring(index, index + 2);
     }
 
-    /**
-     * @Method: toAnswerSet
-     */
     private static Set<String> toAnswerSet(Map<String, List<String>> subNameMap) {
         Set<String> answerSet = new HashSet<>();
         for (String key : subNameMap.keySet()) {
@@ -82,9 +64,6 @@ public class Problem6 {
         return answerSet;
     }
 
-    /**
-     * @Method: toSortedList
-     */
     private static List<String> toSortedList(Set<String> answerSet) {
         // 3. Set을 사용하여 중복되는 이메일을 제거하고, 정렬한다.
         return answerSet.stream().sorted().collect(Collectors.toList());

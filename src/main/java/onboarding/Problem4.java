@@ -8,9 +8,6 @@ public class Problem4 {
         return changeAlphabet(word);
     }
 
-    /**
-     * @Method: changeAlphabet
-     */
     private static String changeAlphabet(String word) {
         StringBuilder answer = new StringBuilder();
         for (int i = 0; i < word.length(); i++) {
@@ -26,18 +23,11 @@ public class Problem4 {
         return answer.toString();
     }
 
-    /**
-     * @Method: changeFrogLowerCase
-     * 소문자인 경우
-     */
     private static char changeFrogLowerCase(char temp) {
         return (char) (122 - (temp - 97));
     }
 
-    /**
-     * @Method: changeFrogUpperCase
-     * 대문자인 경우
-     */
+
     private static char changeFrogUpperCase(char temp) {
         return (char) (65 - (temp - 90));
     }
