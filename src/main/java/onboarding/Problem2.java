@@ -25,6 +25,20 @@ public class Problem2 {
 
     public static String solution(String cryptogram) {
         String answer = "answer";
+        String inputString = cryptogram;
+        String modifiedString;
+
+        while (true) {
+            modifiedString = removeDuplication(inputString);
+
+            if (modifiedString.equals(inputString)) {
+                break;
+            }
+
+            inputString = modifiedString;
+        }
+
+        answer = modifiedString;
 
         return answer;
     }
