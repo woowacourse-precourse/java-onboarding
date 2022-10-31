@@ -5,17 +5,20 @@ import java.util.*;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
-        //HashSet<String> friendList = new HashSet<>();
         HashMap<String,Integer> friend_score = new HashMap<>();
+
+        //System.out.print(friendList(user,friends));
 
         //같이 아는 친구 점수
         for(String user_friend: friendList(user,friends)){
             for(String s : friendList(user_friend,friends)){
-                if(!user.equals(s)){
-                    if(!friend_score.containsKey(s)){
-                        friend_score.put(s,10);
-                    }else{
-                        friend_score.put(s, friend_score.get(s)+10);
+                if(!friendList(user,friends).contains(s)){
+                    if(!user.equals(s)){
+                        if(!friend_score.containsKey(s)){
+                            friend_score.put(s,10);
+                        }else{
+                            friend_score.put(s, friend_score.get(s)+10);
+                        }
                     }
                 }
             }
@@ -31,7 +34,7 @@ public class Problem7 {
             }
 
         }
-        //System.out.println(friend_score.keySet());
+
         List<Map.Entry<String, Integer>> entryList = new LinkedList<>(friend_score.entrySet());
         entryList.sort(new Comparator<Map.Entry<String, Integer>>() {
             @Override
