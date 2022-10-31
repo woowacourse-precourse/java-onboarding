@@ -1,7 +1,9 @@
 package onboarding.problem6.domain;
 
-public class Crew {
+import java.util.ArrayList;
+import java.util.List;
 
+public class Crew {
     private String email;
     private String nickname;
 
@@ -41,5 +43,17 @@ public class Crew {
         if (!email.matches(regularExpressionOfEmailForm)) {
             throw new IllegalArgumentException("지원하지 않는 이메일 형식입니다.");
         }
+    }
+
+    public List<String> getTwoLetterListFromNickname() {
+        List<String> twoLetterList = new ArrayList<>();
+        int start = 0;
+        int end = this.nickname.length() - 1;
+
+        for (int i = start; i < end; i++) {
+            String twoLetter = this.nickname.substring(i, i + 2);
+            twoLetterList.add(twoLetter);
+        }
+        return twoLetterList;
     }
 }
