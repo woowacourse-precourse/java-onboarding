@@ -45,7 +45,9 @@ class Recommendation {
         setVisitorScore(visitors);
         setFriendScore(user, friends);
         Map<String, List<String>> friends_map = makeFriendsMap(friends);
-        List<String> user_friends = friends_map.get(user);
+        // user key에 대한 친구 목록이 없는 경우 빈 array 반환
+        List<String> array = new ArrayList<>();
+        List<String> user_friends = friends_map.getOrDefault(user, array);
         for (String friend : user_friends) {
             user_score.remove(friend);
         }
@@ -74,7 +76,9 @@ class Recommendation {
 
     private void setFriendScore(String user, List<List<String>> friends) {
         Map<String, List<String>> friends_map = makeFriendsMap(friends);
-        List<String> friend_list = friends_map.get(user);
+        // user key에 대한 친구 목록이 없는 경우 빈 array 반환
+        List<String> array = new ArrayList<>();
+        List<String> friend_list = friends_map.getOrDefault(user, array);
         for (String friend : friend_list) {
             List<String> cross_friend_list = friends_map.get(friend);
             for (String cross_friend : cross_friend_list) {
