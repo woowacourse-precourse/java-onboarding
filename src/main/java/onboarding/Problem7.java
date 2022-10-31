@@ -1,12 +1,40 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        List<String> answer = new ArrayList<>();
+        //친구면 해쉬맵 <username,점수> 점수 Min integer해줌
+        HashMap<String,ArrayList<String>> friendmap=new HashMap<>();
+        HashMap<String,Boolean> userfriend=new HashMap<>();
+        HashMap<String,Integer> visitpoint=new HashMap<>();
+        PriorityQueue<friendpoint> priorityQueue=new PriorityQueue<>();
+
+
+        for(int i=0;i<friends.size();i++){
+
+            for(int j=0;j<2;j++){
+                if(friends.get(i).get(j)==user){
+                    userfriend.put(friends.get(i).get((j+1)%2),true);
+                }
+
+
+                if(friendmap.containsKey(friends.get(i).get(j)))
+                    friendmap.get(friends.get(i).get(j)).add(friends.get(i).get((j+1)%2));
+
+                else {
+                    ArrayList<String> news = new ArrayList<>();
+                    news.add(friends.get(i).get((j+1)%2));
+                    friendmap.put(friends.get(i).get(j), news);
+                }
+
+
+
+            }}
+
+
+return answer;
     }
     static class friendpoint implements Comparable<friendpoint>{
         private String user;
