@@ -216,6 +216,19 @@ class ApplicationTest {
             List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com");
             assertThat(Problem6.solution(forms)).isEqualTo(result);
         }
+
+        @Test
+        void testValidateForm() {
+            List<List<String>> forms = List.of(
+                    List.of("andrew#email.com", "앤드류"),
+                    List.of("blank@email.com", ""),
+                    List.of("jason@email.come", "제이슨"),
+                    List.of("testtesttesttesttesttest@email.com", "테스트")
+            );
+
+            assertThatThrownBy(() -> Problem6.validate(forms))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
     }
 
     @Nested
