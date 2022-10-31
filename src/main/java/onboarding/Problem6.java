@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     public static Map<Integer, String> userMap;
@@ -45,5 +46,11 @@ public class Problem6 {
             }
         }
     }
+
+    public static List<Integer> getDistinctIndexList(){
+        return duplicatedIndex.stream().distinct().collect(Collectors.toList());
+    }
+
+
 
 }
