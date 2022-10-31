@@ -28,11 +28,26 @@ public class Problem7 {
 		}
 		return returnId;
 	}
+	private static List<List<String>> getFriendsWithoutUser
+	(String user,List<List<String>> friends){
+		List<List<String>> friendsWithoutUser = new ArrayList<List<String>>();
+
+		for(int i=0;i<friends.size();i++) {
+			if(!friends.get(i).contains(user)) {
+				friendsWithoutUser.add(friends.get(i));
+			}
+		}
+
+		return friendsWithoutUser;
+	}
+	
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         //"이미 친구"
         List<String> alreadyFriends = getAlreadyFriends(user,friends);
 
+		//"나를 제외한 친구관계"
+		List<List<String>> friendsWithoutUser = getFriendsWithoutUser(user, friends);
 		
 		
         return answer;
