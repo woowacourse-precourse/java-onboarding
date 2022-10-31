@@ -1,5 +1,36 @@
 package onboarding;
 
+class FrogConverter {
+    private static final int UPPER_CASE_ASCII_SUM = 155;
+    private static final int LOWER_CASE_ASCII_SUM = 219;
+    private String word;
+
+    public FrogConverter(String word) {
+        this.word = word;
+    }
+
+    public String convert() {
+        StringBuilder sb = new StringBuilder();
+        String[] split = word.split("");
+        for (String s : split) {
+            char now = s.charAt(0);
+            if (Character.isUpperCase(now)) {
+                char converted = (char) (UPPER_CASE_ASCII_SUM - now);
+                sb.append(converted);
+                continue;
+            }
+            if (Character.isLowerCase(now)) {
+                char converted = (char) (LOWER_CASE_ASCII_SUM - now);
+                sb.append(converted);
+                continue;
+            }
+            sb.append(now);
+        }
+
+        return sb.toString();
+    }
+}
+
 /*
 기능 목록
 1. 청개구리 사전 기능
@@ -9,7 +40,7 @@ package onboarding;
  */
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        FrogConverter frogConverter = new FrogConverter(word);
+        return frogConverter.convert();
     }
 }
