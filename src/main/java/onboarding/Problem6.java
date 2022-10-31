@@ -28,12 +28,12 @@ public class Problem6 {
     public static List<String> findCrewApplyingDuplicateWordsInNickname(HashMap<String, String> crewDictionary, List<String> allDuplicateWords){
         return crewDictionary.keySet()
                       .stream()
-                      .filter(email -> findDuplicateWords(crewDictionary.get(email), allDuplicateWords))
+                      .filter(email -> findDuplicateNickname(crewDictionary.get(email), allDuplicateWords))
                       .collect(Collectors.toList());
 
     }
 
-    public static boolean findDuplicateWords(String nickname, List<String> allDuplicateWords){
+    public static boolean findDuplicateNickname(String nickname, List<String> allDuplicateWords){
         for(String words: allDuplicateWords){
             if(nickname.contains(words)){
                 return true;
