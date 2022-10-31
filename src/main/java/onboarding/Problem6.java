@@ -12,10 +12,10 @@ public class Problem6 {
 
         for (List<String> userInfo : forms) {
             int checkIndex = userInfo.get(1).length() - 1;
-            checkDuplicate(checkIndex, userInfo);
+            checkDuplicateLetters(checkIndex, userInfo);
         }
 
-        answer = extractDuplicateEmails();
+        answer = extractEmailsByDuplicateNickname();
         answer = removeDuplicateEmailData(answer);
         Collections.sort(answer);
 
@@ -26,7 +26,7 @@ public class Problem6 {
         twoLetters = new HashMap<>();
     }
 
-    private static void checkDuplicate(int checkIndex, List<String> userInfo) {
+    private static void checkDuplicateLetters(int checkIndex, List<String> userInfo) {
         for (int j = 0; j < checkIndex; j++) {
             String checkTwoLetter = userInfo.get(1).substring(j, j + 2);
             List<String> tempList = new ArrayList<>();
@@ -43,7 +43,7 @@ public class Problem6 {
         return twoLetters.containsKey(checkTwoLetter);
     }
 
-    private static List<String> extractDuplicateEmails() {
+    private static List<String> extractEmailsByDuplicateNickname() {
         List<String> answer = new ArrayList<>();
 
         for (String key : twoLetters.keySet()) {
