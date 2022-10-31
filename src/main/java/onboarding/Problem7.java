@@ -59,13 +59,13 @@ public class Problem7 {
         visitors.removeAll(userFriends);
     }
 
-    static HashMap<String, Integer> setScore(HashMap<String,Integer> scoreBoard, List<String> userFOAF, Integer score){
-        for(String FOAF : userFOAF){
-            if(scoreBoard.get(FOAF) == null){
-                scoreBoard.put(FOAF,score);
+    static HashMap<String, Integer> setScore(HashMap<String,Integer> scoreBoard, List<String> recommendUsers, Integer score){
+        for(String recommendUser : recommendUsers){
+            if(scoreBoard.get(recommendUser) == null){
+                scoreBoard.put(recommendUser,score);
                 continue;
             }
-            scoreBoard.put(FOAF,scoreBoard.get(FOAF)+score);
+            scoreBoard.put(recommendUser,scoreBoard.get(recommendUser)+score);
         }
         return scoreBoard;
     }
