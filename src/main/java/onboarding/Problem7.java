@@ -70,7 +70,15 @@ public class Problem7 {
     		}
     	}
     }
+    public static void increaseScoreVisitors(List<String> visitors) {
+    	for(String visitor: visitors) {
+    		increaseOne(visitor);
+    	}
+    }
     public static void increaseTen(String name) {
     	remainUserAndScore.put(name, remainUserAndScore.getOrDefault(name, 0) + 10);
+    }
+    public static void increaseOne(String name) {
+    	remainUserAndScore.put(name, remainUserAndScore.getOrDefault(name, 0) + 1);
     }
 }
