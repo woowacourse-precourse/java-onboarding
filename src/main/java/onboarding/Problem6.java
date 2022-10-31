@@ -15,7 +15,6 @@ public class Problem6 {
         }
 
         logic(forms);
-
         return answer;
     }
 
@@ -105,17 +104,17 @@ public class Problem6 {
     }
 
     /**
-     * 입력받은 list의 중복을 제거한 뒤 해당 리스트를 반환합니다.
-     * @param {List<String>} list
-     * @return {List<String>} list
+     * answer의 중복을 제거한 뒤 해당 리스트를 반환합니다.
+     * @param
+     * @return {List<String>} answer
      */
-    public static List<String> removeDuplication(List<String> list) {
-        return list.stream().distinct().collect(Collectors.toList());
+    public static void removeDuplication() {
+        answer.stream().distinct().collect(Collectors.toList());
     }
 
     /**
      * 예외사항 검사 로직들을 실행합니다.
-     * @param {List<List<String></>></>}forms
+     * @param {List<List<String>>}forms
      * @throws Exception
      */
     public static void doValidation(List<List<String>> forms) throws Exception {
@@ -125,12 +124,12 @@ public class Problem6 {
 
     /**
      * 순서에 맞게 요구 사항 기능들을 수행
-     * @param {List<List<String></>></>}forms
+     * @param {List<List<String>>}forms
      */
     public static void logic(List<List<String>> forms) {
         List<List<String>> sortedForms = sortFormByNickName(forms);
         findDuplicateNickName(sortedForms);
         sort();
-        answer = removeDuplication(answer);
+        removeDuplication();
     }
 }
