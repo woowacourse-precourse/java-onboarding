@@ -10,7 +10,7 @@ import java.util.List;
 //3. max
 
 class Problem1 {
-    private static int addNum(int pageNum)    {
+    private static int addNum(int pageNum) {
         int num = 0;
 
         while (pageNum > 0)
@@ -22,7 +22,7 @@ class Problem1 {
         return num;
     }
 
-    private static int mulNum(int pageNum)    {
+    private static int mulNum(int pageNum) {
         int num = 1;
 
         while (pageNum > 0)

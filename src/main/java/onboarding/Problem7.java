@@ -36,6 +36,32 @@ public class Problem7 {
         friendsMap.put(strings.get(1), flist);
     }
 
+    private static void addVisitScore(String s, String user) {
+        int sc;
+        List<String> userFriends = friendsMap.get(user);
+
+        if (s == "mrko" || userFriends.contains(s))
+            return ;
+        if (!score.containsKey(s))
+            sc = 1;
+        else
+            sc = score.get(s) + 1;
+        score.put(s, sc);
+    }
+
+    private static void addFriendsScore(String s, String user) {
+        List<String> friendsList = friendsMap.get(s);
+        List<String> userFriends = friendsMap.get(user);
+
+        for (int i = 0; i < friendsList.size(); i++) {
+            String name = friendsList.get(i);
+            if (name == "mrko" || userFriends.contains(name))
+                continue;
+            int sc = score.get(name);
+            score.put(name, sc + 10);
+        }
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
 
@@ -63,31 +89,5 @@ public class Problem7 {
         }
 
         return answer;
-    }
-
-    private static void addVisitScore(String s, String user) {
-        int sc;
-        List<String> userFriends = friendsMap.get(user);
-
-        if (s == "mrko" || userFriends.contains(s))
-            return ;
-        if (!score.containsKey(s))
-            sc = 1;
-        else
-            sc = score.get(s) + 1;
-        score.put(s, sc);
-    }
-
-    private static void addFriendsScore(String s, String user) {
-        List<String> friendsList = friendsMap.get(s);
-        List<String> userFriends = friendsMap.get(user);
-
-        for (int i = 0; i < friendsList.size(); i++) {
-            String name = friendsList.get(i);
-            if (name == "mrko" || userFriends.contains(name))
-                continue;
-            int sc = score.get(name);
-            score.put(name, sc + 10);
-        }
     }
 }

@@ -14,7 +14,7 @@ public class Problem6 {
     private static List<String> stringCombination = new ArrayList<>();
     private static HashSet<Integer> idx = new HashSet<>();
 
-    private static void comb(char[] str, int r, int i){
+    private static void comb(char[] str, int r, int i) {
         String result = "";
 
         while (r-- > 0)
@@ -22,14 +22,13 @@ public class Problem6 {
         stringCombination.add(result);
     }
 
-    private static void callComb(char[] str, int r)
-    {
+    private static void callComb(char[] str, int r) {
         for(int i = 0; i <= str.length - r; i++){
             comb(str, r, i);
         }
     }
 
-    private static void getnickComb(int i){
+    private static void getnickComb(int i) {
         String str = nick.get(i);
         for (int j = 2; j <= str.length(); j++)
             callComb(str.toCharArray(),  j);
