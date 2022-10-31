@@ -44,14 +44,12 @@ public class Problem6 {
 
 		public Collection<String> getDuplicateNicknameTokens() {
 			Set<String> duplicateTokens = new HashSet<>();
+			int ptr1 = 0;
+			int ptr2 = 2;
 			for (int i = 1; i < nickname.length(); i++) {
-				int ptr1 = 0;
-				int ptr2 = i + 1;
-				while (ptr2 <= nickname.length()) {
-					duplicateTokens.add(nickname.substring(ptr1, ptr2));
-					ptr1++;
-					ptr2++;
-				}
+				duplicateTokens.add(nickname.substring(ptr1, ptr2));
+				ptr1++;
+				ptr2++;
 			}
 			return duplicateTokens;
 		}
