@@ -1,8 +1,7 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -42,7 +41,7 @@ public class Problem6 {
 
     public static ArrayList<String> findDuplicateName(List<List<String>> forms) {
         ArrayList<String> duplicateEmail = new ArrayList<>();
-        HashMap<String, List<String>> twoLetter = new HashMap<>();
+        HashMap<String, ArrayList<String>> twoLetter = new HashMap<>();
         boolean exception = false;
 
         for (List<String> formsList: forms) {
@@ -56,8 +55,10 @@ public class Problem6 {
             }
 
             twoLetter.putAll(getTwoLetterEach(formsList));
-            
+
         }
+
+        duplicateEmail = (getDuplicateFromHash(twoLetter));
 
         return duplicateEmail;
     }
@@ -81,4 +82,56 @@ public class Problem6 {
 
         return Letter;
     }
+
+    public static ArrayList<String> getDuplicateFromHash(HashMap<String, ArrayList<String>> twoLetter) {
+        ArrayList<String> sameValueEmail = new ArrayList<>();
+        HashSet<String> duplicateSet;
+
+        for (Map.Entry<String, ArrayList<String>> entry: twoLetter.entrySet()) {
+            String key = entry.getKey();
+            ArrayList<String> value = entry.getValue();
+
+            sameValueEmail.addAll(getSameValue(twoLetter, key, value));
+
+        }
+
+        duplicateSet = new HashSet<>(sameValueEmail);
+        sameValueEmail = new ArrayList<>(duplicateSet);
+
+        return sameValueEmail;
+    }
+
+    public static ArrayList<String> getSameValue(HashMap<String, ArrayList<String>> twoLetter, String key,
+                                                 ArrayList<String> value) {
+
+        ArrayList<String> sameValueList = new ArrayList<>();
+        int indexOfFirstValue;
+        int indexOfSecondValue;
+
+
+        for (Map.Entry<String, ArrayList<String>> entry2: twoLetter.entrySet()) {
+            String compareKey = entry2.getKey();
+            ArrayList<String> compareValue = entry2.getValue();
+
+            if (key.equals(compareKey)) {
+                continue;
+            }
+
+            for (indexOfFirstValue = 0; indexOfFirstValue < value.size(); indexOfFirstValue++) {
+                 for (indexOfSecondValue =0; indexOfSecondValue < compareValue.size(); indexOfSecondValue++) {
+
+                     if(value.get(indexOfFirstValue).equals(compareValue.get(indexOfSecondValue))) {
+                         sameValueList.add(compareKey);
+                     }
+                 }
+
+
+            }
+
+        }
+
+        return sameValueList;
+    }
+
+
 }
