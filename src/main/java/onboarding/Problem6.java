@@ -3,32 +3,46 @@ package onboarding;
 import java.util.*;
 
 public class Problem6 {
-    public static List<String> solution(List<List<String>> forms) {
-        Map<String, Integer> map = new HashMap<String, Integer>();
 
-        for (List<String> item : forms) {
-            for (int j = 0; j < item.get(1).length(); j++) {
-                for (int k = 0; k < item.get(1).length() - 1 - j; k++) {
-                    if (map.containsKey(item.get(1).substring(k, k + j + 2))) {
-                        int cnt = map.get(item.get(1).substring(k, k + j + 2));
-                        map.put(item.get(1).substring(k, k + j + 2), cnt + 1);
-                    } else {
-                        map.put(item.get(1).substring(k, k + j + 2), 1);
-                    }
+    public static Map<String, Integer> getDuplCheckDict(List<List<String>> forms) {
+        Map<String, Integer> duplDict = new HashMap<String, Integer>();
+        forms.forEach(form -> {
+            for (int j = 0; j < form.get(1).length() - 1; j++) {
+                if (duplDict.containsKey(form.get(1).substring(j, j + 2))) {
+                    int cnt = duplDict.get(form.get(1).substring(j, j + 2));
+                    duplDict.put(form.get(1).substring(j, j + 2), cnt + 1);
+                } else {
+                    duplDict.put(form.get(1).substring(j, j + 2), 1);
                 }
             }
-        }
-        List<String> resultlist = new ArrayList<String>();
-        for (String str : map.keySet()) {
-            if (map.get(str) != 1) {
-                for (List<String> item : forms) {
-                    if (item.get(1).contains(str) == true) {
-                        resultlist.add(item.get(0));
+        });
+        return duplDict;
+    }
+
+    public static List<String> getDuplEmailList(List<List<String>> forms, Map<String, Integer> duplCheckDict) {
+        List<String> duplEmailList = new ArrayList<String>();
+        duplCheckDict.keySet().forEach(duplStr -> {
+            if (duplCheckDict.get(duplStr) != 1) {
+                forms.forEach(form -> {
+                    if (getNickname(form).contains(duplStr) == true) {
+                        duplEmailList.add(getEmail(form));
                     }
-                }
+                });
             }
-        }
-        Collections.sort(resultlist);
-        return (new ArrayList<String>(new HashSet(resultlist)));
+        });
+        Collections.sort(duplEmailList);
+        return new ArrayList<String>(new HashSet(duplEmailList));
+    }
+    public static String getEmail(List<String> form) {
+        return form.get(0);
+    }
+
+    public static String getNickname(List<String> form) {
+        return form.get(1);
+    }
+    public static List<String> solution(List<List<String>> forms) {
+        Map<String, Integer> duplCheckDict = getDuplCheckDict(forms);
+        List<String> duplEmailList = getDuplEmailList(forms, duplCheckDict);
+        return duplEmailList;
     }
 }
