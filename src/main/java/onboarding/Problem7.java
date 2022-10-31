@@ -19,16 +19,24 @@ public class Problem7 {
             }
         }
 
-
         for (int i = 0; i < friends.size(); i += 1) {
             for (int j = 0; j < friendList.size(); j += 1){
                 if (friends.get(i).get(1) == friendList.get(j)){
-
+                    if (result.containsKey(friends.get(i).get(0))) {
+                        result.put(friends.get(i).get(0), result.get(friends.get(i).get(0)) + 10);
+                    } else {
+                        result.put(friends.get(i).get(0), 10);
+                    }
                 } else if (friends.get(i).get(0) == friendList.get(j)) {
-
+                    if (result.containsKey(friends.get(i).get(1))) {
+                        result.put(friends.get(i).get(1), result.get(friends.get(i).get(1)) + 10);
+                    } else {
+                        result.put(friends.get(i).get(1), 10);
+                    }
                 }
             }
         }
+        System.out.println(result);
 
         List<String> answer = Collections.emptyList();
         return answer;
