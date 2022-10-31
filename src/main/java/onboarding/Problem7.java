@@ -54,5 +54,18 @@ public class Problem7 {
         return together;
     }
 
+    /**
+     * 방문자 추출
+     */
+    static Map<String, Integer> visitor(String user, List<List<String>> friends, List<String> visitors) {
+        Map<String,Integer> result = together(user,friends);
+        List<String> uf = userFriends(user,friends);
 
+        for (String visitor : visitors) {
+            if (!(visitor.equals(uf))) {
+                result.put(visitor, result.getOrDefault(visitor, 0) + 1);
+            }
+        }
+        return result;
+    }
 }
