@@ -1,7 +1,6 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -29,5 +28,17 @@ public class Problem7 {
             userFriendList.add(friend.get(friendIndex));
         }
         return userFriendList;
+    }
+
+    /**
+     * friends의 사람들을 Map에 저장하는 함수
+     */
+    private static Map<String,Integer> listToMap(List<List<String>> friends){
+        Map<String, Integer> friendsMap = new HashMap<>();
+        for (List<String> friend : friends) {
+            friendsMap.put(friend.get(0),0);
+            friendsMap.put(friend.get(1),0);
+        }
+        return friendsMap;
     }
 }
