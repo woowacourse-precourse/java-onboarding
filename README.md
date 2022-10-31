@@ -51,7 +51,7 @@ BUILD SUCCESSFUL in 0s
    - 포비와 크롱의 점수를 비교해 승자를 결정하는 기능
 
 
-3. [문제 2](./docs/PROBLEM2.md)
+2. [문제 2](./docs/PROBLEM2.md)
 
    📌 필요한 기능 목록
    - 문자열을 순회하는 기능
@@ -62,14 +62,14 @@ BUILD SUCCESSFUL in 0s
        - 이전에 중복 문자열이 없었다면 문자를 새 문자열에 추가한다
    
 
-4. [문제 3](./docs/PROBLEM3.md)
+3. [문제 3](./docs/PROBLEM3.md)
 
    📌 필요한 기능 목록
    - 1부터 number까지 순회하는 기능
    - 숫자를 문자열로 변환하여 문자열에 포함된 3, 6, 9 개수를 세는 기능
    
 
-5. [문제 4](./docs/PROBLEM4.md)
+4. [문제 4](./docs/PROBLEM4.md)
 
    📌 필요한 기능 목록
    - 문자열을 순회하는 기능
@@ -77,15 +77,22 @@ BUILD SUCCESSFUL in 0s
    - 변환한 문자를 새 문자열에 더하는 기능
    
 
-6. [문제 5](./docs/PROBLEM5.md)
+5. [문제 5](./docs/PROBLEM5.md)
 
    📌 필요한 기능 목록
    - 화폐단위에 따라 변환 가능한 개수를 구하는 기능
    - 금액별로 개수를 구해서 answer 리스트에 추가하는 기능
 
 
-7. [문제 6](./docs/PROBLEM6.md)
-8. [문제 7](./docs/PROBLEM7.md)
+6. [문제 6](./docs/PROBLEM6.md)
+
+   📌 필요한 기능 목록
+   - 닉네임을 두 글자마다 나눠서 저장하는 기능
+   - 같은 글자가 연속적으로 포함된 닉네임이 있는지 검증하는 기능
+   - 이메일을 중복 없이 오름차순 정렬하는 기능
+
+
+7. [문제 7](./docs/PROBLEM7.md)
 
 ---
 
