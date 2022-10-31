@@ -1,9 +1,24 @@
 package onboarding;
 
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Locale;
+import java.util.Map;
 
 public class Problem4 {
     public static String solution(String word) {
+
+        String alpabet = "ZYXWVUTSRQPONMLKJIHGFEDCBA";
+        String alpabetReverse = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+
+        Map testMap = new HashMap();
+
+        for(int i = 0, j = 0 ; i<alpabetReverse.length();i++,j++){
+            char a = alpabetReverse.charAt(i);
+            char b = alpabet.charAt(j);
+            testMap.put(a,b);
+        }
+        System.out.println(testMap);
         String answer = "";
         return answer;
     }
