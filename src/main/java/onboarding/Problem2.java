@@ -9,6 +9,13 @@ public class Problem2 {
 		if (cryptogram.length() == 1) {
 			return cryptogram;
 		}
+		for (Character character : findRepeated(cryptogram)) {
+			answer.append(character);
+		}
+        return answer.toString();
+    }
+
+	private static List<Character> findRepeated(String cryptogram) {
 		List<Character> list = new ArrayList<>();
 		char[] chars = cryptogram.toCharArray();
 		add(list, chars[0]);
@@ -19,11 +26,8 @@ public class Problem2 {
 			}
 			add(list, chars[i]);
 		}
-		for (Character character : list) {
-			answer.append(character);
-		}
-        return answer.toString();
-    }
+		return list;
+	}
 
 	private static boolean isRepeated(char[] chars, int i) {
 		return chars[i - 2] == chars[i - 1] && chars[i-1] == chars[i];
