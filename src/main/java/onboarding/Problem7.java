@@ -46,4 +46,30 @@ public class Problem7 {
             }
         }
     }
+
+    public static void calculateVisitors(List<String> visitors,List<String> userFriends, HashMap<String, Integer> hashMap){
+        for (String visitor: visitors) {
+            if (!userFriends.contains(visitor)){
+                updateScore(hashMap,1,visitor);
+            }
+        }
+    }
+
+    public static List<String> sortScore(HashMap<String, Integer> hashMap){
+        List<Map.Entry<String, Integer> > hashEntry =
+                new LinkedList<>(hashMap.entrySet());
+
+        hashEntry.sort((o1, o2) -> {
+            if (Objects.equals(o1.getValue(), o2.getValue())) {
+                return o1.getKey().compareTo(o2.getKey());
+            }
+            return (o2.getValue()).compareTo(o1.getValue());
+        });
+
+        List<String> answer = new ArrayList<>();
+        for (int i = 0; i < Math.min(hashEntry.size(), 5); i++) {
+            answer.add(hashEntry.get(i).getKey());
+        }
+        return answer;
+    }
 }
