@@ -39,8 +39,23 @@ class Problem1 {
         return true;
     }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        Problem1 p1 = new Problem1();
+        if (!(p1.checkPagesIsNotFirstOrLast(pobi, crong))) {
+            return -1;
+        }
+        int pobiAnswer = p1.getLargeValueOnePerson(pobi);
+        int crongAnswer = p1.getLargeValueOnePerson(crong);
+
+        return p1.getAnswer(pobiAnswer, crongAnswer);
+    }
+
+    public int getAnswer(int pobiAnswer, int crongAnswer) {
+        if (pobiAnswer > crongAnswer) {
+            return 1;
+        } else if (pobiAnswer < crongAnswer) {
+            return 2;
+        }
+        return 0;
     }
 
     public int getLargeValueOnePerson(List<Integer> list) {
