@@ -117,6 +117,12 @@ public class Problem7 {
 
     public ArrayList<String> makeRecommendedList(String user, HashMap<String, People> map){
         ArrayList<String> recommendedList = new ArrayList<>();
+        People[] peopleArray = map.values().toArray(new People[0]);
+        Arrays.sort(peopleArray);
+        for(People person : peopleArray){
+            addEmailToList(user, person, recommendedList);
+            if(recommendedList.size()==5) break;
+        }
         return recommendedList;
     }
 

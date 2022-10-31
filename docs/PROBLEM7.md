@@ -85,6 +85,12 @@
 
 <br/>
 
-- ⬜ user와 친구가 아닌 people 객체의 이름 속성을 점수 순으로 내림차순 정렬한 리스트를 반환하는 makeRecommendedList 메소드 구현
-  - ⬜ 점수가 가장 높은 5명까지만 반환
+- ⬜ addEmailList 메소드 구현
+  - ⬜ user이거나 추천점수가 0점인 people 객체들을 제외한 people 객체를 recommendList에 삽입한다.
+
+<br/>
+
+- ✅ makeRecommendedList 메소드 구현
+  - ✅ user와 친구가 아닌 people 객체의 이름 속성을 점수 순으로 내림차순 정렬한 리스트를 반환
+  - ✅ 점수가 가장 높은 5명까지만 반환
 
