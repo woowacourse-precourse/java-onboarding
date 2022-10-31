@@ -27,15 +27,17 @@ public class Problem7 {
     public static HashMap<String, Integer> calcScore(String user, HashMap<String, List<String>> friendMap, List<String> visitors){
         HashMap<String, Integer> scoreMap=new HashMap<>();
         //사용자와 함께 아는 친구 점수 추가
-        for(String friend : friendMap.get(user)){
-            for(String recommand:friendMap.get(friend)){
-                if(friendMap.get(user).contains(recommand) || recommand.equals(user)) continue;
-                scoreMap.put(recommand, scoreMap.getOrDefault(recommand, 0)+10);
+        if(friendMap.get(user)!=null) {
+            for (String friend : friendMap.get(user)) {
+                for (String recommand : friendMap.get(friend)) {
+                    if (friendMap.get(user).contains(recommand) || recommand.equals(user)) continue;
+                    scoreMap.put(recommand, scoreMap.getOrDefault(recommand, 0) + 10);
+                }
             }
         }
         //사용자의 타임 라인에 방문한 횟수 점수 추가
         for(String visitor : visitors){
-            if(friendMap.get(user).contains(visitor)) continue;
+            if(friendMap.get(user)!=null && friendMap.get(user).contains(visitor)) continue;
             scoreMap.put(visitor, scoreMap.getOrDefault(visitor, 0)+1);
         }
         return scoreMap;
