@@ -9,20 +9,18 @@ class UserInfo{
     private static final int MINIMUM_LENGTH_ID = 1;
     private static final int MAXIMUM_LENGTH_ID = 30;
     private static final String OUT_OF_RANGE = "길이가 1 이상 30 이하의 아이디를 입력해주세요";
+    private static final String OUT_OF_SIZE = "길이가 0 이상 10,000 이하인 리스트,배열을 입력해주세요";
+    private static final int MIMIMUM_SIZE_VISITOR = 0;
+    private static final int MAXIMUM_SIZE_VISITOR = 10000;
+
     void validateRange(String id){
-        if(id.length() < MAXIMUM_LENGTH_ID || id.length() > MINIMUM_LENGTH_ID)
+        if(id.length() < MINIMUM_LENGTH_ID || id.length() > MAXIMUM_LENGTH_ID)
             throw new IllegalArgumentException(OUT_OF_RANGE);
     }
-
-
-/*    - user는 길이가 1 이상 30 이하인 문자열이다.
-    - friends는 길이가 1 이상 10,000 이하인 리스트/배열이다.
-    - friends의 각 원소는 길이가 2인 리스트/배열로 [아이디 A, 아이디 B] 순으로 들어있다.
-    - 아이디는 길이가 1 이상 30 이하인 문자열이다.
-    - visitors는 길이가 0 이상 10,000 이하인 리스트/배열이다.
-    - 사용자 아이디는 알파벳 소문자로만 이루어져 있다.
-    - 동일한 친구 관계가 중복해서 주어지지 않는다.
-    - 추천할 친구가 없는 경우는 주어지지 않는다.*/
+    void validateSizeOfFriends(List<String> visitors){
+        if(visitors.size() < MIMIMUM_SIZE_VISITOR || visitors.size() > MAXIMUM_SIZE_VISITOR)
+            throw new IllegalArgumentException(OUT_OF_SIZE);
+    }
 }
 class Point{
     static List<String> calcTotalPotint(String user, List<List<String>> friends,List<String> visitors) {
