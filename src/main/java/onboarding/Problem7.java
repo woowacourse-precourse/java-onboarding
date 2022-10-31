@@ -33,6 +33,32 @@ visitors: 사용자 타임 라인 방문 기록
 */
 
 public class Problem7 {
+    // 사용자가 어떤 그룹에 속하는지 찾기 위한 메서드이다.
+    public static String find_friend(HashMap<String, String> friends_unioned, String group) {
+
+        String parent = friends_unioned.get(group);
+
+        // 자기 자신이 루트 노드(속한 그룹)이 아닌 경우, 루트 노드를 찾을 때까지 재귀적으로 호출한다.
+        if (!(parent.equals(group))) {
+            friends_unioned.put(group, find_friend(friends_unioned, parent));
+        }
+        return parent;
+    }
+
+    // friends 리스트에 있는 사용자들을 같은 그룹으로 묶어준다.
+    public static void union_friend(HashMap<String, String> friends_unioned, String user1, String user2) {
+        user1 = find_friend(friends_unioned, user1);
+        user2 = find_friend(friends_unioned, user2);
+
+        // 알파벳 순으로 비교했을 때 더 작은 유저의 이름을 parent로 삼는다.
+        if (user1.compareTo(user2) < 0) {
+            friends_unioned.put(user2, user1);
+        }
+        else {
+            friends_unioned.put(user1, user2);
+        }
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
 
@@ -53,6 +79,24 @@ public class Problem7 {
         // 초기 구성을 0으로 초기화해준다.
         for (String friend : friends_set) {
             friends_score.put(friend, 0);
+        }
+
+        // 서로 아는 친구 목록을 구성하기 위한 HashMap을 구성해준다.
+        // 그룹은 일단 자기 자신으로 초기화해준다.
+        HashMap<String, String> friends_unioned = new HashMap<>() {{
+            put(user, user);
+        }};
+
+        for (String friend : friends_set) {
+            friends_unioned.put(friend, friend);
+        }
+
+        // 서로 친구인 사용자들을 같은 그룹으로 묶어준다.
+        for (List<String> friend : friends) {
+            String user1 = friend.get(0);
+            String user2 = friend.get(1);
+
+            union_friend(friends_unioned, user1, user2);
         }
 
         return answer;
