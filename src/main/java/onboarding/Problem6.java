@@ -18,9 +18,7 @@ public class Problem6 {
 			// 기준 닉네임과 그 외 닉네임 분리
 			List<String> ExtraNicknameList = makeExtraNicknameList(nicknameList, list.get(1));
 			// 그 외 닉네임들 중복 여부 확인 후 중복 시 리스트 추가
-			for (String extraNickname : ExtraNicknameList) {
-				checkAndAddDuplicateNickname(duplicateNicknameList, splitStringList, extraNickname);
-			}
+			checkAndAddDuplicateNicknames(duplicateNicknameList, splitStringList, ExtraNicknameList);
 		}
 
 		// 리스트 중복 제거
@@ -36,6 +34,13 @@ public class Problem6 {
 		return answer;
 	}
 
+	private static void checkAndAddDuplicateNicknames(List<String> duplicateNicknameList, List<String> splitStringList,
+		List<String> ExtraNicknameList) {
+		for (String extraNickname : ExtraNicknameList) {
+			checkAndAddDuplicateNickname(duplicateNicknameList, splitStringList, extraNickname);
+		}
+	}
+
 	private static void checkAndAddDuplicateNickname(List<String> duplicateNicknameList, List<String> splitStringList,
 		String extraNickname) {
 		for (String splitString : splitStringList) {
@@ -44,7 +49,8 @@ public class Problem6 {
 		}
 	}
 
-	private static void addDuplicateNicknameList(List<String> duplicateNicknameList, String extraNickname, String splitString) {
+	private static void addDuplicateNicknameList(List<String> duplicateNicknameList, String extraNickname,
+		String splitString) {
 		if (isDuplicate(extraNickname, splitString))
 			// 중복된 닉네임 리스트에 추가
 			duplicateNicknameList.add(extraNickname);
@@ -93,6 +99,5 @@ public class Problem6 {
 	static List<String> removeListDuplication(List<String> list) {
 		return list.stream().distinct().collect(Collectors.toList());
 	}
-
 
 }
