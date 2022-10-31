@@ -3,6 +3,13 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
+    private static Map<String, Integer> fillMap(List<Map.Entry<String, Integer>> entryList){ //entryList를 Map형태로 변환시켜줌
+        Map<String, Integer> keyFriend = new LinkedHashMap<>(); //정렬 결과를 보존하기 위해서 linkedhashmap사용
+        for (Map.Entry<String,Integer> entry : entryList){
+            keyFriend.put(entry.getKey(),entry.getValue());
+        }
+        return keyFriend;
+    }
     private static List<Map.Entry<String,Integer>> entryReturn(Map<String,Integer> friendScore){
         return new LinkedList<>(friendScore.entrySet());
     }
@@ -76,5 +83,6 @@ public class Problem7 {
         Map<String,Integer> friendScore = plusVisit(plusFriend(friendMap,user),visitors);
         minusUserFriend(friendScore, friendMap, user);//userfriend는 제외
         friendScore = sortBy(friendScore);
+        return new ArrayList<>(friendScore.keySet());
     }
 }
