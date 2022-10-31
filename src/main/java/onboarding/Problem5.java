@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -17,6 +18,19 @@ class MoneyTransformation{
     }
     int moneyVoucherCount(int money, int moneyVoucher){
         return money/moneyVoucher;
+    }
+    List<Integer> exchange(){
+        int voucherCount;
+        int amount;
+        List<Integer> moneyVoucherCounts=new ArrayList<>();
+
+        for (Integer voucher : moneyVouchers) {
+            voucherCount = moneyVoucherCount(changes, voucher);
+            moneyVoucherCounts.add(voucherCount);
+            amount=calculateAmount(voucherCount, voucher);
+            withdraw(amount);
+        }
+        return moneyVoucherCounts;
     }
 }
 public class Problem5 {
