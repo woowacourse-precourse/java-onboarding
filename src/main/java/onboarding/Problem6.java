@@ -6,9 +6,13 @@ import java.util.List;
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<String>();
+        answer = checkString(forms);
+        answer.addAll(reverse_checkString(forms));
+
+
         return answer;
     }
-
+    //정순으로 2글자씩 비교
     public static List<String> checkString(List<List<String>> forms){
         List<String> strlist = new ArrayList<>();
         String strtemp = "";
@@ -30,7 +34,7 @@ public class Problem6 {
 
         return strlist;
     }
-
+    //역순으로 2글자씩 비교
     public static List<String> reverse_checkString(List<List<String>> forms){
         List<String> strlist = new ArrayList<>();
         String strtemp = "";
