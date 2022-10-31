@@ -24,25 +24,25 @@
 
 ## 구현 과정
 
-`HashMap<String, Set<String>>` 사용
+`HashMap<String, ArrayList<String>>` 사용
 
 결과값들을 `ArrayList<String> result`에 저장
 
 ---
-1. 한 닉네임에 대해 두 글자 이상 연속적으로 나타나는 부분 문자열을 모두 확인
+1. 한 닉네임에 대해 연속적으로 나타나는 두 글자 부분 문자열을 모두 확인
 
-    - ex) `제이엠` => `제이`, `이엠`, `제이엠`
+   - ex) `제이엠` => `제이`, `이엠`
 
 
 2. 해당 부분 문자열을 `key`로 갖고, 그 닉네임을 신청한 이메일을 `value`에 포함시키는
    HashMap 생성
 
-    - ex) `jm@email.com` 유저가 생성한 닉네임을 통해 다음과 같은 <br>
-      `(key, value)`쌍을 HashMap에 추가
+   - ex) `jm@email.com` 유저가 생성한 닉네임을 통해 다음과 같은 <br>
+     `(key, value)`쌍을 HashMap에 추가
 
-        - `("제이", {jm@email.com})`
-        - `("이엠", {jm@email.com})`
-        - `("제이엠", {jm@email.com})`
+      - `("제이", {jm@email.com})`
+      - `("이엠", {jm@email.com})`
+
 
 
 
@@ -50,4 +50,4 @@
    2 이상일 경우 해당 `key`를 `result`에 추가
 
 
-4. `result`를 오름차순 정렬 후 반환
+4. `result`의 값들을 중복 제거 및 오름차순 정렬 후 반환
