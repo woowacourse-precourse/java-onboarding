@@ -1,3 +1,21 @@
+##  기능 목록 리스팅
+
+- 문자열을 아스키 코드로 변환하는 기능
+- 대소문자를 분류하는 기능
+- 아스키 코드를 문자열로 변환하는 기능
+
+### 생각할 사항
+
+- enum 선언 하는 것이 깔끔하긴 하나 단순 문자열의 경우 필요한가 고민해볼 문제
+
+```
+private static final String UPPERCASE = "uppercase";
+private static final String LOWERCASE = "lowerCase";
+private static final String OTHER_LETTERS = "otherLetters";
+```
+
+<br>
+
 ## 🚀 기능 요구 사항
 
 어느 연못에 엄마 말씀을 좀처럼 듣지 않는 청개구리가 살고 있었다. 청개구리는 엄마가 하는 말은 무엇이든 반대로 말하였다.
