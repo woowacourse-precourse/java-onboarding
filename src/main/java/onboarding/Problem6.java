@@ -12,7 +12,7 @@ public class Problem6 {
         }
 
         for (String key : nameCountMap.keySet()) {
-            if (nameCountMap.get(key) > 1) {
+            if (isOverlap(nameCountMap, key)) {
                 getOverlapEmailList(forms, key, answer);
             }
         }
@@ -22,7 +22,7 @@ public class Problem6 {
         return answer;
     }
 
-    public static HashMap<String, Integer> countNumberOfName(List<List<String>> forms, HashMap<String, Integer> nameCountMap, int index){
+    public static HashMap<String, Integer> countNumberOfName(List<List<String>> forms, HashMap<String, Integer> nameCountMap, int index) {
         for (int j = 0; j < forms.get(index).get(1).length() - 1; j += 1) {
             String slicedName = forms.get(index).get(1).substring(j, j + 2);
             updateCountMap(nameCountMap, slicedName);
@@ -30,7 +30,7 @@ public class Problem6 {
         return nameCountMap;
     }
 
-    public static void getOverlapEmailList(List<List<String>> forms, String key, ArrayList<String> answer){
+    public static void getOverlapEmailList(List<List<String>> forms, String key, ArrayList<String> answer) {
         for (int i = 0; i < forms.size(); i += 1) {
             if (forms.get(i).get(1).contains(key)) {
                 answer.add(forms.get(i).get(0));
@@ -44,4 +44,9 @@ public class Problem6 {
         }
         return hashMap.put(string, 1);
     }
+
+    private static boolean isOverlap(HashMap<String, Integer> map, String key){
+        return map.get(key) > 1;
+    }
+
 }
