@@ -24,7 +24,7 @@ public class Problem6 {
         return nameTokenMap;
     }
 
-    private static List<String> getRemoveEmails(List<List<String>> forms, Map<String, Integer> nameTokenMap) {
+    private static List<String> getDuplicationEmails(List<List<String>> forms, Map<String, Integer> nameTokenMap) {
         List<String> removeEmails = new ArrayList<>();
         for (List<String> form : forms) {
             String email = form.get(0);
@@ -40,7 +40,7 @@ public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
         Map<String, Integer> nameTokenMap = getNameTokenMap(forms);
-        List<String> duplicationEmails = getRemoveEmails(forms, nameTokenMap);
+        List<String> duplicationEmails = getDuplicationEmails(forms, nameTokenMap);
         List<String> answer = duplicationEmails.stream()
                 .sorted()
                 .collect(Collectors.toList());
