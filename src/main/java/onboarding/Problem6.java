@@ -65,7 +65,6 @@ public class Problem6 {
         return  after;
     }
     public static List<String> solution(List<List<String>> forms) {
-        System.out.println( Find_Same(forms));
         List<String> answer = StoL(Find_Same(forms));
 
         return answer;
