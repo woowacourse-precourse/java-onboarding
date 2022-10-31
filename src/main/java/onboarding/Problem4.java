@@ -13,6 +13,10 @@ import java.util.List;
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
+        String[] str = word.split("");
+        List<String> strList = new ArrayList<>(Arrays.asList(str));
+
+        System.out.println(strList);
         return answer;
     }
 }
