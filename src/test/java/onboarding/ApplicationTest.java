@@ -1,5 +1,4 @@
 package onboarding;
-
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
@@ -30,6 +29,14 @@ class ApplicationTest {
         void case3() {
             List<Integer> pobi = List.of(99, 102);
             List<Integer> crong = List.of(211, 212);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
+        @Test
+        void case4() {
+            List<Integer> pobi = List.of(399, 400);
+            List<Integer> crong = List.of(401, 402);
             int result = -1;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
