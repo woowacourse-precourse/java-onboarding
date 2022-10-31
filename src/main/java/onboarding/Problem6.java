@@ -1,6 +1,9 @@
 package onboarding;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
 import java.util.regex.Pattern;
 
 public class Problem6 {
@@ -16,10 +19,35 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         validateLength(forms);
 
-        List<String> answer = new ArrayList<>();
+        List<String> answer = new ArrayList<>(checkDuplicateNickName(forms));
+        Collections.sort(answer);
         return answer;
     }
 
+    private static HashSet<String> checkDuplicateNickName(List<List<String>> forms) {
+        HashSet<String> set = new HashSet<>();
+
+        for (List<String> form : forms) {
+            String email = form.get(0);
+            String nickName = form.get(1);
+
+            validateEmail(email);
+            validateNickName(nickName);
+
+            for (int i=0; i<nickName.length()-1; i++) {
+                String temp = nickName.substring(i, i+2);
+
+                for (List<String> f : forms) {
+                    if (f.get(1).contains(temp)) {
+                        if (!f.get(0).equals(email)) {
+                            set.add(f.get(0));
+                        }
+                    }
+                }
+            }
+        }
+        return set;
+    }
 
     private static void validateLength(List<List<String>> input) {
         int inputSize = input.size();
