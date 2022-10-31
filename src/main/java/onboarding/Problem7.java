@@ -6,6 +6,9 @@ public class Problem7 {
 
     // 친구관계 Map
     public static HashMap<String, List<String>> friendMap;
+    // 친구추천 점수 Map
+    public static HashMap<String, Integer> recommendScore;
+
     // 친구 관계 Map 생성
     public static void getFriendMap(List<List<String>> friends) {
         friendMap = new HashMap<>();
@@ -25,6 +28,25 @@ public class Problem7 {
         list.add(rightFriend);
 
         return list;
+    }
+
+    // 친구관계와 방문자리스트를 기반으로 친추추천점수 Map 생성
+    public static void getRecommendScore(List<String> visitors, String user) {
+        recommendScore = new HashMap<>();
+
+        for (String userFriend : friendMap.get(user)) {
+            for (String friend : friendMap.get(userFriend)) {
+                if (!isFriend(user, friend)) {
+                    recommendScore.put(friend, recommendScore.getOrDefault(recommendScore.get(friend), 0) + 10);
+                }
+            }
+        }
+
+        for (String visitor : visitors) {
+            if (!isFriend(user, visitor)) {
+                recommendScore.put(visitor, recommendScore.getOrDefault(recommendScore.get(visitor), 0) + 1);
+            }
+        }
     }
 
     // 이미 친구 관계인지 판별
