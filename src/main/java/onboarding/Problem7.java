@@ -57,6 +57,15 @@ public class Problem7 {
         }
         return result;
     }
+    public static HashMap<String, Integer> updateAcquaintancePoint(HashMap<String, Integer> scoreBoard, List<String> targets) {
+        for (String target : targets) {
+            int score = scoreBoard.get(target);
+            score += acquaintancePoint;
+            scoreBoard.put(target, score);
+        }
+
+        return scoreBoard;
+    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
