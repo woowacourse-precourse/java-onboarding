@@ -13,7 +13,10 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
         Set<String> alreadyFriends = getAlreadyFriends(user, friends);
         Map<String, Integer> recomFriends = getRecomFriends(user, alreadyFriends, friends);
+
         setVisitPoint(recomFriends, alreadyFriends, visitors);
+
+        answer = getSortedResult(new ArrayList<>(recomFriends.entrySet()));
 
         return answer;
     }
@@ -87,6 +90,28 @@ public class Problem7 {
                 recomFriends.put(visitor, 1);
             }
         }
+    }
+
+    private static List<String> getSortedResult(List<Map.Entry<String, Integer>> entryList) {
+        Comparator<Map.Entry<String, Integer>> valueComparator = (e1, e2) -> {
+            if(e1.getValue() == e2.getValue()){
+                return e1.getKey().compareTo(e2.getKey());
+            }
+
+            return e2.getValue().compareTo(e1.getValue());
+        };
+
+        List<Map.Entry<String, Integer>> entryResults = entryList.stream()
+                .sorted(valueComparator)
+                .limit(RESULT_OFFSET)
+                .collect(Collectors.toList());
+
+        List<String> result = new ArrayList<>();
+        for (Map.Entry<String, Integer> entryResult : entryResults) {
+            result.add(entryResult.getKey());
+        }
+
+        return result;
     }
 
     private static void checkValidation(String user, List<List<String>> friends, List<String> visitors) {
