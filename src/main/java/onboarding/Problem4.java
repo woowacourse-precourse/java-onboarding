@@ -23,10 +23,10 @@ public class Problem4 {
         String convertWord = STRING_INIT_VARIABLE_VALUE;
         for (int wordIndex = WORD_INDEX_START_NUM; wordIndex < word.length(); wordIndex++) {
             char charAtWord = word.charAt(wordIndex);
-            if (Character.isAlphabetic(charAtWord)) {
+            if (isAlphabet(charAtWord)) {
                 convertWord += convertAlphabet(charAtWord);
             }
-            if (!Character.isAlphabetic(charAtWord)) {
+            if (isNotAlphabet(charAtWord)) {
                 convertWord += charAtWord;
             }
         }
@@ -55,6 +55,15 @@ public class Problem4 {
 
     private static int getLowerCaseCalculationNumber() {
         return FIRST_LOWER_CASE_ALPHABET + LAST_LOWER_CASE_ALPHABET;
+    }
+
+
+    private static boolean isAlphabet(char charAtWord) {
+        return Character.isAlphabetic(charAtWord);
+    }
+
+    private static boolean isNotAlphabet(char charAtWord) {
+        return !Character.isAlphabetic(charAtWord);
     }
 
     private static void validateWord(String momWord) {
