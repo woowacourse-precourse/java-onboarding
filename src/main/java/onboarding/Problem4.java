@@ -8,7 +8,7 @@ public class Problem4 {
 
     public static String solution(String word) {
         dictionary();
-        String[][] word2Arr = splitWord(word);
+        String[] wordArr = splitWord(word);
         return "";
     }
 
@@ -22,17 +22,12 @@ public class Problem4 {
     }
 
     /**
-     * word를 한 글자씩 나누기
+     * word를 단어로 나누기
      * @param word
-     * @return String[][]
+     * @return String[]
      */
-    private static String[][] splitWord(String word) {
-        String[] wordArr = word.split(" ");
-        String[][] word2Arr = new String[wordArr.length][];
-        for (int i = 0; i < wordArr.length; i++) {
-            word2Arr[i] = wordArr[i].split("");
-        }
-        return word2Arr;
+    private static String[] splitWord(String word) {
+        return word.split(" ");
     }
 
 }
