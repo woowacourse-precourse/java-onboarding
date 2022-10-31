@@ -32,10 +32,12 @@ class Problem1 {
         getIntArr(leftPobi, rightPobi, tmpPobi);
         getIntArr(leftCrong, rightCrong, tmpCrong);
 
+        int cobiResult = Math.max(Math.max(addNumber(leftPobi), multiNumber(leftPobi)), Math.max(addNumber(rightPobi), multiNumber(rightPobi)));
+        int crongResult = Math.max(Math.max(addNumber(leftCrong), multiNumber(leftCrong)), Math.max(addNumber(rightCrong), multiNumber(rightCrong)));
 
-
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        System.out.println("cobiResult: "+cobiResult);
+        System.out.println("crongResult: "+crongResult);
+        return (cobiResult-crongResult == 0) ? 0 : (cobiResult > crongResult) ? 1 : 2;
     }
 
     public static void setTmpList(ArrayList<Integer> tmp, int page) {
