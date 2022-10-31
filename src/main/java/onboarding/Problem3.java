@@ -10,6 +10,10 @@ public class Problem3 {
     private static final int CLAP_CONDITION3 = 9;
 
     public static int solution(int number) {
+        return getTotalClapSum(number);
+    }
+
+    private static int getTotalClapSum(int number) {
         return IntStream.range(1, number + 1)
                 .map(Problem3::checkClapNumber)
                 .sum();
