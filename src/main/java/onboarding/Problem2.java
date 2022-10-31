@@ -7,7 +7,6 @@ public class Problem2 {
         StringBuilder answer = new StringBuilder();
         Stack<Character> stackOrigin = new Stack<>();
         Stack<Character> stackResult = new Stack<>();
-        stackResult.push('A');
 
         makeStackOrigin(cryptogram, stackOrigin);
         makeStackResult(stackOrigin, stackResult);
@@ -17,6 +16,7 @@ public class Problem2 {
     }
 
     private static void makeStackResult(Stack<Character> stackOrigin, Stack<Character> stackResult) {
+        stackResult.push('A');
         int flag = 0;
 
         while (!stackOrigin.empty()) {
