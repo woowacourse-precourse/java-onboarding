@@ -1,10 +1,8 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 import java.util.regex.Pattern;
+import java.util.Map.Entry;
 
 public class Problem7 {
     static void isCheck(String user, List<List<String>> friends, List<String> visitors) {
@@ -61,16 +59,16 @@ public class Problem7 {
             for (int j = 0; j < friends.size(); j++) {
                 for (int k = 0; k <= 1; k++) {
                     if (friends.get(j).get(k).contains(alreadyFriends.get(i)) && k == 0
-                            && friends.get(j).get(1) != user) {
-                        if (isContains(i, j, friends, friendsRecommendation)) {
+                            && friends.get(j).get(1) != user) { // 이미친구목록에 있지 않으면서 0번 배열에 도넛이나 사케반이 있고 user와 일치하지않는 경우 > 1번 넣어줘야함
+                        if (isContains(i, j, friends, friendsRecommendation)) { // containCheck가 참이라면(해시맵에 있다면)
                             friendsRecommendation.put(friends.get(j).get(1), friendsRecommendation.get(friends.get(j).get(1)) + 10);
                         } else {
                             friendsRecommendation.put(friends.get(j).get(1), 10); // 없다면
                         }
 
                     } else if (friends.get(j).get(k).contains(alreadyFriends.get(i)) && k == 1
-                            && friends.get(j).get(0) != user) {
-                        if (isContains(i, j, friends, friendsRecommendation))
+                            && friends.get(j).get(0) != user) { // 1번 배열에 있는 경우 > 0번 넣어줘야함
+                        if (isContains(i, j, friends, friendsRecommendation)) { // containCheck가 참이라면(해시맵에 있다면)
                             friendsRecommendation.put(friends.get(j).get(0), friendsRecommendation.get(friends.get(j).get(1)) + 10);
                         } else {
                             friendsRecommendation.put(friends.get(j).get(0), 10); // (j)(0)를 넣어줘라
@@ -78,6 +76,7 @@ public class Problem7 {
                     }
                 }
             }
+        }
         return friendsRecommendation;
     }
 
@@ -100,14 +99,32 @@ public class Problem7 {
         return friendsRecommendation;
     }
 
+    static List<String> sort(HashMap<String, Integer> friendsRecommendation, List<String> answer) {
+
+        List<Entry<String, Integer>> list = new ArrayList<Map.Entry<String, Integer>>(friendsRecommendation.entrySet());
+        Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
+            public int compare(Map.Entry<String, Integer> obj1, Map.Entry<String, Integer> obj2) {
+                return (obj2.getValue().compareTo(obj1.getValue()));
+            }
+        });
+
+        for(int i=0; i<list.size(); i++) {
+            answer.add(list.get(i).getKey());
+        }
+        return answer;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
         List<String> alreadyFriends = new ArrayList<>();
         HashMap<String, Integer> friendsRecommendation = new HashMap<>();
+
         isCheck(user, friends, visitors);
 
         friendsScore(user, friends, alreadyFriends, friendsRecommendation);
         visitorsScore(user, visitors, alreadyFriends, friendsRecommendation);
+
+        sort(friendsRecommendation, answer);
 
         return answer;
     }
