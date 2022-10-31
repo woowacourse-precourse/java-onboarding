@@ -1,11 +1,11 @@
-package onboarding;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class Problem5 {
-    public static List<Integer> solution(int money) {
+public class Problem5Debugging {
+    public static void main(String[] args) {
+        int money = 50_237;
+
         List<Integer> answer = new ArrayList<>();
         int moneyUnit = 50000;
         int numberOfKindOfMoney = 9;
@@ -33,6 +33,6 @@ public class Problem5 {
         }
 
 
-        return answer;
+
     }
 }
