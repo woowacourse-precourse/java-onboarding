@@ -39,3 +39,18 @@ class User {
     }
 
 }
+
+class SNS {
+
+    private final List<String> visitors = new ArrayList<>();
+    private User user;
+
+    public SNS(User user) {
+        this.user = user;
+    }
+
+    public List<String> getVisitors() {
+        return visitors;
+    }
+
+}
