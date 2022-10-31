@@ -28,6 +28,14 @@ public class Problem6 {
         }
     }
 
+    //닉네임이 중복 가능성이 있는 단어를 포함하는 않는 경우 작동하는 함수
+    public static void contains(boolean isContain, String word, List<String> emailNameList) {
+        if (isContain) {
+            answerEmailSet.add(emailNameList.get(0));
+            answerEmailSet.add(duplicatedWord_EmailHashMap.get(word));
+        }
+    }
+
     //이름 속에서 중복될 수 있는 모든 단어를 저장한 Set을 반환하는 기능 구현
     public static Set<String> possibleDuplicatedWordInName(String name) {
         Set<String> duplicatedWord = new HashSet<>();
