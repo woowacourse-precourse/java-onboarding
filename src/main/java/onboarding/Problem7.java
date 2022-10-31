@@ -11,6 +11,16 @@ public class Problem7 {
         return answer;
     }
 
+    private static void createFriendMap(Map<String, List<String>> friendsMap, String user, String userA, String userB, List<String> userFriends) {
+        if (isSameName(userA, user) || isSameName(userB, user)) {
+            String friendName = (user.equals(userA)) ? userB : userA;
+            addFriendToList(userFriends, friendName);
+            return;
+        }
+        addFriendToMap(friendsMap, userA, userB);
+        addFriendToMap(friendsMap, userB, userA);
+    }
+
     private static void addFriendToMap(Map<String, List<String>> friendsMap, String userA, String userB) {
         friendsMap.compute(userB, (k, v) -> v == null ? new ArrayList<>() : v).add(userA);
     }
