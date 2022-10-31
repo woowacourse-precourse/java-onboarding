@@ -27,7 +27,7 @@ public class Problem7 {
             }
         }
 
-        // 친구의 친구들 +10 key 이름 value 값 HashMap (친구의 친구 중 user 제외하기)
+        // 친구의 친구들 +10 (친구의 친구 중 user 제외하기)
         for (int i=0; i<friends.size(); i++){
             for (int j=0; j<bfList.size(); j++){
                 boolean check = friends.get(i).contains(bfList.get(j));
@@ -43,7 +43,7 @@ public class Problem7 {
             }
         }
 
-        // 방문객들 중에 친구 제외하고 +1
+        // 방문객들 중에 user의 친구 제외하고 +1
         for(int i=0; i<visitors.size(); i++){
             String name = visitors.get(i);
             boolean check = bfList.contains(name);
@@ -53,7 +53,7 @@ public class Problem7 {
             }
         }
 
-        // HashMap에 있는 값 최대 5명까지 자르고 값 같으면 이름순
+        // HashMap에 있는 값 최대 5명까지 자르고 값이 같으면 이름순
         List<String> keySetList = new ArrayList<>(rc.keySet());
         Collections.sort(keySetList, (o1, o2) -> (rc.get(o2).compareTo(rc.get(o1))));
         for(String key: keySetList){

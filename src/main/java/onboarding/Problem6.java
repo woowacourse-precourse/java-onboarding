@@ -19,7 +19,7 @@ public class  Problem6 {
             }
         }
 
-        // 리스트안에 값과 닉네임을 비교해서 2번이상(자신 것 포함) 나오면 이메일 추가
+        // 리스트안에 값과 닉네임을 비교해서 특정 값보다 크면 이메일 추가
         for (int i=0; i<forms.size(); i++) {
             int cnt = 0;
             for(int j=0; j<words.size(); j++){
