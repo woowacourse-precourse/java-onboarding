@@ -62,4 +62,14 @@ public class Problem7 {
         return friendsMap;
     }
 
+    /**
+     * user의 친구와 친구인지 확인하는 함수
+     */
+    private static boolean isFriend(String target, String userFriend,List<List<String>> friends){
+        for (List<String> friend : friends) {
+            if (friend.contains(target) && friend.contains(userFriend)) return true;
+        }
+        return false;
+    }
+
 }
