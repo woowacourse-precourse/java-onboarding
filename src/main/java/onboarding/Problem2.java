@@ -6,12 +6,9 @@ public class Problem2 {
 	}
 
 	private static String decode(String cryptogram) {
-		while (!cryptogram.equals(removeRepetition(cryptogram))) {
+		do {
 			cryptogram = removeRepetition(cryptogram);
-			if (cryptogram.equals("")) {
-				break;
-			}
-		}
+		} while (!cryptogram.equals("") && !cryptogram.equals(removeRepetition(cryptogram)));
 		return cryptogram;
 	}
 

@@ -21,14 +21,14 @@ class Problem1 {
 	}
 
 	private static boolean isInvalidInput(List<Integer> pageList) {
-		return isInvalidRange(pageList) || isNotAdjoin(pageList) || isInvalidParity(pageList);
+		return isInvalidRange(pageList) || isNotContiguous(pageList) || isInvalidParity(pageList);
 	}
 
 	private static boolean isInvalidParity(List<Integer> pageList) {
 		return pageList.get(0) % 2 == 0 || pageList.get(1) % 2 == 1;
 	}
 
-	private static boolean isNotAdjoin(List<Integer> pageList) {
+	private static boolean isNotContiguous(List<Integer> pageList) {
 		return pageList.get(0) + 1 != pageList.get(1);
 	}
 
