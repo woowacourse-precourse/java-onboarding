@@ -3,6 +3,12 @@ import java.util.Arrays;
 import java.util.List;
 
 class Problem1 {
+    public static void main(String[] args) {
+        System.out.println(solution(Arrays.asList(97,98),Arrays.asList(197,198)));
+        System.out.println(solution(Arrays.asList(131,132),Arrays.asList(211,212)));
+        System.out.println(solution(Arrays.asList(99,102),Arrays.asList(211,212)));
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer;
         //예외 발생

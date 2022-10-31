@@ -3,6 +3,12 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
+    public static void main(String[] args) {
+        System.out.println(solution("mrko",
+                Arrays.asList(Arrays.asList("donut", "andole"),Arrays.asList("donut", "jun"),Arrays.asList("donut", "mrko"),
+                        Arrays.asList("shakevan","andole"),Arrays.asList("shakevan", "jun"),Arrays.asList("shakevan", "mrko"))
+                ,Arrays.asList("bedi", "bedi", "donut", "bedi", "shakevan")));
+    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Hashtable<String,HashSet<String>> friendsHash = new Hashtable<>(); // 모든 관계를 저장할 해쉬 테이블
         Hashtable<String,Integer> friendRecommendScores = new Hashtable<>(); // 점수를 저장할 해쉬 테이블

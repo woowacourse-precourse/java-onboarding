@@ -1,6 +1,10 @@
 package onboarding;
 
 public class Problem2 {
+    public static void main(String[] args) {
+        System.out.println(solution("browoanoommnaon"));
+        System.out.println(solution("zyelleyz"));
+    }
     public static String solution(String cryptogram) {
        if (cryptogram.length() < 2) return cryptogram; // 길이가 2 미만이면 중복이 존재하지 않는다.
        StringBuilder answer = new StringBuilder(); // 정답을 저장할 스트링빌더 선언
