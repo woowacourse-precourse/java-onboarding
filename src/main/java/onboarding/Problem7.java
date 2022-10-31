@@ -1,6 +1,10 @@
 package onboarding;
 
+import onboarding.exception.InputRangeException;
+import onboarding.exception.InputTypeException;
+
 import java.util.*;
+import java.util.regex.Pattern;
 
 public class Problem7 {
 
@@ -19,8 +23,19 @@ public class Problem7 {
         friendMap = new HashMap<>();
         scoreMap = new HashMap<>();
 
+        // 입력으로 받은 user 문자열에 대해 검증한다.
+        checkRangeValidation(user.length(), 1, 30);
+
+        // friends의 사이즈에 대해서 검증한다.
+        checkRangeValidation(friends.size(), 1, 10000);
+
+        // visitors 사이즈에 대해서 검증한다.
+        checkRangeValidation(visitors.size(), 0, 10000);
+
         // 전체 사용자에 대한 친구 관계를 정의한다.
         for(List<String> relationship : friends) {
+            // 각 원소의 길이가 2인지 검증한다.
+            checkRangeValidation(relationship.size(), 2, 2);
             defineFriendship(relationship);
         }
 
@@ -52,6 +67,32 @@ public class Problem7 {
 
         // 최종적으로 추천할 인원을 선별한다.
         return selectRecommendUsers(recommendUserList);
+    }
+
+    /**
+     * 입력 범위에 대한 검증을 진행한다.
+     *
+     * @param number 검증할 숫자
+     * @param start 첫 범위
+     * @param end 끝 범위
+     */
+    private static void checkRangeValidation(int number, int start, int end) {
+        if(number < start || number > end) {
+            throw new InputRangeException(start + "~" + end + " 사이여야 합니다.");
+        }
+    }
+
+    /**
+     * 입력받은 아이디에 대한 검증을 진행한다.
+     *
+     * @param userId 사용자의 아이디
+     */
+    private static void checkIdValidation(String userId) {
+        // 아이디의 길이는 1~30 사이로, 소문자로만 구성되어야 한다.
+        String regex = "^[a-z]{1,30}$";
+        if (!Pattern.matches(regex, userId)) {
+            throw new InputTypeException("아이디의 길이는 1~30 사이로, 소문자로만 구성되어야 합니다.");
+        }
     }
 
     /**
@@ -152,6 +193,9 @@ public class Problem7 {
     private static void defineFriendship(List<String> relationship) {
         String userA = relationship.get(0);
         String userB = relationship.get(1);
+
+        // 아이디에 대한 검증을 진행한다.
+        checkIdValidation(userA);
 
         // 만약 처음 삽입된다면 초기화 작업을 진행해준다.
         List<String> friendListOfUserA = friendMap.getOrDefault(userA, new ArrayList<>());
