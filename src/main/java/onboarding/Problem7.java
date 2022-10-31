@@ -18,7 +18,6 @@ public class Problem7 {
             friendsList = friends.get(i);
             findRecommendedFriend(friendsList, user);
         }
-        System.out.println(recommendedFriends);
 
         for (int i = 0; i < friends.size(); i++) {
             friendsList = friends.get(i);
@@ -26,8 +25,36 @@ public class Problem7 {
         }
         System.out.println(recommendedFriends);
 
+        Iterator iterator = recommendedFriends.keySet().iterator();
+        while (iterator.hasNext()) {
+            String recommendFriend = (String) iterator.next();
+            if (visitors.contains(recommendFriend)) {
+                int score = recommendedFriends.get(recommendFriend);
+                recommendedFriends.put(recommendFriend, score + 1);
+            }
+        }
+
+        for (int i = 0; i < visitors.size(); i++) {
+            String visitor = visitors.get(i);
+            if (!userFriends.contains(visitor)) {
+                plusVisitorScore(visitor);
+            }
+        }
+        System.out.println(recommendedFriends);
+
         List<String> answer = Collections.emptyList();
         return answer;
+    }
+
+    private static void plusVisitorScore(String visitor) {
+        if (recommendedFriends.containsKey(visitor)) {
+            int score = recommendedFriends.get(visitor);
+            recommendedFriends.put(visitor, score + 1);
+        }
+
+        if (!recommendedFriends.containsKey(visitor)) {
+            recommendedFriends.put(visitor, 1);
+        }
     }
 
     private static void plusScore(List<String> friendsList) {
