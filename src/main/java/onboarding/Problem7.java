@@ -44,4 +44,10 @@ public class Problem7 {
             }
         }
     }
+
+    public static void plusVisitors(List<String> visitors,String user) {
+        for(String strings : visitors) {
+            insertMapValue(strings,1,user);
+        }
+    }
 }
