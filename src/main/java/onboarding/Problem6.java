@@ -7,7 +7,6 @@ public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer;
-
         initTwoLetters();
 
         for (List<String> userInfo : forms) {
@@ -27,8 +26,8 @@ public class Problem6 {
     }
 
     private static void checkDuplicateLetters(int checkIndex, List<String> userInfo) {
-        for (int j = 0; j < checkIndex; j++) {
-            String checkTwoLetter = userInfo.get(1).substring(j, j + 2);
+        for (int i = 0; i < checkIndex; i++) {
+            String checkTwoLetter = userInfo.get(1).substring(i, i + 2);
             List<String> tempList = new ArrayList<>();
             if (isContainTwoLetter(checkTwoLetter)) {
                 tempList = twoLetters.get(checkTwoLetter);
