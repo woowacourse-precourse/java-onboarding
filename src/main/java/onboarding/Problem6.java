@@ -6,8 +6,8 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.HashSet;
 public class Problem6 {
-    private static final HashMap<String, String> TwoCharacterMap = new HashMap<>();
-    private static final HashSet<String> AnswerEmailSet = new HashSet<>();
+    private static final HashMap<String, String> TWO_CHARACTER_MAP = new HashMap<>();
+    private static final HashSet<String> ANSWER_EMAIL_SET = new HashSet<>();
 
     public static void processForms(List<List<String>> forms){
         for(List<String> user : forms){
@@ -29,19 +29,19 @@ public class Problem6 {
 
     public static void checkTwoCharacterListDuplicate(List<String> twoCharacterList, String email){
         for(String twoCharacter : twoCharacterList){
-            if(TwoCharacterMap.containsKey(twoCharacter)){
+            if(TWO_CHARACTER_MAP.containsKey(twoCharacter)){
                 addEmailOfDuplicate(twoCharacter, email);
                 continue;
             }
-            TwoCharacterMap.put(twoCharacter, email);
+            TWO_CHARACTER_MAP.put(twoCharacter, email);
         }
     }
 
     public static void addEmailOfDuplicate(String twoCharacter, String newEmail){
-        String matchingEmail = TwoCharacterMap.get(twoCharacter);
+        String matchingEmail = TWO_CHARACTER_MAP.get(twoCharacter);
         if(areDifferentEmails(newEmail, matchingEmail)){
-            AnswerEmailSet.add(newEmail);
-            AnswerEmailSet.add(matchingEmail);
+            ANSWER_EMAIL_SET.add(newEmail);
+            ANSWER_EMAIL_SET.add(matchingEmail);
         }
     }
 
@@ -50,7 +50,7 @@ public class Problem6 {
     }
 
     public static void moveFromSetToList(List<String> answer){
-        for(String email : AnswerEmailSet){ //todo: should I use addall() and remove this method?
+        for(String email : ANSWER_EMAIL_SET){ //todo: should I use addall() and remove this method?
             answer.add(email);
         }
     }
