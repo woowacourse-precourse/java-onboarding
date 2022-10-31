@@ -19,5 +19,22 @@ public class Problem5 {
         return moneyList;
     }
 
+    public static List<Integer> makemoneyList(List<Integer> list){
+        List<Integer> moneyList = list;
+        List<Integer> moneyTemp = new ArrayList<>();
+        moneyTemp.add(moneyList.get(0)); // 일의 자리는 그냥 넣기
+        for(int i =1; i<moneyList.size();i++) {
+            int m = moneyList.get(i);
+            if(m<5) { // 5가 안넘으면
+                moneyTemp.add(m);
+                moneyTemp.add(0);}
+            else {//8 -> 1…3
+                moneyTemp.add(m%5);
+                moneyTemp.add(m/5);
+            }
+        }
+        return moneyTemp;
+    }
+
 
 }
