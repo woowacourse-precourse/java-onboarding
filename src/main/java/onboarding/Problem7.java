@@ -17,10 +17,9 @@ public class Problem7 {
         removeUserFriends(friendRecommendationMap, usersFriends);
 
         List<String> recommendationFriendsList = getDescendingOrderFriendsList(friendRecommendationMap);
+        List<String> finalRecommendationFriendsList = getSubListFriendsFive(recommendationFriendsList);
 
-
-        List<String> answer = Collections.emptyList();
-        return answer;
+        return finalRecommendationFriendsList;
     }
 
     public static HashSet<String> findUserFriend(List<List<String>> friends, String user) {
@@ -68,5 +67,14 @@ public class Problem7 {
         List<String> answer = new ArrayList<>(friendRecommendationMap.keySet());
         Collections.sort(answer, (o1, o2) -> (friendRecommendationMap.get(o2).compareTo(friendRecommendationMap.get(o1))));
         return answer;
+    }
+
+    public static List<String> getSubListFriendsFive(List<String> recommendationFriendsList) {
+        int max = 5;
+        if (recommendationFriendsList.size() < 5) {
+            max = recommendationFriendsList.size();
+        }
+
+        return recommendationFriendsList.subList(0, max);
     }
 }
