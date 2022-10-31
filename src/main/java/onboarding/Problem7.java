@@ -53,7 +53,24 @@ public class Problem7 {
 
     private static void calculateVisitorScore(String user, List<String> visitors,
                                               Map<String, List<String>> eachUserFriendMap, Map<String, Integer> userScore) {
+        for (String visitor : visitors) {
+            // 이미 user와 친구라면 점수 추가 X
+            if (eachUserFriendMap.get(user).contains(visitor)) {
+                continue;
+            }
 
+            // user 스스로 방문한 경우, 점수 계산 X
+            if (visitor.equals(user)) {
+                continue;
+            }
+
+            // 타임라인에 방문한 횟수에 따라 점수 부여
+            if (userScore.containsKey(visitor)) {
+                userScore.put(visitor, userScore.get(visitor) + 1);
+            } else {
+                userScore.put(visitor, 1);
+            }
+        }
     }
 
     private static List<String> sortScoreThenName(Map<String, Integer> userScore) {
