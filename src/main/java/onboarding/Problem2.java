@@ -6,25 +6,35 @@ public class Problem2 {
 
     public static String solution(String cryptogram) {
         Stack<Character> stack = new Stack<>();
-        char[] answer = cryptogram.toCharArray();
+        char temp = 0;
 
-        for (int i = 0; i < answer.length; i++) {
-            if (isNotEmptyAndPeekEquals(stack, answer[i])) {
-                stack.pop();
-            } else {
-                stack.push(answer[i]);
+        for(char ch : cryptogram.toCharArray()) {
+            if(stack.empty()) {
+                stack.push(ch);
+                continue;
             }
+            if(stack.peek() == ch) {
+                temp = ch;
+                continue;
+            }
+            if(stack.peek() == temp) {
+                while (!stack.empty() && stack.peek() == temp) {
+                    stack.pop();
+                }
+                if(!stack.empty())
+                    temp = stack.peek();
+            }
+            stack.push(ch);
+        }
+
+        while (!stack.empty() && stack.peek() == temp) {
+            stack.pop();
         }
 
         StringBuilder sb = new StringBuilder();
-        //stack 값 출력
-        for (char ch : stack) {
-            sb.append(ch);
-        }
-        return sb.toString();
-    }
+        for(char c : stack)
+            sb.append(c);
 
-    public static boolean isNotEmptyAndPeekEquals(Stack<Character> stack, char answer) {
-        return !stack.empty() && stack.peek().equals(answer);
+        return sb.toString();
     }
 }
