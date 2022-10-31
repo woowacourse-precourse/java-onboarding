@@ -60,16 +60,22 @@ public class FriendRecommender {
      * @param idA friend of idB
      * @param idB friend of idA
      */
-    private static void addRelationship(Map<String, List<String>> relationships, String idA, String idB) {
+    private void addRelationship(Map<String, List<String>> relationships, String idA, String idB) {
+        addFriend(relationships, idA, idB);
+        addFriend(relationships, idB, idA);
+    }
+
+    /**
+     * Add friend idB to relationship list of friend idA
+     * @param relationships relationships created by friends
+     * @param idA friend of idB
+     * @param idB friend of idA
+     */
+    private void addFriend(Map<String, List<String>> relationships, String idA, String idB) {
         if (relationships.containsKey(idA)) {
             relationships.get(idA).add(idB);
         } else {
             relationships.put(idA, new ArrayList<>(List.of(idB)));
-        }
-        if (relationships.containsKey(idB)) {
-            relationships.get(idB).add(idA);
-        } else {
-            relationships.put(idB, new ArrayList<>(List.of(idA)));
         }
     }
 }
