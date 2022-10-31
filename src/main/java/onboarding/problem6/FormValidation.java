@@ -53,14 +53,30 @@ public class FormValidation {
         return nickName.matches("^[가-힣]*$");
     }
 
-
     public List<String> findEmailHavingDuplicationNickName() {
-        // TODO: 공통으로 연속된 문자열을 가지는 닉네임을 찾는 기능
-        return null;
+        int formsSize = forms.size();
+        // Email 의 중복을 제거하고 오름 차순으로 정렬하기 위해 TreeSet을 사용
+        Set<String> duplicationCrewEmail = new TreeSet<>();
+        for (int i = 0; i < formsSize - 1; i++) {
+            for (int j = i + 1; j < formsSize; j++) {
+                if (hasCommonSubString(forms.get(i).get(1), forms.get(j).get(1))) {
+                    duplicationCrewEmail.add(forms.get(i).get(0));
+                    duplicationCrewEmail.add(forms.get(j).get(0));
+                }
+            }
+        }
+        return duplicationCrewEmail.stream().collect(Collectors.toList());
     }
 
     private boolean hasCommonSubString(String srcString, String destString) {
-        // TODO: 두 문자열이 2개 이상의 연속된 공통 문자열을 가지는지 검증하는 기능 
+        for (int i = 0; i < srcString.length() - 1; i++) {
+            for (int j = 0; j < destString.length() - 1; j++) {
+                if (srcString.charAt(i) == destString.charAt(j)
+                        && srcString.charAt(i + 1) == destString.charAt(j + 1)) {
+                    return true;
+                }
+            }
+        }
         return false;
     }
 }
