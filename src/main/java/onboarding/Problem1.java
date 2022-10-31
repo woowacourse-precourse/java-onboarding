@@ -7,6 +7,9 @@ class Problem1 {
         if (!validatePages(pobi) || !validatePages(crong)) {
             return -1;
         }
+        int pobiMaxValue = findMaxValue(pobi);
+        int crongMaxValue = findMaxValue(crong);
+
         return 0;
     }
 
@@ -28,4 +31,29 @@ class Problem1 {
         return true;
     }
 
+    private static int findMaxValue(List<Integer> player) {
+        int max = 0;
+        for (int i = 0; i < player.size(); i++) {
+            String[] digits = String.valueOf(player.get(i))
+                                    .split("");
+            int sum = 0;
+            int mul = 1;
+            for (int j = 0; j < digits.length; j++) {
+                sum += Integer.parseInt(digits[j]);
+                mul *= Integer.parseInt(digits[j]);
+            }
+            int biggerValue = findBiggerValue(sum, mul);
+            if (max < biggerValue) {
+                max = biggerValue;
+            }
+        }
+        return max;
+    }
+
+    private static int findBiggerValue(int sum, int mul) {
+        if(sum > mul) {
+            return sum;
+        }
+        return mul;
+    }
 }
