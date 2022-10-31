@@ -20,13 +20,13 @@ class Problem1 {
         int maxCrong = Collections.max(scoresCrong);
 
         /* 결과 반환 */
-        int answer = 0;
-        if (maxPobi < maxCrong) {
-            answer = 2;
-        } else if (maxPobi > maxCrong) {
-            answer = 1;
+        if (maxPobi < maxCrong) {   // crong이 pobi보다 점수가 높으면
+            return 2;
         }
-        return answer;
+        if (maxPobi > maxCrong) {   // pobi가 crong보다 점수가 높으면
+            return 1;
+        }
+        return 0;   // pobi와 crong의 점수가 같은 경우
     }
 
     static boolean except(List<Integer> pageList) {
