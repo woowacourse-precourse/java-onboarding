@@ -21,3 +21,12 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+-------------------
+### 기능 리스트 업
+1. 닉네임 형식에 부합한 닉네임들을 2글자씩 조합을 만드는 기능
+   1. substring을 이용해서 문자열을 쪼개 SET(중복 제거)에 넣는다.
+   - split vs substring : split을 사용하면 new를 이용해 배열을 생성하기 때문에 시간이 더 소요된다.
+2. 닉네임 조합(key)을 추가할 때, key에 해당되는 email을 map에 추가하는 기능
+3. map의 key 중에서 length가 2 이상(list.size()==2)인 value를 찾는 기능
+   1. value의 모든 원소들을 SET(중복 제거)에 넣는 기능
+4. SET(3-1)을 오름차순해서 출력하는 기능
