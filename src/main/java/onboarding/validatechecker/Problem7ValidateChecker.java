@@ -11,10 +11,9 @@ public class Problem7ValidateChecker {
 		isVisitorsNotNull(visitors);
 		isFriendRelationNotNull(friends);
 		isIdNotNull(friends);
-		isUserInRange(user);
 		isFriendsInRange(friends);
 		isFriendRelationInRange(friends);
-		isIdInRange(friends);
+		isIdInRange(user,friends,visitors);
 		isVisitorsInRange(visitors);
 		isIdContainOnlyLowerCase(user,friends,visitors);
 	}
@@ -36,7 +35,12 @@ public class Problem7ValidateChecker {
 			throw new IllegalArgumentException("visitors의 크기가 10000초과입니다.");
 	}
 
-	private static void isIdInRange(List<List<String>> friends) {
+	private static void isIdInRange(String user, List<List<String>> friends, List<String> visitors) {
+		if(user.length() == 0 || user.length() > 30)
+			throw new IllegalArgumentException("아이디의 길이가 0이거나, 30초과입니다.");
+		for (String visitor : visitors)
+			if(visitor.length() == 0 || visitor.length() > 30)
+				throw new IllegalArgumentException("아이디의 길이가 0이거나, 30초과입니다.");
 		for (List<String> friendRelation : friends)
 			if(friendRelation.get(0).length() == 0 || friendRelation.get(0).length() > 30
 			|| friendRelation.get(1).length() == 0 || friendRelation.get(1).length() > 30)
@@ -52,11 +56,6 @@ public class Problem7ValidateChecker {
 	private static void isFriendsInRange(List<List<String>> friends) {
 		if(friends.size() == 0 || friends.size() > 10000)
 			throw new IllegalArgumentException("friends의 길이가 0이거나, 10,000초과입니다.");
-	}
-
-	private static void isUserInRange(String user) {
-		if(user.length() == 0 || user.length() > 30)
-			throw new IllegalArgumentException("user의 길이가 0이거나, 30초과입니다.");
 	}
 
 	private static void isFriendRelationNotNull(List<List<String>> friends) {
