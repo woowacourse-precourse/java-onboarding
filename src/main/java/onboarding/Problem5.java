@@ -4,51 +4,55 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Problem5 {
-    public static List<Integer> solution(int money) {
-        return Calculator.calculateMoney(money);
-    }
+	public static List<Integer> solution(int money) {
+		return Purse.calculate(money);
+	}
 
-    public enum Calculator {
-        FIFTY_THOUSAND(50_000),
-        TEN_THOUSAND(10_000),
-        FIVE_THOUSAND(5_000),
-        THOUSAND(1_000),
-        FIVE_HUNDRED(500),
-        HUNDRED(100),
-        FIFTY(50),
-        TEN(10),
-        ONE(1);
+	public enum Purse {
+		FIFTY_THOUSAND(50_000),
+		TEN_THOUSAND(10_000),
+		FIVE_THOUSAND(5_000),
+		THOUSAND(1_000),
+		FIVE_HUNDRED(500),
+		HUNDRED(100),
+		FIFTY(50),
+		TEN(10),
+		ONE(1);
 
-        private final int money;
+		private final int money;
 
-        Calculator(int money) {
-            this.money = money;
-        }
+		Purse(int money) {
+			this.money = money;
+		}
 
-        public int getMoney() {
-            return money;
-        }
+		public static List<Integer> calculate(int account) {
+			List<Integer> money = new ArrayList<>();
 
-        public static List<Integer> calculateMoney(int account) {
-            Calculator[] types = Calculator.values();
+			for (Purse moneyType : Purse.values()) {
+				int count = moneyType.countMoney(account);
 
-            List<Integer> money = new ArrayList<>();
-            for (Calculator type : types) {
-                int count = getCount(type, account);
-                money.add(count);
-                account -= type.getMoney() * count;
-            }
+				money.add(count);
+				account -= moneyType.totalChangeFare(count);
+			}
 
-            return money;
-        }
+			return money;
+		}
 
-        public static int getCount(Calculator money, int account) {
+        public int countMoney(int account) {
             int count = 0;
-            while (account - money.getMoney() >= 0) {
-                account -= money.getMoney();
+            while (canChange(account)) {
+                account -= money;
                 count++;
             }
             return count;
         }
-    }
+
+        private boolean canChange(int account) {
+            return account - money >= 0;
+        }
+
+        private int totalChangeFare(int count) {
+            return money * count;
+        }
+	}
 }
