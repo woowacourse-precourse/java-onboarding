@@ -3,6 +3,16 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
+    public static class Info {
+        public int point;
+        public String name;
+
+        public Info(int x, String name) {
+            point = x;
+            this.name = name;
+        }
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         HashMap<String, Set<String>> links = new HashMap<>();
 
@@ -38,6 +48,22 @@ public class Problem7 {
         users.addAll(visitors);
         users.remove(user);
         users.removeIf(anotherUser -> links.get(user).contains(anotherUser));
+
+        List<Info> result = new ArrayList<>();
+        for (String anotherUser : users) {
+            int point = 0;
+            for (String userFriend : links.get(user)) {
+                if (links.containsKey(anotherUser) && links.get(anotherUser).contains(userFriend)) {
+                    point += 10;
+                }
+            }
+            if (visitCount.containsKey(anotherUser)) {
+                point += visitCount.get(anotherUser);
+            }
+            if (point > 0) {
+                result.add(new Info(point, anotherUser));
+            }
+        }
 
         return null;
     }
