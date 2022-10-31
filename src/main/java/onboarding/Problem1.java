@@ -20,6 +20,16 @@ class Problem1 {
         int pobiScore = getScore(pobiPages);
         int crongScore = getScore(crongPages);
 
+        return getResult(pobiScore, crongScore);
+    }
+
+    // 각 플레이어의 점수를 가져오는 메소드
+    private static int getScore(Pages pages) {
+        Score score = new Score(pages);
+        return score.getMaxScore();
+    }
+
+    private static int getResult(int pobiScore, int crongScore) {
         // 점수 비교
         if (pobiScore > crongScore) {
             return 1;
@@ -27,16 +37,7 @@ class Problem1 {
         if (pobiScore < crongScore) {
             return 2;
         }
-        if(pobiScore == crongScore) {
-            return 0;
-        }
-        return -1;
-    }
-
-    // 각 플레이어의 점수를 가져오는 메소드
-    public static int getScore(Pages pages) {
-        Score score = new Score(pages);
-        return score.getMaxScore();
+        return 0;
     }
 
 }
