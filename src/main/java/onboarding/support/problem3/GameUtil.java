@@ -7,7 +7,7 @@ public class GameUtil {
 
     public GameUtil(int number) {
         for (int i = 1; i <= number; i++) {
-            this.score += getClapCount(number);
+            this.score += getClapCount(i);
         }
     }
 
