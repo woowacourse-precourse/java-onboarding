@@ -12,6 +12,7 @@ public class Problem7 {
         try {
             ExceptionProblem7.validateId(user);
             ExceptionProblem7.validateFriends(friends);
+            ExceptionProblem7.validateVisitors(visitors);
         } catch (IllegalArgumentException e) {
             return Collections.emptyList();
         }
@@ -103,6 +104,14 @@ class ExceptionProblem7 {
             for (String id : friend) {
                 validateId(id);
             }
+        }
+    }
+
+    public static void validateVisitors(List<String> visitors) {
+        validateVisitorsListSize(visitors);
+
+        for (String visitor : visitors) {
+            validateId(visitor);
         }
     }
 
