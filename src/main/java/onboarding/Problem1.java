@@ -9,6 +9,14 @@ class Problem1 {
         return answer;
     }
 
+    //  입력값의 유효성 검사
+    private static Boolean verifyInput(List<Integer> input) {
+        for (int i = 0; i < input.size() - 1; i++) {
+            if (input.get(i + 1) - input.get(i) != 1) return false;
+        }
+        return true;
+    }
+
     //  입력된 두 숫자 비교
     private static int compareValue(int maxPobi, int maxCrong) {
         if (maxPobi == maxCrong) return 0;
