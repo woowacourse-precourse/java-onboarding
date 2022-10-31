@@ -4,10 +4,23 @@ import java.util.Stack;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        if (!validate(cryptogram)) return "Invalid Input";
+
         Stack<Character> nonDuplicates = decryption(cryptogram);
-        answer = concatStack(nonDuplicates);
+
+        String answer = concatStack(nonDuplicates);
+
         return answer;
+    }
+
+    private static boolean validate(String cryptogram) {
+        if (cryptogram.length() > 1000 || cryptogram.length() < 1) return false;
+
+        for (int i = 0; i < cryptogram.length(); i++) {
+            if (Character.isUpperCase(cryptogram.charAt(i))) return false;
+        }
+
+        return true;
     }
 
     private static Stack<Character> decryption(String input) {
