@@ -34,7 +34,7 @@ public class Crew {
 
     private void validateEmailLength(String email) {
         int emailLength = email.length();
-        if (emailLength >= 20 || emailLength < 11){
+        if (emailLength >= 20 || emailLength < 11) {
             throw new IllegalArgumentException("이메일의 길이는 11자 이상 20자 미만이어야 합니다.");
         }
     }
@@ -62,7 +62,7 @@ public class Crew {
         List<String> twoLetterList = crew.getTwoLetterListFromNickname();
         boolean duplicateStatus = false;
         int index = 0;
-        while(!duplicateStatus && index < twoLetterList.size()) {
+        while (!duplicateStatus && index < twoLetterList.size()) {
             String twoLetter = twoLetterList.get(index);
             duplicateStatus = this.nickname.contains(twoLetter);
             index++;
