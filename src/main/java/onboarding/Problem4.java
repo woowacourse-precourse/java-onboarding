@@ -16,6 +16,15 @@ public class Problem4 {
 
         return result;
     }
+    public static String convertWord(String word) {
+        char[] alphabetList = word.toCharArray();
+        for (int i=0; i < alphabetList.length; i++) {
+            alphabetList[i] = convertChar(alphabetList[i]);
+        }
+        String result = new String(alphabetList);
+
+        return result;
+    }
     public static String solution(String word) {
         String answer = "";
         return answer;
