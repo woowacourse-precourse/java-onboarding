@@ -12,6 +12,11 @@ public class Problem2 {
         List<Character> code = new ArrayList<>();
         code = convert(cryptogram);
 
+        //단계별로 중복 제거하며 더 이상 중복이 없을 때까지 반복
+        while (code.size()!=removeChar(code).size()) {
+            code=removeChar(code);
+        }
+
         return answer;
     }
 
