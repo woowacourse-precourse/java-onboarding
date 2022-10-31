@@ -5,12 +5,17 @@ import java.util.stream.Collectors;
 
 public class Problem6 {
     public static Queue<List<String>> nicknameEmailQ;
+    private static final int MIN_NICKNAME_LENGTH = 1;
+    private static final int MAX_NICKNAME_LENGTH =  20;
+    private static final int MIN_EMAIL_LENGTH = 11;
+    private static final int MAX_EMAIL_LENGTH =  20;
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
         nicknameEmailQ = new LinkedList<>();
         for (List<String> form : forms) {
             String email = form.get(0);
-            if (!isValidateEmail(email)) {
+            String nickname = form.get(1);
+            if (!isValidateEmail(email) || !isValidNickname(nickname)) {
                 continue;
             }
             nicknameEmailQ.offer(form);
@@ -28,6 +33,7 @@ public class Problem6 {
 
             nicknameEmailQ.add(checkNicknameEmail);
         }
+
         Collections.sort(answer);
 
         return answer.stream()
@@ -54,11 +60,18 @@ public class Problem6 {
         return false;
     }
     public static boolean isValidateEmail (String email){
-        return email.length() >= 11 && email.length() < 20 && email.endsWith("email.com");
+        return email.length() >= MIN_EMAIL_LENGTH && email.length() < MAX_EMAIL_LENGTH && email.endsWith("email.com");
     }
 
     public static boolean isExistDuplicateNickname(List<String> nicknameUnits){
         return nicknameEmailQ.stream()
                 .map(x -> x.get(1)).anyMatch(nickname -> isDuplicate(nickname, nicknameUnits));
     }
+
+    public static boolean isValidNickname(String nickname) {
+        String nicknameRegex = ".*^[ㄱ-ㅎ가-힣].*";
+        return nickname.length() >= MIN_NICKNAME_LENGTH && nickname.length() < MAX_NICKNAME_LENGTH
+                && nickname.matches(nicknameRegex);
+    }
+
 }
