@@ -47,6 +47,16 @@ public class Problem7 {
         }
     }
 
+    static void score1(List<String> visitors, Map<String, Integer> scores) {
+        for (String visitor: visitors) {
+            if (scores.containsKey(visitor)) {
+                scores.put(visitor, scores.get(visitor) + 1);
+            } else {
+                scores.put(visitor, 1);
+            }
+        }
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
