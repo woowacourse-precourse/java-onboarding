@@ -1,13 +1,11 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
 
     static class RecommendScore implements Comparable<RecommendScore> {
+
         String id;
         int score;
 
@@ -26,7 +24,7 @@ public class Problem7 {
         }
     }
 
-    static HashMap<String, List<String>> friendList = new HashMap<>();
+    static HashMap<String, Set<String>> friendList = new HashMap<>();
 
     static HashMap<String, Integer> recommendScore = new HashMap<>();
 
@@ -42,7 +40,6 @@ public class Problem7 {
             saveVisitScore(visitor);
         }
 
-        System.out.println("recommendScore = " + recommendScore.toString());
         List<RecommendScore> scoreList = new ArrayList<>();
 
         int score;
@@ -75,17 +72,17 @@ public class Problem7 {
     static void saveFriendById(String idA, String idB) {
 
         if (friendList.get(idA) == null) {
-            ArrayList<String> list = new ArrayList<>();
-            list.add(idB);
-            friendList.put(idA, list);
+            Set<String> set = new HashSet<>();
+            set.add(idB);
+            friendList.put(idA, set);
 
         } else {
             friendList.get(idA).add(idB);
         }
         if (friendList.get(idB) == null) {
-            ArrayList<String> list = new ArrayList<>();
-            list.add(idA);
-            friendList.put(idB, list);
+            Set<String> set = new HashSet<>();
+            set.add(idA);
+            friendList.put(idB, set);
 
         } else {
             friendList.get(idB).add(idA);
@@ -95,21 +92,22 @@ public class Problem7 {
     //사용자와 함께 아는 친구 수의 점수 저장
     static void saveFriendScoreByUser(String user) {
 
-        int score;
-
         if (friendList.get(user) == null) {
             return;
         }
 
         for (String id : friendList.keySet()) {
+            int score = 0;
+
             if (id.equals(user)) {
                 continue;
             }
 
-            ArrayList<String> friend = new ArrayList<>(friendList.get(id));
-
-            friend.retainAll(friendList.get(user));
-            score = friend.size() * 10;
+            for (String friend : friendList.get(user)) {
+                if (friendList.get(id).contains(friend)) {
+                    score += 10;
+                }
+            }
 
             if (recommendScore.get(id) == null) {
                 recommendScore.put(id, score);
