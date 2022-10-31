@@ -53,6 +53,7 @@ public class Problem6 {
                 for (int crewIdx : crewIndices) {
                     String email = forms.get(crewIdx).get(EMAIL_IDX);
                     validateEmailFormat(email);
+                    validateEmailLength(email);
 
                     emailSet.add(email);
                 }
@@ -71,6 +72,12 @@ public class Problem6 {
 
         if (splitEmail[1].equals("email.com") == false) {
             throw new IllegalArgumentException("이메일의 도메인은 email.com으로만 제합됩니다.");
+        }
+    }
+
+    private static void validateEmailLength(String email) {
+        if (email.length() < 11 || email.length() >= 20) {
+            throw new IllegalArgumentException("이메일의 길이는 11자 이상 20자 미만이여야 합니다.");
         }
     }
 }
