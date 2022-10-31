@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 
 public class Problem7 {
@@ -39,7 +40,22 @@ public class Problem7 {
         return friend;
     }
     //hash를 사용하여 중복없이 모든 친구의 목록을 저장하는 함수
+    static HashSet<String> no_duplication_user(String user, List<List<String>> friends, List<String> visitors){
+        HashSet<String> userList = new HashSet<>();
 
+        userList.add(user);
+
+        for (int i=0;i<friends.size();i++){
+            userList.add(friends.get(i).get(0));
+            userList.add(friends.get(i).get(1));
+        }
+
+        for (int i=0;i< visitors.size();i++){
+            userList.add(visitors.get(i));
+        }
+
+        return userList;
+    }
     //hash를 사용하여 저장한 중복없는 친구목록을 List로 변환해 줄 함수
 
     //만들어둔 친구 목록을 사용자정의 자료형 리스트로 변환해 줄 함수
