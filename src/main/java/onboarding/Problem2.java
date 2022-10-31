@@ -19,7 +19,7 @@ public class Problem2 {
         return answer.toString();
     }
 
-        public static boolean remove_overlap(ArrayList<Character> check_list){
+        private static boolean remove_overlap(ArrayList<Character> check_list){
             boolean list = true;
 //            System.out.println("check_list : " + check_list);
             // 배열을 돌며 중복을 삭제해준다. 중복이 있다면 i--를 통해 삭제 후 그 자리를 다시 체크한다.

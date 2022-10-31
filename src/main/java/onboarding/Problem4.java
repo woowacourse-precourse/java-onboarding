@@ -19,7 +19,7 @@ public class Problem4 {
     }
 
 
-    public static String get_change_alphabet(char alphabet){
+    private static String get_change_alphabet(char alphabet){
         if (Character.isUpperCase(alphabet)) { //대문자면
             alphabet = (char) (('Z' + 'A') - (int) alphabet);
         } else { //소문자면

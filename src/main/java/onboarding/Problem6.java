@@ -30,7 +30,7 @@ public class Problem6 {
                 .collect(Collectors.toList());
     }
 
-    public static boolean isCheck(String nickname_1, String nickname_2){
+    private static boolean isCheck(String nickname_1, String nickname_2){
         List<String> check = new ArrayList<>();
         for(int i = 0; i < nickname_1.length()-1; i++){
             check.add(nickname_1.substring(i, i+2));
