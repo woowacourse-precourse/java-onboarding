@@ -4,9 +4,9 @@ import java.util.*;
 import java.util.stream.Stream;
 
 class Problem1 {
-    class PageValidationException extends RuntimeException {
+    static class PageValidationException extends RuntimeException {
     }
-    
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         try {
             if (예외 확인 메소드(pobi) || 예외 확인 메소드(crong)) {
@@ -23,11 +23,9 @@ class Problem1 {
             } else if (pobiResult == crongResult) {
                 return 0;
             }
-        } catch (e) {
+        } catch (PageValidationException e) {
             return -1;
         }
-
-
     }
 
     private static ArrayList<Integer> drawTwoNumbersInRow() {
