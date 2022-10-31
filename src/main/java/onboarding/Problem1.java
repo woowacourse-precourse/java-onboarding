@@ -10,21 +10,25 @@ class Problem1 {
     }
 
     private static int getGameResult(List<Integer> userA, List<Integer> userB){
+        final int WIN_A = 1;
+        final int WIN_B = 2;
+        final int DRAW = 0;
+        final int ERROR = -1;
         if(!(userValidation(userA)&&userValidation(userB))){
-            return -1;
+            return ERROR;
         }
 
         int userAPoint = getMaxPoint(userA);
         int userBPoint = getMaxPoint(userB);
 
         if (userAPoint>userBPoint) {
-            return 1;
+            return WIN_A;
         } else if (userAPoint<userBPoint) {
-            return 2;
+            return WIN_B;
         } else if (userAPoint == userBPoint) {
-            return 0;
+            return DRAW;
         }
-        return -1;
+        return ERROR;
     }
 
     private static int getMaxPoint(List<Integer> user){
