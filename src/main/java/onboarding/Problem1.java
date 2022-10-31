@@ -72,9 +72,9 @@ class Problem1 {
     private static int calculateNumber(ArrayList<Integer> list) {
         int sum = 0;
         int multiplication = 1;
-        for (int i = 0; i < list.size(); i++) {
-            sum += list.get(i);
-            multiplication *= list.get(i);
+        for (Integer slicedPageNumber : list) {
+            sum += slicedPageNumber;
+            multiplication *= slicedPageNumber;
         }
         return Math.max(sum, multiplication);
     }
