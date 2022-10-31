@@ -62,6 +62,12 @@ public class Problem7 {
             answer.add(keySet.get(i));
         }
 
+        if (answer.size() > 5){
+            for (int i = 5; i < keySet.size(); i+=1){
+                answer.remove(i);
+            }
+        }
+
         return answer;
     }
 }
