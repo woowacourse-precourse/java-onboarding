@@ -17,7 +17,9 @@ public class Problem5 {
                 money = money - kindOfMoney[i];
             }
         }
-
+        for (int count : wallet) {
+            answer.add(count);
+        }
 
         return answer;
     }
