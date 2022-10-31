@@ -1,9 +1,9 @@
 package onboarding;
 
 public class Problem4 {
-    public static final int SMALL = 1;
-    public static final int BIG = 2;
-    public static final int ETC = 0;
+    private static final int SMALL = 1;
+    private static final int BIG = 2;
+    private static final int ETC = 0;
     public static String solution(String word) {
         if(CheckInput(word)){
             char[] charArray = word.toCharArray();
