@@ -36,6 +36,15 @@ public class Problem2 {
         String newCode = stackToString(stack);
         return newCode;
     }
+
+    public static String stackToString(Stack<Character> stack) {
+        String string = "";
+        for (char s : stack) {
+            string += s;
+        }
+        return string;
+    }
+    
     public static String solution(String cryptogram) {
         String answer = "answer";
         return answer;
