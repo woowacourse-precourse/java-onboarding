@@ -7,7 +7,7 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
-
+        answer = findWinner(pobi, crong);
         return answer;
     }
 
@@ -53,14 +53,14 @@ class Problem1 {
      * @param {int} n2
      * @return {int} maxValue
      */
-    public static int findMaxValue(int firstPage, int secondPage) {
+    public static int findMaxValue(List<Integer> player) {
         int firstPageMaxValue = 0;
         int secondPageMaxValue = 0;
 
-        firstPageMaxValue = calculate(firstPage);
-        secondPageMaxValue = calculate(secondPage);
+        firstPageMaxValue = calculate(player.get(0));
+        secondPageMaxValue = calculate(player.get(1));
 
-        int maxValue = Math.max(firstPageMaxValue, secondPageMaxValue)
+        int maxValue = Math.max(firstPageMaxValue, secondPageMaxValue);
 
         return maxValue;
     }
@@ -85,13 +85,29 @@ class Problem1 {
         return max;
     }
 
-    /*public static int findWinner(List<String> pobi, List<String> crong) {
-        int pobiScore = 0, crongScore = 0;
+    /**
+     * pobi와 crong을 입력받은뒤 페이지의 최댓값이 큰쪽을 반환합니다.
+     * @param {int} pobi
+     * @param {int} crong
+     * @return int
+     */
+    public static int findWinner(List<Integer> pobi, List<Integer> crong) {
+        int pobiScore , crongScore;
+        int inputError = -1;
+        int draw = 0;
+        int pobiWin = 1;
+        int crongWin = 2;
 
-        for (int i = 0; i < pobi.size(); i++) {
-            if(inputValidation())
+        if(validatePobi(pobi) && validateCrong(crong)) {
+            pobiScore = findMaxValue(pobi);
+            crongScore = findMaxValue(crong);
+
+            if(pobiScore > crongScore) return pobiWin;
+            if(crongScore > pobiScore) return crongWin;
+            else return draw;
         }
-    }*/
+        return inputError;
+    }
 
 
 }

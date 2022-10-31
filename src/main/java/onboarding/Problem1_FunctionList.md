@@ -27,6 +27,11 @@
 #### calculate(int page) --> int max
 - 입력받은 page의 각 자릿수의 합과 자릿수의 곱중 더 큰 값을 반환합니다.
 
+### 4. pobi와 crong 중 승자를 찾아 반환합니다.
+#### findWinner(List<Integer> pobi, List<Integer> crong) --> int
+- pobi와 crong의 리스트를 validatePobi(), validateCrong()을 통해 예외사항이 있는지 검사하고 예외사항이 존재하면 -1을 반환하고 없으면 밑의 과정을 진행합니다.
+- findMaxValue()를 통해 pobi의 페이지 최댓값과 crong 페이지 최댓값을 구합니다.
+- pobi의 최댓값이 더 크면 1, crong의 최댓값이 더 크면 2, 같으면 0을 반환합니다.
 
 
 # 전체 동작 과정
