@@ -4,8 +4,16 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        int victory = Integer.MIN_VALUE;
+        if (pobi.get(0) + 1 != pobi.get(1) || crong.get(0) + 1 != crong.get(1))
+            return -1;
+        int bigPobi = score(pobi);
+        int bicCrong = score(crong);
+        if (bigPobi > bicCrong){
+            return 1;
+        } else if (bigPobi == bicCrong) {
+            return 0;
+        }else return 2;
     }
     public static int score(List<Integer> list){
         int max = Integer.MIN_VALUE;
