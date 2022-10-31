@@ -10,6 +10,10 @@ class Problem1 {
     if (!isValidateBook(pobi) || !isValidateBook(crong)) {
       return -1;
     }
+
+    int pobiScore = getScore(pobi);
+    int crongScore = getScore(crong);
+    answer = getResult(pobiScore, crongScore);
     return answer;
   }
 
@@ -45,4 +49,47 @@ class Problem1 {
     return true;
   }
 
+  public static int getScore(List<Integer> bookPages) {
+    int leftPage = bookPages.get(0);
+    int rightPage = bookPages.get(1);
+    int leftPageScore = calculateMaxScoreByPage(leftPage);
+    int rightPageScore = calculateMaxScoreByPage(rightPage);
+
+    return Math.max(leftPageScore, rightPageScore);
+  }
+
+  public static int calculateMaxScoreByPage(int page) {
+    int addition = calculateAddition(page);
+    int multiplication = calculateMultiplication(page);
+    return Math.max(addition, multiplication);
+  }
+
+  public static int calculateAddition(int page) {
+    int result = 0;
+    while (page > 0) {
+      result += page % 10;
+      page /= 10;
+    }
+    return result;
+  }
+
+  public static int calculateMultiplication(int page) {
+    int result = page % 10;
+    page /= 10;
+    while (page > 0) {
+      result *= page % 10;
+      page /= 10;
+    }
+    return result;
+  }
+
+  public static int getResult(int pobi, int crong) {
+    if (pobi > crong) {
+      return 1;
+    }
+    if (pobi < crong) {
+      return 2;
+    }
+    return 0;
+  }
 }
