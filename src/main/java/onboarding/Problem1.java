@@ -3,7 +3,7 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
-    private final static int EXCEPTION_NUMBER = -1;
+    private static final int EXCEPTION_NUMBER = -1;
     private static final int DRAW_NUMBER = 0;
     private static final int WIN_POBI_NUMBER = 1;
     private static final int WIN_CRONG_NUMBER = 2;
