@@ -33,6 +33,15 @@ class ApplicationTest {
             int result = -1;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
+
+        @Test
+        void 첫페이지는홀수가되어야한다() {
+            List<Integer> pobi = List.of(100,101);
+            List<Integer> crong = List.of(101,102);
+            int result = -1;
+            assertThat(Problem1.solution(pobi,crong)).isEqualTo(result);
+        }
+
     }
 
     @Nested
@@ -50,6 +59,28 @@ class ApplicationTest {
             String result = "";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
+
+        @Test
+        void 같은문자만오는문자열() {
+            String cryptogram = "oooooooooo";
+            String result = "";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
+        void 아무것도없는문자열() {
+            String cryptogram = "";
+            String result = "";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
+        void 문자하나만있는문자열() {
+            String cryptogram = "o";
+            String result = "o";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
     }
 
     @Nested
@@ -77,6 +108,13 @@ class ApplicationTest {
             String result = "R olev blf";
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
+
+        @Test
+        void 알파벳이아닌단어만있는경우() {
+            String word = "####";
+            String result = "####";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
     }
 
     @Nested
@@ -94,6 +132,13 @@ class ApplicationTest {
             List<Integer> result = List.of(0, 1, 1, 0, 0, 0, 0, 0, 0);
             assertThat(Problem5.solution(money)).isEqualTo(result);
         }
+
+        @Test
+        void 돈이0인경우() {
+            int money = 0;
+            List<Integer> result = List.of(0, 0, 0, 0, 0, 0, 0, 0, 0);
+            assertThat(Problem5.solution(money)).isEqualTo(result);
+        }
     }
 
     @Nested
@@ -106,6 +151,21 @@ class ApplicationTest {
                     List.of("woniee@email.com", "워니"),
                     List.of("mj@email.com", "엠제이"),
                     List.of("nowm@email.com", "이제엠")
+            );
+            List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com");
+            assertThat(Problem6.solution(forms)).isEqualTo(result);
+        }
+
+        @Test
+        void 영어닉네임추가() {
+            List<List<String>> forms = List.of(
+                List.of("jm@email.com", "제이엠"),
+                List.of("jason@email.com", "제이슨"),
+                List.of("woniee@email.com", "워니"),
+                List.of("mj@email.com", "엠제이"),
+                List.of("nowm@email.com", "이제엠"),
+                List.of("young2866@email.com", "Glory"),
+                List.of("jm@gmail.com", "이슨")
             );
             List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com");
             assertThat(Problem6.solution(forms)).isEqualTo(result);
@@ -127,6 +187,15 @@ class ApplicationTest {
             );
             List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
             List<String> result = List.of("andole", "jun", "bedi");
+            assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+        }
+
+        @Test
+        void 친구가없는경우() {
+            String user = "mrko";
+            List<List<String>> friends = List.of();
+            List<String> visitors = List.of();
+            List<String> result = List.of();
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
         }
     }
