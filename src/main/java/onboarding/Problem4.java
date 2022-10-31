@@ -35,10 +35,10 @@ public class Problem4 {
         int check = checkUpperOrLower(alphabet);
 
         if (check == 2) {
-            return DICTIONARY[(int)alphabet - 65];
+            return DICTIONARY[(int) alphabet - 65];
         }
         if (check == 1) {
-            return Character.toLowerCase(DICTIONARY[(int)Character.toUpperCase(alphabet) - 65]);
+            return Character.toLowerCase(DICTIONARY[(int) Character.toUpperCase(alphabet) - 65]);
         }
 
         return alphabet;
