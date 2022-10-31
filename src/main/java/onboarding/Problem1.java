@@ -68,9 +68,14 @@ class Spread {
             return sum;
         }
 
-        // TODO: multiplyDigits()
         private int multiplyDigits() {
-            return 0;
+            int number = NUMBER;
+            int product = 1;
+            while (number > 1) {
+                product *= number % 10;
+                number /= 10;
+            }
+            return product;
         }
     }
 }
