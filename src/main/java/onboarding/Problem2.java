@@ -12,7 +12,7 @@ public class Problem2 {
         
         return deduplicationCrypto;
     }
-    public static void getDeduplicateCrypto(char[] cryptogramArr) {
+    private static void getDeduplicateCrypto(char[] cryptogramArr) {
     	
     	Stack<Character> pastChars = new Stack<>();
     	Stack<Integer> pastIdxes = new Stack<>();
@@ -50,13 +50,13 @@ public class Problem2 {
     		}
     	}
     }
-    public static void removeDuplicateChars(char[] cryptogramArr, int pastIdx, Stack<Integer> duplicateCharIdxes) {
+    private static void removeDuplicateChars(char[] cryptogramArr, int pastIdx, Stack<Integer> duplicateCharIdxes) {
     	cryptogramArr[pastIdx] = '0';
     	while(!duplicateCharIdxes.isEmpty()) {
     		cryptogramArr[duplicateCharIdxes.pop()] = '0';
     	}
     }
-    public static String getFinalCrypto(char[] cryptogramArr) {
+    private static String getFinalCrypto(char[] cryptogramArr) {
         String deduplicationCrypto = "";
     	StringBuilder sb = new StringBuilder();
         for(char c: cryptogramArr) {
