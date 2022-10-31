@@ -20,10 +20,10 @@ public class Problem6 {
 
     public static List<String> validateEmailPattern(Map<String, String> forms) {
 
-        String emailRegex = "/^[0-9a-zA-Z-_]{1,9}@email.com/&";
+        String emailRegex = "^[0-9a-zA-Z-_]{1,9}@email.com$";
         Pattern emailPattern = Pattern.compile(emailRegex);
 
-        List<String> emailList = (List<String>) forms.values();
+        Collection<String> emailList = forms.values();
         List<String> invalidEmailList = new ArrayList<>();
 
         for(String email : emailList) {
