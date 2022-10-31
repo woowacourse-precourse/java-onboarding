@@ -86,6 +86,17 @@ public class Problem7 {
         }
     }
 
+    // Person 객체
+    static class Person {
+        String name;
+        int score;
+
+        public Person(String name, int score) {
+            this.name = name;
+            this.score = score;
+        }
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
