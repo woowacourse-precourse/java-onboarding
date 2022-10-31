@@ -55,7 +55,7 @@ class Problem1 {
             return true;
         }
         //3. 왼쪽 오른쪽 페이지의 차이가 1이 아닐때
-        if(Math.abs(pobi.get(0)-pobi.get(1)) != 1 || Math.abs(crong.get(0) -pobi.get(1)) != 10)
+        if(Math.abs(pobi.get(0)-pobi.get(1)) != 1 || Math.abs(crong.get(0) -crong.get(1)) != 1)
             return true;
 
         return false;
