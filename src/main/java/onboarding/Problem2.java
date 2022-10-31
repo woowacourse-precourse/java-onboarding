@@ -7,32 +7,35 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Problem2 {
+
     public static String solution(String cryptogram) {
-        return checkDuplicateLetter(cryptogram);
+        return findDuplicationLetters(cryptogram);
     }
 
-    private static String checkDuplicateLetter(String cryptogram) {
-        Set<Integer> removeSet = new LinkedHashSet<>();
+    private static String findDuplicationLetters(String cryptogram) {
+        Set<Integer> duplicationLetterIndexes = new LinkedHashSet<>();
         for (int i = 1; i < cryptogram.length(); i++) {
             if (cryptogram.charAt(i - 1) == cryptogram.charAt(i)) {
-                removeSet.add(i - 1);
-                removeSet.add(i);
+                duplicationLetterIndexes.add(i - 1);
+                duplicationLetterIndexes.add(i);
             }
         }
 
-        if (removeSet.size() != 0) {
-            cryptogram = removeDuplicateLetter(cryptogram, removeSet);
-            return checkDuplicateLetter(cryptogram);
+        if (duplicationLetterIndexes.size() != 0) {
+            cryptogram = removeDuplicationLetters(cryptogram, duplicationLetterIndexes);
+            return findDuplicationLetters(cryptogram);
         }
         return cryptogram;
     }
 
-    private static String removeDuplicateLetter(String cryptogram, Set<Integer> removeSet) {
-        List<Integer> removeList = removeSet.stream().sorted(Comparator.reverseOrder())
+    private static String removeDuplicationLetters(String cryptogram,
+        Set<Integer> duplicationLetterIndexSet) {
+        List<Integer> duplicationLetterIndexes = duplicationLetterIndexSet.stream()
+            .sorted(Comparator.reverseOrder())
             .collect(Collectors.toList());
 
-        while (!removeList.isEmpty()) {
-            Integer idx = removeList.remove(0);
+        while (!duplicationLetterIndexes.isEmpty()) {
+            Integer idx = duplicationLetterIndexes.remove(0);
             cryptogram = cryptogram.substring(0, idx) + cryptogram.substring(idx + 1);
         }
         return cryptogram;
