@@ -14,6 +14,9 @@ public class Problem7 {
 
         addVisitor(visitors, friendsOfUser, scoreMap);
 
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(scoreMap.entrySet());
+        entryList.sort((o1, o2) -> o2.getValue() - o1.getValue());
+
         return answer;
     }
 
