@@ -9,7 +9,13 @@ public class Problem2 {
             flag = true;
             for (int i =0; i < sb.length()-1; i++){
                 if (sb.charAt(i) == sb.charAt(i+1)){
-                    sb.delete(i,i + 2);
+                    int duplicateCnt = 1;
+                    for (int j = i+1; j < sb.length(); j++){
+                        if (sb.charAt(i) == sb.charAt(j)) duplicateCnt++;
+                        else break;
+                    }
+                    sb.delete(i,i + duplicateCnt);
+                    i--;
                     flag = false;
                 }
             }
