@@ -99,7 +99,13 @@ public class Problem7 {
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        Map<String, List<String>> relation = makeRelation(friends);
+        Map<String, Integer> scores = new HashMap<>();
+        score10(user, relation, scores);
+        score1(visitors, scores);
+        exceptUserFriends(user, scores, relation.get(user));
+
+        List<Score> sortList = SortByScoreAndName(scores);
+        return getTop(sortList, 5);
     }
 }
