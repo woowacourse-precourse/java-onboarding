@@ -8,9 +8,9 @@ public class Problem4 {
         for(int i=0; i<word.length(); i++){
             char chr = word.charAt(i);
 
-            if(chr >= 'a' && chr <= 'z')
+            if(Character.isLowerCase(chr))
                 stringBuilder.append(reverseSmall(chr));
-            else if(chr >= 'A' && chr <= 'Z')
+            else if(Character.isUpperCase(chr))
                 stringBuilder.append(reverseBig(chr));
             else
                 stringBuilder.append(chr);
