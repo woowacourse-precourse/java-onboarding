@@ -7,6 +7,9 @@ public class Problem7 {
         Map<String,List<String>> friendships;
         friendships = setFriendship(friends);
         System.out.println(friendships);
+
+        List<String> friendsFriends = getFriendsFriends(user, friendships);
+        System.out.println(friendsFriends);
         List<String> answer = Collections.emptyList();
         return answer;
 
@@ -36,5 +39,23 @@ public class Problem7 {
         temp = friendships.get(key);
         temp.add(value);
         return temp;
+    }
+
+    private static List<String> getFriendsFriends(String user, Map<String,List<String>> friendships){
+        List<String> temp = new ArrayList<>();
+        List<String> userFriend = friendships.get(user);
+        for (int i = 0; i < userFriend.size(); i++) {
+            List<String> currentFriendsFriends = friendships.get(userFriend.get(i));
+            for (int j = 0; j < currentFriendsFriends.size(); j++) {
+                temp.add(currentFriendsFriends.get(i));
+            }
+        }
+        temp.remove(user);
+        HashSet<String> set = new HashSet<>(temp);
+        temp = new ArrayList<>(set);
+        return temp;
+    }
+    private static int getRelationScore(String user, Map<String,List<String>> friendships){
+        return 0;
     }
 }
