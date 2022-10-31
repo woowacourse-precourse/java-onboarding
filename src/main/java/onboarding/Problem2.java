@@ -1,12 +1,5 @@
 package onboarding;
 
-/*
-cryptogram을 복호화하는 Decryption class를 구현.
-Decryption class는 다음과 같은 기능을 가지는 메서드를 구현.
-1. 연속하는 중복 문자를 삭제하는 메서드 replaceChar
- */
-
-
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
