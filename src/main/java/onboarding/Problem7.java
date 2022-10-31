@@ -40,6 +40,7 @@ public class Problem7 {
     }
 
     private static void increaseFriendWeightByRelationship(List<String> friend){
+        final int RELATIONSHIP_WEIGHT = 10;
         List<String> friendCheckList=new ArrayList<>(friend);
         friendCheckList.add(owner);
         for(List<String> relationship : friendData){
@@ -48,7 +49,7 @@ public class Problem7 {
                 relationship.stream()
                         .filter(a->!friendCheckList.contains(a))
                         .filter(a->!oldFriend.contains(a))
-                        .forEach(a->increaseWeight(a,10));
+                        .forEach(a->increaseWeight(a,RELATIONSHIP_WEIGHT));
             }
         }
     }
@@ -62,11 +63,12 @@ public class Problem7 {
     }
 
     private static void increaseFriendWeightByVisted(List<String> visitors){
+        final int VISIT_WEIGHT = 1;
         for(String visitor : visitors){
             if(oldFriend.contains(visitor)){
                 continue;
             }
-            increaseWeight(visitor,1);
+            increaseWeight(visitor,VISIT_WEIGHT);
         }
     }
 
