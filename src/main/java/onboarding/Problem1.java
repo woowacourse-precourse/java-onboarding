@@ -6,7 +6,9 @@ import java.util.List;
 /**
  * @작성자 rjsah09
  * @작성일 2022.10.31
+ *
  * @수정내역
+ * 2022.10.31 13.05 : 테스트 확인 및 isConstant(), mul() 수정
  * */
 
 class Problem1 {
@@ -15,7 +17,7 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
 
         //데이터 이상 감지
-        if (isConstant(pobi) || isConstant(crong)) {
+        if (!isConstant(pobi) || !isConstant(crong)) {
             return -1;
         }
 
@@ -36,8 +38,16 @@ class Problem1 {
         int min = Collections.max(list);
         int max = Collections.min(list);
 
-        //constant 확인
-        if(size != 2 || diff != 1 || min >= 0 || max <= 400) {
+        //1차 constant 확인
+        if(size != 2 || diff != 1 || min < 1 || max > 400) {
+            return false;
+        }
+
+        int odd = list.get(0);
+        int even = list.get(1);
+
+        //2차 constant 확인
+        if(odd % 2 != 1 || even % 2 != 0) {
             return false;
         }
 
@@ -58,7 +68,7 @@ class Problem1 {
 
     //페이지 곱셈
     private static int mul(int n) {
-        int result = 0;
+        int result = 1;
 
         while(n > 0) {
             result *= n % 10;
