@@ -6,6 +6,7 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         /*
          * 1. 우선, 페이지 번호의 유효성을 검증한다.
+         * 2. 페이지 번호의 각 자리의 숫자를 모두 더하거나 모두 곱해 가장 큰 수를 계산한다.
          * */
         int answer = Integer.MAX_VALUE;
 
@@ -17,7 +18,7 @@ class Problem1 {
         return answer;
     }
 
-    static public boolean isValidPage(List<Integer> bookPages) {
+    public static boolean isValidPage(List<Integer> bookPages) {
         int leftPage = bookPages.get(0);
         int rightPage = bookPages.get(1);
 
@@ -37,5 +38,26 @@ class Problem1 {
         }
 
         return true;
+    }
+
+    public static int getMaxScore(List<Integer> bookPages){
+        int maxScore = 0;
+
+        for (Integer bookPage : bookPages) {
+            int pageSum = 0;
+            int pageProduct = 0;
+
+            String strNum = Integer.toString(bookPage);
+            for(int j=0; j<strNum.length(); j++){
+                pageSum += strNum.charAt(j) - '0';
+                pageProduct *= strNum.charAt(j) - '0';
+            }
+
+            if (maxScore < Math.max(pageSum, pageProduct)){
+                maxScore = Math.max(pageSum, pageProduct);
+            }
+        }
+
+        return maxScore;
     }
 }
