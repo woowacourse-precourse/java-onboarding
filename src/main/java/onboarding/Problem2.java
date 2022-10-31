@@ -1,7 +1,5 @@
 package onboarding;
 
-import java.util.Stack;
-
 public class Problem2 {
 
     private static boolean IsSmallAlpha(char c)
@@ -19,44 +17,40 @@ public class Problem2 {
         return false;
     }
 
-    private static String makeAnswer(Stack<Character> s)
-    {
-        String result = "";
-        Stack<Character> temp = new Stack<>();
-        while (!s.isEmpty())
-        {
-            temp.push(s.peek());
-            s.pop();
+    private static String makeAnswer(String cryptogram) {
+        char index;
+        int cnt;
+        int length = cryptogram.length();
+        String nextCryptogram = "";
+
+        for (int i = 0; i < length; i++) {
+            cnt = 0;
+            index = cryptogram.charAt(i);
+            for (int j = i + 1; j < length; j++){
+                if (index != cryptogram.charAt(j)) {
+                    break;
+                }
+                cnt++;
+            }
+            if (cnt == 0) {
+                nextCryptogram += index;
+            } else {
+                i += cnt;
+            }
         }
-        while (!temp.isEmpty())
-        {
-            result += temp.peek();
-            temp.pop();
+        if (nextCryptogram.equals(cryptogram)) {
+            return cryptogram;
+        } else {
+            return makeAnswer(nextCryptogram);
         }
-        return result;
     }
 
     public static String solution(String cryptogram) {
         String answer = "answer";
-        Stack<Character> cryptogramStack = new Stack<>();
-        char overlapChar = '0';
 
         if (checkParam(cryptogram))
             return "";
-        for (int i=0; i<cryptogram.length(); i++)
-        {
-            char index = cryptogram.charAt(i);
-            if (overlapChar == index)
-                continue;
-            else if (!cryptogramStack.isEmpty() && cryptogramStack.peek() == index) {
-                cryptogramStack.pop();
-                overlapChar = index;
-            } else {
-                cryptogramStack.push(index);
-                overlapChar = '0';
-            }
-        }
-        answer = makeAnswer(cryptogramStack);
+        answer = makeAnswer(cryptogram);
         return answer;
     }
 }
