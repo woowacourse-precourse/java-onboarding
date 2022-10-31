@@ -53,11 +53,15 @@ class Problem1 {
         return maxResult;
     }
 
+    static int maxScore(List<Integer> pages) {
+        int addScore = addCalc(pages);
+        int multiplyScore = multiplyCalc(pages);
+        return Math.max(addScore, multiplyScore);
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if (!isVaild(pobi) || !isVaild(crong)) {
             return -1;
         }
-        int answer = Integer.MAX_VALUE;
-        return answer;
     }
 }
