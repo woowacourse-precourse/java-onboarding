@@ -10,11 +10,14 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+
         if (!validatePageNumber(pobi) || !validatePageNumber(crong)) {
             return -1;
         }
+
         int pobiScore = Page.getBiggerPage(pobi);
         int crongScore = Page.getBiggerPage(crong);
+
         if (pobiScore > crongScore) {
             answer = 1;
         } else if (pobiScore < crongScore) {

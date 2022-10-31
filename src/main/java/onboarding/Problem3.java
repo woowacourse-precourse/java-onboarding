@@ -3,6 +3,8 @@ package onboarding;
 import onboarding.problem3.ClapGame;
 
 public class Problem3 {
+    static final int MAX_NUMBER = 10000;
+    static final int MIN_NUMBER = 1;
     public static int solution(int number) {
         if (!validateGameNumber(number)) {
             return -1;
@@ -12,7 +14,7 @@ public class Problem3 {
     }
 
     public static boolean validateGameNumber(int number) {
-        if (number < 1 || number > 10000) {
+        if (number < MIN_NUMBER || number > MAX_NUMBER) {
             return false;
         }
         return true;

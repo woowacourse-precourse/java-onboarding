@@ -1,24 +1,24 @@
 package onboarding.problem2;
 
 public class Cryptogram {
-    public static String decryptCryptogram(String s) {
-        StringBuffer sb = new StringBuffer(s);
+    public static String decryptCryptogram(String cryptogram) {
+        StringBuffer cryptogramSb = new StringBuffer(cryptogram);
         int left = 0;
         int right = left;
-        while (left < sb.length()) {
-            right = findDuplication(sb, left);
+        while (left < cryptogramSb.length()) {
+            right = findDuplication(cryptogramSb, left);
             if (left != right) {
-                sb.delete(left, right + 1);
+                cryptogramSb.delete(left, right + 1);
             }
             left += 1;
         }
-        if (sb.toString().equals(s)) {
-            return s;
+        if (cryptogramSb.toString().equals(cryptogram)) {
+            return cryptogram;
         } else {
-            return decryptCryptogram(sb.toString());
+            return decryptCryptogram(cryptogramSb.toString());
         }
     }
-    
+
     private static int findDuplication(StringBuffer sb, int next) {
         while (next < sb.length() - 1 && sb.charAt(next + 1) == sb.charAt(next)) {
             next += 1;
