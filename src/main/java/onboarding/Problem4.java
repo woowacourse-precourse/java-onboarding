@@ -9,15 +9,17 @@ public class Problem4 {
 
         HashMap<Character, Character> alphabetHash = makeHashMap();
         for (char c : word.toCharArray()) {
-            answer.append(alphabetHash.get(c));
+            if (alphabetHash.containsKey(c)) {
+                answer.append(alphabetHash.get(c));
+                continue;
+            }
+            answer.append(c);
         }
         return answer.toString();
     }
 
     static HashMap<Character, Character> makeHashMap() {
         HashMap<Character, Character> alphabetHash = new HashMap<>();
-
-        alphabetHash.put(' ', ' ');
 
         for (int i = 0; i < 26; i++) {
             alphabetHash.put((char) (65 + i), (char) (90 - i));
