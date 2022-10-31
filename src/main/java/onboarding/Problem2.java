@@ -5,58 +5,42 @@ import java.util.List;
 
 public class Problem2 {
     static boolean isFinished = false;
-    static final int MAXIDX = 1010;
-    //연속된 문자열 찾기
-    static Deque<Integer> findRedundant(String cryptogram){
-        Deque<Integer> deque = new LinkedList<>();
-
-        for(int i = 0; i < cryptogram.length(); i++){
-            if(i == cryptogram.length() - 1) break; //뒤에 문자열 없음
-            char prevAlp = cryptogram.charAt(i);
-            for(int j = i + 1; j< cryptogram.length();){
-                char curAlp = cryptogram.charAt(j);
-                if(prevAlp == curAlp) {
-                    deque.add(i);
-                    deque.add(j);
-                    j++;
-                }
-
-                else
-                    break; //뒤에 같은 문자열 더이상 없으면
-
-            }
-        }
-        if(deque.isEmpty()) isFinished = true;
-        return deque;
-    }
-
-    //연속된 문자열 제거
+    
+    //연속된 문자열 지우기
     static String removeRedundant(String cryptogram){
-        String removedString = cryptogram;
-        Deque<Integer> deque = findRedundant(cryptogram);
-
-        if(isFinished) {
-            return removedString;
+        String modifyCrypto = cryptogram;
+        int removeCnt = 0;
+        Character prevChar = ' ';
+        boolean isRemoved = false;
+        for(int idx = 1; idx < modifyCrypto.length(); idx++){
+            if(modifyCrypto.charAt(idx - 1) == modifyCrypto.charAt(idx) && isRemoved != true){
+                prevChar = modifyCrypto.charAt(idx);
+                modifyCrypto = modifyCrypto.substring(0,idx - 1) + modifyCrypto.substring(idx + 1);
+                idx -= 2;
+                if(idx == -1) idx++;
+                removeCnt++;
+                isRemoved = true;
+                continue;
+            }
+            if(prevChar == modifyCrypto.charAt(idx) && isRemoved == true){
+                prevChar = modifyCrypto.charAt(idx);
+                modifyCrypto = modifyCrypto.substring(0,idx) + modifyCrypto.substring(idx + 1);
+                idx -=1;
+                removeCnt++;
+                continue;
+            }
+            prevChar = ' ';
+            isRemoved = false;
         }
-
-        int firstIdx = deque.peekFirst();
-        int lastIdx = deque.peekLast();
-        removedString = removedString.substring(0,firstIdx)
-                + removedString.substring(lastIdx+1);
-
-        return removedString;
+        if(removeCnt == 0) isFinished = true;
+        return modifyCrypto;
     }
+    
 
+    
     public static String solution(String cryptogram) {
         String answer = "answer";
-        String modifyCrypto = cryptogram;
 
-        while(true){
-            if(isFinished) break;
-            modifyCrypto = removeRedundant(modifyCrypto);
-        }
-
-        answer = modifyCrypto;
         return answer;
     }
 }
