@@ -13,4 +13,14 @@ public class Problem2 {
 
         return false;
     }
+
+    public static boolean isLowerCase(String cryptogram){
+        String originCryptogram = cryptogram;
+        String transCryptogram = cryptogram.toLowerCase();
+
+        if(originCryptogram.equals(transCryptogram))
+            return true;
+
+        return false;
+    }
 }

@@ -15,4 +15,16 @@ public class TestProblem2 {
         assertThat(Problem2.isInRange(T2)).isEqualTo(false);
         assertThat(Problem2.isInRange(T3)).isEqualTo(true);
     }
+
+    @Test
+    void TestisLowerCase(){
+        String T1 = "abcd";
+        String T2 = "ABCD";
+        String T3 = "Abcd";
+
+        assertThat(Problem2.isLowerCase(T1)).isEqualTo(true);
+        assertThat(Problem2.isLowerCase(T2)).isEqualTo(false);
+        assertThat(Problem2.isLowerCase(T3)).isEqualTo(false);
+
+    }
 }
