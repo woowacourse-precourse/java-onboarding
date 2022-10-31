@@ -10,8 +10,11 @@ public class Problem6 {
 
         splitNickname(forms, splitName);
 
-        answer.addAll(checkDuplication);
-        Collections.sort(answer);
+        for (String key : splitName.keySet()) {
+            if (splitName.get(key).size() < 2) continue;
+            checkDuplication.addAll(splitName.get(key));
+        }
+
         return answer;
     }
 
