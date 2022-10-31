@@ -184,10 +184,19 @@ public class Problem7 {
     }
 
     /**
+     * 친구 정보 존재 여부 확인
+     * @param user 유저 정보
+     * @return 존재 여부
+     */
+    private static boolean existRealFriend(String user) {
+        return realFriends.contains(user);
+    }
+
+    /**
      * 친구 정보 가져오기
      * @return 친구 정보
      */
-    private static List<String> getRealFriend() {
+    private static List<String> getRealFriends() {
         return realFriends;
     }
 
