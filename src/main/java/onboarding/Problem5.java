@@ -7,7 +7,8 @@ import java.util.List;
 
 public class Problem5 {
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
+        ArrayList<Integer> moneyList = getMoneyList();
+        List<Integer> answer = getAnswer(money, moneyList);
         return answer;
     }
     public static ArrayList<Integer> getMoneyList(){
