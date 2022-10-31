@@ -17,7 +17,7 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         FriendsRelation totalFriendsRelation = new FriendsRelation(friends);
         Set<String> userFriends = totalFriendsRelation.get(user);
-        Set<String> knowEachOther = totalFriendsRelation.get(userFriends);
+        Set<String> friendOfFriend = totalFriendsRelation.get(userFriends);
         List<String> answer = Collections.emptyList();
         return answer;
     }
@@ -48,12 +48,13 @@ class FriendsRelation {
     }
 
     public Set<String> get(Set<String> userFriends) {
-        HashSet<String> knowEachOther = new HashSet<>();
+        Set<String> friendOfFriend = new HashSet<>();
 
         for (String userFriend : userFriends) {
-            knowEachOther.addAll(this.get(userFriend));
+            Set<String> friends = this.get(userFriend);
+            friendOfFriend.addAll(friends);
         }
 
-        return knowEachOther;
+        return friendOfFriend;
     }
 }
