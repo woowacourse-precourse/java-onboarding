@@ -37,4 +37,11 @@ public class Problem7 {
         }
         return friendOfFriend.stream().distinct().collect(Collectors.toList());
     }
+
+    private static List<String> getRecommendedFriends(List<String> friendOfFriend, List<String> visitors) {
+        List<String> recommendedFriends = new ArrayList<>();
+        recommendedFriends.addAll(friendOfFriend);
+        recommendedFriends.addAll(visitors);
+        return recommendedFriends.stream().distinct().collect(Collectors.toList());
+    }
 }
