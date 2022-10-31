@@ -25,6 +25,33 @@ class Problem1 {
         return false;
     }
 
+    // 한 페이지의 덧셈 결과
+    public static int getPlusResult(int number) {
+        int ans = 0;
+        while (number > 0) {
+            ans += number % 10;
+            number /= 10;
+        }
+        return ans;
+    }
+    // 한 페이지의 곱셈 결과
+    public static int getMulResult(int number) {
+        int ans = 1;
+        while (number > 0) {
+            ans *= number % 10;
+            number /= 10;
+        }
+        return ans;
+    }
+    // 한 페이지의 계산 결과 최댓값
+    public static int getPageMaxResult(int number) {
+        return Math.max(getPlusResult(number), getMulResult(number));
+    }
+    // 양 페이지의 계산 결과 최댓값
+    public static int getMaxResult(int leftPage, int rightPage) {
+        return Math.max(getPageMaxResult(leftPage), getPageMaxResult(rightPage));
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
