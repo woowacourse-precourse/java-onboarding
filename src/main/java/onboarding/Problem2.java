@@ -27,9 +27,10 @@ public class Problem2 {
                 }
             }
             cryptoList = initialList(chDeque);
+            System.out.println(cryptoList);
         } while (cnt);
 
-        return printDeque(chDeque);
+        return printList(cryptoList);
     }
 
     static List StringToList(String str) {
@@ -48,11 +49,12 @@ public class Problem2 {
         return result;
     }
 
-    static String printDeque(Deque<Character> chDeque){
-        String result = "";
-        while (!chDeque.isEmpty()) {
-            result += Character.toString(chDeque.removeFirst());
+    static String printList(List list){
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < list.size(); i++) {
+            sb.append(list.get(i));
         }
-        return result;
+        return sb.toString();
     }
 }
