@@ -18,9 +18,15 @@ public class Problem5 {
     }
 
     private static int countMillion() {
-        int Million = balance / 10000;
-        balance -= 10000 * Million;
-        return Million;
+        int million = balance / 10000;
+        balance -= 10000 * million;
+        return million;
+    }
+
+    private static int countFiveThousand() {
+        int thousand = balance / 1000;
+        balance -= 1000 * thousand;
+        return thousand;
     }
 
 }
