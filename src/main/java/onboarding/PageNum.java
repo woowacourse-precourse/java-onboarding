@@ -41,4 +41,13 @@ public class PageNum {
 		}
 		return reduce.get();
 	}
+
+	public int multiplyEachPageNumber() {
+		Optional<Integer> reduce = eachPageNumber.stream()
+			.reduce((num1, num2) -> num1 * num2);
+		if (reduce.isEmpty()) {
+			return -1;
+		}
+		return reduce.get();
+	}
 }
