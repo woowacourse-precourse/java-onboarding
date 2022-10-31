@@ -20,7 +20,7 @@ public class Problem5 {
      * @param money 금액
      */
     private static void checkMoneyCorrect(int money) {
-        if (money > 0 && money <= 1_000_000) {
+        if (money < 1 || money > 1_000_000) {
             throw new RuntimeException("입력 가능한 금액을 초과하였습니다. 금액은 1 ~ 1,000,000 사이여야 합니다.");
         }
     }
