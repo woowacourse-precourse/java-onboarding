@@ -1,75 +1,21 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
 public class Problem5 {
     public static List<Integer> solution(int money) {
-//        List<Integer> answer = Collections.emptyList();
+        /* 문제에서 주어진 화폐 단위 목록 */
+        List<Integer> unitList = new ArrayList<>(
+                Arrays.asList(50000, 10000, 5000, 1000, 500, 100, 50, 10, 1)
+        );
+
         List<Integer> answer = new ArrayList<>();
-
-        if (50000 <= money) {
-            answer.add(money / 50000);
-            money = money % 50000;
-        } else {
-            answer.add(0);
-        }
-
-        if (10000 <= money) {
-            answer.add(money / 10000);
-            money = money % 10000;
-        } else {
-            answer.add(0);
-        }
-
-        if (5000 <= money) {
-            answer.add(money / 5000);
-            money = money % 5000;
-        } else {
-            answer.add(0);
-        }
-
-        if (1000 <= money) {
-            answer.add(money / 1000);
-            money = money % 1000;
-        } else {
-            answer.add(0);
-        }
-
-        if (500 <= money) {
-            answer.add(money / 500);
-            money = money % 500;
-        } else {
-            answer.add(0);
-        }
-
-        if (100 <= money) {
-            answer.add(money / 100);
-            money = money % 100;
-        } else {
-            answer.add(0);
-        }
-
-        if (50 <= money) {
-            answer.add(money / 50);
-            money = money % 50;
-        } else {
-            answer.add(0);
-        }
-
-        if (10 <= money) {
-            answer.add(money / 10);
-            money = money % 10;
-        } else {
-            answer.add(0);
-        }
-
-        if (1 <= money) {
-            answer.add(money / 1);
-            money = money % 1;
-        } else {
-            answer.add(0);
+        for (Integer unit: unitList) {      // 각 화폐 단위별로
+            answer.add(money / unit);       // money를 현재 화폐단위로 나눈 몫
+            money = money % unit;           // money를 현재 화폐단위로 나눈 나머지로 갱신
         }
 
         return answer;

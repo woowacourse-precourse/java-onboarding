@@ -5,29 +5,26 @@ import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        HashSet<String> emails = new HashSet<>();
-        HashMap<String, String> hashMap = new HashMap<>();
-        for (int i = 0; i < forms.size(); i++) {
-            String nickName = forms.get(i).get(1);
-            if (nickName.length() < 2) {
-                break;
-            }
+        Set<String> hashSet = new HashSet<>();              // 중복 제거를 위한 HashSet
+        Map<String, String> hashMap = new HashMap<>();      // 중복 닉네임 확인을 위한 HashMap
+        for (List<String> form: forms) {        // 각각의 [이메일, 닉네임]에 대해
+            String email = form.get(0);         // 현재 이메일
+            String nickName = form.get(1);      // 현재 닉네임
 
-            for (int j = 0; j < nickName.length() - 1; j++) {
-                String key = nickName.substring(j, j + 2);      // 2글자씩
-                if (hashMap.containsKey(key)) {                 // key가 이미 존재한다면
-                    String email = hashMap.get(key);
-                    if (!email.equals(forms.get(i).get(0))) {    // key와 연결된 email이 현재 email과 다르다면
-                        emails.add(email);
-                        emails.add(forms.get(i).get(0));
+            if (2 <= nickName.length()) {       // 닉네임이 두 글자 이상인 경우(한 글자인 경우는 무시)
+                for (int i = 0; i < nickName.length() - 1; i++) {   // 두 글자씩 추출하여야 하므로 length - 1 까지
+                    String key = nickName.substring(i, i + 2);      // [i:i + 2] 범위 = 두 글자
+                    if (hashMap.containsKey(key)) {     // 동일한 두 글자를 이미 갖고 있다면
+                        hashSet.add(email);                 // 현재 이메일 추가
+                        hashSet.add(hashMap.get(key));      // 기존 이메일 추가
                     }
+                    hashMap.put(key, email);        // Key-Value 쌍 {두 글자: 현재 이메일} 추가
                 }
-                hashMap.put(key, forms.get(i).get(0));          // 갱신
             }
         }
 
-//        List<String> answer = List.of("answer");
-        List<String> answer = emails.stream().sorted().collect(Collectors.toList());
+        /* hashSet으로 중복이 제거된 이메일에 대해 오름차순 정렬하여 return */
+        List<String> answer = hashSet.stream().sorted().collect(Collectors.toList());
         return answer;
     }
 }
