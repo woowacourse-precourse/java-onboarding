@@ -59,8 +59,8 @@ class Problem7MethodTest {
         HashMap<String, Integer> result1 = getScoreKnownFriend(user1, friends1);
 
         assertThat(result1).isEqualTo(Map.of(
-                "andole", 10,
-                "jun", 10
+                "andole", 20,
+                "jun", 20
         ));
     }
 

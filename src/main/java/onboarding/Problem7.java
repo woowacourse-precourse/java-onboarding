@@ -61,14 +61,14 @@ public class Problem7 {
                     int score = scoreKnownFriend.get(userA);
                     scoreKnownFriend.put(userA, score + 10);
                 } else
-                    scoreKnownFriend.put(userA, 0);
+                    scoreKnownFriend.put(userA, 10);
 
             if (recommendFriends.contains(userB) && friendsOfUser.contains(userA))
                 if (scoreKnownFriend.containsKey(userB)) {
                     int score = scoreKnownFriend.get(userB);
                     scoreKnownFriend.put(userB, score + 10);
                 } else
-                    scoreKnownFriend.put(userB, 0);
+                    scoreKnownFriend.put(userB, 10);
         }
 
         return scoreKnownFriend;
