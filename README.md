@@ -1,7 +1,8 @@
 # 미션 - 온보딩
 ## :로켓: 기능 요구 사항
 아래의 7가지 기능 요구 사항을 모두 해결해야 한다.
-- [ ] [문제 1](./docs/PROBLEM1.md)
+- [x] [문제 1](./docs/PROBLEM1.md)
+- [문제 1 풀이](./src/main/java/onboarding/Problem1.java) 
 - [ ] [문제 2](./docs/PROBLEM2.md)
 - [ ] [문제 3](./docs/PROBLEM3.md)
 - [ ] [문제 4](./docs/PROBLEM4.md)
@@ -22,6 +23,6 @@
 ---
 ## :rocket: 기능 요구 사항 
 ### 문제 1
-- [ ] 페이지 유효 체크
-- [ ] 가장 큰 수 구하기
-- [ ] solution
+- [x] 페이지 유효 체크
+- [x] 가장 큰 수 구하기
+- [x] solution
