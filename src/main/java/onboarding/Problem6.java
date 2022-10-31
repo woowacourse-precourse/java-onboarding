@@ -19,17 +19,16 @@ public class Problem6 {
         }
         return result;
     }
-    public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = new ArrayList<>();
-        Set<String> overlapNicknameList = new HashSet<>();
+    public static Map<String,String > makeFormsMap(List<List<String>> forms){
         Map<String,String> formsMap = new HashMap<>();
 
         for(List<String> form : forms){
             formsMap.put(form.get(1),form.get(0));
         }
-
-        Map<String, LinkedList<String>> m = makeTokens(formsMap);
-
+        return formsMap;
+    }
+    public static Set<String> makeOverlapNicknameList(Map<String, LinkedList<String>> m){
+        Set<String> overlapNicknameList = new HashSet<>();
         for(String token : m.keySet()){
             LinkedList<String> l = m.get(token);
             if (l.size() >= 2){
@@ -38,13 +37,25 @@ public class Problem6 {
                 }
             }
         }
+        return overlapNicknameList;
+    }
+
+    public static List<String> OverlapNicknameListToEmailList(Map<String,String> formsMap , Set<String> overlapNicknameList){
+        List<String> answer = new ArrayList<>();
 
         for (String overlapNickname : overlapNicknameList){
             answer.add(formsMap.get(overlapNickname));
         }
 
         Collections.sort(answer);
+        return  answer;
+    }
 
-        return answer;
+    public static List<String> solution(List<List<String>> forms) {
+        Map<String,String> formsMap = makeFormsMap(forms);
+        Map<String, LinkedList<String>> m = makeTokens(formsMap);
+        Set<String> overlapNicknameList = makeOverlapNicknameList(m);
+
+        return OverlapNicknameListToEmailList(formsMap,overlapNicknameList);
     }
 }
