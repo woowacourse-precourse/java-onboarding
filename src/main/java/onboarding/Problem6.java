@@ -11,6 +11,7 @@ public class Problem6 {
         init();
         putFormsToMap(forms);
         addToResultIfDuplicated(forms);
+        Collections.sort(output);
         return output;
     }
 
