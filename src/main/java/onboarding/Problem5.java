@@ -9,6 +9,9 @@ class MoneyTransformation{
     MoneyTransformation(int money){
         changes=money;
     }
+    void withdraw(int amount){
+        changes-=amount;
+    }
 }
 public class Problem5 {
     public static List<Integer> solution(int money) {
