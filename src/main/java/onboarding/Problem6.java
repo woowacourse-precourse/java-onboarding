@@ -5,32 +5,58 @@ import java.util.*;
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
 
-        HashSet<String> crewEmailSet = new HashSet<>();
-        for (int i = 0; i < forms.size(); i++) {
-            extractCrew(i, crewEmailSet, forms);
-        }
+        HashMap<String, Integer> subNameMap = makeSubNameMap(forms);
+        HashSet<String> dupSubName = extractDuplication(subNameMap);
+        HashSet<String> crewEmailSet = extractCrewEmail(forms,dupSubName);
+
         List<String> answer = new ArrayList<>(crewEmailSet);
         Collections.sort(answer);
         return answer;
     }
 
-    // 비슷한 이름을 가진 크루의 이메일을 추출한다.
-    private static void extractCrew(int preIndex, HashSet<String> nameSet, List<List<String>> forms) {
-        String myName = forms.get(preIndex).get(1);
-        for (int i = preIndex+1; i < forms.size(); i++) {
-            if (checkDuplicate(myName, forms.get(i).get(1))) {
-                nameSet.add(forms.get(preIndex).get(0));
-                nameSet.add(forms.get(i).get(0));
+    // 중복될 수 있는 모든 두글자가 몇회 반복되는지 확인한다.
+    private static HashMap<String, Integer> makeSubNameMap(List<List<String>> forms) {
+        HashMap<String, Integer> subNameMap = new HashMap<>();
+        for (List<String> form : forms) {
+            String name = form.get(1);
+            saveAllSubName(name,subNameMap);
+        }
+        return subNameMap;
+    }
+
+    // 중복될 수 있는 두글자와 갯수를 함께 저장
+    private static void saveAllSubName(String name, HashMap<String, Integer> subNameMap) {
+        for (int i = 0; i < name.length() - 1; i++) {
+            String subName = name.substring(i, i + 2);
+            if (subNameMap.containsKey(subName)){
+                int count = subNameMap.get(subName);
+                subNameMap.put(subName,count+1);
+            } else if (!subNameMap.containsKey(subName)) {
+                subNameMap.put(subName, 0);
             }
         }
     }
 
-    // 상대방과 나의 이름사이에 중복된 이름이 있는지 확인한다.
-    private static boolean checkDuplicate(String myName, String targetName) {
-        for (int i =0; i < myName.length()-1;i++) {
-            String sample = myName.substring(i,i+2);
-            if (targetName.contains(sample)) return true;
+    // 2회 이상 반복되는 두글자를 찾는다.
+    private static HashSet<String> extractDuplication(HashMap<String, Integer> subNameMap) {
+        HashSet<String> dupSubNames = new HashSet<>();
+        for (String key : subNameMap.keySet()) {
+            if (subNameMap.get(key) > 1) dupSubNames.add(key);
         }
-        return false;
+        return dupSubNames;
+    }
+
+    // 2회 이상 반복되는 2글자를 가지고 있는 닉네임을 가진 크루의 이메일을 추출한다.
+    private static HashSet<String> extractCrewEmail(List<List<String>> forms, HashSet<String> dupSubNames) {
+        HashSet<String> crewEmails = new HashSet<>();
+        for (List<String> form : forms) {
+            String name = form.get(1);
+            String email = form.get(0);
+            for (int i = 0; i < name.length()-1; i++) {
+                String subName = name.substring(i, i + 2);
+                if (dupSubNames.contains(subName)) crewEmails.add(email);
+            }
+        }
+        return crewEmails;
     }
 }
