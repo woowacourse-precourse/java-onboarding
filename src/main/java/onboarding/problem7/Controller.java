@@ -31,7 +31,8 @@ public class Controller {
     private static void init(Relations relation, Visitors visitor) {
         List<String> distinctFriends = relation.getDistinctFriends();
         List<String> distinctVisitors = visitor.getDistinctVisitors();
-        Friend.initID(distinctFriends, distinctVisitors);
+        Friend.initID(distinctFriends);
+        Friend.initID(distinctVisitors);
         Friend.initWeight();
     }
 }

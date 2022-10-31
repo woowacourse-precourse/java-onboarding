@@ -7,13 +7,9 @@ public class Friend {
     private static HashMap<String, Integer> uniqueIDs = new HashMap<>();
     private static int forID = 0;
     
-    public static void initID(List<String> friends, List<String> visitors) {
-        for (int i = 0; i < friends.size(); i++) {
-            String name = friends.get(i);
-            uniqueIDs.put(name, forID++);
-        }
-        for (int i = 0; i < visitors.size(); i++) {
-            String name = visitors.get(i);
+    public static void initID(List<String> people) {
+        for (int i = 0; i < people.size(); i++) {
+            String name = people.get(i);
             if (!uniqueIDs.containsKey(name)) {
                 uniqueIDs.put(name, forID++);
             }
