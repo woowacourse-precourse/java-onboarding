@@ -37,6 +37,15 @@ public class Sns {
         return recommendMembersUsingMap(recommendMap);
     }
 
+    private List<String> recommendMembersUsingMap(HashMap<String, Integer> recommendMap) {
+        PriorityQueue<RecommendedMember> recommendedMemberQueue = new PriorityQueue<>();
+        for (String member : recommendMap.keySet()) {
+            int score = recommendMap.get(member);
+            recommendedMemberQueue.add(new RecommendedMember(member, score));
+        }
+        return extractFiveMember(recommendedMemberQueue);
+    }
+
     private void updateRecommendMap(String user, HashMap<String, Integer> recommendMap) {
         List<String> membersNotFriendWithUser = findMembersNotFriendWith(user);
 
