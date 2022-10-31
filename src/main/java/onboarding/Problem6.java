@@ -1,6 +1,8 @@
 package onboarding;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /*
 
@@ -16,6 +18,23 @@ import java.util.List;
 
  */
 public class Problem6 {
+
+    // 이메일 정보과 닉네임을 쌍으로 갖는 Map 생성
+    static Map<String, String> emailNicknameMap = new HashMap<>();
+    // 닉네임이 중복 되었는지 에 대한 boolean 값을 갖는 Map 생성
+    static Map<String, Boolean> nicknameOverlapStatusMap = new HashMap<>();
+
+    // forms 를 Map 으로 변환하는 메서드
+    // 반환은 HashMap<String,String> ex) {json@email.com, 제이슨} 으로 수행한다.
+    public static Map<String, String> convertToEmailNicknameMap(List<List<String>> forms) {
+        for (List<String> form : forms) {
+            for (int formListIndex = 0; formListIndex < form.size() - 1; formListIndex++) {
+                emailNicknameMap.put(form.get(formListIndex), form.get(formListIndex + 1));
+            }
+        }
+        return emailNicknameMap;
+    }
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
