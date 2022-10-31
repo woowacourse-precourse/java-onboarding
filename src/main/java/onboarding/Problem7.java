@@ -8,7 +8,7 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
 
-        List<String> allUserList = getUsers(friends);
+        List<String> allUserList = getUsers(friends, visitors);
         System.out.println(allUserList);
         List<String> userFriendList = getFriends(user, friends);
         Stream<String> notUserFriendStream = allUserList.stream().filter(id -> !userFriendList.contains(id) && !id.equals(user));
@@ -53,12 +53,16 @@ public class Problem7 {
         return answer;
     }
 
-    static List<String> getUsers(List<List<String>> friends) {
-        Stream<String> flattenUserStream = friends.stream().flatMap(Collection::stream);
-        List<String> userList = flattenUserStream
-                                        .distinct()
-                                        .collect(Collectors.toList());
-        return userList;
+    static List<String> getUsers(List<List<String>> friends, List<String> visitors) {
+        List<String> result = new ArrayList<>();
+
+        Stream<String> friendsStream = friends.stream().flatMap(Collection::stream);
+        Stream<String> visitorsStream = visitors.stream();
+        Stream<String> allUserStream = Stream.concat(friendsStream, visitorsStream).distinct();
+
+        result = allUserStream.collect(Collectors.toList());
+
+        return result;
     }
 
     static int getScore(String user, String anotherUser,
