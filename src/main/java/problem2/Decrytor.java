@@ -7,6 +7,19 @@ public class Decrytor {
         this.cryptogram = cryptogram;
     }
 
+    private void getCryptogram(StringBuilder tempCryptogram) {
+        for(int i = 0; i < cryptogram.length(); i++) {
+            updateCryptogram(tempCryptogram, i);
+        }
+    }
+
+    private void updateCryptogram(StringBuilder tempCryptogram, int index) {
+        if(isUnDuplicate(index)) {
+            char currentChar = cryptogram.charAt(index);
+            tempCryptogram.append(currentChar);
+        }
+    }
+
     private boolean isUnDuplicate(int index) {
         return isUnDuplicatePreviousChar(index) && isUnDuplicateNextChar(index);
     }
