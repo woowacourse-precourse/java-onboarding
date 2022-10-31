@@ -14,6 +14,7 @@ class ApplicationTest {
         void case1() {
             List<Integer> pobi = List.of(97, 98);
             List<Integer> crong = List.of(197, 198);
+
             int result = 0;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
@@ -50,6 +51,13 @@ class ApplicationTest {
             String result = "";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
+        @Test
+        void case3() {
+            String cryptogram = "zzzz";
+            String result = "";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
     }
 
     @Nested
