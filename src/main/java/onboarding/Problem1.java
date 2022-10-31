@@ -9,7 +9,8 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if (hasException(pobi, crong) == true)
             return -1;
-        return answer;
+        int pobiMaxNum = getMaxNum(getNumByPage(pobi, "left"), getNumByPage(pobi, "right"));
+        int crongMaxNum = getMaxNum(getNumByPage(crong, "left"), getNumByPage(crong, "right"));
     }
 
     public static int getNumByPage(List<Integer> user, String page) {
@@ -21,6 +22,11 @@ class Problem1 {
                 .map(Integer::parseInt)
                 .reduce(1, (a,b) -> a*b);
         return (resultAdd>resultMul)?resultAdd:resultMul;
+    }
+
+
+    public static int getMaxNum(int leftMaxNum, int rightMaxNum) {
+        return (leftMaxNum >= rightMaxNum) ? leftMaxNum : rightMaxNum;
     }
 
 
