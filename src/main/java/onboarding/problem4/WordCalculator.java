@@ -1,7 +1,6 @@
 package onboarding.problem4;
 
-import static onboarding.problem4.CharacterValidator.isAlphabet;
-import static onboarding.problem4.CharacterValidator.isUpperCase;
+import static java.lang.Character.*;
 import static onboarding.problem4.consts.AlphabetConst.LOWER_CASE_CHAR_A;
 import static onboarding.problem4.consts.AlphabetConst.LOWER_CASE_CHAR_Z;
 import static onboarding.problem4.consts.AlphabetConst.UPPER_CASE_CHAR_A;
@@ -41,7 +40,7 @@ public class WordCalculator {
      * @return 변경한 문자
      */
     private static char changeCharacter(char target) {
-        if (!isAlphabet(target)) {
+        if (!isAlphabetic(target)) {
             return target;
         }
         if (isUpperCase(target)) {
