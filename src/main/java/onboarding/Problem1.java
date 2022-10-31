@@ -35,4 +35,9 @@ class Problem1 {
         return Arrays.stream(digits)
                 .sum();
     }
+
+    private static int getDigitsMultiplication(int[] digits){
+        return Arrays.stream(digits)
+                .reduce(1, (a,b)->a*b);
+    }
 }
