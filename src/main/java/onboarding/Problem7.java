@@ -4,8 +4,11 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        List<String> userFriends = getUserFriends(user, friends);
+        Map<String, Integer> recommendedFriends = getRecommendedFriends(userFriends, friends);
+        addVisitors(recommendedFriends, visitors, userFriends);
+
+        return sortByValue(recommendedFriends);
     }
 
     private static List<String> getUserFriends(String user, List<List<String>> friends) {
