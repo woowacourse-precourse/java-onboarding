@@ -22,7 +22,14 @@ public class Problem6 {
     private static void putFormsToMap(List<List<String>> forms) {
         for (List<String> list : forms) {
             map.put(list.get(1), list.get(0));
+            putDuplicationCountToMap(list.get(1));
         }
     }
 
+    private static void putDuplicationCountToMap(String nickname) {
+        for (int i = 0; i < nickname.length() - 1; i++) {
+            String subString = nickname.substring(i, i + 2);
+            duplicationCountMap.put(subString, duplicationCountMap.getOrDefault(subString, 0) + 1);
+        }
+    }
 }
