@@ -1,5 +1,8 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * <기능 목록>
  *     1. 메소드
@@ -16,8 +19,18 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
+
+        for (int i = 0; i < 26; i++){
+            upperAl.add((char) (65 + i));
+            lowerAl.add((char) (97 + i));
+        }
+
         String answer = "";
         return answer;
     }
+
+    private static List<Character> upperAl = new ArrayList<>();
+    private static List<Character> lowerAl = new ArrayList<>();
+
 
 }
