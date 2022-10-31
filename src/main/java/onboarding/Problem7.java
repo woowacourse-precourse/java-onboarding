@@ -80,4 +80,13 @@ public class Problem7 {
             recommendScore.put(visitorID, 0);
         }
     }
+
+    public static void calculateScore() {
+        for (String acquaintID : acquaintance) {
+            recommendScore.put(acquaintID, recommendScore.get(acquaintID) + 10);
+        }
+        for (String visitorID : newVisitors) {
+            recommendScore.put(visitorID, recommendScore.get(visitorID) + 1);
+        }
+    }
 }
