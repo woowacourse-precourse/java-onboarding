@@ -43,4 +43,10 @@ public class User {
                 .filter(email -> forms.get(email).contains(subName))
                 .forEach(emails::add);
     }
+
+    private List<String> convertEmailsToList() {
+        List<String> result = new ArrayList<>(emails);
+        Collections.sort(result);
+        return result;
+    }
 }
