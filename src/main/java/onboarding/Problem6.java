@@ -6,9 +6,17 @@ import java.util.stream.Collectors;
 public class Problem6 {
     private static final Map<String, List<String>> map = new HashMap<>();
     public static List<String> solution(List<List<String>> forms) {
+        TreeSet<String> set = new TreeSet<>();
 
         initMap(forms);
 
+        map.forEach((s, strings) -> {
+            if (strings.size() >= 2) {
+                set.addAll(strings);
+            }
+        });
+
+        List<String> answer = new ArrayList<>(set);
         return answer;
     }
 
