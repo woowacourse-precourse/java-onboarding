@@ -8,4 +8,9 @@ public class Problem5 {
         List<Integer> answer = Collections.emptyList();
         return answer;
     }
+
+    private static int calculateNumberOfMoney(int money, int currency) {
+        int numberOfMoney = money / currency;
+        return numberOfMoney;
+    }
 }
