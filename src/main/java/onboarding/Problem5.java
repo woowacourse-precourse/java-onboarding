@@ -8,20 +8,16 @@ import java.util.List;
 public class Problem5 {
     enum Cash {
         length(9),
+        min(1),
+        max(1_000_000),
         division(5),
-        def(0),
-        fiveUnit(1);
+        zero(0),
+        hundredTousand(5),
+        million(6),
+        round(1);
         private final int value;
         Cash(int type) {
             this.value = type;
-        }
-    }
-    enum Index {
-        front(1);
-
-        private  final int info;
-        Index(int info) {
-            this.info = info;
         }
     }
     public static List<Integer> solution(int money) {
@@ -40,49 +36,55 @@ public class Problem5 {
         List<Integer> digitNumber_list = new ArrayList<>();
 
         while (money > 0) {
-            digitNumber_list.add(money % 10);
+            digitNumber_list.add((money % 10));
             money /= 10;
         }
+
         return digitNumber_list;
     }
     public static Integer [] divisionMoney(List<Integer> digitNumber_list) {
         Integer[] money_list = new Integer[Cash.length.value];
-        int j = 0;
+        int digitCount = 0;
         int i;
-        money_list[j] = digitNumber_list.get(j);
 
+        money_list[digitCount] = digitNumber_list.get(digitCount);
         for (i = 1; i < Cash.length.value; i++) {
-            //홀수 일 때
-            if (i % 2 == 1)
-                money_list[i] = digitNumber_list.get(i - j);
-            //짝수일 때
             if (i % 2 == 0) {
-                if (money_list[i - Index.front.info] < Cash.division.value)
-                    money_list[i] = Cash.def.value;
-                if (money_list[i - 1] >= Cash.division.value) {
-                    money_list[i] = Cash.fiveUnit.value;
-                    money_list[i - 1] -= Cash.division.value;
-                }
-                j++;
+                checkFive(i - 1, money_list);
+                digitCount++;
+                continue;
             }
+            money_list[i] = digitNumber_list.get(i - digitCount);
         }
-        //9의 자리가 있을 경우
         if (i == Cash.length.value)
-        {
-            if (digitNumber_list.size() == 6)
-                money_list[i - Index.front.info] += (digitNumber_list.get(5) * 10) / Cash.division.value;
-            if (digitNumber_list.size() == 7)
-                money_list[i - Index.front.info] += (digitNumber_list.get(6) * 100) / Cash.division.value;
-        }
+            checkFiveTousand(money_list, digitNumber_list);
+
         return money_list;
+    }
+
+    //50,500,5000원 확인
+    public static void checkFive(int status, Integer[] money) {
+        if (money[status] < Cash.division.value)
+            money[status + 1] = Cash.zero.value;
+
+        if (money[status] >= Cash.division.value) {
+            money[status] -= Cash.division.value;
+            money[status + 1] = Cash.round.value;
+        }
+    }
+    public static void checkFiveTousand(Integer[] money_ary, List<Integer> digitNumber) {
+        if (digitNumber.size() == (Cash.hundredTousand.value + 1))
+            money_ary[Cash.length.value - 1] += digitNumber.get(Cash.hundredTousand.value) * 10 / Cash.division.value;
+
+        if (digitNumber.size() == (Cash.million.value + 1))
+            money_ary[Cash.length.value - 1] += digitNumber.get(Cash.million.value) * 100 / Cash.division.value;
     }
 
     /*
     예외 처리
      */
-    public static void checkException(int money)
-    {
-        if (money < 1 || money > 1_000_000)
+    public static void checkException(int money) {
+        if (money < Cash.min.value || money > Cash.max.value)
             throw new IllegalArgumentException("ERROR");
     }
 }
