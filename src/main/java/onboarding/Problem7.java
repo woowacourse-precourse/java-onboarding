@@ -23,6 +23,23 @@ public class Problem7 {
                 }
             };
         }
+
+        for(String name : visitors){
+            boolean isFriend = false;
+            for(String s : following){
+                if(s==name) isFriend = true;
+                break;
+            }
+            if(!isFriend){
+                for(People p : userScore) {
+                    if(p.name == name){
+                        p.score += 1;
+                    }else{
+                        userScore.add(new People(name,1));
+                    }
+                }
+            }
+        }
         return answer;
     }
 
