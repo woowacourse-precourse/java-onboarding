@@ -30,6 +30,12 @@ class User implements Comparable<User>{
         }
     }
 
+    public void addScoreToMutualFriends(int amount){
+        for(User friend : this.friends){
+            friend.addScoreToFriends(amount);
+        }
+    }
+
     public boolean isScoreLarger(int otherScore){
         return this.score > otherScore;
     }
