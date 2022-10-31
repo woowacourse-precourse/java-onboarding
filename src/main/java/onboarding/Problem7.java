@@ -4,16 +4,35 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
         HashSet<String> relation = new HashSet<>();
         Map<String, Integer> score = new HashMap<>();
 
         makeRelation(user, friends, relation);
+        countFriend(user, friends, relation, score);
+        countVisit(visitors, relation, score);
 
+        List<Map.Entry<String, Integer>> sortScore = new ArrayList<>(score.entrySet());
+        sortScore.sort(((a, b)
+                -> b.getValue().compareTo(a.getValue())));
 
-
-
+        for (int i = 0; i < sortScore.size(); i++) {
+            if (i > 4) break;
+            answer.add(sortScore.get(i).getKey());
+        }
         return answer;
+    }
+
+    public static void countVisit(List<String> visitors, HashSet<String> relation, Map<String, Integer> score) {
+        for (String visitor : visitors) {
+            if (!relation.contains(visitor)) {
+                if (!score.containsKey(visitor)) {
+                    score.put(visitor, 1);
+                } else {
+                    score.put(visitor, score.get(visitor) + 1);
+                }
+            }
+        }
     }
 
     public static void countFriend(String user, List<List<String>> friends, HashSet<String> relation, Map<String, Integer> score) {
