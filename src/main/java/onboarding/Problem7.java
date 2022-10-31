@@ -18,7 +18,25 @@ import java.util.List;
  *  6.1 최대 5명 return
  */
 public class Problem7 {
+
+    private static List<String> getFriends(String user, List<List<String>> friends){
+
+        List<String> userFriends = new ArrayList<>();
+        for(int i=0; i< friends.size(); i++){
+            List<String> friend = friends.get(i);
+            if (friend.get(0) == user){
+                userFriends.add(friend.get(1));
+            } else if (friend.get(1) == user) {
+                userFriends.add(friend.get(0));
+            }
+        }
+
+        return userFriends;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+
+        List<String> userFriends = getFriends(user, friends);
         List<String> answer = Collections.emptyList();
         return answer;
     }
