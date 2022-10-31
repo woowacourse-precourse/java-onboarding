@@ -16,6 +16,7 @@ public class Problem4 {
 		}
 
 		StringBuilder answer = new StringBuilder();
+
 		AlphabetChanger alphabetChanger = new AlphabetChanger();
 		WordAlphabetValidator wordAlphabetValidator = new WordAlphabetValidator();
 

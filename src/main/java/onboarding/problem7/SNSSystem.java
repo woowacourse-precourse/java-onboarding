@@ -13,8 +13,8 @@ public class SNSSystem {
 		users.add(friendsList);
 	}
 
-	public List<String> getSecondFriends(String name) {
-		return users.getSecondFriends(name);
+	public List<String> getFriendOfFriend(String name) {
+		return users.getFriendOfFriend(name);
 	}
 
 	public boolean isFriends(String user, String visitor) {

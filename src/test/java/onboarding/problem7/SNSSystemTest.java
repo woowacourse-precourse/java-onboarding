@@ -15,6 +15,6 @@ public class SNSSystemTest {
 		snsSystem.add(List.of("jack", "jun"));
 		snsSystem.add(List.of("kim", "jun"));
 
-		assertThat(snsSystem.getSecondFriends("jack")).isEqualTo(List.of("kim"));
+		assertThat(snsSystem.getFriendOfFriend("jack")).isEqualTo(List.of("kim"));
 	}
 }
