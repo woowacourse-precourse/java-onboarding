@@ -3,7 +3,7 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
-
+    private static Set<String> excluder = new HashSet<>(); // 후보에서 제외되어야 하는 사람의 Set (user, 이미 친구인 사람들)
     static class Candidate implements Comparable<Candidate> {
         private final String name; // 이름
         private int weight;  // 친구추천 기준에 대한 가중치
@@ -38,7 +38,8 @@ public class Problem7 {
         // 4. 방문자 정보를 탐색하며 방문 이력에 대한 점수를 갱신함
         countVisitHistScore(candidates, visitors);
 
-
+        // 5. 종합한 정보를 바탕으로 최종 친구목록을 구성하여 반환
+        answer = getRecomendList(candidates);
         return answer;
     }
 
@@ -47,7 +48,6 @@ public class Problem7 {
         // 모든 후보(fiends, visitors)에 대해서 Object Pool을 생성함
         HashMap<String, Candidate> candidates = new HashMap<>(); // 후보자들의 객체를 저장하는 객체 Pool
         // friends를 탐색하며 객체 Pool 갱신
-        Set<String> excluder = new HashSet<>(); // user, user의 친구들 제외시킬 사람
         for(List<String> friend : friends) {
             for(int i=0 ; i<2 ; i++) {
                 if(friend.contains(user)) {
@@ -95,5 +95,23 @@ public class Problem7 {
     private static void countVisitHistScore(HashMap<String, Candidate> candidates, List<String> visitors) {
         for(String visit : visitors)
             candidates.get(visit).updateWeight(1);
+    }
+
+    // 종합한 정보를 바탕으로 최종 친구목록을 구성하여 반환
+    private static List<String> getRecomendList(HashMap<String, Candidate> candidates) {
+        List<String> recommedList = new ArrayList<>();
+        for(String name : excluder)
+            candidates.remove(name);
+        List<Candidate> finalCandidates = new ArrayList<>(candidates.values());
+        // 4-2. 제외시켜야하는 사람들을 제외시킴 (weight가 0인 사람들)
+        for(int i=0 ; i<finalCandidates.size() ; i++)
+            if(finalCandidates.get(i).getWeight() == 0)
+                finalCandidates.remove(i);
+
+        for(Candidate c : finalCandidates) {
+            if(recommedList.size() > 5) break; // 최대 5개 까지만 종합함
+            recommedList.add(c.getName());
+        }
+        return recommedList;
     }
 }
