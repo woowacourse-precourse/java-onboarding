@@ -12,9 +12,7 @@ public class Problem4 {
         StringBuilder answer = new StringBuilder("");
 
         // 입력 문자열에 대한 검증 작업을 진행한다.
-        if(isNotStrLengthRange(word)) {
-            throw new InputRangeException("word의 길이는 1~1000 사이여야 합니다.");
-        }
+        checkStrLengthRange(word);
 
         // 입력 문자열을 배열로 변환한다.
         char[] wordArr = getCharArr(word);
@@ -39,8 +37,10 @@ public class Problem4 {
      *
      * @param word 입력 문자열
      */
-    private static boolean isNotStrLengthRange(String word) {
-        return word.length() < 1 || word.length() > 1000;
+    private static void checkStrLengthRange(String word) {
+        if(word.length() < 1 || word.length() > 1000) {
+            throw new InputRangeException("word의 길이는 1~1000 사이여야 합니다.");
+        }
     }
 
     /**
