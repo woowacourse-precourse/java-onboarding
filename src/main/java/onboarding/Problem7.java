@@ -24,15 +24,13 @@ public class Problem7 {
     public static List<String> getFriendOfUser(String user, List<List<String>> friends) {
         List<String> result = new ArrayList<>();
 
-        friends.forEach(friend -> {
-            if (friend.get(0).equals(user)) {
-                result.add(friend.get(1));
-            }
+        friends.stream()
+                .filter(friend -> friend.get(0).equals(user))
+                .forEach(friend -> result.add(friend.get(1)));
 
-            if (friend.get(1).equals(user)) {
-                result.add(friend.get(0));
-            }
-        });
+        friends.stream()
+                .filter(friend -> friend.get(1).equals(user))
+                .forEach(friend -> result.add(friend.get(0)));
 
         return result;
     }
@@ -50,19 +48,19 @@ public class Problem7 {
         while(!friendQueue.isEmpty()) {
             String person = friendQueue.poll();
 
-            for(String friend : adjacencyList.get(person)) {
-                if (!friendVisited.getOrDefault(friend, false)) {
-                    friendVisited.put(friend, true);
-                    friendLevel.put(friend, friendLevel.get(person) + 1);
-                    friendQueue.add(friend);
-                }
-            }
+            adjacencyList.get(person).stream()
+                    .filter(friend -> !friendVisited.getOrDefault(friend, false))
+                    .forEach(friend -> {
+                        friendVisited.put(friend, true);
+                        friendLevel.put(friend, friendLevel.get(person) + 1);
+                        friendQueue.add(friend);
+                    });
         }
 
         List<String> resultTwoLevelFriend;
         resultTwoLevelFriend = friendLevel.keySet().stream()
-                                .filter(friend -> friendLevel.get(friend) == 2)
-                                .collect(Collectors.toList());
+                .filter(friend -> friendLevel.get(friend) == 2)
+                .collect(Collectors.toList());
 
         return resultTwoLevelFriend;
     }
@@ -112,16 +110,18 @@ public class Problem7 {
     }
 
     private static List<String> getSortedRecommendFriend(Map<String, Integer> scoreRecommendFriendMap) {
-        List<String> result = scoreRecommendFriendMap.keySet().stream().sorted((user1, user2) -> {
-            int user1Score = scoreRecommendFriendMap.get(user1);
-            int user2Score = scoreRecommendFriendMap.get(user2);
+        List<String> result = scoreRecommendFriendMap.keySet()
+                .stream()
+                .sorted((user1, user2) -> {
+                    int user1Score = scoreRecommendFriendMap.get(user1);
+                    int user2Score = scoreRecommendFriendMap.get(user2);
 
-            if (!Objects.equals(user1Score, user2Score)) {
-                return Boolean.FALSE.compareTo(user1Score > user2Score);
-            } else {
-                return user1.compareTo(user2);
-            }
-        }).collect(Collectors.toList());
+                    if (!Objects.equals(user1Score, user2Score)) {
+                        return Boolean.FALSE.compareTo(user1Score > user2Score);
+                    } else {
+                        return user1.compareTo(user2);
+                    }})
+                .collect(Collectors.toList());
 
         return result;
     }
