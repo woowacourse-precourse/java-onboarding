@@ -24,7 +24,7 @@ public class FriendSelector {
      * @return new friend list
      */
     public List<String> select() {
-        // Sort candidates
+        List<Friend> candidates = sortCandidates();
         List<String> friends = new ArrayList<>();
         // Select maximum 5 friends
         return new ArrayList<>();
