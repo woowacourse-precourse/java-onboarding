@@ -10,17 +10,22 @@ public class Problem6 {
         for (List<String> form : forms) {
             String email = form.get(0);
             String nickname = form.get(1);
-
+            addSubStringOfNickname(email, nickname, overlapMap);
         }
-
         return answer;
     }
 
-    private static List<String> getSubStringList(String nickname) {
-        List<String> subStringList = new ArrayList<>();
+    private static void addSubStringOfNickname(String email, String nickname, Map<String, Set<String>> overlapMap) {
         for (int i = 0; i < nickname.length() - 1; i++) {
-            subStringList.add(nickname.substring(i, i + 2));
+            String subNickname = nickname.substring(i, i + 2);
+            addSubNicknameToMap(email, subNickname, overlapMap);
         }
-        return subStringList;
+    }
+
+    private static void addSubNicknameToMap(String email, String subNickname, Map<String, Set<String>> overlapMap) {
+        if (!overlapMap.containsKey(subNickname)) {
+            overlapMap.put(subNickname, new HashSet<>());
+        }
+        overlapMap.get(subNickname).add(email);
     }
 }
