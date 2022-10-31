@@ -59,7 +59,6 @@ public class Problem4 {
 
         return result;
     }
-    }
 
     public static boolean checkAlpabet(String word) {
 
