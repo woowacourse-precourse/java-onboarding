@@ -3,12 +3,13 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /** 구현 기능 목록
- * 1. friends를 통해 사용자의 친구 리스트 생성하여 반환
- * 2. friends와 친구 리스트를 통해 친구의 친구 리스트 생성하여 반환
- * 3. 주어진 리스트에서 사용자와 사용자의 친구는 삭제
- * 4. 친구의 친구 리스트와 방문자 리스트를 통해 추천 대상을 HashMap으로 저장
+ * 1. friends 리스트를 통해 사용자의 친구 리스트 생성하여 반환
+ * 2. friends 리스트와 친구 리스트를 통해 친구의 친구 리스트 생성하여 반환
+ * 3. visitors 리스트와 친구의 친구 리스트를 통해 추천 친구 리스트 생성하여 반환
+ * 4. 추천 친구 리스트를 HashMap으로 저장
  * 5. 추천 친구 점수 계산
  * 6. 점수가 높은 순으로 정렬하여 반환
  * */
@@ -27,5 +28,13 @@ public class Problem7 {
         }
         friendOfUser.removeAll(List.of(user));
         return friendOfUser;
+    }
+
+    private static List<String> findFriendOfFriend(List<List<String>> friends, List<String> friendOfUser) {
+        List<String> friendOfFriend = new ArrayList<>();
+        for (String friend : friendOfUser) {
+            friendOfFriend.addAll(findFriendOfUser(friend, friends));
+        }
+        return friendOfFriend.stream().distinct().collect(Collectors.toList());
     }
 }
