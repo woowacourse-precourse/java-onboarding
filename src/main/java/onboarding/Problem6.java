@@ -2,18 +2,15 @@ package onboarding;
 
 import java.util.List;
 
+import onboarding.problem6.Assembler;
+import onboarding.problem6.CrewController;
+
 public class Problem6 {
 	public static List<String> solution(List<List<String>> forms) {
-		List<String> answer = List.of("answer");
+		Assembler assembler = new Assembler();
+		assembler.createAndWire();
+		final CrewController crewController = assembler.getCrewController();
+		List<String> answer = crewController.process(forms);
 		return answer;
-	}
-
-	public static boolean checkDuplicate(String nickname1, String nickname2) {
-		for (int i = 0; i < nickname1.length(); i++) {
-			if (nickname2.contains(nickname1.substring(i, i + 2))) {
-				return true;
-			}
-		}
-		return false;
 	}
 }
