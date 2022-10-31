@@ -37,6 +37,27 @@ public class Problem7 {
         return friendsList;
     }
 
+    /*
+    친구의 친구 저장
+     */
+    static Set<String> waveOfFriends(List<List<String>> friends, String user){
+        Map<String, Set<String>> friendsList = findFriends(friends);
+        List<String> userFriends = new ArrayList<>(friendsList.get(user));
+        Set<String> friendOfFriend = new HashSet<>();
+
+        for(int idx = 0; idx < userFriends.size(); idx++){
+            String friendName = userFriends.get(idx);
+            List<String> friendOfFriendList = new ArrayList<>(friendsList.get(friendName));
+            for(int friendIdx = 0; friendIdx < friendOfFriendList.size(); friendIdx++){
+                String friendOfFriendName = friendOfFriendList.get(friendIdx);
+                if(friendOfFriendName == user) continue;
+                friendOfFriend.add(friendOfFriendName);
+            }
+            if(friendName == user) continue;
+        }
+        return friendOfFriend;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
 
