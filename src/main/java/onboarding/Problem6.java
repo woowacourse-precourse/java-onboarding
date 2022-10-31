@@ -44,4 +44,23 @@ public class Problem6 {
         return false;
     }
 
+    private static void putDuplicateCrewInNoticesMap(List<String> currentCrew,
+            List<List<String>> forms,
+            int currentIndex) {
+
+        for (int index = 0; index < forms.size(); index++) {
+            if (index == currentIndex)
+                continue;
+
+            List<String> otherCrew = forms.get(index);
+            String otherCrewEmail = otherCrew.get(0), otherCrewNickName = otherCrew.get(1);
+            String currentCrewEmail = currentCrew.get(0), currentCrewNickname = currentCrew.get(1);
+
+            if (containConsecutiveLetters(currentCrewNickname, otherCrewNickName)) {
+                notices.putIfAbsent(currentCrewEmail, currentCrewNickname);
+                notices.putIfAbsent(otherCrewEmail, otherCrewNickName);
+            }
+        }
+    }
+
 }
