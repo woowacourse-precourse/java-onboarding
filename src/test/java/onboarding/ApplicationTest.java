@@ -348,5 +348,18 @@ class ApplicationTest {
       });
     }
 
+    @Test
+    void isAllowedVisitorsSizeTest() {
+      //given
+      int visitorsSize1 = 1001;
+      int visitorsSize2 = 1000001;
+
+      //then
+      assertThat(Problem7.isAllowedVisitorsSize(visitorsSize1)).isEqualTo(true);
+      assertThrows(IllegalStateException.class, () -> {
+        Problem7.isAllowedVisitorsSize(visitorsSize2);
+      });
+
+    }
   }
 }
