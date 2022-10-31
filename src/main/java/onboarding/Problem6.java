@@ -25,7 +25,9 @@ public class Problem6 {
                 continue;
             }
 
-            System.out.println(standard);
+            for (int j=i+1; j<nicknamesLen; j++) { // 비교 대상인 닉네임 인덱스: j
+                String target = nicknames.get(j);
+            }
         }
 
         List<String> answer = List.of("answer");
