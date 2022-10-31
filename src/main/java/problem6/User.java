@@ -25,7 +25,7 @@ public class User {
         for (Map.Entry<String, String> entry : forms.entrySet()) {
             checkDuplicateUser(entry);
         }
-        return convertEmailsToList();
+        return convertEmailsToListAndSort();
     }
 
     private void checkDuplicateUser(Map.Entry<String, String> entry) {
@@ -44,7 +44,7 @@ public class User {
                 .forEach(emails::add);
     }
 
-    private List<String> convertEmailsToList() {
+    private List<String> convertEmailsToListAndSort() {
         List<String> result = new ArrayList<>(emails);
         Collections.sort(result);
         return result;
