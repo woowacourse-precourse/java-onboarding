@@ -6,44 +6,38 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
 
-        //user 길이 1이상 30이하 문자열 확인
         if(user.length()<1 || user.length()>30)
-            return null;
-        //friends 길이 1이상 10,000 이하인  리스트/배열 확인
+            return answer;
         if (friends.size()<1 || friends.size()>10000)
-            return null;
-        //visitors 길이 0이상 10,000 이하인 리스트/배열 확인
+            return answer;
         if (visitors.size()<0 || visitors.size()>10000)
-            return null;
-        //사용자 아이디 알파벳 소문자로만 이뤄졌는지 확인
-        //만약 대문자가 존재한다면 전부 소문자로 변환한 것과 달라 거짓이 나오게 된다.
+            return answer;
         if (!user.toLowerCase().equals(user))
-            return null;
-        //기존 친구들만 따로 리스트에 저장
+            return answer;
+
         ArrayList<String> oldFriends= (ArrayList<String>) getOldFriends(user, friends);
-        //기존 친구들의 친구들의 점수 계산
-        ArrayList<FriendScore> friendScores = new ArrayList<FriendScore>();
+        Map<String,Integer> friendScores = new HashMap<String,Integer>();
 
         for (int i=0; i<oldFriends.size(); i++){
             for (int j=0; j<friends.size();j++){
-                if (friends.get(j).contains(user))
-                    break;
-                if (friends.get(j).contains(oldFriends.get(i))){
-                    if (oldFriends.get(i).equals(friends.get(j).get(0))){
-                        friendScores = (ArrayList<FriendScore>) updateScore(friendScores, friends.get(j).get(1),10);
-                    } else{
-                        friendScores = (ArrayList<FriendScore>) updateScore(friendScores, friends.get(j).get(0),10);
-                    }
+                boolean isUserRelation = friends.get(j).contains(user);
+                if (isUserRelation)
+                    continue;
+
+                boolean isMutualFriend = friends.get(j).contains(oldFriends.get(i));
+                if (isMutualFriend){
+                    friendScores = calculateMutualFriendScore(friendScores, oldFriends.get(i),friends.get(j));
                 }
             }
         }
 
         for (int i=0; i<visitors.size();i++){
-            if (!visitors.get(i).equals(user) && !oldFriends.contains(visitors.get(i)))
-                friendScores = (ArrayList<FriendScore>) updateScore(friendScores,visitors.get(i),1);
+            boolean isUser = visitors.get(i).equals(user);
+            boolean isOldFriend = oldFriends.contains(visitors.get(i));
+            if (!isUser && !isOldFriend)
+                friendScores = calculateVisitorScore(friendScores,visitors.get(i));
         }
-
-        answer = sortByScore(friendScores);
+        answer = getRecommendedFriends(friendScores);
 
         return answer;
     }
@@ -62,72 +56,50 @@ public class Problem7 {
         return oldFriends;
     }
 
-    public static List<FriendScore> updateScore(List<FriendScore> friendScores, String nickname, int scoreSize){
-        if (friendScores.size()==0){
-            FriendScore friendScore = new FriendScore(nickname,scoreSize);
-            friendScores.add(friendScore);
-            return friendScores;
+    public static Map<String,Integer> updateScore(Map<String,Integer> friendScores, String recommendedUsername, int scoreSize){
+        if (friendScores.containsKey(recommendedUsername)){
+            friendScores.put(recommendedUsername,friendScores.get(recommendedUsername)+scoreSize);
+        }else{
+            friendScores.put(recommendedUsername,scoreSize);
         }
-
-        for (int i =0; i<friendScores.size();i++){
-            if (friendScores.get(i).getNickname()==nickname){
-                int score = friendScores.get(i).getScore();
-                score += scoreSize;
-                friendScores.get(i).setScore(score);
-                return friendScores;
-            }
-        }
-
-        FriendScore friendScore = new FriendScore(nickname,scoreSize);
-        friendScores.add(friendScore);
         return friendScores;
     }
 
-    public static List<String> sortByScore(List<FriendScore> friendScores){
-        friendScores.sort(new Comparator<FriendScore>() {
+    public static Map<String,Integer> calculateMutualFriendScore(Map<String,Integer> friendScores,String oldFriend, List<String> friendRelation){
+        String mutualFriend = friendRelation.get(0);
+
+        if (oldFriend.equals(mutualFriend)){
+            friendScores = (HashMap<String,Integer>) updateScore(friendScores, friendRelation.get(1),10);
+        } else{
+            friendScores = (HashMap<String,Integer>) updateScore(friendScores, friendRelation.get(0),10);
+        }
+        return friendScores;
+    }
+
+    public static Map<String,Integer> calculateVisitorScore(Map<String,Integer> friendScores, String visitor){
+        friendScores = (HashMap<String,Integer>) updateScore(friendScores, visitor,1);
+        return friendScores;
+    }
+
+    public static List<String> getRecommendedFriends(Map<String,Integer> friendScores){
+        ArrayList<String> answer = getSortedList(friendScores);
+        if (answer.size()<=5)
+            return answer;
+        else
+            return answer.subList(0,4);
+    }
+
+    public static ArrayList<String> getSortedList(Map<String, Integer> friendScores) {
+        ArrayList<String> answer = new ArrayList<String>(friendScores.keySet());
+        answer.sort(new Comparator<String>() {
             @Override
-            public int compare(FriendScore o1, FriendScore o2) {
-                if (o1.score>o2.score){
-                    return -1;
-                }else if (o1.score==o2.score){
-                    return o1.getNickname().compareTo(o2.getNickname());
-                }else{
-                    return 1;
-                }
+            public int compare(String o1, String o2) {
+                if (friendScores.get(o2)== friendScores.get(o1))
+                    return o1.compareTo(o2);
+
+                return friendScores.get(o2)- friendScores.get(o1);
             }
         });
-
-        ArrayList<String> answer = new ArrayList<String>();
-        int count=0;
-        while(count<5 && count<friendScores.size()){
-            if (friendScores.get(count).score != 0) {
-                answer.add(friendScores.get(count).getNickname());
-            }
-            count++;
-        }
         return answer;
     }
 }
-
-class FriendScore {
-    public int score;
-    public String nickname;
-
-    public FriendScore(String nickname, int score) {
-        this.score = score;
-        this.nickname = nickname;
-    }
-
-    public int getScore() {
-        return score;
-    }
-
-    public void setScore(int score) {
-        this.score = score;
-    }
-
-    public String getNickname() {
-        return nickname;
-    }
-}
-
