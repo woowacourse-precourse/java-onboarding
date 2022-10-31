@@ -7,6 +7,18 @@ public class Problem6 {
     private static final int UTF_8_KOR_BYTE = 3;
     public static List<String> solution(List<List<String>> forms) {
 
+        Map<String, List<String>> categorizedMap = categorizeEmailByPossibleContinuous2WordOfNickName(forms);
+
+        Set<String> duplicatedEmailOfNickName = getDuplicateNickNameSet(categorizedMap);
+
+        List<String> answer = getDeduplicateAndAscendingList(duplicatedEmailOfNickName);
+
+        return answer;
+    }
+
+    private static Map<String, List<String>>
+        categorizeEmailByPossibleContinuous2WordOfNickName (List<List<String>> forms){
+
         Map<String, List<String>> map = new HashMap<>();
 
         for(List<String> list:forms){
@@ -30,12 +42,16 @@ public class Problem6 {
 
                     map.replace(possibleKorean2Word,newList);
                 } else{
-                   map.put(possibleKorean2Word,Arrays.asList(currentEmail));
+                    map.put(possibleKorean2Word,Arrays.asList(currentEmail));
                 }
                 currentOffset += UTF_8_KOR_BYTE;
             }
 
         }
+        return map;
+    }
+
+    private static Set<String> getDuplicateNickNameSet(Map<String, List<String>> map) {
         Set<String> duplicatedEmailOfNickName = new HashSet<>();
 
         for( String strKey : map.keySet() ){
@@ -44,7 +60,10 @@ public class Problem6 {
                 duplicatedEmailOfNickName.addAll(emailList);
             }
         }
+        return duplicatedEmailOfNickName;
+    }
 
+    private static List<String> getDeduplicateAndAscendingList(Set<String> duplicatedEmailOfNickName) {
         List<String> setToList = new ArrayList<>(duplicatedEmailOfNickName);
 
         Collections.sort(setToList);
