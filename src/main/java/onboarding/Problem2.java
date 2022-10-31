@@ -43,18 +43,14 @@ public class Problem2 {
                     preCharacter = nowCharacter;
                     count = 1;
                 }
+                /*
+                5. nowCharacter가 preCharacter와 같은 경우
+                - count를 1 증가
+                 */
+                else
+                    count += 1;
             }
-
         } while (cryptogramLength > cryptogram.length() && cryptogram.length() > 1);
-
-
-
-
-
-        /*
-        5. nowCharacter가 preCharacter와 같은 경우
-        - count를 1 증가
-         */
 
         return answer;
     }
