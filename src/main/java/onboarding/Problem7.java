@@ -13,6 +13,8 @@ public class Problem7 {
         Map<String,List<String>> friendsMap =  getFriendsMap(friends);
         Map<String,Integer> pointMap = getPointMap(friendsMap,user);
 
+        calculatorFriendsPoint(friendsMap,pointMap,user);
+
         return answer;
     }
     public static Map<String,List<String>> getFriendsMap(List<List<String>> friends){
@@ -39,5 +41,16 @@ public class Problem7 {
         }
         map.remove(user);
         return map;
+    }
+    public static void calculatorFriendsPoint(Map<String,List<String>> friendsMap,Map<String,Integer> pointMap,String user){
+        List<String> userList = friendsMap.get(user);
+        for(String str : pointMap.keySet()){
+            List<String> friendList = friendsMap.get(str);
+            for(String s : friendList){
+                if(userList.contains(s)){
+                    pointMap.put(str,pointMap.get(str)+10);
+                }
+            }
+        }
     }
 }
