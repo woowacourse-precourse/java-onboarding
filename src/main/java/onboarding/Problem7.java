@@ -23,7 +23,6 @@ public class Problem7 {
             friendsList = friends.get(i);
             plusScore(friendsList);
         }
-        System.out.println(recommendedFriends);
 
         Iterator iterator = recommendedFriends.keySet().iterator();
         while (iterator.hasNext()) {
@@ -42,8 +41,14 @@ public class Problem7 {
         }
         System.out.println(recommendedFriends);
 
+        TopFiveRecommendedFriends();
         List<String> answer = Collections.emptyList();
         return answer;
+    }
+
+    private static void TopFiveRecommendedFriends() {
+        List<String> TopFiveScore = new ArrayList<>(recommendedFriends.keySet());
+        TopFiveScore.sort((s1,s2) -> recommendedFriends.get(s2).compareTo(recommendedFriends.get(s1)));
     }
 
     private static void plusVisitorScore(String visitor) {
