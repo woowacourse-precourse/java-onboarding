@@ -41,7 +41,12 @@ class Problem1 {
                 || pobiRightPageNumber % 2 != 0
                 || pobiLeftPageNumber % 2 != 1
                 || crongRightPageNumber % 2 != 0
-                || crongLeftPageNumber % 2 != 1){
+                || crongLeftPageNumber % 2 != 1
+                || crongLeftPageNumber == 1
+                || pobiLeftPageNumber == 1
+                || crongRightPageNumber == 400
+                || pobiRightPageNumber == 400
+        ){
             return true;
         } else return false;
     }
