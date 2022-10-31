@@ -11,11 +11,11 @@ public class Problem3 {
         return answer;
     }
 
-    private static String toString(int number) {
+    public static String toString(int number) {
         return String.valueOf(number);
     }
 
-    private static int hasThreeSixNine(String number, int length) {
+    public static int hasThreeSixNine(String number, int length) {
         int clapCount = 0;
         for (int i = 0; i < length; i++) {
             if (number.substring(i, i + 1).equals(THREE)) {
@@ -31,11 +31,11 @@ public class Problem3 {
         return clapCount;
     }
 
-    private static int getStringLength(String number) {
+    public static int getStringLength(String number) {
         return number.length();
     }
 
-    private static int runGame(int number) {
+    public static int runGame(int number) {
         int result = 0;
         for (int i = 1; i <= number; i++) {
             String stringNumber = toString(i);
