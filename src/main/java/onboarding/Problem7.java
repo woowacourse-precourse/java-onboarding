@@ -3,6 +3,9 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
+    private static List<Map.Entry<String,Integer>> entryReturn(Map<String,Integer> friendScore){
+        return new LinkedList<>(friendScore.entrySet());
+    }
     private static Map<String,Integer> sortBy(Map<String,Integer> friendScore){
         List<Map.Entry<String,Integer>> entryList = entryReturn(friendScore);
         entryList.sort(Map.Entry.comparingByKey()); //key로 한번
