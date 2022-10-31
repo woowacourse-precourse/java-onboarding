@@ -11,6 +11,7 @@ public class Problem7 {
 
   private static final String ID_REGEX = "^[a-z]*$";
   private static final int MAX_ID_LENGTH = 30;
+  private static final int MAX_FRIENDS_SIZE = 10000;
 
   private static Map<String, Integer> recommendFriendsPoint = new HashMap<>();
 
@@ -129,12 +130,19 @@ public class Problem7 {
     return false;
   }
 
-  public static boolean isAllowedId(String id) {
+  public static boolean isAllowedId(String id) throws IllegalStateException{
     if (id.length() < 1 || id.length() > MAX_ID_LENGTH) {
       throw new IllegalStateException("아이디가 1~30자가 아닙니다.");
     }
     if (!id.matches(ID_REGEX)) {
       throw new IllegalStateException("아이디는 소문자 알파벳만 가능합니다.");
+    }
+    return true;
+  }
+
+  public static boolean isAllowedFriendsInfoSize(int friendsSize) throws IllegalStateException{
+    if (friendsSize < 1 || friendsSize > MAX_FRIENDS_SIZE) {
+      throw new IllegalStateException("친구관계의 숫자는 1~10,000개 이내여야 합니다.");
     }
     return true;
   }
