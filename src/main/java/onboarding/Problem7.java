@@ -20,6 +20,16 @@ public class Problem7 {
             links.get(userB).add(userA);
         }
 
+        HashMap<String, Integer> visitCount = new HashMap<>();
+        for (String visitor : visitors) {
+            if (!visitCount.containsKey(visitor)) {
+                visitCount.put(visitor, 1);
+            } else {
+                Integer count = visitCount.get(visitor);
+                visitCount.put(visitor, count + 1);
+            }
+        }
+
         return null;
     }
 }
