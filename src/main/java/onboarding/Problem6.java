@@ -27,25 +27,30 @@ import java.util.*;
 public class Problem6 {
     /*
      * 구현 사항
-     *1. forms의 이름을 key, email은 value로 <String,String> hashMap에 저장
-     *2. 이름에 대해 두글자 이상으로 만들 수 있는 문자열 경우의 수를 모두 따짐.
-     *3. 이 때 따진 문자열들에 대한 각 개수를 <String,int>hashMap을 통해 저장.
-     *4. <String,int>hashMap의 value값이 2이상인 값은 중복된 이름이므로 해당 key(name)값을 nameList에 저장
-     *5. nameList에 저장한 String을 <String,String> hashMap의 key(name)에 포함되어있는지 찾고 존재한다면 해당 email을 emailList에 저장
-     *6. emailList 정렬 하고 중복 제거 후 return
+     *1. setFormMap : name 통해 email을 찾을 수 있도록 설정.
+     *2-1. createNameOfCasesAndCount : 하나의 name을 가지고 만들 수 있는 모든 두 글자 문자열의 경우를 중복없이 따져 저장해두고, 각 문자열에 대한 개수를 1씩 누적함.
+     *2-2. setNameCountMap : createNumberOfCases을 forms에 있는 모든 name에 대해 진행함으로써, 각 문자열의 개수가 모두 누적됨.
+     *3. getNameList : setNameCountMap를 통해 센 각 문자열의 개수를 가지고 겹치는 문자열을 찾아 모두 저장.
+     *4. getEmailList : 겹치는 문자열 list를 가지고 혼란을 일으킬 name을 찾아 해당되는 email을 모두 저장.
+     *5. sortAndDeduplication : 해당 email 정렬 및 중복 제거
+     *6. solution : 최종 email값 반환.
      */
 
     /**
-     *
+     * 1-1. forms의  name을 key, email은 value로 저장할 HashMap.
      */
     static Map<String, String> formMap = new HashMap<>();
     /**
-     *
+     * 2-1-2. name을 가지고 만들어진 문자열들의 개수를 누적해줄 HashMap.
      */
     static Map<String, Integer> nameCountMap = new HashMap<>();
 
 
-    //1. 기능1
+    /**
+     * 1. name을 key, email은 value로 하여 formMap에 put.
+     *
+     * @param forms user들의 name,email list.
+     */
     static void setFormMap(List<List<String>> forms) {
         for (int i = 0; i < forms.size(); i++) {
             String name = forms.get(i).get(1);
@@ -54,46 +59,63 @@ public class Problem6 {
         }
     }
 
-    //2. 기능2
-    //함수 배치하는 순서 생각해볼 것
-    static void createNumberOfCases(String name) {
+    /**
+     * 2-1. 하나의 name을 가지고 만들 수 있는 모든 두 글자 문자열의 경우를 중복없이 따져 저장해두고,
+     *      각 문자열에 대한 개수를 1씩 누적함.
+     *
+     * @param name 한 user의 name
+     */
+    static void createNameOfCasesAndCount(String name) {
 
+        /* 2-1-1. 하나의 name을 가지고 만들 수 있는 두 글자 문자열들을 Set을 사용하여 중복없이 모두 저장함. */
         Set<String> nameSet = new HashSet<>();
 
         for (int i = 0; i < name.length() - 1; i++) {
             String newString = name.substring(i, i + 2);
 
-            if(!nameSet.contains(newString)){
+            if (!nameSet.contains(newString)) {
                 nameSet.add(newString);
             }
         }
 
-        nameSet.forEach((nameCase) -> {
-            if (nameCountMap.containsKey(nameCase)) {
-                nameCountMap.put(nameCase, nameCountMap.get(nameCase) + 1);
+        /* 2-1-2. 이렇게 만든 문자열들을 nameCountMap의 key로 사용하여 각 문자열에 대한 개수를 1씩 누적함 */
+        nameSet.forEach((nameOfCase) -> {
+            if (nameCountMap.containsKey(nameOfCase)) {
+                nameCountMap.put(nameOfCase, nameCountMap.get(nameOfCase) + 1);
             } else {
-                nameCountMap.put(nameCase, 1);
+                nameCountMap.put(nameOfCase, 1);
             }
         });
 
     }
 
 
-    //3. 기능3
+    /**
+     * 2-2. createNumberOfCases을 forms에 있는 모든 name에 대해 진행함으로써,
+     * 각 문자열의 개수가 모두 누적됨.
+     *
+     * @param forms user들의 name,email list.
+     */
     static void setNameCountMap(List<List<String>> forms) {
         for (int i = 0; i < forms.size(); i++) {
             String name = forms.get(i).get(1);
-            createNumberOfCases(name);
+            createNameOfCasesAndCount(name);
         }
     }
 
-    //4. 기능4
+
+    /**
+     * 3. setNameCountMap를 통해 센 각 문자열의 개수를 가지고,
+     * 겹치는 문자열을 찾아 모두 list에 저장.
+     *
+     * @return 겹치는 문자열 list.
+     */
     static List<String> getNameList() {
 
         List<String> nameList = new ArrayList<>();
 
         nameCountMap.forEach((name, count) -> {
-            if (count >= 2) {
+            if (count >= 2) {       // 누적한 값(value)이 2이상이 될 때
                 nameList.add(name);
             }
         });
@@ -101,34 +123,51 @@ public class Problem6 {
         return nameList;
     }
 
-    //5. 기능5
+    /**
+     * 4. getNameList을 통해 받은 겹치는 문자열 list를 가지고
+     *    혼란을 일으킬 원본 name(key)을 찾아 해당되는 email(value)을 모두 저장.
+     *
+     * @param nameList name이 겹치는 문자열 list
+     * @return 겹치는 문자열이 포함된 모든 name을 통해 구한 email list.
+     */
     static List<String> getEmailList(List<String> nameList) {
 
 
         List<String> emailList = new ArrayList<>();
 
-        for (String name1 : nameList) {
-            formMap.forEach((name2, email) -> {
-                if (name2.contains(name1)) {
+        /* 겹치는 문자열이 formMap의 key(name)에 포함되 있는지 확인하고, 포함되어 있다면 해당 email을 저장 */
+        for (String nameA : nameList) {             // nameA : 겹치는 문자열.
+            formMap.forEach((nameB, email) -> {     // nameB : forms의 name.
+                if (nameB.contains(nameA)) {
                     emailList.add(email);
                 }
             });
-
         }
-        // ★nameA,B로 고칠 것
+
         return emailList;
     }
 
-    //6. 기능6
+    /**
+     * 5. email 정렬 및 중복 제거.
+     *
+     * @param emailList getEmailList에서 받아온 email list.
+     * @return 혼란을 일으킬 name의 email list.
+     */
     static List<String> sortAndDeduplication(List<String> emailList) {
 
-        Set<String> set = new HashSet<>(emailList); //중복제거
+        Set<String> set = new HashSet<>(emailList);
         List<String> newEmailList = new ArrayList<>(set);
         newEmailList.sort(Comparator.naturalOrder());
 
         return newEmailList;
     }
 
+    /**
+     * 6. 최종 email값 반환.
+     *
+     * @param forms user들의 name,email list.
+     * @return 최종 email list.
+     */
     public static List<String> solution(List<List<String>> forms) {
 
         setFormMap(forms);
