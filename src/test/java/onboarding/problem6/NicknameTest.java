@@ -10,7 +10,7 @@ import org.junit.jupiter.params.provider.CsvSource;
 public class NicknameTest {
 
 	private static final String NICKNAME_LENGTH_20 = "a".repeat(20);
-	public static final String NICKNAME_LENGTH_0 = "";
+	private static final String NICKNAME_LENGTH_0 = "";
 
 	@ParameterizedTest(name = "{0}, {1}에는 중복이 있다 == {2}")
 	@CsvSource(value = {"제이엠,제이슨,true", "가나다라,다,false", "가다가다,가가,false", "가가이슨,나나이슨,true"})

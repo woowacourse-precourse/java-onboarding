@@ -11,7 +11,7 @@ import org.junit.jupiter.api.Test;
 
 public class RequestsTest {
 
-	public static final List<List<String>> FORMS = List.of(
+	private static final List<List<String>> FORMS = List.of(
 		List.of("jm@email.com", "제이엠"),
 		List.of("jason@email.com", "제이슨"),
 		List.of("woniee@email.com", "워니"),
