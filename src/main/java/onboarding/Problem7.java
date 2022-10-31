@@ -18,6 +18,23 @@ public class Problem7 {
 
 
         /**
+         * visitors를 새로운 배열에 저장시켜서 sort
+         */
+        List<String> sortVisitors = new ArrayList<>();
+
+        for (String visitor : visitors) {
+            System.out.println("visitor = " + visitor);
+            sortVisitors.add(visitor);
+        }
+
+        Collections.sort(sortVisitors);
+
+        for (String sortVisitor : sortVisitors) {
+            System.out.println("sortVisitor = " + sortVisitor);
+        }
+
+
+        /**
          * 1. friends 목록을 받아와서 내 이름이 들어간 친구들을 추출.
          */
         for (int i = 0; i < friends.size(); i++) {
@@ -35,14 +52,17 @@ public class Problem7 {
         /**
          * 2. 내(user)의 친구들의 친구들 목록을 뽑는다.
          */
-        for (int i = 0; i < friends.size(); i++) {
-            for (int j = 0; j < friends.get(i).size(); j++) {
-                if (!friends.get(i).contains(user) &&
-                    !myFriendsList.contains(friends.get(i).get(j))) {
-                    System.out.println("friends = " + friends.get(i).get(j));
-                    recommendFriend.add(friends.get(i).get(j));
+        if (myFriendsList.size() != 0) {
+            for (int i = 0; i < friends.size(); i++) {
+                for (int j = 0; j < friends.get(i).size(); j++) {
+                    if (!friends.get(i).contains(user) &&
+                            !myFriendsList.contains(friends.get(i).get(j))) {
+                        System.out.println("friends = " + friends.get(i).get(j));
+                        recommendFriend.add(friends.get(i).get(j));
+                    }
                 }
             }
+            Collections.sort(recommendFriend);
         }
         /**
          * 3. 추천 친구들의 점수를 명당 10점씩
@@ -72,13 +92,14 @@ public class Problem7 {
          * 4. 방문자 조회 ( 내 친구 ( donut , shakevan )을 빼고 조회 )
          * 5. 추린 방문자를 map에 +1점씩 해주고, 추천 친구와 동일하면 거기에 누적해서 +1 더해준다.
          */
-        for (int i = 0; i < visitors.size(); i++) {
-            if(!myFriendsList.contains(visitors.get(i))) {
-                System.out.println("visitors = " + visitors.get(i));
-                if (map.containsKey(visitors.get(i))) {
-                    map.put(visitors.get(i),map.get(visitors.get(i))+1);
+
+        for (int i = 0; i < sortVisitors.size(); i++) {
+            if(!myFriendsList.contains(sortVisitors.get(i))) {
+                System.out.println("sortVisitors = " + sortVisitors.get(i));
+                if (map.containsKey(sortVisitors.get(i))) {
+                    map.put(sortVisitors.get(i),map.get(sortVisitors.get(i))+1);
                 }else {
-                    map.put(visitors.get(i), visitPoint);
+                    map.put(sortVisitors.get(i), visitPoint);
                 }
             }
         }
@@ -103,6 +124,7 @@ public class Problem7 {
         }
         /** 내림차순은 몰라서 구글링했따. */
         Collections.sort(lastValue, Comparator.reverseOrder());
+
 
         /**
          * lastValue를 내림차순으로 정렬하고,
