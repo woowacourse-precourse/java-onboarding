@@ -1,7 +1,6 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
 
@@ -28,7 +27,72 @@ public class Problem7 {
 
      **/
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
+        List<String> tenArr = new ArrayList<>();
+        HashMap<String, Integer> hashMap = new HashMap<>();
+
+        for (List<String> i : friends) {
+            if (i.get(0).equals(user)) {
+                tenArr.add(i.get(1));
+            } else if(i.get(1).equals(user)){
+                tenArr.add(i.get(0));
+            }
+        }
+
+        for (String i : tenArr) {
+            for (List<String> j : friends) {
+                if (j.get(0).equals(i) && !j.get(1).equals(user)) {
+                    if(!hashMap.containsKey(j.get(1))){
+                        hashMap.put(j.get(1), 10);
+                    } else {
+                        Integer n = hashMap.get(j.get(1));
+                        n += 10;
+                        hashMap.put(j.get(1), n);
+                    }
+                } else if (j.get(1).equals(i) && !j.get(0).equals(user)) {
+                    if(!hashMap.containsKey(j.get(0))){
+                        hashMap.put(j.get(0), 10);
+                    } else {
+                        Integer n = hashMap.get(j.get(0));
+                        n += 10;
+                        hashMap.put(j.get(0), n);
+                    }
+                }
+            }
+        }
+
+        for (String i : visitors) {
+            if(!hashMap.containsKey(i)){
+                hashMap.put(i, 1);
+            } else {
+                Integer n = hashMap.get(i);
+                n += 1;
+                hashMap.put(i, n);
+            }
+        }
+
+        int number = 0;
+        int max = 0;
+        int sameMax = 0;
+
+        while (number < 3) {
+            String result = "";
+            for (Map.Entry<String, Integer> entry : hashMap.entrySet()) {
+                Integer value = entry.getValue();
+                if (value > max) {
+                    max = value;
+                    result = entry.getKey();
+                }
+            }
+            if(hashMap.containsKey(result)) {
+                hashMap.remove(result);
+            }
+            answer.add(result);
+            result = "";
+            number++;
+            max = 0;
+        }
+
         return answer;
     }
 }
