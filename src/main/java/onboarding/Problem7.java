@@ -63,8 +63,23 @@ public class Problem7 {
 
         visitorMap.forEach((key, value) -> map.merge(key, value, (v1,v2) -> v1+v2));
 
+        List<Map.Entry<String, Integer>> list_entries = new LinkedList<Map.Entry<String, Integer>>(map.entrySet());
+
+        Collections.sort(list_entries, new Comparator<Map.Entry<String, Integer>>() {
+            public int compare(Map.Entry<String, Integer> obj1, Map.Entry<String, Integer> obj2)
+            {
+                return obj2.getValue().compareTo(obj1.getValue());
+            }
+        });
 
         List<String> answer = Collections.emptyList();
+
+        HashMap<String, Integer> temp = new LinkedHashMap<String, Integer>();
+        for (Map.Entry<String, Integer> aa : list_entries) {
+            temp.put(aa.getKey(), aa.getValue());
+        }
+
+        answer = new ArrayList<>(temp.keySet());
 
         return answer;
     }
