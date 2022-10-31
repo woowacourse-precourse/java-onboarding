@@ -12,10 +12,12 @@ import java.util.Objects;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
+        String answer;
+        int sw;
+
         String[] str = cryptogram.split("");
         List<String> strList = new ArrayList<>(Arrays.asList(str));
 
-        int sw;
 
         while (true) {
             sw = 0;
@@ -23,8 +25,6 @@ public class Problem2 {
                 if (Objects.equals(strList.get(i), strList.get(i-1))) {
                     strList.remove(i);
                     strList.remove(i-1);
-                    //System.out.println(i);
-                    System.out.println(strList);
                     sw += 1;
                 }
             }
@@ -33,8 +33,7 @@ public class Problem2 {
             }
         }
 
-
-        String answer = "answer";
+        answer = String.join("", strList);
         return answer;
     }
 }
