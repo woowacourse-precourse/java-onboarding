@@ -73,6 +73,7 @@
   - [x] frineds가 null인 경우
   - [x] friends의 길이가 0이거나, 10,000초과 인 경우
   - [x] friendRelation이 null인 경우
+  - [x] friendRelation의 크기가 2가 아닌 경우
   - [x] 아이디가 null인 경우
   - [ ] 아이디의 길이가 0이거나, 30초과인 경우
   - [x] visitor가 null인 경우

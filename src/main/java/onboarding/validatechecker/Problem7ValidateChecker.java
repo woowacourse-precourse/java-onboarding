@@ -3,6 +3,7 @@ package onboarding.validatechecker;
 import java.util.List;
 
 public class Problem7ValidateChecker {
+	private final static int FRIEND_RELATION_SIZE = 2;
 	public static void areArgumentsValidate(String user, List<List<String>> friends, List<String> visitors){
 		isUserNotNull(user);
 		isFriendsNotNull(friends);
@@ -11,6 +12,13 @@ public class Problem7ValidateChecker {
 		isIdNotNull(friends);
 		isUserInRange(user);
 		isFriendsInRange(friends);
+		isFriendRelationInRange(friends);
+	}
+
+	private static void isFriendRelationInRange(List<List<String>> friends) {
+		for (List<String> friendRelation : friends)
+			if(friendRelation.size() != FRIEND_RELATION_SIZE)
+				throw new IllegalArgumentException("friendRelation의 크기가 2가 아닙니다.");
 	}
 
 	private static void isFriendsInRange(List<List<String>> friends) {
