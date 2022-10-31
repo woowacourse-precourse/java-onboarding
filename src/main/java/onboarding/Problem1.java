@@ -10,13 +10,13 @@ class Problem1 {
     	if(pobi.get(1) - pobi.get(0) != 1 || crong.get(1) - crong.get(0) != 1) {
     		answer = -1;
     	} else{
-	    	// 값 추출
+	    	// 변수 할당
 	    	int pobiPageNum = 0;
 	    	int crongPageNum = 0;
 	    	int pobiTotal = 0;
 	    	int crongTotal = 0;
 	    	
-	    	
+	     	
 	    	for(int i = 0 ; pobi.size() > i; i++) {
 	    		pobiPageNum = pobi.get(i);
 	    		crongPageNum = crong.get(i);

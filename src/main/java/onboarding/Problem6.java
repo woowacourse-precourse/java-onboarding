@@ -34,13 +34,14 @@ public class Problem6 {
 		} 
 		return answer; 
     }
-    
+     
     // 글자 비교
     public static int equals(String nickname1, String nickname2) {
     	int result = 0;
     	String a = null;
 		for(int i = 0; i < nickname1.length()-1; i++) {
 			a = nickname1.substring(i,i+2);
+			System.out.println(a);
 			for(int j = 0; j < nickname2.length()-1; j++) {
 					String b = nickname2.substring(j,j+2);
 					if(a.contains(b)) {
