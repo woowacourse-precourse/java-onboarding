@@ -20,7 +20,7 @@ class Problem1 {
      * @param pages 페이지 정보
      * @return 결과
      */
-    private static boolean validatePages(List<String> pages) {
+    private static boolean validateTwoPagesHave(List<String> pages) {
         if (pages.size() != 2) {
             System.out.println("페이지 값이 2개가 아닙니다.");
             return false;
