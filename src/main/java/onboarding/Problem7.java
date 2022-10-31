@@ -22,7 +22,25 @@ public class Problem7 {
             candidates.put(leftFriend, 0);
             candidates.put(rightFriend, 0);
         }
-        
+        for (int i = 0; i < friends.size(); i++) {
+            String leftFriend = friends.get(i).get(0);
+            String rightFriend = friends.get(i).get(1);
+            int tmp = 0;
+            if (alreadyFriends.contains(leftFriend)) {
+                if (!rightFriend.equals(user)) {
+                    tmp = candidates.get(rightFriend);
+                    candidates.put(rightFriend, tmp + 10);
+                }
+            }
+            if (alreadyFriends.contains(rightFriend)) {
+                if (!leftFriend.equals(user)) {
+                    tmp = candidates.get(leftFriend);
+                    candidates.put(leftFriend, tmp + 10);
+                }
+            }
+        }
+
+
         return answer;
     }
     public static class ScoreList {
