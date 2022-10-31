@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Problem7 {
-
     private static class Friend {
         private int score;
         private String name;
@@ -26,7 +25,62 @@ public class Problem7 {
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        // 0. 필요한 변수 생성
+        List<Friend> result = new ArrayList<>(); // 최종 결과를 담아놓는 Friend 타입의 리스트
+        List<String> friends10 = new ArrayList<>(); // user 의 친구의 친구들을 담아놓는 리스트
+        List<String> friends1; // 방문자들 담아놓는 리스트
+        List<String> userFriends; // user 의 친구들 목록 담아놓는 리스트
+        List<String> answer = new ArrayList<>(); // 최종 결과에서 이름만 받아서 답을 담는 리스트
+
+        // 1. 현재 user 와 친구인 사람들 찾음.
+        userFriends = find(user, user, friends);
+
+        // 2. 위의 현재 user 와 친구인 사람들의 친구인 사람들 찾고, 목록에 생성
+        for(int i = 0; i<userFriends.size(); i++) {
+            List<String> f = find(userFriends.get(i), user, friends);
+            for(int j = 0; j<f.size(); j++) {
+                friends10.add(f.get(j));
+            }
+        }
+
+        // 2. 위의 현재 user 와 친구인 사람들 중복 제거
+        friends10 = removeDuplication(friends10);
+        // 3. 점수 10 점 친구들을 result 에 추가
+        for(int i = 0; i<friends10.size(); i++) {
+            Friend friend = new Friend(0, friends10.get(i));
+            result.add(friend);
+        }
+
+        // 4. visitors 목록 중복 제거
+        friends1 = removeDuplication(visitors);
+        // 5. result 에 반영
+        for(int i = 0; i<friends1.size(); i++) {
+            // 이미 result 목록에 있을 10점 친구는 제외 && 이미 친구로 등록된 애들도 제외
+            if(!friends10.contains(friends1.get(i)) && !userFriends.contains(friends1.get(i))) {
+                Friend friend = new Friend(0, friends1.get(i));
+                result.add(friend);
+            }
+        }
+
+        // 6. friends 점수 부여
+        // 10 점 부여
+        for(int i = 0; i<friends10.size(); i++) {
+            result = updateScore(result, friends10.get(i), 10);
+        }
+        // 1 점 부여
+        for(int i = 0; i<visitors.size(); i++) {
+            result = updateScore(result, visitors.get(i), 1);
+        }
+
+        // 7. 정렬
+        result = sortList(result);
+
+        // 8. answer 에 result 의 이름만 담아서 리턴
+        for(int i = 0; i<result.size(); i++) {
+            answer.add(result.get(i).getName());
+        }
+
+
         return answer;
     }
 
@@ -86,4 +140,7 @@ public class Problem7 {
         return result;
 
     }
+
+
+
 }
