@@ -55,6 +55,10 @@ class Problem1 {
             if (pobiScoreFinal > pobiScore.get(i)) pobiScoreFinal = pobiScore.get(i);
         }
 
+        for (int i = 0; i < crongScore.size(); i++) {
+            if (crongScoreFinal > crongScore.get(i)) crongScoreFinal = crongScore.get(i);
+        }
+
 
 
 
