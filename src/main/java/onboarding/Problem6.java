@@ -1,7 +1,10 @@
 package onboarding;
 
-
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 요구사항
@@ -28,6 +31,31 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
 
+        answer = check(forms);
+
         return answer;
+    }
+
+    public static List<String> check(List<List<String>> forms) {
+        List<String> em = new ArrayList<>();
+        for (int i=0; i<forms.size(); i++) {
+            String nickName = forms.get(i).get(1); // 유저 닉네임
+
+            for (int j=0; j<nickName.length()-1; j++) {
+                String nameSub  = nickName.substring(j, j+2); // 유저 닉네임을 부분 닉네임으로 나눔
+
+                for(int k=i+1; k< forms.size(); k++) {
+
+                    if (forms.get(k).get(1).contains(nameSub)) { // 다른 유저의 닉네임과 부분 닉네임이 포함되는지 검사. 포함되면 리스트에 이메일 저장
+                        em.add(forms.get(i).get(0));
+                        em.add(forms.get(k).get(0));
+                    }
+                }
+            }
+        }
+        List<String> newEm = em.stream().distinct().collect(Collectors.toList()); // 중복 제거
+        Collections.sort(newEm); // 오름차순 정렬
+        
+        return newEm;
     }
 }
