@@ -10,14 +10,12 @@ public class Problem7 {
     private static HashMap<String, Integer> recommendScore; //추천 점수 해시맵
     private static HashMap<String, Boolean> isFriend; //user와 친구인지 판단
     private static HashMap<String, List<String>> userList; //user 리스트
-
     private static PriorityQueue<User> pq; //우선순위 큐
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
-        recommendScore = new HashMap<>();
-        isFriend = new HashMap<>();
-        userList = new HashMap<>();
+
+        init(); //초기화
 
         checkFriends(user, friends);
 
@@ -41,6 +39,13 @@ public class Problem7 {
         }
 
         return answer;
+    }
+
+    //초기화 메소드 추가
+    private static void init(){
+        recommendScore = new HashMap<>();
+        isFriend = new HashMap<>();
+        userList = new HashMap<>();
     }
 
     //우선순위 큐 초기화
