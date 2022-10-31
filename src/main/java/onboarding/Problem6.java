@@ -17,26 +17,31 @@ public class Problem6 {
     private static HashMap<String, Integer> getDuplicateNicks(User[] crews, HashMap<String, Integer> crewNickMap) {
 
         int crewSize = crews.length;
-        int nickSize = crewNickMap.size();
-        List<String> keys = new ArrayList<>(crewNickMap.keySet());
 
         for (int i = 0; i < crewSize; i++) {
             String nick = crews[i].getNick();
-
-            for (int j = 0; j < nickSize; j++) {
-                String key = keys.get(j);
-                if (nick.contains(key)) {
-                    int count = crewNickMap.get(key) + 1;
-                    crewNickMap.replace(key, count);
-                }
-            }
+            crewNickMap = updateMap(nick, crewNickMap);
         }
+        return crewNickMap;
+    }
+
+    private static HashMap<String, Integer> updateMap(String nick, HashMap<String, Integer> crewNickMap) {
+
+        int nickSize = crewNickMap.size();
+        List<String> keys = new ArrayList<>(crewNickMap.keySet());
+
+        for (int j = 0; j < nickSize; j++) {
+            String key = keys.get(j);
+
+            int count = (nick.contains(key)) ? crewNickMap.get(key) + 1 : crewNickMap.get(key);
+            crewNickMap.replace(key, count);
+        }
+
         return crewNickMap;
     }
 
     private static List<String> getEmails(User[] crews, HashMap<String, Integer> crewNickMap) {
 
-        int crewSize = crews.length;
         List<String> emails = new ArrayList<>();
         List<String> keys = new LinkedList<>(crewNickMap.keySet());
 
@@ -44,18 +49,26 @@ public class Problem6 {
 
         for (int i = 0; i < keySize; i++) {
             String key = keys.get(i);
+            emails = updateEmail(emails, crews, key, crewNickMap);
+        }
 
-            for (int j = 0; j < crewSize; j++) {
-                String nick = crews[j].getNick();
+        return emails;
+    }
 
-                if (nick.contains(key) && crewNickMap.get(key) > 1) {
-                    String email = crews[j].getEmail();
+    private static List<String> updateEmail(List<String> emails, User[] crews, String key, HashMap<String, Integer> crewNickMap) {
 
-                    if (emails.contains(email)) continue;
+        int crewSize = crews.length;
 
-                    emails.add(email);
-                }
-            }
+        for (int i = 0; i < crewSize; i++) {
+            User crew = crews[i];
+
+            String nick = crew.getNick();
+            String email = crew.getEmail();
+
+            boolean checkKey = nick.contains(key) && crewNickMap.get(key) > 1;
+            boolean checkEmail = emails.contains(email);
+
+            if (checkKey && !checkEmail) emails.add(email);
         }
 
         return emails;
@@ -64,9 +77,7 @@ public class Problem6 {
     private static List<String> checkUsers(User[] crews, HashMap<String, Integer> crewNickMap) {
 
         List<String> checkedEmails;
-
         crewNickMap = getDuplicateNicks(crews, crewNickMap);
-
         checkedEmails = getEmails(crews, crewNickMap);
 
         return checkedEmails;
@@ -78,20 +89,24 @@ public class Problem6 {
         HashMap<String, Integer> duplicateMap = new HashMap<>();
 
         for (int i = 0; i < size; i++) {
-
             String nick = crews[i].getNick();
-            int nickLength = nick.length();
-
-            for (int j = 0; j < nickLength - 1; j++) {
-                String twoLetters = nick.substring(j, j + 2);
-
-                if (duplicateMap.containsKey(twoLetters)) {
-                    continue;
-                }
-                duplicateMap.put(twoLetters, 0);
-            }
+            duplicateMap = getNickKeys(nick, duplicateMap);
         }
 
+        return duplicateMap;
+    }
+
+    private static HashMap<String, Integer> getNickKeys(String nick, HashMap<String, Integer> duplicateMap) {
+        int nickLength = nick.length();
+
+        for (int j = 0; j < nickLength - 1; j++) {
+            String twoLetters = nick.substring(j, j + 2);
+
+            if (duplicateMap.containsKey(twoLetters)) {
+                continue;
+            }
+            duplicateMap.put(twoLetters, 0);
+        }
         return duplicateMap;
     }
 
