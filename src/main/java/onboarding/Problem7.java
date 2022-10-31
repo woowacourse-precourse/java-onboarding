@@ -52,7 +52,23 @@ public class Problem7 {
         List<Person> combineList = new ArrayList<>();
         combineList.addAll(friendList);
         combineList.addAll(visitorList);
+
         return combineList;
+    }
+
+    // 목록 정렬
+    private static List<String> sortList(List<Person> list) {
+        Collections.sort(list, new PersonComparator().reversed());
+        List<String> sortList = new ArrayList<>();
+        int count = 1;
+        for(Person person : list) {
+            if(count <= 5) {
+                count++;
+                sortList.add(person.name);
+            }
+        }
+
+        return sortList;
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
