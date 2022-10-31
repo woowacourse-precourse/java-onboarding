@@ -17,6 +17,9 @@ public class Problem2 {
             if (src.charAt(i) != fir) {
                 return (i - 1);
             }
+            if (src.charAt(i) != fir && i == src.length() - 1){
+                return 1;
+            }
         }
         return 0;
     }
