@@ -1,5 +1,4 @@
 package onboarding;
-
 import java.util.HashMap;
 public class Problem4 {
     static char[] alphabets = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
@@ -14,8 +13,16 @@ public class Problem4 {
             put(Character.toLowerCase(alphabets[i]), Character.toLowerCase(alphabets[25-i]));
         };
     }};
+
     public static String solution(String word) {
         String answer = "";
+        for(int i = 0; i < word.length(); i++) {
+            if (map.containsKey(word.charAt(i))) {
+                answer += map.get(word.charAt(i));
+            } else {
+                answer += word.charAt(i);
+            }
+        }
         return answer;
     }
 }
