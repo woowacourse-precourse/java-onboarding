@@ -20,5 +20,10 @@ public class Problem2 {
             cryptogram = cryptogram.substring(0, duplicateCharacterIndex) + cryptogram.substring(index);
         }
     }
+
+    private static int checkDuplicateIndex(String value) {
+        return IntStream.range(0, value.length() - 1)
+            .filter(i -> value.charAt(i) == value.charAt(i + 1)).findFirst()
+            .orElse(IS_NOT_DUPLICATE);
     }
 }
