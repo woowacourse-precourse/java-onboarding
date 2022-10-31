@@ -20,5 +20,14 @@ public class Problem4 {
         }
         return spaceVal;
     }
+    public static String convertWord(String word){
+        return word.chars()
+                .map(Problem4::getAscii)
+                .filter(i-> i != -1)
+                .collect(StringBuilder::new,
+                        StringBuilder::appendCodePoint,
+                        StringBuilder::append)
+                .toString();
+    }
 
 }
