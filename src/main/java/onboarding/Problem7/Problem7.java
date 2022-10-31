@@ -8,12 +8,12 @@ public class Problem7
     public static final int VISITOR_SCORE = 1;
     public static final int MAX_RETURN_SIZE = 5;
     public static final int EXCEPTION_SCORE = 0;
-
-    private static final int MAX_VERTEX_SIZE= 10001*2;
-
+    public static final int PADDDING_SIZE = 10;
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors)
     {
-        Graph graph = new Graph(MAX_VERTEX_SIZE);
+        int graphSize = friends.size()*2 + visitors.size() + 1;
+        graphSize += PADDDING_SIZE;
+        Graph graph = new Graph(graphSize);
         graph.enrollUserAndReturnVertex(user);
         for(int i = 0 ; i < friends.size();i++)
         {
