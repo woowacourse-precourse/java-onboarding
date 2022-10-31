@@ -41,13 +41,15 @@ public class Problem7 {
             String friendA = friends.get(i).get(0);
             String friendB = friends.get(i).get(1);
 
-            Set<String> innerSet = new HashSet<>();
+            Set<String> innerSetA = new HashSet<>();
+            Set<String> innerSetB = new HashSet<>();
+
 
             if (!friendsGraph.containsKey(friendA)) {
-                friendsGraph.put(friendA, innerSet);
+                friendsGraph.put(friendA, innerSetA);
             }
             if (!friendsGraph.containsKey(friendB)) {
-                friendsGraph.put(friendB, innerSet);
+                friendsGraph.put(friendB, innerSetB);
             }
 
             friendsGraph.get(friendA).add(friendB); // map은 put , set은 add를 사용한다.
@@ -58,12 +60,23 @@ public class Problem7 {
             friendsGraph.remove(removeFriends);
         });
 
+        /*
+         friendsGraph.forEach((str,set)->{
+            System.out.print(str + " : ");
+            friendsGraph.get(str).forEach(s ->{
+                System.out.print(s+ " ");
+            });
+            System.out.println();
+        });
+        * */
+
+
     }
 
 
     //2. 기능2
     static void setFriendsScore(List<String> visitors, String mainUser) {
-        Set<String> userSet = friendsGraph.get(mainUser);
+        Set<String> minUserSet = friendsGraph.get(mainUser);
         friendsGraph.remove(mainUser);
 
         //친구관계 10점 계산
@@ -74,7 +87,7 @@ public class Problem7 {
             int size = friends.size();
             int score = size * 10;
 
-            friendsScore.put(user, friendsScore.get(user) + size);
+            friendsScore.put(user, friendsScore.get(user) + score);
 
         });
 
@@ -88,7 +101,7 @@ public class Problem7 {
         });
 
         //mainUser와 친구관계인 사람 삭제
-        userSet.forEach((user) -> {
+        minUserSet.forEach((user) -> {
             friendsScore.remove(user);
         });
 
@@ -100,6 +113,7 @@ public class Problem7 {
         List<UserInformation> friendRecommendation = new ArrayList<>();
 
         friendsScore.forEach((name, score) -> {
+            System.out.println(name + " "+ score);
             friendRecommendation.add(new UserInformation(name, score));
         });
 
