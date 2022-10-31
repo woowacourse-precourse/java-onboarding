@@ -2,31 +2,32 @@ package onboarding;
 
 public class Problem2 {
 	public static String solution(String cryptogram) {
-		while (isDuplicate(cryptogram)) {
-			cryptogram = deleteDuplicate(cryptogram);
-		}
-		return cryptogram;
+		return deleteDuplicate(cryptogram);
 	}
 
 	private static String deleteDuplicate(String cryptogram) {
-		int duplicateStart = 0;
-		int duplicateEnd = cryptogram.length();
-		for (int i = 0; i < cryptogram.length(); i++) {
-			if (cryptogram.charAt(i) == cryptogram.charAt(i + 1)) {
-				duplicateStart = i;
-				break;
+		StringBuilder sb = new StringBuilder(cryptogram);
+		while (isDuplicate(sb)) {
+			int duplicateStart = 0;
+			int duplicateEnd = sb.length();
+			for (int i = 0; i < sb.length(); i++) {
+				if (sb.charAt(i) == sb.charAt(i + 1)) {
+					duplicateStart = i;
+					break;
+				}
 			}
-		}
-		for (int i = duplicateStart + 1; i < cryptogram.length(); i++) {
-			if (cryptogram.charAt(duplicateStart) != cryptogram.charAt(i)) {
-				duplicateEnd = i;
-				break;
+			for (int i = duplicateStart + 1; i < sb.length(); i++) {
+				if (sb.charAt(duplicateStart) != sb.charAt(i)) {
+					duplicateEnd = i;
+					break;
+				}
 			}
+			sb.delete(duplicateStart, duplicateEnd);
 		}
-		return cryptogram.substring(0, duplicateStart) + cryptogram.substring(duplicateEnd);
+		return sb.toString();
 	}
 
-	private static boolean isDuplicate(String cryptogram) {
+	private static boolean isDuplicate(StringBuilder cryptogram) {
 		for (int i = 1; i < cryptogram.length(); i++) {
 			if (cryptogram.charAt(i - 1) == cryptogram.charAt(i)) {
 				return true;
