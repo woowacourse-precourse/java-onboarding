@@ -44,6 +44,15 @@ class Problem1 {
         return numList;
     }
 
+    private static int getSum(List<Integer> numList) {
+        return numList.stream()
+                .mapToInt(Integer::intValue)
+                .reduce((a, b) -> {
+                    return a + b;
+                })
+                .getAsInt();
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if (validList(pobi) == false || validList(crong) == false)
             return -1;
