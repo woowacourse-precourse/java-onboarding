@@ -19,17 +19,17 @@ public class Problem2 {
     }
 
     private static void checkExceptionOfCryptogram(String cryptogram){
-        checkIfCryptogramIsEmpty(cryptogram);
-        checkIfCryptogramIsTooLong(cryptogram);
+        if(cryptogram.length() < INPUT_MINIMUM_LENGTH) cryptogramEmptyException();
+        if(cryptogram.length() > INPUT_MAXIMUM_LENGTH) cryptogramTooLongException();
         checkIfCryptogramIsWithOtherLetter(cryptogram);
     }
 
-    private static void checkIfCryptogramIsEmpty(String cryptogram){
-        if(cryptogram.length() < INPUT_MINIMUM_LENGTH)throw new IllegalArgumentException(INPUT_STRING_EMPTY);
+    private static void cryptogramEmptyException(){
+        throw new IllegalArgumentException(INPUT_STRING_EMPTY);
     }
 
-    private static void checkIfCryptogramIsTooLong(String cryptogram){
-        if(cryptogram.length() > INPUT_MAXIMUM_LENGTH) throw new IllegalArgumentException(INPUT_STRING_TOO_LONG);
+    private static void cryptogramTooLongException(){
+        throw new IllegalArgumentException(INPUT_STRING_TOO_LONG);
     }
 
     private static void checkIfCryptogramIsWithOtherLetter(String cryptogram){
@@ -40,8 +40,12 @@ public class Problem2 {
 
     private static void checkEachLetter(char cryptosLetter){
         if(cryptosLetter - 'a' < ALPHABET_START_INDEX || cryptosLetter - 'a' > ALPHABET_END_INDEX){
-            throw new IllegalArgumentException(INPUT_STRING_IS_NOT_LOWERCASE);
+            cryptogramNotLowerCaseException();
         }
+    }
+
+    private static void cryptogramNotLowerCaseException(){
+        throw new IllegalArgumentException(INPUT_STRING_IS_NOT_LOWERCASE);
     }
 
     private static String makeNewCryptogram(String cryptogram){
