@@ -4,13 +4,15 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class Problem6 {
     private static final int EMAIL = 0;
     private static final int NICKNAME = 1;
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = new ArrayList<>();
+        List<String> answer;
 
         Map<String, List<String>> nicknamePieces = new HashMap<>();
 
@@ -37,6 +39,21 @@ public class Problem6 {
 
         }
 
+        answer = arrangeEmails(nicknamePieces);
         return answer;
+    }
+
+    private static List<String> arrangeEmails(Map<String, List<String>> nicknamePieces) {
+        Set<String> emails = new TreeSet<>();
+
+        for (String piece : nicknamePieces.keySet()) {
+            List<String> emailList;
+
+            if ((emailList = nicknamePieces.get(piece)).size() > 1) {
+                emails.addAll(new TreeSet<>(emailList));
+            }
+        }
+
+        return new ArrayList<>(emails);
     }
 }
