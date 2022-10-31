@@ -20,10 +20,6 @@ public class Friends {
         friends.add(user);
     }
 
-    public Set<User> getFriends() {
-        return friends;
-    }
-
     public List<User> toList() {
         return new ArrayList<>(friends);
     }
