@@ -18,6 +18,15 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
+
+    private int getTotalByAdd(List<Integer> eachDigit) {
+        int total = 0;
+        for (Integer num : eachDigit) {
+            total += num;
+        }
+        return total;
+    }
+
     private List<Integer> getEachDigit(int num) {
         List<Integer> eachDigit = new ArrayList<>();
         String stringNum = changeIntegerToString(num);
