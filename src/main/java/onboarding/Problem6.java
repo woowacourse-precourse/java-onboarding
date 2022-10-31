@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -12,10 +9,11 @@ public class Problem6 {
         User[] crew = inItUsers(forms);
         HashMap<String, Integer> crewNickMap = getCandidateNicks(crew);
         answer = checkUsers(crew, crewNickMap);
-
+        Collections.sort(answer);
 
         return answer;
     }
+
     private static HashMap<String, Integer> getDuplicateNicks(User[] crews, HashMap<String, Integer> crewNickMap) {
 
         int crewSize = crews.length;
@@ -35,6 +33,7 @@ public class Problem6 {
         }
         return crewNickMap;
     }
+
     private static List<String> getEmails(User[] crews, HashMap<String, Integer> crewNickMap) {
 
         int crewSize = crews.length;
@@ -72,6 +71,7 @@ public class Problem6 {
 
         return checkedEmails;
     }
+
     private static HashMap<String, Integer> getCandidateNicks(User[] crews) {
 
         int size = crews.length;
@@ -113,6 +113,7 @@ public class Problem6 {
 
         return crew;
     }
+
     private static class User {
         String email;
         String nick;
