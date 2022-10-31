@@ -9,6 +9,10 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Problem6 {
+
+    public static final int EMAIL_INDEX = 0;
+    public static final int NAME_INDEX = 1;
+
     public static List<String> solution(List<List<String>> forms) {
         Map<String, List<String>> seqNameEmailMap = getSeqNameEmailMap(forms);
         Set<String> duplicateEmailSet = getDuplicateEmailSet(seqNameEmailMap);
@@ -23,17 +27,21 @@ public class Problem6 {
         Map<String, List<String>> seqNameEmailMap = new HashMap<>();
 
         for (List<String> form : forms) {
-            String email = form.get(0);
-            String name = form.get(1);
+            String email = form.get(EMAIL_INDEX);
+            String name = form.get(NAME_INDEX);
 
-            for (int i = 0; i < name.length() - 1; i++) {
-                String sequence = name.substring(i, i + 2);
-                List<String> emailList = seqNameEmailMap.getOrDefault(sequence, new ArrayList<>());
-                emailList.add(email);
-                seqNameEmailMap.put(sequence, emailList);
-            }
+            makeSequentialNameEmailMap(seqNameEmailMap, email, name);
         }
         return seqNameEmailMap;
+    }
+
+    private static void makeSequentialNameEmailMap(Map<String, List<String>> seqNameEmailMap, String email, String name) {
+        for (int i = 0; i < name.length() - 1; i++) {
+            String sequence = name.substring(i, i + 2);
+            List<String> emailList = seqNameEmailMap.getOrDefault(sequence, new ArrayList<>());
+            emailList.add(email);
+            seqNameEmailMap.put(sequence, emailList);
+        }
     }
 
     private static Set<String> getDuplicateEmailSet(Map<String, List<String>> seqNameEmailMap) {
