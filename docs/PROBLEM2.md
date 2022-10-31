@@ -21,3 +21,7 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+
+### 구현 기능
+1. 중복 문자를 제거하는 기능
