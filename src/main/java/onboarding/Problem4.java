@@ -16,8 +16,7 @@ public class Problem4 {
     }
 
     private static char getSymmetricAlphabet(char ch) {
-        int startValue = 65;
-        int endValue = 90;
+        int startValue = 65, endValue = 90;
         if (isLowerCase(ch)) {
             startValue = 97;
             endValue = 122;

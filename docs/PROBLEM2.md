@@ -23,9 +23,9 @@
 | "zyelleyz" | "" |
 
 ## ✅ 구현 기능 목록
-1. 모든 중복문자을 ""로 치환하는 기능
+1. 모든 연속하는 중복문자을 ""로 치환하는 기능
 	- String removeDupChars(String cryptogram, boolean[] isDuplicate)
-2. 1을 이용해 중복문자가 존재하지 않을 때까지 복호화시키는 기능(재귀함수)
+2. 1을 이용해 연속 중복문자가 존재하지 않을 때까지 복호화시키는 기능(재귀함수)
 	- String decodeCryptogram(String cryptogram)
-3. 문자열에서 중복문자 위치를 검사하는 기능
+3. 문자열에서 연속 중복문자 위치를 검사하는 기능
 	- boolean[] checkDuplicated(String cryptogram)
