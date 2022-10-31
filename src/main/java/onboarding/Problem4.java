@@ -1,6 +1,10 @@
 package onboarding;
 
 public class Problem4 {
+
+    private static final int ASCII_A_TO_Z_UPPERCASE_SUM = 155;
+    private static final int ASCII_A_TO_Z_LOWERCASE_SUM = 219;
+
     public static String solution(String word) {
         StringBuilder answer = new StringBuilder();
 
@@ -24,11 +28,11 @@ public class Problem4 {
     }
 
     private static char convertedUppercase(char word) {
-        return (char) ('Z' - (word - 'A'));
+        return (char) (ASCII_A_TO_Z_UPPERCASE_SUM - word);
     }
 
     private static char convertedLowercase(char word) {
-        return (char) ('z' - (word - 'a'));
+        return (char) (ASCII_A_TO_Z_LOWERCASE_SUM - word);
     }
 
     private static boolean isUppercase(char word) {
