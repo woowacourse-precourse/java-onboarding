@@ -53,15 +53,26 @@ public class Problem7 {
         }
     }
 
+    static List<String> recommendNewFriends(Map<String, Integer> recommendList){
+        List<String> keySet = new ArrayList<>(recommendList.keySet());
+        List<String> recommendFriend = new ArrayList<>();
+        keySet.sort((o1, o2) -> recommendList.get(o2).compareTo(recommendList.get(o1)));
+        for(String key: keySet){
+            recommendFriend.add(key);
+            if(recommendFriend.size()== 5) break;
+        }
+        return recommendFriend;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        //List<String> answer = Collections.emptyList();
 
         List<String> friendList = findMyFriend(user, friends);
-        Map<String, Integer> recommendList = new HashMap<String, Integer>();
+        Map<String, Integer> recommendList = new HashMap<>();
         cntCloseFriend(user, recommendList, friendList, friends);
         cntWatchTimeline(recommendList, friendList, visitors);
-        System.out.println(recommendList);
+        //System.out.println(recommendList);
         //System.out.println(friendList);
-        return answer;
+        return recommendNewFriends(recommendList);
     }
 }
