@@ -6,7 +6,6 @@ import java.util.stream.IntStream;
 
 public class Problem2 {
 
-
     public static String solution(String cryptogram) {
         List<String> splitString = getSplitStrings(cryptogram);
         List<Integer> indexOfDuplicateWords = getIndexOfDuplicateWords(splitString);
