@@ -5,6 +5,15 @@ public class Problem3 {
         if (number == 3 || number == 6 || number == 9) return true;
         else return false;
     }
+    public static int clapPerNumber(int number) {
+        int count = 0;
+        while (number != 0) {
+            if (isClap(number % 10)) count++;
+            number /= 10;
+        }
+
+        return count;
+    }
     public static int solution(int number) {
         int answer = 0;
         return answer;
