@@ -1,22 +1,17 @@
 package onboarding;
 
+import java.util.Stack;
+
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String cryptogramOrigin;
-        int idx;
-        while(true) {
-            cryptogramOrigin = cryptogram;
-            for (int i = 0; i < cryptogram.length(); i++) {
-                idx = i + 1;
-                while (idx < cryptogram.length() && cryptogram.charAt(idx) == cryptogram.charAt(i)) {
-                    idx++;
-                }
-                if (idx - i > 1)
-                    cryptogram = cryptogram.substring(0, i) + cryptogram.substring(idx);
-            }
+        return null;
+    }
 
-            if (cryptogramOrigin.equals(cryptogram))
-                return cryptogram;
+    public static String stackToString(Stack<Character> stack){
+        String string = "";
+        for(char ch : stack){
+            string += ch;
         }
+        return string;
     }
 }
