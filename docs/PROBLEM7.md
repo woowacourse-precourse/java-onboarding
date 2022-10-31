@@ -85,8 +85,8 @@
 
 <br/>
 
-- ⬜ addEmailList 메소드 구현
-  - ⬜ user이거나 추천점수가 0점인 people 객체들을 제외한 people 객체를 recommendList에 삽입한다.
+- ✅ addEmailList 메소드 구현
+  - ✅ user이거나 추천점수가 0점인 people 객체들을 제외한 people 객체를 recommendList에 삽입한다.
 
 <br/>
 

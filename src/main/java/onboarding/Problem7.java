@@ -112,7 +112,8 @@ public class Problem7 {
     }
 
     public void addEmailToList(String user, People person,  ArrayList<String> recommendedList){
-
+        if(person.name.equals(user) || person.isZeroScore()) return;
+        recommendedList.add(person.name);
     }
 
     public ArrayList<String> makeRecommendedList(String user, HashMap<String, People> map){
