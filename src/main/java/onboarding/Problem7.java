@@ -164,9 +164,13 @@ public class Problem7 {
 			char[] charArray = user.toCharArray();
 
 			for (int i = 0; i < charArray.length; i++) {
-				if (!Character.isLowerCase(charArray[i])) {
-					throw new IllegalArgumentException();
-				}
+				checkLowerCase(charArray, i);
+			}
+		}
+
+		private static void checkLowerCase(char[] charArray, int i) {
+			if (!Character.isLowerCase(charArray[i])) {
+				throw new IllegalArgumentException();
 			}
 		}
 
