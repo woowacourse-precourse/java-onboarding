@@ -21,3 +21,14 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 요구사항 분석
+- 각 교육생들의 닉네임을 잘라 키워드로 지정해 중복이 있는지 검사한다.
+- 같은 닉네임을 비교할 때, 자신은 제외되어야 한다
+- 키워드는 최소 두 글자 이상이 되어야 한다
+
+### 메서드 구현 목록
+- List<String> getAnswer(List<List<String>>) : 입력값을 바탕으로 같은 글자가 연속으로 포함되는 닉네임을 가진 크루원들의 이메일 목록을 반환하는 메서드
+- Set<String> findWithNickname(String str, int idx, List<List<String>>) : str(닉네임)을 바탕으로 키워드를 만들어 닉네임 연속 글자 중복을 가지는 크루원들의 이메일을 반환하는 메서드
+- Set<String> findDuplicated(String str, int idx, List<List<String>> list) : 닉네임에 str(키워드)가 존재하는 크루원들의 이메일을 반환하는 메서드
+- List<String> convertSetToList(Set<String> set) : 입력받은 set을 오름차순 list로 변환하는 메서드
