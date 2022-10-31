@@ -1,8 +1,7 @@
 package onboarding;
 
 public class Problem3 {
-    static final String THREE = "3", SIX = "6", NINE = "9";
-    static final String[] numForClaps = {THREE, SIX, NINE};
+    static final String[] NUM_FOR_CLAPS = {"3", "6", "9"};
 
     public static int solution(int number) {
         int answer = 0;
@@ -28,7 +27,7 @@ public class Problem3 {
      */
     private static int getClapCount(String strNum, int originLen) {
         int clapCount = 0;
-        for(String clapNum : numForClaps) {
+        for(String clapNum : NUM_FOR_CLAPS) {
             int newLen = checkClapNumAndGetLength(strNum, clapNum);
 
             // 제거된 길이만큼이 박수를 친 횟수가 된다.
