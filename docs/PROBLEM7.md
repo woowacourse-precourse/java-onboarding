@@ -14,23 +14,19 @@
 
 ​	`user의 친구목록` 나타내는 `mainUserFriends<User>` HashSet에 친구 추가
 
-
-
 `increaseScoreMutualFriend`:
 
 ​	`remainUserAndFriends` 의 `Entry`를 순회하며, `친구목록(values)`를 순회
 
 ​	`user와 함께 아는 친구`면 `increaseTen`메소드 호출
 
-`increaseTen`: `remainUserAndScore` 의 `이름(key)`에 해당하는 `점수(value)`를 10증가
-
-
+​	`increaseTen`: `remainUserAndScore` 의 `이름(key)`에 해당하는 `점수(value)`를 10증가
 
 `increaseScoreVisitors`:
 
-​	visitors를 순회하며, `increaseOne`메소드 호출
+​	visitors를 순회하며, `increaseOne`메소드 호출. `visitor`가 `user`인 경우 예외처리
 
-`increaseOne`: `remainUserAndScore` 의 `이름(key)`에 해당하는 `점수(value)`를 1증가 
+​	`increaseOne`: `remainUserAndScore` 의 `이름(key)`에 해당하는 `점수(value)`를 1증가 
 
 
 
