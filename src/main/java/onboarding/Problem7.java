@@ -8,65 +8,67 @@ public class Problem7 {
     static final Integer USER_A = 0;
     static final Integer USER_B = 1;
     static final Integer MAX_LENGTH = 5;
+    static final Integer SCORE_VISIT = 1;
+    static final Integer SCORE_FRIEND = 10;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        Map<String, User> userInformations = new HashMap<>();
-        userInformations.put(user, new User(user));
+        Map<String, User> userInformation = new HashMap<>();
+        userInformation.put(user, new User(user));
 
         for (List<String> friendPair : friends) {
             String nameA = friendPair.get(USER_A);
             String nameB = friendPair.get(USER_B);
 
-            User userA = userInformations.get(nameA);
-            User userB = userInformations.get(nameB);
+            User userA = userInformation.get(nameA);
+            User userB = userInformation.get(nameB);
 
             if (userA == null) {
                 userA = new User(nameA);
                 userA.friends.add(nameB);
-                userInformations.put(nameA, userA);
+                userInformation.put(nameA, userA);
             }
             userA.friends.add(nameB);
 
             if (userB == null) {
                 userB = new User(nameB);
                 userB.friends.add(nameA);
-                userInformations.put(nameB, userB);
+                userInformation.put(nameB, userB);
             }
             userB.friends.add(nameA);
         }
 
         for (String visitor : visitors) {
 
-            User visitorInfomation = userInformations.get(visitor);
+            User visitorInformation = userInformation.get(visitor);
 
-            if (visitorInfomation == null) {
-                visitorInfomation = new User(visitor);
-                userInformations.put(visitor, visitorInfomation);
+            if (visitorInformation == null) {
+                visitorInformation = new User(visitor);
+                userInformation.put(visitor, visitorInformation);
             }
 
-            visitorInfomation.score++;
+            visitorInformation.score += SCORE_VISIT;
         }
 
-        List<String> pivotFriends = userInformations.get(user).friends;
-        userInformations.remove(user);
+        List<String> pivotFriends = userInformation.get(user).friends;
+        userInformation.remove(user);
 
         if (pivotFriends.size() > 0) {
-            Set<Map.Entry<String, User>> entries = userInformations.entrySet();
+            Set<Map.Entry<String, User>> entries = userInformation.entrySet();
 
             for (Map.Entry<String, User> entry : entries) {
                 String name = entry.getKey();
                 User information = entry.getValue();
 
                 information.friends.retainAll(pivotFriends);
-                userInformations.get(name).score += information.friends.size() * 10;
+                userInformation.get(name).score += information.friends.size() * SCORE_FRIEND;
             }
         }
 
         List<User> before = new ArrayList<>();
 
-        for (Map.Entry<String, User> entry : userInformations.entrySet()) {
+        for (Map.Entry<String, User> entry : userInformation.entrySet()) {
             String name = entry.getKey();
-            Integer score = entry.getValue().getScore();
+            Integer score = entry.getValue().score;
 
             if (pivotFriends.size() > 0) {
                 if (!pivotFriends.contains(name) && score != 0) {
@@ -98,10 +100,6 @@ public class Problem7 {
             this.name = name;
             this.friends = new ArrayList<>();
             this.score = 0;
-        }
-
-        public Integer getScore() {
-            return score;
         }
     }
 
