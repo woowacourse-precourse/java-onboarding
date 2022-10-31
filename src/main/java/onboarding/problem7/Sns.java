@@ -58,6 +58,14 @@ public class Sns {
         }
     }
 
+    private void updateRecommendMapUsingVisitLog(HashMap<String, Integer> recommendMap, String user, List<String> membersNotFriendWithUser) {
+        HashMap<String, Integer> visitHistoryMap = visitHistory.getOrDefault(user, new HashMap<>());
+        for (String member : membersNotFriendWithUser) {
+            int numsOfVisit = visitHistoryMap.getOrDefault(member, 0);
+            recommendMap.put(member, recommendMap.getOrDefault(member, 0) + numsOfVisit);
+        }
+    }
+
     private List<String> findMembersNotFriendWith(String user) {
         ArrayList<String> members = new ArrayList<>();
         HashSet<String> userFriendsSet = friendShip.getOrDefault(user, new HashSet<>());
