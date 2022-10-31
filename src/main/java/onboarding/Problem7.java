@@ -78,12 +78,13 @@ public class Problem7 {
     //추천 리스트 정렬하기
     public static List<String> makeRecommendList(HashMap<String,Integer> recommendMap) {
             List<String> recommendList = new ArrayList<>();
+            System.out.println(recommendMap);
             recommendMap.entrySet().stream()
                 .sorted(new Comparator<Map.Entry<String, Integer>>() {
                     @Override
                     public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
                         if(o1.getValue().equals(o2.getValue())){
-                            o1.getKey().compareTo(o2.getKey());
+                            return o1.getKey().compareTo(o2.getKey());
                         }
                         return o2.getValue() - o1.getValue();
                     }
