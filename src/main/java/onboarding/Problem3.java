@@ -4,7 +4,7 @@ public class Problem3 {
 
     public static void main(String[] args) {
         //solution(5);
-        solution(15);
+        solution(33);
         //solution(297);
         //solution(4444);
     }
@@ -18,11 +18,19 @@ public class Problem3 {
 
             switch (numLength) {
                 case 1:
-                    if(i == 3 || i == 6 || i == 9)
+                    if(i % 3 == 0)
                         countClap++;
                     break;
                 case 2:
-                    //System.out.println("two");
+                    int[] arrDouble = new int[2];
+                    arrDouble[0] = i / 10;
+                    arrDouble[1] = i % 10;
+
+                    if(arrDouble[0] % 3 == 0)
+                        countClap++;
+                    if(arrDouble[1] % 3 == 0 && arrDouble[1] != 0)
+                        countClap++;
+
                     break;
                 case 3:
                     //System.out.println("three");
@@ -33,7 +41,7 @@ public class Problem3 {
 
             }
         }
-        System.out.println(countClap);
+        answer = countClap;
         return answer;
     }
 }
