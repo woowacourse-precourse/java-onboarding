@@ -5,6 +5,8 @@ import java.util.*;
 public class Problem7 {
     static HashSet<String> alreadyFriends = new HashSet<>();
     static List<String> acquaintance = new ArrayList<>();
+    static List<String> newVisitors = new ArrayList<>();
+    static HashMap<String, Integer> recommendScore = new HashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
@@ -58,5 +60,24 @@ public class Problem7 {
             return true;
         }
         return false;
+    }
+
+    public static boolean isNewVisitor(String visitor) {
+        for (Iterator<String> iter = alreadyFriends.iterator(); iter.hasNext(); ) {
+            String alreadyFriend = iter.next();
+            if (visitor.equals(alreadyFriend)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public static void resetScore() {
+        for (String acquaintID : acquaintance) {
+            recommendScore.put(acquaintID, 0);
+        }
+        for (String visitorID : newVisitors) {
+            recommendScore.put(visitorID, 0);
+        }
     }
 }
