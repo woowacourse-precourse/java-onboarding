@@ -42,9 +42,9 @@ class Calculator {
 
     private int getSum(int page) {
         int sum = 0;
-        while (page>0) {
-            int q = page/10;
-            int r = page%10;
+        while (page > 0) {
+            int q = page / 10;
+            int r = page % 10;
             sum += r;
             page = q;
         }
@@ -53,9 +53,9 @@ class Calculator {
 
     private int getMulti(int page) {
         int multi = 1;
-        while (page>0) {
-            int q = page/10;
-            int r = page%10;
+        while (page > 0) {
+            int q = page / 10;
+            int r = page % 10;
             multi *= r;
             page = q;
         }
