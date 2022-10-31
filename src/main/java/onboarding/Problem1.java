@@ -27,6 +27,7 @@ class Problem1 {
                 }
             }
         }
+
         for(Integer j:crong) {
             int tmp_sum = 0, tmp_mul = 1;
             for (; j > 0; j /= 10) {
