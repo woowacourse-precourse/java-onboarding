@@ -9,4 +9,11 @@ public class Problem5 {
         List<Integer> answer = Collections.emptyList();
         return answer;
     }
+
+    private static void findNumberOfMoney(int money, List<Integer> answer) {
+        for (Integer price : PRICE) {
+            answer.add(money / price);
+            money %= price;
+        }
+    }
 }
