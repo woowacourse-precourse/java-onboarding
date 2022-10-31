@@ -46,8 +46,9 @@ class Problem1 {
             return false;
         if((right-left) > 1)
             return false;
-        if((left%2 == 0) && (right%2 == 1))
+        if(left%2 == 0 && right%2 == 1)
             return false;
+
         else
             return true;
     }
@@ -79,6 +80,7 @@ class Problem1 {
         } else {
             right = r_mul;
         }
+
         if (left > right) {
             return left;
         } else {
@@ -97,7 +99,7 @@ class Problem1 {
     public static int getMul(int number) {
         int total = 1;
         while(number > 0) {
-            total *= number * 10;
+            total *= number % 10;
             number /= 10;
         }
         return total;
