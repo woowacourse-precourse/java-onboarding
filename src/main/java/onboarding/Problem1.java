@@ -1,6 +1,5 @@
 package onboarding;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,9 +7,24 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
-        // 각 자리수 모두 분리
-        // 더하거나 곱해서 max값 구하기
-        // max값 비교해서 -1 0 1 중에서 알맞은거 리턴
+        // 예외처리
+        if(pobi.get(1)-pobi.get(0) != 1 || crong.get(1)-crong.get(0) != 1) {
+            return -1;
+        }
+
+        int pobiMax = getMax(pobi);
+        int crongMax = getMax(crong);
+
+        if(pobiMax > crongMax) {
+            answer = 1;
+        }
+        else if(pobiMax < crongMax) {
+            answer = 2;
+        }
+        else {
+            answer = 0;
+        }
+
         return answer;
     }
 
