@@ -43,6 +43,8 @@ public class Problem7 {
                 friendScores = (ArrayList<FriendScore>) updateScore(friendScores,visitors.get(i),1);
         }
 
+        answer = sortByScore(friendScores);
+
         return answer;
     }
 
@@ -79,6 +81,31 @@ public class Problem7 {
         FriendScore friendScore = new FriendScore(nickname,scoreSize);
         friendScores.add(friendScore);
         return friendScores;
+    }
+
+    public static List<String> sortByScore(List<FriendScore> friendScores){
+        friendScores.sort(new Comparator<FriendScore>() {
+            @Override
+            public int compare(FriendScore o1, FriendScore o2) {
+                if (o1.score>o2.score){
+                    return -1;
+                }else if (o1.score==o2.score){
+                    return o1.getNickname().compareTo(o2.getNickname());
+                }else{
+                    return 1;
+                }
+            }
+        });
+
+        ArrayList<String> answer = new ArrayList<String>();
+        int count=0;
+        while(count<5 && count<friendScores.size()){
+            if (friendScores.get(count).score != 0) {
+                answer.add(friendScores.get(count).getNickname());
+            }
+            count++;
+        }
+        return answer;
     }
 }
 
