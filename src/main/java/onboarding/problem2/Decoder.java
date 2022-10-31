@@ -27,8 +27,7 @@ public class Decoder {
         Stack<Character> plainStack = new Stack<>();
         plainStack.push(CIPHERTEXT.charAt(0));
         treatDuplication(plainStack);
-        // Build plain text with stack
-        return "";
+        return buildPlain(plainStack);
     }
 
     /**
@@ -55,5 +54,16 @@ public class Decoder {
         if (duplicate) {
             plainStack.pop();
         }
+    }
+
+    /**
+     * Building plain text from plain stack
+     * @param plainStack non duplicated character stack
+     * @return plain text
+     */
+    private String buildPlain(Stack<Character> plainStack) {
+        StringBuilder builder = new StringBuilder();
+        while (!plainStack.isEmpty()) builder.append(plainStack.pop());
+        return builder.reverse().toString();
     }
 }
