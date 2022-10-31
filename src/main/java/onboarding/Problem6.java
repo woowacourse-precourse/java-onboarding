@@ -1,13 +1,13 @@
 package onboarding;
 
 import onboarding.problem6.Crew;
-
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.Collections;
-import java.util.stream.Stream;
+import java.util.Comparator;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     static final Set<String> usingNickname = new HashSet<>();
@@ -15,19 +15,19 @@ public class Problem6 {
     static final List<String> words = new ArrayList<>();
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-
         if (forms.size() < 1 || forms.size() > 10000) {
             return Collections.emptyList();
         }
 
         forms.forEach(Problem6::registerNickname);
 
-        Stream<Crew> crewStream = forms.stream()
+        return forms.stream()
                 .map(Crew::new)
-                .filter(Problem6::isDuplicatedName);
-
-        return answer;
+                .filter(Problem6::isDuplicatedName)
+                .map(crew -> crew.getEmail().getValue())
+                .sorted(Comparator.naturalOrder())
+                .distinct()
+                .collect(Collectors.toList());
     }
 
     private static void registerNickname(List<String> form) {
