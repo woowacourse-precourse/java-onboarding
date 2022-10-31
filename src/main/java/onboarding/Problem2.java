@@ -9,6 +9,10 @@ import java.util.stream.Stream;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
+        if (cryptogram.length() == 1){
+            return cryptogram;
+        }
+
         String next = cryptogram;
         String prev;
 
@@ -21,9 +25,6 @@ public class Problem2 {
     }
 
     static String getPattern(String cryptogram){
-        if (cryptogram.length() == 0) {
-            return "";
-        }
         List<String> tokenList = List.of(cryptogram.split(""));
         Set<String> tokenSet = new HashSet<>(tokenList);
         List<String> patternList = tokenSet.stream()
