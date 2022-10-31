@@ -16,7 +16,6 @@ public class Problem7 {
 	static Map<String, Integer> remainUserAndScore;
 	static Set<String> mainUserFriends;
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = new ArrayList<>();
         
         remainUserAndFriends = new HashMap<>();
         remainUserAndScore = new HashMap<>();
@@ -41,10 +40,12 @@ public class Problem7 {
         sortByScoreThenName(candidateFriendList);
         //for debug
         System.out.println(candidateFriendList);
+        List<String> answer = getFinalFriendList(candidateFriendList);
+        System.out.println(answer);
         
         return answer;
     }
-    public static void makeAllFriendship(String user, List<List<String>> friends) {
+	public static void makeAllFriendship(String user, List<List<String>> friends) {
     	
     	String userA = null;
     	String userB = null;
@@ -117,6 +118,19 @@ public class Problem7 {
 			}
 		});
     }
+    public static List<String> getFinalFriendList(List<Friend> candidateFriendList) {
+    	
+    	List<String> finalFriendList = new ArrayList<>();
+    	int cnt = 0;
+    	for(Friend friend: candidateFriendList) {
+    		finalFriendList.add(friend.name);
+    		cnt += 1;
+    		if(cnt == 5) {
+    			break;
+    		}
+    	}
+		return finalFriendList;
+	}
 }
 class Friend {
 	String name;
