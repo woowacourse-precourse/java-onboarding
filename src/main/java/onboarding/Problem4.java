@@ -6,11 +6,19 @@ public class Problem4 {
         char[] split = word.toCharArray();
         for (char c : split) {
             if (isAlphabetic(c)) {
+                answer.append(changeCase(c));
                 continue;
             }
             answer.append(c);
         }
         return answer.toString();
+    }
+
+    private static char changeCase(char c) {
+        if (c >= 65 && c <= 90) {
+            return c;
+        }
+        return c;
     }
 
     private static boolean isAlphabetic(char c) {
