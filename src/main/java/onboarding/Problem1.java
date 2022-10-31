@@ -48,6 +48,7 @@ class Problem1 {
             return left;
         }
     }
+
     public static int getMaximum(List<Integer> numbers){
         char[] left = String.valueOf(numbers.get(0)).toCharArray();
         char[] right = String.valueOf(numbers.get(0)).toCharArray();
