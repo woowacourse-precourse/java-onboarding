@@ -39,7 +39,7 @@ class PlayerTest {
 
 
     @ParameterizedTest
-    @CsvSource(value= {"3:4,12", "9:10,10"}, delimiterString = ",")
+    @CsvSource(value= {"3:4,4", "9:10,9"}, delimiterString = ",")
     void 플레이어는_입력받은_페이지에서_가장_큰_값을_반환합니다(final String input, final String result) {
         var numbers = getIntegers(input);
 
