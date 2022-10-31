@@ -29,11 +29,9 @@ public class Problem3 {
     }
 
     private static int getClapOfNumber(int number){
-        int result = 0;
         String value = String.valueOf(number);
         Stream<Character> characterStream = value.chars().mapToObj(i->(char)i);
-        result=(int)characterStream.filter(i -> canMakeClap(i)).count();
-        return result;
+        return (int)characterStream.filter(i -> canMakeClap(i)).count();
     }
 
     private static boolean canMakeClap(char charater){
