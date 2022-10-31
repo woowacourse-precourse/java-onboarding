@@ -241,6 +241,62 @@ class ApplicationTest {
             String result = "R olev blf";
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
+
+        @Test
+        void case2() {
+            String word = "abcdefghijklmnopqrstuvwxyz";
+            String result = "zyxwvutsrqponmlkjihgfedcba";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+
+        @Test
+        void case3() {
+            String word = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            String result = "ZYXWVUTSRQPONMLKJIHGFEDCBA";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+
+        @Test
+        void case4() {
+            String word = "!@#$%";
+            String result = "!@#$%";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+
+        @Test
+        void case5() {
+            String word = " ";
+            String result = " ";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+
+        @Test
+        void case6() {
+            String word = "Hello  Everyone!";
+            String result = "Svool  Veviblmv!";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+
+        @Test
+        void case7() {
+            String word = "abcdefghijklmnopqrstuvwxyz !@#!#  ";
+            String result = "zyxwvutsrqponmlkjihgfedcba !@#!#  ";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+
+        @Test
+        void case8() {
+            String word = "Svool, Dliow! 123";
+            String result = "Hello, World! 123";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+
+        @Test
+        void case9() {
+            String word = "ABCDEFGHIJKLMNOPQRSTUVWXYZ !@#$%^&*  ";
+            String result = "ZYXWVUTSRQPONMLKJIHGFEDCBA !@#$%^&*  ";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
     }
 
     @Nested
