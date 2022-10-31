@@ -26,10 +26,6 @@ public class UsersList {
 		return usersList.containsKey(userID);
 	}
 
-	public boolean isFriends(String user, String visitor) {
-		return usersList.get(new UserID(user)).isFriend(new UserID(visitor));
-	}
-
 	public List<String> getFriendOfFriend(String targetUserIDName) {
 		UserID targetUserID = new UserID(targetUserIDName);
 		Friends targetUserFriends = usersList.get(targetUserID);
@@ -39,6 +35,12 @@ public class UsersList {
 			.map(Map.Entry::getKey)
 			.filter(userID -> !userID.equals(targetUserID))
 			.map(UserID::toString)
+			.collect(toList());
+	}
+
+	public List<String> removeFriend(String user, List<String> visitors) {
+		return visitors.stream()
+			.filter(visitor -> !usersList.get(new UserID(user)).isFriend(new UserID(visitor)))
 			.collect(toList());
 	}
 }

@@ -24,7 +24,7 @@ public class TotalScoreStorage {
 		return scoreList.get(name);
 	}
 
-	public List<String> getRecommendedfriends() {
+	public List<String> getRecommendedFriends() {
 		return scoreList.entrySet().stream()
 			.sorted(recommendComparator())
 			.map(Entry::getKey)

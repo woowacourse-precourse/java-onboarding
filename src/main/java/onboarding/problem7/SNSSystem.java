@@ -3,21 +3,21 @@ package onboarding.problem7;
 import java.util.List;
 
 public class SNSSystem {
-	private final UsersList users;
+	private final UsersList usersList;
 
 	public SNSSystem() {
-		this.users = new UsersList();
+		this.usersList = new UsersList();
 	}
 
 	public void add(List<String> friendsList) {
-		users.add(friendsList);
+		usersList.add(friendsList);
 	}
 
 	public List<String> getFriendOfFriend(String name) {
-		return users.getFriendOfFriend(name);
+		return usersList.getFriendOfFriend(name);
 	}
 
-	public boolean isFriends(String user, String visitor) {
-		return users.isFriends(user, visitor);
+	public List<String> removeFriend(String user, List<String> visitor) {
+		return usersList.removeFriend(user, visitor);
 	}
 }

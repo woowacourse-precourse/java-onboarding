@@ -30,7 +30,7 @@ public class TotalScoreStorageTest {
 		totalScoreStorage.add(List.of("mikef"), 9);
 		totalScoreStorage.add(List.of("mikeg"), 10);
 
-		Assertions.assertThat(totalScoreStorage.getRecommendedfriends())
+		Assertions.assertThat(totalScoreStorage.getRecommendedFriends())
 			.isEqualTo(List.of("mikeg", "mikef", "mikee", "mikea", "miked"));
 
 	}
