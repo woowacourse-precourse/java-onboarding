@@ -106,6 +106,20 @@ public class Problem6 {
         }
     }
 
+    // Nickname 으로 Email 추출하기 (Nickname -> Email)
+    // solution 메서드 결과 반환 시
+    // 닉네임 중복 여부를 담고 있는 nicknameOverlapStatusMap 에 담겨있는 Email을 닉네임을 기반으로 추출하기 위함
+    public static String extractEmailInMapByNickname(String nickname) {
+        for (String key : emailNicknameMap.keySet()) {
+            if (emailNicknameMap.get(key).equals(nickname)) {
+                return key;
+            }
+        }
+        return null;
+    }
+
+
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
