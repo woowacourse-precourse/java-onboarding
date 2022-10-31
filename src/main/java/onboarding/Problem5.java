@@ -14,4 +14,16 @@ public class Problem5 {
         List<Integer> answer = Collections.emptyList();
         return answer;
     }
+
+    public static void moneyUnitAdd(List<Integer> moneyUnits) {
+        moneyUnits.add(50000);
+        moneyUnits.add(10000);
+        moneyUnits.add(5000);
+        moneyUnits.add(1000);
+        moneyUnits.add(500);
+        moneyUnits.add(100);
+        moneyUnits.add(50);
+        moneyUnits.add(10);
+        moneyUnits.add(1);
+    }
 }
