@@ -27,6 +27,17 @@ public class Problem7 {
             score.put(visitor, score.getOrDefault(visitor, 0) + 1);
         }
 
+        // 함께 아는 친구의 수 반영: 각 10점
+        // user의 친구 1명씩 꺼내기
+        for (String friend : map.get(user)) {
+            // 다른 친구들의 아는 친구목록 확인
+            for (String name : map.keySet()) {
+                if (name.equals(user)) continue;
+
+                if (isFriend(map, name, friend)) score.put(name, score.getOrDefault(name, 0) + 10);
+            }
+        }
+
         return answer;
     }
 
