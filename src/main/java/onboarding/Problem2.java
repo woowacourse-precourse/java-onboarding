@@ -39,6 +39,13 @@ class StringOperation {
     String getRedundantAlphabet(String cryptogram, List<Integer> redundantIndex) {
         return cryptogram.substring(redundantIndex.get(0), redundantIndex.get(1) + 1);
     }
+    List<String> getRedundantSequence(String cryptogram, List<List<Integer>> redundantIndex){
+        List<String> redundantAlphabet = new ArrayList<>();
+        for(List<Integer> index: redundantIndex){
+            redundantAlphabet.add(getRedundantAlphabet(cryptogram, index));
+        }
+        return redundantAlphabet;
+    }
     String getDecryption(String cipher, List<String> redundantCharacter){
         String newCipher=cipher;
         for(String character: redundantCharacter){
