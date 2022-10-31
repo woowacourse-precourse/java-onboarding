@@ -12,9 +12,9 @@ import onboarding.domain.problem7.VisitsDictionaryGenerator;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         FriendRelations relations = new FriendRelations(friends);
-        MutualDictionaryGenerator mgen = new MutualDictionaryGenerator(relations, user);
-        VisitsDictionaryGenerator vgen = new VisitsDictionaryGenerator(relations, user, visitors);
-        FriendRecommender rc = new FriendRecommender(new MutualDictionary(mgen), new VisitsDictionary(vgen));
-        return rc.getRecommendList();
+        MutualDictionaryGenerator mGenerator = new MutualDictionaryGenerator(relations, user);
+        VisitsDictionaryGenerator vGenerator = new VisitsDictionaryGenerator(relations, user, visitors);
+        FriendRecommender recommender = new FriendRecommender(new MutualDictionary(mGenerator), new VisitsDictionary(vGenerator));
+        return recommender.getTopRecommends();
     }
 }

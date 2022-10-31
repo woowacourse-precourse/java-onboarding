@@ -11,54 +11,64 @@ import java.util.Set;
 import java.util.Map.Entry;
 
 public class FriendRecommender {
-    private final MutualDictionary mutualDict;
-    private final VisitsDictionary visitsDict;
-    private final Map<String, Integer> entryDict;
+    private final MutualDictionary mutual;
+    private final VisitsDictionary visits;
+    private final Map<String, Integer> candidatePoints;
     
-    public FriendRecommender(MutualDictionary mutualDict, VisitsDictionary visitsDict) {
-        this.mutualDict = mutualDict;
-        this.visitsDict = visitsDict;
-        this.entryDict = getEntryDictionary(mergeAllEntries());
+    public FriendRecommender(MutualDictionary mutual, VisitsDictionary visits) {
+        this.mutual = mutual;
+        this.visits = visits;
+        this.candidatePoints = getCandidatePoints(mergeAllCandidates());
     }
     
-    public List<String> getRecommendList() {
-        List<String> list = new ArrayList<>();
-        List<Map.Entry<String, Integer>> entryList = getSortedEntries(entryDict);
-        int idx = 0;
-        while (!(idx == 5 || idx + 1 > entryList.size())) {
-            Map.Entry<String, Integer> entry = entryList.get(idx);
-            list.add(entry.getKey());
-            idx++;
+    public List<String> getTopRecommends() {
+        List<String> recommends = new ArrayList<>();
+        List<Map.Entry<String, Integer>> sortedCandidates = sortCandidatesByPoint(candidatePoints);
+        int index = 0;
+        while (isInRange(index, sortedCandidates.size())) {
+            Map.Entry<String, Integer> candidateEntry = sortedCandidates.get(index);
+            recommends.add(candidateEntry.getKey());
+            index++;
         }
-        return list;
+        return recommends;
     }
     
-    private Set<String> mergeAllEntries() {
-        Set<String> entries = new HashSet<String>(mutualDict.getAllMutuals());
-        entries.addAll(visitsDict.getAllVisitors());
-        return entries;
-    }
-    
-    private Map<String, Integer> getEntryDictionary(Set<String> entries) {
-        Map<String, Integer> entryDict = new HashMap<>();
-        for (String entry : entries) {
-            int mutualCnt = mutualDict.getTotalMutualCounts(entry);
-            int visitCnt = visitsDict.getTotalVisitCounts(entry);
-            int point = mutualCnt*10 + visitCnt;
-            entryDict.put(entry, point);
+    private boolean isInRange(int index, int candidatesCount) {
+        if (index == 5) {
+            return false;
         }
-        return entryDict;
+        if (index + 1 > candidatesCount) {
+            return false;
+        }
+        return true;
     }
     
-    private List<Map.Entry<String, Integer>> getSortedEntries(Map<String, Integer> dictionary) {
-        List<Map.Entry<String, Integer>> list = new ArrayList<>(dictionary.entrySet());
-        Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
+    private Set<String> mergeAllCandidates() {
+        Set<String> candiates = new HashSet<String>(mutual.getAllMutuals());
+        candiates.addAll(visits.getAllVisitors());
+        return candiates;
+    }
+    
+    private Map<String, Integer> getCandidatePoints(Set<String> candidates) {
+        Map<String, Integer> candidatePoints = new HashMap<>();
+        for (String candidate : candidates) {
+            int mutualCount = mutual.getTotalMutualCounts(candidate);
+            int visitCount = visits.getTotalVisitCounts(candidate);
+            int point = mutualCount*10 + visitCount;
+            candidatePoints.put(candidate, point);
+        }
+        return candidatePoints;
+    }
+    
+    private List<Map.Entry<String, Integer>> sortCandidatesByPoint(Map<String, Integer> candidatePoints) {
+        List<Map.Entry<String, Integer>> candidates = new ArrayList<>(candidatePoints.entrySet());
+        Collections.sort(candidates, new Comparator<Map.Entry<String, Integer>>() {
             @Override
             public int compare(Entry<String, Integer> o1, Entry<String, Integer> o2) {
                 int comparison = (o1.getValue() - o2.getValue()) * (-1);
                 return comparison == 0 ? o1.getKey().compareTo(o2.getKey()) : comparison;
             }
         });
-        return list;
+        return candidates;
     }
 }
