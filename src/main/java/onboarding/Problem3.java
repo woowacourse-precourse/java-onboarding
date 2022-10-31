@@ -2,17 +2,16 @@ package onboarding;
 
 public class Problem3 {
     public static int solution(int number) {
+        checkList(number);
 
 
-        for (int i = 0; i < piece.length; i++) {
-            for (int j = 0; j < piece[i].length; j++) {
-                if (piece[i][j] == '3' || piece[i][j] == '6' || piece[i][j] == '9') {
-                    count++;
-                }
-            }
+
+    }
+
+    public static void checkList(int number) throws IllegalArgumentException{
+        if (number < 1 || number > 10000) {
+            throw new IllegalArgumentException("number는 1 미만 10,000 초과인 자연수 입니다.");
         }
-        return count;
-
     }
 
 
