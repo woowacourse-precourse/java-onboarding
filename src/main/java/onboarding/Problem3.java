@@ -17,4 +17,16 @@ public class Problem3 {
         }
         return 0;
     }
+
+    private static int addClapTimes(int testNumber) {
+        int clapTimes = 0;
+
+        while (testNumber > 0) {
+            int unitNumber = testNumber % 10;
+            clapTimes += isClapNumber(unitNumber);
+            testNumber /= 10;
+        }
+
+        return clapTimes;
+    }
 }
