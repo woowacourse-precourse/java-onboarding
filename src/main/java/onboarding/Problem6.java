@@ -8,6 +8,7 @@ public class Problem6 {
         List<String> answer = new ArrayList<String>();
         List<String> formsEmail = new ArrayList<String>();
         List<String> formsName = new ArrayList<String>();
+        List<String> answerOverlap = new ArrayList<String>();
 
         for (int i = 0; i < forms.size(); i++) {
             String temp = new String();
@@ -25,8 +26,8 @@ public class Problem6 {
                     for (int l = 0; l < name2.length(); l++) {
                         if (k == name1.length()-1 || l == name2.length()-1) break;
                         if (name1.charAt(k) == name2.charAt(l) && name1.charAt(k+1) == name2.charAt(l+1)) {
-                            answer.add(formsEmail.get(i));
-                            answer.add(formsEmail.get(j));
+                            answerOverlap.add(formsEmail.get(i));
+                            answerOverlap.add(formsEmail.get(j));
                         }
 
                     }
