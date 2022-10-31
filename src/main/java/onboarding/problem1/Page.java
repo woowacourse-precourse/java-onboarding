@@ -1,5 +1,8 @@
 package onboarding.problem1;
 
+import static onboarding.problem1.Problem1.END;
+import static onboarding.problem1.Problem1.START;
+
 public class Page {
     private int left;
     private int right;
@@ -25,17 +28,19 @@ public class Page {
         this.right = right;
     }
 
-    public boolean isValidLeft(int left) {
+    private boolean isValidLeft(int left) {
         return left % 2 == 1;
     }
 
-    public boolean isValidRight(int right) {
+    private boolean isValidRight(int right) {
         return right % 2 == 0;
     }
 
-    public boolean isBetween(int start, int end) {
+    private boolean isBetween(int start, int end) {
         return start <= left & right <= end;
     }
+
+    private boolean isContinuous(int left, int right) { return right - left == 1; }
 
     private int multiply(int num) {
         int result = 1;
@@ -77,5 +82,9 @@ public class Page {
         } else{
             return getMultiplyMax(this.getLeft(), this.getRight());
         }
+    }
+
+    public boolean validatePage() {
+        return isValidLeft(left) & isValidRight(right) & isBetween(START, END) & isContinuous(left,right);
     }
 }
