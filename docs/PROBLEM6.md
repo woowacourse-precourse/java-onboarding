@@ -25,6 +25,8 @@
 ## ✅ 구현할 기능 목록
 
 - [x] forms의 닉네임을 두 글자로 나누고, 나눈 닉네임에 해당하는 이메일을 HashMap에 저장 (`createNicknameMap`)
+  - [x] 제한사항에 해당하는 이메일인지 확인하는 함수 (`isValidEmail`)
+  - [x] 제한사항에 해당하는 닉네임인지 확인하는 함수 (`isValidNickname`)
   - [x] 닉네임을 두 글자씩 나누는 함수 (`splitTwoLetter`)
   - [x] 두 글자씩 나눈 닉네임에 맞게 이메일을 HashMap에 저장하는 함수 (`storeEmails`)
     - key(String): 두 글자로 나눈 닉네임, value(List<String>): 이메일
