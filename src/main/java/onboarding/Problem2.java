@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.Stack;
+import java.util.regex.Pattern;
 
 public class Problem2 {
 
@@ -21,7 +22,7 @@ public class Problem2 {
     private static void checkExceptionOfCryptogram(String cryptogram){
         if(cryptogram.length() < INPUT_MINIMUM_LENGTH) cryptogramEmptyException();
         if(cryptogram.length() > INPUT_MAXIMUM_LENGTH) cryptogramTooLongException();
-        checkIfCryptogramIsWithOtherLetter(cryptogram);
+        if(!Pattern.matches("^[a-z]*$", cryptogram)) cryptogramNotLowerCaseException();
     }
 
     private static void cryptogramEmptyException(){
@@ -30,18 +31,6 @@ public class Problem2 {
 
     private static void cryptogramTooLongException(){
         throw new IllegalArgumentException(INPUT_STRING_TOO_LONG);
-    }
-
-    private static void checkIfCryptogramIsWithOtherLetter(String cryptogram){
-        for(int i=0; i<cryptogram.length(); i++){
-            checkEachLetter(cryptogram.charAt(i));
-        }
-    }
-
-    private static void checkEachLetter(char cryptosLetter){
-        if(cryptosLetter - 'a' < ALPHABET_START_INDEX || cryptosLetter - 'a' > ALPHABET_END_INDEX){
-            cryptogramNotLowerCaseException();
-        }
     }
 
     private static void cryptogramNotLowerCaseException(){
