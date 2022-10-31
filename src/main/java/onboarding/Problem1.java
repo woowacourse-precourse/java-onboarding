@@ -21,7 +21,8 @@ class Problem1 {
         int[] rightArray = getNumArray(numList,1);
         int leftPlusNum= getPlusNumber(leftArray);
         int rightPlusNum = getPlusNumber(rightArray);
-
+        int leftMultiplyNum=getMultiplyNumber(leftArray);
+        int rightMultiplyNum=getMultiplyNumber(rightArray);
         return 1;
     }
     public static int[] getNumArray(List<Integer> numList,int index){
@@ -31,6 +32,9 @@ class Problem1 {
     }
     public static int getPlusNumber(int[] arr){
         return Arrays.stream(arr).sum();
+    }
+    public static int getMultiplyNumber(int[] arr){
+        return Arrays.stream(arr).reduce(1,(a,b) -> a*b);
     }
     public static boolean checkException(List<Integer> checkList){
         Integer leftNum = checkList.get(0)+1;
