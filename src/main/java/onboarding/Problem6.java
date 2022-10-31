@@ -14,6 +14,7 @@ public class Problem6 {
         Set<String> emailSet = getEmailSet(forms, userMap);
 
         ArrayList<String> result = new ArrayList<>(emailSet);
+        Collections.sort(result);
 
         return result;
     }
@@ -57,8 +58,6 @@ public class Problem6 {
                 emailSet.add(forms.get(data - 1).get(0));
             }
         }
-
-        emailSet.stream().sorted();
 
         return emailSet;
     }

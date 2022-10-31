@@ -21,3 +21,16 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+
+### 풀이 전략
+
+1. 주어진 `form` 리스트의 닉네임의 두글자씩 `HashMap`에 저장하면서 중복 검사를 한다.
+   - key값은 `String` 타입의 두글자이고 value값은 리스트의 인덱스를 담은 `ArrayList`이다.
+   - 예를 들어 `form` 리스트가 `[["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"]]` 라면 `[제이 : [0, 1]], [이엠 : [0]], [이슨 : [1]]`이 결과 `HashMap`이 될 것이다.
+   
+
+2. 결과로 나온 `HashMap`의 value값의 길이가 2 이상이면 중복이 된다는 뜻이므로 해당 이메일을 `Set`에 저장한다. (중복 제거를 위해 `Set`을 사용한다)
+
+
+3. `Set`을 `List`로 바꾼 후 정렬해 리턴해준다. 
