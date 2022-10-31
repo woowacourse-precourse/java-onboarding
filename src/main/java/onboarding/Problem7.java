@@ -49,6 +49,11 @@ public class Problem7 {
 		}
 		reconmmendedFriends.remove(user);
 		reconmmendedFriends.addAll(visitors);
+
+		for (String friend : friendshipChart.get(user)) {
+			reconmmendedFriends.remove(friend);
+		}
+
 		System.out.println(reconmmendedFriends);
 
 		List<String> answer = Collections.emptyList();
