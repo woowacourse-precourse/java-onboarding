@@ -2,9 +2,9 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        return toGreenFrogLanguage(word);
     }
+
     public static String toGreenFrogLanguage(String word){
         String greenFrogWord = "";
         for(int i = 0; i < word.length(); i++){
