@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -23,6 +24,18 @@ public class Problem6 {
                 }
             }
         }
+        String first = forms.get(0).get(1);
+        for (int j = 0; j < first.length() - 1; j++) {
+            sb.setLength(0);
+            sb.append(first.charAt(j)).append(first.charAt(j + 1));
+            if (map.containsKey(sb.toString())) {
+                answer.add(forms.get(0).get(0));
+                break;
+            } else {
+                map.put(sb.toString(), 0);
+            }
+        }
+        Collections.sort(answer);
         return answer;
     }
 }
