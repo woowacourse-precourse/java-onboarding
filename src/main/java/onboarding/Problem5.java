@@ -26,4 +26,8 @@ public class Problem5 {
         moneyUnits.add(10);
         moneyUnits.add(1);
     }
+
+    public static int moneyConvertIntoUnit(int money, int unit) {
+        return money / unit;
+    }
 }
