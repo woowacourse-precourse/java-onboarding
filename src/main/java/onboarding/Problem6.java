@@ -11,7 +11,15 @@ public class Problem6 {
         forms.forEach(form ->
                 crewInfo.put(form.get(1), form.get(0))
         );
-
+        List<String> nameList = new ArrayList<>(crewInfo.keySet());
+        for (String name : nameList) {
+            String email = crewInfo.get(name);
+            if (!answer.contains(email)) {
+                List<String> duplicateNickNameList = getDuplicateNickNames(nameList, name);
+                List<String> collect = duplicateNickNameList.stream().map(crewInfo::get).collect(Collectors.toList());
+                answer.addAll(collect);
+            }
+        }
         return answer;
     }
 
