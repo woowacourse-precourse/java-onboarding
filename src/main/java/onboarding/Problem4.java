@@ -5,6 +5,9 @@ package onboarding;
  */
 
 public class Problem4 {
+    private static final int MIN_LENGTH = 1;
+    private static final int MAX_LENGTH = 1000;
+
     public static String solution(String word) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < word.length(); i++) {
