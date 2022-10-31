@@ -5,6 +5,9 @@ import java.util.List;
 class Problem1 {
 
     private static final int INVALID = -1;
+
+    private static final int DECIMAL = 10;
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = INVALID;
         if (hasInvalidSize(pobi) || hasInvalidSize(crong)) {
@@ -55,20 +58,18 @@ class Problem1 {
 
     private static int calculateScore(List<Integer> pageList) {
         int score = 0;
-        Integer leftPage = pageList.get(0);
-        Integer rightPage = pageList.get(1);
-        score = Math.max(score, sumPlaceValue(leftPage));
-        score = Math.max(score, sumPlaceValue(rightPage));
-        score = Math.max(score, multiplyPlaceValue(leftPage));
-        score = Math.max(score, multiplyPlaceValue(rightPage));
+        for (Integer page : pageList) {
+            score = Math.max(score, sumPlaceValue(page));
+            score = Math.max(score, multiplyPlaceValue(page));
+        }
         return score;
     }
 
     private static int sumPlaceValue(Integer page) {
         int sum = 0;
         while (page > 0) {
-            sum += page % 10;
-            page /= 10;
+            sum += page % DECIMAL;
+            page /= DECIMAL;
         }
         return sum;
     }
@@ -76,8 +77,8 @@ class Problem1 {
     private static int multiplyPlaceValue(Integer page) {
         int result = 1;
         while (page > 0) {
-            result *= page % 10;
-            page /= 10;
+            result *= page % DECIMAL;
+            page /= DECIMAL;
         }
         return result;
     }
