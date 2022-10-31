@@ -1,16 +1,13 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /*
 * 기능 목록
 * 1. 친구 관계 저장
 * 2. 함께 아는 친구 점수 계산
 * 3. 타임라인에 방문한 횟수 점수 계산
-* 4. 점수가 높은 5명 구하기
+* 4. 점수가 높은 인원 최대 5명까지 구하기
 * */
 public class Problem7 {
 
@@ -69,9 +66,37 @@ public class Problem7 {
             }
         }
     }
+    // 점수가 높은 인원 최대 5명까지 구하기
+    private static List<String> getRecommendedFriendList() {
+        List<String> answer = new ArrayList<>();
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(scoreMap.entrySet());
+        // 점수순으로 정렬
+        entryList.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
+
+        // 최대 5명
+        for (int i = 0; i < 5 && i < entryList.size(); i++) {
+            Map.Entry<String, Integer> entry = entryList.get(i);
+            // 최종 점수가 0이 아니면 추가
+            if (entry.getValue() != 0) {
+                answer.add(entry.getKey());
+            }
+        }
+        return answer;
+    }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        friendMap = new HashMap<>();
+        scoreMap = new HashMap<>();
+
+        for (List<String> friend : friends) {
+            String friend1 = friend.get(0);
+            String friend2 = friend.get(1);
+            addFriend(friend1, friend2);
+        }
+
+        getScoreFromSameFriend(user);
+        getScoreFromTimeline(user, visitors);
+
+        return getRecommendedFriendList();
     }
 }
