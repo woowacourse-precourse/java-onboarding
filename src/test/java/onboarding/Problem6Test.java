@@ -1,6 +1,8 @@
 package onboarding;
 
 
+import onboarding.problem6.Main;
+import onboarding.problem6.collection.Crews;
 import onboarding.problem6.domain.Crew;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.DisplayName;
@@ -174,6 +176,24 @@ class Problem6Test {
                 assertThat(crew1.equals(crew2)).isFalse();
                 assertThat(crew1.hashCode() == crew2.hashCode()).isFalse();
             }
+        }
+    }
+
+    @Nested
+    @DisplayName("Describe")
+    class MainClassTest {
+
+        private Main main;
+        private Crew crew;
+        private Crews crews;
+
+        @Test
+        @DisplayName("makeCrewByNicknameAndEmail가 Crew 객체를 반환하는지 확인한다")
+        void makeCrewByNicknameAndEmailTest() {
+            main = new Main();
+            String nickname = "크롱";
+            String email = "crong@email.com";
+            assertThat(main.makeCrewByEmailAndNickname(email, nickname)).isEqualTo(new Crew(email, nickname));
         }
     }
 }
