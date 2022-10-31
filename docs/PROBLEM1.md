@@ -1,1 +1,2 @@
-- Problem 1 기술 문서.
+- Problem 1 기술 문서
+---
