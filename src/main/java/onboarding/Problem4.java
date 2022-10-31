@@ -18,6 +18,39 @@ class TreeFrog {
             upperCaseDictionary.put((char) ('A' + i), (char) ('Z' - i));
         }
     }
+
+    public String frogTranslation(String word) {
+        StringBuilder answer = new StringBuilder("");   // 수정이 잦은 문자열이기 때문에 StringBuilder class를 사용함
+
+        for (int i = 0; i < word.length(); i++) {
+            char c = word.charAt(i);
+            int caseFlag = checkCase(c);
+
+            switch (caseFlag) {
+                case 0:
+                    answer.append(lowerCaseDictionary.get(c));
+                    break;
+                case 1:
+                    answer.append(upperCaseDictionary.get(c));
+                    break;
+                case -1:
+                    answer.append(c);
+                    break;
+            }
+        }
+
+        return answer.toString();
+    }
+
+    public int checkCase(char character) {
+        if (character >= 'a' && character <= 'z') {
+            return 0;
+        } else if (character >= 'A' && character <= 'Z') {
+            return 1;
+        } else {
+            return -1;
+        }
+    }
 }
 
 public class Problem4 {
