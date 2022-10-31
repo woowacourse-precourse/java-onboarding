@@ -45,6 +45,12 @@ public class Problem2 {
 		
 	}
 	
+	//2. 중복이 있다면, 인덱스와 갯수 정보를 통해 삭제
+	public String del_str(String target, int[] arr) {
+		String fin = target.substring(0, arr[0]) + target.substring(arr[0] + arr[1]);
+		return fin;
+	}
+	
     public static String solution(String cryptogram) {
         String answer = "answer";
         return answer;
