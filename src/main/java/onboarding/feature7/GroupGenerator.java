@@ -22,9 +22,9 @@ public class GroupGenerator {
     public GroupGenerator(String user, List<List<String>> friends, List<String> visitors) {
         this.user = user;
         this.friends = new ArrayList<>();
-        for (List<String> friend : friends) {
-            List<String> friendInArrayList = new ArrayList<>(friend);
-            this.friends.add(friendInArrayList);
+        for (List<String> friendship : friends) {
+            List<String> friendshipInArrayList = new ArrayList<>(friendship);
+            this.friends.add(friendshipInArrayList);
         }
         this.visitors = new ArrayList<>(visitors);
     }
@@ -32,11 +32,12 @@ public class GroupGenerator {
     // 메소드
     public Set<String> getMyFriends() {
         myFriends = new HashSet<>();
-        for (List<String> friendships : friends) {
-            if (friendships.contains(user)) {
-                friendships.removeIf(element -> element.equals(user));
-                String myFriend = String.join("", friendships);
+        for (List<String> friendship : friends) {
+            if (friendship.contains(user)) {
+                friendship.removeIf(element -> element.equals(user));
+                String myFriend = String.join("", friendship);
                 myFriends.add(myFriend);
+                friendship.add(user);
             }
         }
         return myFriends;
@@ -71,6 +72,37 @@ public class GroupGenerator {
         return recommendationScores;
     }
 
+    public void updateRecommendationScores() {
+        for (String notMyFriend : notMyFriends) {
+            for (String myFriend : myFriends) {
+                checkFriendship(notMyFriend, myFriend);
+            }
+            checkVisit(notMyFriend);
+        }
+    }
+
+    public void checkFriendship(String notMyFriend, String myFriend) {
+        Set<String> friendship = new HashSet<>(List.of(notMyFriend, myFriend));
+        for (List<String> validFriendship :friends) {
+            Set<String> validFriendshipInHashSet = new HashSet<>(validFriendship);
+            if (validFriendshipInHashSet.equals(friendship)) {
+                int currentScore = recommendationScores.get(notMyFriend);
+                currentScore += 10;
+                recommendationScores.replace(notMyFriend, currentScore);
+            }
+        }
+    }
+
+    public void checkVisit(String notMyFriend) {
+        for (String visitor : visitors) {
+            if (visitor.equals(notMyFriend)) {
+                int currentScore = recommendationScores.get(notMyFriend);
+                currentScore++;
+                recommendationScores.replace(notMyFriend, currentScore);
+            }
+        }
+    }
+
     public static void main(String[] args) {
         String user = "mrko";
         List<List<String>> friends = List.of(
@@ -88,8 +120,11 @@ public class GroupGenerator {
         Set<String> notMyFriends = groupGenerator.getNotMyFriends();
         Map<String, Integer> recommendationScores = groupGenerator.getRecommendationScores();
 
-        System.out.println(myFriends);
         System.out.println(notMyFriends);
+        System.out.println(myFriends);
+        System.out.println(recommendationScores);
+
+        groupGenerator.updateRecommendationScores();
         System.out.println(recommendationScores);
     }
 }
