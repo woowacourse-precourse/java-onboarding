@@ -25,9 +25,14 @@ public class Problem7 {
             putFriendsMap(firstFriend, secondFriend);
             putFriendsMap(secondFriend, firstFriend);
 
-            putScoreMap(firstFriend);
-            putScoreMap(secondFriend);
         }
+    }
+
+    public static void putScoreMap(String key, int plusValue){
+        if(! scoreMap.containsKey(key)){
+            scoreMap.put(key, 0);
+        }
+        scoreMap.put(key, scoreMap.get(key) + plusValue);
     }
 
     public static void putFriendsMap(String key, String value){
