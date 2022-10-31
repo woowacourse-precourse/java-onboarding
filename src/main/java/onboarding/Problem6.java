@@ -28,14 +28,16 @@ public class Problem6 {
     }
 
     private static void setEmails(List<List<String>> forms, List<String> emails, int prev) {
-        String nickname = forms.get(prev).get(NICKNAME);
+        List<String> prevForm = forms.get(prev);
+        String nickname = prevForm.get(NICKNAME);
         List<String> SubNicknames = getSubNicknames(nickname);
 
         for (int next = prev + 1; next < forms.size(); next++) {
-            String compareNickname = forms.get(next).get(NICKNAME);
+            List<String> nextForm = forms.get(next);
+            String compareNickname = nextForm.get(NICKNAME);
             if (isDeduplication(SubNicknames, compareNickname)) {
-                emails.add(forms.get(prev).get(EMAIL));
-                emails.add(forms.get(next).get(EMAIL));
+                emails.add(prevForm.get(EMAIL));
+                emails.add(nextForm.get(EMAIL));
                 break;
             }
         }
