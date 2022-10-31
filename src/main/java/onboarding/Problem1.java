@@ -11,6 +11,9 @@ class Problem1 {
             return answer;
         }
 
+        int pobiNumber = chooseLeftOrRight(pobi);
+        int crongNumber = chooseLeftOrRight(crong);
+
         return answer;
     }
 
@@ -28,6 +31,18 @@ class Problem1 {
         }
 
         return false;
+    }
+
+    private static int chooseLeftOrRight(List<Integer> person) {
+        int leftPage = person.get(0);
+        int rightPage = person.get(1);
+        List<Integer> leftPageNumberList = makeNumberList(leftPage);
+        List<Integer> rightPageNumberList = makeNumberList(rightPage);
+
+        int leftPageMaxNumber = chooseSumOrMultiply(leftPageNumberList);
+        int rightPageMaxNumber = chooseSumOrMultiply(rightPageNumberList);
+
+        return Math.max(leftPageMaxNumber, rightPageMaxNumber);
     }
 
     private static List<Integer> makeNumberList(int page) {
