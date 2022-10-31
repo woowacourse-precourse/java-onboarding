@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
 public class ScoreService {
     private static final int NEARBY_FRIEND_SCORE = 10;
     private static final int VISITOR_SCORE = 1;
+
     private final UserRepository userRepository;
     private final FriendRepository friendRepository;
     private final VisitorRepository visitorRepository;

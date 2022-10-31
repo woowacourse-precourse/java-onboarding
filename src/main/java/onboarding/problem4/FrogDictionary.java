@@ -4,7 +4,6 @@ public class FrogDictionary {
     private static final char LOWER_RULE = 'a' + 'z';
     private static final char UPPER_RULE = 'A' + 'Z';
 
-
     public String translate(String word) {
         StringBuilder sb = new StringBuilder();
 

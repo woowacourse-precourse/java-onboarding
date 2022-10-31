@@ -6,7 +6,6 @@ import onboarding.problem1.PageGame;
 import java.util.List;
 
 class Problem1 {
-
     private static final int EXCEPTION = -1;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {

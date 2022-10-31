@@ -11,6 +11,7 @@ public class Friends {
     public Friends() {
         this.friends = new HashSet<>();
     }
+
     public Friends(User user) {
         this.friends = new HashSet<>(Set.of(user));
     }

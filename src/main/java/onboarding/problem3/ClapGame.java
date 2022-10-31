@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ClapGame {
-
     private static final List<Integer> CLAP_NUMBER = List.of(3, 6, 9);
 
     public int getClap(int number) {

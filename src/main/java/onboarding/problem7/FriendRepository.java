@@ -9,7 +9,6 @@ public class FriendRepository {
         this.database = new HashMap<>();
     }
 
-
     public boolean isNotSavedUser(User user) {
         return !database.containsKey(user);
     }

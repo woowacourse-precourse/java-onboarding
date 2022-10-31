@@ -3,7 +3,6 @@ package onboarding.problem6;
 import java.util.List;
 
 public class Crew {
-
     private static final int EMAIL = 0;
     private static final int NICKNAME = 1;
 

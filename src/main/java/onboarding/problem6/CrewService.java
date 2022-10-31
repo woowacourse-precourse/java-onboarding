@@ -3,7 +3,6 @@ package onboarding.problem6;
 import java.util.*;
 
 public class CrewService {
-
     private final Map<String, Crew> crewRepository;
     private final Map<String, Integer> usingNicknameRepository;
 

@@ -28,4 +28,5 @@ public class Problem7 {
                 .collect(Collectors.toList());
 
     }
+
 }

@@ -51,8 +51,6 @@ public class UserService {
         friendRepository.findByUser(secondUser).add(firstUser);
     }
 
-
-
     public void saveVisitor(String username, List<String> visitors) {
         User user = userRepository.findByUsername(username);
         List<User> visitor = visitors.stream().map(userRepository::findByUsername).collect(Collectors.toList());
