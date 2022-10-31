@@ -105,7 +105,17 @@ public class Problem7 {
     }
 
     void sortByScore(List<Person> list, Persons persons) {
-        Collecitons.sort(list, (Person a, Person b) -> Integer.compare(persons.getScore(a), persons.getScore(b)));
+        Collections.sort(list, (a, b) -> Integer.compare(persons.getScore(a), persons.getScore(b)));
+    }
+
+    List<String> topFive(List<Person> list, Persons persons) {
+        List<String> topFive = new ArrayList<>();
+        for(Person p : list) {
+            if(persons.getScore(p) == 0) break;
+            topFive.add(p.name);
+            if(topFive.size() >= 5) break;
+        }
+        return topFive;
     }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Persons persons = new Persons(user);
