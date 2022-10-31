@@ -7,7 +7,34 @@ public class Problem2 {
             throw new IllegalArgumentException();
         }
 
-        return answer;
+
+        return getDecoding(cryptogram);
+    }
+    public static String getDecoding(String cryptogram){
+        while(true){
+            StringBuffer stringBuffer= new StringBuffer();
+            for(int i=0; i<cryptogram.length();i++){
+                if(i == 0){
+                    if(cryptogram.charAt(i) != cryptogram.charAt(i+1)){
+                        stringBuffer.append(cryptogram.charAt(i));
+                    }
+
+                }else if (i == cryptogram.length()-1){
+                    if(cryptogram.charAt(i) != cryptogram.charAt(i-1)){
+                        stringBuffer.append(cryptogram.charAt(i));
+                    }
+                }else{
+                    if(cryptogram.charAt(i) != cryptogram.charAt(i+1) && cryptogram.charAt(i) != cryptogram.charAt(i-1) ){
+                        stringBuffer.append(cryptogram.charAt(i));
+                    }
+                }
+            }
+            if(stringBuffer.toString().equals(cryptogram)){
+                break;
+            }
+            cryptogram=stringBuffer.toString();
+        }
+        return cryptogram;
     }
     public static boolean checkException(String cryptogram){
         if(checkLength(cryptogram.length())){
@@ -19,4 +46,5 @@ public class Problem2 {
     public static boolean checkLength(int length){
         return length < 1 || length > 1000;
     }
+
 }
