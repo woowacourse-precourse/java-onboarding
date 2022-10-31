@@ -11,6 +11,20 @@ public class Problem7 {
     }
 
     /**
+     * 사용자와 먼 친구(가까운 친구의 친구) 목록을 반환한다.
+     */
+    private static List<String> findDistantFriends(String user, List<String> closeFriends, List<List<String>> friends) {
+        List<String> distantFriends = new ArrayList<>();
+
+        for (String closeFriend : closeFriends) {
+            distantFriends = findCloseFriends(closeFriend, friends);
+            distantFriends.remove(user);
+        }
+
+        return distantFriends;
+    }
+
+    /**
      * 사용자와 가까운 친구 목록을 반환한다.
      */
     private static List<String> findCloseFriends(String user, List<List<String>> friends) {
