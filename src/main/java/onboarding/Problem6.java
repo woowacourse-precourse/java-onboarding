@@ -15,6 +15,17 @@ public class Problem6 {
             }
         }
 
+        List<String> compareNames = new ArrayList<>();
+
+        for (Map.Entry<String, Integer> entry : duplicatedNames.entrySet()) {
+            String key = entry.getKey();
+            int value = entry.getValue();
+
+            if (value > 1) {
+                compareNames.add(key);
+            }
+        }
+
         return null;
     }
 }
