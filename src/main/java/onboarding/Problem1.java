@@ -22,10 +22,6 @@ class Problem1 {
             return ERROR;
         }
 
-        if (isFirstOrLastPage(pobiLeftPage, pobiRightPage) || isFirstOrLastPage(crongLeftPage, crongRightPage)) {
-            return ERROR;
-        }
-
         int pobiScore = Math.max(calculateScore(pobiLeftPage), calculateScore(pobiRightPage));
         int crongScore = Math.max(calculateScore(crongLeftPage), calculateScore(crongRightPage));
 
@@ -62,9 +58,5 @@ class Problem1 {
 
     private static boolean isNotLeftAndRightPage(int leftPage, int rightPage) {
         return rightPage - leftPage != 1;
-    }
-
-    private static boolean isFirstOrLastPage(int leftPage, int rightPage) {
-        return leftPage == FIRST_PAGE || rightPage == LAST_PAGE;
     }
 }
