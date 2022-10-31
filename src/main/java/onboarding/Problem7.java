@@ -8,6 +8,7 @@ public class Problem7 {
         List<String> findAcquaintance=findAcquaintance(user,findFriends,friends);
         Map<String, Integer> scores= friendScoreCalculator(findAcquaintance);
         visitScoreCalculator(scores, visitors);
+        System.out.println(scores);
         return result(scores,findFriends);
     }
     public static List<String> findAcquaintance(String user,List<String> findFreinds,List<List<String>> friends){
