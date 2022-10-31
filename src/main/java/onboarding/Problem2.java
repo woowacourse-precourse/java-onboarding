@@ -5,7 +5,11 @@ import java.util.Stack;
 public class Problem2 {
 
     public void removeStackDuplication(Stack<Character> stk, int dupCount){
-
+        if(dupCount<2) return;
+        while(dupCount>0){
+            stk.pop();
+            dupCount--;
+        }
     }
 
     public int countDuplication(Stack<Character> stk, int dupCount, char c) {

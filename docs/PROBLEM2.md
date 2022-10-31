@@ -44,8 +44,8 @@
   - ✅ 중복되지 않는 문자 식별 시 Stack에 삽입하기 전에 중복 문자 개수가 2 이상이면 0이 될 때까지 stack에서 pop 처리
   - ✅ 마지막에 중복문자 개수를 확인하고 2이상이면 0이 될 때까지 stack에서 pop처리
 
-- ⬜ removeStackDuplication 메소드 구현
-  - ⬜ 중복문자 개수를 저장하는 dupCount 값이 0이 될 때까지 Stack에서 pop 처리
+- ✅ removeStackDuplication 메소드 구현
+  - ✅ 중복문자 개수를 저장하는 dupCount 값이 0이 될 때까지 Stack에서 pop 처리
 
 ---
 
