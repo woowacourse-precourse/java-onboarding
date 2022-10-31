@@ -6,23 +6,24 @@ import java.util.stream.Collectors;
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         Map<String, Integer> nicknamesMap = new HashMap<>();
-        List<String> nicknamesInForms = getNicknamesInForms(forms);
-        for (String nicknamesInForm : nicknamesInForms) {
-            getSplitNicknames(nicknamesMap, nicknamesInForm);
+
+        List<String> nicknames = getNicknames(forms);
+        for (String nickname : nicknames) {
+            getSplitNicknames(nicknamesMap, nickname);
         }
 
-        List<String> getDuplicateNicknames = checkDuplicateNickname(nicknamesMap);
-
+        List<String> duplicateNicknames = getDuplicateNickname(nicknamesMap);
         List<String> emails = new ArrayList<>();
-        for (String getDuplicateNickname : getDuplicateNicknames) {
-            List<String> emailFromNickname = findEmailsByDuplicateNickname(forms, getDuplicateNickname);
-            emails.addAll(emailFromNickname);
+
+        for (String duplicateNickname : duplicateNicknames) {
+            List<String> emailsFromNickname = findEmailsByDuplicateNickname(forms, duplicateNickname);
+            emails.addAll(emailsFromNickname);
         }
 
         return emails;
     }
 
-    private static List<String> getNicknamesInForms(List<List<String>> forms) {
+    private static List<String> getNicknames(List<List<String>> forms) {
         return forms.stream()
                 .map(form -> form.get(1))
                 .collect(Collectors.toList());
@@ -33,30 +34,30 @@ public class Problem6 {
         int sequence = 0;
         while (sequence < length - 1) {
             String splitNickname = nickname.substring(sequence, sequence + 2);
-            insertNickname(nicknamesMap, splitNickname);
+            addNickname(nicknamesMap, splitNickname);
             sequence++;
         }
     }
 
-    private static void insertNickname(Map<String, Integer> nicknamesMap, String splitNickname) {
+    private static void addNickname(Map<String, Integer> nicknamesMap, String splitNickname) {
         Set<String> splitNicknames = nicknamesMap.keySet();
+        int count = 1;
         if (splitNicknames.contains(splitNickname)) {
-            Integer count = nicknamesMap.get(splitNickname);
-            nicknamesMap.replace(splitNickname, count + 1);
-        } else {
-            nicknamesMap.put(splitNickname, 1);
+            count = nicknamesMap.get(splitNickname) + 1;
         }
+        nicknamesMap.put(splitNickname, count);
     }
 
-    private static List<String> checkDuplicateNickname(Map<String, Integer> nicknamesMap) {
+    private static List<String> getDuplicateNickname(Map<String, Integer> nicknamesMap) {
         return nicknamesMap.keySet().stream()
                 .filter(key -> nicknamesMap.get(key) > 1)
                 .collect(Collectors.toList());
     }
 
-    private static List<String> findEmailsByDuplicateNickname(List<List<String>> forms, String getDuplicateNickname) {
+    private static List<String> findEmailsByDuplicateNickname(List<List<String>> forms,
+                                                              String duplicateNickname) {
         return forms.stream()
-                .filter(form -> form.get(1).contains(getDuplicateNickname))
+                .filter(form -> form.get(1).contains(duplicateNickname))
                 .map(form -> form.get(0))
                 .sorted()
                 .collect(Collectors.toList());
