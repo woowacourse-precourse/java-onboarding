@@ -32,3 +32,14 @@
 4. friends 탐색하면서 user의 친구면 사용자 +10점
 5. visitors 탐색하면서 사용자 +1점
 6. Map 에 이미 친구거나, user 본인이면 요소 삭제
+7. Map을 Value를 통해서 정렬 후 정답을 위한 key를 모아 List 리턴
+
+- Validation
+  - isIdOutOfLength() : 1~30의 길이인지 판별
+    - false 시 해당 값을 넣지 않는다.
+  - isFriendsOutOfLength() : 1~10000의 길이인지 판별
+    - false 시 빈 문자열을 리턴한다.
+  - isVisitorsOutOfLength() : 0~30000의 길이인지 판별
+    - false 시 빈 문자열을 리턴한다.
+  - isLowerCase() : 소문자인지 판별
+    - false 시 해당 값을 넣지 않는다.
