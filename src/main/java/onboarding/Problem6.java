@@ -15,6 +15,17 @@ public class Problem6 {
             savePattern(email, username);
         });
 
+        patternMatchedEmailStorage.keySet().forEach(pattern -> {
+            Set<String> matchedEmails = patternMatchedEmailStorage.get(pattern);
+            if (matchedEmails.size() > 1) {
+                emails.addAll(matchedEmails);
+            }
+        });
+
+        List<String> answer = new ArrayList<>(emails);
+        answer.sort(Comparator.naturalOrder());
+
+        return answer;
     }
 
     private static void savePattern(String email, String username) {
