@@ -3,7 +3,10 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
-    // TODO: define appropriate names for results
+    private static final int EXCEPTION = -1;
+    private static final int DRAW = 0;
+    private static final int POBIWINS = 1;
+    private static final int CRONGWINS = 2;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         Spread pobisPages;
@@ -12,16 +15,16 @@ class Problem1 {
             pobisPages = new Spread(pobi);
             crongsPages = new Spread(crong);
         } catch (IllegalArgumentException e) {
-            return (-1);
+            return (EXCEPTION);
         }
         return result(pobisPages.score(), crongsPages.score());
     }
 
     private static int result(int pobi, int crong) {
         if (pobi == crong) {
-            return (0);
+            return (DRAW);
         }
-        return (pobi > crong) ? 1 : 2;
+        return (pobi > crong) ? POBIWINS : CRONGWINS;
     }
 }
 
