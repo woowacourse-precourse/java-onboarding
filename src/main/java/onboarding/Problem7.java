@@ -17,9 +17,26 @@ public class Problem7 {
             tenPoint.remove(user);
         }
 
-        // tenPoint에 있는 이름에 점수 부여 (친구의 친구: 10점, 방문자: 1점)
-        Map<String,Integer> RelationScore = getAddedScoreBoard(tenPoint, myFriends,10);
+        // 함께하는 친구: 10점, 타임라인 방문자 1점을 계산한 각각의 score를 얻는다.
+        Map<String,Integer> relationScore = getAddedScoreBoard(tenPoint, myFriends,10);
         Map<String,Integer> visitorScore = getAddedScoreBoard(visitors, myFriends, 1);
+
+        // 두 scoreBoard를 합친다.
+        Map<String,Integer> totalScore = new HashMap<>(relationScore);
+        for(String name : visitorScore.keySet()) {
+            if (relationScore.keySet().contains(name)) {
+                relationScore.put(name, relationScore.get(name)+visitorScore.get(name));
+            }else {
+                totalScore.put(name, visitorScore.get(name));
+            }
+        }
+
+        // 역순으로 정렬한다.
+        LinkedHashMap<String, Integer> reverseSortedMap = new LinkedHashMap<>();
+        totalScore.entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .forEachOrdered(x -> reverseSortedMap.put(x.getKey(), x.getValue()));
 
 
         return answer;
