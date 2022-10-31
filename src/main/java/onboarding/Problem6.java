@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.Collections;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -46,5 +47,16 @@ public class Problem6 {
             duplicateNicknameList.remove(distinctElement);
         }
         return duplicateNicknameList.stream().distinct().collect(Collectors.toList());
+    }
+
+    public static List<String> getDuplicateEmailList(Map<String, List<String>> mapForms, List<String> duplicateNicknameList) {
+        List<String> duplicateEmailList = new ArrayList<>();
+        for (Map.Entry<String, List<String>> stringListEntry : mapForms.entrySet()) {
+            if (stringListEntry.getValue().containsAll(duplicateNicknameList)) {
+                duplicateEmailList.add(stringListEntry.getKey());
+            }
+        }
+        Collections.sort(duplicateEmailList);
+        return duplicateEmailList;
     }
 }
