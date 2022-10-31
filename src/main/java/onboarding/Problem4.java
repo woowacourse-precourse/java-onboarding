@@ -2,9 +2,6 @@ package onboarding;
 
 import onboarding.problem4.FrogDictionary;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class Problem4 {
     /*
     기능목록
