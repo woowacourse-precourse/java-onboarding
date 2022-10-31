@@ -25,7 +25,10 @@ public class SentenceTranslator {
         if (isUpperCase(alphabet)) {
             return translateUpperCase(alphabet);
         }
-        return translateLowerCase(alphabet);
+        if (isLowerCase(alphabet)) {
+            return translateLowerCase(alphabet);
+        }
+        throw new IllegalArgumentException();
     }
 
     private char translateLowerCase(char alphabet) {
