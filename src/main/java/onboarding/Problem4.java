@@ -1,5 +1,7 @@
 package onboarding;
 
+import static java.lang.Character.isAlphabetic;
+
 public class Problem4 {
     public static String solution(String sentence) {
         String blank="\\s+";
@@ -17,6 +19,7 @@ public class Problem4 {
         int upperSymmetrySum=(int)'A'+(int)'Z';
         int lowerSymmetrySum=(int)'a'+(int)'z';
         for(int i=0; i<chars.length; i++){
+            if(!isAlphabetic(chars[i]))continue;
             if(Character.isUpperCase(chars[i]))chars[i]=symmetryChar(upperSymmetrySum,chars[i]);
             else chars[i]=symmetryChar(lowerSymmetrySum,chars[i]);
         }
