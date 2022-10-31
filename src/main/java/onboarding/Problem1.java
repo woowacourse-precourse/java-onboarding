@@ -63,4 +63,10 @@ class Problem1 {
     public static int getPageLeftOrRight(List<Integer> gamer, int way) {
         return gamer.get(way);
     }
+
+    public static int plusPageDigit(String stringPage) {
+        return stringPage.chars()
+                .mapToObj(i -> (char)i)
+                .mapToInt(Character::getNumericValue).sum();
+    }
 }
