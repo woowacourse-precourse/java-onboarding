@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Set;
 
 public class Problem7 {
+    public static int acquaintancePoint = 10;
+    public static int timeLinePoint = 1;
     public static Set<String> getCrewList(List<List<String>> friends, List<String> visitors) {
         Set<String> crewSet = new HashSet<>();
         for (List<String> friend : friends) {
