@@ -42,8 +42,10 @@ public class Problem7 {
             }
         }
         scoreMap=sortByValue(scoreMap);
-        System.out.println(scoreMap);
-        List<String> answer = Collections.emptyList();
-        return answer;
+        List<String> keyList = new ArrayList<>(scoreMap.keySet());
+        if(keyList.size()>5){
+            keyList=keyList.subList(0,5);
+        }
+        return keyList;
     }
 }
