@@ -40,4 +40,11 @@ class FriendInfoController {
         return usersFriends;
     }
 
+    private static void addPoint(Map<String, Integer> friendAndScore, String friend, int point) {
+        if (friendAndScore.containsKey(friend)) {
+            friendAndScore.put(friend, friendAndScore.get(friend) + point);
+        }
+        friendAndScore.put(friend, point);
+    }
+
 }
