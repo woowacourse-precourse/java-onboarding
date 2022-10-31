@@ -17,15 +17,19 @@ public class Problem6 {
             checker.registryForm(form);
         }
 
-        ArrayList<String> answer = new ArrayList<>(checker.dupEmailSet);
-        answer.sort(Comparator.naturalOrder());
+        ArrayList<String> emailList = checker.getEmailList();
+        emailList.sort(Comparator.naturalOrder());
 
-        return answer;
+        return emailList;
     }
 
-    private static class DuplicateChecker extends HashMap<String, String> {
-        HashMap<String, String> duplicateCheckMap = new HashMap<>();
-        final HashSet<String> dupEmailSet = new HashSet<>();
+    private static class DuplicateChecker {
+        private final HashMap<String, String> duplicateCheckMap = new HashMap<>();
+        private final HashSet<String> dupEmailSet = new HashSet<>();
+
+        public ArrayList<String> getEmailList() {
+             return new ArrayList<>(this.dupEmailSet);
+        }
 
         public void registryForm(Form form) {
             for (String part: sliceByLength(form.getNickname(), 2)) {
