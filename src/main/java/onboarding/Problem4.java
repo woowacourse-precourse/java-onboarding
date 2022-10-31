@@ -5,4 +5,11 @@ public class Problem4 {
         String answer = "";
         return answer;
     }
+
+    public static char daemunja(char c) {
+        c = (char)('Z' - c + 'A');
+
+        return c;
+    }
+
 }
