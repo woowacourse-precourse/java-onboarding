@@ -4,6 +4,7 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        Map<String, Integer> scores = new HashMap<>();
         List<String> answer = Collections.emptyList();
         return answer;
     }
@@ -19,5 +20,18 @@ public class Problem7 {
             friendsList.get(friend.get(1)).add(friend.get(0));
         }
         return friendsList;
+    }
+
+    public static void addFriendScore(String user, Map<String, Integer> scores, Map<String, List<String>> friendsList) {
+        List<String> userFriends = friendsList.get(user);
+        for (String friend : userFriends) {
+            for (String person : friendsList.get(friend)) {
+                if (person.equals(user))
+                    continue;
+                if (!scores.containsKey(person))
+                    scores.put(person, 0);
+                scores.put(person, scores.get(person) + 10);
+            }
+        }
     }
 }
