@@ -1,11 +1,12 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+        return makeEmailList(forms, checkDuplicated(forms));
     }
 
     private static boolean isDuplicated(String n1, String n2) {
@@ -36,5 +37,18 @@ public class Problem6 {
             }
         }
         return flags;
+    }
+
+    private static List<String> makeEmailList(List<List<String>> forms, boolean[] flags) {
+        List<String> answer = new ArrayList<>();
+        for (int i = 0; i < forms.size(); i++) {
+            if (!flags[i]) {
+                continue;
+            }
+            answer.add(forms.get(i).get(0));
+        }
+
+        Collections.sort(answer);
+        return answer;
     }
 }
