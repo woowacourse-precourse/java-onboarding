@@ -7,6 +7,7 @@ public class Problem7 {
     private static final Map<String, Integer> numbering = new HashMap<>();
     private static final ArrayList<String> numberToNickname = new ArrayList<>();
     private static final ArrayList<ArrayList<Integer>> adjList = new ArrayList<>();
+    private static final Map<String, Integer> scores = new HashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
@@ -14,7 +15,36 @@ public class Problem7 {
 
         initAdjList(friends);
 
+        calFriendsScore();
+
         return answer;
+    }
+
+    private static void calFriendsScore() {
+        ArrayList<Boolean> visited = new ArrayList<>();
+        for (int i = 0; i < numbering.size(); i++) {
+            visited.add(false);
+        }
+        visited.set(0, true);
+        dfs(0, 2, visited);
+    }
+
+    private static void dfs(int vertex, int cntLeft, List<Boolean> visited) {
+        if (cntLeft == 0) {
+            scores.put(numberToNickname.get(vertex), 10);
+            return;
+        } else if (cntLeft == 1) {
+            friends.add(numberToNickname.get(vertex));
+        }
+
+        for (int adjVertex : adjList.get(vertex)) {
+            if (visited.get(adjVertex)) {
+                continue;
+            }
+
+            visited.set(adjVertex, true);
+            dfs(adjVertex, cntLeft - 1, visited);
+        }
     }
 
     private static void doNumbering(String user, List<List<String>> edges) {
