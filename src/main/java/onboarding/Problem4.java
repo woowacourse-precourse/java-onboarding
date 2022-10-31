@@ -6,7 +6,11 @@ public class Problem4 {
         for (int i = 0 ; i < ch.length ; i++){
             ch[i] = applyFrog(ch[i]);
         }
-        return "";
+        StringBuilder sb = new StringBuilder();
+        for (char c : ch) {
+            sb.append(c);
+        }
+        return sb.toString();
     }
     public static char applyFrog(char ch){
         if (ch>='a' && ch<='z') return (char) ('a' + Math.abs(ch-'z'));
