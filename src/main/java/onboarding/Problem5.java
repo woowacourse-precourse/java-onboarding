@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -13,7 +14,6 @@ public class Problem5 {
 }
 
 class Withdrawal {
-    // TODO List.of 메소드 사용해보기
     private List<Integer> money_array = new ArrayList<>(9);
 
     private void setMoneyArray() {
@@ -29,16 +29,8 @@ class Withdrawal {
         money_array.add(1);
     }
 
-    private List<Integer> makeAnswerArray() {
-        List<Integer> answer_array = new ArrayList<>(9);
-        for (int i=0; i<9; i++) {
-            answer_array.add(0);
-        }
-        return answer_array;
-    }
-
     List<Integer> getAnswer(int money) {
-        List<Integer> answer = makeAnswerArray();
+        List<Integer> answer = Arrays.asList(0,0,0,0,0,0,0,0,0);
         setMoneyArray();
         for (int i=0; i<9; i++) {
             int m = money_array.get(i);
