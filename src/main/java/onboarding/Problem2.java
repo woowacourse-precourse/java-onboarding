@@ -25,11 +25,7 @@ public class Problem2 {
     }
 
     private static void encryptCryptogram(String alphabet){
-        if(deletedCryptogram.isEmpty()) {
-            deletedCryptogram.push(alphabet);
-            return;
-        }
-        if(deletedCryptogram.peek().equals(alphabet)) {
+        if(!deletedCryptogram.isEmpty() &&deletedCryptogram.peek().equals(alphabet)) {
             deletedCryptogram.pop();
             return;
         }
