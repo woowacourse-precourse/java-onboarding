@@ -2,7 +2,11 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        return null;
+        StringBuilder answer = new StringBuilder();
+        for (int i = 0 ; i < word.length() ; i++){
+            answer.append(convertCharcter(word.charAt(i)));
+        }
+        return answer.toString();
     }
     public static char convertCharcter(Character ch){
         int sumUpper = 'A' + 'Z';
