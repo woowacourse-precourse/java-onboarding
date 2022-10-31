@@ -14,12 +14,12 @@ public class Problem3 {
         return count;
     }
     static int Check_num(int num){
-        int count=0;
+        int count = 0;
         if(num < 0 || num > 10000){
             return -1;
         }
 
-        for(int i=1;i<=num;i++){
+        for(int i = 1 ; i <= num ; i++){
             count += Return_Count(i);
         }
         return count;

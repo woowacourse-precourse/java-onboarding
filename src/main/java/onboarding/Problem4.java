@@ -11,14 +11,12 @@ public class Problem4 {
             temp = (int)word - 'A';
             word = (char)((int)'Z' - temp);
         }
-//        System.out.println(word);
         return word;
     }
     public static String Reverse_Frog(String word){
         String answer = "";
         for(int i = 0 ; i < word.length(); i++){
             answer += Reverse(word.charAt(i));
-//            System.out.println(answer);
         }
         return answer;
     }

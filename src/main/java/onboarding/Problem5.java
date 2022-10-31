@@ -13,7 +13,6 @@ public class Problem5 {
             num.add(money / unit[i]);
             money = money % unit[i];
         }
-
         return num;
     }
     public static List<Integer> solution(int money) {

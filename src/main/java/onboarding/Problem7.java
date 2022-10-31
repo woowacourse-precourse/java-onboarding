@@ -16,11 +16,13 @@ public class Problem7 {
 
     static HashMap<String, ArrayList<String>> Find_Friend(List<List<String>> friends){
         HashMap<String,ArrayList<String>> Friend = new HashMap<>();
+        List<String> people;
         String name1 = null;
         String name2 = null;
         for(int i = 0 ;i <friends.size() ; i++){
-            name1 = friends.get(i).get(0);
-            name2 = friends.get(i).get(1);
+            people = friends.get(i);
+            name1 = people.get(0);
+            name2 = people.get(1);
 
             Friend = Connect_Friend(Friend,name1,name2);
         }
@@ -29,8 +31,9 @@ public class Problem7 {
 
     static HashMap<String,Integer> Score_Friend(String user, HashMap<String,ArrayList<String>> Friend){
         HashMap<String,Integer> friend_score = new HashMap<String,Integer>();
-        ArrayList<String> friend_friend = new ArrayList<String>();
+        ArrayList<String> friend_friend;
         ArrayList<String> user_friend = Friend.get(user);
+
         for(int i = 0; i < user_friend.size() ; i++){
             friend_friend = Friend.get(user_friend.get(i));
             for(int j = 0 ; j < friend_friend.size() ; j++){
