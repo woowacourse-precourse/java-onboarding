@@ -7,10 +7,47 @@ public class Problem7 {
     static List<String> acquaintance = new ArrayList<>();
     static List<String> newVisitors = new ArrayList<>();
     static HashMap<String, Integer> recommendScore = new HashMap<>();
+    static List<String> sortedID = new ArrayList<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+        executeAll(user, friends, visitors);
+        sortRecommendID();
+        answer = sortedID;
+
         return answer;
+    }
+
+    public static void executeAll(String user, List<List<String>> friends, List<String> visitors) {
+        checkAllRelationInfo(friends, user);
+        addAcquaintanceID(friends, user);
+        addNewVisitors(visitors);
+        resetScore();
+        calculateScore();
+    }
+
+    public static void sortRecommendID() {
+        List<Map.Entry<String, Integer>> idList = new ArrayList<>(recommendScore.entrySet());
+        // 내림차순 정렬
+        Collections.sort(idList, new Comparator<>() {
+            public int compare(Map.Entry<String, Integer> obj1, Map.Entry<String, Integer> obj2) {
+                return obj2.getValue().compareTo(obj1.getValue());
+            }
+        });
+
+        for (Map.Entry<String, Integer> entry : idList) {
+            sortedID.add(entry.getKey());
+            if (isMoreThanFive()) {
+                break;
+            }
+        }
+    }
+
+    public static boolean isMoreThanFive() {
+        if (sortedID.size() == 5) {
+            return true;
+        }
+        return false;
     }
 
     public static void checkAllRelationInfo(List<List<String>> friends, String user) {
@@ -60,6 +97,15 @@ public class Problem7 {
             return true;
         }
         return false;
+    }
+
+    public static void addNewVisitors(List<String> visitors) {
+        for (Iterator<String> iter = visitors.iterator(); iter.hasNext(); ) {
+            String visitor = iter.next();
+            if (isNewVisitor(visitor)) {
+                newVisitors.add(visitor);
+            }
+        }
     }
 
     public static boolean isNewVisitor(String visitor) {
