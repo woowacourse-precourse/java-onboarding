@@ -3,9 +3,39 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+
+    /**
+     * 1. 에러체크
+     * 2. 자릿수 별 합과 곱중 큰 값을 구하는 함수
+     * 3. 요구사항의 연산을 수행하는 함수
+     * 4. 기능 요구사항의 연산 결과를 리턴하는 함수
+     */
+    private static final int PAGE_MAX_RANGE = 400;
+    private static final int PAGE_MIN_RANGE = 1;
+
+    /**
+     * 4. 기능 요구사항의 연산 결과를 리턴 함수
+     * @param pobi
+     * @param crong
+     * @return 기능 요구사항의 연산 결과를 리턴
+     */
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        if (validation(pobi) || validation(crong)) {
+            return -1;
+        }
+
+        int pobiScore = calMaxScore(pobi);
+        int crongScore = calMaxScore(crong);
+
+        if (pobiScore > crongScore) {
+            return 1;
+        } else if (pobiScore < crongScore) {
+            return 2;
+        } else {
+            return 0;
+        }
+    }
+
     /**
      * 1-3 에러체크
      * @param list
