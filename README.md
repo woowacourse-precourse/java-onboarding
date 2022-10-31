@@ -75,5 +75,10 @@ BUILD SUCCESSFUL in 0s
   2.4 두 페이지가 연속되지 않을 경우  
 3. pobi와 crong의 최댓값 구하기  
   3.1 pobi와 crong 각각의 페이지 각 자릿수 합과 곱중 최댓값 저장  
-4. pobi와 crong의 최댓값 비교 후 결과(answer) 반환  4. pobi와 crong의 최댓값 비교 후 결과(answer) 반환  4. pobi와 crong의 최댓값 비교 후 결과(answer) 반환  4. pobi와 crong의 최댓값 비교 후 결과(answer) 반환  
-   
+4. pobi와 crong의 최댓값 비교 후 결과(answer) 반환      
+**문제 2**  
+1. 입력값 StringBuilder로 변환  
+2. 연속하는 중복 문자 삭제 작업  
+  2.1 이전 글자를 기억하여 다음 글자 중복 시 삭제 작업  
+  2.2 모든 글자를 확인하거나 모든 글자가 삭제될 때까지 수행  
+3. StringBuilder를 String으로 변환하여 결괏값 리턴       
