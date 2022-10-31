@@ -28,8 +28,7 @@ public class FriendRecommender {
      */
     public List<String> recommend() {
         Map<String, Friend> candidateMap = introducer.introduce();
-        // Create candidate list sorted by score(name if same)
-        // Create new friend list(maximum 5) and return
-        return new ArrayList<>();
+        FriendSelector selector = new FriendSelector(candidateMap);
+        return selector.select();
     }
 }
