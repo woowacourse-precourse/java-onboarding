@@ -46,7 +46,7 @@ public class Problem6 {
         List<Integer> num = new ArrayList<>();
         for(int i = 1;i<=list.size();i=i+2){
             if((list.get(i) - list.get(i-1)) == 1) {
-                System.out.println((list.get(i) - list.get(i-1)));
+
                 num.add(i/2);
             }
 
@@ -55,9 +55,7 @@ public class Problem6 {
         for(int i = 0;i<num.size();i++){
             result1.add(map.get(resultname.get(i)));
         }
-        for(String email : result1){
-            System.out.println(email);
-        }
+
         String[] re = new String[result1.size()];
         for(int i =0;i<result1.size();i++){
             re[i] = result1.get(i);
