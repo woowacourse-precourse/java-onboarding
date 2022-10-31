@@ -26,6 +26,8 @@ public class Problem6 {
                 check2word += strtemp.charAt(j);
                 check2word += strtemp.charAt(j+1);
                 for(int k = 0; k<forms.size(); k++){
+                    if(k == i)
+                        continue;
                     if(forms.get(k).get(1).contains(check2word)){
                         strlist.add(forms.get(k).get(0));
                     }
@@ -48,6 +50,8 @@ public class Problem6 {
                 check2word += strtemp.charAt(j+1);
                 check2word += strtemp.charAt(j);
                 for(int k = 0; k<forms.size(); k++){
+                    if(k == i)
+                        continue;
                     if(forms.get(k).get(1).contains(check2word)){
                         strlist.add(forms.get(k).get(0));
                     }
