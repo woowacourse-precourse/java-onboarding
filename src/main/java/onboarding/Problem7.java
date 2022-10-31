@@ -25,10 +25,12 @@ public class Problem7 {
     // 친구관계를 추가하는 함수
     public static void addFriends(HashMap<String, ArrayList<String>> friendGraph, List<String> friend) {
         for (int i = 0; i < 2; i++) {
-            if (friendGraph.keySet().contains(friend.get(i%2))) {
-                friendGraph.get(friend.get(i%2)).add(friend.get((i+1) % 2));
+            if (!friendGraph.keySet().contains(friend.get(i%2))) {
+                ArrayList<String> friendList = new ArrayList<String>();
+                friendGraph.put(friend.get(i%2), friendList);
             }
-        }
+            friendGraph.get(friend.get(i%2)).add(friend.get((i+1) % 2));
+            }
     }
 
     // user의 추천친구에 대한 정보를 저장할 ArrayList를 초기화하는 함수
