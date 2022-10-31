@@ -38,7 +38,7 @@ class Problem1 {
         Integer leftPage;
         Integer rightPage;
 
-        if (list.size() != 2) {
+        if (list == null || list.size() != 2) {
             return true;
         }
 
