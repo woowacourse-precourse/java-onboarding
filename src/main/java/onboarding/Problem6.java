@@ -29,7 +29,6 @@ public class Problem6 {
             }
             emailToSplitNicknames.put(form.get(EMAIL), splitNicknames);
         }
-
         return emailToSplitNicknames;
     }
 

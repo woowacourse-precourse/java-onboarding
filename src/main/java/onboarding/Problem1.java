@@ -29,10 +29,10 @@ class Problem1 {
             return EXCEPTION_CASE;
         }
 
-        int leftPageMaxValue = calculateEachPagesMaxValue(leftPage);
-        int rightPageMaxValue = calculateEachPagesMaxValue(rightPage);
+       int leftPageMaxValue = calculateEachPagesMaxValue(leftPage);
+       int rightPageMaxValue = calculateEachPagesMaxValue(rightPage);
 
-        return Math.max(leftPageMaxValue, rightPageMaxValue);
+       return Math.max(leftPageMaxValue, rightPageMaxValue);
     }
 
     private static boolean isExceptionCase(Integer leftPage, Integer rightPage) {
@@ -43,7 +43,6 @@ class Problem1 {
         if (leftPage == FIRST_PAGE && rightPage == FIRST_PAGE + 1) {
             return true;
         }
-
         return leftPage == LAST_PAGE - 1 && rightPage == LAST_PAGE;
     }
 
