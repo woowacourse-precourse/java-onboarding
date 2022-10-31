@@ -14,7 +14,17 @@ public class PageTest {
 		BookPage bookPage = new BookPage(input);
 	    //then
 		assertThat(bookPage.isOdd(input.get(0))).isTrue();
-		assertThat(bookPage.isEven(input.get(1))).isTrue();
+	}
+
+	@Test
+	public void 점수_구하기_테스트() {
+	    //given
+		List<Integer> input = Arrays.asList(31, 32);
+		BookPage bookPage = new BookPage(input);
+	    //when
+		int score = bookPage.getScore();
+	    //then
+		assertThat(6).isEqualTo(score);
 	}
 
 }

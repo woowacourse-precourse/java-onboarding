@@ -22,5 +22,8 @@ public class BookPage {
 	boolean isOdd(int left) {
 		return left % 2 != 0;
 	}
-	
+
+	public int getScore() {
+		return Math.max(left.getScore(), right.getScore());
+	}
 }
