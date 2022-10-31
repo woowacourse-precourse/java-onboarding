@@ -7,17 +7,15 @@ public class Problem7 {
     public static int countAcquaintance(List<String> userRelation1, List<String> userRelation2) {
         int idx1 = 0, idx2 = 0;
         int count = 0;
-        while(idx1 < userRelation1.size() && idx2 < userRelation2.size()){
+        while (idx1 < userRelation1.size() && idx2 < userRelation2.size()) {
             String str1 = userRelation1.get(idx1);
             String str2 = userRelation1.get(idx2);
             int result = str1.compareTo(str2);
-            if(result < 0){
+            if (result < 0) {
                 idx1++;
-            }
-            else if(result > 0){
+            } else if (result > 0) {
                 idx2++;
-            }
-            else{
+            } else {
                 count++;
                 idx1++;
                 idx2++;
@@ -27,7 +25,7 @@ public class Problem7 {
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
         HashMap<String, List<String>> relation = new HashMap<>();
         for (List<String> list : friends) {
             String f1 = list.get(0);
@@ -60,6 +58,15 @@ public class Problem7 {
             score.put(key, score.get(key) + 10 * count);
         }
 
+        for (String key : visitors) {
+            if (userRelation.contains(key)) {
+                continue;
+            }
+            if (!score.containsKey(key)) {
+                score.put(key, 0);
+            }
+            score.put(key, score.get(key) + 1);
+        }
 
         return answer;
     }
