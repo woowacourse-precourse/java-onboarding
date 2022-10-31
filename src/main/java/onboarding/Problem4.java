@@ -1,6 +1,5 @@
 package onboarding;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,16 +13,11 @@ public class Problem4 {
     }
 
     private static String getWordByStrangeDictionaryLogic(String word) {
-        List<Character> result = new ArrayList<>();
-        for (int i = 0; i < word.length(); i++) {
-            int ascii = word.toCharArray()[i];
-
-            if (Character.isAlphabetic(ascii)) {
-                ascii = changeAsciiValue(ascii);
-            }
-            result.add((char) ascii);
-        }
-        return joiningChars(result);
+        List<Character> chars = word.chars()
+                .mapToObj(c -> (char) c)
+                .collect(Collectors.toList());
+        chars.replaceAll(c -> Character.isAlphabetic(c) ? (char) changeAsciiValue(c) : c);
+        return joiningChars(chars);
     }
 
     private static int changeAsciiValue(int ascii) {
