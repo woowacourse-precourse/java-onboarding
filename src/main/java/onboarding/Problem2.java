@@ -22,6 +22,17 @@ public class Problem2 {
         return stack;
     }
 
+    public static String convertString(Stack<Character> stack) {
+        String result = "";
+
+        for (Character eachChar : stack) {
+            result += eachChar;
+        }
+
+        return result;
+    }
+
+
     public static String solution(String cryptogram) {
         String answer = "answer";
         return answer;
