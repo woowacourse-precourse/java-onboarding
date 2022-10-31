@@ -16,10 +16,11 @@ public class Problem7 {
 
 
     private static List<String> getRecomendedFriends(String user, List<List<String>> friends, List<String> visitors){
+        final int REQUIRED_NUMBER_OF_PEOPLE = 5;
         settingForStaticValue(user,friends);
         increaseFriendWeightByRelationship(List.copyOf(oldFriend));
         increaseFriendWeightByVisted(visitors);
-        return getMostSuitableFriend(5);
+        return getMostSuitableFriend(REQUIRED_NUMBER_OF_PEOPLE);
     }
     private static void settingForStaticValue(String user, List<List<String>> friends){
         friendData=friends;
