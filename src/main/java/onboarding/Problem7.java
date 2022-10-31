@@ -8,7 +8,7 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
 
         List<String> friendOfFriend = findFriendOfFriend(user, friends);
-        answer = friendOfFriend;
+        Map<String, Integer> scoreRecommendFriend = getScoreRecommendFriend(friendOfFriend, visitors);
 
         return answer;
     }
@@ -62,5 +62,20 @@ public class Problem7 {
         }
 
         return resultAdjacencyList;
+    }
+
+    private static Map<String, Integer> getScoreRecommendFriend(List<String> friendOfFriend, List<String> visitors) {
+        Map<String, Integer> resultScoreRecommendFriend = new TreeMap<>();
+
+        friendOfFriend.forEach(friend -> {
+            resultScoreRecommendFriend.put(friend, 10);
+        });
+
+        visitors.forEach(visitor -> {
+           resultScoreRecommendFriend.putIfAbsent(visitor, 0);
+           resultScoreRecommendFriend.put(visitor, resultScoreRecommendFriend.get(visitor) + 1);
+        });
+
+        return resultScoreRecommendFriend;
     }
 }
