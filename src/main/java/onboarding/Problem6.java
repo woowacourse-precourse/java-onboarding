@@ -40,17 +40,25 @@ public class Problem6 {
 		String extraNickname) {
 		for (String splitString : splitStringList) {
 			// 중복 여부 확인
-			if (isDuplicate(extraNickname, splitString))
-				// 중복된 닉네임 리스트에 추가
-				duplicateNicknameList.add(extraNickname);
+			addDuplicateNicknameList(duplicateNicknameList, extraNickname, splitString);
 		}
+	}
+
+	private static void addDuplicateNicknameList(List<String> duplicateNicknameList, String extraNickname, String splitString) {
+		if (isDuplicate(extraNickname, splitString))
+			// 중복된 닉네임 리스트에 추가
+			duplicateNicknameList.add(extraNickname);
 	}
 
 	private static void addDuplicateEmail(List<List<String>> forms, List<String> answer, String nickname) {
 		for (List<String> list : forms) {
-			if (nickname.equals(list.get(1))) {
-				answer.add(list.get(0));
-			}
+			addEmail(answer, nickname, list);
+		}
+	}
+
+	private static void addEmail(List<String> answer, String nickname, List<String> list) {
+		if (nickname.equals(list.get(1))) {
+			answer.add(list.get(0));
 		}
 	}
 
@@ -71,11 +79,9 @@ public class Problem6 {
 	private static List<String> makeSplitStringList(String s) {
 		List<String> splitStringList = new ArrayList<>();
 
-		for (int i = 0; i <= s.length(); i++) {
-			for (int j = i + 2; j <= s.length(); j++) {
-				String subStr = s.substring(i, j);
-				splitStringList.add(subStr);
-			}
+		for (int i = 0; i < s.length() - 1; i++) {
+			String subStr = s.substring(i, i + 2);
+			splitStringList.add(subStr);
 		}
 		return splitStringList;
 	}
@@ -87,5 +93,6 @@ public class Problem6 {
 	static List<String> removeListDuplication(List<String> list) {
 		return list.stream().distinct().collect(Collectors.toList());
 	}
+
 
 }
