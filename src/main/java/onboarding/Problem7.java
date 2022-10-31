@@ -20,6 +20,13 @@ public class Problem7 {
         return answer;
     }
 
+    public static void increaseVisitorPoint(List<String> visitors, List<String> userKnowFriend){
+        for(String visitorName: visitors){
+            if(!userKnowFriend.contains(visitorName))
+                increasePoint(visitorName, visitPoint);
+        }
+    }
+
     public static void increaseFriendShipPoint(List<List<String>> friends, List<String> userKnowFriends){
         for(List<String> friendship: friends){
             String recommendationFriend = findFriendKnowFriend(friendship, userKnowFriends);
