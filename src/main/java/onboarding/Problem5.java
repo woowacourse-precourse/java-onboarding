@@ -16,7 +16,6 @@ public class Problem5 {
             answer.add(exchangeCount[i]);
         }
 
-
         return answer;
     }
 
