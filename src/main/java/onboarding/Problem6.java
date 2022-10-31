@@ -15,4 +15,13 @@ public class Problem6 {
 
         return matcher.matches();
     }
+
+    private static void isValidEmail(String email) {
+
+        if (!getRegexMatcherResult("^[a-zA-Z0-9]{1,9}@email.com$", email)) {
+            throw new Error("이메일 형식이 올바르지 않습니다.");
+        }
+
+    }
+
 }
