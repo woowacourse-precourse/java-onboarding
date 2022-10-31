@@ -19,3 +19,34 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+---
+
+## Tree Frog
+
+
+### 설명 요약
+
+    - word가 매개변수로 주어질 때, 
+      주어진 각 알파벳의 자리를 알파벳 순서 거꾸로 적용 
+
+<br/>
+
+### 기능 설계
+
+    - solution
+        word 첫 글자부터 reverse 적용     
+
+    - reverse
+        대문자, 소문자 나눠서 아스키 코드를 이용한 reverse 적용
+
+    - reverseUpperCase
+        'A' 와 alpha 차이만큼
+        'Z' 에 그 차이만큼 적용
+
+    - reverseLowerCase
+        'a' 와 alpha 차이만큼
+        'z' 에 그 차이만큼 적용
+
+    - charToString
+        char 을 String 으로 타입변환
