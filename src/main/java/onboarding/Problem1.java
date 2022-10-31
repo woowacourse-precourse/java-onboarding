@@ -12,4 +12,9 @@ class Problem1 {
     private static boolean isValidPage(int startPage, int endPage) {
         return startPage >= 1 && endPage <= 400;
     }
+
+    //페이지가 연속된 페이지인지 체크
+    private static boolean isConsecutivePages(int startPage, int endPage) {
+        return startPage + 1 == endPage;
+    }
 }
