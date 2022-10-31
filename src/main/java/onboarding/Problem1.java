@@ -6,7 +6,13 @@ import java.util.List;
 import java.util.stream.Stream;
 
 class Problem1 {
+    /**
+     * 숫자의 각 자릿수 합과 곱 중 최댓값을 반환하는 함수
+     * @param number
+     * @return the maximum value of the sum and product of each digit of a number
+     */
     public static int getMaxValueInHapGop(int number){
+
         int[] arrNum = Stream.of(String.valueOf(number).split("")).mapToInt(Integer::parseInt).toArray();
 
         int hap = Arrays.stream(arrNum).reduce(0, (int a, int b) -> a + b);
@@ -14,6 +20,14 @@ class Problem1 {
         return Math.max(hap, gop);
     }
 
+    /**
+     * 두 개의 연속된 숫자가 들어있는 배열 2개가 입력으로 주어짐.
+     * 해당 조건을 만족하지 않는 경우 -1 반환
+     * 이후에는 조건에 맞는 결과 반환
+     * @param pobi
+     * @param crong
+     * @return 2(crong wins), 1(pobi wins), 0(draw), -1(exception)
+     */
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
@@ -37,11 +51,8 @@ class Problem1 {
             else if (pobiMax < crongMax) {
                 answer = 2;
             }
-            else if (pobiMax == crongMax) {
-                answer = 0;
-            }
             else {
-                answer = -1;
+                answer = 0;
             }
         }
         System.out.println(answer);
