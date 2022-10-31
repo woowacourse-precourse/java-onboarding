@@ -34,10 +34,10 @@ public class Problem2 {
     }
 
     private static void validateCryptogram(String cryptogram) {
-        if(!validateCryptogramLengthFail(cryptogram)) {
+        if(validateCryptogramLengthFail(cryptogram)) {
             throw new IllegalArgumentException(EXCEPTION_MESSAGE_PREFIX + CRYPTOGRAM_LENGTH_EXCEPTION_MESSAGE);
         }
-        if(!validateCryptogramTypeFail(cryptogram)) {
+        if(validateCryptogramTypeFail(cryptogram)) {
             throw new IllegalArgumentException(EXCEPTION_MESSAGE_PREFIX + CRYPTOGRAM_TYPE_EXCEPTION_MESSAGE);
         }
     }
