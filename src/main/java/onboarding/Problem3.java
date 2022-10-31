@@ -4,27 +4,32 @@ import java.util.stream.IntStream;
 
 public class Problem3 {
 
+    private static final int ZERO = 0;
     private static final int THREE = 3;
-    private static final int TEN = 10;
+    private static final int DECIMAL = 10;
 
     public static int solution(int number) {
+        return getTotalCount(number);
+    }
+
+    private static int getTotalCount(int number) {
         return IntStream.rangeClosed(1, number)
-            .reduce(0,(total, value) -> total + getCount(value));
+            .reduce(ZERO, (total, value) -> total + getCount(value));
     }
 
     private static int getCount(int number) {
-        int count = 0;
-        while (number > 0) {
-            int placeNumber = number % TEN;
-            if (isThreeSixNine(placeNumber)) {
+        int count = ZERO;
+        while (number > ZERO) {
+            int placeNumber = number % DECIMAL;
+            if (isDivisibleByThree(placeNumber)) {
                 count++;
             }
-            number /= TEN;
+            number /= DECIMAL;
         }
         return count;
     }
 
-    private static boolean isThreeSixNine(int placeNumber) {
-        return placeNumber % THREE == 0 && placeNumber != 0;
+    private static boolean isDivisibleByThree(int placeNumber) {
+        return placeNumber % THREE == ZERO && placeNumber != ZERO;
     }
 }
