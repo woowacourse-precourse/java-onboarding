@@ -1,9 +1,8 @@
 package onboarding.problem7;
 
 import java.util.*;
-import java.util.stream.Collectors;
 public class Friend {
-    private static HashMap<String, Integer> weight = new HashMap<>();
+    private static final HashMap<String, Integer> weight = new HashMap<>();
 
     public static void initID(List<String> people) {
         for (int i = 0; i < people.size(); i++) {

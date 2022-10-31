@@ -1,7 +1,7 @@
 package onboarding.problem1;
 
 public class Page {
-    private int content;
+    private final int content;
     Page(int content) {
         this.content = content;
     }

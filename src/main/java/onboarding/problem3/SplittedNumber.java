@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SplittedNumber {
-    private List<Integer> splittedNumber;
+    private final List<Integer> splittedNumber;
 
     SplittedNumber(int number) {
         splittedNumber = splitNumToList(number);
     }
 
-    List<Integer> splitNumToList(int number) {
+    public List<Integer> splitNumToList(int number) {
         List<Integer> splitted = new ArrayList<>();
         while (number != 0) {
             splitted.add(0, number % 10);
@@ -18,7 +18,7 @@ public class SplittedNumber {
         }
         return splitted;
     }
-    int getCountOfThree() {
+    public int getCountOfThree() {
         return (int)splittedNumber.stream()
                 .filter(digit -> digit % 3 == 0)
                 .filter(digit -> digit != 0)

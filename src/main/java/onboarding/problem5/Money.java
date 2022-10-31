@@ -19,7 +19,6 @@ public class Money {
     }
 
     public static int getSurplus(int money, int baseMoney) {
-        int updatedMoney = money % baseMoney;
-        return updatedMoney;
+        return money % baseMoney;
     }
 }

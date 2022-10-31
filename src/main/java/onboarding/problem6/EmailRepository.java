@@ -12,15 +12,15 @@ public class EmailRepository {
         repository = new ArrayList<>();
     }
 
-    void addEmail(List<String> email) {
+    public void addEmail(List<String> email) {
         repository.addAll(email);
     }
 
-    void sort() {
+    public void sort() {
         Collections.sort(repository);
     }
 
-    List<String> getDistinctEmails() {
+    public List<String> getDistinctEmails() {
         return Util.removeOverlap(repository);
     }
 

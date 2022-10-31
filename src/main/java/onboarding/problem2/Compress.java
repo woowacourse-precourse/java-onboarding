@@ -14,16 +14,15 @@ public class Compress {
 
     public static String compress(String cryptogram) {
         String newCryptogram = SENTINEL + cryptogram + SENTINEL;
-        String result = "";
+        StringBuilder result = new StringBuilder();
         for (int i = 1; i < newCryptogram.length() - 1; i++) {
-            result += getUniqueVal(newCryptogram, i);
+            result.append(getValIfUnique(newCryptogram, i));
         }
-        return result;
+        return result.toString();
     }
-    public static String getUniqueVal(String cryptogram, int index) {
+    public static String getValIfUnique(String cryptogram, int index) {
         if (isLeftRightCharDiff(cryptogram, index)) {
-            String middleVal = cryptogram.substring(index, index+1);
-            return middleVal;
+            return cryptogram.substring(index, index+1);
         }
         return "";
     }
@@ -31,10 +30,7 @@ public class Compress {
         int leftVal = cryptogram.charAt(index - 1);
         int middleVal = cryptogram.charAt(index);
         int rightVal = cryptogram.charAt(index + 1);
-        if (leftVal != middleVal && middleVal != rightVal) {
-            return true;
-        }
-        return false;
+        return leftVal != middleVal && middleVal != rightVal;
     }
 
 }

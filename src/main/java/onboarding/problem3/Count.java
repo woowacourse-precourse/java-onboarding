@@ -5,9 +5,8 @@ public class Count {
         int result = 0;
         int forIter = number.getAsInt();
         while(forIter != 0) {
-            SplittedNumber iterNumber = new SplittedNumber(forIter);
+            SplittedNumber iterNumber = new SplittedNumber(forIter--);
             result += iterNumber.getCountOfThree();
-            forIter--;
         }
         return result;
     }

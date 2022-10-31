@@ -6,8 +6,7 @@ import java.util.Map.Entry;
 public class Util {
     public static List<String> removeOverlap(List<String> target) {
         HashSet<String> removedSet = new HashSet<>(target);
-        ArrayList<String> removedList = new ArrayList<>(removedSet);
-        return removedList;
+        return new ArrayList<>(removedSet);
     }
     public static List<Map.Entry<String, Integer>> sameEntryValueSort(List<Map.Entry<String, Integer>> entryList) {
         List<Map.Entry<String, Integer>> newEntryList = new LinkedList<>();

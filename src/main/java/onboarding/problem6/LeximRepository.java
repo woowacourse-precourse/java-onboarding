@@ -17,7 +17,7 @@ public class LeximRepository {
         return Collections.frequency(repository, lexim);
     }
 
-    boolean isNameExistsInRepo(String name) {
+    public boolean isNameExistsInRepo(String name) {
         for (int j = 0; j < name.length()-1; j++) {
             if (countLexim(name.substring(j, j+2)) >= 2) {
                 return true;

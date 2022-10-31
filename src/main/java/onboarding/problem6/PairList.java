@@ -10,7 +10,7 @@ public class PairList {
         forms.forEach(pair -> content.add(new Pair(pair)));
     }
 
-    List<String> splitIntoLexims(LeximRepository leximRepo) {
+    public List<String> splitIntoLexims() {
         List<String> splittedLexims = new ArrayList<>();
         content.forEach(pair -> {
             String personName = pair.getName();
@@ -19,7 +19,7 @@ public class PairList {
         });
         return splittedLexims;
     }
-    List<String> getRestrictedEmails(LeximRepository leximRepo) {
+    public List<String> getRestrictedEmails(LeximRepository leximRepo) {
         List<String> restrictedEmails = new ArrayList<>();
         content.forEach(pair -> {
             String personEmail = pair.getEmail();
@@ -28,6 +28,7 @@ public class PairList {
                 restrictedEmails.add(personEmail);
             }
         });
+
         return restrictedEmails;
     }
 }

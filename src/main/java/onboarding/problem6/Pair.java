@@ -8,11 +8,11 @@ public class Pair {
         this.content = content;
     }
 
-    String getName() {
+     public String getName() {
         return content.get(1);
     }
 
-    String getEmail() {
+    public String getEmail() {
         return content.get(0);
     }
 }

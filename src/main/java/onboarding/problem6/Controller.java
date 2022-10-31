@@ -8,7 +8,7 @@ public class Controller {
             LeximRepository leximRepo = new LeximRepository();
             EmailRepository emailRepo = new EmailRepository();
             PairList pairList = new PairList(forms);
-            leximRepo.addLexim(pairList.splitIntoLexims(leximRepo));
+            leximRepo.addLexim(pairList.splitIntoLexims());
             emailRepo.addEmail(pairList.getRestrictedEmails(leximRepo));
             emailRepo.sort();
             return emailRepo.getDistinctEmails();
