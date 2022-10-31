@@ -246,5 +246,23 @@ class Problem6Test {
 
             assertThat(crews.getCrewSetOverlappingWith(crew)).isEqualTo(crewSet);
         }
+
+        @Test
+        @DisplayName("getCrewListWithOverlappingNickname 메소드가 리스트 전체에서 nickname이 중복되는 크루원들의 List를 반환하는지 확인한다")
+        void getCrewListWithOverlappingNicknameTest() {
+            List<List<String>> forms = List.of(
+                    List.of("jm@email.com", "제이엠"),
+                    List.of("jason@email.com", "제이슨"),
+                    List.of("woniee@email.com", "워니"),
+                    List.of("mj@email.com", "엠제이"),
+                    List.of("nowm@email.com", "이제엠")
+            );
+            Crews crews = main.makeCollectionCrews(forms);
+            List<Crew> crewList = List.of(new Crew("jm@email.com", "제이엠"),
+                    new Crew("jason@email.com", "제이슨"),
+                    new Crew("mj@email.com", "엠제이"));
+
+            assertThat(crews.getCrewListWithOverlappingNickname()).isEqualTo(crewList);
+        }
     }
 }
