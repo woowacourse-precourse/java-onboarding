@@ -9,6 +9,7 @@ class SumCalculator implements CalculatorInt {
         this.division = division;
     }
 
+    @Override
     public int getScore() {
         return division.stream().reduce(0, Integer::sum);
     }

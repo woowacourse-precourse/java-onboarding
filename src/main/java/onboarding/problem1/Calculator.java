@@ -36,6 +36,7 @@ public class Calculator implements CalculatorInt {
         return division;
     }
 
+    @Override
     public int getScore() {
         return this.score;
     }

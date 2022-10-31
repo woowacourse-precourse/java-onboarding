@@ -9,6 +9,7 @@ class MultipleCalculator implements CalculatorInt {
         this.division = division;
     }
 
+    @Override
     public int getScore() {
         return division.stream().reduce(1, (total, number) -> total * number);
     }
