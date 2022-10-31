@@ -15,7 +15,7 @@ public class Problem6 {
 
         for (int i = 0; i < forms.size(); i++) {
             for (int j = 0; j < forms.size(); j++) {
-                if (i != j && dupCheck(forms.get(i).get(1), forms.get(j).get(1)) == true) {
+                if (i != j && dupCheck(forms.get(i).get(1), forms.get(j).get(1))) {
                     answer.add(forms.get(i).get(0));
                     break ;
                 }
@@ -37,11 +37,10 @@ public class Problem6 {
     }
 
     private static int dupCnt(String str1, String str2) {
-        int cnt = 0;
-        int minLen = Math.min(str1.length(), str2.length());
-        
-        while (cnt < minLen && str1.charAt(cnt) == str2.charAt(cnt))
-            cnt++;
+        int cnt;
+
+        for (cnt = 0; cnt < Math.min(str1.length(), str2.length())
+                && str1.charAt(cnt) == str2.charAt(cnt); cnt++);
         return cnt;
     }
 }
