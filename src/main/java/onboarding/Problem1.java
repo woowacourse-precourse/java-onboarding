@@ -40,4 +40,8 @@ class Problem1 {
         }
         return result;
     }
+
+    // 4-두 수를 비교하는 기능
+    public static boolean compare(int a, int b){
+        return a > b;
 }
