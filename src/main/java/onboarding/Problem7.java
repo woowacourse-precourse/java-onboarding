@@ -11,7 +11,7 @@ public class Problem7 {
         /* 1. user와 친구인 사람 friendsList 만들기 */
         List<String> friendsList = new ArrayList<>();
 
-        /* 2. user , user와 친구인사람 friendsList에 담기*/
+        /* 2. user와 친구인사람 friendsList에 담기*/
         for(int i = 0; i < friends.size(); i++){
             int index = friends.get(i).indexOf(user);
             if(index != -1){
