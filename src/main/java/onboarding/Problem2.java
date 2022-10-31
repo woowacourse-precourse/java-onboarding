@@ -9,6 +9,23 @@ public class Problem2 {
      */
     public static String solution(String cryptogram) {
         String answer = "answer";
-        return answer;
+        return remove(cryptogram);
+    }
+    public static String remove(String str) {
+        while(true) {
+            boolean check = false;
+            char[] array = str.toCharArray();
+
+            for(int i = 0; i < array.length - 1; i++) {
+                // 연속하는 중복 문자 찾기 (없을 때 까지 찾기 - check 변수 이용)
+                if(array[i] == array[i + 1]) {
+                }
+            }
+
+            if(!check) {
+                break;
+            }
+        }
+        return str;
     }
 }
