@@ -26,9 +26,9 @@ public class Problem6 {
     }
 
     /**
-     * 이름 목록 중 같은 글자가 연속적으로 포함된 이름의 인덱스 집합을 반환
+     * 이름 목록 중 같은 글자가 연속적으로 포함된 이름의 이메일 집합을 반환
      * @param forms : 같은 글자가 연속적으로 포함되어있는지 확인할 폼 목록
-     * @return 같은 글자가 연속적으로 포함된 이름의 인덱스 집합
+     * @return 같은 글자가 연속적으로 포함된 이름의 이메일 집합
      */
     private static Set<String> getDuplicatedEmailSet(List<List<String>> forms){
         // 연속글자가 포함된 닉네임들의 인덱스 집합
@@ -51,7 +51,7 @@ public class Problem6 {
     }
 
     /**
-     * 주어진 닉네임을 2글자씩 분해하여 해당 문자열을 갖는 닉네임의 인덱스 집합을 charSetCountMap에 할당
+     * 주어진 닉네임을 2글자씩 분해하여 해당 문자열을 갖는 닉네임의 인덱스 집합을 charSetEmailMap에 할당
      * @param form : 이메일과 닉네임 정보가 담긴 리스트
      * @param charSetEmailMap : "닉네임이 가진 2글자문자(charSet)의 해시코드":"해당 charSet을 가진 email"를 할당할 Map
      */
