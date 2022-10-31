@@ -1,13 +1,23 @@
 package onboarding;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
-        answer = emailResult(checkCrews(forms));
+        answer = emailResult(checkCrews(exception(forms)));
         return answer;
+    }
+
+    /**
+     * 예외 처리한 forms 반환 하는 함수
+     */
+    private static List<List<String>> exception(List<List<String>> forms){
+        List<List<String>> newForms = new ArrayList<>(new ArrayList<>());
+        for (List<String> form : forms) {
+            if(isEmailValid(form.get(0)) && isNameValid(form.get(1))) newForms.add(form);
+        }
+        return  newForms;
     }
 
     /**
@@ -71,7 +81,7 @@ public class Problem6 {
     private static List<String> emailOrder(List<String> emails){
         Map<String, String> emailMap = new TreeMap<>();
         List<String> emailList = new ArrayList<>();
-        
+
         for(int i=0;i<emails.size();i++)
             emailMap.put(emails.get(i).substring(0,emails.get(i).length()-10),emails.get(i));
         for (Map.Entry<String, String> entry : emailMap.entrySet())
