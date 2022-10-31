@@ -18,6 +18,11 @@ class Problem1 {
     private static final int WIN_CRONG = 2;
     private static final int EXCEPTION = -1;
 
+    private static final int MAX_PAGE = 400;
+
+    private static final int MIN_PAGE = 1;
+
+    private static final int SIZE_PAGE = 2;
     private static int maxScoreOfPobi;
     private static int maxScoreOfCrong;
 
@@ -30,8 +35,8 @@ class Problem1 {
 
     private static boolean isCorrectPages(List<Integer> pages) {
         if (pages.get(RIGHT_PAGE) - pages.get(LEFT_PAGE) != 1) return true;
-        if (pages.get(LEFT_PAGE) < 1 || pages.get(RIGHT_PAGE) > 400) return true;
-        if (pages.size() != 2) return true;
+        if (pages.get(LEFT_PAGE) < MIN_PAGE || pages.get(RIGHT_PAGE) > MAX_PAGE) return true;
+        if (pages.size() != SIZE_PAGE) return true;
         if (pages.get(LEFT_PAGE) % 2 != 1 || pages.get(RIGHT_PAGE) % 2 != 0) return true;
         return false;
     }
