@@ -6,9 +6,11 @@ public class Problem6 {
     private static final int DUPLICATE_STANDARD = 2;
     private static final int SPLIT_INDEX_COUNT = 2;
 
-    private static final Map<String, Set<String>> subNicknames = new HashMap<>();
+    private static Map<String, Set<String>> subNicknames;
 
     public static List<String> solution(List<List<String>> forms) {
+        subNicknames = new HashMap<>();
+
         for (List<String> form : forms) {
             String email = form.get(0);
             String nickname = form.get(1);
