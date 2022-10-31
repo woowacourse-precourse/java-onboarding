@@ -48,10 +48,15 @@ public class Problem6 {
     private static void MakeNickHash(List<List<String>> forms, Map<String, Integer> nickHash) {
         for(int i=0;i<forms.size();i++){
             String nickname = forms.get(i).get(1);
-            for(int j=0;j<nickname.length()-1;j++){
-                String tmp = nickname.substring(j,j+2);
-                nickHash.put(tmp,nickHash.getOrDefault(tmp,0)+1);
-            }
+            DivideTwo(nickHash, nickname);
+        }
+    }
+
+    /* 기능2-1: 두개씩 나누어 저장 */
+    private static void DivideTwo(Map<String,Integer> nickHash, String nickname) {
+        for(int i=0;i<nickname.length()-1;i++){
+            String tmp = nickname.substring(i,i+2);
+            nickHash.put(tmp,nickHash.getOrDefault(tmp,0)+1);
         }
     }
 }
