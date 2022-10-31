@@ -20,6 +20,16 @@ class Game{
     boolean isClap(int digit){
         return IntStream.of(clapCondition).anyMatch(condition->condition==digit);
     }
+    int countClap(int[] digitArray){
+        int numberOfClap=0;
+        
+        for(int digit: digitArray){
+            if(isClap(digit)){
+                numberOfClap++;
+            }
+        }
+        return numberOfClap;
+    }
 }
 
 public class Problem3 {
