@@ -13,4 +13,15 @@ public class Problem4 {
         answer = sb.toString();
         return answer;
     }
+
+    private static char makeFrogWord(char currentLetter) {
+        if ((currentLetter >= 'A') && (currentLetter <= 'Z')) {
+            return (char) ('Z' - currentLetter + 'A');
+        }
+        if ((currentLetter >= 'a') && (currentLetter <= 'z')) {
+            return (char) ('z' - currentLetter + 'a');
+        }
+
+        return currentLetter;
+    }
 }
