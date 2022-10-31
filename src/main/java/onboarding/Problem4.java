@@ -27,4 +27,15 @@ public class Problem4 {
         }
         return result;
     }
+
+    /*
+     *문자열 전환 함수
+     */
+    static String convert(String word){
+        String convert = "";
+        for(int i=0;i<word.length();i++){
+            convert = convert + ch_convert(word.charAt(i));
+        }
+        return convert;
+    }
 }
