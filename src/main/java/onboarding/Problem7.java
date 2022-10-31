@@ -71,6 +71,16 @@ public class Problem7 {
             }
         });
 
+        // 6. 최대 5명만 추천하고, 추천 점수가 0점인 경우 추천하지 않게 처리하기
+        for(Map.Entry<String, Integer> entry : entries) {
+            if(answer.size() >= 5) {
+                break; // 최대 5명만 추천하기 위해
+            }
+            if(entry.getValue() > 0) { // 추천 점수가 0점인 경우 추천하지 않게 하기 위함
+                answer.add(entry.getKey());
+            }
+        }
+
         return answer;
     }
 }
