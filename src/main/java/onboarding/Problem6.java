@@ -1,13 +1,15 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> userEmail = new ArrayList<>();
         List<String> userNickname = new ArrayList<>();
-        List<String> answer = List.of("answer");
+        List<String> answer = new ArrayList<>();
 
         for (int i = 0; i < forms.size(); i++) {
             List<String> currentForm= forms.get(i);
@@ -24,28 +26,15 @@ public class Problem6 {
         }
 
         for (int i = 0; i < userNickname.size(); i++) {
-            Boolean flag = false;
-            for (int j = 0; j < i; j++) {
-                if (isDuplicationName(userNickname.get(i), userNickname.get(j))){
-                    flag = true;
-                }
+            String currentName;
+            currentName = userNickname.get(i);
+            if (checkDuplicationName(currentName, i, userNickname)){
+                answer.add(userEmail.get(i));
             }
-            for (int j = i + 1; j < userNickname.size(); j++) {
-                if (isDuplicationName(userNickname.get(i), userNickname.get(j))){
-                    flag = true;
-                }
-            }
-            System.out.println(flag);
         }
-//        if (isValidEmail(forms.get(0).get(0))){
-//            List<String> answer = List.of("correct");
-//            return answer;
-//        }
-//
-//        List<String> answer = List.of("wrong");
 
-
-
+        answer = convertAnswer(answer);
+        Collections.sort(answer);
         return answer;
     }
 
@@ -109,5 +98,24 @@ public class Problem6 {
         return false;
     }
 
+    private static boolean checkDuplicationName(String currentName, int i, List<String> userNickname){
+        for (int j = 0; j < i; j++) {
+            if (isDuplicationName(currentName, userNickname.get(j))){
+                return true;
+            }
+        }
+        for (int j = i + 1; j < userNickname.size(); j++) {
+            if (isDuplicationName(currentName, userNickname.get(j))){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static List<String> convertAnswer(List<String> temp){
+        HashSet<String> set = new HashSet<>(temp);
+        temp = new ArrayList<>(set);
+        return temp;
+    }
 
 }
