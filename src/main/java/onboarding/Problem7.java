@@ -10,6 +10,7 @@ import java.util.Set;
 
 public class Problem7 {
     public static final int MUTUAL_SCORE = 10;
+    public static final int VISITED_SCORE = 1;
 
     private static final Set<String> userFriendList = new HashSet<>();
     private static final Map<String, Integer> recommendScore = new HashMap<>();
@@ -17,6 +18,7 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         saveUserFriendList(user, friends);
         addMutualFriend(user, friends);
+        addVisitedPerson(user, visitors);
         return Collections.emptyList();
     }
 
@@ -64,5 +66,11 @@ public class Problem7 {
         }
     }
 
-
+    private static void addVisitedPerson(String user, List<String> visitors) {
+        for (String visitor : visitors) {
+            if (isNewFriend(user, visitor)) {
+                addRecommendScore(visitor, VISITED_SCORE);
+            }
+        }
+    }
 }
