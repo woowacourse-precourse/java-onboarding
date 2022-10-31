@@ -35,6 +35,12 @@ public class Problem6 {
             }
         }
     }
+
+    // 중복된 닉네임을 가진 유저의 이메일을 목록을 중복이메일 리스트에 저장하는 함수
+    public static void setOverLapEmail(String userEmail1, String userEmail2){
+        overLapNickNameEmail.add(userEmail1);
+        overLapNickNameEmail.add(userEmail2);
+    }
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
