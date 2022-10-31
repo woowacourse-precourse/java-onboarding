@@ -4,8 +4,9 @@ import java.util.ArrayDeque;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer="answer";
-        return answer;
+        String answer = cryptogram;
+        Game2 game2=new Game2(answer);
+        return game2.gameResult();
     }
 }
 
