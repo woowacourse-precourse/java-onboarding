@@ -15,7 +15,17 @@ public class Problem7 {
             int oldFriends = friendsList.get(i).indexOf(userName);
             if(oldFriends > -1){
                 String oldFriendName = friendsList.get(i).get(1-oldFriends);
-                friendsMap.put(oldFriendName, 0);
+                putNewFriends(friendsList, oldFriendName, friendsMap, userName);
+            }
+        }
+    }
+
+    private static void putNewFriends(List<List<String>> friendsList, String oldFriendName, HashMap friendsMap, String userName){
+        for(int i = 0; i < friendsList.size(); i++){
+            int newFriends = friendsList.get(i).indexOf(oldFriendName);
+            if(newFriends > -1 && !friendsList.get(i).get(1 - newFriends).equals(userName)){
+                if(friendsMap.containsKey(friendsList.get(i).get(1 - newFriends))) friendsMap.put(friendsList.get(i).get(1 - newFriends), (int)friendsMap.get(friendsList.get(i).get(1 - newFriends))+10);
+                if(!friendsMap.containsKey(friendsList.get(i).get(1 - newFriends))) friendsMap.put(friendsList.get(i).get(1 - newFriends), 10);
             }
         }
     }
