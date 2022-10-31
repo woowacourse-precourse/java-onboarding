@@ -10,13 +10,13 @@ public class Problem2 {
 	public static String solution(String cryptogram) {
 
 		do {
-			cryptogram = handleDuplication(cryptogram);
+			cryptogram = getFixedCryptogram(cryptogram);
 		} while (doesDuplicationExist(cryptogram));
 
 		return cryptogram;
 	}
 
-	private static String handleDuplication(String cryptogram) {
+	private static String getFixedCryptogram(String cryptogram) {
 		Matcher patternMatcher = setMatcher(cryptogram);
 		cryptogram = removeDuplication(patternMatcher);
 		return cryptogram;
