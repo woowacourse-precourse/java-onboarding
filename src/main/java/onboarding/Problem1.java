@@ -17,6 +17,9 @@ class Problem1 {
     }
 
     private static boolean isValid(List<Integer> pobi, List<Integer> crong) {
+        if (pobi.size() != 2 || crong.size() != 2) {
+            return false;
+        }
         if (pobi.get(0) < 3 || pobi.get(0) > 397 || pobi.get(1) < 4 || pobi.get(1) > 398) {
             return false;
         }
