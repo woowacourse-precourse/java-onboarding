@@ -7,6 +7,23 @@ public class Decrytor {
         this.cryptogram = cryptogram;
     }
 
+    public String decrypt() {
+        boolean completeDecrypt = true;
+        StringBuilder tempCryptogram = new StringBuilder();
+
+        while(completeDecrypt) {
+            getCryptogram(tempCryptogram);
+            completeDecrypt = checkCompleteDecrypt(tempCryptogram);
+            cryptogram = String.valueOf(tempCryptogram);
+            tempCryptogram.setLength(0);
+        }
+        return cryptogram;
+    }
+
+    private boolean checkCompleteDecrypt(StringBuilder tempCryptogram) {
+        return cryptogram.length() != tempCryptogram.length();
+    }
+
     private void getCryptogram(StringBuilder tempCryptogram) {
         for(int i = 0; i < cryptogram.length(); i++) {
             updateCryptogram(tempCryptogram, i);
