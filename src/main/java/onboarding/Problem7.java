@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
    //이름과 점수를 저장할 사용자 정의 자료형 생성
@@ -57,7 +54,18 @@ public class Problem7 {
         return userList;
     }
     //hash를 사용하여 저장한 중복없는 친구목록을 List로 변환해 줄 함수
+    static List<people_score> user_list(String user, List<List<String>> friends, List<String> visitors){
+        List<people_score> userList = new ArrayList<>();
+        HashSet<String> no_dupl_user = no_duplication_user(user,friends,visitors);
 
+        Iterator iter = no_dupl_user.iterator();
+
+        while (iter.hasNext()){
+            userList.add(new people_score(String.valueOf(iter.next()),0));
+        }
+
+        return userList;
+    }
     //만들어둔 친구 목록을 사용자정의 자료형 리스트로 변환해 줄 함수
 
     //사용자와 함께 아는 친구의 수 점수 계산 함수
