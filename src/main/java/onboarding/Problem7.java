@@ -1,10 +1,10 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
+    static Map<String, Integer> friendScoreMap = new HashMap<>();
+
     /**
      * 사용자와 친구인 사람을 구하는 메서드
      *
@@ -44,6 +44,29 @@ public class Problem7 {
 
         return false;
     }
+
+    /**
+     * 타입에 따라서 점수를 추가하는 메서드
+     *
+     * @param scoreType 1이면 10점, 2면 1점을 추가한다
+     * @param user 점수를 추가할 아이디디
+     */
+    static void addScoreToMap(int scoreType, String user) {
+        if (scoreType == 1) {
+            if (friendScoreMap.containsKey(user)) {
+                friendScoreMap.put(user, friendScoreMap.get(user) + 10);
+            } else {
+                friendScoreMap.put(user, 10);
+            }
+        } else if (scoreType == 2) {
+            if (friendScoreMap.containsKey(user)) {
+                friendScoreMap.put(user, friendScoreMap.get(user) + 1);
+            } else {
+                friendScoreMap.put(user, 1);
+            }
+        }
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
