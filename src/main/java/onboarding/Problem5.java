@@ -18,7 +18,7 @@ public class Problem5 {
 
         for (int i = 0; i < unit.length; i++) {
             int cnt = money / unit[i];
-            if(money >= unit[i]) {
+            if (money >= unit[i]) {
                 money -= cnt * unit[i];
             }
             result.add(cnt);
