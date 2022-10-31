@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 class Problem1 {
 
@@ -20,6 +21,9 @@ class Problem1 {
         if (!isValidate(pobiPage) || !isValidate(crongPage)) {
             return EXCEPTION;
         }
+
+        int pobiScore = getScore(pobiPage);
+        int crongScore = getScore(crongPage);
 
         return answer;
     }
@@ -51,27 +55,52 @@ class Problem1 {
     }
 
     private static boolean isContinuous(int leftPage, int rightPage) {
-        if (rightPage - leftPage != 1) {
-            return false;
-        }
-
-        return true;
+        return rightPage - leftPage == 1;
     }
 
     private static boolean isOddLeft(int leftPage) {
-        if (leftPage % 2 != 1) {
-            return false;
-        }
-
-        return true;
+        return leftPage % 2 == 1;
     }
 
     private static boolean isEvenRight(int rightPage) {
-        if (rightPage % 2 != 0) {
-            return false;
+        return rightPage % 2 == 0;
+    }
+
+    private static int getScore(Page page) {
+        int maxOfLeftScore = getMaxScore(page.getLeftPage());
+        int maxOfRightScore = getMaxScore(page.getRightPage());
+
+        if (maxOfLeftScore > maxOfRightScore) {
+            return maxOfLeftScore;
         }
 
-        return true;
+        return maxOfRightScore;
+    }
+
+    private static int getMaxScore(int page) {
+        if (calculateBySum(page) > calculateByMultiply(page)) {
+            return calculateBySum(page);
+        }
+
+        return calculateByMultiply(page);
+    }
+
+    private static int calculateBySum(int page) {
+        int result = 0;
+        while (page > 0) {
+            result += page % 10;
+            page /= 10;
+        }
+        return result;
+    }
+
+    private static int calculateByMultiply(int page) {
+        int result = 1;
+        while (page > 0) {
+            result *= page % 10;
+            page /= 10;
+        }
+        return result;
     }
 }
 
