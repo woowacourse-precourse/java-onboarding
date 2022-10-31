@@ -15,9 +15,28 @@ public class Problem2 {
         }
         return start;
     }
+    // 중복 문자 삭제 및 반복
+    public static String getDeletedCryptogram(String cryptogram) {
+        boolean flag = true;
+        while (flag) {
+            flag = false;
+            for (int i = 0; i < cryptogram.length()-1; i++) {
+                int pos = getLastIdx(cryptogram, i);
+                // 연속하지 않음
+                if (pos == i+1) continue;
+
+                cryptogram = cryptogram.substring(0,i) + cryptogram.substring(pos);
+                // 삭제 성공시 처음부터 다시
+                flag = true;
+                break;
+            }
+            if (!flag) break;
+        }
+
+        return cryptogram;
+    }
 
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        return getDeletedCryptogram(cryptogram);
     }
 }
