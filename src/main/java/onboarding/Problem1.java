@@ -40,6 +40,14 @@ class Problem1 {
         if(crong.get(0) < 1 && crong.get(1) > 401)
             return -1;
 
+        //error 처리
+        // 왼쪽 숫자가 짝수이면 에러
+        if(pobi.get(0) % 2 == 0)
+            return -1;
+        if(crong.get(0) % 2 == 0)
+            return -1;
+
+
         int pobi_max = 0;
         int crong_max= 0;
 
