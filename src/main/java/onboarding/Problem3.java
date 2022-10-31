@@ -4,7 +4,9 @@ public class Problem3 {
     public static int solution(int number) {
         int clapNumber = 0;
 
-
+        for(int stepNumber = 1; stepNumber <= number; stepNumber++){
+            clapNumber += countMultipleOf3(stepNumber);
+        }
         return clapNumber;
     }
 
