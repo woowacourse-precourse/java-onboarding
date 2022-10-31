@@ -8,7 +8,7 @@ public class Problem7 {
         List<List<String>> newFriendList = p7.getFriendList(friends);
         Map<String, Integer> friendMap = p7.myFriendScore(newFriendList,user);
         Map<String, Integer> visitMap = p7.getVisitScore(visitors);
-        Map<String, Integer> totalMap = p7.getTotoalScore(visitMap, friendMap);
+        Map<String, Integer> totalMap = p7.getTotalScore(visitMap, friendMap);
         Set<String> set = p7.getReverseMap(totalMap);
 
         List<String> answer = new ArrayList<>();
@@ -89,31 +89,40 @@ public class Problem7 {
     }
 
 
-    public Map<String, Integer> getTotoalScore(Map<String, Integer> visitScore, Map<String, Integer> friendScore){
-        Set<String> vset =visitScore.keySet();
-        Set<String> fset =friendScore.keySet();
+    public Map<String, Integer> getTotalScore(Map<String, Integer> visitScore, Map<String, Integer> friendScore){
+        Set<String> vset = visitScore.keySet();
+        Set<String> fset = friendScore.keySet();
         Iterator<String> viterator = vset.iterator();
         Iterator<String> fiterator = fset.iterator();
+
         Map<String, Integer> totalScore = new TreeMap<>();
 
-        while(viterator.hasNext()){ // 양쪽 리스트에 같은 값이 있으면 그것만 계산
+
+        while(viterator.hasNext()){ // 양쪽 리스트에 같은 키가 있으면 그것만 계산
+            String vkey = viterator.next();
+            while(fiterator.hasNext()) {
+                String fkey = fiterator.next();
+                totalScore.put(fkey, friendScore.get(fkey));
+            }
+            totalScore.put(vkey, visitScore.get(vkey));
+        }
+
+        viterator = vset.iterator();
+        fiterator = fset.iterator();
+
+        while(viterator.hasNext()){ // 양쪽 리스트에 같은 키가 있으면 그것만 계산
             while(fiterator.hasNext()) {
                 String vkey = viterator.next();
                 String fkey = fiterator.next();
+                //---
                 if(fkey.equals(vkey)){
-                    totalScore.put(fkey, friendScore.get(fkey));
-                    viterator.remove();
-                    fiterator.remove();
+                    totalScore.put(fkey, friendScore.get(fkey)+visitScore.get(fkey));
+
                 }
             }
         }
 
-        for(String v: vset){ //양쪽 리스트에 있는거 모두 다 저장
-            totalScore.put(v, friendScore.get(v));
-        }
-        for(String f: fset){ //양쪽 리스트에 있는거 모두 다 저장
-            totalScore.put(f, friendScore.get(f));
-        }
+
         return totalScore;
     }
 
