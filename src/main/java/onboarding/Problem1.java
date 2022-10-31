@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
+    private static final int MAX_PAGE = 400;
+    private static final int MIN_PAGE = 1;
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         if(checkException(pobi, crong)) {
@@ -69,9 +71,6 @@ class Problem1 {
         if(notAdjacent(gamer1) || notAdjacent(gamer2)) {
             return true;
         }
-
-        final int MAX_PAGE = 400;
-        final int MIN_PAGE = 1;
         // 시작 면이나 마지막 면이 나오는지 검증
         if(gamer1.get(0) == MIN_PAGE || gamer1.get(1) == MAX_PAGE
                 || gamer2.get(0) == MIN_PAGE || gamer2.get(1) == MAX_PAGE) {
