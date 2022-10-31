@@ -19,6 +19,15 @@ class Problem1 {
         return answer;
     }
 
+    public int getLargeValueOnePerson(List<Integer> list) {
+        return getLargeInt(getLargeValueOneSide(list, 0), getLargeValueOneSide(list, 1));
+    }
+
+    private int getLargeValueOneSide(List<Integer> list, int index) {
+        List<Integer> eachDigit = getEachDigit(list.get(index));
+        return getLargeInt(getTotalByAdd(eachDigit), getTotalByMultiply(eachDigit));
+    }
+
     private int getLargeInt(int a, int b) {
         return a > b ? a : b;
     }
