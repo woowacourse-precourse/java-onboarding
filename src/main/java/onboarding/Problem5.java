@@ -10,4 +10,17 @@ public class Problem5 {
         change(money,moneyList,answer);
         return answer;
     }
+
+    // 주어진 money에서 50000 to 1 까지 거스름돈이 발생하지 않는 선에서 빼가며 사용 개수를 구하는 함수
+    public static void change(int money, List<Integer> moneyList, List<Integer> answer){
+        for(int i=0; i<moneyList.size(); i++){
+            int count = money / moneyList.get(i);
+            if(count > 0){
+                answer.add(count);
+                money -= (count * moneyList.get(i));
+            }else{
+                answer.add(0);
+            }
+        }
+    }
 }
