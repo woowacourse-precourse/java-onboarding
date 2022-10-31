@@ -35,20 +35,26 @@ class Word {
 
 class Result {
     private char[] wordArray;
+    private StringBuilder sb;
 
     public Result(char[] wordArray) {
         this.wordArray = wordArray;
+        this.sb=new StringBuilder();
     }
 
-    public void changeWordByRule(){
+
+    public char changeWordByRule(){
         for(int wordChar:wordArray){
+            if(!Character.isAlphabetic(wordChar)){
+                return ' ';
+            }
             if(isAlphaLower(wordChar)){
                 char replaceChar= (char)(155-wordChar);
-                toUpperCase(replaceChar);
+                return toUpperCase(replaceChar);
             }
             if(isAlphaUpper(wordChar)){
                 char replaceChar= (char)(219-wordChar);
-                toLowerCase(replaceChar);
+                return toLowerCase(replaceChar);
             }
         }
     }
