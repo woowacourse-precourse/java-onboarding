@@ -33,33 +33,33 @@ public class Problem5 {
 
     //자리수 구분해 리스트에 넣음
     public static List<Integer> placeNumber(int money) {
-        List<Integer> digitNumber_list = new ArrayList<>();
+        List<Integer> digit_list = new ArrayList<>();
 
         while (money > 0) {
-            digitNumber_list.add((money % 10));
+            digit_list.add((money % 10));
             money /= 10;
         }
 
-        return digitNumber_list;
+        return digit_list;
     }
-    public static Integer [] divisionMoney(List<Integer> digitNumber_list) {
-        Integer[] money_list = new Integer[Cash.length.value];
+    public static Integer [] divisionMoney(List<Integer> digit_list) {
+        Integer[] won = new Integer[Cash.length.value];
         int digitCount = 0;
         int i;
 
-        money_list[digitCount] = digitNumber_list.get(digitCount);
+        won[digitCount] = digit_list.get(digitCount);
         for (i = 1; i < Cash.length.value; i++) {
             if (i % 2 == 0) {
-                checkFive(i - 1, money_list);
+                checkFive(i - 1, won);
                 digitCount++;
                 continue;
             }
-            money_list[i] = digitNumber_list.get(i - digitCount);
+            won[i] = digit_list.get(i - digitCount);
         }
         if (i == Cash.length.value)
-            checkFiveTousand(money_list, digitNumber_list);
+            checkFiveTousand(won, digit_list);
 
-        return money_list;
+        return won;
     }
 
     //50,500,5000원 확인
@@ -72,12 +72,12 @@ public class Problem5 {
             money[status + 1] = Cash.round.value;
         }
     }
-    public static void checkFiveTousand(Integer[] money_ary, List<Integer> digitNumber) {
-        if (digitNumber.size() == (Cash.hundredTousand.value + 1))
-            money_ary[Cash.length.value - 1] += digitNumber.get(Cash.hundredTousand.value) * 10 / Cash.division.value;
+    public static void checkFiveTousand(Integer[] won, List<Integer> digit) {
+        if (digit.size() == (Cash.hundredTousand.value + 1))
+            won[Cash.length.value - 1] += digit.get(Cash.hundredTousand.value) * 10 / Cash.division.value;
 
-        if (digitNumber.size() == (Cash.million.value + 1))
-            money_ary[Cash.length.value - 1] += digitNumber.get(Cash.million.value) * 100 / Cash.division.value;
+        if (digit.size() == (Cash.million.value + 1))
+            won[Cash.length.value - 1] += digit.get(Cash.million.value) * 100 / Cash.division.value;
     }
 
     /*

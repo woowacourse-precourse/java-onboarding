@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer;
 
         checkException(forms);
         answer = findEmail(saveSameUser(savaUser(forms)), forms);
@@ -22,7 +22,8 @@ public class Problem6 {
 
         for (int i = 0; i < user_list.size(); i++)
         {
-            if (user_list.contains(forms.get(user_list.get(i)).get(email)))
+            String emailTxt = forms.get(user_list.get(i)).get(email);
+            if (email_list.contains(emailTxt))
                 continue;
             email_list.add(forms.get(user_list.get(i)).get(email));
         }
@@ -53,23 +54,13 @@ public class Problem6 {
         }
         return false;
     }
-
-    public static boolean isSameUser(List<Integer> user_list, int value) {
-        for (int i = 0; i < user_list.size(); i++) {
-            if (user_list.get(i) == value)
-                return false;
-        }
-
-        return true;
-    }
-
     public static List<String> savaUser(List<List<String>> forms) {
         int name = 1;
 
         List<String> user_list = new ArrayList<>();
 
-        for (int i = 0; i < forms.size(); i++)
-            user_list.add(forms.get(i).get(name));
+        for (List<String> form : forms)
+            user_list.add(form.get(name));
 
         return user_list;
     }
@@ -80,11 +71,8 @@ public class Problem6 {
         for (int i = 0; i < name.size() - 1; i++) {
             for (int j = i + 1; j < name.size(); j++) {
                 if (findSameUser(name.get(i), name.get(j))) {
-                    //userMemo 중복 처리하기
-                    if (isSameUser(userMemo_list,i))
-                        userMemo_list.add(i);
-                    if (isSameUser(userMemo_list, j))
-                        userMemo_list.add(j);
+                    userMemo_list.add(i);
+                    userMemo_list.add(j);
                 }
             }
         }
@@ -102,31 +90,25 @@ public class Problem6 {
 
         if (!(forms.size() >= min && forms.size() <= max))
             throw new IllegalArgumentException("크루 범위를 초과했습니다");
-        for (int i = 0; i < forms.size(); i++) {
-            if (!(checkEmail(forms.get(i).get(email))))
+        for (List<String> form : forms) {
+            if (!(checkEmail(form.get(email))))
                 throw new IllegalArgumentException("이메일 형식에 맞지 않습니다.");
-            if (!(checkName(forms.get(i).get(name))))
+            if (!(checkName(form.get(name))))
                 throw new IllegalArgumentException("닉네임 형식에 맞지 않습니다");
         }
     }
     public static boolean checkEmail(String email) {
         int address = 1;
-        int user = 0;
 
         String [] emailAddress = email.split("@");
 
         if (email.length() >= 11 && email.length() < 20)
             return true;
-        if (emailAddress[address].equals("email.com"))
-            return true;
-
-        return false;
+        return emailAddress[address].equals("email.com");
     }
     public static boolean checkName(String name) {
         if (name.length() >= 1 && name.length() < 20)
             return true;
-        if (Pattern.matches("^[가-힣]*$", name))
-            return true;
-        return false;
+        return Pattern.matches("^[가-힣]*$", name);
     }
 }
