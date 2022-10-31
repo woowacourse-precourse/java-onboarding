@@ -12,7 +12,7 @@ public class Problem2 {
 
     public static void addDuplicatedIndex(String cryptogram) {
         char first = ' ', second = ' ';
-        duplicatedIndexList.clear();
+        clearDuplicatedIndexList();
 
         for (int index = 0; index < cryptogram.length() - 1; index++) {
             first = cryptogram.charAt(index);
@@ -38,5 +38,9 @@ public class Problem2 {
 
     public static void clearStringBuilder(){
         sb.setLength(0);
+    }
+
+    public static void clearDuplicatedIndexList(){
+        duplicatedIndexList.clear();
     }
 }
