@@ -12,21 +12,24 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
         MaxPoint maxPoint = new MaxPoint();
-        
+
         int pobiMaxPoint = maxPoint.maxPoint(pobi);
         int crongMaxPoint = maxPoint.maxPoint(crong);
         int answer;
 
         if (pobiMaxPoint==-1 || crongMaxPoint==-1){
-            answer = -1;
-        } else if (pobiMaxPoint>crongMaxPoint){
-            answer = 1;
-        } else if (pobiMaxPoint<crongMaxPoint){
-            answer = 2;
-        } else {
-            answer = 0;
+            return -1;
         }
-        return answer;
+        if (pobiMaxPoint>crongMaxPoint){
+            return 1;
+        }
+        if (pobiMaxPoint<crongMaxPoint){
+            return 2;
+        }
+        if (pobiMaxPoint==crongMaxPoint) {
+            return 0;
+        }
+        return -1;
     }
 }
 
