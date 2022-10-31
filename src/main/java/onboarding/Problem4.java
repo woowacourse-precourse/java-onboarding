@@ -6,8 +6,17 @@ public class Problem4 {
     static final char[] LOWER = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
 
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        return splitString(word);
+    }
+
+    static String splitString(String word) {
+        StringBuilder answer = new StringBuilder();
+
+        for (char c : word.toCharArray()) {
+            answer.append(checkChar(c));
+        }
+
+        return answer.toString();
     }
 
     static char checkChar(char c) {
