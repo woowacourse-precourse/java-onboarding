@@ -23,12 +23,14 @@ public class Friend {
         }
     }
 
-    public static List<String> getRecommendedList(String user) {
+    public static List<String> getRecommendedList(String user, List<String> myFriends) {
         List<Map.Entry<String, Integer>> entryList = new LinkedList<>(weight.entrySet());
         entryList.sort(Map.Entry.comparingByValue());
         entryList = Util.sameEntryValueSort(entryList);
         Collections.reverse(entryList);
         List<String> resultList = new ArrayList<>();
+        entryList.removeIf(entry -> myFriends.contains(entry.getKey()));
+        entryList.removeIf(entry -> entry.getKey() == user);
         entryList.stream()
                 .limit(Constant.MAX_RECOMMEND)
                 .filter(entry -> !entry.getKey().equals(user))

@@ -13,6 +13,7 @@ public class Util {
         List<Map.Entry<String, Integer>> newEntryList = new LinkedList<>();
         int beforeValue = entryList.get(0).getValue();
         List<Map.Entry<String, Integer>> temp = new LinkedList<>();
+
         for (int i = 0; i < entryList.size(); i++) {
             Entry<String, Integer> entry = entryList.get(i);
             if (entry.getValue() != beforeValue || i == entryList.size() - 1) {
@@ -23,6 +24,7 @@ public class Util {
             temp.add(entry);
             beforeValue = entry.getValue();
         }
+        newEntryList.addAll(temp);
         return newEntryList;
     }
 }

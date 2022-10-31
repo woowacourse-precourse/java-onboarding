@@ -15,7 +15,7 @@ public class Controller {
                 Friend.addWeight(acquaintance, Constant.FRIEND_WEIGHT);
             }
             Friend.addWeight(visitors, Constant.VISITOR_WEIGHT);
-            List<String> recommendedList = Friend.getRecommendedList(user);
+            List<String> recommendedList = Friend.getRecommendedList(user, myFriends);
             recommendedList.removeAll(myFriends);
             return recommendedList;
         }
