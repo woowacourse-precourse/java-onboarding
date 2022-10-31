@@ -59,7 +59,21 @@ class Decryption {
 }
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String answer;
+        Decryption operator = new Decryption();
+        int redundantCount = Integer.MAX_VALUE;
+        List<List<Integer>> redundantIndex;
+        List<String> redundantString;
+        String newCipher=cryptogram;
+        while((operator.existsRedundantAlphabet(redundantCount))){
+            redundantIndex=operator.redundantCheck(newCipher);
+            redundantCount=redundantIndex.size();
+
+            redundantString=operator.getRedundantSequence(newCipher,redundantIndex);
+            newCipher=operator.getDecryption(newCipher, redundantString);
+        }
+        answer=newCipher;
+        System.out.println(answer);
         return answer;
     }
 }
