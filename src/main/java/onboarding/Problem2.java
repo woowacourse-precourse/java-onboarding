@@ -4,7 +4,7 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         var myCryptogram = new Cryptogram(cryptogram);
         if (!myCryptogram.validate()) {
-            return null;
+            throw new IllegalArgumentException();
         }
         return myCryptogram.decrypt();
     }
