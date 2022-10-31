@@ -3,12 +3,6 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
-
-    public static void main(String args[]) {
-        int a = solution(List.of(123, 124), List.of(125, 126));
-        System.out.println(a);
-    }
-
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
@@ -19,14 +13,15 @@ class Problem1 {
 
         // pobi 가장 큰 수 구하기
         int pobiNum = getMaxValue(pobi);
-
         // crong 가장 큰 수 구하기
         int crongNum = getMaxValue(crong);
 
-        // 두 수 비교 결과 저장
+        // 두 수 비교
         if(pobiNum == crongNum) {
             return 0;
         }
+        answer = pobiNum > crongNum ? 1 : 2;
+
         return answer;
     }
 
@@ -34,6 +29,7 @@ class Problem1 {
         String left = String.valueOf(list.get(0));
         String right = String.valueOf(list.get(1));
 
+        // 왼쪽 페이지 합, 곱 구하기
         int sum = 0;
         int mul = 1;
         for (int i = 0; i < left.length(); i++) {
@@ -43,6 +39,7 @@ class Problem1 {
         }
         int leftMax = Math.max(sum, mul);
 
+        // 오른쪽 페이지 합, 곱 구하기
         sum = 0;
         mul = 1;
         for (int i = 0; i < right.length(); i++) {
@@ -50,19 +47,16 @@ class Problem1 {
             sum += rightNum;
             mul *= rightNum;
         }
-
         int rightMax = Math.max(sum, mul);
 
-        int value = Math.max(leftMax, rightMax);
-
-        return value;
+        return Math.max(leftMax, rightMax);
     }
 
     private static Boolean pageValidCheck(List<Integer> list) {
         int left = list.get(0);
         int right = list.get(1);
 
-        if (left % 2 != 0 || right != 1)
+        if (left % 2 == 0 || right % 2 == 1)
             return false;
 
         if (left == 1 || right == 400)
