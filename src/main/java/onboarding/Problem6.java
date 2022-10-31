@@ -25,11 +25,7 @@ public class Problem6 {
     public static HashMap<String, Integer> nameCount(List<List<String>> forms, HashMap<String, Integer> nameCountMap, int index){
         for (int j = 0; j < forms.get(index).get(1).length() - 1; j += 1) {
             String slicedName = forms.get(index).get(1).substring(j, j + 2);
-            if (nameCountMap.containsKey(slicedName)) {
-                nameCountMap.put(slicedName, nameCountMap.get(slicedName) + 1);
-            } else {
-                nameCountMap.put(slicedName, 1);
-            }
+            updateNameCunt(nameCountMap, slicedName);
         }
         return nameCountMap;
     }
@@ -40,5 +36,12 @@ public class Problem6 {
                 answer.add(forms.get(i).get(0));
             }
         }
+    }
+
+    public static Integer updateNameCunt(HashMap<String, Integer> hashMap, String string) {
+        if (hashMap.containsKey(string)) {
+            return hashMap.put(string, hashMap.get(string) + 1);
+        }
+        return hashMap.put(string, 1);
     }
 }
