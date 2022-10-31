@@ -36,7 +36,7 @@ public class InitProcessor {
         return new ArrayList<>(candidatesSet).stream().sorted().collect(Collectors.toList());
     }
 
-    final List<String> getSortedFriends(String user, List<List<String>> tableOfFriends) {
+    public List<String> getSortedFriends(String user, List<List<String>> tableOfFriends) {
         Set<String> friends = new HashSet<>();
         tableOfFriends.forEach(list -> {
             if (list.get(1).equals(user)) friends.add(list.get(0));
