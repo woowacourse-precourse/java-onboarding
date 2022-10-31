@@ -11,7 +11,7 @@ public class Problem7 {
     }
 
     /**
-     * 사용자와 먼 친구(가까운 친구의 친구) 목록을 반환한다.
+     * 사용자와 먼 친구(함께 아는 친구) 목록을 반환한다.
      */
     private static List<String> findDistantFriends(String user, List<String> closeFriends, List<List<String>> friends) {
         List<String> distantFriends = new ArrayList<>();
