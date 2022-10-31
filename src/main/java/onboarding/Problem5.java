@@ -13,10 +13,10 @@ public class Problem5 {
     public static List<Integer> solution(int money) {
         List<Integer> answer = new ArrayList<>();
 
-        for (int i = 0; i < moneySizeList.size(); i++) {
-            int count = getMoneyCount(money, moneySizeList.get(i));
+        for (Integer integer : moneySizeList) {
+            int count = getMoneyCount(money, integer);
             answer.add(count);
-            money -= moneySizeList.get(i)*count;
+            money -= integer * count;
         }
         return answer;
     }
