@@ -79,7 +79,28 @@ public class Problem7 {
         return index_list;
     }
     //사용자와 함께 아는 친구의 수 점수 계산 함수
+    static List<people_score> user_know_together_score(String user, List<List<String>> friends, List<String> visitors){
+        List<String> user_know = user_friends(user,friends);
+        List<people_score> userList = user_list(user,friends,visitors);
+        List<String> index_found = people_list(user,friends,visitors);
 
+        for (int i=0;i<friends.size();i++){
+            String x = friends.get(i).get(0);
+            String y = friends.get(i).get(1);
+
+            if(user_know.contains(x)){
+                userList.get(index_found.indexOf(y)).score += 10;
+            }
+
+
+            if(user_know.contains(y)){
+                userList.get(index_found.indexOf(x)).score += 10;
+
+            }
+        }
+
+        return userList;
+    }
     //사용자의 타임라인에 방문한 점수 계산 함수
 
     //사용자와 함께 아는 친구의 수 점수와 사용자의 타임라인에 방문한 점수의 총 합을 구해주는 함수
