@@ -1,12 +1,16 @@
 package onboarding.problem6;
 
+import java.util.regex.Pattern;
+
 public class Email {
 
+	public static final Pattern EMAIL_COM_DOMAIN_PATTERN = Pattern.compile(".+@email.com");
 	private final String email;
 
 	public Email(String email) {
 		validateLength(email);
 		validateFormat(email);
+		validateDomain(email);
 		this.email = email;
 	}
 
@@ -22,6 +26,12 @@ public class Email {
 		}
 		if (email.length() >= 20) {
 			throw new IllegalArgumentException("이메일은 20글자 미만입니다");
+		}
+	}
+
+	private void validateDomain(String email) {
+		if (!EMAIL_COM_DOMAIN_PATTERN.matcher(email).matches()) {
+			throw new IllegalArgumentException("이메일의 형식이 잘못되었습니다");
 		}
 	}
 }
