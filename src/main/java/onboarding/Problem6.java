@@ -9,34 +9,39 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         HashSet<String> emailSet = new HashSet<>();
 
-        for (int i=0; i<forms.size(); i++) {
-            String myNickName = forms.get(i).get(1);
-            String myEmail = forms.get(i).get(0);
-            for (int j=i+1; j<forms.size(); j++) {
-                String otherNickName = forms.get(j).get(1);
-                String otherEmail = forms.get(j).get(0);
-                String shortNickName = myNickName;
-                String longNickName = otherNickName;
-
-                if (myNickName.length() > otherNickName.length()) {
-                    shortNickName = otherNickName;
-                    longNickName = myNickName;
-                }
-
-                for (int k=0; k<shortNickName.length() - 1; k++) {
-                    String somePart = shortNickName.substring(k, k + 2);
-                    if (longNickName.contains(somePart)) {
-                        emailSet.add(myEmail);
-                        emailSet.add(otherEmail);
-                    }
-                }
-            }
-        }
+        for (int i=0; i<forms.size(); i++)
+            findAndAddEmail(emailSet, forms, i);
 
         List<String> answer = new ArrayList<>(emailSet);
         answer.sort(Comparator.naturalOrder());
 
         return answer;
+    }
+
+    public static void findAndAddEmail(HashSet<String> emailSet,
+                                       List<List<String>> forms,
+                                       int start) {
+        String myNickName = forms.get(start).get(1);
+        String myEmail = forms.get(start).get(0);
+        for (int j=start+1; j<forms.size(); j++) {
+            String otherNickName = forms.get(j).get(1);
+            String otherEmail = forms.get(j).get(0);
+            String shortNickName = myNickName;
+            String longNickName = otherNickName;
+
+            if (myNickName.length() > otherNickName.length()) {
+                shortNickName = otherNickName;
+                longNickName = myNickName;
+            }
+
+            for (int k=0; k<shortNickName.length() - 1; k++) {
+                String somePart = shortNickName.substring(k, k + 2);
+                if (longNickName.contains(somePart)) {
+                    emailSet.add(myEmail);
+                    emailSet.add(otherEmail);
+                }
+            }
+        }
     }
 }
 
