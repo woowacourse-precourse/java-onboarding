@@ -64,10 +64,11 @@ public class Problem2 {
 
 /*
 <<기능 목록>>
+- [V] answer에 cryptogram을 담는다
+- [V] 연속된 문자들을 담는 duplicatedParts를 비운다
 - [V] 문자열을 왼쪽부터 읽는다
-- [V] 연속되는 문자가 있는지 체크한다.
+  - [V] 연속되는 문자가 있는지 체크한다.
   - [V] 연속되는 문자가 있다면 어디까지 연속되는지 체크한다
   - [V] 연속되는 구간을 duplicatedParts에 모은다
-  - [V] duplicatedParts의 문자들을 빈 문자열로 바꾼다
-- [V] 연속되는 문자가 없다면 그 문자열을 answer에 담고 반복문을 벗어난다
+- [V] duplicatedParts의 문자들을 빈 문자열로 바꾼다
  */
