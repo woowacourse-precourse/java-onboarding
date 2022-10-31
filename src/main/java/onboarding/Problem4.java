@@ -12,7 +12,12 @@ public class Problem4 {
         }
     }
 
+    private static char setCharacter(char c) {
+        if (isLargeLetter(c)) return (char) ('A' + Math.abs(c - 'Z'));
+        else if (isSmallLetter(c)) return (char) ('a' + Math.abs(c - 'z'));
 
+        return c;
+    }
 
     private static boolean isLargeLetter(char c) {
         return c >= 65 && c <= 90;
