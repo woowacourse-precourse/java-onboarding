@@ -76,6 +76,40 @@ public class Problem7 {
 		}
 		return visitorsWithoutMyFriends;
 	}
+	private static Map<String,Integer> getFriendScore
+	(List<String> friendForRecommand,List<String> visitors){
+		Map<String,Integer> friendScore = countFriend(friendForRecommand);
+		Map<String,Integer> visitorScore = countVisitor(visitors);
+		
+		for(String visitor : visitorScore.keySet()) {
+			friendScore.merge(visitor, visitorScore.get(visitor), Integer :: sum);
+		}
+		return friendScore;
+	}
+	private static Map<String,Integer> countFriend(List<String> friendForRecommand){
+		Map<String,Integer> friendScore = new TreeMap<String,Integer>();
+		for(String friend : friendForRecommand) {
+			
+			if(friendScore.get(friend) != null)
+				friendScore.put(friend, friendScore.get(friend)+10);
+			
+			if(friendScore.get(friend) == null)
+				friendScore.put(friend, 10);
+		}
+		return friendScore;
+	}
+	private static Map<String,Integer> countVisitor(List<String> visitors){
+		Map<String,Integer> friendScore = new TreeMap<String,Integer>();
+		for(String vistor : visitors) {
+			
+			if(friendScore.get(vistor) != null)
+				friendScore.put(vistor, friendScore.get(vistor)+1);
+			
+			if(friendScore.get(vistor) == null)
+				friendScore.put(vistor, 1);
+		}
+		return friendScore;
+	}
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         //"이미 친구"
@@ -89,6 +123,9 @@ public class Problem7 {
 		
 		//"친구를 제외한 방문자 목록"
 		List<String> visitorsWithoutMyFriends = getVisitorsWithoutMyFriends(visitors, alreadyFriends);
+		
+		//"추천 예정 친구,점수"
+		Map<String,Integer> friendScore = getFriendScore(friendForRecommands, visitorsWithoutMyFriends);
 		
 		
 		
