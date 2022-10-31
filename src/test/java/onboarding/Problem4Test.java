@@ -69,4 +69,14 @@ class Problem4Test {
 		System.out.println("expected = $START" + expected + "$END");
 		assertThat(convertedResult).isEqualTo(expected);
 	}
+
+	@ParameterizedTest(name = "MAIN TEST ''''{0}'''' ==> ''''{1}''''")
+	@CsvSource(value = {"    :    ", " ABc D : ZYx W ", "'':''", "Hello World:Svool Dliow",
+			"WooTeCo is AWESOME!  :DllGvXl rh ZDVHLNV!  "},
+			delimiter = ':', ignoreLeadingAndTrailingWhitespace = false)
+	void solutionTest(String word, String expected) {
+		String result = Problem4.solution(word);
+
+		assertThat(result).isEqualTo(expected);
+	}
 }
