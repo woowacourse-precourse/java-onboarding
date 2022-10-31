@@ -31,6 +31,7 @@ class ApplicationTest {
             List<Integer> pobi = List.of(99, 102);
             List<Integer> crong = List.of(211, 212);
             int result = -1;
+            System.out.println(Problem1.solution(pobi, crong));
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
     }
