@@ -1,9 +1,13 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
+
+/**
+ * user의 친구를 구한 뒤 주어진 friends 배열에서 친구의 친구인 사람을 찾아 10점 부여(user가 아닐 경우)
+ * 방문 횟수 배열에 존재하면 1점 부여(user가 아닐 경우)
+ * 추천 점수가 같을 경우 이름순으로 정렬
+ */
+
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -56,6 +60,7 @@ public class Problem7 {
             }
         }
         List<String> names = new ArrayList<>(record.keySet());
+        Collections.sort(names);
         Collections.sort(names,(k,v)->record.get(v).compareTo(record.get(k)));
 
         //이미 친구인 경우를 제외하고 answer에 추가
@@ -66,10 +71,8 @@ public class Problem7 {
             }else{
                 answer.add(names.get(i));
             }
-
             if(i==4)break;
         }
-
         return answer;
     }
 }
