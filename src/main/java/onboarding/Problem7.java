@@ -11,6 +11,20 @@ public class Problem7 {
                 addFriendUsers(user, friend, friendUsers);
             }
         }
+
+        Map<String, Integer> friendsScoreMap = new HashMap<>();
+
+        for (List<String> friend : friends) {
+            if (friend.contains(user)) {
+                continue;
+            }
+
+            for (String friendUser : friendUsers) {
+                if (friend.contains(friendUser)) {
+                    addTogetherKnowFriendsScore(friend, friendUser, friendsScoreMap);
+                }
+            }
+        }
     }
 
     private static void addFriendUsers(String user, List<String> friend, List<String> friendUsers) {
@@ -20,4 +34,13 @@ public class Problem7 {
             }
         }
     }
+
+    private static void addTogetherKnowFriendsScore(List<String> friend, String friendUser, Map<String, Integer> friendsScoreMap) {
+        for (int i = 0; i < friend.size(); i++) {
+            if (!friend.get(i).equals(friendUser)) {
+                friendsScoreMap.merge(friend.get(i), 10, (oldValue, newValue) -> oldValue + 10);
+            }
+        }
+    }
+
 }
