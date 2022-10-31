@@ -5,13 +5,8 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
-        boolean isValidPages = true;
-        /*  포비나 크롱이 펼친 페이지들이 유효하지 않은지 검사 */
-        if (pobi.get(0) % 2 != 1 || crong.get(0) % 2 != 1)
-            isValidPages = false;
-        if (pobi.get(1) - pobi.get(0) != 1 || crong.get(1) - crong.get(0) != 1)
-            isValidPages = false;
-        if (!isValidPages)
+
+        if (!isValidPages(pobi, crong))
             return -1;
 
         /* 각자 왼쪽 페이지 번호의 각 자리수를 더한 것과 곱한 것중 가장 큰 수 취하기 */
@@ -72,6 +67,16 @@ class Problem1 {
             answer = 0;
 
         return answer;
+    }
+    /*  포비나 크롱이 펼친 페이지들이 유효한지 검사 */
+    public static boolean isValidPages(List<Integer> pobi, List<Integer> crong) {
+        /*  각각의 왼쪽 페이지가 홀수가 맞는지 검사 */
+        if (pobi.get(0) % 2 != 1 || crong.get(0) % 2 != 1)
+            return false;
+        /*  각각의 왼쪽 오른쪽 페이지가 연속하는지 검사 */
+        if (pobi.get(1) - pobi.get(0) != 1 || crong.get(1) - crong.get(0) != 1)
+            return false;
+        return true;
     }
 }
 
