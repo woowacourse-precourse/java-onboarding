@@ -7,13 +7,14 @@ public class Problem7 {
 
         final int friends_to_friends_count = 10;
         final int visitors_count = 1;
-        
+
         HashMap<String, Integer> friendRecommendationMap = new HashMap<>();
 
         List<String> usersFriends = new ArrayList<>(findUserFriend(friends, user));
         List<String> usersFriendsToFriends = new ArrayList<>(findUserFriendToFriend(friends, usersFriends, user));
         countFriendsShip(friendRecommendationMap, usersFriendsToFriends, friends_to_friends_count);
         countFriendsShip(friendRecommendationMap, visitors, visitors_count);
+        removeUserFriends(friendRecommendationMap, usersFriends);
 
 
         List<String> answer = Collections.emptyList();
@@ -52,6 +53,12 @@ public class Problem7 {
                 continue;
             }
             friendRecommendationMap.put(name, count);
+        }
+    }
+
+    public static void removeUserFriends(HashMap<String, Integer> friendRecommendationMap, List<String> userFriends) {
+        for (String friend : userFriends) {
+            friendRecommendationMap.remove(friend);
         }
     }
 }
