@@ -8,6 +8,7 @@ public class Problem7 {
         List<String> answer = new ArrayList<>();
         List<String> userFriends = findUserFriends(user, friends);
         List<Person> friendList = findRecommendationFromFriends(user, friends, userFriends);
+        List<Person> visitorList = findRecommendationFromVisitors(visitors, userFriends);
         return answer;
     }
 
@@ -26,6 +27,15 @@ public class Problem7 {
                 list.add(item.get(1));
             else if(userFriends.contains(item.get(1)) && !item.get(0).equals(user))
                 list.add(item.get(0));
+        }
+        return new ArrayList<>();
+    }
+
+    private static List<Person> findRecommendationFromVisitors(List<String> visitors, List<String> userFriends){
+        List<String> list = new ArrayList<>();
+        for(String item : visitors){
+            if(!userFriends.contains(item))
+                list.add(item);
         }
         return new ArrayList<>();
     }
