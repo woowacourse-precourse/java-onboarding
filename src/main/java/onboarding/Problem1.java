@@ -27,6 +27,15 @@ class Problem1 {
         return total;
     }
 
+    private int getTotalByMultiply(List<Integer> eachDigit) {
+        //곱셈은 1이 기본값.
+        int total = 1;
+        for (Integer num : eachDigit) {
+            total = total * num;
+        }
+        return total;
+    }
+
     private List<Integer> getEachDigit(int num) {
         List<Integer> eachDigit = new ArrayList<>();
         String stringNum = changeIntegerToString(num);
