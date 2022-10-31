@@ -126,12 +126,31 @@ public class Problem7 {
 
         return visitorsScore;
     }
+
+    private static HashMap<String, Integer> sumScore(HashMap<String, Integer> friendsScore, HashMap<String, Integer> visitorsScore){
+        HashMap<String, Integer> allScore = new HashMap<String, Integer>(friendsScore);
+        for (String visitor : visitorsScore.keySet()) {
+            if (allScore.containsKey(visitor)){
+                int score = allScore.get(visitor);
+                score += visitorsScore.get(visitor);
+
+                allScore.put(visitor, score);
+            }else {
+                int score = visitorsScore.get(visitor);
+
+                allScore.put(visitor,score);
+            }
+        }
+
+        return allScore;
+    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
         List<String> userFriends = getFriends(user, friends);
         HashMap<String, List<String>> userFriendsOfFriends = getFriendsOfFriends(user, friends, userFriends);
         HashMap<String, Integer> friendsScore = getFriendsScore(userFriends, userFriendsOfFriends);
         HashMap<String, Integer> visitorsScore = getVisitorsScore(userFriends, visitors);
+        HashMap<String, Integer> allScore = sumScore(friendsScore, visitorsScore);
 
         List<String> answer = Collections.emptyList();
         return answer;
