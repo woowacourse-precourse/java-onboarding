@@ -6,9 +6,14 @@ public class Problem6 {
     static Map<String, String> crews = new HashMap<>();
     public static List<String> solution(List<List<String>> forms) {
         initialCrews(forms);
-
-        List<String> answer = List.of("answer");
+        List<String> answer = deleteEmailDuplicate(checkDuplicate());
+        Collections.sort(answer);
         return answer;
+    }
+
+    private static List<String> deleteEmailDuplicate(List<String> emailList) {
+        Set<String> emailSet = new HashSet<>(emailList);
+        return new ArrayList<>(emailSet);
     }
 
     private static void initialCrews(List<List<String>> forms) {
