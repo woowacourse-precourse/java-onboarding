@@ -79,10 +79,7 @@ public class Problem7 {
 		}
 
 		removeAlreadyFriends(data, userFriends);
-
-		//점수가 0인 값 전부 삭제
-		data.entrySet().removeIf(
-				entry -> entry.getValue().equals(0));
+		removeZeroScore(data);
 
 		//점수가 큰 순으로 정렬, 점수가 같다면 사전순으로 정렬
 		List<Map.Entry<String, Integer>> list = new ArrayList<>(data.entrySet());
@@ -112,5 +109,10 @@ public class Problem7 {
 				user.remove(name);
 			}
 		}
+	}
+
+	private static void removeZeroScore(Map<String, Integer> scoreInfo){
+		scoreInfo.entrySet().removeIf(
+				entry -> entry.getValue().equals(0));
 	}
 }
