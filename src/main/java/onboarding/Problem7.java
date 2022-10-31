@@ -219,7 +219,7 @@ public class Problem7 {
      * @param userB 사용자 B
      */
     private static void idValidation(String userA, String userB) {
-        // 사용자의 아이디의 길이는 1~30 사이여야 한다.
+        // 사용자의 아이디의 길이는 1~30 사이여야 하며, 소문자로 이루어져 있다.
         ValidationUtil userAValidation = new ValidationUtil();
         userAValidation.addVarName("userId");
         userAValidation.checkStrLowerCase(userA, 1, 30);

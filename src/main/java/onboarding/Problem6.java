@@ -63,6 +63,7 @@ public class Problem6 {
      * @param nickname 입력받은 닉네임
      */
     private static void checkNicknameCond(String nickname) {
+        // 닉네임은 한글로만 이루어져 있으며, 길이는 1~19 사이여야 한다.
         String regex = "^[ㄱ-ㅎㅏ-ㅣ가-힣]{1,19}$";
         if (!Pattern.matches(regex, nickname)) {
             throw new InputRangeException("닉네임은 한글로만 이루어져야 하며, 길이는 1~19자까지 가능합니다.");
