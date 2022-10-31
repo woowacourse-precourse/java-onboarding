@@ -2,7 +2,6 @@ package onboarding;
 
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -21,7 +20,7 @@ public class Problem7 {
         addMutualFriend(user, friends);
         addVisitedPerson(user, visitors);
         List<String> sortedRecommendList = getSortedRecommendList();
-        return Collections.emptyList();
+        return getNRecommendList(sortedRecommendList, 5);
     }
 
     private static void saveUserFriendList(String user, List<List<String>> friends) {
@@ -91,5 +90,17 @@ public class Problem7 {
         });
 
         return recommendList;
+    }
+
+    private static List<String> getNRecommendList(List<String> sortedRecommendList, int n) {
+        ArrayList<String> nRecommendList = new ArrayList<>();
+
+        int size = Math.min(n, sortedRecommendList.size());
+
+        for (int i = 0; i < size; i++) {
+            nRecommendList.add(sortedRecommendList.get(i));
+        }
+
+        return nRecommendList;
     }
 }
