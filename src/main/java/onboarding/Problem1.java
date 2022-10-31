@@ -5,20 +5,22 @@ import java.util.List;
 class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-
+        int answer;
         boolean flag = checkInput(pobi, crong);
         if (flag) {
             int maxPobi = calMaxValue(pobi);
             int maxCrong = calMaxValue(crong);
             if (maxPobi > maxCrong) {
-                return 1;
+                answer = 1;
             } else if (maxPobi == maxCrong) {
-                return 0;
+                answer = 0;
             } else {
-                return 2;
+                answer = 2;
             }
+        } else {
+            answer = -1;
         }
-        return -1;
+        return answer;
     }
     // 입력 값이 제대로 되어 있는지 확인하는 함수
     public static boolean checkInput(List<Integer> arr1, List<Integer> arr2) {
