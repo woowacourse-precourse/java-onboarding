@@ -44,13 +44,14 @@ public class Problem2 {
         if (currentCh == nextCh) {
             int j = getLastConsecutiveIndex(cryptogram, currentCh, start + 1);
             duplicatedParts.add(cryptogram.substring(start, j));
-            return j - 1;
+            return j;
         }
-        return start;
+        return start + 1;
     }
 
     public static void readCryptogram(String cryptogram, List<String> duplicatedParts) {
-        for (int i=0; i<cryptogram.length() - 1; i++)
+        int i = 0;
+        while (i < cryptogram.length() - 1)
             i = getNextReadIndex(cryptogram, duplicatedParts, i);
     }
 }
