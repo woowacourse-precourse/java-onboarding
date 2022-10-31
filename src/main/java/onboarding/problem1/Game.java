@@ -2,35 +2,31 @@ package onboarding.problem1;
 
 public class Game {
 
-    private int numAdd;
-    private int numMul;
+    private int result = 0;
 
-    private int result;
-
-    public Game(int n1, int n2){
-        numAdd = n1;
-        numMul = n2;
-        int result1 = addAll();
-        int result2 = mulAll();
-        result = Math.max(result1, result2);
+    public Game(int left, int right){
+        addAll(left);
+        addAll(right);
+        mulAll(left);
+        mulAll(right);
     }
 
-    private int addAll(){
+    private void addAll(int n){
         int sum = 0;
-        while (numAdd >= 1) {
-            sum += numAdd % 10;
-            numAdd /= 10;
+        while (n >= 1) {
+            sum += n % 10;
+            n /= 10;
         }
-        return sum;
+        result = Math.max(sum, result);
     }
 
-    private int mulAll(){
+    private void mulAll(int n){
         int mul = 1;
-        while (numMul >= 1) {
-            mul *= numMul % 10;
-            numMul /= 10;
+        while (n >= 1) {
+            mul *= n % 10;
+            n /= 10;
         }
-        return mul;
+        result = Math.max(mul, result);
     }
 
     public int getResult(){
