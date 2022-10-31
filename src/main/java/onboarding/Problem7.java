@@ -9,23 +9,50 @@ public class Problem7 {
         List<String> userFriendList = new ArrayList<>();
         Map<String, Integer> recommendScore = new HashMap<>();
         for (List<String> relation : friends) {
-            if (relation.contains(user)) {
+            if(relation.contains(user)){
                 addUserFriend(user, userFriendList, relation);
             }
         }
 
         for (List<String> relation : friends) {
             for (String friend : userFriendList) {
-                if (relation.contains(user)) {
+                if(relation.contains(user)){
                     break;
                 }
                 checkRelationContainUserFriend(userFriendList, recommendScore, relation, friend);
             }
         }
         checkVisitors(visitors, userFriendList, recommendScore);
+
+        List<String> sortedRecommendList = new ArrayList<>(recommendScore.keySet());
+        sortByScore(recommendScore, sortedRecommendList);
+        
         return answer;
     }
-    
+    private static void sortByScore(Map<String, Integer> recommendScore, List<String> sortedRecommendList) {
+        Collections.sort(sortedRecommendList, new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                if(recommendScore.get(o1) > recommendScore.get(o2)){
+                    return -1;
+                }
+                if(recommendScore.get(o1) < recommendScore.get(o2)) {
+                    return 1;
+                }
+                if(recommendScore.get(o1) == recommendScore.get(o2)){
+                    if(o1.charAt(0) > o2.charAt(0)){
+                        return 1;
+                    }
+                    if(o1.charAt(0) < o2.charAt(0)){
+                        return -1;
+                    }
+
+                }
+                return 0;
+            }
+        });
+    }
+
     private static void checkVisitors(List<String> visitors, List<String> userFriendList, Map<String, Integer> recommendScore) {
         for (String visitor : visitors) {
             if(!userFriendList.contains(visitor)){
