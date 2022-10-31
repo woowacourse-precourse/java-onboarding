@@ -12,6 +12,10 @@ public class Problem5 {
         1. 화폐 단위를 내림차순으로 저장하는 배열 선언
         2. 배열을 순회하며 파라미터 money를 가능한 한 화폐로 교환하여 카운트
         */
+        for ( int monetaryUnit : monetaryUnits ){
+            answer.add(money/monetaryUnit);
+            money %= monetaryUnit;
+        }
         return answer;
     }
 }
