@@ -6,13 +6,8 @@ public class Problem4 {
 
         for (int i=0; i<word.length(); i++) {
             char currentCh = word.charAt(i);
-            if (Character.isAlphabetic(currentCh)) {
-                char convertedCh = getConvertedLetter(currentCh);
-                answer += convertedCh;
-            }
-            else {
-                answer += currentCh;
-            }
+            char convertedCh = getConvertedLetter(currentCh);
+            answer += convertedCh;
         }
 
         return answer;
@@ -40,9 +35,8 @@ public class Problem4 {
 /*
 <<기능 목록>>
 - [V] 문자열의 각 문자를 순회한다
-- [V] 각 문자가 알파벳인지 판별한다
-- [V] 알파벳이 아니면 그대로 answer에 더한다
 - [V] 알파벳이면 소문자인지 대문자인지 판별한다
 - [V] 알파벳을 변환한다
+- [V] 알파벳이 아니면 변환하지 않는다
 - [V] 변환한 알파벳을 answer에 더한다
  */
