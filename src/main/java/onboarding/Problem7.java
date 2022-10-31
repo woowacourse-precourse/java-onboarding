@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 
 public class Problem7 {
     static Map<String,List<String>> friendMap;
+    static Map<String, Integer> visitorScore;
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         initFriendRelation(friends);
         Map<String, Integer> visitorScore = getVisitorScore(user, visitors);
@@ -27,35 +28,34 @@ public class Problem7 {
     }
 
     private static Map<String, Integer> getVisitorScore(String user, List<String> visitors) {
-        Map<String, Integer> visitorScore = calculateFriendFriend(user);
-        calculateVisitor(visitors, visitorScore);
-        removeUserFriend(user, visitorScore);
-        removeUser(user, visitorScore);
+        visitorScore= new HashMap<>();
+        calculateFriendFriend(user);
+        calculateVisitor(visitors);
+        removeUserFriend(user);
+        removeUser(user);
         return visitorScore;
     }
-    private static Map<String, Integer> calculateFriendFriend(String user) {
-        Map<String,Integer> visitorScore = new HashMap<>();
+    private static void calculateFriendFriend(String user) {
         for (String friend : friendMap.get(user)) {
             for (String friendFriend : friendMap.getOrDefault(friend,new ArrayList<>())) {
                 visitorScore.merge(friendFriend,10,Integer::sum);
             }
         }
-        return visitorScore;
     }
-    private static void calculateVisitor(List<String> visitors, Map<String, Integer> visitorScore) {
+    private static void calculateVisitor(List<String> visitors) {
         for (String visitor : visitors) {
             visitorScore.merge(visitor,1,Integer::sum);
         }
     }
 
 
-    private static void removeUserFriend(String user, Map<String, Integer> visitorScore) {
+    private static void removeUserFriend(String user) {
         for (String friend : friendMap.get(user)) {
-            removeUser(friend, visitorScore);
+            removeUser(friend);
         }
     }
 
-    private static void removeUser(String user, Map<String, Integer> visitorScore) {
+    private static void removeUser(String user) {
         visitorScore.remove(user);
     }
 
