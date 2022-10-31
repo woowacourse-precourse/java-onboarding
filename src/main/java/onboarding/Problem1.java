@@ -4,12 +4,20 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        boolean page = validation(pobi,crong);
-        int answer = Integer.MAX_VALUE;
-        if(!page){
+        boolean page = validation(pobi, crong);
+        if (!page) {
             return -1;
         }
+
+        int answer = Integer.MAX_VALUE;
         return 0;
+    }
+    private static int max(int a, int b){
+        if(a>b){
+            return a;
+        } else{
+            return b;
+        }
     }
     private static boolean validation(List<Integer> pobi, List<Integer> crong){
         boolean result = true;
