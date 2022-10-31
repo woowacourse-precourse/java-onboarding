@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Problem6 {
@@ -9,7 +10,8 @@ public class Problem6 {
     3. 중복일 시 리스트에 이메일 push
      */
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer = new ArrayList<>();
+
         return answer;
     }
 
@@ -28,7 +30,7 @@ public class Problem6 {
     }
 
     // 리스트에 없는 이메일만 추가하는 함수 addEmail()
-    private void addEmail(List<String> answer, String email){
+    private static void addEmail(List<String> answer, String email){
         if(!answer.contains(email)){
             answer.add(email);
         }
