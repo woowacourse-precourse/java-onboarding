@@ -6,6 +6,15 @@ public class Problem3 {
         return answer;
     }
 
+    public static int countClapping(int number){
+        int count = 0;
+        for(int i = 1; i <= number; i++){
+            count += count369DigitNumber(i);
+        }
+
+        return count;
+    }
+
     public static int count369DigitNumber(int x){
         int count = 0;
         for(int digit; x != 0; x /= 10){
