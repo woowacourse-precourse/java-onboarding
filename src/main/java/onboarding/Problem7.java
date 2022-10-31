@@ -3,6 +3,7 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /*
 * 1. 크루의 이름, 친구 이름 List, List<Suggestion> 을 필드로 가지는 Crew class 생성
@@ -50,6 +51,12 @@ class Crew {
 
     public boolean isFriend(String name) {
         return friends.contains(name);
+    }
+
+    public List<String> getKnowEachOtherFriends(Crew crew) {
+        return friends.stream()
+                .filter(friend -> crew.friends.contains(friend))
+                .collect(Collectors.toList());
     }
 }
 
