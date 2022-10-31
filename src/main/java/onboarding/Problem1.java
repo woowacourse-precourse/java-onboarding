@@ -20,6 +20,15 @@ class Problem1 {
         return Math.max(sum,mul);
     }
 
+    //양 페이지 비교(친구의 최종 점수)
+    public static int pageCom(List<Integer> pageList){
+        int temp, score = 0;
+        for(int i = 0; i<2 ; i++){
+            temp = pageMax(pageList.get(i));
+            score = Math.max(score,temp);
+        }
+        return score;
+    }
 
 }
 
