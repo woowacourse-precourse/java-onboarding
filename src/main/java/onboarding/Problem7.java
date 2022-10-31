@@ -52,7 +52,7 @@ public class Problem7 {
         return problem.HeadCountLimit(recommendUserList, 5);
     }
 
-    public void getScoreByConnection (HashMap<String, Integer> scoreList,String person) {
+    public void getScoreByConnection (HashMap<String, Integer> scoreList, String person) {
         int score = 10;
         if (!scoreList.containsKey(person)) {
             scoreList.put(person, score);
