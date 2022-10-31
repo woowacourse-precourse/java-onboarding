@@ -4,7 +4,7 @@ import java.util.List;
 
 class Problem1 {
 
-    private boolean checkException(List<Integer> pobi, List<Integer> crong) {
+    private static boolean checkException(List<Integer> pobi, List<Integer> crong) {
 
         if (pobi.get(1) - pobi.get(0) != 1) {
             return false;
@@ -18,14 +18,14 @@ class Problem1 {
             return false;
         }
 
-        if ((pobi.get(1) == 400) || (crong.get(1) == 400) {
+        if ((pobi.get(1) == 400) || (crong.get(1) == 400)) {
             return false;
         }
 
         return true;
     }
 
-    private int plusPage(Integer page) {
+    private static int plusPage(Integer page) {
 
         int num = 0;
         String page_str = Integer.toString(page);
@@ -37,7 +37,7 @@ class Problem1 {
         return num;
     }
 
-    private int multiplyPage(Integer page) {
+    private static int multiplyPage(Integer page) {
 
         int num = 1;
         String page_str = Integer.toString(page);
@@ -49,7 +49,7 @@ class Problem1 {
         return num;
     }
 
-    private int compareNum(int num1, int num2) {
+    private static int compareNum(int num1, int num2) {
         if (num1 > num2) {
             return num1;
         } else {
@@ -79,7 +79,7 @@ class Problem1 {
 
         if (pobiMaxNum < crongMaxNum) {
             answer = 2;
-        } else (pobiMaxNum > crongMaxNum) {
+        } else if (pobiMaxNum > crongMaxNum) {
             answer = 1;
         } else {
             answer = 0;
