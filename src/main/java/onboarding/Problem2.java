@@ -44,9 +44,15 @@ public class Problem2 {
         }
         return string;
     }
-    
+
+    public static String refeatRemove(String code) {
+        while (checkNotDuplicate(code)) {
+            code = removeDuplication(code);
+        }
+        return code;
+    }
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String answer = refeatRemove(cryptogram);
         return answer;
     }
 }
