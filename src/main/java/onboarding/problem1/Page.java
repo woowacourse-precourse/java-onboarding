@@ -36,4 +36,46 @@ public class Page {
     public boolean isBetween(int start, int end) {
         return start <= left & right <= end;
     }
+
+    private int multiply(int num) {
+        int result = 1;
+        while (num > 0) {
+            result *= num % 10;
+            num /= 10;
+        }
+        return result;
+    }
+
+    private int add(int num) {
+        int result = 0;
+        while ( num > 0) {
+            result += num % 10;
+            num /= 10;
+        }
+        return result;
+    }
+
+    private int getAddMax(int left, int right) {
+        if (add(left) > add(right)){
+            return add(left);
+        } else{
+            return add(right);
+        }
+    }
+
+    private int getMultiplyMax(int left, int right) {
+        if (multiply(left) > multiply(right)){
+            return multiply(left);
+        } else{
+            return multiply(right);
+        }
+    }
+
+    public int getScore(){
+        if (getAddMax(this.getLeft(), this.getRight()) > getMultiplyMax(this.getLeft(), this.getRight())) {
+            return getAddMax(this.getLeft(), this.getRight());
+        } else{
+            return getMultiplyMax(this.getLeft(), this.getRight());
+        }
+    }
 }
