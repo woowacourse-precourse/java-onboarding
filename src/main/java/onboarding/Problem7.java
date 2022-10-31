@@ -63,6 +63,30 @@ public class Problem7 {
         }
     }
 
+    // 나와 함께 아는 친구를 바탕으로 추천 스코어 반영하기
+    public static void setTogetherAcquaintanceScore(
+            String user, Map<String, Integer> recommendScore, List<List<String>> friendsShip, List<String> myFriends) {
+
+        // 내 친구의 수만큼 반복한다. (친구가 없다면 반복하지 않고 종료)
+        for (String myFriend : myFriends) {
+            // 전체 유저의 친구 관계를 순회한다.
+            // 친구 관계를 나타내는 리스트를 하나씩 순회하며
+            for (List<String> friendShip : friendsShip) {
+                // 내 친구목록에 있는 이름과 일치한 항목이 있고, 내 이름이 들어있지 않은 항목을 가진
+                // 리스트 원소라면 그 원소는 나와 함께하는 친구를 가리키는 것이다.
+                if (friendShip.get(0).equals(myFriend) && !friendShip.get(1).equals(user)) {
+                    recommendScore.put(friendShip.get(1), (recommendScore.get(friendShip.get(1)) + 10));
+                }
+
+                else if (friendShip.get(1).equals(myFriend) && !friendShip.get(0).equals(user)) {
+                    recommendScore.put(friendShip.get(0), (recommendScore.get(friendShip.get(0)) + 10));
+                }
+            }
+        }
+    }
+
+
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
