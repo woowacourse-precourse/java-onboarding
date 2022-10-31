@@ -26,6 +26,26 @@ class Problem1 {
         return modNum;
     }
 
+    public static int maxResult(ArrayList<Integer> arrayList) {
+        int cnt = 0;
+        int sum = 0;
+        int mul = 1;
+        int max = 0;
+        int[] maxArr = new int[2];
+        for (int y = 0; y < 2; y++) {
+            for (int i = 0; i < arrayList.size() / 2; i++) {
+                sum += arrayList.get(cnt);
+                mul *= arrayList.get(cnt);
+                cnt++;
+                maxArr[y] = Math.max(sum, mul);
+            }
+            sum = 0;
+            mul = 1;
+            max = Math.max(maxArr[0], maxArr[1]);
+        }
+        return max;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         // 1. page 정상인지 확인 후 비정상일 경우 -1 return
         int answer = Integer.MAX_VALUE;
@@ -36,6 +56,8 @@ class Problem1 {
         ArrayList<Integer> pobiResult = mod(pobi);
         ArrayList<Integer> crongReuslt = mod(crong);
         // 3. pobi 와 crong 의 최대값 구하기
+        int pobiMax = maxResult(pobiResult);
+        int crongMax = maxResult(crongReuslt);
         // 4. 승부에 따라 0,1,2 return
 
         return answer;
