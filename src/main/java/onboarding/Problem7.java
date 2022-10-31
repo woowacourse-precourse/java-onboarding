@@ -17,15 +17,7 @@ public class Problem7 {
             return Collections.emptyList();
         }
 
-        answer = new ArrayList<>(score.keySet());
-
-        Collections.sort(answer, (o1, o2) -> {
-            if (score.get(o1) != score.get(o2)) {
-                return score.get(o2).compareTo(score.get(o1));
-            } else {
-                return o1.compareTo(o2);
-            }
-        });
+        answer = sortDescValueAscKey(new ArrayList<>(score.keySet()), score);
 
         if (answer.size() > 5) {
             answer = answer.subList(0, 5);
@@ -74,5 +66,17 @@ public class Problem7 {
                 }
             }
         }
+    }
+
+    public static List<String> sortDescValueAscKey(List<String> sortList,  HashMap<String, Integer> score) {
+        Collections.sort(sortList, (o1, o2) -> {
+            if (score.get(o1) != score.get(o2)) {
+                return score.get(o2).compareTo(score.get(o1));
+            } else {
+                return o1.compareTo(o2);
+            }
+        });
+
+        return sortList;
     }
 }
