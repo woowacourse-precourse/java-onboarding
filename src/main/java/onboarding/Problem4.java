@@ -23,8 +23,6 @@ public class Problem4 {
         else if(c>='A' && c<='Z'){
             return (char)(('Z'-c)+'A');
         }
-        else{
-            return c;
-        }
+        return c;
     }
 }
