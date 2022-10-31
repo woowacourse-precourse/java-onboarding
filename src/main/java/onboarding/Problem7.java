@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -52,7 +49,13 @@ public class Problem7 {
                 candidates.remove(alreadyFriend);
         }
         candidates.remove(user);
-
+        for (String key : candidates.keySet()) {
+            scoreLists.add(new ScoreList(key, candidates.get(key)));
+        }
+        scoreLists.sort(Comparator.comparing(ScoreList::getScore).reversed().thenComparing(ScoreList::getName));
+        for (int cnt = 0; cnt < scoreLists.size() && cnt < 5; cnt++) {
+            answer.add(scoreLists.get(cnt).getName());
+        }
 
         return answer;
     }
