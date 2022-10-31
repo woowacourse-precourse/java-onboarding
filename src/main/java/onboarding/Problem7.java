@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -15,33 +16,53 @@ import onboarding.problem7.RecommendationFriend;
 
 import java.util.Collections;
 import java.util.List;
+import onboarding.problem7.Score;
 import onboarding.problem7.ValueComparator;
 import org.mockito.internal.matchers.Null;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
-        HashMap<String,Integer> result = new HashMap<String,Integer>();
+        Score score = getFriendScore(user, friends);
+        HashMap<String,Integer> finalScore = sumVisitorScore(visitors, score.getScore());
 
 
         return answer;
     }
-    private  static  List<String> getUserFriends(String user, List<List<String>> friends) {
-        List<String> result = new ArrayList<>();
+
+    private static Score getFriendScore(String user, List<List<String>> friends){
+        HashMap<String,Integer> tempScore = new HashMap<String,Integer>();
+        List<String> userFriends = new ArrayList<>();
+        Score result;
 
         for (int i=0; i < friends.size(); i++) {
             String userA = friends.get(i).get(0);
             String userB = friends.get(i).get(1);
 
-            if (userA == user) {
-                result.add(userB);
-            }  else if (userB == user) {
-                result.add(userA);
+            if (userA == user) { //유저B 친구
+                userFriends.add(userB);
+            } else if (userB == user) { // 유저A 친구
+                userFriends.add(userA);
+            } else if (userA != user && userB != user) { // 친구의 친구다
+                tempScore.put(userA, tempScore.getOrDefault(userA, 0)+10);
+                tempScore.put(userB, tempScore.getOrDefault(userB, 0)+10);
             }
         }
+        result = new Score(tempScore, userFriends);
+
         return result;
     }
 
+    private  static HashMap<String,Integer> sumVisitorScore(List<String> visitors, HashMap<String,Integer> score) {
+        HashMap<String,Integer> result = score;
+
+        for (int j=0; j<visitors.size(); j++)
+        {
+            String visitor = visitors.get(j);
+            result.put(visitor, result.getOrDefault(visitor, 0)+1);
+        }
+        return result;
+    }
     private static List<RecommendationFriend> sortRecommendationSocre(Map<String, Integer> recommendationFriends){
         List<RecommendationFriend> result = new ArrayList<>();
         ValueComparator valueComparator =  new ValueComparator(recommendationFriends);
@@ -146,7 +167,7 @@ public class Problem7 {
         List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
         List<String> t;
 
-        t = getUserFriends("mrko" ,friends);
+        t = solution("mrko", friends, visitors);
 
         for (String s : t ){
             System.out.println(s);
