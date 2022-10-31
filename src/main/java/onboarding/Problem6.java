@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 
@@ -30,6 +31,7 @@ public class Problem6 {
         HashSet<String> ToHashSet = new HashSet<>(Deduplication);
 
         List<String> answer = new ArrayList<>(ToHashSet);
+        answer.sort(Comparator.naturalOrder());
 
         return answer;
     }
