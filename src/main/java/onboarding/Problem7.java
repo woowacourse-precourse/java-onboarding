@@ -61,4 +61,17 @@ public class Problem7 {
         }
         return scoreRelation;
     }
+
+    private static HashMap<Integer, List<String>> reverseScoreRelation(HashMap<String, Integer> scoreRelation) {
+        HashMap<Integer, List<String>> scores = new HashMap<Integer, List<String>>();
+        List<String> basic = new ArrayList<String>();
+        for (String key: scoreRelation.keySet()) {
+            int score = scoreRelation.get(key);
+            List<String> socreList = scores.getOrDefault(key, basic);
+            socreList.add(key);
+            scores.put(score, socreList);
+        }
+        scores.remove(0);
+        return scores;
+    }
 }
