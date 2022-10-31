@@ -5,14 +5,15 @@ import java.util.List;
 
 public class Problem3 {
     public static int solution(int number) {
-        int answer = 0;
+        int answer = play369(number);
+
         return answer;
     }
 
     private static int play369(int n) {
         int count = 0;
 
-        for (int i = 0; i < n; i++) {
+        for (int i = 1; i <= n; i++) {
             List<Integer> digits = findDigits(i);
             count += compareWithNumber(digits);
         }
