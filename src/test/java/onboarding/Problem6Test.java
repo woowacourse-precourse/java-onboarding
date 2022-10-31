@@ -180,7 +180,7 @@ class Problem6Test {
     }
 
     @Nested
-    @DisplayName("Describe")
+    @DisplayName("MainClass 메소드를 테스트한다")
     class MainClassTest {
 
         private Main main;
@@ -188,12 +188,26 @@ class Problem6Test {
         private Crews crews;
 
         @Test
-        @DisplayName("makeCrewByNicknameAndEmail가 Crew 객체를 반환하는지 확인한다")
+        @DisplayName("makeCrewByNicknameAndEmail 메소드가 Crew 객체를 반환하는지 확인한다")
         void makeCrewByNicknameAndEmailTest() {
             main = new Main();
             String nickname = "크롱";
             String email = "crong@email.com";
             assertThat(main.makeCrewByEmailAndNickname(email, nickname)).isEqualTo(new Crew(email, nickname));
+        }
+
+        @Test
+        @DisplayName("makeCollectionCrews 메소드가 Crews 객체를 반환하는지 확인한다")
+        void makeCollectionCrewsTest() {
+            List<List<String>> forms = List.of(
+                    List.of("jm@email.com", "제이엠"),
+                    List.of("jason@email.com", "제이슨"),
+                    List.of("woniee@email.com", "워니"),
+                    List.of("mj@email.com", "엠제이"),
+                    List.of("nowm@email.com", "이제엠")
+            );
+            main = new Main();
+            assertThat(main.makeCollectionCrews(forms)).isInstanceOf(Crews.class);
         }
     }
 }
