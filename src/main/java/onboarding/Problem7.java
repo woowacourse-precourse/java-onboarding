@@ -37,6 +37,10 @@ public class Problem7 {
             }
         }
 
+        for (int i = 0; i < userFriends.size(); i++) {
+            recomList.remove(userFriends.get(i));
+        }
+
 
 
 
