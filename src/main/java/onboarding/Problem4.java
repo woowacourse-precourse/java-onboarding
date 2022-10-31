@@ -26,6 +26,7 @@ class ValidityCheckerProb4 {
   ValidityCheckerProb4(String word) {
     lengthValidityCheck(word);
   }
+
   private void lengthValidityCheck(String word) {
     if (word.length() < MINLIMIT || word.length() > MAXLIMIT) {
       throw new IllegalArgumentException("length of word is not in range.");
