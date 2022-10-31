@@ -7,6 +7,8 @@ import java.util.List;
 
 public class Problem7 {
 
+	private static final int FRIEND_OF_FRIEND_SCORE = 10;
+
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 		List<String> answer = Collections.emptyList();
 		return answer;
@@ -15,6 +17,32 @@ public class Problem7 {
 	public static void getRecommendFriends(String user, List<List<String>> friends, List<String> visitors) {
 		InputValidator.checkRightInput(user, friends, visitors);
 		HashMap<String, List<String>> friendsRelations = getFriendsRelations(friends, user);
+		HashMap<String, Integer> friendOfFriendScores = getFriendOfFriendScore(friendsRelations, user);
+	}
+
+	public static HashMap<String, Integer> getFriendOfFriendScore(final HashMap<String, List<String>> relations,
+		final String user) {
+		HashMap<String, Integer> relationsScore = new HashMap<>();
+		for (String friend : relations.get(user)) {
+			checkFriendsOfUser(relations, relationsScore, friend);
+		}
+		return relationsScore;
+	}
+
+	private static void checkFriendsOfUser(HashMap<String, List<String>> relations,
+		HashMap<String, Integer> relationsScore,
+		String friend) {
+		for (String friendOfFriend : relations.get(friend)) {
+			addFriendOfFriendScore(relationsScore, friendOfFriend);
+		}
+	}
+
+	private static void addFriendOfFriendScore(HashMap<String, Integer> relationsScore, final String friendOfFriend) {
+		if (relationsScore.containsKey(friendOfFriend)) {
+			relationsScore.put(friendOfFriend, relationsScore.get(friendOfFriend) + FRIEND_OF_FRIEND_SCORE);
+		} else {
+			relationsScore.put(friendOfFriend, FRIEND_OF_FRIEND_SCORE);
+		}
 	}
 
 	public static HashMap<String, List<String>> getFriendsRelations(final List<List<String>> friends, String user) {
