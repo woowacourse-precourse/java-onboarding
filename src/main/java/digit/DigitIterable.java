@@ -1,4 +1,4 @@
-package problem3;
+package digit;
 
 import java.util.function.Consumer;
 

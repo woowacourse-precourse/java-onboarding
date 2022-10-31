@@ -1,6 +1,6 @@
 package problem3;
 
-import static problem3.DigitIterable.forEachDigit;
+import static digit.DigitIterable.forEachDigit;
 
 public class Counter369 {
     private int totalCount = 0;
