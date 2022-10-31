@@ -12,6 +12,8 @@ import java.util.Set;
 public class Problem7 {
     private static final int FROM = 0;
     private static final int TO = 1;
+    private static final int VISIT_SCORE = 1;
+    private static final int FRIEND_SCORE = 10;
 
     private static Map<String, Set<String>> getRelation(List<List<String>> friends) {
         Map<String, Set<String>> friendsByName = new HashMap<>();
@@ -38,7 +40,7 @@ public class Problem7 {
                 visitorScore.put(visitor, 0);
             }
             int visitCnt = visitorScore.get(visitor);
-            visitorScore.replace(visitor, visitCnt + 1);
+            visitorScore.replace(visitor, visitCnt + VISIT_SCORE);
         }
         return visitorScore;
     }
@@ -101,7 +103,7 @@ public class Problem7 {
             for (String userFriend : userFriends) {
                 if (friends.contains(userFriend)) {
                     Integer score = scoreByName.get(name);
-                    scoreByName.replace(name, score + 10);
+                    scoreByName.replace(name, score + FRIEND_SCORE);
                 }
             }
         }
