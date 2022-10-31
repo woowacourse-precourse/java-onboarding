@@ -14,27 +14,46 @@ public class Problem7 {
         // 3. visitors의 점수 정리
 
         HashMap<String, List<String>> userHashMap = new HashMap<>();
+        HashMap<String, List<String>> friendsHashMap = new HashMap<>();
 
+
+        userHashMap = makeHashMap(userHashMap, user, friends);
+
+        return answer;
+    }
+
+    public static HashMap<String, List<String>> makeHashMap(HashMap<String, List<String>> hashMap, String name, List<List<String>> friends) {
         List<String> friendsList = new ArrayList<>();
-        userHashMap.put(user, friendsList);
+        hashMap.put(name, friendsList);
 
         for(int i = 0; i < friends.size(); i++) {
             List<String> tempFriendsList = friends.get(i);
-            if (tempFriendsList.contains(user)) {
-                if (tempFriendsList.get(0).equals(user)) {
-                    List<String> tempUserFriendsList = userHashMap.get(user);
+            if (tempFriendsList.contains(name)) {
+                if (tempFriendsList.get(0).equals(name)) {
+                    List<String> tempUserFriendsList = hashMap.get(name);
                     tempUserFriendsList.add(tempFriendsList.get(1));
-                    userHashMap.put(user, tempUserFriendsList);
+                    hashMap.put(name, tempUserFriendsList);
                 }
-                else if(tempFriendsList.get(1).equals(user)) {
-                    List<String> tempUserFriendsList = userHashMap.get(user);
+                else if(tempFriendsList.get(1).equals(name)) {
+                    List<String> tempUserFriendsList = hashMap.get(name);
                     tempUserFriendsList.add(tempFriendsList.get(0));
-                    userHashMap.put(user, tempUserFriendsList);
+                    hashMap.put(name, tempUserFriendsList);
                 }
             }
         }
 
-        return answer;
+        return hashMap;
     }
+
+//    public static HashMap<String, List<String>> getFriendsHashMap
+//            (HashMap<String, List<String>> friendsHashMap, HashMap<String, List<String>> userHashMap, String user) {
+//        List<String> userFriends = userHashMap.get(user);
+//
+//        for (int i = 0; i < userFriends.size(); i++) {
+//            String friendName = userFriends.get(i);
+//
+//        }
+//
+//    }
 
 }
