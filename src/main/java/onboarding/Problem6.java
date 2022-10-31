@@ -14,7 +14,8 @@ public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
         Map<String, List<String>> emailToSplitNickname = extractedSplitNickname(forms);
-        return getSimilarNicknameCrewEmails(forms, emailToSplitNickname);
+        List<String> similarNicknameCrewEmails = getSimilarNicknameCrewEmails(forms, emailToSplitNickname);
+        return removeDuplicateAndSort(similarNicknameCrewEmails);
     }
 
     private static Map<String, List<String>> extractedSplitNickname(List<List<String>> forms) {
@@ -42,7 +43,7 @@ public class Problem6 {
                 addSimilarNicknameCrewEmails(forms, answer, emailToSplitNickname, i);
             }
         }
-        return removeDuplicateAndSort(answer);
+        return answer;
     }
 
     private static void addSimilarNicknameCrewEmails(List<List<String>> forms,
