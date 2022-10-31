@@ -5,6 +5,15 @@ import java.util.List;
 
 public class Problem7 {
    //이름과 점수를 저장할 사용자 정의 자료형 생성
+   static class people_score{
+       public int score;
+       public String people;
+
+       public people_score(String people, int score){
+           this.people = people;
+           this.score = score;
+       }
+   }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
