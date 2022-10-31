@@ -6,3 +6,8 @@
 
 ### PROBLEM2
 1. 중복문자를 제거하는 메서드 deleteDup
+
+
+
+### PROBLEM4
+1. word를 변환하는 메서드 converWord
