@@ -21,6 +21,7 @@ public class Problem7 {
     private static final int VISITOR_POINT = 1;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        checkException(user, friends, visitors);
         friendsSetup(friends, user);
         updateScore(friends, visitors);
         removeMyFriendsAndValueIsZero();
@@ -32,6 +33,19 @@ public class Problem7 {
                 .limit(5)
                 .collect(Collectors.toList());
         return answer;
+    }
+
+    private static void checkException(String user, List<List<String>> friends, List<String> visitors) {
+        if (!isValidUserLength(user))
+            throw new IllegalArgumentException("user의 길이는 1~30 입니다.");
+
+        if (!isValidFriendsLength(friends))
+            throw new IllegalArgumentException("friends의 길이는 1~10000 이하인 리스트/배열입니다.");
+
+        isValidIdLengthAndIdSmallCaseRegex(user, friends, visitors);
+
+        if (!isValidVisitorsLength(visitors))
+            throw new IllegalArgumentException("visitors의 길이는 0~10000 입니다.");
     }
 
     private static boolean isValidUserLength(String user) {
