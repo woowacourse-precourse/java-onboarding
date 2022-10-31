@@ -20,7 +20,6 @@ public class Problem6 {
 }
 
 class DupeChecker {
-    private static List<Boolean> isdup_list = new ArrayList<>();
     private static List<List<String>> forms;
 
     public DupeChecker(List<List<String>> forms) {
@@ -44,17 +43,19 @@ class DupeChecker {
         return bigrams_list;
     }
 
-    private static void setIsdupList(List<List<String>> forms) {
+    private static List<Boolean> setIsdupeList() {
+        List<Boolean> isdupe_list = new ArrayList<>();
         for (int i=0; i<forms.size(); i++) {
-            isdup_list.add(false);
+            isdupe_list.add(false);
         }
+        return isdupe_list;
     }
 
     static List<Boolean> check() {
         List<List<String>> bigrams_list = makeBigramsList();
-        setIsdupList(forms);
+        List<Boolean> isdupe_list = setIsdupeList();
         for (int idx=0; idx<bigrams_list.size(); idx++) {
-            if (isdup_list.get(idx)) {
+            if (isdupe_list.get(idx)) {
                 continue;
             }
             // System.out.println(idx);
@@ -65,13 +66,13 @@ class DupeChecker {
                 for (int next=idx+1; next<bigrams_list.size(); next++) {
                     // System.out.println(bigrams_list.get(next));
                     if (bigrams_list.get(next).contains(bigram)) {
-                        isdup_list.set(idx, true);
-                        isdup_list.set(next, true);
+                        isdupe_list.set(idx, true);
+                        isdupe_list.set(next, true);
                         // System.out.println(isdup_list);
                     }
                 }
             }
         }
-        return isdup_list;
+        return isdupe_list;
     }
 }
