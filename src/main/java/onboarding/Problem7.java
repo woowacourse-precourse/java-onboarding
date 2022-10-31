@@ -54,7 +54,6 @@ public class Problem7 {
         while (recommendationIterator.hasNext()) {
             FriendRecommendation recommendation = recommendationIterator.next();
             String user = recommendation.user;
-            int score = recommendation.score;
 
             if (user.equals(mainUser) || friendsOfMainUser.contains(user)) {
                 recommendationIterator.remove();
