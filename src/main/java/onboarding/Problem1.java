@@ -10,6 +10,7 @@ class Problem1 {
             a/=10;
         }
         return result;
+        //자릿수 각각 구하는 것 구현
     }
     static int multi(int a) {
         int result = 1;
@@ -18,11 +19,14 @@ class Problem1 {
             a/=10;
         }
         return result;
+        // 곱셈은 결과값을 0으로 초기화하고 시작하면 어떤값이든 0이 나오는걸
+        //고려하지 못했음
     }
     static int checkMax(int a, int b) {
         return Math.max(a, b);
-    }
+    } // 두개의 수 중 더 큰것을 고르는 과정이 많아 함수로 구현
     //예외처리
+    // 제한사항과 문제속 예외들에 대한 처리
     static boolean except(List<Integer> a) {
         if(a.get(0)%2 == 0 || a.get(1)%2 != 0) {
             return false;
@@ -46,6 +50,7 @@ class Problem1 {
         int crong_max1 =checkMax(add(crong.get(0)), multi(crong.get(0)));
         int crong_max2 =checkMax(add(crong.get(1)), multi(crong.get(1)));
         int answer2 = checkMax(crong_max1, crong_max2);
+        // 결과값 처리
         if(checkMax(answer1, answer2) == answer1) {
             answer = 1;
         }
