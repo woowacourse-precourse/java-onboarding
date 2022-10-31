@@ -6,14 +6,12 @@ public class Problem3 {
 
 
         // 0번 : 100, 1번 : 1000, 2번 : 10000 각각의 369의 개수
+
         int[] countList = new int[3];
 
         countList[0] = tens(100);
-        System.out.println("countList[0] = " + countList[0]);
         countList[1] = hundreds(1000, countList);
-        System.out.println("countList[1] = " + countList[1]);
         countList[2] = hundreds(10000, countList);
-        System.out.println("countList[2] = " + countList[2]);
 
         if (number == 10000) {return countList[2];}
 
@@ -33,9 +31,14 @@ public class Problem3 {
                 break;
 
             case 4 :
+
                 answer = thousands(number,countList);
                 break;
 
+            case 5 :
+
+                answer =  countList[2];
+                break;
         }
 
 
@@ -49,10 +52,9 @@ public class Problem3 {
 
         String num = Integer.toString(number);
 
-        int cnt = num.length();
 
         // 1:1의 자리, 2:10의 자리 3:100의 자리 4:1000의 자리 5:10000의 자리
-        return cnt;
+        return num.length();
     }
 
 
@@ -60,7 +62,7 @@ public class Problem3 {
 
         if (number == 0) {return 0;}
 
-        return (int) number / 3;
+        return number / 3;
 
     }
 
@@ -68,9 +70,9 @@ public class Problem3 {
 
         if (number == 0) {return 0;}
 
-        int ten = (int) number / 10;
+        int ten = number / 10;
         int unit = number % 10;
-        int tensThreeCount = (int)ten/3;
+        int tensThreeCount = ten/3;
 
         int result = 0;
 
@@ -88,10 +90,10 @@ public class Problem3 {
 
         if (number == 0) {return 0;}
 
-        int hundred = (int) number / 100;
+        int hundred = number / 100;
         int ten = number - hundred * 100;
 
-        int hundredsThreeCount = (int) hundred/3;
+        int hundredsThreeCount = hundred/3;
 
         int result = 0;
 
@@ -109,10 +111,10 @@ public class Problem3 {
 
         if (number == 0) {return 0;}
 
-        int thousand = (int) number / 1000;
+        int thousand = number / 1000;
         int hundred = number - thousand * 1000;
 
-        int thousandsThreeCount = (int) thousand/3;
+        int thousandsThreeCount = thousand/3;
 
         int result = 0;
 
@@ -129,7 +131,7 @@ public class Problem3 {
 
 
     public static void main(String[] args) {
-        int number = 600;
+        int number = 10000;
 
         System.out.println(solution(number));
     }
