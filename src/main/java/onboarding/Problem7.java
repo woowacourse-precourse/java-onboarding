@@ -29,4 +29,18 @@ public class Problem7 {
         }
     }
 
+    // 2. 사용자의 친구 목록에 포함되어있는지 체크 ( = 사용자의 친구와 친구인지 확인 ) -> 맞으면 +10점
+    public static void checkFriendOfFriend(String user, List<List<String>> friends, List<String> friendList, Map<String, Integer> recommendedFriends) {
+        for (List<String> friend : friends) {
+            for (String name : friend) {
+                if (!friendList.contains(name) && !name.equals(user)) {
+                    if (recommendedFriends.containsKey(name)){
+                        recommendedFriends.put(name, recommendedFriends.get(name) + 10);
+                    }
+                    else recommendedFriends.put(name, 10);
+                }
+            }
+        }
+    }
+
 }
