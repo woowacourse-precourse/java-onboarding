@@ -29,8 +29,10 @@ public class Problem7 {
 
     static class Persons {
         Map<String, Person> personMap;
+        String user;
 
-        Persons() {
+        Persons(String user) {
+            this.user = user;
             personMap = new HashMap<>();
         }
         Person getPerson(String name) {
