@@ -1,15 +1,26 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         if (isException(forms)) throw new RuntimeException("잘못된 인자입니다.");
-        List<String> answer = List.of("answer");
-        return answer;
+
+        Map<String, List<String>> emailMap = getDuplicateEmail(forms);
+        List<List<String>> emailLists = emailMap.values().stream()
+                .filter(list -> list.size() > 1).collect(Collectors.toList());
+
+        List<String> emailList = getDistinctList(emailLists);
+        Collections.sort(emailList);
+
+        return emailList;
     }
 
     private static Boolean isException(List<List<String>> forms) {
@@ -38,9 +49,19 @@ public class Problem6 {
 
     private static Map<String, List<String>> getDuplicateEmail(List<List<String>> forms) {
         Map<String, List<String>> emailMap = new HashMap<>();
-        for(List<String> form : forms) {
+        for (List<String> form : forms) {
             nicknameSplitByTwo(form.get(1), emailMap, form.get(0));
         }
         return emailMap;
+    }
+
+    private static List<String> getDistinctList(List<List<String>> list) {
+        Set<String> set = new HashSet<>();
+        for (List<String> stringList : list) {
+            for (String string : stringList) {
+                set.add(string);
+            }
+        }
+        return new ArrayList<>(set);
     }
 }
