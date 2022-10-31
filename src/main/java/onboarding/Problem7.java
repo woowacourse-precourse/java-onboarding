@@ -10,7 +10,7 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         HashMap<String, ArrayList<String>> friendGraph = initFriendGraph(friends);
-        ArrayList<HashMap<String, Integer>> recommendScoreList = initRecommendScoreList();
+        HashMap<String, Integer> recommendScoreList = initRecommendScoreList();
         return answer;
     }
 
@@ -33,14 +33,14 @@ public class Problem7 {
     }
 
     // user의 추천친구에 대한 정보를 저장할 ArrayList를 초기화하는 함수
-    public static ArrayList<HashMap<String, Integer>> initRecommendScoreList() {
-        return new ArrayList<HashMap<String, Integer>>();
+    public static HashMap<String, Integer> initRecommendScoreList() {
+        return new HashMap<String, Integer>();
     }
 
     // user의 추천친구 리스트에 파라미터로 전달된 유저가 있는지 확인하는 함수
-    public static boolean checkUserInRecommendScoreList(ArrayList<HashMap<String, Integer>> recommendScoreList, String user) {
+    public static boolean checkUserInRecommendScoreList(HashMap<String, Integer> recommendScoreList, String user) {
         for (int i = 0; i < recommendScoreList.size(); i++) {
-            if (recommendScoreList.get(i).keySet().contains(user)) return true;
+            if (recommendScoreList.keySet().contains(user)) return true;
         }
         return false;
     }
