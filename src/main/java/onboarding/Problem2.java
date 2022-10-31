@@ -14,7 +14,7 @@ public class Problem2 {
                     if (currentCh == nextCh) {
                         int j = getLastConsecutiveIndex(cryptogram, currentCh, i + 1);
                         /* 연속되는 구간을 빈 문자열로 교체한다 */
-                        cryptogram = cryptogram.replace(cryptogram.substring(i, j), "");
+                        cryptogram = deleteConsecutiveRange(cryptogram, i, j);
                         /* label break로 처음으로 돌아간다 */
                         break duplicate;
                     }
@@ -33,6 +33,10 @@ public class Problem2 {
         while (j < cryptogram.length() && cryptogram.charAt(j) == ch)
             j++;
         return j;
+    }
+
+    public static String deleteConsecutiveRange(String cryptogram, int start, int end) {
+        return cryptogram.replace(cryptogram.substring(start, end), "");
     }
 }
 
