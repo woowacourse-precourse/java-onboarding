@@ -20,7 +20,7 @@ public class Problem2 {
 
 		checkException(cryptogram);
 
-		cryptogram_list = convertToList(cryptogram);
+		cryptogram_list =  convertToList(cryptogram);
 
 		do {
 			removeWord(findDuplicationRange(cryptogram_list), cryptogram_list);
