@@ -31,7 +31,7 @@ public class Problem6 {
                 String splitName = name.substring(j,j+2);
                 for (int k = 0; k < dupList.size(); k++) {
                     if(dupList.contains(splitName) && !dupMail.contains(email)){
-                        dupMail.add(forms.get(i).get(0));
+                        dupMail.add(email);
                     }
                 }
             }
