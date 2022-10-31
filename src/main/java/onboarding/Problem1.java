@@ -20,6 +20,16 @@ class Problem1 {
         return digit;
     }
 
+    private static int getAddNum(int num) {
+        int addNum = 0;
+        for (int i = getDigit(num) - 1; i >= 0; i--) {
+            int tens = (int)Math.pow(10, i);
+            addNum += num / tens;
+            num %= tens;
+        }
+        return addNum;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if (!checkPage(pobi) || !checkPage(crong))
             return -1;
