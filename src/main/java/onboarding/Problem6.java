@@ -27,7 +27,19 @@ public class Problem6 {
             for(int j = 0 ; j < name.length() - 1 ; j++){
                 String tempStr = name.substring(j,j+2);
 
-
+                //특정 단어를 포함한 다른 문자열이 있을경우
+                if(checkDuplicateWord.containsKey(tempStr)){
+                    List<String> emailList = checkDuplicateWord.get(tempStr);
+                    emailList.add(email);
+                    checkDuplicateWord.put(tempStr,emailList);
+                }
+                //특정 단어를 포함한 다른 문자열이 없을경우
+                else{
+                    List<String> tempList = new ArrayList<>();
+                    tempList.add(email);
+                    //특정 단어를 키로 하고 이메일을 값으로 넣어준다.
+                    checkDuplicateWord.put(tempStr , tempList);
+                }
             }
         }
 
