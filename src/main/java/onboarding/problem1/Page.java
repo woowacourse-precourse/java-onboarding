@@ -3,16 +3,23 @@ package onboarding.problem1;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Pages {
+public class Page {
     private static final int LEFT_PAGE = 0;
     private static final int RIGHT_PAGE = 1;
-    private final List<Integer> pages;
 
-    public Pages(List<Integer> pages) {
+    private final int leftPage;
+    private final int rightPage;
+
+    public Page(List<Integer> pages) {
+        validate(pages);
+        this.leftPage = pages.get(LEFT_PAGE);
+        this.rightPage = pages.get(RIGHT_PAGE);
+    }
+
+    private void validate(List<Integer> pages) {
         validateIsNotNull(pages);
         validateIsContinuous(pages);
         validateIsNotEvenAndOdd(pages);
-        this.pages = pages;
     }
 
     private void validateIsNotEvenAndOdd(List<Integer> pages) {
@@ -34,25 +41,14 @@ public class Pages {
     }
 
     public int getMaxLeftAndRight() {
-        int leftPageNum = getLeftPageNum();
-        int rightPageNum = getRightPageNum();
-
-        List<Integer> leftPageDigit = splitToDigitList(leftPageNum);
-        List<Integer> rightPageDigit = splitToDigitList(rightPageNum);
+        List<Integer> leftPageDigit = splitToDigitList(leftPage);
+        List<Integer> rightPageDigit = splitToDigitList(rightPage);
 
         int leftPageMax = getMaxSumAndMultiply(leftPageDigit);
         int rightPageMax = getMaxSumAndMultiply(rightPageDigit);
 
         return Math.max(leftPageMax, rightPageMax);
 
-    }
-
-    private Integer getLeftPageNum() {
-        return pages.get(LEFT_PAGE);
-    }
-
-    private Integer getRightPageNum() {
-        return pages.get(RIGHT_PAGE);
     }
 
     private int getMaxSumAndMultiply(List<Integer> digitList) {

@@ -1,6 +1,6 @@
 package onboarding;
 
-import onboarding.problem1.Pages;
+import onboarding.problem1.Page;
 
 import java.util.List;
 
@@ -13,11 +13,11 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         try {
-            Pages pobiPages = new Pages(pobi);
-            Pages crongPages = new Pages(crong);
+            Page pobiPage = new Page(pobi);
+            Page crongPage = new Page(crong);
 
-            int pobiMaxResult = pobiPages.getMaxLeftAndRight();
-            int crongMaxResult = crongPages.getMaxLeftAndRight();
+            int pobiMaxResult = pobiPage.getMaxLeftAndRight();
+            int crongMaxResult = crongPage.getMaxLeftAndRight();
 
             return getWinner(pobiMaxResult, crongMaxResult);
 
