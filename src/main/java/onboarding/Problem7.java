@@ -20,6 +20,16 @@ public class Problem7 {
         return answer;
     }
 
+    public static void increasePoint(String name, int point){
+        if(recommendationPoiont.containsKey(name)) {
+            int beforePoint = recommendationPoiont.get(name);
+            recommendationPoiont.replace(name, beforePoint + point);
+        }
+        else{
+            recommendationPoiont.put(name, point);
+        }
+    }
+
     public static String findFriendKnowFriend(List<String> friendship, List<String> userKnowFriends){
         String recommendationFriend = null;
         for(int i = 0; i < 2; i++){
