@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -33,5 +34,17 @@ public class Problem6 {
             duplicateNickname.add(elements.getValue());
         }
         return duplicateNickname;
+    }
+
+    public static List<String> getDuplicationNicknameList(List<List<String>> separateNicknameList) {
+        List<String> duplicateNicknameList = new ArrayList<>();
+        separateNicknameList.forEach(duplicateNicknameList::addAll);
+        List<String> distinctList = duplicateNicknameList.stream()
+                .distinct()
+                .collect(Collectors.toList());
+        for (String distinctElement : distinctList) {
+            duplicateNicknameList.remove(distinctElement);
+        }
+        return duplicateNicknameList.stream().distinct().collect(Collectors.toList());
     }
 }
