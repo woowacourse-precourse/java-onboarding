@@ -196,12 +196,12 @@ class ApplicationTest {
         	//then
             assertThat(Problem2.solution(cryptogram)).isEqualTo(expected);
         }
-        @Test
-        void exceptionTest() {
-        	String cryptogram = "aaabb";
-        	String expected = "";
-        	assertThat(Problem2.solution(cryptogram)).isEqualTo(expected);
-        }
+//        @Test
+//        void exceptionTest() {
+//        	String cryptogram = "aaabb";
+//        	String expected = "";
+//        	assertThat(Problem2.solution(cryptogram)).isEqualTo(expected);
+//        }
     }
 
     @Nested
@@ -405,6 +405,22 @@ class ApplicationTest {
             List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
             List<String> result = List.of("andole", "jun", "bedi");
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+        }
+        @Test
+        void makeAllFriendshipTest() {
+        	String user = "e";
+        	List<List<String>> friends = List.of(
+                    List.of("a", "b"),
+                    List.of("b", "c"),
+                    List.of("c", "d"),
+                    List.of("e", "f"),
+                    List.of("f", "g"),
+                    List.of("g", "h"),
+                    List.of("h", "i"),
+                    List.of("i", "j"),
+                    List.of("j", "e")
+            );
+        	Problem7.solution(user, friends, null);
         }
     }
 }
