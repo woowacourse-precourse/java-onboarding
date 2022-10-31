@@ -27,6 +27,7 @@ public class Problem4 {
     public static String solution(String word) {
         ArrayList<Character> result = frog(word);
         String answer = "";
+
         for(int i = 0;i< result.size();i++){
             answer += String.valueOf(result.get(i));
         }
