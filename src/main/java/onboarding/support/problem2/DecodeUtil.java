@@ -25,7 +25,7 @@ public class DecodeUtil {
             return originalString.toString();
         }
 
-        return decode(originalString.toString());
+        return decode(decodedString.toString());
     }
 
     private static boolean deleteDuplication(StringBuilder decodedString, int baseIndex, int duplicatedIndex) {
