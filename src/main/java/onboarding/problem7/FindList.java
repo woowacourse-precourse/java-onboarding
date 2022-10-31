@@ -14,21 +14,6 @@ public class FindList {
                 .distinct()
                 .collect(Collectors.toList());
 
-        List<String> updateFriendList = new ArrayList<>();
-
-        for (String friendId : friendList) {
-            String updateFriend = deleteUserByFriend(friendId, friendList, friends);
-            updateFriendList.add(updateFriend);
-        }
-        friendList.addAll(updateFriendList);
-
-        friendList = friendList.stream()
-                .filter(Objects::nonNull)
-                .filter(id -> !id.equals(user))
-                .distinct()
-                .collect(Collectors.toList());
-
-
         return friendList;
     }
 
@@ -44,18 +29,6 @@ public class FindList {
         }
 
         return new ArrayList<>(friendList);
-    }
-
-    private static String deleteUserByFriend(String friendId, List<String> friendList, List<List<String>> friends) {
-        String alreadyFriend = null;
-
-        for (List<String> friend : friends) {
-            alreadyFriend = friend.stream()
-                    .filter(id -> (friendList.contains(friendId) && !id.equals(friendId)))
-                    .collect(Collectors.joining());
-        }
-        
-        return alreadyFriend;
     }
 
     public static List<String> findFriendOfFriendList(String user, List<String> userFriend, List<List<String>> friends) {
@@ -77,9 +50,10 @@ public class FindList {
     private static String extractFriendOfFriend(String user, List<String> userFriend, List<String> elementOfFriends) {
         String friendOfFriend = null;
 
-        for (String friendId : userFriend) {
+        for (String ignored : userFriend) {
             friendOfFriend = elementOfFriends.stream()
-                    .filter(f -> ((!f.equals(user)) && (!userFriend.contains(f) || f.equals(friendId))))
+                    .filter(f -> ((!f.equals(user)) &&
+                            (!userFriend.contains(f) || !elementOfFriends.contains(f))))
                     .collect(Collectors.joining());
         }
 
