@@ -32,7 +32,6 @@ class Problem1 {
 
         return -1;
     }
-    /*가장 큰 수를 구하는 메소드*/
     public static int getMaxNumber(List<Integer> list){
 
         int leftNum = list.get(0);
