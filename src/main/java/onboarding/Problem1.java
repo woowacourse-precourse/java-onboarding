@@ -24,6 +24,9 @@ class Problem1 {
         if (pages.get(0) + 1 != pages.get(1)) {
             return false;
         }
+        else if (pages.contains(1) || pages.contains(400)) {
+            return false;
+        }
         return true;
     }
 
