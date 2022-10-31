@@ -43,4 +43,14 @@ public class Problem7 {
         }
     }
 
+    // 3. 사용자의 타임라인에 방문했는지 체크 -> 했으면 +1점
+    public static void checkVisitors(List<String> visitors, Map<String, Integer> recommendedFriends) {
+        for (String visitor : visitors) {
+            if (recommendedFriends.containsKey(visitor)) {
+                recommendedFriends.put(visitor, recommendedFriends.get(visitor) + 1);
+            }
+            else recommendedFriends.put(visitor, 1);
+        }
+    }
+
 }
