@@ -9,15 +9,21 @@ public class Problem7 {
 
     private static final int NEIGHBOR_POINT = 10;
     private static final int VISITOR_POINT = 1;
-    private static final List<String> USER_FRIENDS = new ArrayList<>();
-    private static final Map<String, Integer> RECOMMEND_SCORE = new HashMap<>();
+    private static List<String> USER_FRIENDS;
+    private static Map<String, Integer> RECOMMEND_SCORE;
 
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        init();
         getUserFriends(user, friends);
         getRecommendScoreByRelationship(user, friends);
         getRecommendScoreByVisitor(visitors);
         return getTotalRecommendUsers();
+    }
+
+    private static void init() {
+        USER_FRIENDS = new ArrayList<>();
+        RECOMMEND_SCORE = new HashMap<>();
     }
 
     private static void getUserFriends(String user, List<List<String>> friends) {

@@ -6,10 +6,11 @@ import java.util.stream.Collectors;
 
 public class Problem6 {
     private static final String ALLOWED_DOMAIN = "email.com";
-    private static final Map<String, List<String>> STUDENTS_INFO = new HashMap<>();
-    private static final Set<String> DUPLICATE_STUDENTS = new HashSet<>();
+    private static Map<String, List<String>> STUDENTS_INFO;
+    private static Set<String> DUPLICATE_STUDENTS;
 
     public static List<String> solution(List<List<String>> forms) {
+        init();
         for (List<String> info : forms) {
             String email = info.get(0);
             String nickName = info.get(1);
@@ -22,6 +23,11 @@ public class Problem6 {
         return DUPLICATE_STUDENTS.stream()
                 .sorted()
                 .collect(Collectors.toList());
+    }
+
+    private static void init() {
+        STUDENTS_INFO = new HashMap<>();
+        DUPLICATE_STUDENTS = new HashSet<>();
     }
 
     private static boolean isAllowedDomain(String email) {

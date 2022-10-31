@@ -5,14 +5,19 @@ import java.util.Stack;
 
 
 public class Problem2 {
-    private static final Stack<Character> STACK = new Stack<>();
+    private static Stack<Character> STACK;
 
     public static String solution(String cryptogram) {
+        init();
         // 1. 중복 문자열을 제거한다.
         removeDuplicateString(cryptogram);
 
         // 2. 스택의 크기에 따라 적절한 문자열을 반환한다.
         return getResultFromStack();
+    }
+
+    private static void init() {
+        STACK = new Stack<>();
     }
 
     private static void removeDuplicateString(String str) {
