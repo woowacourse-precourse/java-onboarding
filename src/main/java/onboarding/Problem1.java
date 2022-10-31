@@ -69,4 +69,10 @@ class Problem1 {
                 .mapToObj(i -> (char)i)
                 .mapToInt(Character::getNumericValue).sum();
     }
+
+    public static int multiPageDigit(String stringPage) {
+        return stringPage.chars()
+                .mapToObj(i -> (char)i).mapToInt(Character::getNumericValue)
+                .reduce(1, (a, b) -> a * b);
+    }
 }
