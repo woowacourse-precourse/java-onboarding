@@ -33,27 +33,27 @@ public class Problem7 {
             makeFriendMap(friendMap, list);
         }
 
-        List<String> userFriend = friendMap.get(user);
-        HashMap<String, Integer> friendScore = new HashMap<>();
+        List<String> friendsOfUser = friendMap.get(user);
+        HashMap<String, Integer> friendScoreMap = new HashMap<>();
 
         for (String name : friendMap.keySet()) {
-            if (name.equals(user) || userFriend.contains(name))
+            if (name.equals(user) || friendsOfUser.contains(name))
                 continue;
 
-            int score = getScore(userFriend, friendMap.get(name));
+            int score = getScore(friendsOfUser, friendMap.get(name));
 
             if (score > 0)
-                friendScore.put(name, score);
+                friendScoreMap.put(name, score);
         }
 
         for (String name : visitors) {
-            if (!userFriend.contains(name))
-                friendScore.put(name, friendScore.getOrDefault(name, 0) + 1);
+            if (!friendsOfUser.contains(name))
+                friendScoreMap.put(name, friendScoreMap.getOrDefault(name, 0) + 1);
         }
 
         List<Friend> friendScoreList = new ArrayList<>();
-        for (String name : friendScore.keySet()) {
-            friendScoreList.add(new Friend(name, friendScore.get(name)));
+        for (String name : friendScoreMap.keySet()) {
+            friendScoreList.add(new Friend(name, friendScoreMap.get(name)));
         }
 
         findMaxFiveFriends(friendScoreList, answer);
