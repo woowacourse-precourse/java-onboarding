@@ -1,3 +1,12 @@
+## 기능 구현 목록
+1. String을 Stack으로 바꾸기
+2. 연속된 문자를 없애기
+    1. originalStack에서 resultStack으로 옮기기
+   2. 만약 resultStack과 originalStack이 같으면 두 스택 모두 pop 하기
+   3. 만약 resultStack과 originalStack이 다르면 옮기기
+3. Stack을 String으로 바꾸기
+4. validation 하기
+
 ## 🚀 기능 요구 사항
 
 암호문을 좋아하는 괴짜 개발자 브라운이 이번에는 중복 문자를 이용한 새로운 암호를 만들었다. 예를 들어 "browoanoommnaon"이라는 암호문은 다음과 같은 순서로 해독할 수 있다.
