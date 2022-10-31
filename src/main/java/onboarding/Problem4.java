@@ -2,8 +2,7 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        return concatAlphabet(word);
     }
 
     private static boolean isAlphabetUpperCase(char alphabet) {
