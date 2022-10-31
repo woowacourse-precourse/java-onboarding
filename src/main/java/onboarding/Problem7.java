@@ -14,22 +14,22 @@ public class Problem7 {
         }
 
         public void addVisitorScore(List<String> visitors) {
-            for(String visitor : visitors) {
-                Integer orDefault = recommendationScore.getOrDefault(visitor, 0);
-                recommendationScore.put(visitor, orDefault+1);
+            for(String v : visitors) {
+                Integer score = recommendationScore.getOrDefault(v, 0);
+                recommendationScore.put(v, score+1);
             }
         }
 
         public void addFriendScore() {
-            List<String> userFriends = relationship.get(user);
-            for(String friend : userFriends){
-                for(String fof : relationship.get(friend)){
-                    if(!fof.equals(user)){
-                        recommendationScore.put(fof, recommendationScore.getOrDefault(fof,0)+10);
+            List<String> userFriendList = relationship.get(user);      // user의 1차 친구리스트
+
+            for(String firstFriend : userFriendList){
+                for(String secondFriend : relationship.get(firstFriend)){
+                    if(!secondFriend.equals(user)){
+                        recommendationScore.put(secondFriend, recommendationScore.getOrDefault(secondFriend,0)+10);
                     }
                 }
-                //relationship.get(friend).stream().filter(i->!i.equals(user)).map(i->recommendationScore.put(i,recommendationScore.getOrDefault(i,0)+10));
-                recommendationScore.remove(friend);
+                recommendationScore.remove(firstFriend);
             }
         }
 
@@ -41,10 +41,10 @@ public class Problem7 {
 
         private void addOnRelationship(List<String> friends) {
             for(int i=0 ; i<2 ; i++) {
-                List<String> p2Friends = relationship.getOrDefault(friends.get(i), new ArrayList<>());
+                List<String> list = relationship.getOrDefault(friends.get(i), new ArrayList<>());
                 int j = (i==0)? 1 : 0;
-                p2Friends.add(friends.get(j));
-                relationship.put(friends.get(i), p2Friends);
+                list.add(friends.get(j));
+                relationship.put(friends.get(i), list);
             }
         }
 
