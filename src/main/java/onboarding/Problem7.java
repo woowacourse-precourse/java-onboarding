@@ -26,4 +26,13 @@ public class Problem7 {
         return userFriend;
     }
 
+    //추천리스트에 등록된 사람에 포함되었는지 확인하는 함수
+    public static int isContained(String userId, List<String> recommandList){
+        for(int i=0;i<recommandList.size();i++){
+            if(userId.equals(recommandList.get(i))) return i;
+        }
+
+        return -1;
+    }
+
 }
