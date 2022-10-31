@@ -1,8 +1,6 @@
 package onboarding;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /**
  * <기능 목록>
@@ -19,8 +17,59 @@ import java.util.Set;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer = checkNames(forms);
+
         return answer;
+    }
+
+    public static List<String> checkNames(List<List<String>> forms){
+
+        Set<String> resultSet = new HashSet<>();
+
+
+        // 교육생들의 이름을 담음
+        List<String> names = new ArrayList<>();
+
+        for (List<String> form : forms){
+            names.add(form.get(1));
+        }
+
+
+        // 교육생들의 이름의 부분집합들을 구함
+        Set<String> partNameSet = partNames(names);
+
+
+        // 1. 이름의 부분집합들을 돌면서
+        for (String partName : partNameSet){
+
+            List<String> temp = new ArrayList<>();
+
+
+            for (List<String> form : forms) {
+                // 2. 만약 교육생들의 이름 중에 해당 부분집합이 포함되어 있다면 temp에 저장함
+                if (form.get(1).contains(partName)){
+                    temp.add(form.get(0));
+                }
+            }
+
+
+            // 3. temp에 저장된 이메일이 2개 이상이면 중복이름을 가진 교육생들이 있다는 것이므로 해당 교육생들의 email을 resultSet에 담음
+            if (temp.size() >= 2){
+                resultSet.addAll(temp);
+            }
+        }
+
+        // 이름에서 중복되는 부분 있는 교육생들을 리스트에 옮겨 담음
+        List<String> result = new ArrayList<>(resultSet);
+
+        // 오름차순으로 정렬
+        Collections.sort(result);
+
+        return result;
+
+
+
+
     }
 
 
@@ -42,8 +91,6 @@ public class Problem6 {
                 }
             }
         }
-
-        System.out.println(result);
 
         return result;
     }
