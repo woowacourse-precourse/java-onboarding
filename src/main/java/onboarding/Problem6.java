@@ -21,6 +21,9 @@ public class Problem6 {
 
         List<String> compareNames = generateCompareNickname(duplicatedNicknameCandidate);
 
+        List<String> results = generateResults(forms, compareNames);
+        Collections.sort(results);
+
         return results;
     }
 
@@ -62,17 +65,41 @@ public class Problem6 {
     }
 
     private static List<String> generateCompareNickname(Map<String, Integer> duplicatedNicknameCandidate) {
-        List<String> compareNames = new ArrayList<>();
+        List<String> compareNickname = new ArrayList<>();
 
         for (Map.Entry<String, Integer> entry : duplicatedNicknameCandidate.entrySet()) {
             String key = entry.getKey();
             int value = entry.getValue();
 
             if (value > 1) {
-                compareNames.add(key);
+                compareNickname.add(key);
             }
         }
 
-        return compareNames;
+        return compareNickname;
+    }
+
+    private static List<String> generateResults(List<List<String>> forms, List<String> compareNicknames) {
+        List<String> results = new ArrayList<>();
+
+        for (List<String> form : forms) {
+            String nickname = form.get(1);
+            for (String compareNickname : compareNicknames) {
+                if (containNickname(nickname, compareNickname)) {
+                    results.add(form.get(0));
+                }
+            }
+        }
+        return results;
+    }
+
+    private static boolean containNickname(String name, String compareNickname) {
+        for (int i = 0; i < name.length() - 1; i++) {
+            String substring = name.substring(i, i + 2);
+            if (substring.equals(compareNickname)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
