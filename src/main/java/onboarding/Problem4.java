@@ -3,11 +3,16 @@ package onboarding;
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
-        int pos = 0;
+        StringBuilder sb = new StringBuilder();
 
-        for(char c : word.toCharArray())
-            System.out.println(reverse_char(c));
+        for(char c : word.toCharArray()) {
+            if(Character.isAlphabetic(c))
+                sb.append(reverse_char(c));
 
+            else sb.append(c);
+        }
+
+        answer = sb.toString();
         return answer;
     }
 
@@ -26,6 +31,6 @@ public class Problem4 {
     }
 
     public static void main(String[] args) {
-        solution("abcd");
+        System.out.println(solution("I love you"));
     }
 }
