@@ -21,10 +21,10 @@ public class Problem2 {
 
     private static void isProperCryptogram(String cryptogram){
         if (!cryptogram.matches(LOWERCASE)) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("암호문은 소문자로만 이루어져 있어야합니다.");
         }
         if(cryptogram.length()<MIN_LENGTH || cryptogram.length()>MAX_LENGTH) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException("암호문의 길이는 1이상 1000이하인 문자열입니다.");
         }
     }
 
