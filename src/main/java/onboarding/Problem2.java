@@ -8,13 +8,13 @@ public class Problem2 {
 	}
 
 	private static String deleteDuplicate(String cryptogram) {
-		StringBuilder sb = new StringBuilder(cryptogram);
-		while (isDuplicate(sb)) {
-			int duplicateStart = getDuplicateStart(sb);
-			int duplicateEnd = getDuplicateEnd(sb, duplicateStart);
-			sb.delete(duplicateStart, duplicateEnd);
+		StringBuilder newCryptogram = new StringBuilder(cryptogram);
+		while (isDuplicate(newCryptogram)) {
+			int duplicateStart = getDuplicateStart(newCryptogram);
+			int duplicateEnd = getDuplicateEnd(newCryptogram, duplicateStart);
+			newCryptogram.delete(duplicateStart, duplicateEnd);
 		}
-		return sb.toString();
+		return newCryptogram.toString();
 	}
 
 	private static boolean isDuplicate(StringBuilder cryptogram) {
@@ -26,21 +26,21 @@ public class Problem2 {
 		return false;
 	}
 
-	private static int getDuplicateStart(StringBuilder sb) {
-		for (int i = 0; i < sb.length(); i++) {
-			if (sb.charAt(i) == sb.charAt(i + 1)) {
+	private static int getDuplicateStart(StringBuilder cryptogram) {
+		for (int i = 0; i < cryptogram.length(); i++) {
+			if (cryptogram.charAt(i) == cryptogram.charAt(i + 1)) {
 				return i;
 			}
 		}
 		throw new NoSuchElementException();
 	}
 
-	private static int getDuplicateEnd(StringBuilder sb, int duplicateStart) {
-		for (int i = duplicateStart + 1; i < sb.length(); i++) {
-			if (sb.charAt(duplicateStart) != sb.charAt(i)) {
+	private static int getDuplicateEnd(StringBuilder cryptogram, int duplicateStart) {
+		for (int i = duplicateStart + 1; i < cryptogram.length(); i++) {
+			if (cryptogram.charAt(duplicateStart) != cryptogram.charAt(i)) {
 				return i;
 			}
 		}
-		return sb.length();
+		return cryptogram.length();
 	}
 }
