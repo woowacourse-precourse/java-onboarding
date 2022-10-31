@@ -8,6 +8,7 @@ public class Problem7 {
         List<List<String>> notFriendList = new ArrayList<>();
         HashSet<String> friendList = new HashSet<>();
         HashMap<String, Integer> suggestScoreList = new HashMap<>();
+        Problem7 problem = new Problem7();
 
         friends.forEach((relationship) -> {
             String person1 = relationship.get(0);
@@ -54,8 +55,6 @@ public class Problem7 {
             }
         });
 
-        System.out.println(suggestScoreList);
-
         // 점수 별로 정렬한 후 유저 이름대로 정렬
         // 정렬하는 메서드를 따로 뺄까..?
         HashMap<String, Integer> suggestUserSortedByScore = suggestScoreList
@@ -66,6 +65,20 @@ public class Problem7 {
                         .thenComparing(Map.Entry.comparingByKey()))
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
                         (newValue, oldValue) -> oldValue, LinkedHashMap::new));
-        return List.of("andole", "jun", "bedi");
+
+        Set<String> keySet = suggestUserSortedByScore.keySet();
+        ArrayList<String> recommendUserList = new ArrayList<>(keySet);
+
+
+        System.out.println(suggestUserSortedByScore);
+        return problem.HeadCountLimit(recommendUserList, 5);
+    }
+
+    public List<String> HeadCountLimit (List<String> list, int limit) {
+        if (list.size() < limit) {
+            return list;
+        } else {
+            return list.subList(0, limit);
+        }
     }
 }
