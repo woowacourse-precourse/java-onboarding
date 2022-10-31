@@ -6,7 +6,23 @@ public class Problem7 {
     private static HashMap<String, Integer> friendsBook = new HashMap<String, Integer>();
     private static List<String> friendsList = new ArrayList<>();
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        return ;
+        findFriends(user, friends);
+        checkFriends(user, friends);
+        checkVisitors(visitors);
+        return sortFriendsBook(user);
+    }
+
+    private static List<String> sortFriendsBook(String user) {
+        List<String> sortedAnswer = new ArrayList<>();
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(friendsBook.entrySet());
+        entryList.sort(Map.Entry.comparingByKey());
+        entryList.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
+        for (Map.Entry<String, Integer> entry : entryList) {
+            if(!friendsList.contains(entry.getKey()) && entry.getKey() != user) {
+                sortedAnswer.add(entry.getKey());
+            }
+        }
+        return sortedAnswer;
     }
     private static void findFriends(String user, List<List<String>> friends) {
         for (List<String> friend : friends) {
