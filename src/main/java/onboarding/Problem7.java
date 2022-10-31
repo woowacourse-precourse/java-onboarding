@@ -51,6 +51,13 @@ public class Problem7 {
         return newUser;
     }
 
+    public static User getUserFromName(String name){
+        if(USER_MAP.containsKey(name)){
+            return USER_MAP.get(name);
+        }
+        return createNewUser(name);
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
