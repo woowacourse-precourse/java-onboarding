@@ -11,9 +11,20 @@ public class Problem6 {
         if (forms.size()<1 || forms.size()>10000)
             return List.of("answer");
 
-        for(int i = 0; i<forms.size()-1;i++){
-            for (int k=i+1; k<forms.size()-1;k++){
+        for(int i = 0; i<forms.size();i++){
+            String email = forms.get(i).get(0);
+            String nickname = forms.get(i).get(1);
+
+            if (!checkEmailValid(email)){
+                return List.of("answer");
+            }
+            if (!checkNicknameValid(nickname)){
+                return List.of("answer");
+            }
+            for (int k=i+1; k<forms.size();k++){
                 answer = getRestrictedUserList(answer,forms.get(i),forms.get(k));
+                if (answer.equals(List.of("answer")))
+                    return List.of("answer");
             }
         }
         answer.sort(new Comparator<String>() {
@@ -62,13 +73,7 @@ public class Problem6 {
         String email = selectedForm.get(0);
         String nickname = selectedForm.get(1);
 
-        if (!checkEmailValid(email)){
-            return List.of("answer");
-        }
-        if (!checkNicknameValid(nickname)){
-            return List.of("answer");
-        }
-        for (int j=0;j<selectedForm.get(1).length()-2;j++){
+        for (int j=0;j<selectedForm.get(1).length()-1;j++){
             //만약 이미 중복된 유저 닉네임이라면 다음 닉네임으로 이동
             if (restritedUsers.contains(comparedForm.get(0)))
                 break;
