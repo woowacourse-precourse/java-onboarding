@@ -5,8 +5,11 @@ import java.util.Map;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        StringBuilder sb = new StringBuilder();
+        for(int index =0; index<word.length(); index++){
+            sb.append(finalChangeCharacter(word.charAt(index)));
+        }
+        return sb.toString();
     }
 
     public static char finalChangeCharacter(char c){
