@@ -9,6 +9,11 @@ import java.util.stream.Collectors;
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
+        // 0. 제한사항의 예외처리
+        checkEmail(forms); // email 양식
+        checkCrew(forms); // 크루 인원 수
+        checkNickname(forms); // 닉네임 양식
+
         // 1. nickname 만 모아서 String 배열로 반환
         String[] nicknames = returnNickname(forms);
 
@@ -84,5 +89,42 @@ public class Problem6 {
     private static List<String> sort(List<String> input) {
         input.sort(Comparator.naturalOrder());
         return input;
+    }
+
+    // 이메일 양식 체크
+    private static void checkEmail(List<List<String>> forms) throws IllegalArgumentException {
+        for(int i = 0; i<forms.size(); i++) {
+            String test = forms.get(i).get(0);
+            // 이메일의 길이를 체크하는 것
+            boolean length = test.length() >= 11 && test.length() < 20;
+            // 이메일의 도메인 제한 체크하는 것
+            boolean chars = test.contains("email.com");
+            if(!length || !chars) {
+                throw new IllegalArgumentException("이메일 양식에 맞추어 입력해주세요.");
+            }
+        }
+    }
+
+    // 크루가 1 명 이상 10,000명 이하인지 체크
+    private static void checkCrew(List<List<String>> forms) throws IllegalArgumentException {
+        // 등록될 수 있는 크루의 수 예외처리
+        if(!(forms.size() >= 1 && forms.size() <= 10000)) {
+            throw new IllegalArgumentException("크루 인원을 초과하였습니다.");
+        }
+    }
+
+    // 닉네임은 한글만 가능하고, 전체 길이는 1자 이상 20자 미만일 경우 예외처리
+    private static void checkNickname(List<List<String>> forms) throws IllegalArgumentException {
+        // 정규표현식으로 한글만 허용하는 방법
+        String kr = "^[가-힣]*$";
+        // List 의 닉네임 열을 차례대로 체크하는 것
+        for(int i = 0; i<forms.size(); i++) {
+            String test = forms.get(i).get(1);
+            // 현재 닉네임이 한글로만 되었는지 || 닉네임의 글자수
+            // 둘 중 하나라도 false 가 나오면 Exception 발생
+            if(!test.matches(kr) || !(test.length() >= 1 && test.length() < 20)) {
+                throw new IllegalArgumentException("닉네임은 1자 이상 20자 미만의 한글로만 입력 가능합니다.");
+            }
+        }
     }
 }
