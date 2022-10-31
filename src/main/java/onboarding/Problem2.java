@@ -4,42 +4,13 @@ import java.util.Stack;
 
 public class Problem2 {
     /**
-     * 스택 이용해서 문자 제거하는 함수
-     * 스택을 문자열로 반환하는 함수
+     * 중복 문자 제거 (한 turn)
+     * 중복 제거 반복
+     * List 문자 합치기
      */
     public static String solution(String cryptogram) {
-        return remove(cryptogram);
-    }
-
-    /*
-     *스택을 문자열로 반환하는 함수
-     */
-    static String dump(Stack<Character> ptr) {
-        String result = "";
-        if(ptr.size() <= 0 ){
-            return "";
-        }else{
-            for(int i = 0 ; i < ptr.size() ; i++) {
-                result = result+ptr.get(i);
-            }
-        }
-        return result;
-    }
-
-    /*
-     *스택 이용해서 문자 제거하는 함수
-     */
-    static String remove(String cryptogram){
-        Stack<Character> stack = new Stack<>();
-        for (int i=0; i < cryptogram.length(); i++){
-            char c = cryptogram.charAt(i);
-            if(!stack.isEmpty() && stack.peek() == c){
-                stack.pop();
-            }else {
-                stack.push(c);
-            }
-        }
-        return dump(stack);
+        String answer = "answer";
+        return answer;
     }
 }
 
