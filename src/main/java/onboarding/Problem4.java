@@ -10,6 +10,24 @@ package onboarding;
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
+        StringBuffer ansb = new StringBuffer((""));
+
+        int leng = word.length();
+        for (int i = 0; i < leng; i++) {
+
+            char character = word.charAt(i);
+            int numc = (int) character;
+
+            if (numc < 91 && numc > 64) {
+                numc = 155 - numc;
+
+            }
+            else if ((numc > 96) && (numc < 123)) {
+                numc = 219 - numc;
+            }
+            ansb.append((char) numc);
+        }
+        answer = ansb.toString();
         return answer;
     }
 }
