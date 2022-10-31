@@ -15,7 +15,7 @@ class Problem1 {
 		int answer = Integer.MAX_VALUE;
 
 		// 값 검증
-		if (validateNum(pobi) == -1 || validateNum(crong) == -1)
+		if (validateNum(pobi) || validateNum(crong))
 			return EXCEPTION_CASE;
 
 		// 포비와 크롱의 점수 구하기
@@ -28,16 +28,15 @@ class Problem1 {
 		return answer;
 	}
 
-	// 올바르면 1, 이상하면 -1을 return
-	private static int validateNum(List<Integer> lst) {
-		if (lst.get(0) < FIRST_PAGE || lst.get(1) > LAST_PAGE)
-			return EXCEPTION_CASE;
-		if (lst.get(0) % 2 == 0 || lst.get(1) % 2 == 1)
-			return EXCEPTION_CASE;
-		if (lst.get(0) + 1 != lst.get(1))
-			return EXCEPTION_CASE;
+	private static boolean validateNum(List<Integer> lst) {
 
-		return 1;
+		int leftPage = lst.get(0);
+		int rightPage = lst.get(1);
+
+		if (leftPage <= FIRST_PAGE || rightPage >= LAST_PAGE || leftPage % 2 == 0 || rightPage % 2 == 1 || leftPage + 1 != rightPage)
+			return true;
+
+		return false;
 	}
 
 	private static int getScore(List<Integer> lst) {
