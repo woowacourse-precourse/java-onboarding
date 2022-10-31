@@ -1,11 +1,12 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class Problem5 {
 
-    private final List<Integer> moneys = List.of (
+    private static final List<Integer> moneys = List.of (
             50000,
             10000,
             5000,
@@ -40,9 +41,20 @@ public class Problem5 {
         return valid;
     }
 
+    /*
+     * 금액을 지폐로 교환합니다.
+     *
+     * @param 지폐로 교환할 액수입니다.
+     * @return 교환된 지폐의 장수 배열입니다.
+     * */
     private static List<Integer> exchangeMoney(int money) {
+        List<Integer> result = new ArrayList<>();
 
-        return Collections.emptyList();
+        for (int moneySize: moneys) {
+            result.add(money / moneySize);
+            money %= moneySize;
+        }
+        return result;
     }
 
     /*

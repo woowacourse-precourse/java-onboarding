@@ -71,7 +71,7 @@
   - 인자값이 유효한지 검사한다.
       - [X] isInRange
       - 1 ~ 1000000 사이의 값인지 검사한다.
-  - [ ] exchangeMoney
+  - [X] exchangeMoney
   - 최소한의 화폐 개수로 나눠줄 수 있는 경우를 찾는다.
 
 6. [문제 6](./docs/PROBLEM6.md)
