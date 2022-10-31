@@ -5,7 +5,9 @@ public class Problem2 {
         String prev = "";
         String answer = cryptogram;
         while (!prev.equals(answer)) {
-            if (answer == "") break;
+            if (answer.equals("")) {
+                return "";
+            }
             prev = answer;
             answer = removeSuccessiveString(answer);
         }
