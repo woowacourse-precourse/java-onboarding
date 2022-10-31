@@ -16,6 +16,13 @@ public class Problem7 {
             }
         }
 
+        for (String visitor : visitors) {
+            if (!userFriends.contains(visitor)) {
+                addVisitorScore(recommendFriends, visitor);
+            }
+        }
+
+
         return answer;
     }
 
@@ -24,6 +31,14 @@ public class Problem7 {
             recommendFriends.put(id, recommendFriends.get(id) + 10);
         } else {
             recommendFriends.put(id, 10);
+        }
+    }
+
+    private static void addVisitorScore(HashMap<String, Integer> recommendFriends, String id) {
+        if (recommendFriends.containsKey(id)) {
+            recommendFriends.put(id, recommendFriends.get(id) + 1);
+        } else {
+            recommendFriends.put(id, 1);
         }
     }
 }
