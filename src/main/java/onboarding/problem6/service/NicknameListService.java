@@ -6,6 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class NicknameListService {
+    public static ArrayList<String> crewIndexToCrewEmail(List<List<String>> form, ArrayList<Integer> crewIndexList){
+        ArrayList<String> crewEmailList = new ArrayList<>();
+        for(int crewIndex: crewIndexList){
+            crewEmailList.add(form.get(crewIndex).get(Constants.CERW_EMAIL));
+        }
+        return crewEmailList;
+    }
 
     public static String getNicknameFromList(List<String> crewForm){
         return crewForm.get(Constants.CREW_NICNAME);
@@ -21,7 +28,4 @@ public class NicknameListService {
     private static boolean isNicknameInList(ArrayList<Integer> crewIndexList, int crewIndex){
         return crewIndexList.contains(crewIndex);
     }
-
-
-
 }
