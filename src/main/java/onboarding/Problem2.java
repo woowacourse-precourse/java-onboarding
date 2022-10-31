@@ -4,8 +4,8 @@ import java.util.Deque;
 import java.util.List;
 
 public class Problem2 {
+
     static boolean isFinished = false;
-    
     //연속된 문자열 지우기
     static String removeRedundant(String cryptogram){
         String modifyCrypto = cryptogram;
@@ -50,6 +50,7 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
         answer = completelyRemove(cryptogram);
+        isFinished = false;
         return answer;
     }
 }
