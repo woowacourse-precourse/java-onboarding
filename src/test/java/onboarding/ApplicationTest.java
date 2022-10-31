@@ -279,7 +279,7 @@ class ApplicationTest {
                     List.of("donut", "andole")
             );
             List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
-            List<String> result = List.of("donut", "andole", "bedi", "shakevan");
+            List<String> result = List.of("bedi", "donut", "shakevan");
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
         }
 
@@ -302,7 +302,7 @@ class ApplicationTest {
                     List.of("bsu", "java")
             );
             List<String> visitors = List.of();
-            List<String> result = List.of("bsu", "java");
+            List<String> result = List.of();
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
         }
 
@@ -319,7 +319,7 @@ class ApplicationTest {
                     List.of("ghi", "abc")
             );
             List<String> visitors = List.of();
-            List<String> result = List.of("abc", "bcd", "cde", "def", "efg");
+            List<String> result = List.of();
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
         }
     }
