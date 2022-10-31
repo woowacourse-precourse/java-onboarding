@@ -39,7 +39,6 @@ public class Problem4 {
         int convertOrder = 'z' - asciiOrder;
 
         char convertChar = (char)convertOrder;
-        System.out.println(convertChar);
         return convertChar;
     }
 }
