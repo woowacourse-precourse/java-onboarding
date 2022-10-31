@@ -96,16 +96,10 @@ public class Problem7 {
     }
 
     static List<String> getDirectFriends(String user, List<List<String>> friends) {
-        List<String> directFriends = new ArrayList<>();
-        for (List<String> f : friends) {
-            if (f.get(0).equals(user)) {
-                directFriends.add(f.get(1));
-                continue;
-            }
-            if (f.get(1).equals(user)) {
-                directFriends.add(f.get(0));
-            }
-        }
+        List<String> directFriends = friends.stream()
+                                    .filter(f -> f.contains(user))
+                                    .map(f -> f.get(0).equals(user) ? f.get(1) : f.get(0))
+                                    .collect(Collectors.toList());
         return dropDuplicate(directFriends);    // 중복 제거
     }
 
