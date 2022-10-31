@@ -15,6 +15,22 @@ public class Problem4 {
             map.put(capital++, (char) ('Z' - i));
         }
     }
+
+    // 입력받은 문자열의 리버스 문자열을 구하는 함수
+    public static String reverString(String word, Map<Character, Character> map){
+        StringBuilder sb = new StringBuilder();
+        for(int i=0; i<word.length(); i++){
+            char ch = word.charAt(i);
+            if(ch == ' '){
+                sb.append(" ");
+            }else if(map.keySet().contains(ch)){
+                sb.append(map.get(ch));
+            }else{
+                sb.append(word.charAt(i));
+            }
+        }
+        return sb.toString();
+    }
     public static String solution(String word) {
         String answer = "";
         return answer;
