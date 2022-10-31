@@ -7,6 +7,7 @@ import java.util.Map;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
+
         List<String> answer = List.of("answer");
 
         HashSet<String> emails = new HashSet<>();
@@ -18,18 +19,27 @@ public class Problem6 {
             String name = forms.get(i).get(1);
 
             if (name.length() < 2) {
+
                 break;
             }
 
             for (int j = 0; j < name.length() - 1; j++) {
+
                 String key = name.substring(j, j + 2);
+
                 if (hashMap.containsKey(key)) {
+
                     String email = hashMap.get(key);
+
                     if (!email.equals(forms.get(i).get(0))) {
+
                         emails.add(email);
+
                         emails.add(forms.get(i).get(0));
+
                     }
                 }
+
                 hashMap.put(key, forms.get(i).get(0));
             }
 
