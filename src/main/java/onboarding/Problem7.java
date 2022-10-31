@@ -73,6 +73,11 @@ public class Problem7 {
             }
         }
 
+        // friends_set에 방문자 목록도 추가해준다.
+        for (String visitor : visitors) {
+            friends_set.add(visitor);
+        }
+
         // 추천 점수를 세기 위한 HashMap을 구성해준다.
         HashMap<String, Integer> friends_score = new HashMap<>();
 
@@ -106,6 +111,11 @@ public class Problem7 {
             if (key.equals(group)) {
                 friends_score.put(key, 10);
             }
+        }
+
+        // 방문한 횟수에 따라 1점씩 더해준다.
+        for (String visitor : visitors) {
+            friends_score.put(visitor, friends_score.get(visitor) + 1);
         }
 
         // user와 이미 친구인 경우에는 친구 추천 목록에 넣을 필요가 없기 때문에, 점수를 0으로 바꿔준다.
