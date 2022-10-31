@@ -13,10 +13,12 @@ public class Problem7 {
         friendsList = new ArrayList<>();
         recommendScore = new HashMap<>();
         relationships = new HashMap<>();
+
         for (List<String> friend : friends) {
             initFriendsList(friend, user);
             initRelationships(friend,user);
         }
+
         List<String> userFriendList = friendsList.stream()
                 .distinct()
                 .collect(Collectors.toList());
@@ -34,12 +36,7 @@ public class Problem7 {
                 .forEach(x -> answerList.add(new UserInfo(x.getKey(),x.getValue())));
 
 
-        return answerList.stream()
-                .sorted(Comparator.comparing(UserInfo::getScore, Comparator.reverseOrder())
-                        .thenComparing(UserInfo::getUsername))
-                .map(UserInfo::getUsername)
-                .limit(5)
-                .collect(Collectors.toList());
+        return sortByScoreAndName(answerList);
     }
 
     public static void initFriendsList(List<String> relationship, String user) {
@@ -82,6 +79,15 @@ public class Problem7 {
             return;
         }
         recommendScore.put(username,score);
+    }
+
+    public static List<String> sortByScoreAndName(List<UserInfo> scoreList) {
+        return scoreList.stream()
+                .sorted(Comparator.comparing(UserInfo::getScore, Comparator.reverseOrder())
+                        .thenComparing(UserInfo::getUsername))
+                .map(UserInfo::getUsername)
+                .limit(5)
+                .collect(Collectors.toList());
     }
 
     static class UserInfo{
