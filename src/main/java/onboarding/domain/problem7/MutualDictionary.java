@@ -1,4 +1,4 @@
-package onboarding.domain;
+package onboarding.domain.problem7;
 
 import java.util.Map;
 import java.util.Set;

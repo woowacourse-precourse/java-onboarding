@@ -1,4 +1,4 @@
-package onboarding.domain;
+package onboarding.domain.problem6;
 
 import java.util.ArrayList;
 import java.util.HashSet;
