@@ -32,14 +32,26 @@ public class Problem3 {
             answer += ArrayOfCount.get(sizeOfNumber-1) * numberEachDigitArray.get(sizeOfNumber-1);
 
             int quotientOfEachDigit = numberEachDigitArray.get(sizeOfNumber-1) / 3;
-            int pow = 1;
-            int powValue = 1;
-            while (pow < sizeOfNumber) { //제곱 수 구해주기
-                powValue *= 10;
-                pow += 1;
-            }
 
-            answer += quotientOfEachDigit * powValue;
+            if (numberEachDigitArray.get(sizeOfNumber-1)%3 == 0) {
+                int pow = 1;
+                int powValue = 1;
+                while (pow < sizeOfNumber) { //제곱 수 구해주기
+                    powValue *= 10;
+                    pow += 1;
+                }
+
+                answer += (quotientOfEachDigit-1) * powValue;
+            } else if (numberEachDigitArray.get(sizeOfNumber-1)%3 != 0) {
+                int pow = 1;
+                int powValue = 1;
+                while (pow < sizeOfNumber) { //제곱 수 구해주기
+                    powValue *= 10;
+                    pow += 1;
+                }
+
+                answer += (quotientOfEachDigit) * powValue;
+            }
 
             sizeOfNumber -= 1;
         }
