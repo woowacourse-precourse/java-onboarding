@@ -30,7 +30,7 @@ public class ScoreCalculatorImp implements ScoreCalculator {
 		return friendScoreMap;
 	}
 
-	private Map<String, Integer> getVisitorScoreMap(String user, List<String> visitors) {
+	private Map<String, Integer> getVisitorScoreMap(List<String> visitors) {
 		Map<String, Integer> visitorScoreMap = new HashMap<>();
 		visitors.forEach(visitor -> {
 			visitorScoreMap.merge(visitor, 1, Integer::sum);
@@ -52,9 +52,7 @@ public class ScoreCalculatorImp implements ScoreCalculator {
 				removeKeys.add(name);
 			}
 		}
-
 		scoreMap.entrySet().removeIf(e -> removeKeys.contains(e.getKey()));
-
 		return scoreMap;
 	}
 
@@ -62,7 +60,7 @@ public class ScoreCalculatorImp implements ScoreCalculator {
 	public Map<String, Integer> getScoreMap(String user, List<List<String>> friends, List<String> visitors) {
 		Map<String, List<String>> friendMap = getFriendMap(friends);
 		Map<String, Integer> friendScoreMap = getFriendScoreMap(user, friendMap);
-		Map<String, Integer> visitorScoreMap = getVisitorScoreMap(user, visitors);
+		Map<String, Integer> visitorScoreMap = getVisitorScoreMap(visitors);
 		Map<String, Integer> scoreMap = mergeScoreMaps(friendScoreMap, visitorScoreMap);
 		return getValidScoreMap(user, scoreMap, friendMap);
 	}
