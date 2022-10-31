@@ -24,3 +24,14 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+## 기능 목록
+1. friends 에서 사용자의 친구를 찾고 저장해주는 기능(friendsOfUser에 저장)
+2. 1 번에서 찾은 친구들의 친구들을 찾고 점수를 부여해서 추천 친구 목록에 저장하는 기능 
+3. visitors 에서 방문한 사람들을 추천 친구 목록에 추가하고 +1 점을 한다.
+4. 추천 친구 목록에서 친구로 등록되어 있는 사람들과 자신을 제외해준다.
+
+###### 부연 설명 
+사용자의 친구를 저장하기 위한 친구 목록 (friendsOfUser) 이 필요하다.
+추천 친구 목록 (recommendationForUser) 이 필요하다.
+추천 친구 목록과 친구 목록에 공통 분모가 있어서는 안된다.(4번)
