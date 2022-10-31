@@ -34,6 +34,7 @@ public class Problem7 {
             if (userA.equals(user)) {
                 USER_FRIENDS.add(userB);
             }
+
             if (userB.equals(user)) {
                 USER_FRIENDS.add(userA);
             }
@@ -45,11 +46,7 @@ public class Problem7 {
             String userA = info.get(0);
             String userB = info.get(1);
 
-            if (userA.equals(user) || userB.equals(user)) {
-                continue;
-            }
-
-            if (USER_FRIENDS.contains(userA) && USER_FRIENDS.contains(userB)) {
+            if (isUserException(userA, userB, user) || isUserFriendException(userA, userB)) {
                 continue;
             }
 
@@ -59,6 +56,14 @@ public class Problem7 {
                 addToRecommendScoreMap(userA, NEIGHBOR_POINT);
             }
         }
+    }
+
+    private static boolean isUserException(String userA, String userB, String user) {
+        return userA.equals(user) || userB.equals(user);
+    }
+
+    private static boolean isUserFriendException(String userA, String userB) {
+        return USER_FRIENDS.contains(userA) && USER_FRIENDS.contains(userB);
     }
 
     private static void getRecommendScoreByVisitor(List<String> visitors) {
