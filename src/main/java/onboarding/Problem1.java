@@ -38,6 +38,16 @@ class Problem1 {
         return plusSum;
     }
 
+    private static int isWinner (int pobiNum, int crongNum) {
+        if (pobiNum < crongNum) {
+            return 2;
+        }
+        if (pobiNum > crongNum) {
+            return 1;
+        }
+        return 0;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         if (isException(pobi, crong)) {
