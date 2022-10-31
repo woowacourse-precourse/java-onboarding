@@ -1,3 +1,19 @@
+# 🎈 민주
+
+## ✔ 기능 정의
+### 컬렉션
+- { index : userEmail}인 userMap 만들기
+- { subString : 초기 index}인 subStrIndexMap 만들기
+- 중복 닉네임 가진 user의 index 값 넣는 duplicatedIndexList 만들기
+### 기능
+- 각 닉네임별 subString 값을 이용하여 해당 값이 subStrIndexMap에 이미 있는 값인지 체크하는 함수 만들기
+  - 이미 있으면 현재 index값 + value인 초기 index값을 duplicatedIndexList에 추가
+  - 없으면 subStrIndexMap에 {subString : index} 추가
+- duplicatedIndex 중복값 제거
+- duplicatedIndex의 값을 key로 가지는 userEmail 추출해서 answer에 추가
+- answer 정렬
+
+# 🎈 본문
 ## 🚀 기능 요구 사항
 
 우아한테크코스에서는 교육생(이하 크루) 간 소통 시 닉네임을 사용한다. 간혹 비슷한 닉네임을 정하는 경우가 있는데, 이러할 경우 소통할 때 혼란을 불러일으킬 수 있다.
