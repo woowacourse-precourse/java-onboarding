@@ -60,6 +60,22 @@ public class Problem7 {
 		}
 		return friendForRecommands;
 	}
+	private static List<String> getVisitorsWithoutMyFriends(List<String> visitors,List<String> myFriends){
+		List<String> visitorsWithoutMyFriends = new ArrayList<String>();
+		for(int i=0;i<visitors.size();i++) {
+			boolean flag = true;
+			for(String myFriend : myFriends) {
+				if(visitors.get(i).contains(myFriend)) {
+					flag = false;
+					break;
+				}
+			}
+			if(flag) {
+				visitorsWithoutMyFriends.add(visitors.get(i));
+			}
+		}
+		return visitorsWithoutMyFriends;
+	}
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         //"이미 친구"
@@ -70,6 +86,10 @@ public class Problem7 {
 		
 		//"추천할 친구"
 		List<String> friendForRecommands =getFriendForRecommand(alreadyFriends, friendsWithoutUser);
+		
+		//"친구를 제외한 방문자 목록"
+		List<String> visitorsWithoutMyFriends = getVisitorsWithoutMyFriends(visitors, alreadyFriends);
+		
 		
 		
         return answer;
