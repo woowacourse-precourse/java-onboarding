@@ -24,3 +24,15 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능 목록
+
+- 사용자 친구 목록 내부 클래스 생성.
+- 사용자와 친구인 사람 선별 기능 구현.
+- 사용자와 친구인 사람의 친구 Grouping 기능 구현.
+- 사용자 타임 라인 방문자 Grouping 기능 구현.
+- 사용자와 친구인 사람의 친구 선별 기능 구현.
+- 사용자 타임 라인 방문자 선별 기능 구현.
+- Grouping 멤버 중 조건에 충족하지 않는 사용자, 친구 삭제 기능 구현.
+- 점수가 높은 순으로 정렬하는 기능 구현.
+- 최대 5명까지 출력 기능 구현.
