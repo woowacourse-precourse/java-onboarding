@@ -19,13 +19,10 @@ public class Problem6 {
     }
 
     private static List<String> sortAnswer(Set<String> duplicateEmails) {
-        List<String> answer;
-        answer = duplicateEmails.stream()
+        return duplicateEmails.stream()
                 .sorted()
                 .collect(Collectors.toList());
-        return answer;
     }
-
 
     private static Set<String> getDuplicateEmails(Map<String, List<String>> nicknameDict) {
         Set<String> duplicatedEmails = new HashSet<>();
@@ -65,14 +62,11 @@ public class Problem6 {
         return twoLetterNicknames;
     }
 
-    private static void storeEmails(Map<String, List<String>> nicknames, String email, List<String> splitNicknames) {
-        for (String nickname : splitNicknames) {
-            List<String> emails = new ArrayList<>();
-            if (nicknames.containsKey(nickname)) {
-                emails = nicknames.get(nickname);
-            }
+    private static void storeEmails(Map<String, List<String>> nicknames, String email, List<String> twoLetterNicknames) {
+        for (String twoLetterNickname : twoLetterNicknames) {
+            List<String> emails = nicknames.getOrDefault(twoLetterNickname, new ArrayList<>());
             emails.add(email);
-            nicknames.put(nickname, emails);
+            nicknames.put(twoLetterNickname, emails);
         }
     }
 
