@@ -13,6 +13,13 @@ public class Problem6 {
         return answer;
     }
 
+    private static void countNickname(List<List<String>> forms, Map<String, Integer> map) {
+        for (List<String> form : forms) {
+            String nickname = form.get(1);
+            countSubstring(map, nickname);
+        }
+    }
+
     // 현재 닉네임에서 2글자 이상 연속된 부분문자열의 사용횟수
     public static void countSubstring(Map<String, Integer> map, String nickname) {
         // 문자열 개수
