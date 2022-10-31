@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,12 +26,45 @@ public class Problem4 {
             lowerAl.add((char) (97 + i));
         }
 
-        String answer = "";
+        String answer = convertWord(word);
         return answer;
     }
 
     private static List<Character> upperAl = new ArrayList<>();
     private static List<Character> lowerAl = new ArrayList<>();
+
+    public static String convertWord(String word) {
+
+        char[] wordArray = word.toCharArray();
+
+
+        String result = "";
+
+        for (int i = 0; i < wordArray.length; i++) {
+            char al = wordArray[i];
+
+            // al이 대문자일 경우 -> 위치 다른 대문자로 변환
+            if (upperAl.contains(al)) {
+                int alIndex = upperAl.indexOf(al);
+                int convertedIndex = -(alIndex-25);
+
+                result += upperAl.get(convertedIndex);
+
+            }
+            // al이 소문자일 경우 -> 위치 다른 소문자로 변환
+            else if (lowerAl.contains(al)) {
+                int alIndex = lowerAl.indexOf(al);
+                int convertedIndex = -(alIndex-25);
+
+                result += lowerAl.get(convertedIndex);
+            }
+            // al이 알파벳 대문자나 소문자가 아닐 경우 -> 변환하지 않음
+            else {
+                result += al;
+            }
+        }
+        return result;
+    }
 
 
 }
