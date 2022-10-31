@@ -21,6 +21,8 @@ public class Problem6 {
        }//for       
         
         answer = new ArrayList<String>(email);
+        answer.sort((email1,email2)-> email1.compareTo(email2));
+        
         return answer;
     }// solution
     
