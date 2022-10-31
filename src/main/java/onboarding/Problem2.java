@@ -13,9 +13,17 @@ public class Problem2 {
         boolean flagDupli = true;
         int idxCrypto = 0;
 
-        for(int i = idxCrypto; i < cryptogram.length(); i++)
+        for(int i = idxCrypto; i < cryptogram.length()-1; i++)
         {
-            System.out.print(cryptogram.charAt(i));
+            if(cryptogram.charAt(i) == cryptogram.charAt(i+1))
+            {
+                System.out.println(i);
+                System.out.println(i+1);
+            }
+            else {
+
+            }
+
         }
 
 
