@@ -12,6 +12,15 @@ public class Problem7 {
     }
 
     /**
+     * 사용자의 타임 라인에 방문한 친구에게 추천 점수를 부여한다.
+     */
+    private static void addVisitorScore(Map<String, Integer> scores, List<String> visitors) {
+        for (String visitor : visitors) {
+            scores.put(visitor, scores.getOrDefault(visitor, 0) + 1);
+        }
+    }
+
+    /**
      * 사용자의 먼 친구(함께 아는 친구)에게 추천 점수를 부여한다.
      */
     private static void addDistantFriendScore(Map<String, Integer> scores, List<String> distantFriends) {
