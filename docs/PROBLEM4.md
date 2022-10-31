@@ -19,3 +19,11 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+___
+
+## Problem4.java
+
+- convert : a-zA-Z 한 문자의 ascii 코드로 반대로 변환하는 함수 / 그 외 문자는 그대로 반환
+- solution : word를 a character 마다 변환 후 answer에 더해서 반환
+
