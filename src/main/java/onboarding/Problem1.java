@@ -29,8 +29,22 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
+        int pobiScore = 0;
+        int crongScore = 0;
+        BookPage pobiBookPage;
+        BookPage crongBookPage;
 
-        int answer = 0;
+        try {
+            pobiBookPage = new BookPage(pobi.get(0), pobi.get(1));
+            crongBookPage = new BookPage(crong.get(0), crong.get(1));
+        } catch (Exception e) {
+            return -1;
+        }
+
+        pobiScore = Math.max(calculation(pobiBookPage.startPage), calculation(pobiBookPage.endPage));
+        crongScore = Math.max(calculation(crongBookPage.startPage), calculation(crongBookPage.endPage));
+
+        int answer = checkTheWinner(pobiScore, crongScore);
 
 
         return answer;
