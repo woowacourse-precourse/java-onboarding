@@ -5,7 +5,7 @@
 | 기능            | function    | 구현여부 |
 |---------------|-------------|------|
 | 해시맵에 변환문자 저장  | makeMap     | O    |
-| 대소문자 판별       | isUpper     | X    |
+| 대소문자 판별       | isUpper     | O    |
 | 공백 판별         | isSpace     | X    |
 | 청개구리 알파벳으로 변환 | convertFrogWord | X    |
 

@@ -28,4 +28,13 @@ public class Problem4 {
         return convertMap;
     }
 
+    private static boolean isUpper(char oneWord) {
+        return Character.isUpperCase(oneWord);
+    }
+
+    private static boolean isLower(char oneWord) {
+        return Character.isLowerCase(oneWord);
+    }
+
+
 }
