@@ -250,5 +250,20 @@ class ApplicationTest {
             List<String> result = List.of("fff", "eee");
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
         }
+
+        @Test
+        void case4() {
+            String user = "aaa";
+            List<List<String>> friends = List.of(
+                    List.of("aaa", "bbb"),
+                    List.of("aaa", "ccc"),
+                    List.of("aaa", "ddd"),
+                    List.of("fff", "ccc"),
+                    List.of("eee", "fff")
+            );
+            List<String> visitors = List.of("eee", "eee", "eee", "eee", "eee", "eee", "eee", "eee", "eee", "eee");
+            List<String> result = List.of("eee", "fff");
+            assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+        }
     }
 }
