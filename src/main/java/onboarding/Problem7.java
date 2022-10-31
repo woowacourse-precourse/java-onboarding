@@ -27,7 +27,7 @@ class User implements Comparable<User>{
 
     public void addScoreToFriends(int amount){
         for(User friend : this.friends){
-            addScore(amount);
+            friend.addScore(amount);
         }
     }
 
