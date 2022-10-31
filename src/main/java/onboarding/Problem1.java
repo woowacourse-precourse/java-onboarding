@@ -23,6 +23,9 @@ class Problem1 {
         return 0;
     }
     private static boolean except(List<Integer> li){
+        if(li.size() != 2){
+            return  true;
+        }
         if((li.get(0)%2 != 1) | li.get(1)%2 != 0){
             return true;
         }
