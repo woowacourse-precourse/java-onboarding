@@ -40,6 +40,36 @@ public class Problem7 {
         return true;
     }
 
+    public static boolean makeUserFriendList(String user, List<List<String>> friends, List<String> userFriendList) {
+        for(int i=0 ; i< friends.size() ; i++) {
+            //friends의 각 원소는 길이가 2인 리스트/배열이다.
+            if(friends.get(i).size() != 2) {
+                return false;
+            }
+
+            String userA = friends.get(i).get(0);
+            String userB = friends.get(i).get(1);
+
+            //아이디는 길이가 1 이상 30 이하인 문자열이다.
+            if(userA.length() < 1 || userA.length() > 30 || userB.length() < 1 || userB.length() > 30) {
+                return false;
+            }
+
+            if(!isAlpa(userA, userB)) {
+                return false;
+            }
+
+            if(userA.equals(user)) {
+                userFriendList.add(userB);
+            }
+
+            if(userB.equals(user)) {
+                userFriendList.add(userA);
+            }
+        }
+        return true;
+    }
+
 
 
 
