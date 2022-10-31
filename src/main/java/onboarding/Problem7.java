@@ -1,6 +1,8 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     // 점수가 높은 순으로 5명을 리턴한다.
@@ -9,9 +11,17 @@ public class Problem7 {
     // 함께아는 친구: 10점
     // 타임라인에 방문한 횟수: 1점
 
-    // TODO friends를 돌며 유저들의 닉네임을 2차원 배열에 담는다. -> 중복을 제거한다
+    // TODO 전체 유저 닉네임을 반환하는 메서드 -> 중복을 제거한다
     public static List<String> getUsers(List<List<String>> friends) {
-        return null;
+        List<String> users = new ArrayList<>();
+        for (int i = 0; i < friends.size(); i++) {
+            for (int j = 0; j < friends.get(i).size(); j++) {
+                users.add(friends.get(i).get(j));
+            }
+        }
+        users = users.stream().distinct().sorted().collect(Collectors.toList());
+
+        return users;
     }
 
 
@@ -24,6 +34,7 @@ public class Problem7 {
         // 찾은 친구의 리스트에 담겨있는 유저에게 +10
         //  visitors를 돌며 2차원배열에 +1
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        List<String> users = getUsers(friends);
         return null;
     }
 }
