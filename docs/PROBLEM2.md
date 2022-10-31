@@ -21,3 +21,12 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+
+기능목록
+중복문자 검색
+중복문자 삭제
+
+
+
+
