@@ -85,7 +85,7 @@
   - 신청서 하나가 조건에 부합하는지 검사한다.
     - [X] hasValidFormLength
     - 신청서의 길이가 2인지 확인한다.
-    - [ ] hasValidEmail
+    - [X] isValidEmail
     - 이메일이 조건에 부합하는지 검사한다.
       - [ ] hasValidEmailLength
       - 이메일의 길이가 11 ~ 19 사이의 값인지 검사한다.
@@ -93,7 +93,7 @@
       - 이메일의 형식이 올바른지 검사한다.
       - [ ] hasValidEmailDomain
       - `email.com`을 도메인으로 갖는지 검사한다.
-    - [ ] hasValidNickname
+    - [ ] isValidNickname
     - 닉네임이 조건에 부합하는지 검사한다.
       - [ ] hasValidNicknameLength
       - 닉네임의 길이가 1 ~ 19 사이의 값인지 검사한다.
