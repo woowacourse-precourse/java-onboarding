@@ -1,6 +1,9 @@
 package onboarding;
 
 public class Problem4 {
+	static final int ASCII_UPPERCASE = 155; // 아스키 코드 A+Z = 155
+	static final int ASCII_LOWERCASE = 219; // 아스키 코드 a+z = 219
+
 	public static String solution(String word) {
 		String answer = "";
 
@@ -19,8 +22,8 @@ public class Problem4 {
 			return c;
 
 		if (Character.isUpperCase(c))
-			return (char)(155 - (int)c);
+			return (char)(ASCII_UPPERCASE - (int)c);
 
-		return (char)(219 - (int)c);
+		return (char)(ASCII_LOWERCASE - (int)c);
 	}
 }
