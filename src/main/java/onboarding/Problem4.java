@@ -7,7 +7,7 @@ public class Problem4 {
 
         for (char alphabet : alphabets) {
             if (isAlphabet(alphabet)) {
-                // sb.append(변환된 알파벳);
+                sb.append(convert(alphabet));
                 continue;
             }
 
@@ -15,6 +15,14 @@ public class Problem4 {
         }
 
         return sb.toString();
+    }
+
+    private static char convert(char alphabet) {
+        if (isUpperCase(alphabet)) {
+            return (char) ('Z' - (alphabet - 'A'));
+        }
+
+        return (char) ('z' - (alphabet - 'a'));
     }
 
     private static boolean isUpperCase(char alphabet) {
