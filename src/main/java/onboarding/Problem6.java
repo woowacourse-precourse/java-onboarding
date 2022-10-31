@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Problem6 {
 
@@ -30,7 +31,21 @@ public class Problem6 {
             names.add(name);
         }
 
-        List<String> answer = List.of("answer");
-        return answer;
+        Set<String> answer = new HashSet<>();
+        Set<String> tempAnswer = new HashSet<>();
+        for (String pattern : namePatterns) {
+            int dupCount = 0;
+            for (String name : names) {
+                if (name.contains(pattern)) {
+                    dupCount++;
+                    tempAnswer.add(map.get(name));
+                }
+            }
+            if (dupCount  > 1) {
+                answer.addAll(tempAnswer);
+            }
+            tempAnswer.clear();
+        }
+        return answer.stream().sorted().collect(Collectors.toList());
     }
 }
