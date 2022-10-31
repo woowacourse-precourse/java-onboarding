@@ -11,8 +11,11 @@ package onboarding;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 public class Problem7 {
+    static final int VISIT = 1;
+    static final int TOGETHER_HAVE_FRIEND = 10;
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
@@ -36,6 +39,27 @@ public class Problem7 {
             } else {
                 userFriendList.add(friendName);
             }
+        }
+    }
+
+    public static void friend(Map<String, Integer> friendshipScore, List<String> userFriend, List<List<String>> friends) {
+        for (String name : userFriend) {
+            List<String> nameFriendList = GetFriendShipFromName(friends, name);
+            friendListCheck(friendshipScore, nameFriendList, TOGETHER_HAVE_FRIEND);
+        }
+    }
+
+    public static void friendListCheck(Map<String, Integer> friendshipScore, List<String> list, int score) {
+        for (String name : list) {
+            friendScoreCalculate(friendshipScore, name, score);
+        }
+    }
+
+    public static void friendScoreCalculate(Map<String, Integer> friendshipScore, String name, int score) {
+        if (friendshipScore.containsKey(name)) {
+            friendshipScore.replace(name, friendshipScore.get(name) + score);
+        } else {
+            friendshipScore.put(name, score);
         }
     }
 }
