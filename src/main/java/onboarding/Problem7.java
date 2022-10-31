@@ -42,8 +42,14 @@ public class Problem7 {
                 score.put(name, mates.get(name).size() * 10);
             }
 
-
-
+            List<String> temp = mates.get(user);
+            for (String visitor : visitors) {
+                if (!temp.contains(visitor))
+                    score.put(visitor, score.getOrDefault(visitor, 0) + 1);
+            }
+        } else {
+            for (String visitor : visitors)
+                score.put(visitor, score.getOrDefault(visitor, 0) + 1);
         }
 
 
