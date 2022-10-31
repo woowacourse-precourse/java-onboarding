@@ -11,7 +11,20 @@ import java.util.List;
  */
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
+        HashSet<String> userFriend = new HashSet<>();
+        HashMap<String, Integer> friendOfFriendMap = new HashMap<>();
+
+        //user의 친구들 구하기
+        for (List<String> friendList : friends) {
+            if(friendList.contains(user)){
+                userFriend.add(friendList.get(0));
+                userFriend.add(friendList.get(1));
+            }
+        }
+        //자기 자신 제거
+        userFriend.remove(user);
+
         return answer;
     }
 }
