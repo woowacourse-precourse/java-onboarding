@@ -26,6 +26,10 @@ class Problem1 {
         return page % 2 == 0;
     }
 
+    public static boolean isValidRange(int page){
+        return page >=1 && page <=400;
+    }
+
     public static int sumDigit(int page) {
         int sum = 0;
         while (page > 0) {
