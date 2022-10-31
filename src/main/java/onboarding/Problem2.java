@@ -13,6 +13,22 @@ public class Problem2 {
             return cryptogram;
         }
 
+        char previous = cryptogram.charAt(0);
+        char now;
+
+        Set<Integer> set = new LinkedHashSet<>();
+
+        boolean isDuplicated = false;
+        for (int i = 1; i < cryptogram.length(); i++) {
+            now = cryptogram.charAt(i);
+            if (previous == now) {
+                set.add(i);
+                set.add(i - 1);
+                isDuplicated = true;
+            }
+            previous = now;
+        }
+
         return null;
     }
 }
