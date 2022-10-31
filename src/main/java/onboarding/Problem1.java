@@ -20,6 +20,16 @@ class Problem1 {
         return true;
     }
 
+    //페이지 번호 각 자리 수 더하기
+    private static int sumPage(int page) {
+        int result = 0;
+        while(page != 0) {
+            result  += page % 10;
+            page /= 10;
+        }
+        return result;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
