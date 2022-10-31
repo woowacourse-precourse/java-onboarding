@@ -9,7 +9,29 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
     	
         List<String> answer = new ArrayList<String>();
-       
+        String email, nickname, nickname2 = null;
+        int result = 0;
+        
+        try {
+        	for(int i = 0 ; i < forms.size()-1 ; i ++) {
+        		nickname = forms.get(i).get(1);
+        		for(int j = 0 ; j < forms.size() ; j++) {
+        			nickname2 = forms.get(j).get(1);
+        			if(nickname != nickname2) {
+        				result = equals(nickname,nickname2);
+        				if(result == 1) {
+        					email = forms.get(j).get(0);
+        					answer.add(email);
+        					System.out.println(answer);
+        				}
+        			}
+        			
+        		}
+        	}
+
+		} catch (Exception e) {
+			System.out.println("오류 발생 -> " + e.getMessage());
+		}
 		return answer;
     }
     
