@@ -24,13 +24,7 @@ class Problem1 {
             int crongScore = getScore(crong);
 
             // get winner
-            if(pobiScore > crongScore){
-                answer = 1;
-            }else if(pobiScore < crongScore){
-                answer = 2;
-            }else{
-                answer = 0;
-            }
+            answer = (pobiScore > crongScore) ? 1 : ((pobiScore < crongScore) ? 2 : 0);
 
         } catch(Exception e) {
             answer = -1;
@@ -50,7 +44,7 @@ class Problem1 {
         ArrayList<Integer> resArr = new ArrayList<>();  // arraylist to get four numbers => [16,17,63,72]
 
         for (int page: pageList){
-            pareAndAdd(resArr, page);
+            parseAndAdd(resArr, page);
             parseAndMult(resArr, page);
         }
         Collections.sort(resArr); // get Max by sorting
@@ -66,7 +60,7 @@ class Problem1 {
         resArr.add(multRes);
     }
 
-    private static void pareAndAdd(ArrayList<Integer> resArr, int page) {
+    private static void parseAndAdd(ArrayList<Integer> resArr, int page) {
         String[] parsedPage = parseInt(page);
         int addRes = 0;
         for (String StrParsed: parsedPage){ // 97 => 9 + 7 = 16
