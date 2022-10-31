@@ -51,21 +51,21 @@ public class Problem5 {
 			return money;
 		}
 
-        public int countMoney(int account) {
-            int count = 0;
-            while (canChange(account)) {
-                account -= money;
-                count++;
-            }
-            return count;
-        }
+		public int countMoney(int account) {
+			int count = 0;
+			while (canChange(account)) {
+				account -= money;
+				count++;
+			}
+			return count;
+		}
 
-        private boolean canChange(int account) {
-            return account - money >= 0;
-        }
+		private boolean canChange(int account) {
+			return account - money >= 0;
+		}
 
-        private int totalChangeFare(int count) {
-            return money * count;
-        }
+		private int totalChangeFare(int count) {
+			return money * count;
+		}
 	}
 }
