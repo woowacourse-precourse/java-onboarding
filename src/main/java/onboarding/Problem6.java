@@ -28,7 +28,11 @@ public class Problem6 {
         			
         		}
         	}
-
+        	
+        	List<String> newList = answer.stream().distinct().collect(Collectors.toList());
+        	Collections.sort(newList);
+        	
+        	answer = newList;
 		} catch (Exception e) {
 			System.out.println("오류 발생 -> " + e.getMessage());
 		}
