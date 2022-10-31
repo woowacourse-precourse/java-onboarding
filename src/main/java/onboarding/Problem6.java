@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import onboarding.validatechecker.Problem6ValidateChecker;
@@ -20,27 +21,27 @@ public class Problem6 {
 		List<String> nickNameList = genNickNameList(forms);
 		List<String> patternList = genPatternList(nickNameList);
 
-		List<String> duplicatePatternList = getDuplicateSubStr(patternList);
+		Set<String> duplicatePatternSet = genDuplicatePatternSet(patternList);
 		List<String> duplicatePatternEmailList =
-			genDuplicatePatternEmailList(duplicatePatternList,nickEmailMapper,nickNameList);
+			genDuplicatePatternEmailList(duplicatePatternSet,nickEmailMapper,nickNameList);
 		Collections.sort(duplicatePatternEmailList);
 
 		return duplicatePatternEmailList;
 	}
 
-	private static List<String> genDuplicatePatternEmailList(List<String> duplicatePatternList,
+	private static List<String> genDuplicatePatternEmailList(Set<String> duplicatePatternSet,
 		Map<String,String> nickEmailMapper, List<String> nickNameList) {
 		List<String> duplicatePatternEmailList = new ArrayList<>();
-		for (String duplicatePattern : duplicatePatternList) {
+		for (String duplicatePattern : duplicatePatternSet) {
 			duplicatePatternEmailList.addAll(nickNameList.stream().filter(str -> str.contains(duplicatePattern))
 				.map(nickEmailMapper::get).collect(Collectors.toList()));
 		}
 		return duplicatePatternEmailList;
 	}
 
-	private static List<String> getDuplicateSubStr(List<String> patternList) {
+	private static Set<String> genDuplicatePatternSet(List<String> patternList) {
 		return patternList.stream().filter(str -> Collections.frequency(patternList, str) > UNDUPLICATED)
-			.collect(Collectors.toList());
+			.collect(Collectors.toSet());
 	}
 
 	private static List<String> genPatternList(List<String> nickNameList) {
