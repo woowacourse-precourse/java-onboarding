@@ -7,7 +7,7 @@ public class Problem7 {
 
         List<String> result = userlist(friends,visitors);
 
-
+        result = friendslist(user,friends,result);
 
         return result;
     }
@@ -24,7 +24,24 @@ public class Problem7 {
         }
         return overlap(userdata);
     }
+    public static List<String> friendslist (String user, List<List<String>> friends , List<String> list) {
+        List<String> other = new ArrayList<>();
+        for(int i=0;i<friends.size();i++) {
+            if(friends.get(i).get(0).equals(user)||friends.get(i).get(1).equals(user)){
+                other.add(friends.get(i).get(0));
+                other.add(friends.get(i).get(1));
+            }
+        }
+        other = overlap(other);
 
+        for(int j=0;j<other.size();j++) {
+            for(int k=0;k<list.size();k++) {
+                if(other.get(j).equals(list.get(k)))
+                    list.remove(k);
+            }
+        }
+        return list;
+    }
     public static List<String> overlap (List<String> list) {
         Set<String> set = new HashSet<>(list);
         list = new ArrayList<>(set);
