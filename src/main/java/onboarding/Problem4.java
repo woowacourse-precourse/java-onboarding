@@ -1,22 +1,21 @@
 package onboarding;
 
-import java.util.Stack;
-
 public class Problem4 {
 
     public static String solution(String word) {
-
-        String answer = "";
-
-        return answer;
+        return convertText(word);
     }
 
     /*
      * 주어진 문자열에 대해 사전을 통해 변환된 문장 전체 반환
      */
     public static String convertText(String text) {
-        String result = "";
-        return result;
+        StringBuilder builder = new StringBuilder();
+        for (String word : text.split(" ")) {
+            builder.append(convertWord(word) + " ");
+        }
+        builder.deleteCharAt(builder.length() - 1);
+        return builder.toString();
     }
 
     /*
