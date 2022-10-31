@@ -41,5 +41,15 @@ class Problem1 {
         getNumberArr[3] = multiple(rightPageNum);
         return max(getNumberArr);
     }
-
+    public static boolean isException(List<Integer> list){
+        if(list.get(0)==1||list.get(0)==399){
+            return true;
+        }else if(list.get(1)==2 || list.get(1)==400){
+            return true;
+        }
+        if(list.get(0)+1 != list.get(1)){
+            return true;
+        }
+        return false;
+    }
 }
