@@ -3,7 +3,7 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
-    private final static int exception = -1;
+    private final static int EXCEPTION = -1;
     private final static int SAME_SCORE = 0;
     private final static int POBI_WIN = 1;
     private final static int CRONG_WIN = 2;
@@ -11,10 +11,10 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if (validateLength(pobi) || validateRange(pobi) || validateSequence(pobi) || validateOddOrEven(pobi)) {
-            return exception;
+            return EXCEPTION;
         }
         if (validateLength(crong) || validateRange(crong) || validateSequence(crong) || validateOddOrEven(crong)) {
-            return exception;
+            return EXCEPTION;
         }
 
         int pobiScore = getMyScore(pobi);
