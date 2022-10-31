@@ -64,6 +64,21 @@ class Problem1 {
         return gamer.get(way);
     }
 
+    public static int listPageGetMax(List<Integer> gamer) {
+        int leftPageMax = pageGetMax(getPageLeftOrRight(gamer, LEFTPAGE));
+        int rightPageMax = pageGetMax(getPageLeftOrRight(gamer, RIGHTPAGE));
+
+        return compare(leftPageMax, rightPageMax);
+    }
+
+    public static int pageGetMax(int page){
+        String stringPage = String.valueOf(page);
+        int plusPage = plusPageDigit(stringPage);
+        int multiPage = multiPageDigit(stringPage);
+
+        return compare(plusPage, multiPage);
+    }
+
     public static int plusPageDigit(String stringPage) {
         return stringPage.chars()
                 .mapToObj(i -> (char)i)
@@ -74,5 +89,9 @@ class Problem1 {
         return stringPage.chars()
                 .mapToObj(i -> (char)i).mapToInt(Character::getNumericValue)
                 .reduce(1, (a, b) -> a * b);
+    }
+
+    public static int compare(int score1, int score2) {
+        return Math.max(score1, score2);
     }
 }
