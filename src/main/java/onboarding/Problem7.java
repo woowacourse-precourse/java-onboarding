@@ -11,6 +11,11 @@ import java.util.stream.Collectors;
 
 
 public class Problem7 {
+
+	private static final int limit = 5;
+	private static final int firstFriendAtFriendList = 0;
+	private static final int secondFriendAtFriendList = 1;
+
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
 		LinkedHashMap<String, Integer> countingMap = new LinkedHashMap<>();
@@ -37,13 +42,16 @@ public class Problem7 {
 		   4) 추천 점수가 같으면 이름순 정렬
 		 */
 
-		int limit = 5;
-		countingMap = sortByDescendingOrder(countingMap, limit);
-		removeIfCountEqualsZero(countingMap);
-		List<Map.Entry<String, Integer>> countingList = sortByAlphabeticalOrder(countingMap);
-		List<String> answer = fixStringAndReturn(countingList);
+		List<String> answer = setUpConstraintsForTheAnswer(countingMap);
 
 		return answer;
+	}
+
+	private static List<String> setUpConstraintsForTheAnswer(LinkedHashMap<String, Integer> countingMap) {
+		countingMap = sortByDescendingOrder(countingMap);
+		removeIfCountEqualsZero(countingMap);
+		List<Map.Entry<String, Integer>> countingList = sortByAlphabeticalOrder(countingMap);
+		return fixStringAndReturn(countingList);
 	}
 
 
@@ -137,12 +145,12 @@ public class Problem7 {
 	}
 
 
-	private static LinkedHashMap<String, Integer> sortByDescendingOrder(LinkedHashMap<String, Integer> countingMap, int limit) {
+	private static LinkedHashMap<String, Integer> sortByDescendingOrder(LinkedHashMap<String, Integer> countingMap) {
 		LinkedHashMap<String, Integer> reverseSortedMap = new LinkedHashMap<>();
 		countingMap.entrySet()
 				.stream()
 				.sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
-				.limit(limit)
+				.limit(Problem7.limit)
 				.forEachOrdered(x -> reverseSortedMap.put(x.getKey(), x.getValue()));
 		return reverseSortedMap;
 	}
@@ -150,12 +158,12 @@ public class Problem7 {
 
 	private static String getPairName(List<?> friendsList, int j) {
 
-		if (j == 0) {
-			return (String) friendsList.get(1);
+		if (j == firstFriendAtFriendList) {
+			return (String) friendsList.get(secondFriendAtFriendList);
 		}
 
-		if (j == 1) {
-			return (String) friendsList.get(0);
+		if (j == secondFriendAtFriendList) {
+			return (String) friendsList.get(firstFriendAtFriendList);
 		}
 
 		return (String) friendsList.get(j);
