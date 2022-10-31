@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -15,8 +16,34 @@ public class Problem7 {
 
         User me = new User(user, myFriends);
 
+        HashMap<String, Integer> scoresMap = initFriendScores(me, allUsers);
+
         return answer;
     }
+    public static HashMap<String, Integer> initFriendScores(User user, List<String> allUsers) {
+
+        String name = user.getName();
+        List<String> userFriends = user.getFriendsList();
+
+        HashMap<String, Integer> scoresMap = new HashMap<>();
+
+        allUsers.remove(name);
+        int userSize = allUsers.size();
+        int userFriendSize = userFriends.size();
+
+        for (int i = 0; i < userSize; i++) {
+            name = allUsers.get(i);
+            scoresMap.put(name, 0);
+        }
+
+        for (int i = 0; i < userFriendSize; i++) {
+            name = userFriends.get(i);
+            scoresMap.remove(name);
+        }
+
+        return scoresMap;
+    }
+
 
     private static List<String> getMyFriends(String user, List<List<String>> friends) {
 
