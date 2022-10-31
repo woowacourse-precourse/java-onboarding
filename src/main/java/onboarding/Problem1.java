@@ -3,16 +3,6 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
-
-    /*
-    기능 목록
- 1. 한 사람의 두 페이지가 바로 다음 페이지가 아니면 -1을 리턴하고 게임을 끝낸다.
- 2. 페이지 수를 받아와 숫자들의 합을 구한다.
- 3. 페이지 수를 받아와 숫자들의 곱을 구한다.
- 4. 페이지 수의 합과 곱을 구해와 그 중 큰 값을 점수로 사용한다.
- 5. 한 사람이 가질 수 있는 두 페이지중 더 큰 값을 사람의 점수로 사용한다.
- 6. 두 사람의 점수를 구해와 더 큰 사람이 이긴다.
-    * */
     static final int RIGHT_PAGE = 1;
     static final int LEFT_PAGE = 0;
     static final int PAGE_GAP = 1;
