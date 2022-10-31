@@ -12,6 +12,18 @@ class Problem1 {
             return answer;
         }
 
+        int pobiMaxNumber = findBigNumber(pobi);
+        int crongMaxNumber = findBigNumber(crong);
+
+        if (pobiMaxNumber > crongMaxNumber) {
+            answer = 1;
+        }
+        if (pobiMaxNumber == crongMaxNumber) {
+            answer = 0;
+        }
+        if (pobiMaxNumber < crongMaxNumber) {
+            answer = 2;
+        }
 
         return answer;
     }
@@ -44,6 +56,39 @@ class Problem1 {
         }
 
         return 0;
+    }
+    public static int findBigNumber(List<Integer> openPages) {
+        //2.왼쪽페이지와 오른쪽 페이지를 이용하여 큰수를 구하는 기능
+        int leftBigNumber = Integer.MIN_VALUE;
+        int rightBigNumber = Integer.MIN_VALUE;
+
+        int leftAddNumber = 0;
+        int leftMultipleNumber = 1;
+
+        int rightAddNumber = 0;
+        int rightMultipleNumber = 1;
+
+        String leftPage = Integer.toString(openPages.get(0));
+        String rightPage = Integer.toString(openPages.get(1));
+        //2-1 왼쪽페이지의 수를 더한결과와 곱한결과를 구한다.
+        for (int i = 0; i < leftPage.length(); i++) {
+            leftAddNumber += Character.getNumericValue(leftPage.charAt(i));
+            leftMultipleNumber *= Character.getNumericValue(leftPage.charAt(i));
+        }
+        //2-2 오른쪽페이지의 수를 더한결과와 곱한결과를 구한다.
+        for (int i = 0; i < rightPage.length(); i++) {
+            rightAddNumber += Character.getNumericValue(rightPage.charAt(i));
+            rightMultipleNumber *= Character.getNumericValue(rightPage.charAt(i));
+        }
+
+        //2-3 왼쪽 가장 큰값과 오른쪽 가장 큰값을 비교해서 더 큰값을 리턴해준다.
+        leftBigNumber = Math.max(leftAddNumber, leftMultipleNumber);
+        rightBigNumber = Math.max(rightAddNumber, rightMultipleNumber);
+
+        //3 왼쪽최대값, 오른쪽 최대값중 더 큰값을 리턴해준다.
+        return Math.max(leftBigNumber, rightBigNumber);
+
+
     }
 
 
