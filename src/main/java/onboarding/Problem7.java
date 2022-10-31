@@ -49,12 +49,14 @@ public class Problem7 {
                 getPerson(visitor).count();
             }
         }
-        int numOfIntersection(Set<String> a, Set<String> b) {
+
+
+        int numOfIntersection(Set<Person> a, Set<Person> b) {
             if(a.isEmpty() || b.isEmpty()) {
                 return 0;
             }
             int count = 0;
-            for(String friend : a) {
+            for(Person friend : a) {
                 if(b.contains(friend)) {
                     count++;
                 }
