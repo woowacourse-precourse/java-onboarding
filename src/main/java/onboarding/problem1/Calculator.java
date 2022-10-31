@@ -1,14 +1,6 @@
 package onboarding.problem1;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
-
 public class Calculator {
-    public static int getMaxValFromList(List<Integer> allPossibleValues) {
-        int biggest = Collections.max(allPossibleValues);
-        return biggest;
-    }
     public static int getDigitSum(int number) {
         int result = 0;
         while (number != 0) {
