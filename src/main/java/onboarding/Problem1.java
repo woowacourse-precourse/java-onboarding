@@ -11,13 +11,29 @@ class Problem1 {
         if(!(isValidBookPage(pobi) && isValidBookPage(crong)))
             return -1;
 
+        answerOfPoi = getBiggestNumber(pobi);
+        answerOfCrong = getBiggestNumber(crong);
+
         return answer;
     }
     static boolean isValidBookPage(List<Integer> person) {
         boolean isLeftOddNumber = (person.get(0) % 2) == 1;
         boolean isLeftAndRight = (person.get(1) - person.get(0)) == 1;
         boolean isValidBookScope = (person.get(0) >= 1 && person.get(1) <= 400);
+
         return (isLeftOddNumber && isLeftAndRight && isValidBookScope);
+    }
+
+    static int getBiggestNumber(List<Integer> person){
+        int answer = 0;
+
+        for(Integer number : person){
+            int resultFromMultiplication = multiplyAllNumbers(number);
+            int resultFromAddition = addAllNumbers(number);
+            int result = Math.max(resultFromMultiplication, resultFromAddition);
+            answer = Math.max(answer, result);
+        }
+        return answer;
     }
 
     static int multiplyAllNumbers(Integer number){
