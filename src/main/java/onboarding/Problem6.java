@@ -21,6 +21,9 @@ public class Problem6 {
         			if(wordMap.containsKey(form.get(1).substring(i,i+pieceSize))){
         				Set<String> emailSet = wordMap.get(form.get(1).substring(i,i+pieceSize));
         				emailSet.add(form.get(0));
+        				if(emailSet.size() > 1) {
+        					answerSet.addAll(emailSet);
+        				}
         			}else {
         				Set<String> set = new HashSet<String>();
         				set.add(form.get(0));
