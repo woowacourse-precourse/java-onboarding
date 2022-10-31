@@ -20,8 +20,9 @@ public class Problem4 {
             else
                 replacedCharacter = character;
 
+            // 5. answer에 변환된 문자 추가
+            answer = answer.concat(String.valueOf(replacedCharacter));
         }
-        // 5. answer에 변환된 문자 추가
 
         return answer;
     }
