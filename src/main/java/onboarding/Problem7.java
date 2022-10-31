@@ -6,15 +6,15 @@ import static java.util.stream.Collectors.toList;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        Sns sns = new Sns(user, friends, visitors);
+        return sns.getRecommend();
     }
 
     static class Sns {
         private final String owner;
         private final Map<String, Integer> scores;
         private final List<List<String>> allFriends;
-        private final List<String> visitors;
+        private final List<String> visitors;ㅎ
         private final Set<String> earlyFriends;
 
         public Sns(String owner, List<List<String>> friends, List<String> visitors) {
@@ -23,6 +23,7 @@ public class Problem7 {
             this.visitors = visitors;
             this.scores = new HashMap<>();
             this.earlyFriends = new HashSet<>();
+            createFriendsList();
             initScores();
         }
 
