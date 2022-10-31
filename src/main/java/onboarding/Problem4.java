@@ -7,6 +7,9 @@ public class Problem4 {
 
         for (int i = 0; i < wordToChars.length; i++) {
             char aChar = wordToChars[i];
+
+            if (Character.isAlphabetic(aChar)) {
+            }
         }
 
         String answer = "";
