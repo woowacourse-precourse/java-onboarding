@@ -35,7 +35,7 @@ public class Problem7 {
         userFriendsInfo.get(user1).getFriends().add(user2);
 
         if (!userFriendsInfo.containsKey(user2)) {
-            userFriendsInfo.put(user1, new User(user2));
+            userFriendsInfo.put(user2, new User(user2));
         }
         userFriendsInfo.get(user2).getFriends().add(user1);
     }
@@ -61,7 +61,12 @@ public class Problem7 {
     }
 
     private static void addVisitorsScore(List<String> visitors, Map<String, User> userFriendsInfo) {
-        visitors.forEach(visitor -> userFriendsInfo.get(visitor).addScore(1));
+        visitors.forEach(visitor -> {
+            if (!userFriendsInfo.containsKey(visitor)) {
+                userFriendsInfo.put(visitor, new User(visitor));
+            }
+            userFriendsInfo.get(visitor).addScore(1);
+        });
     }
 }
 
