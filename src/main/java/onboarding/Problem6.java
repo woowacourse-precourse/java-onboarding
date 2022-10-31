@@ -27,4 +27,16 @@ public class Problem6 {
             }
         }
     }
+    /*
+    넘겨받은 문자 2개가 다른 이름에 포함이 됀다면
+    넘겨준 이름과 비교된 이름이 해당돼어 true처리합니다.
+     */
+    private static void compare(List<List<String>> forms, StringBuilder sb, int nameIndex) {
+        for (int comparedName = nameIndex + 1; comparedName < forms.size() ; comparedName++){
+            if (forms.get(comparedName).get(1).contains(sb.toString())){
+                DuplicateName[nameIndex] = true;
+                DuplicateName[comparedName] = true;
+            }
+        }
+    }
 }
