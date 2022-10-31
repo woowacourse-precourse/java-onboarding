@@ -10,8 +10,8 @@ public class Problem6 {
     {
         List<String> answer = new ArrayList<>();
         checkEmail(forms,answer) ;
-        System.out.println(answer);
-        return answer;
+        return  answer.stream().sorted().distinct().collect(Collectors.toList());
+
     }
 
     //email.com 인지 확인
