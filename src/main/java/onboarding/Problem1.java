@@ -8,6 +8,13 @@ class Problem1 {
     static final int DRAW = 0;
     static final int POBI_WINS = 1;
     static final int CRONG_WINS = 2;
+
+    /*
+    포비와 크롱의 페이지 스코어 대결
+    @param pobi : 포비의 왼쪽 오른쪽 페이지
+    @param crong : 크롱의 왼쪽 오른쪽 페이지
+    @return 이긴다면 1, 크롱이 이긴다면 2, 무승부는 0, 예외사항은 -1
+     */
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if(invaild(pobi) || invaild(crong)) return INVALID;
         
@@ -19,6 +26,11 @@ class Problem1 {
         else return CRONG_WINS;
     }
 
+    /*
+    페이지 자릿수 더하기
+    @param num : 페이지
+    @return 페이지 자릿수 더하기 결과 반환
+     */
     public static int getSumOfPageDigits(int num){
         int sum = 0;
 
@@ -30,6 +42,11 @@ class Problem1 {
         return sum;
     }
 
+    /*
+    페이지 자릿수 곱하기
+    @param num : 페이지
+    @return 페이지 자릿수 곱하기 결과 반환
+     */
     public static int getProductOfPageDigits(int num){
         int product = 1;
 
@@ -41,6 +58,11 @@ class Problem1 {
         return product;
     }
 
+    /*
+    먼저 왼쪽 페이지의 페이지 합과 곱 비교 후 오른쪽 페이지 비교
+    @param list : 페이지 리스트
+    @return 최댓값 페이지 반환
+     */
     public static int getMax(List<Integer> list){
         int page = list.get(0);
 
@@ -54,18 +76,23 @@ class Problem1 {
         return score;
     }
 
+    /*
+    제한 사항 준수 여부 파악
+    @param list : 페이지 리스트
+    @return 왼쪽 페이지가 짝수거나 왼쪽 오른쪽 페이지가 잘못 매칭 되었을 경우 참을 반환,
+            페이지 범위를 넘었을 경우에도 참을 반환.
+     */
     public static boolean invaild(List<Integer> list){
         int left = list.get(0);
         int right = list.get(1);
 
         if(left+1 != right) return true;
         if(left%2 == 0) return true;
-        if(outOfBound(left) || outOfBound(right)) return true;
-        return false;
+        return outOfBound(left) || outOfBound(right);
     }
 
+
     public static boolean outOfBound(int num){
-        if(num >= 1 && num <= 400) return false;
-        return true;
+        return num < 1 || num > 400;
     }
 }
