@@ -40,21 +40,26 @@ public class Problem7 {
 			}
 		}
 
-		Set<String> reconmmendedFriends = new HashSet<>();
+		Set<String> recommendedFriends = new HashSet<>();
 		for (Set<String> group : groupCollection) {
 			if (group.contains(user)) {
-				reconmmendedFriends = group;
+				recommendedFriends = group;
 				break;
 			}
 		}
-		reconmmendedFriends.remove(user);
-		reconmmendedFriends.addAll(visitors);
+		recommendedFriends.remove(user);
+		recommendedFriends.addAll(visitors);
 
 		for (String friend : friendshipChart.get(user)) {
-			reconmmendedFriends.remove(friend);
+			recommendedFriends.remove(friend);
 		}
 
-		System.out.println(reconmmendedFriends);
+		HashMap<String, Integer> scoreOfRecommendation = new HashMap<>();
+		for (String member : recommendedFriends) {
+			scoreOfRecommendation.put(member, 0);
+		}
+
+		System.out.println(recommendedFriends);
 
 		List<String> answer = Collections.emptyList();
 		return answer;
