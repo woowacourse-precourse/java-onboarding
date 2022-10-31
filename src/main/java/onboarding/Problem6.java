@@ -7,9 +7,9 @@ public class Problem6 {
         List<String> emailList = makeEmailList(forms);
         List<String> nameList = makeNameList(forms);
 
-        List<List<String>> substringList = makeSubstringList(nameList);
-        List<Integer> duplicatedIndexList = getDuplicatedIndex(substringList, nameList);
-        List<String> duplicatedEmailList = findEmailByIndex(emailList, duplicatedIndexList);
+        List<List<String>> totalSubstringList = makeTotalSubstringList(nameList);
+        List<Integer> duplicatedIndexList = getDuplicatedIndex(totalSubstringList, nameList);
+        List<String> duplicatedEmailList = makeDuplicatedEmailList(emailList, duplicatedIndexList);
 
         HashSet<String> set = new HashSet<>(duplicatedEmailList);
         List<String> answer = new ArrayList<>(set);
@@ -18,7 +18,7 @@ public class Problem6 {
         return answer;
     }
 
-    private static List<String> findEmailByIndex(List<String> emailList, List<Integer> duplicatedIndexList) {
+    private static List<String> makeDuplicatedEmailList(List<String> emailList, List<Integer> duplicatedIndexList) {
         List<String> duplicatedEmailList = new ArrayList<>();
         for (int i=0; i<duplicatedIndexList.size(); i++) {
             int index = duplicatedIndexList.get(i);
@@ -29,7 +29,7 @@ public class Problem6 {
     }
 
     private static List<Integer> getDuplicatedIndex(List<List<String>> substringList, List<String> nameList) {
-        List<Integer> dupliatedIndexList = new ArrayList<>();
+        List<Integer> duplicatedIndexList = new ArrayList<>();
         for (int i=0; i<nameList.size(); i++) {
             String name = nameList.get(i);
             boolean duplicatedFlag = false;
@@ -37,16 +37,16 @@ public class Problem6 {
                 if (i == j) {
                     continue;
                 }
-                if (validateDuplicatedName(nameList.get(i), substringList.get(j))) {
+                if (validateDuplicatedName(name, substringList.get(j))) {
                     duplicatedFlag = true;
                     break;
                 }
             }
-            if(duplicatedFlag) {
-                dupliatedIndexList.add(i);
+            if (duplicatedFlag) {
+                duplicatedIndexList.add(i);
             }
         }
-        return dupliatedIndexList;
+        return duplicatedIndexList;
     }
 
     private static boolean validateDuplicatedName(String name, List<String> substringList) {
@@ -58,23 +58,22 @@ public class Problem6 {
         return false;
     }
 
-    private static List<List<String>> makeSubstringList(List<String> nameList) {
-        List<List<String>> substringList = new ArrayList<>();
-        for (int i=0; i<nameList.size(); i++) {
-            List<String> allSubstring = makeSubstring(nameList.get(i));
-            substringList.add(allSubstring);
+    private static List<List<String>> makeTotalSubstringList(List<String> nameList) {
+        List<List<String>> totalSubstringList = new ArrayList<>();
+        for (String name : nameList) {
+            List<String> substringList = makeSubstringList(name);
+            totalSubstringList.add(substringList);
+        }
+        return totalSubstringList;
+    }
+
+    private static List<String> makeSubstringList(String name) {
+        List<String> substringList = new ArrayList<>();
+        for (int i=0; i<name.length()-1; i++) {
+            substringList.add(name.substring(i, i+2));
         }
         return substringList;
     }
-
-    private static List<String> makeSubstring(String name) {
-        List<String> allSubString = new ArrayList<>();
-        for (int i=0; i<name.length()-1; i++) {
-            allSubString.add(name.substring(i, i+2));
-        }
-        return allSubString;
-    }
-
 
     private static List<String> makeNameList(List<List<String>> forms) {
         List<String> nameList = new ArrayList<>();
