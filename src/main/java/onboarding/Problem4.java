@@ -13,4 +13,8 @@ public class Problem4 {
     private static int alphabetToAscii(char alphabet) {
         return (int) alphabet;
     }
+
+    private static char asciiToAlphabet(int asciiNumber) {
+        return (char) asciiNumber;
+    }
 }
