@@ -21,3 +21,11 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능목록
+1. 각 닉네임에서 차례로 2글자 를 잘라서 map의 key로 사용하고 email을 value로 저장하는 기능을 구현한다
+2. map에 이미 해당 키워드가 존재하다면 map안의 arraylist에 이메일 값을 추가한다
+3. arrayList를 순회하며 사이즈가 1보다 크다면 모든 list 요소를 answer array에 저장한다.
+4. answer array의 중복 제거를 한다
+5. answer array의 sorting 을 진행한다.
+6. anser을 반환한다.

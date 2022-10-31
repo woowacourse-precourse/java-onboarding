@@ -24,3 +24,10 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능목록
+1. 친구 리스트를 만든다
+2. 친구 리스트를 map에 이름과 점수를 저장한다
+3. 점수를 기준으로 정렬을 하여 5개를 뽑는다
+4. 소팅을 한다
+5. 값을 리턴한다.
