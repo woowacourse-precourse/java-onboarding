@@ -45,7 +45,15 @@ class Game{
 
 public class Problem3 {
     public static int solution(int number) {
-        int answer = 0;
+        int answer=0;
+        int[] numbers;
+
+        Utility utility = new Utility();
+        Game game = new Game();
+
+        numbers = utility.makeArray(number);
+        answer=game.play(numbers);
+        System.out.println(answer);
         return answer;
     }
 }
