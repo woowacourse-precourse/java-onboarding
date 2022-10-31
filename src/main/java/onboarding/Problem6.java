@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,6 +20,30 @@ public class Problem6 {
         }
         return false;
     }
+
+    static List<String> findDuplEmail(List<List<String>> forms) {
+        List<String> duplEmails = new ArrayList<>();
+        boolean[] isDupl = new boolean[10000];
+        for (int i = 0; i < forms.size() - 1; i++) {
+            for (int j = i + 1; j < forms.size(); j++) {
+                if (isDupl[j])
+                    continue;
+                if (!isDuplName(forms.get(i).get(1), forms.get(j).get(1)))
+                    continue;
+
+                if (!isDupl[i]) {
+                    duplEmails.add(forms.get(i).get(0));
+                    isDupl[i] = true;
+                }
+                if (!isDupl[j]) {
+                    duplEmails.add(forms.get(j).get(0));
+                    isDupl[j] = true;
+                }
+            }
+        }
+        return duplEmails;
+    }
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
