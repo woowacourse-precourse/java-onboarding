@@ -61,7 +61,20 @@ public class Problem7 {
     }
 
     public static List<String> recommendation(){
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(map.entrySet());
+        entryList.sort((o1, o2) -> {
+            int diff = o2.getValue()- o1.getValue();
+            if (diff == 0) {
+                diff = o1.getKey().compareTo(o2.getKey());
+            }
+            return diff;
+        });
+        int return_size = Math.min(entryList.size(), 5);
+
         List<String> answer = new ArrayList<>();
+        for (int i=0;i<return_size;i++){
+            answer.add(entryList.get(i).getKey());
+        }
         return answer;
     }
 
