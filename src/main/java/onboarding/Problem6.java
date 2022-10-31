@@ -35,6 +35,13 @@ public class Problem6 {
         return emailNicknameMap;
     }
 
+    // nicknameOverlapStatusMap 초기 값 셋팅
+    public static void initNicknameOverlapStatus(Map<String, String> emailNicknameMap) {
+        for (String value : emailNicknameMap.values()) {
+            nicknameOverlapStatusMap.put(value, false);
+        }
+    }
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
