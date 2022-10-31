@@ -26,10 +26,7 @@ public class Problem4 {
 
     private static char getOriginCaseValue(Map<Character, Character> dictionary, char key) {
         char value = getDictValue(dictionary, key);
-        if (Character.isLowerCase(key)) {
-            return Character.toLowerCase(value);
-        }
-        return value;
+        return Character.isLowerCase(key) ? Character.toLowerCase(value) : value;
     }
 
     private static void addValueToOutput(char key, StringBuilder sb) {
