@@ -14,7 +14,7 @@ public class Problem6 {
             mapFroms.put(forms.get(i).get(0), forms.get(i).get(1));
         }
         List<String> answer = duplicateCheck(mapFroms);
-        return answer;
+        return findduplicateWord(mapFroms, answer);
     }
     public static List<String> duplicateCheck(Map<String, String> map) { // 제이엠, 0 |제이슨, 0|.....
         int count = 1;
@@ -39,7 +39,21 @@ public class Problem6 {
         return twowordList;
     }
 
+    public static List<String> findduplicateWord(Map<String, String> map, List<String> list){
+        // 중복된 값에 해당하는 key 찾기
+        List<String> emailList = new ArrayList<>();
+        for (String key : map.keySet()) {
+            String value = map.get(key);
+            for(String ss : list) {
+                if (value.equals(ss)) {emailList.add(key);}
+            }
 
+        }
+        Collections.sort(emailList);
+
+        return emailList;
+
+    }
 
 
 
