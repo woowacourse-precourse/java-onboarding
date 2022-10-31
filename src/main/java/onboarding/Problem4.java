@@ -35,14 +35,14 @@ public class Problem4 {
     }
 
     private static char changeUpperCase(char currentChar){
-        int upperCaseConstant = 'A' + 'Z';
-        int conversion = upperCaseConstant - currentChar;
+        final int UPPER_CASE_CONSTANT = 'A' + 'Z';
+        int conversion = UPPER_CASE_CONSTANT - currentChar;
         char newChar = (char)conversion;
         return newChar;
     }
     private static char changeLowerCase(char currentChar){
-        int lowerCaseConstant = 'a' + 'z';
-        int conversion = lowerCaseConstant - currentChar;
+        final int LOWER_CASE_CONSTANT = 'a' + 'z';
+        int conversion = LOWER_CASE_CONSTANT - currentChar;
         char newChar = (char)conversion;
         return newChar;
     }
