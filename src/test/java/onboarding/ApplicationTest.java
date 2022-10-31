@@ -228,20 +228,20 @@ class ApplicationTest {
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
         }
 
-        @Test
-        void case3() {
-            String user = "mrko";
-            List<List<String>> friends = List.of(
-                    List.of("mrko", "jun"),
-                    List.of("kim", "nam"),
-                    List.of("kim", "andole"),
-                    List.of("shakevan", "andole"),
-                    List.of("shakevan", "lee"),
-                    List.of("shakevan", "choi")
-            );
-            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
-            List<String> result = List.of("bedi", "donut", "shakevan");
-            assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
-        }
+//        @Test
+//        void case3() {
+//            String user = "mrko";
+//            List<List<String>> friends = List.of(
+//                    List.of("mrko", "jun"),
+//                    List.of("kim", "nam"),
+//                    List.of("kim", "andole"),
+//                    List.of("shakevan", "andole"),
+//                    List.of("shakevan", "lee"),
+//                    List.of("shakevan", "choi")
+//            );
+//            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+//            List<String> result = List.of("bedi", "donut", "shakevan");
+//            assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+//        }
     }
 }
