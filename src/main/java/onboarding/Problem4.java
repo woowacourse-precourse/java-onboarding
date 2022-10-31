@@ -6,11 +6,7 @@ public class Problem4 {
 
         for (int i = 0; i < word.length(); i++) {
             char ch = word.charAt(i);
-
-            if (Character.isAlphabetic(ch))
-                sb.append(reverseChar(ch));
-            else
-                sb.append(ch);
+            sb.append(Character.isAlphabetic(ch) ? reverseChar(ch) : ch);
         }
 
         return sb.toString();
