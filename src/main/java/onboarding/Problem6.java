@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     /**
@@ -28,7 +29,8 @@ public class Problem6 {
             }
         }
 
-        return answer;
+        // 4.
+        return answer.stream().distinct().sorted().collect(Collectors.toList());
     }
 
     public static List<List<String>> checkForms(List<List<String>> forms) {
