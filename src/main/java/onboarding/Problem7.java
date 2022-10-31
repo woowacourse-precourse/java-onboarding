@@ -117,6 +117,10 @@ public class Problem7 {
         if (!validCheck(user, friends, visitors)) {
             throw new IllegalStateException("잘못된 입력입니다.");
         }
+        makeUser(user, friends, visitors);
+        makeNetwork(friends);
+        recommendedScoreCalculation(user, visitors);
+        answer = getRecommendedFriend();
         return answer;
     }
 }
