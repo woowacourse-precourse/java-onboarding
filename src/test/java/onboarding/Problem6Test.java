@@ -47,4 +47,27 @@ class Problem6Test {
 
         assertThat(result).isEqualTo(answer);
     }
+
+    @Test
+    @DisplayName("solution 메소드 테스트")
+    void solutionTest(){
+
+        List<List<String>> forms = List.of(
+                List.of("abcd123@email.com", "김길동"),
+                List.of("bcd123@email.com", "최길동"),
+                List.of("cd123@email.com", "박길동"),
+                List.of("qwer123@email.com", "박하")
+        );
+
+        List<String> answer = List.of(
+                "abcd123@email.com",
+                "bcd123@email.com",
+                "cd123@email.com"
+        );
+
+        List<String> result = Problem6.solution(forms);
+
+        assertThat(result).isEqualTo(answer);
+
+    }
 }

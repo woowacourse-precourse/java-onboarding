@@ -17,9 +17,8 @@ import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = checkNames(forms);
 
-        return answer;
+        return checkNames(forms);
     }
 
     public static List<String> checkNames(List<List<String>> forms){
