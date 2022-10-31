@@ -23,4 +23,20 @@ public class Problem2 {
 
         return chars;
     }
+
+    //중복 제거
+    static List<Character> removeChar(List<Character> list) {
+        List<Character> charList = new ArrayList<>();
+        charList = list;
+
+        for (int i=0; i<charList.size()-1; i++){
+            if (charList.get(i)==charList.get(i+1)){
+                charList.remove(i+1);
+                charList.remove(i);
+                i-=1;
+            }
+        }
+
+        return charList;
+    }
 }
