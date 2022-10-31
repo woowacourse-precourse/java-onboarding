@@ -16,11 +16,13 @@ public class Problem6 {
         for(int i = 0; i < forms.size(); i++) {
             String curEmail = forms.get(i).get(0);
             String curName = forms.get(i).get(1);
+            List<List<String>> followingForms = forms.subList(i + 1, forms.size());
 
-            emailsWithSimilarName = findEmailsWithSimilarName(curName, forms.subList(i + 1, forms.size()));
-
-            if(emailsWithSimilarName.size() != 0)
+            emailsWithSimilarName = findEmailsWithSimilarName(curName, followingForms);
+            if(emailsWithSimilarName.size() != 0) {
                 output.add(curEmail);
+            }
+
             output.addAll(emailsWithSimilarName);
         }
 
@@ -30,9 +32,9 @@ public class Problem6 {
 
     private static List<String> findEmailsWithSimilarName(String name, List<List<String>> forms) {
         List<String> output = new ArrayList<>();
-        for(int i = 0; i < forms.size(); i++) {
-            if(isSimilarName(name, forms.get(i).get(1))) {
-                output.add(forms.get(i).get(0));
+        for (List<String> form : forms) {
+            if (isSimilarName(name, form.get(1))) {
+                output.add(form.get(0));
             }
         }
         return output;
