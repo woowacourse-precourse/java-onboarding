@@ -15,7 +15,7 @@ public class Problem6 {
      */
     private static List<String> getDuplicatedCrewEmails(List<List<String>> forms){
 
-        // 닉네임 리스트에서 같은 글자가 연속적으로 포함된 인덱스로 이메일 리스트를 만듦
+        // 닉네임 리스트에서 같은 글자가 연속적으로 포함된 이메일 집합으로 이메일 리스트를 만듦
         Set<String> duplicatedEmailSet = getDuplicatedEmailSet(forms);
         List<String> emailList = new ArrayList<>(duplicatedEmailSet);
 
