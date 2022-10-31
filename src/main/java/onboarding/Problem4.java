@@ -14,35 +14,35 @@ public class Problem4 {
         return answer;
     }
 
-    private static StringBuilder toStringBuilder(String word) {
+    public static StringBuilder toStringBuilder(String word) {
         return new StringBuilder(word);
     }
 
-    private static boolean isUpperCase(char character) {
+    public static boolean isUpperCase(char character) {
         if (character >= UPPER_CASE_A && character <= UPPER_CASE_Z) {
             return true;
         }
         return false;
     }
 
-    private static boolean isLowerCase(char character) {
+    public static boolean isLowerCase(char character) {
         if (character >= LOWER_CASE_A && character <= LOWER_CASE_Z) {
             return true;
         }
         return false;
     }
 
-    private static void reverseUpperCase(StringBuilder stringBuilder, char character, int index) {
+    public static void reverseUpperCase(StringBuilder stringBuilder, char character, int index) {
         char reverse = (char) (UPPER_CASE_TOTAL - character);
         stringBuilder.setCharAt(index, reverse);
     }
 
-    private static void reverseLowerCase(StringBuilder stringBuilder, char character, int index) {
+    public static void reverseLowerCase(StringBuilder stringBuilder, char character, int index) {
         char reverse = (char) (LOWER_CASE_TOTAL - character);
         stringBuilder.setCharAt(index, reverse);
     }
 
-    private static StringBuilder makeFrogWord(String word) {
+    public static StringBuilder makeFrogWord(String word) {
         StringBuilder frogWord = toStringBuilder(word);
         for (int i = 0; i < frogWord.length(); i++) {
             char character = frogWord.charAt(i);
@@ -56,7 +56,7 @@ public class Problem4 {
         return frogWord;
     }
 
-    private static String toString(StringBuilder stringBuilder) {
+    public static String toString(StringBuilder stringBuilder) {
         return stringBuilder.toString();
     }
 }
