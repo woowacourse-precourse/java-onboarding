@@ -86,7 +86,8 @@ public class Problem7 {
         List<String> result = new ArrayList<>();
         for(int i=0; i<sortedList.size(); i++) {
             String friend = sortedList.get(i);
-            if(! friendList.contains(friend) || ! user.equals(friend)) {
+            if(! friendList.contains(friend) && ! user.equals(friend)) {
+                System.out.println("friend: " + friend);
                 result.add(friend);
             }
         }
