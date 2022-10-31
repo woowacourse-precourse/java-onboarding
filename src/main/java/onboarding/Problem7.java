@@ -23,11 +23,9 @@ public class Problem7 {
             }
         });
         int lenList = list.size();
-        for (int i=0;i<lenList;++i) {
-            if (list.get(i).getValue() > 0) {
+        for (int i=0;i<lenList&&i<5;++i)
+            if (list.get(i).getValue() > 0)
                 answer.add(list.get(i).getKey());
-            }
-        }
         return answer;
     }
 
