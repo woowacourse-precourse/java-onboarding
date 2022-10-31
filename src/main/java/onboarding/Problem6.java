@@ -37,7 +37,7 @@ public class Problem6 {
         final int MAX_LENGTH = 20;
         final String NICKNAME_REGEX = "[가-힣]+$";
         return forms.stream()
-                .allMatch((List a) -> (Pattern.matches(NICKNAME_REGEX,(String)a.get(1))) && ((String) a.get(1)).length()<=MAX_LENGTH);
+                .allMatch((a) -> (Pattern.matches(NICKNAME_REGEX,a.get(1))) && (a.get(1)).length()<=MAX_LENGTH);
     }
 
     private static boolean emailValidation(List<List<String>> forms){
@@ -89,4 +89,9 @@ public class Problem6 {
         return duplicatedUserEmail.stream().sorted().collect(Collectors.toList());
     }
 
+    public static void test(){
+        List<String> list1 = new LinkedList<>();
+
+        list1.add("Something");
+    }
 }
