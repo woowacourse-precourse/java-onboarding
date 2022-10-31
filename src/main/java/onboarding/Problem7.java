@@ -5,7 +5,40 @@ import java.util.stream.Collectors;
 
 public class Problem7 {
 
-    private final static HashMap<String, Integer> map = new HashMap<>();
+    private static class User {
+        String name;
+        int point;
+
+        public static User createUser(String name) {
+            User user = new User();
+            user.name = name;
+            user.point = 0;
+            return user;
+        }
+
+        @Override
+        public String toString() {
+            return this.getName() + ": " + this.getPoint();
+        }
+
+        public int getPoint() {
+            return point;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void onePointUp() {
+            this.point++;
+        }
+
+        public void tenPointUp() {
+            this.point+=10;
+        }
+    }
+
+    private final static ArrayList<User> list = new ArrayList<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
@@ -13,77 +46,94 @@ public class Problem7 {
         validateFriendsSize(friends);
         validateVisitorSize(visitors);
 
-        List<String> bf = findBestFriends(user, friends);
-        System.out.println(bf);
+        List<String> except = getExcept(user, friends);
+        except.add(user);
 
-        putVisitor(map, visitors);
-        putFriends(map, friends);
+        putVisitor(list, visitors, except);
+        putFriends(list, friends, except);
 
-        map.remove(user);
-        removeElementsFromMap(map, bf);
+        removeElementsFromMap(list, except);
 
-        countVisitPoint(map, visitors);
-        countNotFriendPoint(map, friends);
+        countVisitPoint(list, visitors);
+        countNotFriendPoint(list, friends);
+        System.out.println(list);
 
-        return getAnswer(map);
+        return getAnswer(list);
     }
 
-    private static List<String> getAnswer(Map<String, Integer> map) {
+    private static List<String> getAnswer(List<User> list) {
 
         int cnt = 0;
-        for (String name : map.keySet()) {
-            if (map.get(name) == 0) {
+        for (User user : list) {
+            if (user.getPoint() == 0) {
                 cnt++;
             }
         }
 
-        if (cnt == map.size()) {
+        if (cnt == list.size()) {
             return Collections.emptyList();
         }
         else {
-            return map.keySet().stream().collect(Collectors.toList());
+            return list.stream()
+                .filter(it -> it.getPoint() != 0)
+                .sorted(
+                    Comparator.comparing(User::getPoint).reversed()
+                        .thenComparing(User::getName)
+                )
+                .map(User::getName)
+                .distinct()
+                .limit(5)
+                .collect(Collectors.toList());
         }
     }
 
-    private static void countNotFriendPoint(Map<String, Integer> map, List<List<String>> friends) {
+    private static void countNotFriendPoint(List<User> list, List<List<String>> friends) {
         for (List<String> friend : friends) {
             for (String name : friend) {
-                if (map.containsKey(name)) {
-                    map.put(name, map.get(name)+10);
+                for (User user : list) {
+                    if (user.getName().equals(name)) {
+                        user.tenPointUp();
+                    }
                 }
             }
         }
     }
 
-    private static void countVisitPoint(Map<String, Integer> map, List<String> visitors) {
-        for (String name : visitors) {
-            if (map.containsKey(name)) {
-                map.put(name, map.get(name) + 1);
+    private static void countVisitPoint(List<User> list, List<String> visitors) {
+        for (User user : list) {
+            if (visitors.contains(user.getName())) {
+                user.onePointUp();
             }
         }
     }
 
-    private static void putFriends(Map<String, Integer> map, List<List<String>> friends) {
+    private static void putFriends(List<User> list, List<List<String>> friends, List<String> bf) {
         for (List<String> friend : friends) {
             for (String name : friend) {
-                map.put(name, 0);
+                if (!bf.contains(name)) {
+                    list.add(User.createUser(name));
+                }
             }
         }
     }
 
-    private static void putVisitor(Map<String, Integer> map, List<String> visitors) {
+    private static void putVisitor(List<User> list, List<String> visitors, List<String> bf) {
         for (String visitor : visitors) {
-            map.put(visitor, 0);
+            if (!bf.contains(visitor)) {
+                list.add(User.createUser(visitor));
+            }
         }
     }
 
-    private static void removeElementsFromMap(Map<String, Integer> list, List<String> elements) {
+    private static void removeElementsFromMap(List<User> list, List<String> elements) {
         for (String ele : elements) {
-            list.remove(ele);
+            while(list.contains(ele)) {
+                list.remove(ele);
+            }
         }
     }
 
-    private static List<String> findBestFriends(String user, List<List<String>> friends) {
+    private static List<String> getExcept(String user, List<List<String>> friends) {
 
         List<String> bestFriend = new ArrayList<>();
 
