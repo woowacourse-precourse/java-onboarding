@@ -70,7 +70,12 @@ public class Problem7 {
     }
 
     private static boolean isMeOrUserFriends(String userName, String user, List<String> userFriends){
+        for(String userFriend: userFriends){
+            if(userName.equals(userFriend))
+                return true;
+        }
 
+        return userName.equals(user);
     }
 
     private static List<String> getTop5(Map<String, User> users){
