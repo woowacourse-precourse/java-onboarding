@@ -8,10 +8,7 @@ import java.util.Optional;
 public class Sns {
 	public static final Map<String, User> userMap = new HashMap<>();
 
-	public Sns() {
-	}
-
-	public void initUser(String id) {
+	public void registerUser(String id) {
 		if (!userMap.containsKey(id)) {
 			User user = new User(id);
 			userMap.put(id, user);
@@ -39,5 +36,9 @@ public class Sns {
 
 	public Map<String, User> getUserMap() {
 		return userMap;
+	}
+
+	public void clear() {
+		userMap.clear();
 	}
 }

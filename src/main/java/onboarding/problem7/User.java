@@ -12,7 +12,7 @@ public class User {
 	private final Map<String, Integer> visitorMap;
 
 	public User(String id) {
-		this.id = id;
+		this.id = validateId(id);
 		this.friendSet = new HashSet<>();
 		this.visitorMap = new HashMap<>();
 	}
@@ -23,6 +23,9 @@ public class User {
 
 	public void addVisitors(List<String> visitors) {
 		for (String visitor : visitors) {
+			if (id.equals(visitor)) {
+				continue;
+			}
 			Integer visitScore = visitorMap.getOrDefault(visitor, 0);
 			visitorMap.put(visitor, visitScore + 1);
 		}
@@ -37,6 +40,15 @@ public class User {
 	}
 
 	public String getId() {
+		return id;
+	}
+
+	private String validateId(String id) {
+		if (id.length() < 1 || id.length() > 30) {
+			throw new RuntimeException("Id 는 1자 이상 30자 이하의 길이만 가능합니다.");
+		} else if (!id.matches("^[a-z]*$")) {
+			throw new RuntimeException("Id 는 소문자만 사용 가능합니다.");
+		}
 		return id;
 	}
 }
