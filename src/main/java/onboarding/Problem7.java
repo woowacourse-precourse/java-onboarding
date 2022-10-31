@@ -5,9 +5,9 @@ import java.util.*;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
-
+        Map<String, Integer> recommendScore = new HashMap<>();
         Map<String, List<String>> network = getFriendList(friends);
-        Map<String, Integer> friendScoreList = getFriendScoreList(network, user);
+        addFriendScore(recommendScore, network, user);
 
 
         return answer;
@@ -34,24 +34,16 @@ public class Problem7 {
         return network;
     }
 
-    public static Map<String, Integer> getFriendScoreList(Map<String, List<String>> network, String user) {
-        List<String> userFriendList = network.get(user);
-        Map<String, Integer> getFriendScoreList = new HashMap<>();
+    public static void addFriendScore(Map<String, Integer> recommendScore, Map<String, List<String>> network, String user) {
 
-        for (String otherUser : network.keySet()) {
-            if (!otherUser.equals(user)) {
-                getFriendScoreList.put(otherUser, 0);
-                for (String userFriend : userFriendList) {
-                    for (String otherUserFriend : network.get(otherUser)) {
-                        if (userFriend.equals(otherUserFriend)) {
-                            getFriendScoreList.put(otherUser, getFriendScoreList.get(otherUser) + 10);
-                        }
+        network.get(user).forEach(userFriend ->
+                network.get(userFriend).forEach(userFriendFriend -> {
+                    if (recommendScore.containsKey(userFriendFriend)) {
+                        recommendScore.put(userFriendFriend, recommendScore.get(userFriendFriend) + 10);
+                    } else {
+                        recommendScore.put(userFriendFriend, 10);
                     }
-                }
-            }
-
-        }
-
-        return getFriendScoreList;
+                }));
     }
+
 }
