@@ -643,3 +643,4 @@ public static List<Integer> solution(int money) {
 3. result 정렬하는 메소드
 4. result에 중복된 값을 제거하는 메소드
 5. @email.com이 맞는지 확인하는 메소드
+6. Exception 입력범위
