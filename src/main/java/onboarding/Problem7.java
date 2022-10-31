@@ -58,6 +58,13 @@ public class Problem7 {
         }
         return result;
     }
-//    public static void sortByScore() {}
+    public static void sortByScore(List<List<String>> result) {
+        Collections.sort(result, new Comparator<List<String>>() {
+            @Override
+            public int compare(List<String> o1, List<String> o2) {
+                return o1.get(1).compareTo(o2.get(1));
+            }
+        });
+    }
 
 }
