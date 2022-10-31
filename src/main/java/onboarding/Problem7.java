@@ -83,11 +83,6 @@ public class Problem7 {
         // 점수가 가장 높은 순으로 정렬하여 최대 5명을 return
         List<String> answer = get5PeopleWithTheHighestScore(user);
 
-        for (String i : answer) {
-            System.out.print(i + ' ');
-            System.out.println(score.get(i));
-        }
-
         return answer;
     }
 }
