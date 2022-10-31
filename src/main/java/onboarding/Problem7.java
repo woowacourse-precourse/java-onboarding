@@ -22,8 +22,7 @@ public class Problem7 {
         FriendRecommendedScore friendRecommendedScore =
                 new FriendRecommendedScore(user, userFriends, friendsOfFriends, visitors);
 
-        List<String> answer = Collections.emptyList();
-        return answer;
+        return friendRecommendedScore.getRank();
     }
 }
 
@@ -65,6 +64,20 @@ class FriendsRelation {
 
 class FriendRecommendedScore {
     private final Map<String, Integer> totalRecommendedMap = new HashMap<>();
+    private final Comparator<String> scoreComparator = (user1, user2) -> {
+        int user1Score = getScore(user1);
+        int user2Score = getScore(user2);
+
+        if (user1Score < user2Score) {
+            return 1;
+        }
+
+        if (user1Score == user2Score) {
+            return user1.compareTo(user2);
+        }
+
+        return -1;
+    };
 
     public FriendRecommendedScore(String user, Set<String> userFriends, Set<String> friendOfFriend, List<String> visitors) {
         for (String friendsOfFriend : friendOfFriend) {
@@ -83,11 +96,22 @@ class FriendRecommendedScore {
     }
 
     private void raiseScore(String user, int point) {
-        int nowScore = totalRecommendedMap.getOrDefault(user, 0);
+        int nowScore = getScore(user);
         totalRecommendedMap.put(user, nowScore + point);
+    }
+
+    private int getScore(String user) {
+        return totalRecommendedMap.getOrDefault(user, 0);
     }
 
     private void notRecommended(String user) {
         totalRecommendedMap.remove(user);
+    }
+
+    public List<String> getRank() {
+        Set<String> recommendSet = totalRecommendedMap.keySet();
+        List<String> recommendList = new ArrayList<>(recommendSet);
+        recommendList.sort(scoreComparator);
+        return recommendList.subList(0, Math.min(recommendList.size(), 5));
     }
 }
