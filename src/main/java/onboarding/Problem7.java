@@ -5,7 +5,7 @@ package onboarding;
 //3. visitors에 포함된 이름을 hashmap에 추가
 //4. friend_list를 보고 문제의 조건에 해당되는 hashmap 키의 value에 점수 추가
 //5. hashmap을 리스트로 변환
-//6. 리스트를 hashmap의 값을 기준으로 정렬(값이 같을 시 키를 기준으로 정렬)
+//6. 리스트를 hashmap의 값을 기준으로 내림차순 정렬(값이 같을 시 키를 기준으로 오름차순 정렬)
 //7. 리스트에 있는 값을 문제의 조건에 따라 answer에 추가 후 반환
 import java.util.Map.Entry;
 import java.util.HashMap;
@@ -22,6 +22,7 @@ public class Problem7 {
         HashMap<String, Integer> map = new HashMap<>();
         List<String> answer = new ArrayList<>();
         int idx;
+
         //1. user를 아는 friend_list 만들기
         //2. user를 제외한 friends에 포함된 이름을 hashmap에 추가
         for(int i = 0; i < friends.size(); i++)
@@ -39,6 +40,7 @@ public class Problem7 {
             }
         }
         map.remove(user);
+
         //3. visitors에 포함된 이름을 hashmap에 추가
         for(int i = 0; i < visitors.size(); i++)
         {
@@ -50,6 +52,7 @@ public class Problem7 {
             if(!map.containsKey(visitors.get(i)))
                 map.put(visitors.get(i), 1);
         }
+
         //4. friend_list를 보고 문제의 조건에 해당되는 hashmap 키의 value에 점수 추가
         for(int i = 0; i < friends.size(); i++)
         {
@@ -65,8 +68,20 @@ public class Problem7 {
                 }
             }
         }
+
         //5. hashmap을 리스트로 변환
         List<Entry<String, Integer>> list_entries = new ArrayList<Entry<String, Integer>>(map.entrySet());
+
+        //6. 리스트를 hashmap의 값을 기준으로 내림차순 정렬(값이 같을 시 키를 기준으로 오름차순 정렬)
+        Collections.sort(list_entries, new Comparator<Entry<String, Integer>>() {
+            // compare로 값을 비교
+            public int compare(Entry<String, Integer> obj1, Entry<String, Integer> obj2)
+            {
+                if(obj2.getValue() == obj1.getValue())
+                    return obj1.getKey().compareTo(obj2.getKey());
+                return obj2.getValue().compareTo(obj1.getValue());
+            }
+        });
         return answer;
     }
 }
