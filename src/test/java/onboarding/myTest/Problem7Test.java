@@ -63,7 +63,7 @@ public class Problem7Test {
         }
 
         /**
-         * friends 가 비어 있고, 동일한 점수가 5명 이사인 경우 
+         * friends 가 비어 있고, 동일한 점수가 5명 이사인 경우
          */
         @Test
         void case4() {

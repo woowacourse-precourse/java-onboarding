@@ -34,6 +34,9 @@ public class Problem6Test {
             assertThat(Problem6.solution(forms)).isEqualTo(result);
         }
 
+        /**
+         * 중복이 있는 경우 경우
+         */
         @Test
         void case3() {
             List<List<String>> forms = List.of(
