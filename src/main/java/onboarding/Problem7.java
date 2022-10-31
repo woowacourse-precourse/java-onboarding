@@ -30,6 +30,15 @@ public class Problem7 {
             }
         }
 
+        Set<String> users = new HashSet<>();
+        for (List<String> friend : friends) {
+            users.add(friend.get(0));
+            users.add(friend.get(1));
+        }
+        users.addAll(visitors);
+        users.remove(user);
+        users.removeIf(anotherUser -> links.get(user).contains(anotherUser));
+
         return null;
     }
 }
