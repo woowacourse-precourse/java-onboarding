@@ -1,6 +1,8 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 class Problem1 {
@@ -43,6 +45,22 @@ class Problem1 {
         return number;
     }
 
+    /**
+     * 숫자를 한자리씩 분할
+     * @param number 페이지 번호
+     * @return 한자리씩 분할된 페이지 번호 집합
+     */
+    private static int[] getOneLetterNumbers(int number) {
+        List<Integer> oneLetterNumber = new ArrayList<>();
 
+        while (number > 0) {
+            oneLetterNumber.add(number % 10);
+            number /= 10;
+        }
+
+        Collections.reverse(oneLetterNumber);
+
+        return oneLetterNumber.stream().mapToInt(i -> i).toArray();
+    }
 
 }
