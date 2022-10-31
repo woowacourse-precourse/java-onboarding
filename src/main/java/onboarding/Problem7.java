@@ -8,6 +8,7 @@ public class Problem7 {
 
     private static final int NEIGHBOR_POINT = 10;
     private static final int VISITOR_POINT = 1;
+    private static final int RECOMMEND_USER = 5;
     private static List<String> USER_FRIENDS;
     private static Map<String, Integer> RECOMMEND_SCORE;
 
@@ -84,7 +85,7 @@ public class Problem7 {
                     }
                     return num;
                 })
-                .limit(5)
+                .limit(RECOMMEND_USER)
                 .map(Map.Entry::getKey)
                 .collect(Collectors.toList());
     }
