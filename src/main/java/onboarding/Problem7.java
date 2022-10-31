@@ -4,7 +4,6 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
 
         Map<String, Integer> recommendScore = new HashMap<>();
         Map<String, List<String>> network = getFriendList(friends);
@@ -12,9 +11,37 @@ public class Problem7 {
         addFriendScore(recommendScore, network, user);
         addTimelineScore(recommendScore, visitors);
 
+        List<String> answer= getRecommendedFriendList(recommendScore);
+
         return answer;
     }
 
+    private static List<String> getRecommendedFriendList(Map<String, Integer> recommendScore) {
+        List<String> recommendedFriendList= new ArrayList<>();
+        List<Map.Entry<String,Integer>> entries = new LinkedList<>(recommendScore.entrySet());
+        Collections.sort(entries,comparator);
+
+        entries.forEach(entry->{
+            if(recommendedFriendList.size()<5 && entry.getValue()!=0){
+                recommendedFriendList.add(entry.getKey());
+            }
+        });
+
+        return recommendedFriendList;
+    }
+
+    public static Comparator<Map.Entry<String ,Integer>> comparator=new Comparator<Map.Entry<String, Integer>>() {
+        @Override
+        public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+            if (o1.getValue() > o2.getValue()){
+                return -1;
+            } else if (o1.getValue() == o2.getValue()) {
+                return o1.getKey().compareTo(o2.getKey());
+            } else {
+                return 1;
+            }
+        }
+    };
 
     //친구 목록 생성
     public static Map<String, List<String>> getFriendList(List<List<String>> friends) {
