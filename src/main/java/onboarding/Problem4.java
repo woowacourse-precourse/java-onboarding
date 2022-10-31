@@ -43,6 +43,17 @@ class FrogDictionary{
     boolean isUpperLetter(String letter){
         return letter.matches("^[A-Z]*$");
     }
+    String getFrogLetter(String letter,HashMap<String, String> frogDictionary ){
+        String frogLetter;
+        if(isUpperLetter(letter)){
+            String lowerLetter=letter.toLowerCase();
+            frogLetter=frogDictionary.get(lowerLetter);
+            return frogLetter.toUpperCase();
+        }
+        else{
+            return frogDictionary.get(letter);
+        }
+    }
 }
 class Translation{
     boolean isUpperLetter(char letter){
