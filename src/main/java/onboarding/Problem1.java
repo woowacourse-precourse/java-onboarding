@@ -6,18 +6,10 @@ import java.util.Map;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int pobiPageMax = allPageMax(pobi);
-        int crongPageMax = allPageMax(crong);
-        if(pobiPageMax == -1 || crongPageMax == -1){
+        if(errorPage(pobi,crong)){
             return -1;
         }
-        else if(pobiPageMax > crongPageMax){
-            return 1;
-        }
-        else if(pobiPageMax < crongPageMax){
-            return 2;
-        }
-        else return 0;
+        return whoIsTheWinner(comparePobiAndCrong(findPobiAndCrongPageMax(pobi,crong)));
     }
     private static int pageMax(String[] pageList){
         Map<String,Integer> pageMap = putPageMap(pageList);
@@ -55,4 +47,38 @@ class Problem1 {
     private static String[] rightPageList(List<Integer> playerPages){
         return String.valueOf(playerPages.get(1)).split("(?<=.)");
     }
+    private static List<Integer> findPobiAndCrongPageMax(List<Integer> pobi, List<Integer> crong){
+        return List.of(allPageMax(pobi),allPageMax(crong));
     }
+    private static List<Boolean> comparePobiAndCrong(List<Integer> pobiAndCrongPageMax){
+        int pobiMaxPage = pobiAndCrongPageMax.get(0);
+        int crongMaxPage = pobiAndCrongPageMax.get(1);
+        return List.of(pobiMaxPage == crongMaxPage,pobiMaxPage>crongMaxPage,pobiMaxPage<crongMaxPage);
+    }
+    private static int whoIsTheWinner(List<Boolean> pobiAndCrongPageMax){
+        int i = 0;
+        for (;i < pobiAndCrongPageMax.size(); i++) {
+            if(pobiAndCrongPageMax.get(i)){
+                break;
+            }
+        }
+        return i;
+    }
+    private static boolean errorPage(List<Integer> pobi, List<Integer> crong) {
+        if(errorPageGap(pobi,crong) || errorPageFirstOrLast(pobi,crong)){
+            return true;
+        }
+        return false;
+    }
+    private static boolean errorPageGap(List<Integer> pobi,List<Integer> crong){
+        return List.of(pobi.get(0)%2 == 0,pobi.get(0)+1 != pobi.get(1),pobi.get(1)%2 != 0
+                        ,crong.get(0)%2 == 0,crong.get(0)+1 != crong.get(1),crong.get(1)%2 != 0)
+                .contains(true);
+    }
+    private static boolean errorPageFirstOrLast(List<Integer> pobi,List<Integer> crong){
+        List<Integer> firstAndlastPageList = List.of(1,2,399,400);
+        return List.of(firstAndlastPageList.contains(pobi.get(0)),firstAndlastPageList.contains(pobi.get(1))
+                        ,firstAndlastPageList.contains(crong.get(0)),firstAndlastPageList.contains(crong.get(1)))
+                .contains(true);
+    }
+}
