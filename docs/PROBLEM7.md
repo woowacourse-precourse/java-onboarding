@@ -60,12 +60,12 @@
 
 <br/>
 
-- ⬜ makePeopleMap 메소드 구현
-  - ⬜ 사람의 친구 관계 정보를 담고있는 people 객체들을 생성하여 HashMap에 삽입 후 반환
-  - ⬜ user 정보를 저장하는 People 객체는 따로 생성하여 HashMap에 삽입
-  - ⬜ friends 리스트에서 주어지지 않은 새로운 사람이 visitors 리스트에서 등장 시 새로운 people 객체 생성 후 HashMap에 삽입
-  - ⬜ friends 리스트에 명시된 친구 관계정보에 따라 해당하는 people 객체에 친구명을 저장
-  - ⬜ user와 친구관계인 People 객체는 삭제 (사용자와 이미 친구관계인 경우는 점수를 계산하지 않는다.)
+- ✅ makePeopleMap 메소드 구현
+  - ✅ 사람의 친구 관계 정보를 담고있는 people 객체들을 생성하여 HashMap에 삽입 후 반환
+  - ✅ user 정보를 저장하는 People 객체는 따로 생성하여 HashMap에 삽입
+  - ✅ friends 리스트에서 주어지지 않은 새로운 사람이 visitors 리스트에서 등장 시 새로운 people 객체 생성 후 HashMap에 삽입
+  - ✅ friends 리스트에 명시된 친구 관계정보에 따라 해당하는 people 객체에 친구명을 저장
+  - ✅ user와 친구관계인 People 객체는 삭제 (사용자와 이미 친구관계인 경우는 점수를 계산하지 않는다.)
 
 <br/>
 

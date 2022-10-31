@@ -56,6 +56,25 @@ public class Problem7 {
 
     public HashMap<String, People> makePeopleMap(String user, List<List<String>> friends, List<String> visitors){
         HashMap<String,People> map = new HashMap<>();
+        map.put(user, new People(user));
+        for(List<String> friend : friends){
+            String name1 = friend.get(0);
+            String name2 = friend.get(1);
+
+            putPeopleToMap(map, name1);
+            addFriendToPeople(user, map.get(name1), name2);
+
+            putPeopleToMap(map, name2);
+            addFriendToPeople(user, map.get(name2), name1);
+        }
+
+        for(String visitor : visitors) {
+            putPeopleToMap(map, visitor);
+        }
+
+        for(String name : map.keySet().toArray(new String[0])){
+            removeUserFriend(map, name);
+        }
         return map;
     }
 
