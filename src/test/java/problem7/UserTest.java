@@ -43,7 +43,7 @@ public class UserTest {
 
     @Test
     void 여러개의_친구관계가_주어질때_각각의유저에_친구관계적용() {
-        userService.addFriends(createFriends());
+        userService.addFriends(createFriendsCaseCommonFriend());
 
         assertThat(userService.isFriend("mrko", "donut")).isTrue();
         assertThat(userService.isFriend("mrko", "shakevan")).isTrue();
@@ -53,21 +53,21 @@ public class UserTest {
 
     @Test
     void 디폴트_친구추천리스트_만들기() {
-        userService.addFriends(createFriends());
+        userService.addFriends(createFriendsCaseCommonFriend());
         List<String> result = userService.createAllUserIds("mrko");
         assertThat(result).containsOnly("donut", "andole", "jun", "shakevan");
     }
 
     @Test
     void 유저추천리스트중_주어진유저의_친구관계제외() {
-        userService.addFriends(createFriends());
+        userService.addFriends(createFriendsCaseCommonFriend());
         List<String> result = userService.operateFriendCommendation("mrko");
         assertThat(result).containsOnly("andole", "jun");
     }
 
     @Test
     void 타임라인에_방문한횟수기준_점수부여() {
-        userService.addFriends(createFriends());
+        userService.addFriends(createFriendsCaseCommonFriend());
         List<FriendCommendResponseDto> result =
                 userService.operateFriendCommendation("mrko", List.of("bedi", "bedi", "donut", "bedi", "shakevan"));
 
@@ -79,7 +79,7 @@ public class UserTest {
     @CsvSource(value = {"0:andole:20", "1:jun:20", "2:bedi:3"}, delimiter = ':')
     @ParameterizedTest
     void 함께아는_친구의수_기준으로_점수부여(int index, String userId, int score) {
-        userService.addFriends(createFriends());
+        userService.addFriends(createFriendsCaseCommonFriend());
         List<FriendCommendResponseDto> result =
                 userService.operateFriendCommendation("mrko", List.of("bedi", "bedi", "donut", "bedi", "shakevan"));
 
@@ -87,7 +87,7 @@ public class UserTest {
         assertThat(result.get(index).getScore()).isEqualTo(score);
     }
 
-    private List<List<String>> createFriends() {
+    private List<List<String>> createFriendsCaseCommonFriend() {
         List<List<String>> friends = new ArrayList<>();
         friends.add(List.of("donut", "andole"));
         friends.add(List.of("donut", "jun"));
@@ -102,7 +102,7 @@ public class UserTest {
     @CsvSource(value = {"0:andole:20", "1:jun:20", "2:pobi:10", "3:bedi:3", "4:anna:2"}, delimiter = ':')
     @ParameterizedTest
     void 점수가높은순_같으면이름순_최대5명선정(int index, String userId, int score) {
-        userService.addFriends(createFriends2());
+        userService.addFriends(createFriendsCaseSort());
         List<FriendCommendResponseDto> result =
                 userService.operateFriendCommendation("mrko",
                         List.of("bedi", "bedi", "donut", "bedi", "shakevan", "yuna", "anna", "anna"));
@@ -111,7 +111,7 @@ public class UserTest {
         assertThat(result.get(index).getScore()).isEqualTo(score);
     }
 
-    private List<List<String>> createFriends2() {
+    private List<List<String>> createFriendsCaseSort() {
         List<List<String>> friends = new ArrayList<>();
         friends.add(List.of("donut", "jun"));
         friends.add(List.of("donut", "andole"));
@@ -128,18 +128,17 @@ public class UserTest {
     @CsvSource(value = {"0:andole:20", "1:pobi:10", "2:bedi:3", "3:anna:2"}, delimiter = ':')
     @ParameterizedTest
     void 점수가_0점인경우_추천리스트에서_제외(int index, String userId, int score) {
-        userService.addFriends(createFriends3());
+        userService.addFriends(createFriendsCaseZeroScore());
         List<FriendCommendResponseDto> result =
                 userService.operateFriendCommendation("mrko",
                         List.of("bedi", "bedi", "donut", "bedi", "shakevan", "anna", "anna"));
 
-        System.out.println(result.get(index).getUserId() + " ////" +  result.get(index).getScore());
         assertThat(result.get(index).getUserId()).isEqualTo(userId);
         assertThat(result.get(index).getScore()).isEqualTo(score);
         assertThat(result.size()).isEqualTo(4);
     }
 
-    private List<List<String>> createFriends3() {
+    private List<List<String>> createFriendsCaseZeroScore() {
         List<List<String>> friends = new ArrayList<>();
         friends.add(List.of("donut", "andole"));
         friends.add(List.of("donut", "mrko"));
