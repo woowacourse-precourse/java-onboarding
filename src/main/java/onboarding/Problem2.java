@@ -1,7 +1,7 @@
 package onboarding;
 
 public class Problem2 {
-    static boolean state = true;
+    private static boolean state = true;
 
     public static String solution(String cryptogram) {
         String answer = "";
