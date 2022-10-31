@@ -12,7 +12,7 @@ public class Problem5 {
         int bill[] = {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
 
         while (index < bill.length) {
-            while (money >= bill[index]) {
+            if (money >= bill[index]) {
                 count = money / bill[index];
                 money = money % bill[index];
             }
