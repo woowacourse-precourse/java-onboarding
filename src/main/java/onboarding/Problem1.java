@@ -4,50 +4,39 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if(pobi.get(0) % 2 == 0) return -1;
-        if(crong.get(0) % 2 == 0) return -1;
-        if(pobi.get(0) + 1 != pobi.get(1)) return -1;
-        if(crong.get(0) + 1 != crong.get(1)) return -1;
+        if (pobi.get(0) % 2 == 0) return -1;
+        if (crong.get(0) % 2 == 0) return -1;
+        if (pobi.get(0) + 1 != pobi.get(1)) return -1;
+        if (crong.get(0) + 1 != crong.get(1)) return -1;
 
-        int [] left = new int [] {0,1,0,1};
-        int [] right = new int [] {0,1,0,1};
+        //왼쪽 더하기 곱하기 오른쪽 더하기, 곱하기
+        int[][] pobiScore = new int[2][2];
+        int[][] crongScore = new int[2][2];
 
-        for(int i = pobi.get(0); i > 0; i = i / 10)
-        {
-            int cur = i % 10;
-            left[0] += cur;
-            left[1] *= cur;
-        }
+        pobiScore[0] = calculate_page(pobi.get(0));
+        pobiScore[1] = calculate_page(pobi.get(1));
 
-        for(int i = pobi.get(1); i > 0; i = i / 10)
-        {
-            int cur = i % 10;
-            left[2] += cur;
-            left[3] *= cur;
-        }
+        crongScore[0] = calculate_page(crong.get(0));
+        crongScore[1] = calculate_page(crong.get(1));
 
-        for(int i = crong.get(0); i > 0; i = i / 10)
-        {
-            int cur = i % 10;
-            right[0] += cur;
-            right[1] *= cur;
-        }
+        int pobiMax = Math.max(Math.max(pobiScore[0][0], pobiScore[0][1]), Math.max(pobiScore[1][0], pobiScore[1][1]));
+        int crongMax = Math.max(Math.max(crongScore[0][0], crongScore[0][1]), Math.max(crongScore[1][0], crongScore[1][1]));
 
-        for(int i = crong.get(1); i > 0; i = i / 10)
-        {
-            int cur = i % 10;
-            right[2] += cur;
-            right[3] *= cur;
-        }
-        int left_max = left[0];
-        int right_max = right[0];
 
-        for(Integer e: left) if(e > left_max) left_max = e;
-        for(Integer e: right) if(e > right_max) right_max = e;
-
-        if(left_max > right_max) return 1;
-        if(left_max < right_max) return 2;
+        if (pobiMax > crongMax) return 1;
+        if (pobiMax < crongMax) return 2;
         return 0;
-    
+    }
+
+    private static int[] calculate_page(int page) {
+        int sum = 0, mul = 1;
+
+        for (int i = page; i > 0; i /= 10) {
+            int cur = i % 10;
+            sum += cur;
+            mul *= cur;
+        }
+
+        return new int[]{sum, mul};
     }
 }
