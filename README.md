@@ -77,7 +77,7 @@
    - 친구의 친구에게 10점을 부여한다.
    - [X] add1point
    - 방문자에게 1점을 부여한다.
-   - [ ] sortByPointAndId
+   - [X] sortByPointAndId
    - 친구 점수 및 ID에 따라 정렬한다.
 
 ---

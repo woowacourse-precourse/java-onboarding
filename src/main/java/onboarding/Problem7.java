@@ -11,7 +11,10 @@ public class Problem7 {
      * @param visitors 타임라인을 방문한 유저의 배열입니다.
      * @return 추천할 친구의 배열입니다.
      */
-    private static List<String> recommendFriends(String user, List<List<String>> friends, List<String> visitors) {
+    private static List<String> recommendFriends(String user,
+                                                 List<List<String>> friends,
+                                                 List<String> visitors,
+                                                 int maxNumber) {
         HashMap<String, List<String>> friendGraph = getFriendGraph(friends);
         HashMap<String, Integer> friendPoints = new HashMap<>();
         HashSet<String> notToAdd = new HashSet<>(friendGraph.get(user));
@@ -19,9 +22,9 @@ public class Problem7 {
 
         add10points(user, friendGraph, friendPoints, notToAdd);
         add1point(visitors, friendPoints, notToAdd);
-        List<String> sortedList = sortByPointAndId(friendPoints);
-
-        return sortedList;
+        List<String> sortedIds = sortByPointAndId(friendPoints);
+        List<String> topUsers = sliceTopUsers(sortedIds, maxNumber);
+        return topUsers;
     }
 
     /**
@@ -72,7 +75,11 @@ public class Problem7 {
         if (notToAdd.contains(otherUser)) {
             return;
         }
-        int updatedPoint = friendPoints.get(otherUser) + point;
+        int friendPoint = 0;
+        if (friendPoints.get(otherUser) != null) {
+            friendPoint = friendPoints.get(otherUser);
+        }
+        int updatedPoint = friendPoint + point;
         friendPoints.put(otherUser, updatedPoint);
     }
 
@@ -109,7 +116,25 @@ public class Problem7 {
         }
     }
 
+    /**
+     * 친구 점수가 높은 순으로, 그리고 유저 ID의 사전순으로 정렬합니다.
+     *
+     * @param friendPoints 친구 점수 해시맵입니다.
+     * @return 정렬된 유저 ID 배열입니다.
+     */
+
     private static List<String> sortByPointAndId(HashMap<String, Integer> friendPoints) {
+        List<String> sortedList = new ArrayList<>(friendPoints.keySet());
+        sortedList.sort((userA, userB) -> {
+            if(friendPoints.get(userA) == friendPoints.get(userB)) {
+                return userA.compareTo(userB);
+            }
+            return friendPoints.get(userB) - friendPoints.get(userA);
+        });
+        return sortedList;
+    }
+
+    private static List<String> sliceTopUsers(List<String> sortedIds, int maxNumber) {
         return Collections.emptyList();
     }
 
@@ -121,7 +146,8 @@ public class Problem7 {
      * @return 추천할 친구의 배열입니다.
      */
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = recommendFriends(user, friends, visitors);
+        int maxNumber = 5;
+        List<String> answer = recommendFriends(user, friends, visitors, maxNumber);
         return answer;
     }
 }
