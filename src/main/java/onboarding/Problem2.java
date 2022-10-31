@@ -22,5 +22,8 @@ public class Problem2 {
     public static void main(String[] args) {
         solution("browoanoommnaon");
         solution("browoanmmnaon");
+        solution("browoannaon");
+        solution("browoaaon");
+        solution("browoon");
     }
 }
