@@ -15,8 +15,8 @@ public class ContraryCharacter {
         if (Character.isLowerCase(character)) {
             return (char) (122 - (convertedCharacter - 97));
         }
-        if (Character.isUpperCase(character)){
-            return (char) (90 -  (convertedCharacter - 65));
+        if (Character.isUpperCase(character)) {
+            return (char) (90 - (convertedCharacter - 65));
         }
         return character;
     }
