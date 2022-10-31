@@ -2,55 +2,36 @@ package onboarding.problem2;
 
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.Stack;
 
-/**
- * Decoder for decoding cryptogram
- */
 public class Decoder {
 
-    private final String CIPHERTEXT;
     private final Queue<Character> text = new LinkedList<>();
 
-    /**
-     * Constructor with cryptogram string
-     *
-     * @param cryptogram encrypt text
-     */
     public Decoder(String cryptogram) {
-        CIPHERTEXT = cryptogram;
-        for (int i = 0; i < CIPHERTEXT.length(); i++)
-            text.add(CIPHERTEXT.charAt(i));
+        for (int i = 0; i < cryptogram.length(); i++)
+            text.add(cryptogram.charAt(i));
     }
 
-    /**
-     * Decode the encrypted text to plain text
-     *
-     * @return plain text
-     */
     public String decode() {
         int size;
         do {
             size = text.size();
-            treatDuplication(size);
+            removeDuplication(size);
         } while (size != text.size() && !text.isEmpty());
-        return buildPlain();
+        return buildPlainText();
     }
 
-    /**
-     * Search continuous duplication and remove
-     */
-    private void treatDuplication(int size) {
+    private void removeDuplication(int size) {
         boolean duplicated = false;
 
         for (int i = 0; i < size - 1; i++) {
-            Character poll = text.poll();
-            if (text.peek() == poll)
+            Character ch = text.poll();
+            if (text.peek() == ch)
                 duplicated = true;
             else if (duplicated)
                 duplicated = false;
             else
-                text.add(poll);
+                text.add(ch);
         }
 
         if (duplicated)
@@ -59,12 +40,7 @@ public class Decoder {
             text.add(text.poll());
     }
 
-    /**
-     * Building plain text from plain stack
-     *
-     * @return plain text
-     */
-    private String buildPlain() {
+    private String buildPlainText() {
         StringBuilder plainBuilder = new StringBuilder();
         while (!text.isEmpty())
             plainBuilder.append(text.poll());
