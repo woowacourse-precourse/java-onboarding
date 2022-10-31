@@ -13,11 +13,12 @@ public class Problem3 {
 
     private static int count369(int number) {
         int ret = 0;
+        char rules[] = {'3', '6', '9'};
         String str = String.valueOf(number);
 
-        ret += countNumberByStr(str, '3');
-        ret += countNumberByStr(str, '6');
-        ret += countNumberByStr(str, '9');
+        for (char rule : rules) {
+            ret += countNumberByStr(str, rule);
+        }
         return ret;
     }
 
