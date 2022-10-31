@@ -42,12 +42,10 @@ public class Problem7 {
             findUserAndUpdateScore(score, visitor, 1);
         }
 
-        System.out.println("Before Sorting: " + score);
         // sort score by value
         score = sortMapByValue(score);
-        System.out.println("After Sorting: " + score);
 
-        List<String> answer =   new ArrayList<>();
+        List<String> answer = new ArrayList<>();
         for(Map.Entry<String,Integer> entry: score.entrySet()){
             String key = entry.getKey();
             if(key != user && !directFriends.contains(key) &&  score.get(key) > 0) {
@@ -57,8 +55,6 @@ public class Problem7 {
                 }
             }
         }
-        System.out.println(answer);
-
         return answer;
     }
 
