@@ -42,11 +42,22 @@ public class ScoreCalculatorImp implements ScoreCalculator {
 		return scoreMap1;
 	}
 
+	private Map<String, Integer> exceptFriend(String user, Map<String, Integer> scoreMap,
+		Map<String, List<String>> friendMap) {
+		for (String friend : scoreMap.keySet()) {
+			if (friendMap.get(user).contains(friend)) {
+				friendMap.remove(friend);
+			}
+		}
+		return scoreMap;
+	}
+
 	@Override
 	public Map<String, Integer> getScoreMap(String user, List<List<String>> friends, List<String> visitors) {
 		Map<String, List<String>> friendMap = getFriendMap(friends);
 		Map<String, Integer> friendScoreMap = getFriendScoreMap(user, friendMap);
 		Map<String, Integer> visitorScoreMap = getVisitorScoreMap(user, visitors);
-		return mergeScoreMaps(friendScoreMap, visitorScoreMap);
+		Map<String, Integer> scoreMap = mergeScoreMaps(friendScoreMap, visitorScoreMap);
+		return exceptFriend(user, scoreMap, friendMap);
 	}
 }
