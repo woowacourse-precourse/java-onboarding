@@ -11,6 +11,7 @@ public class Problem6 {
             List<String> answer = List.of("answer");
 
             verificationEmail(forms);
+            duplicateName(forms);
 
             return answer;
         } catch (Exception error){
@@ -28,5 +29,21 @@ public class Problem6 {
         }
     }
 
+    public static void duplicateName(List<List<String>> forms){
+        List<String> nameArray = new ArrayList<>();
 
+        for (int i = 0; i < forms.size(); i++) {
+            nameArray.add(forms.get(i).get(1));
+        }
+
+        for (int i = 0; i < forms.size(); i++){
+            System.out.println(nameArray.get(i).length());
+            for (int j = 0; j < nameArray.get(i).length(); j++) {
+                if (j + 1 < nameArray.get(i).length()) {
+                    String duplication = nameArray.get(i).substring(j,j + 2);
+                    System.out.println(nameArray.contains(duplication));
+                }
+            }
+        }
+    }
 }
