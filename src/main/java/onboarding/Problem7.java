@@ -17,13 +17,13 @@ public class Problem7 {
     static HashMap<String, ArrayList<String>> Find_Friend(List<List<String>> friends){
         HashMap<String,ArrayList<String>> Friend = new HashMap<>();
         List<String> people;
-        String name1 = null;
-        String name2 = null;
+        String name1;
+        String name2;
+
         for(int i = 0 ;i <friends.size() ; i++){
             people = friends.get(i);
             name1 = people.get(0);
             name2 = people.get(1);
-
             Friend = Connect_Friend(Friend,name1,name2);
         }
         return Friend;
@@ -33,20 +33,30 @@ public class Problem7 {
         HashMap<String,Integer> friend_score = new HashMap<String,Integer>();
         ArrayList<String> friend_friend;
         ArrayList<String> user_friend = Friend.get(user);
-
+        String user_friend_name = null;
+        String friend_friend_name = null;
+        int friend_score_temp;
         for(int i = 0; i < user_friend.size() ; i++){
-            friend_friend = Friend.get(user_friend.get(i));
+            user_friend_name = user_friend.get(i);
+            friend_friend = Friend.get(user_friend_name);
             for(int j = 0 ; j < friend_friend.size() ; j++){
-                if(user.equals(friend_friend.get(j))) continue; // User 는 점수고려 X
-                friend_score.put(friend_friend.get(j),friend_score.getOrDefault(friend_friend.get(j),0)+10);
+                friend_friend_name = friend_friend.get(j);
+                if(user.equals(friend_friend_name)) continue; // User 는 점수고려 X
+                friend_score_temp = friend_score.getOrDefault(friend_friend_name, 0) + 10;
+                friend_score.put(friend_friend_name,friend_score_temp);
             }
         }
         return friend_score;
     }
 
     static HashMap<String,Integer> Score_Visit(HashMap<String,Integer> friend_score,List<String> visitors){
+        String visitor_name;
+        int friend_score_temp;
+
         for(int i = 0 ; i < visitors.size();i++){
-            friend_score.put(visitors.get(i),friend_score.getOrDefault(visitors.get(i),0)+1);
+            visitor_name = visitors.get(i);
+            friend_score_temp = friend_score.getOrDefault(visitor_name,0) + 1;
+            friend_score.put(visitor_name,friend_score_temp);
         }
         return friend_score;
     }
