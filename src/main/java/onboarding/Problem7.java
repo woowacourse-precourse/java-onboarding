@@ -3,10 +3,53 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
         Map<String, HashSet<String>> friendMap = new HashMap<>();
+
+        friendMap = makeMap(friends);
+
+        HashMap<String, Integer> friendScore = new HashMap<>();
+
+
+        for (String friend : friendMap.keySet()) {
+
+            if (friend.equals(user)) {
+                continue;
+            } else {
+                int score = calculateScore(friend, user, friendMap);
+                friendScore.put(friend, score);
+            }
+
+        }
+
+        for (String visitor : visitors) {
+            friendScore.put(visitor, friendScore.getOrDefault(visitor, 0) + 1);
+        }
+
+        List<String> keySet = new ArrayList<>(friendScore.keySet());
+
+        keySet.sort(new Comparator<String>() {
+            public int compare(String o1, String o2) {
+                if (friendScore.get(o1).equals(friendScore.get(o2))) {
+                    return o1.compareTo(o2);
+                }
+                return friendScore.get(o2) - friendScore.get(o1);
+            }
+        });
+
+
+        for (String friend : keySet) {
+            if (answer.size() == 5) {
+                break;
+            } else {
+                if (friendScore.get(friend) != 0) {
+                    answer.add(friend);
+                }
+            }
+        }
 
         return answer;
     }
@@ -38,6 +81,35 @@ public class Problem7 {
         }
 
         return friendMap;
+    }
+
+    /**
+     * 친구관계를 표현한 HashMap에 있는 정보를 가지고 추천친구의 점수를 구하는 메서드
+     *
+     * @param friendB user와 비교할 친구
+     * @param user    주어진 user
+     * @param friendMap 친구관계를 표현한 HashMap
+     * @return 친구추천 점수
+     */
+    public static int calculateScore(String friendB, String user, Map<String, HashSet<String>> friendMap) {
+
+        int score = 0;
+
+        if (friendMap.get(user).contains(friendB)) {
+            score = -1;
+            return score;
+
+        } else {
+
+            HashSet<String> friendBList = friendMap.get(friendB);
+            HashSet<String> userFriendList = friendMap.get(user);
+            for (String friendBFriend : friendBList) {
+                if (userFriendList.contains(friendBFriend)) {
+                    score += 10;
+                }
+            }
+        }
+        return score;
     }
 
 }
