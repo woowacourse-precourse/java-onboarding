@@ -9,10 +9,13 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Problem7 {
-    private static final Set<String> userFriends = new HashSet<>();
-    private static final Map<String, Integer> recommendScoreMap = new HashMap<>();
+    private static Set<String> userFriends = new HashSet<>();
+    private static Map<String, Integer> recommendScoreMap = new HashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        userFriends = new HashSet<>();
+        recommendScoreMap = new HashMap<>();
+
         setFriendsOfUser(user, friends);
 
         increaseMutualScore(user, friends);
