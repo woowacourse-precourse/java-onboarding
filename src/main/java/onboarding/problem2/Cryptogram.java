@@ -9,5 +9,28 @@ public class Cryptogram {
     }
 
     //2.자기자신 1회 돌아서 중복 문자 제거, 만약 한번이라도 제거되면 true반환
+    public boolean removeDuplicated(){
+        boolean check = false;
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < cryptogram.length(); i++) {
+            Character character = cryptogram.charAt(i);
+            if (isSameWithBefore(i) || isSameWithNext(i)) {
+                check = true;
+                continue;
+            }
+            result.append(character);
+        }
+        if (check) cryptogram = result;
+        return check;
+    }
+
     //3.2번에서 중복인지 체크할 수 있는 조건함수
+    private boolean isSameWithBefore(){
+        return false;
+    }
+
+    private boolean isSameWithNext(){
+        return false;
+    }
+
 }
