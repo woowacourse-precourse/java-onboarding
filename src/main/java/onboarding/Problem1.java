@@ -49,4 +49,18 @@ class Problem1 {
                 .mapToInt(i->i)
                 .reduce(1,(a,b)->a*b);
     }
+
+    public static int selectValue(int sumValue, int multipliedValue){
+        return Math.max(sumValue, multipliedValue);
+    }
+
+    public static int selectWinner(int pobiNum, int crongNum){
+        if (pobiNum > crongNum){
+            return 1;
+        }
+        if (pobiNum < crongNum){
+            return 2;
+        }
+        return 0;
+    }
 }
