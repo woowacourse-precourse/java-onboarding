@@ -98,6 +98,21 @@ class Problem1 {
                 .sum();
     }
 
+    /**
+     * 주어진 왼쪽 페이지와 오른쪽 페이지의 각 자릿수 곱을 리턴합니다.
+     *
+     * @param leftPage  왼쪽 페이지
+     * @param rightPage 오른쪽 페이지
+     * @return 왼쪽 페이지와 오른쪽 페이지의 각 자릿수를 곱한 값
+     */
+    public static int getPageProduct(int leftPage, int rightPage) {
+        String combined = String.valueOf(leftPage) + rightPage;
+        return Arrays.stream(combined.split(""))
+                .map(Integer::valueOf)
+                .reduce(1, (a, b) -> a * b);
+    }
+
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
