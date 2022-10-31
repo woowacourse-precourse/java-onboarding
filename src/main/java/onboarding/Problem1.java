@@ -21,6 +21,10 @@ class Problem1 {
             return EXCEPTION;
         }
 
+        if (isStartOrLastPage(pobiLeftPageNumber) || isStartOrLastPage(pobiRightPageNumber) || isStartOrLastPage(crongLeftPageNumber) || isStartOrLastPage(crongRightPageNumber)) {
+            return EXCEPTION;
+        }
+
         int pobiMaxNumber = Math.max(calculateMaxNumber(pobiLeftPageNumber), calculateMaxNumber(pobiRightPageNumber));
         int crongMaxNumber = Math.max(calculateMaxNumber(crongLeftPageNumber), calculateMaxNumber(crongRightPageNumber));
 
@@ -36,6 +40,10 @@ class Problem1 {
 
     private static boolean isNotLeftAndRight(int leftPageNumber, int rightPageNumber) {
         return rightPageNumber - leftPageNumber != 1;
+    }
+
+    private static boolean isStartOrLastPage(int pageNumber) {
+        return pageNumber == 1 || pageNumber == 400;
     }
 
     private static int calculateMaxNumber(int pageNumber) {
