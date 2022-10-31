@@ -7,7 +7,7 @@ import java.util.stream.Stream;
 class Utility{
     final int startNumber=1;
     int[] makeArray(int endNumber){
-        return IntStream.range(startNumber,endNumber).toArray();
+        return IntStream.range(startNumber,endNumber+1).toArray();
     }
     int[] divideEachDigit(int number) {
         int[] digitNum;
@@ -22,7 +22,7 @@ class Game{
     }
     int countClap(int[] digitArray){
         int numberOfClap=0;
-        
+
         for(int digit: digitArray){
             if(isClap(digit)){
                 numberOfClap++;
@@ -30,6 +30,17 @@ class Game{
         }
         return numberOfClap;
     }
+    int play(int[] numbers){
+        int totalClapCount=0;
+        int[] digitArray;
+        Utility utility = new Utility();
+        for (int number: numbers){
+            digitArray = utility.divideEachDigit(number);
+            totalClapCount+=countClap(digitArray);
+        }
+        return totalClapCount;
+    }
+
 }
 
 public class Problem3 {
