@@ -23,20 +23,10 @@ public class Problem2 {
 
         for (int i = 0; i < cryptogram.length(); i++) {
             char currentCharacter = cryptogram.charAt(i);
-            char frontCharacter;
-            char backCharacter;
+            char frontCharacter = getFrontCharacter(i, cryptogram);
+            char backCharacter = getBackCharacter(i, cryptogram);
 
-            if (i == 0) {
-                backCharacter = cryptogram.charAt(i + 1);
-                isDuplicate = isDuplicateCharacter(currentCharacter, backCharacter);
-            } else if (i == cryptogram.length() - 1) {
-                frontCharacter = cryptogram.charAt(i - 1);
-                isDuplicate = isDuplicateCharacter(currentCharacter, frontCharacter);
-            } else {
-                frontCharacter = cryptogram.charAt(i - 1);
-                backCharacter = cryptogram.charAt(i + 1);
-                isDuplicate = isDuplicateCharacter(currentCharacter, frontCharacter) || isDuplicateCharacter(currentCharacter, backCharacter);
-            }
+            isDuplicate = isSameCharacter(currentCharacter, frontCharacter) || isSameCharacter(currentCharacter, backCharacter);
 
             if (!isDuplicate) {
                 answer.append(cryptogram.charAt(i));
@@ -48,7 +38,23 @@ public class Problem2 {
         return answer.toString();
     }
 
-    private static boolean isDuplicateCharacter(char character1, char character2) {
+    private static char getFrontCharacter(int index, String cryptogram) {
+        if (index == 0) {
+            return ' ';
+        }
+
+        return cryptogram.charAt(index - 1);
+    }
+
+    private static char getBackCharacter(int index, String cryptogram) {
+        if (index == cryptogram.length() - 1) {
+            return ' ';
+        }
+
+        return cryptogram.charAt(index + 1);
+    }
+
+    private static boolean isSameCharacter(char character1, char character2) {
         return character1 == character2;
     }
 }
