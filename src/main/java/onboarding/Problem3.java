@@ -12,7 +12,8 @@ public class Problem3 {
         int answer = 0;
 
         for (int i=1;i<=number;i++) {
-            List<Integer> arrayOfNumbers = convertToArray(i); // 1 ~ number 의 정수를 정수 배열로 변환
+            List<Integer> arrayOfNumbers = convertToArray(i);   // 1 ~ number 의 정수를 정수 배열로 변환
+            answer += countNumbers(arrayOfNumbers);             // 3,6,9의 개수 구하여 answer 에 합하기
         }
         return answer;
     }
@@ -25,6 +26,15 @@ public class Problem3 {
         }
         return arr;
     }
+
+    private static int countNumbers(List<Integer> arr) {
+        int count = 0;
+        for (Integer a : arr) {
+            count += addCount(a);
+        }
+        return count;
+    }
+
     private static int addCount(Integer a) {
         if (isThree(a) || isSix(a) || isNine(a)) {
             return 1;
