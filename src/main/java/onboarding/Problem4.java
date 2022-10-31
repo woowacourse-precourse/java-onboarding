@@ -3,6 +3,7 @@ package onboarding;
 public class Problem4 {
 
     private static final int UPPER_CASE_STANDARD = 155;
+    private static final int LOWER_CASE_STANDARD = 219;
 
     public static String solution(String word) {
         char[] wordToChars = word.toCharArray();
