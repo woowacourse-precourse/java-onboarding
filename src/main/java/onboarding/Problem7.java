@@ -40,4 +40,12 @@ public class Problem7 {
         }
         return recommendedFriends;
     }
+
+    private static void addVisitors(Map<String, Integer> recommendedFriends, List<String> visitors, List<String> userFriends) {
+        for (String visitor : visitors) {
+            if (!userFriends.contains(visitor)) {
+                recommendedFriends.merge(visitor, 1, Integer::sum);
+            }
+        }
+    }
 }
