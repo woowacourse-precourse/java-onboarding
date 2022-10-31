@@ -9,9 +9,19 @@ class Problem1 {
 
         int pobiRigthNum = compare(pobi.get(1));
 
+        int pobiNum = 0;
+
+        if(pobiLeftNum >= pobiRigthNum) pobiNum = pobiLeftNum;
+        else if(pobiLeftNum < pobiRigthNum) pobiNum = pobiRigthNum;
+
+
         int crongLeftNum = compare(crong.get(0));
 
         int crongRightNum = compare(crong.get(1));
+
+        int crongNum = 0;
+        if(crongLeftNum >= crongRightNum) crongNum = crongLeftNum;
+        else if(crongLeftNum < crongRightNum) crongNum = crongRightNum;
 
 
 
