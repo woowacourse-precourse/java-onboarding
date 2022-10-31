@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Request {
 
-	private static final int TWO = 2;
+	private static final int SIZE_DOUBLE = 2;
 
 	private final Email email;
 	private final Nickname nickname;
@@ -24,7 +24,7 @@ public class Request {
 	}
 
 	private void validateFormLength(List<String> form) {
-		if (form.size() != TWO) {
+		if (form.size() != SIZE_DOUBLE) {
 			throw new IllegalArgumentException("신청은 닉네임과 이메일을 포함해야 합니다");
 		}
 	}
