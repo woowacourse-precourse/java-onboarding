@@ -76,7 +76,25 @@ class Problem1 {
         if(gamer2.get(1) - gamer2.get(0) != 1) {
             return true;
         }
+        final int MAX_PAGE = 400;
+        final int MIN_PAGE = 1;
+        // 시작 면이나 마지막 면이 나오는지 검증
+        if(gamer1.get(0) == MIN_PAGE || gamer1.get(1) == MAX_PAGE
+                || gamer2.get(0) == MIN_PAGE || gamer2.get(1) == MAX_PAGE) {
+            return true;
+        }
 
+        // 페이지 번호가 정해진 범위에 속하는지 검증
+        for(Integer page : gamer1) {
+            if(page < MIN_PAGE || page > MAX_PAGE) {
+                return true;
+            }
+        }
+        for(Integer page : gamer2) {
+            if(page < MIN_PAGE || page > MAX_PAGE) {
+                return true;
+            }
+        }
         return false;
     }
 }
