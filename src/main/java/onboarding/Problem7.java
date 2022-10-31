@@ -62,4 +62,15 @@ public class Problem7 {
         });
         return entryList;
     }
+
+    public static List<String> addAnswer(List<Map.Entry<String,Integer>> entryList) {
+        int cnt = 0;
+        List<String> answer = new ArrayList<>();
+        for(Map.Entry<String,Integer> rem : entryList) {
+            if(cnt == 5)    break;
+            answer.add(rem.getKey());
+            cnt++;
+        }
+        return answer;
+    }
 }
