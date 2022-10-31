@@ -3,6 +3,7 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Problem7 {
 
@@ -28,7 +29,7 @@ public class Problem7 {
         return answer;
     }
 
-    // input 과 일치하는 친구를 찾기 위한 함수
+    // target 과 일치하는 친구를 찾기 위한 함수
     // user 을 추가적으로 매개변수로 받는 이유는 user 자신은 탐색 대상이 아니므로 제외시키기 위해
     private static List<String> find(String target, String user, List<List<String>> friends) {
         List<String> find = new ArrayList<>();
@@ -43,5 +44,11 @@ public class Problem7 {
         }
 
         return find;
+    }
+
+    // 중복 제거
+    private static List<String> removeDuplication(List<String> list) {
+        list = list.stream().distinct().collect(Collectors.toList());
+        return list;
     }
 }
