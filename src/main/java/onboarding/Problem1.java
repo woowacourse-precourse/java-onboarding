@@ -5,6 +5,9 @@ import java.util.List;
 class Problem1 {
 
     public static int calculate(int leftPage, int rightPage) {
+        if (!isSatisfiedCondition(leftPage, rightPage)) {
+            return -1;
+        }
         Integer leftMax = getMax(leftPage);
         Integer rightMax = getMax(rightPage);
         return Math.max(leftMax, rightMax);
@@ -19,6 +22,21 @@ class Problem1 {
         }
         return Math.max(sum,multiple);
     }
+
+
+    public static boolean isSatisfiedCondition(int leftPage, int rightPage) {
+        if (leftPage%2 != 1 || rightPage%2 != 0) {
+            return false;
+        }
+        if (leftPage != rightPage-1) {
+            return false;
+        }
+        if (leftPage <= 1 || rightPage >= 400) {
+            return false;
+        }
+        return true;
+    }
+
 
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
