@@ -1,7 +1,9 @@
 package onboarding;
 
 import onboarding.Problem5.CURRENCY;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -247,5 +249,31 @@ class Problem5Test {
 			// then : 남는 돈을 구하기
 			assertThat(result).isEqualTo(expected);
 		}
+	}
+
+	@DisplayName("돈이 더 남았을 때 false 를 반환해야 함")
+	@Test
+	void hasMoreMoneyTest() {
+		// given : 남은 돈이 주어질 때
+		final int REMAINED_MONEY = 4999;
+
+		// when : 돈이 더 남았는지 확인
+		boolean result = CURRENCY.noMoreMoney(REMAINED_MONEY);
+
+		// then : 돈이 4999 원 남았기에 false 를 반환해야 함
+		assertThat(result).isFalse();
+	}
+
+	@DisplayName("돈이 더 안남았을 때 true 를 반환해야 함")
+	@Test
+	void hasNoMoreMoneyTest() {
+		// given : 남은 돈이 없을 때
+		final int REMAINED_MONEY = 0;
+
+		// when : 돈이 더 남았는지 확인
+		boolean result = CURRENCY.noMoreMoney(REMAINED_MONEY);
+
+		// then : 돈이 안남았기에 true 를 반환해야 함
+		assertThat(result).isTrue();
 	}
 }
