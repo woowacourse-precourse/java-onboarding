@@ -6,6 +6,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class Problem7 {
     static class FriendSort {
+
         private String name;
         private Integer point;
 
@@ -22,6 +23,7 @@ public class Problem7 {
             return point;
         }
     }
+
     static class GroupFriends {
         String user;
         List<List<String>> friends;
@@ -52,24 +54,33 @@ public class Problem7 {
             }
         }
 
-        void GroupingFriendsByName() {
+        void groupingFriendsByName() {
             for (int i = 0; i < friends.size(); i++) {
                 insertFriend(friends.get(i).get(0));
                 insertFriend(friends.get(i).get(1));
             }
         }
 
-        void GroupingVisitorsByName() {
+        void groupingVisitorsByName() {
             for (int i = 0; i < visitors.size(); i++) {
                 insertVisitor(visitors.get(i));
             }
         }
 
+        boolean verifiedFriendList(int i, String key) {
+            return friends.get(i).contains(key) && (friendWithUser.contains(friends.get(i).get(0))
+                    || friendWithUser.contains(friends.get(i).get(1)));
+        }
+
         void insertFriend (String key) {
-            if (recommendFriends.containsKey(key)) {
-                recommendFriends.put(key, recommendFriends.get(key) + 10);
-            } else {
-                recommendFriends.put(key, 10);
+            for (int i = 0; i < friends.size(); i++) {
+                if (verifiedFriendList(i, key)) {
+                    if (recommendFriends.containsKey(key)) {
+                        recommendFriends.put(key, recommendFriends.get(key) + 10);
+                    } else {
+                        recommendFriends.put(key, 10);
+                    }
+                }
             }
         }
 
@@ -90,13 +101,16 @@ public class Problem7 {
 
         private List<String> sortRecommendFriends() {
             List<FriendSort> friends = new ArrayList<>();
+
             for (Map.Entry<String, Integer> pair : recommendFriends.entrySet()) {
                 friends.add(new FriendSort(pair.getKey(), pair.getValue()));
             }
-            System.out.println(Arrays.toString(friends.toArray()));
+
             friends.sort(Comparator.comparing(FriendSort::getPoint).reversed()
                     .thenComparing(FriendSort::getName));
+
             ArrayList<String> answer = new ArrayList<>();
+
             for (FriendSort friendCompare : friends) {
                 answer.add(friendCompare.getName());
             }
@@ -126,26 +140,10 @@ public class Problem7 {
         GroupFriends groupFriends = new GroupFriends(user, friends, visitors);
 
         groupFriends.findFriendsKnownUser();
-        groupFriends.GroupingFriendsByName();
-        groupFriends.GroupingVisitorsByName();
+        groupFriends.groupingFriendsByName();
+        groupFriends.groupingVisitorsByName();
         answer = groupFriends.selectFriendsList();
 
         return answer;
-    }
-
-    public static void main(String[] args) {
-
-        String user = "andole";
-        List<List<String>> friends = List.of(
-                List.of("andole", "jun"),
-                List.of("donut", "jun"),
-                List.of("donut", "shakevan"),
-                List.of("shakevan", "andole"),
-                List.of("shakevan", "jun"),
-                List.of("shakevan", "bedi"),
-                List.of("anne", "jun")
-        );
-        List<String> visitors = List.of("donut", "mrko", "peter", "sam");
-        System.out.println(solution(user, friends, visitors));
     }
 }
