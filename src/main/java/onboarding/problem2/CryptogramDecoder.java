@@ -30,9 +30,14 @@ public class CryptogramDecoder {
         return NOT_DUPLICATED;
     }
 
-    private static void removeDuplicatedLetterByIndex(List<Character> characterList,
-                                                      int index){
-        characterList.remove(index +1);
-        characterList.remove(index);
+    private static void removeDuplicatedLetterByIndex(List<Character> characterList, int index){
+        char duplicatedLetter = characterList.get(index);
+        while (isIndexedCharEqualToCharacter(characterList, index, duplicatedLetter)){
+            characterList.remove(index);
+        }
+    }
+
+    private static boolean isIndexedCharEqualToCharacter(List<Character> characterList, int index, char character){
+        return index < characterList.size() && characterList.get(index) == character;
     }
 }
