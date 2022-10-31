@@ -16,42 +16,48 @@ public class Problem2 {
     }
 
     private static String decryptionGame(String cryptogram) {
-        boolean flag = false;
-        Stack<Character> stack = new Stack<>();
-        int index = 0;
-        int count = 0;
+        while (true) {
+            Stack<Character> stack = new Stack<>();
+            int index = 0;
+            int count = 0;
+            boolean flag = false;
+            boolean isEnd = true;
 
-        while (index != cryptogram.length()) {
-            if (!stack.empty()) {
-                if (stack.peek() == cryptogram.charAt(index)) {
-                    flag= true;
-                    count += 1;
-                } else {
-                    if (flag) {
-                        for (int i=0; i<=count; i++) {
-                            stack.pop();
+            while (index != cryptogram.length()) {
+                if (!stack.empty()) {
+                    if (stack.peek() == cryptogram.charAt(index)) {
+                        flag= true;
+                        isEnd = false;
+                        count += 1;
+                    } else {
+                        if (flag) {
+                            for (int i=0; i<=count; i++) {
+                                stack.pop();
+                            }
+                            count = 0;
+                            flag = false;
                         }
-                        count = 0;
-                        flag = false;
-                        continue;
                     }
                 }
+                stack.add(cryptogram.charAt(index));
+                index += 1;
             }
-            stack.add(cryptogram.charAt(index));
-            index += 1;
-        }
 
-        if (flag) {
-            for (int i=0; i<=count; i++) {
-                stack.pop();
+            if (flag) {
+                for (int i=0; i<=count; i++) {
+                    stack.pop();
+                }
             }
-        }
 
-        StringBuilder sb = new StringBuilder();
-        for(char ch : stack) {
-            sb.append(ch);
+            StringBuilder sb = new StringBuilder();
+            for(char ch : stack) {
+                sb.append(ch);
+            }
+            cryptogram = sb.toString();
+
+            if (isEnd) break;
         }
-        return sb.toString();
+        return cryptogram;
     }
 
     private static void validateRange(String input) {
