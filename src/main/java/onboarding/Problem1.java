@@ -7,4 +7,8 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
+
+    private static boolean checkPage(List<Integer> page) {
+        return page.get(1) - page.get(0) == 1;
+    }
 }
