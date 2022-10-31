@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.TreeSet;
@@ -45,7 +46,10 @@ public class Problem6 {
             }
         }
 
-        List<String> answer = List.of("answer");
+        //정답
+        List<String> answer = new ArrayList<>();
+        answer.addAll(result);
+
         return answer;
     }
 }
