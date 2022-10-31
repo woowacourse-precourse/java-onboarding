@@ -12,12 +12,18 @@ public class Problem4 {
     }
 
     private static char getOppositeAlpha(char targetChar){
-        int asciiOrder = targetChar - 'a';
-        int convertOrder = 'z' - asciiOrder;
+        char returnChar;
 
-        char convertChar = (char)convertOrder;
-        System.out.println(convertChar);
-        return convertChar;
+        if (Character.isAlphabetic(targetChar)){
+            if (Character.isUpperCase(targetChar)){
+                returnChar = getUpperCharOppositeAlpha(targetChar);
+            } else {
+                returnChar = getLowerOppositeAlpha(targetChar);
+            }
+        } else {
+            returnChar = ' ';
+        }
+        return returnChar;
     }
 
     private static char getUpperCharOppositeAlpha(char targetChar){
@@ -25,11 +31,10 @@ public class Problem4 {
         int convertOrder = 'Z' - asciiOrder;
 
         char convertChar = (char)convertOrder;
-        System.out.println(convertChar);
         return convertChar;
     }
 
-    private static char getLowerAlpha(char targetChar){
+    private static char getLowerOppositeAlpha(char targetChar){
         int asciiOrder = targetChar - 'a';
         int convertOrder = 'z' - asciiOrder;
 
