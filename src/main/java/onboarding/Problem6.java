@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -7,6 +8,8 @@ import java.util.Map;
 public class Problem6 {
     public static Map<Integer, String> userMap;
     public static Map<String, Integer> subStrIndexMap;
+    public static List<Integer> duplicatedIndex;
+
 
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
@@ -24,6 +27,10 @@ public class Problem6 {
 
     public static void initSubStrIndexMap(){
         subStrIndexMap = new HashMap<>();
+    }
+
+    public static void initDuplicatedIndex(){
+        duplicatedIndex = new ArrayList<>();
     }
 
 
