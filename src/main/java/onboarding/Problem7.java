@@ -11,8 +11,8 @@ public class Problem7 {
 
 
     // 유저 친구 목록
-    public static List<String> friendsList(String user, List<List<String>> friends) { // 유저와 직접적인 친구관계
-        List<String> list = new ArrayList<>();
+    public static List<String> userFriendsList(String user, List<List<String>> friends) { // 유저와 직접적인 친구관계
+        List<String> userFriend = new ArrayList<>();
 
         for (List<String> friend : friends) {
             if (friend.contains(user)) {
@@ -20,12 +20,12 @@ public class Problem7 {
                     if (name.equals(user)) {
                         continue;
                     }
-                    list.add(name);
+                    userFriend.add(name);
                 }
             }
         }
 
-        return list;
+        return userFriend;
     }
 
 
