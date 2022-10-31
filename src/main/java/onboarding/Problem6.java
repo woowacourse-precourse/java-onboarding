@@ -173,14 +173,13 @@ public class Problem6 {
     private static List<String> getDuplicateNicknameUsers(List<List<String>> forms) {
         HashMap<String, HashSet<String>> twoCharNicknames = new HashMap<>();
         HashSet<String> duplicateNicknamesUsers = new HashSet<>();
-
         for (List<String> form: forms) {
             addEmailsByNickname(form, twoCharNicknames);
         }
         for (HashSet<String> nicknameUsers: twoCharNicknames.values()) {
             getEmailsByNickname(nicknameUsers, duplicateNicknamesUsers);
         }
-        List<String> result = sortEmails(duplicateNicknamesUsers);
+        List<String> result = setToSortedList(duplicateNicknamesUsers);
         return result;
     }
 
@@ -231,10 +230,16 @@ public class Problem6 {
         }
     }
 
-    private static List<String> sortEmails(HashSet duplicateNicknameUsers){
-        return Collections.emptyList();
+    /**
+     * 해시셋을 정렬된 리스트로 치환해줍니다.
+     * @param thisSet 치환할 해시셋입니다.
+     * @return 정렬된 리스트입니다.
+     */
+    private static List<String> setToSortedList(HashSet thisSet){
+        List<String> convertedList = new ArrayList<String>(thisSet);
+        convertedList.sort(Comparator.naturalOrder());
+        return convertedList;
     }
-
 
     /**
      * Problem5의 솔루션 코드입니다.
@@ -248,15 +253,5 @@ public class Problem6 {
         }
         List<String> answer = getDuplicateNicknameUsers(forms);
         return answer;
-    }
-
-    public static void main(String[] args) {
-        getDuplicateNicknameUsers(List.of(
-                List.of("jm@email.com", "제이엠"),
-                List.of("jason@email.com", "제이슨"),
-                List.of("woniee@email.com", "워니"),
-                List.of("mj@email.com", "엠제이"),
-                List.of("nowm@email.com", "이제엠")
-        ));
     }
 }
