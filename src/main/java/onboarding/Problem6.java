@@ -25,7 +25,15 @@ public class Problem6 {
             {
                 //1. 선택한 닉네임 안의 첫 글자 부터 시작해서 두 글자 씩 끊어서 필터 생성
                 filter = "" + copied_form.get(index).get(1).charAt(i) + copied_form.get(index).get(1).charAt(i + 1);
-
+                //2. 필터를 이용해서 1에서 선택된 다음 닉네임 부터 필터를 이용하여 중복된 부분 검사
+                for(int j = index + 1; j < copied_form.size(); j++)
+                {
+                    if(copied_form.get(j).get(1).contains(filter))
+                    {
+                        flag = 1;
+                        answer_set.add(copied_form.get(j).get(0));
+                    }
+                }
             }
 
         }
