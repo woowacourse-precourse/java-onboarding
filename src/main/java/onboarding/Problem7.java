@@ -7,8 +7,8 @@ import java.util.*;
  * 1. 유저 객체 생성(친구 리스트 생성, 추천친구 hash생성) <br>
  * 2. 모든 유저의 객체 생성, 친구관계 저장  <br>
  * 3. 유저의 친구의 친구에 대해 점수 증가  <br>
- * 4. 유저의 타임라인의 방문자에게 점수부여 (이때 친구는 증가 시켜선 안된다) <br>
- * 5. 점수가 가장 높은 순으로 정렬하여 최대 5명 출력, 같을시에는 이름순정렬 <br>
+ * 4. 유저의 타임라인의 방문자에게 점수부여 (이때 이미 친구인 관계는 증가 시켜선 안된다) <br>
+ * 5. 점수가 가장 높은 순으로 정렬하여 최대 5명 출력, 같을시에는 이름순으로 정렬 <br>
  * (0점은 해시맵에 들어오지 않은 경우여서 존재하지 않음) <br>
  * <p>
  * RecommendFriend.Java,User.Java 클래스 생성
@@ -49,10 +49,10 @@ public class Problem7 {
         List<String> userFriendList = nowUser.friendsList;
 
         addFriendsFriendsPoint(nowUser, userFriendList);
-        addVisitedFriends(nowUser, visitors);
+        addVisitedFriendsPoint(nowUser, visitors);
 
-        //정련된 추천 친구 리스트를 반환한다.
-        return SortRecommendFriends(nowUser.recommendFriendsHash);
+        //정렬된 추천 친구 리스트를 반환한다.
+        return sortRecommendFriends(nowUser.recommendFriendsHash);
 
     }
 
@@ -69,7 +69,7 @@ public class Problem7 {
     }
 
     //타임라인에 방문한 친구에게 점수를 부여한다.
-    private static void addVisitedFriends(User nowUser, List<String> visitors) {
+    private static void addVisitedFriendsPoint(User nowUser, List<String> visitors) {
         for (String visitorsName : visitors) {
             nowUser.addVisitededFriendsProint(visitorsName);
         }
@@ -85,7 +85,7 @@ public class Problem7 {
     }
 
     //추천친구 해시맵의 value를 점수와 이름순 정렬한다.
-    private static List<RecommendFriend> SortRecommendFriends(HashMap<String, RecommendFriend> recommendFriendsHash) {
+    private static List<RecommendFriend> sortRecommendFriends(HashMap<String, RecommendFriend> recommendFriendsHash) {
         List<RecommendFriend> allRecommendedFriends = new ArrayList<>();
 
         for (String friendName : recommendFriendsHash.keySet()) {
