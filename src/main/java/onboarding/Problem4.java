@@ -1,21 +1,17 @@
 package onboarding;
 
-import java.util.LinkedList;
-import java.util.Queue;
-
 public class Problem4 {
-
-	public static Queue<Character>queue = new LinkedList<>();
 
 	public static String solution(String word) {
 		String answer = "";
 
-		queue = wordCheck(word);
+		answer = wordCheck(word).toString();
 
 		return answer;
 	}
 
-	public static Queue<Character> wordCheck(String word) {
+	public static StringBuilder wordCheck(String word) {
+		StringBuilder builder = new StringBuilder();
 
 		for(int i = 0; i < word.length(); i++) {
 			char character = word.charAt(i);
@@ -29,10 +25,10 @@ public class Problem4 {
 				character = (char) (97 + distance);
 			}
 
-			queue.offer(character);
+			builder.append(character);
 		}
 
-		return queue;
+		return builder;
 	}
 
 }
