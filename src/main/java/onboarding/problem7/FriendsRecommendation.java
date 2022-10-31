@@ -35,7 +35,16 @@ public class FriendsRecommendation {
     }
 
     private void findRecommendationFromFriendsOfUser(List<List<String>> friends) {
-        // TODO: 유저의 친구의 친구들을 찾는다. 단 friendsOfUser 에 포함된 친구여선 안된다.
+        for (List<String> pair : friends) {
+            if (friendsOfUser.contains(pair.get(0))) {
+                recommendationsForUser
+                        .put(pair.get(1), recommendationsForUser.getOrDefault(pair.get(1), 0) + 10);
+            }
+            if (friendsOfUser.contains(pair.get(1))) {
+                recommendationsForUser
+                        .put(pair.get(0), recommendationsForUser.getOrDefault(pair.get(0), 0) + 10);
+            }
+        }
     }
 
     private void findRecommendationFromVisitors(List<String> visitors) {
