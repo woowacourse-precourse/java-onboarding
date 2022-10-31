@@ -1,9 +1,17 @@
 package onboarding;
 
 public class Problem2 {
+    /**
+     * 입력 문자열에 연속으로 같은 글자를 삭제, 단어에 연속적으로 일치하는 글자가 없을때까지 반복하는 함수
+     * @param cryptogram
+     * @return preprocessed word
+     */
     public static String solution(String cryptogram) {
         String answer = cryptogram;
+
+        // 연속적으로 일치하는 문자가 있는지에 대한 변수
         boolean flag = true;
+
         while (flag) {
             flag = false;
             String temp = "";
