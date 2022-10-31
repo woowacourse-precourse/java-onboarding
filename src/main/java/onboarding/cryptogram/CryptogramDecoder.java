@@ -6,9 +6,9 @@ public class CryptogramDecoder {
 
 	private static final int MIN_LENGTH = 1;
 
-	private static final String FORMAT_REGEX = "^[a-z]+$";
+	private static final String FORMAT_MATCH_REGEX = "^[a-z]+$";
 
-	private static final String REPEATED_REGEX = ".*(\\w)\\1+.*";
+	private static final String REPEATED_MATCH_REGEX = ".*(\\w)\\1+.*";
 
 	private static final String REPEATED_REMOVAL_REGEX = "(\\w)\\1+";
 
@@ -20,11 +20,11 @@ public class CryptogramDecoder {
 	static boolean isValidFormat(final String cryptogram) {
 		return cryptogram != null
 			&& validateLength(cryptogram)
-			&& cryptogram.matches(FORMAT_REGEX);
+			&& cryptogram.matches(FORMAT_MATCH_REGEX);
 	}
 
 	static boolean containsRepetitions(final String cryptogram) {
-		return cryptogram.matches(REPEATED_REGEX);
+		return cryptogram.matches(REPEATED_MATCH_REGEX);
 	}
 
 	static String removeRepetitions(final String cryptogram) {
