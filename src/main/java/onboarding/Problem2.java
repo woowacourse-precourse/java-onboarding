@@ -7,12 +7,16 @@ public class Problem2 {
         while (true) {
             int length = cryptogramStringBuilder.length();
             checkConsecutiveString(cryptogramStringBuilder);
-            if (length == cryptogramStringBuilder.length()) {
+            if (!isChangedCryptogram(cryptogramStringBuilder, length)) {
                 break;
             }
         }
 
         return cryptogramStringBuilder.toString();
+    }
+
+    private static boolean isChangedCryptogram(StringBuilder cryptogramStringBuilder, int length) {
+        return length != cryptogramStringBuilder.length();
     }
 
     private static void checkConsecutiveString(StringBuilder stringBuilder) {
