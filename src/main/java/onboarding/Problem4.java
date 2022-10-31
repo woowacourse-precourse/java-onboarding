@@ -12,4 +12,9 @@ public class Problem4 {
         return c;
     }
 
+    public static char somunja(char c) {
+        c = (char)('z' - c + 'a');
+
+        return c;
+    }
 }
