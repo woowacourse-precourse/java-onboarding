@@ -12,6 +12,14 @@ class Problem1 {
         - x가 짝수인 경우
         - x<1 또는 x>400인 경우
          */
+        if(pobi.size() != 2 || crong.size() != 2)
+            return -1;
+        if((pobi.get(0) + 1 != pobi.get(1)) || (crong.get(0) + 1 != crong.get(1)))
+            return -1;
+        if((pobi.get(0) % 2 == 0) || (crong.get(0) % 2 == 0))
+            return -1;
+        if((pobi.get(0) < 1 || pobi.get(0) > 400) || (crong.get(0) < 1 || crong.get(0) > 400))
+            return -1;
 
         /*
         2. 포비와 크롱의 max 점수 구하기
