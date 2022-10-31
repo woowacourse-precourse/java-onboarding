@@ -19,6 +19,10 @@ public class Problem6 {
                 .collect(Collectors.toList()));
     }
 
+    private static void addEmailToMap(Map<String, List<String>> duplicateMap, String twoDigit, String email) {
+        duplicateMap.compute(twoDigit, (k, v) -> v == null ? new ArrayList<>() : v).add(email);
+    }
+
     private static String getTwoDigitName(String nickname, int startIdx) {
         return nickname.substring(startIdx, startIdx + 2);
     }
