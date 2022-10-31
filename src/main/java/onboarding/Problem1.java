@@ -12,11 +12,11 @@ class Problem1 {
         int cr = crong.get(1); //cr: 크롱의 오른쪽 페이지 넘버
 
         //예외처리
-        if (check_exception(pl, pr, cl, cr)){
+        if (checkException(pl, pr, cl, cr)){
             return -1;
         }
 
-        if (get_max_value(pl, pr) > get_max_value(cl, cr)){
+        if (getMaxValue(pl, pr) > getMaxValue(cl, cr)){
             return 1;
         } else {
             return 0;
@@ -24,7 +24,7 @@ class Problem1 {
     }
 
     //0. 예외처리
-    static boolean check_exception(int pl, int pr, int cl, int cr){
+    static boolean checkException(int pl, int pr, int cl, int cr){
         //예외 처리 1. 1~400 범위가 아닌 경우
         if (pl<1 || pl>399 || cl<1 || cl>399){
             return true;
@@ -42,7 +42,7 @@ class Problem1 {
     }
 
     //1. 최댓값 구하기
-    static int get_max_value(int l, int r) {
+    static int getMaxValue(int l, int r) {
         int l_added_value = 0;
         int l_multiplied_value = 1;
         int r_added_value = 0;
