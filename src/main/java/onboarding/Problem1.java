@@ -1,7 +1,13 @@
 package onboarding;
 
 import java.util.List;
-
+/*
+기능 구현 목록
+1. 페이지 각 자릿수를 더하는 기능
+2. 페이지 각 자릿수를 곱하는 기능
+3. 가장 큰 점수를 찾는 기능
+4. 승자를 정하는 기능
+ */
 class Problem1 {
     static final int POBI_WIN = 1;
     static final int CRONG_WIN = 2;
