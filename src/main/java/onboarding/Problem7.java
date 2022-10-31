@@ -121,6 +121,42 @@ class Algorithm {
         this.user = user;
     }
 
+    public Map<String, Integer> getRecommend() {
+        List<Map.Entry<String, Integer>> sortRecommend = trimSortRecommend(getSortRecommend());
+        return getRecommendMap(sortRecommend);
+    }
+
+    private List<Map.Entry<String, Integer>> getSortRecommend() {
+        List<Map.Entry<String, Integer>> sortRecommend = new ArrayList<>(recommend.entrySet());
+        sortRecommend.sort(new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                return o2.getValue() - o1.getValue();
+            }
+        });
+        return sortRecommend;
+    }
+
+    private static List<Map.Entry<String, Integer>> trimSortRecommend(List<Map.Entry<String, Integer>> sortRecommend) {
+        if (sortRecommend.size() > 5) {
+            sortRecommend = new ArrayList<Map.Entry<String, Integer>>(sortRecommend.subList(0, 5));
+        }
+        return sortRecommend;
+    }
+
+    private static HashMap<String, Integer> getRecommendMap(List<Map.Entry<String, Integer>> sortRecommend) {
+        HashMap<String, Integer> recommendMap = new HashMap<>();
+
+        for (int i = 0; i < sortRecommend.size(); i++) {
+            recommendMap.put(
+                    sortRecommend.get(i)
+                            .getKey(),
+                    sortRecommend.get(i)
+                            .getValue());
+        }
+        return recommendMap;
+    }
+
     public void scoreVisitors() {
         SNS sns = user.getSns();
         List<String> visitors = sns.getVisitors();
@@ -207,5 +243,4 @@ class Algorithm {
             recommend.put(knownFriend, 10);
         }
     }
-
 }
