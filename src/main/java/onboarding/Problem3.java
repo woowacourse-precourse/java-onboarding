@@ -1,8 +1,18 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Problem3 {
+    public static List<Integer> getNumList(int num) {
+        List<Integer> numList = new ArrayList<>();
+        while(num>0) {
+            numList.add(num%10);
+            num/=10;
+        }
+        return numList;
+    }
+
     public static int solution(int number) {
         int cnt = 0;
 
