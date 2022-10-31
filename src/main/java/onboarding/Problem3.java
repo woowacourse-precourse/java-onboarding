@@ -6,12 +6,13 @@ public class Problem3 {
     static final char THREE_CHAR = '3';
     static final char SIX_CHAR = '6';
     static final char NINE_CHAR = '9';
+    static final int ERROR = -1;
 
     public static int solution(int number) {
         int answer = 0;
 
         if (!isValidInput(number)) {
-            answer = -1;
+            answer = ERROR;
             return answer;
         }
         answer = sumMultipleOfThree(number);
@@ -20,26 +21,29 @@ public class Problem3 {
 
     private static int sumMultipleOfThree(int number) {
         int sumMultipleOfThree = 0;
-        String numberToString;
 
         for (int i = 1; i <= number; i++) {
-            numberToString = String.valueOf(i);
-            sumMultipleOfThree += countMultipleOfThree(numberToString);
+            sumMultipleOfThree += countMultipleOfThree(i);
         }
         return sumMultipleOfThree;
     }
 
-    private static int countMultipleOfThree(String numberToString) {
+    private static int countMultipleOfThree(int number) {
+        String numberToString = String.valueOf(number);
         int cnt = 0;
-        char numchar;
+        char numChar;
 
         for (int i = 0; i < numberToString.length(); i++) {
-            numchar = numberToString.charAt(i);
-            if (numchar == THREE_CHAR || numchar == SIX_CHAR || numchar == NINE_CHAR) {
+            numChar = numberToString.charAt(i);
+            if (isMultipleOfThreeChar(numChar)) {
                 cnt++;
             }
         }
         return cnt;
+    }
+
+    private static boolean isMultipleOfThreeChar(char numChar) {
+        return numChar == THREE_CHAR || numChar == SIX_CHAR || numChar == NINE_CHAR;
     }
 
     private static boolean isValidInput(int number) {
