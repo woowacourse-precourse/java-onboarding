@@ -4,7 +4,18 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        Map<String, List<String>> memberFriendList = getMembersFriendList(friends);
+        Map<String, Integer> recommendScore = getRecommendScore(user, visitors, memberFriendList);
+
+        List<String> answer = new ArrayList<>(recommendScore.keySet());
+        answer.sort(((o1, o2) -> {
+            if(recommendScore.get(o1).equals(recommendScore.get(o2))) return o1.compareTo(o2);
+            return recommendScore.get(o2) - recommendScore.get(o1);
+        }));
+
+        if(answer.size() > 5) {
+            answer = answer.subList(0, 5);
+        }
         return answer;
     }
     private static Map<String, List<String>> getMembersFriendList(List<List<String>> friends) {
