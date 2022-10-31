@@ -72,6 +72,24 @@ public class Problem7 {
         return sameFriendList;
     }
 
+    //기능 4
+    public static List<String> removeUserFriend(List<String> visitors, List<String> userFriend){
+
+        List<String> visitorsList=new ArrayList<String>();
+
+        for(int i=0;i<visitors.size();i++) {
+            visitorsList.add(visitors.get(i));
+        }
+        //visitorsList=visitors;
+
+        for(int i=0;i<userFriend.size();i++) {
+            if(visitorsList.contains(userFriend.get(i))) {
+                visitorsList.remove(userFriend.get(i));
+            }
+        }
+        return visitorsList;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
