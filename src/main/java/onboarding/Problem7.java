@@ -61,13 +61,14 @@ public class Problem7 {
     public static HashMap<String, Integer> sort_by_value(HashMap<String, Integer> map){
         List<Map.Entry<String, Integer> > list =
                 new LinkedList<Map.Entry<String, Integer>>(map.entrySet());
-        Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
+        Comparator<Map.Entry<String, Integer>> comp = new Comparator<Map.Entry<String, Integer>>() {
             public int compare(Map.Entry<String, Integer> o1,
                                Map.Entry<String, Integer> o2)
             {
-                return (o2.getValue()).compareTo(o1.getValue());
+                return (o1.getValue()).compareTo(o2.getValue());
             }
-        });
+        };
+        list.sort(comp.reversed());
         HashMap<String, Integer> temp = new LinkedHashMap<String, Integer>();
         for (Map.Entry<String, Integer> aa : list) {
             temp.put(aa.getKey(), aa.getValue());
