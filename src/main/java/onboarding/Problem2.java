@@ -42,11 +42,10 @@ public class Problem2 {
     }
 
     private static void decodingCurrentString(StringBuffer cryptogram){
-        StringBuffer afterDecode = cryptogram;
         int checkPoint = 0;
-        while(checkPoint<afterDecode.length()-1){
-            if(afterDecode.charAt(checkPoint)==afterDecode.charAt(checkPoint+1)){
-                removeDuplication(afterDecode, checkPoint);
+        while(checkPoint<cryptogram.length()-1){
+            if(cryptogram.charAt(checkPoint)==cryptogram.charAt(checkPoint+1)){
+                removeDuplication(cryptogram, checkPoint);
             }
             checkPoint++;
         }
