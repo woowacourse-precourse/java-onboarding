@@ -9,6 +9,16 @@ public class Problem7 {
     }
 
     /**
+     * 점수 추가가 끝난 friendsMap 반환
+     */
+    private static Map<String,Integer> endAddPoint(String user, List<List<String>> friends, List<String> visitors){
+        Map<String, Integer> friendsMap = recommendationFriendsMap(user,friends);
+        List<String> userFriendList = userFriends(user, friends);
+        friendsMap = addTenPoint(friendsMap,userFriendList,friends);
+        return addOnePoint(friendsMap,userFriendList,visitors);
+    }
+
+    /**
      * user에게 추천할 수 있는 사람들을 모아 map으로 반환하는 함수
      */
     private static Map<String,Integer> recommendationFriendsMap(String user, List<List<String>> friends){
@@ -98,7 +108,8 @@ public class Problem7 {
      */
     private static Map<String,Integer> addOnePoint(Map<String,Integer> friendsMap,List<String> userFriendList,List<String> visitors){
         for (String visitor : visitors) {
-            if(!friendsMap.containsKey(visitor) && !userFriendList.contains(visitor)) friendsMap.put(visitor,1);
+            if(userFriendList.contains(visitor)) continue;
+            if(!friendsMap.containsKey(visitor)) friendsMap.put(visitor,1);
             else friendsMap.replace(visitor,friendsMap.get(visitor) + 1);
         }
         return friendsMap;
