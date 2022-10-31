@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 /*
     기능 목록
@@ -24,6 +21,16 @@ public class Problem7 {
 
         // 맵 초기값 설정
         mapSet(user, friends, visitors);
+
+        // 정렬
+        // -> TreeMap : 1차 문자열에 대한 정렬
+        // -> List : TreeMap의 value를 기준으로 정렬해야 하기 때문에 리스트로 변경 후 정렬
+        // 정렬 시 TreeMap의 value로 비교
+        List<String> sortString = new LinkedList<>(visitorMap.keySet());
+        sortString.sort((o1, o2) -> (visitorMap.get(o2).compareTo(visitorMap.get(o1))));
+
+        // List로 반환된 정렬 값을 answer에 대입
+        answer = sortList(sortString);
         return answer;
     }
 
@@ -66,5 +73,21 @@ public class Problem7 {
                 }
             }
         }
+    }
+
+    public static List<String> sortList(List<String> sortString){
+        // 반환 해줄 tmp List 선언
+        List<String> tmp = new LinkedList<>();
+        for(String key : sortString){
+            // 담을 최대 크기를 5로 제한
+            if(tmp.size()==5){
+                break;
+            }
+            // 추천 점수가 0인 경우는 제외하기 때문에 0보다 큰 경우만 List에 담기
+            if(visitorMap.get(key) > 0){
+                tmp.add(key);
+            }
+        }
+        return tmp;
     }
 }
