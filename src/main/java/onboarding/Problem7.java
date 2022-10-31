@@ -63,7 +63,21 @@ public class Problem7 {
 
                 }
 
-            }}
+            }
+            int count=0;
+            while(priorityQueue.size()!=0||count==5) {
+                friendpoint now=priorityQueue.poll();
+                if(now.point>0) {
+                    count++;
+                    answer.add(now.getUser());
+
+                }
+            }
+
+
+
+            return answer;
+        }
 
 
 return answer;
