@@ -24,3 +24,15 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+## PROBLEM7 기능 구현 사항
+    답안 정렬 기준 
+      (1)점수 내림차순 - 점수 같으면 -> (2)이름 오름차순 으로 최대 5명
+    
+    구현
+    - myFriends 배열 생성, score SortedMap 생성
+    - 반복문을 통해 friends배열 내부에서 friends[1]이 user인 friends[0] myFriends에 저장
+      myFriends.size가 0이 아니면 friends배열 내부에서 friends[1]이 myFriends에 contain 되어있는 friends[0]을 score에 Key:이름, Value:10 으로 저장 / name이 이미 Key로 있으면 Value값 +10
+      myFriends.size가 0이면 skip
+
+    - visitors에 있는 인원 SortedMap에 Key:name, Value:1 로 추가 / name이 이미 Key로 있으면 Value에 1 추가
