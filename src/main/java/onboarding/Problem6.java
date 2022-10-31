@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class Problem6 {
@@ -11,6 +12,18 @@ public class Problem6 {
         List<String> answer = List.of("answer");
         return answer;
     }
+    public static List<String> getOverlabUserEmailByIndex(List<Integer> overlabUserIndexList, List<List<String>> forms){
+        List<String> overlabUserEmail = new ArrayList<String>();
+        HashSet<Integer> overlabUserIndexSetData = new HashSet<>(overlabUserIndexList);
+        overlabUserIndexList = new ArrayList<>(overlabUserIndexSetData); // 중복 인덱스 제거
+        for(int index: overlabUserIndexList){
+            String email = forms.get(index).get(EMAIL);
+            overlabUserEmail.add(email);
+        }
+
+        return overlabUserEmail;
+    }
+
     public static List<Integer> checkOverlapUserCycle(int nicknameIndex, List<List<String>> forms){
         List<Integer> overlapUserIndexList = new ArrayList<Integer>();
         String nickname = forms.get(nicknameIndex).get(NICK_NAME);
