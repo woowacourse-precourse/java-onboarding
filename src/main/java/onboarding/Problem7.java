@@ -65,9 +65,9 @@ public class Problem7 {
             if(exceptMembers.contains(name)) continue;
 
             if (score.containsKey(name)) {
-                score.put(name, score.get(name) + 10);
+                score.put(name, score.get(name) + point);
             }else {
-                score.put(name,10);
+                score.put(name,point);
             }
         }
 
