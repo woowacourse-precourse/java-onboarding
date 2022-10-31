@@ -15,7 +15,7 @@ import java.util.Set;
 /**
  * 중복된 닉네임을 가진 크루의 이메일 목록을 제공하는 클래스
  */
-public class CrewNicknameService {
+public class CrewDuplicateNicknameService {
 
     /**
      * (크루의 닉네임 중 2글자, 크루의 이메일) 방식으로 크루 정보를 관리하는 컬렉션
@@ -37,7 +37,7 @@ public class CrewNicknameService {
      *
      * @param crewRepository 크루의 정보를 관리하는 일급 컬렉션
      */
-    public CrewNicknameService(CrewRepository crewRepository) {
+    public CrewDuplicateNicknameService(CrewRepository crewRepository) {
         this.crewRepository = crewRepository;
         this.partOfNicknameMap = new HashMap<>();
         this.duplicateNicknameCrewSet = new HashSet<>();
@@ -49,30 +49,30 @@ public class CrewNicknameService {
      * @return 중복된 닉네임을 가진 크루의 이메일
      * @see #processDuplicateCrewNickname(Crew crew)
      */
-    public List<String> calculateDuplicateCrews() {
+    public List<String> findDuplicateCrews() {
         crewRepository.findAllCrewStream().forEach(this::processDuplicateCrewNickname);
 
-        return getAscSortedCrewEmails();
+        return sortAscCrewEmailList();
     }
 
     /**
      * 크루의 닉네임 길이만큼 반복하며 크루의 닉네임이 중복되었는지 확인하는 메소드
      *
      * @param crew 중복 닉네임 유무를 확인하기 위한 크루
-     * @see #validateNickname(String nickname)
+     * @see #validateCrewNickname(String nickname)
      * @see #calculatePartOfNickname(String nickname, int index)
      * @see onboarding.problem6.consts.NicknameConst
      */
     private void processDuplicateCrewNickname(Crew crew) {
         String nickname = crew.getNickname();
 
-        if (validateNickname(nickname)) {
+        if (validateCrewNickname(nickname)) {
             return;
         }
         for (int i = NICKNAME_DUPLICATE_START_INDEX; i < nickname.length(); i++) {
             String partOfNickname = calculatePartOfNickname(nickname, i);
 
-            checkDuplicateCrewNickname(crew, partOfNickname);
+            validateDuplicateNickname(crew, partOfNickname);
         }
     }
 
@@ -81,11 +81,11 @@ public class CrewNicknameService {
      *
      * @param crew 중복 닉네임 유무를 확인하기 위한 크루
      * @param partOfNickname 크루의 닉네임 중 연속적인 2글자
-     * @see #addDuplicateCrew(Crew crew, String email)
+     * @see #addDuplicateCrewEmail(Crew crew, String email)
      */
-    private void checkDuplicateCrewNickname(Crew crew, String partOfNickname) {
+    private void validateDuplicateNickname(Crew crew, String partOfNickname) {
         if (partOfNicknameMap.containsKey(partOfNickname)) {
-            addDuplicateCrew(crew, partOfNicknameMap.get(partOfNickname));
+            addDuplicateCrewEmail(crew, partOfNicknameMap.get(partOfNickname));
             return;
         }
         partOfNicknameMap.put(partOfNickname, crew.getEmail());
@@ -97,7 +97,7 @@ public class CrewNicknameService {
      * @param crew 중복된 닉네임을 가진 크루
      * @param email 중복된 닉네임을 가진 크루의 이메일
      */
-    private void addDuplicateCrew(Crew crew, String email) {
+    private void addDuplicateCrewEmail(Crew crew, String email) {
         duplicateNicknameCrewSet.add(email);
         duplicateNicknameCrewSet.add(crew.getEmail());
     }
@@ -108,7 +108,7 @@ public class CrewNicknameService {
      * @param nickname 크루의 닉네임
      * @return 닉네임 중복 조건을 부합하는지에 대한 여부
      */
-    private boolean validateNickname(String nickname) {
+    private boolean validateCrewNickname(String nickname) {
         return nickname.length() < NICKNAME_MINIMUM_LENGTH;
     }
 
@@ -128,7 +128,7 @@ public class CrewNicknameService {
      *
      * @return 오름차순으로 정렬된 중복된 크루 이메일 List
      */
-    private List<String> getAscSortedCrewEmails() {
+    private List<String> sortAscCrewEmailList() {
         List<String> duplicateCrewEmail = new ArrayList<>(duplicateNicknameCrewSet);
 
         Collections.sort(duplicateCrewEmail);
