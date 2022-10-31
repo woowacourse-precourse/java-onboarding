@@ -17,6 +17,10 @@ public class Problem4 {
         return sb.toString();
     }
 
+    private static boolean isUpperCase(char alphabet) {
+        return 'A' <= alphabet && alphabet <= 'Z';
+    }
+
     private static boolean isAlphabet(char alphabet) {
         if ('A' <= alphabet && alphabet <= 'Z') {
             return true;
