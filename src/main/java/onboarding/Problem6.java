@@ -4,50 +4,54 @@ import java.util.*;
 
 public class Problem6 {
 
+    static Map<String, Set<Integer>> mymap = new HashMap<>();
+
     public static List<String> solution(List<List<String>> forms) {
         return pro(forms);
     }
 
     static List<String> pro(List<List<String>> forms) {
-        List<String> answer = new ArrayList<>();
-        boolean[] visit = new boolean[forms.size()];
+        List<String> answer;
 
-        for (int i = 0; i < forms.size(); i++) {
-            if(visit[i]) continue;
+        for(int i = 0; i < forms.size(); i++) {
+            addTwoLetters(forms.get(i).get(1), i);
+        }
 
-            String email = forms.get(i).get(0);
-            String nickname = forms.get(i).get(1);
-            visit[i] = true;
+        answer = getEmailList(forms);
 
-            for(int j = 0; j < nickname.length() - 1; j++) {
-                // 두 글자씩 조합하여 중복인지 확인한다
-                String str = nickname.substring(j, j + 2);
+        Collections.sort(answer);
 
-                boolean isDuplicationFound = false;         // 중복이 있는지 체크
-                for (int k = 0; k < forms.size(); k++) {
-                    if(k == i) continue;                    // 자기 자신의 닉네임을 탐색하는 경우
-                    String other_email = forms.get(k).get(0);
-                    String other_nickname = forms.get(k).get(1);
+        return answer;
+    }
 
-                    isDuplicationFound = other_nickname.contains(str); // 다른 크루의 이름에 해당 문자가 들어 있는지 확인
-
-                    // 중복되는 경우 정답 리스트에 이메일을 추가
-                    if(isDuplicationFound) {
-                        // 새로운 이메일 주소일 경우 리스트에 추가
-                        if(!answer.contains(other_email)) answer.add(other_email);
-                        if(!answer.contains(email)) answer.add(email);
-                        visit[k] = true;
-                        break;
-                    }
-                    else continue;
-                }
-                if(isDuplicationFound) break; // 중복이 확인 되었으면 더이상 탐색할 필요가 없으므로 탐색을 중단한다
+    static List<String> getEmailList(List<List<String>> forms) {
+        Set<Integer> indexSet = new HashSet<>();
+        for(Set<Integer> set : mymap.values()) {
+            if(set.size() > 1) {
+                indexSet.addAll(set);
             }
         }
 
-        Collections.sort(answer); // 정답 리스트를 오름차순으로 정렬한다.
+        ArrayList<String> emailList = new ArrayList<>();
+        for(int idx : indexSet) {
+            emailList.add(forms.get(idx).get(0));
+        }
+        return emailList;
+    }
 
-        return answer;
+    static void addTwoLetters(String nickname, int idx) {
+        for(int i = 0; i < nickname.length() - 1; i++) {
+            String s = nickname.substring(i, i + 2);
+            add(s, idx);
+        }
+    }
+
+
+    static void add(String letters, int idx) {
+        if(!mymap.containsKey(letters)) {
+            mymap.put(letters, new HashSet<>());
+        }
+        mymap.get(letters).add(idx);
     }
 
 }
