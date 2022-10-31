@@ -104,10 +104,10 @@ public class User implements Comparable<User> {
     @Override
     public int compareTo(User that) {
         if (Objects.equals(this.recommendationScore, that.recommendationScore)) {
-            return name.compareTo(that.name);
+            return that.name.compareTo(name);
         }
         // 내림차순
-        return recommendationScore.compareTo(that.recommendationScore) * -1;
+        return recommendationScore.compareTo(that.recommendationScore);
     }
 
 
