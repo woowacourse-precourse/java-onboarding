@@ -8,7 +8,7 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
 
         // 예외체크
-        if(!(checkNumber(pobi) && checkNumber(crong))) {
+        if(!(checkException(pobi) && checkException(crong))) {
             return -1;
         }
 
@@ -25,7 +25,7 @@ class Problem1 {
         int resultCrong = maxNumber(leftCrong, rightCrong);
 
         // 4. 결과
-        answer = resultNumber(resultPobi, resultCrong);
+        answer = returnResult(resultPobi, resultCrong);
 
         return answer;
     }
@@ -68,7 +68,7 @@ class Problem1 {
     }
 
     // 예외처리 함수
-    private static boolean checkNumber(List<Integer> input) {
+    private static boolean checkException(List<Integer> input) {
         // 왼쪽 페이지 홀수
         boolean oddNum = input.get(0)%2 != 0;
         // 오른쪽 페이지 짝수
@@ -85,7 +85,7 @@ class Problem1 {
     }
 
     // 결과 리턴하는 함수
-    private static int resultNumber(int pobi, int crong) {
+    private static int returnResult(int pobi, int crong) {
         if(pobi > crong) {
             return 1;
         }
