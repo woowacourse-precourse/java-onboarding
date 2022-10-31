@@ -7,6 +7,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Problem6 {
@@ -35,11 +36,13 @@ public class Problem6 {
                 }
             }
         }
+        
+        Collections.sort(emailList);
         for(int i=0; i<emailList.size(); i++) {
-           String email = emailList.get(i);
-           if(isValidEmail.isValidEmail(email)) {
-
-           }
+            String email = emailList.get(i);
+            if(isValidEmail.isValidEmail(email) && ! answer.contains(email)) {
+                answer.add(email);
+            }
         }
 
         return answer;
