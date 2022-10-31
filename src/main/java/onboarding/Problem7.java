@@ -11,7 +11,8 @@ public class Problem7 {
         List<String> friendOfFriend = getFriendOfFriend(user, friends);
 
         Map<String, Integer> scoreRecommendFriend = getScoreRecommendFriend(friendOfFriend, visitors);
-        Map<String, Integer> refineScoreRecommendFriend = getRefineScoreRecommendFriend(scoreRecommendFriend, friendOfUser);
+        Map<String, Integer> refineScoreRecommendFriend
+                = getRefineScoreRecommendFriend(scoreRecommendFriend, friendOfUser);
 
         List<String> sortedRecommendFriend = getSortedRecommendFriend(refineScoreRecommendFriend);
         List<String> fiveRecommendFriend = getFiveRecommendFriend(sortedRecommendFriend);
