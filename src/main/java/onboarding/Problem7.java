@@ -2,7 +2,9 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -15,7 +17,7 @@ public class Problem7 {
 
         removeScoreIfZero(recommendScore);
 
-        return null; //TODO - 임시값 수정
+        return getSortedRecommendFriends(recommendScore);
     }
 
     private static Map<String, List<String>> createFriendRelations(List<List<String>> friends) {
@@ -107,5 +109,28 @@ public class Problem7 {
                 recommendScore.remove(friend);
             }
         }
+    }
+
+    private static List<String> getSortedRecommendFriends(Map<String, Integer> recommendScore) {
+        List<Map.Entry<String, Integer>> entries = new LinkedList<>(recommendScore.entrySet());
+        entries.sort(new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                if (o1.getValue().equals(o2.getValue())) {
+                    return o1.getKey().compareTo(o2.getKey());
+                }
+                return o2.getValue().compareTo(o1.getValue());
+            }
+        });
+
+        List<String> recommendFriends = new ArrayList<>();
+        for (Map.Entry<String, Integer> entry : entries) {
+            if (recommendFriends.size() == MAX_RECOMMEND_FRIENDS) {
+                break;
+            }
+            recommendFriends.add(entry.getKey());
+        }
+
+        return recommendFriends;
     }
 }
