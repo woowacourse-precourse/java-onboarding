@@ -31,6 +31,7 @@ public class Problem2 {
     }
 
     public static String solution(String cryptogram) {
+        String answer = "answer";
         String str = cryptogram;
 
         while (true) {
@@ -41,6 +42,8 @@ public class Problem2 {
 
             str = nextStr;
         }
-        return str;
+
+        answer = str;
+        return answer;
     }
 }
