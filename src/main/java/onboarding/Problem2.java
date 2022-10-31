@@ -30,7 +30,7 @@ public class Problem2 {
             }
             tempCryptogram = nextCryptogram;
         }
-        return null;
+        return "";
     }
 
     public static String solution(String cryptogram) {
