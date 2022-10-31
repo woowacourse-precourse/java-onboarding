@@ -4,21 +4,24 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
-import java.util.stream.Stream;
 
 public class Problem6 {
 
-    static HashMap<String, List<String>> fragmentMap = new HashMap<>();
+//    static HashMap<String, List<String>> fragmentMap = new HashMap<>();
 
     public static List<String> solution(List<List<String>> forms) {
 
         List<String> answer = new ArrayList<>();
-        makeMap(forms);
+        HashMap<String, List<String>> fragmentMap = makeMap(forms);
 
         for (String fragment : fragmentMap.keySet()) {
             List<String> emailList = fragmentMap.get(fragment);
             if (emailList.size() >= 2) {
-                answer.addAll(emailList);
+                for (int i = 0; i < emailList.size(); i++) {
+                    if (!answer.contains(emailList.get(i))) {
+                        answer.add(emailList.get(i));
+                    }
+                }
             }
         }
 
@@ -31,18 +34,25 @@ public class Problem6 {
      *
      * @param forms 이름과 이메일이 담긴 리스트
      */
-    public static void makeMap(List<List<String>> forms) {
+    public static HashMap<String, List<String>> makeMap(List<List<String>> forms) {
 
-        for (int i = 0; i < forms.size(); i++) {
+        HashMap<String, List<String>> fragmentMap = new HashMap<>();
 
-            String currentName = forms.get(i).get(1);
-            String currentEmail = forms.get(i).get(0);
+        for (List<String> form : forms) {
+
+            String currentName = form.get(1);
+            String currentEmail = form.get(0);
+            String domainName = currentEmail.substring(currentEmail.indexOf("@") + 1);
+
+            if (!domainName.equals("email.com")) {
+                continue;
+            }
 
             for (int j = 1; j < currentName.length(); j++) {
                 String fragment = String.valueOf(currentName.charAt(j - 1)) + currentName.charAt(j);
                 if (fragmentMap.containsKey(fragment)) {
                     fragmentMap.get(fragment).add(currentEmail);
-                } else{
+                } else {
                     List<String> emailList = new ArrayList<>();
                     emailList.add(currentEmail);
                     fragmentMap.put(fragment, emailList);
@@ -50,5 +60,7 @@ public class Problem6 {
             }
         }
 
+        return fragmentMap;
     }
+
 }
