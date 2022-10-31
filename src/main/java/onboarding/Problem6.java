@@ -7,4 +7,8 @@ public class Problem6 {
         List<String> answer = List.of("answer");
         return answer;
     }
+
+    private static String getTwoDigitName(String nickname, int startIdx) {
+        return nickname.substring(startIdx, startIdx + 2);
+    }
 }
