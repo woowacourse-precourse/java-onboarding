@@ -36,4 +36,11 @@ public class User {
             getDuplicateUserEmails(email, subName);
         }
     }
+
+    private void getDuplicateUserEmails(String targetEmail, String subName) {
+        forms.keySet().stream()
+                .filter(email -> !email.equals(targetEmail))
+                .filter(email -> forms.get(email).contains(subName))
+                .forEach(emails::add);
+    }
 }
