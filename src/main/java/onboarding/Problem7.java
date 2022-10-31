@@ -42,7 +42,19 @@ public class Problem7 {
         friendPoint.remove(user);
 
 
-        List<String> answer = Collections.emptyList();
+        // 점수를 기준으로 정렬
+        List<String> keySet = new ArrayList<>(friendPoint.keySet());
+        keySet.sort((o1, o2) -> friendPoint.get(o2).compareTo(friendPoint.get(o1)));
+
+        // 상위 5명을 answer에 담아 리턴
+        List<String> answer = new ArrayList<>();
+        for (String key : keySet) {
+            answer.add(key);
+            if (answer.size()>=5){
+                break;
+            }
+        }
+
         return answer;
     }
 
