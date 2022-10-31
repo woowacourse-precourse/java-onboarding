@@ -54,8 +54,10 @@ public class Problem2 {
 
   private static String deleteDuplicatedChar(String[] splitCryptogram, int duplicatedIndex) {
     ArrayList<String> strings = new ArrayList<>(Arrays.asList(splitCryptogram));
-    strings.remove(duplicatedIndex);
-    strings.remove(duplicatedIndex);
+    String endPoint = strings.get(duplicatedIndex);
+    while (strings.size() != 0 && strings.get(duplicatedIndex).equals(endPoint)) {
+      strings.remove(duplicatedIndex);
+    }
     String retString = "";
     for (String s : strings) {
       retString += s;
