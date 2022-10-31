@@ -14,7 +14,7 @@ public class Problem3 {
         return sum;
     }
 
-    public static int count369(Integer num) {
+    private static int count369(Integer num) {
         String numString = num.toString();
 
         int cnt = 0;
