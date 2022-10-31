@@ -4,22 +4,25 @@ public class Problem4 {
 
     private static char changeChar(char c) {
 
+        final double CENTEROFUPPERCASE = 77.5;
+        final double CENTEROFLOWERCASE = 109.5;
+
         double codifiedCharacter = (double)c;
         double distanceFromCenter = 0;
 
-        if(c >= 65 && c <= 90) { // 대문자라면
-            distanceFromCenter = Math.abs(codifiedCharacter - 77.5);
+        if(c >= 'A' && c <= 'Z') { // 대문자라면
+            distanceFromCenter = Math.abs(codifiedCharacter - CENTEROFUPPERCASE);
 
-            if(c < 77.5) {
+            if(c < CENTEROFUPPERCASE) {
                 codifiedCharacter += 2 * distanceFromCenter;
             } else {
                 codifiedCharacter -= 2 * distanceFromCenter;
             }
 
-        } else if (c >= 97 && c <= 122) { // 소문자라면
-            distanceFromCenter = Math.abs(codifiedCharacter - 109.5);
+        } else if (c >= 'a' && c <= 'z') { // 소문자라면
+            distanceFromCenter = Math.abs(codifiedCharacter - CENTEROFLOWERCASE);
 
-            if(c < 109.5){
+            if(c < CENTEROFLOWERCASE){
                 codifiedCharacter += 2 * distanceFromCenter;
             } else {
                 codifiedCharacter -= 2 * distanceFromCenter;
