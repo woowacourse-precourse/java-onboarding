@@ -9,7 +9,7 @@ public class Problem5 {
     public static List<Integer> solution(int money) {
         List<Integer> answer = new ArrayList<>();
 
-        if (checkInput(money)) {
+        if (isError(money)) {
             answer.add(-1);
             return answer;
         }
@@ -17,7 +17,7 @@ public class Problem5 {
         return changeUnit(money, answer);
     }
 
-    public static boolean checkInput(int money) {
+    public static boolean isError(int money) {
         return money < 1 || money > 1_000_001;
     }
 
