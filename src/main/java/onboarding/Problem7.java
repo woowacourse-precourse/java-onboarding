@@ -41,4 +41,18 @@ public class Problem7 {
         }
         return result;
     }
+
+    private static void setFriendsScore(String user, Map<String, Set<String>> friendsMap , Map<String , Integer> recommendScoreMap){
+        friendsMap.get(user).forEach(friend -> {
+            friendsMap.get(friend).forEach(friendsfriend -> {
+                addScore(friendsfriend, 10, recommendScoreMap);
+            });
+        });
+    }
+
+    private static void setVisitorScore(List<String > visitors, Map<String, Integer> recommendScoreMap){
+        visitors.forEach(visitor -> {
+            addScore(visitor, 1, recommendScoreMap);
+        });
+    }
 }
