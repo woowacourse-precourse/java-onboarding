@@ -71,11 +71,16 @@ public class Problem7 {
         }
         return false;
     }
-    private static boolean checkFriend(String target,List<String> userFriendList,List<List<String>> friends){
+
+    /**
+     * user와 함께 아는 친구 수를 구하는 함수
+     */
+    private static int checkFriend(String target,List<String> userFriendList,List<List<String>> friends){
+        int count = 0;
         for (String userFriend : userFriendList) {
-            if(isFriend(target,userFriend,friends)) return true;
+            if(isFriend(target,userFriend,friends)) count++;
         }
-        return false;
+        return count;
     }
 
     /**
@@ -83,9 +88,7 @@ public class Problem7 {
      */
     private static Map<String,Integer> addTenPoint(Map<String,Integer> friendsMap,List<String> userFriendList,List<List<String>> friends){
         for (String target : friendsMap.keySet()) {
-            if(checkFriend(target,userFriendList,friends)){
-                friendsMap.replace(target,friendsMap.get(target)+10);
-            }
+            friendsMap.replace(target,checkFriend(target,userFriendList,friends)*10);
         }
         return friendsMap;
     }
