@@ -2,6 +2,10 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
+        return decrypt(cryptogram);
+    }
+
+    private static String decrypt(String cryptogram) {
         String decrypted = cryptogram;
 
         do {
