@@ -12,7 +12,22 @@ public class Problem7 {
 
         addAcquaintanceInMap(user, friends, friendsOfUser, scoreMap);
 
+        addVisitor(visitors, friendsOfUser, scoreMap);
+
         return answer;
+    }
+
+    private static void addVisitor(List<String> visitors, List<String> friendsOfUser, Map<String, Integer> scoreMap) {
+        for (String visitor: visitors) {
+            if (!friendsOfUser.contains(visitor)) {
+                if (!scoreMap.containsKey(visitor)) {
+                    scoreMap.put(visitor, 1);
+                } else {
+                    int score = scoreMap.get(visitor) + 1;
+                    scoreMap.put(visitor, score);
+                }
+            }
+        }
     }
 
     private static void addAcquaintanceInMap(String user, List<List<String>> friends, List<String> friendsOfUser, Map<String, Integer> scoreMap) {
