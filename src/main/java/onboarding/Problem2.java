@@ -1,11 +1,12 @@
 package onboarding;
 
 import java.util.Stack;
+import java.util.stream.Collectors;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "";
-        return answer;
+        Stack<Character> cryptogramStack = deleteDuplicate(cryptogram);
+        return stackToString(cryptogramStack);
     }
     public static Stack<Character> deleteDuplicate(String cryptogram){
         Stack<Character> cryptogramStack = new Stack<>();
@@ -19,5 +20,10 @@ public class Problem2 {
             }
         }
         return cryptogramStack;
+    }
+    public static String stackToString(Stack<Character> cryptogramStack){
+        return cryptogramStack.stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining());
     }
 }
