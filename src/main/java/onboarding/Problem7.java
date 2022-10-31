@@ -68,7 +68,7 @@ public class Problem7 {
         //List<String> answer = Collections.emptyList();
 
         List<String> friendList = findMyFriend(user, friends);
-        Map<String, Integer> recommendList = new HashMap<>();
+        Map<String, Integer> recommendList = new TreeMap<>();
         cntCloseFriend(user, recommendList, friendList, friends);
         cntWatchTimeline(recommendList, friendList, visitors);
         //System.out.println(recommendList);
