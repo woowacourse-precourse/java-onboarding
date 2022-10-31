@@ -23,7 +23,12 @@ public class GameUtil {
     }
 
     public static boolean canGetPoint(int digit) {
-        return digit == 3 || digit == 6 || digit == 9;
+        for (Target target : Target.values()) {
+            if (digit == target.getValue()) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public int getScore() {
