@@ -35,14 +35,14 @@
 모든 user를 List로 반환하는 함수
 
 
-- 모든 친구 관계 List\<List\<String\>\> 타입 friends와 문자열 nickname을 파라미터로 입력 받아,  
-nickname을 List\<String\>의 요소로 가지는 List를 식별하여 nickname을 가진 사람의 친구를 모두 찾아 List\<String\> 타입으로 반환하는 함수
+- 모든 친구 관계 List\<List\<String\>\> 타입 friends와 String 타입 user의 아이디를 파라미터로 입력 받아,  
+해당 아이디를 List\<String\>의 요소로 가지는 List를 식별하여 해당 user의 친구를 모두 찾아 List\<String\> 타입으로 반환하는 함수
 
 
-- 추천 점수 값을 저장하는 int형 변수, 추천 친구의 닉네임을 저장하는 String 타입 문자열을 멤버 변수로 갖는 추천친구 내부 클래스
+- 추천 점수 값을 저장하는 int형 변수, 추천 친구의 아이디를 저장하는 String 타입 문자열을 멤버 변수로 갖는 추천친구 내부 클래스
 
 
-- 추천받을 사람의 닉네임을 저장하는 문자열과, 해당 닉네임을 가진 사람의 추천 친구 목록 List, 그리고 모든 친구관계 List\<List\<String\>\> 타입 friends를  
+- 추천받을 사람의 아이디를 저장하는 문자열과, 해당 아이디를 가진 사람의 추천 친구 목록 List, 그리고 모든 친구관계 List\<List\<String\>\> 타입 friends를  
 파라미터로 입력 받아 자신의 친구도 아는 사람인지 식별하여 추천점수를 10점씩 추가하는 함수
 
 

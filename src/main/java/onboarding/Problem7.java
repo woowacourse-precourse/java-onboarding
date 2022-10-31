@@ -25,7 +25,7 @@ public class Problem7 {
 
         List<String> result = new ArrayList<>();
         for (int i = 0; i < Math.min(recommendFriends.size(), 5); i++) {
-            result.add(recommendFriends.get(i).getName());
+            result.add(recommendFriends.get(i).getId());
         }
 
         return result;
@@ -64,7 +64,7 @@ public class Problem7 {
         for (RecommendFriend rf : recommendFriends) {
             for (String friend : friendsOfUser) { //friendsOfUser => [donut, shakevan]
                 List<String> friendsOfFriend = findFriends(friends, friend);
-                if (friendsOfFriend.contains(rf.getName())) {
+                if (friendsOfFriend.contains(rf.getId())) {
                     rf.addRecommendScore(10);
                 }
             }
@@ -81,17 +81,17 @@ public class Problem7 {
     }
 
     static class RecommendFriend implements Comparable<RecommendFriend> {
-        private String name;
+        private String id;
         private int recommendScore;
 
         /*
-        public RecommendFriend(String name) {
-            this(name, 0);
+        public RecommendFriend(String id) {
+            this(id, 0);
         }
         */
 
-        public RecommendFriend(String name, int recommendScore) {
-            this.name = name;
+        public RecommendFriend(String id, int recommendScore) {
+            this.id = id;
             this.recommendScore = recommendScore;
         }
 
@@ -105,8 +105,8 @@ public class Problem7 {
             this.recommendScore += score;
         }
 
-        public String getName() {
-            return this.name;
+        public String getId() {
+            return this.id;
         }
 
         /*
@@ -122,7 +122,7 @@ public class Problem7 {
             } else if (this.recommendScore > o.recommendScore) {
                 return -1;
             } else {
-                return this.getName().compareTo(o.getName());
+                return this.getId().compareTo(o.getId());
             }
         }
 
