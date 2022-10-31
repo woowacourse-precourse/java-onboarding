@@ -21,3 +21,21 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+---
+
+## 기능 목록
+
+- [x] 현재 문자열에서 연속적으로 중복한 문자가 있는지 확인합니다.
+- [x] 연속적으로 중복한 문자가 있다면 삭제합니다.
+    - [x] 중복한 문자를 삭제 한 후 만들어지는 새로 만들어지는 문자열을 현재 문자열로 지정합니다.
+- [x] 위 과정을 연속하여 중복한 문자가 없을때까지 반복합니다.
+- [x] 연속적으로 중복한 문자가 없다면 현재 문자열을 return합니다.
+
+### 필요한 메서드
+
+- [x] isDeletable(String s) 메서드를 통해 문자열 s에서 연속하여 중복한 문자가 있다면 true를 return하고, 그렇지 않다면 false를 리턴합니다.
+    - [x] isDeletable 메서드는 현재 문자열 길이만큼의 크기의 boolean 타입의 배열 isConsecutive[s.length()]을 선언하여 확인합니다.
+- [x] isDeletable 메서드에서 true를 return 했다면 deleteConsecutive(String s) 메서드에서 연속하여 중복되는 문자열을 삭제합니다.
+    - [x] isConsecutive 배열에서 true로 체크된 문자는 무시하고 나머지 문자열로 만들어진 새로운 문자열을 return합니다.
+
