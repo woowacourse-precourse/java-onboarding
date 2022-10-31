@@ -32,10 +32,10 @@ class Problem1 {
     private static int getMaxScore(List<Integer> pages) {
         int rightPage = pages.get(1);
         int leftPage = pages.get(0);
-        return Math.max(getScore(leftPage), getScore(rightPage));
+        return Math.max(getPageScore(leftPage), getPageScore(rightPage));
     }
 
-    private static int getScore(int page){
+    private static int getPageScore(int page){
         int sum = 0;
         int temp = page;
         int pageSize = (int) Math.log10(page) + 1;
