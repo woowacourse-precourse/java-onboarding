@@ -13,7 +13,7 @@ public class Problem7 {
         createScoreMap(user);
         addVisitorsScore(visitors);
         scoreMap.put(user,0);
-        Map<String,Integer> filterFriendsMap = filteringFriends(friendsMap.getOrDefault(user,new TreeSet<>()));
+        Map<String,Integer> filterFriendsMap = filteringFriends(getOrDefaultSet(friendsMap,user));
 
         List<String> answer = new ArrayList<>(filterFriendsMap.keySet());
         answer.sort((f1, f2) ->{
@@ -29,7 +29,7 @@ public class Problem7 {
     public static HashMap<String, Set<String>> createFriendsList(List<List<String>> friends){
         HashMap<String, Set<String>> map = new HashMap<>();
         for(List<String> friend : friends){
-            Set<String> set = map.getOrDefault(friend.get(0),new TreeSet<>());
+            Set<String> set = getOrDefaultSet(map,friend.get(0));
             set.add(friend.get(1));
             map.put(friend.get(0),set);
             set = map.getOrDefault(friend.get(1),new TreeSet<>());
