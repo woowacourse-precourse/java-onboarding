@@ -1,5 +1,7 @@
 package onboarding.pagenumbergame;
 
+import static onboarding.pagenumbergame.GameResult.*;
+
 import java.util.List;
 import java.util.function.IntBinaryOperator;
 
@@ -36,15 +38,17 @@ public class Page {
 
 	public int compare(final Page other) {
 		if (isInvalidPage() || other.isInvalidPage()) {
-			return -1;
+			return EXCEPTION.getStatus();
 		}
 		int page1Score = getMaximumScore();
 		int page2Score = other.getMaximumScore();
 
 		if (page1Score == page2Score) {
-			return 0;
+			return DRAW.getStatus();
 		}
-		return page1Score > page2Score ? 1 : 2;
+		return page1Score > page2Score
+			? WIN.getStatus()
+			: LOSE.getStatus();
 	}
 
 	private boolean isInvalidPage() {
