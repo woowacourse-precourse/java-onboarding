@@ -68,7 +68,8 @@ public class Problem7 {
         Collections.sort(entryList, new Comparator<Entry<String, Integer>>() {
             @Override
             public int compare(Entry<String, Integer> o1, Entry<String, Integer> o2) {
-                return o2.getValue() - o1.getValue();
+                if(o1.getValue() == o2.getValue()) return o1.getKey().compareTo(o2.getKey());
+                return o2.getValue().compareTo(o1.getValue());
             }
         });
         return entryList;
@@ -80,6 +81,9 @@ public class Problem7 {
                 .limit(3).collect(Collectors.toList());
     }
 
+    public static List<String> getTopThreeFriends(){
+        List<Entry<String, Integer>> topThreeScoreEntry = getTopThreeScoreEntry();
 
+    }
 }
 
