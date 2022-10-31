@@ -47,7 +47,6 @@ public class Problem7 {
 
         // 각 유저 맵에 디폴트 value 0과 저장
         users.forEach(key -> {
-            System.out.println(key);
             points.put(key, 0);
         });
 
