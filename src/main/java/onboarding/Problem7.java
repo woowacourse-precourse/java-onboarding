@@ -41,10 +41,14 @@ class User implements Comparable<User>{
         return !this.friends.contains(user);
     }
 
+    public void addNameToList(List<String> nameList){
+        nameList.add(this.name);
+    }
+
     @Override
     public int compareTo(User otherUser){ //if thisFriend > otherFriend return 1
         if(otherUser.isScoreEqual(this.score)){
-            return otherUser.compareName(this.name);
+            return otherUser.compareName(this.name) * -1;
         }
         if(otherUser.isScoreLarger(this.score)){
             return -1;
@@ -63,12 +67,11 @@ class User implements Comparable<User>{
     public int compareName(String otherName){
         return otherName.compareTo(this.name);
     }
-
-
 }
 public class Problem7 {
     public static final int VISIT_SCORE = 1;
     public static final int MUTUAL_FRIEND_SCORE = 10;
+    public static final int MAX_ANSWER_LIST_SIZE = 5;
     public static final HashMap<String, User> USER_MAP = new HashMap<>();
 
     public static void processFriendsList(List<List<String>> friends){
@@ -112,12 +115,6 @@ public class Problem7 {
         }
     }
 
-    public static void addNotFriendUserToList(List<User> userList, User targetUser, User newUser){
-        if(targetUser != newUser && targetUser.isNotFriendWith(newUser)){
-            userList.add(newUser);
-        }
-    }
-
     public static List<User> getListOfUsersNotFriendWithTarget(String targetUserName){
         List<User> userList = new LinkedList<>();
         User targetUser = getUserFromName(targetUserName);
@@ -125,6 +122,12 @@ public class Problem7 {
             addNotFriendUserToList(userList, targetUser, user);
         }
         return userList;
+    }
+
+    public static void addNotFriendUserToList(List<User> userList, User targetUser, User newUser){
+        if(targetUser != newUser && targetUser.isNotFriendWith(newUser)){
+            userList.add(newUser);
+        }
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
