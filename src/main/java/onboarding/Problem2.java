@@ -13,11 +13,13 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         Stack<Character> st = new Stack<>();
         for (int i  = 0; i < cryptogram.length(); ++i) {
-            if (!st.empty() && st.peek() == cryptogram.charAt(i)) {
-                st.pop();
+            if (st.empty() || !st.empty() && st.peek() != cryptogram.charAt(i)) {
+                st.add(cryptogram.charAt(i));
                 continue;
             }
-            st.add(cryptogram.charAt(i));
+            while (!st.empty() && st.peek() == cryptogram.charAt(i)) {
+                st.pop();
+            }
         }
         return st.stream()
             .map(String::valueOf)
