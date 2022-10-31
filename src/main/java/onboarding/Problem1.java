@@ -12,16 +12,36 @@ class Problem1 {
     static final int ERROR = -1;
     static final int MAX_PAGE = 400;
     static final int MIN_PAGE = 1;
+    static final String LEFT_PAGE_TOO_SMALL = "왼쪽 페이지가 최소값인 1보다 작습니다.";
+    static final String LEFT_PAGE_TOO_BIG = "왼쪽 페이지가 최대값인 400보다 큽니다.";
+    static final String RIGHT_PAGE_TOO_SMALL = "오른쪽 페이지가 최소값인 1보다 작습니다.";
+    static final String RIGHT_PAGE_TOO_BIG = "오른쪽 페이지가 최대값인 400보다 큽니다.";
+
+
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if(isNotValidPage(pobi) || isNotValidPage(crong)) return ERROR;
         return getResult(getScore(pobi), getScore(crong));
     }
     private static boolean isNotValidPage(List<Integer> person){
-        if(person.get(LEFT_PAGE) > MAX_PAGE || person.get(LEFT_PAGE) < MIN_PAGE) return true;
-        if(person.get(RIGHT_PAGE) > MAX_PAGE || person.get(RIGHT_PAGE) < MIN_PAGE) return true;
+        checkExceptionOnPerson(person);
         if(person.get(RIGHT_PAGE) - person.get(LEFT_PAGE) != PAGE_GAP) return true;
         return false;
+    }
+
+    private static void checkExceptionOnPerson(List<Integer> person){
+        checkExceptionOnLeftPage(person);
+        checkExceptionOnRightPage(person);
+    }
+
+    private static void checkExceptionOnLeftPage(List<Integer> person){
+        if(person.get(LEFT_PAGE) > MAX_PAGE) throw new IllegalArgumentException(LEFT_PAGE_TOO_BIG);
+        if(person.get(LEFT_PAGE) < MIN_PAGE) throw new IllegalArgumentException(LEFT_PAGE_TOO_SMALL);
+    }
+
+    private static void checkExceptionOnRightPage(List<Integer> person){
+        if(person.get(RIGHT_PAGE) > MAX_PAGE) throw new IllegalArgumentException(RIGHT_PAGE_TOO_BIG);
+        if(person.get(RIGHT_PAGE) < MIN_PAGE) throw new IllegalArgumentException(RIGHT_PAGE_TOO_SMALL);
     }
 
     private static int getResult(int pobis, int crongs){
