@@ -50,9 +50,7 @@ public class Problem2 {
 
     private static String getCharDequeToString(Deque<Character> charDeque) {
         StringBuilder sb = new StringBuilder();
-        for (char dequeueElement : charDeque) {
-            sb.append(dequeueElement);
-        }
+        charDeque.forEach(sb::append);
         return sb.toString();
     }
 
