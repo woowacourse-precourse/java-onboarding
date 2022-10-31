@@ -1,7 +1,9 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 /*
 * 기능 목록
@@ -11,6 +13,22 @@ import java.util.List;
 * 4. 점수가 높은 5명 구하기
 * */
 public class Problem7 {
+
+    public static Map<String, List<String>> friendMap;
+
+    public static void addFriend(String friend1, String friend2) {
+        if (friendMap.containsKey(friend1)) {
+            friendMap.get(friend1).add(friend2);
+        } else {
+            friendMap.put(friend1, new ArrayList<>(List.of(friend2)));
+        }
+        if (friendMap.containsKey(friend2)) {
+            friendMap.get(friend2).add(friend1);
+        } else {
+            friendMap.put(friend2, new ArrayList<>(List.of(friend1)));
+        }
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
