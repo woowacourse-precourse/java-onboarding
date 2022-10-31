@@ -7,8 +7,13 @@ public class Problem7 {
     private final static int MAX_RECOMMEND_FRIENDS = 5;
 
     private static Map<String, Integer> preFriends;
+    private static List<String> realFriends;
+
+    private static String me;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        initialize();
+
         List<String> answer = Collections.emptyList();
 
         return answer;
@@ -144,9 +149,43 @@ public class Problem7 {
     }
 
     /**
+     * 본인 데이터 가져오기
+     * @return 본인 데이터
+     */
+    private static String getMe() {
+        return me;
+    }
+
+    /**
+     * 친구 목록에 유저 정보 추가
+     * @param user 유저 정보
+     */
+    private static void addRealFriend(String user) {
+        realFriends.add(user);
+    }
+
+    /**
+     * 친구 정보 가져오기
+     * @return 친구 정보
+     */
+    private static List<String> getRealFriend() {
+        return realFriends;
+    }
+
+    /**
+     * 본인 데이터 설정
+     * @param user 유저 정보
+     */
+    private static void setMe(String user) {
+        me = user;
+    }
+
+    /**
      * 초기화
      */
     private static void initialize() {
         preFriends = new HashMap<>();
+        realFriends = new ArrayList<>();
+        me = "";
     }
 }
