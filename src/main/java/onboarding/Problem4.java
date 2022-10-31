@@ -10,4 +10,8 @@ public class Problem4 {
         return (char)(c - 32);
     }
 
+    public static char changeLowerCase(char c){
+        return (char)(c + 32);
+    }
+
 }
