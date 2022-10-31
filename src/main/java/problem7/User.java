@@ -4,6 +4,7 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class User {
+    public static final int RECOMMENDATION_LIMIT = 5;
     private final String name;
     private final Map<String, Integer> recommendationScores = new HashMap<>();
 
@@ -24,7 +25,19 @@ public class User {
 
     public List<String> getMostRecommendedAsFriend(List<String> visitors) {
         calculateRecommendationScoreWith(visitors);
-        return calculateRecommendationScoreWithCommonFriends();
+        calculateRecommendationScoreWithCommonFriends();
+        return getMostRecommended();
+    }
+
+    private List<String> getMostRecommended() {
+        List<Map.Entry<String, Integer>> list = sortRecommendationScores();
+
+        System.out.println(list);
+
+        return list.stream()
+                .map(e -> e.getKey())
+                .limit(RECOMMENDATION_LIMIT)
+                .collect(Collectors.toList());
     }
 
     private void calculateRecommendationScoreWith(List<String> visitors) {
@@ -34,7 +47,7 @@ public class User {
                         recommendationScores.put(stranger, recommendationScores.get(stranger) + 1));
     }
 
-    public List<String> calculateRecommendationScoreWithCommonFriends() {
+    public void calculateRecommendationScoreWithCommonFriends() {
         var friends = FriendConnectionRepository.getFriends(name);
 
         if (friends.size() == 0) {
@@ -61,17 +74,10 @@ public class User {
         // map을 entryset으로 변환한다.
         // 그걸 list로 변환한다.
         // list를 정렬한다.
-        List<Map.Entry<String, Integer>> list = sortEntries();
 
-        System.out.println(list);
-
-        return list.stream()
-                .map(e -> e.getKey())
-                .limit(5)
-                .collect(Collectors.toList());
     }
 
-    private List<Map.Entry<String, Integer>> sortEntries() {
+    private List<Map.Entry<String, Integer>> sortRecommendationScores() {
         List<Map.Entry<String, Integer>> list = new ArrayList<>(recommendationScores.entrySet());
         Collections.sort(list, (e1, e2) -> {
             if (e2.getValue() != e1.getValue()) return e2.getValue() - e1.getValue();
