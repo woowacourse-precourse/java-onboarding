@@ -3,10 +3,14 @@ package onboarding;
 import java.util.*;
 
 public class Problem2 {
+
     public static String solution(String cryptogram) {
-        String answer = replaceMethod(cryptogram);
-        System.out.println(cryptogram);
-        return answer;
+        String resultString = cryptogram;
+        while (isThereMatch(resultString) == true) {
+            return resultString = replaceMethod(resultString);
+        }
+        System.out.println(resultString);
+        return resultString;
     }
 
     private static Boolean isThereMatch(String cryptogram) {
