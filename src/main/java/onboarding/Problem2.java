@@ -13,6 +13,7 @@ public class Problem2 {
     }
 
     public boolean compareTwoGrams(String cryptogram, String decryptgram){
+        if(cryptogram.equals(decryptgram)) return false;
         return true;
     }
 

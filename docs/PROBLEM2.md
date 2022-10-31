@@ -35,8 +35,8 @@
   - ✅ countDuplication 메소드를 사용하여 Stack에 문자들을 삽입하면서 중복 여부 및 중복 문자의 개수 확인 및 제거
   - ✅ 남은 문자들을 문자열로 만들어 반환
 
-- ⬜ compareTwoGrams 메소드 구현
-  - ⬜ 두 개의 문자열이 동일한 문자열인지 확인하여 참/거짓 값을 반환 
+- ✅ compareTwoGrams 메소드 구현
+  - ✅ 두 개의 문자열이 동일한 문자열인지 확인하여 참/거짓 값을 반환 
 
 - ⬜ countDuplication 메소드 구현
   - ⬜ 문자를 하나씩 Stack에 삽입
