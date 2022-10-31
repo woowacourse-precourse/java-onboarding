@@ -5,15 +5,20 @@ public class Problem3 {
         int sum = 0;
         for (int i = 1; i <= number; i++) {
             String numberString = Integer.toString(i);
-            for (int j = 0; j < numberString.length(); j++) {
-                char check = numberString.charAt(j);
-                if(isNumber_369(check)){
-                    sum++;
-                }
+            sum += checkString(numberString);
+        }
+        return sum;
+    }
+
+    public static int checkString(String numberString) {
+        int sum = 0;
+        for (int i = 0; i < numberString.length(); i++) {
+            char check = numberString.charAt(i);
+            if (isNumber_369(check)) {
+                sum++;
             }
         }
-        int answer = sum;
-        return answer;
+        return sum;
     }
 
     public static boolean isNumber_369(char check) {
