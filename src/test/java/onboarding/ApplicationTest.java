@@ -4,7 +4,9 @@ import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import problem7.FriendConnectionRepository;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -401,11 +403,11 @@ class ApplicationTest {
                     List.of("shakevan", "mrko")
             );
             FriendConnectionRepository.create(friends);
-            List<String> donutFriends = FriendConnectionRepository.getFriends("donut");
-            List<String> mrkoFriends = FriendConnectionRepository.getFriends("mrko");
+            Set<String> donutFriends = FriendConnectionRepository.getFriends("donut");
+            Set<String> mrkoFriends = FriendConnectionRepository.getFriends("mrko");
 
-            assertThat(donutFriends).isEqualTo(List.of("andole", "jun", "mrko"));
-            assertThat(mrkoFriends).isEqualTo(List.of("donut", "shakevan"));
+            assertThat(donutFriends).isEqualTo(new HashSet<>(List.of("andole", "jun", "mrko")));
+            assertThat(mrkoFriends).isEqualTo(new HashSet<>(List.of("donut", "shakevan")));
 
         }
 
