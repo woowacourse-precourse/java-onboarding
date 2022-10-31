@@ -26,6 +26,12 @@ class StringOperation {
     boolean isRedundant(int startPosition, int endPosition) {
         return startPosition != endPosition;
     }
+    void addRedundantIndex(List<Integer> redundantIndex, List<List<Integer>> redundantIndexes){
+
+        if(isRedundant(redundantIndex.get(0), redundantIndex.get(1))){
+            redundantIndexes.add(redundantIndex);
+        }
+    }
     boolean existsRedundantAlphabet(int numberOfRedundant){
         return numberOfRedundant!=0;
     }
