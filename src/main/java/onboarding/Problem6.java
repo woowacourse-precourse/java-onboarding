@@ -51,6 +51,10 @@ public class Problem6 {
         return duplicatedIndex.stream().distinct().collect(Collectors.toList());
     }
 
-
+    public static List<String> getAnswerList(List<Integer> indexList){
+        List<String> answer = new ArrayList<>();
+        indexList.stream().forEach(i->answer.add(userMap.get(i)));
+        return answer;
+    }
 
 }
