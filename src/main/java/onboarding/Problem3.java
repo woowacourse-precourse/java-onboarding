@@ -2,6 +2,10 @@ package onboarding;
 
 public class Problem3 {
     public static int solution(int number) {
+        return count369(number);
+    }
+
+    private static int count369(int number) {
         int answer = 0;
         int totalDigit = 0;
         for(int i = 1; i < number; i *= 10) {
