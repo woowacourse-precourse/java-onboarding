@@ -9,6 +9,23 @@ public class ReverseWord {
         this.word = word;
     }
 
+    private char getReverseCharacter(int index) {
+        if(isOtherCase(index)) {
+            return word.charAt(index);
+        }
+        if(isLowerCase(index)) {
+            return reverseCharacter(lowerAlphabet, index);
+        }
+        return reverseCharacter(upperAlphabet, index);
+    }
+
+    private char reverseCharacter(String alphabet, int index) {
+        int originalIndex = alphabet.indexOf(word.charAt(index));
+        int reverseIndex = alphabet.length() - (1 + originalIndex);
+
+        return alphabet.charAt(reverseIndex);
+    }
+
     private boolean isOtherCase(int index) {
         return !(isLowerCase(index) || isUpperCase(index));
     }
