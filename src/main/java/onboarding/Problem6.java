@@ -14,6 +14,14 @@ public class Problem6 {
             userEmail.add(getEmail(currentForm));
             userNickname.add(getNickname(currentForm));
         }
+
+        for (int i = 0; i < userEmail.size(); i++) {
+            String currentEmail = userEmail.get(i);
+            if (!isValidEmail(currentEmail)){
+                answer = List.of("wrong email");
+                return answer;
+            }
+        }
 //        if (isValidEmail(forms.get(0).get(0))){
 //            List<String> answer = List.of("correct");
 //            return answer;
@@ -44,7 +52,6 @@ public class Problem6 {
 
     private static Boolean isDomainEmail(String emailDomain){
         String domain = "email.com";
-        System.out.println(domain + " : " + emailDomain);
         return emailDomain.equals(domain);
     }
 
@@ -55,5 +62,6 @@ public class Problem6 {
     private static String getNickname(List<String> form){
         return form.get(1);
     }
+
 
 }
