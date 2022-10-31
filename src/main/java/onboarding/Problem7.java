@@ -7,6 +7,7 @@ public class Problem7 {
     static final int VISITOR_POINT = 1;
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         HashMap<String, People> contacts = new HashMap<>();
+        contacts.put(user, new People(user));
         for (List<String> friend : friends) { // 친구 목록 만들기
             String nameA = friend.get(0);
             String nameB = friend.get(1);
