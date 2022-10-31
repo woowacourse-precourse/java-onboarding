@@ -2,7 +2,24 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+
+        char[] eachWord = word.toCharArray();
+
+        StringBuilder answer = new StringBuilder();
+        for(int i=0; i < word.length(); i++) {
+            int ascii = eachWord[i];
+            if(ascii >= 97 && ascii <= 122) answer.append(reverseLower(ascii));
+            else if(ascii >= 65 && ascii <= 90) answer.append(reverseUpper(ascii));
+            else answer.append(' ');
+        }
+        return answer.toString();
+    }
+
+    private static char reverseUpper(int upperWord) {
+        return (char)(90 + (65 - upperWord));
+    }
+
+    private static char reverseLower(int lowerWord) {
+        return (char)(122 + (97 - lowerWord));
     }
 }
