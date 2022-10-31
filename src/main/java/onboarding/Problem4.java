@@ -8,8 +8,18 @@ public class Problem4 {
     private static final String LOWER = "abcdefghijklmnopqrstuvwxyz";
 
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        if (checkWordLength(word)) {
+            return word;
+        }
+
+        StringBuilder result = new StringBuilder();
+
+        for (char c : word.toCharArray()) {
+            result.append(reversalWord(c));
+        }
+        return result.toString();
+    }
+
     private static boolean checkWordLength(String word) {
         return !(word.length() >= WORD_MIN_LANGE && word.length() <= WORD_MAX_LANGE);
     }
