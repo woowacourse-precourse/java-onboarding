@@ -5,11 +5,11 @@ import java.util.List;
 public class Score {
 
     private static final int VALID_LENGTH = 2;
-    public static final int VALID_DIFFERENCE = 1;
-    public static final int VALID_MIN_RANGE = 3;
-    public static final int VALID_MAX_RANGE = 398;
-    public static final int LEFT_PAGE_INDEX = 0;
-    public static final int RIGHT_PAGE_INDEX = 1;
+    private static final int VALID_DIFFERENCE = 1;
+    private static final int VALID_MIN_RANGE = 3;
+    private static final int VALID_MAX_RANGE = 398;
+    private static final int LEFT_PAGE_INDEX = 0;
+    private static final int RIGHT_PAGE_INDEX = 1;
     private final int leftPage;
     private final int rightPage;
 
