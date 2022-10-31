@@ -45,7 +45,13 @@ public class Problem7 {
             friendsMap.put(key,values);
         }
     }
-
+    public static void plusAcquaintanceScore(String user){
+        List<String> userFriends = friendsMap.get(user);
+        for (String userFriend : userFriends) {
+            List<String> acquaintanceList = getAcquaintanceList(user, userFriend);
+            acquaintanceList.stream().forEach(ac -> putScoreMap(ac, 10));
+        }
+    }
 
     public static List<String> getAcquaintanceList(String user, String userFriend){
         return friendsMap.get(userFriend).stream().
