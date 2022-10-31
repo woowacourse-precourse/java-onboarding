@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.List;
-import java.util.stream.Stream;
 
 class Problem1 {
 
@@ -13,8 +12,6 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
-        int answer = Integer.MAX_VALUE;
-
         Page pobiPage = new Page(pobi);
         Page crongPage = new Page(crong);
 
@@ -25,7 +22,7 @@ class Problem1 {
         int pobiScore = getScore(pobiPage);
         int crongScore = getScore(crongPage);
 
-        return answer;
+        return getMaxResult(pobiScore, crongScore);
     }
 
     private static boolean isValidate(Page page) {
@@ -101,6 +98,16 @@ class Problem1 {
             page /= 10;
         }
         return result;
+    }
+
+    private static int getMaxResult(int score1, int score2) {
+        if (score1 > score2) {
+            return POBI_WIN;
+        } else if (score1 < score2) {
+            return CRONG_WIN;
+        }
+
+        return DRAW;
     }
 }
 
