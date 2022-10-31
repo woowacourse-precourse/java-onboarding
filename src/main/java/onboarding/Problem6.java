@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     public static final int EMAIL = 0;
@@ -16,7 +17,9 @@ public class Problem6 {
         keywords = new HashSet<>();
 
         findRepeatedWords(crews.keySet());
-
+        findSimilar(crews.keySet());
+        trim();
+        
         return answer;
     }
 
@@ -43,4 +46,24 @@ public class Problem6 {
                 keywords.add(word);
         });
     }
+
+    public static void findSimilar(Set<String> nicknames) {
+        for(String nickname : nicknames) {
+            for(String keyword : keywords) {
+                if(nickname.contains(keyword)){
+                    saveEmail(nickname);
+                    break;
+                }
+            }
+        }
+    }
+
+    public static void saveEmail(String nickname) {
+        answer.add(crews.get(nickname));
+    }
+
+    public static void trim() {
+        answer = answer.stream().distinct().sorted().collect(Collectors.toList());
+    }
+
 }
