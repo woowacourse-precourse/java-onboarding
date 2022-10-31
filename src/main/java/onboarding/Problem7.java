@@ -70,6 +70,42 @@ public class Problem7 {
         return true;
     }
 
+    public static void makeFriendScore(String user, List<String> userFriendList, Map<String, Integer> friendScoreBoard ,List<List<String>> friends) {
+        for(int i=0 ; i<friends.size() ; i++) {
+            String userA = friends.get(i).get(0);
+            String userB = friends.get(i).get(1);
+
+            if(userFriendList.contains(userA)) {
+                if(userB == user) break;
+
+                if(!userFriendList.contains(userB)) {
+                    if(!friendScoreBoard.containsKey(userB)) {
+                        friendScoreBoard.put(userB, 10);
+                    }
+
+                    if(friendScoreBoard.containsKey(userB)) {
+                        friendScoreBoard.put(userB, friendScoreBoard.get(userB) + 10);
+                    }
+                }
+            }
+
+            if(userFriendList.contains(userB)) {
+                if(userA == user) break;
+
+                if(!userFriendList.contains(userA)) {
+                    if(!friendScoreBoard.containsKey(userA)) {
+                        friendScoreBoard.put(userA, 10);
+                    }
+
+                    if(friendScoreBoard.containsKey(userA)) {
+                        friendScoreBoard.put(userA, friendScoreBoard.get(userA) + 10);
+                    }
+                }
+            }
+        }
+    }
+
+
 
 
 
