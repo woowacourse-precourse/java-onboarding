@@ -62,11 +62,12 @@ public class Problem6 {
     // 2. 이메일 중복을 체크하는 함수 만들기.
     public static  List<String> checkMultiEmail(List<List<String>> list){
         List<String> result_list = new ArrayList<>();
-        int k = 0;
         for(List<String> li : list){
             String email = li.get(0);
             String email_first = email.substring(0, email.indexOf("@"));
-
+            if(!isDuplicate(email_first)){
+                result_list.add(email);
+            }
         }
 
         return result_list;
