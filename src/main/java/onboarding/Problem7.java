@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -11,6 +8,10 @@ public class Problem7 {
         Set<String> friendsWithUser = new HashSet<>();
 
         friendsWithUser = checkUserFriends(user, friends, friendsWithUser);
+
+        Map<String, Integer> score = new HashMap<>();
+
+        score = makeFriendsList(user, friends, score, visitors, friendsWithUser);
         return answer;
     }
 
@@ -25,5 +26,28 @@ public class Problem7 {
             }
         }
         return friendsWithUser;
+    }
+
+    public static Map<String, Integer> makeFriendsList(String user, List<List<String>> friends, Map<String, Integer> score, List<String> visitors, Set<String> friendsWithUser) {
+        for (int i = 0; i < friends.size(); i++) {
+            if (!score.containsKey(friends.get(i).get(0))) {
+                if (!friends.get(i).get(0).equals(user) && !friendsWithUser.contains(friends.get(i).get(0))) {
+                    score.put(friends.get(i).get(0), 0);
+                }
+            }
+            if (!score.containsKey(friends.get(i).get(1))) {
+                if (!friends.get(i).get(1).equals(user) && !friendsWithUser.contains(friends.get(i).get(1))) {
+                    score.put(friends.get(i).get(1), 0);
+                }
+            }
+        }
+        for (int i = 0; i < visitors.size(); i++) {
+            if (!score.containsKey(visitors.get(i))) {
+                score.put(visitors.get(0), 0);
+            } else {
+                continue;
+            }
+        }
+        return score;
     }
 }
