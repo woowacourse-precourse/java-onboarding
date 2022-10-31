@@ -99,6 +99,14 @@ public class Problem7 {
         user2.addFriend(user1);
     }
 
+    public static void addNotFriendUserToList(List<User> userList, User targetUser, User newUser){
+        if(targetUser.isNotFriendWith(newUser)){
+            userList.add(newUser);
+        }
+    }
+
+
+
     public static void processVisitorsList(List<String> visitors){
         for(String visitorName : visitors){
             User visitor = getUserFromName(visitorName);

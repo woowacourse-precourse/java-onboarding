@@ -1,16 +1,17 @@
 ## 기능 목록
 
-| Date  | Feature                    | Method Name               | Parameter Type         | Return Type | Progress  |
-|-------|----------------------------|---------------------------|------------------------|-------------|-----------|
-| 10.31 | User 클래스 비교                | compareTo()               | User                   | int         | committed |
-| 10.31 | 새로운 User 생성                | createNewUser()           | String                 | User        | committed |
-| 10.31 | 주어진 이름의 User 반환            | getUserFromName()         | String                 | User        | committed |
-| 10.31 | 각 User에 친구 추가              | makeFriend()              | User, User             | void        | committed |
-| 10.31 | 친구 관계 리스트 처리               | processFriendsList()      | List\<List\<String\>\> | void        | committed |
-| 10.31 | User의 친구들에게 점수 추가          | addScoreToFriends()       | int                    | void        | committed |
-| 10.31 | 방문자 리스트에 포함된 User에 1점 추가   | processVisitorsList()     | <List\<String\>        | void        | committed |
-| 10.31 | User의 친구의 친구들에게 점수 추가      | addScoreToMutualFriends() | int                    | void        | committed |
-| 10.31 | User가 특정 User와 친구가 아닌지 확인 | isNotFriendWith()         | User                   | boolean     | committed |
+| Date  | Feature                      | Method Name               | Parameter Type            | Return Type | Progress  |
+|-------|------------------------------|---------------------------|---------------------------|-------------|-----------|
+| 10.31 | User 클래스 비교                  | compareTo()               | User                      | int         | committed |
+| 10.31 | 새로운 User 생성                  | createNewUser()           | String                    | User        | committed |
+| 10.31 | 주어진 이름의 User 반환              | getUserFromName()         | String                    | User        | committed |
+| 10.31 | 각 User에 친구 추가                | makeFriend()              | User, User                | void        | committed |
+| 10.31 | 친구 관계 리스트 처리                 | processFriendsList()      | List\<List\<String\>\>    | void        | committed |
+| 10.31 | User의 친구들에게 점수 추가            | addScoreToFriends()       | int                       | void        | committed |
+| 10.31 | 방문자 리스트에 포함된 User에 1점 추가     | processVisitorsList()     | <List\<String\>           | void        | committed |
+| 10.31 | User의 친구의 친구들에게 점수 추가        | addScoreToMutualFriends() | int                       | void        | committed |
+| 10.31 | User가 특정 User와 친구가 아닌지 확인    | isNotFriendWith()         | User                      | boolean     | committed |
+| 10.31 | 특정 User와 친구가 아닌 User 리스트에 추가 |  addNotFriendUserToList     | <List\<User\>, User, User | void        | committed |
 
 
 ### TODO
