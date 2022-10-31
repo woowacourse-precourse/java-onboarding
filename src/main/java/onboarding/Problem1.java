@@ -72,20 +72,29 @@ class Player implements Comparable<Player> {
         for (Integer num : pageResult) {
             String[] split = String.valueOf(num).split("");
 
-            int plus = 0;
-            for (String s : split) {
-                plus += Integer.parseInt(s);
-            }
-            max = Math.max(max, plus);
-
-            int multi = 1;
-            for (String s : split) {
-                multi *= Integer.parseInt(s);
-            }
-            max = Math.max(max, multi);
+            max = getPlusMax(max, split);
+            max = getMultiMax(max, split);
         }
 
         score = max;
+    }
+
+    private int getMultiMax(int max, String[] split) {
+        int multi = 1;
+        for (String s : split) {
+            multi *= Integer.parseInt(s);
+        }
+        max = Math.max(max, multi);
+        return max;
+    }
+
+    private int getPlusMax(int max, String[] split) {
+        int plus = 0;
+        for (String s : split) {
+            plus += Integer.parseInt(s);
+        }
+        max = Math.max(max, plus);
+        return max;
     }
 
     @Override
