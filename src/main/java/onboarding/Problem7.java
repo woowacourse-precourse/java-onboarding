@@ -20,6 +20,14 @@ public class Problem7 {
 		HashMap<String, List<String>> friendsRelations = getFriendsRelations(friends, user);
 		HashMap<String, Integer> friendOfFriendScores = getFriendOfFriendScore(friendsRelations, user);
 		HashMap<String, Integer> visitorsScore = getVisitorsScore(visitors);
+		HashMap<String, Integer> totalScores = getTotalScores(visitorsScore, friendOfFriendScores);
+	}
+
+	public static HashMap<String, Integer> getTotalScores(HashMap<String, Integer> visitorScore,
+		HashMap<String, Integer> friendOfFriendScore) {
+		visitorScore.forEach(
+			(key, value) -> friendOfFriendScore.merge(key, value, (score1, score2) -> score1 + score2));
+		return friendOfFriendScore;
 	}
 
 	public static HashMap<String, Integer> getVisitorsScore(final List<String> visitors) {
