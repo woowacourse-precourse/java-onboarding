@@ -3,7 +3,7 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.List;
 
-class StringOperation {
+class Decryption {
     boolean isSameAlphabet(char previous, char next) {
         return previous == next;
     }
