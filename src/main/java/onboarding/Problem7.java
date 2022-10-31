@@ -25,14 +25,14 @@ public class Problem7 {
                 if (fPair.contains(myFriend)){
                     String getPointN = getOne(fPair, myFriend);
                     
-                    addPoint(getPointN, 10);
+                    addPoint(getPointN);
                 }
             }
         }
 
         for (String v : visitors){
             if(!fList.contains(v))
-            	addPoint(v, 1);
+            	addPoint(v);
         }
 
         answer = new ArrayList<>(relation.keySet());
@@ -46,7 +46,7 @@ public class Problem7 {
         return answer;
     }
 
-    private static void addPoint(String name, int point){
+    private static void addPoint(String name){
         if (relation.containsKey(name)) 
             relation.put(name, relation.get(name)+10); 
         else

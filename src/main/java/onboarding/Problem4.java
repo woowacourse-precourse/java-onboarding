@@ -5,7 +5,7 @@ public class Problem4 {
 	static int upperZ = 122;
 	static int lowera = 65;
 	static int lowerz = 90;
-	static int dis = upperA - upperZ;
+	static int dis = 25;
 	
     public static String solution(String word) {
         return solve(word);
