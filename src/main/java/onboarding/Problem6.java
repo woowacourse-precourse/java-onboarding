@@ -34,6 +34,7 @@ public class Problem6 {
                 }
             }
         }
+
         HashSet<String> hashSet = new HashSet<>(answer);
         ArrayList<String> answer2 = new ArrayList<>(hashSet);
         Collections.sort(answer2);
