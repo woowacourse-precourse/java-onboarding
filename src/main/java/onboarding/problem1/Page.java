@@ -57,4 +57,19 @@ public class Page {
         }
         return result;
     }
+
+    // 양 페이지의 각 자릿수를 더한 수, 곱한 수 중에서 가장 큰 수를 리턴한다.
+    public int calculatePages() {
+        int leftPage = pages.get(LEFT_PAGE_INDEX);
+        int leftPageAddNumber = calcAddPageNumber(leftPage);
+        int leftPageMulNumber = calcMulPageNumber(leftPage);
+        int leftPageMaxNumber = Math.max(leftPageAddNumber, leftPageMulNumber);
+
+        int rightPage = pages.get(RIGHT_PAGE_INDEX);
+        int rightPageAddNumber = calcAddPageNumber(rightPage);
+        int rightPageMulNumber = calcMulPageNumber(rightPage);
+        int rightPageMaxNumber = Math.max(rightPageAddNumber, rightPageMulNumber);
+
+        return Math.max(leftPageMaxNumber, rightPageMaxNumber);
+    }
 }
