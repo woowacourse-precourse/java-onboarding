@@ -1,7 +1,6 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Problem6 {
 
@@ -165,9 +164,38 @@ public class Problem6 {
         return valid;
     }
 
+    /**
+     * 연속된 두 글자의 닉네임이 같은 크루원들을 찾아 이메일을 알려줍니다.
+     *
+     * @param forms 닉네임 신청서 배열입니다.
+     * @return 닉네임이 중복되는 크루원들의 이메일 배열입니다.
+     */
     private static List<String> getDuplicateNicknameUsers(List<List<String>> forms) {
+        HashMap<String, HashSet<String>> twoCharNicknames = new HashMap<>();
+        HashSet<String> duplicateNicknamesUsers = new HashSet<>();
+
+        for (List<String> form: forms) {
+            addEmailsByNickname(form, twoCharNicknames);
+        }
+        for (HashSet<String> nicknameUsers: twoCharNicknames.values()) {
+            getEmailsByNickname(nicknameUsers, duplicateNicknamesUsers);
+        }
+        List<String> result = sortEmails(duplicateNicknamesUsers);
+        return result;
+    }
+
+    private static void addEmailsByNickname(List<String> form, HashMap<String, HashSet<String>> twoCharNicknames){
+        return;
+    }
+
+    private static void getEmailsByNickname(HashSet<String> nicknameUsers, HashSet<String> duplicateNicknameUser){
+        return;
+    }
+
+    private static List<String> sortEmails(HashSet duplicateNicknameUsers){
         return Collections.emptyList();
     }
+
 
     /**
      * Problem5의 솔루션 코드입니다.
@@ -182,5 +210,4 @@ public class Problem6 {
         List<String> answer = getDuplicateNicknameUsers(forms);
         return answer;
     }
-
 }

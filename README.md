@@ -99,18 +99,14 @@
       - 닉네임의 길이가 1 ~ 19 사이의 값인지 검사한다.
       - [X] hasValidNicknameForm
       - 닉네임이 오로지 한글로만 이루어져있는지 검사한다.
-- [ ] getDuplicateNicknameUsers
+- [X] getDuplicateNicknameUsers
 - 중복 닉네임을 가진 유저들의 이메일을 알려준다.
 - 원소 검색이 O(1)으로 이루어지는 해시맵을 사용해 검사한다.
-  - [ ] addEmailsByNicknameCombination
+  - [ ] addEmailsByNickname
   - 각 유저의 닉네임을 두 글자씩 떼어서, 해당 조합을 사용하는 유저들의 수를 검사한다.
   - 닉네임 두 글자를 키로, 이메일은 그 안의 해시셋에 저장한다.
-    - [ ] checkDuplicate
-    - 닉네임이 중복인지 확인한다.
-    - [ ] checkUserNumber
-    - 특정 두 글자 조합의 닉네임의 유저가 둘이 되면, 해당 닉네임 조합을 알림 발송 리스트에 추가한다.
-  - [ ] getEmails
-  - 알림 발송 리스트에 포함된 닉네임 조합으로부터 이메일을 뽑아준다.
+  - [ ] getEmailsByNickname
+  - 특정 닉네임 조합을 둘 이상이 사용하면, 해당 유저들의 이메일을 저장합니다.
   - [ ] sortEmails
   - 이메일을 알파벳 순으로 정렬시켜 줍니다.
 7. [문제 7](./docs/PROBLEM7.md)
