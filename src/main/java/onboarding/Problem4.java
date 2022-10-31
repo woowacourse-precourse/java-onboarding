@@ -12,25 +12,28 @@ public class Problem4 {
     }
 
     private static String transferString(String word) {
-        String transferString = "";
         String[] transferWord = new String[word.length()];
 
         for (int i = 0; i < word.length(); i++) {
             char transferChar = word.charAt(i);
-            // 대문자인 경우
             if (Character.isUpperCase(transferChar)) {
                 transferWord[i] = transferChar(String.valueOf(transferChar)).toUpperCase();
             }
-            // 소문자인 경우
-            else if (Character.isLowerCase(word.charAt(i))) {
+            else if (Character.isLowerCase(transferChar)) {
                 transferWord[i] = transferChar(String.valueOf(transferChar)).toLowerCase();
             }
+            else if (transferChar == ' ') {
+                transferWord[i] = " ";
+            }
         }
+
+        String transferString = String.join("", transferWord);
+
         return transferString;
     }
 
     private static String transferChar(String transferChar) {
-        int tIndex = Arrays.asList(vocabulary).indexOf(transferChar);
+        int tIndex = Arrays.asList(vocabulary).indexOf(transferChar.toUpperCase());
         return vocabulary[vocabulary.length - 1 - tIndex];
     }
 }
