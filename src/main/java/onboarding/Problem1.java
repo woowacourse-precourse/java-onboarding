@@ -16,8 +16,8 @@ class Problem1 {
             checkExceptions(pobi);
             checkExceptions(crong);
 
-            int pobiScore = getScore(pobi);
-            int crongScore = getScore(crong);
+            int pobiScore = getMaxScore(pobi);
+            int crongScore = getMaxScore(crong);
 
             return getResult(pobiScore, crongScore);
         } catch (Exception error) {
@@ -35,7 +35,7 @@ class Problem1 {
         return DRAW;
     }
 
-    public static int getScore(List<Integer> pages) {
+    public static int getMaxScore(List<Integer> pages) {
         List<Integer> score = new ArrayList<>();
         for (Integer page : pages) {
             score.add(Math.max(getSumValue(page), getMultiplyValue(page)));
@@ -59,9 +59,9 @@ class Problem1 {
     public static void checkExceptions(List<Integer> pages) {
         int leftPage = pages.get(0);
         int rightPage = pages.get(1);
-        int insub = rightPage - leftPage;
+        int subtractPages = rightPage - leftPage;
 
-        if ((insub != 1) || (leftPage % 2 != 1)) {
+        if ((subtractPages != 1) || (leftPage % 2 != 1)) {
             throw new IllegalArgumentException();
         }
     }
