@@ -16,6 +16,13 @@ public class Problem6 {
         partOfNicknameToEmail = new HashMap<>();
         return null;
     }
+    // 닉네임을 2글자씩 분리하는 기능
+    private static void splitNickmame(String nickName, String email) {
+        for (int j = 0; j < nickName.length()-1; j++) {
+            String partOfNickname = nickName.substring(j, j+2);
+            checkPartOfNickname(partOfNickname, email);
+        }
+    }
     // 분리한 닉네임이 중복인지 확인하는 기능
     private static void checkPartOfNickname(String partOfNickname, String email) {
         if (partOfNicknameToEmail.containsKey(partOfNickname)) {
