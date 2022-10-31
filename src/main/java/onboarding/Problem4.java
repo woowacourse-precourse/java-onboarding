@@ -26,17 +26,33 @@ public class Problem4 {
 
 	private static Character getReversedAlphabet(int ascii) {
 
-		int reversedAscii = ascii;
+		if (classifyCaseSensitive(ascii).equals("Capital")) {
+			return (Character) (char) calculateAsciiForReversion(ascii, ASCII_CAPITAL_CALCULATION_NUMBER);
+		}
+
+		if (classifyCaseSensitive(ascii).equals("LowerCase")) {
+			return (Character) (char) calculateAsciiForReversion(ascii, ASCII_LOWER_CASE_CALCULATION_NUMBER);
+		}
+
+		return (Character) (char) ascii;
+	}
+
+	private static int calculateAsciiForReversion(int ascii, int calculationNumber) {
+		 return calculationNumber - ascii;
+	}
+
+	private static String classifyCaseSensitive(int ascii) {
 
 		if (ascii >= ASCII_CAPITAL_A && ascii <= ASCII_CAPITAL_Z) {
-			reversedAscii = ASCII_CAPITAL_CALCULATION_NUMBER - ascii;
+			return "Capital";
 		}
 
 		if (ascii >= ASCII_LOWER_CASE_A && ascii <= ASCII_LOWER_CASE_Z) {
-			reversedAscii = ASCII_LOWER_CASE_CALCULATION_NUMBER - ascii;
+			return "LowerCase";
 		}
 
-		return (Character) (char) reversedAscii;
+		return "Other";
 	}
+
 
 }
