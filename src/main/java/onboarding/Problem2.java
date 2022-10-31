@@ -23,7 +23,7 @@ public class Problem2 {
                 }
             }
 
-            if(continuous == 0){
+            if(continuous == 0 && cryptogram.length() != 0){
                 tmp += cryptogram.substring(cryptogram.length()-1, cryptogram.length());
             }
 
