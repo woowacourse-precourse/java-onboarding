@@ -13,9 +13,10 @@ public class Problem7 {
             if(!friend.get(1).contains(user)) {
                 System.out.println("friend: "+ Arrays.toString(friend.toArray()));
 
-
+                getScoreValue(scores, friend.get(1), 10);
             }
         }
+        System.out.println("alreadyFriend: "+Arrays.toString(alreadyFriend.toArray()));
 
         List<String> answer = Collections.emptyList();
         return answer;
