@@ -7,32 +7,64 @@ class Problem1 {
 	public static int solution(List<Integer> pobi, List<Integer> crong) {
 		PageComparator comparator = new PageComparator();
 
-		if (comparator.verifyPage(pobi) && comparator.verifyPage(crong)) {
-			Integer pobiMaxValue = comparator.getMaxPageValue(pobi);
-			Integer crongMaxValue = comparator.getMaxPageValue(crong);
+		try {
+			Page pobiPage = new Page(pobi);
+			Page crongPage = new Page(crong);
+
+			Integer pobiMaxValue = comparator.getMaxPageValue(pobiPage);
+			Integer crongMaxValue = comparator.getMaxPageValue(crongPage);
 
 			return comparator.compare(pobiMaxValue, crongMaxValue);
-		} else {
+		} catch (Exception e) {
+			System.out.println("Exception - PROBLEM1: " + e.getMessage());
 			return -1;
 		}
+
 	}
 
-	static class PageComparator {
+	static class Page {
 
-		public boolean verifyPage(List<Integer> page) {
+		private static final Integer MAX_PAGE = 400;
+		private static final Integer MIN_PAGE = 1;
+
+		private Integer left;
+		private Integer right;
+
+		public Page(List<Integer> page) {
+			if (verifyPage(page)) {
+				this.left = page.get(0);
+				this.right = page.get(1);
+			} else {
+				throw new RuntimeException("Page 생성에 실패했습니다.");
+			}
+		}
+
+		private boolean verifyPage(List<Integer> page) {
 			Integer left = page.get(0);
 			Integer right = page.get(1);
 
-			if (left % 2 == 1 && right == left + 1) {
+			if ((left >= MIN_PAGE && right <= MAX_PAGE)
+					&& (left % 2 == 1 && right == left + 1)) {
 				return true;
 			} else {
 				return false;
 			}
 		}
 
-		public Integer getMaxPageValue(List<Integer> page) {
-			Integer left = page.get(0);
-			Integer right = page.get(1);
+		public Integer getLeft() {
+			return left;
+		}
+
+		public Integer getRight() {
+			return right;
+		}
+	}
+
+	static class PageComparator {
+
+		public Integer getMaxPageValue(Page page) {
+			Integer left = page.getLeft();
+			Integer right = page.getRight();
 
 			return Math.max(getMaxValue(left), getMaxValue(right));
 		}
