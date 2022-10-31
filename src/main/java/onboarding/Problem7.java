@@ -10,7 +10,7 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
 
         List<String> friendOfUser = getFriendOfUser(user, friends);
-        List<String> friendOfFriend = getFriendOfFriend(user, friends);
+        Map<String, Integer> friendOfFriend = getFriendOfFriend(user, friends);
 
         Map<String, Integer> scoreRecommendFriend = getScoreRecommendFriend(friendOfFriend, visitors);
         Map<String, Integer> refineScoreRecommendFriend
@@ -38,35 +38,46 @@ public class Problem7 {
         return result;
     }
 
-    private static List<String> getFriendOfFriend(String user, List<List<String>> friends) {
+    private static Map<String, Integer> getFriendOfFriend(String user, List<List<String>> friends) {
         Map<String, List<String>> adjacencyList = getAdjacencyList(friends);
-        Map<String, Boolean> friendVisited = new TreeMap<>();
+        Map<String, Integer> friendVisited = new TreeMap<>();
         Map<String, Integer> friendLevel = new TreeMap<>();
         Queue<String> friendQueue = new LinkedList<>();
-        List<String> resultTwoLevelFriend;
+        List<String> twoLevelFriend;
+        Map<String, Integer> resultFriendOfFriend = new TreeMap<>();
 
         adjacencyList.putIfAbsent(user, new ArrayList<>());
         friendQueue.add(user);
-        friendVisited.put(user, true);
+        friendVisited.put(user, 1);
         friendLevel.put(user, 0);
 
         while(!friendQueue.isEmpty()) {
             String person = friendQueue.poll();
 
-            adjacencyList.get(person).stream()
-                    .filter(friend -> !friendVisited.getOrDefault(friend, false))
-                    .forEach(friend -> {
-                        friendVisited.put(friend, true);
-                        friendLevel.put(friend, friendLevel.get(person) + 1);
-                        friendQueue.add(friend);
-                    });
+            for(String friend : adjacencyList.get(person)) {
+                if (friendLevel.getOrDefault(person, 0) == 1
+                        && friendLevel.getOrDefault(friend, 0) == 2) {
+                    friendVisited.put(friend, friendVisited.get(friend) + 1);
+                    continue;
+                }
+
+                if (friendVisited.getOrDefault(friend, 0) == 0) {
+                    friendVisited.put(friend, 1);
+                    friendLevel.put(friend, friendLevel.get(person) + 1);
+                    friendQueue.add(friend);
+                }
+            }
         }
 
-        resultTwoLevelFriend = friendLevel.keySet().stream()
+        twoLevelFriend = friendLevel.keySet().stream()
                 .filter(friend -> friendLevel.get(friend) == 2)
                 .collect(Collectors.toList());
 
-        return resultTwoLevelFriend;
+        twoLevelFriend.forEach(friend -> {
+            resultFriendOfFriend.put(friend, friendVisited.get(friend));
+        });
+
+        return resultFriendOfFriend;
     }
 
     private static Map<String, List<String>> getAdjacencyList(List<List<String>> friends) {
@@ -86,17 +97,20 @@ public class Problem7 {
         return resultAdjacencyList;
     }
 
-    private static Map<String, Integer> getScoreRecommendFriend(List<String> friendOfFriend, List<String> visitors) {
-        Map<String, Integer> resultScoreRecommendFriend = new TreeMap<>();
+    private static Map<String, Integer> getScoreRecommendFriend(Map<String, Integer> friendOfFriend, List<String> visitors) {
+        Map<String, Integer> resultScoreRecommendFriend = new TreeMap<>();;
 
-        friendOfFriend.forEach(friend -> {
-            resultScoreRecommendFriend.put(friend, 10);
+        friendOfFriend.forEach((friend, count) -> {
+            resultScoreRecommendFriend.putIfAbsent(friend, 0);
+            resultScoreRecommendFriend.put(friend, resultScoreRecommendFriend.get(friend) + 10 * count);
         });
 
         visitors.forEach(visitor -> {
            resultScoreRecommendFriend.putIfAbsent(visitor, 0);
            resultScoreRecommendFriend.put(visitor, resultScoreRecommendFriend.get(visitor) + 1);
         });
+        System.out.println(friendOfFriend);
+        System.out.println(resultScoreRecommendFriend);
 
         return resultScoreRecommendFriend;
     }
