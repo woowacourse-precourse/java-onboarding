@@ -1,12 +1,28 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        Problem1 problem = new Problem1();
+        boolean checkPobiException = problem.findException(pobi);
+        boolean checkCrongException = problem.findException(crong);
+        if (!checkPobiException || !checkCrongException) {
+            return -1;
+        } else {
+            List<Integer> pobiPageScores = pobi.stream().map(problem::getScore).collect(Collectors.toList());
+            List<Integer> crongPageScores = crong.stream().map(problem::getScore).collect(Collectors.toList());
+            int pobiScore = Collections.max(pobiPageScores);
+            int crongScore = Collections.max(crongPageScores);
+            if (pobiScore > crongScore) {
+                return 1;
+            } else if (pobiScore < crongScore) {
+                return 2;
+            } else return 0;
+        }
     }
 
     public boolean findException(List<Integer> arr) {
