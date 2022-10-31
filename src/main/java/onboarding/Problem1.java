@@ -26,13 +26,19 @@ class Problem1 {
         }
     }
 
-    public int calculateMaximumAddOrMultiply(int pageNum){
-
+    public int[] splitDigits(int pageNum){
         int thirdDigit = pageNum/100;
         int secondDigit = (pageNum%100)/10;
         int firstDigit = (pageNum%10);
 
         int[] digits = {thirdDigit, secondDigit, firstDigit};
+
+        return digits;
+    }
+
+    public int calculateMaximumAddOrMultiply(int pageNum){
+
+        int[] digits = splitDigits(pageNum);
 
         int addNum = 0;
         int multiplyNum = 1;
