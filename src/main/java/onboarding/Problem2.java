@@ -1,11 +1,15 @@
 package onboarding;
 
+import onboarding.problem2.CryptogramException;
+
 import java.util.Stack;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        CryptogramException.checkException(cryptogram);
+
+        Stack<Character> decodedStack = decodeCryptogram(cryptogram);
+        return makeStackToString(decodedStack);
     }
 
     private static Stack<Character> decodeCryptogram(String cryptogram) {
