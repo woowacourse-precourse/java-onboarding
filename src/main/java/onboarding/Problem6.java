@@ -54,8 +54,8 @@ public class Problem6 {
             }
         }
 
-        List<String> answer = List.of("answer");
-        return answer;
+        List<String> notDuplicatedSortedEmails = new ArrayList<>(emails);
+        return notDuplicatedSortedEmails;
     }
 
     private static boolean isKorean(String word) {
