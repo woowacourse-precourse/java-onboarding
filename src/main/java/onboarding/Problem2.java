@@ -46,5 +46,14 @@ public class Problem2 {
 			isPerfectlyCracked = crackedCode.isEmpty() || code.equals(crackedCode);
 			code = new ArrayList<>(crackedCode);
 		}
+
+		public String toCrackedCode() {
+			while (!isPerfectlyCracked) {
+				removeRepetition();
+			}
+			StringBuilder crackedCode = new StringBuilder();
+			code.forEach(crackedCode::append);
+			return crackedCode.toString();
+		}
 	}
 }
