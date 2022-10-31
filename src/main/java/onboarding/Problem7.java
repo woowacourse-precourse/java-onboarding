@@ -4,32 +4,20 @@ import java.util.*;
 
 public class Problem7 {
 
-    private static HashMap<String, ArrayList<String>> friendship = new HashMap<>();
+    private static HashMap<String, ArrayList<String>>friendship= new HashMap<>();
     private static Map<String, Integer> scoreList = new HashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
-        for (List<String> friend : friends) {
-            setFriendship(friend.get(0), friend.get(1));
-            setFriendship(friend.get(1), friend.get(0));
-        }
+        // 친구 관계  넣기
+        setFriendship(friends);
 
         // 친구의 친구에 점수 부여
-        ArrayList<String> friendsOfUser = friendship.get(user);
-        for(String friend : friendsOfUser) {
-            for(String together : friendship.get(friend)) {
-                if(together.equals(user))
-                    continue;
-                if(scoreList.containsKey(together))
-                    scoreList.put(together, scoreList.get(together) + 10);
-                else
-                    scoreList.put(together, 10);
-            }
-        }
+        ArrayList<String> friendsOfUser =friendship.get(user);
+        setScoreOfAcquaintance(user,friendsOfUser);
 
         // 방문자에 점수 부여
         setScoreOfVisitor(visitors);
-
 
         // 사용자와 친구인 경우 제거
         Iterator<Map.Entry<String, Integer>> it = scoreList.entrySet().iterator();
@@ -52,15 +40,40 @@ public class Problem7 {
             return scoreListKeySet.subList(0,5);
     }
 
-    private static void setFriendship(String userA, String userB) {
-        ArrayList<String> list = new ArrayList<>();
-        if(friendship.containsKey(userA)) {
-            list = friendship.get(userA);
-            list.add(userA);
-        } else {
-            list.add(userB);
+    private static void setFriendship(List<List<String>> friends) {
+        ArrayList<String> list;
+        for (List<String> friend : friends) {
+            list = new ArrayList<>();
+            if(friendship.containsKey(friend.get(0))) {
+                list =friendship.get(friend.get(0));
+                list.add(friend.get(1));
+            } else {
+                list.add(friend.get(1));
+            }
+            friendship.put(friend.get(0), list);
+
+            list = new ArrayList<>();
+            if(friendship.containsKey(friend.get(1))) {
+                list =friendship.get(friend.get(1));
+                list.add(friend.get(0));
+            } else{
+                list.add(friend.get(0));
+            }
+            friendship.put(friend.get(1), list);
         }
-        friendship.put(userA, list);
+    }
+
+    private static void setScoreOfAcquaintance(String user, List<String> friendsOfUser) {
+        for(String friend : friendsOfUser) {
+            for(String together :friendship.get(friend)) {
+                if(together.equals(user))
+                    continue;
+                if(scoreList.containsKey(together))
+                    scoreList.put(together, scoreList.get(together) + 10);
+                else
+                    scoreList.put(together, 10);
+            }
+        }
     }
 
     private static void setScoreOfVisitor(List<String> visitors) {
