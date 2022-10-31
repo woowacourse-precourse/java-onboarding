@@ -13,20 +13,46 @@ public class Problem7 {
         String vertex;
         int cost;
 
-        public Node(String vertex,int cost){
+        public Node(String vertex, int cost) {
             this.vertex = vertex;
             this.cost = cost;
         }
 
         @Override
-        public int compareTo(Node o){
+        public int compareTo(Node o) {
             return this.cost - o.cost;
         }
     }
 
+    // 그래프 초기화
+    private static Map<String, ArrayList<Node>> initializeGraph(List<List<String>> friends) {
+        Map<String, ArrayList<Node>> graph = new HashMap<>();
+
+        for (List<String> relationship : friends) {
+            String A = relationship.get(0);
+            String B = relationship.get(1);
+
+            addNodeToGraph(graph, A, B);
+            addNodeToGraph(graph, B, A);
+        }
+
+        return graph;
+    }
+
+    private static void addNodeToGraph(Map<String, ArrayList<Node>> graph, String from, String to) {
+        ArrayList<Node> list = new ArrayList<>();
+        if(graph.containsKey(from)){
+            list = graph.get(from);
+            list.add(new Node(to, 1));
+        }else{
+            list.add(new Node(to, 1));
+        }
+        graph.put(from, list);
+    }
+
 
     // 다익스트라 알고리즘
-    private Map<String, Integer> dijkstra(Map<String, ArrayList<Node>> graph, String start){
+    private static Map<String, Integer> dijkstra(Map<String, ArrayList<Node>> graph, String start) {
         PriorityQueue<Node> pq = new PriorityQueue<>();
         Map<String, Integer> distance = new HashMap<>();
         Node pqNode;
