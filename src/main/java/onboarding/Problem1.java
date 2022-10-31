@@ -8,7 +8,6 @@ class Problem1 {
         
         if(pobi.get(1)-pobi.get(0)!=1 || crong.get(1)-crong.get(0)!=1) {
         	answer = -1;
-        	System.out.println(answer);
         	return answer;
         }
         
