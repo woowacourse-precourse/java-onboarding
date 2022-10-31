@@ -100,7 +100,7 @@ public class Problem7 {
                 valueSet.add(friend);
             }
             Collections.sort(valueSet);
-            for (int i = 0; i < valueSet.size() && i < 5; i++) {
+            for (int i = 0; i < valueSet.size() && answer.size() < 5; i++) {
                 answer.add(valueSet.get(i));
             }
         }
