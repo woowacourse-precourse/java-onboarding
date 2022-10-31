@@ -5,9 +5,11 @@ import java.util.Map;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
+        Map<Character, Character> code = new HashMap<>(codeTransform());
+        String answer = wordTransform(code, word);
         return answer;
     }
+
     public static Map<Character, Character> codeTransform() {
         Map<Character, Character> code = new HashMap<>();
         for (int i = 65; i < 91; i++) {
