@@ -26,6 +26,15 @@ public class Problem7 {
             }
         }
 
+        for(String visitor: visitors){
+            if(!friendsMap.get(user).contains(visitor)){
+                if((!scoreMap.containsKey(visitor)))
+                    scoreMap.putIfAbsent(visitor, 1);
+                else
+                    scoreMap.put(visitor, scoreMap.get(visitor) + 1);
+            }
+        }
+
 
         System.out.println(scoreMap);
         List<String> answer = Collections.emptyList();
