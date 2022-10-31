@@ -42,6 +42,12 @@ public class Problem4 {
         return false;
     }
 
+    private static char convertUpperCase(int asciiLetter) {
+        return (char)(MAX_ASCII_UPPER_CASE - (asciiLetter - MIN_ASCII_UPPER_CASE));
+    }
 
+    private static char convertLowerCase(int asciiLetter) {
+        return (char)(MAX_ASCII_LOWER_CASE - (asciiLetter - MIN_ASCII_LOWER_CASE));
+    }
 
 }
