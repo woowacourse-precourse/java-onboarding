@@ -53,9 +53,4 @@ class Problem1 {
         if(list.get(0)+1 != list.get(1)) return -1;
         return Math.max(sumNumber(list), multiplyNumber(list));
     }
-
-    public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
-    }
 }
