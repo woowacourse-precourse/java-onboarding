@@ -34,14 +34,33 @@ class Problem1 {
     private static int getMaxNum(List<Integer> list){
         return Math.max(getMaxNumPage(list.get(0)), getMaxNumPage(list.get(1)));
     }
-    // func : decide answer by compare two lists
-    private static int getScore(List<Integer> pobi, List<Integer> crong){
-        int result = -1;
-        if (getMaxNum(pobi) > getMaxNum(crong)) result = 1;
-        else if(getMaxNum(pobi) < getMaxNum(crong)) result = 2;
-        else if(getMaxNum(pobi) == getMaxNum(crong)) result = 0;
+
+    // func : check list value are correct
+    private static Boolean checkList(List<Integer> list){
+        Boolean result = true;
+        // left num should be odd, right num should be even, diff between left and right should be 1
+        if (list.get(0) % 2 != 1 || list.get(1) % 2 != 0 || Math.abs(list.get(0) - list.get(1)) != 1){
+            result = false;
+        }
         return result;
     }
+
+    // func : decide answer by compare two lists
+    private static int getScore(List<Integer> pobi, List<Integer> crong){
+
+        int res = 0;
+        // if exception occured, return -1
+        if  (!(checkList(pobi) && checkList(crong))) return -1;
+        // if pobi wins, return 1
+        if (getMaxNum(pobi) > getMaxNum(crong)) res = 1;
+        // if cron wins, return 2
+        else if(getMaxNum(pobi) < getMaxNum(crong)) res = 2;
+        // if draws, return 0
+        else if(getMaxNum(pobi) == getMaxNum(crong)) res = 0;
+
+        return res;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = getScore(pobi,crong);
         return answer;
