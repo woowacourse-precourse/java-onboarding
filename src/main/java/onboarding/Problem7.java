@@ -133,6 +133,33 @@ public class Problem7 {
 
     }
     //실행을 위한 함수
+    static List<String> process(String user, List<List<String>> friends, List<String> visitors){
+        List<people_score> total = sum_score(user,friends,visitors);
+        List<String> ans = new ArrayList<>();
+        List<String> user_know = user_friends(user,friends);
+
+        Collections.sort(total, new Comparator<people_score>() {
+            @Override
+            public int compare(people_score o1, people_score o2) {
+                if(o1.score == o2.score){
+                    return o1.people.compareTo(o2.people);
+                }
+                return o2.score - o1.score;
+            }
+        });
+
+        for (int i=0;i<total.size();i++){
+            if(total.get(i).people.equals(user)) continue;
+
+            if(total.get(i).score>0 && !user_know.contains(total.get(i).people) && ans.size()<5){
+                ans.add(total.get(i).people);
+
+            }
+
+        }
+
+        return ans;
+    }
 
 }
 
