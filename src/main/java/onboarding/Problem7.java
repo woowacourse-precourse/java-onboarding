@@ -19,20 +19,20 @@ public class Problem7 {
         Map<String, Integer> list = visitorCalculate(user, friends, visitors);
         // 값 정렬하기
         List<String> answer = new ArrayList<>(list.keySet());
-//        answer.sort(new Comparator<String>() {
-//            @Override
-//            public int compare(String o1, String o2) {
-//                return list.get(o1).compareTo(list.get(o2));
-//            }
-//        });
-//        Collections.sort(answer);
-//
-//        // answer이 5이상의 데이터를 가지고있으면 나머지는 삭제하기
-//        if(answer.size()>5) {
-//            for (int i = answer.size() - 1; i > 4; i--) {
-//                answer.remove(i);
-//            }
-//        }
+        answer.sort(new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                return list.get(o1).compareTo(list.get(o2));
+            }
+        });
+        Collections.sort(answer);
+
+        // answer이 5이상의 데이터를 가지고있으면 나머지는 삭제하기
+        if(answer.size()>5) {
+            for (int i = answer.size() - 1; i > 4; i--) {
+                answer.remove(i);
+            }
+        }
 
         return answer;
     }

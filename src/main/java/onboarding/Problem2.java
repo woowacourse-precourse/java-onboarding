@@ -36,16 +36,20 @@ public class Problem2 {
         if(lastList.size()== newList.size()) return lastList;
         String last =lastList.get(0);
 
-        for (int i =1; i<lastList.size(); i++){ // browoanoommnaon
+        for (int i =1; i<lastList.size(); i++){ // zyelleyz -> zyeeyz -> zyyz -> zz
             if(!last.equals(lastList.get(i))) {
                 newList.add(lastList.get(i-1));
             }else {
                 i++;
             }
-            last= lastList.get(i);
+            if(!lastList.isEmpty()) last= lastList.get(i);
+            else newList.add("");
 
         }
-        newList.add(lastList.get(lastList.size()-1));
+        if(lastList.size()==2 && last.equals(lastList.get(lastList.size()-1))) {
+
+        }else newList.add(lastList.get(lastList.size()-1));
+        System.out.println(newList);
 
 
         return  newList;
