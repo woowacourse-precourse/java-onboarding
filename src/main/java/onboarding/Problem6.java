@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -8,6 +9,22 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
+    }
+
+    /**
+     * 중복 위험이 있는 단어 목록을 반환합니다.
+     */
+    private static List<String> getDuplicatedWords(List<List<String>> forms) {
+        List<String> duplicateWords = new ArrayList<>();
+        Map<String, Integer> allWords = getAllWords(forms);
+
+        for (String word : allWords.keySet()) {
+            if (2 <= allWords.get(word)) {
+                duplicateWords.add(word);
+            }
+        }
+
+        return duplicateWords;
     }
 
     /**
