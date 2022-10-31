@@ -12,6 +12,11 @@ public class Problem4 {
         return answer;
     }
 
+//    public static char reversAlphabet(char c){
+//
+//        return 219 - (int)c;
+//    }
+
 
     public static void main(String[] args) {
 
