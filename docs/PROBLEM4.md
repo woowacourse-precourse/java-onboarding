@@ -19,3 +19,7 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+### 기능 목록
+- [x] 알파벳 변환 기능
+- [x] 문자열 생성 기능
