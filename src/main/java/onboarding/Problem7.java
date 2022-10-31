@@ -1,10 +1,14 @@
 package onboarding;
 
+import onboarding.testCode.experiment7;
+
 import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        Map<String, Integer> scorePare = friendScorePare(user, friends);
+        Map<String, Integer> scorePare1 = visitorScorePare(scorePare, visitors);
+        List<String> answer = recommender(user, friends, visitors);
         return answer;
     }
 
@@ -41,14 +45,6 @@ public class Problem7 {
 
         }
 
-        // test
-
-//        System.out.println(String.join(", ", namesList));
-//        for (int i = 0; i < matrix.size(); i++) {
-//            System.out.println(matrix.get(i).toString());
-//        }
-
-        //test end
 
 
         Map<String, Integer> scorePare = new HashMap<String, Integer>();
@@ -66,11 +62,6 @@ public class Problem7 {
                 for (int j = 0; j < compUserScore.size(); j++) {
                     int adder = (userScore.get(j)==1 && compUserScore.get(j)==1) ? 10 : 0;
 
-                    //test®
-//                    if(userScore.get(j)==1 && compUserScore.get(j)==1) {
-//                        System.out.println(userScore.get(j) + ", " + compUserScore.get(j));
-//                    }
-                    //test end
 
                     scorePare.put(namesList.get(i), scorePare.get(namesList.get(i)) + adder);
                 }
@@ -91,6 +82,62 @@ public class Problem7 {
             }
         }
         return friendScorePare;
+    }
+
+    public static class recComparator implements Comparator<List<String>> {
+
+        @Override
+        public int compare(List<String> o1, List<String> o2) {
+            Integer o1Int = Integer.parseInt(o1.get(1));
+            Integer o2Int = Integer.parseInt(o2.get(1));
+            int scoreComparison = o1Int.compareTo(o2Int);
+            scoreComparison = -scoreComparison;
+            int answer = (scoreComparison == 0) ? o1.get(0).compareTo(o2.get(0)) : scoreComparison;
+            return answer;
+
+        }
+    }
+
+    public  static List<String> recommender(String user, List<List<String>> friends, List<String> visitors) {
+        Map<String, Integer> scorePare = friendScorePare(user, friends);
+        Map<String, Integer> finalScorePare = visitorScorePare(scorePare, visitors);
+
+
+        //test
+        System.out.println("unsorteed unremoved resukt : " + finalScorePare.keySet());
+        //test end
+
+        List<List<String>> listPare = new ArrayList<>(finalScorePare.size());
+
+        int tempCounter = -1;
+        for (String key : finalScorePare.keySet()) {
+            tempCounter += 1;
+            listPare.add(new ArrayList<String>());
+            listPare.get(tempCounter).add(key);
+            listPare.get(tempCounter).add(finalScorePare.get(key).toString());
+
+        }
+
+        Collections.sort(listPare, new experiment7.recComparator());
+
+        //test
+        System.out.println("sorted resukt : " + listPare.toString());
+        //test end
+
+        List<String> answer = new ArrayList<String>();
+        for (List<String> pare : listPare) {
+            if(Integer.parseInt(pare.get(1))>0) {
+                answer.add(pare.get(0));
+            }
+        }
+
+
+        List<String> modifiedAnswer = (answer.size() > 5) ? answer.subList(0, 5) : answer;
+        return modifiedAnswer;
+
+
+
+
     }
 
 }
