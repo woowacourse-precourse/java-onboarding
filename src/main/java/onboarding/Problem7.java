@@ -78,35 +78,4 @@ public class Problem7 {
             friendsMap.computeIfAbsent(name2, s -> new ArrayList<>()).add(name1);
         }
     }
-
-    public static void main(String[] args) {
-        List<List<String>> list = new ArrayList<>();
-        String[][] t= {
-            {
-                "donut", "andole"
-            }, {
-                "donut", "jun"
-            },{
-                "donut", "mrko"
-            },{
-                "shakevan", "andole"
-            },{
-                "shakevan", "jun"
-            },{
-                "shakevan", "mrko"
-            }
-        };
-        for (String[] strings : t) {
-            List<String> strings1 = List.of(strings);
-            list.add(strings1);
-        }
-        String[] a = {"bedi", "bedi", "donut", "bedi", "shakevan"};
-        List<String> a1 = List.of(a);
-
-        List<String> mrko = solution("mrko", list, a1);
-        for (String s : mrko) {
-            System.out.print(s + " ");
-        }
-
-    }
 }
