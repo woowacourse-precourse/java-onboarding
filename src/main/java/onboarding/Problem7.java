@@ -54,4 +54,15 @@ public class Problem7 {
     private static void scoreVisitor(Map<String, Integer> scoreBoard, List<String> userRelationships, List<String> visitors) {
         getScore(scoreBoard, userRelationships, visitors, 1);
     }
+
+    private static List<String> SortByName(Map<String, Integer> scoreBoard) {
+        List<String> sortedrecommendationList = new ArrayList<>(scoreBoard.keySet());
+        sortedrecommendationList.sort((x, y) -> scoreBoard.get(y) - scoreBoard.get(x));
+
+        if (sortedrecommendationList.size() > 5) {
+            sortedrecommendationList.subList(0, 5);
+        }
+
+        return sortedrecommendationList;
+    }
 }
