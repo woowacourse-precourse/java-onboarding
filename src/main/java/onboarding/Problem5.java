@@ -5,31 +5,29 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class Problem5 {
-    // 화폐 분류를 위한 화폐 리스트 생성
     private static final int[] currencyDenominationType = new int[] {
       50_000, 10_000, 5_000, 1_000, 500, 100, 50, 10, 1
     };
 
     public static List<Integer> solution(int money) {
-        if (!validateMoney(money)) {
-            return new LinkedList<>();
-        }
+        checkMoneyCorrect(money);
 
         return classifyMoney(money);
     }
 
     /**
-     * 숫자 검증
-     * @param money 돈
-     * @return 검증 결과 값
+     * 금액 검증
+     * @param money 금액
      */
-    private static boolean validateMoney(int money) {
-        return (money > 0 && money <= 1_000_000);
+    private static void checkMoneyCorrect(int money) {
+        if (money > 0 && money <= 1_000_000) {
+            throw new RuntimeException("입력 가능한 금액을 초과하였습니다. 금액은 1 ~ 1,000,000 사이여야 합니다.");
+        }
     }
 
     /**
      * 화폐 분류
-     * @param money 돈
+     * @param money 금액
      * @return 화폐 분류 결과
      */
     private static LinkedList<Integer> classifyMoney(int money) {
@@ -43,6 +41,4 @@ public class Problem5 {
 
         return classifyMoney;
     }
-
-
 }
