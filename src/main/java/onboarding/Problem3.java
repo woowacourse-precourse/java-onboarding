@@ -1,12 +1,9 @@
 package onboarding;
 
 public class Problem3 {
-    static int answer;
 
     public static int solution(int number) {
-        answer = pro(number);
-
-        return answer;
+        return pro(number);
     }
 
     static int pro(int number) {
