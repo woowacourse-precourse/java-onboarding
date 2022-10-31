@@ -11,6 +11,10 @@ public class Problem4 {
                 "a","b","c","d","e","f","g","h","i","j","k","l","m"};
         convertMessage[1] = new String[]{"Z","Y","X","W","V","U","T","S","R","Q","P","O","N",
                 "z","y","x","w","v","u","t","s","r","q","p","o","n"};
+        for (int j = 0 ; j < convertMessage[0].length; j++){
+            frogAlphabet.put(convertMessage[0][j],convertMessage[1][j]);
+            frogAlphabet.put(convertMessage[1][j],convertMessage[0][j]);
+        }
         return sb.toString();
     }
 }
