@@ -50,4 +50,16 @@ public class Problem7 {
             insertMapValue(strings,1,user);
         }
     }
+
+    public static List<Map.Entry<String,Integer>> sortValues() {
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(foaf.entrySet());
+        entryList.sort((o1, o2) -> {
+            if (o1.getValue() == o2.getValue()) {
+                return o1.getKey().compareTo(o2.getKey());
+            } else {
+                return o2.getValue() - o1.getValue();
+            }
+        });
+        return entryList;
+    }
 }
