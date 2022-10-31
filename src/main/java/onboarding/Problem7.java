@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /** 구현 기능 목록
@@ -19,6 +16,14 @@ import java.util.stream.Collectors;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+        List<String> friendOfUser = findFriendOfUser(user, friends);
+        List<String> recommendedFriends = getRecommendedFriends(findFriendOfFriend(friends, friendOfUser), visitors);
+        friendOfUser.add(user);
+        recommendedFriends.removeAll(friendOfUser);
+        HashMap<String, Integer> recommendedFriendScore = getRecommendedFriendScore(recommendedFriends);
+        recommendedFriendScore = plusFriendOfFriend(recommendedFriendScore, findFriendOfFriend(friends, friendOfUser));
+        recommendedFriendScore = plusVisitors(recommendedFriendScore, visitors);
+        answer = getFinalRecommendation(recommendedFriendScore);
         return answer;
     }
 
@@ -70,5 +75,18 @@ public class Problem7 {
             }
         }
         return recommendFriendScore;
+    }
+
+    private static List<String> getFinalRecommendation(HashMap<String, Integer> recommendedFriendScore) {
+        HashMap<String, Integer> sortedRecommendation = recommendedFriendScore.entrySet()
+                .stream().sorted((x, y) -> y.getValue().compareTo(x.getValue()))
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        Map.Entry::getValue, (a, b) -> a, LinkedHashMap::new));;
+
+        List<String> finalRecommendation = new ArrayList<>();
+        for (String recommendation : sortedRecommendation.keySet())
+            finalRecommendation.add(recommendation);
+        return finalRecommendation;
     }
 }
