@@ -11,7 +11,12 @@ public class Problem2 {
         sb = new StringBuilder();
         duplicatedIndexList = new ArrayList<>();
 
+        initDuplicatedIndexList(cryptogram);
 
+        while(duplicatedIndexList.size() > 0){
+            cryptogram = createNewCryptogram(cryptogram);
+            addDuplicatedIndex(cryptogram);
+        }
 
         return cryptogram;
     }
