@@ -50,4 +50,14 @@ public class Problem7 {
             key.setValue(currentScore);
         }
     }
+
+    static void addVisitorPoint(List<String> visitors) {
+        for (String v:visitors) {
+            if(points.containsKey(v)){
+                points.put(v, points.get(v) + 1);
+            }else{
+                points.put(v, 1);
+            }
+        }
+    }
 }
