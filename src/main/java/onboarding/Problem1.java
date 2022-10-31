@@ -60,4 +60,15 @@ class Problem1 {
         }
         return sum;
     }
+
+    private static void getIntArr(int[] arr1, int[] arr2, ArrayList<Integer> tmp) {
+        //페이지 배열 구하기
+        for(int i=0; i<arr1.length; i++) {
+            if(i==arr1.length-1) {
+                arr1[i] = tmp.get(i);
+                arr2[i] = arr1[i] + 1;
+            }
+            arr1[i] = arr2[i] = tmp.get(i);
+        }
+    }
 }
