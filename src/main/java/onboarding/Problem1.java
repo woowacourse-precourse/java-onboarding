@@ -6,19 +6,7 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
-        int pobiScore = 0, crongScore = 0;
 
-        if(inputValidation(pobi.get(0), pobi.get(1)) && inputValidation(crong.get(0), crong.get(1))){
-            pobiScore = maxValue(pobi.get(0), pobi.get(1));
-            crongScore = maxValue(crong.get(0), crong.get(1));
-
-            if(pobiScore > crongScore) answer = 1;
-            else if(crongScore > pobiScore) answer = 2;
-            else answer = 0;
-        }
-        else {
-            answer = -1;
-        }
 
         return answer;
     }
@@ -29,10 +17,33 @@ class Problem1 {
      * @param {int} secondPage
      * @return boolean
      */
-    public static boolean inputValidation(int firstPage, int secondPage) {
-        if(firstPage % 2 != 1  || secondPage % 2 != 0) return false;
-        if(secondPage - firstPage != 1) return false;
-        if (firstPage == 1 || secondPage == 400) return false;
+    public static boolean validatePobi(List<Integer> pobi) {
+        for (int i = 0; i < pobi.size(); i++) {
+            int firstPage = pobi.get(0);
+            int secondPage = pobi.get(1);
+
+            if(firstPage % 2 != 1  || secondPage % 2 != 0) return false;
+            if(secondPage - firstPage != 1) return false;
+            if (firstPage == 1 || secondPage == 400) return false;
+        }
+        return true;
+    }
+
+    /**
+     * firstPage, SecondPage 중 예외사항에 걸리면 false 반환 통과하면 true 반환
+     * @param {int} firstPage
+     * @param {int} secondPage
+     * @return boolean
+     */
+    public static boolean validateCrong(List<Integer> crong) {
+        for (int i = 0; i < crong.size(); i++) {
+            int firstPage = crong.get(0);
+            int secondPage = crong.get(1);
+
+            if(firstPage % 2 != 1  || secondPage % 2 != 0) return false;
+            if(secondPage - firstPage != 1) return false;
+            if (firstPage == 1 || secondPage == 400) return false;
+        }
         return true;
     }
 
@@ -74,6 +85,13 @@ class Problem1 {
         return max;
     }
 
+    /*public static int findWinner(List<String> pobi, List<String> crong) {
+        int pobiScore = 0, crongScore = 0;
+
+        for (int i = 0; i < pobi.size(); i++) {
+            if(inputValidation())
+        }
+    }*/
 
 
 }

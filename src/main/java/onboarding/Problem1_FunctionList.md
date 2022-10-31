@@ -1,8 +1,15 @@
 # 기능 목록
 ### 기능을 구현하기 위한 함수 목록은 다음과 같습니다.
 
-### 1. 입력받은 페이지에 대해 예외사항을 검사 
-#### inputValidation(int fristPage, int secondPage)  -->  boolean
+### 1. pobi와 crong의 페이지가 예외사항에 포함된것이 있는지 검사합니다.
+#### validatePobi(List<Integer> pobi)  -->  boolean
+-  입력 중 조건에 맞지 않는 입력이 있을 수 있기에 firstPage, secondPage가 조건에 맞는지 검사합니다. 조건에 맞으면 true를 맞지 않으면 false를 반환합니다.
+   예외 사항은 아래와 같습니다.
+- firstPage은 홀수, secondPage는 짝수여야 합니다.
+- firstPage, secondPage 간의 차는 1이어야 합니다.
+- firstPage가 1페이지거나 secondPage가 400페이지면 안됩니다.
+
+#### validateCrong(List<Integer> crong)  -->  boolean
 -  입력 중 조건에 맞지 않는 입력이 있을 수 있기에 firstPage, secondPage가 조건에 맞는지 검사합니다. 조건에 맞으면 true를 맞지 않으면 false를 반환합니다.
    예외 사항은 아래와 같습니다.
 - firstPage은 홀수, secondPage는 짝수여야 합니다.
