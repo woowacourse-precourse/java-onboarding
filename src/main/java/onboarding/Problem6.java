@@ -3,6 +3,9 @@ package onboarding;
 import java.util.*;
 
 public class Problem6 {
+    private static final int DUPLICATE_STANDARD = 2;
+    private static final int SPLIT_INDEX_COUNT = 2;
+
     private static final Map<String, Set<String>> subNicknames = new HashMap<>();
 
     public static List<String> solution(List<List<String>> forms) {
@@ -34,7 +37,7 @@ public class Problem6 {
     }
 
     private static String getSubNickname(String nickname, int startIndex) {
-        return nickname.substring(startIndex, startIndex + 2);
+        return nickname.substring(startIndex, startIndex + SPLIT_INDEX_COUNT);
     }
 
     private static List<String> getCrewEmails() {
@@ -59,6 +62,6 @@ public class Problem6 {
     }
 
     private static boolean isDuplicated(String subNickName) {
-        return subNicknames.get(subNickName).size() >= 2;
+        return subNicknames.get(subNickName).size() >= DUPLICATE_STANDARD;
     }
 }
