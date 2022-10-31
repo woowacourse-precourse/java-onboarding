@@ -17,6 +17,8 @@ public class Problem4 {
                 reverse_Word += changeUppercase(Alphabet);
             else if (Character.isLowerCase(Alphabet))
                 reverse_Word += changeLowercase(Alphabet);
+            else
+                reverse_Word += " ";
         }
         return reverse_Word;
     }
