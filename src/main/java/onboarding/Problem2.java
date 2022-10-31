@@ -14,9 +14,14 @@ public class Problem2 {
         return stack;
     }
 
+    private static String stackToString(Stack<Character> stack){
+        StringBuilder answer = new StringBuilder();
+        for (Character character : stack) answer.append(character.toString());
+        return answer.toString();
+    }
 
     public static String solution(String cryptogram) {
         Stack<Character> stack = reduceStringByStack(cryptogram);
-        return "";
+        return stackToString(stack);
     }
 }
