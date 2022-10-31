@@ -11,19 +11,26 @@ public class StackGenerator {
 
         stack.push(split[0]);
 
+
         for (int i = 1; i < split.length; i++) {
 
-            stack.push(split[i]);
-
-            String pop1 = stack.pop();
-            String pop2 = stack.pop();
-
-            if (pop1.equals(pop2)) {
-                continue;
+            if (stack.size() > 0 && stack.peek().equals(split[i])) {
+                stack.pop();
+            } else {
+                stack.push(split[i]);
             }
 
-            stack.push(pop2);
-            stack.push(pop1);
+//            stack.push(split[i]);
+//
+//            String pop1 = stack.pop();
+//            String pop2 = stack.pop();
+//
+//            if (pop1.equals(pop2)) {
+//                continue;
+//            }
+//
+//            stack.push(pop2);
+//            stack.push(pop1);
         }
 
         return stack;
