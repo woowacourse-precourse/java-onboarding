@@ -38,4 +38,8 @@ public class DuplicatedNickNameSearch {
             DuplicatedCrewService.addDuplicatedCrewIndex(duplicatedCrewsIndex, duplicatedWord, checkCrewNickname, checkCrewIndex, currentCrewIndex);
         }
     }
+
+    public ArrayList<String> getDuplicatedNicknameCrewEmail(){
+        return NicknameListService.crewIndexToCrewEmail(forms, duplicatedCrewsIndex);
+    }
 }
