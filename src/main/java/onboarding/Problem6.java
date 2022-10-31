@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,6 +27,15 @@ public class Problem6 {
 
     private static void putValue(Map<String, List<String>> nickNameFragmentsMap, String email,
         String nickNameFragment) {
+        if (nickNameFragmentsMap.containsKey(nickNameFragment)) {
+            List<String> emails = nickNameFragmentsMap.get(nickNameFragment);
+            emails.add(email);
+            nickNameFragmentsMap.put(nickNameFragment, emails);
+            return;
+        }
+        nickNameFragmentsMap.put(nickNameFragment, new ArrayList<>(List.of(email)));
     }
+
+}
 
 }
