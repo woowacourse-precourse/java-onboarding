@@ -21,9 +21,23 @@ class Problem1 {
 
         return check1 || check2 || check3;
     }
-    
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+
+        if(isWrong(pobi.get(0), pobi.get(1)) || isWrong(crong.get(0), crong.get(1)) ){
+            return -1;
+        }
+
+        int pobiPoint = Math.max(getMaxPoint(pobi.get(0)),getMaxPoint(pobi.get(1)));
+        int crongpoint = Math.max(getMaxPoint(crong.get(0)),getMaxPoint(crong.get(1)));
+
+        if(pobiPoint > crongpoint) {
+            return 1;
+        }
+        if(pobiPoint < crongpoint){
+            return 2;
+        }
+        //pobiPoint == crongpoint
+        return 0;
     }
 }
