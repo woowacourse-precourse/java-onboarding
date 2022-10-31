@@ -15,18 +15,18 @@ public class Problem7 {
     private static int _second_user = 1;
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         HashMap<String, Integer> usersPoint = new HashMap<String, Integer>();
-        List<String> answer = new ArrayList<>();
+        List<String> answer = Collections.emptyList();
 
-        List<String> myFriends = getMyFriends(user, friends);
+        List<String> myFriends = getFriends(user, friends);
         usersPoint = calcFriendPoint(user, myFriends, friends, usersPoint);
         usersPoint = calcVisitorPoint(user, myFriends, visitors, usersPoint);
 
-        System.out.print(usersPoint);
+        answer = getRecommendedFriends(usersPoint);
 
         return answer;
     }
 
-    private static List<String> getMyFriends(String user, List<List<String>> friends) {
+    private static List<String> getFriends(String user, List<List<String>> friends) {
         List<String> myFriends = new ArrayList<String>();
         for (int i = 0; i < friends.size(); ++i)
         {
@@ -62,7 +62,7 @@ public class Problem7 {
         for (int i = 0; i < myFriends.size(); ++i)
         {
             String myFriend = myFriends.get(i);
-            List<String> friendFriends = getMyFriends(myFriend, friends);
+            List<String> friendFriends = getFriends(myFriend, friends);
             for (int j = 0; j < friendFriends.size(); ++j)
             {
                 String ff = friendFriends.get(j);
@@ -118,6 +118,25 @@ public class Problem7 {
             }
         }
         return false;
+    }
+
+    private static List<String> getRecommendedFriends(HashMap<String, Integer> usersPoint)
+    {
+        List<String> ret = new ArrayList<String>();
+        List<Map.Entry<String, Integer>> entry = new ArrayList<Map.Entry<String, Integer>>(usersPoint.entrySet());
+        Collections.sort(entry, new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                return o2.getValue().compareTo(o1.getValue());
+            }
+        });
+
+        for(Map.Entry<String, Integer> entryElement: entry)
+        {
+            ret.add(entryElement.getKey());
+//            System.out.print("Element: " + entryElement + "\n");
+        }
+        return ret;
     }
 }
 
