@@ -5,6 +5,7 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        answer = 0;
         if (isPageOutOfRange(pobi) || isPageOutOfRange((crong)) || isPageSubDiff((pobi)) || isPageSubDiff((crong))) {
             return -1;
         }
@@ -24,8 +25,8 @@ class Problem1 {
             sumTemp2 = sumTemp2 + Integer.valueOf(val);
         }
         int maxSum =  max(sumTemp1,sumTemp2);
-        int mulTemp1 = 0;
-        int mulTemp2 = 0;
+        int mulTemp1 = 1;
+        int mulTemp2 = 1;
         for(String val : arr1){
             mulTemp1 = mulTemp1 * Integer.valueOf(val);
         }
@@ -45,18 +46,18 @@ class Problem1 {
     }
     private static boolean isPageOutOfRange(List<Integer> arr){
         if(arr.get(0) > 400 || arr.get(1) > 400){
-            return false;
-        } else if(arr.get(0) < 1 || arr.get(1) < 1){
-            return false;
-        }else{
             return true;
+        } else if(arr.get(0) < 1 || arr.get(1) < 1){
+            return true;
+        }else{
+            return false;
         }
     }
     private static boolean isPageSubDiff(List<Integer> arr) {
         if (arr.get(1) - arr.get(0) != 1) {
-            return false;
-        } else {
             return true;
+        } else {
+            return false;
         }
     }
 }
