@@ -7,19 +7,19 @@ public class Problem2 {
         return answer;
     }
 
-    private static StringBuilder changeToStringBuilder(String crpytogram) {
+    public static StringBuilder changeToStringBuilder(String crpytogram) {
         StringBuilder stringBuilder = new StringBuilder(crpytogram);
         return stringBuilder;
     }
 
-    private static boolean isDuplicate(StringBuilder cryptogram, int index) {
+    public static boolean isDuplicate(StringBuilder cryptogram, int index) {
         if (cryptogram.charAt(index) == cryptogram.charAt(index + 1)) {
             return true;
         }
         return false;
     }
 
-    private static int getDuplicateRange(StringBuilder cryptogram, int start) {
+    public static int getDuplicateRange(StringBuilder cryptogram, int start) {
         int range = 1;
         for (int i = start; i < cryptogram.length() - 1; i++) {
             if (cryptogram.charAt(i) == cryptogram.charAt(i + 1)) {
@@ -32,11 +32,11 @@ public class Problem2 {
         return range;
     }
 
-    private static StringBuilder removeDuplicate(StringBuilder crpytogram, int start, int range) {
+    public static StringBuilder removeDuplicate(StringBuilder crpytogram, int start, int range) {
         return crpytogram.delete(start, start + range);
     }
 
-    private static StringBuilder decrypt(String cryptogram) {
+    public static StringBuilder decrypt(String cryptogram) {
         StringBuilder stringBuilderCryptogram = changeToStringBuilder(cryptogram);
         for (int i = 0; i < stringBuilderCryptogram.length() - 1; i++) {
             if (isDuplicate(stringBuilderCryptogram, i)) {
@@ -48,7 +48,7 @@ public class Problem2 {
         return stringBuilderCryptogram;
     }
 
-    private static String changeToString(StringBuilder stringBuilderCryptogram) {
+    public static String changeToString(StringBuilder stringBuilderCryptogram) {
         return stringBuilderCryptogram.toString();
     }
 }
