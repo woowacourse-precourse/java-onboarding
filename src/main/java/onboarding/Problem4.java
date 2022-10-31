@@ -15,13 +15,25 @@ public class Problem4 {
     	}
     }
     public static char convertCharReverse(char target) {
-    	char convertedChar;
-    	if(Character.isUpperCase(target)) {
-    		convertedChar = (char)(90-target+65);
-    	} else {
-    		convertedChar = (char)(122-target+97);
+    	char convertedChar = target;
+    	if(isUpperCase(target)) {
+    		convertedChar = (char) ('Z'-target+'A');
+    	} else if(isLowerCase(target)){
+    		convertedChar = (char) ('z'-target+'a');
     	}
     	return convertedChar;
+    }
+    private static boolean isUpperCase(char target) {
+    	if(65<=target && target<=90) {
+    		return true;
+    	}
+    	return false;
+    }
+    private static boolean isLowerCase(char target) {
+    	if(97<=target && target<=122) {
+    		return true;
+    	}
+    	return false;
     }
     public static String charArrToString(char[] wordArr) {
     	String result;
