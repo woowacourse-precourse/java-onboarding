@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**\
  * @Problem: 신청받은 닉네임 중 같은 글자가 연속적으로 포함 되는 닉네임을 작성한 지원자의 이메일 목록을 return 하도록 solution 메서드를 완성하라.
@@ -15,8 +16,43 @@ public class Problem6 {
      * 4. 결과를 정렬한다.
      * 5. 결과를 반환한다.
      */
+    private static List<String> checkNickName(List<List<String>> crews) {
+        Set<String> answerSet = new HashSet<>();
+        Map<String, List<String>> subNameMap = new HashMap<>();
+
+        for (List<String> crew : crews) {
+            String email = crew.get(0);
+            String nickName = crew.get(1);
+            for (int i = 0; i < nickName.length() - 1; i++) {
+                String subName = nickName.substring(i,i+2);
+                if(subNameMap.containsKey(subName)) {
+                    List<String> emailList = subNameMap.get(subName);
+                    if(!emailList.contains(email)) {
+                        emailList.add(email);
+                        subNameMap.replace(subName, emailList);
+                    }
+                }
+                else {
+                    List<String> emailList = new ArrayList<>();
+                    emailList.add(email);
+                    subNameMap.put(subName, emailList);
+                }
+            }
+        }
+
+        for (String key : subNameMap.keySet()) {
+            List<String> emailList = subNameMap.get(key);
+            if (emailList.size() > 1) {
+                for (String email : emailList) {
+                    answerSet.add(email);
+                }
+            }
+        }
+
+        return answerSet.stream().sorted().collect(Collectors.toList());
+    }
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer = checkNickName(forms);
         return answer;
     }
 }
