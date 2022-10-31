@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -18,37 +19,23 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
 
         HashMap<String, String> separatedNameToEmail = new HashMap<>();
-        HashSet<String> result = new HashSet<>();
 
-        for (List<String> form : forms) {
-            String email = form.get(EMAIL_INDEX);
-            String nickname = form.get(NICKNAME_INDEX);
-            if (!isValidDomain(email)) {
-                continue;
-            }
-
-            Set<String> invalidEmails = getInvalidEmails(separatedNameToEmail, email, nickname);
-            result.addAll(invalidEmails);
-        }
-
-        return result.stream()
+        return forms.stream()
+                .map(form -> getInvalidEmails(separatedNameToEmail, form))
+                .flatMap(Collection::stream)
+                .distinct()
                 .sorted()
                 .collect(toList());
     }
 
-    private static boolean isValidDomain(String email) {
-        String domain = splitEmail(email)[DOMAIN_INDEX];
-        return domain.equals(VALID_DOMAIN);
-    }
+    private static Set<String> getInvalidEmails(HashMap<String, String> separatedNameToEmail, List<String> form) {
+        String email = getString(form);
+        String nickname = getNickname(form);
 
-    private static String[] splitEmail(String email) {
-        return email.split(EMAIL_AT_SIGN);
-    }
+        if (!isValidDomain(email)) {
+            return Set.of();
+        }
 
-    private static Set<String> getInvalidEmails(
-            HashMap<String, String> separatedNameToEmail,
-            String email,
-            String nickname) {
         HashSet<String> result = new HashSet<>();
 
         for (int i = 0; i < nickname.length() - 1; i++) {
@@ -64,5 +51,22 @@ public class Problem6 {
         }
 
         return result;
+    }
+
+    private static String getNickname(List<String> form) {
+        return form.get(NICKNAME_INDEX);
+    }
+
+    private static String getString(List<String> form) {
+        return form.get(EMAIL_INDEX);
+    }
+
+    private static boolean isValidDomain(String email) {
+        String domain = splitEmail(email)[DOMAIN_INDEX];
+        return domain.equals(VALID_DOMAIN);
+    }
+
+    private static String[] splitEmail(String email) {
+        return email.split(EMAIL_AT_SIGN);
     }
 }
