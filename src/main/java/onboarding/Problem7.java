@@ -30,14 +30,14 @@ public class Problem7 {
 
     /**
      * 사용자의 친구 리스트에서 찾고자 하는 사람이 있는지 확인하는 메서드
-     * 
-     * @param name 확인하는 사람
+     *
+     * @param friend 확인하는 친구관계
      * @param friendsList 친구 리스트
      * @return 친구 리스트에 있으면 true, 아니라면 false
      */
-    static boolean isFriend(String name, List<String> friendsList) {
-        for (int i = 0; i < friendsList.size(); i++) {
-            if (friendsList.get(i) == name) {
+    static boolean isFriendOrUser(String user, String friend, List<String> friendsList) {
+        for (int j = 0; j < friendsList.size(); j++) {
+            if ((friendsList.get(j) == friend) || (friend == user)) {
                 return true;
             }
         }
@@ -69,7 +69,7 @@ public class Problem7 {
 
     /**
      * 친구추천 점수를 조건에 맞춰 정렬해 List로 반환하는 알고리즘
-     * 
+     *
      * @return 정렬한 친구추천 점수 아이디List
      */
     static List<String> createResultList() {
@@ -81,17 +81,29 @@ public class Problem7 {
             }
         });
 
-        // console 출력 Test
-        for (String key : keySet) {
-            System.out.print("Key : " + key);
-            System.out.println(", Val : " + friendScoreMap.get(key));
-        }
-
         return keySet;
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
+        friendScoreMap = new TreeMap<>();
+        List<String> friendsList = createUserFriendsList(user, friends);
+
+        for (int i = 0; i < friends.size(); i++) {
+            for (int j = 0; j < 2; j++) {
+                if (!isFriendOrUser(user, friends.get(i).get(j), friendsList)) {
+                    addScoreToMap(1, friends.get(i).get(j));
+                }
+            }
+        }
+
+        for (int i = 0; i < visitors.size(); i++) {
+            if (!isFriendOrUser(user, visitors.get(i), friendsList)) {
+                addScoreToMap(2, visitors.get(i));
+            }
+        }
+
+        answer = createResultList();
         return answer;
     }
 }
