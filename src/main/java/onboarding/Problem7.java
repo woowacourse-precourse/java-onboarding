@@ -19,9 +19,21 @@ public class Problem7 {
                 if (relation.contains(user)) {
                     break;
                 }
+                checkRelationContainUserFriend(userFriendList, recommendScore, relation, friend);
             }
         }
         return answer;
+    }
+    
+    private static void checkRelationContainUserFriend(List<String> userFriendList, Map<String, Integer> recommendScore, List<String> relation, String friend) {
+        if(relation.contains(friend)){
+            for (String knownFriend : relation) {
+                if(!userFriendList.contains(knownFriend)){
+                    addScore(recommendScore, knownFriend, 10);
+                    break;
+                }
+            }
+        }
     }
 
     private static void addScore(Map<String, Integer> recommendScore, String knownFriend, int x) {
