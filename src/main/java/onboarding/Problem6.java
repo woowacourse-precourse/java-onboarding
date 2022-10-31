@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.List;
+import java.util.Map;
 import java.util.HashSet;
 import java.util.HashMap;
 import java.util.ArrayList;
@@ -26,6 +27,7 @@ public class Problem6 {
 		putHash(forms);
 		putName(forms);
 		overLapCheck();
+		makeAnswer();
 		return answer;
 	}
 
@@ -54,9 +56,8 @@ public class Problem6 {
 	}
 
 	/**
-	 * 닉네임이 저장되어 있는 name배열의 크기만큼 반복을 한다 
-	 * name배열의 i번째 인덱스에서 연속된 두 문자를 checkId에 넣는다 ex) name[0] = 제이엠 checkId = 제이 checkId = 이엠 순으로 들어간다 
-	 * name의 배열 크기만큼 확인하는 기능이다
+	 * 닉네임이 저장되어 있는 name배열의 크기만큼 반복을 한다 name배열의 i번째 인덱스에서 연속된 두 문자를 checkId에 넣는다 ex)
+	 * name[0] = 제이엠 checkId = 제이 checkId = 이엠 순으로 들어간다 name의 배열 크기만큼 확인하는 기능이다
 	 */
 	public static void overLapCheck() {
 		for (int i = 0; i < name.length; i++) {
@@ -73,7 +74,7 @@ public class Problem6 {
 
 	/**
 	 * 
-	 *  중복된 문자열이 있는지 확인하고 있으면 setName에 집어넣는 기능이다
+	 * 중복된 문자열이 있는지 확인하고 있으면 setName에 집어넣는 기능이다
 	 * 
 	 * @param id
 	 * @param inow overLapCheck의 현재의 i번째
@@ -89,9 +90,16 @@ public class Problem6 {
 	}
 
 	/**
-	 * 
+	 * setName에 저장한 닉네임(중복된 닉네임)과 formsMap과 비교하여 동일한 값이 있으면 해당 value값으로 key값인 이메일을 setEmail에 집어넣는 기능이다
 	 */
-	public static void makeAnser() {
+	public static void makeAnswer() {
+		for (Map.Entry<String, String> entry : formsMap.entrySet()) {
 
+			for (String id : setName) {
+				if (entry.getValue().equals(id)) {
+					setEmail.add(entry.getKey());
+				}
+			}
+		}
 	}
 }
