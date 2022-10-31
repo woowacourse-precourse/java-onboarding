@@ -4,6 +4,7 @@ import java.util.HashMap;
 
 public class Problem4 {
     static class ConvertAlphabet {
+
         HashMap<Character, Character> alphabet = new HashMap<Character, Character>();
 
         public ConvertAlphabet() {
@@ -21,6 +22,7 @@ public class Problem4 {
     }
 
     static class StringBuilderWords {
+
         StringBuilder stringBuilder;
         String answer;
         int stringLength;
