@@ -36,11 +36,21 @@ public class Sns {
         updateRecommendMap(user, recommendMap);
         return recommendMembersUsingMap(recommendMap);
     }
+
     private void updateRecommendMap(String user, HashMap<String, Integer> recommendMap) {
         List<String> membersNotFriendWithUser = findMembersNotFriendWith(user);
 
         updateRecommendMapUsingFriendShip(recommendMap, user, membersNotFriendWithUser);
         updateRecommendMapUsingVisitLog(recommendMap, user, membersNotFriendWithUser);
+    }
+
+    private List<String> findMembersNotFriendWith(String user) {
+        ArrayList<String> members = new ArrayList<>();
+        HashSet<String> userFriendsSet = friendShip.getOrDefault(user, new HashSet<>());
+        for (String member : memberSet) {
+            if (!userFriendsSet.contains(member) && !member.equals(user)) members.add(member);
+        }
+        return members;
     }
 
     private void enrollMember(String member) {
