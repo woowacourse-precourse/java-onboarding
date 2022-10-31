@@ -17,6 +17,17 @@ public class Problem6 {
         // 1.
         List<List<String>> newForms = checkForms(forms);
 
+        // 3.
+        for(int i = 0; i < newForms.size(); i++){
+            for(int j = i + 1; j < newForms.size() - i; j++){
+                // 2.
+                if(checkDuplicatedName(newForms.get(i).get(1), newForms.get(j).get(1))){
+                    answer.add(newForms.get(i).get(0));
+                    answer.add(newForms.get(j).get(0));
+                }
+            }
+        }
+
         return answer;
     }
 
