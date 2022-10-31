@@ -33,7 +33,7 @@ public class Problem2 {
      * @return 제거된 문자열
      */
     private static String removeDuplicateString(String cryptogram) {
-        LinkedList<String> splitCryptogram = splitCryptogram(cryptogram);
+        List<String> splitCryptogram = getOneLetterCryptograms(cryptogram);
         int sizeSplitCryptogram = splitCryptogram.size();
 
         // 문자열 순차 읽기
@@ -53,14 +53,15 @@ public class Problem2 {
     }
 
     /**
-     * 암호문을 분리합니다.
-     * @param cryptogram 암호문
-     * @return 분리된 암호문
+     * 암호를 한글자씩 분할하기
+     * @param cryptogram 암호
+     * @return 한글자씩 분할된 암호
      */
-    private static LinkedList<String> splitCryptogram(String cryptogram) {
-        LinkedList<String> arrayListSplitCryptogram = new LinkedList<>();
-        Collections.addAll(arrayListSplitCryptogram, cryptogram.split(""));
+    private static List<String> getOneLetterCryptograms(String cryptogram) {
+        List<String> oneLetterCryptogram = new LinkedList<>();
+        Collections.addAll(oneLetterCryptogram, cryptogram.split(""));
 
-        return arrayListSplitCryptogram;
+        return oneLetterCryptogram;
     }
+
 }
