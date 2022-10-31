@@ -22,9 +22,18 @@ public class Problem7 {
                 checkRelationContainUserFriend(userFriendList, recommendScore, relation, friend);
             }
         }
+        checkVisitors(visitors, userFriendList, recommendScore);
         return answer;
     }
     
+    private static void checkVisitors(List<String> visitors, List<String> userFriendList, Map<String, Integer> recommendScore) {
+        for (String visitor : visitors) {
+            if(!userFriendList.contains(visitor)){
+                addScore(recommendScore, visitor, 1);
+            }
+        }
+    }
+
     private static void checkRelationContainUserFriend(List<String> userFriendList, Map<String, Integer> recommendScore, List<String> relation, String friend) {
         if(relation.contains(friend)){
             for (String knownFriend : relation) {
