@@ -22,6 +22,12 @@ public class Problem2 {
         return result.toString();
     }
 
+    // 중복된 문자열이 있었는지 확인하는 함수
+    public static boolean checkOverLapStr(String deletedStr, String cryptogram){
+        if(deletedStr.equals(cryptogram)) return false;
+        return true;
+    }
+
     // 중복된 문자가 없을때 까지 문자열을 제거 하고 리턴하는 함수
     public static String solution(String cryptogram) {
         String answer = "answer";
