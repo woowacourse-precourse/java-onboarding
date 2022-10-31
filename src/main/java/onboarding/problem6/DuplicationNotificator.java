@@ -17,10 +17,13 @@ public class DuplicationNotificator {
             String nick = form.get(1);
             for (int i = 0; i < nick.length() - 1; i++) {
                 String part = nick.substring(i, i + 2);
-                if (parts.containsKey(part))
-                    parts.get(part).add(email);
-                else
+                if (parts.containsKey(part)) {
+                    List<String> emails = parts.get(part);
+                    if (!emails.contains(email))
+                        emails.add(email);
+                } else {
                     parts.put(part, new ArrayList<>(Collections.singletonList(email)));
+                }
             }
         }
     }
