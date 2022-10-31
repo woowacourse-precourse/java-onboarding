@@ -14,7 +14,8 @@ public class Problem7 {
       List<String> visitors) {
     setFriendsShip(friends);
     recommendByFriends(user);
-
+    recommendByVisitor(user, visitors);
+    System.out.println(recommendList);
     return new ArrayList<>();
   }
 
@@ -45,6 +46,18 @@ public class Problem7 {
           recommendList.put(friend, priority);
         }
       }
+    }
+  }
+
+  private static void recommendByVisitor(String user, List<String> visitors){
+    Set<String> myFriends = friendsShip.get(user);
+    for(String visitor : visitors){
+      if(myFriends.contains(visitor)){
+        continue;
+      }
+      Integer priority =  recommendList.getOrDefault(visitor, 0);
+      priority += 1;
+      recommendList.put(visitor, priority);
     }
   }
 }
