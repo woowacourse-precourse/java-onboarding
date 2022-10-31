@@ -10,7 +10,7 @@ class Problem1 {
         int pobiMaxValue = findMaxValue(pobi);
         int crongMaxValue = findMaxValue(crong);
 
-        return 0;
+        return findWinner(pobiMaxValue, crongMaxValue);
     }
 
     private static boolean validatePages(List<Integer> player) {
@@ -55,5 +55,14 @@ class Problem1 {
             return sum;
         }
         return mul;
+    }
+    private static int findWinner(int pobiMaxNumber , int crongMaxNumber) {
+        if (pobiMaxNumber > crongMaxNumber) {
+            return 1;
+        }
+        if (pobiMaxNumber < crongMaxNumber) {
+            return 2;
+        }
+        return 0;
     }
 }
