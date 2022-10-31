@@ -30,7 +30,11 @@ public class Problem2 {
 
     // 중복된 문자가 없을때 까지 문자열을 제거 하고 리턴하는 함수
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        while (cryptogram.length()!=0){
+            String deletedStr = test(cryptogram);
+            if(!checkOverLapStr(deletedStr,cryptogram)) break;
+            cryptogram = deletedStr;
+        }
+        return cryptogram;
     }
 }
