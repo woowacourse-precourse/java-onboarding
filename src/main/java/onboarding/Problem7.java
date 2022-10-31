@@ -51,4 +51,17 @@ public class Problem7 {
         }
         recommendScore.put(recommendFriends, score + 1);
     }
+    private static Map<String, Integer> getRecommendScore(String user, List<String> visitors, Map<String, List<String>> memberFriendList) {
+        Map<String, Integer> recommendScore = new HashMap<>();
+        for(int i = 0; i < visitors.size(); i++) {
+            boolean checkUserFriend = memberFriendList.get(user).contains(visitors.get(i));
+            if(checkUserFriend) {
+                userFriendRecommend(user, visitors, memberFriendList, recommendScore, i);
+            }
+            else {
+                notUserFriendRecommend(visitors, recommendScore, i);
+            }
+        }
+        return recommendScore;
+    }
 }
