@@ -5,8 +5,10 @@ import java.util.Collections;
 import java.util.List;
 
 public class Problem5 {
+    private static final int NO = 0;
+
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
+        List<Integer> answer = exchange_money_all(money_unit(), money);
         return answer;
     }
 
@@ -37,4 +39,28 @@ public class Problem5 {
      * 해당 원소로 나눠주고 몫을 해당 원소의 인덱스와 교체하고,
      * 현재 금액이 배열의 원소보다 작으면 0을 넣어줌
 줌    * */
+
+    private static int exchange_money(List<Integer> exchange_list, int now_type, int money) {
+        if (now_type > money) {
+            exchange_list.add(NO);
+            money = money;
+            return money;
+        }
+        if (now_type <= money) {
+            exchange_list.add(money / now_type);
+            money = money % now_type;
+            return money;
+        }
+        return 0;
+    }
+
+    private static List<Integer> exchange_money_all(List<Integer> money_unit, int money) {
+        int length = money_unit.size();
+        List<Integer> exchange_list = new ArrayList<>();
+        for (int index = 0; index < length; index++) {
+            int now_type = money_unit.get(index);
+            money = exchange_money(exchange_list, now_type, money);
+        }
+        return exchange_list;
+    }
 }
