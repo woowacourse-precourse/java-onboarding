@@ -38,6 +38,14 @@ public class Problem7 {
             }
         }
 
+        for (String visitor : visitorsNotfriend) { // 친구가 아닌 방문자에게 1점 추가
+            if (!recommendations.containsKey(visitor)) { // 처음 인식된 이름이면 등록 + 1점 추가
+                recommendations.put(visitor, VISIT_SCORE);
+            } else {                                     // 이미 있는 이름일 시, 기존 점수에 1점 추가
+                recommendations.put(visitor, recommendations.get(visitor) + VISIT_SCORE);
+            }
+        }
+
         List<String> answer = Collections.emptyList();
         return answer;
     }
