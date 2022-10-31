@@ -9,7 +9,7 @@ public class FriendsValidation {
     private static final String FRIENDS_SIZE_EXCEPTION_MESSAGE = "friends의 길이는 길이가 1 이상 10,000 이하여야 합니다.";
     private static final String FRIEND_LOWERCASE_EXCEPTION_MESSAGE = "friend의 아이디 길이는 소문자로 구성되어야 합니다.";
 
-    private static void validate(List<List<String>> friends) {
+    public static void validate(List<List<String>> friends) {
         validateFriendsSize(friends);
         validateFriendsId(friends);
     }
