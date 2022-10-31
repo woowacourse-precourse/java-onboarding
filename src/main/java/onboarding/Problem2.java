@@ -1,11 +1,5 @@
-
 package onboarding;
 public class Problem2 {
-
-    static int cryptogramPointer = 0;
-    static int continuityStart=0; static int continuityEnd=0;
-    static int numberOfZeros=0;
-    static String answer="";
 
     public static int howManyZero(int start,int frontOrBack, char arr[]) {
         int cnt = 0;
@@ -31,14 +25,17 @@ public class Problem2 {
         }
     }
 
-    public static void charArrayToString(char[] arr) {
+    public static String charArrayToString(char[] arr) {
+        String toString ="";
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] != '0') {
-                answer = answer + arr[i];
+                toString = toString + arr[i];
             }
         }
+        return toString;
     }
-    public static void zeroChecker(char[] arr) {
+    public static int zeroChecker(char[] arr, int numberOfZeros,int cryptogramPointer) {
+        int continuityEnd=0;
         while (true) {
             if (cryptogramPointer<0||cryptogramPointer+numberOfZeros+1>=arr.length) {
                 break;
@@ -50,10 +47,17 @@ public class Problem2 {
                 break;
             }
         }
+        return continuityEnd;
     }
 
     public static String solution(String cryptogram) {
+        String answer="";
+        int continuityEnd=0;
+        int continuityStart=0;
+        int numberOfZeros =0;
+        int cryptogramPointer = 0;
         char[] cryptogramArray = cryptogram.toCharArray();
+
         while(true) {
             continuityStart=cryptogramPointer;
             numberOfZeros = howManyZero(cryptogramPointer,1,cryptogramArray);
@@ -61,15 +65,16 @@ public class Problem2 {
                 break;
             }
             if (cryptogramArray[cryptogramPointer]==cryptogramArray[cryptogramPointer+numberOfZeros+1]) {
-                zeroChecker(cryptogramArray);
+                continuityEnd=zeroChecker(cryptogramArray,numberOfZeros,cryptogramPointer);
                 continuityToZero(continuityStart,continuityEnd,cryptogramArray);
                 cryptogramPointer=cryptogramPointer-howManyZero(cryptogramPointer,0,cryptogramArray);
             } else {
                 cryptogramPointer++;
             }
         }
-        charArrayToString(cryptogramArray);
+        answer=charArrayToString(cryptogramArray);
 
         return answer;
     }
+
 }
