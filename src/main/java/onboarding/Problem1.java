@@ -15,9 +15,11 @@ class Problem1 {
 
         if(pobiMax > crongMax) {
             return 1;
-        } else if (pobiMax < crongMax) {
+        }
+        if (pobiMax < crongMax) {
             return 2;
-        } else return 0;
+        }
+        return 0;
     }
 
     static int comparePages(List<Integer> player) {
