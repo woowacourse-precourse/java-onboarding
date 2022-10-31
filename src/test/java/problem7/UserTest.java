@@ -76,18 +76,15 @@ public class UserTest {
         assertThat(bedi.getScore()).isEqualTo(3);
     }
 
-    @Test
-    void 함께아는_친구의수_기준으로_점수부여() {
+    @CsvSource(value = {"0:andole:20", "1:jun:20", "2:bedi:3"}, delimiter = ':')
+    @ParameterizedTest
+    void 함께아는_친구의수_기준으로_점수부여(int index, String userId, int score) {
         userService.addFriends(createFriends());
         List<FriendCommendResponseDto> result =
                 userService.operateFriendCommendation("mrko", List.of("bedi", "bedi", "donut", "bedi", "shakevan"));
 
-        FriendCommendResponseDto andole = result.get(0);
-        FriendCommendResponseDto jun = result.get(1);
-        FriendCommendResponseDto bedi = result.get(2);
-        assertThat(andole.getScore()).isEqualTo(20);
-        assertThat(jun.getScore()).isEqualTo(20);
-        assertThat(bedi.getScore()).isEqualTo(3);
+        assertThat(result.get(index).getUserId()).isEqualTo(userId);
+        assertThat(result.get(index).getScore()).isEqualTo(score);
     }
 
     private List<List<String>> createFriends() {
@@ -123,6 +120,34 @@ public class UserTest {
         friends.add(List.of("shakevan", "jun"));
         friends.add(List.of("shakevan", "mrko"));
         friends.add(List.of("pobi", "donut"));
+        friends.add(List.of("yuna", "andole"));
+
+        return friends;
+    }
+
+    @CsvSource(value = {"0:andole:20", "1:pobi:10", "2:bedi:3", "3:anna:2"}, delimiter = ':')
+    @ParameterizedTest
+    void 점수가_0점인경우_추천리스트에서_제외(int index, String userId, int score) {
+        userService.addFriends(createFriends3());
+        List<FriendCommendResponseDto> result =
+                userService.operateFriendCommendation("mrko",
+                        List.of("bedi", "bedi", "donut", "bedi", "shakevan", "anna", "anna"));
+
+        System.out.println(result.get(index).getUserId() + " ////" +  result.get(index).getScore());
+        assertThat(result.get(index).getUserId()).isEqualTo(userId);
+        assertThat(result.get(index).getScore()).isEqualTo(score);
+        assertThat(result.size()).isEqualTo(4);
+    }
+
+    private List<List<String>> createFriends3() {
+        List<List<String>> friends = new ArrayList<>();
+        friends.add(List.of("donut", "andole"));
+        friends.add(List.of("donut", "mrko"));
+        friends.add(List.of("donut", "pobi"));
+        friends.add(List.of("jun", "pobi"));
+        friends.add(List.of("jun", "yuna"));
+        friends.add(List.of("shakevan", "andole"));
+        friends.add(List.of("shakevan", "mrko"));
         friends.add(List.of("yuna", "andole"));
 
         return friends;

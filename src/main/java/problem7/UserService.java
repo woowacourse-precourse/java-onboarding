@@ -18,6 +18,7 @@ public class UserService {
     public static final int VISITOR_SCORE = 1;
     public static final int COMMON_FRIEND_SCORE = 10;
     public static final int RESPONSE_MAX_SIZE = 5;
+    public static final int MINIMUM_LIMIT_SCORE = 0;
 
     private final UserRepository userRepository;
 
@@ -84,8 +85,9 @@ public class UserService {
 
         Set<Entry<String, Integer>> entries = commendFriend.entrySet();
         return entries.stream()
-                .sorted(Entry.<String,Integer>comparingByValue().reversed().thenComparing(comparingByKey()))
+                .sorted(Entry.<String, Integer>comparingByValue().reversed().thenComparing(comparingByKey()))
                 .limit(RESPONSE_MAX_SIZE)
+                .filter(e -> e.getValue() > MINIMUM_LIMIT_SCORE)
                 .map(entry -> new FriendCommendResponseDto(entry.getKey(), entry.getValue()))
                 .collect(Collectors.toList());
     }
