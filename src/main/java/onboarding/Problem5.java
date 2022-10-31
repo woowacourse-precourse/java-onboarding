@@ -8,16 +8,17 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 public class Problem5 {
-    private static LinkedHashMap<Integer, Integer> map = new LinkedHashMap<>();
-    private static List<Integer> answer = new ArrayList<>();
+    private static LinkedHashMap<Integer, Integer> map;
+    private static List<Integer> answer;
     private static int currentMoney;
 
     public static void setMoney(int money)
     {
-      currentMoney= money;
+      currentMoney = money;
     }
     public static void setMap()
     {
+        map = new LinkedHashMap<>();
         map.put(50000, 0);
         map.put(10000,1);
         map.put(5000,2);
@@ -42,15 +43,11 @@ public class Problem5 {
     {
         setMoney(money);
         setMap();
-        answer.clear();
+        answer = new ArrayList<>();
         for (int i = 0 ; i < 9 ; i++)
-        {
             answer.add(0);
-        }
         for ( Integer key : map.keySet())
-        {
             ChangeNum(key);
-        }
         return answer;
     }
 
