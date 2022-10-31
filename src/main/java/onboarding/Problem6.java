@@ -30,6 +30,14 @@ public class Problem6 {
                 }
             }
         }
+        Set<Integer> total_set = new HashSet<>();
+
+        for (String key : map.keySet()){
+            Set<Integer> set = map.get(key);
+            if (set.size() >= 2){
+                total_set.addAll(set);
+            }
+        }
         List<String> answer = List.of("answer");
         return answer;
     }
