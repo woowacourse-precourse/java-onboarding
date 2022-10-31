@@ -1,7 +1,7 @@
 package onboarding.problem7.service;
 
+import onboarding.problem7.collection.Visitors;
 import onboarding.problem7.repository.FriendRepository;
-import onboarding.problem7.validation.FriendValidator;
 import onboarding.problem7.vo.Member;
 import onboarding.problem7.vo.Relation;
 
@@ -17,19 +17,19 @@ public class RecommendService {
         this.friendRepository = friendRepository;
     }
 
-    public List<String> recommendFriends(List<List<String>> members, List<String> visitors) {
-        FriendValidator.validateVisitors(visitors);
-
+    public List<String> recommendFriends(List<List<String>> members, List<String> visitorList) {
         List<Relation> relations = Relation.ofList(members);
+        Visitors visitors = Visitors.of(visitorList);
 
         saveAllMembers(relations, visitors);
+
         analyzeRelations(relations);
         analyzeVisitors(visitors);
 
         return friendRepository.findAllNameSortByScoreNot0DescNameAsc();
     }
 
-    private void saveAllMembers(List<Relation> relations, List<String> visitors) {
+    private void saveAllMembers(List<Relation> relations, Visitors visitors) {
         relations.forEach(relation -> saveMembersByRelation(relation));
         visitors.forEach(visitor -> friendRepository.save(Member.of(visitor)));
     }
@@ -57,7 +57,7 @@ public class RecommendService {
         }
     }
 
-    private void analyzeVisitors(List<String> visitors) {
+    private void analyzeVisitors(Visitors visitors) {
         visitors.forEach(visitor -> friendRepository.findByName(visitor)
                 .ifPresent(member -> member.addScore(VISITOR_SCORE))
         );

@@ -554,6 +554,7 @@ class ApplicationTest {
     }
 
     @Nested
+    @DisplayName("문제 7 테스트")
     class Problem7Test {
         @Nested
         @DisplayName("문제 7 성공 케이스 테스트")
