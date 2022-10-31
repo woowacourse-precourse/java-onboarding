@@ -8,6 +8,9 @@ public class Problem7 {
     // A와 B가 아는 사이고, B와 C가 아는 사이라면 {A, (B)}, {B, (A,C)}, {C, (B)}
     static Map<String, Set<String>> friendsList = new HashMap<>();
 
+    // 사용자들의 점수를 저장할 Map
+    static Map<String, Integer> scores = new HashMap<>();
+
     // personA와 personB를 각자의 friendsList에 추가한다.
     static void relateFriend(String personA, String personB){
         // a->b의 관계를 만든다.
@@ -32,6 +35,21 @@ public class Problem7 {
             // 서로의 friendList에 추가
             relateFriend(personA, personB);
         }
+
+
+        // 1. user의 친구들을 순회한다.
+        // 2. 그 친구의 친구인 nearFriend를 돌면서, nearFriend의 점수 += 10
+        for (String userFriend : friendsList.get(user)) {
+            for (String nearFriend : friendsList.get(userFriend)) {
+                // user와 친구거나, user 자체면 안된다.
+                if (friendsList.get(user).contains(nearFriend) || (user.equals(nearFriend))) continue;
+
+                // 10점을 더한다.
+                scores.put(nearFriend, scores.getOrDefault(nearFriend, 0) + 10);
+            }
+        }
+
+
 
         return answer;
     }
