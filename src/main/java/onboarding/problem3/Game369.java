@@ -22,7 +22,7 @@ public class Game369 {
 
     public static int getTotalClapTimeOfNumbersInRange(int start, int end){
         int totalClapTimeOfNumbersInRange = 0;
-        
+
         for(int i = start ; i <= end ; i++){
             totalClapTimeOfNumbersInRange += getClapTimeOfNumber(i);
         }
