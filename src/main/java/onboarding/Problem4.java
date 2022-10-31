@@ -21,6 +21,12 @@ public class Problem4 {
         return false;
     }
 
+    public static String change(char alphabet){
+        int ascii = getAscii(alphabet);
+        String changed = String.valueOf((char)ascii);
+        return changed;
+    }
+
     public static int getAscii(char alphabet){
         int ascii = 0;
         if(isUpper(alphabet)){
