@@ -5,17 +5,17 @@ import java.util.regex.Pattern;
 
 public class Problem6 {
     public static List<String> delDuplicate(List<String> emails){
-        ArrayList<String> newList = new ArrayList<String>();
+        ArrayList<String> deleted = new ArrayList<String>();
 
         if(emails.size() >= 2) {
             for (String email : emails) {
-                if (!newList.contains(email)){
-                    newList.add(email);
+                if (!deleted.contains(email)){
+                    deleted.add(email);
                 }
             }
         }
 
-        return newList;
+        return deleted;
     }
 
     public static List<List<String>> isAvailable(List<List<String>> forms){
@@ -33,7 +33,32 @@ public class Problem6 {
         }
         return available;
     }
-    
+
+    public static List<String> checkOverlapped(List<List<String>> forms, List<String> target) {
+        List<String> result = new ArrayList<String>();
+        String email = target.get(0);
+        String nickname = target.get(1);
+        int len = 2;
+
+        while (len < nickname.length()) {
+            for (List<String> form : forms) {
+                for (int i = 0; i < nickname.length() - len + 1; i++) {
+                    String part = nickname.substring(i, i + len);
+                    if (form.get(1).contains(part)) {
+                        result.add(form.get(0));
+                    }
+                }
+            }
+            len ++;
+        }
+
+        if (result.size() > 0){
+            result.add(email);
+        }
+
+        return result;
+    }
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
