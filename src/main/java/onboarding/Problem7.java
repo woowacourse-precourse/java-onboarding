@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * 기능목록
@@ -24,6 +21,7 @@ public class Problem7 {
         setVisitors(visitors,userFriends);
         setScore(scoreBoard,userFOAF,10);
         setScore(scoreBoard,visitors,1);
+        answer = getRecommendList(scoreBoard);
         return answer;
     }
 
@@ -51,7 +49,6 @@ public class Problem7 {
         for(String userFriend : userFriends){
             addOppositeUserToList(userFOAF,userFriend,friends);
         }
-
         while (userFOAF.remove(user)) {
         }
         userFOAF.removeAll(userFriends);
@@ -71,5 +68,25 @@ public class Problem7 {
             scoreBoard.put(FOAF,scoreBoard.get(FOAF)+score);
         }
         return scoreBoard;
+    }
+
+    static List<String> getRecommendList(HashMap<String,Integer> result){
+        List<String> sort = new ArrayList<>();
+        List<String> listKeySet = sortByScore(result);
+
+        for(String user : listKeySet){
+            if(sort.size()<5){
+                sort.add(user);
+            }
+        }
+        return sort;
+    }
+
+    static List<String> sortByScore(HashMap<String,Integer> scoreBoard){
+        List<String> recommendFriends = new ArrayList<>(scoreBoard.keySet());
+
+        Collections.sort(recommendFriends);
+        Collections.sort(recommendFriends, (value1, value2) -> (scoreBoard.get(value2).compareTo(scoreBoard.get(value1))));
+        return recommendFriends;
     }
 }
