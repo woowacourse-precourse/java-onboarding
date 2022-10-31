@@ -18,18 +18,18 @@ public class Problem6 {
         HashSet<String> emails = new HashSet<>();
 
         for (List<String> form : forms) {
-            String targetEmail = form.get(0);
-            String targetNickname = form.get(1);
-            for (int index = 0; index < targetNickname.length() - 1; index++) {
-                String target = targetNickname.substring(index, index + 2);
+            String userEmail = form.get(0);
+            String userNickname = form.get(1);
+            for (int index = 0; index < userNickname.length() - 1; index++) {
+                String target = userNickname.substring(index, index + 2);
                 if (DUPLICATION_NICKNAME.containsKey(target)) {
                     String email = DUPLICATION_NICKNAME.get(target);
-                    if (!email.equals(targetEmail)) {
-                        emails.add(targetEmail);
+                    if (!email.equals(userEmail)) {
+                        emails.add(userEmail);
                         emails.add(email);
                     }
                 }
-                DUPLICATION_NICKNAME.put(target, targetEmail);
+                DUPLICATION_NICKNAME.put(target, userEmail);
             }
         }
 
