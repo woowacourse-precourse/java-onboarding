@@ -31,4 +31,11 @@ class Problem1 {
         }
         return pagenumberSum;
     }
+    public static int pagenumberMultiply(List<Integer> pageSplits){
+        int pagenumberMultiply = 1;
+        for (int i = 0; i < pageSplits.size(); i++) {
+            pagenumberMultiply *= pageSplits.get(i);
+        }
+        return pagenumberMultiply;
+    }
 }
