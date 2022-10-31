@@ -3,7 +3,6 @@ package onboarding.problem6.domain;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 public class User {
