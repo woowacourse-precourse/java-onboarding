@@ -30,6 +30,26 @@ public class Problem7 {
             countScore(friendsScore, visitor, 1);   // 요구사항에 따라서 1점을 더한다.
         }
 
+        List<String> answer = new ArrayList<>(friendsScore.keySet());
+
+        answer.sort(new Comparator<String>() {             // 점수순으로 정렬을 하고, 동률인 경우 이름순으로 정렬을 하도록 한다.
+            @Override
+            public int compare(String o1, String o2) {
+                if (friendsScore.get(o1) > friendsScore.get(o2)){
+                    return -1;
+                } else if (friendsScore.get(o2) > friendsScore.get(o1)){
+                    return 1;
+                }
+
+                return o1.compareTo(o2);
+            }
+        });
+
+        if (answer.size() < 5){     // anwerList의 길이가 5보다 작은경우 그대로 return하고, 5보다 큰경우 상위 5개만 return시킨다.
+            return answer;
+        } else {
+            return answer.subList(0, 5);
+        }
     }
 
 
