@@ -16,6 +16,7 @@ public class Problem7 {
 
         friendScore(user, hm, tm);              // 친구의 친구 점수 추가
         visitScore(user, visitors, hm, tm);     // 방문자 점수 추가
+        makeAnswer(answer, tm);                 // 정답 산출
 
         return answer;
     }
@@ -65,6 +66,21 @@ public class Problem7 {
             if(!str.equals(user) && !li.contains(str)){
                 tm.put(str, tm.getOrDefault(str, 0) + 1);
             }
+        }
+    }
+
+    // 트리맵을 정렬하고 최대 5개까지 정답 리스트에 추가
+    private static void makeAnswer(List<String> answer, Map<String, Integer> tm) {
+        List<String> keySet = new ArrayList<>((tm.keySet()));
+        keySet.sort((o1, o2) -> tm.get(o2).compareTo(tm.get(o1)));
+
+        int idx = 0;
+        for(String str : keySet){
+            if(idx == 5){
+                break;
+            }
+            answer.add(str);
+            idx++;
         }
     }
 }
