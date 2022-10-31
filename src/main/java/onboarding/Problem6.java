@@ -25,14 +25,7 @@ public class Problem6 {
         Set<String> collectNickname = selectDuplicatedNickname(nickList);
 
         // 보낼 이메일 구하고 오름차순 정렬
-        String[] makeEmailList = new String[collectNickname.size()];
-        Iterator<String> collectNicknameItr = collectNickname.iterator();
-        for(int i=0; i<makeEmailList.length; i++){
-            String nickName = collectNicknameItr.next();
-            String email = listMap.get(nickName);
-            makeEmailList[i] = email;
-        }
-
+        String[] makeEmailList = makeEmailList(collectNickname, listMap);
         Arrays.sort(makeEmailList);
 
         for(int i=0; i<makeEmailList.length; i++){
@@ -103,6 +96,24 @@ public class Problem6 {
         }
 
         return collectNickname;
+    }
+
+    /**
+     * 최종 이메일 목록을 만드는 메소드
+     * @param collectNickname 중복 확인 된 이메일이 들어있는 set
+     * @param listMap 모든닉네임과 이메일이 들어있는 map
+     * @return 최종 이메일 배열
+     */
+    static String[] makeEmailList(Set<String> collectNickname, Map<String, String> listMap){
+        String[] makeEmailList = new String[collectNickname.size()];
+        Iterator<String> collectNicknameItr = collectNickname.iterator();
+        for(int i=0; i<makeEmailList.length; i++){
+            String nickName = collectNicknameItr.next();
+            String email = listMap.get(nickName);
+            makeEmailList[i] = email;
+        }
+
+        return makeEmailList;
     }
 
 }
