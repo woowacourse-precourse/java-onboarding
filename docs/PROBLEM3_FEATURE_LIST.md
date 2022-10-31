@@ -14,4 +14,5 @@ problem3(int number){
 - ~~규칙에 따라 해당 숫자에서 박수치는 횟수를 구해주는 int getClapsByNumber(int) 함수~~
 
 TODO
-- 
+- 슈도코드에 맞게 로직 구현
+- 리팩터링
