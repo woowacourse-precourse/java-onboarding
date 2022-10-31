@@ -41,7 +41,7 @@ class Problem1 {
     }
 
     //가장 큰 수 구하기
-    private int getScore(List<Integer> pageArray) {
+    private static int getScore(List<Integer> pageArray) {
         ArrayList<Integer> scoreList = new ArrayList<>();
 
         for(int e: pageArray) {
@@ -52,7 +52,7 @@ class Problem1 {
     }
 
     //게임 결과 구하기
-    private static in findResult(int pobi_score, int crong_score) {
+    private static int findResult(int pobi_score, int crong_score) {
         if(pobi_score > crong_score) {
             return 1;
         } else if(pobi_score < crong_score) {
@@ -64,6 +64,12 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+
+        if (!isValidInput(pobi) || !isValidInput(crong)) {
+            return -1;
+        }
+
+        answer = findResult(getScore(pobi), getScore(crong));
 
         return answer;
     }
