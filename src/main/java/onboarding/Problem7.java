@@ -1,15 +1,9 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Comparator;
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
-import java.util.Stack;
 import java.util.TreeMap;
 import java.util.TreeSet;
 import onboarding.problem7.RecommendationFriend;
@@ -18,24 +12,41 @@ import java.util.Collections;
 import java.util.List;
 import onboarding.problem7.Score;
 import onboarding.problem7.ValueComparator;
-import org.mockito.internal.matchers.Null;
+
 
 public class Problem7 {
-    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+
+    public static List<String> solution(String user, List<List<String>> friends,
+        List<String> visitors) {
         List<String> answer = Collections.emptyList();
         Score score = getFriendScore(user, friends);
-        HashMap<String,Integer> finalScore = sumVisitorScore(visitors, score.getScore());
+        HashMap<String, Integer> finalScore = sumVisitorScore(visitors, score.getScore());
+        List<RecommendationFriend> sortedScore;
 
+        finalScore = subFriend(score.getUserFriends(), finalScore);
+        sortedScore = sortRecommendationSocre(finalScore);
+        answer = orderByName(sortedScore);
 
         return answer;
     }
 
-    private static Score getFriendScore(String user, List<List<String>> friends){
-        HashMap<String,Integer> tempScore = new HashMap<String,Integer>();
+    private static HashMap<String, Integer> subFriend(List<String> userFriends,
+        HashMap<String, Integer> score) {
+        HashMap<String, Integer> result = score;
+
+        for (int i = 0; i < userFriends.size(); i++) {
+            result.remove(userFriends.get(i));
+        }
+
+        return result;
+    }
+
+    private static Score getFriendScore(String user, List<List<String>> friends) {
+        HashMap<String, Integer> tempScore = new HashMap<String, Integer>();
         List<String> userFriends = new ArrayList<>();
         Score result;
 
-        for (int i=0; i < friends.size(); i++) {
+        for (int i = 0; i < friends.size(); i++) {
             String userA = friends.get(i).get(0);
             String userB = friends.get(i).get(1);
 
@@ -44,8 +55,8 @@ public class Problem7 {
             } else if (userB == user) { // 유저A 친구
                 userFriends.add(userA);
             } else if (userA != user && userB != user) { // 친구의 친구다
-                tempScore.put(userA, tempScore.getOrDefault(userA, 0)+10);
-                tempScore.put(userB, tempScore.getOrDefault(userB, 0)+10);
+                tempScore.put(userA, tempScore.getOrDefault(userA, 0) + 10);
+                tempScore.put(userB, tempScore.getOrDefault(userB, 0) + 10);
             }
         }
         result = new Score(tempScore, userFriends);
@@ -53,26 +64,28 @@ public class Problem7 {
         return result;
     }
 
-    private  static HashMap<String,Integer> sumVisitorScore(List<String> visitors, HashMap<String,Integer> score) {
-        HashMap<String,Integer> result = score;
+    private static HashMap<String, Integer> sumVisitorScore(List<String> visitors,
+        HashMap<String, Integer> score) {
+        HashMap<String, Integer> result = score;
 
-        for (int j=0; j<visitors.size(); j++)
-        {
+        for (int j = 0; j < visitors.size(); j++) {
             String visitor = visitors.get(j);
-            result.put(visitor, result.getOrDefault(visitor, 0)+1);
+            result.put(visitor, result.getOrDefault(visitor, 0) + 1);
         }
         return result;
     }
-    private static List<RecommendationFriend> sortRecommendationSocre(Map<String, Integer> recommendationFriends){
+
+    private static List<RecommendationFriend> sortRecommendationSocre(
+        Map<String, Integer> recommendationFriends) {
         List<RecommendationFriend> result = new ArrayList<>();
-        ValueComparator valueComparator =  new ValueComparator(recommendationFriends);
-        TreeMap<String,Integer> sortedMap = new TreeMap<>(valueComparator);
+        ValueComparator valueComparator = new ValueComparator(recommendationFriends);
+        TreeMap<String, Integer> sortedMap = new TreeMap<>(valueComparator);
         int i = 0;
 
         sortedMap.putAll(recommendationFriends);
         result.add(new RecommendationFriend("NULL", -1));
 
-        for (Map.Entry<String,Integer> user : sortedMap.entrySet()) {
+        for (Map.Entry<String, Integer> user : sortedMap.entrySet()) {
             int recommendationScore = recommendationFriends.get(user.getKey());
 
             if (overScoreCount(result.size(), result.get(i).getScore(), recommendationScore)) {
@@ -125,53 +138,6 @@ public class Problem7 {
         }
         result.addAll(equalScore);
 
-        return (i > 5) ? result.subList(0, 5) :  result.subList(0, i);
-    }
-
-    public static void main(String[] args) {
-
-/*
-        HashMap<String,Integer> map = new HashMap<String,Integer>();
-
-        map.put("ab", 50);
-        map.put("a", 50);
-        map.put("ac", 30);
-        map.put("aa", 30);
-        map.put("aq", 30);
-        map.put("as", 30);
-
-
-        List<RecommendationFriend> result;
-
-
-        result = sortRecommendationSocre(map);
-
-        for (RecommendationFriend i : result) {
-            System.out.println(i.getId() + " - " + i.getScore());
-        }
-
-        List<String> mergeScore = orderByName(result);
-
-        for(String s : mergeScore) {
-            System.out.println(s);
-        }
-*/
-        List<List<String>> friends = List.of(
-            List.of("donut", "andole"),
-            List.of("donut", "jun"),
-            List.of("donut", "mrko"),
-            List.of("shakevan", "andole"),
-            List.of("shakevan", "jun"),
-            List.of("shakevan", "mrko")
-        );
-        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
-        List<String> t;
-
-        t = solution("mrko", friends, visitors);
-
-        for (String s : t ){
-            System.out.println(s);
-        }
-
+        return (i > 5) ? result.subList(0, 5) : result.subList(0, i);
     }
 }
