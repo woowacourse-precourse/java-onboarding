@@ -9,6 +9,8 @@ public class AccountWithDraw {
 
     public AccountWithDraw(int money) {
         this.money = money;
+        Validator validator = new Validator(money);
+        validator.validate();
     }
 
     public List<Integer> withDraw() {
