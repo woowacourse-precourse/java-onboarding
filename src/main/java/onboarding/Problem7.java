@@ -4,8 +4,8 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        HashMap<String, Integer> scores = new HashMap<>();
-        HashSet<String> alreadyFriend = new HashSet<>();
+        HashMap<String, Integer> scores = new HashMap<>(); // 점수 계산해서 저장할 공간
+        HashSet<String> alreadyFriend = new HashSet<>(); // 이미 친구인 아이디를 저장할 공간
 
         //친구 점수
         for(List<String> friend : friends) {
