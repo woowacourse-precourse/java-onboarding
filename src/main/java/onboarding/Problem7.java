@@ -36,11 +36,6 @@ public class Problem7 {
             if(!scores.containsKey(user2)) scores.put(user2, 0);
         }
 
-        // user 가 아는 친구는 scores 리스트에서 삭제
-        for(String friend : friendList.get(user)) {
-            scores.remove(friend);
-        }
-
         // 함께 아는 친구의 수
         for(String candidate : scores.keySet()) {
             int count = 0;
@@ -52,7 +47,7 @@ public class Problem7 {
 
         // 방문한 횟수
         for(String visitor : visitors) {
-            if(friendList.get(user).contains(visitor)) continue; // visitor 가 user 의 친구일 경우
+            //if(friendList.get(user).contains(visitor)) continue; // visitor 가 user 의 친구일 경우
             if(!scores.containsKey(visitor)) scores.put(visitor, 1);  // 그동안 언급되지 않았던 user 일 경우
             scores.put(visitor, (scores.get(visitor) + 1)); // 기존 점수 + (1 * 방문 수)
         }
@@ -74,6 +69,7 @@ public class Problem7 {
         int cnt = 0; // 추천한 횟수 카운트
         HashMap<String, Integer> temp = new HashMap<String, Integer>();
         for (Map.Entry<String, Integer> candidate : scoreList) {
+            if(friendList.get(user).contains(candidate.getKey())) continue;
             if(cnt == 5) break;                  // 5명 추천이 끝났으면 실행 종료
             if(candidate.getValue() == 0) break; // 추천 점수가 0점이면 실행 종료
             answer.add(candidate.getKey());      // 정답 리스트에 추천 친구의 이름 추가
