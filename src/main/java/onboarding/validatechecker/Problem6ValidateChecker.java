@@ -6,6 +6,7 @@ public class Problem6ValidateChecker {
 	private static final int EMAIL = 0;
 	private static final int NICKNAME = 1;
 	private static final String EMAIL_DOMAIN = "email.com";
+	private static final String KOREAN_PATTERN = "^[가-힣]*$";
 	public static void isFormsValidate(List<List<String>> forms){
 		isFormsNotNull(forms);
 		isFormNotNull(forms);
@@ -14,6 +15,13 @@ public class Problem6ValidateChecker {
 		isEmailSizeInRange(forms);
 		isNickNameSizeInRange(forms);
 		isEmailContainDomain(forms);
+		isNickNameContainOnlyKorean(forms);
+	}
+
+	private static void isNickNameContainOnlyKorean(List<List<String>> forms) {
+		for (List<String> form : forms)
+			if(!form.get(NICKNAME).matches(KOREAN_PATTERN))
+				throw new IllegalArgumentException("닉네임의 길이가 0이거나, 20자 이상입니다.");
 	}
 
 	private static void isEmailContainDomain(List<List<String>> forms) {
