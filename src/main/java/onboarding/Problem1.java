@@ -16,6 +16,11 @@ class Problem1 {
         int pobiScore = getScore(pobi);
         int crongScore = getScore(crong);
 
+        // 2. 두 사람의 점수를 비교하여 승자를 가림
+        if(pobiScore > crongScore) answer = 1;
+        else if(pobiScore < crongScore) answer = 2;
+        else answer = 0;
+
         return answer;
     }
 
