@@ -7,7 +7,7 @@ public class Problem6 {
     private static final int EMAIL_INDEX_OF_FORM = 0;
     private static final int NICKNAME_INDEX_OF_FORM = 1;
     private static final String EMAIL_CHECK = "@";
-
+    private static final String EMAIL_RULE = "@email.com";
 
     public static List<String> solution(List<List<String>> forms) {
         Map<String, String> namesAlreadyApplied = new HashMap<>();
@@ -21,6 +21,10 @@ public class Problem6 {
                 String positionConverter = nickname;
                 nickname = email;
                 email = positionConverter;
+            }
+
+            if (!email.endsWith(EMAIL_RULE)) {
+                continue;
             }
         }
 
