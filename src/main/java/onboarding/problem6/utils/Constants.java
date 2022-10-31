@@ -2,7 +2,6 @@ package onboarding.problem6.utils;
 
 public class Constants {
     public static final int CERW_EMAIL = 0;
-
     public static final int CREW_NICNAME = 1;
 
     public static final int MAX_CREW_NUMBER = 1000;
@@ -14,6 +13,8 @@ public class Constants {
     public static final int MIN_NICKNAME_LENGTH = 1;
 
     public static final int MAX_NICKNAME_LENGTH = 19;
+
+    public static final int LEAST_DUPLICATED_WORD_LENGTH = 2;
 
     public static final String DOMAIN = "@email.com";
 
