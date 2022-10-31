@@ -1,15 +1,13 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 
 public class Problem6 {
     static List<String> answer = Collections.emptyList();
     public static List<String> solution(List<List<String>> forms) {
 
         formsIter(forms);
+        answer = dupRemove();
 
         return answer;
     }
@@ -57,7 +55,7 @@ public class Problem6 {
             nickDupFlag = compNickName.get(1).matches("(.*)"+sb+"(.*)");// 단어가 포함되어 있는지 검사
 
             // 중복체크가 True이며 result가 비어있을 시
-            if(nickDupFlag && answer.isempty){
+            if(nickDupFlag && answer.isEmpty()){
                 answer = new ArrayList<>();
                 answer.add(nickName.get(0));
                 answer.add(compNickName.get(0));
@@ -69,4 +67,13 @@ public class Problem6 {
             }
         } // end for
     } // end findDupNick
+
+    // TreeSet을 이용하여 중복 제거 & 오름차순 정렬
+    private static List<String> dupRemove(){
+
+        TreeSet<String> tSet = new TreeSet<>(answer);
+        ArrayList<String> arrList = new ArrayList<>(tSet);
+
+        return arrList;
+    } // end compIter
 }
