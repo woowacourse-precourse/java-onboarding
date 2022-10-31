@@ -1,11 +1,19 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        Map<String, Integer> friendsScore = new HashMap<>();
+        List<String> exceptNames = new ArrayList<>();
+    }
+
+
+
+    private static boolean isAlreadyFriends(List<String> exceptNames, List<String> friend){
+        return exceptNames.contains(friend.get(0)) || exceptNames.contains(friend.get(1));
+    }
+    private static boolean isAlreadyFriends(List<String> exceptNames, String friend){
+        return exceptNames.contains(friend);
     }
 }
