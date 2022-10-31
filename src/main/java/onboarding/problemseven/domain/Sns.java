@@ -68,13 +68,11 @@ public class Sns {
 	}
 
 	private void friendToScore(String me, String userA, HashMap<String, Integer> scoreBoard) {
-
-		if(friendMap.get(me)==null || friendMap.get(userA)==null)
+		if(friendMap.get(me)==null || friendMap.get(userA)==null) {
 			return;
-
+		}
 		List<String> friendListMe = friendMap.get(me);
 		List<String> friendListA = friendMap.get(userA);
-
 		int friendCnt = 0;
 
 		for (String friend : friendListMe) {
@@ -83,17 +81,12 @@ public class Sns {
 			}
 		}
 		scoreBoard.put(userA, friendCnt * 10);
-
 	}
 
 	private void visitorsToScore(List<String> visitors, HashMap<String, Integer> scoreBoard) {
 		for (String visitor : visitors) {
-			if (scoreBoard.containsKey(visitor)) {
-				int score = scoreBoard.get(visitor);
-				scoreBoard.put(visitor, score + 1);
-			} else if (!scoreBoard.containsKey(visitor)) {
-				scoreBoard.put(visitor, 1);
-			}
+			int score = scoreBoard.getOrDefault(visitor, 0);
+			scoreBoard.put(visitor,score+1);
 		}
 	}
 }
