@@ -3,6 +3,7 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+    public static final int size = 2;
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
@@ -44,5 +45,11 @@ class Problem1 {
             answer = 0;
         }
         return answer;
+    }
+    public static boolean checkPageSize(List<Integer> pobi, List<Integer> crong){
+        if(pobi.size() == size && crong.size() == size){
+            return true;
+        }
+        return false;
     }
 }
