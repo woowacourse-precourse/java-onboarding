@@ -10,7 +10,9 @@ class Problem1 {
         int pobi_score = getScore(pobi);
         int crong_score = getScore(crong);
 
-        return answer;
+        if(pobi_score > crong_score) {return 1;}
+        else if(pobi_score < crong_score) {return 2;}
+        else {return 0;}
     }
     static int getScore(List<Integer> list) {
         int left_page = list.get(0);
