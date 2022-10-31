@@ -12,7 +12,12 @@ public class Problem7 {
     private static List<String> userFriends = new ArrayList<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        if (!isFriendsOutOfLength(friends) || !isVisitorsOutOfLength(visitors)) {
+            return new ArrayList<>();
+        }
+
         findUsers(friends, visitors);
+
         makeScoreMap();
 
         for (List<String> list : friends) {
@@ -26,6 +31,14 @@ public class Problem7 {
         removeAlreadyFriends(user);
 
         return recommend();
+    }
+
+    private static boolean isFriendsOutOfLength(List<List<String>> friends) {
+        return friends.size() >= 1 && friends.size() <= 10000;
+    }
+
+    private static boolean isVisitorsOutOfLength(List<String> visitors) {
+        return visitors.size() <= 30000;
     }
 
     private static void findUsers(List<List<String>> friends, List<String> visitors) {
@@ -82,11 +95,27 @@ public class Problem7 {
         int cnt = 0;
         for (Entry<String, Integer> entry : entries) {
             if (cnt == 5) break;
-            if (entry.getValue() != 0) {
+            if (entry.getValue() != 0 && isIdLowerCase(entry.getKey()) && isIdOutOfLength(entry.getKey())) {
                 answer.add(entry.getKey());
             }
             cnt++;
         }
         return answer;
+    }
+
+    private static boolean isIdOutOfLength(String id) {
+        return id.length() >= 1 && id.length() <= 30;
+    }
+
+    private static boolean isIdLowerCase(String id) {
+        boolean b = true;
+        char[] chars = id.toCharArray();
+        for (char c : chars) {
+            if (!(c >= 'a' && c <= 'z')) {
+                b = false;
+                break;
+            }
+        }
+        return b;
     }
 }
