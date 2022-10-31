@@ -61,7 +61,7 @@ public class Problem7 {
 		for (int i = 0; i < friends.size(); i++) {
 			for (int j = 0; j < alreadyFriends.size(); j++) {
 				temp = checkAlreadyFriends(alreadyFriends.get(j), friends.get(i));
-				if (!temp.equals("") && !temp.equals(user)) {
+				if (!temp.equals("") && !temp.equals(user) && !alreadyFriends.contains(temp)) {
 					addScore(temp, 10, scores);
 				}
 			}
@@ -71,7 +71,9 @@ public class Problem7 {
 				addScore(visitors.get(i), 1, scores);
 			}
 		}
+		System.out.println(scores);
 		List<String> answer = getAnswer(scores);
+		System.out.println(answer);
 		return answer;
 	}
 }
