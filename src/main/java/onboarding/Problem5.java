@@ -6,12 +6,19 @@
  */
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class Problem5 {
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
+        List<Integer> answer = new ArrayList<>();
+        List<Integer> moneyUnits = new ArrayList<>();
+        moneyUnitAdd(moneyUnits);
+        for (int unit : moneyUnits) {
+            answer.add(moneyConvertIntoUnit(money, unit));
+            money = moneyChangeAfterConvert(money, unit);
+        }
         return answer;
     }
 
@@ -29,5 +36,9 @@ public class Problem5 {
 
     public static int moneyConvertIntoUnit(int money, int unit) {
         return money / unit;
+    }
+
+    public static int moneyChangeAfterConvert(int money, int unit) {
+        return money % unit;
     }
 }
