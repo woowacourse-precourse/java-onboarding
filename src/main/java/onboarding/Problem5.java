@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -13,7 +14,17 @@ public class Problem5 {
     }
 
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
-        return answer;
+        int[] moneyArr = getMoneyArray();
+        int i = 0;
+
+        List<Integer> list = new ArrayList<>();
+
+        while(i != 9) {
+            int count = money / moneyArr[i];
+            money -= moneyArr[i] * count;
+            list.add(count);
+            i += 1;
+        }
+        return list;
     }
 }
