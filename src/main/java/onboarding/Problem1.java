@@ -74,6 +74,13 @@ class Problem1 {
             return true;
         }
 
+        // 페이지가 1~400인지 확인
+        for(int i=0; i<pobiPage.length; i++){
+            if(pobiPage[i] > 400 || crongPage[i] > 400 || pobiPage[i] < 1 || crongPage[i] < 1){
+                return true;
+            }
+        }
+
         return false;
     }
 
