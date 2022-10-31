@@ -9,7 +9,9 @@ public class Problem4 {
     public static String solution(String word) {
         dictionary();
         String[] wordArr = splitWord(word);
-        return "";
+        String[][] changeLetter = changeLetter(wordArr);
+        String changeWord = changeWord(changeLetter);
+        return changeWord;
     }
 
     /**
@@ -17,7 +19,10 @@ public class Problem4 {
      */
     public static void dictionary() {
         for (int i = 97; i <= 122; i++) {
-            dictionary.put((char)i, (char)(219-i));
+            dictionary.put((char) i, (char) (219 - i));
+        }
+        for (int i = 65; i <= 90; i++) {
+            dictionary.put((char) i, (char) (155 - i));
         }
     }
 
@@ -28,6 +33,23 @@ public class Problem4 {
      */
     private static String[] splitWord(String word) {
         return word.split(" ");
+    }
+
+    /**
+     * 단어를 청개구리 사전을 사용하여 이중배열 글자로 반환
+     * @param wordArr
+     * @return String[][]
+     */
+    private static String[][] changeLetter(String[] wordArr) {
+        String[][] changeLetter = new String[wordArr.length][];
+        for (int i = 0; i < wordArr.length; i++) {
+            changeLetter[i] = new String[wordArr[i].length()];
+            for (int j = 0; j < wordArr[i].length(); j++) {
+                char letter = dictionary.get(wordArr[i].charAt(j));
+                changeLetter[i][j] = String.valueOf(letter);
+            }
+        }
+        return changeLetter;
     }
 
 }
