@@ -6,9 +6,9 @@ public class Crew {
     private Email email;
     private Nickname nickname;
 
-    public Crew(List<String> info) throws Exception {
+    public Crew(List<String> info) {
         if(info.size() != 2) {
-            throw new Exception("이메일과 닉네임만 입력해야 합니다");
+            System.out.println("이메일과 닉네임만 입력해야 합니다");
         }
         email = new Email(info.get(0));
         nickname = new Nickname(info.get(1));

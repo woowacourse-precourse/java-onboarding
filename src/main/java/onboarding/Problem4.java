@@ -1,7 +1,7 @@
 package onboarding;
 
 public class Problem4 {
-    public static String solution(String word) throws Exception {
+    public static String solution(String word) {
         validate(word);
         String answer = "";
         answer = sayFrog(word.toCharArray());
@@ -24,9 +24,9 @@ public class Problem4 {
         return new String(result);
     }
 
-    private static void validate(String word) throws Exception {
+    private static void validate(String word) {
         if (word.length() < 1 || word.length() > 1000) {
-            throw new Exception("입력값의 길이가 잘못되었습니다");
+            System.out.println("입력값의 길이가 잘못되었습니다");
         }
     }
 }

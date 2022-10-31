@@ -14,7 +14,7 @@ public class RecommendationAlgorithm {
      * @return 최대 다섯개의 추천 계정들의 이름을 List로 반환한다
      * @throws Exception
      */
-    public static List<String> recommend(String targetName, List<String> visitorsNames) throws Exception {
+    public static List<String> recommend(String targetName, List<String> visitorsNames) {
         Map<String, Score> scores = new HashMap<>();
         List<String> allUsers = UserStore.findAll();
         List<String> relatedUsers = UserRelation.getFriends(targetName);

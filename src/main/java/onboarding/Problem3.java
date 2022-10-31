@@ -1,7 +1,7 @@
 package onboarding;
 
 public class Problem3 {
-    public static int solution(int number) throws Exception {
+    public static int solution(int number) {
         validate(number);
         int digitCnt = getDigitCnt(number);
         int totalCnt = calculateAllClapCntAboutThisDigit(digitCnt);
@@ -11,9 +11,9 @@ public class Problem3 {
         return totalCnt;
     }
 
-    private static void validate(int number) throws Exception {
+    private static void validate(int number) {
         if(number < 1 || number > 10000) {
-            throw new Exception("number가 범위를 벗어났습니다");
+            System.out.println("number가 범위를 벗어났습니다");
         }
     }
 

@@ -4,16 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Problem2 {
-    public static String solution(String cryptogram) throws Exception {
+    public static String solution(String cryptogram) {
         String answer = "";
         List<Character> charList = new ArrayList<>();
 
         if (cryptogram.length() < 1 || cryptogram.length() > 1000) {
-            throw new Exception("입력값의 길이가 올바르지 않습니다");
+            System.out.println("입력값의 길이가 올바르지 않습니다");
         }
         for(char each: cryptogram.toCharArray()) {
             if(!Character.isLowerCase(each)) {
-                throw new Exception("소문자로만 구성되어 있지 않습니다");
+                System.out.println("소문자로만 구성되어 있지 않습니다");
             }
             charList.add(each);
         }
@@ -22,7 +22,7 @@ public class Problem2 {
         return answer;
     }
 
-    private static String decode(List<Character> cryptogram) throws Exception {
+    private static String decode(List<Character> cryptogram) {
         List<Character> answerList = new ArrayList<>();
 
         Character prev = null;

@@ -4,9 +4,9 @@ public class Score implements Comparable<Score> {
     private final String userName;
     private int score;
 
-    public Score(String userName, int score) throws Exception {
+    public Score(String userName, int score) {
         if (score < 0) {
-            throw new Exception("점수는 음수가 될 수 없습니다.");
+            System.out.println("점수는 음수가 될 수 없습니다.");
         }
         this.userName = userName;
         this.score = score;
