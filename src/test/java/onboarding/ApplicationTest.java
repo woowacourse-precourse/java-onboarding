@@ -50,48 +50,6 @@ class ApplicationTest {
             String result = "";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
-
-        @Test
-        void custom1() {
-            String cryptogram = "browoanoommnaon";
-            String result = "brown";
-            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
-        }
-
-        @Test
-        void custom2() {
-            String cryptogram = "aaaaaaaa";
-            String result = "";
-            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
-        }
-
-        @Test
-        void custom3() {
-            String cryptogram = "abcdefghijklmnop";
-            String result = "abcdefghijklmnop";
-            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
-        }
-
-        @Test
-        void custom4() {
-            String cryptogram = "a";
-            String result = "a";
-            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
-        }
-
-        @Test
-        void custom5() {
-            String cryptogram = "abbaa";
-            String result = "a";
-            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
-        }
-
-        @Test
-        void custom6() {
-            String cryptogram = "aabbab";
-            String result = "ab";
-            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
-        }
     }
 
     @Nested
@@ -107,13 +65,6 @@ class ApplicationTest {
         void case2() {
             int number = 33;
             int result = 14;
-            assertThat(Problem3.solution(number)).isEqualTo(result);
-        }
-
-        @Test
-        void customCase(){
-            int number = 1000;
-            int result = Sample3.solution(number);
             assertThat(Problem3.solution(number)).isEqualTo(result);
         }
     }
