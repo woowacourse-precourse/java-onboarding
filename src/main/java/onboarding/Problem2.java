@@ -2,8 +2,14 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        int resultLength;
+
+        do {
+            resultLength = cryptogram.length();
+            cryptogram = reduceCryptogram(cryptogram);
+        } while (cryptogram.length() != resultLength);
+
+        return cryptogram;
     }
 
     private static String reduceCryptogram(String cryptogram) {
