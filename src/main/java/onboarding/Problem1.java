@@ -10,7 +10,13 @@ class Problem1 {
         int pobi_multMax = Integer.max(mult_digit(pobi.get(0)), mult_digit(pobi.get(1)));
         int pobi_max = Integer.max(pobi_sumMax, pobi_multMax);
 
-        return pobi_max;
+        int crong_sumMax = Integer.max(sum_digit(crong.get(0)), sum_digit(crong.get(1)));
+        int crong_multMax = Integer.max(mult_digit(crong.get(0)), mult_digit(crong.get(1)));
+        int crong_max = Integer.max(crong_sumMax, crong_multMax);
+
+        answer = pobi_max == crong_max ? 0 : pobi_max > crong_max ? 1 : 2;
+
+        return answer;
     }
     // 주어진 숫자의 각 자리 수를 더하여 반환
     private static int sum_digit(int value){
@@ -39,6 +45,9 @@ class Problem1 {
 
 
     public static void main(String[] args) {
-        System.out.println(solution(List.of(97, 98), List.of(197, 198)));
+        List<Integer> pobi = List.of(97, 98);
+        List<Integer> crong = List.of(131, 132);
+
+        System.out.println(solution(pobi, crong));
     }
 }
