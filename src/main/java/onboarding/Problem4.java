@@ -8,10 +8,11 @@ package onboarding;
  */
 
 public class Problem4 {
+
     private static final int LOWER_STANDARD = 'z' + 'a';
     private static final int UPPER_STANDARD = 'Z' + 'A';
-    public static String solution(String word) {
 
+    public static String solution(String word) {
         if (!checkValid(word)) {
             throw new IllegalArgumentException("제한사항 위반");
         }

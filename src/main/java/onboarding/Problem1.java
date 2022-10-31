@@ -81,5 +81,4 @@ class Problem1 {
         }
         return 1 <= leftPage && leftPage <= 400 && 1 <= rightPage && rightPage <= 400;
     }
-
 }

@@ -12,7 +12,9 @@ import java.util.List;
  */
 
 public class Problem5 {
+
     private static List<Integer> wallet = Collections.emptyList();
+
     public static List<Integer> solution(int money) {
         if (!checkValid(money)) {
             throw new IllegalArgumentException("제한사항 위반");

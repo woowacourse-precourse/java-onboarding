@@ -31,6 +31,7 @@ import java.util.*;
  */
 
 public class Problem7 {
+
     public static final int commonFriendScore = 10;
     public static final int visitedTimeLineScore = 1;
 
@@ -171,6 +172,7 @@ public class Problem7 {
     }
 
     private static class MySns {
+
         private final HashSet<String> friends = new HashSet<>();
         private final HashMap<String, Integer> visited = new HashMap<>();
 

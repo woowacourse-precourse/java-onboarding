@@ -67,5 +67,4 @@ public class Problem2 {
     private static boolean checkLowerCase(String s) {
         return s.equals(s.toLowerCase());
     }
-
 }

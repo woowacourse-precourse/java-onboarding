@@ -13,6 +13,7 @@ import java.util.Set;
  */
 
 public class Problem3 {
+
     private static Set<Integer> gameRule = Collections.emptySet();
 
     public static int solution(int number) {
