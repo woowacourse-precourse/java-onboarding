@@ -1,8 +1,7 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -17,11 +16,18 @@ public class Problem7 {
             }
         }
 
+        for (String visitor : visitors) {
+            if (!myFriendsList.contains(visitor)) {
+                addVisitorScore(score, visitor);
+            }
+        }
 
-
-        System.out.println("score = " + score);
-
-        return myFriendsList;
+        return score.entrySet().stream()
+                .sorted(Collections.reverseOrder(Map.Entry.<String, Integer>comparingByValue())
+                        .thenComparing(Map.Entry.comparingByKey()))
+                .map(Map.Entry::getKey)
+                .limit(5)
+                .collect(Collectors.toList());
     }
 
     private static void addRecomendedScore(HashMap<String, Integer> recomendedFriend, String id) {
@@ -29,6 +35,14 @@ public class Problem7 {
             recomendedFriend.put(id, recomendedFriend.get(id) + 10);
         } else {
             recomendedFriend.put(id, 10);
+        }
+    }
+
+    private static void addVisitorScore(HashMap<String, Integer> recomendedFriend, String id) {
+        if (recomendedFriend.containsKey(id)) {
+            recomendedFriend.put(id, recomendedFriend.get(id) + 1);
+        } else {
+            recomendedFriend.put(id, 1);
         }
     }
 
