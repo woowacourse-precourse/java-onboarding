@@ -4,9 +4,6 @@
  *
  */
 package onboarding;
-/**
- * checkNum : 전달받은 숫자가 제한사항과 맞는지 체크하는 메서드
- **/
 
 public class Problem3 {
 
@@ -17,6 +14,19 @@ public class Problem3 {
         }
 
         int answer = 0;
+
+        for (int i = 1; i <= number; i++) {
+            int num = i;
+            /* 맨 마지막 자리 숫자 확인 후, 3/6/9일 경우 answer증가 */
+            while (num != 0) {
+                int divideNum = (num % 10);
+                if (divideNum != 0 && divideNum % 3 == 0) {
+                    answer++;
+                }
+                num /= 10;
+            }
+        }
+
         return answer;
     }
 
