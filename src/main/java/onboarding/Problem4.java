@@ -1,11 +1,20 @@
 package onboarding;
 
 import java.util.Map;
+import java.util.regex.Pattern;
 
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
         return answer;
+    }
+
+    private static Boolean isAlphabet(String word) {
+        if(Pattern.matches("^[a-zA-Z]*$", word)) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     private static Map<String, String> frogsDictionary = Map.ofEntries(
