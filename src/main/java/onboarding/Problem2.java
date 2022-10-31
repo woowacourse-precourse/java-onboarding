@@ -14,17 +14,21 @@ public class Problem2 {
             cnt = false;
             int len = cryptoList.size();
             for (int i = 0; i<len; i++) {
-                
+
+                if (!chDeque.isEmpty() && chDeque.getLast() == cryptoList.get(i)) {
+                    continuous = true;
+                    if (i == len - 1) {
+                        chDeque.removeLast();
+                    }
+                    continue;
+                }
+
                 if (continuous) {
                     chDeque.removeLast();
                     continuous = false;
                     cnt = true;
                 }
 
-                if (!chDeque.isEmpty() && chDeque.getLast() == cryptoList.get(i)) {
-                    continuous = true;
-                    continue;
-                }
                 chDeque.addLast(cryptoList.get(i));
             }
             cryptoList = initialList(chDeque);
