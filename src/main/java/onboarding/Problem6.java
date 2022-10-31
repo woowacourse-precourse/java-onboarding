@@ -11,7 +11,18 @@ public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
-        
+
+        for (List<String> member : forms){
+            if (checkValidate(member, forms)){
+                answer.add(member.get(0));
+            }
+        }
+        answer.sort(new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                return o1.compareTo(o2);
+            }
+        });
 
         return answer;
     }
