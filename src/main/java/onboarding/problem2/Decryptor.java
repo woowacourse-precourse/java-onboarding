@@ -34,7 +34,6 @@ public class Decryptor {
      *
      * @param cryptogram 암호문
      * @return 해독 결과
-     * @see onboarding.problem2.consts.CryptogramStringConst
      */
     public static String decrypt(String cryptogram) {
         cryptogramList = Arrays.stream(cryptogram.split(CRYPTOGRAM_SPLIT_VALUE))
@@ -49,8 +48,6 @@ public class Decryptor {
 
     /**
      * 암호문의 길이만큼 반복하며 암호문의 각 문자가 중복되었는지 확인하는 메소드
-     *
-     * @see onboarding.problem2.consts.CryptogramIndexConst
      */
     private static void processDuplicateCharacter() {
         int startIndex;
@@ -66,7 +63,7 @@ public class Decryptor {
     /**
      * 두 문자가 중복된 문자인지 확인하는 메소드
      *
-     * @param nowIndex 중복 문자인지 확인할 다음 문자 인덱스
+     * @param nowIndex   중복 문자인지 확인할 다음 문자 인덱스
      * @param startIndex 중복 문자 검사를 시작한 암호문 인덱스
      * @return 다음으로 검색할 기준 문자 인덱스
      */
@@ -86,7 +83,7 @@ public class Decryptor {
      * 중복된 문자를 모두 삭제하는 메소드
      *
      * @param duplicateCharacter 중복된 문자
-     * @param startIndex 암호문에서 중복된 문자인지 확인할 문자 인덱스
+     * @param startIndex         암호문에서 중복된 문자인지 확인할 문자 인덱스
      */
     private static void deleteDuplicateCharacter(String duplicateCharacter, int startIndex) {
         while (isDuplicateCharacter(duplicateCharacter, startIndex)) {
@@ -98,7 +95,7 @@ public class Decryptor {
      * 인덱스 위치에 있는 문자의 삭제 여부를 판단하는 메소드
      *
      * @param duplicateCharacter 중복된 문자
-     * @param startIndex 암호문에서 중복된 문자인지 확인할 문자 인덱스
+     * @param startIndex         암호문에서 중복된 문자인지 확인할 문자 인덱스
      * @return
      */
     private static boolean isDuplicateCharacter(String duplicateCharacter, int startIndex) {
