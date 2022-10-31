@@ -22,13 +22,13 @@ public class Problem5 {
     }
 
     private static List<Integer> convertMoney(int money) {
-        List<Integer> answer = new ArrayList<Integer>(LIST_SIZE);
+        List<Integer> changeList = new ArrayList<>(LIST_SIZE);
 
         for (int currency : CURRENCYS) {
-            answer.add(money / currency);
+            changeList.add(money / currency);
             money %= currency;
         }
-        return answer;
+        return changeList;
     }
 
     private static boolean isValidInput(int money) {
