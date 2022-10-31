@@ -42,7 +42,21 @@ public class Problem7 {
         }
         return userFriend;
     }
-
+    public static List<String> getAcquaintance(String user, List<List<String>> friends) {
+        List<String> result = new ArrayList<>();
+        List<String> userFriend = getUserFriend(user, friends);
+        for (List<String> friendship : friends) {
+            for (String crew : userFriend) {
+                if (friendship.contains(crew) && !friendship.contains(user)) {
+                    String target;
+                    if (friendship.indexOf(crew) == 0) target = friendship.get(1);
+                    else target = friendship.get(0);
+                    result.add(target);
+                }
+            }
+        }
+        return result;
+    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
