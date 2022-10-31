@@ -10,6 +10,7 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+
         IsValidPage isValidPage = new IsValidPage();
         if(! isValidPage.isValidPage(pobi, crong)){
             return -1;
@@ -19,7 +20,6 @@ class Problem1 {
 
         int pobiMaxPoint = maxPoint.maxPoint(pobi);
         int crongMaxPoint = maxPoint.maxPoint(crong);
-        int answer;
 
         if (pobiMaxPoint==-1 || crongMaxPoint==-1){
             return -1;
@@ -41,31 +41,24 @@ class MaxPoint {
     public int maxPoint(List<Integer> player) {
         String leftPage = String.valueOf(player.get(0));
         String rightPage = String.valueOf(player.get(1));
+
         int myPoint;
+        int leftPlus = 0;
+        int leftTimes = 1;
+        int rightPlus = 0;
+        int rightTimes = 1;
 
-        if (Math.abs(Integer.parseInt(leftPage) - Integer.parseInt(rightPage)) == 1) {
-            int leftPlus = 0;
-            int leftTimes = 1;
-            int rightPlus = 0;
-            int rightTimes = 1;
-
-            for (int i = 0; i < leftPage.length(); i++) {
-                //nSystem.out.println("Before leftPlus: "+leftPlus);
-                leftPlus += (int) leftPage.charAt(i) - '0';
-                leftTimes *= ((int) leftPage.charAt(i) - '0');
-            }
-
-            for (int i = 0; i < rightPage.length(); i++) {
-                rightPlus += (int) rightPage.charAt(i) - '0';
-                rightTimes *= ((int) rightPage.charAt(i) - '0');
-            }
-
-            myPoint = Math.max(Math.max(leftPlus, leftTimes), Math.max(rightPlus, rightTimes));
-
-        } else {
-            myPoint = -1;
+        for (int i = 0; i < leftPage.length(); i++) {
+            leftPlus += (int) leftPage.charAt(i) - '0';
+            leftTimes *= ((int) leftPage.charAt(i) - '0');
         }
 
+        for (int i = 0; i < rightPage.length(); i++) {
+            rightPlus += (int) rightPage.charAt(i) - '0';
+            rightTimes *= ((int) rightPage.charAt(i) - '0');
+        }
+
+        myPoint = Math.max(Math.max(leftPlus, leftTimes), Math.max(rightPlus, rightTimes));
         return myPoint;
     }
 }
@@ -82,6 +75,12 @@ class IsValidPage {
             return false;
         }
         if(rightPage1 % 2 != 0 || rightPage2 % 2 != 0) {
+            return false;
+        }
+        if(rightPage1 - leftPage1 != 1) {
+            return false;
+        }
+        if(rightPage2 - leftPage2 != 1) {
             return false;
         }
         return true;
