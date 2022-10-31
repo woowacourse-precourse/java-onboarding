@@ -3,6 +3,7 @@ package onboarding;
 import java.util.Collections;
 import java.util.List;
 import java.util.HashSet;
+import java.util.HashMap;
 
 /*
 문제 설명
@@ -46,6 +47,14 @@ public class Problem7 {
                     friends_set.add(friend);
                 }
             }
+        }
+
+        // 추천 점수를 세기 위한 HashMap을 구성해준다.
+        HashMap<String, Integer> friends_score = new HashMap<>();
+
+        // 초기 구성을 0으로 초기화해준다.
+        for (String friend : friends_set) {
+            friends_score.put(friend, 0);
         }
 
         return answer;
