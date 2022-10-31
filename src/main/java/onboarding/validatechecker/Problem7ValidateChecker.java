@@ -14,6 +14,12 @@ public class Problem7ValidateChecker {
 		isFriendsInRange(friends);
 		isFriendRelationInRange(friends);
 		isIdInRange(friends);
+		isVisitorsInRange(visitors);
+	}
+
+	private static void isVisitorsInRange(List<String> visitors) {
+		if(visitors.size() > 10000)
+			throw new IllegalArgumentException("visitors의 크기가 10000초과입니다.");
 	}
 
 	private static void isIdInRange(List<List<String>> friends) {
