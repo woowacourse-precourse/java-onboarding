@@ -15,6 +15,11 @@ public class Problem2 {
     }
 
     public static String solution(String cryptogram) {
+        int len = -1;
+        while(len!=cryptogram.length()) {
+            len = cryptogram.length();
+            cryptogram = delSameChar(cryptogram);
+        }
         return cryptogram;
     }
 }
