@@ -54,4 +54,11 @@ public class Problem7 {
         scoreRelation = removeFriends(friends, scoreRelation);
         return scoreRelation;
     }
+
+    private static HashMap<String, Integer> removeFriends(List<String> friends, HashMap<String, Integer> scoreRelation) {
+        for (String friend: friends) {
+            scoreRelation.remove(friend);
+        }
+        return scoreRelation;
+    }
 }
