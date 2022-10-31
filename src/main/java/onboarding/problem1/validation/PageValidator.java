@@ -20,8 +20,8 @@ public class PageValidator extends AbstractValidator {
 	public static void validate(Pages pages) {
 		isPageSeparated(pages);
 		isLeftPageNotOdd(pages);
-		isPageLastOrHigher(pages);
-		isPageFirstOrLower(pages);
+		isNumberInValidRange("Left Page", pages.getLeftPage().getNumber(), PAGE_MIN_LIMIT, PAGE_MAX_LIMIT);
+		isNumberInValidRange("Right Page", pages.getRightPage().getNumber(), PAGE_MIN_LIMIT, PAGE_MAX_LIMIT);
 	}
 
 	/**
@@ -43,24 +43,6 @@ public class PageValidator extends AbstractValidator {
 	private static void isLeftPageNotOdd(Pages pages) {
 		if (!((pages.getLeftPage().getNumber() % 2) == 1)) {
 			throw new IllegalArgumentException("왼쪽 페이지의 숫자가 홀수가 아닙니다.");
-		}
-	}
-
-	/**
-	 * 페이지가 책의 마지막 페이지 또는 초과한 페이지를 펼치고 있는 지 검증합니다.
-	 */
-	private static void isPageLastOrHigher(Pages pages) {
-		if (PAGE_MAX_LIMIT <= pages.getLeftPage().getNumber() || PAGE_MAX_LIMIT <= pages.getRightPage().getNumber()) {
-			throw new IllegalArgumentException("페이지가 책의 마지막 페이지 또는 초과한 페이지를 펼치고 있습니다.");
-		}
-	}
-
-	/**
-	 * 페이지가 책의 첫번 째 페이지 또는 미만인 페이지를 펼치고 있는 지 검증합니다.
-	 */
-	private static void isPageFirstOrLower(Pages pages) {
-		if (pages.getLeftPage().getNumber() <= PAGE_MIN_LIMIT || pages.getRightPage().getNumber() <= PAGE_MIN_LIMIT) {
-			throw new IllegalArgumentException("페이지가 책의 첫번 째 페이지 또는 미만인 페이지를 펼치고 있습니다.");
 		}
 	}
 }

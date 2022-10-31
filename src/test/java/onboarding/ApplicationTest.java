@@ -1,5 +1,6 @@
 package onboarding;
 
+import onboarding.problem1.service.PageGameService;
 import onboarding.problem2.validation.CryptogramValidator;
 import onboarding.problem3.validation.ThreeSixNineValidator;
 import onboarding.problem4.validation.BlueFrogValidator;
@@ -35,7 +36,7 @@ class ApplicationTest {
             void case1() {
                 List<Integer> pobi = List.of(97, 98);
                 List<Integer> crong = List.of(197, 198);
-                int result = 0;
+                int result = PageGameService.TIE;
                 assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
             }
 
@@ -44,7 +45,7 @@ class ApplicationTest {
             void case2() {
                 List<Integer> pobi = List.of(131, 132);
                 List<Integer> crong = List.of(211, 212);
-                int result = 1;
+                int result = PageGameService.PLAYER1_WINNER_RETURN_VALUE;
                 assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
             }
 
@@ -53,7 +54,7 @@ class ApplicationTest {
             void case3() {
                 List<Integer> pobi = List.of(211, 212);
                 List<Integer> crong = List.of(131, 132);
-                int result = 2;
+                int result = PageGameService.PLAYER2_WINNER_RETURN_VALUE;
                 assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
             }
 
@@ -62,7 +63,7 @@ class ApplicationTest {
             void case4() {
                 List<Integer> pobi = List.of(101, 100);
                 List<Integer> crong = List.of(211, 212);
-                int result = 2;
+                int result = PageGameService.PLAYER2_WINNER_RETURN_VALUE;
                 assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
             }
         }
@@ -75,7 +76,7 @@ class ApplicationTest {
             void case1() {
                 List<Integer> pobi = List.of(99, 102);
                 List<Integer> crong = List.of(211, 212);
-                int result = -1;
+                int result = PageGameService.EXCEPTION_RETURN_VALUE;
                 assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
             }
 
@@ -84,25 +85,25 @@ class ApplicationTest {
             void case2() {
                 List<Integer> pobi = List.of(100, 101);
                 List<Integer> crong = List.of(211, 212);
-                int result = -1;
+                int result = PageGameService.EXCEPTION_RETURN_VALUE;
                 assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
             }
 
             @Test
-            @DisplayName("비정상적인 입력값 - 첫 번째 페이지 이하로 책을 펼칠 수 없음")
+            @DisplayName("비정상적인 입력값 - 첫 번째 페이지 미만으로 책을 펼칠 수 없음")
             void case3() {
-                List<Integer> pobi = List.of(1, 2);
+                List<Integer> pobi = List.of(0, 1);
                 List<Integer> crong = List.of(211, 212);
-                int result = -1;
+                int result = PageGameService.EXCEPTION_RETURN_VALUE;
                 assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
             }
 
             @Test
-            @DisplayName("비정상적인 입력값 - 마지막 페이지 이상으로 책을 펼칠 수 없음")
+            @DisplayName("비정상적인 입력값 - 마지막 페이지를 초과하여 책을 펼칠 수 없음")
             void case4() {
-                List<Integer> pobi = List.of(399, 400);
+                List<Integer> pobi = List.of(400, 401);
                 List<Integer> crong = List.of(211, 212);
-                int result = -1;
+                int result = PageGameService.EXCEPTION_RETURN_VALUE;
                 assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
             }
 
@@ -111,7 +112,7 @@ class ApplicationTest {
             void case5() {
                 List<Integer> pobi = List.of(301, 302, 303);
                 List<Integer> crong = List.of(211, 212);
-                int result = -1;
+                int result = PageGameService.EXCEPTION_RETURN_VALUE;
                 assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
             }
         }
