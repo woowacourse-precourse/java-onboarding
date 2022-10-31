@@ -35,9 +35,7 @@ public class Problem7 {
 
     public static void friendRelationAddUser(List<String> userFriendList, List<String> friendRelation, String user) {
         for (String friendName : friendRelation) {
-            if (friendName.equals(user)) {
-                continue;
-            } else {
+            if (!friendName.equals(user)) {
                 userFriendList.add(friendName);
             }
         }
@@ -77,14 +75,11 @@ public class Problem7 {
     public static List<String> resultSort(Map<String, Integer> friendshipScore) {
         List<String> answer = new LinkedList<>();
         List<Map.Entry<String, Integer>> entries = new ArrayList<>(friendshipScore.entrySet());
-        entries.sort(new Comparator<Map.Entry<String, Integer>>() {
-            @Override
-            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
-                if (o2.getValue().equals(o1.getValue())) {
-                    return o1.getKey().compareTo(o2.getKey());
-                }
-                return o2.getValue().compareTo(o1.getValue());
+        entries.sort((o1, o2) -> {
+            if (o2.getValue().equals(o1.getValue())) {
+                return o1.getKey().compareTo(o2.getKey());
             }
+            return o2.getValue().compareTo(o1.getValue());
         });
 
         for (int i = 0; i < 5 && i < entries.size(); i++) {
