@@ -20,9 +20,9 @@ public class Problem4 {
         char[] wordArr = getCharArr(word);
 
         for(Character wordVal : wordArr) {
-            // 만약 알파벳이 아니라면 공백으로 간주한다.
+            // 만약 알파벳이 아니라면 그대로 붙인다.
             if(isNotAlphabetic(wordVal)) {
-                answer.append(' ');
+                answer.append(wordVal);
                 continue;
             }
 
