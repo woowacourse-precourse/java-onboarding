@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<String>();
         List<String> myfriend = new ArrayList<String>();
         List<String> friendsfriend = new ArrayList<String>();
         List<String> visitors_name = new ArrayList<String>();
@@ -54,7 +54,7 @@ public class Problem7 {
             }
 
         }
-        
+
         return answer;
     }
 
