@@ -8,7 +8,25 @@ import java.util.stream.Stream;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        int answer;
+
+        int scorePobi = PageNumberGame.getScore(pobi);
+        int scoreCrong = PageNumberGame.getScore(crong);
+
+        if (PageNumberGame.catchException(pobi) || PageNumberGame.catchException(crong)){
+            answer = -1;
+            return answer;
+        }
+
+        if (scorePobi == scoreCrong) {
+            answer = 0;
+        } else if (scorePobi > scoreCrong) {
+            answer = 1;
+        }
+        else {
+            answer = 2;
+        }
+
         return answer;
     }
 }
