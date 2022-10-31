@@ -14,6 +14,29 @@ class Problem1 {
      */
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        int pobiTop = 0;
+        int crongTop = 0;
+
+        for(int i = 0; i< pobi.size(); i++) {
+            // 포비 왼쪽, 오른쪽 페이지 번호의 각 자리 숫자를 모두 더하거나 모두 곱하기
+            char[] pobiChar = pobi.get(i).toString().toCharArray();
+            int pobisum = 0;
+            int pobimul = 1;
+            for(char c : pobiChar) {
+                pobisum += c - '0';
+                pobimul *= c - '0';
+            }
+
+            // 크롱 왼쪽, 오른쪽 페이지 번호의 각 자리 숫자를 모두 더하거나 모두 곱하기
+            char[] crongChar = crong.get(i).toString().toCharArray();
+            int crongsum = 0;
+            int crongmul = 1;
+            for(char c : crongChar) {
+                crongsum += c - '0';
+                crongmul *= c - '0';
+            }
+        }
+
         return answer;
     }
 }
