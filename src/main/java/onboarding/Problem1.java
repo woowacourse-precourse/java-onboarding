@@ -28,34 +28,30 @@ class Problem1 {
     }
 
     private static boolean handleException(int pobiLeftPage, int pobiRightPage, int crongLeftPage, int crongRightPage) {
-        if (!oddEvenCheck(pobiLeftPage, pobiRightPage) || !oddEvenCheck(crongLeftPage, crongRightPage)) {
+        if (checkOddEven(pobiLeftPage, pobiRightPage) || checkOddEven(crongLeftPage, crongRightPage)) {
             return false;
         }
         if (isNotOneDifferencePage(pobiLeftPage, pobiRightPage) || isNotOneDifferencePage(crongLeftPage, crongRightPage)) {
             return false;
         }
 
-        return !isStartOrEndPageNum(pobiLeftPage) && !isStartOrEndPageNum(pobiRightPage) && !isStartOrEndPageNum(crongLeftPage) && !isStartOrEndPageNum(crongRightPage);
+        return isInvalidPageNum(pobiLeftPage) || isInvalidPageNum(pobiRightPage) || isInvalidPageNum(crongLeftPage) || isInvalidPageNum(crongRightPage);
     }
 
-    private static boolean isStartOrEndPageNum(int pageNum) {
-        return pageNum == 400 || pageNum == 1;
+    private static boolean isInvalidPageNum(int pageNum) {
+        return pageNum < 400 && pageNum > 1;
     }
 
     private static boolean isNotOneDifferencePage(int leftPage, int rightPage) {
         return (leftPage + 1) != rightPage;
     }
 
-    private static boolean oddEvenCheck(int leftPage, int rightPage) {
-        return isLeftOdd(leftPage) && isRightEven(rightPage);
+    private static boolean checkOddEven(int leftPage, int rightPage) {
+        return !isOddPage(leftPage) || isOddPage(rightPage);
     }
 
-    private static boolean isLeftOdd(int leftPage) {
+    private static boolean isOddPage(int leftPage) {
         return leftPage % 2 == 1;
-    }
-
-    private static boolean isRightEven(int rightPage) {
-        return rightPage % 2 == 0;
     }
 
     private static int getMaxScore(int pageNumber) {
