@@ -1,6 +1,31 @@
 package onboarding;
 
 
+class Decoder {
+    private String cryptogram;
+
+    public Decoder(String cryptogram) {
+        this.cryptogram = cryptogram;
+    }
+
+    public String decode() {
+        while (isDuplicate()) {
+//            eraseDuplicate();
+        }
+        return cryptogram;
+    }
+
+    public boolean isDuplicate() {
+        for (int i = 0, len = cryptogram.length() - 1; i < len; i++) {
+            if (cryptogram.charAt(i) == cryptogram.charAt(i + 1)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+}
 
 /*
 기능 목록
@@ -9,7 +34,8 @@ package onboarding;
  */
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        Decoder decoder = new Decoder(cryptogram);
+
+        return decoder.decode();
     }
 }
