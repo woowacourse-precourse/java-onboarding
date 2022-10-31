@@ -19,7 +19,7 @@ public class RecommendationSystem {
                 .totalScoreToFriendList(getTotalScore(user, friends, visitors));
 
         return friendList.stream()
-                .filter(friend -> !friend.getScore().equals(0))
+                .filter(friend -> friend.getScore() > 0)
                 .sorted()
                 .map(Friend::getName)
                 .limit(5)

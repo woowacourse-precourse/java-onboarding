@@ -35,7 +35,7 @@ public class CrewFactory {
         final String domain = "@email.com";
 
         for (String crewEmail : crewEmails) {
-            if (!crewEmail.contains(domain)) {
+            if (!crewEmail.endsWith(domain)) {
                 throw new IllegalArgumentException("올바른 이메일 도메인이 아닙니다. @email.com 만 가능합니다.");
             }
 
