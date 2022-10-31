@@ -36,7 +36,20 @@ public class Problem4 {
     }
 
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        Map<Character, Character> upperCaseAlpha = getUpperCaseHashMap();
+        Map<Character, Character> lowerCaseAlpha = getLowerCaseHashMap();
+
+        char[] chars = word.toCharArray();
+
+        for (int i = 0; i < chars.length; i++) {
+            if (Character.isLetter(chars[i])) {
+                if (Character.isLowerCase(chars[i])) {
+                    chars[i] = lowerCaseAlpha.get(chars[i]);
+                } else {
+                    chars[i] = upperCaseAlpha.get(chars[i]);
+                }
+            }
+        }
+        return new String(chars);
     }
 }
