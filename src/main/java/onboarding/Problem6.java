@@ -15,7 +15,7 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
 
-        if(!verificationTotalCheck(forms)) {
+        if (!verificationTotalCheck(forms)) {
             return List.of("Check Restrictions");
         }
 
