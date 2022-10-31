@@ -21,3 +21,10 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 가능 목록
+
+- 닉네임 분리하기
+  - 닉네임이 두 글자씩 분리한다. ex) 제이엠 -> 제이, 이엠
+  - 분리된 닉네임과 이메일을 키와 값 쌍으로 저장한다.
+  - 만약 닉네임이 한 글자인 경우 한 글자 그대로 이메일과 함께 저장한다.
