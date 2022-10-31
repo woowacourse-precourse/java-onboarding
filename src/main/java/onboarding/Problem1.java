@@ -2,7 +2,7 @@ package onboarding;
 
 import java.util.List;
 
-class Calculate {
+class Calculation {
 	public static int sumOfPageNumbers(int pageNumber) {
 		int sum = 0;
 		while (pageNumber > 0) {
@@ -25,11 +25,11 @@ class Calculate {
 class FindingMax {
 	public static int findMaxValue(int left, int right) {
 		int leftMaxValue =
-			Calculate.sumOfPageNumbers(left) > Calculate.mulOfPageNumbers(left) ? Calculate.sumOfPageNumbers(left) :
-				Calculate.mulOfPageNumbers(left);
+			Calculation.sumOfPageNumbers(left) > Calculation.mulOfPageNumbers(left)
+				? Calculation.sumOfPageNumbers(left) : Calculation.mulOfPageNumbers(left);
 		int rightMaxValue =
-			Calculate.sumOfPageNumbers(right) > Calculate.mulOfPageNumbers(right) ? Calculate.sumOfPageNumbers(right) :
-				Calculate.mulOfPageNumbers(right);
+			Calculation.sumOfPageNumbers(right) > Calculation.mulOfPageNumbers(right)
+				? Calculation.sumOfPageNumbers(right) : Calculation.mulOfPageNumbers(right);
 		return leftMaxValue > rightMaxValue ? leftMaxValue : rightMaxValue;
 	}
 }

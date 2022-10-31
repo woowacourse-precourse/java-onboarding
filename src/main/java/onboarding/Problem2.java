@@ -16,7 +16,7 @@ class ValidationSamethings {
 	}
 }
 
-class RemoveSamethings {
+class RemovalSamethings {
 	public static String removeSameElement(ArrayList<String> list, int index) {
 		String strArrayToString;
 		String startElement;
@@ -36,7 +36,7 @@ class RemoveSamethings {
 	}
 }
 
-class InvalidStringException {
+class StringException {
 	public static boolean invalidString(String string) {
 		if (string.length() < 1 || string.length() > 1000) {
 			return true;
@@ -56,9 +56,9 @@ public class Problem2 {
 		ArrayList<String> list = new ArrayList<String>(Arrays.asList(cryptogram.split("")));
 		String answer = cryptogram;
 		int index;
-		if (!InvalidStringException.invalidString(cryptogram)) {
+		if (!StringException.invalidString(cryptogram)) {
 			while ((index = ValidationSamethings.validation(list)) != -1) {
-				answer = RemoveSamethings.removeSameElement(list, index);
+				answer = RemovalSamethings.removeSameElement(list, index);
 			}
 		}
 		return answer;
