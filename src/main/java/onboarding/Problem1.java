@@ -25,7 +25,7 @@ class Problem1 {
 		int pobiMaxScore = calculateMaxScoreBetweenPages(pobi.get(FIRST_ELEMENT), pobi.get(SECOND_ELEMENT));
 		int crongMaxScore = calculateMaxScoreBetweenPages(crong.get(FIRST_ELEMENT), crong.get(SECOND_ELEMENT));
 
-		return 0; //TODO - 임시값 변경하기
+		return getWinner(pobiMaxScore, crongMaxScore);
 	}
 
 	private static boolean validate(List<Integer> pobi, List<Integer> crong) {
@@ -99,5 +99,23 @@ class Problem1 {
 		}
 
 		return result;
+	}
+
+	private static int getWinner(int pobiMaxScore, int crongMaxScore) {
+		if (isPobiWin(pobiMaxScore, crongMaxScore)) {
+			return POBI_WIN;
+		} else if (isCrongWin(pobiMaxScore, crongMaxScore)) {
+			return CRONG_WIN;
+		} else {
+			return DRAW;
+		}
+	}
+
+	private static boolean isPobiWin(int pobiMaxScore, int crongMaxScore) {
+		return pobiMaxScore > crongMaxScore;
+	}
+
+	private static boolean isCrongWin(int pobiMaxScore, int crongMaxScore) {
+		return pobiMaxScore < crongMaxScore;
 	}
 }
