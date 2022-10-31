@@ -20,9 +20,9 @@ public class Problem4 {
     static char convert(char character){
         char res = character;
         if(Character.isLowerCase(res)){
-            res = (char) (26 - (res - 'a'));
+            res = (char) ('z' - (res - 'a'));
         }else if(Character.isUpperCase(res)){
-            res = (char) (26 - (res - 'A'));
+            res = (char) ('Z' - (res - 'A'));
         }
         return res;
     }
