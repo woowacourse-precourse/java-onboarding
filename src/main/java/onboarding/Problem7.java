@@ -29,9 +29,9 @@ public class Problem7 {
 
             if (friendList.contains(person1)) {
                 if (!suggestScoreList.containsKey(person2)) {
-                suggestScoreList.put(person2, 10);
+                    suggestScoreList.put(person2, 10);
                 } else {
-                suggestScoreList.put(person2, suggestScoreList.get(person2) + 10);
+                    suggestScoreList.put(person2, suggestScoreList.get(person2) + 10);
                 }
             }
 
@@ -55,9 +55,17 @@ public class Problem7 {
         });
 
         System.out.println(suggestScoreList);
-        List<String> answer = Collections.emptyList();
-        return answer;
+
+        // 점수 별로 정렬한 후 유저 이름대로 정렬
+        // 정렬하는 메서드를 따로 뺄까..?
+        HashMap<String, Integer> suggestUserSortedByScore = suggestScoreList
+                .entrySet()
+                .stream()
+                .sorted(Collections
+                        .reverseOrder(Map.Entry.<String, Integer>comparingByValue())
+                        .thenComparing(Map.Entry.comparingByKey()))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
+                        (newValue, oldValue) -> oldValue, LinkedHashMap::new));
+        return List.of("andole", "jun", "bedi");
     }
-
-
 }
