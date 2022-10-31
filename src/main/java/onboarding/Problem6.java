@@ -39,6 +39,10 @@ public class Problem6 {
                 String partialNickname = nickname.substring(i, i + NAME_DUPLICATE_LENGTH_RULE);
 
                 if (isKorean(partialNickname)) {
+
+                    if (namesAlreadyApplied.containsKey(partialNickname)
+                            && !nicknameCombinations.contains(partialNickname)) {
+                    }
                 }
             }
         }
