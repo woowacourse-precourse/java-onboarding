@@ -1,10 +1,11 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 public class Problem7 {
 
@@ -49,7 +50,10 @@ public class Problem7 {
             score.put(visitor, score.getOrDefault(visitor, 0) + 1);
         }
 
-        List<String> answer = Collections.emptyList();
-        return answer;
+        return score.entrySet().stream()
+            .sorted(((o1, o2) -> o2.getValue() - o1.getValue()))
+            .map(Entry::getKey)
+            .limit(5)
+            .collect(Collectors.toList());
     }
 }
