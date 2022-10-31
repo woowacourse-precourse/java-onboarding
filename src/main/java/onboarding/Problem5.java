@@ -8,7 +8,7 @@ public class Problem5 {
     static int[] moneyArray = {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
     public static List<Integer> solution(int money) {
         if (money > 1_000_000 || money < 1) {
-            return Collections.emptyList();
+            return new ArrayList<>(List.of(0, 0, 0, 0, 0, 0, 0, 0, 0));
         }
 
         List<Integer> answer = new ArrayList<>();
