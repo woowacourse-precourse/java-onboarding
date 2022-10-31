@@ -4,6 +4,7 @@ import java.util.ArrayDeque;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
+    	
     	StringBuilder sb = new StringBuilder();
         ArrayDeque<Character> word = new ArrayDeque<>();
 
