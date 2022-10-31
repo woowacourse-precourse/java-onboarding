@@ -14,6 +14,6 @@
 
 | 예외처리                | validation or 함수 | 구현 여부(O, X) |
 |---------------------|-----------------|-------------|
-|  최대 5명을 return  |    if(answer.size() > 5)  | X           |
+|  최대 5명을 return  |    if(answer.size() > 5)  | O           |
 |  추천 점수가 0점일 경우 삭제  |    boolean removed = friendWithUserDict.entrySet().removeIf  | X           |
 |  추천 점수가 같은 경우는 이름순으로 정렬  |    if (arr1.getValue() == arr2.getValue())  | O           |

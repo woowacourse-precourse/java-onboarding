@@ -55,6 +55,14 @@ public class Problem7 {
         for (Map.Entry<String,Integer> entry : checkArr){
             answer.add(entry.getKey());
         }
+
+        // 최대 5명을 return (다섯명이 넘어갈 경우 삭제)
+        if(answer.size() > 5) {
+            for(int i = 5; i < answer.size(); i++){
+                answer.remove(i);
+            }
+        }
+
         return answer;
     }
 }
