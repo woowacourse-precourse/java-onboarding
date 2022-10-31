@@ -1,40 +1,50 @@
 package onboarding;
 
+import java.util.Stack;
+
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = cryptogram;
-        boolean decoding = true;
+        Stack<String> result = new Stack<>();
+        String[] targets = cryptogram.split("");
 
-        while (decoding) {
-            decoding = false;
+        String top = "";
+        for(String target : targets) {
+            top = decode(target, top, result);
+        }
+        return getAnswerFromResult(result);
+    }
 
-            for (int start = 0; start < answer.length() - 1; start++) {
-                char currentChar = answer.charAt(start);
+    public static String decode(String target, String top, Stack<String> result) {
+        if(canDecode(target, top, result)) {
+            return result.push(target);
+        }
+        return top;
+    }
 
-                int count = getDuplicatedCharCount(start, answer, currentChar);
-                answer = removeDuplicateChar(answer, start, count);
+    private static boolean canDecode(String target, String top, Stack<String> result) {
+        if(isDuplicated(target, result)) {
+            result.pop();
+            return false;
+        }
+        return !top.equals(target);
+    }
 
-                if (count > 0) {
-                    decoding = true;
-                    start--;
-                }
-            }
+    private static boolean isDuplicated(String target, Stack<String> result) {
+        return getTopFrom(result).equals(target);
+    }
+
+    private static String getTopFrom(Stack<String> result) {
+        if (result.isEmpty()) {
+            return "";
+        }
+        return result.peek();
+    }
+
+    private static String getAnswerFromResult(Stack<String> stack) {
+        String answer = "";
+        while (!stack.isEmpty()) {
+            answer = stack.pop() + answer;
         }
         return answer;
-    }
-
-    private static int getDuplicatedCharCount(int start, String cryptogram, char currentChar) {
-        int count = 0;
-        for (int end = start + 1; end < cryptogram.length(); end++) {
-            if (currentChar != cryptogram.charAt(end)) {
-                break;
-            }
-            count = end - start + 1;
-        }
-        return count;
-    }
-
-    private static String removeDuplicateChar(String cryptogram, int start, int count) {
-        return cryptogram.substring(0, start) + cryptogram.substring(start + count);
     }
 }
