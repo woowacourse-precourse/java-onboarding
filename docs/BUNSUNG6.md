@@ -32,7 +32,11 @@
 2. 정답 후보군의 이메일은 오름차순으로 정렬한다.
    1. how?
    2. Comparator.naturalOrder() 함수를 이용한다.
+3. 정답 후보군의 이메일은 중복을 제거해야한다.
+   1. how?
+   2. Set 자료구조를 이용한다.
 
 # Commit
 - [x] feat: add find continuous two char
 - [x] feat: add sort answer
+- [x] refactor: fix list to set answer

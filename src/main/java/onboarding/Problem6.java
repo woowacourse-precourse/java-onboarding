@@ -2,11 +2,13 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answerCandidate = new ArrayList<>();
+        Set<String> answerCandidate = new HashSet<>();
 
         findContinuousTwoChar(forms, answerCandidate);
 
@@ -17,7 +19,7 @@ public class Problem6 {
         return answer;
     }
 
-    private static void findContinuousTwoChar(List<List<String>> forms, List<String> answerCandidate) {
+    private static void findContinuousTwoChar(List<List<String>> forms, Set<String> answerCandidate) {
         for (int i = 0; i < forms.size(); ++i) {
             String nickName = forms.get(i).get(1);
 
