@@ -10,6 +10,12 @@ import java.util.Map;
 import java.util.Set;
 import java.util.Map.Entry;
 
+/**
+ * 
+ * Problem number : 7
+ * Comment : 상위 최대 5명의 추천 친구 리스트를 제공한다.
+ * @author doyoung
+ */
 public class FriendRecommender {
     private final MutualDictionary mutual;
     private final VisitsDictionary visits;

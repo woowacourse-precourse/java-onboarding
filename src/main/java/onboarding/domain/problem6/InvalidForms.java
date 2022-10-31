@@ -5,6 +5,12 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+/**
+ * 
+ * Problem number : 6
+ * Comment : 유효하지 않은 신청폼 목록을 제공한다.
+ * @author doyoung
+ */
 public class InvalidForms {
     private final Set<Form> invalidForms = new HashSet<>();
     

@@ -2,6 +2,12 @@ package onboarding.domain.problem6;
 
 import java.util.HashSet;
 
+/**
+ * 
+ * Problem number : 6
+ * Comment : 한 지원자의 신청폼(이메일, 닉네임) 정보를 제공한다.
+ * @author doyoung
+ */
 public class Form {
     private String email;
     private String nickname;

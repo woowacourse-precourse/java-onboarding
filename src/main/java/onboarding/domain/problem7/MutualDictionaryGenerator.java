@@ -4,6 +4,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * 
+ * Problem number : 7
+ * Comment : MutualDictionary 객체를 생성하는 기능을 대신 수행한다.
+ * @author doyoung
+ */
 public class MutualDictionaryGenerator {
     private final FriendRelations relations;
     private final String user;

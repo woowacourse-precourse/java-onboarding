@@ -3,6 +3,12 @@ package onboarding.domain.problem7;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 
+ * Problem number : 7
+ * Comment : 전체 사용자에 대한 친구 관계 정보를 제공한다.
+ * @author doyoung
+ */
 public class FriendRelations {
     private final List<List<String>> relations;
     

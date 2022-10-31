@@ -6,6 +6,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * 
+ * Problem number : 6
+ * Comment : 복수 개의 신청폼 닉네임에 사용된 모든 "연속된 2글자 문자열"에 대한 정보를 제공한다.
+ * @author doyoung
+ */
 public class UsedTwoWordsDictionary {
     private final Map<String, List<Form>> usedTwoWordsDictionary = new HashMap<>();
 
