@@ -97,6 +97,6 @@ class UserTest {
         user.plusScoreCaseVisitors();
         friend.plusScoreCaseVisitors();
 
-        assertThat(user).isLessThan(friend);
+        assertThat(user).isGreaterThan(friend);
     }
 }
