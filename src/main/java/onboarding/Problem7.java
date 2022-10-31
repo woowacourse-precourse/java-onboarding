@@ -14,7 +14,8 @@ public class Problem7 {
         Map<String, Integer> refineScoreRecommendFriend = getRefineScoreRecommendFriend(scoreRecommendFriend, friendOfUser);
 
         List<String> sortedRecommendFriend = getSortedRecommendFriend(refineScoreRecommendFriend);
-        answer = sortedRecommendFriend;
+        List<String> fiveRecommendFriend = getFiveRecommendFriend(sortedRecommendFriend);
+        answer = fiveRecommendFriend;
 
         return answer;
     }
@@ -124,6 +125,13 @@ public class Problem7 {
                 return user1.compareTo(user2);
             }
         }).collect(Collectors.toList());
+
+        return result;
+    }
+
+    private static List<String> getFiveRecommendFriend(List<String> sortedRecommendFriend) {
+        int maxLength = Math.min(sortedRecommendFriend.size(), 5);
+        List<String> result = sortedRecommendFriend.subList(0, maxLength);
 
         return result;
     }
