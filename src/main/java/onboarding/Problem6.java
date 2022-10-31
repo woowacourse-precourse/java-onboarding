@@ -43,6 +43,16 @@ public class Problem6 {
                 .collect(Collectors.toList());
     }
 
+    public static void initValidData(List<List<String>> forms) {
+        for (List<String> form : forms) {
+            String email = form.get(0);
+            String nickname = form.get(1);
+            if (!isValidateEmail(email) || !isValidNickname(nickname)) {
+                continue;
+            }
+            nicknameEmailQ.offer(form);
+        }
+    }
     public static List<String> separateNickname(String nickname) {
         List<String> returnList = new ArrayList<>();
         for (int i = 2; i < nickname.length()+1; i++) {
