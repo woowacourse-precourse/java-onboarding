@@ -24,6 +24,13 @@ class FrogDictionary{
         }
         return frogLetter;
     }
+    HashMap<Character, Character> makeDictionary(char[] alphabetArray, char[] frogLetterArray){
+        HashMap<Character, Character> frogDictionary=new HashMap<>();
+        for(int position=0;position<NUMBER_OF_ALPHABET;position++){
+            frogDictionary.put(alphabetArray[position], frogLetterArray[position]);
+        }
+        return frogDictionary;
+    }
 }
 public class Problem4 {
     public static String solution(String word) {
