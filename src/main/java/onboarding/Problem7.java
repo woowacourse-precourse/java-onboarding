@@ -28,6 +28,14 @@ public class Problem7 {
         increaseScoreMutualFriend();
         //for debug
         System.out.println(remainUserAndScore);
+        increaseScoreVisitors(visitors);
+        //for debug
+        System.out.println(remainUserAndScore);
+        
+        List<Friend> candidateFriendList = new ArrayList<>();
+        makeCandidateFriendList(candidateFriendList);
+        //for debug
+        System.out.println(candidateFriendList);
         
         return answer;
     }
@@ -81,4 +89,28 @@ public class Problem7 {
     public static void increaseOne(String name) {
     	remainUserAndScore.put(name, remainUserAndScore.getOrDefault(name, 0) + 1);
     }
+    public static void makeCandidateFriendList(List<Friend> list) {
+    	String name = null;
+    	int score = 0;
+    	for(Entry<String, Integer> nameAndScore: remainUserAndScore.entrySet()) {
+    		name = nameAndScore.getKey();
+    		score = nameAndScore.getValue();
+    		if(mainUserFriends.contains(name)) {
+    			continue;
+    		}
+    		list.add(new Friend(name, score));
+    	}
+    }
+}
+class Friend {
+	String name;
+	int score;
+	public Friend(String name, int score) {
+		this.name = name;
+		this.score = score;
+	}
+	@Override
+	public String toString() {
+		return "Friend [name=" + name + ", score=" + score + "]";
+	}
 }
