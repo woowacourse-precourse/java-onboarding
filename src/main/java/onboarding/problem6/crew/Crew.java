@@ -1,10 +1,10 @@
-package onboarding.problem6;
+package onboarding.problem6.crew;
 
 public class Crew {
     private final String email;
     private final String nickname;
 
-    public Crew(String email, String nickname) {
+    Crew(String email, String nickname) {
         this.email = email;
         this.nickname = nickname;
     }

@@ -1,32 +1,37 @@
-package onboarding.problem6;
+package onboarding.problem6.crew;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
-public class FormValidator {
+public class CrewFactory {
 
-    public static void validateSize(int size) {
-        final int MIN_VALUE = 1;
-        final int MAX_VALUE = 10_000;
+    public List<Crew> getCrewList(List<List<String>> forms) {
+        validateForms(forms);
+        List<Crew> crewList = new ArrayList<>();
 
-        if (size < MIN_VALUE || MAX_VALUE < size) {
-            throw new IllegalArgumentException("크루원은 1명 이상 10,000명 이하로 입력 해주세요.");
+        for (List<String> form : forms) {  // mail, nickname
+            String email = form.get(0);
+            String nickname = form.get(1);
+
+            crewList.add(new Crew(email, nickname));
         }
+
+        return crewList;
     }
 
-    public static void validateCrewInfo(List<Crew> crewList) {
-        validateEmail(crewList.stream()
-                .map(Crew::getEmail)
+    private void validateForms(List<List<String>> forms) {
+        validateEmail(forms.stream()
+                .map(form -> form.get(0))
                 .collect(Collectors.toList()));
 
-
-        validateNickname(crewList.stream()
-                .map(Crew::getNickname)
+        validateNickname(forms.stream()
+                .map(form -> form.get(1))
                 .collect(Collectors.toList()));
     }
 
-    private static void validateEmail(List<String> crewEmails) {
+    private void validateEmail(List<String> crewEmails) {
         final String domain = "@email.com";
 
         for (String crewEmail : crewEmails) {
@@ -44,7 +49,7 @@ public class FormValidator {
         }
     }
 
-    private static void validateNickname(List<String> nicknames) {
+    private void validateNickname(List<String> nicknames) {
         String regex = String.valueOf(Pattern.compile("^[ㄱ-ㅎㅏ-ㅣ가-힣]*$"));
 
         for (String nickname : nicknames) {

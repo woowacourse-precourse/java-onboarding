@@ -1,5 +1,7 @@
 package onboarding.problem6;
 
+import onboarding.problem6.crew.Crew;
+
 import java.util.*;
 import java.util.stream.Collectors;
 

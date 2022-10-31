@@ -1,37 +1,22 @@
 package onboarding.problem6;
 
-import java.util.*;
+import onboarding.problem6.crew.Crew;
+import onboarding.problem6.crew.CrewFactory;
 
-import static onboarding.problem6.FormValidator.*;
+import java.util.List;
 
 public class CrewService {
 
     private final NicknameCheckService nicknameCheckService;
+    private final CrewFactory crewFactory;
 
-    public CrewService(NicknameCheckService nicknameCheckService) {
+    public CrewService(NicknameCheckService nicknameCheckService, CrewFactory crewFactory) {
         this.nicknameCheckService = nicknameCheckService;
+        this.crewFactory = crewFactory;
     }
 
     public List<String> checkCrew(List<List<String>> forms) {
-        validateSize(forms.size());  // 크루 1명 이상 10,000명 이하
-
-        List<Crew> crewList = getCrewSet(forms);
-        validateCrewInfo(crewList);  // 크루 정보 검증
-
+        List<Crew> crewList = crewFactory.getCrewList(forms);
         return nicknameCheckService.getDuplicateCrewEmail(crewList);
     }
-
-    private List<Crew> getCrewSet(List<List<String>> forms) {
-        List<Crew> crewList = new ArrayList<>();
-
-        for (List<String> form : forms) {  // mail, nickname
-            String email = form.get(0);
-            String nickname = form.get(1);
-
-            crewList.add(new Crew(email, nickname));
-        }
-
-        return crewList;
-    }
-
 }
