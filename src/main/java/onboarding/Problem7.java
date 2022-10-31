@@ -26,9 +26,22 @@ public class Problem7 {
 
         List<String> sortedRecommendList = new ArrayList<>(recommendScore.keySet());
         sortByScore(recommendScore, sortedRecommendList);
-        
+
+        extractAnswer(answer, sortedRecommendList);
+
         return answer;
     }
+
+    private static void extractAnswer(List<String> answer, List<String> sortedRecommendList) {
+        Iterator<String> iterator = sortedRecommendList.iterator();
+        int k = 0;
+        while(iterator.hasNext()){
+            if(k == 5) break;
+            answer.add(iterator.next());
+            k++;
+        }
+    }
+
     private static void sortByScore(Map<String, Integer> recommendScore, List<String> sortedRecommendList) {
         Collections.sort(sortedRecommendList, new Comparator<String>() {
             @Override
