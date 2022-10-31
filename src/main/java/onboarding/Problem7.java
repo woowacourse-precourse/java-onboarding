@@ -51,6 +51,11 @@ public class Problem7 {
             }
         }
 
+        // 4. 사용자의 타임 라인에 방문한 경우 해쉬맵에 1점 추가하기
+        for(String v : visitors) { // 앞에서 친구인 경우는 제거했기 때문에 바로 해쉬맵에 +1 점해서 넣어주기
+            map.put(v, map.getOrDefault(v, 0) + 1);
+        }
+
         return answer;
     }
 }
