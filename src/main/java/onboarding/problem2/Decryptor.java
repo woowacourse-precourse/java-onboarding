@@ -1,34 +1,59 @@
 package onboarding.problem2;
 
 public class Decryptor {
-    private static int NO_DUPLICATE_LETTER = -1;
 
     public String decodedCrypto(String cryptogram) {
         String decodedWord = cryptogram;
+
         while (true) {
-            int duplicateLetterIndex = findDuplicateLetterIndex(decodedWord);
-            if (duplicateLetterIndex == NO_DUPLICATE_LETTER) {
+            String deletedWord = removeDuplicateLetter(decodedWord);
+            if (isNotInDuplicateLetter(decodedWord, deletedWord))
                 break;
-            }
-            decodedWord = removeContinuousLetter(decodedWord, duplicateLetterIndex);
+            decodedWord = deletedWord;
         }
+
         return decodedWord;
     }
 
-    private int findDuplicateLetterIndex(String word) {
-        for (int index = 0; index < word.length() - 1; index++) {
-            char leftLetter = word.charAt(index);
-            char rightLetter = word.charAt(index + 1);
-            if (leftLetter == rightLetter) {
-                return index;
-            }
-        }
-        return NO_DUPLICATE_LETTER;
+    private boolean isNotInDuplicateLetter(String answer, String deletedWord) {
+        return deletedWord.equals(answer);
     }
 
-    private String removeContinuousLetter(String word, int index) {
-        StringBuilder builder = new StringBuilder(word);
-        builder.delete(index, index + 2);
-        return builder.toString();
+    public String removeDuplicateLetter(String word) {
+        StringBuilder result = new StringBuilder();
+
+        for (int i = 0; i < word.length(); i++) {
+            if (isNotDuplicateBeforeAndAfterLetter(word, i)) {
+                result.append(word.charAt(i));
+            }
+        }
+        return result.toString();
     }
+
+    private boolean isNotDuplicateBeforeAndAfterLetter(String str, int i) {
+        return isNotEqualAfterLetter(str, i) && isNotEqualBeforeLetter(str, i);
+    }
+
+    private boolean isNotEqualBeforeLetter(String word, int index) {
+        if (isFirstLetter(index)) {
+            return true;
+        }
+        return word.charAt(index - 1) != word.charAt(index);
+    }
+
+    private boolean isFirstLetter(int index) {
+        return index == 0;
+    }
+
+    private boolean isNotEqualAfterLetter(String word, int index) {
+        if (isLastLetter(word, index)) {
+            return true;
+        }
+        return word.charAt(index) != word.charAt(index + 1);
+    }
+
+    private boolean isLastLetter(String word, int index) {
+        return index == word.length() - 1;
+    }
+
 }
