@@ -8,6 +8,8 @@ class PageGame {
     private List<Integer> crongs;
 
     private boolean isFaultPageData(List<Integer> pageData) {
+        if(pageData.get(0) < 2 || pageData.get(1) < 3)return true;
+        if(pageData.get(0)>398 || pageData.get(1) > 399)return true;
         if (pageData.get(0) + 1 != pageData.get(1)) return true;
         if (pageData.get(1) == 0) return true;
         return false;
