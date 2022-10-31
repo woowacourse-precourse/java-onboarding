@@ -1,5 +1,10 @@
 package onboarding;
 
+/*
+기능 목록
+1. 어떤 숫자에 대해 몇 번 박수를 쳐야하는지 계산하는 기능
+2. 1부터 number까지 몇 번 박수를 쳐야하는지 계산하는 기능
+ */
 public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
