@@ -8,8 +8,18 @@ import java.util.List;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        // 3. 중복 없어진 리스트를 String으로 변경해서 출력한다.
+        String text = "";
+        List<String> cryptoList = cryptoSplit(cryptogram); // browoanoommnaon
+        while (true) {
+            List<String> newList = cryptoDedupli(cryptoList); //browoannaon -> browoaaon -> browoon -> brown
+            if(cryptoList.size() == newList.size()) break; // 중복이 제거되면 멈춰
+            cryptoList.clear();
+            cryptoList = newList;
+        }
+        for(String txt : cryptoList) text +=txt+"";
+        return text;
+
     }
     public static List<String> cryptoSplit(String s){ //문자열 분리 메소드
         String[] arr = s.split("");
