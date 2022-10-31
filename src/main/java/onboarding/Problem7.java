@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -25,6 +26,7 @@ public class Problem7 {
         final ArrayList<String> friendsOfUser = friendsOfUsers.get(user);
         for (String friendUser : scoresOfUsers.keySet()) {
             scoresOfUsers.put(friendUser, CalculateScoreByFriends(friendsOfUser, friendsOfUsers.get(friendUser)));
+            scoresOfUsers.put(friendUser, scoresOfUsers.get(friendUser) + CalculateScoreByVisitors(visitors, friendUser));
         }
     }
 
@@ -73,5 +75,16 @@ public class Problem7 {
         }
 
         return score;
+    }
+
+    /**
+     * 사용자의 타임 라인에 방문한 횟수로 점수 계산
+     *
+     * @param visitors
+     * @param friendUser
+     * @return 사용자의 타임 라인에 방문한 횟수로 얻은 점수
+     */
+    private static int CalculateScoreByVisitors(List<String> visitors, String friendUser) {
+        return Collections.frequency(visitors, friendUser);
     }
 }
