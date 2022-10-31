@@ -21,3 +21,8 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능 목록
+1. 닉네임의 두글자씩 자른 것을 key로 갖는 HashMap을 만든다. value는 그 값을 가지는 개수로 작성한다.
+2. value가 1이 아닌 Key들을 불러와, 그 글자들을 가지는 사람들의 이메일을 Set에 저장한다.
+3. Set을 List로 변경 후 Collections.sort(List)해 솔루션에 리턴한다.
