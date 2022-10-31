@@ -1,9 +1,6 @@
 package onboarding;
 
 public class Problem4 {
-    private static final char BLANK_CHARACTER = ' ';
-
-
     public static String solution(String word) {
         StringBuilder answer = new StringBuilder();
 
