@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -15,7 +16,7 @@ public class Problem6 {
     public static final String KOREAN_REGEX = ".*[ㄱ-ㅎㅏ-ㅣ가-힣]+.*";
 
     public static List<String> solution(List<List<String>> forms) {
-        Map<String, String> crewInfo = new HashMap<>();
+        Map<String, List<String>> crewInfo = new HashMap<>();
         Map<String, Integer> duplicatedNicknameCandidate = new HashMap<>();
         Set<String> duplicatedNicknameSet = new HashSet<>();
 
@@ -32,7 +33,8 @@ public class Problem6 {
         }
 
         List<String> answer = duplicatedNicknameSet.stream()
-                                                   .map(crewInfo::get)
+                                                   .flatMap(nickname -> crewInfo.get(nickname)
+                                                                                .stream())
                                                    .sorted()
                                                    .collect(Collectors.toList());
 
@@ -40,13 +42,16 @@ public class Problem6 {
     }
 
     private static void initCrewInfo(List<List<String>> forms,
-                                     Map<String, String> crewInfo) {
+                                     Map<String, List<String>> crewInfo) {
         for (List<String> form : forms) {
             String nickname = form.get(1);
             String email = form.get(0);
 
+            crewInfo.computeIfAbsent(nickname, k -> new ArrayList<>());
+
             if (isSatisfyEmailFormat(email) && isSatisfyNicknameFormat(nickname)) {
-                crewInfo.put(nickname, email);
+                crewInfo.get(nickname)
+                        .add(email);
             }
         }
     }
@@ -58,7 +63,7 @@ public class Problem6 {
                 String substring = nickname.substring(i, j);
 
                 duplicatedNicknameCandidate.put(substring,
-                                                duplicatedNicknameCandidate.getOrDefault(substring, 0) + 1);
+                        duplicatedNicknameCandidate.getOrDefault(substring, 0) + 1);
             }
         }
     }
