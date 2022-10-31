@@ -1,17 +1,13 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
         List<String> twoWords = getTwoWords(forms);
         Set<String> duplicatedWords = findDuplicatedWords(twoWords);
 
-        return answer;
+        return getEmailList(forms, duplicatedWords);
     }
 
     public static List<String> getTwoWords(List<List<String>> forms) {
@@ -38,5 +34,20 @@ public class Problem6 {
         }
 
         return duplicatedWords;
+    }
+
+    public static List<String> getEmailList(List<List<String>> forms, Set<String> duplicatedWords) {
+        TreeSet<String> emailList = new TreeSet<>();
+
+        for (List<String> form : forms) {
+            String email = form.get(0);
+            String nickname = form.get(1);
+
+            for (String duplicatedWord : duplicatedWords) {
+                if (nickname.contains(duplicatedWord)) emailList.add(email);
+            }
+        }
+
+        return new ArrayList<>(emailList);
     }
 }
