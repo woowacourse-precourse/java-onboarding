@@ -11,7 +11,6 @@ class Problem1 {
         if (exceptional(pobi, crong)) {
             return -1;
         }
-
         int pobiScore = maxScore(pobi);
         int crongScore = maxScore(crong);
 
