@@ -76,6 +76,17 @@ public class Problem7 {
 
         return scoreBoard;
     }
+
+    public List<String> sortScore(HashMap<String, Integer> scoreBoard) {
+        List<String> result = new ArrayList<>();
+        List<String> keySetList = new ArrayList<>(scoreBoard.keySet());
+        Collections.sort(keySetList, (o1, o2) -> (scoreBoard.get(o2).compareTo(scoreBoard.get(o1))));
+        for(String key : keySetList) {
+            result.add(key);
+        }
+        return result;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
