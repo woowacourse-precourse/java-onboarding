@@ -19,6 +19,4 @@ public class Problem4 {
 
         return String.join("", convertedCharList);
     }
-
-
 }
