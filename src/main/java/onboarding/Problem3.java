@@ -15,7 +15,7 @@ public class Problem3 {
 
     private static int getClapCount(int number) {
         int count = 0;
-        while (number != 0) {
+        while (isNotZero(number)) {
             int digitNumber = number % 10;
             if (isThree(digitNumber) || isSix(digitNumber) || isNine(digitNumber)) {
                 count++;
@@ -23,6 +23,10 @@ public class Problem3 {
             number /= 10;
         }
         return count;
+    }
+
+    private static boolean isNotZero(int number) {
+        return number != 0;
     }
 
     private static boolean isThree(int digitNumber) {

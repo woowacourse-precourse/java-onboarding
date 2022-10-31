@@ -19,9 +19,9 @@ class Problem1 {
         return getWinner(pobiValue, crongValue);
     }
 
-    private static boolean isValidation(List<Integer> page) {
-        int leftPage = page.get(0);
-        int rightPage = page.get(1);
+    private static boolean isValidation(List<Integer> pages) {
+        int leftPage = getLeftPage(pages);
+        int rightPage = getRightPage(pages);
         if (isOutOfRange(leftPage) || isOutOfRange(rightPage)) {
             return false;
         } else if (isNotOddNumber(leftPage)) {
@@ -30,6 +30,14 @@ class Problem1 {
             return false;
         }
         return checkPageOrder(leftPage, rightPage);
+    }
+
+    private static Integer getLeftPage(List<Integer> pages) {
+        return pages.get(0);
+    }
+
+    private static Integer getRightPage(List<Integer> pages) {
+        return pages.get(1);
     }
 
     private static boolean isOutOfRange(int pageNumber) {
@@ -48,9 +56,9 @@ class Problem1 {
         return (rightPage - leftPage) == 1;
     }
 
-    private static int maxValueOfSumOrMultiply(List<Integer> page) {
-        int leftPage = page.get(0);
-        int rightPage = page.get(1);
+    private static int maxValueOfSumOrMultiply(List<Integer> pages) {
+        int leftPage = getLeftPage(pages);
+        int rightPage = getRightPage(pages);
         int leftPageResult = Math.max(sumOfEachDigitNumber(leftPage), multiplyOfEachDigitNumber(leftPage));
         int rightPageResult = Math.max(sumOfEachDigitNumber(rightPage), multiplyOfEachDigitNumber(rightPage));
         return Math.max(leftPageResult, rightPageResult);
@@ -58,7 +66,7 @@ class Problem1 {
 
     private static int sumOfEachDigitNumber(int number) {
         int result = 0;
-        while (number != 0) {
+        while (isNotZero(number)) {
             result += number % 10;
             number /= 10;
         }
@@ -67,11 +75,15 @@ class Problem1 {
 
     private static int multiplyOfEachDigitNumber(int number) {
         int result = 1;
-        while (number != 0) {
+        while (isNotZero(number)) {
             result *= number % 10;
             number /= 10;
         }
         return result;
+    }
+
+    private static boolean isNotZero(int number) {
+        return number != 0;
     }
 
     private static int getWinner(int pobi, int crong) {
