@@ -11,7 +11,6 @@ public class Problem4 {
 	private static final char UPPER_FIRST_CHAR='A';
 	private static final char UPPER_MIDDLE_CHAR='M';
 	private static final char UPPER_END_CHAR='Z';
-	private static final char SPACE=' ';
 
 	public static String solution(String word) {
 		Problem4ValidateChecker.isWordValidate(word);
@@ -22,8 +21,8 @@ public class Problem4 {
 		HashMap<Character,Character> frogDic = generateFrogDic();
 		StringBuilder answerBuilder = new StringBuilder();
 		for (char key : word.toCharArray()) {
-			if(key == SPACE){
-				answerBuilder.append(SPACE);
+			if(!Character.isAlphabetic(key)){
+				answerBuilder.append(key);
 				continue;
 			}
 			answerBuilder.append(frogDic.get(key));
