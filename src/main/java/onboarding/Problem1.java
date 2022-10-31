@@ -14,7 +14,7 @@ class Problem1 {
 
         //페이지 오류
         if(pobiLeftNumber + 1 != pobiRightNumber || crongLeftNumber + 1 != crongRightNumber ||
-                pobiLeftNumber%2==0 || pobiRightNumber%2==1 || crongLeftNumber%2==0 || crongRightNumber%2==1){
+                pobiLeftNumber < 1 || pobiRightNumber > 400 || crongLeftNumber < 1 || crongRightNumber > 400){
             return -1;
         }
 
