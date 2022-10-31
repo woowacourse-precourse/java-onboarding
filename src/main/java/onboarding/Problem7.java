@@ -17,6 +17,11 @@ public class Problem7 {
         List<Map.Entry<String, Integer>> entryList = new LinkedList<>(scoreMap.entrySet());
         entryList.sort((o1, o2) -> o2.getValue() - o1.getValue());
 
+        int minSize = Math.min(4,entryList.size()-1);
+        for (int i = 0; i <= minSize; i++) {
+            answer.add(entryList.get(i).getKey());
+        }
+
         return answer;
     }
 
