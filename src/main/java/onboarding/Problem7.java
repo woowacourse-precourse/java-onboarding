@@ -4,13 +4,16 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Problem7 {
+    static Map<String, Set<String>> userFriendsMap;
     static Map<String, Integer> userScore;
     static Set<String> userFriends;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        userFriendsMap = new HashMap<>();
         userScore = new LinkedHashMap<>();
         userFriends = new HashSet<>();
 
+        setUserFriendsMap(friends);
         countFriends(user, friends);
         countVisitors(visitors);
 
@@ -24,6 +27,32 @@ public class Problem7 {
                 })
                 .limit(5)
                 .collect(Collectors.toList());
+    }
+
+    /*
+    * friends를 탐색하면서 사용자들의 친구 관계를 저장하는 기능
+    *
+    * @return void
+    * */
+    private static void setUserFriendsMap(List<List<String>> friends) {
+        for (List<String> friend : friends) {
+            String person1 = friend.get(0);
+            String person2 = friend.get(1);
+
+            setUserFriend(person1, person2);
+            setUserFriend(person2, person1);
+        }
+    }
+
+    /*
+    * 두 사용자 간 친구 관계를 설정
+    *
+    * @return void
+    * */
+    private static void setUserFriend(String person1, String person2) {
+        Set<String> friendSet = userFriendsMap.getOrDefault(person1, new HashSet<>());
+        friendSet.add(person2);
+        userFriendsMap.put(person1, friendSet);
     }
 
     /*
