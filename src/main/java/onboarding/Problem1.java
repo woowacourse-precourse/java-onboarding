@@ -7,7 +7,8 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         int pobiScore = Integer.MIN_VALUE;
         int crongScore = Integer.MIN_VALUE;
-        int score, value;
+        int tempScore;
+        int value;
 
         if(pobi.get(0)<3 || pobi.get(0)>398 || pobi.get(1)<3 || pobi.get(1)>398) answer=-1;
         else if(crong.get(0)<3 || crong.get(0)>398 || crong.get(1)<3 || crong.get(1)>398) answer=-1;
@@ -16,23 +17,23 @@ class Problem1 {
 
         if(answer == -1) return answer;
 
-        for(score=0, value=pobi.get(0); value!=0; value/=10) score += value%10;
-        pobiScore = pobiScore > score ? pobiScore : score;
-        for(score=0, value=pobi.get(1); value!=0; value/=10) score += value%10;
-        pobiScore = pobiScore > score ? pobiScore : score;
-        for(score=1, value=pobi.get(0); value!=0; value/=10) score *= value%10;
-        pobiScore = pobiScore > score ? pobiScore : score;
-        for(score=1, value=pobi.get(1); value!=0; value/=10) score *= value%10;
-        pobiScore = pobiScore > score ? pobiScore : score;
+        for(tempScore=0, value=pobi.get(0); value!=0; value/=10) tempScore += value%10;
+        pobiScore = pobiScore > tempScore ? pobiScore : tempScore;
+        for(tempScore=0, value=pobi.get(1); value!=0; value/=10) tempScore += value%10;
+        pobiScore = pobiScore > tempScore ? pobiScore : tempScore;
+        for(tempScore=1, value=pobi.get(0); value!=0; value/=10) tempScore *= value%10;
+        pobiScore = pobiScore > tempScore ? pobiScore : tempScore;
+        for(tempScore=1, value=pobi.get(1); value!=0; value/=10) tempScore *= value%10;
+        pobiScore = pobiScore > tempScore ? pobiScore : tempScore;
 
-        for(score=0, value=crong.get(0); value!=0; value/=10) score += value%10;
-        crongScore = crongScore > score ? crongScore : score;
-        for(score=0, value=crong.get(1); value!=0; value/=10) score += value%10;
-        crongScore = crongScore > score ? crongScore : score;
-        for(score=1, value=crong.get(0); value!=0; value/=10) score *= value%10;
-        crongScore = crongScore > score ? crongScore : score;
-        for(score=1, value=crong.get(1); value!=0; value/=10) score *= value%10;
-        crongScore = crongScore > score ? crongScore : score;
+        for(tempScore=0, value=crong.get(0); value!=0; value/=10) tempScore += value%10;
+        crongScore = crongScore > tempScore ? crongScore : tempScore;
+        for(tempScore=0, value=crong.get(1); value!=0; value/=10) tempScore += value%10;
+        crongScore = crongScore > tempScore ? crongScore : tempScore;
+        for(tempScore=1, value=crong.get(0); value!=0; value/=10) tempScore *= value%10;
+        crongScore = crongScore > tempScore ? crongScore : tempScore;
+        for(tempScore=1, value=crong.get(1); value!=0; value/=10) tempScore *= value%10;
+        crongScore = crongScore > tempScore ? crongScore : tempScore;
 
         if(pobiScore > crongScore) answer = 1;
         else if(pobiScore < crongScore) answer = 2;
