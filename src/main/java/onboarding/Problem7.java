@@ -25,7 +25,7 @@ public class Problem7 {
     public static Map<String, Integer> getFriendScore( Map<String, List<String>> friendsMap,Map<String, Integer> scoreMap,String user){
         for(String friend: friendsMap.get(user)){
             for(String notfriend: friendsMap.get(friend)){
-                if(notfriend!=user){
+                if(!notfriend.equals(user)){
                     if((!scoreMap.containsKey(notfriend)))
                         scoreMap.putIfAbsent(notfriend, 10);
                     else
