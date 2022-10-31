@@ -110,6 +110,36 @@ public class Problem7 {
 		}
 		return friendScore;
 	}
+	private static HashMap<String, Integer> sortByValue(Map<String, Integer> friendScore){
+        List<Map.Entry<String, Integer> > list =
+               new LinkedList<Map.Entry<String, Integer>>(friendScore.entrySet());
+
+        Collections.sort(list, new Comparator<Map.Entry<String, Integer> >() {
+            public int compare(Map.Entry<String, Integer> o1,
+                               Map.Entry<String, Integer> o2){
+                return (o2.getValue()).compareTo(o1.getValue());
+            }
+        });
+
+        HashMap<String, Integer> sortedFriendScore = new LinkedHashMap<String, Integer>();
+        for (Map.Entry<String, Integer> aa : list) {
+        	sortedFriendScore.put(aa.getKey(), aa.getValue());
+        }
+        return sortedFriendScore;
+    }
+	private static List<String> getResult(Map<String,Integer> sortedFriendScore){
+		List<String> result = new ArrayList<String>();
+		int maxCount =1;
+		for(String friend : sortedFriendScore.keySet()) {
+			result.add(friend);
+			maxCount++;
+			if(maxCount == 5) {
+				break;
+			}
+		}
+		
+		return result;
+	}
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         //"이미 친구"
@@ -127,7 +157,11 @@ public class Problem7 {
 		//"추천 예정 친구,점수"
 		Map<String,Integer> friendScore = getFriendScore(friendForRecommands, visitorsWithoutMyFriends);
 		
+		//"정렬 후"
+		Map<String,Integer> sortedFriendScore = sortByValue(friendScore);
 		
+		//"List로 변환"
+		answer = getResult(sortedFriendScore);
 		
         return answer;
     }
