@@ -23,4 +23,21 @@ class FriendInfoController {
         }
         return -1;
     }
+
+    private static Set<String> distinguishUsersFriend(String user, List<List<String>> friends, Set<String> usersFriends, List<List<String>> friendsShouldCheck) {
+        List<String> friendsRelation;
+        int usersFriendIndex;
+
+        for (int i =0; i < friends.size(); i++) {
+            friendsRelation= friends.get(i);
+            usersFriendIndex = getUsersFriendIndex(user, friendsRelation);
+            if(usersFriendIndex != -1) {
+                usersFriends.add(friendsRelation.get(usersFriendIndex));
+                continue;
+            }
+            friendsShouldCheck.add(friendsRelation);
+        }
+        return usersFriends;
+    }
+
 }
