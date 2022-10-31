@@ -8,8 +8,7 @@ public class Problem4 {
     public static String solution(String word) {
         String answer = "";
         GreenFlog greenflog = GreenFlog.getInstance();
-
-        for (int i=0; i<word.length(); i++) {
+        for (int i = 0; i < word.length(); i++) {
             answer += greenflog.reform(word.charAt(i));
         }
         return answer;
@@ -17,7 +16,6 @@ public class Problem4 {
 }
 
 class GreenFlog {
-
     private static GreenFlog greenflog = new GreenFlog();
 
     static GreenFlog getInstance() {
@@ -32,12 +30,12 @@ class GreenFlog {
 
     private void setFlog_map(Map<Character, Character> flog_map) {
         int len = 'z' - 'a' + 1;
-        for (int i=0; i<len; i++) {
+        for (int i = 0; i < len; i++) {
             char key = (char) ('a' + i);
             char value = (char) ('z' - i);
             flog_map.put(key, value);
         }
-        for (int j=0; j<len; j++) {
+        for (int j = 0; j < len; j++) {
             char key = (char) ('A' + j);
             char value = (char) ('Z' - j);
             flog_map.put(key, value);

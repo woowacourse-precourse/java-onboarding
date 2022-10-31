@@ -8,17 +8,15 @@ class Problem1 {
         Game game_crong = new Game(crong);
         int pobi_score = game_pobi.getResult();
         int crong_score = game_crong.getResult();
-
         if (pobi_score == -1 | crong_score == -1) {
             return -1;
-        }
-        else if (pobi_score > crong_score) {
+        } else if (pobi_score > crong_score) {
             return 1;
-        }
-        else if (pobi_score < crong_score) {
+        } else if (pobi_score < crong_score) {
             return 2;
+        } else {
+            return 0;
         }
-        else {return 0;}
     }
 }
 
