@@ -29,7 +29,7 @@ public class Problem7 {
         return collect;
     }
 
-    static void updateVisitorsScore(Map<String, Integer> scoreMap,
+    private static void updateVisitorsScore(Map<String, Integer> scoreMap,
         List<String> visitorsList, Set<String> removeFriendsSet) {
 
         for (String visitor : visitorsList) {
@@ -40,7 +40,7 @@ public class Problem7 {
         System.out.println("scoreMap = " + scoreMap);
     }
 
-    static void updateFriendsScore(Map<String, Integer> scoreMap,
+    private static void updateFriendsScore(Map<String, Integer> scoreMap,
         Map<String, Set<String>> friendsMap, String user, Set<String> removeFriendsSet) {
 
         Set<String> friendsSet = friendsMap.get(user);
@@ -63,11 +63,11 @@ public class Problem7 {
         return removeFriendsSet;
     }
 
-    static HashMap<String, Integer> makeScoreMap() {
+    private static HashMap<String, Integer> makeScoreMap() {
         return new HashMap<String, Integer>();
     }
 
-    static HashMap<String, Set<String>> makeInitMap(List<List<String>> friends) {
+    private static HashMap<String, Set<String>> makeInitMap(List<List<String>> friends) {
         HashMap<String, Set<String>> initMap = new HashMap<>();
         for (List<String> friend : friends) {
             putValue(initMap, friend.get(0), friend.get(1));
@@ -76,7 +76,7 @@ public class Problem7 {
         return initMap;
     }
 
-    static void putValue(HashMap<String, Set<String>> initMap, String friend1, String friend2) {
+    private static void putValue(HashMap<String, Set<String>> initMap, String friend1, String friend2) {
         if (!initMap.containsKey(friend1)) {
             initMap.put(friend1, new HashSet<>(Set.of(friend2)));
             return;
@@ -85,7 +85,7 @@ public class Problem7 {
         tmpSet.add(friend2);
         initMap.put(friend1, tmpSet);
     }
-    static void putValueScore(Map<String, Integer> scoreMap, String friend, int score) {
+    private static void putValueScore(Map<String, Integer> scoreMap, String friend, int score) {
         if (!scoreMap.containsKey(friend)) {
             scoreMap.put(friend, score);
             return;

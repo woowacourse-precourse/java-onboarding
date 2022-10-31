@@ -9,11 +9,11 @@ public class Problem5 {
         return calMoneys(money);
     }
 
-    static List<Integer> makeMoneys(){
+    private static List<Integer> makeMoneys(){
         return List.of(50000, 10000, 5000, 1000, 500, 100, 50, 10, 1);
     }
 
-    static List<Integer> calMoneys(int money) {
+    private static List<Integer> calMoneys(int money) {
         List<Integer> answer = new ArrayList<>();
         List<Integer> moneys = makeMoneys();
 

@@ -18,7 +18,7 @@ public class Problem4 {
         return answer.toString();
     }
 
-    static HashMap<Character, Character> makeHashMap() {
+    private static HashMap<Character, Character> makeHashMap() {
         HashMap<Character, Character> alphabetHash = new HashMap<>();
 
         for (int i = 0; i < 26; i++) {

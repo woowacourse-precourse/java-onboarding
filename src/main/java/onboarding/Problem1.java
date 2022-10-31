@@ -14,7 +14,7 @@ class Problem1 {
         return findMaxValue(pobi) > findMaxValue(crong) ? 1 : 0;
     }
 
-    static boolean checkError(List<Integer> user) {
+    private static boolean checkError(List<Integer> user) {
         for (Integer page : user) {
             if (page > 400) {
                 return true;
@@ -24,7 +24,7 @@ class Problem1 {
         return user.get(1) - user.get(0) != 1;
     }
 
-    static Integer findMaxValue(List<Integer> user) {
+    private static Integer findMaxValue(List<Integer> user) {
 
         int maxNum = 0;
         for (Integer page : user) {
