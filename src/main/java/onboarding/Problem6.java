@@ -69,8 +69,15 @@ public class Problem6 {
         return valid;
     }
 
+    /*
+     * 신청서가 포함한 정보가 2개인지 확인합니다.
+     *
+     * @param 신청서 입니다.
+     * @return 신청서가 2개의 정보를 가지고 있으면 참, 아니면 거짓을 반환합니다.
+     * */
     private static boolean hasValidFormLength(List<String> form) {
-        return false;
+        boolean valid = isInRange(form.size(), 2, 2);
+        return valid;
     }
 
     private static boolean hasValidEmail(String email) {

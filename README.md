@@ -83,7 +83,7 @@
     - 신청서 배열의 크기가 1 ~ 10000 사이의 값인지 검사한다.
   - [X] isValidForm
   - 신청서 하나가 조건에 부합하는지 검사한다.
-    - [ ] hasValidFormLength
+    - [X] hasValidFormLength
     - 신청서의 길이가 2인지 확인한다.
     - [ ] hasValidEmail
     - 이메일이 조건에 부합하는지 검사한다.
