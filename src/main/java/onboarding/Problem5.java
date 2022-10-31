@@ -12,6 +12,17 @@ public class Problem5 {
         List<Integer> result = new ArrayList<Integer>();
         int index = 0;
 
+        //인출 하기
+        while(index<9) {
+            System.out.println(index+ " 번 째...");
+            System.out.print("인출 전 money: "+money+", 인출 중...: "+money/unit[index]);
+            result.add(money/unit[index]);
+            money-=result.get(index)*unit[index];
+            System.out.println(", 인출 후 money: "+money);
+            index++;
+        }
+        System.out.println("====solution end====");
+
         return result;
     }
 }
