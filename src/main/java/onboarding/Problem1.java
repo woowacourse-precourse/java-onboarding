@@ -11,6 +11,9 @@ class Problem1 {
             return answer = -1;
         }
 
+        int pobi_score = findHighScore(pobi);
+        int crong_score = findHighScore(crong);
+
         return answer;
     }
 
@@ -42,5 +45,11 @@ class Problem1 {
         }
 
         return multScore;
+    }
+
+    public static int findHighScore(List<Integer> name) {
+        int add = Math.max(calculateAdd(name.get(0)), calculateMult(name.get(0)));
+        int mult = Math.max(calculateAdd(name.get(1)), calculateMult(name.get(1)));
+        return Math.max(add, mult);
     }
 }
