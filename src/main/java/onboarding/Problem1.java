@@ -24,7 +24,7 @@ class Problem1 {
 
     	Integer result = (leftResult >= rightResult)?leftResult:rightResult;
     	
-    	return (leftPage!=rightPage-1)?-1:result;
+    	return (leftPage.equals(rightPage-1))?result:-1;
     }// pageCombine
     
     private Integer pageCalculate(Integer page){
