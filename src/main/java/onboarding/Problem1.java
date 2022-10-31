@@ -5,6 +5,8 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        int pobiScore, crongScore;
+
         /*
         1. 예외처리
         - 배열 길이가 2가 아닌 경우
@@ -25,6 +27,8 @@ class Problem1 {
         2. 포비와 크롱의 max 점수 구하기
         - 각각의 max 점수: max(max(왼쪽 페이지 자릿수 합, 왼쪽 페이지 자릿수 곱), max(오른쪽 페이지 자릿수 합, 오른쪽 페이지 자릿수 곱))
          */
+        pobiScore = getMaxScore(pobi);
+        crongScore = getMaxScore(crong);
 
         /*
         3. 게임 결과 구하기
@@ -33,5 +37,30 @@ class Problem1 {
         - 크롱이 이기면 2
          */
         return answer;
+    }
+
+    private static int getMaxScore(List<Integer> person) {
+        int score;
+
+        List<Integer> calculatedValue = calculateDigitSumAndProduct(person.get(0));
+        score = Math.max(calculatedValue.get(0), calculatedValue.get(1));
+
+        calculatedValue = calculateDigitSumAndProduct(person.get(1));
+        score = Math.max(score, Math.max(calculatedValue.get(0), calculatedValue.get(1)));
+
+        return score;
+    }
+
+    private static List<Integer> calculateDigitSumAndProduct(int num) {
+        int sum = 0;
+        int multi = 1;
+
+        while(num > 0) {
+            sum += num % 10;
+            multi *= num % 10;
+            num /= 10;
+        }
+
+        return List.of(sum, multi);
     }
 }
