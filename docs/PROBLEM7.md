@@ -31,6 +31,8 @@
 #### 1. 전체 사용자 목록 구하기 ```getUsers```
 ```List<List<String>> friends``` => ```List<String>```
 
+- 친구 관계 정보와 방문 기록에 존재하는 모든 사용자 id를 반환한다
+
 <br/>
 
 #### 2. 사용자의 친구 목록 구하기 ```getFriends```
