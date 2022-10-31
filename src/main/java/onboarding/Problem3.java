@@ -2,8 +2,18 @@ package onboarding;
 
 public class Problem3 {
 
+
     /**
-     *
+     * @param number : 0-9 사이 문자 숫자
+     * @return boolean : 박수를 쳐야 하는지
+     */
+    public static boolean isClapNumber(char number) {
+        if (number == '3' || number == '6' || number == '9')
+            return true;
+        return false;
+    }
+
+    /**
      * @param number : 자연수
      * @return int : number 까지 박수치는 횟수
      */
@@ -21,7 +31,7 @@ public class Problem3 {
 
     public static int solution(int number) {
         int answer = 0;
-        for(int i=1;i<=number;i++){
+        for (int i = 1; i <= number; i++) {
             answer += getClapsByNumber(i);
         }
         return answer;
