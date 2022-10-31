@@ -1,6 +1,9 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
+
+import static java.util.Collections.reverseOrder;
 
 public class Problem7 {
     private static final int FRIEND_COUNT_POINT = 10;
@@ -15,9 +18,15 @@ public class Problem7 {
         calculateFriendCountPoint(myUser, friendPoint, myFriendList, friendGraph);
         // 방문 횟수 => 1점 추가
         calculateVisitingCountPoint(myUser, visitors, friendPoint, myFriendList);
-        System.out.println("friendPoint = " + friendPoint);
-        List<String> answer = Collections.emptyList();
-        return answer;
+
+        Comparator compare = Map.Entry.<String, Integer>comparingByValue();
+
+        return friendPoint.entrySet().stream()
+                .sorted(Comparator.comparing(Map.Entry<String, Integer> ::getValue).reversed() // 점수 큰 순
+                        .thenComparing(Map.Entry<String, Integer>::getKey)) // 사전 순
+                .limit(5)
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
     }
 
     public static void calculateFriendCountPoint(String myUser, Map<String, Integer> friendPoint, List<String> myFriendList, Map<String, List<String>> friendGraph){
