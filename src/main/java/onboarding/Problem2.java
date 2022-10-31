@@ -12,8 +12,9 @@ public class Problem2 {
         Decryption decryption = new Decryption();
 
         String answer = decryption.decryption(cryptogram);
+        int cryptogramLength = cryptogram.length();
 
-        for (int i=0; i<=cryptogram.length()+2; i++){
+        for (int i=0; i<=(cryptogramLength/2); i++){
             if (cryptogram.equals(answer) || answer.equals("") || answer.length() == 1) {
                 break;
             }
