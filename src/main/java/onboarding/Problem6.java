@@ -24,15 +24,7 @@ public class Problem6 {
 
         Set<Integer> indexSet = findDuplicateStudents(forms);
 
-        List<Student> duplicateStudentList = new ArrayList<>();
-
-        for (int idx: indexSet) {
-            String email = forms.get(idx).get(0);
-            int splitIdx = email.indexOf('@');
-            email = email.substring(0, splitIdx);
-
-            duplicateStudentList.add(new Student(email, idx));
-        }
+        List<Student> duplicateStudentList = getDuplicateStudentList(forms, indexSet);
 
         Collections.sort(duplicateStudentList);
         for (Student student : duplicateStudentList) {
@@ -73,5 +65,19 @@ public class Problem6 {
         }
 
         return true;
+    }
+
+    private static List<Student> getDuplicateStudentList(List<List<String>> forms, Set<Integer> indexSet) {
+        List<Student> duplicateStudentList = new ArrayList<>();
+
+        for (int idx: indexSet) {
+            String email = forms.get(idx).get(0);
+            int splitIdx = email.indexOf('@');
+            email = email.substring(0, splitIdx);
+
+            duplicateStudentList.add(new Student(email, idx));
+        }
+
+        return duplicateStudentList;
     }
 }
