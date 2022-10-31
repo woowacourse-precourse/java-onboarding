@@ -30,7 +30,7 @@ public class GroupGenerator {
     }
 
     // 메소드
-    public Set<String> getMyFriends() {
+    public void updateMyFriends() {
         myFriends = new HashSet<>();
         for (List<String> friendship : friends) {
             if (friendship.contains(user)) {
@@ -40,10 +40,9 @@ public class GroupGenerator {
                 friendship.add(user);
             }
         }
-        return myFriends;
     }
 
-    public Set<String> getNotMyFriends() {
+    public void updateNotMyFriends() {
         Set<String> meAndMyFriends = new HashSet<>();
         meAndMyFriends.addAll(myFriends);
         meAndMyFriends.add(user);
@@ -61,10 +60,11 @@ public class GroupGenerator {
 
         allThePeople.removeAll(meAndMyFriends);
         notMyFriends = allThePeople;
-        return notMyFriends;
     }
 
     public Map<String, Integer> getRecommendationScores() {
+        updateMyFriends();
+        updateNotMyFriends();
         recommendationScores = new HashMap<>();
         for (String person : notMyFriends) {
             recommendationScores.put(person, initialScore);
