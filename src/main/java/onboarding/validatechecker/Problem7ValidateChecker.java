@@ -10,6 +10,12 @@ public class Problem7ValidateChecker {
 		isFriendRelationNotNull(friends);
 		isIdNotNull(friends);
 		isUserInRange(user);
+		isFriendsInRange(friends);
+	}
+
+	private static void isFriendsInRange(List<List<String>> friends) {
+		if(friends.size() == 0 || friends.size() > 10000)
+			throw new IllegalArgumentException("friends의 길이가 0이거나, 10,000초과입니다.");
 	}
 
 	private static void isUserInRange(String user) {
