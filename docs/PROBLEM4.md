@@ -19,3 +19,8 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+### 기능목록
+- 길이가 1 이상 1,000 이하 검증기(WordsRangeValidator)
+- 알파벳 검증(WordAlphabetValidator)
+- 알파벳 대문자는 알파벳 대문자로, 알파벳 소문자는 알파벳 소문자로 변환한다.(AlphabetChanger)

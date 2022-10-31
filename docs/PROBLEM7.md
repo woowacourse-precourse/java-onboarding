@@ -24,3 +24,35 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+
+### 기능목록
+- **SNSSystem**
+  - 친구의 아는 친구목록을 추출 기능
+  - UsersList 보관
+  - 방문자에서 친구를 삭제
+
+- **UsersList**
+  - 친구 저장
+  - 친구 찾기
+  - 아는 친구의 친구 맞는지 기능
+  
+- **사용자아이디**
+  - 사용자 아이디는 길이가 1 이상 30 이하인 문자열이다.
+  - 사용자 아이디는 알파벳 소문자로만 이루어져 있다.
+  
+- **friends**
+  - 친구 추가 기능
+  - 친구 맞는지 기능
+  - friends는 길이가 1 이상 10,000 이하인 리스트/배열이다.
+  - friends의 각 원소는 길이가 2인 리스트/배열로 [아이디 A, 아이디 B] 순으로 들어있다.
+
+- **TotalScoreStorage**
+  - 리스트와 점수를 받고 추천리스트에 점수를 추가
+  - 추천 상위 5까지 추출 기능
+  
+
+
+
+- 동일한 친구 관계가 중복해서 주어지지 않는다.
+- 추천할 친구가 없는 경우는 주어지지 않는다.
