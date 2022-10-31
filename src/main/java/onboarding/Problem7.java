@@ -48,4 +48,18 @@ public class Problem7 {
             }
         }
     }
+
+    private static List<String> sortByValue(Map<String, Integer> recommendedFriends) {
+        List<String> keySet = new ArrayList<>(recommendedFriends.keySet());
+        Collections.sort(keySet);
+        keySet.sort((o1, o2)
+                -> recommendedFriends.get(o2).compareTo(recommendedFriends.get(o1)));
+
+        cutOverFive(keySet);
+        return keySet;
+    }
+
+    private static void cutOverFive(List<String> keySet) {
+        keySet.removeIf(recommended -> keySet.indexOf(recommended) > 4);
+    }
 }
