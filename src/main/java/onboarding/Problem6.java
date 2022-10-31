@@ -120,7 +120,7 @@ class ExceptionClassForPro6 {
   }
 
   private static void validateEmail(String email) {
-    Pattern p = Pattern.compile("^[_a-z0-9-]+(.[_a-z0-9-]+)*@(?:\\w+\\.)+\\w+$");
+    Pattern p = Pattern.compile("^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$");
     Matcher m = p.matcher(email);
     if (!m.matches()) {
       throw new IllegalArgumentException("이메일 형식이 올바르지 않습니다.");

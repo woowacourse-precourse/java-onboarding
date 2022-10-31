@@ -109,8 +109,6 @@ class Problem1 {
   private static final int DRAW = 0;
   private static final int EXCEPTION = -1;
 
-
-
   public static int solution(List<Integer> pobi, List<Integer> crong) {
     UserForProblem1 userPobi = new UserForProblem1(pobi);
     UserForProblem1 userCrong = new UserForProblem1(crong);
