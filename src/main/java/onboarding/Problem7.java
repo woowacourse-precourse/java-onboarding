@@ -1,88 +1,87 @@
 package onboarding;
 
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Collections;
+import java.util.Comparator;
+
 
 public class Problem7 {
-    /* 친구 관계를 활용하기 쉽도록 Map으로 변환하는 메소드 */
-    public static Map<String, ArrayList<String>> makeFriendMap(List<List<String>> friends) {
+    // 친구 관계가 데이터로 있는 friends 리스트를 활용하기 좋은 Map 형태로 변환하는 메소드
+    public static Map<String, ArrayList<String>> convertToMap(List<List<String>> friends) {
         Map<String, ArrayList<String>> friendsMap = new HashMap<>();
 
-        // friends 리스트에 주어진 친구 관계를 Map으로 변환
-        for(List<String> friend : friends) {
-            // 첫 번째 친구의 친구 리스트에 두 번쨰 친구를 입력
-            if(friendsMap.containsKey(friend.get(0))) {    // nullPointException
-                friendsMap.get(friend.get(0)).add(friendsMap.get(friend.get(0)).size(), friend.get(1));
-            } else {
-                friendsMap.put(friend.get(0), new ArrayList<>());
-                friendsMap.get(friend.get(0)).add(friendsMap.get(friend.get(0)).size(), friend.get(1));
-            }
+        for(List<String> friend : friends) {        // 양방향성 친구 관계를 모두 추가함
+            ArrayList<String> firstFriendList = friendsMap.getOrDefault(friend.get(0), new ArrayList<>());
+            firstFriendList.add(firstFriendList.size(), friend.get(1));
+            friendsMap.put(friend.get(0), firstFriendList);
 
-            // 두 번째 친구의 친구 리스트에 첫 번쨰 친구를 입력
-            if(friendsMap.containsKey(friend.get(1))) {    // nullPointException
-                friendsMap.get(friend.get(1)).add(friendsMap.get(friend.get(1)).size(), friend.get(0));
-            } else {
-                friendsMap.put(friend.get(1), new ArrayList<>());
-                friendsMap.get(friend.get(1)).add(friendsMap.get(friend.get(1)).size(), friend.get(0));
-            }
+            ArrayList<String> secondFriendList = friendsMap.getOrDefault(friend.get(1), new ArrayList<>());
+            secondFriendList.add(secondFriendList.size(), friend.get(0));
+            friendsMap.put(friend.get(1), secondFriendList);
         }
 
         return friendsMap;
     }
 
-    public static List<Map.Entry<String, Integer>> makeScoreList(Map<String, ArrayList<String>> friendsMap, String user, List<String> visitors) {
-        Map<String, Integer> scoreMap = new HashMap<>();
-
-        // 사용자와 함께아는 친구 +10점
-        for(String friend : friendsMap.keySet()) {
-            if(friend.equals(user) || friendsMap.getOrDefault(user, new ArrayList<>()).contains(friend)) {
-                continue;    // user 본인, 이미 친구인 사람 제외
-            }
-
-            int score = 0;
-            for(String userFriend : friendsMap.getOrDefault(user, new ArrayList<>())) {
-                if(friendsMap.get(friend).contains(userFriend)) { // 함께 아는 친구가 존재하면 10점이 주어집니다
-                    score += 10;
-                    scoreMap.put(friend, score);
+    // 함께 아는 친구는 추천 점수를 10점 더해주는 메소드
+    public static void plusAcquaintanceScore(String user, Map<String, ArrayList<String>> friendsMap, Map<String, Integer> scoreMap) {
+        for(String friendOfUser : friendsMap.get(user)) {
+            for(String foundedFriend : friendsMap.get(friendOfUser)) {
+                if (friendsMap.get(user).contains(foundedFriend) || foundedFriend.equals(user)) {
+                    continue;
                 }
+                scoreMap.put(foundedFriend, scoreMap.getOrDefault(foundedFriend, 0) + 10);
             }
         }
+    }
 
-        // 사용자의 타임라인 방문횟수 +1점
-        for(String visitor : visitors) {
-            if(friendsMap.getOrDefault(user, new ArrayList<>()).contains(visitor)) {
-                continue;    // 이미 방문자와 친구라면 추천 친구에서 제외
-            }
-            int score = scoreMap.getOrDefault(visitor, 0) + 1;    // 함께아는 친구 점수에 이어서 +1
-            scoreMap.put(visitor, score);
-        }
+    // 타임 라인 방문자에게 1점 더해주는 메소드
+    public static void plusVisitTimelineScore(String visitor, Map<String, Integer> scoreMap) {
+        scoreMap.put(visitor, scoreMap.getOrDefault(visitor, 0) + 1);
+    }
 
-        // 정렬: 점수는 내림차순으로 정렬하고 점수가 같으면 이름으로 오름차순 정렬
-        List<Map.Entry<String, Integer>> friendsScoreList = new ArrayList<>(scoreMap.entrySet());
-        Collections.sort(friendsScoreList, new Comparator<Map.Entry<String, Integer>>(){
+    // 점수로 먼저 정렬을 하고 점수가 동일하면 이름순으로 정렬하는 메소드
+    public static List<Map.Entry<String, Integer>> applySort(Map<String, Integer> scoreMap) {
+        List<Map.Entry<String, Integer>> scoreList = new ArrayList<>(scoreMap.entrySet());
+
+        Collections.sort(scoreList, new Comparator<Map.Entry<String, Integer>>() {
             @Override
             public int compare(Map.Entry<String, Integer> entry1, Map.Entry<String, Integer> entry2) {
-                if(entry2.getValue() - entry1.getValue() == 0) {    // 점수가 같을 때는 이름(key)로 오름차순정렬
+                if (entry1.getValue() == entry2.getValue()) {
                     return entry1.getKey().compareTo(entry2.getKey());
-                } else {    // 점수가 다를 때는 점수(value)로 내림차순 정렬
+                } else {
                     return entry2.getValue() - entry1.getValue();
                 }
             }
         });
 
-        return friendsScoreList;
+        return scoreList;
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
+        Map<String, ArrayList<String>> friendsMap = convertToMap(friends);
+        Map<String, Integer> scoreMap = new HashMap<>();
 
-        Map<String, ArrayList<String>> friendsMap = makeFriendMap(friends);    // 친구 관계를 정리할 Map 선언
-        List<Map.Entry<String, Integer>> friendsScoreList = makeScoreList(friendsMap, user, visitors);    // 추천 친구 점수 리스트
+        plusAcquaintanceScore(user, friendsMap, scoreMap);        // 함께 아는 친구 점수 +10
 
-        for(int i = 0; i < friendsScoreList.size(); i++) {
-            if(i == 5) {
-                break; // answer 에는 최대 5명 제한
+        for(String visitor : visitors) {
+            if (friendsMap.get(user).contains(visitor)) {
+                continue;
             }
-            answer.add(i, friendsScoreList.get(i).getKey());
+            plusVisitTimelineScore(visitor, scoreMap);            // 타임 라인 방문자 점수 +1
+        }
+
+        for(Map.Entry<String, Integer> recommendedFriend : applySort(scoreMap)) {
+            answer.add(answer.size(), recommendedFriend.getKey());
+
+            if (answer.size() == 5) {
+                break;        // 최대 추천해줄 수 있는 친구의 수는 5명으로 제한
+            }
         }
 
         return answer;
