@@ -1,14 +1,37 @@
 package onboarding;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Problem4 {
 
+    static Map<Character,Character> lowerCase = new HashMap<>();
+    static Map<Character,Character> upperCase = new HashMap<>();
     public static String solution(String word) {
-        String answer = "";
         if(checkException(word)){
             throw new IllegalArgumentException();
         }
-        return answer;
+        setMap();
+        return "";
     }
+    public static void setMap(){
+        int i = 97;
+        int j = 122;
+        int k = 65;
+        int z = 90;
+        while(true){
+            if(i == 123){
+                break;
+            }
+            lowerCase.put((char)i,(char)j);
+            upperCase.put((char)k,(char)z);
+            i++;
+            j--;
+            k++;
+            z--;
+        }
+    }
+
     public static boolean checkException(String word){
         if(word == null || checkLength(word.length()) || !checkAlpa(word)){
             return true;
