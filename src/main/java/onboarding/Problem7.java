@@ -7,14 +7,33 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
 
-        List<String> friendOfFriend = findFriendOfFriend(user, friends);
+        List<String> friendOfUserList = getFriendOfUserList(user, friends);
+        List<String> friendOfFriend = getFriendOfFriend(user, friends);
+
         Map<String, Integer> scoreRecommendFriendMap = getScoreRecommendFriend(friendOfFriend, visitors);
+
         List<String> sortedRecommendFriendList = getSortedRecommendFriend(scoreRecommendFriendMap);
 
         return answer;
     }
 
-    private static List<String> findFriendOfFriend(String user, List<List<String>> friends) {
+    public static List<String> getFriendOfUserList(String user, List<List<String>> friends) {
+        List<String> result = new ArrayList<>();
+
+        friends.forEach(friend -> {
+            if (friend.get(0).equals(user)) {
+                result.add(friend.get(1));
+            }
+
+            if (friend.get(1).equals(user)) {
+                result.add(friend.get(0));
+            }
+        });
+
+        return result;
+    }
+
+    private static List<String> getFriendOfFriend(String user, List<List<String>> friends) {
         Map<String, List<String>> adjacencyList = getAdjacencyList(friends);
         Map<String, Boolean> friendVisited = new TreeMap<>();
         Map<String, Integer> friendLevel = new TreeMap<>();
