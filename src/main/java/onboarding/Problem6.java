@@ -3,6 +3,15 @@ package onboarding;
 import java.util.*;
 
 public class Problem6 {
+    private static final int MIN_CREW_COUNT = 1;
+    private static final int MAX_CREW_COUNT = 10000;
+    private static final int MIN_EMAIL_LENGTH = 11;
+    private static final int MAX_EMAIL_LENGTH = 19;
+    private static final String DOMAIN = "email.com";
+    private static final int MIN_NICKNAME_LENGTH = 1;
+    private static final int MAX_NICKNAME_LENGTH = 19;
+    private static final String NAME_REG = "^[가-힣]*$";
+
     private static final int FORM_EMAIL = 0;
     private static final int FORM_NICKNAME = 1;
     private static List<String> answer = new ArrayList<>();
@@ -14,6 +23,10 @@ public class Problem6 {
         getAnswer(forms);
         Collections.sort(answer);
         return answer;
+    }
+
+    public static boolean isValidNicknameLength(List<List<String>> forms) {
+        return forms.stream().allMatch(form -> form.get(FORM_NICKNAME).length() >= MIN_NICKNAME_LENGTH && form.get(FORM_NICKNAME).length() <= MAX_NICKNAME_LENGTH);
     }
 
     public static void getAnswer(List<List<String>> forms) {
