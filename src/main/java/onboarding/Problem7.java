@@ -3,9 +3,10 @@ package onboarding;
 //1. user를 아는 friend_list 만들기
 //2. user를 제외한 friends에 포함된 이름을 hashmap에 추가
 //3. visitors에 포함된 이름을 hashmap에 추가
-//4. hashmap을 리스트로 변환
-//5. 리스트를 hashmap의 값을 기준으로 정렬(값이 같을 시 키를 기준으로 정렬)
-//6. 리스트에 있는 값을 문제의 조건에 따라 answer에 추가 후 반환
+//4. friend_list를 보고 문제의 조건에 해당되는 hashmap 키의 value에 점수 추가
+//5. hashmap을 리스트로 변환
+//6. 리스트를 hashmap의 값을 기준으로 정렬(값이 같을 시 키를 기준으로 정렬)
+//7. 리스트에 있는 값을 문제의 조건에 따라 answer에 추가 후 반환
 import java.util.Map.Entry;
 import java.util.HashMap;
 import java.util.ArrayList;
@@ -38,6 +39,17 @@ public class Problem7 {
             }
         }
         map.remove(user);
+        //3. visitors에 포함된 이름을 hashmap에 추가
+        for(int i = 0; i < visitors.size(); i++)
+        {
+            if(map.containsKey(visitors.get(i)))
+            {
+                map.put(visitors.get(i), map.get(visitors.get(i)) + 1);
+                continue;
+            }
+            if(!map.containsKey(visitors.get(i)))
+                map.put(visitors.get(i), 1);
+        }
         return answer;
     }
 }
