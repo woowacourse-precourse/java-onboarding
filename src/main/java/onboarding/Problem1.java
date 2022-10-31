@@ -9,6 +9,15 @@ class Problem1 {
         int pobiScore = getMaxScore(pobi.get(0), pobi.get(1));
         int crongScore = getMaxScore(pobi.get(0), pobi.get(1));
 
+        if(pobiScore == -1 || crongScore == -1) {
+            answer = -1;
+        }else if(pobiScore > crongScore) {
+            answer = 1;
+        }else if(pobiScore < crongScore) {
+            answer = 2;
+        }else {
+            answer = 0;
+        }
         return answer;
 
     }
@@ -18,14 +27,23 @@ class Problem1 {
             return -1;
         }
 
-        return Math.max(score(left, right));
+        return Math.max(score(left), score(right));
     }
     public static boolean isValidate(int left, int right) {
         if(left % 2 == 1 && right % 2 == 0 && left + 1 == right) return true;
         else return false;
     }
 
-    public static int score(int left, int right) {
+    public static int score(int page) {
+        int plus = 0;
+        int mul = 1;
 
+        while(page > 0) {
+            plus += page % 10;
+            mul *= page % 10;
+            page /= 10;
+        }
+
+        return Math.max(plus, mul);
     }
 }
