@@ -134,8 +134,18 @@ public class Problem7 {
         return sortedList;
     }
 
+    /**
+     * 정해진 숫자만큼의 상위 유저를 알려줍니다.
+     *
+     * @param sortedIds 친구 점수가 높은 순서대로 정렬된 유저 ID 배열입니다.
+     * @param maxNumber ID 배열에서 상위 몇 명을 반환할지 결정할 정수입니다.
+     * @return 상위 N명의 유저만을 포함한 ID 배열입니다.
+     */
     private static List<String> sliceTopUsers(List<String> sortedIds, int maxNumber) {
-        return Collections.emptyList();
+        if (sortedIds.size() < maxNumber) {
+            maxNumber = sortedIds.size();
+        }
+        return sortedIds.subList(0, maxNumber);
     }
 
     /**

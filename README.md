@@ -79,6 +79,8 @@
    - 방문자에게 1점을 부여한다.
    - [X] sortByPointAndId
    - 친구 점수 및 ID에 따라 정렬한다.
+   - [X] sliceTopUsers
+   - 상위 점수 유저들만 보여준다.
 
 ---
 
