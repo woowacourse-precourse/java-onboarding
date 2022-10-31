@@ -16,7 +16,17 @@ public class Problem4 {
         }
     }
     public static String solution(String word) {
-        String answer = "";
+        String answer = decode(word);
         return answer;
+    }
+    public static String decode (String word) {
+        FrogCode frogCode = new FrogCode();
+        char[] chars = word.toCharArray();
+        String decoded = "";
+
+        for(char value : chars) {
+            decoded += frogCode.codeMap.get(value);
+        }
+        return decoded;
     }
 }
