@@ -7,10 +7,10 @@ public class Problem4 {
     public static String solution(String word) {
         StringBuilder answer = new StringBuilder();
 
-        HashMap<Character, Character> alphabetHash = makeHashMap();
+        HashMap<Character, Character> alphabetMap = makeHashMap();
         for (char c : word.toCharArray()) {
-            if (alphabetHash.containsKey(c)) {
-                answer.append(alphabetHash.get(c));
+            if (alphabetMap.containsKey(c)) {
+                answer.append(alphabetMap.get(c));
                 continue;
             }
             answer.append(c);
