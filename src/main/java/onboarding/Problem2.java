@@ -31,24 +31,23 @@ public class Problem2 {
                 cache = crypto.charAt(i);
                 continue;
             }
-            else if (pointer > 0) {
-                crypto = removeDuplicate(crypto, pointer, i);
-                redo = true;
 
-                return crypto;
+            else if (pointer > 0) {
+                return removeDuplicate(crypto, pointer, i);
             }
+
             cache = crypto.charAt(i);
         }
 
         if (pointer > 0) {
-            crypto = removeDuplicate(crypto, pointer, crypto.length());
-            redo = true;
+            return removeDuplicate(crypto, pointer, crypto.length());
         }
 
         return crypto;
     }
 
     private static String removeDuplicate(String crypto, int pointer, int current) {
+        redo = true;
         return crypto.substring(0, current - (1 + pointer)) + crypto.substring(current);
     }
 }
