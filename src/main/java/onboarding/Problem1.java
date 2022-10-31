@@ -24,7 +24,8 @@ class Problem1 {
     }
 
     private static boolean isRightEvenOddPage(List<Integer> pobi, List<Integer> crong) {
-        return false;
+        return (pobi.get(0) % 2 == 1 && crong.get(0) % 2 == 1)
+                && (pobi.get(1) % 2 == 0 && crong.get(1) % 2 == 0);
     }
 
     private static boolean isNotFirstOrLastPage(List<Integer> pobi, List<Integer> crong) {
