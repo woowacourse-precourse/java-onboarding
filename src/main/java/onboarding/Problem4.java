@@ -17,7 +17,9 @@ public class Problem4 {
         // Return c
 
     public static String solution(String word) {
-        // Check valid input
+        if (word.length() < 1 || 1000 < word.length()) {
+            return word;
+        }
 
         // For each character in word
             // Reverse character
