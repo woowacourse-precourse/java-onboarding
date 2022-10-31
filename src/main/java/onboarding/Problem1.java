@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -9,6 +10,17 @@ class Problem1 {
         if (hasException(pobi, crong) == true)
             return -1;
         return answer;
+    }
+
+    public static int getNumByPage(List<Integer> user, String page) {
+        int index = (page=="left")?0:1;
+        int resultAdd = Arrays.stream(user.get(index).toString().split(""))
+                .map(Integer::parseInt)
+                .reduce(0, Integer::sum);
+        int resultMul = Arrays.stream(user.get(index).toString().split(""))
+                .map(Integer::parseInt)
+                .reduce(1, (a,b) -> a*b);
+        return (resultAdd>resultMul)?resultAdd:resultMul;
     }
 
 
