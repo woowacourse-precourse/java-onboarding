@@ -7,8 +7,7 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        answer = 0;
+        int answer = 0;
 
             if (checkPages(pobi) && checkPages(crong)) {
                 int final_pobi = comparison(pobi);
