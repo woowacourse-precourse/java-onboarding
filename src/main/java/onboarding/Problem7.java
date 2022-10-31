@@ -4,10 +4,15 @@ import java.util.*;
 
 
 public class Problem7 {
+
+    private static final int NEIGHBOR_POINT = 10;
     private static final List<String> USER_FRIENDS = new ArrayList<>();
+    private static final Map<String, Integer> RECOMMEND_SCORE = new HashMap<>();
+
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         getUserFriends(user, friends);
+        getRecommendScoreByRelationship(user, friends);
         return new ArrayList<>();
     }
 
@@ -21,6 +26,31 @@ public class Problem7 {
             }
             if (userB.equals(user)) {
                 USER_FRIENDS.add(userA);
+            }
+        }
+    }
+
+    private static void getRecommendScoreByRelationship(String user, List<List<String>> friends) {
+        for (List<String> info : friends) {
+            String userA = info.get(0);
+            String userB = info.get(1);
+
+            if (userA.equals(user) || userB.equals(user)) {
+                continue;
+            }
+
+            if (USER_FRIENDS.contains(userA)) {
+                if (!RECOMMEND_SCORE.containsKey(userB)) {
+                    RECOMMEND_SCORE.put(userB,NEIGHBOR_POINT);
+                } else {
+                    RECOMMEND_SCORE.put(userB,RECOMMEND_SCORE.get(userB) + NEIGHBOR_POINT);
+                }
+            } else {
+                if (!RECOMMEND_SCORE.containsKey(userA)) {
+                    RECOMMEND_SCORE.put(userA,NEIGHBOR_POINT);
+                } else {
+                    RECOMMEND_SCORE.put(userA,RECOMMEND_SCORE.get(userA) + NEIGHBOR_POINT);
+                }
             }
         }
     }
