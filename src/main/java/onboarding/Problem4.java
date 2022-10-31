@@ -9,7 +9,7 @@ public class Problem4 {
         Map<String, String> alpMap = new HashMap<>();
         addUppercaseToAlpMap(alp, alpMap);
         addLowercaseToAlpMap(alp, alpMap);
-        return answer.toString();
+        return reverseValue(word, answer, alpMap);
     }
     private static void addUppercaseToAlpMap(String alp, Map<String, String> alpMap) {
         for(int i = 0; i < alp.length(); i++) {
@@ -22,5 +22,18 @@ public class Problem4 {
             alpMap.put(String.valueOf(alp.charAt(i)).toLowerCase(),
                     String.valueOf(alp.charAt(alp.length()-1-i)).toLowerCase());
         }
+    }
+    private static String reverseValue(String str, StringBuilder answer, Map<String, String> alpMap) {
+        for(int i = 0; i < str.length(); i++) {
+            String word = String.valueOf(str.charAt(i));
+            if(word.equals(" ")){
+                answer.append(" ");
+            }else if(!alpMap.containsKey(word)) {
+                answer.append(str.charAt(i));
+            }else {
+                answer.append(alpMap.get(word));
+            }
+        }
+        return answer.toString();
     }
 }
