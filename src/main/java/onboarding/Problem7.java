@@ -18,7 +18,7 @@ public class Problem7 {
 
 		List<Entry<String, Integer>> entries = new ArrayList<>(friendScore.entrySet());
 		sortScore(entries);
-
+		recommendFriend(answer, entries, userFriends);
 		return answer;
 	}
 
@@ -68,7 +68,15 @@ public class Problem7 {
 		});
 	}
 
-	public static void recommendFriend() {
-
+	public static void recommendFriend(List<String> answer, List<Entry<String, Integer>> entries,
+		List<String> userFriends) {
+		for (Entry<String, Integer> entry : entries) {
+			if (answer.size() == 5) {
+				break;
+			}
+			if (entry.getValue() > 0 && !userFriends.contains(entry.getKey())) {
+				answer.add(entry.getKey());
+			}
+		}
 	}
 }
