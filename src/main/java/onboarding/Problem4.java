@@ -1,11 +1,5 @@
 package onboarding;
 
-/*
- 기능 요구 사항
- 1. 반대 순서의 알파벳으로 바꾸기
- 2. 대소문자 판단하여 대문자는 대문자 그대로, 소문자는 소문자 대로 ( Character.isUpperCase(), isLowerCase())
-
- */
 
 import java.util.Map;
 import java.util.HashMap;
