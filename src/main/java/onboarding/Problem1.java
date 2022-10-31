@@ -8,7 +8,7 @@ class Problem1 {
     static boolean isVaild(List<Integer> pages) {
         int leftPage = pages.get(0);
         int rightPage = pages.get(1);
-        if (rightPage - leftPage != -1)
+        if (rightPage - leftPage != 1)
             return false;
 
         if (leftPage >= 3 && leftPage <= 397) {
