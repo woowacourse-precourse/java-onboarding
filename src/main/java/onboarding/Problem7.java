@@ -16,6 +16,8 @@ public class Problem7 {
         countFriendsShip(friendRecommendationMap, visitors, visitors_count);
         removeUserFriends(friendRecommendationMap, usersFriends);
 
+        List<String> recommendationFriendsList = getDescendingOrderFriendsList(friendRecommendationMap);
+
 
         List<String> answer = Collections.emptyList();
         return answer;
@@ -60,5 +62,11 @@ public class Problem7 {
         for (String friend : userFriends) {
             friendRecommendationMap.remove(friend);
         }
+    }
+
+    public static List<String> getDescendingOrderFriendsList(HashMap<String, Integer> friendRecommendationMap) {
+        List<String> answer = new ArrayList<>(friendRecommendationMap.keySet());
+        Collections.sort(answer, (o1, o2) -> (friendRecommendationMap.get(o2).compareTo(friendRecommendationMap.get(o1))));
+        return answer;
     }
 }
