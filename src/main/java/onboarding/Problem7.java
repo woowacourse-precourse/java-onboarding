@@ -1,6 +1,8 @@
 package onboarding;
 
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 public class Problem7 {
@@ -8,10 +10,17 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
 
-        // 사용자와 함께 아는 친구의 수 = 10점
-        // 사용자의 타임 라인에 방문한 횟수 = 1점
+        // friends에 저장되어 있는 각각의 유저마다 친구 목록을 저장하는 HashMap (key : username / value : 친구 목록(List<String>))
+        HashMap<String, HashSet<String>> friendLists = new HashMap<>();
+        for (List<String> friend : friends) {
+            String friend1 = friend.get(0);
+            String friend2 = friend.get(1);
 
-        // friends에 저장되어 있는 각각의 유저마다 친구 목록을 HashMap으로 생성 (key : username / value : 친구 목록(List<String>))
+            // 친구 목록에 추가
+            // (서로가 서로의 친구 목록에 각각 저장되어야 하기 때문에 인자의 위치를 바꿔서 함수를 2번 호출)
+            setFriendList(friendLists, friend1, friend2);
+            setFriendList(friendLists, friend2, friend1);
+        }
 
         // 점수 목록을 HashMap으로 생성 (key : username / value : 점수 (0으로 초기화))
         // 1. friends에 들어있는 유저에 대한 entity 생성
@@ -28,6 +37,20 @@ public class Problem7 {
         // 3. 추천 점수가 같은 경우는 이름순으로 오름차순 정렬
 
         return answer;
+    }
+
+    // friend2를 friend1의 친구 목록에 저장하는 함수
+    private static void setFriendList(HashMap<String, HashSet<String>> friendLists, String friend1, String friend2) {
+        // friend1의 친구 목록이 friendLists에 이미 생성되어 있는 경우
+        if (friendLists.containsKey(friend1)) {
+            HashSet<String> friend1List = friendLists.get(friend1); // 기존 저장되어 있던 friend1의 친구 목록
+            friend1List.add(friend2); // 친구 목록에 friend2 추가
+            friendLists.replace(friend1, friend1List);
+        }
+        // friend1의 친구 목록이 friendLists에 생성되어 있지 않은 경우
+        if (!friendLists.containsKey(friend1)) {
+            friendLists.put(friend1, new HashSet<>(List.of(friend2))); // 친구 목록 생성
+        }
     }
 
 }
