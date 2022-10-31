@@ -6,7 +6,7 @@ import static java.util.regex.Pattern.matches;
 
 public class Validation {
     private static final String emailRegex = "^([a-zA-Z0-9\\s]*@gmail.com)$";
-    private static final String nicknameRegex = "^([가-힣]*)$";
+    private static final String nicknameRegex = "^([ㄱ-ㅎㅏ-ㅣ가-힣]*)$";
 
     public static boolean isCrewOutOfRange(List<List<String>> forms) {
         int count = 0;
