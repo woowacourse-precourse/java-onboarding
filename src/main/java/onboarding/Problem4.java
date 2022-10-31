@@ -17,6 +17,10 @@ public class Problem4 {
     private static boolean isLargeLetter(char c) {
         return c >= 65 && c <= 90;
     }
+    static boolean isSmallLetter(char c) {
+        return c >= 97 && c <= 122;
+    }
+
 
     public static String solution(String word) {
         String answer = "";
