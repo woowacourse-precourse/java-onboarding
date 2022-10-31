@@ -1,6 +1,5 @@
 package onboarding;
 
-import onboarding.problem7.ScoreCalculator;
 import onboarding.problem7.User;
 import onboarding.problem7.utils.Slicer;
 

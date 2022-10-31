@@ -5,28 +5,40 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class User {
-    private String name;
-    private List<String> visitor;
-    private List<String> friendList;
-    private List<String> relatedList;
-    private ScoreCalculator scoreCalculator = new ScoreCalculator();
+    private final String name;
+    private final List<String> visitor;
+    private final List<String> friendList = new ArrayList<>();
+    private final List<String> relatedList = new ArrayList<>();
+    private final ScoreCalculator scoreCalculator = new ScoreCalculator();
 
     public User(String userName, List<List<String>> friends, List<String> visitors) {
         this.name = userName;
-        this.friendList = generateFriendList(userName, friends);
+        generateFriendList(friends);
         this.visitor = generateVisitors(visitors);
-        this.relatedList = generateRelatedUser(friends);
+        generateRelatedUser(friends);
     }
 
     public List<String> getRecommendUserList() {
         return scoreCalculator.getHighScoreList(this.relatedList, this.visitor);
     }
 
-    private List<String> generateFriendList(String userName, List<List<String>> friends) {
-        return friends.stream()
-                .filter((v) -> v.get(1).equals(userName))
-                .map((v) -> v.get(0))
-                .collect(Collectors.toList());
+    private void generateFriendList(List<List<String>> friends) {
+        for (List<String> relation : friends) {
+            addFriend(relation);
+        }
+    }
+
+    private void addFriend(List<String> relation) {
+        String user1 = relation.get(0);
+        String user2 = relation.get(1);
+
+        if (user1.equals(this.name)) {
+            this.friendList.add(user2);
+        }
+
+        if (user2.equals(this.name)) {
+            this.friendList.add(user1);
+        }
     }
 
     private List<String> generateVisitors(List<String> visitors) {
@@ -38,12 +50,33 @@ public class User {
         return visitors;
     }
 
-    private List<String> generateRelatedUser(List<List<String>> friends) {
-        return friends.stream()
-                .filter((v) -> (!this.name.equals(v.get(1))
-                        && !friendList.contains(v.get(1))
-                        && friendList.contains(v.get(0))))
-                .map((v) -> v.get(1))
-                .collect(Collectors.toList());
+    private void generateRelatedUser(List<List<String>> friends) {
+        for (List<String> relation : friends) {
+            checkRelation(relation);
+        }
+    }
+
+    private void checkRelation(List<String> relation) {
+        for (String friend : this.friendList) {
+            addRelatedUser(friend, relation);
+        }
+    }
+    
+    private void addRelatedUser(String friend, List<String> relation) {
+        String id1 = relation.get(0);
+        String id2 = relation.get(1);
+        
+        if (id1.equals(friend)
+                && !id2.equals(this.name)
+                && !this.friendList.contains(id2)) {
+            relatedList.add(id2);
+        }
+
+        if (id2.equals(friend)
+                && !this.name.equals(id1)
+                && !this.friendList.contains(id1)) {
+            relatedList.add(id1);
+        }
     }
 }
+
