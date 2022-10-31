@@ -23,3 +23,13 @@ public class Problem7 {
         return following;
     }
 }
+
+// 사용자별 추천 점수를 저장하는 클래스
+class People {
+    String name;
+    int score;
+    People(String name, int score){
+        this.name = name;
+        this.score += score;
+    }
+}
