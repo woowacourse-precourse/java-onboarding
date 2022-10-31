@@ -21,3 +21,6 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+### 🚩 구현할 기능 목록
+1. 연속하는 중복 문자 제거
