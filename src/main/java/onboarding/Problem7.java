@@ -120,11 +120,11 @@ public class Problem7 {
     }
 
     static List<String> result(String user,List<List<String>> friends, List<String> visitors) {
-        Map<String,Integer> mm = visitor(user,friends,visitors);
-        List<Map.Entry<String,Integer>> sort = sort(mm);
+        Map<String,Integer> map = visitor(user,friends,visitors);
+        List<Map.Entry<String,Integer>> sort = sort(map);
         List<String> answer = list(sort);
-        List<String> hi = friends(answer,user,friends);
+        List<String> result = friends(answer,user,friends);
 
-        return remove(answer,hi);
+        return remove(answer,result);
     }
 }
