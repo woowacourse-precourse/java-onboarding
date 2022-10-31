@@ -7,11 +7,15 @@ public class Problem6 {
     public static final int NICKNAME_IDX = 1;
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        Set<String> answerSet = new HashSet<>();
+        getSimilarNicknameUser(forms, answerSet);
+
+        List<String> answer = new ArrayList<>(answerSet);
+        Collections.sort(answer);
         return answer;
     }
 
-    private static void getSimilarNicknameUser(List<List<String>> forms, List<String> answer) {
+    private static void getSimilarNicknameUser(List<List<String>> forms, Set answerSet) {
         HashMap<String, List<Integer>> nicknameIncludingContinuousMap = new HashMap<>();
 
         for (int i = 0; i <= forms.size() - 1; i++) {
@@ -25,7 +29,7 @@ public class Problem6 {
             }
         }
 
-        getSimilarNicknameEmailList(forms, answer, nicknameIncludingContinuousMap);
+        getSimilarNicknameEmailList(forms, answerSet, nicknameIncludingContinuousMap);
     }
 
     private static void getNicknameIncludingContinuousMap(HashMap<String, List<Integer>> nicknameIncludingContinuousMap, int i, String continuous) {
@@ -36,7 +40,7 @@ public class Problem6 {
         }
     }
 
-    private static void getSimilarNicknameEmailList(List<List<String>> forms, List<String> answer, HashMap<String, List<Integer>> nicknameIncludingContinuousMap) {
+    private static void getSimilarNicknameEmailList(List<List<String>> forms, Set answerSet, HashMap<String, List<Integer>> nicknameIncludingContinuousMap) {
         Iterator<String> iterator = nicknameIncludingContinuousMap.keySet().iterator();
 
         while (iterator.hasNext()) {
@@ -45,10 +49,10 @@ public class Problem6 {
 
             if (indices.size() >= 2) {
                 for (int index : indices) {
-                    answer.add(forms.get(index).get(EMAIL_IDX));
+                    answerSet.add(forms.get(index).get(EMAIL_IDX));
                 }
             }
         }
     }
-    
+
 }
