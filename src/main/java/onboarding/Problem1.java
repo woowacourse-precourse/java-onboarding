@@ -13,7 +13,7 @@ class Problem1 {
             else if(op == '+'){
                 result += (page_num%10);
             }
-            result /= 10;
+            page_num /= 10;
         }
         return result;
     }
