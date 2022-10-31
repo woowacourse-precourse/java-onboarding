@@ -9,14 +9,14 @@ import java.util.Map;
  */
 public class FriendSelector {
 
-    private final Map<String, Friend> candidates;
+    private final Map<String, Friend> candidateMap;
 
     /**
      * Constructor with candidates
-     * @param candidates new friend candidates
+     * @param candidateMap new friend candidates
      */
-    public FriendSelector(Map<String, Friend> candidates) {
-        this.candidates = candidates;
+    public FriendSelector(Map<String, Friend> candidateMap) {
+        this.candidateMap = candidateMap;
     }
 
     /**
