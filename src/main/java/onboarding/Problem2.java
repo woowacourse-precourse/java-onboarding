@@ -2,15 +2,25 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String value = cryptogram;
+       return removeDuplicateChar(cryptogram);
+    }
 
-        for(int i = 1; i < value.length(); i++){
-            if(value.charAt(i-1) == value.charAt(i)) {
-                value = value.substring(0, i-1) + value.substring(i+1);
+    public static String removeDuplicateChar(String value) {
+        StringBuilder result = new StringBuilder(value);
+
+        for(int i = 1; i < result.length(); i++){
+            if(result.charAt(i-1) == result.charAt(i)){
+                result.deleteCharAt(i);
+                if (result.length() > 1){
+                    while(result.charAt(i-1) == result.charAt(i)){
+                        result.deleteCharAt(i);
+                    }
+                }
+                result.deleteCharAt(i-1);
                 i = 0;
             }
         }
 
-        return value;
+        return result.toString();
     }
 }
