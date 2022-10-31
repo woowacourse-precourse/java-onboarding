@@ -16,7 +16,7 @@ public class Problem7 {
         for (int i=0;i<lenMyFriends;++i)
             scoreBoard.put(myFriends(user, friends).get(i), 0);
         List<Map.Entry<String, Integer>> list = new LinkedList<>(scoreBoard.entrySet());
-        Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
+        Collections.sort(list, new Comparator <Map.Entry<String, Integer>>() {
             public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
                 int comparision = (o1.getValue() - o2.getValue()) * -1;
                 return comparision == 0 ? o1.getKey().compareTo(o2.getKey()) : comparision;
@@ -64,13 +64,19 @@ public class Problem7 {
         int sizeMyFriends = myFriend.size();
         int sizeFriends = friends.size();
         for (int i=0;i<sizeMyFriends;++i) {
-            for (int j = 0; j < sizeFriends; ++j) {
-                if ((myFriend.get(i) == friends.get(j).get(0)) && (friends.get(j).get(1) != user))
+            for (int j=0;j<sizeFriends;++j) {
+                if (myFriendIsNotUser(myFriend.get(i), friends.get(j).get(0), friends.get(j).get(1), user) == true)
                     scoreBoard.put(friends.get(j).get(1), scoreBoard.get(friends.get(j).get(1)) + 10);
-                else if ((myFriend.get(i) == friends.get(j).get(1)) && (friends.get(j).get(0) != user))
+                else if (myFriendIsNotUser(myFriend.get(i), friends.get(j).get(1), friends.get(j).get(0), user) == true)
                     scoreBoard.put(friends.get(j).get(0), scoreBoard.get(friends.get(j).get(0)) + 10);
             }
         }
         return scoreBoard;
+    }
+    private static boolean myFriendIsNotUser(String myFriend, String leftFriends, String rightFriend, String user) {
+        if ((myFriend == leftFriends) && (rightFriend != user))
+            return true;
+        else
+            return false;
     }
 }

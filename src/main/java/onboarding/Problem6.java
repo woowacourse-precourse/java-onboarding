@@ -9,13 +9,11 @@ public class Problem6 {
         List<String> answer = new ArrayList<>();
         List<String> temp = new ArrayList<>();
         int sizeList = forms.size();
-        for (int i = 0; i < sizeList; ++i) {
-            temp.add(forms.get(i).get(1));
-        }
         for (int i=0;i<sizeList;++i)
-            if (arrayOverlap(temp).get(i) == true) {
+            temp.add(forms.get(i).get(1));
+        for (int i=0;i<sizeList;++i)
+            if (arrayOverlap(temp).get(i) == true)
                 answer.add(forms.get(i).get(0));
-            }
         answer.sort(Comparator.naturalOrder());
         return answer;
     }
@@ -46,20 +44,18 @@ public class Problem6 {
     public static int comfileStr (String str1, String str2){
         int lenStr1 = lengthStr(str1);
         int lenStr2 = lengthStr(str2);
-        int i = 0;
-        while (i + 1 < lenStr1) {
+        int i = -1;
+        while (++i + 1 < lenStr1) {
             String temp = "";
             temp = temp + str1.charAt(i) + str1.charAt(i + 1);
-            int j = 0;
-            while (j + 1 < lenStr2) {
+            int j = -1;
+            while (++j + 1 < lenStr2) {
                 String dest = "";
                 dest = dest + str2.charAt(j) + str2.charAt(j + 1);
                 if (temp.equals(dest)) {
                     return 1;
                 }
-                j++;
             }
-            i++;
         }
         return 0;
     }

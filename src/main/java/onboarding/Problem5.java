@@ -8,23 +8,12 @@ public class Problem5 {
     public static List<Integer> solution(int money) {
         List<Integer> answer = Collections.emptyList();
         List<Integer> moneyList = new ArrayList<>();
-        moneyList.add(money / 50000);
-        money = money - (50000 * (money / 50000));
-        moneyList.add(money / 10000);
-        money = money - (10000 * (money / 10000));
-        moneyList.add(money / 5000);
-        money = money - (5000 * (money / 5000));
-        moneyList.add(money / 1000);
-        money = money - (1000 * (money / 1000));
-        moneyList.add(money / 500);
-        money = money - (500 * (money / 500));
-        moneyList.add(money / 100);
-        money = money - (100 * (money / 100));
-        moneyList.add(money / 50);
-        money = money - (50 * (money / 50));
-        moneyList.add(money / 10);
-        money = money - (10 * (money / 10));
-        moneyList.add(money);
+        int bills[] = {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
+        int lenBills = bills.length;
+        for (int i=0;i<lenBills;++i) {
+            moneyList.add(money / bills[i]);
+            money = money - (bills[i] * (money / bills[i]));
+        }
         money = 0;
         answer = moneyList;
         return answer;
