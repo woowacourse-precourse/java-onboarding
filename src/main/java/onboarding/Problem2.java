@@ -23,9 +23,10 @@ public class Problem2 {
 
         }
 
-        int checkThereAreOverLap = 0;
+        int checkOverLapStatic = 0;
+        int checkOverLapActive = 0;
 
-        while () {
+        while (checkOverLapStatic == checkOverLapActive) {
             int num = 0;
             String resultRemoveOverlap = "";
             lengthCrypto = cryptogram.length();
@@ -39,20 +40,29 @@ public class Problem2 {
                     if (num == lengthCrypto - 2) {
                         resultRemoveOverlap = cryptogram.substring(0, num);
                         cryptogram = resultRemoveOverlap;
+                        checkOverLapActive += 1;
+
                         break;
                     } else if (num != lengthCrypto - 2) {
                         resultRemoveOverlap = cryptogram.substring(0, num) + cryptogram.substring(num + 2, lengthCrypto - 1);
                         cryptogram = resultRemoveOverlap;
+                        checkOverLapActive +=1;
+
                         break;
                     }
                 }
                 num += 1;
             }
 
+            if (checkOverLapStatic == checkOverLapActive) {
+                break;
+            }
+            checkOverLapStatic += 1;
+
         }
 
 
-        String answer = "answer";
+        String answer = cryptogram;
         return answer;
     }
 }
