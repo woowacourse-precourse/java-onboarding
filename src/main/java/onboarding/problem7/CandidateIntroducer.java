@@ -1,5 +1,6 @@
 package onboarding.problem7;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,7 +20,7 @@ public class CandidateIntroducer {
 
     public Map<String, Friend> introduce() {
         Map<String, Friend> scores = new HashMap<>();
-        List<String> userFriends = relationships.get(user);
+        List<String> userFriends = relationships.getOrDefault(user, new ArrayList<>());
         introduceKnowableFriends(userFriends, scores);
         introduceVisitors(userFriends, scores);
         return scores;
