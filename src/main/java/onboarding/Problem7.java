@@ -3,6 +3,9 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
+    static HashMap<String, Set<String>> friendsMap;
+
+    static TreeMap<String, Score> scores;
 
     public static class Score{
         String name;
@@ -13,14 +16,29 @@ public class Problem7 {
         public Score(String name , int score){
             this.name = name;
             this.score = score;
-
         }
     }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-
-        HashMap<String, Set<String>> friendsMap = new HashMap<>();
-
+        List<String> result;
+        friendsMap = new HashMap<>();
+        scores = new TreeMap<>();
         //친구관계 저장
+        saveFriendship(friends, friendsMap);
+
+        Set<String> userFriend = friendsMap.get(user);
+
+        //겹치는 친구 수 에 따른 점수 저장
+        addFriendScore(user, userFriend);
+        // 방문 수 에 따른 점수 저장
+        addVisitorScore(visitors);
+
+        result = recommendFriend(userFriend);
+
+        return result;
+    }
+
+    private static void saveFriendship(List<List<String>> friends, HashMap<String, Set<String>> friendsMap){
         for (List<String> friendList : friends) {
             for(int i = 0 ; i < friendList.size() ; i++){
                 String f1 = friendList.get(0);
@@ -44,25 +62,29 @@ public class Problem7 {
                     friendsMap.put(f2, f2Friend);
                 } else if( friendsMap.containsKey(f2) && !friendsMap.containsKey(f1)) {
                     friendsMap.get(f2).add(f1);
-
                     Set<String> f1Friend = new HashSet<>();
-                    f1Friend.add(f2);
 
+                    f1Friend.add(f2);
                     friendsMap.put(f1, f1Friend);
                 }
                 else {  //이미 있는 경우
-                        friendsMap.get(f1).add(f2);
-                        friendsMap.get(f2).add(f1);
-                    }
+                    friendsMap.get(f1).add(f2);
+                    friendsMap.get(f2).add(f1);
                 }
             }
+        }
+    }
 
+    private static void addVisitorScore( List<String> visitors ){
+        for(String visitor : visitors){
+            boolean contains = scores.keySet().contains(visitor);
+            if( contains ){
+                scores.get(visitor).changeScore(1);
+            } else scores.put(visitor, new Score(visitor, 1));
+        }
+    }
 
-        //순회 -> 같은 친구의 수 * 10 -> 저장
-        TreeMap<String, Score> scores = new TreeMap<>();
-
-        Set<String> mrkoFriend = friendsMap.get(user); // 유저의 친구
-        System.out.println(mrkoFriend);
+    private static void addFriendScore( String user, Set<String> userFriend ){
         for(int i = 0 ; i < friendsMap.size() ; i++){
             Set<String> keySet = friendsMap.keySet();
 
@@ -74,49 +96,32 @@ public class Problem7 {
                 Set<String> iFriend = friendsMap.get(key);
                 for( String friend : iFriend ){
                     System.out.println(friend);
-                    if( mrkoFriend.contains(friend) ){
+                    if( userFriend.contains(friend) ){
                         count++;
-                        System.out.println("count : " + count);
                     }
                 }
-
                 scores.put( key, new Score( key, count * 10) );
             }
-
-
-
         }
+    }
 
-        // 방문 수 에 따른 점수 저장
-        for(String visitor : visitors){
-            boolean contains = scores.keySet().contains(visitor);
-            if( contains ){
-               scores.get(visitor).changeScore(1);
-            } else scores.put(visitor, new Score(visitor, 1));
-        }
-
-        //scores에서 높은 점수 반환
+    private static List<String> recommendFriend( Set<String> userFriend ){
         List<Score> sortedScore = new ArrayList<>(scores.values());
-        System.out.println(scores.get("donut").score);
         sortedScore.sort(new Comparator<Score>() {
             @Override
             public int compare(Score o1, Score o2) {
-                return o2.score - o1.score;
-            }
+                    return o2.score - o1.score;
+                }
         });
-        System.out.println();
         List<String> result = new ArrayList<>();
 
         sortedScore.forEach(candidate -> {
             System.out.println(candidate.name +" "+ candidate.score);
-            if ( candidate.score > 0 && result.size() < 5 && !mrkoFriend.contains(candidate.name))  result.add(candidate.name);
+            if ( candidate.score > 0 && result.size() < 5 && !userFriend.contains(candidate.name))  result.add(candidate.name);
         });
 
-        System.out.println(friendsMap);
         return result;
-        }
-
     }
 
 
-// 예외 사항 처리
+}
