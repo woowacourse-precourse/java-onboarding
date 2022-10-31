@@ -105,6 +105,21 @@ public class Problem7 {
         }
     }
 
+    public static void makeVisitorScore(List<String> userFriendList ,Map<String, Integer> friendScoreBoard, List<String> visitors) {
+        for(int i=0 ; i< visitors.size() ; i++) {
+            String visitorName = visitors.get(i);
+            if(!userFriendList.contains(visitorName)) {
+                if(!friendScoreBoard.containsKey(visitorName)) {
+                    friendScoreBoard.put(visitorName, 1);
+                }
+
+                if(friendScoreBoard.containsKey(visitorName)) {
+                    friendScoreBoard.put(visitorName, friendScoreBoard.get(visitorName) + 1);
+                }
+            }
+        }
+    }
+
 
 
 
