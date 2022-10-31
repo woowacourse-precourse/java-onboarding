@@ -18,6 +18,10 @@ public class Problem5 {
         answer.add(remain/5000);
         remain = remain%5000;
 
+        answer.add(remain/1000);
+        remain = remain%1000;
+
+
         return answer;
     }
 }
