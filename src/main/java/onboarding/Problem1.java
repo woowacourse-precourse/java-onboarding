@@ -30,7 +30,6 @@ class Problem1 {
             mul_value *= temp;
             num = num / 10;
         }
-
         return Math.max(sum_value, mul_value);
     }
 
