@@ -11,13 +11,11 @@ public class Problem7 {
 
 
         getScoreSameFriends(friendsMap, user, scoreMap);
-        System.out.println(friendsMap);
         getVisitScore(visitors, scoreMap);
         alreadyFriendRemoveScore(friendsMap, scoreMap, user);
-        System.out.println(scoreMap);
         makeRecommendFriend(scoreMap);
 
-
+        answer = makeRecommendFriend(scoreMap);
         return answer;
     }
 
@@ -43,8 +41,12 @@ public class Problem7 {
             }
         });
 
+        for (int i = 0; i < Math.min(5, entries.size()); i++) {
+            ret.add(entries.get(i).getKey());
+        }
 
-        return null;
+
+        return ret;
     }
 
     private static void getVisitScore(List<String> visitors, Map<String, Integer> scoreMap){
