@@ -10,6 +10,8 @@ public class Game {
     public Game(int number) {
         this.number = number;
         this.clap = 0;
+        Validator validator = new Validator(number);
+        validator.validate();
     }
 
     public int run() {
