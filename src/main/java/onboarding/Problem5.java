@@ -9,7 +9,7 @@ public class Problem5 {
         for (int index = 0; index < 9; index++) {
             int won;
             if ((index % 2 == 0) && index != 8) {
-                won = (int)(5 * Math.pow(10,4-index/2));
+                won = (int)(5 * Math.pow(10,4 - index/2));
                 answer.add(money / won);
             } else if (index == 8) {
                 won = 1;
