@@ -8,6 +8,12 @@ public class Problem7 {
         final int friends_to_friends_count = 10;
         final int visitors_count = 1;
 
+        try {
+            ExceptionProblem7.validateUser(user);
+        } catch (IllegalArgumentException e) {
+            return Collections.emptyList();
+        }
+
         HashMap<String, Integer> friendRecommendationMap = new HashMap<>();
 
         List<String> usersFriends = new ArrayList<>(findUserFriend(friends, user));
@@ -76,5 +82,17 @@ public class Problem7 {
         }
 
         return recommendationFriendsList.subList(0, max);
+    }
+}
+
+class ExceptionProblem7 {
+    public static void validateUser(String user) {
+        validateUserLength(user);
+    }
+
+    private static void validateUserLength(String user) {
+        if (user.length() < 1 || user.length() > 30) {
+            throw new IllegalArgumentException();
+        }
     }
 }
