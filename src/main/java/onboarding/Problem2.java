@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String answer = "";
         ArrayList<Character> password = new ArrayList<>();
         
         for(int i=0; i<cryptogram.length(); i++) {
@@ -28,6 +28,10 @@ public class Problem2 {
         	System.out.print(password.get(i));
         }
         System.out.println();
+        
+        for(char spelling : password) {
+        	answer += spelling;
+        }
         
         return answer;
     }
