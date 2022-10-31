@@ -9,6 +9,8 @@ public class Problem7 {
 
     static HashMap<String, List<String>> friendList = new HashMap<>();
 
+    static HashMap<String, Integer> recommendScore = new HashMap<>();
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
         List<String> answer = Collections.emptyList();
@@ -38,8 +40,29 @@ public class Problem7 {
         System.out.println(friendList.toString());
     }
 
-    //사용자와 함께 아는 친구의 수의 점수 저장
+    //사용자와 함께 아는 친구 수의 점수 저장
     static void saveFriendScoreByUser(String user) {
+
+        int score;
+
+        for (String id : friendList.keySet()) {
+            if (id.equals(user)) {
+                continue;
+            }
+
+            ArrayList<String> friend = new ArrayList<>(friendList.get(id));
+
+            friend.retainAll(friendList.get(user));
+            score = friend.size() * 10;
+
+            if (recommendScore.get(id) == null) {
+                recommendScore.put(id, score);
+
+            } else {
+                recommendScore.put(id, recommendScore.get(id) + score);
+            }
+
+        }
 
     }
 
