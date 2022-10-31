@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -20,10 +21,9 @@ class Problem1 {
 
     static int addPageNum(Integer pageNum){
         int result = 0;
-        String pageStr = pageNum.toString();
-        for(String numToken : pageStr.split("")){
-            result += Integer.parseInt(numToken);
-        }
+        String[] numStrings = pageNum.toString().split("");
+        IntStream numStream = Arrays.stream(numStrings).mapToInt(Integer::parseInt);
+        result = numStream.sum();
 
         return result;
     }
