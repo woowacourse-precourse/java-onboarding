@@ -90,6 +90,18 @@ class ApplicationTest {
             String result = "R olev blf";
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
+
+        @Test
+        public void case2() throws Exception {
+            //given
+            String word = "ABCdef123456";
+            String result = "ZYXwvu123456";
+
+            //when
+
+            //then
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
     }
 
     @Nested
