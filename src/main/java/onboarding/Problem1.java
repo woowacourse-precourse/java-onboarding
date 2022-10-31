@@ -6,6 +6,20 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+
+        // 포비와 크롱의 점수 구하기
+        int pobiScore = makeOutScore(pobi);
+        int crongScore = makeOutScore(crong);
+
+        // 승부 정하기
+        int winningScore = Math.max(pobiScore, crongScore);
+        if (winningScore == pobiScore && winningScore == crongScore) {
+            answer = 0;     // 무승부
+        } else if (winningScore == pobiScore) {
+            answer = 1;     // pobi 승
+        } else {
+            answer = 2;     // crong 승
+        }
         return answer;
     }
 
