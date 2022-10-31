@@ -46,27 +46,26 @@ public class Problem7 {
         }
     }
 
+    static List<Friend> friends = new ArrayList<>();
+    static Map<String, Integer> numberOfFriends = new HashMap<>();
     public static List<String> solution(String user, List<List<String>> friendships, List<String> visitors) {
-        List<Friend> friends = new ArrayList<>();
-        Map<String, Integer> numberOfFriends = new HashMap<>();
+        init(friendships, visitors);
+        updateScores(user);
 
-        init(friendships, visitors, numberOfFriends, friends);
-        updateScores(user, friends, numberOfFriends);
-
-        return getAnswer(user, friends);
+        return getAnswer(user);
     }
 
-    private static void updateScores(String user, List<Friend> friends, Map<String, Integer> numberOfFriends) {
+    private static void updateScores(String user) {
         for (int i = 0; i < friends.size(); i++) {
             if (i != numberOfFriends.get(user)) {
-                addScore(numberOfFriends, friends, user, i);
+                addScore(user, i);
             }
         }
 
         Collections.sort(friends);
     }
 
-    private static void addScore(Map<String, Integer> numberOfFriends, List<Friend> friends, String user, int index) {
+    private static void addScore(String user, int index) {
         List<String> userFriends = friends.get(numberOfFriends.get(user)).getMyFriends();
         Friend friend = friends.get(index);
         List<String> myFriends = friend.getMyFriends();
@@ -78,47 +77,47 @@ public class Problem7 {
         }
     }
 
-    private static void init(List<List<String>> friendships, List<String> visitors, Map<String, Integer> numberOfFriends, List<Friend> friends) {
+    private static void init(List<List<String>> friendships, List<String> visitors) {
         int idx = 0;
         for (List<String> friend : friendships) {
             String friendA = friend.get(0);
             String friendB = friend.get(1);
 
-            if (isNotContainMap(numberOfFriends, friendA)) {
-                initFriend(numberOfFriends, friends, idx++, friendA);
+            if (isNotContainMap(friendA)) {
+                initFriend(idx++, friendA);
             }
 
-            if (isNotContainMap(numberOfFriends, friendB)) {
-                initFriend(numberOfFriends, friends, idx++, friendB);
+            if (isNotContainMap(friendB)) {
+                initFriend(idx++, friendB);
             }
 
-            addMyFriend(numberOfFriends, friends, friendA, friendB);
-            addMyFriend(numberOfFriends, friends, friendB, friendA);
+            addMyFriend(friendA, friendB);
+            addMyFriend(friendB, friendA);
         }
 
         for (String visitor : visitors) {
-            if (isNotContainMap(numberOfFriends, visitor)) {
-                initFriend(numberOfFriends, friends, idx++, visitor);
+            if (isNotContainMap(visitor)) {
+                initFriend(idx++, visitor);
             }
 
             friends.get(numberOfFriends.get(visitor)).addScore(1);
         }
     }
 
-    private static boolean isNotContainMap(Map<String, Integer> numberOfFriends, String friend) {
+    private static boolean isNotContainMap(String friend) {
         return !numberOfFriends.containsKey(friend);
     }
 
-    private static void initFriend(Map<String, Integer> numberOfFriends, List<Friend> friends, int idx, String friend) {
+    private static void initFriend(int idx, String friend) {
         numberOfFriends.put(friend, idx);
         friends.add(idx, new Friend(friend, 0));
     }
 
-    private static void addMyFriend(Map<String, Integer> numberOfFriends, List<Friend> friends, String friendA, String friendB) {
+    private static void addMyFriend(String friendA, String friendB) {
         friends.get(numberOfFriends.get(friendA)).addMyFriend(friendB);
     }
 
-    private static List<String> getAnswer(String user, List<Friend> friends) {
+    private static List<String> getAnswer(String user) {
         List<String> answer = new ArrayList<>();
         int count = 0;
         for (Friend friend : friends) {
