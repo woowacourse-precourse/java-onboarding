@@ -3,8 +3,21 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
-    public static int solution(List<Integer> pobi, List<Integer> crong) {
+    public static int solution(List<Integer> pobi, List<Integer> crong)  {
         int answer = Integer.MAX_VALUE;
+        int pobi1 = Integer.parseInt(String.valueOf(pobi.get(0)));
+        int pobi2 = Integer.parseInt(String.valueOf(pobi.get(1)));
+        int crong1 = Integer.parseInt(String.valueOf(crong.get(0)));
+        int crong2 = Integer.parseInt(String.valueOf(crong.get(1)));
+
+        if (calpobi(pobi1, pobi2) == calcrong(crong1, crong2))
+            answer = 0;
+        else if ((pobi2 != pobi1 +1) || (crong2 != crong1 + 1))
+            answer = -1;
+        else if (calpobi(pobi1, pobi2) > calcrong(crong1, crong2))
+            answer = 1;
+        else if (calpobi(pobi1, pobi2) < calcrong(crong1, crong2))
+            answer = 2;
         return answer;
     }
 
