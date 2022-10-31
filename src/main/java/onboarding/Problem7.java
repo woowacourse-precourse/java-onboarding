@@ -10,7 +10,7 @@ public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Map<String, ArrayList<String>> friendMap = createFriendMap(friends);
-        ArrayList<String> friendsOfUser = friendMap.get(user);
+        ArrayList<String> friendsOfUser = friendMap.getOrDefault(user, new ArrayList<>());
 
         Map<String, Integer> recommendScore = new TreeMap<>();
         addFriendScore(recommendScore, friendMap, friendsOfUser, user);
