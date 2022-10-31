@@ -43,6 +43,10 @@ public class Problem7 {
                 continue;
             }
 
+            if (USER_FRIENDS.contains(userA) && USER_FRIENDS.contains(userB)) {
+                continue;
+            }
+
             if (USER_FRIENDS.contains(userA)) {
                 addToRecommendScoreMap(userB, NEIGHBOR_POINT);
             } else if (USER_FRIENDS.contains(userB)) {
