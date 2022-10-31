@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Problem5 {
@@ -23,18 +24,9 @@ public class Problem5 {
         int ten = changes7 / 10;
         int one = changes7 % 10;
 
-       ArrayList<Integer> answer = new ArrayList<Integer>();
-
-        answer.add(fiveMillion);
-        answer.add(million);
-        answer.add(fiveThousand);
-        answer.add(thousand);
-        answer.add(fiveHundred);
-        answer.add(hundred);
-        answer.add(fifty);
-        answer.add(ten);
-        answer.add(one);
-
+       ArrayList<Integer> answer = new ArrayList<Integer>(
+           Arrays.asList(fiveMillion,million,fiveThousand,thousand,fiveHundred,hundred,fifty,ten,one)
+       );
         return answer;
     }
 }
