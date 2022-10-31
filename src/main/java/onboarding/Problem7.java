@@ -87,6 +87,17 @@ public class Problem7 {
         return result;
     }
 
+    static List<String> getTop(List<Score> sortList, int num) {
+        int size =  sortList.size();
+        List<String> result = new ArrayList<>();
+        for (int i = 0; i < num; i++) {
+            if (size <= i)
+                break;
+            result.add(sortList.get(i).name);
+        }
+        return result;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
