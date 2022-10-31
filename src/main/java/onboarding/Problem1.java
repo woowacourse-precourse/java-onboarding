@@ -19,7 +19,7 @@ class Problem1 {
     }
 
     private static boolean isPageOver(int n) {
-        if (n > 0 && n < 400) {
+        if (n > 1 && n < 400) {
             return false;
         }
         return true;
