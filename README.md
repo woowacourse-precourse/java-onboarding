@@ -71,7 +71,7 @@
 7. [문제 7](./docs/PROBLEM7.md)
  - [X] recommendFriends
  - 추천할 친구들을 알려준다.
-   - [ ] getFriendGraph
+   - [X] getFriendGraph
    - 친구 관계를 토대로 친구 관계 그래프를 만든다.
    - [ ] add10points
    - 친구의 친구에게 10점을 부여한다.

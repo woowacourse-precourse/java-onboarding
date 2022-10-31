@@ -24,8 +24,37 @@ public class Problem7 {
         return Collections.emptyList();
     }
 
+    /**
+     * 해시맵에 키값이 존재 한다면 밸류값을 리스트에 더하고, 없다면 밸류값이 든 리스트를 만들어 키값에 부여해줍니다.
+     *
+     * @param key 조회할 키값입니다.
+     * @param value 넣을 밸류값입니다.
+     * @param hashMap 넣어줄 해시맵입니다.
+     */
+    private static void addToHashMap(String key, String value, HashMap<String, List<String>> hashMap) {
+        if (hashMap.containsKey(key)) {
+            hashMap.get(key)
+                    .add(value);
+            return;
+        }
+        hashMap.put(key, new ArrayList<>(List.of(value)));
+    }
+
+    /**
+     * 친구 관계를 토대로 그래프를 만듭니다.
+     *
+     * @param friends 친구 관계를 포함한 배열입니다.
+     * @return 친구 관계 그래프입니다.
+     */
     private static HashMap<String, List<String>> getFriendGraph(List<List<String>> friends) {
-        return new HashMap<>();
+        HashMap<String, List<String>> friendGraph = new HashMap<>();
+        for (List<String> users: friends) {
+            String userA = users.get(0);
+            String userB = users.get(1);
+            addToHashMap(userA, userB, friendGraph);
+            addToHashMap(userB, userA, friendGraph);
+        }
+        return friendGraph;
     }
 
     private static void add10points(String user,
