@@ -46,8 +46,19 @@ public class Problem6 {
     public static List<String> sorting(Set<String> emailList){
         return emailList.stream().sorted().collect(Collectors.toList());
     }
+
+    //위의 과정을 거쳐 최종 중복 이메일 리스트를 리턴하는 함수
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+        map = new HashMap<>();
+        overLapNickNameEmail = new HashSet<>();
+
+        for(List<String> user : forms){
+            if(exceptionCheck(user)) continue;
+            findOverLapNickName(user);
+            map.put(user.get(1), user.get(0));
+        }
+
+        List<String> result = sorting(overLapNickNameEmail);
+        return result;
     }
 }
