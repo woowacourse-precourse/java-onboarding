@@ -24,3 +24,10 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+## ✔ 기능 구현 목록
+
+1. 친구 관계 인접 리스트를 만드는 기능
+2. 유저의 친구의 친구들에게 10점씩 추가하는 기능
+3. 방문자들에게 1점씩 추가하는 기능
+4. 점수에 따라 내림차순으로 정렬해 result를 만드는 기능
