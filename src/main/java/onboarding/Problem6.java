@@ -10,16 +10,14 @@ import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        Set<String> duplicateSet = new HashSet<>();
         Map<String, List<String>> seqNameEmailMap = getSeqNameEmailMap(forms);
+        Set<String> duplicateEmailSet = getDuplicateEmailSet(seqNameEmailMap);
 
-        seqNameEmailMap.values().stream()
-                .filter(emailList -> emailList.size() > 1)
-                .forEach(duplicateSet::addAll);
-        return duplicateSet.stream()
+        return duplicateEmailSet.stream()
                 .sorted()
                 .collect(Collectors.toList());
     }
+
 
     private static Map<String, List<String>> getSeqNameEmailMap(List<List<String>> forms) {
         Map<String, List<String>> seqNameEmailMap = new HashMap<>();
@@ -36,5 +34,15 @@ public class Problem6 {
             }
         }
         return seqNameEmailMap;
+    }
+
+    private static Set<String> getDuplicateEmailSet(Map<String, List<String>> seqNameEmailMap) {
+        Set<String> duplicateSet = new HashSet<>();
+
+        seqNameEmailMap.values()
+                .stream()
+                .filter(emailList -> emailList.size() > 1)
+                .forEach(duplicateSet::addAll);
+        return duplicateSet;
     }
 }
