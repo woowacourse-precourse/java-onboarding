@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -45,17 +42,26 @@ public class Problem7 {
             }
         }
 
-        if (result.containsKey(user)){
+        if (result.containsKey(user)) {
             result.remove(user);
         }
 
-        for (int i = 0; i < friendList.size(); i+=1){
-            if (result.containsKey(friendList.get(i))){
+        for (int i = 0; i < friendList.size(); i += 1) {
+            if (result.containsKey(friendList.get(i))) {
                 result.remove(friendList.get(i));
             }
         }
 
-        List<String> answer = Collections.emptyList();
+        Map<String, Integer> sortedMap = new TreeMap<>(result);
+        List<String> keySet = new ArrayList<>(sortedMap.keySet());
+        keySet.sort((o1, o2) -> sortedMap.get(o2).compareTo(sortedMap.get(o1)));
+
+        List<String> answer = new ArrayList<>();
+
+        for (int i = 0; i < keySet.size(); i += 1) {
+            answer.add(keySet.get(i));
+        }
+
         return answer;
     }
 }
