@@ -94,9 +94,7 @@ public class Problem7 {
     }
 
     void updateFriend(String name) {
-        Recommend recommend = new Recommend();
-        recommend.setName(name);
-        recommend.setScore(0);
+        Recommend recommend = new Recommend(name, 0);
         this.hashPersonToRecommend.put(name, recommend);
     }
 
