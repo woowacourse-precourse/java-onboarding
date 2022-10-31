@@ -2,7 +2,7 @@ package onboarding.problem1;
 
 import java.util.List;
 
-// else 제거
+// refactor : else 제거
 public class ExceptionHandler {
 
     // 예외 처리 실행하기
