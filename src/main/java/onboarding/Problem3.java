@@ -2,30 +2,43 @@ package onboarding;
 
 public class Problem3 {
     public static int solution(int number) {
-        int answer = 0;
-        return answer;
+
+        int answer10 = 0;
+
+        int restTen = number % 10; // number를 10으로 나눈 나머지
+
+        int restHun = number % 100;
+
+
+        //1~10까지 각각 박수치는 횟수를 repeatNum에 담음
+
+        final int[] repeatNum = {0, 0, 1, 0 , 0, 1, 0, 0, 1, 0};
+
+        answer10 = (restHun / 10) * 3;
+
+        if (restTen != 0) {
+            for (int i = 0; i < restTen; i++) {
+                answer10 += repeatNum[i];
+            }
+        }
+        //두자리 숫자까지 369 손뼉횟수를 측정하는 기능
+        if(restHun / 10 == 3){
+            answer10 += restTen+1;
+        }
+        else if(restHun / 10 == 6){
+            answer10 += restTen+11;
+        }
+        else if(restHun / 10 == 9){
+            answer10 += restTen+21;
+        }
+
+        return answer10;
 //        0010010010 -> 1~10까지
 
-//        0010010010 -> 11~20까지
-//        0010010011 -> 21~30까지
-//        1121121120 -> 31~40까지
+    }
 
-//        0010010010 -> 41~50까지
-//        0010010011 -> 51~60까지
-//        1121121120 -> 61~70까지
-
-//        0010010010 -> 71~80까지
-//        0010010011 -> 81~90까지
-//        1121121120 -> 91~100까지
-        /*
-        위의 패턴을 분석해본 결과 1~10을 제외하고 11~40, 41~70, 71~100까지 손뼉쳐야하는 횟수가 반복됨.
-
-        1. 1~100을 repeatNum의 int형 배열에 저장
-        2. 100으로 number를 나눈 나머지(rest)를 활용하여 1의자리와 10의자리의
-        박수치는 횟수를 구할수 있음(나머지가 0인경우 100으로 간주)
-        3. 100으로 나눈 몫이 3인경우 answer에 rest를 더하고,
-        몫이 6인경우에는 100+rest, 9인경우는 200+rest를 더한다.
-        4. 1000으로 나눈 몫이 3인 경우에는 위와 비슷하지만 100과 200이 아닌 1000과 2000을 더한다.
-         */
+    public static void main(String[] args) {
+        int number = 33;
+        System.out.println(solution(number));
     }
 }
