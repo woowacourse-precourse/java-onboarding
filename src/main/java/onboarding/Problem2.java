@@ -1,11 +1,21 @@
+/*
+ * Problem2
+ *
+ * v1.1
+ *
+ * 2022.11.01
+ *
+ * 저작권 주의
+ */
+
+
 package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
         String solvedCryptogram = cryptogram;
 
-        while(true){
-            if(checkOverlap(solvedCryptogram)){break;}
+        while(!checkOverlap(solvedCryptogram)){
             solvedCryptogram= removeOverlap(solvedCryptogram);
         }
         return solvedCryptogram;
@@ -15,8 +25,9 @@ public class Problem2 {
     static boolean checkOverlap(String str){
         int count =0;
         for(int i = 0; i < str.length()-1; i++){
-            if(str.charAt(i) == str.charAt(i+1)){
-                count=+1;
+            if (str.charAt(i) == str.charAt(i + 1)) {
+                count =+1;
+                break;
             }
         }
         return count==0;
@@ -34,9 +45,5 @@ public class Problem2 {
 
         return new String(charArr).replaceAll("@", "");
     }
-
-
-
-
 
 }
