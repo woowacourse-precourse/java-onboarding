@@ -24,3 +24,8 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능 목록
+
+- 주어진 friends로 user와 친구 제외한 목록 만드는 기능
+- 주어진 visitors와 만든 목록으로 점수 만든 뒤 점수, 이름 순으로 정렬하는 기능
