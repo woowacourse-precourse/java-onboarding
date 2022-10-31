@@ -11,6 +11,8 @@ import java.util.stream.IntStream;
 
 public class Problem7 {
 
+    private static final int ACQUAINTANCE_SCORE = 10;
+    private static final int VISIT_SCORE = 1;
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Set<String> userFriends = getUserFriends(user, friends);
         Map<String, Integer> scoreMap = new TreeMap<>();
@@ -45,7 +47,7 @@ public class Problem7 {
                 .forEach(index ->
                     scoreMap.put(
                         friend.get(index ^ 1),
-                        scoreMap.getOrDefault(friend.get(index ^ 1), 0) + 10));
+                        scoreMap.getOrDefault(friend.get(index ^ 1), 0) + ACQUAINTANCE_SCORE));
         }
     }
 
@@ -57,7 +59,7 @@ public class Problem7 {
     private static void getVisitorScore(List<String> visitors, Map<String, Integer> scoreMap, Set<String> userFriends) {
         for (String visitor : visitors) {
             if (!userFriends.contains(visitor)) {
-                scoreMap.put(visitor, scoreMap.getOrDefault(visitor, 0) + 1);
+                scoreMap.put(visitor, scoreMap.getOrDefault(visitor, 0) + VISIT_SCORE);
             }
         }
     }
