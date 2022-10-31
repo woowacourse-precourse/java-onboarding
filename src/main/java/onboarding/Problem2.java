@@ -5,9 +5,15 @@ import java.util.Stack;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+		return Decoder.crackBrownCode(cryptogram);
     }
+
+	private static class Decoder {
+		public static String crackBrownCode(String cryptogram) {
+			Code brownCode = new Code(cryptogram);
+			return brownCode.toCrackedCode();
+		}
+	}
 
 	private static class Code{
 		private final static char EMPTY_LETTER = '0';
