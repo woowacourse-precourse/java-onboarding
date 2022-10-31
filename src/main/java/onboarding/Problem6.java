@@ -6,7 +6,8 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
 
-
+        answer = findSimilarCrew(forms);
+        answer = removeDuplicateEmail(answer);
 
         return answer;
     }
@@ -39,6 +40,11 @@ public class Problem6 {
     }
 
     private static List<String> removeDuplicateEmail(List<String> duplicateEmailList){
+        Set<String> set = new HashSet<String>(duplicateEmailList);
+        List<String> answer = new ArrayList<String>(set);
+        Collections.sort(answer);
+
+        return answer;
 
     }
 
