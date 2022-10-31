@@ -8,7 +8,7 @@ class Problem1 {
             return true;
         if (list.get(0) % 2 == 0 || list.get(1) != (list.get(0) + 1))
             return true;
-        return list.get(0) <= 1 || list.get(1) >= 400;
+        return list.get(0) < 1 || list.get(1) > 400;
     }
 
     private static int getPlusNumber(int leftPage) {
@@ -42,7 +42,9 @@ class Problem1 {
 
         if (pobiNumber > crongNumber)
             return 1;
-        return 0;
+        if (pobiNumber == crongNumber)
+            return 0;
+        return 2;
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
