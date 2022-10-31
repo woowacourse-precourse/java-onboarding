@@ -64,4 +64,12 @@ class FriendInfoController {
         }
     }
 
+    private static void checkVisitors(Map<String, Integer> friendAndScore, List<String> visitors, Set<String> usersFriends) {
+        for (int i = 0; i < visitors.size(); i++) {
+            if(!usersFriends.contains(visitors.get(i))) {
+                addPoint(friendAndScore, visitors.get(i), VISITOR_POINT);
+            }
+        }
+    }
+
 }
