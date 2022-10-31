@@ -1,5 +1,7 @@
 package onboarding;
 
+import java.util.Stack;
+
 public class Problem2 {
 
     private final static int MIN_RANGE_NUM = 1;
@@ -9,8 +11,47 @@ public class Problem2 {
         validateRange(cryptogram);
         validateLower(cryptogram);
 
-        String answer = "answer";
+        String answer = decryptionGame(cryptogram);
         return answer;
+    }
+
+    private static String decryptionGame(String cryptogram) {
+        boolean flag = false;
+        Stack<Character> stack = new Stack<>();
+        int index = 0;
+        int count = 0;
+
+        while (index != cryptogram.length()) {
+            if (!stack.empty()) {
+                if (stack.peek() == cryptogram.charAt(index)) {
+                    flag= true;
+                    count += 1;
+                } else {
+                    if (flag) {
+                        for (int i=0; i<=count; i++) {
+                            stack.pop();
+                        }
+                        count = 0;
+                        flag = false;
+                        continue;
+                    }
+                }
+            }
+            stack.add(cryptogram.charAt(index));
+            index += 1;
+        }
+
+        if (flag) {
+            for (int i=0; i<=count; i++) {
+                stack.pop();
+            }
+        }
+
+        StringBuilder sb = new StringBuilder();
+        for(char ch : stack) {
+            sb.append(ch);
+        }
+        return sb.toString();
     }
 
     private static void validateRange(String input) {
@@ -21,7 +62,7 @@ public class Problem2 {
     }
 
     private static void validateLower(String input) {
-        if (input.toLowerCase() != input) {
+        if (!input.toLowerCase().equals(input)) {
             throw new IllegalArgumentException("cryptogram은 알파벳 소문자로만 이루어져 있다.");
         }
     }
