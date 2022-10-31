@@ -1,7 +1,7 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
 
@@ -9,7 +9,18 @@ public class Problem7 {
     static HashMap<String, Integer> points = new HashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<String>();
+        for (int i = 0; i < friends.size(); i++) addFriends(friends.get(i), user);
+        getFriendsCalc(user);
+        getVisitorsCalc(visitors, user);
+        delFriendsFromPoints(user);
+        points.entrySet().stream() // sort by key (value 같을 경우)
+                .sorted(Map.Entry.comparingByKey());
+        points.entrySet().stream() // sort by value
+                .sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
+                .forEach(entry -> {
+                    answer.add(entry.getKey());
+                });
         return answer;
     }
 
