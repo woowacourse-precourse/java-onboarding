@@ -73,4 +73,23 @@ public class Problem7 {
 
         return scoreKnownFriend;
     }
+
+    public static HashMap<String, Integer> getScoreVisitFriend(String user, List<List<String>> friends, List<String> visitors) {
+        HashMap<String, Integer> scoreVisitFriend = new HashMap<String, Integer>();
+
+        List<String> recommendFriends = getRecommendFriends(user, friends, visitors);
+
+        for (String visitor : visitors) {
+            if (recommendFriends.contains(visitor)) {
+                if (scoreVisitFriend.containsKey(visitor)) {
+                    int score = scoreVisitFriend.get(visitor);
+                    scoreVisitFriend.put(visitor, score + 1);
+                } else {
+                    scoreVisitFriend.put(visitor, 1);
+                }
+            }
+        }
+
+        return scoreVisitFriend;
+    }
 }
