@@ -5,8 +5,8 @@ import java.util.List;
 
 public class Judgment {
 
-    public static final int MIN = 0;
-    public static final int MAX = 400;
+    public static final int MIN_VALUE = 0;
+    public static final int MAX_VALUE = 400;
 
     public int compare(List<Integer> pobi, List<Integer> crong) {
 
@@ -35,22 +35,22 @@ public class Judgment {
         verification.addAll(crong);
 
         for (int number : verification) {
-            if (number <= MIN || number >= MAX) {
+            if (number <= MIN_VALUE || number >= MAX_VALUE) {
                 return -1;
             }
         }
 
-        int pobiLeftPage = pobi.get(MIN); // 100
+        int pobiLeftPage = pobi.get(MIN_VALUE); // 100
         int pobiRightPage = pobiLeftPage + 1;
 
-        if (!(pobiRightPage == pobi.get(MIN + 1))) {
+        if (!(pobiRightPage == pobi.get(MIN_VALUE + 1))) {
             return -1;
         }
 
-        int crongLeftPage = crong.get(MIN); // 100
+        int crongLeftPage = crong.get(MIN_VALUE); // 100
         int crongRightPage = crongLeftPage + 1;
 
-        if (!(crongRightPage == crong.get(MIN + 1))) {
+        if (!(crongRightPage == crong.get(MIN_VALUE + 1))) {
             return -1;
         }
 
