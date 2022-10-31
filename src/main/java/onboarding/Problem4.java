@@ -18,6 +18,10 @@ public class Problem4 {
             if(c >= 'a' && c <= 'z') {
                 sb.append((char)('z' - c + 'a'));
             }
+            // 대문자인 경우 반대로 변환하여 소문자로 만들기
+            else if(c >= 'A' && c <= 'Z'){
+                sb.append((char)('Z' - c + 'A'));
+            }
         }
 
         answer = sb.toString();
