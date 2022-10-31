@@ -8,6 +8,9 @@ public class Problem4 {
 
         char[] word_array = word.toCharArray();
 
+        if(!checkWordLength(word))
+            return answer.toString();
+
         for (char c : word_array) {
             if (c > 64 && c < 91) {
                 char tmp = (char) (90 - c + 65);
@@ -20,5 +23,9 @@ public class Problem4 {
             }
         }
         return answer.toString();
+    }
+
+    public static boolean checkWordLength(String word){
+        return word.length()>0 && word.length()<1000;
     }
 }
