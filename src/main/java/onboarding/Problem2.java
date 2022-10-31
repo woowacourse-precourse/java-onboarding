@@ -4,8 +4,12 @@ import java.util.Stack;
 
 public class Problem2 {
 	public static String solution(String cryptogram) {
-		String answer = "answer";
-		return answer;
+
+		while (!isValid(cryptogram)) {
+			cryptogram = removeDuplicate(cryptogram);
+		}
+
+		return cryptogram;
 	}
 
 	public static boolean isValid(String s) {
