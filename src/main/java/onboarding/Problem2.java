@@ -15,7 +15,15 @@ public class Problem2 {
         return cryptogram;
     }
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        if(cryptogram.length()<2){
+            return cryptogram;
+        }
+
+        String answer = deleteDup(cryptogram);
+
+        while(answer != deleteDup(answer)){
+            answer = deleteDup(answer);
+        }
         return answer;
     }
 }
