@@ -47,26 +47,26 @@ public class Problem7 {
         }
     }
     public static List<String> sortValue(){
-        List<List<Object>> scoreList=new ArrayList<>();
+        List<Object[]> scoreList=new ArrayList<>();
         for (String key :scores.keySet()){
-            scoreList.add(Arrays.asList(new Object[]{key, scores.get(key)}));
+            scoreList.add(new Object[]{key, scores.get(key)});
         }
         scoreList.sort(
                 Comparator.comparingLong(
-                        (List<Object> l)->(Long)l.get(1))
+                        (Object[] o)->(Long)o[1])
                         .reversed()
                 .thenComparing(
-                        (List<Object> l)->(l.get(1).toString())
+                        (Object[] o)->(o[0].toString())
                 )
         );
         return returnValue(scoreList);
     }
-    public static List<String> returnValue(List<List<Object>> list){
+    public static List<String> returnValue(List<Object[]> listObjects){
         List<String> ans = new ArrayList<>();
         int maxValueNum=5;
-        if(list.size()>maxValueNum)list=list.subList(0,maxValueNum);
-        for(List<Object> l : list){
-            ans.add(l.get(0).toString());
+        if(listObjects.size()>maxValueNum)listObjects=listObjects.subList(0,maxValueNum);
+        for(Object[] l : listObjects){
+            ans.add(l[0].toString());
         }
         return ans;
     }
