@@ -17,7 +17,7 @@ public class Problem7 {
         for (List<String> friend : friends) {
             if (friend.contains(user)) {
                 for (String name : friend) {
-                    if (name == user) {
+                    if (name.equals(user)) {
                         continue;
                     }
                     list.add(name);
@@ -27,6 +27,8 @@ public class Problem7 {
 
         return list;
     }
+
+
 
 
 }
