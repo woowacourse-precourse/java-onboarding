@@ -1,13 +1,14 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
         answer = removeNicknameDeduplication(forms);
-
+        sortByEmail(answer);
         return answer;
     }
     public static List<String> removeNicknameDeduplication(List<List<String>> forms) {
@@ -41,5 +42,7 @@ public class Problem6 {
         }
         return result;
     }
-    //public static List<String> sortByEmail() {};
+    public static void sortByEmail(List<String> list) {
+        Collections.sort(list);
+    }
 }
