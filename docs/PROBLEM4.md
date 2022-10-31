@@ -47,8 +47,14 @@ FrogDictionary 클래스
 기능 #6
 - 함수 이름: makeAlphabetArray
 - 입력: 없음
-- 기능: A~Z까지 알파벳 배열을 생성
-- 출력: A~Z까지 알파벳 배열
+- 기능: a~z까지 알파벳 배열을 생성
+- 출력: a~z까지 알파벳 배열
+
+기능 #7
+- 함수 이름: makeFrogLetterArray
+- 입력: 없음
+- 기능: z~a까지 알파벳 배열을 생성
+- 출력: z~a까지 알파벳 배열
 
 Translation 클래스
 
