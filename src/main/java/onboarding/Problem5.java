@@ -14,6 +14,12 @@ public class Problem5 {
     //돈의 변환갯수를 계산해주는 함수
 
     //돈의 액수 반환값이 0인지 아닌지 판별해주는 함수
+    static boolean zero_check(int change){
+        if(change == 0){
+            return false;
+        }
+        return true;
+    }
 
     // 돈의 액수를 바꿔주는 함수
 
