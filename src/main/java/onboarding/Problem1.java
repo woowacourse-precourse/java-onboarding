@@ -6,7 +6,10 @@ import java.util.List;
 class Problem1 {
 	public static int solution(List<Integer> pobi, List<Integer> crong) {
 		int answer = Integer.MAX_VALUE;
-		
+		if(exception(pobi) || exception(crong)) { //하나라도 틀리면 -1
+			answer = -1;
+			return answer;
+		}
 		return answer;
 	}
 	public static int makePage() { //makePage와 동시 3~398까지 추출
@@ -17,9 +20,14 @@ class Problem1 {
         }while(Page <= 1 || Page >= 400); //조건 충족 시 리셋
         return Page;
 	}
-	public static int exception(int Page) {
-		int error = -1;
-		return error;
+	public static boolean exception(List<Integer> pageList) { //예외를 true로
+		int leftPage = pageList.get(0);
+		int rightPage = pageList.get(1);
+		
+		if(rightPage - leftPage != 1) return true;
+		if(leftPage / 2 != 1 ) return true;
+        if(rightPage / 2 != 0 ) return true;
+		return false;
 	}
 	public static int Odd_L_HighScore(int Page) {
 		int PageL = 0;
