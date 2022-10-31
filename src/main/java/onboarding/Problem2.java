@@ -1,5 +1,7 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Stack;
 
@@ -46,6 +48,21 @@ public class Problem2 {
      */
     static String dump(List<String> word) {
         return String.join("",word);
+    }
+
+    /**
+     * 중복 제거 반복
+     */
+    static String removeAll(String password){
+        List<String> result = new ArrayList<>(Arrays.asList(password.split("")));
+        while(!result.isEmpty()) {
+            int size = result.size();
+            result = remove(result);
+            if(size == result.size()){
+                break;
+            }
+        }
+        return dump(result);
     }
 
 }
