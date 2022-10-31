@@ -24,16 +24,22 @@ public class Problem2 {
     public static Stack<String> doStack(List<String> stringList){
         Stack<String> stack =new Stack<>();
         for (String s : stringList) {
-            if (stack.isEmpty()){
-                stack.push(s);
-                continue;
-            }
-            if (stack.lastElement().equals(s)){
-                stack.pop();
-                continue;
-            }
-            stack.push(s);
+            checkStackCondition(stack,s);
         }
         return stack;
+    }
+
+    public static void checkStackCondition(Stack<String> stack,String s){
+        if (stack.isEmpty()){
+            stack.push(s);
+            return;
+        }
+
+        if (stack.lastElement().equals(s)){
+            stack.pop();
+            return;
+        }
+
+        stack.push(s);
     }
 }
