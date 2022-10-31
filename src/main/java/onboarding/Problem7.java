@@ -18,6 +18,14 @@ public class Problem7 {
         }
 
     }
+    static void deleteOverLapFriends(List<String> friendsGroups,HashMap<String,Integer> friendsGroupsScore){
+        for(int i=0; i<friendsGroups.size(); i++){
+            String friends = friendsGroups.get(i);
+            if(friendsGroupsScore.containsKey(friends)){
+                friendsGroupsScore.remove(friends);
+            }
+        }
+    }
     static List<String> createUserFriends(HashMap<String,List<String>> friendsGroups,String userName){
         List<String> userFriendsGroups = friendsGroups.get(userName);
         return userFriendsGroups;
@@ -76,6 +84,7 @@ public class Problem7 {
         userFriends = createUserFriends(friendsGroups,user);
         inputUserFriednsScore(friendsGroups,friendsGroupsScore,userFriends);
         deleteZeroScore(friendsGroupsScore);
+        deleteOverLapFriends(userFriends,friendsGroupsScore);
 
         return answer;
     }
