@@ -10,7 +10,7 @@ import java.util.*;
 public class Problem7 {
 
     static Map<String, Integer> map = new TreeMap<>();
-
+    
     /**
      * 1.친구목록을 통해 사용자와 함께아는친구 찾기
      */
@@ -37,7 +37,7 @@ public class Problem7 {
     public static void friendsScore(List<String> userFriend, List<List<String>> friends, String user) {
         for(int i =0;i<userFriend.size();i++){
             for(int j=0; j<friends.size();j++){
-                if(userFriend.get(i).equals(friends.get(j).get(0)) && !friends.get(j).get(1).equals(user)){
+                if(userFriend.get(i).equals(friends.get(j).get(0)) && !friends.get(j).get(1).equals(user) && !userFriend.contains(friends.get(j).get(1))){
                     if(map.containsKey(friends.get(j).get(1))){
                         int value = map.get(friends.get(j).get(1));
                         map.replace(friends.get(j).get(1), value+10);
@@ -46,7 +46,7 @@ public class Problem7 {
                     }
                 }
 
-                if (userFriend.get(i).equals(friends.get(j).get(1)) && !friends.get(j).get(0).equals(user)){
+                if (userFriend.get(i).equals(friends.get(j).get(1)) && !friends.get(j).get(0).equals(user) && !userFriend.contains(friends.get(j).get(0))){
                     if(map.containsKey(friends.get(j).get(0))){
                         int value = map.get(friends.get(j).get(0));
                         map.replace(friends.get(j).get(0), value+10);
