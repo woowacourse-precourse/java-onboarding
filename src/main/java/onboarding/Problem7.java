@@ -16,7 +16,23 @@ public class Problem7 {
     }
 
     private static void addAcquaintanceInMap(String user, List<List<String>> friends, List<String> friendsOfUser, Map<String, Integer> scoreMap) {
+        for (List<String> friend : friends) {
+            for (String friendOfUser : friendsOfUser) {
+                if (friend.contains(friendOfUser) && !friend.contains(user)) {
+                    for (int i = 0; i < friend.size(); i++) {
+                        if (!friend.get(i).equals(friendOfUser)) {
+                            if (!scoreMap.containsKey(friend.get(i))) {
+                                scoreMap.put(friend.get(i), 10);
+                            } else {
+                                int score = scoreMap.get(friend.get(i)) + 10;
+                                scoreMap.put(friend.get(i), score);
+                            }
+                        }
+                    }
 
+                }
+            }
+        }
     }
 
     private static void findFriendsOfUser(String user, List<List<String>> friends, List<String> friendsOfUser) {
