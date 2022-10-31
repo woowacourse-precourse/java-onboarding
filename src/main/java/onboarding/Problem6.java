@@ -29,11 +29,28 @@ public class Problem6 {
         return tokenMap;
     }
 
+    /**
+     * 같은 글자가 연속적으로 포함된 크루 추출 함수 ( 중복 제거 )
+     * @param tokenMap : 닉네임 토큰화 map
+     * @return : 같은 글자가 연속적으로 포함된 닉네임 작성 지원자 이메일 set
+     */
+    public static HashSet<String> findEmailSet(Map<String, List<String>> tokenMap){
+        HashSet<String> set = new HashSet<>();
+        for (Map.Entry<String,List<String>> info : tokenMap.entrySet()){
+            if(info.getValue().size()>1){
+                set.addAll(info.getValue());
+            }
+        }
+        return set;
+    }
+
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
 
         Map<String, List<String>> tokenMap = makeTokenDict(forms);
 
+        HashSet<String> set = findEmailSet(tokenMap);
 
         return answer;
     }
