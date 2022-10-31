@@ -12,4 +12,8 @@ public class Problem7 {
     private static boolean isAlreadyFriend(List<String> userFriends, String friendName) {
         return userFriends.contains(friendName);
     }
+
+    private static void addFriendToList(List<String> userFriends, String friendName) {
+        userFriends.add(friendName);
+    }
 }
