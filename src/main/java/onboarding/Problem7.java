@@ -7,6 +7,14 @@ public class Problem7 {
     static Set<String> userfriends = new HashSet<>();
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+        answer = new ArrayList<>();
+
+        userfriends = friendsWithUser(friends,user);
+        friendsOfFriends(user,friends);
+        plusVisitors(visitors,user);
+        List<Map.Entry<String,Integer>> rem = sortValues();
+        answer = addAnswer(rem);
+
         return answer;
     }
 
