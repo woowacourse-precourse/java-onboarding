@@ -24,7 +24,23 @@ public class Problem7 {
             addScoresForVisitor(scoreMap, visitor);
         }
 
+        // 이미 친구 관계인 친구들, 그리고 자기 자신은 점수 맵에서 제외하기
+        ArrayList<String> friendsOfUser = friendsMap.get(user);
+        for(String friend :friendsOfUser) {
+            excludeIfFriend(scoreMap, friend);
+        }
+        excludeMySelf(scoreMap, user);
+
         return answer;
+    }
+
+    private static void excludeMySelf(Map<String, Integer> scoreMap, String userName){
+        scoreMap.remove(userName);
+    }
+    private static void excludeIfFriend(Map<String, Integer> scoreMap, String friendName){
+        if(scoreMap.containsKey((friendName))){
+            scoreMap.remove(friendName);
+        }
     }
 
     private static void addScoresForVisitor(Map<String, Integer> scoreMap, String visitor){
