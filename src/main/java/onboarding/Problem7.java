@@ -12,6 +12,7 @@ public class Problem7 {
         List<List<String>> friendRelations = new ArrayList<>();
         HashSet<String> userFriends = new HashSet<>();
         HashMap<String, Integer> recommendations = new HashMap<>();
+        List<String> visitorsNotfriend = new ArrayList<>();
 
         for (List<String> friendRelation : friends) { // friends 중에 user와 친구인 항목 제외
             if (friendRelation.contains(user)) {
@@ -28,6 +29,12 @@ public class Problem7 {
                 recommendations.put(mutual, MUTUAL_SCORE);
             } else {                                    // 이미 있는 이름일 시, 기존 점수에 10점 추가
                 recommendations.put(mutual, recommendations.get(mutual) + MUTUAL_SCORE);
+            }
+        }
+
+        for (String visitor : visitors) { // visitors 중에 user와 친구인 항목 제외
+            if (!userFriends.contains(visitor)) {
+                visitorsNotfriend.add(visitor);
             }
         }
 
