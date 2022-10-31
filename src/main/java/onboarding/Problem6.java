@@ -3,12 +3,6 @@ package onboarding;
 import java.util.*;
 
 public class Problem6 {
-    public static void main(String[] args) {
-        System.out.println(solution(
-                Arrays.asList(Arrays.asList("jm@email.com", "제이엠"),Arrays.asList("jason@email.com", "제이슨"),
-                        Arrays.asList("woniee@email.com", "워니"),Arrays.asList("mj@email.com", "엠제이"),Arrays.asList("nowm@email.com", "이제엠"))
-        ));
-    }
     public static List<String> solution(List<List<String>> forms) {
         Hashtable<String,String> hashtable = new Hashtable<>(); // 이름과 이메일을 저장할 해쉬 테이블
         HashSet<String> hashSet;// 닉넴임을 두 글자씩 자를 경우 중복이 되면 안 되기 때문에

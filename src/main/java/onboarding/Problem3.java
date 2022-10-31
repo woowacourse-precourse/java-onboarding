@@ -1,11 +1,6 @@
 package onboarding;
 
 public class Problem3 {
-    public static void main(String[] args) {
-        System.out.println(solution(13));
-        System.out.println(solution(33));
-    }
-
     public static int solution(int number) {
         int ans = 0, lnumber = 1, rnumber, exp = 1, point; //정답, 왼쪽 숫자, 오른쪽 숫자, 지수, 현재 커서가 가리키는 포인트
         while (lnumber > 0){ // 왼쪽 숫자가 더이상 없을 때 까지

@@ -4,10 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Problem5 {
-    public static void main(String[] args) {
-        System.out.println(solution(50237));
-        System.out.println(solution(15000));
-    }
     public static List<Integer> solution(int money) {
         List<Integer> answer = new ArrayList<>(); // 리스트를 선언하고
         // 정해진 수의 몫을 add하고 나머지를 머니로 받는걸 반복.
