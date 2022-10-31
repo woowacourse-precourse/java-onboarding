@@ -17,6 +17,14 @@ public class Problem2 {
             code=removeChar(code);
         }
 
+        //list를 String 형태로 변환해 최종 return
+        StringBuilder sb = new StringBuilder();
+        for (char character: code) {
+            sb.append(character);
+        }
+
+        answer = sb.toString();
+
         return answer;
     }
 
