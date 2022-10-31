@@ -1,25 +1,6 @@
 package onboarding;
 
 public class Problem2 {
-    public static String solution(String cryptogram) {
-        String answer = "answer";
-
-        String tmp = "";
-        while (true) {
-            tmp = removeDup(cryptogram);
-
-            if(cryptogram.length() == tmp.length()) {
-                break;
-            }
-
-            cryptogram = tmp;
-
-        }
-        answer = cryptogram;
-
-        return answer;
-    }
-
     public static String removeDup(String s) {
 
         if (s.length() == 0 || s.length() == 1) {
@@ -46,5 +27,26 @@ public class Problem2 {
         String result = new String(chars).substring(0, k);
 
         return result;
+    }
+
+    public static String decodeCryptogram(String cryptogram) {
+        while (true) {
+            String tmp = removeDup(cryptogram);
+
+            if(cryptogram.length() == tmp.length()) {
+                break;
+            }
+
+            cryptogram = tmp;
+        }
+        String result = cryptogram;
+
+        return result;
+    }
+
+    public static String solution(String cryptogram) {
+        String answer = decodeCryptogram(cryptogram);
+
+        return answer;
     }
 }
