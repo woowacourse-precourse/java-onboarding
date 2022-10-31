@@ -9,6 +9,22 @@ package onboarding;
  */
 
 public class Problem3 {
+
+    // 현재 순회중인 수를 인덱스로 슬라이싱하여
+    // 박수를 쳐도 되는 수 인지 확인하는 메서드
+    // 1 이면 박수를 쳐야 하는 수
+    // 0 이면 박수를 치지 않아야 하는 수
+    public static int isCountableNumber(int index, String currentValue) {
+        if (currentValue.charAt(index) == '3') {
+            return 1;
+        } else if (currentValue.charAt(index) == '6') {
+            return 1;
+        } else if (currentValue.charAt(index) == '9') {
+            return 1;
+        }
+        return 0;
+    }
+
     public static int solution(int number) {
         int answer = 0;
         return answer;
