@@ -8,10 +8,8 @@
  */
 package onboarding;
 
-import java.util.Collections;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     static final int VISIT = 1;
@@ -73,5 +71,27 @@ public class Problem7 {
                 friendshipScore.remove(name);
             }
         }
+    }
+
+    public static List<String> resultSort(Map<String, Integer> friendshipScore) {
+        List<String> answer = new LinkedList<>();
+        List<Map.Entry<String, Integer>> entries = friendshipScore.entrySet().stream().collect(Collectors.toList());
+        Collections.sort(entries, new Comparator<Map.Entry<String, Integer>>(){
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                if (o2.getValue() == o1.getValue()) {
+                    return o1.getKey().compareTo(o2.getKey());
+                }
+                return o2.getValue().compareTo(o1.getValue());
+            }
+        });
+
+        for (int i = 0; i < 5 && i < entries.size(); i++) {
+            Map.Entry<String, Integer> entry = entries.get(i);
+            System.out.println(entry.getKey());
+            answer.add(entry.getKey());
+        }
+
+        return answer;
     }
 }
