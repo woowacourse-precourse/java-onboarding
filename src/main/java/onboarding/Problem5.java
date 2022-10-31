@@ -18,7 +18,6 @@ public class Problem5 {
                 10,
                 1
         };
-        int[] ans = {0,0,0,0,0,0,0,0,0};
         for(int i = 0; i < change.length; i++){
             answer.add(money/change[i]);
             money %= change[i];
