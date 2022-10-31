@@ -9,7 +9,14 @@ public class Problem7 {
         List<String> user_friend = new ArrayList<>();
         user_friend = findFriends(user,friends);
         checkFriends(user,friends,user_friend);
+        checkIsVisited(visitors,user_friend);
         return answer;
+    }
+    static void checkIsVisited(List<String> visitors,List<String> user_friend){
+        for(String info : visitors){
+            if(map.get(info) == null && !user_friend.contains(info)){map.put(info,1);}
+            else if(map.get(info) != null && !user_friend.contains(info)){map.put(info,map.get(info)+1);}
+        }
     }
     static void checkFriends(String host,List<List<String>> friends,List<String> user_friend){
         for(List<String> info : friends){
