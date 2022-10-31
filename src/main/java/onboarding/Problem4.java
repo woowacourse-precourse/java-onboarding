@@ -12,4 +12,11 @@ public class Problem4 {
         }
         return false;
     }
+
+    public static boolean isLower(char alphabet){
+        if(alphabet >= 'a' && alphabet <= 'z'){
+            return true;
+        }
+        return false;
+    }
 }
