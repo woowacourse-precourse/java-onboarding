@@ -22,15 +22,13 @@ public class Problem6 {
                 for(int j=0; j<nickname.length()-1; j++) {
                     String twoWords = nickname.substring(j, j+2);
 
-                    if (existNicknameMap.containsKey(twoWords)) {
-                        emailSet.add(email);
-
-                        Integer infoIndex = existNicknameMap.get(twoWords);
-                        email = forms.get(infoIndex).get(0);
-                        emailSet.add(email);
-                    }
-                    else
+                    int index = getIndexOfExistNickname(existNicknameMap, twoWords);
+                    if(index == -1)
                         existNicknameMap.put(twoWords, i);
+                    if(index != -1) {
+                        emailSet.add(email);
+                        emailSet.add(forms.get(index).get(0));
+                    }
                 }
             }
         }
@@ -38,5 +36,13 @@ public class Problem6 {
         answer.sort(Comparator.naturalOrder());
 
         return answer;
+    }
+
+    public static int getIndexOfExistNickname(Map<String, Integer> existNicknameMap, String twoWords) {
+
+        if(existNicknameMap.containsKey(twoWords))
+            return existNicknameMap.get(twoWords);
+
+        return -1;
     }
 }
