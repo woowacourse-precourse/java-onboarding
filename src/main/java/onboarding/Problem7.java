@@ -22,6 +22,14 @@ public class Problem7 {
         List<String> userFriendsGroups = friendsGroups.get(userName);
         return userFriendsGroups;
     }
+    static void deleteZeroScore(HashMap<String,Integer> friendsGroupsScore) {
+        for(String strKey :friendsGroupsScore.keySet()){
+            int strValue = friendsGroupsScore.get(strKey);
+            if(strValue == 0){
+                friendsGroupsScore.remove(strKey);
+            }
+        }
+    }
     static void createfriendsGroupsScore(HashMap<String, Integer> friendsGroupsScore, List<List<String>>friends,String userName, List visitor){
         for(int i=0; i<friends.size(); i++){
             String friends1 = friends.get(i).get(0);
@@ -67,6 +75,7 @@ public class Problem7 {
         createfriendsGroupsScore(friendsGroupsScore,friends,user,visitors);
         userFriends = createUserFriends(friendsGroups,user);
         inputUserFriednsScore(friendsGroups,friendsGroupsScore,userFriends);
+        deleteZeroScore(friendsGroupsScore);
 
         return answer;
     }
