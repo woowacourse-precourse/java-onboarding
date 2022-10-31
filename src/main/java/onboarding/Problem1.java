@@ -17,32 +17,44 @@ class Problem1 {
      * @return 게임 결과, 포비가 이긴다면 1, 크롱이 이긴다면 2, 무승부는 0, 예외사항은 -1
      */
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+        Player playerPobi = new Player();
+        Player playerCrong = new Player();
+
+        playerPobi.setPage(pobi);
+        playerCrong.setPage(crong);
+
         PageGame pageGame = new PageGame();
         return pageGame.play(pobi, crong);
     }
 
 }
+class Player {
+    private int leftPage;
+    private int rightPage;
+    private boolean pageStatus = false;
 
-class PageGame {
-    private final int WRONG_INPUT = -1;
-    private final int POBI_WIN = 1;
-    private final int CRONG_WIN = 2;
-    private final int DRAW = 0;
+    public void setPage(List<Integer> pages) {
+        this.pageStatus = false;
 
-    public int play(List<Integer> player1, List<Integer> player2) {
-        if (isWrongInput(player1) || isWrongInput(player2)) {
-            return WRONG_INPUT;
+        if (!isOnlyTwoPages(pages)) {
+            return;
         }
 
-        return getGameResult(getScore(player1), getScore(player2));
+        leftPage = pages.get(0);
+        rightPage = pages.get(1);
+
+        if (isWrongInput()) {
+            return;
+        }
+
+        this.pageStatus = true;
     }
 
-    private boolean isWrongInput(List<Integer> pages) {
-        if (pages.size() != 2)
-            return true;
+    private boolean isOnlyTwoPages(List<Integer> pages) {
+        return pages.size() == 2;
+    }
 
-        int leftPage = pages.get(0);
-        int rightPage = pages.get(1);
+    private boolean isWrongInput() {
 
         if (leftPage % 2 != 1 || rightPage + 1  != leftPage || leftPage <= 1 || rightPage >= 400) {
             return true;
@@ -50,6 +62,26 @@ class PageGame {
 
         return false;
     }
+
+    public boolean ready() {
+        return pageStatus;
+    }
+}
+class PageGame {
+    private final int WRONG_INPUT = -1;
+    private final int POBI_WIN = 1;
+    private final int CRONG_WIN = 2;
+    private final int DRAW = 0;
+
+    public int play(Player player1, Player player2) {
+
+        if (!player1.ready() || !player2.ready()) {
+            return WRONG_INPUT;
+        }
+
+        return getGameResult(getScore(player1), getScore(player2));
+    }
+
 
     private int getScore(List<Integer> pages) {
 
