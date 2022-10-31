@@ -12,7 +12,6 @@ public class Problem2 {
         }
         return s;
     }
-
     public static String solution(String cryptogram) {
         String answer = deduplication(cryptogram);
         return answer;
