@@ -17,6 +17,9 @@ public class Problem5 {
         return (money / unit) > 0 ? true : false;
     }
 
+    public static int diviseMoneyByUnit(int money, int unit) {
+        return (money / unit);
+    }
     public static List<Integer> solution(int money) {
         List<Integer> answer = Collections.emptyList();
         return answer;
