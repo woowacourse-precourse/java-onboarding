@@ -79,11 +79,38 @@ public class Problem7 {
 
         return userFriendsOfFriends;
     }
+    private static HashMap<String, Integer> getFriendsScore(List<String> userFriends, HashMap<String, List<String>> userFriendsOfFriends){
+
+        HashMap<String, Integer> friendsScore = new HashMap<>();
+
+        for(String friendKey : userFriendsOfFriends.keySet()){
+            List<String> friendsOfFriends = userFriendsOfFriends.get(friendKey);
+
+            for (String value : friendsOfFriends){
+
+                if (!userFriends.contains(value)){
+
+                    if (friendsScore.containsKey(value)){
+                        int score = friendsScore.get(value);
+                        score += 10;
+                        friendsScore.put(value, score);
+
+                    }else{
+                        int score = 10;
+                        friendsScore.put(value, score);
+                    }
+                }
+            }
+        }
+
+        return friendsScore;
+    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
         List<String> userFriends = getFriends(user, friends);
         HashMap<String, List<String>> userFriendsOfFriends = getFriendsOfFriends(user, friends, userFriends);
-
+        HashMap<String, Integer> friendsScore = getFriendsScore(userFriends, userFriendsOfFriends);
+        
         List<String> answer = Collections.emptyList();
         return answer;
     }
