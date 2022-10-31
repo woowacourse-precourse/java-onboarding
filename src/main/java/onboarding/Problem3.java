@@ -16,8 +16,16 @@ public class Problem3 {
         }
         return count;
     }
+    // 1에서 타겟 숫자까지 검사 함수
+    static int oneToNum(int num){
+        int clapResult = 0;
+        for (int i = 1 ; i <= num; i++){
+            clapResult += Count369(i);
+        }
+        return clapResult;
+    }
+    // main 입력함수
     public static int solution(int number) {
-        int answer = 0;
-        return answer;
+        return oneToNum(number);
     }
 }
