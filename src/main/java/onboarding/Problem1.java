@@ -85,13 +85,12 @@ class Problem1 {
     public static Integer getWinner(Integer pobiScore, Integer crongScore) {
         if (pobiScore > crongScore) {
             return POBI;
-        } else if (pobiScore < crongScore) {
+        }
+        if (pobiScore < crongScore) {
             return CRONG;
-        } else if (pobiScore == crongScore) {
-            return TIE;
         }
 
-        return EXCEPTION;
+        return TIE;
     }
 
     public static boolean isValidPageNumber(List<Integer> pages) {
