@@ -15,11 +15,11 @@ public class Problem7 {
         HashMap<String, Integer> recommendFriendToPointMap = new HashMap<>();
         HashMap<String, List<String>> friendsMap = makeFriends(friends);
 
-        recommendFriendToPointMap = pointsToFriendToFriend(user, friendsMap, recommendFriendToPointMap);
-        recommendFriendToPointMap=pointsToVisitors(visitors, recommendFriendToPointMap);
+        setPointsForFriendsMap(user, friendsMap, recommendFriendToPointMap);
+        setPointsForVisitorMaps(visitors, recommendFriendToPointMap);
 
         List<String> usersFriendsList = friendsMap.get(user);
-        recommendFriendToPointMap=removedUsersFriends(usersFriendsList, recommendFriendToPointMap);
+        removeMapUsersFriends(usersFriendsList, recommendFriendToPointMap);
 
         List<String> sortedRecommendList = sortByRestrictions(recommendFriendToPointMap);
 
@@ -60,7 +60,7 @@ public class Problem7 {
         return friendsMap;
     }
 
-    private static HashMap<String, Integer> pointsToFriendToFriend(String user, HashMap<String,List<String>> friendsMap, HashMap<String, Integer> recommendFriendToPointMap) {
+    private static void setPointsForFriendsMap(String user, HashMap<String,List<String>> friendsMap, HashMap<String, Integer> recommendFriendToPointMap) {
         List<String> usersFriendsList = friendsMap.get(user);
         for (String usersFriend : usersFriendsList) {
             List<String> friendsToFriendsList = friendsMap.get(usersFriend);
@@ -70,22 +70,19 @@ public class Problem7 {
                 recommendFriendToPointMap.put(friendsToFriend, beforePoint + 10);
             }
         }
-        return recommendFriendToPointMap;
     }
 
-    private static HashMap<String,Integer> pointsToVisitors(List<String> visitors,HashMap<String,Integer> recommendFriendToPointMap) {
+    private static void setPointsForVisitorMaps(List<String> visitors, HashMap<String,Integer> recommendFriendToPointMap) {
         for (String visitor : visitors) {
             Integer beforePoint = recommendFriendToPointMap.getOrDefault(visitor, 0);
             recommendFriendToPointMap.put(visitor, beforePoint + 1);
         }
-        return recommendFriendToPointMap;
     }
 
-    private static HashMap<String, Integer> removedUsersFriends(List<String> usersFriends, HashMap<String, Integer> recommendFriendToPointMap) {
+    private static void removeMapUsersFriends(List<String> usersFriends, HashMap<String, Integer> recommendFriendToPointMap) {
         for (String usersFriend : usersFriends) {
             recommendFriendToPointMap.remove(usersFriend);
         }
-        return recommendFriendToPointMap;
     }
 
     private static List<String> sortByRestrictions(HashMap<String, Integer> recommendFriendToPointMap ) {
