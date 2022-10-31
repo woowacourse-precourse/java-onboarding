@@ -9,7 +9,7 @@ import static onboarding.problem1.EachSide.pageRight;
 // 변수 줄이기 적용
 public class CollectionVariable {
 
-    //최대값 구하는 기능
+    //최대값 구하기
     public static int getMax(List<Integer> player) {
 
         int leftMax = getEachNumber(pageLeft(player));
