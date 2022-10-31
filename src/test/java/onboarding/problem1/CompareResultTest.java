@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -39,6 +40,17 @@ class CompareResultTest {
         assertThatThrownBy(() -> {
             compareResult.compare(new Player(Arrays.asList(401, 403)), new Player(Arrays.asList(24, 25)));
         }).isInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void 정상적인_경우() {
+        assertThat(
+                compareResult.compare(new Player(Arrays.asList(123, 124)), new Player(Arrays.asList(125, 126)))
+        ).isEqualTo(2);
+
+        assertThat(
+                compareResult.compare(new Player(Arrays.asList(3, 4)), new Player(Arrays.asList(5, 6)))).isEqualTo(2);
+
     }
 
 }
