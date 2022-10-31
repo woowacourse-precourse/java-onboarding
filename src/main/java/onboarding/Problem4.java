@@ -13,9 +13,11 @@ public class Problem4 {
             // 2. i번째 문자가 대문자인 경우
             if(character >= 65 && character <= 90)
                 replacedCharacter = (char) (90 + 65 - character);
+            // 3. i번째 문자가 소문자인 경우
+            else if(character >= 97 && character <= 122)
+                replacedCharacter = (char) (122 + 97 - character);
 
         }
-        // 3. i번째 문자가 소문자인 경우
         // 4. i번째 문자가 알파벳이 아닌 경우
         // 5. answer에 변환된 문자 추가
 
