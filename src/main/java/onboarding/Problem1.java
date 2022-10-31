@@ -58,6 +58,26 @@ class Problem1 {
         return rightPage - leftPage != 1;
     }
 
+    public static boolean handleErrors(List<Integer> list) {
+        if (checkSize(list)) {
+            return false;
+        }
+
+        if (checkPageBound(list)) {
+            return false;
+        }
+
+        if (checkPageOddEven(list)) {
+            return false;
+        }
+
+        if (checkPair(list)) {
+            return false;
+        }
+        return true;
+    }
+
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
