@@ -1,23 +1,20 @@
 #### 기능목록
 
-1. 알파벳 전환
+`convertCharArrReverse`: 문자열을 청개구리 사전에 맞게 변환해주는 기능
 
-   - Character.isUpperCase와 .isLowerCase를 활용하여 대문자 소문자 판단
+​	`convertCharReverse`: `알파벳 대문자`는 `알파벳 대문자`에 맞게 변환, `알파벳 소문자`는 `알파벳 소문자`에 맞게 변환
 
-   - 알파멧 매핑 점화식 (아스키코드 활용)
-     - Target이 대문자 --> 90 ('Z' 아스키코드) - Target 아스키코드 + 65 ('A' 아스키코드)
-     - Target이 소문자 --> 122 ('z' 아스키코드) - Target 아스키코드 + 97 ('a' 아스키코드)
+​	`알파벳 대문자` --> `90 ('Z'아스키코드)` - `Target 아스키코드` + `65 ('A'아스키코드)`
 
-2. 문자열 매핑기능
+​	`알파벳 소문자` --> `122 ('z' 아스키코드)` - `Target 아스키코드` + `97 ('a'아스키코드)`
 
-   - 문자열을 순회하며 모든 알파벳 전환
-   - 빈 문자열일 경우 continue
+​		`isUpperCase`: 알파벳 대문자 확인 기능
 
-3. 문자열을 String객체로 변환
+​		`isLowerCase`: 알파벳 소문자 확인 기능 
 
-   - 문자열을 순회하며 StringBuilder의 append 메소드를 활용
+`charArrToString`: `StringBuilder의 append 메소드`를 활용하여 `문자열을 String객체로 변환`해주는 기능
 
-     (※String의 immutable 특성으로 인해, "+" 연산자 사용시 불필요한 메모리 낭비 발생)
+(※String의 immutable 특성으로 인해, "+" 연산자 사용시 불필요한 메모리 낭비 발생)
 
 
 
