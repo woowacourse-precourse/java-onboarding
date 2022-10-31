@@ -33,7 +33,7 @@ public class Problem3 {
 
         // 3,6,9 존재 확인 및 갯수 체크
         for(int i = 1; i <= number; i++) {
-            int[] splitNumber = splitNumber(i);
+            int[] splitNumber = getOneLetterNumbers(i);
 
             for(int j : splitNumber) {
                 if (j == 3 || j == 6 || j == 9) {
@@ -46,11 +46,11 @@ public class Problem3 {
     }
 
     /**
-     * 숫자 분리하기
+     * 숫자를 한글자씩 분할
      * @param number 숫자
-     * @return 분리된 숫자
+     * @return 분할된 숫자
      */
-    private static int[] splitNumber(int number) {
+    private static int[] getOneLetterNumbers(int number) {
         ArrayList<Integer> arrayNumber = new ArrayList<>();
 
         while (number > 0) {
