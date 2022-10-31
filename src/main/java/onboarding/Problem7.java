@@ -82,6 +82,24 @@ public class Problem7 {
     }
 
     /**
+     * 친구의 친구에게 10점 주기
+     * @param friends 진짜 친구 목록
+     */
+    private static void addFriendOfFriendPoint(List<List<String>> friends) {
+        String me = getMe();
+
+        for(List<String> friend: friends) {
+            for (String user : friend) {
+                if (existPreFriend(user) && !user.equals(me)) {
+                    addPreFriendPoint(friend.get(friend.indexOf(user) ^ 1), 10);
+                }
+            }
+        }
+    }
+
+
+
+    /**
      * 추천 친구 구하기
      * @param maxRecommendFriends 최대 추천 친구
      * @return 추천 친구 목록
