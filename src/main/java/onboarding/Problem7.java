@@ -4,7 +4,8 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer;
+        answer = FriendInfoController.returnRecommendList(user, friends, visitors);
         return answer;
     }
 }
@@ -24,7 +25,7 @@ class FriendInfoController {
         return -1;
     }
 
-    private static Set<String> distinguishUsersFriend(String user, List<List<String>> friends, Set<String> usersFriends, List<List<String>> friendsShouldCheck) {
+    private static void distinguishUsersFriend(String user, List<List<String>> friends, Set<String> usersFriends, List<List<String>> friendsShouldCheck) {
         List<String> friendsRelation;
         int usersFriendIndex;
 
@@ -37,7 +38,6 @@ class FriendInfoController {
             }
             friendsShouldCheck.add(friendsRelation);
         }
-        return usersFriends;
     }
 
     private static void addPoint(Map<String, Integer> friendAndScore, String friend, int point) {
@@ -75,12 +75,7 @@ class FriendInfoController {
     private static List<String> returnTopFiveFriends(Map<String, Integer> friendAndScore){
         List<Map.Entry<String, Integer>> friendAndScoreList = new LinkedList<>(friendAndScore.entrySet());
         List<String> recommendList = new ArrayList<>();
-        friendAndScoreList.sort(new Comparator<Map.Entry<String, Integer>>() {
-            @Override
-            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
-                return o2.getValue() - o1.getValue();
-            }
-        });
+        friendAndScoreList.sort((o1, o2) -> o2.getValue() - o1.getValue());
         for (Map.Entry<String, Integer> friend : friendAndScoreList) {
             recommendList.add(friend.getKey());
             if (recommendList.size() == MAX_RECOMMEND_SIZE){
@@ -90,5 +85,15 @@ class FriendInfoController {
         return recommendList;
     }
 
+    static List<String> returnRecommendList(String user, List<List<String>> friends, List<String> visitors) {
+        Map<String, Integer> recommendMap = new HashMap<>();
+        List<List<String>> friendsShouldCheck = new ArrayList<>();
+        Set<String> usersFriends = new HashSet<>();
+
+        distinguishUsersFriend(user, friends, usersFriends, friendsShouldCheck);
+        checkFriends(recommendMap, friendsShouldCheck, usersFriends);
+        checkVisitors(recommendMap, visitors, usersFriends);
+        return returnTopFiveFriends(recommendMap);
+    }
 
 }
