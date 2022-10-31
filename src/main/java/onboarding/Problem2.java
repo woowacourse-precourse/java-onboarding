@@ -5,9 +5,10 @@ import java.util.Deque;
 
 public class Problem2 {
     private static final String OUTPUT_IS_BLANK = "";
+    private static final char INIT_LAST_REMOVE = ' ';
 
     public static String solution(String cryptogram) {
-        return isValidStringLength(cryptogram) ? cryptogram : removeAdjacentDuplicate(getStringToChar(cryptogram));
+        return isValidStringLength(cryptogram) ? cryptogram : removeAdjacentDuplicate(cryptogram.toCharArray());
     }
 
     private static boolean isValidStringLength(String str) {
@@ -16,39 +17,33 @@ public class Problem2 {
 
     private static String removeAdjacentDuplicate(char[] cryptogramArray) {
         Deque<Character> charDeque = new ArrayDeque<>();
-        char lastRemove = initLastRemove();
+        char lastRemove = initLastRemove(INIT_LAST_REMOVE);
 
         for (char digit : cryptogramArray) {
             lastRemove = getNewWord(charDeque, digit, lastRemove);
         }
 
-        return isEmptyDeque(charDeque) ? OUTPUT_IS_BLANK : getCharDequeToString(charDeque);
+        return charDeque.isEmpty() ? OUTPUT_IS_BLANK : getCharDequeToString(charDeque);
     }
 
     private static char getNewWord(Deque<Character> charDeque, char digit, char lastRemove) {
-        if (isEmptyDeque(charDeque)) {
-            addElementToDeque(charDeque, digit);
+        if (charDeque.isEmpty()) {
+            charDeque.add(digit);
             return lastRemove;
         }
 
-        char lastElement = charDeque.getLast();
-        if (isSameLastRemove(digit, lastRemove)) {
+        if (isSameCompareElement(digit, lastRemove)) {
             return lastRemove;
         }
 
-        if (isSamePrevElement(digit, lastElement, charDeque)) {
-            lastRemove = initLastRemove(lastElement);
-            return lastRemove;
+        char prevElement = charDeque.getLast();
+        if (isSameCompareElement(digit, prevElement)) {
+            charDeque.removeLast();
+            return initLastRemove(prevElement);
         }
 
-        lastRemove = initLastRemove();
-        addElementToDeque(charDeque, digit);
-
-        return lastRemove;
-    }
-
-    private static char[] getStringToChar(String str) {
-        return str.toCharArray();
+        charDeque.add(digit);
+        return initLastRemove(INIT_LAST_REMOVE);
     }
 
     private static String getCharDequeToString(Deque<Character> charDeque) {
@@ -57,35 +52,11 @@ public class Problem2 {
         return sb.toString();
     }
 
-    private static boolean isEmptyDeque(Deque<Character> deque) {
-        return deque.isEmpty();
+    private static boolean isSameCompareElement(char currentElement, char compareElement) {
+        return currentElement == compareElement;
     }
 
-    private static void addElementToDeque(Deque<Character> deque, char element) {
-        deque.add(element);
-    }
-
-    private static boolean isSameLastRemove(char currentElement, char lastRemove) {
-        return currentElement == lastRemove;
-    }
-
-    private static boolean isSamePrevElement(char currentElement, char prevElement, Deque<Character> deque) {
-        if (currentElement == prevElement) {
-            removeDuplicate(deque);
-            return true;
-        }
-        return false;
-    }
-
-    private static void removeDuplicate(Deque<Character> deque) {
-        deque.removeLast();
-    }
-
-    private static char initLastRemove() {
-        return ' ';
-    }
-
-    private static char initLastRemove(char lastElement) {
-        return lastElement;
+    private static char initLastRemove(char lastRemove) {
+        return lastRemove;
     }
 }
