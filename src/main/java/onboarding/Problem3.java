@@ -4,6 +4,11 @@ import java.util.Arrays;
 import java.util.stream.Stream;
 
 public class Problem3 {
+    /**
+     * 1 ~ number 까지 3, 6, 9가 포함된 숫자 개수 세는 함수
+     * @param number
+     * @return Number of numbers with 3, 6, 9
+     */
     public static int solution(int number) {
         int answer = 0;
         for (int i=1; i <= number; i++) {
