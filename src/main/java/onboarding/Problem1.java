@@ -1,6 +1,9 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
@@ -20,5 +23,13 @@ class Problem1 {
         if (Pages.get(0) == 1 || Pages.get(1) == 400)
             return false;
         return true;
+    }
+
+    public static List<Integer> convertString(final String input) {
+        List<Integer> output = new ArrayList<>();
+        for (Character c : input.toCharArray()) {
+            output.add(Character.getNumericValue(c));
+        }
+        return output;
     }
 }
