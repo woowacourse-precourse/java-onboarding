@@ -12,17 +12,24 @@ public class TreeFrog {
 	 * Translate alphabet based on formula
 	 * @param ch alphabet to translate.
 	 * <br>
-	 * formula(ch) = BASE_ALPHABET + ('Z/z' - ch)
+	 * formula(character) = LETTER_CASE_FACTOR - character
 	 * @return translated code
 	 */
 	public static String translateCode(final char ch) {
-		if (Character.isWhitespace(ch)) {
-			return "" + ch;
+		if (isNotAlphabetic(ch)) {
+			return String.valueOf(ch);
 		}
+		int factor = UPPER_CASE_FACTOR;
+
 		if (Character.isLowerCase(ch)) {
 			return "" + (char)(LOWER_CASE_FACTOR - ch);
 		}
-		return "" + (char)(UPPER_CASE_FACTOR - ch);
+		return String.valueOf((char)(factor - ch));
+	}
+
+	private static boolean isNotAlphabetic(char ch) {
+		return Character.isWhitespace(ch)
+			|| !Character.isAlphabetic(ch);
 	}
 
 	public static String translate(final String word) {
