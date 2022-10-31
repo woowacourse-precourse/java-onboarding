@@ -46,6 +46,18 @@ public class Problem7 {
             }
         }
 
+        List<Map.Entry<String, Integer>> entries = new LinkedList<>(recommendMap.entrySet());
+        Collections.sort(entries, new Comparator<Map.Entry<String, Integer>>() { // 내림차순 정렬
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                return o2.getValue().compareTo(o1.getValue());
+            }
+        });
+
+        for(Map.Entry<String,Integer> entry : entries) {
+            answer.add(entry.getKey());
+        }
+
         return answer;
     }
 }
