@@ -26,7 +26,7 @@ public class Recommender {
     public int sort(String o1, String o2) {
         Integer value1 = score.getStringListMap().get(o1);
         Integer value2 = score.getStringListMap().get(o2);
-        if (value1 != value2) {
+        if (value1.intValue() != value2.intValue()) {
             return value2.compareTo(value1);
         }
         return o1.compareTo(o2);
