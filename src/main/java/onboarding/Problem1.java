@@ -12,6 +12,7 @@ class Problem1 {
             this.startPage = startPage;
             this.endPage = endPage;
         }
+
         private static boolean isValid(int startPage, int endPage) {
             //책의 시작면이나 마지막 면을 펼쳤다면
             if (!isValidPage(startPage, endPage)) return false;
@@ -27,11 +28,22 @@ class Problem1 {
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+
+
+        int answer = 0;
+
+
         return answer;
     }
 
+    private static int checkTheWinner(int pobiScore, int crongScore) {
 
+        if (pobiScore > crongScore) return 1; //포비가 이겼다면
+        else if (pobiScore < crongScore) return 2; //크롱이 이겼다면
+        else if (pobiScore == crongScore) return 0; // 무승부라면
+
+        return -1;//예외가 발생했다면
+    }
 
     //페이지가 처음이나 마지막 면이 아닌지 체크
     private static boolean isValidPage(int startPage, int endPage) {
