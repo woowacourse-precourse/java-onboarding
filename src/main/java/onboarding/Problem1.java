@@ -37,7 +37,16 @@ class Problem1 {
      주어진 사람이 펼친 두 페이지 번호의 숫자에 대한 결과를 비교하여 반환
      */
     public static int calSelfScore(List<Integer> person) {
-        return 0;
+        int left_page_num = person.get(0);
+        int right_page_num = person.get(1);
+        if ((right_page_num - left_page_num) != 1) {
+            return -1;
+        }
+
+        int left_page_result = calBigOfMulAndAdd(left_page_num);
+        int right_page_result = calBigOfMulAndAdd(right_page_num);
+        int result = Math.max(left_page_result, right_page_result);
+        return result;
     }
 
 }
