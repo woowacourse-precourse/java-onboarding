@@ -3,10 +3,40 @@ package onboarding;
 import java.util.*;
 
 class People implements Comparable<People>{
+    String name;
+    boolean userFriendStatus = false;
+    ArrayList<String> friendList = new ArrayList<>();
+    int score=0;
+
+    public People(String name){
+        this.name = name;
+    }
+
+    public boolean isZeroScore(){
+        if(this.score==0) return true;
+        return false;
+    }
+
+    public void setUserFriendStatus(boolean userFriendStatus){
+        this.userFriendStatus=userFriendStatus;
+    }
+
+    public boolean getUserFriendStatus(){
+        return this.userFriendStatus;
+    }
+
+    public void addToFriendList(String friendName){
+        friendList.add(friendName);
+    }
+
+    public void addScore(int score){
+        this.score += score;
+    }
 
     @Override
     public int compareTo(People o){
-        return 0;
+        if(o.score==this.score) return this.name.compareTo(o.name);
+        return o.score-this.score;
     }
 }
 
