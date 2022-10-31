@@ -1,14 +1,14 @@
 package onboarding;
 
-import onboarding.problem4.StringReverser;
+import onboarding.problem4.AlphabetReverser;
 
 /**
- * Problem 4 function list
- * - reverse string
+ * Problem 4 기능 목록
+ * - Alphabet 들을 ascii code 를 사용하여 뒤집는다.
  */
 public class Problem4 {
     public static String solution(String word) {
-        StringReverser reverser = new StringReverser(word);
-        return reverser.reverse();
+        AlphabetReverser reverser = new AlphabetReverser();
+        return reverser.reverse(word);
     }
 }
