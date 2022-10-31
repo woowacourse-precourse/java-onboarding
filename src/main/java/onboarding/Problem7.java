@@ -22,9 +22,8 @@ public class Problem7 {
             setFriendList(friendLists, friend2, friend1);
         }
 
-        // 점수 목록을 HashMap으로 생성 (key : username / value : 점수 (0으로 초기화))
-        // 1. friends에 들어있는 유저에 대한 entity 생성
-        // 2. friends에 들어있지 않으며, visitors에만 들어있는 유저에 대한 entity 생성
+        // 각 유저별 점수를 저장하는 HashMap (key : username / value : 점수 (전부 0으로 초기화))
+        HashMap<String, Integer> scoreMap = getScoreMap(friendLists, visitors);
 
         // 각각의 유저에 대한 점수 계산
         // 1. 사용자와 함께 아는 친구의 수 = 10점
@@ -51,6 +50,25 @@ public class Problem7 {
         if (!friendLists.containsKey(friend1)) {
             friendLists.put(friend1, new HashSet<>(List.of(friend2))); // 친구 목록 생성
         }
+    }
+
+    // scoreMap을 초기화하여 반환하는 함수 (key : username / value : 점수 (0으로 초기화))
+    private static HashMap<String, Integer> getScoreMap(HashMap<String, HashSet<String>> friendLists, List<String> visitors) {
+        HashMap<String, Integer> scoreMap = new HashMap<>(); // 각 유저별 점수를 저장할 HashMap
+
+        // friends에 들어있는 유저에 대한 entity 생성
+        for (String user : friendLists.keySet()) {
+            scoreMap.put(user, 0); // 0으로 초기화
+        }
+
+        // friends에 들어있지 않으며, visitors에만 들어있는 유저에 대한 entity 생성
+        for (String visitor : visitors) {
+            if (!friendLists.containsKey(visitor)) { // friends에 들어있지 않았던 경우 (= friendLists에서 같은 이름의 key가 존재하지 않음)
+                scoreMap.put(visitor, 0); // 0으로 초기화
+            }
+        }
+
+        return scoreMap;
     }
 
 }
