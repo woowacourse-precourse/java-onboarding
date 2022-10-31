@@ -48,7 +48,10 @@ public class FriendsRecommendation {
     }
 
     private void findRecommendationFromVisitors(List<String> visitors) {
-        // TODO: visitors 의 알고리즘 추천 점수를 올려준다.
+        visitors.forEach(visitor -> {
+            recommendationsForUser
+                    .put(visitor, recommendationsForUser.getOrDefault(visitor, 0) + 1);
+        });
     }
 
     private void removeExistFriends() {
