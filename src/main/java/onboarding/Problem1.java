@@ -9,7 +9,7 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         try {
-            if (예외 확인 메소드(pobi) || 예외 확인 메소드(crong)) {
+            if ( checkPageValidation(pobi) == false || checkPageValidation(crong) == false ) {
                 throw new PageValidationException();
             }
 
@@ -22,6 +22,8 @@ class Problem1 {
                 return 2;
             } else if (pobiResult == crongResult) {
                 return 0;
+            } else {
+                return -1;
             }
         } catch (PageValidationException e) {
             return -1;
@@ -46,15 +48,9 @@ class Problem1 {
     private static int getResult(List<Integer> inputList) {
         ArrayList<Integer> resultList = new ArrayList<>();
         for (Integer e : inputList) {
-            System.out.println("e is");
-            System.out.println(e);
             int[] splittedArray = splitEachNumbers(e);
             int sumResult = sumNumbers(splittedArray);
-            System.out.println("sumResult is");
-            System.out.println(sumResult);
             int multiplyResult = multiplyNumbers(splittedArray);
-            System.out.println("multiplyResult is");
-            System.out.println(multiplyResult);
             int result = Math.max(sumResult, multiplyResult);
             resultList.add(result);
         }
