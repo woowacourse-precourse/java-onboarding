@@ -7,9 +7,7 @@ import java.util.List;
 public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = pro(forms);
-
-        return answer;
+        return pro(forms);
     }
 
     static List<String> pro(List<List<String>> forms) {
