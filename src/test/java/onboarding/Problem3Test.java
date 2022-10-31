@@ -19,4 +19,12 @@ class Problem3Test {
         Assertions.assertThatThrownBy(() -> Problem3.solution(-1));
         Assertions.assertThatThrownBy(() -> Problem3.solution(10001));
     }
+
+    @Test
+    void 테스트케이스() {
+        Assertions.assertThat(Problem3.solution(333))
+            .isEqualTo(228);
+        Assertions.assertThat(Problem3.solution(2))
+            .isEqualTo(0);
+    }
 }
