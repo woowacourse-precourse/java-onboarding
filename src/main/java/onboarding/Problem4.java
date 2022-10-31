@@ -15,4 +15,11 @@ public class Problem4 {
 
         return false;
     }
+
+    public static boolean isLower(char alphabet){
+        if(alphabet >= 97 && alphabet <= 122)
+            return true;
+
+        return false;
+    }
 }
