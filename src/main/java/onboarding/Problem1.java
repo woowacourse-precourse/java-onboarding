@@ -30,6 +30,10 @@ class Problem1 {
         }
 
         //포비가 이긴다면 1, 크롱이 이긴다면 2, 무승부는 0
+        if(pobiNum>crongNum)answer=1;
+        else if(pobiNum<crongNum)answer=2;
+        else answer=0;
+
         return answer;
     }
 }
