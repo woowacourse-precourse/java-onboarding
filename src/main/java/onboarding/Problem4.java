@@ -9,6 +9,13 @@ public class Problem4 {
 
         return sum;
     }
+    public static char convertChar(char alphabet) {
+        char result;
+        int sum = setSum(alphabet);
+        result = (char)(sum - (int)alphabet);
+
+        return result;
+    }
     public static String solution(String word) {
         String answer = "";
         return answer;
