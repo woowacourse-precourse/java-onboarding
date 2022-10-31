@@ -15,10 +15,10 @@ public class Problem2 {
             }
             chDeque.addLast(ch);
         }
-        return charToString(chDeque);
+        return printDeque(chDeque);
     }
 
-    static String charToString(Deque<Character> chDeque){
+    static String printDeque(Deque<Character> chDeque){
         String result = "";
         while (!chDeque.isEmpty()) {
             result += Character.toString(chDeque.removeFirst());
