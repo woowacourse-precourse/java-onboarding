@@ -12,4 +12,15 @@ public class Problem3 {
         int answer = 0;
         return answer;
     }
+
+    private static int countNumber(String number) {
+        int count = 0;
+        for (int i = 0; i < number.length(); i++) {
+            char iCypher = number.charAt(i); //iCyper : i번째 자릿수 (예 35의 2번째 자릿수는 5이다.)
+            if (iCypher == '3' || iCypher == '6' || iCypher == '9') {
+                count++;
+            }
+        }
+        return count;
+    }
 }
