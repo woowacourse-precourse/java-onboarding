@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.Arrays;
 import java.util.List;
 
 class Problem1 {
@@ -15,6 +16,22 @@ class Problem1 {
         if (leftPage==1 || rightPage==2 || leftPage==399 || rightPage==400) return false;
 
         return true;
+    }
+
+    public static int calScore(List<Integer> input) {
+        int leftPage = input.get(0);
+        int rightPage = input.get(1);
+
+        List<Integer> leftNumList = getNumList(leftPage);
+        int leftSum = getSum(leftNumList);
+        int leftMul = getMul(leftNumList);
+
+        List<Integer> rightNumList = getNumList(rightPage);
+        int rightSum = getSum(rightNumList);
+        int rightMul = getMul(rightNumList);
+
+        List<Integer> nums = Arrays.asList(leftSum, leftMul, rightSum, rightMul);
+        return nums.stream().max(Integer::compare).get();
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
