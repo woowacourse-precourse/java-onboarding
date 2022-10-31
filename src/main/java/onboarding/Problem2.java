@@ -19,6 +19,7 @@ public class Problem2 {
                 if (currentCh == nextCh) {
                     int j = getLastConsecutiveIndex(cryptogram, currentCh, i + 1);
                     duplicatedParts.add(cryptogram.substring(i, j));
+                    i = j - 1;
                 }
             }
             /* 연속되는 구간들을 빈 문자열로 교체한다 */
