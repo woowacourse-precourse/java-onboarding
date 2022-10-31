@@ -47,12 +47,12 @@ public class Problem6 {
         String nickname = crew.get(1);
 
         if(!Pattern.matches("^[.A-Za-z0-9_-]{1,9}+@email.com$", email)) {
-            System.out.printf("%d번째 입력된 %s님의 이메일 주소는 허용되지 않는 형식입니다.", id, nickname);
+            System.out.printf("%d번째 입력된 %s님의 이메일 주소는 허용되지 않는 형식입니다.\n", id, nickname);
             return false;
         }
 
         if (!Pattern.matches("^[가-힣]{1,19}$", nickname)) {
-            System.out.printf("%d번째 입력된 %s님의 닉네임은 허용되지 않는 형식입니다.", id, nickname);
+            System.out.printf("%d번째 입력된 %s님의 닉네임은 허용되지 않는 형식입니다.\n", id, nickname);
             return false;
         }
 
