@@ -41,10 +41,21 @@ public class Problem2 {
             // duplicate value end Index list
             for (int i = 0; i < cnt; i++) {
                 for (int j = startList.get(i) + 1; j < strList.size(); j++) {
-                    if (strList.get(startList.get(i)).equals(strList.get(j))) {
+                    if (strList.get(startList.get(i)).equals(strList.get(j)) && !endList.contains(j)) {
                         endList.add(j);
-                    } else {
+                    }
+                    else {
                         break;
+                    }
+                }
+            }
+
+            // prevent overlapping delete
+            for (int i = 0; i < startList.size(); i++) {
+                for (int j = 0; j < endList.size(); j++) {
+                    if(startList.get(i).equals(endList.get(j))){
+                        startList.remove(i);
+                        endList.remove(j);
                     }
                 }
             }
