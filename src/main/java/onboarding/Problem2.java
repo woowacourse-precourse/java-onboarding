@@ -27,7 +27,6 @@ public class Problem2 {
             return c >= 97 && c <= 122;
         }
 
-
     }
 
     private static boolean isSameCharacter(char now, char after) {
@@ -47,9 +46,8 @@ public class Problem2 {
     }
 
     private static boolean isPriorityQueueCondition(int i) {
-        if (PQ.isEmpty()) {
-            return true;
-        } else if (PQ.peek() == i) {
+        if (PQ.isEmpty()) return true;
+        if (PQ.peek() == i) {
             PQ.poll();
             return false;
         }
@@ -57,7 +55,6 @@ public class Problem2 {
     }
 
     private static String Deduplication(String cryptogram) {
-
         for (int i = 0; i < cryptogram.length() - 1; i++) {
             addValuePriorityQueue(i, cryptogram);
         }
@@ -76,6 +73,7 @@ public class Problem2 {
     static PriorityQueue<Integer> PQ;
 
     public static String solution(String cryptogram) {
+
         Password password;
         try {
             password = new  Password(cryptogram);
@@ -83,13 +81,12 @@ public class Problem2 {
             return "";
         }
 
-
-        boolean checkDuplicate = true;
-        while (checkDuplicate) {
+        cryptogram = password.cryptogram;
+        String temp ="";
+        while (!temp.equals(cryptogram)) {
             PQ = new PriorityQueue<>();
-            String temp = password.cryptogram;
-            cryptogram = Deduplication(password.cryptogram);
-            if (cryptogram.equals(temp)) checkDuplicate = false;
+            temp = cryptogram;
+            cryptogram = Deduplication(cryptogram);
         }
         return cryptogram;
     }
