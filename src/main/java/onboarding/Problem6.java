@@ -78,7 +78,7 @@ public class Problem6 {
     private static void checkAllCrewDuplicated(List<List<String>> forms){
         for (int i = 0; i < forms.size(); i++) {
             int duplicatedCrew = isCrewDuplicated(forms.get(i).get(1), i);
-            if (duplicatedCrew > 0) {
+            if (duplicatedCrew > -1) {
                 crewDuplication[i] = true;
                 crewDuplication[duplicatedCrew] = true;
             }
