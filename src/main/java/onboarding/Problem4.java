@@ -6,8 +6,7 @@ public class Problem4 {
      * 문자열 전환 함수
      */
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        return convert(word);
     }
 
     /*
