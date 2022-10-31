@@ -4,119 +4,118 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Problem7 {
+
+    static final Integer USER_A = 0;
+    static final Integer USER_B = 1;
+    static final Integer MAX_LENGTH = 5;
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        Map<String, List<String>> relationshipMap = new HashMap<>();
-        Map<String, Integer> scoreBoard = new HashMap<>();
+        Map<String, User> userInformations = new HashMap<>();
+        userInformations.put(user, new User(user));
 
-        for (List<String> relationship : friends) {
-            String a = relationship.get(0);
-            String b = relationship.get(1);
+        for (List<String> friendPair : friends) {
+            String nameA = friendPair.get(USER_A);
+            String nameB = friendPair.get(USER_B);
 
-            if (relationshipMap.get(a) == null) {
-                List<String> aFriends = new ArrayList<>();
-                aFriends.add(b);
-                relationshipMap.put(a, aFriends);
-            } else {
-                relationshipMap.get(a).add(b);
+            User userA = userInformations.get(nameA);
+            User userB = userInformations.get(nameB);
+
+            if (userA == null) {
+                userA = new User(nameA);
+                userA.friends.add(nameB);
+                userInformations.put(nameA, userA);
             }
+            userA.friends.add(nameB);
 
-            if (scoreBoard.get(a) == null) {
-                scoreBoard.put(a, 0);
+            if (userB == null) {
+                userB = new User(nameB);
+                userB.friends.add(nameA);
+                userInformations.put(nameB, userB);
             }
-
-            if (relationshipMap.get(b) == null) {
-                List<String> bFriends = new ArrayList<>();
-                bFriends.add(a);
-                relationshipMap.put(b, bFriends);
-            } else {
-                relationshipMap.get(b).add(a);
-            }
-
-            if (scoreBoard.get(b) == null) {
-                scoreBoard.put(b, 0);
-            }
-
+            userB.friends.add(nameA);
         }
 
-        for (String a : visitors) {
+        for (String visitor : visitors) {
 
-            if (scoreBoard.get(a) == null) {
-                scoreBoard.put(a, 0);
+            User visitorInfomation = userInformations.get(visitor);
+
+            if (visitorInfomation == null) {
+                visitorInfomation = new User(visitor);
+                userInformations.put(visitor, visitorInfomation);
             }
 
-            scoreBoard.put(a, scoreBoard.get(a) + 1);
-
-            if (relationshipMap.get(a) == null) {
-                relationshipMap.put(a, new ArrayList<>());
-            }
+            visitorInfomation.score++;
         }
 
-        List<String> pivotFriends = relationshipMap.get(user);
-        relationshipMap.remove(user);
-        scoreBoard.remove(user);
+        List<String> pivotFriends = userInformations.get(user).friends;
+        userInformations.remove(user);
 
-        if (pivotFriends != null) {
-            Set<Map.Entry<String, List<String>>> entries = relationshipMap.entrySet();
+        if (pivotFriends.size() > 0) {
+            Set<Map.Entry<String, User>> entries = userInformations.entrySet();
 
-            for (Map.Entry<String, List<String>> entry : entries) {
-                String key = entry.getKey();
-                List<String> value = entry.getValue();
+            for (Map.Entry<String, User> entry : entries) {
+                String name = entry.getKey();
+                User information = entry.getValue();
 
-                value.retainAll(pivotFriends);
-                scoreBoard.put(key, scoreBoard.get(key) + value.size() * 10);
+                information.friends.retainAll(pivotFriends);
+                userInformations.get(name).score += information.friends.size() * 10;
             }
         }
 
-        List<Result> before = new ArrayList<>();
+        List<User> before = new ArrayList<>();
 
-        for (Map.Entry<String, Integer> score : scoreBoard.entrySet()) {
-            String key = score.getKey();
-            Integer value = score.getValue();
+        for (Map.Entry<String, User> entry : userInformations.entrySet()) {
+            String name = entry.getKey();
+            Integer score = entry.getValue().getScore();
 
-            if (pivotFriends != null) {
-                if (!pivotFriends.contains(key) && scoreBoard.get(key) != 0) {
-                    before.add(new Result(key, value));
+            if (pivotFriends.size() > 0) {
+                if (!pivotFriends.contains(name) && score != 0) {
+                    before.add(entry.getValue());
                 }
             } else {
-                if (scoreBoard.get(key) != 0) {
-                    before.add(new Result(key, value));
+                if (score != 0) {
+                    before.add(entry.getValue());
                 }
             }
-
         }
 
-        for (Result result : before) {
-            System.out.println(result.name + " " + result.score);
-        }
+        before.sort(new ResultComparator());
 
-        before.sort(new Comparator<Result>() {
-            @Override
-            public int compare(Result o1, Result o2) {
-                if (o1.score > o2.score) {
-                    return -1;
-                } else if (o1.score < o2.score) {
-                    return 1;
-                } else if (o1.score == o2.score) {
-                    return (o1.name.compareTo(o2.name));
-                }
-                return 0;
-            }
-        });
-
-        if (before.size() > 5) {
-            return before.subList(0, 4).stream().map(result -> result.name).collect(Collectors.toList());
+        if (before.size() > MAX_LENGTH) {
+            return before.subList(0, MAX_LENGTH - 1).stream().map(result -> result.name).collect(Collectors.toList());
         } else {
             return before.stream().map(result -> result.name).collect(Collectors.toList());
         }
     }
 
-    static class Result {
-        String name;
-        Integer score;
+    static class User {
+        private String name;
+        private List<String> friends;
+        private Integer score;
 
-        public Result(String name, Integer score) {
+
+        public User(String name) {
             this.name = name;
-            this.score = score;
+            this.friends = new ArrayList<>();
+            this.score = 0;
+        }
+
+        public Integer getScore() {
+            return score;
+        }
+    }
+
+    static class ResultComparator implements Comparator<User> {
+        @Override
+        public int compare(User o1, User o2) {
+            if (o1.score > o2.score) {
+                return -1;
+            } else if (o1.score < o2.score) {
+                return 1;
+            } else if (o1.score == o2.score) {
+                return (o1.name.compareTo(o2.name));
+            }
+            return 0;
         }
     }
 }
