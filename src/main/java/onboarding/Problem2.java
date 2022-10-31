@@ -58,10 +58,8 @@ public class Problem2 {
 
     static String process(String word) {
 
-        while (true) {
+        while (!repeat_finish(word)) {
             word = new_word(word);
-
-            if (repeat_finish(word)) break;
 
         }
         return word;
