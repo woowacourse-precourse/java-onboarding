@@ -3,7 +3,7 @@ package onboarding;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
-        answer = changeToString(decrypt(cryptogram));
+        answer = toString(decrypt(cryptogram));
         return answer;
     }
 
@@ -48,7 +48,7 @@ public class Problem2 {
         return stringBuilderCryptogram;
     }
 
-    public static String changeToString(StringBuilder stringBuilderCryptogram) {
+    private static String toString(StringBuilder stringBuilderCryptogram) {
         return stringBuilderCryptogram.toString();
     }
 }
