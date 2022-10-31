@@ -14,59 +14,54 @@ class Problem1 {
 
         int pobiScore = getUserScoreByPages(pobi);
         int crongScore = getUserScoreByPages(crong);
-        String gameResult = getGameResultByScores(pobiScore, crongScore);
+        String result = getGameResultByScores(pobiScore, crongScore);
 
-        Map<String, Integer> answerCollection = new HashMap<>();
-        answerCollection.put("pobi win", 1);
-        answerCollection.put("crong win", 2);
-        answerCollection.put("draw", 0);
+        Map<String, Integer> resultMap = new HashMap<>();
+        resultMap.put("pobi win", 1);
+        resultMap.put("crong win", 2);
+        resultMap.put("draw", 0);
 
-        Answers answers = new Answers(answerCollection);
-        return answers.getAnswerByGameResult(gameResult);
+        GameResult answers = new GameResult(resultMap);
+        return answers.getAnswerByGameResult(result);
     }
 
-    private static boolean isValidLeftPage(List<Integer> pages) {
-        int leftPage = getLeftPage(pages);
-        // 왼쪽 페이지가 문제에서 요구하는 페이지 범위 외의 값이거나 짝수인 경우 유효하지 않은 입력
-        if (leftPage <= 1 || leftPage >= 399 || leftPage % 2 == 0) {
-            return false;
+    static class GameResult {
+        private final Map<String, Integer> gameResult;
+
+        public GameResult(Map<String, Integer> gameResult) {
+            this.gameResult = gameResult;
         }
 
-        return true;
-    }
-
-    private static boolean isValidRightPage(List<Integer> pages) {
-        int leftPage = getLeftPage(pages);
-        int rightPage = getRightPage(pages);
-        // 오른쪽 페이지가 왼쪽 페이지와 연속하지 않은 경우 유효하지 않은 입력 이렇게 검증 시 나머지의 경우는 왼쪽 페이지에서 검증됨
-        int validRightPage = leftPage + 1;
-        if (rightPage != validRightPage) {
-            return false;
+        public int getAnswerByGameResult(String gameResult) {
+            return this.gameResult.get(gameResult);
         }
-
-        return true;
     }
 
     private static boolean isValidPage(List<Integer> pages) {
-        if (!isValidLeftPage(pages) || !isValidRightPage(pages)) {
-            return false;
+        int leftPage = getLeftPage(pages);
+        int rightPage = getRightPage(pages);
+        int validRightPage = leftPage + 1;
+
+        if ((leftPage > 1) && (leftPage < 399)
+                && (leftPage % 2 == 1) && (rightPage == validRightPage)) {
+            return true;
         }
-        return true;
+        return false;
     }
 
-    private static int getLeftPage(List<Integer> pages) {
-        int leftPage = pages.get(0);
-        return leftPage;
-    }
+    private static int getUserScoreByPages(List<Integer> userPages) {
+        int leftPage = getLeftPage(userPages);
+        int rightPage = getRightPage(userPages);
 
-    private static int getRightPage(List<Integer> pages) {
-        int rightPage = pages.get(1);
-        return rightPage;
+        int leftPageScore = getPageScore(leftPage);
+        int rightPageScore = getPageScore(rightPage);
+
+        return Math.max(leftPageScore, rightPageScore);
     }
 
     private static List<Integer> getSplitNums(int page) {
         List<Integer> splitNums = new ArrayList<>();
-        
+
         while (page > 0) {
             int splitNum = page % 10;
             splitNums.add(splitNum);
@@ -77,40 +72,30 @@ class Problem1 {
         return splitNums;
     }
 
-    private static int getNumsSum(List<Integer> splitNums) {
-        int sum = splitNums.stream()
-                .reduce(0, Integer::sum);
+    private static int getLeftPage(List<Integer> pages) {
+        return pages.get(0);
+    }
 
-        return sum;
+    private static int getRightPage(List<Integer> pages) {
+        return pages.get(1);
+    }
+
+    private static int getNumsSum(List<Integer> splitNums) {
+        return splitNums.stream()
+                .reduce(0, Integer::sum);
     }
 
     private static int getNumsMultiplication(List<Integer> splitNums) {
-        int multiplication = splitNums.stream()
+        return splitNums.stream()
                 .reduce(1, (a, b) -> a * b);
-
-        return multiplication;
     }
-
 
     private static int getPageScore(int page) {
         List<Integer> splitNums = getSplitNums(page);
 
         int sum = getNumsSum(splitNums);
         int multiplication = getNumsMultiplication(splitNums);
-        int pageScore = Math.max(sum, multiplication);
-
-        return pageScore;
-    }
-
-    private static int getUserScoreByPages(List<Integer> userPages) {
-        int leftPage = getLeftPage(userPages);
-        int rightPage = getRightPage(userPages);
-
-        int leftPageScore = getPageScore(leftPage);
-        int rightPageScore = getPageScore(rightPage);
-        int userScore = Math.max(leftPageScore, rightPageScore);
-
-        return userScore;
+        return Math.max(sum, multiplication);
     }
 
     private static String getGameResultByScores(int pobiScore, int crongScore) {
@@ -120,20 +105,7 @@ class Problem1 {
         if (crongScore > pobiScore) {
             return "crong win";
         }
-
         return "draw";
-    }
-
-    static class Answers {
-        private final Map<String,Integer> answers;
-
-        public Answers(Map<String, Integer> answers) {
-            this.answers = answers;
-        }
-
-        public int getAnswerByGameResult(String gameResult) {
-            return answers.get(gameResult);
-        }
     }
 
 }
