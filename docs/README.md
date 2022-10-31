@@ -69,7 +69,7 @@
 4. 포인트를 위 1번의 pointType에 따라 value를 더해줘 Map<String, Integer>를 반환하는 메서드 구현(2번에서 중복 제거하지 않은 이유)</br>
    **(key = userId, value = point)**
 5. Map<String, Integer>를 merge 할 때 key값이 존재하면 value를 더해 주는 메서드 구현
-6. Map을 value기준으로 내림차순으로 정렬하고 value가 같은 것들 끼리는 Key기준 오름차순으로 정렬하는 메서드 구현
+6. Map을 value기준으로 내림차순으로 정렬하고 value가 같은 것들 끼리는 Key기준 오름차순으로 정렬하고, size에 따라 해당 크기까지만 반환하는 메서드 구현
 7. Key 기준으로 Map에서 지우고 반환하는 메서드 구현(3번과 함께 사용)
 8. 사용자와 함께 아는 친구의 숫자와 타임라인의 방문한 횟수로 친구 추천 리스트를 반환하는 메서드 구현
 

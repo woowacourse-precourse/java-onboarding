@@ -5,7 +5,20 @@ import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
+        //함께아는 친구 userPointEntry
+        Map<String, Integer> friendsOfFriendsPoint = calculatePoint(getFriendOfFriends(user, friends), PointType.FRIEND_OF_FRIENDS);
+        //직접 아는 친구
+        List<String> friend = getFriends(user, friends);
+        //방문한 친구 userPointEntry중에 직접 아는 친구 삭제
+        Map<String, Integer> visitPoint = removeByKey(calculatePoint(visitors, PointType.VISIT), friend);
+        //총 유저들의 pointEntry
+        Map<String, Integer> userPointEntry = mergeMapSumValue(friendsOfFriendsPoint, visitPoint);
+        //정렬 및 사이즈 제한
+        getEntryDescByValue(userPointEntry, 5).forEach((key, value) -> {
+            answer.add(key);
+        });
+
         return answer;
     }
 
