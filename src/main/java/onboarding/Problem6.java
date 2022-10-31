@@ -47,6 +47,8 @@ public class Problem6 {
                         String appliedFirstEmail = namesAlreadyApplied.get(partialNickname);
                         emails.add(appliedFirstEmail);
                     }
+
+                    namesAlreadyApplied.put(partialNickname, email);
                 }
             }
         }
