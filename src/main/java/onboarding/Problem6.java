@@ -25,7 +25,7 @@ public class Problem6 {
                 }
             }
         }
-
+        answer=answer.stream().distinct().collect(Collectors.toList());
         return answer;
     }
 }
