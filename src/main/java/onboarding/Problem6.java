@@ -45,7 +45,6 @@ public class Problem6 {
         for (String nickName : nickNameList) {
             for(int i = 0; i < nickName.length()-1; i++){
                 String continuousStr = nickName.substring(i, i + 2);
-                System.out.println("continuousStr = " + continuousStr);
                 continuousSubStrList.add(continuousStr);
             }
         }
