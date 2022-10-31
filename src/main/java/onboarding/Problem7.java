@@ -8,6 +8,8 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         initFriends(friends);
 
+        List<String> userFriends = getUserFriends(user);
+
 
         List<String> answer = Collections.emptyList();
         return answer;
@@ -32,6 +34,10 @@ public class Problem7 {
             friendsMap.get(friend2).add(friend1);
         }
 
+    }
+
+    private static List<String> getUserFriends(String user) {
+        return friendsMap.get(user);
     }
 
 }
