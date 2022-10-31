@@ -30,10 +30,10 @@ public class Problem7 {
 
     private static List<String> getFriendOfUser(String user) {
         List<String> friendList = new ArrayList<>();
-        for(int i=0; i<friendData.size(); i++){
-            if(friendData.get(i).contains(user)){
-                int friendIndex = (friendData.get(i).indexOf(user)+1)%2;
-                friendList.add(friendData.get(i).get(friendIndex));
+        for(List<String> relationship : friendData){
+            if(relationship.contains(user)){
+                int friendIndex = (relationship.indexOf(user)+1)%2;
+                friendList.add(relationship.get(friendIndex));
             }
         }
         return friendList;
@@ -42,11 +42,10 @@ public class Problem7 {
     private static void increaseFriendWeightByRelationship(List<String> friend){
         List<String> friendCheckList=new ArrayList<>(friend);
         friendCheckList.add(owner);
-        for(int i=0; i<friendData.size(); i++){
-            List<String> friendRelationshipInFriendData = friendData.get(i);
-            Long numberOfFriendByFriendList = friendRelationshipInFriendData.stream().filter(a->friendCheckList.contains(a)).count();
+        for(List<String> relationship : friendData){
+            Long numberOfFriendByFriendList = relationship.stream().filter(a->friendCheckList.contains(a)).count();
             if(numberOfFriendByFriendList>=1){
-                friendRelationshipInFriendData.stream()
+                relationship.stream()
                         .filter(a->!friendCheckList.contains(a))
                         .filter(a->!oldFriend.contains(a))
                         .forEach(a->increaseWeight(a,10));
@@ -63,11 +62,11 @@ public class Problem7 {
     }
 
     private static void increaseFriendWeightByVisted(List<String> visitors){
-        for(int i=0; i<visitors.size(); i++){
-            if(oldFriend.contains(visitors.get(i))){
+        for(String visitor : visitors){
+            if(oldFriend.contains(visitor)){
                 continue;
             }
-            increaseWeight(visitors.get(i),1);
+            increaseWeight(visitor,1);
         }
     }
 
