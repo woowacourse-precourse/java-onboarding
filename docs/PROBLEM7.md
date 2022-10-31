@@ -24,3 +24,10 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+## 📒 개발 기능 목록
+### 1. HashMap에 유저마다 친구정보 저장
+### 2. 함께 아는 친구 점수 계산
+### 3. 방문한 횟수 점수 계산
+### 4. 상위 5명 추출
+>- 사용자 본인과 이미 친구인 사람은 제외
