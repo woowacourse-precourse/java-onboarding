@@ -14,7 +14,10 @@ public class Problem4 {
 
         // 문자열을 문자 배열로 만들기
         for(char c : word.toCharArray()) {
-            
+            // 소문자인 경우 반대로 변환하여 대문자로 만들기
+            if(c >= 'a' && c <= 'z') {
+                sb.append((char)('z' - c + 'a'));
+            }
         }
 
         answer = sb.toString();
