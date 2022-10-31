@@ -10,7 +10,7 @@ public class Problem6 {
         for(List<String> name : form){
             for(int i=0; i <= name.get(1).length()-2; i++){
                 String matchName = name.get(1).substring(i,i+2);
-                if(map.get(matchName) != null){
+                if(map.containsKey(matchName)){
                     result.add(name.get(0));
                     result.add(map.get(matchName));
                 } else {

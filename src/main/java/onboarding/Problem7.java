@@ -13,7 +13,7 @@ public class Problem7 {
                 if(friend.get(list.get(0)) != null){
                     mutual.put(list.get(1),mutual.getOrDefault(list.get(1),0)+10);
                 }
-                else if(friend.get(list.get(1)) != null){
+                else if(friend.containsKey(list.get(1))){
                     mutual.put(list.get(0),mutual.getOrDefault(list.get(0),0)+10);
                 }
             }
