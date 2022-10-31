@@ -12,7 +12,7 @@ class Problem1 {
     private static final int INPUT_LEN = 2;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if (!isValidInput(pobi) || !isValidInput(crong)) {
+        if (isInvalidInput(pobi) || isInvalidInput(crong)) {
             return EXCEPTION;
         }
 
@@ -43,8 +43,8 @@ class Problem1 {
         return Arrays.stream(String.valueOf(num)
                 .split(""))
             .map(Integer::parseInt)
-            .reduce((n1, n2) -> n1 + n2)
-            .get();
+            .reduce(Integer::sum)
+            .orElse(0);
     }
 
     private static int multiplyEachDigit(int num) {
@@ -52,18 +52,18 @@ class Problem1 {
                 .split(""))
             .map(Integer::parseInt)
             .reduce((n1, n2) -> n1 * n2)
-            .get();
+            .orElse(0);
     }
 
-    private static boolean isValidInput(List<Integer> input) {
+    private static boolean isInvalidInput(List<Integer> input) {
         if (input.size() != INPUT_LEN) {
-            return false;
+            return true;
         }
 
         int leftPageNum = input.get(0);
         int rightPageNum = input.get(1);
 
-        return isOdd(leftPageNum) && !isOdd(rightPageNum) && leftPageNum + 1 == rightPageNum;
+        return !isOdd(leftPageNum) || isOdd(rightPageNum) || leftPageNum + 1 != rightPageNum;
     }
 
     private static boolean isOdd(int num) {
