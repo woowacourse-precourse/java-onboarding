@@ -1,22 +1,19 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 class FriendRecommendation implements Comparable<FriendRecommendation> {
-    String name;
+    String user;
     int score;
 
-    public FriendRecommendation(String name, int score) {
-        this.name = name;
+    public FriendRecommendation(String user, int score) {
+        this.user = user;
         this.score = score;
     }
 
     @Override
     public int compareTo(FriendRecommendation o) {
-        if (this.score == o.score) return this.name.compareTo(o.name);
+        if (this.score == o.score) return this.user.compareTo(o.user);
         return o.score - this.score;
     }
 }
@@ -26,16 +23,17 @@ public class Problem7 {
     static HashMap<String, String> friendsOfUser = new HashMap<>();
     static HashMap<String, Integer> scoreOfUser = new HashMap<>();
 
-    public static String[] getFriends(String user) {
+    public static List<String> getFriends(String user) {
         String friendString = friendsOfUser.get(user);
+        String[] friendArr = friendString.split("/");
 
-        return friendString.split("/");
+        return Arrays.asList(friendArr);
     }
 
     public static void addScoreByRelation() {
-        String[] friendArr = getFriends(mainUser);
+        List<String> friendArr = getFriends(mainUser);
         for (String friend : friendArr) {
-            String[] friendOfFriendArr = getFriends(friend);
+            List<String> friendOfFriendArr = getFriends(friend);
             for (String friendOfFriend : friendOfFriendArr) {
                 scoreOfUser.put(friendOfFriend, scoreOfUser.getOrDefault(friendOfFriend, 0) + 10);
             }
@@ -67,13 +65,12 @@ public class Problem7 {
         for (Map.Entry recommendedFriend : scoreOfUser.entrySet()) {
             String name = (String) recommendedFriend.getKey();
             int score = (int) recommendedFriend.getValue();
-            FriendRecommendation friendRecommendation = new FriendRecommendation(name, score);
 
-            friendRecommendations.add(friendRecommendation);
+            friendRecommendations.add(new FriendRecommendation(name, score));
         }
 
         for (FriendRecommendation fr : friendRecommendations) {
-            System.out.println(fr.name + " " + fr.score);
+            System.out.println(fr.user + " " + fr.score);
         }
 
         return List.of("Test");
