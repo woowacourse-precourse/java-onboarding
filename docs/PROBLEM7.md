@@ -24,3 +24,13 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+<br>
+
+## 📚 구현 기능 목록
+### 기능
+- user의 친구 목록과 관계가 있는 경우 10점 추가
+- visitors 배열에 존재한다면 1점 추가
+
+### 고려 사항
+- 이미 친구라면 추천 목록에서 제외
