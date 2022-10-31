@@ -2,7 +2,6 @@ package onboarding;
 
 import onboarding.problem7.FriendRecommender;
 
-import java.util.Collections;
 import java.util.List;
 
 /**
