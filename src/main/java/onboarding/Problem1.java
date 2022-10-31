@@ -5,7 +5,6 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
 
         // 에러 체크
         if (isError(pobi) || isError(crong)) {
@@ -16,6 +15,14 @@ class Problem1 {
         Integer pobiNum = getLargestNum(pobi);
         Integer crongNum = getLargestNum(crong);
 
+        // 포비와 크롱의 숫자 비교 후 결과 반환
+        int answer = returnAnswer(pobiNum, crongNum);
+
+        return answer;
+    }
+
+    private static int returnAnswer(Integer pobiNum, Integer crongNum) {
+
         if (pobiNum > crongNum) {
             return 1;
         } else if (pobiNum == crongNum) {
@@ -23,8 +30,9 @@ class Problem1 {
         } else if (pobiNum < crongNum) {
             return 2;
         }
-
-        return answer;
+        
+        // 위의 세가지 경우가 아니라면 뭔가가 잘못된 경우
+        return -1;
     }
 
     private static Integer getLargestNum(List<Integer> pages) {
