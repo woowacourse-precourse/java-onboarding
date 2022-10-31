@@ -6,8 +6,8 @@ import java.util.stream.Collectors;
 
 public class Problem6 {
     private static final String ALLOWED_DOMAIN = "email.com";
-    private static final Map<String, List<String>> studentInfo = new HashMap<>();
-    private static final Set<String> duplicateStudents = new HashSet<>();
+    private static final Map<String, List<String>> STUDENTS_INFO = new HashMap<>();
+    private static final Set<String> DUPLICATE_STUDENTS = new HashSet<>();
 
     public static List<String> solution(List<List<String>> forms) {
         for (List<String> info : forms) {
@@ -19,7 +19,7 @@ public class Problem6 {
             addAllSubNickName(email, nickName);
         }
         findDuplicateNickNameUserEmail();
-        return duplicateStudents.stream()
+        return DUPLICATE_STUDENTS.stream()
                 .sorted()
                 .collect(Collectors.toList());
     }
@@ -31,20 +31,20 @@ public class Problem6 {
     private static void addAllSubNickName(String email, String nickName) {
         for (int i = 0; i < nickName.length() - 1; i++) {
             String subNickName = nickName.substring(i, i + 2);
-            if (studentInfo.containsKey(subNickName)) {
-                studentInfo.get(subNickName).add(email);
+            if (STUDENTS_INFO.containsKey(subNickName)) {
+                STUDENTS_INFO.get(subNickName).add(email);
                 continue;
             }
             List<String> initList = new ArrayList<>();
             initList.add(email);
-            studentInfo.put(subNickName, initList);
+            STUDENTS_INFO.put(subNickName, initList);
         }
     }
 
     private static void findDuplicateNickNameUserEmail() {
-        for(List<String> emails : studentInfo.values()) {
+        for(List<String> emails : STUDENTS_INFO.values()) {
             if (emails.size() > 1) {
-                duplicateStudents.addAll(emails);
+                DUPLICATE_STUDENTS.addAll(emails);
             }
         }
     }

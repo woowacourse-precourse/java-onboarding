@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Problem3 {
 
-    private static final List<Integer> clapList = List.of(3, 6, 9);
+    private static final List<Integer> CLAP_LIST = List.of(3, 6, 9);
 
     public static int solution(int number) {
         return findTotalClapsFromNum(number);
@@ -26,7 +26,7 @@ public class Problem3 {
     }
 
     private static boolean canClap(int n) {
-        for (int clap : clapList) {
+        for (int clap : CLAP_LIST) {
             if (n == clap) {
                 return true;
             }

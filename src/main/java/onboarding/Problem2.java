@@ -5,7 +5,7 @@ import java.util.Stack;
 
 
 public class Problem2 {
-    private static final Stack<Character> st = new Stack<>();
+    private static final Stack<Character> STACK = new Stack<>();
 
     public static String solution(String cryptogram) {
         // 1. 중복 문자열을 제거한다.
@@ -17,24 +17,24 @@ public class Problem2 {
 
     private static void removeDuplicateString(String str) {
         for (Character c : str.toCharArray()) {
-            if(!st.isEmpty()) {
-                Character last = st.peek();
+            if(!STACK.isEmpty()) {
+                Character last = STACK.peek();
                 int duplicate = 0;
                 if (!c.equals(last)) {
                     removeDuplicateByStack(last, duplicate);
                 }
             }
-            st.add(c);
+            STACK.add(c);
         }
 
-        Character last = st.peek();
+        Character last = STACK.peek();
         int duplicate = 0;
         removeDuplicateByStack(last, duplicate);
     }
 
     private static void removeDuplicateByStack(Character last, int cnt) {
-        for (int i = st.size(); i > 0; i--) {
-            if (last != st.elementAt(i-1)) {
+        for (int i = STACK.size(); i > 0; i--) {
+            if (last != STACK.elementAt(i-1)) {
                 break;
             }
             cnt += 1;
@@ -42,15 +42,15 @@ public class Problem2 {
 
         if (cnt > 1) {
             for (int i = 0; i < cnt; i++) {
-                st.pop();
+                STACK.pop();
             }
         }
     }
 
     private static String getResultFromStack() {
         StringBuilder stringBuilder = new StringBuilder();
-        while (!st.isEmpty()) {
-            stringBuilder.append(st.pop());
+        while (!STACK.isEmpty()) {
+            stringBuilder.append(STACK.pop());
         }
         return stringBuilder.length() == 0 ? "" : stringBuilder.reverse().toString();
     }
