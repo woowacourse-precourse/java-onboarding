@@ -28,7 +28,7 @@ public class Problem7 {
             else if(userFriends.contains(item.get(1)) && !item.get(0).equals(user))
                 list.add(item.get(0));
         }
-        return new ArrayList<>();
+        return calculateScore(list, 10);
     }
 
     private static List<Person> findRecommendationFromVisitors(List<String> visitors, List<String> userFriends){
@@ -37,7 +37,16 @@ public class Problem7 {
             if(!userFriends.contains(item))
                 list.add(item);
         }
-        return new ArrayList<>();
+        return calculateScore(list, 1);
+    }
+
+    private static List<Person> calculateScore(List<String> persons, int score){
+        List<Person> list = new ArrayList<>();
+        for(String item : persons.stream().distinct().collect(Collectors.toList())){
+            int frequency = Collections.frequency(persons, item);
+            list.add(new Person(item, frequency* score));
+        }
+        return list;
     }
 
     static class Person{
