@@ -2,9 +2,7 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -12,7 +10,11 @@ public class Problem6 {
 
         findContinuousTwoChar(forms, answerCandidate);
 
-        return new ArrayList<>(answerCandidate);
+        List<String> answer = new ArrayList<>(answerCandidate);
+
+        answer.sort(Comparator.naturalOrder());
+
+        return answer;
     }
 
     private static void findContinuousTwoChar(List<List<String>> forms, List<String> answerCandidate) {

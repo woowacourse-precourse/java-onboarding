@@ -29,6 +29,10 @@
    2. 기준이 되는 배열의 닉네임에서 `두 글자`를 떼어 낸다.
    3. 기준 배열의 다음 배열의 닉네임에 ii 의 `두 글자`가 포함되어 있는지 확인한다.
    4. 포함되어 있다면 정답 후보군에 넣는다.
+2. 정답 후보군의 이메일은 오름차순으로 정렬한다.
+   1. how?
+   2. Comparator.naturalOrder() 함수를 이용한다.
 
 # Commit
 - [x] feat: add find continuous two char
+- [x] feat: add sort answer
