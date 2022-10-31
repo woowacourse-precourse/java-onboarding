@@ -66,4 +66,13 @@ public class Problem6 {
             }
         }
     }
+
+    // 정답을 만들기위한 메소드
+    private static void createAnswer(List<List<String>> forms, List<String> answer) {
+        for (int i = 0; i < isContainWord.length; i++) {
+            if (isContainWord[i]) {
+                answer.add(forms.get(i).get(0));
+            }
+        }
+    }
 }
