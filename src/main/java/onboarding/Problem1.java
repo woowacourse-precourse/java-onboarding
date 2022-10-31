@@ -18,6 +18,14 @@ class Problem1 {
         }
     }
 
+    public static boolean isOddNumber(int page){
+        return page % 2==1;
+    }
+
+    public static boolean isEvenNumber(int page){
+        return page % 2 == 0;
+    }
+
     public static int sumDigit(int page) {
         int sum = 0;
         while (page > 0) {
