@@ -21,3 +21,10 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능 목록
+
+1. 주어진 문자열을 2자리씩 분리하여 리스트 형식으로 반환해 주는 기능.(ex: apple-> [ap,pp,pl,le])
+2. form과 비교할 문자열이 주어지면 비교하여 중복되는 문자열이 있는 경우 hashSet에 저장하는 기능.
+3. forms와 비교할 문자열이 주어지면 반복문을 통해 add 메서드를 실행하는 기능.
+4. 조건에 맞는 결과가 주어지면 오름차순으로 정렬하여 주는 기능.
