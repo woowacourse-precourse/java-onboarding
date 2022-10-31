@@ -7,7 +7,7 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
 
-        if (exceptionCheck(pobi,crong)){
+        if ((exceptionCheck(pobi,crong)){
             return -1;
         }
 
