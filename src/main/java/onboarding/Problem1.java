@@ -18,10 +18,8 @@ class Problem1 {
 		if (isException(pobi) || isException(crong)) {
 			return -1;
 		}
-		int pobiMaxNum = findMaxNum(pobi);
-		int crongMaxNum = findMaxNum(crong);
 
-		return resultNum(pobiMaxNum, crongMaxNum);
+		return resultNum(findMaxNum(pobi), findMaxNum(crong));
 	}
 
 	private static boolean isException(List<Integer> pageList) {
@@ -53,22 +51,38 @@ class Problem1 {
 		int maxValue = Integer.MIN_VALUE;
 		for (Integer page : pageList) {
 			if (page < 10) {
-				maxValue = Math.max(maxValue, page);
-			} else if (page < 100) {
-				int units = page % 10;
-				int tens = page / 10;
-
-				int bigNum = Math.max(units + tens, units * tens);
-				maxValue = Math.max(maxValue, bigNum);
-			} else {
-				int units = page % 10;
-				int tens = (page / 10) % 10;
-				int hundreds = page / 100;
-
-				int bigNum = Math.max(units + tens + hundreds, units * tens * hundreds);
-				maxValue = Math.max(maxValue, bigNum);
+				maxValue = getUnitsMaxValue(maxValue, page);
+				continue;
+			}
+			if (page >= 10 && page < 100) {
+				maxValue = getTensMaxValue(maxValue, page);
+				continue;
+			}
+			if (page >= 100) {
+				maxValue = getHundredsMaxValue(maxValue, page);
 			}
 		}
 		return maxValue;
+	}
+
+	private static int getHundredsMaxValue(int maxValue, Integer page) {
+		int units = page % 10;
+		int tens = (page / 10) % 10;
+		int hundreds = page / 100;
+
+		int bigNum = Math.max(units + tens + hundreds, units * tens * hundreds);
+		return Math.max(maxValue, bigNum);
+	}
+
+	private static int getTensMaxValue(int maxValue, Integer page) {
+		int units = page % 10;
+		int tens = page / 10;
+
+		int bigNum = Math.max(units + tens, units * tens);
+		return Math.max(maxValue, bigNum);
+	}
+
+	private static int getUnitsMaxValue(int maxValue, Integer page) {
+		return Math.max(maxValue, page);
 	}
 }
