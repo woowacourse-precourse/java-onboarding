@@ -55,13 +55,13 @@ public class Problem4 {
         String alphabet = "abcdefghijklmnopqrstuvwxyz";
         String[] oneLetterWords = getOneLetterWords(alphabet);
         int lengthOneLetterWords = oneLetterWords.length;
-        Map<String, String> table = new HashMap<>();
+        Map<String, String> alphabetTable = new HashMap<>();
 
         for (int i = 0; i < lengthOneLetterWords; i++) {
-            table.put(oneLetterWords[i], oneLetterWords[lengthOneLetterWords - (i + 1)]);
+            alphabetTable.put(oneLetterWords[i], oneLetterWords[lengthOneLetterWords - (i + 1)]);
         }
 
-        return table;
+        return alphabetTable;
     }
 
     /**
