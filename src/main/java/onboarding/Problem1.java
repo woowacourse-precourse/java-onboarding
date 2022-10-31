@@ -4,9 +4,15 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        if(!(isInvalidData(pobi) && isInvalidData(crong))){
+            return -1;
+        }
+        int pobiScore = biggestScoreByPageNum(pobi.get(0), pobi.get(1));
+        int crongScore = biggestScoreByPageNum(crong.get(0), crong.get(1));
+
+        return winner(pobiScore, crongScore);
     }
+
     public static int winner(int pobiScore, int crongScore){
         if(pobiScore > crongScore){
             return 1;
