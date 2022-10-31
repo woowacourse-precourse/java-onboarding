@@ -1,11 +1,17 @@
 package onboarding;
 
+import java.util.Arrays;
+import java.util.List;
+
 class Num {
 
   private int num;
   private static final int MINLIMIT = 1;
   private static final int MAXLIMIT = 10000;
-
+  private static final List<Character> num369 = Arrays.asList('3', '6', '9');
+  private static final String THREE = "3";
+  private static final String SIX = "6";
+  private static final String NINE = "9";
   Num(int num) {
     rangeValidityCheck(num);
     this.num = num;
@@ -26,9 +32,9 @@ class Num {
   }
 
   private int contain369(int index) {
-    String curNum = String.valueOf(index);
+    String curNum = index + "";
     int tmp = 0;
-    if (curNum.contains("3") || curNum.contains("6") || curNum.contains("9")) {
+    if (curNum.contains(THREE) || curNum.contains(SIX) || curNum.contains(NINE)) {
       tmp += numOf369InString(curNum);
     }
     return tmp;
@@ -37,7 +43,7 @@ class Num {
   private int numOf369InString(String curNum) {
     int cnt = 0;
     for (int j = 0; j < curNum.length(); j++) {
-      if (curNum.charAt(j) == '3' || curNum.charAt(j) == '6' || curNum.charAt(j) == '9') {
+      if (num369.contains(curNum.charAt(j))) {
         cnt++;
       }
     }
