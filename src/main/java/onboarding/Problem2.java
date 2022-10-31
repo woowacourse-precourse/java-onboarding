@@ -37,19 +37,12 @@ public class Problem2 {
 
                 if (cryptogram.charAt(num) == cryptogram.charAt(num + 1)) {
 
-                    if (num == lengthCrypto - 2) {
-                        resultRemoveOverlap = cryptogram.substring(0, num);
-                        cryptogram = resultRemoveOverlap;
-                        checkOverLapActive += 1;
+                    resultRemoveOverlap = cryptogram.substring(0, num) + cryptogram.substring(num + 2, lengthCrypto);
+                    cryptogram = resultRemoveOverlap;
+                    checkOverLapActive +=1;
 
-                        break;
-                    } else if (num != lengthCrypto - 2) {
-                        resultRemoveOverlap = cryptogram.substring(0, num) + cryptogram.substring(num + 2, lengthCrypto);
-                        cryptogram = resultRemoveOverlap;
-                        checkOverLapActive +=1;
+                    break;
 
-                        break;
-                    }
                 }
                 num += 1;
             }
