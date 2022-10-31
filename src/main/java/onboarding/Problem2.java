@@ -3,6 +3,19 @@ package onboarding;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
+        String originalStr = cryptogram;
+        String changeStr = "";
+        
+        while(true) {
+        	changeStr = removeOverlap(originalStr);
+        	
+        	if(originalStr.equals(changeStr) || changeStr.isEmpty()) {
+        		break;
+        	}
+        	originalStr = changeStr;
+        }
+        answer = changeStr;
+        
         return answer;
     }
     
