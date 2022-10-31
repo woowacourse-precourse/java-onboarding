@@ -7,6 +7,49 @@ import java.util.stream.Stream;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+
+        List<String> allUserList = getUsers(friends);
+        System.out.println(allUserList);
+        List<String> userFriendList = getFriends(user, friends);
+        Stream<String> notUserFriendStream = allUserList.stream().filter(id -> !userFriendList.contains(id) && !id.equals(user));
+        //notUserFriendStream.forEach(item -> System.out.println(item));
+
+        List<List<String>> userScore = new ArrayList<>();
+
+        for (String id : notUserFriendStream.collect(Collectors.toList())){
+            int score = getScore(user, id, friends, visitors);
+            List<String> newElement = List.of(id, String.valueOf(score));
+            userScore.add(newElement);
+            System.out.println(userScore);
+        }
+
+        Comparator<List<String>> compareFriends = new Comparator<List<String>>() {
+            @Override
+            public int compare(List<String> o1, List<String> o2) {
+                int score1 = Integer.parseInt(o1.get(1));
+                int score2 = Integer.parseInt(o2.get(1));
+                int result = 1;
+
+                if (score1 < score2) {
+                    result = -1;
+                } else if (score1 == score2) {
+                    result = o2.get(0).compareTo(o1.get(0));
+                }
+
+                return result;
+            }
+        };
+
+        Collections.sort(userScore, compareFriends.reversed());
+        System.out.println(userScore);
+        if (userScore.size() >= 5){
+            userScore = userScore.subList(0, 5);
+        }
+
+        answer = userScore.stream()
+                .map(entry -> entry.get(0))
+                .collect(Collectors.toList());
+
         return answer;
     }
 
