@@ -7,11 +7,10 @@ import org.junit.jupiter.api.Test;
 public class FriendsTest {
 
 	@Test
-	void add_User() {
+	void add_UserID() {
 		Friends friends = new Friends();
 		friends.add(new UserID("abb"));
-		assertThat(friends.contains(new UserID("abb"))).isTrue();
-
+		assertThat(friends.isFriend(new UserID("abb"))).isTrue();
 	}
 
 }

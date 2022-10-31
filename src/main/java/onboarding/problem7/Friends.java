@@ -16,7 +16,7 @@ public class Friends {
 		friendsList.add(userID);
 	}
 
-	public boolean contains(UserID userID) {
+	public boolean isFriend(UserID userID) {
 		return friendsList.contains(userID);
 	}
 
@@ -33,10 +33,5 @@ public class Friends {
 	@Override
 	public int hashCode() {
 		return Objects.hash(friendsList);
-	}
-
-	public boolean isSecondFriend(User otherUser) {
-		return friendsList.stream()
-			.anyMatch(user -> !otherUser.isSameID(user) && otherUser.isFriends(user));
 	}
 }
