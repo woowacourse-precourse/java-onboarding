@@ -3,6 +3,13 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
+    private static Map<String, Integer> sortByValue(Map<String, Integer> unSortedMap)
+    {
+        LinkedHashMap<String, Integer> reverseSortedMap = new LinkedHashMap<>();
+        unSortedMap.entrySet().stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .forEachOrdered(x -> reverseSortedMap.put(x.getKey(), x.getValue()));
+        return reverseSortedMap;
+    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Map<String, List<String>> friendsMap = new HashMap<String, List<String>>();
         Map<String, Integer> scoreMap = new HashMap<String, Integer>();
@@ -34,8 +41,7 @@ public class Problem7 {
                     scoreMap.put(visitor, scoreMap.get(visitor) + 1);
             }
         }
-
-
+        scoreMap=sortByValue(scoreMap);
         System.out.println(scoreMap);
         List<String> answer = Collections.emptyList();
         return answer;
