@@ -1,8 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -39,7 +37,27 @@ public class Problem7 {
         }
         return recommendationFriend;
     }
-//    public static List<String> getRecommendedFriend() {}
+    public static List<List<String>> getRecommendedFriend(List<List<String>> recommendationFriend, List<String> alreadyFriend) {
+        Set<String> nameSet = new HashSet<>();
+        for (int i = 0; i < recommendationFriend.size(); i++) {
+            nameSet.add(recommendationFriend.get(i).get(0));
+        }
+        nameSet.removeAll(Set.copyOf(alreadyFriend));
+
+        List<String> nameList = new ArrayList<>(nameSet);
+        List<List<String>> result = new ArrayList<>();
+
+        for (int i = 0; i < nameList.size(); i++) {
+            Integer score = 0;
+            for (int j = 0; j < recommendationFriend.size(); j++) {
+                if (nameList.get(i).equals(recommendationFriend.get(j).get(0))) {
+                    score += Integer.parseInt(recommendationFriend.get(j).get(1));
+                }
+            }
+            result.add(List.of(nameList.get(i), score.toString()));
+        }
+        return result;
+    }
 //    public static void sortByScore() {}
 
 }
