@@ -29,7 +29,8 @@ import java.util.*;
 // 2-2. 각 user들의 친구를 확인 후 user의 친구와 비교
 // 2-3. 비교 후 친구가 같다면, 해당 user 점수에 10점 추가
 // 3. visitors에 있는 user마다 1점 추가
-//
+// 4. 점수가 높은 순대로 정렬하고 점수가 같다면 이름순으로 정렬한다.
+// 5. 정렬한 결과를 answer에 넣고 반환
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -55,13 +56,10 @@ public class Problem7 {
         for (String visitor : visitors) {
             users.add(visitor);
         }
-        System.out.println(users);
 
         for (String keyUser : users) {
-            System.out.println(keyUser);
             usersScoreMap.put(keyUser,0);
         }
-
 
         for (List friend : friends) {
             for(String userFriend : userFriendList){
@@ -78,8 +76,32 @@ public class Problem7 {
             usersScoreMap.put(visitor, usersScoreMap.get(visitor) + 1);
         }
 
+        usersScoreMap.remove(user);
+        for (String userFriend : userFriendList){
+            usersScoreMap.remove(userFriend);
+        }
+
+        List<Map.Entry<String, Integer>> valueSortUserScoreMap = new LinkedList<>(usersScoreMap.entrySet());
+
+        Collections.sort(valueSortUserScoreMap, new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                if (o1.getValue() > o2.getValue()) {
+                    return -1;
+                }
+                else if (o1.getValue() < o2.getValue()) {
+                    return 1;
+                }
+                return o1.getKey().compareTo(o2.getKey());
+            }
+        });
+
         System.out.println(usersScoreMap);
-        System.out.println(userFriendList);
+        System.out.println(valueSortUserScoreMap);
+
+        for (Map.Entry<String, Integer> valueSortUserScore : valueSortUserScoreMap) {
+            answer.add(valueSortUserScore.getKey());
+        }
 
         return answer;
     }
