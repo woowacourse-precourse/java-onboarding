@@ -22,7 +22,7 @@
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
 
-### 구현 기능 목록
+## ✅ 구현 기능 목록
 1. 신청폼 리스트(forms)를 List<Form>로 변환하는 기능
     - Form은 한 신청폼의 정보(닉네임, 이메일)를 저장하는 VO 객체이다.
     - Form 객체에서 2번 기능을 제공한다.

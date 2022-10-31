@@ -20,7 +20,7 @@
 | --- | --- |
 | "I love you" | "R olev blf" |
 
-### 구현 기능 목록
+## ✅ 구현 기능 목록
 1. 주어진 문자가 대문자인지 소문자인지 검사하는 기능
 	- boolean isLowerCase(char ch)
 2. 주어진 문자를 변환하는 기능
