@@ -24,8 +24,8 @@ import java.util.List;
  * - pobi와 crong의 길이는 2이다.
  * - pobi와 crong에는 [왼쪽 페이지 번호, 오른쪽 페이지 번호]가 순서대로 들어있다.
  *
- * @author scyllacore
- * @version 1.1 2022/10/31
+ * @author      scyllacore
+ * @version     1.1 2022/10/31
  */
 
 class Problem1 {
