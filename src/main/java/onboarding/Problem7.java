@@ -88,6 +88,7 @@ public class Problem7 {
         boolean isFriend(String a, String b) {
             return getPerson(a).friends.contains(getPerson(b));
         }
+
         List<Person> getRecommendedFriendsList() {
             List<Person> list = new ArrayList<>();
             for(String name : personMap.keySet()) {
@@ -98,6 +99,9 @@ public class Problem7 {
             }
             return list;
         }
+    }
+    void sortByName(List<Person> list) {
+        Collections.sort(list, (a, b) -> a.name.compareTo(b.name));
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
