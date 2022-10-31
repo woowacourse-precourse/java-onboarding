@@ -10,7 +10,7 @@ public class Problem7 {
         final int visitors_count = 1;
 
         try {
-            ExceptionProblem7.validateUser(user);
+            ExceptionProblem7.validateId(user);
             ExceptionProblem7.validateFriends(friends);
         } catch (IllegalArgumentException e) {
             return Collections.emptyList();
@@ -88,7 +88,7 @@ public class Problem7 {
 }
 
 class ExceptionProblem7 {
-    public static void validateUser(String user) {
+    public static void validateId(String user) {
         enterId(user);
         haveSpace(user);
         validateUserLength(user);
@@ -101,7 +101,7 @@ class ExceptionProblem7 {
 
         for (List<String> friend : friends) {
             for (String id : friend) {
-                validateUser(id);
+                validateId(id);
             }
         }
     }
