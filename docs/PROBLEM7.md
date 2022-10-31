@@ -24,3 +24,15 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+
+### 기능 목록
+- 모든 사용자의 아이디 & 점수 초기화 기능
+  - 점수 0점으로 초기화
+- friends에서 user와 이미 친구인 사람들 목록 반환 기능
+- user 친구의 친구인 사람 찾아서 10점씩 점수 부여 기능
+- visitors에 있는 사람들 1점씩 점수 부여 기능
+- user와 user 친구, 점수가 0점인 사람 제거 기능
+- 추천친구 목록 정렬 기능
+  - 점수 내림차순, 점수 같을 시 이름 오름차순
+- 추천친구 목록에서 최대 5명 반환 기능
