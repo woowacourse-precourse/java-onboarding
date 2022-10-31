@@ -12,6 +12,7 @@ import java.util.List;
 //4. 방문자에서 사용자와 친구를 제거하는 함수
 //5. 방문한 횟수 세어서 점수 주는 함수
 //6. 점수 순으로 정렬하고 점수 같으면 문자 순으로 정렬하는 함수
+//7. 기능들을 활용해서 문제를 푸는 함수
 
 public class Problem7 {
 
@@ -104,6 +105,29 @@ public class Problem7 {
             }
         }
         return friendPoint;
+    }
+
+    //기능 6
+    public static List<String> sortList(HashMap<String, Integer> pointList){
+
+        List<String> result=new ArrayList<String>(pointList.keySet());
+
+        result.sort((o1, o2)->pointList.get(o2).compareTo(pointList.get(o1)));
+
+        for(int i=0;i<result.size()-1;i++) {
+
+            String frontName=result.get(i);
+            String rearName=result.get(i+1);
+
+            if(pointList.get(frontName)==pointList.get(rearName)) {
+                if(rearName.compareTo(frontName)<0) {
+                    Collections.swap(result, i, i+1);
+                }
+            }
+        }
+
+        return result;
+
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
