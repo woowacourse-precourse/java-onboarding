@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Problem6 {
 
@@ -10,16 +11,14 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
 
-        for (List<String> form : forms) {
+        forms.forEach(form -> {
             String email = form.get(0);
             String nickname = form.get(1);
-
             searchByForm(nickname, email);
-        }
+        });
 
-        for (Set<String> value : overlap.values()) {
-            addToAnswer(value, answer);
-        }
+        overlap.values()
+                .forEach(value -> addToAnswer(value, answer));
 
         return answer.stream()
                 .distinct()
@@ -31,9 +30,7 @@ public class Problem6 {
         if (value.size() < 2) {
             return;
         }
-        for (String email : value) {
-            answer.add(email);
-        }
+        value.forEach(answer::add);
     }
 
     private static void searchByForm(String nickname, String email) {
@@ -41,9 +38,8 @@ public class Problem6 {
             return;
         }
 
-        for (int size = nickname.length(); size > 1; size--) {
-            searchContinuousStringBySize(nickname, size, email);
-        }
+        IntStream.rangeClosed(2, nickname.length())
+                .forEach(size -> searchContinuousStringBySize(nickname, size, email));
     }
 
     private static void searchContinuousStringBySize(String nickname, int size, String email) {
