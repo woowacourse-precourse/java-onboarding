@@ -5,17 +5,17 @@ public class Problem4 {
     //대문자 변경
     private static char changeUpper(char upper) {
         int iUpper = (int) upper;
-        int iResult = 0;
-        iResult = 65 + (90 - iUpper);
-        return (char) iResult;
+        int changedIUpper = 0;
+        changedIUpper = (int)'A' + ((int)'Z' - iUpper);
+        return (char) changedIUpper;
     }
 
     //소문자 변경
     private static char changeLower(char lower) {
         int iLower = (int) lower;
-        int iResult = 0;
-        iResult = 97 + (122 - iLower);
-        return (char) iResult;
+        int changedILower = 0;
+        changedILower = (int)'a' + ((int)'z' - iLower);
+        return (char) changedILower;
     }
 
 
