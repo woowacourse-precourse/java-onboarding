@@ -24,3 +24,9 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능 목록
+1. 사람과 개인의 점수를 mapping 시킴
+2. 아는 친구에 따른 점수 구하는 함수 구현
+3. 방문자에 따른 점수 구하는 함수 구현
+4. 최종 점수 비교 후 최대 5명 구하는 함수 구현
