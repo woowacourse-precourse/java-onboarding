@@ -58,10 +58,10 @@ public class Problem6 {
     private static class EmailComparator implements Comparator<String> {
         @Override
         public int compare(String email1, String email2) {
-            email1 = email1.substring(0, email1.length() - 10);
-            email2 = email2.substring(0, email2.length() - 10);
+            String email1WithoutDomain = email1.substring(0, email1.length() - 10);
+            String email2WithoutDomain = email2.substring(0, email2.length() - 10);
 
-            return email1.compareTo(email2);
+            return email1WithoutDomain.compareTo(email2WithoutDomain);
         }
     }
 }
