@@ -14,24 +14,47 @@ public class Problem2 {
         return false;
     }
 
-    public static boolean isLowerCase(String cryptogram){
+    public static boolean isLowerCase(String cryptogram) {
         String originCryptogram = cryptogram;
         String transCryptogram = cryptogram.toLowerCase();
 
-        if(originCryptogram.equals(transCryptogram))
+        if (originCryptogram.equals(transCryptogram))
             return true;
 
         return false;
     }
 
-    public static boolean isException(String cryptogram){
-        if(isInRange(cryptogram) && isLowerCase(cryptogram))
+    public static boolean isException(String cryptogram) {
+        if (isInRange(cryptogram) && isLowerCase(cryptogram))
             return true;
         return false;
     }
 
-    public static String deleteDuplicate(String cryptogram, Integer startIdx, Integer endIdx){
-        String Duplicate = cryptogram.substring(startIdx, endIdx+1);
+    public static String deleteDuplicate(String cryptogram, Integer startIdx, Integer endIdx) {
+        String Duplicate = cryptogram.substring(startIdx, endIdx + 1);
         return cryptogram.replaceAll(Duplicate, "");
+    }
+
+    public static String findDuplicate(String cryptogram) {
+        int startIdx = 0;
+        int endIdx = 0;
+        boolean end = false;
+
+        while(!end){
+            for (int i = 0; i < cryptogram.length()-1; i++) {
+                if(cryptogram.charAt(i) == cryptogram.charAt(i+1)) {
+                    startIdx=i;
+                    for (endIdx = startIdx+1; endIdx < cryptogram.length()-1; endIdx++) {
+                        if(cryptogram.charAt(startIdx) == cryptogram.charAt(endIdx))
+                            continue;
+                        break;
+                    }
+                    cryptogram = deleteDuplicate(cryptogram, startIdx, endIdx-1);
+                    i=0;
+                }
+            }
+            end = true;
+        }
+        return cryptogram;
     }
 }

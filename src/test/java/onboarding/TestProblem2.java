@@ -44,8 +44,13 @@ public class TestProblem2 {
     @Test
     void TsetdeleteDuplicate(){
         assertThat(Problem2.deleteDuplicate("abcdee", 4, 5)).isEqualTo("abcd");
-        assertThat(Problem2.deleteDuplicate("aacdef", 0, 1)).isEqualTo("cdef");
-        assertThat(Problem2.deleteDuplicate("aaaef", 0, 2)).isEqualTo("ef");
 
+    }
+
+    @Test
+    void TestfindDuplicate(){
+        assertThat(Problem2.findDuplicate("abcdee")).isEqualTo("abcd");
+        assertThat(Problem2.findDuplicate("aacdef")).isEqualTo("cdef");
+        assertThat(Problem2.findDuplicate("aaaef")).isEqualTo("ef");
     }
 }
