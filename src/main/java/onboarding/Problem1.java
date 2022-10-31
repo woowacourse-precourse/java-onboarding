@@ -29,7 +29,7 @@ class Problem1 {
     }
 
     private static boolean isNotFirstOrLastPage(List<Integer> pobi, List<Integer> crong) {
-        return false;
+        return (pobi.get(0) != 1 && pobi.get(1) != 400) && (crong.get(0) != 1 && crong.get(1) != 400);
     }
 
     private static int calculateMaxValue(List<Integer> list) {
