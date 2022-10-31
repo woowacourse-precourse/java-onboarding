@@ -1,17 +1,25 @@
 # 기능 목록
 ### 기능을 구현하기 위한 함수 목록은 다음과 같습니다.
 
-1. inputValidation(int n1, int n2)  
-   입력 중 조건에 맞지 않는 입력이 있을 수 있기에 n1, n2가 조건에 맞는지 검사합니다. 조건에 맞으면 true를 맞지 않으면 false를 반환합니다.
+### 1. 입력받은 페이지에 대해 예외사항을 검사 
+#### inputValidation(int fristPage, int secondPage)  -->  boolean
+-  입력 중 조건에 맞지 않는 입력이 있을 수 있기에 firstPage, secondPage가 조건에 맞는지 검사합니다. 조건에 맞으면 true를 맞지 않으면 false를 반환합니다.
    예외 사항은 아래와 같습니다.
-- n1은 홀수, n2는 짝수여야 합니다.
-- n1, n2 간의 차는 1이어야 합니다.
+- firstPage은 홀수, secondPage는 짝수여야 합니다.
+- firstPage, secondPage 간의 차는 1이어야 합니다.
+- firstPage가 1페이지거나 secondPage가 400페이지면 안됩니다.
 
 
+### 2. 두 페이지를 입력받아 각 페이지의 자릿수의 합과 곱중 큰값을 구한 다음 두 페이지의 값중 더 큰값을 반환
+#### findMaxValue(int firstPage, int secondPage) --> int maxValue  
+- firstPage와 secondPage를 calculate() 메소드에 넣은 뒤 반환 된 값을 비교해 큰 값을 반환합니다.
+- 반환된 값이 최종 점수입니다.
+ 
 
-2. maxValue(int n1, int n2)  
-2-1) n1과 n2를 각각 charArray로 변환한 뒤 자릿수의 덧셈과 곱셈을 실행합니다.  
-2-2) 각각 n1과 n2의 덧셈과 곱셈 중 큰 수를 얻은 뒤 해당 두 수를 다시 비교하여 큰 수를 반환합니다.  
+### 3. 2번의 기능중 페이지를 입력받아 자릿수의 합과 곱중 큰값을 반환합니다.
+#### calculate(int page) --> int max
+- 입력받은 page의 각 자릿수의 합과 자릿수의 곱중 더 큰 값을 반환합니다.
+
 
 
 # 전체 동작 과정
