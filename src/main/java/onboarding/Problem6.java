@@ -1,14 +1,21 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+        Set<String> result = new TreeSet<>(); // 정렬(오름차순), 중복 제거를 위해 TreeSet 사용
+
+        for (List<String> form : forms) {
+            String email = getEmail(form);
+            String nickName = getNickName(form);
+
+            if (isDuplicated(forms, nickName)) {
+                result.add(email);
+            }
+        }
+
+        return new ArrayList<>(result);
     }
 
     /**
