@@ -31,6 +31,14 @@ public class Problem7 {
                     friendWithUserDict.computeIfPresent(key, (k, v) -> v + 10);
             }
         });
+
+        // 방문한 유저를 1점 주기 이미 값이 있다면 1점 추가
+        for (String visit : visitors) {
+            if (!friendWithUserList.contains(visit)) {
+                friendWithUserDict.putIfAbsent(visit, 0);
+                friendWithUserDict.computeIfPresent(visit, (k, v) -> v + 1);
+            }
+        }
         return answer;
     }
 }
