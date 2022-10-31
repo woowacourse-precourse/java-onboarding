@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -47,5 +44,33 @@ public class Problem7 {
         }
 
         return new ArrayList<>(new HashSet<>(recommendFriends));
+    }
+
+    public static HashMap<String, Integer> getScoreKnownFriend(String user, List<List<String>> friends) {
+        HashMap<String, Integer> scoreKnownFriend = new HashMap<String, Integer>();
+
+        List<String> friendsOfUser = getFriendsOfUser(user, friends);
+        List<String> recommendFriends = getRecommendFriends(user, friends, List.of());
+
+        for (List<String> relation : friends) {
+            String userA = relation.get(0);
+            String userB = relation.get(1);
+
+            if (recommendFriends.contains(userA) && friendsOfUser.contains(userB))
+                if (scoreKnownFriend.containsKey(userA)) {
+                    int score = scoreKnownFriend.get(userA);
+                    scoreKnownFriend.put(userA, score + 10);
+                } else
+                    scoreKnownFriend.put(userA, 0);
+
+            if (recommendFriends.contains(userB) && friendsOfUser.contains(userA))
+                if (scoreKnownFriend.containsKey(userB)) {
+                    int score = scoreKnownFriend.get(userB);
+                    scoreKnownFriend.put(userB, score + 10);
+                } else
+                    scoreKnownFriend.put(userB, 0);
+        }
+
+        return scoreKnownFriend;
     }
 }
