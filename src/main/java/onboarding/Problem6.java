@@ -28,15 +28,14 @@ class DupeChecker {
 
     static List<List<String>> makeBigramsList() {
         List<List<String>> bigrams_list = new ArrayList<>();
-        for (int i=0; i<forms.size(); i++) {
-            String str = forms.get(i).get(1);
-
+        for (List<String> form : forms) {
+            String str = form.get(1);
             List<String> list = new ArrayList<>();
-            int j = 0;
-            while (j < str.length() - 1) {
-                String sub_str = str.substring(j, j+2);
+            int i = 0;
+            while (i < str.length() - 1) {
+                String sub_str = str.substring(i, i+2);
                 list.add(sub_str);
-                j += 1;
+                i += 1;
             }
             bigrams_list.add(list);
         }
