@@ -4,6 +4,9 @@ import java.util.*;
 
 public class Problem7 {
 
+    public static int INTERSECTION_FRIEND_SCORE = 10;
+    public static int VISITOR_SCORE = 1;
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer;
         Set<String> friendList = new HashSet<>();
@@ -40,18 +43,10 @@ public class Problem7 {
     public static void getScoreInFriend(String user, List<List<String>> friends, Set<String> friendList, HashMap<String, Integer> score) {
         for (List<String> friendData : friends) {
             if (user.equals(friendData.get(1)) == false && friendList.contains(friendData.get(0)) == true && friendList.contains(friendData.get(1)) == false) {
-                if (score.containsKey(friendData.get(1)) == false) {
-                    score.put(friendData.get(1), 10);
-                } else {
-                    score.put(friendData.get(1), score.get(friendData.get(1)) + 10);
-                }
+                addScore(score, friendData.get(1), INTERSECTION_FRIEND_SCORE);
             }
             if (user.equals(friendData.get(0)) == false && friendList.contains(friendData.get(1)) == true && friendList.contains(friendData.get(0)) == false) {
-                if (score.containsKey(friendData.get(0)) == false) {
-                    score.put(friendData.get(0), 10);
-                } else {
-                    score.put(friendData.get(0), score.get(friendData.get(0)) + 10);
-                }
+                addScore(score, friendData.get(0), INTERSECTION_FRIEND_SCORE);
             }
         }
     }
@@ -59,16 +54,12 @@ public class Problem7 {
     public static void getScoreInVisitors(String user, List<String> visitors, Set<String> friendList, HashMap<String, Integer> score) {
         for (String visitor : visitors) {
             if (visitor.equals(user) == false && friendList.contains(visitor) == false) {
-                if (score.containsKey(visitor) == false) {
-                    score.put(visitor, 1);
-                } else {
-                    score.put(visitor, score.get(visitor) + 1);
-                }
+                addScore(score, visitor, VISITOR_SCORE);
             }
         }
     }
 
-    public static List<String> sortDescValueAscKey(List<String> sortList,  HashMap<String, Integer> score) {
+    public static List<String> sortDescValueAscKey(List<String> sortList, HashMap<String, Integer> score) {
         Collections.sort(sortList, (o1, o2) -> {
             if (score.get(o1) != score.get(o2)) {
                 return score.get(o2).compareTo(score.get(o1));
@@ -78,5 +69,13 @@ public class Problem7 {
         });
 
         return sortList;
+    }
+
+    public static void addScore(HashMap<String, Integer> score, String key, int addNumber) {
+        if (score.containsKey(key) == false) {
+            score.put(key, addNumber);
+            return;
+        }
+        score.put(key, score.get(key) + addNumber);
     }
 }
