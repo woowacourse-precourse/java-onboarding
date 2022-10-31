@@ -1,6 +1,5 @@
 package onboarding;
 
-import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
@@ -12,7 +11,6 @@ class Problem1 {
 
     /**
      * 좌,우측 페이지가 올바른 페이지 인지 확인하는 함수
-     *
      * @param pages 좌, 우 페이지 번호가 적힌 리스트
      * @return 유효한 페이지인지 검사값 (true/false)
      */
@@ -34,7 +32,6 @@ class Problem1 {
 
     /**
      * 규칙에 따라 구할 수 있는 가장 큰 값을 구하는 함수
-     *
      * @param num : 페이지 번호
      * @return 페이지 번호로 부터 구할 수 있는 가장 큰 수
      */
