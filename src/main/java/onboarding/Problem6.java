@@ -17,7 +17,28 @@ public class Problem6 {
      * @return
      */
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        Set<String> result = new HashSet<>();
+        Trie root = new Trie();
+
+        for (List<String> form : forms) {
+            String email = form.get(0);
+            String nickName = form.get(1);
+
+            System.out.println(email);
+
+            String[] emailToken = email.split("@");
+
+            if (emailToken[1].equals("email.com")) {
+                System.out.println(nickName);
+                insert(nickName, 0, email, root);
+            }
+        }
+
+        find(result, root);
+
+        List<String> answer = new LinkedList<>(result);
+        Collections.sort(answer);
+
         return answer;
     }
 
