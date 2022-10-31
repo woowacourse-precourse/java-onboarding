@@ -125,7 +125,7 @@ public class Problem7 {
         List<String> result = new ArrayList<>();
 
         // 더 이상 추천할 유저가 없거나 5명을 추천했으면 종료
-        while (!recommendScoreMap.isEmpty() && result.size() <= 5){
+        while (!recommendScoreMap.isEmpty() && result.size() < 5){
             // 최고 점수를 가진 유저를 리스트에 등록
             String maxScoreUser = Collections.max(recommendScoreMap.entrySet(),
                     Comparator.comparingInt(Map.Entry::getValue)
