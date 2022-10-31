@@ -28,6 +28,21 @@ public class Problem7 {
         		candidatesMap.put(friendShip.get(i),0);
         	}
         }
+        
+        for(String userFriend : friendMap.get(user)) {
+        	for(String friendOfFriend : friendMap.get(userFriend)) {
+        		candidatesMap.put(friendOfFriend,candidatesMap.get(friendOfFriend)+10);
+        	}
+        }
+        
+        for(String visitor : visitors) {
+        	if(candidatesMap.containsKey(visitor)) {
+        		candidatesMap.put(visitor, candidatesMap.get(visitor)+1);
+        	}else {
+        		candidatesMap.put(visitor, 1);
+        	}
+        }
+        
         return answerList;
     }
 }
