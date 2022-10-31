@@ -1,7 +1,7 @@
 package onboarding;
 
 import java.util.stream.IntStream;
-/*
+
 public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
@@ -14,4 +14,3 @@ public class Problem3 {
         System.out.println(solution(13));
     }
 }
-*/
