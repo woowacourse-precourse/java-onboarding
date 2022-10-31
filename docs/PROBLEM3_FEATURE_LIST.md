@@ -19,4 +19,4 @@ TODO
 - 리팩터링
 1. ~~박수쳐야 하는 함수인지를 판단하는 로직 bool isClapNumber(char) 함수화~~
 2. ~~상수 static final 화~~
-3. 리네임
+3. ~~리네임~~
