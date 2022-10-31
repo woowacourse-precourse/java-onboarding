@@ -15,6 +15,11 @@ public class Problem5 {
      * 금액이 주어졌을 때 최소한의 화폐 개수를 구하여 반환
      */
     public static void withdraw(int money, List<Integer> moneyUnitCountList) {
+        int[] moneyUnitList = {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
+        for (int moneyUnit : moneyUnitList) {
+            money = countMonetaryUnit(money, moneyUnit,
+                moneyUnitCountList);
+        }
     }
 
     /*
