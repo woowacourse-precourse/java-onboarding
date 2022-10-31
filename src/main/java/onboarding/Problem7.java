@@ -39,6 +39,20 @@ public class Problem7 {
         }
         return recommendedFriend;
     }
+    public static Map visitorCalculate(String user, List<List<String>> friends, List<String> visitors){
+        // 친구목록이랑 방문자 친구 비교해서 친구 아니면 추천친구에 +1
+        Set friendsSet = friendsList(user,friends);
+        Map<String, Integer> friendsfriendsList = friendsfriendsList(friendsSet,user,friends);
+        for(String s :visitors){ // 방문자의 수 체크하기
+            if(!friendsSet.add(s)) { // 이미 친구 추천에 있는경우 방문했으니 +1
+                if(friendsfriendsList.containsKey(s))friendsfriendsList.put(s,friendsfriendsList.getOrDefault(s,0)+1);
+            }
+            else{ // visitors와 친구리스트를 비교해서 친구 아니면 +1
+                friendsfriendsList.put(s,friendsfriendsList.getOrDefault(s,0)+1);}
+        }
+        return friendsfriendsList;
+
+    }}
 
 
 
