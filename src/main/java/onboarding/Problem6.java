@@ -18,7 +18,7 @@ public class Problem6 {
             String email = form.get(0);
             String nickName = form.get(1);
             for(int i = 0;i<nickName.length()-1;i++) {
-                String keyName = nickName.substring(i, i + 1);
+                String keyName = nickName.substring(i, i + 2);
                 if(map.containsKey(keyName)) {
                     answer.add(email);
                     if(!answer.contains(map.get(keyName))) {
