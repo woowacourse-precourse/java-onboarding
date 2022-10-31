@@ -1,7 +1,12 @@
 package onboarding;
 
 public class Problem4 {
+
+    private static final int minLength = 1;
+    private static final int maxLength = 1000;
+
     public static String solution(String word) {
+        isValidate(word);
         String answer = getConverseString(word);
         return answer;
     }
@@ -22,5 +27,11 @@ public class Problem4 {
             result.append(conversedChar);
         }
         return result.toString();
+    }
+
+    private static void isValidate(String word) {
+        if (word.length() < minLength || word.length() > maxLength) {
+            throw new IllegalArgumentException("문자열의 길이가 1이상 1000이하 이어야합니다.");
+        }
     }
 }
