@@ -63,8 +63,8 @@ class ApplicationTest {
 
         @Test
         void case7() {
-            List<Integer> pobi = List.of(402, 403);
-            List<Integer> crong = List.of(0, 1);
+            List<Integer> pobi = List.of(412, 413);
+            List<Integer> crong = List.of(200, 201);
             int result = -1;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
@@ -178,13 +178,13 @@ class ApplicationTest {
         @Test
         void case1() {
             List<List<String>> forms = List.of(
-                    List.of("jm@email.com", "제이엠"),
+                    List.of("jason@email.com", "제이엠"),
                     List.of("jason@email.com", "제이슨"),
                     List.of("woniee@email.com", "워니"),
                     List.of("mj@email.com", "엠제이"),
                     List.of("nowm@email.com", "이제엠")
             );
-            List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com");
+            List<String> result = List.of("jason@email.com", "mj@email.com");
             assertThat(Problem6.solution(forms)).isEqualTo(result);
         }
 
@@ -198,6 +198,19 @@ class ApplicationTest {
                 List.of("nowm@email.com", "나는제니였다")
             );
             List<String> result = List.of("jason@email.com", "nowm@email.com");
+            assertThat(Problem6.solution(forms)).isEqualTo(result);
+        }
+
+        @Test
+        void case3() {
+            List<List<String>> forms = List.of(
+                    List.of("kim@email.com", "김ㅡ이"),
+                    List.of("nam@email.com", "ㅡ이야"),
+                    List.of("choi@email.com", "최강"),
+                    List.of("lee@email.com", "강합니다"),
+                    List.of("jun@email.com", "왜ㅇㅡ이야")
+            );
+            List<String> result = List.of("jun@email.com", "kim@email.com", "nam@email.com");
             assertThat(Problem6.solution(forms)).isEqualTo(result);
         }
     }

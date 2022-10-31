@@ -30,7 +30,7 @@ public class Problem6 {
             String targetName = forms.get(j).get(1);
 
             if (!isException(forms, i, j) && isOverlapName(currentName, targetName)) {
-                overlapNamesQueue.add(currentEmail);
+                removeOverlapEmail(overlapNamesQueue, currentEmail);
                 break;
             }
         }
@@ -73,6 +73,12 @@ public class Problem6 {
             }
         }
         return false;
+    }
+
+    static void removeOverlapEmail(PriorityQueue<String> overlapNamesQueue, String currentEmail) {
+        if (!overlapNamesQueue.contains(currentEmail)) {
+            overlapNamesQueue.add(currentEmail);
+        }
     }
 
     static List<String> priorityQueueToList(PriorityQueue<String> queue) {
