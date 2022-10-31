@@ -18,6 +18,16 @@ class Problem1 {
             pobiScore.add(pobiPageSum);
         }
 
+        for (int i = 0; i < pobi.size(); i++) {
+            int pobiPage = pobi.get(i);
+            int pobiPageMul = 1;
+            while (pobiPage != 0) {
+                pobiPageMul *= pobiPage%10;
+                pobiPage = pobiPage/10;
+            }
+            pobiScore.add(pobiPageMul);
+        }
+
 
 
 
