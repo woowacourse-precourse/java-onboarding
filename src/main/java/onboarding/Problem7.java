@@ -8,6 +8,19 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
         return answer;
     }
+	private static Map<String, Integer> getVisitScore(Map<String, Set<String>> friendMapSet, List<String> visitors,
+		String user) {
+		Map<String, Integer> score = new HashMap<>();
+		for (String name : visitors) {
+			// 나 또는 이미 친구는 넘겨
+			if (name.equals(user) || friendMapSet.get(user).contains(name)) {
+				continue;
+			}
+			score.put(name, score.getOrDefault(name, 0) + VISIT_SCORE);
+		}
+		return score;
+	}
+
 	private static Map<String, Integer> getSameFriendScore(Map<String, Set<String>> friendMapSet, String user) {
 		Map<String, Integer> score = new HashMap<>();
 		for (String name : friendMapSet.keySet()) {
