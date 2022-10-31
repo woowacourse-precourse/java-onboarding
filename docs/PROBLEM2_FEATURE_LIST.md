@@ -26,7 +26,7 @@ problem2(cryptogram){
 ```
 
 ## 기능 요구 사항
-- 삭제할 문자열의 인덱스 리스트를 반환하는 int[] getDeleteIndexList(string) 함수
+- ~~삭제할 문자열의 인덱스 셋을 반환하는 int[] getDeleteIndexSet(string) 함수~~
 
 TODO
 - 
