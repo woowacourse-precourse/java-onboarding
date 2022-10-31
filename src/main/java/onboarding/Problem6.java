@@ -13,7 +13,9 @@ public class Problem6 {
             checkDuplication(crew,emails,segments);
         }
 
-        return emails;
+        List<String> answers = removeDuplication(emails);
+        Collections.sort(answers);
+        return answers;
     }
 
     public static void checkDuplication (List<String> crew, List<String> emails, Map<String, String> segments) {
@@ -35,8 +37,8 @@ public class Problem6 {
         }
     }
 
-
-
-
-
+    public static List<String> removeDuplication(List<String> emails) {
+        Set<String> removeDuplicateSet = new HashSet<String>(emails);
+        return new ArrayList<>(removeDuplicateSet);
+    }
 }
