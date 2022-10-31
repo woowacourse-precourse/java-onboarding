@@ -23,7 +23,6 @@ public class Problem3 {
         int dividedNumber = Integer.MIN_VALUE;
         while(number>0){
             dividedNumber = number % NUMBER_OF_DIGIT_DIVISION;
-            System.out.println(dividedNumber);
             if(confirmNumber(dividedNumber))
                 clap++;
             number = number/NUMBER_OF_DIGIT_DIVISION;

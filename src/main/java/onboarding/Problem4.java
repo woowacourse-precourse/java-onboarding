@@ -6,16 +6,27 @@ public class Problem4 {
     private final static int  LOWER_CASE_SUM = 219;
 
     public static String solution(String word) {
-        String answer = "";
+        String answer = changeWord(word);
         return answer;
     }
-    private static char changeUppercase(int c){
-        char reverse_Word = (char)(UPPER_CASE_SUM - c);
+
+    private static String changeWord(String word){
+        String reverse_Word = "";
+        for(char Alphabet : word.toCharArray()) {
+            if(Character.isUpperCase(Alphabet))
+                reverse_Word += changeUppercase(Alphabet);
+            else if (Character.isLowerCase(Alphabet))
+                reverse_Word += changeLowercase(Alphabet);
+        }
         return reverse_Word;
     }
+    private static char changeUppercase(int origianl_Alphabet){
+        char reverse_Alphabet = (char)(UPPER_CASE_SUM - origianl_Alphabet);
+        return reverse_Alphabet;
+    }
 
-    private static char changeLowercase(int c){
-        char reverse_Word = (char)(LOWER_CASE_SUM - c);
-        return reverse_Word;
+    private static char changeLowercase(int origianl_Alphabet){
+        char reverse_Alphabet = (char)(LOWER_CASE_SUM - origianl_Alphabet);
+        return reverse_Alphabet;
     }
 }
