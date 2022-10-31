@@ -8,6 +8,16 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
         return answer;
     }
+	private static int getSameFriendCount(String user, String friend, Map<String, Set<String>> friendMapSet) {
+		int count = 0;
+		for (String name : friendMapSet.get(friend)) {
+			if (friendMapSet.get(user).contains(name)) {
+				count++;
+			}
+		}
+		return count;
+	}
+
 	private static Map<String, Set<String>> mapByFriendMapSet(List<List<String>> friends) {
 		Map<String, Set<String>> friendMapSet = new HashMap<>();
 
