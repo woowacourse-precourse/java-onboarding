@@ -33,7 +33,7 @@ class Clap{
     }
 
     public int sumClap(){
-        for(int i=START_NUMBER;i<number;i++){
+        for(int i=START_NUMBER;i<=number;i++){
             Number numberObject=new Number();
             sumClap+=numberObject.countClap(i);
         }
