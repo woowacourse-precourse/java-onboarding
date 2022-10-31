@@ -6,19 +6,35 @@ public class Problem2 {
         String answer = "answer";
 
 
-        for (int i = 1; i < cryptogram.length(); i++) {
+
+        answer = recursivefunc(cryptogram,0);
+
+        return answer;
+    }
+
+
+    //인덱스를 찾고 삭제하는 과정을 재귀적으로 수행하는 함수
+    public static String recursivefunc(String cryptogram, int startIdx){
+
+        if (startIdx < 0) {startIdx = 0;}
+
+
+
+        for (int i = startIdx+1; i < cryptogram.length(); i++) {
             if (cryptogram.charAt(i) == cryptogram.charAt(i-1)) {
 
+                int newstartIdx = i-1;
 
-                int lastIdx = findLastIdx(cryptogram, i-1);
-                String result = deleteStr(i-1,lastIdx,cryptogram);
-                System.out.println("result = " + result);
+                int lastIdx = findLastIdx(cryptogram,newstartIdx);
+
+                String result = deleteStr(newstartIdx,lastIdx,cryptogram);
+
+                cryptogram = recursivefunc(result,newstartIdx-1);
+
             }
         }
 
-        
-
-        return answer;
+        return cryptogram;
     }
 
 
@@ -61,9 +77,9 @@ public class Problem2 {
 
     public static void main (String[] args) {
 
-        //String cryptogram = "browoanoommnaon";
+        String cryptogram = "browoanoommnaon";
         //String cryptogram = "zyelleyz";
-        String cryptogram = "ddogga";
+//        String cryptogram = "ddogga";
 
         System.out.println("answer=" + solution(cryptogram));
     }
