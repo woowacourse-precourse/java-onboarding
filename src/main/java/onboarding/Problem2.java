@@ -38,20 +38,21 @@ public class Problem2 {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i <cryptogram.length() ; i++) {
             char c = cryptogram.charAt(i);
-            if (PQ.isEmpty()) {
-                sb.append(c);
-                continue;
-            }
-
-            if (PQ.peek() == i) {
-                PQ.poll();
-                continue;
-            }
+            if(!isPriorityQueueCondition(i)) continue;
             sb.append(c);
         }
 
         return sb.toString();
 
+    }
+
+    private static boolean isPriorityQueueCondition(int i) {
+        if (PQ.isEmpty()) { return true;}
+        else if (PQ.peek() == i) {
+            PQ.poll();
+            return false;
+        }
+        return true;
     }
 
     private static String Deduplication(String cryptogram) {
