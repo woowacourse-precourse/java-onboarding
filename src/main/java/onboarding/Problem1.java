@@ -145,10 +145,6 @@ class Problem1 {
         int leftPage = pages.get(LEFT);
         int rightPage = pages.get(RIGHT);
 
-        if (++leftPage != rightPage) {
-            return false;
-        }
-
-        return true;
+        return ++leftPage == rightPage;
     }
 }
