@@ -9,6 +9,7 @@ import java.util.List;
 *   1-1. Crew(String name): 파라미터로 이름을 받는 생성자
 *   1-2. getSuggestions(): suggestion List 를 반환하는 메소드
 *   1-3. getKnowEachOtherFriends(Crew crew): Crew 를 파라미터로 받아 현재 크루와 서로 아는 친구의 List 를 반환
+*   1-4. isFriend(String name): 해당 name 을 가진 크루와의 친구관계 여부를 확인하는 메소드
 * 2. 크루 이름과 추천 점수를 필드로 가지는 Suggestion class 생성
 *   2-1. Suggestion(String name): Crew 를 파라미터로 받는 생성자
 *   2-2. calculateScore(Map<>, List<>): 친구 map 과 방문기록 list 를 파라미터로 받아 추천 Crew 의 점수를 계산하는 메소드
@@ -45,6 +46,10 @@ class Crew {
 
     public List<Suggestion> getSuggestions() {
         return suggestions;
+    }
+
+    public boolean isFriend(String name) {
+        return friends.contains(name);
     }
 }
 
