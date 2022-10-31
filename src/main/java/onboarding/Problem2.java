@@ -8,7 +8,7 @@ public class Problem2 {
         Stack<Character> stack = new Stack<>();
         
         for(int i=0;i<=cryptogram.length();i++) {
-        	char next_char;
+        	char next_char = '1';
         	
         	if(i==cryptogram.length()) {
         		next_char = '1';
