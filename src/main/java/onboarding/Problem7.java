@@ -7,15 +7,14 @@
 
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.HashMap;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
-        HashMap<String, Integer> map = visitorsCount(visitors);
+        HashMap<String, Integer> map = visitorsCount(visitors); //방문한 사람 추가
+        List<String> friendList = followedFriends(user, friends);
+        HashMap<String, Integer> newMap = newFriend(friends,friendList,map);
         return answer;
     }
 
@@ -24,7 +23,6 @@ public class Problem7 {
         for (int i = 0; i < visitors.size(); i++) {
             String visitor = visitors.get(i);
             if (map.get(visitor) == null) {
-                //System.out.println("널 나옴");
                 map.put(visitor, 1);
                 continue;
             }
@@ -74,5 +72,20 @@ public class Problem7 {
             map.put(id, 10);
         }
         return map;
+    }
+
+    public static HashMap<String, Integer> sortByValue(HashMap<String, Integer> hashMap) {
+        List<Map.Entry<String, Integer>> list = new LinkedList<Map.Entry<String, Integer>>(hashMap.entrySet());
+        Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
+            public int compare(Map.Entry<String, Integer> o1,
+                               Map.Entry<String, Integer> o2) {
+                return (o1.getValue()).compareTo(o2.getValue());
+            }
+        });
+        HashMap<String, Integer> temp = new LinkedHashMap<String, Integer>();
+        for (Map.Entry<String, Integer> aa : list) {
+            temp.put(aa.getKey(), aa.getValue());
+        }
+        return temp;
     }
 }
