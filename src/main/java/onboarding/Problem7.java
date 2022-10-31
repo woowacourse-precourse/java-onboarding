@@ -8,6 +8,7 @@ public class Problem7 {
         Map<String,Integer> matchingScore = new HashMap<>();
         List<Map.Entry<String, Integer>> sorting;
         List<String> answer = new ArrayList<>();
+
         for (List<String> list:  friends) {
             if(user==list.get(1)) friendList.add(list.get(0));
         }
@@ -20,6 +21,7 @@ public class Problem7 {
                 matchingScore.put(list.get(1),10);
             }
         }
+
         for (String vt : visitors) {
             if(friendList.contains(vt)) continue;
             else if(matchingScore.containsKey(vt)){
@@ -41,4 +43,5 @@ public class Problem7 {
         }
         return answer;
     }
+
 }
