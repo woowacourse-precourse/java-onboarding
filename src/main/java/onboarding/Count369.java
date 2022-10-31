@@ -18,7 +18,7 @@ class Count369 {
     int count() {
         int cnt = 0, cur;
 
-        for(int i = 1; i < number; i++) {
+        for(int i = 1; i <= number; i++) {
             cur = i;
 
             while(cur > 0) {
