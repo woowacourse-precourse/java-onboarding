@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 import org.junit.jupiter.api.Test;
 
-public class PageTest {
+public class BookPageTest {
 	@Test
 	public void 페이지_홀수_짝수_테스트() {
 	    //given
