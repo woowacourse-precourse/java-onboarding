@@ -3,18 +3,18 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.List;
 
-final class MoneyInfo {
-
-    int cnt;
-    int change;
-
-    public MoneyInfo(int cnt, int change) {
-        this.cnt = cnt;
-        this.change = change;
-    }
-}
-
 public class Problem5 {
+
+    static class MoneyInfo {
+
+        int cnt;
+        int change;
+
+        public MoneyInfo(int cnt, int change) {
+            this.cnt = cnt;
+            this.change = change;
+        }
+    }
 
     public static List<Integer> solution(int money) {
 
