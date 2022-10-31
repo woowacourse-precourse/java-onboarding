@@ -13,6 +13,12 @@ public class FriendRecommender {
             separateFriends(friend,user,userFriends,anotherRelation);
         }
 
+        for (List<String> anotherFriend : anotherRelation) {
+            if (isValidRelation(userFriends,anotherFriend)) {
+                addknowTogetherPoint(getRecommendFriend(userFriends,anotherFriend), recommendList);
+            }
+        }
+
         return new ArrayList<>();
     }
 
@@ -27,5 +33,37 @@ public class FriendRecommender {
 
     private static Integer getIndex(List<String> userFriendList, String separationTarget) {
         return userFriendList.indexOf(separationTarget) == 0 ? 1 : 0;
+    }
+
+    private static boolean isValidRelation(List<String> userFriends, List<String> anotherFriend)     {
+        if (userFriends.contains(anotherFriend.get(0)) && userFriends.contains(anotherFriend.get(1))) {
+            return false;
+        }
+
+        if (!userFriends.contains(anotherFriend.get(0)) && !userFriends.contains(anotherFriend.get(1))) {
+            return false;
+        }
+        return true;
+    }
+
+    private static String getRecommendFriend(List<String> userFriends, List<String> anotherFriend) {
+        if (userFriends.contains(anotherFriend.get(0))) {
+            return anotherFriend.get(1);
+        }
+        return anotherFriend.get(0);
+    }
+
+    private static void addknowTogetherPoint(String unknownFriend, HashMap<String, Integer> recommendList) {
+        addPoint(unknownFriend,10, recommendList);
+    }
+
+    private static void addPoint(String recommendFriend, Integer point, HashMap<String, Integer> recommendList) {
+        if (recommendList.containsKey(recommendFriend)) {
+            recommendList.put(recommendFriend,recommendList.get(recommendFriend)+point);
+        }
+
+        if (!recommendList.containsKey(recommendFriend)) {
+            recommendList.put(recommendFriend,point);
+        }
     }
 }
