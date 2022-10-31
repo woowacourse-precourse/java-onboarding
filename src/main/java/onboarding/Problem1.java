@@ -64,29 +64,34 @@ class Problem1 {
         return Math.max(a, b);
     }
 
+    private static int getMaxNumberFromPageList(List<Integer> pageList) {
+        int leftPage = pageList.get(0);
+        int rightPage = pageList.get(1);
+        int leftPageMax = max(getDigitSum(leftPage), getDigitProduct(leftPage));
+        int rightPageMax = max(getDigitSum(rightPage), getDigitProduct(rightPage));
+        int maxNumberFromPage = max(leftPageMax, rightPageMax);
+        return maxNumberFromPage;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         // exception
         if (!validCheck(pobi) || !validCheck(crong)) {
             return -1;
         }
         // game logic
-        int pobiLeftMax = max(getDigitSum(pobi.get(0)), getDigitProduct(pobi.get(0)));
-        int pobiRightMax = max(getDigitSum(pobi.get(1)), getDigitProduct(pobi.get(1)));
-        int crongLeftMax = max(getDigitSum(crong.get(0)), getDigitProduct(crong.get(0)));
-        int crongRightMax = max(getDigitSum(crong.get(1)), getDigitProduct(crong.get(1)));
-        int pobiMax = max(pobiLeftMax, pobiRightMax);
-        int crongMax = max(crongLeftMax, crongRightMax);
+        int pobiMaxNumber = getMaxNumberFromPageList(pobi);
+        int crongMaxNumber = getMaxNumberFromPageList(crong);
 
         // pobi win
-        if (pobiMax > crongMax) {
+        if (pobiMaxNumber > crongMaxNumber) {
             return 1;
         }
         // crong win
-        if (pobiMax < crongMax) {
+        if (pobiMaxNumber < crongMaxNumber) {
             return 2;
         }
         // draw
-        if (pobiMax == crongMax) {
+        if (pobiMaxNumber == crongMaxNumber) {
             return 0;
         }
 

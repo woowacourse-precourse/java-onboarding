@@ -34,12 +34,13 @@ problem1(pobi[],crong[]){
 - ~~자연수 입력에 대해 자릿수별 합을 구하는 int getDigitSum(int) 함수~~
 - ~~자연수 입력에 대해 자릿수별 곱을 구하는 int getDigitProduct(int) 함수~~
 - ~~두 자연수에 대해 더 큰 값을 반환하는 int max(int, int) 함수~~
+- ~~주어진 pageList에 대하여 가장 큰 수를 반환하는 int getMaxNumberFromPageList(int[]) 함수~~
 
 TODO
 - ~~슈도코드에 맞게 개발한 함수를 조합하기~~
 - ~~테스트 성공 확인~~
 - 리팩터링 
 1. ~~validCheck(int[], int[])를 일반화하여 validCheck(int[])로 만들기~~
-2. 게임 로직 함수화
+2. ~~게임 로직 함수화~~
 3. 승자 판단 로직 함수화
 4. 상수 static final const 화
