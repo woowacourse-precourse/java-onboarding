@@ -14,7 +14,7 @@ public class Problem7 {
         private final String owner;
         private final Map<String, Integer> scores;
         private final List<List<String>> allFriends;
-        private final List<String> visitors;ㅎ
+        private final List<String> visitors;
         private final Set<String> earlyFriends;
 
         public Sns(String owner, List<List<String>> friends, List<String> visitors) {
