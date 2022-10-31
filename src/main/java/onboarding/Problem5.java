@@ -7,7 +7,7 @@ public class Problem5 {
     static int[] amounts = { 50000, 10000, 5000, 1000, 500, 100, 50, 10, 1 }; // 5만원짜리 지폐부터 1원 동전
 
     public static List<Integer> solution(int money) {
-        List<Integer> answer = new ArrayList<>(); // 정답을 리턴하는 리스트
+        List<Integer> answer = new ArrayList<>();
 
         for(int amount : amounts) {
             int count = money / amount; // 출금 가능한 최대 개수
