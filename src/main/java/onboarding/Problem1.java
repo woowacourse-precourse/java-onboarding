@@ -24,11 +24,11 @@ class Problem1 {
         }
     }
 
-    // 페이지가 범위내에 있는지
+    // 페이지가 범위내에 있는지 (시작면인 1과 마지막면인 400도 안되니 제외)
     static boolean checkInterval(List<Integer> pages) {
         Integer left = pages.get(0);
         Integer right = pages.get(1);
-        return (1 <= left && left <= 399) && (2 <= right && right <= 400);
+        return (3 <= left && left <= 399) && (2 <= right && right <= 398);
     }
 
     // 각 자릿수 더하기
