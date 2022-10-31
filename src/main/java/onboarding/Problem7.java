@@ -13,6 +13,22 @@ public class Problem7 {
         return n >= 1 && n <= 30;
     }
 
+    static boolean isValidId(String s) {
+        boolean result = true;
+        for (int i = 0; i <s.length() ; i++) {
+            result =isSmallLetter(s.charAt(i),result);
+        }
+        return result;
+    }
+
+    private static boolean isSmallLetter(char c, boolean result) {
+        if (!result) {
+            return false;
+        }
+
+        return c >= 'a' && c <= 'z';
+    }
+
     static boolean isValidFriendsListLength(int n) {
         return n >= 1 && n <= 10_000;
     }

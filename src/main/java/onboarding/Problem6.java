@@ -35,13 +35,18 @@ public class Problem6 {
         private boolean isKoreanNickname(String nickname) {
             boolean isKorean = true;
             for (int i = 0; i < nickname.length() ; i++) {
-                isKorean = isKoreanCharacter(nickname.charAt(i));
+                isKorean = isKoreanCharacter(nickname.charAt(i),isKorean);
             }
 
             return isKorean;
         }
 
-        private boolean isKoreanCharacter(char c) {
+        private boolean isKoreanCharacter(char c, boolean recent) {
+            if(!recent)
+            {
+                return false;
+            }
+
             return (c >= '가' && c <= '힣') || (c >= 'ㄱ' && c <= 'ㅎ');
         }
 
