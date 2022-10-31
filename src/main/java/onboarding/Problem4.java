@@ -2,7 +2,15 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        return "";
+        return toFrogString(word);
+    }
+
+    private static String toFrogString(String word) {
+        StringBuilder frogWord = new StringBuilder();
+        for (char c : word.toCharArray()) {
+            frogWord.append(toFrogChar(c));
+        }
+        return frogWord.toString();
     }
     private static char toFrogChar(char c) {
         if (Character.isAlphabetic(c)) {
