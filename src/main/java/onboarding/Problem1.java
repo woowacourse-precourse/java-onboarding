@@ -39,6 +39,7 @@ class Problem1 {
     		return true;
     	}
     }
+    
     public static int selectRes(List<Integer> arr1, List<Integer> arr2) {
     	if (checkErr(arr1) && checkErr(arr2)){
     		int pobiN = selectNum(arr1);
