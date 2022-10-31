@@ -7,6 +7,8 @@ class Problem1 {
     private static final int POBI_WIN = 1;
     private static final int CRONG_WIN = 2;
     private static final int EXCEPTIONS = -1;
+    private static final int MIN_PAGE = 1;
+    private static final int MAX_PAGE = 400;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
@@ -87,7 +89,7 @@ class Problem1 {
         if (user.get(0) == 1 || user.get(0) == 399) {
             return true;
         }
-        if (user.get(0) < 1 || user.get(1) > 400) {
+        if (user.get(0) < MIN_PAGE || user.get(1) > MAX_PAGE) {
             return true;
         }
         return false;
