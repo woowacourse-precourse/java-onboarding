@@ -6,11 +6,9 @@ public class User {
 
 	private int leftPage;
 	private int rightPage;
-
 	private int score;
 
 	public User(List<Integer> pages) {
-
 		this.leftPage = pages.get(0);
 		this.rightPage = pages.get(1);
 	}
@@ -19,7 +17,7 @@ public class User {
 		int leftMax = calCulateMax(this.leftPage);
 		int rightMax = calCulateMax(this.rightPage);
 
-		this.score = leftMax > rightMax ? leftMax : rightMax;
+		this.score = Math.max(leftMax,rightMax);
 	}
 
 	public int calCulateMax(int num) {
@@ -31,12 +29,11 @@ public class User {
 			sum += digit;
 			mul *= digit;
 			num /= 10;
-
 		}
 		sum += num;
 		mul *= num;
 
-		return sum > mul ? sum : mul;
+		return Math.max(sum,mul);
 	}
 
 	public int getLeftPage() {
