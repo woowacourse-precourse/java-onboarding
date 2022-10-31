@@ -1,10 +1,28 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
+        List<String> userEmail = new ArrayList<>();
+        List<String> userNickname = new ArrayList<>();
         List<String> answer = List.of("answer");
+
+        for (int i = 0; i < forms.size(); i++) {
+            List<String> currentForm= forms.get(i);
+            userEmail.add(getEmail(currentForm));
+            userNickname.add(getNickname(currentForm));
+        }
+//        if (isValidEmail(forms.get(0).get(0))){
+//            List<String> answer = List.of("correct");
+//            return answer;
+//        }
+//
+//        List<String> answer = List.of("wrong");
+
+
+
         return answer;
     }
 
@@ -13,6 +31,7 @@ public class Problem6 {
 
         for (int i = 0; i < email.length(); i++) {
             if (email.charAt(i) == at){
+                System.out.println(getDomain(email, i + 1));
                 return isDomainEmail(getDomain(email, i + 1));
             }
         }
@@ -25,6 +44,16 @@ public class Problem6 {
 
     private static Boolean isDomainEmail(String emailDomain){
         String domain = "email.com";
+        System.out.println(domain + " : " + emailDomain);
         return emailDomain.equals(domain);
     }
+
+    private static String getEmail(List<String> form){
+        return form.get(0);
+    }
+
+    private static String getNickname(List<String> form){
+        return form.get(1);
+    }
+
 }
