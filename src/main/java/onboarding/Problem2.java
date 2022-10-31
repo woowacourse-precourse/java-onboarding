@@ -9,6 +9,14 @@ public class Problem2 {
         return answer;
     }
 
+    static int skipOverlap(char nowChar, char nextChar, int index) {
+        if (nowChar == nextChar) {
+            index = findOverlapEndPoint(nowChar, index + 1);
+        }
+
+        return index;
+    }
+
     static int findOverlapEndPoint(char nowChar, int index) {
         char nextChar = beforeRemoval.charAt(index);
         int length = beforeRemoval.length() - 1;
