@@ -28,7 +28,22 @@ public class Problem6 {
         System.out.println("nicks: "+ Arrays.toString(nicks));
         System.out.println("emails: "+ Arrays.toString(emails));
 
-
+        //같은 글자 연속 닉네임 -> result add
+        for(int i=0; i<nicks.length-1; i++) {
+            System.out.println("nicks[i]: "+nicks[i]);
+            regex = nicks[i];
+            for(int j=i+1; j<nicks.length; j++) {
+                for(int k=0; k<regex.length()-1; k++) {
+                    System.out.println("k: "+k+", k+2: "+(k+2)+", regex: "+regex);
+                    System.out.println("regex.substring(k, k+1): "+regex.substring(k, k+2));
+                    if(nicks[j].contains(regex.substring(k, k+2))) {
+                        System.out.println("nicks[j]: "+nicks[j]+", emails[j]: "+emails[j]);
+                        result.add(emails[j]);
+                        result.add(emails[i]);
+                    }
+                }
+            }
+        }
 
         List<String> answer = List.of("answer");
         return answer;
