@@ -3,16 +3,15 @@ package onboarding;
 import java.util.*;
 
 public class Problem6 {
-
     public static Map<String, Integer> getDuplCheckDict(List<List<String>> forms) {
         Map<String, Integer> duplDict = new HashMap<String, Integer>();
         forms.forEach(form -> {
-            for (int j = 0; j < form.get(1).length() - 1; j++) {
-                if (duplDict.containsKey(form.get(1).substring(j, j + 2))) {
-                    int cnt = duplDict.get(form.get(1).substring(j, j + 2));
-                    duplDict.put(form.get(1).substring(j, j + 2), cnt + 1);
+            for (int j = 0; j < getNickname(form).length() - 1; j++) {
+                if (duplDict.containsKey(getNickname(form).substring(j, j + 2))) {
+                    int cnt = duplDict.get(getNickname(form).substring(j, j + 2));
+                    duplDict.put(getNickname(form).substring(j, j + 2), cnt + 1);
                 } else {
-                    duplDict.put(form.get(1).substring(j, j + 2), 1);
+                    duplDict.put(getNickname(form).substring(j, j + 2), 1);
                 }
             }
         });
