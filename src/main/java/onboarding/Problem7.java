@@ -32,6 +32,17 @@ public class Problem7 {
             }
         }
 
+        // 점수를 담을 Map 객체 생성 (10점)
+        Map<String, Integer> scoreMap = new HashMap<>();
+        for (String name : newFriends) {
+            if (!scoreMap.containsKey(name)) {
+                scoreMap.put(name, 10);
+            }else {
+                int score = scoreMap.get(name) + 10;
+                scoreMap.replace(name, score);
+            }
+        }
+
         return answer;
     }
 }
