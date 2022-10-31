@@ -3,9 +3,10 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
+    private static final int MAX_SIZE = 5;
     private static final HashMap<String, LinkedList<String>> relation = new HashMap<>();
     private static final HashMap<String, Integer> score = new HashMap<>();
-    private static final int MAX_SIZE = 5;
+    private static final List<String> answer = new ArrayList<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         makeFriendRelation(friends);
@@ -26,7 +27,7 @@ public class Problem7 {
     public static void addNameByKey(String user, String friend){
         if(relation.containsKey(user)){
             relation.get(user).add(friend);
-        } else{
+        } else {
             relation.put(user, new LinkedList<String>(Collections.singleton(friend)));
             score.put(user, 0);
         }
@@ -53,8 +54,16 @@ public class Problem7 {
     }
 
     public static List<String> getResultBySort(){
-        List<String> answer = new ArrayList<>();
         List<Map.Entry<String, Integer>> list = new LinkedList<>(score.entrySet());
+        sortData(list); // 점수대로 내림차순 정렬, 점수가 같다면 이름으로 오름차순 정렬
+        for(int i = 0; i < MAX_SIZE; i++){
+            if(list.get(i).getValue() == 0) return answer;
+            answer.add(list.get(i).getKey());
+        }
+        return answer;
+    }
+
+    public static void sortData(List<Map.Entry<String, Integer>> list){
         list.sort(new Comparator<Map.Entry<String, Integer>>() { // 점수로 내림차순 정렬, 점수가 갔다면 이름순으로 정렬
             @Override
             public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
@@ -62,10 +71,5 @@ public class Problem7 {
                 return comparison == 0 ? o1.getKey().compareTo(o2.getKey()) : comparison;
             }
         });
-        for(int i = 0; i < MAX_SIZE; i++){
-            if(list.get(i).getValue() == 0) break;
-            answer.add(list.get(i).getKey());
-        }
-        return answer;
     }
 }
