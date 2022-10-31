@@ -30,10 +30,9 @@ class Problem1 {
 
     static int mulPageNum(Integer pageNum){
         int result = 1;
-        String pageStr = pageNum.toString();
-        for(String numToken : pageStr.split("")){
-            result *= Integer.parseInt(numToken);
-        }
+        String[] numStrings = pageNum.toString().split("");
+        IntStream numStream = Arrays.stream(numStrings).mapToInt(Integer::parseInt);
+        result = numStream.reduce(1, (a, b) -> a*b);
 
         return result;
     }
