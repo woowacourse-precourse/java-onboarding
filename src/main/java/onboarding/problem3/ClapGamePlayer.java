@@ -17,9 +17,9 @@ public class ClapGamePlayer {
 
     /**
      * 3, 6, 9 게임에서 게임의 목표 값까지 총 박수 횟수를 구하는 메소드
+     *
      * @param number 게임의 목표 값
      * @return 총 박수 횟수
-     * @see onboarding.problem3.consts.ClapGameConst
      */
     public static int calculateTotalClapCount(int number) {
         int totalClapCount = 0;
@@ -35,7 +35,6 @@ public class ClapGamePlayer {
      *
      * @param target 박수를 몇 번 쳐야하는지 구해야 하는 숫자
      * @return 박수 횟수
-     * @see onboarding.common.consts.CommonDigitNumberConst
      */
     private static int calculateTargetClapCount(int target) {
         int clapCount = 0;
@@ -53,7 +52,6 @@ public class ClapGamePlayer {
      *
      * @param targetDigit 자릿수
      * @return 박수를 친 횟수(0, 1)
-     * @see onboarding.problem3.consts.ClapGameConst
      */
     private static int calculateTargetDigitClapCount(int targetDigit) {
         if (isClapped(targetDigit)) {
@@ -67,7 +65,6 @@ public class ClapGamePlayer {
      *
      * @param targetDigit 자릿수
      * @return 박수를 칠 것인지에 대한 유무
-     * @see onboarding.problem3.consts.ClapGameConst
      */
     private static boolean isClapped(int targetDigit) {
         return targetDigit == CLAP_THREE_VALUE || targetDigit == CLAP_SIX_VALUE
