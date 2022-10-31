@@ -24,7 +24,8 @@ package onboarding;
 public class Problem2 {
 	
 	//1. 문자열을 순회하며 중복을 찾는 메소드 -> 있다면 해당 인덱스, 갯수 보내주고 아니면 -1 리턴
-	public int[] check(int start_idx, String target) {
+	public static int[] check(int start_idx, String target) {
+		if(start_idx < 0) {start_idx = 0;} // 음수인덱스 방지
 		char curr = target.charAt(start_idx);
 		int idx = -1, num = 1; // 중복시 삭제할 인덱스, 갯수
 		for (int i = start_idx; i < target.length() - 1; i++) {
@@ -46,13 +47,25 @@ public class Problem2 {
 	}
 	
 	//2. 중복이 있다면, 인덱스와 갯수 정보를 통해 삭제
-	public String del_str(String target, int[] arr) {
+	public static String del_str(String target, int[] arr) {
+		if (target.length() == arr[1]) { // 아무것도 남지 않는 경우 substring 메소드가 인덱스 에러를 발생시켜 추가
+			return "";					// 삭제할 길이와 전체 길이가 같다면 그냥 "" 리턴
+		}
 		String fin = target.substring(0, arr[0]) + target.substring(arr[0] + arr[1]);
 		return fin;
 	}
 	
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String answer = cryptogram;
+        int temp = 1;
+        while (temp != -1 && answer != "") {
+        	int [] arr = new int[2] ;
+        	arr = check(temp - 1, answer);
+        	temp = arr[0];
+        	if (temp != -1) {
+        		answer = del_str(answer, arr);
+        	}
+        }
         return answer;
     }
 }
