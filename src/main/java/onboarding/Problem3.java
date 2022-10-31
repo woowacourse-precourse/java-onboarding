@@ -58,16 +58,26 @@ public class Problem3 {
         if (numberLength == 1) {        // 일의 자리수 일때
             digit = number % 10;
             answer += isThreeContain(digit);
-        } else {        // 십의 자리수 이상 일때 가장 큰 자리수 부터 하나씩 내려가면서 비교해준다.
-            while (numberLength > 0) {
-                // 해당 자리수에서 3,6,9 비교
-                digit = (int) (number / (Math.pow(10, numberLength - 1)));
-                answer += isThreeContain(digit);
+        } else {        // 십의 자리수 이상 일때
+            answer += calcLargeNumClapCount(number,numberLength);
+        }
 
-                // 다음 자리수 비교를 위해 해당 자리수를 빼주고 비교할 자리수를 내려준다.
-                number = (int) (number - (digit * (Math.pow(10, numberLength-1))));
-                numberLength--;
-            }
+        return answer;
+    }
+
+    // 십의 자리수 이상 일때 박수 횟수 계산(가장 큰 자리수 부터 하나씩 내려가면서 비교해준다.)
+    public int calcLargeNumClapCount(int number, int numberLength){
+        int digit;
+        int answer =0;
+
+        while (numberLength > 0) {
+            // 해당 자리수에서 3,6,9 비교
+            digit = (int) (number / (Math.pow(10, numberLength - 1))); // 가장 큰 자리수 부터 -> 가장 작은 자리수
+            answer += isThreeContain(digit);
+
+            // 다음 자리수 비교를 위해 해당 자리수를 빼주고 비교할 자리수를 내려준다.
+            number = (int) (number - (digit * (Math.pow(10, numberLength-1))));
+            numberLength--;
         }
 
         return answer;
