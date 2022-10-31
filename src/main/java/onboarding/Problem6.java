@@ -15,13 +15,7 @@ public class Problem6 {
         HashMap<String, Boolean> duplications = new HashMap<>();
 
         for (List<String> form : forms) {
-            for (int i = 0; i < form.get(1).length() - 1; i++) {
-                if (duplications.containsKey(form.get(1).substring(i, i + 2))) {
-                    duplications.put(form.get(1).substring(i, i + 2), Boolean.TRUE);
-                } else {
-                    duplications.put(form.get(1).substring(i, i + 2), Boolean.FALSE);
-                }
-            }
+            getDuplications(form, duplications);
         }
 
         for (List<String> form : forms) {
@@ -35,5 +29,21 @@ public class Problem6 {
 
         answer.sort(Comparator.naturalOrder());
         return answer;
+    }
+
+    /**
+     * 중복될 수 있는 2글자 단어들을 모으고, 그 중 중복되는 단어들을 판별
+     *
+     * @param form
+     * @param duplications
+     */
+    private static void getDuplications(List<String> form, HashMap<String, Boolean> duplications) {
+        for (int i = 0; i < form.get(1).length() - 1; i++) {
+            if (duplications.containsKey(form.get(1).substring(i, i + 2))) {
+                duplications.put(form.get(1).substring(i, i + 2), Boolean.TRUE);
+            } else {
+                duplications.put(form.get(1).substring(i, i + 2), Boolean.FALSE);
+            }
+        }
     }
 }
