@@ -4,6 +4,15 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+
+        Map<String, Integer> scoreBoard = new HashMap<>();
+        Map<String, ArrayList<Node>> graph = initializeGraph(friends);
+        Map<String, Integer> distance = dijkstra(graph, user);
+        
+
+        scoreMutual(user,distance,graph,scoreBoard);
+        scoreVisitor(visitors, scoreBoard);
+
         List<String> answer = Collections.emptyList();
         return answer;
     }
@@ -39,6 +48,7 @@ public class Problem7 {
         return graph;
     }
 
+    // 그래프에 간선 추가
     private static void addNodeToGraph(Map<String, ArrayList<Node>> graph, String from, String to) {
         ArrayList<Node> list = new ArrayList<>();
         if(graph.containsKey(from)){
@@ -85,4 +95,43 @@ public class Problem7 {
 
         return distance;
     }
+
+    // 함께 아는 친구 점수 부여
+    private static void scoreMutual(String user, Map<String, Integer> distance, Map<String, ArrayList<Node>> graph, Map<String, Integer> board){
+        for (String friend : distance.keySet()) {
+            if (distance.get(friend) == 2) {
+                if (board.containsKey(friend)) {
+                    board.put(friend, board.get(friend) + countMutual(user, friend, graph) * 10);
+                } else {
+                    board.put(friend, countMutual(user, friend, graph) * 10);
+                }
+            }
+        }
+    }
+
+    // 함께 아는 친구 카운트
+    private static int countMutual(String user, String friend, Map<String, ArrayList<Node>> graph) {
+        int cnt = 0;
+
+        ArrayList<Node> userAdjacentList = graph.get(user);
+        ArrayList<Node> friendAdjacentList = graph.get(friend);
+
+        for (Node userAdjacent : userAdjacentList) {
+            for (Node friendAdjacent : friendAdjacentList) {
+                if (userAdjacent.vertex.equals(friendAdjacent.vertex)) {
+                    cnt += 1;
+                }
+            }
+        }
+
+        return cnt;
+    }
+
+    // 방문자 점수 부여
+    private static void scoreVisitor(List<String> visitors, Map<String, Integer> board) {
+        for (String visitor : visitors) {
+            board.put(visitor, board.containsKey(visitor) ? board.get(visitor) + 1 : 1);
+        }
+    }
+
 }
