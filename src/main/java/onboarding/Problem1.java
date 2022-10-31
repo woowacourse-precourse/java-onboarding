@@ -19,4 +19,14 @@ class Problem1 {
     private static boolean validation(List<Integer> pages) {
         return (pages.get(0)+1 == pages.get(1));
     }
+
+    // 주어진 수의 각 자리수의 합을 구함
+    private static int allSum(int pageNum) {
+        int sum = 0;
+        while(pageNum > 0) {
+            sum += pageNum%10;
+            pageNum /= 10;
+        }
+        return sum;
+    }
 }
