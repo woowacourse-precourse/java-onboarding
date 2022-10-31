@@ -3,7 +3,7 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
-    private final static int EXCEPTIONS_NUMBER = -1;
+    private final static int EXCEPTION_NUMBER = -1;
     private static final int DRAW_NUMBER = 0;
     private static final int WIN_POBI_NUMBER = 1;
     private static final int WIN_CRONG_NUMBER = 2;
@@ -12,11 +12,11 @@ class Problem1 {
         int answer;
 
         if (isNotTwoElements(pobi) || isNotSidePage(pobi)) {
-            return EXCEPTIONS_NUMBER;
+            return EXCEPTION_NUMBER;
         }
 
         if (isNotTwoElements(crong) || isNotSidePage(crong)) {
-            return EXCEPTIONS_NUMBER;
+            return EXCEPTION_NUMBER;
         }
 
         int pobiLargerNumber = getLargerNumber(pobi);
