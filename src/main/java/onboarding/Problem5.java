@@ -1,6 +1,7 @@
 package onboarding;
 
-
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -8,6 +9,7 @@ public class Problem5 {
     static List<Integer> MoneyType = List.of(50000,10000,5000,1000,500,100,50,10,1);
     public static List<Integer> solution(int money) {
         if(CheckInput(money)){
+            return RunGame(money);
         }
         throw new IllegalArgumentException("잘못된 입력값");
     }
@@ -31,4 +33,17 @@ public class Problem5 {
     private static int CountMoney(int money, int moneytype){
         return money/moneytype;
     }
+
+    /* 기능4: 리스트에 저장 */
+    private static List<Integer> RunGame(int money){
+        List<Integer> answer = new ArrayList<>(Arrays.asList(0,0,0,0,0,0,0,0,0));
+        while(money != 0){
+            int type = TypeofMoney(money);
+            int count = CountMoney(money,MoneyType.get(type));
+            answer.set(type,count);
+            money -= count*MoneyType.get(type);
+        }
+        return answer;
+    }
+
 }
