@@ -25,6 +25,14 @@ public class Problem6 {
         return !emailAddress.endsWith("@email.com");
     }
     public static boolean isOverlapped(String str1, String str2) {
-
+        return strEqualsOthersSubstr(str1, str2) || strEqualsOthersSubstr(str2, str1);
+    }
+    public static boolean strEqualsOthersSubstr(String str1, String str2) {
+        for (int i = 0; i < str1.length() - 1; i++) {
+            if (str2.contains(str1.substring(i, i + 2))) {
+                return true;
+            }
+        }
+        return false;
     }
 }
