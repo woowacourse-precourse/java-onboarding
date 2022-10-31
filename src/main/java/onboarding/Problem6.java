@@ -4,13 +4,6 @@ import java.util.*;
 
 public class Problem6 {
     /**
-     * result : 같은 글자가 연속으로 있다고 판단되는 유저의 이메일을 담은 Set
-     * root : Trie 자료구조의 시작 Pointer
-     */
-    Set<String> result = new HashSet<>();
-    Trie root = new Trie();
-
-    /**
      * 같은 글자가 연속으로 있는 이메일을 출력하는 메서드
      *
      * @param forms
