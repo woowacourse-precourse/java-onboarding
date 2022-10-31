@@ -40,7 +40,7 @@ class Result {
         this.wordArray = wordArray;
     }
 
-    public void changeUpperAndLower(){
+    public void changeWordByRule(){
         for(char wordChar:wordArray){
             if(isAlphaLower(wordChar)){
                 char replaceChar= (char)(155-(int)wordChar);
