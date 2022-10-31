@@ -9,7 +9,7 @@ public class Problem5 {
 
     public static void main(String[] args) {
         int money = 15000;
-        System.out.println("solution(money) = " + solution(money));
+        System.out.println(solution(money));
     }
 
     public static List<Integer> solution(int money) {

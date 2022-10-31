@@ -2,10 +2,10 @@ package onboarding;
 
 public class Problem3 {
 
-//    public static void main(String[] args) {
-//        int number = 33;
-//        System.out.println("answer = " + solution(number));
-//    }
+    public static void main(String[] args) {
+        int number = 33;
+        System.out.println(solution(number));
+    }
 
     public static int solution(int number) {
         int answer = 0;

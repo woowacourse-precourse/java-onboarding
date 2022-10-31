@@ -4,11 +4,11 @@ public class Problem2 {
     
     static char lastRemoved;
 
-//    public static void main(String[] args) {
-//        String crypto = "baaaoat";
-//
-//        System.out.println("answer = " + solution(crypto));
-//    }
+    public static void main(String[] args) {
+        String crypto = "baaaoat";
+
+        System.out.println(solution(crypto));
+    }
 
     public static String solution(String cryptogram) {
         if (cryptogram.length() == 0 || cryptogram.length() == 1)

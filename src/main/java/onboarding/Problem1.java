@@ -6,16 +6,16 @@ import java.util.ListIterator;
 
 class Problem1 {
 
-//    public static void main(String[] args) {
-//        List<Integer> pobi = new ArrayList<>();
-//        pobi.add(103);
-//        pobi.add(99);
-//        List<Integer> crong = new ArrayList<>();
-//        crong.add(222);
-//        crong.add(222);
-//
-//        System.out.println("result = " + solution(pobi, crong));
-//    }
+    public static void main(String[] args) {
+        List<Integer> pobi = new ArrayList<>();
+        pobi.add(103);
+        pobi.add(99);
+        List<Integer> crong = new ArrayList<>();
+        crong.add(222);
+        crong.add(222);
+
+        System.out.println(solution(pobi, crong));
+    }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         try {

@@ -6,10 +6,10 @@ import java.util.stream.Stream;
 
 public class Problem4 {
 
-//    public static void main(String[] args) {
-//        String word = "I LoVe you";
-//        System.out.println("answer = " + solution(word));
-//    }
+    public static void main(String[] args) {
+        String word = "I LoVe you";
+        System.out.println(solution(word));
+    }
 
     public static String solution(String word) {
         String answer = "";
