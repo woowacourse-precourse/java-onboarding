@@ -32,11 +32,15 @@ class Game{
     }
     int play(int[] numbers){
         int totalClapCount=0;
-        int[] digitArray;
+        Stream<String> digitArray;
+        int[] digits;
+
         Utility utility = new Utility();
+
         for (int number: numbers){
-            digitArray = utility.divideEachDigit(number);
-            totalClapCount+=countClap(digitArray);
+            digitArray = utility.transform(number);
+            digits = utility.map(digitArray);
+            totalClapCount+=countClap(digits);
         }
         return totalClapCount;
     }
