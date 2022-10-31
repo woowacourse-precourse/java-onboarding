@@ -11,11 +11,16 @@ public class Problem7 {
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 		Sns sns = new Sns();
 
-		for(List<String> relation : friends) {
+		for (List<String> relation : friends) {
 			sns.initUser(relation.get(0));
 			sns.initUser(relation.get(1));
 			sns.addRelation(relation);
 		}
+
+		User targetUser = sns.findUserById(user)
+				.orElseThrow(() -> new RuntimeException("NotFoundUser"));
+
+		targetUser.addVisitors(visitors);
 
 		return null;
 	}
@@ -23,14 +28,23 @@ public class Problem7 {
 	static class User {
 		private final String id;
 		private final Set<User> friendSet;
+		private final Map<String, Integer> visitorMap;
 
 		public User(String id) {
 			this.id = id;
 			this.friendSet = new HashSet<>();
+			this.visitorMap = new HashMap<>();
 		}
 
 		public void addFriend(User id) {
 			friendSet.add(id);
+		}
+
+		public void addVisitors(List<String> visitors) {
+			for (String visitor : visitors) {
+				Integer visitScore = visitorMap.getOrDefault(visitor, 0);
+				visitorMap.put(visitor, visitScore + 1);
+			}
 		}
 	}
 
