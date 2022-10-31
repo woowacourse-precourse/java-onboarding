@@ -22,6 +22,9 @@ class Problem1 {
 			return ERROR;
 		}
 
+		int pobiMaxScore = calculateMaxScoreBetweenPages(pobi.get(FIRST_ELEMENT), pobi.get(SECOND_ELEMENT));
+		int crongMaxScore = calculateMaxScoreBetweenPages(crong.get(FIRST_ELEMENT), crong.get(SECOND_ELEMENT));
+
 		return 0; //TODO - 임시값 변경하기
 	}
 
@@ -60,5 +63,41 @@ class Problem1 {
 
 	private static boolean isRightInterval(int firstPage, int secondPage) {
 		return secondPage - firstPage == INTERVAL;
+	}
+
+	private static int calculateMaxScoreBetweenPages(int firstPage, int secondPage) {
+		int firstPageMaxScore = calculateMaxScoreBetweenOperations(firstPage);
+		int secondPageMaxScore = calculateMaxScoreBetweenOperations(secondPage);
+
+		return Math.max(firstPageMaxScore, secondPageMaxScore);
+	}
+
+	private static int calculateMaxScoreBetweenOperations(int page) {
+		int addDigits = addDigits(page);
+		int multiplyDigits = multiplyDigits(page);
+
+		return Math.max(addDigits, multiplyDigits);
+	}
+
+	private static int multiplyDigits(int page) {
+		char[] digits = String.valueOf(page).toCharArray();
+		int result = 1;
+
+		for (char digit : digits) {
+			result *= Character.getNumericValue(digit);
+		}
+
+		return result;
+	}
+
+	private static int addDigits(int page) {
+		char[] digits = String.valueOf(page).toCharArray();
+		int result = 0;
+
+		for (char digit : digits) {
+			result += Character.getNumericValue(digit);
+		}
+
+		return result;
 	}
 }
