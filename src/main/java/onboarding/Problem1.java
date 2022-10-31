@@ -54,7 +54,7 @@ public class Problem1 {
         if (list.size() != 2) {
             return false;
         }
-        if (list.get(0) == 1 || list.get(1) == 399) {
+        if (list.get(0) == 1 || list.get(1) == 400) {
             return false;
         }
         return true;
