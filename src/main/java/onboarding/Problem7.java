@@ -39,14 +39,23 @@ public class Problem7 {
 				groupCollection.add(connectedMembers);
 			}
 		}
-		System.out.println(groupCollection);
+
+		Set<String> reconmmendedFriends = new HashSet<>();
+		for (Set<String> group : groupCollection) {
+			if (group.contains(user)) {
+				reconmmendedFriends = group;
+				break;
+			}
+		}
+		reconmmendedFriends.remove(user);
+		System.out.println(reconmmendedFriends);
 
 		List<String> answer = Collections.emptyList();
 		return answer;
 	}
 
-	private static void setConnectedMembers(String member, HashMap<String, ArrayList<String>> friendshipChart, Map<String, Boolean> memberUpdated,
-		Set<String> connectedMembers) {
+	private static void setConnectedMembers(String member, HashMap<String, ArrayList<String>> friendshipChart,
+		Map<String, Boolean> memberUpdated, Set<String> connectedMembers) {
 		memberUpdated.put(member, true);
 		connectedMembers.add(member);
 		for (String otherMember : friendshipChart.get(member)) {
@@ -54,6 +63,5 @@ public class Problem7 {
 				setConnectedMembers(otherMember, friendshipChart, memberUpdated, connectedMembers);
 			}
 		}
-
 	}
 }
