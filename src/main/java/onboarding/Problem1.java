@@ -170,6 +170,6 @@ class Problem1 {
         List<List<List<Integer>>> splitPageNumbers = convertIntoSplitPageNumbers(pageNumbers);
         int result = findWinner(splitPageNumbers);
 
-        return result;
+        return -2;
     }
 }
