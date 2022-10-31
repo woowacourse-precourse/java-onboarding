@@ -79,6 +79,11 @@
         - a의 index해당하는 값이 money보다 크면 제외
       - 나눈 값을 b의 동일한 인덱스에 저장
 
+- **리팩터링**
+  - Arrays.asList() 함수 이용해 makeAnswerArray() 메소드 대체 (mutable collection)
+  - (4문제 리팩터링과 동일한 아이디어)
+    - `싱글톤(Singleton)` 디자인 패턴 적용
+
 ---
 
 # 미션 - 온보딩
