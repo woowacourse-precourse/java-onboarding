@@ -1,12 +1,29 @@
 package onboarding;
 
 public class Problem3 {
+
+    public static void main(String[] args) {
+        System.out.println(solution(13));
+    }
     public static int solution(int number) {
-        int answer = 0;
         if(checkException(number)){
             throw new IllegalArgumentException();
         }
+        return getCount(number);
+    }
+    public static int getCount(int number){
+        int answer = 0;
+        for(int i=3;i<=number;i++){
+            int tmp=i;
+            while(tmp>0){
+                if(tmp % 10 != 0 && (tmp % 10)%3 == 0){
+                    answer++;
+                }
+                tmp /= 10;
+            }
+        }
         return answer;
+
     }
     public static boolean checkException(int number){
         if(checkNumber(number)){
