@@ -6,8 +6,14 @@ class Problem1 {
     // TODO: define appropriate names for results
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        var pobisPages = new Spread(pobi);
-        var crongsPages = new Spread(crong);
+        Spread pobisPages;
+        Spread crongsPages;
+        try {
+            pobisPages = new Spread(pobi);
+            crongsPages = new Spread(crong);
+        } catch (IllegalArgumentException e) {
+            return (-1);
+        }
 
         // Get and return result
 
@@ -23,8 +29,16 @@ class Spread {
     private final Page RIGHT;
 
     Spread(List<Integer> player) {
-        LEFT = new Page(player.get(0));
-        RIGHT = new Page(player.get(1));
+        if (player.size() != 2) {
+            throw new IllegalArgumentException();
+        }
+        int left = player.get(0);
+        int right = player.get(1);
+        if (left < 1 || 399 < left || left % 2 == 0 || right != left + 1) {
+            throw new IllegalArgumentException();
+        }
+        LEFT = new Page(left);
+        RIGHT = new Page(right);
     }
 
     // TODO: int score()
