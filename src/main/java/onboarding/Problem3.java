@@ -15,7 +15,19 @@ public class Problem3 {
         return count;
     }
 
+    public static boolean checkInput(int number) {
+        if(number < 1 || number > 10000) {
+            return false;
+        }
+
+        return true;
+    }
+
     public static int solution(int number) {
+        if(!checkInput(number)) {
+            return 0;
+        }
+
         int answer = 0;
         for(int i = 1 ; i <= number ; i++) {
             answer = answer + countNumber(i);
