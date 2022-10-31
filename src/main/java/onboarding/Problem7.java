@@ -8,65 +8,65 @@ import java.util.Map;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-		HashMap<String, List<String>> relation = makeFriendsList(user, friends, visitors);
+		HashMap<String, List<String>> relation = makeFriendsRelation(user, friends, visitors);
 
 		List<String> userFriends = relation.get(user);
 		relation.remove(user);
 
-		getKnowScore(relation, userFriends);
-		getVisitScore(relation, visitors);
+		getAcquaintanceScore(relation, userFriends);
+		getVisitorScore(relation, visitors);
 
 		List<String> result = processData(relation, userFriends);
 		return result;
     }
 
-	private static HashMap makeFriendsList(String user, List<List<String>> data, List<String> visitors) {
+	private static HashMap makeFriendsRelation(String user, List<List<String>> data, List<String> visitors) {
 		HashMap<String, List<String>> temp = new HashMap<>();
 		temp.put(user, new ArrayList<>());
 
 		for (List info : data) {
 			for (Object person : info) {
 				if (!temp.containsKey((String)person)) {
-					ArrayList<String> one = new ArrayList<>();
-					one.add("0");
-					temp.put((String)person, one);
+					ArrayList<String> defaultScore = new ArrayList<>();
+					defaultScore.add("0");
+					temp.put((String)person, defaultScore);
 				}
 			}
 
 			//앞 사람 확인
 			if (temp.containsKey(info.get(0))) {
-				List<String> trash = temp.get(info.get(0));
-				trash.add((String)info.get(1));
+				List<String> friendsList = temp.get(info.get(0));
+				friendsList.add((String)info.get(1));
 			}
 
 			//뒷 사람 확인
 			if (temp.containsKey(info.get(1))) {
-				List<String> trash = temp.get(info.get(1));
-				trash.add((String)info.get(0));
+				List<String> friendsList = temp.get(info.get(1));
+				friendsList.add((String)info.get(0));
 			}
 
 			for (String visitor : visitors) {
 				if (!temp.containsKey(visitor)) {
-					ArrayList<String> one = new ArrayList<>();
-					one.add("0");
-					temp.put(visitor, one);
+					ArrayList<String> defaultScore = new ArrayList<>();
+					defaultScore.add("0");
+					temp.put(visitor, defaultScore);
 				}
 			}
 		}
 		return temp;
 	}
 
-	private static void getKnowScore(HashMap<String, List<String>> relation, List<String> userFriends) {
+	private static void getAcquaintanceScore(HashMap<String, List<String>> relation, List<String> userFriends) {
 		for (String name : userFriends) {
-			for (String first : relation.keySet()) {
-				if (relation.get(first).contains(name)) {
-					relation.get(first).set(0, String.valueOf(Integer.parseInt(relation.get(first).get(0)) + 10));
+			for (String person : relation.keySet()) {
+				if (relation.get(person).contains(name)) {
+					relation.get(person).set(0, String.valueOf(Integer.parseInt(relation.get(person).get(0)) + 10));
 				}
 			}
 		}
 	}
 
-	private static void getVisitScore(HashMap<String, List<String>> relation, List<String> visitors) {
+	private static void getVisitorScore(HashMap<String, List<String>> relation, List<String> visitors) {
 		for (String visitor : visitors) {
 			relation.get(visitor).set(0, String.valueOf(Integer.parseInt(relation.get(visitor).get(0)) + 1));
 		}
@@ -74,8 +74,8 @@ public class Problem7 {
 
 	private static List<String> processData(HashMap<String, List<String>> relation, List<String> userFriends) {
 		Map<String, Integer> data = new HashMap<>();
-		for (String a : relation.keySet()) {
-			data.put(a, Integer.parseInt(relation.get(a).get(0)));
+		for (String person : relation.keySet()) {
+			data.put(person, Integer.parseInt(relation.get(person).get(0)));
 		}
 
 		// user와 이미 친구인 관계는 목록에서 제거
