@@ -48,6 +48,45 @@ public class Problem7 {
         }
         return findFriend;
     }
+    //  3.친구 별로 사용자와 같은 친구 하나당 10을 추가하는 hashmap 생성
+//  visitors는 1점 추가
+    /*visitors에 1추가하면 5명의 친구가 뽑힘 0이랑 헷갈린건가? 1은 배제하라는 건가 일단
+    1인 친구도 빼고 만듬.*/
+    public static HashMap<String, Integer> addCount(List<String> findFriend, HashMap<String,List<String>> friendMap, List<String> visitors,String user) {
+        HashMap<String, Integer> friendCount = new HashMap<>();
+        for (String friendEach : findFriend) {/*리스트에서 같은 친구 뽑아서 비교*/
+            for (String key : friendMap.keySet()) {/*전체 친구 value 중 같은 친구 있으면*/
+                if (key.equals(user)) {/*user는 건너뛰기*/
+                    continue;
+                }
+                List<String> value = friendMap.get(key);/*hashmap에서는 밸류 수정하면 갱신되기 때문에
+                value를 숫자로 받아서 10추가한 후 key value를 remove 후 다시 바뀐 밸류를 다시 key value 저장
+                */
+                if (value.contains(friendEach)) {
+                    if (friendCount.containsKey(key)) {
+                        Integer numValue = friendCount.get(key);
+                        numValue += 10;
+                        friendCount.remove(key);
+                        friendCount.put(key, numValue);
+                    } else {
+                        friendCount.put(key, 10);
+                    }
+                }
+            }
+        }
+        for (String visitor : visitors) { /*위와 같은 방식으로 visitor는 점수 1추가*/
+            if (friendCount.containsKey(visitor)) {
+                Integer numValue = friendCount.get(visitor);
+                numValue += 1;
+                friendCount.remove(visitor);
+                friendCount.put(visitor, numValue);
+            } else {
+                friendCount.put(visitor, 1);
+            }
+        }
+        return friendCount;
+    }
+
 
 }
 
