@@ -14,7 +14,7 @@ public class Problem7 {
         init(user, friends);
         createUserInFriends(friends, user);
         createUserInVisitors(visitors);
-        return users.getRecommendFriends(userFriends);
+        return users.getRecommendFriends(userFriends, user);
     }
 
     private static void init(String user, List<List<String>> friends) {

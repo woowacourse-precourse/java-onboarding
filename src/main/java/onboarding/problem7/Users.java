@@ -17,9 +17,10 @@ public class Users {
         users = new ArrayList<>();
     }
 
-    public List<String> getRecommendFriends(List<String> userFriends) {
+    public List<String> getRecommendFriends(List<String> userFriends, String userName) {
         return users.stream()
                 .filter(user -> !userFriends.contains(user.getName()))
+                .filter(user -> !user.getName().equals(userName))
                 .sorted(Comparator.comparing(User::getScore).reversed().thenComparing(User::getName))
                 .limit(RANKING_MAX_SIZE)
                 .map(User::getName)
