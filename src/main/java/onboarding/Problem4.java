@@ -13,10 +13,8 @@ public class Problem4 {
 	}
 
 	private static String getTreeFrogLanguage(String word) {
+		InputValidator.checkRightWordRange(word);
 		String treeFrogLanguage = "";
-		if (!InputValidator.isRightWordRange(word)) {
-			throw new IllegalArgumentException();
-		}
 		for (char c : word.toCharArray()) {
 			treeFrogLanguage += changeValueFromTreeFrogDict(c);
 		}
@@ -34,10 +32,8 @@ public class Problem4 {
 		int key = charToAscii(c);
 		if (Character.isUpperCase(c)) {
 			return (char)(Z_UPPER_ASCII - (key - A_UPPER_ASCII));
-		} else if (Character.isLowerCase(c)) {
-			return (char)(Z_LOWER_ASCII - (key - A_LOWER_ASCII));
 		}
-		return ' ';
+		return (char)(Z_LOWER_ASCII - (key - A_LOWER_ASCII));
 	}
 
 	private static int charToAscii(char c) {
@@ -52,12 +48,11 @@ public class Problem4 {
 	}
 
 	static class InputValidator {
-		private static boolean isRightWordRange(String word) {
+		public static void checkRightWordRange(String word) {
 			int wordLength = word.length();
 			if (wordLength < 1 || wordLength > 1000) {
-				return false;
+				throw new IllegalArgumentException();
 			}
-			return true;
 		}
 	}
 }
