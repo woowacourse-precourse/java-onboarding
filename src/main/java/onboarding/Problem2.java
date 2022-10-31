@@ -14,7 +14,6 @@ public class Problem2 {
                 } // if - 앞뒤문자비교
             }
         } while(count != 0);
-
         return answer;
     }
 }
