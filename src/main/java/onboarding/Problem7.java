@@ -19,6 +19,11 @@ public class Problem7 {
             findUserFriends(list, user);
         }
 
+        for (List<String> list : friends) {
+            calculateScore(list, visitors);
+        }
+
+
         return answer;
     }
 
@@ -45,6 +50,20 @@ public class Problem7 {
         }
         if (friends.get(1).equals(user)) {
             userFriends.add(friends.get(0));
+        }
+    }
+
+    private static void calculateScore(List<String> friends, List<String> visitors){
+        if(userFriends.contains(friends.get(0))){
+            scoreMap.replace(friends.get(1), scoreMap.get(friends.get(0)) + 10);
+        }
+
+        if(userFriends.contains(friends.get(1))){
+            scoreMap.replace(friends.get(0), scoreMap.get(friends.get(0)) + 10);
+        }
+
+        for(String visitor : visitors){
+            scoreMap.replace(visitor, scoreMap.get(visitor) + 1);
         }
     }
 }
