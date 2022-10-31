@@ -9,15 +9,26 @@ public class Problem6 {
     public static boolean isException(List<List<String>> list){
         int length = list.size();
         if(length >= 1 && length <= 10000){
-            for(int i = 0; i<length; i++){
+            for(List<String> check_list : list){
                 // 이메일
-                String email = list.get(i).get(0);
+                String email = check_list.get(0);
                 // 이메일 유효성 체크.
-                if(checkEmail(email)){
-
+                if(!checkEmail(email)){
+                    // 이메일 유효성 검사를 통과 못한 경우 false
+                    return false;
+                }
+                // 닉네임
+                String nickname = check_list.get(0);
+                // 닉네임 유효성 체크
+                if(!checkNickname(nickname)){
+                    // 닉네임 유효성 검사를 통과 못한 경우 false
+                    return false;
                 }
             }
+            // list길이 조건을 통과하고 이메일, 닉네임 유효성 검사를 통과한다면 true
+            return true;
         }
+        // list길이 조건에 통과하지 못한다면 false
         return false;
     }
 
@@ -32,6 +43,7 @@ public class Problem6 {
         String pattern = "^[가-힣]{1,19}$";
         return nickname.matches(pattern);
     }
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         // 1. 예외처리 : 크루 인원이 1~10000 사이인지 체크하기.
