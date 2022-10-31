@@ -39,9 +39,11 @@ public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
         HashMap<String, List<String>> wordMap = getWordMap(forms);
-        Set<String> resultSet = getResultSet(wordMap);
         
-        List<String> answer = List.of("answer");
-        return answer;
+        // 정렬
+        List<String> resultList = new ArrayList<>(getResultSet(wordMap));
+        Collections.sort(resultList);
+        
+        return resultList;
     }
 }
