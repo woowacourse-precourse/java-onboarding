@@ -1,7 +1,7 @@
 package Exception;
 
-public class EmailException extends Exception{
-    public EmailException(String message) {
+public class EmailFormException extends Exception{
+    public EmailFormException(String message) {
         super(message);
     }
 }
