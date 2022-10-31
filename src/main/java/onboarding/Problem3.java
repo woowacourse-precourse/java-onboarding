@@ -4,8 +4,8 @@ public class Problem3 {
     public static int solution(int number) {
         int clapNumber = 0;
 
-        int answer = 0;
-        return answer;
+
+        return clapNumber;
     }
 
     public static int countMultipleOf3(int targetNumber){
@@ -13,8 +13,9 @@ public class Problem3 {
         int numberOfMultipleOf3 = 0;
         while(targetNumber > 0){
             numberOfDigit = targetNumber % 10;
+            //System.out.print(numberOfDigit + " ");
             targetNumber /= 10;
-            if(numberOfDigit%3 == 0) numberOfMultipleOf3++;
+            if(numberOfDigit==3 || numberOfDigit==6 || numberOfDigit==9) numberOfMultipleOf3++;
         }
         return numberOfMultipleOf3;
     }
