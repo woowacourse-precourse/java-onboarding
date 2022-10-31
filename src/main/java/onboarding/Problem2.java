@@ -1,29 +1,32 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Problem2 {
     public static String solution(String cryptogram) {
-        int count = 1;
         String answer = cryptogram;
-        while(count != answer.length()) {
-            count = 1;
-            for (int i = 0; i <answer.length() -1; i++) {
-                if (answer.charAt(i) == answer.charAt(i+1)) {
-                    if (i ==0){
-                        answer = answer.substring(2);
+        while (!answer.equals(checkStr(answer))){
+            answer = checkStr(answer);
+        }
+        return answer;
+    }
+
+    static String checkStr(String a){
+        for (int i =0; i < a.length()-1;i++){
+            if (a.charAt(i) == a.charAt(i+1)){
+                if (i==0){
+                    if (a.length()==2){
+                        a= "";
+                        return a;
                     }else {
-                        answer = answer.substring(0,i) + answer.substring(i+2);
+                        a = a.substring(2);
+                        return a;
                     }
-                    count += 1;
-                    break;
-                } else {
-                    count += 1;
+                }
+                else {
+                    a= a.substring(0,i) +a.substring(i+2);
+                    return a;
                 }
             }
         }
-
-        return answer;
+        return a;
     }
 }
