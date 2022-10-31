@@ -81,12 +81,6 @@ class Problem1 {
     }
 
     private static int getWinner(int pobiMaxScore, int crongMaxScore) {
-        if (pobiMaxScore < crongMaxScore) {
-            return CRONG_WIN;
-        }
-        if (pobiMaxScore > crongMaxScore) {
-            return POBI_WIN;
-        }
-        return DRAW;
+        return (pobiMaxScore == crongMaxScore) ? DRAW : pobiMaxScore < crongMaxScore ? CRONG_WIN : POBI_WIN;
     }
 }
