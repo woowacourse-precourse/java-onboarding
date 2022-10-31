@@ -56,6 +56,16 @@ public class Problem7 {
             priorityRank.offer(new ID(s, friendList.get(s)));
         }
 
+
+        while (!priorityRank.isEmpty() && answer.size() < 5) {
+            ID id = priorityRank.poll();
+            int score = id.score;
+            String name = id.name;
+            if (score > 0) {
+                answer.add(name);
+            }
+        }
+
         return answer;
     }
 
