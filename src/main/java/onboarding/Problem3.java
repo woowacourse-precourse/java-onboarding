@@ -15,7 +15,10 @@ public class Problem3 {
     }
 
     public static int solution(int number) {
-        int answer = 0;
-        return answer;
+        int totalCount = 0;
+        for (int i = 1; i < number + 1; i++) {
+            totalCount += AccumulateCount(i);
+        }
+        return totalCount;
     }
 }
