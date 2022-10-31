@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -13,9 +12,10 @@ public class Problem7 {
     public static final int ACQUAINTANCE_SCORE = 10;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> friendsOfUser = findFriendsByUser(user, friends);
-        Map<String, Integer> recommendationScore = addAcquaintanceScore(friends, friendsOfUser, user);
+        List<String> friendsOfUser = findFriendsOfOne(user, friends);
         visitors = excludeFriendsFromVisitors(visitors, friendsOfUser);
+
+        Map<String, Integer> recommendationScore = getAcquaintanceScore(friends, friendsOfUser, user);
         addVisitorScore(visitors, recommendationScore);
         sortRecommendationScore(recommendationScore);
         return getRecommendationNames(recommendationScore);
@@ -48,24 +48,28 @@ public class Problem7 {
         }
     }
 
-    private static Map<String, Integer> addAcquaintanceScore(List<List<String>> friends, List<String> friendsOfUser, String user) {
-        Map<String, Integer> scoreOfAcquaintances = new HashMap<>();
+    private static Map<String, Integer> getAcquaintanceScore(List<List<String>> friends, List<String> friendsOfUser, String user) {
+        Map<String, Integer> acquaintanceScore = new HashMap<>();
         for (String friendOfUser : friendsOfUser) {
-            List<String> acquaintances = findFriendsByUser(friendOfUser, friends);
+            List<String> acquaintances = findFriendsOfOne(friendOfUser, friends);
             acquaintances.remove(user);
-            for (String acquaintance : acquaintances) {
-                if (scoreOfAcquaintances.containsKey(acquaintance)) {
-                    scoreOfAcquaintances.put(acquaintance, scoreOfAcquaintances.get(acquaintance) + ACQUAINTANCE_SCORE);
-                }
-                if (!scoreOfAcquaintances.containsKey(acquaintance)) {
-                    scoreOfAcquaintances.put(acquaintance, ACQUAINTANCE_SCORE);
-                }
-            }
+            addAcquaintanceScore(acquaintanceScore, acquaintances);
         }
-        return scoreOfAcquaintances;
+        return acquaintanceScore;
     }
 
-    private static List<String> findFriendsByUser(String user, List<List<String>> friends) {
+    private static void addAcquaintanceScore(Map<String, Integer> acquaintanceScore, List<String> acquaintances) {
+        for (String acquaintance : acquaintances) {
+            if (acquaintanceScore.containsKey(acquaintance)) {
+                acquaintanceScore.put(acquaintance, acquaintanceScore.get(acquaintance) + ACQUAINTANCE_SCORE);
+            }
+            if (!acquaintanceScore.containsKey(acquaintance)) {
+                acquaintanceScore.put(acquaintance, ACQUAINTANCE_SCORE);
+            }
+        }
+    }
+
+    private static List<String> findFriendsOfOne(String user, List<List<String>> friends) {
         Set<String> friendsOfUser = new HashSet<>();
         for (List<String> friend : friends) {
             if (friend.contains(user)) {
