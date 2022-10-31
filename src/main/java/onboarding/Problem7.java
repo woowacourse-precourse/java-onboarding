@@ -1,7 +1,7 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.List;
+import java.text.CollationKey;
+import java.util.*;
 
 /**
  * 1. user의 친구들 구하기
