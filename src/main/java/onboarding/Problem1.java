@@ -15,6 +15,7 @@ class Problem1 {
             return 0;
         }else return 2;
     }
+
     public static int score(List<Integer> list){
         int max = Integer.MIN_VALUE;
         for (int i = 0; i < list.size(); i++) {
