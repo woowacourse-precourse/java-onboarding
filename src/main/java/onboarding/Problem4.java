@@ -14,13 +14,16 @@ public class Problem4 {
     static int gap = 'A' - 'a'; /** 소문자에서 갭을 더하면 대문자가 됨. */
     public static String solution(String word) {
         String answer = "";
+        char letter;
+
         for (int i = 0; i < word.length(); i++){
-            if ('a' <= word.charAt(i) && word.charAt(i) <= 'z'){
-                answer += alphabet.charAt(word.charAt(i) - 'a');
-            } else if ('A' <= word.charAt(i) && word.charAt(i) <= 'Z'){
+            letter = word.charAt(i);
+            if (!Character.isAlphabetic(letter)){
+                answer += letter;
+            } else if (Character.isUpperCase(letter)){
                 answer += (char)(alphabet.charAt(word.charAt(i) - 'A') + gap);
             } else {
-                answer += word.charAt(i);
+                answer += alphabet.charAt(word.charAt(i) - 'a');
             }
         }
         return answer;
