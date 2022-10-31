@@ -21,3 +21,13 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+---
+
+### 기능 구현
+
+- [x] 중복 개수를 세기 위한 Map<String, Integer>선언
+  - forms의 닉네임들을 2글자씩 끊어서 key로 사용하고 Value를 +1
+- [x] Map에서 Value가 2 이상인 key만 추려서 리턴할 배열에 삽입
+- [x] 문자열을 오름차순으로 정렬한다.
+  - 이메일 형식은 `@email.com` 으로 고정되어 있으므로 앞에 닉네임만 비교한다.
