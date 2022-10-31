@@ -12,7 +12,7 @@ public class Problem5 {
         List<Integer> answer = new ArrayList(Collections.nCopies(monetaryUnitLength,0));
 
         for(int i =0; i< monetaryUnitLength; i++){
-            int count = (int)(money / monetaryUnit.get(i));
+            int count = money / monetaryUnit.get(i);
             answer.set(i, count);
             money %= monetaryUnit.get(i);
         }
