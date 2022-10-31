@@ -14,17 +14,12 @@ class Problem1 {
     }
     public static int win(List<Integer> pobi, List<Integer> crong) {
 
-        int pobiMax = max(pobi);
+        int pobiMax = check(pobi);
 
-        int crongMax = max(crong);
+        int crongMax = check(crong);
 
         int answer = -2;
 
-        if((pobiMax==-1) || (crongMax==-1)) {
-
-            answer = -1;
-
-        }
 
         if( pobiMax > crongMax){
 
@@ -42,19 +37,35 @@ class Problem1 {
 
         }
 
+        if((pobiMax==-1) || (crongMax==-1)) {
+
+            answer = -1;
+
+        }
+
         return answer;
     }
 
-    public static int max(List<Integer> pages) {
+    public static int check(List<Integer> pages) {
 
-        int pageMax = 0;
+        int answer = 0;
 
         if((pages.get(0)+1) != (pages.get(1))) {
 
-            pageMax =-1;
+            answer =-1;
         }
 
         if((pages.get(0)+1) == (pages.get(1))){
+            answer = max(pages);
+        }
+
+            return answer;
+
+    }
+
+    public static int max(List<Integer> pages){
+
+            int pageMax;
 
             pageMax = sum(pages.get(0));
 
@@ -75,11 +86,9 @@ class Problem1 {
                 pageMax = sum(pages.get(1));
 
             }
+            return pageMax;
         }
 
-            return pageMax;
-
-    }
 
     public static int sum(int page) {
         int pageSum =0;
