@@ -31,7 +31,6 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         validate(user, friends, visitors);
         RelationShip relationShip = new RelationShip(friends);
-        System.out.println(relationShip);
 
         UserScore userScore = new UserScore(user, visitors, relationShip);
 
