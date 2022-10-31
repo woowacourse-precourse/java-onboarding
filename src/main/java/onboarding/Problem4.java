@@ -25,4 +25,11 @@ public class Problem4 {
 
         return letter;
     }
+
+    public static String convertTextToOpposite(String text) {
+        return text.chars()
+                .map(c -> convertCharacterToOpposite((char) c))
+                .collect(StringBuilder::new, StringBuilder::appendCodePoint, StringBuilder::append)
+                .toString();
+    }
 }
