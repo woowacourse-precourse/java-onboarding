@@ -23,4 +23,10 @@ public class Problem2 {
 
         return false;
     }
+
+    public static boolean isException(String cryptogram){
+        if(isInRange(cryptogram) && isLowerCase(cryptogram))
+            return true;
+        return false;
+    }
 }

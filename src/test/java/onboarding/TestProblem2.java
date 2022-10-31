@@ -27,4 +27,17 @@ public class TestProblem2 {
         assertThat(Problem2.isLowerCase(T3)).isEqualTo(false);
 
     }
+
+    @Test
+    void TestisException(){
+        String T1 = "abcd";
+        String T2 = "ABCD";
+        String T3 = "Abcd";
+        String T4 = "";
+
+        assertThat(Problem2.isException(T1)).isEqualTo(true);
+        assertThat(Problem2.isException(T2)).isEqualTo(false);
+        assertThat(Problem2.isException(T3)).isEqualTo(false);
+        assertThat(Problem2.isException(T4)).isEqualTo(false);
+    }
 }
