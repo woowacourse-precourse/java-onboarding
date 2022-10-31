@@ -11,7 +11,7 @@ public class Problem3 {
         return answer;
     }
 
-    public static String toString(int number) {
+    private static String toString(int number) {
         return String.valueOf(number);
     }
 
