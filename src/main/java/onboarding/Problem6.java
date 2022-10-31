@@ -17,6 +17,14 @@ public class Problem6 {
             formsName.add(temp);
         }
 
+        for (int i = 0; i < formsName.size()-1; i++) {
+            for (int j = i + 1; j < formsName.size(); j++) {
+                String name1 = formsName.get(i);
+                String name2 = formsName.get(j);
+            }
+        }
+
+
 
 
 
