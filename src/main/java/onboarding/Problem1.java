@@ -6,14 +6,12 @@ class Problem1 {
     private static final int FIRST_PAGE_NUMBER = 1;
     private static final int LAST_PAGE_NUMBER = 400;
 
-
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if (checkInvalidPage(pobi) || checkInvalidPage(crong)) {
             return -1;
         }
         int pobiResult = getMaxResult(pobi);
         int crongResult = getMaxResult(crong);
-
         return getWinner(pobiResult, crongResult);
     }
 
@@ -24,16 +22,29 @@ class Problem1 {
     }
 
     private static int findMaxFromOnePage(Integer page) {
-        int addMaxNum = 0;
-        int multipleMaxNum = 1;
+        int addMaxNum = getMaxAddNum(page);
+        int multipleMaxNum = getMaxMultipleNum(page);
+        return Math.max(addMaxNum, multipleMaxNum);
+    }
 
-        while ( page > 0) {
+    private static int getMaxAddNum(Integer page) {
+        int addMaxNum = 0;
+        while ( page > 0 ) {
             int i = page % 10;
             addMaxNum += i;
+            page /= 10;
+        }
+        return addMaxNum;
+    }
+
+    private static int getMaxMultipleNum(Integer page) {
+        int multipleMaxNum = 1;
+        while ( page > 0 ) {
+            int i = page % 10;
             multipleMaxNum *= i;
             page /= 10;
         }
-        return Math.max(addMaxNum, multipleMaxNum);
+        return multipleMaxNum;
     }
 
     private static int getWinner(Integer pobiMaxNum, Integer crongMaxNum) {
