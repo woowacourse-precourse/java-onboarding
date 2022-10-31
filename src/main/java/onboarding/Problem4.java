@@ -8,29 +8,17 @@ public class Problem4 {
 
 
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        return treeFrog(word);
     }
 
     private static String treeFrog(String word) {
-        for (int index = 0; index < word.length(); index++) {
-            int asciiLetter = (int) word.charAt(index);
+        String answer = "";
 
-        }
+        return answer;
     }
 
     private static char convertLetter(int asciiLetter) {
-        if (validateRightInput(asciiLetter) == false){
-            return // error
-        }
 
-    }
-
-    private static boolean validateRightInput(int asciiLetter) {
-        if (isSpace(asciiLetter) && isLower(asciiLetter) && isUpper(asciiLetter)) {
-            return true;
-        }
-        return false;
     }
 
     private static boolean isSpace(int asciiLetter) {
@@ -53,5 +41,7 @@ public class Problem4 {
         }
         return false;
     }
+
+
 
 }
