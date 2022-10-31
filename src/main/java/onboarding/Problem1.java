@@ -7,4 +7,20 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
+
+    static class Book {
+        private final List<Integer> pages;
+
+        public Book(List<Integer> pages) {
+            this.pages = pages;
+        }
+
+        private boolean isPageEven(Integer page) {
+            return (page % 2) == 0;
+        }
+
+        public List<Integer> getPages() {
+            return pages;
+        }
+    }
 }
