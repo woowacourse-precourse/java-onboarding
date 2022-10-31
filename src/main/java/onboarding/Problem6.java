@@ -48,6 +48,19 @@ public class Problem6 {
     // target 을 기준으로 name 과 연속적으로 중복되는 문자열이 있는지 확인
     private static boolean check(String target, String name) {
 
+        for (int i = 0; i < target.length() - 1; i++) {
+            for (int j = 0; j < name.length() - 1; i++) {
+                //문자 하나씩 비교해가면서 현재 비교한 문자와 그 다음 비교한 문자가 연속되면 참 값 리턴
+                if (target.charAt(i) == name.charAt(j)) {
+                    if (target.charAt(i + 1) == name.charAt(j + 1)) {
+                        return true;
+                    }
+                } else {
+                    break;
+                }
+            }
+        }
+
         return false;
     }
 }
