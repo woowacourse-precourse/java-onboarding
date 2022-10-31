@@ -24,6 +24,29 @@ public class Problem7 {
             }
         }
         friendSet.remove(user);
+        for(String friendName: friendSet){
+            for(List<String> friend : friends){
+                String f1= friend.get(0);
+                String f2 = friend.get(1);
+                String bridge = "";
+
+                if(f1.equals(friendName)){
+                    bridge = f2;
+                }else if(f2.equals(friendName)){
+                    bridge = f1;
+                }
+                
+                if(bridge.equals(user)||bridge.equals((""))){
+                    continue;
+                }
+
+                if(score.containsKey(bridge)){
+                    score.replace(bridge,score.get(bridge) + 10);
+                }else{
+                    score.put(bridge,10);
+                }
+            }
+        }
         return answer;
     }
 }
