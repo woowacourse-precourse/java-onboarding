@@ -11,6 +11,14 @@ public class Problem4 {
         return answer;
     }
 
-    // 알파벳을 반대쪽 알파벳으로 변환해주는 함수 reversAlphabet()
+    // 알파벳(대문자)을 반대쪽 알파벳으로 변환해주는 함수 reversUpperAlphabet()
+    private static char reverseUpperAlphabet(char c){
+        char result = c;
+        if ('A'<=c && c<='Z'){
+            result = (char) ('Z'-c+'A');
+        }
+        return result;
+    }
 
+    // 알파벳(소문자)을 반대쪽 알파벳으로 알파벳(대문자)을 반대쪽 알파벳으로 변환해주는 함수 reversLowerAlphabet()
 }
