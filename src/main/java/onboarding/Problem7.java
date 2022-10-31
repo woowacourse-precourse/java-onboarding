@@ -57,10 +57,7 @@ public class Problem7 {
     }
 
     private void connect(String user, String friend) {
-      if (!friendShip.containsKey(user)) {
-        friendShip.put(user, new HashSet<>());
-      }
-      friendShip.get(user).add(friend);
+      friendShip.computeIfAbsent(user, s -> new HashSet<>()).add(friend);
     }
 
     public Map<String, Integer> createRecommendedScore(String user, List<String> visitors) {
