@@ -17,8 +17,14 @@ public class Problem6 {
             if (!validEmail(forms.get(i).get(0))) {
                 continue;
             }
+            if (checkRepeated(forms.get(i).get(1))) {
+                set.add(forms.get(i).get(0));
+            }
             String nickName = forms.get(i).get(1);
             findRepeatedNickname(forms, set, i, nickName);
+        }
+        if (checkRepeated(forms.get(forms.size() - 1).get(1))) {
+            set.add(forms.get(forms.size() - 1).get(0));
         }
         return new ArrayList<>(set);
     }
@@ -59,18 +65,25 @@ public class Problem6 {
     }
 
     private static boolean validEmail(String email) {
-        return email.endsWith("@email.com");
+        return email.endsWith("@email.com") && (email.length() >= 11 && email.length() <= 20);
     }
 
     private static boolean checkRepeated(String nickName) {
         if (nickName.length() <= 3) {
             return false;
         }
-        for (int i = 0; i < nickName.length() - 2; i++) {
-            if (nickName.substring(i, i + 1).equals(
-                nickName.substring(i + 1, i + 2)
-            )) {
+        int index = 2;
+        for (int i = 0; i <= nickName.length() / 2; i++) {
+            if (index + i == nickName.length()) {
+                return false;
+            }
+            String substring = nickName.substring(i, i + index);
+            if (substring.equals(nickName.substring(i + index, i + index + index))) {
                 return true;
+            }
+            if (i == nickName.length() / 2 || i + index + index > nickName.length() - 1) {
+                i = -1;
+                index++;
             }
         }
         return false;
