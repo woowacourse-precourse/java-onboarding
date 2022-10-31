@@ -31,7 +31,6 @@ public class Problem7 {
                 String pattern = checkScore[y][0];
                 if (pattern.equals(visitors.get(m))) {
                     checkScore[y][1] = String.valueOf(Integer.parseInt(checkScore[y][1]) + 1);
-                    System.out.println("중도 확인용 : " + Arrays.deepToString(checkScore));
                 }
             }
         }
@@ -57,7 +56,6 @@ public class Problem7 {
                 String pattern = checkScoreVisitors[d][0];
                 if (pattern.equals(visitors.get(c))) {
                     checkScoreVisitors[d][1] = String.valueOf(Integer.parseInt(checkScoreVisitors[d][1]) + 1);
-                    System.out.println("방문자 중도 확인 : " + Arrays.deepToString(checkScoreVisitors));
                 }
             }
         }
@@ -70,8 +68,32 @@ public class Problem7 {
         for (int b = 0; b < checkScoreVisitors.length; b++) {
             lastNames.add(List.of(checkScoreVisitors[b]));
         }
-        System.out.println("최종 점수 받은 이들 중도 확인 : " + lastNames);
 
-        return newNames;
+        //위 리스트를 기반으로 최종적으로 인물 5명을 추려 반환시킨다
+        List<String> answerList = new ArrayList<>();
+        for (int z = 0; z < lastNames.size(); z++) {
+            int max = 0;
+            String nameOne = "";
+            //점수가 제일 큰 인물을 구하고
+            if (Integer.parseInt(lastNames.get(z).get(1)) > max) {
+                max = Integer.parseInt(lastNames.get(z).get(1));
+                nameOne = lastNames.get(z).get(0);
+            }
+            //점수가 동점일 경우에는 인물 이름을 사전순으로 배치한다.
+            if (Integer.parseInt(lastNames.get(z).get(1)) == max) {
+                if (lastNames.get(z).get(0).compareToIgnoreCase(nameOne) < 0) {
+                    nameOne = lastNames.get(z).get(0);
+                }
+                if (lastNames.get(z).get(0).compareToIgnoreCase(nameOne) > 0) {
+                    continue;
+                }
+            }
+            //인물은 최대 5명까지 추천할 수 있다.
+            if (answerList.size() == 5) {
+                return answerList;
+            }
+            answerList.add(nameOne);
+        }
+        return answerList;
     }
 }
