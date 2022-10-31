@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,7 +18,8 @@ public class Problem6 {
             }
         }
         List<String> similarEmailList = duplicatedList.stream().distinct().collect(Collectors.toList());
-        return answer;
+        Collections.sort(similarEmailList);
+        return similarEmailList;
     }
 
     private static List<String> findDuplicate(String word, String myNickname, List<List<String>> forms) {
