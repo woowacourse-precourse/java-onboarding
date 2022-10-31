@@ -25,6 +25,18 @@ public class Problem5 {
         int bankMoney = money;
         int paperMoney = MAX_PAPER;
 
+        while (true) {
+            answer.add(withdrawPaper(bankMoney, paperMoney));
+            bankMoney %= paperMoney;
+
+            if (paperMoney == 10) {
+                answer.add(bankMoney);
+                break;
+            }
+
+            paperMoney = getNextPaper(paperMoney);
+        }
+
         return answer;
     }
 }
