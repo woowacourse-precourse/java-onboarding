@@ -36,14 +36,19 @@ public class Problem2 {
 		Stack<Character> stack = new Stack<>();
 
 		for (char c : chars) {
-			if (prev != c) {
-				stack.push(c);
-				prev = c;
-			} else if (isRemovable(stack, prev)) {
-				stack.pop();
-			}
+			prev = getRemoveDuplicateStack(prev, stack, c);
 		}
 		return stack;
+	}
+
+	private static char getRemoveDuplicateStack(char prev, Stack<Character> stack, char c) {
+		if (prev != c) {
+			stack.push(c);
+			prev = c;
+		} else if (isRemovable(stack, prev)) {
+			stack.pop();
+		}
+		return prev;
 	}
 
 	private static boolean isRemovable(Stack<Character> stack, char prev) {
