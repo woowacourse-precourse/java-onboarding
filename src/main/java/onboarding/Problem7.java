@@ -33,4 +33,15 @@ public class Problem7 {
         }
     }
 
+    public static void friendsOfFriends(String user,List<List<String>> friends) {
+        for(List<String> strings : friends) {
+            if(strings.get(0).equals(user) || strings.get(1).equals(user)) {continue; }
+            if(userfriends.contains(strings.get(0) + user)) {
+                insertMapValue(strings.get(1),10,user);
+            }
+            else if(userfriends.contains(strings.get(1) + user)) {
+                insertMapValue(strings.get(0),10,user);
+            }
+        }
+    }
 }
