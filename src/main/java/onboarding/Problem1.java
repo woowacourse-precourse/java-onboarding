@@ -5,6 +5,7 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        int answerOfPoi, answerOfCrong;
 
         // 예외 사항 처리
         if(!(isValidBookPage(pobi) && isValidBookPage(crong)))
@@ -18,4 +19,24 @@ class Problem1 {
         boolean isValidBookScope = (person.get(0) >= 1 && person.get(1) <= 400);
         return (isLeftOddNumber && isLeftAndRight && isValidBookScope);
     }
+
+    static int multiplyAllNumbers(Integer number){
+        int result = 1;
+        String s = Integer.toString(number);
+
+        for(int i=0; i<s.length(); i++)
+            result *= Integer.parseInt((s.substring(i,i+1)));
+
+        return result;
+    }
+
+    static int addAllNumbers(Integer number){
+        int sum = 0;
+        String s = Integer.toString(number);
+
+        for(int i=0; i<s.length(); i++)
+            sum += Integer.parseInt(s.substring(i, i+1));
+        return sum;
+    }
+
 }
