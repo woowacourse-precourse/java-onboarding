@@ -14,7 +14,7 @@ public class Problem2 {
 		while (i < cryptogram.length()) {
 			String remainingCryptogram = cryptogram.substring(i);
 			char lastCharOfNewCryptogram = newCryptogram.charAt(newCryptogram.length() - 1);
-			
+
 			newCryptogram = makeCryptogramByChar(i, cryptogram, newCryptogram);
 			i += getNextIndexRange(lastCharOfNewCryptogram, remainingCryptogram);
 
@@ -31,11 +31,9 @@ public class Problem2 {
 		char lastCharOfNewCryptogram = newCryptogram.charAt(newCryptogram.length() - 1);
 
 		if (nowChar == lastCharOfNewCryptogram) {
-			newCryptogram = removeLastCharFromString(newCryptogram);
-		} else {
-			newCryptogram += nowChar;
+			return removeLastCharFromString(newCryptogram);
 		}
-		return newCryptogram;
+		return newCryptogram + nowChar;
 	}
 
 	private static String removeLastCharFromString(String value) {
@@ -52,9 +50,8 @@ public class Problem2 {
 
 	public static int getSameCharCount(char lastChar, String cryptogram) {
 		int sameCharCount = 0;
-		int i = 0;
-		while (i < cryptogram.length() && lastChar == cryptogram.charAt(i)) {
-			sameCharCount = ++i;
+		while (sameCharCount < cryptogram.length() && lastChar == cryptogram.charAt(sameCharCount)) {
+			sameCharCount++;
 		}
 		return sameCharCount;
 	}
@@ -63,7 +60,7 @@ public class Problem2 {
 
 		public static void checkRightInput(String cryptogram) {
 			checkRightRange(cryptogram);
-			checkLowerCase(cryptogram);
+			checkCryptogramChar(cryptogram);
 		}
 
 		private static void checkRightRange(String cryptogram) {
@@ -73,15 +70,17 @@ public class Problem2 {
 			}
 		}
 
-		private static void checkLowerCase(String cryptogram) {
+		private static void checkCryptogramChar(String cryptogram) {
 			char[] charArray = cryptogram.toCharArray();
-
 			for (int i = 0; i < charArray.length; i++) {
-				if (!Character.isLowerCase(charArray[i])) {
-					throw new IllegalArgumentException();
-				}
+				checkLowerCase(charArray, i);
+			}
+		}
+
+		private static void checkLowerCase(char[] charArray, int i) {
+			if (!Character.isLowerCase(charArray[i])) {
+				throw new IllegalArgumentException();
 			}
 		}
 	}
-
 }
