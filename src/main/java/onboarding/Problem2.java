@@ -13,6 +13,19 @@ public class Problem2 {
         }
         System.out.println("result: "+ Arrays.toString(result.toArray()));
 
+        //연속된 중복 문자 제거
+        for(int i=result.size(); i>0; i--) {
+            System.out.println("i: "+i);
+            for(int j=0; j<result.size()-1; j++) {
+                if(result.get(j) == result.get(j+1)) {
+                    System.out.println("j: "+j);
+                    result.remove(j);
+                    result.remove(j);
+                    System.out.println("result: "+ Arrays.toString(result.toArray()));
+                }
+            }
+        }
+
         String answer = "answer";
         return answer;
     }
