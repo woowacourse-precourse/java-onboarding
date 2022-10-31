@@ -4,8 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Problem5 {
+
+	public static final String INPUT_RIGHT_RANGE_MONEY = "정확한 범위의 금액을 입력해주세요.";
+	public static final int MAX_MONEY_RANGE = 1_000_000;
+	public static final int MIN_MONEY_RANGE = 1;
+
 	public static List<Integer> solution(int money) {
+		validateMoney(money);
+
 		return Purse.calculate(money);
+	}
+
+	private static void validateMoney(int money) {
+		if (money < MIN_MONEY_RANGE || money > MAX_MONEY_RANGE) {
+			throw new IllegalArgumentException(INPUT_RIGHT_RANGE_MONEY);
+		}
 	}
 
 	public enum Purse {
