@@ -11,6 +11,11 @@ public class Problem3 {
                 answer += 1;
             }
         }
+        System.out.println(answer);
         return answer;
+    }
+
+    public static void main(String[] args) {
+        solution(33);
     }
 }
