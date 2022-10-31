@@ -31,7 +31,6 @@ public class CharacterValidator {
      *
      * @param target 알파벳 대문자인지 검증할 문자
      * @return 알파벳 대문자가 맞는지에 대한 유무
-     * @see onboarding.problem4.consts.AlphabetConst
      */
     public static boolean isUpperCase(char target) {
         return UPPER_CASE_CHAR_A <= target && target <= UPPER_CASE_CHAR_Z;
@@ -42,7 +41,6 @@ public class CharacterValidator {
      *
      * @param target 알파벳 소문자인지 검증할 문자
      * @return 알파벳 대문자가 맞는지에 대한 유무
-     * @see onboarding.problem4.consts.AlphabetConst
      */
     public static boolean isLowerCase(char target) {
         return LOWER_CASE_CHAR_A <= target && target <= LOWER_CASE_CHAR_Z;

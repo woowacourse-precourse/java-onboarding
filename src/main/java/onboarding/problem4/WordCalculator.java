@@ -24,8 +24,6 @@ public class WordCalculator {
      *
      * @param word 변경할 문자열
      * @return 변경한 문자열
-     * @see #changeCharacter(char)
-     * @see onboarding.problem4.consts.WordConst
      */
     public static String calculateWord(String word) {
         char[] wordCharacters = word.toCharArray();
@@ -41,7 +39,6 @@ public class WordCalculator {
      *
      * @param target 변경할 문자
      * @return 변경한 문자
-     * @see #calculateCharacter(char, char, char)
      */
     private static char changeCharacter(char target) {
         if (!isAlphabet(target)) {
@@ -56,8 +53,8 @@ public class WordCalculator {
     /**
      * 주어진 문자를 변경하는 메소드
      *
-     * @param standardA 알파벳 A, a
-     * @param standardZ 알파벳 Z, z
+     * @param standardA 알파벳 A 혹은 a
+     * @param standardZ 알파벳 Z 혹은 z
      * @param target 변경할 문자
      * @return 변경한 문자
      */
