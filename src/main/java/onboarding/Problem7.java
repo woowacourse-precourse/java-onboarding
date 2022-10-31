@@ -4,11 +4,6 @@ import java.util.*;
 
 public class Problem7 {
 
-    public static List<String> makeUserListByRecommendation(){
-        List<String> result = Collections.emptyList();
-        return result;
-    }
-
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
         SocialGraph sg = new SocialGraph(friends, visitors);
