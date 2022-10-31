@@ -23,6 +23,7 @@ public class Problem6 {
                 String name2 = formsName.get(j);
                 for (int k = 0; k < name1.length(); k++) {
                     for (int l = 0; l < name2.length(); l++) {
+                        if (k == name1.length()-1 || l == name2.length()-1) break;
                         if (name1.charAt(k) == name2.charAt(l) && name1.charAt(k+1) == name2.charAt(l+1)) {
                             answer.add(formsEmail.get(i));
                             answer.add(formsEmail.get(j));
