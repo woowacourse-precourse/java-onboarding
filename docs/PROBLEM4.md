@@ -21,5 +21,4 @@
 | "I love you" | "R olev blf" |
 
 ### 기능 구현
-1. 반대로된 알파벳을 저장하는 dictionary 생성 기능
-2. 주어진 word를 dictionary를 참고해 result를 만드는 기능
+1. 주어진 word에서 알파벳만 청개구리 사전과 같이 변환해주는 기능
