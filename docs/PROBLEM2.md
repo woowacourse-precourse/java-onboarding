@@ -21,3 +21,15 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+___
+
+## Problem2.java
+
+* deleteDup: 같은 문자가 바로 옆에 붙어있으면 해당 부분을 제거한 String을 return
+
+* solution : 두 글자 미만인 String은 그대로 return, 이후 answer가 변하지 않을 때까지 deleteDup(answer) 반복하여 return
+
+  
+
+  

@@ -21,3 +21,13 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+___
+
+## Problem6.java
+
+- checkDuplication : 각자의 닉네임을 꺼내 길이가 2인 testString으로 슬라이싱한다. 이후 자신보다 뒤쪽에 있는 닉네임들과 비교하여 중복 상태를 isDuplicated에 저장하고 반환한다. testString은 testedStringList에 넣어 반복 작업 횟수를 줄여준다.
+- solution : isDuplicated 에서 True인 index를 찾아 answer에 넣고 정렬하여 반환해준다.
+
+
+

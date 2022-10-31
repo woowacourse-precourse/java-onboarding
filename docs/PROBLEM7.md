@@ -24,3 +24,14 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+___
+
+## Problem7.java
+
+- recommendPoint : 친구 추천 점수를 나타내는 HashMap (전역 객체)
+- calculatePoint : 대상(target)의 점수를 point 만큼 더하는 함수
+- getAnotherOne : 두 String 값과 한쪽 값(one)을 받아 다른 하나(another)를 반환하는 함수
+- getUserFriends : friends 내에서 user와 연결된 친구를 찾아 List를 반환하는 함수
+- sortByValueThenKey : HashMap을 value값으로 내림차순 정렬, value가 같다면 key값으로 비교해 사전 순 정렬
+- solution : user의 친구를 제외하고, [친구의 친구를 찾아 10점 부여 / 방문 횟수에 따라 1점 부여] , 문제에 알맞게 key값 정렬하여 반환
