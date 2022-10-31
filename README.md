@@ -87,7 +87,7 @@
     - 신청서의 길이가 2인지 확인한다.
     - [X] isValidEmail
     - 이메일이 조건에 부합하는지 검사한다.
-      - [ ] hasValidEmailLength
+      - [X] hasValidEmailLength
       - 이메일의 길이가 11 ~ 19 사이의 값인지 검사한다.
       - [ ] hasValidEmailForm
       - 이메일의 형식이 올바른지 검사한다.
