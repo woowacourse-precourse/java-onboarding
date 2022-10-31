@@ -2,6 +2,15 @@ package onboarding;
 
 import java.util.*;
 
+/*
+기능 목록
+1. 두 사람 중 user와 친구인 다른 사람의 이름을 반환하는 기능
+2. 입력받은 List를 확인하며 친구목록 리스트에 추가하거나 그래프에 추가하는 기능
+3. 점수를 계산하는 기능
+4. 친구 그래프를 탐색하며 서로 아는 친구라면 추천 점수를 계산하는 기능
+5. 방문자 리스트를 확인하며 방문 점수를 계산하는 기능
+6. 문제의 기능 요구사항에 맞게 리스트를 정렬하는 기능
+ */
 public class Problem7 {
     public static Map<String, Integer> relation = new HashMap<>();
     public static List<String> friendList = new ArrayList<>();
