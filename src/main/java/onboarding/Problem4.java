@@ -26,7 +26,7 @@ public class Problem4 {
         // wordCharArray를 순회하면서 각각의 char letter를 변환
         for (char letter : wordCharArray) {
             // 알파벳 문자가 아닌 경우 변환하지 않는다.
-            if (!(((int)letter >= 65 && (int)letter <= 90) || ((int)letter >= 97 && (int)letter <= 122))){
+            if (!problem4.isAlphabet(letter)){
                 answer += String.valueOf(letter);
                 continue;
             }
@@ -39,6 +39,15 @@ public class Problem4 {
         }
 
         return answer;
+    }
+
+    // 문자가 알파벳인지 확인
+    public boolean isAlphabet(char letter){
+        if (!(((int)letter >= 65 && (int)letter <= 90) || ((int)letter >= 97 && (int)letter <= 122))){
+            return false;
+        }
+
+        return true;
     }
 
     // 대문자 char형 letter를 M(77)을 기준 변환
