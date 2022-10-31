@@ -7,10 +7,21 @@ public class Problem2 {
 
   public static String solution(String cryptogram) {
     String answer = "answer";
-    List<int[]> needRemoveIndexes = findNeedRemoveIndexes(cryptogram);
-    String s = removeDuplicate(needRemoveIndexes, cryptogram);
-
+    answer = decode(cryptogram);
     return answer;
+  }
+
+  public static String decode(String cryptogram) {
+    if (cryptogram.length() == 0) {
+      return "";
+    }
+    List<int[]> needRemoveIndexes = findNeedRemoveIndexes(cryptogram);
+    if (!needRemoveIndexes.isEmpty()) {
+      String removedString = removeDuplicate(needRemoveIndexes, cryptogram);
+      return decode(removedString);
+    } else {
+      return cryptogram;
+    }
   }
 
   public static String removeDuplicate(List<int[]> needRemoveIndexes, String str) {
