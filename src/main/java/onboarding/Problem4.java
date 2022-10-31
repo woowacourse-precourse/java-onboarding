@@ -16,7 +16,7 @@ public class Problem4 {
     }
 
     private static char getGreenFrogChar(char originalChar) {
-        if (originalChar != BLANK_CHARACTER) {
+        if (Character.isAlphabetic(originalChar)) {
             return encryptGreenFrogChar(originalChar);
         }
 
