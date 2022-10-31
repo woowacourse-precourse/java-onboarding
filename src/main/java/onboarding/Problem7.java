@@ -100,15 +100,15 @@ public class Problem7 {
             return list;
         }
     }
-    void sortByName(List<Person> list) {
+    static void sortByName(List<Person> list) {
         Collections.sort(list, (a, b) -> a.name.compareTo(b.name));
     }
 
-    void sortByScore(List<Person> list, Persons persons) {
+    static void sortByScore(List<Person> list, Persons persons) {
         Collections.sort(list, (a, b) -> Integer.compare(persons.getScore(a), persons.getScore(b)));
     }
 
-    List<String> topFive(List<Person> list, Persons persons) {
+    static List<String> topFive(List<Person> list, Persons persons) {
         List<String> topFive = new ArrayList<>();
         for(Person p : list) {
             if(persons.getScore(p) == 0) break;
@@ -121,8 +121,10 @@ public class Problem7 {
         Persons persons = new Persons(user);
         persons.countVisit(visitors);
         persons.addFriends(friends);
-
-        List<String> answer = new ArrayList<>();
+        List<Person> list = persons.getRecommendedFriendsList();
+        sortByName(list);
+        sortByScore(list, persons);
+        List<String> answer = topFive(list, persons);
 
         return answer;
     }
