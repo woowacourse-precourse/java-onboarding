@@ -4,6 +4,7 @@ import java.util.*;
 
 public class Problem6 {
     private static Map<String, String> sequenceNamesMap = new HashMap<>();
+    private static Set<String> reportEmailsSet = new HashSet<>();
 
     public static List<String> solution(List<List<String>> forms) {
 
@@ -24,7 +25,8 @@ public class Problem6 {
             String sequenceName = name.substring(i - 1, i + 1);
 
             if (isDuplicateName(sequenceName)) {
-
+                String reportEmail = sequenceNamesMap.get(sequenceName);
+                addReportEmails(reportEmail, email);
             }
 
             sequenceNamesMap.put(sequenceName, email);
@@ -39,6 +41,13 @@ public class Problem6 {
         } else {
             return true;
         }
+
+    }
+
+    private static void addReportEmails(String reportEmail1, String reportEmail2) {
+
+        reportEmailsSet.add(reportEmail1);
+        reportEmailsSet.add(reportEmail2);
 
     }
 
