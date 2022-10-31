@@ -1,5 +1,7 @@
 package onboarding;
 
+import onboarding.problem1.Game;
+
 import java.util.List;
 
 class Problem1 {
@@ -12,11 +14,9 @@ class Problem1 {
     }
 
     public static void main(String[] args) {
-        System.out.println(solution(List.of(13,14), List.of(13,14)));
-        System.out.println(solution(List.of(15,14), List.of(13,14)));
-        System.out.println(solution(List.of(16,17), List.of(13,14)));
-        System.out.println(solution(List.of(0,14), List.of(13,14)));
-        System.out.println(solution(List.of(3,400), List.of(13,14)));
+        System.out.println(new Game(3, 0).getResult());
+        System.out.println(new Game(13, 0).getResult());
+        System.out.println(new Game(310, 0).getResult());
     }
     private static boolean isRight(List<Integer> list) {
         return isRightPage(list) && isNotFirstOrLastPage(list);
