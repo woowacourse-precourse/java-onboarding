@@ -1,48 +1,43 @@
 package onboarding.problem6;
 
-import java.util.HashMap;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class NicknameFilter {
 
-	private static final String EMAIL_FORM = "@email.com";
+	public List<String> filter(Set<Crew> crewSet) {
+		List<Crew> crewList = new ArrayList<>(crewSet);
+		Set<String> filteredCrewSet = new HashSet<>();
 
-	private final HashMap<String, String> userMap;
+		for (int i = 0; i < crewList.size(); i++) {
+			String nickname = crewList.get(i).getNickname();
+			Set<String> nicknamePattern = createNicknamePattern(nickname);
 
-	public NicknameFilter() {
-		this.userMap = new HashMap<>();
-	}
-
-	public List<String> filter(List<List<String>> forms) {
-		initUserInfo(forms);
-
-		HashSet<String> filteredUserSet = new HashSet<>();
-
-		for (int i = 0; i < forms.size(); i++) {
-
-			String targetNickname = forms.get(i).get(1);
-			HashSet<String> nicknamePattern = nicknamePatternCreator(targetNickname);
-
-			for (int j = 0; j < forms.size(); j++) {
+			for (int j = 0; j < crewList.size(); j++) {
 				if (i == j) {
 					continue;
 				}
-				String nickname = forms.get(j).get(1);
-				if (isDuplicatedPattern(nickname, nicknamePattern)) {
-					filteredUserSet.add(userMap.get(nickname));
+				Crew target = crewList.get(j);
+
+				if (isDuplicatedPattern(nickname, nicknamePattern) || nickname.equals(target.getNickname())) {
+					filteredCrewSet.add(target.getEmail());
 				}
 			}
 		}
-		return filteredUserSet
+		return filteredCrewSet
 				.stream()
 				.sorted()
-				.map(email -> email + EMAIL_FORM)
 				.collect(Collectors.toList());
 	}
 
-	private boolean isDuplicatedPattern(String nickname, HashSet<String> nicknamePattern) {
+	private boolean isDuplicatedPattern(String nickname, Set<String> nicknamePattern) {
+		if (nicknamePattern.size() == 0) {
+			return false;
+		}
+
 		for (String pattern : nicknamePattern) {
 			if (nickname.contains(pattern)) {
 				return true;
@@ -51,34 +46,23 @@ public class NicknameFilter {
 		return false;
 	}
 
-	private void initUserInfo(List<List<String>> forms) {
-		for (List<String> form : forms) {
-			String email = form.get(0);
-			String nickname = form.get(1);
-
-			email = emailParser(email);
-
-			userMap.put(nickname, email);
+	private HashSet<String> createNicknamePattern(String nickname) {
+		if (nickname.length() == 1) {
+			return new HashSet<>();
 		}
-	}
 
-	private HashSet<String> nicknamePatternCreator(String nickname) {
 		String[] split = nickname.split("");
 
 		HashSet<String> nicknamePattern = new HashSet<>();
-		int i = 0;
+		int startIndex = 0;
 
 		while (true) {
-			nicknamePattern.add(split[i] + split[i + 1]);
-			if (i == split.length - 2) {
+			nicknamePattern.add(split[startIndex] + split[startIndex + 1]);
+			if (startIndex == split.length - 2) {
 				break;
 			}
-			i++;
+			startIndex++;
 		}
 		return nicknamePattern;
-	}
-
-	private String emailParser(String email) {
-		return email.replaceAll(EMAIL_FORM, "");
 	}
 }
