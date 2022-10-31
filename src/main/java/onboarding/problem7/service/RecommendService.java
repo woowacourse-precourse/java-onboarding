@@ -1,11 +1,11 @@
 package onboarding.problem7.service;
 
 import onboarding.problem7.repository.FriendRepository;
+import onboarding.problem7.validation.FriendValidator;
 import onboarding.problem7.vo.Member;
 import onboarding.problem7.vo.Relation;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class RecommendService {
     public static final int RELATION_SCORE = 10;
@@ -18,9 +18,9 @@ public class RecommendService {
     }
 
     public List<String> recommendFriends(List<List<String>> members, List<String> visitors) {
-        List<Relation> relations = members.stream()
-                .map(Relation::of)
-                .collect(Collectors.toList());
+        FriendValidator.validateVisitors(visitors);
+
+        List<Relation> relations = Relation.ofList(members);
 
         saveAllMembers(relations, visitors);
         analyzeRelations(relations);
@@ -45,7 +45,7 @@ public class RecommendService {
     }
 
     private void analyzeRelations(List<Relation> relations) {
-        relations.forEach(relation -> analyzeRelation(relation));
+        relations.forEach(this::analyzeRelation);
     }
 
     private void analyzeRelation(Relation relation) {

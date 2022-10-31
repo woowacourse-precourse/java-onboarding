@@ -23,21 +23,24 @@ public class FriendValidator {
     public static final String ID_FORMAT_REGEX = "^[a-z]*$";
     public static final String DUPLICATING_RELATION_MESSAGE = "동일한 친구 관계를 중복해서 제공할 수 없습니다.";
 
-    public static void validate(String user, List<List<String>> relations, List<String> visitors) {
+    public static void validateUser(String user) {
         isIdLengthValid(user);
         isIdOnlyAlphabetLowerCase(user);
+    }
+
+    public static void validateRelations(List<List<String>> relations) {
         isRelationsSizeValid(relations);
 
         relations.forEach(relation -> {
             isRelationSizeValid(relation);
-            relation.forEach(
-                    member -> isIdOnlyAlphabetLowerCase(member)
-            );
+            relation.forEach(FriendValidator::isIdOnlyAlphabetLowerCase);
         });
 
-        List<Relation> relationList = relations.stream().map(relation -> Relation.of(relation)).collect(Collectors.toList());
+        List<Relation> relationList = relations.stream().map(Relation::of).collect(Collectors.toList());
         hasRelationsDuplicateRelation(relationList);
+    }
 
+    public static void validateVisitors(List<String> visitors) {
         isVisitorSizeValid(visitors);
     }
 

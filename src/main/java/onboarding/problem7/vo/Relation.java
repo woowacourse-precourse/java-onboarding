@@ -1,9 +1,12 @@
 package onboarding.problem7.vo;
 
+import onboarding.problem7.validation.FriendValidator;
+
 import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 public class Relation {
     private final List<String> memberNames;
@@ -14,6 +17,13 @@ public class Relation {
 
     public static Relation of(List<String> memberNames) {
         return new Relation(memberNames);
+    }
+
+    public static List<Relation> ofList(List<List<String>> relations) {
+        FriendValidator.validateRelations(relations);
+        return relations.stream()
+                .map(Relation::of)
+                .collect(Collectors.toList());
     }
 
     public void forEach(Consumer<? super String> action) {
