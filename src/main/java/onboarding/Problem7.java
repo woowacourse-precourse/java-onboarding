@@ -10,7 +10,7 @@ public class Problem7 {
         scoreMap = new HashMap<>();
         HashMap<String, List<String>> friendshipMap = makeFriendshipMap(friends);
 
-        List<String> banList = friendshipMap.get(user);
+        List<String> banList = friendshipMap.getOrDefault(user, new ArrayList<>());
         banList.add(user);
 
         giveScoreBasedOnFriendship(user, friendshipMap);
@@ -21,7 +21,15 @@ public class Problem7 {
 
     private static List<String> getRecommendList(List<String> banList) {
         List<Map.Entry<String, Integer>> scoreEntries = new ArrayList<>(scoreMap.entrySet());
-        scoreEntries.sort((obj1, obj2) -> obj2.getValue().compareTo(obj1.getValue()));
+        scoreEntries.sort(new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                if (o1.getValue().equals(o2.getValue())) {
+                    return o1.getKey().compareTo(o2.getKey());
+                }
+                return o2.getValue().compareTo(o1.getValue());
+            }
+        });
 
         return scoreEntries.stream()
                 .filter((userInfo) -> !banList.contains(userInfo.getKey()))
@@ -39,7 +47,7 @@ public class Problem7 {
     }
 
     private static void giveScoreBasedOnFriendship(String user, HashMap<String, List<String>> friendshipMap) {
-        List<String> userFriends = friendshipMap.get(user);
+        List<String> userFriends = friendshipMap.getOrDefault(user, new ArrayList<>());
 
         userFriends.forEach((friend) -> {
             List<String> friendOfFriend = friendshipMap.get(friend);
