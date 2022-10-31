@@ -32,4 +32,16 @@ public class Problem6 {
 
     }
 
+    private static boolean containConsecutiveLetters(String name1, String name2) {
+
+        for (int i = 2; i <= name2.length(); i++) {
+            String subString = name2.substring(i - 2, i);
+
+            if (name1.contains(subString))
+                return true;
+        }
+
+        return false;
+    }
+
 }
