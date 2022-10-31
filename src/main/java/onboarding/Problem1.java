@@ -20,8 +20,8 @@ class Problem1 {
         resultMap.put("pobi win", 1);
         resultMap.put("crong win", 2);
         resultMap.put("draw", 0);
-
         GameResult answers = new GameResult(resultMap);
+
         return answers.getAnswerByGameResult(result);
     }
 
@@ -107,5 +107,4 @@ class Problem1 {
         }
         return "draw";
     }
-
 }
