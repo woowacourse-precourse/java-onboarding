@@ -54,7 +54,7 @@ public class Problem6 {
 
     public static List<String> compare(List<List<String>> compareList) {
         List<String> answerlist = new ArrayList<>();
-        //compareList = [[[asdf@nnn], [nn], [nn]]]
+        //compareList = [[[asdf@nnn], [nn], [nn]], ...]
         for(int i =compareList.size()-1;i>0;i--)
         {
             for(int j = i-1; j>=0;j--){
