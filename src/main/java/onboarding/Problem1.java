@@ -50,7 +50,7 @@ class Problem1 {
             scoreList.add(sumPage(e));
             scoreList.add(mulPage(e));
         }
-        return Collections.max(scoreList)
+        return Collections.max(scoreList);
     }
 
     // 게임 결과 구하기

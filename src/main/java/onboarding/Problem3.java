@@ -12,7 +12,7 @@ public class Problem3 {
             }
             number /= 10;
         }
-        return cnt
+        return cnt;
     }
 
     public static int solution(int number) {
