@@ -17,8 +17,12 @@ class UserRepositoryTest {
 
     @Test
     void 중복된_사용자를_추가하더라도_등록되지_않습니다() {
-        this.generateUserData();
+        this.userRepository = new UserRepository("user", List.of(
+                List.of("user1", "user1"),
+                List.of("user1", "user2"),
+                List.of("user1", "user3")
 
+        ), List.of("user3"));
         assertThat(userRepository.findAll()).hasSize(4);
     }
 
