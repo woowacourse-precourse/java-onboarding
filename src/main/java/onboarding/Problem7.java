@@ -9,6 +9,8 @@ import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+import onboarding.validatechecker.Problem7ValidateChecker;
+
 public class Problem7 {
     private static final int RECOMMEND_FRIEND_SIZE = 5;
     private static final int VISITOR_SCORE = 1;
@@ -18,6 +20,7 @@ public class Problem7 {
     private static final int SECOND_FRIEND = 1;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        Problem7ValidateChecker.areArgumentsValidate(user,friends,visitors);
         List<String> userFriendList = new ArrayList<>();
         Map<String,Integer> friendScoreMap = new HashMap<>();
 
