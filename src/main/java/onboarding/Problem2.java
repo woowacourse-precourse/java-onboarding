@@ -22,25 +22,34 @@ public class Problem2 {
             lengthCrypto -= 1;
 
         }
-        int num = 0;
-        String resultRemoveOverlap = "";
 
-        while (num < lengthCrypto -1) {
+        int checkThereAreOverLap = 0;
 
-            if (cryptogram.charAt(num) == cryptogram.charAt(num + 1) ){
+        while () {
+            int num = 0;
+            String resultRemoveOverlap = "";
+            lengthCrypto = cryptogram.length();
 
-                if (num == lengthCrypto -2) {
-                    resultRemoveOverlap = cryptogram.substring(0,num);
-                    break;
-                } else if (num != lengthCrypto -2) {
-                    resultRemoveOverlap = cryptogram.substring(0,num) + cryptogram.substring(num + 2, lengthCrypto - 1) ;
-                    break;
+
+
+            while (num < lengthCrypto - 1) {
+
+                if (cryptogram.charAt(num) == cryptogram.charAt(num + 1)) {
+
+                    if (num == lengthCrypto - 2) {
+                        resultRemoveOverlap = cryptogram.substring(0, num);
+                        cryptogram = resultRemoveOverlap;
+                        break;
+                    } else if (num != lengthCrypto - 2) {
+                        resultRemoveOverlap = cryptogram.substring(0, num) + cryptogram.substring(num + 2, lengthCrypto - 1);
+                        cryptogram = resultRemoveOverlap;
+                        break;
+                    }
                 }
+                num += 1;
             }
-            num += 1;
+
         }
-
-
 
 
         String answer = "answer";
