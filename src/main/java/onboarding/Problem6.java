@@ -42,6 +42,8 @@ public class Problem6 {
 
                     if (namesAlreadyApplied.containsKey(partialNickname)
                             && !nicknameCombinations.contains(partialNickname)) {
+
+                        emails.add(email);
                     }
                 }
             }
