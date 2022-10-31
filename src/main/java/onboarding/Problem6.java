@@ -9,6 +9,16 @@ public class Problem6 {
         List<String> formsEmail = new ArrayList<String>();
         List<String> formsName = new ArrayList<String>();
 
+        for (int i = 0; i < forms.size(); i++) {
+            String temp = new String();
+            temp = forms.get(i).get(0);
+            formsEmail.add(temp);
+            temp = forms.get(i).get(1);
+            formsName.add(temp);
+        }
+
+
+
 
 
         return answer;
