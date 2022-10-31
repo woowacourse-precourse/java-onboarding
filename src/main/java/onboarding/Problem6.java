@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -16,7 +17,12 @@ public class Problem6 {
         makeFragmentsMap(forms, FragmentsMap);
         makeNickNameSet(FragmentsMap, nickNamesSet);
         convertSetToList(answer, nickNamesSet);
+        sortNickNamesList(answer);
         return answer;
+    }
+
+    private static void sortNickNamesList(List<String> answer) {
+        answer.sort(Comparator.naturalOrder());
     }
 
     private static void convertSetToList(List<String> answer, Set<String> nickNamesSet) {
@@ -55,7 +61,5 @@ public class Problem6 {
         }
         nickNameFragmentsMap.put(nickNameFragment, new ArrayList<>(List.of(email)));
     }
-
-}
 
 }
