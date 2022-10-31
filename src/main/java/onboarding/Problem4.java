@@ -28,8 +28,7 @@ public class Problem4 {
 
             answer = String.join("", answerArr);
         }
-
-
+        
         return answer;
     }
 
