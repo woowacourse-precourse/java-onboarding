@@ -17,7 +17,7 @@ public class Problem6 {
 
                 for (String piece : mySubStr) {
 
-                    if (person.get(1).matches(".*" + piece + ".*")) {
+                    if (person.get(1).contains(piece)) {
 
                         warningEmail.add(person.get(0));
                         break;
