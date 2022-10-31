@@ -14,4 +14,19 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
         return answer;
 
-        }}
+        }
+
+    public static Set friendsList(String user, List<List<String>> friends){
+        // 친구목록만들기
+        //  1번 값이 mrko면 0번값을 친구목록에 저장
+        Set friendsSet = new HashSet();
+        for (int i =0; i<friends.size();i++){
+            String left = friends.get(i).get(0);
+            String right = friends.get(i).get(1);
+            if(right.equals(user))friendsSet.add(left);
+        }
+        return friendsSet;
+
+    }
+
+}
