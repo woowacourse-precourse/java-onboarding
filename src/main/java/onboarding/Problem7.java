@@ -23,6 +23,8 @@ public class Problem7 {
                     addScore(friend, 10);
                 }
             }
+        }else{
+            friendMap.put(user, new ArrayList<>());
         }
         // visitor 탐색
         for(String visitor : visitors){
