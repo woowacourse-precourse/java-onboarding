@@ -5,8 +5,8 @@ import java.util.regex.Pattern;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        HashMap<String, Integer> nicknameMap = new HashMap<>();
-        HashSet<Integer> alertIdxSet = new HashSet<>();
+        Map<String, Integer> nicknameMap = new HashMap<>();
+        Set<Integer> alertIdxSet = new HashSet<>();
         for(int i = 0; i < forms.size(); i++) {
             List<String> user = forms.get(i);
             String email = user.get(0);
@@ -38,7 +38,7 @@ public class Problem6 {
         return tmp.length() == 0;
     }
 
-    public static void getNickname(String nickname, int idx, HashMap<String, Integer> nicknameMap, HashSet<Integer> alertIdxSet) {
+    public static void getNickname(String nickname, int idx, Map<String, Integer> nicknameMap, Set<Integer> alertIdxSet) {
         for (int i = 0; i < nickname.length() - 1; i++){
             char nicknameChar1 = nickname.charAt(i);
             char nicknameChar2 = nickname.charAt(i + 1);
@@ -54,7 +54,7 @@ public class Problem6 {
         }
     }
 
-    public static List<String> putIndexInAlertList(HashSet<Integer> alertIdxSet, List<List<String>> forms) {
+    public static List<String> putIndexInAlertList(Set<Integer> alertIdxSet, List<List<String>> forms) {
         List<String> alertEmailList = new ArrayList<>();
         for(Integer index: alertIdxSet) {
             String email = findUserEmail(index, forms);

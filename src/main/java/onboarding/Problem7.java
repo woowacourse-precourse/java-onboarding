@@ -6,7 +6,7 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         List<String> userFriends = getUserFriends(user, friends);
-        HashMap<String, Integer> listOfScore = new HashMap<>();
+        Map<String, Integer> listOfScore = new HashMap<>();
         getAcquaintance(user, listOfScore, userFriends, friends);
         getVisitorScore(listOfScore, visitors, userFriends);
         List<Map.Entry<String, Integer>> sortedListOfScore = getSortedListOfScore(listOfScore);
@@ -31,7 +31,7 @@ public class Problem7 {
         return userFriends;
     }
 
-    public static void getAcquaintance (String user, HashMap<String, Integer> listOfScore, List<String> userFriends, List<List<String>> friends) {
+    public static void getAcquaintance (String user, Map<String, Integer> listOfScore, List<String> userFriends, List<List<String>> friends) {
         final int acquaintanceScore = 10;
         for (String friendId: userFriends) {
             List<String> acquaintanceList = getUserFriends(friendId, friends);
@@ -43,7 +43,7 @@ public class Problem7 {
         }
     }
 
-    public static void getVisitorScore (HashMap<String, Integer> listOfScore, List<String> visitors, List<String> userFriends) {
+    public static void getVisitorScore (Map<String, Integer> listOfScore, List<String> visitors, List<String> userFriends) {
         final int visitorScore = 1;
         for(String visitor: visitors) {
             if(!userFriends.contains(visitor)) {
@@ -52,11 +52,11 @@ public class Problem7 {
         }
     }
 
-    public static void setScore (HashMap<String, Integer> listOfScore, String userId, Integer score){
+    public static void setScore (Map<String, Integer> listOfScore, String userId, Integer score){
         listOfScore.put(userId, listOfScore.getOrDefault(userId, 0) + score);
     }
 
-    public static List<Map.Entry<String, Integer>>  getSortedListOfScore(HashMap<String, Integer> listOfScore) {
+    public static List<Map.Entry<String, Integer>>  getSortedListOfScore(Map<String, Integer> listOfScore) {
         List<Map.Entry<String, Integer>> entryList = new LinkedList<>(listOfScore.entrySet());
         entryList.sort(new Comparator<Map.Entry<String, Integer>>() {
             @Override
