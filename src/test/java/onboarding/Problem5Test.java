@@ -258,7 +258,7 @@ class Problem5Test {
 		final int REMAINED_MONEY = 4999;
 
 		// when : 돈이 더 남았는지 확인
-		boolean result = CURRENCY.noMoreMoney(REMAINED_MONEY);
+		boolean result = Problem5.noMoreMoney(REMAINED_MONEY);
 
 		// then : 돈이 4999 원 남았기에 false 를 반환해야 함
 		assertThat(result).isFalse();
@@ -271,7 +271,7 @@ class Problem5Test {
 		final int REMAINED_MONEY = 0;
 
 		// when : 돈이 더 남았는지 확인
-		boolean result = CURRENCY.noMoreMoney(REMAINED_MONEY);
+		boolean result = Problem5.noMoreMoney(REMAINED_MONEY);
 
 		// then : 돈이 안남았기에 true 를 반환해야 함
 		assertThat(result).isTrue();
