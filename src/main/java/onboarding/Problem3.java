@@ -1,24 +1,33 @@
 package onboarding;
 
 public class Problem3 {
-    public static int solution(int number) {
-        int answer = 0;
+
+    //손뼉 쳐야하는 숫자들
+    private static final char[] NUMBER_TYPES = {'3', '6', '9'};
+
+    //각 숫자가 나왔을 때 개수 세기
+    private static int countEachNumberType(int i, char numberType) {
+        String stringCountNumber = "" + i;
+
+        //처음 숫자 길이 - 3(혹은 6,9)를 공백으로 대체 후 길이 = 3(6or9)개수
+        return stringCountNumber.length() - stringCountNumber.replace(String.valueOf(numberType), "").length();
+    }
+
+    //모든 손뼉쳐야하는 숫자들에 대해 개수 세기
+    private static int countNumberTypes(int i) {
         int count = 0;
-        int num = number;
+        for (char numberType : NUMBER_TYPES) {
+            count += countEachNumberType(i, numberType);
+        }
+        return count;
+    }
+    
+    public static int solution(int number) {
 
-        while (number != 0) {
+        int answer = 0;
 
-            if (count != 0 && number / 10 == 0 && number % 3 == 0) {
-                //number가 한자리 수가 이니고 가장 높은 자리수가 3의 배수일 때
-                answer += (((number % 10) / 3) - 1) * Math.pow(10, count);
-                answer += num - (number * Math.pow(10, count)) + 1;
-            }else{
-                answer += ((number % 10 / 3)) * Math.pow(10, count);
-            }
-
-            answer += (number % 10) * 3 * Math.pow(10, count - 1) * count;
-            number/=10;
-            count++;
+        for (int i = 0; i <= number; i++) {
+            answer += countNumberTypes(i);
         }
 
         return answer;
