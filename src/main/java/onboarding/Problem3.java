@@ -21,6 +21,17 @@ public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
 
+        Number n;
+        try {
+            n = new Number(number);
+        } catch (Exception e) {
+            return 0;
+        }
+        number = n.num;
+
+        for (int i = 1; i <= number ; i++) {
+            answer += countTSN(i);
+        }
 
         return answer;
     }
