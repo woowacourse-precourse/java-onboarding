@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -11,7 +10,7 @@ import java.util.Map.Entry;
 
 public class Problem7 {
 
-    static Map<String, Integer> friendScore = new HashMap<>();
+    static Map<String, Integer> recommendationScore = new HashMap<>();
 
     public static void main(String[] args) {
         String user = "mrko";
@@ -28,10 +27,10 @@ public class Problem7 {
     }
 
     static void addScore(String name, int score) {
-        if (friendScore.containsKey(name)) {
-            score += friendScore.get(name);
+        if (recommendationScore.containsKey(name)) {
+            score += recommendationScore.get(name);
         }
-        friendScore.put(name, score);
+        recommendationScore.put(name, score);
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -63,9 +62,9 @@ public class Problem7 {
             addScore(visitor, 1);
         }
 
-        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(friendScore.entrySet());
-        entryList.sort(Map.Entry.comparingByKey());
-        entryList.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(recommendationScore.entrySet());
+        entryList.sort(Entry.comparingByKey());
+        entryList.sort(Entry.comparingByValue(Comparator.reverseOrder()));
         int count = 5;
         for (Entry<String, Integer> entry : entryList) {
             answer.add(entry.getKey());
