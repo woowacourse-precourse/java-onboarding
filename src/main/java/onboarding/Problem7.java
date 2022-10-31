@@ -8,6 +8,7 @@ public class Problem7 {
     static HashMap<String, Integer> userScoreMap;
     static final int VISITOR_SCORE = 1;
     static final int WITH_FRIEND_SCORE = 10;
+    static final int MAX_RETURN_COUNT = 5;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
@@ -90,7 +91,7 @@ public class Problem7 {
 
         for (Map.Entry<String, Integer> entry : sortedEntries) {
 
-            if (addCount == 5)
+            if (addCount == MAX_RETURN_COUNT)
                 break;
 
             result.add(entry.getKey());
