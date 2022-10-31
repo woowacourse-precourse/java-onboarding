@@ -21,3 +21,10 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+---
+### 기능 목록
+
+- 크루들의 모든 닉네임 쌍들을 비교하여 두 글자 이상의 문자가 중복되어있으면 그 크루의 인덱스를 Set에 저장하는 기능
+- 닉네임 쌍에서 두 글자 이상의 문자가 중복되어있는지 판별하는 기능
+- 크루들의 인덱스를 저장한 Set을 바탕으로 크루들의 이메일을 리스트에 저장하는 기능

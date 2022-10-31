@@ -24,3 +24,12 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+---
+### 기능 목록
+
+- 친구 관계 정보를 저장한 friendMap을 만드는 기능
+- friendMap을 바탕으로 각 친구의 추천 점수를 저장하는 friendScoreMap를 만드는 기능
+- 친구와 사용자가 함께 아는 친구의 수를 구하여 추천 점수를 구하는 기능
+- 각 친구마다 사용자의 타임라인에 방문한 횟수를 구하여 friendScoreMap에 저장된 점수를 업데이트하는 기능
+- 점수가 가장 높은 순으로 정렬하여 최대 5명을 구하는 기능
