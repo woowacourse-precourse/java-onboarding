@@ -8,38 +8,39 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Problem6 {
-	private static final int EMAIL=0;
-	private static final int NICKNAME=1;
+	private static final int EMAIL = 0;
+	private static final int NICKNAME = 1;
+	private static final int UNDUPLICATED = 1;
 
 	public static List<String> solution(List<List<String>> forms) {
 		Map<String,String> nickEmailMapper = genNickEmailMapper(forms);
 		List<String> nickNameList = genNickNameList(forms);
-		List<String> patternList = initPatternList(nickNameList);
+		List<String> patternList = genPatternList(nickNameList);
 
-		List<String> duplicateSubStrList = getDuplicateSubStr(patternList);
-		List<String> hasDuplicateNickNameEmailList =
-			genDuplicateNickNameEmailList(duplicateSubStrList,nickEmailMapper,nickNameList);
-		Collections.sort(hasDuplicateNickNameEmailList);
+		List<String> duplicatePatternList = getDuplicateSubStr(patternList);
+		List<String> duplicatePatternEmailList =
+			genDuplicatePatternEmailList(duplicatePatternList,nickEmailMapper,nickNameList);
+		Collections.sort(duplicatePatternEmailList);
 
-		return hasDuplicateNickNameEmailList;
+		return duplicatePatternEmailList;
 	}
 
-	private static List<String> genDuplicateNickNameEmailList(List<String> duplicateSubStrList,
+	private static List<String> genDuplicatePatternEmailList(List<String> duplicatePatternList,
 		Map<String,String> nickEmailMapper, List<String> nickNameList) {
-		List<String> duplicateNickNameEmailList = Collections.emptyList();
-		for (String duplicateSubStr : duplicateSubStrList) {
-			duplicateNickNameEmailList = nickNameList.stream().filter(str -> str.contains(duplicateSubStr))
-				.map(str -> nickEmailMapper.get(str)).collect(Collectors.toList());
+		List<String> duplicatePatternEmailList = new ArrayList<>();
+		for (String duplicatePattern : duplicatePatternList) {
+			duplicatePatternEmailList.addAll(nickNameList.stream().filter(str -> str.contains(duplicatePattern))
+				.map(nickEmailMapper::get).collect(Collectors.toList()));
 		}
-		return duplicateNickNameEmailList;
+		return duplicatePatternEmailList;
 	}
 
 	private static List<String> getDuplicateSubStr(List<String> patternList) {
-		return patternList.stream().filter(str -> Collections.frequency(patternList, str) > 1)
+		return patternList.stream().filter(str -> Collections.frequency(patternList, str) > UNDUPLICATED)
 			.collect(Collectors.toList());
 	}
 
-	private static List<String> initPatternList(List<String> nickNameList) {
+	private static List<String> genPatternList(List<String> nickNameList) {
 		List<String> patternList = new ArrayList<>();
 		for (String nickName : nickNameList) {
 			for(int i = 0; i < nickName.length()-1; i++){
