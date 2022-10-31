@@ -8,6 +8,14 @@ public class Problem6 {
         List<String> answer = List.of("answer");
         return answer;
     }
+    private static HashMap<String, Integer> makeCounter(List<List<String>> forms) {
+        HashMap<String, Integer> counter = new HashMap<>();
+        for (List<String> form: forms) {
+            String nickname = form.get(1);
+            addPartialNickname(nickname, counter);
+        }
+        return counter;
+    }
     private static void addPartialNickname(String nickname, HashMap<String, Integer> counter) {
         for (int i = 0; i < nickname.length() - 1; i++) {
             String partialNickname = nickname.substring(i, i + 2);
