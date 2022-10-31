@@ -13,6 +13,14 @@ class Problem1 {
         pobiMax = maxScore(pobi);
         crongMax = maxScore(crong);
 
+        if (pobiMax > crongMax) {
+            answer = 1;
+        } else if (pobiMax < crongMax) {
+            answer = 2;
+        } else {
+            answer = 0;
+        }
+
         return answer;
     }
 
