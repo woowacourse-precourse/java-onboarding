@@ -6,14 +6,16 @@ import java.util.List;
 
 public class Problem5 {
     public static List<Integer> solution(int money) {
-        List<Integer> answer = new ArrayList<>();
+        List<Integer> answer = List.of();
         int[] unitList = { 50000, 10000, 5000, 1000, 500, 100, 50, 10, 1 };
+        List<Integer> result = new ArrayList<>();
         int change = money;
         for (int i=0;i<unitList.length; i++) {
-            answer.add(1);
-            change = calculate(change, unitList[i], answer, i);
+            result.add(1);
+            change = calculate(change, unitList[i], result, i);
         }
 
+        answer = result;
         return answer;
     }
 
