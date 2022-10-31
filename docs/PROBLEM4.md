@@ -8,6 +8,7 @@
     * word길이 1이상 100이하 checkLength
     * 공백제외 알파벳만들어있는지 확인 checkAlpa
 * 사전을 참고하여 반대로 변환하는 메서드 changeWord
+* 사전을 만드는 메서드 setMap()
 
 
 ## 🚀 기능 요구 사항
