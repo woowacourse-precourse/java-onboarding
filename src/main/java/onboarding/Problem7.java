@@ -86,4 +86,8 @@ class FriendRecommendedScore {
         int nowScore = totalRecommendedMap.getOrDefault(user, 0);
         totalRecommendedMap.put(user, nowScore + point);
     }
+
+    private void notRecommended(String user) {
+        totalRecommendedMap.remove(user);
+    }
 }
