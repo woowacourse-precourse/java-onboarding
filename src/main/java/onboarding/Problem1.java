@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 class Problem1 {
     private final static int EXCEPTION = -1;
@@ -20,9 +17,30 @@ class Problem1 {
      * @param pages 페이지 정보
      * @return 결과
      */
-    private static boolean validateTwoPagesHave(List<String> pages) {
+    private static boolean validateTwoPagesHave(List<Integer> pages) {
         if (pages.size() != 2) {
             System.out.println("페이지 값이 2개가 아닙니다.");
+            return false;
+        }
+
+        return true;
+    }
+
+    private static boolean validatePageInfo(List<Integer> pages) {
+        for (Integer page : pages) {
+            if (Objects.isNull(page)) {
+                System.out.println("페이지 값이 null 이 될 수 없습니다.");
+                return false;
+            }
+
+            if (page <= 1 || page >= 400) {
+                System.out.println("페이지 값이 1 초과 400 미만이어야 합니다.");
+                return false;
+            }
+        }
+
+        if ((pages.get(1) - pages.get(0)) != 1) {
+            System.out.println("두 페이지 값은 연속되어야 합니다.");
             return false;
         }
 
