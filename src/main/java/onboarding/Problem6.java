@@ -5,10 +5,6 @@ import java.util.*;
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
 
-        /* list의 1번째 인덱스를 비교함 */
-        /* 다른 항목들의 1번째 인덱스에 같은 내용이 없으면, POP */
-        /* 남은 항목들 중에서 0번째(이메일) 값만 list로 담아서 반환함. */
-
         List<String> answer = new ArrayList<>();
 
             boolean isOverlap = false;
@@ -47,9 +43,13 @@ public class Problem6 {
             answer.add(forms.get(iterSet.next()).get(0));
         }
 
+//        System.out.println("==============================================");
+//        System.out.println(answer);
+//        System.out.println("==============================================");
         /* 오름차순 정렬*/
         Collections.sort(answer);
-        //        System.out.println(answer);
+//        System.out.println(answer);
+
         return answer;
     }
 }

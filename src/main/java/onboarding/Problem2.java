@@ -22,7 +22,7 @@ public class Problem2 {
                 if(str.charAt(i-1) == str.charAt(i)){
                     str = str.substring(0,i-1) + str.substring(i+1,startLen);
                     endLen = str.length();
-                    System.out.println("index: "+ i +" str: " + str);
+//                    System.out.println("index: "+ i +" str: " + str);
                     break;
                 }
             }
@@ -32,7 +32,7 @@ public class Problem2 {
 
         String answer = str;
 
-        System.out.println("answer : "+ answer);
+//        System.out.println("answer : "+ answer);
 
         return answer;
     }
