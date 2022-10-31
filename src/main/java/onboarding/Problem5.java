@@ -13,6 +13,8 @@ public class Problem5 {
      */
     public static List<Integer> solution(int money) {
         List<Integer> answer = new ArrayList<>();
+        // 화폐 단위로 이루어진 숫자 배열 만들기
+        int[] currency = { 50000, 10000, 5000, 1000, 500, 100, 50, 10, 1 };
 
         return answer;
     }
