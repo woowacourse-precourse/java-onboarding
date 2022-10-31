@@ -27,6 +27,17 @@ public class Problem7 {
             map.get(visitUser).point += 1;
         }
     }
+
+    // 사용자와 이미 친구가 되어있는 유저를 제외하고 사용자와 함께 아는 친구의 수에 따라 유저의 점수를 올리는 함수
+    public static String checkMapKnowingFriends(String name, Map<String, Info> map, String user){
+        List<String> friendList = map.get(name).knowing;
+        for(String friend : friendList){
+            if(map.get(user).knowing.contains(friend)){
+                map.get(name).point += 10;
+            }
+        }
+        return name;
+    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
