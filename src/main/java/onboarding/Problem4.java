@@ -10,6 +10,18 @@ public class Problem4 {
         return answer;
     }
 
+    static char checkChar(char c) {
+        if (c == ' ') {
+            return c;
+        }
+
+        if (c >= 'a') {
+            return LOWER[conversionLower(c)];
+        }
+
+        return UPPER[conversionUpper(c)];
+    }
+
     static int conversionLower(char c) {
         return 25 - (c - 'a');
     }
