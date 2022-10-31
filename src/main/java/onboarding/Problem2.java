@@ -29,11 +29,11 @@ public class Problem2 {
         char[] inputArr = input.toCharArray();
         char before = inputArr[0];
         boolean beforeSameFlag = false; //사전에 같은 문자열이 나온적이 있는지
-        String afterRemoveStr = ""; //결과 문자열
+        StringBuilder afterRemoveStr = new StringBuilder(); //결과 문자열
 
         for (int i = 1; i < inputArr.length; i++) {
             if (before != inputArr[i]) { //만약 이전문자와 같지 않으면
-                if (!beforeSameFlag) afterRemoveStr += before; //이전에 같은 문자가 나오지 않은 경우에만 붙힌다.(같은경우는 제거)
+                if (!beforeSameFlag) afterRemoveStr.append(before); //이전에 같은 문자가 나오지 않은 경우에만 붙힌다.(같은경우는 제거)
                 beforeSameFlag = false; //플래그 초기화
                 before = inputArr[i];
             }
@@ -42,8 +42,8 @@ public class Problem2 {
             }
         }
 
-        if (!beforeSameFlag) afterRemoveStr += before; //마지막 문자가 이전에 나오지 않은 문자열이라면
-        return afterRemoveStr;
+        if (!beforeSameFlag) afterRemoveStr.append(before); //마지막 문자가 이전에 나오지 않은 문자열이라면
+        return afterRemoveStr.toString();
     }
 
 }

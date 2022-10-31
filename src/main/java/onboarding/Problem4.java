@@ -22,9 +22,11 @@ public class Problem4 {
     private static Character getCharacter(char c) {
         char changedChar = c;
 
+        //소문자라면
         if (Character.isLowerCase(c)) {
             changedChar = getLowerCaseCharacter(c);
         }
+        //대문자라면
         else if (Character.isUpperCase(c)) {
             changedChar = getUpperCaseCharacter(c);
         }
