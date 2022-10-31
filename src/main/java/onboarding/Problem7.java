@@ -145,7 +145,23 @@ public class Problem7 {
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
+        allUserSet = getAllUserSet(user, friends, visitors);
+        friendGraph = makeFriendGraph(friends);
+        myFriends = friendGraph.get(user);
+        scoreMap = getScoreMap(user, visitors);
+        List<ScoreInfo> scoreInfos = getScoreInfos(user);
+        Collections.sort(scoreInfos, comparator);
+        int count = 0;
+        for (ScoreInfo scoreInfo : scoreInfos) {
+            if (myFriends.contains(scoreInfo.getName()))
+                continue;
+            if (count < 5) {
+                answer.add(scoreInfo.getName());
+                count++;
+            } else
+                break;
+        }
         return answer;
     }
 }

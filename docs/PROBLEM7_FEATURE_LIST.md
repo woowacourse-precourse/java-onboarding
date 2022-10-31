@@ -31,10 +31,10 @@ problem7(string user, list<list<string>> friends, list<string> visitors){
 - ~~해당 유저의 친구 정보를 리스트로 갖고 있는 Map<String, List<String>> makeFriendGraph() 함수~~
 - ~~각 user에 대한 점수를 갖고 있는 Map<String, Integer> getScoreMap() 함수~~
 - ~~모든 ScoreInfo를 가져오는 List<ScoreInfo> getScoreInfo() 함수~~
-- scoreInfos 정렬 후 최대 5개의 유저 이름을 가져오는 로직
+- ~~scoreInfos 정렬 후 최대 5개의 유저 이름을 가져오는 로직~~
 
 ## TODO
 
 - ~~score, name을 갖고 있는 내부 클래스 ScoreInfo 개발~~
 - ~~ScoreInfo 사용자 정의 정렬 구현~~
-- 로직 완성 & 테스트
+- ~~로직 완성 & 테스트~~
