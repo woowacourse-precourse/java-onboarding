@@ -1,11 +1,18 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.List;
+import onboarding.problem7.Sns;
+
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        return recommendFriend(user, friends, visitors);
+    }
+
+    private static List<String> recommendFriend(String user, List<List<String>> friends, List<String> visitors) {
+        Sns sns = new Sns();
+        sns.setFriendShip(friends);
+        sns.addVisitLog(user, visitors);
+        return sns.recommendMembers(user);
     }
 }
