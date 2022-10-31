@@ -25,6 +25,18 @@ public class Problem3 {
         return 0;
     }
 
+    // 현재 순회중인 값이 몇 번의 박수를 쳐야하는지 세는 메서드
+    public static int countClap(String currentValue) {
+
+        int currentValueLength = currentValue.length();
+        int count = 0;
+
+        for (int j = 0; j < currentValueLength; j++) {
+            count += isCountableNumber(j, currentValue);
+        }
+        return count;
+    }
+
     public static int solution(int number) {
         int answer = 0;
         return answer;
