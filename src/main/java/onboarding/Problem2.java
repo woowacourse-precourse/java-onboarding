@@ -30,4 +30,11 @@ public class Problem2 {
         }
         return result;
     }
+
+    private static boolean isDuplicated(String prevCryptogram, String cryptogram){
+        if(prevCryptogram.length()==cryptogram.length()){
+            return false;
+        }
+        return true;
+    }
 }
