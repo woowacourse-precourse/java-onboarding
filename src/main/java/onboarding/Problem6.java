@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem6 {
 
@@ -53,12 +54,31 @@ public class Problem6 {
         return duplicateNameSet;
     }
 
+    public static List<String> getDuplicateEmail(List<List<String>> list){
+        HashSet<String> duplicateNameSet = nameSeparation(list);
+        List<String> duplicateEmail = new ArrayList<>();
+
+        for(List<String> user : list){
+            String email = user.get(0);
+            String name = user.get(1);
+            for(int i = 0; i<name.length()-1; i++){
+                String twoLetters = name.substring(i, i+2);
+                if(duplicateNameSet.contains(twoLetters)){
+                    duplicateEmail.add(email);
+                }
+            }
+        }
+        duplicateEmail = duplicateEmail.stream().distinct().collect(Collectors.toList());
+        Collections.sort(duplicateEmail);
+        return duplicateEmail;
+    }
 
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         if (!validCheck(forms)) {
             throw new IllegalStateException("잘못된 입력입니다.");
         }
+        answer = getDuplicateEmail(forms);
         return answer;
     }
 }
