@@ -74,7 +74,7 @@
 - Crew 객체에서 email만 추출하는 과정이 필요하므로 getEmail() 메소드를 둔다.
 
 ### Class Crews
-- Crews 클래스는 List<Crew> crews를 유일한 멤버변수로 갖는 일급컬렉션이다.
+- Crews 클래스는 List\<Crew> crews를 유일한 멤버변수로 갖는 일급컬렉션이다.
 - 컬렉션 연산에 관한 메소드를 갖는다.
 
 #### 1. getCrewSetOverlappingWith(Crew crew)
@@ -88,7 +88,7 @@
 
 ### Class Main
 
-#### 1. makeCrewByNicknameAndEmail(String email, String nickname)
+#### 1. makeCrewByEmailAndNickname(String email, String nickname)
 - 매개변수로 email과 nickname을 받아 Crew 객체를 생성해 반환한다.
 
 #### 2. makeCollectionCrews(List<List\<String>> emailAndNicknames)
