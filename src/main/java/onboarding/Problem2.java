@@ -6,6 +6,16 @@ package onboarding;
  * 2. 중복 문자 삭제 및 반복
  * */
 public class Problem2 {
+
+    // 연속하는 중복 문자의 마지막 인덱스 찾기
+    public static int getLastIdx(String cryptogram, int start) {
+        char word = cryptogram.charAt(start);
+        while (start < cryptogram.length() && cryptogram.charAt(start) == word) {
+            start++;
+        }
+        return start;
+    }
+
     public static String solution(String cryptogram) {
         String answer = "answer";
         return answer;
