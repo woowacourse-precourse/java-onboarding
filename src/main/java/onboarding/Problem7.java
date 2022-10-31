@@ -23,6 +23,7 @@ public class Problem7 {
             calculateScore(list, visitors);
         }
 
+        removeAlreadyFriends(user);
 
         return answer;
     }
@@ -64,6 +65,13 @@ public class Problem7 {
 
         for(String visitor : visitors){
             scoreMap.replace(visitor, scoreMap.get(visitor) + 1);
+        }
+    }
+
+    private static void removeAlreadyFriends(String user){
+        scoreMap.remove(user);
+        for(String s : userFriends){
+            scoreMap.remove(s);
         }
     }
 }
