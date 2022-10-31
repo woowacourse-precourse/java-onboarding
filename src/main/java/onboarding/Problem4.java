@@ -30,7 +30,7 @@ public class Problem4 {
     }
 
     private static Function<Character, Character> getFilter(){
-        return (Character ch) -> {
+        return (ch) -> {
             if (needConvert(ch)) {
                 return getConvertedChar(ch);
             }
