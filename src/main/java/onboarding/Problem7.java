@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -18,7 +15,74 @@ public class Problem7 {
 
         HashMap<String, Integer> scoresMap = initFriendScores(me, allUsers);
 
+        scoresMap = toKnowTogether(me, friends, scoresMap);
+        scoresMap = toVisit(visitors, scoresMap);
+        scoresMap = toRemoveZero(scoresMap);
+
+
         return answer;
+    }
+    private static HashMap<String, Integer> toRemoveZero(HashMap<String, Integer> scoresMap) {
+
+        List<String> keys = new LinkedList<>(scoresMap.keySet());
+
+        for (String key : keys) {
+            int score = scoresMap.get(key);
+
+            if (score == 0) {
+                scoresMap.remove(key);
+            }
+        }
+
+        return scoresMap;
+    }
+    public static HashMap<String, Integer> toKnowTogether(User user, List<List<String>> friends, HashMap<String, Integer> scoresMap) {
+
+        String name = user.getName();
+        List<String> myFriends = user.getFriendsList();
+        int friendSize = friends.size();
+
+        for (int i = 0; i < friendSize; i++) {
+
+            List<String> relation = friends.get(i);
+
+            String friendA = relation.get(0);
+            String friendB = relation.get(1);
+
+            if (friendA.equals(name) || friendB.equals(name)) {
+                continue;
+            }
+
+            if (myFriends.contains(friendA)) {
+                int score = scoresMap.get(friendB) + 10;
+                scoresMap.put(friendB, score);
+                continue;
+            }
+
+            if (myFriends.contains(friendB)) {
+                int score = scoresMap.get(friendA) + 10;
+                scoresMap.put(friendA, score);
+                continue;
+            }
+        }
+
+        return scoresMap;
+    }
+
+    private static HashMap<String, Integer> toVisit(List<String> visitors, HashMap<String, Integer> scoresMap) {
+
+        int visitorSize = visitors.size();
+
+        for (int i = 0; i < visitorSize; i++) {
+            String name = visitors.get(i);
+
+            if (scoresMap.containsKey(name)) {
+                int score = scoresMap.get(name) + 1;
+                scoresMap.put(name, score);
+            }
+        }
+
+        return scoresMap;
     }
     public static HashMap<String, Integer> initFriendScores(User user, List<String> allUsers) {
 
