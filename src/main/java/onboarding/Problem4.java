@@ -24,7 +24,7 @@ public class Problem4 {
      */
     private static HashMap<String, String> createAlphabetTable() {
         String alphabet = "abcdefghijklmnopqrstuvwxyz";
-        String[] splitAlphabet = splitWord(alphabet);
+        String[] splitAlphabet = getOneLetterWords(alphabet);
         int lengthSplitAlphabet = splitAlphabet.length;
 
         HashMap<String, String> table = new HashMap<>();
@@ -54,7 +54,7 @@ public class Problem4 {
      * @return 변환된 문자열
      */
     private static String changeWord(String word) {
-        String[] splitWord = splitWord(word);
+        String[] splitWord = getOneLetterWords(word);
         LinkedList<String> newWord = new LinkedList<>();
 
         // 알파벳 대소문자를 유지하면서 변환
@@ -74,11 +74,11 @@ public class Problem4 {
     }
 
     /**
-     * 문자열 분리
-     * @param word 분리할 분자열
-     * @return 분리된 문자열
+     * 문자를 한글자씩 분할
+     * @param word 분할할 글자
+     * @return 분할된 글자
      */
-    private static String[] splitWord(String word) {
+    private static String[] getOneLetterWords(String word) {
         return word.split("");
     }
 }
