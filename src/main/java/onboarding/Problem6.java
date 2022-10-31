@@ -30,7 +30,7 @@ public class Problem6 {
                 answer.add(forms.get(0).get(0));
             }
         }
-        // 이메일 sorting
+        // 이메일 sorting //
         Collections.sort(answer);
         return answer;
     }
