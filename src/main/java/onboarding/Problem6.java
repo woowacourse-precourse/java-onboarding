@@ -3,6 +3,10 @@ package onboarding;
 import java.util.*;
 
 public class Problem6 {
+    /*
+    @param forms : 지원자 이름, 이메일 리스트
+    @return 중복으로 간주된 지원자 이메일 반환
+     */
     public static List<String> solution(List<List<String>> forms) {
         Map<String, String> applicant = new HashMap<>(); //KEY : name, Value : email
         Set<String> resendEmail = new HashSet<>();
@@ -31,7 +35,13 @@ public class Problem6 {
 
         return resendEmailSet;
     }
-    //지원자 이름의 부분집합 구하기
+
+    /*
+    지원자 이름의 부분집합 구하기
+    @param name : 지원자 이름
+    @return 지원자 이름 두글자씩 나눈 집합 반환
+     */
+
     public static List<String> getNameSubset(String name){
         List<String> list = new ArrayList<>();
 
