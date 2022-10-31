@@ -3,11 +3,11 @@ package onboarding.problem4;
 public class Word {
 
     public static String getReverseWord(String word) {
-        String result = "";
+        StringBuilder result = new StringBuilder();
         for (int i = 0; i < word.length(); i++) {
             char reverseChar = Alphabet.changeAlphabet(word.charAt(i));
-            result += reverseChar;
+            result.append(reverseChar);
         }
-        return result;
+        return result.toString();
     }
 }
