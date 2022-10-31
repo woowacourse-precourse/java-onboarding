@@ -40,7 +40,7 @@ public class CandidateIntroducer {
 
     private void introduceVisitors(List<String> userFriends, Map<String, Friend> scores) {
         for (String visitor : visitors) {
-            if (userFriends.contains(visitor)) break;
+            if (userFriends.contains(visitor)) continue;
             scores.put(visitor, scores.getOrDefault(visitor, new Friend(visitor)).addScore(1));
         }
     }
