@@ -46,6 +46,24 @@ public class Problem7 {
             recomScore.add(0);
         }
 
+        for (int i = 0; i < friends.size(); i++) {
+            for (int j = 0; j < userFriends.size(); j++) {
+                if (friends.get(i).get(0) == userFriends.get(j)) {
+                    if (friends.get(i).get(1) == user) break;
+                    int index = recomList.indexOf(friends.get(i).get(1));
+                    recomScore.set(index, recomScore.get(index) + 10);
+                }
+
+                if (friends.get(i).get(1) == userFriends.get(j)) {
+                    if (friends.get(i).get(0) == user) break;
+                    int index = recomList.indexOf(friends.get(i).get(0));
+                    recomScore.set(index, recomScore.get(index) + 10);
+                }
+            }
+        }
+
+
+
 
 
 
