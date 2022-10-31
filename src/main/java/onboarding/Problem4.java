@@ -13,6 +13,17 @@ public class Problem4 {
     private static boolean checkWordLength(String word) {
         return !(word.length() >= WORD_MIN_LANGE && word.length() <= WORD_MAX_LANGE);
     }
+
+    private static char reversalWord(char c) {
+        if (isNotAlphabet(c)) {
+            return c;
+        }
+        if (Character.isUpperCase(c)) {
+            return UPPER.charAt(25 - c + 'A');
+        }
+        return LOWER.charAt(25 - c + 'a');
+    }
+
     private static boolean isNotAlphabet(char alphabet) {
         return !Character.isAlphabetic(alphabet);
     }
