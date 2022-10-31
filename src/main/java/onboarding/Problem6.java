@@ -1,8 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Problem6 {
 
@@ -19,7 +17,7 @@ public class Problem6 {
 
             for(int j = 0; j < nickname.length() - 1; j++) {
                 // 두 글자씩 조합하여 중복인지 확인한다
-                String str = String.valueOf(nickname.charAt(j)) + String.valueOf(nickname.charAt(j + 1));
+                String str = nickname.substring(j, j + 2);
 
                 boolean isDuplicationFound = false;         // 중복이 있는지 체크
                 for (int k = 0; k < forms.size(); k++) {
