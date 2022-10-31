@@ -8,7 +8,8 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
 
         List<String> friendOfFriend = findFriendOfFriend(user, friends);
-        Map<String, Integer> scoreRecommendFriend = getScoreRecommendFriend(friendOfFriend, visitors);
+        Map<String, Integer> scoreRecommendFriendMap = getScoreRecommendFriend(friendOfFriend, visitors);
+        List<String> sortedRecommendFriendList = getSortedRecommendFriend(scoreRecommendFriendMap);
 
         return answer;
     }
@@ -77,5 +78,17 @@ public class Problem7 {
         });
 
         return resultScoreRecommendFriend;
+    }
+
+    private static List<String> getSortedRecommendFriend(Map<String, Integer> scoreRecommendFriendMap) {
+        List<String> result = scoreRecommendFriendMap.keySet().stream().sorted((user1, user2) -> {
+            if (!Objects.equals(scoreRecommendFriendMap.get(user1), scoreRecommendFriendMap.get(user2))) {
+                return scoreRecommendFriendMap.get(user2).compareTo(scoreRecommendFriendMap.get(user1));
+            } else {
+                return user1.compareTo(user2);
+            }
+        }).collect(Collectors.toList());
+
+        return result;
     }
 }
