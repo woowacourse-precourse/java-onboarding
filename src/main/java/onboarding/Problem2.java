@@ -17,7 +17,7 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         String decodeResult = STRING_INIT_VALUE;
         validateCryptogram(cryptogram);
-        while(!isDecodedSuccess(cryptogram)) {
+        while(isDecodedFail(cryptogram)) {
             cryptogram = decodeString(cryptogram);
         }
         decodeResult = cryptogram;
@@ -28,9 +28,9 @@ public class Problem2 {
         return cryptogram.replaceAll(DECODE_CRYPTOGRAM_REGEX, REPLACE_CRYPTOGRAM_WORD);
     }
 
-    private static boolean isDecodedSuccess(String beforeDecodeCryptogram) {
+    private static boolean isDecodedFail(String beforeDecodeCryptogram) {
         String afterDecodeCryptogram = decodeString(beforeDecodeCryptogram);
-        return beforeDecodeCryptogram.equals(afterDecodeCryptogram);
+        return !beforeDecodeCryptogram.equals(afterDecodeCryptogram);
     }
 
     private static void validateCryptogram(String cryptogram) {
