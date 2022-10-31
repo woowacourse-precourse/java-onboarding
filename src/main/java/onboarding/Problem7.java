@@ -11,6 +11,8 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
         HashMap<String, ArrayList<String>> friendGraph = initFriendGraph(friends);
         HashMap<String, Integer> recommendScore = initRecommendScoreList();
+        AddRecommendScoreOfFriends(recommendScore, friendGraph, user);
+        System.out.println(recommendScore);
         return answer;
     }
 
@@ -38,8 +40,8 @@ public class Problem7 {
     }
 
     // user의 추천친구 리스트에 파라미터로 전달된 유저가 있는지 확인하는 함수
-    public static boolean checkUserInRecommendScoreList(HashMap<String, Integer> recommendScore, String user) {
-        return recommendScore.keySet().contains(user);
+    public static boolean checkUserInRecommendScoreList(HashMap<String, Integer> recommendScore, String other) {
+        return recommendScore.keySet().contains(other);
     }
 
     // 전달받은 파라미터가 user의 친구인지 확인하는 함수
@@ -49,8 +51,25 @@ public class Problem7 {
 
     // 점수를 갱신할 때 제한조건을 체크하는 함수
     public static boolean checkBeforeAddRecommendScore(HashMap<String, Integer> recommendScore, HashMap<String, ArrayList<String>> friendGraph, String user, String other) {
-        return user != other && checkUserFriends(friendGraph, user, other);
+        return user.equals(other) || checkUserFriends(friendGraph, user, other);
     }
 
+    // 함께 아는 친구의 수에 따라 점수를 추가하는 함수
+    public static void AddRecommendScoreOfFriends(HashMap<String, Integer> recommendScore, HashMap<String, ArrayList<String>> friendGraph, String user) {
+        // 함께 아는 친구: other, 친구: friend
+        for (String friend: friendGraph.get(user)) {
+            if (!friendGraph.containsKey(friend)) continue;
+            for (String other: friendGraph.get(friend)) {
 
+                // 추천친구 list에 추가할지 말지 체크
+                if (checkBeforeAddRecommendScore(recommendScore, friendGraph, user, other)) continue;
+
+                // 추천친구 list에 other가 없다면 이를 추가
+                if (!checkUserInRecommendScoreList(recommendScore, other)) recommendScore.put(other, 0);
+
+                recommendScore.replace(other, recommendScore.get(other) + 10);
+
+            }
+        }
+    }
 }
