@@ -21,3 +21,10 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+## 🚀 기능 구현에 필요한 사항
+
+### 1. 문자열과 중복 문자의 존재 유무를 관리하는 클래스
+- [X] Cryptogram 클래스 
+- [X] 중복 문자 유무를 클라이언트에게 알려줄 메서드 - isDuplicate()
+- [X] 중복 문자를 제거하는 메서드 - deleteDuplicate()

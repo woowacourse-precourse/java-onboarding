@@ -21,3 +21,15 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+## 🚀 기능 구현에 필요한 사항
+
+### 1. 예외처리
+- [ ] 입력된 크루원 수 확인
+### 2. 크루들의 닉네임과 이메일을 저장하는 Member 클래스
+- [ ] 예외처리) 닉네임, 이메일 길이 확인
+- [ ] 예외처리) 이메일 도메인 확인
+- [ ] 예외처리) 닉네임에 한글 외의 문자 포함 여부 확인
+### 3. Crew 클래스를 컬렉션으로 갖는 Members 클래스
+- [ ] 같은 글자가 연속적으로 포함되는 닉네임을 갖는 Member들의 이메일 반환
+- [ ] Member 클래스를 저장하는 메서드
