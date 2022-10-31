@@ -1,8 +1,6 @@
 package problem7;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class User {
     private String name;
@@ -11,6 +9,43 @@ public class User {
     public User(String name, Timeline visitors) {
         this.name = name;
         this.visitors = visitors;
+    }
+
+    public List<String> getRecommendations(RecommendationDto recommendationDto) {
+        Iterator<String> users = getScore(recommendationDto).keySet().iterator();
+        List<Friend> recommendation = new ArrayList<>();
+
+        while (users.hasNext()) {
+            String user = users.next();
+            addRecommendation(recommendationDto, recommendation, user);
+        }
+        return processRecommendations(recommendation);
+    }
+
+    private HashMap<String, Integer> getScore(RecommendationDto recommendationDto) {
+        return recommendationDto.getScore();
+    }
+
+    private void addRecommendation(RecommendationDto recommendationDto, List<Friend> recommendation, String user) {
+        if (!recommendationDto.getIsFriend()[getUserId(user, recommendationDto.getConnection())])
+            recommendation.add(new Friend(user, getScore(recommendationDto).get(user)));
+    }
+
+    private int getRecommendationsLength(List<Friend> recommendation) {
+        return Math.min(recommendation.size(), 5);
+    }
+
+    private List<String> processRecommendations(List<Friend> recommendation) {
+        List<String> processedRecommendations = new ArrayList<>();
+
+        recommendation
+                .sort(Comparator
+                        .comparingInt(Friend::getScore).reversed()
+                        .thenComparing(Friend::getName));
+        for (int i = 0; i < getRecommendationsLength(recommendation); i++) {
+            processedRecommendations.add(recommendation.get(i).getName());
+        }
+        return processedRecommendations;
     }
 
     private int checkTimeline(FriendDto friendDto, HashMap<String, Integer> score, int cnt) {
