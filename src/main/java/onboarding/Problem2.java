@@ -9,6 +9,14 @@ import java.util.List;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
-        return answer;}
+        return answer;
+    }
+    public static List<String> cryptoSplit(String s){ //문자열 분리 메소드
+        String[] arr = s.split("");
+        List<String> list = new ArrayList<>();
+        for(String s1 : arr) list.add(s1);
+        return list;
+
+    }
 
 }
