@@ -5,8 +5,20 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        if (!validateInput(pobi) || !validateInput(crong)) {
+            return -1;
+        }
+        int pobiNum = findMax(pobi);
+        int crongNum = findMax(crong);
+        if (pobiNum < crongNum) {
+            return 2;
+        } else if (pobiNum > crongNum) {
+            return 1;
+        } else if (pobiNum == crongNum) {
+            return 0;
+        }
+        return -1;
+
     }
 
     public static boolean validateInput(List<Integer> input){
