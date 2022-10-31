@@ -2,23 +2,22 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "";
         StringBuilder cryptoBuilder = new StringBuilder(cryptogram);
         boolean loop = true;
+        int continueIdx = 0;
 
-        while(loop){
+        while(loop) {
             loop = false;
-            for(int i=0; i<cryptoBuilder.length()-1; i++){
-                if(cryptoBuilder.charAt(i) == cryptoBuilder.charAt(i+1)){
-                    cryptoBuilder.delete(i, i+2);
+            for (int i = continueIdx; i < cryptoBuilder.length() - 1; i++) {
+                if (cryptoBuilder.charAt(i) == cryptoBuilder.charAt(i + 1)) {
+                    cryptoBuilder.delete(i, i + 2);
                     loop = true;
-                    break;
+                    if (continueIdx > 0)
+                        continueIdx -= 1;
                 }
             }
         }
 
-        answer = cryptoBuilder.toString();
-
-        return answer;
+        return cryptoBuilder.toString();
     }
 }
