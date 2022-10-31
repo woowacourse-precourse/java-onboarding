@@ -12,8 +12,8 @@ class Pair implements Comparable<Pair> {
         this.score = score;
     }
 
-//     1. 추천 점수를 기준으로 정렬하기
-//     2. 추천 점수가 같다면, 이름을 기준으로 정렬하기
+//    1. 추천 점수를 기준으로 정렬하기
+//    2. 추천 점수가 같다면, 이름을 기준으로 정렬하기
     @Override
     public int compareTo(Pair p) {
         if (this.score == p.score) // 점수가 같다면
@@ -28,7 +28,7 @@ public class Problem7 {
     // 친구 추천에 들어갈 수 있는 친구와 추천 점수 초기 설정하기
     public static List<Pair> makeCandidateMap(String user, List<List<String>> friends, List<String> visitors) {
         List<Pair> candidateMap = new ArrayList<>();
-        HashSet<String> candidates = new HashSet<>();
+        HashSet<String> candidates = new HashSet<>(); // 친구 후보는 "candidates"라는 HashSet에 보관한다
         for (List<String> friend : friends) {
             candidates.add(friend.get(0));
             candidates.add(friend.get(1));
@@ -77,7 +77,6 @@ public class Problem7 {
 //        List<String> answer = Collections.emptyList(); // 주어진 그대로 사용하기
 
         List<String> answer = new ArrayList<>();
-
         List<Pair> candidateMap = makeCandidateMap(user, friends, visitors); // 친구 추천에 들어갈 수 있는 친구와 추천 점수 초기 설정하기
 
         HashMap<String, List<String>> friendMap = makeFriendList(friends);
