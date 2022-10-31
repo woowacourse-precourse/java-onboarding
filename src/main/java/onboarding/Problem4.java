@@ -12,7 +12,18 @@ public class Problem4 {
             map.put((char) i, Character.toString(219 - (char) i));
         }
 
-        String answer = "";
-        return answer;
+        StringBuilder answer = new StringBuilder();
+        for(int i = 0; i < word.length(); i++) {
+            char c = word.charAt(i);
+
+            if (map.containsKey(c)) {
+                answer.append(map.get(c));
+            }
+            else {
+                answer.append(c);
+            }
+        }
+
+        return answer.toString();
     }
 }
