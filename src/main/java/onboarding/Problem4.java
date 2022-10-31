@@ -55,7 +55,12 @@ class TreeFrog {
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
+        String answer;
+
+        TreeFrog treeFrog = new TreeFrog();
+
+        answer = treeFrog.frogTranslation(word);
+
         return answer;
     }
 }
