@@ -21,3 +21,9 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 📋 기능 구현 목록
+
+- [ ] 닉네임 비교
+- [ ] 닉네임 중복자 이메일 찾기
+- [ ] 중복 이메일 제거
