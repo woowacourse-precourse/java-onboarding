@@ -4,6 +4,8 @@ import java.util.Stack;
 
 public class Problem2 {
 
+    private static Stack<String> deletedCryptogram = new Stack<>();
+
 
     public static String solution(String cryptogram) {
         return makeNewCryptogram(cryptogram);
@@ -15,16 +17,15 @@ public class Problem2 {
     }
 
     private static String encodeCryptogram(String cryptogram){
-        Stack<String> deletedCryptogram = new Stack<>();
         String[] alphabetSeperated = cryptogram.split("");
         for(String alphabet : alphabetSeperated){
-            encryptCryptogram(deletedCryptogram, alphabet);
+            encryptCryptogram(alphabet);
         }
-        return changeStackToString(deletedCryptogram);
+        return changeStackToString();
     }
 
-    private static void encryptCryptogram(Stack<String> deletedCryptogram, String alphabet){
-        if(deletedCryptogram.isEmpty()){
+    private static void encryptCryptogram(String alphabet){
+        if(deletedCryptogram.isEmpty()) {
             deletedCryptogram.push(alphabet);
             return;
         }
@@ -35,10 +36,10 @@ public class Problem2 {
         deletedCryptogram.push(alphabet);
     }
 
-    private static String changeStackToString(Stack<String> stack){
+    private static String changeStackToString(){
         StringBuilder result = new StringBuilder();
-        while(!stack.isEmpty()){
-            result.insert(0, stack.pop());
+        while(!deletedCryptogram.isEmpty()){
+            result.insert(0, deletedCryptogram.pop());
         }
         return result.toString();
     }
