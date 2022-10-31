@@ -3,6 +3,9 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
+    // ID별로 친구 리스트를 생성하는 함수
+    // input : 친구-관계 튜플을 가진 List (Ex. ["jun", "andole" ...])
+    // output: id별로 친구 리스트를 정리한 HashMap (Ex. {"jun"=["shakevan", "dount"] ...})
     private static HashMap<String, List<String>> getFriendMap(List<List<String>> relationships) {
         // 친구 목록을 담을 HashMap
         // ex. { shakevan=[andole, jun, mrko] ... }
@@ -29,6 +32,10 @@ public class Problem7 {
         return friendMap;
     }
 
+    // ID별로 점수를 가진 HashMap에서 상위 5개의 id를 뽑는 함수
+    // 0점인 경우 선정 대상에서 제외함
+    // input : id별로 점수를 정리한 Hashmap (Ex. {"jun": 20 ...})
+    // output: 상위 5개 id (Ex. ["jun", "bedi" ...])
     private static List<String> getTopFive(HashMap<String, Integer> scoreMap) {
         List<String> topFive = new ArrayList<>();
         // 정렬을 위해 LinkedList로 변환하기
