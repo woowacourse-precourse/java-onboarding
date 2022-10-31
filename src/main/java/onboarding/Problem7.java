@@ -31,7 +31,6 @@ public class Problem7 {
             }
         }
         Collections.sort(allId);
-        System.out.println(allId);
         return allId;
     }
 
@@ -44,7 +43,6 @@ public class Problem7 {
                 }
             }
         }
-        System.out.println(userFriends);
         return userFriends;
     }
 
@@ -61,7 +59,6 @@ public class Problem7 {
             }
             newFriends.add(friendsList);
         }
-        System.out.println(newFriends);
         return newFriends;
     }
     public static List<Integer> findFriendNumber(List<List<String>> newFriend, List<String> userFriend, List<String> allId, List<String> visitors) {
@@ -80,8 +77,7 @@ public class Problem7 {
             } else {
                 userScore.add(i, 0);
             }
-            }
-        System.out.println(userScore);
+        }
         for(int i = 0; i < visitors.size(); i++) {
             for (int j = 0; j < allId.size(); j++) {
                 if (userFriend.contains(visitors.get(i))) {
@@ -96,7 +92,6 @@ public class Problem7 {
                 }
             }
         }
-        System.out.println(userScore);
         return userScore;
     }
 
