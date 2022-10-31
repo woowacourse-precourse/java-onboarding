@@ -9,6 +9,9 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> nicknameList = extractNicknames(forms);
         nicknameList = checkNicknameLength(nicknameList);
+        List<String> emailList = extractEmails(forms);
+        emailList = isCheckEmailFormat(emailList);
+
         List<List<String>> nicknameSplitList = extractNicknameByTwoChar(nicknameList);
         List<String> checkDuplicate = checkDuplicateNicknames(nicknameSplitList, nicknameList);
 
@@ -23,6 +26,16 @@ public class Problem6 {
         }
 
         return nicknameList;
+    }
+
+    public static List<String> extractEmails(List<List<String>> forms) {
+        List<String> emailList = new ArrayList<>();
+
+        for (int i = 0; i < forms.size(); i++) {
+            emailList.add(forms.get(i).get(0));
+        }
+
+        return emailList;
     }
 
     public static List<List<String>> extractNicknameByTwoChar(List<String> nicknameList) {
@@ -92,5 +105,32 @@ public class Problem6 {
         }
         System.out.println(nicknameList);
         return nicknameList;
+    }
+
+    public static List<String> isCheckEmailFormat(List<String> emailList) {
+        String emailRegex = "^[_a-z0-9-]+(.[_a-z0-9-]+)*@email.com";
+        Pattern pattern = Pattern.compile(emailRegex);
+
+        for (int i = 0; i < emailList.size(); i++) {
+            Matcher matcher = pattern.matcher(emailList.get(i));
+
+            if (!matcher.matches()) {
+                emailList.remove(i);
+            }
+        }
+
+        emailList = isCheckEmailLength(emailList);
+
+        return emailList;
+    }
+
+    public static List<String> isCheckEmailLength(List<String> emailList) {
+        for (int i = 0; i < emailList.size(); i++) {
+            if ((emailList.get(i).length() < 11) || (emailList.get(i).length() >= 20)) {
+                emailList.remove(i);
+            }
+        }
+        System.out.println(emailList);
+        return emailList;
     }
 }
