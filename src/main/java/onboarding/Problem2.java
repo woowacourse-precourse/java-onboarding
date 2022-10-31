@@ -24,7 +24,7 @@ public class Problem2 {
             if (remove_dupicate_list.get(i) == remove_dupicate_list.get(i + 1)) {
                 remove_dupicate_list.remove(i);
                 remove_dupicate_list.remove(i);
-                i = -1;
+                i = i - 2;
             }
         }
 
