@@ -85,7 +85,9 @@ public class Problem4 {
     }
 
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        Map<String, String> upperCaseMappingMap = reverseASCIIForUpperCase();
+        Map<String, String> lowerCaseMappingMap = reverseASCIIForLowerCase();
+
+        return callMapping(word, upperCaseMappingMap, lowerCaseMappingMap);
     }
 }
