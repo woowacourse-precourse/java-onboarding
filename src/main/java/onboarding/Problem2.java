@@ -5,14 +5,18 @@ package onboarding;
 //2. 해당 문자열 제거
 //3. 위 기능 반복
 
+import java.util.Stack;
+
 public class Problem2 {
 
     static class DupStr{
+        private int cursor = 0;
         private int startIdx;
         private int FinalIdx;
+        private Stack<Integer> idx = new Stack<>();
 
         private void startDupStr(String s) {
-            for (int i = 0; i < s.length() - 1; i++)
+            for (int i = cursor; i < s.length() - 1; i++)
             {
                 if (s.charAt(i) == s.charAt(i + 1)) {
                     this.startIdx = i;
@@ -42,40 +46,47 @@ public class Problem2 {
                     FinalIdx++;
                     return true;
                 }
-                return false;
             }
             return false;
         }
 
-        public int getStartIdx() {
-            return startIdx;
-        }
-
-        public int getFinalIdx() {
-            return FinalIdx;
+        public Stack<Integer> getIdx() {
+            return idx;
         }
 
         public DupStr(String s) {
-            startDupStr(s);
             while(true) {
+                startDupStr(s);
                 FinalDupStr(s);
+                this.cursor = FinalIdx + 1;
+                idx.add(startIdx);
+                idx.add(FinalIdx);
                 if (!isNextDup(s))
                     return;
             }
         }
     }
 
-    public static String solution(String cryptogram) {
+    private static String getCryptogram(String cryptogram, Stack<Integer> idx) {
         int startIdx;
         int FinalIdx;
+        while (!idx.isEmpty())
+        {
+            FinalIdx = idx.pop();
+            startIdx = idx.pop();
+            cryptogram = cryptogram.substring(0, startIdx) + cryptogram.substring(FinalIdx + 1);
+        }
+        return cryptogram;
+    }
+
+    public static String solution(String cryptogram) {
         while (true)
         {
             DupStr dupstr = new DupStr(cryptogram);
-            startIdx = dupstr.getStartIdx();
-            FinalIdx = dupstr.getFinalIdx();
-            if (startIdx == -1)
+            Stack<Integer> idx = dupstr.getIdx();
+            if (idx.get(0) == -1)
                 break;
-            cryptogram = cryptogram.substring(0, startIdx) + cryptogram.substring(FinalIdx + 1);
+            cryptogram = getCryptogram(cryptogram, idx);
         }
         return cryptogram;
     }
