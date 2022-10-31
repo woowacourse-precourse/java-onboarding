@@ -41,22 +41,21 @@ public class Problem5 {
         return count;
     }
 
-    private static int countThousand() {
-        int thousand = balance / 1000;
-        balance -= 1000 * thousand;
-        return thousand;
+    private static int countHundred() {
+        int count = balance / 100;
+        balance -= 100 * count;
+        return count;
     }
 
-    private static int countThousand() {
-        int thousand = balance / 1000;
-        balance -= 1000 * thousand;
-        return thousand;
+    private static int countTen() {
+        int count = balance / 10;
+        balance -= 10 * count;
+        return count;
     }
 
-    private static int countThousand() {
-        int thousand = balance / 1000;
-        balance -= 1000 * thousand;
-        return thousand;
+    private static int countOne() {
+        return balance;
     }
+
 
 }
