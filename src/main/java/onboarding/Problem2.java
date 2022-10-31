@@ -4,8 +4,13 @@ import java.util.Stack;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "";
+        StringBuilder answer = new StringBuilder();
+        answer = deleteOverlap(cryptogram);
+        return answer.toString();
+    }
 
+    public static StringBuilder deleteOverlap(String cryptogram) {
+        StringBuilder answer = new StringBuilder();
         Stack<Character> left = new Stack<>();
         Stack<Character> right = new Stack<>();
 
@@ -23,7 +28,7 @@ public class Problem2 {
 
         int rightsize = right.size();
         for(int i=0; i<rightsize; i++) {
-            answer += right.pop();
+            answer.append(right.pop());
         }
         return answer;
     }
