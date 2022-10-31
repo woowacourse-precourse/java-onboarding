@@ -7,7 +7,7 @@ public class Problem3 {
     public static int solution(int number) {
         checkNumberCorrect(number);
 
-        return countClap(number);
+        return getResult(number);
     }
 
     /**
@@ -22,37 +22,36 @@ public class Problem3 {
     }
 
     /**
-     * 박수 세기
+     * 해당 숫자까지의 박수 횟수 가져오기
      * @param number 숫자
      * @return 박수 횟수
      */
-    private static int countClap(int number) {
+    private static int getResult(int number) {
         int countClap = 0;
 
         for(int i = 1; i <= number; i++) {
-            if (isClapNumber(i)) {
-                countClap++;
-            }
+            countClap += getClapCount(i);
         }
 
         return countClap;
     }
 
     /**
-     * 박수 치는 숫자인지 여부
+     * 해당 숫자의 박수 횟수 가져오기
      * @param number 숫자
-     * @return 박수 여부
+     * @return 박수 횟수
      */
-    private static boolean isClapNumber(int number) {
+    private static int getClapCount(int number) {
         int[] oneLetterNumbers = getOneLetterNumbers(number);
+        int countClap = 0;
 
         for (int oneLetterNumber : oneLetterNumbers) {
             if (oneLetterNumber == 3 || oneLetterNumber == 6 || oneLetterNumber == 9) {
-                return true;
+                countClap++;
             }
         }
 
-        return false;
+        return countClap;
     }
 
     /**
