@@ -20,6 +20,31 @@ class Problem1 {
 					throw new IllegalArgumentException();
 				}					                                                                                                                                                    
     		}
+    		
+    		for(int index = 0; index<userPagesList.size(); index++) {
+    			List<Integer> userPages = userPagesList.get(index);
+    			
+    			for(Integer page : userPages) {
+					int tempPage = page;
+					int tempResult = 0;
+					while(tempPage!=0) {
+						tempResult += tempPage%10;
+						tempPage /= 10;
+					}
+					if(tempResult > userMaxList.get(index)) {
+						userMaxList.set(index,tempResult);
+					}
+					tempPage = page;
+					tempResult = 1;
+					while(tempPage!=0) {
+						tempResult *= tempPage%10;
+						tempPage /= 10;
+					}
+					if(tempResult > userMaxList.get(index)) {
+						userMaxList.set(index,tempResult);
+					}
+				}
+    		}
 			return answer;
 		} catch (IllegalArgumentException e) {
 			return -1;
