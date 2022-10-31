@@ -25,6 +25,9 @@ class Problem1 {
         if(!isValidNumber(pages)){
             return false;
         }
+        if (!isContinuous(pages)) {
+            return false;
+        }
 
         Integer leftPage = pages.get(0);
         Integer rightPage = pages.get(1);
@@ -54,6 +57,10 @@ class Problem1 {
         Integer leftPage = pages.get(0);
         Integer rightPage = pages.get(1);
         return leftPage != null && rightPage != null;
+    }
+
+    public static boolean isContinuous(List<Integer> pages){
+        return pages.get(1) - pages.get(0) == 1;
     }
 
     public static int sumDigit(int page) {
