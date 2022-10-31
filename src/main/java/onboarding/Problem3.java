@@ -13,8 +13,13 @@ public class Problem3 {
         }
         return toClap;
     }
+
+    // 입력으로 들어온 값까지 수를 증가시키며 총 개수를 구해 리턴하는 함수
     public static int solution(int number) {
         int answer = 0;
+        for(int i=1; i<=number; i++){
+            answer += isClap(i);
+        }
         return answer;
     }
 }
