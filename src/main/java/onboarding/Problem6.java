@@ -20,19 +20,11 @@ public class Problem6 {
     }
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = new ArrayList<>();
-
         Set<Integer> indexSet = findDuplicateStudents(forms);
 
         List<Student> duplicateStudentList = getDuplicateStudentList(forms, indexSet);
 
-        Collections.sort(duplicateStudentList);
-        for (Student student : duplicateStudentList) {
-            int idx = student.idx;
-            String email = forms.get(idx).get(0);
-
-            answer.add(email);
-        }
+        List<String> answer = extracted(forms, duplicateStudentList);
 
         return answer;
     }
@@ -76,5 +68,19 @@ public class Problem6 {
         }
 
         return duplicateStudentList;
+    }
+
+    private static List<String> extracted(List<List<String>> forms, List<Student> duplicateStudentList) {
+        List<String> answer = new ArrayList<>();
+
+        Collections.sort(duplicateStudentList);
+        for (Student student : duplicateStudentList) {
+            int idx = student.idx;
+            String email = forms.get(idx).get(0);
+
+            answer.add(email);
+        }
+
+        return answer;
     }
 }
