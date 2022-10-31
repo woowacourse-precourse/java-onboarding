@@ -1,6 +1,5 @@
 package onboarding;
 
-import java.util.List;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -9,10 +8,11 @@ class Utility{
     int[] makeArray(int endNumber){
         return IntStream.range(startNumber,endNumber+1).toArray();
     }
-    int[] divideEachDigit(int number) {
-        int[] digitNum;
-        digitNum = Stream.of(String.valueOf(number).split("")).mapToInt(Integer::parseInt).toArray();
-        return digitNum;
+    Stream<String> transform(int number){
+        return Stream.of(String.valueOf(number).split(""));
+    }
+    int[] map(Stream<String> digits){
+        return digits.mapToInt(Integer::parseInt).toArray();
     }
 }
 class Game{
@@ -45,7 +45,7 @@ class Game{
 
 public class Problem3 {
     public static int solution(int number) {
-        int answer=0;
+        int answer;
         int[] numbers;
 
         Utility utility = new Utility();
