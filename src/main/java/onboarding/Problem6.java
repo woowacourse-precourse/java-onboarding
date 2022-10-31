@@ -1,5 +1,5 @@
 /*
- * Problem5.java
+ * Problem6.java
  *
  * 2022-10-31
  *

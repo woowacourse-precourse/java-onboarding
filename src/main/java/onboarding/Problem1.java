@@ -17,7 +17,7 @@ import java.util.List;
 class Problem1 {
 
     /**
-     * 주어진 입력값들이 문제의 제한사하에 유효한지 확인하는 method
+     * 주어진 입력값들이 문제의 제한사항에 유효한지 확인하는 method
      *
      * @param list 왼쪽, 오른쪽 페이지 번호가 담겨있는 List<Integer> 전달
      * @return 유효성 검증을 모두 통과할시 true, 예외사항 발생시 false return
