@@ -13,9 +13,17 @@ public class Problem7 {
                 addUserFriend(user, userFriendList, relation);
             }
         }
+
+        for (List<String> relation : friends) {
+            for (String friend : userFriendList) {
+                if (relation.contains(user)) {
+                    break;
+                }
+
+            }
+        }
         return answer;
     }
-
     private static void addUserFriend(String user, List<String> userFriendList, List<String> relation) {
         for (String friend : relation) {
             if(friend != user){
