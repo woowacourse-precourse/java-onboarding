@@ -45,6 +45,13 @@ class Problem1 {
 					}
 				}
     		}
+    		
+			if(userMaxList.get(0) == userMaxList.get(1)) {
+				answer = 0;
+			}else {
+				answer = userMaxList.get(0) > userMaxList.get(1) ? 1 : 2;
+			}
+
 			return answer;
 		} catch (IllegalArgumentException e) {
 			return -1;
