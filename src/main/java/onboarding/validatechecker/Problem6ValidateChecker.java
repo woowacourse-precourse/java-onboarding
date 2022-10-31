@@ -5,12 +5,19 @@ import java.util.List;
 public class Problem6ValidateChecker {
 	private static final int EMAIL = 0;
 	private static final int NICKNAME = 1;
-	public static void isFormValidate(List<List<String>> forms){
+	public static void isFormsValidate(List<List<String>> forms){
 		isFormsNotNull(forms);
 		isFormNotNull(forms);
 		areEmailAndNickNameNotNull(forms);
 		isCrewSizeInRange(forms);
 		isEmailSizeInRange(forms);
+		isNickNameSizeInRange(forms);
+	}
+
+	private static void isNickNameSizeInRange(List<List<String>> forms) {
+		for (List<String> form : forms)
+			if(form.get(NICKNAME).length() == 0 || form.get(NICKNAME).length() >= 20)
+				throw new IllegalArgumentException("닉네임의 길이가 0이거나, 20자 이상입니다.");
 	}
 
 	private static void isEmailSizeInRange(List<List<String>> forms) {
