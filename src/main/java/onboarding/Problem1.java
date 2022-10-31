@@ -25,4 +25,21 @@ class Problem1 {
         }
         return sum;
     }
+
+    private static int mulValue(List<Integer> eachDigit) {
+        int mul = 1;
+        for(Integer digit : eachDigit) {
+            mul = mul * digit;
+        }
+        return mul;
+    }
+
+    private static int getMyPoint(List<Integer> gamer) {
+        List<Integer> leftPageDigit = getEachDigit(gamer.get(0));
+        List<Integer> rightPageDigit = getEachDigit(gamer.get(1));
+        int leftMax = Math.max(sumValue(leftPageDigit), mulValue(leftPageDigit));
+        int rightMax = Math.max(sumValue(rightPageDigit), mulValue(rightPageDigit));
+        int point = Math.max(leftMax, rightMax);
+        return point;
+    }
 }
