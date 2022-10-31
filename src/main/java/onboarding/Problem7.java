@@ -16,6 +16,7 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         List<String> userFriends = findFriends(user,friends);
+        List<String> userFOAF = findFOAF(user,friends,userFriends);
         return answer;
     }
 
@@ -35,5 +36,18 @@ public class Problem7 {
                 list.add(friend.get(0));
             }
         }
+    }
+
+    static List<String> findFOAF(String user, List<List<String>> friends, List<String> userFriends){
+        List<String> userFOAF = new ArrayList<>();
+
+        for(String userFriend : userFriends){
+            addOppositeUserToList(userFOAF,userFriend,friends);
+        }
+
+        while (userFOAF.remove(user)) {
+        }
+        userFOAF.removeAll(userFriends);
+        return userFOAF;
     }
 }
