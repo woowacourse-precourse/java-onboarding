@@ -17,9 +17,14 @@ public class Problem6 {
 
         for (List<String> crew: forms){
             String email = crew.get(0), name = crew.get(1);
-            String dSentence = getDuplicateSentenceOrBlank(name);
+            String dSentence = getDuplicateSentenceOrBlank(name); //중복된 문자열
 
-            if (dSentence != ""){
+            if (dSentence.isBlank()){
+                validCrewInfo.add(name + "/" + email);
+                continue;
+            }
+
+            while (!dSentence.isBlank()){
                 invalidCrewEmails.add(email);
 
                 for (String crewInfo: getInvalidCrews(validCrewInfo, dSentence)){
@@ -27,13 +32,17 @@ public class Problem6 {
                     invalidCrewEmails.add(crewEmail);
                     validCrewInfo.remove(crewInfo);
                 }
-                continue;
+                dSentence = getDuplicateSentenceOrBlank(nextString(name, dSentence));
             }
-            validCrewInfo.add(name + "/" + email);
         }
 
         answer.addAll(invalidCrewEmails);
         return answer;
+    }
+
+    private static String nextString(String name, String substring){
+        int beginIndex = name.indexOf(substring) + 1;
+        return name.substring(beginIndex);
     }
 
     private static List<String> getInvalidCrews(List<String> validCrewInfo, String dSentence){
