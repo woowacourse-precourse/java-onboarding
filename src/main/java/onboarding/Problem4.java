@@ -30,6 +30,8 @@ public class Problem4 {
             lowercaseMap.put(a,b);
         }
 
+        String[] seperatedWord = word.split(" ");
+
         String answer ="";
         return answer;
     }
