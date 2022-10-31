@@ -5,15 +5,15 @@ import java.util.*;
 public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
-        Set<Integer> indexSet = findDuplicateStudents(forms);
+        Set<Integer> indexSet = findDuplicateNicknameStudents(forms);
 
-        List<String> answer = getDuplicateStudentList(forms, indexSet);
-        Collections.sort(answer);
+        List<String> emailList = getDuplicateStudentEmailList(forms, indexSet);
+        Collections.sort(emailList);
 
-        return answer;
+        return emailList;
     }
 
-    private static Set<Integer> findDuplicateStudents(List<List<String>> forms) {
+    private static Set<Integer> findDuplicateNicknameStudents(List<List<String>> forms) {
         Set<Integer> indexSet = new HashSet<>();
         int size = forms.size();
 
@@ -43,15 +43,15 @@ public class Problem6 {
         return true;
     }
 
-    private static List<String> getDuplicateStudentList(List<List<String>> forms, Set<Integer> indexSet) {
-        List<String> duplicateStudentList = new ArrayList<>();
+    private static List<String> getDuplicateStudentEmailList(List<List<String>> forms, Set<Integer> indexSet) {
+        List<String> emailList = new ArrayList<>();
 
         for (int idx: indexSet) {
             String email = forms.get(idx).get(0);
-            duplicateStudentList.add(email);
+            emailList.add(email);
         }
 
-        return duplicateStudentList;
+        return emailList;
     }
 
 }
