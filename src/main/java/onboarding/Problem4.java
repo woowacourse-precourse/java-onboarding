@@ -11,7 +11,7 @@ public class Problem4 {
     private static final int SPACE_ASCII = 32;
 
     public static String solution(String word) {
-        String answer = "";
+        String answer = frog_dictionary(word.toCharArray());
         return answer;
     }
 
@@ -31,4 +31,17 @@ public class Problem4 {
      * 기능 요구 사항
      * 2. 청개구리 사전을 참고해서 문자를 변환
      * */
+
+    private static String frog_dictionary(char[] char_array) {
+        for (int index = 0; index < char_array.length; index++) {
+            if (find_caplital_small_space(char_array[index]) == CAPITAL) {
+                char_array[index] = (char) (CAPITAL_Z - (char_array[index] - CAPITAL_A));
+            }
+            if (find_caplital_small_space(char_array[index]) == SMALL) {
+                char_array[index] = (char) (SAMLL_Z - (char_array[index] - SAMLL_A));
+            }
+            if (find_caplital_small_space(char_array[index]) == SPACE) continue;
+        }
+        return new String(char_array);
+    }
 }
