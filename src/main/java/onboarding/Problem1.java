@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.List;
-
 import static java.lang.Math.abs;
 
 class Problem1 {
