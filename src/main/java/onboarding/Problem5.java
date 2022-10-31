@@ -9,6 +9,8 @@ public class Problem5 {
         List<Integer> answer = new ArrayList<Integer>();
         int remain = money;
 
+        answer.add(remain/50000);
+        remain = remain%50000;
 
 
         return answer;
