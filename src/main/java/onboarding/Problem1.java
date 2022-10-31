@@ -59,9 +59,8 @@ class Problem1 {
     public static void checkExceptions(List<Integer> pages) {
         int leftPage = pages.get(0);
         int rightPage = pages.get(1);
-        int subtractPages = rightPage - leftPage;
 
-        if ((subtractPages != 1) || (leftPage % 2 != 1)) {
+        if ((leftPage + 1 != rightPage) || (leftPage % 2 != 1)) {
             throw new IllegalArgumentException();
         }
     }
