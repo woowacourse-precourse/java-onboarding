@@ -15,9 +15,9 @@ public class PageGame {
 
     public Integer getWinner(){
         //2. 필드를 통해 구한 최댓값끼리 비교후 결과 반환하는 메소드
-        if(pobi.getMaxValue() > crong.getMaxValue()) return 1;
-        if(pobi.getMaxValue() < crong.getMaxValue()) return 2;
-        if(pobi.getMaxValue() == crong.getMaxValue()) return 0;
+        if(pobi.isBiggerThan(crong)) return 1;
+        if(crong.isBiggerThan(pobi)) return 2;
+        if(pobi.isSameWith(crong)) return 0;
         return -1;
     }
 

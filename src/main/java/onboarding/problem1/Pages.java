@@ -11,7 +11,15 @@ public class Pages {
         if(isFaultSet())throw new RuntimeException();
     }
 
-    public Integer getMaxValue(){
+    public boolean isBiggerThan(Pages opposite){
+        return this.getMaxValue() > opposite.getMaxValue();
+    }
+
+    public boolean isSameWith(Pages opposite){
+        return this.getMaxValue() == opposite.getMaxValue();
+    }
+
+    private Integer getMaxValue(){
         return 0;
         //3. 1, 2에 왼쪽 오른쪽 페이지를 넣고 최대 값을 반환하는 메소드
     }
