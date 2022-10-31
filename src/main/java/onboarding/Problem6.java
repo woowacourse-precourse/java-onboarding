@@ -1,12 +1,27 @@
 package onboarding;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        HashMap<String, HashSet<Integer>> nicknameDictionary = new HashMap<>();
+        for (List<String> form : forms) {
+            nicknameDictionary.put(form.get(0), makeHashList(form.get(1)));
+        }
+        ArrayList<String> emailList = new ArrayList<>(nicknameDictionary.keySet());
+        HashSet<String> duplicateList = new HashSet<>();
+        for (int i = 0; i < emailList.size(); i++) {
+            for (int j = i + 1; j < emailList.size(); j++) {
+                String userEmail1 = emailList.get(i);
+                String userEmail2 = emailList.get(j);
+                if (isContainString(nicknameDictionary.get(userEmail1), nicknameDictionary.get(userEmail2))) {
+                    duplicateList.add(userEmail1);
+                    duplicateList.add(userEmail2);
+                }
+            }
+        }
+        List<String> answer = new ArrayList<>(duplicateList);
+        answer.sort(Comparator.naturalOrder());
         return answer;
     }
 
