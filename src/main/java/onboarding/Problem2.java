@@ -40,5 +40,13 @@ public class Problem2 {
         }
         return word;
     }
+
+    /**
+     * List 문자 합치기
+     */
+    static String dump(List<String> word) {
+        return String.join("",word);
+    }
+
 }
 
