@@ -12,8 +12,8 @@ public class EmailRepository {
         repository = new ArrayList<>();
     }
 
-    void addEmail(String email) {
-        repository.add(email);
+    void addEmail(List<String> email) {
+        repository.addAll(email);
     }
 
     void sort() {
@@ -23,4 +23,5 @@ public class EmailRepository {
     List<String> getDistinctEmails() {
         return Util.removeOverlap(repository);
     }
+
 }
