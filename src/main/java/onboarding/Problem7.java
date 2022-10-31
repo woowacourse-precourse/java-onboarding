@@ -5,18 +5,9 @@ import java.util.*;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
-        /* user와 친구인 사람 리스트(list) 만들기 */
-            // donut / shakevan
-        /* list의 구성요소와 친구인 사람들 */
-            // andole, jun, andole, jun
-        /* visitor에 있는 사람 카운팅 */
-            // bedi bedi bedi donut shakevan
-
-
         List<String> answer = new ArrayList<>();
 
         /* 이미 친구인 사람들은 최종 result 에서 제외.*/
-
         /* 1. user와 친구인 사람 friendsList 만들기 */
         List<String> friendsList = new ArrayList<>();
 
@@ -30,7 +21,6 @@ public class Problem7 {
                     friendsList.add(friends.get(i).get(0));
             }
         }
-//        System.out.println(friendsList);
 
         /* 3. user의 친구인 사람과 친구인 사람을 조회 후,  Map<친구이름,점수> 담기 */
         Map<String,Integer> resultMap = new HashMap<>();
@@ -67,13 +57,10 @@ public class Problem7 {
         }
 
         /* 5. friendsList에 있는 친구들 Map에서 제외하기*/
-//        System.out.println("제거해야할 친구목록 : "+friendsList);
         for(int i = 0; i < friendsList.size(); i++ ){
-//            System.out.println(friendsList.get(i));
             resultMap.remove(friendsList.get(i));
         }
         resultMap.remove(user);
-//        System.out.println("제거된 이후 : "+resultMap);
 
         /* 6. Map 정렬하여 answerList에 담기*/
         List<String> keySet = new ArrayList<>(resultMap.keySet());
@@ -89,7 +76,6 @@ public class Problem7 {
             }
         }
 
-//        System.out.println(answer);
         return answer;
     }
 }
