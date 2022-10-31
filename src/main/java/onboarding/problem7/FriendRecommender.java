@@ -36,9 +36,10 @@ public class FriendRecommender {
      */
     public List<String> recommend() {
         addRelationships();
+        
         List<String> userFriends = relationships.get(user);
         introduceFriends(userFriends);
-        // Check visitors
+        introduceVisitors(userFriends);
         // Create candidate list sorted by score(name if same)
         // Create new friend list(maximum 5) and return
         return new ArrayList<>();
@@ -79,6 +80,17 @@ public class FriendRecommender {
                     scores.put(nameFriend, scores.getOrDefault(nameFriend, new Friend(nameFriend)).addScore(10));
                 }
             }
+        }
+    }
+
+    /**
+     * Introduce visitors of user's SNS
+     * @param userFriends current friend list of user
+     */
+    private void introduceVisitors(List<String> userFriends) {
+        for (String visitor : visitors) {
+            if (userFriends.contains(visitor)) break;
+            scores.put(visitor, scores.getOrDefault(visitor, new Friend(visitor)).addScore(1));
         }
     }
 }
