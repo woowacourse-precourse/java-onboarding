@@ -4,15 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
+    private static int _first_page = 0;
+    private static int _second_page = 1;
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if (!verifyBook(pobi) || !verifyBook(crong))
             return -1;
-        int bigPobi = compareNumberAndReturn(
-                calcForGetBigger(splitEachNumber(pobi.get(0))),
-                calcForGetBigger(splitEachNumber(pobi.get(1))));
-        int bigCrong = compareNumberAndReturn(
-                calcForGetBigger(splitEachNumber(crong.get(0))),
-                calcForGetBigger(splitEachNumber(crong.get(1))));
+        int bigPobi = Math.max(calcMaxValue(pobi.get(_first_page)), calcMaxValue(pobi.get(_second_page)));
+        int bigCrong = Math.max(calcMaxValue(crong.get(_first_page)), calcMaxValue(crong.get(_second_page)));
         if (bigPobi == bigCrong)
             return 0;
         if (bigPobi > bigCrong) {
@@ -38,7 +36,7 @@ class Problem1 {
             return false;
         }
         // 왼쪽 페이지가 짝수일 경우
-        if (list.get(0) % 2 == 0) {
+        if (list.get(0) % 2 == 0 || list.get(1) % 2 == 1) {
             return false;
         }
         // 왼쪽 페이지와 오른쪽 페이지가 1페이지 이상 차이날 경우
@@ -48,29 +46,15 @@ class Problem1 {
         return true;
     }
 
-    private static List<Integer> splitEachNumber(int n) {
-        List<Integer> ret = new ArrayList<>();
-        while (n > 0) {
-            ret.add(n % 10);
-            n /= 10;
-        }
-        return (ret);
-    }
-
-    private static int calcForGetBigger(List<Integer> list) {
+    private static int calcMaxValue(int n) {
         int sum = 0;
         int mul = 1;
-        for (int i = 0; list.size() > i; ++i) {
-            sum += list.get(i);
-            mul *= list.get(i);
-        }
-        return compareNumberAndReturn(sum, mul);
-    }
 
-    private static int compareNumberAndReturn(int n1, int n2) {
-        if (n1 > n2) {
-            return n1;
+        while (n > 0) {
+            sum += n % 10;
+            mul *= n % 10;
+            n /= 10;
         }
-        return n2;
+        return Math.max(sum, mul);
     }
 }
