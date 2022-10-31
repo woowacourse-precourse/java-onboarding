@@ -17,15 +17,38 @@ public class Problem7 {
      * 4. 점수를 비교해 상위 5명만 반환하는 기능
      */
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> userFriends = new ArrayList<>();
-        for (List<String> friend : friends) {
-            if (friend.get(0).equals(user)) {
-                userFriends.add(friend.get(1));
-            }
-            if (friend.get(1).equals(user)) {
-                userFriends.add(friend.get(0));
-            }
+        List<String> userFriends = findUserFriends(user, friends);
+        List<String> friendOfFriends = findFriendOfFriends(user, friends, userFriends);
+
+        Map<String, Integer> score = getRecommendationScore(visitors, userFriends, friendOfFriends);
+
+        return getRecommendationTopFiveFriends(score);
+    }
+
+    private static List<String> getRecommendationTopFiveFriends(Map<String, Integer> score) {
+        return score.entrySet().stream()
+            .sorted(((o1, o2) -> o2.getValue() - o1.getValue()))
+            .map(Entry::getKey)
+            .limit(5)
+            .collect(Collectors.toList());
+    }
+
+    private static Map<String, Integer> getRecommendationScore(List<String> visitors, List<String> userFriends,
+        List<String> friendOfFriends) {
+        Map<String, Integer> score = new HashMap<>();
+        for (String friendOfFriend : friendOfFriends) {
+            score.put(friendOfFriend, score.getOrDefault(friendOfFriend, 0) + 10);
         }
+        for (String visitor : visitors) {
+            if (userFriends.contains(visitor)) {
+                continue;
+            }
+            score.put(visitor, score.getOrDefault(visitor, 0) + 1);
+        }
+        return score;
+    }
+
+    private static List<String> findFriendOfFriends(String user, List<List<String>> friends, List<String> userFriends) {
         List<String> friendOfFriends = new ArrayList<>();
         for (List<String> friend : friends) {
             if (friend.get(0).equals(user) || friend.get(1).equals(user)) {
@@ -38,22 +61,19 @@ public class Problem7 {
                 friendOfFriends.add(friend.get(0));
             }
         }
+        return friendOfFriends;
+    }
 
-        Map<String, Integer> score = new HashMap<>();
-        for (String friendOfFriend : friendOfFriends) {
-            score.put(friendOfFriend, score.getOrDefault(friendOfFriend, 0) + 10);
-        }
-        for (String visitor : visitors) {
-            if (userFriends.contains(visitor)) {
-                continue;
+    private static List<String> findUserFriends(String user, List<List<String>> friends) {
+        List<String> userFriends = new ArrayList<>();
+        for (List<String> friend : friends) {
+            if (friend.get(0).equals(user)) {
+                userFriends.add(friend.get(1));
             }
-            score.put(visitor, score.getOrDefault(visitor, 0) + 1);
+            if (friend.get(1).equals(user)) {
+                userFriends.add(friend.get(0));
+            }
         }
-
-        return score.entrySet().stream()
-            .sorted(((o1, o2) -> o2.getValue() - o1.getValue()))
-            .map(Entry::getKey)
-            .limit(5)
-            .collect(Collectors.toList());
+        return userFriends;
     }
 }
