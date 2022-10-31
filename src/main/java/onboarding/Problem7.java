@@ -35,14 +35,14 @@ public class Problem7 {
         userFriendsInfo.get(user2).getFriends().add(user1);
     }
 
-    private static Map<String, Integer> findScoreOfAcquaintanceAllUser(String user, Map<String, User> userFriendsInfo, Map<String, Integer> score) {
+    private static void findScoreOfAcquaintanceAllUser(String user, Map<String, User> userFriendsInfo) {
         userFriendsInfo.keySet().stream()
                 .filter(eachUser -> !eachUser.equals(user))
-                .forEach(eachUser -> {
-                    int eachScore = findScoreOfAcquaintanceEachUser(user, eachUser, userFriendsInfo);
-                    score.put(eachUser, eachScore);
+                .forEach(eachUserName -> {
+                    int eachScore = findScoreOfAcquaintanceEachUser(user, eachUserName, userFriendsInfo);
+                    User eachUser = userFriendsInfo.get(eachUserName);
+                    eachUser.setScore(eachUser.getScore() + 10);
                 });
-        return score;
     }
 
     private static int findScoreOfAcquaintanceEachUser(String user, String each, Map<String, User> userFriendsInfo) {
