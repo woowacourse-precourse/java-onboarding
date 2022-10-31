@@ -4,17 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Problem3 {
-    private static List<Character> clapList;
+    private static List<Character> claps;
 
     public static int solution(int number) {
-        clapList = new ArrayList<>();
-        clapList.add('3');
-        clapList.add('6');
-        clapList.add('9');
-        return sumOfClapCount(number);
+        claps = new ArrayList<>();
+        claps.add('3');
+        claps.add('6');
+        claps.add('9');
+        return sumClapCount(number);
     }
 
-    private static int sumOfClapCount(int number) {
+    private static int sumClapCount(int number) {
         int clapCount = 0;
         for (int currentNumber = 3; currentNumber <= number; currentNumber++) {
             String strOfCurrentNumber = String.valueOf(currentNumber);
@@ -26,7 +26,7 @@ public class Problem3 {
     private static int countClap(String strOfCurrentNumber) {
         int clapCount = 0;
         for (int i = 0; i < strOfCurrentNumber.length(); i++) {
-            if (clapList.contains(strOfCurrentNumber.charAt(i))) {
+            if (claps.contains(strOfCurrentNumber.charAt(i))) {
                 clapCount++;
             }
         }
