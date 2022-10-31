@@ -20,6 +20,16 @@ class Problem1 {
         score = Math.max(score,calculateMulti(right_page));
         return score;
     }
+
+    static int calculateSum(int number) {
+        int result = 0;
+        while(number > 0){
+            result += number % 10;
+            number = number / 10;
+        }
+        return result;
+    }
+
     static boolean exceptionCheck(List<Integer> list) {
         int left = list.get(0);
         int right = list.get(1);
