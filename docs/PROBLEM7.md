@@ -24,3 +24,11 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 요구 사항 리스트
+
+1. 유저와 직접적인 친구를 찾아 이름 리스트를 반환하는 함수를 만든다.
+2. 1번에서 찾은 이림 리스트의 친구들을 찾고 점수를 계산한다.
+3. 직접적인 친구를 제회한 방문자들의 점수를 합산하는 메서드를 만든다.
+4. 최소 한명 최대 5명을 출력한다.
+ 
