@@ -88,7 +88,7 @@ public class Problem7 {
     private static void addFriendOfFriendPoint(List<List<String>> friends) {
         String me = getMe();
 
-        for(List<String> friend: friends) {
+        for (List<String> friend: friends) {
             for (String user : friend) {
                 if (existPreFriend(user) && !user.equals(me)) {
                     addPreFriendPoint(friend.get(friend.indexOf(user) ^ 1), 10);
@@ -97,6 +97,19 @@ public class Problem7 {
         }
     }
 
+    /**
+     * 방문자에게 1점 주기
+     * @param visitors 방문자 목록
+     */
+    private static void addVisitorPoint(List<String> visitors) {
+        String me = getMe();
+
+        for (String user : visitors) {
+            if (!existRealFriend(user) && !user.equals(me)) {
+                addPreFriendPoint(user, 1);
+            }
+        }
+    }
 
 
     /**
