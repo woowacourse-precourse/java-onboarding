@@ -21,7 +21,7 @@ public class ScoreService {
 	public static Score getHighestScore(List<Integer> target) {
 		Pages pages = Pages.of(target);
 
-		PageValidator.isInValidPages(pages);
+		PageValidator.validate(pages);
 		int highestScore = Math.max(
 			Math.max(
 				add(pages.getLeftPage()), add(pages.getRightPage())

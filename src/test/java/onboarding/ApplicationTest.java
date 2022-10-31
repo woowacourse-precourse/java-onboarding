@@ -1,14 +1,9 @@
 package onboarding;
 
-import static org.assertj.core.api.Assertions.*;
-
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Stream;
-
 import onboarding.problem2.validation.CryptogramValidator;
 import onboarding.problem3.validation.ThreeSixNineValidator;
+import onboarding.problem4.validation.BlueFrogValidator;
+import onboarding.problem5.validation.WalletValidator;
 import onboarding.problem6.validation.UserValidator;
 import onboarding.problem7.validation.RelationsValidator;
 import onboarding.problem7.validation.VisitorsValidator;
@@ -18,6 +13,14 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Stream;
+
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest {
     @Nested
@@ -170,7 +173,12 @@ class ApplicationTest {
                 // when && then
                 assertThatThrownBy(() -> Problem2.solution(cryptogram))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessage(String.format(CryptogramValidator.INVALID_STRING_LENGTH_MASSAGE_FORMAT, CryptogramValidator.MIN_LENGTH, CryptogramValidator.MAX_LENGTH));
+                        .hasMessage(String.format(
+                                CryptogramValidator.INVALID_STRING_LENGTH_RANGE_MESSAGE_FORMAT,
+                                CryptogramValidator.CRYPTOGRAM,
+                                CryptogramValidator.MIN_LENGTH,
+                                CryptogramValidator.MAX_LENGTH
+                        ));
             }
 
             @Test
@@ -182,7 +190,12 @@ class ApplicationTest {
                 // when && then
                 assertThatThrownBy(() -> Problem2.solution(cryptogram))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessage(String.format(CryptogramValidator.INVALID_STRING_LENGTH_MASSAGE_FORMAT, CryptogramValidator.MIN_LENGTH, CryptogramValidator.MAX_LENGTH));
+                        .hasMessage(String.format(
+                                CryptogramValidator.INVALID_STRING_LENGTH_RANGE_MESSAGE_FORMAT,
+                                CryptogramValidator.CRYPTOGRAM,
+                                CryptogramValidator.MIN_LENGTH,
+                                CryptogramValidator.MAX_LENGTH
+                        ));
             }
         }
     }
@@ -229,6 +242,7 @@ class ApplicationTest {
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessage(String.format(
                                 ThreeSixNineValidator.INVALID_NUMBER_RANGE_MESSAGE_FORMAT,
+                                ThreeSixNineValidator.NUMBER,
                                 ThreeSixNineValidator.MIN_RANGE,
                                 ThreeSixNineValidator.MAX_RANGE
                         ));
@@ -242,6 +256,7 @@ class ApplicationTest {
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessage(String.format(
                                 ThreeSixNineValidator.INVALID_NUMBER_RANGE_MESSAGE_FORMAT,
+                                ThreeSixNineValidator.NUMBER,
                                 ThreeSixNineValidator.MIN_RANGE,
                                 ThreeSixNineValidator.MAX_RANGE
                         ));
@@ -281,7 +296,12 @@ class ApplicationTest {
                 String word = "VALIDWORDS".repeat(101);
                 assertThatThrownBy(() -> Problem4.solution(word))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessage("문자열은 %d 이상 %d 이하의 길이로 주어져야 합니다.", 1, 1000);
+                        .hasMessage(String.format(
+                                BlueFrogValidator.INVALID_STRING_LENGTH_RANGE_MESSAGE_FORMAT,
+                                BlueFrogValidator.SENTENCE,
+                                BlueFrogValidator.MIN_LENGTH,
+                                BlueFrogValidator.MAX_LENGTH
+                        ));
             }
 
             @Test
@@ -290,7 +310,12 @@ class ApplicationTest {
                 String word = "";
                 assertThatThrownBy(() -> Problem4.solution(word))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessage("문자열은 %d 이상 %d 이하의 길이로 주어져야 합니다.", 1, 1000);
+                        .hasMessage(String.format(
+                                BlueFrogValidator.INVALID_STRING_LENGTH_RANGE_MESSAGE_FORMAT,
+                                BlueFrogValidator.SENTENCE,
+                                BlueFrogValidator.MIN_LENGTH,
+                                BlueFrogValidator.MAX_LENGTH
+                        ));
             }
         }
     }
@@ -335,7 +360,12 @@ class ApplicationTest {
                 int money = 1_000_001;
                 assertThatThrownBy(() -> Problem5.solution(money))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessage(String.format("입력값은 %d 이상 %d 이하의 자연수여야 합니다.", 1, 1000000));
+                        .hasMessage(String.format(
+                                WalletValidator.INVALID_NUMBER_RANGE_MESSAGE_FORMAT,
+                                WalletValidator.MONEY,
+                                WalletValidator.MIN_RANGE,
+                                WalletValidator.MAX_RANGE
+                        ));
             }
 
             @Test
@@ -344,7 +374,12 @@ class ApplicationTest {
                 int money = 0;
                 assertThatThrownBy(() -> Problem5.solution(money))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessage(String.format("입력값은 %d 이상 %d 이하의 자연수여야 합니다.", 1, 1000000));
+                        .hasMessage(String.format(
+                                WalletValidator.INVALID_NUMBER_RANGE_MESSAGE_FORMAT,
+                                WalletValidator.MONEY,
+                                WalletValidator.MIN_RANGE,
+                                WalletValidator.MAX_RANGE
+                        ));
             }
         }
     }
@@ -410,10 +445,11 @@ class ApplicationTest {
                 assertThatThrownBy(() -> Problem6.solution(forms))
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessage(String.format(
-                                UserValidator.INVALID_COUNT_RANGE_MESSAGE_FORMAT,
-                                UserValidator.MIN_RANGE,
-                                UserValidator.MAX_RANGE)
-                        );
+                                UserValidator.INVALID_LIST_SIZE_RANGE_MESSAGE_FORMAT,
+                                UserValidator.USER,
+                                UserValidator.USER_LIST_SIZE_MIN_RANGE,
+                                UserValidator.USER_MIST_SIZE_MAX_RANGE
+                        ));
             }
 
             @Test
@@ -427,10 +463,11 @@ class ApplicationTest {
                 assertThatThrownBy(() -> Problem6.solution(forms))
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessage(String.format(
-                                UserValidator.INVALID_COUNT_RANGE_MESSAGE_FORMAT,
-                                UserValidator.MIN_RANGE,
-                                UserValidator.MAX_RANGE)
-                        );
+                                UserValidator.INVALID_LIST_SIZE_RANGE_MESSAGE_FORMAT,
+                                UserValidator.USER,
+                                UserValidator.USER_LIST_SIZE_MIN_RANGE,
+                                UserValidator.USER_MIST_SIZE_MAX_RANGE
+                        ));
             }
 
             @DisplayName("이메일 형식에 부합하지 않는 경우 예외 발생")
@@ -443,7 +480,11 @@ class ApplicationTest {
 
                 assertThatThrownBy(() -> Problem6.solution(forms))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessage(UserValidator.INVALID_EMAIL_FORMAT_MESSAGE);
+                        .hasMessage(String.format(
+                                UserValidator.STRING_DISMATCH_TO_REGEX_MESSAGE_FORMAT,
+                                UserValidator.EMAIL,
+                                UserValidator.EMAIL_DESCRIPTION
+                        ));
             }
 
             @DisplayName("유효한 이메일 도메인이 아닌 경우 예외 발생")
@@ -472,10 +513,11 @@ class ApplicationTest {
                 assertThatThrownBy(() -> Problem6.solution(forms))
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessage(String.format(
-                                "이메일 길이는 %d자 이상 %d자 미만이어야 합니다.",
+                                UserValidator.INVALID_STRING_LENGTH_RANGE_MESSAGE_FORMAT,
+                                UserValidator.EMAIL,
                                 UserValidator.MIN_EMAIL_LENGTH,
-                                UserValidator.MAX_EMAIL_LENGTH)
-                        );
+                                UserValidator.MAX_EMAIL_LENGTH
+                        ));
             }
 
             @Test
@@ -488,10 +530,11 @@ class ApplicationTest {
                 assertThatThrownBy(() -> Problem6.solution(forms))
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessage(String.format(
-                                "이메일 길이는 %d자 이상 %d자 미만이어야 합니다.",
+                                UserValidator.INVALID_STRING_LENGTH_RANGE_MESSAGE_FORMAT,
+                                UserValidator.EMAIL,
                                 UserValidator.MIN_EMAIL_LENGTH,
-                                UserValidator.MAX_EMAIL_LENGTH)
-                        );
+                                UserValidator.MAX_EMAIL_LENGTH
+                        ));
             }
 
             @Test
@@ -504,10 +547,11 @@ class ApplicationTest {
                 assertThatThrownBy(() -> Problem6.solution(forms))
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessage(String.format(
-                                UserValidator.INVALID_NAME_LENGTH_MESSAGE_FORMAT,
+                                UserValidator.INVALID_STRING_LENGTH_RANGE_MESSAGE_FORMAT,
+                                UserValidator.NAME,
                                 UserValidator.MIN_NAME_LENGTH,
-                                UserValidator.MAX_NAME_LENGTH)
-                        );
+                                UserValidator.MAX_NAME_LENGTH
+                        ));
             }
 
             @Test
@@ -520,10 +564,11 @@ class ApplicationTest {
                 assertThatThrownBy(() -> Problem6.solution(forms))
                         .isInstanceOf(IllegalArgumentException.class)
                         .hasMessage(String.format(
-                                UserValidator.INVALID_NAME_LENGTH_MESSAGE_FORMAT,
+                                UserValidator.INVALID_STRING_LENGTH_RANGE_MESSAGE_FORMAT,
+                                UserValidator.NAME,
                                 UserValidator.MIN_NAME_LENGTH,
-                                UserValidator.MAX_NAME_LENGTH)
-                        );
+                                UserValidator.MAX_NAME_LENGTH
+                        ));
             }
 
             @Test
@@ -535,7 +580,11 @@ class ApplicationTest {
 
                 assertThatThrownBy(() -> Problem6.solution(forms))
                         .isInstanceOf(IllegalArgumentException.class)
-                        .hasMessage(UserValidator.EMAIL_NOT_KOREAN_MESSAGE);
+                        .hasMessage(String.format(
+                                UserValidator.STRING_DISMATCH_TO_REGEX_MESSAGE_FORMAT,
+                                UserValidator.NAME,
+                                UserValidator.KOREAN_ONLY_DESCRIPTION
+                        ));
             }
         }
     }
@@ -632,10 +681,12 @@ class ApplicationTest {
                     assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
                             .isInstanceOf(IllegalArgumentException.class)
                             .hasMessage(
-                                    String.format(onboarding.problem7.validation.UserValidator.INVALID_ID_LENGTH_MESSAGE_FORMAT,
+                                    String.format(
+                                            onboarding.problem7.validation.UserValidator.INVALID_STRING_LENGTH_RANGE_MESSAGE_FORMAT,
+                                            onboarding.problem7.validation.UserValidator.USER_ID,
                                             onboarding.problem7.validation.UserValidator.MIN_ID_LENGTH_RANGE,
-                                            onboarding.problem7.validation.UserValidator.MAX_ID_LENGTH_RANGE)
-                            );
+                                            onboarding.problem7.validation.UserValidator.MAX_ID_LENGTH_RANGE
+                                    ));
                 }
 
                 @Test
@@ -654,10 +705,12 @@ class ApplicationTest {
                     assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
                             .isInstanceOf(IllegalArgumentException.class)
                             .hasMessage(
-                                    String.format(onboarding.problem7.validation.UserValidator.INVALID_ID_LENGTH_MESSAGE_FORMAT,
+                                    String.format(
+                                            onboarding.problem7.validation.UserValidator.INVALID_STRING_LENGTH_RANGE_MESSAGE_FORMAT,
+                                            onboarding.problem7.validation.UserValidator.USER_ID,
                                             onboarding.problem7.validation.UserValidator.MIN_ID_LENGTH_RANGE,
-                                            onboarding.problem7.validation.UserValidator.MAX_ID_LENGTH_RANGE)
-                            );
+                                            onboarding.problem7.validation.UserValidator.MAX_ID_LENGTH_RANGE
+                                    ));
                 }
 
                 @Test
@@ -676,10 +729,12 @@ class ApplicationTest {
                     assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
                             .isInstanceOf(IllegalArgumentException.class)
                             .hasMessage(
-                                    String.format(onboarding.problem7.validation.UserValidator.INVALID_ID_LENGTH_MESSAGE_FORMAT,
+                                    String.format(
+                                            onboarding.problem7.validation.UserValidator.INVALID_STRING_LENGTH_RANGE_MESSAGE_FORMAT,
+                                            onboarding.problem7.validation.UserValidator.USER_ID,
                                             onboarding.problem7.validation.UserValidator.MIN_ID_LENGTH_RANGE,
-                                            onboarding.problem7.validation.UserValidator.MAX_ID_LENGTH_RANGE)
-                            );
+                                            onboarding.problem7.validation.UserValidator.MAX_ID_LENGTH_RANGE
+                                    ));
                 }
             }
 
@@ -695,9 +750,10 @@ class ApplicationTest {
                     assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
                             .isInstanceOf(IllegalArgumentException.class)
                             .hasMessage(String.format(
-                                    RelationsValidator.INVALID_RELATIONS_SIZE_MESSAGE_FORMAT,
-                                    RelationsValidator.MIN_RELATION_SIZE,
-                                    RelationsValidator.MAX_RELATION_SIZE
+                                    RelationsValidator.INVALID_LIST_SIZE_RANGE_MESSAGE_FORMAT,
+                                    RelationsValidator.RELATIONS,
+                                    RelationsValidator.MIN_RELATIONS_SIZE,
+                                    RelationsValidator.MAX_RELATIONS_SIZE
                             ));
                 }
 
@@ -710,9 +766,10 @@ class ApplicationTest {
                     assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
                             .isInstanceOf(IllegalArgumentException.class)
                             .hasMessage(String.format(
-                                    RelationsValidator.INVALID_RELATIONS_SIZE_MESSAGE_FORMAT,
-                                    RelationsValidator.MIN_RELATION_SIZE,
-                                    RelationsValidator.MAX_RELATION_SIZE
+                                    RelationsValidator.INVALID_LIST_SIZE_RANGE_MESSAGE_FORMAT,
+                                    RelationsValidator.RELATIONS,
+                                    RelationsValidator.MIN_RELATIONS_SIZE,
+                                    RelationsValidator.MAX_RELATIONS_SIZE
                             ));
                 }
 
@@ -728,9 +785,10 @@ class ApplicationTest {
                     assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
                             .isInstanceOf(IllegalArgumentException.class)
                             .hasMessage(String.format(
-                                    RelationsValidator.INVALID_RELATIONS_SIZE_MESSAGE_FORMAT,
-                                    RelationsValidator.MIN_RELATION_SIZE,
-                                    RelationsValidator.MAX_RELATION_SIZE
+                                    RelationsValidator.INVALID_LIST_SIZE_RANGE_MESSAGE_FORMAT,
+                                    RelationsValidator.RELATIONS,
+                                    RelationsValidator.MIN_RELATIONS_SIZE,
+                                    RelationsValidator.MAX_RELATIONS_SIZE
                             ));
                 }
 
@@ -749,9 +807,33 @@ class ApplicationTest {
                     assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
                             .isInstanceOf(IllegalArgumentException.class)
                             .hasMessage(String.format(
-                                    RelationsValidator.INVALID_RELATION_SIZE_MESSAGE_FORMAT,
-                                    RelationsValidator.VALID_RELATION_SIZE)
-                            );
+                                    RelationsValidator.INVALID_LIST_SIZE_RANGE_MESSAGE_FORMAT,
+                                    RelationsValidator.RELATION,
+                                    RelationsValidator.RELATION_SIZE,
+                                    RelationsValidator.RELATION_SIZE
+                            ));
+                }
+
+                @Test
+                @DisplayName("사용자 아이디가 알파벳 소문자가 아니면 예외 발생")
+                void test8() {
+                    String user = "mkdr";
+                    List<List<String>> friends = List.of(
+                            List.of("donut", "andole"),
+                            List.of("DONUT", "jun"),
+                            List.of("donut", "mrko"),
+                            List.of("shakevan", "andole"),
+                            List.of("shakevan", "jun"),
+                            List.of("shakevan", "mrko")
+                    );
+                    List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+                    assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
+                            .isInstanceOf(IllegalArgumentException.class)
+                            .hasMessage(String.format(
+                                    onboarding.problem7.validation.UserValidator.STRING_DISMATCH_TO_REGEX_MESSAGE_FORMAT,
+                                    onboarding.problem7.validation.UserValidator.USER_ID,
+                                    onboarding.problem7.validation.UserValidator.ALPHABET_LOWERCASE_ONLY_DESCRIPTION
+                            ));
                 }
             }
 
@@ -773,7 +855,8 @@ class ApplicationTest {
                     assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
                             .isInstanceOf(IllegalArgumentException.class)
                             .hasMessage(String.format(
-                                    VisitorsValidator.INVALID_VISITORS_SIZE_MESSAGE_FORMAT,
+                                    VisitorsValidator.INVALID_LIST_SIZE_RANGE_MESSAGE_FORMAT,
+                                    VisitorsValidator.VISITORS,
                                     VisitorsValidator.MIN_VISITORS_SIZE,
                                     VisitorsValidator.MAX_VISITORS_SIZE
                             ));
@@ -798,7 +881,8 @@ class ApplicationTest {
                     assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
                             .isInstanceOf(IllegalArgumentException.class)
                             .hasMessage(String.format(
-                                    VisitorsValidator.INVALID_VISITORS_SIZE_MESSAGE_FORMAT,
+                                    VisitorsValidator.INVALID_LIST_SIZE_RANGE_MESSAGE_FORMAT,
+                                    VisitorsValidator.VISITORS,
                                     VisitorsValidator.MIN_VISITORS_SIZE,
                                     VisitorsValidator.MAX_VISITORS_SIZE
                             ));
@@ -819,7 +903,11 @@ class ApplicationTest {
                     List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
                     assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
                             .isInstanceOf(IllegalArgumentException.class)
-                            .hasMessage(onboarding.problem7.validation.UserValidator.INVALID_ID_FORMAT_MESSAGE);
+                            .hasMessage(String.format(
+                                    onboarding.problem7.validation.UserValidator.STRING_DISMATCH_TO_REGEX_MESSAGE_FORMAT,
+                                    onboarding.problem7.validation.UserValidator.USER_ID,
+                                    onboarding.problem7.validation.UserValidator.ALPHABET_LOWERCASE_ONLY_DESCRIPTION
+                            ));
                 }
 
                 @Test

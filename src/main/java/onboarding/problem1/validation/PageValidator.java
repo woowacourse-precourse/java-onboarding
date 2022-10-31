@@ -1,12 +1,13 @@
 package onboarding.problem1.validation;
 
+import onboarding.common.AbstractValidator;
 import onboarding.problem1.vo.Pages;
 
 /**
  * Pages 객체가 유효한 객체인 지 검증하는 작업을 모아둔 Validator 클래스입니다.
  * @author BackFoxx
  */
-public class PageValidator {
+public class PageValidator extends AbstractValidator {
 	public static final int PAGE_MAX_LIMIT = 400;
 	public static final int PAGE_MIN_LIMIT = 1;
 
@@ -16,7 +17,7 @@ public class PageValidator {
 	 * 각 검증 작업에서 유효성 검사에 실패한 경우 예외가 발생합니다.
 	 * @param pages 검증 대상인 Pages 객체를 인자로 받을 수 있습니다.
 	 */
-	public static void isInValidPages(Pages pages) {
+	public static void validate(Pages pages) {
 		isPageSeparated(pages);
 		isLeftPageNotOdd(pages);
 		isPageLastOrHigher(pages);

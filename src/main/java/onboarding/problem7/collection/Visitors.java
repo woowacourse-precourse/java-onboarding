@@ -13,7 +13,7 @@ public class Visitors {
     }
 
     public static Visitors of(List<String> visitors) {
-        VisitorsValidator.validateVisitors(visitors);
+        VisitorsValidator.validate(visitors);
         return new Visitors(visitors);
     }
 

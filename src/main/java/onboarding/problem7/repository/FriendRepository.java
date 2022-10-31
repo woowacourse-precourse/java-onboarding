@@ -16,7 +16,7 @@ public class FriendRepository {
     }
 
     public static FriendRepository of(String user) {
-        UserValidator.validateUser(user);
+        UserValidator.validate(user);
         return new FriendRepository(user);
     }
 
