@@ -9,8 +9,8 @@ public class Problem4 {
 
         for (int i = 0; i < word.length(); i++) {
             char ch = word.charAt(i);
-            if(ch == ' ') {
-                sb.append(" ");
+            if ((ch < 'A' || ch > 'Z') && (ch < 'a' || ch > 'z')) {
+                sb.append(ch);
                 continue;
             }
             boolean flag = checkWord(ch);
@@ -24,7 +24,7 @@ public class Problem4 {
 
     // 현재 문자가 대문자인지 소문자인지 판별하는 메서드
     static boolean checkWord(char word) {
-        if(Character.isLowerCase(word)) {
+        if (Character.isLowerCase(word)) {
             return false;
         }
         return true;
@@ -32,7 +32,7 @@ public class Problem4 {
 
     // 문자를 반대로 변환하는 메서드
     static char convertWord(boolean flag, char word) {
-        if(flag) {
+        if (flag) {
             HashMap<Character, Character> upperMap = new HashMap<>();
             char upperStart = 'A';
             char upperEnd = 'Z';
