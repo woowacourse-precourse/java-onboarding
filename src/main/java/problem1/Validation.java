@@ -2,24 +2,24 @@ package problem1;
 
 import java.util.List;
 
-public class InputValidation {
+public class Validation {
     private final List<Integer> pages;
     private final List<Integer> START_PAGE = List.of(1, 2);
     private final List<Integer> END_PAGE = List.of(399, 400);
 
-    InputValidation(List<Integer> pages) {
+    Validation(List<Integer> pages) {
         this.pages = pages;
     }
 
-    public void validate() {
-        validateSize();
-        validateRange();
-        validatePage();
-        validateNextPage();
-        validateNotStartAndEndPage();
+    public boolean validate() {
+        return validateSize() &&
+                validateRange() &&
+                validatePage() &&
+                validateNextPage() &&
+                validateNotStartAndEndPage();
     }
 
-    private void validateSize() {
+    private boolean validateSize() {
         return pages.size() == 2;
     }
 
