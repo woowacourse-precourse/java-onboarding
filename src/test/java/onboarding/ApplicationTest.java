@@ -7,6 +7,8 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import onboarding.problem1.Problem1;
+
 class ApplicationTest {
     @Nested
     class Problem1Test {
