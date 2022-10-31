@@ -6,7 +6,11 @@ import java.util.List;
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
-        getKey(forms);
+        String key = getKey(forms);
+        if(key == null){
+            return answer;
+        }
+        answer = keyCheck(answer, forms, key);
         return answer;
     }
 
@@ -24,5 +28,14 @@ public class Problem6 {
             }
         }
         return null;
+    }
+
+    private static List<String> keyCheck(List<String> answer, List<List<String>> forms, String key){
+        for(int i = 0; i < forms.size(); i++){
+            if(forms.get(i).get(1).contains(key)){
+                answer.add(forms.get(i).get(0));
+            }
+        }
+        return answer;
     }
 }
