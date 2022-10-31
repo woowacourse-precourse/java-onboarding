@@ -2,24 +2,57 @@ package onboarding;
 
 public class Problem3 {
     public static int solution(int number) {
-        int answer = 0;
 
-        char[] tsn = {'3', '6', '9'};
-        for(int i=1; i<number+1; i++){
-            char[] numChar = String.valueOf(i).toCharArray();
-            for(int j=0; j<tsn.length; j++){
-                answer += containChar(numChar, tsn[j]);
-            }
-        }
+        ThreeSixNineCalculator calculator =
+                new ThreeSixNineCalculator(number);
 
-        return answer;
+        return calculator.calculation();
     }
 
-    private static int containChar(char[] num, char tsn){
-        int cnt = 0;
-        for(int i=0; i<num.length; i++){
-            if(num[i] == tsn) cnt++;
+    public enum ThreeSixNine{
+        THREE('3'), SIX('6'), NINE('9');
+
+        private char number;
+
+        ThreeSixNine(char number){
+            this.number = number;
         }
-        return cnt;
+
+        public char getNumber() {
+            return number;
+        }
+    }
+
+    public static class ThreeSixNineCalculator{
+        int number;
+
+        ThreeSixNineCalculator(int number) {
+            this.number = number;
+        }
+
+        public int calculation(){
+            int result = 0;
+            for(int i=1; i<number+1; i++){
+                result += countTsn(i);
+            }
+            return result;
+        }
+
+        public int countTsn(int num){
+            int cnt = 0;
+            char[] numChar = String.valueOf(num).toCharArray();
+            for(ThreeSixNine tsn : ThreeSixNine.values()){
+                cnt += isContain(numChar, tsn);
+            }
+            return cnt;
+        }
+
+        public int isContain(char[] num, ThreeSixNine tsn){
+            int cnt = 0;
+            for(int i=0; i<num.length; i++){
+                if(num[i] == tsn.getNumber()) cnt++;
+            }
+            return cnt;
+        }
     }
 }
