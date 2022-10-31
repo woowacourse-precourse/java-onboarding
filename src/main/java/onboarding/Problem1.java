@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -32,6 +33,15 @@ class Problem1 {
 
         List<Integer> nums = Arrays.asList(leftSum, leftMul, rightSum, rightMul);
         return nums.stream().max(Integer::compare).get();
+    }
+
+    public static List<Integer> getNumList(int num) {
+        List<Integer> numList = new ArrayList<>();
+        while(num>0) {
+            numList.add(num%10);
+            num/=10;
+        }
+        return numList;
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
