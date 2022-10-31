@@ -1,13 +1,11 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer = new ArrayList<>();
 
         List<String> duplicationNames = new ArrayList<>();
 
@@ -25,6 +23,16 @@ public class Problem6 {
         });
 
         List<String> duplicationDistinctNames = duplicationNames.stream().distinct().collect(Collectors.toList());
+
+        for(int i = 0; i < forms.size(); i++) {
+            String formsName = forms.get(i).get(1);
+
+            if(duplicationDistinctNames.contains(formsName)) {
+                answer.add(forms.get(i).get(0));
+            }
+        }
+
+        Collections.sort(answer);
 
         return answer;
     }
