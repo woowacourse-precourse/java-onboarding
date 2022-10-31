@@ -56,5 +56,15 @@ public class Problem2 {
     }
     //실행을 위한 함수
 
+    static String process(String word) {
+
+        while (true) {
+            word = new_word(word);
+
+            if (repeat_finish(word)) break;
+
+        }
+        return word;
+    }
 }
 
