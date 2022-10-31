@@ -24,6 +24,10 @@ public class Cryptogram {
         return check;
     }
 
+    public String getCryptogram() {
+        return cryptogram.toString();
+    }
+
     //3.2번에서 중복인지 체크할 수 있는 조건함수
     private boolean isSameWithNext(int i) {
         return i < cryptogram.length() - 1 && cryptogram.charAt(i) == cryptogram.charAt(i + 1);
