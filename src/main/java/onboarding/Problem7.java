@@ -7,6 +7,7 @@ public class Problem7 {
         Map<String, User> userMap = new HashMap<>();
         userMap.put(user, new User(user));
         List<String> answer = Collections.emptyList();
+        List<User> users = new ArrayList<>();
 
         for (int i = 0; i < friends.size(); i++) {
             if (userMap.containsKey(friends.get(i).get(0))) { //0번 객체가 map에 있음
@@ -30,7 +31,7 @@ public class Problem7 {
                     userMap.get(friends.get(i).get(1)).addFriend(userMap.get(friends.get(i).get(0)));
                 }
             }
-            for (String str:visitors) {
+            for (String str : visitors) {
                 if (userMap.containsKey(str)) { // 유저맵에 들어오는 키가 있음
                     userMap.get(str).add1Point();
                     List<User> friendUser = userMap.get(str).getFriendList();
@@ -38,12 +39,15 @@ public class Problem7 {
                         friendUser.get(j).add10Point();
                     }
                 } else { // 유저맵에 들어오는 키가 없음
-                    userMap.put(str,new User(str));
+                    userMap.put(str, new User(str));
                     userMap.get(str).add1Point();
                 }
             }
 
-
+            for (String key : userMap.keySet()) { //유저의 키를 꺼내서 리스트에 add하기
+                users.add(userMap.get(key));
+            }
+            Collections.sort(users);
         }
 
         return answer;
@@ -51,12 +55,19 @@ public class Problem7 {
 }
 
 
-class User implements Comparator<User> {
-    @Override
-    public int compare(User o1, User o2) {
-        return o1.getPoint() > o2.getPoint() ? 1 : (o1.getPoint() < o2.getPoint() ? -1 : 0);
-    }
+class User implements Comparable {
 
+    @Override
+    public int compareTo(Object o) {
+        User u = (User) o;
+        if (this.getPoint() > u.getPoint()) {
+            return -1;
+        } else if (this.getPoint() == u.getPoint()) {
+            return this.getUserName().compareTo(u.getUserName());
+        } else {
+            return 1;
+        }
+    }
 
     public User(String userName) {
         this.userName = userName;
@@ -90,11 +101,13 @@ class User implements Comparator<User> {
         friendList.add(user);
     }
 
-    public void add1Point(){
+    public void add1Point() {
         point++;
     }
-    public void add10Point(){
-        point +=10;
+
+    public void add10Point() {
+        point += 10;
     }
+
 
 }
