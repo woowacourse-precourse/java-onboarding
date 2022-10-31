@@ -21,6 +21,16 @@ public class Problem6 {
             for (int j = i + 1; j < formsName.size(); j++) {
                 String name1 = formsName.get(i);
                 String name2 = formsName.get(j);
+                for (int k = 0; k < name1.length(); k++) {
+                    for (int l = 0; l < name2.length(); l++) {
+                        if (name1.charAt(k) == name2.charAt(l) && name1.charAt(k+1) == name2.charAt(l+1)) {
+                            answer.add(formsEmail.get(i));
+                            answer.add(formsEmail.get(j));
+                        }
+
+                    }
+                }
+
             }
         }
 
