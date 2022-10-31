@@ -130,13 +130,6 @@ public class customApplicationTest
             int result = 1;
             assertThat(Problem5.moneyCount(money,50000)).isEqualTo(result);
         }
-
-        @Test
-        void case2() {
-            int money = 15_000;
-            List<Integer> result = List.of(0, 1, 1, 0, 0, 0, 0, 0, 0);
-            assertThat(Problem5.solution(money)).isEqualTo(result);
-        }
     }
 
     @Nested

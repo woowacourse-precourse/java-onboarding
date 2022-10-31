@@ -3,11 +3,20 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import Exception.RangeException;
 
 public class Problem5 {
     public static List<Integer> solution(int money) {
         List<Integer> answer = Collections.emptyList();
-        answer=ListInMoneyCount(money);
+        try {
+            exception(money);
+            answer = ListInMoneyCount(money);
+        }catch (RangeException e)
+        {
+            //문제에 예외를 어떻게 처리하라는 말이 없음
+            //log.error OR log.warn
+            //System.out.println(e.toString());
+        }
         return answer;
     }
 
@@ -45,5 +54,19 @@ public class Problem5 {
             money=money-(moneyUnit*count);
         }
         return answer;
+    }
+
+    /**
+     * 입력값에 범위를 벗어날떄 예외처리
+     *
+     * @param money 입력 돈
+     * @throws RangeException 입력 범위 초과 1~1000000
+     */
+    public static void exception(int money) throws RangeException
+    {
+        if(money<1||money>1000000)
+        {
+            new RangeException("1~1000000 범위를 벗어납니다");
+        }
     }
 }

@@ -550,3 +550,96 @@ public static String solution(String word) {
 1. 머니를 입력값으로 받아 지폐종류에따라 몇장이필요한지 반환해주는 메소드
 2. 리스트에 넣어주는 메소드
 3. 예외처리
+##1. 지폐카운트 메소드
+###1.1 moneyCount
+~~~java
+/**
+ * 지폐수를 세어주는 method
+ *
+ * @param money 입력 돈
+ * @param moneyUnit 단위
+ * @return 카운트 된 값
+ */
+public static int moneyCount(int money,int moneyUnit)
+{
+    int count =0;
+    if(money>=moneyUnit)
+    {
+        count=money/moneyUnit;
+    }
+    return count;
+}
+~~~
+###1.2 moneyCount Test
+~~~java
+@Test
+void case1() {
+    int money = 50_237;
+    int result = 1;
+    assertThat(Problem5.moneyCount(money,50000)).isEqualTo(result);
+}
+~~~
+##2. 리스트에 머니카운트 담는 메소드
+###2.1 ListInMoneyCount
+~~~java
+/**
+ * if횟수를 줄여본 리스트에 담는 머니카운트
+ *
+ * else if 작업을 줄여보았습니다.
+ * @param money 입력 돈
+ * @return answer
+ */
+public static List<Integer> ListInMoneyCount (int money)
+{
+    int moneyUnits[] = {50000,10000,5000,1000,500,100,50,10,1};
+    List<Integer> answer = new ArrayList<>();
+    for (int moneyUnit : moneyUnits) {
+        int count = moneyCount(money, moneyUnit);
+        answer.add(count);
+        money=money-(moneyUnit*count);
+    }
+    return answer;
+}
+~~~
+###2.2 ListInMoneyCount Test -> main Test로 대체
+##3. Exception
+###3.1 exception
+~~~java
+/**
+ * 입력값에 범위를 벗어날떄 예외처리
+ *
+ * @param money 입력 돈
+ * @throws RangeException 입력 범위 초과 1~1000000
+ */
+public static void exception(int money) throws RangeException
+{
+    if(money<1||money>1000000)
+    {
+        new RangeException("1~1000000 범위를 벗어납니다");
+    }
+}
+~~~
+##4. 최종 솔루션
+~~~java
+public static List<Integer> solution(int money) {
+    List<Integer> answer = Collections.emptyList();
+    try {
+        exception(money);
+        answer = ListInMoneyCount(money);
+    }catch (RangeException e)
+    {
+        //문제에 예외를 어떻게 처리하라는 말이 없음
+        //log.error OR log.warn
+        //System.out.println(e.toString());
+    }
+    return answer;
+}
+~~~
+---
+#6. 문제6
+##예상 필요 기능 정의
+1. 두글자씩 모두 List에 저장하는 메소드
+2. 닉네임이 한글인지 구분하는 메소드
+3. result 정렬하는 메소드
+4. result에 중복된 값을 제거하는 메소드
+5. @email.com이 맞는지 확인하는 메소드
