@@ -6,18 +6,13 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-
         if(!(isRight(pobi) && isRight(crong))) return -1;
-
-        return answer;
+        int resultPobi = new Game(pobi.get(0), pobi.get(1)).getResult();
+        int resultCrong = new Game(crong.get(0), crong.get(1)).getResult();
+        if(resultCrong == resultPobi) return 0;
+        return (resultPobi > resultCrong)? 1 : 2;
     }
 
-    public static void main(String[] args) {
-        System.out.println(new Game(0, 42).getResult());
-        System.out.println(new Game(0, 531).getResult());
-        System.out.println(new Game(0, 10).getResult());
-    }
     private static boolean isRight(List<Integer> list) {
         return isRightPage(list) && isNotFirstOrLastPage(list);
     }
