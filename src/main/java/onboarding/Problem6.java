@@ -6,6 +6,8 @@ public class Problem6 {
 
     private static final int EMAIL_INDEX_OF_FORM = 0;
     private static final int NICKNAME_INDEX_OF_FORM = 1;
+    private static final String EMAIL_CHECK = "@";
+
 
     public static List<String> solution(List<List<String>> forms) {
         Map<String, String> namesAlreadyApplied = new HashMap<>();
@@ -14,6 +16,12 @@ public class Problem6 {
         for (List<String> form : forms) {
             String email = form.get(EMAIL_INDEX_OF_FORM);
             String nickname = form.get(NICKNAME_INDEX_OF_FORM);
+
+            if (!email.contains(EMAIL_CHECK)) {
+                String positionConverter = nickname;
+                nickname = email;
+                email = positionConverter;
+            }
         }
 
         List<String> answer = List.of("answer");
