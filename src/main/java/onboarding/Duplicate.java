@@ -15,7 +15,7 @@ class Duplicate {
         }
 
         for(int i = 0; i < cryptogram.length(); i++) {
-            if(!((cryptogram.charAt(i) >= 'a') && (cryptogram.charAt(i) >= 'z'))) {
+            if((cryptogram.charAt(i) < 'a') || (cryptogram.charAt(i) > 'z')) {
                 return -1;
             }
         }
@@ -35,9 +35,15 @@ class Duplicate {
             }
         }
 
+        String tmp = "";
+        int size = stack.size();
+        for(int i = 0; i < size; i++) {
+            tmp = tmp.concat(String.valueOf(stack.pop()));
+        }
+
         cryptogram = "";
-        for(int i = 0; i < stack.size(); i++) {
-            cryptogram = cryptogram.concat(String.valueOf(stack.pop()));
+        for(int i = tmp.length() - 1; i >= 0; i--) {
+            cryptogram = cryptogram.concat(String.valueOf(tmp.charAt(i)));
         }
 
         return cryptogram;
