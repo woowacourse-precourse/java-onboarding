@@ -8,7 +8,6 @@ import java.util.*;
 * sn : Substring Name(이름의 부분 문자열)
 * */
 public class Problem6 {
-    private static List<List<String>> snList = new ArrayList<>();
 
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of();
@@ -36,6 +35,7 @@ public class Problem6 {
     public static class CrewCalculator{
         private List<List<String>> forms;
         private static final int REPEAT = 2;
+        private static List<List<String>> snList = new ArrayList<>();
 
         public CrewCalculator(List<List<String>> forms) {
             this.forms = forms;
