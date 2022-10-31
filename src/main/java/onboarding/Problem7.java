@@ -13,8 +13,12 @@ public class Problem7 {
 
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        initData(user);
+        List<String> userKnowFriends = createUserKnowFriends(friends, user);
+        increaseVisitorPoint(visitors, userKnowFriends);
+        increaseFriendShipPoint(friends, userKnowFriends);
+        sort(recommendationPoiont);
+        return new ArrayList<String>(recommendationPoiont.keySet());
     }
 
     public static void initData(String userName){
