@@ -14,16 +14,13 @@ public class BookPage {
 	}
 
 	void validateInput(List<Integer> input) {
-		if (input.size() != 2 || !isOdd(input.get(0)) || !isEven(input.get(1))) {
-			throw new IllegalArgumentException("페이지가 잘못 되었습니다.");
+		if (input.size() != 2 || !isOdd(input.get(0)) || input.get(0) + 1 != input.get(1)) {
+			throw new IllegalArgumentException("잘못된 페이지입니다.");
 		}
 	}
 
 	boolean isOdd(int left) {
 		return left % 2 != 0;
 	}
-
-	boolean isEven(int right) {
-		return right % 2 == 0;
-	}
+	
 }
