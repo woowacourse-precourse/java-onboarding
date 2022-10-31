@@ -2,17 +2,35 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         List<String> closeFriends = new ArrayList<>();
+        Map<String, Integer> friendScore = new HashMap<String, Integer>();
+
         for (int i = 0; i < friends.size(); i++) {
             if (friends.get(i).contains(user)) {
                 closeFriends.add(friends.get(i).get(0));
             }
         }
+
+        for (int i = 0; i < friends.size(); i++) {
+            for (int j = 0; j < closeFriends.size(); j++) {
+                if (friends.get(i).contains(closeFriends.get(j)) && !friends.get(i).contains(user)) {
+                    if (friendScore.containsKey(friends.get(i).get(1))) {
+                        friendScore.put(friends.get(i).get(1), friendScore.get(friends.get(i).get(1)) + 5);
+                    }else {
+                        friendScore.put(friends.get(i).get(1), 5);
+                    }
+                }
+            }
+        }
+
+
         return answer;
     }
 }
