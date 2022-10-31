@@ -1,16 +1,35 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Problem6 {
 
-    static HashMap<String, List<String>> hashMap = new HashMap<>();
+    static HashMap<String, List<String>> nickNameList = new HashMap<>();
 
     public static List<String> solution(List<List<String>> forms) {
 
-        List<String> answer = List.of("answer");
+        Set<String> emailList = new HashSet<>();
+        String nickName, email;
+
+        for (List<String> form : forms) {
+            email = form.get(0);
+            nickName = form.get(1);
+
+            if ("@email.com".equals(email.substring(email.length() - 10))) {
+                saveEmailByDivideNickName(nickName, email);
+            }
+        }
+
+        for (List<String> emails : nickNameList.values()) {
+
+            if (emails.size() >= 2) {
+                emailList.addAll(emails);
+            }
+        }
+
+        ArrayList<String> answer = new ArrayList<>(emailList);
+        Collections.sort(answer);
+
         return answer;
     }
 
@@ -22,13 +41,13 @@ public class Problem6 {
         for (int i = 0; i < nickName.length() - 1; i++) {
             key = nickName.substring(i, i + 2);
 
-            if (hashMap.get(key) == null) {
+            if (nickNameList.get(key) == null) {
                 List<String> list = new ArrayList<>();
                 list.add(email);
-                hashMap.put(key, list);
+                nickNameList.put(key, list);
 
             } else {
-                hashMap.get(key).add(email);
+                nickNameList.get(key).add(email);
             }
         }
     }
