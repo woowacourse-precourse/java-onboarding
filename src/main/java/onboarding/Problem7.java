@@ -19,11 +19,10 @@ public class Problem7 {
 
         setMe(user);
         addAllRealFriends(friends);
+        addFriendOfFriendPoint(friends);
+        addVisitorPoint(visitors);
 
-
-        List<String> answer = Collections.emptyList();
-
-        return answer;
+        return getTopPreFriends(MAX_RECOMMEND_FRIENDS);
     }
 
     /**
@@ -90,8 +89,9 @@ public class Problem7 {
 
         for (List<String> friend: friends) {
             for (String user : friend) {
-                if (existPreFriend(user) && !user.equals(me)) {
+                if (existRealFriend(user) && !user.equals(me)) {
                     addPreFriendPoint(friend.get(friend.indexOf(user) ^ 1), 10);
+                    break;
                 }
             }
         }
@@ -191,14 +191,6 @@ public class Problem7 {
     }
 
     /**
-     * 본인 데이터 가져오기
-     * @return 본인 데이터
-     */
-    private static String getMe() {
-        return me;
-    }
-
-    /**
      * 친구 목록에 유저 정보 추가
      * @param friends 친구 목록
      */
@@ -224,11 +216,11 @@ public class Problem7 {
     }
 
     /**
-     * 친구 정보 가져오기
-     * @return 친구 정보
+     * 본인 데이터 가져오기
+     * @return 본인 데이터
      */
-    private static List<String> getRealFriends() {
-        return realFriends;
+    private static String getMe() {
+        return me;
     }
 
     /**
