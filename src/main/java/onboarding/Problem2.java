@@ -8,11 +8,30 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
         String[] str = cryptogram.split("");
         List<String> strList = new ArrayList<>(Arrays.asList(str));
+
+        int sw;
+
+        while (true) {
+            sw = 0;
+            for (int i =1;i<strList.toArray().length ;i++) {
+                if (Objects.equals(strList.get(i), strList.get(i-1))) {
+                    strList.remove(i);
+                    strList.remove(i-1);
+                    //System.out.println(i);
+                    System.out.println(strList);
+                    sw += 1;
+                }
+            }
+            if (sw == 0) {
+                break;
+            }
+        }
 
 
         String answer = "answer";
