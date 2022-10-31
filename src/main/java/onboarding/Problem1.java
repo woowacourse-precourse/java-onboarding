@@ -1,9 +1,6 @@
 package onboarding;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.List;
-
 class Problem1 {
     public static boolean isValidInput(List<Integer> arr){
         int left = arr.get(0);

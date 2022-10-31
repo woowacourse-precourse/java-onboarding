@@ -60,7 +60,6 @@ public class Problem7 {
         for(String key : keys) {
             int idx = score_table.get(key);
             arr[idx][counts[idx]++] = key;
-//        	System.out.println("key : "+key+", value : "+score_table.get(key));
         }
 
         int count = 0;
