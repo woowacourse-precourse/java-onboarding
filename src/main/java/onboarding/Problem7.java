@@ -12,7 +12,6 @@ public class Problem7 {
      * 5. 결과값 정렬, 5개 제한
      */
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = new ArrayList<>();
 
         // user와 이미 친구인 사람을 찾는 로직
         List<String> alreadyFriends = new ArrayList<>();
@@ -51,6 +50,13 @@ public class Problem7 {
                 int score = scoreMap.get(visitor) + 1;
                 scoreMap.replace(visitor, score);
             }
+        }
+
+        List<String> answer = new ArrayList<>(scoreMap.keySet());
+        answer.sort((o1, o2) -> scoreMap.get(o2).compareTo(scoreMap.get(o1)));
+
+        if (answer.size() > 5) {
+            answer = answer.subList(0, 6);
         }
 
         return answer;
