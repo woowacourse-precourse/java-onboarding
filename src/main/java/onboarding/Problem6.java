@@ -6,7 +6,15 @@ import java.util.stream.Collectors;
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
-        return answer;
+
+        // Member 객체로 변환하여 List 에 저장
+        List<Member> members = forms.stream()
+                .map(Member::of)
+                .collect(Collectors.toList());
+
+        Map<String, List<Member>> memberMap = getMemberMapByNickname(members);
+
+        return getHasDuplicationNicknameMembers(memberMap);
     }
 
     /**
