@@ -28,6 +28,21 @@ public class Problem7 {
         }
         return result;
     }
+    //방문과 함께 친구인 유저의 포인트가 다르기 때문에 enum으로 관리(추후에 Point 적립 타입이 늘어나도 필드를 추가하면 재사용 가능)
+    enum PointType {
+        VISIT(1),
+        FRIEND_OF_FRIENDS(10);
+
+        private final int value;
+
+        private PointType(int value) {
+            this.value = value;
+        }
+
+        public int getValue() {
+            return this.value;
+        }
+    }
 
     /**
      * @param user    : 문자열(기준이되는 user이름)
@@ -41,4 +56,7 @@ public class Problem7 {
 
         return result;
     }
+
+
+
 }
