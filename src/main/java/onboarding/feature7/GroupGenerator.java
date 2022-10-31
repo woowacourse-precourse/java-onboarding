@@ -11,6 +11,8 @@ public class GroupGenerator {
 
     private List<List<String>> friends = new ArrayList<>();
     private List<String> visitors;
+    private Set<String> myFriends;
+    private Set<String> notMyFriends;
 
     // 생성자
     public GroupGenerator(String user, List<List<String>> friends, List<String> visitors) {
@@ -24,7 +26,7 @@ public class GroupGenerator {
 
     // 메소드
     public Set<String> getMyFriends() {
-        Set<String> myFriends = new HashSet<>();
+        myFriends = new HashSet<>();
         for (List<String> friendships : friends) {
             if (friendships.contains(user)) {
                 friendships.removeIf(element -> element.equals(user));
@@ -33,6 +35,26 @@ public class GroupGenerator {
             }
         }
         return myFriends;
+    }
+
+    public Set<String> getNotMyFriends() {
+        Set<String> meAndMyFriends = new HashSet<>();
+        meAndMyFriends.addAll(myFriends);
+        meAndMyFriends.add(user);
+
+        Set<String> allThePeople = new HashSet<>();
+        allThePeople.add(user);
+        for (String visitor : visitors) {
+            allThePeople.add(visitor);
+        }
+        for (List<String> friendships : friends) {
+            for (String person : friendships) {
+                allThePeople.add(person);
+            }
+        }
+
+        allThePeople.removeAll(meAndMyFriends);
+        return allThePeople;
     }
 
     public static void main(String[] args) {
@@ -49,5 +71,8 @@ public class GroupGenerator {
 
         GroupGenerator groupGenerator = new GroupGenerator(user, friends, visitors);
         Set<String> myFriends = groupGenerator.getMyFriends();
+        Set<String> notMyFriends = groupGenerator.getNotMyFriends();
+        System.out.println(myFriends);
+        System.out.println(notMyFriends);
     }
 }
