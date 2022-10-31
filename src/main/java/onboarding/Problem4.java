@@ -8,12 +8,12 @@ import java.util.Map;
 public class Problem4 {
 
     public static String solution(String word) {
-        String answer = "";
+        String answer;
         Map<String, String> frogDict = makeFrogDictionary();
 
         List<String> charList = new ArrayList<>(List.of(word.split("")));
 
-        List<String> newCharList = convertWithFrogDict(charList, frogDict);
+        answer = convertWithFrogDict(charList, frogDict);
 
         return answer;
     }
@@ -29,12 +29,12 @@ public class Problem4 {
         return frogDict;
     }
 
-    private static List<String> convertWithFrogDict(List<String> charList, Map<String,String> frogDict) {
-        List<String> result = new ArrayList<>();
+    private static String convertWithFrogDict(List<String> charList, Map<String,String> frogDict) {
+        StringBuilder result = new StringBuilder();
         for (String letter : charList) {
             String convertedLetter = frogDict.getOrDefault(letter, letter);
-            result.add(convertedLetter);
+            result.append(convertedLetter);
         }
-        return result;
+        return result.toString();
     }
 }
