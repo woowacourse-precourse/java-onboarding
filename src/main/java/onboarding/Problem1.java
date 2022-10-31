@@ -3,10 +3,35 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+    static class BookPage {
+        private int startPage;
+        private int endPage;
+
+        BookPage(int startPage, int endPage) throws Exception {
+            if (!isValid(startPage, endPage)) throw new Exception("Wrong Page!");
+            this.startPage = startPage;
+            this.endPage = endPage;
+        }
+        private static boolean isValid(int startPage, int endPage) {
+            //책의 시작면이나 마지막 면을 펼쳤다면
+            if (!isValidPage(startPage, endPage)) return false;
+
+            //페이지 숫자가 연속되지 않았다면
+            if (!isConsecutivePages(startPage, endPage)) return false;
+
+            //짝수 홀수가 제 자리에 있지 않았다면
+            if (!isCorrectOddAndEven(startPage, endPage)) return false;
+
+            return true;
+        }
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
+
+
 
     //페이지가 처음이나 마지막 면이 아닌지 체크
     private static boolean isValidPage(int startPage, int endPage) {
