@@ -39,8 +39,8 @@ public class Problem6 {
         int peopleNum = nicknameList.size(); // 크루원의 수
 
         // 닉네임 목록에서 닉네임을 2개씩 뽑아서 확인
-        for (int i = 0; i < peopleNum - 1; i++) {
-            for (int j = 1; j < peopleNum; j++) {
+        for (int i = 0; i < peopleNum; i++) {
+            for (int j = 0; j < peopleNum; j++) {
 
                 // 뽑은 닉네임 2개가 같지 않을 때만 확인
                 if (i != j) {
