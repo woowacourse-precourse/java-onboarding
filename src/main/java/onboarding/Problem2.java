@@ -32,7 +32,7 @@ class Cryptogram {
         }
     }
 
-    public void validateCryptogramLowerCase(String cryptogram) {
+    private void validateCryptogramLowerCase(String cryptogram) {
         if (cryptogram != cryptogram.toLowerCase()) {
             throw new IllegalStateException(ONLY_ALLOWED_CRYPTOGRAM_LOWER_CASE);
         }
