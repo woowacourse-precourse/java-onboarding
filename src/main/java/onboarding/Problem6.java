@@ -7,4 +7,8 @@ public class Problem6 {
         List<String> answer = List.of("answer");
         return answer;
     }
+
+    private static String getNickName(List<String> form) {
+        return form.get(1);
+    }
 }
