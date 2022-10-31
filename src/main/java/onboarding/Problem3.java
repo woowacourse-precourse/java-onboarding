@@ -80,7 +80,6 @@ public class Problem3 {
 
         int ret = 0;
 
-        //-1인 경우 조건문이 어떻게 되지?
         for (int clapNum = maxNum; clapNum > 0; --clapNum) {
             ret += makeNumberInClapGame(clapNum).clapCount();
         }
