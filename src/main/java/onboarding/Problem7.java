@@ -14,6 +14,7 @@ public class Problem7 {
 
 		public static void checkRightInput(String user, List<List<String>> friends, List<String> visitors) {
 			isRightUserInput(user);
+			isRightFriendsInput(friends);
 		}
 
 		public static boolean isRightUserInput(String user) {
@@ -35,6 +36,33 @@ public class Problem7 {
 				if (!Character.isLowerCase(charArray[i])) {
 					throw new IllegalArgumentException();
 				}
+			}
+		}
+
+		public static boolean isRightFriendsInput(List<List<String>> friends) {
+			checkRightFriendsRange(friends);
+			for (List<String> friend : friends) {
+				checkRightFriendUsers(friend);
+			}
+			return true;
+		}
+
+		public static void checkRightFriendsRange(List<List<String>> friends) {
+			if (friends.size() < 1 || friends.size() > 10000) {
+				throw new IllegalArgumentException();
+			}
+		}
+
+		public static void checkRightFriendUsers(List<String> friend) {
+			checkRightFriendRange(friend);
+			for (String user : friend) {
+				isRightUserInput(user);
+			}
+		}
+
+		public static void checkRightFriendRange(List<String> friend) {
+			if (friend.size() != 2) {
+				throw new IllegalArgumentException();
 			}
 		}
 	}
