@@ -24,3 +24,9 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+## 기능 구현
+1. user의 친구를 찾는다.
+2. 사용자와 함께 아는 친구의 수를 1번 과정에서 찾은 user의 친구를 활용해 저장한다.
+3. 사용자의 타임 라인에 방문한 사람의 횟수를 1번 과정에서 찾은 user의 친구를 활용해 저장한다.
+4. 점수가 가장 높은 순으로 정렬한다.
