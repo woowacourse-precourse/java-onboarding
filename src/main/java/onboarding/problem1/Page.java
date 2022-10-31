@@ -38,4 +38,13 @@ public class Page {
         return false;
     }
 
+    // 페이지의 각 자릿수를 더한 결과를 리턴한다.
+    private static int calcAddPageNumber(int pageNumber) {
+        int result = 0;
+        while (pageNumber > 0) {
+            result += pageNumber % 10;
+            pageNumber /= 10;
+        }
+        return result;
+    }
 }
