@@ -1,21 +1,25 @@
 package onboarding;
 
-import java.util.Deque;
-import java.util.LinkedList;
+import java.util.*;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        char[] chars = cryptogram.toCharArray();
-        Deque<Character> chDeque = new LinkedList<>();
 
-        for(char ch : chars){
-            if(!chDeque.isEmpty() && chDeque.getLast() == ch){
-                chDeque.removeLast();
-                continue;
-            }
-            chDeque.addLast(ch);
+        Deque<Character> chDeque = new LinkedList<>();
+        List cryptoList = StringToList(cryptogram);
+
+        do {
+
         }
         return printDeque(chDeque);
+    }
+
+    static List StringToList(String str) {
+        List result = new ArrayList();
+        for (int i = 0; i < str.length(); i++) {
+            result.add(str.charAt(i));
+        }
+        return result;
     }
 
     static String printDeque(Deque<Character> chDeque){
