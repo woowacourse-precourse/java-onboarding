@@ -16,9 +16,11 @@ public class DuplicateNicknameChecker {
     }
 
     private static void checkForms(List<List<String>> forms, Set<String> duplicatedUserEmail) {
-        for (List<String> first : forms) {
-            for (List<String> second : forms) {
-                if (first.equals(second)) return;
+        for (int i = 0; i < forms.size(); i++) {
+            for (int j = i + 1; j < forms.size(); j++) {
+
+                List<String> first = forms.get(i);
+                List<String> second = forms.get(j);
 
                 String firstEmail = first.get(0);
                 String firstName = first.get(1);
