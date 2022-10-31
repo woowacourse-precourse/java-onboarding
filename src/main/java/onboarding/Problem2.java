@@ -13,16 +13,20 @@ class StackForPro2 {
 
   public Stack<Character> pushAndPop(Stack<Character> stack, String cryptogram) {
     char[] array = cryptogram.toCharArray();
-    char tmp = array[0];
+    char tmp = 0;
     stack.push(array[0]);
+
     for (int i = 1; i < array.length; i++) {
       if (array[i] == tmp) {
         continue;
       }
-      if (stack.peek() == array[i]) {
+      if (stack.isEmpty()) {
+        stack.push(array[i]);
+      } else if (stack.peek() == array[i]) {
         tmp = stack.pop();
       } else if (stack.peek() != array[i]) {
         stack.push(array[i]);
+        tmp = 0;
       }
     }
     return stack;
