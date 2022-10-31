@@ -30,7 +30,8 @@ public class Problem2 {
             char frontCharacter = getFrontCharacter(i, cryptogram);
             char backCharacter = getBackCharacter(i, cryptogram);
 
-            boolean isDuplicate = isSameCharacter(currentCharacter, frontCharacter) || isSameCharacter(currentCharacter, backCharacter);
+            boolean isDuplicate = isSameCharacter(currentCharacter, frontCharacter) ||
+                    isSameCharacter(currentCharacter, backCharacter);
 
             if (!isDuplicate) {
                 answer.append(cryptogram.charAt(i));
