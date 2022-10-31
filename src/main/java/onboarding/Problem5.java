@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -13,10 +12,6 @@ public class Problem5 {
 
     /**
      * @Method: getMoney
-     * * 각 값이 이전 값의 2배 이상씩 증가하기 때문에 Greedy로 해결가능하다.
-     * 1. 1 ~ 50,000까지 9가지 화폐를 설정한다.
-     * 2. 가장 큰 화폐부터 순차적으로 각 화폐 값으로 나눈다.
-     * 3. 몫은 return할 List에 추가, 나머지는 2번을 다음 화폐 값으로 반복한다.
      */
     private static List<Integer> getMoney(int money) {
         List<Integer> answer = new ArrayList<>();
@@ -29,6 +24,6 @@ public class Problem5 {
     }
 
     public static List<Integer> solution(int money) {
-        return  getMoney(money);
+        return getMoney(money);
     }
 }
