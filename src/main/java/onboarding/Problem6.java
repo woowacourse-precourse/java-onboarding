@@ -13,6 +13,9 @@ public class Problem6 {
         for(int i=0; i<forms.size(); i++) {
         	String name = forms.get(i).get(1);
         	
+        	if(name.length()<1 || name.length()>19) break;
+        	if(forms.get(i).get(0).length()<11 || forms.get(i).get(0).length()>19) break;
+        	
         	for(int j=0; j<name.length()-1; j++) {
         		String nameKey = name.substring(j, j+2);
         		if(profileMap.containsKey(nameKey)) {
