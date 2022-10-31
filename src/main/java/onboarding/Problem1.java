@@ -27,14 +27,14 @@ class Problem1 {
     }
 
     /* 두 수 비교 메서드 */
-    public static int compareInt(int pobi, int crong) {
-        return pobi - crong;
+    public static int compareInt(int firstNum, int secondNum) {
+        return firstNum - secondNum;
     }
 
-    /*  */
+    /* 왼쪽, 오른쪽 페이지 중 더 큰 페이지 반환하는 메서드 */
     public static int getHighestScore(List<Integer> arr) {
-        int comparison;
         int bigger = 0;
+        int comparison;
         int tmpAdd;
         int tmpMult;
         for(Integer score : arr) {
@@ -48,14 +48,22 @@ class Problem1 {
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong){
+        int answer = Integer.MAX_VALUE;
         int pobiScore = getHighestScore(pobi);
         int crongScore = getHighestScore(crong);
         int comparison = compareInt(pobiScore, crongScore);
-        int answer = Integer.MAX_VALUE;
+        if(comparison > 0) {
+            answer = 1;
+        } else if(comparison < 0) {
+            answer = 2;
+        } else {
+            answer = 0;
+        }
+        System.out.println(answer);
         return answer;
     }
 
     public static void main(String[] args) {
-        solution(List.of(97, 98), List.of(197, 198));
+        solution(List.of(131, 132), List.of(211, 212));
     }
 }
