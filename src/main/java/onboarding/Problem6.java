@@ -36,13 +36,9 @@ public class Problem6 {
     }
 
     static List<List<String>> except(List<List<String>> forms) {
-        List<List<String>> newForms = new ArrayList<>();
-        for (List<String> form : forms) {
-            if (getEmailDomain(form.get(0)).equals("email.com")) {
-                newForms.add(form);
-            }
-        }
-        return newForms;
+        return forms.stream()
+                    .filter(form -> getEmailDomain(form.get(0)).equals("email.com"))
+                    .collect(Collectors.toList());
     }
 
     static String getEmailDomain(String email) {
