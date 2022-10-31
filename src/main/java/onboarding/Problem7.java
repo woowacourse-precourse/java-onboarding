@@ -69,5 +69,14 @@ public class Problem7 {
     //방문한 횟수의 점수 저장
     static void saveVisitScore(String id) {
 
+        int score = 1;
+
+        if (recommendScore.get(id) == null) {
+            recommendScore.put(id, score);
+
+        } else {
+            recommendScore.put(id, recommendScore.get(id) + score);
+        }
+
     }
 }
