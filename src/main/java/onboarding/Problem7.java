@@ -1,8 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     /***
@@ -35,4 +33,26 @@ public class Problem7 {
         }
         return myFriends;
     }
+
+    /**
+     * user와 함께 아는 친구 추출
+     */
+    static Map<String,Integer> together(String user, List<List<String>> friends) {
+        Map<String,Integer> together = new TreeMap<>();
+        List<String> myFriends = userFriends(user,friends);
+        for (String myFriend : myFriends) {
+            for (List<String> fr1 : friends) {
+                if (fr1.contains(myFriend) && !(fr1.contains(user))) {
+                    if (!(fr1.get(0).contains(myFriend))) {
+                        together.put(fr1.get(0), together.getOrDefault(fr1.get(0), 0) + 10);
+                    } else {
+                        together.put(fr1.get(1), together.getOrDefault(fr1.get(1), 0) + 10);
+                    }
+                }
+            }
+        }
+        return together;
+    }
+
+
 }
