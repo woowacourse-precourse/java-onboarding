@@ -49,6 +49,7 @@ public class Problem6 {
                     }
 
                     namesAlreadyApplied.put(partialNickname, email);
+                    nicknameCombinations.add(partialNickname);
                 }
             }
         }
