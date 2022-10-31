@@ -50,7 +50,25 @@ class ApplicationTest {
             String result = "";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
+        @Test
+        void case3() {
+            String cryptogram = "zooooo";
+            String result = "z";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
 
+        @Test
+        void case4() {
+            String cryptogram = "zyalllelyz";
+            String result = "zyaelyz";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+        @Test
+        void case5() {
+            String cryptogram = "a";
+            String result = "a";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
         @Test
         void insertOrDeleteTest1(){
             String cryptogram = "zz";
@@ -88,6 +106,20 @@ class ApplicationTest {
             addStringToQueue(cryptogram, before);
 
             Problem2.insertOrDelete(before.poll(), before, after);
+
+            assertThat(Problem2.createAnswer(after)).isEqualTo(result);
+        }
+
+        @Test
+        void decryptTest(){
+            String cryptogram = "zyelleyz";
+            String result = "zyeeyz";
+            Queue<Character> before = new ArrayDeque<>();
+            Queue<Character> after = new ArrayDeque<>();
+
+            addStringToQueue(cryptogram, before);
+
+            Problem2.decrypt(before, after);
 
             assertThat(Problem2.createAnswer(after)).isEqualTo(result);
         }

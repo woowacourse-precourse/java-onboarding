@@ -26,7 +26,13 @@ public class Problem2 {
         for(int i=0; i<cryptogram.length(); i++)
             before.add(cryptogram.charAt(i));
 
-
+        while(!before.isEmpty()){
+            int sizeBeforeDecrypt = before.size();
+            after = new ArrayDeque<>();
+            decrypt(before, after);
+            if(sizeBeforeDecrypt==after.size())break;
+            before = after;
+        }
 
         answer = createAnswer(after);
         return answer;
@@ -39,6 +45,13 @@ public class Problem2 {
         }
 
         return sb.toString();
+    }
+
+    public static void decrypt(Queue<Character> before, Queue<Character> after) {
+        while(!before.isEmpty()){
+            char temp = before.poll();
+            insertOrDelete(temp, before, after);
+        }
     }
 
     public static void insertOrDelete(char currentChar, Queue<Character> before, Queue<Character> after){
