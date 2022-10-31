@@ -2,7 +2,7 @@ package onboarding;
 
 public class Problem2 {
 
-    public static int getDuplicateStartPoint(String str) {
+    private static int getDuplicateStartPoint(String str) {
         for (int i = 0; i < str.length() - 1; i++) {
             if (str.charAt(i) == str.charAt(i + 1)) {
                 return i;
