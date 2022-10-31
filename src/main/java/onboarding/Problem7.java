@@ -8,6 +8,7 @@ public class Problem7 {
 
 
 
+
         return answer;
     }
 
@@ -60,5 +61,17 @@ public class Problem7 {
 
     public static void scoreVisitFriend(Map<String, Integer> friendScore, List<String> userFriends, List<String> visitors) {
         getScore(friendScore, userFriends, visitors, 1);
+    }
+
+    public static List<String> sortAsc(Map<String, Integer> friendScore) {
+        List<String> listSort = new ArrayList<>(friendScore.keySet());
+        listSort.sort((a, b) ->
+                friendScore.get(b) - friendScore.get(a));
+
+        if (listSort.size() > 5) {
+            listSort.subList(0, 5);
+        }
+
+        return listSort;
     }
 }
