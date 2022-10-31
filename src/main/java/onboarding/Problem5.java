@@ -23,7 +23,8 @@ public class Problem5 {
     }
 
     private static void isProperMoney(int money){
-        if (money<MIN_MONEY||money>MAX_MONEY)throw new IllegalArgumentException();
+        if (money<MIN_MONEY||money>MAX_MONEY)
+            throw new IllegalArgumentException("money는 1이상 1000000이하인 자연수입니다.");
     }
 
     private static List<Integer> moneyCount(List<Integer> count, int money) {
