@@ -24,3 +24,9 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능 목록
+1. 친구 리스트 확인 메서드 구현
+2. 방문자 점수 부여 메서드 구현
+3. 함께 아는 친구 점수 부여 메서드 구연
+4. 리스트 정렬 메서드 구현
