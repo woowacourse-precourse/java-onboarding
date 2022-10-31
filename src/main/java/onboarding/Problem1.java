@@ -37,18 +37,4 @@ class Problem1 {
         return answer;
     }
 
-    public static void main(String[] args){
-        List<Integer> pobi = new ArrayList<>(2);
-        List<Integer> crong = new ArrayList<>(2);
-
-        Scanner sc = new Scanner(System.in);
-        for(int i=0;i<2;i++){
-            pobi.add(sc.nextInt());
-        }
-        for(int i=0;i<2;i++){
-            crong.add(sc.nextInt());
-        }
-
-        System.out.write(solution(pobi, crong));
-    }
 }
