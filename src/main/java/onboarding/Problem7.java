@@ -72,4 +72,23 @@ class FriendInfoController {
         }
     }
 
+    private static List<String> returnTopFiveFriends(Map<String, Integer> friendAndScore){
+        List<Map.Entry<String, Integer>> friendAndScoreList = new LinkedList<>(friendAndScore.entrySet());
+        List<String> recommendList = new ArrayList<>();
+        friendAndScoreList.sort(new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                return o2.getValue() - o1.getValue();
+            }
+        });
+        for (Map.Entry<String, Integer> friend : friendAndScoreList) {
+            recommendList.add(friend.getKey());
+            if (recommendList.size() == MAX_RECOMMEND_SIZE){
+                break;
+            }
+        }
+        return recommendList;
+    }
+
+
 }
