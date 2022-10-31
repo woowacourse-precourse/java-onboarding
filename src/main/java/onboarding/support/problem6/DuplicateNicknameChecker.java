@@ -15,7 +15,7 @@ public class DuplicateNicknameChecker {
         this.DuplicateUserEmails = setToList(duplicatedUserEmail);
     }
 
-    private static void checkForms(List<List<String>> forms, Set<String> duplicatedUserEmail) {
+    private static void checkForms(List<List<String>> forms, Set<String> duplicatedUserEmails) {
         for (int i = 0; i < forms.size(); i++) {
             for (int j = i + 1; j < forms.size(); j++) {
 
@@ -28,17 +28,18 @@ public class DuplicateNicknameChecker {
                 String secondEmail = second.get(0);
                 String secondName = second.get(1);
 
-                checkDuplicate(duplicatedUserEmail, firstName, firstEmail, secondName, secondEmail);
+                checkDuplicate(duplicatedUserEmails, firstName, firstEmail, secondName, secondEmail);
             }
         }
     }
 
-    private static void checkDuplicate(Set<String> duplicatedUserEmail, String firstName, String firstEmail, String secondName, String secondEmail) {
+    private static void checkDuplicate(Set<String> duplicatedUserEmails,
+                                       String firstName, String firstEmail, String secondName, String secondEmail) {
         for (int i = 0; i < firstName.length() - 1; i++) {
             for (int j = 0; j < secondName.length() - 1; j++) {
                 if (isDuplicated(firstName, secondName, i, j)) {
-                    duplicatedUserEmail.add(firstEmail);
-                    duplicatedUserEmail.add(secondEmail);
+                    duplicatedUserEmails.add(firstEmail);
+                    duplicatedUserEmails.add(secondEmail);
                     return;
                 }
             }
@@ -50,8 +51,8 @@ public class DuplicateNicknameChecker {
                 && firstName.charAt(firstNameIndex + 1) == secondName.charAt(secondNameIndex + 1);
     }
 
-    private static List<String> setToList(Set<String> duplicatedUserEmail) {
-        return duplicatedUserEmail
+    private static List<String> setToList(Set<String> duplicatedUserEmails) {
+        return duplicatedUserEmails
                 .stream()
                 .sorted()
                 .collect(Collectors.toList());
