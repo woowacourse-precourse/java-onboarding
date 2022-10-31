@@ -7,6 +7,23 @@ public class Problem2 {
         return answer;
     }
 
+    public static String removeDuplicateCharacter(String cryptogram) {
+        String result = "";
+
+        for (int index = 0; index < cryptogram.length() -1; index++) {
+
+            if (cryptogram.charAt(index) != cryptogram.charAt(index + 1)) {
+                result += cryptogram.charAt(index);
+            }
+            else if (cryptogram.charAt(index) == cryptogram.charAt(index + 1)) {
+                index += countDuplicateCharacter(cryptogram, index);
+            }
+            if ( (index + 1) == (cryptogram.length() - 1) ) {
+                result += cryptogram.charAt(index + 1);
+            }
+        }
+        return result;
+    }
 
     public static int countDuplicateCharacter(String cryptogram, int startindex){
         int count = 0;
