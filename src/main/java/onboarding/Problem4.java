@@ -6,9 +6,18 @@ public class Problem4 {
             ,'J','I','H','G','F','E','D','C','B','A'};
 
     public static String solution(String word) {
-        String answer="";
+        StringBuilder answer=new StringBuilder();
 
-        return answer;
+        for(int i=0;i<word.length();i++){
+            char character=word.charAt(i);
+
+            if(Character.isAlphabetic(character)){
+                answer.append(getWordByDictionary(character));
+            }else{
+                answer.append(character);
+            }
+        }
+        return answer.toString();
     }
 
     private static char getWordByDictionary(char character) {
