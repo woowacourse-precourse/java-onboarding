@@ -21,3 +21,33 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+---
+
+# 기능 목록
+
+### 같은 글자 연속 포함 여부 로직
+
+- 각 닉네임 String에 대해,
+
+  2개 씩 끊어서 HashMap에 저장한다. (Ex. 제이엠 -> 제이, 이엠)
+
+- 여기서 value는 Set<integer>로, 끊은 인덱스를 저장한다.
+
+  - Ex. 제이엠과 엠제이는 (제이)가 겹친다. 따라서 key=제이 value = (제이엠, 제이)
+
+    단, 위 예에서 String이 아닌 Integer로 구별한다. 주어진 forms란 Array에서 Integer로 특정 가능하기 떄문.
+
+- 2글자 Key에 대해, Value인 Set에서 값이 2개 이상이면 같은 글자가 연속되었다는 의미다.
+
+
+
+- [ ] 각 닉네임 String을 2개씩 끊어 HashMap(Key:String, Value:Set<>)에 저장
+- [ ] 같은 글자를 연속 포함한 크루를 판단
+  - HashMap을 보며 Value의 Set이 2개 이상일 때
+- [ ] 이메일 기준으로 정렬 후 반환
+
+
+
+
+
