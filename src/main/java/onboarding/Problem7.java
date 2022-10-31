@@ -46,6 +46,13 @@ public class Problem7 {
                 tmp = candidates.get(visitor);
             candidates.put(visitor, tmp + 1);
         }
+        for (int i = 0; i < alreadyFriends.size(); i++) {
+            String alreadyFriend = alreadyFriends.get(i);
+            if (candidates.containsKey(alreadyFriend))
+                candidates.remove(alreadyFriend);
+        }
+        candidates.remove(user);
+
 
         return answer;
     }
