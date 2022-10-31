@@ -23,9 +23,25 @@ class Problem1 {
         return score;
     }
 
+    public static int getResult(int pobiScore, int crongScore) {
+        int ans;
+        if (pobiScore == crongScore) {
+            ans = 0;
+        } else if (pobiScore > crongScore) {
+            ans =  1;
+        } else {
+            ans = 2;
+        }
+        return ans;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
+        int pobiScore = getScore(pobi);
+        int crongScore = getScore(crong);
+
+        answer = getResult(pobiScore, crongScore);
         return answer;
     }
 }
