@@ -5,8 +5,8 @@ package onboarding.problem6;
  */
 class Crew {
 
-    private String email;
-    private String nickname;
+    private final String email;
+    private final String nickname;
 
     /**
      * 크루의 이메일과 닉네임을 초기화하는 생성자
