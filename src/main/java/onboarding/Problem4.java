@@ -2,7 +2,6 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
         StringBuilder result = new StringBuilder("");
 
         for (int i = 0; i < word.length(); i++) {
@@ -19,6 +18,7 @@ public class Problem4 {
             result.append(target);
         }
 
-        return answer;
+
+        return result.toString();
     }
 }

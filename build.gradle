@@ -9,6 +9,8 @@ repositories {
 
 dependencies {
     implementation 'com.github.woowacourse-projects:mission-utils:1.0.0'
+    implementation 'junit:junit:4.13.1'
+    implementation 'junit:junit:4.13.1'
 }
 
 java {
