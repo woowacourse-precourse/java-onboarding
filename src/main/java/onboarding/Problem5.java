@@ -12,6 +12,9 @@ class MoneyTransformation{
     void withdraw(int amount){
         changes-=amount;
     }
+    int moneyVoucherCount(int money, int moneyVoucher){
+        return money/moneyVoucher;
+    }
 }
 public class Problem5 {
     public static List<Integer> solution(int money) {
