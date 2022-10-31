@@ -24,26 +24,30 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         Problem1 problem1 = new Problem1();
         int answer = Integer.MAX_VALUE;
-        int pobiMax = Integer.max(problem1.calculateScore(pobi.get(0)),problem1.calculateScore(pobi.get(1)));
-        int crongMax = Integer.max(problem1.calculateScore(crong.get(0)),problem1.calculateScore(crong.get(1)));
-
-        if(pobiMax > crongMax){
-            answer = 1;
-        }else if(pobiMax < crongMax){
-            answer = 2;
-        }else if(pobiMax == crongMax){
-            answer = 0;
-        }
+        int pobiScore = 0;
+        int crongScore = 0;
 
         // 제한 사항
         // 시작 면, 마지막 면 페이지가 펼쳐진 경우
         if((pobi.get(0) == 1) || (pobi.get(1) == 400)
                 || (crong.get(0) == 1) || (crong.get(1) == 400)){
-            // 시작 면, 마지막 면 페이지가 펼쳐진 경우
-            answer = -1;
-        } else if((pobi.get(1)-pobi.get(0) != 1) || (crong.get(1)-crong.get(0) != 1)){
-            // 연속된 페이지 번호가 아닐경우
-            answer = -1;
+            return -1;
+        }
+        // 연속된 페이지 번호가 아닐경우
+        if((pobi.get(1)-pobi.get(0) != 1) || (crong.get(1)-crong.get(0) != 1)){
+            return -1;
+        }
+
+        // 포비와 크롱의 점수를 계산
+        pobiScore = Integer.max(problem1.calculateScore(pobi.get(0)),problem1.calculateScore(pobi.get(1)));
+        crongScore = Integer.max(problem1.calculateScore(crong.get(0)),problem1.calculateScore(crong.get(1)));
+
+        if(pobiScore > crongScore){
+            answer = 1;
+        }else if(pobiScore < crongScore){
+            answer = 2;
+        }else if(pobiScore == crongScore){
+            answer = 0;
         }
 
         return answer;
