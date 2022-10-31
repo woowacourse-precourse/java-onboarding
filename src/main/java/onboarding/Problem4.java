@@ -17,18 +17,20 @@ public class Problem4 {
         return dictionary;
     }
 
+    public void changeChar(StringBuilder answer, HashMap<Character, Character> dictionary, char c){
+        if(Character.isAlphabetic(c)){
+            answer.append(dictionary.get(c));
+            return;
+        }
+        answer.append(c);
+    }
+
     public static String solution(String word) {
         Problem4 T = new Problem4();
         StringBuilder answer = new StringBuilder();
-
         HashMap<Character, Character> dictionary = T.makeDictionary();
-
         for(char c : word.toCharArray()){
-            if(Character.isAlphabetic(c)){
-                answer.append(dictionary.get(c));
-                continue;
-            }
-            answer.append(c);
+            T.changeChar(answer, dictionary, c);
         }
         return answer.toString();
     }
