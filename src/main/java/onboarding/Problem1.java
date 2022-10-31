@@ -5,10 +5,14 @@ import java.util.List;
 class Problem1 {
     private static final int FIRST_PAGE_NUMBER = 1;
     private static final int LAST_PAGE_NUMBER = 400;
+    private static final int TIE = 0;
+    private static final int POBI_WIN = 1;
+    private static final int CRONG_WIN = 2;
+    private static final int EXCEPTION = -1;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if (checkInvalidPage(pobi) || checkInvalidPage(crong)) {
-            return -1;
+            return EXCEPTION;
         }
         int pobiResult = getMaxResult(pobi);
         int crongResult = getMaxResult(crong);
@@ -49,12 +53,12 @@ class Problem1 {
 
     private static int getWinner(Integer pobiMaxNum, Integer crongMaxNum) {
         if (pobiMaxNum.equals(crongMaxNum)) {
-            return 0;
+            return TIE;
         }
         if (pobiMaxNum > crongMaxNum) {
-            return 1;
+            return POBI_WIN;
         }
-        return 2;
+        return CRONG_WIN;
     }
 
     private static boolean checkInvalidPage(List<Integer> pages) {
