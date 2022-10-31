@@ -8,8 +8,8 @@ public class Problem6 {
     public static List<String> getNickname(List<List<String>> list) {
         List<String> answer = new ArrayList<>();
         for (int i =0; i < list.size(); i ++) {
+            String name = list.get(i).get(1);
             for (int j = i+1; j < list.size(); j++) {
-                String name = list.get(i).get(1);
                 String compare = list.get(j).get(1);
 
                 if (isDupl(name, compare)) {
