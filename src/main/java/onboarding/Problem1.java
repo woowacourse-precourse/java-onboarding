@@ -11,6 +11,9 @@ class Problem1 {
 			return -1;
 		}
 
+		// 반환 값을 저장하는 코드(승자 확인)
+		answer = compareValue(pageMaxValue(pobi), pageMaxValue(crong));
+
 		return answer;
 	}
 
@@ -74,7 +77,7 @@ class Problem1 {
 			if(totalAddition < additionValue) {
 				totalAddition = additionValue;
 			}
-			
+
 			// 각 페이지 별 모두 곱한 값 중 제일 큰 값
 			if(totalMultiplication < multiplicationValue) {
 				totalMultiplication = multiplicationValue;
@@ -91,5 +94,27 @@ class Problem1 {
 		}
 
 		return maxValue;
+	}
+
+	// 승자를 구하는 메소드
+	public static int compareValue(int pobi, int crong) {
+		int result = 0;
+		
+		// 포비 승
+		if (pobi > crong) {
+			result = 1;
+		}
+
+		// 크롱 승
+		if (crong > pobi) {
+			result = 2;
+		}
+
+		// 무승부
+		if (pobi == crong) {
+			result = 0;
+		}
+
+		return result;
 	}
 }
