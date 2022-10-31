@@ -21,6 +21,22 @@ public class Problem7 {
 		HashMap<String, Integer> friendOfFriendScores = getFriendOfFriendScore(friendsRelations, user);
 		HashMap<String, Integer> visitorsScore = getVisitorsScore(visitors);
 		HashMap<String, Integer> totalScores = getTotalScores(visitorsScore, friendOfFriendScores);
+
+		List<String> friendsOfUser = friendsRelations.get(user);
+		HashMap<String, Integer> totalScoresExcludingUserFriends = removeUsers(user, friendsOfUser, totalScores);
+	}
+
+	public static HashMap<String, Integer> removeUsers(String user, List<String> friendsOfUser,
+		HashMap<String, Integer> totalScores) {
+		totalScores.remove(user);
+		removeFriendsOfUser(friendsOfUser, totalScores);
+		return totalScores;
+	}
+
+	private static void removeFriendsOfUser(List<String> friendsOfUser, HashMap<String, Integer> totalScores) {
+		for (String friend : friendsOfUser) {
+			totalScores.remove(friend);
+		}
 	}
 
 	public static HashMap<String, Integer> getTotalScores(HashMap<String, Integer> visitorScore,
