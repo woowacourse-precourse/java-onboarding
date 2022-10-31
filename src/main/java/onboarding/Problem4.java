@@ -22,4 +22,8 @@ public class Problem4 {
 
         return false;
     }
+
+    public static char translateUpper(char alphabet){
+        return (char) (SumofAZ - alphabet);
+    }
 }
