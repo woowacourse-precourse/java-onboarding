@@ -38,7 +38,7 @@ class Problem1 {
                 crongPageSum += crongPage%10;
                 crongPage = crongPage/10;
             }
-            pobiScore.add(crongPageSum);
+            crongScore.add(crongPageSum);
         }
 
         for (int i = 0; i < crong.size(); i++) {
@@ -48,7 +48,11 @@ class Problem1 {
                 crongPageMul *= crongPage%10;
                 crongPage = crongPage/10;
             }
-            pobiScore.add(crongPageMul);
+            crongScore.add(crongPageMul);
+        }
+
+        for (int i = 0; i < pobiScore.size(); i++) {
+            if (pobiScoreFinal > pobiScore.get(i)) pobiScoreFinal = pobiScore.get(i);
         }
 
 
