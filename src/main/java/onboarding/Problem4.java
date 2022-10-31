@@ -8,16 +8,12 @@ public class Problem4 {
     // 78 90 N-Z
     public static String solution(String word) {
         StringBuilder sb=new StringBuilder();
-        try {
-            checkWordLength(word);
-
-            for (int i=0;i<word.length();i++){
+        if (validation("word_length",word.length())) {
+            for (int i = 0; i < word.length(); i++) {
                 sb.append(getFrogDictionary(word.charAt(i)));
             }
-            return sb.toString();
-        }catch (Exception e){
-            return "";
         }
+        return sb.toString();
     }
 
     public static char getFrogDictionary(char frog_word){
@@ -26,9 +22,11 @@ public class Problem4 {
         return frog_word;
     }
 
-    public static void checkWordLength(String word) throws Exception {
-        int length = word.length();
-        if (length<1||length>1000) throw new Exception("문자열 길이 제한 초과입니다");
+    private static <T> boolean validation(String err_type,T err_param){
+        if (err_type.equals("word_length")&&err_param instanceof Integer){
+            int word_length = (int) err_param;
+            return 0<word_length&&word_length<1001;
+        }
+        return false;
     }
-
 }
