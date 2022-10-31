@@ -4,8 +4,6 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-
         if (!validate(pobi) || !validate(crong)) {
             return -1;
         }
@@ -13,7 +11,7 @@ class Problem1 {
         int pobiMax = Math.max(findMaxNumOfPage(pobi.get(0)), findMaxNumOfPage(pobi.get(1)));
         int crongMax = Math.max(findMaxNumOfPage(crong.get(0)), findMaxNumOfPage(crong.get(1)));
 
-        answer = getAnswer(pobiMax, crongMax);
+        int answer = compareScore(pobiMax, crongMax);
 
         return answer;
     }
@@ -46,7 +44,7 @@ class Problem1 {
         return Math.max(sum, mul);
     }
 
-    private static int getAnswer(int pobiMax, int crongMax) {
+    private static int compareScore(int pobiMax, int crongMax) {
         int answer;
 
         if (pobiMax > crongMax) {
