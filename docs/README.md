@@ -52,13 +52,33 @@
 3. 문자열 리스트중에 부분 문자열을 뽑아 리스트 내부에 다른 요소들중 해당 부분 문자열이 포함되어 있는 인덱스를 반환하는 메서드를 구현 
 4. 2차원 리스트를 1차원 리스트로 평탄화 해주는 메서드 구현
 5. 한국어가 존재하는 요소를 List에서 추출해 반환하는 메서드 구현
-6. 위에서 구현한 메서드들을 이용해 한글 닉네임이 문자열의 순서를 변경시키지 않고 2자이상 부분적으로 일치하는 유저에 이메일을 반환하는 메서드 구현
+6. 위에서 구현한 메서드들을 이용해 한글 닉네임이 문자열의 순서를 변경시키지 않고 2자이상 부분적으로 일치하는 유저에 이메일을 오름차순으로 반환하는 메서드 구현
 
 - <code>getUserListByNicknameLength</code>: 2차원 리스트에서 닉네임 부분의 길이가 2이상인 2차원 리스트만 반환하는 메서드
 - <code>splitStringInAllCases</code>: 문자열의 순서를 바꾸지 않고 원하는 길이 만큼 자를 수 있는 모든 경우에 수를 리스트 형태로 반환하는 메서드 구현
 - <code>getIndexListOfContainSubString</code>: 문자열 리스트중에 부분 문자열을 뽑아 리스트 내부에 다른 요소들중 해당 부분 문자열이 포함되어 있는 인덱스를 반환하는 메서드를 구현
 - <code>getElementsByKorean</code>: 한글이 존재하는 요소를 List에서 추출해 반환하는 메서드 구현
 - <code>getFlatList</code>: 2차원 리스트를 1차원 리스트로 평탄화 해주는 메서드 구현
+
+---
+
+## Problem7 기능 목록
+1. Point 적립기준인 방문과 함께아는친구로 나눠 해당 point를 value로 가질 수 있게 enum을 선언
+2. 추천을 띄워주고싶은 유저 아이디와 그 해당 유저와 함께 아는 친구가 있는 유저를 중복을 제거하지 않고 문자열 리스트로 반환하는 메서드 구현
+3. 추천을 띄워주고싶은 유저와 직접적으로 친구인 문자열 리스트를 반환하는 메서드 구현
+4. 포인트를 위 1번의 pointType에 따라 value를 더해줘 Map<String, Integer>를 반환하는 메서드 구현(2번에서 중복 제거하지 않은 이유)</br>
+   **(key = userId, value = point)**
+5. Map<String, Integer>를 merge 할 때 key값이 존재하면 value를 더해 주는 메서드 구현
+6. Map을 value기준으로 내림차순으로 정렬하고 value가 같은 것들 끼리는 Key기준 오름차순으로 정렬하는 메서드 구현
+7. Key 기준으로 Map에서 지우고 반환하는 메서드 구현(3번과 함께 사용)
+8. 사용자와 함께 아는 친구의 숫자와 타임라인의 방문한 횟수로 친구 추천 리스트를 반환하는 메서드 구현
+
+- <code>getFriendOfFriends</code>: user와 친구인 사람과 친구인 user를 문자열 리스트형으로 반환하는 메서드
+- <code>getFriends</code>: 친구관계에서 user와 직접적으로 친구인 문자열 리스트 반환하는 메서드
+- <code>calculatePoint</code>: users를 Key로 point를 value로 반환하는데, pointType의 value를 더해 Map<String, Integer>을 반환하는 메서드 구현
+- <code>mergeMapSumValue</code>: Key가 같은 것들 끼리는 value를 더하며 합쳐 같은 타입의 하나의 Map으로 반환하는 메서드
+- <code>getEntryDescByValue</code>: Map의 Value 기준 내림차순으로 정렬하고 Value 가 같은것 끼리는 Key 내림차순으로 정렬하는 메서드
+- <code>removeByKey</code>: map에서 keyList를 지우고 반환하는 메서드
 
 ---
 
