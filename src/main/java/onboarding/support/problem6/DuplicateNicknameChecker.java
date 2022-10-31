@@ -45,8 +45,9 @@ public class DuplicateNicknameChecker {
         }
     }
 
-    private static boolean isDuplicated(String firstName, String secondName, int i, int j) {
-        return firstName.charAt(i) == secondName.charAt(j) && firstName.charAt(i + 1) == secondName.charAt(j + 1);
+    private static boolean isDuplicated(String firstName, String secondName, int firstNameIndex, int secondNameIndex) {
+        return firstName.charAt(firstNameIndex) == secondName.charAt(secondNameIndex)
+                && firstName.charAt(firstNameIndex + 1) == secondName.charAt(secondNameIndex + 1);
     }
 
     private static List<String> setToList(Set<String> duplicatedUserEmail) {

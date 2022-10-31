@@ -4,23 +4,23 @@ import java.util.List;
 
 public class PagePair {
 
-    private final int leftPage;
-    private final int rightPage;
+    private final int leftPageNumber;
+    private final int rightPageNumber;
     private final int maxScore;
     private final boolean isValid;
 
     public PagePair(List<Integer> pages) {
-        this.leftPage = pages.get(Constants.getLeftPageIndex());
-        this.rightPage = pages.get(Constants.getRightPageIndex());
+        this.leftPageNumber = pages.get(Constants.getLeftPageIndex());
+        this.rightPageNumber = pages.get(Constants.getRightPageIndex());
         this.isValid = isValidPageRange() && isOddPage() && isEvenPage() && checkPagesInterval();
 
         int leftMaxScore = Math.max(
-                calculateDigitSum(leftPage),
-                calculateDigitMultiple(leftPage)
+                calculateDigitSum(leftPageNumber),
+                calculateDigitMultiple(leftPageNumber)
         );
         int rightMaxScore = Math.max(
-                calculateDigitSum(rightPage),
-                calculateDigitMultiple(rightPage)
+                calculateDigitSum(rightPageNumber),
+                calculateDigitMultiple(rightPageNumber)
         );
 
         this.maxScore = Math.max(leftMaxScore, rightMaxScore);
@@ -45,20 +45,20 @@ public class PagePair {
     }
 
     public boolean isValidPageRange() {
-        return rightPage >= Constants.getMinPage() && rightPage <= Constants.getMaxPage()
-                && leftPage >= Constants.getMinPage() && leftPage <= Constants.getMaxPage();
+        return rightPageNumber >= Constants.getMinPage() && rightPageNumber <= Constants.getMaxPage()
+                && leftPageNumber >= Constants.getMinPage() && leftPageNumber <= Constants.getMaxPage();
     }
 
     public boolean isOddPage() {
-        return leftPage % 2 == Constants.getOddMod();
+        return leftPageNumber % 2 == Constants.getOddMod();
     }
 
     public boolean isEvenPage() {
-        return rightPage % 2 == Constants.getEvenMod();
+        return rightPageNumber % 2 == Constants.getEvenMod();
     }
 
     public boolean checkPagesInterval() {
-        return rightPage - leftPage == Constants.getPageInterval();
+        return rightPageNumber - leftPageNumber == Constants.getPageInterval();
     }
 
     public boolean isNotValid() {

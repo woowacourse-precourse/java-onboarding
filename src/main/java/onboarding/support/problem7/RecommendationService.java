@@ -15,30 +15,30 @@ public class RecommendationService {
         this.user = user;
         this.sortedFriends = new ArrayList<>();
 
-        Map<String, Set<String>> friendRelationMap = new HashMap<>();
-        Map<String, Integer> scoreMap = new HashMap<>();
+        Map<String, Set<String>> friendRelations = new HashMap<>();
+        Map<String, Integer> scores = new HashMap<>();
 
         for (List<String> friend : friends) {
-            makeFriendRelation(friendRelationMap, friend);
+            makeFriendRelation(friendRelations, friend);
         }
-        for (Map.Entry<String, Set<String>> friendEntry : friendRelationMap.entrySet()) {
-            calculateAcquaintanceScore(friendRelationMap, scoreMap, friendEntry);
+        for (Map.Entry<String, Set<String>> friendEntry : friendRelations.entrySet()) {
+            calculateAcquaintanceScore(friendRelations, scores, friendEntry);
         }
 
-        Set<String> userFriendRelation = friendRelationMap.get(user);
+        Set<String> userFriendRelation = friendRelations.get(user);
         for (String visitor : visitors) {
-            calculateTimelineVisitScore(scoreMap, userFriendRelation, visitor);
+            calculateTimelineVisitScore(scores, userFriendRelation, visitor);
         }
 
-        List<Map.Entry<String, Integer>> sortedScoreMap = sortList(scoreMap);
+        List<Map.Entry<String, Integer>> sortedScores = sortList(scores);
 
-        for (Map.Entry<String, Integer> scoreMapEntry : sortedScoreMap) {
-            this.sortedFriends.add(scoreMapEntry.getKey());
+        for (Map.Entry<String, Integer> scoresEntry : sortedScores) {
+            this.sortedFriends.add(scoresEntry.getKey());
         }
     }
 
-    private static List<Map.Entry<String, Integer>> sortList(Map<String, Integer> scoreMap) {
-        return scoreMap
+    private static List<Map.Entry<String, Integer>> sortList(Map<String, Integer> scores) {
+        return scores
                 .entrySet()
                 .stream()
                 .sorted(Comparator
@@ -47,36 +47,37 @@ public class RecommendationService {
                 .collect(Collectors.toList());
     }
 
-    private static void calculateTimelineVisitScore(Map<String, Integer> scoreMap, Set<String> userFriendRelation, String visitor) {
-        if (!userFriendRelation.contains(visitor)) {
-            scoreMap.merge(visitor, TIME_LINE_VISIT_SCORE, Integer::sum);
+    private static void calculateTimelineVisitScore(Map<String, Integer> scores, Set<String> userFriendRelations, String visitor) {
+        if (!userFriendRelations.contains(visitor)) {
+            scores.merge(visitor, TIME_LINE_VISIT_SCORE, Integer::sum);
         }
     }
 
-    private void calculateAcquaintanceScore(Map<String, Set<String>> friendRelationMap, Map<String, Integer> scoreMap, Map.Entry<String, Set<String>> friendEntry) {
-        if (isNotUser(friendEntry.getKey())) {
-            for (String relatedFriend : friendEntry.getValue()) {
-                if (isUsersFriend(friendRelationMap.get(user), relatedFriend)) {
-                    scoreMap.merge(friendEntry.getKey(), ACQUAINTANCE_SCORE, Integer::sum);
+    private void calculateAcquaintanceScore(Map<String, Set<String>> friendRelations, Map<String, Integer> scores,
+                                            Map.Entry<String, Set<String>> friendEntries) {
+        if (isNotUser(friendEntries.getKey())) {
+            for (String relatedFriend : friendEntries.getValue()) {
+                if (isUsersFriend(friendRelations.get(user), relatedFriend)) {
+                    scores.merge(friendEntries.getKey(), ACQUAINTANCE_SCORE, Integer::sum);
                 }
             }
         }
     }
 
-    private static void makeFriendRelation(Map<String, Set<String>> friendRelationMap, List<String> friend) {
-        String firstFriend = friend.get(0);
-        String secondFriend = friend.get(1);
+    private static void makeFriendRelation(Map<String, Set<String>> friendRelations, List<String> friends) {
+        String firstFriend = friends.get(0);
+        String secondFriend = friends.get(1);
 
-        friendRelationMap.computeIfAbsent(firstFriend, value -> new HashSet<>()).add(secondFriend);
-        friendRelationMap.computeIfAbsent(secondFriend, value -> new HashSet<>()).add(firstFriend);
+        friendRelations.computeIfAbsent(firstFriend, value -> new HashSet<>()).add(secondFriend);
+        friendRelations.computeIfAbsent(secondFriend, value -> new HashSet<>()).add(firstFriend);
     }
 
     private boolean isNotUser(String name) {
         return !user.equals(name);
     }
 
-    private boolean isUsersFriend(Set<String> usersFriend, String relatedFriend) {
-        return usersFriend.contains(relatedFriend);
+    private boolean isUsersFriend(Set<String> usersFriends, String relatedFriend) {
+        return usersFriends.contains(relatedFriend);
     }
 
     public List<String> getSortedFriends() {

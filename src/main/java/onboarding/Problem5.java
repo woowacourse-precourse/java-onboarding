@@ -7,6 +7,6 @@ import java.util.List;
 public class Problem5 {
     public static List<Integer> solution(int money) {
         Money answer = new Money(money);
-        return answer.getMoneyList();
+        return answer.getMoneyCounts();
     }
 }
