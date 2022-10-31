@@ -3,7 +3,7 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
-    static Map<String, Integer> friendScoreMap = new HashMap<>();
+    static Map<String, Integer> friendScoreMap = new TreeMap<>();
 
     /**
      * 사용자와 친구인 사람을 구하는 메서드
@@ -65,6 +65,29 @@ public class Problem7 {
                 friendScoreMap.put(user, 1);
             }
         }
+    }
+
+    /**
+     * 친구추천 점수를 조건에 맞춰 정렬해 List로 반환하는 알고리즘
+     * 
+     * @return 정렬한 친구추천 점수 아이디List
+     */
+    static List<String> createResultList() {
+        List<String> keySet = new ArrayList<>(friendScoreMap.keySet());
+        keySet.sort(new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                return friendScoreMap.get(o2).compareTo(friendScoreMap.get(o1));
+            }
+        });
+
+        // console 출력 Test
+        for (String key : keySet) {
+            System.out.print("Key : " + key);
+            System.out.println(", Val : " + friendScoreMap.get(key));
+        }
+
+        return keySet;
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
