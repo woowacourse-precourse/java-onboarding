@@ -15,6 +15,10 @@ public class Problem7 {
             checkContain(friend, user);
         }
 
+        for (String myFriend : friendList) {
+            search(myFriend);
+        }
+
         return answer;
     }
 
@@ -39,7 +43,23 @@ public class Problem7 {
         }
     }
 
-    //점수를 계산하는 함수
+    //친구 그래프를 탐색하는 함수
+    public static void search(String name) {
+        for (List<String> friend : friendGraph) {
+            boolean isContain = friend.contains(name);
+            afterSearch(isContain, friend, name);
+        }
+    }
+
+    //만약 친구 그래프 탐색 결과 서로 아는 친구라면 점수 계산
+    public static void afterSearch(boolean isContain, List<String> friend, String name) {
+        if (isContain) {
+            String friendName = findAnother(friend, name);
+            calculatePoint(friendName, 10);
+        }
+    }
+
+    //추천 점수를 계산하는 함수
     public static void calculatePoint(String user, int point) {
         if (relation.containsKey(user))
             relation.put(user, relation.get(user) + 10);
@@ -47,7 +67,7 @@ public class Problem7 {
             relation.put(user, 10);
     }
 
-    //방문자의 점수를 계산하는 함수
+    //방문 점수를 계산하는 함수
     public static void calculateVisitorPoint(boolean isContain, String visitor) {
         if (!isContain) {
             calculatePoint(visitor, 1);
