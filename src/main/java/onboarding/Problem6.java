@@ -1,11 +1,14 @@
 package onboarding;
 
 import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> nicknameList = extractNicknames(forms);
+        nicknameList = checkNicknameLength(nicknameList);
         List<List<String>> nicknameSplitList = extractNicknameByTwoChar(nicknameList);
         List<String> checkDuplicate = checkDuplicateNicknames(nicknameSplitList, nicknameList);
 
@@ -79,5 +82,15 @@ public class Problem6 {
         Collections.sort(emailList);
 
         return emailList;
+    }
+
+    public static List<String> checkNicknameLength(List<String> nicknameList) {
+        for (int i = 0; i < nicknameList.size(); i++) {
+            if ((nicknameList.get(i).length() < 1) || (nicknameList.get(i).length() >= 20)) {
+                nicknameList.remove(i);
+            }
+        }
+        System.out.println(nicknameList);
+        return nicknameList;
     }
 }
