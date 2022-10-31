@@ -1,10 +1,11 @@
 ## 기능 목록
 
-| Date  | Feature         | Method Name       | Parameter Type | Return Type | Progress         |
-|-------|-----------------|-------------------|----------------|-------------|------------------|
-| 10.31 | User 클래스 비교     | compareTo()       | User           | int         | committed  |
-| 10.31 | 새로운 User 생성     | createNewUser()   | String         | User        |  committed |
+| Date  | Feature        | Method Name      | Parameter Type | Return Type | Progress         |
+|-------|----------------|------------------|----------------|-------------|------------------|
+| 10.31 | User 클래스 비교    | compareTo()      | User           | int         | committed  |
+| 10.31 | 새로운 User 생성    | createNewUser()  | String         | User        |  committed |
 | 10.31 | 주어진 이름의 User 반환 | getUserFromName() | String         | User        | committed  |
+| 10.31 | 각 User에 친구 추가  | makeFriend()     | User, User     | void        |  committed |
 
 
 ### TODO
