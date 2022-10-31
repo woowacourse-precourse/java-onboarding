@@ -118,7 +118,20 @@ public class Problem7 {
     }
 
     //사용자와 함께 아는 친구의 수 점수와 사용자의 타임라인에 방문한 점수의 총 합을 구해주는 함수
+    static List<people_score> sum_score(String user, List<List<String>> friends, List<String> visitors) {
+        List<people_score> together_score = user_know_together_score(user,friends,visitors);
+        List<people_score> visit_score = visitors_score(user,friends,visitors);
+        List<people_score> total_sum = new ArrayList<>();
 
+        for (int i=0;i<together_score.size();i++){
+            int total = together_score.get(i).score + visit_score.get(i).score;
+            String name = together_score.get(i).people;
+
+            total_sum.add(new people_score(name,total));
+        }
+        return total_sum;
+
+    }
     //실행을 위한 함수
 
 }
