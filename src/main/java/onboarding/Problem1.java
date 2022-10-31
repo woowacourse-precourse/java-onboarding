@@ -60,7 +60,19 @@ class Problem1 {
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        if (!validatePage(pobi) || !validatePage(crong)) {
+            return EXCEPTION;
+        }
+
+        int pobiScore = findMaxScoreHelper(pobi.get(0), pobi.get(1));
+        int crongScore = findMaxScoreHelper(crong.get(0), crong.get(1));
+
+        if (pobiScore > crongScore) {
+            return POBI_WIN;
+        }
+        if (pobiScore < crongScore) {
+            return CRONG_WIN;
+        }
+        return DRAW;
     }
 }
