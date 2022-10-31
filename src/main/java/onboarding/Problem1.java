@@ -19,6 +19,27 @@ class Problem1 {
             return -1;
         }
 
+        pobiScore = Math.max(computeNum(pobiLeft), computeNum(pobiRight));
+        crongScore = Math.max(computeNum(crongLeft), computeNum(crongRight));
+
+        if (pobiScore > crongScore) {
+            return 1;
+        } else if (pobiScore < crongScore){
+            return 2;
+        }
+        return 0;
+    }
+
+    private static int computeNum(int num) {
+        int sumResult = 0;
+        int mulResult = 1;
+
+        while(num != 0) {
+            sumResult += (num % 10);
+            mulResult *= (num % 10);
+            num /= 10;
+        }
+        return Math.max(sumResult, mulResult);
     }
 
     private static boolean validateInput(int leftPage, int rightPage) {
