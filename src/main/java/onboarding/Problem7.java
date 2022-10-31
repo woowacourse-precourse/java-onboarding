@@ -53,4 +53,12 @@ class SNS {
         return visitors;
     }
 
+    public void visitSNS(String userId) {
+        if (0 <= visitors.size() || visitors.size() <= 10000) {
+            visitors.add(userId);
+        } else {
+            throw new IllegalStateException("방문자가 10000명 이상입니다. 초기화가 필요합니다.");
+        }
+    }
+
 }
