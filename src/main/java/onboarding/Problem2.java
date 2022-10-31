@@ -7,9 +7,7 @@ public class Problem2 {
     }
 }
 
-
 class Decoder {
-
     static String decoding(String str) {
         String n_str = deleteDuplicate(str);
         if (str.equals(n_str)) {
@@ -20,11 +18,15 @@ class Decoder {
 
     private static String deleteDuplicate(String str) {
         String new_str = "";
+        // 빈 String 그대로 반환
         if (str.equals("")) {
             return "";
         }
-
         int l = str.length();
+        // 길이가 1인 String 그대로 반환
+        if (l == 1) {
+            return str;
+        }
         int i = 0;
         while (i < l-1) {
             if (str.charAt(i) == str.charAt(i+1)) {
