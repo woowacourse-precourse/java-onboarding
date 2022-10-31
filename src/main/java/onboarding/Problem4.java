@@ -28,6 +28,17 @@ public class Problem4 {
             return (char)(155 - chr);
     }
 
+    public static String reverseString(String str){
+        char[] charArray = convertStringToArray(str);
+        int len = charArray.length;
+
+        for(int i = 0;i < len;i++){
+            if(isAlpha(charArray[i]))
+                charArray[i] = changeAlpha(charArray[i]);
+        }
+        return convertArrayToString(charArray);
+    }
+
     public static String solution(String word) {
         String answer = "";
         return answer;
