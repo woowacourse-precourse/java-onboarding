@@ -16,8 +16,8 @@ import java.util.List;
  * 제한사항
  *  - money는 1 이상 1,000,000 이하인 자연수이다.
  *
- * @author scyllacore
- * @version 1.1 2022/10/31
+ * @author      scyllacore
+ * @version     1.1 2022/10/31
  */
 
 public class Problem5 {
@@ -26,7 +26,7 @@ public class Problem5 {
      * 1. moneyTable : 화폐 mapping 시키기.
      * 2. getLeastMoney : 가장 큰 금액의 화폐부터 받아내어 가장 적은 양으로 화폐를 받고, 받은 화폐 내역을 list에 저장.
      * 3. solution : 최종적으로 교환한 화폐 내역 반환.
-     * */
+     */
 
     /** 1. 문제 조건에 맞게 화폐를 mapping 시킨 배열. */
     static int moneyTable[] = {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};

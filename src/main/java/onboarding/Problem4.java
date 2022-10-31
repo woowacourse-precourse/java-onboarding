@@ -15,8 +15,8 @@ package onboarding;
  * - 알파벳 외의 문자는 변환하지 않는다.
  * - 알파벳 대문자는 알파벳 대문자로, 알파벳 소문자는 알파벳 소문자로 변환한다.
  *
- * @author scyllacore
- * @version 1.1 2022/10/31
+ * @author      scyllacore
+ * @version     1.1 2022/10/31
  */
 
 public class Problem4 {
@@ -25,7 +25,7 @@ public class Problem4 {
      * 1. setLetterCaseMappingTable : 대문자,소문자 나눠서 청개구리 사전에 따라 문자 mapping.
      * 2. getChangedString : mapping 배열을 가지고 문자열 변환.
      * 3. solution : 변경시킨 최종 문자열 반환.
-     * */
+     */
 
     /** 대문자 mapping 사전 */
     static int upperCase[] = new int[26];
