@@ -3,6 +3,8 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Problem6 {
     // 적합한 이메일 형식인지 판단하는 함수
@@ -47,15 +49,22 @@ public class Problem6 {
                 }
             }
 
-            if (!duplicate_index.isEmpty()) {
+            Set<Integer> duplicate_set = new HashSet<Integer>(duplicate_index);
+            List<Integer> duplicate_list = new ArrayList<>(duplicate_set);
+            Collections.sort(duplicate_list);
+
+            if (!duplicate_list.isEmpty()) {
                 remove_duplicate_forms.add(check_forms.get(i));
 
-                for (int index : duplicate_index) {
+                for (int index : duplicate_list) {
                     remove_duplicate_forms.add(check_forms.get(index));
                 }
 
-                for (int index : duplicate_index) {
+                int check_remove = 0;
+                for (int index : duplicate_list) {
+                    index = index - check_remove;
                     check_forms.remove(index);
+                    check_remove += 1;
                 }
 
                 duplicate_index.clear();
