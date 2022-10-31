@@ -21,4 +21,15 @@ class Problem1 {
             return false;
         }
     }
+
+    public static int calculateAdd(int num) {
+        int addScore = 0;
+
+        while (num != 0) {
+            addScore += num % 10;
+            num /= 10;
+        }
+
+        return addScore;
+    }
 }
