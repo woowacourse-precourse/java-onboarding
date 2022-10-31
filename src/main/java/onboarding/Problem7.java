@@ -24,25 +24,41 @@ import java.util.*;
 // 1. java에서 list는 순서가 보장되므로..하나의 리스트에 여러개의 리스트를 넣고,
 //    각 리스트의 첫번째를 각 user의 이름으로 해서 friends 리스트를 정리해보자..
 // 1-1. java에서 set은 중복을 허용하지 않으므로 friends와 visitors의 모든 user을 하나의 set에 넣는다.
-// 1-2. set의 항목들은 각 user이므로
+// 1-2. 중복이 제거된 users리스트를 키로 하고, 점수를 value로 하는 hashmap을 생성한다.
+// 1-3.
+
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         answer = new ArrayList<String>();
 
-        Set<String> userList = new HashSet<String>();
+        Set<String> users = new HashSet<String>();
+
+        HashMap<String,Integer> userList = new HashMap<String, Integer>();
 
         for (List friend : friends) {
-            userList.add((String) friend.get(0));
-            userList.add((String) friend.get(1));
+            users.add((String) friend.get(0));
+            users.add((String) friend.get(1));
+        }
+        for (String visitor : visitors) {
+            users.add(visitor);
         }
 
-        for (String visitor : visitors) {
-            userList.add(visitor);
+        System.out.println(users);
+
+        for (String keyUser : users) {
+            System.out.println(keyUser);
+            userList.put(keyUser,0);
+        }
+
+        for (String keyUser : users) {
+            System.out.println(keyUser);
+            userList.put(keyUser,0);
         }
 
         System.out.println(userList);
+
 
 //        List<String> testString1 = new ArrayList<String>();
 //        testString1.add("abc");
