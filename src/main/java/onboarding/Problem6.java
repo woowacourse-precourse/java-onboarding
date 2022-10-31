@@ -119,8 +119,15 @@ public class Problem6 {
         return valid;
     }
 
+    /**
+     * 이메일의 도메인이 "@email.com"인지 확인합니다.
+     *
+     * @param email 신청서의 첫 번째 정보입니다.
+     * @return 해당 정보가 "@email.com"으로 끝난다면 참, 아니면 거짓을 반환합니다.
+     */
     private static boolean hasValidEmailDomain(String email) {
-        return false;
+        boolean valid = email.endsWith("@email.com");
+        return valid;
     }
 
     private static boolean hasValidNickname(String nickname) {
