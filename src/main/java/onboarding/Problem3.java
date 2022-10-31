@@ -19,4 +19,18 @@ public class Problem3 {
                 .filter(c -> c == charNumber)
                 .count();
     }
+
+    private static int countAllNumber(String stringNumber) {
+        int count = 0;
+
+        if (containsNumber(stringNumber, "3")) {
+            count += countNumber(stringNumber, '3');
+        } else if (containsNumber(stringNumber, "6")) {
+            count += countNumber(stringNumber, '6');
+        } else if (containsNumber(stringNumber, "9")) {
+            count += countNumber(stringNumber, '9');
+        }
+
+        return count;
+    }
 }
