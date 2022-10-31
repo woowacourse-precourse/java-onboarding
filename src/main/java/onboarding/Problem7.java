@@ -24,6 +24,7 @@ public class Problem7 {
             calculateVisitorPoint(isContain, visitor);
         }
 
+        answer = sort();
         return answer;
     }
 
@@ -85,5 +86,15 @@ public class Problem7 {
             return twoPeople.get(1);
         else
             return twoPeople.get(0);
+    }
+
+    //문제의 기능 요구사항에 맞게 리스트를 정렬하는 함수
+    public static List<String> sort() {
+        List<String> result = new ArrayList<>(relation.keySet());
+        Collections.sort(result, (s1, s2) -> relation.get(s1).compareTo(relation.get(s2)));
+        if (result.size() > 5) {
+            result.subList(0, 5);
+        }
+        return result;
     }
 }
