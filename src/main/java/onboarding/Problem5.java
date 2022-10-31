@@ -4,6 +4,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.ArrayList;
 
+/*
+기능 목록
+1. 돈의 액수 money를 각각 몇 개의 화폐로 변환할 수 있는지 계산하는 기능
+ */
 public class Problem5 {
     public static List<Integer> solution(int money) {
         List<Integer> answer = Collections.emptyList();
