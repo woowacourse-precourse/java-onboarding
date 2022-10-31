@@ -9,6 +9,7 @@ import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 /**
@@ -91,6 +92,10 @@ public class Problem7 {
         private static final int VISITANT = 1;
         private final Map<String, Integer> userScoreMap;
 
+        public UserScore(Map<String, Integer> userScoreMap) {
+            this.userScoreMap = userScoreMap;
+        }
+
         public UserScore(final String user, final List<String> visitors, final RelationShip relationShip){
             this.userScoreMap = makeInitUserScoreMap(relationShip, user);
             addUserScoreMapByVisitor(visitors);
@@ -128,6 +133,21 @@ public class Problem7 {
         }
 
         @Override
+        public boolean equals(Object o) {
+            if (this == o)
+                return true;
+            if (o == null || getClass() != o.getClass())
+                return false;
+            UserScore userScore = (UserScore)o;
+            return Objects.equals(userScoreMap, userScore.userScoreMap);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(userScoreMap);
+        }
+
+        @Override
         public String toString() {
             return "UserScore{" +
                 "userScoreMap=" + userScoreMap +
@@ -142,6 +162,10 @@ public class Problem7 {
 
         public RelationShip(){
             this.relationShipMap = new HashMap<>();
+        }
+
+        public RelationShip(Map<String, List<String>> relationShipMap) {
+            this.relationShipMap = relationShipMap;
         }
 
         public RelationShip(final List<List<String>> friends) {
@@ -196,6 +220,21 @@ public class Problem7 {
                 return new ArrayList<>();
             }
             return this.relationShipMap.get(user);
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o)
+                return true;
+            if (o == null || getClass() != o.getClass())
+                return false;
+            RelationShip that = (RelationShip)o;
+            return Objects.equals(relationShipMap, that.relationShipMap);
+        }
+
+        @Override
+        public int hashCode() {
+            return Objects.hash(relationShipMap);
         }
 
         @Override
