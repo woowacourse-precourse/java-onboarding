@@ -6,6 +6,7 @@ public class Problem6 {
     static List<String> nicknameList = new ArrayList<>();
     static List<String> nicknameSubset = new ArrayList<>();
     static HashMap<String, Integer> nicknameSubsetNumber = new HashMap<>();
+    static Set<String> sendEmailID = new TreeSet<>();
 
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
@@ -57,6 +58,30 @@ public class Problem6 {
 
             if (duplicatedNum >= 2) {
                 nicknameSubset.add(subset);
+            }
+        }
+    }
+
+    public static void checkDuplicateNickname(List<List<String>> forms) {
+        for (String nickname : nicknameList) {
+            isContainSubset(forms, nickname);
+        }
+    }
+
+    public static void isContainSubset(List<List<String>> forms, String nickname) {
+        for (Iterator<String> subset = nicknameSubset.iterator(); subset.hasNext(); ) {
+            if(nickname.contains(subset.next())){
+                addEmailList(forms, nickname);
+            }
+        }
+    }
+
+    public static void addEmailList(List<List<String>> forms, String duplicatedNickname) {
+        for (List<String> readOneList : forms) {
+            String email = readOneList.get(0);
+            String nickname = readOneList.get(1);
+            if (nickname.equals(duplicatedNickname)) {
+                sendEmailID.add(email);
             }
         }
     }
