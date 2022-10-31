@@ -19,6 +19,13 @@ public class Problem3 {
                     tmp/=10;
                     continue;
                 }
+                //1의 자리가 3의 배수인지 확인하기
+                int threeMod = tenMod%3;
+                //3의 배수이면 answer+1 아니면 그대로
+                answer = threeMod == 0 ? answer+1 : answer;
+                System.out.println("i: "+i+", tenMod: "+tenMod+", threeMod: "+threeMod+", answer: "+answer);
+                //tmp/=10
+                tmp/=10;
             }
         }
 
