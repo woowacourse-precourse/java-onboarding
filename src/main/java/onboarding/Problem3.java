@@ -7,7 +7,8 @@ public class Problem3 {
 
 		for (int i = 1; i <= number; i++) {
 			String numberStr = String.valueOf(i);
-			count = (int) (count + countChar(numberStr, '3')
+			count = (int) (count
+					+ countChar(numberStr, '3')
 					+ countChar(numberStr, '6')
 					+ countChar(numberStr, '9'));
 		}
