@@ -76,15 +76,62 @@ public class Problem7 {
         }
     }
 
+    /**
+     * 유저별 점수 정렬 하는 함수
+     * @param score : 유저별 점수 map
+     * @return : 정렬된 유저별 점수 list
+     */
+    public static List<Map.Entry<String,Integer>> sortPoints(Map<String,Integer> score){
+        List<Map.Entry<String, Integer>> scoreList = new LinkedList<>(score.entrySet());
+        scoreList.sort(new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                if(o1.getValue() == o2.getValue()){
+                    return o1.getKey().compareTo(o2.getKey());
+                }
+                return o2.getValue().compareTo(o1.getValue());
+            }
+        });
+        return scoreList;
+    }
+
+    /**
+     * 추천 점수가 높은 5명 추출 함수
+     * @param snsFriendMap : 친구 관계 map
+     * @param scoreList : 정렬된 유저별 점수
+     * @param user : 사용자
+     * @return : 추천 점수가 높은 5명 list
+     */
+    public static List<String> extractTop5( Map<String, List<String>> snsFriendMap, List<Map.Entry<String, Integer>> scoreList,String user){
+        List<String> answer = new ArrayList<>();
+
+        int count =1;
+        for(Map.Entry<String,Integer> scoreFriend : scoreList){
+            if (snsFriendMap.getOrDefault(user, new ArrayList<>()).contains(scoreFriend.getKey())){
+                continue;
+            }
+            answer.add(scoreFriend.getKey());
+            count +=1;
+
+            if(count>5){
+                break;
+            }
+        }
+        return answer;
+    }
+
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = new ArrayList<>();
 
         Map<String, List<String>> snsFriendMap = makeFriendInfoMap(friends);
         Map<String,Integer> score = calcBothFriendPoint(snsFriendMap, user);
 
         calcVisitorsPoint(score, visitors);
 
+        List<Map.Entry<String, Integer>> scoreList = sortPoints(score);
+
+        List<String> answer;
+        answer = extractTop5(snsFriendMap, scoreList,user);
 
         return answer;
     }
