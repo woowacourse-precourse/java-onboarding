@@ -9,11 +9,33 @@
 package onboarding;
 
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
+    }
+
+    public static List<String> GetFriendShipFromName(List<List<String>> friendRelations, String user) {
+        List<String> userfriendList = new LinkedList<>();
+        userfriendList.add(user);
+        for (List<String> friendRelation : friendRelations) {
+            if (friendRelation.contains(user)) {
+                friendRelationAddUser(userfriendList, friendRelation, user);
+            }
+        }
+        return userfriendList;
+    }
+
+    public static void friendRelationAddUser(List<String> userFriendList, List<String> friendRelation, String user) {
+        for (String friendName : friendRelation) {
+            if (friendName.equals(user)) {
+                continue;
+            } else {
+                userFriendList.add(friendName);
+            }
+        }
     }
 }
