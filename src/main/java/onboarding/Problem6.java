@@ -8,7 +8,7 @@ import java.util.Set;
 public class Problem6 {
 
     // 연속으로 포함되는 닉네임 찾기
-    private static List<String> findDuplicateName(List<List<String>> forms) {
+    private static List<String> findOverlapName(List<List<String>> forms) {
         Set<String> duplicateName = new HashSet<>();
         List<String> result;
         String current = "";
@@ -40,6 +40,6 @@ public class Problem6 {
     }
 
     public static List<String> solution(List<List<String>> forms) {
-        return findDuplicateName(forms);
+        return findOverlapName(forms);
     }
 }
