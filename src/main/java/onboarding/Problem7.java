@@ -21,6 +21,7 @@ public class Problem7 {
             this.visitors = visitors;
             this.scores = new HashMap<>();
             this.earlyFriends = new HashSet<>();
+            initScores();
         }
 
         private void createFriendsList() {
@@ -39,6 +40,35 @@ public class Problem7 {
 
         private void removeOwner() {
             earlyFriends.remove(owner);
+        }
+
+        private void initScores() {
+            allFriends.stream()
+                    .filter(friend -> !friend.contains(owner))
+                    .forEach(friend -> {
+                        addScoreByFriend(friend.get(0), friend.get(1));
+                        addScoreByFriend(friend.get(1), friend.get(0));
+                    });
+            visitors.forEach(this::addScoreByVisit);
+        }
+
+        private void addScoreByFriend(String friendA, String friendB) {
+            if (!earlyFriends.contains(friendB)) return;
+            int value = 10;
+            if (scores.containsKey(friendA)) {
+                value += scores.get(friendA);
+            }
+            scores.put(friendA, value);
+        }
+
+
+        private void addScoreByVisit(String friend) {
+            if (earlyFriends.contains(friend)) return;
+            int value = 1;
+            if (scores.containsKey(friend)) {
+                value += scores.get(friend);
+            }
+            scores.put(friend, value);
         }
     }
 }
