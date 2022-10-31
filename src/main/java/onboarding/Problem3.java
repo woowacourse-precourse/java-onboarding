@@ -23,7 +23,7 @@ public class Problem3 {
         return number < 1 || number > 10000;
     }
 
-    public static  int find369(int number) {
+    public static int find369(int number) {
         int count = 0;
 
         while (number != 0) {
