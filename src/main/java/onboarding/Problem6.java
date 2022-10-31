@@ -3,11 +3,12 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
 
-        HashSet<String> mails = new HashSet<>();
+        Set<String> mails = new HashSet<>();
 
         for (int i = 0; i < forms.size() - 1; i++) {
             for (int j = i + 1; j < forms.size(); j++) {
@@ -20,7 +21,7 @@ public class Problem6 {
             }
         }
 
-        ArrayList<String> answer = new ArrayList<>(mails);
+        List<String> answer = new ArrayList<>(mails);
         return answer;
     }
 
