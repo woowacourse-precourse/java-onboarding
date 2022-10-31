@@ -8,7 +8,7 @@ public class Problem2 {
 
     static class Cryptogram {
 
-        private String data;
+        private String value;
         private final int START_RANGE = 1;
         private final int END_RANGE = 1_000;
 
@@ -17,7 +17,7 @@ public class Problem2 {
             if (!isValidLength(str)) {
                 throw new InputMismatchException("입력된 문자열의 크기가 [1,1000] 이내가 아닙니다.");
             }
-            this.data = removeDuplicates(str);
+            this.value = str;
         }
 
         private boolean isValidLength(String str) {
@@ -61,7 +61,7 @@ public class Problem2 {
         }
 
         public String result() {
-            return this.data;
+            return removeDuplicates(value);
         }
     }
 
