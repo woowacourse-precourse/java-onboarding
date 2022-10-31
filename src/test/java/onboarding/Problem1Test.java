@@ -269,7 +269,7 @@ public class Problem1Test {
             //when
             int result=1;
             //then
-            assertThat(book.getDifference()).isEqualTo(result);
+            assertThat(book.pageDifference()).isEqualTo(result);
         }
 
         @Test

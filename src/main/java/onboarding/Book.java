@@ -31,7 +31,7 @@ public class Book {
         return false;
     }
 
-    public int getDifference() {
+    public int pageDifference() {
         return page.getRightPage()- page.getLeftPage();
     }
 

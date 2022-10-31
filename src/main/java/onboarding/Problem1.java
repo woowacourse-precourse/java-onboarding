@@ -1,6 +1,5 @@
 package onboarding;
 
-import java.util.Arrays;
 import java.util.List;
 
 class Problem1 {
@@ -20,11 +19,11 @@ class Problem1 {
         }
     }
 
-    public static int whoIsWin(Book pobiPage, Book crongPage) {
-        validBook(pobiPage);
-        validBook(crongPage);
-        int pobiMaxValue=getMaxValue(pobiPage);
-        int crongMaxValue=getMaxValue(crongPage);
+    public static int whoIsWin(Book pobiBook, Book crongBook) {
+        validBook(pobiBook);
+        validBook(crongBook);
+        int pobiMaxValue=getMaxValue(pobiBook);
+        int crongMaxValue=getMaxValue(crongBook);
         if(crongMaxValue<pobiMaxValue){
             return POBI_WIN;
         }else if(crongMaxValue>pobiMaxValue){
@@ -34,9 +33,9 @@ class Problem1 {
         }
     }
 
-    private static void validBook(Book page) {
-        if(page.hasFirstPageOrLess() || page.hasLastPageOrMore() || page.getDifference()!=1
-                || page.isNotLeftPageOdd() || page.isNotRightPageEven())
+    private static void validBook(Book book) {
+        if(book.hasFirstPageOrLess() || book.hasLastPageOrMore() || book.pageDifference()!=1
+                || book.isNotLeftPageOdd() || book.isNotRightPageEven())
             throw new IllegalArgumentException("잘못된 입력입니다.");
     }
 
