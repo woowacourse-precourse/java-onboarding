@@ -7,16 +7,26 @@ import java.util.List;
 
 public class Problem5 {
     public static List<Integer> solution(int money) {
-        Withdrawal withdraw = new Withdrawal();
+        Withdrawal withdraw = Withdrawal.getInstance();
         List<Integer> answer = withdraw.getAnswer(money);
         return answer;
     }
 }
 
 class Withdrawal {
+    private static Withdrawal withdrawal = new Withdrawal();
+
+    static Withdrawal getInstance() {
+        return withdrawal;
+    }
+
     private List<Integer> money_array = new ArrayList<>(9);
 
-    private void setMoneyArray() {
+    private Withdrawal() {
+        setMoney_array(this.money_array);
+    }
+
+    private void setMoney_array(List<Integer> money_array) {
         int m = 50000;
         for (int i=0; i<8; i++) {
             int e = (int) Math.pow(10, i/2);
@@ -31,7 +41,6 @@ class Withdrawal {
 
     List<Integer> getAnswer(int money) {
         List<Integer> answer = Arrays.asList(0,0,0,0,0,0,0,0,0);
-        setMoneyArray();
         for (int i=0; i<9; i++) {
             int m = money_array.get(i);
             if (money < m) {
