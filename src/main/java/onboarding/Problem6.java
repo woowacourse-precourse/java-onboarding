@@ -21,4 +21,20 @@ public class Problem6 {
         }
         return false;
     }
+
+    private static boolean[] checkDuplicated(List<List<String>> forms) {
+        boolean[] flags = new boolean[forms.size()];
+        for (int i = 0; i < forms.size(); i++) {
+            for (int j = i + 1; j < forms.size(); j++) {
+                String nickname1 = forms.get(i).get(1);
+                String nickname2 = forms.get(j).get(1);
+
+                if (isDuplicated(nickname1, nickname2)) {
+                    flags[i] = true;
+                    flags[j] = true;
+                }
+            }
+        }
+        return flags;
+    }
 }
