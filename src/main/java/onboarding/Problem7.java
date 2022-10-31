@@ -45,4 +45,18 @@ public class Problem7 {
         return people;
     }
 
+    public static HashMap count(List<String> people, List<List<String>> friends) {
+        HashMap<String, Integer> count = new HashMap<>();
+
+        for(int i = 0; i < people.size(); i++) {
+            for(int j = 0; j < friends.size(); j++) {
+                if(friends.get(j).contains(people.get(i))) {
+                    if(count.get(people.get(i)) == null) count.put(people.get(i), 10);
+                    else count.put(people.get(i), count.get(people.get(i)) + 10);
+                }
+            }
+        }
+
+        return count;
+    }
 }
