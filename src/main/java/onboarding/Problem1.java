@@ -99,8 +99,8 @@ class Problem1 {
 	}
 
 	private static int compareCalculation(int... digits) {
-		int addition = getAddition(digits);
-		int multiplication = getMultiplication(digits);
+		int addition = addNumbers(digits);
+		int multiplication = multiplyNumbers(digits);
 
 		return Math.max(addition, multiplication);
 	}
@@ -135,7 +135,7 @@ class Problem1 {
 		throw new IllegalArgumentException("자리수 입력 오류");
 	}
 
-	public static int getAddition(int... numbers) {
+	public static int addNumbers(int... numbers) {
 		int sum = 0;
 
 		for (int number : numbers) {
@@ -145,7 +145,7 @@ class Problem1 {
 		return sum;
 	}
 
-	public static int getMultiplication(int... numbers) {
+	public static int multiplyNumbers(int... numbers) {
 		int multiply = 1;
 
 		for (int number : numbers) {
