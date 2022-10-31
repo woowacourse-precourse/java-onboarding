@@ -46,4 +46,14 @@ public class Problem6 {
 			return false;
 		}
 	}
+
+	private static class Woowacourse {
+		ArrayList<Crew> crews = new ArrayList<>();
+
+		Woowacourse(List<List<String>> forms) {
+			for (List<String> form : forms) {
+				crews.add(new Crew(form));
+			}
+		}
+	}
 }
