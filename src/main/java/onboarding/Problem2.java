@@ -1,7 +1,6 @@
 package onboarding;
 
 public class Problem2 {
-
     private static String removeDuplication(String inputString) {
         String removedString = "";
         boolean signal = false;
@@ -20,7 +19,6 @@ public class Problem2 {
         }
 
         return removedString;
-
     }
 
     public static String solution(String cryptogram) {

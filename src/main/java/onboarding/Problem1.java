@@ -3,9 +3,7 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
-
     private static boolean checkException(List<Integer> pobi, List<Integer> crong) {
-
         if (pobi.get(1) - pobi.get(0) != 1) {
             return false;
         }
@@ -14,7 +12,7 @@ class Problem1 {
             return false;
         }
 
-        if ((pobi.get(0) == 1) || (crong.get(0) == 1)) {
+        if ((pobi.get(0) == 1) || (pobi.get(0) == 1)) {
             return false;
         }
 
@@ -26,7 +24,6 @@ class Problem1 {
     }
 
     private static int plusPage(Integer page) {
-
         int num = 0;
         String page_str = Integer.toString(page);
 
@@ -38,7 +35,6 @@ class Problem1 {
     }
 
     private static int multiplyPage(Integer page) {
-
         int num = 1;
         String page_str = Integer.toString(page);
 
@@ -58,7 +54,6 @@ class Problem1 {
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-
         int answer = Integer.MAX_VALUE;
         int leftMax;
         int rightMax;
