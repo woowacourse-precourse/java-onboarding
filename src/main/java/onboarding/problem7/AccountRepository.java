@@ -58,7 +58,7 @@ public class AccountRepository {
     /**
      * 모든 사용자의 정보를 Collection 타입으로 반환하는 메소드
      *
-     * @return  모든 사용자의 정보
+     * @return 모든 사용자의 정보
      */
     public Collection<Account> findAllAccount() {
         return accounts.values();

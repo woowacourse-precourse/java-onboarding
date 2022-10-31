@@ -75,7 +75,7 @@ public class Account {
 
     /**
      * 사용자의 친구 추천 점수가 0점보다 높은지 확인하는 메소드
-
+     *
      * @return 사용자의 친구 추천 점수가 0점보다 높은지에 대한 여부
      */
     public boolean scoreOverThanZero() {
