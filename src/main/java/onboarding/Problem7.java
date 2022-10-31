@@ -9,8 +9,13 @@ public class Problem7 {
     public static Map<String, Integer> scoreMap;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        initScoreMap();
+        initFriendsMap(friends);
+
+        plusAcquaintanceScore(user);
+        plusVisitorScore(visitors);
+
+        return getTopThreeFriends();
     }
 
     public static void initScoreMap() {
