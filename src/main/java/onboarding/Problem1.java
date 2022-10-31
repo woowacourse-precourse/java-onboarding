@@ -14,6 +14,14 @@ class Problem1 {
         return Math.max(point1,point2);
     }
 
+    public static boolean isWrong(int left, int right){
+        boolean check1 = right-left != 1;
+        boolean check2 = left == 1;
+        boolean check3 = right == 400;
+
+        return check1 || check2 || check3;
+    }
+    
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
