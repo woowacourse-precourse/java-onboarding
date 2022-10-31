@@ -18,6 +18,7 @@ public class Problem4 {
 
         System.out.println((int)word.charAt(0)); //73, 기능1
         System.out.println((int)word.charAt(0)-65); // n=8, 기능2
+        System.out.println((int)word.charAt(0)+25-2*((int)word.charAt(0)-65)); //출력값 82, 기능3
 
         return answer;
     }
