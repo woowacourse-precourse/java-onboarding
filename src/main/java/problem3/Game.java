@@ -4,22 +4,27 @@ import java.util.List;
 
 public class Game {
     private final int number;
-    private final List<String> clapNumbers = List.of("3", "6", "9");
-    private int clap = 0;
+    private final List<Character> clapNumbers = List.of('3', '6', '9');
+    private int clap;
 
     public Game(int number) {
         this.number = number;
+        this.clap = 0;
     }
 
-    public int countClap() {
-        for(int i = 1; i <= number; i++) {
-            String compareNumber = String.valueOf(number);
-            for(String clapNumber : clapNumbers) {
-                if(compareNumber.contains(clapNumber)) {
-                    clap += 1;
-                }
-            }
+    private void compareClapNumber(String compareNumber) {
+        for(int i = 0; i < compareNumber.length(); i++) {
+            countClap(compareNumber, i);
         }
-        return clap;
+    }
+
+    private void countClap(String compareNumber, int index) {
+        if(containNumber(compareNumber, index)) {
+            clap += 1;
+        }
+    }
+
+    private boolean containNumber(String compareNumber, int index) {
+        return clapNumbers.contains(compareNumber.charAt(index));
     }
 }
