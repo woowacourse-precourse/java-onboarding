@@ -5,13 +5,14 @@ import java.util.*;
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
-//        System.out.println(forms.get(1).get(1));
+
+        //nicknames = form에서 닉네임만 추출하고 한글자씩 분리하여 배열로 저장
         List<List<String>> nicknames = new ArrayList<>();
         for (int i=0;i<forms.size();i++){
             nicknames.add(Arrays.asList(forms.get(i).get(1).split("")));
         }
-        System.out.println(nicknames);
 
+        //splitnames = 이웃하는 두글자씩 묶어 set을 형성
         List<List<String>> splitnames = new ArrayList<>();
         for (int i=0;i<nicknames.size();i++) {
             List<String> temp = new ArrayList<>();
@@ -20,9 +21,9 @@ public class Problem6 {
             }
             splitnames.add(temp);
         }
-        System.out.println(splitnames);
 
-        HashSet<Integer> idx = new HashSet<>();
+        //idx = 닉네임 중복이 발생하는 리스트의 인덱스를 저장
+        HashSet<Integer> idx = new HashSet<>(); // 인덱스 값 중복 제거를 위해 HashSet으로 선언
         for (int i=0;i<splitnames.size()-1;i++){
             for(int j = 0; j < splitnames.get(i).size(); j++){
                 String target=splitnames.get(i).get(j);
@@ -37,19 +38,18 @@ public class Problem6 {
                 }
             }
         }
-        System.out.println(idx);
 
+        //idx에 아닌데 index 값을 사용하기 위해 resultIdx로 copy
         List<Integer> resultIdx = new ArrayList<>();
         Iterator iter =idx.iterator();
         while(iter.hasNext()){
             resultIdx.add((Integer) iter.next());
         }
-//        System.out.println(resultidx);
-
+        //answer = 닉네임 중복이 발생한 크루의 이메일 주소를 저장
         for (int i=0;i<resultIdx.size();i++) {
             answer.add(forms.get(resultIdx.get(i)).get(0));
         }
-        Collections.sort(answer);
+        Collections.sort(answer); // 오름차순 정렬
 
         return answer;
     }
