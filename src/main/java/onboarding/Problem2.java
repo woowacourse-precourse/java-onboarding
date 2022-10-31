@@ -12,16 +12,7 @@ public class Problem2 {
         while (true) {
             duplicatedParts.clear();
             /* 문자열을 왼쪽부터 읽는다 */
-            for (int i=0; i<cryptogram.length() - 1; i++) {
-                char currentCh = cryptogram.charAt(i);
-                char nextCh = cryptogram.charAt(i + 1);
-                /* 연속되는 문자가 있는지 체크한다 */
-                if (currentCh == nextCh) {
-                    int j = getLastConsecutiveIndex(cryptogram, currentCh, i + 1);
-                    duplicatedParts.add(cryptogram.substring(i, j));
-                    i = j - 1;
-                }
-            }
+            readCryptogram(cryptogram, duplicatedParts);
             /* 연속되는 구간들을 빈 문자열로 교체한다 */
             if (duplicatedParts.size() != 0) {
                 cryptogram = deleteConsecutiveRange(cryptogram, duplicatedParts);
@@ -47,6 +38,23 @@ public class Problem2 {
             cryptogram = cryptogram.replaceFirst(part, "");
         }
         return cryptogram;
+    }
+
+    public static int getNextReadIndex(String cryptogram, List<String> duplicatedParts, int start) {
+        char currentCh = cryptogram.charAt(start);
+        char nextCh = cryptogram.charAt(start + 1);
+        /* 연속되는 문자가 있는지 체크한다 */
+        if (currentCh == nextCh) {
+            int j = getLastConsecutiveIndex(cryptogram, currentCh, start + 1);
+            duplicatedParts.add(cryptogram.substring(start, j));
+            return j - 1;
+        }
+        return start;
+    }
+
+    public static void readCryptogram(String cryptogram, List<String> duplicatedParts) {
+        for (int i=0; i<cryptogram.length() - 1; i++)
+            i = getNextReadIndex(cryptogram, duplicatedParts, i);
     }
 }
 
