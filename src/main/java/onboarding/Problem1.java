@@ -10,10 +10,6 @@ class Problem1 {
 
 	public static int solution(List<Integer> pobi, List<Integer> crong) {
 
-		/*
-		계산에 필요한 값들 구하기
-		*/
-
 		int pobiFirstNumber = getNumber(pobi, 0);
 		int pobiSecondNumber = getNumber(pobi, 1);
 
@@ -22,10 +18,6 @@ class Problem1 {
 
 		Integer pobiMaxValue = getMaxValue(pobiFirstNumber, pobiSecondNumber);
 		Integer crongMaxValue = getMaxValue(crongFirstNumber, crongSecondNumber);
-
-		/*
-		구한 값들로 정답 구하는 로직
-		*/
 
 		if (!doesPageContinue(pobiFirstNumber, pobiSecondNumber) || !doesPageContinue(crongFirstNumber, crongSecondNumber)) {
 			return -1;
