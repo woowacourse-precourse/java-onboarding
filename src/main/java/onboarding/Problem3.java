@@ -9,8 +9,8 @@ public class Problem3 {
 
 			// 예를 들어, 36 이라는 숫자에는 박수 두 번
 			for (int j = 0; j < str.length(); j++) {
-				char c = str.charAt(j);
-				if (c == '3' || c == '6' || c == '9') {
+				char ch = str.charAt(j);
+				if (ch == '3' || ch == '6' || ch == '9') {
 					cnt++;
 				}
 			}
