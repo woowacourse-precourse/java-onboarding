@@ -24,4 +24,10 @@ public class Problem5 {
         }
     }
 
+    public static List<Integer> solution(int money) {
+
+        bankInit();
+        exchangeMoney(money);
+        return new ArrayList<>(bank.values());
+    }
 }
