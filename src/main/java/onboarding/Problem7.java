@@ -8,7 +8,7 @@ public class Problem7 {
         HashMap<String, Integer> friendRecommendationMap = new HashMap<>();
 
         List<String> usersFriends = new ArrayList<>(findUserFriend(friends, user));
-
+        List<String> usersFriendsToFriends = new ArrayList<>(findUserFriendToFriend(friends, usersFriends, user));
 
         List<String> answer = Collections.emptyList();
         return answer;
@@ -26,5 +26,16 @@ public class Problem7 {
 
         usersFriends.remove(user);
         return usersFriends;
+    }
+
+    public static HashSet<String> findUserFriendToFriend(List<List<String>> friends, List<String> usersFriends, String user) {
+        HashSet<String> usersFriendToFriends = new HashSet<>();
+
+        for (String usersFriend : usersFriends) {
+            usersFriendToFriends.addAll(findUserFriend(friends, usersFriend));
+        }
+
+        usersFriendToFriends.remove(user);
+        return usersFriendToFriends;
     }
 }
