@@ -8,6 +8,10 @@ class Problem1 {
     private static final int TIE = 0;
     private static final int POBI_WIN = 1;
     private static final int CRONG_WIN = 2;
+    private static final int EXCEPTION = -1;
+    private static final int PAGE_SIZE = 2;
+    private static final int FIRST_LEFT_PAGE = 1;
+    private static final int LAST_LEFT_PAGE = 399;
 
     private static boolean isValidRange(int number) {
         if (number < 1 || number > 400) {
@@ -28,7 +32,7 @@ class Problem1 {
         int right = pages.get(RIGHT);
 
         // list의 길이가 2가 아닌 경우
-        if (pages.size() != 2) {
+        if (pages.size() != PAGE_SIZE) {
             return false;
         }
         // page의 범위가 벗어난 경우
@@ -44,7 +48,7 @@ class Problem1 {
             return false;
         }
         // 시작면이나 마지막면이 나온 경우
-        if (left == 1 || left == 399) {
+        if (left == FIRST_LEFT_PAGE || left == LAST_LEFT_PAGE) {
             return false;
         }
         return true;
@@ -66,8 +70,8 @@ class Problem1 {
     private static int getScore(List<Integer> pages) {
         int score = -1;
 
-        for (int i = 0; i < pages.size(); i++) {
-            int biggestValue = getBiggestValue(pages.get(i));
+        for (Integer page : pages) {
+            int biggestValue = getBiggestValue(page);
             if (score < biggestValue) {
                 score = biggestValue;
             }
@@ -89,11 +93,11 @@ class Problem1 {
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = 0;
+        int answer;
 
         // 예외 처리
         if (!isValidPageNumber(pobi) || !isValidPageNumber(crong)) {
-            return -1;
+            return EXCEPTION;
         }
         // 승자 구하기(solve)
         answer = getWinner(pobi, crong);
