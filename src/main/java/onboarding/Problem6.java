@@ -4,8 +4,9 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Problem6 {
-    // 연속되는 2자리 수를 저장한 리스트 만드는 함수
-    public static List<String> make(List<List<String>> listD){
+    // 검증리스트 만드는 함수
+    public static List<String> makeList(List<List<String>> listD){
+        // 1. 모든닉네임의 연속되는 2자리 문자들을 모아놓은 리스트 생성
         List<String> list =  new ArrayList<String>();
         for(int i = 0; i < listD.size(); i++){
             String Name = listD.get(i).get(1);
@@ -13,16 +14,13 @@ public class Problem6 {
                 list.add(Name.substring(j,j+2));
             }
         }
-        return list;
-    }
-    // 중복값만 필터링하는 함수
-    public static List<String> filter(List<String> l){
-        Set<String> Set = l.stream().filter(i -> Collections.frequency(l, i) > 1)
+        // 2. 중복되는 2자리 문자만 필터링
+        Set<String> Set = list.stream().filter(i -> Collections.frequency(list, i) > 1)
                 .collect(Collectors.toSet());
-        List<String> list = new ArrayList<String>(Set);
-        return list;
-    }
+        List<String> result = new ArrayList<String>(Set);
 
+        return result;
+    }
     // 중복제거 + 정렬 함수
     public static List<String> uniqueSort(List<String> l){
         HashSet<String> Set = new HashSet<String>(l);
@@ -34,7 +32,7 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<String>();
         // 검증 이름 리스트 생성
-        List<String> NameList = filter(make(forms));
+        List<String> NameList = makeList(forms);
         // 검증
         for(int i = 0; i< forms.size(); i++){
             for(int j = 0; j< NameList.size(); j++)
