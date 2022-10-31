@@ -5,6 +5,11 @@ import java.util.Collections;
 import java.util.List;
 
 public class Problem5 {
+    /**
+     * 입력 숫자에 대한 지폐 변환 함수
+     * @param money
+     * @return array
+     */
     public static List<Integer> solution(int money) {
 //        List<Integer> answer = Collections.emptyList();
         List<Integer> answer = new ArrayList<>();
