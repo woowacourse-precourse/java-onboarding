@@ -57,6 +57,22 @@ public class Problem7 {
             scores.put(visitor, scores.getOrDefault(visitor, 0) + 1);
         }
 
+        // 내림차순으로 정렬한다.
+        List<String> keySetList = new ArrayList<>(scores.keySet());
+        Collections.sort(keySetList, (o1, o2) -> {
+            int cmpVal = scores.get(o2).compareTo(scores.get(o1));
+            // 점수가 같다면, 이름 순으로 정렬.
+            if (cmpVal == 0)
+                return o1.compareTo(o2);
+            return cmpVal;
+        });
+
+
+        // 최대 5개까지 빼서 반환한다.
+        int len = Math.min(keySetList.size(), 5);
+        for (int i = 0; i < len; i++){
+            answer.add(keySetList.get(i));
+        }
 
         return answer;
     }
