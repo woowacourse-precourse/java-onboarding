@@ -7,6 +7,8 @@ public class Problem6 {
     public static final int NICKNAME_IDX = 1;
 
     public static List<String> solution(List<List<String>> forms) {
+        validateCrewNumber(forms);
+
         Set<String> emailSet = new HashSet<>();
         getSimilarNicknameCrewEmail(forms, emailSet);
 
@@ -55,4 +57,9 @@ public class Problem6 {
         }
     }
 
+    private static void validateCrewNumber(List<List<String>> forms) {
+        if (forms.size() == 0 || forms.size() > 10000) {
+            throw new IllegalArgumentException("크루는 1명 이상 10000명 이하여야 합니다.");
+        }
+    }
 }
