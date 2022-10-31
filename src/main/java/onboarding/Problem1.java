@@ -17,4 +17,24 @@ class Problem1 {
                 .mapToInt(Integer::parseInt).
                 toArray();
     }
+
+    // 번호 배열을 받아 합 점수를 반환
+    private static int add(int [] arrNum){
+
+        int result = 0;
+        for(int i = 0; i < arrNum.length; i++) {
+            result += arrNum[i];
+        }
+        return result;
+    }
+
+    // 번호 배열을 받아 곱 점수를 반환
+    private static int product(int [] arrNum){
+
+        int result = 1;
+        for(int i = 0; i < arrNum.length; i++){
+            result *= arrNum[i];
+        }
+        return result;
+    }
 }
