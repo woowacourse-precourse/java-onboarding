@@ -1,10 +1,9 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import static java.util.stream.Collectors.toList;
 
@@ -28,15 +27,15 @@ public class Problem6 {
                 .collect(toList());
     }
 
-    private static Set<String> getInvalidEmails(HashMap<String, String> separatedNameToEmail, List<String> form) {
+    private static List<String> getInvalidEmails(HashMap<String, String> separatedNameToEmail, List<String> form) {
         String email = getString(form);
         String nickname = getNickname(form);
 
         if (!isValidDomain(email)) {
-            return Set.of();
+            return List.of();
         }
 
-        HashSet<String> result = new HashSet<>();
+        List<String> result = new ArrayList<>();
 
         for (int i = 0; i < nickname.length() - 1; i++) {
             String separatedNickName = nickname.substring(i, i + 2);
