@@ -6,6 +6,20 @@ public class Problem6 {
 
     public static HashMap<String, Set<Integer>> hashMap = new HashMap<>();
 
+    // 같은 글자 포함 닉네임을 담을 Set
+    public static Set<Integer> duplicateIdx = new HashSet<>();
+
+    public static void addDuplicateCrews(){
+        for (String s : hashMap.keySet()) {
+            // Set이 2개 이상이라면, 같은 글자 포함.
+            if (hashMap.get(s).size() >= 2){
+                for (Integer crewIdx : hashMap.get(s)) {
+                    duplicateIdx.add(crewIdx);
+                }
+            }
+        }
+    }
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
 
@@ -25,6 +39,9 @@ public class Problem6 {
                 hashMap.get(currPart).add(i);
             }
         }
+
+        // 같은 글자 연속 포함 크루들의 Index를 add.
+        addDuplicateCrews();
 
         return answer;
     }
