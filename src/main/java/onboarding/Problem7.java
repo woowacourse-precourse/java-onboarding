@@ -15,12 +15,7 @@ public class Problem7 {
 
         List<Map.Entry<String, Integer>> userScoreList = sortUserFriends(removeUserFriends());
 
-        List<String> answer = new ArrayList<>();
-        for (Map.Entry<String, Integer> userScore : userScoreList) {
-            answer.add(userScore.getKey());
-        }
-
-        return answer;
+        return makeKeyList(userScoreList);
     }
 
     /*
@@ -91,5 +86,19 @@ public class Problem7 {
         });
 
         return userScoreList;
+    }
+
+
+    /*
+    * List<Map.Entry<String, Integer>>의 각 Key를 List로 만들어 반환
+    *
+    * @return List<String>
+    * */
+    private static List<String> makeKeyList(List<Map.Entry<String, Integer>> userScoreList) {
+        List<String> answer = new ArrayList<>();
+        for (Map.Entry<String, Integer> userScore : userScoreList) {
+            answer.add(userScore.getKey());
+        }
+        return answer;
     }
 }
