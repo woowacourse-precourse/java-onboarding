@@ -79,7 +79,7 @@
 - 인자값이 유효한지 검사한다.
   - [X] isValidForms
   - 신청서 배열이 조건에 부합하는지 검사한다.
-    - [ ] hasValidCrewsLength
+    - [X] hasValidFormsLength
     - 신청서 배열의 크기가 1 ~ 10000 사이의 값인지 검사한다.
   - [ ] isValidForm
   - 신청서 하나가 조건에 부합하는지 검사한다.

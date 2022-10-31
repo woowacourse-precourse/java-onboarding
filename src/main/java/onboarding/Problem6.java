@@ -31,12 +31,23 @@ public class Problem6 {
     }
 
     /*
+     * 신청서 배열이 올바른지 확인합니다.
+     *
+     * @param 신청서 배열입니다.
+     * @return 신청서 배열이 주어진 조건에 부합하면 참, 아니면 거짓을 반환합니다.
+     * */
+    private static boolean isValidForms(List<List<String>> forms) {
+        boolean valid = hasValidFormsLength(forms);
+        return valid;
+    }
+
+    /*
      * 신청서 배열의 크기가 올바른지 확인합니다.
      *
      * @param 신청서 배열입니다.
      * @return 신청서 배열의 크기가 1~10000 사이라면 참, 아니면 거짓을 반환합니다.
      * */
-    private static boolean isValidForms(List<List<String>> forms) {
+    private static boolean hasValidFormsLength(List<List<String>> forms) {
         boolean valid = isInRange(forms.size(), 1, 10000);
         return valid;
     }
