@@ -1,10 +1,10 @@
 package onboarding;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Problem5 {
     public static List<Integer> solution(int money) {
-        System.out.println(money);
 
         int fiveMillion = money / 50000;
         int changes = money % 50000;
@@ -35,7 +35,6 @@ public class Problem5 {
         answer.add(ten);
         answer.add(one);
 
-        System.out.println(answer);
         return answer;
     }
 }
