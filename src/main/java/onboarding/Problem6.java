@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import onboarding.problem6.Student;
 
 public class Problem6 {
     private static final Map<String, Set<String>> INFO_FOR_STUDENTS = new HashMap<String, Set<String>>();
@@ -23,12 +24,15 @@ public class Problem6 {
     private static void saveInfoForStudent(List<String> info) {
         String email = info.get(0);
         String name = info.get(1);
-        for (int i = 0; i < name.length() - 1; i++) {
-            String partOfName = name.substring(i, i + 2);
+
+        Student student = new Student(email, name);
+        List<String> subNames = student.getSubNames();
+
+        for (String partOfName : subNames) {
             if (!INFO_FOR_STUDENTS.containsKey(partOfName)) {
-                Set<String> studentEmails = new HashSet<String>();
-                studentEmails.add(email);
-                INFO_FOR_STUDENTS.put(partOfName, studentEmails);
+                Set<String> emails = new HashSet<>();
+                emails.add(email);
+                INFO_FOR_STUDENTS.put(partOfName, emails);
                 continue;
             }
             INFO_FOR_STUDENTS.get(partOfName).add(email);
