@@ -63,12 +63,12 @@ public class Problem5 {
     }
 
     private static void validateWithdrawMoney(int withdrawMoney) {
-        if(!validateWithdrawMoneyRange(withdrawMoney)) {
+        if(validateWithdrawMoneyRangeFail(withdrawMoney)) {
             throw new IllegalArgumentException(EXCEPTION_MESSAGE_PREFIX + WRONG_WITHDRAW_MONEY_RANGE_EXCEPTION_MESSAGE );
         }
     }
 
-    private static boolean validateWithdrawMoneyRange(int withdrawMoney) {
-        return (withdrawMoney >= MIN_WITHDRAW_MONEY && withdrawMoney <= MAX_WITHDRAW_MONEY);
+    private static boolean validateWithdrawMoneyRangeFail(int withdrawMoney) {
+        return (withdrawMoney < MIN_WITHDRAW_MONEY || withdrawMoney > MAX_WITHDRAW_MONEY);
     }
 }
