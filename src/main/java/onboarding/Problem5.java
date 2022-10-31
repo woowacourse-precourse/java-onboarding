@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -24,6 +25,11 @@ public class Problem5 {
             	nowUnit = nowUnit/2;
             	firstNum = 5;
         	}
+        }
+        
+        answer = new ArrayList<Integer>();
+        for(int transfer : wallet) {
+        	answer.add(transfer);
         }
         
         return answer;
