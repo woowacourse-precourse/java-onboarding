@@ -17,6 +17,7 @@ public class Problem7 {
 
         List<String> answer = new ArrayList<>(scoreMap.keySet());
         sortByMapValueDescending(answer);
+        return limitAnswerNumUnder5(answer);
     }
 
     private static void init(String user) {
@@ -73,4 +74,15 @@ public class Problem7 {
         answer.sort((value1, value2) -> (scoreMap.get(value2).compareTo(scoreMap.get(value1))));
     }
 
+    private static List<String> limitAnswerNumUnder5(List<String> answer) {
+        if (answer.size() < 5) {
+            return answer;
+        } else {
+            List<String> realAnswer = new ArrayList<>();
+            for (int i = 0; i < 5; i++) {
+                realAnswer.add(answer.get(i));
+            }
+            return realAnswer;
+        }
+    }
 }
