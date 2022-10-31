@@ -62,20 +62,14 @@ class Problem1 {
     }
 
     private static boolean checkException(List<Integer> gamer1, List<Integer> gamer2) {
-        // 왼쪽 페이지가 홀수, 오른쪽 페이지가 짝수 인지 검증
-        if(gamer1.get(0) % 2 == 0 || gamer1.get(1) % 2 == 1) {
+        if(!isLeftOddRightEven(gamer1) || !isLeftOddRightEven(gamer2)) {
             return true;
         }
-        if(gamer2.get(0) % 2 == 0 || gamer2.get(1) % 2 == 1) {
+
+        if(notAdjacent(gamer1) || notAdjacent(gamer2)) {
             return true;
         }
-        // 인접한 페이지인지 검증
-        if(gamer1.get(1) - gamer1.get(0) != 1) {
-            return true;
-        }
-        if(gamer2.get(1) - gamer2.get(0) != 1) {
-            return true;
-        }
+
         final int MAX_PAGE = 400;
         final int MIN_PAGE = 1;
         // 시작 면이나 마지막 면이 나오는지 검증
@@ -96,5 +90,23 @@ class Problem1 {
             }
         }
         return false;
+    }
+
+    private static boolean isLeftOddRightEven(List<Integer> gamer) {
+        if(gamer.get(0) % 2 == 0 || gamer.get(1) % 2 == 1) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    private static boolean notAdjacent(List<Integer> gamer) {
+        int leftPage = gamer.get(0);
+        int rightPage = gamer.get(1);
+        if(rightPage - leftPage != 1) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }
