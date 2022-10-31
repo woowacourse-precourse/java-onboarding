@@ -1,6 +1,5 @@
 package onboarding;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /*
@@ -102,16 +101,14 @@ class Problem1 {
     public static int pobiVersusCrong(int pobiValue, int crongValue) {
         if (crongValue == pobiValue) {
             return 0;
-        }
-        else if (crongValue < pobiValue) {
+        } else if (crongValue < pobiValue) {
             return 1;
-        }
-        else if (crongValue > pobiValue) {
+        } else if (crongValue > pobiValue) {
             return 2;
         }
         return -1;
     }
-    
+
     // 예외처리를 위한 메서드
     public static boolean isException(List<Integer> pageList) {
         // 두 페이지 값을 뺏을 때 그 값이 1 이상 차이가 나면 잘못 펼친것이므로 예외
@@ -134,36 +131,5 @@ class Problem1 {
             return pobiVersusCrong(pobiValue, crongValue);
         }
         return -1;
-    }
-
-    public static void main(String[] args) {
-
-        List<Integer> pobi = new ArrayList<>();
-        pobi.add(97);
-        pobi.add(98);
-
-        List<Integer> pobi2 = new ArrayList<>();
-        pobi2.add(131);
-        pobi2.add(132);
-
-        List<Integer> pobi3 = new ArrayList<>();
-        pobi3.add(99);
-        pobi3.add(102);
-
-        List<Integer> crong = new ArrayList<>();
-        crong.add(197);
-        crong.add(198);
-
-        List<Integer> crong2 = new ArrayList<>();
-        crong2.add(211);
-        crong2.add(212);
-
-        List<Integer> crong3 = new ArrayList<>();
-        crong2.add(211);
-        crong2.add(212);
-
-        System.out.println(solution(pobi, crong));
-        System.out.println(solution(pobi2, crong2));
-        System.out.println(solution(pobi3, crong3));
     }
 }
