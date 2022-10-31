@@ -19,8 +19,8 @@ public class Problem4 {
 
         for(int i = 0; i < word.length(); i++){
             String word_i = word.substring(i, i + 1);
-            if(word_i.equals(" ")) {
-                answer += " ";                              //공백은 그대로 공백으로 추가
+            if(alphabet.contains(word_i) == false) {
+                answer += word_i;                              //알파벳 외의 문자는 그대로 추가
             } else {
                 int index = alphabet.indexOf(word_i);       //word 알파벳의 인덱스
                 answer += frog[index];                      //청개구리에 해당하는 알파벳으로 변환
