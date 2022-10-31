@@ -14,6 +14,8 @@ public class Problem7 {
 
         // user의 친구(alreadyFds)와 친구인 사람 찾아서 10점씩 점수 추가
         addFriendsScore(friends, alreadyFds, recommendFds);
+        // visitors에 있는 사람들 1점씩 점수 추가
+        addVisitorsScore(visitors, recommendFds);
 
         return answer;
     }
@@ -53,6 +55,12 @@ public class Problem7 {
                 if (id1.equals(alreadyFd)) recommendFds.put(id2, recommendFds.get(id2) + 10);
                 else if (id2.equals(alreadyFd)) recommendFds.put(id1, recommendFds.get(id1) + 10);
             }
+        }
+    }
+
+    public static void addVisitorsScore(List<String> visitors, HashMap<String, Integer> recommendFds) {
+        for (String visitor : visitors) {
+            recommendFds.put(visitor, recommendFds.get(visitor) + 1);
         }
     }
 }
