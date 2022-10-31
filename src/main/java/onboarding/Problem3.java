@@ -11,7 +11,7 @@ public class Problem3 {
         return answer;
     }
 
-    static int countClap(int number){
+    private static int countClap(int number){
         int count = 0;
         String strNumber = Integer.toString(number);
         int[] arrNumberStr = new int[strNumber.length()];
