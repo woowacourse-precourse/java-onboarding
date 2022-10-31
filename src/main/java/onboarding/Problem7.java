@@ -9,6 +9,8 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
         List<String> myfriend = new ArrayList<String>();
         List<String> friendsfriend = new ArrayList<String>();
+        List<String> visitors_name = new ArrayList<String>();
+
 
         myfriend = find_friend(friends);
         friendsfriend = finds_friend(friends);
