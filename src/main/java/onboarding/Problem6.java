@@ -37,6 +37,7 @@ public class Problem6 {
                 answer.add(forms.get(i).get(0));
             }
         }
+        answer.sort(COMPARATOR);
 
 
         return answer;
