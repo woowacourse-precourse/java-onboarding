@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -12,6 +13,7 @@ public class Problem5 {
     }
 
     public static void initMoneyList(){
+        moneyList = new ArrayList<>();
         moneyList.add(50000);
         moneyList.add(10000);
         moneyList.add(5000);
