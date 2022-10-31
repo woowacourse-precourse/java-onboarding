@@ -18,7 +18,7 @@ class Crew {
     /**
      * 크루의 이메일과 닉네임을 초기화하는 생성자
      *
-     * @param email 크루의 이메일
+     * @param email    크루의 이메일
      * @param nickname 크루의 닉네임
      */
     public Crew(String email, String nickname) {

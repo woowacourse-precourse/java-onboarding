@@ -75,7 +75,7 @@ public class CrewDuplicateNicknameService {
     /**
      * 크루의 닉네임 중 연속적인 2글자가 중복되는지 확인하는 메소드
      *
-     * @param crew 중복 닉네임 유무를 확인하기 위한 크루
+     * @param crew           중복 닉네임 유무를 확인하기 위한 크루
      * @param partOfNickname 크루의 닉네임 중 연속적인 2글자
      */
     private void validateDuplicateNickname(Crew crew, String partOfNickname) {
@@ -89,7 +89,7 @@ public class CrewDuplicateNicknameService {
     /**
      * 중복된 크루의 이메일을 저장하는 메소드
      *
-     * @param duplicateCrew 중복된 닉네임을 가진 크루
+     * @param duplicateCrew         중복된 닉네임을 가진 크루
      * @param duplicateCrewNickname 중복된 닉네임을 가진 크루의 이메일
      */
     private void addDuplicateCrewEmail(Crew duplicateCrew, String duplicateCrewNickname) {
@@ -111,7 +111,7 @@ public class CrewDuplicateNicknameService {
      * 크루의 닉네임 중 연속적인 2글자를 구하는 메소드
      *
      * @param nickname 크루의 닉네임
-     * @param index 현재 크루의 닉네임 인덱스
+     * @param index    현재 크루의 닉네임 인덱스
      * @return 크루의 닉네임 중 연속적인 2글자
      */
     private String calculatePartOfNickname(String nickname, int index) {
