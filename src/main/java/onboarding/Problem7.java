@@ -126,7 +126,7 @@ public class Problem7 {
     private static List<String> sortByPointAndId(HashMap<String, Integer> friendPoints) {
         List<String> sortedList = new ArrayList<>(friendPoints.keySet());
         sortedList.sort((userA, userB) -> {
-            if(friendPoints.get(userA) == friendPoints.get(userB)) {
+            if(friendPoints.get(userA).equals(friendPoints.get(userB))) {
                 return userA.compareTo(userB);
             }
             return friendPoints.get(userB) - friendPoints.get(userA);
