@@ -9,7 +9,10 @@ class Problem1 {
     }
 
     private static boolean validateCondition(List<Integer> pobi, List<Integer> crong) {
-        return false;
+        return isRightLength(pobi, crong)
+                && isRightPage(pobi, crong)
+                && isRightEvenOddPage(pobi, crong)
+                && isNotFirstOrLastPage(pobi, crong);
     }
 
     private static boolean isRightLength(List<Integer> pobi, List<Integer> crong) {
