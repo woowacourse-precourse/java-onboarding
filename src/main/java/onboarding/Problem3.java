@@ -2,6 +2,11 @@ package onboarding;
 
 public class Problem3 {
 
+    public static final char THREE = '3';
+    public static final char SIX = '6';
+    public static final char NINE = '9';
+    public static final char[] NUMBERS = {THREE, SIX, NINE};
+    public static final int START_NUMBER = 1;
 
     /**
      * @param number : 0-9 사이 문자 숫자
@@ -22,7 +27,7 @@ public class Problem3 {
         int strSize = str.length();
         int claps = 0;
         for (int i = 0; i < strSize; i++) {
-            if (str.charAt(i) == '3' || str.charAt(i) == '6' || str.charAt(i) == '9') {
+            if (isClapNumber(str.charAt(i))) {
                 claps++;
             }
         }
@@ -31,7 +36,7 @@ public class Problem3 {
 
     public static int solution(int number) {
         int answer = 0;
-        for (int i = 1; i <= number; i++) {
+        for (int i = START_NUMBER; i <= number; i++) {
             answer += getClapsByNumber(i);
         }
         return answer;
