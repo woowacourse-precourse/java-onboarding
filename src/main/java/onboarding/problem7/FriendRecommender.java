@@ -26,7 +26,7 @@ public class FriendRecommender {
             }
         }
 
-        return new ArrayList<>();
+        return sortByValueAndName(recommendList);
     }
 
     private static void separateFriends(List<String> friendship, String user, List<String> userFriends, List<List<String>> anotherRelation) {
@@ -72,5 +72,20 @@ public class FriendRecommender {
         if (!recommendList.containsKey(recommendFriend)) {
             recommendList.put(recommendFriend,point);
         }
+    }
+
+    private static List<String> sortByValueAndName (HashMap<String, Integer> recommendList) {
+        List<Map.Entry<String, Integer>> list = new LinkedList<>(recommendList.entrySet());
+
+        Collections.sort(list, new FriendComparator());
+
+        List<String> recommendFriends = new ArrayList<>();
+        for (Map.Entry<String, Integer> map : list) {
+            if (recommendFriends.size() >= 5) {
+                break;
+            }
+            recommendFriends.add(map.getKey());
+        }
+        return recommendFriends;
     }
 }
