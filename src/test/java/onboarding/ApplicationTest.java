@@ -248,6 +248,22 @@ class ApplicationTest {
 
       assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
     }
+
+    @Test
+    void checkTmpError() {
+      String result = "brnown";
+      String cryptogram = "brooonown";
+
+      assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+    }
+
+    @Test
+    void checkEmptyError() {
+      String result = "rnown";
+      String cryptogram = "bbrooonown";
+
+      assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+    }
   }
 
   @Nested
