@@ -100,5 +100,15 @@ class Problem6Test {
                 }
             }
         }
+
+        @Test
+        @DisplayName("getTwoLetterListFromNickname 메소드는 닉네임을 두 글자로 분리한 리스트를 반환한다. ")
+        void getTwoLetterListFromNicknameTest() {
+            nickname = "크로롱";
+            email = "Crorong@email.com";
+            Crew crew = new Crew(email, nickname);
+            List<String> twoLetterListFromNickname = List.of("크로", "로롱");
+            assertThat(crew.getTwoLetterListFromNickname()).isEqualTo(twoLetterListFromNickname);
+        }
     }
 }
