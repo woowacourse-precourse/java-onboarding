@@ -10,23 +10,41 @@ public class Problem6 {
         List<String> mailList = new ArrayList<>();
         List<List<String>> nameList = new ArrayList<>();
 
-        String email;
-        String name;
-
 
         for (int i = 0; i < forms.size(); i++) {
-            email=forms.get(i).get(0);
+            String email = forms.get(i).get(0);
+            String name = forms.get(i).get(1);
             mailList.add(email);
-            name = forms.get(i).get(1);
 
             String[] stringArr = name.split("");
             List<String> stringList = List.of(stringArr);
             nameList.add(stringList);
         }
 
+        List<List<String>> CombinationListList = new ArrayList<>();
+        for (int i = 0; i < forms.size(); i++) {
+            List<String> split = nameList.get(i);
+            List<String> combinationList = new ArrayList<>();
+            for (int j = 0; j < split.size() - 1; j++) {
+                String combination = split.get(j) + split.get(j + 1);
+                combinationList.add(combination);
+            }
+            CombinationListList.add(combinationList);
+        }
 
-
-
+        for (int person = 0; person < forms.size(); person++) {
+            List<String> flatten = new ArrayList<>();
+            List<String> nameCombination = CombinationListList.get(person);
+            for (int another = 0; another < forms.size(); another++) {
+                if (person == another)
+                    continue;
+                flatten.addAll(CombinationListList.get(another));
+            }
+            for (String str : nameCombination) {
+                if (flatten.contains(str))
+                    answer.add(mailList.get(person));
+            }
+        }
 
         return answer;
     }
