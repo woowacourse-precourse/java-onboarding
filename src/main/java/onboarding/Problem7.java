@@ -159,6 +159,9 @@ public class Problem7 {
             }
         }
 
+        /*
+        * 방문객의 점수를 더한다.
+        * */
         private void addVisitorPoint(String visitor){
             if(!connectMap.get(user).contains(visitor)) {
                 distance.put(visitor, distance.getOrDefault(visitor, DEFAULT_VALUE)
