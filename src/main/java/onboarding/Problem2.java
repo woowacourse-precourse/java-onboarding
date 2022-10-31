@@ -7,18 +7,20 @@ public class Problem2 {
         String D_password = "";
         char before = ' ';
         char now_char = ' ';
+        char next_char = ' ';
 
         if(password.length()<=1){
             return password;
         }
         for(int i = 0 ; i < password.length() ; i++){
             now_char = password.charAt(i);
+            next_char = password.charAt(i + 1);
             if(i == password.length()-1){
                 if(Character.compare(before, now_char) != 0){
                     D_password += now_char;
                 }
             }
-            else if(Character.compare(now_char,password.charAt(i+1)) !=0 ){
+            else if(Character.compare(now_char, next_char) !=0 ){
                 if(Character.compare(before, now_char) !=0 ){
                     D_password += now_char;
                 }
