@@ -12,10 +12,8 @@ public class Problem4 {
         List<String> resultList = new ArrayList<String>();
         for (String e : wordList) {
             resultList.add(convertLetter(e));
-            System.out.println(resultList);
         }
-        String result = resultList.toString();
-        System.out.println(result);
+        String result = String.join("", resultList);
         return result;
     }
 
