@@ -33,17 +33,28 @@ public class Problem7 {
         return friend_map;
     }
 
-    // 친구 Map으로 사용자를 제외한 다른 친구들의 점수 Map을 만드는 함수
+    // 친구 Map으로 사용자와 사용자 친구를 제외한 다른 친구들의 점수 Map을 만드는 함수
     public static Map<String, Integer> make_score_map(String user, Map<String, List<String>> friend_map) {
         Map<String, Integer> result = new HashMap<String, Integer>();
 
         List<String> user_friends = friend_map.get(user);
 
+        List<String> user_or_user_friends = user_friends;
+        user_or_user_friends.add(user);
+
         Iterator<String> keys = friend_map.keySet().iterator();
         while (keys.hasNext()) {
             String key = keys.next();
 
-            if (!key.equals(user)) {
+            Boolean check_user_or_friend = false;
+
+            for (String user_or_user_friend : user_or_user_friends) {
+                if (key.equals(user_or_user_friend)) {
+                    check_user_or_friend = true;
+                }
+            }
+
+            if (!check_user_or_friend) {
                 int score = 0;
 
                 for (String friend : friend_map.get(key)) {

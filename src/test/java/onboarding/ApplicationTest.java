@@ -225,6 +225,7 @@ class ApplicationTest {
                     List.of("bedi", "jun"),
                     List.of("bedi", "donut"),
                     List.of("donut", "jun"),
+                    List.of("donut", "mrko"),
                     List.of("shakevan", "andole"),
                     List.of("jun", "andole"),
                     List.of("shakevan", "jun"),
