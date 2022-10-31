@@ -43,6 +43,10 @@ public class Problem7 {
         	}
         }
         
+        candidatesMap.remove(user);
+        for(String userFriend : friendMap.get(user)) {
+        	candidatesMap.remove(userFriend);
+        }
         return answerList;
     }
 }
