@@ -84,6 +84,14 @@ class ApplicationTest {
             int result = 14;
             assertThat(Problem3.solution(number)).isEqualTo(result);
         }
+
+        @Test
+        void number_범위_예외처리() {
+            int number = 10_0000;
+            Assertions.assertThrows(IllegalArgumentException.class, () -> {
+                Problem3.solution(number);
+            });
+        }
     }
 
     @Nested
