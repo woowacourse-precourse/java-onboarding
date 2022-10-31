@@ -10,6 +10,15 @@ public class Problem5 {
         List<Integer> result = Arrays.asList(0, 0, 0, 0, 0, 0, 0, 0, 0);
         int[] currencies = {50_000, 10_000, 5_000, 1_000, 500, 100, 50, 10, 1};
 
+        int numCurrency;
+        int idx = 0;
+        while (money > 0) {
+            numCurrency = money / currencies[idx];
+            result.set(idx, numCurrency);
+            money %= currencies[idx];
+            idx++;
+        }
+
         return result;
     }
 }
