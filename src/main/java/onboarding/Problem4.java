@@ -1,6 +1,5 @@
 package onboarding;
 
-import onboarding.support.problem4.Constants;
 import onboarding.support.problem4.DictionaryConverter;
 
 public class Problem4 {
