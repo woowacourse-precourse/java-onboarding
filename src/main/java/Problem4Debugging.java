@@ -1,15 +1,18 @@
-package onboarding;
 
-public class Problem4 {
-    public static String solution(String word) {
+
+public class Problem4Debugging {
+
+
+
+    public static void main(String[] args) {
+        String word = "I love you";
         String answer = "";
-
         int wordLength = word.length();
-
-        if (wordLength<1 || wordLength >1000){
+        if(wordLength < 1 || wordLength > 1000){
             System.out.println("Please, Enter between 1 ~ 1000 words length");
-            return word;
         }
+
+
 
 
         while (wordLength > 0 ) {
@@ -49,8 +52,8 @@ public class Problem4 {
 
 
 
-
-
-        return answer;
     }
+
+
+
 }
