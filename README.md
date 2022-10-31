@@ -3,7 +3,8 @@
 아래의 7가지 기능 요구 사항을 모두 해결해야 한다.
 - [x] [문제 1](./docs/PROBLEM1.md)
 - [문제 1 풀이](./src/main/java/onboarding/Problem1.java) 
-- [ ] [문제 2](./docs/PROBLEM2.md)
+- [x] [문제 2](./docs/PROBLEM2.md)
+- [문제 2 풀이](./src/main/java/onboarding/Problem2.java)
 - [ ] [문제 3](./docs/PROBLEM3.md)
 - [ ] [문제 4](./docs/PROBLEM4.md)
 - [ ] [문제 5](./docs/PROBLEM5.md)
@@ -30,3 +31,6 @@
 - [x] 문자열 유효 체크 - 길이
 - [x] 문자열 유효 체크 - 소문자
 - [x] 중복 문자 삭제
+### 문제 2
+- [x] 숫자 유효 체크 - 범위
+- [ ] solution
