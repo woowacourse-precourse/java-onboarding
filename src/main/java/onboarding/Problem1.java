@@ -61,4 +61,14 @@ class Problem1 {
         int finalResult = Collections.max(resultList);
         return finalResult;
     }
+
+    private static Boolean checkPageValidation(List<Integer> inputList) {
+        int firstPage = inputList.get(0);
+        int secondPage = inputList.get(1);
+        if (secondPage == firstPage + 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
