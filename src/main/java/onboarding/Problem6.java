@@ -72,9 +72,6 @@ public class Problem6 {
 
         for (int idx: indexSet) {
             String email = forms.get(idx).get(0);
-            int splitIdx = email.indexOf('@');
-            email = email.substring(0, splitIdx);
-
             duplicateStudentList.add(new Student(email, idx));
         }
 
