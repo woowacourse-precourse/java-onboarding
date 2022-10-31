@@ -19,7 +19,7 @@ public class FriendRecommender {
         List<String> result = new ArrayList<>();
         int resultSize = 0;
         for (Map.Entry<String, Integer> recommendFriend : friendsScoreList) {
-            if (resultSize >= MAX_RECOMMEND_SIZE) {
+            if (resultSize >= MAX_RECOMMEND_SIZE || recommendFriend.getValue() == 0) {
                 break;
             }
             result.add(recommendFriend.getKey());
