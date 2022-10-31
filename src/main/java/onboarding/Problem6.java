@@ -21,10 +21,10 @@ public class Problem6 {
                 String twoWords = nickname.substring(j, j+2);
                 int index = getIndexOfExistNickname(existNicknameMap, twoWords);
 
-                if(index == -1)
+                if(validNickname(index))
                     existNicknameMap.put(twoWords, i);
 
-                if(index != -1) {
+                if(!validNickname(index)) {
                     emailSet.add(getEmailByIndex(forms, i));
                     emailSet.add(getEmailByIndex(forms, index));
                 }
@@ -42,6 +42,10 @@ public class Problem6 {
             return existNicknameMap.get(twoWords);
 
         return -1;
+    }
+
+    public static boolean validNickname(int index) {
+        return index == -1;
     }
 
     public static String getEmailByIndex(List<List<String>> forms, int index) {
