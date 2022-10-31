@@ -51,6 +51,7 @@ class ApplicationTest {
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
 
+        // 추가한 테스트 케이스
         @Test
         void case3(){
             String cryptogram = "abbaa";
