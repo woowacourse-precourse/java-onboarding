@@ -17,7 +17,7 @@ public class Problem7 {
         ScoreService scoreService = new ScoreService(userRepository, friendRepository, visitorRepository);
 
         userService.saveAll(user, friends, visitors);
-        userService.addFriends(friends);
+        userService.saveFriends(friends);
         userService.saveVisitor(user, visitors);
 
         List<User> recommendList = scoreService.getRecommendList(user);

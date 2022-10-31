@@ -29,17 +29,17 @@ public class UserService {
         return userRepository.findAll();
     }
 
-    public void addFriends(List<List<String>> friends) {
+    public void saveFriends(List<List<String>> friends) {
         for (List<String> friend : friends) {
             User firstUser = userRepository.findByUsername(friend.get(0));
             User secondUser = userRepository.findByUsername(friend.get(1));
 
-            saveAllFriends(firstUser, secondUser);
+            saveAllFriendRelation(firstUser, secondUser);
         }
 
     }
 
-    private void saveAllFriends(User firstUser, User secondUser) {
+    private void saveAllFriendRelation(User firstUser, User secondUser) {
         if (friendRepository.isNotSavedUser(firstUser)) {
             friendRepository.save(firstUser, new Friends(secondUser));
         }

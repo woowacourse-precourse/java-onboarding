@@ -27,8 +27,8 @@ public class Friends {
         return new ArrayList<>(friends);
     }
 
-    public boolean isNotFriend(User visitor) {
-        return !friends.contains(visitor);
+    public boolean isNotFriend(User user) {
+        return !friends.contains(user);
     }
 
 }
