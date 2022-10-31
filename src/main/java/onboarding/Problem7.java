@@ -45,8 +45,10 @@ public class Problem7 {
                 .sorted((key1, key2) -> {
                     return relationScore.get(key2) - relationScore.get(key1);
                 })
+                .filter((key)->{
+                    return !friendShip.get(user).contains(key) && !key.equals(user);
+                })
                 .filter((key) -> {
-                    System.out.println(relationScore.get(key));
                     return relationScore.get(key) != 0;
                 })
                 .limit(5)
