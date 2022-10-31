@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
@@ -46,6 +47,43 @@ class Problem1 {
 
         public List<Integer> getPages() {
             return pages;
+        }
+    }
+
+    static class ScoreCalculator {
+        private ScoreCalculator() {
+        }
+
+        private static int getScore(Book book) {
+            Integer leftPage = book.getPages().get(0);
+            Integer rightPage = book.getPages().get(1);
+
+            List<Integer> leftNumbers = getNumberList(leftPage);
+            List<Integer> rightNumbers = getNumberList(rightPage);
+
+            int leftScore = Math.max(sumNumbers(leftNumbers), mulNumbers(leftNumbers));
+            int rightScore = Math.max(sumNumbers(rightNumbers), mulNumbers(rightNumbers));
+            return Math.max(leftScore, rightScore);
+        }
+
+        private static List<Integer> getNumberList(Integer number) {
+            List<Integer> numbers = new ArrayList<>();
+            Integer mod = 1;
+            while ((number / mod) != 0) {
+                numbers.add((number / mod) % 10);
+                mod *= 10;
+            }
+            return numbers;
+        }
+
+        private static Integer sumNumbers(List<Integer> numbers) {
+            return numbers.stream()
+                    .reduce(0, Integer::sum);
+        }
+
+        private static Integer mulNumbers(List<Integer> numbers) {
+            return numbers.stream()
+                    .reduce(1, (a, b) -> a * b);
         }
     }
 }
