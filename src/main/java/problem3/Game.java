@@ -29,12 +29,12 @@ public class Game {
     }
 
     private void countClap(String compareNumber, int index) {
-        if(containNumber(compareNumber, index)) {
+        if(hasNumber(compareNumber, index)) {
             clap += 1;
         }
     }
 
-    private boolean containNumber(String compareNumber, int index) {
+    private boolean hasNumber(String compareNumber, int index) {
         return clapNumbers.contains(compareNumber.charAt(index));
     }
 }
