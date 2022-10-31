@@ -19,7 +19,7 @@ public class Problem3 {
         int answer = 0;
         int digitLength = 1;
         for (int num = 1; num <= number; num++) {
-            if (isBiggerDigitIdx(num, digitLength)) digitLength++;
+            if (isBiggerDigitLength(num, digitLength)) digitLength++;
             /* 자리수 갯수만큼 반복하며 각 자리수에 대해 반복 */
             for (int digit = 1; digit <= digitLength; digit++) {
                 int digitMask = (int) Math.pow(10, digit - 1);
@@ -30,8 +30,8 @@ public class Problem3 {
         return answer;
     }
 
-    static boolean isBiggerDigitIdx(int number, int digitIdx) {
-        return number >= Math.pow(10, digitIdx);
+    static boolean isBiggerDigitLength(int number, int digitLength) {
+        return number >= Math.pow(10, digitLength);
     }
 
     static boolean isOneDigitNumber(int digitMask) {
