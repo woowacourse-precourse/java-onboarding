@@ -90,3 +90,9 @@ BUILD SUCCESSFUL in 0s
   1.2 10진수를 유지하도록 처리  
 2. 표현하는 숫자의 3,6,9 포함여부 판단  
   2.1 3,6,9를 포함하는 갯수만큼 answer에 1을 증가  
+    
+**문제 4**  
+1. 입력값 StringBuilder로 변환  
+2. 글자를 청개구리 사전을 따라 다른 글자로 변환  
+3. StringBuilder를 String으로 변환하여 결괏값 리턴  
+   
