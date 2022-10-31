@@ -21,3 +21,42 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+# 🚀 Problem6
+
+# ✅ 알고리즘 로직 순서
+
+- 아래서부터 차례로 로직 구현
+
+1. forms 사이즈가 1이하면, 빈 배열 반환
+2. forms 배열 순회
+- 처음 순회시 멤버 정보 memberRepository 에 저장후 continue
+- "memberRepository 에 있는 멤버 이름"과 "순회하는 forms 의 멤버이름"과 중복된 문자열이 있는지 비교
+    - 있으면 emailHashSet 에 중복된 멤버 이메일 저장
+- 위의 로직 수행하면서, forms 의 멤버 정보를 memberRepository 에 저장
+3. emailHashSet 이름순으로 정렬후 반환
+
+
+
+# 📈 기능 목록
+
+## 구현 기능 목록
+
+### ✅ 멤버 정보 저장하는 클래스 생성
+
+- [] 멤버 정보 내역
+    - 이메일, 이름 정보 저장
+  
+### ✅ 연속된 문자를 가지고 있는지 확인하는 기능
+
+- [] 문자열 2개를 받고 문자열이 연속된 문자를 가지고 있는지 확인하는 기능
+
+
+
+
+
+
+
+
+
+

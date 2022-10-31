@@ -24,3 +24,66 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+
+
+
+# 🚀 Problem7
+
+# 알고리즘 로직 순서
+
+- 아래서부터 차례로 로직 구현
+  (여기서 user는 넘어온 매개변수이고 유저는 사용자를 의미한다)
+
+1. "친구목록 저장 리포지토리에 유저 추가
+
+2. friends 배열 순회하면서
+- "친구목록 저장 리포지토리"에 사용자및 사용자 친구 저장
+
+3. user 친구들이 사용자와 아는 친구가 있는지 있는지 체크
+- 만약 있으면 scoreMap 점수 갱신 ( +10 점 )
+
+4. 방문자 목록을 순회 하면서, 방문한 사람들 점수 갱신 ( +1 점 )
+
+5. "친구목록 저장 리포지토리"에서 user와 user 친구들 제거
+
+6. "친구목록 저장 리포지토리"에서 점수 상위 5명을 추리고 리스트로 반환
+
+# 📈 기능 목록
+
+## 구현 기능 목록
+
+### ✅ 사용자 정보 객체 구현 (Member 클래스)
+
+- [X] 이름 , 점수 필드 생성, 친구 리스트 필드 구현 및 각 필드의 getter 구현
+- [X] 점수 업데이트 메서드 구현
+
+### ✅ 친구목록 저장 리포지토리 기능 구현 (MemberRepository 구현)
+
+- [X] Map 형식으로 key는 사용자 이름, value는 해당 유저 클래스 
+- [X] 유저 및 친구 추가 메서드 (addFriend)
+- [X] 유저 삭제 메서드 (deleteMember)
+- [X] MemberRepository 에 해당 유저 있는지 확인 메서드 (containUsername)
+- [X] 유저 이름을 가진 Member 객체 반환 (findMemberByUsername)
+- [X] MemberRepository 에 있는 멤버 목록 arraylist로 반환하는 메서드 (findAll)
+- [X] 유저 이름으로 해당 유저의 친구 목록 반환하는 메서드 (findFriendListByUsername)
+
+
+### ✅ 방문자에 따른 유저별 점수 업데이트 기능
+
+- [X] 방문자에 따른 유저별 점수 업데이트 기능
+
+### ✅ 사용자와 함께 아는 친구의 수에 따른 유저별 점수 업데이트 기능
+
+- [X] 사용자와 함께 아는 친구의 수에 따른 유저별 점수 업데이트 기능
+
+### ✅ 사용자의 직접적인 친구들 점수 리스트에서 제거
+
+- [X] 사용자의 직접적인 친구들 점수 리스트에서 제거
+
+
+
+
+
+
+
