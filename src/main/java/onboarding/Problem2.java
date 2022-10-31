@@ -15,9 +15,18 @@ public class Problem2 {
     private static final String LOWERCASE = "^[a-z]*$";
 
     public static String solution(String cryptogram) {
+        isProperCryptogram(cryptogram);
         return decodingCryptogram(cryptogram);
     }
 
+    private static void isProperCryptogram(String cryptogram){
+        if (!cryptogram.matches(LOWERCASE)) {
+            throw new IllegalArgumentException();
+        }
+        if(cryptogram.length()<MIN_LENGTH || cryptogram.length()>MAX_LENGTH) {
+            throw new IllegalArgumentException();
+        }
+    }
 
     private static String decodingCryptogram(String cryptogram) {
         Stack stack = new Stack<>();
