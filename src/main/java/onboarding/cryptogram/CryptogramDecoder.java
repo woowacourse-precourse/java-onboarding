@@ -12,22 +12,22 @@ public class CryptogramDecoder {
 
 	private static final String REPEATED_REMOVAL_REGEX = "(\\w)\\1+";
 
-	public static boolean validateLength(final String cryptogram) {
+	static boolean validateLength(final String cryptogram) {
 		int length = cryptogram.length();
 		return MIN_LENGTH <= length && length <= MAX_LENGTH;
 	}
 
-	public static boolean isValidFormat(final String cryptogram) {
+	static boolean isValidFormat(final String cryptogram) {
 		return cryptogram != null
 			&& validateLength(cryptogram)
 			&& cryptogram.matches(FORMAT_REGEX);
 	}
 
-	public static boolean containsRepetitions(final String cryptogram) {
+	static boolean containsRepetitions(final String cryptogram) {
 		return cryptogram.matches(REPEATED_REGEX);
 	}
 
-	public static String removeRepetitions(final String cryptogram) {
+	static String removeRepetitions(final String cryptogram) {
 		return cryptogram.replaceAll(REPEATED_REMOVAL_REGEX, "");
 	}
 
