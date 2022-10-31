@@ -25,11 +25,27 @@ public class Problem2 {
                 break;
             }
 
-
             if (remove_dupicate_list.get(i) == remove_dupicate_list.get(i + 1)) {
-                remove_dupicate_list.remove(i);
-                remove_dupicate_list.remove(i);
+                int temp_index = i;
+                int duplicate_count = 1;
+
+                while (remove_dupicate_list.get(temp_index) == remove_dupicate_list.get(temp_index + 1)) {
+                    temp_index += 1;
+                    duplicate_count += 1;
+                    if (temp_index + 1 == remove_dupicate_list.size()) {
+                        break;
+                    }
+                }
+
+                for (int count = 0; count < duplicate_count; count++) {
+                    remove_dupicate_list.remove(i);
+                }
+
                 i = i - 2;
+
+                if (i == -2) {
+                    i = i + 1;
+                }
             }
         }
 
