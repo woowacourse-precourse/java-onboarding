@@ -1,6 +1,8 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 public class Problem7 {
@@ -8,6 +10,34 @@ public class Problem7 {
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 		List<String> answer = Collections.emptyList();
 		return answer;
+	}
+
+	public static void getRecommendFriends(String user, List<List<String>> friends, List<String> visitors) {
+		InputValidator.checkRightInput(user, friends, visitors);
+		HashMap<String, List<String>> friendsRelations = getFriendsRelations(friends, user);
+	}
+
+	public static HashMap<String, List<String>> getFriendsRelations(final List<List<String>> friends, String user) {
+		HashMap<String, List<String>> relations = new HashMap<>();
+		relations.put(user, new ArrayList<>(List.of()));
+		for (List<String> friend : friends) {
+			String friend1 = friend.get(0);
+			String friend2 = friend.get(1);
+			putFriendsRelationsMap(relations, friend1, friend2);
+			putFriendsRelationsMap(relations, friend2, friend1);
+		}
+		return relations;
+	}
+
+	private static void putFriendsRelationsMap(HashMap<String, List<String>> relations, String friend1,
+		String friend2) {
+		if (relations.containsKey(friend1)) {
+			List<String> relation = relations.get(friend1);
+			relation.add(friend2);
+			relations.put(friend1, relation);
+		} else {
+			relations.put(friend1, new ArrayList<>(List.of(friend2)));
+		}
 	}
 
 	static class InputValidator {
