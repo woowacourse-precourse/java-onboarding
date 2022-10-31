@@ -38,4 +38,10 @@ class Problem1 {
         }
         return pagenumberMultiply;
     }
+    public static int decideBiggest(int number1, int number2){
+        if(number1 > number2){
+            return number1;
+        }
+        return number2;
+    }
 }
