@@ -40,6 +40,9 @@ public class Problem6 {
                 .distinct()
                 .collect(Collectors.toList());
         // 3. index 로 이메일 값 가져옴
+        for (Integer integer : notDuplicationIndex) {
+            answer.add(forms.get(integer).get(0));
+        }
         // 4. 사전순 정렬
 
         return answer;
