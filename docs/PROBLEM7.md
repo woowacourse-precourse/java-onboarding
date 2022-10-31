@@ -29,7 +29,7 @@
 
 ## 📋 기능 목록
 
-- [ ] 사용자의 가까운 친구를 찾는다. → `findCloseFriends()`
+- [x] 사용자의 가까운 친구를 찾는다. → `findCloseFriends()`
 - [ ] 사용자의 먼 친구(함께 아는 친구)를 찾는다. → `findDistantFriends()`
 - [ ] 추천 점수를 부여한다.
     - [ ] 먼 친구 : +10점 → `addDistantFriendScore()`
