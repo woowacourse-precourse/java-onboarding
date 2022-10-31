@@ -15,9 +15,18 @@ class Problem1 {
         }
         int pobimax = Math.max(calculate(pobi.get(0)), calculate(pobi.get(1)));
         int crongmax = Math.max(calculate(crong.get(0)), calculate(crong.get(1)));
+        if (pobimax > crongmax) {
+            answer = 1;
+        } else if (pobimax < crongmax) {
+            answer = 2;
+        } else
+            answer = 0;
 
-
+        return answer;
     }
+
+
+}
 
     public static int calculate(int n) {
         int sum = 0;
