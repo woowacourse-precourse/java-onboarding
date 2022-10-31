@@ -31,9 +31,22 @@ public class Problem4 {
         return result;
     }
 
-    
     public static String solution(String word) {
         String answer = "";
+        for (int i = 0, n = word.length(); i < n; i++) {
+            char c = word.charAt(i);
+            if (checkNotAlphabet(c)) {
+                answer += c;
+                continue;
+            }
+            if (checkLowerCase(c)) {
+                char changedChar = toLowerCase(c);
+                answer += changedChar;
+                continue;
+            }
+            char changedChar = changeFrog(c);
+            answer += changedChar;
+        }
         return answer;
     }
 }
