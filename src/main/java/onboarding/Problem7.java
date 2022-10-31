@@ -24,4 +24,16 @@ public class Problem7 {
 
         userFriends.remove(user);
     }
+
+    private static void increaseOnePersonScore(String person, Integer score) {
+        if (userFriends.contains(person)) {
+            return;
+        }
+        if (recommendScoreMap.containsKey(person)) {
+            int scoreOfPerson = recommendScoreMap.get(person);
+            recommendScoreMap.put(person, scoreOfPerson + score);
+        } else {
+            recommendScoreMap.put(person, score);
+        }
+    }
 }
