@@ -26,8 +26,34 @@ public class Decoder {
     public String decode() {
         Stack<Character> plainStack = new Stack<>();
         plainStack.push(CIPHERTEXT.charAt(0));
-        // Treat duplication and create plain stack
+        treatDuplication(plainStack);
         // Build plain text with stack
         return "";
+    }
+
+    /**
+     * Search continuous duplication and remove treat
+     *
+     * @param plainStack non duplicated character stack
+     */
+    private void treatDuplication(Stack<Character> plainStack) {
+        boolean duplicate = false;
+        for (int i = 1; i < CIPHERTEXT.length(); i++) {
+            char c = CIPHERTEXT.charAt(i);
+
+            if (plainStack.peek() == c) {
+                duplicate = true;
+            } else if (duplicate) {
+                plainStack.pop();
+                duplicate = false;
+                i--;
+            } else {
+                plainStack.push(c);
+            }
+        }
+
+        if (duplicate) {
+            plainStack.pop();
+        }
     }
 }
