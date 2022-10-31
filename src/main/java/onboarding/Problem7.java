@@ -58,6 +58,9 @@ public class Problem7 {
                 filter(acquaintance -> !acquaintance.equals(user)).collect(Collectors.toList());
     }
 
+    public static void plusVisitorScore(List<String> visitors){
+        visitors.stream().forEach(visitor -> putScoreMap(visitor, 1));
+    }
 
 }
 
