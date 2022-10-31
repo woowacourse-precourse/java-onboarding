@@ -17,7 +17,11 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         FriendsRelation totalFriendsRelation = new FriendsRelation(friends);
         Set<String> userFriends = totalFriendsRelation.get(user);
-        Set<String> friendOfFriend = totalFriendsRelation.get(userFriends);
+        Set<String> friendsOfFriends = totalFriendsRelation.get(userFriends);
+
+        FriendRecommendedScore friendRecommendedScore =
+                new FriendRecommendedScore(user, userFriends, friendsOfFriends, visitors);
+
         List<String> answer = Collections.emptyList();
         return answer;
     }
@@ -56,5 +60,30 @@ class FriendsRelation {
         }
 
         return friendOfFriend;
+    }
+}
+
+class FriendRecommendedScore {
+    private final Map<String, Integer> totalRecommendedMap = new HashMap<>();
+
+    public FriendRecommendedScore(String user, Set<String> userFriends, Set<String> friendOfFriend, List<String> visitors) {
+        for (String friendsOfFriend : friendOfFriend) {
+            raiseScore(friendsOfFriend, 10);
+        }
+
+        for (String visitor : visitors) {
+            raiseScore(visitor, 1);
+        }
+
+        for (String userFriend : userFriends) {
+            notRecommended(userFriend);
+        }
+
+        notRecommended(user);
+    }
+
+    private void raiseScore(String user, int point) {
+        int nowScore = totalRecommendedMap.getOrDefault(user, 0);
+        totalRecommendedMap.put(user, nowScore + point);
     }
 }
