@@ -128,6 +128,7 @@ public class Problem7 {
         }
 
         List<String> keySet_list = new ArrayList<>(friends_score.keySet());
+        Collections.sort(keySet_list);
 
         Collections.sort(keySet_list, (o1, o2) -> (friends_score.get(o2).compareTo(friends_score.get(o1))));
         for(String key : keySet_list) {
