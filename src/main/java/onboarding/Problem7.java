@@ -71,7 +71,16 @@ public class Problem7 {
         }
 
         while (flag) {
+            for (int i = 0; i < recomList.size()-1; i++) {
+                if (recomScore.get(i) < recomScore.get(i+1)) {
+                    Collections.swap(recomList, i, i+1);
+                    Collections.swap(recomScore, i, i+1);
+                }
+            }
 
+            for (int j = 0; j < recomScore.size()-1; j++) {
+                if (recomScore.get(j) >= recomScore.get(j+1)) flag = false;
+            }
         }
 
 
