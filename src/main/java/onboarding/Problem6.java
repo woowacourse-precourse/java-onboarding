@@ -15,7 +15,7 @@ public class Problem6 {
     }
 
     public static List<String> getTwoWords(List<List<String>> forms) {
-        List<String> list = new ArrayList<>();
+        List<String> twoWords = new ArrayList<>();
 
         for (List<String> form : forms) {
             String nickname = form.get(1);
@@ -23,11 +23,11 @@ public class Problem6 {
             if (nickname.length() == 1) continue;
 
             for (int j = 0; j < nickname.length() - 1; j++) {
-                list.add(nickname.substring(j, j + 2));
+                twoWords.add(nickname.substring(j, j + 2));
             }
         }
 
-        return list;
+        return twoWords;
     }
 
     public static Set<String> findDuplicatedWords(List<String> twoWords) {
