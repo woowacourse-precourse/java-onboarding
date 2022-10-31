@@ -4,9 +4,30 @@ public class Problem4 {
     public static String solution(String word) {
         String answer = "";
 
+        answer = convertMomWord(word);
+
         return answer;
     }
 
+    /**
+     * DESCRIPTION
+     *   전달받은 엄마 말씀을 청개구리 말로 변환하는 기능
+     *
+     * Params
+     *   momWord - 엄마 말씀
+     *
+     * RETURN
+     *   변환된 청개구리 말
+     */
+    public static String convertMomWord(String momWord){
+        String convertWord = "";
+
+        for(char alphabet : momWord.toCharArray()){ // 엄마 말씀을 알파벳 1개 단위로 분해
+            convertWord += convertAlphabet(alphabet);
+        }
+
+        return convertWord;
+    }
 
     /**
      * DESCRIPTION
