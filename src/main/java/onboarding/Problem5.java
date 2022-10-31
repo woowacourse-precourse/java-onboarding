@@ -49,7 +49,7 @@ public class Problem5 {
         return 0;
     }
 
-    public static int exchangefiftyWon() {
+    public static int exchangeFiftyWon() {
         return 0;
     }
 
