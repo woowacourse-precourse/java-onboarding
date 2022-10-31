@@ -75,12 +75,8 @@ public class Problem6 {
                 }
             }
         }
-        // for (String a : nickNameMap.keySet()) {
-        //     System.out.println("[key]: " + a + " [value]: " + nickNameMap.get(a));
-        // }
         duplicatedNickNameEmailsToList = new ArrayList<>(duplicatedNickNameEmails);
         Collections.sort(duplicatedNickNameEmailsToList);
-        // System.out.println(duplicatedNickNameEmailsToList);
         return duplicatedNickNameEmailsToList;
     }
 
@@ -134,15 +130,4 @@ public class Problem6 {
 
         return crewNumber >= MIN_CREW_NUMBER && crewNumber <= MAX_CREW_NUMBER;
     }
-
-    // public static void main(String[] args) {
-    //     List<List<String>> forms = List.of(
-    //         List.of("jm@email.com", "제이엠"),
-    //         List.of("jason@email.com", "제이슨"),
-    //         List.of("woniee@email.com", "워니"),
-    //         List.of("mj@email.com", "엠제이"),
-    //         List.of("nowm@email.com", "이제엠")
-    //     );
-    //     solution(forms);
-    // }
 }
