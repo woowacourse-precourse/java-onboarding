@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.regex.Pattern;
 //SOL: HashMap을 만들어 아이디가 들어오면 2글자 단위로 나누어 HashMap에 저장시킨다.
 
 //TODO:주의사항:
@@ -14,7 +15,8 @@ import java.util.*;
 //TODO: 위의 형식에 어긋났을 경우 result에서 배제한다.
 
 public class Problem6 {
-    public static List<String> solution(List<List<String>> forms) {
+    public static List<String> solution(List<List<String>> forms) throws Exception {
+        valid(forms);
         List<String> answer = new ArrayList<>();
         Map<String, Long> map = new HashMap<>();  //중복 아이디 사전
 
@@ -42,8 +44,26 @@ public class Problem6 {
         Collections.sort(answer);
         return answer;
     }
+    public static void valid(List<List<String>> lists) throws Exception {
+        if(lists.size() < 1 || lists.size() > 10000){
+            throw new Exception("입력받은 인원의 수가 조건에 맞지 않습니다: size: "+ lists.size());
+        }
+        String p_email = "\\b\\S{1,10}(@email.com){1}$";
+        String p_id = "^[가-힣]{1,19}$";
+        for(int i = 0; i < lists.size(); i++){
+            String email = lists.get(i).get(0);
+            String id = lists.get(i).get(1);
+            if(!Pattern.matches(p_email, email)){
+                throw new Exception("입력받은 이메일이 조건에 맞지 않습니다. : "+ email);
+            }
+            if(!Pattern.matches(p_id, id)){
+                throw new Exception("입력받은 아이디가 조건에 맞지 않습니다. : " + id);
+            }
+        }
 
-    public static void main(String[] args) {
+    }
+
+    public static void main(String[] args) throws Exception {
 
         System.out.println(solution(List.of(
                 List.of("jm@email.com", "제이엠"),
@@ -51,6 +71,8 @@ public class Problem6 {
                 List.of("woniee@email.com", "워니"),
                 List.of("mj@email.com", "엠제이"),
                 List.of("nowm@email.com", "이제엠")
+//                List.of("asdfsabdsa@email.com"),
+//                List.of("test@email.com", "이우진")
         )));
     }
 }
