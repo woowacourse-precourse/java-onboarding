@@ -23,7 +23,6 @@ class Problem1 {
         if (target.get(0) == 1 || target.get(1) == 400){
             return true;
         }
-
         return false;
     }
 
@@ -31,7 +30,13 @@ class Problem1 {
         int firstTargetResult = selectLargerPageResult(firstTarget);
         int secondTargetResult = selectLargerPageResult(secondTarget);
 
-        return Integer.compare(firstTargetResult, secondTargetResult);
+        if (firstTargetResult> secondTargetResult){
+            return 1;
+        } else if (firstTargetResult == secondTargetResult) {
+            return 0;
+        } else {
+            return  2;
+        }
 
     }
 
@@ -41,13 +46,7 @@ class Problem1 {
         Integer left = selectMultiplyOrSumLarger(target.get(0));
         Integer right = selectMultiplyOrSumLarger(target.get(1));
 
-        if (left > right){
-            return 1;
-        } else if (left.equals(right)) {
-            return 0;
-        } else {
-            return  2;
-        }
+        return Math.max(left, right);
     }
 
     private static Integer selectMultiplyOrSumLarger (Integer targetNum){
