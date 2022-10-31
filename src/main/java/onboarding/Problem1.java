@@ -4,6 +4,9 @@ import java.util.Arrays;
 import java.util.List;
 
 class Problem1 {
+    private static final int START_PAGE = 1;
+    private static final int END_PAGE = 400;
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int leftPobiPage = pobi.get(0);
         int rightPobiPage = pobi.get(1);
@@ -51,7 +54,7 @@ class Problem1 {
      * @return false
      * */
     private static boolean isInRange(int page) {
-        return 1 <= page && page <= 400;
+        return START_PAGE <= page && page <= END_PAGE;
     }
 
     /*
