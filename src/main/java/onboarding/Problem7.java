@@ -15,6 +15,8 @@ public class Problem7 {
         give1ScoreForVisitor(visitors);
         removeUnnecessary(user);
 
+        List<String> answer = new ArrayList<>(scoreMap.keySet());
+        sortByMapValueDescending(answer);
     }
 
     private static void init(String user) {
@@ -65,6 +67,10 @@ public class Problem7 {
         // map에 들어가있던 user와 user의 친구는 결과값에 불필요하므로, 제거한다.
         scoreMap.remove(user);
         alreadyFriend.forEach(scoreMap::remove);
+    }
+
+    private static void sortByMapValueDescending(List<String> answer) {
+        answer.sort((value1, value2) -> (scoreMap.get(value2).compareTo(scoreMap.get(value1))));
     }
 
 }
