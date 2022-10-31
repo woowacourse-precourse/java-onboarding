@@ -18,18 +18,22 @@ public class Problem5 {
     private void iterate() {
         int fiveUnit = 50000;
         int oneUnit = 10000;
-        System.out.println(money);
-        while(money > 0){
-            divideFiveUnit(fiveUnit);
-            if(fiveUnit > 5) fiveUnit /= 10;
+        for(int i =0; i < 9; i++){
+            if(fiveUnit >= 50) divideWithUnit(fiveUnit);
+            if(oneUnit >= 1) divideWithUnit(oneUnit);
+            oneUnit /= 10;
+            fiveUnit /= 10;
         }
     }
 
-    private void divideFiveUnit(int unit){
-        if(money < unit) return;
+    private void divideWithUnit(int unit){
+        if(money < unit){
+            answer.add(0);
+            return;
+        }
         int count = 0;
         count += money/unit;
-        money -= unit;
+        money -= unit * count;
         answer.add(count);
     }
 }
