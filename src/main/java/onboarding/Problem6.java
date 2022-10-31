@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Problem6 {
@@ -53,6 +54,19 @@ public class Problem6 {
 
 
     //실행을 위한 process 함수
+    static List<String> process(List<List<String>> forms, boolean[] check) {
+        List<String> ans = new ArrayList<>();
+
+        for (int i=0;i<check.length;i++){
+            if(check[i]){
+                ans.add(forms.get(i).get(0));
+            }
+        }
+
+        Collections.sort(ans);
+
+        return ans;
+    }
 
 }
 
