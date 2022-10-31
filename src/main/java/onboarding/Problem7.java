@@ -1,21 +1,31 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        FriendRecommender recommender = new FriendRecommender.Builder()
+                .user(user)
+                .friends(friends)
+                .visitors(visitors)
+                .build();
+
+        return recommender.get5RecommendedFriend();
     }
 }
 
 class FriendRecommender{
     private String user;
+    private List<String> friendsOfUser;
     private Map<String, Integer> recommendationScores = new HashMap<>();
 
     private FriendRecommender(Builder builder){
         this.user = builder.user;
+        this.friendsOfUser = builder.friends.get(user);
+
         addFriendScore(builder.friends);
+        addVisitorScore(builder.visitors);
 
     }
 
@@ -30,6 +40,8 @@ class FriendRecommender{
                                 + recommendedFriendScore);
             }
         }
+
+        recommendationScores.remove(user);
     }
 
     private void addVisitorScore(List<String> visitors){
@@ -42,6 +54,16 @@ class FriendRecommender{
     }
 
 
+    public List<String> get5RecommendedFriend(){
+        return recommendationScores.entrySet().stream()
+                .filter(entry -> !friendsOfUser.contains(entry.getKey()))
+                .sorted(Comparator.comparing(Map.Entry::getKey))
+                .sorted(Comparator.comparing(Map.Entry::getValue, Comparator.reverseOrder()))
+                .limit(5)
+                .map(entry -> entry.getKey())
+                .collect(Collectors.toList());
+
+    }
 
 
     public static class Builder {
