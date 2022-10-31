@@ -8,10 +8,10 @@ class Problem1 {
             return -1;
         }
 
-        int pobiMax = Math.max(findMaxNumOfPage(pobi.get(0)), findMaxNumOfPage(pobi.get(1)));
-        int crongMax = Math.max(findMaxNumOfPage(crong.get(0)), findMaxNumOfPage(crong.get(1)));
+        int pobiScore = Math.max(findMaxNumOfPage(pobi.get(0)), findMaxNumOfPage(pobi.get(1)));
+        int crongScore = Math.max(findMaxNumOfPage(crong.get(0)), findMaxNumOfPage(crong.get(1)));
 
-        int answer = compareScore(pobiMax, crongMax);
+        int answer = compareScore(pobiScore, crongScore);
 
         return answer;
     }
