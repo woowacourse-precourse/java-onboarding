@@ -20,6 +20,16 @@ public class Problem7 {
             createRelation(userB, userA);
         }
 
+        // 1촌 친구들
+        List<String> firstFriends = relation.get(user);
+        
+        // 2촌 친구들 점수 10점
+        for (String firstFriend : firstFriends) {
+            for (String secondFriend : relation.get(firstFriend)) {
+                addPointByRelation(secondFriend);
+            }
+        }
+
         List<String> answer = Collections.emptyList();
         return answer;
     }
@@ -31,6 +41,16 @@ public class Problem7 {
         }else{
             ArrayList<String> list = new ArrayList<>(Arrays.asList(userB));
             relation.put(userA, list);
+        }
+    }
+
+    // 2촌 관계에 있는 친구들에게 10점 추가
+    private static void addPointByRelation(String user) {
+        // 이미 목록에 있다면 업데이트
+        if (friendPoint.containsKey(user)){
+            friendPoint.put(user, friendPoint.get(user)+10);
+        }else{ // 없다면 새로 추가
+            friendPoint.put(user, 10);
         }
     }
 }
