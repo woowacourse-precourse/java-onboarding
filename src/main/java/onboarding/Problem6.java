@@ -22,4 +22,14 @@ public class Problem6 {
 
         return convertMapToListAndSort(alarmSet);
     }
+
+    private static List<String> makePartialNickNameList(String nickName) {
+        List<String> partialNickNameList = new ArrayList<>();
+        for (int splitLength = 2; splitLength <= nickName.length(); splitLength++) {
+            for (int startIdx = 0; startIdx <= (nickName.length() - splitLength); startIdx++) {
+                partialNickNameList.add(nickName.substring(startIdx, startIdx + splitLength));
+            }
+        }
+        return partialNickNameList;
+    }
 }
