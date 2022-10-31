@@ -26,10 +26,19 @@ public class Problem2 {
             stack.push(cur);
         }
 
+        // 소문자 이외 제외 후 리턴
+        while(!stack.isEmpty()) {
+            char cur = stack.pop();
+            if( cur <'a' || cur >'z') continue;
+            sb.append(cur);
+        }
+
+        sb = sb.reverse();
         return sb.toString();
     }
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String answer = getCryptogram(cryptogram);
+
         return answer;
     }
 }
