@@ -30,8 +30,37 @@
 ## 구현 기능 목록
 
 - (1) user의 친구목록을 얻는 기능
+
+  ```java
+  public static List<String> getFriendList(String user, List<List<String>> friends)
+  ```
+
 - (2) user의 함께 아는 사람목록을 얻는 기능
+
+  ```java
+  public static List<String> getKnowTogetherList(String user, List<String> friendList, List<List<String>> friends)
+  ```
+
 - (3) 함께 아는 사람 점수 계산 기능
+
+  ```java
+  public static Map<String, Integer> getKnowTogetherScoreMap(List<String> knowTogetherList)
+  ```
+
 - (4) 방문한 횟수 점수 계산 기능
+
+  ```java
+  public static Map<String, Integer> getVisitScoreMap(List<String> visitors, List<String> friendList)
+  ```
+
 - (5) 총 스코어 계산 기능
+
+  ```java
+  public static Map<String, Integer> calculateTotalScoreMap(Map<String, Integer> knowTogetherScoreMap, Map<String, Integer> visitScoreMap)
+  ```
+
 - (6) 친구 추천 리스트생성 기능
+
+  ```java
+  public static List<String> getRecommendFriendList(Map<String, Integer> totalScoreMap)
+  ```
