@@ -34,7 +34,7 @@ public class Problem6 {
         }
 
         protected void isNicknameKorean(String nickname) {
-            String regex = "^[가-힣]*$";
+            String regex = "^[ㄱ-ㅎㅏ-ㅣ가-힣]*$";
             if (!nickname.matches(regex)) {
                 throw new IllegalArgumentException("닉네임에는 한글만 사용할 수 있습니다.");
             }

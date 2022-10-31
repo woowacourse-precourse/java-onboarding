@@ -35,6 +35,14 @@ class ApplicationTest {
             int result = -1;
              assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
+
+//        @Test
+//        void case7() {
+//            List<Integer> pobi = List.of(412, 413);
+//            List<Integer> crong = List.of(200, 201);
+//            int result = -1;
+//            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+//        }
     }
 
     @Nested
@@ -52,6 +60,20 @@ class ApplicationTest {
             String result = "";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
+
+//        @Test
+//        void case3(){
+//            String cryptogram = "abbaa";
+//            String result = "";
+//            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+//        }
+//
+//        @Test
+//        void case4() {
+//            String cryptogram = "a";
+//            String result = "a";
+//            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+//        }
     }
 
     @Nested
@@ -69,6 +91,20 @@ class ApplicationTest {
             int result = 14;
             assertThat(Problem3.solution(number)).isEqualTo(result);
         }
+
+//        @Test
+//        void case3() {
+//            int number = 333;
+//            int result = 228;
+//            assertThat(Problem3.solution(number)).isEqualTo(result);
+//        }
+//
+//        @Test
+//        void case4() {
+//            int number = 2;
+//            int result = 0;
+//            assertThat(Problem3.solution(number)).isEqualTo(result);
+//        }
     }
 
     @Nested
@@ -79,6 +115,20 @@ class ApplicationTest {
             String result = "R olev blf";
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
+
+//        @Test
+//        void case2() {
+//            String word = "Svool, Dliow! 123";
+//            String result = "Hello, World! 123";
+//            assertThat(Problem4.solution(word)).isEqualTo(result);
+//        }
+//
+//        @Test
+//        void case3() {
+//            String word = "ABCDEFGHIJKLMNOPQRSTUVWXYZ !@#$%^&*  ";
+//            String result = "ZYXWVUTSRQPONMLKJIHGFEDCBA !@#$%^&*  ";
+//            assertThat(Problem4.solution(word)).isEqualTo(result);
+//        }
     }
 
     @Nested
@@ -112,6 +162,19 @@ class ApplicationTest {
             List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com");
             assertThat(Problem6.solution(forms)).isEqualTo(result);
         }
+
+//        @Test
+//        void case2() {
+//            List<List<String>> forms = List.of(
+//                    List.of("onepiece@email.com", "원피수"),
+//                    List.of("jason@email.com", "제이슨"),
+//                    List.of("onepisu@email.com", "원피수"),
+//                    List.of("mj@email.com", "엠제이"),
+//                    List.of("suonepi@email.com", "수원피")
+//            );
+//            List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com");
+//            assertThat(Problem6.solution(forms)).isEqualTo(result);
+//        }
     }
 
     @Nested
