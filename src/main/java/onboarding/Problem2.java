@@ -1,9 +1,15 @@
 package onboarding;
 
+import java.util.stream.IntStream;
+
 public class Problem2 {
+
+    private static final int IS_NOT_DUPLICATE = -1;
+
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        return deleteDuplicateWord(cryptogram);
+    }
+
     private static String deleteDuplicateWord(String cryptogram) {
         while (true) {
             int duplicateCharacterIndex = checkDuplicateIndex(cryptogram);
