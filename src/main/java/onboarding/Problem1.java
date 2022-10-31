@@ -20,10 +20,7 @@ class Problem1 {
     if (!validateRange(page.get(0))) {
       return false;
     }
-    if (!validateRange(page.get(1))) {
-      return false;
-    }
-    return true;
+    return validateRange(page.get(1));
   }
 
   private static boolean validateOddAndEven(List<Integer> page) {
