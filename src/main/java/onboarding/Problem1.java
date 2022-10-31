@@ -33,6 +33,19 @@ class Problem1 {
 
     }
 
+    int multiplyPage(Integer page) {
+        int num;
+
+        String page_str = Integer.toString(page);
+
+        for(int i=0; i < page_str.length(); i++){
+            num *= Integer.parseInt(page_str.substring(i, i+1));
+        }
+
+        return num;
+
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         int leftPageNum;
