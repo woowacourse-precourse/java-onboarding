@@ -118,8 +118,71 @@ class ApplicationTest {
 
         @Test
         void case2() {
-            String cryptogram = "zyelleyz";
+            String cryptogram = "zyellleyz";
             String result = "";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
+        void case3() {
+            String cryptogram = "brooor";
+            String result = "b";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
+        void case4() {
+            String cryptogram = "oooo";
+            String result = "";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
+        void case5() {
+            String cryptogram = "abc";
+            String result = "abc";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
+        void case6() {
+            String cryptogram = "abcabcabc";
+            String result = "abcabcabc";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
+        void case7() {
+            String cryptogram = "zyalllelyz";
+            String result = "zyaelyz";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
+        void case8() {
+            String cryptogram = "aabba";
+            String result = "a";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
+        void case9() {
+            String cryptogram = "aazzqweqweaaq";
+            String result = "qweqweq";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
+        void case10() {
+            String cryptogram = "ksekkset";
+            String result = "kseset";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
+        void case11() {
+            String cryptogram = "broo";
+            String result = "br";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
     }
