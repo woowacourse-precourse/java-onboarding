@@ -24,12 +24,17 @@ public class TextDecoderV1 implements TextDecoder {
         Stack<String> characterStack = new Stack<>();
 
         for (String chr : chars) {
-            if (!characterStack.isEmpty() && characterStack.peek().equals(chr)) {
-                characterStack.pop();
-                continue;
-            }
+            calculateCharacterTo(chr, characterStack);
+        }
+
+        return String.join("", characterStack);
+    }
+
+    private void calculateCharacterTo(String chr, Stack<String> characterStack) {
+        if (!characterStack.isEmpty() && characterStack.peek().equals(chr)) {
+            characterStack.pop();
+        } else {
             characterStack.push(String.valueOf(chr));
         }
-        return String.join("", characterStack);
     }
 }
