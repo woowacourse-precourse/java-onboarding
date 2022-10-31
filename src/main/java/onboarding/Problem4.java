@@ -2,7 +2,8 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        char[] wordSplit = word.toCharArray();
+        char[] wordSplit = word.toCharArray(); //word를 글자 수 만큼 배열로 변환
+
         for(int i=0;i<wordSplit.length;i++){
             wordSplit[i] = changeWord(wordSplit[i]);
         }
