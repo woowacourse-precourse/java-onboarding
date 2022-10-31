@@ -1,6 +1,9 @@
 package onboarding;
 
 import onboarding.exception.InputRangeException;
+import onboarding.exception.InputTypeException;
+
+import java.util.regex.Pattern;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
@@ -29,6 +32,11 @@ public class Problem2 {
         if(isNotStrLengthRange(cryptogram)) {
             throw new InputRangeException("문자열의 길이는 1~1000 사이여야 합니다.");
         }
+
+        // 소문자인지 검증한다.
+        if(isNotUpperCase(cryptogram)) {
+            throw new InputTypeException("입력 문자열은 소문자여야 합니다.");
+        }
     }
 
     /**
@@ -40,7 +48,18 @@ public class Problem2 {
     private static boolean isNotStrLengthRange(String cryptogram) {
         return cryptogram.length() < 1 || cryptogram.length() > 1000;
     }
-    
+
+    /**
+     * 암호문이 소문자으로 구성되어 있는지 검증을 진행한다.
+     *
+     * @param cryptogram 입력 암호문
+     * @return 소문자가 아닌 문자가 있다면 false, 아니라면 true
+     */
+    private static boolean isNotUpperCase(String cryptogram) {
+        String regex = "^[a-z]*$";
+        
+        return Pattern.matches(regex, cryptogram);
+    }
 
     /**
      * 2번 이상 중복된 문자열을 제거한다.
