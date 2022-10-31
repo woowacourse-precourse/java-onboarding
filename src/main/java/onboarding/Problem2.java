@@ -24,6 +24,9 @@ public class Problem2 {
         int idx = 0;
         int nextIdx = 0;
 
+        if(cryptogram.length() == 2)
+            return "";
+
         for(idx = 1 ; idx < cryptogram.length() ; idx++ ){
 
             //앞뒤문자가 동일하지않은경우
@@ -47,6 +50,9 @@ public class Problem2 {
     //중복문자 존재하는지 구별하는 함수
     //중복문자가 존재할시 true를 반환해준다.
     public static boolean isDuplicate(String cryptogram){
+        if(cryptogram.length() < 2)
+            return false;
+
         for(int i = 1 ; i < cryptogram.length() ; i++){
             if(cryptogram.charAt(i) == cryptogram.charAt(i-1)){
                 return true;
