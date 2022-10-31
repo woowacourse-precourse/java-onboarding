@@ -1,7 +1,9 @@
 package onboarding;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 /*
 
 [기능 목록]
@@ -14,6 +16,27 @@ import java.util.List;
 */
 
 public class Problem7 {
+
+    // 추천 친구 스코어를 기록하기 위한 recommendScore 셋팅
+    public static Map<String, Integer> initRecommendScore(String user, List<List<String>> friends, List<String> visitors) {
+
+        Map<String, Integer> recommendScore = new HashMap<>();
+
+        for (List<String> friend : friends) {
+            for (String name : friend) {
+                if (!user.equals(name)) {
+                    recommendScore.put(name, 0);
+                }
+            }
+        }
+
+        for (String visitor : visitors) {
+            recommendScore.put(visitor, 0);
+        }
+
+        return recommendScore;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
