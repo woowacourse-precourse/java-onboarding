@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 
 public class NickName {
     private static final Pattern korean = Pattern.compile("^[ㄱ-ㅎ|가-힣]{1,20}$");
+    private static final int DUPLICATE_LIMIT = 2;
     private final String nickName;
     private final List<String> separateNicks = new ArrayList<>();
 
@@ -15,24 +16,23 @@ public class NickName {
     }
 
 
-
     private static void checkKorean(String nickName) {
         if (!korean.matcher(nickName).matches()) {
             throw new NickNameException("한글만 쓸 수 있습니다.");
         }
     }
+
     public boolean isDuplicate(NickName compareNick) {
         return separateNicks.stream()
-                .anyMatch(nick ->compareNick.getSeparateNicks().contains(nick));
+                .anyMatch(nick -> compareNick.getSeparateNicks().contains(nick));
     }
 
     private void separateTwoParts() {
         int i = 0;
-        int duplicateLimit = 2;
         while (i < nickName.length()) {
-            separateNicks.add(nickName.substring(i, i + duplicateLimit));
+            separateNicks.add(nickName.substring(i, i + DUPLICATE_LIMIT));
             i++;
-            if (i + duplicateLimit > nickName.length()) {
+            if (i + DUPLICATE_LIMIT > nickName.length()) {
                 break;
             }
         }
@@ -51,9 +51,11 @@ public class NickName {
     public int hashCode() {
         return Objects.hash(nickName);
     }
+
     public String getNickName() {
         return nickName;
     }
+
     public List<String> getSeparateNicks() {
         return Collections.unmodifiableList(separateNicks);
     }
