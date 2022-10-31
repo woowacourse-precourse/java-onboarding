@@ -58,6 +58,39 @@ public class Problem7 {
         }
     }
 
+    public static void recommendedScoreCalculation(String user, List<String> visitors) {
+        for (String name : users) {
+            recommendedScore.put(name, 0);
+            if (Objects.equals(name, user)) {
+                recommendedScore.put(name, -1);
+            }
+        }
+
+        List<String> userFriends = network.get(user);
+
+        for (String friend : userFriends) {
+            recommendedScore.put(friend, -1);
+        }
+        for (String friend : userFriends) {
+            List<String> connectedFriend = network.get(friend);
+            for (String connectedFriendName : connectedFriend) {
+                Integer originScore = recommendedScore.get(connectedFriendName);
+                if (originScore != -1) {
+                    originScore += 10;
+                    recommendedScore.put(connectedFriendName, originScore);
+                }
+            }
+        }
+        for (String visitor : visitors) {
+            Integer originScore = recommendedScore.get(visitor);
+            if (originScore != -1) {
+                originScore += 1;
+                recommendedScore.put(visitor, originScore);
+            }
+        }
+    }
+
+
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
