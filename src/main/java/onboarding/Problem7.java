@@ -22,6 +22,16 @@ public class Problem7 {
             }
         }
 
+        // user의 친구와 친구인 사람을 찾는 로직
+        List<String> newFriends = new ArrayList<>();
+        for (String alFriend : alreadyFriends) {
+            for (List<String> friend : friends) {
+                if (alFriend.equals(friend.get(0)) && !friend.get(1).equals(user)) {
+                    newFriends.add(friend.get(1));
+                }
+            }
+        }
+
         return answer;
     }
 }
