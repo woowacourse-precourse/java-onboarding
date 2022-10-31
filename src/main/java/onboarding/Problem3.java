@@ -4,7 +4,9 @@ public class Problem3 {
     // TODO: int countClaps(int number)
 
     public static int solution(int number) {
-        // Check if number is in valid range
+        if (number < 1 || 10000 < number) {
+            return 0;
+        }
 
         // Count claps
 
