@@ -3,21 +3,13 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
-    private static Map<String, List<String>> connectMap;
-    private static Map<String, Integer> distance;
+
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = new ArrayList<>();
-        connectMap = new HashMap<>();
-        distance = new HashMap<>();
 
-        makeConnection(friends);
-        initDistance();
-        searchFriends(user);
-        visitorPoint(user, visitors);
-        makeAnswer(answer);
-
-        return answer;
+        RecommendCalculator recommendCalculator =
+                new RecommendCalculator(user, friends, visitors);
+        return recommendCalculator.calculation();
     }
 
     private static class Connect {
@@ -30,95 +22,173 @@ public class Problem7 {
         }
     }
 
-    /*
-    * 연결 관계를 Map에 저장한다.
-    * */
-    private static void makeConnection(List<List<String>> friends){
-        for (List<String> friend : friends) {
-            String f1 = friend.get(0);
-            String f2 = friend.get(1);
+    public enum EACH {
+        EACH_1(0), EACH_2(1);
 
-            List<String> con = connectMap.getOrDefault(f1, new ArrayList<>());
-            con.add(f2);
-            connectMap.put(f1, con);
+        private int info;
 
-            con = connectMap.getOrDefault(f2, new ArrayList<>());
-            con.add(f1);
-            connectMap.put(f2, con);
+        EACH(int info) {
+            this.info = info;
+        }
+
+        public int getInfo() {
+            return info;
         }
     }
 
-    /*
-     * 거리를 초기화 한다.
-     * */
-    private static void initDistance(){
-        for (String key : connectMap.keySet()) {
-            distance.put(key, 0);
+    public enum Point{
+        INIT(0),
+        VISITOR(1),
+        DEPTH(2),
+        FRIENDS(10);
+
+        private int value;
+
+        Point(int value) {
+            this.value = value;
+        }
+
+        public int getValue() {
+            return value;
         }
     }
 
+    public static class RecommendCalculator{
+        private static Map<String, List<String>> connectMap;
+        private static Map<String, Integer> distance;
+        private static final int DEFAULT_VALUE = 0;
+        private static final int VISIT = 1;
+        private static final int LIMIT = 5;
+        private static final int NOT_VISITED = -1;
+        private String user;
+        private List<List<String>> friends;
+        private List<String> visitors;
 
-    /*
-     * 둘 사이의 공통 친구를 찾아 점수를 부여한다.
-     * */
-    private static void searchFriends(String user) {
-        Queue<Connect> qu = new LinkedList<>();
-        qu.add(new Connect(user, 0));
-        distance.put(user, -1);
+        public RecommendCalculator(String user, List<List<String>> friends, List<String> visitors) {
+            this.user = user;
+            this.friends = friends;
+            this.visitors = visitors;
+        }
 
-        while (!qu.isEmpty()) {
-            Connect cn = qu.poll();
-            String to = cn.to;
+        public List<String> calculation(){
+            List<String> answer = List.of();
+            connectMap = new HashMap<>();
+            distance = new HashMap<>();
 
-            if (cn.depth >= 2) continue;
+            makeConnection();
+            initDistance();
+            searchFriends();
+            visitorPoint();
+            answer = makeAnswer();
 
-            for (int i = 0; i < connectMap.get(to).size(); i++) {
-                String nn = connectMap.get(to).get(i);
+            return answer;
+        }
 
-                if(to.equals(user)){
-                    distance.put(nn, -1);
-                }
+        /*
+         * 연결 관계를 Map에 저장한다.
+         * */
+        private void makeConnection(){
+            for (List<String> friend : this.friends) {
+                String f1 = friend.get(EACH.EACH_1.getInfo());
+                String f2 = friend.get(EACH.EACH_2.getInfo());
 
-                if(distance.get(to).equals(-1) && !distance.get(nn).equals(-1)) {
-                    distance.put(nn, distance.getOrDefault(nn, 0) + 10);
-                }
+                List<String> con = connectMap.getOrDefault(f1, new ArrayList<>());
+                con.add(f2);
+                connectMap.put(f1, con);
 
-                qu.add(new Connect(nn, cn.depth + 1));
+                con = connectMap.getOrDefault(f2, new ArrayList<>());
+                con.add(f1);
+                connectMap.put(f2, con);
             }
         }
-    }
 
-    /*
-     * user와 친구가 아닌 방문객의 점수를 더한다.
-     * */
-    private static void visitorPoint(String user, List<String> visitors){
-        for (String visitor : visitors) {
+        /*
+         * 거리를 초기화 한다.
+         * */
+        private void initDistance(){
+            for (String key : connectMap.keySet()) {
+                distance.put(key, 0);
+            }
+        }
+
+        /*
+         * 둘 사이의 공통 친구를 찾아 점수를 부여한다.
+         * */
+        private void searchFriends() {
+            Queue<Connect> qu = new LinkedList<>();
+            qu.add(new Connect(user, Point.INIT.getValue()));
+            distance.put(user, NOT_VISITED);
+
+            while (!qu.isEmpty()) {
+                Connect cn = qu.poll();
+                String to = cn.to;
+
+                if (cn.depth >= Point.DEPTH.getValue()) continue;
+
+                for (int i = 0; i < connectMap.get(to).size(); i++) {
+                    String next = connectMap.get(to).get(i);
+
+                    if(to.equals(user)){
+                        distance.put(next, NOT_VISITED);
+                    }
+
+                    addCommonFriend(to, next);
+
+                    qu.add(new Connect(next, cn.depth + VISIT));
+                }
+            }
+        }
+
+        /*
+        * 공통 친구인 경우 점수를 더한다.
+        * */
+        private static void addCommonFriend(String to, String next){
+            if(distance.get(to).equals(NOT_VISITED)
+                    && !distance.get(next).equals(NOT_VISITED)) {
+                distance.put(next, distance.getOrDefault(next, DEFAULT_VALUE)
+                        + Point.FRIENDS.getValue());
+            }
+        }
+
+        /*
+         * user와 친구가 아닌 방문객의 점수를 더한다.
+         * */
+        private void visitorPoint(){
+            for (String visitor : visitors) {
+                addVisitorPoint(visitor);
+            }
+        }
+
+        private void addVisitorPoint(String visitor){
             if(!connectMap.get(user).contains(visitor)) {
-                distance.put(visitor, distance.getOrDefault(visitor, 0) + 1);
+                distance.put(visitor, distance.getOrDefault(visitor, DEFAULT_VALUE)
+                        + Point.VISITOR.getValue());
             }
         }
-    }
 
-    /*
-     * 내림차순으로 거리를 정렬한다.
-     * */
-    private static List<Map.Entry<String, Integer>> sortDescDistance(){
-        List<Map.Entry<String, Integer>> entries = new ArrayList<>(distance.entrySet());
-        entries.sort((o1, o2) -> o2.getValue().compareTo(o1.getValue()));
-        return entries;
-    }
+        /*
+         * 내림차순으로 거리를 정렬한다.
+         * */
+        private static List<Map.Entry<String, Integer>> sortDescDistance(){
+            List<Map.Entry<String, Integer>> entries = new ArrayList<>(distance.entrySet());
+            entries.sort((o1, o2) -> o2.getValue().compareTo(o1.getValue()));
+            return entries;
+        }
 
-    /*
-     * 정렬된 거리 순으로 정답에 추가한다.
-     * */
-    private static void makeAnswer(List<String> answer){
-        int cnt = 0;
-        for (Map.Entry<String, Integer> entry : sortDescDistance()) {
-            if(entry.getValue() <= 0) break;
-            if(cnt>=5) break;
+        /*
+         * 정렬된 거리 순으로 정답에 추가한다.
+         * */
+        private static List<String> makeAnswer(){
+            List<String> result = new ArrayList<>();
+            int cnt = 0;
+            for (Map.Entry<String, Integer> entry : sortDescDistance()) {
+                if(entry.getValue() <= 0) break;
 
-            answer.add(entry.getKey());
-            cnt++;
+                result.add(entry.getKey());
+                cnt++;
+                if(cnt>=LIMIT-1) break;
+            }
+            return result;
         }
     }
 }
