@@ -34,6 +34,18 @@ class Problem1 {
         return !outOfBounds.isEmpty();
     }
 
+    /**
+     * 주어진 페이지 리스트가 왼쪽이 홀수, 오른쪽이 짝수가 맞는지 확인한 후 맞으면 false, 아니라면 true를 리턴합니다.
+     *
+     * @param pageNumber 피이지가 담긴 리스트
+     * @return 왼쪽이 홀수, 오른쪽이 짝수라면 false, 아니라면 true
+     */
+    public static boolean checkPageOddEven(List<Integer> pageNumber) {
+        int leftPage = pageNumber.get(0);
+        int rightPage = pageNumber.get(1);
+        return leftPage % 2 == 0 || rightPage % 2 != 0;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
