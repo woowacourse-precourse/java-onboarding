@@ -12,13 +12,13 @@ public class Problem2 {
 
             if (isSameWord(first, second)) {
                 cryptogram = getNewCryptogram(cryptogram, point1, point2);
-                
+
                 // 다시 처음부터 탐색
                 point1 = 0;
                 point2 = 1;
                 continue;
             }
-            
+
             // 가리키는 문자가 같은 문자가 아닐 경우 포인터 이동
             point1++;
             point2++;
