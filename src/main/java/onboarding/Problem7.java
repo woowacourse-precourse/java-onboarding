@@ -20,6 +20,16 @@ public class Problem7 {
 
     private static final int VISITORS_POINT = 1;
 
+    private static final int MIN_USER_LENGTH = 1;
+    private static final int MAX_USER_LENGTH = 30;
+    private static final int MIN_FRIENDS_LENGTH = 1;
+    private static final int MAX_FRIENDS_LENGTH = 10000;
+    private static final int MIN_ID_LENGTH = 1;
+    private static final int MAX_ID_LENGTH = 30;
+    private static final int MIN_VISITOR_LENGTH = 0;
+    private static final int MAX_VISITOR_LENGTH = 10000;
+    private static final String LOWERCASE_ID = "^[a-z]*$";
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         getMyFriends(friends, user);
         getAcquaintancePoint(friends, user);
@@ -67,6 +77,7 @@ public class Problem7 {
             }
         }
     }
+
     private static void getVisitorsPoint(List<String> friends) {
         for (String friend : friends) {
             friendsAndScoreMap.put(friend, friendsAndScoreMap.getOrDefault(friend, 0) + VISITORS_POINT);
