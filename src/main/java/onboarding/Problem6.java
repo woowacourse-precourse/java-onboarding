@@ -19,8 +19,8 @@ public class Problem6 {
     	putTwoLengthNikAndIds(idAndNikNamesForm, twoLengthNikAndIds);
     	addIdAboutDuplicateNikName(twoLengthNikAndIds, idAboutDuplicateNik);
     	List<String> finalNik = new ArrayList<>(idAboutDuplicateNik);
-    	sortAscending(finalNik);
     	makeEmailForm(finalNik);
+    	sortAscending(finalNik);
     	
         return finalNik;
     }
