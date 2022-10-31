@@ -14,10 +14,11 @@ public class Problem7 {
         // 3. visitors의 점수 정리
 
         HashMap<String, List<String>> userHashMap = new HashMap<>();
-        HashMap<String, List<String>> friendsHashMap = new HashMap<>();
+        HashMap<String, Integer> scoreHashMap = new HashMap<>();
 
 
         userHashMap = makeHashMap(userHashMap, user, friends);
+        scoreHashMap = getFriendsHashMap(userHashMap, scoreHashMap, user, friends);
 
         return answer;
     }
@@ -45,15 +46,60 @@ public class Problem7 {
         return hashMap;
     }
 
-//    public static HashMap<String, List<String>> getFriendsHashMap
-//            (HashMap<String, List<String>> friendsHashMap, HashMap<String, List<String>> userHashMap, String user) {
-//        List<String> userFriends = userHashMap.get(user);
-//
-//        for (int i = 0; i < userFriends.size(); i++) {
-//            String friendName = userFriends.get(i);
-//
-//        }
-//
-//    }
+    public static HashMap<String, Integer> makeScoreHashMap
+            (HashMap<String, Integer> scoreHashMap, String friendName, List<List<String>> friends, String user) {
+        List<String> friendsList = new ArrayList<>();
+
+        for(int i = 0; i < friends.size(); i++) {
+            List<String> tempFriendsList = friends.get(i);
+            if (tempFriendsList.contains(friendName)) {
+                if (tempFriendsList.get(0).equals(friendName)) {
+                    String recommandFriend = tempFriendsList.get(1);
+
+                    if (recommandFriend.equals(user)) {
+                        continue;
+                    }
+
+                    if (!(scoreHashMap.containsKey(recommandFriend))) {
+                        scoreHashMap.put(recommandFriend, 10);
+                    }
+                    else {
+                        int currentScore = scoreHashMap.get(recommandFriend);
+                        scoreHashMap.put(recommandFriend, currentScore + 10);
+                    }
+                }
+                else if(tempFriendsList.get(1).equals(friendName)) {
+                    String recommandFriend = tempFriendsList.get(0);
+
+                    if (recommandFriend.equals(user)) {
+                        continue;
+                    }
+
+                    if (!(scoreHashMap.containsKey(recommandFriend))) {
+                        scoreHashMap.put(recommandFriend, 10);
+                    }
+                    else {
+                        int currentScore = scoreHashMap.get(recommandFriend);
+                        scoreHashMap.put(recommandFriend, currentScore + 10);
+                    }
+                }
+            }
+        }
+
+        return scoreHashMap;
+    }
+
+
+    public static HashMap<String, Integer> getFriendsHashMap
+            (HashMap<String, List<String>> userHashMap, HashMap<String, Integer> scoreHashMap, String user, List<List<String>> friends) {
+        List<String> userFriends = userHashMap.get(user);
+
+        for (int i = 0; i < userFriends.size(); i++) {
+            String friendName = userFriends.get(i);
+            scoreHashMap = makeScoreHashMap(scoreHashMap, friendName, friends, user);
+        }
+
+        return scoreHashMap;
+    }
 
 }
