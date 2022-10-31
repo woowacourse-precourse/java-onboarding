@@ -10,7 +10,23 @@ public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
+        List<String> emailList = new ArrayList<>();
+
+        executeAll(forms);
+        answer = needToSendEmail(emailList);
         return answer;
+    }
+
+    public static void executeAll(List<List<String>> forms) {
+        setNicknameList(forms);
+        removeOneLetterNickname();
+        addNicknameSubset();
+        resetSubsetNumber();
+        countDuplicateSubset();
+
+        nicknameSubset.clear(); // 부분집합 list 초기화
+        isDuplicatedSubset();
+        checkDuplicateNickname(forms);
     }
 
     public static void setNicknameList(List<List<String>> forms) {
@@ -70,7 +86,7 @@ public class Problem6 {
 
     public static void isContainSubset(List<List<String>> forms, String nickname) {
         for (Iterator<String> subset = nicknameSubset.iterator(); subset.hasNext(); ) {
-            if(nickname.contains(subset.next())){
+            if (nickname.contains(subset.next())) {
                 addEmailList(forms, nickname);
             }
         }
