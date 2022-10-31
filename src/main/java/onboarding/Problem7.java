@@ -34,10 +34,10 @@ class FriendsRelation {
         }
     }
 
-    public void relate(String friendA, String friendB) {
-        Set<String> friendsSet = totalFriendsMap.getOrDefault(friendA, new HashSet<>());
-        friendsSet.add(friendB);
-        totalFriendsMap.put(friendA, friendsSet);
+    public void relate(String user, String friend) {
+        Set<String> friendsSet = totalFriendsMap.getOrDefault(user, new HashSet<>());
+        friendsSet.add(friend);
+        totalFriendsMap.put(user, friendsSet);
     }
 
 
