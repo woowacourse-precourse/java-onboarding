@@ -16,9 +16,25 @@ public class Problem6 {
             if (name.length() < 2 || name.length() > 19) {
                 break;
             }
+
+            for(int j = 0; j<name.length()-1; j++){
+                String key = name.substring(j, j+2);
+                if(hashMap.containsKey(key)){
+                    String email = hashMap.get(key);
+                    if(!email.equals(forms.get(i).get(0))){
+                        emails.add(email);
+                        emails.add(forms.get(i).get(0));
+                    }
+                }
+                hashMap.put(key, forms.get(i).get(0));
+            }
         }
 
         List<String> answer = List.of("answer");
+
+        for(String str : emails){
+            answer.add(str);
+        }
 
         return answer;
     }
