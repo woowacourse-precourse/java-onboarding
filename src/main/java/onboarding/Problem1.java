@@ -14,14 +14,15 @@ class Problem1 {
         } catch (IllegalArgumentException e) {
             return (-1);
         }
-
-        // Get and return result
-
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        return result(pobisPages.score(), crongsPages.score());
     }
 
-    // TODO: int result(int pobi, int crong)
+    private static int result(int pobi, int crong) {
+        if (pobi == crong) {
+            return (0);
+        }
+        return (pobi > crong) ? 1 : 2;
+    }
 }
 
 class Spread {
