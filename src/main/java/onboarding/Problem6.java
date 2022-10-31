@@ -3,6 +3,7 @@ package onboarding;
 import java.util.*;
 
 public class Problem6 {
+
     public static List<String> solution(List<List<String>> forms) {
         String defaultDomain = "@email.com";
         HashMap<String, String> map = new HashMap<>();
