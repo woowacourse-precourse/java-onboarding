@@ -30,7 +30,11 @@ public class Problem7 {
 
 	public static void calcFriendsScore(Map<String, Integer> friendScore, List<List<String>> friends,
 		List<String> userFriends) {
+		
+	}
 
+	public static boolean isFriendsFriend(String user, String friendA, String friendB, List<String> userFriends) {
+		return userFriends.contains(friendA) && !friendB.equals(user);
 	}
 
 	public static void sortScore() {
