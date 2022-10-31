@@ -13,4 +13,9 @@ public class Problem5 {
         int numberOfMoney = money / currency;
         return numberOfMoney;
     }
+
+    private static int calculateChange(int money, int currency) {
+        int change = money % currency;
+        return change;
+    }
 }
