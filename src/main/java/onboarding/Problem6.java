@@ -69,6 +69,15 @@ public class Problem6 {
         return keyList;
     }
 
+    private static List<String> findCrewsHavingDuplicateNickName(List<List<String>> forms) {
+
+        for (int index = 0; index < forms.size(); index++) {
+            putDuplicateCrewInNoticesMap(forms.get(index), forms, index);
+        }
+
+        return sortByKey(new ArrayList<>(notices.keySet()));
+    }
+
     private static void validateForms(List<List<String>> forms) {
         for (List<String> form : forms) {
             isValidEmail(form.get(0));
@@ -76,4 +85,8 @@ public class Problem6 {
         }
     }
 
+    public static List<String> solution(List<List<String>> forms) {
+        validateForms(forms);
+        return findCrewsHavingDuplicateNickName(forms);
+    }
 }
