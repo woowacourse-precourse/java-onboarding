@@ -30,4 +30,12 @@ public class Problem4 {
         System.out.println("answer: " + answer);
         return answer;
     }
+/*
+    public static void main(String[] args) { // TEST
+        String s = "I love you";
+
+        solution(s);
+    }
+    
+ */
 }
