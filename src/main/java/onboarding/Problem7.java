@@ -12,9 +12,9 @@ import java.util.stream.Collectors;
 
 public class Problem7 {
 
-	private static final int limit = 5;
-	private static final int firstFriendAtFriendList = 0;
-	private static final int secondFriendAtFriendList = 1;
+	private static final int LIMIT = 5;
+	private static final int FIRST_FRIEND_AT_FRIEND_LIST = 0;
+	private static final int SECOND_FRIEND_AT_FRIEND_LIST = 1;
 
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
@@ -150,7 +150,7 @@ public class Problem7 {
 		countingMap.entrySet()
 				.stream()
 				.sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
-				.limit(Problem7.limit)
+				.limit(Problem7.LIMIT)
 				.forEachOrdered(x -> reverseSortedMap.put(x.getKey(), x.getValue()));
 		return reverseSortedMap;
 	}
@@ -158,12 +158,12 @@ public class Problem7 {
 
 	private static String getPairName(List<?> friendsList, int j) {
 
-		if (j == firstFriendAtFriendList) {
-			return (String) friendsList.get(secondFriendAtFriendList);
+		if (j == FIRST_FRIEND_AT_FRIEND_LIST) {
+			return (String) friendsList.get(SECOND_FRIEND_AT_FRIEND_LIST);
 		}
 
-		if (j == secondFriendAtFriendList) {
-			return (String) friendsList.get(firstFriendAtFriendList);
+		if (j == SECOND_FRIEND_AT_FRIEND_LIST) {
+			return (String) friendsList.get(FIRST_FRIEND_AT_FRIEND_LIST);
 		}
 
 		return (String) friendsList.get(j);
