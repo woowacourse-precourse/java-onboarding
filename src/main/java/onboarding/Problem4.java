@@ -10,7 +10,13 @@ public class Problem4 {
     private static final int LOWERCASE_Z_ASCIICODE = 122;
 
     public static String solution(String word) {
-        String answer = "";
+        String answer;
+
+        int[] asciiCodes = convertStringtoASCIICode(word);
+        int[] reverseAsciiCodes = reverseLetter(asciiCodes);
+
+        answer = convertASCIICodetoString(reverseAsciiCodes);
+
         return answer;
     }
 
@@ -55,5 +61,18 @@ public class Problem4 {
         }
 
         return reverseAsciiCodes;
+    }
+
+    public static String convertASCIICodetoString(int[] reverseAsciiCodes) {
+        char[] reverseWords = new char[reverseAsciiCodes.length];
+        String result;
+
+        for (int i = 0; i < reverseAsciiCodes.length; i++) {
+            reverseWords[i] = (char) reverseAsciiCodes[i];
+        }
+
+        result = String.valueOf(reverseWords);
+
+        return result;
     }
 }
