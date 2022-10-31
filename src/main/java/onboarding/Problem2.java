@@ -34,19 +34,19 @@ public class Problem2 {
     }
 
     private static void validateCryptogram(String cryptogram) {
-        if(!validateCryptogramLength(cryptogram)) {
+        if(!validateCryptogramLengthFail(cryptogram)) {
             throw new IllegalArgumentException(EXCEPTION_MESSAGE_PREFIX + CRYPTOGRAM_LENGTH_EXCEPTION_MESSAGE);
         }
-        if(!validateCryptogramType(cryptogram)) {
+        if(!validateCryptogramTypeFail(cryptogram)) {
             throw new IllegalArgumentException(EXCEPTION_MESSAGE_PREFIX + CRYPTOGRAM_TYPE_EXCEPTION_MESSAGE);
         }
     }
 
-    private static boolean validateCryptogramLength(String cryptogram) {
-        return (cryptogram.length() >= MIN_CRYPTOGRAM_LENGTH && cryptogram.length() <= MAX_CRYPTOGRAM_LENGTH);
+    private static boolean validateCryptogramLengthFail(String cryptogram) {
+        return (cryptogram.length() < MIN_CRYPTOGRAM_LENGTH || cryptogram.length() > MAX_CRYPTOGRAM_LENGTH);
     }
 
-    private static boolean validateCryptogramType(String cryptogram) {
-        return (Pattern.compile(CRYPTOGRAM_TYPE_REGEX).matcher(cryptogram).matches());
+    private static boolean validateCryptogramTypeFail(String cryptogram) {
+        return (!Pattern.compile(CRYPTOGRAM_TYPE_REGEX).matcher(cryptogram).matches());
     }
 }
