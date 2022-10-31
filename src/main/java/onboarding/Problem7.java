@@ -9,6 +9,10 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
         Problem7 P = new Problem7();
         List<String> following = P.checkFriend(user, friends);
+
+        for(List list : friends) {
+            P.checkNeighbor(list, following, user);
+        }
         return answer;
     }
 
@@ -21,6 +25,18 @@ public class Problem7 {
             }
         }
         return following;
+    }
+
+    // 함께 아는 친구인지 확인하는 메서드
+    public boolean checkNeighbor (List<String> friends, List<String> following, String user) {
+        boolean check = false;
+        if(friends.contains(user)) return false;
+        for(String s : following){
+            if(friends.contains(s)){
+                check = true;
+            }
+        }
+        return check;
     }
 }
 
