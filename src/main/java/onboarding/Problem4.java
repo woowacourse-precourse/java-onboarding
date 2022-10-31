@@ -42,7 +42,12 @@ class Result {
 
     public void changeUpperAndLower(){
         for(char wordChar:wordArray){
-
+            if(isAlphaLower(wordChar)){
+                toUpperCase(wordChar);
+            }
+            if(isAlphaUpper(wordChar)){
+                toLowerCase(wordChar);
+            }
         }
     }
 
@@ -60,6 +65,13 @@ class Result {
         return false;
     }
 
+    public char toUpperCase(char wordChar){
+        return Character.toUpperCase(wordChar);
+    }
+
+    public char toLowerCase(char wordChar){
+        return Character.toLowerCase(wordChar);
+    }
 
 }
 
