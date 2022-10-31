@@ -23,7 +23,6 @@ class Problem1 {
         return Math.max(sum,multiple);
     }
 
-
     public static boolean isSatisfiedCondition(int leftPage, int rightPage) {
         if (leftPage%2 != 1 || rightPage%2 != 0) {
             return false;
@@ -37,13 +36,23 @@ class Problem1 {
         return true;
     }
 
-
+    public static int compare(int pobiMax, int crongMax) {
+        if (pobiMax == -1 || crongMax == -1) {
+            return -1;
+        }
+        if (pobiMax > crongMax) {
+            return 1;
+        }
+        if (crongMax > pobiMax) {
+            return 2;
+        }
+        return 0;
+    }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
         int pobiMax = calculate(pobi.get(0),pobi.get(1));
         int crongMax = calculate(crong.get(0), crong.get(1));
 
-        return answer;
+        return compare(pobiMax,crongMax);
     }
 }
