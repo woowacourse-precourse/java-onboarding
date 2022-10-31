@@ -15,4 +15,14 @@ public class Problem6 {
         }
         return tokens;
     }
+    public static Boolean compareToToken(List<String> tokenList, List<String> tokenList2) {
+        boolean flag = true;
+        for(int i = 0; i < tokenList.size(); i++) {
+            if (tokenList2.contains(tokenList.get(i))) {
+                flag = false;
+                break;
+            }
+        }
+        return flag;
+    }
 }
