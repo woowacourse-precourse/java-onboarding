@@ -71,9 +71,8 @@ class Problem1 {
         if(notAdjacent(gamer1) || notAdjacent(gamer2)) {
             return true;
         }
-        // 시작 면이나 마지막 면이 나오는지 검증
-        if(gamer1.get(0) == MIN_PAGE || gamer1.get(1) == MAX_PAGE
-                || gamer2.get(0) == MIN_PAGE || gamer2.get(1) == MAX_PAGE) {
+
+        if(isStartOrLast(gamer1) || isStartOrLast(gamer2)) {
             return true;
         }
 
@@ -105,6 +104,15 @@ class Problem1 {
         int leftPage = gamer.get(0);
         int rightPage = gamer.get(1);
         if(rightPage - leftPage != 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    private static boolean isStartOrLast(List<Integer> gamer) {
+        int leftPage = gamer.get(0);
+        int rightPage = gamer.get(1);
+        if (leftPage == MIN_PAGE || rightPage == MAX_PAGE) {
             return true;
         } else {
             return false;
