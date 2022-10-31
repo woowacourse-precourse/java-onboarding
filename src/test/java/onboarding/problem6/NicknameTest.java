@@ -18,7 +18,7 @@ public class NicknameTest {
 		Nickname nickname = new Nickname(name);
 		Nickname otherNickname = new Nickname(otherName);
 
-		assertThat(nickname.hasOverlapOf(otherNickname)).isEqualTo(expected);
+		assertThat(nickname.hasOverlapWith(otherNickname)).isEqualTo(expected);
 	}
 
 	@Test

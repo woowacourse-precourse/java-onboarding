@@ -16,7 +16,7 @@ public class Request {
 	}
 
 	public boolean hasOverlapWith(Request other) {
-		return nickname.hasOverlapOf(other.nickname);
+		return nickname.hasOverlapWith(other.nickname);
 	}
 
 	public String getEmail() {
