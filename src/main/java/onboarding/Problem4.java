@@ -6,7 +6,7 @@ public class Problem4 {
     private static final char UPPERCASE_BASE_CHAR = 'A';
 
     public static String solution(String word) {
-        String answer = "";
+        String answer = convertTextToOpposite(word);
         return answer;
     }
 
