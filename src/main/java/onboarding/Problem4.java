@@ -24,7 +24,14 @@ public class Problem4 {
         return ch;
     }
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        StringBuilder result = new StringBuilder("");
+
+        for(int i=0; i<word.length(); i++){
+            char current = word.charAt(i);
+            if(!isAlpha(current)) result.append(current);
+            else result.append(ConvertCharacter(current));
+        }
+        return result.toString();
     }
+
 }
