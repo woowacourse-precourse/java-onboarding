@@ -2,44 +2,42 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = getEmailList(forms);
+        List<String> answer = getResult(forms);
         return answer;
     }
 
-    static List<String> getEmailList(List<List<String>> forms) {
-        List<String> answer = new ArrayList<>();
-        List<String> twoCharList = new ArrayList<>();
-        for (int i=0;i<forms.size();i++) {
-            String name = forms.get(i).get(1);
-            if (name.length() == 1 && !twoCharList.contains(name)) {
-                twoCharList.add(name);
-                answer.add(forms.get(i).get(0));
-            } else {
-                for (int j=1;j<name.length();j++) {
-                    String twoChar = name.substring(j-1,j+1);
+    static List<String> getResult(List<List<String>> forms) {
+        HashMap<String,String> words = new HashMap<>();
+        List<String> result = new ArrayList<>();
 
-                    if (twoCharList.contains(twoChar)
-                        && !answer.contains(forms.get(i).get(0))) {
-                        answer.add(forms.get(i).get(0));
-                        if (answer.size()==1) {
-                            for (int k=0;k<i;k++) {
-                                if (forms.get(k).get(1).contains(twoChar)) {
-                                    answer.add(forms.get(k).get(0));
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                    if (twoCharList.contains(twoChar)) continue;
-                    twoCharList.add(twoChar);
+        for (int i=0;i<forms.size();i++) {
+            for (String twoWord : getWordList(forms.get(i).get(1))) {
+                String email = forms.get(i).get(0);
+                if (words.get(twoWord) == null) {
+                    words.put(twoWord, email);
+                    continue;
                 }
+                if (result.contains(email)) continue;
+                if (!result.contains(words.get(twoWord)))
+                    result.add(words.get(twoWord));
+                result.add(email);
             }
         }
-        Collections.sort(answer);
-        return answer;
+
+        Collections.sort(result);
+        return result;
+    }
+
+    static List<String> getWordList(String name) {
+        List<String> wordList = new ArrayList<>();
+        if (name.length() == 1) return wordList;
+        for (int i=1;i<name.length();i++)
+            wordList.add(name.substring(i-1, i+1));
+        return wordList;
     }
 }
