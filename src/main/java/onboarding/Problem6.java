@@ -15,6 +15,7 @@ class NameStringClassForPro6 {
 
   public NameStringClassForPro6(List<List<String>> forms) {
     ExceptionClassForPro6 exceptionClass = new ExceptionClassForPro6(forms);
+    exceptionClass = null;
     nameString = new String[forms.size()];
     nameSet = new HashSet<>();
     fillNameString(forms);

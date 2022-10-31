@@ -75,6 +75,7 @@ class UserSelectedForPro7 {
   public UserSelectedForPro7(String user, List<List<String>> friends, List<String> visitors) {
     ExceptionClassForPro7 exceptionClassForPro7 = new ExceptionClassForPro7(user, friends,
         visitors);
+    exceptionClassForPro7 = null;
     FriendForPro7 friendClass = new FriendForPro7();
     Set<String> friendSet = friendClass.makeFriendSet(friends, new HashSet<>());
     ScoreForPro7 scoreClass = new ScoreForPro7(friendSet, user);
