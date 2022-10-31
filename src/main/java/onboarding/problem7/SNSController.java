@@ -24,6 +24,12 @@ public class SNSController {
         addPointsToHashMap(recommendPoints, visitorPoints);
         removeMyFriends(userName, recommendPoints);
 
+        return getRecommendedUserNames(recommendPoints);
+
+    }
+
+    private List<String> getRecommendedUserNames(HashMap<String, RecommendPoint> recommendPoints) {
+
         List<RecommendPoint> points = new ArrayList<>(recommendPoints.values());
         Collections.sort(points);
 
@@ -31,8 +37,7 @@ public class SNSController {
             points = points.subList(0, 5);
         }
 
-        return points.stream().map(p -> p.getName() ).collect(Collectors.toList());
-
+        return points.stream().map(p -> p.getName()).collect(Collectors.toList());
     }
 
     private void addPointsToHashMap(HashMap<String, RecommendPoint> pointHasMap, List<RecommendPoint> points){
