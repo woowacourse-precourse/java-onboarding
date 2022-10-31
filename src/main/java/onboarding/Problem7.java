@@ -18,4 +18,18 @@ public class Problem7 {
         }
         return realFriend;
     }
+
+    public static HashMap<String, Integer> findMyFriendsFriend(String user, List<String> myFriend, List<List<String>> friendsList) {
+
+        HashMap<String, Integer> myFriendsFriend = new HashMap<>();
+        for(int i = 0; i < friendsList.size(); i++) {
+            int count = 10;
+            if (!friendsList.get(i).get(1).equals(user) && myFriend.contains(friendsList.get(i).get(0))) {
+                myFriendsFriend.put(friendsList.get(i).get(1), count * 10);
+            }
+        }
+        myFriendsFriend = sortByValue(myFriendsFriend);
+        return myFriendsFriend;
+    }
+
 }
