@@ -112,6 +112,22 @@ class Problem1 {
                 .reduce(1, (a, b) -> a * b);
     }
 
+    /**
+     * 주어진 page로 점수를 산정하고, 가장 점수가 높은 점수를 반환합니다.
+     *
+     * @param page 페이지가 담긴 리스트
+     * @return 가장 높은 점수
+     */
+    public static int getHigherNumber(List<Integer> page) {
+        int leftPage = page.get(0);
+        int rightPage = page.get(1);
+
+        int sumOfPage = getPageSum(leftPage, rightPage);
+        int productOfPage = getPageProduct(leftPage, rightPage);
+
+        return Math.max(sumOfPage, productOfPage);
+    }
+
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
