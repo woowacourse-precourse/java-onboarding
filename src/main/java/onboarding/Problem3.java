@@ -5,6 +5,7 @@ public class Problem3 {
         int answer = 0;
         return answer;
     }
+
     public static int count369DigitNumber(int x){
         int count = 0;
         for(int digit; x != 0; x /= 10){
