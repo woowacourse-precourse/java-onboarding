@@ -1,9 +1,7 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -20,6 +18,8 @@ public class Problem7 {
         userHashMap = makeHashMap(userHashMap, user, friends);
         scoreHashMap = getScoreHashMap(userHashMap, scoreHashMap, user, friends);
         scoreHashMap = plusVisitorsScoreHashMap(scoreHashMap, visitors, userHashMap, user);
+
+        answer = getResult(scoreHashMap);
 
         return answer;
     }
@@ -125,6 +125,29 @@ public class Problem7 {
         }
 
         return scoreHashMap;
+    }
+
+    public static List<String> getResult(HashMap<String, Integer> scoreHashMap) {
+        List<String> result = new ArrayList<>();
+
+        List<Map.Entry<String, Integer>> scoreEntries
+                = scoreHashMap.entrySet().stream()
+                .sorted(Map.Entry.comparingByKey())
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .collect(Collectors.toList());
+
+        for (int i = 0; i < scoreEntries.size(); i++) {
+            if (scoreEntries.get(i).getValue() > 0) {
+                result.add(scoreEntries.get(i).getKey());
+            }
+
+            if (result.size() >= 5) {
+                break;
+            }
+
+        }
+
+        return result;
     }
 
 }
