@@ -23,7 +23,7 @@ class Problem1 {
         int rightPlusNum = getPlusNumber(rightArray);
         int leftMultiplyNum=getMultiplyNumber(leftArray);
         int rightMultiplyNum=getMultiplyNumber(rightArray);
-        return 1;
+        return getMax(leftPlusNum,rightPlusNum,leftMultiplyNum,rightMultiplyNum);
     }
     public static int[] getNumArray(List<Integer> numList,int index){
         return Stream.of(String.valueOf(numList.get(index)).split(""))
@@ -35,6 +35,11 @@ class Problem1 {
     }
     public static int getMultiplyNumber(int[] arr){
         return Arrays.stream(arr).reduce(1,(a,b) -> a*b);
+    }
+    public static int getMax(int num1,int num2,int num3, int num4){
+        return Arrays.stream(new int[]{num1,num2,num3,num4})
+                .max()
+                .getAsInt();
     }
     public static boolean checkException(List<Integer> checkList){
         Integer leftNum = checkList.get(0)+1;
