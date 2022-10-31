@@ -6,16 +6,17 @@ public class Problem3 {
 
         for (int i=1; i<=number; i++) {
             String numStr = Integer.toString(i);
-            int threeCount = numStr.length()
-                    - numStr.replace("3", "").length();
-            int sixCount = numStr.length()
-                    - numStr.replace("6", "").length();
-            int nineCount = numStr.length()
-                    - numStr.replace("9", "").length();
+            int threeCount = getNumberCount(numStr, "3");
+            int sixCount = getNumberCount(numStr, "6");
+            int nineCount = getNumberCount(numStr, "9");
             answer += (threeCount + sixCount + nineCount);
         }
 
         return answer;
+    }
+
+    public static int getNumberCount(String numStr, String targetNum) {
+        return numStr.length() - numStr.replace(targetNum, "").length();
     }
 }
 
