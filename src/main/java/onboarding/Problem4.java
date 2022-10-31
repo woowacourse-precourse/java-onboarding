@@ -16,7 +16,7 @@ public class Problem4 {
 
 	public static String solution(String word) {
 		makeGraph();
-
+		frog(word);
 		return answer;
 	}
 
@@ -39,5 +39,18 @@ public class Problem4 {
 		}
 
 		graph.put(32, 32);
+	}
+
+	/**
+	 * 
+	 * word를 한 문자씩 잘라내어 int로 변환 뒤 그에 맞는 value 값을 가져오고 answer에 더하는 기능이다.
+	 * 
+	 * @param word
+	 */
+	public static void frog(String word) {
+		for (int i = 0; i < word.length(); i++) {
+			int tmp = graph.get((int) word.charAt(i));
+			answer += (char) tmp;
+		}
 	}
 }
