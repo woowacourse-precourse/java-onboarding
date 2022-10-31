@@ -41,4 +41,20 @@ class PageNumTest {
 		assertThat(6).isEqualTo(addPage);
 		assertThat(12).isEqualTo(addPage2);
 	}
+
+	@Test
+	public void 페이지_각_자리수_곱하기() {
+		//given
+		PageNum pageNum = new PageNum(123);
+		PageNum pageNum2 = new PageNum(345);
+		PageNum pageNum3 = new PageNum(40);
+		//when
+		int mulPage = pageNum.multiplyEachPageNumber();
+		int mulPage2 = pageNum2.multiplyEachPageNumber();
+		int mulPage3 = pageNum3.multiplyEachPageNumber();
+		//then
+		assertThat(6).isEqualTo(mulPage);
+		assertThat(60).isEqualTo(mulPage2);
+		assertThat(0).isEqualTo(mulPage3);
+	}
 }
