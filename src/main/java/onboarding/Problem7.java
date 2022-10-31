@@ -12,6 +12,36 @@ public class Problem7 {
         // 그래프 구조로 친구 관계를 만들기
         List<String>[] friendList = makeFriendGraph(memberList, friends);
 
+        // 입력받은 user가 친구가 없는 경우
+        if(!memberList.contains(user)){
+            // 방문자로 점수 처리
+            // 방문자를 중복 없는 리스트로 정리
+            List<String> visitorList = visitorList(visitors);
+
+            // 방문자 횟수로 점수 매김
+            int[] visitorPoint = makeVisitorPointArr(visitorList, visitors);
+
+            // 우선순위 큐로 정렬
+            PriorityQueue<User> visitorPQ = new PriorityQueue<>();
+            for(int i=0; i<visitorPoint.length; i++){
+                String name = visitorList.get(i);
+                int point = visitorPoint[i];
+
+                visitorPQ.add(new User(name, point));
+            }
+
+            while (!visitorPQ.isEmpty()){
+                User nowUser = visitorPQ.poll();
+
+                String nowName = nowUser.name;
+                int nowPoint = nowUser.point;
+
+                answer.add(nowName);
+            }
+
+            return answer;
+        }
+
         // 사용자와 함께 아는 친구의 점수를 매김(10점)
         int userIdx = memberList.indexOf(user); // 파라미터로 받은 유저의 인덱스
         int[] memberPoint = new int[memberList.size()]; // 추천 점수 표시할 배열
@@ -249,5 +279,4 @@ public class Problem7 {
         return recommendPoint;
     }
 
-    
 }
