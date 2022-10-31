@@ -4,15 +4,15 @@ import java.util.LinkedList;
 
 public class Returner {
 
-    //반환 기능
-    public static String returnToString(LinkedList<String> encodeList) {
+    public static String returnToString(LinkedList<String> save) {
 
-        String decode = "";
+        String result = "";
 
-        for(int i=0; i< encodeList.size(); i++){
-            decode += encodeList.get(i);
+        for(int i=0; i<save.size(); i++){
+            result += save.get(i);
         }
 
-        return decode;
+        return result;
     }
+
 }
