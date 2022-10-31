@@ -32,6 +32,10 @@ class Suggestion {
         return this.score;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void calculateScore(Crew user, Map<String, Crew> friends, List<String> visitors) {
         score += user.getKnowEachOtherFriends(friends.get(name)).size() * 10;
         score += visitors.stream()
@@ -41,18 +45,20 @@ class Suggestion {
 }
 
 class Crew {
-    private String name;
     private List<String> friends;
     private List<Suggestion> suggestions;
 
-    public Crew(String name) {
-        this.name = name;
+    public Crew() {
         friends = new ArrayList<>();
         suggestions = new ArrayList<>();
     }
 
     public List<String> getFriends() {
         return friends;
+    }
+
+    public List<Suggestion> getSuggestions() {
+        return suggestions;
     }
 
     public void addSuggestion(String crew, Map<String, Crew> friends, List<String> visitors) {
@@ -74,7 +80,7 @@ class Crew {
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        Map<String, Crew> friendsMap = initFriendsMap(friends);
+        Map<String, Crew> friendsMap = initFriendsMap(friends, visitors);
 
         Crew currentUser = friendsMap.get(user);
 
@@ -82,10 +88,16 @@ public class Problem7 {
                 .filter(crew -> !crew.equals(user) && !currentUser.isFriend(crew))
                 .forEach(crew -> currentUser.addSuggestion(crew, friendsMap, visitors));
 
-        return List.of();
+        return currentUser.getSuggestions().stream()
+                .filter(suggestion -> suggestion.getScore() > 0)
+                .sorted(Comparator.comparing(Suggestion::getScore, Comparator.reverseOrder())
+                        .thenComparing(Suggestion::getName))
+                .limit(5)
+                .map(Suggestion::getName)
+                .collect(Collectors.toList());
     }
 
-    private static Map<String, Crew> initFriendsMap(List<List<String>> friends) {
+    private static Map<String, Crew> initFriendsMap(List<List<String>> friends, List<String> visitors) {
         Map<String, Crew> friendsMap = new HashMap<>();
 
         for (List<String> friend : friends) {
@@ -93,14 +105,19 @@ public class Problem7 {
             String crewB = friend.get(1);
 
             if (!friendsMap.containsKey(crewA)) {
-                friendsMap.put(crewA, new Crew(crewA));
+                friendsMap.put(crewA, new Crew());
             }
             if (!friendsMap.containsKey(crewB)) {
-                friendsMap.put(crewB, new Crew(crewB));
+                friendsMap.put(crewB, new Crew());
             }
-
             friendsMap.get(crewA).getFriends().add(crewB);
             friendsMap.get(crewB).getFriends().add(crewA);
         }
+
+        visitors.stream()
+                .filter(visitor -> !friendsMap.containsKey(visitor))
+                .forEach(visitor -> friendsMap.put(visitor, new Crew()));
+
+        return friendsMap;
     }
 }
