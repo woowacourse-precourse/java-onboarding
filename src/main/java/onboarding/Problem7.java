@@ -15,23 +15,29 @@ public class Problem7 {
      * @return
      */
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        FriendsMap<String, Set<String>> totalFriendsMap = new FriendsMap<>(friends);
+        FriendsRelation totalFriendsRelation = new FriendsRelation(friends);
         List<String> answer = Collections.emptyList();
         return answer;
     }
 }
 
-class FriendsMap<K, V> {
-    private final Map<K, V> totalFriendsMap = new HashMap<>();
+class FriendsRelation {
+    private final Map<String, Set<String>> totalFriendsMap = new HashMap<>();
 
-    public FriendsMap(List<List<K>> friends) {
+    public FriendsRelation(List<List<String>> friends) {
 
-        for (List<K> friend : friends) {
-            K friendA = friend.get(0);
-            K friendB = friend.get(1);
-            this.put(friendA, friendB);
-            this.put(friendB, friendA);
+        for (List<String> friend : friends) {
+            String friendA = friend.get(0);
+            String friendB = friend.get(1);
+            relate(friendA, friendB);
+            relate(friendB, friendA);
         }
+    }
+
+    public void relate(String friendA, String friendB) {
+        Set<String> friendsSet = totalFriendsMap.getOrDefault(friendA, new HashSet<>());
+        friendsSet.add(friendB);
+        totalFriendsMap.put(friendA, friendsSet);
     }
 
 
