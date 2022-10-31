@@ -30,6 +30,9 @@ public class Problem5 {
         answer.add(remain/50);
         remain = remain%50;
 
+        answer.add(remain/10);
+        remain = remain%10;
+
         return answer;
     }
 }
