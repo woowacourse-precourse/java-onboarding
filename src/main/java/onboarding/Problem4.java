@@ -5,7 +5,7 @@ public class Problem4 {
         String answer = "";
         
         for(char spell : word.toCharArray()) {
-        	frog(spell);
+        	frog(spell);        	 
         }
         
         return answer;
@@ -15,9 +15,9 @@ public class Problem4 {
     	int ascii = (int)spell;
     	System.out.println("변환 전 : " + ascii);
     	
-    	if(ascii>=65&&ascii<=90) {
-    		ascii = 155-ascii;
-    	}
+    	if(ascii>=65&&ascii<=90) ascii = 155-ascii;
+    	else if(ascii>=97&&ascii<=122) ascii = 219-ascii;
+    	
     	System.out.println("변환 후 : " + ascii);
     	spell = (char)ascii;
     	
