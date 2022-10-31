@@ -6,30 +6,31 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Problem7 {
+    static HashMap<String, List<String>> friendship = new HashMap<>();
+    static HashMap<String, Integer> scores = new HashMap<>();
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
-        HashMap<String, List<String>> friendship = new HashMap<>();
         List<String> userFriends;
-        HashMap<String, Integer> scores = new HashMap<>();
 
-        makeFriendship(friends, friendship);
+        makeFriendship(friends);
         userFriends = friendship.get(user);
         for (String crew : friendship.keySet()) {
             if (crew.equals(user)) {
                 continue;
             }
-            makeScoresWithFriendship(friendship, scores, userFriends, crew);
+            makeScoresWithFriendship(userFriends, crew);
         }
-        updateScoresWithVisitors(scores, userFriends, visitors);
+        updateScoresWithVisitors(userFriends, visitors);
         System.out.println("scores = " + scores);
         //TODO: 가장 큰 5개 뽑는 것과 정렬 만들기
         return answer;
     }
 
-    public static void makeScoresWithFriendship(HashMap<String, List<String>> friendship, HashMap<String, Integer> scores, List<String> userFriends, String crew) {
+    public static void makeScoresWithFriendship(List<String> userFriends, String crew) {
         int score = 0;
 
-가        if (userFriends.contains(crew)) {
+        if (userFriends.contains(crew)) {
             return;
         }
         for (String crewFriend : friendship.get(crew)) {
@@ -40,7 +41,7 @@ public class Problem7 {
         scores.put(crew, score);
     }
 
-    public static void updateScoresWithVisitors(HashMap<String, Integer> scores, List<String> userFriends, List<String> visitors) {
+    public static void updateScoresWithVisitors(List<String> userFriends, List<String> visitors) {
         int score;
 
         for (String visitor : visitors) {
@@ -55,19 +56,19 @@ public class Problem7 {
             scores.put(visitor, 1);
         }
     }
-    public static void makeFriendship(List<List<String>> friends, HashMap<String, List<String>> friendship) {
+    public static void makeFriendship(List<List<String>> friends) {
         String crew1, crew2;
 
         for (List<String> friend : friends) {
             crew1 = friend.get(0);
             crew2 = friend.get(1);
 
-            addFriendship(friendship, crew1, crew2);
-            addFriendship(friendship, crew2, crew1);
+            addFriendship(crew1, crew2);
+            addFriendship(crew2, crew1);
         }
     }
 
-    private static void addFriendship(HashMap<String, List<String>> friendship, String crew1, String crew2) {
+    private static void addFriendship(String crew1, String crew2) {
         List<String> relationship;
 
         if (friendship.get(crew1) == null) {
