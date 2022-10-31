@@ -8,6 +8,7 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
         List<String> recomList =new ArrayList<>();
+        List<String> userFriends = new ArrayList<>();
 
         for (int i = 0; i < friends.size(); i++) {
             for (int j = 0; j < 2; j++) {
@@ -25,6 +26,18 @@ public class Problem7 {
                 recomList.add(name);
             }
         }
+
+        for (int i = 0; i < friends.size(); i++) {
+            for (int j = 0; j < 2; j++) {
+                if (friends.get(i).get(j) == user) {
+                    if(!userFriends.contains(friends.get(i).get((j+1)%2))) {
+                        userFriends.add(friends.get(i).get((j+1)%2));
+                    }
+                }
+            }
+        }
+
+
 
 
 
