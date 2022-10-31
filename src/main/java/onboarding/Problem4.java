@@ -10,4 +10,7 @@ public class Problem4 {
         return Character.isUpperCase(alphabet);
     }
 
+    private static int alphabetToAscii(char alphabet) {
+        return (int) alphabet;
+    }
 }
