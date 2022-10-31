@@ -4,8 +4,13 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        HashMap<String, Integer> hashMap = new HashMap<>();
+
+        List<String> userFriends = findUserFriends(user, friends);
+        calculateFriendsScore(friends,userFriends,hashMap,user);
+        calculateVisitors(visitors,userFriends,hashMap);
+
+        return sortScore(hashMap);
     }
 
     public static List<String> findUserFriends(String user, List<List<String>> friends){
