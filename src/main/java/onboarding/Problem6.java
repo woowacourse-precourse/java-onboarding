@@ -52,6 +52,19 @@ public class Problem6 {
         return nicknameList;
     }
 
+    // nickname 으로 중복 확인 검사 양식 리스트 만들기
+    public static List<String> extractCheckFormListByNickname(String nickname) {
+        int nicknameLength = nickname.length();
+        List<String> checkFormList = new ArrayList<>();
+
+        // 순회중인 닉네임의 길이만큼 순회
+        for (int nicknameIndex = 0; nicknameIndex < nicknameLength - 1; nicknameIndex++) {
+            // 중복검사 양식 셋팅 (현재 입력받은 닉네임의 두 글자씩 순회하여 조합)
+            checkFormList.add(nickname.substring(nicknameIndex, nicknameIndex + 2));
+        }
+        return checkFormList;
+    }
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
