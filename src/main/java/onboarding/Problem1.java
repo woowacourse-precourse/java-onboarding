@@ -10,6 +10,8 @@ class Problem1 {
     private static final int POBI_WIN = 1;
     private static final int CRONG_WIN = 2;
     private static final int INPUT_LEN = 2;
+    private static final int PAGE_MIN = 1;
+    private static final int PAGE_MAX = 400;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if (isInvalidInput(pobi) || isInvalidInput(crong)) {
@@ -32,9 +34,9 @@ class Problem1 {
         return DRAW;
     }
 
-    private static int computeScore(int leftPageNum, int rightPageNum) {
-        int leftPageScore = Math.max(plusEachDigit(leftPageNum), multiplyEachDigit(leftPageNum));
-        int rightPageScore = Math.max(plusEachDigit(rightPageNum), multiplyEachDigit(rightPageNum));
+    private static int computeScore(int leftPage, int rightPage) {
+        int leftPageScore = Math.max(plusEachDigit(leftPage), multiplyEachDigit(leftPage));
+        int rightPageScore = Math.max(plusEachDigit(rightPage), multiplyEachDigit(rightPage));
 
         return Math.max(leftPageScore, rightPageScore);
     }
@@ -59,11 +61,14 @@ class Problem1 {
         if (input.size() != INPUT_LEN) {
             return true;
         }
+        int leftPage = input.get(0);
+        int rightPage = input.get(1);
 
-        int leftPageNum = input.get(0);
-        int rightPageNum = input.get(1);
+        return isInValidPage(leftPage) || isInValidPage(rightPage) || !isOdd(leftPage) || isOdd(rightPage) || leftPage + 1 != rightPage;
+    }
 
-        return !isOdd(leftPageNum) || isOdd(rightPageNum) || leftPageNum + 1 != rightPageNum;
+    private static boolean isInValidPage(int page) {
+        return page < PAGE_MIN || page > PAGE_MAX;
     }
 
     private static boolean isOdd(int num) {
