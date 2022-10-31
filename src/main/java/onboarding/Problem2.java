@@ -7,7 +7,11 @@ public class Problem2 {
         String password = "";
 
         while (true) {
+            password = deleteDuplicate(cryptogram, cryptogram.length());
+
             if (cryptogram.equals(password)) break;
+
+            cryptogram = password;
         }
 
         return password;
