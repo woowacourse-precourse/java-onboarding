@@ -49,7 +49,7 @@ class Problem1 {
         if (value / 10 == 0) {
             return value;
         } else {
-            return multiplier(value / 10) * value % 10;
+            return multiplier(value / 10) * (value % 10);
         }
     }
 
