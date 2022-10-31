@@ -1,6 +1,6 @@
 package onboarding.problem4;
 
-class ReverseGenerator {
+public class ReverseGenerator {
     private String word;
     private StringBuilder reversed;
 

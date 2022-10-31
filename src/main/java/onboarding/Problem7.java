@@ -1,4 +1,6 @@
-package onboarding.problem7;
+package onboarding;
+
+import onboarding.problem7.SNS;
 
 import java.util.*;
 import java.util.stream.Collectors;

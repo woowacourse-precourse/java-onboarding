@@ -1,6 +1,6 @@
 package onboarding.probelm2;
 
-class CryptogramGenerator {
+public class CryptogramGenerator {
     private StringBuilder cryptogram;
 
     public CryptogramGenerator(String cryptogram) {

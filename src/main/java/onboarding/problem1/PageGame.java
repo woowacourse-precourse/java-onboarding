@@ -2,7 +2,7 @@ package onboarding.problem1;
 
 import java.util.List;
 
-class PageGame {
+public class PageGame {
     private PageOperator pageOperator;
     private List<Integer> pobis;
     private List<Integer> crongs;

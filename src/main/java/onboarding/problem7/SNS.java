@@ -4,7 +4,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-class SNS {
+public class SNS {
 
     private Database database;
 

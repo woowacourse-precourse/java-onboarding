@@ -1,6 +1,6 @@
 package onboarding.problem3;
 
-class Game {
+public class Game {
     private int number;
     private int sum;
 
