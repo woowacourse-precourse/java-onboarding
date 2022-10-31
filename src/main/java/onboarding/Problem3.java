@@ -12,14 +12,23 @@ public class Problem3 {
 
             if(tmp.contains("3") || tmp.contains("6") || tmp.contains("9")) {
                 for (int j = 0; j < tmp.length(); j++) {
-                    if(tmp.charAt(i) == '3' || tmp.charAt(i) == '6' || tmp.charAt(i) == '9') {
-                        count++;
-                    }
+                    // 2. 뽑아낸 숫자가 3, 6, 9 존재하는 지 확인하는 함수
+                    if(isThreeSixNine(tmp.charAt(j))) count++;
                 }
             }
 
         }
 
         return answer;
+    }
+
+    /**
+     * 해당 숫자가 3, 6, 9에 해당되는지 판별하는 함수
+     * @param {Character} c
+     * @return {boolean}
+     */
+    public static boolean isThreeSixNine(Character c) {
+        if(c == '3' || c == '6' || c == '9') return true;
+        else return false;
     }
 }
