@@ -9,6 +9,16 @@ class Problem1 {
         }
         int answer = Integer.MAX_VALUE;
 
+        int pobi_maxvalue = Math.max( Math.max(plusEachDigit(pobi.get(0)) ,plusEachDigit(pobi.get(1))),
+                Math.max(multiEachDigit(pobi.get(0)) ,multiEachDigit(pobi.get(1))) );
+
+        int crong_maxvalue= Math.max(Math.max(plusEachDigit(crong.get(0)) ,plusEachDigit(crong.get(1))),
+                Math.max(multiEachDigit(crong.get(0)) ,multiEachDigit(crong.get(1))) );
+
+        if(pobi_maxvalue == crong_maxvalue) answer = 0;
+        else if(pobi_maxvalue > crong_maxvalue) answer =1;
+        else if (pobi_maxvalue < crong_maxvalue) answer =2;
+
         return answer;
     }
 
