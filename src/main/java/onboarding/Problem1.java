@@ -1,13 +1,19 @@
 package onboarding;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        return 1;
+        if(!validation(pobi) || !validation(crong)){
+            return -1;
+        }
+        int pobiNum = selectValue(pobi);
+        int crongNum = selectValue(crong);
+
+        return selectWinner(pobiNum,crongNum);
+
     }
 
     public static boolean validation(List<Integer> pages) {
