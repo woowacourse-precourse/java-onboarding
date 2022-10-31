@@ -1,5 +1,6 @@
 package onboarding;
 
+
 import java.util.*;
 
 public class Problem7 {
@@ -7,13 +8,7 @@ public class Problem7 {
         List<String> friendList = new ArrayList<>();
         HashMap<String, Integer> result = new HashMap<>();
 
-        for (int i = 0; i < friends.size(); i += 1) {
-            if (friends.get(i).get(1) == user) {
-                friendList.add(friends.get(i).get(0));
-            } else if (friends.get(i).get(0) == user) {
-                friendList.add(friends.get(i).get(1));
-            }
-        }
+        friendList = getUserFriends(friends, user);
 
         for (int i = 0; i < friends.size(); i += 1) {
             for (int j = 0; j < friendList.size(); j += 1) {
@@ -68,5 +63,17 @@ public class Problem7 {
         }
 
         return answer;
+    }
+
+    public static List<String> getUserFriends(List<List<String>> friends, String user){
+        List<String> list = new ArrayList<>();
+        for (int i = 0; i < friends.size(); i += 1) {
+            if (friends.get(i).get(1) == user) {
+                list.add(friends.get(i).get(0));
+            } else if (friends.get(i).get(0) == user) {
+                list.add(friends.get(i).get(1));
+            }
+        }
+        return list;
     }
 }
