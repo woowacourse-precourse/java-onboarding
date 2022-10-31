@@ -142,8 +142,15 @@ public class Problem6 {
         return valid;
     }
 
+    /**
+     * 닉네임의 길이가 조건에 부합하는지 확인합니다.
+     *
+     * @param nickname 신청서의 두 번째 정보입니다.
+     * @return 해당 정보의 길이가 1~19 사이의 값이면 참, 아니면 거짓을 반환합니다.
+     */
     private static boolean hasValidNicknameLength(String nickname) {
-        return false;
+        boolean valid = isInRange(nickname.length(), 1, 19);
+        return valid;
     }
 
     private static boolean hasValidNicknameForm(String nickname) {
