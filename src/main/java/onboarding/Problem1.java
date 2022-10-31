@@ -65,3 +65,21 @@ class MaxPoint {
         return myPoint;
     }
 }
+
+class IsValidPage {
+    public boolean isValidPage(List<Integer> player1, List<Integer> player2) {
+        //왼쪽 페이지는 홀수, 오른쪽 페이지는 짝수인지 확인
+        int leftPage1 = player1.get(0);
+        int leftPage2 = player2.get(0);
+        int rightPage1 = player1.get(1);
+        int rightPage2 = player2.get(1);
+        
+        if(leftPage1 % 2 == 0 || leftPage2 % 2 == 0) {
+            return false;
+        }
+        if(rightPage1 % 2 != 0 || rightPage2 % 2 != 0) {
+            return false;
+        }
+        return true;
+    }
+}
