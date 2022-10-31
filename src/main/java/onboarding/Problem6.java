@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
@@ -9,8 +10,9 @@ public class Problem6 {
     final static int NICK_NAME = 1;
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+        List<String> emailList = checkOverlapUser(forms);
+        Collections.sort(emailList);
+        return emailList;
     }
 
     public static List<String> checkOverlapUser(List<List<String>> forms){
