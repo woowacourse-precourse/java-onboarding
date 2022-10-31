@@ -25,6 +25,16 @@ class Problem1 {
         return sum;
     }
 
+    private static int mul(Integer page) {
+        int mul = 1;
+        String num = Integer.toString(page);
+
+        for (int i = 0; i < num.length(); i++) {
+            mul *= Integer.parseInt(String.valueOf(num.charAt(i)));
+        }
+        return mul;
+    }
+
 
     private static boolean checkPage(List<Integer> page) {
         return page.get(1) - page.get(0) == 1;
