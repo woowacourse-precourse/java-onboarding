@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -27,6 +28,8 @@ public class Problem6 {
                 }
             }
         }
+
+        Collections.sort(answer);
 
         return answer;
     }
