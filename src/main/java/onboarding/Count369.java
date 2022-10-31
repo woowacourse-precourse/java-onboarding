@@ -10,9 +10,9 @@ class Count369 {
     int exception() {
         if((number < 1) || (number > 10000)) {
             return -1;
-        } else {
-            return 0;
         }
+
+        return 0;
     }
 
     int count() {
