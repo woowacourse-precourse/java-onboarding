@@ -31,11 +31,9 @@ public class Problem4 {
                 continue;
             }
 
-            if(Character.isUpperCase(letter)){
-                // 대문자의 경우 convertUpperLetter 호출
+            if(Character.isUpperCase(letter)){      // 대문자의 경우 convertUpperLetter 호출
                 answer += String.valueOf(problem4.convertUpperLetter(letter));
-            } else if(Character.isLowerCase(letter)){
-                // 소문자의 경우 convertLowerLetter 호출
+            } else if(Character.isLowerCase(letter)){   // 소문자의 경우 convertLowerLetter 호출
                 answer += String.valueOf(problem4.convertLowerLetter(letter));
             }
         }
