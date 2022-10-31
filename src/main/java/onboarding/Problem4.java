@@ -67,12 +67,12 @@ public class Problem4 {
     }
 
     private static void validateWord(String momWord) {
-        if(!validateWordRange(momWord)) {
+        if(validateWordRangeFail(momWord)) {
             throw new IllegalArgumentException(EXCEPTION_MESSAGE_PREFIX + WRONG_WORD_RANGE_EXCEPTION_MESSAGE);
         }
     }
 
-    private static boolean validateWordRange(String momWord) {
-        return (momWord.length() >= MIN_WORD_LENGTH && momWord.length() <= MAX_WORD_LENGTH);
+    private static boolean validateWordRangeFail(String momWord) {
+        return (momWord.length() < MIN_WORD_LENGTH || momWord.length() > MAX_WORD_LENGTH);
     }
 }
