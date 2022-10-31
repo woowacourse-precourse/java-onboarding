@@ -8,8 +8,16 @@ public class Problem4 {
 
     public static String solution(String word) {
         Map<Character, Character> wordDictionary = createWordDictionary();
+        StringBuilder answer = new StringBuilder();
 
-        return "tmp"; //TODO - 임시값 수정
+        for (int i = 0; i < word.length(); i++) {
+            if (!isAlphabet(word.charAt(i), wordDictionary)) {
+                answer.append(word.charAt(i));
+                continue;
+            }
+            answer.append(getAlphabetFromWordDictionary(word.charAt(i), wordDictionary));
+        }
+        return answer.toString();
     }
 
     private static Map<Character, Character> createWordDictionary() {
@@ -24,5 +32,13 @@ public class Problem4 {
     private static void putAlphabetPairInWordDictionary(Map<Character, Character> wordDictionary, int i) {
         wordDictionary.put((char)('a' + i), (char)('z' - i));
         wordDictionary.put((char)('A' + i), (char)('Z' - i));
+    }
+
+    private static boolean isAlphabet(char word, Map<Character, Character> wordDictionary) {
+        return wordDictionary.containsKey(word);
+    }
+
+    private static Character getAlphabetFromWordDictionary(char word, Map<Character, Character> wordDictionary) {
+        return wordDictionary.get(word);
     }
 }
