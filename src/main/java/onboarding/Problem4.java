@@ -1,5 +1,7 @@
 package onboarding;
 
+import java.util.stream.IntStream;
+
 public class Problem4 {
 
     public static String solution(String word) {
@@ -10,12 +12,12 @@ public class Problem4 {
     }
 
     private static void changeAlphabet(String word, StringBuilder sb) {
-        for (int i = 0; i < word.length(); i++) {
+        IntStream.range(0, word.length()).forEach(i -> {
             char alphabet = word.charAt(i);
             isBlank(sb, alphabet);
             isLowerCase(sb, alphabet);
             isUpperCase(sb, alphabet);
-        }
+        });
     }
 
     private static void isLowerCase(StringBuilder sb, char alphabet) {
