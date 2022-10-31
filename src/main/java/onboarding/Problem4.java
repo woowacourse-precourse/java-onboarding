@@ -8,4 +8,11 @@ public class Problem4 {
         String answer = "";
         return answer;
     }
+
+    public static boolean isUpper(char alphabet){
+        if(alphabet >= 65 && alphabet <= 90)
+            return true;
+
+        return false;
+    }
 }
