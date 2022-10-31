@@ -95,7 +95,6 @@ public class Problem7 {
                 }
                 Set<String> iFriend = friendsMap.get(key);
                 for( String friend : iFriend ){
-                    System.out.println(friend);
                     if( userFriend.contains(friend) ){
                         count++;
                     }
@@ -116,12 +115,10 @@ public class Problem7 {
         List<String> result = new ArrayList<>();
 
         sortedScore.forEach(candidate -> {
-            System.out.println(candidate.name +" "+ candidate.score);
             if ( candidate.score > 0 && result.size() < 5 && !userFriend.contains(candidate.name))  result.add(candidate.name);
         });
 
         return result;
     }
-
 
 }
