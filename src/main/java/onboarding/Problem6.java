@@ -25,6 +25,7 @@ public class Problem6 {
 
         }
         List<String> dupNameList = new ArrayList<>(dupNames);
+        Collections.sort(dupNameList);
         return dupNameList;
     }
 
