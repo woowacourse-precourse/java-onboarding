@@ -7,7 +7,7 @@ public class Problem2 {
 
 	/**
 	 * 아래 표현식은 문자의 2 이상 중복을 식별한다.
-	 *
+	 * <p>
 	 * 형식 : "<word><same-as-previous>"
 	 */
 
