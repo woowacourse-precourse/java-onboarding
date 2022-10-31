@@ -19,6 +19,9 @@ class Problem1 {
         if ((number2 - number1) != 1) {
             return false;
         }
+        if (number1 < 1 || number2 > 400) {
+            return false;
+        }
         return true;
     }
 
