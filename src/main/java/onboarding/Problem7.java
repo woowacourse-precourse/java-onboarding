@@ -98,9 +98,24 @@ public class Problem7 {
         }
     }
 
+    public static Set<String> createExcluder(String user, List<List<String>> friends) {
+        Set<String> excludSet = new HashSet<>();
+        for (List<String> friend : friends) {
+            if (friend.get(0) == user || friend.get(1) == user) {
+                excludSet.add(friend.get(0));
+                excludSet.add(friend.get(1));
+
+            }
+
+        }
+        return excludSet;
+    }
+
+
     public  static List<String> recommender(String user, List<List<String>> friends, List<String> visitors) {
         Map<String, Integer> scorePare = friendScorePare(user, friends);
         Map<String, Integer> finalScorePare = visitorScorePare(scorePare, visitors);
+        Set<String> excludeSet = createExcluder(user, friends);
 
 
         //test
@@ -114,9 +129,15 @@ public class Problem7 {
             tempCounter += 1;
             listPare.add(new ArrayList<String>());
             listPare.get(tempCounter).add(key);
-            listPare.get(tempCounter).add(finalScorePare.get(key).toString());
+            if (excludeSet.contains(key)) {
+                listPare.get(tempCounter).add("0");
+            } else {
+                listPare.get(tempCounter).add(finalScorePare.get(key).toString());
+            }
+
 
         }
+
 
         Collections.sort(listPare, new experiment7.recComparator());
 
@@ -130,6 +151,7 @@ public class Problem7 {
                 answer.add(pare.get(0));
             }
         }
+
 
 
         List<String> modifiedAnswer = (answer.size() > 5) ? answer.subList(0, 5) : answer;
