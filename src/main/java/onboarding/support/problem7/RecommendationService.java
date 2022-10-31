@@ -26,9 +26,12 @@ public class RecommendationService {
         }
     }
 
-    private void calculateScore(String user, List<String> visitors,
-                                Map<String, Set<String>> friendRelations, Map<String, Integer> scores) {
-
+    private void calculateScore(
+            String user,
+            List<String> visitors,
+            Map<String, Set<String>> friendRelations,
+            Map<String, Integer> scores
+    ) {
         for (Map.Entry<String, Set<String>> friendEntry : friendRelations.entrySet()) {
             calculateAcquaintanceScore(friendRelations, scores, friendEntry);
         }
@@ -48,15 +51,21 @@ public class RecommendationService {
                 .collect(Collectors.toList());
     }
 
-    private static void calculateTimelineVisitScore(Map<String, Integer> scores,
-                                                    Set<String> userFriendRelations, String visitor) {
+    private static void calculateTimelineVisitScore(
+            Map<String, Integer> scores,
+            Set<String> userFriendRelations,
+            String visitor
+    ) {
         if (!userFriendRelations.contains(visitor)) {
             scores.merge(visitor, TIME_LINE_VISIT_SCORE, Integer::sum);
         }
     }
 
-    private void calculateAcquaintanceScore(Map<String, Set<String>> friendRelations, Map<String, Integer> scores,
-                                            Map.Entry<String, Set<String>> friendEntries) {
+    private void calculateAcquaintanceScore(
+            Map<String, Set<String>> friendRelations,
+            Map<String, Integer> scores,
+            Map.Entry<String, Set<String>> friendEntries
+    ) {
         if (isNotUser(friendEntries.getKey())) {
             for (String relatedFriend : friendEntries.getValue()) {
                 if (isUsersFriend(friendRelations.get(user), relatedFriend)) {
