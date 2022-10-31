@@ -66,4 +66,21 @@ public class Problem7 {
         friendsScore.put(name, friendsScore.getOrDefault(name, 0) + score);
     }
 
+    private static List<Map.Entry<String, Integer>> getSortList() {
+        List<Map.Entry<String, Integer>> entries = new ArrayList<>(friendsScore.entrySet());
+        Collections.sort(entries, (friend1, friend2) -> {
+
+            if (friend1.getValue() > friend2.getValue()) {
+                return -1;
+            } else if (friend1.getValue() == friend2.getValue()) {
+                return friend1.getKey().compareTo(friend2.getKey());
+            } else {
+                return 1;
+            }
+
+        });
+
+        return entries;
+    }
+
 }
