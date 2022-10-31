@@ -6,9 +6,19 @@ import java.util.List;
 
 public class User {
     private String name;
+    private Timeline visitors;
 
-    public User(String name) {
+    public User(String name, Timeline visitors) {
         this.name = name;
+        this.visitors = visitors;
+    }
+
+    private int checkTimeline(FriendDto friendDto, HashMap<String, Integer> score, int cnt) {
+        for (String visitor : visitors.getVisitors()) {
+            score.put(visitor, score.getOrDefault(visitor, 0) + 1);
+            cnt = setConnection(friendDto, cnt, visitor);
+        }
+        return cnt;
     }
 
     private void checkHaveSameFriends(FriendDto friendDto, boolean[] isFriend, HashMap<String, Integer> score) {
