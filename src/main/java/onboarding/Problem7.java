@@ -68,17 +68,17 @@ public class Problem7 {
         }
     }
 
-    public static User createNewUser(String name){
-        User newUser = new User(name);
-        USER_MAP.put(name, newUser);
-        return newUser;
-    }
-
     public static User getUserFromName(String name){
         if(USER_MAP.containsKey(name)){
             return USER_MAP.get(name);
         }
         return createNewUser(name);
+    }
+
+    public static User createNewUser(String name){
+        User newUser = new User(name);
+        USER_MAP.put(name, newUser);
+        return newUser;
     }
 
     public static void makeFriend(User user1, User user2){
