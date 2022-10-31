@@ -3,38 +3,34 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
+    final static Map<String,Integer> friendsScore = new HashMap<>();//이름-추천 점수 저장
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
-        Set<String> userFriends = new HashSet<>();
-        Map<String,Integer> friendsScore = new HashMap<>();
+        Set<String> userFriends;
+        List<Map.Entry<String,Integer>> scoreList; //점수 정렬 위한 리스트
 
-        for(List<String> info :friends) {
-            if( info.contains(user) ) {
-                userFriends.add(info.get(0));
-                userFriends.add(info.get(1));
-            }
-        }
+        //사용자의 친구목록 생성
+        userFriends = checkUserFriends(friends,user);
 
-        for(List<String> info :friends) {
+        //사용자와 함께 아는 사람 점수계산
+        for(List<String> relation :friends) {
             for(String userFriend :userFriends) {
-                if(info.contains(userFriend)) {
-                    for(String friend:info) {
-                        friendsScore.put(friend,
-                                friendsScore.getOrDefault(friend, 0) + 10);
-                    }
-                }
+                calculateRelationScore(relation,userFriend,user);
             }
         }
 
+        //방문 기록으로 점수 계산
         for(String visitor :visitors) {
             friendsScore.put(visitor, friendsScore.getOrDefault(visitor, 0) + 1);
         }
 
+        //이미 사용자의 친구인데 점수 계산된 것 제거
         for(String userFriend:userFriends) {
             friendsScore.remove(userFriend);
         }
 
-        List<Map.Entry<String,Integer>> scoreList = new LinkedList<>(friendsScore.entrySet());
+        scoreList = new LinkedList<>(friendsScore.entrySet());
+
         Collections.sort(scoreList, new Comparator<>() {
             public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
                 if(o1.getValue()>o2.getValue()){
@@ -42,19 +38,45 @@ public class Problem7 {
                 } else if (o1.getValue()< o2.getValue()) {
                     return 1;
                 } else{
-                    return o1.getKey().compareTo(o2.getKey());
+                    return o1.getKey().compareTo(o2.getKey());//점수 같으면 이름순
                 }
             }
         });
 
-
-        for(int i=0; i<5; i++){
-            if(scoreList.size()<i+1){
+        //최대5개 answer로 할당
+        for(Map.Entry<String,Integer> nameScore:scoreList) {
+            answer.add(nameScore.getKey());
+            if(answer.size() == 5) {
                 break;
             }
-            answer.add(scoreList.get(i).getKey());
         }
 
         return answer;
+    }
+
+    private static Set<String> checkUserFriends(List<List<String>> friends, String user) {
+        Set<String> userFriends = new HashSet<>();
+
+        for(List<String> relation:friends) {
+            if(relation.contains(user)) {
+                userFriends.add(relation.get(0));
+                userFriends.add(relation.get(1));
+            }
+        }
+        userFriends.remove(user);
+
+        return userFriends;
+    }
+
+    private static void calculateRelationScore(List<String> relation,String userFriend,String user) {
+        if(relation.contains(userFriend)) {
+            for(String name:relation) {
+                if(name.equals(userFriend) || name.equals(user)) {
+                    continue;
+                }
+                Integer score = friendsScore.getOrDefault(name, 0);
+                friendsScore.put(name,score + 10);
+            }
+        }
     }
 }
