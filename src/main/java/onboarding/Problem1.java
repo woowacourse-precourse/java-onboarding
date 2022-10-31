@@ -26,6 +26,8 @@ class Problem1 {
                 pobisum += c - '0';
                 pobimul *= c - '0';
             }
+            // 모두 더한 값과 모두 곱한 값 중에서 가장 큰 수를 구하여 포비의 점수로 사용하기
+            pobiTop = Math.max(Math.max(pobisum, pobimul), pobiTop);
 
             // 크롱 왼쪽, 오른쪽 페이지 번호의 각 자리 숫자를 모두 더하거나 모두 곱하기
             char[] crongChar = crong.get(i).toString().toCharArray();
@@ -35,6 +37,8 @@ class Problem1 {
                 crongsum += c - '0';
                 crongmul *= c - '0';
             }
+            // 모두 더한 값과 모두 곱한 값 중에서 가장 큰 수를 구하여 크롱의 점수로 사용하기
+            crongTop = Math.max(Math.max(crongsum, crongmul), crongTop);
         }
 
         return answer;
