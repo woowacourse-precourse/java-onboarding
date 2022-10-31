@@ -1,5 +1,5 @@
 /*
- * 클래스명: Problem2
+ * 클래스명: Problem6
  *
  * 시작 날짜: 2022-10-30
  */
@@ -36,7 +36,7 @@ public class Problem6 {
                 }
             }
         }
-        
+
         Collections.sort(emailList);
         for(int i=0; i<emailList.size(); i++) {
             String email = emailList.get(i);
