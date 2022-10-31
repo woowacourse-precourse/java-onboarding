@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
@@ -27,5 +28,17 @@ class Problem1 {
         }
 
         return false;
+    }
+
+    private static List<Integer> makeNumberList(int page) {
+        List<Integer> numberList = new ArrayList<>();
+
+        while (page  > 0) {
+            int remainder = page % 10;
+            page = page / 10;
+            numberList.add(0, remainder);
+        }
+
+        return numberList;
     }
 }
