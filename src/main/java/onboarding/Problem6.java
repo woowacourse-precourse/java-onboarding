@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -9,7 +10,6 @@ import java.util.Set;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
         Map<String, List<String>> nicknamePartition = new HashMap<>();
         for (List<String> form : forms) {
             nicknamePartition.put(form.get(0), devideByTwo(form.get(1)));
@@ -28,6 +28,9 @@ public class Problem6 {
                 }
             }
         }
+
+        List<String> answer = new ArrayList<>(emails);
+        Collections.sort(answer);
 
         return answer;
     }
