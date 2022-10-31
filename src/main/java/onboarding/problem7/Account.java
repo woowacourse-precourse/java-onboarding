@@ -47,21 +47,21 @@ public class Account {
     /**
      * 사용자의 ID가 맞는지 확인하는 메소드
      *
-     * @param id 사용자 ID
+     * @param user 사용자 ID
      * @return 사용자의 ID가 맞는지에 대한 여부
      */
-    public boolean isAccountId(String id) {
-        return this.id.equals(id);
+    public boolean isAccountId(String user) {
+        return this.id.equals(user);
     }
 
     /**
      * 사용자의 친구가 맞는지 확인하는 메소드
      *
-     * @param id 사용자 친구 ID
+     * @param friendId 사용자 친구 ID
      * @return 사용자 친구 ID가 맞는지에 대한 여부
      */
-    public boolean isFriend(String id) {
-        return friendsRelation.stream().anyMatch(account -> account.isAccountId(id));
+    public boolean isFriend(String friendId) {
+        return friendsRelation.stream().anyMatch(account -> account.isAccountId(friendId));
     }
 
     /**
@@ -85,11 +85,11 @@ public class Account {
     /**
      * 사용자의 친구 추천 점수와 다른 사용자의 친구 추천 점수가 동일한지 확인하는 메소드
      *
-     * @param account 사용자의 점수와 비교할 다른 사용자
+     * @param otherAccount 사용자의 점수와 비교할 다른 사용자
      * @return 사용자의 친구 추천 점수와 다른 사용자의 친구 추천 점수가 동일한지에 대한 여부
      */
-    public boolean isEqualsScore(Account account) {
-        return this.score == account.getScore();
+    public boolean isEqualsScore(Account otherAccount) {
+        return this.score == otherAccount.getScore();
     }
 
     /**
