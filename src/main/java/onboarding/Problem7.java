@@ -15,10 +15,11 @@ public class Problem7 {
 
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 		List<String> answer = Collections.emptyList();
+		answer = getRecommendFriends(user, friends, visitors);
 		return answer;
 	}
 
-	public static void getRecommendFriends(String user, List<List<String>> friends, List<String> visitors) {
+	public static List<String> getRecommendFriends(String user, List<List<String>> friends, List<String> visitors) {
 		InputValidator.checkRightInput(user, friends, visitors);
 		HashMap<String, List<String>> friendsRelations = getFriendsRelations(friends, user);
 		HashMap<String, Integer> friendOfFriendScores = getFriendOfFriendScore(friendsRelations, user);
@@ -29,6 +30,14 @@ public class Problem7 {
 		HashMap<String, Integer> totalScoresExcludingUserFriends = removeUsers(user, friendsOfUser, totalScores);
 
 		List<Map.Entry<String, Integer>> sortedTotalScores = sortHashMap(totalScoresExcludingUserFriends);
+		return getFiveRecommendFriends(sortedTotalScores);
+	}
+
+	public static List<String> getFiveRecommendFriends(List<Map.Entry<String, Integer>> totalScores) {
+		if (totalScores.size() >= 5) {
+			return totalScores.stream().map(x -> x.getKey()).limit(5).collect(Collectors.toList());
+		}
+		return totalScores.stream().map(x -> x.getKey()).collect(Collectors.toList());
 	}
 
 	public static List<Map.Entry<String, Integer>> sortHashMap(HashMap<String, Integer> totalScores) {
