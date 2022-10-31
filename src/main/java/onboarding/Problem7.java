@@ -1,34 +1,29 @@
 package onboarding;
 
-import org.mockito.internal.util.collections.Sets;
-
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class Problem7 {
-    public static List<User> repository = new ArrayList<>();
+    public static List<User> repository;
     public static final int SAME_FRIEND_SCORE = 10;
     public static final int VISIT_SCORE = 1;
     public static final int DEFAULT_SCORE = 0;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        initUsers(friends, visitors);
-        initFriend(friends);
-        User userInstance = getUserFromList(user);
-        userInstance.setVisitor(visitors);
-        List<User> candidates = getCandidateList(userInstance);
-        initScore(candidates, DEFAULT_SCORE);
-        calculateScore(userInstance, candidates);
+        User userInstance;
+        List<User> candidates;
+
+        init(user, friends, visitors);
+        userInstance = getUserFromList(user);
+        candidates = getCandidates(userInstance);
         return getResultFromCandidates(candidates);
     }
 
-    private static List<String> getResultFromCandidates(List<User> candidates) {
-        return candidates.stream()
-                .filter(candi -> candi.getScore() > 0)
-                .sorted(Comparator.comparing(User::getScore).reversed()
-                        .thenComparing(Comparator.comparing(User::getName)))
-                .map(User::getName)
-                .collect(Collectors.toList());
+    private static void init(String user, List<List<String>> friends, List<String> visitors) {
+        repository = new ArrayList<>();
+        initUsers(friends, visitors);
+        initFriend(friends);
+        getUserFromList(user).setVisitor(visitors);
     }
 
     private static void initUsers (List<List<String>> friends, List<String> visitors) {
@@ -45,10 +40,9 @@ public class Problem7 {
                 .collect(Collectors.toList());
     }
 
-    private static User registerNewUser(String name){
+    private static void registerNewUser(String name){
         User newUser = new User(name);
         repository.add(newUser);
-        return newUser;
     }
 
     private static void initFriend(List<List<String>> friends) {
@@ -67,8 +61,11 @@ public class Problem7 {
                 .orElseThrow(() -> new IllegalArgumentException("can't find user in repository"));
     }
 
-    private static void initScore(List<User> candidates, int score){
-        candidates.forEach(user -> user.setScore(score));
+    private static List<User> getCandidates(User userInstance) {
+        List<User> candidates = getCandidateList(userInstance);
+        initScore(candidates, DEFAULT_SCORE);
+        calculateScore(userInstance, candidates);
+        return candidates;
     }
 
     private static List<User> getCandidateList(User user){
@@ -78,6 +75,10 @@ public class Problem7 {
                 .collect(Collectors.toList());
     }
 
+    private static void initScore(List<User> candidates, int score){
+        candidates.forEach(user -> user.setScore(score));
+    }
+
     private static void calculateScore(User user, List<User> candidates){
         candidates.forEach(tmpUser -> {
             int score = 0;
@@ -85,6 +86,15 @@ public class Problem7 {
             score += user.getVisitCount(tmpUser) * VISIT_SCORE;
             tmpUser.setScore(score);
         });
+    }
+
+    private static List<String> getResultFromCandidates(List<User> candidates) {
+        return candidates.stream()
+                .filter(candi -> candi.getScore() > 0)
+                .sorted(Comparator.comparing(User::getScore).reversed()
+                        .thenComparing((User::getName)))
+                .map(User::getName)
+                .collect(Collectors.toList());
     }
 
     static class User{
@@ -122,7 +132,7 @@ public class Problem7 {
         //
         public int getSameFriendCount(User srcUser) {
             return (int)srcUser.getFriends().stream()
-                    .filter(friend -> this.isFriend(friend))
+                    .filter(this::isFriend)
                     .count();
         }
 
