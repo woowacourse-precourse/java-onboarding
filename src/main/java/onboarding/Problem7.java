@@ -15,11 +15,25 @@ public class Problem7 {
     private static Map<String, User> makeFriendConnection(List<List<String>> friends) {
         Map<String, User> userFriendsInfo = new HashMap<>();
         for (List<String> connect : friends) {
-            String user1 = connect.get(0);
-            String user2 = connect.get(1);
-
+            userFriendsInfo = addConnection(userFriendsInfo, connect);
         }
-        return null;
+        return userFriendsInfo;
+    }
+
+    private static Map<String, User> addConnection(Map<String, User> userFriendsInfo, List<String> connection) {
+        String user1 = connection.get(0);
+        String user2 = connection.get(1);
+
+        if (!userFriendsInfo.containsKey(user1)) {
+            userFriendsInfo.put(user1, new User(user1));
+        }
+        userFriendsInfo.get(user1).getFriends().add(user2);
+
+        if (!userFriendsInfo.containsKey(user2)) {
+            userFriendsInfo.put(user1, new User(user2));
+        }
+        userFriendsInfo.get(user2).getFriends().add(user1);
+        return userFriendsInfo;
     }
 
     private static Map<String, Integer> findScoreOfAcquaintanceAllUser(String user, Map<String, User> userFriendsInfo, Map<String, Integer> score) {
