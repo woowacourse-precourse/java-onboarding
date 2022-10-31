@@ -21,6 +21,13 @@ public class Problem4 {
         return (chr >= 'a' && chr <= 'z') && (chr >= 'A' && chr <= 'Z');
     }
 
+    public static char changeAlpha(char chr){
+        if(Character.isUpperCase(chr))
+            return (char)(219 - chr);
+        else
+            return (char)(155 - chr);
+    }
+
     public static String solution(String word) {
         String answer = "";
         return answer;
