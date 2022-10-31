@@ -24,7 +24,7 @@ public class Problem7 {
             else if(userFriends.contains(item.get(1)) && !item.get(0).equals(user))
                 list.add(item.get(0));
         }
-        return calculateScore(list, 10);
+        return calScore(list, 10);
     }
 
     // 방문자 추천 찾기
@@ -34,11 +34,11 @@ public class Problem7 {
             if(!userFriends.contains(item))
                 list.add(item);
         }
-        return calculateScore(list, 1);
+        return calScore(list, 1);
     }
 
     // 점수 계산
-    private static List<Person> calculateScore(List<String> persons, int score) {
+    private static List<Person> calScore(List<String> persons, int score) {
         List<Person> list = new ArrayList<>();
         for(String item : persons.stream().distinct().collect(Collectors.toList())) {
             int frequency = Collections.frequency(persons, item);
@@ -58,7 +58,7 @@ public class Problem7 {
 
     // 목록 정렬
     private static List<String> sortList(List<Person> list) {
-        Collections.sort(list, new PersonComparator().reversed());
+        Collections.sort(list, new PersonCompare().reversed());
         List<String> sortList = new ArrayList<>();
         int count = 1;
         for(Person person : list) {
@@ -72,7 +72,7 @@ public class Problem7 {
     }
 
     // 점수 비교
-    static class PersonComparator implements Comparator<Person> {
+    static class PersonCompare implements Comparator<Person> {
         @Override
         public int compare(Person p1, Person p2) {
             if(p1.score == p2.score) {
@@ -98,7 +98,13 @@ public class Problem7 {
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
+        List<String> userFriends = findUserFriends(user, friends);
+
+        List<Person> friendList = findRecommendationFromFriends(user, friends, userFriends);
+        List<Person> visitorList = findRecommendationFromVisitors(visitors, userFriends);
+        List<Person> combineList = combineList(friendList, visitorList);
+        answer = sortList(combineList);
         return answer;
     }
 }
