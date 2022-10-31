@@ -9,6 +9,9 @@ package onboarding;
  *              - 변환 순서는 A-Z를 Z-A로 뒤집은 것과 동일한 순서로 한다.
  *              - 알파벳 대문자는 대문자로, 알파벳 소문자는 알파벳 소문자로 변환한다.
  *              - 알파벳 이외의 문자는 변환하지 않는다.
+ *     2. 필드 값
+ *          1) upperAl : 알파벳 대문자 A-Z를 담은 리스트
+ *          2) lowerAl : 알파벳 소문자 a-z를 담은 리스트
  */
 
 public class Problem4 {
@@ -16,4 +19,5 @@ public class Problem4 {
         String answer = "";
         return answer;
     }
+
 }
