@@ -39,7 +39,7 @@ public class Problem2 {
             }
         }
 
-
+        // 마지막 문자
         if(!dup) {
             answer += cryptogram.charAt(cryptogram.length()-1);
         }
