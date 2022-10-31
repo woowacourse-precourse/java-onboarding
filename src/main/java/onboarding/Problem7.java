@@ -50,7 +50,8 @@ public class Problem7 {
             List<String> friendOfFriendList = new ArrayList<>(friendsList.get(friendName));
             for(int friendIdx = 0; friendIdx < friendOfFriendList.size(); friendIdx++){
                 String friendOfFriendName = friendOfFriendList.get(friendIdx);
-                if(friendOfFriendName == user) continue;
+                if(friendOfFriendName == user) continue; //본인일 경우 x
+                if(userFriends.contains(friendOfFriendName)) continue; //이미 친구일 경우 x
                 friendOfFriend.add(friendOfFriendName);
             }
             if(friendName == user) continue;
@@ -58,6 +59,9 @@ public class Problem7 {
         return friendOfFriend;
     }
 
+    /*
+    친구의 친구 10점 부여
+     */
     static Map<String, Integer> calFriendOfFriend(List<List<String>> friends, String user){
         List<String> friendOfFriend = new ArrayList<>(waveOfFriends(friends, user));
         Map<String, Integer> recommendFriendsList = new HashMap<>();
@@ -68,7 +72,10 @@ public class Problem7 {
         }
         return recommendFriendsList;
     }
-
+    
+    /*
+    방문자 1점 부여
+     */
     static  Map<String, Integer> calVisitors(List<List<String>> friends, String user, List<String> visitors){
         Map<String, Integer> recommendFriendsList = calFriendOfFriend(friends, user);
         Map<String, Set<String>> friendsList = findFriends(friends);
@@ -86,9 +93,27 @@ public class Problem7 {
         return recommendFriendsList;
     }
 
+    static List<String> sortRecommendFriendsList(List<List<String>> friends, String user, List<String> visitors){
+        Map<String, Integer> recommendFriendsList = calVisitors(friends, user, visitors);
+
+        List<String> keySet = new ArrayList<>(recommendFriendsList.keySet());
+        //이름순 정렬
+        Collections.sort(keySet);
+        //추천도 정렬
+        Collections.sort(keySet,
+                            (o1, o2) -> (recommendFriendsList.get(o2).compareTo(recommendFriendsList.get(o1))));
+
+        List<String> sortedList = new ArrayList<>();
+        for(int idx = 0; idx < recommendFriendsList.size(); idx++){
+            if(idx == 5) break;
+            sortedList.add(keySet.get(idx));
+        }
+        return sortedList;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
-        
+        answer = sortRecommendFriendsList(friends, user, visitors);
         return answer;
     }
 }
