@@ -9,8 +9,8 @@ package onboarding;
  */
 
 public class Problem4 {
-    public static String[] convertStringToArray(String str){
-        return str.split("");
+    public static char[] convertStringToArray(String str){
+        return str.toCharArray();
     }
     public static String convertArrayToString(String[] strArray){
         return String.join("", strArray);
