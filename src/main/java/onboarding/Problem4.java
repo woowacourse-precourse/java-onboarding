@@ -10,11 +10,9 @@ public class Problem4 {
     public static Character reverse(char c) {
         if (!Character.isAlphabetic(c)) {
             return c;
-        }
-        if (Character.isLowerCase(c)) {
+        } else if (Character.isLowerCase(c)) {
             return (char) ('a' + 'z' - c);
-        }
-        if (Character.isUpperCase(c)) {
+        } else {
             return (char) ('A' + 'Z' - c);
         }
     }
