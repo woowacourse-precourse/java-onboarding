@@ -52,6 +52,27 @@ public class Problem7 {
                 friendOfFriendMap.put(visitor ,  friendOfFriendMap.getOrDefault(visitor,0) + 1);
             }
         }
+        //점수를 기준으로 내림차순 정렬 , 점수 같을시 이름순으로 정렬
+        List<Map.Entry<String, Integer>> humanScoreMap = new ArrayList<>(friendOfFriendMap.entrySet());
+        Collections.sort(humanScoreMap, new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> friendOfFriend1, Map.Entry<String, Integer> friendOfFriend2) {
+                //점수가 같다면 이름순으로 정렬
+                if(friendOfFriend1.getValue().equals(friendOfFriend2.getValue())){
+                    return friendOfFriend1.getKey().compareTo(friendOfFriend2.getKey());
+                }else{
+                    return friendOfFriend2.getValue() - friendOfFriend1.getValue();
+                }
+            }
+        });
+
+        for (Map.Entry<String, Integer> humanAndScore : humanScoreMap) {
+            if(answer.size() < 5)
+                answer.add(humanAndScore.getKey());
+            else
+                break;
+        }
+
         return answer;
     }
 }
