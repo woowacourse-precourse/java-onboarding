@@ -60,8 +60,16 @@ class Translation{
     boolean isAlphabet(String letter){
         return letter.matches("^[a-zA-Z]*$");
     }
-    
-
+    String translate(String letter,  FrogDictionary frogDictionary){
+        String translatedLetter;
+        if(isAlphabet(letter)){
+            translatedLetter=frogDictionary.getFrogLetter(letter);
+        }
+        else{
+            translatedLetter=letter;
+        }
+        return translatedLetter;
+    }
 }
 public class Problem4 {
     public static String solution(String word) {
