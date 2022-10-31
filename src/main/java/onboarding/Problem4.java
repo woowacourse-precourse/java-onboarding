@@ -22,6 +22,10 @@ public class Problem4 {
             else if(c >= 'A' && c <= 'Z'){
                 sb.append((char)('Z' - c + 'A'));
             }
+            // 알파벳 외의 문자는 변환하지 않게 하기
+            else {
+                sb.append(c);
+            }
         }
 
         answer = sb.toString();
