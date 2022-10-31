@@ -17,7 +17,8 @@ import java.util.*;
     2. 추천 점수가 0점일 때 추천 리스트에서 제외한다.
  */
 public class Problem7 {
-    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) throws Exception {
+        valid(user, friends, visitors);
         List<String> answer = new ArrayList<>();
         Map<String, ArrayList<String>> friend_link = new HashMap<String, ArrayList<String>>();
         Map<String, Integer> friend_sco = new HashMap<>();
@@ -27,6 +28,9 @@ public class Problem7 {
             String friend2 = list.get(1);
 
             ArrayList<String> arlist = friend_link.getOrDefault(friend1, new ArrayList<String>());
+            if(arlist.contains(friend2)){
+                throw new Exception("동일한 친구 관계가 중복해서 주어졌습니다.");
+            }
             arlist.add(friend2);
             friend_link.put(friend1, arlist);
 
@@ -71,11 +75,42 @@ public class Problem7 {
         for(int i = 0; i < Math.min(5, sort_sc.size()); i++){
             answer.add(sort_sc.get(i).getKey());
         }
+        if(answer.isEmpty()){
+            throw new Exception("추천할 친구가 존재하지 않습니다.");
+        }
 
         return answer;
     }
 
-    public static void main(String[] args) {
+    public static void valid(String user, List<List<String>> friends, List<String> visitor) throws Exception { //입력조건 확인
+    if(user.length() < 1 || user.length() > 30){
+        throw new Exception("user의 이름의 길이가 조건에 맞지 않습니다 length: "+ user.length());
+    }
+    if(friends.size() < 1 || friends.size() > 10000){
+        throw new Exception("입력된 친구의 수가 조건에 맞지 않습니다 friends size : "+friends.size());
+    }
+    for(int i = 0; i < friends.size(); i++){
+        if(friends.get(i).size() != 2){
+            throw new Exception("입력된 친구 관계가 1:1이 아닙니다.");
+        }
+        String member1 = friends.get(i).get(0);
+        String member2 = friends.get(i).get(1);
+        if(member1.length() < 1 || member1.length() >30 || member2.length() < 1 || member2.length() >30){
+            throw new Exception(String.format("친구의 아이디 길이가 조건에 맞지 않습니다. %s : %d, %s : %d", member1,member1.length(), member2, member2.length()));
+        }
+    }
+    if(visitor.size()>10000){
+        throw new Exception("방문자의 수가 조건에 맞지 않습니다. visitor size: "+ visitor.size());
+    }
+    for(int i = 0; i < user.length(); i++){
+        if(Character.isUpperCase(user.charAt(i)))
+            throw new Exception("사용자의 아이디에 대문자가 포함되어 있습니다. user: "+ user);
+    }
+
+
+    }
+
+    public static void main(String[] args) throws Exception {
         String user = "mrko";
         List<List<String>> friends = List.of(
                 List.of("donut", "andole"),
