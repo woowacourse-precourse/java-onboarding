@@ -12,6 +12,7 @@ class Problem1 {
         int pobiFinalScore=0; // 포비의 가장 큰 수
         int crongFinalScore=0; // 크롱의 가장 큰 수
         int sum=0, multi=0;  // 두 수의 합산, 곱셈
+        if(pobiSecondNums-pobiFirstNums!=1 || crongSecondNums-crongFirstNums!=1) return -1;
         if(pobiFirstNums>=100) { // 3자리수
         	int first = pobiFirstNums/100;
         	int second = pobiFirstNums%100/10;
