@@ -5,7 +5,7 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
-        if(isFirstOrLast(pobi) || isFirstOrLast(crong)) {
+        if (isWrongPage(pobi) || isWrongPage(crong)) {
             return -1;
         }
 
@@ -17,12 +17,12 @@ class Problem1 {
         int crongMulti = multiply(crong);
         int crongMax = max(crongSum, crongMulti);
 
-        if(pobiMax == crongMax) {
+        if (pobiMax == crongMax) {
             return 0;
-        }else {
-            if(pobiMax > crongMax) {
+        } else {
+            if (pobiMax > crongMax) {
                 return 1;
-            }else if (pobiMax < crongMax){
+            } else if (pobiMax < crongMax) {
                 return 2;
             }
         }
@@ -40,7 +40,7 @@ class Problem1 {
         int onePageSum = 0;
         String[] stringArray = String.valueOf(pageNumber).split("");
 
-        for(String number : stringArray) {
+        for (String number : stringArray) {
             onePageSum += Integer.parseInt(number);
         }
 
@@ -48,7 +48,7 @@ class Problem1 {
     }
 
     private static int max(int first, int second) {
-        if(first > second) {
+        if (first > second) {
             return first;
         }
         return second;
@@ -65,19 +65,37 @@ class Problem1 {
         int onePageMulti = 1;
         String[] stringArray = String.valueOf(pageNumber).split("");
 
-        for(String number : stringArray) {
+        for (String number : stringArray) {
             onePageMulti *= Integer.parseInt(number);
         }
 
         return onePageMulti;
     }
 
+    private static boolean isWrongPage(List<Integer> values) {
+        if (isFirstOrLast(values) || isNotNextPage(values)) {
+            return true;
+        }
+        return false;
+    }
+
     private static boolean isFirstOrLast(List<Integer> values) {
-        for(int value : values) {
-            if(value < 2 || value >= 400) {
+        for (int value : values) {
+            if (value < 2 || value >= 400) {
                 return true;
             }
         }
+        return false;
+    }
+
+    private static boolean isNotNextPage(List<Integer> values) {
+        int firstPage = values.get(0);
+        int secondPage = values.get(1);
+
+        if (firstPage + 1 != secondPage) {
+            return true;
+        }
+
         return false;
     }
 
