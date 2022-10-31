@@ -43,4 +43,15 @@ public class Problem7 {
             }
         }
     }
+
+    private static void scoreFollowForFollow(Map<String, List<String>> relationships, List<String> userRelationships, Map<String, Integer> scoreBoard) {
+        for (String relationship : userRelationships) {
+            List<String> followForFollow = relationships.get(relationship);
+            getScore(scoreBoard, userRelationships, followForFollow, 10);
+        }
+    }
+
+    private static void scoreVisitor(Map<String, Integer> scoreBoard, List<String> userRelationships, List<String> visitors) {
+        getScore(scoreBoard, userRelationships, visitors, 1);
+    }
 }
