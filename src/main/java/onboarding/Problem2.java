@@ -26,6 +26,7 @@ class Crypto {
       }
       if (stack.peek() == cryptogram.charAt(i)) {
         prevPopValue = stack.pop();
+        stack.trimToSize();
       } else if (stack.peek() != cryptogram.charAt(i)) {
         if (prevPopValue == cryptogram.charAt(i)) {
           continue;
