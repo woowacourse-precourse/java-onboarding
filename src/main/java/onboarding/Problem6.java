@@ -28,6 +28,29 @@ public class Problem6 {
     }
 
     //닉네임 조각을 비교해서 중복체크를 하는 함수
+    static boolean[] duplication_check(List<List<String>> part){
+        boolean[] check = new boolean[part.size()];
+
+        for (int i=0;i< part.size();i++){
+            boolean flag = false;
+            for (int j=0;j<part.get(i).size();j++){
+                for (int k=0;k< part.size();k++){
+                    if(i==k) continue;
+                    if(part.get(k).contains(part.get(i).get(j))){
+                        flag = true;
+                        check[k] = true;
+                    }
+                }
+            }
+
+            if(flag){
+                check[i]= true;
+            }
+        }
+
+        return check;
+    }
+
 
     //실행을 위한 process 함수
 
