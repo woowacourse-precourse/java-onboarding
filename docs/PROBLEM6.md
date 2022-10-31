@@ -21,3 +21,9 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능 구현 목록
+- [x] 중복을 확인하는 기능
+   1) [x] 문자열을 두 글자씩 잘라 확인하는 기능
+- [x] 중복된 닉네임 교육생들의 이메일을 추가한 목록을 반환 해주는 기능
+- [x] 오름차순으로 정렬해주는 기능

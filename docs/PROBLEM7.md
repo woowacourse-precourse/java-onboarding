@@ -24,3 +24,12 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능 구현 목록
+- [x] 친구 목록을 생성해주는 기능
+  1) [x] 현재 목록의 더해주는 기능 
+- [x] 추천 친구 점수 목록을 생성해주는 기능
+  1) [x] 본인 or 이미 친구인 경우를 제외 시켜주는 기능
+  2) [x] 현재 목록의 입력한 점수를 더해주는 기능
+- [x] 추천 친구를 점수기준 내림차순으로 정렬해주는 기능
+- [x] 최대 5명을 return 시키는 기능
