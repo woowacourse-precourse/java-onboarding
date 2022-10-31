@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Problem1 {
 
-    // 최대 세자리 수를 받아 각 자리수를 곱하여 그 값을 return하는 함수 : 구현 완료
+    // 최대 세자리 수를 받아 각 자리수를 곱하여 그 값을 return하는 함수
     private static int getScoreMultiply(int pageNumber) {
         int hundred = pageNumber / 100;
         int ten = (pageNumber % 100) / 10;
@@ -19,7 +19,7 @@ public class Problem1 {
         }
     }
 
-    // 최대 세자리 수를 받아 각 자릿수를 더하여 그 값을 return하는 함수 : 구현 완료
+    // 최대 세자리 수를 받아 각 자릿수를 더하여 그 값을 return하는 함수
     private static int getScorePlus(int pageNumber) {
         int hunderd = pageNumber / 100;
         int ten = (pageNumber % 100) / 10;
@@ -82,10 +82,6 @@ public class Problem1 {
         int scoreOfCrong = getScore(leftPageOfCrong, rightPageOfCrong);
 
         result = getresult(scoreOfPobi, scoreOfCrong);
-
-        // 테스트 출력
-//        System.out.println("scoreOfPobi = " + scoreOfPobi);
-//        System.out.println("scoreOfCrong = " + scoreOfCrong);
         return result;
     }
 
