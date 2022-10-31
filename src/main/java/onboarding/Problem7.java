@@ -21,6 +21,25 @@ public class Problem7 {
 
         return map;
     }
+
+    public static HashMap<String, Integer> getScore(String user, HashMap<String,List<String>> map, List<String> visitors){
+        HashMap<String, Integer> scores = new HashMap<>();
+        List<String> userfriends = map.getOrDefault(user, new ArrayList<>());
+
+        for (String visitor : visitors) {
+            scores.put(visitor, scores.getOrDefault(visitor, 1) + 1);
+        }
+
+        for (String friend : userfriends) {
+            List<String> tempfriends = map.getOrDefault(friend, new ArrayList<>());
+
+            for (int i = 0; i < tempfriends.size(); i++){
+                scores.put(tempfriends.get(i), scores.getOrDefault(tempfriends.get(i), 10) + 10);
+            }
+        }
+        return scores;
+    }
+    
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
