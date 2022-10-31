@@ -23,3 +23,15 @@
 | [97, 98] | [197, 198] | 0 |
 | [131, 132] | [211, 212] | 1 |
 | [99, 102] | [211, 212] | -1 |
+
+<hr>
+<br>
+
+## 기능 목록
+- `public static boolean checkException(int n1, int n2)`
+    - n1, n2가 올바른 페이지 값을 가지고 있는지 검사하는 메소드이다.
+    - 정상적으로 값이 들어온 경우에는 true, 아니라면 false를 return 한다.
+<br>
+
+- `public static int getValue(int val)`
+    - val의 각 자리의 숫자 합과, 곱을 각각 계산해서 더 큰 값을 return 해준다.

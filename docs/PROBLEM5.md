@@ -14,3 +14,10 @@
 | --- | --- |
 | 50237	| [1, 0, 0, 0, 0, 2, 0, 3, 7] |
 | 15000	| [0, 1, 1, 0, 0, 0, 0, 0, 0] |
+
+<hr><br>
+
+## 기능 목록
+- `public static List<Integer> solution(int money)`
+  - 기능 요구사항을 수행하는 Method
+  - money가 들어오면 각 화폐의 개수를 List에 저장하고 return 해준다.

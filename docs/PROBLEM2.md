@@ -21,3 +21,18 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+<hr><br>
+
+## 기능 목록
+- `public static Stack<Character> removeDuplication(String cryptogram)`
+  - 입력으로 String을 받는다.
+  - Stack 구조를 활용하여 인접한 문자를 제거한다.
+  - 결과 Stack을 return 한다.
+  <br>
+  
+  
+- `public static String reverseString(Stack<Character> st)`
+  - 입력으로 Stack 값을 받는다.
+  - Stack에 있는 모든 값을 pop한 다음, stringbuffer에 담아주고 순서를 뒤집어준다.
+  - 결과를 String으로 반환한다, 만약 Stack이 비어있다면 ""를 return한다.

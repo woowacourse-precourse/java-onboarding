@@ -21,3 +21,11 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+<hr> <br>
+
+## 기능목록
+- `public static List<String> solution(List<List<String>> forms)`
+  - 문제 요구사항을 return 하는 메소드
+  - 닉네임을 2글자씩 검사하여, 다른 유저와 겹친다면 해당 메일을 결과배열에 넣어준다.
+  - 결과배열을 return 해준다.

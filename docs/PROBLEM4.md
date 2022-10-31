@@ -19,3 +19,17 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+<hr>
+<br>
+
+## 기능목록
+- `public static boolean checkAlphabet(Character ch)`
+  - Input으로 Character가 들어온다.
+  - 해당 Character가 알파벳 (A ~ Z or a ~ z) 이면 true를 return한다, 아니라면 false를 return 함.
+
+<br>
+
+- `public static Character changeAlphabet(Character ch)`
+  - Input으로 알파벳으로 확정된 Character가 들어온다.
+  - 미리 정의된 map을 통하여 변환된 값을 return 한다. 
