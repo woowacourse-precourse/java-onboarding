@@ -32,7 +32,9 @@ public class Problem4 {
         return sb.toString();
     }
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        Map<Character, Character> map = new HashMap<>();
+        mapSet(map);
+
+        return reverString(word, map);
     }
 }
