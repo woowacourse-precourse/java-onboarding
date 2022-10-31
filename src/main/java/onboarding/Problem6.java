@@ -1,11 +1,13 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 public class Problem6 {
+    public static List<String> orderList(HashSet<String> emailSet) {
+        List<String> emailList = new ArrayList<>(emailSet);
+        emailList.sort(Comparator.naturalOrder());
+        return emailList;
+    }
 
     public static HashSet<String> getResult(HashMap<String, HashSet<String>> emailMap) {
         HashSet<String> emailSet = new HashSet<String>();
@@ -42,18 +44,7 @@ public class Problem6 {
         List<String> answer = List.of("answer");
         HashMap<String, HashSet<String>> emailMap = createEmailMap(forms);
         HashSet<String> emailSet = getResult(emailMap);
-        System.out.println(emailSet);
+        answer = orderList(emailSet);
         return answer;
-    }
-
-    public static void main(String[] args) {
-        List<List<String>> forms = List.of(
-                List.of("jm@email.com", "제이엠"),
-                List.of("jason@email.com", "제이슨"),
-                List.of("woniee@email.com", "워니"),
-                List.of("mj@email.com", "엠제이"),
-                List.of("nowm@email.com", "이제엠")
-        );
-        solution(forms);
     }
 }
