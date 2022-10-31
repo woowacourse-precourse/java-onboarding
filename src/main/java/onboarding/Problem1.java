@@ -34,7 +34,7 @@ class Problem1 {
         return isInValidPageNumber(pobi) || isInValidPageNumber(crong);
     }
 
-    public static List<List<Integer>> getEachDigitOfTwoPages(List<Integer> pages) {
+    private static List<List<Integer>> getEachDigitOfTwoPages(List<Integer> pages) {
         List<List<Integer>> digitsOfTwoPages = new ArrayList<>();
 
         for (Integer page : pages) {
@@ -44,7 +44,7 @@ class Problem1 {
         return digitsOfTwoPages;
     }
 
-    public static List<Integer> getEachDigit(Integer page) {
+    private static List<Integer> getEachDigit(Integer page) {
         List<Integer> digits = new ArrayList<>();
         String pageString = page.toString();
 
@@ -55,7 +55,7 @@ class Problem1 {
         return digits;
     }
 
-    public static Integer getScore(List<List<Integer>> digitsOfTwoPages) {
+    private static Integer getScore(List<List<Integer>> digitsOfTwoPages) {
         List<Integer> num = new ArrayList<>();
 
         for (List<Integer> digits : digitsOfTwoPages) {
@@ -66,7 +66,7 @@ class Problem1 {
         return getMax(num);
     }
 
-    public static Integer plusEachDigit(List<Integer> digits) {
+    private static Integer plusEachDigit(List<Integer> digits) {
         int sum = 0;
         for (Integer digit : digits) {
             sum += digit;
@@ -75,7 +75,7 @@ class Problem1 {
         return sum;
     }
 
-    public static Integer multiplyEachDigit(List<Integer> digits) {
+    private static Integer multiplyEachDigit(List<Integer> digits) {
         Integer sum = 1;
         for (Integer digit : digits) {
             sum *= digit;
@@ -84,11 +84,11 @@ class Problem1 {
         return sum;
     }
 
-    public static Integer getMax(List<Integer> num) {
+    private static Integer getMax(List<Integer> num) {
         return Collections.max(num);
     }
 
-    public static Integer getWinner(Integer pobiScore, Integer crongScore) {
+    private static Integer getWinner(Integer pobiScore, Integer crongScore) {
         if (pobiScore > crongScore) {
             return POBI;
         }
@@ -99,7 +99,7 @@ class Problem1 {
         return TIE;
     }
 
-    public static boolean isInValidPageNumber(List<Integer> pages) {
+    private static boolean isInValidPageNumber(List<Integer> pages) {
         if (isValidPageRange(pages)) {
             return false;
         }
@@ -113,7 +113,7 @@ class Problem1 {
         return true;
     }
 
-    public static boolean isValidPageRange(List<Integer> pages) {
+    private static boolean isValidPageRange(List<Integer> pages) {
         for (Integer page : pages) {
             if (page < FIRST_PAGE || page > LAST_PAGE) {
                 return false;
@@ -123,7 +123,7 @@ class Problem1 {
         return true;
     }
 
-    public static boolean isValidPageOddEven(List<Integer> pages) {
+    private static boolean isValidPageOddEven(List<Integer> pages) {
         int leftPage = pages.get(LEFT);
         int rightPage = pages.get(RIGHT);
 
@@ -141,7 +141,7 @@ class Problem1 {
         return (num % 2) == 0;
     }
 
-    public static boolean isValidPageSequence(List<Integer> pages) {
+    private static boolean isValidPageSequence(List<Integer> pages) {
         int leftPage = pages.get(LEFT);
         int rightPage = pages.get(RIGHT);
 
