@@ -10,6 +10,17 @@ public class Problem7 {
     }
 
     /**
+     * user의 친구들을 반환하는 함수
+     */
+    private static List<String> userFriends(String user, List<List<String>> friends){
+        List<String> userFriendList = Collections.emptyList();
+        for (int i=0;i<friends.size();i++){
+            userFriendList = isUserFriend(user,friends.get(i),userFriendList);
+        }
+        return userFriendList;
+    }
+
+    /**
      * user의 친구를 찾아주는 함수
      */
     private static List<String> isUserFriend(String user, List<String> friend,List<String> userFriendList){
