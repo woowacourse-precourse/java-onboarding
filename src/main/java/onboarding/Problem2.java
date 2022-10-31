@@ -8,6 +8,10 @@ public class Problem2 {
         return answer;
     }
 
+    private static String removeDuplicateChar(String string){//연속하는 중복 제거
+        Stack<Character> resultStringStack= makeStackNoDuplicateChar(string);
+        return stackToString(resultStringStack);
+    }
     private static Stack<Character> makeStackNoDuplicateChar(String string) {// 연속하는 중복 문자들 제거한 스택
         Stack<Character> resultStringStack = new Stack<>();
         Character prevChar;
@@ -36,4 +40,9 @@ public class Problem2 {
         return resultStringStack;
     }
 
+    private static String stackToString(Stack<Character> stack){// stack을 string형태로 변환
+        return stack.stream()
+                .map(Object::toString)
+                .collect(Collectors.joining());
+    }
 }
