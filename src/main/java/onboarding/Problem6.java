@@ -8,8 +8,6 @@ public class Problem6 {
 
         Map<String, String> listMap = new HashMap<>();
         String[] nickList = new String[forms.size()];
-        Set<String> collectNickname = new HashSet<>();
-
         // 리스트에 있는 닉네임과 이메일을 맵에 넣음
         Iterator<List<String>> listItr = forms.iterator();
         for(int i=0; i<forms.size(); i++){
@@ -23,19 +21,8 @@ public class Problem6 {
         }
 
         // 닉네임 중 같은 글자가 연속적으로 포함 되는 경우 찾기
-        // 중복 확인할 기준 문자열 구하기, 중복 제거
-        for(int i=0; i<nickList.length; i++){
-            String name = nickList[i];
-            String[] criteriaList = makeCriteria(name, 2);
-
-            // 닉네임들 중에 기준 문자열과 중복인 닉네임이 있는지 찾음
-            List<String> duplicatedNickname = findDuplicatedNickname(nickList, i, criteriaList);
-
-            Iterator<String> dupNicknameItr = duplicatedNickname.iterator();
-            for(int s=0; s<duplicatedNickname.size(); s++){
-                collectNickname.add(dupNicknameItr.next());
-            }
-        }
+        // 중복 확인할 기준 문자열 구하고 닉네임 set에 넣기
+        Set<String> collectNickname = selectDuplicatedNickname(nickList);
 
         // 보낼 이메일 구하고 오름차순 정렬
         String[] makeEmailList = new String[collectNickname.size()];
@@ -93,6 +80,29 @@ public class Problem6 {
         return dup;
     }
 
+    /**
+     * 중복되는 문자열이 있는 모든 닉네임을 set에 넣는 메소드
+     * @param nickList 모든 닉네임 리스트
+     * @return 구한 set
+     */
+    static Set<String> selectDuplicatedNickname(String[] nickList){
+        Set<String> collectNickname = new HashSet<>();
 
+        for(int i=0; i<nickList.length; i++){
+            String name = nickList[i];
+            // 중복 확인할 때 쓸 문자열 구하기
+            String[] criteriaList = makeCriteria(name, 2);
+
+            // 닉네임들 중에 기준 문자열과 중복인 닉네임이 있는지 찾음
+            List<String> duplicatedNickname = findDuplicatedNickname(nickList, i, criteriaList);
+
+            Iterator<String> dupNicknameItr = duplicatedNickname.iterator();
+            for(int s=0; s<duplicatedNickname.size(); s++){
+                collectNickname.add(dupNicknameItr.next());
+            }
+        }
+
+        return collectNickname;
+    }
 
 }
