@@ -11,11 +11,11 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
         Map<String, Integer> map = visitorsCount(visitors); //방문한 사람 추가
         List<String> friendList = followedFriends(user, friends);
         Map<String, Integer> newMap = newFriend(friends,friendList,map);
         List<String> sortedList = sortByValues(newMap);
+        List<String> answer = commendList(user, sortedList, friendList);
 
         return answer;
     }
@@ -80,5 +80,16 @@ public class Problem7 {
         List<String> sortedList = new ArrayList<>(map.keySet());
         Collections.sort(sortedList, (value1, value2) -> (map.get(value2).compareTo(map.get(value1))));
         return sortedList;
+    }
+
+    public static List<String> commendList(String user, List<String> sortedList, List<String> friendList) {
+        List<String> result = new ArrayList<>();
+        for(int i=0; i<sortedList.size(); i++) {
+            String friend = sortedList.get(i);
+            if(! friendList.contains(friend) || ! user.equals(friend)) {
+                result.add(friend);
+            }
+        }
+        return result;
     }
 }
