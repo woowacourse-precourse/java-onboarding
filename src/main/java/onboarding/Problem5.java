@@ -5,6 +5,16 @@ import java.util.Collections;
 import java.util.List;
 
 public class Problem5 {
+    public static void main(String[] args) {
+        List<Integer> moneyList = List.of(50237, 15000);
+        System.out.printf("%-10s|%-30s|", "number", "result");
+        System.out.println("\nㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
+        moneyList.stream().forEach(money -> {
+            System.out.printf("%-10d|%-30s|", money, solution(money));
+            System.out.println("\nㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
+        });
+    }
+
     public static List<Integer> solution(int money) {
         List<Integer> answer = Collections.emptyList();
         Bank.validateMoney(money);
