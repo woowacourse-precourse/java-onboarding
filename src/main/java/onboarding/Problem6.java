@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Problem6 {
@@ -8,6 +9,9 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
         DuplicateName = new boolean[forms.size()];
+        findDuplicate(forms);
+        AddEmail(forms, answer);
+        Collections.sort(answer);
         return answer;
     }
     /*
@@ -23,7 +27,7 @@ public class Problem6 {
                 sb = new StringBuilder();
                 sb.append(forms.get(name).get(1).charAt(wordIndex)).
                         append(forms.get(name).get(1).charAt(wordIndex+1));
-                //compare(forms, sb, name);
+                compare(forms, sb, name);
             }
         }
     }
@@ -36,6 +40,16 @@ public class Problem6 {
             if (forms.get(comparedName).get(1).contains(sb.toString())){
                 DuplicateName[nameIndex] = true;
                 DuplicateName[comparedName] = true;
+            }
+        }
+    }
+    /*
+    넘겨받은 문제에서 조건을 만족하고 해당돼는 이름을 answer리스트에 넣는 메소드
+     */
+    private static void AddEmail(List<List<String>> forms, List<String> answer) {
+        for (int disolvedName = 0; disolvedName < DuplicateName.length ; disolvedName++){
+            if (DuplicateName[disolvedName]){
+                answer.add(forms.get(disolvedName).get(0));
             }
         }
     }
