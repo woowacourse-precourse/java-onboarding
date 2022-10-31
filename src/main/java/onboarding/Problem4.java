@@ -14,16 +14,32 @@ package onboarding;
  */
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        Problem4 p4 = new Problem4();
+        StringBuilder result = new StringBuilder();
+
+        for (char c : word.toCharArray()) {
+            int flag = p4.checkAlphabetWhatType(c);
+            result.append(p4.handleConvert(c, flag));
+        }
+
+        return result.toString();
     }
 
-    public char convertBigAlphabet(char alphabet) {
+    public char handleConvert(char alphabet, int flag) {
+        if (flag == 1) {
+            return convertBigAlphabet(alphabet);
+        } else if (flag == 0) {
+            return convertSmallAlphabet(alphabet);
+        }
+        return alphabet;
+    }
+
+    private char convertBigAlphabet(char alphabet) {
         char result = (char) (155 - alphabet);
         return result;
     }
 
-    public char convertSmallAlphabet(char alphabet) {
+    private char convertSmallAlphabet(char alphabet) {
         char result = (char) (219 - alphabet);
         return result;
     }
