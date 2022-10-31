@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.regex.Pattern;
 
 public class Problem6 {
 
@@ -9,6 +10,7 @@ public class Problem6 {
     private static final String EMAIL_CHECK = "@";
     private static final String EMAIL_RULE = "@email.com";
     private static final int NAME_DUPLICATE_LENGTH_RULE = 2;
+    private static final String KOREAN_CHECK_REGEX = "^[ㄱ-ㅎㅏ-ㅣ가-힣]*$";
 
     public static List<String> solution(List<List<String>> forms) {
         Map<String, String> namesAlreadyApplied = new HashMap<>();
@@ -35,11 +37,18 @@ public class Problem6 {
             Set<String> nicknameCombinations = new HashSet<>();
             for (int i = 0; i < nickname.length() - 1; i++) {
                 String partialNickname = nickname.substring(i, i + NAME_DUPLICATE_LENGTH_RULE);
+
+                if (isKorean(partialNickname)) {
+                }
             }
         }
 
         List<String> answer = List.of("answer");
         return answer;
+    }
+
+    private static boolean isKorean(String word) {
+        return Pattern.matches(KOREAN_CHECK_REGEX, word);
     }
 
 }
