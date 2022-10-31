@@ -6,6 +6,14 @@ public class Problem4 {
 
 	public static String solution(String word) {
 		String answer = "";
+		char[] chars = word.toCharArray();
+		for (int i = 0; i < word.length(); i++) {
+			chars[i] = getReverse(word.charAt(i));
+		}
+
+		for (char c : chars) {
+			answer += c;
+		}
 		return answer;
 	}
 
@@ -13,9 +21,11 @@ public class Problem4 {
 		if (!Character.isAlphabetic(c)) {
 			return c;
 		}
+
 		if (Character.isUpperCase(c)) {
 			return (char)(upperNum - c);
 		}
+		
 		if (Character.isLowerCase(c)) {
 			return (char)(lowerNum - c);
 		}
