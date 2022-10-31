@@ -1,14 +1,32 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
+    }
+
+    private static void scoreFriendOfFriend(HashMap<String, Integer> scoreRecordMap, String user, HashMap<String, ArrayList<String>> relationshipMap) {
+        ArrayList<String> friendListOfUser = relationshipMap.get(user);
+
+        for (String friend :
+                friendListOfUser) {
+            if (relationshipMap.containsKey(friend)) {
+                for (String friendOfFriend :
+                        relationshipMap.get(friend)) {
+                    if (!Objects.equals(friendOfFriend, user)) {
+                        if (!scoreRecordMap.containsKey(friendOfFriend)) {
+                            scoreRecordMap.put(friendOfFriend, 10);
+                        }
+                        int value = scoreRecordMap.get(friendOfFriend);
+                        value += 10;
+                        scoreRecordMap.put(friendOfFriend, value);
+                    }
+                }
+            }
+        }
     }
 
     private static HashMap<String, ArrayList<String>> registerRelationshipMap(List<List<String>> friends) {
