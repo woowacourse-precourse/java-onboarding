@@ -10,8 +10,8 @@ public class Problem3 {
         return Integer.toString(number);
     }
 
-    private static boolean containsNumber(String fullNumber, String number) {
-        return fullNumber.contains(number);
+    private static boolean containsNumber(String StringNumber, String charNumber) {
+        return StringNumber.contains(charNumber);
     }
 
     private static long countNumber(String StringNumber, char charNumber) {
