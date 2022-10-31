@@ -38,6 +38,18 @@ public class Problem7 {
             }
         }
 
+        // 정렬
+        List<Map.Entry<String, Integer>> entries = new LinkedList<>(score.entrySet());
+        entries.sort(new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                if (o1.getValue() != o2.getValue()) {
+                    return Integer.compare(o2.getValue(), o1.getValue());
+                }
+                return o1.getKey().compareTo(o2.getKey());
+            }
+        });
+
         return answer;
     }
 
