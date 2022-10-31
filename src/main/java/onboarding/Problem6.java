@@ -1,14 +1,20 @@
 package onboarding;
 
-import java.util.ArrayList;
+import java.util.Map;
+import java.util.Set;
 import java.util.List;
-import java.util.regex.Pattern;
+import java.util.HashMap;
+import java.util.TreeSet;
+import java.util.ArrayList;
 
 public class Problem6 {
     public static final int MAX_NUMBER_OF_CREW = 10000;
 
     public static final int MIN_LENGTH_OF_EMAIL = 11;
     public static final int MAX_LENGTH_OF_FORM_LETTERS = 20;
+
+    private static Map<String, String> twoLetterNameForms = new HashMap<>();
+    private static Set<String> duplicatedUserEmails = new TreeSet<>();
 
     public static List<String> solution(List<List<String>> forms) {
         try {
@@ -18,6 +24,15 @@ public class Problem6 {
         }
 
         return new ArrayList<>();
+    }
+
+    private static List<String> parseTwoLetterNames(String nickname) {
+        List<String> twoLetterNames = new ArrayList<>();
+        for (int i = 0; i < nickname.length() - 1; i++) {
+            twoLetterNames.add(nickname.substring(i, i+2));
+        }
+
+        return twoLetterNames;
     }
 
     public static void validate(List<List<String>> forms) {
