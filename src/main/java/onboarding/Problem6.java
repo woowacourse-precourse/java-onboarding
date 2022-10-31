@@ -1,5 +1,7 @@
 package onboarding;
 
+import org.mockito.internal.matchers.CompareTo;
+
 import java.util.*;
 
 public class Problem6 {
@@ -21,7 +23,14 @@ public class Problem6 {
             }
         }
         List<String> answer = new ArrayList<>(duplicateList);
-        answer.sort(Comparator.naturalOrder());
+        answer.sort(new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                String id1 = o1.split("@")[0];
+                String id2 = o2.split("@")[0];
+                return id1.compareTo(id2);
+            }
+        });
         return answer;
     }
 
