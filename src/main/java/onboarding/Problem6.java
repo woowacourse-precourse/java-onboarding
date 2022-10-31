@@ -4,18 +4,18 @@ import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        //#1
+        //1
         ArrayList<String> answer = new ArrayList<>();
         ArrayList<String> nicknameList = new ArrayList<>();
         HashMap<String,String> dic = new HashMap<>();
-        //#1
+
         for(List<String> ls:forms)
         {
             dic.put(ls.get(1),ls.get(0));
             nicknameList.add(ls.get(1));
         }
 
-        //#2
+        //2
         Iterator<String> it = nicknameList.iterator();
         int checkIndex=0;
         ArrayList<Integer> skip= new ArrayList<>();
@@ -55,7 +55,7 @@ public class Problem6 {
             checkIndex++;
         }
 
-        //#3
+        //3
         HashSet<String> set = new HashSet<>(answer);
         answer.clear();
         it = set.iterator();

@@ -67,7 +67,7 @@ public class Problem7 {
         List<String> answer = new ArrayList<>();
         ArrayList<Friends> allList = new ArrayList<>();
 
-        //#1
+        //1
         allList.add(new Friends(user));
         for(List<String> ls:friends)
         {
@@ -99,7 +99,7 @@ public class Problem7 {
             }
         }
 
-        //#2
+        //2
         for(String st:visitors)
         {
             boolean exist3 = false;
@@ -118,7 +118,7 @@ public class Problem7 {
             }
         }
 
-        //#3
+        //3
         Friends master=null;
         for(Friends f:allList)
         {
