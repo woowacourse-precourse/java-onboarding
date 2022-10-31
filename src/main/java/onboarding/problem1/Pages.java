@@ -7,7 +7,7 @@ public class Pages {
     private List<Integer> pages;
 
     public Pages(List<Integer> pobi) {
-        //5. 생성자, 6사용하여 예외 체크
+        pages = pobi;
         if(isFaultSet())throw new RuntimeException();
     }
 
