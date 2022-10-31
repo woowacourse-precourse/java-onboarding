@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = topFive(endAddPoint(user,friends,visitors));
         return answer;
     }
 
