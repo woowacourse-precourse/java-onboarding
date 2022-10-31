@@ -35,12 +35,21 @@ public class Problem2 {
         if(removeCnt == 0) isFinished = true;
         return modifyCrypto;
     }
-    
+
+    //중복된 문자열 없을 때 까지 진행
+    static String completelyRemove(String cryptogram){
+        String modifyCrypto = removeRedundant(cryptogram);
+        while(true){
+            if(isFinished) break;
+            modifyCrypto = removeRedundant(modifyCrypto);
+        }
+        return modifyCrypto;
+    }
 
     
     public static String solution(String cryptogram) {
         String answer = "answer";
-
+        answer = completelyRemove(cryptogram);
         return answer;
     }
 }
