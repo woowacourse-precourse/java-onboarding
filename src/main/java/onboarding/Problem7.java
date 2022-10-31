@@ -57,6 +57,19 @@ public class Problem7 {
         cal_fscore(user);
         cal_visitor(user, visitors);
 
+        List<String> keyList = new ArrayList<>(fscore.keySet());
+        Collections.sort(keyList, (o1,o2)->{
+            int res = fscore.get(o2).compareTo(fscore.get(o1));
+            if(res == 0) return o1.compareTo(o2);
+            return res;
+        });
+
+        int turn = 0;
+        for(String key : keyList){
+            if(turn == 5) break;
+            answer.add(turn,key);
+            turn++;
+        }
         return answer;
     }
 }
