@@ -102,13 +102,47 @@ class Problem6Test {
         }
 
         @Test
-        @DisplayName("getTwoLetterListFromNickname 메소드는 닉네임을 두 글자로 분리한 리스트를 반환한다. ")
+        @DisplayName("getTwoLetterListFromNickname 메소드는 닉네임을 두 글자로 분리한 리스트를 반환한다.")
         void getTwoLetterListFromNicknameTest() {
             nickname = "크로롱";
             email = "Crorong@email.com";
             Crew crew = new Crew(email, nickname);
             List<String> twoLetterListFromNickname = List.of("크로", "로롱");
             assertThat(crew.getTwoLetterListFromNickname()).isEqualTo(twoLetterListFromNickname);
+        }
+
+        @Nested
+        @DisplayName("isOverlappedWith 메소드는")
+        class isOverlappedWithTest {
+            @Nested
+            @DisplayName("중복된 닉네임을 가진 객체를 입력하면")
+            class Context_with_overlapping_nicknames {
+                @Test
+                @DisplayName("true 를 반환한다")
+                void it_throws_true() {
+                    nickname = "크로롱";
+                    email = "Crong@email.com";
+                    Crew crew = new Crew(email, nickname);
+                    String overlappingNickname = "크로";
+                    String emailOfCro = "Cro@email.com";
+                    assertThat(crew.isOverlappedWith(new Crew(emailOfCro, overlappingNickname))).isTrue();
+                }
+            }
+
+            @Nested
+            @DisplayName("중복되지 않는 닉네임을 가진 객체를 입력하면")
+            class Context_with_not_overlapping_nicknames {
+                @Test
+                @DisplayName("false 를 반환한다")
+                void it_throws_false() {
+                    nickname = "크롱";
+                    email = "Crong@email.com";
+                    Crew crew = new Crew(email, nickname);
+                    String notOverlappingNickname = "바바";
+                    String emailOfBaba = "Baba@email.com";
+                    assertThat(crew.isOverlappedWith(new Crew(emailOfBaba, notOverlappingNickname))).isFalse();
+                }
+            }
         }
     }
 }
