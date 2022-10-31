@@ -2,25 +2,37 @@ package onboarding;
 
 /* 기능 목록
  *
- *  canRemove : 문자열에서 다음 문자를 뺄 수 있는지 확인
+ *  removeCont : 문자열에서 연속되는 문자를 제거
  */
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "";
+        String answer = cryptogram;
 
-        for(char c : cryptogram.toCharArray()) {
-            if(canRemove(answer, c)) {
-                answer = answer.substring(0, answer.length() - 1);
-                continue;
-            }
+        while(true) {
+            String removeStr = removeCont(answer);
 
-            answer += c;
+            if(answer.equals(removeStr))
+                break;
+            answer = removeStr;
         }
 
         return answer;
     }
 
-    private static boolean canRemove(String str, char c) {
-        return !str.isEmpty() && str.endsWith(String.valueOf(c));
+    private static String removeCont(String s) {
+        String result = "";
+
+        for(int i = 0; i < s.length(); i++) {
+            char now = s.charAt(i);
+
+            if(i > 0 && now == s.charAt(i-1))
+                continue;
+            else if(i + 1 < s.length() && now == s.charAt(i+1))
+                continue;
+
+            result += now;
+        }
+
+        return result;
     }
 }
