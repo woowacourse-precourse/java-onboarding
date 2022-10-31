@@ -1,8 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Problem6 {
     public static final int EMAIL_IDX = 0;
@@ -13,7 +11,7 @@ public class Problem6 {
         return answer;
     }
 
-    private static void getSimilarNicknameUser(List<List<String>> forms) {
+    private static void getSimilarNicknameUser(List<List<String>> forms, List<String> answer) {
         HashMap<String, List<Integer>> nicknameIncludingContinuousMap = new HashMap<>();
 
         for (int i = 0; i <= forms.size() - 1; i++) {
@@ -26,6 +24,8 @@ public class Problem6 {
                 getNicknameIncludingContinuousMap(nicknameIncludingContinuousMap, i, continuous);
             }
         }
+
+        getSimilarNicknameEmailList(forms, answer, nicknameIncludingContinuousMap);
     }
 
     private static void getNicknameIncludingContinuousMap(HashMap<String, List<Integer>> nicknameIncludingContinuousMap, int i, String continuous) {
@@ -35,4 +35,20 @@ public class Problem6 {
             nicknameIncludingContinuousMap.put(continuous, new ArrayList<>(List.of(i)));
         }
     }
+
+    private static void getSimilarNicknameEmailList(List<List<String>> forms, List<String> answer, HashMap<String, List<Integer>> nicknameIncludingContinuousMap) {
+        Iterator<String> iterator = nicknameIncludingContinuousMap.keySet().iterator();
+
+        while (iterator.hasNext()) {
+            String key = iterator.next();
+            List<Integer> indices = nicknameIncludingContinuousMap.get(key);
+
+            if (indices.size() >= 2) {
+                for (int index : indices) {
+                    answer.add(forms.get(index).get(EMAIL_IDX));
+                }
+            }
+        }
+    }
+    
 }
