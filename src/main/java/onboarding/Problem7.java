@@ -14,7 +14,7 @@ public class Problem7 {
 
         @Override
         public int compareTo(User o) {
-            if(this.score==o.score) return -this.name.compareTo(o.name);
+            if(this.score==o.score) return this.name.compareTo(o.name);
             return -Integer.compare(this.score, o.score);
         }
     }
@@ -32,7 +32,10 @@ public class Problem7 {
         }
 
         for(String visitor: visitors){
-            users.put(visitor, new User(visitor, users.get(visitor).score+1));
+            if(users.containsKey(visitor))
+                users.put(visitor, new User(visitor, users.get(visitor).score+1));
+            else
+                users.put(visitor, new User(visitor, 1));
         }
 
         List<User> recommendUser = new ArrayList<>();
@@ -57,12 +60,12 @@ public class Problem7 {
         for(List<String> friend: friends){
             if(friend.get(0).equals(userName)){
                 ret.add(friend.get(1));
-                break;
+                continue;
             }
 
             if(friend.get(1).equals(userName)){
                 ret.add(friend.get(0));
-                break;
+                continue;
             }
         }
 
@@ -76,9 +79,5 @@ public class Problem7 {
         }
 
         return userName.equals(user);
-    }
-
-    private static List<String> getTop5(Map<String, User> users){
-
     }
 }
