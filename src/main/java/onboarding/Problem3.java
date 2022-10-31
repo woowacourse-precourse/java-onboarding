@@ -1,6 +1,17 @@
 package onboarding;
 
+import java.util.List;
+
 public class Problem3 {
+    public static int maxNumber=10000;
+    public static Integer[] handclapCountList=new Integer[maxNumber];
+
+    public static void recordHandclapByNumber(){
+        for(int num=1;num<=maxNumber;num++){
+            int handclapResultByNumber=countHandclapByNumber(num);
+            handclapCountList[num]=handclapResultByNumber;
+        }
+    }
     public static int countHandclapByNumber(int number){
         int handclapCount=0;
         while(number>0){
