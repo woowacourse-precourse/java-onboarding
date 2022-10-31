@@ -4,7 +4,7 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if (checkError(pobi) || checkError(crong)) {
+        if (isError(pobi) || isError(crong)) {
             return -1;
         }
 
@@ -22,7 +22,7 @@ class Problem1 {
         return -1;
     }
 
-    public static boolean checkError(List<Integer> inputList) {
+    public static boolean isError(List<Integer> inputList) {
         if (inputList.get(0) == null || inputList.get(1) == null || inputList.size() != 2) {
             return true;
         }
