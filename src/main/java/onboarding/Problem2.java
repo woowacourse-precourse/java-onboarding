@@ -2,40 +2,44 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        boolean flag = true;
-        while (flag){
-            String temp = clearDupliationWord(cryptogram);
-            if (temp.equals(cryptogram)){
-                flag = false;
-            }
-            cryptogram = temp;
-        }
-        String answer = cryptogram;
+        String answer = clearRepeat(cryptogram);
         return answer;
     }
 
     private static String clearDupliationWord(String word){
         Boolean dup = false;
         String returnWord = "";
-        if (word.length() < 1){
-            return returnWord;
+        if (word.length() < 2){
+            return word;
         }
-        char duplication = word.charAt(0);
+        char previousChar = word.charAt(0);
         word += "\0";
         for (int i = 1; i < word.length(); i ++){
-            if (duplication == word.charAt(i)){
+            if (previousChar == word.charAt(i)){
                 dup = true;
             }
-            if (duplication != word.charAt(i) && dup){
+            if (previousChar != word.charAt(i) && dup){
                 dup = false;
-                duplication = word.charAt(i);
+                previousChar = word.charAt(i);
             }
-            if (duplication != word.charAt(i) && !dup){
-                returnWord += duplication;
+            if (previousChar != word.charAt(i) && !dup){
+                returnWord += previousChar;
             }
-            duplication = word.charAt(i);
+            previousChar = word.charAt(i);
         }
         return returnWord;
+    }
+
+    private static String clearRepeat(String word){
+        boolean flag = true;
+        while (flag){
+            String temp = clearDupliationWord(word);
+            if (temp.equals(word)){
+                flag = false;
+            }
+            word = temp;
+        }
+        return word;
     }
 
 }
