@@ -27,4 +27,10 @@ public class NicknameTest {
 		assertThatIllegalArgumentException().isThrownBy(() -> new Nickname(NICKNAME_LENGTH_0));
 		assertThatIllegalArgumentException().isThrownBy(() -> new Nickname(NICKNAME_LENGTH_20));
 	}
+
+	@Test
+	@DisplayName("닉네임은 null이 아니다")
+	void nickname_is_not_null() {
+		assertThatIllegalArgumentException().isThrownBy(() -> new Nickname(null));
+	}
 }

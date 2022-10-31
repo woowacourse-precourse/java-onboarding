@@ -5,6 +5,7 @@ public class Nickname {
 	private final String nickname;
 
 	public Nickname(String nickname) {
+		validateNotNull(nickname);
 		validateLength(nickname);
 		this.nickname = nickname;
 	}
@@ -17,6 +18,12 @@ public class Nickname {
 			}
 		}
 		return false;
+	}
+
+	private void validateNotNull(String nickname) {
+		if (nickname == null) {
+			throw new IllegalArgumentException("닉네임은 null일 수 없습니다");
+		}
 	}
 
 	private void validateLength(String nickname) {
