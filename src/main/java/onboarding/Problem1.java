@@ -5,7 +5,7 @@ import java.util.List;
 
 class Problem1 {
 
-    static boolean exceptionFlag = false;
+    static boolean exceptionFlag;
 
     public void checkException(List<Integer> pages){
         int left = pages.get(0);
@@ -56,6 +56,7 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         Problem1 T = new Problem1();
 
+        exceptionFlag = false;
         T.checkException(pobi);
         T.checkException(crong);
         if(exceptionFlag) return -1;

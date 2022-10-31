@@ -45,6 +45,10 @@
 ### 1. 리펙토링
 - ⬜ 자릿수 digit 계산 기능 메소드화 하기
 
+### 2. 수정사항
+- ✅ 여러 테스트를 한번에 진행 시 exceptionFlag가 초기화가 안되고 다음 테스트가 진행되는 이슈 발생
+  - ✅ solution 메소드 내 Exception 체크 전 exceptionFlag 초기화
+
 
 
 
