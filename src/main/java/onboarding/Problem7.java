@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class Problem7 {
@@ -44,10 +45,37 @@ public class Problem7 {
         return friendConnection;
     }
 
+    public static Map<String, Integer> createScoreTable(String user, Map<String, ArrayList<String>> friendConnection){
+        ArrayList<String> userFriends = friendConnection.get(user);
+        HashMap<String, Integer> scoreTable = new HashMap<>();
+        HashSet<String> notRecommended = new HashSet<>(userFriends);
+        notRecommended.add(user);
+
+        for (String userFriend: userFriends){
+            ArrayList<String> friendsOfFriend = friendConnection.get(userFriend);
+            for (String friendOfFriend : friendsOfFriend){
+                if (notRecommended.contains(friendOfFriend))
+                    continue;
+
+                if (scoreTable.containsKey(friendOfFriend)){
+                    int score = scoreTable.get(friendOfFriend);
+                    score += 10;
+                    scoreTable.replace(friendOfFriend, score);
+                } else {
+                    int score = 10;
+                    scoreTable.put(friendOfFriend, score);
+                }
+
+            }
+        }
+
+        return scoreTable;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         Map<String, ArrayList<String>> friendConnection = createFriendConnection(friends);
-        //Map<String, Integer> scoreTable = createScoreTable(friendConnection);
+        Map<String, Integer> scoreTable = createScoreTable(user, friendConnection);
 
         return answer;
     }
