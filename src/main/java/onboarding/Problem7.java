@@ -16,23 +16,22 @@ public class Problem7 {
             String firstFriend = friend.get(0);
             String secondFriend = friend.get(1);
             //  first에 second 추가하기
-            if(friendsMap.containsKey(firstFriend)){
-                friendsMap.get(firstFriend).add(secondFriend);
-            }
-            else{
-                List<String> friendsList = new ArrayList<>();
-                friendsList.add(secondFriend);
-                friendsMap.put(firstFriend, friendsList);
-            }
-            // second에 first 추가하기
-            if(friendsMap.containsKey(secondFriend)){
-                friendsMap.get(secondFriend).add(firstFriend);
-            }
-            else{
-                List<String> friendsList = new ArrayList<>();
-                friendsList.add(firstFriend);
-                friendsMap.put(secondFriend, friendsList);
-            }
+            putFriendsMap(firstFriend, secondFriend);
+            putFriendsMap(secondFriend, firstFriend);
+
+        }
+    }
+
+    public static void putFriendsMap(String key, String value){
+        if(friendsMap.containsKey(key)){
+            friendsMap.get(key).add(value);
+        }
+        else {
+            List<String> values = new ArrayList<>();
+            values.add(value);
+            friendsMap.put(key,values);
         }
     }
 }
+
+
