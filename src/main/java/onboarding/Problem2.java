@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.ArrayDeque;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
@@ -39,5 +36,29 @@ class Cryptogram {
         if (cryptogram != cryptogram.toLowerCase()) {
             throw new IllegalStateException(ONLY_ALLOWED_CRYPTOGRAM_LOWER_CASE);
         }
+    }
+
+    public char[] toCharArray() {
+        return cryptogram.toCharArray();
+    }
+}
+
+class Decoder {
+    public String decode(Cryptogram cryptogram) {
+        ArrayDeque<Character> cryptogramQueue = new ArrayDeque<>();
+        StringBuilder sb = new StringBuilder();
+
+        for (char c : cryptogram.toCharArray()) {
+            if (cryptogramQueue.isEmpty()) {
+                cryptogramQueue.addLast(c);
+            }
+            char lastLetter = cryptogramQueue.removeLast();
+            if (c != lastLetter) {
+                cryptogramQueue.add(lastLetter);
+                cryptogramQueue.add(c);
+            }
+        }
+        cryptogramQueue.forEach(sb::append);
+        return sb.toString();
     }
 }
