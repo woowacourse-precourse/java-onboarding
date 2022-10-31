@@ -21,10 +21,10 @@ public class Problem2 {
                 } else {        //둘 다 아닐 경우
                     tmp += cryptogram_i;
                 }
+            }
 
-                if(i == cryptogram.length() - 2 && continuous == 0){    //마지막 글자가 중복에 해당되지 않을 경우
-                    tmp += cryptogram_i_next;
-                }
+            if(continuous == 0){
+                tmp += cryptogram.substring(cryptogram.length()-1, cryptogram.length());
             }
 
             if(tmp.equals(cryptogram)) {        //cryptogram에 중복이 없어 그대로 저장되었다면
