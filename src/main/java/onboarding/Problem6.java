@@ -12,6 +12,21 @@ public class Problem6 {
     }
 
     /**
+     * 해당 닉네임이 중복 위험 단어를 포함하는지 알려줍니다.
+     */
+    private static boolean isDuplicated(List<List<String>> forms, String nickName) {
+        List<String> duplicatedWords = getDuplicatedWords(forms);
+
+        for (String duplicatedWord : duplicatedWords) {
+            if (nickName.contains(duplicatedWord)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    /**
      * 중복 위험이 있는 단어 목록을 반환합니다.
      */
     private static List<String> getDuplicatedWords(List<List<String>> forms) {
