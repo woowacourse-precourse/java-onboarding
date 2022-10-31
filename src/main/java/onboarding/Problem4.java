@@ -8,28 +8,40 @@ class FrogDictionary{
     static final char FIRST_ALPHABET='a';
     static final char LAST_ALPHABET='z';
     static final int NUMBER_OF_ALPHABET=26;
-
-    char[] makeAlphabetArray(){
-        char[] alphabetArray=new char[NUMBER_OF_ALPHABET];
-        for(int order=0;order<NUMBER_OF_ALPHABET;order++){
-            alphabetArray[order] = (char)((int)FIRST_ALPHABET + order);
-        }
-        return alphabetArray;
+    static final int ALPHABET=0;
+    static final int FROG_LETTER=1;
+    static final List<List<String>> hashMaterials=new ArrayList<>();
+    static final HashMap<String, String> FROG_DICTIONARY=new HashMap<>();
+    FrogDictionary(){
+        makeAlphabetArray();
+        makeFrogLetterArray();
+        makeDictionary();
     }
-    char[] makeFrogLetterArray(){
-        char[] frogLetter=new char[NUMBER_OF_ALPHABET];
+    void makeAlphabetArray(){
+        List<String> alphabetArray=new ArrayList<>();
+        for(int order=0;order<NUMBER_OF_ALPHABET;order++){
+            alphabetArray.add(String.valueOf((char)((int)FIRST_ALPHABET + order)));
+        }
+        hashMaterials.add(alphabetArray);
+    }
+    void makeFrogLetterArray(){
+        List<String> frogLetter=new ArrayList<>();
 
         for(int order=0;order<NUMBER_OF_ALPHABET;order++){
-            frogLetter[order] = (char)((int)LAST_ALPHABET - order);
+            frogLetter.add(String.valueOf((char)((int)LAST_ALPHABET - order)));
         }
-        return frogLetter;
+        hashMaterials.add(frogLetter);
     }
-    HashMap<Character, Character> makeDictionary(char[] alphabetArray, char[] frogLetterArray){
-        HashMap<Character, Character> frogDictionary=new HashMap<>();
+    void makeDictionary(){
+        List<String> alphabetArray = hashMaterials.get(ALPHABET);
+        List<String> frogLetterArray = hashMaterials.get(FROG_LETTER);
+
         for(int position=0;position<NUMBER_OF_ALPHABET;position++){
-            frogDictionary.put(alphabetArray[position], frogLetterArray[position]);
+            FROG_DICTIONARY.put(alphabetArray.get(position), frogLetterArray.get(position));
         }
-        return frogDictionary;
+    }
+    boolean isUpperLetter(String letter){
+        return letter.matches("^[A-Z]*$");
     }
 }
 class Translation{
@@ -41,6 +53,8 @@ class Translation{
         String letter= String.valueOf(alphabet);
         return letter.matches("^[a-zA-Z]*$");
     }
+
+
 }
 public class Problem4 {
     public static String solution(String word) {
