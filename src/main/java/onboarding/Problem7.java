@@ -3,67 +3,92 @@ package onboarding;
 import java.util.*;
 
 /**
- * 기능목록
- * 1. 유저 객체 생성(친구 리스트 생성, 추천친구 hash생성)
- * 2. 모든 유저의 객체 생성, 친구관계 저장
- * 3. 유저의 친구의 친구에 대해 점수 증가
- * 4. 유저의 타임라인의 방문자에게 점수부여 (이때 친구는 증가 시켜선 안된다)
- * 5. 점수가 가장 높은 순으로 정렬하여 최대 5명 출력, 같을시에는 이름순정렬
- * (0점은 해시맵에 들어오지 않은 경우여서 존재하지 않음)
+ * 기능목록 <br>
+ * 1. 유저 객체 생성(친구 리스트 생성, 추천친구 hash생성) <br>
+ * 2. 모든 유저의 객체 생성, 친구관계 저장  <br>
+ * 3. 유저의 친구의 친구에 대해 점수 증가  <br>
+ * 4. 유저의 타임라인의 방문자에게 점수부여 (이때 친구는 증가 시켜선 안된다) <br>
+ * 5. 점수가 가장 높은 순으로 정렬하여 최대 5명 출력, 같을시에는 이름순정렬 <br>
+ * (0점은 해시맵에 들어오지 않은 경우여서 존재하지 않음) <br>
+ * <p>
+ * RecommendFriend.Java,User.Java 클래스 생성
  */
 
 public class Problem7 {
+    private static final HashMap<String, User> allUsers = new HashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = new ArrayList<>();
-        HashMap<String, User> allUsers = new HashMap<>();
+        //모든 유저와 친구관계를 저장한다.
+        addAllFriendsRelation(friends);
 
-        //자신객체 생성
-        allUsers.put(user, new User(user));
+        //찾고자 하는 user의 모든 추천친구리스트 반환한다.
+        List<RecommendFriend> usersRecommendedList = findUsersRecommendedList(user, visitors);
 
-        //친구객체 생성 및 관계 연결
+        //최대 5명까지의 추천친구의 이름을 리턴한다.
+        int wantRankNum = 5;
+        return highPointRecommendedFriendsNameList(usersRecommendedList, wantRankNum);
+    }
+
+    //친구객체를 생성하고, 친구관계를 생성한다.
+    private static void addAllFriendsRelation(List<List<String>> friends) {
         for (List<String> tempRelation : friends) {
             String first = tempRelation.get(0);
             String second = tempRelation.get(1);
 
-            addFriends(allUsers, first, second);
-            addFriends(allUsers, second, first);
+            addFriends(first, second);
+            addFriends(second, first);
         }
+    }
 
-        //user객체
+    //찾고자 하는 user의 모든 추천친구리스트 반환한다.
+    private static List<RecommendFriend> findUsersRecommendedList(String user, List<String> visitors) {
+        //찾고자 하는 user객체를 찾는다
         User nowUser = allUsers.get(user);
-        //현재 유저의 친구 리스트 저장
+
+        //현재 유저와 친구인 관계리스트를 저장한다.
         List<String> userFriendList = nowUser.friendsList;
 
-        //유저의 친구의 친구들에게 점수 부여
+        addFriendsFriendsPoint(nowUser, userFriendList);
+        addVisitedFriends(nowUser, visitors);
+
+        //정련된 추천 친구 리스트를 반환한다.
+        return SortRecommendFriends(nowUser.recommendFriendsHash);
+
+    }
+
+    //친구의 친구인 경우에 점수를 부여한다.
+    private static void addFriendsFriendsPoint(User nowUser, List<String> userFriendList) {
         for (String friendName : userFriendList) {
-            User nowFriend  = allUsers.get(friendName);
+            User nowFriend = allUsers.get(friendName);
             //친구의 친구 리스트
-            List<String> nowFriendList = nowFriend .friendsList;
+            List<String> nowFriendList = nowFriend.friendsList;
             for (String friendOfFriend : nowFriendList) {
                 nowUser.addLinkedFriendsPoint(friendOfFriend);
             }
         }
+    }
 
-        //타임라인 방문유저에게 점수 부여
+    //타임라인에 방문한 친구에게 점수를 부여한다.
+    private static void addVisitedFriends(User nowUser, List<String> visitors) {
         for (String visitorsName : visitors) {
             nowUser.addVisitededFriendsProint(visitorsName);
         }
-
-        List<RecommendFriend> allRecommendedFriends = SortRecommendsdFriends(nowUser.recommendFriendsHash);
-
-        for (int i = 0; i < allRecommendedFriends.size() && i < 5; i++) {
-            answer.add(allRecommendedFriends.get(i).name);
-        }
-
-        return answer;
     }
 
-    //해쉬맵의 values 정렬
-    private static List<RecommendFriend> SortRecommendsdFriends(HashMap<String, RecommendFriend> recommendFriendsHash) {
+    //최대 maxNum명까지 추천친구의 이름을 정렬하여 리턴한다.
+    private static List<String> highPointRecommendedFriendsNameList(List<RecommendFriend> allRecommendedFriends, int maxNum) {
+        List<String> recommendedFriendsList = new ArrayList<>();
+        for (int i = 0; i < allRecommendedFriends.size() && i < maxNum; i++) {
+            recommendedFriendsList.add(allRecommendedFriends.get(i).name);
+        }
+        return recommendedFriendsList;
+    }
+
+    //추천친구 해시맵의 value를 점수와 이름순 정렬한다.
+    private static List<RecommendFriend> SortRecommendFriends(HashMap<String, RecommendFriend> recommendFriendsHash) {
         List<RecommendFriend> allRecommendedFriends = new ArrayList<>();
 
-        for(String friendName : recommendFriendsHash.keySet()){
+        for (String friendName : recommendFriendsHash.keySet()) {
             allRecommendedFriends.add(recommendFriendsHash.get(friendName));
         }
 
@@ -76,16 +101,18 @@ public class Problem7 {
         return allRecommendedFriends;
     }
 
-    //allUsers 테이블에 없다면 추가한다. 관계를 각각의 객체에 추가한다.
-    private static void addFriends(HashMap<String, User> allUsers, String firstFriend, String secondFriend) {
-        if (!allUsers.containsKey(firstFriend)) {
-            allUsers.put(firstFriend, new User(secondFriend));
-        }
-        allUsers.get(firstFriend).addFriends(secondFriend);
+    //친구관계를 추가한다
+    private static void addFriends(String firstFriend, String secondFriend) {
+        User firstUser = findUser(firstFriend);
+        firstUser.addFriends(secondFriend);
     }
 
-    public static void main(String[] args) {
-
+    //특정 유저를 찾는다
+    private static User findUser(String name) {
+        if (!allUsers.containsKey(name)) {
+            allUsers.put(name, new User(name));
+        }
+        return allUsers.get(name);
     }
 
 }

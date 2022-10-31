@@ -1,6 +1,9 @@
 package onboarding;
 
-public class RecommendFriend {
+/*
+problem 7에 사용되는 클래스 입니다.
+ */
+class RecommendFriend {
     String name;
     int point;
 
