@@ -14,7 +14,7 @@ public class Problem4 {
         return answer;
     }
 
-    static char dictionary(char character) {
+    private static char dictionary(char character) {
         int charInt = character;
 
         if (charInt == 32) {
