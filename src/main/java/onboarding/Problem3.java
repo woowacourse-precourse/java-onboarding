@@ -11,11 +11,13 @@ public class Problem3 {
         int count = 0;
 
         for (int i = 1; i <= number; i++) {
-            if (((float)i % 10 == 3) || ((float)i % 10 == 6) || ((float)i % 10 == 9)) {
-                count++;
-            }
-            System.out.println((float)i % 10);
-            System.out.println(count);
+            int sum = i;
+            do {
+                if (((float)sum % 10 == 3) || ((float)sum % 10 == 6) || ((float)sum % 10 == 9)) {
+                    count++;
+                }
+                sum = (int)(sum / 10.0);
+            } while (sum != 0);
         }
 
         return count;
