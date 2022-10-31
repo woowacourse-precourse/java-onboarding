@@ -6,7 +6,7 @@ import java.util.stream.Stream;
 class Problem1 {
 	public static int solution(List<Integer> pobi, List<Integer> crong) {
 		// 책의 범위가 1에서 400 사이 인지 확인
-		if (!is1to400(pobi) || !is1to400(crong)) {
+		if (is1to400(pobi) || is1to400(crong) || isException(pobi) || isException(crong)) {
 			return -1;
 		}
 
@@ -23,10 +23,7 @@ class Problem1 {
 		int crongMaxValue = Math.max(crongLeft, crongRight);
 
 		//점수를 비교해 가장 높은 사람이 게임의 승자가 된다.
-		if (isException(pobi) && isException(crong)) {
-			return getResult(pobiMaxValue, crongMaxValue);
-		}
-		return -1;
+		return getResult(pobiMaxValue, crongMaxValue);
 	}
 
 	static int getResult(int pobiMaxValue, int crongMaxValue) {
@@ -37,11 +34,11 @@ class Problem1 {
 	}
 
 	static boolean is1to400(List<Integer> list) {
-		return list.get(0) > 0 && list.get(0) < 401 && list.get(1) > 0 && list.get(1) < 401;
+		return list.get(0) <= 0 || list.get(0) >= 401 || list.get(1) <= 0 || list.get(1) >= 401;
 	}
 
 	static boolean isException(List<Integer> list) {
-		return list.get(0) == list.get(1) - 1 && list.get(0) % 2 == 1 && list.size() == 2;
+		return list.get(0) != list.get(1) - 1 || list.get(0) % 2 != 1 || list.size() != 2;
 	}
 
 	static int getSide(String side) {
