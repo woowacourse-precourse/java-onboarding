@@ -1,5 +1,7 @@
 package onboarding.pagenumbergame.entity;
 
+import onboarding.pagenumbergame.infra.util.ConsoleOut;
+
 public class Page {
 
   private Integer page;
@@ -10,7 +12,7 @@ public class Page {
 
   public static Page from(int page) {
     if (page < 1 || page > 400) {
-      return new Page(-1);
+      return new Page(ConsoleOut.WRONG_EXCEPTION_NUMBER);
     }
     return new Page(page);
   }
