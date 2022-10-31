@@ -20,10 +20,19 @@ public class Problem3 {
         int count = 0;
         int divider = 1;
 
-        for(int i = 0; i < digit; i++) divider *= 10;
+        for(int i = 0; i < digit; i++) {
+            divider *= 10;
+        }
+
         for(int i = divider; i <= number; i++) {
-            if((i / divider) % 3 == 0 && (i / divider) % 10 != 0) count += 1;
+            if(is369OnFirstDigit(i / divider)) {
+                count += 1;
+            }
         }
         return count;
+    }
+
+    private static boolean is369OnFirstDigit(int num) {
+        return (num % 3 == 0) && (num % 10 != 0);
     }
 }
