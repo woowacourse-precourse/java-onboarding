@@ -47,4 +47,23 @@ class WoowaCourseTest {
 
         Assertions.assertThat(actual).isEqualTo(expected);
     }
+
+    @Test
+    void 사용자_이메일이_사전순서대로_정렬됩니다(){
+        var woowacourse = new WoowaCourse(
+                new Members(List.of(
+                        List.of("a@email.com","제이엠제이슨워니엠제이이제엠"),
+                        List.of("a0@email.com", "제이엠"),
+                        List.of("a1@email.com", "제이슨"),
+                        List.of("a2@email.com", "워니"),
+                        List.of("a3@email.com", "엠제이"),
+                        List.of("a4@email.com", "이제엠")
+                ))
+        );
+
+        var actual = woowacourse.findEmailsAtSimilarUserName();
+        var expected = List.of("a@email.com", "a0@email.com", "a1@email.com", "a2@email.com", "a3@email.com","a4@email.com");
+
+        Assertions.assertThat(actual).isEqualTo(expected);
+    }
 }
