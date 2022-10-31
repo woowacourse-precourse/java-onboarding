@@ -21,3 +21,8 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 필요기능
+
+- 닉네임에서 가질 수 있는 연속 두글자에 대해 크루 인덱스 저장
+- 특정 연속 두글자에 대해 이메일이 여러개 있는지 체크 후 answer에 저장
