@@ -21,3 +21,8 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능 구현
+1. 입력된 이메일의 도메인 체크 기능
+2. 같은 글자가 연속적으로 포함하는지 확인하는 기능
+3. result의 중복을 제거하고 오름차순 기능
