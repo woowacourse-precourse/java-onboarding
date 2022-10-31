@@ -34,9 +34,17 @@ public class Problem7 {
             scoreMap.put(visitor, scoreMap.get(visitor) + 1);
         }
 
-
-        List<String> answer = Collections.emptyList();
-        return answer;
+        // 5. 정렬 및 3명의 친구 추천
+        List<String> answer = new ArrayList<>(scoreMap.keySet());
+        answer.sort(new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                Integer score1 = scoreMap.get(o1);
+                Integer score2 = scoreMap.get(o2);
+                return score2.compareTo(score1);
+            }
+        });
+        return answer.subList(0, 3);
     }
 
     // 유저별 친구 목록 생성 기능
