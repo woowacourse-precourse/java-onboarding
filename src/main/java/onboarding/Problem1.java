@@ -17,7 +17,7 @@ class Problem1 {
         return answer;
     }
 
-    private static int getAddDigitsResult(int pageNumber) {
+    public static int getAddDigitsResult(int pageNumber) {
         int addResult = 0;
         while (pageNumber != 0) {
             addResult += pageNumber % 10;
@@ -26,7 +26,7 @@ class Problem1 {
         return addResult;
     }
 
-    private static int getMultiplyDigitsResult(int pageNumber) {
+    public static int getMultiplyDigitsResult(int pageNumber) {
         int multiplyResult = 1;
         while (pageNumber != 0) {
             multiplyResult *= pageNumber % 10;
@@ -38,25 +38,25 @@ class Problem1 {
         return multiplyResult;
     }
 
-    private static int getLeftPageMaximum(List<Integer> pageList) {
+    public static int getLeftPageMaximum(List<Integer> pageList) {
         int maximumResult = 0;
         maximumResult = Math.max(getAddDigitsResult(pageList.get(0)), getMultiplyDigitsResult(pageList.get(0)));
         return maximumResult;
     }
 
-    private static int getRightPageMaximum(List<Integer> pageList) {
+    public static int getRightPageMaximum(List<Integer> pageList) {
         int maximumResult = 0;
         maximumResult = Math.max(getAddDigitsResult(pageList.get(1)), getMultiplyDigitsResult(pageList.get(1)));
         return maximumResult;
     }
 
-    private static int getScore(List<Integer> pageList) {
+    public static int getScore(List<Integer> pageList) {
         int score = 0;
         score = Math.max(getLeftPageMaximum(pageList), getRightPageMaximum(pageList));
         return score;
     }
 
-    private static int getGameResult(List<Integer> pobi, List<Integer> crong) {
+    public static int getGameResult(List<Integer> pobi, List<Integer> crong) {
         int pobiScore = getScore(pobi);
         int crongScore = getScore(crong);
         if (pobiScore > crongScore) {
@@ -71,7 +71,7 @@ class Problem1 {
         return -1;
     }
 
-    private static boolean isWrongInput(List<Integer> user) {
+    public static boolean isWrongInput(List<Integer> user) {
         if (user.size() != 2) {
             return true;
         }
