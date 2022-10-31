@@ -19,41 +19,54 @@ public class Problem2 {
     }
 
     private static String decodeCryptogram(String cryptogram) {
-        List<Integer> duplicatedIndex;
-        char temp;
-        char presentChar;
+        List<Integer> duplicatedIndexs;
         Boolean isDuplicated = true;
 
         while (isDuplicated && cryptogram.length() > 0) {
-            duplicatedIndex = new ArrayList<>();
-            isDuplicated = false;
-            temp = cryptogram.charAt(0);
-            for (int i = 1; i < cryptogram.length(); i++) {
-                presentChar = cryptogram.charAt(i);
-                if (temp == presentChar) {
-                    isDuplicated = true;
-                    duplicatedIndex.add(i - 1);
-                    while (i < cryptogram.length() && temp == presentChar) {
-                        duplicatedIndex.add(i);
-                        i++;
-                        if (i < cryptogram.length()) {
-                            presentChar = cryptogram.charAt(i);
-                        }
-                    }
-                }
-                temp = presentChar;
-            }
-            if (isDuplicated) {
-                String tempCryptogram = "";
-                for (int i = 0; i < cryptogram.length(); i++) {
-                    if (!duplicatedIndex.contains(i)) {
-                        tempCryptogram = tempCryptogram + cryptogram.charAt(i);
-                    }
-                }
-                cryptogram = tempCryptogram;
-            }
+            duplicatedIndexs = getDuplicatedIndexs(cryptogram);
+            cryptogram = decodeOneStep(cryptogram, duplicatedIndexs);
+            isDuplicated = getIsDuplicated(duplicatedIndexs);
         }
         return cryptogram;
+    }
+
+    private static boolean getIsDuplicated(List<Integer> duplicatedIndexs) {
+        return !(duplicatedIndexs.isEmpty());
+    }
+
+    private static String decodeOneStep(String cryptogram, List<Integer> duplicatedIndexs) {
+        String tempCryptogram = "";
+
+        for (int i = 0; i < cryptogram.length(); i++) {
+            if (!duplicatedIndexs.contains(i)) {
+                tempCryptogram = tempCryptogram + cryptogram.charAt(i);
+            }
+        }
+        return tempCryptogram;
+    }
+
+    private static List<Integer> getDuplicatedIndexs(String cryptogram) {
+        char temp;
+        char presentChar;
+        List<Integer> duplicatedIndexs = new ArrayList<>();
+
+        temp = cryptogram.charAt(0);
+        for (int i = 1; i < cryptogram.length(); i++) {
+            presentChar = cryptogram.charAt(i);
+
+            if (temp == presentChar) {
+                duplicatedIndexs.add(i - 1);
+                while (i < cryptogram.length() && temp == presentChar) {
+                    duplicatedIndexs.add(i);
+                    i++;
+                    if (i < cryptogram.length()) {
+                        presentChar = cryptogram.charAt(i);
+                    }
+                }
+            }
+            temp = presentChar;
+        }
+        return duplicatedIndexs;
     }
 
     private static boolean isValidInput(String cryptogram) {
