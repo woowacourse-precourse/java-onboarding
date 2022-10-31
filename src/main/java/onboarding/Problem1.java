@@ -32,6 +32,13 @@ class Problem1 {
         }
         crong_max = Math.max(crong_sum, crong_calc);
         
+        //3) 2,3 비교후 리턴 반환
+        //3-1) 페이지 차이가 1이상이면 -1 리턴 (예외처리)
+        if( pobi.get(1)-pobi.get(0)>1 || crong.get(1)-crong.get(0)>1 ) answer = -1;
+        else if(pobi_max > crong_max) answer = 1;
+        else if (pobi_max < crong_max) answer = 2;
+        else if(pobi_max == crong_max) answer = 0;
+        
         return answer;
     }
 }
