@@ -13,8 +13,20 @@ public class Problem4 {
             interval += 1;
         }
 
+
         return "";
     }
 
+
+
+    private static Character getLowerOrUpper(char c, Character convertedValue) {
+        if (Character.isUpperCase(c)) {
+            return convertedValue;
+        }
+        if (Character.isLowerCase(c)) {
+            return Character.toLowerCase(convertedValue);
+        }
+        return c;
+    }
 
 }
