@@ -23,5 +23,5 @@ public class UserFriends {
     public boolean isUserFriend(User friend){
         return userFriends.contains(friend);
     }
-    
+
 }
