@@ -16,15 +16,15 @@ public class Problem6 {
         return answer;
     }
 
-    public static HashSet<String> compareDuplicateName(List<List<String>> crewInfo) {
+    public static HashSet<String> compareDuplicateName(List<List<String>> crewInfos) {
         HashSet<String> emails = new HashSet<>();
         Map<String, String> nameAndEmailPair = new HashMap<>();
-        String name = "";
-        String duplicateName = "";
-        String email = "";
+        String name;
+        String duplicateName;
+        String email;
 
-        for (int i = 0; i < crewInfo.size(); i++) {
-            name = crewInfo.get(i).get(1);
+        for (List<String> crewInfo : crewInfos) {
+            name = crewInfo.get(1);
 
             if (name.length() < 2) {
                 break;
@@ -36,13 +36,13 @@ public class Problem6 {
                 if (nameAndEmailPair.containsKey(duplicateName)) {
                     email = nameAndEmailPair.get(duplicateName);
 
-                    if (!email.equals(crewInfo.get(i).get(0))) {
+                    if (!email.equals(crewInfo.get(0))) {
                         emails.add(email);
-                        emails.add(crewInfo.get(i).get(0));
+                        emails.add(crewInfo.get(0));
                     }
                 }
 
-                nameAndEmailPair.put(duplicateName, crewInfo.get(i).get(0));
+                nameAndEmailPair.put(duplicateName, crewInfo.get(0));
             }
         }
 
