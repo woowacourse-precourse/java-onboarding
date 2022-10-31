@@ -7,7 +7,7 @@ public class Problem2 {
         return answer;
     }
 
-    public static StringBuilder toStringBuilder(String crpytogram) {
+    private static StringBuilder toStringBuilder(String crpytogram) {
         StringBuilder stringBuilder = new StringBuilder(crpytogram);
         return stringBuilder;
     }
