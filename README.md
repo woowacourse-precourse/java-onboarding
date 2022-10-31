@@ -71,8 +71,8 @@
 7. [문제 7](./docs/PROBLEM7.md)
  - [ ] recommendFriends
  - 추천할 친구들을 알려준다.
-   - [ ] idToNumber
-   - ID에 고유한 숫자를 부여해 알려준다.
+   - [ ] getFriendGraph
+   - 친구 관계를 토대로 친구 관계 그래프를 만든다.
    - [ ] getFriends
    - 유저의 친구 목록을 가져온다.
    - [ ] add10points
