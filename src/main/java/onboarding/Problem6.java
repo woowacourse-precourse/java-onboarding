@@ -23,8 +23,6 @@ public class Problem6 {
             }
             for (int k=i+1; k<forms.size();k++){
                 answer = getRestrictedUserList(answer,forms.get(i),forms.get(k));
-                if (answer.equals(List.of("answer")))
-                    return List.of("answer");
             }
         }
         answer.sort(new Comparator<String>() {
