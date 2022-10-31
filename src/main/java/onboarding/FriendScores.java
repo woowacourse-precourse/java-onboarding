@@ -58,7 +58,7 @@ public class FriendScores {
     public List<String> getRecommend() {
         List<Map.Entry<User, Score>> list =
                 new ArrayList<>(friendScores.entrySet());
-        
+
         Collections.sort(list, new Comparator<Map.Entry<User, Score>>() {
             @Override
             public int compare(Map.Entry<User, Score> o1, Map.Entry<User, Score> o2) {

@@ -5,7 +5,7 @@ import java.util.*;
 public class UserFriends {
     private Set<User> userFriends = new HashSet<>();
 
-    public UserFriends(String name){
+    public UserFriends(String name) {
         userFriends.add(new User(name));
     }
 
@@ -20,8 +20,7 @@ public class UserFriends {
         }
     }
 
-    public boolean isUserFriend(User friend){
+    public boolean isUserFriend(User friend) {
         return userFriends.contains(friend);
     }
-
 }
