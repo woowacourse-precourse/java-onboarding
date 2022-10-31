@@ -28,6 +28,7 @@ public class Problem7 {
                 }
             }
         }
+        Collections.sort(allId);
         System.out.println(allId);
         return allId;
     }
@@ -65,16 +66,19 @@ public class Problem7 {
         List<Integer> userScore = new ArrayList<>();
         int[] accessUserScore = new int[allId.size()];
         for(int i = 0; i < newFriend.size(); i++) {
-            for(int j = 0; j < newFriend.get(i).size(); j++) {
-                if(accessUserScore[i] == 0) {//리스트 인덱스에 값을 넣는 경우가 처음일 때
-                    userScore.add(10*Collections.frequency(userFriend, newFriend.get(i).get(j)));
-                } else {
-                    userScore.set(i, userScore.get(i)+10*Collections.frequency(userFriend, newFriend.get(i).get(j)));
-                    //여기 수정을 바람..
+            if(newFriend.get(i).size() != 0) {
+                for(int j = 0; j < newFriend.get(i).size(); j++) {
+                    if(accessUserScore[i] == 0) {//리스트 인덱스에 값을 넣는 경우가 처음일 때
+                        userScore.add(10*Collections.frequency(userFriend, newFriend.get(i).get(j)));
+                    } else {
+                        userScore.set(i, userScore.get(i)+10*Collections.frequency(userFriend, newFriend.get(i).get(j)));
+                    }
+                    accessUserScore[i]++;
                 }
-                accessUserScore[i]++;
+            } else {
+                userScore.add(i, 0);
             }
-        }
+            }
         System.out.println(userScore);
         for(int i = 0; i < visitors.size(); i++) {
             for (int j = 0; j < allId.size(); j++) {
@@ -101,13 +105,13 @@ public class Problem7 {
             int right = end;
 
             while(left <= right) {
-                while(left <= end && userScore.get(left) <= userScore.get(pivot)) {
+                while(left <= end && userScore.get(left) >= userScore.get(pivot)) { //start+1값 >= 시작 값, 그대로 순항
                     left += 1;
                 }
-                while(right > start && userScore.get(right) >= userScore.get(pivot)) {
+                while(right > start && userScore.get(right) <= userScore.get(pivot)) { // 끝값 <= 시작값, 그대로 순항
                     right -= 1;
                 }
-                if(left > right) {
+                if(left > right) { // 마지막에 중간에서 만난 left와 right가 서로 값이 바뀔 때
                     int temp1 = userScore.get(right);
                     userScore.set(right, userScore.get(pivot));
                     userScore.set(pivot, temp1);
@@ -145,7 +149,6 @@ public class Problem7 {
         List<List<String>> friendsList = getNewFriend(allId, friends); //사용자이외 친구들의 친구 리스트
         List<Integer> userScore = findFriendNumber(friendsList, userFriend, allId, visitors);
         List<String> recommendList = setRecommendList(allId, userScore);
-        Collections.reverse(recommendList);
 
         return recommendList;
     }
