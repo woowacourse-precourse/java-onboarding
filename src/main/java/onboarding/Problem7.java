@@ -5,11 +5,14 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Queue;
+import java.util.Set;
 
 public class Problem7 {
 	static HashMap<String, List<String>> friendList = new HashMap<>();
 	static HashMap<String, Integer> distanceMap = new HashMap<>();
+	static List<String> mutualFriends = new ArrayList<>();
 
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 		List<String> answer = Collections.emptyList();
@@ -23,6 +26,8 @@ public class Problem7 {
 
 		findDistance(user);
 		System.out.println("distanceMap = " + distanceMap);
+		choiceMutualFriends();
+		System.out.println("mutualFriends = " + mutualFriends);
 
 		return answer;
 	}
@@ -53,6 +58,18 @@ public class Problem7 {
 				}
 				queue.add(anotherMember);
 				distanceMap.put(anotherMember, distanceMap.get(curMember) + 1);
+			}
+		}
+	}
+
+	// public static void countKnowFriends{
+	//
+	// }
+	public static void choiceMutualFriends() {
+		Set<Map.Entry<String, Integer>> entrySet = distanceMap.entrySet();
+		for (Map.Entry<String, Integer> entry : entrySet) {
+			if (entry.getValue() == 2) {
+				mutualFriends.add(entry.getKey());
 			}
 		}
 	}
