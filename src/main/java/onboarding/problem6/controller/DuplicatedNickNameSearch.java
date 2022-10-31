@@ -23,7 +23,7 @@ public class DuplicatedNickNameSearch {
     }
 
     private void addDuplicatedCrew(String duplicatedWord, int currentCrewIndex){
-        for(int checkCrewIndex = currentCrewIndex+1; currentCrewIndex<forms.size(); checkCrewIndex++){
+        for(int checkCrewIndex = currentCrewIndex+1; checkCrewIndex<forms.size(); checkCrewIndex++){
             String checkCrewNickname = NicknameListService.getNicknameFromList(forms.get(checkCrewIndex));
             DuplicatedCrewService.addDuplicatedCrewIndex(duplicatedCrewsIndex, duplicatedWord, checkCrewNickname, checkCrewIndex, currentCrewIndex);
         }
