@@ -23,26 +23,23 @@ class Decoder {
 
     private static String deleteDuplicate(String str) {
         String new_str = "";
-        if (str.equals("")) {
-            return "";
-        }
+        if (str.equals("")) return "";
+
         int l = str.length();
         int i = 0;
         while (i < l-1) {
             if (str.charAt(i) == str.charAt(i+1)) {
                 int dup_cnt = 1;
-                while ( i + dup_cnt < l - 1) {
-                    if (str.charAt(i) == str.charAt(i + dup_cnt + 1)) {
+                while (dup_cnt < l - 1 - i) {
+                    if (str.charAt(i) == str.charAt(i + 1 + dup_cnt)) {
                         dup_cnt += 1;
                     } else {break;}
                 }
                 i += dup_cnt + 1;
-            }
-            else {
+            } else {
                 new_str += str.charAt(i);
                 i += 1;
-            }
-            if (i == l-1) {
+            } if (i == l-1) {
                 new_str += str.charAt(i);
             }
         }
