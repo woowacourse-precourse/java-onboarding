@@ -7,6 +7,7 @@ public class Problem7 {
         // List<String> answer = Collections.emptyList();
         List<String> answer = new ArrayList<>();
         List<String> userFriends = new ArrayList<>();
+        HashMap<String, Integer> scores = new HashMap<>();
 
         // 사용자의 친구 리스트 저장하기
         for (int i=0; i<friends.size(); i++) {
@@ -19,6 +20,25 @@ public class Problem7 {
             }
         }
 
+        // 친구 목록에서 사용자의 친구의 친구 찾기
+        for (int i=0; i<userFriends.size(); i++) {
+            String userFriendName = userFriends.get(i);
+            for (int j=0; j<friends.size(); j++) {
+                if (friends.get(j).get(0).equals(userFriendName) && !userFriends.contains(friends.get(j).get(1))) {
+                    // 내 친구를 발견했고, 친구의 친구가 내 친구가 아니라면 저장한다.
+                    scores.put(friends.get(j).get(1), 10);
+                }
+
+                if (friends.get(j).get(1).equals(userFriendName) && !userFriends.contains(friends.get(j).get(0))) {
+                    // 내 친구를 발견했고, 친구의 친구가 내 친구가 아니라면 저장한다.
+                    scores.put(friends.get(j).get(0), 10);
+                }
+            }
+        }
+
+
+
+        System.out.println(scores);
         System.out.println(userFriends);
 
         return answer;
