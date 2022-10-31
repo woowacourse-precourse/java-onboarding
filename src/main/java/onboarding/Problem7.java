@@ -67,4 +67,10 @@ public class Problem7 {
         });
     }
 
+    public static void getAnswer(List<List<String>> result, List<String> answer) {
+        for (int i = 0; i < result.size(); i++) {
+            answer.add(result.get(i).get(0));
+        }
+    }
+
 }
