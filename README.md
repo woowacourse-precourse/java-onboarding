@@ -94,6 +94,26 @@
     - 열심히 for문을 돌린다.
 - 클래스 `ResultView`를 이용해 `result`에서 이메일들만 오름차순으로 뽑아낸다. `result`는 map 타입이기 때문에 **겹치는 글자와 해당 이메일에 대해 여러 케이스가 존재할 수 있지만 주어진 문제는 한 케이스 ('제이')에 대한 이메일 명단을 요구하기 때문에 한 번 더 필터링할 필요가 있다.**
 
+## 📌문제7
+([문제 보기](https://github.com/areyouhun/java-onboarding/blob/areyouhun/docs/PROBLEM7.md))
+
+### 기능 목록
+- 사용자 아이디 <i>**user**</i>와 친구 관계 정보 <i>**friends**</i>, 사용자 타임 라인 방문 기록 <i>**visitors**</i>가 매개변수로 주어진다.
+- 주어진 매개변수들을 클래스 `GroupGenerator`에 담는다.
+    - `getRecommendationScores` 메소드를 실행하여 id와 추천 점수를 각각 key와 value로 갖고 있는 필드 변수 <i>**recommendationScores**</i> 해시맵을 불러온다.
+        - 내부에서 `updateMyFriends` 메소드가 실행된다. 친구 관계 정보가 담겨 있는 필드 변수 <i>**friends**</i>에서 <i>**user**</i>와 친구인 id들만 뽑아내 필드 변수 <i>**MyFriends**</i> 리스트에 담는다.
+        - 그 다음 `updateNotMyFriends` 메소드가 실행된다. 필드 변수 <i>**friends**</i>에서 <i>**user**</i>와 친구가 아닌 id들만 뽑아내 필드 변수 <i>**NotMyFriends**</i> 리스트에 담는다.
+        - 업데이트된 `NotMyFriends`의 요소 (id)를 key로 하여, 추천 점수를 나타내는 value를 전부 0으로 지정하고 <i>**recommendationScores**</i>에 추가한다. <i>(id1 = 0, id2 = 0, id3 = 0, ...)</i>
+    - `updateRecommendationScores` 메소드를 실행해 점수를 계산한다.
+        - 필드 변수 <i>**friends**</i>를 참고해 `checkFriendship` 메소드로 <i>**NotMyFriends**</i>의 요소 (id)와 <i>**MyFriends**</i>의 요소 (id)가 친구 사이인지를 확인한다. (내 친구의 친구인지를 확인하는 것이며 맞으면 +10점)
+        - 필드 변수 <i>**visitors**</i>를 참고해 `checkVisits` 메소드로 <i>**NotMyFriends**</i>의 요소 (id) 중 <i>**user**</i> 계정에 방문한 id를 확인한다. (방문 시 +1점) 
+- 계산이 적용된 <i>**recommendationScores**</i>는 클래스 `ResultView`로 옮겨져 결과를 반환한다.
+    - `filterZeroScore` 메소드 적용 시 <i>**recommendationScores**</i> key의 value (추천 점수)가 0이면 목록에서 제외된다.
+    - `getResultIdsFromResults` 메소드로 <i>**recommendationScores**</i>에서 key (id)만 뽑아내 리스트로 반환한다.
+        - 리스트에 담기기 전에 <i>**recommendationScores**</i> value를 내림차순 (높은 점수), value가 같을 시 key를 오름차순 (빠른 이름)으로 정렬한다.
+        - id 리스트의 사이즈가 5를 넘을 경우 초과분은 제거한다.
+
+
 ---
 ## 이미지 출처
 <p><a href="https://www.flaticon.com/free-icons/books" title="books icons">Books icons created by popo2021 - Flaticon</a></p>
