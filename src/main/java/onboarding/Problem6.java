@@ -11,6 +11,14 @@ import java.util.List;
  * 설계한 1e4 * 1e4 * 20 * 20 = 4e10
  */
 public class Problem6 {
+    static Boolean isDuplName(String a, String b) {
+        for (int i = 0; i < a.length() - 1; i++) {
+            if (b.contains(a.subSequence(i, i+2))) {
+                return true;
+            }
+        }
+        return false;
+    }
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
