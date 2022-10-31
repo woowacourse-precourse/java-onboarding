@@ -13,8 +13,7 @@ class People implements Comparable<People>{
     }
 
     public boolean isZeroScore(){
-        if(this.score==0) return true;
-        return false;
+        return this.score == 0;
     }
 
     public void setUserFriendStatus(boolean userFriendStatus){
@@ -101,7 +100,7 @@ public class Problem7 {
         }
     }
 
-    public void calculateVisitorsScore(String user, HashMap<String, People> map, List<String> visitors){
+    public void calculateVisitorsScore(HashMap<String, People> map, List<String> visitors){
         if(visitors.isEmpty()) return;
 
         for(String visitor : visitors){
@@ -132,7 +131,7 @@ public class Problem7 {
 
         HashMap<String, People> map = T.makePeopleMap(user, friends, visitors);
         T.calculateFriendsScore(user, map);
-        T.calculateVisitorsScore(user, map, visitors);
+        T.calculateVisitorsScore(map, visitors);
         ArrayList<String> answer = T.makeRecommendedList(user, map);
 
         return answer;
