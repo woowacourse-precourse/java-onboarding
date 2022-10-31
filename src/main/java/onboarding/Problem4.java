@@ -24,6 +24,7 @@ public class Problem4 {
                     continue;
                 }
 
+                reverseChars[i] = aChar;
             }
         }
 
