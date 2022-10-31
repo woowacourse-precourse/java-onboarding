@@ -1,8 +1,10 @@
 package onboarding;
 
+import model.Encryption;
+
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        Encryption decryption = new Encryption(cryptogram);
+        return decryption.getDecryptedText();
     }
 }
