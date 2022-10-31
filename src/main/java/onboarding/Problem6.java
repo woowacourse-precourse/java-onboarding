@@ -1,8 +1,6 @@
 package onboarding;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Problem6 {
     /**
@@ -49,6 +47,12 @@ public class Problem6 {
      * Trie 자료구조를 사용하기 위한 class 선언
      */
     public static class Trie {
+        Map<Character, Trie> children;
+        Set<String> userEmail;
 
+        public Trie() {
+            this.children = new HashMap<>();
+            this.userEmail = new HashSet<>();
+        }
     }
 }
