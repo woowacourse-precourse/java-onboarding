@@ -18,7 +18,7 @@ public class Problem7 {
         addVisitorsScore(visitors, recommendFds);
 
         // user, user의 친구, 점수가 0점인 사람 제거
-        removeScore(user, alreadyFds, recommendFds);
+        removeRecommendFriends(user, alreadyFds, recommendFds);
 
         return answer;
     }
@@ -67,7 +67,7 @@ public class Problem7 {
         }
     }
 
-    public static void removeScore(String user, Set<String> alreadyFds, HashMap<String, Integer> recommendFds) {
+    public static void removeRecommendFriends(String user, Set<String> alreadyFds, HashMap<String, Integer> recommendFds) {
         // 사용자 제거
         recommendFds.remove(user);
 
