@@ -17,7 +17,7 @@ public class Problem4 {
     static List<Integer>getUpperCharIndex(char[] wordCharacter) {
         List<Integer> upperCharIndex = new ArrayList<>();
         for (int i = 0; i < wordCharacter.length; i++) {
-            int asciiChar = (int)wordCharacter[i];
+            int asciiChar = wordCharacter[i];
             if (asciiChar >= 65 & asciiChar <= 90) {
                 upperCharIndex.add(i);
             }
@@ -27,7 +27,7 @@ public class Problem4 {
 
     static char[] reverseWord(char[] wordCharacter) {
         for (int i = 0; i < wordCharacter.length; i++) {
-            int asciiChar = (int)wordCharacter[i];
+            int asciiChar = wordCharacter[i];
             if (asciiChar >= 97 & asciiChar <=122) {
                 char reverseChar = (char)(122+97-asciiChar);
                 wordCharacter[i] = reverseChar;
