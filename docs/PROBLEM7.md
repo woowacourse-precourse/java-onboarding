@@ -24,3 +24,9 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능 구현
+1. 친구 관계를 저장하는 해시 자료구조 구현
+2. 추천 점수를 계산하는 함수 구현
+3. 추천 친구를 정렬하고, 점수가 0인 경우 추천하지 않도록 구현
+4. 최종 반환
