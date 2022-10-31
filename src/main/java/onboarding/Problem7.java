@@ -12,6 +12,7 @@ import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 public class Problem7 {
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
         Map<String,List<String>> friendsMap =  getFriendsMap(friends);
@@ -19,7 +20,11 @@ public class Problem7 {
         calculatorFriendsPoint(friendsMap,pointMap,user);
         calculatorVisitorPoint(friendsMap.get(user),pointMap,visitors);
         Map<String, Integer> sortPointMap = sortPointMap(pointMap);
-        return getMaptoList(sortPointMap);
+        List<String> answerList = getMaptoList(sortPointMap);
+        return limitList(answerList);
+    }
+    public static List<String> limitList(List<String> answerList){
+        return answerList.stream().limit(5).collect(Collectors.toList());
     }
     public static List<String> getMaptoList(Map<String, Integer> sortPointMap){
         return new ArrayList<>(sortPointMap.keySet());
