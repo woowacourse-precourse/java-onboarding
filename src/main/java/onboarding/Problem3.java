@@ -2,22 +2,35 @@ package onboarding;
 
 public class Problem3 {
     public static int solution(int number) {
+
         int answer = 0;
+
         for(int i = 1; i <=number; i++){
-            answer += clapCount(i);
+
+            answer += clap(i);
+
         }
+
         return answer;
+
     }
-    public static int clapCount(int number){
-        String [] num = Integer.toString(number).split("");
+    public static int clap(int number){
+
         int answer = 0;
-        for(int i = 0; i <num.length; i++){
-            if(num[i].equals("3")||num[i].equals("6")||num[i].equals("9")){
+
+        String [] num = (number+"").split("");
+
+
+        for (String s : num) {
+
+            if ((s.equals("3")) || (s.equals("6")) || (s.equals("9"))) {
+
                 answer++;
+
             }
         }
 
-
         return answer;
     }
+
 }
