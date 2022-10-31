@@ -75,7 +75,7 @@
   - 최소한의 화폐 개수로 나눠줄 수 있는 경우를 찾는다.
 
 6. [문제 6](./docs/PROBLEM6.md)
-- [ ] isValidInput
+- [X] isValidInput
 - 인자값이 유효한지 검사한다.
   - [ ] isValidForms
   - 신청서 배열이 조건에 부합하는지 검사한다.

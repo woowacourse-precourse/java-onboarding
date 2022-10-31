@@ -5,7 +5,26 @@ import java.util.List;
 
 public class Problem6 {
 
+    /*
+     * 입력이 유효한지 판별합니다.
+     *
+     * @param 입력으로 주어진 배열입니다.
+     * @return 입력이 유효하다면 참, 아니면 거짓을 반환합니다.
+     * */
     private static boolean isValidInput(List<List<String>> forms) {
+        boolean valid = isValidForms(forms);
+
+        for (List<String> form: forms) {
+            valid &= isValidForm(form);
+        }
+        return valid;
+    }
+
+    private static boolean isValidForms(List<List<String>> forms) {
+        return false;
+    }
+
+    private static boolean isValidForm(List<String> form) {
         return false;
     }
 
