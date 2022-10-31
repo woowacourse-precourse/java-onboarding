@@ -18,7 +18,7 @@ public class Problem3 {
         while (number != 0) {
             checkNumber = number % 10;
 
-            if (checkNumber == 3 || checkNumber == 6 || checkNumber == 9) {
+            if (isNumber369(checkNumber)) {
                 count += 1;
             }
 
@@ -26,5 +26,9 @@ public class Problem3 {
         }
 
         return count;
+    }
+
+    private static boolean isNumber369(int checkNumber) {
+        return checkNumber == 3 || checkNumber == 6 || checkNumber == 9;
     }
 }
