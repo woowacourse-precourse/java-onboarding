@@ -9,26 +9,38 @@ import java.util.stream.Collectors;
 
 public class NickNameValidator {
 
-	private final List<List<String>> forms;
+	private final List<Crew> crews;
 
 	private final Map<String, Integer> occurrences;
 
 	public NickNameValidator(List<List<String>> forms) {
-		this.forms = forms;
+		this.crews = new ArrayList<>();
 		this.occurrences = new HashMap<>();
+		initCrewsWith(forms);
+		initOccurrences();
+	}
+
+	private void initCrewsWith(final List<List<String>> forms) {
 		for (List<String> form : forms) {
-			initMapWith(form);
+			Crew crew = new Crew(form.get(0), form.get(1));
+			crews.add(crew);
 		}
 	}
 
-	private void initMapWith(final List<String> form) {
-		for (String word : getPermutationOf(form.get(1))) {
+	private void initOccurrences() {
+		for (Crew crew : crews) {
+			initOccurrenceWith(crew);
+		}
+	}
+
+	private void initOccurrenceWith(final Crew crew) {
+		for (String word : getPermutationOf(crew.getNickname())) {
 			occurrences.merge(word, 1,
-				(occurrences, ignored) -> occurrences+1);
+				(occurrences, ignored) -> occurrences + 1);
 		}
 	}
 
-	public static List<String> getPermutationOf(final String word) {
+	static List<String> getPermutationOf(final String word) {
 		List<String> permutation = new ArrayList<>();
 		for (int i = 0; i < word.length(); i++) {
 			permutation.addAll(permute(word, i));
@@ -44,30 +56,29 @@ public class NickNameValidator {
 		return words;
 	}
 
-	public int getOccurrenceOf(final String word) {
-		return occurrences.getOrDefault(word, 0);
-	}
-
-	public List<String> getEmailsMatches(final String word) {
-		List<String> emails = new ArrayList<>();
-
-		for (List<String> form : forms) {
-			String nickname = form.get(1);
-			if (nickname.contains(word)) {
-				emails.add(form.get(0));
-			}
-		}
-		return emails;
-	}
-
 	public List<String> getInvalidEmails() {
 		return occurrences.keySet()
 			.stream()
-			.filter(word -> getOccurrenceOf(word) >= 2)
+			.filter(this::isDuplicatedWord)
 			.map(this::getEmailsMatches)
 			.flatMap(Collection::stream)
 			.distinct()
 			.sorted()
+			.collect(Collectors.toList());
+	}
+
+	private boolean isDuplicatedWord(final String word) {
+		return getOccurrenceOf(word) >= 2;
+	}
+
+	int getOccurrenceOf(final String word) {
+		return occurrences.getOrDefault(word, 0);
+	}
+
+	List<String> getEmailsMatches(final String word) {
+		return crews.stream()
+			.filter(crew -> crew.isNicknameContains(word))
+			.map(Crew::getEmail)
 			.collect(Collectors.toList());
 	}
 }
