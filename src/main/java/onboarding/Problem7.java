@@ -49,6 +49,18 @@ public class Problem7 {
                 getPerson(visitor).count();
             }
         }
+        int numOfIntersection(Set<String> a, Set<String> b) {
+            if(a.isEmpty() || b.isEmpty()) {
+                return 0;
+            }
+            int count = 0;
+            for(String friend : a) {
+                if(b.contains(friend)) {
+                    count++;
+                }
+            }
+            return count;
+        }
     }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
