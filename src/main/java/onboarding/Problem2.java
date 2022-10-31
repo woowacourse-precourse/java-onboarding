@@ -5,7 +5,7 @@ import java.util.regex.Pattern;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        checkCorrectCryptogram(cryptogram);
+        checkCryptogramCorrect(cryptogram);
 
         return decryptCryptogram(cryptogram);
     }
@@ -15,7 +15,7 @@ public class Problem2 {
      * @param cryptogram 암호
      * @throws RuntimeException 오류 메세지를 반환
      */
-    private static void checkCorrectCryptogram(String cryptogram) {
+    private static void checkCryptogramCorrect(String cryptogram) {
         int lengthCryptogram = cryptogram.length();
 
         if (lengthCryptogram == 0 || lengthCryptogram > 1000) {
