@@ -25,6 +25,12 @@ class Problem1 {
         setTmpList(tmpPobi, pobiPage);
         setTmpList(tmpCrong, crongPage);
 
+        // 포비와 크롱의 양쪽 페이지 배열
+        int[] leftPobi = new int[tmpPobi.size()]; int[] rightPobi = new int[tmpPobi.size()];
+        int[] leftCrong = new int[tmpCrong.size()]; int[] rightCrong = new int[tmpCrong.size()];
+
+
+
         int answer = Integer.MAX_VALUE;
         return answer;
     }
@@ -35,5 +41,14 @@ class Problem1 {
             tmp.add(page%10);
             page/=10;
         }
+    }
+
+    private static int addNumber(int[] numbers) {
+        //페이지 더하기
+        int sum = numbers[0];
+        for(int i=1; i<numbers.length; i++) {
+            sum += numbers[i];
+        }
+        return sum;
     }
 }
