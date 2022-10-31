@@ -2,22 +2,34 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+import java.util.Collections;
+import java.util.HashSet;
 
 public class Problem6 {
     private static List<List<String>> candidates = new ArrayList<List<String>>();
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = new ArrayList<>();
-
+        List<String> answer = Collections.emptyList();
+        Set<String> duplicates = new HashSet<>();
 
         for(List<String> person : forms) {
-            List<String> words = collectTwoCharacters(person.get(0));
+            // 이름에서 연속된 2글자를 추출해서 words에 모아둔다.
+            List<String> words = collectTwoCharacters(person.get(1));
 
-            if (getIndexOfDuplication(words) != -1) {
-                answer.add(person.get(1));
+            // 중복이 발생한 index를 반환 (forms의 index)
+            int index = getIndexOfDuplication(words);
+            if (index != -1) {
+                duplicates.add(person.get(0));
+                duplicates.add(forms.get(index).get(0));
             }
 
             candidates.add(words);
         }
+
+        // 정렬을 위해 List로 변환
+        ArrayList<String> transfer = new ArrayList<>(duplicates);
+        Collections.sort(transfer);
+        answer = transfer;
 
         return answer;
     }
