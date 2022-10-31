@@ -22,13 +22,13 @@ public class Problem4 {
         }
         return reverse_Word;
     }
-    private static char changeUppercase(int origianl_Alphabet){
-        char reverse_Alphabet = (char)(UPPER_CASE_SUM - origianl_Alphabet);
+    private static char changeUppercase(int original_Alphabet){
+        char reverse_Alphabet = (char)(UPPER_CASE_SUM - original_Alphabet);
         return reverse_Alphabet;
     }
 
-    private static char changeLowercase(int origianl_Alphabet){
-        char reverse_Alphabet = (char)(LOWER_CASE_SUM - origianl_Alphabet);
+    private static char changeLowercase(int original_Alphabet){
+        char reverse_Alphabet = (char)(LOWER_CASE_SUM - original_Alphabet);
         return reverse_Alphabet;
     }
 }
