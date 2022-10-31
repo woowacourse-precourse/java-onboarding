@@ -10,6 +10,15 @@ class Problem1 {
         }
         return -1;
     }
+    // 각 자릿수의 덧셈과 곱셈 중 큰 값을 반환하는 기능
+    private static int getMaxScore(List<Integer> list) {
+        int maxScore = Integer.MIN_VALUE;
+        for (int i = 0; i < list.size(); i++) {
+            String page = String.valueOf(list.get(i));
+            maxScore = Math.max(getAddition(page), getMultiplication(page));
+        }
+        return maxScore;
+    }
     // 페이지의 각 자릿수의 덧셈을 반환하는 기능
     private static int getAddition(String digit) {
         int total = 0;
