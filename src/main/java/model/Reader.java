@@ -3,14 +3,11 @@ package model;
 import java.util.List;
 
 public class Reader {
-    private List<Integer> pages;
     private int maxValue;
 
     public Reader(List<Integer> pages) {
         int leftMaxValue = getBiggerValue(pages.get(0));
         int rightMaxValue = getBiggerValue(pages.get(1));
-
-        this.pages = pages;
         // 4번과정을 통해서 큰 수를 maxValue에 저장
         this.maxValue = Math.max(leftMaxValue, rightMaxValue);
     }

@@ -26,7 +26,7 @@ public class Encryption {
         setDecryptedText(stringTest.replaceAll(CONTINUERS, ""));
     }
 
-    // 현재의 문자열에 연속된 문자가 있는지 판별하는 함수
+    // 현재의 문자열에 연속된 문자가 있는지 판별하는 메소드
     boolean isContinueChar() {
         Pattern pattern = Pattern.compile(CONTINUERS);
         return pattern.matcher(this.decryptedText).find();
