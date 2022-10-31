@@ -3,6 +3,14 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
+    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        HashMap<String, List<String>> friendsRelation = friendsRelation(friends);
+        HashMap<String, Integer> scoreRelation = scoreRelation(visitors);
+        HashMap<String, Integer> extraRelation = extraRelation(friendsRelation, scoreRelation, user);
+        HashMap<Integer, List<String>> scoreTable = reverseScoreRelation(extraRelation);
+        List<String> answer = sortScoreTable(scoreTable, user);
+        return answer;
+    }
     private static HashMap<String, List<String>> friendsRelation(List<List<String>> friends) {
         HashMap<String, List<String>> relation = new HashMap<String, List<String>>();
         for (List<String> twoFriends : friends) {
@@ -27,10 +35,6 @@ public class Problem7 {
             relation.put(visitor, before+1);
         }
         return relation;
-    }
-    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
     }
 
     private static HashMap<String, Integer> scoreRelation(List<String> candidate, HashMap<String, Integer> scoreRelation) {
@@ -87,5 +91,15 @@ public class Problem7 {
             return total;
         }
         return total.subList(0, 5);
+    }
+
+    private static List<String> removeDuplicate(List<String> list) {
+        List<String> result = new ArrayList<String>();
+        for (String l : list) {
+            if(!result.contains(l)) {
+                result.add(l);
+            }
+        }
+        return result;
     }
 }
