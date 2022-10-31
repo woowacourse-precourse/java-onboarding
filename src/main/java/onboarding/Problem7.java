@@ -41,9 +41,8 @@ public class Problem7 {
             }
         }
 
-        for(String key : map.keySet()){
-            result.add(key);
-        }
+        result = new ArrayList<>(map.keySet());
+        Collections.sort(result,(a,b) -> (map.get(b).compareTo(map.get(a))));
         return result;
     }
 }
