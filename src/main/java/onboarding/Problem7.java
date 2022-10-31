@@ -4,12 +4,15 @@ import java.util.*;
 
 public class Problem7 {
     private static Map<String, List<String>> friendsMap = new HashMap<>();
+    private static Map<String, Integer> friendsScore = new HashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         initFriends(friends);
 
         List<String> userFriends = getUserFriends(user);
-
+        for (String userFriend : userFriends) {
+            addFriendsScore(user, userFriend);
+        }
 
         List<String> answer = Collections.emptyList();
         return answer;
@@ -38,6 +41,21 @@ public class Problem7 {
 
     private static List<String> getUserFriends(String user) {
         return friendsMap.get(user);
+    }
+
+    private static void addFriendsScore(String user, String userFriend) {
+        List<String> friendNames = getUserFriends(userFriend);
+        for (String friendName : friendNames) {
+
+            if (!user.equals(friendName)) {
+                addScore(friendName, 10);
+            }
+
+        }
+    }
+
+    private static void addScore(String name, int score) {
+        friendsScore.put(name, friendsScore.getOrDefault(name, 0) + score);
     }
 
 }
