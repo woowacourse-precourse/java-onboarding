@@ -11,3 +11,6 @@
 
 ### PROBLEM4
 1. word를 변환하는 메서드 converWord
+
+### PROBLEM5
+1. money를 변환하는 메서드 converMoney
