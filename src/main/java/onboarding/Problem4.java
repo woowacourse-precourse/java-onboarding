@@ -11,23 +11,20 @@ public class Problem4 {
     static final int ASCII_A = 65;
     static final int ASCII_Z = 90;
 
-    static Map<Character, Character> upperMap = new HashMap<>();
-    static Map<Character, Character> lowerMap = new HashMap<>();
 
     public static String solution(String word) {
 
         StringBuilder answer = new StringBuilder();
 
-        createMap();
+        Map<Character, Character> lowerMap = createMap(ASCII_a, ASCII_z);
+        Map<Character, Character> upperMap = createMap(ASCII_A, ASCII_Z);
 
         for (int i = 0; i < word.length(); i++) {
-
             Character currentChar = word.charAt(i);
-
             if (ASCII_a <= word.charAt(i) && word.charAt(i) <= ASCII_z) {
-                answer.append(oppositeLower(currentChar));
+                answer.append(oppositeLower(currentChar, lowerMap));
             } else if (ASCII_A <= word.charAt(i) && word.charAt(i) <= ASCII_Z) {
-                answer.append(oppositeUpper(currentChar));
+                answer.append(oppositeUpper(currentChar, upperMap));
             } else {
                 answer.append(currentChar);
             }
@@ -36,41 +33,23 @@ public class Problem4 {
         return answer.toString();
     }
 
-    /**
-     * 각 문자의 반대 문자를 빠른 속도로 찾기위한 HashMap 생성하는 메서드
-     *
-     */
-    public static void createMap() {
-        //대문자 map
-        int upperEnd = ASCII_Z;
-        for (int i = ASCII_A; i <= ASCII_Z; i++) {
-            upperMap.put((char)i, (char)upperEnd--);
+    public static Map<Character, Character> createMap(int startAscii, int endAscii) {
+
+        Map<Character, Character> wordMap = new HashMap<>();
+
+        int end = endAscii;
+        for (int i = startAscii; i <= endAscii; i++) {
+            wordMap.put((char)i, (char)end--);
         }
 
-        //소문자 map
-        int lowerEnd = ASCII_z;
-        for (int i = ASCII_a; i <= ASCII_z; i++) {
-            lowerMap.put((char)i, (char)lowerEnd--);
-        }
+        return wordMap;
     }
 
-    /**
-     * 주어진 문자가 대문자일 경우 생성한 맵에서 반대되는 대문자를 찾아서 리턴하는 메서드
-     *
-     * @param upperCharacter 현재 대문자
-     * @return 반대되는 대문자
-     */
-    public static Character oppositeUpper(Character upperCharacter) {
+    public static Character oppositeUpper(Character upperCharacter, Map<Character, Character> upperMap) {
         return upperMap.get(upperCharacter);
     }
 
-    /**
-     * 주어진 문자가 소문자일 경우 생성한 맵에서 반대되는 소문자를 찾아서 리턴하는 메서드
-     *
-     * @param lowerCharacter 현재 소문자
-     * @return 반대되는 소문자
-     */
-    public static Character oppositeLower(Character lowerCharacter) {
+    public static Character oppositeLower(Character lowerCharacter, Map<Character, Character> lowerMap) {
         return lowerMap.get(lowerCharacter);
     }
 
