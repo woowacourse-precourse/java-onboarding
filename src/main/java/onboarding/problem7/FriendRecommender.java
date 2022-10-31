@@ -50,8 +50,8 @@ public class FriendRecommender {
         for (List<String> relationship : friends) {
             String idA = relationship.get(0);
             String idB = relationship.get(1);
-            addFriend(idA, idB);
-            addFriend(idB, idA);
+            addRelationship(idA, idB);
+            addRelationship(idB, idA);
         }
     }
 
@@ -60,7 +60,7 @@ public class FriendRecommender {
      * @param idA friend of idB
      * @param idB friend of idA
      */
-    private void addFriend(String idA, String idB) {
+    private void addRelationship(String idA, String idB) {
         if (relationships.containsKey(idA)) relationships.get(idA).add(idB);
         else relationships.put(idA, new ArrayList<>(List.of(idB)));
     }
