@@ -18,22 +18,54 @@ public class Problem6 {
         HashSet<String> emails = new HashSet<>();
 
         for (List<String> form : forms) {
-            String userEmail = form.get(0);
-            String userNickname = form.get(1);
-            for (int index = 0; index < userNickname.length() - 1; index++) {
-                String target = userNickname.substring(index, index + 2);
-                if (DUPLICATION_NICKNAME.containsKey(target)) {
-                    String email = DUPLICATION_NICKNAME.get(target);
-                    if (!email.equals(userEmail)) {
+            String userEmail = getEmail(form);
+            String userNickname = getNickname(form);
+            for (int index = 0; isLastIndex(index, userNickname); index++) {
+                String target = get2LetterWord(userNickname, index);
+                if (isDuplicationNickname(target)) {
+                    String email = findEmail(target);
+                    if (isNotMine(email, userEmail)) {
                         emails.add(userEmail);
                         emails.add(email);
                     }
                 }
-                DUPLICATION_NICKNAME.put(target, userEmail);
+                addDuplicationNickname(target, userEmail);
             }
         }
 
         return emails;
+    }
+
+    private static boolean isLastIndex(int index, String nickname) {
+        return index < nickname.length() - 1;
+    }
+
+    private static String getEmail(List<String> form) {
+        return form.get(0);
+    }
+
+    private static String getNickname(List<String> form) {
+        return form.get(1);
+    }
+
+    private static String get2LetterWord(String nickname, int index) {
+        return nickname.substring(index, index + 2);
+    }
+
+    private static boolean isDuplicationNickname(String target) {
+        return DUPLICATION_NICKNAME.containsKey(target);
+    }
+
+    private static String findEmail(String target) {
+        return DUPLICATION_NICKNAME.get(target);
+    }
+
+    private static boolean isNotMine(String email, String target) {
+        return !email.equals(target);
+    }
+
+    private static void addDuplicationNickname(String nickname, String email) {
+        DUPLICATION_NICKNAME.put(nickname, email);
     }
 
     private static List<String> emailSort(HashSet<String> emails) {
