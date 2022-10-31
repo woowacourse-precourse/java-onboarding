@@ -1,6 +1,7 @@
 package onboarding;
 
 public class Problem3 {
+    // 반환값 count = 숫자에 포함된 3,6,9의 개수
     public static int countNum(String str) {
         int count = 0;
         for (int i = 0; i < str.length(); i++) {
@@ -20,6 +21,7 @@ public class Problem3 {
 
         int answer = 0;
 
+        // 제한사항: number는 1 이상 10,000 이하인 자연수이다.
         if ((number < 1) || (number > 10000)) {
             return -1;}
 
