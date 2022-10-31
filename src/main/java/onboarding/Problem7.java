@@ -39,6 +39,7 @@ class FriendInfoController {
             }
             friendsShouldCheck.add(friendsRelation);
         }
+        usersFriends.remove(user);
     }
 
     private static void addPoint(Map<String, Integer> friendAndScore, String friend, int point) {
@@ -82,14 +83,14 @@ class FriendInfoController {
     }
 
     static List<String> returnRecommendList(String user, List<List<String>> friends, List<String> visitors) {
-        Map<String, Integer> recommendMap = new HashMap<>();
+        Map<String, Integer> friendAndScore = new HashMap<>();
         List<List<String>> friendsShouldCheck = new ArrayList<>();
         Set<String> usersFriends = new HashSet<>();
 
         distinguishUsersFriend(user, friends, usersFriends, friendsShouldCheck);
-        checkFriends(recommendMap, friendsShouldCheck, usersFriends);
-        checkVisitors(recommendMap, visitors, usersFriends);
-        return returnTopFiveFriends(recommendMap);
+        checkFriends(friendAndScore, friendsShouldCheck, usersFriends);
+        checkVisitors(friendAndScore, visitors, usersFriends);
+        return returnTopFiveFriends(friendAndScore);
     }
 
 }
