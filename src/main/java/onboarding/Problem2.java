@@ -13,33 +13,33 @@ public class Problem2 {
      */
     private static String decode(String cryptogram) {
         StringBuilder sbCryptogram = new StringBuilder(cryptogram);
+        boolean result;
 
-        int beginIndex = getRepeatCharacterBeginIndex(sbCryptogram);
-
-        while(beginIndex != -1){
-            sbCryptogram.delete(beginIndex, beginIndex + 2); // 오른쪽 범위를 포함해야하기 때문에, +2을 해줌
-            beginIndex = getRepeatCharacterBeginIndex(sbCryptogram);
-        }
+        do {
+            result = removeRepeatChar(sbCryptogram);
+        } while (result);
 
         return sbCryptogram.toString();
     }
 
     /**
      * 입력 받은 문자열 안에 같은 문자가 연달아 나오는지 확인한다.
-     * 만약 존재한다면 시작 부분의 index를 반환한다.
-     * 그렇지 않다면, null을 반환한다.
+     * 만약 존재한다면 연달아 나오는 부분을 삭제하고, true를 반환한다.
+     * 그렇지 않으면, false를 반환한다.
      * @param sbCryptogram
-     * @return int: 연달아 문자가 나오는 시작점 index, 그렇지 않다면 -1
+     * @return boolean: 연달아 나오는 문자가 존재하여 이를 삭제하여 true를 반환
      */
-    private static int getRepeatCharacterBeginIndex(StringBuilder sbCryptogram) {
+    private static boolean removeRepeatChar(StringBuilder sbCryptogram) {
+        boolean isModified = false;
         char currChar, nextChar;
         for(int i=0;i<sbCryptogram.length() - 1;i++){
             currChar = sbCryptogram.charAt(i);
             nextChar = sbCryptogram.charAt(i+1);
             if(currChar == nextChar){
-                return i;
+                sbCryptogram.delete(i, i+2);
+                isModified = true;
             }
         }
-        return -1;
+        return isModified;
     }
 }
