@@ -13,4 +13,9 @@ public class Problem5 {
     private static Boolean isException(int number) {
         return number < 1 || number > 1000000;
     }
+
+    private static Integer getCoinNumber(Integer money, List<Integer> wallet, Integer unit) {
+        wallet.add(money / unit);
+        return money % unit;
+    }
 }
