@@ -4,29 +4,16 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = new ArrayList<>();
         Map<String, List<String>> friendsList;
         Map<String, Integer> score;
-        List<Map.Entry<String, Integer>> sortedScore;
-        int cnt = 0;
 
         friendsList = getFriendsList(friends);
+
         // 점수 계산
         score = calMutualFriendsScore(user, friendsList);
         score = calVisitorsScore(friendsList.get(user), visitors, score);
 
-        // 점수 내림차순 정렬
-        sortedScore = new ArrayList<>(score.entrySet());
-        sortedScore.sort((o1, o2) -> o2.getValue() - o1.getValue());
-        for (Map.Entry<String, Integer> entry: sortedScore) {
-            if (cnt == 5) {
-                break;
-            }
-            answer.add(entry.getKey());
-            cnt++;
-        }
-
-        return answer;
+        return getResult(score);
     }
 
     // 사용자들의 친구 목록 반환 함수
@@ -90,5 +77,31 @@ public class Problem7 {
         }
 
         return score;
+    }
+
+    // 점수 내림차순 정렬 함수
+    static List<Map.Entry<String, Integer>> sortingScore(Map<String, Integer> score) {
+        List<Map.Entry<String, Integer>> sortedScore = new ArrayList<>(score.entrySet());
+        sortedScore.sort((o1, o2) -> o2.getValue() - o1.getValue());
+
+        return sortedScore;
+    }
+
+    // 점수를 정렬한 후 사용자 아이디를 리스트로 반환하는 함수
+    static List<String> getResult(Map<String, Integer> score) {
+        List<Map.Entry<String, Integer>> sortedScore;
+        List<String> answer = new ArrayList<>();
+        int count = 0;
+
+        sortedScore = sortingScore(score);
+        for (Map.Entry<String, Integer> entry: sortedScore) {
+            if (count == 5) {
+                break;
+            }
+            answer.add(entry.getKey());
+            count++;
+        }
+
+        return answer;
     }
 }
