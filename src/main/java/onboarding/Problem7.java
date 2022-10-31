@@ -2,10 +2,13 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -14,7 +17,7 @@ public class Problem7 {
         Map<String,Integer> pointMap = getPointMap(friendsMap,user);
         calculatorFriendsPoint(friendsMap,pointMap,user);
         calculatorVisitorPoint(friendsMap.get(user),pointMap,visitors);
-
+        Map<String, Integer> sortPointMap = sortPointMap(pointMap);
         return answer;
     }
     public static Map<String,List<String>> getFriendsMap(List<List<String>> friends){
@@ -61,5 +64,27 @@ public class Problem7 {
                 pointMap.put(str,pointMap.getOrDefault(str,0)+1);
             }
         }
+    }
+    public static Map<String, Integer> sortPointMap(Map<String,Integer> pointMap){
+
+        List<Map.Entry<String, Integer> > list =
+                new LinkedList<>(pointMap.entrySet());
+        Collections.sort(list, new Comparator<Entry<String, Integer>>() {
+            public int compare(Map.Entry<String, Integer> o1,
+                    Map.Entry<String, Integer> o2)
+            {
+                if(o1.getValue().equals(o2.getValue())){
+                    return (o1.getKey().compareTo(o2.getKey()));
+                }
+                return (o2.getValue()).compareTo(o1.getValue());
+            } //value는 내림차순 key는 오름차순
+        });
+
+        Map<String, Integer> temp = new LinkedHashMap<>();
+        for (Map.Entry<String, Integer> aa : list) {
+            temp.put(aa.getKey(), aa.getValue());
+        }
+        return temp;
+
     }
 }
