@@ -10,17 +10,21 @@
 
 검증 & 예외처리 목록
 ---
-* 크루 인원 검증(1 ~ 10000)
+* 크루 인원 검증(1 ~ 10000) (validateCrewNumber)
   * ex) forms 길이 10000보다 큰 경우 -> 예외처리
   
   
-* 이메일 형식 검증
+* 이메일 형식 검증 (validateEmailFormat)
   * ex) 이메일 형식이 xxx@email.com과 다른 경우 -> 예외처리
+
+
+* 이메일 길이 검증(11 ~ 20) (validateEmailLength)
+ * ex) 이메일 길이 20보다 긴 경우 -> 예외처리
   
 
-* 닉네임 형식 검증
+* 닉네임 형식 검증 (validateNicknameFormat)
   * ex) 닉네임에 한글이 아닌 문자 포함된 경우 -> 예외처리
   
 
-* 닉네임 길이 검증(1 ~ 20)
+* 닉네임 길이 검증(1 ~ 20) (validateNicknameLength)
   * ex) 닉네임 길이 20보다 긴 경우 -> 예외처리
