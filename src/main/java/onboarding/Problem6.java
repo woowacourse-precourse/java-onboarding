@@ -51,14 +51,7 @@ public class Problem6 {
     private void addIndex(Map<String, Set<Integer>> result, List<String> form, int index) {
       for (int i = 1; i < form.size(); i++) {
         String key = form.get(i);
-        checkForNewKey(result, key);
-        result.get(key).add(index);
-      }
-    }
-
-    private void checkForNewKey(Map<String, Set<Integer>> result, String key) {
-      if (!result.containsKey(key)) {
-        result.put(key, new HashSet<>());
+        result.computeIfAbsent(key, s -> new HashSet<>()).add(index);
       }
     }
 
