@@ -80,4 +80,15 @@ class PageNumberGame {
 
         return maxScore;
     }
+
+    public static boolean catchException(List<Integer> lst) {
+        int size = lst.size();
+        int pageFlag = lst.get(1) - lst.get(0);
+
+        if (size != 2 || pageFlag != 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
