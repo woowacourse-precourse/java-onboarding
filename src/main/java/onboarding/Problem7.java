@@ -13,7 +13,25 @@ public class Problem7 {
             addFriendsMap(friendsMap,friendRelation);
         }
 
+        // 친구의 친구인 경우 점수 맵에 10점 추가하기
+        for(Object friend : friendsMap.get(user)) {
+            ArrayList<String> friendsList = friendsMap.get(friend); // 친구의 친구 목록 가져오기
+            addScoresForFriend(scoreMap, friendsList);
+        }
+
         return answer;
+    }
+
+    private static void addToScoreMap(Map<String, Integer> scoreMap, String friend){
+        if(scoreMap.containsKey(friend)){
+            scoreMap.put(friend, scoreMap.get(friend)+10);
+        }else scoreMap.put(friend,10);
+    }
+
+    private static void addScoresForFriend(Map<String, Integer> scoreMap, List<String> friendsList) {
+        for (String friend : friendsList) {
+            addToScoreMap(scoreMap, friend);
+        }
     }
 
     private static void addFriendsList(Map<String, ArrayList<String>> friendsMap, String key, String value) {
