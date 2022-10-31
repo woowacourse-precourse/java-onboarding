@@ -8,8 +8,15 @@ import java.util.regex.Pattern;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        List<String> wordList = stringToWordList(word);
+        List<String> resultList = new ArrayList<String>();
+        for (String e : wordList) {
+            resultList.add(convertLetter(e));
+            System.out.println(resultList);
+        }
+        String result = resultList.toString();
+        System.out.println(result);
+        return result;
     }
 
     private static List<String> stringToWordList(String word) {
