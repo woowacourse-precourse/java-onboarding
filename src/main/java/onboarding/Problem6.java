@@ -12,12 +12,10 @@ public class Problem6 {
         for (int i = 0; i < forms.size(); i++) {
             String two;
             String nick = forms.get(i).get(1);
-            System.out.println("---------");
 
             for (int j = 0; j < nick.length() - 1; j++) {
                 Map<Integer, String> map = new HashMap<>();
                 two = nick.substring(j, j + 2);
-                System.out.println(two);
 
                 if (wordSet.contains(two)) {
                     for (int k = 0; k < list.size(); k++) {
@@ -26,21 +24,17 @@ public class Problem6 {
                             for (Integer key : list.get(k).keySet()) {
                                 Key = key;
                             }
-
                             answer.add(forms.get(Key).get(0));
                             break;
                         }
                     }
-                    System.out.println("this: " + two);
                     answer.add(forms.get(i).get(0));
                 }
-
                 wordSet.add(two);
                 map.put(j, two);
                 list.add(map);
             }
         }
-        System.out.println(list);
         List<String> resultList = new ArrayList<>();
         for (int i = 0; i < answer.size(); i++) {
             if (!resultList.contains(answer.get(i))) {
@@ -48,10 +42,7 @@ public class Problem6 {
             }
         }
         answer = resultList;
-
         answer.sort(Comparator.naturalOrder());
-        System.out.println(answer);
-
         return answer;
     }
 }

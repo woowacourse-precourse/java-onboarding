@@ -4,90 +4,90 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
+    public static Boolean notFirst(int firstPage) {
+        if (firstPage == 1) return false;
+        return true;
+    }
+
+    public static Boolean notLast(int lastPage) {
+        if (lastPage == 400) return false;
+        return true;
+    }
+
+    public static Boolean firstLastCheck(List<Integer> user) {
+        if (notFirst(user.get(0)) || notLast(user.get(1))) return false;
+        return true;
+    }
+
+    public static Boolean notSequence(int firstPage, int lastPage) {
+        if ((firstPage + 1) != lastPage) return true;
+        return false;
+    }
+
+    public static List<Integer> eachDigit(int num) {
+        List<Integer> digitList = new ArrayList<>();
+
+        while(num > 0) {
+            digitList.add(num % 10);
+            num /= 10;
+        }
+
+        return digitList;
+    }
+
+    public static int sumOfDigit(List<Integer> digitList) {
+        int result = 0;
+
+        for (Integer list: digitList) {
+            result += list;
+        }
+
+        return result;
+    }
+
+    public static int multiplyOfDigit(List<Integer> digitList) {
+        int result = 1;
+
+        for (Integer list: digitList) {
+            result *= list;
+        }
+
+        return result;
+    }
+
+    public static int pageBiggerCalculation(int page) {
+        int pageSum = sumOfDigit(eachDigit(page));
+        int pageMultiply = multiplyOfDigit(eachDigit(page));
+
+        int Max = pageSum;
+        if(pageMultiply > pageSum) Max = pageMultiply;
+
+        return Max;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
-        if(pobi.get(0) == 1 || pobi.get(1) == 400 ||
-                crong.get(0) == 1 || crong.get(1) == 400) return -1;
+        if (firstLastCheck(pobi) || firstLastCheck(crong)) return -1;
+        if(notSequence(pobi.get(0), pobi.get(1)) || notSequence(crong.get(0), crong.get(1))) return -1;
 
-        if(pobi.get(0) + 1 != pobi.get(1) || crong.get(0) + 1 != crong.get(1)) return -1;
-
-        int temp = 1;
+        // Case of pobi
         int first = pobi.get(0);
-        ArrayList<Integer> firstNum = new ArrayList<>();
-        int firstMax = 0;
         int second = pobi.get(1);
-        ArrayList<Integer> secondNum = new ArrayList<>();
-        int secondMax = 0;
-        int pobiSol;
+        int firstCal = pageBiggerCalculation(first);
+        int secondCal = pageBiggerCalculation(second);
 
-        while(first > 0) {
-            firstNum.add(first % 10);
-            first /= 10;
-        }
-        
-        for (int i = 0; i < firstNum.size(); i++) {
-            firstMax += firstNum.get(i);
-            temp = temp * firstNum.get(i);
-        }
+        int pobiSol = firstCal;
+        if(firstCal < secondCal) pobiSol = secondCal;
 
-        if(firstMax < temp) firstMax = temp;
-
-        while(second > 0) {
-            secondNum.add(second % 10);
-            second /= 10;
-        }
-
-        temp = 1;
-
-        for (int i = 0; i < secondNum.size(); i++) {
-            secondMax += secondNum.get(i);
-            temp = temp * secondNum.get(i);
-        }
-
-        if(secondMax < temp) secondMax = temp;
-
-        pobiSol = secondMax;
-        if(firstMax > secondMax) pobiSol = firstMax;
-
-        // crong
-        temp = 1;
+        // Case of crong
         first = crong.get(0);
-        firstNum.clear();
-        firstMax = 0;
         second = crong.get(1);
-        secondNum.clear();
-        secondMax = 0;
-        int crongSol;
+        firstCal = pageBiggerCalculation(first);
+        secondCal = pageBiggerCalculation(second);
 
-        while(first > 0) {
-            firstNum.add(first % 10);
-            first /= 10;
-        }
-
-        for (int i = 0; i < firstNum.size(); i++) {
-            firstMax += firstNum.get(i);
-            temp = temp * firstNum.get(i);
-        }
-
-        if(firstMax < temp) firstMax = temp;
-
-        while(second > 0) {
-            secondNum.add(second % 10);
-            second /= 10;
-        }
-
-        temp = 1;
-
-        for (int i = 0; i < secondNum.size(); i++) {
-            secondMax += secondNum.get(i);
-            temp = temp * secondNum.get(i);
-        }
-
-        if(secondMax < temp) secondMax = temp;
-
-        crongSol = secondMax;
-        if(firstMax > secondMax) crongSol = firstMax;
+        int crongSol = firstCal;
+        if(firstCal < secondCal) crongSol = secondCal;
 
         answer = 0;
         if (pobiSol > crongSol) answer = 1;
