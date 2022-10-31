@@ -5,7 +5,7 @@ public class Problem4 {
         if(hasException(word)){
             return null;
         }
-        return answer;
+        return getChangedWord(word);
     }
 
     public static boolean hasException(String word){
@@ -14,5 +14,19 @@ public class Problem4 {
         return false;
     }
 
+
+    public static String getChangedWord(String word){
+        String result;
+        char[] newWord = word.toCharArray();
+        for(int i = 0; i < newWord.length; i++){
+            if('A' < newWord[i] && newWord[i] < 'Z')
+                newWord[i] = (char)('Z'+'A'-newWord[i]);
+            else if('a' < newWord[i] && newWord[i] < 'z')
+                newWord[i] = (char)('z'+'a'-newWord[i]);
+        }
+        result = new String(newWord);
+        return result;
+
+    }
 
 }
