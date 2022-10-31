@@ -9,24 +9,9 @@ public class Problem4 {
     public static String solution(String word) {
         String answer = "";
 
-        if (checkValidation(word)) {
-            answer = convertReverse(word);
-        } else {
-            answer = "-1";
-        }
+        answer = convertReverse(word);
 
         return answer;
-    }
-
-    public static boolean checkValidation(String inputString) {
-        int inputStringLength = inputString.length();
-
-        // 길이가 1 이상 1,000 이하인지 확인한다.
-        if (!(1 <= inputStringLength && inputStringLength <= 1000)) {
-            return false;
-        }
-
-        return true;
     }
 
     public static String convertReverse(String inputString) {
