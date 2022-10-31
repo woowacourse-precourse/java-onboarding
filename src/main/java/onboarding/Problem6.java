@@ -1,8 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -18,6 +16,21 @@ public class Problem6 {
         sortEmailList(emailList);
 
         return emailList;
+    }
+    private static Set<String> getDuplicatedEmailSet(List<List<String>> forms) {
+        Set<String> result = new HashSet<>();
+        Map<Integer, Set<String>> charSetEmailMap = new HashMap<>();
+        for(List<String> form : forms) {
+            putCharSet(form, charSetEmailMap);
+        }
+
+        charSetEmailMap.forEach((strKey, setValue) -> {
+            if(setValue.size() >= 2) {
+                result.addAll(setValue);
+            }
+        });
+
+        return result;
     }
 
 
