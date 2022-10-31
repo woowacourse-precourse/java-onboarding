@@ -24,3 +24,11 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능단위 개발명세
+
+- 문제의 조건을 따라 input의 유효성을 검증하는 기능
+- friends를 기반으로 모든 사용자 목록을 만드는 기능
+- friends를 기반으로 특정 유저별 친구목록을 만드는 기능
+- user의 친구들과 user의 visitors 명단을 통해 점수를 부여하는 기능
+- 점수별로 정렬되어 Top 5인을 선정하는 기능
