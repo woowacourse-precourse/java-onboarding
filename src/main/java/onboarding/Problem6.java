@@ -11,6 +11,8 @@ public class Problem6 {
         try {
             emailCheck(forms.get(0).get(0));
             emailLengthCheck(forms.get(0).get(0));
+            nickNameLengthCheck(forms.get(0).get(1));
+            crewSizeCheck(forms);
         }catch (EmailFormException e)
         {
             answer= new ArrayList<>();
@@ -46,5 +48,16 @@ public class Problem6 {
     public static void emailLengthCheck(String email) throws RangeException
     {
         if(email.length()<11||email.length()>=20) throw new RangeException("Email 입력범위 11~20미만에 해당하지 않습니다");
+    }
+
+    /**
+     * 닉네임 길이가 1~20자미만인가?
+     *
+     * @param nickName list에서 닉네임만 입력
+     * @throws RangeException 1~20자미만이 아니면 발생
+     */
+    public static void nickNameLengthCheck(String nickName) throws RangeException
+    {
+        if(nickName.length()<1||nickName.length()>=20) throw new RangeException("NickName 입력범위 1~20자미만에 해당하지 않습니다");
     }
 }
