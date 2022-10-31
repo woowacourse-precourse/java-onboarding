@@ -90,7 +90,27 @@ public class Problem7 {
         }
     }
 
-
+    public static List<String> getRecommendedFriend() {
+        List<String> result = new ArrayList<>(Collections.emptyList());
+        List<Map.Entry<String, Integer>> sortedFriend = recommendedScore
+                .entrySet()
+                .stream()
+                .sorted(new Comparator<Map.Entry<String, Integer>>() {
+                    @Override
+                    public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                        if (Objects.equals(o1.getValue(), o2.getValue())) {
+                            return o1.getKey().compareTo(o2.getKey());
+                        }
+                        return o2.getValue().compareTo(o1.getValue());
+                    }
+                }).collect(Collectors.toList());
+        for (Map.Entry<String, Integer> recommendedFriend : sortedFriend) {
+            if (recommendedFriend.getValue() > 0) {
+                result.add(recommendedFriend.getKey());
+            }
+        }
+        return result;
+    }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
