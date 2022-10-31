@@ -31,14 +31,15 @@ class UserServiceTest {
                         visitors
                 )
         );
-        List<String> result = List.of("andole","jun", "bedi");
-        var actual = userService.findHighestRecommendationByUsernameLimitN(user, 5);
+        List<String> result = List.of("andole", "jun", "bedi");
+        var          actual = userService.findHighestRecommendationByUsernameLimitN(user, 5);
 
-        Assertions.assertThat(actual).isEqualTo(result);
+        Assertions.assertThat(actual)
+                  .isEqualTo(result);
     }
 
     @Test
-    void 추천할_친구가_없는_경우_아무도_반환하지_않습니다(){
+    void 추천할_친구가_없는_경우_아무도_반환하지_않습니다() {
         String user = "mrko";
         List<List<String>> friends = List.of(
                 List.of("mrko", "bedi"),
@@ -54,13 +55,14 @@ class UserServiceTest {
                 )
         );
         List<String> result = List.of();
-        var actual = userService.findHighestRecommendationByUsernameLimitN(user, 5);
+        var          actual = userService.findHighestRecommendationByUsernameLimitN(user, 5);
 
-        Assertions.assertThat(actual).isEqualTo(result);
+        Assertions.assertThat(actual)
+                  .isEqualTo(result);
     }
 
     @Test
-    void 동일한_점수를_가진_경우라면_이름순으로_정렬되어야합니다(){
+    void 동일한_점수를_가진_경우라면_이름순으로_정렬되어야합니다() {
         String user = "a";
         List<List<String>> friends = List.of(
                 List.of("a", "b"),
@@ -80,17 +82,18 @@ class UserServiceTest {
                         visitors
                 )
         );
-        List<String> result = List.of("b0","b1","b10","b11","b12");
-        var actual = userService.findHighestRecommendationByUsernameLimitN(user, 5);
+        List<String> result = List.of("b0", "b1", "b10", "b11", "b12");
+        var          actual = userService.findHighestRecommendationByUsernameLimitN(user, 5);
 
-        Assertions.assertThat(actual).isEqualTo(result);
+        Assertions.assertThat(actual)
+                  .isEqualTo(result);
     }
 
     @Test
-    void 케이스1(){
+    void 케이스1() {
         String user = "mrko";
         List<List<String>> friends = List.of(
-                List.of("mrko","andole"),
+                List.of("mrko", "andole"),
                 List.of("donut", "andole"),
                 List.of("donut", "jun"),
                 List.of("donut", "mrko"),
@@ -107,32 +110,28 @@ class UserServiceTest {
                 )
         );
         List<String> result = List.of("jun", "bedi");
-        var actual = userService.findHighestRecommendationByUsernameLimitN(user, 5);
+        var          actual = userService.findHighestRecommendationByUsernameLimitN(user, 5);
 
-        Assertions.assertThat(actual).isEqualTo(result);
+        Assertions.assertThat(actual)
+                  .isEqualTo(result);
     }
 
-/*
     @Test
-    void 성능테스트(){
+    void 케이스2() {
         String user = "mrko";
-
-        var friend = List.of(
-                List.of("mrko","andole"),
-                List.of("donut", "andole"),
-                List.of("donut", "jun"),
-                List.of("donut", "mrko"),
-                List.of("shakevan", "andole"),
-                List.of("shakevan", "jun"),
-                List.of("shakevan", "mrko")
+        List<List<String>> friends = List.of(
+                List.of("mrko", "a"),
+                List.of("donut1", "a"),
+                List.of("donut2", "a"),
+                List.of("mrko","mrko1"),
+                List.of("mrko","mrko2"),
+                List.of("mrko","mrko3"),
+                List.of("donut3", "mrko"),
+                List.of("donut3", "mrko1"),
+                List.of("donut3", "mrko2"),
+                List.of("donut3", "mrko3")
         );
-        List<List<String>> friends = new ArrayList<>();
-
-        for(int i = 0; i < 10000;i++){
-            friends.add(List.of(RandomString.make(), RandomString.make()  ));
-        }
-
-        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+        List<String> visitors = List.of("bedi", "bedi","bedi", "bedi","bedi", "bedi","bedi", "bedi","bedi", "bedi","bedi", "bedi","bedi", "bedi","bedi", "bedi","bedi", "bedi","bedi", "bedi");
         var userService = new UserService(
                 new UserRepository(
                         user,
@@ -140,7 +139,10 @@ class UserServiceTest {
                         visitors
                 )
         );
-        List<String> result = List.of("jun", "bedi");
-        var actual = userService.findHighestRecommendationByUsernameLimitN(user, 5);
-    }*/
+        List<String> result = List.of("bedi", "donut1","donut2");
+        var          actual = userService.findHighestRecommendationByUsernameLimitN(user, 5);
+
+        Assertions.assertThat(actual)
+                  .isEqualTo(result);
+    }
 }
