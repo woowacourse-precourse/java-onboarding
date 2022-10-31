@@ -20,6 +20,7 @@ public class Problem7 {
         relation.remove(user);
         calculatePointByFirstRule(userFriendList, point, relation);
         calculatePointBySecondRule(userFriendList, point, visitors);
+        answer = sortAndResizePoint(point);
         return answer;
     }
 
@@ -70,5 +71,20 @@ public class Problem7 {
                 point.put(user, point.get(user) + 1);
             }
         }
+    }
+
+    public static List<String> sortAndResizePoint(HashMap<String, Integer> point) {
+        List<String> keySet = new ArrayList<>(point.keySet());
+        keySet.sort((s1, s2) -> {
+            if (point.get(s2) == point.get(s1)) {
+                return s1.compareTo(s2);
+            } else {
+                return point.get(s2).compareTo(point.get(s1));
+            }
+        });
+        if (keySet.size() > 5) {
+            keySet = keySet.subList(0, 5);
+        }
+        return keySet;
     }
 }
