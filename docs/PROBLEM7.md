@@ -45,9 +45,9 @@ return 하도록 solution 메서드를 완성하라. 이때 추천 점수가 0�
 
 ## 세부 구현 사항
 
-- [ ] List<String> userFriends 배열을 선언해줍니다.
-- [ ] findUserFriend(List<List<String>> friends, List<String> userFriends, String user) 메서드를 구현합니다.
-    - [ ] friends배열을 탐색하며 user의 친구를 userFrineds배열에 저장해줍니다.
+- [x] List<String> userFriends 배열을 선언해줍니다.
+- [x] findUserFriend(List<List<String>> friends, List<String> userFriends, String user) 메서드를 구현합니다.
+    - [x] friends배열을 탐색하며 user의 친구를 userFrineds배열에 저장해줍니다.
 - [ ] 점수를 계산할 calcFriendsScore(Map<String, Integer> friendScore, List<List<String>> friends, List<String> userFriends)
   메서드를 구현합니다.
     - [ ] friends배열을 탐색하며 user와 직접 친구가 아니면서 userFriedns배열에 있는 친구와 친구인 친구의 점수를 갱신해줍니다.
