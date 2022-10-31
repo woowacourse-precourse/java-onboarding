@@ -15,7 +15,7 @@ public class Problem7 {
         }
         // 방문자 점수 주기
         plusVisitorScore(visitors, userScore);
-        return List.of("");
+        return getSortedList(user, friendMap.get(user), getRecommendList(userScore));
     }
 
     private static void plusFriendScore(Map<String, Integer> userScore, List<String> scoreTargets) {
@@ -52,5 +52,33 @@ public class Problem7 {
         );
     }
 
+    private static List<String> getSortedList(String user, List<String> userFriendList, List<Map.Entry<String, Integer>> recommendList) {
+        List<String> answer = new ArrayList<>();
+        int prevScore = 0;
+        List<String> sameScoreList = new ArrayList<>();
+        for (Map.Entry<String, Integer> userInfo : recommendList) {
+            String username = userInfo.getKey();
+            int score = userInfo.getValue();
+
+            if (username.equals(user) || userFriendList.contains(username))
+                continue;
+
+            if (score <= 0 || answer.size() > 5)
+                continue;
+
+            if (prevScore == 0 || prevScore == score) {
+                sameScoreList.add(username);
+                prevScore = score;
+                continue;
+            }
+
+            Collections.sort(sameScoreList);
+            sameScoreList.add(username);
+            answer.addAll(sameScoreList);
+            sameScoreList.clear();
+            prevScore = score;
+        }
+        return answer;
+    }
 
 }
