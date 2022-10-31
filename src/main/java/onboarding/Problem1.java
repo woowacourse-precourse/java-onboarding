@@ -31,8 +31,8 @@ class Problem1 {
                 return false;
             }
         }
-        int leftPage = pageList.get(0);
-        int rightPage = pageList.get(1);
+        int leftPage = pageList.get(PAGE_LEFT_INDEX);
+        int rightPage = pageList.get(PAGE_RIGHT_INDEX);
         // 왼쪽 페이지는 홀수, 오른쪽 페이지는 짝수이다.
         if (leftPage % 2 != 1 || rightPage % 2 != 0 ||
                 leftPage >= rightPage || rightPage - leftPage != PAGE_DIFF) {
@@ -86,8 +86,7 @@ class Problem1 {
     }
 
     /**
-     *
-     * @param poby : poby의 가장 큰 수
+     * @param poby  : poby의 가장 큰 수
      * @param crong : crong의 가장 큰 수
      * @return : 승자에 따른 결과 반환
      */
