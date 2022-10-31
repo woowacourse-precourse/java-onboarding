@@ -51,4 +51,13 @@ class Problem1 {
         }
         return sum;
     }
+
+    private static int multiNumber(int[] numbers) {
+        //페이지 곱하기
+        int sum = numbers[0];
+        for(int i=1; i<numbers.length; i++) {
+            sum *= numbers[i];
+        }
+        return sum;
+    }
 }
