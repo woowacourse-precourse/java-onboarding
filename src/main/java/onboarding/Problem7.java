@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -25,5 +22,15 @@ public class Problem7 {
         }
 
         return userFriends;
+    }
+
+    public static void updateScore(HashMap<String, Integer> hashMap, int score, String userName) {
+
+        if (hashMap.containsKey(userName)) {
+            hashMap.put(userName, hashMap.get(userName) + score);
+        } else {
+            hashMap.put(userName, score);
+        }
+
     }
 }
