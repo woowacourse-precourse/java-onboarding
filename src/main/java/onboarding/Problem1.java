@@ -32,4 +32,17 @@ class Problem1 {
 
         return Integer.max(left_result, right_result);
     }
+
+    public static int getAnswer(int pobiResult, int crongResult){
+        int answer;
+
+        if(pobiResult > crongResult){
+            answer = 1;
+        }else if(pobiResult < crongResult){
+            answer = 2;
+        }else{
+            answer = 0;
+        }
+        return answer;
+    }
 }
