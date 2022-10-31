@@ -34,6 +34,26 @@ public class Problem6 {
         return true;
     }
 
+    public static HashSet<String> nameSeparation(List<List<String>> list){
+        HashMap<String, Integer> nameMap =  new HashMap<>();
+        HashSet<String> duplicateNameSet = new HashSet<>();
+
+        for(List<String> user : list){
+            String name = user.get(1);
+            for(int i = 0; i<name.length()-1; i++){
+                String twoLetters = name.substring(i, i+2);
+                if(!nameMap.containsKey(twoLetters)){
+                    nameMap.put(twoLetters, 1);
+                }
+                else{
+                    duplicateNameSet.add(twoLetters);
+                }
+            }
+        }
+        return duplicateNameSet;
+    }
+
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         if (!validCheck(forms)) {
