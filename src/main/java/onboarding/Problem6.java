@@ -31,10 +31,10 @@ public class Problem6 {
     }
 
     private static void checkValidForm(String nickName, String email) {
-        if (!nickName.matches("[가-힣]+") || nickName.length() < 1 || nickName.length() >= 20) {
+        if (!nickName.matches("^[가-힣]+") || nickName.length() < 1 || nickName.length() >= 20) {
             throw new IllegalArgumentException("닉네임 형식에 부합하지 않습니다");
         }
-        if (!email.matches("^[A-Za-z0-9]*@email.com") || email.length() < 11 || email.length() >= 20) {
+        if (!email.matches("^[A-Za-z0-9]+@email.com") || email.length() < 11 || email.length() >= 20) {
             throw new IllegalArgumentException("이메일 형식에 부합하지 않습니다");
         }
     }
