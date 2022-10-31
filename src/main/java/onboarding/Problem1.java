@@ -17,9 +17,10 @@ class Problem1 {
 
     static int mulplu(List<Integer> guys) {
         int mx = 0, resmx = 0;
-        int res1 = 0, res2 = 1;
+        int res1, res2;
         for(int a : guys) {
             int tmp = a;
+            res1 = 0; res2 = 1;
             while(tmp != 0) {
                 res1 += tmp % 10;
                 res2 *= tmp % 10;
@@ -45,7 +46,6 @@ class Problem1 {
         if(p > c) answer = 1;
         else if(p < c) answer = 2;
         else answer = 0;
-
         return answer;
     }
 }
