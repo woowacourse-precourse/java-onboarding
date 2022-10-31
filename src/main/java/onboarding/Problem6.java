@@ -57,6 +57,7 @@ public class Problem6 {
         return result;
     }
     static void sortEmail(List<String> email){
+        Collections.sort(email);
     }
 }
 
