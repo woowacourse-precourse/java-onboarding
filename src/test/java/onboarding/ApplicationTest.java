@@ -44,6 +44,9 @@ class ApplicationTest {
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
 
+
+        // 단위 테스트 시 통과
+        // 통합 테스트 시 실패 -> 원인 Problem2 의 필드가 static stack 을 사용 refactoring 필요
         @Test
         void case2() {
             String cryptogram = "zyelleyz";

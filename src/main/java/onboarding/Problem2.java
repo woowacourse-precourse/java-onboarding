@@ -6,22 +6,27 @@ import java.util.*;
 
 public class Problem2 {
 
-    private static final ProblemTwoValidation VALIDATION = new ProblemTwoValidation();
-    private static final Stack<String> STACK = new Stack<>();
+    private static ProblemTwoValidation validation = new ProblemTwoValidation();
+
+    private static Stack<String> stack = new Stack<>();
 
     public static String solution(String cryptogram) {
         if (!checkStringLength(cryptogram)) {
-            return VALIDATION.getValidString();
+            return "";
         }
 
-        String validString = VALIDATION.getValidString();
+        String validString = validation.getValidString();
         duplicatedStringRemoveProcess(validString);
-        return String.join("", STACK);
+        return String.join("", stack);
+    }
+
+    public static void main(String[] args) {
+        System.out.println(solution("zyelleyz"));
     }
 
     private static boolean checkStringLength(String cryptogram) {
-        VALIDATION.settingCryptogram(cryptogram);
-        if (VALIDATION.isLength()) {
+        validation.settingCryptogram(cryptogram);
+        if (validation.isLength()) {
             return true;
         }
         return false;
@@ -37,7 +42,7 @@ public class Problem2 {
                 continue;
             }
 
-            STACK.add(splitData);
+            stack.add(splitData);
         }
     }
 
@@ -46,14 +51,14 @@ public class Problem2 {
     }
 
     private static void removeDuplicatedString() {
-        STACK.pop();
+        stack.pop();
     }
 
     private static boolean isNotEmpty() {
-        return !STACK.isEmpty();
+        return !stack.isEmpty();
     }
 
     private static boolean isEquals(String splitData) {
-        return STACK.peek().equals(splitData);
+        return stack.peek().equals(splitData);
     }
 }
