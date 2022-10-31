@@ -21,3 +21,9 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+
+### 구현 기능
+1. 닉네임 토큰화 사전 생성 기능
+2. 같은 글자 연속적 닉네임 신청 크루 이메일 추출 기능 ( 중복 제거 )
+3. 이메일 오름차순 정렬 기능
