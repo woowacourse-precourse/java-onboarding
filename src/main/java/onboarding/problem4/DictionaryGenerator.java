@@ -9,10 +9,10 @@ public class DictionaryGenerator {
 
         Map<Character, Character> characterMap = new HashMap<>();
 
-        int asciiLast = 90;
+        char asciiLast = 'Z';
 
-        for (int ascii = 65; ascii <= 90; ascii++) {
-            characterMap.put((char) ascii, (char) asciiLast--);
+        for (char ascii = 'A'; ascii <= 'Z'; ascii++) {
+            characterMap.put(ascii, asciiLast--);
         }
 
         return characterMap;
