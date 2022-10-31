@@ -19,6 +19,10 @@ public class Problem2 {
             for(int i = 0; i < array.length - 1; i++) {
                 // 연속하는 중복 문자 찾기 (없을 때 까지 찾기 - check 변수 이용)
                 if(array[i] == array[i + 1]) {
+                    // 중복 문자를 공백으로 바꾸기
+                    array[i] = ' ';
+                    array[i + 1] = ' ';
+                    check = true;
                 }
             }
 
