@@ -2,8 +2,11 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        while (hasDuplicatedChar(cryptogram)) {
+            boolean[] isDuplicatedChar = checkDuplicatedChar(cryptogram);
+            cryptogram = concatNotDeletedChars(cryptogram, isDuplicatedChar);
+        }
+        return cryptogram;
     }
     private static boolean hasDuplicatedChar(String cryptogram) {
         for (int i = 0; i < cryptogram.length() - 1; i++) {
