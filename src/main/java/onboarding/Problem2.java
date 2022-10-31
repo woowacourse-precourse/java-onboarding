@@ -3,41 +3,41 @@ package onboarding;
 import java.util.Stack;
 
 public class Problem2 {
-    static String check(String cryptogram) {
-        String exception="";
-        if(cryptogram.length() < 1 || cryptogram.length() > 1000) {
-            exception = "암호문 길이 오류";
+    static void isCheck(String cryptogram) {
+        if(cryptogram.length()<1 || cryptogram.length()>1000) {
+            System.out.println("암호문의 길이가 잘못되었습니다.");
         }
         for(char c : cryptogram.toCharArray()) {
-            if(!(c >= 97 && c <= 122)) {
-                exception = "암호 오류";
+            if(!(c>=97 && c<=122)) {
+                System.out.println("암호문은 알파벳 소문자로만 입력이 가능합니다.");
             }
         }
-        return exception;
     }
 
-    static String removeDuplication(String cryptogram) {
-        String str = "";
-        Stack<Character> st = new Stack<>();
-        StringBuilder sb = new StringBuilder();
+    static StringBuilder removeDupliLetter(StringBuilder sb, String cryptogram, String answer) {
+        Stack<Character> removeDupliLetter = new Stack<>();
 
         for (char c : cryptogram.toCharArray()) {
-            if (!st.isEmpty() && st.peek() == c) {
-                st.pop();
+            if (!removeDupliLetter.isEmpty() && removeDupliLetter.peek()==c) {
+                removeDupliLetter.pop();
             } else {
-                st.push(c);
+                removeDupliLetter.push(c);
             }
         }
-        for (char c : st) {
+        for (char c : removeDupliLetter) {
             sb.append(c);
         }
-        str = sb.toString();
-        return str;
+        return sb;
     }
 
     public static String solution(String cryptogram) {
         String answer = "";
-        check(cryptogram);
-        return removeDuplication(cryptogram);
+        StringBuilder sb = new StringBuilder();
+
+        isCheck(cryptogram);
+        removeDupliLetter(sb, cryptogram, answer);
+
+        answer = sb.toString();
+        return answer;
     }
 }
