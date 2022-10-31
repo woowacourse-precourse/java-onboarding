@@ -11,7 +11,7 @@ public class Problem1 {
             Player.from(crong)
         );
 
-        GameStatus gameStatus =  GameStatus.of(game);
+        GameStatus gameStatus = GameStatus.of(game);
 
         return GameResult.of(gameStatus);
     }

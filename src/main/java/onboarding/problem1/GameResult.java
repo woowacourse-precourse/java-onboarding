@@ -18,6 +18,7 @@ public enum GameResult {
     }
 
     public static Integer of(GameStatus gameStatus) {
+
         return Arrays.stream(values())
             .filter(it -> Objects.equals(it.gameStatus, gameStatus))
             .findFirst()
