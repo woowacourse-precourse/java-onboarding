@@ -13,6 +13,9 @@ public class Problem7 {
         }
 
         public int compareTo(Node n) {
+            if(n.val == this.val){
+                return n.name.length() - this.name.length();
+            }
             return n.val - this.val;
         }
     }
@@ -20,6 +23,7 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
         HashMap<String, Integer> map = new HashMap<>();
+        HashMap<String, Integer> friendMap = new HashMap<>();
         HashSet<String> friendSet = new HashSet<>();
         map.put(user, 0);
         for (int i = 0; i < friends.size(); i++) {
@@ -27,14 +31,13 @@ public class Problem7 {
             String b = friends.get(i).get(1);
             if (a.equals(user)) {
                 friendSet.add(b);
-                continue;
             } else if (b.equals(user)) {
                 friendSet.add(a);
-                continue;
             }
             map.put(a, 0);
             map.put(b, 0);
         }
+
         String[] member = new String[map.size()];
         int idx = 0;
         int start = -1;
@@ -42,11 +45,18 @@ public class Problem7 {
             if (s.equals(user))
                 start = idx;
             member[idx] = s;
+            friendMap.put(s, idx);
             idx++;
         }
         ArrayList<Integer>[] list = new ArrayList[map.size()];
         for (int i = 0; i < map.size(); i++) {
             list[i] = new ArrayList<>();
+        }
+        for (int i = 0; i < friends.size(); i++) {
+            String a = friends.get(i).get(0);
+            String b = friends.get(i).get(1);
+            list[friendMap.get(a)].add(friendMap.get(b));
+            list[friendMap.get(b)].add(friendMap.get(a));
         }
         boolean[] visit = new boolean[map.size()];
         Queue<Integer> q = new LinkedList<>();
@@ -62,7 +72,7 @@ public class Problem7 {
         }
         for (int i = 0; i < visit.length; i++) {
             if (visit[i]) {
-                if (friendSet.contains(member[i]))
+                if (friendSet.contains(member[i]) || member[i].equals(user))
                     continue;
                 map.put(member[i], map.get(member[i]) + 10);
             }
@@ -85,7 +95,6 @@ public class Problem7 {
                 break;
             answer.add(pq.poll().name);
         }
-        Collections.sort(answer);
         return answer;
     }
 }
