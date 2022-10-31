@@ -65,6 +65,27 @@ public class Problem6 {
         return checkFormList;
     }
 
+    // 닉네임 중복검사 결과 반영하기
+    // @Param : 닉네임 중복조건 리스트, 검사 대상 닉네임, 닉네임 중복조건이 생성된 닉네임
+    public static void updateOverlapStatusMap(
+            List<String> checkFormList, String checkingTargetNickname, String originalNickname) {
+
+        int checkingTargetNicknameLength = checkingTargetNickname.length();
+
+        // 중복 검사 대상 닉네임 길이 -1 만큼 반복
+        for (int i = 0; i < checkingTargetNicknameLength - 1; i++) {
+            // 중복 검사 양식 리스트 길이만큼 반복
+            for (String checkForm : checkFormList) {
+                // 중복 검사 대상 닉네임 2글자와 중복 검사 양식과 같으면 nicknameOverlapStatus true 로 변경
+                if (checkingTargetNickname.substring(i, i + 2).equals(checkForm)) {
+                    nicknameOverlapStatusMap.put(checkingTargetNickname, true);
+                    nicknameOverlapStatusMap.put(originalNickname, true);
+                    break;
+                }
+            }
+        }
+    }
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
