@@ -6,9 +6,9 @@ public class Problem7 {
         return Point.calcTotalPotint(user, friends, visitors);
     }
 }
-class tempDto {
-    Object o;
-    int i;
+class syncDto {
+    Object arr;
+    int index;
 }
 class UserInfo{
     private static final int MINIMUM_LENGTH_ID = 1;
@@ -57,28 +57,7 @@ class Point{
     }
 
     private static List<String> getTopFiveList(int[] scoreTable, Object[] arrayFriends, String userName) {
-        tempDto[] a = new tempDto[scoreTable.length];
-        for (int i = 0; i < arrayFriends.length; i++) {
-            a[i] = new tempDto();
-            a[i].o = arrayFriends[i];
-        }
-        for (int i = 0; i < scoreTable.length; i++) {
-            a[i].i = scoreTable[i];
-        }
-        Object[] objects = Arrays.stream(a).sorted((aa, ab) -> {
-            String c, d;
-            c = (String)aa.o;
-            d = (String)ab.o;
-            return c.compareTo(d);
-        }).toArray();
-        for (int i = 0; i < objects.length; i++) {
-            a[i] = tempDto.class.cast(objects[i]);
-        }
-        //        arrayFriends 와 scoreTable의 글자순으로 정렬을 싱크해주자.
-        for (int i = 0; i < a.length; i++) {
-            scoreTable[i] = a[i].i;
-            arrayFriends[i] = a[i].o;
-        }
+        syncSort(scoreTable, arrayFriends);
         List<String> answer = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
             int userIndex = getUserIndex(userName, arrayFriends);
@@ -92,6 +71,31 @@ class Point{
             setValueToZeroIndexValue(scoreTable,maxIndex);
         }
         return answer;
+    }
+
+    private static void syncSort(int[] scoreTable, Object[] arrayFriends) {
+        syncDto[] syncArr = new syncDto[scoreTable.length];
+        for (int i = 0; i < arrayFriends.length; i++) {
+            syncArr[i] = new syncDto();
+            syncArr[i].arr = arrayFriends[i];
+        }
+        for (int i = 0; i < scoreTable.length; i++) {
+            syncArr[i].index = scoreTable[i];
+        }
+        Object[] objects = Arrays.stream(syncArr).sorted((compareArr, comparedArr) -> {
+            String c, d;
+            c = (String)compareArr.arr;
+            d = (String)comparedArr.arr;
+            return c.compareTo(d);
+        }).toArray();
+        for (int i = 0; i < objects.length; i++) {
+            syncArr[i] = syncDto.class.cast(objects[i]);
+        }
+        //  arrayFriends 와 scoreTable의 글자순으로 정렬을 싱크해주자.
+        for (int i = 0; i < syncArr.length; i++) {
+            scoreTable[i] = syncArr[i].index;
+            arrayFriends[i] = syncArr[i].arr;
+        }
     }
 
     private static void getVisitorsPoint(List<String> visitors, int[] scoreTable, boolean[][] friendsInfoTable, Object[] arrayFriends, int userIndex) {
