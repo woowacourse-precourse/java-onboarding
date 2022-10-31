@@ -1,13 +1,11 @@
 package onboarding.problem1;
 
-import onboarding.problem1.repository.BookInfoRepository;
+import onboarding.problem1.util.BookGameInputVailidator;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class MaxValueBookGame {
-	BookInfoRepository bookInfoRepository;
-
 	public Integer sumSeparatorNum(Integer page) {
 		List<Integer> separatorNum = new ArrayList<>();
 		while (page > 0) {
@@ -28,5 +26,16 @@ public class MaxValueBookGame {
 
 	public Integer returnMaxValue(Integer compareNumFirst, Integer compareNumSecond) {
 		return (compareNumFirst > compareNumSecond) ? compareNumFirst : compareNumSecond;
+	}
+
+	public boolean isFailedInputValidation(List<Integer> gamePlayer) {
+		if (BookGameInputVailidator.playerHasNullItem(gamePlayer)) return true;
+		if (!BookGameInputVailidator.listLengthValidator(gamePlayer)) return true;
+		if (!BookGameInputVailidator.pageRangeValidator(gamePlayer)) return true;
+		if (!BookGameInputVailidator.nextPageValidator(gamePlayer)) return true;
+		if (!BookGameInputVailidator.oddPageValidator(gamePlayer)) return true;
+		if (!BookGameInputVailidator.evenPageValidator(gamePlayer)) return true;
+
+		return false;
 	}
 }
