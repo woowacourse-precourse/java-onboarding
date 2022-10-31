@@ -23,6 +23,10 @@ class Problem1 {
 		return res;
 	}
 	
+	private static int selectBigger(int n1, int n2) {
+		return Math.max(n1, n2);
+	}
+	
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         int pobiAddLeftPage = allAdd(pobi.get(0));
@@ -33,6 +37,9 @@ class Problem1 {
         int pobiMulRightPage = allMul(pobi.get(1));
         int crongMulLeftPage = allMul(crong.get(0));
         int crongMulRightPage = allMul(crong.get(1));
+        
+        int pobiScore = selectBigger(Math.max(pobiAddLeftPage, pobiAddRightPage), Math.max(pobiMulLeftPage, pobiMulRightPage));
+        int crongScore = selectBigger(Math.max(crongAddLeftPage, crongAddRightPage), Math.max(crongMulLeftPage, crongMulRightPage));
         
         return answer;
     }
