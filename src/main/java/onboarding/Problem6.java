@@ -4,17 +4,38 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Problem6 {
+    private static final int TWO_DIGIT_INDEX = 2;
+    private static final int DUPLICATED_SIZE = 2;
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        Set<String> nicknameList = new LinkedHashSet<>();
         Map<String, List<String>> duplicateMap = new HashMap<>();
-        Set<String> deduplicatedEmail = new LinkedHashSet<>();
 
-        return answer;
+        for (List<String> userInfo : forms) {
+            String email = userInfo.get(0);
+            String nickname = userInfo.get(1);
+            createCombination(nickname, nicknameList, duplicateMap, email);
+        }
+
+        Set<String> deduplicatedEmail = new LinkedHashSet<>();
+        addValueToSet(duplicateMap, deduplicatedEmail);
+
+        return deduplicatedEmail.stream()
+                .sorted()
+                .collect(Collectors.toList());
+    }
+
+    private static void createCombination(String nickname, Set<String> nicknameList, Map<String, List<String>> duplicateMap, String email) {
+        int startIdx = 0;
+        while (startIdx != nickname.length() - 1) {
+            String twoDigit = getTwoDigitName(nickname, startIdx++);
+            nicknameList.add(twoDigit);
+            addEmailToMap(duplicateMap, twoDigit, email);
+        }
     }
 
     private static void addValueToSet(Map<String, List<String>> duplicateMap, Set<String> duplicatedEmail) {
         duplicatedEmail.addAll(duplicateMap.values().stream()
-                .filter(emailList -> emailList.size() >= 2)
+                .filter(emailList -> emailList.size() >= DUPLICATED_SIZE)
                 .flatMap(Collection::stream)
                 .collect(Collectors.toList()));
     }
@@ -24,6 +45,6 @@ public class Problem6 {
     }
 
     private static String getTwoDigitName(String nickname, int startIdx) {
-        return nickname.substring(startIdx, startIdx + 2);
+        return nickname.substring(startIdx, startIdx + TWO_DIGIT_INDEX);
     }
 }
