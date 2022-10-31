@@ -15,6 +15,8 @@ public class FriendRecommender {
     private List<String> visitors;
 
     private final Map<String, List<String>> relationships = new HashMap<>();
+    private final Map<String, Friend> scores = new HashMap<>();
+
 
     /**
      * Constructor with user, friends, visitors
@@ -34,7 +36,6 @@ public class FriendRecommender {
      */
     public List<String> recommend() {
         addRelationships();
-        Map<String, Friend> scores = new HashMap<>();
         List<String> userFriends = relationships.get(user);
         // Check user friends' friend list
         // Check visitors
