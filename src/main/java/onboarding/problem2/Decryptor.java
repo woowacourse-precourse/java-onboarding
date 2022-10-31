@@ -4,55 +4,55 @@ import java.util.Stack;
 
 public class Decryptor {
     String cryptogram;
-    Stack<Character> decryptor;
-    Character deletedCharacter;
+    StringBuilder decryptor;
 
     public Decryptor(String cryptogram) {
         this.cryptogram = cryptogram;
-        decryptor = new Stack<>();
+        decryptor = new StringBuilder();
     }
 
     public String result() {
-        decode();
-
-        StringBuilder sb = new StringBuilder();
-        for (char character : decryptor) {
-            sb.append(character);
+        String decodedCryptogram;
+        while (true) {
+            decryptor = new StringBuilder();
+            decodedCryptogram = decode();
+            if(cryptogram.equals(decodedCryptogram)) break;
+            cryptogram = decodedCryptogram;
         }
-        return sb.toString();
+        return cryptogram;
     }
 
-    private void decode() {
+    private String decode() {
+        boolean isDuplicated = false;
+
         for (int idx = 0; idx < cryptogram.length(); idx++) {
             char nextCharacter = cryptogram.charAt(idx);
 
-            if (isDuplicateWithDeletedCharacter(nextCharacter)) continue;
-            if (IsDecryptorEmptyThenPush(nextCharacter)) continue;
-            if (isDuplicateWithTopOfDecrypterCharacterThenDelete(nextCharacter)) continue;
-
-            decryptor.push(nextCharacter);
+            if (isDecryptorEmptyThenPush(nextCharacter)) continue;
+            if (isDuplicateCharacter(nextCharacter)) {
+                isDuplicated = true;
+                continue;
+            }
+            if (isDuplicated) {
+                decryptor.deleteCharAt(decryptor.length()-1);
+                isDuplicated=false;
+            }
+            decryptor.append(nextCharacter);
         }
+        if(isDuplicated) decryptor.deleteCharAt(decryptor.length() - 1);
+        return decryptor.toString();
     }
 
-    private boolean isDuplicateWithDeletedCharacter(char nextCharacter) {
-        if (deletedCharacter != null && deletedCharacter == nextCharacter) {
+    private boolean isDecryptorEmptyThenPush(char nextCharacter) {
+        if (decryptor.length()==0) {
+            decryptor.append(nextCharacter);
             return true;
         }
         return false;
     }
 
-    private boolean IsDecryptorEmptyThenPush(char nextCharacter) {
-        if (decryptor.empty()) {
-            decryptor.push(nextCharacter);
-            return true;
-        }
-        return false;
-    }
-
-    private boolean isDuplicateWithTopOfDecrypterCharacterThenDelete(char next) {
-        if (decryptor.peek() == next) {
-            decryptor.pop();
-            deletedCharacter = next;
+    private boolean isDuplicateCharacter(char next) {
+        if (decryptor.charAt(decryptor.length()-1) == next) {
             return true;
         }
         return false;
