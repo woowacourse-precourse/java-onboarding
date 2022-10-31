@@ -35,7 +35,7 @@ public class Problem7 {
         /* Hashmap value에 대해 sort */
         /* entrySet()는 Hashmap의 key, value를 모두 가져오는 method. */
         /* 이를 LinkedList로 받은 이유는 인덱스 이동이 빨라서인듯..? */
-        /* sort lambda는 아래와 같이 표현할 때 score hashmap의 value에 대해 오름차순, 반대로 쓰면 내림차순. */
+        /* sort lambda는 아래와 같이 표현할 때 score hashmap의 value에 대해 내림차순, 반대로 쓰면 오름차순. */
         List<String> result = new ArrayList<>();
         List<Map.Entry<String, Integer>> entryList = new LinkedList<>(score.entrySet());
         entryList.sort(((o1, o2) -> score.get(o2.getKey()) - score.get(o1.getKey())));
