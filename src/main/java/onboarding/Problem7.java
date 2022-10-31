@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
 
@@ -34,6 +35,15 @@ public class Problem7 {
         }
         return true;
     }
+
+    public static void makeUser(String user, List<List<String>> friends, List<String> visitors) {
+        users.add(user);
+        for (List<String> friend : friends) {
+            users.addAll(friend);
+        }
+        users.addAll(visitors);
+    }
+
 
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
