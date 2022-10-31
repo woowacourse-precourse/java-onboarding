@@ -90,6 +90,22 @@ public class Problem7 {
         return visitorsList;
     }
 
+    //기능 5
+    public static HashMap<String, Integer> addVisitorPoint(HashMap<String, Integer> friendPoint, List<String> visitors){
+
+        for(int i=0;i<visitors.size();i++) {
+            String visitFriend=visitors.get(i);
+            if(!friendPoint.containsKey(visitFriend)) {
+                friendPoint.put(visitFriend,1);
+            }
+            else {
+                int point=friendPoint.get(visitFriend)+1;
+                friendPoint.put(visitFriend,point);
+            }
+        }
+        return friendPoint;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
