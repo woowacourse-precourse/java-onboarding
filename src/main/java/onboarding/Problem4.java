@@ -14,15 +14,15 @@ public class Problem4 {
             {
                 addChar = (char) (65 + (90 - dividedChars[i]));
                 answer += addChar;
+                continue;
             }
-            else if(dividedChars[i]>=97 && dividedChars[i]<=122)
+            if(dividedChars[i]>=97 && dividedChars[i]<=122)
             {
                 addChar = (char) (97 + (122 - dividedChars[i]));
                 answer += addChar;
+                continue;
             }
-            else{
-                answer += dividedChars[i];
-            }
+            answer += dividedChars[i];
         }
 
         return answer;
