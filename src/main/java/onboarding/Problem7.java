@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.regex.Pattern;
 
 public class Problem7 {
     private final static int MAX_RECOMMEND_FRIENDS = 5;
@@ -10,6 +11,15 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
+    }
+
+    /**
+     * 유저 검증
+     * @param user 유저 정보
+     * @return 검증 결과
+     */
+    private static boolean validateUser(String user) {
+        return Pattern.matches("^[a-z]{1,30}$", user);
     }
 
     /**
