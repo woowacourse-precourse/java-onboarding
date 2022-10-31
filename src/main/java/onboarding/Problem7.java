@@ -76,11 +76,11 @@ public class Problem7 {
 
     private static void addUserFriends( String user, List<List<String>> friends) {
         for (List<String> friendship : friends) {
-                if (friendship.indexOf(user) == 1) {
-                    userFriends.add(friendship.get(0));
-                } else if (friendship.indexOf(user) == 0) {
-                    userFriends.add(friendship.get(1));
-                }
+            if (friendship.indexOf(user) == 1) {
+                userFriends.add(friendship.get(0));
+            } else if (friendship.indexOf(user) == 0) {
+                userFriends.add(friendship.get(1));
+            }
         }
     }
 }
