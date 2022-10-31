@@ -31,10 +31,19 @@ public class Problem2 {
         }
     }
 
-
+static String ConvertListToStringBuilder(List<Character> list_cryptogram){
+        StringBuilder sb_cryptogram = new StringBuilder();
+        for(char c : list_cryptogram){
+            sb_cryptogram.append(c);
+        }
+        return sb_cryptogram.toString();
+}
     public static String solution(String cryptogram) {
-        List<Character> list_cryptogram = ConvertStringToList(cryptogram);
         String answer = "answer";
+
+        List<Character> list_cryptogram = ConvertStringToList(cryptogram);
+        List<Character> removeResult = removeCharacter(list_cryptogram);
+        answer = ConvertListToStringBuilder(removeResult);
         return answer;
     }
 }
