@@ -71,3 +71,7 @@ class SNS {
     }
 
 }
+class Relation {
+    private static final List<List<String>> friendsTable = new ArrayList<>();
+    private static final List<List<String>> requestTable = new ArrayList<>();
+}
