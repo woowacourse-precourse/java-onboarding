@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Problem7 {
 	public static final int defaultValue = 0;
@@ -12,8 +13,6 @@ public class Problem7 {
 	public static final int visitedScore = 1;
 
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-		List<String> answer = Collections.emptyList();
-
 		Map<String, List<String>> friendList = new HashMap<>();
 		for (List<String> f : friends) {
 			friendList.computeIfAbsent(f.get(0), s -> new ArrayList<>()).add(f.get(1));
@@ -39,6 +38,14 @@ public class Problem7 {
 			score.put(v, score.getOrDefault(v, defaultValue) + visitedScore);
 		}
 
+		List<String> answer = new ArrayList<>(score.keySet());
+		Collections.sort(answer);
+		Collections.sort(answer, (o1, o2) -> (score.get(o2).compareTo(score.get(o1))));
+
+		if (answer.size() > 5) {
+			answer = answer.subList(0, 5);
+		}
 		return answer;
 	}
+
 }
