@@ -44,4 +44,16 @@ class Problem1 {
         }
         return number2;
     }
+    public static int decideWinner(int scorePobi, int scoreCrong){
+        if(scorePobi > scoreCrong){
+            return 1;
+        }
+        else if (scoreCrong < scorePobi) {
+            return 2;
+        }
+        else if (scorePobi == scoreCrong) {
+            return 0;
+        }
+        return -1;
+    }
 }
