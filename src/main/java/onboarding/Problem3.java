@@ -11,7 +11,7 @@ import java.util.stream.IntStream;
 
 public class Problem3 {
     public static int solution(int number) {
-        return IntStream.range(1, number + 1)
+        return IntStream.rangeClosed(1, number)
                 .map(Problem3::countThreeAndSixAndNine)
                 .sum();
     }
