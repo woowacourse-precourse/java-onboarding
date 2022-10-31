@@ -26,7 +26,6 @@ public class Problem2 {
 
     public static String solution(String cryptogram) {
         String answer = decipher(cryptogram);
-//        System.out.printf("%s %s", cryptogram, decipher(cryptogram));
         return answer;
     }
 }

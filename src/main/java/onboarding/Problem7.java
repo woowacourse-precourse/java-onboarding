@@ -33,7 +33,6 @@ public class Problem7 {
         for(int i =0; i < Math.max(sg.userLength(),5); i++ ){
             if (users.get(i).recommendationValue > 0){
                 answer.add(users.get(i).name);
-//                System.out.printf("%s(%d) ", users.get(i).name, users.get(i).recommendationValue);
             }
         }
 
@@ -96,9 +95,6 @@ public class Problem7 {
         public boolean areFriend(String usernameA, String usernameB){
             int indexA = findIndex(usernameA), indexB = findIndex(usernameB);
             return isConnected[indexA][indexB];
-        }
-        public List<Entry> friendList(String username){
-            return Collections.emptyList();
         }
 
         public int numberCommonFriends(String usernameA, String usernameB){

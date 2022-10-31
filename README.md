@@ -89,15 +89,12 @@ BUILD SUCCESSFUL in 0s
 --- 
 ## 🍀 기능 목록
 
+
 1. 문제1
 
 |기능목록 번호| 내용 | 구현상황 |
 | :---:  | :--- | :--- | 
 |  1.0 | 주어진 게임의 결과를 도출 | Problem1.solution | 
-|  1.0.0 | 출력값 요구사항1의 구현 : 포비가 이긴다면 1, 크롱이 이긴다면 2, 무승부 0, 예외사항 -1  | Problem1.solution | 
-|  1.0.1 | 예외 요구사항1의 구현 : 연속되지 않은 두 수가 리턴되면 예외처리    | Problem1.solution | 
-|  1.0.2 | 예외 요구사항2의 구현 : 왼쪽 페이지는 홀수, 오른쪽 페이지는 짝수가 아니면 예외처리    | Problem1.solution | 
-|  1.0.3 | 예외 요구사항3의 구현 : 매개변수 두 리스트의 길이가 2인지 확인 | Problem1.solution | 
 |  1.1 | 주어진 리스트 배열의 게임의 결과값을 반환 | Problem1.findGameValue | 
 |  1.2 | 주어진 숫자의 자릿수들의 합 | Problem1.sumOfDigits | 
 |  1.3 | 주어진 숫자의 자릿수들의 겁 | Problem1.productOfDigits| 
@@ -114,22 +111,15 @@ BUILD SUCCESSFUL in 0s
 |기능목록 번호| 내용 | 구현상황 |
 | :---:  | :--- | :--- | 
 |  3.0 | 주어진 3,6,9 게임의 총 손벽갯수를 출력 | Problem3.solution | 
-|  3.1 | 주어진 한 숫자의 손벽 갯수를 누적 출력하는 재귀함수 | Problem3.getClapCount | 
+|  3.1 | 주어진 한 숫자의 손벽 갯수를 재귀적으로 누적하여 출력 | Problem3.getClapCount | 
 
 4. 문제 4
 
 |기능목록 번호| 내용 | 구현상황 |
 | :---:  | :--- | :--- | 
-|  4.0 | 주어진 문자열을 모두 청개구리화한 문자열로 변환 | Problem4.solution | 
-|  4.1 | 주어진 캐릭터를 청개구리 변환을 진행 | Problem4.chungaeguri |
-|  4.2 | 출력값 요구사항 1: 알파벳 외의 문자는 그대로 출력 | Problem4.isAlphabet | 
-
-6. 문제 6
-
-|기능목록 번호| 내용 | 구현상황 |
-| :---:  | :--- | :--- | 
-|  6.0 | 닉네임 중 같은 글자가 연속적으로 포함되는 닉네임을 작성한 지원자의 이메일 목록을 출력 | Problem6.solution | 
-|  6.1 | 닉네임 리스트들을 받아 토큰과 닉네임 리스트의 Map을 출력 | Problem6.makeTokens | 
+|  4.0 | 주어진 문자열을 모두 청개구리화한 문자열로 변환하여 출력 | Problem4.solution | 
+|  4.1 | 주어진 캐릭터를 청개구리 변환을 하여 출력 | Problem4.chungaeguri |
+|  4.2 | 주어진 캐릭터가 알파벳인지 아닌지 출력 | Problem4.isAlphabet | 
 
 5. 문제 5
 
@@ -137,14 +127,25 @@ BUILD SUCCESSFUL in 0s
 | :---:  | :--- | :--- | 
 |  5.0 | 큰 금액의 화폐 위주로 화폐교환한 리스트 배열을 출력 | Problem5.solution |
 
+6. 문제 6
+
+|기능목록 번호| 내용 | 구현상황 |
+| :---:  | :--- | :--- | 
+|  6.0 | 닉네임 중 같은 글자가 연속적으로 포함되는 닉네임을 작성한 지원자의 이메일 목록을 출력 | Problem6.solution | 
+|  6.1 | 닉네임 리스트들을 받아 닉네임 토큰과 닉네임 리스트의 Map을 출력 | Problem6.makeTokens | 
+|  6.2 | 폼 리스트를 받아서, 닉네임과 이메일주소의 Map을 출력 | Problem6.makeFormsMap | 
+|  6.3 | 닉네임 토큰과 닉네임 리스트의 Map을 받아, 주어진 토큰이 중복되는 닉네임 Set을 출력 | Problem6.makeOverlapNicknameList | 
+|  6.4 | 중복되는 닉네임 Set을 받아 매핑된 Email주소로 반 | Problem6.OverlapNicknameListToEmailList | 
+
 7. 문제 7
 
 |기능목록 번호| 내용 | 구현상황 |
 | :---:  | :--- | :--- | 
-|  7.0 | 출력값 요구사항 1: 추천 점수  상위 5명의 이름의 리스트를 반환 | Problem7.solution | 
-|  7.0.1 | 출력값 요구사항 3: 추천 점수가 0점이면 반환리스트에 추가하지 않음  | Problem7.solution | 
-|  7.1 | 주어진 친구관계 정보 friends의 정보를 지닌 그래프 객체 | Problem7.socialGraph | 
+|  7.0 | 추천 점수를 계산하여 상위 5명의 이름의 리스트를 반환 | Problem7.solution |  
+|  7.1.0 | 주어진 친구관계 정보 friends의 정보를 지닌 그래프 객체 | Problem7.socialGraph | 
 |  7.1.1 | 주어진 두 유저의 공통 친구의 수를 출력 | Problem7.socialGraph.numberOfCommonFriends | 
 |  7.1.2 | 주어진 두 유저가 서로 친구인지를 출력 | Problem7.socialGraph.areFriend | 
-|  7.1.3 | 출력값 요구사항 2: 주어진 유저들의 목록을 이름순으로 출력 | Problem7.socialGraph.users | 
-|  7.1.2 | 주어진 유저들의 목록의 길이를 출력 | Problem7.socialGraph.usersLength | 
+|  7.1.3 | 주어진 유저들의 목록을 출력 | Problem7.socialGraph.users | 
+|  7.1.4 | 주어진 유저들의 목록의 길이를 출력 | Problem7.socialGraph.usersLength | 
+|  7.1.5 | friends리스트 visitor리스트를 가지고 정렬된 유저 리스트를 만들어 초기화 | Problem7.socialGraph._initializeOrderedList | 
+|  7.1.6 | friends리스트와 정렬된 유저리스트를 가지고 각 유저간의 친구 정보를 업데이트 | Problem7.socialGraph._makeConnectionMap | 
