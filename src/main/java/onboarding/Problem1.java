@@ -10,6 +10,10 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+        IsValidPage isValidPage = new IsValidPage();
+        if(! isValidPage.isValidPage(pobi, crong)){
+            return -1;
+        }
 
         MaxPoint maxPoint = new MaxPoint();
 
@@ -73,7 +77,7 @@ class IsValidPage {
         int leftPage2 = player2.get(0);
         int rightPage1 = player1.get(1);
         int rightPage2 = player2.get(1);
-        
+
         if(leftPage1 % 2 == 0 || leftPage2 % 2 == 0) {
             return false;
         }
