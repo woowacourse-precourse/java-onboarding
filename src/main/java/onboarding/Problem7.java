@@ -52,6 +52,16 @@ public class Problem7 {
                 score.put(visitor, score.getOrDefault(visitor, 0) + 1);
         }
 
+        List<Map.Entry<String, Integer>> listkeyset = new ArrayList<>(score.entrySet());
+        listkeyset.sort(new Comparator<Entry<String, Integer>>() {
+            @Override
+            public int compare(Entry<String, Integer> o1, Entry<String, Integer> o2) {
+                if (o1.getValue() == o2.getValue())
+                    return o1.getKey().compareTo(o2.getKey());
+                return o2.getValue().compareTo(o1.getValue());
+            }
+        });
+
 
     }
 }
