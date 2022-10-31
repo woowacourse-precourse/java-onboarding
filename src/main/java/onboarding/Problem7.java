@@ -36,7 +36,7 @@ public class Problem7 {
                     bridge = f1;
                 }
 
-                if(bridge.equals(user)||bridge.equals((""))){
+                if(bridge.equals(user)||bridge.equals("")){
                     continue;
                 }
 
@@ -48,7 +48,7 @@ public class Problem7 {
             }
         }
         for(String visitor: visitors){
-            if(friendSet.contains(visitor)){
+            if(!friendSet.contains(visitor)){
                 if(score.containsKey(visitor)){
                     score.replace(visitor,score.get(visitor)+1);
                 }else{
@@ -56,6 +56,8 @@ public class Problem7 {
                 }
             }
         }
+        answer = new ArrayList<>(score.keySet());
+        Collections.sort(answer,(a, b) -> (score.get(b).compareTo(score.get(a))));
         return answer;
     }
 }
