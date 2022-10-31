@@ -42,9 +42,10 @@ class Decoder {
                 new_str += str.charAt(i);
                 i += 1;
             }
+            if (i == l-1) {
+                new_str += str.charAt(i);
+            }
         }
-        if (str.charAt(l-1) == str.charAt(l-2)) {
-            return new_str;
-        } else {return new_str + str.charAt(l-1);}
+        return new_str;
     }
 }
