@@ -24,3 +24,28 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+1. main 메서드:
+  - 사용자 아이디 user을 입력받는다.
+  - 친구 관계 정보를 입력 받고 2차원 배열 arr에 저장한다.
+  - convertToList 메서드를 호출한다.
+  - 사용자 타임 라인 방문 기록 visitors를 입력 받아 리스트에 저장한다.
+  - solution 메서드를 호출한다.
+2. convertToList 메서드:
+  - 2차원 배열을 2차원 List로 변환하여 return한다.
+3. solution 메서드:
+  - user와 친구인 아이디를 리스트에 저장한다.
+  - set형식으로 user의 친구의 친구인 아이디를 저장하여 중복을 제거한 후 다시 리스트로 변환한다.
+  - 아이디와 점수를 입력 받을 HashMap형식의idScore을 생성한다.
+  - acquitancescore 메서드를 호출한다.
+  - visitscore 메서드를 호츨한다.
+  - hashmap idScore의 value를 기준으로 정렬하기 위해 comparator 인터페이스를 implements한 후에 compare 메서드를 오버라이딩 한다.
+      - hashmap의 <Key, Value> 쌍을 유지한 상태로 정렬하기 위해 Map.Entry를 이용한다.
+      - 순서 유지를 위해 LinkedHashMap을 이용하여 정렬한다.
+  - 정렬된 해쉬맵에서 key값(아이디)만 뽑아서 리스트에 저장한다.
+  - 유저와 친구인 아이디가 결과에 포함되지 않도록 제거한다.
+  - 5명 이상일 경우 5명까지만 저장하여 answer을 반환한다.
+4. acquitancescore 메서드: 함께 아는 친구의 점수를 계산한다.
+  - 전체 친구 관계 목록에서 친구를 찾고, 그 옆에 있는 아이디가 친구의 친구인 아이디 목록에 있을 경우 10점을 추가한다.
+5. visitscore 메서드: 방문 횟수 점수를 계산한다.
+  - 방문 횟수에 따라 1점을 추가한다.

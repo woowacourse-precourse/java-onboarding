@@ -21,3 +21,19 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+1. main 메서드:
+   - 이메일과 닉네임을 입력 받고 2차원 배열 arr에 저장한다.
+   - convertToList 메서드를 호출한다.
+   - solution 메서드를 호출한다.
+2. convertToList 메서드:   
+   - 2차원 배열을 2차원 List로 변환하여 return한다.
+3. solution 메서드:
+   - 닉네임을 따로 nickname 리스트에 저장해둔다.
+   - compare 메서드를 호출하여 중복되는 닉네임이 있는지 확인한다.
+   - 중복되는 닉네임이 있다면 그 닉네임이 사용하는 이메일을 email 리스트에 저장한다.
+   - email을 리스트에서 set으로 변환하여 중복을 제거한다.
+   - set을 다시 answer 리스트로 변환한다.
+   - answer 리스트를 오름차순으로 정렬한 후 리스트를 반환한다.
+4. compare 메서드:
+   - indexOf를 활용하여 문자열인 닉네임에서 연속된 2자리를 추출하여 다른 닉네임에 포함되는지 확인하여 결과값을 check에 더한다.

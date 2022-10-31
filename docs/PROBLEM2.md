@@ -21,3 +21,8 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+1. main 메서드: 문자열을 입력받고 solution 메서드를 호출한다.
+2. solution 메서드
+   - 반복문을 사용하여 중복 문자를 삭제한다.
+   - 더이상 삭제할 중복 문자가 없으면 반복문을 빠져나와 최종 결과를 return한다.
