@@ -7,11 +7,11 @@ public class Problem4 {
     static Map<Character, Character> dictionary = new HashMap<>();
     public static String solution(String word) {
         initialDictionary();
-        StringBuilder stringBuiler = new StringBuilder(word);
+        System.out.println("dictionary = " + dictionary);
         StringBuilder answer = new StringBuilder();
         char alphabet;
-        for (int i = 0; i < stringBuiler.length(); i++) {
-            alphabet = stringBuiler.charAt(i);
+        for (int i = 0; i < word.length(); i++) {
+            alphabet = word.charAt(i);
             char convertedAlphabet = alphabeticalTransformation(alphabet, characterClassification(alphabet));
             answer.append(convertedAlphabet);
         }
@@ -29,14 +29,14 @@ public class Problem4 {
 
     private static char alphabeticalTransformation(char word, int size) {
         if (size == 1) {
-            return (char) (greenFrogDictionary(word) + 32);
+            return getWord(word);
         } else if (size == 2) {
-            return greenFrogDictionary(word);
+            return (char) (getWord(word) + 32);
         }
         return word;
     }
 
-    private static char greenFrogDictionary(char word) {
+    private static char getWord(char word) {
         return dictionary.get(word);
     }
 
