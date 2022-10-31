@@ -21,3 +21,10 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+## 기능 목록
+- 크루별로 연속한 이름 구하기
+- 동일한 글자를 가지는지 판별하기
+- 동일한 글자라면 결과에 담기
+- 중복 제거하기
+- 정렬하기
