@@ -18,6 +18,17 @@ public class Problem6 {
             }
         }
 
+        for (String key : nameCount.keySet()) {
+            System.out.println(nameCount);
+            if (nameCount.get(key) > 1) {
+                for (int i = 0; i < forms.size(); i += 1) {
+                    if (forms.get(i).get(1).contains(key)) {
+                        answer.add(forms.get(i).get(0));
+                    }
+                }
+            }
+        }
+
         return answer;
     }
 }
