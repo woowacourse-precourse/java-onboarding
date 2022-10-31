@@ -8,21 +8,10 @@ public class Problem7 {
     static Map<String,Long> scores = new HashMap<>();
     static Map<String,String[]> map = new HashMap<>();
 
-    static class Recommend{
-        String name;
-        Long score;
-        public Recommend(String key, Long score) {
-            this.name=key;
-            this.score=score;
-        }
-        public String getName(){return name;}
-        public Long getScore(){return score;}
-    }
-
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         friendScore(user,friends);
         visitorScore(user,visitors);
-        return sorting();
+        return sortValue();
     }
     public static void insertMap(String key, String value){
         List<String> list = new ArrayList<>(Arrays.asList(map.getOrDefault(key,new String[0])));
@@ -31,9 +20,10 @@ public class Problem7 {
     }
     public static void insertScores(String user, String name, Long score){
         if (Objects.equals(user,name)) return;
-        List<String>list= List.of(map.getOrDefault(user,new String[0]));
-        if (list.contains(name)) return;
-        scores.put(name,scores.getOrDefault(name,0L)+score);
+        List<String>userFriends= List.of(map.getOrDefault(user,new String[0]));
+        if (userFriends.contains(name)) return;
+        Long existScore=scores.getOrDefault(name,0L);
+        scores.put(name,existScore+score);
     }
     public static void friendScore(String user, List<List<String>> friends){
         for(List<String>fs:friends){
@@ -49,23 +39,34 @@ public class Problem7 {
     }
     public static void visitorScore(String user, List<String> visitors){
         Stream<String> stream = visitors.parallelStream();
-        Map<String,Long> counter = stream.collect(Collectors.toConcurrentMap(k->k,v->1L,Long::sum));
+        Map<String,Long> counter = stream.collect(
+                Collectors.toConcurrentMap(k->k,v->1L,Long::sum)
+        );
         for (String name: counter.keySet()){
             insertScores(user,name,counter.get(name));
         }
     }
-    public static List<String> sorting(){
-        List<Recommend> scoreList = new ArrayList<>();
-        List<String> ans = new ArrayList<>();
-
-        for (String key : scores.keySet()){
-            scoreList.add(new Recommend(key, scores.get(key)));
+    public static List<String> sortValue(){
+        List<Object[]> scoreList=new ArrayList<>();
+        for (String key :scores.keySet()){
+            scoreList.add(new Object[]{key, scores.get(key)});
         }
-
-        scoreList.sort(Comparator.comparing(Recommend::getScore).reversed().thenComparing(Recommend::getName));
-        if(scoreList.size()>5)scoreList=scoreList.subList(0,5);
-        for(Recommend r : scoreList){
-            ans.add(r.getName());
+        scoreList.sort(
+                Comparator.comparingLong(
+                        (Object[] o)->(Long)o[1])
+                        .reversed()
+                .thenComparing(
+                        (Object[] o)->(o[0].toString())
+                )
+        );
+        return returnValue(scoreList);
+    }
+    public static List<String> returnValue(List<Object[]> listObjects){
+        List<String> ans = new ArrayList<>();
+        int maxValueNum=5;
+        if(listObjects.size()>maxValueNum)listObjects=listObjects.subList(0,maxValueNum);
+        for(Object[] l : listObjects){
+            ans.add(l[0].toString());
         }
         return ans;
     }

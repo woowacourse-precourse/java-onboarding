@@ -1,15 +1,17 @@
 package onboarding;
 
-public class Problem4 {
-    public static String solution(String word) {
-        String blank="\\s+";
-        String[] strings = word.split(blank);
+import static java.lang.Character.isAlphabetic;
 
-        for(int i=0;i<strings.length;i++){
-            strings[i]=changeAlpha(strings[i]);
+public class Problem4 {
+    public static String solution(String sentence) {
+        String blank="\\s+";
+        String[] words = sentence.split(blank);
+
+        for(int i=0;i<words.length;i++){
+            words[i]=changeAlpha(words[i]);
         }
 
-        return String.join(" ",strings);
+        return String.join(" ",words);
     }
     public static String changeAlpha (String word){
         char[] chars=word.toCharArray();
@@ -17,6 +19,7 @@ public class Problem4 {
         int upperSymmetrySum=(int)'A'+(int)'Z';
         int lowerSymmetrySum=(int)'a'+(int)'z';
         for(int i=0; i<chars.length; i++){
+            if(!isAlphabetic(chars[i]))continue;
             if(Character.isUpperCase(chars[i]))chars[i]=symmetryChar(upperSymmetrySum,chars[i]);
             else chars[i]=symmetryChar(lowerSymmetrySum,chars[i]);
         }
