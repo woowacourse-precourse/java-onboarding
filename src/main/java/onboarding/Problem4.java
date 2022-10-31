@@ -1,6 +1,7 @@
 package onboarding;
 
 public class Problem4 {
+    // 작동 함수
     public static String solution(String word) {
         String answer = "";
 
