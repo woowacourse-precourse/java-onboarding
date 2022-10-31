@@ -2,7 +2,7 @@ package onboarding;
 
 public class Problem2 {
     private static boolean isDuplication(String str) {
-        if (str == "")
+        if (str.equals(""))
             return false;
 
         char tmp = str.charAt(0);

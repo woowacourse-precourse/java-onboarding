@@ -4,9 +4,7 @@ import java.util.List;
 
 class Problem1 {
     private static boolean checkPage(List<Integer> pages) {
-        if (pages.get(0) - pages.get(1) != -1)
-            return false;
-        if (pages.get(0) < 1 || pages.get(1) > 400)
+        if (pages.get(0) - pages.get(1) != -1 || pages.get(0) < 1 || pages.get(1) > 400)
             return false;
         return true;
     }
