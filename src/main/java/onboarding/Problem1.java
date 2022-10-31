@@ -14,19 +14,15 @@ class Problem1 {
         int crongRight = dividNum(crong.get(1));
 
         int pobiNum = 0;
+        int crongNum = 0;
 
-        if(pobiLeft ==-1 || pobiRight == -1){
+        if(pobiLeft ==-1 || pobiRight == -1 || crongLeft == -1 || crongRight == -1){
             return -1;
         }else {
             pobiNum = pobiLeft > pobiRight ? pobiLeft : pobiRight;
-        }
-        int crongNum = 0;
-
-        if(crongLeft == -1 || crongRight == -1){
-            return -1;
-        }else{
             crongNum = crongLeft > crongRight ? crongLeft : crongRight;
         }
+
 
         if(pobiNum > crongNum){
             return 1;
