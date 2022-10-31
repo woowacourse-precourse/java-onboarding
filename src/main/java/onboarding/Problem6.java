@@ -8,16 +8,21 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
 
-        for(int i=0; i<forms.size()-1; i++)
-            for(int j=i+1; j<forms.size();j++)
-                checkDuplicated(forms.get(i), forms.get(j));
+        execCheckDup(forms);
 
         answer = new ArrayList<String>(set);
         Collections.sort(answer);
 
         return answer;
     }
-    private static boolean checkDuplicated(List<String> first,List<String> second){
+
+    private static void execCheckDup(List<List<String>> forms){
+        for(int i=0; i<forms.size()-1; i++)
+            for(int j=i+1; j<forms.size();j++)
+                checkDup(forms.get(i), forms.get(j));
+    }
+
+    private static boolean checkDup(List<String> first,List<String> second){
         String firstName = first.get(1);
         String secondName = second.get(1);
         for(int i=0; i<firstName.length()-1; i++){
