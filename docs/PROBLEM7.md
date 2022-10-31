@@ -32,7 +32,7 @@
 - [x] 사용자의 가까운 친구를 찾는다. → `findCloseFriends()`
 - [x] 사용자의 먼 친구(함께 아는 친구)를 찾는다. → `findDistantFriends()`
 - [ ] 추천 점수를 부여한다.
-    - [ ] 먼 친구 : +10점 → `addDistantFriendScore()`
+    - [x] 먼 친구 : +10점 → `addDistantFriendScore()`
     - [ ] 방문 친구 : +1점 → `addVisitorScore()`
 - [ ] 가까운 친구를 추천 점수 목록에서 제외시킨다. → `excludeCloseFriends()`
 - [ ] 추천 점수 목록을 정렬한다. → `sortScore()`

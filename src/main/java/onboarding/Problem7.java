@@ -3,11 +3,21 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
+    }
+
+    /**
+     * 사용자의 먼 친구(함께 아는 친구)에게 추천 점수를 부여한다.
+     */
+    private static void addDistantFriendScore(Map<String, Integer> scores, List<String> distantFriends) {
+        for (String friend : distantFriends) {
+            scores.put(friend, scores.getOrDefault(friend, 0) + 10);
+        }
     }
 
     /**
