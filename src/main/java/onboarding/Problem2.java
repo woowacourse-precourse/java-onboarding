@@ -3,7 +3,6 @@ package onboarding;
 import onboarding.exception.InputRangeException;
 import onboarding.exception.InputTypeException;
 
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Problem2 {
@@ -58,7 +57,7 @@ public class Problem2 {
      */
     private static boolean isNotUpperCase(String cryptogram) {
         String regex = "^[a-z]{1,1000}$";
-        
+
         return !Pattern.matches(regex, cryptogram);
     }
 
