@@ -1,13 +1,13 @@
 package onboarding;
 
 public class Problem3 {
-    static int count=0;
     public static int solution(int number) {
+        int count=0;
         if (validation("number_limit", number)) {
             if (number < 3) return 0;
             else {
                 for (int i = 3; i <= number; i++) {
-                    getCount(i);
+                    count+=getCount(i);
                 }
                 return count;
             }
@@ -15,10 +15,10 @@ public class Problem3 {
         return count;
     }
 
-    public static void getCount(int num){
+    public static int getCount(int num){
         String s = String.valueOf(num);
         int num_length = s.length();
-        count+= num_length - s.replaceAll("[369]","").length();
+        return num_length - s.replaceAll("[369]","").length();
     }
 
     private static <T> boolean validation(String err_type,T err_param){
