@@ -5,7 +5,17 @@ import java.util.List;
 class Problem1 {
     public static final int size = 2;
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        int answer = 0;
+        int pobiResult = getResult(pobi.get(0), pobi.get(1));
+        int crongResult = getResult(crong.get(0), crong.get(1));
+
+        try{
+            validate(pobi,crong);
+        }catch(Exception e){
+            return -1;
+        }
+
+        answer = getAnswer(pobiResult,crongResult);
         return answer;
     }
 
