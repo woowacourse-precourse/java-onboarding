@@ -107,7 +107,7 @@ public class Problem7 {
     }
 
     static void sortByScore(List<Person> list, Persons persons) {
-        Collections.sort(list, (a, b) -> Integer.compare(persons.getScore(a), persons.getScore(b)));
+        Collections.sort(list, (a, b) -> Integer.compare(persons.getScore(b), persons.getScore(a)));
     }
 
     static List<String> topFive(List<Person> list, Persons persons) {
