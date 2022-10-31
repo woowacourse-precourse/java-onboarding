@@ -6,6 +6,10 @@ public class Problem2 {
         return answer;
     }
 
+    public static boolean isContinuitySubstring(String substring) {
+        return substring.charAt(0) == substring.charAt(1);
+    }
+
     public static String removeContinuity(String subString, char c){
         int index = subString.indexOf(c);
         while(index == 0){
