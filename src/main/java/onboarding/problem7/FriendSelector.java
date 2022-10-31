@@ -26,8 +26,11 @@ public class FriendSelector {
     public List<String> select() {
         List<Friend> candidates = sortCandidates();
         List<String> friends = new ArrayList<>();
-        // Select maximum 5 friends
-        return new ArrayList<>();
+        for (Friend candidate : candidates) {
+            friends.add(candidate.getName());
+            if (friends.size() == 5) break;
+        }
+        return friends;
     }
 
     /**
