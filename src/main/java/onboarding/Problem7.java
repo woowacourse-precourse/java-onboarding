@@ -49,6 +49,13 @@ public class Problem7 {
             }
         }
 
+        // visitors를 처리한다.
+        for (String visitor : visitors) {
+            // user와 친구거나, user 자체면 안된다.
+            if (friendsList.get(user).contains(visitor) || (user.equals(visitor))) continue;
+
+            scores.put(visitor, scores.getOrDefault(visitor, 0) + 1);
+        }
 
 
         return answer;
