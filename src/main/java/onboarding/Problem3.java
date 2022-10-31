@@ -5,4 +5,18 @@ public class Problem3 {
         int answer = 0;
         return answer;
     }
+    private static int countClaps(int number) {
+        int clap = 0;
+        int result = 0;
+        int divisor = 1000;
+        for (int i = 0; i < 4; i++) {
+            result = number / divisor;
+            if (result != 0 && result % 3 == 0) {
+                clap++;
+            }
+            number = number % divisor;
+            divisor /= 10;
+        }
+        return clap;
+    }
 }
