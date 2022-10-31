@@ -55,17 +55,7 @@ public class Problem7 {
                 userPoints.containsKey(visitor) ? userPoints.get(visitor) + VisitPoint
                     : VisitPoint);
         }
-        List<Entry<String, Integer>> list_userPoints = new ArrayList<Entry<String, Integer>>(userPoints.entrySet());
-        Collections.sort(list_userPoints, new Comparator<Entry<String, Integer>>() {
-            @Override
-            public int compare(Entry<String, Integer> o1, Entry<String, Integer> o2) {
-                if (o1.getValue().compareTo(o2.getValue()) == 0) {
-                    return o1.getKey().compareTo(o2.getKey());
-                }
-                return o2.getValue().compareTo(o1.getValue());
-            }
-        });
-
+        List<Entry<String, Integer>> list_userPoints = sortPoints(userPoints);
         for (int i = 0; i < 5; i++) {
             if (list_userPoints.isEmpty()) {
                 break;
@@ -75,5 +65,14 @@ public class Problem7 {
         return answer;
     }
 
-
+    public static List<Entry<String, Integer>> sortPoints(Map<String, Integer> userpoint) {
+        List<Entry<String, Integer>> userPoints = new ArrayList<Entry<String, Integer>>(userpoint.entrySet());
+        Collections.sort(userPoints, (o1, o2) -> {
+            if (o1.getValue().compareTo(o2.getValue()) == 0) {
+                return o1.getKey().compareTo(o2.getKey());
+            }
+            return o2.getValue().compareTo(o1.getValue());
+        });
+        return userPoints;
+    }
 }
