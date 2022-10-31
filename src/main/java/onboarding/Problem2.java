@@ -42,6 +42,18 @@ public class Problem2 {
 
     //단어의 중복을 제거하고 새로운 단어를 생성하는 함수
 
+    static String new_word(String word) {
+        boolean[] guide_line = repeat_word_check(word);
+
+        String tmp = "";
+        for (int i = 0; i < guide_line.length; i++) {
+            if (!guide_line[i]) {
+                tmp += String.valueOf(word.charAt(i));
+            }
+        }
+
+        return tmp;
+    }
     //실행을 위한 함수
 
 }
