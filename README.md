@@ -34,6 +34,7 @@ BUILD SUCCESSFUL in 0s
 ---
 
 ## 🚀 기능 요구 사항
+
 아래의 7가지 기능 요구 사항을 모두 해결해야 한다.
 
 1. [문제 1](./docs/PROBLEM1.md)
@@ -60,3 +61,13 @@ BUILD SUCCESSFUL in 0s
 
 - 미션은 [java-onboarding](https://github.com/woowacourse-precourse/java-onboarding) 저장소를 Fork & Clone해 시작한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+# ❗️기능 목록
+
+1. [문제1](./src/main/java/onboarding/problem1/기능%20목록.md)
+2. [문제2](./src/main/java/onboarding/problem2/기능%20목록.md)
+3. [문제3](./src/main/java/onboarding/problem3/기능%20목록.md)
+4. [문제4](./src/main/java/onboarding/problem4/기능%20목록.md)
+5. [문제5](./src/main/java/onboarding/problem5/기능%20목록.md)
+6. [문제6](./src/main/java/onboarding/problem6/기능%20목록.md)
+7. [문제7](./src/main/java/onboarding/problem7/기능%20목록.md)
