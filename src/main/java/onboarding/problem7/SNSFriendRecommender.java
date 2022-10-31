@@ -19,6 +19,18 @@ public class SNSFriendRecommender {
         initScores(visitors, relations);
     }
 
+    public List<String> recommendFriends() {
+        List<String> result = new ArrayList<>();
+        int length = Math.min(scores.size(), RECOMMENDED_FRIEND_MAX_NUM);
+        int index = 0;
+        for (String key : scores.keySet()) {
+            if (index++ >= length || scores.get(key) == 0)
+                break;
+            result.add(key);
+        }
+        return result;
+    }
+
     private void initScores(List<String> visitors, Map<String, List<String>> relations) {
         if (!this.targetUserFriends.isEmpty()) {
             addScoreOfUserKnowTogether(getTotalUsersKnowTogether(relations));
