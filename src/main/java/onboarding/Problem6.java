@@ -19,20 +19,15 @@ public class Problem6 {
                         String checkName= getNickname(forms, checkIndex);//비교할 이름
 
                         if(checkOverlap(checkName,str)){
-                                answer.add(getEmail(forms, formIndex));
-                                answer.add(getEmail(forms, checkIndex));
+                                answer.add(getEmail(forms, formIndex));// 현재 인덱스에 해당하는 이메일
+                                answer.add(getEmail(forms, checkIndex));// 비교하는 인덱스에 해당하는 이메일
                         }
                     }
 
                 }
 
             }
-        HashSet<String> deleteOverlap = new HashSet<String>(answer);
-        answer.clear();
-        answer.addAll(deleteOverlap);
-        Collections.sort(answer);
-
-        return answer;
+        return deleteOverlapAndSort(answer);
     }
 
     static String getNickname(List<List<String>> forms, int index){
@@ -59,6 +54,13 @@ public class Problem6 {
         return forms.get(index).get(0);
     }
 
+    static List<String> deleteOverlapAndSort(List<String> list){
+        HashSet<String> deleteOverlap = new HashSet<String>(list);
+        list.clear();
+        list.addAll(deleteOverlap);
+        Collections.sort(list);
 
+        return list;
+    }
 
 }

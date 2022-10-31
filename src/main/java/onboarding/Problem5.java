@@ -10,9 +10,9 @@ public class Problem5 {
         ArrayList<Integer> answer = new ArrayList<Integer>();
         int[] arr={50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
         int remainMoney=money;
-        for(int i = 0; i <arr.length; i++){
-            answer.add(quotientAndRemainder(remainMoney, arr[i])[0]);
-            remainMoney=quotientAndRemainder(remainMoney,arr[i])[1];
+        for (int j : arr) {
+            answer.add(quotientAndRemainder(remainMoney, j)[0]);
+            remainMoney = quotientAndRemainder(remainMoney, j)[1];
         }
         return answer;
     }

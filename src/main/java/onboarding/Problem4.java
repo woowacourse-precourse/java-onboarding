@@ -2,8 +2,10 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
+        int[] asciiArray= changeStringToAsciiArray(word);
+        int[] capitalReverted= revertCapitalUsingAscii(asciiArray);
 
-        return revertArrayToString(convertArray(changeStringToAsciiArray(word)));
+        return revertArrayToString(capitalReverted);
 
     }
 
@@ -15,7 +17,7 @@ public class Problem4 {
         return arr;
     }
 
-    static int[] convertArray(int[] arr){
+    static int[] revertCapitalUsingAscii(int[] arr){
 
         for(int i=0; i<arr.length; i++){
             if(arr[i]==32){
@@ -35,5 +37,6 @@ public class Problem4 {
         }
         return new String(charr);
     }
+
 
 }
