@@ -16,6 +16,7 @@ public class Problem6 {
         String filter;
         int flag = 0;
         int index = 0;
+        //4. 리스트 내부에 있는 모든 닉네임을 선택될 때 까지 1 ~ 5를 반복
         while(true)
         {
             //탈출 조건
@@ -35,10 +36,19 @@ public class Problem6 {
                         answer_set.add(copied_form.get(j).get(0));
                     }
                 }
-
+                if(flag == 1)
+                {
+                    flag = 0;
+                    answer_set.add(copied_form.get(index).get(0));
+                    index += 1;
+                    continue;
+                }
+                if(flag == 0)
+                    index += 1;
             }
 
         }
+        //5. answer 를 정렬 후 반환
         List<String> answer = new ArrayList<>(answer_set);
         Collections.sort(answer);
         return answer;
