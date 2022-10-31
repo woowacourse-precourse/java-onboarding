@@ -7,7 +7,19 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
         fillToMap(forms);
+        for(List<String> data : forms) {
+            if(checkMap(data.get(1))){answer.add(data.get(0));}
+        }
+        Collections.sort(answer);
         return answer;
+    }
+    static boolean checkMap(String string){
+        for(int i=0; i<string.length()-1;i++) {
+            String check_name = "";
+            check_name = check_name+ string.charAt(i) + string.charAt(i+1);
+            if (maps.get(check_name).equals("duplicate")) {return true;}
+        }
+        return false;
     }
     static void fillToMap(List<List<String>> forms){
         for(List<String> data : forms) {fillToSet(data.get(1));}
