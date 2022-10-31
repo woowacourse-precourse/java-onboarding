@@ -25,12 +25,12 @@ public class Cryptogram {
     }
 
     //3.2번에서 중복인지 체크할 수 있는 조건함수
-    private boolean isSameWithBefore(){
-        return false;
+    private boolean isSameWithNext(int i) {
+        return i < cryptogram.length() - 1 && cryptogram.charAt(i) == cryptogram.charAt(i + 1);
     }
 
-    private boolean isSameWithNext(){
-        return false;
+    private boolean isSameWithBefore(int i) {
+        return i > 0 && cryptogram.charAt(i) == cryptogram.charAt(i - 1);
     }
 
 }
