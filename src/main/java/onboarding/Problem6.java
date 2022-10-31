@@ -29,17 +29,17 @@ public class Problem6 {
                             answerOverlap.add(formsEmail.get(i));
                             answerOverlap.add(formsEmail.get(j));
                         }
-
                     }
                 }
-
             }
         }
 
-
-
-
-
+        for (int i = 0; i < answerOverlap.size(); i++) {
+            String compare = answerOverlap.get(i);
+            if (!answer.contains(compare)) {
+                answer.add(compare);
+            }
+        }
 
         return answer;
     }
