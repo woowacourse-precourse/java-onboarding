@@ -13,9 +13,17 @@ public class Problem7 {
         Problem7 problem = new Problem7();
         HashMap<String, Integer> listpeople;
         ArrayList<String> userfriendslist;
+        ArrayList<String> friendfrinedlist;
 
         listpeople = problem.extractPeople(user, friends, visitors);
         userfriendslist = problem.extractUserFriend(user, friends);
+
+        for(int i=0; i< userfriendslist.size(); i++) {
+            listpeople.remove(userfriendslist.get(i));
+        }
+
+        friendfrinedlist = problem.extractFriendFriend(userfriendslist, friends);
+        while(friendfrinedlist.remove("") || friendfrinedlist.remove(user)){};
 
         return answer;
     }
@@ -53,5 +61,34 @@ public class Problem7 {
         resultarray = new ArrayList<>(resulthash);
 
         return resultarray;
+    }
+
+    public ArrayList<String> extractFriendFriend(ArrayList<String> name, List<List<String>> friends) {
+        Problem7 problem = new Problem7();
+        ArrayList<String> resultarray = new ArrayList<>();
+
+        for(int i=0; i<name.size(); i++) {
+            for(List e : friends) {
+                resultarray.add(problem.friendfriendlist(e, name.get(i)));
+            }
+        }
+
+        return resultarray;
+    }
+
+    public String friendfriendlist(List list, String name) {
+        String result = "";
+
+        if(list.contains(name)) {
+            if(list.get(0).equals(name) == false) {
+                result = (String) list.get(0);
+            }
+
+            if(list.get(1).equals(name) == false) {
+                result = (String) list.get(1);
+            }
+        }
+
+        return result;
     }
 }
