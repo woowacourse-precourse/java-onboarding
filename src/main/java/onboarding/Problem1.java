@@ -60,12 +60,21 @@ class Problem1 {
 
         // 크롱 페이지 수와 관련된 값은 인덱스 2, 3에 저장되어 있다.
         for (int i = 2; i < 4; i++) {
-            if(crong_num <= page_nums_sum[i]) {
+            if (crong_num <= page_nums_sum[i]) {
                 crong_num = page_nums_sum[i];
             }
-            if(crong_num <= page_nums_multi[i]) {
+            if (crong_num <= page_nums_multi[i]) {
                 crong_num = page_nums_multi[i];
             }
+        }
+
+        // 포비와 크롱의 점수를 비교하여 승부 결정
+        if(pobi_num > crong_num) {
+            answer = 1;
+        } else if(pobi_num < crong_num) {
+            answer = 2;
+        } else {
+            answer = 0;
         }
 
 
