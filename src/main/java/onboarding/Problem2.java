@@ -11,6 +11,8 @@ public class Problem2 {
         
         stack = continuityCheck(cryptogram);
         
+        answer = stringBuild(stack).toString();
+        
         return answer;
     }
 
@@ -34,4 +36,14 @@ public class Problem2 {
 
 		return stack;
 	}
+
+    public static StringBuilder stringBuild(Stack<Character> stack) {
+        StringBuilder builder = new StringBuilder();
+
+        while (!stack.isEmpty()) {
+            builder.append(stack.pop());
+        }
+
+        return builder;
+    }
 }
