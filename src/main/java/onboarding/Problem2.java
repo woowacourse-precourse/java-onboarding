@@ -3,9 +3,10 @@ package onboarding;
 import java.util.Stack;
 
 public class Problem2 {
-    private static final Stack<Character> stack = new Stack<>();
+    private static Stack<Character> stack;
 
     public static String solution(String cryptogram) {
+        stack = new Stack<>();
         char removedLetter = '.';
 
         for (int index = 0 ; index < cryptogram.length() ; index++) {
