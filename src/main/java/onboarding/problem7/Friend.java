@@ -7,4 +7,9 @@ public class Friend {
     public Friend(String name) {
         this.name = name;
     }
+
+    public Friend addScore(int score) {
+        this.score += score;
+        return this;
+    }
 }
