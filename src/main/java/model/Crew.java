@@ -1,60 +1,59 @@
 package model;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 public class Crew {
     private List<List<String>> forms;
-    private HashMap<String, List<String>> test;
+    private HashMap<String, List<String>> duplicatedDic;
 
-    public Crew(List<List<String>> forms){
+    public Crew(List<List<String>> forms) {
         this.forms = forms;
-        this.test = new HashMap<>();
+        this.duplicatedDic = new HashMap<>();
     }
 
-    public List<String> alarm(){
-        for (List<String> form: this.forms) {
+    public List<String> alarm() {
+        for (List<String> form : this.forms) {
             getSplitContinuousNicknameList(form.get(0), form.get(1));
         }
         return getDuplicateNicknameToList();
     }
 
-    void getSplitContinuousNicknameList(String email, String nickname){
+    void getSplitContinuousNicknameList(String email, String nickname) {
         int interval = 2;
         int idx = 0;
-        while(interval <= nickname.length()){
-            makeDuplicatedDictionary(nickname.substring(idx,interval+idx), email);
+        while (interval <= nickname.length()) {
+            makeDuplicatedDictionary(nickname.substring(idx, interval + idx), email);
             idx++;
-            if (interval+idx > nickname.length()){
+            if (interval + idx > nickname.length()) {
                 idx = 0;
                 interval++;
             }
         }
     }
 
-    void makeDuplicatedDictionary(String split, String email){
+    void makeDuplicatedDictionary(String split, String email) {
         List<String> list;
-        if (test.containsKey(split)){
-            list = test.get(split);
-        } else{
+        if (duplicatedDic.containsKey(split)) {
+            list = duplicatedDic.get(split);
+        } else {
             list = new ArrayList<>();
         }
         list.add(email);
-        test.put(split, list);
+        duplicatedDic.put(split, list);
     }
 
-    List<String> getDuplicateNicknameToList(){
+    List<String> getDuplicateNicknameToList() {
         HashSet<String> hashSet = new HashSet<>();
-        for (String s: test.keySet()) {
-            List<String> emailList = test.get(s);
-            if(emailList.size() >= 2){
-                for (String email: emailList) {
+        for (String s : duplicatedDic.keySet()) {
+            List<String> emailList = duplicatedDic.get(s);
+            if (emailList.size() >= 2) {
+                for (String email : emailList) {
                     hashSet.add(email);
                 }
             }
         }
-        return new ArrayList<>(hashSet);
+        List<String> list = new ArrayList<>(hashSet);
+        Collections.sort(list);
+        return list;
     }
 }
