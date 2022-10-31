@@ -44,7 +44,7 @@ class Result {
     }
 
 
-    public char changeWordByRule(int wordChar) {
+    private char changeWordByRule(int wordChar) {
         if (!Character.isAlphabetic(wordChar)) {
             return ' ';
         }
@@ -56,18 +56,18 @@ class Result {
         return toLowerCase(replaceChar);
     }
 
-    public boolean isAlphaLower(int wordChar) {
+    private boolean isAlphaLower(int wordChar) {
         if (wordChar >= 'a' && wordChar <= 'z') {
             return true;
         }
         return false;
     }
 
-    public char toUpperCase(char wordChar) {
+    private char toUpperCase(char wordChar) {
         return Character.toUpperCase(wordChar);
     }
 
-    public char toLowerCase(char wordChar) {
+    private char toLowerCase(char wordChar) {
         return Character.toLowerCase(wordChar);
     }
 
