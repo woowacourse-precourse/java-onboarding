@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -10,12 +11,17 @@ public class Problem6 {
         List<String> answer = new ArrayList<>();
         // 1. nickname 만 모아서 String 배열로 반환
         String[] nicknames = returnNickname(forms);
-        // 2. nicknames 배열에 담긴 닉네임을 차례로 중복되는 부분이 있는지 탐색
+
+        // 2. 기준이 되는 닉네임을 2글자씩 쪼개서 리스트로 반환한 standard 와
+        // 비교 대상이 되는 닉네임을 2글자씩 쪼개서 리스트로 반환한 nickname 을
+        // findword 함수로 비교하여 일치한다면 일치하는 두 닉네임의 이메일을 저장
         for(int i = 0; i<nicknames.length; i++) {
-            String[] standard = splitString(nicknames[i]);
             for(int j = i+1; j<nicknames.length; j++) {
-                String[] nickname = splitString(nicknames[j]);
-                // 3. 중복되는 부분이 있다면, 그 인덱스의 이메일을 answer 에 담기
+                // 기준이 되는 닉네임 쪼개기
+                List <String> standard = splitString(nicknames[i]);
+                // 비교 대상이 되는 닉네임 쪼개기
+                List <String> nickname = splitString(nicknames[j]);
+                // standard 와 nickname 을 비교해서 같은 글자가 연속적으로 포함될 경우
                 if(findWord(standard, nickname)) {
                     answer.add(forms.get(i).get(0));
                     answer.add(forms.get(j).get(0));
@@ -40,11 +46,11 @@ public class Problem6 {
         return nickname;
     }
 
-    // 닉네임을 두 글자씩 쪼개서 String 배열에 저장해서 리턴하는 함수
+    // 닉네임을 두 글자씩 쪼개서 String 리스트에 저장해서 리턴하는 함수
     /*
     ex) 제이엠 -> 제이, 이엠
      */
-    private static String[] splitString(String nickname) {
+    private static List<String> splitString(String nickname) {
         // 글자수 - 1 만큼 사이클 돌면 됨.
         char[] chars = nickname.toCharArray();
         String[] str = new String[chars.length -1];
@@ -53,16 +59,15 @@ public class Problem6 {
             str[i] += chars[i+1];
         }
 
-        return str;
+        return Arrays.asList(str);
     }
 
-    // 닉네임을 두 글자씩 쪼갠 배열(기준)과 비교 대상 닉네임을 쪼갠 것을 매개변수로 받음
-    private static boolean findWord(String[] standard, String[] nickname) {
-        for(int i = 0; i< standard.length; i++) {
-            for(int j = 0; j < nickname.length; j++) {
-                if (standard[i].equals(nickname[j])) {
-                    return true;
-                }
+    // 닉네임을 두 글자씩 쪼갠 배열(기준)과 비교 대상 닉네임을 두 글자씩 쪼갠 것을 매개변수로 받아서
+    // 일치하는 부분이 있는지 비교한 후, 있다면 true 를 리턴함
+    private static boolean findWord(List<String> standard, List<String> nickname) {
+        for(int i = 0; i< standard.size(); i++) {
+            if(nickname.contains(standard.get(i))) {
+                return true;
             }
         }
         return false;
