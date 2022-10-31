@@ -9,12 +9,7 @@ public abstract class Page {
         this.pageNumber = new PageNumber(number);
     }
 
-    public Integer sum() {
-        return pageNumber.sum();
+    public Integer number(){
+        return Math.max(pageNumber.sum(), pageNumber.multiple());
     }
-
-    public Integer multiple() {
-        return pageNumber.multiple();
-    }
-
 }
