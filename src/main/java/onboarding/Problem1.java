@@ -5,6 +5,10 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
+        if(isFirstOrLast(pobi) || isFirstOrLast(crong)) {
+            return -1;
+        }
+
         int pobiSum = add(pobi);
         int pobiMulti = multiply(crong);
         int pobiMax = max(pobiSum, pobiMulti);
@@ -13,8 +17,16 @@ class Problem1 {
         int crongMulti = multiply(crong);
         int crongMax = max(crongSum, crongMulti);
 
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        if(pobiMax == crongMax) {
+            return 0;
+        }else {
+            if(pobiMax > crongMax) {
+                return 1;
+            }else if (pobiMax < crongMax){
+                return 2;
+            }
+        }
+        return -1;
     }
 
     private static int add(List<Integer> values) {
@@ -58,6 +70,15 @@ class Problem1 {
         }
 
         return onePageMulti;
+    }
+
+    private static boolean isFirstOrLast(List<Integer> values) {
+        for(int value : values) {
+            if(value < 2 || value >= 400) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }
