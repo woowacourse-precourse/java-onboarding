@@ -69,6 +69,16 @@ class Problem1 {
         return product;
     }
 
+    /**
+     *
+     * @param a : 자연수
+     * @param b : 자연수
+     * @return int : a와 b중 더 큰 수
+     */
+    public static int max(int a, int b) {
+        return Math.max(a, b);
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
