@@ -16,6 +16,9 @@ public class Problem6 {
         for (int id : idxSet)
             answer.add(forms.get(id).get(0));
 
+        // 4. 구성한 정보를 사전 순으로 정렬함
+        Collections.sort(answer);
+
         return answer;
     }
 
