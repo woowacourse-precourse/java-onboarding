@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.HashSet;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -49,10 +50,22 @@ public class Problem6 {
 
 	private static class Woowacourse {
 		ArrayList<Crew> crews = new ArrayList<>();
+		HashSet<Crew> nicknameLimitedCrews = new HashSet<>();
+
 
 		Woowacourse(List<List<String>> forms) {
 			for (List<String> form : forms) {
 				crews.add(new Crew(form));
+			}
+			findNicknameLimitedCrews();
+		}
+
+		private void findNicknameLimitedCrews() {
+			for (Crew currentCrew : crews) {
+				crews.stream()
+					.filter(crew -> crew != currentCrew)
+					.filter(crew -> crew.isNicknameSimilarWith(currentCrew.generateNicknamePieces()))
+					.forEach(nicknameLimitedCrews::add);
 			}
 		}
 	}
