@@ -4,7 +4,9 @@ public class Problem3 {
     private static int[] numberOfClaps;
 
     public static int solution(int number) {
-        return 0;
+        initNumberOfClaps(number);
+
+        return calculateNumberOfClaps(number);
     }
 
     private static int isNumber369(int number){
