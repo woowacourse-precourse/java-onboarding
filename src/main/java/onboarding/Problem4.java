@@ -26,7 +26,7 @@ public class Problem4 {
         return result;
     }
     public static String solution(String word) {
-        String answer = "";
+        String answer = convertWord(word);
         return answer;
     }
 }
