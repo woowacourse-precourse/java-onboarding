@@ -9,7 +9,9 @@ public class Problem2 {
     }
 
     private static void initList(String cryptogram, List<Character> characterList) {
-
+        for (char ch : cryptogram.toCharArray()) {
+            characterList.add(ch);
+        }
     }
 
     private static boolean isAnyRemovable(List<Character> characterList) {
