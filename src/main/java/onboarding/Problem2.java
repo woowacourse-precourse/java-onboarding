@@ -5,7 +5,11 @@ import java.util.Arrays;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String answer;
+
+        // 예외처리
+        checkException(cryptogram);
+
         ArrayList<String> decipher;
         int index = -1;
 
@@ -65,6 +69,18 @@ public class Problem2 {
         input.remove(index);
 
         return input;
+    }
+
+    // 예외처리
+    private static void checkException(String cryptogram) throws IllegalArgumentException {
+        // 문자열의 길이 예외
+        if(!(cryptogram.length() >= 1 && cryptogram.length() <= 1000)) {
+            throw new IllegalArgumentException("문자열의 길이는 1 ~ 1000 까지만 가능합니다.");
+        }
+        // 정규식을 이용해서 cryptogram 에 정규식만 있는지 확인
+        if(!(cryptogram != null && cryptogram.matches("^[a-zA-Z]*$"))) {
+            throw new IllegalArgumentException("문자열은 알파벳만 입력 가능합니다.");
+        }
     }
 
 }
