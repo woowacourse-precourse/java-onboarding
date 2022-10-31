@@ -25,6 +25,10 @@ class RecommendScore{
         score += 10;
     }
 
+    public void plusOne(){
+        score += 1;
+    }
+
 }
 public class Problem7{
     public static List<RecommendScore> AllFriendsList(String user, List<List<String>> friends, List<String> visitors){
@@ -94,6 +98,17 @@ public class Problem7{
         }
         return userFriendList;
 
+    }
+
+    //visitors 목록에서 찾아 점수 1점씩 추가
+    public static void visitorsScore(List<String> visitors, List<RecommendScore> allfriends){
+        for(int i = 0; i< visitors.size(); i++){
+            for(int j = 0; j<allfriends.size(); j++){{
+                if((visitors.get(i)).equals((allfriends.get(j)).getName())){
+                    (allfriends.get(j)).plusOne();
+                }
+            }            }
+        }
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
