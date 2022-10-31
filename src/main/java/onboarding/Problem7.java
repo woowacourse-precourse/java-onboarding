@@ -140,5 +140,5 @@ public class Problem7 {
         List<String> answer = getFriendRecommendation();
         return answer;
     }
-    
+
 }
