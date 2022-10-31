@@ -8,34 +8,55 @@ public class Problem7 {
     private static final int VISITOR_POINT = 1;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        Set<String> alreadyFriends = getAlreadyFriends(friends);
-        Map<String, Integer> recommendPoint = getRecommendPointByFriends(friends, user);
+        Set<String> alreadyFriends = getAlreadyFriends(user, friends);
+        Map<String, Integer> recommendPoint = getRecommendPointByFriends(alreadyFriends, friends, user);
         addRecommendPointByVisit(alreadyFriends, recommendPoint, visitors);
 
         return sortAndGetRecommendFriends(recommendPoint);
     }
 
-    private static Set<String> getAlreadyFriends(List<List<String>> friends) {
+    private static Set<String> getAlreadyFriends(String user, List<List<String>> friends) {
         Set<String> alreadyFriends = new HashSet<>();
 
         for (List<String> friend : friends) {
-            alreadyFriends.add(friend.get(0));
+            addAlreadyFriend(alreadyFriends, friend, user);
         }
 
         return alreadyFriends;
     }
 
-    private static Map<String, Integer> getRecommendPointByFriends(List<List<String>> friends, String user) {
+    private static void addAlreadyFriend(Set<String> alreadyFriends, List<String> friend, String user) {
+        if (friend.get(0).equals(user)) {
+            alreadyFriends.add(friend.get(1));
+        } else if (friend.get(1).equals(user)) {
+            alreadyFriends.add(friend.get(0));
+        }
+    }
+
+    private static Map<String, Integer> getRecommendPointByFriends(Set<String> alreadyFriends, List<List<String>> friends, String user) {
         Map<String, Integer> recommendPoint = new HashMap<>();
 
         for (List<String> friend : friends) {
-            String newFriend = friend.get(1);
-            if (!user.equals(newFriend)) {
+            String newFriend = getNewFriend(alreadyFriends, friend, user);
+            if (newFriend != null) {
                 recommendPoint.put(newFriend, recommendPoint.getOrDefault(newFriend, 0) + FRIEND_POINT);
             }
         }
 
         return recommendPoint;
+    }
+
+    private static String getNewFriend(Set<String> alreadyFriends, List<String> friend, String user) {
+        for (String newFriend : friend) {
+            if (isNewFriend(alreadyFriends, user, newFriend)) {
+                return newFriend;
+            }
+        }
+        return null;
+    }
+
+    private static boolean isNewFriend(Set<String> alreadyFriends, String user, String newFriend) {
+        return !user.equals(newFriend) && !alreadyFriends.contains(newFriend);
     }
 
     private static void addRecommendPointByVisit(Set<String> alreadyFriends, Map<String, Integer> recommendPoint, List<String> visitors) {
