@@ -86,15 +86,17 @@ public class Problem7 {
         user2.addFriend(user1);
     }
 
-    public static void processVisitorsList(String targetUserName, List<String> visitors){
-        User targetUser = USER_MAP.get(targetUserName);
-        targetUser.addScoreToFriends(VISIT_SCORE);
+    public static void processVisitorsList(List<String> visitors){
+        for(String visitorName : visitors){
+            User visitor = getUserFromName(visitorName);
+            visitor.addScore(VISIT_SCORE);
+        }
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         processFriendsList(friends);
-        processVisitorsList(user, visitors);
+        processVisitorsList(visitors);
         return answer;
     }
 }
