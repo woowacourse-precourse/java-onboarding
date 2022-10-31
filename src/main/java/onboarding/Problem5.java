@@ -1,6 +1,6 @@
 package onboarding;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,7 +15,11 @@ public class Problem5 {
     );
 
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
+        List<Integer> answer = new ArrayList<>();
+        for (int bill : bills) {
+            answer.add(getMoneyWithBill(money, bill));
+            money %= bill;
+        }
         return answer;
     }
 
@@ -26,9 +30,9 @@ public class Problem5 {
      * @param index
      * @return bills[index]으로 바꿀 수 있는 돈 액수
      */
-    private static int getMoneyWithBill(int money, int index) {
-        if (money >= bills.get(index)) {
-            return money / bills.get(index);
+    private static int getMoneyWithBill(int money, int bill) {
+        if (money >= bill) {
+            return money / bill;
         }
         return 0;
     }
