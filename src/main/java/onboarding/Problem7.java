@@ -56,8 +56,20 @@ public class Problem7 {
         });
 
         // 점수 별로 정렬한 후 유저 이름대로 정렬
-        // 정렬하는 메서드를 따로 뺄까..?
-        HashMap<String, Integer> suggestUserSortedByScore = suggestScoreList
+        // 해시맵 정렬
+        HashMap<String, Integer> suggestUserSortedByScore = problem.sortbyScoreThenName(suggestScoreList);
+
+        // 맵에서 key값만 가져오기
+        Set<String> keySet = suggestUserSortedByScore.keySet();
+        ArrayList<String> recommendUserList = new ArrayList<>(keySet);
+
+
+        System.out.println(suggestUserSortedByScore);
+        return problem.HeadCountLimit(recommendUserList, 5);
+    }
+
+    public HashMap<String, Integer> sortbyScoreThenName(HashMap<String, Integer> unsortedList) {
+        HashMap<String, Integer> sortedList = unsortedList
                 .entrySet()
                 .stream()
                 .sorted(Collections
@@ -66,12 +78,7 @@ public class Problem7 {
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
                         (newValue, oldValue) -> oldValue, LinkedHashMap::new));
 
-        Set<String> keySet = suggestUserSortedByScore.keySet();
-        ArrayList<String> recommendUserList = new ArrayList<>(keySet);
-
-
-        System.out.println(suggestUserSortedByScore);
-        return problem.HeadCountLimit(recommendUserList, 5);
+        return sortedList;
     }
 
     public List<String> HeadCountLimit (List<String> list, int limit) {
