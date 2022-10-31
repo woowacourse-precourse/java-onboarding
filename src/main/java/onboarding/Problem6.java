@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class Problem6 {
@@ -13,14 +14,9 @@ public class Problem6 {
         for (int i = 0; i < forms.size(); i++) {
             problem.updateEvery2SequentialChar(i, forms.get(i).get(1)); // 닉네임에서 2글자씩 분절해  charToIndices에 추가
         }
-        // charToIndices 에서 길이가 2이상인 Index 배열 반환
-        List<Integer> answerIndices = new ArrayList<>();
-        for(List<Integer> indices : problem.charToIndices.values()) {
-            if (indices.size() > 1) {
-                answerIndices = indices;
-                break;
-            }
-        }
+        
+        List<Integer> answerIndices = problem.getDuplicateIndices();
+
         // answer 배열 생성
         List<String> answer = new ArrayList<>();
         // Index 배열을 이용해 answer에 email add
@@ -58,4 +54,12 @@ public class Problem6 {
             this.charToIndices.put(key, formIndices);
         }
     }
+
+    List<Integer> getDuplicateIndices() {
+        return this.charToIndices.values().stream()
+                    .filter(intList -> intList.size() > 1)  // 길이가 2이상인 Index 배열 반환
+                    .findFirst()
+                    .orElse(new ArrayList<>());
+    }
+
 }
