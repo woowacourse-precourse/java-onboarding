@@ -12,9 +12,9 @@ import java.time.LocalDateTime;
 
 // 2번 채택
 public class Problem3 {
-    public static int solution(int number) {
+    public static int solution(int number) throws Exception {
         int answer = 0 ;
-
+        valid(number);
         for(int i = 3; i <= number; i++){
             int num = i;
             while(num > 0){     //수
@@ -26,9 +26,9 @@ public class Problem3 {
         }
         return answer;
     }
-    public static int solution2(int number) {
+    public static int solution2(int number) throws Exception {
         int answer = 0;
-
+        valid(number);
         for(int i = 3; i <= number; i++){
             String s = String.valueOf(i);
             for(int j = 0; j < s.length(); j++){
@@ -41,14 +41,20 @@ public class Problem3 {
 
     }
 
-    public static void main(String[] args) {
+    public static void valid(Integer num) throws Exception {
+        if(num < 1 || num > 10000){
+            throw new Exception("입력값이 1이상 10,000이하인 자연수의 조건에서 벗어납니다.");
+        }
+    }
+
+    public static void main(String[] args) throws Exception {
         LocalDateTime start = LocalDateTime.now();
-        System.out.println(solution(13000000));
+        System.out.println(solution(1300));
         LocalDateTime end = LocalDateTime.now();
         System.out.println(Duration.between(start, end));
 
         LocalDateTime start2 = LocalDateTime.now();
-        System.out.println(solution2(13000000));
+        System.out.println(solution2(13000));
         LocalDateTime end2 = LocalDateTime.now();
         System.out.println(Duration.between(start2, end2));
     }
