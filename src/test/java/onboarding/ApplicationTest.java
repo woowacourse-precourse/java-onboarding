@@ -211,5 +211,23 @@ class ApplicationTest {
             List<String> result = List.of("andole", "jun", "bedi");
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
         }
+
+        @Test
+        @DisplayName("추천가능한 사람이 5보다 많을때")
+        void case2() {
+            String user = "a";
+            List<List<String>> friends = List.of(
+                    List.of("a", "b"),
+                    List.of("b", "c"),
+                    List.of("b", "d"),
+                    List.of("b", "e"),
+                    List.of("b", "f"),
+                    List.of("b", "g"),
+                    List.of("b", "h")
+            );
+            List<String> visitors = List.of("f", "f", "d");
+            List<String> result = List.of("f", "d", "c", "e", "g");
+            assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+        }
     }
 }
