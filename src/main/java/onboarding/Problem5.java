@@ -32,15 +32,11 @@ public class Problem5 {
 
     public List<Integer> exchangeMoney(List<Integer> list, int money) {
         for (int i = 0; i < standardArr.length; i++) {
-            int quotient = getQuotientMoneyDividedStandard(standardArr[i], money);
-            list.add(quotient);
-            money -= (standardArr[i] * quotient);
+            list.add(money / standardArr[i]);
+            // 나머지 활용.
+            // money -= (standardArr[i] * quotient);
+            money = money % standardArr[i];
         }
         return list;
-    }
-
-
-    private int getQuotientMoneyDividedStandard(int standard, int money) {
-        return money / standard;
     }
 }
