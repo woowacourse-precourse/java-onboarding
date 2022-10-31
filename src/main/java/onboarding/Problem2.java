@@ -53,6 +53,12 @@ class ListifyCryptogram {
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
+        try {
+            ListifyCryptogram listedCryptogram = new ListifyCryptogram(cryptogram);
+            answer = listedCryptogram.decodeCrypto();
+        } catch (RestrictException e) {
+            answer = e.exMsg;
+        }
         return answer;
     }
 }
