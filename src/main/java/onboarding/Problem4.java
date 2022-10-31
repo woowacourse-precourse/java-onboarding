@@ -11,19 +11,17 @@ public class Problem4 {
 
 		StringBuilder sb = new StringBuilder();
 		for (char alphabet : alphabets) {
-			if (alphabet == 32) {
-				sb.append(' ');
-				continue;
-			}
 			if (alphabet >= 65 && alphabet <= 90) {
 				sb.append((char) (65 + (90 - alphabet)));
 				continue;
 			}
 			if (alphabet >= 97 && alphabet <= 122) {
 				sb.append((char) (97 + (122 - alphabet)));
+				continue;
 			}
+			//알파벳을 제외한 모든 문자는 그대로 출력
+			sb.append(alphabet);
 		}
 		return sb.toString();
 	}
-
 }
