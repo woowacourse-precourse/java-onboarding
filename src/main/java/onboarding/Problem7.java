@@ -9,6 +9,9 @@ import java.util.*;
 2. 친구 목록에 존재하는 친구들의 추천 점수를 계산한다.
 3. 방문한 횟수 * 1 만큼 방문점수 계산한다.
 4. 높은 점수 순서대로 나열한다.
+**최종 구현
+**제한 사항
+**최대 5명 return 하도록
  */
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -35,8 +38,8 @@ public class Problem7 {
                 }else if(f2.equals(friendName)){
                     bridge = f1;
                 }
-
-                if(bridge.equals(user)||bridge.equals("")){
+                //최종 구현 추가 사항: 이미 친구일 경우.
+                if(bridge.equals(user)||bridge.equals("") || friendSet.contains(bridge)){
                     continue;
                 }
 
@@ -57,7 +60,11 @@ public class Problem7 {
             }
         }
         answer = new ArrayList<>(score.keySet());
+        Collections.sort(answer); //최종 구현 추가 사항: 알파벳 순으로 나열
         Collections.sort(answer,(a, b) -> (score.get(b).compareTo(score.get(a))));
+        //제한 사항 구현
+        if(answer.size()>5)
+            answer = answer.subList(0,5);
         return answer;
     }
 }
