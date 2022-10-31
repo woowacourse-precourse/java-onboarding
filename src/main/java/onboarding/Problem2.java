@@ -24,6 +24,7 @@ class StackForPro2 {
         stack.push(array[i]);
       } else if (stack.peek() == array[i]) {
         tmp = stack.pop();
+        stack.trimToSize();
       } else if (stack.peek() != array[i]) {
         stack.push(array[i]);
         tmp = 0;
@@ -65,6 +66,7 @@ public class Problem2 {
     int size = stack.size();
     for (int i = 0; i < size; i++) {
       sb.append(stack.pop());
+      stack.trimToSize();
     }
     sb.reverse();
     return sb.toString();
