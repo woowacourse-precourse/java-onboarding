@@ -49,8 +49,4 @@ public class Problem2 {
             if(c.isUpperCase(c)) throw new Exception("입력값이 소문자가 아닙니다. 소문자로 변경해주세요: "+s);
         }
     }
-
-    public static void main(String[] args) throws Exception {
-        System.out.println(solution("zyelleyz"));
-    }
 }

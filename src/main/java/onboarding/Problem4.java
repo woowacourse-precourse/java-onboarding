@@ -27,9 +27,4 @@ public class Problem4 {
             throw new Exception("문자의 길이가 1이상 1000이하가 아닙니다.");
         }
     }
-
-    public static void main(String[] args) throws Exception {
-        System.out.println(solution("I love you"));
-
-    }
 }

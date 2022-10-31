@@ -57,21 +57,7 @@ class Problem1 {
         //3. 왼쪽 오른쪽 페이지의 차이가 1이 아닐때
         if(Math.abs(pobi.get(0)-pobi.get(1)) != 1 || Math.abs(crong.get(0) -pobi.get(1)) != 10)
             return true;
-    }
 
-    public static void main(String[] args) {
-        List<Integer> pobi = new ArrayList<>();
-//        pobi.add(97);
-//        pobi.add(98);
-        pobi.add(132);
-        pobi.add(133);
-        List<Integer> crong = new ArrayList<>();
-//        crong.add(197);
-//        crong.add(198);
-        crong.add(211);
-        crong.add(212);
-
-        System.out.println(solution(pobi, crong));
-
+        return false;
     }
 }

@@ -24,8 +24,4 @@ public class Problem5 {
             throw new Exception("입력받은 돈이 1이상 1,000,000이하의 자연수가 아닙니다."+money);
         }
     }
-
-    public static void main(String[] args) throws Exception {
-        System.out.println(solution(50237));
-    }
 }

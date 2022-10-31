@@ -106,21 +106,5 @@ public class Problem7 {
         if(Character.isUpperCase(user.charAt(i)))
             throw new Exception("사용자의 아이디에 대문자가 포함되어 있습니다. user: "+ user);
     }
-
-
-    }
-
-    public static void main(String[] args) throws Exception {
-        String user = "mrko";
-        List<List<String>> friends = List.of(
-                List.of("donut", "andole"),
-                List.of("donut", "jun"),
-                List.of("donut", "mrko"),
-                List.of("shakevan", "andole"),
-                List.of("shakevan", "jun"),
-                List.of("shakevan", "mrko")
-        );
-        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
-        System.out.println(solution(user, friends, visitors));
     }
 }

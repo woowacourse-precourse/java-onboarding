@@ -47,15 +47,4 @@ public class Problem3 {
         }
     }
 
-    public static void main(String[] args) throws Exception {
-        LocalDateTime start = LocalDateTime.now();
-        System.out.println(solution(1300));
-        LocalDateTime end = LocalDateTime.now();
-        System.out.println(Duration.between(start, end));
-
-        LocalDateTime start2 = LocalDateTime.now();
-        System.out.println(solution2(13000));
-        LocalDateTime end2 = LocalDateTime.now();
-        System.out.println(Duration.between(start2, end2));
-    }
 }
