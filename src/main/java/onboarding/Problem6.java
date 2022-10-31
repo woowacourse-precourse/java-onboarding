@@ -1,8 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * 기능 목록
@@ -30,6 +28,7 @@ public class Problem6 {
             }
         }
 
+        answer.sort(Comparator.naturalOrder());
         return answer;
     }
 }
