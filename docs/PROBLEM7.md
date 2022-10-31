@@ -1,8 +1,9 @@
 ## 기능 목록
 
-| Date  | Feature       | Method Name                      | Parameter Type | Return Type    | Progress         |
-|-------|---------------|----------------------------------|----------------|----------------|------------------|
-| 10.31 | Friend 클래스 비교 | compareTo()                   | Friend         | int            | committed  |
+| Date  | Feature     | Method Name                      | Parameter Type | Return Type    | Progress         |
+|-------|-------------|----------------------------------|----------------|----------------|------------------|
+| 10.31 | User 클래스 비교 | compareTo()                   | User           | int            | committed  |
+| 10.31 |             |                               |                |                |            |
 
 
 ### TODO
