@@ -27,6 +27,7 @@ public class Problem2 {
         }
         return duplicateIndexList;
     }
+
     private static boolean putDuplicateIndexList(String[] charList) {
         for (int i = 0; i < charList.length - 1; i++) {
             if (charList[i].equals(charList[i + 1]) && !duplicateCheck) {

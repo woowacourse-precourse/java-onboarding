@@ -30,8 +30,8 @@ class Problem1 {
 
     private static Map<String, Integer> putPageMap(int[] pageList) {
         Map<String, Integer> pageMap = pageObject();
-        pageMap.put("plusPage",Arrays.stream(pageList).reduce(0,(total,number)->total+number));
-        pageMap.put("multiPage",Arrays.stream(pageList).reduce(1,(total,number)->total*number));
+        pageMap.put("plusPage", Arrays.stream(pageList).reduce(0, (total, number) -> total + number));
+        pageMap.put("multiPage", Arrays.stream(pageList).reduce(1, (total, number) -> total * number));
         return pageMap;
     }
 
