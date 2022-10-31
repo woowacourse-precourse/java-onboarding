@@ -12,12 +12,9 @@ public class Problem5 {
         List<Integer> answer = new ArrayList<>();
         /* 화폐 배열 Loop */
         for (int c : currency) {
-            /*
-            *1. 가장 큰 화폐 단위로 money를 나눈다. -> 몫: 해당 화폐 개수
-            *2. 위보다 작은 화폐 단위로 1번의 나머지를 다시 나눈다 -> 몫: 해당 화폐 개수
-            */
-            answer.add(money / c);
-            money = money % c;
+            /* // 큰 화폐 단위 순으로 money를 나눈다. */
+            answer.add(money / c);  // 몫 : 해당 화폐 개수
+            money = money % c;  // 나머지 : 잔액
         }
         return answer;
     }
