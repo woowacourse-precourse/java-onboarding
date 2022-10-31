@@ -5,23 +5,23 @@ import java.util.Map;
 
 public class Problem4 {
 
-    private static Map<Character, Character> treeFrogMap;
+    private static Map<Character, Character> treeFrogs;
 
     public static String solution(String word) {
-        treeFrogMap = new HashMap<>();
+        treeFrogs = new HashMap<>();
         createTreeFrogMap();
-        return changeWordWithTreeFrogMap(word);
+        return changeWordWithTreeFrogs(word);
     }
 
-    private static String changeWordWithTreeFrogMap(String word) {
+    private static String changeWordWithTreeFrogs(String word) {
         StringBuilder changeWord = new StringBuilder();
         for (int i = 0; i < word.length(); i++) {
             char current = word.charAt(i);
-            if (treeFrogMap.get(current) == null) {
+            if (treeFrogs.get(current) == null) {
                 changeWord.append(current);
                 continue;
             }
-            changeWord.append(treeFrogMap.get(word.charAt(i)));
+            changeWord.append(treeFrogs.get(word.charAt(i)));
         }
         return changeWord.toString();
     }
@@ -39,9 +39,9 @@ public class Problem4 {
     private static void mappingAlphabetToMap(char start, char end) {
         int idx = 0;
         for (int ascii = start; ascii <= end; ascii++) {
-            char originValue = (char) ascii;
-            char changeValue = (char) (end - idx++);
-            treeFrogMap.put(originValue, changeValue);
+            char origin = (char) ascii;
+            char change = (char) (end - idx++);
+            treeFrogs.put(origin, change);
         }
     }
 
