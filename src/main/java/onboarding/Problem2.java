@@ -2,7 +2,7 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String answer = findDuplicate(cryptogram);
         return answer;
     }
 
@@ -50,7 +50,7 @@ public class Problem2 {
                         break;
                     }
                     cryptogram = deleteDuplicate(cryptogram, startIdx, endIdx-1);
-                    i=0;
+                    i=-1;
                 }
             }
             end = true;
