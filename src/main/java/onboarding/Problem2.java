@@ -26,7 +26,7 @@ public class Problem2 {
             return OUTPUT_IS_BLANK;
         }
 
-        return getCharDequeToString(charDeque);
+        return isOutputBlank(charDeque) ? OUTPUT_IS_BLANK : getCharDequeToString(charDeque);
     }
 
     private static char getNewWord(Deque<Character> charDeque, int index, char digit, char lastRemove) {
