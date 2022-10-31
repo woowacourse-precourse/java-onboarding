@@ -26,15 +26,15 @@ public class Problem6 {
     private static List<String> checkDuplicate() {
         List<String> result = new ArrayList<>();
         String[] names = crews.keySet().toArray(new String[0]);
-        String name;
+        String[] name;
         for (int i = 0; i < names.length; i++) {
-            name = names[i];
-            for (int j = 1; j < name.length(); j++) {
-                String temp = String.valueOf(name.charAt(j - 1) + name.charAt(j));
-                for (String otherName : names) {
-                    if (otherName.contains(temp)) {
-                        result.add(crews.get(name));
-                        result.add(crews.get(otherName));
+            name = names[i].split("");
+            for (int j = 1; j < name.length; j++) {
+                String temp = name[j - 1] + name[j];
+                for (int s = i + 1; s < names.length; s++) {
+                    if (names[s].contains(temp)) {
+                        result.add(crews.get(names[i]));
+                        result.add(crews.get(names[s]));
                     }
                 }
             }
