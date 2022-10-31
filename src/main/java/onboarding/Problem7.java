@@ -77,19 +77,10 @@ public class Problem7 {
 		for (String person : relation.keySet()) {
 			data.put(person, Integer.parseInt(relation.get(person).get(0)));
 		}
-
 		removeAlreadyFriends(data, userFriends);
 		removeZeroScore(data);
 		List<Map.Entry<String, Integer>> recommendedFriendsList = getSortedList(data);
-
-		//추천 리스트 추출
-		List<String> result = new ArrayList<>();
-		for (int i = 0; i < recommendedFriendsList.size(); i++) {
-			if (i == 5)
-				break;
-			result.add(recommendedFriendsList.get(i).getKey());
-		}
-		return result;
+		return extractList(recommendedFriendsList);
 	}
 
 	private static void removeAlreadyFriends(Map<String, Integer> user, List<String> userFriends) {
@@ -100,7 +91,7 @@ public class Problem7 {
 		}
 	}
 
-	private static void removeZeroScore(Map<String, Integer> scoreInfo){
+	private static void removeZeroScore(Map<String, Integer> scoreInfo) {
 		scoreInfo.entrySet().removeIf(
 				entry -> entry.getValue().equals(0));
 	}
@@ -117,5 +108,15 @@ public class Problem7 {
 			return first.getKey().compareTo(second.getKey());
 		});
 		return list;
+	}
+
+	private static List<String> extractList(List<Map.Entry<String, Integer>> list) {
+		List<String> result = new ArrayList<>();
+		for (int i = 0; i < list.size(); i++) {
+			if (i == 5)
+				break;
+			result.add(list.get(i).getKey());
+		}
+		return result;
 	}
 }
