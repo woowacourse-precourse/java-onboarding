@@ -8,14 +8,32 @@ public class Problem7 {
         Map<String, Integer> scoreBoard = new HashMap<>();
         Map<String, ArrayList<Node>> graph = initializeGraph(friends);
         Map<String, Integer> distance = dijkstra(graph, user);
-        
 
         scoreMutual(user,distance,graph,scoreBoard);
-        scoreVisitor(visitors, scoreBoard);
+        scoreVisitor(visitors, scoreBoard, distance);
 
-        List<String> answer = Collections.emptyList();
+        List<String> answer = aggregateBoard(scoreBoard);
         return answer;
     }
+
+    // 결과 집계용 클래스
+    private static class Stat implements Comparable<Stat>{
+        String name;
+        int score;
+
+        public Stat(String name,int score) {
+            this.name = name;
+            this.score = score;
+        }
+        @Override
+        public int compareTo(Stat s){
+            if (this.score != s.score) {
+                return s.score - this.score;
+            }
+            return this.name.compareTo(s.name);
+        }
+    }
+
 
     // 그래프의 노드 클래스 정의
     private static class Node implements Comparable<Node> {
@@ -128,10 +146,35 @@ public class Problem7 {
     }
 
     // 방문자 점수 부여
-    private static void scoreVisitor(List<String> visitors, Map<String, Integer> board) {
+    private static void scoreVisitor(List<String> visitors, Map<String, Integer> board,Map<String, Integer> distance) {
         for (String visitor : visitors) {
+            if(distance.containsKey(visitor) && distance.get(visitor) == 1) continue;
             board.put(visitor, board.containsKey(visitor) ? board.get(visitor) + 1 : 1);
         }
+    }
+
+    // 상위 5명 반환
+    private static List<String> aggregateBoard(Map<String, Integer> board) {
+        PriorityQueue<Stat> scorePQ = new PriorityQueue<>();
+        List<String> answer = new ArrayList<>();
+        int cnt = 0;
+
+        for (String name : board.keySet()) {
+            scorePQ.add(new Stat(name, board.get(name)));
+        }
+
+        Stat topStat;
+
+        while (!scorePQ.isEmpty() && cnt < 5) {
+            topStat = scorePQ.poll();
+            if (topStat.score == 0) {
+                break;
+            }
+            answer.add(topStat.name);
+            cnt ++;
+        }
+
+        return answer;
     }
 
 }
