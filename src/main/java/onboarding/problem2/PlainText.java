@@ -1,44 +1,22 @@
 package onboarding.problem2;
 
-import java.util.Stack;
+import org.mockito.internal.util.StringUtil;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class PlainText {
     public static String decodeCipherText(String ciphertext) {
-        Stack<Character> stack = new Stack<>();
-        for (Character character : ciphertext.toCharArray()) {
-            if (stack.isEmpty()) {
-                stack.add(character);
-                continue;
-            }
-            if (character != stack.lastElement()) {
-                deleteDuplicatedItem(stack);
-            }
-            stack.push(character);
-        }
-        if (stack.isEmpty()) {
-            return "";
-        }
-        deleteDuplicatedItem(stack);
-        return convertCharacterStackToString(stack);
-    }
-
-    private static void deleteDuplicatedItem(Stack<Character> stack) {
-        Character item = stack.pop();
+        String pattern = "a{2,}|b{2,}|c{2,}|d{2,}|e{2,}|f{2,}|g{2,}|h{2,}|i{2,}|j{2,}|k{2,}|l{2,}|n{2,}|m{2,}|o{2,}|p{2,}|q{2,}|r{2,}|s{2,}|t{2,}|u{2,}|v{2,}|w{2,}|x{2,}|y{2,}|z{2,}";
+        String answer ="";
         boolean flag = true;
-        while (!stack.isEmpty() && item == stack.lastElement()) {
-            stack.pop();
-            flag = false;
-        }
-        if (flag) {
-            stack.push(item);
-        }
-    }
-
-    private static String convertCharacterStackToString(Stack<Character> stack) {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (Character character : stack) {
-            stringBuilder.append(character);
-        }
-        return stringBuilder.toString();
+        do {
+            answer = ciphertext.replaceAll(pattern, "");
+            if(answer.length() == ciphertext.length()){
+                flag = false;
+            }
+            ciphertext = answer;
+        }while(flag);
+        return answer;
     }
 }
