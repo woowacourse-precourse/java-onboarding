@@ -4,10 +4,11 @@ import java.util.List;
 
 public class Problem7ValidateChecker {
 	private final static int FRIEND_RELATION_SIZE = 2;
+	private final static String LOWER_CASE = "^[a-z]*$";
 	public static void areArgumentsValidate(String user, List<List<String>> friends, List<String> visitors){
 		isUserNotNull(user);
 		isFriendsNotNull(friends);
-		isVisitorNotNull(visitors);
+		isVisitorsNotNull(visitors);
 		isFriendRelationNotNull(friends);
 		isIdNotNull(friends);
 		isUserInRange(user);
@@ -15,6 +16,19 @@ public class Problem7ValidateChecker {
 		isFriendRelationInRange(friends);
 		isIdInRange(friends);
 		isVisitorsInRange(visitors);
+		isIdContainOnlyLowerCase(user,friends,visitors);
+	}
+
+	private static void isIdContainOnlyLowerCase(String user, List<List<String>> friends, List<String> visitors) {
+		if(!user.matches(LOWER_CASE))
+			throw new IllegalArgumentException("아이디에 소문자 외의 문자가 포함되어 있습니다.");
+		for(String visitor : visitors)
+			if (!visitor.matches(LOWER_CASE))
+				throw new IllegalArgumentException("아이디에 소문자 외의 문자가 포함되어 있습니다.");
+		for(List<String> friendRelation : friends){
+			if(!friendRelation.get(0).matches(LOWER_CASE) || !friendRelation.get(1).matches(LOWER_CASE))
+				throw new IllegalArgumentException("아이디에 소문자 외의 문자가 포함되어 있습니다.");
+		}
 	}
 
 	private static void isVisitorsInRange(List<String> visitors) {
@@ -57,7 +71,7 @@ public class Problem7ValidateChecker {
 				throw new IllegalArgumentException("friends의 ID가 null입니다.");
 	}
 
-	private static void isVisitorNotNull(List<String> visitors) {
+	private static void isVisitorsNotNull(List<String> visitors) {
 		if(visitors == null)
 			throw new IllegalArgumentException("visitor가 null입니다.");
 	}
