@@ -12,6 +12,7 @@ class UserInfo{
     private static final String OUT_OF_SIZE = "길이가 0 이상 10,000 이하인 리스트,배열을 입력해주세요";
     private static final int MIMIMUM_SIZE_VISITOR = 0;
     private static final int MAXIMUM_SIZE_VISITOR = 10000;
+    private static final String NOT_LOWERCASE_MESSAGE = "영어 소문자만 입력해주세요";
 
     void validateRange(String id){
         if(id.length() < MINIMUM_LENGTH_ID || id.length() > MAXIMUM_LENGTH_ID)
@@ -20,6 +21,11 @@ class UserInfo{
     void validateSizeOfFriends(List<String> visitors){
         if(visitors.size() < MIMIMUM_SIZE_VISITOR || visitors.size() > MAXIMUM_SIZE_VISITOR)
             throw new IllegalArgumentException(OUT_OF_SIZE);
+    }
+    void validateUnderCaseId(String id){
+        if(!id.matches("^[a-z]*$")){
+            throw new IllegalArgumentException(NOT_LOWERCASE_MESSAGE);
+        }
     }
 }
 class Point{
