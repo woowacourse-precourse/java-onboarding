@@ -21,3 +21,7 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능 목록
+1. Pair 클래스, list<Pair>에 Pair를 add하는 함수 구현
+2. 단어별로 mapping 시킨 후 비교하여 중복 있는지 비교 함수 구현
