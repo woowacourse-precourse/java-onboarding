@@ -1,11 +1,12 @@
 package onboarding;
 
-import java.util.Collections;
+import onboarding.domain.RecommendBot;
+
 import java.util.List;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        RecommendBot recommendBot = new RecommendBot(user, friends, visitors);
+        return recommendBot.getRecommendUser();
     }
 }

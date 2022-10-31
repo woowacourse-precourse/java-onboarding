@@ -1,8 +1,10 @@
 package onboarding;
 
+import onboarding.domain.MessageConvertor;
+
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        MessageConvertor messageConvertor = new MessageConvertor(word);
+        return messageConvertor.getConvertResult();
     }
 }
