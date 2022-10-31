@@ -50,16 +50,26 @@ public class FriendRecommender {
         for (List<String> relationship : friends) {
             String idA = relationship.get(0);
             String idB = relationship.get(1);
-            if (relationships.containsKey(idA)) {
-                relationships.get(idA).add(idB);
-            } else {
-                relationships.put(idA, new ArrayList<>(List.of(idB)));
-            }
-            if (relationships.containsKey(idB)) {
-                relationships.get(idB).add(idA);
-            } else {
-                relationships.put(idB, new ArrayList<>(List.of(idA)));
-            }
+            addRelationship(relationships, idA, idB);
+        }
+    }
+
+    /**
+     * Add single relationship
+     * @param relationships relationships created by friends
+     * @param idA friend of idB
+     * @param idB friend of idA
+     */
+    private static void addRelationship(Map<String, List<String>> relationships, String idA, String idB) {
+        if (relationships.containsKey(idA)) {
+            relationships.get(idA).add(idB);
+        } else {
+            relationships.put(idA, new ArrayList<>(List.of(idB)));
+        }
+        if (relationships.containsKey(idB)) {
+            relationships.get(idB).add(idA);
+        } else {
+            relationships.put(idB, new ArrayList<>(List.of(idA)));
         }
     }
 }
