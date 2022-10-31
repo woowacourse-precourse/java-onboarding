@@ -5,10 +5,8 @@ import java.util.regex.Pattern;
 
 public class Problem7 {
     private final static int MAX_RECOMMEND_FRIENDS = 5;
-
     private static Map<String, Integer> preFriends;
     private static List<String> realFriends;
-
     private static String me;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
