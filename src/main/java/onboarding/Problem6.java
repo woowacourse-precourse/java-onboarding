@@ -38,7 +38,7 @@ public class Problem6 {
 
     // "단어가 사용된 횟수를 저장"하기 위한 hashmap 을 만들기위한 메소드
     private static void inputData(List<List<String>> forms) {
-        for (List<String> formList : forms) {
+        for (List<String> formList : forms) { // forms 의 크기만큼 반복
             splitWord(formList.get(1), new HashSet<>());
         }
     }
@@ -46,13 +46,14 @@ public class Problem6 {
     // 단어를 분리하는 메소드
     private static void splitWord(String str, Set<String> set) {
         for (int j = 0; j < str.length() - 1; j++) {
-            String sub = str.substring(j, j + 2);
+            String sub = str.substring(j, j + 2); // 길이가 2가 되도록 단어를 분리함
             addWordToMap(set, sub);
         }
     }
 
     // 분리된 단어가 중복되지 않도록 단어의 사용된 횟수를 HashMap 에 저장하는 메소드
     private static void addWordToMap(Set<String> set, String sub) {
+        // ex) 제이제이 -> 제이 이제 제이 || 예시처럼 한 단어에서 같은 단어가 나올 수 있기 때문에, 중복을 방지하기 위해 set 사용
         if (!set.contains(sub)) {
             set.add(sub);
             map.put(sub, map.getOrDefault(sub, 0) + 1);
@@ -70,6 +71,7 @@ public class Problem6 {
     private static void checkContainWord(List<List<String>> forms, int idx) {
         String str = forms.get(idx).get(1);
         for (String key : map.keySet()) {
+            // 단어를 2번이상 사용했으며 문자열이 그 단어를 포함하면 그 단어는 유효하지 않은 단어로 판단해야함.
             if (map.get(key) >= 2 && str.contains(key)) {
                 isContainWord[idx] = true;
                 break;
@@ -80,6 +82,7 @@ public class Problem6 {
     // 정답을 만들기위한 메소드
     private static void createAnswer(List<List<String>> forms, List<String> answer) {
         for (int i = 0; i < isContainWord.length; i++) {
+            // 유효하지 않은 단어일 경우 answer 에 값을 추가한다.
             if (isContainWord[i]) {
                 answer.add(forms.get(i).get(0));
             }
