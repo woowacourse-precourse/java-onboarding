@@ -59,11 +59,10 @@ class Problem1 {
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        int answer = -1;
         int pobiMaxNum = getMaxPageNum(pobi);
         int cronMaxNum = getMaxPageNum(crong);
-        if (pobiMaxNum == -1 || cronMaxNum == -1 ) answer=-1;
-        else
+        if (pobiMaxNum != -1 && cronMaxNum != -1 )
         {
             if (pobiMaxNum == cronMaxNum) answer = 0;
             if (pobiMaxNum > cronMaxNum) answer = 1;
