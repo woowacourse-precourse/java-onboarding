@@ -7,14 +7,30 @@ public class Problem7 {
     // 1. 친구 목록 만들기
     // 2. 친구의 친구 목록만들기 -> 추천친구에 무조건추가 +10
     // 3. 방문자 확인하기 -> 친구만아니면 추천친구에 추가하기 +1
+    // 4. 정렬하기
 
 
     // 추천 친구목록에는 친구의친구만 추가되어있음
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        Map<String, Integer> list = visitorCalculate(user, friends, visitors);
+        List<String> answer = new ArrayList<>(list.keySet());
+        answer.sort(new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                return list.get(o2).compareTo(list.get(o1));
+            }
+        });
 
+        if(answer.size()>5) {
+            for (int i = answer.size() - 1; i > 4; i--) {
+                answer.remove(i);
+            }
         }
+
+        return answer;
+    }
+
+
 
     public static Set friendsList(String user, List<List<String>> friends){
         // 친구목록만들기
@@ -57,4 +73,3 @@ public class Problem7 {
 
 
 
-}
