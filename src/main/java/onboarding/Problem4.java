@@ -10,6 +10,14 @@ public class Problem4 {
      */
     public static String solution(String word) {
         String answer = "";
+        StringBuilder sb = new StringBuilder();
+
+        // 문자열을 문자 배열로 만들기
+        for(char c : word.toCharArray()) {
+            
+        }
+
+        answer = sb.toString();
         return answer;
     }
 }
