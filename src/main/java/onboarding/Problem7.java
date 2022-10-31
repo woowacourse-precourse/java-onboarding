@@ -13,6 +13,7 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
         Set<String> alreadyFriends = getAlreadyFriends(user, friends);
         Map<String, Integer> recomFriends = getRecomFriends(user, alreadyFriends, friends);
+        setVisitPoint(recomFriends, alreadyFriends, visitors);
 
         return answer;
     }
@@ -69,6 +70,23 @@ public class Problem7 {
 
     private static boolean isNotEqual(String user, String recomFriend){
         return !user.equals(recomFriend);
+    }
+
+    private static void setVisitPoint(Map<String, Integer> recomFriends, Set<String> alreadyFriends, List<String> visitors){
+        for (String visitor  : visitors) {
+            addVisitPoint(recomFriends, alreadyFriends, visitor);
+        }
+    }
+
+    private static void addVisitPoint(Map<String, Integer> recomFriends, Set<String> alreadyFriends, String visitor) {
+        if (!alreadyFriends.contains(visitor)){
+            if (recomFriends.containsKey(visitor)){
+                Integer curPoint = recomFriends.get(visitor);
+                recomFriends.replace(visitor, curPoint + 1);
+            } else{
+                recomFriends.put(visitor, 1);
+            }
+        }
     }
 
     private static void checkValidation(String user, List<List<String>> friends, List<String> visitors) {
