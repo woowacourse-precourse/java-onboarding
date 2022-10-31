@@ -7,12 +7,19 @@ public class Problem4 {
         int alphaInt;
 
         alphaInt = isLower ? MAX_LOWER - (int)alpha : MAX_UPPER - (int)alpha;
-        return isLower ? Character.toUpperCase((char)alphaInt) : Character.toLowerCase((char)alphaInt);
+        return (char)alphaInt;
     }
 
     public static String solution(String word) {
         StringBuilder answer = new StringBuilder();
-
+        for (char alpha : word.toCharArray()) {
+            if (Character.isUpperCase(alpha))
+                answer.append(convertAlpha(alpha, false));
+            else if (Character.isLowerCase(alpha))
+                answer.append(convertAlpha(alpha, true));
+            else
+                answer.append(alpha);
+        }
 
         return answer.toString();
     }
