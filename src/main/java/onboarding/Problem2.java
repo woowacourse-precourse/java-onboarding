@@ -1,5 +1,7 @@
 package onboarding;
 
+import java.util.Stack;
+
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
@@ -13,5 +15,20 @@ public class Problem2 {
             }
         }
         return true;
+    }
+    public static Stack<Character> removeDuplicate(String cryptogram){
+        Stack<Character> stack = new Stack<>();
+
+        stack.push(cryptogram.charAt(0));
+        for(int i = 1; i < cryptogram.length(); i++){
+            if(cryptogram.charAt(i-1) != cryptogram.charAt(i)){
+                stack.push(cryptogram.charAt(i));
+            }else{
+                if(stack.peek() == cryptogram.charAt(i)){
+                    stack.pop();
+                }
+            }
+        }
+        return stack;
     }
 }
