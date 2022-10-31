@@ -24,16 +24,23 @@ public class Problem6 {
         for (int j = 0; j < nickname.length() - 1; j++) {
             String tmp = String.valueOf(nickname.charAt(j)) + (nickname.charAt(j + 1));
             for (int q = 0; q < forms.size(); q++) {
-                if (i == q) continue;
-
                 List<String> targetList = forms.get(q);
-                String targetNickname = targetList.get(1);
-                String targetEmail = targetList.get(0);
+                String targetEmail = getContainTargetEmail(tmp, targetList);
 
-                if (targetNickname.contains(tmp)) containsSet.add(targetEmail);
+                if (i == q) continue;
+                if (targetEmail == null) continue;
+                containsSet.add(targetEmail);
             }
         }
 
         return containsSet;
+    }
+
+    private static String getContainTargetEmail(String tmp, List<String> targetList) {
+        String targetNickname = targetList.get(1);
+        String targetEmail = targetList.get(0);
+
+        if (targetNickname.contains(tmp)) return targetEmail;
+        return null;
     }
 }
