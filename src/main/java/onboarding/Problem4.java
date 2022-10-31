@@ -9,6 +9,20 @@ public class Problem4 {
         return answer;
     }
 
+    public static char finalChangeCharacter(char c){
+        if(c>='A' && c<='Z'){
+            return changeCharacter(c);
+        }
+        else if(c>='a' && c<='z'){
+            c = changeUpperCase(c);
+            char tmp = changeCharacter(c);
+            return changeLowerCase(tmp);
+        }
+        else{
+            return c;
+        }
+    }
+
     public static char changeCharacter(char c) {
         return (char) (155 - c);
     }
