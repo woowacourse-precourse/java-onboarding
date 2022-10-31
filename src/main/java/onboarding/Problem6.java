@@ -28,11 +28,12 @@ public class Problem6 {
     }
 
     private static void setEmails(List<List<String>> forms, List<String> emails, int prev) {
-        for (int next = prev + 1; next < forms.size(); next++) {
-            String nickname = forms.get(prev).get(NICKNAME);
-            String compareNickname = forms.get(next).get(NICKNAME);
+        String nickname = forms.get(prev).get(NICKNAME);
+        List<String> SubNicknames = getSubNicknames(nickname);
 
-            if (isDeduplication(nickname, compareNickname)) {
+        for (int next = prev + 1; next < forms.size(); next++) {
+            String compareNickname = forms.get(next).get(NICKNAME);
+            if (isDeduplication(SubNicknames, compareNickname)) {
                 emails.add(forms.get(prev).get(EMAIL));
                 emails.add(forms.get(next).get(EMAIL));
                 break;
@@ -40,11 +41,11 @@ public class Problem6 {
         }
     }
 
-    private static boolean isDeduplication(String nickname, String compareNickname) {
-        List<String> subStrings = getSubNicknames(nickname);
-
-        for (String subString : subStrings) {
-            return compareNickname.contains(subString);
+    private static boolean isDeduplication(List<String> SubNicknames, String compareNickname) {
+        for (String SubNickname : SubNicknames) {
+            if (compareNickname.contains(SubNickname)) {
+                return true;
+            }
         }
 
         return false;
