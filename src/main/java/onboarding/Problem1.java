@@ -1,6 +1,8 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -50,5 +52,32 @@ class PageNumberGame {
         }
 
         return mul;
+    }
+
+    public static int getScore(List<Integer> pageList) {
+        /**
+         * 가장 큰 점수를 반환하는 메소드
+         *
+         * @param 펼친 페이지가 들어있는 리스트
+         * @return 얻을 수 있는 최대의 점수를 반환
+         * @throws pageList의 길이가 2가 아니거나, 페이지 번호가 순서대로 들어오지 않을 경우
+         *         즉, ({@code pageList.size() != 2 || lst.get(1) - lst.get(0) != 1})
+         */
+
+        int maxScore;
+        int leftPage = pageList.get(0);
+        int rightPage = pageList.get(1);
+
+        List<Integer> scoreList = new ArrayList<>();
+
+        scoreList.add(getSum(leftPage));
+        scoreList.add(getMultiply(leftPage));
+
+        scoreList.add(getSum(rightPage));
+        scoreList.add(getMultiply(rightPage));
+
+        maxScore = Collections.max(scoreList);
+
+        return maxScore;
     }
 }
