@@ -7,7 +7,6 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         Stack<Character> stack = checkDuplication(cryptogram);
         stackToString(stack);
-
         return sb.toString();
     }
 
@@ -25,11 +24,11 @@ public class Problem2 {
 
         for (int i = 1; i < cryptogram.length(); i++) {
             char after = cryptogram.charAt(i);
+            if(!stack.isEmpty()) {
+                before = stack.peek();
+            }
             if (before == after) {
                 stack.pop();
-                if(!stack.isEmpty()) {
-                    before = stack.peek();
-                }
             } else {
                 stack.push(cryptogram.charAt(i));
                 before = cryptogram.charAt(i);
