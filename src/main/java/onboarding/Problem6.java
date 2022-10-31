@@ -1,49 +1,43 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Problem6 {
+    private static int _email = 0;
+    private static int _nick_name = 1;
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
-        List<Integer> seletedFormsIndex = new ArrayList<>();
+        List<Integer> selected = new ArrayList<>();
 
-        for (int i = 0; i < forms.size(); ++i) {
-            for (int j = 0; j < forms.size(); ++j) {
-                if (i != j && isOverlapNickname(forms.get(i).get(1), forms.get(j).get(1))) {
-                    if (!seletedFormsIndex.contains(i)) {
-                        answer.add(forms.get(i).get(0));
-                        seletedFormsIndex.add(i);
+        for (int target = 0; target < forms.size(); ++target) {
+            for (int i = 0; i < forms.size(); ++i) {
+                if (target != i
+                        && isOverlapNickname(forms.get(target).get(_nick_name), forms.get(i).get(_nick_name))) {
+                    if (!selected.contains(target)) {
+                        answer.add(forms.get(target).get(_email));
+                        selected.add(target);
                     }
-                    if (!seletedFormsIndex.contains(i)) {
-                        answer.add(forms.get(j).get(0));
-                        seletedFormsIndex.add(j);
+                    if (!selected.contains(i)) {
+                        answer.add(forms.get(i).get(_email));
+                        selected.add(i);
                     }
                 }
             }
         }
+        answer = new ArrayList<>(new HashSet<>(answer));
         Collections.sort(answer);
         return answer;
     }
 
     private static boolean isOverlapNickname(String s1, String s2) {
-        int i = 0;
-        int j;
-
-        while (i < s1.length()) {
-            j = 0;
-            while (j < s2.length()) {
-                if (s1.charAt(i) == s2.charAt(j)) {
-                    if (i + 1 < s1.length() && j + 1 < s2.length()) {
-                        if (s1.charAt(i + 1) == s2.charAt(j + 1)) {
-                            return true;
-                        }
-                    }
+        for (int i = 0; i < s1.length(); ++i) {
+            for (int j = 0; j < s2.length(); ++j) {
+                if (s1.charAt(i) == s2.charAt(j)
+                        && i + 1 < s1.length() && j + 1 < s2.length()
+                        && s1.charAt(i + 1) == s2.charAt(j + 1)) {
+                    return true;
                 }
-                ++j;
             }
-            ++i;
         }
         return false;
     }
