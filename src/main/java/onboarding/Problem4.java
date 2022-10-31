@@ -13,7 +13,6 @@ public class Problem4 {
         for (int len = word.length(),i=0;i<len;i++){
             char c = word.charAt(i);
             c = translator(c);
-            c = UpperLowercase(c);
             sb.append(c);
         }
         return sb.toString();
@@ -31,13 +30,5 @@ public class Problem4 {
 
         return cha;
     }
-    public static char UpperLowercase(char c){
-        if (Character.isUpperCase(c)){
-            c+=32;
-        }
-        else if(Character.isLowerCase(c)){
-            c-=32;
-        }
-        return c;
-    }
+
 }
