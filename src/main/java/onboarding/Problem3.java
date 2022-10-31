@@ -13,6 +13,7 @@ public class Problem3 {
 
 class Clap{
     private int number;
+    private Number numberObject;
     private int sumClap;
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 10000;
@@ -23,6 +24,7 @@ class Clap{
     public Clap(int number){
         validateNumberRange(number);
         this.number=number;
+        numberObject=new Number();
     }
 
     private void validateNumberRange(int number) {
@@ -36,7 +38,6 @@ class Clap{
 
     public int sumClap(){
         for(int i=START_NUMBER;i<=number;i++){
-            Number numberObject=new Number();
             sumClap+=numberObject.countClap(i);
         }
         return sumClap;
@@ -45,9 +46,8 @@ class Clap{
 
 class Number{
     private static final List<Integer> CLAP_NUMBER=List.of(3,6,9);
-    private int clapCount;
-
     public int countClap(int specificNunber){
+        int clapCount=0;
         while(specificNunber!=0){
             int remainder=specificNunber%10;
             if(CLAP_NUMBER.contains(remainder)){
