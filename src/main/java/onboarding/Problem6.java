@@ -8,7 +8,7 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         if (CheckInput(forms)) {
             Map<String, Integer> nickHash = new HashMap<>();
-//            return RunGame(forms,nickHash);
+            return RunGame(forms,nickHash);
         }throw new IllegalArgumentException("잘못된 입력값");
     }
 
@@ -69,7 +69,18 @@ public class Problem6 {
         }return false;
     }
 
-    /* 기능 4 : 중복된 사용자의 이메일 오름차순 정렬 */
+    /* 기능 4 : 중복된 사용자의 이메일 출력 */
+    private static List<String> RunGame(List<List<String>> forms, Map<String, Integer> nickHash){
+        MakeNickHash(forms, nickHash);
+        HashSet<String> hashset = new HashSet<String>();
+        for(int i =0; i<forms.size(); i++){
+            if(CheckDuplicates(forms.get(i),nickHash)==true) hashset.add(forms.get(i).get(0));
+        }
+        List<String> answer = new ArrayList<String>(hashset);
+        return SortEmail(answer);
+    }
+
+    /* 기능 5 : 중복된 사용자의 이메일 오름차순 정렬 */
     private static List<String> SortEmail(List<String> answer){
         answer.sort(Comparator.naturalOrder());
         return answer;
