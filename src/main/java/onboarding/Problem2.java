@@ -9,6 +9,11 @@ public class Problem2 {
         return answer;
     }
 
+    private static Boolean isThereMatch(String cryptogram) {
+        Boolean result = cryptogram.matches("(.)\1+");
+        return result;
+    }
+
     private static String replaceMethod(String cryptogram) {
         String result = cryptogram.replaceAll("(.)\1+", "");
         return result;
