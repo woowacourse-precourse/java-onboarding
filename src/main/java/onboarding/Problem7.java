@@ -4,59 +4,56 @@ import java.util.Collections;
 import java.util.*;
 
 public class Problem7 {
-    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        HashMap<String, Set<String>> hm = new HashMap<>();
-        HashMap<String, Integer> point = new HashMap<>();
+    static HashMap<String, Set<String>> friendGraph = new HashMap<>();
 
-
-
-        for(int i = 0; i < friends.size(); i++)
-        {
-            String f1 = friends.get(i).get(0);
-            String f2 = friends.get(i).get(1);
-
-            if(!hm.containsKey(f1)) hm.put(f1, new HashSet<>());
-            if(!hm.containsKey(f2)) hm.put(f2, new HashSet<>());
-
-            hm.get(f1).add(f2);
-            hm.get(f2).add(f1);
-        }
-
-        for(var person1: hm.keySet())
-        {
-            if(person1.equals(user)) continue;
-            if(hm.get(user).contains(person1)) continue;
-
-            int count = 0;
-            for(var person2: hm.get(person1)) if(hm.get(user).contains(person2)) count++;
-
-            point.put(person1, count*10);
-        }
-
-        for(var person: visitors)
-        {
-            if(hm.get(user).contains(person)) continue;
-            if(!point.containsKey(person)) { point.put(person, 1); continue; }
-            point.replace(person, point.get(person) + 1);
-        }
-
-        List<String> answer = new ArrayList<>(point.keySet());
-        Collections.sort(answer, (o1, o2) -> {
-            if(point.get(o2) > point.get(o1)) return 1;
-            if(point.get(o2) == point.get(o1)) return o1.compareTo(o2);
-            return -1; });
-
-        List<String> answer2 = new ArrayList<>();
+    private static int countSharedFriend(String person, String user) {
         int count = 0;
-        for(int i = 0; i < answer.size(); i++)
-        {
-            if(count == 5) break;
-            if(point.get(answer.get(i)) == 0) break;
+        for (String person2 : friendGraph.get(person))
+            if (friendGraph.get(user).contains(person2))
+                count++;
 
-            answer2.add(answer.get(i));
-            count++;
+        return count;
+
+    }
+
+    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+
+        HashMap<String, Integer> point = new HashMap<>();
+        List<String> sortedFriend;
+
+
+        for (List<String> friend : friends) {
+            String f1 = friend.get(0);
+            String f2 = friend.get(1);
+
+            if (!friendGraph.containsKey(f1)) friendGraph.put(f1, new HashSet<>());
+            if (!friendGraph.containsKey(f2)) friendGraph.put(f2, new HashSet<>());
+
+            friendGraph.get(f1).add(f2);
+            friendGraph.get(f2).add(f1);
         }
 
-        return answer2;
+        for (String person : friendGraph.keySet()) {
+            if (person.equals(user)) continue; //자기 자신이라면 건너뜀
+            if (friendGraph.get(user).contains(person)) continue; // 이미 친구라면 건너 뜀
+
+            int count = countSharedFriend(person, user);
+            point.put(person, count * 10);
+        }
+
+        for (String person : visitors) {
+            if (friendGraph.get(user).contains(person)) continue; //이미 친구라면 건너 뜀
+            point.put(person, point.getOrDefault(person, 0) + 1);
+        }
+
+        sortedFriend = new ArrayList<>(point.keySet());
+        sortedFriend.sort((o1, o2) -> {
+            if (point.get(o2) > point.get(o1)) return 1;
+            if (Objects.equals(point.get(o1), point.get(o2))) return o1.compareTo(o2);
+            return -1;
+        });
+
+        if (sortedFriend.size() <= 5) return sortedFriend;
+        return sortedFriend.subList(0, 4);
     }
 }

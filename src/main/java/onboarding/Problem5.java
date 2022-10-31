@@ -8,13 +8,12 @@ public class Problem5 {
     public static List<Integer> solution(int money) {
         List<Integer> answer = new ArrayList<>();
 
-        int [] currency = new int [] {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
+        int[] currency = new int[]{50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
 
-        for(int i = 0; i< currency.length; i++)
-        {
-            int count = money / currency[i];
+        for (int j : currency) {
+            int count = money / j;
             answer.add(count);
-            money -= count * currency[i];
+            money -= count * j;
         }
 
         return answer;
