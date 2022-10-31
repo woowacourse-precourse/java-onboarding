@@ -17,9 +17,7 @@ public class Problem7 {
 
             User user = new User(userName);
 
-            user.calculateRecommendationScoreWith(visitors);
-
-            return user.calculateRecommendationScoreWithCommonFriends();
+            return user.getMostRecommendedAsFriend(visitors);
         } catch (NullPointerException e) {
             System.out.println(e.getMessage());
             return null;

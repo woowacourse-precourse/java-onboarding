@@ -22,7 +22,12 @@ public class User {
                 .forEach(person -> recommendationScores.put(person, 0));
     }
 
-    public void calculateRecommendationScoreWith(List<String> visitors) {
+    public List<String> getMostRecommendedAsFriend(List<String> visitors) {
+        calculateRecommendationScoreWith(visitors);
+        return calculateRecommendationScoreWithCommonFriends();
+    }
+
+    private void calculateRecommendationScoreWith(List<String> visitors) {
         visitors.stream()
                 .filter(visitor -> recommendationScores.containsKey(visitor))
                 .forEach(stranger ->
@@ -30,18 +35,10 @@ public class User {
     }
 
     public List<String> calculateRecommendationScoreWithCommonFriends() {
-        var friends = new HashSet<>(FriendConnectionRepository.getFriends(name));
+        var friends = FriendConnectionRepository.getFriends(name);
 
         if (friends.size() == 0) {
-            List<Map.Entry<String, Integer>> list = new ArrayList<>(recommendationScores.entrySet());
-            Collections.sort(list, (e1, e2) -> {
-                if (e2.getValue() != e1.getValue()) return e2.getValue() - e1.getValue();
-                return e1.getKey().compareTo(e2.getKey());
-            });
-            return list.stream()
-                    .map(e -> e.getKey())
-                    .limit(5)
-                    .collect(Collectors.toList());
+            // ,,
         }
 
         for (var friend : friends) {
@@ -64,11 +61,7 @@ public class User {
         // map을 entryset으로 변환한다.
         // 그걸 list로 변환한다.
         // list를 정렬한다.
-        List<Map.Entry<String, Integer>> list = new ArrayList<>(recommendationScores.entrySet());
-        Collections.sort(list, (e1, e2) -> {
-            if (e2.getValue() != e1.getValue()) return e2.getValue() - e1.getValue();
-            return e1.getKey().compareTo(e2.getKey());
-        });
+        List<Map.Entry<String, Integer>> list = sortEntries();
 
         System.out.println(list);
 
@@ -76,6 +69,14 @@ public class User {
                 .map(e -> e.getKey())
                 .limit(5)
                 .collect(Collectors.toList());
+    }
 
+    private List<Map.Entry<String, Integer>> sortEntries() {
+        List<Map.Entry<String, Integer>> list = new ArrayList<>(recommendationScores.entrySet());
+        Collections.sort(list, (e1, e2) -> {
+            if (e2.getValue() != e1.getValue()) return e2.getValue() - e1.getValue();
+            return e1.getKey().compareTo(e2.getKey());
+        });
+        return list;
     }
 }

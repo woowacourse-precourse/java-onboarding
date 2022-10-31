@@ -8,7 +8,6 @@ public class FriendConnectionRepository {
     private FriendConnectionRepository() {}
 
     public static void create(List<List<String>> friends) {
-
         friendConnection.clear();
 
         preprocessFriendConnection(friends);
@@ -16,8 +15,8 @@ public class FriendConnectionRepository {
         configureFriendConnection(friends);
     }
 
-    private static void preprocessFriendConnection(List<List<String>> friends) {
-        friends.stream()
+    private static void preprocessFriendConnection(List<List<String>> friendsList) {
+        friendsList.stream()
                 .flatMap(Collection::stream)
                 .distinct()
                 .filter(user -> !friendConnection.containsKey(user))
@@ -34,6 +33,12 @@ public class FriendConnectionRepository {
                 });
     }
 
+    public static void addUsers(List<String> users) {
+        users.stream()
+                .filter(user -> !friendConnection.containsKey(user))
+                .forEach(user -> friendConnection.put(user, new HashSet<>()));
+    }
+
     public static Set<String> getFriends(String user) {
         return friendConnection.get(user);
     }
@@ -41,12 +46,4 @@ public class FriendConnectionRepository {
     public static Set<String> getUsers() {
         return friendConnection.keySet();
     }
-
-    public static void addUsers(List<String> users) {
-        users.stream()
-                .filter(user -> !friendConnection.containsKey(user))
-                .forEach(user -> friendConnection.put(user, new HashSet<>()));
-    }
-
-
 }
