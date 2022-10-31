@@ -26,4 +26,31 @@ public class Problem7 {
         return;
     }
 
+    private static void getFriendsCalc(String user) {
+        Set<String> userFriends = friendsMap.get(user);
+        Set<String> chainFriends = new HashSet<String>();
+        for (String userFriend : userFriends) {
+            chainFriends = friendsMap.get(userFriend);
+            for (String chainFriend : chainFriends) {
+                if (points.containsKey(chainFriend)) points.put(chainFriend, points.get(chainFriend).intValue() + 10);
+            }
+        }
+        return;
+    }
+
+    private static void getVisitorsCalc(List<String> visitors, String user) {
+        for (String visitor : visitors) {
+            if (friendsMap.get(user).contains(visitor)) continue;
+            if (!points.containsKey(visitor)) points.put(visitor, 0);
+            points.put(visitor, points.get(visitor).intValue() + 1);
+        }
+        return;
+    }
+
+    private static void delFriendsFromPoints(String user) {
+        for (String friend : friendsMap.get(user)) {
+            points.remove(friend);
+        }
+        return;
+    }
 }
