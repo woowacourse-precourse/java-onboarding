@@ -2,12 +2,12 @@ package problem1;
 
 import java.util.List;
 
-public class Validation {
+public class Validator {
     private final List<Integer> pages;
     private final List<Integer> START_PAGE = List.of(1, 2);
     private final List<Integer> END_PAGE = List.of(399, 400);
 
-    Validation(List<Integer> pages) {
+    Validator(List<Integer> pages) {
         this.pages = pages;
     }
 

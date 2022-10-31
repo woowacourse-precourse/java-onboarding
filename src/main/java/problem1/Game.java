@@ -13,7 +13,7 @@ public class Game {
     }
 
     public int run() {
-        if (!inputValidate()) {
+        if (!inputValidator()) {
             throw new IllegalArgumentException("올바르지 않은 입력값입니다.");
         }
         int pobiScore = getScore(pobi);
@@ -22,13 +22,13 @@ public class Game {
         return winner.getResult();
     }
 
-    private boolean inputValidate() {
+    private boolean inputValidator() {
         return validate(pobi) && validate(crong);
     }
 
     private boolean validate(List<Integer> pages) {
-        Validation inputValidation = new Validation(pages);
-        return inputValidation.validate();
+        Validator validator = new Validator(pages);
+        return validator.validate();
     }
 
     private int getScore(List<Integer> pages) {
