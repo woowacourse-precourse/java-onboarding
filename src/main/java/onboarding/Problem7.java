@@ -9,29 +9,31 @@ public class Problem7 {
         Map<String, ArrayList<String>> friendList = new HashMap<>(); // 각 이용자 별 친구 목록
         Map<String, Integer> scores = new HashMap<>();  // 추천 점수 계산 (user 의 친구는 제외함)
 
-        for(List<String> s : friends) {
-            String f1 = s.get(0);
-            String f2 = s.get(1);
+        for(List<String> f : friends) {
+            String user1 = f.get(0);
+            String user2 = f.get(1);
 
             // 새로운 이름일 경우
-            if(!friendList.containsKey(f1)) {
-                friendList.put(f1, new ArrayList<>());
-                friendList.get(f1).add(f2);
+            if(!friendList.containsKey(user1)) {
+                friendList.put(user1, new ArrayList<>());
+                friendList.get(user1).add(user2);
             }
-            else {
-                friendList.get(f1).add(f2);
+            if(!friendList.containsKey(user2)) {
+                friendList.put(user2, new ArrayList<>());
+                friendList.get(user2).add(user1);
             }
-            // 새로운 이름일 경우
-            if(!friendList.containsKey(f2)) {
-                friendList.put(f2, new ArrayList<>());
-                friendList.get(f2).add(f1);
+
+            // 1번 이상 나온 이름일 경우
+            if(friendList.containsKey(user1)) {
+                friendList.get(user1).add(user2);
             }
-            else {
-                friendList.get(f2).add(f1);
+            if(friendList.containsKey(user2)) {
+                friendList.get(user2).add(user1);
             }
-            if(f1.equals(user) || f2.equals(user)) continue;
-            if(!scores.containsKey(f1)) scores.put(f1, 0);
-            if(!scores.containsKey(f2)) scores.put(f2, 0);
+
+            if(user1.equals(user) || user2.equals(user)) continue;
+            if(!scores.containsKey(user1)) scores.put(user1, 0);
+            if(!scores.containsKey(user2)) scores.put(user2, 0);
         }
 
         // user 가 아는 친구는 scores 리스트에서 삭제
