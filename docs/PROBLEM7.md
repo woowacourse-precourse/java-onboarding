@@ -24,3 +24,8 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+## 기능 구현 목록
+- [ ] 사용자의 friends 목록 저장
+- [ ] 사용자의 friends의 친구들에게 +10점 부여
+- [ ] 사용자의 타임라인에 visitors들은 +1점, 사용자의 친구들은 제외
