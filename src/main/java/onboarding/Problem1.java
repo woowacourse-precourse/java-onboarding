@@ -4,7 +4,7 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if ((pobi.get(1) - pobi.get(0) != 1) || (crong.get(1) - crong.get(0) != 1)) { //조건 메소드화
+        if (isException(pobi)||isException(crong)) {
             return -1;
         }
         int answer = Integer.MAX_VALUE;
@@ -21,6 +21,20 @@ class Problem1 {
         }
         return answer;
     }
+
+    private static boolean isException(List<Integer> list) {
+        for (Integer integer : list) {
+            if (integer < 1 || integer > 400) {
+                return true;
+            }
+        }
+        if (list.get(1) - list.get(0) !=1) {
+            return true;
+        }
+        return false;
+
+    }
+
 
     private static int searchMaxNum(Integer num) {
         int mutiply = 1;
