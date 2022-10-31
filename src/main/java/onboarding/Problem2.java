@@ -3,7 +3,13 @@ package onboarding;
 import java.util.*;
 
 public class Problem2 {
+    private final static int MIN_CRYPTOGRAM_VALUE = 1;
+    private final static int MAX_CRYPTOGRAM_VALUE = 1000;
+
     public static String solution(String cryptogram) {
+        if (!isValidCryptogram(cryptogram)) {
+            return cryptogram;
+        }
         String answer = cryptogram;
         boolean isChange = false;
         while (!isChange) {
@@ -31,5 +37,11 @@ public class Problem2 {
             cryptogram = cryptogram.replaceAll(character + "{2,}", "");
         }
         return cryptogram;
+    }
+
+    public static boolean isValidCryptogram(String cryptogram) {
+        String cryptogramRegex = "^[a-z]*";
+        return cryptogram.matches(cryptogramRegex)
+                && cryptogram.length() <= MAX_CRYPTOGRAM_VALUE && cryptogram.length() >= MIN_CRYPTOGRAM_VALUE;
     }
 }
