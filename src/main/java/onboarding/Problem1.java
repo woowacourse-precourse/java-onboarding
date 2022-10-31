@@ -6,7 +6,7 @@ class Problem1 {
     // 전체 기능 호출
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if (checkValidPage(pobi, crong)) {
-            return 0;
+            return judgedScore(getMaxScore(pobi), getMaxScore(crong));
         }
         return -1;
     }
