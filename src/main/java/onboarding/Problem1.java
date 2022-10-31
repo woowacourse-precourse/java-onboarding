@@ -55,7 +55,9 @@ class Problem1 {
     /* 왼쪽, 오른쪽 페이지 중 더 큰 페이지 반환하는 메서드 */
     public static int getHighestScore(List<Integer> arr) {
         /* 예외 검사 */
-
+        if(handleException(arr)) {
+            return -1;
+        }
 
         /* 두 페이지 중 큰 값 비교 */
         int bigger = 0;
@@ -76,6 +78,10 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         int pobiScore = getHighestScore(pobi);
         int crongScore = getHighestScore(crong);
+        if(pobiScore == -1 || crongScore == -1) {
+            answer = -1;
+            return answer;
+        }
         int comparison = compareInt(pobiScore, crongScore);
         if(comparison > 0) {
             answer = 1;
