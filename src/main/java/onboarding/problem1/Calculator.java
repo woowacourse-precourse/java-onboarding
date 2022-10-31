@@ -20,7 +20,7 @@ public class Calculator implements CalculatorInt {
     private int calculateScore(int page) {
         List<Integer> division = dividePage(page);
         CalculatorInt sumCalculator = new SumCalculator(division);
-        CalculatorInt multipleCalculator = new SumCalculator(division);
+        CalculatorInt multipleCalculator = new MultipleCalculator(division);
 
         return Math.max(sumCalculator.getScore(), multipleCalculator.getScore());
     }
