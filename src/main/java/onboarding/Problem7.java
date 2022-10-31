@@ -89,6 +89,7 @@ public class Problem7 {
 class ExceptionProblem7 {
     public static void validateUser(String user) {
         enterId(user);
+        haveSpace(user);
         validateUserLength(user);
         validateEnglish(user);
         validateSamllLetter(user);
@@ -116,6 +117,12 @@ class ExceptionProblem7 {
 
     private static void enterId(String id) {
         if (id.equals("")) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    private static void haveSpace(String id) {
+        if (id.contains(" ")) {
             throw new IllegalArgumentException();
         }
     }
