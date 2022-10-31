@@ -42,12 +42,24 @@ public class Problem7 {
         }
     }
 
+    static void cntWatchTimeline(Map<String, Integer> recommendList, List<String> friendList, List<String> visitors){
+        for(int i = 0; i < visitors.size(); i++){
+            if(recommendList.containsKey(visitors.get(i))){
+                recommendList.put(visitors.get(i), recommendList.get(visitors.get(i))+1);
+            }
+            if((!recommendList.containsKey(visitors.get(i))) &&  !friendList.contains(visitors.get(i))){
+                recommendList.put(visitors.get(i), 1);
+            }
+        }
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
 
         List<String> friendList = findMyFriend(user, friends);
         Map<String, Integer> recommendList = new HashMap<String, Integer>();
         cntCloseFriend(user, recommendList, friendList, friends);
+        cntWatchTimeline(recommendList, friendList, visitors);
         System.out.println(recommendList);
         //System.out.println(friendList);
         return answer;
