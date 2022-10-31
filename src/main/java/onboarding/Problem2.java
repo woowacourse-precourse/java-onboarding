@@ -17,7 +17,24 @@ public class Problem2 {
     }
 
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        while (isDuplication(str)) {
+            String newStr = "";
+            char tmp = str.charAt(0);
+            for (int i = 1; i < str.length(); i++) {
+                char cur = str.charAt(i);
+                if (tmp != cur) {
+                    newStr += tmp;
+                    tmp = cur;
+                }
+                else {
+                    if (i != str.length() - 1)
+                        tmp = str.charAt(++i);
+                }
+            }
+            if (tmp != str.charAt(str.length() - 2))
+                newStr += tmp;
+            str = newStr;
+        }
+        return str;
     }
 }
