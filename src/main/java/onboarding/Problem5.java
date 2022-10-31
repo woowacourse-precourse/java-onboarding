@@ -27,6 +27,8 @@ public class Problem5 {
         answer.add(remain/100);
         remain = remain%100;
 
+        answer.add(remain/50);
+        remain = remain%50;
 
         return answer;
     }
