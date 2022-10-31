@@ -1,5 +1,8 @@
 package onboarding;
 
+import onboarding.problem6.RepositoryFactory;
+import onboarding.problem6.SnsRepository;
+import onboarding.problem6.User;
 import org.junit.jupiter.api.*;
 
 import java.util.List;
@@ -27,20 +30,6 @@ public class Problem6Test {
         @Test
         void case2() {
             List<List<String>> forms = List.of(
-                    List.of("onepiece@email.com", "원피수"),
-                    List.of("jason@email.com", "제이슨"),
-                    List.of("onepisu@email.com", "원피수"),
-                    List.of("mj@email.com", "엠제이"),
-                    List.of("suonepi@email.com", "수원피")
-            );
-
-            List<String> result = List.of();
-            assertThat(Problem6.solution(forms)).isEqualTo(result);
-        }
-
-        @Test
-        void case3() {
-            List<List<String>> forms = List.of(
                     List.of("kim@email.com", "김ㅡ이"),
                     List.of("nam@email.com", "ㅡ이야"),
                     List.of("choi@email.com", "최강"),
@@ -55,7 +44,7 @@ public class Problem6Test {
     @Nested
     static class UserRepositoryTest{
 
-        private static SnsRepository repository=RepositoryFactory.makeRepository();
+        private static SnsRepository repository= RepositoryFactory.makeRepository();
         private static User beforeUser;
 
         @BeforeEach

@@ -1,4 +1,4 @@
-package onboarding;
+package onboarding.problem6;
 
 public class ServiceFactory {
     static SnsService service=new UserService();

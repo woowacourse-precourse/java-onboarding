@@ -1,10 +1,12 @@
 package onboarding;
 
+import onboarding.problem6.*;
+
 import java.util.List;
 
 public class Problem6 {
-    private static SnsService userService=ServiceFactory.makeService();
-    private static SnsRepository repository=RepositoryFactory.makeRepository();
+    private static SnsService userService= ServiceFactory.makeService();
+    private static SnsRepository repository= RepositoryFactory.makeRepository();
     public static List<String> solution(List<List<String>> forms) {
         repository.removeAll();
         for(List<String> form:forms){
