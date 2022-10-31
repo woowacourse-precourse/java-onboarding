@@ -15,16 +15,17 @@ public class Problem6 {
 			List<String> form = forms.get(i);
 			checkDuplicate(forms, form, i);
 		}
-
+		addDuplicateUser(answer);
 		return answer;
 	}
 
 	public static void checkDuplicate(List<List<String>> forms, List<String> form, int index) {
-        
+
 	}
 
-	public static void isDuplicateNickName(String formsNickname, String formNickname) {
+	public static boolean isDuplicateNickName(String formsNickname, String formNickname) {
 
+		return false;
 	}
 
 	public static void addDuplicateUser(List<String> answer) {
