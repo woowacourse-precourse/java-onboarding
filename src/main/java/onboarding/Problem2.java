@@ -60,19 +60,13 @@ public class Problem2 {
      */
     public static String solution(String cryptogram) {
         Decrypt decrypt = new Decrypt();
-        decrypt.setCryptogram(cryptogram);
-        return decrypt.run();
+        return decrypt.run(cryptogram);
     }
 }
 
 class Decrypt {
-    private String cryptogram;
 
-    public void setCryptogram(String cryptogram) {
-        this.cryptogram = cryptogram;
-    }
-
-    public String run() {
+    public String run(String cryptogram) {
         String beforeDecode = "";
         String afterDecode = cryptogram;
 
@@ -83,5 +77,34 @@ class Decrypt {
         }
 
         return afterDecode;
+    }
+
+    private String decode(String beforeDecode) {
+        int head = 0;
+        int tail = 1;
+        StringBuilder sb = new StringBuilder();
+
+        while (head < beforeDecode.length()) {
+            char headChar = beforeDecode.charAt(head);
+            tail = increaseTailIfSameChar(beforeDecode, tail, headChar);
+            appendCharIfAnotherChar(sb, head, tail, headChar);
+            head = tail;
+            tail++;
+        }
+
+        return sb.toString();
+    }
+
+    private int increaseTailIfSameChar(String beforeDecode, int tail, char nowChar) {
+        while (tail < beforeDecode.length() && nowChar == beforeDecode.charAt(tail)) {
+            tail++;
+        }
+        return tail;
+    }
+
+    private void appendCharIfAnotherChar(StringBuilder sb, int head, int tail, char headChar) {
+        if (head + 1 == tail) {
+            sb.append(headChar);
+        }
     }
 }
