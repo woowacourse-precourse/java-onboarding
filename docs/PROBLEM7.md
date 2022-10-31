@@ -24,3 +24,11 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+---
+
+### 구현 기능 목록
+
+- [ ] 사용자 아이디를 key, 해당 사용자의 친구들을 value로 가지는 HashMap 생성 후 추가하는 기능
+- [ ] 방문 횟수를 기준으로 점수 계산하는 기능
+- [ ] user의 함께 아는 친구들의 점수를 계산하는 기능
