@@ -16,4 +16,12 @@ public class Problem3 {
         }
         return sum;
     }
+
+    public static int getAnswer(int number){
+        int answer = 0;
+        for(int i = 1; i<= number; i++){
+            answer += calculate(i);
+        }
+        return answer;
+    }
 }
