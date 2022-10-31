@@ -79,9 +79,9 @@ class Problem1 {
             lenghtCL -= 1;
         }
 
-        while ( numCR > 0 ) {
-            arrNumCrongRight.add(numCR%10);
-            numCR /= 10;
+        while ( numCR > 0 ) { //numCR(CrongRight)은 페이지 값
+            arrNumCrongRight.add(numCR%10); //페이지 값을 10으로 나눠 나머지 값을 CrongRight라는 배열에 순서대로 저장
+            numCR /= 10; //페이지 값을 10으로 나눈 후 나머지를 버린 값
         }
         int lenghtCR = arrNumCrongRight.size();
         int sumCR = 0;
