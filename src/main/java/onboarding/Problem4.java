@@ -8,11 +8,12 @@ package onboarding;
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
-        Problem4 problem4 = new Problem4();
+        StringBuilder reversed = new StringBuilder();
 
         for (char letter : word.toCharArray()) {
-            answer += problem4.reverse(letter);
+            reversed.append(reverse(letter));
         }
+        answer = reversed.toString();
 
         return answer;
     }
@@ -23,7 +24,7 @@ public class Problem4 {
      * @param letter 변환할 문자
      * @return 알파벳을 변환하여 반환, 알파벳이 아닐 경우 변환하지 않고 반환
      */
-    char reverse(char letter) {
+    static char reverse(char letter) {
         char res;
 
         if ('A' <= letter && letter <= 'Z') {
