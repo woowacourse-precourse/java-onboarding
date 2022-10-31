@@ -24,15 +24,7 @@ public class Problem7 {
     }
 
     private static void recommendFriend(List<String> answer, SortedMap<String, Integer> map) {
-        Arrays.sort(arr, new Comparator<int[]>() {
-            @Override
-            public int compare(int[] o1, int[] o2) {
-                if (o1[0] == o2[0]) {
-                    return o1[1] - o2[1];
-                }
-                return o2[0] - o1[0];
-            }
-        });
+        Arrays.sort(arr, (o1, o2) -> o1[0] == o2[0] ? o1[1] - o2[1] : o2[0] - o1[0]);
 
         for (int i = 0; i < 5 && arr[i][0] > 0; i++) {
             for (String s : map.keySet()) {
