@@ -24,4 +24,13 @@ public class Problem2 {
         }
         return isDuplicatedChar;
     }
+    private static String concatNotDeletedChars(String cryptogram, boolean[] isDuplicatedChar) {
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < cryptogram.length(); i++) {
+            if (!isDuplicatedChar[i])
+                sb.append(cryptogram.charAt(i));
+        }
+        return sb.toString();
+    }
 }
