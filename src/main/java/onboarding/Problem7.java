@@ -7,37 +7,62 @@ import java.util.List;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
         Problem7 P = new Problem7();
         List<String> following = P.checkFriend(user, friends);
         List<People> userScore = new ArrayList<>();
 
         for(List list : friends) {
             if(P.checkNeighbor(list, following, user)){
-                for(People p : userScore) {
-                    if(p.name == list.get(1)){
-                        p.score += 10;
-                    }else{
-                        userScore.add(new People(String.valueOf(list.get(1)),10));
+                if(userScore.size()==0){
+                    userScore.add(new People(String.valueOf(list.get(1)),10));
+                }else {
+                    boolean already = false;
+                    for (People p : userScore) {
+                        if (p.name == list.get(1)) {
+                            p.score += 10;
+                            already = true;
+                            break;
+                        }
+                    }
+                    if(!already){
+                        userScore.add(new People(String.valueOf(list.get(1)), 10));
                     }
                 }
-            };
+            }
         }
 
         for(String name : visitors){
             boolean isFriend = false;
             for(String s : following){
-                if(s==name) isFriend = true;
-                break;
+                if(s==name) {
+                    isFriend = true;
+                    break;
+                }
             }
             if(!isFriend){
+                boolean already = false;
                 for(People p : userScore) {
                     if(p.name == name){
                         p.score += 1;
-                    }else{
-                        userScore.add(new People(name,1));
+                        already = true;
+                        break;
                     }
                 }
+                if(!already){
+                    userScore.add(new People(name,1));
+                }
+            }
+        }
+
+        Collections.sort(userScore);
+        if(userScore.size()>5){
+            for(int i = 0; i<5; i++){
+                answer.add(userScore.get(i).name);
+            }
+        }else{
+            for(People p : userScore){
+                answer.add(p.name);
             }
         }
         return answer;
@@ -68,11 +93,16 @@ public class Problem7 {
 }
 
 // 사용자별 추천 점수를 저장하는 클래스
-class People {
+class People implements Comparable<People>{
     String name;
     int score;
     People(String name, int score){
         this.name = name;
         this.score = score;
+    }
+
+    @Override
+    public int compareTo(People p){
+        return p.score - this.score;
     }
 }
