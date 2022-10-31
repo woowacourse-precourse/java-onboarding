@@ -19,6 +19,8 @@ public class Problem6 {
             generateDuplicatedNicknameCandidate(nickname, duplicatedNicknameCandidate);
         }
 
+        List<String> compareNames = generateCompareNickname(duplicatedNicknameCandidate);
+
         return results;
     }
 
@@ -57,5 +59,20 @@ public class Problem6 {
                 duplicatedNicknameCandidate.put(substring, duplicatedNicknameCandidate.getOrDefault(substring, 0) + 1);
             }
         }
+    }
+
+    private static List<String> generateCompareNickname(Map<String, Integer> duplicatedNicknameCandidate) {
+        List<String> compareNames = new ArrayList<>();
+
+        for (Map.Entry<String, Integer> entry : duplicatedNicknameCandidate.entrySet()) {
+            String key = entry.getKey();
+            int value = entry.getValue();
+
+            if (value > 1) {
+                compareNames.add(key);
+            }
+        }
+
+        return compareNames;
     }
 }
