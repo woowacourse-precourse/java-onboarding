@@ -32,8 +32,33 @@ public class Problem4 {
 
         String[] seperatedWord = word.split(" ");
 
-        String answer ="";
-        return answer;
+        List seperateWordList = new ArrayList();
+        StringBuilder str = new StringBuilder();
+
+        for(int i = 0; i<seperatedWord.length;i++) {
+            String wordString = seperatedWord[i];
+            seperateWordList.add(wordString);
+
+            for(int j =0; j<wordString.length();j++) {
+                char b = wordString.charAt(j);
+
+                if(Character.isUpperCase(b)) {
+                    str.append(uppercaseMap.get(b));
+                }
+
+                if(Character.isLowerCase(b)) {
+                    str.append(lowercaseMap.get(b));
+                }
+            }
+            if(i == seperatedWord.length-1){
+                break;
+            }
+            str.append(" ");
+        }
+        String result = str.toString();
+
+        return result;
+    }
     }
 
     public static boolean checkAlpabet(String word) {
