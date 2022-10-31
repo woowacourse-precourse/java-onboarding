@@ -21,3 +21,11 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+
+### 요구 사항 리스트 
+
+1. 신청 form 의 신청 가능한 이메일 형식을 확인하는 함수를 만든다.
+2. 신청 form 의 이름 형식을 체크 하는 함수를 만든다.
+3. 닉네임 중 같은 글자가 연속으로 있으면 신청 이메일을 모두 반환하는 함수를 만든다.
+4. 중복된 닉네임의 이메일 문자열을 오름차순으로 정렬하고 중복 제거.
