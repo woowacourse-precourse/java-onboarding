@@ -21,6 +21,9 @@ class Problem1 {
             return EXCEPTION;
         }
 
+        int pobiMaxNumber = Math.max(calculateMaxNumber(pobiLeftPageNumber), calculateMaxNumber(pobiRightPageNumber));
+        int crongMaxNumber = Math.max(calculateMaxNumber(crongLeftPageNumber), calculateMaxNumber(crongRightPageNumber));
+
         return answer;
     }
 
@@ -33,5 +36,19 @@ class Problem1 {
 
     private static boolean isNotLeftAndRight(int leftPageNumber, int rightPageNumber) {
         return rightPageNumber - leftPageNumber != 1;
+    }
+
+    private static int calculateMaxNumber(int pageNumber) {
+        int sum = 0;
+        int multiply = 1;
+
+        while (pageNumber > 0) {
+            int eachDigit = pageNumber % 10;
+            sum += eachDigit;
+            multiply *= eachDigit;
+            pageNumber /= 10;
+        }
+
+        return Math.max(sum, multiply);
     }
 }
