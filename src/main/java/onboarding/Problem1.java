@@ -5,7 +5,25 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        Book selectedByPobi = new Book(pobi);
+        Book selectedByCrong = new Book(crong);
+        if (selectedByPobi.isInvalidPage() || selectedByCrong.isInvalidPage()) {
+            return -1;
+        }
+        int pobiScore = ScoreCalculator.getScore(selectedByPobi);
+        int crongScore = ScoreCalculator.getScore(selectedByCrong);
+        return getWinner(pobiScore, crongScore);
+    }
+
+    private static int getWinner(Integer pobiScore, Integer crongScore) {
+        int answer;
+        if (pobiScore > crongScore) {
+            answer = 1;
+        } else if (pobiScore < crongScore) {
+            answer = 2;
+        } else {
+            answer = 0;
+        }
         return answer;
     }
 
