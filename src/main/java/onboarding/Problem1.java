@@ -91,4 +91,19 @@ class Problem1 {
         }
         return true;
     }
+
+    public static void validate(List<Integer> pobi, List<Integer> crong) throws IllegalArgumentException{
+        if(!checkPageSize(pobi,crong)){
+            throw new IllegalArgumentException();
+        }
+        if(!checkPageNumber(pobi) || !checkPageNumber(crong)){
+            throw new IllegalArgumentException();
+        }
+        if(!isNext(pobi) || !isNext(crong)){
+            throw new IllegalArgumentException();
+        }
+        if(!checkRange(pobi,crong)){
+            throw new IllegalArgumentException();
+        }
+    }
 }
