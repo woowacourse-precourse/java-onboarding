@@ -8,11 +8,11 @@ public class Problem4 {
 
         StringBuilder answer = new StringBuilder();
         char[] arr = word.toCharArray();
-        for (char a : arr){
-            if((Character.isAlphabetic(a))){
-                answer.append(change(a));
+        for (char alphabet : arr){
+            if((Character.isAlphabetic(alphabet))){
+                answer.append(change(alphabet));
             }else{
-                answer.append(a);
+                answer.append(alphabet);
             }
         }
         return answer.toString();

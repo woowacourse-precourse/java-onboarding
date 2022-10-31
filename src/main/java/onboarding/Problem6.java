@@ -20,7 +20,7 @@ public class Problem6 {
                 if(isCheck(forms.get(i).get(1), forms.get(j).get(1))){
                     arr.add(forms.get(i).get(0));
                     arr.add(forms.get(j).get(0));
-                    System.out.println("arr : " + arr);
+//                    System.out.println("arr : " + arr);
                 }
             }
         }
@@ -30,13 +30,13 @@ public class Problem6 {
                 .collect(Collectors.toList());
     }
 
-    public static boolean isCheck(String name_1, String name_2){
+    public static boolean isCheck(String nickname_1, String nickname_2){
         List<String> check = new ArrayList<>();
-        for(int i = 0; i < name_1.length()-1; i++){
-            check.add(name_1.substring(i, i+2));
-            for(int j = 0; j < name_2.length()-1; j++){
-                System.out.println("check.get(i) : " + check.get(i) + " name_2.substring(j, j + 1)" + name_2.charAt(j) + name_2.charAt(j+1));
-                if(Objects.equals(check.get(i), name_2.substring(j, j + 2))) {
+        for(int i = 0; i < nickname_1.length()-1; i++){
+            check.add(nickname_1.substring(i, i+2));
+            for(int j = 0; j < nickname_2.length()-1; j++){
+//                System.out.println("check.get(i) : " + check.get(i) + " nickname_2.substring(j, j + 1)" + nickname_2.charAt(j) + nickname_2.charAt(j+1));
+                if(Objects.equals(check.get(i), nickname_2.substring(j, j + 2))) {
                     return true;
                 }
             }

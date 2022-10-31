@@ -18,20 +18,19 @@ class Problem1 {
 
         int pobi_win = 1;
         int crong_win = 2;
-        int draw = 0;
         int except = -1;
 
         int answer = 0;
 
         if(check_list(pobi) || check_list(crong)){
-            return answer = except;
+            return except;
         }
 
         int pobi_cal = Math.max(sum_or_mul(pobi.get(0)), sum_or_mul(pobi.get(1)));
         int crong_cal = Math.max(sum_or_mul(crong.get(0)), sum_or_mul(crong.get(1)));
 
-        System.out.println("포비승" + pobi_cal);
-        System.out.println("크롱승" + crong_cal);
+//        System.out.println("포비승" + pobi_cal);
+//        System.out.println("크롱승" + crong_cal);
 
         if (pobi_cal == crong_cal){
             return answer;
@@ -44,14 +43,14 @@ class Problem1 {
     /*
     계산 해주는 함수
      */
-    static int sum_or_mul(int n){
+    static int sum_or_mul(int page){
         int cal;
         int sum = 0;
         int mul = 1;
-        while(n != 0){
-            sum += n % 10;
-            mul  *= n % 10;
-            n /= 10;
+        while(page != 0){
+            sum += page % 10;
+            mul  *= page % 10;
+            page /= 10;
         }
         System.out.print(sum);
         System.out.print(mul);
