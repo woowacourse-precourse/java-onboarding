@@ -72,4 +72,14 @@ public class Problem7 {
         return userPointMap;
     }
 
+    /**
+     * @param firstMap : Map<String, Integer>(합치고 싶은 Map)
+     * @param secondMap : Map<String, Integer>(합치고 싶은 Map)
+     * @return Key가 같은 것들 끼리는 value를 더하며 합쳐 같은 타입의 하나의 Map으로 반환
+     */
+    private static Map<String, Integer> mergeMapSumValue(Map<String, Integer> firstMap, Map<String, Integer> secondMap){
+        secondMap.forEach((key, value) -> firstMap.merge(key, value, (v1, v2) -> v1 + v2));
+        return firstMap;
+    }
+
 }
