@@ -40,6 +40,17 @@ class Problem1 {
         return result;
     }
 
+    //게임 결과 구하기
+    private static in findResult(int pobi_score, int crong_score) {
+        if(pobi_score > crong_score) {
+            return 1;
+        } else if(pobi_score < crong_score) {
+            return 2;
+        } else {
+            return 0;
+        }
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
