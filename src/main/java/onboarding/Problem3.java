@@ -9,7 +9,7 @@ public class Problem3 {
 
             while (curr > 0) {
                 int mod = curr % 10;
-                if (mod == 3 || mod == 6 || mod == 9) {
+                if (hasThreeOrSixOrNine(mod)) {
                     answer += 1;
                 }
                 curr /= 10;
@@ -17,5 +17,10 @@ public class Problem3 {
         }
         return answer;
     }
+
+    private static boolean hasThreeOrSixOrNine(int number) {
+        return number != 0 && number % 3 == 0;
+    }
+
 }
 
