@@ -5,7 +5,7 @@ import java.util.*;
 public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
-        final DupCheckMap dupCheckMap = new DupCheckMap();
+        final DuplicateChecker checker = new DuplicateChecker();
 
         for (List<String> f: forms) {
             Form form = new Form(f.get(0), f.get(1));
@@ -14,27 +14,31 @@ public class Problem6 {
                 continue;
             }
 
-           dupCheckMap.registryForm(form);
+            checker.registryForm(form);
         }
 
-        ArrayList<String> answer = new ArrayList<>(dupCheckMap.dupEmailSet);
+        ArrayList<String> answer = new ArrayList<>(checker.dupEmailSet);
         answer.sort(Comparator.naturalOrder());
 
         return answer;
     }
 
-    private static class DupCheckMap extends HashMap<String, String> {
+    private static class DuplicateChecker extends HashMap<String, String> {
         HashMap<String, String> duplicateCheckMap = new HashMap<>();
         final HashSet<String> dupEmailSet = new HashSet<>();
 
         public void registryForm(Form form) {
             for (String part: sliceByLength(form.getNickname(), 2)) {
-                if (this.isDuplicate(part, form)) {
-                    this.dupEmailSet.add(this.duplicateCheckMap.get(part));
-                    this.dupEmailSet.add(form.getEmail());
-                }
-                duplicateCheckMap.put(part, form.getEmail());
+                this.checkDupPart(part, form);
             }
+        }
+
+        private void checkDupPart(String part, Form form) {
+            if (this.isDuplicate(part, form)) {
+                this.dupEmailSet.add(this.duplicateCheckMap.get(part));
+                this.dupEmailSet.add(form.getEmail());
+            }
+            duplicateCheckMap.put(part, form.getEmail());
         }
 
         private boolean isDuplicate(String part, Form form) {
