@@ -21,3 +21,8 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+## 기능 구현
+1. 이름을 두글자로 쪼갠 부분 가져오기('부분 이름'이라 명명)
+2. '부분 이름'이 이미 '부분 이름'과 그에 대응하는 메일을 가지고 있는 맵에 있으며 해당 두 이름의 메일이 서로 다르다면 중복이기에 중복 메일 리스트에 메일을 추가한다.
+3. 그 후 해당 맵에 다시 저장한다.
