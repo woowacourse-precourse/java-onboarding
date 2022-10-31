@@ -1,11 +1,12 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         HashMap<String, HashSet<String>> relation = new HashMap<>();
-        HashMap<String, Integer> score = new HashMap<>();
+        HashMap<String, Integer> friendscore = new HashMap<>();
         for (List<String> friend : friends) {
             findRelationship(relation, friend);
         }
@@ -14,16 +15,18 @@ public class Problem7 {
         for (String name : relation.keySet()) {
             if(name.equals(user)) continue;
             count = relationshipScore(relation.get(name), relation.get(user));
-            score.put(name, count*10);
+            friendscore.put(name, count*10);
         }
 
         int visitscore = 0;
         for (String visitor : visitors) {
-            visitscore = score.getOrDefault(score.get(visitor), 0);
+            visitscore = friendscore.getOrDefault(friendscore.get(visitor), 0);
             visitscore++;
-            score.put(visitor, visitscore);
+            friendscore.put(visitor, visitscore);
         }
-        //return answer;
+        List<Map.Entry<String, Integer>> scorelist = new LinkedList<>(friendscore.entrySet());
+        scorelist.sort(((o1, o2) -> friendscore.get(o2.getKey()) - friendscore.get(o1.getKey())));
+        return scorelist.stream().limit(5).map(Map.Entry::getKey).collect(Collectors.toList());
     }
     public static void findRelationship(HashMap<String, HashSet<String>> relation, List<String> friends) {
         String friend1 = friends.get(0);
