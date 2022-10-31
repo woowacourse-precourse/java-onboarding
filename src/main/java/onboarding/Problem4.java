@@ -11,13 +11,13 @@ public class Problem4 {
     private static final HashMap<Character, Character> frogDict = makeFrogDictionary();
     
     public static String solution(String word) {
-        String answer="";
+        StringBuilder answer= new StringBuilder();
 
         for (char letter : word.toCharArray()) {
-            answer += convert(letter);
+            answer.append(convert(letter));
         }
 
-        return answer;
+        return answer.toString();
     }
 
     private static char convert(char letter){
