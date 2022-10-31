@@ -9,7 +9,7 @@ class Problem1 {
         if(errorPage(pobi,crong)){
             return -1;
         }
-        return whoIsTheWinner(comparePobiAndCrong(findPobiAndCrongPageMax(pobi,crong)));
+        return whoIsTheWinner(findPobiAndCrongPageMax(pobi,crong)).indexOf(true);
     }
     private static int pageMax(String[] pageList){
         Map<String,Integer> pageMap = putPageMap(pageList);
@@ -50,19 +50,10 @@ class Problem1 {
     private static List<Integer> findPobiAndCrongPageMax(List<Integer> pobi, List<Integer> crong){
         return List.of(allPageMax(pobi),allPageMax(crong));
     }
-    private static List<Boolean> comparePobiAndCrong(List<Integer> pobiAndCrongPageMax){
+    private static List<Boolean> whoIsTheWinner(List<Integer> pobiAndCrongPageMax){
         int pobiMaxPage = pobiAndCrongPageMax.get(0);
         int crongMaxPage = pobiAndCrongPageMax.get(1);
         return List.of(pobiMaxPage == crongMaxPage,pobiMaxPage>crongMaxPage,pobiMaxPage<crongMaxPage);
-    }
-    private static int whoIsTheWinner(List<Boolean> pobiAndCrongPageMax){
-        int i = 0;
-        for (;i < pobiAndCrongPageMax.size(); i++) {
-            if(pobiAndCrongPageMax.get(i)){
-                break;
-            }
-        }
-        return i;
     }
     private static boolean errorPage(List<Integer> pobi, List<Integer> crong) {
         if(errorPageGap(pobi,crong) || errorPageFirstOrLast(pobi,crong)){
