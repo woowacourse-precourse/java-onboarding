@@ -3,21 +3,21 @@ package onboarding.support.problem3;
 public class GameUtil {
 
     private int score;
-    private static final int MOD = 10;
+    private static final int DIGIT_MOD = 10;
 
     public GameUtil(int number) {
         for (int i = 1; i <= number; i++) {
-            this.score += getClapCount(i);
+            this.score += getClapScore(i);
         }
     }
 
-    public static int getClapCount(int number) {
+    public static int getClapScore(int number) {
         int clap = 0;
         while (number != 0) {
-            if (canGetPoint(number % MOD)) {
+            if (canGetPoint(number % DIGIT_MOD)) {
                 clap++;
             }
-            number /= MOD;
+            number /= DIGIT_MOD;
         }
         return clap;
     }
