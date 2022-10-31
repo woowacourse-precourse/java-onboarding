@@ -16,7 +16,7 @@ public class Problem7 {
         answer.sort(Comparator.naturalOrder());
         answer.sort((o1, o2) -> scores.get(o2).compareTo(scores.get(o1)));
         if (answer.size() > 5)
-            answer = answer.subList(0, 5);
+            answer = new ArrayList<>(answer.subList(0, 5));
         return answer;
     }
 
