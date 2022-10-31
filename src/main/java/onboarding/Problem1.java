@@ -5,8 +5,26 @@ import java.util.stream.Stream;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+
         int answer = Integer.MAX_VALUE;
-        return answer;
+
+        try{
+            validCheck(pobi);
+            validCheck(crong);
+
+            int pobiScore = Math.max(maxScore(pobi.get(0)),maxScore(pobi.get(1)));
+            int crongScore = Math.max(maxScore(crong.get(0)),maxScore(crong.get(1)));
+
+            if (pobiScore==crongScore){
+                answer = 0;
+            }else {
+                answer = (pobiScore>crongScore) ? 1:2;
+            }
+        }catch (Exception e){
+            answer = -1;
+        }finally {
+            return answer;
+        }
     }
 
     // 번호(int)를 받아 합,곱점수 중 최대점수를 반환
