@@ -2,8 +2,6 @@ package onboarding;
 
 import org.junit.jupiter.api.Test;
 
-import javax.swing.table.TableCellRenderer;
-import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -30,14 +28,14 @@ public class TestProblem1 {
 
     @Test
     void TestisInRange(){
-        List<Integer> T1 = List.of(97, 98);
-        List<Integer> T2 = List.of(1, 98);
-        List<Integer> T3 = List.of(97, 400);
-        List<Integer> T4 = List.of(0, 0);
+        List<Integer> T1 = List.of(101, 102);
+        List<Integer> T2 = List.of(197, 198);
+        List<Integer> T3 = List.of(97, 98);
+        List<Integer> T4 = List.of(2, 3);
         assertThat(Problem1.isInRange(T1)).isEqualTo(true);
-        assertThat(Problem1.isInRange(T2)).isEqualTo(false);
-        assertThat(Problem1.isInRange(T3)).isEqualTo(false);
-        assertThat(Problem1.isInRange(T4)).isEqualTo(false);
+        assertThat(Problem1.isInRange(T2)).isEqualTo(true);
+        assertThat(Problem1.isInRange(T3)).isEqualTo(true);
+        assertThat(Problem1.isInRange(T4)).isEqualTo(true);
     }
 
     @Test
@@ -54,14 +52,34 @@ public class TestProblem1 {
 
     @Test
     void TestisNotStartOrEnd(){
-        List<Integer> T1 = List.of(1, 98);
-        List<Integer> T2 = List.of(97, 400);
-        List<Integer> T3 = List.of(1, 400);
-        List<Integer> T4 = List.of(123,222);
+        List<Integer> T1 = List.of(3, 4);
+        List<Integer> T2 = List.of(1, 2);
+        List<Integer> T3 = List.of(399, 400);
+        List<Integer> T4 = List.of(123,124);
 
         assertThat(Problem1.isNotStartOrEnd(T1)).isEqualTo(true);
         assertThat(Problem1.isNotStartOrEnd(T2)).isEqualTo(false);
         assertThat(Problem1.isNotStartOrEnd(T3)).isEqualTo(false);
         assertThat(Problem1.isNotStartOrEnd(T4)).isEqualTo(true);
+    }
+
+    @Test
+    void TestSoulution(){
+        List<Integer> T1_a = List.of(-1, 0);
+        List<Integer> T1_b = List.of(400, 401);
+
+        List<Integer> T2_a = List.of(100, 101);
+        List<Integer> T2_b = List.of(102, 103);
+
+        List<Integer> T3_a = List.of(1, 400);
+        List<Integer> T3_b = List.of(101, 399);
+
+        List<Integer> T4_a = List.of(399, 400);
+        List<Integer> T4_b = List.of(1, 2);
+
+        assertThat(Problem1.solution(T1_a, T1_b)).isEqualTo(-1);
+        assertThat(Problem1.solution(T2_a, T2_b)).isEqualTo(-1);
+        assertThat(Problem1.solution(T3_a, T3_b)).isEqualTo(-1);
+        assertThat(Problem1.solution(T4_a, T4_b)).isEqualTo(-1);
     }
 }

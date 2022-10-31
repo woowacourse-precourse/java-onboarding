@@ -7,6 +7,27 @@ import static onboarding.LeftRight.*;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        Boolean isWrongFormatpobi = FindException(pobi);
+        Boolean isWrongFormatcrong = FindException(crong);
+
+        if(!isWrongFormatpobi && !isWrongFormatcrong){
+            Integer pobiScore = FindScore(pobi);
+            Integer crongScore = FindScore(crong);
+
+            System.out.println("crongScore = " + crongScore);
+            System.out.println("pobiScore = " + pobiScore);
+
+            if(pobiScore > crongScore)
+                answer=1;
+            if(pobiScore < crongScore)
+                answer=2;
+            if(pobiScore == crongScore)
+                answer=0;
+
+            return answer;
+        }
+
+        answer = -1;
         return answer;
     }
 
@@ -29,8 +50,8 @@ class Problem1 {
     }
 
     public static Boolean isInRange(List<Integer> pages) {
-        if (pages.get(LEFT.ordinal()) > 1
-                && pages.get(RIGHT.ordinal()) < 400)
+
+        if (pages.get(LEFT.ordinal()) - pages.get(RIGHT.ordinal()) == -1)
             return true;
         return false;
     }
@@ -48,7 +69,7 @@ class Problem1 {
     }
 
     public static Boolean isNotStartOrEnd(List<Integer> pages) {
-        if (pages.get(LEFT.ordinal()) == 0)
+        if (pages.get(LEFT.ordinal()) == 1)
             return false;
         if (pages.get(RIGHT.ordinal()) == 400)
             return false;
