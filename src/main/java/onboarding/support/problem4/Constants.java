@@ -5,7 +5,7 @@ public final class Constants {
     private static final int EMPTY_SPACE = ' ';
     private static final char LOWER_CASE_BASE = 'a';
     private static final char UPPER_CASE_BASE = 'A';
-    private static final int LAST_CHARACTER_ASCII = 'z' - 'a' - 1;
+    private static final int LAST_CHARACTER_ASCII = 'z' - 'a';
 
     private Constants() {
     }
