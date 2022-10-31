@@ -22,6 +22,8 @@ public class Problem5 {
      */
     public static int countMonetaryUnit(int money, int moneyUnit,
         List<Integer> moneyUnitList) {
-        return 0;
+        moneyUnitList.add(money / moneyUnit);
+        int retainMoney = money % moneyUnit;
+        return retainMoney;
     }
 }
