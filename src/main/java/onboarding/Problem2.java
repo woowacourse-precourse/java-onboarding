@@ -12,56 +12,22 @@ public class Problem2 {
     private static String stringDeduplication(String cryptogram) {
         Stack<Character> stack = new Stack<>();
         char[] alphabets = getAlphabets(cryptogram);
-        char tempAlphabet = '0';
-        boolean flag = true;
-
         for (int i = 0; i < alphabets.length; i++) {
             char alphabet = alphabets[i];
             if (!stack.isEmpty()) {
-                if (stack.peek() == alphabet) {
-                    if (tempAlphabet != alphabet) {
-                        tempAlphabet = alphabet;
-                        stack.pop();
+                // peek 한 값이 charAt 값과 같으면 pop
+                if (stack.peek() == alphabets[i]) {
+                    stack.pop();
+                    while (i < alphabets.length - 1 && alphabet == alphabets[i + 1]) {
+                        i++;
                     }
-                    continue;
                 } else {
-                    System.out.println(" 알파벳과 peek이 다르면? stack.peek() = " + stack.peek() + " / push = " + alphabet);
                     stack.push(alphabet);
                 }
-                System.out.println(stack);
             } else {
                 stack.push(alphabet);
             }
         }
-//        char pointer = alphabets[0];
-//        stack.push(pointer);
-//        boolean removeFlag = false;
-//        for (int i = 1; i < alphabets.length; i++) {
-//            char curAlpha = alphabets[i];
-//            if (stack.isEmpty()) {
-//                stack.push(curAlpha);
-//            } else {
-//                if (pointer == curAlpha) {
-//                    if (!removeFlag) {
-//                        removeFlag = true;
-//                    }
-//                }
-//                else {
-//                    if (removeFlag) {
-//                        stack.pop();
-//                        pointer = stack.peek();
-//                        removeFlag = false;
-//                        i--;
-//                    } else {
-//                        stack.push(curAlpha);
-//                        pointer = stack.peek();
-//                    }
-//                }
-//            }
-//        }
-//        if (!stack.isEmpty() && removeFlag) {
-//            stack.pop();
-//        }
         return makeStackToString(stack);
     }
     private static String makeStackToString(Stack<Character> stack) {
