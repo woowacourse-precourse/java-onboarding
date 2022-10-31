@@ -1,63 +1,47 @@
 package onboarding;
 
-import java.util.Stack;
-
 public class Problem2 {
+
+    private static final String EMPTY_STRING = "";
+    private static final char OUT_OF_INDEX_PROTECT_CHAR = '-';
+
     public static String solution(String cryptogram) {
 
-        Stack<Character> stack = removeDuplication(cryptogram);
-
-        StringBuilder resultSb = getRemainStrFromStack(stack);
-
-        return resultSb.toString();
+        return getRemovedDuplicationStr(cryptogram);
 
     }
 
-    public static Stack<Character> removeDuplication(String cryptogram) {
+    public static String getRemovedDuplicationStr(String cryptogram) {
 
-        Stack<Character> stack = new Stack<>();
+        String beforeConvertedString = EMPTY_STRING;
+        String afterConvertedString = cryptogram;
 
-        for (int i = 0; i < cryptogram.length(); i++) {
+        while(!beforeConvertedString.equals(afterConvertedString)) {
 
-            char currentChar = cryptogram.charAt(i);
+            beforeConvertedString = afterConvertedString;
+            afterConvertedString = convert(new StringBuilder(beforeConvertedString));
+        }
 
-            if (!stack.isEmpty() && stack.peek() == currentChar) {
-                i += getEqualCharCount(cryptogram, i + 1, currentChar);
-                stack.pop();
+        return afterConvertedString;
+    }
+
+    public static String convert(StringBuilder currentString) {
+
+        StringBuilder convertedString = new StringBuilder();
+
+        currentString.insert(0, OUT_OF_INDEX_PROTECT_CHAR);
+        currentString.append(OUT_OF_INDEX_PROTECT_CHAR);
+
+        for (int i = 1; i < currentString.length() - 1; i++) {
+
+            char currentChar = currentString.charAt(i);
+
+            if(currentChar == currentString.charAt(i - 1) || currentChar == currentString.charAt(i + 1))
                 continue;
-            }
 
-            stack.add(currentChar);
-
+            convertedString.append(currentChar);
         }
 
-        return stack;
-    }
-
-    static int getEqualCharCount(String cryptogram, int index, char currentChar) {
-
-        int equalCount = 0;
-
-        while (index < cryptogram.length()) {
-
-            if (cryptogram.charAt(index) != currentChar)
-                return equalCount;
-
-            index++;
-            equalCount++;
-        }
-
-        return equalCount;
-    }
-
-    static StringBuilder getRemainStrFromStack(Stack<Character> stack) {
-
-        StringBuilder resultSb = new StringBuilder();
-
-        while (!stack.isEmpty()) {
-            resultSb.insert(0, stack.pop());
-        }
-
-        return resultSb;
+        return convertedString.toString();
     }
 }
