@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -20,7 +21,17 @@ public class Problem7 {
 
     private static void initializeEachUserFriendMap(List<List<String>> friends, Set<String> totalUserSet,
                                                     Map<String, List<String>> totalUsersFriends) {
-
+        for (String username : totalUserSet) {
+            List<String> eachUserFriends = new ArrayList<>();
+            for (List<String> friend : friends) {
+                if (friend.get(0).equals(username)) {
+                    eachUserFriends.add(friend.get(1));
+                } else if (friend.get(1).equals(username)) {
+                    eachUserFriends.add(friend.get(0));
+                }
+            }
+            totalUsersFriends.put(username, eachUserFriends);
+        }
     }
 
     private static void calculateRelationshipScore(String user,
