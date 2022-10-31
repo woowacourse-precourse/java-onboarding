@@ -5,7 +5,8 @@ import java.util.*;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "";
+        //스트링 연산이 많으므로 StringBuilder를 사용한다.
+        StringBuilder answer = new StringBuilder();
         //스택을 생성한다.
         Stack<String> stack = new Stack<>();
 
@@ -30,9 +31,9 @@ public class Problem2 {
 
         //stack을 string으로 변환한다.
         for (String s: stack) {
-            answer += s;
+            answer.append(s);
         }
 
-        return answer;
+        return answer.toString();
     }
 }
