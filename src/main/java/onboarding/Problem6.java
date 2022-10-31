@@ -7,7 +7,12 @@ public class Problem6 {
     public static HashSet<String> answerEmailSet = new HashSet<>();
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        for (List<String> emailNameList : forms) {
+            Set<String> duplicatedWord = possibleDuplicatedWordInName(emailNameList.get(1));
+            checkDuplicate(duplicatedWord, emailNameList);
+        }
+        List<String> answer = new ArrayList<>(answerEmailSet);
+        Collections.sort(answer);
         return answer;
     }
 
