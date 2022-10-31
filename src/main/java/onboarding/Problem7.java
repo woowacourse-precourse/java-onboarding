@@ -50,6 +50,21 @@ public class Problem7 {
             if(!map.containsKey(visitors.get(i)))
                 map.put(visitors.get(i), 1);
         }
+        //4. friend_list를 보고 문제의 조건에 해당되는 hashmap 키의 value에 점수 추가
+        for(int i = 0; i < friends.size(); i++)
+        {
+            for(int j = 0; j < 2; j++)
+            {
+                if(friend_list.contains(friends.get(i).get(j)))
+                {
+                    if(friends.get(i).get(1-j) != user)
+                    {
+                        map.put(friends.get(i).get(1-j), map.get(friends.get(i).get(1-j)) + 10);
+                        break;
+                    }
+                }
+            }
+        }
         return answer;
     }
 }
