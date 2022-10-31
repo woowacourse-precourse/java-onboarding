@@ -9,6 +9,7 @@ public class Email {
 	private final String email;
 
 	public Email(String email) {
+		validateNotNull(email);
 		validateLength(email);
 		validateFormat(email);
 		validateDomain(email);
@@ -19,9 +20,9 @@ public class Email {
 		return email;
 	}
 
-	private void validateFormat(String email) {
-		if (!email.matches(".+@.+\\..+")) {
-			throw new IllegalArgumentException("이메일의 형식이 잘못되었습니다");
+	private void validateNotNull(String email) {
+		if (email == null) {
+			throw new IllegalArgumentException("이메일은 null일 수 없습니다");
 		}
 	}
 
@@ -31,6 +32,12 @@ public class Email {
 		}
 		if (email.length() >= 20) {
 			throw new IllegalArgumentException("이메일은 20글자 미만입니다");
+		}
+	}
+
+	private void validateFormat(String email) {
+		if (!email.matches(".+@.+\\..+")) {
+			throw new IllegalArgumentException("이메일의 형식이 잘못되었습니다");
 		}
 	}
 

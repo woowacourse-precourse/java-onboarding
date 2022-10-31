@@ -31,4 +31,10 @@ public class EmailTest {
 	void only_specific_domain_is_allowed() {
 		assertThatIllegalArgumentException().isThrownBy(() -> new Email(EMAIL_INVALID));
 	}
+
+	@Test
+	@DisplayName("이메일은 null이 아니다")
+	void email_is_not_null() {
+		assertThatIllegalArgumentException().isThrownBy(() -> new Email(null));
+	}
 }
