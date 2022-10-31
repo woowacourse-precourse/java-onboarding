@@ -7,6 +7,14 @@ package onboarding;
  */
 public class Problem4 {
 
+    public static boolean isAlphabet(char each) {
+        if ((each >= 'a' && each <= 'z') || (each >= 'A' && each <= 'Z')) {
+            return true;
+        }
+        return false;
+    }
+
+
     public static String solution(String word) {
         String answer = "";
 
