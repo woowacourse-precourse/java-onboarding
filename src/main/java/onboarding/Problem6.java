@@ -25,6 +25,10 @@ public class Problem6 {
         return answer;
     }
 
+    public static boolean isValidCrewRange(List<List<String>> forms) {
+        return forms.size() >= MIN_CREW_COUNT && forms.size() <= MAX_CREW_COUNT;
+    }
+
     public static boolean isValidEmailLength(List<List<String>> forms) {
         return forms.stream().allMatch(form -> form.get(FORM_EMAIL).length() >= MIN_EMAIL_LENGTH && form.get(FORM_EMAIL).length() <= MAX_EMAIL_LENGTH);
     }
