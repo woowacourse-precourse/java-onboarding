@@ -5,11 +5,11 @@ import java.util.Collections;
 import java.util.List;
 
 public class Problem6 {
-    public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = new ArrayList<>();
+    static List<String> nicknames = new ArrayList<>();
+    static List<String> emails = new ArrayList<>();
 
-        List<String> nicknames = new ArrayList<>();
-        List<String> emails = new ArrayList<>();
+    public static List<String> solution(List<List<String>> forms) {
+        List<String> answer;
 
         for (List<String> crews : forms) {
 
@@ -21,18 +21,25 @@ public class Problem6 {
         }
 
         String duplicatedString = getDuplicatedString(nicknames);
-
-        for (int i = 0; i < nicknames.size(); i++) {
-            String nickname = nicknames.get(i);
-            if (nickname.contains(duplicatedString)) {
-                String email = emails.get(i);
-                if (!answer.contains(email)) answer.add(emails.get(i));
-            }
-        }
+        answer = findSimilarNicknameCrewEmail(duplicatedString);
 
         Collections.sort(answer);
 
         return answer;
+    }
+
+    public static List<String> findSimilarNicknameCrewEmail(String duplicatedString) {
+        List<String> result = new ArrayList<>();
+
+        for (int i=0; i< nicknames.size(); i++) {
+            String nickname = nicknames.get(i);
+            if (nickname.contains(duplicatedString)) {
+                String email = emails.get(i);
+                if (!result.contains(email)) result.add(email);
+            }
+        }
+
+        return result;
     }
 
     public static String getDuplicatedString(List<String> nicknames) {
