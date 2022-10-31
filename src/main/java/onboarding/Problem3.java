@@ -20,7 +20,7 @@ public class Problem3 {
             if (i == 3 || i == 6 || i == 9) {
                 clapCount = clapCount + 1;
             }
-        return clapCount;
         }
+        return clapCount;
     }
 }
