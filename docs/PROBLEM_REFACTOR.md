@@ -34,3 +34,7 @@
 
 - 알파벳 하드코딩 삭제(상수니까)
 
+### 6번 refactor 요소
+
+- Map에서 get할때 containsKey()로 바꾸기!
+

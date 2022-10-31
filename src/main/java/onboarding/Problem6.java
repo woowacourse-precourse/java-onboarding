@@ -39,7 +39,7 @@ public class Problem6 {
         if (nicknameIsBiggerThanOne(nickname)) {
             for (int i = 0; i < nickname.length() - 1; i++) {
                 String subString = nickname.substring(i, i + 2);
-                addTrie(getFirstLayerTrie(subString), subString, email);
+                addTrieOrIfSubStringExistsInLeafNodeThenAddIntoResultEmailSet(getFirstLayerTrie(subString), subString, email);
             }
         }
     }
@@ -53,30 +53,27 @@ public class Problem6 {
     }
 
     private static Map<String, String> findSubMap(Map<String, Map<String, String>> trie, String subString) {
-
-        Map<String, String> subMap = trie.get(subString);
-        if (subMap == null) {
-            Map<String, String> newMap = new HashMap<>();
-            trie.put(subString, newMap);
-            return newMap;
+        Map<String, String> firstLayerTrieMap = null;
+        if (trie.containsKey(subString)) {
+            firstLayerTrieMap = trie.get(subString);
+        } else if (!trie.containsKey(subString)) {
+            firstLayerTrieMap = new HashMap<>();
+            trie.put(subString, firstLayerTrieMap);
         }
-        return subMap;
+        return firstLayerTrieMap;
+
+
     }
 
-    private static void addTrie(Map<String, String> firstLayerTrie, String subString, String email) {
-        String leafNodeEmail = findSubString(firstLayerTrie, subString);
-        if (leafNodeEmail != null) {
-            resultEmailSet.add(leafNodeEmail);
+    private static void addTrieOrIfSubStringExistsInLeafNodeThenAddIntoResultEmailSet(Map<String, String> firstLayerTrie, String subString, String email) {
+        if (firstLayerTrie.containsKey(subString)) {
+            resultEmailSet.add(firstLayerTrie.get(subString));
             resultEmailSet.add(email);
+        } else if (!firstLayerTrie.containsKey(subString)) {
+            firstLayerTrie.put(subString, email);
         }
-        firstLayerTrie.put(subString, email);
-
-
     }
 
-    private static String findSubString(Map<String, String> firstLayerTrie, String subString) {
-        return firstLayerTrie.get(subString);
-    }
 
 
 
