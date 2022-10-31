@@ -24,3 +24,11 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능 목록
+
+- 친구 관계 그래프 구현
+- 사용자와 함께 아는 친구의 수 만큼 추천 점수를 매기는 기능
+- 타임 라인 방문 횟수만큼 추천 점수를 매기는 기능
+- 추천 점수와 이름순으로 정렬
+- 최대 5명까지만 반환
