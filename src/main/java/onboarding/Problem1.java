@@ -42,7 +42,6 @@ class Problem1 {
     }
 
     /**
-     *
      * @param number : 1과 400 사이의 자연수
      * @return int : 자연수 각 자릿수들의 합
      */
@@ -56,7 +55,6 @@ class Problem1 {
     }
 
     /**
-     *
      * @param number : 1과 400 사이의 자연수
      * @return int : 자연수 각 자릿수들의 곱
      */
@@ -70,7 +68,6 @@ class Problem1 {
     }
 
     /**
-     *
      * @param a : 자연수
      * @param b : 자연수
      * @return int : a와 b중 더 큰 수
@@ -80,7 +77,31 @@ class Problem1 {
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        // exception
+        if (!validCheck(pobi, crong)) {
+            return -1;
+        }
+        // game logic
+        int pobiLeftMax = max(getDigitSum(pobi.get(0)), getDigitProduct(pobi.get(0)));
+        int pobiRightMax = max(getDigitSum(pobi.get(1)), getDigitProduct(pobi.get(1)));
+        int crongLeftMax = max(getDigitSum(crong.get(0)), getDigitProduct(crong.get(0)));
+        int crongRightMax = max(getDigitSum(crong.get(1)), getDigitProduct(crong.get(1)));
+        int pobiMax = max(pobiLeftMax, pobiRightMax);
+        int crongMax = max(crongLeftMax, crongRightMax);
+
+        // pobi win
+        if (pobiMax > crongMax) {
+            return 1;
+        }
+        // crong win
+        if (pobiMax < crongMax) {
+            return 2;
+        }
+        // draw
+        if (pobiMax == crongMax) {
+            return 0;
+        }
+
+        return -1;
     }
 }
