@@ -1,10 +1,20 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 class StringOperation {
     boolean isSameAlphabet(char previous, char next) {
         return previous == next;
+    }
+    boolean isRedundant(int startPosition, int endPosition) {
+        return startPosition != endPosition;
+    }
+    void addRedundantIndex(List<Integer> redundantIndex, List<List<Integer>> redundantIndexes){
+
+        if(isRedundant(redundantIndex.get(0), redundantIndex.get(1))){
+            redundantIndexes.add(redundantIndex);
+        }
     }
     List<Integer> findRedundantAlphabet(String cryptogram, int startIndex) {
 
@@ -16,21 +26,22 @@ class StringOperation {
         redundantCharacterIndex = List.of(startIndex, movingIndex);
         return redundantCharacterIndex;
     }
+    List<List<Integer>> redundantCheck(String cryptogram){
+        int cipherArrayLength = cryptogram.length()-2;
+        List<List<Integer>> redundantIndex=new ArrayList<>();
+        List<Integer> sequence;
+        for(int i=0;i<=cipherArrayLength;i++){
+            sequence=findRedundantAlphabet(cryptogram,i);
+            addRedundantIndex(sequence, redundantIndex);
+        }
+        return redundantIndex;
+    }
     String getDecryption(String cipher, List<String> redundantCharacter){
         String newCipher=cipher;
         for(String character: redundantCharacter){
             newCipher=newCipher.replace(character, "");
         }
         return newCipher;
-    }
-    boolean isRedundant(int startPosition, int endPosition) {
-        return startPosition != endPosition;
-    }
-    void addRedundantIndex(List<Integer> redundantIndex, List<List<Integer>> redundantIndexes){
-
-        if(isRedundant(redundantIndex.get(0), redundantIndex.get(1))){
-            redundantIndexes.add(redundantIndex);
-        }
     }
     boolean existsRedundantAlphabet(int numberOfRedundant){
         return numberOfRedundant!=0;
