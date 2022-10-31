@@ -9,7 +9,9 @@ class Problem1 {
         return (n % 10) + (n % 100 - n % 10) + (n / 100);
     }
     // func : multiple each digit
-
+    private static int getMulti(int n){
+        return (n % 10) * (n % 100 - n % 10) * (n / 100);
+    }
     // func : Get max number on page number
 
     // func : Get max number result between left and right page
