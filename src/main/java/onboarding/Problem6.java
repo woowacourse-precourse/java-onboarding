@@ -13,7 +13,7 @@ public class Problem6 {
             String email = temp.get(0);
 
             if(email.length() < 11 || email.length() > 20)  continue;
-            if(!email.matches("@email.com")) continue;
+            if(!email.matches("^[\\w-\\.]+@([\\w-]+\\.)+[\\w-]{2,4}$")) continue;
             if(!nickname.matches("^[가-힣]*$")) continue;
 
             for(int i=0;i<nickname.length()-1;i++){
