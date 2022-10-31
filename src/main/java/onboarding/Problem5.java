@@ -12,21 +12,45 @@ public class Problem5 {
     }
 
     private static int countFiveMillion() {
-        int fiveMillion = balance / 50000;
-        balance -= 50000 * fiveMillion;
-        return fiveMillion;
+        int count = balance / 50000;
+        balance -= 50000 * count;
+        return count;
     }
 
     private static int countMillion() {
-        int million = balance / 10000;
-        balance -= 10000 * million;
-        return million;
+        int count = balance / 10000;
+        balance -= 10000 * count;
+        return count;
     }
 
     private static int countFiveThousand() {
-        int FiveThousand = balance / 5000;
-        balance -= 5000 * FiveThousand;
-        return FiveThousand;
+        int count = balance / 5000;
+        balance -= 5000 * count;
+        return count;
+    }
+
+    private static int countThousand() {
+        int count = balance / 1000;
+        balance -= 1000 * count;
+        return count;
+    }
+
+    private static int countFiveHundred() {
+        int count = balance / 500;
+        balance -= 500 * count;
+        return count;
+    }
+
+    private static int countThousand() {
+        int thousand = balance / 1000;
+        balance -= 1000 * thousand;
+        return thousand;
+    }
+
+    private static int countThousand() {
+        int thousand = balance / 1000;
+        balance -= 1000 * thousand;
+        return thousand;
     }
 
     private static int countThousand() {
