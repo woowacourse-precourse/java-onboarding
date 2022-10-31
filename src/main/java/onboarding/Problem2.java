@@ -1,56 +1,52 @@
 package onboarding;
 
-import java.util.Stack;
-
 public class Problem2 {
-    private static Stack<Character> characterStack;
     private static char rememberChar = '\0';
 
     public static String solution(String cryptogram) {
-        initStack(cryptogram);
-        return deleteDuplicateChars(cryptogram);
-    }
-
-    private static String deleteDuplicateChars(String cryptogram) {
-        for (int i = 1; i < cryptogram.length(); i++) {
-            if (rememberChar == cryptogram.charAt(i)) {
-                continue;
+        while (true) {
+            String duplicateChars = getDuplicateChars(cryptogram);
+            cryptogram = cryptogram.replace(duplicateChars, "");
+            if(isNoDuplicate(cryptogram)) {
+                return cryptogram;
             }
-
-            if (validateSameChar(characterStack.peek(), cryptogram.charAt(i))) {
-                rememberChar = characterStack.peek();
-                characterStack.pop();
-                continue;
-            }
-
-            characterStack.push(cryptogram.charAt(i));
-            rememberChar = '\0';
         }
-
-        return CharsToString();
     }
 
-    private static String CharsToString() {
+    private static String getDuplicateChars(String cryptogram) {
         StringBuilder sb = new StringBuilder();
+        for(int i=1; i<cryptogram.length(); i++) {
+            if(cryptogram.charAt(i) == cryptogram.charAt(i-1)) {
+                rememberChar = cryptogram.charAt(i-1);
+                sb.append(cryptogram.charAt(i-1));
+            }
+            else {
+                if(rememberChar == cryptogram.charAt(i-1)) {
+                    sb.append(cryptogram.charAt(i-1));
+                }
+                rememberChar = '\0';
+            }
 
-        if (characterStack.empty()) {
-            return "";
+            if(isLastCharDuplicate(cryptogram, i)) {
+                sb.append(cryptogram.charAt(i));
+            }
         }
-
-        characterStack.forEach(sb::append);
         return sb.toString();
     }
 
-    private static void initStack(String cryptogram) {
-        characterStack = new Stack<>();
-        characterStack.push(cryptogram.charAt(0));
+    private static boolean isLastCharDuplicate(String cryptogram, int i) {
+        if(i == cryptogram.length()-1) {
+            return cryptogram.charAt(i) == rememberChar;
+        }
+        return false;
     }
 
-    private static boolean validateSameChar(char char1, char char2) {
-        return char1 == char2;
-    }
-
-    public static void main(String[] args) {
-        System.out.println(solution("browoanoommnaon"));
+    private static boolean isNoDuplicate(String cryptogram) {
+        for(int i=1; i<cryptogram.length(); i++) {
+            if(cryptogram.charAt(i) == cryptogram.charAt(i-1)) {
+                return false;
+            }
+        }
+        return true;
     }
 }
