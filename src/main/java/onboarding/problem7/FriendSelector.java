@@ -1,5 +1,7 @@
 package onboarding.problem7;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -15,5 +17,16 @@ public class FriendSelector {
      */
     public FriendSelector(Map<String, Friend> candidates) {
         this.candidates = candidates;
+    }
+
+    /**
+     * Select maximum 5 friends
+     * @return new friend list
+     */
+    public List<String> select() {
+        // Sort candidates
+        List<String> friends = new ArrayList<>();
+        // Select maximum 5 friends
+        return new ArrayList<>();
     }
 }
