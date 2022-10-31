@@ -27,4 +27,16 @@ public class PageTest {
 		assertThat(6).isEqualTo(score);
 	}
 
+	@Test
+	public void 페이지_점수_비교_테스트() {
+	    //given
+		List<Integer> input = Arrays.asList(311, 312);
+		BookPage pobiBookPage = new BookPage(input);
+		List<Integer> input2 = Arrays.asList(301, 302);
+		BookPage crongBookPage = new BookPage(input2);
+	    //when
+		int compare = pobiBookPage.compareTo(crongBookPage);
+		//then
+		assertThat(compare > 0).isTrue();
+	}
 }

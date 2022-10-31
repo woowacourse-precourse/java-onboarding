@@ -2,7 +2,7 @@ package onboarding;
 
 import java.util.List;
 
-public class BookPage {
+public class BookPage implements Comparable<BookPage>{
 
 	private final PageNum left;
 	private final PageNum right;
@@ -25,5 +25,11 @@ public class BookPage {
 
 	public int getScore() {
 		return Math.max(left.getScore(), right.getScore());
+	}
+
+
+	@Override
+	public int compareTo(BookPage o) {
+		return this.getScore() - o.getScore();
 	}
 }
