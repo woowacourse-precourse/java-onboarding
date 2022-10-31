@@ -58,6 +58,11 @@ class Problem1 {
         return rightPage - leftPage != 1;
     }
 
+    /**
+     * 주어진 페이지 리스트에 문제가 있다면 false, 문제가 없다면 true를 반환한다.
+     * @param list 주어진 페이지 리스트
+     * @return 문제가 있다면 false, 문제가 없다면 true
+     */
     public static boolean handleErrors(List<Integer> list) {
         if (checkSize(list)) {
             return false;
