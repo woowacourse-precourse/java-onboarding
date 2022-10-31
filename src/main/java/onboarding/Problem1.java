@@ -29,7 +29,6 @@ class Problem1 {
         if (right_pobi != left_pobi + 1 || right_crong != left_crong + 1) {
             return check_exception("right page가 left page 다음 페이지가 아님.");
         }
-
         int pobi_score = Integer.max(max_score(left_pobi), max_score(right_pobi));
         int crong_score = Integer.max(max_score(left_crong), max_score(right_crong));
         System.out.println("pobi: " + pobi_score + " crong: " + crong_score);
@@ -42,6 +41,7 @@ class Problem1 {
             return 2;
         }
     }
+
     static int check_exception(String word){
         System.out.println(word);
         return -1;

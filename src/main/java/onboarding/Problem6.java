@@ -33,6 +33,7 @@ public class Problem6 {
                 return null;
             }
         }
+
         List<String> list_email = new ArrayList<>();
 
         for (int i = 0; i < forms.size(); i++) {

@@ -11,6 +11,7 @@ public class Problem7 {
             if(relation.get(0) == user) user_friends.add(relation.get(1));
             else if(relation.get(1) == user) user_friends.add(relation.get(0));
         }
+        
         for (List<String> relation : friends) {
             String user1 = relation.get(0);
             String user2 = relation.get(1);
