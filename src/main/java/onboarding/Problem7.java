@@ -130,8 +130,20 @@ public class Problem7 {
 
     }
 
+    //기능 7
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+
+        List<String> userFriend=findUserFriend(user,friends);
+
+        HashMap<String, Integer> sameFriendList=findSameFriend(user,friends,userFriend);
+
+        visitors=removeUserFriend(visitors,userFriend);
+
+        HashMap<String, Integer> friendPoint= addVisitorPoint(sameFriendList,visitors);
+
+        answer=sortList(friendPoint);
+
         return answer;
     }
 }
