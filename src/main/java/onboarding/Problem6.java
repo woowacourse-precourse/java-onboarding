@@ -7,4 +7,9 @@ public class Problem6 {
         List<String> answer = List.of("answer");
         return answer;
     }
+
+    public static String getPartOfName(String name, int index){
+        String partOfName = name.substring(index, index + 2);
+        return partOfName;
+    }
 }
