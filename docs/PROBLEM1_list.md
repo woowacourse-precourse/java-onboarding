@@ -14,3 +14,13 @@
     1. 페이지 번호별(L,R)로 가장 큰 수가 본인의 점수
     2. 점수 비교 후 가장 높은 사람이 게임의 승자
         1. 포비 1, 크롱 2, 무승부 0, 예외사항 -1
+
+#Refactor
+1. 예외사항 처리 메소드(pageNumCheck)
+   1. 메소드명 변경(pageNumCheck->isCheck)
+   2. 반환타입 변경(int->boolean)
+   3. 접근제어자 변경(public->default)
+   4. 코드 수정
+
+2. solution 메소드
+   1. solution 메소드 내 isCheck 메소드 관련 코드 수정

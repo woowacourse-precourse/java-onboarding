@@ -4,17 +4,17 @@ import java.util.List;
 import java.util.stream.Stream;
 
 class Problem1 {
-    public static int pageNumCheck(List<Integer> list) {
+    static boolean isCheck(List<Integer> list) {
         if(list.get(1)!=list.get(0)+1) {
-            return -1;
+            return true;
         }
         if(list.get(0)%2==0 || list.get(1)%2==1) {
-            return -1;
+            return true;
         }
         if(list.get(0)<=1 || list.get(1)>=400) {
-            return -1;
+            return true;
         }
-        return 0;
+        return false;
     }
 
     public static int getMax(int num) {
@@ -32,19 +32,22 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
-        if(pageNumCheck(pobi)==-1 || pageNumCheck(crong)==-1) return -1;
 
-        int pobiScore = Math.max(getMax(pobi.get(0)), getMax(pobi.get(1)));
-        int crongScore = Math.max(getMax(crong.get(0)), getMax(crong.get(1)));
+        if(isCheck(pobi) || isCheck(crong)) {
+            answer = -1;
+        } else {
+            int pobiScore = Math.max(getMax(pobi.get(0)), getMax(pobi.get(1)));
+            int crongScore = Math.max(getMax(crong.get(0)), getMax(crong.get(1)));
 
-        if(pobiScore > crongScore) {
-            answer = 1;
-        }
-        if(pobiScore < crongScore) {
-            answer = 2;
-        }
-        if(pobiScore == crongScore) {
-            answer = 0;
+            if(pobiScore > crongScore) {
+                answer = 1;
+            }
+            if(pobiScore < crongScore) {
+                answer = 2;
+            }
+            if(pobiScore == crongScore) {
+                answer = 0;
+            }
         }
         return answer;
     }
