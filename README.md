@@ -44,6 +44,8 @@ BUILD SUCCESSFUL in 0s
 6. [문제 6](./docs/PROBLEM6.md)
 7. [문제 7](./docs/PROBLEM7.md)
 
+[기능 요구 사항을 정리한 기능 목록은 여기서 확인하실 수 있습니다.](./docs/requirements.md)
+
 ---
 
 ## 🎯 프로그래밍 요구 사항
