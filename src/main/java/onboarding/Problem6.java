@@ -12,6 +12,17 @@ public class Problem6 {
         List<String> answer = List.of("answer");
         return answer;
     }
+
+    public static List<String> checkOverlapUser(List<List<String>> forms){
+        int length = forms.size();
+        List<Integer> overlabUserIndexList = new ArrayList<Integer>();
+        for(int i = 0; i < length; i++){
+            overlabUserIndexList.addAll(checkOverlapUserCycle(i, forms));
+        }
+
+        return getOverlabUserEmailByIndex(overlabUserIndexList, forms);
+    }
+
     public static List<String> getOverlabUserEmailByIndex(List<Integer> overlabUserIndexList, List<List<String>> forms){
         List<String> overlabUserEmail = new ArrayList<String>();
         HashSet<Integer> overlabUserIndexSetData = new HashSet<>(overlabUserIndexList);
