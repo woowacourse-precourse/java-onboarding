@@ -36,8 +36,7 @@ class Problem1 {
         scores.add(product(numList(left)));
         scores.add(sum(numList(right)));
         scores.add(product(numList(right)));
-        int max = Collections.max(scores);
-        return max;
+        return Collections.max(scores);
     }
 
     public static int judge(int pobi,int crong){
@@ -62,7 +61,6 @@ class Problem1 {
             return -1;
         int pobiMax = findMax(pobi.get(0),pobi.get(1));
         int crongMax = findMax(crong.get(0),crong.get(1));
-        int answer = judge(pobiMax,crongMax);
-        return answer;
+        return judge(pobiMax,crongMax);
     }
 }
