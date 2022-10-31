@@ -8,9 +8,10 @@ import java.util.Set;
 public class Problem6 {
 
     static Map<String, String> splitNickMap;
+    static ArrayList<String> answer;
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        answer = new ArrayList<String>();
         List<String> form;
         List<String> subStringList;
         String currentEmail;
@@ -40,9 +41,24 @@ public class Problem6 {
     }
 
     public static void addSplitNickName(List<String> subList, String email){
+        String subNickName;
+        boolean checkSameNickName = false;
         for ( int index = 0; index < subList.size(); index++){
-            splitNickMap.put(subList.get(index), email);
+            subNickName = subList.get(index);
+            checkNickName(email, subNickName);
         }
 
+
+        for ( int index = 0; index < subList.size(); index++) {
+            splitNickMap.put(subList.get(index), email);
+        }
+    }
+
+    public static void checkNickName(String email, String subNickName){
+
+        if (splitNickMap.containsKey(email)){
+            answer.add(email);
+            answer.add(splitNickMap.get(subNickName));
+        }
     }
 }
