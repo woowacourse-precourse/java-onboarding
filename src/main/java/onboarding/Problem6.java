@@ -16,7 +16,7 @@ public class Problem6 {
 
         findTarget(forms);
 
-       return null;
+        return warningToCrewList.stream().sorted().collect(Collectors.toList());
     }
     public static void distinctNick(String nickName) {
         for (int i = 0; i < nickName.length() - 1; i++) {
