@@ -21,3 +21,9 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능 목록
+- [x] 닉네임을 2글자 토큰으로 변환하는 기능
+- [x] 토큰이 중복된 토큰인지 확인하는 기능
+  - [x] 토큰으로 변환된 닉네임을 토큰 리스트와 맵에 저장한다.
+  - [x] 토큰 리스트를 순회하면서 토큰이 맵에 2개 이상 있을 경우 중복으로 처리한다.
