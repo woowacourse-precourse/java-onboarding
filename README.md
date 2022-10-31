@@ -67,7 +67,7 @@
       - 영문자를 반대 영문자로 바꿔준다.
 
 5. [문제 5](./docs/PROBLEM5.md)
-  - [ ] isValidInput
+  - [X] isValidInput
   - 인자값이 유효한지 검사한다.
       - [ ] isInRange
       - 1 ~ 1000000 사이의 값인지 검사한다.
