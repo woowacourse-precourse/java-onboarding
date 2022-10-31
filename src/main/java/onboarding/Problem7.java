@@ -46,8 +46,26 @@ public class Problem7 {
         }
     }
 
+    public static void filterRecommendation(List<FriendRecommendation> recommendations) {
+        List<String> friendsOfMainUser = getFriends(mainUser);
+
+        Iterator<FriendRecommendation> recommendationIterator = recommendations.iterator();
+
+        while (recommendationIterator.hasNext()) {
+            FriendRecommendation recommendation = recommendationIterator.next();
+            String user = recommendation.user;
+            int score = recommendation.score;
+
+            if (user.equals(mainUser) || friendsOfMainUser.contains(user)) {
+                recommendationIterator.remove();
+            }
+        }
+    }
+
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        List<String> answer = new ArrayList<>();
+
         mainUser = user;
 
         for (List<String> friend : friends) {
@@ -66,10 +84,12 @@ public class Problem7 {
             friendRecommendations.add(new FriendRecommendation(name, score));
         });
 
-        for (FriendRecommendation fr : friendRecommendations) {
-            System.out.println(fr.user + " " + fr.score);
+        filterRecommendation(friendRecommendations);
+
+        for (FriendRecommendation recommendation : friendRecommendations) {
+            answer.add(recommendation.user);
         }
 
-        return List.of("Test");
+        return answer;
     }
 }
