@@ -4,28 +4,43 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Problem2 {
+    // String을 List로 변환하는 함수
+    public static List<Character> transform_list(String cryptogram) {
+        List<Character> cryptolist = new ArrayList<Character>();
 
+        char[] cryparray = cryptogram.toCharArray();
+        for (char c : cryparray) {
+            cryptolist.add(c);
+        }
+
+        return cryptolist;
+    }
+
+    // List의 중복 문자들을 제거하는 함수
+    public static List<Character> remove_duplicate(List<Character> list) {
+        List<Character> remove_dupicate_list = list;
+
+        for (int i = 0; i < remove_dupicate_list.size() - 1; i++) {
+            if (remove_dupicate_list.get(i) == remove_dupicate_list.get(i + 1)) {
+                remove_dupicate_list.remove(i);
+                remove_dupicate_list.remove(i);
+                i = -1;
+            }
+        }
+
+        return remove_dupicate_list;
+    }
 
     // 작동 함수
     public static String solution(String cryptogram) {
         String answer = "answer";
 
-        List<Character> cryplist = new ArrayList<Character>();
-        char[] cryparray = cryptogram.toCharArray();
-        for (char c : cryparray) {
-            cryplist.add(c);
-        }
+        List<Character> cryptolist = transform_list(cryptogram);
 
-        for (int i = 0; i < cryplist.size() - 1; i++) {
-            if (cryplist.get(i) == cryplist.get(i + 1)) {
-                cryplist.remove(i);
-                cryplist.remove(i);
-                i = -1;
-            }
-        }
+        List<Character> remove_duplicate_list = remove_duplicate(cryptolist);
 
         String temp_answer = "";
-        for (char alpha : cryplist) {
+        for (char alpha : remove_duplicate_list) {
             temp_answer += alpha;
         }
 
