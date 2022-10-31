@@ -3,6 +3,8 @@ package onboarding;
 import java.util.*;
 
 public class Problem6 {
+    public static final String EMAIL = "@mail.com";
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
 
@@ -12,6 +14,15 @@ public class Problem6 {
         countNickname(forms, map);
         findEmailDuplicatedNickname(forms, map, set);
 
+        answer = new ArrayList<>(set);
+
+        // 이메일 오름차순으로 정렬
+        Collections.sort(answer, (str1, str2) -> {
+            String[] splitStr1 = str1.split(EMAIL);
+            String[] splitStr2 = str2.split(EMAIL);
+
+            return splitStr1[0].compareTo(splitStr2[0]);
+        });
         return answer;
     }
 
