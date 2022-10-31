@@ -27,8 +27,7 @@ public class Problem7 {
         System.out.println("scores: "+Arrays.toString(scores.keySet().toArray(new String[0])));
         System.out.println("scores: "+Arrays.toString(scores.values().toArray()));
 
-        List<String> answer = Collections.emptyList();
-        return answer;
+        return new ArrayList<String>(scores.keySet());
     }
 
     public static void getScoreValue(HashMap<String, Integer> scores, String id, int score) {
