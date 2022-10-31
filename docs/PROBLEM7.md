@@ -38,4 +38,4 @@
 - [x] 추천 점수 목록을 정렬한다. → `sortScore()`
   - 추천 점수가 높은 순으로 내림차순 정렬
   - 추천 점수가 같은 경우 이름 순으로 정렬
-- [ ] 최대 5명의 친구 추천 목록을 구한다 → `getRecommendedFriends()`
+- [x] 최대 5명의 친구 추천 목록을 구한다 → `getRecommendedFriends()`

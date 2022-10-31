@@ -9,6 +9,23 @@ public class Problem7 {
     }
 
     /**
+     * 최대 5명의 친구 추천 목록을 반환한다.
+     */
+    private static List<String> getRecommendedFriends(Map<String, Integer> sortedScore) {
+        List<String> recommendedFriends = new ArrayList<>();
+
+        for (String friend : sortedScore.keySet()) {
+            recommendedFriends.add(friend);
+
+            if (recommendedFriends.size() == 5) {
+                break;
+            }
+        }
+
+        return recommendedFriends;
+    }
+
+    /**
      * Map을 Value(추천 점수)를 기준으로 내림차순 정렬하고,
      * Value(추천 점수)가 같다면 key(이름)를 기준으로 오름차순 정렬한다.
      */
