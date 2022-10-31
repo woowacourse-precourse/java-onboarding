@@ -99,6 +99,25 @@ public class Problem7 {
             union_friend(friends_unioned, user1, user2);
         }
 
+        // 함께 아는 친구 목록에 10점을 준다.
+        String group = friends_unioned.get(user);
+
+        for (String key : friends_score.keySet()) {
+            if (key.equals(group)) {
+                friends_score.put(key, 10);
+            }
+        }
+
+        // user와 이미 친구인 경우에는 친구 추천 목록에 넣을 필요가 없기 때문에, 점수를 0으로 바꿔준다.
+        for (List<String> friend : friends) {
+            if (friend.get(0).equals(user)) {
+                friends_score.put(friend.get(1), 0);
+            }
+            else if (friend.get(1).equals(user)) {
+                friends_score.put(friend.get(0), 0);
+            }
+        }
+
         return answer;
     }
 }
