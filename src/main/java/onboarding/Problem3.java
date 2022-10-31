@@ -8,10 +8,9 @@ package onboarding;
 public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
-        Problem3 problem3 = new Problem3();
 
         for (int i = 3; i <= number; i++) {
-            answer += problem3.count369(i);
+            answer += count369(i);
         }
 
         return answer;
@@ -23,7 +22,7 @@ public class Problem3 {
      * @param num 3, 6, 9의 개수를 검사할 숫자
      * @return 3, 6, 9의 개수를 반환
      */
-    int count369(int num) {
+    static int count369(int num) {
         int cnt = 0;
 
         while (num > 2) {
