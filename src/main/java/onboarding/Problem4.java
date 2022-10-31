@@ -1,7 +1,7 @@
 package onboarding;
 
 import java.util.Locale;
-/*
+
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
@@ -22,4 +22,3 @@ public class Problem4 {
     }
 
 }
-*/
