@@ -33,8 +33,6 @@ class DuplicateChecker {
         for (int i = 0; i < database.size(); i++) {
             String email = database.get(i).get(0);
             String name = database.get(i).get(1);
-            if (i == 4)
-                System.out.println(2);
             if (checkDuplicate(name, i))
                 duplicates.add(email);
         }
