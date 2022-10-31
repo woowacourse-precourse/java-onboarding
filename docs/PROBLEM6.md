@@ -28,9 +28,13 @@
 
 `addIdAboutDuplicateNikName`: `연속된 두 글자가 중복으로 사용된 닉네임`의 `이메일 아이디`를 Set에 삽입
 
-`sortAscending`: `이메일 아이디` `오름차순 정렬`
-
 `makeEmailForm`: `이메일 아이디`를 `이메일 형식`으로 만들기
+
+`sortAscending`: `이메일` `오름차순 정렬`
+
+
+
+
 
 
 
