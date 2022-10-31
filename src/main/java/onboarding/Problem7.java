@@ -1,14 +1,43 @@
+/*
+ * Problem7.java
+ *
+ * 2022-11-01
+ *
+ */
 package onboarding;
 
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * 우아한 테크코스 - 프리코스 1주차 추천친구 계산
+ *
+ * @author 이준현
+ * @version 1.00 2022년 11월 01일
+ */
 public class Problem7 {
 
+    /**
+     * 전체 user들을 저장하고 있는 Set
+     */
     private static final HashSet<String> users = new HashSet<>();
+    /**
+     * friends들을 통해 파악된 연결된 친구 그래프를 구현시킨 Map
+     */
     private static final HashMap<String, List<String>> network = new HashMap<>();
+    /**
+     * 특정 유저를 중심으로 구성된 추천점수표
+     */
     private static final HashMap<String, Integer> recommendedScore = new HashMap<>();
 
+    /**
+     * 주어진 입력값들이 문제의 제한사하하항에 유효한지 확인하는 method
+     *
+     * @param user     user 이름
+     * @param friends  List
+     * @param visitors List
+     * @return 값이 모두 유효할 시 true, 부적합할 시 false return
+     */
     public static boolean validCheck(String user, List<List<String>> friends, List<String> visitors) {
         if (user.length() < 1 || user.length() > 30) {
             return false;
@@ -36,6 +65,13 @@ public class Problem7 {
         return true;
     }
 
+    /**
+     * 전체 user목록을 만드는 기능
+     *
+     * @param user     중심이 되는 user 정보
+     * @param friends  전체 친구의 구성도를 알 수 있는 friends List
+     * @param visitors user가 방문한 사람들의 정보가 담긴 List
+     */
     public static void makeUser(String user, List<List<String>> friends, List<String> visitors) {
         users.add(user);
         for (List<String> friend : friends) {
@@ -44,6 +80,11 @@ public class Problem7 {
         users.addAll(visitors);
     }
 
+    /**
+     * 전체 친구 구성도를 파악해 unDirected Graph를 만드는 기능
+     *
+     * @param friends 친구 구성도를 나타내는 List
+     */
     public static void makeNetwork(List<List<String>> friends) {
         for (String name : users) {
             network.put(name, new ArrayList<>());
@@ -58,6 +99,12 @@ public class Problem7 {
         }
     }
 
+    /**
+     * 특정 user를 중심으로 문제의 알고리즘에 따라 추천점수를 계산하는 기능.
+     *
+     * @param user     중심이 될 user
+     * @param visitors user가 방문한 사람들의 정보가 담긴 List
+     */
     public static void recommendedScoreCalculation(String user, List<String> visitors) {
         for (String name : users) {
             recommendedScore.put(name, 0);
@@ -90,6 +137,11 @@ public class Problem7 {
         }
     }
 
+    /**
+     * 점수 계산을 통해 최종적으로 가장 높은 추천점수를 받은 사람을 추출하는 기능
+     *
+     * @return 점수별로 내림차순, 점수가 같을시 이름순으로 오름차순 정렬하여 List로 return
+     */
     public static List<String> getRecommendedFriend() {
         List<String> result = new ArrayList<>(Collections.emptyList());
         List<Map.Entry<String, Integer>> sortedFriend = recommendedScore
