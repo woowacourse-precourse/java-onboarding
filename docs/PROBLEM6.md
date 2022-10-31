@@ -21,3 +21,11 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 필요메서드
+
+| 함수명            | 함수설명                                                                                                                                                                                                         | InPut                      | OutPut                         |  
+|----------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------|--------------------------------|
+| isCorrectInput | 문제의 제한사항에 위반되는지를 판단한다.<br/>-위반되지 않는경우:true<br/>- 위반되는경우:false<br/><br/>예외처리 목록<br/>-크루의 수는 1명이상 10,000이하<br/>-이메일의 도메인은 "email.com"<br/>-닉네임은 한글만 가능<br/>-닉네임의 길이는 1글자 이상 20글자 미만<br/>-이메일의 길이는 11자이상 20자 미만 | List<List<-String->> forms | boolean                        |
+|findDupNameEmailList| 닉네임이 중복되는 교육생 List를 return한다.<br/>-두 글자 이상의 문자가 연속적으로 같은 문자인 경우 중복으로 판단한다. <br/>-중복된 닉네임을 가진 회원의 이메일 리스트를 return한다.                                                                                          | List<List<-String->> forms | List<-String->hasDupNameEmails |
+|removedDupEmail|List에서 중복된 이메일을 제거한 List를 return 한다.| List<-String-> emails      | List<-String-> :중복이 제거된 이메일리스트 |
