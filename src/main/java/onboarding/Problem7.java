@@ -9,9 +9,17 @@ import java.util.List;
 import java.util.Map;
 
 public class Problem7 {
-    static final int knowPoint = 10;
-    static final int visitPoint = 1;
-    static final int recommendNum = 5;
+    enum User{
+        knowPoint(10),
+        visitPoint(1),
+        recommendNum(5),
+        first(0),
+        second(1);
+        private final int info;
+        User(int info){
+            this.info = info;
+        }
+    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         List<String> result = new ArrayList<>();
@@ -34,7 +42,7 @@ public class Problem7 {
 
 
         //친구의 점수표를 Map에 저장
-        friendsPoint_map = saveUserPoint(friendsPoint_map, friendsOfFriend_list, knowPoint);
+        friendsPoint_map = saveUserPoint(friendsPoint_map, friendsOfFriend_list, User.knowPoint.info);
 
         //visitor 점수를 추가하기 위해
         //단, 이미 친구인 사람은 제거함
@@ -47,15 +55,15 @@ public class Problem7 {
         }
 
         //친구의 점수표를 MAP에 저장
-        friendsPoint_map = saveUserPoint(friendsPoint_map, visitors_list, visitPoint);
+        friendsPoint_map = saveUserPoint(friendsPoint_map, visitors_list, User.visitPoint.info);
 
         //point가 가장 높은 순으로 배열로 저장
         point_array = sortByPoint(friendsPoint_map);
 
-        int cnt = Math.max(point_array.length , recommendNum);
+        int cnt = Math.max(point_array.length , User.recommendNum.info);
         if (cnt == point_array.length)
             cnt = saveDuplicationRange(point_array);
-        if (cnt == recommendNum)
+        if (cnt == User.recommendNum.info)
             cnt = point_array.length;
 
 
@@ -64,7 +72,7 @@ public class Problem7 {
 
         recommedList = sortByUser(saveCheckpointForSort(point_array, recommedList.size()), recommedList);
 
-        int min = Math.min(recommedList.size(), recommendNum);
+        int min = Math.min(recommedList.size(), User.recommendNum.info);
 
         for (int i = 0; i < min; i++)
             result.add(recommedList.get(i));
@@ -76,16 +84,14 @@ public class Problem7 {
 
     //특정 사람과 친구인 사람 구하기
     public static List<String> findUserFriends(String user, List<List<String>> friends_list) {
-        final int firstUser = 0;
-        final int secondUser = 1;
         List<String> userFriends_list = new ArrayList<>();
 
         for (int i = 0; i < friends_list.size(); i++) {
-            if (user.equals(friends_list.get(i).get(firstUser))) {
-                userFriends_list.add(friends_list.get(i).get(secondUser));
+            if (user.equals(friends_list.get(i).get(User.first.info))) {
+                userFriends_list.add(friends_list.get(i).get(User.second.info));
             }
-            if (user.equals((friends_list.get(i).get(secondUser)))) {
-                userFriends_list.add(friends_list.get(i).get(firstUser));
+            if (user.equals((friends_list.get(i).get(User.second.info)))) {
+                userFriends_list.add(friends_list.get(i).get(User.first.info));
             }
         }
 
@@ -153,10 +159,10 @@ public class Problem7 {
         return checkpoint_list;
     }
     public static int saveDuplicationRange(Integer[] point_array) {
-        int cnt = recommendNum;
-        int lastValue = point_array[recommendNum - 1];
+        int cnt = User.recommendNum.info;
+        int lastValue = point_array[User.recommendNum.info - 1];
 
-        for (int i = recommendNum - 1; i < point_array.length - 1; i++) {
+        for (int i = User.recommendNum.info - 1; i < point_array.length - 1; i++) {
             if (point_array[i] == lastValue)
                 cnt++;
             if (point_array[i] != lastValue)
@@ -219,15 +225,12 @@ public class Problem7 {
     예외 처리 함수
      */
     public static void checkException(String user ,List<List<String>> friends, List<String> visitors) {
-        final int firstFriend = 0;
-        final int secondFriend = 1;
-
         checkNullException(user ,friends, visitors);
         checkUserNameException(user);
 
         for (int i = 0; i < friends.size(); i++) {
-            checkUserNameException(friends.get(i).get(firstFriend));
-            checkUserNameException(friends.get(i).get(secondFriend));
+            checkUserNameException(friends.get(i).get(User.first.info));
+            checkUserNameException(friends.get(i).get(User.second.info));
         }
 
         for (int i = 0; i < visitors.size(); i++)
