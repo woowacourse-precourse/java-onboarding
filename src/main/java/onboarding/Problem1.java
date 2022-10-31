@@ -31,6 +31,9 @@ class Problem1 {
 	}
 
 	private static boolean check_sanity(int left, int right) {
+		// 1 ~ 400 사이 검증
+		if(left < 1 || right > 400)
+			return false;
 		// 페이지가 연속적이지 않다면 예외사항
 		return left + 1 == right ? true : false;
 	}
