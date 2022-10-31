@@ -10,17 +10,17 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer;
         Set<String> friendList = new HashSet<>();
-        HashMap<String, Integer> score = new HashMap<>();
+        HashMap<String, Integer> friendScoreList = new HashMap<>();
 
         findFriend(user, friends, friendList);
-        getScoreInFriend(user, friends, friendList, score);
-        getScoreInVisitors(user, visitors, friendList, score);
+        getScoreInFriend(user, friends, friendList, friendScoreList);
+        getScoreInVisitors(user, visitors, friendList, friendScoreList);
 
-        if (score.isEmpty() == true) {
+        if (friendScoreList.isEmpty() == true) {
             return Collections.emptyList();
         }
 
-        answer = sortDescValueAscKey(new ArrayList<>(score.keySet()), score);
+        answer = sortDescValueAscKey(new ArrayList<>(friendScoreList.keySet()), friendScoreList);
 
         if (answer.size() > 5) {
             answer = answer.subList(0, 5);
@@ -40,29 +40,29 @@ public class Problem7 {
         }
     }
 
-    public static void getScoreInFriend(String user, List<List<String>> friends, Set<String> friendList, HashMap<String, Integer> score) {
+    public static void getScoreInFriend(String user, List<List<String>> friends, Set<String> friendList, HashMap<String, Integer> friendScoreList) {
         for (List<String> friendData : friends) {
             if (user.equals(friendData.get(1)) == false && friendList.contains(friendData.get(0)) == true && friendList.contains(friendData.get(1)) == false) {
-                addScore(score, friendData.get(1), INTERSECTION_FRIEND_SCORE);
+                addScore(friendScoreList, friendData.get(1), INTERSECTION_FRIEND_SCORE);
             }
             if (user.equals(friendData.get(0)) == false && friendList.contains(friendData.get(1)) == true && friendList.contains(friendData.get(0)) == false) {
-                addScore(score, friendData.get(0), INTERSECTION_FRIEND_SCORE);
+                addScore(friendScoreList, friendData.get(0), INTERSECTION_FRIEND_SCORE);
             }
         }
     }
 
-    public static void getScoreInVisitors(String user, List<String> visitors, Set<String> friendList, HashMap<String, Integer> score) {
+    public static void getScoreInVisitors(String user, List<String> visitors, Set<String> friendList, HashMap<String, Integer> friendScoreList) {
         for (String visitor : visitors) {
             if (visitor.equals(user) == false && friendList.contains(visitor) == false) {
-                addScore(score, visitor, VISITOR_SCORE);
+                addScore(friendScoreList, visitor, VISITOR_SCORE);
             }
         }
     }
 
-    public static List<String> sortDescValueAscKey(List<String> sortList, HashMap<String, Integer> score) {
+    public static List<String> sortDescValueAscKey(List<String> sortList, HashMap<String, Integer> friendScoreList) {
         Collections.sort(sortList, (o1, o2) -> {
-            if (score.get(o1) != score.get(o2)) {
-                return score.get(o2).compareTo(score.get(o1));
+            if (friendScoreList.get(o1) != friendScoreList.get(o2)) {
+                return friendScoreList.get(o2).compareTo(friendScoreList.get(o1));
             } else {
                 return o1.compareTo(o2);
             }
@@ -71,11 +71,11 @@ public class Problem7 {
         return sortList;
     }
 
-    public static void addScore(HashMap<String, Integer> score, String key, int addNumber) {
-        if (score.containsKey(key) == false) {
-            score.put(key, addNumber);
+    public static void addScore(HashMap<String, Integer> friendScoreList, String key, int addNumber) {
+        if (friendScoreList.containsKey(key) == false) {
+            friendScoreList.put(key, addNumber);
             return;
         }
-        score.put(key, score.get(key) + addNumber);
+        friendScoreList.put(key, friendScoreList.get(key) + addNumber);
     }
 }
