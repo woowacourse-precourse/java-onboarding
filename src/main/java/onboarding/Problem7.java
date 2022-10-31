@@ -21,6 +21,15 @@ public class Problem7 {
                 recommand.put(friend, 10);
         }
 
+        // 방문자 목록을 탐색하여 이미 친구인 사람 및 자기 자신을 제외하고 추천 대상에 저장해둔다.
+        for(String visitor : visitors){
+            if(!already_friends.contains(visitor) && !visitor.equals(user)){
+                if(recommand.containsKey(visitor))
+                    recommand.put(visitor, recommand.get(visitor) + 1);
+                else recommand.put(visitor, 1);
+            }
+        }
+
         return answer;
     }
 
