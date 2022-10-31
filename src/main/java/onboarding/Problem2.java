@@ -18,6 +18,8 @@ public class Problem2 {
             after = cryptogram.length();
         }
 
+        answer = cryptogram;
+
         return answer;
     }
 
