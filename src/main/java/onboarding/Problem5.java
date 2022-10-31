@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.*;
 import java.util.Collections;
 import java.util.List;
 import java.util.ArrayList;
@@ -35,8 +36,6 @@ public class Problem5 {
         }
         answer.add(money);
 
-
-        System.out.println(answer);
         return answer;
     }
 }
