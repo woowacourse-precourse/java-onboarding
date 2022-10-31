@@ -1,6 +1,6 @@
-package onboarding.pkgProblem1.DTO;
+package onboarding.pkgProblem1.dto;
 
-import onboarding.pkgProblem1.Service.CalculateMaxService;
+import onboarding.pkgProblem1.service.CalculateMaxService;
 
 import java.util.List;
 
@@ -19,4 +19,6 @@ public class User {
     public int getMaxScore() {
         return maxScore;
     }
+
+    public int getReturnNumberIfWin() { return returnNumberIfWin; }
 }

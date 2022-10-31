@@ -1,13 +1,11 @@
 package onboarding;
 
-import onboarding.pkgProblem1.Service.CalculateMaxService;
+import onboarding.pkgProblem1.service.CalculateMaxService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -32,8 +30,16 @@ class ApplicationTest {
         void SplitNumberTest() {
             int[] rs1 = {9,7};
             int[] rs2 = {9,8};
-            assertThat(calculateMaxService.SplitNumber(97)).isEqualTo(rs1);
-            assertThat(calculateMaxService.SplitNumber(98)).isEqualTo(rs2);
+//            assertThat(calculateMaxService.SplitNumber(97)).isEqualTo(rs1);
+//            assertThat(calculateMaxService.SplitNumber(98)).isEqualTo(rs2);
+        }
+        @Test
+        void CalculateSumTest(){
+//            assertThat(calculateMaxService.CalculateSum(new int[]{9,7})).isEqualTo(16);
+        }
+        @Test
+        void CalculateMulTest(){
+//            assertThat(calculateMaxService.CalculateMul(new int[]{9,7})).isEqualTo(63);
         }
         //endregion
         @Test
