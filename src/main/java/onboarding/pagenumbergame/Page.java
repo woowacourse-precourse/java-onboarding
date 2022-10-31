@@ -24,7 +24,7 @@ public class Page {
 
 		return String.valueOf(number)
 			.chars()
-			.map(num -> num - 48)
+			.map(Character::getNumericValue)
 			.reduce(operation)
 			.orElse(0);
 	}
