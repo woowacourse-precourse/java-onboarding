@@ -8,4 +8,8 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
         return answer;
     }
+
+    private static boolean isAlreadyFriend(List<String> userFriends, String friendName) {
+        return userFriends.contains(friendName);
+    }
 }
