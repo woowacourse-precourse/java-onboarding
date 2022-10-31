@@ -31,6 +31,7 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         validate(user, friends, visitors);
         RelationShip relationShip = new RelationShip(friends);
+        System.out.println(relationShip);
 
         UserScore userScore = new UserScore(user, visitors, relationShip);
 
@@ -52,8 +53,8 @@ public class Problem7 {
         public List<String> calculateResult(final UserScore userScore, final RelationShip relationShip,
             final String user) {
             List<String> userOfFriendFromRelation = getUserOfFriendFromRelation(relationShip, user);
-            Map<String, Integer> stringIntegerMap = sortUserScore(userScore);
-            this.result = calculateRank(userOfFriendFromRelation, stringIntegerMap, user);
+            Map<String, Integer> sortedMap = sortUserScore(userScore);
+            this.result = calculateRank(userOfFriendFromRelation, sortedMap, user);
             return result;
         }
 
@@ -140,6 +141,10 @@ public class Problem7 {
         private static final int FRIEND_OF_FRIEND = 10;
         private Map<String, List<String>> relationShipMap;
 
+        public RelationShip(){
+            this.relationShipMap = new HashMap<>();
+        }
+
         public RelationShip(final List<List<String>> friends) {
             this.relationShipMap = new HashMap<>();
             makeRelationship(friends);
@@ -148,11 +153,15 @@ public class Problem7 {
         public Map<String, Integer> makeInitUserScoreMapByRelationShip(final String user){
             Map<String, Integer> userScoreMap = this.relationShipMap.keySet().stream()
                 .collect(Collectors.toMap(String::valueOf, e -> 0));
+
             return calculateUserScoreMapByFriendOfFriend(user, userScoreMap);
         }
 
         private Map<String, Integer> calculateUserScoreMapByFriendOfFriend(final String user, Map<String, Integer> userScoreMap) {
             List<String> userOfFriends = this.relationShipMap.get(user);
+            if (userOfFriends == null) {
+                return userScoreMap;
+            }
             for (String userOfFriend : userOfFriends) {
                 putUserScoreByFriend(userScoreMap, userOfFriend);
             }
@@ -174,8 +183,8 @@ public class Problem7 {
         }
 
         private void addRelationship(final String user1, final String user2) {
-            if (!relationShipMap.containsKey(user1)) {
-                relationShipMap.put(user1, new ArrayList<>(List.of(user2)));
+            if (!this.relationShipMap.containsKey(user1)) {
+                this.relationShipMap.put(user1, new ArrayList<>(List.of(user2)));
                 return;
             }
             List<String> relation = relationShipMap.get(user1);
@@ -184,6 +193,9 @@ public class Problem7 {
         }
 
         public List<String> getUserOfFriend(String user) {
+            if (this.relationShipMap.get(user) == null) {
+                return new ArrayList<>();
+            }
             return this.relationShipMap.get(user);
         }
 
@@ -249,7 +261,7 @@ public class Problem7 {
 
 
         private static void checkVisitorsSizeRange(List<String> visitors) {
-            if (visitors.size() < 1 || visitors.size() > 10000) {
+            if (visitors.size() > 10000) {
                 throw new IllegalArgumentException();
             }
             for (String visitor : visitors) {
