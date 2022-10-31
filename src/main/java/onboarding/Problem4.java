@@ -12,8 +12,13 @@ public class Problem4 {
     public static char[] convertStringToArray(String str){
         return str.toCharArray();
     }
+
     public static String convertArrayToString(char[] chrArray){
         return new String(chrArray);
+    }
+
+    public static boolean isAlpha(char chr){
+        return (chr >= 'a' && chr <= 'z') && (chr >= 'A' && chr <= 'Z');
     }
 
     public static String solution(String word) {
