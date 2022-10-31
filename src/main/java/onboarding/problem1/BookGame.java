@@ -1,28 +1,34 @@
 package onboarding.problem1;
 
+import onboarding.problem1.page.Player;
+import onboarding.problem1.page.PlayerFactory;
+
 import java.util.List;
 
 import static onboarding.problem1.GameResults.*;
-import static onboarding.problem1.PageValidator.*;
 
-// TODO 불변 객체..
 public class BookGame {
 
     private final PageCalculator pageCalculator;
+    private final PlayerFactory playerFactory;
 
-    public BookGame(PageCalculator pageCalculator) {
+    public BookGame(PageCalculator pageCalculator, PlayerFactory playerFactory) {
         this.pageCalculator = pageCalculator;
+        this.playerFactory = playerFactory;
     }
 
     public int doBookGame(List<Integer> firstPages, List<Integer> secondPages) {
         // 게임을 수행하는 메서드
-        List<List<Integer>> pagesList = List.of(firstPages, secondPages);
+        try {
+            Player firstPlayer = playerFactory.getPlayer(firstPages);
+            Player secondPlayer = playerFactory.getPlayer(secondPages);
 
-        if (!isValidPage(pagesList)) {
+            return getWinner(pageCalculator.getResult(List.of(firstPlayer, secondPlayer)));
+
+        } catch (IllegalArgumentException e) {
             return ILLEGAL_VALUE;
         }
 
-        return getWinner(pageCalculator.getResult(pagesList));
     }
 
     private int getWinner(List<Integer> calculationResults) {
@@ -31,12 +37,12 @@ public class BookGame {
             return ILLEGAL_VALUE;
         }
 
-        int firstResults = calculationResults.get(0);
-        int secondResults = calculationResults.get(1);
+        int firstPlayerResults = calculationResults.get(0);
+        int secondPlayerResults = calculationResults.get(1);
 
-        if (firstResults > secondResults) {
+        if (firstPlayerResults > secondPlayerResults) {
             return FIRST_PAGE_WIN;
-        } else if (firstResults < secondResults) {
+        } else if (firstPlayerResults < secondPlayerResults) {
             return SECOND_PAGE_WIN;
         }
 

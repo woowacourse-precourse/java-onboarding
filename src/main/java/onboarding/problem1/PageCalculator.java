@@ -1,23 +1,25 @@
 package onboarding.problem1;
 
+import onboarding.problem1.page.Player;
+
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class PageCalculator {
 
-    public List<Integer> getResult(List<List<Integer>> pageList) {
-        // page를 받아 계산 결과를 리턴한다.
-        return pageList.stream()
+    public List<Integer> getResult(List<Player> playerList) {
+        // page를 받아 계산 결과를 리턴한다. (0:firstPlayer, 1:secondPlayer)
+        return playerList.stream()
                 .map(this::getMaxValue)
                 .collect(Collectors.toList());
     }
 
-    private int getMaxValue(List<Integer> pages) {
-        // page를 받아 값을 계산한다.
-        return pages.stream()
+    private int getMaxValue(Player player) {
+        // player의 pageList를 받아 값을 계산한다.
+        return player.pages().stream()
                 .mapToInt(this::calculatePage)
                 .max()
-                .orElseThrow();
+                .orElseThrow(IllegalArgumentException::new);
     }
 
     private int calculatePage(Integer page) {
