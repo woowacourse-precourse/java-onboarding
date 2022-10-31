@@ -82,4 +82,17 @@ public class Problem7 {
         return firstMap;
     }
 
+    /**
+     * @param map : Map<String, Integer>(정렬하고자 하는 Map)
+     * @param size : 반환하고자 하는 Map의 size
+     * @return map의 Value 기준 내림차순으로 정렬하고 Value 가 같은것 끼리는 Key 오름차순으로 정렬
+     */
+    private static Map<String, Integer> getEntryDescByValue(Map<String, Integer> map, int size){
+        LinkedHashMap<String, Integer> entrySet = map.entrySet().stream()
+                .sorted(Collections.reverseOrder(Map.Entry.<String, Integer>comparingByValue()).thenComparing(Map.Entry.comparingByKey()))
+                .limit(size)
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (oldValue, newValue) -> oldValue, LinkedHashMap::new));
+        return entrySet;
+    }
+
 }
