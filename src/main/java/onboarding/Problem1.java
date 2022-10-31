@@ -20,7 +20,7 @@ class Problem1 {
     }
 
     private static boolean isRightPage(List<Integer> pobi, List<Integer> crong) {
-        return false;
+        return pobi.get(1) - pobi.get(0) == 1 && crong.get(1) - crong.get(0) == 1;
     }
 
     private static boolean isRightEvenOddPage(List<Integer> pobi, List<Integer> crong) {
