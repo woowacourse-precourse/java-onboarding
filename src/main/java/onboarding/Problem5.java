@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ *
+ */
+
 public class Problem5 {
     /*
      * 기능 정리 (★구현 정리로 바꿀 것)
