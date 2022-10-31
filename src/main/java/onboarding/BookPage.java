@@ -15,7 +15,7 @@ public class BookPage {
 
 	void validateInput(List<Integer> input) {
 		if (input.size() != 2 || !isOdd(input.get(0)) || !isEven(input.get(1))) {
-			throw new IllegalStateException("페이지가 잘못 되었습니다.");
+			throw new IllegalArgumentException("페이지가 잘못 되었습니다.");
 		}
 	}
 
