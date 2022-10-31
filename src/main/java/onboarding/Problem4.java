@@ -7,32 +7,25 @@ package onboarding;
 //기능5. 기능2,3,4 를 포문으로 만든뒤 완성된 문자열을 answer로 반환한다.
 //기능5-1. 알파벳인지 공백을 포함한 다른 특수문자인지 우선적으로 검사한다.
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
-        int n =2;
+        int n =0;
 
-//        for (int i=0;i<word.length();i++) {
-//            char c = word.charAt(i);
-//            if ((c >= 'A' && c <= 'Z') && (c >= 'a' && c <= 'z')) {
-//                n = (int) word.charAt(i) + 25 - 2 * ((int) word.charAt(i) - 65);
-//                answer = answer.concat(String.valueOf((char) n));
-//            } else {
-//                answer = answer.concat(String.valueOf(c));
-//            }
-//        }
-
-        int k =(int)word.charAt(n)+25-2*((int)word.charAt(n)-97);
-        System.out.println((int)word.charAt(n)); //73, 기능1
-        System.out.println((int)word.charAt(n)-97); // n=8, 기능2
-        System.out.println(k); //출력값 82, 기능3
-        System.out.println((char)k);
-        answer = answer.concat(String.valueOf((char)k)); //기능4
-        System.out.println(answer);
+        for (int i=0;i<word.length();i++) {
+            char c = word.charAt(i);
+            if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')) {
+                if (Character.isUpperCase(c)) {
+                    n = (int) word.charAt(i) + 25 - 2 * ((int) word.charAt(i) - 65);
+                    answer = answer.concat(String.valueOf((char) n));
+                } else {
+                    n = (int) word.charAt(i) + 25 - 2 * ((int) word.charAt(i) - 97);
+                    answer = answer.concat(String.valueOf((char) n));
+                }
+            } else {
+                answer = answer.concat(String.valueOf(c));
+            }
+        }
 
         return answer;
     }
