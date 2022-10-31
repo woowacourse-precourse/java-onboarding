@@ -21,3 +21,25 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능 구현
+1. solution
+- 입력을 받는다.
+- 같은 글자가 연속적으로 포함되는 닉네임을 가진 이메일을 담을 Set 자료구조를 선언한다.
+- Trie 자료구조의 시작점의 역할을 할 빈 Trie를 생성한다.
+- forms를 순회하며 이메일이 valid 한지 판단하고, valid 한 경우에 Trie에 닉네임을 등록한다.
+- 모든 등록이 끝난 뒤, find를 통해 Trie에서 같은 글자가 연속적으로 포함되는 닉네임을 가진 이메일을 담는다.
+- 이메일 순으로 정렬하고 List 형식으로 결과를 정리한다.
+- 결과를 리턴한다.
+2. insert
+- 닉네임을 한 글자씩 순회하며 트라이에 등록한다.
+  - 두 글자 이상의 문자가 연속하여 들어와야 하므로 인자로 받은 word의 첫 번째 글자는 그 글자와 매핑되는 Trie를 생성하거나 접근한다.
+  - 두 번째 글자부터 방문하는 모든 노드에 userEmail에 인자로 받은 email을 추가한다.
+3. find
+- Trie의 시작점인 Root 부터 모든 자식노드를 재귀적으로 방문하여 만약 그 노드에 방문한 유저의 이메일이 2개 이상 존재할 경우에 그 이메일을 result Set에 담는다.
+4. Trie class
+- 트라이 자료구조를 만든다.
+- 속성은 다음이 존재한다.
+  - children : 한 글자와 Trie를 매핑한 Map 자료구조이다.
+  - userEmail : 해당 Trie 노드까지 접근한 이메일을 담는다.
+  - 생성자 : children과 userEmail을 초기화한다.

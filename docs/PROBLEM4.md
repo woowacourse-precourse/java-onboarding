@@ -19,3 +19,15 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+### 기능 구현
+1. solution
+    - 입력을 받는다.
+    - 결과를 리턴한다.
+2. changeWord
+    - 단어를 입력 받는다.
+    - StringBuilder를 활용하여 문자열을 치환한다.
+      - 단어가 대문자인 경우에는 StringBuilder에 "'A' + 'Z' - 해당 문자" 의 결과를 char 자료형으로 append한다.
+      - 단어가 소문자인 경우에는 StringBuilder에 "'a' + 'z' - 해당 문자" 의 결과를 char 자료형으로 append한다.
+      - 단어가 알파벳이 아닌 경우에는 그대로 StringBuilder에 단어를 append한다.
+    - StringBuilder를 문자열로 바꾸어 리턴한다.
