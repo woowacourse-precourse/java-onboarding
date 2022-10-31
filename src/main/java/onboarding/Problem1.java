@@ -26,22 +26,22 @@ class Problem1 {
 		return getResult(pobiMaxValue, crongMaxValue);
 	}
 
-	static int getResult(int pobiMaxValue, int crongMaxValue) {
+	private static int getResult(int pobiMaxValue, int crongMaxValue) {
 		if (pobiMaxValue == crongMaxValue) {
 			return 0;
 		}
 		return (pobiMaxValue > crongMaxValue) ? 1 : 2;
 	}
 
-	static boolean is1to400(List<Integer> list) {
+	private static boolean is1to400(List<Integer> list) {
 		return list.get(0) <= 0 || list.get(0) >= 401 || list.get(1) <= 0 || list.get(1) >= 401;
 	}
 
-	static boolean isException(List<Integer> list) {
+	private static boolean isException(List<Integer> list) {
 		return list.get(0) != list.get(1) - 1 || list.get(0) % 2 != 1 || list.size() != 2;
 	}
 
-	static int getSide(String side) {
+	private static int getSide(String side) {
 		return (side.equals("left")) ? 0 : 1;
 	}
 
@@ -49,13 +49,13 @@ class Problem1 {
 		return Stream.of(String.valueOf(number).split("")).mapToInt(Integer::parseInt).toArray();
 	}
 
-	static int getSideValue(List<Integer> list, String side) {
+	private static int getSideValue(List<Integer> list, String side) {
 		int leftRight = getSide(side);
 		int[] array = getDigitArray(list.get(leftRight));
 		return Math.max(getArraySum(array), getArrayMultiply(array));
 	}
 
-	static int getArraySum(int[] array) {
+	private static int getArraySum(int[] array) {
 		int sum = 0;
 		for (int j : array) {
 			sum += j;
@@ -63,7 +63,7 @@ class Problem1 {
 		return sum;
 	}
 
-	static int getArrayMultiply(int[] array) {
+	private static int getArrayMultiply(int[] array) {
 		int sum = 1;
 		for (int j : array) {
 			sum *= j;
