@@ -13,6 +13,7 @@ public class Problem7 {
         calculateRelatedFriends(user, friendsMap, scoreMap);
         calculateVisitor(user, visitors, scoreMap);
         removeUserFriends(friendsMap.get(user), scoreMap);
+        removeZeroScore(scoreMap);
         List<String> answer = Collections.emptyList();
         return answer;
     }
@@ -54,6 +55,15 @@ public class Problem7 {
         }
         for(String userFriend: userFriends){
             scoreMap.remove(userFriend);
+        }
+    }
+
+    public static void removeZeroScore(HashMap<String, Integer> scoreMap){
+        List<String> friends = new ArrayList<>(scoreMap.keySet());
+        for(String friend: friends){
+            if(scoreMap.get(friend)==0){
+                scoreMap.remove(friend);
+            }
         }
     }
 
