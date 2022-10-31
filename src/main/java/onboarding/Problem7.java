@@ -169,6 +169,7 @@ public class Problem7 {
         for (String key : listKeySet) {
             if (result.get(key) != 0) {
                 userRanking.add(key);
+                if (userRanking.size() == 5) break;
             }
         }
         Collections.sort(userRanking);
