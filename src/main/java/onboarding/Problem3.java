@@ -1,7 +1,7 @@
 package onboarding;
 
 public class Problem3 {
-    public static int contain3or6or9(int number) {
+    public static int count369(int number) {
         int result = 0;
         String stringNumber = String.valueOf(number);
         for (int i = 0; i < stringNumber.length(); i++) {
@@ -15,7 +15,7 @@ public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
         for (int i = 1; i <= number; i++) {
-            answer += contain3or6or9(i);
+            answer += count369(i);
         }
         return answer;
     }
