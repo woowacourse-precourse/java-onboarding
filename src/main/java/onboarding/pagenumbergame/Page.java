@@ -11,7 +11,7 @@ public class Page {
 		this.pageNumbers = pageNumbers;
 	}
 
-	int getMaximumNumberFrom(int pageNumber) {
+	int getMaximumNumberOf(int pageNumber) {
 		int sumOfDigits = calculate(pageNumber, Integer::sum);
 		int productOfDigits = calculate(pageNumber, (n1, n2) -> n1 * n2);
 		return Math.max(sumOfDigits, productOfDigits);
@@ -27,9 +27,9 @@ public class Page {
 			.orElse(0);
 	}
 
-	public int getMaximumNumber() {
+	public int getMaximumScore() {
 		return pageNumbers.stream()
-			.map(this::getMaximumNumberFrom)
+			.map(this::getMaximumNumberOf)
 			.max(Integer::compareTo)
 			.orElse(0);
 	}
@@ -38,13 +38,13 @@ public class Page {
 		if (isInvalidPage() || other.isInvalidPage()) {
 			return -1;
 		}
-		int pageNumber1 = getMaximumNumber();
-		int pageNumber2 = other.getMaximumNumber();
+		int page1Score = getMaximumScore();
+		int page2Score = other.getMaximumScore();
 
-		if (pageNumber1 == pageNumber2) {
+		if (page1Score == page2Score) {
 			return 0;
 		}
-		return pageNumber1 > pageNumber2 ? 1 : 2;
+		return page1Score > page2Score ? 1 : 2;
 	}
 
 	private boolean isInvalidPage() {
