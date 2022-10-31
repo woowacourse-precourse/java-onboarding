@@ -1,10 +1,12 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     static final int LIMIT_RESULT_NUM = 5;
     static Map<String, Set<String>> relations = new HashMap<>();
+    static Map<String, Integer> score = new HashMap<>();
     static Set<String> userFriends;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -19,6 +21,9 @@ public class Problem7 {
         for (String userFriend: userFriends) {
             relations.remove(userFriend);
         }
+
+        // 점수 부여
+        setScore(visitors);
 
         return new ArrayList<>();
     }
@@ -49,4 +54,19 @@ public class Problem7 {
         }
     }
 
+    private static void setScore(List<String> visitors) {
+        // 친구가 아닌 방문자에게 점수 부여
+        for (String visitor: visitors) {
+            if (userFriends.contains(visitor)) {
+                continue;
+            }
+            score.put(visitor, score.getOrDefault(visitor, 0) + 1);
+        }
+
+        // user와 공통인 친구의 수만큼 점수 부여
+        relations.forEach((String key, Set<String> values) -> {
+            values.retainAll(userFriends);
+            score.put(key, score.getOrDefault(key, 0) + (values.size() * 10));
+        });
+    }
 }
