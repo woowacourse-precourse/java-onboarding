@@ -1,8 +1,44 @@
+###Process
+1. 유저가 아는 친구목록 생성
+2. 친구관계를 가져와서 user의 친구인지 판별
+3. 점수집계
+
+###기능
+####유저가 아는 친구목록 생성
+`List<String> createUserKnowFriends(List<List<String>> friends, String user)`
+- 유저의 친구 목록을 생성한다
+
+####친구관계를 가져와서 user의 친구인지 판별
+`String findFriendKnowFriend(List<String> friendship, List<String> userKnowFriends)`
+- 유저의 친구와 친구관계인지 분석
+- 유저의 친구(A)가 아는 친구(B)라면 친구(B) 이름 반환, 관계가 없으면 `null` 반환
+- 이미 친구관계여도 `null`반환
+
+####점수집계
+`void increasePoint(String name, int point)`
+- 점수 증가
+
+`void increaseVisitorPoint(List<String> visitors, List<String> userKnowFriend)`
+- 방문자 점수집계 수행
+
+`void increaseFriendShipPoint(List<List<String>> friends, List<String> userKnowFriends)`
+- 친구의 친구 점수집계 수행
+
+####기타
+`int notOperator(int friendAorB)`
+- friendship에서 반대편에 있는 인덱스 반환
+
+`void sort(Map<String, Integer> recommendationPoiont)`
+- 점수, 이름순으로 정렬
+
+`void initData(String userName)`
+- 데이터 초기화
+
 ## 🚀 기능 요구 사항
 
 레벨 2의 팀 프로젝트 미션으로 SNS(Social Networking Service)를 만들고자 하는 팀이 있다. 팀에 속한 크루 중 평소 알고리즘에 관심이 많은 미스터코는 친구 추천 알고리즘을 구현하고자 아래와 같은 규칙을 세웠다.
 
-- 사용자와 함께 아는 친구의 수 = 10점 
+- 사용자와 함께 아는 친구의 수 = 10점
 - 사용자의 타임 라인에 방문한 횟수 = 1점
 
 사용자 아이디 user와 친구 관계 정보 friends, 사용자 타임 라인 방문 기록 visitors가 매개변수로 주어질 때, 미스터코의 친구 추천 규칙에 따라 점수가 가장 높은 순으로 정렬하여 최대 5명을 return 하도록 solution 메서드를 완성하라. 이때 추천 점수가 0점인 경우 추천하지 않으며, 추천 점수가 같은 경우는 이름순으로 정렬한다.
