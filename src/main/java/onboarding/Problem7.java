@@ -10,7 +10,28 @@ public class Problem7 {
         user_friend = findFriends(user,friends);
         checkFriends(user,friends,user_friend);
         checkIsVisited(visitors,user_friend);
+        sortMaps(map,answer);
         return answer;
+    }
+    static void sortMaps(Map<String,Integer>map,List<String> answer) {
+        int count = 0;
+        List<Map.Entry<String, Integer>> list = new LinkedList<>(map.entrySet());
+        Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                int comparision = (o1.getValue() - o2.getValue()) * -1;
+                return comparision == 0 ? o1.getKey().compareTo(o2.getKey()) : comparision;
+            }
+        });
+
+        Map<String, Integer> sortedMap = new LinkedHashMap<>();
+        for(Iterator<Map.Entry<String, Integer>> iter = list.iterator(); iter.hasNext();){
+            count += 1;
+            Map.Entry<String, Integer> entry = iter.next();
+            sortedMap.put(entry.getKey(), entry.getValue());
+            answer.add(entry.getKey());
+            if(count == 5){break;}
+        }
     }
     static void checkIsVisited(List<String> visitors,List<String> user_friend){
         for(String info : visitors){
