@@ -41,6 +41,10 @@ public class Problem6 {
 	}
 
 	public static void addDuplicateUser(List<String> answer, List<List<String>> forms) {
-		
+		for (int i = 0; i < duplicateUser.length; i++) {
+			if (duplicateUser[i]) {
+				answer.add(forms.get(i).get(0));
+			}
+		}
 	}
 }
