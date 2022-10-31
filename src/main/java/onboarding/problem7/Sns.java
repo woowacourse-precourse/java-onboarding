@@ -21,6 +21,20 @@ public class Sns {
         }
     }
 
+    public void addVisitLog(String user, List<String> visitors) {
+        HashMap<String, Integer> visitLog = visitHistory.getOrDefault(user, new HashMap<>());
+        for (String visitor : visitors) {
+            enrollMember(visitor);
+            visitLog.put(visitor, visitLog.getOrDefault(visitor, 0) + 1);
+        }
+        visitHistory.put(user, visitLog);
+    }
+
+
+    private void enrollMember(String member) {
+        memberSet.add(member);
+    }
+
     private void enrollMembers(List<String> members) {
         memberSet.addAll(members);
     }
