@@ -17,6 +17,10 @@ public class Problem6 {
         for (List<String> crewInfo : forms) {
             String nickname = crewInfo.get(NICKNAME);
 
+            if (nickname.length() < 2) {
+                continue;
+            }
+
             for (int i = 0; i < nickname.length() - 1; i++) {
                 String piece = nickname.substring(i, i + 2);
 
