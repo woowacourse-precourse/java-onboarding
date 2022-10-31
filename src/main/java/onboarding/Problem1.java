@@ -6,13 +6,6 @@ import java.util.Random;
 
 
 class Problem1 {
-    public static void main(String[] args) {
-        List<Integer> pobi = book_open();
-        List<Integer> crong = book_open();
-
-        System.out.println(solution(pobi, crong));
-    }
-
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         List<List<Integer>> c1 = new ArrayList<>();
         List<List<Integer>> c2 = new ArrayList<>();
