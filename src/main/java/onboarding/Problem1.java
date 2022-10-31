@@ -5,6 +5,9 @@ import java.util.List;
 class Problem1 {
 
     public static final int EXCEPTION = -1;
+    public static final int POBI_WIN = 1;
+    public static final int CRONG_WIN = 1;
+    public static final int DRAW = 0;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
@@ -27,6 +30,8 @@ class Problem1 {
 
         int pobiMaxNumber = Math.max(calculateMaxNumber(pobiLeftPageNumber), calculateMaxNumber(pobiRightPageNumber));
         int crongMaxNumber = Math.max(calculateMaxNumber(crongLeftPageNumber), calculateMaxNumber(crongRightPageNumber));
+
+        answer = findWinner(pobiMaxNumber, crongMaxNumber);
 
         return answer;
     }
@@ -58,5 +63,15 @@ class Problem1 {
         }
 
         return Math.max(sum, multiply);
+    }
+
+    private static int findWinner(int pobiMaxNumber, int crongMaxNumber) {
+        if (pobiMaxNumber > crongMaxNumber) {
+            return POBI_WIN;
+        } else if (pobiMaxNumber < crongMaxNumber) {
+            return CRONG_WIN;
+        } else {
+            return DRAW;
+        }
     }
 }
