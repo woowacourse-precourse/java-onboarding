@@ -1,6 +1,14 @@
 package onboarding;
 
 public class Problem4 {
+
+	public static final int asciiCapitalA = 65;
+	public static final int asciiCapitalZ = 90;
+	public static final int asciiLowerCaseA = 97;
+	public static final int asciiLowerCaseZ = 122;
+	public static final int asciiCapitalCalculationNumber = 155;
+	public static final int asciiLowerCaseCalculationNumber = 219;
+
 	public static String solution(String word) {
 
 		StringBuilder answer = new StringBuilder();
@@ -20,12 +28,12 @@ public class Problem4 {
 
 		int reversedAscii = ascii;
 
-		if (ascii >= 65 && ascii <= 90) {
-			reversedAscii = 155 - ascii;
+		if (ascii >= asciiCapitalA && ascii <= asciiCapitalZ) {
+			reversedAscii = asciiCapitalCalculationNumber - ascii;
 		}
 
-		if (ascii >= 97 && ascii <= 122) {
-			reversedAscii = 219 - ascii;
+		if (ascii >= asciiLowerCaseA && ascii <= asciiLowerCaseZ) {
+			reversedAscii = asciiLowerCaseCalculationNumber - ascii;
 		}
 
 		return (Character) (char) reversedAscii;
