@@ -1,4 +1,5 @@
 package onboarding;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,10 +18,10 @@ class Problem1 {
             int maxPobiValue = verifyPobi.getMaxNum();
             int maxCrongValue = verifyCrong.getMaxNum();
 
-            if(maxPobiValue > maxCrongValue)
+            if (maxPobiValue > maxCrongValue)
                 return 1;
 
-            else if(maxPobiValue < maxCrongValue)
+            else if (maxPobiValue < maxCrongValue)
                 return 2;
 
         } catch (IllegalArgumentException e) {
@@ -63,7 +64,7 @@ class Vericication {
 
         List<Integer> returnDigit = new ArrayList<>();
 
-        while(page != 0) {
+        while (page != 0) {
             returnDigit.add(page % 10);
             page /= 10;
         }
@@ -74,14 +75,14 @@ class Vericication {
         int totalOfSum = 0;
         int totalOfMul = 1;
 
-        for(Integer idx : verifiedBook) {
+        for (Integer idx : verifiedBook) {
             List<Integer> digitArray = getDigitNum(idx);
 
-            for(Integer digit : digitArray) {
+            for (Integer digit : digitArray) {
                 totalOfSum += digit;
                 totalOfMul *= digit;
             }
         }
-        return Math.max(totalOfSum,totalOfMul);
+        return Math.max(totalOfSum, totalOfMul);
     }
 }
