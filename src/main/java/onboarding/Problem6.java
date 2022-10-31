@@ -19,10 +19,28 @@ public class Problem6 {
     private static Map<String, Integer> nicknameAndCountMap = new HashMap<>();
 
     public static List<String> solution(List<List<String>> forms) {
+        checkException(forms);
         setupData(forms);
         getAnswer(forms);
         Collections.sort(answer);
         return answer;
+    }
+
+    public static void checkException(List<List<String>> forms) {
+        if(!isValidCrewRange(forms))
+            throw new IllegalArgumentException("크루원은 1명 이상 10,000명 이하입니다.");
+
+        if(!isValidEmailLength(forms))
+            throw new IllegalArgumentException("이메일의 유효 길이는 11~19자입니다.");
+
+        if(!isValidDomain(forms))
+            throw new IllegalArgumentException("신청 가능한 이메일의 도메인은 [email.com] 입니다.");
+
+        if(!isValidNicknameRegex(forms))
+            throw new IllegalArgumentException("닉네임은 한글만 가능합니다.");
+
+        if(!isValidNicknameLength(forms))
+            throw new IllegalArgumentException("닉네임의 유효 길이는 1~19자입니다.");
     }
 
     public static boolean isValidCrewRange(List<List<String>> forms) {
