@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Problem7 {
@@ -57,6 +54,22 @@ public class Problem7 {
         return result;
     }
 
+    /**
+     * @param users : 문자열 리스트(포인트를 받을 수 있는 이름)
+     * @param pointType enum 타입 (VISIT, FRIEND_OF_FRIENDS)을 가지고 타입에 해당하는 포인트 value를 가지고 있다.
+     * @return users를 Key로 point를 value로 반환하는데, pointType의 value를 더해 Map<String, Integer>을 반환함
+     */
+    private static Map<String, Integer> calculatePoint(List<String> users, PointType pointType) {
+        Map<String, Integer> userPointMap = new HashMap<>();
+        for (String user : users) {
+            if (userPointMap.containsKey(user)) {
+                userPointMap.replace(user, userPointMap.get(user) + pointType.getValue());
+            }else{
+                userPointMap.put(user, pointType.getValue());
+            }
+        }
 
+        return userPointMap;
+    }
 
 }
