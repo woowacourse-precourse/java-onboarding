@@ -32,6 +32,13 @@ public class Problem6 {
             }
         }
 
+        for (int i = 0; i < count.length; i++) {
+            if (count[i]) {
+                answer.add(forms.get(i).get(0));
+            }
+        }
+
+
         return answer;
     }
 
