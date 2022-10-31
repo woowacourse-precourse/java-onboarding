@@ -30,8 +30,8 @@ public class Problem5 {
      * @param money 금액
      * @return 화폐 분류 결과
      */
-    private static LinkedList<Integer> classifyMoney(int money) {
-        LinkedList<Integer> classifyMoney = new LinkedList<>();
+    private static List<Integer> classifyMoney(int money) {
+        List<Integer> classifyMoney = new LinkedList<>();
 
         for (int denominationType : currencyDenominationType) {
             int countMoney = money / denominationType;
