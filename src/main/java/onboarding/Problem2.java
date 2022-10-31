@@ -28,14 +28,14 @@ public class Problem2 {
             for (int i = 0; i < cryptogram.length(); i++) {
                 valid[i] = true;
             }
-            for (Integer l : deleteIndexSet) {
-                valid[l] = false;
+            for (Integer deleteIndex : deleteIndexSet) {
+                valid[deleteIndex] = false;
             }
-            String save = answer;
+            String prevString = answer;
             answer = "";
-            for (int i = 0; i < save.length(); i++) {
+            for (int i = 0; i < prevString.length(); i++) {
                 if (valid[i]) {
-                    answer += save.charAt(i);
+                    answer += prevString.charAt(i);
                 }
             }
         } while (!(deleteIndexSet = getDeleteIndexSet(answer)).isEmpty());

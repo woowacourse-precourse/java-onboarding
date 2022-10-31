@@ -24,11 +24,13 @@ public class Problem5 {
     public static List<Integer> getChangeCoinList(int money, int[] coinList) {
         List<Integer> answer = new ArrayList<>();
         for (int i = 0; i < coinList.length; i++) {
-            if (coinList[i] <= 0) {
+            int coinValue = coinList[i];
+            if (coinValue <= 0) {
                 break;
             }
-            answer.add(money / coinList[i]);
-            money -= money / coinList[i] * coinList[i];
+            int coins = money / coinValue;
+            answer.add(coins);
+            money -= coins * coinValue;
         }
         return answer;
     }
