@@ -13,12 +13,6 @@ public class Problem5 {
         return answer;
     }
 
-    private static boolean checkingExchangeTermination(int balance) {
-        if (balance == 0) {
-            return false;
-        }
-        return true;
-    }
-
+    
 
 }
