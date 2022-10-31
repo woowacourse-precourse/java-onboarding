@@ -1,6 +1,5 @@
 package onboarding;
 
-import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
@@ -42,32 +41,5 @@ class Problem1 {
             num /= 10;
         }
         return sum;
-    }
-    public static void main(String[] args) {
-        List<Integer> pobi1 = new ArrayList<>();
-        List<Integer> crong1 = new ArrayList<>();
-        pobi1.add(97);
-        pobi1.add(98);
-        crong1.add(197);
-        crong1.add(198);
-
-        List<Integer> pobi2 = new ArrayList<>();
-        List<Integer> crong2 = new ArrayList<>();
-        pobi2.add(131);
-        pobi2.add(132);
-        crong2.add(211);
-        crong2.add(212);
-
-        List<Integer> pobi3 = new ArrayList<>();
-        List<Integer> crong3 = new ArrayList<>();
-        pobi3.add(211);
-        pobi3.add(212);
-        crong3.add(99);
-        crong3.add(102);
-
-        System.out.println(solution(pobi1, crong1));
-        System.out.println(solution(pobi2, crong2));
-        System.out.println(solution(pobi3, crong3));
-    }
-            
+    }  
 }
