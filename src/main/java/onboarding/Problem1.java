@@ -57,32 +57,32 @@ class Problem1 {
     public static int getScore(List<Integer> pages) {
         int score = -1;
         for (int page : pages) {
-            List<Integer> splitedNum = splitNum(page);
-            int addScore = getAddScore(splitedNum);
-            int mulScore = getMulScore(splitedNum);
+            List<Integer> splittedNum = splitNum(page);
+            int addScore = getAddScore(splittedNum);
+            int mulScore = getMulScore(splittedNum);
 
-            int temp = (addScore > mulScore) ? addScore : mulScore;
+            int newScore = (addScore > mulScore) ? addScore : mulScore;
 
-            score = (temp > score) ? temp : score;
+            score = (newScore > score) ? newScore : score;
         }
 
         return score;
     }
 
-    public static int getAddScore(List<Integer> splitedNum) {
+    public static int getAddScore(List<Integer> splittedNum) {
         int addScore = 0;
 
-        for(int num: splitedNum) {
+        for(int num: splittedNum) {
             addScore += num;
         }
 
         return addScore;
     }
 
-    public static int getMulScore(List<Integer> splitedNum) {
+    public static int getMulScore(List<Integer> splittedNum) {
         int mulScore = 1;
 
-        for(int num: splitedNum) {
+        for(int num: splittedNum) {
             mulScore *= num;
         }
 
