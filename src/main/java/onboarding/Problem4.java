@@ -1,25 +1,35 @@
 package onboarding;
 
+import java.util.List;
+import java.util.regex.Pattern;
+
 class Word {
 
   private String word;
-  private static final int MINLIMIT = 1;
-  private static final int MAXLIMIT = 1000;
 
   Word(String word) {
-    lengthValidityCheck(word);
+    ValidityCheckerProb4 vc = new ValidityCheckerProb4(word);
     this.word = word;
-  }
-
-  private void lengthValidityCheck(String word) {
-    if (word.length() < MINLIMIT || word.length() > MAXLIMIT) {
-      throw new IllegalArgumentException("length of word is not in range.");
-    }
   }
 
   String getAnswer() {
     Classifier classifier = new Classifier(word);
     return classifier.getChangedString();
+  }
+}
+
+class ValidityCheckerProb4 {
+
+  private static final int MINLIMIT = 1;
+  private static final int MAXLIMIT = 1000;
+
+  ValidityCheckerProb4(String word) {
+    lengthValidityCheck(word);
+  }
+  private void lengthValidityCheck(String word) {
+    if (word.length() < MINLIMIT || word.length() > MAXLIMIT) {
+      throw new IllegalArgumentException("length of word is not in range.");
+    }
   }
 }
 
