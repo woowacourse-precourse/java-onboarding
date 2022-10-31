@@ -1,11 +1,13 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 
 public class Problem6 {
     private static final String ALLOWED_DOMAIN = "email.com";
-    private static final Map<String, List<String>> studentInfo= new HashMap<>();
+    private static final Map<String, List<String>> studentInfo = new HashMap<>();
+    private static final Set<String> duplicateStudents = new HashSet<>();
 
     public static List<String> solution(List<List<String>> forms) {
         for (List<String> info : forms) {
@@ -16,7 +18,10 @@ public class Problem6 {
             }
             addAllSubNickName(email, nickName);
         }
-        return new ArrayList<>();
+        findDuplicateNickNameUserEmail();
+        return duplicateStudents.stream()
+                .sorted()
+                .collect(Collectors.toList());
     }
 
     private static boolean isAllowedDomain(String email) {
@@ -33,6 +38,14 @@ public class Problem6 {
             List<String> initList = new ArrayList<>();
             initList.add(email);
             studentInfo.put(subNickName, initList);
+        }
+    }
+
+    private static void findDuplicateNickNameUserEmail() {
+        for(List<String> emails : studentInfo.values()) {
+            if (emails.size() > 1) {
+                duplicateStudents.addAll(emails);
+            }
         }
     }
 
