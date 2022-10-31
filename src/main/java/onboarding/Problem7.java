@@ -11,7 +11,6 @@ public class Problem7 {
     private static final Set<String> friends = new HashSet<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
         doNumbering(user, friends);
 
         initAdjList(friends);
@@ -30,6 +29,10 @@ public class Problem7 {
             return o2.getValue() - o1.getValue();
         });
 
+        ArrayList answer = new ArrayList<>();
+        for (int i = 0; i < Math.min(5, scoreArray.size()); i++) {
+            answer.add(scoreArray.get(i).getKey());
+        }
 
         return answer;
     }
