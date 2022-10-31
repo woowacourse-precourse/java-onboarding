@@ -37,8 +37,18 @@ public class Problem3 {
         return count;
     }
 
+    // 총 몇 번의 박수를 쳐야하는지 검사하는 메서드
+    public static int extractResult(int number) {
+        int result = 0;
+
+        for (int i = 1; i < number + 1; i++) {
+            String currentValue = String.valueOf(i);
+            result += countClap(currentValue);
+        }
+        return result;
+    }
+
     public static int solution(int number) {
-        int answer = 0;
-        return answer;
+        return extractResult(number);
     }
 }
