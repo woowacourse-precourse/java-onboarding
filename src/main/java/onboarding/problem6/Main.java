@@ -5,6 +5,7 @@ import onboarding.problem6.domain.Crew;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Main {
     public Crew makeCrewByEmailAndNickname(String email, String nickname) {
@@ -21,5 +22,12 @@ public class Main {
         }
         Crews crews = new Crews(crewList);
         return crews;
+    }
+
+    public List<String> getAscendingEmailListFrom(List<Crew> set) {
+        return set.stream()
+                .map(x -> x.getEmail())
+                .sorted()
+                .collect(Collectors.toList());
     }
 }
