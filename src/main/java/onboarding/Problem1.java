@@ -99,9 +99,9 @@ class Problem1 {
         crongFinalScore=answer; // 크롱의 가장 큰 수
         System.out.println("포비:"+pobiFinalScore+" / 크롱:"+crongFinalScore);
         if(pobiFinalScore==crongFinalScore) answer=0;
-        else if(pobiFinalScore<crongFinalScore) answer=-1;
+        else if(pobiFinalScore<crongFinalScore) answer=2;
         else if(pobiFinalScore>crongFinalScore) answer=1;
-        else answer=2;
+        else answer=-1;
 		return answer;        
     }
 }
