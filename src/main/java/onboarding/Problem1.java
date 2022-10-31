@@ -10,7 +10,6 @@ class Problem1 {
     private static final int CRONG = 2;
     private static final int TIE = 0;
     private static final int EXCEPTION = -1;
-
     private static final int FIRST_PAGE = 1;
     private static final int LAST_PAGE = 400;
     private static final int LEFT = 0;
@@ -100,13 +99,7 @@ class Problem1 {
     }
 
     private static boolean isInValidPageNumber(List<Integer> pages) {
-        if (isValidPageRange(pages)) {
-            return false;
-        }
-        if (isValidPageOddEven(pages)) {
-            return false;
-        }
-        if (isValidPageSequence(pages)) {
+        if (isValidPageRange(pages) && isValidPageOddEven(pages) && isValidPageSequence(pages)) {
             return false;
         }
 
