@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<Integer> divideAndCompareName(List<List<String>> forms) {
@@ -35,6 +36,9 @@ public class Problem6 {
         List<Integer> index = divideAndCompareName(forms);
 
         // 2. index 중복 제거
+        List<Integer> notDuplicationIndex = index.stream()
+                .distinct()
+                .collect(Collectors.toList());
         // 3. index 로 이메일 값 가져옴
         // 4. 사전순 정렬
 
