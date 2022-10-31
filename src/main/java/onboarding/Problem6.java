@@ -12,23 +12,20 @@ public class Problem6 {
     static final int LIST_START_RANGE = 1;
     static final int LIST_END_RANGE = 10_000;
 
-    static final int EMAIL_START_RANGE = 11;
-    static final int EMAIL_END_RANGE = 20;
-    static final String EMAIL_SUFFIX = "@email.com";
 
     static final int NICKNAME_START_RANGE = 1;
     static final int NICKNAME_END_RANGE = 20;
 
     public static List<String> solution(List<List<String>> forms) {
 
-        List<String> answer = fillDuplicateNameOwners(fillNameFragmentOwners(forms));
+        List<Email> emailList = fillDuplicateNameOwners(fillNameFragmentOwners(forms));
 
-        Collections.sort(answer);
-        return deduplicateInEmails(answer);
+        Collections.sort(emailList);
+        return deduplicateInEmails(emailList);
     }
 
-    private static List<String> deduplicateInEmails(List<String> answer) {
-        if(!isValidLength(answer, LIST_START_RANGE,LIST_END_RANGE)) {
+    private static List<String> deduplicateInEmails(List<Email> answer) {
+        if (!isValidLength(answer, LIST_START_RANGE, LIST_END_RANGE)) {
             throw new InputMismatchException("리스트의 범위가 올바르지 않습니다.");
         }
 
@@ -39,42 +36,42 @@ public class Problem6 {
         return ret;
     }
 
-    private static void deduplicateInEmail(List<String> answer, List<String> ret, int i) {
+    private static void deduplicateInEmail(List<Email> answer, List<String> ret, int i) {
         if (isDuplicatedEmail(answer, i)) {
             return;
         }
 
-        ret.add(answer.get(i));
+        ret.add(answer.get(i).getValue());
     }
 
-    private static boolean isDuplicatedEmail(List<String> answer, int i) {
+    private static boolean isDuplicatedEmail(List<Email> answer, int i) {
         return i != 0 && answer.get(i).equals(answer.get(i - 1));
     }
 
-    private static List<String> fillDuplicateNameOwners(Map<String, List<String>> nameFragmentOwners) {
-        List<String> ret = new ArrayList<>();
-        for (List<String> owners : nameFragmentOwners.values()) {
+    private static List<Email> fillDuplicateNameOwners(Map<String, List<Email>> nameFragmentOwners) {
+        List<Email> ret = new ArrayList<>();
+        for (List<Email> owners : nameFragmentOwners.values()) {
             addDuplicateNameOwners(ret, owners);
         }
         return ret;
     }
 
-    private static void addDuplicateNameOwners(List<String> ret, List<String> owners) {
+    private static void addDuplicateNameOwners(List<Email> ret, List<Email> owners) {
         if (!isDuplicateNameFor(owners)) {
             return;
         }
         ret.addAll(owners);
     }
 
-    private static boolean isDuplicateNameFor(List<String> owners) {
+    private static boolean isDuplicateNameFor(List<Email> owners) {
         return owners.size() != 1;
     }
 
-    private static Map<String, List<String>> fillNameFragmentOwners(List<List<String>> forms) {
-        Map<String, List<String>> nameFragmentOwners = new HashMap<>();
+    private static Map<String, List<Email>> fillNameFragmentOwners(List<List<String>> forms) {
+        Map<String, List<Email>> nameFragmentOwners = new HashMap<>();
 
         for (List<String> form : forms) {
-            String email = form.get(0);
+            Email email = makeEmail(form.get(0));
             String nickname = form.get(1);
 
             addFragmentsOwner(nameFragmentOwners, email, nickname);
@@ -82,11 +79,8 @@ public class Problem6 {
         return nameFragmentOwners;
     }
 
-    private static void addFragmentsOwner(Map<String, List<String>> nameFragmentOwners, String email, String nickname) {
-        if(!isValidEmail(email)) {
-            throw new InputMismatchException("유효하지 않은 이메일 형식입니다.");
-        }
-        if(!isValidNickname(nickname)) {
+    private static void addFragmentsOwner(Map<String, List<Email>> nameFragmentOwners, Email email, String nickname) {
+        if (!isValidNickname(nickname)) {
             throw new InputMismatchException("유효하지 않은 닉네임 형식입니다.");
         }
         for (int j = 0; j < nickname.length() - 1; ++j) {
@@ -94,7 +88,7 @@ public class Problem6 {
         }
     }
 
-    private static void addFragmentOwner(Map<String, List<String>> nameFragmentOwners, String email,
+    private static void addFragmentOwner(Map<String, List<Email>> nameFragmentOwners, Email email,
             String nicknameFragment) {
         if (isEmptyList(nameFragmentOwners, nicknameFragment)) {
             nameFragmentOwners.put(nicknameFragment, new ArrayList<>());
@@ -107,13 +101,14 @@ public class Problem6 {
         return nickname.substring(j, j + 2);
     }
 
-    private static boolean isEmptyList(Map<String, List<String>> nameFragmentOwners, String nicknameFragment) {
+    private static boolean isEmptyList(Map<String, List<Email>> nameFragmentOwners, String nicknameFragment) {
         return nameFragmentOwners.get(nicknameFragment) == null;
     }
 
     private static boolean isValidLength(String str, int start, int end) {
         return start <= str.length() && str.length() <= end;
     }
+
     private static boolean isValidLength(List<?> list, int start, int end) {
         return start <= list.size() && list.size() <= end;
     }
@@ -133,15 +128,59 @@ public class Problem6 {
         return !nickname;
     }
 
-    private static boolean isValidEmail(String email) {
-        if(!isValidLength(email, EMAIL_START_RANGE, EMAIL_END_RANGE -1))
-            return false;
-
-        return isEmailSuffixValid(email.substring(email.length() - EMAIL_SUFFIX.length()), EMAIL_SUFFIX);
+    public static Email makeEmail(String email) {
+        return new Email(email);
     }
 
-    private static boolean isEmailSuffixValid(String email, String emailSuffix) {
-        return email.equals(emailSuffix);
+    static class Email implements Comparable<Email> {
+        
+        final int EMAIL_START_RANGE = 11;
+        final int EMAIL_END_RANGE = 20;
+        final String EMAIL_SUFFIX = "@email.com";
+
+        private String value;
+
+        public Email(String value) {
+            if (!isValidEmail(value)) {
+                throw new InputMismatchException("유효하지 않은 이메일 형식입니다.");
+            }
+
+            this.value = value;
+        }
+
+
+        public String getValue() {
+            return value;
+        }
+
+        private boolean isValidEmail(String email) {
+            if (!isValidLength(email, EMAIL_START_RANGE, EMAIL_END_RANGE - 1)) {
+                return false;
+            }
+
+            return isEmailSuffixValid(email.substring(email.length() - EMAIL_SUFFIX.length()));
+        }
+
+        private boolean isEmailSuffixValid(String email) {
+            return email.equals(EMAIL_SUFFIX);
+        }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) {
+                return true;
+            }
+            if (o == null || getClass() != o.getClass()) {
+                return false;
+            }
+            Email email = (Email) o;
+            return getValue().equals(email.getValue());
+        }
+
+        @Override
+        public int compareTo(Email o) {
+            return getValue().compareTo(o.getValue());
+        }
     }
 
 }
