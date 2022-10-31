@@ -5,6 +5,8 @@ public class Decrytor {
 
     public Decrytor(String cryptogram) {
         this.cryptogram = cryptogram;
+        Validator validator = new Validator(cryptogram);
+        validator.validate();
     }
 
     public String decrypt() {
