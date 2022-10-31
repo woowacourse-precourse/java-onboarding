@@ -8,9 +8,19 @@ public class Problem4 {
         char[] upper = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
 
         //청개구리 표현
+        StringBuffer sb = new StringBuffer();
+        for(int i=0; i<word.length(); i++) {
+            if(isAlphabet(word.charAt(i))==1) {
+                sb.append(lower[25-((int)word.charAt(i)-97)]);
+            } else if(isAlphabet(word.charAt(i))==2) {
+                sb.append(upper[25-((int)word.charAt(i)-65)]);
+            } else {
+                sb.append(word.charAt(i));
+            }
+        }
 
-        String answer = "";
-        return answer;
+        System.out.println("====solution end====");
+        return sb.toString();
     }
 
     public static int isAlphabet(char ch) {
