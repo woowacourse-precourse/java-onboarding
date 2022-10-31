@@ -1,37 +1,45 @@
 package onboarding;
 
+import java.util.Queue;
 import java.util.Stack;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = deleteDuplicatedString(cryptogram);
-        return answer;
+        return decodingString(cryptogram);
     }
 
-    public static String deleteDuplicatedString(String cryptogram){
-        String plainText;
-        Stack<Character> stack = new Stack<>();
-        char[] cryptogramChar = cryptogram.toCharArray();
+    public static String decodingString(String cryptogram){
+        String plainText = deleteDuplicatedChar(cryptogram);
+        String preText = cryptogram;
+        while(!(plainText.equals(preText))){
+            preText = plainText;
+            plainText = deleteDuplicatedChar(plainText);
+        }
+        return  plainText;
+    }
 
-        char preDeletedChar = Character.MAX_VALUE;
-        for(int i=0; i<cryptogramChar.length; i++){
-            if(preDeletedChar == cryptogramChar[i])
-                continue;
-            if(!stack.empty() && (stack.peek() == cryptogramChar[i]))
-                preDeletedChar = stack.pop();
+    public static String deleteDuplicatedChar(String str){
+        int len = str.length();
+        if(len < 2)
+            return str;
+
+        int deletedChar = Character.MAX_VALUE;
+        StringBuilder resultText = new StringBuilder();
+        for(int i=0; i<len-1; i++){
+            if((deletedChar == str.charAt(i)) || (str.charAt(i) == str.charAt(i+1)))
+                deletedChar = str.charAt(i);
             else {
-                stack.push(cryptogramChar[i]);
-                preDeletedChar = Character.MAX_VALUE;
+                resultText.append(str.charAt(i));
+                deletedChar = Character.MAX_VALUE;
             }
         }
-        plainText = changeStackCharToString(stack);
-        return plainText;
+
+        if(str.charAt(len - 2) != str.charAt(len - 1)){
+            resultText.append(str.charAt(len - 1));
+        }
+
+        return resultText.toString();
     }
 
-    public static String changeStackCharToString(Stack<Character> stack){
-        StringBuilder sb = new StringBuilder();
-        stack.forEach(sb::append);
-        return sb.toString();
-    }
 
 }
