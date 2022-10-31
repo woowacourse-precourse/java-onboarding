@@ -20,10 +20,9 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         validateForms(forms);
         Map<String, List<String>> nicknameAndTwoLetters = computeAllTwoLetters(forms);
-        Map<String, String> nicknameAndEmail = computeEmailMap(forms);
         List<String> duplicatedNicknameList = findDuplicatedNickname(nicknameAndTwoLetters);
 
-        return computeAnswer(duplicatedNicknameList, nicknameAndEmail);
+        return computeAnswer(duplicatedNicknameList, forms);
     }
 
     private static void validateForms(List<List<String>> forms) {
@@ -47,9 +46,10 @@ public class Problem6 {
             .allMatch(form -> Pattern.matches(NICKNAME_REGEX, form.get(1)));
     }
 
-    private static List<String> computeAnswer(List<String> duplicatedNicknameList, Map<String, String> nicknameAndEmail) {
-        return duplicatedNicknameList.stream()
-            .map(nicknameAndEmail::get)
+    private static List<String> computeAnswer(List<String> duplicatedNicknameList, List<List<String>> forms) {
+        return forms.stream()
+            .filter(form -> duplicatedNicknameList.contains(form.get(1)))
+            .map(form -> form.get(0))
             .distinct()
             .sorted()
             .collect(Collectors.toList());
@@ -73,11 +73,6 @@ public class Problem6 {
     private static boolean isDuplicatedTwoLetters(List<String> twoLetters1, List<String> twoLetters2) {
         return twoLetters1.stream()
             .anyMatch(twoLetters2::contains);
-    }
-
-    private static Map<String, String> computeEmailMap(List<List<String>> forms) {
-        return forms.stream()
-            .collect(Collectors.toMap(form -> form.get(1), form -> form.get(0)));
     }
 
     private static Map<String, List<String>> computeAllTwoLetters(List<List<String>> forms) {
