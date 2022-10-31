@@ -8,6 +8,8 @@ public class Problem6 {
         return answer;
     }
 
+    private static void construct
+
 
     // 2개씩 parsing해서 set에다 다 넣어보자.
     // 넣을때마다 교집합이 하나라도 있으면 걸린거다.
