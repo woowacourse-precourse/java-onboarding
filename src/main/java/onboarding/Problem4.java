@@ -32,7 +32,6 @@ public class Problem4 {
     private static char ConvRascalChar(char c) {
         char upperChar = toUpper(c);
         int index = upperChar - 'A' + 1;
-        System.out.print(index + "\n");
 
         if (index <= 13) {
             return c += ((13 - index) * 2) + 1;
