@@ -19,6 +19,17 @@ class User implements Comparable<User>{
     public void addFriend(User newFriend){
         this.friends.add(newFriend);
     }
+
+    public void addScore(int amount){
+        this.score += amount;
+    }
+
+    public void addScoreToFriends(int amount){
+        for(User friend : this.friends){
+            addScore(amount);
+        }
+    }
+
     public boolean isScoreLarger(int otherScore){
         return this.score > otherScore;
     }
@@ -30,6 +41,7 @@ class User implements Comparable<User>{
     public int compareName(String otherName){
         return otherName.compareTo(this.name);
     }
+
     @Override
     public int compareTo(User otherUser){ //if thisFriend > otherFriend return 1
         if(otherUser.isScoreEqual(this.score)){
@@ -42,6 +54,8 @@ class User implements Comparable<User>{
     }
 }
 public class Problem7 {
+    public static final int VISIT_SCORE = 1;
+    public static final int MUTUAL_FRIEND_SCORE = 10;
     public static final HashMap<String, User> USER_MAP = new HashMap<>();
 
     public static void processFriendsList(List<List<String>> friends){
