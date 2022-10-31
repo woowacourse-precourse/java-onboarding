@@ -1,6 +1,6 @@
 package onboarding;
 
-import java.util.List;
+import java.util.*;
 
 public class Problem6 {
     // 두 글자씩 잘라서 nicknameMap에 두글자-이메일리스트 로 저장

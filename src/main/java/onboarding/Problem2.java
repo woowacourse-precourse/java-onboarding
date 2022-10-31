@@ -17,24 +17,24 @@ public class Problem2 {
     }
 
     public static String solution(String cryptogram) {
-        while (isDuplication(str)) {
+        while (isDuplication(cryptogram)) {
             String newStr = "";
-            char tmp = str.charAt(0);
-            for (int i = 1; i < str.length(); i++) {
-                char cur = str.charAt(i);
+            char tmp = cryptogram.charAt(0);
+            for (int i = 1; i < cryptogram.length(); i++) {
+                char cur = cryptogram.charAt(i);
                 if (tmp != cur) {
                     newStr += tmp;
                     tmp = cur;
                 }
                 else {
-                    if (i != str.length() - 1)
-                        tmp = str.charAt(++i);
+                    if (i != cryptogram.length() - 1)
+                        tmp = cryptogram.charAt(++i);
                 }
             }
-            if (tmp != str.charAt(str.length() - 2))
+            if (tmp != cryptogram.charAt(cryptogram.length() - 2))
                 newStr += tmp;
-            str = newStr;
+            cryptogram = newStr;
         }
-        return str;
+        return cryptogram;
     }
 }

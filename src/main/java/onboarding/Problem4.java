@@ -3,8 +3,8 @@ package onboarding;
 public class Problem4 {
     public static String solution(String word) {
         String result = "";
-        for (int i = 0; i < str.length(); i++) {
-            char c = str.charAt(i);
+        for (int i = 0; i < word.length(); i++) {
+            char c = word.charAt(i);
             if (c >= 'A' && c <= 'Z') {
                 result += (char)('Z' - c + 'A');
             }

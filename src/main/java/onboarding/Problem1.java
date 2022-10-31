@@ -3,10 +3,10 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
-    private static boolean checkPage(int[] pages) {
-        if (pages[0] - pages[1] != -1)
+    private static boolean checkPage(List<Integer> pages) {
+        if (pages.get(0) - pages.get(1) != -1)
             return false;
-        if (pages[0] < 1 || pages[1] > 400)
+        if (pages.get(0) < 1 || pages.get(1) > 400)
             return false;
         return true;
     }
@@ -40,9 +40,9 @@ class Problem1 {
         return mulNum;
     }
 
-    private static int getBigNum(int[] pages) {
-        int addNum = Math.max(getAddNum(pages[0]), getAddNum(pages[1]));
-        int mulNum = Math.max(getMulNum(pages[0]), getMulNum(pages[1]));
+    private static int getBigNum(List<Integer> pages) {
+        int addNum = Math.max(getAddNum(pages.get(0)), getAddNum(pages.get(1)));
+        int mulNum = Math.max(getMulNum(pages.get(0)), getMulNum(pages.get(1)));
         return Math.max(addNum, mulNum);
     }
 
