@@ -21,7 +21,7 @@
 - 369게임에 필요한 기능을 제공하는 클래스
 
     
-    int getRangeTotalClapTime(int start, int end)
+    int getTotalClapTimeOfNumbersInRange(int start, int end)
 - 주어진 [start, end] 범위 내의 숫자의 총 박수 횟수를 반환하는 메서드
 
 
