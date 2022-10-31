@@ -7,7 +7,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Problem4 {
-    public static String solution(String word) {
+    public static String solution(String word) throws Exception {
+        valid(word);
         String answer = "";
         Map<Character, Character> map = new HashMap<>();
         for(int i = 0; i < 26; i++){
@@ -21,7 +22,13 @@ public class Problem4 {
         return answer;
     }
 
-    public static void main(String[] args) {
+    public static void valid(String w) throws Exception {
+        if(w.length() < 1 || w.length() > 1000){
+            throw new Exception("문자의 길이가 1이상 1000이하가 아닙니다.");
+        }
+    }
+
+    public static void main(String[] args) throws Exception {
         System.out.println(solution("I love you"));
 
     }
