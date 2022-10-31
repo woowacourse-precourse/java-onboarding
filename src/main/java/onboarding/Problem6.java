@@ -34,12 +34,12 @@ public class Problem6 {
         int sequence = 0;
         while (sequence < length - 1) {
             String splitNickname = nickname.substring(sequence, sequence + 2);
-            addNickname(nicknamesMap, splitNickname);
+            saveSplitNickname(nicknamesMap, splitNickname);
             sequence++;
         }
     }
 
-    private static void addNickname(Map<String, Integer> nicknamesMap, String splitNickname) {
+    private static void saveSplitNickname(Map<String, Integer> nicknamesMap, String splitNickname) {
         Set<String> splitNicknames = nicknamesMap.keySet();
         int count = 1;
         if (splitNicknames.contains(splitNickname)) {
