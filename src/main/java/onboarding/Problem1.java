@@ -10,6 +10,8 @@ class Problem1 {
     static final int DRAW = 0;
     static final int POBI_WIN = 1;
     static final int CRONG_WIN = 2;
+    static final int MIN_PAGE = 1;
+    static final int MAX_PAGE = 400;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
@@ -51,7 +53,7 @@ class Problem1 {
     }
 
     static boolean outOfPage(int page) {
-        return !(1 <= page && page <= 400);
+        return !(MIN_PAGE <= page && page <= MAX_PAGE);
     }
 
     static int getScoreFromBook(List<Integer> book) {
