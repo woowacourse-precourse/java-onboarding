@@ -1,18 +1,16 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Problem7 {
+    private static final int FRIEND_POINT = 10;
+    private static final int VISIT_POINT = 1;
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         if (!isValidate(user, friends, visitors)) {
             System.out.println("hello");
             return Collections.emptyList();
         }
-        List<String> answer = Collections.emptyList();
-        return answer;
+        return getAnswer(user, friends, visitors);
     }
 
     /**
@@ -111,5 +109,112 @@ public class Problem7 {
             }
         }
         return visitors.size() != 0;
+    }
+
+    /**
+     * 추천친구 반환하는 기능
+     */
+    private static List<String> getFreindsList(List<List<String>> friends) {
+        List<String> friendsList = new ArrayList<>();
+        for (List<String> friend : friends) {
+            addWithoutDup(friendsList, friend.get(0));
+        }
+        return friendsList;
+    }
+
+    private static List<String> getFriendsToRecommend(String user, List<List<String>> friends, List<String> visitors) {
+        List<String> friendsToRecommend = new ArrayList<>();
+        for (List<String> friend : friends) {
+            String candidate = friend.get(1);
+            addWithoutDup(friendsToRecommend, candidate);
+        }
+        for (String visitor : visitors) {
+            addWithoutDup(friendsToRecommend, visitor);
+        }
+        friendsToRecommend.remove(user);
+        friendsToRecommend.removeAll(getFreindsList(friends));
+        return friendsToRecommend;
+    }
+
+    private static List<List<String>> makeRecommendList(String user, List<List<String>> friends, List<String> visitors) {
+        List<String> freindsList = getFreindsList(friends);
+        List<List<String>> recommendList = new ArrayList<>();
+
+        for (String friendToRecommend : getFriendsToRecommend(user, friends, visitors)) {
+            List<String> result = new ArrayList<>();
+            for (List<String> friend : friends) {
+                if (result.contains(friendToRecommend) && friendToRecommend.equals(friend.get(1))) {
+                    String point = result.get(1);
+                    replacePoint(result, point, FRIEND_POINT);
+                    continue;
+                }
+                if (freindsList.contains(friend.get(0)) && friendToRecommend.equals(friend.get(1))) {
+                    firstAdd(result, friend.get(1), FRIEND_POINT);
+                }
+            }
+            for (String visitor : visitors) {
+                if (result.contains(visitor)) {
+                    String point = result.get(1);
+                    replacePoint(result, point, VISIT_POINT);
+                    continue;
+                }
+                if (result.size() == 0) {
+                    firstAdd(result, visitor, VISIT_POINT);
+                }
+            }
+            recommendList.add(result);
+        }
+        return recommendList;
+    }
+
+    private static class RecommendListCompare implements Comparator<List<String>> {
+
+        @Override
+        public int compare(List<String> list1, List<String> list2) {
+            int point1 = toInt(list1.get(1));
+            int point2 = toInt(list2.get(1));
+            if (point1 != point2) {
+                return Integer.compare(point2, point1);
+            }
+            String name1 = list1.get(0);
+            String name2 = list2.get(0);
+            return name1.compareTo(name2);
+        }
+    }
+
+    private static List<String> getAnswer(String user, List<List<String>> friends, List<String> visitors) {
+        List<List<String>> results = makeRecommendList(user, friends, visitors);
+        results.sort(new RecommendListCompare());
+        List<String> answer = new ArrayList<>();
+
+        for (List<String> result : results) {
+            answer.add(result.get(0));
+            if (answer.size() == 5) {
+                break;
+            }
+        }
+        return answer;
+    }
+
+    private static void addWithoutDup(List<String> list, String target) {
+        list.remove(target);
+        list.add(target);
+    }
+
+    private static void replacePoint(List<String> list, String point, int pointToAdd) {
+        int intPoint = toInt(point);
+        String newPoint = String.valueOf(intPoint + pointToAdd);
+        list.remove(point);
+        list.add(newPoint);
+    }
+
+    private static void firstAdd(List<String> list, String name, int point) {
+        String sPoint = String.valueOf(point);
+        list.add(name);
+        list.add(sPoint);
+    }
+
+    private static int toInt(String input) {
+        return Integer.parseInt(input);
     }
 }
