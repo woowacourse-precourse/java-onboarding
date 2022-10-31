@@ -16,15 +16,15 @@ public class Score {
         this.pages = pages;
     }
 
-    public static boolean hasValidLength(List<Integer> pages) {
+    private static boolean hasValidLength(List<Integer> pages) {
         return pages.size() == VALID_LENGTH;
     }
 
-    public static boolean hasValidNum(List<Integer> pages) {
+    private static boolean hasValidNum(List<Integer> pages) {
         return pages.get(0) % 2 == 1 && pages.get(1) % 2 == 0;
     }
 
-    public static boolean hasValidRange(List<Integer> pages) {
+    private static boolean hasValidRange(List<Integer> pages) {
         for (int page : pages) {
             if (page > VALID_MAX_RANGE || page < VALID_MIN_RANGE) {
                 return false;
@@ -33,11 +33,11 @@ public class Score {
         return true;
     }
 
-    public static boolean hasValidDifference(List<Integer> pages) {
+    private static boolean hasValidDifference(List<Integer> pages) {
         return pages.get(1) - pages.get(0) == VALID_DIFFERENCE;
     }
 
-    public static void validScore(List<Integer> pages) {
+    private static void validScore(List<Integer> pages) {
         if (!hasValidLength(pages) || !hasValidNum(pages) || !hasValidDifference(pages) || !hasValidRange(pages)) {
             throw new IllegalArgumentException();
         }
