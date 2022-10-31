@@ -28,7 +28,27 @@ class Problem1 {
                 page %= divisor;
                 divisor /= 10;
             }
-            maxResult= Math.max(maxResult, result);
+            maxResult = Math.max(maxResult, result);
+        }
+        return maxResult;
+    }
+
+    static int multiplyCalc(List<Integer> pages) {
+        int maxResult = 0;
+        for (int page : pages) {
+            int divisor = 100;
+            if (page >= 10 && page < 100) {
+                divisor = 10;
+            } else if (page < 10) {
+                divisor = 1;
+            }
+            int result = 1;
+            while (divisor > 0) {
+                result *= (int) (page / divisor);
+                page %= divisor;
+                divisor /= 10;
+            }
+            maxResult = Math.max(maxResult, result);
         }
         return maxResult;
     }
