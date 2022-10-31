@@ -1,7 +1,13 @@
 package onboarding;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import static java.util.Comparator.reverseOrder;
+import static java.util.Map.Entry.comparingByValue;
+import static java.util.stream.Collectors.groupingBy;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -16,9 +22,7 @@ public class Problem7 {
             return true;
         else if (friendsValidation(friends))
             return true;
-        else if (visitorsValidation(visitors))
-            return true;
-        return false;
+        else return visitorsValidation(visitors);
     }
 
     private static boolean userValidation(String user) {
@@ -53,15 +57,31 @@ public class Problem7 {
     }
 
     private static List<String> recommendation(String user, List<List<String>> friends, List<String> visitors) {
+        Map<String, Integer> visitorsScoreTmp = visitorsToScore(visitors);
+        List<String> friendsList = friendsList(user, friends);
+        Map<String, Integer> friendsScoreTmp = friendsToScore(user, friends, friendsList);
 
-        Map<String, List<String>> collect = visitors.stream()
-                .collect(Collectors.groupingBy(visitor -> visitor));
+        visitorsScoreTmp.forEach((key, value) -> friendsScoreTmp.merge(key, value, Integer::sum));
+        friendsList.forEach(friendsScoreTmp::remove);
 
+        List<String> recommendList = new ArrayList<>();
+        friendsScoreTmp.entrySet().stream()
+                .sorted(comparingByValue(reverseOrder()))
+                .forEachOrdered(x -> recommendList.add(x.getKey()));
+        return recommendList;
+    }
+
+    private static Map<String, Integer> visitorsToScore(List<String> visitors) {
+        Map<String, List<String>> visitorsTmp = visitors.stream()
+                .collect(groupingBy(visitor -> visitor));
         Map<String, Integer> visitorsScore = new HashMap<>();
-        for (String s : collect.keySet()) {
-            visitorsScore.put(s, collect.get(s).size());
+        for (String s : visitorsTmp.keySet()) {
+            visitorsScore.put(s, visitorsTmp.get(s).size());
         }
+        return visitorsScore;
+    }
 
+    private static List<String> friendsList(String user, List<List<String>> friends) {
         List<String> userFriend = new ArrayList<>();
         for (List<String> friend : friends) {
             if (friend.get(0).equals(user))
@@ -69,31 +89,23 @@ public class Problem7 {
             if (friend.get(1).equals(user))
                 userFriend.add(friend.get(0));
         }
+        return userFriend;
+    }
 
+    private static Map<String, Integer> friendsToScore(String user ,List<List<String>> friends, List<String> userFriend) {
         Map<String, Integer> friendsScore = new HashMap<>();
-
         for (List<String> friend : friends) {
             for (String userFriendTmp : userFriend) {
                 if (friend.get(0).equals(userFriendTmp) && !friendsScore.containsKey(friend.get(1)) && !friend.get(1).equals(user))
                     friendsScore.put(friend.get(1), 10);
                 else if (friend.get(0).equals(userFriendTmp) && friendsScore.containsKey(friend.get(1)) && !friend.get(1).equals(user))
                     friendsScore.put(friend.get(1), friendsScore.get(friend.get(1)) + 10);
-
                 if (friend.get(1).equals(userFriendTmp) && !friendsScore.containsKey(friend.get(0)) && !friend.get(0).equals(user))
                     friendsScore.put(friend.get(0), 10);
                 else if (friend.get(1).equals(userFriendTmp) && friendsScore.containsKey(friend.get(0)) && !friend.get(0).equals(user))
                     friendsScore.put(friend.get(0), friendsScore.get(friend.get(0)) + 10);
             }
         }
-
-        visitorsScore.forEach((key, value) -> friendsScore.merge(key, value, Integer::sum));
-
-        userFriend.forEach(friendsScore::remove);
-
-        List<String> result = new ArrayList<>();
-        friendsScore.entrySet().stream()
-                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
-                .forEachOrdered(x -> result.add(x.getKey()));
-        return result;
+        return friendsScore;
     }
 }
