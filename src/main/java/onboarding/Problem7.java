@@ -16,7 +16,7 @@ public class Problem7 {
         }
         return friendList;
     }
-    
+
     // 유저의 친구와 친구인지 체크
     private static Map<String, Integer> checkFriends(Map<String, Integer> scoreMap, String user, List<List<String>> friends, List<String> friendList) {
         for (List<String> friend : friends) {
@@ -34,6 +34,19 @@ public class Problem7 {
                 else
                     scoreMap.put(friend.get(0), 10);
             }
+        }
+        return scoreMap;
+    }
+
+    // 방문자 체크
+    private static Map<String, Integer> checkVisitors(Map<String, Integer> scoreMap, List<String> visitors, List<String> friendList) {
+        for (String visitor : visitors) {
+            if (friendList.contains(visitor))
+                continue;
+            if (scoreMap.containsKey(visitor))
+                scoreMap.put(visitor, scoreMap.get(visitor) + 1);
+            else
+                scoreMap.put(visitor, 1);
         }
         return scoreMap;
     }
