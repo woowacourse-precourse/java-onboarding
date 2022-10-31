@@ -14,4 +14,7 @@ public class Problem2 {
         }
         return repeat;
     }
+    public static String deleteRepeatWords(String s){
+        return s.replace(repeatWords(s),"");
+    }
 }
