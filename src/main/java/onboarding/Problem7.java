@@ -81,9 +81,10 @@ public class Problem7 {
         List<String> result = new ArrayList<>();
         Iterator<Map.Entry<String, Integer>> iterator = entry.iterator();
 
-        while(iterator.hasNext() && count>0){
+        while(iterator.hasNext() && count > 0) {
             String name = iterator.next().getKey();
             result.add(name);
+            count--;
         }
 
         return result;
