@@ -97,4 +97,9 @@ ___
   | --- | --- | --- | --- |
   | isNameLength | String nickname | boolean | 닉네임 길이 조건 만족 여부 반환 |
   
+### 3️⃣ 예외 처리한 forms 반환 하는 함수
+
+  | 함수 명 | 매개변수 | 반환 타입 | 반환              |
+  | --- | --- |-----------------| --- |
+  | exception | List<List<String>> forms | List<List<String>> | 제한 사항을 예외처리하여 반환 |
   
