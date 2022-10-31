@@ -39,7 +39,12 @@ public class Pages {
     }
 
     private Integer multiplyPageNumber(Integer pageNumber){
-        return 0;
+        Integer mul = 1;
+        while (pageNumber > 0) {
+            mul *= pageNumber % 10;
+            pageNumber /= 10;
+        }
+        return mul;
         //2.각 자리 숫자를 모두 곱하는 메소드
     }
 
