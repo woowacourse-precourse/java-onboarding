@@ -13,8 +13,8 @@ public class Problem2 {
 
         String answer = decryption.decryption(cryptogram);
 
-        for (int i=0; i<=(cryptogram.length()/2); i++){
-            if (cryptogram.equals(answer) || answer.equals("")) {
+        for (int i=0; i<=cryptogram.length()+2; i++){
+            if (cryptogram.equals(answer) || answer.equals("") || answer.length() == 1) {
                 break;
             }
             cryptogram = answer;
