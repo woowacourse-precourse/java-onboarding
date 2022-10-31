@@ -35,7 +35,6 @@ public class Problem6 {
             for (int i = 0; i < forms.size(); i++) {
                 String name = forms.get(i).get(1);
                 String email = forms.get(i).get(0);
-
                 if (name.equals(str)) {
                     duplicateEmail.add(email);
                 }
