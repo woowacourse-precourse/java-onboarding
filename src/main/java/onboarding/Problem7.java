@@ -14,8 +14,12 @@ public class Problem7 {
         Map<String, List<String>> hm = makeRelation(friends);
         Map<String, Integer> tm = new TreeMap<>();
 
+        friendScore(user, hm, tm);              // 친구의 친구 점수 추가
+        visitScore(user, visitors, hm, tm);     // 방문자 점수 추가
+
         return answer;
     }
+
     // 해시맵에 {이름 : {친구인 사람들}} 형식으로 저장
     private static Map<String, List<String>> makeRelation(List<List<String>> friends) {
         Map<String, List<String>> hm = new HashMap<>();
@@ -31,5 +35,36 @@ public class Problem7 {
             hm.put(li.get(1), to);
         }
         return hm;
+    }
+
+    // user의 친구와 친구인 경우 10점 추가
+    // 점수를 받는 사람이 user인 경우와 이미 user의 친구인 경우 점수 X
+    private static void friendScore(String user, Map<String, List<String>> hm, Map<String, Integer> tm) {
+        if (hm.containsKey(user)) {
+            List<String> li = hm.get(user);
+            for (String str : li) {
+                List<String> tmp = hm.get(str);
+
+                for (String s : tmp) {
+                    if (!s.equals(user) && !li.contains(s)) {
+                        tm.put(s, tm.getOrDefault(s, 0) + 10);
+                    }
+                }
+            }
+        }
+    }
+
+    // 방문자 중에서 이미 user와 친구인 경우를 제외하고 점수 1점 추가
+    private static void visitScore(String user, List<String> visitors, Map<String, List<String>> hm, Map<String, Integer> tm) {
+        List<String> li = new ArrayList<>();
+        if(hm.containsKey(user)){
+            li = hm.get(user);
+        }
+
+        for(String str : visitors){
+            if(!str.equals(user) && !li.contains(str)){
+                tm.put(str, tm.getOrDefault(str, 0) + 1);
+            }
+        }
     }
 }
