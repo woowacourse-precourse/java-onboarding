@@ -1,10 +1,6 @@
 package onboarding;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class Problem6 {
 
@@ -18,16 +14,16 @@ public class Problem6 {
     private static boolean detectError(List<List<String>> forms){
         for(List<String> l: forms){
             if(l.get(0).length()<11||l.get(0).length()>=20)
-                return false;
+                return true;
             if(l.get(1).length()>=20)
-                return false;
+                return true;
 
             String email = l.get(0);
             if(!email.substring(email.length()-10,email.length()).equals("@email.com"))
-                return false;
+                return true;
         }
 
-        return true;
+        return false;
     }
 
     private static void convertList2TwoCharCount(String str, int idx){
