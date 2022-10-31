@@ -67,6 +67,23 @@ public class Problem4 {
         return "";
     }
 
+    // 실제 입력 값과 청개구리 Map 을 매핑하기 위한 메서드를 호출하는 메서드
+    public static String callMapping(
+            String word, Map<String, String> upperCaseMappingMap, Map<String, String> lowerCaseMappingMap) {
+
+        int wordLength = word.length();
+
+        StringBuilder result = new StringBuilder();
+
+        // 문자열을 순회하며 각 문자에 대하여 청개구리 매핑 메서드를 호출한다.
+        for (int i = 0; i < wordLength; i++) {
+            result.append(doMap(word, i, upperCaseMappingMap, lowerCaseMappingMap));
+        }
+
+        // 매핑된 값 반환
+        return result.toString();
+    }
+
     public static String solution(String word) {
         String answer = "";
         return answer;
