@@ -5,11 +5,12 @@ import java.util.List;
 
 public class Problem4 {
     public static String solution(String word) {
-        List<Integer> upperCharIndex = getUpperCharIndex(word.toCharArray());
-        char[] wordCharacter = word.toLowerCase().toCharArray();
-        wordCharacter = reverseWord(wordCharacter);
-        wordCharacter = restoreUpperCharacter(wordCharacter, upperCharIndex);
-        String answer = new String(wordCharacter);
+        /* ASCII 코드를 활용해 소문자, 대문자 알파벳을 반대로 변환*/
+        List<Integer> upperCharIndex = getUpperCharIndex(word.toCharArray());   // 대문자 알파벳의 위치 리스트
+        char[] wordCharacter = word.toLowerCase().toCharArray();    // 모든 알파벳을 소문자로 변환
+        wordCharacter = reverseWord(wordCharacter);     // 소문자 알파벳을 반대로 변환
+        wordCharacter = restoreUpperCharacter(wordCharacter, upperCharIndex);   // 대문자 알파벳 복원
+        String answer = new String(wordCharacter);  // 문자열String으로 변환
         return answer;
     }
 
