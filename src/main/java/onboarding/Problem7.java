@@ -39,13 +39,17 @@ public class Problem7 {
 
         List<String> recommendsList = new ArrayList<>();
         usersMap.forEach((k, v) -> {
-            if(!friendsList.contains(k) && !user.equals(k))
+            if(!friendsList.contains(k) && !user.equals(k) && v != 0)
                 recommendsList.add(k);
         });
 
         recommendsList.sort((a, b) -> usersMap.get(b) - usersMap.get(a) == 0 ? a.compareTo(b) : usersMap.get(b) - usersMap.get(a));
 
-        System.out.println(recommendsList);
-        return recommendsList;
+        List<String> answer = new ArrayList<>();
+
+        for(int i = 0; i < Math.min(recommendsList.size(), 5); i++)
+            answer.add(recommendsList.get(i));
+
+        return answer;
     }
 }
