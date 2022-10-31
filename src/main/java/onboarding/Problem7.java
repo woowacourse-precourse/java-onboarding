@@ -33,13 +33,11 @@ public class Problem7 {
 				}
 			}
 
-			//앞 사람 확인
 			if (temp.containsKey(info.get(0))) {
 				List<String> friendsList = temp.get(info.get(0));
 				friendsList.add((String)info.get(1));
 			}
 
-			//뒷 사람 확인
 			if (temp.containsKey(info.get(1))) {
 				List<String> friendsList = temp.get(info.get(1));
 				friendsList.add((String)info.get(0));

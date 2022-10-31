@@ -14,15 +14,12 @@ class Problem1 {
 	public static int solution(List<Integer> pobi, List<Integer> crong) {
 		int answer = Integer.MAX_VALUE;
 
-		// 값 검증
 		if (validateNum(pobi) || validateNum(crong))
 			return EXCEPTION_CASE;
 
-		// 포비와 크롱의 점수 구하기
 		int pobiScore = getScore(pobi);
 		int crongScore = getScore(crong);
 
-		// 승자 구하기
 		answer = getWinner(pobiScore, crongScore);
 
 		return answer;
