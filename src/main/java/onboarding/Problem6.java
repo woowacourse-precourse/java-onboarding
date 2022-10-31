@@ -9,6 +9,8 @@ public class Problem6 {
 
         for (int i = 0; i < forms.size(); i++) {
             String[] nickArr = forms.get(i).get(1).split("");
+            String[] emailArr = forms.get(i).get(0).split("@");
+
             List<String> list = new ArrayList<>();
 
             combination(list, nickArr, "", 0, 0);
@@ -28,8 +30,8 @@ public class Problem6 {
         }
 
         for (int i = idx; i < nickArr.length; i++) {
-            combination(list, nickArr,  str + nickArr[i], i + 1, depth + 1);
-            if(str.length() > 0) {
+            combination(list, nickArr, str + nickArr[i], i + 1, depth + 1);
+            if (str.length() > 0) {
                 return;
             }
         }
@@ -39,9 +41,13 @@ public class Problem6 {
     static void compare(List<List<String>> forms, List<String> list, Set<String> set, int i) {
         for (int j = i + 1; j < forms.size(); j++) {
             for (int k = 0; k < list.size(); k++) {
-                if(forms.get(j).get(1).contains(list.get(k))) {
-                    set.add(forms.get(j).get(0));
-                    set.add(forms.get(i).get(0));
+                if (forms.get(j).get(1).contains(list.get(k))) {
+                    if(forms.get(j).get(0).split("@")[1].equals("email.com")) {
+                        set.add(forms.get(j).get(0));
+                    }
+                    if(forms.get(k).get(0).split("@")[1].equals("email.com")) {
+                        set.add(forms.get(k).get(0));
+                    }
                 }
             }
         }
