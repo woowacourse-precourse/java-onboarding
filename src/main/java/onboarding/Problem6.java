@@ -15,7 +15,6 @@ public class Problem6 {
         for(int i=0; i<forms.size(); i++){
             emails[i] = forms.get(i).get(0);
             nicknames[i] = forms.get(i).get(1);
-            System.out.println("emails[" + i + "]: "+emails[i]+", nicknames[" + i + "]: "+nicknames[i]);
         }
 
         answer= isDuplicatedNickname(nicknames, emails, answer);
@@ -35,7 +34,6 @@ public class Problem6 {
                     if(nicknames[j].contains(regex.substring(k, k+2))){         // k부터 k+1까지, 즉 연속된 두 문자
                         answer.add(emails[i]);
                         answer.add(emails[j]);
-                        System.out.println("answer: "+emails[i]+", "+emails[j]);
                     }
                 }
             }
