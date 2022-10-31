@@ -7,11 +7,11 @@ public class Problem6 {
         기능 요구 사항 목록
         1. 사용자의 닉네임만 추출하는 함수
         2. 사용자의 이메일만 추출하는 함수
-        3. 연속될 수 있는 문자열 추출 함수
-        4. 문자열 카운터 해시맵 생성 함수
+        3. 모든 닉네임에서 반복 가능한 문자열 나열 함수
+        4. 리스트에서의 문자열 카운터 해시맵 생성 함수
         5. 해시맵에서 값이 1보다 큰 키만 추출하는 함수
         6. 중복 문자열이 포함된 이메일 추출 함수
-        7. solution (함수 순서대로 실행)
+        7. solution 함수
     */
 
     // 사용자의 닉네임만 추출하는 함수
@@ -36,40 +36,52 @@ public class Problem6 {
         return emails;
     }
 
-    // 연속될 수 있는 문자열 모두 추출하는 함수 (중복값이 포함된 리스트)
-    private static List<String> possibleSubstrings(List<String> nicknames) {
-        List<String> substrings = new ArrayList<>();
-
-        for (String nickname : nicknames) {
-            for (int i = 0; i < nickname.length()-1; i++) {
-                String str = nickname.substring(i, i+2);
-                substrings.add(str);
-            }
+    // 닉네임 하나에 반복 가능한 문자열 추출
+    private static List<String> repeatsInName(List<String> substrings, String nickname) {
+        for (int i = 0; i < nickname.length()-1; i++) {
+            String str = nickname.substring(i, i+2);
+            substrings.add(str);
         }
         return substrings;
     }
 
-    // 리스트에서의 문자열 카운터 해시맵 생성 함수
-    private static HashMap<String, Integer> stringCounter(List<String> substrings) {
-        HashMap<String, Integer> counter = new HashMap<>();
-        Set<String> strSet = Set.copyOf(substrings);
+    // 모든 닉네임에서 반복 가능한 문자열 나열
+    private static List<String> allRepeats(List<String> nicknames) {
+        List<String> substrings = new ArrayList<>();
 
-        // 카운터 해시맵의 value를 모두 0으로 초기화
-        for (String str : strSet)
-            counter.put(str, 0);
+        for (String nickname : nicknames)
+            repeatsInName(substrings, nickname);
+
+        return substrings;
+    }
+
+    // 해시맵에 문자열이 있는지 확인
+    private static HashMap<String, Integer> strInMap(HashMap<String, Integer> counter, String substr) {
+        // 해시맵에 문자열이 없을 경우
+        if (!counter.containsKey(substr)) {
+            counter.put(substr, 1);
+            return counter;
+        }
+
+        // 해시맵에 문자열이 있을 경우
+        int value = counter.get(substr) + 1;
+        counter.put(substr, value);
+        return counter;
+    }
+
+    // 리스트에서의 문자열 카운터 해시맵 생성 함수
+    private static HashMap<String, Integer> countRepeats(List<String> substrings) {
+        HashMap<String, Integer> counter = new HashMap<>();
 
         // 카운터 실행
-        for (String key : substrings) {
-            if (counter.containsKey(key)) {
-                int value = counter.get(key) + 1;
-                counter.put(key, value);
-            }
-        }
+        for (String key : substrings)
+            strInMap(counter, key);
+
         return counter;
     }
 
     // 카운터 해시맵에서 value가 1보다 큰 key만 추출하는 함수
-    private static List<String> repeatedSubstr(HashMap<String, Integer> counter) {
+    private static List<String> repeatedString(HashMap<String, Integer> counter) {
         List<String> repeats = new ArrayList<>();
 
         for (String key : counter.keySet()) {
@@ -79,17 +91,24 @@ public class Problem6 {
         return repeats;
     }
 
+    // 닉네임에 중복되는 문자열이 있는지 확인
+    private static Boolean strInName(String nickname, List<String> repeats) {
+        for (String str : repeats) {
+            if (nickname.contains(str)) return true;
+        }
+        return false;
+    }
+
     // 중복 문자열이 포함된 사용자의 이메일 추출 함수
     private static List<String> sendEmail(List<String> repeats, List<String> nicknames, List<String> emails) {
         Set<String> sendSet = new HashSet<>();
 
-        for (int i = 0; i < nicknames.size(); i++) {
-            for (String str : repeats) {
-                String nickname = nicknames.get(i);
-                String email = emails.get(i);
+        for (String nickname : nicknames) {
+            int idx = nicknames.indexOf(nickname);
+            String email = emails.get(idx);
 
-                if (nickname.contains(str)) sendSet.add(email);
-            }
+            Boolean containsStr = strInName(nickname, repeats);
+            if (containsStr) sendSet.add(email);
         }
 
         List<String> sendList = new ArrayList<>(sendSet);
@@ -100,9 +119,9 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> nicknames = allNicknames(forms);
         List<String> emails = allEmails(forms);
-        List<String> possibleStr = possibleSubstrings(nicknames);
-        HashMap<String, Integer> counter = stringCounter(possibleStr);
-        List<String> repeats = repeatedSubstr(counter);
+        List<String> possibleStr = allRepeats(nicknames);
+        HashMap<String, Integer> counter = countRepeats(possibleStr);
+        List<String> repeats = repeatedString(counter);
         List<String> answer = sendEmail(repeats, nicknames, emails);
 
         return answer;
