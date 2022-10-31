@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
@@ -40,4 +41,16 @@ class Problem1 {
         return sum;
     }
 
+    public static int findMax(List<Integer> input) {
+        List<Integer> numbers = new ArrayList<>();
+        numbers.add(addEachDigit(input.get(0)));
+        numbers.add(multipleEachDigit(input.get(0)));
+        numbers.add(addEachDigit(input.get(1)));
+        numbers.add(multipleEachDigit(input.get(1)));
+        int max = numbers.stream()
+                .mapToInt(x -> x)
+                .max()
+                .getAsInt();
+        return max;
+    }
 }
