@@ -27,7 +27,7 @@ public class Problem7 {
         }
 
         // 함께 아는 친구 점수
-        Set<String> userFriends = friendsMap.get(user);
+        Set<String> userFriends = friendsMap.getOrDefault(user, new HashSet<>());
         for (String friend: userFriends) {
             Set<String> recommendFriends = friendsMap.get(friend);
             recommendFriends.remove(user);
@@ -44,7 +44,7 @@ public class Problem7 {
             }
         }
 
-        // 정렬
+        // 리스트에 담아서 정렬
         List<List<String>> recommendList = new ArrayList<>();
 
         for (String key : recommendScore.keySet()) {
@@ -58,16 +58,16 @@ public class Problem7 {
             }
         });
 
+        // 예외 처리
         if(recommendList.size() > 5) {
             recommendList = Lists.newArrayList(recommendList.subList(0, 5));
         }
 
+        // 이름만 answer에 담기
         for (int i = 0; i < recommendList.size(); i++) {
             answer.add(recommendList.get(i).get(0));
         }
 
         return answer;
     }
-
-
 }
