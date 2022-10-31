@@ -12,6 +12,7 @@ public class Problem7 {
         init(user);
         putFriendsToMap(user, friends);
         give10ScoreForFriendOfFriend(friends);
+        give1ScoreForVisitor(visitors);
     }
 
     private static void init(String user) {
@@ -43,6 +44,17 @@ public class Problem7 {
             } else if (alreadyFriend.contains(list.get(1))) {
                 int score = scoreMap.get(list.get(0)) + 10;
                 scoreMap.put(list.get(0), score);
+            }
+        }
+    }
+
+    private static void give1ScoreForVisitor(List<String> visitors) {
+        for (String visitor : visitors) {
+            if (scoreMap.containsKey(visitor)) {
+                int score = (scoreMap.get(visitor)) + 1;
+                scoreMap.put(visitor, score);
+            } else {
+                scoreMap.put(visitor, 1);
             }
         }
     }
