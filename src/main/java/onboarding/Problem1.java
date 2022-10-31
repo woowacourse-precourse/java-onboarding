@@ -27,4 +27,19 @@ class Problem1 {
         }
         return multiple;
     }
+    public static int max(int[] arr) {
+        Arrays.sort(arr);
+        return Arrays.stream(arr).max().getAsInt();
+    }
+    public static int myMaxNum(List<Integer> list) {
+        int[] leftPageNum = eachPageNum(list.get(0));
+        int[] rightPageNum = eachPageNum(list.get(1));
+        int[] getNumberArr = new int[4];
+        getNumberArr[0] = plus(leftPageNum);
+        getNumberArr[1] = multiple(leftPageNum);
+        getNumberArr[2] = plus(rightPageNum);
+        getNumberArr[3] = multiple(rightPageNum);
+        return max(getNumberArr);
+    }
+
 }
