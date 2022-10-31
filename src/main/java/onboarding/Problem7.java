@@ -32,6 +32,16 @@ public class Problem7 {
             twoFriend.add(name.get(0));
         }
 
+        if (mates.containsKey(user)) {
+            for (String name : mates.get(user))
+                mates.remove(name);
+
+
+
+
+
+        }
+
 
     }
 }
