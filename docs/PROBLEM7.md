@@ -24,3 +24,14 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능 목록
+
+- 입력받은 friends 중 한 명을 key로 그 한 명의 친구관계를 value로 저장한다
+  - ex. 위의 예시의 friends -> {andole=[donut, shakevan], jun=[donut, shakevan], shakevan=[andole, jun, mrko], donut=[andole, jun, mrko], mrko=[donut, shakevan]}
+- 문제 조건에 따라 친구 추천 점수를 연산한다
+  - 친구의 친구일때; += 10
+  - user의 친구가 아닌 사람이 방문하면; += 1
+- 연산한 추천 점수를 문제 조건에 맞춰 정렬한다
+  - value 로 내림차순 정렬 
+  - 동일 value 존재시 key로 오름차순 정렬
