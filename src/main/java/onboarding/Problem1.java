@@ -7,7 +7,7 @@ class Problem1 {
         if (pobi.get(0) != pobi.get(1) - 1 || crong.get(0) != crong.get(1) - 1) {
             return true;
         }
-        if (pobi.get(0) == 1 || crong.get(0) == 1 || pobi.get(1) == 400 || crong.get(1) == 400) {
+        if (pobi.get(0) <= 1 || crong.get(0) <= 1 || pobi.get(1) >= 400 || crong.get(1) >= 400) {
             return true;
         }
         return false;
