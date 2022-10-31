@@ -5,16 +5,16 @@ import java.util.stream.Collectors;
 
 public class Problem7 {
     static Map<String, Set<String>> userFriendsMap;
-    static Map<String, Integer> userScore;
+    static Map<String, Integer> visitorsScoreMap;
     static Set<String> userFriends;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         userFriendsMap = new HashMap<>();
-        userScore = new LinkedHashMap<>();
+        visitorsScoreMap = new LinkedHashMap<>();
         userFriends = new HashSet<>();
 
+        userFriendsMap.put(user, new HashSet<>());
         setUserFriendsMap(friends);
-        countFriends(user, friends);
         countVisitors(visitors);
 
         return userScore.keySet().stream()
@@ -56,34 +56,12 @@ public class Problem7 {
     }
 
     /*
-    * 주어진 friends를 탐색하면서 각 사용자들의 친구 수를 계산
-    * 이떄 주어진 user의 관계 정보라면 userFriends에 추가
+    * 해당 사용자의 방문 점수를 더한다.
     *
     * @return void
     * */
-    private static void countFriends(String user, List<List<String>> friends) {
-        for (List<String> friend : friends) {
-            String person1 = friend.get(0);
-            String person2 = friend.get(1);
-
-            if (user.equals(person1) || user.equals(person2)) {
-                userFriends.add(person1);
-                userFriends.add(person2);
-                continue;
-            }
-
-            setUserScore(person1, 10);
-            setUserScore(person2, 10);
-        }
-    }
-
-    /*
-    * 해당 사용자의 점수를 더한다.
-    *
-    * @return void
-    * */
-    private static void setUserScore(String person, int score) {
-        userScore.put(person, userScore.getOrDefault(person, 0) + score);
+    private static void setUserScore(String person) {
+        visitorsScoreMap.put(person, visitorsScoreMap.getOrDefault(person, 0) + 1);
     }
 
     /*
@@ -93,7 +71,7 @@ public class Problem7 {
      * */
     private static void countVisitors(List<String> visitors) {
         for (String visitor : visitors) {
-            setUserScore(visitor, 1);
+            setUserScore(visitor);
         }
     }
 }
