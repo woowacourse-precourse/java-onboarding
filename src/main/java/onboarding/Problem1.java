@@ -128,6 +128,22 @@ class Problem1 {
         return Math.max(sumOfPage, productOfPage);
     }
 
+    /**
+     * 주어진 포비의 값과 크롱의 값을 통해 승패와 무승부를 가릅니다.
+     *
+     * @param pobiResult  포비의 값
+     * @param crongResult 크롱의 값
+     * @return 포비의 값이 클 경우 1, 크롱의 값이 클 경우 2, 값이 같을 경우 0
+     */
+    public static int decideWinner(int pobiResult, int crongResult) {
+        if (pobiResult > crongResult) {
+            return 1;
+        } else if (pobiResult < crongResult) {
+            return 2;
+        } else {
+            return 0;
+        }
+    }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
