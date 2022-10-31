@@ -36,7 +36,7 @@ public class Game {
         if (leftPage != rightPage-1) {
             return false;
         }
-        if (leftPage <= MIN_PAGE || rightPage >= MAX_PAGE) {
+        if (leftPage < MIN_PAGE || rightPage > MAX_PAGE) {
             return false;
         }
         return true;
