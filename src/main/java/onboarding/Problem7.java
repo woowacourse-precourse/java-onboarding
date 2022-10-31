@@ -30,16 +30,30 @@ public class Problem7 {
 		for (String member : friendshipChart.keySet()) {
 			memberUpdated.put(member, false);
 		}
+
+		List<Set<String>> groupCollection = new ArrayList<>();
 		for (String member : friendshipChart.keySet()) {
-			Set<String> connectedMember = null;
 			if (!memberUpdated.get(member)) {
-				connectedMember = new HashSet<>();
-				memberUpdated.put(member, true);
-				connectedMember.add(member);
+				Set<String> connectedMembers = new HashSet<>();
+				setConnectedMembers(member, friendshipChart, memberUpdated, connectedMembers);
+				groupCollection.add(connectedMembers);
 			}
 		}
+		System.out.println(groupCollection);
 
 		List<String> answer = Collections.emptyList();
 		return answer;
+	}
+
+	private static void setConnectedMembers(String member, HashMap<String, ArrayList<String>> friendshipChart, Map<String, Boolean> memberUpdated,
+		Set<String> connectedMembers) {
+		memberUpdated.put(member, true);
+		connectedMembers.add(member);
+		for (String otherMember : friendshipChart.get(member)) {
+			if (!memberUpdated.get(otherMember)) {
+				setConnectedMembers(otherMember, friendshipChart, memberUpdated, connectedMembers);
+			}
+		}
+
 	}
 }
