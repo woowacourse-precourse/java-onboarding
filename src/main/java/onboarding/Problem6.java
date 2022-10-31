@@ -3,11 +3,10 @@ package onboarding;
 import java.util.*;
 
 public class Problem6 {
-    public static Map<String, String> twoLettersEmail = new HashMap<>();
-    public static Set<String> emailWithSameLetters = new HashSet<>();
 
-    public static List<String> sendEmailNotification(List<List<String>> forms) {
-        List<String> answer;
+    public static ArrayList<String> findEmailWithTheSameLetters(List<List<String>> forms) {
+        Map<String, String> twoLettersEmail = new HashMap<>();
+        Set<String> emailWithTheSameLetters = new HashSet<>();
 
         for(List<String> student : forms) {
             String nickname = student.get(1);
@@ -15,15 +14,19 @@ public class Problem6 {
             for(int i = 0; i < nickname.length() - 1; i++) {
                 String splitName = nickname.substring(i, i + 2);
                 if(twoLettersEmail.containsKey(splitName)) {
-                    emailWithSameLetters.add(email);
-                    emailWithSameLetters.add(twoLettersEmail.get(splitName));
+                    emailWithTheSameLetters.add(email);
+                    emailWithTheSameLetters.add(twoLettersEmail.get(splitName));
                 } else {
                     twoLettersEmail.put(splitName, email);
                 }
             }
         }
 
-        answer = new ArrayList<>(emailWithSameLetters);
+        return new ArrayList<>(emailWithTheSameLetters);
+    }
+
+    public static List<String> sendEmailNotification(List<List<String>> forms) {
+        List<String> answer = findEmailWithTheSameLetters(forms);
 
         answer.sort(new Comparator<String>() {
             @Override
