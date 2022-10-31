@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
@@ -87,17 +89,7 @@ public class Problem7 {
         private static List<String> answer;
 
         public Answer(String mainCharacter, List<String> mainCharacterFriends, Map<String, Integer> userAndRecommendScore) {
-            List<Map.Entry<String, Integer>> userAndRecommendScoreList = new ArrayList<>(userAndRecommendScore.entrySet());
-
-            userAndRecommendScoreList.sort((entry1, entry2) -> {
-                if (entry1.getValue()
-                    .equals(entry2.getValue())) {
-                    return entry1.getKey()
-                        .compareTo(entry2.getKey());
-                }
-                return entry2.getValue()
-                    .compareTo(entry1.getValue());
-            });
+            List<Map.Entry<String, Integer>> userAndRecommendScoreList = computeSortedRecommendScore(userAndRecommendScore.entrySet());
 
             answer = userAndRecommendScoreList.stream()
                 .filter(entry -> !entry.getKey()
@@ -107,6 +99,19 @@ public class Problem7 {
                 .map(Map.Entry::getKey)
                 .limit(ANSWER_SIZE_MAX)
                 .collect(Collectors.toList());
+        }
+
+        private List<Map.Entry<String, Integer>> computeSortedRecommendScore(Set<Entry<String, Integer>> userAndRecommendScore) {
+            List<Map.Entry<String, Integer>> userAndRecommendScoreList = new ArrayList<>(userAndRecommendScore);
+
+            userAndRecommendScoreList.sort((entry1, entry2) -> {
+                if (entry1.getValue() - entry2.getValue() != 0) {
+                    return entry2.getValue() - entry1.getValue();
+                }
+                return entry1.getKey()
+                    .compareTo(entry2.getKey());
+            });
+            return userAndRecommendScoreList;
         }
 
         public List<String> get() {
