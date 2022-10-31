@@ -50,6 +50,14 @@ public class Problem7 {
             }
         });
 
+        // 결과 구하기
+        int cnt = 0;
+        for (Map.Entry<String, Integer> entry : entries) {
+            if (++cnt > 5) break;
+
+            answer.add(entry.getKey());
+        }
+
         return answer;
     }
 
