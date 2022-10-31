@@ -11,6 +11,17 @@ public class Problem7 {
 
 
 
+    private static boolean registerIsFriend(String user, List<String> exceptNames, List<String> friend) {
+        if (friend.get(0).equals(user)){
+            exceptNames.add(friend.get(1));
+            return true;
+        } else if (friend.get(1).equals(user)){
+            exceptNames.add(friend.get(0));
+            return true;
+        }
+        return false;
+    }
+
     private static Integer countScore(Map<String, Integer> friendsScore, String friendName, int score) {
         return friendsScore.put(friendName, friendsScore.getOrDefault(friendName, 0) + score);
     }
