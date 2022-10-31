@@ -9,7 +9,7 @@ class Problem1 {
         int crongScore = 0;
 
         // 예외 사항이 있다면 -1 리턴
-        if(checkException(pobi, crong)) {
+        if (checkException(pobi, crong)) {
             answer = -1;
             return answer;
         }
@@ -25,16 +25,26 @@ class Problem1 {
 
         return answer;
     }
+
     // 예외 사항이 있는지 검사하는 메서드
     static boolean checkException(List<Integer> pobi, List<Integer> crong) {
         boolean pobiException = false;
         boolean crongException = false;
         for (int i = 0; i < 2; i++) {
-            if(pobi.get(1) - pobi.get(0) != 1) {
+            if (pobi.get(1) - pobi.get(0) != 1) {
                 pobiException = true;
+                break;
             }
-            if(crong.get(1) - crong.get(0) != 1) {
+            if ((pobi.get(0) > 400 || pobi.get(0) < 0) || (pobi.get(1) > 400 || pobi.get(1) < 0)) {
+                pobiException = true;
+                break;
+            }
+            if (crong.get(1) - crong.get(0) != 1) {
                 crongException = true;
+            }
+            if ((crong.get(0) > 400 || crong.get(0) < 0) || (crong.get(1) > 400 || crong.get(1) < 0)) {
+                crongException = true;
+                break;
             }
         }
         return pobiException || crongException;
@@ -92,7 +102,7 @@ class Problem1 {
 
     // 포비와 크롱의 점수를 비교하는 메서드
     static int compareScore(int pobiScore, int crongScore) {
-        if(pobiScore > crongScore) {
+        if (pobiScore > crongScore) {
             return 1;
         } else if (pobiScore < crongScore) {
             return 2;
