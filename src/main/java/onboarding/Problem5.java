@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Problem5 {
+    static List<Integer> MoneyType = List.of(50000,10000,5000,1000,500,100,50,10,1);
     public static List<Integer> solution(int money) {
         if(CheckInput(money)){
         }
@@ -17,4 +18,14 @@ public class Problem5 {
             return true;
         }return false;
     }
+
+    /* 기능2 : 사용할 화폐 지정 */
+    private static int TypeofMoney(int money){
+        for(int i = 0; i < MoneyType.size(); i++){
+            if (money >= MoneyType.get(i)) return i;
+        }
+        return 0;
+    }
+
+
 }
