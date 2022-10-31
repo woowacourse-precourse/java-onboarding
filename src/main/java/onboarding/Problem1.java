@@ -27,20 +27,47 @@ class Problem1 {
             return answer;
         }
         //compute numbers
-        computeNumber(pobi,crong);
+        int p_max = computeMax(pobi);
+        int c_max = computeMax(crong);
+
+        if(p_max > c_max){
+            answer = 1;
+        }
+        else if(c_max > p_max){
+            answer = 2;
+        }
+        else{
+            answer = 0;
+        }
 
         return answer;
     }
 
-    static void computeNumber(List<Integer> pobi, List<Integer> crong){
+    static int computeMax(List<Integer> test){
         //make max, plus number, multiple number
-        int p_plus = 0;
-        int p_multi = 0;
-        int c_plus = 0;
-        int c_multi = 0;
-        int p_max = 0;
-        int c_max = 0;
+        int plus = 0;
+        int multi = 1;
+        int max = 0;
+        int num;
 
-        
+        //coompute max
+        for(int i = 0; i < 2; i++){
+            num = test.get(i);
+            while(num > 0){
+                plus += num % 10; //plus
+                multi *= num % 10; //multi
+                num /= 10;
+            }
+            if(plus >= multi && plus > max){
+                max = plus;
+            }
+            else if(multi > plus && multi > max){
+                max = multi;
+            }
+            plus = 0;
+            multi = 1;
+        }
+        //System.out.println(max);
+        return max;
     }
 }
