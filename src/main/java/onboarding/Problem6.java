@@ -83,13 +83,21 @@ public class Problem6 {
 
         private boolean isDupChar(List<List<String>> forms, String compName, int j) {
             for (int m = 0; m < forms.get(j).get(1).length() - 1; m++) {
-                for (int n = 0; n < compName.length() - 1; n++) {
-                    String compNameSlicing = compName.substring(n, n + 2);
-                    String formsNameSlicing = forms.get(j).get(1).substring(m, m + 2);
+                if (compareSlicingString(forms, compName, j, m)) {
+                    return true;
+                }
+            }
 
-                    if (compNameSlicing.equals(formsNameSlicing)) {
-                        return true;
-                    }
+            return false;
+        }
+
+        private boolean compareSlicingString(List<List<String>> forms, String compName, int j, int m) {
+            for (int n = 0; n < compName.length() - 1; n++) {
+                String compNameSlicing = compName.substring(n, n + 2);
+                String formsNameSlicing = forms.get(j).get(1).substring(m, m + 2);
+
+                if (compNameSlicing.equals(formsNameSlicing)) {
+                    return true;
                 }
             }
 
