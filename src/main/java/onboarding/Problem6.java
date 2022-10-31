@@ -10,6 +10,7 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         init();
         putFormsToMap(forms);
+        addToResultIfDuplicated(forms);
         return output;
     }
 
@@ -30,6 +31,19 @@ public class Problem6 {
         for (int i = 0; i < nickname.length() - 1; i++) {
             String subString = nickname.substring(i, i + 2);
             duplicationCountMap.put(subString, duplicationCountMap.getOrDefault(subString, 0) + 1);
+        }
+    }
+
+    private static void addToResultIfDuplicated(List<List<String>> forms) {
+        for (List<String> list : forms) {
+            String nickname = list.get(1);
+            for (int i = 0; i < nickname.length() - 1; i++) {
+                String subString = nickname.substring(i, i + 2);
+                if (duplicationCountMap.get(subString) > 2) {
+                    output.add(map.get(nickname));
+                    break;
+                }
+            }
         }
     }
 }
