@@ -73,6 +73,10 @@ public class Problem7 {
         for (Map.Entry<String, Integer> friend : sortFriendList) {
             String name = friend.getKey();
 
+            if (isNotFriend(user, name)) {
+                friends.add(name);
+            }
+
             if (friends.size() >= 5) {
                 break;
             }
@@ -96,6 +100,17 @@ public class Problem7 {
         });
 
         return entries;
+    }
+
+    private static boolean isNotFriend(String user, String friendName) {
+        List<String> userFriends = getUserFriends(user);
+
+        if (userFriends.contains(friendName)) {
+            return false;
+        } else {
+            return true;
+        }
+
     }
 
 }
