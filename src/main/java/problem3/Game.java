@@ -12,6 +12,14 @@ public class Game {
         this.clap = 0;
     }
 
+    public int run() {
+        for(int i = 1; i <= number; i++) {
+            String compareNumber = String.valueOf(i);
+            compareClapNumber(compareNumber);
+        }
+        return clap;
+    }
+
     private void compareClapNumber(String compareNumber) {
         for(int i = 0; i < compareNumber.length(); i++) {
             countClap(compareNumber, i);
