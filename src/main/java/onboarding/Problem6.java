@@ -9,27 +9,38 @@ import Exception.KoreanException;
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
+        List<String> dupCheck = new ArrayList<>();
         try {
-            emailCheck(forms.get(0).get(0));
-            emailLengthCheck(forms.get(0).get(0));
-            nickNameLengthCheck(forms.get(0).get(1));
-            koreanCheck(forms.get(0).get(1));
             crewSizeCheck(forms);
+            for (int i=0;i<=1;i++)
+            {
+                emailCheck(forms.get(i).get(0));
+                emailLengthCheck(forms.get(i).get(0));
+                nickNameLengthCheck(forms.get(i).get(1));
+                koreanCheck(forms.get(i).get(1));
+            }
+            dupCheck=stringTrim2(forms);
+            answer = new ArrayList<>();
         }catch (EmailFormException e)
         {
-            answer= new ArrayList<>();
-            answer.add("Email"); //test
             //문제에 예외를 어떻게 처리하라는 말이 없음
             //log.error OR log.warn
             //System.out.println(e.toString());
         }catch (RangeException e)
         {
-            answer= new ArrayList<>();
-            answer.add("Range"); //test
+            //문제에 예외를 어떻게 처리하라는 말이 없음
+            //log.error OR log.warn
+            //System.out.println(e.toString());
         }catch (KoreanException e)
         {
-            answer= new ArrayList<>();
-            answer.add("Korean"); //test
+            //문제에 예외를 어떻게 처리하라는 말이 없음
+            //log.error OR log.warn
+            //System.out.println(e.toString());
+        }catch (IndexOutOfBoundsException e)
+        {
+            //문제에 예외를 어떻게 처리하라는 말이 없음
+            //log.error OR log.warn
+            //System.out.println(e.toString());
         }
         return answer;
     }
@@ -87,5 +98,25 @@ public class Problem6 {
     public static void koreanCheck(String nickName)throws KoreanException
     {
         if(!nickName.matches(".*[ㄱ-ㅎㅏ-ㅣ가-힣]+.*")) throw new KoreanException("한글이 아닌 입력이 있습니다");
+    }
+
+    /**
+     * 모든 비교의 경우를 두글자씩 자르는 것이 시간을 줄일 수 있을거라 생각
+     *
+     * @param forms form전체를 입력으로받음
+     * @return 잘랐는 모든경우를 리스트에 넣음
+     */
+    public static List<String> stringTrim2 (List<List<String>> forms)
+    {
+        List <String> trim = new ArrayList<>();
+        for (int i=0;i<=forms.size()-1;i++)
+        {
+            char nickNameToArray[] = forms.get(i).get(1).toCharArray();
+            for (int j=0;j<nickNameToArray.length-1;j++) {
+                String tmp = Character.toString(nickNameToArray[j]) + nickNameToArray[j + 1];
+                trim.add(tmp);
+            }
+        }
+        return trim;
     }
 }

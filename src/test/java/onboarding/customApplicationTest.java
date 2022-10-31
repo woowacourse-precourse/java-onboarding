@@ -3,6 +3,7 @@ package onboarding;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -138,8 +139,43 @@ public class customApplicationTest
         void case1() {
          List<List<String>> forms = List.of(
                     List.of("jm@email.co", "제이엠"));
-            List<String> result = List.of("answer","answer");
+            List<String> result = List.of("Email");
             assertThat(Problem6.solution(forms)).isEqualTo(result);
+        }
+        @Test
+        void case2() {
+            List<List<String>> forms = List.of(
+                    List.of("dddddddddddddddddddjm@email.com", "제이엠"));
+            List<String> result = List.of("Range");
+            assertThat(Problem6.solution(forms)).isEqualTo(result);
+        }
+        @Test
+        void case3() {
+            List<List<String>> forms = List.of(
+                    List.of("jm@email.com", "제이엠제이엠제이엠제이엠제이엠제이엠제이엠제이엠제이엠제이엠"));
+            List<String> result = List.of("Range");
+            assertThat(Problem6.solution(forms)).isEqualTo(result);
+        }
+        @Test
+        void case4() {
+            List<List<String>> forms = List.of(
+                    List.of("jm@email.com", "제이엠ddd"));
+            List<String> result = List.of("korean");
+            assertThat(Problem6.solution(forms)).isEqualTo(result);
+        }
+        @Test
+        void case5() {
+            List<List<String>> forms = new ArrayList<>();
+            List<String> result = List.of("Range");
+            assertThat(Problem6.solution(forms)).isEqualTo(result);
+        }
+        @Test
+        void case6()
+        {
+            List<List<String>> forms = List.of(
+                    List.of("jm@email.com", "제이엠"));
+            List<String> result = List.of("제이","이엠");
+            assertThat(Problem6.stringTrim2(forms)).isEqualTo(result);
         }
 
     }
