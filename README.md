@@ -38,17 +38,6 @@ BUILD SUCCESSFUL in 0s
 
 1. [문제 1](./docs/PROBLEM1.md)
 2. [문제 2](./docs/PROBLEM2.md)
-
-// 기능 구현 순서
-1 문자열을 받아온다.
-
-
-
-2 제한 사항을 만족시킨다.
-3 문제 기능을 구현 시킨다.
-
-
-
 3. [문제 3](./docs/PROBLEM3.md)
 4. [문제 4](./docs/PROBLEM4.md)
 5. [문제 5](./docs/PROBLEM5.md)

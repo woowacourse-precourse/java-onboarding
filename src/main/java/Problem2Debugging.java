@@ -1,11 +1,11 @@
-package onboarding;
+public class Problem2Debugging {
+
+    public static void main(String[] args) {
+        String cryptogram = "browoanoommnaon";
 
 
-public class Problem2 {
-    public static String solution(String cryptogram) {
         if (cryptogram.length()>1000 || cryptogram.length()<1){
             System.out.println("Please, enter string length between 1 ~ 1000 !");
-            return cryptogram + "A"; //return error
         }
 
         int lengthCrypto = cryptogram.length();
@@ -16,7 +16,6 @@ public class Problem2 {
 
             if ( numASCII < 97 || numASCII > 122 ) {
                 System.out.println("Please, enter small letter !");
-                return cryptogram + "A"; //return error
             }
 
             lengthCrypto -= 1;
@@ -37,19 +36,10 @@ public class Problem2 {
 
                 if (cryptogram.charAt(num) == cryptogram.charAt(num + 1)) {
 
-                    if (num == lengthCrypto - 2) {
-                        resultRemoveOverlap = cryptogram.substring(0, num);
-                        cryptogram = resultRemoveOverlap;
-                        checkOverLapActive += 1;
-
-                        break;
-                    } else if (num != lengthCrypto - 2) {
                         resultRemoveOverlap = cryptogram.substring(0, num) + cryptogram.substring(num + 2, lengthCrypto);
                         cryptogram = resultRemoveOverlap;
                         checkOverLapActive +=1;
-
                         break;
-                    }
                 }
                 num += 1;
             }
@@ -63,6 +53,7 @@ public class Problem2 {
 
 
         String answer = cryptogram;
-        return answer;
+
+
     }
 }
