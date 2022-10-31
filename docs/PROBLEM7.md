@@ -39,7 +39,8 @@
   - 이때, user와 친구 관계인 경우는 Set에 저장해둔다.
 - [x] visitors를 탐색하면서 각 사용자들의 방문 횟수를 구해 점수를 계산하는 기능
 - [x] 완성된 Map에서 user의 친구를 제외하는 기능
-- [x] Map을 정렬하여 `List<String>` 형태로 반환하는 기능
+- [x] Map을 정렬하여 `List<Map.Entry<String, Integer>>` 형태로 반환하는 기능
+- [ ] 정렬된 `List<Map.Entry<String, Integer>>` 의 각 key를 `List<String>` 형태로 반환하는 기능
 
 ### ❗️ 예외 상황
 - 방문자에 자기 자신이 들어올 수도 있을 것 같다.
