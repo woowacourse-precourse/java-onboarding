@@ -4,6 +4,8 @@ import java.util.*;
 
 public class Problem7 {
     private static final int MAX_RECOMMEND_COUNT = 5;
+    private static final int FRIEND_POINT = 10;
+    private static final int VISITOR_POINT = 1;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Set<String> alreadyFriends = getAlreadyFriends(friends);
@@ -29,7 +31,7 @@ public class Problem7 {
         for (List<String> friend : friends) {
             String newFriend = friend.get(1);
             if (!user.equals(newFriend)) {
-                recommendPoint.put(newFriend, recommendPoint.getOrDefault(newFriend, 0) + 10);
+                recommendPoint.put(newFriend, recommendPoint.getOrDefault(newFriend, 0) + FRIEND_POINT);
             }
         }
 
@@ -39,7 +41,7 @@ public class Problem7 {
     private static void addRecommendPointByVisit(Set<String> alreadyFriends, Map<String, Integer> recommendPoint, List<String> visitors) {
         for (String visitor : visitors) {
             if (isNewFriendVisiting(visitor, alreadyFriends)) {
-                recommendPoint.put(visitor, recommendPoint.getOrDefault(visitor, 0) + 1);
+                recommendPoint.put(visitor, recommendPoint.getOrDefault(visitor, 0) + VISITOR_POINT);
             }
         }
     }
