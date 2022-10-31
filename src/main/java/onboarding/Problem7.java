@@ -102,6 +102,20 @@ public class Problem7 {
         return userList;
     }
     //사용자의 타임라인에 방문한 점수 계산 함수
+    static List<people_score> visitors_score(String user, List<List<String>> friends, List<String> visitors) {
+        List<people_score> userList = user_list(user,friends,visitors);
+        List<String> index_found = people_list(user,friends,visitors);
+
+        for (int i=0;i< visitors.size();i++){
+            int idx = index_found.indexOf(visitors.get(i));
+
+            if(idx != -1) {
+                userList.get(idx).score +=1;
+            }
+        }
+
+        return userList;
+    }
 
     //사용자와 함께 아는 친구의 수 점수와 사용자의 타임라인에 방문한 점수의 총 합을 구해주는 함수
 
