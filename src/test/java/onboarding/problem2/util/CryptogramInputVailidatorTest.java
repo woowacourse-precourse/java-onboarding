@@ -30,6 +30,9 @@ public class CryptogramInputVailidatorTest {
 			// give
 			String cryptogramPass = "browoanoommnaon";
 			String cryptogramFail = "1234567890ABc";
+			String cryptogramFailNumber = "1234567890";
+			String cryptogramFailUppercase = "BROWOANOOMMNAON";
+			String cryptogramFailKorean = "한글";
 
 			// when
 			boolean resultPassed = true;
@@ -37,6 +40,9 @@ public class CryptogramInputVailidatorTest {
 			// then
 			assertThat(CryptogramInputVailidator.alphabetLowcasePattern(cryptogramPass)).isEqualTo(resultPassed);
 			assertThat(CryptogramInputVailidator.alphabetLowcasePattern(cryptogramFail)).isNotEqualTo(resultFailed);
+			assertThat(CryptogramInputVailidator.alphabetLowcasePattern(cryptogramFailNumber)).isNotEqualTo(resultFailed);
+			assertThat(CryptogramInputVailidator.alphabetLowcasePattern(cryptogramFailUppercase)).isNotEqualTo(resultFailed);
+			assertThat(CryptogramInputVailidator.alphabetLowcasePattern(cryptogramFailKorean)).isNotEqualTo(resultFailed);
 		}
 	}
 }
