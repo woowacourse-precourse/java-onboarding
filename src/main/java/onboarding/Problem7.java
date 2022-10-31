@@ -5,6 +5,10 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.Comparator;
+import java.util.Iterator;
 
 public class Problem7 {
     public static final Integer KNOW_TOGETHER_SCORE = 10;
@@ -12,6 +16,12 @@ public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+        List<String> friendList = getFriendList(user, friends);
+        List<String> knowTogetherList = getKnowTogetherList(user, friendList, friends);
+        Map<String, Integer> knowTogetherScoreMap = getKnowTogetherScoreMap(knowTogetherList);
+        Map<String, Integer> visitScoreMap = getVisitScoreMap(visitors, friendList);
+        Map<String, Integer> totalScoreMap = calculateTotalScoreMap(knowTogetherScoreMap, visitScoreMap);
+        answer = getRecommendFriendList(totalScoreMap);
         return answer;
     }
 
@@ -73,5 +83,27 @@ public class Problem7 {
         visitScoreMap.forEach((key, value) -> knowTogetherScoreMap.merge(key, value, (v1, v2) -> v1 + v2));
         totalScoreMap = knowTogetherScoreMap;
         return totalScoreMap;
+    }
+
+    public static List<String> getRecommendFriendList(Map<String, Integer> totalScoreMap) {
+        List<String> recommendFriendList = new ArrayList<>();
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(totalScoreMap.entrySet());
+        Collections.sort(entryList, new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                int comparison = (o1.getValue() - o2.getValue()) * -1;
+                if (comparison == 0) {
+                    return o1.getKey().compareTo(o2.getKey());
+                } else {
+                    return comparison;
+                }
+            }
+        });
+        Map<String, Integer> sortedTotalScoreMap = new LinkedHashMap<>();
+        for (Iterator<Map.Entry<String, Integer>> iterator = entryList.iterator(); iterator.hasNext(); ) {
+            Map.Entry<String, Integer> entry = iterator.next();
+            recommendFriendList.add(entry.getKey());
+        }
+        return recommendFriendList;
     }
 }
