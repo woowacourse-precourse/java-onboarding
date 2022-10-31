@@ -48,8 +48,8 @@ public class Problem7 {
             }
         }
 
-        List<Map.Entry<String, Integer>> entry = new LinkedList<>(userScore.entrySet());
-        Collections.sort(entry, (a, b) -> {
+        List<Map.Entry<String, Integer>> scoreBoard = new LinkedList<>(userScore.entrySet());
+        Collections.sort(scoreBoard, (a, b) -> {
             if (a.getValue() == b.getValue()) {
                 return a.getKey().compareTo(b.getKey());
             } else {
@@ -57,9 +57,9 @@ public class Problem7 {
             }
         });
         List<String> result = new ArrayList<String>();
-        for (Map.Entry<String, Integer> el : entry) {
-            if (el.getValue() != 0) {
-                result.add(el.getKey());
+        for (Map.Entry<String, Integer> friendScore : scoreBoard) {
+            if (friendScore.getValue() != 0) {
+                result.add(friendScore.getKey());
             }
         }
 
