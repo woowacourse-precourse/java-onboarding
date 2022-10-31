@@ -9,12 +9,19 @@ class Problem1 {
         int pobiMaxNum=0;
         int crongMaxNum=0;
 
-        if(pobi.size()<2 || crong.size()<2 || pobi.size()>3 || crong.size()>3){
+        if(pobi.size()!=2 || crong.size()!=2){
+            return -1;
+        }
+        if (pobi.get(0)%2==0 || crong.get(0)%2==0){
             return -1;
         }
         if(pobi.get(0)<1 || pobi.get(1)>400 || (pobi.get(0)+1 != pobi.get(1))){
             return -1;
         }
+        if(crong.get(0)<1 || crong.get(1)>400 || (crong.get(0)+1 != crong.get(1))){
+            return -1;
+        }
+
         pobiMaxNum = getMaxNum(pobi.get(0),pobi.get(1));
         crongMaxNum = getMaxNum(crong.get(0),crong.get(1));
 
