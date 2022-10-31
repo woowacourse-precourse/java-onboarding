@@ -9,10 +9,7 @@ public class Problem2 {
 
     public static String solution(String cryptogram) {
         init();
-        // 1. 중복 문자열을 제거한다.
         removeDuplicateString(cryptogram);
-
-        // 2. 스택의 크기에 따라 적절한 문자열을 반환한다.
         return getResultFromStack();
     }
 

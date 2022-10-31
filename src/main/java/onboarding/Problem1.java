@@ -8,16 +8,12 @@ class Problem1 {
 
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        // 1. 예외 상황을 처리한다.
         if (checkInvalidPage(pobi) || checkInvalidPage(crong)) {
             return -1;
         }
-
-        // 2. 참여자 각각의 최대 점수를 구한다.
         int pobiResult = getMaxResult(pobi);
         int crongResult = getMaxResult(crong);
 
-        // 3. 승자를 가린다.
         return getWinner(pobiResult, crongResult);
     }
 
