@@ -87,7 +87,58 @@ public class Problem7 {
         return friendCount;
     }
 
-
+    //  4.hash 맵에서 밸류값이 높은 순서대로 뽑는데 같은 밸류값 뽑아서
+    //  일단 이름순으로 list에 삽입 5명되면 break
+    public static List<String> friendResult(HashMap<String, Integer> addAcount) {
+        List<Map.Entry<String, Integer>> resultList = new ArrayList<>(addAcount.entrySet());
+//       /*value 값으로 내림차순 정렬*/
+        Collections.sort(resultList, new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                return o2.getValue().compareTo(o1.getValue());
+            }
+        });
+        List<String> result = new ArrayList<>();
+        int count = 0;
+        List<String> resultIns = new ArrayList<>();
+        /*resultList 갯수만큼 for문 돌기*/
+        for (int i = 0; i < resultList.size(); i++) {
+            /*점수가 1 초과인 사람만 통과 추천점수가 0인 경우는 통과하지 말라고 하는데 그러면 1인 값이 통과 됨
+            answer과는 다름 */
+            if (resultList.get(i).getValue() > 1) {
+                if (resultIns.isEmpty()) {
+//                   /*result에 넣기 전에 같은 점수끼리 정렬해야 하기 때문에 임시 저장*/
+                    resultIns.add(resultList.get(i).getKey());
+                    /*같은 점수 인지 확인하는 int 값*/
+                    count = resultList.get(i).getValue();
+                }else{
+                    if (resultList.get(i).getValue() == count) {
+                        /*최대 5명이기 때문에 초과하면 break. 임시저장하기 전에 검사*/
+                        if (result.size() > 5) {
+                            break;
+                        }
+                        resultIns.add(resultList.get(i).getKey());
+                    } else {
+                        /*현재 값이 점수가 다르면 임시저장값을 정렬하고 임시저장값을 초기화*/
+                        resultIns.sort(Comparator.naturalOrder());
+                        result.addAll(resultIns);
+                        resultIns.clear();
+                        /*점수값을 현재값으로 할당*/
+                        count = resultList.get(i).getValue();
+                        if (result.size() > 5) {
+                            break;
+                        }
+                        resultIns.add(resultList.get(i).getKey());
+                    }
+                }
+            }
+            /*마지막 값이 남아 있을 수 있어서 임시저장값을 result에 저장.*/
+            if (i == resultList.size()-1) {
+                result.addAll(resultIns);
+            }
+        }
+        return result;
+    }
 }
 
 
