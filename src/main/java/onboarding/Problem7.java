@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -14,6 +15,7 @@ public class Problem7 {
         calculateVisitor(user, visitors, scoreMap);
         removeUserFriends(friendsMap.get(user), scoreMap);
         removeZeroScore(scoreMap);
+        List<String> recommendedFriends = sortMapByScoreAndName(new ArrayList<>(scoreMap.keySet()), scoreMap);
         List<String> answer = Collections.emptyList();
         return answer;
     }
@@ -65,6 +67,16 @@ public class Problem7 {
                 scoreMap.remove(friend);
             }
         }
+    }
+
+    public static List<String> sortMapByScoreAndName(List<String> recommendedFriends, HashMap<String, Integer> scoreMap ) {
+        recommendedFriends.sort((user1, user2) -> {
+            if (Objects.equals(scoreMap.get(user1), scoreMap.get(user2))) {
+              return user1.compareTo(user2);
+            }
+            return scoreMap.get(user2) - scoreMap.get(user1);
+        });
+        return recommendedFriends;
     }
 
     public static int countRelatedFriendsWithUser(String user, String other, HashMap<String, List<String>> friendsMap){
