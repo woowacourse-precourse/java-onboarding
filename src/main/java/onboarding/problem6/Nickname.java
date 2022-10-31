@@ -12,8 +12,8 @@ public class Nickname {
 
 	public boolean hasOverlapWith(Nickname other) {
 		for (int i = 0; i < other.nickname.length() - 1; i++) {
-			String substring = other.nickname.substring(i, i + 2);
-			if (nickname.contains(substring)) {
+			String twoCharacters = other.nickname.substring(i, i + 2);
+			if (nickname.contains(twoCharacters)) {
 				return true;
 			}
 		}
