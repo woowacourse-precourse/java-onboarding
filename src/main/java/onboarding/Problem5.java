@@ -11,6 +11,14 @@ public class Problem5 {
         return answer;
     }
 
+    /**
+     *
+     * @param money 현재 돈
+     * @param moneyUnit 화폐 단위가 들어있는 배열 ex) 5만원, 1만원 -> [50000, 10000]
+     * @param index 현재 돈을 나눠야 할 화폐단위가 있는 곳(moneyUnit)을 가르키는 index
+     * @param result 결과
+     * @return
+     */
     private static List<Integer> divideRecursively(int money, int[] moneyUnit, int index, List<Integer> result){
         if(index == moneyUnit.length)
             return result;
