@@ -1,8 +1,10 @@
 package onboarding;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.lang.reflect.Method;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -67,6 +69,60 @@ class ApplicationTest {
             int result = 14;
             assertThat(Problem3.solution(number)).isEqualTo(result);
         }
+
+        @Test
+        @DisplayName("3일때")
+        void is369TestSuccess() throws Exception {
+            Method testMethod = Problem3.class.getDeclaredMethod("is369", int.class);
+            testMethod.setAccessible(true);
+
+            boolean result = (boolean) testMethod.invoke(boolean.class, 3);
+
+            assertThat(result).isEqualTo(true);
+        }
+
+        @Test
+        @DisplayName("4일때")
+        void is369TestFail() throws Exception {
+            Method testMethod = Problem3.class.getDeclaredMethod("is369", int.class);
+            testMethod.setAccessible(true);
+
+            boolean result = (boolean) testMethod.invoke(boolean.class, 4);
+
+            assertThat(result).isEqualTo(false);
+        }
+
+        @Test
+        @DisplayName("369 카운트 - 33일때")
+        void count369InNumberTwo() throws Exception {
+            Method testMethod = Problem3.class.getDeclaredMethod("count369InNumber", int.class);
+            testMethod.setAccessible(true);
+
+            //given
+            int test = 33;
+
+            //when
+            int result = (int) testMethod.invoke(int.class, test);
+
+            //then
+            assertThat(result).isEqualTo(2);
+        }
+
+        @Test
+        @DisplayName("369 카운트 - 14일때")
+        void count369InNumberZero() throws Exception {
+            Method testMethod = Problem3.class.getDeclaredMethod("count369InNumber", int.class);
+            testMethod.setAccessible(true);
+
+            //given
+            int test = 14;
+
+            //when
+            int result = (int) testMethod.invoke(int.class, test);
+
+            //then
+            assertThat(result).isEqualTo(0);
+        }
     }
 
     @Nested
@@ -76,6 +132,32 @@ class ApplicationTest {
             String word = "I love you";
             String result = "R olev blf";
             assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+
+        @Test
+        void changeUpperCase() throws Exception {
+            Method testMethod = Problem4.class.getDeclaredMethod("changeUpperCaseChar", char.class);
+            testMethod.setAccessible(true);
+
+            //given
+            char test = 'B';
+            //when
+            char result = (char) testMethod.invoke(char.class, test);
+            //then
+            assertThat(result).isEqualTo('Y');
+        }
+
+        @Test
+        void changeLowerCase() throws Exception {
+            Method testMethod = Problem4.class.getDeclaredMethod("changeLowerCaseChar", char.class);
+            testMethod.setAccessible(true);
+
+            //given
+            char test = 'b';
+            //when
+            char result = (char) testMethod.invoke(char.class, test);
+            //then
+            assertThat(result).isEqualTo('y');
         }
     }
 
@@ -127,6 +209,24 @@ class ApplicationTest {
             );
             List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
             List<String> result = List.of("andole", "jun", "bedi");
+            assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+        }
+
+        @Test
+        @DisplayName("추천가능한 사람이 5보다 많을때")
+        void case2() {
+            String user = "a";
+            List<List<String>> friends = List.of(
+                    List.of("a", "b"),
+                    List.of("b", "c"),
+                    List.of("b", "d"),
+                    List.of("b", "e"),
+                    List.of("b", "f"),
+                    List.of("b", "g"),
+                    List.of("b", "h")
+            );
+            List<String> visitors = List.of("f", "f", "d");
+            List<String> result = List.of("f", "d", "c", "e", "g");
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
         }
     }
