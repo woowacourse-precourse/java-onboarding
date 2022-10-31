@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Problem7 {
-    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 		HashMap<String, List<String>> relation = makeFriendsRelation(user, friends, visitors);
 
 		List<String> userFriends = relation.get(user);
@@ -18,7 +18,7 @@ public class Problem7 {
 
 		List<String> result = processData(relation, userFriends);
 		return result;
-    }
+	}
 
 	private static HashMap makeFriendsRelation(String user, List<List<String>> data, List<String> visitors) {
 		HashMap<String, List<String>> temp = new HashMap<>();
@@ -94,7 +94,8 @@ public class Problem7 {
 		Collections.sort(list, (first, second) -> {
 			if (first.getValue() > second.getValue()) {
 				return -1;
-			} else if (first.getValue() < second.getValue()) {
+			}
+			if (first.getValue() < second.getValue()) {
 				return 1;
 			}
 			return first.getKey().compareTo(second.getKey());
@@ -105,9 +106,7 @@ public class Problem7 {
 		for (int i = 0; i < list.size(); i++) {
 			if (i == 5)
 				break;
-			else {
-				result.add(list.get(i).getKey());
-			}
+			result.add(list.get(i).getKey());
 		}
 		return result;
 	}
