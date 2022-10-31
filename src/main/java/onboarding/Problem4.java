@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Problem4 {
-    private static Map<Character, Character> momToChild = new HashMap<>();
+    private final static Map<Character, Character> momToChild = new HashMap<>();
     public static String solution(String word) {
         String answer = "";
         initDictionary();

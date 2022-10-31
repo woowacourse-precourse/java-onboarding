@@ -21,7 +21,7 @@ class Problem1 {
     }
 
     static public Integer sumDigits(Integer num) {
-        Integer sum = 0;
+        int sum = 0;
 
         while (!num.equals(0)) {
             sum += num % 10;
@@ -31,7 +31,7 @@ class Problem1 {
     }
 
     static public Integer mulDigits(Integer num) {
-        Integer mul = 1;
+        int mul = 1;
 
         while (!num.equals(0)) {
             mul *= num % 10;

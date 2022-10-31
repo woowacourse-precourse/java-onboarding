@@ -8,7 +8,6 @@ public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
 
-        Arrays.stream(clapNum).map(n -> 0);
         for (int i = 2; i <= number; ++i) {
             clapNum[i] = clapNum[i - 1] + countClapNum(i);
         }

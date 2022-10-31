@@ -15,9 +15,9 @@ public class Problem5 {
     public static List<Integer> countKRW(int money) {
         int len = KRW.length;
         List<Integer> counter = new ArrayList<>(len);
-        for (int i = 0; i < len; ++i) {
-            counter.add(money / KRW[i]);
-            money = money % KRW[i];
+        for (int won : KRW) {
+            counter.add(money / won);
+            money = money % won;
         }
         return counter;
     }
