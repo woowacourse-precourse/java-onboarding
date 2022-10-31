@@ -6,15 +6,16 @@ import java.util.stream.Stream;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
         if(checkException(pobi) || checkException(crong)){
             return -1;
         }
         int pobiNumber  =  calculator(pobi);
         int crongNumber =  calculator(crong);
 
-
-        return answer;
+        return getPoint(pobiNumber,crongNumber);
+    }
+    public static int getPoint(int pobiNumber,int crongNumber){
+        return pobiNumber == crongNumber ? 0 : (pobiNumber > crongNumber ? 1 : 2);
     }
     public static int calculator(List<Integer> numList){
         int[] leftArray = getNumArray(numList,0);
