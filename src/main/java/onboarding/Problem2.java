@@ -4,37 +4,36 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Problem2 {
+
+	private static final String regex = "(\\w)(\\1+)";
+
 	public static String solution(String cryptogram) {
-		String answer;
-		Matcher patternMatcher;
 
-		while (true) {
-			boolean duplicationExists = checkDuplication(cryptogram);
-			patternMatcher = setMatcher(cryptogram);
-			cryptogram = removeDuplication(patternMatcher);
+		do {
+			cryptogram = handleDuplication(cryptogram);
+		} while (doesDuplicationExist(cryptogram));
 
-			if (!duplicationExists) { break; }
-
-		}
-
-		answer = cryptogram;
-
-		return answer;
+		return cryptogram;
 	}
 
-	private static boolean checkDuplication(String cryptogram) {
+	private static String handleDuplication(String cryptogram) {
+		Matcher patternMatcher = setMatcher(cryptogram);
+		cryptogram = removeDuplication(patternMatcher);
+		return cryptogram;
+	}
+
+	private static boolean doesDuplicationExist(String cryptogram) {
 		Matcher patternMatcher = setMatcher(cryptogram);
 		return patternMatcher.find();
 	}
 
 	private static Matcher setMatcher(String cryptogram) {
-		String regex = "(\\w)(\\1+)";
 		Pattern patternRegex = Pattern.compile(regex);
 		return patternRegex.matcher(cryptogram);
 	}
 
 	private static String removeDuplication(Matcher patternMatcher) {
-		String cryptogram;
+		String resultString;
 		StringBuilder stringBuilder = new StringBuilder();
 
 		while (patternMatcher.find()) {
@@ -42,8 +41,8 @@ public class Problem2 {
 		}
 
 		patternMatcher.appendTail(stringBuilder);
-		cryptogram = String.valueOf(stringBuilder);
+		resultString = String.valueOf(stringBuilder);
 
-		return cryptogram;
+		return resultString;
 	}
 }
