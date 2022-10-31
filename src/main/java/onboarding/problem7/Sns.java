@@ -30,6 +30,13 @@ public class Sns {
         visitHistory.put(user, visitLog);
     }
 
+    public List<String> recommendMembers(String user) {
+        HashMap<String, Integer> recommendMap = new HashMap<>();
+
+        updateRecommendMap(user, recommendMap);
+        return recommendMembersUsingMap(recommendMap);
+    }
+
 
     private void enrollMember(String member) {
         memberSet.add(member);
