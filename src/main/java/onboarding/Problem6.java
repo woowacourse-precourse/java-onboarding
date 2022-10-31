@@ -15,6 +15,22 @@ public class Problem6 {
     private static Set<String> overlapNickNameSet = new HashSet<>();
     private static final int EMAIL = 0;
     private static final int NICKNAME=1;
+
+    private static final int FORMS_SIZE =2;
+
+    private static final String EMAIL_FORM = "email.com";
+
+    private static final int MIN_EMAIL_LENGTH = 11;
+    private static final int MAX_EMAIL_LENGTH = 20;
+    private static final int MIN_NICKNAME_LENGTH = 1;
+    private static final int MAX_NICKNAME_LENGTH = 20;
+
+    private static final String KOREAN_NAME = "^[ㄱ-ㅎ가-힣]*$";
+
+    private static final int MIN_CREW_COUNT = 1;
+
+    private static final int MAX_CREW_COUNT = 10000;
+
     public static List<String> solution(List<List<String>> forms) {
         forms.stream()
                 .filter(Problem6::isProperForms)
@@ -39,20 +55,20 @@ public class Problem6 {
 
 
     private static boolean isProperForms(List<String> forms) {
-        return forms.size() == 2
+        return forms.size() == FORMS_SIZE
                 && isProperEmail(forms.get(EMAIL))
                 && isProperNickName(forms.get(NICKNAME));
     }
 
     private static boolean isProperEmail(String email) {
-        return 11 <= email.length()
-                && email.length() < 20
-                && email.endsWith("email.com");
+        return MIN_EMAIL_LENGTH <= email.length()
+                && email.length() < MAX_EMAIL_LENGTH
+                && email.endsWith(EMAIL_FORM);
     }
     private static boolean isProperNickName(String nickName) {
-        return 1 <= nickName.length()
-                && nickName.length() < 20
-                && nickName.matches("^[ㄱ-ㅎ가-힣]*$");
+        return MIN_NICKNAME_LENGTH <= nickName.length()
+                && nickName.length() < MAX_NICKNAME_LENGTH
+                && nickName.matches(KOREAN_NAME);
     }
 
 }
