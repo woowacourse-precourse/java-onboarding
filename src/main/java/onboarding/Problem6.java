@@ -1,12 +1,11 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-
-        List<String> answer = List.of("answer");
 
         List<List<String>> saveInList = new ArrayList<>();
         List<String> Deduplication = new ArrayList<>();
@@ -27,6 +26,10 @@ public class Problem6 {
                 }
             }
         }
+
+        HashSet<String> ToHashSet = new HashSet<>(Deduplication);
+
+        List<String> answer = new ArrayList<>(ToHashSet);
 
         return answer;
     }
