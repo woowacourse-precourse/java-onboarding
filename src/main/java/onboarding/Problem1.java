@@ -5,9 +5,13 @@ import java.util.List;
 
 class Problem1 {
     static boolean isValid(List<Integer> pobi, List<Integer> crong){
+        List<Integer> firstPage = List.of(1, 2);
+        List<Integer> lastPage = List.of(399, 400);
+
         if(pobi.size() != 2 || crong.size() != 2) return false;
         if(pobi.get(1)-pobi.get(0) != 1 || crong.get(1) - crong.get(0) != 1) return false;
         if(pobi.get(0) % 2 != 1 || pobi.get(1) % 2 != 0 || crong.get(0) % 2 != 1 || crong.get(1) % 2 != 0) return false;
+        if(pobi.equals(firstPage) || pobi.equals(lastPage) || crong.equals(firstPage) || crong.equals(lastPage)) return false;
         return true;
     }
     static int maxNum(int num) {
