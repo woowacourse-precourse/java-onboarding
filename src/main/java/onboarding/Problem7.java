@@ -3,14 +3,16 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 public class Problem7 {
 	static HashMap<String, List<String>> friendList = new HashMap<>();
+	static HashMap<String, Integer> distanceMap = new HashMap<>();
 
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 		List<String> answer = Collections.emptyList();
-
 		String mate1;
 		String mate2;
 		for (List<String> mate : friends) {
@@ -18,6 +20,10 @@ public class Problem7 {
 			mate2 = mate.get(1);
 			makeGraph(mate1, mate2);
 		}
+
+		findDistance(user);
+		System.out.println("distanceMap = " + distanceMap);
+
 		return answer;
 	}
 
@@ -29,9 +35,39 @@ public class Problem7 {
 			secondMate = i == 0 ? mate2 : mate1;
 			if (!friendList.containsKey(firstMate)) {
 				friendList.put(firstMate, new ArrayList<>());
-				continue;
 			}
 			friendList.get(firstMate).add(secondMate);
 		}
+		System.out.println("friendList = " + friendList);
+	}
+
+	public static void findDistance(String root) {
+		Queue<String> queue = new LinkedList<>();
+		queue.add(root);
+		distanceMap.put(root, 0);
+		while (!queue.isEmpty()) {
+			String curMember = queue.poll();
+			for (String anotherMember : friendList.get(curMember)) {
+				if (distanceMap.containsKey(anotherMember)) {
+					continue;
+				}
+				queue.add(anotherMember);
+				distanceMap.put(anotherMember, distanceMap.get(curMember) + 1);
+			}
+		}
+	}
+
+	public static void main(String[] args) {
+		String user = "mrko";
+		List<List<String>> friends = List.of(
+			List.of("donut", "andole"),
+			List.of("donut", "jun"),
+			List.of("donut", "mrko"),
+			List.of("shakevan", "andole"),
+			List.of("shakevan", "jun"),
+			List.of("shakevan", "mrko")
+		);
+		List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+		solution(user, friends, visitors);
 	}
 }
