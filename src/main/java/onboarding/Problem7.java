@@ -29,6 +29,18 @@ public class Problem7 {
         }
         return scoreBoard;
     }
+
+    public static List<String> getUserFriend(String user, List<List<String>> friends) {
+        List<String> userFriend = new ArrayList<>();
+        for (List<String> friendship : friends) {
+            if (friendship.contains(user)) {
+                if (friendship.indexOf(user) == 0) userFriend.add(friendship.get(1));
+                else userFriend.add(friendship.get(0));
+            }
+        }
+        return userFriend;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
