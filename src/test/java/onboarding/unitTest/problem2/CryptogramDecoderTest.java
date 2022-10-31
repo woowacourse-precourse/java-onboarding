@@ -1,6 +1,5 @@
 package onboarding.unitTest;
 
-import onboarding.problem1.BookPageDiscriminator;
 import onboarding.problem2.CryptogramDecoder;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.extension.ExtensionContext;
@@ -35,6 +34,7 @@ public class Problem2UnitTest {
                     Arguments.of(List.of('c','b','b','c'), List.of()),
                     Arguments.of(List.of('a','b','c','d'), List.of('a','b','c','d')),
                     Arguments.of(List.of('c','b','c','c'), List.of('c','b')),
+                    Arguments.of(List.of('c','b','c','c','c'), List.of('c','b')),
                     Arguments.of(List.of(), List.of())
             );
         }
