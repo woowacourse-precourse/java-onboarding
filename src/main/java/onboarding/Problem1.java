@@ -14,4 +14,13 @@ class Problem1 {
         }
         return Math.max(addScore,mulScore);
     }
+    // 해당 사람의 최종 점수를 뽑아내는 함수
+    static int finalScore(List<Integer> person){
+        int score = 0;
+        for(Integer p : person){
+            score = Math.max(score, calculateScore(p));
+        }
+        return score;
+    }
+
 }
