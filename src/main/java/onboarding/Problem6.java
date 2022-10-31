@@ -86,6 +86,26 @@ public class Problem6 {
         }
     }
 
+    // 중복된 닉네임 검사 메서드를 호출하는 메서드
+    // extractNicknameList 메서드에서 추출한 nicknameList 를 매개변수로 받는다.
+    // 이 매개변수를 토대로 중복검사를 수행하여
+    // 중복 여부를 담고 있는 updateOverlapStatusMap 에 중복 여부를 반영한다.
+    public static void checkNicknameOverlap(List<String> nicknameList) {
+
+        int nicknameListSize = nicknameList.size();
+
+        // 닉네임 리스트 순회
+        for (int nicknameListIndex = 0; nicknameListIndex < nicknameListSize; nicknameListIndex++) {
+            String nickname = nicknameList.get(nicknameListIndex);
+
+            // 다음 닉네임 리스트 원소부터 중복검사 양식을 검사한다.
+            // nicknameList 리스트의 k 인덱스를 참조한다 (현재 i 보다 한칸 더 크도록)
+            for (int nicknameIndex = nicknameListIndex + 1; nicknameIndex < nicknameListSize; nicknameIndex++) {
+                updateOverlapStatusMap(extractCheckFormListByNickname(nickname), nicknameList.get(nicknameIndex), nickname);
+            }
+        }
+    }
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
