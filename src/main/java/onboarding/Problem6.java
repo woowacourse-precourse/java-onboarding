@@ -8,7 +8,6 @@ import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-
         Pattern pattern_email = Pattern.compile("^[0-9a-zA-Z]+(.[_0-9a-zA-Z-]+)*@email[.]com");
         Pattern pattern_nick = Pattern.compile("^[가-힣ㄱ-ㅎ]+(.[가-힣ㄱ-ㅎ]+)*");
 
@@ -34,7 +33,6 @@ public class Problem6 {
                 return null;
             }
         }
-
         List<String> list_email = new ArrayList<>();
 
         for (int i = 0; i < forms.size(); i++) {
@@ -52,6 +50,7 @@ public class Problem6 {
                 }
             }
         }
+
         List<String> list_result = list_email.stream().distinct().collect(Collectors.toList());
         list_result.sort(Comparator.naturalOrder());
         return list_result;

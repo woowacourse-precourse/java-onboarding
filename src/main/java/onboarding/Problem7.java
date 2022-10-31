@@ -5,7 +5,6 @@ import java.util.*;
 public class Problem7 {
     static Map<String, Integer> score_friend = new HashMap<>();
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        
         List<String> user_friends = new ArrayList<>();
 
         for (List<String> relation : friends) {
@@ -37,8 +36,8 @@ public class Problem7 {
         list_entry.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
 
         List<String> list_result = new ArrayList<>();
-        int cnt = 5;
 
+        int cnt = 5;
 
         for(Map.Entry<String, Integer> entry : list_entry) {
             list_result.add(entry.getKey());

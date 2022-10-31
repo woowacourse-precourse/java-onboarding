@@ -5,6 +5,7 @@ import java.util.*;
 class Problem1 {
     static final int PAGE_MIN = 1;
     static final int PAGE_MAX = 400;
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int left_pobi = pobi.get(0);
         int right_pobi = pobi.get(1);

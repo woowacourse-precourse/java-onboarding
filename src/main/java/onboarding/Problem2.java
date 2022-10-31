@@ -7,6 +7,7 @@ public class Problem2 {
         boolean check = true;
 
         while (check) {
+
             check = false;
             char[] crypto_array = answer.toCharArray();
             char over_char = ' ';
