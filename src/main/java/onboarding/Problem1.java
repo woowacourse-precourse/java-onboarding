@@ -29,4 +29,14 @@ class Problem1 {
         }
         return sum;
     }
+
+    // 주어진 수의 각 자리수의 곱을 구함
+    private static int allMult(int pageNum) {
+        int mult = 1;
+        while(pageNum > 0) {
+            mult *= pageNum%10;
+            pageNum /= 10;
+        }
+        return mult;
+    }
 }
