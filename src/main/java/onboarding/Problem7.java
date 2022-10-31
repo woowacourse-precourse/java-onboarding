@@ -33,9 +33,9 @@ public class Problem7 {
         for(List<String> list : friends){
             if(list.get(0).equals(user) || list.get(1).equals(user))
                 continue;
-            else if(myFriends.contains(list.get(0)))
+            else if((myFriends.contains(list.get(0))) && !myFriends.contains(list.get(1)))
                 score.put(list.get(1), (score.getOrDefault(list.get(1), 0) + 10));
-            else if(myFriends.contains(list.get(1)))
+            else if(myFriends.contains(list.get(1)) && !myFriends.contains(list.get(0)))
                 score.put(list.get(0), (score.getOrDefault(list.get(0), 0) + 10));
         }
 
