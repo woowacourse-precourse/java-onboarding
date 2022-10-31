@@ -23,7 +23,7 @@ public class Problem6 {
                 // 두 글자씩 조합하여 중복인지 확인한다
                 String str = String.valueOf(nickname.charAt(j)) + String.valueOf(nickname.charAt(j + 1));
 
-                boolean isDuplicationFound = false;         // 중복이 발견 되면 true로 변경
+                boolean isDuplicationFound = false;         // 중복이 있는지 체크
                 for (int k = 0; k < forms.size(); k++) {
                     if(k == i) continue;                    // 자기 자신의 닉네임을 탐색하는 경우
                     String other_email = forms.get(k).get(0);
