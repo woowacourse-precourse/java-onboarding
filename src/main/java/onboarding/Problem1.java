@@ -31,4 +31,13 @@ class Problem1 {
         }
         return result;
     }
+
+    // 3-주어진 수를 모두 곱하는 기능
+    public static int multiply(List<Integer> page){
+        int result = 1;
+        for (int i=0; i<page.size(); i++){
+            result *=page.get(i);
+        }
+        return result;
+    }
 }
