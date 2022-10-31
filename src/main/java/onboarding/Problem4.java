@@ -11,7 +11,6 @@ public class Problem4 {
             char character = word.charAt(i);
             char changedCharacter = character;
 
-//            System.out.println("현재 char: "+changedCharacter);
             //대문자인 경우
             if( character>=65 && character <= 90 ){
 
@@ -27,7 +26,6 @@ public class Problem4 {
             changedString += changedCharacter;
 
         }
-//        System.out.println(changedString);
         String answer = changedString;
         return answer;
     }
