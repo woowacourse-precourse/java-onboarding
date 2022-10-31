@@ -54,14 +54,18 @@ class Spread {
             this.NUMBER = number;
         }
 
-        // TODO: getScore()
         int getScore() {
-            return 0;
+            return Math.max(addDigits(), multiplyDigits());
         }
 
         // TODO: addDigits()
+        private int addDigits() {
+            return 0;
+        }
 
         // TODO: multiplyDigits()
-
+        private int multiplyDigits() {
+            return 0;
+        }
     }
 }
