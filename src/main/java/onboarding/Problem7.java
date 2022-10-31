@@ -14,6 +14,28 @@ import java.util.*;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+        HashMap<String, List<String>> relation = initHashMap(friends);
+        HashMap<String, Integer> point = new HashMap<>();
         return answer;
+    }
+
+    public static HashMap<String, List<String>> initHashMap(List<List<String>> friends) {
+        HashMap<String, List<String>> relation = new HashMap<>();
+        for (int i = 0; i < friends.size(); i++) {
+            String userA = friends.get(i).get(0);
+            String userB = friends.get(i).get(1);
+            if (!relation.containsKey(userA)) {
+                List<String> newList = new ArrayList<>();
+                relation.put(userA, newList);
+            }
+            relation.get(userA).add(userB);
+
+            if (!relation.containsKey(userB)) {
+                List<String> newList = new ArrayList<>();
+                relation.put(userB, newList);
+            }
+            relation.get(userB).add(userA);
+        }
+        return relation;
     }
 }
