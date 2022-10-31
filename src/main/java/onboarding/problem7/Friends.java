@@ -11,7 +11,6 @@ public class Friends {
 		this.friendsList = new ArrayList<>();
 	}
 
-
 	public void add(UserID userID) {
 		friendsList.add(userID);
 	}
@@ -33,5 +32,10 @@ public class Friends {
 	@Override
 	public int hashCode() {
 		return Objects.hash(friendsList);
+	}
+
+	public boolean haveSameFriend(Friends friendsB) {
+		return friendsList.stream()
+			.anyMatch(friendsB::isFriend);
 	}
 }
