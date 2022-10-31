@@ -21,6 +21,8 @@
 
 ## 기능 구현 목록
 
+- isValidRangeNumberException(int number)
+  - number가 유효한 범위에 있으면 true 리턴
 - isClapTiming(char numTypeOfChar)
   - numTypeOfChar 변수가 3, 6, 9에 해당되면 true 리턴
 - makeStringNumber(int number)
