@@ -15,15 +15,12 @@ public class Problem4 {
 	}
 
 	private static char convertAlphabet(char c) {
-
 		if (!isAlphabet(c))
 			return c;
 
 		if (Character.isUpperCase(c))
 			return (char)(155 - (int)c);
 
-		else
-			return (char)(219 - (int)c);
-
+		return (char)(219 - (int)c);
 	}
 }
