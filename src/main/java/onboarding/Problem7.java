@@ -37,6 +37,16 @@ public class Problem7 {
         return calculateScore(list, 1);
     }
 
+    // 점수 계산
+    private static List<Person> calculateScore(List<String> persons, int score) {
+        List<Person> list = new ArrayList<>();
+        for(String item : persons.stream().distinct().collect(Collectors.toList())) {
+            int frequency = Collections.frequency(persons, item);
+            list.add(new Person(item, frequency* score));
+        }
+        return list;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
