@@ -10,10 +10,14 @@ public class Problem6 {
 
     static List<String> pro(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
+        boolean[] visit = new boolean[forms.size()];
 
         for (int i = 0; i < forms.size(); i++) {
+            if(visit[i]) continue;
+
             String email = forms.get(i).get(0);
             String nickname = forms.get(i).get(1);
+            visit[i] = true;
 
             for(int j = 0; j < nickname.length() - 1; j++) {
                 // 두 글자씩 조합하여 중복인지 확인한다
@@ -32,6 +36,7 @@ public class Problem6 {
                         // 새로운 이메일 주소일 경우 리스트에 추가
                         if(!answer.contains(other_email)) answer.add(other_email);
                         if(!answer.contains(email)) answer.add(email);
+                        visit[k] = true;
                         break;
                     }
                     else continue;
