@@ -45,6 +45,12 @@ class User implements Comparable<User>{
 public class Problem7 {
     public static final HashMap<String, User> USER_MAP = new HashMap<>();
 
+    public static User createNewUser(String name){
+        User newUser = new User(name);
+        USER_MAP.put(name, newUser);
+        return newUser;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
