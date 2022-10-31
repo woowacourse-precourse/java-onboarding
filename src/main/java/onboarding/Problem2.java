@@ -3,12 +3,38 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.jupiter.params.shadow.com.univocity.parsers.common.DataValidationException;
-
 public class Problem2 {
     public static String solution(String cryptogram) {
         checkList(cryptogram);
 
+        String answer = "";
+        int count = 1;
+
+        List<Character> cut = new ArrayList<>();
+
+        for (int i = 0; i < cryptogram.length(); i++) {
+            cut.add(cryptogram.charAt(i));
+        }
+
+        int size = cut.size();
+        while (count>0) {
+            count = 0;
+            for (int j = 0; j < size - 1; j++) {
+                if (cut.get(j) == cut.get(j + 1)) {
+                    cut.remove(j);
+                    cut.remove(j);
+                    size -= 2;
+                    j--;
+                    count++;
+                }
+            }
+        }
+
+        for (int i = 0; i < cut.size(); i++) {
+            answer += cut.get(i);
+        }
+
+        return answer;
     }
 
     public static void checkList(String cryptogram) throws IllegalArgumentException {
