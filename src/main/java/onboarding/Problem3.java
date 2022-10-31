@@ -1,8 +1,10 @@
 package onboarding;
 
+import onboarding.problem3.Controller;
 public class Problem3 {
+
     public static int solution(int number) {
-        int answer = 0;
-        return answer;
+        int result = Controller.getSolution(number);
+        return result;
     }
 }
