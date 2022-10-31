@@ -30,34 +30,20 @@ visitors: 사용자 타임 라인 방문 기록
 */
 
 public class Problem7 {
-    // 사용자가 어떤 그룹에 속하는지 찾기 위한 메서드이다.
-    public static String find_friend(HashMap<String, String> friends_unioned, String group) {
-
-        String parent = friends_unioned.get(group);
-
-        // 자기 자신이 루트 노드(속한 그룹)이 아닌 경우, 루트 노드를 찾을 때까지 재귀적으로 호출한다.
-        if (!(parent.equals(group))) {
-            friends_unioned.put(group, find_friend(friends_unioned, parent));
-        }
-        return parent;
-    }
-
-    // friends 리스트에 있는 사용자들을 같은 그룹으로 묶어준다.
-    public static void union_friend(HashMap<String, String> friends_unioned, String user1, String user2) {
-        user1 = find_friend(friends_unioned, user1);
-        user2 = find_friend(friends_unioned, user2);
-
-        // 알파벳 순으로 비교했을 때 더 작은 유저의 이름을 parent로 삼는다.
-        if (user1.compareTo(user2) < 0) {
-            friends_unioned.put(user2, user1);
-        }
-        else {
-            friends_unioned.put(user1, user2);
-        }
-    }
-
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
+
+        // user와 친구인 목록을 만들어준다.
+        List<String> user_friends = new ArrayList<>();
+
+        for (List<String> friend : friends) {
+            if (friend.get(0).equals(user)) {
+                user_friends.add(friend.get(1));
+            }
+            else if (friend.get(1).equals(user)) {
+                user_friends.add(friend.get(0));
+            }
+        }
 
         // 친구 목록을 중복되지 않도록 구성해준다.
         HashSet<String> friends_set = new HashSet<>();
@@ -83,32 +69,15 @@ public class Problem7 {
             friends_score.put(friend, 0);
         }
 
-        // 서로 아는 친구 목록을 구성하기 위한 HashMap을 구성해준다.
-        // 그룹은 일단 자기 자신으로 초기화해준다.
-        HashMap<String, String> friends_unioned = new HashMap<>() {{
-            put(user, user);
-        }};
-
-        for (String friend : friends_set) {
-            friends_unioned.put(friend, friend);
-        }
-
-        // 서로 친구인 사용자들을 같은 그룹으로 묶어준다.
-        for (List<String> friend : friends) {
-            String user1 = friend.get(0);
-            String user2 = friend.get(1);
-
-            union_friend(friends_unioned, user1, user2);
-        }
-
-        // 함께 아는 친구 목록에 10점을 준다.
-        String group = friends_unioned.get(user);
-
-        for (String key : friends_score.keySet()) {
-            String key_group = friends_unioned.get(key);
-
-            if (key_group.equals(group)) {
-                friends_score.put(key, 10);
+        // 사용자와 함께 아는 친구일 경우 10점씩 더해준다.
+        for (String user_friend : user_friends) {
+            for (List<String> friend : friends) {
+                if (friend.get(0).equals(user_friend) && !(user_friend.contains(friend.get(1))) && !(friend.get(1).equals(user))) {
+                    friends_score.put(friend.get(1), friends_score.get(friend.get(1)) + 10);
+                }
+                else if (friend.get(1).equals(user_friend) && !(user_friend.contains(friend.get(0))) && !(friend.get(0).equals(user))) {
+                    friends_score.put(friend.get(0), friends_score.get(friend.get(0)) + 10);
+                }
             }
         }
 
