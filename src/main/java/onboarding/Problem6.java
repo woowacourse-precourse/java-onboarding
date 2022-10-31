@@ -29,6 +29,23 @@ public class Problem6 {
                 .map(Map.Entry::getKey)
                 .forEach(e -> targetSubName.add(e));
 
+        // 2번 이상 출현한 name의 email 저장
+        for (List<String> form: forms) {
+            name = getName(form);
+
+            for (int i = 0; i < name.length() - 1; i++) {
+                subName = name.substring(i, i + 2);
+
+                if (targetSubName.contains(subName)) {
+                    result.add(getEmail(form));
+                    break;
+                }
+            }
+        }
+
+        // 이메일을 오름차순으로 정렬
+        result.sort(Comparator.naturalOrder());
+
         return result;
     }
 
