@@ -24,3 +24,11 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+## 기능목록
+
+1. friend  리스트에서 유저의 친구들 찾기
+2. 유저의 친구들과 함께 친구인 유저를 찾아 Map 자료형에 점수와 함께 저장
+3. visitors 리스트에 유저를 Map 자료형에 점수와 함께 저장
+4. 점수 높은 순, 이름 순으로 정렬
+5. 5명이 넘을 시에 5명 까지만 리턴
