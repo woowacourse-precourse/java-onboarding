@@ -10,6 +10,9 @@ public class Problem4 {
     public static String solution(String word) {
         String answer = "";
         return answer;
+    private static boolean checkWordLength(String word) {
+        return !(word.length() >= WORD_MIN_LANGE && word.length() <= WORD_MAX_LANGE);
+    }
     private static boolean isNotAlphabet(char alphabet) {
         return !Character.isAlphabetic(alphabet);
     }
