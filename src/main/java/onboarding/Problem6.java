@@ -9,13 +9,18 @@ import java.util.Set;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer = new ArrayList<>();
         Map<String, List<String>> FragmentsMap = new HashMap<>();
         Set<String> nickNamesSet = new HashSet<>();
 
         makeFragmentsMap(forms, FragmentsMap);
         makeNickNameSet(FragmentsMap, nickNamesSet);
+        convertSetToList(answer, nickNamesSet);
         return answer;
+    }
+
+    private static void convertSetToList(List<String> answer, Set<String> nickNamesSet) {
+        answer.addAll(nickNamesSet);
     }
 
     private static void makeNickNameSet(Map<String, List<String>> fragmentsMap,
