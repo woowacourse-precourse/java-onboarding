@@ -91,10 +91,11 @@ BUILD SUCCESSFUL in 0s
 - 사용자 아이디는 1 이상 30 이하가 아닐 경우 빈 리스트를 반환한다.
 - 친구 관계 정보인 friends의 길이가 1 이상 10,000 이하가 아니면 빈 리스트를 반환한다.
 - 사용자 타임 라인 방문 기록인 visitors의 길이가 0 이상 10,000 이하가 아니면 빈 리스트를 반환한다.
-- 친구 관계 friends 관계를 ArrayList<ArrayList<String>>으로 파싱한다.
+- 친구 관계 friends 관계를 HashMap<String, ArrayList<String>>으로 파싱한다.
 - 친구 추천 점수를 HashMap<String, Integer>로 누적한다.
  - 사용자 친구의 친구의 경우 10점을 얻는다.
  - 타임 라인 방문 횟수인 visitors의 이름당 1점씩 얻는다.
+- 사용자와 친구 관계는 추천하지 않는다.
 - 내림차순으로 정렬하고 같은 점수는 이름 순으로 정렬한다.
 - 최대 5명까지 추천을 한다.
 
