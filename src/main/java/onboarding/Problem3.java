@@ -4,6 +4,10 @@ public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
 
+        if (isNotInRange(number)) {
+            return -1;
+        }
+
         for (int i = 1; i < number + 1; i++) {
             int temp = i;
             while (temp != 0) {
@@ -24,5 +28,12 @@ public class Problem3 {
             return true;
         }
         return false;
+    }
+
+    private static boolean isNotInRange(int number) {
+        if (number >= 1 && number <= 10000) {
+            return false;
+        }
+        return true;
     }
 }
