@@ -17,8 +17,11 @@ public class Problem4 {
 
     private static boolean checkParam(String s)
     {
-        int length = s.length();
+        int length;
 
+        if (s == null)
+            return true;
+        length = s.length();
         if (length == 0 || 1000 < length)
             return true;
         return false;
