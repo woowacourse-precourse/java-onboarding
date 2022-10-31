@@ -55,6 +55,20 @@ class Problem1 {
         return sum;
     }
 
+    /**
+     *
+     * @param number : 1과 400 사이의 자연수
+     * @return int : 자연수 각 자릿수들의 곱
+     */
+    public static int getDigitProduct(int number) {
+        int product = 1;
+        while (number > 0) {
+            product *= number % 10;
+            number /= 10;
+        }
+        return product;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
