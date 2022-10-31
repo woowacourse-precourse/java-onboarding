@@ -14,7 +14,7 @@ public class Problem3 {
         int countmultiple = 0;
         do {
             m = n % 10;
-            if (m % 3 == 0) {
+            if (m == 3 || m == 6 || m == 9) {
                 countmultiple++;
             }
             n /= 10;
