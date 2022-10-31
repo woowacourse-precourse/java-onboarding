@@ -27,8 +27,13 @@ public class Problem2 {
         return res;
     }
     // func : check need to more decode
+    private static Boolean checkStr(String string){
+        for (int i=0;i<string.length()-1;i++)
+            if (string.charAt(i) == string.charAt(i+1))
+                return false;
+        return true;
+    }
     // func : recursive decoding algorithm return decoded string
-
     public static String solution(String cryptogram) {
         String answer = "answer";
         return answer;
