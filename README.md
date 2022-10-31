@@ -25,12 +25,6 @@
       - 두 숫자 중 큰 숫자를 알려준다.
 
 2. [문제 2](./docs/PROBLEM2.md)
-  - [X] isValidInput
-  - 인자값이 유효한지 검사한다.
-    - [X] hasValidLength
-    - 문자열의 길이가 1~1000인지 검사한다.
-    - [X] isLowerCase
-    - 문자열이 모두 소문자인지 검사한다.
   - [X] decrypt
   - 중복 문자가 없을 때까지 단계를 거쳐 문자열을 해독한다.
     - [X] removeRepeatingLetters
@@ -41,10 +35,6 @@
 
 
 3. [문제 3](./docs/PROBLEM3.md)
-  - [X] isValidInput
-  - 인자값이 유효한지 검사한다.
-    - [X] isInRange
-    - 1 ~ 10000 사이의 값인지 검사한다.
   - [X] count369InRange
   - 인자값 까지의 모든 숫자의 3, 6, 9 개수를 센다.
     - [X] count369InNumber
@@ -53,10 +43,6 @@
       - 숫자가 3, 6, 9인지 알려준다.
 
 4. [문제 4](./docs/PROBLEM4.md)
-  - [X] isValidInput
-  - 인자값이 유효한지 검사한다.
-    - [X] hasValidLength
-    - 문자열의 길이가 1~1000인지 검사한다.
   - [X] encryptString
   - 문자열을 반대로 바꿔준다.
     - [X] encryptCharacter
@@ -67,38 +53,10 @@
       - 영문자를 반대 영문자로 바꿔준다.
 
 5. [문제 5](./docs/PROBLEM5.md)
-  - [X] isValidInput
-  - 인자값이 유효한지 검사한다.
-      - [X] isInRange
-      - 1 ~ 1000000 사이의 값인지 검사한다.
   - [X] exchangeMoney
   - 최소한의 화폐 개수로 나눠줄 수 있는 경우를 찾는다.
 
 6. [문제 6](./docs/PROBLEM6.md)
-- [X] isValidInput
-- 인자값이 유효한지 검사한다.
-  - [X] isValidForms
-  - 신청서 배열이 조건에 부합하는지 검사한다.
-    - [X] hasValidFormsLength
-    - 신청서 배열의 크기가 1 ~ 10000 사이의 값인지 검사한다.
-  - [X] isValidForm
-  - 신청서 하나가 조건에 부합하는지 검사한다.
-    - [X] hasValidFormLength
-    - 신청서의 길이가 2인지 확인한다.
-    - [X] isValidEmail
-    - 이메일이 조건에 부합하는지 검사한다.
-      - [X] hasValidEmailLength
-      - 이메일의 길이가 11 ~ 19 사이의 값인지 검사한다.
-      - [X] hasValidEmailForm
-      - 이메일의 형식이 올바른지 검사한다.
-      - [X] hasValidEmailDomain
-      - `email.com`을 도메인으로 갖는지 검사한다.
-    - [X] isValidNickname
-    - 닉네임이 조건에 부합하는지 검사한다.
-      - [X] hasValidNicknameLength
-      - 닉네임의 길이가 1 ~ 19 사이의 값인지 검사한다.
-      - [X] hasValidNicknameForm
-      - 닉네임이 오로지 한글로만 이루어져있는지 검사한다.
 - [X] getDuplicateNicknameUsers
 - 중복 닉네임을 가진 유저들의 이메일을 알려준다.
 - 원소 검색이 O(1)으로 이루어지는 해시맵을 사용해 검사한다.
@@ -109,7 +67,20 @@
   - 특정 닉네임 조합을 둘 이상이 사용하면, 해당 유저들의 이메일을 저장합니다.
   - [X] setToSortedList
   - 문자열들을 알파벳 순으로 정렬시켜 줍니다.
+
 7. [문제 7](./docs/PROBLEM7.md)
+ - [ ] recommendFriends
+ - 추천할 친구들을 알려준다.
+   - [ ] idToNumber
+   - ID에 고유한 숫자를 부여해 알려준다.
+   - [ ] getFriends
+   - 유저의 친구 목록을 가져온다.
+   - [ ] add10points
+   - 친구의 친구에게 10점을 부여한다.
+   - [ ] add1point
+   - 방문자에게 1점을 부여한다.
+   - [ ] sortByPointAndId
+   - 친구 점수 및 ID에 따라 정렬한다.
 
 ---
 
