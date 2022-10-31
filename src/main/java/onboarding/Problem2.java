@@ -27,18 +27,29 @@ public class Problem2 {
                 3. cryptogram에서 i번째 문자 추출
                  */
                 nowCharacter = cryptogram.charAt(i);
+
+                /*
+                4. nowCharacter가 preCharacter와 같지 않은 경우
+                - count == 1 이라면: 임시 문자열 tmp에 preCharacter와 추가
+                - i가 cryptogramLength - 1이라면: 임시 문자열 tmp에 nowCharacter 추가
+                - preCharacter를 nowCharacter로 치환 후 count를 1로 초기화
+                 */
+                if(nowCharacter != preCharacter) {
+                    if(count == 1)
+                        tmp = tmp.concat(String.valueOf(preCharacter));
+                    if(i == cryptogramLength - 1)
+                        tmp = tmp.concat(String.valueOf(cryptogram.charAt(i)));
+
+                    preCharacter = nowCharacter;
+                    count = 1;
+                }
             }
 
         } while (cryptogramLength > cryptogram.length() && cryptogram.length() > 1);
 
 
 
-        /*
-        4. nowCharacter가 preCharacter와 같지 않은 경우
-        - count == 1 이라면: 임시 문자열 tmp에 preCharacter와 추가
-        - i가 cryptogramLength - 1이라면: 임시 문자열 tmp에 nowCharacter 추가
-        - preCharacter를 nowCharacter로 치환 후 count를 1로 초기화
-         */
+
 
         /*
         5. nowCharacter가 preCharacter와 같은 경우
