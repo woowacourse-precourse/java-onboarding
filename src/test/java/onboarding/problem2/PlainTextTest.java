@@ -5,6 +5,8 @@ import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
 
+import java.util.Stack;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
@@ -22,7 +24,28 @@ class PlainTextTest {
     @Test
     void 연속하는_문자열에서_특별한경우(){
         String test ="abbbbbabbbbbcdddddebbbbbfggggggggggggggggopppppp";
+        //
         Assertions.assertThat(PlainText.decodeCipherText(test)).isEqualTo("cefo");
     }
+    @Test
+    void 특정_문자열_패턴의경우(){
+        String text = "brwonnowrb";
+        Assertions.assertThat(PlainText.decodeCipherText(text)).isEqualTo("");
+    }
 
+    @Test
+    void 특정_문자열_패턴이_2번_반복하는경우(){
+        String text = "brwonnowrbbrwonnowrb";
+        text ="brrb";
+        // brwoowrrwoowrb
+        // brwwrrwwrb
+        // brrrrb
+        // bb
+        //
+        // brwonbrwon
+        // brwon brwon
+        // br w on br w on
+        //
+        Assertions.assertThat(PlainText.decodeCipherText(text)).isEqualTo("");
+    }
 }
