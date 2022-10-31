@@ -18,7 +18,7 @@ public class Problem4 {
     }
 
     public static boolean isAlpha(char chr){
-        return (chr >= 'a' && chr <= 'z') && (chr >= 'A' && chr <= 'Z');
+        return (chr >= 'a' && chr <= 'z') || (chr >= 'A' && chr <= 'Z');
     }
 
     public static char changeAlpha(char chr){
