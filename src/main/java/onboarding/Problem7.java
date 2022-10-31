@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
@@ -13,13 +14,18 @@ public class Problem7 {
   private static final int MAX_ID_LENGTH = 30;
   private static final int MAX_FRIENDS_SIZE = 10000;
   private static final int MAX_VISITORS_SIZE = 10000;
+  private static final String[] EXCEPTION_LIST = {"-99999"};
 
   private static Map<String, Integer> recommendFriendsPoint = new HashMap<>();
 
   public static List<String> solution(String user, List<List<String>> friends,
       List<String> visitors) {
-    List<String> answer = resultOfRecommendFriends(user, friends, visitors);
-    return answer;
+    if (isAllowedId(user) && isAllowedFriendsInfoSize(friends.size()) &&
+        isAllowedVisitorsSize(visitors.size())) {
+      return resultOfRecommendFriends(user, friends, visitors);
+    }
+    ArrayList<String> returnList = new ArrayList<>(Arrays.asList(EXCEPTION_LIST));
+    return returnList;
   }
 
 
@@ -131,7 +137,7 @@ public class Problem7 {
     return false;
   }
 
-  public static boolean isAllowedId(String id) throws IllegalStateException{
+  public static boolean isAllowedId(String id) throws IllegalStateException {
     if (id.length() < 1 || id.length() > MAX_ID_LENGTH) {
       throw new IllegalStateException("아이디가 1~30자가 아닙니다.");
     }
@@ -141,7 +147,7 @@ public class Problem7 {
     return true;
   }
 
-  public static boolean isAllowedFriendsInfoSize(int friendsSize) throws IllegalStateException{
+  public static boolean isAllowedFriendsInfoSize(int friendsSize) throws IllegalStateException {
     if (friendsSize < 1 || friendsSize > MAX_FRIENDS_SIZE) {
       throw new IllegalStateException("친구관계의 숫자는 1~10,000개 이내여야 합니다.");
     }
