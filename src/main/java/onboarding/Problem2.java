@@ -4,7 +4,17 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
 
-        StringBuilder sb = new StringBuilder(cryptogram);
+        while(true){
+            answer = cryptogram;
+            cryptogram = remove_repeatChar(cryptogram);
+            if (answer.equals(cryptogram)) break;
+        }
+
+        return answer;
+    }
+
+    public static String remove_repeatChar(String str){
+        StringBuilder sb = new StringBuilder(str);
         sb.append(' ');
 
         for(int i = 0; i < sb.length() - 1; i++){
@@ -14,16 +24,10 @@ public class Problem2 {
             }
         }
         sb.deleteCharAt(sb.length() - 1);
-
-        System.out.println(sb.toString());
-        return answer;
+        return sb.toString();
     }
 
     public static void main(String[] args) {
-        solution("browoanoommnaon");
-        solution("browoanmmnaon");
-        solution("browoannaon");
-        solution("browoaaon");
-        solution("browoon");
+        System.out.println(solution("browoanoommnaon"));
     }
 }
