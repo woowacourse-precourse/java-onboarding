@@ -25,11 +25,11 @@ public class Problem7 {
             this.originUser = user;
 
             friendsForm.forEach(pair -> {
-                if (isFriendWithOriginUser(pair.get(0))) {
+                if (isOriginUser(pair.get(0))) {
                     friends.add(pair.get(1));
                 }
 
-                if (isFriendWithOriginUser(pair.get(1))) {
+                if (isOriginUser(pair.get(1))) {
                     friends.add(pair.get(0));
                 }
 
@@ -60,14 +60,18 @@ public class Problem7 {
 
         public List<String> getResult() {
             return memberAndScore.keySet().stream()
-                    .filter(o -> memberAndScore.get(o) != 0 && !friends.contains(o))
+                    .filter(member -> isZeroScore(member) && !isFriendWithOriginsFriend(member) && !isOriginUser(member))
                     .sorted()
                     .sorted((o1, o2) -> memberAndScore.get(o2).compareTo(memberAndScore.get(o1)))
                     .limit(5)
                     .collect(Collectors.toList());
         }
 
-        private boolean isFriendWithOriginUser(String other) {
+        private boolean isZeroScore(String o) {
+            return memberAndScore.get(o) != 0;
+        }
+
+        private boolean isOriginUser(String other) {
             return other.equals(originUser);
         }
 
