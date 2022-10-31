@@ -8,28 +8,18 @@ public class Problem2 {
         char[] cryptogramCharArray = cryptogram.toCharArray();
 
         for (char letter : cryptogramCharArray) {
-            if (isEmpty(deduplicationLetters)) {
-                addLetter(deduplicationLetters,letter);
+            if (deduplicationLetters.isEmpty()) {
+                deduplicationLetters.add(letter);
                 continue;
             }
             if (isDuplicated(deduplicationLetters, letter)) {
                 removeDuplication(deduplicationLetters);
                 continue;
             }
-            //not empty & not duplicated
-            addLetter(deduplicationLetters,letter);
+            deduplicationLetters.add(letter);
         }
 
-        String answer = getDeduplication(deduplicationLetters);
-        return answer;
-    }
-
-    private static boolean isEmpty(LinkedList<Character> deduplicationLetters) {
-        return deduplicationLetters.isEmpty();
-    }
-
-    private static void addLetter(LinkedList<Character> deduplicationLetters,char letter) {
-        deduplicationLetters.add(letter);
+        return decrypt(deduplicationLetters);
     }
 
     private static boolean isDuplicated(LinkedList<Character> deduplicationLetters, char letter) {
@@ -40,7 +30,7 @@ public class Problem2 {
         deduplicationLetters.removeLast();
     }
 
-    private static String getDeduplication(LinkedList<Character> deduplicationLetters) {
+    private static String decrypt(LinkedList<Character> deduplicationLetters) {
         StringBuilder stringBuilder = new StringBuilder();
         for (char letter : deduplicationLetters) {
             stringBuilder.append(letter);
