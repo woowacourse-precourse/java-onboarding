@@ -7,14 +7,14 @@ public class Problem4 {
         int lowBase = 'a' + 'z';
 
         for (int i = 0; i < word.length(); i++) {
-            char myChar = word.charAt(i);
+            char c = word.charAt(i);
 
-            if (myChar >= 'A' && myChar <= 'Z') {
-                myChar = (char)(upBase - myChar);
-            } else if (myChar >= 'a' && myChar <= 'z') {
-                myChar = (char)(lowBase - myChar);
+            if (c >= 'A' && c <= 'Z') {
+                c = (char)(upBase - c);
+            } else if (c >= 'a' && c <= 'z') {
+                c = (char)(lowBase - c);
             }
-            answer += myChar;
+            answer += c;
         }
         return answer;
     }
