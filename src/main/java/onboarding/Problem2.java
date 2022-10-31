@@ -4,12 +4,11 @@ public class Problem2 {
 
     public static String solution(String cryptogram) {
         String answer = "";
-        cryptogram='A'+cryptogram;
-
         boolean flag = true;
 
         while(flag) {
             Character before = cryptogram.charAt(0);
+            answer+=before;
             boolean overLap=false;
             for (int i = 1; i < cryptogram.length(); i++) {
 
@@ -33,15 +32,15 @@ public class Problem2 {
                 answer = answer.substring(0, answer.length() - 1);
             }
 
-            if(cryptogram.equals('A'+answer)){
+            if(cryptogram.equals(answer)){
                 flag = false;
             }
             else{
-                cryptogram = 'A'+answer;
+                cryptogram = answer;
                 answer = "";
             }
+
         }
         return answer;
-
     }
 }
