@@ -6,23 +6,24 @@ import java.util.stream.Collectors;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Map<String, Set<String>> friendsMap = new HashMap<>();
-        Map<String, Integer> pointMap = new HashMap<>();
         for (List<String> friend : friends) {
             saveFriend(friendsMap, friend);
         }
+        removeUserSelf(user, friendsMap);
 
+        Map<String, Integer> pointMap = new HashMap<>();
         Set<String> userFriends = friendsMap.get(user);
-        removeUserInFriends(user,friendsMap);
+
         for (String userFriend : userFriends) {
             Set<String> sharingFriends = friendsMap.get(userFriend);
-            saveSharingFriendPoint(pointMap, userFriends, sharingFriends);
+            giveSharingFriendPoint(pointMap, userFriends, sharingFriends);
         }
 
         for (String visitor : visitors) {
             if (isFriend(visitor, userFriends)) {
                 continue;
             }
-            givePointByVisit(visitor, pointMap);
+            giveVisitPoint(visitor, pointMap);
         }
 
         return sortByPoint(pointMap);
@@ -48,20 +49,28 @@ public class Problem7 {
         return userFriends;
     }
 
-    private static void saveSharingFriendPoint(
-            Map<String, Integer> pointMap,
-            Set<String> userFriends,
-            Set<String> friendsWithUserFriend
-    ) {
+    private static void removeUserSelf(String user, Map<String, Set<String>> friendsMap) {
+        friendsMap.values()
+                .forEach(friends -> friends.remove(user));
+    }
+
+    private static void giveSharingFriendPoint(Map<String, Integer> pointMap,
+                                               Set<String> userFriends, Set<String> friendsWithUserFriend) {
         for (String sharingFriend : friendsWithUserFriend) {
             if (isFriend(sharingFriend, userFriends)) {
                 continue;
             }
-            givePointToUserBySharingFriend(pointMap, friendsWithUserFriend);
+            giveSharingFriendPoint(pointMap, friendsWithUserFriend);
         }
     }
 
-    private static void givePointToUser(String friend, Map<String, Integer> pointMap) {
+    private static void giveSharingFriendPoint(Map<String, Integer> pointMap, Set<String> friendsWithUserFriend) {
+        for (String sharingFriend : friendsWithUserFriend) {
+            saveSharingFriendPoint(sharingFriend, pointMap);
+        }
+    }
+
+    private static void saveSharingFriendPoint(String friend, Map<String, Integer> pointMap) {
         int pointBySharingFriend = 10;
         int pointByUser = getPointByUser(friend, pointMap);
 
@@ -77,27 +86,16 @@ public class Problem7 {
         return 0;
     }
 
-    private static void givePointToUserBySharingFriend(Map<String, Integer> pointMap, Set<String> friendsWithUserFriend) {
-        for (String sharingFriend : friendsWithUserFriend) {
-            givePointToUser(sharingFriend, pointMap);
-        }
-    }
-
-    private static void givePointByVisit(String visitor, Map<String, Integer> pointMap) {
-        int pointByVisitor = 2;
-        int pointByUser = getPointByUser(visitor, pointMap);
-
-        pointMap.replace(visitor, pointByUser + pointByVisitor);
-    }
-
     private static boolean isFriend(String user, Set<String> friends) {
         return friends.stream()
                 .anyMatch(friend -> friend.equals(user));
     }
 
-    private static void removeUserInFriends(String user, Map<String, Set<String>> friendsMap) {
-        friendsMap.values()
-                .forEach(friends -> friends.remove(user));
+    private static void giveVisitPoint(String visitor, Map<String, Integer> pointMap) {
+        int pointByVisitor = 2;
+        int pointByUser = getPointByUser(visitor, pointMap);
+
+        pointMap.replace(visitor, pointByUser + pointByVisitor);
     }
 
     private static List<String> sortByPoint(Map<String, Integer> pointMap) {
@@ -108,5 +106,4 @@ public class Problem7 {
                 .map(Map.Entry::getKey)
                 .collect(Collectors.toList());
     }
-
 }
