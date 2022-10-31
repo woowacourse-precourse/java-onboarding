@@ -28,7 +28,19 @@ public class Problem7 {
                     news.add(friends.get(i).get((j+1)%2));
                     friendmap.put(friends.get(i).get(j), news);
                 }
+                for(String visitor:visitors){
+                    if(!friendmap.containsKey(visitor))
+                        friendmap.put(visitor,new ArrayList<>());
 
+
+                    if(visitpoint.containsKey(visitor))
+                        visitpoint.put(visitor,visitpoint.get(visitor)+1);
+                    else
+                        visitpoint.put(visitor,1);
+
+
+
+                }
 
 
             }}
