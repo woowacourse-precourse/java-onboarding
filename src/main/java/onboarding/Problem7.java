@@ -91,8 +91,7 @@ public class Problem7 {
             boolean isSecondCrewExist = friendGraphMap.containsKey(crew.get(1));
 
             if(isFirstCrewExist && isSecondCrewExist) {     // 둘다 그래프에 있을시
-                friendGraphMap.get(crew.get(0)).add(crew.get(1));
-                friendGraphMap.get(crew.get(1)).add(crew.get(0));
+                addCrewInGraph(crew);
                 continue;
             }
             if(!isFirstCrewExist){      // 첫번째 친구가 Graph에 없을시 Graph와 Score에 추가
@@ -104,9 +103,14 @@ public class Problem7 {
                 friendScoreMap.put(crew.get(1),0);
             }
             // 없는 친구를 Graph에 넣은 후 친구 관계 추가(VALUE)
-            friendGraphMap.get(crew.get(0)).add(crew.get(1));
-            friendGraphMap.get(crew.get(1)).add(crew.get(0));
+            addCrewInGraph(crew);
         }
+    }
+
+    // 원하는 crew를 FriendGraph에 추가
+    public void addCrewInGraph(List<String> crew){
+        friendGraphMap.get(crew.get(0)).add(crew.get(1));
+        friendGraphMap.get(crew.get(1)).add(crew.get(0));
     }
     
 }
