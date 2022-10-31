@@ -34,7 +34,7 @@ class Problem1 {
             throw new IllegalArgumentException("연속된 페이지를 입력하세요");
         if(list.get(0) % 2 != 1)
             throw new IllegalArgumentException("처음 페이지는 홀수입니다.");
-        if(list.get(0) < 3 && list.get(0) > 397)
+        if(list.get(0) < 3 || list.get(0) > 397)
             throw new IllegalArgumentException("페이지 범위 밖입니다.");
         return true;
     }
