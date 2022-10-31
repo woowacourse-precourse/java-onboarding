@@ -1,6 +1,6 @@
 package onboarding;
 
-import java.util.List;
+import java.util.*;
 import java.util.regex.Pattern;
 
 public class Problem6 {
@@ -16,8 +16,28 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         validateLength(forms);
 
-        List<String> answer = List.of("answer");
+        HashMap<String, ArrayList<String>> nickNameMap = initHashMap(forms);
+        Set<String> nickName = nickNameMap.keySet();
+        List<String> answer = new ArrayList<>();
+
+        Iterator<String> it = nickName.iterator();
+
         return answer;
+    }
+
+    private static HashMap<String, ArrayList<String>> initHashMap(List<List<String>> forms) {
+        HashMap<String, ArrayList<String>> map = new HashMap<>();
+        for (List<String> form : forms) {
+            ArrayList<String> list = new ArrayList<>();
+            if (map.containsKey(form.get(1))) {
+                list = map.get(form.get(1));
+                list.add(form.get(0));
+            } else {
+                list.add(form.get(0));
+            }
+            map.put(form.get(1), list);
+        }
+        return map;
     }
 
     private static void validateLength(List<List<String>> input) {
