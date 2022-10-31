@@ -17,6 +17,11 @@ public class Problem2 {
                 continue;
             }
 
+            // 중복 체크, 중복 시 삭제 실행 및 추가 작업 패스
+            if(stack.peek() == cur) {
+                stack.pop();
+                continue;
+            }
 
             stack.push(cur);
         }
