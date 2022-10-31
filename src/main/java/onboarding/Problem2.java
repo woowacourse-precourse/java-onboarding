@@ -1,19 +1,42 @@
 package onboarding;
 
 public class Problem2 {
-    // idea: String -> .toChararray() 통해서 char 배열로 바꿔보자.
-    public static String solution(String cryptogram) {
-        String answer = cryptogram;
-        String ans = "";
-        int i = 0;
 
-        int count = 0; int indexEnd = 0;
-        for(i=0; i<answer.length()-1; i++){
-            if(answer.charAt(i) != answer.charAt(i+1)){
-                count = 0;
-                continue;
+    public static String solution(String cryptogram) {
+
+        char[] charArr = cryptogram.toCharArray();
+        int i = 1;
+        int j = 0;
+        boolean isSerial;
+
+        while(true){
+            isSerial = false;
+            while(i<charArr.length){
+                if(charArr[i] != 32 && charArr[j] != 32 && charArr[i] == charArr[j]){
+                    charArr[i] = 32;
+                    charArr[j] = 32;
+                    isSerial = true;
+                    i++;
+                    j = i-1;
+                }else if(charArr[i] == 32 && charArr[j] != 32){
+                    i++;
+                }else{
+                    i++;
+                    j++;
+                }
+            }
+
+            if(!isSerial){
+                break;
             }else{
-                ans = answer.substring(i) + answer.substring(i+1, answer.length()-1);
+                i = 1; j = 0;
+            }
+        }
+
+        String answer = "";
+        for(i=0; i<charArr.length; i++){
+            if(charArr[i] != 32){
+                answer += charArr[i];
             }
         }
 
