@@ -27,4 +27,20 @@ public class Problem7 {
         }
         return memberFriendList;
     }
+    private static void userFriendRecommend(String user, List<String> visitors, Map<String, List<String>> memberFriendList, Map<String, Integer> recommendScore, int i) {
+        for (int j = 0; j < memberFriendList.get(user).size(); j++) {
+            if (Objects.equals(visitors.get(i), memberFriendList.get(user).get(j))) {
+                for (int k = 0; k < memberFriendList.get(visitors.get(i)).size(); k++) {
+                    String recommendFriends = memberFriendList.get(visitors.get(i)).get(k);
+                    if (!Objects.equals(recommendFriends, user)) {
+                        int score = 0;
+                        if (recommendScore.get(recommendFriends) != null) {
+                            score = recommendScore.get(recommendFriends);
+                        }
+                        recommendScore.put(recommendFriends, score + 10);
+                    }
+                }
+            }
+        }
+    }
 }
