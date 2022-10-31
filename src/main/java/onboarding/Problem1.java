@@ -31,8 +31,33 @@ class Problem1 {
         return firstNum - secondNum;
     }
 
+    public static boolean handleException(List<Integer> arr) {
+        int firstPage = arr.get(0);
+        int secondPage = arr.get(1);
+        /* 왼쪽 홀수, 오른쪽 짝수가 아닌 경우 */
+        if(firstPage % 2 != 1 || secondPage % 2 != 0) {
+            return true;
+        }
+
+        /* 연속된 페이지가 아닌 경우 */
+        if(firstPage + 1 != secondPage) {
+            return true;
+        }
+
+        /* 1 부터 400 사이의 수가 아닌 경우 */
+        if(firstPage < 1 || firstPage > 400 || secondPage < 1 || secondPage > 400) {
+            return true;
+        }
+
+        return false;
+    }
+
     /* 왼쪽, 오른쪽 페이지 중 더 큰 페이지 반환하는 메서드 */
     public static int getHighestScore(List<Integer> arr) {
+        /* 예외 검사 */
+
+
+        /* 두 페이지 중 큰 값 비교 */
         int bigger = 0;
         int comparison;
         int tmpAdd;
@@ -63,7 +88,4 @@ class Problem1 {
         return answer;
     }
 
-    public static void main(String[] args) {
-        solution(List.of(131, 132), List.of(211, 212));
-    }
 }
