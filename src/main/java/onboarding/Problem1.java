@@ -17,10 +17,12 @@ class Problem1 {
 
 	private static int multiplyValue(int num) {
 		int answer = 1;
-		answer *= num % 10;
-		while (num / 10 > 0) {
-			num = num / 10;
+		while (true){
 			answer *= num % 10;
+			if (num / 10 == 0){
+				break;
+			}
+			num = num / 10;
 		}
 		return answer;
 	}
