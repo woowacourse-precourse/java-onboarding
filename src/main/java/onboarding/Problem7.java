@@ -47,6 +47,14 @@ public class Problem7 {
         return list;
     }
 
+    // 추천 목록 결합
+    private static List<Person> combineList(List<Person> friendList, List<Person> visitorList) {
+        List<Person> combineList = new ArrayList<>();
+        combineList.addAll(friendList);
+        combineList.addAll(visitorList);
+        return combineList;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
