@@ -10,6 +10,10 @@ import java.util.Collections;
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
+        Map<String, List<String>> mapForms = toHashMap(forms);
+        List<List<String>> separateNicknameList = separateNicknameList(mapForms);
+        List<String> duplicateNicknameList = getDuplicationNicknameList(separateNicknameList);
+        answer = getDuplicateEmailList(mapForms, duplicateNicknameList);
         return answer;
     }
 
