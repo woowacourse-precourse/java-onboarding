@@ -1,13 +1,10 @@
 package onboarding;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class Problem6 {
 
-    private static Map<String, List<Integer>> map = new HashMap<>();
+    private static Map<String, List<Integer>> twoCharCnt = new HashMap<>();
 
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
@@ -34,6 +31,16 @@ public class Problem6 {
     }
 
     private static Set<Integer> getAnswerIndex(){
+        Set<Integer> ret = new HashSet<>();
 
+        for(String key: twoCharCnt.keySet()){
+            List<Integer> list = twoCharCnt.get(key);
+
+            if(list.size()>1){
+                ret.addAll(list);
+            }
+        }
+
+        return ret;
     }
 }
