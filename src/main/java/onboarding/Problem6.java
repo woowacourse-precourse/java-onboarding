@@ -8,6 +8,8 @@ public class Problem6 {
 
         Map<String, String> listMap = new HashMap<>();
         String[] nickList = new String[forms.size()];
+        List<String> sameNicknameList = new ArrayList<>();
+        List<String> sameNicknameEmailList = new ArrayList<>();
         // 리스트에 있는 닉네임과 이메일을 맵에 넣음
         Iterator<List<String>> listItr = forms.iterator();
         for(int i=0; i<forms.size(); i++){
@@ -17,15 +19,39 @@ public class Problem6 {
             String nickname = nowListItr.next();
 
             nickList[i] = nickname;
-            listMap.put(nickname, email);
+
+            // 똑같은 닉네임이 들어왔을 때 처리
+            if(listMap.containsKey(nickname)){
+                sameNicknameList.add(nickname);
+                sameNicknameEmailList.add(email);
+            } else {
+                listMap.put(nickname, email);
+            }
         }
+
+        for(int i=0; i<nickList.length; i++){
+            System.out.print(nickList[i]+" ");
+        }
+        System.out.println();
+        Iterator<String> listMapItr = listMap.keySet().iterator();
+        for(int i=0; i< listMap.size(); i++){
+            System.out.print(listMapItr.next() + " ");
+        }
+
+
+
 
         // 닉네임 중 같은 글자가 연속적으로 포함 되는 경우 찾기
         // 중복 확인할 기준 문자열 구하고 닉네임 set에 넣기
         Set<String> collectNickname = selectDuplicatedNickname(nickList);
+        Set<String> collectEmail = new HashSet<>();
+        for(int i=0; i<sameNicknameEmailList.size(); i++){
+            collectEmail.add(sameNicknameEmailList.get(i));
+        }
+
 
         // 보낼 이메일 구하고 오름차순 정렬
-        String[] makeEmailList = makeEmailList(collectNickname, listMap);
+        String[] makeEmailList = makeEmailList(collectNickname, collectEmail, listMap);
         Arrays.sort(makeEmailList);
 
         for(int i=0; i<makeEmailList.length; i++){
@@ -104,12 +130,28 @@ public class Problem6 {
      * @param listMap 모든닉네임과 이메일이 들어있는 map
      * @return 최종 이메일 배열
      */
-    static String[] makeEmailList(Set<String> collectNickname, Map<String, String> listMap){
-        String[] makeEmailList = new String[collectNickname.size()];
+    static String[] makeEmailList(Set<String> collectNickname, Set<String> collectEmail, Map<String, String> listMap){
+        Set<String> makeEmailSet = new HashSet<>();
+        
+        // 중복 닉네임에서 뽑아낸 이메일 넣음
         Iterator<String> collectNicknameItr = collectNickname.iterator();
-        for(int i=0; i<makeEmailList.length; i++){
+        for(int i=0; i<collectNickname.size(); i++){
             String nickName = collectNicknameItr.next();
             String email = listMap.get(nickName);
+            makeEmailSet.add(email);
+        }
+        // 똑같은 닉네임에서 뽑아낸 이메일 넣음
+        Iterator<String> collectEmailItr = collectEmail.iterator();
+        for(int i=0; i<collectEmail.size(); i++){
+            String email = collectEmailItr.next();
+            makeEmailSet.add(email);
+        }
+
+        // 최종 이메일 리스트 만듦
+        String[] makeEmailList = new String[makeEmailSet.size()];
+        Iterator<String> makeEmailSetItr = makeEmailSet.iterator();
+        for(int i=0; i<makeEmailSet.size(); i++){
+            String email = makeEmailSetItr.next();
             makeEmailList[i] = email;
         }
 
