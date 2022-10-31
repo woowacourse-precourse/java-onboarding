@@ -1,5 +1,8 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Pattern;
 
@@ -7,6 +10,12 @@ public class Problem4 {
     public static String solution(String word) {
         String answer = "";
         return answer;
+    }
+
+    private static List<String> stringToWordList(String word) {
+        String[] items = word.split ("");
+        ArrayList<String> wordList = new ArrayList<String> (Arrays.asList(items));
+        return wordList;
     }
 
     private static Boolean isAlphabet(String word) {
