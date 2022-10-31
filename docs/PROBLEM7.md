@@ -26,4 +26,17 @@
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
 
 ## 기능 분리
-### 기능 1 - 
+### 기능 1 - 아이디 간 관계를 그래프 구조로 표현하기
+
+### 기능 2 - user와 친구인 사람들 파악하기.
+
+### 기능 3 - user와 같은 친구를 가진 것에 대해 점수 계산
+- 이미 친구인 사람은 제외
+- user는 제외
+
+### 기능 4 - visitor들에 대해 점수 계산
+- 이미 친구인 사람은 제외
+- user는 제외
+
+### 기능 5 - 점수가 높은 순으로 아이디를 정렬
+- 점수가 같다면 아이디의 사전 순으로 정렬
