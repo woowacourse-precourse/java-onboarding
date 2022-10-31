@@ -1,9 +1,7 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * 기능 목록
@@ -28,6 +26,13 @@ public class Problem7 {
             scoresOfUsers.put(friendUser, CalculateScoreByFriends(friendsOfUser, friendsOfUsers.get(friendUser)));
             scoresOfUsers.put(friendUser, scoresOfUsers.get(friendUser) + CalculateScoreByVisitors(visitors, friendUser));
         }
+
+        return scoresOfUsers.entrySet().stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .map(Map.Entry::getKey)
+                .filter(u -> !u.equals(user))
+                .limit(5)
+                .collect(Collectors.toList());
     }
 
     /**
