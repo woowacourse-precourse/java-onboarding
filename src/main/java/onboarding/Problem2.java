@@ -12,4 +12,16 @@ public class Problem2 {
         }
         return false;
     }
+    private static boolean[] checkDuplicatedChar(String cryptogram) {
+        int len = cryptogram.length();
+        boolean[] isDuplicatedChar = new boolean[len];
+
+        for (int i = 0; i < len - 1; i++) {
+            if (cryptogram.charAt(i) == cryptogram.charAt(i + 1)) {
+                isDuplicatedChar[i] = true;
+                isDuplicatedChar[i + 1] = true;
+            }
+        }
+        return isDuplicatedChar;
+    }
 }
