@@ -42,9 +42,30 @@ public class Problem7 {
         });
         return keySet;
     }
-    
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> userFriends = getUserFriends(user, friends);
+
+        for(int i=0; i< userFriends.size(); i++){
+            String userfriend = userFriends.get(i);
+
+            for(int j=0; j< friends.size(); j++) {
+                if (friends.get(j).contains(userfriend) && !friends.get(j).contains(user)) {
+                    String userfriendfriend = getAnotherOne(friends.get(j),userfriend);
+                    calculatePoint(userfriendfriend, 10);
+                }
+            }
+        }
+
+        for(int i=0; i< visitors.size(); i++){
+            String visitor = visitors.get(i);
+
+            if(!userFriends.contains(visitor)){
+                calculatePoint(visitor,1);
+            }
+        }
+
+        List<String> answer = new ArrayList<>(sortByValueThenKey(recommendPoint));
         return answer;
     }
 }
