@@ -14,8 +14,10 @@
 | 10.31 | 특정 User와 친구가 아닌 User 리스트에 추가   | addNotFriendUserToList()            | <List\<User\>, User, User | void          | committed |
 |  10.31   | 특정 User와 친구가 아닌 전체 User 리스트 반환 | getListOfUsersNotFriendWithTarget() | String                 | <List\<User\> | committed |
 |  10.31   | 추천 점수 계산  | calculateScore() | String, <List\<String\> | void          | committed |
+|  10.31   | 점수 상위 최대 5명 이름 리스트 반환          | getListOfTopUserName()              | String                    |<List\<String\>  | committed|
 
 ### TODO
+-점수가 0인 사용자는 추천하지않는 조건 추가
 
 ## 🚀 기능 요구 사항
 

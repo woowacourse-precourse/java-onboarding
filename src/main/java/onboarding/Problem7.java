@@ -115,6 +115,18 @@ public class Problem7 {
         }
     }
 
+    public static List<String> getListOfTopUserName(String targetUser){
+        List<User> userList = getListOfUsersNotFriendWithTarget(targetUser);
+        List<String> topUserList = new LinkedList<>();
+        userList.sort(Collections.reverseOrder());
+        int sizeOfList = Math.min(userList.size(), MAX_ANSWER_LIST_SIZE);
+        for(int i = 0; i < sizeOfList; i++){
+            User topUser = userList.get(i);
+            topUser.addNameToList(topUserList);
+        }
+        return topUserList;
+    }
+
     public static List<User> getListOfUsersNotFriendWithTarget(String targetUserName){
         List<User> userList = new LinkedList<>();
         User targetUser = getUserFromName(targetUserName);
@@ -131,9 +143,10 @@ public class Problem7 {
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer;
         processFriendsList(friends);
         calculateScore(user, visitors);
+        answer = getListOfTopUserName(user);
         return answer;
     }
 }
