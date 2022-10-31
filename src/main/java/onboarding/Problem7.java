@@ -13,8 +13,7 @@ public class Problem7 {
      * 리스트에서 이미 친구인 사람 삭제
      */
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        return result(user,friends,visitors);
     }
 
     /**
@@ -118,5 +117,14 @@ public class Problem7 {
             answer.remove(item);
         }
         return answer;
+    }
+
+    static List<String> result(String user,List<List<String>> friends, List<String> visitors) {
+        Map<String,Integer> mm = visitor(user,friends,visitors);
+        List<Map.Entry<String,Integer>> sort = sort(mm);
+        List<String> answer = list(sort);
+        List<String> hi = friends(answer,user,friends);
+
+        return remove(answer,hi);
     }
 }
