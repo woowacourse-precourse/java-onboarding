@@ -41,6 +41,20 @@ class Problem1 {
         return true;
     }
 
+    /**
+     *
+     * @param number : 1과 400 사이의 자연수
+     * @return int : 자연수 각 자릿수들의 합
+     */
+    public static int getDigitSum(int number) {
+        int sum = 0;
+        while (number > 0) {
+            sum += number % 10;
+            number /= 10;
+        }
+        return sum;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;

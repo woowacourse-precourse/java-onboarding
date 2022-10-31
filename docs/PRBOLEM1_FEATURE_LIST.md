@@ -31,7 +31,7 @@ problem1(pobi[],crong[]){
 
 ## 기능 요구 사항
 - ~~주어진 pobi[]와 crong[]이 올바른 입력인지 판별하는 bool validCheck(int[], int[]) 함수~~
-- 자연수 입력에 대해 자릿수별 합을 구하는 int getDigitSum(int) 함수
+- ~~자연수 입력에 대해 자릿수별 합을 구하는 int getDigitSum(int) 함수~~
 - 자연수 입력에 대해 자릿수별 곱을 구하는 int getDigitProduct(int) 함수
 - 두 자연수에 대해 더 큰 값을 반환하는 int max(int, int) 함수
 
