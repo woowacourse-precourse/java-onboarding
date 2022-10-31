@@ -15,10 +15,17 @@ class Problem1 {
         if (!isConsecutive(pageList)) {
             return false;
         }
+        if (!isLeftPageOdd(pageList)) {
+            return false;
+        }
         return true;
     }
 
     private static boolean isConsecutive(List<Integer> pageList) {
         return pageList.get(0) + 1 == pageList.get(1);
+    }
+
+    private static boolean isLeftPageOdd(List<Integer> pageList) {
+        return pageList.get(0) % 2 == 1;
     }
 }
