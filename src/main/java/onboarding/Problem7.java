@@ -61,6 +61,19 @@ public class Problem7 {
         if (friendList.get(name) == null)
             friendList.put(name, new HashSet<>());
     }
+    public static void checkAndAddScore(HashSet<String> othersFriendList,
+                                        HashMap<String, Integer> scoreMap,
+                                        String[] names) {
+        final int SCORE_BY_FRIEND = 10;
+        String othersName = names[0];
+        String userFriendName = names[1];
+
+        if (othersFriendList.contains(userFriendName)) {
+            int oldScore = scoreMap.get(othersName);
+            int newScore = oldScore += SCORE_BY_FRIEND;
+            scoreMap.replace(othersName, newScore);
+        }
+    }
     public static void calculateScoreByFriend(HashMap<String, HashSet<String>> friendList,
                                               HashMap<String, Integer> scoreMap,
                                               String[] names) {
@@ -74,11 +87,8 @@ public class Problem7 {
         scoreMap.put(othersName, 0);
 
         for (String userFriendName: userFriendList) {
-            if (othersFriendList.contains(userFriendName)) {
-                int oldScore = scoreMap.get(othersName);
-                int newScore = oldScore += 10;
-                scoreMap.replace(othersName, newScore);
-            }
+            String[] othersAndFriend = {othersName, userFriendName};
+            checkAndAddScore(othersFriendList, scoreMap, othersAndFriend);
         }
     }
     public static void calculateScoreByVisitor(HashMap<String, Integer> scoreMap,
