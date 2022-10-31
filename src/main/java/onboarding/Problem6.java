@@ -24,11 +24,11 @@ public class Problem6 {
 
         for (List<String> form : forms) {
             String nickname = form.get(1);
-
+            String email = form.get(0);
             if (nickname.equals(myNickname))
                 continue;
             if (nickname.contains(word))
-                duplicatedList.add(nickname);
+                duplicatedList.add(email);
         }
         return duplicatedList;
     }
