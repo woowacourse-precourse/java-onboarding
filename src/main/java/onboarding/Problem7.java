@@ -1,7 +1,6 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     public static Map<String, Integer> relation = new HashMap<>();
