@@ -3,7 +3,11 @@ package onboarding;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer;
-        while (!(answer = deleteConsecutiveCharacter(cryptogram)).equals(cryptogram)) {
+        while (true) {
+            answer = deleteConsecutiveCharacter(cryptogram);
+            if (answer.equals(cryptogram)) {
+                break;
+            }
             cryptogram = answer;
         }
         return answer;
