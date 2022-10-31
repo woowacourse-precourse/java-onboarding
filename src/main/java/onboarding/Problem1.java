@@ -13,8 +13,8 @@ class Problem1 {
 			return -1;
 		}
 
-		pobiScore = getScore(pobi, pobiScore);
-		crongScore = getScore(crong, crongScore);
+		pobiScore = calcPageNumberScore(pobi, pobiScore);
+		crongScore = calcPageNumberScore(crong, crongScore);
 
 		if (pobiScore == crongScore) {
 			answer = 0;
@@ -29,11 +29,11 @@ class Problem1 {
 
 	/**
 	 * 제한사항을 위배했는지 체크하는 메서드
-	 * @param list
+	 * @param pages
 	 * @return
 	 */
-	private static Integer checkRestrictions(List<Integer> list) {
-		int[] arr = list.stream().mapToInt(i -> i).toArray();
+	private static Integer checkRestrictions(List<Integer> pages) {
+		int[] arr = pages.stream().mapToInt(i -> i).toArray();
 		if (arr.length != 2) {
 			return -1;
 		}
@@ -45,15 +45,15 @@ class Problem1 {
 
 	/**
 	 * 한자리씩 쪼갠 숫자의 합과 곱을 계산하여 score 의 최댓값 갱신
-	 * @param list
+	 * @param pages
 	 * @param score
 	 * @return
 	 */
-	private static int getScore(List<Integer> list, int score) {
-		for (Integer i : list) {
-			List<Integer> splited = split(i);
-			score = Math.max(score, doAdd(splited));
-			score = Math.max(score, doMultiply(splited));
+	private static int calcPageNumberScore(List<Integer> pages, int score) {
+		for (Integer i : pages) {
+			List<Integer> singleDigits = splitIntoSingleDigits(i);
+			score = Math.max(score, addAllElements(singleDigits));
+			score = Math.max(score, multiplyAllElements(singleDigits));
 		}
 		return score;
 	}
@@ -63,23 +63,23 @@ class Problem1 {
 	 * @param num
 	 * @return
 	 */
-	private static List<Integer> split(Integer num) {
-		List<Integer> arrNum = new ArrayList<>();
+	private static List<Integer> splitIntoSingleDigits(Integer num) {
+		List<Integer> singleDigits = new ArrayList<>();
 		while (num > 0) {
-			arrNum.add(num % 10);
+			singleDigits.add(num % 10);
 			num /= 10;
 		}
-		return arrNum;
+		return singleDigits;
 	}
 
 	/**
 	 * 리스트의 요소를 모두 더하는 메서드
-	 * @param arr
+	 * @param singleDigits
 	 * @return
 	 */
-	private static Integer doAdd(List<Integer> arr) {
+	private static Integer addAllElements(List<Integer> singleDigits) {
 		Integer result = 0;
-		for (Integer integer : arr) {
+		for (Integer integer : singleDigits) {
 			result += integer;
 		}
 		return result;
@@ -87,12 +87,12 @@ class Problem1 {
 
 	/**
 	 * 리스트의 요소를 모두 곱하는 메서드
-	 * @param arr
+	 * @param singleDigits
 	 * @return
 	 */
-	private static Integer doMultiply(List<Integer> arr) {
+	private static Integer multiplyAllElements(List<Integer> singleDigits) {
 		Integer result = 1;
-		for (Integer integer : arr) {
+		for (Integer integer : singleDigits) {
 			result *= integer;
 		}
 		return result;
