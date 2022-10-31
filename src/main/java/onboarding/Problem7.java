@@ -47,4 +47,21 @@ class FriendInfoController {
         friendAndScore.put(friend, point);
     }
 
+    private static void checkFriends(Map<String, Integer> friendAndScore, List<List<String>> friends, Set<String> usersFriends) {
+        List<String> friendsRelation;
+
+        for (int i = 0; i < friends.size(); i++) {
+            friendsRelation = friends.get(i);
+            if (usersFriends.contains(friendsRelation.get(0))
+                    && !usersFriends.contains(friendsRelation.get(1))) {
+                addPoint(friendAndScore, friendsRelation.get(1), SAME_FRIEND_POINT);
+                continue;
+            }
+            if (usersFriends.contains(friendsRelation.get(1))
+                    && !usersFriends.contains(friendsRelation.get(0))) {
+                addPoint(friendAndScore, friendsRelation.get(0), SAME_FRIEND_POINT);
+            }
+        }
+    }
+
 }
