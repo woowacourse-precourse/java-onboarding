@@ -7,7 +7,7 @@ import java.util.Set;
  *  clapNum : 해당 숫자에서 손뼉을 몇 번 쳐야 하는지 확인
  */
 public class Problem3 {
-    private static Set<Integer> clapSet = Set.of(3, 6, 9);
+    private static Set<Character> clapSet = Set.of('3', '6', '9');
 
     public static int solution(int number) {
         int answer = 0;
@@ -21,10 +21,9 @@ public class Problem3 {
     private static int clapNum(int num) {
         int clapTime = 0;
 
-        while(num > 0) {
-            if(clapSet.contains(num % 10))
+        for(char c : String.valueOf(num).toCharArray()) {
+            if(clapSet.contains(c))
                 clapTime++;
-            num /= 10;
         }
 
         return clapTime;
