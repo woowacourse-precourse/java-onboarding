@@ -29,18 +29,6 @@ public class User {
         return getMostRecommended();
     }
 
-    private List<String> getMostRecommended() {
-        List<Map.Entry<String, Integer>> list = sortRecommendationScores();
-
-        System.out.println(list);
-
-        return list.stream()
-                .filter(e -> e.getValue() > 0)
-                .map(e -> e.getKey())
-                .limit(RECOMMENDATION_LIMIT)
-                .collect(Collectors.toList());
-    }
-
     private void calculateRecommendationScoreWith(List<String> visitors) {
         visitors.stream()
                 .filter(visitor -> recommendationScores.containsKey(visitor))
@@ -51,22 +39,22 @@ public class User {
     public void calculateRecommendationScoreWithCommonFriends() {
         var friends = FriendConnectionRepository.getFriends(name);
 
-        for (var friend : friends) {
-            var hisFriends = FriendConnectionRepository.getFriends(friend);
-            for (var hisFriendsFriend : hisFriends) {
-                if (friends.contains(hisFriendsFriend) || name.equals(hisFriendsFriend)) {
-                    continue;
-                } else {
-                    if (recommendationScores.containsKey(hisFriendsFriend)) {
-                        recommendationScores.put(hisFriendsFriend
-                                , recommendationScores.get(hisFriendsFriend) + 10);
-                    } else {
-                        recommendationScores.put(hisFriendsFriend
-                                , 10);
-                    }
-                }
-            }
-        }
+        friends.stream()
+                .map(friend -> FriendConnectionRepository.getFriends(friend))
+                .flatMap(hisFriends -> hisFriends.stream())
+                .filter(user -> !friends.contains(user) && !name.equals(user))
+                .forEach(recommended ->
+                        recommendationScores.put(recommended, recommendationScores.get(recommended) + 10));
+    }
+
+    private List<String> getMostRecommended() {
+        List<Map.Entry<String, Integer>> sortedByRecommendationScore = sortRecommendationScores();
+
+        return sortedByRecommendationScore.stream()
+                .filter(recommendationScore -> recommendationScore.getValue() > 0)
+                .map(recommendationScore -> recommendationScore.getKey())
+                .limit(RECOMMENDATION_LIMIT)
+                .collect(Collectors.toList());
     }
 
     private List<Map.Entry<String, Integer>> sortRecommendationScores() {
