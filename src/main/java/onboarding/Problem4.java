@@ -7,7 +7,6 @@ public class Problem4 {
     static Map<Character, Character> dictionary = new HashMap<>();
     public static String solution(String word) {
         initialDictionary();
-        System.out.println("dictionary = " + dictionary);
         StringBuilder answer = new StringBuilder();
         char alphabet;
         for (int i = 0; i < word.length(); i++) {
@@ -31,7 +30,7 @@ public class Problem4 {
         if (size == 1) {
             return getWord(word);
         } else if (size == 2) {
-            return (char) (getWord(word) + 32);
+            return (char) (getWord((char) (word - 32)) + 32);
         }
         return word;
     }
