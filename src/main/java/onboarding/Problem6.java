@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.HashSet;
+import java.util.Comparator;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -15,6 +17,8 @@ public class Problem6 {
 	private static class Crew {
 		private final static int EMAIL_INDEX = 0;
 		private final static int NICKNAME_INDEX = 1;
+		private final static String EMAIL_DOMAIN = "@email.com";
+		private final static String NULL = "";
 		private final String email;
 		private final String nickname;
 
@@ -46,6 +50,14 @@ public class Problem6 {
 			}
 			return false;
 		}
+
+		public String getDomainRemovedEmail() {
+			return email.replace(EMAIL_DOMAIN, NULL);
+		}
+
+		public static String email(Crew crew) {
+			return crew.email;
+		}
 	}
 
 	private static class Woowacourse {
@@ -67,6 +79,13 @@ public class Problem6 {
 					.filter(crew -> crew.isNicknameSimilarWith(currentCrew.generateNicknamePieces()))
 					.forEach(nicknameLimitedCrews::add);
 			}
+		}
+
+		public List<String> getNicknameLimitedCrewsEmail() {
+			return nicknameLimitedCrews.stream()
+				.sorted(Comparator.comparing(Crew::getDomainRemovedEmail))
+				.map(Crew::email)
+				.collect(Collectors.toList());
 		}
 	}
 }
