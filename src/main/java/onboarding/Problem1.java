@@ -29,7 +29,7 @@ class Problem1 {
         //compute numbers
         int p_max = computeMax(pobi);
         int c_max = computeMax(crong);
-
+        //compare pobi max with crong max
         if(p_max > c_max){
             answer = 1;
         }
@@ -50,7 +50,7 @@ class Problem1 {
         int max = 0;
         int num;
 
-        //coompute max
+        //compute max
         for(int i = 0; i < 2; i++){
             num = test.get(i);
             while(num > 0){
@@ -64,10 +64,9 @@ class Problem1 {
             else if(multi > plus && multi > max){
                 max = multi;
             }
-            plus = 0;
-            multi = 1;
+            plus = 0; //reset
+            multi = 1; //reset
         }
-        //System.out.println(max);
         return max;
     }
 }
