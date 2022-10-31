@@ -21,4 +21,14 @@ class Problem1 {
         }
         return true;
     }
+
+    public static int addEachDigit(int input){
+        int sum = 0;
+        while (input != 0) {
+            sum += input % 10;
+            input /= 10;
+        }
+        return sum;
+    }
+
 }
