@@ -22,6 +22,7 @@ public class Problem2 {
                 }
             }
         }
+        return result;
     }
 
     public static String solution(String cryptogram) {
@@ -35,5 +36,6 @@ public class Problem2 {
                 break;
             }
         }
+        return answer;
     }
 }
