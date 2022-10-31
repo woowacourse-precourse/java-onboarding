@@ -8,6 +8,7 @@ import java.util.stream.Collectors;
  *  isProperEmail 메서드 적절한 이메일인지 확인
  *  isProperNickName 매서드 적절한 닉네임인지 확인
  *  getOverlapNickName 메서드 2글자씩잘라서 중복된 값이 있다면 그 닉네임을 Map에 저환
+ *  isProperCrewRange 메서드 크루원 수가 올바른지 확인
  */
 
 public class Problem6 {
@@ -32,6 +33,7 @@ public class Problem6 {
     private static final int MAX_CREW_COUNT = 10000;
 
     public static List<String> solution(List<List<String>> forms) {
+        isProperCrewRange(forms);
         forms.stream()
                 .filter(Problem6::isProperForms)
                 .forEach(Problem6::getOverlapNickName);
@@ -69,6 +71,10 @@ public class Problem6 {
         return MIN_NICKNAME_LENGTH <= nickName.length()
                 && nickName.length() < MAX_NICKNAME_LENGTH
                 && nickName.matches(KOREAN_NAME);
+    }
+
+    private static void isProperCrewRange(List<List<String>> forms) {
+        if (forms.size() < MIN_CREW_COUNT || forms.size() > MAX_CREW_COUNT) throw new IllegalArgumentException();
     }
 
 }
