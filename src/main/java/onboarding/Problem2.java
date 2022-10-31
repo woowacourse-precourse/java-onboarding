@@ -20,32 +20,37 @@ public class Problem2 {
     public static List<Character> remove_duplicate(List<Character> list) {
         List<Character> remove_dupicate_list = list;
 
-        for (int i = 0; i < remove_dupicate_list.size() - 1; i++) {
-            if (remove_dupicate_list.size() == 1) {
-                break;
+        while(true) {
+            boolean change = false;
+
+            for (int i = 0; i < remove_dupicate_list.size() - 1; i++) {
+                if (remove_dupicate_list.size() == 1) {
+                    break;
+                }
+
+                if (remove_dupicate_list.get(i) == remove_dupicate_list.get(i + 1)) {
+                    int temp_index = i;
+                    int duplicate_count = 1;
+
+                    while (remove_dupicate_list.get(temp_index) == remove_dupicate_list.get(temp_index + 1)) {
+                        temp_index += 1;
+                        duplicate_count += 1;
+                        if (temp_index + 1 == remove_dupicate_list.size()) {
+                            break;
+                        }
+                    }
+
+                    for (int count = 0; count < duplicate_count; count++) {
+                        remove_dupicate_list.remove(i);
+                    }
+
+                    i = i - 1;
+                    change = true;
+                }
             }
 
-            if (remove_dupicate_list.get(i) == remove_dupicate_list.get(i + 1)) {
-                int temp_index = i;
-                int duplicate_count = 1;
-
-                while (remove_dupicate_list.get(temp_index) == remove_dupicate_list.get(temp_index + 1)) {
-                    temp_index += 1;
-                    duplicate_count += 1;
-                    if (temp_index + 1 == remove_dupicate_list.size()) {
-                        break;
-                    }
-                }
-
-                for (int count = 0; count < duplicate_count; count++) {
-                    remove_dupicate_list.remove(i);
-                }
-
-                i = i - 2;
-
-                if (i == -2) {
-                    i = i + 1;
-                }
+            if (!change) {
+                break;
             }
         }
 
