@@ -1,11 +1,21 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String answer = "";
+        List<Character> characterList = new ArrayList<>();
+        boolean flag = false;
+
+        initList(cryptogram, characterList);
+        flag = isAnyRemovable(characterList);
+        deduplicate(characterList, flag);
+
+        answer = charListToString(characterList);
+
         return answer;
     }
 
