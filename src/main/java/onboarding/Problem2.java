@@ -26,7 +26,14 @@ public class Problem2 {
             }
         }
 
-        String answer = "answer";
-        return answer;
+        //문자열로 표현
+        StringBuffer sb = new StringBuffer();
+        if(!result.isEmpty()) {
+            for(int i=0; i<result.size(); i++) {
+                sb.append(result.get(i));
+            }
+        }
+        System.out.println("====solution end====");
+        return sb.toString();
     }
 }
