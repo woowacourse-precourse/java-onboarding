@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -16,7 +13,12 @@ public class Problem7 {
     }
 
     private static Map<String, User> makeFriendConnection(List<List<String>> friends) {
+        Map<String, User> userFriendsInfo = new HashMap<>();
+        for (List<String> connect : friends) {
+            String user1 = connect.get(0);
+            String user2 = connect.get(1);
 
+        }
         return null;
     }
 
@@ -53,7 +55,8 @@ public class Problem7 {
  * */
 
 /* 기능 목록
- * 1. friends를 받아서 친구 연결 정보에 대한 HashMap을 만들어주는 메소드
+ * 1. friends 를 받아서 친구 연결 정보에 대한 HashMap 을 만들어주는 메소드
+ *   1-1. 각 유저 연결에 대해서 있는지 없는지 확인하고 추가해주는 메서드
  * 2. 모든 유저의 친구목록을 확인하면서 점수를 갱신해주는 메소드
  *   2-1. 각 유저의 함꼐아는 친구 점수를 찾아서 저장해주는 메소드
  * 3. visitors를 탐색하면서 방문 점수를 추가해주는 메서드
