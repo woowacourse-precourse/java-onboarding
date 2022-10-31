@@ -66,7 +66,9 @@ public class Problem7 {
     private static List<String> recommendList(String user, List<List<String>> friends, List<String> visitors) {
         List<Person> sortList = MapToListAndSort(user, friends, visitors);
         List<String> recommend = new ArrayList<>();
-        for(int index=0;index<sortList.size();index++)recommend.add(sortList.get(index).getName());
+        int listMax = sortList.size();
+        if(listMax>=5)listMax=5;
+        for(int index=0;index<listMax;index++)recommend.add(sortList.get(index).getName());
         return recommend;
     }
 }
