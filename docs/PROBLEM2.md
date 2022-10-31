@@ -28,6 +28,8 @@
 
 ## 기능 구현 목록
 
+- isValidLengthStringException(String cryptogram)
+  - 문자열의 길이가 유효하면 true 반환
 - isLengthZero(String cryptogram)
   - 문자열의 길이가 0이면 true 반환
 - isNotMoreDelete(String cryptogram)
