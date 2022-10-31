@@ -47,6 +47,19 @@ public class Problem7 {
         for(String userFriend : friendMap.get(user)) {
         	candidatesMap.remove(userFriend);
         }
+        
+        for(Map.Entry<String,Integer> entry :candidatesMap.entrySet()) {
+        	List<String> list;
+        	if(reverseCandidatesMap.containsKey(entry.getValue())) {
+        		list = reverseCandidatesMap.get(entry.getValue());
+        	}else {
+        		list = new ArrayList<String>();
+        	}
+        	list.add(entry.getKey());
+        	Collections.sort(list);
+        	reverseCandidatesMap.put(entry.getValue(), list);
+        }
+        
         return answerList;
     }
 }
