@@ -39,12 +39,12 @@ SNS 서비스 유저 하나의 정보를 담고있는 DTO 객체
 ### UserConnection
 모든 유저의 친구 관계를 저장하고 있는 저장소 객체
 - 멤버
-  - 모든 유저 데이터(UserList)  
+  - 모든 유저 데이터(UserGroup)  
   - 유저별 친구 목록(FriendsOfEachUser)
 - 메서드
   - 친구 추가(connectNewFriendship)
   - 친구 여부 확인(isFriendWith)
-  - 서로 공유하고 있는 친구 목록 반환(getCommonFriends)
+  - 서로 공유하고 있는 친구 수 반환(getNumberCommonFriends)
   - 모든 유저 목록 반환(getUserList)
  
 
