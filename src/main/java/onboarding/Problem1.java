@@ -1,6 +1,9 @@
 package onboarding;
 
+import java.lang.Math;
+
 import java.util.List;
+import java.util.stream.Stream;
 
 class Problem1 {
 
@@ -23,6 +26,15 @@ class Problem1 {
     private static boolean isPagesOutOfRange(List<Integer> pages) {
         return pages.contains(MIN_PAGE) | pages.contains(MAX_PAGE);
     }
+
+    private static int reduce(int num) {
+        int addition = Stream.of(String.valueOf(num).split("")).mapToInt(Integer::parseInt)
+            .reduce(0, Integer::sum);
+        int multiply = Stream.of(String.valueOf(num).split("")).mapToInt(Integer::parseInt)
+            .reduce(1, (a, b) -> a * b);
+        return Math.max(addition, multiply);
+    }
+
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
