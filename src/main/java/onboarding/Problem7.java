@@ -110,3 +110,15 @@ class Relation {
         return isPresent;
     }
 }
+
+class Algorithm {
+
+    private final User user;
+
+    private Map<String, Integer> recommend = new HashMap<>();
+
+    public Algorithm(User user) {
+        this.user = user;
+    }
+
+}
