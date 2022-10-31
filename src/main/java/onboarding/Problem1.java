@@ -4,7 +4,6 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = 0;
         Book pobiBook;
         Book crongBook;
         try {
@@ -13,7 +12,28 @@ class Problem1 {
         }catch (Exception e){
             return -1;
         }
-        return answer;
+        int pobiMax = getMax(pobiBook);
+        int crongMax = getMax(crongBook);
+        /*
+        크롱의 점수가 포비의 점수보다 큰가? 아니라면 포비의 점수가 더 큰가? 그것도 아니라면 둘의 점수는 동일하다.
+         */
+        return crongMax > pobiMax ? 2 : crongMax < pobiMax ? 1 : 0;
+    }
+    public static int getMax(Book book){
+        return Math.max(getMaxValue(book.getPreviousPage()),getMaxValue(book.getNextPage()));
+    }
+    /*
+    multipeMax == 각 자리 수 곱하기
+    plusMax = 각 자리 수 더하기
+     */
+    public static int getMaxValue(int input){
+        int multipleMax=1, plusMax=0;
+        while(input!=0){
+            multipleMax *= input%10;
+            plusMax += input%10;
+            input /= 10;
+        }
+        return Math.max(multipleMax,plusMax);
     }
     static class Book{
         private final int previousPage;
