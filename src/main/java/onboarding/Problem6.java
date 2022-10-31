@@ -13,18 +13,28 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
         IsOverlap isOverlap = new IsOverlap();
+        IsValidNickName isValidNickName = new IsValidNickName();
 
         int totalCrews = forms.size();
         for (int i=0; i<totalCrews-1; i++) {
             for (int j=i+1; j<totalCrews; j++) {
                 String crew1 = forms.get(i).get(1);
                 String crew2 = forms.get(j).get(1);
+                
+                if( ! isValidNickName.isValidNickName(crew1)){
+                    continue;
+                }
+                if( ! isValidNickName.isValidNickName(crew2)) {
+                    continue;
+                }
                 if (isOverlap.isOverlap(crew1, crew2)) {
                     answer.add(forms.get(i).get(0));
                     answer.add(forms.get(j).get(0));
                 }
             }
         }
+
+
         return answer;
     }
 }
