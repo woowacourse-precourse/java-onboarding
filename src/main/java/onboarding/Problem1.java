@@ -10,6 +10,16 @@ import java.util.List;
 // 5. 점수를 비교해 가장 높은 사람이 게임의 승자가 된다.
 // 6. 시작 면이나 마지막 면이 나오도록 책을 펼치지 않는다.
 class Problem1 {
+    /**
+     * 주어진 페이지 리스트가 비어있다면 true, 아니라면 false를 반환한다.
+     *
+     * @param list 주어진 페이지 리스트
+     * @return 비어있다면 true, 아니라면 false
+     */
+    public static boolean checkSize(List<Integer> list) {
+        return list.isEmpty();
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
