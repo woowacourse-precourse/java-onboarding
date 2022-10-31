@@ -16,7 +16,7 @@ public class Problem1 {
         // 예외 처리
         if (runtimeException(pobi) || runtimeException(crong)) answer = -1;
         else {
-            // 변수 줄이기
+
             int pobiScore = getMax(pobi);
             int crongScore = getMax(crong);
 
