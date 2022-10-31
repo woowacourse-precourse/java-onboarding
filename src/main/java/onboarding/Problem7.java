@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.HashSet;
+import java.util.LinkedList;
 
 class User implements Comparable<User>{
     private String name;
@@ -36,16 +37,8 @@ class User implements Comparable<User>{
         }
     }
 
-    public boolean isScoreLarger(int otherScore){
-        return this.score > otherScore;
-    }
-
-    public boolean isScoreEqual(int otherScore){
-        return this.score == otherScore;
-    }
-
-    public int compareName(String otherName){
-        return otherName.compareTo(this.name);
+    public boolean isFriendWith(User user){
+        return this.friends.contains(user);
     }
 
     @Override
@@ -58,6 +51,20 @@ class User implements Comparable<User>{
         }
         return 1;
     }
+
+    public boolean isScoreLarger(int otherScore){
+        return this.score > otherScore;
+    }
+
+    public boolean isScoreEqual(int otherScore){
+        return this.score == otherScore;
+    }
+
+    public int compareName(String otherName){
+        return otherName.compareTo(this.name);
+    }
+
+
 }
 public class Problem7 {
     public static final int VISIT_SCORE = 1;
