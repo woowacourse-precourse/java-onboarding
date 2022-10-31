@@ -55,7 +55,7 @@ public class Problem6 {
                     .add(email);
             return;
         }
-        twoCharNicknames.put(nicknameCombination, new HashSet<>(Arrays.asList(email)));
+        twoCharNicknames.put(nicknameCombination, new HashSet<>(List.of(email)));
     }
 
     /**
@@ -76,8 +76,8 @@ public class Problem6 {
      * @param thisSet 치환할 해시셋입니다.
      * @return 정렬된 리스트입니다.
      */
-    private static List<String> setToSortedList(HashSet thisSet){
-        List<String> convertedList = new ArrayList<String>(thisSet);
+    private static List<String> setToSortedList(HashSet<String> thisSet){
+        List<String> convertedList = new ArrayList<>(thisSet);
         convertedList.sort(Comparator.naturalOrder());
         return convertedList;
     }
