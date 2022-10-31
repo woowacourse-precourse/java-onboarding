@@ -9,11 +9,10 @@ package onboarding;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
-        Problem2 problem2 = new Problem2();
 
         while (!answer.equals(cryptogram)) {
             answer = cryptogram;
-            cryptogram = problem2.deduplicate(cryptogram);
+            cryptogram = deduplicate(cryptogram);
         }
 
         return answer;
@@ -26,12 +25,13 @@ public class Problem2 {
      * @param idx 중복이 있는지 검사할 인덱스
      * @return 중복된 문자일 경우 true, 아닐 경우 false 반환
      */
-    boolean isDuplicate(String str, int idx) {
+    static boolean isDuplicate(String str, int idx) {
         if (idx > 0 && str.charAt(idx) == str.charAt(idx - 1)) {
             return true;
         } else if (idx < str.length() - 1 && str.charAt(idx) == str.charAt(idx + 1)) {
             return true;
         }
+
         return false;
     }
 
@@ -41,15 +41,15 @@ public class Problem2 {
      * @param str 중복을 제거할 문자열
      * @return 중복이 제거된 문자열
      */
-    String deduplicate(String str) {
-        String result = "";
+    static String deduplicate(String str) {
+        StringBuilder result = new StringBuilder();
 
         for (int i = 0; i < str.length(); i++) {
             if (!isDuplicate(str, i)) {
-                result += str.charAt(i);
+                result.append(str.charAt(i));
             }
         }
 
-        return result;
+        return result.toString();
     }
 }
