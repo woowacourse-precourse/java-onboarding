@@ -52,8 +52,6 @@ public class Problem2 {
     }
 
     private static String removeDuplicate(String crypto, int pointer, int current) {
-        String a = crypto.substring(0, current - (1 + pointer));
-        String b = crypto.substring(current);
-        return a + b;
+        return crypto.substring(0, current - (1 + pointer)) + crypto.substring(current);
     }
 }
