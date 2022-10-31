@@ -3,41 +3,52 @@ package onboarding;
 import java.util.*;
 
 public class Problem6 {
+    public static boolean[] overlapedString;
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = new ArrayList<>();
-        boolean[] overlapString = new boolean[forms.size()];
+        overlapedString = new boolean[forms.size()];
+
         for (int i = 0; i < forms.size() - 1; i++) {
-            Set<String> set = new HashSet<>();
-            StringBuilder sb1 = new StringBuilder(forms.get(i).get(1));
-            if (sb1.length() == 1) {
+            String str1 = forms.get(i).get(1);
+            if (str1.length() == 1) {
                 continue;
             }
-            for (int j = 0; j < sb1.length() - 1; j++) {
-                set.add(sb1.substring(j, j + 2));
-            }
-            for (int j = i + 1; j < forms.size(); j++) {
-                StringBuilder sb2 = new StringBuilder(forms.get(j).get(1));
-                if (sb2.length() == 1) {
-                    continue;
-                }
-                for (int k = 0; k < sb2.length() - 1; k++) {
-                    if (set.contains(sb2.substring(k, k + 2))) {
-                        overlapString[i] = true;
-                        overlapString[j] = true;
-                        break;
-                    }
-                }
-            }
+
+            searchOverlapedString(forms, i, str1);
         }
-        for (int i = 0; i < overlapString.length; i++) {
-            if (overlapString[i]) {
+
+        return getStrings(forms);
+
+    }
+
+    private static List<String> getStrings(List<List<String>> forms) {
+        List<String> answer = new ArrayList<>();
+        for (int i = 0; i < overlapedString.length; i++) {
+            if (overlapedString[i]) {
                 answer.add(forms.get(i).get(0));
             }
         }
         Collections.sort(answer);
 
-
         return answer;
+    }
 
+    private static void searchOverlapedString(List<List<String>> forms, int i, String str1) {
+        Set<String> set = new HashSet<>();
+        for (int j = 0; j < str1.length() - 1; j++) {
+            set.add(str1.substring(j, j + 2));
+        }
+        for (int j = i + 1; j < forms.size(); j++) {
+            String str2 = forms.get(j).get(1);
+            if (str2.length() == 1) {
+                continue;
+            }
+            for (int k = 0; k < str2.length() - 1; k++) {
+                if (set.contains(str2.substring(k, k + 2))) {
+                    overlapedString[i] = true;
+                    overlapedString[j] = true;
+                    break;
+                }
+            }
+        }
     }
 }
