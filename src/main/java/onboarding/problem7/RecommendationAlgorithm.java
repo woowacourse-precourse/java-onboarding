@@ -44,17 +44,16 @@ public class RecommendationAlgorithm {
     }
 
     private static List<String> returnLimitedNumOfUsersToPriority(Map<String, Score> scores, int limitNum) {
-        List<Score> collect = scores.values().stream()
+        List<String> recommendedUsersNames = scores.values().stream()
                 .filter(score -> score.getScore() != 0)
                 .sorted(Collections.reverseOrder())
-                .collect(Collectors.toList());
-        List<String> recommendedUsersNames = collect.stream()
                 .map(Score::getUserName)
                 .collect(Collectors.toList());
         if(recommendedUsersNames.size() > limitNum) {
             return recommendedUsersNames.subList(0, limitNum);
         }
         return recommendedUsersNames;
+
     }
 
     private static Integer findOverlappingFriendsCnt(String target, List<String> friendsNames) {
