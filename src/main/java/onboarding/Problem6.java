@@ -78,7 +78,6 @@ public class Problem6 {
         private void checkFlag(boolean flag, int i) {
             if (flag) {
                 checkName[i] = 1;
-                System.out.println(Arrays.toString(checkName));
             }
         }
 
