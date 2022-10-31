@@ -23,3 +23,20 @@
 | [97, 98] | [197, 198] | 0 |
 | [131, 132] | [211, 212] | 1 |
 | [99, 102] | [211, 212] | -1 |
+
+---
+## 📮 기능 구현
+
+### 1. 각 Player의 점수 구하기
+ - [x]  `sumDigits(int page)` : 페이지 번호의 자릿수 합을 구하는 메서드
+ - [x] `productDigits(int page)` : 페이지 번호의 자릿수 곱을 구하는 메서드
+ - [x] `score(List<Integer> player)` : 기능 요구사항을 반영한 각 player의 점수를 계산 후 반환
+
+### 2. 예외 발생 처리
+ - [x] `isCorrect(List<Integer> player)`: player가 펼친 오른쪽 왼쪽 페이지에 대하여, 왼쪽페이지 번호와 오른쪽 페이지 번호가 연속적이지 않을 경우 -1을 반환하도록, 또한 1페이지 미만의 값과 400페이지를 초과한 페이지번호가 입력될 경우 -1을 반환하도록.
+
+### 3. Logic
+ - [x] `solution<List( List<Integer> pobi, List<Integer> crong )` :
+    - `isCorrect` 메서드를 통해, 예외사항에 대한 입력이주어질 경우, -1을 반환 및 종료
+    - `score` 메서드를 이용하여, pobi와 crong의 점수를 반환
+    - pobi와 crong의 점수를 비교하여 결과를 도출

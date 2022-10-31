@@ -34,8 +34,8 @@ public class Problem6 {
     }
 
     static void addPairToRepository(String name){
-        Set<String> subNames = pairCreator(name);
-        subNames.forEach(x-> repositoryOfPair.put(x, repositoryOfPair.getOrDefault(x,0)+1));
+        Set<String> pairNames = pairCreator(name);
+        pairNames.forEach(x-> repositoryOfPair.put(x, repositoryOfPair.getOrDefault(x,0)+1));
     }
 
     static Set<String> TransformDuplicatedPairSet() {
@@ -49,8 +49,8 @@ public class Problem6 {
     }
 
     static boolean hasDuplicatedPair(String name, Set<String> set) {
-        Set<String> subNames = pairCreator(name);
-        long count = subNames.stream().filter(set::contains).count();
+        Set<String> pariNames = pairCreator(name);
+        long count = pariNames.stream().filter(set::contains).count();
         return count != 0;
     }
 }

@@ -19,3 +19,12 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+---
+## 📮 기능 구현
+
+### 1. Logic
+ - [x] `solution(String word)` :
+   - 입력 `word`의 알파벳 문자에 한하여, 청개구리 사전 변환 실행
+   - 청개구리 사전 변환 로직: A:`(char)65` ,  Z:`(char)90` -➡️ 청개구리 사전 변환(대문자의 경우) : `(char)(155-character)` 
+   - 변환된 결과 반환

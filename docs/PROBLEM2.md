@@ -21,3 +21,19 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+---
+## 📮 기능 구현
+
+### 1. 연속적 중복문자 제거
+ - [x] `StringBulider`, `Stack` 자료구조 이용
+ - [x] 읽은 문자들을 Stack에 저장 후, 연속적으로 반복되지 않는 경우에 한해 `StringBulider`에 추가
+ - [x] `process(String str)` : 주어진 문자열에서 연속적으로 반복되는 문자들을 제거 후, 제거 된 문자열을 반환하는 메서드
+
+### 2. Logic
+ - [x] `solution(String cryptogram)` :
+   - 입력된 문자열을 `process` 메서드를 통해 연속반복되는 문자열 제거
+   - 여기서, 비교를 위하여 `process`메서드를 사용하기 전 문자열과 사용 후 문자열을 분리
+   - 위 과정을 while문을 통한 반복 실행
+   - while문 종료 조건 : `process` 적용 전후 문자열이 동일할 경우 종료
+   - 최종 문자열 반환

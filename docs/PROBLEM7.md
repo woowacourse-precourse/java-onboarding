@@ -24,3 +24,25 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+
+---
+## 📮 기능 구현
+
+### Filed
+- [x] `private static Map<String, Set<String>> friendsRelationRepository;` : 친구관계를 저장하는 저장소
+- [x] `private static Map<String, Integer> friendsScoreRepository;` : 추천된 친구에 대한 점수를 저장하는 저장소
+
+### Method
+- [x] `saveFriendRelation(String friends1, String friends2)`  : 친구 관계를 `friendsRelationRepository`에 저장하는 역할을 수행하는 메서드
+- [x] `assign_10score(String user)` : `user` 에게 추천될 친구 중 10점이 할당될 친구를 `friendsScoreRepository` 에 이름과 점수를 저장하는 메서드
+- [x] `assign_1score(String user, List<String> visitor)` : `user` 에게 추천될 친구 중 1점이 할당될 친구를 `friendsScoreRepository` 에 이름과 점수를 저장하는 메서드
+
+
+### Logic
+1. `friendsRelationRepository = new HashMap<>();` : 친구관계를 저장할 저장소 생성
+2. `friendsScoreRepository = new HashMap<>();` : 추천된 친구와 그 친구에 대한 점수를 저장하는 저장소 생성
+3. `saveFriendRelation` 메서드를 호출, 친구관계에 대한 사항을 반복문을 통해 `friendsRelationRepository`에 모두 저장
+4. `assign_10score(String user)` 메서드를 호출, 10점에 할당될 친구에 대한 이름과 점수를 저장
+5. `assign_1score(String user, List<String> visitor)` 메서드를 호출, 1점에 할당될 친구에 대한 이름과 점수를 저장
+6. 추천 점수의 순서대로, 추천 점수가 같다면 이름순으로 정렬한 후, 리스트를 반환
