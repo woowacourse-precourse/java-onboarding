@@ -9,7 +9,7 @@ public class Problem5 {
         List<Integer> answer = Collections.emptyList();
 
         if (money<1 || money>1000000)
-            return null;
+            return answer;
 
         answer = new ArrayList<Integer>();
         answer.add(money/50000);
