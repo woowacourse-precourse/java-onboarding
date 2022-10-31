@@ -27,6 +27,11 @@ class Problem1 {
         }
         return score;
     }
+    private static int winnerBetween(int scoreOfPlayer1, int scoreOfPlayer2){
+        if(scoreOfPlayer1 > scoreOfPlayer2) return 1;
+        else if(scoreOfPlayer1 < scoreOfPlayer2) return 2;
+        else return 0;
+    }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if(!checkCorrectOf(pobi) || !checkCorrectOf(crong)) return -1;
@@ -34,6 +39,6 @@ class Problem1 {
         int scoreOfPobi = getScoreOf(pobi);
         int scoreOfCrong = getScoreOf(crong);
 
-        return 0;
+        return winnerBetween(scoreOfPobi, scoreOfCrong);
     }
 }
