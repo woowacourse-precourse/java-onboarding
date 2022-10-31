@@ -24,7 +24,7 @@ public class Problem7 {
         makeAllFriendship(user, friends);
         
         increaseScoreMutualFriend();
-        increaseScoreVisitors(visitors);
+        increaseScoreVisitors(user, visitors);
         
         List<Friend> candidateFriendList = new ArrayList<>();
         makeCandidateFriendList(candidateFriendList);
@@ -72,8 +72,11 @@ public class Problem7 {
     		}
     	}
     }
-    private static void increaseScoreVisitors(List<String> visitors) {
+    private static void increaseScoreVisitors(String user, List<String> visitors) {
     	for(String visitor: visitors) {
+    		if(visitor.equals(user)) {
+    			continue;
+    		}
     		increaseOne(visitor);
     	}
     }
