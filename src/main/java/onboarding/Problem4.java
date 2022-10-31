@@ -18,7 +18,10 @@ public class Problem4 {
         if (97 <= c && c <=122){
             return lowerVal - c;
         }
-        return spaceVal;
+        if (c == spaceVal){
+            return spaceVal;
+        }
+        return -1;
     }
     public static String convertWord(String word){
         return word.chars()
