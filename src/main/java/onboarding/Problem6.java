@@ -10,7 +10,7 @@ public class Problem6 {
         for (List<String> f: forms) {
             Form form = new Form(f.get(0), f.get(1));
 
-            if (form.isPass()) {
+            if (!form.validation()) {
                 continue;
             }
 
@@ -55,10 +55,13 @@ public class Problem6 {
         private final String email;
         private final String nickname;
 
-        public boolean isPass() {
-            return this.nickname.length() == 1;
+        public boolean validation() {
+            return this.validationLength();
         }
 
+        private boolean validationLength() {
+            return this.nickname.length() > 1;
+        }
         public Form(String email, String nickname) {
             this.email = email;
             this.nickname = nickname;
