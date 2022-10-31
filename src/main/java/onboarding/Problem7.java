@@ -29,4 +29,18 @@ public class Problem7 {
             relationships.put(person, friends);
         }
     }
+
+    private static void getScore(Map<String, Integer> scoreBoard, List<String> userRelationships, List<String> friends, int score) {
+        for (String friend : friends) {
+            if (userRelationships.contains(friend)) {
+                continue;
+            }
+
+            if (scoreBoard.containsKey(friend)) {
+                scoreBoard.replace(friend, scoreBoard.get(friend) + score);
+            } else {
+                scoreBoard.put(friend, score);
+            }
+        }
+    }
 }
