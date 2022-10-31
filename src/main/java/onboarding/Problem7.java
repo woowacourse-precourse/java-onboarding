@@ -109,4 +109,14 @@ public class Problem7 {
         }
         return remove;
     }
+
+    /**
+     * 리스트에서 이미 친구인 사람 삭제
+     */
+    static List<String> remove(List<String> answer, List<String> result){
+        for(String item : result){
+            answer.remove(item);
+        }
+        return answer;
+    }
 }
