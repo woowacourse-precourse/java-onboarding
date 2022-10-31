@@ -22,20 +22,7 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
 
-        int size = forms.size();
-        Set<Integer> indexSet = new HashSet<>();
-
-        for (int i = 0; i < size - 1; i++) {
-            for (int j = i + 1; j < size; j++) {
-                String nicknameOne = forms.get(i).get(1);
-                String nicknameTwo = forms.get(j).get(1);
-
-                if (!validateDuplication(nicknameOne, nicknameTwo)) {
-                    indexSet.add(i);
-                    indexSet.add(j);
-                }
-            }
-        }
+        Set<Integer> indexSet = findDuplicateStudents(forms);
 
         List<Student> duplicateStudentList = new ArrayList<>();
 
@@ -56,6 +43,25 @@ public class Problem6 {
         }
 
         return answer;
+    }
+
+    private static Set<Integer> findDuplicateStudents(List<List<String>> forms) {
+        Set<Integer> indexSet = new HashSet<>();
+        int size = forms.size();
+
+        for (int i = 0; i < size - 1; i++) {
+            for (int j = i + 1; j < size; j++) {
+                String nicknameOne = forms.get(i).get(1);
+                String nicknameTwo = forms.get(j).get(1);
+
+                if (!validateDuplication(nicknameOne, nicknameTwo)) {
+                    indexSet.add(i);
+                    indexSet.add(j);
+                }
+            }
+        }
+
+        return indexSet;
     }
 
     public static boolean validateDuplication(String nicknameOne, String nicknameTwo) {
