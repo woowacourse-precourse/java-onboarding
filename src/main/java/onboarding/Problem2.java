@@ -11,7 +11,13 @@ public class Problem2 {
 
     private static String deleteConsecutiveDuplicateChars(StringBuilder cryptogramSb) {
         int i = 0;
-        for (; i < cryptogramSb.length() - 1; ) {
+        for (; i + 1 < cryptogramSb.length(); ) {
+            if (i < 0)
+                i = 0;
+
+            if (i + 1 >= cryptogramSb.length())
+                break;
+
             if (cryptogramSb.charAt(i) != cryptogramSb.charAt(i+1)) {
                 i++;
             }
