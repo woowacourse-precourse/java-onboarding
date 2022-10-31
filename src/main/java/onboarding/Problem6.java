@@ -15,7 +15,7 @@ public class Problem6 {
 			List<String> form = forms.get(i);
 			checkDuplicate(forms, form, i);
 		}
-		addDuplicateUser(answer);
+		addDuplicateUser(answer, forms);
 		return answer;
 	}
 
@@ -40,7 +40,7 @@ public class Problem6 {
 		return false;
 	}
 
-	public static void addDuplicateUser(List<String> answer) {
-
+	public static void addDuplicateUser(List<String> answer, List<List<String>> forms) {
+		
 	}
 }
