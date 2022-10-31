@@ -32,7 +32,7 @@ public class Problem7 {
         }
         for(int i=0;i<recommandlist.size();i++){
             String name=recommandlist.get(i);
-            if(Friendlist.contains(name)){
+            if(Friendlist.contains(name)||name.equals(user)){
                 continue;
             }
             int score=FriendScore.get(name);
@@ -41,13 +41,13 @@ public class Problem7 {
         }
         VisitorScore(FriendScore,visitors);
     }
-    public static String FindFriend(String user,List<String> friends){
-            int index=friends.indexOf(user);
-            if(index==1){
-                return friends.get(0);
-            } else
-            {return friends.get(1);}
-
+    public static String FindFriend(String user,List<String> friends) {
+        int index = friends.indexOf(user);
+        if (index == 1) {
+            return friends.get(0);
+        } else {
+            return friends.get(1);
+        }
     }
     public static void listupdate(String user,List<List<String>> friends,ArrayList<String> list){
         for(int i=0;i<friends.size();i++){
@@ -61,7 +61,6 @@ public class Problem7 {
         for(int i=0;i<friends.size();i++){
             if(friends.get(i).contains(user)){
                 String Friend = FindFriend(user, friends.get(i));
-
                     list.add(Friend);}
             }}
 
@@ -77,13 +76,11 @@ public class Problem7 {
         List<Map.Entry<String, Integer>> list_entries = new ArrayList<Map.Entry<String, Integer>>(FriendScore.entrySet());
         List<String> answer = new ArrayList<>();
         Collections.sort(list_entries, new Comparator<Map.Entry<String, Integer>>() {
-            // compare로 값을 비교
             public int compare(Map.Entry<String, Integer> obj1, Map.Entry<String, Integer> obj2) {
-                // 오름 차순 정렬
-                return obj1.getValue().compareTo(obj2.getValue());
+                return obj2.getValue().compareTo(obj1.getValue());
             }
         });
-        for(int i=0;i<5;i++){
+        for(int i=0;i<3;i++){
             String name=list_entries.get(i).getKey();
             if(list_entries.get(i).getValue()<=0){
                 break;
