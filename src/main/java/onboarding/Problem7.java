@@ -50,6 +50,9 @@ public class Problem7 {
             }
         }
 
+        int numOfFriends(String name) {
+            return numOfIntersection(getPerson(user).friends, getPerson(name).friends);
+        }
 
         int numOfIntersection(Set<Person> a, Set<Person> b) {
             if(a.isEmpty() || b.isEmpty()) {
