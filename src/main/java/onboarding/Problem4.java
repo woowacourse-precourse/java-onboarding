@@ -42,12 +42,22 @@ class Result {
 
     public void changeUpperAndLower(){
         for(char wordChar:wordArray){
-            isUpperCase(wordChar);
+
         }
     }
 
-    public boolean isUpperCase(char wordChar){
-        return Character.isUpperCase(wordChar);
+    public boolean isAlphaUpper(char wordChar){
+        if(wordChar>='A'&&wordChar<='Z'){
+            return true;
+        }
+        return false;
+    }
+
+    public boolean isAlphaLower(char wordChar){
+        if(wordChar>='a'&&wordChar<='z'){
+            return true;
+        }
+        return false;
     }
 
 
