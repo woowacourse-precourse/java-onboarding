@@ -23,17 +23,17 @@ public class Problem7 {
 
         HashMap<String, Integer> scoreMap = new HashMap<>();
         /* 친구 목록을 통한 점수 계산하기 */
-        for (String name: friendList.keySet()) {
-            if (user.equals(name) || friendList.get(user).contains(name))
+        for (String othersName: friendList.keySet()) {
+            if (user.equals(othersName) || friendList.get(user).contains(othersName))
                 continue;
 
-            scoreMap.put(name, 0);
+            scoreMap.put(othersName, 0);
 
             for (String userFriendName: friendList.get(user)) {
-                if (friendList.get(name).contains(userFriendName)) {
-                    int oldScore = scoreMap.get(name);
+                if (friendList.get(othersName).contains(userFriendName)) {
+                    int oldScore = scoreMap.get(othersName);
                     int newScore = oldScore += 10;
-                    scoreMap.replace(name, newScore);
+                    scoreMap.replace(othersName, newScore);
                 }
             }
         }
