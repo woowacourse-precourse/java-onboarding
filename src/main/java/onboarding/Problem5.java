@@ -11,6 +11,13 @@ public class Problem5 {
         List<Integer> answer = Collections.emptyList();
         answer = new ArrayList<>();
         int[] wallet = new int[9];
+        for (int i = 0; i < wallet.length; i++) {
+            while (money >= kindOfMoney[i]) {
+                wallet[i]++;
+                money = money - kindOfMoney[i];
+            }
+        }
+
 
         return answer;
     }
