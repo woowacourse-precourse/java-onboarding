@@ -1,10 +1,20 @@
 package onboarding;
 
-import java.util.List;
+import java.util.*;
 
 public class Problem6 {
+
+    static Set<String> emails;
+    static Map<String, String> nameMap;
+
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        emails = new HashSet<>();            // 중복 체크된 메일 저장
+        nameMap = new HashMap<>();           // 닉네임 중복 체크용 데이터 저장
+        checkNicknames(forms);
+
+        List<String> answer = new ArrayList<>(emails);
+        answer.sort(Comparator.naturalOrder()); // answer 배열 정렬
+
         return answer;
     }
 
