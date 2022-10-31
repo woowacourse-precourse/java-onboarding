@@ -30,8 +30,8 @@ public class Decryptor {
         return result.toString();
     }
 
-    private boolean isNotDuplicateBeforeAndAfterLetter(String str, int i) {
-        return isNotEqualAfterLetter(str, i) && isNotEqualBeforeLetter(str, i);
+    private boolean isNotDuplicateBeforeAndAfterLetter(String word, int index) {
+        return isNotEqualAfterLetter(word, index) && isNotEqualBeforeLetter(word, index);
     }
 
     private boolean isNotEqualBeforeLetter(String word, int index) {
