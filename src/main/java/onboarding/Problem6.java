@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 public class Problem6 {
 
-    static Map<String, String> splitNickMap;
+    static Map<String, String> splitNickMap = new HashMap<>();
     static Set<String> answer;
 
     public static List<String> solution(List<List<String>> forms) {
@@ -55,7 +55,7 @@ public class Problem6 {
 
     public static void checkNickName(String email, String subNickName){
 
-        if (splitNickMap.containsKey(email)){
+        if (splitNickMap.containsKey(subNickName)){
             answer.add(email);
             answer.add(splitNickMap.get(subNickName));
         }
