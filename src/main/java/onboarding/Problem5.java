@@ -40,6 +40,6 @@ public class Problem5 {
 
 
     private int getQuotientMoneyDividedStandard(int standard, int money) {
-        return standard / money;
+        return money / standard;
     }
 }
