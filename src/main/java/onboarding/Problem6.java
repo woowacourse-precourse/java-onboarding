@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Problem6 {
@@ -32,8 +33,26 @@ public class Problem6 {
 
         return false;
     }
+    public static String getEmail(List<List<String>> forms, int index) {
+        return forms.get(index).get(0);
+    }
+
+    public static String getNickname(List<List<String>> forms, int index) {
+        return forms.get(index).get(1);
+    }
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer = new ArrayList<>();
+
+        int crewNumber = forms.size();
+
+        for (int target=0; target<crewNumber-1; target++) {
+            for (int comparison=target+1; comparison< crewNumber; comparison++) {
+                if (commonSubstring(getNickname(forms, target), getNickname(forms, comparison))) {
+                    answer.add(getEmail(forms, target));
+                    answer.add(getEmail(forms, comparison));
+                }
+            }
+        }
         return answer;
     }
 }
