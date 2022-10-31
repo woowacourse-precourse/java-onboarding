@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 public class Problem6 {
 
@@ -69,8 +66,10 @@ public class Problem6 {
         return n >= 1 && n <= 10_000;
     }
 
-    static HashMap<String, Integer> hashMap = new HashMap();
-    static HashSet hashSet = new HashSet();
+    static HashMap<String, Integer> hashMap = new HashMap<String, Integer>();
+    static TreeSet<String> treeSet = new TreeSet<String>();
+    static HashSet<String> hashSet = new HashSet<String>();
+    List<List<String>> list;
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("");
         if(!isValidPersonal(forms.size())) return answer;
@@ -88,8 +87,15 @@ public class Problem6 {
         for (List<String> strings : list) {
             addStringToHashMap(strings.get(0));
         }
+        for (Map.Entry<String, Integer> stringIntegerEntry : hashMap.entrySet()) {
+            putHashSetToMoreThan2LengthString(stringIntegerEntry);
+        }
+        for (String s : hashSet) {
+            putTreeSet(s, list);
+        }
+        System.out.println(treeSet);
 
-        
+
 
 
 
@@ -97,8 +103,26 @@ public class Problem6 {
         return answer;
     }
 
+    private static void putTreeSet(String s, List<List<String>> list) {
+        for (List<String> strings : list) {
+            putEmailToTreeSet(s,strings);
+        }
+    }
+
+    private static void putEmailToTreeSet(String s, List<String> strings) {
+        if (strings.get(0).contains(s)) {
+            treeSet.add(strings.get(1));
+        }
+    }
+
+    private static void putHashSetToMoreThan2LengthString(Map.Entry<String, Integer> stringIntegerEntry) {
+        if (stringIntegerEntry.getValue() >= 2) {
+            hashSet.add(stringIntegerEntry.getKey());
+        }
+    }
+
     private static void addStringToHashMap(String s) {
-        HashSet<String> temp = new HashSet();
+        HashSet<String> temp = new HashSet<String>();
         for (int i = 0; i <s.length()-1 ; i++) {
             String tempString = s.substring(i, i + 2);
             temp.add(putString(tempString, temp));
