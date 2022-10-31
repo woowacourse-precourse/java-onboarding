@@ -21,8 +21,15 @@ public class Problem3 {
                 cur_num /= 10;
             }
         }
- 
+
         return count;
     }
+/*
+    public static void main(String[] args) { // TEST
+        int num = 33;
 
+        solution(num);
+    }
+
+ */
 }
