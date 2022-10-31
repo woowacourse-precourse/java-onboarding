@@ -5,13 +5,16 @@ import java.util.*;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+
         Map<String, Integer> recommendScore = new HashMap<>();
         Map<String, List<String>> network = getFriendList(friends);
-        addFriendScore(recommendScore, network, user);
 
+        addFriendScore(recommendScore, network, user);
+        addTimelineScore(recommendScore, visitors);
 
         return answer;
     }
+
 
     //친구 목록 생성
     public static Map<String, List<String>> getFriendList(List<List<String>> friends) {
@@ -26,9 +29,9 @@ public class Problem7 {
             }
 
             if (network.containsKey(f2)) {
-                network.get(f1).add(f1);
+                network.get(f2).add(f1);
             } else {
-                network.put(f1, new ArrayList<>(List.of(f1)));
+                network.put(f2, new ArrayList<>(List.of(f1)));
             }
         }
         return network;
@@ -38,12 +41,24 @@ public class Problem7 {
 
         network.get(user).forEach(userFriend ->
                 network.get(userFriend).forEach(userFriendFriend -> {
-                    if (recommendScore.containsKey(userFriendFriend)) {
-                        recommendScore.put(userFriendFriend, recommendScore.get(userFriendFriend) + 10);
-                    } else {
-                        recommendScore.put(userFriendFriend, 10);
+                    if (!userFriendFriend.equals(user)) {
+                        if (recommendScore.containsKey(userFriendFriend)) {
+                            recommendScore.put(userFriendFriend, recommendScore.get(userFriendFriend) + 10);
+                        } else {
+                            recommendScore.put(userFriendFriend, 10);
+                        }
                     }
                 }));
+    }
+
+    private static void addTimelineScore(Map<String, Integer> recommendScore, List<String> visitors) {
+        visitors.forEach(visitor -> {
+            if (recommendScore.containsKey(visitor)) {
+                recommendScore.put(visitor, recommendScore.get(visitor) + 1);
+            } else {
+                recommendScore.put(visitor, 1);
+            }
+        });
     }
 
 }
