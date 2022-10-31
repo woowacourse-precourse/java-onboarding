@@ -1,10 +1,20 @@
+/*
+ * Problem1
+ *
+ * v1.1
+ *
+ * 2022.10.31
+ *
+ * 저작권 주의
+ */
+
 package onboarding;
 
 import java.util.List;
 
+
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = 0;
         int pobiLeftPage = pobi.get(0);
         int pobiRightPage = pobi.get(1);
         int crongLeftPage = crong.get(0);
@@ -16,19 +26,10 @@ class Problem1 {
             int pobiMax= Math.max(CompareMultAndAdd(pobiLeftPage), CompareMultAndAdd(pobiRightPage));
             int crongMax= Math.max(CompareMultAndAdd(crongLeftPage), CompareMultAndAdd(crongRightPage));
             //미션 결과 리턴
-            if(pobiMax>crongMax){
-                return 1;
-            }else if(pobiMax<crongMax){
-                return 2;
-            }else{
-                return 0;
-            }
+            return compareReturnAnswer(pobiMax, crongMax);
         }else{
             return (-1);
         }
-
-
-
 
     }
 
@@ -57,6 +58,15 @@ class Problem1 {
             mulNum *= arr[i];
         };
         return Math.max(sumNum, mulNum);
+    }
+
+    static int compareReturnAnswer(int pobi,int crong){
+        if(pobi>crong){
+            return 1;
+        }else if(pobi<crong){
+            return 2;
+        }
+        return 0;
     }
 
 

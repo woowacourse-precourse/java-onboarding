@@ -55,12 +55,12 @@ public class Problem7 {
         return AnotherFriendList;
     }
 
-    static ArrayList<String> findOverlapFriend(ArrayList<String> friend1, ArrayList<String> friend2){
+    static ArrayList<String> findOverlapFriend(ArrayList<String> ArrayListfriend1, ArrayList<String> ArrayListfriend2){
         ArrayList<String> overlapedFriend = new ArrayList<String>();
-        for(int i=0; i< friend1.size(); i++){
-            for(int j=0; j< friend2.size(); j++){
-                if(friend1.get(i).equals(friend2.get(j))){
-                    overlapedFriend.add(friend1.get(i));
+        for (String friend1 : ArrayListfriend1) {
+            for (String friend2 : ArrayListfriend2) {
+                if (friend1.equals(friend2)) {
+                    overlapedFriend.add(friend1);
                 }
             }
         }
