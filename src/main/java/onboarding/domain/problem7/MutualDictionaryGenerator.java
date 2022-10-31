@@ -36,13 +36,9 @@ public class MutualDictionaryGenerator {
     private void insertMutual(List<String> mutualFriends) {
         for (String mutualFriend : mutualFriends) {
             if (relations.isStranger(user, mutualFriend)) {
-                dictionary.put(mutualFriend, countMutual(mutualFriend));
+                int count = dictionary.getOrDefault(mutualFriend, 0) + 1;
+                dictionary.put(mutualFriend, count);
             }
         }
-    }
-    
-    private int countMutual(String mutualFriend) {
-        Integer count = dictionary.get(mutualFriend);
-        return (count == null) ? 1 : ++count;
     }
 }

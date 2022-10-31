@@ -21,7 +21,6 @@ public class MutualDictionary {
     }
     
     public int getTotalMutualCounts(String mutualUser) {
-        Integer count = mutualDictionary.get(mutualUser);
-        return (count == null) ? 0 : count;
+        return mutualDictionary.getOrDefault(mutualUser, 0);
     }
 }

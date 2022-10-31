@@ -21,7 +21,6 @@ public class VisitsDictionary {
     }
     
     public int getTotalVisitCounts(String visitor) {
-        Integer count = visitsDictionary.get(visitor);
-        return (count == null) ? 0 : count;
+        return visitsDictionary.getOrDefault(visitor, 0);
     }
 }

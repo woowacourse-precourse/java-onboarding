@@ -36,8 +36,7 @@ public class VisitsDictionaryGenerator {
     
     private void insertCount(String visitor) {
         if (relations.isStranger(user, visitor)) {
-            Integer value = dictionary.get(visitor);
-            int count = (value == null) ? 1 : ++value;
+            int count = dictionary.getOrDefault(visitor, 0) + 1;
             dictionary.put(visitor, count);
         }
     }
