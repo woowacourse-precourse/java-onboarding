@@ -27,9 +27,9 @@ public class Problem7 {
         for(String s : visitors){
             if(!friendList(user,friends).contains(s)){
                 if(!friend_score.containsKey(s)){
-                    friend_score.put(s, 1);
+                    friend_score.put(s, 10);
                 }else{
-                    friend_score.put(s, friend_score.get(s)+1);
+                    friend_score.put(s, friend_score.get(s)+10);
                 }
             }
 
