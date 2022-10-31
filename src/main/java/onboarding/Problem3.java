@@ -2,7 +2,10 @@ package onboarding;
 
 public class Problem3 {
     public static int solution(int number) {
-        int answer = clap(number);
+        int answer = 0;
+        if(1 <= number && number < 10000){
+            answer = clap(number);
+        }
         return answer;
     }
     private static int clap(int number){
