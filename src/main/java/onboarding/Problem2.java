@@ -1,5 +1,9 @@
 package onboarding;
 
+import org.junit.jupiter.api.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
 /**
  * 기능 구현 사항
  * 1. 연속된 부분 찾기
@@ -10,8 +14,8 @@ public class Problem2 {
     private static int index(String src) {
         char fir = src.charAt(0);
         for (int i = 1; i < src.length(); i++) {
-            if (src.charAt(i) == fir) {
-                return (i);
+            if (src.charAt(i) != fir) {
+                return (i - 1);
             }
         }
         return 0;
