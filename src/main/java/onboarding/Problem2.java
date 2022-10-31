@@ -19,6 +19,23 @@ public class Problem2 {
         }
         return false;
     }
+
+    public static String removeDuplication(String code) {
+        Stack<Character> stack = new Stack<>();
+        stack.push(code.charAt(0));
+        char before = code.charAt(0);
+        for (int i=1; i<code.length(); i++) {
+            if (checkStackPop(stack, code, before, i)) {
+                stack.pop();
+            }
+            else if (before != code.charAt(i)) {
+                stack.push(code.charAt(i));
+            }
+            before = code.charAt(i);
+        }
+        String newCode = stackToString(stack);
+        return newCode;
+    }
     public static String solution(String cryptogram) {
         String answer = "answer";
         return answer;
