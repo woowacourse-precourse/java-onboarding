@@ -11,21 +11,27 @@ import java.util.stream.IntStream;
 
 public class Problem7 {
 
-    private static final int ACQUAINTANCE_SCORE = 10;
+    private static final int ZERO = 0;
+    private static final int FIVE = 5;
     private static final int VISIT_SCORE = 1;
+    private static final int ACQUAINTANCE_SCORE = 10;
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Set<String> userFriends = getUserFriends(user, friends);
         Map<String, Integer> scoreMap = new TreeMap<>();
         getAcquaintanceScore(user, friends, scoreMap, userFriends);
         getVisitorScore(visitors, scoreMap, userFriends);
 
+        return getTopFiveList(user, scoreMap);
+    }
+
+    private static List<String> getTopFiveList(String user, Map<String, Integer> scoreMap) {
         return scoreMap
             .entrySet()
             .stream()
             .filter(entry -> !entry.getKey().equals(user))
             .sorted(Problem7::compare)
             .map(Entry::getKey)
-            .limit(5).collect(Collectors.toList());
+            .limit(FIVE).collect(Collectors.toList());
     }
 
     private static Set<String> getUserFriends(String user, List<List<String>> friends) {
@@ -47,7 +53,7 @@ public class Problem7 {
                 .forEach(index ->
                     scoreMap.put(
                         friend.get(index ^ 1),
-                        scoreMap.getOrDefault(friend.get(index ^ 1), 0) + ACQUAINTANCE_SCORE));
+                        scoreMap.getOrDefault(friend.get(index ^ 1), ZERO) + ACQUAINTANCE_SCORE));
         }
     }
 
@@ -59,7 +65,7 @@ public class Problem7 {
     private static void getVisitorScore(List<String> visitors, Map<String, Integer> scoreMap, Set<String> userFriends) {
         for (String visitor : visitors) {
             if (!userFriends.contains(visitor)) {
-                scoreMap.put(visitor, scoreMap.getOrDefault(visitor, 0) + VISIT_SCORE);
+                scoreMap.put(visitor, scoreMap.getOrDefault(visitor, ZERO) + VISIT_SCORE);
             }
         }
     }
