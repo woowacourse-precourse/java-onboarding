@@ -14,6 +14,13 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         initialize();
 
+        validateFriends(friends);
+        validateVisitors(visitors);
+
+        setMe(user);
+        addAllRealFriends(friends);
+
+
         List<String> answer = Collections.emptyList();
 
         return answer;
@@ -75,17 +82,6 @@ public class Problem7 {
     }
 
     /**
-     * 등록된 예비 친구에게 점수 부여
-     * @param user 유저 정보
-     * @param point 추가할 점수
-     */
-    private static void addPreFriendPoint(String user, int point) {
-        int previousPoint = getPreFriendsPoint(user);
-
-        putPreFriendAndPoint(user, previousPoint + point);
-    }
-
-    /**
      * 추천 친구 구하기
      * @param maxRecommendFriends 최대 추천 친구
      * @return 추천 친구 목록
@@ -119,6 +115,17 @@ public class Problem7 {
         }
 
         return topPreFriends;
+    }
+
+    /**
+     * 등록된 예비 친구에게 점수 부여
+     * @param user 유저 정보
+     * @param point 추가할 점수
+     */
+    private static void addPreFriendPoint(String user, int point) {
+        int previousPoint = getPreFriendsPoint(user);
+
+        putPreFriendAndPoint(user, previousPoint + point);
     }
 
     /**
@@ -162,10 +169,18 @@ public class Problem7 {
 
     /**
      * 친구 목록에 유저 정보 추가
-     * @param user 유저 정보
+     * @param friends 친구 목록
      */
-    private static void addRealFriend(String user) {
-        realFriends.add(user);
+    private static void addAllRealFriends(List<List<String>> friends) {
+        String me = getMe();
+
+        for (List<String> friend : friends) {
+            for (String user: friend) {
+                if (user.equals(me)) {
+                    realFriends.add(friend.get(friend.indexOf(user) ^ 1));
+                }
+            }
+        }
     }
 
     /**
