@@ -44,13 +44,13 @@ class Problem1 {
         return Math.max(sum, mul);
     }
 
-    private static int compareScore(int pobiMax, int crongMax) {
+    private static int compareScore(int pobiScore, int crongScore) {
         int answer;
 
-        if (pobiMax > crongMax) {
+        if (pobiScore > crongScore) {
             answer = 1;
         }
-        else if (pobiMax < crongMax) {
+        else if (pobiScore < crongScore) {
             answer = 2;
         }
         else {
