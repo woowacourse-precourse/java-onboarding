@@ -31,4 +31,13 @@ class Problem1 {
         return sum;
     }
 
+    public static int multipleEachDigit(int input) {
+        int sum = 1;
+        while (input != 0) {
+            sum *= input % 10;
+            input /= 10;
+        }
+        return sum;
+    }
+
 }
