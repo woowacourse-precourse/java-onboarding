@@ -1,6 +1,9 @@
 package onboarding;
 
-import java.util.*;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Comparator;
 
 public class Problem7 {
     private static String checkAlreadyFriends(String user, List<String> relation){
