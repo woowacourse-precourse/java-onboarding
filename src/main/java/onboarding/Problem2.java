@@ -13,11 +13,7 @@ public class Problem2 {
 
         removeDuplicates(chars);
 
-        StringBuilder answer = new StringBuilder();
-        for (Character c : chars)
-            answer.append(c);
-
-        return answer.toString();
+        return listToString(chars);
     }
 
     /**
@@ -25,10 +21,7 @@ public class Problem2 {
      * 문자열에서 문자 리스트 get
      */
     public static List<Character> getChars(String word) {
-        chars = new ArrayList<>();
-
-        for (int i = 0; i < word.length(); i++)
-            chars.add(word.charAt(i));
+        chars = new CharSpliter<String>().getChars(word);
 
         return chars;
     }
@@ -52,6 +45,13 @@ public class Problem2 {
             }
             index--;
         }
+    }
 
+    public static String listToString(List<Character> characters) {
+        StringBuilder sb = new StringBuilder();
+        for (Character character : characters)
+            sb.append(character);
+
+        return sb.toString();
     }
 }

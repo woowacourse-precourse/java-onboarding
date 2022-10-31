@@ -12,10 +12,10 @@ class Problem3Test {
         int num = 123;
 
         //when
-        List<Integer> numElements = Problem3.getNumElements(123);
+        List<Character> numElements = Problem3.getChars(123);
 
         //then
-        Assertions.assertThat(numElements).isEqualTo(List.of(3, 2, 1));
+        Assertions.assertThat(numElements).isEqualTo(List.of('1', '2', '3'));
     }
 
     @Test

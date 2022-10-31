@@ -61,18 +61,20 @@ class Problem1 {
         int sumScore = 0;
         int sqrSumScore= 1;
 
-        // 페이지의 각 자리의 숫자를 ArrayList에 저장
-        List<Integer> pageElements = new ArrayList<>();
-        while (page > 0) {
-            pageElements.add(page % 10);
-            page /= 10;
+        List<Character> chars = getChars(page);
+
+        for (Character aChar : chars) {
+            sumScore += Integer.parseInt(aChar.toString());
+            sqrSumScore *= Integer.parseInt(aChar.toString());
         }
 
-        for (int i = 0; i < pageElements.size(); i++) {
-            sumScore += pageElements.get(i);
-            sqrSumScore *= pageElements.get(i);
-        }
 
         return Math.max(sumScore, sqrSumScore);
+    }
+
+    private static List<Character> getChars(Integer page) {
+
+        // 페이지의 각 자리의 숫자를 List에 저장
+        return new CharSpliter<Integer>().getChars(page);
     }
 }

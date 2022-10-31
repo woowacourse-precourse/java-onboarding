@@ -33,4 +33,15 @@ class Problem2Test {
         Assertions.assertThat(characters).isEqualTo(List.of('z', 'e'));
     }
 
+    @Test
+    public void String으로합치기() throws Exception {
+        //given
+        List<Character> characters = new ArrayList<>(List.of('a', 'b', 'c', 'd', 'e', 'f'));
+
+        //when
+        String answer = Problem2.listToString(characters);
+
+        //then
+        Assertions.assertThat(answer).isEqualTo("abcdef");
+    }
 }

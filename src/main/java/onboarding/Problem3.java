@@ -20,14 +20,9 @@ public class Problem3 {
      * 기능 3.1.1
      * 수를 자리별 숫자 리스트로 변환
      */
-    public static List<Integer> getNumElements(int number) {
-        List<Integer> numElements = new ArrayList<>();
-        while (number > 0) {
-            numElements.add(number % 10);
-            number /= 10;
-        }
+    public static List<Character> getChars(int number) {
 
-        return numElements;
+        return new CharSpliter<Integer>().getChars(number);
     }
 
     /**
@@ -36,10 +31,10 @@ public class Problem3 {
      */
     public static int countTargets(int number) {
         int count = 0;
-        List<Integer> numElements = getNumElements(number);
+        List<Character> numElements = getChars(number);
 
-        for (int ele : numElements) {
-            if (isTarget(ele))
+        for (Character ele : numElements) {
+            if (isTarget(Integer.parseInt(ele.toString())))
                 count++;
         }
 
