@@ -2,7 +2,9 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Problem6 {
 	public static List<String> solution(List<List<String>> forms) {
@@ -17,10 +19,8 @@ public class Problem6 {
 				answer.add(email);
 			}
 			nicknames.add(nickname);
-
 		}
-		Collections.sort(answer);
-
+		answer = processData(answer);
 		return answer;
 	}
 
@@ -42,5 +42,12 @@ public class Problem6 {
 			}
 		}
 		return false;
+	}
+
+	private static List<String> processData(List<String> data) {
+		Set<String> set = new HashSet<String>(data);
+		data = new ArrayList<String>(set);
+		Collections.sort(data);
+		return data;
 	}
 }
