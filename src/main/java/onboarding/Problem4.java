@@ -11,6 +11,9 @@ public class Problem4 {
             else if (c >= 'a' && c <= 'z') {
                 result += (char)('z' - c + 'a');
             }
+            else {
+                result += c;
+            }
         }
         return result;
     }
