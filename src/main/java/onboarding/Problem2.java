@@ -12,12 +12,10 @@ public class Problem2 {
         List<Character> code = new ArrayList<>();
         code = convert(cryptogram);
 
-        //단계별로 중복 제거하며 더 이상 중복이 없을 때까지 반복
         while (code.size()!=removeChar(code).size()) {
             code=removeChar(code);
         }
 
-        //list를 String 형태로 변환해 최종 return
         StringBuilder sb = new StringBuilder();
         for (char character: code) {
             sb.append(character);
@@ -28,7 +26,6 @@ public class Problem2 {
         return answer;
     }
 
-    //문자열을 알파벳 리스트로 변환 함수
     static List<Character> convert(String string) {
         List<Character> chars = IntStream.range(0, string.length())
                 .mapToObj(string::charAt)
@@ -37,7 +34,6 @@ public class Problem2 {
         return chars;
     }
 
-    //중복 제거
     static List<Character> removeChar(List<Character> list) {
         List<Character> charList = new ArrayList<>();
         charList = list;
