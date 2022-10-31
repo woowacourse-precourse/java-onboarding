@@ -8,7 +8,7 @@ public class Problem7 {
         List<String> friendList = new ArrayList<>();
         HashMap<String, Integer> result = new HashMap<>();
 
-        friendList = getUserFriends(friends, user);
+        friendList = getFriendList(friends, user);
 
         for (int i = 0; i < friends.size(); i += 1) {
             for (int j = 0; j < friendList.size(); j += 1) {
@@ -65,15 +65,20 @@ public class Problem7 {
         return answer;
     }
 
-    public static List<String> getUserFriends(List<List<String>> friends, String user){
+    public static List<String> getFriendList(List<List<String>> friends, String user) {
         List<String> list = new ArrayList<>();
         for (int i = 0; i < friends.size(); i += 1) {
-            if (friends.get(i).get(1) == user) {
-                list.add(friends.get(i).get(0));
-            } else if (friends.get(i).get(0) == user) {
-                list.add(friends.get(i).get(1));
-            }
+            getFriendName(list, friends, user, i);
         }
         return list;
+    }
+
+    public static void getFriendName(List<String> list, List<List<String>> friends, String user, int index) {
+        if (friends.get(index).get(1) == user) {
+            list.add(friends.get(index).get(0));
+        }
+        if (friends.get(index).get(0) == user) {
+            list.add(friends.get(index).get(1));
+        }
     }
 }
