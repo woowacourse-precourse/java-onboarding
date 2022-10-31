@@ -22,11 +22,11 @@ public class Problem4 {
             }
             // 소문자를 판단 후 계산식에 따라 결과 값을 빌더에 저장
             else if((int)charArray[i]<91){
-                sb.append((char)((90-(int)charArray[i])+65));
+                sb.append((char)((90-charArray[i])+65));
             }
             // 대문자 판단 후 계산식에 따라 결과 값을 빌더에 저장
             else if((int)charArray[i]>97){
-                sb.append((char)((122-(int)charArray[i])+97));
+                sb.append((char)((122-charArray[i])+97));
             }
         }
         //  스트링 빌더에 저장된 값을 스트링으로 리턴
