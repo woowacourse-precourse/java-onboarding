@@ -14,7 +14,7 @@ public class Problem7 {
         for (List<String> friend : friends) {
             checkContain(friend, user);
         }
-        
+
         return answer;
     }
 
@@ -36,6 +36,21 @@ public class Problem7 {
     public static void notContains(boolean isContain, List<String> friend, String user) {
         if (!isContain) {
             friendGraph.add(friend);
+        }
+    }
+
+    //점수를 계산하는 함수
+    public static void calculatePoint(String user, int point) {
+        if (relation.containsKey(user))
+            relation.put(user, relation.get(user) + 10);
+        else
+            relation.put(user, 10);
+    }
+
+    //방문자의 점수를 계산하는 함수
+    public static void calculateVisitorPoint(boolean isContain, String visitor) {
+        if (!isContain) {
+            calculatePoint(visitor, 1);
         }
     }
 
