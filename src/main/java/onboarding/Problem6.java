@@ -46,12 +46,13 @@ public class Problem6 {
 
         List<String> answer = new ArrayList<>();
         for (int i = 0; i< isSameList.length; i++){
-            answer.add(forms.get(i).get(0));
+            if (isSameList[i] == true){
+                answer.add(forms.get(i).get(0));
+            }
         }
-
         Collections.sort(answer);
+        
         return answer;
     }
-
 
 }
