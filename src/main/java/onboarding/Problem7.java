@@ -14,12 +14,14 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Map<String, Integer> list = visitorCalculate(user, friends, visitors);
         List<String> answer = new ArrayList<>(list.keySet());
+
         answer.sort(new Comparator<String>() {
             @Override
             public int compare(String o1, String o2) {
                 return list.get(o2).compareTo(list.get(o1));
             }
         });
+
 
         if(answer.size()>5) {
             for (int i = answer.size() - 1; i > 4; i--) {
