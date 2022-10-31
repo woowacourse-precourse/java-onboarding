@@ -89,6 +89,20 @@ class ApplicationTest {
         }
 
         @Test
+        void case3(){
+            String cryptogram = "abbaa";
+            String result = "a";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
+        void case4() {
+            String cryptogram = "a";
+            String result = "a";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
         void empty_param_exception() {
             String cryptogram = "";
             String result = null;
@@ -141,6 +155,13 @@ class ApplicationTest {
         }
 
         @Test
+        void case4() {
+            int number = 333;
+            int result = 228;
+            assertThat(Problem3.solution(number)).isEqualTo(result);
+        }
+
+        @Test
         void parameter_under1_return_minus_one() {
             int number = 0;
             int result = -1;
@@ -170,6 +191,14 @@ class ApplicationTest {
             String result = "R olev blf";
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
+
+        @Test
+        void case2() {
+            String word = "Svool, Dliow! 123";
+            String result = "Hello, World! 123";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+
 
         @Test
         void parameter_mixed_upper_and_lower() {
