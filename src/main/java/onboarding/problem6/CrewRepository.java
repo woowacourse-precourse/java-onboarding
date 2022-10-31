@@ -3,8 +3,6 @@ package onboarding.problem6;
 import static onboarding.problem6.consts.FormIndexConst.FORM_EMAIL_INDEX;
 import static onboarding.problem6.consts.FormIndexConst.FORM_NICKNAME_INDEX;
 
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
