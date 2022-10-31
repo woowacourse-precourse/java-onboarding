@@ -10,9 +10,20 @@ public class Problem4 {
     public static String solution(String word) {
         String answer = "";
 
+        if(!verificationCheck(word)) {
+            return "제한사항을 확인해주세요.";
+        }
+
         answer = makeAnswer(word);
 
         return answer;
+    }
+
+    public static boolean verificationCheck(String word) {
+        if(word.length() < 1 || word.length() > 1000) {
+            return false;
+        }
+        return true;
     }
 
     public static String makeAnswer(String target) {
