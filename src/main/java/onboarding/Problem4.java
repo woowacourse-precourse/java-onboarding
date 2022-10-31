@@ -12,7 +12,12 @@ public class Problem4 {
     }
 
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        StringBuilder result = new StringBuilder();
+
+        for (int i = 0; i < word.length(); i++) {
+            result.append(changeOneCharacter(word.charAt(i)));
+        }
+
+        return result.toString();
     }
 }
