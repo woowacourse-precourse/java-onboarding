@@ -65,6 +65,8 @@ public class Problem7 {
                 }
             }
         }
+        //5. hashmap을 리스트로 변환
+        List<Entry<String, Integer>> list_entries = new ArrayList<Entry<String, Integer>>(map.entrySet());
         return answer;
     }
 }
