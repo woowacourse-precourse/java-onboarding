@@ -40,7 +40,9 @@ public class Problem6 {
                         break;
                     }
                 }
-                
+
+                if (check && !result.contains(forms.get(temp).get(0))) {
+                    result.add(forms.get(temp).get(0));
                 }
             }
         }
