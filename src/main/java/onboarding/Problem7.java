@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.lang.annotation.Retention;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -43,17 +44,9 @@ public class Problem7 {
             }
 
             if (USER_FRIENDS.contains(userA)) {
-                if (!RECOMMEND_SCORE.containsKey(userB)) {
-                    RECOMMEND_SCORE.put(userB,NEIGHBOR_POINT);
-                } else {
-                    RECOMMEND_SCORE.put(userB,RECOMMEND_SCORE.get(userB) + NEIGHBOR_POINT);
-                }
-            } else {
-                if (!RECOMMEND_SCORE.containsKey(userA)) {
-                    RECOMMEND_SCORE.put(userA,NEIGHBOR_POINT);
-                } else {
-                    RECOMMEND_SCORE.put(userA,RECOMMEND_SCORE.get(userA) + NEIGHBOR_POINT);
-                }
+                addToRecommendScoreMap(userB, NEIGHBOR_POINT);
+            } else if (USER_FRIENDS.contains(userB)) {
+                addToRecommendScoreMap(userA, NEIGHBOR_POINT);
             }
         }
     }
@@ -63,12 +56,13 @@ public class Problem7 {
             if (USER_FRIENDS.contains(visitor)) {
                 continue;
             }
-            if (!RECOMMEND_SCORE.containsKey(visitor)) {
-                RECOMMEND_SCORE.put(visitor, VISITOR_POINT);
-            } else {
-                RECOMMEND_SCORE.put(visitor, RECOMMEND_SCORE.get(visitor) + VISITOR_POINT);
-            }
+            addToRecommendScoreMap(visitor, VISITOR_POINT);
         }
+    }
+
+    private static void addToRecommendScoreMap(String user, int score) {
+        RECOMMEND_SCORE.put(user,
+                RECOMMEND_SCORE.containsKey(user) ? RECOMMEND_SCORE.get(user) + score : score);
     }
 
     private static List<String> getTotalRecommendUsers() {
