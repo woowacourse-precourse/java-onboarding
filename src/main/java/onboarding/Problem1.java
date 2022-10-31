@@ -37,9 +37,26 @@ class Problem1 {
         return maxValue;
     }
 
+    public static int findWinner(int pobiValue, int crongValue) {
+        int answer;
+
+        if (pobiValue == -1 || crongValue == -1) {
+            answer = -1;
+        } else if (pobiValue > crongValue) {
+            answer = 1;
+        } else if (pobiValue < crongValue) {
+            answer = 2;
+        } else {
+            answer = 0;
+        }
+
+        return answer;
+    }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+
+        answer = findWinner(findMax(pobi), findMax(crong));
 
         return answer;
     }
