@@ -9,12 +9,6 @@ public class Calculator {
         int biggest = Collections.max(allPossibleValues);
         return biggest;
     }
-    public static List<Integer> getPossibleValFromPage(Page page) {
-        List<Integer> possibleValues = Arrays.asList(
-                getDigitSum(page.getLeftPage()), getDigitSum(page.getRightPage()),
-                getDigitMult(page.getLeftPage()), getDigitMult(page.getRightPage()));
-        return possibleValues;
-    }
     public static int getDigitSum(int number) {
         int result = 0;
         while (number != 0) {

@@ -1,5 +1,6 @@
 package onboarding.problem1;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Page {
@@ -19,4 +20,10 @@ public class Page {
         return rightPage;
     }
 
+    public static List<Integer> getPossibleValFromPage(Page page) {
+        List<Integer> possibleValues = Arrays.asList(
+                Calculator.getDigitSum(page.getLeftPage()), Calculator.getDigitSum(page.getRightPage()),
+                Calculator.getDigitMult(page.getLeftPage()), Calculator.getDigitMult(page.getRightPage()));
+        return possibleValues;
+    }
 }
