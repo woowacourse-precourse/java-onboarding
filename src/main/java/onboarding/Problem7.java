@@ -9,6 +9,7 @@ public class Problem7 {
         HashMap<String, Set<String>> friendsMap = new HashMap<>();
         HashMap<String, Integer> recommendScore = new HashMap<>();
 
+        // 친구 관계 데이터 저장
         for (int i = 0; i < friends.size(); i++) {
             String a = friends.get(i).get(0);
             String b = friends.get(i).get(1);
@@ -36,7 +37,27 @@ public class Problem7 {
 
         // 방문 횟수 점수
         for (String visitor : visitors) {
-            recommendScore.put(visitor, recommendScore.getOrDefault(visitor, 0) + 1);
+            if (!userFriends.contains(visitor)) {
+                recommendScore.put(visitor, recommendScore.getOrDefault(visitor, 0) + 1);
+            }
+        }
+
+        // 정렬
+        List<List<String>> recommendList = new ArrayList<>();
+
+        for (String key : recommendScore.keySet()) {
+            recommendList.add(Arrays.asList(key, Integer.toString(recommendScore.get(key))));
+        }
+        Collections.sort(recommendList, (o1, o2) -> {
+            if (o1.get(1) == o2.get(1)) {
+                return o2.get(0).compareTo(o1.get(0));
+            } else {
+                return Integer.parseInt(o2.get(1)) - Integer.parseInt(o1.get(1));
+            }
+        });
+
+        for (int i = 0; i < recommendList.size(); i++) {
+            System.out.println(recommendList.get(i).get(0));
         }
 
         return answer;
