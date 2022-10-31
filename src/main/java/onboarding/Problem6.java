@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.TreeSet;
@@ -22,7 +23,11 @@ public class Problem6 {
             addPartialNickname(nickname, counter);
         }
 
-        List<String> answer = List.of("answer");
+        List<String> answer = new ArrayList<>();
+        for (String email: set) {
+            String emailDomain = email + "@email.com";
+            answer.add(emailDomain);
+        }
         return answer;
     }
     private static HashMap<String, Integer> makeCounter(List<List<String>> forms) {
