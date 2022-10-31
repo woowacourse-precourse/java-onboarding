@@ -7,7 +7,7 @@ public class Problem7 {
     public static Set<String> allUserSet;
     public static Map<String, List<String>> friendGraph;
     public static List<String> myFriends;
-
+    public static Map<String, Integer> scoreMap;
     /**
      * @param user     : 주어진 사용자 이름 string
      * @param friends  : friends 관계가 나타내져 있는 String[][]
@@ -91,6 +91,44 @@ public class Problem7 {
             }
         }
         return scoreMap;
+    }
+
+    /**
+     *  각 유저에 대한 점수 정보를 나타내는 ScoreInfo class
+     */
+    public static class ScoreInfo {
+        private String name;
+        private Integer score;
+
+        public ScoreInfo(String name, Integer score) {
+            this.name = name;
+            this.score = score;
+        }
+
+        public Integer getScore() {
+            return score;
+        }
+
+        public String getName() {
+            return name;
+        }
+    }
+
+    /**
+     *
+     * @param user : 유저 String
+     * @return List<ScoreInfo> : 해당 유저를 제외한 모두의 ScoreInfo
+     */
+    public static List<ScoreInfo> getScoreInfos(String user){
+        List<ScoreInfo> scoreInfos = new ArrayList<>();
+        for (String userName : allUserSet) {
+            // 본인은 계산하지 않는다
+            if (userName.equals(user)) {
+                continue;
+            }
+            scoreInfos.add(new ScoreInfo(userName, scoreMap.get(userName)));
+        }
+        return scoreInfos;
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
