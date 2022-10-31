@@ -14,10 +14,10 @@ public class BillCounterTest {
 	void 돈_단위_별_개수_반환() {
 		BillCounter counter = new BillCounter(50_237);
 		assertThat(
-			counter.getBillsOf(BillUnit.FIFTY_THOUSAND_WON)
+			counter.getNumberOfBills(BillUnit.FIFTY_THOUSAND_WON)
 		).isEqualTo(1);
 		assertThat(
-			counter.getBillsOf(BillUnit.TEN_THOUSAND_WON)
+			counter.getNumberOfBills(BillUnit.TEN_THOUSAND_WON)
 		).isEqualTo(5);
 	}
 
@@ -31,5 +31,9 @@ public class BillCounterTest {
 		counter = new BillCounter(15_000);
 		bills = counter.getBills();
 		assertThat(bills).isEqualTo(List.of(0, 1, 1, 0, 0, 0, 0, 0, 0));
+
+		counter = new BillCounter(95_459);
+		bills = counter.getBills();
+		assertThat(bills).isEqualTo(List.of(1, 4, 1, 0, 0, 4, 1, 0, 9));
 	}
 }
