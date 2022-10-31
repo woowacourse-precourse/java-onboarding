@@ -107,8 +107,16 @@ public class Problem6 {
         return valid;
     }
 
+    /**
+     * 이메일이 형식에 부합하는지 확인합니다.
+     *
+     * @param email 신청서의 첫 번째 정보입니다.
+     * @return 해당 정보가 이메일의 형식에 부합하면 참, 아니면 거짓을 반환합니다.
+     */
     private static boolean hasValidEmailForm(String email) {
-        return false;
+        String emailPattern = "^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$";
+        boolean valid = email.matches(emailPattern);
+        return valid;
     }
 
     private static boolean hasValidEmailDomain(String email) {
@@ -135,4 +143,5 @@ public class Problem6 {
         List<String> answer = getDuplicateNicknameUsers(forms);
         return answer;
     }
+
 }
