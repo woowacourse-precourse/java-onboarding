@@ -17,6 +17,7 @@ public class Problem4 {
 
 
         System.out.println((int)word.charAt(0)); //73, 기능1
+        System.out.println((int)word.charAt(0)-65); // n=8, 기능2
 
         return answer;
     }
