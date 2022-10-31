@@ -9,14 +9,17 @@
 package onboarding;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Problem7 {
     static final int VISIT = 1;
     static final int TOGETHER_HAVE_FRIEND = 10;
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        List<String> userFriendList = GetFriendShipFromName(friends, user);
+        Map<String, Integer> friendshipScore = new HashMap<>();
+        friend(friendshipScore, userFriendList, friends);
+        visitCheck(friendshipScore, visitors);
+        alreadyFriendCheck(friendshipScore, userFriendList);
+        return resultSort(friendshipScore);
     }
 
     public static List<String> GetFriendShipFromName(List<List<String>> friendRelations, String user) {
@@ -65,21 +68,19 @@ public class Problem7 {
         friendListCheck(friendshipScore, visitors, VISIT);
     }
 
-    public static void alreadyFriendCheck(Map<String, Integer> friendshipScore, List<String> userfriend) {
-        for (String name : userfriend) {
-            if (friendshipScore.containsKey(name)) {
-                friendshipScore.remove(name);
-            }
+    public static void alreadyFriendCheck(Map<String, Integer> friendshipScore, List<String> userFriend) {
+        for (String name : userFriend) {
+            friendshipScore.remove(name);
         }
     }
 
     public static List<String> resultSort(Map<String, Integer> friendshipScore) {
         List<String> answer = new LinkedList<>();
-        List<Map.Entry<String, Integer>> entries = friendshipScore.entrySet().stream().collect(Collectors.toList());
-        Collections.sort(entries, new Comparator<Map.Entry<String, Integer>>(){
+        List<Map.Entry<String, Integer>> entries = new ArrayList<>(friendshipScore.entrySet());
+        entries.sort(new Comparator<Map.Entry<String, Integer>>() {
             @Override
             public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
-                if (o2.getValue() == o1.getValue()) {
+                if (o2.getValue().equals(o1.getValue())) {
                     return o1.getKey().compareTo(o2.getKey());
                 }
                 return o2.getValue().compareTo(o1.getValue());
