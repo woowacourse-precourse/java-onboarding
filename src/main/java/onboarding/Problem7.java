@@ -15,4 +15,20 @@ public class Problem7 {
         return list.stream().distinct().collect(Collectors.toList());
     }
 
+    //친구 관계 추천 찾기
+    private static List<Person> findRecommendationFromFriends(String user, List<List<String>> friends, List<String> userFriends) {
+        List<String> list = new ArrayList<>();
+        for(List<String> item : friends) {
+            if(userFriends.contains(item.get(0)) && !item.get(1).equals(user))
+                list.add(item.get(1));
+            else if(userFriends.contains(item.get(1)) && !item.get(0).equals(user))
+                list.add(item.get(0));
+        }
+        return calculateScore(list, 10);
+    }
+
+    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        List<String> answer = Collections.emptyList();
+        return answer;
+    }
 }
