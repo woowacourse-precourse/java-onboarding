@@ -75,7 +75,7 @@
   - [x] friendRelation이 null인 경우
   - [x] friendRelation의 크기가 2가 아닌 경우
   - [x] 아이디가 null인 경우
-  - [ ] 아이디의 길이가 0이거나, 30초과인 경우
+  - [x] 아이디의 길이가 0이거나, 30초과인 경우
   - [x] visitor가 null인 경우
   - [ ] visitor의 크기가 10,000초과 인 경우
   - [ ] 아이디에 소문자 외의 문자가 포함 된 경우

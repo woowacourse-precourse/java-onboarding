@@ -13,6 +13,14 @@ public class Problem7ValidateChecker {
 		isUserInRange(user);
 		isFriendsInRange(friends);
 		isFriendRelationInRange(friends);
+		isIdInRange(friends);
+	}
+
+	private static void isIdInRange(List<List<String>> friends) {
+		for (List<String> friendRelation : friends)
+			if(friendRelation.get(0).length() == 0 || friendRelation.get(0).length() > 30
+			|| friendRelation.get(1).length() == 0 || friendRelation.get(1).length() > 30)
+				throw new IllegalArgumentException("아이디의 길이가 0이거나, 30초과입니다.");
 	}
 
 	private static void isFriendRelationInRange(List<List<String>> friends) {
