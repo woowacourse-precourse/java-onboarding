@@ -7,6 +7,9 @@ import java.util.stream.Stream;
 public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
+        for (int num = 1 ; num <= number; num++){
+            answer += count(getDigitList(num));
+        }
         return answer;
     }
 
@@ -17,15 +20,18 @@ public class Problem3 {
                 .collect(Collectors.toList());
     }
 
-    public static void count(int count,List<Integer> digitList){
+    public static int count(List<Integer> digitList){
+        int count = 0;
         for (Integer digit : digitList) {
-            checkCondition(count,digit);
+            count += checkCondition(digit);
         }
+        return count;
     }
 
-    public static void checkCondition(int count,int digit){
-        if (digit % 3 ==0){
-            count++;
+    public static int checkCondition(int digit){
+        if (digit != 0 && digit % 3 ==0){
+            return 1;
         }
+        return 0;
     }
 }
