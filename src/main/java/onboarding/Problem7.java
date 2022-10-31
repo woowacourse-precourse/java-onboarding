@@ -22,7 +22,17 @@ public class Problem7 {
                 scoreMap.put(userName, countWithFriend * 10);
             }
         }
-
+        // 4. 방문자 점수 계산
+        for (String visitor : visitors) {
+            if (user.equals(visitor)) {
+                continue;
+            }
+            // 점수가 없었던 사람이라면
+            if (!scoreMap.containsKey(visitor)) {
+                scoreMap.put(visitor, 1);
+            }
+            scoreMap.put(visitor, scoreMap.get(visitor) + 1);
+        }
 
 
         List<String> answer = Collections.emptyList();
