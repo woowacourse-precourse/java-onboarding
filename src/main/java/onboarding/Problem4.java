@@ -4,6 +4,8 @@ public class Problem4 {
     static final int standard = 26;
     public static String solution(String word) {
         String answer = "";
+
+
         return answer;
     }
 
@@ -36,5 +38,19 @@ public class Problem4 {
             ascii = (standard - (alphabet - 'a' + 1)) + 'a';
         }
         return ascii;
+    }
+
+    public static String getAnswer(String word){
+        String answer = "";
+        for(int i = 0; i < word.length(); i++){
+            char alphabet = word.charAt(i);
+            if(isUpper(alphabet) || isLower(alphabet)){
+                String changed = change(alphabet);
+                answer += changed;
+            }else{
+                answer += alphabet;
+            }
+        }
+        return answer;
     }
 }
