@@ -14,12 +14,16 @@ public class Problem3 {
     private static int count369(String numStr) {
         int cnt = 0;
         for (int i = 0; i < numStr.length(); i++) {
-            if (numStr.charAt(i) == '3' ||
-                    numStr.charAt(i) == '6' ||
-                    numStr.charAt(i) == '9') {
+            if (is369(numStr, i)) {
                 cnt++;
             }
         }
         return cnt;
+    }
+
+    private static boolean is369(String numStr, int i) {
+        return numStr.charAt(i) == '3' ||
+                numStr.charAt(i) == '6' ||
+                numStr.charAt(i) == '9';
     }
 }
