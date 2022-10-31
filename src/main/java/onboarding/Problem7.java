@@ -87,6 +87,17 @@ public class Problem7 {
         return result;
     }
 
+    public List<String> removeSelfAndFriend(List<String> sortedScore, String user, List<List<String>> friends) {
+        sortedScore.remove(user);
+        List<String> userFriend = getUserFriend(user, friends);
+        for (String crew : userFriend) {
+            if (sortedScore.contains(crew)) {
+                sortedScore.remove(crew);
+            }
+        }
+        return sortedScore;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
