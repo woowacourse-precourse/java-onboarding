@@ -90,12 +90,13 @@ public class Problem7 {
             List<Map.Entry<String, Integer>> userAndRecommendScoreList = new ArrayList<>(userAndRecommendScore.entrySet());
 
             userAndRecommendScoreList.sort((entry1, entry2) -> {
-                if (entry1.getValue() != entry2.getValue()) {
-                    return entry2.getValue()
-                        .compareTo(entry1.getValue());
+                if (entry1.getValue()
+                    .equals(entry2.getValue())) {
+                    return entry1.getKey()
+                        .compareTo(entry2.getKey());
                 }
-                return entry1.getKey()
-                    .compareTo(entry2.getKey());
+                return entry2.getValue()
+                    .compareTo(entry1.getValue());
             });
 
             answer = userAndRecommendScoreList.stream()
