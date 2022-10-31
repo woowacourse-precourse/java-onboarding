@@ -4,9 +4,8 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> userAndFriendList = getFriendList(friends, user);
-
-        HashMap<String, Integer> strangerScoreMap = getStrangerScoreMap(userAndFriendList, friends);
+        List<String> userAndFriendList = makeUserAndFriendList(friends, user);
+        HashMap<String, Integer> strangerScoreMap = makeStrangerScoreMap(userAndFriendList, friends);
         calculateVisitorScore(visitors, userAndFriendList, strangerScoreMap);
 
         List<String> answer = makeAnswerList(strangerScoreMap);
@@ -29,6 +28,7 @@ public class Problem7 {
                 }
             }
         });
+
         removeZeroInList(answerList, strangerScoreMap);
         if (answerList.size() > 5) {
             pickTopFiveScoreMember(answerList);
@@ -63,15 +63,15 @@ public class Problem7 {
         }
     }
 
-    private static HashMap<String, Integer> getStrangerScoreMap(List<String> userAndFriendList, List<List<String>> friends) {
+    private static HashMap<String, Integer> makeStrangerScoreMap(List<String> userAndFriendList, List<List<String>> friends) {
         HashMap<String, Integer> strangerScoreMap = new HashMap<>();
         for (List<String> friendRelation : friends) {
-            makeMapAndCalScore(friendRelation, userAndFriendList, strangerScoreMap);
+            calculateScore(friendRelation, userAndFriendList, strangerScoreMap);
         }
         return strangerScoreMap;
     }
 
-    private static void makeMapAndCalScore(List<String> friendRelation, List<String> userAndFriendList, HashMap<String, Integer> strangerScoreMap) {
+    private static void calculateScore(List<String> friendRelation, List<String> userAndFriendList, HashMap<String, Integer> strangerScoreMap) {
         String firstFriend = friendRelation.get(0);
         String secondFriend = friendRelation.get(1);
 
@@ -90,16 +90,16 @@ public class Problem7 {
         strangerScoreMap.put(secondFriend, strangerScoreMap.getOrDefault(secondFriend, 0));
     }
 
-    private static List <String> getFriendList(List<List<String>> friends, String user) {
-        List<String> friendList = new ArrayList<>();
+    private static List <String> makeUserAndFriendList(List<List<String>> friends, String user) {
+        List<String> userAndFriendList = new ArrayList<>();
         for (List<String> friendRelation : friends) {
             if (isFriendWithUser(friendRelation, user)) {
                 String friend = getFriend(friendRelation, user);
-                friendList.add(friend);
+                userAndFriendList.add(friend);
             }
         }
-        friendList.add(user);
-        return friendList;
+        userAndFriendList.add(user);
+        return userAndFriendList;
     }
 
     private static String getFriend(List<String> friendRelation, String user) {
