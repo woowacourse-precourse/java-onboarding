@@ -13,8 +13,8 @@ class Problem1 {
 
             int mul = 1, sum = 0;
             for (int j = 0; j < digits.length; j++) {
-                sum += Integer.valueOf(digits[i]);
-                mul *= Integer.valueOf(digits[i]);
+                sum += Integer.valueOf(digits[j]);
+                mul *= Integer.valueOf(digits[j]);
             }
 
             score = max(score, sum);
@@ -25,7 +25,7 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
-    
+
         return answer;
     }
 }
