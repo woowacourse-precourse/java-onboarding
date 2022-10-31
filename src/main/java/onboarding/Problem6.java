@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Collections;
 
 public class Problem6 {
 
@@ -37,6 +38,24 @@ public class Problem6 {
                 }
             }
         }
+    }
+
+    public static List<String> duplication(List<String> arr) {
+        List<String> afterDuplication = new ArrayList<String>();
+        for (int i=0; i<arr.size(); i++) {
+            if (!afterDuplication.contains(arr.get(i))) {
+                afterDuplication.add(arr.get(i));
+            }
+        }
+        return afterDuplication;
+    }
+
+    public static List<String> solution(List<List<String>> forms) {
+        List<String> duplicateEmail = new ArrayList<String>();
+        nicknameSearch(0,0,forms.size(),forms,duplicateEmail);
+        List<String> answer = duplication(duplicateEmail);
+        Collections.sort(answer);
+        return answer;
     }
 
 
