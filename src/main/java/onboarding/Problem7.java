@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 /*
 
 [기능 목록]
@@ -35,6 +32,23 @@ public class Problem7 {
         }
 
         return recommendScore;
+    }
+
+    // 현재 유저의 친구인 사람 리스트로 반환하기
+    public static List<String> extractWhoIsMyFriends(String user, List<List<String>> friends) {
+
+        List<String> userFriends = new ArrayList<>();
+
+        for (List<String> friend : friends) {
+            if (friend.contains(user)) {
+                if (friend.get(0).equals(user)) {
+                    userFriends.add(friend.get(1));
+                } else if (friend.get(1).equals(user)) {
+                    userFriends.add(friend.get(0));
+                }
+            }
+        }
+        return userFriends;
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
