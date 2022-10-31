@@ -3,117 +3,98 @@ package onboarding;
 import java.util.*;
 
 /**
- * 기능 사항
- * a. 추천할 친구 class 인 RecFriend 구현
- * b. 친구 관계를 만드는 함수
- * c. 친구 관계일 경우 10점을 추가하는 함수
- * d. 방문자일 경우 1점을 추가하는 함수
+ * 기능 구현 목록
+ * a. user의 친구 목록 뽑기
+ * b. user 친구의 친구들을 뽑기. -> 키-값의 형태로 저장하기 위해 해시맵에 저장.
+ * c. 친구의 친구 순회 하면서 score 합산
+ * d. visitors 중 친구가 아닌 사람들만 스코어에 넣기
+ * e. score 순서대로 정렬. 점수가 같다면 이름순으로 정렬
  */
 public class Problem7 {
+    static List<String> userFriends;
+    static HashMap<String, Integer> nonFriends;
 
-    static HashMap<String, Set<String>> friends = new HashMap<>();
-    static HashMap<String, Integer> points = new HashMap<>();
-
-    /**
-     * a. 추천할 친구 RecFriend class
-     */
-    static class RecFriend {
-        private String name;
-        private Integer score;
-
-        RecFriend(String name, Integer score) {
-            this.name = name;
-            this.score = score;
+    private static void isNewFriend(List<String> friends, String userFriend){
+        if (friends.get(0).equals(userFriend)){
+            if (nonFriends.containsKey(friends.get(1))){
+                nonFriends.put(
+                        friends.get(1),
+                        nonFriends.get(friends.get(1)) + 10
+                );
+            } else {
+                nonFriends.put(friends.get(1), 10);
+            }
+        } else if (friends.get(1).equals(userFriend)){
+            if (nonFriends.containsKey(friends.get(0))){
+                nonFriends.put(
+                        friends.get(0),
+                        nonFriends.get(friends.get(0)) + 10
+                );
+            } else {
+                nonFriends.put(friends.get(0), 10);
+            }
         }
-
-        public String getName() {
-            return name;
-        }
-
-        public Integer getScore() {
-            return score;
-        }
-
     }
+    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        List<String> answer = new ArrayList<>();
+        userFriends = new ArrayList<>();
+        nonFriends = new HashMap<>();
+        // user의 친구 목록 추가
+        for (List<String> friend : friends){
+            if (friend.get(0).equals(user)){
+                userFriends.add(friend.get(1));
+            } else if (friend.get(1).equals(user)){
+                userFriends.add(friend.get(0));
+            }
+        }
 
-    /**
-     * c. 친구 관계일 경우 10점을 추가하는 함수
-     * @param user
-     */
+        // 친구의 친구 목록 추가, score 합산
+        for (List<String> friend : friends){
+            for (int j = 0; j < userFriends.size(); j++) {
+                if (friend.contains(user)) {
+                    continue;
+                }
+                if (userFriends.contains(friend.get(0)) && userFriends.contains(friend.get(1))){
+                    continue;
+                }
 
-    static void calcFriends(String user) {
-        Set<String> userFriendSet = friends.get(user);
-        for (Map.Entry<String, Integer> key : points.entrySet()) {
+                isNewFriend(friend, userFriends.get(j));
+            }
+        }
 
-            int currentScore = 0;
-            Set<String> currentFriendSet = friends.get(key.getKey());
+        for (String visitor : visitors){
+            if (userFriends.contains(visitor)){
+                continue;
+            }
+            if (nonFriends.containsKey(visitor)){
+                nonFriends.put(
+                        visitor,
+                        nonFriends.get(visitor) + 1
+                );
+            } else {
+                nonFriends.put(visitor, 1);
+            }
+        }
 
-            for (String userFriendName : userFriendSet) {
-                if (currentFriendSet.contains(userFriendName)) {
-                    currentScore += 10;
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(nonFriends.entrySet());
+        entryList.sort(new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                if(!Objects.equals(o1.getValue(), o2.getValue())){
+                    return o2.getValue() - o1.getValue();
+                }else{
+                    return o1.getKey().compareTo(o2.getKey());
                 }
             }
-            key.setValue(currentScore);
-        }
-    }
-
-    /**
-     * d. 방문자일 경우 1점을 추가하는 함수
-     * @param visitors
-     */
-
-    static void calVisitors(List<String> visitors) {
-        visitors.forEach(s -> {
-            if (points.containsKey(s)) {
-                points.put(s, points.get(s) + 1);
-            } else {
-                points.put(s, 1);
-            }
-        });
-    }
-
-
-    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        Problem7.friends.clear();
-        points.clear();
-        /**
-         * b. 친구 관계를 만드는 익명함수
-         */
-        friends.forEach(f -> {
-            if (!f.get(0).equals(user)) points.put(f.get(0), 0);
-            if (!f.get(1).equals(user)) points.put(f.get(1), 0);
-            if (!Problem7.friends.containsKey(f.get(0))) {
-                Problem7.friends.put(f.get(0), new HashSet<>());
-            }
-            if (!Problem7.friends.containsKey(f.get(1))) {
-                Problem7.friends.put(f.get(1), new HashSet<>());
-            }
-            Problem7.friends.get(f.get(0)).add(f.get(1));
-            Problem7.friends.get(f.get(1)).add(f.get(0));
-        });
-        calcFriends(user);
-        calVisitors(visitors);
-
-        List<RecFriend> recFriendList = new ArrayList<>();
-        for (String name : points.keySet()) {
-            if (points.get(name) == 0) continue;
-            if (Problem7.friends.get(user).contains(name)) continue;
-            recFriendList.add(new RecFriend(name, points.get(name)));
-        }
-
-
-        Collections.sort(recFriendList, (a, b) -> {
-
-            if (!a.getScore().equals(b.getScore())) {
-                return -Integer.compare(a.getScore(), b.getScore());
-            }
-            return String.CASE_INSENSITIVE_ORDER.compare(a.getName(), b.getName());
         });
 
-        List<String> answer = new ArrayList<>();
-        for (int i = 0; i < Integer.min(recFriendList.size(), 5); i++) {
-            answer.add(recFriendList.get(i).name);
+        int count = 0;
+        for (Map.Entry<String, Integer> ans : entryList){
+            if (count == 5) break;
+            answer.add(ans.getKey());
+            count++;
         }
+
         return answer;
     }
 }
