@@ -6,7 +6,10 @@ import java.util.List;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<List<String>> nickname_slice = part_of_nickname(forms);
+        boolean[] slice_check = duplication_check(nickname_slice);
+        List<String> answer = process(forms,slice_check);
+
         return answer;
     }
 
