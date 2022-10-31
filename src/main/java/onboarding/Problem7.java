@@ -16,7 +16,16 @@ public class Problem7 {
 	}
 
 	public static void findUserFriend(List<List<String>> friends, List<String> userFriends, String user) {
-
+		for (List<String> friend : friends) {
+			String A = friend.get(0);
+			String B = friend.get(1);
+			if (A.equals(user)) {
+				userFriends.add(B);
+			}
+			if (B.equals(user)) {
+				userFriends.add(A);
+			}
+		}
 	}
 
 	public static void calcFriendsScore(Map<String, Integer> friendScore, List<List<String>> friends,
@@ -29,6 +38,6 @@ public class Problem7 {
 	}
 
 	public static void recommendFriend() {
-		
+
 	}
 }
