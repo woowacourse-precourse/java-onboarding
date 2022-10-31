@@ -4,25 +4,34 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+        int answer = Integer.MAX_VALUE;
         if (isPageOutOfRange(pobi) || isPageOutOfRange((crong)) || isPageSubDiff((pobi)) || isPageSubDiff((crong))) {
             return -1;
         }
-
-        int answer = Integer.MAX_VALUE;
-        return 0;
+        return answer;
     }
-    private static int sum(List<Integer> l){
-        int val1 = 0;
-        int val2 = 0;
+    private static int calPageMaxSumMul(List<Integer> l){
+        int sumTemp1 = 0;
+        int sumTemp2 = 0;
         String[] arr1 = String.valueOf(l.get(0)).split("");
         String[] arr2 = String.valueOf(l.get(1)).split("");
         for(String val : arr1){
-            val1 = val1 + Integer.valueOf(val);
+            sumTemp1 = sumTemp1 + Integer.valueOf(val);
         }
         for(String val : arr2){
-            val2 = val2 + Integer.valueOf(val);
+            sumTemp2 = sumTemp2 + Integer.valueOf(val);
         }
-        return max(val1,val2);
+        int maxSum =  max(sumTemp1,sumTemp2);
+        int mulTemp1 = 0;
+        int mulTemp2 = 0;
+        for(String val : arr1){
+            mulTemp1 = mulTemp1 * Integer.valueOf(val);
+        }
+        for(String val : arr2){
+            mulTemp2 = mulTemp2 * Integer.valueOf(val);
+        }
+        int maxMul =  max(mulTemp1,mulTemp2);
+        return max(maxSum, maxMul);
     }
 
     private static int max(int a, int b){
