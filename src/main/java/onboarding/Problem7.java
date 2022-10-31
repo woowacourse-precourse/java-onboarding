@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -34,9 +35,55 @@ public class Problem7 {
         return userFriends;
     }
 
+    private static HashMap<String, List<String>> getFriendsOfFriends(String user, List<List<String>> friends, List<String> userFriends){
+
+        HashMap<String, List<String>> userFriendsOfFriends = new HashMap<>();
+
+        for (int i=0; i< friends.size(); i++){
+            List<String> friend = friends.get(i);
+            for (String userFriend : userFriends){
+                if (friend.get(0) == userFriend && friend.get(1) != user){
+
+                    if (userFriendsOfFriends.containsKey(userFriend)){
+                        List<String> friendsOfFriends = userFriendsOfFriends.get(userFriend);
+                        friendsOfFriends.add(friend.get(1));
+
+                        userFriendsOfFriends.put(userFriend, friendsOfFriends);
+
+                    }else{
+
+                        List<String> friendsOfFriends = new ArrayList<>();
+                        friendsOfFriends.add(friend.get(1));
+
+                        userFriendsOfFriends.put(userFriend, friendsOfFriends);
+                    }
+                } else if (friend.get(1) == userFriend && friend.get(0) != user) {
+
+                    if (userFriendsOfFriends.containsKey(userFriend)){
+
+                        List<String> friendsOfFriends = userFriendsOfFriends.get(userFriend);
+                        friendsOfFriends.add(friend.get(0));
+
+                        userFriendsOfFriends.put(userFriend, friendsOfFriends);
+
+                    }else{
+
+                        List<String> friendsOfFriends = new ArrayList<>();
+                        friendsOfFriends.add(friend.get(0));
+
+                        userFriendsOfFriends.put(userFriend, friendsOfFriends);
+                    }
+                }
+            }
+        }
+
+        return userFriendsOfFriends;
+    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
         List<String> userFriends = getFriends(user, friends);
+        HashMap<String, List<String>> userFriendsOfFriends = getFriendsOfFriends(user, friends, userFriends);
+
         List<String> answer = Collections.emptyList();
         return answer;
     }
