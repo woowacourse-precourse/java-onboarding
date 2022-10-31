@@ -8,6 +8,25 @@ public class Problem7 {
         return answer;
     }
 
+    private static Map<String, Integer> sortHashMap(Map<String, Integer> unsortedMap) {
+        SortedSet<Map.Entry<String, Integer>> sortedSet = new TreeSet<>((e1, e2) -> {
+            int res = e1.getValue().compareTo(e2.getValue());
+            if (res == 0) {
+                return e1.getKey().compareTo(e2.getKey());
+            }
+            return res * -1;
+        });
+        sortedSet.addAll(unsortedMap.entrySet());
+
+        Map<String, Integer> sortedLinkedHashMap = new LinkedHashMap<>();
+        for (var entry :
+                sortedSet) {
+            sortedLinkedHashMap.put(entry.getKey(), entry.getValue());
+        }
+
+        return sortedLinkedHashMap;
+    }
+
     private static void scoreVisitor(List<String> visitors, HashMap<String, Integer> scoreRecordMap, String user, HashMap<String, ArrayList<String>> relationshipMap) {
         ArrayList<String> friendListOfUser = relationshipMap.get(user);
 
