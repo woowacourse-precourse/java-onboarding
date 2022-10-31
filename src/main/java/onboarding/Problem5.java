@@ -15,7 +15,7 @@ public class Problem5 {
         return answer;
     }
 
-    static List<Integer> getCount(int money, List<Integer> currencies) {
+    private static List<Integer> getCount(int money, List<Integer> currencies) {
         List<Integer> countCurrencyList = new ArrayList<>();
 
         for (int currency : currencies) {
