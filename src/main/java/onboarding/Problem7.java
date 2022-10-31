@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.Map.Entry;
 import java.util.stream.Collectors;
 
 public class Problem7 {
@@ -60,6 +61,17 @@ public class Problem7 {
 
     public static void plusVisitorScore(List<String> visitors){
         visitors.stream().forEach(visitor -> putScoreMap(visitor, 1));
+    }
+
+    public static List<Entry<String, Integer>> getSortScoreMapEntry(){
+        List<Entry<String, Integer>> entryList = new ArrayList<Entry<String, Integer>>(scoreMap.entrySet());
+        Collections.sort(entryList, new Comparator<Entry<String, Integer>>() {
+            @Override
+            public int compare(Entry<String, Integer> o1, Entry<String, Integer> o2) {
+                return o2.getValue() - o1.getValue();
+            }
+        });
+        return entryList;
     }
 
 }
