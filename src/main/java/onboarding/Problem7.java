@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -20,7 +21,23 @@ public class Problem7 {
     }
 
     //사용자와 함께 아는 친구의 목록 생성 함수
+    static List<String> user_friends(String user, List<List<String>> friends){
+        List<String> friend = new ArrayList<>();
 
+        for (int i=0;i<friends.size();i++){
+            String x = friends.get(i).get(0);
+            String y = friends.get(i).get(1);
+
+            if(x.equals(user)){
+                friend.add(y);
+            }
+            if(y.equals(user)){
+                friend.add(x);
+            }
+        }
+
+        return friend;
+    }
     //hash를 사용하여 중복없이 모든 친구의 목록을 저장하는 함수
 
     //hash를 사용하여 저장한 중복없는 친구목록을 List로 변환해 줄 함수
