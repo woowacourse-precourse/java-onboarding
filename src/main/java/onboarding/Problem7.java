@@ -6,11 +6,14 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
         Map<String, Integer> name = new HashMap<>();
-        int[] score_num = new int[10001];
 
-        int cnt=0; // 총 사람 수
+        //////////
+
+        int[] score_num = new int[10001];
+        int cnt=0; // 사람 수
         for(int i=0; i<friends.size(); i++){
             String f1 = friends.get(i).get(0); String f2 = friends.get(i).get(1);
+            // 쭉 돌면서 없으면 map에 정보추가 있으면 넘어가기
             if(name.get(f1)==null){
                 name.put(f1, cnt);
                 cnt++;
@@ -51,18 +54,18 @@ public class Problem7 {
             adjlist[fnum2].add(fnum1);
         }
 
-        // 기준
+        // 주인공
         int person = name.get(user);
 
         for(int i=0; i<adjlist[person].size(); i++){
+            // 
             int fri = adjlist[person].get(i);
             score_num[fri]=-9999; // 이미 친구인 경우
             for(int j=0; j<adjlist[fri].size(); j++){
                 int frifri = adjlist[fri].get(j);
-                // 자기자신일 경우 continue
                 if(frifri==person){
                     continue;
-                }
+                } // 자기자신을 경우 continue
 
                 if(score_num[frifri]>0) continue;
                 else if(score_num[frifri]==0){
@@ -71,14 +74,16 @@ public class Problem7 {
             }
         }
 
-        // visitors check
+        // visitors
+
         for(int i=0; i<visitors.size(); i++){
             int f_idx = name.get(visitors.get(i));
             score_num[f_idx]++;
         }
 
-        // ArrayList<Pair> arr = new ArrayList<>();
+
         for(int i=0; i<cnt; i++){
+            // System.out.println(score_num[i]);
             String nick ="";
             if(score_num[i]>0){
                 for(String key : name.keySet()){
@@ -87,11 +92,11 @@ public class Problem7 {
                         break;
                     }
                 }
+                // String who = nick;
                 answer.add(nick);
 
             }
         }
-
         return answer;
     }
 }
