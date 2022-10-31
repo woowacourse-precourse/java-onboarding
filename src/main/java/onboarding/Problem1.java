@@ -16,7 +16,7 @@ class Game {
             this.result = players.getResult();
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
-            this.result = -1;
+            this.result = ResultCode.EXCEPTION.getCode();
         }
     }
 
@@ -46,7 +46,7 @@ class Players {
         Set<Integer> scoreSet = playerList.stream().map(Player::getScore).collect(Collectors.toSet());
 
         if (scoreSet.size() == 1) {
-            return 0;
+            return ResultCode.DRAW.getCode();
         }
 
         return playerList.get(0).getNumber();
@@ -101,6 +101,20 @@ class Player implements Comparable<Player> {
         return score;
     }
 
+}
+
+enum ResultCode {
+    DRAW(0), EXCEPTION(-1);
+
+    private final int code;
+
+    ResultCode(int code) {
+        this.code = code;
+    }
+
+    public int getCode() {
+        return code;
+    }
 }
 
 class Problem1 {
