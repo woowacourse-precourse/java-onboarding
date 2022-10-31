@@ -4,24 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Problem5 {
-    static final int[] monetaryUnits = new int[] {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
-
-    private static void bankWithdrawal(List<Integer> answer, int money) {
-
-        for (int monetaryUnit : monetaryUnits) {
-            money = getLeftMoney(answer, money, monetaryUnit);
-        }
-    }
-
-    private static int getLeftMoney(List<Integer> answer, int money, int monetaryUnit) {
-        int bill = money / monetaryUnit;
-        AppendBills(answer, bill);
-        return money % monetaryUnit;
-    }
-
-    private static void AppendBills(List<Integer> answer, int bill) {
-        answer.add(bill);
-    }
 
     /**
      * 돈의 액수 money가 매개변수로 주어질 때
@@ -32,8 +14,42 @@ public class Problem5 {
      * @return
      */
     public static List<Integer> solution(int money) {
+        Bank bank = new Bank();
+        return bank.withdrawal(money);
+    }
+}
+
+class Bank {
+    int[] monetaryUnits = new int[] {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
+
+    public Bank() {
+    }
+
+    public Bank(int[] monetaryUnits) {
+        setMonetaryUnits(monetaryUnits);
+    }
+
+    public void setMonetaryUnits(int[] monetaryUnits) {
+        this.monetaryUnits = monetaryUnits;
+    }
+
+    public List<Integer> withdrawal(int money) {
         List<Integer> answer = new ArrayList<>();
-        bankWithdrawal(answer, money);
+
+        for (int monetaryUnit : monetaryUnits) {
+            money = getLeftMoney(answer, money, monetaryUnit);
+        }
+
         return answer;
+    }
+
+    private int getLeftMoney(List<Integer> answer, int money, int monetaryUnit) {
+        int bill = money / monetaryUnit;
+        AppendBills(answer, bill);
+        return money % monetaryUnit;
+    }
+
+    private void AppendBills(List<Integer> answer, int bill) {
+        answer.add(bill);
     }
 }
