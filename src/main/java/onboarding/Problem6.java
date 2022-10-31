@@ -55,12 +55,14 @@ public class Problem6 {
 
     public static List<String> getDuplicateEmailList(Map<String, List<String>> mapForms, List<String> duplicateNicknameList) {
         List<String> duplicateEmailList = new ArrayList<>();
-        for (Map.Entry<String, List<String>> stringListEntry : mapForms.entrySet()) {
-            if (stringListEntry.getValue().containsAll(duplicateNicknameList)) {
-                duplicateEmailList.add(stringListEntry.getKey());
+        for (int i = 0; i < duplicateNicknameList.size(); i++) {
+            for (Map.Entry<String, List<String>> stringListEntry : mapForms.entrySet()) {
+                if (stringListEntry.getValue().containsAll(duplicateNicknameList.subList(i, i + 1))) {
+                    duplicateEmailList.add(stringListEntry.getKey());
+                }
             }
         }
         Collections.sort(duplicateEmailList);
-        return duplicateEmailList;
+        return duplicateEmailList.stream().distinct().collect(Collectors.toList());
     }
 }
