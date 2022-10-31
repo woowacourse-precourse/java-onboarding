@@ -4,7 +4,6 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
         int answerOfPoi, answerOfCrong;
 
         // 예외 사항 처리
@@ -13,8 +12,9 @@ class Problem1 {
 
         answerOfPoi = getBiggestNumber(pobi);
         answerOfCrong = getBiggestNumber(crong);
-
-        return answer;
+        if (answerOfPoi == answerOfCrong)
+            return 0;
+        return answerOfPoi > answerOfCrong ? 1 : 2;
     }
     static boolean isValidBookPage(List<Integer> person) {
         boolean isLeftOddNumber = (person.get(0) % 2) == 1;
