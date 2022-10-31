@@ -31,6 +31,15 @@ public class Problem7 {
             }
         }
 
+        // 2. 타임 라인 방문 기록에서 이미 친구인 경우 제거하기
+        for(String v : visitors) {
+            for(String uf : userFriends) {
+                if(v.equals(uf)) { // 방문자와 사용자의 친구일 경우
+                    visitors.remove(v); // 타임라인에 방문한 횟수를 고려할 필요가 없으므로 삭제
+                }
+            }
+        }
+
         return answer;
     }
 }
