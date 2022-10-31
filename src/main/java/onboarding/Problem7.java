@@ -115,6 +115,19 @@ public class Problem7 {
     }
 
     /**
+     *  ScoreInfo를 점수내림차순 -> 이름오름차순으로 정렬하기 위한 Comparator
+     */
+    public static Comparator<ScoreInfo> comparator = new Comparator<ScoreInfo>() {
+        @Override
+        public int compare(ScoreInfo o1, ScoreInfo o2) {
+            if (o1.getScore() == o2.getScore()) {
+                return o1.getName().compareTo(o2.getName());
+            }
+            return o2.getScore() - o1.getScore();
+        }
+    };
+
+    /**
      *
      * @param user : 유저 String
      * @return List<ScoreInfo> : 해당 유저를 제외한 모두의 ScoreInfo

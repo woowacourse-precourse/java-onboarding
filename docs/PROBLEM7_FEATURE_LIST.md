@@ -36,5 +36,5 @@ problem7(string user, list<list<string>> friends, list<string> visitors){
 ## TODO
 
 - ~~score, name을 갖고 있는 내부 클래스 ScoreInfo 개발~~
-- ScoreInfo 사용자 정의 정렬 구현
+- ~~ScoreInfo 사용자 정의 정렬 구현~~
 - 로직 완성 & 테스트
