@@ -20,7 +20,7 @@ public class Page {
      3. 왼쪽 페이지 홀수, 오른쪽 페이지 짝수 체크
      4. 페이지 연속성 체크
      */
-    public boolean isInvalidPages(List<Integer> pages) {
+    public boolean isInvalidPages() {
         Integer leftPage = pages.get(LEFT_PAGE_INDEX);
         Integer rightPage = pages.get(RIGHT_PAGE_INDEX);
         if (leftPage == null || rightPage == null) {
@@ -39,10 +39,20 @@ public class Page {
     }
 
     // 페이지의 각 자릿수를 더한 결과를 리턴한다.
-    private static int calcAddPageNumber(int pageNumber) {
+    private int calcAddPageNumber(int pageNumber) {
         int result = 0;
         while (pageNumber > 0) {
             result += pageNumber % 10;
+            pageNumber /= 10;
+        }
+        return result;
+    }
+
+    // 페이지의 각 자릿수를 곱한 결과를 리턴한다.
+    private int calcMulPageNumber(int pageNumber) {
+        int result = 1;
+        while (pageNumber > 0) {
+            result *= pageNumber % 10;
             pageNumber /= 10;
         }
         return result;
