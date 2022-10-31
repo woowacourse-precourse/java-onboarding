@@ -4,8 +4,19 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        Map<String, Integer> scores = new HashMap<>(); // 추천 점수 목록
+
+        List<String> closeFriends = findCloseFriends(user, friends);
+        List<String> distantFriends = findDistantFriends(user, closeFriends, friends);
+
+        addDistantFriendScore(scores, distantFriends);
+        addVisitorScore(scores, visitors);
+
+        excludeCloseFriends(scores, closeFriends);
+
+        Map<String, Integer> sortedScore = sortScore(scores);
+
+        return getRecommendedFriends(sortedScore);
     }
 
     /**
