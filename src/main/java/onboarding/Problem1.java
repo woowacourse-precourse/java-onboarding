@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.List;
+import java.util.stream.Stream;
 
 /**
  * 기능 1: 올바른 페이지 수가 입력되었는가 확인
@@ -38,6 +39,17 @@ class Problem1 {
             return false;
         }
         return true;
+    }
+
+    public static int findMaxScore(int[] numArr) {
+        int addSum = 0, multiSum = 1;
+
+        for (int num : numArr) {
+            addSum += num;
+            multiSum *= num;
+        }
+
+        return Math.max(addSum, multiSum);
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
