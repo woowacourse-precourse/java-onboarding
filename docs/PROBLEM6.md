@@ -42,7 +42,7 @@
 
 
 
-- [ ] 각 닉네임 String을 2개씩 끊어 HashMap(Key:String, Value:Set<>)에 저장
+- [x] 각 닉네임 String을 2개씩 끊어 HashMap(Key:String, Value:Set<>)에 저장
 - [ ] 같은 글자를 연속 포함한 크루를 판단
   - HashMap을 보며 Value의 Set이 2개 이상일 때
 - [ ] 이메일 기준으로 정렬 후 반환
