@@ -23,7 +23,7 @@ class Problem1 {
             multi *= page % 10;
             page /= 10;
         }
-        return page;
+        return multi;
     }
 
     public static int getMaxScoreOfMultiAndSum(int page){
