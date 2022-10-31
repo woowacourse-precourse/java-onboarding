@@ -37,5 +37,20 @@ public class Problem2 {
         }
         return "";
     }
+    /*
+    중복되는 문자의 길이
+    중복되지 않을 시에 길이 1을 반환
+     */
+    private static int getDuplicateLength(char word, int startPoint) {
+        int duplicateLength = 1;
+        for (int comparePoint = startPoint +1; comparePoint< answer.length(); comparePoint++){
+            if (answer.charAt(comparePoint)== word){
+                duplicateLength++;
+            }else if (answer.charAt(comparePoint)!=word) {
+                break;
+            }
+        }
+        return duplicateLength;
+    }
 
 }
