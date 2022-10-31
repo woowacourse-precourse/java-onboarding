@@ -15,9 +15,8 @@ public class Problem7 {
         Map<String, Integer> map = visitorsCount(visitors); //방문한 사람 추가
         List<String> friendList = followedFriends(user, friends);
         Map<String, Integer> newMap = newFriend(friends,friendList,map);
-        List<String> newmap = sortByValues(newMap);
+        List<String> sortedList = sortByValues(newMap);
 
-        System.out.println(newmap);
         return answer;
     }
 
