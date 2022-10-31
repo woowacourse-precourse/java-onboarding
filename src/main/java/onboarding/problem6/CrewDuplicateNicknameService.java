@@ -89,12 +89,12 @@ public class CrewDuplicateNicknameService {
     /**
      * 중복된 크루의 이메일을 저장하는 메소드
      *
-     * @param crew 중복된 닉네임을 가진 크루
-     * @param email 중복된 닉네임을 가진 크루의 이메일
+     * @param duplicateCrew 중복된 닉네임을 가진 크루
+     * @param duplicateCrewNickname 중복된 닉네임을 가진 크루의 이메일
      */
-    private void addDuplicateCrewEmail(Crew crew, String email) {
-        duplicateNicknameCrewSet.add(email);
-        duplicateNicknameCrewSet.add(crew.getEmail());
+    private void addDuplicateCrewEmail(Crew duplicateCrew, String duplicateCrewNickname) {
+        duplicateNicknameCrewSet.add(duplicateCrewNickname);
+        duplicateNicknameCrewSet.add(duplicateCrew.getEmail());
     }
 
     /**
