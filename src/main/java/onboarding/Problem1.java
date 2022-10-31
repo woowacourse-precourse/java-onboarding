@@ -4,7 +4,7 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         // 1. 포비와 크롱의 페이지가 유효한 지 체크 - 예외 시 -1 리턴
- 		if (checkException(pobi) || checkException(crong)) return -1;
+ 		if (isInvalid(pobi) || isInvalid(crong)) return -1;
 
  		// 2. 포비와 크롱, 각 자리수를 더하는 것과, 곱하는 것 중 최댓값을 찾음
  		int pobiScore = Math.max(getBestScore(pobi.get(0)), getBestScore(pobi.get(1)));
@@ -14,7 +14,7 @@ class Problem1 {
  		if ( pobiScore == crongScore ) return 0;   
         return (pobiScore > crongScore)? 1: 2;
     }
-    static boolean checkException(List<Integer> pages){
+    static boolean isInvalid(List<Integer> pages){
         int left = pages.get(0);
         int right = pages.get(1);
 
