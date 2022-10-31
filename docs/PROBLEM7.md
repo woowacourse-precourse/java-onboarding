@@ -24,3 +24,17 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+---
+
+### 기능 목록
+- [x] 친구, 점수 초기화
+  - [x] 사용자 아이디마다 점수를 0으로 초기화
+  - [x] A와 B를 친구 관계로 연결
+- [x] 방문자를 확인하면서 점수 부여
+  - [x] 방문자에게 1점 부여
+  - [x] user를 친구로 두고 있는 방문자에 대해 그의 친구들에게 10점 부여
+- [x] 결과 반환
+  - [x] 점수 목록을 점수가 큰 순, 이름 순으로 정렬
+  - [x] user가 아니고, user와 친구 관계가 아닌 사용자를 결과 목록에 저장
+  - [x] 최대 5명의 목록을 반환
