@@ -73,6 +73,8 @@ public class Problem7 {
 			}
 		}
 
+		scoreOfRecommendation.entrySet().removeIf(entry -> entry.getValue() == 0);
+
 		System.out.println(scoreOfRecommendation);
 
 		List<String> answer = Collections.emptyList();
