@@ -12,6 +12,7 @@ public class DuplicateNicknameChecker {
     public DuplicateNicknameChecker(List<List<String>> forms) {
         Set<String> duplicatedUserEmail = new HashSet<>();
         checkForms(forms, duplicatedUserEmail);
+        this.DuplicateUserEmails = setToList(duplicatedUserEmail);
     }
 
     private static void checkForms(List<List<String>> forms, Set<String> duplicatedUserEmail) {
@@ -44,6 +45,13 @@ public class DuplicateNicknameChecker {
 
     private static boolean isDuplicated(String firstName, String secondName, int i, int j) {
         return firstName.charAt(i) == secondName.charAt(j) && firstName.charAt(i + 1) == secondName.charAt(j + 1);
+    }
+
+    private static List<String> setToList(Set<String> duplicatedUserEmail) {
+        return duplicatedUserEmail
+                .stream()
+                .sorted()
+                .collect(Collectors.toList());
     }
 
     public List<String> getDuplicateEmails() {
