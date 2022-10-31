@@ -30,8 +30,15 @@ public class Problem6 {
         return false;
     }
 
-    private static void isDuplicateOtherNickname(List<String> form, int idx){
+    private static void isDuplicateOtherNickname(String nickname, int idx){
+        for(int i=0;i<nickname.length()-1;i++){
+            String twoC = nickname.substring(i, i+2);
 
+            if(twoChar.containsKey(twoC)){
+                duplicatedAnswer.add(idx);
+                duplicatedAnswer.add(twoChar.get(twoC));
+            }
+        }
     }
 
     private static void storeTwoChar(String str, int idx){
