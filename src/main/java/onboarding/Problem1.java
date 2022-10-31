@@ -9,7 +9,6 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         try {
-
             int pobiMax = getMax(pobi);
             int crongMax = getMax(crong);
 
