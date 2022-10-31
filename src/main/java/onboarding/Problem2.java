@@ -35,9 +35,9 @@ public class Problem2 {
         // 해독 목표 문자 배열 순차 탐색
         for(int i = 0; i < targetCharArray.length; i++){
             if(i == targetCharArray.length-1){      // (1-1) 미자막 요소일 경우 별도 조건없이 concat한다.
-                resultString = resultString.concat(Character.toString(targetCharArray[i]));
+                resultString = concatResultString(resultString,targetCharArray[i]);
             } else if(targetCharArray[i] != targetCharArray[i+1]){      // (1-2) 다음 요소와 다른값 일때 resultString에 concat한다.
-                resultString = resultString.concat(Character.toString(targetCharArray[i]));
+                resultString = concatResultString(resultString,targetCharArray[i]);
             } else if(targetCharArray[i] == targetCharArray[i+1]){      // (1-3) 다음 요소와 같은값 일 때 다음 탐색에 그 다음다음 요소를 비교하게 해준다.
                 i++;
                 duplicateCnt++;
@@ -51,6 +51,11 @@ public class Problem2 {
 
         // 메소드 결과값을 가지고 재귀 호출
         return removeDuplicate(resultString);
+    }
+
+    // resultString에 중복되지 않는 문자 concat
+    public String concatResultString(String resultString ,char targetChar){
+        return resultString.concat(Character.toString(targetChar));
     }
 
 }
