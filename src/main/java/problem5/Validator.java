@@ -21,7 +21,7 @@ public class Validator {
 
     private void validateRange() {
         if((money < 1) || (money > 1000000)) {
-            throw new IllegalArgumentException("입력값은 1 이상 10000 이하이어야 합니다.");
+            throw new IllegalArgumentException("입력값은 1 이상 1000000 이하이어야 합니다.");
         }
     }
 }
