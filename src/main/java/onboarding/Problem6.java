@@ -1,8 +1,8 @@
 package onboarding;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -16,6 +16,22 @@ public class Problem6 {
             formsMap.put(form.get(1), form.get(0));
         }
         return formsMap;
+    }
+
+    public static List<String> validateEmailPattern(Map<String, String> forms) {
+
+        String emailRegex = "/^[0-9a-zA-Z-_]{1,9}@email.com/&";
+        Pattern emailPattern = Pattern.compile(emailRegex);
+
+        List<String> emailList = (List<String>) forms.values();
+        List<String> invalidEmailList = new ArrayList<>();
+
+        for(String email : emailList) {
+            Matcher matching = emailPattern.matcher(email);
+            if(!matching.matches())
+                invalidEmailList.add(email);
+        }
+        return invalidEmailList;
     }
 
 }
