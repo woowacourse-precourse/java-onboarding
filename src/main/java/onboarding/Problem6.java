@@ -8,7 +8,7 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         if (CheckInput(forms)) {
             Map<String, Integer> nickHash = new HashMap<>();
-            MakeNickHash(forms,nickHash);
+//            return RunGame(forms,nickHash);
         }throw new IllegalArgumentException("잘못된 입력값");
     }
 
@@ -67,5 +67,11 @@ public class Problem6 {
             String tmp = nickname.substring(i,i+2);
             if(nickHash.get(tmp)>1)return true;
         }return false;
+    }
+
+    /* 기능 4 : 중복된 사용자의 이메일 오름차순 정렬 */
+    private static List<String> SortEmail(List<String> answer){
+        answer.sort(Comparator.naturalOrder());
+        return answer;
     }
 }
