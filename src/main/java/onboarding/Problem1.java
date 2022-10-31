@@ -37,6 +37,9 @@ class Problem1 {
         if(page1<=0 || page2<=0){
             return false;
         }
+        if(page1==0 || page2 == 400){
+            return false;
+        }
         return true;
     }
 
