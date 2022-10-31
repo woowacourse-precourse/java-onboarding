@@ -50,18 +50,9 @@ public class FriendRecommender {
         for (List<String> relationship : friends) {
             String idA = relationship.get(0);
             String idB = relationship.get(1);
-            addRelationship(idA, idB);
+            addFriend(idA, idB);
+            addFriend(idB, idA);
         }
-    }
-
-    /**
-     * Add single relationship
-     * @param idA friend of idB
-     * @param idB friend of idA
-     */
-    private void addRelationship(String idA, String idB) {
-        addFriend(idA, idB);
-        addFriend(idB, idA);
     }
 
     /**
