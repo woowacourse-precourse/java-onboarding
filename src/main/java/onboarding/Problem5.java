@@ -22,8 +22,8 @@ public class Problem5 {
 
         // 2. 가장 큰 다위 화폐부터 사용
         for (int i : moneyArr) {
-            money = money % i;
             answer.add(money / i);
+            money = money % i;
         }
 
         return answer;
