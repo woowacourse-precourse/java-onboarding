@@ -12,6 +12,7 @@ public class Problem2 {
         answer = cryptogram;
         return answer;
     }
+
     // 문자열에서 중복된 문자가 있는지 확인하는 메서드
     static boolean checkString(String cryptogram) {
         boolean flag = false;
@@ -19,7 +20,7 @@ public class Problem2 {
         for (int i = 0; i < stringArr.length - 1; i++) {
             String first = stringArr[i];
             String second = stringArr[i + 1];
-            if(first.equals(second)) {
+            if (first.equals(second)) {
                 flag = true;
                 break;
             }
@@ -27,16 +28,19 @@ public class Problem2 {
         return flag;
     }
 
-    // 중복되는 문자를 제거화는 메서드
+    // 중복되는 문자를 제거하는 메서드
     static String removeOverlap(String cryptogram) {
         String[] stringArr = cryptogram.split("");
         Stack<String> stack = new Stack<>();
+        String s = "";
         for (int i = 0; i < stringArr.length; i++) {
             if(!stack.isEmpty() && stack.peek().equals(stringArr[i])) {
-                stack.pop();
-                continue;
+                s = stack.pop();
             }
-            stack.push(stringArr[i]);
+            if(!stringArr[i].equals(s)) {
+                stack.push(stringArr[i]);
+                s = "";
+            }
         }
 
         StringBuilder sb = new StringBuilder();
