@@ -19,22 +19,18 @@ class Problem1 {
         if (pobiNum > crongNum) {
             answer = 1;
         }
-
         //크롱이 이겼을 경우
         if (pobiNum < crongNum) {
             answer = 2;
         }
-
         //무승부의 경우
         if (pobiNum == crongNum) {
             answer = 0;
         }
-
         //왼쪽 페이지에는 홀수, 오른쪽 페이지에는 짝수 번호가 오면서 책의 시작면이나 마지막 면이 나왔을 경우
         if (pobi.get(0) == 1 || crong.get(1) == 400) {
             answer = -1;
         }
-
         return answer;
     }
 
@@ -43,7 +39,7 @@ class Problem1 {
         int result = 0;
         while (num > 0) {
             result += num%10;
-            result /= 10;
+            num /= 10;
         }
         return result;
     }
