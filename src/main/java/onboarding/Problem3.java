@@ -3,6 +3,10 @@ package onboarding;
 public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
+        //1부터 number까지 반복하며 손뼉을 쳐야하는 총 횟수 계산
+        for (int num = 1; num <= number; num++) {
+            answer += calculateHowManyClap(num);
+        }
         return answer;
     }
 
