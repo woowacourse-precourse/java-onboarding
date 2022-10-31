@@ -3,6 +3,13 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+    private static int numMult(char[] num){ // sum, mult따로 호출시 자릿수 계산을 따로따로 두번해줘야 하므로 자릿수 만 구해서 MAx값을 리턴해주는 메서드 구현
+        int mult = 1;
+        for(int i =0;i<num.length;i++){
+            mult=mult*Character.getNumericValue(num[i]);
+        }
+        return mult;
+    }
     private static int numAdmin(List<Integer> arr){
         try {
             if (arr.get(1)-arr.get(0)!=1){
