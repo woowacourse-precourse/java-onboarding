@@ -46,6 +46,18 @@ class Problem1 {
         return leftPage % 2 == 0 || rightPage % 2 != 0;
     }
 
+    /**
+     * 주어진 페이지 리스트에서 오른쪽에서 왼쪽을 뺀 값이 1이 아니라면 true, 1이라면 false를 반환한다.
+     *
+     * @param pageNumber 페이지가 담긴 리스트
+     * @return 오른쪽에서 왼쪽을 뺀 값이 1이 아니라면 true, 1이라면 false
+     */
+    public static boolean checkPair(List<Integer> pageNumber) {
+        int leftPage = pageNumber.get(0);
+        int rightPage = pageNumber.get(1);
+        return rightPage - leftPage != 1;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
