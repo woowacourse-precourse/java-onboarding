@@ -6,9 +6,34 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         Map<String, ArrayList<String>> friendList = new HashMap<>();
+        Map<String, Integer> users = new HashMap<>();
+
         convertFriendList(friends, friendList);
 
+        getUserScore(user, visitors, friendList, users);
+
+
         return answer;
+    }
+
+    private static void getUserScore(String user, List<String> visitors, Map<String, ArrayList<String>> friendList, Map<String, Integer> users) {
+        for (String key : friendList.keySet()) {
+            users.put(key, 0);
+        }
+        for (String s : friendList.get(user)) {
+            for (String s1 : friendList.get(s)) {
+                if (s1.equals(user)) continue;
+                users.put(s1, users.get(s1) + 10);
+            }
+        }
+
+        for (String visitor : visitors) {
+            if (!users.containsKey(visitor)){
+                users.put(visitor, 1);
+            }else {
+                users.put(visitor, users.get(visitor) + 1);
+            }
+        }
     }
 
     private static void convertFriendList(List<List<String>> friends, Map<String, ArrayList<String>> friendList) {
