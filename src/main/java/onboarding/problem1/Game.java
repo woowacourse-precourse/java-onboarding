@@ -28,8 +28,6 @@ public class Game {
     private int getScore(Pages pages) {
         int score = Integer.MIN_VALUE;
 
-        // sum digit 끼리 묶고
-        // multi digit 끼리 묶자! 아니면 page 별로 구하거나!
         score = Math.max(score, Math.max(
                 getSumOfDigits(pages.getPage1()), getMultipleOfDigits(pages.getPage1())
         ));
