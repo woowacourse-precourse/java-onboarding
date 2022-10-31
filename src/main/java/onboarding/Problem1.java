@@ -3,7 +3,7 @@
 * - 문제 1
 *
 * 버전정보
-* - openjdk version "11.0.15"
+ * - jdk-11.0.17
 *
 * 날짜
 * - 2022-10-31
@@ -20,6 +20,7 @@ class Problem1 {
             /* 예외 처리 */
             processException(pobi, crong);
 
+            // pobi와 crong 각자 가질 수 있는 가장 큰 수 뽑기
             int pobiMaxResult = getMaxResult(pobi);
             int crongMaxResult = getMaxResult(crong);
 
