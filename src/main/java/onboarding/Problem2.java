@@ -7,8 +7,8 @@ import java.util.stream.Stream;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        List<String> stringList = getStringList(cryptogram);
+        return stackToString(doStack(stringList));
     }
 
     public static String stackToString(Stack<String> stack){
