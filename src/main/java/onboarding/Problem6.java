@@ -1,5 +1,7 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Problem6 {
@@ -15,6 +17,7 @@ public class Problem6 {
         return false;
     }
     public static List<String> solution(List<List<String>> forms) {
+        // 모든 두 사람 쌍을 비교하여, 중복 닉네임 판별.
         boolean addToAnswer[] = new boolean[forms.size()];
 
         for (int i = 0; i < forms.size(); i++) {
@@ -28,7 +31,17 @@ public class Problem6 {
             }
         }
 
-        List<String> answer = List.of("answer");
+        // 중복 이메일 반환
+        List<String> answer = new ArrayList<>();
+        for (int i = 0; i < forms.size(); i++) {
+            if (addToAnswer[i]) {
+                String email = forms.get(i).get(0);
+                answer.add(email);
+            }
+        }
+
+        Collections.sort(answer);
+
         return answer;
     }
 }
