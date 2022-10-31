@@ -26,6 +26,9 @@ public class Problem6 {
         }
     }
     static void findNickname(List<String> nickname) {
+        for(int i=0; i<nickname.size(); i++){
+            compareNickName(nickname.get(i), i);
+        }
     }
     static void compareNickName(String nickname, int mypos){
     }
