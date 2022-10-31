@@ -39,4 +39,57 @@ class Problem1 {
 
 		return result;
 	}
+
+	// 최대 값을 구하는 메소드
+	public static int pageMaxValue(List<Integer> page) {
+		// 최대 값
+		int maxValue = 0;
+		// 모두 더한 값 중 최대 값
+		int totalAddition = 0;
+		// 모두 곱한 값 중 최대 값
+		int totalMultiplication = 0;
+
+		for(int i = 0; i < 2; i++) {
+			// 더한 값
+			int additionValue = 0;
+			// 곱한 값
+			int multiplicationValue = 0;
+
+			additionValue = page.get(i) % 10;
+			multiplicationValue = page.get(i) % 10;
+
+			// 두 자리 이상인 경우
+			if(9 < page.get(i)) {
+				additionValue += page.get(i) % 100 / 10;
+				multiplicationValue *= page.get(i) % 100 / 10;
+			}
+
+			// 세 자리 이상인 경우
+			if(99 < page.get(i)) {
+				additionValue += (page.get(i) / 100);
+				multiplicationValue *= (page.get(i) / 100);
+			}
+
+			// 각 페이지 별 모두 더한 값 중 제일 큰 값
+			if(totalAddition < additionValue) {
+				totalAddition = additionValue;
+			}
+			
+			// 각 페이지 별 모두 곱한 값 중 제일 큰 값
+			if(totalMultiplication < multiplicationValue) {
+				totalMultiplication = multiplicationValue;
+			}
+		}
+
+		// 더한 값의 최대 값과 곱한 값의 최대 값 중 더 큰 값
+		if(totalAddition >= totalMultiplication) {
+			maxValue = totalAddition;
+		}
+
+		if(totalMultiplication >= totalAddition) {
+			maxValue = totalMultiplication;
+		}
+
+		return maxValue;
+	}
 }
