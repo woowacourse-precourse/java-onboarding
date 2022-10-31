@@ -47,4 +47,17 @@ public class Problem6 {
 
         return newForms;
     }
+
+    public static boolean checkDuplicatedName(String nick, String checkNick) {
+
+        for(int i = 0; i < nick.length()-1; i++){
+            String subNick = nick.substring(i, i+2);
+            for(int j = 0; j < checkNick.length()-1; j++){
+                if(subNick.equals(checkNick.substring(j, j + 2))) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 }
