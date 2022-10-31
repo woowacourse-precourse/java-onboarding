@@ -22,7 +22,8 @@ public class NicknameFilter {
 				}
 				Crew target = crewList.get(j);
 
-				if (isDuplicatedPattern(nickname, nicknamePattern) || nickname.equals(target.getNickname())) {
+				if (isDuplicatedPattern(target.getNickname(), nicknamePattern)
+						|| nickname.equals(target.getNickname())) {
 					filteredCrewSet.add(target.getEmail());
 				}
 			}
