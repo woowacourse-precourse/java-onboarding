@@ -1,6 +1,6 @@
 package onboarding.problem1;
 
-// refactor : 클래스 크기 줄이기
+// 리팩토링 : 클래스 크기 줄이기
 public class Comparator {
 
     // 승자 구하기 기능
