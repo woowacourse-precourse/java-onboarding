@@ -50,4 +50,20 @@ public class Problem7 {
         }
         return friendList;
     }
+
+    public static HashMap<String, Integer> newFriend(List<List<String>> friends, List<String> friendList, HashMap<String, Integer> map) {
+        for(int i=0; i<friends.size(); i++) {
+            String idA = new String(friends.get(i).get(0));
+            String idB = new String(friends.get(i).get(1));
+
+            //null pointer error?
+            if(friendList.contains(idA) && ! friendList.contains(idB)) {
+                map.put(idB, map.get(idB)+10);
+            }
+            if(friendList.contains(idB) && ! friendList.contains(idA)) {
+                map.put(idA, map.get(idA)+10);
+            }
+        }
+        return map;
+    }
 }
