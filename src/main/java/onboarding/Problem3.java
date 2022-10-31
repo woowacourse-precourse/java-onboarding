@@ -1,5 +1,13 @@
 package onboarding;
 
+/**
+ * Problem3 기능 목록
+ * 1. answer 변수 선언 및 초기화 하기
+ * 2. 1에서 주어진 숫자까지 배열로 바꾸기
+ * 3. 배열에 3,6,9로 나눠지는 숫자가 있는지 확인하기
+ * 4. 있다면 answer 변수에 더해주기
+ * 5. 반복문이 끝난 후 answer 변수를 리턴하기
+ */
 public class Problem3 {
 	public static int solution(int number) {
 		int answer = 0;

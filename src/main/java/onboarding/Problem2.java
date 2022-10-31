@@ -2,6 +2,14 @@ package onboarding;
 
 import java.util.Stack;
 
+/**
+ * Problem2 기능 목록
+ * 1. 문자를 배열로 변환하기
+ * 2. 배열의 길이와 중복 문자열 존재 여부를 확인하여 연속하는 중복 문자들이 없다면 리턴하기
+ * 3. 중복 문자열이 있다면 중복문자열을 제거한 후 스택에 담기
+ * 4. 스택을 문자열로 변환하기
+ * 5. 변환된 문자열을 재귀함수로 해독하기
+ */
 public class Problem2 {
 	public static String solution(String cryptogram) {
 

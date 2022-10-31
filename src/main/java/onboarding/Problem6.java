@@ -5,6 +5,18 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Problem6 기능 목록
+ * 1. 전체 닉네임 리스트를 생성하기
+ * 2. 중복 사용된 닉네임 리스트를 선언하기
+ * 3. 중복 여부 판단을 위해 2글자 문자열 리스트 생성하기
+ * 4. 기준이 될 닉네임을 제외한 닉네임리스트 생성하기
+ * 5. 제외한 닉네임 리스트 내에 중복 문자열이 있는 지 확인 후 중복 사용된 닉네임리스트에 추가하기
+ * 6. 중복 사용된 닉네임 리스트에서 중복 입력된 닉네임 제거하기
+ * 7. 중복 사용된 닉네임의 이메일을 리스트에 추가하기
+ * 8. 이메일 리스트를 오름차순 정렬하기
+ * 9. 정렬된 이메일 리스트를 리턴하기
+ */
 public class Problem6 {
 	public static List<String> solution(List<List<String>> forms) {
 		//닉네임 리스트 생성

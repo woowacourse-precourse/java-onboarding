@@ -6,6 +6,20 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
+/**
+ * Problem7 기능 목록
+ * 1. 중복 없는 전체 유저리스트 생성하기
+ * 2. 기준 유저의 친구 리스트 생성하기
+ * 3. 기준 유저 친구의 친구 리스트 생성하기
+ * 4. 전체 유저 리스트에서 유저와 친구를 빼서  noFriendList 생성하기
+ * 5. 친구 추천 점수 집계용 hashmap 선언하기
+ * 6. noFriendList의 유저들의 점수 집계하기
+ * 7. 점수가 0인  noFriendList의 유저 hashmap에서 제거하기
+ * 8. 친구 추천 리스트(answer) 선언하기
+ * 9. 친구 추천 규칙에 따라 점수가 가장 높은 순으로 리스트에 넣어주되, 추천 점수가 같은 경우는 이름순으로 입력하기
+ * 10. 리스트의 길이가 5 초과인 경우 리스트를 잘라서 리턴하기
+ */
 public class Problem7 {
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 		// 중복 없는 전체 유저 리스트 생성

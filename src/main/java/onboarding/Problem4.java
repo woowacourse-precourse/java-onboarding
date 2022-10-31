@@ -1,5 +1,12 @@
 package onboarding;
 
+/**
+ * Problem4 기능 목록
+ * 1. 대문자용 변환 문자 배열 및 소문자용 변환 문자 배열 생성
+ * 2. 입력된 문자열을 배열로 변환
+ * 3. 배열 안의 문자를 변환 후 stringBuiler에 더해주기
+ * 4. stringBuilder를 String으로 변환 후 리턴하기
+ */
 public class Problem4 {
 	private static final String[] UPPER_CASE_ARR = {"Z", "Y", "X", "W", "V", "U", "T", "S", "R", "Q", "P", "O", "N",
 		"M", "L", "K", "J", "I", "H", "G", "F", "E", "D", "C", "B", "A"};

@@ -3,6 +3,14 @@ package onboarding;
 import java.util.List;
 import java.util.stream.Stream;
 
+/**
+ * Problem1 기능 목록
+ * 1. input 값 확인 후 예외 처리
+ * 2. 포비와 크롱의 왼쪽 페이지 번호의 각 자리 숫자를 모두 더하거나, 모두 곱해 가장 큰 수를 구하기
+ * 3. 포비와 크롱의 오른쪽 페이지 번호의 각 자리 숫자를 모두 더하거나, 모두 곱해 가장 큰 수를 구한다.
+ * 4. 2~3 과정에서 가장 큰 수를 포비와 크롱의 점수로 정하기
+ * 5. 점수를 비교해 더 큰 사람을 리턴하기
+ */
 class Problem1 {
 	public static int solution(List<Integer> pobi, List<Integer> crong) {
 		// input 값 확인 후 예외 처리
