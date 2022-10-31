@@ -1,4 +1,6 @@
-package onboarding.Problem7;
+package onboarding;
+
+import onboarding.problem7.Graph;
 
 import java.util.*;
 

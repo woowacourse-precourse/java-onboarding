@@ -1,4 +1,4 @@
-package onboarding.Problem4;
+package onboarding.problem4;
 
 import java.util.HashMap;
 public class Encoder

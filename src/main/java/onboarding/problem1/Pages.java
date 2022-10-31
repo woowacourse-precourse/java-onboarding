@@ -1,8 +1,8 @@
-package onboarding.Problem1;
+package onboarding.problem1;
 
 import java.util.List;
 
-class Pages implements Comparable<Pages>
+public class Pages implements Comparable<Pages>
 {
     private static final int DIVISION_VALUE = 10;
     private static final int INPUT_SIZE = 2;

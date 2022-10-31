@@ -1,4 +1,6 @@
-package onboarding.Problem7;
+package onboarding.problem7;
+
+import onboarding.Problem7;
 
 import java.util.*;
 

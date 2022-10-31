@@ -1,4 +1,4 @@
-package onboarding.Problem6;
+package onboarding.problem6;
 
 import java.util.*;
 

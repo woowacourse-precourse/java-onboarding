@@ -1,4 +1,6 @@
-package onboarding.Problem1;
+package onboarding;
+
+import onboarding.problem1.Pages;
 
 import java.util.List;
 

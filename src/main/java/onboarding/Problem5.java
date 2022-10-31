@@ -1,4 +1,4 @@
-package onboarding.Problem5;
+package onboarding;
 
 import java.util.LinkedList;
 import java.util.List;

@@ -1,4 +1,7 @@
-package onboarding.Problem4;
+package onboarding;
+
+import onboarding.problem4.Encoder;
+
 public class Problem4 {
     private static Encoder encoder = new Encoder();
     private static int MAX_WORD_LENGTH = 10000;

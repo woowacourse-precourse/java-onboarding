@@ -1,4 +1,8 @@
-package onboarding.Problem6;
+package onboarding;
+
+import onboarding.problem6.DuplicatedChecker;
+import onboarding.problem6.User;
+import onboarding.problem6.UserRepository;
 
 import java.util.*;
 import java.util.regex.Pattern;
