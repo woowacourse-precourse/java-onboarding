@@ -12,6 +12,8 @@ public class Problem6 {
         Set<String> emails = new TreeSet<>();
 
         for (List<String> form : forms) {
+            String email = form.get(EMAIL_INDEX_OF_FORM);
+            String nickname = form.get(NICKNAME_INDEX_OF_FORM);
         }
 
         List<String> answer = List.of("answer");
