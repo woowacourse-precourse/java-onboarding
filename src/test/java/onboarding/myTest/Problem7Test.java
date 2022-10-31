@@ -43,6 +43,9 @@ public class Problem7Test {
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
         }
 
+        /**
+         * 동일한 친구관계가 만약 주어진다면
+         */
         @Test
         void case3() {
             String user = "mrko";
@@ -54,22 +57,24 @@ public class Problem7Test {
                     List.of("shakevan", "jun"),
                     List.of("shakevan", "mrko")
             );
-            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan","jun");
+            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan", "jun");
             List<String> result = List.of("jun", "andole", "bedi");
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
         }
 
+        /**
+         * friends 가 비어 있고, 동일한 점수가 5명 이사인 경우 
+         */
         @Test
         void case4() {
             String user = "mrko";
             List<List<String>> friends = List.of(
 
             );
-            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
-            List<String> result = List.of("bedi", "donut", "shakevan");
+            List<String> visitors = List.of("bedi", "donut", "bedi", "shakevan", "jun", "a","b");
+            List<String> result = List.of("bedi", "a", "b", "donut", "jun");
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
         }
-
 
 
     }
