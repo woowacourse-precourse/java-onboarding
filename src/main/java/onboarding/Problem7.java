@@ -7,8 +7,11 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
         List<String> userFriends = findUserFriends(user, friends);
+
         List<Person> friendList = findRecommendationFromFriends(user, friends, userFriends);
         List<Person> visitorList = findRecommendationFromVisitors(visitors, userFriends);
+        List<Person> combineList = combineList(friendList, visitorList);
+
         return answer;
     }
 
@@ -47,6 +50,13 @@ public class Problem7 {
             list.add(new Person(item, frequency* score));
         }
         return list;
+    }
+
+    private static List<Person> combineList(List<Person> friendList, List<Person> visitorList){
+        List<Person> combineList = new ArrayList<>();
+        combineList.addAll(friendList);
+        combineList.addAll(visitorList);
+        return combineList;
     }
 
     static class Person{
