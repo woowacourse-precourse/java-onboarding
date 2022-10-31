@@ -34,4 +34,10 @@ class Cryptogram {
             throw new IllegalStateException(NOT_ALLOWED_CRYPTOGRAM_OVER_MAX_LENGTH);
         }
     }
+
+    public void validateCryptogramLowerCase(String cryptogram) {
+        if (cryptogram != cryptogram.toLowerCase()) {
+            throw new IllegalStateException(ONLY_ALLOWED_CRYPTOGRAM_LOWER_CASE);
+        }
+    }
 }
