@@ -7,6 +7,12 @@ import java.util.List;
 
 public class Problem7 {
 
+    // 사용자와 함께 아는 친구의 수 = 10점
+    static final int score_bothFriends = 10;
+
+    // 사용자의 타임 라인에 방문한 횟수 = 1점
+    static final int score_visitedTimeline = 1;
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
 
@@ -31,9 +37,16 @@ public class Problem7 {
             scoreMap.put(account, 0); // 0으로 초기화
         }
 
-        // 각각의 유저에 대한 점수 계산
-        // 1. 사용자와 함께 아는 친구의 수 = 10점
-        // 2. 사용자의 타임 라인에 방문한 횟수 = 1점
+        // user와 이미 친구가 되어 있는 사람들의 목록
+        HashSet<String> userFriends = friendLists.get(user);
+
+        for (String account : totalUserList) {
+            // 본인은 제외 & user와 이미 친구가 되어 있는 사람은 추천하지 않기 때문에 제외
+            if (!account.equals(user) && !userFriends.contains(account)) {
+                // 점수 계산 후 scoreMap에 저장
+                scoreMap.replace(account, getScore(friendLists, visitors, account));
+            }
+        }
 
         // 점수가 가장 높은 순으로 정렬하여 최대 5명을 뽑음
         // 유의사항
@@ -70,6 +83,30 @@ public class Problem7 {
         }
 
         return totalUserList;
+    }
+
+    // 유저별 점수를 계산한 후 반환하는 함수
+    private static Integer getScore(HashMap<String, HashSet<String>> friendLists, List<String> visitors, String user) {
+        int score = 0;
+
+        // user와 이미 친구가 되어 있는 사람들의 목록
+        HashSet<String> userFriends = friendLists.get(user);
+
+        int bothFriendsNum = 0; // 사용자와 함께 아는 친구의 수
+        for (String friend : friendLists.get(user)) {
+            if (userFriends.contains(friend)) { // 사용자와 함께 아는 친구라면 bothFriendsNum + 1
+                bothFriendsNum++;
+            }
+        }
+        score += bothFriendsNum * score_bothFriends; // score + (사용자와 함께 아는 친구의 수) * 10
+
+        for (String visitor : visitors) {
+            if (user.equals(visitor)) { // 사용자의 타임 라인에 방문한 횟수만큼 score + 1
+                score += score_visitedTimeline;
+            }
+        }
+
+        return score;
     }
 
 }
