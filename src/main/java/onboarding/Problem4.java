@@ -9,22 +9,26 @@ public class Problem4 {
 
         for (int i = 0; i < word.length(); i++) {
             char originalChar = word.charAt(i);
-            if (originalChar != BLANK_CHARACTER) {
-                answer.append(getGreenFrogChar(originalChar));
-            } else {
-                answer.append(originalChar);
-            }
+            answer.append(getGreenFrogChar(originalChar));
         }
 
         return answer.toString();
     }
 
     private static char getGreenFrogChar(char originalChar) {
+        if (originalChar != BLANK_CHARACTER) {
+            return encryptGreenFrogChar(originalChar);
+        }
+
+        return originalChar;
+    }
+
+    private static char encryptGreenFrogChar(char originalChar) {
         if (isCapitalLetter(originalChar)) {
             return getUpperCharConvert(originalChar);
-        } else {
-            return getLowerCharConvert(originalChar);
         }
+
+        return getLowerCharConvert(originalChar);
     }
 
     private static boolean isCapitalLetter(char checkChar) {
