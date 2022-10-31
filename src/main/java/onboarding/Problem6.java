@@ -52,7 +52,32 @@ public class Problem6 {
         return valid;
     }
 
+    /* 각 신청서가 올바른지 확인합니다.
+     *
+     * @param 이메일과 닉네임이 담긴 신청서입니다.
+     * @return 신청서의 정보가 올바르다면 참, 아니면 거짓을 반환합니다.
+     * */
     private static boolean isValidForm(List<String> form) {
+        if (hasValidFormLength(form) == false) {
+            return false;
+        }
+        String email = form.get(0);
+        String nickname = form.get(1);
+
+        boolean valid = hasValidEmail(email) &&
+                hasValidNickname(nickname);
+        return valid;
+    }
+
+    private static boolean hasValidFormLength(List<String> form) {
+        return false;
+    }
+
+    private static boolean hasValidEmail(String email) {
+        return false;
+    }
+
+    private static boolean hasValidNickname(String nickname) {
         return false;
     }
 
