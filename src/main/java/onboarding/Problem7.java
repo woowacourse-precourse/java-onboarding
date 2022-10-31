@@ -77,6 +77,14 @@ public class Problem7 {
             }
         });
 
-        return null;
+        List<String> answer = new ArrayList<>();
+        for (Info info : result) {
+            answer.add(info.name);
+
+            if (answer.size() == 5) {
+                break;
+            }
+        }
+        return answer;
     }
 }
