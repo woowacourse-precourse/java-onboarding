@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.*;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -9,9 +10,34 @@ public class Problem7 {
         if (violateFriends(friends)) return Collections.emptyList();
         if (violateVisitors(visitors)) return Collections.emptyList();
 
-        List<String> answer = Collections.emptyList();
+        Map<String, Integer> score = new HashMap<>();
+        Map<String, Set<String>> friendMap = setFriendMap(friends);
+        Set<String> myFriends = friendMap.getOrDefault(user, new HashSet<>());
+        for (String other : friendMap.keySet()) {
+            if (other.equals(user)) continue;
+            if (myFriends.contains(other)) continue;
+            friendMap.get(other).retainAll(myFriends);
+            score.put(other, friendMap.get(other).size() * 10);
+        }
 
-        return answer;
+        for (String visitor : visitors) {
+            if (visitor.equals(user)) continue;
+            if (myFriends.contains(visitor)) continue;
+            score.put(visitor, score.getOrDefault(visitor, 0) + 1);
+        }
+
+        return score.keySet()
+                .stream()
+                .sorted((o1, o2) -> {
+                    int score1 = score.getOrDefault(o1, 0);
+                    int score2 = score.getOrDefault(o2, 0);
+                    if (score1 != score2) {
+                        return score2 - score1;
+                    }
+                    return o1.compareTo(o2);
+                })
+                .collect(Collectors.toList())
+                .subList(0, Math.min(score.size(), 5));
     }
 
     static boolean violateId(String id) {
@@ -44,6 +70,23 @@ public class Problem7 {
             if (violateId(visitor)) return true;
         }
         return false;
+    }
+
+    static Map<String, Set<String>> setFriendMap(List<List<String>> friends) {
+        Map<String, Set<String>> friendMap = new HashMap<>();
+        for (List<String> friend : friends) {
+            String a = friend.get(0);
+            String b = friend.get(1);
+            if (!friendMap.containsKey(a)) {
+                friendMap.put(a, new HashSet<>());
+            }
+            if (!friendMap.containsKey(b)) {
+                friendMap.put(b, new HashSet<>());
+            }
+            friendMap.get(a).add(b);
+            friendMap.get(b).add(a);
+        }
+        return friendMap;
     }
 
     static class Friend {
