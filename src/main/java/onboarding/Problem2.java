@@ -1,6 +1,6 @@
 package onboarding;
 
-import onboarding.exception.LengthRangeException;
+import onboarding.exception.InputRangeException;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
@@ -27,7 +27,7 @@ public class Problem2 {
     private static void checkCryptogramValidation(String cryptogram) {
         // 문자열의 길이를 검증한다.
         if(isNotStrLengthRange(cryptogram)) {
-            throw new LengthRangeException("문자열의 길이는 1~1000 사이여야 합니다.");
+            throw new InputRangeException("문자열의 길이는 1~1000 사이여야 합니다.");
         }
     }
 
@@ -39,8 +39,8 @@ public class Problem2 {
      */
     private static boolean isNotStrLengthRange(String cryptogram) {
         return cryptogram.length() < 1 || cryptogram.length() > 1000;
-
     }
+    
 
     /**
      * 2번 이상 중복된 문자열을 제거한다.
