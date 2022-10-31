@@ -9,6 +9,9 @@ public class Problem6 {
         // 1. 각 닉네임에서 길이 2의 token을 set으로 구성하여 수집함
         HashSet<String> tokens = getTokens(forms);
 
+        // 2. 수집한 Token을 사용하여 유사 닉네임을 가진 신청정보의 index Set을 구성함
+        HashSet<Integer> idxSet = getDuplCaseId(tokens, forms);
+
         return answer;
     }
 
@@ -24,5 +27,25 @@ public class Problem6 {
         }
 
         return tokens;
+    }
+
+    // 수집한 token을 사용하여 유사 닉네임을 가진 신청정보의 index set을 구성
+    private static HashSet<Integer> getDuplCaseId(HashSet<String> tokens, List<List<String>> forms) {
+        String[] tokenArr = tokens.toArray(new String[0]);
+        HashSet<Integer> idxSet = new HashSet<>(); // 유사 닉네임을 가진 신청정보의 Index Set
+
+        for(String token : tokenArr) {
+            Queue<Integer> queue = new LinkedList<>(); // 일시적으로 해당 token이 포함된 닉네임을 가진 신청건의 index를 저장
+            for(int i=0 ; i<forms.size() ; i++) {
+                if(forms.get(i).get(1).contains(token))
+                    queue.add(i);
+            }
+            if(queue.size() > 1) { // 해당 token의 주인 외에 token을 포함하는 다른 신청건이 있는 경우
+                while(!queue.isEmpty())
+                    idxSet.add(queue.poll());
+            }
+        }
+
+        return idxSet;
     }
 }
