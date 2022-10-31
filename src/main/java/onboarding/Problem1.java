@@ -40,4 +40,27 @@ class Problem1 {
 
         return validValue;
     }
+
+    private static int getAnswer(BookPage pobi, BookPage crong) {
+        int answerValue;
+        answerValue = compareScore(pobi, crong);
+
+        return answerValue;
+    }
+
+    private static int compareScore(BookPage pobi, BookPage crong) {
+        int winner = 0;
+        int pobiScore = getScore(pobi);
+        int crongScore = getScore(crong);
+
+        if (pobiScore > crongScore) {
+            winner = 1;
+        } else if (pobiScore < crongScore) {
+            winner = 2;
+        } else if (pobiScore == crongScore) {
+            winner = 0;
+        }
+
+        return winner;
+    }
 }
