@@ -6,15 +6,19 @@ public class Problem4 {
         String answer = "";
 
         StringBuilder sb = new StringBuilder();
+        changeAlphabet(word, sb);
+        answer = sb.toString();
+
+        return answer;
+    }
+
+    private static void changeAlphabet(String word, StringBuilder sb) {
         for (int i = 0; i < word.length(); i++) {
             char alphabet = word.charAt(i);
             isBlank(sb, alphabet);
             isLowerCase(sb, alphabet);
             isUpperCase(sb, alphabet);
         }
-
-        answer = sb.toString();
-        return answer;
     }
 
     private static void isLowerCase(StringBuilder sb, char alphabet) {
