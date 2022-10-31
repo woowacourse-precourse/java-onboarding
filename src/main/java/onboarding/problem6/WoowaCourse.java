@@ -14,9 +14,9 @@ public class WoowaCourse {
     public List<String> findEmailsAtSimilarUserName() {
         return members.findCrewsAtSimilarUserName()
                       .stream()
+                      .sorted()
                       .map(Crew::getEmail)
                       .distinct() // 중복된 이메일이 들어올 것으로 생각하지는 않지만 혹시 모르니....
-                      .sorted()
                       .collect(Collectors.toList());
     }
 
