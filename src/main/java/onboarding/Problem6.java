@@ -9,7 +9,7 @@ public class Problem6 {
         String email = list.get(0);
 
         if(name_length < 0 || name_length > 20) return false;
-//        if(email.contains()) return false;
+        if(!email.contains("email.com")) return false;
 
         return true;
     }
@@ -42,9 +42,10 @@ public class Problem6 {
         List<String> info;
         for (int i = 0 ; i < list.size() ; i++){
             info = list.get(i);
-
-            cut_name = Cut_The_Name(info.get(1));
-            same  = Extract_Email(cut_name, same, list , i);
+            if(Check_Error(info)) {
+                cut_name = Cut_The_Name(info.get(1));
+                same = Extract_Email(cut_name, same, list, i);
+            }
         }
         return same;
     }
