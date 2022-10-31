@@ -5,15 +5,15 @@ import java.util.*;
 public class Problem7 {
 
     private static HashMap<String, ArrayList<String>> friendship = new HashMap<>();
+    private static Map<String, Integer> scoreList = new HashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        Map<String, Integer> scoreList = new HashMap<>();
 
-        // 친구 관계  넣기
         for (List<String> friend : friends) {
             setFriendship(friend.get(0), friend.get(1));
             setFriendship(friend.get(1), friend.get(0));
         }
+
         // 친구의 친구에 점수 부여
         ArrayList<String> friendsOfUser = friendship.get(user);
         for(String friend : friendsOfUser) {
@@ -28,12 +28,8 @@ public class Problem7 {
         }
 
         // 방문자에 점수 부여
-        for(String visitor : visitors) {
-            if(scoreList.containsKey(visitor))
-                scoreList.put(visitor, scoreList.get(visitor) + 1);
-            else
-                scoreList.put(visitor, 1);
-        }
+        setScoreOfVisitor(visitors);
+
 
         // 사용자와 친구인 경우 제거
         Iterator<Map.Entry<String, Integer>> it = scoreList.entrySet().iterator();
@@ -65,5 +61,14 @@ public class Problem7 {
             list.add(userB);
         }
         friendship.put(userA, list);
+    }
+
+    private static void setScoreOfVisitor(List<String> visitors) {
+        for(String visitor : visitors) {
+            if(scoreList.containsKey(visitor))
+                scoreList.put(visitor, scoreList.get(visitor) + 1);
+            else
+                scoreList.put(visitor, 1);
+        }
     }
 }
