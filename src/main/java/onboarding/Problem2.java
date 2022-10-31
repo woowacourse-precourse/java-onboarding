@@ -16,14 +16,16 @@ public class Problem2 {
 			return cryptogram;
 		}
 
+		return getAnswerString(removeDuplicationCharacter(cryptogram));
+	}
+
+	private static Deque<Character> removeDuplicationCharacter(String cryptogram) {
 		Deque<Character> deque = new ArrayDeque<>();
 		char duplicationChar = ' ';
-
 		for (int i = 0; i < cryptogram.length(); i++) {
 			if (duplicationChar == cryptogram.charAt(i)) {
 				continue;
 			}
-
 			if (!deque.isEmpty() && deque.peekLast() == cryptogram.charAt(i)) {
 				duplicationChar = deque.pollLast();
 				continue;
@@ -31,7 +33,10 @@ public class Problem2 {
 			deque.offer(cryptogram.charAt(i));
 			duplicationChar = ' ';
 		}
+		return deque;
+	}
 
+	private static String getAnswerString(Deque<Character> deque) {
 		StringBuilder sb = new StringBuilder();
 		while (!deque.isEmpty()) {
 			sb.append(deque.pollFirst());
