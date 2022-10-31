@@ -3,7 +3,7 @@ package onboarding;
 
 public class Problem3 {
     public static int solution(int number) {
-        int answer = 0; // count 하는데에 사용된다.
+        int answer = 0; // 박수를 몇 번 쳐야할까?
         int thousand, hundred, ten, one = 0;
 
         for (int i = 0; i <= number; i++) {
