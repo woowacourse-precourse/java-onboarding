@@ -19,6 +19,9 @@ public class Problem4 {
     }
 
     private static char convertAlphabet(char alphabet) {
+        if (alphabet == ' ') {
+            return alphabet;
+        }
         int asciiNumber = alphabetToAscii(alphabet);
         if (isAlphabetUpperCase(alphabet)) {
             return asciiToAlphabet(155 - asciiNumber);
