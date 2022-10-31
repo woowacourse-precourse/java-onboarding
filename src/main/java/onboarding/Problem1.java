@@ -35,12 +35,12 @@ public class Problem1 {
         return Math.max(sumCalculation(pobiStr), sumCalculation(crongStr));
     }
 
-    private static int sumCalculation(String result) {
-        int a = 0;
-        for (int i = 0; i < result.length(); i++) {
-            a += Integer.parseInt(String.valueOf(result.charAt(i)));
+    private static int sumCalculation(String page) {
+        int result = 0;
+        for (int i = 0; i < page.length(); i++) {
+            result += Integer.parseInt(String.valueOf(page.charAt(i)));
         }
-        return a;
+        return result;
     }
 
     private static int mulScore(Integer pobiRight, Integer crongRight) {
@@ -50,11 +50,11 @@ public class Problem1 {
         return Math.max(mulCalculation(pobiStr),mulCalculation(crongStr));
     }
 
-    private static int mulCalculation(String result) {
-        int a = 1;
-        for (int i = 0; i < result.length(); i++) {
-            a *= Integer.parseInt(String.valueOf(result.charAt(i)));
+    private static int mulCalculation(String page) {
+        int result = 1;
+        for (int i = 0; i < page.length(); i++) {
+            result *= Integer.parseInt(String.valueOf(page.charAt(i)));
         }
-        return a;
+        return result;
     }
 }
