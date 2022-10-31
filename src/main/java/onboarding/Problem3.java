@@ -7,7 +7,7 @@ package onboarding;
  * - 누적된 박수 횟수를 return
  *
  * 1. 접근 방식
- * - 다이나믹 프로그래밍 방식 / 탑다운 방식 으로 접근(accumClapCount())
+ * - 다이나믹 프로그래밍 / 탑다운 방식 으로 접근(accumClapCount())
  *  _ 현재(number) 누적 박수 횟수 = 그 전(number-1) 누적 박수 횟수 + 현재 박수 횟수
  *  _ 현재 박수 횟수를 구하는 메소드(calcClapCount) 생성
  *  _ 그전 누적 박수 횟수는 accumClapCount() 메소드 재귀 호출
@@ -22,7 +22,7 @@ package onboarding;
 public class Problem3 {
 
     // 메모제이션
-    private int[] memory = new int[10000];
+    private int[] memory = new int[10001];
 
     public static int solution(int number) {
         Problem3 problem3 = new Problem3();

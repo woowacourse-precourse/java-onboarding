@@ -23,7 +23,7 @@ package onboarding;
 public class Problem2 {
     public static String solution(String cryptogram) {
         Problem2 problem2 = new Problem2();
-        
+
         return problem2.removeDuplicate(cryptogram);
     }
 
