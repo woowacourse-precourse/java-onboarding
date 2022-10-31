@@ -80,12 +80,16 @@ public class Problem7 {
         }
 
         if (answer.size() > 5) {
-            for (int i = 5; i < keySet.size(); i += 1) {
-                answer.remove(i);
-            }
+            removeExtraUser(answer, keySet);
         }
 
         return answer;
+    }
+
+    private static void removeExtraUser(List<String> answer, List<String> keySet){
+        for (int i = 5; i < keySet.size(); i += 1) {
+            answer.remove(i);
+        }
     }
 
 }
