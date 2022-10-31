@@ -41,26 +41,26 @@ class Result {
     }
 
     public void changeWordByRule(){
-        for(char wordChar:wordArray){
+        for(int wordChar:wordArray){
             if(isAlphaLower(wordChar)){
-                char replaceChar= (char)(155-(int)wordChar);
+                char replaceChar= (char)(155-wordChar);
                 toUpperCase(replaceChar);
             }
             if(isAlphaUpper(wordChar)){
-                char replaceChar= (char)(219-(int)wordChar);
+                char replaceChar= (char)(219-wordChar);
                 toLowerCase(replaceChar);
             }
         }
     }
 
-    public boolean isAlphaUpper(char wordChar){
+    public boolean isAlphaUpper(int wordChar){
         if(wordChar>='A'&&wordChar<='Z'){
             return true;
         }
         return false;
     }
 
-    public boolean isAlphaLower(char wordChar){
+    public boolean isAlphaLower(int wordChar){
         if(wordChar>='a'&&wordChar<='z'){
             return true;
         }
