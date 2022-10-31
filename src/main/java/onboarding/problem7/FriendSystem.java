@@ -12,9 +12,23 @@ public class FriendSystem {
     private final HashSet<String> friends;
     private final Map<String, Integer> friendMap;
 
-    public FriendSystem(String user) {
+    public FriendSystem() {
         this.friendMap = new HashMap<>();
         this.friends = new HashSet<>();
+        this.user = "";
+    }
+
+    public List<String> getRecommendedFriendsList(String user, List<List<String>> friends, List<String> visitors){
+        initSystem(user);
+        findFriend(friends);
+        findOtherFriend(friends);
+        checkVisitors(visitors);
+        return RecommendedFriendsListSystem.getRecommendedFriendsList(friendMap);
+    }
+
+    private void initSystem(String user) {
+        friends.clear();
+        friendMap.clear();
         this.user = user;
     }
 
