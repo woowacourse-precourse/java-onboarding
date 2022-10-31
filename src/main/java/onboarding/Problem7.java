@@ -3,8 +3,13 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
+    private static void minusUserFriend(Map<String,Integer> friendScore, Map<String,List<String>> friendMap, String user){
+        List<String> userFriends=friendMap.remove(user);
+        for (String userFriend: userFriends){
+            friendScore.remove(userFriend);
+        }
+    }
     private static Map<String,Integer> plusVisit(Map<String,Integer> friendScore,List<String> visitors){
-
         for (String visiter: visitors){
             if (friendScore.containsKey(visiter)){ //친구관계에 존재한 user라면
                 friendScore.replace(visiter,friendScore.get(visiter)+1);
@@ -58,5 +63,6 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Map<String,List<String>> friendMap =friendmake(friends);
         Map<String,Integer> friendScore = plusVisit(plusFriend(friendMap,user),visitors);
+        minusUserFriend(friendScore, friendMap, user);//userfriend는 제외
     }
 }
