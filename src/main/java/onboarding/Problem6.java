@@ -16,6 +16,9 @@ public class Problem6 {
 
         }
 
+        answer = removeDuplicatedEmail(answer);
+        Collections.sort(answer);
+
         return answer;
     }
 
@@ -42,5 +45,14 @@ public class Problem6 {
         return list;
     }
 
+    /**
+     * 중복된 이메일을 제거
+     * @param list
+     * @return
+     */
+    private static List<String> removeDuplicatedEmail(List<String> list) {
+        Set<String> set = new HashSet<>(list);  //set을 사용하여 중복을 없앤다.
+        return new ArrayList<>(set);
+    }
 
 }
