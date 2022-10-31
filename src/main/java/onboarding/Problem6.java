@@ -1,11 +1,21 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        Map<Integer, String> member = new HashMap<>();
+        for(int i = 0; i < forms.size()-1; i++) {
+            for(int j = i+1; j < forms.size(); j++) {
+                boolean existsSameToken = compareToToken(token(forms.get(i).get(1)), token(forms.get(j).get(1)));
+                if(!existsSameToken) {
+                    member.put(i, forms.get(i).get(0));
+                    member.put(j, forms.get(j).get(0));
+                }
+            }
+        }
+        List<String> answer = new ArrayList<>(member.values());
+        Collections.sort(answer);
         return answer;
     }
     public static List<String> token(String nickName) {
