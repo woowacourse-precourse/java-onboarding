@@ -1,7 +1,6 @@
 package onboarding;
 
 public class Problem4 {
-
     private static final char UPPER_CASE_START = 'A';
     private static final char UPPER_CASE_END = 'Z';
     private static final char LOWER_CASE_START = 'a';
