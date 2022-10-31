@@ -1,6 +1,8 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -19,7 +21,6 @@ public class Problem7 {
         remainUserAndFriends = new HashMap<>();
         remainUserAndScore = new HashMap<>();
         mainUserFriends = new HashSet<>();
-        
         makeAllFriendship(user, friends);
         //for debug
         System.out.println(mainUserFriends);
@@ -34,6 +35,10 @@ public class Problem7 {
         
         List<Friend> candidateFriendList = new ArrayList<>();
         makeCandidateFriendList(candidateFriendList);
+        //for debug
+        System.out.println(candidateFriendList);
+        
+        sortByScoreThenName(candidateFriendList);
         //for debug
         System.out.println(candidateFriendList);
         
@@ -100,6 +105,17 @@ public class Problem7 {
     		}
     		list.add(new Friend(name, score));
     	}
+    }
+    public static void sortByScoreThenName(List<Friend> list) {
+    	Collections.sort(list, new Comparator<>() {
+			@Override
+			public int compare(Friend o1, Friend o2) {
+				if(o1.score == o2.score) {
+					return o1.name.compareTo(o2.name);	//이름 오름차순
+				}
+				return o2.score-o1.score;	//점수 내림차순
+			}
+		});
     }
 }
 class Friend {
