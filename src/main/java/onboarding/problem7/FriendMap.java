@@ -18,8 +18,8 @@ public class FriendMap {
             List<String> aRelationship = friendMap.getOrDefault(friendA, new ArrayList<>());
             List<String> bRelationship = friendMap.getOrDefault(friendB, new ArrayList<>());
 
-            aRelationship.add(friendA);
-            bRelationship.add(friendB);
+            aRelationship.add(friendB);
+            bRelationship.add(friendA);
 
             friendMap.put(friendA, aRelationship);
             friendMap.put(friendB, bRelationship);

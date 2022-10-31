@@ -29,6 +29,7 @@ public class TopFiveCompare {
         return five;
     }
 
+
     public void topFive(List<String> five,
                         List<Map.Entry<String, Integer>> scoreList) {
         for (int idx = 0; idx < 5; idx++) {
@@ -40,8 +41,5 @@ public class TopFiveCompare {
 
             five.add(score.getKey());
         }
-
     }
-
-
 }

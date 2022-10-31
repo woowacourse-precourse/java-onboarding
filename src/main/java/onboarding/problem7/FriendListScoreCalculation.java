@@ -33,7 +33,7 @@ public class FriendListScoreCalculation {
 
             for (String friendId : otherFriends) {
                 if (userFriends.contains(friendId)) {
-                  score += 10;
+                    score += 10;
                 }
             }
 
@@ -46,6 +46,5 @@ public class FriendListScoreCalculation {
                 scoreMap.put(nickname, score + 1);
             }
         }
-
     }
 }

@@ -1,7 +1,6 @@
 package onboarding;
 
 import onboarding.problem7.FriendListScoreCalculation;
-import onboarding.problem7.TestProblem7;
 import onboarding.problem7.TopFiveCompare;
 
 import java.util.*;
@@ -14,8 +13,7 @@ public class Problem7 {
         HashMap<String, Integer> scores = friendListScoreCalculation.scoreCalculations(user, friends, visitors);
 
         TopFiveCompare topFiveCompare = new TopFiveCompare();
-        topFiveCompare.sortOrder(scores);
-
+        result = topFiveCompare.sortOrder(scores);
 
         return result;
     }
