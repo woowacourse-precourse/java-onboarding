@@ -19,6 +19,10 @@ public class Problem6 {
         Set<String> deduplicatedEmail = new LinkedHashSet<>();
         addValueToSet(duplicateMap, deduplicatedEmail);
 
+        return getSortedEmail(deduplicatedEmail);
+    }
+
+    private static List<String> getSortedEmail(Set<String> deduplicatedEmail){
         return deduplicatedEmail.stream()
                 .sorted()
                 .collect(Collectors.toList());
