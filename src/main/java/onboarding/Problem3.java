@@ -37,11 +37,14 @@ public class Problem3 {
                 int pow = 1;
                 int powValue = 1;
                 while (pow < sizeOfNumber) { //제곱 수 구해주기
+                    answer += powValue * numberEachDigitArray.get(pow-1);
                     powValue *= 10;
                     pow += 1;
                 }
+                answer += 1;
 
                 answer += (quotientOfEachDigit-1) * powValue;
+
             } else if (numberEachDigitArray.get(sizeOfNumber-1)%3 != 0) {
                 int pow = 1;
                 int powValue = 1;
@@ -52,7 +55,6 @@ public class Problem3 {
 
                 answer += (quotientOfEachDigit) * powValue;
             }
-
             sizeOfNumber -= 1;
         }
 
