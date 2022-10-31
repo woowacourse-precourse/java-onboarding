@@ -79,9 +79,9 @@
 
 <br/>
 
-- ⬜ calculateVisitorsScore 메소드 구현
-  - ⬜ 사용자의 타임 라인에 방문한 횟수에 대한 점수를 계산
-  - ⬜ HashMap 객체를 이용해 visitors 이름 등장 시마다 People 객체에 1점 부여
+- ✅ calculateVisitorsScore 메소드 구현
+  - ✅ 사용자의 타임 라인에 방문한 횟수에 대한 점수를 계산
+  - ✅ HashMap 객체를 이용해 visitors 이름 등장 시마다 People 객체에 1점 부여
 
 <br/>
 

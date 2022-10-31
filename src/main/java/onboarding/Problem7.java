@@ -102,7 +102,13 @@ public class Problem7 {
     }
 
     public void calculateVisitorsScore(String user, HashMap<String, People> map, List<String> visitors){
+        if(visitors.isEmpty()) return;
 
+        for(String visitor : visitors){
+            if(map.containsKey(visitor)){
+                map.get(visitor).addScore(1);
+            }
+        }
     }
 
     public void addEmailToList(String user, People person,  ArrayList<String> recommendedList){
