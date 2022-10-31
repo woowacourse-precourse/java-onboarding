@@ -12,8 +12,9 @@ public class Problem2 {
         if(cryptogram.length() == 0) return "";
         if(cryptogram.length() == 1){
             return cryptogram;
-        }else if(cryptogram.length() == 2){
-            if(cryptogram.charAt(0) == cryptogram.charAt(1)){
+        }
+        if(cryptogram.length() == 2) {
+            if (cryptogram.charAt(0) == cryptogram.charAt(1)) {
                 return "";
             }
         }
