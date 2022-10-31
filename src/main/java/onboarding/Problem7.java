@@ -34,6 +34,10 @@ public class Problem7 {
         return answer;
     }
 
+    private static boolean isValidFriendsLength(List<List<String>> friends) {
+        return friends.size() >= MIN_FRIENDS_LENGTH && friends.size() <= MAX_FRIENDS_LENGTH;
+    }
+
     private static void isValidIdLengthAndIdSmallCaseRegex(String user, List<List<String>> friends, List<String> visitors) {
         if (!(user.length() >= MIN_FRIEND_ID_LENGTH && user.length() <= MAX_FRIEND_ID_LENGTH))
             throw new IllegalArgumentException("아이디의 길이는 1~30 글자입니다.");
