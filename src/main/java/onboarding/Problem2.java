@@ -21,55 +21,44 @@ public class Problem2 {
     }
 
     private static String compressOverlappingWord(String cryptogram) {
-        StringBuilder afterCompressionExtractFromStack = new StringBuilder();
-        Deque<Character> queue = compressStringWithDeque(cryptogram);
-        usingQueueMakingCompressionResult(afterCompressionExtractFromStack, queue);
-        return afterCompressionExtractFromStack.toString();
+        String beforeCompression;
+        do {
+            beforeCompression = cryptogram;
+            cryptogram = compressString(cryptogram);
+        } while (beforeCompression.length() != cryptogram.length());
+        return cryptogram;
     }
 
-    private static Deque<Character> compressStringWithDeque(String cryptogram) {
-        Deque<Character> stack = new LinkedList<>();
+    private static String compressString(String cryptogram) {
         int idx = 0;
+        StringBuilder thisTurnCompression = new StringBuilder();
         while (idx < cryptogram.length()) {
-            char thisTurnWordChar = cryptogram.charAt(idx);
-            if (stack.isEmpty()) {
-                addElementInStack(stack, thisTurnWordChar);
-                idx += 1;
-                continue;
+            if (idx + 1 < cryptogram.length()) {
+                if (cryptogram.charAt(idx) == cryptogram.charAt(idx + 1)) {
+                    idx = findOverlappingWordCharIdx(cryptogram.charAt(idx), cryptogram, idx + 1);
+                } else if (cryptogram.charAt(idx) != cryptogram.charAt(idx + 1)) {
+                    thisTurnCompression.append(cryptogram.charAt(idx));
+                }
+            } else if (idx + 1 == cryptogram.length()) {
+                thisTurnCompression.append(cryptogram.charAt(idx));
             }
-            Character stackPeekWordChar = stack.removeLast();
-            if (stackPeekWordChar == thisTurnWordChar) {
-                idx = findOverlappingWordCharIdx(stackPeekWordChar, cryptogram, idx + 1);
-            } else if (stackPeekWordChar != thisTurnWordChar) {
-                addElementInStack(stack, stackPeekWordChar);
-                addElementInStack(stack, thisTurnWordChar);
-                idx += 1;
-            }
-
+            idx += 1;
         }
-        return stack;
+
+        return thisTurnCompression.toString();
     }
 
-
-    private static void addElementInStack(Deque<Character> stack, char thisTurnWordChar) {
-        stack.addLast(thisTurnWordChar);
-    }
-
-    private static int findOverlappingWordCharIdx(Character stackPeekWordChar,String cryptogram, int idx) {
+    private static int findOverlappingWordCharIdx(char word, String cryptogram, int idx) {
         while (idx < cryptogram.length()) {
-            if (cryptogram.charAt(idx) == stackPeekWordChar) {
+            char thisTurnWord = cryptogram.charAt(idx);
+            if (thisTurnWord == word) {
                 idx += 1;
-                continue;
+            } else if (thisTurnWord != word) {
+                break;
             }
-            break;
         }
-        return idx;
+        return idx - 1;
     }
 
-    private static void usingQueueMakingCompressionResult(StringBuilder afterCompressionExtractFromStack, Deque<Character> queue) {
-        while (!queue.isEmpty()) {
-            afterCompressionExtractFromStack.append(queue.remove());
-        }
-    }
 
 }
