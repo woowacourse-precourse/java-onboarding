@@ -16,6 +16,17 @@ public class Problem4 {
 
         convertMap = makeMap(frogWords);
 
+        char[] wordArray = word.toCharArray();
+        for (char oneWord : wordArray) {
+            if (isSpace(oneWord)) {
+                answer.append(oneWord);
+                continue;
+            }
+
+            char changedWord = convertFrogWord(oneWord);
+            answer.append(changedWord);
+        }
+
         return answer.toString();
     }
 
@@ -41,6 +52,21 @@ public class Problem4 {
             return true;
         }
         return false;
+    }
+
+    private static char convertFrogWord(char oneWord) {
+        char changedWord = ' ';
+
+        if (isUpper(oneWord)) {
+            changedWord = convertMap.get(oneWord);
+        } else if (isLower(oneWord)) {
+            char upperWord = Character.toUpperCase(oneWord);
+            changedWord = Character.toLowerCase(convertMap.get(upperWord));
+        } else {
+            changedWord = oneWord;
+        }
+
+        return changedWord;
     }
 
 }
