@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-class constant {
+class Constant {
 	static final String upperAlphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	static final String lowerAlphabet = "abcdefghijklmnopqrstuvwxyz";
 	static final String invalidArgument = "InvalidArgument";
@@ -12,7 +12,7 @@ class constant {
 
 }
 
-class validateString {
+class ValidatationString {
 	public static boolean isLower(String alphabet) {
 		return alphabet.matches(alphabet.toLowerCase());
 	}
@@ -26,7 +26,7 @@ class validateString {
 	}
 }
 
-class frog {
+class Frog {
 	private static int index;
 	private static int changedIndex;
 
@@ -35,19 +35,19 @@ class frog {
 	}
 
 	public static void setChangedIndex(int index) {
-		changedIndex = constant.length - index - 1;
+		changedIndex = Constant.length - index - 1;
 	}
 
 	public static String changeWord(String alphabet) {
-		if (validateString.isLower(alphabet) && validateString.isAlphabet(alphabet)) {
-			setIndex(constant.lowerAlphabet.indexOf(alphabet));
+		if (ValidatationString.isLower(alphabet) && ValidatationString.isAlphabet(alphabet)) {
+			setIndex(Constant.lowerAlphabet.indexOf(alphabet));
 			setChangedIndex(index);
-			return constant.lowerAlphabet.substring(changedIndex, changedIndex + 1);
+			return Constant.lowerAlphabet.substring(changedIndex, changedIndex + 1);
 		}
-		if (!validateString.isLower(alphabet) && validateString.isAlphabet(alphabet)) {
-			setIndex(constant.upperAlphabet.indexOf(alphabet));
+		if (!ValidatationString.isLower(alphabet) && ValidatationString.isAlphabet(alphabet)) {
+			setIndex(Constant.upperAlphabet.indexOf(alphabet));
 			setChangedIndex(index);
-			return constant.upperAlphabet.substring(changedIndex, changedIndex + 1);
+			return Constant.upperAlphabet.substring(changedIndex, changedIndex + 1);
 		}
 		return " ";
 	}
@@ -56,12 +56,12 @@ class frog {
 public class Problem4 {
 	public static String solution(String word) {
 		String answer = "";
-		if (!validateString.isvalidLength(word)) {
-			return constant.invalidArgument;
+		if (!ValidatationString.isvalidLength(word)) {
+			return Constant.invalidArgument;
 		}
 		List<String> list = Arrays.asList(word.split(""));
 		word = list.stream()
-			.map(i -> frog.changeWord(i))
+			.map(i -> Frog.changeWord(i))
 			.collect(Collectors.joining());
 		answer = word;
 		return answer;

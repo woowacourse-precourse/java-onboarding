@@ -3,7 +3,7 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-class validationSamethings {
+class ValidationSamethings {
 	public static int validation(ArrayList<String> list) {
 		String pivot;
 		for (int i = 0; i < list.size() - 1; i++) {
@@ -16,7 +16,7 @@ class validationSamethings {
 	}
 }
 
-class removeSamethings {
+class RemoveSamethings {
 	public static String removeSameElement(ArrayList<String> list, int index) {
 		String strArrayToString;
 		String startElement;
@@ -36,7 +36,7 @@ class removeSamethings {
 	}
 }
 
-class invalidStringException {
+class InvalidStringException {
 	public static boolean invalidString(String string) {
 		if (string.length() < 1 || string.length() > 1000) {
 			return true;
@@ -56,9 +56,9 @@ public class Problem2 {
 		ArrayList<String> list = new ArrayList<String>(Arrays.asList(cryptogram.split("")));
 		String answer = cryptogram;
 		int index;
-		if (!invalidStringException.invalidString(cryptogram)) {
-			while ((index = validationSamethings.validation(list)) != -1) {
-				answer = removeSamethings.removeSameElement(list, index);
+		if (!InvalidStringException.invalidString(cryptogram)) {
+			while ((index = ValidationSamethings.validation(list)) != -1) {
+				answer = RemoveSamethings.removeSameElement(list, index);
 			}
 		}
 		return answer;

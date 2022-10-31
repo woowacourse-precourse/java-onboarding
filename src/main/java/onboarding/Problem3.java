@@ -6,10 +6,9 @@ import java.util.stream.IntStream;
 
 public class Problem3 {
 	public static List<Integer> buildList(int number) {
-		List<Integer> list = new ArrayList<Integer>(number);
-		IntStream.
-			rangeClosed(1, number).
-			forEach(i -> {
+		List<Integer> list = new ArrayList<>(number);
+		IntStream.rangeClosed(1, number)
+			.forEach(i -> {
 				while (i > 0) {
 					list.add(i % 10);
 					i /= 10;

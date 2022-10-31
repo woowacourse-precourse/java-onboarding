@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-class validateInformation {
+class ValidationInformation {
 	public static boolean isOverlappedName(List<String> dividedName, List<String> crew) {
 		String crewName = crew.get(1);
 		for (int i = 0; i < dividedName.size(); i++) {
@@ -22,7 +22,7 @@ class validateInformation {
 	public static boolean isValidEmail(List<String> crew) {
 		String crewEmail = crew.get(0);
 		String domain = crewEmail.split("@")[1];
-		if ((crewEmail.length() < 1) && (crewEmail.length() >= 20)) {
+		if ((crewEmail.length() < 1) || (crewEmail.length() >= 20)) {
 			return false;
 		}
 		if (!domain.equals("email.com")) {
@@ -33,7 +33,7 @@ class validateInformation {
 
 	public static boolean isValidNickName(List<String> crew) {
 		String crewNickName = crew.get(1);
-		if ((crewNickName.length() < 1) && (crewNickName.length() >= 20)) {
+		if ((crewNickName.length() < 1) || (crewNickName.length() >= 20)) {
 			return false;
 		}
 		if (!crewNickName.matches(".*[ㄱ-ㅎㅏ-ㅣ가-힣]+.*")) {
@@ -50,7 +50,7 @@ class validateInformation {
 	}
 }
 
-class handleList {
+class HandlingList {
 	public static List<String> removeSamethings(List<String> list) {
 		List<String> newlList = list.stream()
 			.distinct()
@@ -70,7 +70,7 @@ class handleList {
 	}
 }
 
-class handleInformation {
+class HandlingInformation {
 	public static List<String> divideIntoTwoWords(List<String> crew) {
 		List<String> dividedName = new ArrayList<String>();
 		String name = crew.get(1);
@@ -87,17 +87,17 @@ class handleInformation {
 public class Problem6 {
 	public static List<String> solution(List<List<String>> forms) {
 		List<String> answer = new ArrayList<String>();
-		forms = validateInformation.removeInvalidCrew(forms);
+		forms = ValidationInformation.removeInvalidCrew(forms);
 		for (int i = 0; i < forms.size(); i++) {
-			List<String> dividedNickNameList = handleInformation.divideIntoTwoWords(forms.get(i));
+			List<String> dividedNickNameList = HandlingInformation.divideIntoTwoWords(forms.get(i));
 			List<String> list = forms.stream()
-				.filter(crewInfo -> validateInformation.isOverlappedName(dividedNickNameList, crewInfo))
+				.filter(crewInfo -> ValidationInformation.isOverlappedName(dividedNickNameList, crewInfo))
 				.map(crewInfo -> crewInfo.get(0))
 				.collect(Collectors.toList());
-			handleList.copyList(answer, list);
+			HandlingList.copyList(answer, list);
 		}
-		answer = handleList.removeSamethings(answer);
-		answer = handleList.sortList(answer);
+		answer = HandlingList.removeSamethings(answer);
+		answer = HandlingList.sortList(answer);
 		return answer;
 	}
 }

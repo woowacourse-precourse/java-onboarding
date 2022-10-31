@@ -9,7 +9,7 @@ class Money {
 	static final String invalidArgument = "InvalidArgument";
 }
 
-class validateMoney extends calculateMoney {
+class ValidationMoney extends CalculationMoney {
 	public static boolean isDivide(int money) {
 		return (money / divideMoney) > 0;
 	}
@@ -19,7 +19,7 @@ class validateMoney extends calculateMoney {
 	}
 }
 
-class calculateMoney {
+class CalculationMoney {
 	static int divideMoney;
 
 	public static void setDivideMoney(int money) {
@@ -40,10 +40,10 @@ public class Problem5 {
 		int i;
 		List<Integer> answer = new ArrayList<>(Arrays.asList(0, 0, 0, 0, 0, 0, 0, 0, 0));
 		for (i = 0; i < Money.moneyList.length - 1; i++) {
-			calculateMoney.setDivideMoney(Money.moneyList[i]);
-			if (validateMoney.isDivide(money)) {
-				answer.set(i, calculateMoney.divide(money));
-				money = calculateMoney.remainder(money);
+			CalculationMoney.setDivideMoney(Money.moneyList[i]);
+			if (ValidationMoney.isDivide(money)) {
+				answer.set(i, CalculationMoney.divide(money));
+				money = CalculationMoney.remainder(money);
 			}
 		}
 		answer.set(i, money);
