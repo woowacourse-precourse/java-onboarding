@@ -7,17 +7,17 @@ import java.util.List;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer = new ArrayList<>();
 
-        List<Boolean> bmap=new ArrayList<Boolean>(Arrays.asList(new Boolean[21]));
+        List<Boolean> bmap = new ArrayList<Boolean>(Arrays.asList(new Boolean[21]));
         Collections.fill(bmap, false);
 
 
-        for(int i=0;i<forms.size() ;i++){
-            for(int j=0;i < j ;j++){
-                if(bigo(forms.get(i).get(1),forms.get(j).get(1))){// 참인경우 즉 중복된 경우
-                    bmap.add(i,true);
-                    bmap.add(j, true);
+        for(int i=0;i<forms.size()-1 ;i++){
+            for(int j=0;j<i ; j++){
+                if(  bigo(  forms.get(i).get(1),  forms.get(j).get(1)  )  ){// 참인경우 즉 중복된 경우
+                    bmap.set(i,true);
+                    bmap.set(j, true);
                 }
             }
         }
@@ -29,7 +29,6 @@ public class Problem6 {
         for(int i =0; i< answer.size();i++){
             System.out.println(answer.get(i));
         }
-        answer.remove(0);
         Collections.sort(answer);
 
         return answer;
