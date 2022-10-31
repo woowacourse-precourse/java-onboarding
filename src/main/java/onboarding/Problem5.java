@@ -1,6 +1,6 @@
 package onboarding;
 
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
 
 public class Problem5 {
@@ -9,9 +9,7 @@ public class Problem5 {
             throw new IllegalArgumentException();
         }
         var myWallet = new Wallet(money);
-
-        List<Integer> answer = Collections.emptyList();
-        return answer;
+        return myWallet.showMeTheMoney();
     }
 }
 
@@ -22,6 +20,17 @@ class Wallet {
     Wallet(int money) {
         this.money = money;
         this.COUNT = new Integer[9];
+    }
+
+    List<Integer> showMeTheMoney() {
+        int balance = money;
+        for (Currency unit : Currency.values()) {
+            int count = balance / unit.value();
+            int index = unit.ordinal();
+            COUNT[index] = count;
+            balance -= (count * unit.value());
+        }
+        return Arrays.asList(COUNT);
     }
 }
 
