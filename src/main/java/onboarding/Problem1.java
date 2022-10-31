@@ -36,5 +36,15 @@ class Problem1 {
         return multi;
     }
 
+    public static int calMax(List<Integer> list){ // 왼쪽 오른쪽 페이지 계산해주는 메소드
+        int leftNum = Math.max(calPlus(list.get(0)), calMulti((list.get(0))));
+        int rigthNum = Math.max(calPlus(list.get(1)), calMulti((list.get(1))));
+        int max = Math.max(leftNum,rigthNum);
+
+        return max;
+    }
+
+
+
 
 }
