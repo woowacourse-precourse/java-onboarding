@@ -85,4 +85,28 @@ class Relation {
         return friendList;
     }
 
+    static void requestFriend(String from, String to) {
+        boolean present = false;
+        for (int i = 0; i < requestTable.size(); i++) {
+            if (requestTable.get(i)
+                    .contains(from) ||
+                    requestTable.get(i)
+                            .contains(to)) {
+                present = isPresent(from, to, present, i);
+                friendsTable.add(requestTable.get(i));
+                requestTable.remove(i);
+            }
+        }
+        if (!present) {
+            requestTable.add(List.of(from, to));
+        }
+    }
+
+    private static boolean isPresent(String from, String to, boolean isPresent, int i) {
+        if (requestTable.get(i)
+                .containsAll(List.of(from, to))) {
+            isPresent = true;
+        }
+        return isPresent;
+    }
 }
