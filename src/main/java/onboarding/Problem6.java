@@ -14,7 +14,7 @@ public class Problem6 {
         {
             email = apply.get(0);
             email_split = email.split("@");
-            if (!email_split[1].equals("email.com"))
+            if (email_split[1].equals("email.com"))
                 return false;
         }
         return true;
