@@ -36,6 +36,13 @@ class Problem1 {
         }
         return result;
     }
+
+    public static int JudgeResult(int pobi_score, int crong_score){
+        if(pobi_score > crong_score) return 1;
+        else if(pobi_score == crong_score) return 0;
+        else return 2;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
@@ -44,7 +51,15 @@ class Problem1 {
         boolean crong_valid = isValidInput(crong);
         if(!crong_valid) return -1;
 
+        int pobi_leftpageMaxValue = Math.max(SumOfDigit(pobi.get(0)), MultiplicationOfDigit(pobi.get(0)));
+        int pobi_rightpageMaxValue = Math.max(SumOfDigit(pobi.get(1)), MultiplicationOfDigit(pobi.get(1)));
+        int pobi_score = Math.max(pobi_leftpageMaxValue,pobi_rightpageMaxValue);
 
+        int crong_leftpageMaxValue = Math.max(SumOfDigit(crong.get(0)), MultiplicationOfDigit(crong.get(0)));
+        int crong_rightpageMaxValue = Math.max(SumOfDigit(crong.get(1)), MultiplicationOfDigit(crong.get(1)));
+        int crong_score = Math.max(crong_leftpageMaxValue,crong_rightpageMaxValue);
+
+        answer = JudgeResult(pobi_score, crong_score);
         return answer;
     }
 }
