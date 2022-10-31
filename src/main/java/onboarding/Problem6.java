@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 public class Problem6 {
     private static final int TWO_DIGIT_INDEX = 2;
     private static final int DUPLICATED_SIZE = 2;
+
     public static List<String> solution(List<List<String>> forms) {
         Set<String> nicknameList = new LinkedHashSet<>();
         Map<String, List<String>> duplicateMap = new HashMap<>();
@@ -22,7 +23,7 @@ public class Problem6 {
         return getSortedEmail(deduplicatedEmail);
     }
 
-    private static List<String> getSortedEmail(Set<String> deduplicatedEmail){
+    private static List<String> getSortedEmail(Set<String> deduplicatedEmail) {
         return deduplicatedEmail.stream()
                 .sorted()
                 .collect(Collectors.toList());
