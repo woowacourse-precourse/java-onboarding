@@ -8,13 +8,13 @@ class Problem1 {
             return -1;
         }
 
-        int plMax = calMul(pobi.get(0)) > calSum(pobi.get(0)) ? calMul(pobi.get(0)) : calSum(pobi.get(0));
-        int prMax = calMul(pobi.get(1)) > calSum(pobi.get(1)) ? calMul(pobi.get(1)) : calSum(pobi.get(1));
-        int pMax = plMax > prMax ? plMax : prMax;
+        int plMax = (calMul(pobi.get(0)) > calSum(pobi.get(0))) ? calMul(pobi.get(0)) : calSum(pobi.get(0));
+        int prMax = (calMul(pobi.get(1)) > calSum(pobi.get(1))) ? calMul(pobi.get(1)) : calSum(pobi.get(1));
+        int pMax = (plMax > prMax) ? plMax : prMax;
 
-        int clMax = calMul(crong.get(0)) > calSum(crong.get(0)) ? calMul(crong.get(0)) : calSum(crong.get(0));
-        int crMax = calMul(crong.get(1)) > calSum(crong.get(1)) ? calMul(crong.get(1)) : calSum(crong.get(1));
-        int cMax = clMax > crMax ? clMax : crMax;
+        int clMax = (calMul(crong.get(0)) > calSum(crong.get(0))) ? calMul(crong.get(0)) : calSum(crong.get(0));
+        int crMax = (calMul(crong.get(1)) > calSum(crong.get(1))) ? calMul(crong.get(1)) : calSum(crong.get(1));
+        int cMax = (clMax > crMax) ? clMax : crMax;
 
         if (pMax == cMax) {
             return 0;
