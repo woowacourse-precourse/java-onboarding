@@ -22,5 +22,28 @@ class Problem1 {
         }
         return score;
     }
+    // main 함수
+    public static int solution(List<Integer> pobi, List<Integer> crong) {
+        int answer = Integer.MAX_VALUE;
+        int pobiScore;
+        int crongScore;
 
+        // 예외 케이스
+        if (!(crong.get(0).equals(crong.get(1) - 1))||!(pobi.get(0).equals(pobi.get(1) - 1))){
+            return -1;
+        }
+        pobiScore = finalScore(pobi);
+        crongScore = finalScore(crong);
+
+        // 제한 조건
+        if(pobiScore == crongScore){
+            return 0;
+        }
+        else if (pobiScore > crongScore){
+            return 1;
+        }
+        else{
+            return 2;
+        }
+    }
 }
