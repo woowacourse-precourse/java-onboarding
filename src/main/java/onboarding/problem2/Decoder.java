@@ -1,77 +1,70 @@
 package onboarding.problem2;
 
+import java.util.Stack;
+
 /**
  * Decoder for decoding cryptogram
  */
 public class Decoder {
 
-    private final StringBuilder builder;
-
-    private int length, from, to;
-    private boolean duplicate;
-    private char now, next;
+    private final String CIPHERTEXT;
 
     /**
-     * Constructor with cryptogram
-     * @param cryptogram cryptogram
+     * Constructor with cryptogram string
+     *
+     * @param cryptogram encrypt text
      */
     public Decoder(String cryptogram) {
-        builder = new StringBuilder(cryptogram);
+        CIPHERTEXT = cryptogram;
     }
 
-
     /**
-     * Decoding message
-     * @return decoded message
+     * Decode the encrypted text to plain text
+     *
+     * @return plain text
      */
     public String decode() {
-        do {
-            length = to = builder.length();
-            duplicate = false;
+        Stack<Character> plainStack = new Stack<>();
+        plainStack.push(CIPHERTEXT.charAt(0));
+        treatDuplication(plainStack);
+        return buildPlain(plainStack);
+    }
 
-            now = builder.charAt(length - 1);
-            for (int index = length - 2; index >= 0; index--) {
-                next = builder.charAt(index);
-                checkDuplication(index);
+    /**
+     * Search continuous duplication and remove treat
+     *
+     * @param plainStack non duplicated character stack
+     */
+    private void treatDuplication(Stack<Character> plainStack) {
+        boolean duplicate = false;
+        for (int i = 1; i < CIPHERTEXT.length(); i++) {
+            char c = CIPHERTEXT.charAt(i);
+
+            if (plainStack.peek() == c) {
+                duplicate = true;
+            } else if (duplicate) {
+                plainStack.pop();
+                duplicate = false;
+                i--;
+            } else {
+                plainStack.push(c);
             }
-
-        } while (length != builder.length());
-
-        return builder.toString();
-    }
-
-    /**
-     * Check if there is duplication
-     * @param index current index
-     */
-    private void checkDuplication(int index) {
-        if (now == next) treatDuplication(index);
-        else treatNonDuplication(index);
-    }
-
-    /**
-     * Method for treating single duplication
-     * @param index current index
-     */
-    private void treatDuplication(int index) {
-        from = index;
-        duplicate = true;
-        if (index == 0) {
-            builder.delete(from, to);
-            length = 0;
         }
-    }
 
-    /***
-     * Method for treating single non-duplication
-     * @param index current index
-     */
-    private void treatNonDuplication(int index) {
         if (duplicate) {
-            builder.delete(from, to);
-            duplicate = false;
+            plainStack.pop();
         }
-        now = next;
-        to = index + 1;
+    }
+
+    /**
+     * Building plain text from plain stack
+     *
+     * @param plainStack non duplicated character stack
+     * @return plain text
+     */
+    private String buildPlain(Stack<Character> plainStack) {
+        StringBuilder builder = new StringBuilder();
+        while (!plainStack.isEmpty()) builder.append(plainStack.pop());
+        return builder.reverse().toString();
     }
 }
