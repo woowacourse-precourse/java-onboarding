@@ -3,16 +3,15 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
-
-    Map<String, Integer> user_score = new HashMap<>();
-
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        // List<String> answer = Collections.emptyList();
-        // TODO solution 내에 객체를 생성해야 하는 구조 비효율적. 다른 아키텍처 고민해 refactoring 하기.
-        Problem7 problem7 = new Problem7();
-        List<String> answer = problem7.returnResult(user, friends, visitors);
+        Recommendation rec = new Recommendation();
+        List<String> answer = rec.returnResult(user, friends, visitors);
         return answer;
     }
+}
+
+class Recommendation {
+    Map<String, Integer> user_score = new HashMap<>();
 
     List<String> returnResult(String user, List<List<String>> friends, List<String> visitors) {
         List<String> result = new ArrayList<>();
