@@ -4,6 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
+    public static int solution(List<Integer> pobi, List<Integer> crong) {
+        int pobiResult = findMaxNumber(pobi);
+        int crongResult = findMaxNumber(crong);
+
+        return returnResult(pobiResult,crongResult);
+    }
+
     // 두 유저의 값을 비교하여 포비1, 크롱2, 무승부0, 예외 -1을 리턴해주는 함수
     public static int returnResult(int pobiResult, int crongResult){
         if(pobiResult == -1 || crongResult == -1) return -1;
