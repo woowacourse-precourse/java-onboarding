@@ -28,8 +28,8 @@
 >  중복되는 문자열을 제거하여 암호를 해독하는 기능 만들기
 
 #### 기능 목록
-- [x] word를 확인하여 중복되는 부분이 있는지 확인하는 기능 - checkDuplicateLetter()
-- [x] word에서 중복이 확인된 글자들을 제거해주는 기능 - removeDuplicateLetter()
+- [x] word를 확인하여 중복되는 부분이 있는지 확인하는 기능 - findDuplicationLetters()
+- [x] word에서 중복이 확인된 글자들을 제거해주는 기능 - removeDuplicationLetters()
 
 #### 문제 풀이 순서
 1. 먼저 중복된 단어의 인덱스를 찾아서 set에 넣어준다.
@@ -44,7 +44,7 @@
 >  369게임을 할 때 1~number까지 몇 번의 손뼉을 치는지 확인하는 기능 만들기
 
 #### 기능 목록
-- [x] 1~number까지의 박수 횟수 구하는 기능 - sumOfClapCount()
+- [x] 1~number까지의 박수 횟수 구하는 기능 - sumClapCount()
     - [x] 임의의 숫자의 박수 횟수 구하는 기능 - countClap()
 
 #### 문제 풀이 순서
@@ -60,8 +60,8 @@
 >  word가 주어질 때 청개구리 사전을 참고하여 변환한 값을 구하는 기능
 
 #### 기능 목록
-- [x] 청개구리 사전을 map 자료구조에 매핑하는 기능 - createTreeFrogMap()
-- [x] 청개구리 사전을 통해 주어진 word를 확인하여 값을 변환하는 기능 - changeWordWithTreeFrogMap()
+- [x] 청개구리 사전을 map 자료구조에 매핑하는 기능 - createTreeFrogs(), mappingAlphabetToMap
+- [x] 청개구리 사전을 통해 주어진 word를 확인하여 값을 변환하는 기능 - changeWordWithTreeFrogs()
 
 #### 문제 풀이 순서
 1. map에 청개구리 사전을 a~z까지 등록한다.
@@ -92,7 +92,7 @@
 #### 기능 목록
 - [x] 이메일 형식에 맞는지 확인하는 기능 - validateEmail()
 - [x] 닉네임 형식에 맞는지 확인하는 기능 - validateNickname()
-- [x] 같은 글자가 연속적으로 포함되는 닉네임이 있는지 찾는 기능 - findDuplicateNickname(), findDuplicateNicknames()
+- [x] 같은 글자가 연속적으로 포함되는 닉네임이 있는지 찾는 기능 - findDuplicationNicknames(), findDuplicationNickname()
 - [x] 중복된 닉네임을 가진 크루들의 이메일을 조건에 맞게 파싱하는 기능 - parseEmails()
 
 #### 문제 풀이 순서
