@@ -12,7 +12,7 @@ public class Problem4 {
         return answer;
     }
 
-    public static char reverseAlphabet(char character) {
+    private static char reverseAlphabet(char character) {
         if ((65 <= character && character <= 90) || (97 <= character && character <= 122)) {
             if (Character.isUpperCase(character)) {
                 character = (char)(65 + 90 - character);

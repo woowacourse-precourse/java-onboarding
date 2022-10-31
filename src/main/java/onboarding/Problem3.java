@@ -11,7 +11,7 @@ public class Problem3 {
         return answer;
     }
 
-    public static int count369(int number) {
+    private static int count369(int number) {
         int count = 0;
 
         while (number != 0) {

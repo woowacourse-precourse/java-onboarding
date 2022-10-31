@@ -61,8 +61,6 @@ class Problem1 {
         return multiplied;
     }
 
-
-
     private static boolean isPageValid(List<Integer> pobi, List<Integer> crong) {
         if (isFirstOrLastPage(pobi, crong)) {
             return false;

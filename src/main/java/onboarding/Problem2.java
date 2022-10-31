@@ -16,7 +16,7 @@ public class Problem2 {
         return answer;
     }
 
-    public static String removeDuplicates(String cryptogram) {
+    private static String removeDuplicates(String cryptogram) {
         if (cryptogram.length() == 0) {
             return null;
         }
