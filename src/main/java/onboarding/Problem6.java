@@ -7,6 +7,9 @@ public class Problem6 {
     //<twoChar, 처음으로 twoChar를 가진 크루 index> 저장
     private static Map<String, Integer> twoChar = new HashMap<>();
 
+    //answer에 포함되는 크루 idx 저장
+    private static Set<Integer> duplicatedAnswer = new HashSet<>();
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
