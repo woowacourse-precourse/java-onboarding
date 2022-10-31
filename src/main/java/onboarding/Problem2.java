@@ -10,4 +10,14 @@ public class Problem2 {
         */
         return answer;
     }
+    /*
+    암호 해독 순서를 중간 skip할 수 있지만, 해독 결과는 같다.
+    */
+    static String deleteContinuity(String s){
+        for ( int i = 0 ; i < s.length() ; i ++ ){
+            String pattern = "["+s.charAt(i)+"]{2,}";
+            s = s.replaceAll(pattern,"");
+        }
+        return s;
+    }
 }
