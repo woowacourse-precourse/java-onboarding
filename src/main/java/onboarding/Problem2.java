@@ -3,12 +3,16 @@ package onboarding;
 import java.util.Stack;
 
 public class Problem2 {
-    static Stack<Character> stack = new Stack<>();
-    static StringBuilder sb = new StringBuilder();
+    static Stack<Character> stack;
+    static StringBuilder sb;
     public static String solution(String cryptogram) {
-        String answer = "";
-        stack.push(cryptogram.charAt(0));
-        for(int i=1; i<cryptogram.length(); i++){
+        stack = new Stack<>();
+        sb = new StringBuilder();
+        for(int i=0; i<cryptogram.length(); i++){
+            if(i == 0) {
+                stack.push(cryptogram.charAt(i));
+                continue;
+            }
             if(stack.peek() == cryptogram.charAt(i)) stack.pop();
             else{
                 stack.push(cryptogram.charAt(i));

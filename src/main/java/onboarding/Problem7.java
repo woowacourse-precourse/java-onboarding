@@ -3,7 +3,7 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
-    static Map<String, List> friendsMap = new HashMap<>(); //각 사람에 대한 친구 목록
+    static Map<String, List<String>> friendsMap = new HashMap<>(); //각 사람에 대한 친구 목록
     static Map<String, Integer> friendsRec = new HashMap<>(); //친구 추천 후보
     static Queue<Node> pq = new PriorityQueue<>(); //우선 순위 큐.
     static class Node implements Comparable<Node>{
