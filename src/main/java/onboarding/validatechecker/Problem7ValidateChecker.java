@@ -1,10 +1,13 @@
 package onboarding.validatechecker;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Problem7ValidateChecker {
 	private final static int FRIEND_RELATION_SIZE = 2;
 	private final static String LOWER_CASE = "^[a-z]*$";
+
 	public static void areArgumentsValidate(String user, List<List<String>> friends, List<String> visitors){
 		isUserNotNull(user);
 		isFriendsNotNull(friends);
@@ -16,6 +19,15 @@ public class Problem7ValidateChecker {
 		isIdInRange(user,friends,visitors);
 		isVisitorsInRange(visitors);
 		isIdContainOnlyLowerCase(user,friends,visitors);
+		isFriendNotDuplicate(friends);
+	}
+
+	private static void isFriendNotDuplicate(List<List<String>> friends) {
+		Set<List<String>> checkDuplicateSet = new HashSet<>();
+		for (List<String> friendRelation : friends){
+			if(!checkDuplicateSet.add(friendRelation))
+				throw new IllegalArgumentException("중복된 친구관계가 있습니다.");
+		}
 	}
 
 	private static void isIdContainOnlyLowerCase(String user, List<List<String>> friends, List<String> visitors) {

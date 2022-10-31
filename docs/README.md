@@ -67,7 +67,7 @@
 - [x] visitor를 참조하여 friendScoreMap에 +1
 - [x] friendScoreMap을 점수 기준으로 내림차순 정렬
 - [x] 내림차순 정렬한 값을 리스트로 반환 후, userFriendList에 있는 값을 제외하고, 반환
-- [ ] 예외 사항을 체크해줄 Problem7ValidateChecker class 추가
+- [x] 예외 사항을 체크해줄 Problem7ValidateChecker class 추가
   - [x] user가 null인 경우
   - [x] user의 길이가 0이거나, 30초과인 경우
   - [x] frineds가 null인 경우
@@ -78,6 +78,5 @@
   - [x] 아이디의 길이가 0이거나, 30초과인 경우
   - [x] visitors가 null인 경우
   - [x] visitors의 크기가 10,000초과 인 경우
-  - [ ] visitor가 null인 경우
   - [x] 아이디에 소문자 외의 문자가 포함 된 경우
-  - [ ] 중복된 친구관계가 있는 경우
+  - [x] 중복된 친구관계가 있는 경우
