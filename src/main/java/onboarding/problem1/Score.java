@@ -8,12 +8,15 @@ public class Score {
     public static final int VALID_DIFFERENCE = 1;
     public static final int VALID_MIN_RANGE = 3;
     public static final int VALID_MAX_RANGE = 398;
-
-    private final List<Integer> pages;
+    public static final int LEFT_PAGE_INDEX = 0;
+    public static final int RIGHT_PAGE_INDEX = 1;
+    private final int leftPage;
+    private final int rightPage;
 
     public Score(List<Integer> pages) {
         Score.validScore(pages);
-        this.pages = pages;
+        this.leftPage = pages.get(LEFT_PAGE_INDEX);
+        this.rightPage = pages.get(RIGHT_PAGE_INDEX);
     }
 
     private static boolean hasValidLength(List<Integer> pages) {
@@ -64,7 +67,7 @@ public class Score {
     public int getMaxScore() {
         int score = 0;
         int maxValue;
-        for (int page : this.pages) {
+        for (int page : List.of(leftPage, rightPage)) {
             maxValue = Math.max(getSumValue(page), getMultipliedValue(page));
             score = Math.max(score, maxValue);
         }
