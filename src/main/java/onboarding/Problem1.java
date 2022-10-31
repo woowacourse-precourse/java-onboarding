@@ -5,7 +5,30 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
-        return answer;
+        if (!rulecheck(pobi, crong)) {
+            return -1;
+        }
+
+
+        int pobimax = 0;
+        int crongmax = 0;
+        for (int num : pobi) {
+
+            pobimax = Math.max(calc(num), pobimax);
+        }
+        for (int num : crong) {
+            crongmax = Math.max(calc(num), crongmax);
+        }
+
+        if (pobimax > crongmax) {
+            return 1;
+
+        } else if (pobimax < crongmax) {
+            return 2;
+        } else {
+            return 0;
+        }
+
     }
     static int calc(int num) {
         String numstr = Integer.toString(num);
