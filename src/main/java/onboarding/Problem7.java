@@ -9,14 +9,11 @@ public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
-        // 친구 관계  넣기
         setFriendship(friends);
 
-        // 친구의 친구에 점수 부여
         ArrayList<String> friendsOfUser =friendship.get(user);
         setScoreOfAcquaintance(user,friendsOfUser);
 
-        // 방문자에 점수 부여
         setScoreOfVisitor(visitors);
 
         // 사용자와 친구인 경우 제거
@@ -28,10 +25,8 @@ public class Problem7 {
             }
         }
 
-        // user와 친구인 애들 지우기
         List<String> scoreListKeySet = new ArrayList<>(scoreList.keySet());
         Collections.sort(scoreListKeySet, (val1, val2) -> (scoreList.get(val2).compareTo(scoreList.get(val1))));
-
 
         // 최종 top 5 반환
         if(scoreListKeySet.size() < 5)
@@ -84,4 +79,5 @@ public class Problem7 {
                 scoreList.put(visitor, 1);
         }
     }
+
 }
