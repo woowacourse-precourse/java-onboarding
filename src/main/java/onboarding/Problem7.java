@@ -10,6 +10,7 @@ public class Problem7 {
 
         ArrayList<String> userRelationShip = new ArrayList<String>();
         ArrayList<String> friendsRelationShip = new ArrayList<String>();
+        HashMap<String,Integer> map = new HashMap<String,Integer>();
 
 
         for(int i = 0; i<friends.size(); i++){
@@ -39,6 +40,11 @@ public class Problem7 {
                 }
             }
             m++;
+        }
+
+        Set<String> set = new HashSet<String>(friendsRelationShip);
+        for (String str : set) {
+            map.put(str,Collections.frequency(friendsRelationShip, str)*10);
         }
 
 
