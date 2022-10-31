@@ -1,6 +1,5 @@
 package onboarding.problem1.util;
 
-import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
@@ -21,7 +20,6 @@ public class BookGameInputVailidator {
 	}
 
 	public static boolean nextPageValidator(List<Integer> bookGamePlayer) {
-		Collections.sort(bookGamePlayer);
 		return bookGamePlayer.get(0) + 1 == bookGamePlayer.get(1);
 	}
 
