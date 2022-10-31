@@ -24,9 +24,9 @@ public class Problem5 {
     }
 
     private static int countFiveThousand() {
-        int thousand = balance / 1000;
-        balance -= 1000 * thousand;
-        return thousand;
+        int FiveThousand = balance / 5000;
+        balance -= 5000 * FiveThousand;
+        return FiveThousand;
     }
-
+    
 }
