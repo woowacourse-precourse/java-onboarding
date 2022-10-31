@@ -35,6 +35,9 @@ public class Problem7 {
 		friendRelation.put(friend1, newFriend);
 	}
 	public static void plusScoreByFriend(String user) {
+		if(!friendRelation.containsKey(user)){
+			return;
+		}
 		List<String> userFriends = friendRelation.get(user);
 		for (String userFriend : userFriends) {
 			plusFriendScore(userFriend);
@@ -87,7 +90,10 @@ public class Problem7 {
 		return name1.compareTo(name2);
 	}
 	private static void excludeUserFriendAndUser(List<String> recommendList, String user) {
-		List<String> notRecommendList = friendRelation.get(user);
+		List<String> notRecommendList = new ArrayList<>();
+		if(friendRelation.containsKey(user)) {
+			notRecommendList = friendRelation.get(user);
+		}
 		notRecommendList.add(user);
 		for (String notRecommend : notRecommendList) {
 			recommendList.remove(notRecommend);
