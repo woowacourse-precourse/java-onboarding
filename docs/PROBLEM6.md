@@ -21,3 +21,10 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능 조건
+1. 이름에서의 2글자 이상의 연속된 문자에 대해서 검사를 진행해야 한다. -> substring
+2. 크루는 1명 이상 10000명 이하이기에 나이브한 iter 시간 초과 문제 발생 가능
+3. 이메일은 @email.com으로만 -> trim할지 말지 고민
+4. 닉네임 1~20자 끊어서 substring하면 worst 19!
+5. 오른차순 정렬 -> Collections.sort()

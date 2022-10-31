@@ -24,3 +24,29 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능 조건
+1. 유저별 친구 목록이 필요 ( '사용자와 함께 아는 친구의 수' 를 위해 )
+2. O(1)을 위해 HashMap<String, ArrayList<String>> 사용
+3. friends 입력 값 기반으로 HashMap 초기화
+4. visitors 입력 값 - keySet에 없을 시 추가
+5. 사용자와 함께 아는 친구의 수 연산
+6. 사용자의 타임 라인에 방문한 횟수 연산
+
+### 기능 구현
+1. HashMap<String, ArrayList<String>> 초기화 - initHashMap()
+2. 기존 keySet에 없을 시 추가하는 메소드
+3. 사용자와 함께 아는 친구 수 count & calculate
+4. 방문한 횟수 count & calculate
+5. compare & sort 위에 inner class implements Comparable
+
+### 학습 사항
+1. static이란
+   1. Static이란 키워드를 사용하여 정적 필드와 정적 메소드를 선언 (클래스 멤버)
+   2. 정적 필드와 메소드는 객체(인스턴스)에 소속된 멤버가 아니라 클래스에 고정된 멤버
+   3. 클래스 로더가 클래스를 로딩해서 메소드 메모리 영역에 적재할 때 클래스별로 관리된다.
+   4. 클래스의 로딩이 끝나는 즉시 사용 가능.
+
+2. static field 주의 사항
+   1. static 필드를 사용하게 되면 모든 메소드에서 접근할 수 있다는 장점이 있지만,
+      static은 프로그램의 종료시에 비워지는(garbage collector의 관할 밖) 구조이기에 리소스 낭비로 이어질 수 있다.
