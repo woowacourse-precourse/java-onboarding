@@ -26,4 +26,8 @@ public class Problem4 {
     public static char translateUpper(char alphabet){
         return (char) (SumofAZ - alphabet);
     }
+
+    public static char translateLower(char alphabet){
+        return (char) (Sumofaz - alphabet);
+    }
 }
