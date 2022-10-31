@@ -27,7 +27,6 @@ public class Problem4 {
         boolean isAlphabet = isAlphabet(character);
 
         if (isAlphabet) {
-            System.out.println("alphabet");
             return getConvertedChar(character);
         }
 
