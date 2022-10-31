@@ -12,6 +12,11 @@ public class Problem3 {
         			numArr[j] = 0;
         		}
         	}
+        	for(int j = 0; j<5;j++) {
+        		if(numArr[j]==3 || numArr[j]==6 || numArr[j]==9) {
+        			answer++;
+        		}
+        	}
         }
         return answer;
     }
