@@ -2,7 +2,9 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class Problem7 {
 
@@ -34,6 +36,17 @@ public class Problem7 {
             if (userFriends.contains(friend.get(1))) {
                 friendOfFriends.add(friend.get(0));
             }
+        }
+
+        Map<String, Integer> score = new HashMap<>();
+        for (String friendOfFriend : friendOfFriends) {
+            score.put(friendOfFriend, score.getOrDefault(friendOfFriend, 0) + 10);
+        }
+        for (String visitor : visitors) {
+            if (userFriends.contains(visitor)) {
+                continue;
+            }
+            score.put(visitor, score.getOrDefault(visitor, 0) + 1);
         }
 
         List<String> answer = Collections.emptyList();
