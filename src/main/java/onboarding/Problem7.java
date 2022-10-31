@@ -12,7 +12,7 @@ public class Problem7 {
         HashMap<String, Integer> result = new HashMap<>();
 
         for (int i = 0; i < friends.size(); i += 1) {
-            if (friends.get(i).get(1) == user){
+            if (friends.get(i).get(1) == user) {
                 friendList.add(friends.get(i).get(0));
             } else if (friends.get(i).get(0) == user) {
                 friendList.add(friends.get(i).get(1));
@@ -20,8 +20,8 @@ public class Problem7 {
         }
 
         for (int i = 0; i < friends.size(); i += 1) {
-            for (int j = 0; j < friendList.size(); j += 1){
-                if (friends.get(i).get(1) == friendList.get(j)){
+            for (int j = 0; j < friendList.size(); j += 1) {
+                if (friends.get(i).get(1) == friendList.get(j)) {
                     if (result.containsKey(friends.get(i).get(0))) {
                         result.put(friends.get(i).get(0), result.get(friends.get(i).get(0)) + 10);
                     } else {
@@ -36,6 +36,15 @@ public class Problem7 {
                 }
             }
         }
+
+        for (int i = 0; i < visitors.size(); i += 1) {
+            if (result.containsKey(visitors.get(i))) {
+                result.put(visitors.get(i), result.get(visitors.get(i)) + 1);
+            } else {
+                result.put(visitors.get(i), 1);
+            }
+        }
+
         System.out.println(result);
 
         List<String> answer = Collections.emptyList();
