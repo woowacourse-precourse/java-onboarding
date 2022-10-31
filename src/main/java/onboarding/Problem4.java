@@ -18,7 +18,11 @@ public class Problem4 {
         if (c >= 65 && c <= 90) {
             return c;
         }
-        return c;
+        return toFrogLowerCase(c);
+    }
+
+    private static char toFrogLowerCase(char c) {
+        return (char)('m' + 'n' - c);
     }
 
     private static boolean isAlphabetic(char c) {
