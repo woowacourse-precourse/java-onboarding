@@ -4,9 +4,20 @@ import java.util.*;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        if(listCheck(pobi)==true && listCheck(crong)==true){
+            int p = calc(pobi);
+            int c = calc(crong);
+            if(p > c)
+                return 1;
+            else if (c > p)
+                return 2;
+            else
+                return 0;
+        }
+        else
+            return -1;
     }
+    // 두 리스트 비교
     public static int random(){
         Random rd = new Random();
         return rd.nextInt(400); // 1 ~ 399
@@ -66,10 +77,15 @@ class Problem1 {
     }
     // 리스트 값 체크
     public static void main(String[] args){
-        List<Integer> list = makeList();
-        System.out.println(list);
-        System.out.println(calc(list));
-        System.out.println(listCheck(list));
+        System.out.println("| pobi | crong | result |");
+        System.out.println("| --- | --- | --- |");
+        for(int i = 0; i < 3; i++){
+            int result = 0;
+            List<Integer> pobi = makeList();
+            List<Integer> crong = makeList();
+            result = solution(pobi, crong);
+            System.out.println("| " + pobi + " | " + crong + " | " + result + " |");
+        }
     }
     // 리스트 초기화
     // 리스트 비교
