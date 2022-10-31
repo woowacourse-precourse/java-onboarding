@@ -23,4 +23,26 @@ public class Problem7 {
         return friendsList;
     }
 
+    public static ArrayList people(String user, List<List<String>> friends, List<String> friendsList) {
+        ArrayList<String> people = new ArrayList<>();
+        for(int i = 0; i < friendsList.size(); i++) {
+            for(int j = 0; j < friends.size(); j++) {
+                if(!(friends.get(j).get(0).equals(user) || friends.get(j).get(1).equals(user))) {
+                    if(friendsList.get(i).equals(friends.get(j).get(0))) {
+                        if(!(people.contains(friends.get(j).get(1)))) {
+                            people.add(friends.get(j).get(1));
+                        }
+                    }
+                    if(friendsList.get(i).equals(friends.get(j).get(1))) {
+                        if(!(people.contains(friends.get(j).get(0)))) {
+                            people.add(friends.get(j).get(0));
+                        }
+                    }
+                }
+            }
+        }
+
+        return people;
+    }
+
 }
