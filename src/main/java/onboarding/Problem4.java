@@ -9,6 +9,9 @@ public class Problem4 {
             char aChar = wordToChars[i];
 
             if (Character.isAlphabetic(aChar)) {
+
+                if (Character.isUpperCase(aChar)) {
+                }
             }
         }
 
