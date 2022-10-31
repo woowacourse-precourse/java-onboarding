@@ -14,3 +14,20 @@
 | --- | --- |
 | 13 | 4 |
 | 33 | 14 |
+---
+## 도메인 목록
+
+### Game369
+- 369게임에 필요한 기능을 제공하는 클래스
+
+    
+    int getRangeTotalClapTime(int start, int end)
+- 주어진 [start, end] 범위 내의 숫자의 총 박수 횟수를 반환하는 메서드
+
+
+    int getClapTimeOfNumber(int number)
+- 주어진 숫자의 필요한 박수 횟수를 반환하는 메서드
+
+    
+    boolean checkNumberIs369(int number)
+- 주어진 숫자가 박수를 쳐야 하는 숫자인지(3/6/9)인지 여부 반환
