@@ -4,6 +4,9 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+        assert (pobi != null && pobi.size() == 2);
+        assert (crong != null && crong.size() == 2);
+        
         int pobiLeftPage = pobi.get(0);
         int pobiRightPage = pobi.get(1);
         int crongLeftPage = crong.get(0);
