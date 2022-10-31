@@ -21,6 +21,16 @@ public class Problem7 {
         }
         return relation;
     }
+
+    private static HashMap<String, Integer> scoreRelation(List<String> visitors) {
+        HashMap<String, Integer> relation = new HashMap<String, Integer>();
+        for (String visitor : visitors) {
+            int before = relation.getOrDefault(visitor, 0);
+            relation.put(visitor, before+1);
+            relation.put(visitor, before+1);
+        }
+        return relation;
+    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
