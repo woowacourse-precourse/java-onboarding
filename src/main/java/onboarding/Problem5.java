@@ -9,5 +9,16 @@ public class Problem5 {
 
     public static List<Integer> solution(int money) {
         List<Integer> answer = new ArrayList<>();
+        return convertMoneyByUnit(money, answer);
+    }
+
+    private static List<Integer> convertMoneyByUnit(int money, List<Integer> list) {
+        for (int i : moneyUnit) {
+            if (money / i > 0) {
+                list.add(money / i);
+                money %= i;
+            } else list.add(0);
+        }
+        return list;
     }
 }
