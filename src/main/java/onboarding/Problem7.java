@@ -9,6 +9,7 @@ public class Problem7 {
         List<String> answer = new ArrayList<>();
         List<String> recomList =new ArrayList<>();
         List<String> userFriends = new ArrayList<>();
+        List<Integer> recomScore = new ArrayList<Integer>();
 
         for (int i = 0; i < friends.size(); i++) {
             for (int j = 0; j < 2; j++) {
@@ -40,6 +41,9 @@ public class Problem7 {
         for (int i = 0; i < userFriends.size(); i++) {
             recomList.remove(userFriends.get(i));
         }
+
+
+
 
 
 
