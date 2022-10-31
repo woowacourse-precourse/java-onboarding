@@ -1,30 +1,35 @@
 package onboarding;
 
 public class Problem4 {
-    // TODO: reverseCharacter(char c)
-        // If c is non-alphabetic
-            // Return c
+    private static final String ALPHABET = "abcdefghijklmnopqrstuvwxyz";
+    private static final String REVERSE = "zyxwvutsrqponmlkjihgfedcba";
 
-        // If c is uppercase
-            // Convert c to lowercase
-
-        // Get alphabet index of c
-
-        // Assign character at opposite index to c
-
-        // If uppercase
-            // Return c to uppercase
-        // Return c
+    private static char reverseCharacter(char c) {
+        if (!Character.isAlphabetic(c)) {
+            return c;
+        }
+        boolean isUpperCase = false;
+        if (Character.isUpperCase(c)) {
+            isUpperCase = true;
+            c = Character.toLowerCase(c);
+        }
+        int index = ALPHABET.indexOf(c);
+        c = REVERSE.charAt(index);
+        if (isUpperCase) {
+            return Character.toUpperCase(c);
+        }
+        return c;
+    }
 
     public static String solution(String word) {
         if (word.length() < 1 || 1000 < word.length()) {
             return word;
         }
-
-        // For each character in word
-            // Reverse character
-
-        String answer = "";
-        return answer;
+        var builder = new StringBuilder();
+        for (int i = 0; i < word.length(); i++) {
+            char c = reverseCharacter(word.charAt(i));
+            builder.append(c);
+        }
+        return builder.toString();
     }
 }
