@@ -1,0 +1,17 @@
+## 슈도 코드
+
+```
+problem3(int number){
+    clap = 0;
+    for(int i=1;i<=number;i++){
+        clap += getClapsByNumber(i);
+    }
+    return clap;
+}
+```
+
+## 기능 요구 사항
+- 규칙에 따라 해당 숫자에서 박수치는 횟수를 구해주는 int getClapsByNumber(int)
+
+TODO
+- 
