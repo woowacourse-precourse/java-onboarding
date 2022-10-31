@@ -15,7 +15,7 @@ public class Problem7 {
 	static final int VISIT_POINT = 1;
 
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-		HashMap<String, Integer> strangersAndPoints = makeHashMap(makeStrangersList(user, friends, visitors));
+		HashMap<String, Integer> strangersAndPoints = makeHashMap(returnStrangers(user, friends, visitors));
 		plusFriendPoint(user, friends, strangersAndPoints);
 		plusVisitPoint(visitors, strangersAndPoints);
 		return returnRankingList(strangersAndPoints);
@@ -32,14 +32,14 @@ public class Problem7 {
 		return rankingList;
 	}
 
-	private static void preprocessEntryList(List<Map.Entry<String, Integer>> entryList) {
-		entryList.sort(Map.Entry.comparingByKey());
-		entryList.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
-		removeZeroValue(entryList);
+	private static void preprocessEntryList(List<Map.Entry<String, Integer>> entries) {
+		entries.sort(Map.Entry.comparingByKey());
+		entries.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
+		removeZeroValue(entries);
 	}
 
-	private static void removeZeroValue(List<Map.Entry<String, Integer>> entryList) {
-		entryList.removeIf(x -> x.getValue() == 0);
+	private static void removeZeroValue(List<Map.Entry<String, Integer>> entries) {
+		entries.removeIf(x -> x.getValue() == 0);
 	}
 
 	private static void plusVisitPoint(List<String> visitors, HashMap<String, Integer> strangersAndPoints) {
@@ -70,13 +70,13 @@ public class Problem7 {
 		return new ArrayList<>(friendsSet);
 	}
 
-	private static HashMap<String, Integer> makeHashMap(List<String> strangersList) {
+	private static HashMap<String, Integer> makeHashMap(List<String> strangers) {
 		HashMap<String, Integer> strangersAndPoints = new HashMap<>();
-		strangersList.forEach(stranger -> strangersAndPoints.put(stranger, 0));
+		strangers.forEach(stranger -> strangersAndPoints.put(stranger, 0));
 		return strangersAndPoints;
 	}
 
-	private static List<String> makeStrangersList(String user, List<List<String>> friends, List<String> visitors) {
+	private static List<String> returnStrangers(String user, List<List<String>> friends, List<String> visitors) {
 		List<String> strangers = new ArrayList<>();
 		for (List<String> friend : friends) {
 			strangers = addTargetToList(strangers, friend);
