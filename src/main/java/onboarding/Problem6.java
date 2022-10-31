@@ -40,7 +40,11 @@ public class Problem6 {
      * @param root
      */
     public static void find(Set<String> result, Trie root) {
+        if (root.userEmail.size() > 1) result.addAll(root.userEmail);
 
+        for (Character key : root.children.keySet()) {
+            find(result, root.children.get(key));
+        }
     }
 
     /**
