@@ -5,11 +5,15 @@ import java.util.stream.Collectors;
 
 public class Problem7 {
     private static final Integer ANSWER_LIMIT_SIZE = 5;
-    private static final Integer VISITOR_SCORE = 1;
-    private static final Integer MUTUAL_FRIEND_SCORE = 10;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        return new User(user, getFriendsByUser(user, friends), visitors).getRecommendFriendNames(friends);
+        return new User(user, getFriendsByUser(user, friends), visitors).getRecommendFriendNames(friends,
+                ANSWER_LIMIT_SIZE, (o1, o2) -> {
+                    if (o1.getValue().equals(o2.getValue())) {
+                        return o1.getKey().compareTo(o2.getKey());
+                    }
+                    return o2.getValue() - o1.getValue();
+                });
     }
 
     private static HashSet<String> getFriendsByUser(String userName, List<List<String>> friendRelations) {
@@ -31,9 +35,9 @@ public class Problem7 {
 
 
     private static class User {
-        String userName;
-        HashSet<String> friends;
-        List<String> visitors;
+        private final String userName;
+        private final HashSet<String> friends;
+        private final List<String> visitors;
 
         public User(String userName, HashSet<String> friends, List<String> visitors) {
             this.userName = userName;
@@ -41,75 +45,83 @@ public class Problem7 {
             this.visitors = visitors;
         }
 
+        public List<String> getRecommendFriendNames(List<List<String>> friendRelations, Integer size,
+                                                     Comparator<Map.Entry<String, Integer>> comparator) {
+            RecommendFriendScore score = new RecommendFriendScore(this);
 
-        public List<String> getRecommendFriendNames(List<List<String>> friendRelations) {
-            Map<String, Integer> scoreMap = getScoreMap(this.friends, this.withoutUserFriendRelations(friendRelations), visitors);
-            List<Map.Entry<String, Integer>> list = new ArrayList<>(scoreMap.entrySet());
+            for (List<String> list: this.withoutUserFriendRelations(friendRelations)) {
+                String friendA = list.get(0);
+                String friendB = list.get(1);
 
-            list.sort((o1, o2) -> {
-                if (o1.getValue().equals(o2.getValue())) {
-                    return o1.getKey().compareTo(o2.getKey());
-                }
-                return o2.getValue() - o1.getValue();
-            });
+                score.addMutualFriend(friendA, friendB);
+                score.addMutualFriend(friendB, friendA);
+            }
+
+            for (String visitor: this.getVisitors()) {
+                score.addVisitor(visitor);
+            }
 
 
-            return list.stream().map(Map.Entry::getKey).limit(ANSWER_LIMIT_SIZE).collect(Collectors.toList());
+            List<Map.Entry<String, Integer>> list = score.getRecommendList();
+            list.sort(comparator);
+
+            return list.stream().map(Map.Entry::getKey).limit(size).collect(Collectors.toList());
         }
 
         private List<List<String>> withoutUserFriendRelations(List<List<String>> friendRelations) {
            return friendRelations.stream()
-                    .filter((users) -> !users.contains(this.userName))
+                    .filter((users) -> !users.contains(this.getUserName()))
                     .collect(Collectors.toList());
         }
+
+        public String getUserName() {
+            return userName;
+        }
+
+        public HashSet<String> getFriends() {
+            return friends;
+        }
+
+        public List<String> getVisitors() {
+            return visitors;
+        }
     }
 
-    private static Map<String, Integer> getScoreMap(HashSet<String> userFriendSet, List<List<String>> friends,
-                                                  List<String> visitors) {
-        Map<String, Integer> result = new HashMap<>();
+    public static class RecommendFriendScore {
+        private final Integer VISITOR_SCORE = 1;
+        private final Integer MUTUAL_FRIEND_SCORE = 10;
 
-        mutualFriendScore(result, userFriendSet, friends);
-        visitorScore(result, userFriendSet, visitors);
+        private final User user;
+        private final Map<String, Integer> scoreMap = new HashMap<>();
 
-        return result;
-    }
+        public RecommendFriendScore(User user) {
+           this.user = user;
+        }
 
-    private static void visitorScore(Map<String, Integer> scoreMap, HashSet<String> userFriendSet,
-                                      List<String> visitors) {
-        for (String visitor: visitors) {
-            if (userFriendSet.contains(visitor)) {
-                continue;
+        public void addMutualFriend(String receiver, String friend) {
+            if (this.user.getFriends().contains(friend)) {
+                this.updateScore(receiver, MUTUAL_FRIEND_SCORE);
+            }
+        }
+
+        public void addVisitor(String visitor) {
+            if (this.user.getFriends().contains(visitor) || visitor.equals(user.getUserName())) {
+                return;
             }
 
-            updateScore(scoreMap, visitor, VISITOR_SCORE);
-        }
-    }
-
-    private static void mutualFriendScore(Map<String, Integer> scoreMap, HashSet<String> userFriendSet,
-                                          List<List<String>> friends) {
-        for (List<String> list: friends) {
-            String friendA = list.get(0);
-            String friendB = list.get(1);
-
-            updateMutualFriendScore(scoreMap, userFriendSet, friendA, friendB);
-            updateMutualFriendScore(scoreMap, userFriendSet, friendB, friendA);
-        }
-    }
-
-    private static void updateMutualFriendScore(Map<String, Integer> scoreMap, HashSet<String> userFriendSet,
-                                          String scoreReceiver, String friend) {
-        if (userFriendSet.contains(scoreReceiver) || !userFriendSet.contains(friend)) {
-            return;
+            this.updateScore(visitor, VISITOR_SCORE);
         }
 
-        updateScore(scoreMap, scoreReceiver, MUTUAL_FRIEND_SCORE);
-    }
+        public List<Map.Entry<String, Integer>> getRecommendList() {
+            return new ArrayList<>(scoreMap.entrySet());
+        }
 
-    private static void updateScore(Map<String, Integer> scoreMap, String receiver, Integer score) {
-        if (!scoreMap.containsKey(receiver)) {
-            scoreMap.put(receiver, score);
-        } else {
-            scoreMap.put(receiver, scoreMap.get(receiver) + score);
+        private void updateScore(String receiver, Integer score) {
+            if (!this.scoreMap.containsKey(receiver)) {
+                this.scoreMap.put(receiver, score);
+            } else {
+                this.scoreMap.put(receiver, this.scoreMap.get(receiver) + score);
+            }
         }
     }
 }
