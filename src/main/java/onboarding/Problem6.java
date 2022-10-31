@@ -1,7 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.HashSet;
+import java.util.Collections;
 import java.util.List;
 
 public class Problem6 {
@@ -19,7 +19,8 @@ public class Problem6 {
             for (int j=0; j<name.length() - 1; j++) {
                 subString = "" + name.charAt(j) + name.charAt(j+1);
 
-                for (int k=i+1; k<forms.size(); k++) {
+                for (int k=0; k<forms.size(); k++) {
+                    if (forms.get(k).get(1).equals(name)) continue;
                     if (forms.get(k).get(1).contains(subString) && !answer.contains(forms.get(k).get(0))) {
                         answer.add(forms.get(k).get(0));
                     }
@@ -27,7 +28,7 @@ public class Problem6 {
             }
         }
 
-
+        Collections.sort(answer);
 
         return answer;
     }
