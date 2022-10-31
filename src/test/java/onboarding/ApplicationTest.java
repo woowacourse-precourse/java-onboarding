@@ -555,269 +555,290 @@ class ApplicationTest {
 
     @Nested
     class Problem7Test {
-        @Test
-        void case1() {
-            String user = "mrko";
-            List<List<String>> friends = List.of(
-                    List.of("donut", "andole"),
-                    List.of("donut", "jun"),
-                    List.of("donut", "mrko"),
-                    List.of("shakevan", "andole"),
-                    List.of("shakevan", "jun"),
-                    List.of("shakevan", "mrko")
-            );
-            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
-            List<String> result = List.of("andole", "jun", "bedi");
-            assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+        @Nested
+        @DisplayName("문제 7 성공 케이스 테스트")
+        class Problem7SuccessTest {
+            @Test
+            @DisplayName("이미 친구관계인 친구는 제외하고 추천 친구 목록을 만든다.")
+            void case1() {
+                String user = "mrko";
+                List<List<String>> friends = List.of(
+                        List.of("donut", "andole"),
+                        List.of("donut", "jun"),
+                        List.of("donut", "mrko"),
+                        List.of("shakevan", "andole"),
+                        List.of("shakevan", "jun"),
+                        List.of("shakevan", "mrko")
+                );
+                List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+                List<String> result = List.of("andole", "jun", "bedi");
+                assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+            }
+
+            @Test
+            @DisplayName("추천할 친구가 없는 경우는 주어지지 않는다.")
+            void case2() {
+                String user = "mrko";
+                List<List<String>> friends = List.of(
+                        List.of("donut", "mrko"),
+                        List.of("shakevan", "mrko"),
+                        List.of("melon", "mrko"),
+                        List.of("mrko", "apple"),
+                        List.of("banana", "mrko")
+                );
+                List<String> visitors = List.of("apple", "apple", "donut", "shakevan");
+                List<String> result = List.of();
+                assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+            }
+
+            @Test
+            @DisplayName("추천 점수가 같은 경우는 이름순으로 정렬한다.")
+            void case3() {
+                String user = "mrko";
+                List<List<String>> friends = List.of(
+                        List.of("a", "mrko"),
+                        List.of("a", "c"),
+                        List.of("b", "a"),
+                        List.of("b", "d"),
+                        List.of("a", "e")
+                );
+                List<String> visitors = List.of("c", "b", "e");
+                List<String> result = List.of("b", "c", "e");
+                assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+            }
         }
 
-        @Test
-        @DisplayName("추천할 친구가 없는 경우는 주어지지 않는다.")
-        void case2() {
-            String user = "mrko";
-            List<List<String>> friends = List.of(
-                List.of("donut", "mrko"),
-                List.of("shakevan", "mrko"),
-                List.of("melon", "mrko"),
-                List.of("mrko", "apple"),
-                List.of("banana", "mrko")
-            );
-            List<String> visitors = List.of("apple", "apple", "donut", "shakevan");
-            List<String> result = List.of();
-            assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
-        }
-
-        @Test
-        @DisplayName("추천 점수가 같은 경우는 이름순으로 정렬한다.")
-        void case3() {
-            String user = "mrko";
-            List<List<String>> friends = List.of(
-                List.of("a", "mrko"),
-                List.of("a", "c"),
-                List.of("b", "a"),
-                List.of("b", "d"),
-                List.of("a", "e")
-            );
-            List<String> visitors = List.of("c", "b", "e");
-            List<String> result = List.of("b", "c", "e");
-            assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
-        }
-
-        @Test
-        @DisplayName("user가 null이면 예외 발생")
-        void test4() {
-            String user = null;
-            List<List<String>> friends = List.of(
-                    List.of("donut", "andole"),
-                    List.of("donut", "jun"),
-                    List.of("donut", "mrko"),
-                    List.of("shakevan", "andole"),
-                    List.of("shakevan", "jun"),
-                    List.of("shakevan", "mrko")
-            );
-            List<String> visitors = List.of("C", "B", "E");
-            assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(
-                            String.format(FriendValidator.INVALID_ID_LENGTH_MESSAGE_FORMAT,
-                                    FriendValidator.MIN_ID_LENGTH_RANGE,
-                                    FriendValidator.MAX_ID_LENGTH_RANGE)
+        @Nested
+        @DisplayName("문제 7 실패 케이스 테스트")
+        class Problem7FailureTest {
+            @Nested
+            @DisplayName("문제 7 실패 케이스 테스트 - user 입력값")
+            class Problem7UserFailureTest {
+                @Test
+                @DisplayName("user가 null이면 예외 발생")
+                void test1() {
+                    String user = null;
+                    List<List<String>> friends = List.of(
+                            List.of("donut", "andole"),
+                            List.of("donut", "jun"),
+                            List.of("donut", "mrko"),
+                            List.of("shakevan", "andole"),
+                            List.of("shakevan", "jun"),
+                            List.of("shakevan", "mrko")
                     );
-        }
+                    List<String> visitors = List.of("C", "B", "E");
+                    assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
+                            .isInstanceOf(IllegalArgumentException.class)
+                            .hasMessage(
+                                    String.format(FriendValidator.INVALID_ID_LENGTH_MESSAGE_FORMAT,
+                                            FriendValidator.MIN_ID_LENGTH_RANGE,
+                                            FriendValidator.MAX_ID_LENGTH_RANGE)
+                            );
+                }
 
-        @Test
-        @DisplayName("user의 길이가 1 미만이면 예외 발생")
-        void test5() {
-            String user = "";
-            List<List<String>> friends = List.of(
-                    List.of("donut", "andole"),
-                    List.of("donut", "jun"),
-                    List.of("donut", "mrko"),
-                    List.of("shakevan", "andole"),
-                    List.of("shakevan", "jun"),
-                    List.of("shakevan", "mrko")
-            );
-            List<String> visitors = List.of("C", "B", "E");
-            assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(
-                            String.format(FriendValidator.INVALID_ID_LENGTH_MESSAGE_FORMAT,
-                                    FriendValidator.MIN_ID_LENGTH_RANGE,
-                                    FriendValidator.MAX_ID_LENGTH_RANGE)
+                @Test
+                @DisplayName("user의 길이가 1 미만이면 예외 발생")
+                void test2() {
+                    String user = "";
+                    List<List<String>> friends = List.of(
+                            List.of("donut", "andole"),
+                            List.of("donut", "jun"),
+                            List.of("donut", "mrko"),
+                            List.of("shakevan", "andole"),
+                            List.of("shakevan", "jun"),
+                            List.of("shakevan", "mrko")
                     );
-        }
+                    List<String> visitors = List.of("C", "B", "E");
+                    assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
+                            .isInstanceOf(IllegalArgumentException.class)
+                            .hasMessage(
+                                    String.format(FriendValidator.INVALID_ID_LENGTH_MESSAGE_FORMAT,
+                                            FriendValidator.MIN_ID_LENGTH_RANGE,
+                                            FriendValidator.MAX_ID_LENGTH_RANGE)
+                            );
+                }
 
-        @Test
-        @DisplayName("user의 길이가 30을 초과하면 예외 발생")
-        void test6() {
-            String user = "policeshowedupatmydoorwithawarrant";
-            List<List<String>> friends = List.of(
-                    List.of("donut", "andole"),
-                    List.of("donut", "jun"),
-                    List.of("donut", "mrko"),
-                    List.of("shakevan", "andole"),
-                    List.of("shakevan", "jun"),
-                    List.of("shakevan", "mrko")
-            );
-            List<String> visitors = List.of("C", "B", "E");
-            assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(
-                            String.format(
-                                    FriendValidator.INVALID_ID_LENGTH_MESSAGE_FORMAT,
-                                    FriendValidator.MIN_ID_LENGTH_RANGE,
-                                    FriendValidator.MAX_ID_LENGTH_RANGE
+                @Test
+                @DisplayName("user의 길이가 30을 초과하면 예외 발생")
+                void test3() {
+                    String user = "policeshowedupatmydoorwithawarrant";
+                    List<List<String>> friends = List.of(
+                            List.of("donut", "andole"),
+                            List.of("donut", "jun"),
+                            List.of("donut", "mrko"),
+                            List.of("shakevan", "andole"),
+                            List.of("shakevan", "jun"),
+                            List.of("shakevan", "mrko")
+                    );
+                    List<String> visitors = List.of("C", "B", "E");
+                    assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
+                            .isInstanceOf(IllegalArgumentException.class)
+                            .hasMessage(
+                                    String.format(
+                                            FriendValidator.INVALID_ID_LENGTH_MESSAGE_FORMAT,
+                                            FriendValidator.MIN_ID_LENGTH_RANGE,
+                                            FriendValidator.MAX_ID_LENGTH_RANGE
+                                    ));
+                }
+            }
+
+            @Nested
+            @DisplayName("문제 7 실패 케이스 테스트 - relations 입력값")
+            class Problem7RelationsFailureTest {
+                @Test
+                @DisplayName("relations 배열이 null이면 예외 발생")
+                void test4() {
+                    String user = "mrko";
+                    List<List<String>> friends = null;
+                    List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+                    assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
+                            .isInstanceOf(IllegalArgumentException.class)
+                            .hasMessage(String.format(
+                                    FriendValidator.INVALID_RELATIONS_SIZE_MESSAGE_FORMAT,
+                                    FriendValidator.MIN_RELATION_SIZE,
+                                    FriendValidator.MAX_RELATION_SIZE
                             ));
-        }
+                }
 
-        @Test
-        @DisplayName("friend 배열이 null이면 예외 발생")
-        void test7() {
-            String user = "mrko";
-            List<List<String>> friends = null;
-            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
-            assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(String.format(
-                            FriendValidator.INVALID_RELATIONS_SIZE_MESSAGE_FORMAT,
-                            FriendValidator.MIN_RELATION_SIZE,
-                            FriendValidator.MAX_RELATION_SIZE
-                    ));
-        }
+                @Test
+                @DisplayName("relations 배열이 비어 있으면 예외 발생")
+                void test5() {
+                    String user = "mrko";
+                    List<List<String>> friends = List.of();
+                    List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+                    assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
+                            .isInstanceOf(IllegalArgumentException.class)
+                            .hasMessage(String.format(
+                                    FriendValidator.INVALID_RELATIONS_SIZE_MESSAGE_FORMAT,
+                                    FriendValidator.MIN_RELATION_SIZE,
+                                    FriendValidator.MAX_RELATION_SIZE
+                            ));
+                }
 
-        @Test
-        @DisplayName("friend 배열이 비어 있으면 예외 발생")
-        void test8() {
-            String user = "mrko";
-            List<List<String>> friends = List.of();
-            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
-            assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(String.format(
-                            FriendValidator.INVALID_RELATIONS_SIZE_MESSAGE_FORMAT,
-                            FriendValidator.MIN_RELATION_SIZE,
-                            FriendValidator.MAX_RELATION_SIZE
-                    ));
-        }
+                @Test
+                @DisplayName("relations 배열이 10,000을 넘어가면 예외 발생")
+                void test6() {
+                    String user = "mrko";
+                    List<List<String>> friends = new ArrayList<>();
+                    for (int i = 0; i < 10_001; i++) {
+                        friends.add(List.of("a", "a"));
+                    }
+                    List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+                    assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
+                            .isInstanceOf(IllegalArgumentException.class)
+                            .hasMessage(String.format(
+                                    FriendValidator.INVALID_RELATIONS_SIZE_MESSAGE_FORMAT,
+                                    FriendValidator.MIN_RELATION_SIZE,
+                                    FriendValidator.MAX_RELATION_SIZE
+                            ));
+                }
 
-        @Test
-        @DisplayName("friend 배열이 10,000을 넘어가면 예외 발생")
-        void test9() {
-            String user = "mrko";
-            List<List<String>> friends = new ArrayList<>();
-            for (int i = 0; i < 10_001; i++) {
-                friends.add(List.of("a", "a"));
-            }
-            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
-            assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(String.format(
-                            FriendValidator.INVALID_RELATIONS_SIZE_MESSAGE_FORMAT,
-                            FriendValidator.MIN_RELATION_SIZE,
-                            FriendValidator.MAX_RELATION_SIZE
-                    ));
-        }
-
-        @Test
-        @DisplayName("friend 각 원소의 길이가 2가 아닌 경우 예외 발생")
-        void test10() {
-            String user = "mrko";
-            List<List<String>> friends = List.of(
-                    List.of("donut", "mrko"),
-                    List.of("shakevan", "mrko", "apple"),
-                    List.of("melon", "mrko"),
-                    List.of("mrko", "apple"),
-                    List.of("banana", "mrko")
-            );
-            List<String> visitors = List.of("apple", "apple", "donut", "shakevan");
-            assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(String.format(
-                            FriendValidator.INVALID_RELATION_SIZE_MESSAGE_FORMAT,
-                            FriendValidator.VALID_RELATION_SIZE)
+                @Test
+                @DisplayName("relations 각 원소의 길이가 2가 아닌 경우 예외 발생")
+                void test7() {
+                    String user = "mrko";
+                    List<List<String>> friends = List.of(
+                            List.of("donut", "mrko"),
+                            List.of("shakevan", "mrko", "apple"),
+                            List.of("melon", "mrko"),
+                            List.of("mrko", "apple"),
+                            List.of("banana", "mrko")
                     );
-        }
-
-        @Test
-        @DisplayName("visitor 배열이 null 이면 예외 발생")
-        void test11() {
-            String user = "mrko";
-            List<List<String>> friends = List.of(
-                    List.of("donut", "mrko"),
-                    List.of("shakevan", "mrko"),
-                    List.of("melon", "mrko"),
-                    List.of("mrko", "apple"),
-                    List.of("banana", "mrko")
-            );
-            List<String> visitors = null;
-            assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(String.format(
-                            FriendValidator.INVALID_VISITORS_SIZE_MESSAGE_FORMAT,
-                            FriendValidator.MIN_VISITORS_SIZE,
-                            FriendValidator.MAX_VISITORS_SIZE
-                    ));
-        }
-
-        @Test
-        @DisplayName("visitor 배열이 10,000을 넘어가면 예외 발생")
-        void test127() {
-            String user = "mrko";
-            List<List<String>> friends = List.of(
-                    List.of("donut", "andole"),
-                    List.of("donut", "jun"),
-                    List.of("donut", "mrko"),
-                    List.of("shakevan", "andole"),
-                    List.of("shakevan", "jun"),
-                    List.of("shakevan", "mrko")
-            );
-            List<String> visitors = new ArrayList<>();
-            for (int i = 0; i < 10_001; i++) {
-                visitors.add("a");
+                    List<String> visitors = List.of("apple", "apple", "donut", "shakevan");
+                    assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
+                            .isInstanceOf(IllegalArgumentException.class)
+                            .hasMessage(String.format(
+                                    FriendValidator.INVALID_RELATION_SIZE_MESSAGE_FORMAT,
+                                    FriendValidator.VALID_RELATION_SIZE)
+                            );
+                }
             }
-            assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(String.format(
-                            FriendValidator.INVALID_VISITORS_SIZE_MESSAGE_FORMAT,
-                            FriendValidator.MIN_VISITORS_SIZE,
-                            FriendValidator.MAX_VISITORS_SIZE
-                    ));
-        }
 
-        @Test
-        @DisplayName("사용자 아이디가 알파벳 소문자가 아니면 예외 발생")
-        void test15() {
-            String user = "Mkdr";
-            List<List<String>> friends = List.of(
-                    List.of("donut", "andole"),
-                    List.of("donut", "jun"),
-                    List.of("donut", "mrko"),
-                    List.of("shakevan", "andole"),
-                    List.of("shakevan", "jun"),
-                    List.of("shakevan", "mrko")
-            );
-            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
-            assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(FriendValidator.INVALID_ID_FORMAT_MESSAGE);
-        }
+            @Nested
+            @DisplayName("문제 7 실패 케이스 테스트 - visitor 입력값")
+            class Problem7VisitorsFailureTest {
+                @Test
+                @DisplayName("visitor 배열이 null 이면 예외 발생")
+                void test8() {
+                    String user = "mrko";
+                    List<List<String>> friends = List.of(
+                            List.of("donut", "mrko"),
+                            List.of("shakevan", "mrko"),
+                            List.of("melon", "mrko"),
+                            List.of("mrko", "apple"),
+                            List.of("banana", "mrko")
+                    );
+                    List<String> visitors = null;
+                    assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
+                            .isInstanceOf(IllegalArgumentException.class)
+                            .hasMessage(String.format(
+                                    FriendValidator.INVALID_VISITORS_SIZE_MESSAGE_FORMAT,
+                                    FriendValidator.MIN_VISITORS_SIZE,
+                                    FriendValidator.MAX_VISITORS_SIZE
+                            ));
+                }
 
-        @Test
-        @DisplayName("동일한 친구 관계가 중복해서 주어지면 예외 발생")
-        void test16() {
-            String user = "mkdr";
-            List<List<String>> friends = List.of(
-                    List.of("andole", "donut"),
-                    List.of("donut", "andole"),
-                    List.of("donut", "mrko"),
-                    List.of("shakevan", "andole"),
-                    List.of("shakevan", "jun"),
-                    List.of("shakevan", "mrko")
-            );
-            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
-            assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
-                    .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessage(FriendValidator.DUPLICATING_RELATION_MESSAGE);
+                @Test
+                @DisplayName("visitor 배열이 10,000을 넘어가면 예외 발생")
+                void test9() {
+                    String user = "mrko";
+                    List<List<String>> friends = List.of(
+                            List.of("donut", "andole"),
+                            List.of("donut", "jun"),
+                            List.of("donut", "mrko"),
+                            List.of("shakevan", "andole"),
+                            List.of("shakevan", "jun"),
+                            List.of("shakevan", "mrko")
+                    );
+                    List<String> visitors = new ArrayList<>();
+                    for (int i = 0; i < 10_001; i++) {
+                        visitors.add("a");
+                    }
+                    assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
+                            .isInstanceOf(IllegalArgumentException.class)
+                            .hasMessage(String.format(
+                                    FriendValidator.INVALID_VISITORS_SIZE_MESSAGE_FORMAT,
+                                    FriendValidator.MIN_VISITORS_SIZE,
+                                    FriendValidator.MAX_VISITORS_SIZE
+                            ));
+                }
+
+                @Test
+                @DisplayName("사용자 아이디가 알파벳 소문자가 아니면 예외 발생")
+                void test10() {
+                    String user = "Mkdr";
+                    List<List<String>> friends = List.of(
+                            List.of("donut", "andole"),
+                            List.of("donut", "jun"),
+                            List.of("donut", "mrko"),
+                            List.of("shakevan", "andole"),
+                            List.of("shakevan", "jun"),
+                            List.of("shakevan", "mrko")
+                    );
+                    List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+                    assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
+                            .isInstanceOf(IllegalArgumentException.class)
+                            .hasMessage(FriendValidator.INVALID_ID_FORMAT_MESSAGE);
+                }
+
+                @Test
+                @DisplayName("동일한 친구 관계가 중복해서 주어지면 예외 발생")
+                void test11() {
+                    String user = "mkdr";
+                    List<List<String>> friends = List.of(
+                            List.of("andole", "donut"),
+                            List.of("donut", "andole"),
+                            List.of("donut", "mrko"),
+                            List.of("shakevan", "andole"),
+                            List.of("shakevan", "jun"),
+                            List.of("shakevan", "mrko")
+                    );
+                    List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+                    assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
+                            .isInstanceOf(IllegalArgumentException.class)
+                            .hasMessage(FriendValidator.DUPLICATING_RELATION_MESSAGE);
+                }
+            }
         }
     }
 }
