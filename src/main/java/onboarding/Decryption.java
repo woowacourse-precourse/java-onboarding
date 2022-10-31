@@ -2,15 +2,12 @@ package onboarding;
 
 import java.util.Deque;
 import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
-import java.util.Stack;
 
 public class Decryption {
 	private static final int MAX_INPUT_LENGTH = 1000;
 	private static final int MIN_INPUT_LENGTH = 1;
 
-	private final String cryptogram;
+	private String cryptogram;
 
 	public Decryption(String cryptogram) {
 		validateInput(cryptogram);
@@ -34,7 +31,14 @@ public class Decryption {
 		}
 	}
 
-	public String decipher() {
+	public String getResult() {
+		while (!cryptogram.equals(decipher())) {
+			cryptogram = decipher();
+		}
+		return cryptogram;
+	}
+
+	String decipher() {
 		StringBuilder stringBuilder = new StringBuilder();
 		Deque<Character> deque = getNonDuplicateCharacter();
 		while (!deque.isEmpty()) {

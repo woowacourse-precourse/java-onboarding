@@ -32,7 +32,7 @@ public class DecryptionTest {
 	}
 
 	@Test
-	public void 암호_해독_테스트() {
+	public void 암호_1회_해독_테스트() {
 		//given
 		String cryptogram = "browoanoommnaon";
 		String cryptogram2 = "browoannaon";
@@ -57,5 +57,15 @@ public class DecryptionTest {
 
 		String result4 = decryption4.decipher();
 		assertThat("brown").isEqualTo(result4);
+	}
+
+	@Test
+	public void 암호_해독_테스트() {
+	    //given
+		String cryptogram = "browoanoommnaon";
+	    //when
+		Decryption decryption = new Decryption(cryptogram);
+	    //then
+		assertThat("brown").isEqualTo(decryption.getResult());
 	}
 }
