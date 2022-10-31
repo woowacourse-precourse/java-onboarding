@@ -35,7 +35,7 @@ class FindingMax {
 }
 
 class FindingWinner {
-	public static int winner(int pobiMaxNumber, int crongMaxNumber) {
+	public static int findWinner(int pobiMaxNumber, int crongMaxNumber) {
 		if (pobiMaxNumber == crongMaxNumber) {
 			return 0;
 		}
@@ -44,7 +44,7 @@ class FindingWinner {
 }
 
 class Exception {
-	public static boolean invalidPageNumber(int left, int right) {
+	public static boolean findInvalidPageNumber(int left, int right) {
 		if (left < 1 || left > 400 || right < 1 || right > 400) {
 			return true;
 		}
@@ -64,11 +64,11 @@ public class Problem1 {
 		int answer = -1;
 		int pobiMaxNumber;
 		int crongMaxNumber;
-		if (!Exception.invalidPageNumber(pobiLeftPageNumber, pobiRightPageNumber)
-			&& !Exception.invalidPageNumber(crongLeftPageNumber, crongRightPageNumber)) {
+		if (!Exception.findInvalidPageNumber(pobiLeftPageNumber, pobiRightPageNumber)
+			&& !Exception.findInvalidPageNumber(crongLeftPageNumber, crongRightPageNumber)) {
 			pobiMaxNumber = FindingMax.findMaxValue(pobiLeftPageNumber, pobiRightPageNumber);
 			crongMaxNumber = FindingMax.findMaxValue(crongLeftPageNumber, crongRightPageNumber);
-			answer = FindingWinner.winner(pobiMaxNumber, crongMaxNumber);
+			answer = FindingWinner.findWinner(pobiMaxNumber, crongMaxNumber);
 		}
 		return answer;
 	}

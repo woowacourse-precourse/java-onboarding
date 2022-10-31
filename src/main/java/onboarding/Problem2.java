@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 class ValidationSamethings {
-	public static int validation(ArrayList<String> list) {
+	public static int validate(ArrayList<String> list) {
 		String pivot;
 		for (int i = 0; i < list.size() - 1; i++) {
 			pivot = list.get(i);
@@ -37,7 +37,7 @@ class RemovalSamethings {
 }
 
 class StringException {
-	public static boolean invalidString(String string) {
+	public static boolean findInvalidString(String string) {
 		if (string.length() < 1 || string.length() > 1000) {
 			return true;
 		}
@@ -56,8 +56,8 @@ public class Problem2 {
 		ArrayList<String> list = new ArrayList<String>(Arrays.asList(cryptogram.split("")));
 		String answer = cryptogram;
 		int index;
-		if (!StringException.invalidString(cryptogram)) {
-			while ((index = ValidationSamethings.validation(list)) != -1) {
+		if (!StringException.findInvalidString(cryptogram)) {
+			while ((index = ValidationSamethings.validate(list)) != -1) {
 				answer = RemovalSamethings.removeSameElement(list, index);
 			}
 		}

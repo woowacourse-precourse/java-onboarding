@@ -17,7 +17,7 @@ class ValidatationString {
 		return alphabet.matches(alphabet.toLowerCase());
 	}
 
-	public static boolean isvalidLength(String word) {
+	public static boolean isValidLength(String word) {
 		return (word.length() >= 1) && (word.length() <= 1000);
 	}
 
@@ -56,7 +56,7 @@ class Frog {
 public class Problem4 {
 	public static String solution(String word) {
 		String answer = "";
-		if (!ValidatationString.isvalidLength(word)) {
+		if (!ValidatationString.isValidLength(word)) {
 			return Constant.invalidArgument;
 		}
 		List<String> list = Arrays.asList(word.split(""));

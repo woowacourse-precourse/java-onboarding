@@ -30,7 +30,7 @@ class CalculationMoney {
 		return money / divideMoney;
 	}
 
-	public static int remainder(int money) {
+	public static int countRemainder(int money) {
 		return money % divideMoney;
 	}
 }
@@ -39,11 +39,14 @@ public class Problem5 {
 	public static List<Integer> solution(int money) {
 		int i;
 		List<Integer> answer = new ArrayList<>(Arrays.asList(0, 0, 0, 0, 0, 0, 0, 0, 0));
+		if (!ValidationMoney.isValidAmount(money)) {
+			System.out.println(Money.invalidArgument);
+		}
 		for (i = 0; i < Money.moneyList.length - 1; i++) {
 			CalculationMoney.setDivideMoney(Money.moneyList[i]);
 			if (ValidationMoney.isDivide(money)) {
 				answer.set(i, CalculationMoney.divide(money));
-				money = CalculationMoney.remainder(money);
+				money = CalculationMoney.countRemainder(money);
 			}
 		}
 		answer.set(i, money);

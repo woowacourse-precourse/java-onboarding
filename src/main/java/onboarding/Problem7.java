@@ -103,7 +103,7 @@ class HandlingFriendsInformation extends UsersInformation {
 class Score extends HandlingFriendsInformation {
 	static Map<String, Integer> recommendedFriends = new HashMap<String, Integer>();
 
-	public static List<String> shortenList(List<String> recommendedList) {
+	public static List<String> limitList(List<String> recommendedList) {
 		List<String> list = recommendedList.stream().limit(limit).collect(Collectors.toList());
 		return list;
 	}
@@ -118,7 +118,7 @@ class Score extends HandlingFriendsInformation {
 		return orderedRecommendedList;
 	}
 
-	public static void caseFriendsFriend() {
+	public static void forCaseFriendsFriend() {
 		Iterator<String> iterator = getFriendsFriend().iterator();
 		while (iterator.hasNext()) {
 			String recommendedFriend = iterator.next();
@@ -134,7 +134,7 @@ class Score extends HandlingFriendsInformation {
 		}
 	}
 
-	public static void caseVisitors() {
+	public static void forCaseVisitors() {
 		//removeFriends(visitors);
 		Iterator<String> iterator = getVisitors().iterator();
 		while (iterator.hasNext()) {
@@ -157,10 +157,10 @@ public class Problem7 {
 		UsersInformation.setUsersInformation(user, friends, visitors);
 		HandlingFriendsInformation.findUsersFriend();
 		HandlingFriendsInformation.findFriendsFriend();
-		Score.caseFriendsFriend();
-		Score.caseVisitors();
+		Score.forCaseFriendsFriend();
+		Score.forCaseVisitors();
 		answer = Score.orderRecommendedList();
-		answer = Score.shortenList(answer);
+		answer = Score.limitList(answer);
 		return answer;
 	}
 }
