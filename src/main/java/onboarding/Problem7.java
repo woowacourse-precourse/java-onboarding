@@ -20,6 +20,21 @@ public class Problem7 {
         return answer;
     }
 
+    public static String findFriendKnowFriend(List<String> friendship, List<String> userKnowFriends){
+        String recommendationFriend = null;
+        for(int i = 0; i < 2; i++){
+            String friend = friendship.get(i);
+            if(userKnowFriends.contains(friend)){
+                int recommendationFriendIndex = notOperator(i);
+                recommendationFriend = friendship.get(recommendationFriendIndex);
+                if(recommendationFriend.equals(user)){
+                    recommendationFriend = null;
+                }
+            }
+        }
+        return recommendationFriend;
+    }
+
     public static List<String> createUserKnowFriends(List<List<String>> friends, String user){
         List<String> userKnowFriends = new ArrayList<String>();
 
