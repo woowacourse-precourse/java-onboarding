@@ -24,10 +24,10 @@ public class RequestsTest {
 	void results_are_sorted_in_ascending_order() {
 		List<List<String>> shuffledForms = new ArrayList<>(FORMS);
 		Collections.shuffle(shuffledForms);
-		List<String> expectedOverlapCrewEmails = List.of("jason@email.com", "jm@email.com", "mj@email.com");
+		List<String> expectedEmailsOfOverlappedCrews = List.of("jason@email.com", "jm@email.com", "mj@email.com");
 
 		Requests requests = new Requests(shuffledForms);
 
-		assertThat(requests.getOverlapCrewEmails()).containsExactlyElementsOf(expectedOverlapCrewEmails);
+		assertThat(requests.getEmailsOfOverlappedCrews()).containsExactlyElementsOf(expectedEmailsOfOverlappedCrews);
 	}
 }

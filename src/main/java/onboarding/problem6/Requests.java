@@ -20,25 +20,25 @@ public class Requests {
 		this.requests = requests;
 	}
 
-	public Collection<String> getOverlapCrewEmails() {
-		Set<String> overlapCrewEmails = new TreeSet<>();
+	public Collection<String> getEmailsOfOverlappedCrews() {
+		Set<String> emailsOfOverlappedCrews = new TreeSet<>();
 		for (Request request : requests) {
-			overlapCrewEmails.addAll(findOverlapCrewEmailsBy(request));
+			emailsOfOverlappedCrews.addAll(findEmailsOfOverlappedCrewsBy(request));
 		}
-		return overlapCrewEmails;
+		return emailsOfOverlappedCrews;
 	}
 
-	private List<String> findOverlapCrewEmailsBy(Request request) {
-		List<String> overlapCrewEmails = new ArrayList<>();
+	private List<String> findEmailsOfOverlappedCrewsBy(Request request) {
+		List<String> emailsOfOverlappedCrews = new ArrayList<>();
 		for (Request otherRequest : requests) {
 			if (request.equals(otherRequest)) {
 				continue;
 			}
 			if (request.hasOverlapWith(otherRequest)) {
-				overlapCrewEmails.add(request.getEmail());
-				overlapCrewEmails.add(otherRequest.getEmail());
+				emailsOfOverlappedCrews.add(request.getEmail());
+				emailsOfOverlappedCrews.add(otherRequest.getEmail());
 			}
 		}
-		return overlapCrewEmails;
+		return emailsOfOverlappedCrews;
 	}
 }
