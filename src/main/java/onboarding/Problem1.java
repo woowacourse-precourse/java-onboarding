@@ -9,9 +9,9 @@ class Problem1 {
         int length = (int)Math.log10(n) + 1;
         int num = n;
         int res = 0;
-        for (int i=0; i < length; i++){
-            res += num % Math.pow(10,i+1);
-            num /= Math.pow(10,i+1);
+        for (int i=length-1; i >= 0; i--){
+            res += (int)(num / Math.pow(10,i));
+            num = (int)(num % Math.pow(10,i));
         }
         return res;
     }
@@ -20,9 +20,9 @@ class Problem1 {
         int length = (int)Math.log10(n) + 1;
         int num = n;
         int res = 1;
-        for (int i=0; i < length; i++){
-            res *= num % Math.pow(10,i+1);
-            num /= Math.pow(10,i+1);
+        for (int i=length-1; i >= 0; i--){
+            res *= (int)(num / Math.pow(10,i));
+            num = (int)(num % Math.pow(10,i));
         }
         return res;
     }
@@ -35,8 +35,15 @@ class Problem1 {
         return Math.max(getMaxNumPage(list.get(0)), getMaxNumPage(list.get(1)));
     }
     // func : decide answer by compare two lists
+    private static int getScore(List<Integer> pobi, List<Integer> crong){
+        int result = -1;
+        if (getMaxNum(pobi) > getMaxNum(crong)) result = 1;
+        else if(getMaxNum(pobi) < getMaxNum(crong)) result = 2;
+        else if(getMaxNum(pobi) == getMaxNum(crong)) result = 0;
+        return result;
+    }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        int answer = getScore(pobi,crong);
         return answer;
     }
 }
