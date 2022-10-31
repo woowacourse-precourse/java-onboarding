@@ -11,35 +11,35 @@ public class Problem7 {
         addFriendScore(recommendScore, network, user);
         addTimelineScore(recommendScore, visitors);
 
-        List<String> answer= getRecommendedFriendList(recommendScore);
+        List<String> userFriendList = network.get(user);
+        List<String> answer = getRecommendedFriendList(recommendScore, userFriendList);
 
         return answer;
     }
 
-    private static List<String> getRecommendedFriendList(Map<String, Integer> recommendScore) {
-        List<String> recommendedFriendList= new ArrayList<>();
-        List<Map.Entry<String,Integer>> entries = new LinkedList<>(recommendScore.entrySet());
-        Collections.sort(entries,comparator);
+    private static List<String> getRecommendedFriendList(Map<String, Integer> recommendScore, List<String> userFriendList) {
+        List<String> recommendedFriendList = new ArrayList<>();
+        List<Map.Entry<String, Integer>> entries = new LinkedList<>(recommendScore.entrySet());
+        entries.sort(comparator);
 
-        entries.forEach(entry->{
-            if(recommendedFriendList.size()<5 && entry.getValue()!=0){
-                recommendedFriendList.add(entry.getKey());
+        entries.forEach(entry -> {
+            if (recommendedFriendList.size() < 5 && entry.getValue() != 0) {
+                if (!userFriendList.contains(entry.getKey())) {
+                    recommendedFriendList.add(entry.getKey());
+                }
             }
         });
 
         return recommendedFriendList;
     }
 
-    public static Comparator<Map.Entry<String ,Integer>> comparator=new Comparator<Map.Entry<String, Integer>>() {
-        @Override
-        public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
-            if (o1.getValue() > o2.getValue()){
-                return -1;
-            } else if (o1.getValue() == o2.getValue()) {
-                return o1.getKey().compareTo(o2.getKey());
-            } else {
-                return 1;
-            }
+    public static Comparator<Map.Entry<String, Integer>> comparator = (o1, o2) -> {
+        if (o1.getValue() > o2.getValue()) {
+            return -1;
+        } else if (o1.getValue() == o2.getValue()) {
+            return o1.getKey().compareTo(o2.getKey());
+        } else {
+            return 1;
         }
     };
 
