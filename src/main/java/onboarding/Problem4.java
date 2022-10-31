@@ -18,11 +18,7 @@ public class Problem4 {
     }
 
     private static char convert(char alphabet) {
-        if (isUpperCase(alphabet)) {
-            return (char) ('Z' - (alphabet - 'A'));
-        }
-
-        return (char) ('z' - (alphabet - 'a'));
+        return isUpperCase(alphabet) ? (char) ('Z' - (alphabet - 'A')) : (char) ('z' - (alphabet - 'a'));
     }
 
     private static boolean isUpperCase(char alphabet) {
@@ -30,14 +26,6 @@ public class Problem4 {
     }
 
     private static boolean isAlphabet(char alphabet) {
-        if ('A' <= alphabet && alphabet <= 'Z') {
-            return true;
-        }
-
-        if ('a' <= alphabet && alphabet <= 'z') {
-            return true;
-        }
-
-        return false;
+        return ('A' <= alphabet && alphabet <= 'Z') || ('a' <= alphabet && alphabet <= 'z');
     }
 }
