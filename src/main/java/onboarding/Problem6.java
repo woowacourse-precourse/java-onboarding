@@ -20,4 +20,23 @@ public class Problem6 {
         return false;
     }
 
+    public static boolean[] getDuplicatedCrewIndexes(List<List<String>> forms){
+        int totalCrewNum = forms.size();
+        boolean[] duplicatedCrewIndexes = new boolean[totalCrewNum];
+        for (int i = 0; i<totalCrewNum-1 ; i++){
+
+            if (duplicatedCrewIndexes[i]){
+                continue;
+            }
+
+            for (int j = i+1; j<totalCrewNum;j++){
+                if(checkDuplication(forms.get(i).get(1),forms.get(j).get(1))){
+                    duplicatedCrewIndexes[i] = true;
+                    duplicatedCrewIndexes[j] = true;
+                }
+            }
+        }
+        return duplicatedCrewIndexes;
+    }
+
 }
