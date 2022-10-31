@@ -1,6 +1,5 @@
 package onboarding;
 
-import java.io.File;
 import java.util.List;
 
 class Problem1 {
