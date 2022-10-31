@@ -7,6 +7,14 @@ public class Problem3 {
     }
 
     private static int calculateClapCount(int num) {
-        return 0;
+        int clapCount = 0;
+        while (num > 0) {
+            int remainder = num % 10;
+            if (remainder == 3 || remainder == 6 || remainder == 9) {
+                clapCount++;
+            }
+            num /= 10;
+        }
+        return clapCount;
     }
 }
