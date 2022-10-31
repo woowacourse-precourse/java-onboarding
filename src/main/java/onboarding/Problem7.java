@@ -38,15 +38,9 @@ public class Problem7 {
             }
         }
         /* 방문자 목록을 통해 계산하기 */
-        for (String name: visitors) {
-            if (friendList.get(user).contains(name))
-                continue;
-            if (!scoreMap.containsKey(name))
-                scoreMap.put(name, 0);
-
-            int oldScore = scoreMap.get(name);
-            int newScore = oldScore += 1;
-            scoreMap.replace(name, newScore);
+        for (String visitor: visitors) {
+            HashSet<String> userFriendList = friendList.get(user);
+            calculateScoreByVisitor(scoreMap, userFriendList, visitor);
         }
 
         List<Map.Entry<String, Integer>> scoreList = new ArrayList<>(scoreMap.entrySet());
@@ -73,6 +67,18 @@ public class Problem7 {
             addNameToAnswer(answer, entry);
         }
         return answer;
+    }
+    public static void calculateScoreByVisitor(HashMap<String, Integer> scoreMap,
+                                               HashSet<String> userFriendList,
+                                               String visitor) {
+        if (userFriendList.contains(visitor))
+            return;
+        if (!scoreMap.containsKey(visitor))
+            scoreMap.put(visitor, 0);
+
+        int oldScore = scoreMap.get(visitor);
+        int newScore = oldScore += 1;
+        scoreMap.replace(visitor, newScore);
     }
     public static void addNameToAnswer(List<String> answer,
                                        Map.Entry<String, Integer> entry) {
