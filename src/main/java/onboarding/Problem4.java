@@ -11,6 +11,7 @@ public class Problem4 {
         for (int i = 0; i < word.length(); i++) {
             char tempChar = word.charAt(i);
             if (isAlphabet(tempChar)) {
+                tempChar = changeAlphabet(tempChar);
             }
             changedWord.append(tempChar);
         }
@@ -30,5 +31,21 @@ public class Problem4 {
         return 'a' <= c && c <= 'z';
     }
 
+    private static char changeAlphabet(char c) {
+        if (isUpperAlphabet(c)) {
+            return changeUpperAlphabet(c);
+        } else{
+            return changeLowerAlphabet(c);
+        }
+    }
 
+    private static char changeUpperAlphabet(char c) {
+        int diff = 'Z' - c;
+        return (char) ('A' + diff);
+    }
+
+    private static char changeLowerAlphabet(char c) {
+        int diff = 'z' - c;
+        return (char) ('a' + diff);
+    }
 }
