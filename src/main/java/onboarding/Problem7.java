@@ -2,6 +2,7 @@ package onboarding;
 import java.util.*;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        UserInfo.validate(user,visitors);
         return Point.calcTotalPotint(user, friends, visitors);
     }
 }
@@ -15,20 +16,26 @@ class UserInfo{
     private static final String NOT_LOWERCASE_MESSAGE = "영어 소문자만 입력해주세요";
     private static final String EMPTY_FRIENDSCASE_MESSAGE = "추천할 친구를 입력해주세요";
 
-    void validateRange(String id){
+    public static void validate(String id, List<String> visitors){
+        validateRange(id);
+        validateSizeOfFriends(visitors);
+        validateNoFriends(visitors);
+        validateUnderCaseId(id);
+    }
+    static void validateRange(String id){
         if(id.length() < MINIMUM_LENGTH_ID || id.length() > MAXIMUM_LENGTH_ID)
             throw new IllegalArgumentException(OUT_OF_RANGE);
     }
-    void validateSizeOfFriends(List<String> visitors){
+    static void validateSizeOfFriends(List<String> visitors){
         if(visitors.size() < MIMIMUM_SIZE_VISITOR || visitors.size() > MAXIMUM_SIZE_VISITOR)
             throw new IllegalArgumentException(OUT_OF_SIZE);
     }
-    void validateUnderCaseId(String id){
+    static void validateUnderCaseId(String id){
         if(!id.matches("^[a-z]*$")){
             throw new IllegalArgumentException(NOT_LOWERCASE_MESSAGE);
         }
     }
-    void validateNoFriends(List<String> visitors){
+    static void validateNoFriends(List<String> visitors){
         if(visitors.isEmpty())
             throw new IllegalArgumentException(EMPTY_FRIENDSCASE_MESSAGE);
     }
@@ -42,9 +49,7 @@ class Point{
 
         getFriendsPoint(scoreTable, friendsInfoTable, userIndex);
         getVisitorsPoint(visitors, scoreTable, friendsInfoTable, arrayFriends, userIndex);
-        List<String> answer = getTopFiveList(scoreTable, arrayFriends, userIndex);
-
-        return answer;
+        return getTopFiveList(scoreTable, arrayFriends, userIndex);
     }
 
     private static List<String> getTopFiveList(int[] scoreTable, Object[] arrayFriends, int userIndex) {
