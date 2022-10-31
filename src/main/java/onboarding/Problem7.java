@@ -12,6 +12,7 @@ public class Problem7 {
   private static final String ID_REGEX = "^[a-z]*$";
   private static final int MAX_ID_LENGTH = 30;
   private static final int MAX_FRIENDS_SIZE = 10000;
+  private static final int MAX_VISITORS_SIZE = 10000;
 
   private static Map<String, Integer> recommendFriendsPoint = new HashMap<>();
 
@@ -143,6 +144,13 @@ public class Problem7 {
   public static boolean isAllowedFriendsInfoSize(int friendsSize) throws IllegalStateException{
     if (friendsSize < 1 || friendsSize > MAX_FRIENDS_SIZE) {
       throw new IllegalStateException("친구관계의 숫자는 1~10,000개 이내여야 합니다.");
+    }
+    return true;
+  }
+
+  public static boolean isAllowedVisitorsSize(int visitorsSize) throws IllegalStateException {
+    if (visitorsSize < 1 || visitorsSize > MAX_VISITORS_SIZE) {
+      throw new IllegalStateException("방문자의 숫자는 1~10,000 이내여야 합니다.");
     }
     return true;
   }
