@@ -24,3 +24,14 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+---
+
+## 구현 기능 목록
+
+- (1) user의 친구목록을 얻는 기능
+- (2) user의 함께 아는 사람목록을 얻는 기능
+- (3) 함께 아는 사람 점수 계산 기능
+- (4) 방문한 횟수 점수 계산 기능
+- (5) 총 스코어 계산 기능
+- (6) 친구 추천 리스트생성 기능
