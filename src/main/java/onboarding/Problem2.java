@@ -8,6 +8,7 @@ public class Problem2 {
 			isValidCryptogram(cryptogram);
 		} catch (IllegalStateException illegalStateException) {
 			illegalStateException.printStackTrace();
+			return answer;
 		}
 
 		answer = decodingCryptogram(cryptogram);
