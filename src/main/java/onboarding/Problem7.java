@@ -26,7 +26,7 @@ public class Problem7 {
 
         // 전체 사용자에 대한 친구 관계를 정의한다.
         for(List<String> relationship : friends) {
-            // 각 원소의 길이가 2인지 검증한다.
+            // 각 원소의 사이즈가 2인지 검증한다.
             verifyRelationship(relationship);
             defineFriendship(relationship);
         }
@@ -69,7 +69,7 @@ public class Problem7 {
     private static void verifyRelationship(List<String> relationship) {
         ValidationUtil relationshipValidation = new ValidationUtil();
         relationshipValidation.addVarName("relationship size");
-        // 각 원소의 길이는 2여야 한다.
+        // 각 원소의 사이즈는 2여야 한다.
         relationshipValidation.checkNumRange(relationship.size(), 2, 2);
     }
 
