@@ -47,7 +47,19 @@ public class Problem5 {
         // 15만원 -> 0,0,0,3,0,,,,,					0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0
         // 16만원 -> 0,0,0,3,1,,,,,					0, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0
         // 21만원 -> 0,0,0,4,1,,,,					0, 2, 0, 1,
-        // 22만원 -> 0,0,0,4,1,,,,					0, 2, 0, 2, 
+        // 22만원 -> 0,0,0,4,1,,,,					0, 2, 0, 2,
+
+        if(moneyTemp.size()>9) {// 10만원 이상
+            int changeNumber =0;
+            if(moneyTemp.get(moneyTemp.size()-3).equals(0)) changeNumber =(moneyTemp.get(moneyTemp.size()-2)*10)/5;
+            else changeNumber =((moneyTemp.get(moneyTemp.size()-2)*10)+5)/5;
+
+            moneyTemp.add(moneyTemp.size()-3,changeNumber);
+            moneyTemp.remove(moneyTemp.size()-1);
+            moneyTemp.remove(moneyTemp.size()-1);
+            moneyTemp.remove(moneyTemp.size()-1);
+        }
+
         return moneyTemp;
     }
     public static List<Integer> inversemoneyList(List<Integer> list){
