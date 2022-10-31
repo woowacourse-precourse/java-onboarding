@@ -16,7 +16,7 @@ public class Problem7 {
 
         addVisitScore(visitors);
 
-        List<String> answer = Collections.emptyList();
+        List<String> answer = getRecommendFriendsList(user);
         return answer;
     }
 
@@ -64,6 +64,21 @@ public class Problem7 {
 
     private static void addScore(String name, int score) {
         friendsScore.put(name, friendsScore.getOrDefault(name, 0) + score);
+    }
+
+    private static List<String> getRecommendFriendsList(String user) {
+        ArrayList<String> friends = new ArrayList<>();
+
+        List<Map.Entry<String, Integer>> sortFriendList = getSortList();
+        for (Map.Entry<String, Integer> friend : sortFriendList) {
+            String name = friend.getKey();
+
+            if (friends.size() >= 5) {
+                break;
+            }
+        }
+
+        return friends;
     }
 
     private static List<Map.Entry<String, Integer>> getSortList() {
