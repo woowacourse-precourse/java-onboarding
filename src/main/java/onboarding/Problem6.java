@@ -8,59 +8,59 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Problem6 {
-    private static Map<String,String> nickEmailMapper = new HashMap<>();
-    private static List<String> nickNameList = new ArrayList<>();
-    private static List<String> continuousSubStrList = new ArrayList<>();
-    private static final int EMAIL=0;
-    private static final int NICKNAME=1;
+	private static final int EMAIL=0;
+	private static final int NICKNAME=1;
 
-    public static List<String> solution(List<List<String>> forms) {
-        initNickEmailMapper(forms);
-        initNickNameList(forms);
-        generateContinuousSubStrList();
-        List<String> duplicateSubStrList = getDuplicateSubStr();
-        List<String> hasDuplicateNickNameEmailList =
-            generateHasDuplicateNickNameEmailList(duplicateSubStrList);
-        Collections.sort(hasDuplicateNickNameEmailList);
+	public static List<String> solution(List<List<String>> forms) {
+		Map<String,String> nickEmailMapper = genNickEmailMapper(forms);
+		List<String> nickNameList = genNickNameList(forms);
+		List<String> patternList = initPatternList(nickNameList);
 
-        return hasDuplicateNickNameEmailList;
-    }
+		List<String> duplicateSubStrList = getDuplicateSubStr(patternList);
+		List<String> hasDuplicateNickNameEmailList =
+			genDuplicateNickNameEmailList(duplicateSubStrList,nickEmailMapper,nickNameList);
+		Collections.sort(hasDuplicateNickNameEmailList);
 
-    private static List<String> generateHasDuplicateNickNameEmailList(List<String> duplicateSubStrList) {
-        List<String> hasDuplicateNickNameEmailList = Collections.emptyList();
-        for (String duplicateSubStr : duplicateSubStrList) {
-            hasDuplicateNickNameEmailList = nickNameList.stream().filter(str -> str.contains(duplicateSubStr))
-                .map(str -> nickEmailMapper.get(str)).collect(Collectors.toList());
-        }
-        return hasDuplicateNickNameEmailList;
-    }
+		return hasDuplicateNickNameEmailList;
+	}
 
-    private static List<String> getDuplicateSubStr() {
-        return continuousSubStrList.stream()
-            .filter(str -> Collections.frequency(continuousSubStrList, str) > 1)
-            .collect(Collectors.toList());
-    }
+	private static List<String> genDuplicateNickNameEmailList(List<String> duplicateSubStrList,
+		Map<String,String> nickEmailMapper, List<String> nickNameList) {
+		List<String> duplicateNickNameEmailList = Collections.emptyList();
+		for (String duplicateSubStr : duplicateSubStrList) {
+			duplicateNickNameEmailList = nickNameList.stream().filter(str -> str.contains(duplicateSubStr))
+				.map(str -> nickEmailMapper.get(str)).collect(Collectors.toList());
+		}
+		return duplicateNickNameEmailList;
+	}
 
-    private static void generateContinuousSubStrList() {
-        for (String nickName : nickNameList) {
-            for(int i = 0; i < nickName.length()-1; i++){
-                String continuousStr = nickName.substring(i, i + 2);
-                continuousSubStrList.add(continuousStr);
-            }
-        }
-    }
+	private static List<String> getDuplicateSubStr(List<String> patternList) {
+		return patternList.stream().filter(str -> Collections.frequency(patternList, str) > 1)
+			.collect(Collectors.toList());
+	}
 
-    private static void initNickNameList(List<List<String>> forms) {
-        nickNameList.clear();
-        for (List<String> user : forms) {
-            nickNameList.add(user.get(NICKNAME));
-        }
-    }
+	private static List<String> initPatternList(List<String> nickNameList) {
+		List<String> patternList = new ArrayList<>();
+		for (String nickName : nickNameList) {
+			for(int i = 0; i < nickName.length()-1; i++){
+				String continuousStr = nickName.substring(i, i + 2);
+				patternList.add(continuousStr);
+			}
+		}
+		return patternList;
+	}
 
-    private static void initNickEmailMapper(List<List<String>> forms) {
-        nickEmailMapper.clear();
-        for (List<String> user : forms) {
-            nickEmailMapper.put(user.get(NICKNAME),user.get(EMAIL));
-        }
-    }
+	private static List<String> genNickNameList(List<List<String>> forms) {
+		List<String> nickNameList = new ArrayList<>();
+		for (List<String> user : forms)
+			nickNameList.add(user.get(NICKNAME));
+		return nickNameList;
+	}
+
+	private static Map<String,String> genNickEmailMapper(List<List<String>> forms) {
+		Map<String,String> nickEmailMapper = new HashMap<>();
+		for (List<String> user : forms)
+			nickEmailMapper.put(user.get(NICKNAME),user.get(EMAIL));
+		return nickEmailMapper;
+	}
 }
