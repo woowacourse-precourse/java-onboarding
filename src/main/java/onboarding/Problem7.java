@@ -82,6 +82,10 @@ public class Problem7 {
 			return scoreOfRecommendation.get(b) - scoreOfRecommendation.get(a);
 		});
 
+		if (sortedRecommendation.size() > 5) {
+			sortedRecommendation = sortedRecommendation.subList(0, 5);
+		}
+
 		return sortedRecommendation;
 	}
 
