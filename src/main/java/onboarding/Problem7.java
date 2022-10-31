@@ -4,7 +4,18 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer;
+
+        Map<String, Integer> scoreBoard = new HashMap<>();
+        Map<String, List<String>> relationships = analyzeRelationship(friends);
+        List<String> userRelationships = relationships.get(user);
+        userRelationships.add(user);
+
+        scoreFollowForFollow(relationships, userRelationships, scoreBoard);
+        scoreVisitor(scoreBoard, userRelationships, visitors);
+
+        answer = SortByName(scoreBoard);
+
         return answer;
     }
 
