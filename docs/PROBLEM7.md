@@ -24,3 +24,12 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능 목록
+1. friends 내에서 user의 친구를 Set에 담아 반환해주는 메소드
+2. User의 친구인지 아닌지 여부를 반환해주는 메소드
+3. friends 내에서 친구Set에 있으면 친구추천Map에 이름과 10점을 더해 반환해주는 메소드
+4. visitors 내에서 친구Set에 없으면 친구추천Map에 이름과 1점을 더해 반환해주는 메소드
+5. Person클래스 생성, Comparable 인터페이스의 compareTo메소드 오버라이드해 정렬을 위한 기준 설정
+6. 친구추천Map에서 user를 제외하고 정렬을 위해 Person클래스 리스트로 변환해주는 메소드
+7. 정렬한 Person클래스 리스트를 String 리스트로 변환 및 반환해주는 메소드

@@ -17,7 +17,7 @@ class ApplicationTest {
             int result = 0;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
-
+//
         @Test
         void case2() {
             List<Integer> pobi = List.of(131, 132);
@@ -68,17 +68,17 @@ class ApplicationTest {
             assertThat(Problem3.solution(number)).isEqualTo(result);
         }
     }
-
+//
     @Nested
     class Problem4Test {
         @Test
-        void case1() {
+        void case1() throws Exception {
             String word = "I love you";
             String result = "R olev blf";
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
     }
-
+//
     @Nested
     class Problem5Test {
         @Test
@@ -95,7 +95,7 @@ class ApplicationTest {
             assertThat(Problem5.solution(money)).isEqualTo(result);
         }
     }
-
+//
     @Nested
     class Problem6Test {
         @Test
