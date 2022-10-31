@@ -1,10 +1,11 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> result = new ArrayList<>();
         Map<String, Set<String>> overlapMap = new HashMap<>();
 
         for (List<String> form : forms) {
@@ -12,7 +13,13 @@ public class Problem6 {
             String nickname = form.get(1);
             addSubStringOfNickname(email, nickname, overlapMap);
         }
-        return answer;
+
+        overlapMap.values().forEach(value -> addToResult(value, result));
+
+        return result.stream()
+                .distinct()
+                .sorted()
+                .collect(Collectors.toList());
     }
 
     private static void addSubStringOfNickname(String email, String nickname, Map<String, Set<String>> overlapMap) {
@@ -27,5 +34,11 @@ public class Problem6 {
             overlapMap.put(subNickname, new HashSet<>());
         }
         overlapMap.get(subNickname).add(email);
+    }
+
+    private static void addToResult(Set<String> value, List<String> result) {
+        if (value.size() >= 2) {
+            result.addAll(value);
+        }
     }
 }
