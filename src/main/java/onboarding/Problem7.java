@@ -1,8 +1,6 @@
 package onboarding;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Problem7 {
@@ -56,14 +54,46 @@ public class Problem7 {
 
     private static List<String> recommendation(String user, List<List<String>> friends, List<String> visitors) {
 
-        Map<String, Integer> recommendedScore = new HashMap<>();
-
         Map<String, List<String>> collect = visitors.stream()
                 .collect(Collectors.groupingBy(visitor -> visitor));
 
+        Map<String, Integer> visitorsScore = new HashMap<>();
         for (String s : collect.keySet()) {
-            recommendedScore.put(s, collect.get(s).size());
+            visitorsScore.put(s, collect.get(s).size());
         }
-        return List.of();
+
+        List<String> userFriend = new ArrayList<>();
+        for (List<String> friend : friends) {
+            if (friend.get(0).equals(user))
+                userFriend.add(friend.get(1));
+            if (friend.get(1).equals(user))
+                userFriend.add(friend.get(0));
+        }
+
+        Map<String, Integer> friendsScore = new HashMap<>();
+
+        for (List<String> friend : friends) {
+            for (String userFriendTmp : userFriend) {
+                if (friend.get(0).equals(userFriendTmp) && !friendsScore.containsKey(friend.get(1)) && !friend.get(1).equals(user))
+                    friendsScore.put(friend.get(1), 10);
+                else if (friend.get(0).equals(userFriendTmp) && friendsScore.containsKey(friend.get(1)) && !friend.get(1).equals(user))
+                    friendsScore.put(friend.get(1), friendsScore.get(friend.get(1)) + 10);
+
+                if (friend.get(1).equals(userFriendTmp) && !friendsScore.containsKey(friend.get(0)) && !friend.get(0).equals(user))
+                    friendsScore.put(friend.get(0), 10);
+                else if (friend.get(1).equals(userFriendTmp) && friendsScore.containsKey(friend.get(0)) && !friend.get(0).equals(user))
+                    friendsScore.put(friend.get(0), friendsScore.get(friend.get(0)) + 10);
+            }
+        }
+
+        visitorsScore.forEach((key, value) -> friendsScore.merge(key, value, Integer::sum));
+
+        userFriend.forEach(friendsScore::remove);
+
+        List<String> result = new ArrayList<>();
+        friendsScore.entrySet().stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .forEachOrdered(x -> result.add(x.getKey()));
+        return result;
     }
 }
