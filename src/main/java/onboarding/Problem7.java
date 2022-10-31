@@ -132,15 +132,15 @@ public class Problem7 {
 
         for (String friendToRecommend : getFriendsToRecommend(user, friends, visitors)) {
             List<String> result = new ArrayList<>();
-            setFriendPoint(result, friendToRecommend, friends);
+            setFriendPoint(user, result, friendToRecommend, friends);
             setVisitPoint(result, visitors);
             recommendList.add(result);
         }
         return recommendList;
     }
 
-    private static void setFriendPoint(List<String> result, String friendToRecommend, List<List<String>> friends) {
-        List<String> freindsList = getFreindsList(friends);
+    private static void setFriendPoint(String user, List<String> result, String friendToRecommend, List<List<String>> friends) {
+        List<String> freindsList = getFreindsList(user, friends);
         for (List<String> friend : friends) {
             String target = friend.get(1);
             if (result.contains(friendToRecommend) && friendToRecommend.equals(target)) {
@@ -167,12 +167,26 @@ public class Problem7 {
         }
     }
 
-    private static List<String> getFreindsList(List<List<String>> friends) {
+    private static List<String> getFreindsList(String user, List<List<String>> friends) {
         List<String> friendsList = new ArrayList<>();
         for (List<String> friend : friends) {
-            addWithoutDup(friendsList, friend.get(0));
+            String getFirst = friend.get(0);
+            String getSecond = friend.get(1);
+
+            String result = getFriend(user, getFirst, getSecond);
+            addWithoutDup(friendsList, result);
         }
         return friendsList;
+    }
+
+    private static String getFriend(String user, String first, String second) {
+        if (user.equals(first)) {
+            return second;
+        }
+        if (user.equals(second)) {
+            return first;
+        }
+        return "";
     }
 
     private static List<String> getFriendsToRecommend(String user, List<List<String>> friends, List<String> visitors) {
@@ -185,7 +199,7 @@ public class Problem7 {
             addWithoutDup(friendsToRecommend, visitor);
         }
         friendsToRecommend.remove(user);
-        friendsToRecommend.removeAll(getFreindsList(friends));
+        friendsToRecommend.removeAll(getFreindsList(user, friends));
         return friendsToRecommend;
     }
 
@@ -205,6 +219,9 @@ public class Problem7 {
     }
 
     private static void addWithoutDup(List<String> list, String target) {
+        if (target.equals("")) {
+            return;
+        }
         list.remove(target);
         list.add(target);
     }
