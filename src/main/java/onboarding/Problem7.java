@@ -66,8 +66,18 @@ public class Problem7 {
 
         return userList;
     }
-    //만들어둔 친구 목록을 사용자정의 자료형 리스트로 변환해 줄 함수
+    //만들어둔 친구 목록을 String 리스트로 변환해 줄 함수
+    static List<String> people_list(String user, List<List<String>> friends, List<String> visitors){
+        List<people_score> userList = user_list(user,friends,visitors);
 
+        List<String> index_list = new ArrayList<>();
+
+        for (int i=0;i<userList.size();i++){
+            index_list.add(userList.get(i).people);
+        }
+
+        return index_list;
+    }
     //사용자와 함께 아는 친구의 수 점수 계산 함수
 
     //사용자의 타임라인에 방문한 점수 계산 함수
