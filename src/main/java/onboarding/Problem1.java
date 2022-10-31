@@ -10,8 +10,8 @@ class Problem1 {
             return -1;
         }
 
-        int pobiMax = Math.max(findMaxNum(pobi.get(0)), findMaxNum(pobi.get(1)));
-        int crongMax = Math.max(findMaxNum(crong.get(0)), findMaxNum(crong.get(1)));
+        int pobiMax = Math.max(findMaxNumOfPage(pobi.get(0)), findMaxNumOfPage(pobi.get(1)));
+        int crongMax = Math.max(findMaxNumOfPage(crong.get(0)), findMaxNumOfPage(crong.get(1)));
 
         if (pobiMax > crongMax) {
             answer = 1;
@@ -41,8 +41,8 @@ class Problem1 {
 
         return true;
     }
-    
-    public static int findMaxNum(int n) {
+
+    public static int findMaxNumOfPage(int n) {
         int sum = 0, mul = 1;
 
         while (n > 0) {
