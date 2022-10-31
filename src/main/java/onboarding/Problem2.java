@@ -27,16 +27,20 @@ public class Problem2 {
 
         for (int i = 1; i < cryptogram.length(); i++) {
             char now = chars[i];
-            if (before == now) {
-                characters.pop();
-            } else {
-                characters.push(now);
-            }
-
+            makeCharacters(characters, before, now);
             before = now;
         }
 
         return characters;
+    }
+
+    private static void makeCharacters(Stack<Character> characters, char before, char now) {
+        if (before == now) {
+            characters.pop();
+            return;
+        }
+
+        characters.push(now);
     }
 
     private static String toString(Stack<Character> characters) {
