@@ -50,14 +50,14 @@ public class Problem7 {
 
     void setFriendScore(String user, List<List<String>> friends) {
         setUserFriends(friends);
-        List<String> friends_list = user_friends.get(user);
-        for (String friend : friends_list) {
-            List<String> f2f_list = user_friends.get(friend);
-            for (String f2f : f2f_list) {
-                if (f2f.equals(user)) {
+        List<String> friend_list = user_friends.get(user);
+        for (String friend : friend_list) {
+            List<String> cross_friend_list = user_friends.get(friend);
+            for (String cross_friend : cross_friend_list) {
+                if (cross_friend.equals(user)) {
                     continue;
                 }
-                user_score.put(f2f, user_score.getOrDefault(f2f, 0) + 10);
+                user_score.put(cross_friend, user_score.getOrDefault(cross_friend, 0) + 10);
             }
         }
     }
