@@ -21,3 +21,11 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+---
+
+### 기능목록
+- 중복제거를 위해 Set컬렉션을 생성한다.
+- 닉네임을 비교하기 위해 비교할 닉네임을 한글자씩 잘라 배열에 저장한다.
+- 비교대상인 타겟리스트를 하나씩 선택한다.
+- 연속되는 두글자를 타겟닉네임과 비교하며 중복체크를 한다.
