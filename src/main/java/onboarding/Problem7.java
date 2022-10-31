@@ -8,8 +8,10 @@ import java.util.Map;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Map<String, Friends> userFriends = new HashMap<>();
+        Map<String, Integer> scores = new HashMap<>();
 
         registerFriends(friends, userFriends);
+        calculateVisitorScores(visitors, scores);
         return Collections.emptyList();
     }
 
@@ -25,5 +27,9 @@ public class Problem7 {
         userFriends.computeIfAbsent(second, user -> new Friends());
         userFriends.get(first).add(second);
         userFriends.get(second).add(first);
+    }
+
+    private static void calculateVisitorScores(List<String> visitors, Map<String, Integer> scores) {
+        visitors.forEach(visitor -> scores.put(visitor, scores.getOrDefault(visitor, 0) + 1));
     }
 }
