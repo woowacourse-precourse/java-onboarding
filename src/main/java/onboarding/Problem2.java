@@ -5,18 +5,18 @@ import java.util.Objects;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String temp = "";
-        String[] te = cryptogram.split("");
+        String[] values = cryptogram.split("");
 
-        for (int i = 0; i < te.length; i++) {
-            if (Objects.equals(temp, te[i])) {
-                if (Objects.equals(te[i], "")) break;
-                te[i] = "";
-                te[i - 1] = "";
+        for (int i = 0; i < values.length; i++) {
+            if (Objects.equals(temp, values[i])) {
+                if (Objects.equals(values[i], "")) break;
+                values[i] = "";
+                values[i - 1] = "";
             }
-            temp = te[i];
+            temp = values[i];
         }
 
-        String answer = String.join("", te);
+        String answer = String.join("", values);
         System.out.println(answer);
         if (is_duplicate(answer))
             return solution(answer);
@@ -25,9 +25,9 @@ public class Problem2 {
 
     public static boolean is_duplicate(String cryptogram) {
         String temp = "";
-        String[] te = cryptogram.split("");
+        String[] values = cryptogram.split("");
 
-        for (String s : te) {
+        for (String s : values) {
             if (Objects.equals(temp, s)) {
                 if (Objects.equals(s, "")) break;
                 return true;
