@@ -6,6 +6,16 @@ public class Problem2 {
         return answer;
     }
 
+    public static String decode(String cryptogram) {
+        String str = decodeOneCycle(cryptogram);
+        while(str != null){
+            cryptogram = str;
+            str = decodeOneCycle(cryptogram);
+        }
+
+        return cryptogram;
+    }
+
     public static String decodeOneCycle(String cryptogram){
         int length = cryptogram.length();
         String result = null;
