@@ -4,8 +4,8 @@ import java.util.*;
 
 public class Problem7 {
 
-    public static HashMap<String, List<String>> hpFriend = new HashMap<>();
-    public static HashMap<String, Integer> hpScore = new HashMap<>();
+    public static HashMap<String, List<String>> hpFriend;
+    public static HashMap<String, Integer> hpScore;
 
     /**
      * 친구 관계 저장 메서드
@@ -110,6 +110,9 @@ public class Problem7 {
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        hpFriend = new HashMap<>();
+        hpScore = new HashMap<>();
+
         saveFriend(friends);
         calcFriend(user);
         calcVisitor(visitors);
