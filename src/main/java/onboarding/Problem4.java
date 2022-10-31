@@ -3,9 +3,7 @@ package onboarding;
 public class Problem4 {
     static final int standard = 26;
     public static String solution(String word) {
-        String answer = "";
-
-
+        String answer = getAnswer(word);
         return answer;
     }
 
