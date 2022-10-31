@@ -17,7 +17,11 @@ public class Problem5 {
         return Arrays.asList(digits);
     }
     public static int exchangeMoney(int money, int digit) {
+    	if(money/digit != 0) {
+    		return money/digit;
+    	}else {
     		return 0;
+    	}
     }
     
 }
