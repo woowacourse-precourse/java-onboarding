@@ -21,7 +21,7 @@ public class Problem7 {
      * user의 친구들을 반환하는 함수
      */
     private static List<String> userFriends(String user, List<List<String>> friends){
-        List<String> userFriendList = Collections.emptyList();
+        List<String> userFriendList = new ArrayList<>();
         for (int i=0;i<friends.size();i++){
             userFriendList = isUserFriend(user,friends.get(i),userFriendList);
         }
