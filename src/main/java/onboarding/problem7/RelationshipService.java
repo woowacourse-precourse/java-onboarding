@@ -3,9 +3,9 @@ package onboarding.problem7;
 import java.util.*;
 
 //TODO 로직 전면 개편 필요!
-public class FriendsService {
+public class RelationshipService {
 
-    public static final int KNOWN_SCORE = 10;
+    private static final int KNOWN_SCORE = 10;
 
     public Map<String, Integer> getRelationshipScore(String user, List<List<String>> friends) {
         Set<String> users = getNameSet(friends);  // 유저 이름 Set을 만든다.
@@ -14,39 +14,6 @@ public class FriendsService {
 
         // 공통 분모를 아는 친구를 조회하여 점수를 산정해준다.
         return evaluateScore(user, friendsMap, knownFriends);
-    }
-
-    public List<Friend> mapToFriendList(Map<String, Integer> totalScore) {
-        List<Friend> result = new ArrayList<>();
-
-        for (String name : totalScore.keySet()) {
-            result.add(new Friend(name, totalScore.get(name)));
-        }
-
-        return result;
-    }
-
-    // 유저 이름 정보와 친구 관계 정보를 받아 Map<String, Set<String> 형태로 반환함.
-    private Map<String, Set<String>> getFriendsMap(List<List<String>> friends, Set<String> users) {
-        Map<String, Set<String>> friendsMap = new HashMap<>();
-        users.forEach(name -> friendsMap.put(name, new HashSet<>()));  // map init.
-
-        // value를 넣어준다.
-        friends.forEach(list -> {
-            String user1 = list.get(0);
-            String user2 = list.get(1);
-
-            friendsMap.get(user1).add(user2);
-            friendsMap.get(user2).add(user1);
-        });
-        return friendsMap;
-    }
-
-    // 친구 관계 정보에서 이름 셋을 얻음.
-    private Set<String> getNameSet(List<List<String>> friends) {
-        Set<String> users = new HashSet<>();
-        friends.forEach(users::addAll);
-        return users;
     }
 
     // user를 아는 친구들 조회.
@@ -65,6 +32,42 @@ public class FriendsService {
         return friendsOfUser;
     }
 
+    // totalScore를 FriendsList로 변환
+    public List<Friend> totalScoreToFriendList(Map<String, Integer> totalScore) {
+        List<Friend> result = new ArrayList<>();
+
+        for (String name : totalScore.keySet()) {
+            result.add(new Friend(name, totalScore.get(name)));
+        }
+
+        return result;
+    }
+
+    // 친구 관계 정보에서 이름 셋을 얻음.
+    private Set<String> getNameSet(List<List<String>> friends) {
+        Set<String> users = new HashSet<>();
+        friends.forEach(users::addAll);
+        return users;
+    }
+
+    // 유저 이름 정보와 친구 관계 정보를 받아 Map<String, Set<String> 형태로 반환함.
+    private Map<String, Set<String>> getFriendsMap(List<List<String>> friends, Set<String> users) {
+        Map<String, Set<String>> friendsMap = new HashMap<>();
+        users.forEach(name -> friendsMap.put(name, new HashSet<>()));  // map init.
+
+        // value를 넣어준다.
+        friends.forEach(list -> {
+            String user1 = list.get(0);
+            String user2 = list.get(1);
+
+            friendsMap.get(user1).add(user2);
+            friendsMap.get(user2).add(user1);
+        });
+        return friendsMap;
+    }
+
+
+    // 점수 산정.
     private Map<String, Integer> evaluateScore(String user, Map<String, Set<String>> friendsMap, List<String> knownFriends) {
         Map<String, Integer> result = new HashMap<>();
         for (String knownFriend : knownFriends) {
@@ -78,6 +81,4 @@ public class FriendsService {
         }
         return result;
     }
-
-
 }

@@ -4,23 +4,19 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-import static onboarding.problem7.InputValueValidator.validateInputValue;
-
 public class RecommendationSystem {
 
-    private final FriendsService friendsService;
+    private final RelationshipService relationshipService;
     private final VisitorService visitorService;
 
-    public RecommendationSystem(FriendsService friendsService, VisitorService visitorService) {
-        this.friendsService = friendsService;
+    public RecommendationSystem(RelationshipService relationshipService, VisitorService visitorService) {
+        this.relationshipService = relationshipService;
         this.visitorService = visitorService;
     }
 
     public List<String> doRecommend(String user, List<List<String>> friends, List<String> visitors) {
-        validateInputValue(user, friends, visitors);
-
-        List<Friend> friendList = friendsService
-                .mapToFriendList(getTotalScore(user, friends, visitors));
+        List<Friend> friendList = relationshipService
+                .totalScoreToFriendList(getTotalScore(user, friends, visitors));
 
         return friendList.stream()
                 .filter(friend -> !friend.getScore().equals(0))
@@ -31,9 +27,9 @@ public class RecommendationSystem {
     }
 
     private Map<String, Integer> getTotalScore(String user, List<List<String>> friends, List<String> visitors) {
-        Map<String, Integer> relationshipScore = friendsService.getRelationshipScore(user, friends);
+        Map<String, Integer> relationshipScore = relationshipService.getRelationshipScore(user, friends);
 
-        List<String> knownFriends = friendsService.getKnownFriends(user, friends);
+        List<String> knownFriends = relationshipService.getKnownFriends(user, friends);
         Map<String, Integer> visitScore = visitorService.getVisitScore(visitors, knownFriends);  // 유저가 알고있는 친구 정보를 준다.
 
         // 방문 점수를 relationshipScore로 합산.
