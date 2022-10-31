@@ -12,9 +12,19 @@ public class Problem6 {
                 i--;
             }
         }
+        for (int i = 0; i < forms.size() - 1; i++) {
+            for (int j = i + 1; j < forms.size(); j++) {
+                if (isOverlapped(forms.get(i).get(1), forms.get(j).get(1))) {
+
+                }
+            }
+        }
         return answer;
     }
     public static boolean isNotEmail(String emailAddress) {
         return !emailAddress.endsWith("@email.com");
+    }
+    public static boolean isOverlapped(String str1, String str2) {
+
     }
 }
