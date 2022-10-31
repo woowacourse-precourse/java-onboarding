@@ -9,51 +9,12 @@ class Problem1 {
         if (!isValidPages(pobi, crong))
             return -1;
 
-        /* 각자 왼쪽 페이지 번호의 각 자리수를 더한 것과 곱한 것중 가장 큰 수 취하기 */
-        String pobiLeftPage = Integer.toString(pobi.get(0));
-        String crongLeftPage = Integer.toString(crong.get(0));
+        /* 각자 왼쪽, 오른쪽 페이지의 각 번호의 각 자리수를 더한 것과 곱한 것중 가장 큰 수 취하기 */
+        int pobiLeftMax = getMaxValueFromPage(pobi, "left");
+        int pobiRightMax = getMaxValueFromPage(pobi, "right");
+        int crongLeftMax = getMaxValueFromPage(crong, "left");
+        int crongRightMax = getMaxValueFromPage(crong, "right");
 
-        int pobiLeftAdd = 0;
-        int pobiLeftMultiply = 1;
-        int pobiLeftMax = -1;
-        int crongLeftAdd = 0;
-        int crongLeftMultiply = 1;
-        int crongLeftMax = -1;
-
-        for (int i=0; i<pobiLeftPage.length(); i++) {
-            pobiLeftAdd += Character.getNumericValue(pobiLeftPage.charAt(i));
-            pobiLeftMultiply *= Character.getNumericValue(pobiLeftPage.charAt(i));
-        }
-        for (int i=0; i<crongLeftPage.length(); i++) {
-            crongLeftAdd += Character.getNumericValue(crongLeftPage.charAt(i));
-            crongLeftMultiply *= Character.getNumericValue(crongLeftPage.charAt(i));
-        }
-
-        pobiLeftMax = Math.max(pobiLeftAdd, pobiLeftMultiply);
-        crongLeftMax = Math.max(crongLeftAdd, crongLeftMultiply);
-
-        /* 각자 오른쪽 페이지 번호의 각 자리수를 더한 것과 곱한 것중 가장 큰 수 취하기 */
-        String pobiRightPage = Integer.toString(pobi.get(1));
-        String crongRightPage = Integer.toString(crong.get(1));
-
-        int pobiRightAdd = 0;
-        int pobiRightMultiply = 1;
-        int pobiRightMax = -1;
-        int crongRightAdd = 0;
-        int crongRightMultiply = 1;
-        int crongRightMax = -1;
-
-        for (int i=0; i<pobiRightPage.length(); i++) {
-            pobiRightAdd += Character.getNumericValue(pobiRightPage.charAt(i));
-            pobiRightMultiply *= Character.getNumericValue(pobiRightPage.charAt(i));
-        }
-        for (int i=0; i<crongRightPage.length(); i++) {
-            crongRightAdd += Character.getNumericValue(crongRightPage.charAt(i));
-            crongRightMultiply *= Character.getNumericValue(crongRightPage.charAt(i));
-        }
-
-        pobiRightMax = Math.max(pobiRightAdd, pobiRightMultiply);
-        crongRightMax = Math.max(crongRightAdd, crongRightMultiply);
         /* 각자 왼쪽 오른쪽 페이지에서 구한 점수 중 큰 점수를 최종점수로 취하기 */
         int pobiFinalScore = Math.max(pobiLeftMax, pobiRightMax);
         int crongFinalScore = Math.max(crongLeftMax, crongRightMax);
@@ -89,6 +50,31 @@ class Problem1 {
             return false;
         return true;
     }
+    public static int getPageNumber(String direction) {
+        if (direction.equals("left"))
+            return 0;
+        if (direction.equals("right"))
+            return 1;
+        return -1;
+    }
+    public static int getMaxValueFromPage(List<Integer> pages,
+                                              String direction) {
+        int pageNo = getPageNumber(direction);
+
+        if (pageNo == -1)
+            return -1;
+
+        String page = Integer.toString(pages.get(pageNo));
+        int pageAdd = 0;
+        int pageMultiply = 1;
+
+        for (int i=0; i<page.length(); i++) {
+            pageAdd += Character.getNumericValue(page.charAt(i));
+            pageMultiply *= Character.getNumericValue(page.charAt(i));
+        }
+
+        return Math.max(pageAdd, pageMultiply);
+    }
 }
 
 /*
@@ -106,8 +92,10 @@ class Problem1 {
   - [V] 포비/크롱이 펼친 페이지가 페이지 범위가 유효하지 않을 경우
   - [V] 포비/크롱이 펼친 페이지가 왼쪽이 홀수, 오른쪽이 짝수가 아닌 경우
   - [V] 포비/크롱이 펼친 페이지가 연속하지 않은 경우
-- [V] 포비와 크롱의 왼쪽 페이지 번호에 대해 각 자리 수를 모두 더하거나 모두 곱한 것 중 가장 큰 수를 구한다
-- [V] 포비와 크롱의 오른쪽 페이지 번호에 대해 각 자리 수를 모두 더하거나 모두 곱한 것 중 가장 큰 수를 구한다
-- [V] 포비와 크롱이 각자 왼쪽 오른쪽 페이지에 대해 구한 값 중 더 큰 값을 자신의 최종점수로 갖게 한다
+- [V] 포비의 왼쪽 페이지 번호에 대해 각 자리 수를 모두 더하거나 모두 곱한 것 중 가장 큰 수를 구한다
+- [V] 포비의 오른쪽 페이지 번호에 대해 각 자리 수를 모두 더하거나 모두 곱한 것 중 가장 큰 수를 구한다
+- [V] 크롱의 왼쪽 페이지 번호에 대해 각 자리 수를 모두 더하거나 모두 곱한 것 중 가장 큰 수를 구한다
+- [V] 크롱의 오른쪽 페이지 번호에 대해 각 자리 수를 모두 더하거나 모두 곱한 것 중 가장 큰 수를 구한다
+- [V] 포비와 크롱의 최종점수를 구한다
 - [V] 포비와 크롱의 최종점수를 비교해 포비가 이기면 1, 크롱이 이기면 2, 무승부는 0으로 answer를 바꾼다
  */
