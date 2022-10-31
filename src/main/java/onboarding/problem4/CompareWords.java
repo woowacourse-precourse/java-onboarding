@@ -2,6 +2,8 @@ package onboarding.problem4;
 
 import java.util.Map;
 
+import static java.lang.Character.isAlphabetic;
+
 public class CompareWords {
 
     PlaceCheck placeCheck = new PlaceCheck();
@@ -12,8 +14,8 @@ public class CompareWords {
 
         for (Character split : word.toCharArray()) {
 
-            if (SpacesCompare(split)) {
-                result.append(' ');
+            if (!isAlphabetic(split)) {
+                result.append(split);
                 continue;
             }
 
