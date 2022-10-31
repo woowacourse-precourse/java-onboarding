@@ -7,7 +7,9 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
         if(CheckCryptogram(cryptogram)){
-            return CheckDuplicates(cryptogram).toString();
+            List<Integer> duplicateslist = CheckDuplicates(cryptogram);
+
+            return DeleteDuplicates(cryptogram,duplicateslist);
         }
         return "0";
         //throw new IllegalArgumentException();
@@ -47,5 +49,13 @@ public class Problem2 {
             tmp = str.charAt(i);
         }
         return duplicatelist;
+    }
+
+    /* 기능3 : 중복 문자 삭제 */
+    private static String DeleteDuplicates(String str, List<Integer> duplicateslist){
+        for(int i=0; i<duplicateslist.size(); i++){
+            str = str.substring(0,duplicateslist.get(i)-i)+str.substring(duplicateslist.get(i)-i+1);
+        }
+        return str;
     }
 }
