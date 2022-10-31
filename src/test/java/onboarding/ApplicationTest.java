@@ -50,6 +50,17 @@ class ApplicationTest {
             String result = "";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
+
+        @Test
+        void 유효체크_검사() {
+            String cryptogram = "sblllac";
+            String expected = "sbac";
+
+            assertThat(Problem2.isValid(cryptogram)).isFalse();
+        }
+
+        
+
     }
 
     @Nested
