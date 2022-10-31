@@ -3,6 +3,7 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /*
@@ -27,10 +28,18 @@ class Suggestion {
 
     public Suggestion(String name) {
         this.name = name;
+        this.score = 0;
     }
 
     public int getScore() {
         return this.score;
+    }
+
+    public void calculateScore(Crew crew, Map<String, Crew> friends, List<String> visitors) {
+        score += crew.getKnowEachOtherFriends(friends.get(name)).size() * 10;
+        score += visitors.stream()
+                .filter(user -> user.equals(name))
+                .count();
     }
 }
 
