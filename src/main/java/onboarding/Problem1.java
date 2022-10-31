@@ -41,6 +41,14 @@ class Problem1 {
         int pobiScore = selectBigger(Math.max(pobiAddLeftPage, pobiAddRightPage), Math.max(pobiMulLeftPage, pobiMulRightPage));
         int crongScore = selectBigger(Math.max(crongAddLeftPage, crongAddRightPage), Math.max(crongMulLeftPage, crongMulRightPage));
         
+        if(pobiScore > crongScore) {
+        	answer = 1;
+        } else if(pobiScore < crongScore) {
+        	answer = 2;
+        } else {
+        	answer = 0;
+        }
+        
         return answer;
     }
 }
