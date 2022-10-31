@@ -4,11 +4,21 @@ import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = putUserToUserMap(forms);
+        List<String> answer = emailSetToResultList(forms);
         return answer;
     }
 
-    public static List<String> putUserToUserMap(List<List<String>> forms) {
+    public static List<String> emailSetToResultList(List<List<String>> forms) {
+
+        Map<String, ArrayList<Integer>> userMap = getUserMap(forms);
+        Set<String> emailSet = getEmailSet(forms, userMap);
+
+        ArrayList<String> result = new ArrayList<>(emailSet);
+
+        return result;
+    }
+
+    public static Map<String, ArrayList<Integer>> getUserMap(List<List<String>> forms){
         Map<String, ArrayList<Integer>> userMap = new HashMap<>();
         int idx = 0;
 
@@ -32,6 +42,10 @@ public class Problem6 {
             }
         }
 
+        return userMap;
+    }
+
+    public static Set<String> getEmailSet(List<List<String>> forms, Map<String, ArrayList<Integer>> userMap){
         Set<String> emailSet = new HashSet<>();
 
         for (String key : userMap.keySet()) {
@@ -45,8 +59,7 @@ public class Problem6 {
         }
 
         emailSet.stream().sorted();
-        ArrayList<String> result = new ArrayList<>(emailSet);
 
-        return result;
+        return emailSet;
     }
 }
