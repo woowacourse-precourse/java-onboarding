@@ -4,7 +4,6 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-
         List<String> friendList = new ArrayList<>();
         HashMap<String, Integer> result = new HashMap<>();
 
@@ -62,8 +61,8 @@ public class Problem7 {
             answer.add(keySet.get(i));
         }
 
-        if (answer.size() > 5){
-            for (int i = 5; i < keySet.size(); i+=1){
+        if (answer.size() > 5) {
+            for (int i = 5; i < keySet.size(); i += 1) {
                 answer.remove(i);
             }
         }
