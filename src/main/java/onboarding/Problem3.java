@@ -6,9 +6,7 @@ public class Problem3 {
 
         for (int i = 1; i <= number; i++) {
             String str = String.valueOf(i);
-            if (is369Contained(str)) {
-                // 369 포함되어 있으면 개수 세서 answer에 추가
-            }
+            if (is369Contained(str)) answer += count369(str);
         }
 
         return answer;
@@ -16,5 +14,15 @@ public class Problem3 {
 
     public static boolean is369Contained(String str) {
         return str.contains("3") || str.contains("6") || str.contains("9");
+    }
+
+    public static int count369(String str) {
+        int cnt = 0;
+
+        for (char c : str.toCharArray()) {
+            if (c == '3' || c == '6' || c == '9') cnt++;
+        }
+
+        return cnt;
     }
 }
