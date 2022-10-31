@@ -5,47 +5,46 @@ import java.util.List;
 
 public class Problem3 {
     public static int solution(int number) {
-        List<Integer> integersUnderNumber = getIntegersUnderNumber(number);
-        int totalClap = 0;
+        List<Integer> integersUnderNumber = getIntegersSmallerThanNumber(number);
+        int totalClaps = 0;
 
         for (int sequence : integersUnderNumber) {
-            char[] charsOfSequence = getCharsOfSequence(sequence);
-            int clapsOfSequence = getClapsOfSequence(charsOfSequence);
-            totalClap = totalClap + clapsOfSequence;
+            char[] charsOfInteger = getIntegerElementsWithCharArray(sequence);
+            int claps = getClaps(charsOfInteger);
+            totalClaps = totalClaps + claps;
         }
 
-        return totalClap;
+        return totalClaps;
     }
 
-    private static List<Integer> getIntegersUnderNumber(int number) {
+    private static List<Integer> getIntegersSmallerThanNumber(int number) {
         List<Integer> integersUnderNumber = new ArrayList<>();
         for (int i = 1; i <= number; i++) {
             integersUnderNumber.add(i);
         }
+
         return integersUnderNumber;
     }
 
-    private static char[] getCharsOfSequence(int sequence) {
+    private static char[] getIntegerElementsWithCharArray(int sequence) {
         String sequenceToString = String.valueOf(sequence);
-        char[] charsOfSequence = sequenceToString.toCharArray();
-        return charsOfSequence;
+        return sequenceToString.toCharArray();
     }
 
-    //Return Claps Of Sequence
-    private static int getClapsOfSequence(char[] charsOfSequence) {
-        int claps =0;
-        for (char digit : charsOfSequence) {
-            claps = getClapsOfDigit(claps, digit);
+    private static int getClaps(char[] digits) {
+        int claps = 0;
+        for (char digit : digits) {
+            claps += makeClap(digit);
         }
+
         return claps;
     }
 
-    //Return Clap of digit
-    private static int getClapsOfDigit(int claps, char digit) {
+    private static int makeClap(char digit) {
         //digit is char -> '3' == 51 in decimal, '6' == 54 in decimal, '9'== 57 in decimal
         if (digit == 51 || digit == 54 || digit == 57) {
-            claps++;
+            return 1;
         }
-        return claps;
+        return 0;
     }
 }
