@@ -1,7 +1,7 @@
 package onboarding;
 
 public class Problem4 {
-    private static String answer = "";
+    private static String answer;
     public static void convUpper(char c)
     {
         answer+=(char) ('A' + 'Z' -c);
@@ -20,6 +20,7 @@ public class Problem4 {
     }
 
     public static String solution(String word) {
+        answer= "";
         for (int i = 0 ; i< word.length(); i++)
         {
             if (checkUpper(word.charAt(i))) {
