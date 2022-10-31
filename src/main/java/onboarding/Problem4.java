@@ -12,8 +12,8 @@ public class Problem4 {
     public static char[] convertStringToArray(String str){
         return str.toCharArray();
     }
-    public static String convertArrayToString(String[] strArray){
-        return String.join("", strArray);
+    public static String convertArrayToString(char[] chrArray){
+        return new String(chrArray);
     }
 
     public static String solution(String word) {
