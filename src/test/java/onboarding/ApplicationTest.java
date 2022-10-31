@@ -50,6 +50,53 @@ class ApplicationTest {
             String result = "";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
+
+        @Test
+        void insertOrDeleteTest1(){
+            String cryptogram = "zz";
+            String result = "";
+            Queue<Character> before = new ArrayDeque<>();
+            Queue<Character> after = new ArrayDeque<>();
+
+            addStringToQueue(cryptogram, before);
+
+            Problem2.insertOrDelete(before.poll(), before, after);
+
+            assertThat(Problem2.createAnswer(after)).isEqualTo(result);
+        }
+        @Test
+        void insertOrDeleteTest2(){
+            String cryptogram = "a";
+            String result = "a";
+            Queue<Character> before = new ArrayDeque<>();
+            Queue<Character> after = new ArrayDeque<>();
+
+            addStringToQueue(cryptogram, before);
+
+            Problem2.insertOrDelete(before.poll(), before, after);
+
+            assertThat(Problem2.createAnswer(after)).isEqualTo(result);
+        }
+
+        @Test
+        void insertOrDeleteTest3(){
+            String cryptogram = "za";
+            String result = "z";
+            Queue<Character> before = new ArrayDeque<>();
+            Queue<Character> after = new ArrayDeque<>();
+
+            addStringToQueue(cryptogram, before);
+
+            Problem2.insertOrDelete(before.poll(), before, after);
+
+            assertThat(Problem2.createAnswer(after)).isEqualTo(result);
+        }
+
+
+        void addStringToQueue(String cryptogram, Queue<Character> before){
+            for(int i=0; i<cryptogram.length(); i++)
+                before.add(cryptogram.charAt(i));
+        }
     }
 
     @Nested

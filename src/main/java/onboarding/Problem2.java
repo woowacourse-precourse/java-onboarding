@@ -41,6 +41,22 @@ public class Problem2 {
         return sb.toString();
     }
 
+    public static void insertOrDelete(char currentChar, Queue<Character> before, Queue<Character> after){
+        if(before.isEmpty()){
+            after.add(currentChar);
+            return;
+        }
 
+        char nextChar = before.peek();
 
+        //insert
+        if(currentChar!=nextChar){
+            after.add(currentChar);
+            return;
+        }
+
+        //delete
+        while(!before.isEmpty() && before.peek()==currentChar)
+            before.poll();
+    }
 }
