@@ -1,27 +1,21 @@
 package onboarding;
 
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class Problem3 {
     public static int solution(int number) {
-        int answer = 0;
-        for (int i = 1; i <= number; i++) {
-            answer += count369InNumber(i);
-        }
-        return answer;
+        return IntStream
+                .rangeClosed(1, number)
+                .map(Problem3::count369InNumber)
+                .sum();
     }
 
     private static int count369InNumber(int number) {
-        int count = 0;
         List<Integer> numberList = Util.changeIntToIntList(number);
-
-        for (Integer num : numberList) {
-            if (is369(num)) {
-                count++;
-            }
-        }
-
-        return count;
+        return (int) numberList.stream()
+                .filter(Problem3::is369)
+                .count();
     }
 
     private static boolean is369(int number) {
