@@ -33,6 +33,14 @@ public class Problem4 {
        for(int i = 0; i<upperChar.length; i++){
            map1.put(upperChar[i],upperChar[25-i]);
        }
+       for(int i = 0; i<word.length(); i++){
+           if(word.charAt(i) != ' '){
+               char a = map1.get(word.charAt(i));
+               b.append(a);
+           }else {
+               b.append(word.charAt(i));
+           }
+       }return b.toString();
 
 
 
