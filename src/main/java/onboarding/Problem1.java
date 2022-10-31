@@ -15,8 +15,12 @@ class Problem1 {
     @SafeVarargs
     private static boolean checkValidPage(List<Integer>...list) {
         for (int i = 0; i < list.length; i++) {
-            //예외처리 들어갈 곳
+            if (isNotConsecutiveNumber(list[i])) return false;
         }
         return true;
+    }
+    // 두 페이지가 연속된 숫자인지 판별하는 기능
+    private static boolean isNotConsecutiveNumber(List<Integer> list) {
+        return list.get(1) - list.get(0) != 1;
     }
 }
