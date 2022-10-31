@@ -5,9 +5,9 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if(valid(pobi, crong)) return -1;
-        int pobi_max = Math.max(sum_max(pobi), mul_max(pobi));
-        int crong_max = Math.max(sum_max(crong), mul_max(crong));
+        if(valid(pobi, crong)) return -1; //유효성 검사
+        int pobi_max = Math.max(sum_max(pobi), mul_max(pobi)); //pobi의 각 자리를 더한값, 곱한값 중 큰 값을 저장한다
+        int crong_max = Math.max(sum_max(crong), mul_max(crong)); //crong의 각 자리를 더한값, 곱한값 중 큰 값을 저장한다.
         if(pobi_max > crong_max) return 1;
         else if(pobi_max == crong_max) return 0;
         else return 2;
@@ -17,9 +17,9 @@ class Problem1 {
     public static int mul_max(List<Integer> pages) {
         int max = 0;
         int[] sum = {0, 0};
-        for(int i = 0; i < pages.size(); i++){
+        for(int i = 0; i < pages.size(); i++){ //왼쪽 오른쪽 페이지 검사
             int num = pages.get(i);
-            int re = 0;
+            int re = 0; //페이지의 각자릿수 곱하기를 저장할 변수
             while(num > 0) {
                 if(re == 0) re = num % 10;
                 else re *= num % 10;
@@ -36,7 +36,7 @@ class Problem1 {
         int[] sum = {0, 0};
         for(int i = 0; i < pages.size(); i++){
             int num = pages.get(i);
-            int re = 0;
+            int re = 0; //각 자리의 덧셈을 저장할 변수
             while(num > 0){
                 re += num % 10;
                 num /= 10;

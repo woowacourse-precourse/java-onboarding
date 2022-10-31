@@ -20,8 +20,9 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) throws Exception {
         valid(user, friends, visitors);
         List<String> answer = new ArrayList<>();
-        Map<String, ArrayList<String>> friend_link = new HashMap<String, ArrayList<String>>();
-        Map<String, Integer> friend_sco = new HashMap<>();
+        Map<String, ArrayList<String>> friend_link = new HashMap<String, ArrayList<String>>();  //친구들의 관계를 나타내는 맵
+        Map<String, Integer> friend_sco = new HashMap<>();  //나에게 보여줄 친구 추천 맵
+
         for(int i = 0; i < friends.size(); i++){
             List<String> list = friends.get(i);
             String friend1 = list.get(0);
@@ -38,13 +39,14 @@ public class Problem7 {
             arlist2.add(friend1);
             friend_link.put(friend2, arlist2);
         }
+
         ArrayList<String> friend_list = friend_link.get(user);
         for(int i = 0; i < friend_list.size(); i++){        //관련있는 친구일 때 10점씩
             String friend = friend_list.get(i);
             ArrayList<String> friend_friends = friend_link.get(friend);
             for(int j = 0; j < friend_friends.size(); j++){
                 String f = friend_friends.get(j);
-                if(!f.equals(user)){
+                if(!f.equals(user)){    //사용자의 친구이면 안된다.
                     friend_sco.put(f, friend_sco.getOrDefault(f, 0)+10);
                 }
             }
@@ -52,7 +54,7 @@ public class Problem7 {
 
         for(int i = 0; i < visitors.size(); i++){   //방문할때마다 1점씩
             String s = visitors.get(i);
-            if(!friend_list.contains(s))
+            if(!friend_list.contains(s))    //나의 친구가 아니여야 한다.
                 friend_sco.put(s, friend_sco.getOrDefault(s, 0)+1);
         }
 

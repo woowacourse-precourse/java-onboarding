@@ -17,9 +17,9 @@ public class Problem3 {
         valid(number);
         for(int i = 3; i <= number; i++){
             int num = i;
-            while(num > 0){     //수
+            while(num > 0){
                 int mod = num % 10;
-                if(mod == 3 || mod == 6 || mod == 9)
+                if(mod == 3 || mod == 6 || mod == 9)    //각자릿 수 마다 3, 6, 9가 존재하면 answer 1 증가
                     answer +=  1;
                 num /= 10;
             }
@@ -33,12 +33,11 @@ public class Problem3 {
             String s = String.valueOf(i);
             for(int j = 0; j < s.length(); j++){
                 Character c = s.charAt(j);
-                if(c.equals('3') || c.equals('6') || c.equals('9'))
+                if(c.equals('3') || c.equals('6') || c.equals('9')) //이것도 solution1과 거의 동일하지만 문자로 작성
                     answer+=1;
             }
         }
         return answer;
-
     }
 
     public static void valid(Integer num) throws Exception {

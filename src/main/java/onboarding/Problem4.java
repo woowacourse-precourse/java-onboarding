@@ -17,7 +17,7 @@ public class Problem4 {
         }
         for(int i = 0; i < word.length(); i++){ //문자를 받아 사전에 입력하면 사전에 정의한 값이 출력되며 없을 때는 문자 그대로 반환한다.
             Character c = word.charAt(i);
-            answer += map.getOrDefault(c, c);
+            answer += map.getOrDefault(c, c);   //입력받은 문자가 사전에 없으면 그대로 추가하고 있으면 사전에 맞춰 추가한다.
         }
         return answer;
     }

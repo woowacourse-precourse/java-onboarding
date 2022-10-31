@@ -19,22 +19,22 @@ public class Problem2 {
                     String s2 = stack.get(j);
                     //문자가 일치할때
                     if(s1.equals(s2)){
-                        if(j == stack.size()-1){    //끝일 때도 불구하고 일치한다면 문자열의 끝index까지 제거 해줘야한다.
+                        if(j == stack.size()-1){    //끝까지 문자가 같을 때
                             for(int k = i; k <= j; k++){
-                                stack.remove(i);
+                                stack.remove(i);    //i 부터 끝까지 제거
                             }
                         }
                     }else{     //일치하지 않을 때
-                        if(i != j-1){
+                        if(i != j-1){   //그동안 일치하다 현재 일치하지 않음
                             for(int k = i; k < j; k++){
-                                stack.remove(i);
+                                stack.remove(i); //i부터 j-1까지 삭제
                             }
                         }
                         break;
                     }
                 }
             }
-            if(size == stack.size()){
+            if(size == stack.size()){   //아무것도 변경된것이 없으면 while문 탈출
                 break;
             }
         }
