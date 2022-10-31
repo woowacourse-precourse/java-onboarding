@@ -1,5 +1,12 @@
 package onboarding;
 
+// 엄마 말씀 word가 매개변수로 주어질 때,                       변수 스트링을 받아서
+// 아래 청개구리 사전을 참고해 반대로 변환하여 return 하도록     청개구리 사전을 등록
+//                                                          사전과 입력값을 비교하여 사전에 등록된 단어 교체.
+// solution 메서드를 완성하라.                                반환
+
+
+
 import java.util.HashMap;
 
 public class Problem4 {
