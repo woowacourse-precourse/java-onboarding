@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class Problem6 {
@@ -17,16 +18,16 @@ public class Problem6 {
 
             for (int j=0; j<name.length() - 1; j++) {
                 subString = "" + name.charAt(j) + name.charAt(j+1);
-                //System.out.println(subString);
 
                 for (int k=i+1; k<forms.size(); k++) {
-                    if (forms.get(k).get(1).contains(subString)) {
+                    if (forms.get(k).get(1).contains(subString) && !answer.contains(forms.get(k).get(0))) {
                         answer.add(forms.get(k).get(0));
-                        // System.out.println(forms.get(k).get(0));
                     }
                 }
             }
         }
+
+
 
         return answer;
     }
