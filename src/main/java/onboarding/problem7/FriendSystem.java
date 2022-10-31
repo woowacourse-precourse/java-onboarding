@@ -1,6 +1,5 @@
 package onboarding.problem7;
 
-
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -18,7 +17,6 @@ public class FriendSystem {
         this.friends = new HashSet<>();
         this.user = user;
     }
-
 
     private void findFriend(List<List<String>> friendList) {
         for (List<String> friendPair : friendList) {
@@ -60,6 +58,21 @@ public class FriendSystem {
                 friendMap.put(otherFriend, 0);
             }
             friendMap.put(otherFriend, friendMap.get(otherFriend)+10);
+        }
+    }
+
+    private void checkVisitors(List<String> visitors){
+        for (String visitor : visitors) {
+            addVisitorFriend(visitor);
+        }
+    }
+
+    private void addVisitorFriend(String visitor) {
+        if (!friends.contains(visitor)) {
+            if (!friendMap.containsKey(visitor)) {
+                friendMap.put(visitor, 0);
+            }
+            friendMap.put(visitor, friendMap.get(visitor)+1);
         }
     }
 }
