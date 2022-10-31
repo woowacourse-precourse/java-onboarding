@@ -13,15 +13,7 @@ class Problem1 {
         int pobiMax = Math.max(findMaxNumOfPage(pobi.get(0)), findMaxNumOfPage(pobi.get(1)));
         int crongMax = Math.max(findMaxNumOfPage(crong.get(0)), findMaxNumOfPage(crong.get(1)));
 
-        if (pobiMax > crongMax) {
-            answer = 1;
-        }
-        else if (pobiMax < crongMax) {
-            answer = 2;
-        }
-        else {
-            answer = 0;
-        }
+        answer = getAnswer(pobiMax, crongMax);
 
         return answer;
     }
@@ -52,5 +44,20 @@ class Problem1 {
         }
 
         return Math.max(sum, mul);
+    }
+
+    private static int getAnswer(int pobiMax, int crongMax) {
+        int answer;
+
+        if (pobiMax > crongMax) {
+            answer = 1;
+        }
+        else if (pobiMax < crongMax) {
+            answer = 2;
+        }
+        else {
+            answer = 0;
+        }
+        return answer;
     }
 }
