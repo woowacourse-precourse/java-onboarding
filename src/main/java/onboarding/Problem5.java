@@ -8,7 +8,12 @@ public class Problem5 {
     static List<Integer> moneyList;
 
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
+        List<Integer> answer = new ArrayList<>();
+        initMoneyList();
+        for (Integer unit : moneyList) {
+            answer.add(getUnitCount(money, unit));
+            money = getNextMoney(money, unit);
+        }
         return answer;
     }
 
