@@ -55,8 +55,7 @@ public class Problem7 {
             }
         });
 
-        // 점수 별로 정렬한 후 유저 이름대로 정렬
-        // 해시맵 정렬
+        // 점수 별로 정렬한 후 유저 이름대로 해시맵 정렬
         HashMap<String, Integer> suggestUserSortedByScore = problem.sortbyScoreThenName(suggestScoreList);
 
         // 맵에서 key값만 가져오기
@@ -82,7 +81,7 @@ public class Problem7 {
     }
 
     public List<String> HeadCountLimit (List<String> list, int limit) {
-        if (list.size() < limit) {
+        if (list.size() <= limit) {
             return list;
         } else {
             return list.subList(0, limit);
