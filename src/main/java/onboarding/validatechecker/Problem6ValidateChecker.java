@@ -13,7 +13,9 @@ public class Problem6ValidateChecker {
 	}
 
 	private static void areEmailAndNickNameNotNull(List<List<String>> forms){
-
+		for (List<String> form : forms)
+			if(form.get(0) == null || form.get(1) == null)
+				throw new IllegalArgumentException("닉네임 또는 이메일이 null입니다.");
 	}
 
 	private static void isFormNotNull(List<List<String>> forms) {
