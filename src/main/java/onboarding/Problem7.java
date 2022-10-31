@@ -2,13 +2,28 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
+        Set<String> totalUserSet = new HashSet<>();
+        Map<String, List<String>> eachUserFriendMap = new HashMap<>();
+        Map<String, Integer> userScore = new HashMap<>();
+
+        initializeTotalUserSet(friends, totalUserSet);
+        initializeEachUserFriendMap(friends, totalUserSet, eachUserFriendMap);
+
+        calculateRelationshipScore(user, eachUserFriendMap, userScore);
+        calculateVisitorScore(user, visitors, eachUserFriendMap, userScore);
+
+        List<String> keyset = sortScoreThenName(userScore);
+        addMaximumFiveHighScore(answer, keyset);
+
         return answer;
     }
 
