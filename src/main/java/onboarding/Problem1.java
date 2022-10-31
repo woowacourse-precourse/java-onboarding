@@ -6,56 +6,116 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
-        /*
-        * 설명 : 입력값이 올바르지 않는 경우 -1를 반환한다.
-        * */
-        if(!isPageRight(pobi) || !isPageRight(crong)) return -1;
+        BookPage pobiBook = new BookPage(pobi.get(Page.LEFT_PAGE.getPage()),
+                pobi.get(Page.RIGHT_PAGE.getPage()));
+        BookPage crongBook = new BookPage(crong.get(Page.LEFT_PAGE.getPage()),
+                crong.get(Page.RIGHT_PAGE.getPage()));
 
-        /*
-         * 설명 : 좌, 우 페이지 중 최댓값을 구해 저장한다.
-         * */
-        int pobiMaxNumber = maxNum(pobi);
-        int crongMaxNumber = maxNum(crong);
+        if(!pobiBook.isValid() || !crongBook.isValid()) return Winner.EXCEPTION.getScore();
 
-        if(pobiMaxNumber > crongMaxNumber) answer = 1;
-        else if(pobiMaxNumber < crongMaxNumber) answer = -1;
-        else answer = 0;
+        BookPageCalculator po = new BookPageCalculator(pobiBook);
+        BookPageCalculator cr = new BookPageCalculator(crongBook);
+
+        int pobiMaxNumber = po.getMaxValue();
+        int crongMaxNumber = cr.getMaxValue();
+
+        if(pobiMaxNumber > crongMaxNumber) answer = Winner.POBI.getScore();
+        else if(pobiMaxNumber < crongMaxNumber) answer = Winner.CRONG.getScore();
+        else answer = Winner.TIE.getScore();
 
         return answer;
     }
 
-    private static boolean isPageRight(List<Integer> human){
-        int leftPage = human.get(0);
-        int rightPage = human.get(1);
+    public enum Page{
+        LEFT_PAGE(0), RIGHT_PAGE(1);
 
-        return ((rightPage - leftPage) == 1);
-    }
+        private int page;
 
-    private static int maxNum(List<Integer> person){
-        int leftPage = person.get(0);
-        int rightPage = person.get(1);
-
-        int sum = Math.max(sum(leftPage), multiply(leftPage));
-        int mul = Math.max(sum(rightPage), multiply(rightPage));
-
-        return Math.max(sum, mul);
-    }
-
-    private static int sum(int num){
-        int value = 0;
-        char[] chars = String.valueOf(num).toCharArray();
-        for(int i=0; i<chars.length; i++){
-            value += (chars[i]-'0');
+        Page(int page){
+            this.page = page;
         }
-        return value;
+
+        public int getPage() {
+            return page;
+        }
     }
 
-    private static int multiply(int num){
-        int value = 1;
-        char[] chars = String.valueOf(num).toCharArray();
-        for(int i=0; i<chars.length; i++){
-            value *= (chars[i]-'0');
+    public enum Winner{
+        POBI(1), CRONG(2), TIE(0), EXCEPTION(-1);
+
+        private final int score;
+
+        Winner(int score){
+            this.score = score;
         }
-        return value;
+
+        public int getScore() {
+            return score;
+        }
+    }
+
+    public static class BookPage {
+        private int left, right;
+
+        BookPage(int left, int right){
+            this.left = left;
+            this.right = right;
+        }
+
+        public boolean isValid(){
+            return (right - left) == 1;
+        }
+
+        public int getLeft() {
+            return left;
+        }
+
+        public int getRight() {
+            return right;
+        }
+    }
+
+    private static class BookPageCalculator{
+
+        private int left, right;
+
+        BookPageCalculator(BookPage book){
+            left = book.getLeft();
+            right = book.getRight();
+        }
+
+        private int getMaxValue(){
+            return calMaxValue();
+        }
+
+        private int calMaxValue(){
+            return Math.max(maxSum(), maxMultiply());
+        }
+
+        private int maxSum(){
+            return Math.max(sum(left), multiply(right));
+        }
+
+        private int maxMultiply(){
+            return Math.max(sum(left), multiply(right));
+        }
+
+        private int sum(int num){
+            int value = 0;
+            char[] chars = String.valueOf(num).toCharArray();
+            for(int i=0; i<chars.length; i++){
+                value += (chars[i]-'0');
+            }
+            return value;
+        }
+
+        private int multiply(int num){
+            int value = 1;
+            char[] chars = String.valueOf(num).toCharArray();
+            for(int i=0; i<chars.length; i++){
+                value *= (chars[i]-'0');
+            }
+            return value;
+        }
     }
 }
