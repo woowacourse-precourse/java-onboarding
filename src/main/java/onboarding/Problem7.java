@@ -8,7 +8,18 @@ public class Problem7 {
         List<String> answer = new ArrayList<>();
         List<String> user_friend = new ArrayList<>();
         user_friend = findFriends(user,friends);
+        checkFriends(user,friends,user_friend);
         return answer;
+    }
+    static void checkFriends(String host,List<List<String>> friends,List<String> user_friend){
+        for(List<String> info : friends){
+            if(user_friend.contains(info.get(0)) && info.get(1) != host){
+                if(map.get(info.get(1)) == null){map.put(info.get(1),10);}
+                else{map.put(info.get(1),map.get(info.get(1))+10);}}
+            if(user_friend.contains(info.get(1))&& info.get(0) != host){
+                if(map.get(info.get(0)) == null){map.put(info.get(0),10);}
+                else{map.put(info.get(0),map.get(info.get(0))+10);}}
+        }
     }
     static List<String> findFriends(String host,List<List<String>> friends){
         List<String> friend_info = new ArrayList<>();
