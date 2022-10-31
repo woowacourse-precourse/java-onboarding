@@ -2,7 +2,10 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String answer = cryptogram;
+        while(existRepeat(answer)){
+            answer = deleteRepeatWords(answer);
+        }
         return answer;
     }
     public static String repeatWords(String s){
