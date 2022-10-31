@@ -21,3 +21,8 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 🚩 구현할 기능 목록
+1. 각 닉네임을 두 글자 단위로 중복 횟수 카운팅
+2. 중복된 닉네임이 있는 경우 중복을 허용하지 않고 이메일을 저장
+3. 오른차순으로 정렬
