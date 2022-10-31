@@ -8,11 +8,11 @@ public class Problem2 {
     }
 
     private static String getDecodingCryptogram(String cryptogram){
-        boolean completeDecoding = false;
         StringBuffer decodedCrypto = new StringBuffer(cryptogram);
         if(!checkValidation(cryptogram)){
             return null;
         }
+        boolean completeDecoding = false;
         while(!completeDecoding){
             completeDecoding=checkDecodingEnded(decodedCrypto);
             decodingCurrentString(decodedCrypto);
@@ -26,7 +26,6 @@ public class Problem2 {
             return false;
         }
         if(!crypto.matches(regex)){
-            System.out.println("there is not small");
             return false;
         }
         return true;
