@@ -13,7 +13,19 @@ public class Problem6 {
      */
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
+        HashMap<String, String> crews = new HashMap<>(); // 크루들 이메일과 닉네임 저장
+        HashMap<String, Integer> nickname = new HashMap<>(); // 크루들 닉네임 연속문자 단위로 저장
 
+        // 1. 닉네임을 연속 문자 단위로 나누어서 해쉬맵에 개수 저장
+        for(List<String> list : forms) {
+            for(int i = 0; i < list.get(1).length() - 1; i++) { // 크루들 닉네임으로 반복문 돌아서
+                // 닉네임을 연속 문자 단위로 나눠서 해쉬맵에 저장 (값이 있는 경우 원래값에 +1, 없는 경우 0+1)
+                nickname.put(list.get(1).substring(i, i + 2), nickname.getOrDefault(list.get(1).substring(i, i + 2), 0) + 1);
+            }
+            crews.put(list.get(1), list.get(0)); // answer에 크루 이메일 출력하기 위해 이메일, 닉네임으로 이루어진 해쉬맵에 put하기
+        }
+
+        Collections.sort(answer); // 이메일을 오름차순으로 정렬하기 위함
         return answer;
     }
 }
