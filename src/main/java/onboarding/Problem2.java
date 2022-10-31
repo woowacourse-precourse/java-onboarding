@@ -2,7 +2,16 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer="";
+        String answer=cryptogram;
+        String prevCryptogram = "";
+
+        while(!answer.isBlank()){
+            prevCryptogram=removeDuplicates(answer);
+            if(!isDuplicated(prevCryptogram,answer)){
+                break;
+            }
+            answer=prevCryptogram;
+        }
 
         return answer;
     }
