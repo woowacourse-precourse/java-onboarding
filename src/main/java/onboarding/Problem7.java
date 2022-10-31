@@ -66,6 +66,7 @@ public class Problem7 {
                 scores.put(visitors.get(i), 1);
             }
         }
+        return scores;
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -77,6 +78,21 @@ public class Problem7 {
         userFriends = saveUserFriends(user, friends);
         scores = saveScoreByfriends(userFriends, friends, user);
         scores = saveScoreByVisitor(visitors, userFriends, scores);
+
+        // 내림차순으로 정렬하여 가장 큰 값부터 출력
+        // 참고 사이트 https://velog.io/@cgw0519/Java-HashMap-Value-%EA%B8%B0%EC%A4%80%EC%9C%BC%EB%A1%9C-%EC%A0%95%EB%A0%AC%ED%95%98%EA%B8%B0
+        List<Map.Entry<String, Integer>> entryList = new ArrayList<>(scores.entrySet());
+        entryList.sort(new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                return o2.getValue() - o1.getValue();
+            }
+        });
+
+        for(Map.Entry<String, Integer> entry : entryList){
+            // System.out.println("key : " + entry.getKey() + ", value : " + entry.getValue());
+            answer.add(entry.getKey());
+        }
 
        return answer;
     }
