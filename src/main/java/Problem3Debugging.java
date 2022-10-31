@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Problem3Debugging {
 
     public static void main(String[] args) {
-        int number = 33;
+        int number = 66;
 
         int answer = 0;
 

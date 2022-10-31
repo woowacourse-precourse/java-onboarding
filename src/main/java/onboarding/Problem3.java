@@ -33,7 +33,7 @@ public class Problem3 {
 
             int quotientOfEachDigit = numberEachDigitArray.get(sizeOfNumber-1) / 3;
 
-            if (numberEachDigitArray.get(sizeOfNumber-1)%3 == 0) {
+            if (numberEachDigitArray.get(sizeOfNumber-1)%3 == 0) { // 예외사항 각 자리수가 3의 배수일 때는 조금 다르게 풀림 그것에 관한 것
                 int pow = 1;
                 int powValue = 1;
                 while (pow < sizeOfNumber) { //제곱 수 구해주기
@@ -45,7 +45,7 @@ public class Problem3 {
 
                 answer += (quotientOfEachDigit-1) * powValue;
 
-            } else if (numberEachDigitArray.get(sizeOfNumber-1)%3 != 0) {
+            } else if (numberEachDigitArray.get(sizeOfNumber-1)%3 != 0) { // 예외사항이 아닌, 각 자리수가 3의 배수가 아닐 때는 일반적이게 풀림
                 int pow = 1;
                 int powValue = 1;
                 while (pow < sizeOfNumber) { //제곱 수 구해주기
