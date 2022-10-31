@@ -21,3 +21,10 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+
+#기능 목록
+1. 연속으로 중복된 문자의 수를 count 하는  countDuplicateCharacter 함수
+2. 1과정을 을 통해서 연속된 중복 문자를 제거하는 removeDuplicateCharacter 함수
+3. solution 에서 2과정을 반복하면서 더 이상 제거할 문자가 없으면 break
+4. 중복된 문자가 전부 제거된 결과 반환
