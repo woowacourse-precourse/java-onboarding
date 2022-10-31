@@ -19,7 +19,18 @@ public class Problem7 {
             addScoresForFriend(scoreMap, friendsList);
         }
 
+        // 방문자인 경우 친구 점수 맵에 1점 추가하기
+        for(String visitor:visitors){
+            addScoresForVisitor(scoreMap, visitor);
+        }
+
         return answer;
+    }
+
+    private static void addScoresForVisitor(Map<String, Integer> scoreMap, String visitor){
+        if (scoreMap.containsKey(visitor))
+            scoreMap.put(visitor, scoreMap.get(visitor) + 1);
+        else scoreMap.put(visitor, 1);
     }
 
     private static void addToScoreMap(Map<String, Integer> scoreMap, String friend){
