@@ -33,7 +33,7 @@ public class FriendRecommender {
      * @return new friend list
      */
     public List<String> recommend() {
-        searchRelationships();
+        addRelationships();
         Map<String, Friend> scores = new HashMap<>();
         List<String> userFriends = relationships.get(user);
         // Check user friends' friend list
@@ -46,7 +46,7 @@ public class FriendRecommender {
     /**
      * Search relationships in friend list and add relationships
      */
-    private void searchRelationships() {
+    private void addRelationships() {
         for (List<String> relationship : friends) {
             String idA = relationship.get(0);
             String idB = relationship.get(1);
