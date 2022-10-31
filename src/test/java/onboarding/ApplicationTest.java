@@ -22,7 +22,7 @@ class ApplicationTest {
         void case2() {
             List<Integer> pobi = List.of(131, 132);
             List<Integer> crong = List.of(211, 212);
-            int result = -1;
+            int result = 1;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
 

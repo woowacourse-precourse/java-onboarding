@@ -12,8 +12,8 @@ public class Problem2 {
     }
 
     /**
-     * 입력 받은 String을 deque에 뒤에서부터 한 문자씩 저장하며 연속된 중복값을 제거한다.
-     * @param cryptogram
+     * 입력 받은 String을 deque에 뒤에서부터 한 문자씩 저장하며 연속된 중복값을 제거
+     * @param {String} cryptogram
      * @return Deque<Character>
      */
     public static Deque<Character> decoding(String cryptogram) {

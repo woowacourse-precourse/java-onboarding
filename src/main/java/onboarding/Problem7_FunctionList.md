@@ -53,13 +53,5 @@
 7. sortByName()를 실행해 recommendEntryList에서 추천점수가 같다면 이름순으로 정렬합니다.
 8. filterRecommendEntry()를 실행해 점수가 높은 순서대로 5명을 반환합니다, 단 점수가 0이면 반환하지 않고 점수가 같으면 이름 순서대로 반환합니다.
 
-        addVisitorsInRecommendList(visitors);
 
-        addScoreByFriends(friends);
-        addScoreByVisitor(visitors);
-
-        sortByScore();
-        sortByName();
-
-        answer = filterRecommendEntryList();
 

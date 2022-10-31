@@ -18,7 +18,7 @@
 
 
 ### 2. 두 페이지를 입력받아 각 페이지의 자릿수의 합과 곱중 큰값을 구한 다음 두 페이지의 값중 더 큰값을 반환
-#### findMaxValue(int firstPage, int secondPage) --> int maxValue  
+#### findMaxValue(List<Integer> player) --> int maxValue  
 - firstPage와 secondPage를 calculate() 메소드에 넣은 뒤 반환 된 값을 비교해 큰 값을 반환합니다.
 - 반환된 값이 최종 점수입니다.
  
@@ -35,6 +35,9 @@
 
 
 # 전체 동작 과정
-1. 입력받은 pobi의 n1, n2 crong의 n1, n2를 inputValidation()에 넣어 예외 사항을 검사합니다
-2. 예외 사항에 걸리면 answer = -1, 통과한다면 maxValue()를 실행합니다.
-3. pobi와 crong의 최댓값을 얻은 뒤 pobi가 크면 answer = 1, crong이 크면 answer = 2, 동일하다면 answer = 0을 넣고 answer를 반환합니다.
+1. findWinner() 메소드를 호출합니다.
+2. findWinner() 메소드 안의 validatePobi(), validateCrong()을 실행해 예외사항이 존재하면 -1을 반환합니다.
+3. 예외사항이 없을시 findMaxValue()를 호출합니다.
+4. findMaxValue()를 통해 pobi와 crong의 최대점수를 구합니다.
+5. 두 점수를 비교하여 pobi가 이겼으면 1, crong이 이겼으면 2, 비겼으면 0을 answer에 저장합니다.
+6. answer를 반환합니다.
