@@ -15,6 +15,8 @@ public class Problem7 {
 
         score = checkFriendsScore(friends, score, friendsWithUser);
 
+        score = checkVisitorsScore(score, visitors);
+
         return answer;
     }
 
@@ -65,6 +67,15 @@ public class Problem7 {
                 if (score.containsKey(friends.get(i).get(0))) {
                     score.put(friends.get(i).get(0), score.get(friends.get(i).get(0)) + 10);
                 }
+            }
+        }
+        return score;
+    }
+
+    public static Map<String, Integer> checkVisitorsScore(Map<String, Integer> score, List<String> visitors) {
+        for (int i = 0; i < visitors.size(); i++) {
+            if (score.containsKey(visitors.get(i))) {
+                score.put(visitors.get(i), score.get(visitors.get(i)) + 1);
             }
         }
         return score;
