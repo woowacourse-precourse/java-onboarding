@@ -14,7 +14,7 @@ class Problem1 {
             sum += page % 10;
             page /= 10;
         }
-        return page;
+        return sum;
     }
 
     public static int multiplyDigit(int page){
