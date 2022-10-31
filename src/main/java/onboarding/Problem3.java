@@ -6,7 +6,6 @@ public class Problem3 {
     	
     	int answer = 0;
     	for(int i= 1 ; i<=number ; i++) {
-    		System.out.println(i);
     		String numCnt = String.valueOf(i);
     		
     		for (int j=0; j < numCnt.length();j++) {
