@@ -12,7 +12,7 @@ public class Problem5 {
 
     public static List<Integer> doExchangeMoney(int money) {
         int[] exchangeMoneyList = {50_000, 10_000, 5000, 1000, 500, 100, 50, 10, 1};
-        List<Integer> list = new ArrayList<Integer>();
+        List<Integer> list = new ArrayList<>();
 
         for (int exchangeMoney : exchangeMoneyList) {
             money = exchangeAndSubtractMoney(money, exchangeMoney, list);

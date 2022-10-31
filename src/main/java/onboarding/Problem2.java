@@ -4,7 +4,7 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         int cryptoLength = cryptogram.length();
         String answer = cryptogram;
-        String removeCryptogram = cryptogram;
+        String removeCryptogram;
 
         for (int i = 0; i < cryptoLength; i++) {
             removeCryptogram = findDuplicate(answer);
