@@ -12,6 +12,7 @@ public class Problem5 {
      */
 
     // 화폐 단위를 저장하고 있는 배열 billUnit[]
+    private static int billUnit[] = {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
 
     public static List<Integer> solution(int money) {
         List<Integer> answer = Collections.emptyList();
@@ -19,5 +20,4 @@ public class Problem5 {
     }
 
     // 남은 금액을 해당 단위의 화폐 몇 장으로 변환 가능한지를 판단하는 함수 moneyToBill()
-
 }
