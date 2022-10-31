@@ -8,6 +8,7 @@ public class Problem7 {
     public static Map<String, List<String>> friendsMap;
     public static Map<String, Integer> scoreMap;
 
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         initScoreMap();
         initFriendsMap(friends);
@@ -52,6 +53,9 @@ public class Problem7 {
     }
 
     public static void plusAcquaintanceScore(String user) {
+        if(!friendsMap.containsKey(user)){
+            return;
+        }
         List<String> userFriends = friendsMap.get(user);
         for (String userFriend : userFriends) {
             List<String> acquaintanceList = getAcquaintanceList(user, userFriend);
