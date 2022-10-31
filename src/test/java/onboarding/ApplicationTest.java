@@ -33,6 +33,22 @@ class ApplicationTest {
             int result = -1;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
+
+        @Test
+        void case4() {
+            List<Integer> pobi = List.of(1, 2);
+            List<Integer> crong = List.of(399, 400);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
+        @Test
+        void case5() {
+            List<Integer> pobi = List.of(3, 4);
+            List<Integer> crong = List.of(97, 98);
+            int result = 2;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
     }
 
     @Nested
@@ -48,6 +64,31 @@ class ApplicationTest {
         void case2() {
             String cryptogram = "zyelleyz";
             String result = "";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
+        void case3() {
+            String cryptogram = "";
+            String result = "";
+            try {
+                assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+            } catch (RuntimeException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+
+        @Test
+        void case4() {
+            String cryptogram = "aaaaaaaaaa";
+            String result = "";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
+        void case5() {
+            String cryptogram = "aaaaaaaaa";
+            String result = "a";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
     }

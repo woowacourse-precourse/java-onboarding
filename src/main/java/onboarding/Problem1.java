@@ -32,8 +32,22 @@ class Problem1 {
 		}
 		return (result);
 	}
+	private static int	getMax(int page)
+	{
+		return (Math.max(getDigitSum(page), getDigitMultiplication(page)));
+	}
 	public static int solution(List<Integer> pobi, List<Integer> crong) {
-		int answer = Integer.MAX_VALUE;
-		return answer;
+		int	pobiMax;
+		int	crongMax;
+
+		if (!isValidList(pobi) || !isValidList(crong))
+			return (-1);
+		pobiMax = Math.max(getMax(pobi.get(0)), getMax(pobi.get(1)));
+		crongMax = Math.max(getMax(crong.get(0)), getMax(crong.get(1)));
+		if (pobiMax > crongMax)
+			return (1);
+		else if (pobiMax < crongMax)
+			return (2);
+		return (0);
 	}
 }
