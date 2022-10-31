@@ -89,9 +89,4 @@ public class Problem6 {
         return duplicatedUserEmail.stream().sorted().collect(Collectors.toList());
     }
 
-    public static void test(){
-        List<String> list1 = new LinkedList<>();
-
-        list1.add("Something");
-    }
 }
