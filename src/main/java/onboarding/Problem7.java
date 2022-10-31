@@ -14,7 +14,27 @@ public class Problem7 {
         System.out.println(friendsMap);
         getVisitScore(visitors, scoreMap);
         System.out.println(scoreMap);
+        makeRecommendFriend(scoreMap);
         return answer;
+    }
+
+    private static List<String> makeRecommendFriend(Map<String, Integer> scoreMap){
+        List<String> ret = new ArrayList<>();
+
+        ArrayList<Map.Entry<String, Integer>> entries = new ArrayList<>(scoreMap.entrySet());
+        Collections.sort(entries, new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                if(o1.getValue().compareTo(o2.getValue()) == 0){
+                    return o1.getKey().compareTo(o2.getKey());
+                } else {
+                    return -1*o1.getValue().compareTo(o2.getValue());
+                }
+            }
+        });
+
+        
+        return null;
     }
 
     private static void getVisitScore(List<String> visitors, Map<String, Integer> scoreMap){
