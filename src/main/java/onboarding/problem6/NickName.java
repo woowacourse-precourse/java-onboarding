@@ -24,7 +24,7 @@ public class NickName {
 
     public boolean isDuplicate(NickName compareNick) {
         return separateNicks.stream()
-                .anyMatch(nick -> compareNick.getSeparateNicks().contains(nick));
+                .anyMatch(s -> compareNick.getSeparateNicks().contains(s));
     }
 
     private void separateTwoParts() {
@@ -39,21 +39,27 @@ public class NickName {
     }
 
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         NickName nickName1 = (NickName) o;
-        return Objects.equals(nickName, nickName1.nickName);
+        return Objects.equals(nickName, nickName1.nickName) && Objects.equals(separateNicks, nickName1.separateNicks);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(nickName);
+        return Objects.hash(nickName, separateNicks);
     }
 
     public String getNickName() {
         return nickName;
+    }
+
+    @Override
+    public String toString() {
+        return "" + nickName + "";
     }
 
     public List<String> getSeparateNicks() {
