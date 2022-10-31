@@ -3,13 +3,71 @@ package onboarding;
 import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 class Problem7Test {
+
+	@Test
+	void 친구_관계_생성_확인(){
+		String user = "mrko";
+		List<List<String>> friends = List.of(
+			List.of("donut", "andole"),
+			List.of("donut", "jun"),
+			List.of("donut", "mrko"),
+			List.of("shakevan", "andole"),
+			List.of("shakevan", "jun"),
+			List.of("shakevan", "mrko")
+		);
+		assertThat(new Problem7.RelationShip(friends)).isEqualTo(new Problem7.RelationShip(friends));
+
+		Map<String, List<String>> relation = Map.of(
+			"andole", List.of("donut", "shakevan"),
+			"donut", List.of("andole", "jun", "mrko"),
+			"shakevan", List.of("andole", "jun", "mrko"),
+			"mrko", List.of("donut", "shakevan"),
+			"jun", List.of("donut", "shakevan")
+		);
+		assertThat(new Problem7.RelationShip(friends)).isEqualTo(new Problem7.RelationShip(relation));
+	}
+
+	@Test
+	void 스코어_생성_확인(){
+		String user = "mrko";
+		List<List<String>> friends = List.of(
+			List.of("donut", "andole"),
+			List.of("donut", "jun"),
+			List.of("donut", "mrko"),
+			List.of("shakevan", "andole"),
+			List.of("shakevan", "jun"),
+			List.of("shakevan", "mrko")
+		);
+		List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+
+		assertThat(new Problem7.UserScore(user, visitors, new Problem7.RelationShip(friends)))
+			.isEqualTo(new Problem7.UserScore(user, visitors, new Problem7.RelationShip(friends)));
+
+		Map<String, Integer> userScore = Map.of(
+			"andole", 20,
+			"jun", 20,
+			"shakevan", 1,
+			"bedi", 3,
+			"donut", 1,
+			"mrko", 20
+		);
+
+		assertThat(new Problem7.UserScore(user, visitors, new Problem7.RelationShip(friends)))
+			.isEqualTo(new Problem7.UserScore(userScore));
+	}
 
 	@Test
 	@DisplayName("유저 아이디 길이 1보다 작을 때")
@@ -333,7 +391,7 @@ class Problem7Test {
 	}
 
 	@Test
-	void case7() {
+	void 테스트케이스추가5() {
 		String user = "hello";
 		List<List<String>> friends = List.of(
 			List.of("andole", "jun"),
@@ -352,7 +410,7 @@ class Problem7Test {
 	}
 
 	@Test
-	void case8() {
+	void 테스트케이스추가6() {
 		String user = "hello";
 		List<List<String>> friends = List.of(
 			List.of("andole", "jun"),
@@ -371,7 +429,7 @@ class Problem7Test {
 	}
 
 	@Test
-	void case9() {
+	void 테스트케이스추가7() {
 		String user = "hello";
 		List<List<String>> friends = List.of(
 			List.of("andole", "jun"),
@@ -390,7 +448,7 @@ class Problem7Test {
 	}
 
 	@Test
-	void case10() {
+	void 테스트케이스추가8() {
 		String user = "mrko";
 		List<List<String>> friends = List.of(
 			List.of("mrko", "jun"),
@@ -406,7 +464,7 @@ class Problem7Test {
 		assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
 	}
 	@Test
-	void case11() {
+	void 테스트케이스추가9() {
 		String user = "andole";
 		List<List<String>> friends = List.of(
 			List.of("andole", "jun"),
@@ -423,7 +481,7 @@ class Problem7Test {
 	}
 
 	@Test
-	void case12() {
+	void 테스트케이스추가10() {
 		String user = "hello";
 		List<List<String>> friends = List.of(
 			List.of("andole", "jun"),
