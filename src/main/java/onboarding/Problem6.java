@@ -8,9 +8,12 @@ import java.util.TreeSet;
 public class Problem6 {
     private static String[][] emailAndNickname;
     private static boolean[] inAnswerSet;
+    private static TreeSet<String> answerSet;
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
         emailAndNickname = new String[forms.size()][2];
+        answerSet = new TreeSet<>();
 
         addToArray(forms);
 
@@ -19,6 +22,10 @@ public class Problem6 {
             inAnswerSet[i] = true;
 
             checkDuplicatedNickname(i);
+        }
+
+        for (String s : answerSet) {
+            answer.add(s);
         }
 
         return answer;
@@ -51,6 +58,14 @@ public class Problem6 {
     private static void haveThisWord(String s2, int nowIndex) {
         for (int i = 0; i < emailAndNickname.length; i++) {
             addToSet(s2, i, nowIndex);
+        }
+    }
+
+    private static void addToSet(String s2, int i, int nowIndex) {
+        if (!inAnswerSet[i] && emailAndNickname[i][1].contains(s2)) {
+            answerSet.add(emailAndNickname[nowIndex][0]);
+            answerSet.add(emailAndNickname[i][0]);
+            inAnswerSet[i] = true;
         }
     }
 }
