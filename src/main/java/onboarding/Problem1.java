@@ -26,10 +26,6 @@ class Problem1 {
         return answer;
     }
 
-    /**
-     * 입력받은 리스트가 예외 사항인 경우에 대해 처리
-     * 예외 사항인 경우 false 리턴, 아니면 true 리턴
-     */
     public static boolean validate(List<Integer> list) {
         int left = list.get(0);
         int right = list.get(1);
@@ -45,10 +41,7 @@ class Problem1 {
 
         return true;
     }
-
-    /**
-     * n의 각 자리 숫자를 모두 더하거나, 모두 곱해 그 중 가장 큰 수를 리턴
-     */
+    
     public static int findMaxNum(int n) {
         int sum = 0, mul = 1;
 
