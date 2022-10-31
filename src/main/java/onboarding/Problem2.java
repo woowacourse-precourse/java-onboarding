@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 public class Problem2 {
 
+
+    // 작동 함수
     public static String solution(String cryptogram) {
         String answer = "answer";
 

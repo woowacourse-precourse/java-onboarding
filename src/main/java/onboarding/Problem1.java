@@ -55,6 +55,8 @@ class Problem1 {
         List<Integer> pobi_results = new ArrayList<Integer>();
         List<Integer> crong_results = new ArrayList<Integer>();
 
+        int temp_answer = -1;
+
         if (input_check(pobi) && input_check(crong)) {
             pobi_results.addAll(input_plus(pobi));
             pobi_results.addAll(input_multi(pobi));
@@ -69,19 +71,17 @@ class Problem1 {
             int crong_result = crong_results.get(0);
 
             if (pobi_result == crong_result) {
-                answer = 0;
+                temp_answer = 0;
             }
             else if ((pobi_result > crong_result)) {
-                answer = 1;
+                temp_answer = 1;
             }
             else {
-                answer = 2;
+                temp_answer = 2;
             }
+        }
 
-        }
-        else {
-            answer = -1;
-        }
+        answer = temp_answer;
 
         return answer;
     }
