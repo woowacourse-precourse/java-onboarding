@@ -7,49 +7,49 @@ public class Problem6 {
     public static final int NICKNAME_IDX = 1;
 
     public static List<String> solution(List<List<String>> forms) {
-        Set<String> answerSet = new HashSet<>();
-        getSimilarNicknameUser(forms, answerSet);
+        Set<String> emailSet = new HashSet<>();
+        getSimilarNicknameCrewEmail(forms, emailSet);
 
-        List<String> answer = new ArrayList<>(answerSet);
+        List<String> answer = new ArrayList<>(emailSet);
         Collections.sort(answer);
         return answer;
     }
 
-    private static void getSimilarNicknameUser(List<List<String>> forms, Set answerSet) {
-        HashMap<String, List<Integer>> nicknameIncludingContinuousMap = new HashMap<>();
+    private static void getSimilarNicknameCrewEmail(List<List<String>> forms, Set emailSet) {
+        HashMap<String, List<Integer>> similarNicknameMap = new HashMap<>();
 
-        for (int i = 0; i <= forms.size() - 1; i++) {
-            String nickname = forms.get(i).get(NICKNAME_IDX);
+        for (int crewIdx = 0; crewIdx <= forms.size() - 1; crewIdx++) {
+            String nickname = forms.get(crewIdx).get(NICKNAME_IDX);
 
-            for (int j = 0; j <= nickname.length() - 2; j++) {
-                char[] charArray = {nickname.charAt(j), nickname.charAt(j + 1)};
+            for (int charIdx = 0; charIdx <= nickname.length() - 2; charIdx++) {
+                char[] charArray = {nickname.charAt(charIdx), nickname.charAt(charIdx + 1)};
                 String continuous = String.valueOf(charArray);
 
-                getNicknameIncludingContinuousMap(nicknameIncludingContinuousMap, i, continuous);
+                getSimilarNicknameMap(similarNicknameMap, crewIdx, continuous);
             }
         }
 
-        getSimilarNicknameEmailList(forms, answerSet, nicknameIncludingContinuousMap);
+        getEmailSet(forms, emailSet, similarNicknameMap);
     }
 
-    private static void getNicknameIncludingContinuousMap(HashMap<String, List<Integer>> nicknameIncludingContinuousMap, int i, String continuous) {
-        if (nicknameIncludingContinuousMap.containsKey(continuous)) {
-            nicknameIncludingContinuousMap.get(continuous).add(i);
+    private static void getSimilarNicknameMap(HashMap<String, List<Integer>> similarNicknameMap, int crewIdx, String continuous) {
+        if (similarNicknameMap.containsKey(continuous)) {
+            similarNicknameMap.get(continuous).add(crewIdx);
         } else {
-            nicknameIncludingContinuousMap.put(continuous, new ArrayList<>(List.of(i)));
+            similarNicknameMap.put(continuous, new ArrayList<>(List.of(crewIdx)));
         }
     }
 
-    private static void getSimilarNicknameEmailList(List<List<String>> forms, Set answerSet, HashMap<String, List<Integer>> nicknameIncludingContinuousMap) {
-        Iterator<String> iterator = nicknameIncludingContinuousMap.keySet().iterator();
+    private static void getEmailSet(List<List<String>> forms, Set emailSet, HashMap<String, List<Integer>> similarNicknameMap) {
+        Iterator<String> iterator = similarNicknameMap.keySet().iterator();
 
         while (iterator.hasNext()) {
             String key = iterator.next();
-            List<Integer> indices = nicknameIncludingContinuousMap.get(key);
+            List<Integer> crewIndices = similarNicknameMap.get(key);
 
-            if (indices.size() >= 2) {
-                for (int index : indices) {
-                    answerSet.add(forms.get(index).get(EMAIL_IDX));
+            if (crewIndices.size() >= 2) {
+                for (int crewIdx : crewIndices) {
+                    emailSet.add(forms.get(crewIdx).get(EMAIL_IDX));
                 }
             }
         }
