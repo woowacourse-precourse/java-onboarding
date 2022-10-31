@@ -18,12 +18,15 @@ public class Problem5 {
             int temp = money;
             int count = 1;
 
-            // 해당 지폐의 갯수 카운트하기
+            // 해당 권종의 갯수 카운트하기
+            // 만약 권종보다 잔금이 적다면 반복문을 탈출
+            // 잔금이 299원이라면 5만원으로는 절대 지불할 수 없음
             while (money >= moneyType[i]) {
                 money -= moneyType[i];
                 count ++;
             }
 
+            // 잔금을 계산하기
             money = temp - (moneyType[i] * -- count);
             moneyCount[i] = count;
 
