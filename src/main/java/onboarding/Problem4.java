@@ -11,8 +11,8 @@ public class Problem4 {
 
             tmp = word.charAt(i);
 
-            if ( 64 < tmp && tmp < 91  ) tmp = (char) (155 - tmp);
-            if ( 96 < tmp && tmp < 123 ) tmp = (char) (219 - tmp);
+            if ( Character.isUpperCase(tmp) ) tmp = (char) (155 - tmp);
+            if ( Character.isLowerCase(tmp) ) tmp = (char) (219 - tmp);
 
             answer.append(tmp);
         }

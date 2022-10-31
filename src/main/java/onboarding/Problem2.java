@@ -1,37 +1,34 @@
 package onboarding;
 
+import java.util.Deque;
+import java.util.ArrayDeque;
+import java.util.stream.Collectors;
+
 public class Problem2 {
+    
+    private static String decoding(String encodingTxt) {
 
-    public static String decoding(String encodingTxt) {
-
-        int pos1, pos2;
-        int repeat = encodingTxt.length();
-        StringBuilder decodingTxt = new StringBuilder(encodingTxt);
+        Deque<Character> st = new ArrayDeque<>();
 
 
-        for (pos1=0; pos1 < repeat-1; pos1++) {
-
-            pos2 = pos1 + 1;
-
-            while (pos1 >= 0 && pos2 < repeat && decodingTxt.charAt(pos1) == decodingTxt.charAt(pos2)) {
-                pos1 -= 1;
-                pos2 += 1;
+        for(char i : encodingTxt.toCharArray()) {
+            if (!st.isEmpty() && st.peekLast() == i ) {
+                st.pollLast();
+            } else {
+                st.addLast(i);
             }
-
-
-            if (pos1+1 != pos2) {
-                decodingTxt.delete(pos1+1, pos2);
-                repeat -= pos2-pos1-1;
-                pos1   -=1;
-            }
-
         }
 
-        return decodingTxt.toString();
+        
+        return st.stream().map(a -> a.toString()).collect(Collectors.joining(""));
     }
 
 
     public static String solution(String cryptogram) {
-        return decoding(cryptogram);
+        if (cryptogram.isEmpty()) {
+            return "";
+        } else {
+            return decoding(cryptogram);
+        }
     }
 }

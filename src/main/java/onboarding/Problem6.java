@@ -2,46 +2,38 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Set;
+import java.util.HashSet;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.List;
 
 public class Problem6 {
 
-    public static Boolean is_duplicate(String a, String b) {
-
-        for(int i=0; i < a.length()-1; i++) {
-            for(int j=0; j < b.length()-1; j++) {
-                if(a.charAt(i) == b.charAt(j) && a.charAt(i+1) == b.charAt(j+1)) {
-                    return true;
-                }
-            }
-        }
-
-        return false;
-    }
-
-
     public static List<String> solution(List<List<String>> forms) {
 
-        int size = forms.size();
-        List<Boolean> chk = new ArrayList<>(size);
+        Map<String, Set<String>> split2_email = new HashMap<>();
         List<String> answer = new ArrayList<>();
-        for(int i=0; i<size; i++) chk.add(true);
+        String word2, email;
 
+        for (List<String> form : forms) {
 
-        for(int i=0; i<size; i++) {
-            for(int j=i+1; j<size; j++) {
+            email = form.get(0);
 
-                if (is_duplicate(forms.get(i).get(1), forms.get(j).get(1))) {
+            for (int j = 0; j < form.get(1).length() - 1; j++) {
 
-                    if (chk.get(i)) {
-                        answer.add(forms.get(i).get(0));
-                        chk.set(i, false);
+                word2 = form.get(1).substring(j, j + 2);
+
+                if (split2_email.containsKey(word2)) {
+
+                    answer.add(email);
+                    if (split2_email.get(word2).size() == 1) {
+                        answer.addAll(split2_email.get(word2));
                     }
+                    split2_email.get(word2).add(email);
 
-                    if (chk.get(j)) {
-                        answer.add(forms.get(j).get(0));
-                        chk.set(j, false);
-                    }
+                } else {
+                    split2_email.put(word2, new HashSet<>(Collections.singletonList(email)));
 
                 }
             }
