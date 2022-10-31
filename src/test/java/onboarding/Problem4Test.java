@@ -12,8 +12,8 @@ class Problem4Test {
         char ch1 = 'a';
         char ch2 = 'C';
 
-        assertThat(Problem4.transformChar(ch1)).isEqualTo('z');
-        assertThat(Problem4.transformChar(ch2)).isEqualTo('X');
+        assertThat(Problem4.makeReverseAlphabet(ch1).result()).isEqualTo('z');
+        assertThat(Problem4.makeReverseAlphabet(ch2).result()).isEqualTo('X');
 
     }
     @Test
