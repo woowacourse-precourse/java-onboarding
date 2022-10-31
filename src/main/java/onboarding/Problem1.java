@@ -3,6 +3,11 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+    private static final int POBI_WIN = 1;
+    private static final int CRONG_WIN = 2;
+    private static final int DRAW = 0;
+    private static final int DIGIT_DIVISOR = 10;
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if (isInvalidPages(pobi) || isInvalidPages(crong)) {
             return -1;
@@ -30,8 +35,8 @@ class Problem1 {
         int num = page;
 
         while (num != 0) {
-            sum += num % 10;
-            num /= 10;
+            sum += num % DIGIT_DIVISOR;
+            num /= DIGIT_DIVISOR;
         }
 
         return sum;
@@ -42,8 +47,8 @@ class Problem1 {
         int num = page;
 
         while (num != 0) {
-            mul *= num % 10;
-            num /= 10;
+            mul *= num % DIGIT_DIVISOR;
+            num /= DIGIT_DIVISOR;
         }
 
         return mul;
@@ -51,13 +56,13 @@ class Problem1 {
 
     private static int getWinner(int pobiResult, int crongResult) {
         if (pobiResult > crongResult) {
-            return 1;
+            return POBI_WIN;
         }
 
         if (pobiResult < crongResult) {
-            return 2;
+            return CRONG_WIN;
         }
 
-        return 0;
+        return DRAW;
     }
 }
