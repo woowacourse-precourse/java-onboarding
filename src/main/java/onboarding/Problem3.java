@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Problem3 {
+    private static final int THREE=3;
+    private static final int SIX=6;
+    private static final int NINE=9;
+
     public static int solution(int number) {
         int answer = 0;
 
@@ -12,6 +16,7 @@ public class Problem3 {
         }
         return answer;
     }
+
     private static List<Integer> convertToArray(int number) {
         List<Integer> arr = new ArrayList<>();
         while (number > 0) {
@@ -19,5 +24,22 @@ public class Problem3 {
             number /= 10;
         }
         return arr;
+    }
+    private static int addCount(Integer a) {
+        if (isThree(a) || isSix(a) || isNine(a)) {
+            return 1;
+        }
+        return 0;
+    }
+
+    private static boolean isThree(Integer i) {
+        return (i == THREE);
+    }
+    private static boolean isSix(Integer i) {
+        return (i == SIX);
+    }
+
+    private static boolean isNine(Integer i) {
+        return (i == NINE);
     }
 }
