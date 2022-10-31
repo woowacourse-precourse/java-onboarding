@@ -12,7 +12,7 @@ public class Sns {
 
 	private HashMap<String, List<String>> friendMap = new HashMap<>();
 
-	public Sns(List<List<String>> friends) {
+	public void saveFriends(List<List<String>> friends){
 		for (List<String> friend : friends) {
 			String userA = friend.get(0);
 			String userB = friend.get(1);
@@ -23,13 +23,9 @@ public class Sns {
 	}
 
 	private void addFriend(String userA, String userB) {
-		if (friendMap.containsKey(userA)) {
-			friendMap.get(userA).add(userB);
-		} else if (!friendMap.containsKey(userA)) {
-			List<String> friendList = new ArrayList<>();
-			friendList.add(userB);
-			friendMap.put(userA, friendList);
-		}
+		List<String> friendList = friendMap.getOrDefault(userA, new ArrayList<String>());
+		friendList.add(userB);
+		friendMap.put(userA,friendList);
 	}
 
 	public List<String> recommendFriend(String me, List<String> visitors) {
@@ -40,15 +36,13 @@ public class Sns {
 				friendToScore(me, userA, scoreBoard);
 			}
 		}
-
 		visitorsToScore(visitors, scoreBoard);
-
 		removeFriend(me, scoreBoard);
 
-		return sorteMap(scoreBoard);
+		return sortMap(scoreBoard);
 	}
 
-	private List<String> sorteMap(HashMap<String, Integer> map) {
+	private List<String> sortMap(HashMap<String, Integer> map) {
 		List<String> collect = map.entrySet()
 			.stream()
 			.filter(e -> e.getValue() != 0)
@@ -78,13 +72,13 @@ public class Sns {
 		if(friendMap.get(me)==null || friendMap.get(userA)==null)
 			return;
 
-		List<String> friendListA = friendMap.get(me);
-		List<String> friendListB = friendMap.get(userA);
+		List<String> friendListMe = friendMap.get(me);
+		List<String> friendListA = friendMap.get(userA);
 
 		int friendCnt = 0;
 
-		for (String friend : friendListA) {
-			if (friendListB.contains(friend)) {
+		for (String friend : friendListMe) {
+			if (friendListA.contains(friend)) {
 				friendCnt += 1;
 			}
 		}
