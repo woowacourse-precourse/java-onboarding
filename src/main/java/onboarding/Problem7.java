@@ -33,7 +33,7 @@ public class Problem7 {
         return map;
     }
 
-    public static List<String> flowedFriends(String user, List<List<String>> friends) {
+    public static List<String> followedFriends(String user, List<List<String>> friends) {
         List<String> friendList = new ArrayList<>();
 
         for(int i=0; i<friends.size(); i++) {
