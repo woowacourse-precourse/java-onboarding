@@ -4,10 +4,15 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer;
+
+        HashSet<String> emails = compareDuplicateName(forms);
+        answer = sortEmails(emails);
+
         return answer;
     }
 
@@ -42,5 +47,13 @@ public class Problem6 {
         }
 
         return emails;
+    }
+
+    public static List<String> sortEmails(HashSet<String> emails) {
+        List<String> sortedEmails = emails.stream()
+                .sorted()
+                .collect(Collectors.toList());
+
+        return sortedEmails;
     }
 }
