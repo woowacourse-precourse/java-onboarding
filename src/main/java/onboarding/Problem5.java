@@ -14,6 +14,7 @@ public class Problem5 {
         answer.add(countThousand());
         answer.add(countFiveHundred());
         answer.add(countHundred());
+        answer.add(countFifty());
         answer.add(countTen());
         answer.add(countOne());
         return answer;
@@ -52,6 +53,12 @@ public class Problem5 {
     private static int countHundred() {
         int count = balance / 100;
         balance -= 100 * count;
+        return count;
+    }
+
+    private static int countFifty() {
+        int count = balance / 50;
+        balance -= 50 * count;
         return count;
     }
 
