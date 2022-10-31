@@ -25,7 +25,7 @@ public class Problem7 {
         }
         return FriendsAndScore_map;
     }
-    public static Map<String,Integer> visitorsAdd_score(Map<String,Integer> s,List<String> visitors,List<List<String>> friends,List<String> user_friends) {
+    /*public static Map<String,Integer> visitorsAdd_score(Map<String,Integer> s,List<String> visitors,List<List<String>> friends,List<String> user_friends) {
 
         Map<String,Integer> friendsAndScores=friendsAdd_score(s,friends,user_friends);
         for(Map.Entry<String,Integer> element:friendsAndScores.entrySet()){
@@ -85,6 +85,7 @@ public class Problem7 {
 
         return FriendsAndscore_map;
     }
+   */
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         List<String> ls=new ArrayList<>();
