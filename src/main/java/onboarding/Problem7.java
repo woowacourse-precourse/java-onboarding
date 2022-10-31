@@ -35,6 +35,18 @@ public class Problem7 {
         return relation;
     }
 
+    static void score10(String user, Map<String, List<String>> relation, Map<String, Integer> scores) {
+        for (String userFriend: relation.get(user)) {
+            for (String friends: relation.get(userFriend)) {
+                if (scores.containsKey(friends)) {
+                    scores.put(friends, scores.get(friends) + 10);
+                } else {
+                    scores.put(friends, 10);
+                }
+            }
+        }
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
