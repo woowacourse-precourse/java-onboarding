@@ -32,4 +32,17 @@ public class Problem7 {
         return myFriendsFriend;
     }
 
+    public static HashMap<String, Integer> findMyVisitors(String user, List<String> myFriend, List<String> visitors) {
+        HashMap<String, Integer> notMyFriendVisitors = new HashMap<>();
+        for(int i = 0; i < visitors.size(); i++) {
+            int count = 1;
+            for (String f : myFriend) {
+                if (!visitors.get(i).equals(f)) {
+                    notMyFriendVisitors.put(visitors.get(i), count++);
+                }
+            }
+        }
+        return notMyFriendVisitors;
+    }
+
 }
