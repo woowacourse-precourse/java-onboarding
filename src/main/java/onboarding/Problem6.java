@@ -11,7 +11,21 @@ public class Problem6 {
 
         final Map<String, List<Crew>> crewMap = new HashMap<>();
 
-        return new ArrayList<String>();
+        crews.forEach(crew -> {
+            final String nickname = crew.getNickname();
+            for (int i = 0; i < nickname.length() - 1; i++) {
+                String key = nickname.substring(i, i + 2);
+                crewMap.putIfAbsent(key, new ArrayList<>());
+                crewMap.get(key).add(crew);
+            }
+        });
+
+        return crewMap.values().stream()
+                .filter(value -> value.size() > 1)
+                .flatMap(Collection::stream)
+                .map(Crew::getEmail)
+                .sorted()
+                .collect(Collectors.toList());
     }
 
     public static class Crew {
