@@ -7,6 +7,16 @@ public class Problem3 {
         return answer;
     }
 
+    static int splitSingleDigit(String numbers) {
+        int targetNumberCount = 0;
+
+        for (char charOfNumber : numbers.toCharArray()) {
+            targetNumberCount += checkTargetNumber(charOfNumber);
+        }
+
+        return targetNumberCount;
+    }
+
     static int checkTargetNumber(char charOfNumber) {
         if (charOfNumber == '3') {
             return 1;
