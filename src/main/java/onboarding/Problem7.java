@@ -51,8 +51,9 @@ public class Problem7 {
             int comparison = (o1.getValue() - o2.getValue()) * -1;
             return comparison == 0 ? o1.getKey().compareTo(o2.getKey()) : comparison;
         });
-        while (list.size()>5){
-            list.remove(list.size()-1);
+
+        if(list.size()>5){
+            list.subList(0, 5);
         }
         return list;
     }
