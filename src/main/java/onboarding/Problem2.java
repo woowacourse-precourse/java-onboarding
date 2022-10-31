@@ -24,10 +24,6 @@ public class Problem2 {
 //        사용하는 char를 char[]형태로
         dividedChars = temp.toCharArray();
 
-//        for(int i = 0; dividedChars.length > i; i++){
-//            System.out.print(dividedChars[i]+"\n");
-//        }
-
 //        char 개수가 홀수이면 추가
         for(int i=0; i < temp.length(); i++){
             if (countChar(cryptogram, dividedChars[i])%2 == 1){
@@ -35,8 +31,6 @@ public class Problem2 {
             }
         }
 
-
-//        System.out.println(answer);
         return answer;
     }
 }

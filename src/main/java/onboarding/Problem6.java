@@ -33,7 +33,6 @@ public class Problem6 {
                         .sorted()
                         .collect(Collectors.toList());
 
-        System.out.print(answer);
         return answer;
     }
 }

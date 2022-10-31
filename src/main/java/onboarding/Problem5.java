@@ -17,13 +17,11 @@ public class Problem5 {
             count = leftMoney / (i*5);
             leftMoney %= i*5;
 
-            System.out.println(count);
             answer.add(count);
 
             count = leftMoney / i;
             leftMoney %= i;
 
-            System.out.println(count);
             answer.add(count);
         }
         count = leftMoney;

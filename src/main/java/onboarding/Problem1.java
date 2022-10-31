@@ -59,7 +59,7 @@ class Problem1 {
             pobiMaxNum = temp;
         }
 
-//        System.out.println("pobi's result : " + pobiMaxNum);
+
 
         leftNum = crong.get(0);
         rightNum = crong.get(1);
@@ -73,7 +73,7 @@ class Problem1 {
         if (crongMaxNum < temp){
             crongMaxNum = temp;
         }
-//        System.out.println("crong's result : " + crongMaxNum);
+
 
         if (pobiMaxNum == crongMaxNum){
             answer = 0;
