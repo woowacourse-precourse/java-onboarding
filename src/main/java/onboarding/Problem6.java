@@ -20,6 +20,8 @@ public class Problem6 {
                 answer.addAll(collect);
             }
         }
+        answer = new ArrayList<>(new HashSet<>(answer));
+        Collections.sort(answer);
         return answer;
     }
 
