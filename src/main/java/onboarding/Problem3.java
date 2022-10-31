@@ -13,4 +13,10 @@ public class Problem3 {
     private static boolean containsNumber(String fullNumber, String number) {
         return fullNumber.contains(number);
     }
+
+    private static long countNumber(String StringNumber, char charNumber) {
+        return StringNumber.chars()
+                .filter(c -> c == charNumber)
+                .count();
+    }
 }
