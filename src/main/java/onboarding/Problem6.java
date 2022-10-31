@@ -41,6 +41,11 @@ public class Problem6 {
         overLapNickNameEmail.add(userEmail1);
         overLapNickNameEmail.add(userEmail2);
     }
+
+    // email에 해당하는 부분의 문자열을 오름차순으로 정렬하는 함수
+    public static List<String> sorting(Set<String> emailList){
+        return emailList.stream().sorted().collect(Collectors.toList());
+    }
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
