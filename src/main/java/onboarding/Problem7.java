@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.HashSet;
-import java.util.HashMap;
+import java.util.*;
 
 /*
 문제 설명
@@ -60,7 +57,7 @@ public class Problem7 {
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
 
         // 친구 목록을 중복되지 않도록 구성해준다.
         HashSet<String> friends_set = new HashSet<>();
@@ -126,6 +123,17 @@ public class Problem7 {
             else if (friend.get(1).equals(user)) {
                 friends_score.put(friend.get(0), 0);
             }
+        }
+
+        List<String> keySet_list = new ArrayList<>(friends_score.keySet());
+
+        Collections.sort(keySet_list, (o1, o2) -> (friends_score.get(o2).compareTo(friends_score.get(o1))));
+        for(String key : keySet_list) {
+            if (friends_score.get(key) == 0 || answer.size() == 5) {
+                break;
+            }
+
+            answer.add(key);
         }
 
         return answer;
