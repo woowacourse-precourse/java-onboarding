@@ -6,8 +6,9 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Map<String, User> userMap = new HashMap<>();
         userMap.put(user, new User(user));
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
         List<User> users = new ArrayList<>();
+
 
         for (int i = 0; i < friends.size(); i++) {
             if (userMap.containsKey(friends.get(i).get(0))) { //0번 객체가 map에 있음
@@ -43,13 +44,23 @@ public class Problem7 {
                     userMap.get(str).add1Point();
                 }
             }
-
-            for (String key : userMap.keySet()) { //유저의 키를 꺼내서 리스트에 add하기
-                users.add(userMap.get(key));
-            }
-            Collections.sort(users);
         }
 
+
+        for (String key : userMap.keySet()) { //유저의 키를 꺼내서 리스트에 add하기
+            users.add(userMap.get(key));
+        }
+        Collections.sort(users);
+
+        for (User user1 : users) {
+            if (answer.size() < 6) {
+                if (!user1.getUserName().equals(user) && !userMap.get(user).getFriendList().contains(user1) &&
+                        user1.getPoint() != 0) {
+
+                    answer.add(user1.getUserName());
+                }
+            }
+        }
         return answer;
     }
 }
