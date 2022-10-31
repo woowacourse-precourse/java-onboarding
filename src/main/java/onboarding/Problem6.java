@@ -38,7 +38,13 @@ public class Problem6 {
                 total_set.addAll(set);
             }
         }
-        List<String> answer = List.of("answer");
+
+        List<String> answer = new ArrayList<>();
+
+        for (Integer i : total_set){
+            answer.add(forms.get(i).get(0));
+        }
+        answer.sort(Comparator.naturalOrder());
         return answer;
     }
 }
