@@ -2,24 +2,20 @@ package onboarding.problem6;
 
 import java.util.List;
 
-public class Crew {
-    private final String           email;
+public class Crew implements Comparable<Crew> {
+    private final Email            email;
     private final ConsecutiveNames consecutiveNames;
     private final String           name;
 
 
     public Crew(String email, String name) {
-        this.email            = email;
+        this.email            = new Email(email);
         this.consecutiveNames = new ConsecutiveNames(name);
         this.name             = name;
     }
 
-    public Crew(List<String> input){
+    public Crew(List<String> input) {
         this(input.get(0), input.get(1));
-    }
-
-    public String getEmail() {
-        return this.email;
     }
 
     // 나를 제외한 다른 크루들이 비슷한 이름을 가진 사람이 있습니까?
@@ -43,7 +39,16 @@ public class Crew {
 
 
     @Override
-    public String toString(){
-        return this.email;
+    public String toString() {
+        return this.name;
+    }
+
+    @Override
+    public int compareTo(Crew o) {
+        return this.email.compareTo(o.email) ;
+    }
+
+    public String getEmail() {
+        return email.email();
     }
 }
