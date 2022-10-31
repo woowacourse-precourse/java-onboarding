@@ -7,7 +7,7 @@ public class Problem4 {
 
     public static String solution(String word) {
         initialize();
-        checkWordCollect(word);
+        checkWordCorrect(word);
 
         return reverseWord(word);
     }
@@ -16,7 +16,7 @@ public class Problem4 {
      * 글자 검증
      * @param word 문자열
      */
-    private static void checkWordCollect(String word) {
+    private static void checkWordCorrect(String word) {
         int lengthWord = word.length();
         if (lengthWord == 0 || lengthWord > 1_000) {
             throw new RuntimeException("변환 가능한 범위를 초과했습니다. 문자 크기는 1 ~ 1000 사이여야 합니다.");

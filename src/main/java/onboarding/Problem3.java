@@ -5,7 +5,7 @@ import java.util.Collections;
 
 public class Problem3 {
     public static int solution(int number) {
-        checkNumberCollect(number);
+        checkNumberCorrect(number);
 
         return countClap(number);
     }
@@ -15,7 +15,7 @@ public class Problem3 {
      * @param number 숫자
      * @throws RuntimeException 오류 메세지
      */
-    private static void checkNumberCollect(int number) {
+    private static void checkNumberCorrect(int number) {
         if (number < 1 || number > 10_000) {
             throw new RuntimeException("1 ~ 10,000 숫자가 입력되어야 합니다.");
         }
