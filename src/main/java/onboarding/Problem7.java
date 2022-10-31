@@ -15,7 +15,9 @@ import java.util.Map;
 public class Problem7 {
 
     public static Map<String, List<String>> friendMap;
+    public static Map<String, Integer> scoreMap;
 
+    // 친구 관계 저장
     public static void addFriend(String friend1, String friend2) {
         if (friendMap.containsKey(friend1)) {
             friendMap.get(friend1).add(friend2);
@@ -26,6 +28,28 @@ public class Problem7 {
             friendMap.get(friend2).add(friend1);
         } else {
             friendMap.put(friend2, new ArrayList<>(List.of(friend1)));
+        }
+    }
+
+    // 함께 아는 친구 점수 계산
+    public static void getScoreFromSameFriend(String user) {
+        List<String> myFriends = new ArrayList<>();
+        if (friendMap.containsKey(user)) {
+            myFriends = friendMap.get(user);
+        }
+        for (String friend : friendMap.keySet()) {
+            // 이미 친구인 경우 추천하지 않음
+            if (myFriends.contains(friend)) continue;
+            // 자신인 경우
+            if (user.equals(friend)) continue;
+
+            int score = 0;
+            for (String person : friendMap.get(friend)) {
+                if (myFriends.contains(person)) {
+                    score += 10;
+                }
+            }
+            scoreMap.put(friend, score);
         }
     }
 
