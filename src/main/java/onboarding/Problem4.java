@@ -14,10 +14,10 @@ public class Problem4 {
 
     private static char getAlphabat(char character) {
         if ('A' <= character && character <= 'Z') {
-            return (char)(155 - character);
+            return (char)('A' + 'Z' - character);
         }
         if ('a' <= character && character <= 'z') {
-            return (char)(219 - character);
+            return (char)('a' + 'z' - character);
         }
 
         return character;
