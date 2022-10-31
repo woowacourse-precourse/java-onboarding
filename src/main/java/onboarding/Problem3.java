@@ -1,17 +1,15 @@
 package onboarding;
 
-import java.util.Arrays;
-
 public class Problem3 {
-    private static final int[] clapNum = new int[10001];
+    private static final int[] CLAP_NUM = new int[10001];
 
     public static int solution(int number) {
         int answer = 0;
 
         for (int i = 2; i <= number; ++i) {
-            clapNum[i] = clapNum[i - 1] + countClapNum(i);
+            CLAP_NUM[i] = CLAP_NUM[i - 1] + countClapNum(i);
         }
-        answer = clapNum[number];
+        answer = CLAP_NUM[number];
         return answer;
     }
 

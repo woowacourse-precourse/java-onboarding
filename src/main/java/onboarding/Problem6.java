@@ -3,7 +3,7 @@ package onboarding;
 import java.util.*;
 
 public class Problem6 {
-    private static final Map<String, Integer> pieceOf2Letter = new HashMap<>();
+    private static final Map<String, Integer> PIECE_OF_2_LETTER = new HashMap<>();
 
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
@@ -14,7 +14,7 @@ public class Problem6 {
     }
 
     public static void clearHash() {
-        pieceOf2Letter.clear();
+        PIECE_OF_2_LETTER.clear();
     }
 
     public static void setTotalNicknamePieces(List<List<String>> forms) {
@@ -27,7 +27,7 @@ public class Problem6 {
         int len = nickname.length();
         for (int i = 0; i < len - 1; ++i) {
             String subStr = nickname.substring(i, i + 2);
-            pieceOf2Letter.put(subStr, pieceOf2Letter.getOrDefault(subStr, 0) + 1);
+            PIECE_OF_2_LETTER.put(subStr, PIECE_OF_2_LETTER.getOrDefault(subStr, 0) + 1);
         }
     }
 
@@ -53,7 +53,7 @@ public class Problem6 {
         int len = nickname.length();
         for (int i = 0; i < len - 1; ++i) {
             String subStr = nickname.substring(i, i + 2);
-            if (pieceOf2Letter.get(subStr) > 1)
+            if (PIECE_OF_2_LETTER.get(subStr) > 1)
                 return user.get(0);
         }
         return null;

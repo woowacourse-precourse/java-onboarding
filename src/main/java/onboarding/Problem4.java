@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Problem4 {
-    private final static Map<Character, Character> momToChild = new HashMap<>();
+    private final static Map<Character, Character> MOM_TO_CHILD = new HashMap<>();
     public static String solution(String word) {
         String answer = "";
         initDictionary();
@@ -17,7 +17,7 @@ public class Problem4 {
         final String CHILD_WORD    = "ZYXWVUTSRQPONMLKJIHGFEDCBAzyxwvutsrqponmlkjihgfedcba";
         int len = MOM_WORD.length();
         for (int i = 0; i < len; ++i) {
-            momToChild.put(MOM_WORD.charAt(i), CHILD_WORD.charAt(i));
+            MOM_TO_CHILD.put(MOM_WORD.charAt(i), CHILD_WORD.charAt(i));
         }
     }
 
@@ -33,7 +33,7 @@ public class Problem4 {
 
     public static char getOppositeChar(char ch) {
         if (Character.isAlphabetic(ch)) {
-            return momToChild.get(ch);
+            return MOM_TO_CHILD.get(ch);
         }
         return ch;
     }
