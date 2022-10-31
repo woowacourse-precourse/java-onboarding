@@ -44,9 +44,8 @@ public class Problem7 {
             makeFriendScoreMap(friendsOfUser, friend, friendsOfFriend, friendScoreMap);
         }
 
-        for (String name : visitors) {
-            if (!friendsOfUser.contains(name))
-                friendScoreMap.put(name, friendScoreMap.getOrDefault(name, 0) + 1);
+        for (String visitor : visitors) {
+            updateFriendScoreMap(visitor, friendsOfUser, friendScoreMap);
         }
 
         List<Friend> friendScoreList = new ArrayList<>();
@@ -98,6 +97,11 @@ public class Problem7 {
         }
 
         return cnt * 10;
+    }
+
+    private static void updateFriendScoreMap(String visitor, List<String> friendsOfUser, HashMap<String, Integer> friendScoreMap) {
+        if (!friendsOfUser.contains(visitor))
+            friendScoreMap.put(visitor, friendScoreMap.getOrDefault(visitor, 0) + 1);
     }
 
     public static void findMaxFiveFriends(List<Friend> friendScoreList, List<String> answer) {
