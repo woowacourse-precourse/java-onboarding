@@ -23,9 +23,18 @@ public class Problem4 {
             return (char) (total - c);
         }
     }
-
-    public static String solution(String word) {
+    // 전체 문장 변환
+    public static String reverseWord(String word) {
         String answer = "";
+        for (int i = 0; i < word.length(); i++) {
+            answer += reverseChar(word.charAt(i));
+        }
         return answer;
     }
+
+    public static String solution(String word) {
+        return reverseWord(word);
+    }
+
+
 }
