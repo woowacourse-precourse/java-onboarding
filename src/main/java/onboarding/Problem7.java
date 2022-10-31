@@ -20,6 +20,19 @@ public class Problem7 {
     }
 
     /**
+     * 점수가 높은 5명 이하만 반환
+     */
+    private static List<String> topFive(Map<String, Integer> friendsMap){
+        List<String> resultRecommendation = new ArrayList<>();
+        List<String> recommendationList = orderByScore(friendsMap);
+
+        for(int i=0;i<5 || i<recommendationList.size() ;i++)
+            resultRecommendation.add(recommendationList.get(i));
+
+        return resultRecommendation;
+    }
+
+    /**
      * 점수 높은 순으로 정렬
      */
     private static List<String> orderByScore(Map<String, Integer> friendsMap){
