@@ -40,18 +40,30 @@ class Problem1 {
     private static boolean isExceptionInPageNum(List<Integer> pageNumList) {
         boolean isException = false;
 
+        int leftPageNum = pageNumList.get(0);
+        int rightPageNum = pageNumList.get(1);
+
         // 1. 페이지 번호가 1 미만, 400 초과인 경우 예외
-        for (int pageNum : pageNumList) {
-            if (pageNum < 1 || pageNum > 400) {
-                isException = true;
-            }
+        if (leftPageNum < 1 || leftPageNum > 400) {
+            isException = true;
+        }
+        if (rightPageNum < 1 || rightPageNum > 400) {
+            isException = true;
         }
         // 2. 두 페이지 번호가 인접한 번호가 아닐 경우 예외
-        if ((pageNumList.get(1) - pageNumList.get(0)) != 1) {
+        if ((rightPageNum - leftPageNum) != 1) {
             isException = true;
         }
         // 3. 왼쪽 페이지 번호가 오른쪽 페이지 번호보다 높거나 같을 경우 예외
-        if (pageNumList.get(0) >= pageNumList.get(1)) {
+        if (leftPageNum >= rightPageNum) {
+            isException = true;
+        }
+        // 4. 왼쪽 페이지 번호가 홀수가 아닐 경우 예외
+        if (leftPageNum % 2 == 0) {
+            isException = true;
+        }
+        // 5. 오른쪽 페이지 번호가 짝수가 아닐 경우 예외
+        if (rightPageNum % 2 != 0) {
             isException = true;
         }
 
