@@ -13,6 +13,7 @@ class Problem1 {
 
         if(pobi.get(0)%2 == 0) return -1;
         if(pobi.get(1)%2 == 1) return -1;
+        if(pobi.get(1) - pobi.get(0) != 1) return -1;
 
 
 
