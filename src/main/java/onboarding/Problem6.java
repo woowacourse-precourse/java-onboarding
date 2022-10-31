@@ -6,13 +6,20 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class Problem6 {
-    public static Map<String, List<String>> repository = new HashMap<>();
+    public static Map<String, List<String>> twoWordMap;
 
     public static List<String> solution(List<List<String>> forms) {
-        Validator.isValidate(forms);
-        addSplitNicknameToMap(forms);
+        if (!Validator.isValidate(forms)){
+            return null;
+        }
+        initMap(forms);
         List<String> overlapList = getOverlapList();
         return handleResult(overlapList);
+    }
+
+    private static void initMap(List<List<String>> forms) {
+        twoWordMap = new HashMap<>();
+        addSplitNicknameToMap(forms);
     }
 
     /** 문자열을 2단어씩 잘라서 Map 에 추가
@@ -25,16 +32,16 @@ public class Problem6 {
             IntStream.range(0, nickname.length() - 1)
                     .mapToObj(i -> nickname.substring(i, i + 2))
                     .forEach(subWord -> {
-                        List<String> list = repository.getOrDefault(subWord, new ArrayList<>());
+                        List<String> list = twoWordMap.getOrDefault(subWord, new ArrayList<>());
                         list.add(form.get(EMAIL_IDX));
-                        repository.put(subWord, list);
+                        twoWordMap.put(subWord, list);
                     });
         });
     }
 
     private static List<String> getOverlapList(){
         final int MIN_OVERLAP_COUNT = 2;
-        return repository.values().stream()
+        return twoWordMap.values().stream()
                 .filter(list -> list.size() >= MIN_OVERLAP_COUNT) // 중복되는 단어가 있는 경우
                 .flatMap(Collection::stream)
                 .collect(Collectors.toList());
@@ -70,8 +77,8 @@ public class Problem6 {
 
         private static void isCorrectEmailForm(List<List<String>> forms){
             final int EMAIL_IDX = 0;
-            final int SPLIT_EMAIL_IDX = 2;
-            final int CORRECT_SPLIT_COUNT = 3;
+            final int SPLIT_EMAIL_IDX = 1;
+            final int CORRECT_SPLIT_COUNT = 2;
             List<String> emails = forms.stream()
                     .map(list -> list.get(EMAIL_IDX)) // 이메일 추출
                     .collect(Collectors.toList());

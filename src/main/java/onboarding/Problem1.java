@@ -15,8 +15,8 @@ class Problem1 {
     private static int getMaxNum(List<Integer> page){
         int result = 0;
 
-        result = Util.getMax(result, getDigitSum(page.get(LEFT)) + getDigitSum(page.get(RIGHT)));
-        result = Util.getMax(result, getDigitMultiple(page.get(LEFT)) + getDigitMultiple(page.get(RIGHT)));
+        result = getMax(result, getDigitSum(page.get(LEFT)) + getDigitSum(page.get(RIGHT)));
+        result = getMax(result, getDigitMultiple(page.get(LEFT)) + getDigitMultiple(page.get(RIGHT)));
         return result;
     }
 
@@ -53,6 +53,10 @@ class Problem1 {
             return 0;
         }
         throw new IllegalStateException("Can't find who is win");
+    }
+
+    private static int getMax(int num1, int num2){
+        return Math.max(num1, num2);
     }
 
     static class Validator {
