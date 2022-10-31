@@ -13,24 +13,21 @@ import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        HashMap<String, Integer> scoresOfUsers = new HashMap<>();
+        HashMap<String, Integer> scoresOfUsers;
         HashMap<String, ArrayList<String>> friendsOfUsers = new HashMap<>();
 
         for (List<String> relationship : friends) {
-            initializeScores(scoresOfUsers, relationship);
             getFriendsOfUser(friendsOfUsers, relationship);
         }
 
         final ArrayList<String> friendsOfUser = friendsOfUsers.get(user);
-        for (String friendUser : scoresOfUsers.keySet()) {
-            scoresOfUsers.put(friendUser, CalculateScoreByFriends(friendsOfUser, friendsOfUsers.get(friendUser)));
-            scoresOfUsers.put(friendUser, scoresOfUsers.get(friendUser) + CalculateScoreByVisitors(visitors, friendUser));
-        }
+        scoresOfUsers = calculateScore(friendsOfUsers, friendsOfUser, visitors);
 
         return scoresOfUsers.entrySet().stream()
+                .filter(e -> e.getValue() > 0)
                 .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
                 .map(Map.Entry::getKey)
-                .filter(u -> !u.equals(user))
+                .filter(u -> !u.equals(user) && !friendsOfUser.contains(u))
                 .limit(5)
                 .collect(Collectors.toList());
     }
@@ -52,24 +49,13 @@ public class Problem7 {
     }
 
     /**
-     * 각 친구의 점수를 0으로 초기화
-     *
-     * @param scoresOfUser
-     * @param relationship
-     */
-    private static void initializeScores(HashMap<String, Integer> scoresOfUser, List<String> relationship) {
-        scoresOfUser.put(relationship.get(0), 0);
-        scoresOfUser.put(relationship.get(1), 0);
-    }
-
-    /**
      * 사용자와 함께 아는 친구의 수로 점수 계산
      *
      * @param friendsOfUser
      * @param friendsOfFriendUser
      * @return 사용자와 함께 아는 친구의 수로 얻은 점수
      */
-    private static int CalculateScoreByFriends(ArrayList<String> friendsOfUser, ArrayList<String> friendsOfFriendUser) {
+    private static int calculateScoreByFriends(ArrayList<String> friendsOfUser, ArrayList<String> friendsOfFriendUser) {
         int score = 0;
         final int SCORE = 10;
 
@@ -89,7 +75,28 @@ public class Problem7 {
      * @param friendUser
      * @return 사용자의 타임 라인에 방문한 횟수로 얻은 점수
      */
-    private static int CalculateScoreByVisitors(List<String> visitors, String friendUser) {
+    private static int calculateScoreByVisitors(List<String> visitors, String friendUser) {
         return Collections.frequency(visitors, friendUser);
+    }
+
+    /**
+     * 유저들의 점수 계산
+     *
+     * @param friendsOfUsers
+     * @param friendsOfUser
+     * @param visitors
+     * @return (유저, 점수)의 hashMap
+     */
+    private static HashMap<String, Integer> calculateScore(HashMap<String, ArrayList<String>> friendsOfUsers, ArrayList<String> friendsOfUser, List<String> visitors) {
+        HashMap<String, Integer> scoresOfUsers = new HashMap<>();
+
+        for (String friendUser : friendsOfUsers.keySet()) {
+            scoresOfUsers.put(friendUser, calculateScoreByFriends(friendsOfUser, friendsOfUsers.get(friendUser)));
+        }
+        for (String visitor : visitors) {
+            scoresOfUsers.put(visitor, calculateScoreByVisitors(visitors, visitor));
+        }
+
+        return scoresOfUsers;
     }
 }
