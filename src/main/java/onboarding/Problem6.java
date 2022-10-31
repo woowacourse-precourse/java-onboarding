@@ -12,7 +12,19 @@ public class Problem6 {
 
     // 전체 기능 호출
     public static List<String> solution(List<List<String>> forms) {
+        duplicationList = new TreeSet<>();
+        partOfNicknameToEmail = new HashMap<>();
         return null;
+    }
+    // 분리한 닉네임이 중복인지 확인하는 기능
+    private static void checkPartOfNickname(String partOfNickname, String email) {
+        if (partOfNicknameToEmail.containsKey(partOfNickname)) {
+            // 중복일 경우 중복된 기존 아이디의 이메일과 검사한 아이디조각의 이메일을 duplicationList에 add
+            duplicationList.add(partOfNicknameToEmail.get(partOfNickname));
+            duplicationList.add(email);
+            return;
+        }
+        partOfNicknameToEmail.put(partOfNickname, email);
     }
     // 리스트배열의 이메일 문자열을 반환하는 기능
     private static String getEmail(List<String> list) {
