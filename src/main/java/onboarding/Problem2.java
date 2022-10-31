@@ -7,11 +7,7 @@ public class Problem2 {
     private static final String OUTPUT_IS_BLANK = "";
 
     public static String solution(String cryptogram) {
-        if (isValidStringLength(cryptogram)) {
-            return cryptogram;
-        }
-
-        return removeAdjacentDuplicate(getStringToChar(cryptogram));
+        return isValidStringLength(cryptogram) ? cryptogram : removeAdjacentDuplicate(getStringToChar(cryptogram));
     }
 
     private static boolean isValidStringLength(String str) {
