@@ -38,4 +38,13 @@ public class Problem7 {
         recommandList.put(userId, score);
         return recommandList;
     }
+
+    //추천리스트에 있는 사람의 점수 추가
+    public static HashMap<String,Integer> increaseScore(String userId, int score, HashMap<String,Integer> recommandList){
+        int currentScore = recommandList.get(userId);
+        int newScore = currentScore + score;
+        recommandList.replace(userId,newScore);
+
+        return recommandList;
+    }
 }
