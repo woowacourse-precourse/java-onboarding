@@ -2,13 +2,6 @@ package onboarding;
 
 public class Problem2 {
 
-    /*public static void main(String[] args) {
-        String testStr = "browoanoommnaon";
-
-        solution(testStr);
-    }
-
-     */
     public static String solution(String cryptogram) {
         String answer = "answer";
         String cryptoCleared = "";
@@ -34,6 +27,8 @@ public class Problem2 {
                             i = j - 1;
                             break;
                         }
+                        else if(j + 1 == cryptogram.length())
+                            i = j;
                     }
                 } else {
                     cryptoCleared += cryptogram.charAt(i);
