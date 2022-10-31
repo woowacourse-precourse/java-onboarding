@@ -21,9 +21,9 @@ class Problem1 {
     public static boolean check_error(List<Integer> list)
     {
         if (list.get(1) - list.get(0) != 1 || list.get(0) % 2 != 1)
-        {
             return false;
-        }
+        if (list.size() != 2)
+            return false;
         return true;
     }
 

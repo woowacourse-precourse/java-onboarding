@@ -5,6 +5,20 @@ import java.util.Collections;
 import java.util.List;
 
 public class Problem6 {
+    public static boolean error_chk(List<List<String>> forms)
+    {
+        String email = "";
+        String[] email_split = new String[]{};
+
+        for (List<String> apply : forms)
+        {
+            email = apply.get(0);
+            email_split = email.split("@");
+            if (!email_split[1].equals("email.com"))
+                return false;
+        }
+        return true;
+    }
     public static boolean compare_string(String a, String b)
     {
         String[] split_a = a.split("");
@@ -35,6 +49,9 @@ public class Problem6 {
         List<String> answer = List.of("answer");
         List<Integer> answer_idx = new ArrayList<Integer>();
         ArrayList<Integer> visited = new ArrayList<Integer>();
+
+        if (!error_chk(forms))
+            return answer;
         for (int i = 0; i < forms.size(); i++)
             visited.add(0);
         for (int i = 0; i < forms.size(); i++)

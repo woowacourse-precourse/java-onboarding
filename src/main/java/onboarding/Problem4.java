@@ -1,10 +1,18 @@
 package onboarding;
 
 public class Problem4 {
+    public static boolean check_error(String word)
+    {
+        if (word.length() < 1 || word.length() > 1000)
+            return false;
+        return true;
+    }
     public static String solution(String word) {
         char now;
         String answer = "";
 
+        if(!check_error(word))
+            return answer;
         for (int i = 0; i < word.length(); i++)
         {
             now = word.charAt(i);

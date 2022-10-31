@@ -3,6 +3,21 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
+    public static boolean chk_error(String user, List<List<String>> friends, List<String> visitors)
+    {
+        if (user.length() < 1 || user.length() > 30)
+            return false;
+        if (friends.size() < 1 || friends.size() > 10000)
+            return false;
+        for (List<String> friend: friends)
+        {
+            if (friend.size() != 2)
+                return false;
+        }
+        if(visitors.size() > 10000)
+            return false;
+        return true;
+    }
     public static HashMap<String, Integer> sortByValue(HashMap<String, Integer> map){
         List<Map.Entry<String, Integer> > list =
                 new LinkedList<Map.Entry<String, Integer>>(map.entrySet());
@@ -58,6 +73,8 @@ public class Problem7 {
         List<String> user_friends = new ArrayList<String>();
         HashMap<String, Integer> map = new HashMap<String, Integer>();
 
+        if(!chk_error(user, friends, visitors))
+            return answer;
         for (int i = 0; i < visitors.size(); i++) {
             map.put(visitors.get(i), 0);
         }

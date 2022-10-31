@@ -21,6 +21,9 @@ public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
 
+        if (number < 1 || number > 10000)
+            return answer;
+
         for (int i = 0; i < number+1; i++)
             answer += check(i);
         return answer;
