@@ -14,7 +14,12 @@ public class Problem5 {
 
         //지폐 종류만큼 반복하기
         for(int i=0; i< sort.size(); i++){
-
+            int cnt = money/sort.get(i);
+            //해당 종류가 1장이상일 경우, 갯수 저장 및 머니 감소
+            if (cnt >= 1) {
+                answer.set(i,cnt);
+                money -= sort.get(i)*cnt;
+            }
         }
         return answer;
     }
