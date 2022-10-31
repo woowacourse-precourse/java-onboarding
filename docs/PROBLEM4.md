@@ -34,7 +34,7 @@
 FrogDictionary 클래스
 기능 #1
 - 함수 이름: makeDictionary
-- 입력: 없음
+- 입력: A~Z까지 알파벳 배열
 - 기능: 청개구리 사전 작성을 위한 해시 테이블 생성
 - 출력: 청개구리 사전 해시 테이블
 
@@ -43,6 +43,12 @@ FrogDictionary 클래스
 - 입력: Char 타입 문자
 - 기능: 청개구리 사전의 key 값을 이용하여 value 값을 반환
 - 출력: 청개구리 사전의 key 값에 대응하는 value 값
+
+기능 #6
+- 함수 이름: makeAlphabetArray
+- 입력: 없음
+- 기능: A~Z까지 알파벳 배열을 생성
+- 출력: A~Z까지 알파벳 배열
 
 Translation 클래스
 
