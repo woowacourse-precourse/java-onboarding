@@ -4,7 +4,7 @@
 ### 기능 목록
 * 예외 체크 메서드 checkException
     * 숫자 체크 checkNunber
-* 암호 해독 메서드(중복 문자 제거) getCount
+* 손뼉 치는 개수 구하는 메서드 getCount
 
 ## 🚀 기능 요구 사항
 
