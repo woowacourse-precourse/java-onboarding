@@ -79,4 +79,11 @@ public class Problem7 {
         return candidate;
     }
 
+    private static List<String> sortByScore(HashMap<String,Integer> candidate){
+        List<String> answer = new ArrayList<>(candidate.keySet());
+        HashMap<String,Integer> finalCandidate = candidate;
+        Collections.sort(answer,(value1,value2) -> (finalCandidate.get(value2).compareTo(finalCandidate.get(value1))));
+        return answer;
+    }
+
 }
