@@ -14,8 +14,16 @@ public class Problem3 {
         long cnt9 = countChar(num, '9');
         return (int)(cnt3 + cnt6 + cnt9);
     }
+
+    public static int countTotal(int number) {
+        int total = 0;
+        for (int i=1; i<=number; i++) {
+            String num = Integer.toString(i);
+            total += countNum(num);
+        }
+        return total;
+    }
     public static int solution(int number) {
-        int answer = 0;
-        return answer;
+        return countTotal(number);
     }
 }
