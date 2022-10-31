@@ -5,7 +5,7 @@ import java.util.List;
 class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+
         int pobiScore = Integer.MIN_VALUE;
         int crongScore = Integer.MIN_VALUE;
         //TODO(예외 처리)
@@ -21,6 +21,12 @@ class Problem1 {
         }
 
         //포비가 이긴다면 1, 크롱이 이긴다면 2, 무승부는 0
+        int answer = makeAnswer(pobiScore, crongScore);
+
+        return answer;
+    }
+    private static int makeAnswer(int pobiScore, int crongScore) {
+        int answer = Integer.MAX_VALUE;
         if(pobiScore > crongScore) answer = 1;
         if(pobiScore == crongScore) answer = 0;
         if(pobiScore < crongScore) answer = 2;
