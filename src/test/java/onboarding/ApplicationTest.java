@@ -100,6 +100,14 @@ class ApplicationTest {
             int result = 0;
             assertThat(Problem3.solution(number)).isEqualTo(result);
         }
+
+        @Test
+        void case4() {
+            int number = 50;  //3 6 9 13 16 19 23 26 29 30 31 32 33 34 35 36 37 38 39 43 46 49
+            int result = 25;
+            assertThat(Problem3.solution(number)).isEqualTo(result);
+        }
+
     }
 
     @Nested
@@ -110,6 +118,13 @@ class ApplicationTest {
             String result = "R olev blf";
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
+        @Test
+        void case2() {
+            String word = "My favorite food is a Pizza";
+            String result = "Nb uzelirgv ullw rh z Kraaz";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+
     }
 
     @Nested
