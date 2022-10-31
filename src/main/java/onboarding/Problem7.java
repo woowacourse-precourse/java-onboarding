@@ -51,4 +51,18 @@ public class Problem7 {
         list = list.stream().distinct().collect(Collectors.toList());
         return list;
     }
+
+    // 점수 부여
+    private static List<Friend> updateScore(List<Friend> result, String friendName, int score) {
+        for(int i = 0; i<result.size(); i++) {
+            // result 객체의 이름과 friendsName 이름과 같으면, score 을 반영
+            if(result.get(i).getName().equals(friendName)) {
+                score += result.get(i).getScore();
+                Friend friend = new Friend(score, result.get(i).getName());
+                result.set(i, friend);
+            }
+        }
+
+        return result;
+    }
 }
