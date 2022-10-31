@@ -58,7 +58,7 @@
   - [x] forms가 null인 경우
   - [x] form이 null인 경우
   - [x] 닉네임이나, email이 null인 경우
-  - [ ] 이메일에 중복이 있는 경우
+  - [x] 이메일에 중복이 있는 경우
 
 ## 문제 7번
 - [x] 사람 이름을 key, 점수를 value로 저장하는 friendScoreMap 생성

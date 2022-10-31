@@ -1,6 +1,9 @@
 package onboarding.validatechecker;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Problem6ValidateChecker {
 	private static final int EMAIL = 0;
@@ -16,6 +19,16 @@ public class Problem6ValidateChecker {
 		isNickNameSizeInRange(forms);
 		isEmailContainDomain(forms);
 		isNickNameContainOnlyKorean(forms);
+		isEmailUnDuplicated(forms);
+	}
+
+	private static void isEmailUnDuplicated(List<List<String>> forms) {
+		Set<String> emailSet = new HashSet<>();
+		List<String> emailList = forms.stream().flatMap(List::stream).filter(str -> str.contains(EMAIL_DOMAIN))
+			.collect(Collectors.toList());
+		for(String email : emailList)
+			if(!emailSet.add(email))
+				throw new IllegalArgumentException("이메일에 중복이 존재합니다.");
 	}
 
 	private static void isNickNameContainOnlyKorean(List<List<String>> forms) {
