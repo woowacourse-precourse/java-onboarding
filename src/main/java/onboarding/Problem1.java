@@ -42,7 +42,7 @@ class Problem1 {
         if(page.size()!= 2)
             return true;
         // 2. 1부터 400 사이 값이 아닌 경우
-        if(!isBetween(1,400,page.get(0)) || !isBetween(1,400,page.get(0)))
+        if(!isBetween(1,400,page.get(0)) || !isBetween(1,400,page.get(1)))
             return true;
         // 3. 왼쪽은 홀수 오른쪽은 짝수가 아닌 경우
         if(!isOdd(page.get(0)) || !isEven(page.get(1)))
