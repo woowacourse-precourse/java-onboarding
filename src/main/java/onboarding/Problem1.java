@@ -5,50 +5,64 @@ import java.util.List;
 import java.util.stream.Stream;
 
 class Problem1 {
+
+    public static final int EXEPTIONS = -1;
+    public static final int DRAW = 0;
+    public static final int POBI_WIN = 1;
+    public static final int CRONG_WIN = 2;
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int checkPobiExeptionResult = checkExceptions(pobi);
-        int checkCrongExeptionResult = checkExceptions(pobi);
-        if(!((checkCrongExeptionResult == 1) || (checkPobiExeptionResult == 1))) return -1;
+        try {
+            checkExceptions(pobi);
+            checkExceptions(crong);
 
-        int pobiMaxValue = getMaxValue(pobi);
-        int crongMaxValue = getMaxValue(crong);
+            int pobiScore = getScore(pobi);
+            int crongScore = getScore(crong);
 
-        return getResult(pobiMaxValue, crongMaxValue);
-    }
-
-    private static int getResult(int pobi, int crong) {
-        if (pobi < crong){
-            return 2;
-        } else if (pobi > crong){
-            return 1;
-        } else {
-            return 0;
+            return getResult(pobiScore, crongScore);
+        } catch (Exception error) {
+            return EXEPTIONS;
         }
     }
 
-    public static  int getMaxValue(List<Integer> list){
-        List<Integer> maxValue = new ArrayList<>();
-        for (Integer el: list){
-        maxValue.add(Math.max(getSumValue(el), getMultiplyValue(el)));
+    public static int getResult(int pobi, int crong) {
+        if (pobi < crong) {
+            return CRONG_WIN;
+        }
+        if (pobi > crong) {
+            return POBI_WIN;
+        }
+        return DRAW;
+    }
+
+    public static int getScore(List<Integer> pages) {
+        List<Integer> score = new ArrayList<>();
+        for (Integer page : pages) {
+            score.add(Math.max(getSumValue(page), getMultiplyValue(page)));
         }
 
-        return (Math.max(maxValue.get(0), maxValue.get(1)));
+        return (Math.max(score.get(0), score.get(1)));
     }
 
-    public static int getSumValue(Integer number){
-        return Stream.of(number.toString().split("")).mapToInt(Integer::parseInt).sum();
+    public static int getSumValue(Integer number) {
+        return Stream.of(number.toString().split(""))
+            .mapToInt(Integer::parseInt)
+            .sum();
     }
+
     public static int getMultiplyValue(Integer number) {
-        return Stream.of(number.toString().split("")).mapToInt(Integer::parseInt).reduce(1, (a,b) -> a * b);
+        return Stream.of(number.toString().split(""))
+            .mapToInt(Integer::parseInt)
+            .reduce(1, (a, b) -> a * b);
     }
 
-    public static int checkExceptions(List<Integer> list){
-        int leftPage = list.get(0);
-        int rightPage = list.get(1);
+    public static void checkExceptions(List<Integer> pages) {
+        int leftPage = pages.get(0);
+        int rightPage = pages.get(1);
         int insub = rightPage - leftPage;
 
-        if ((insub == 1) && (leftPage%2 == 1) && (rightPage % 2 == 0)) return 1;
-
-        return -1;
+        if ((insub != 1) || (leftPage % 2 != 1)) {
+            throw new IllegalArgumentException();
+        }
     }
 }
