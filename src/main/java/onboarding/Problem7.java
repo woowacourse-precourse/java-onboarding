@@ -45,7 +45,15 @@ public class Problem7 {
             }
         }
 
-        System.out.println(result);
+        if (result.containsKey(user)){
+            result.remove(user);
+        }
+
+        for (int i = 0; i < friendList.size(); i+=1){
+            if (result.containsKey(friendList.get(i))){
+                result.remove(friendList.get(i));
+            }
+        }
 
         List<String> answer = Collections.emptyList();
         return answer;
