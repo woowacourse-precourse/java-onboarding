@@ -34,7 +34,18 @@ public class Problem7 {
         scoreBySameFriend(user, friends); // 겹치는 친구를 기준으로 점수를 세는 기능
         scoreByVisitHistory(user, visitors); // 방문 기록을 기준으로 점수를 세는 기능
 
-        return null;
+        List<String> keySet = new ArrayList<>(scores.keySet());
+        keySet.sort((f1, f2) -> {
+            if(scores.get(f1) == scores.get(f2)) // 점수가 같을 시 이름 기준으로 오름차순 정렬
+                return f1.compareTo(f2);
+            else
+                return scores.get(f2)-scores.get(f1); // 점수 기준으로 내림차순 정렬
+        });
+
+        if(keySet.size() <= 5) // 상위 5명을 추림
+            return keySet;
+        else
+            return keySet.subList(0, 3);
     }
 
     /**
