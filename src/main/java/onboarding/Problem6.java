@@ -17,10 +17,7 @@ public class Problem6 {
 
         // 닉네임 리스트에서 같은 글자가 연속적으로 포함된 인덱스로 이메일 리스트를 만듦
         Set<String> duplicatedEmailSet = getDuplicatedEmailSet(forms);
-        List<String> emailList = new ArrayList<>();
-        duplicatedEmailSet.forEach((email)->{
-            emailList.add(email);
-        });
+        List<String> emailList = new ArrayList<>(duplicatedEmailSet);
 
         // 이메일 리스트를 정렬
         sortEmailList(emailList);
