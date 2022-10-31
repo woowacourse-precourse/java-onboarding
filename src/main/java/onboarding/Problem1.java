@@ -26,4 +26,21 @@ class Problem1 {
 
         return -1;
     }
+
+    public static int resultScore(int leftPage, int rightPage) {
+        return Math.max(pageScore(leftPage), pageScore(rightPage));
+    }
+
+    public static int pageScore(int pageNum) {
+        int tmp = pageNum;
+        int plus = 0;
+        int multiply = 1;
+
+        while (tmp > 0) {
+            plus += tmp % 10;
+            multiply *= tmp % 10;
+            tmp /= 10;
+        }
+
+        return Math.max(plus, multiply);
 }
