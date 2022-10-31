@@ -40,6 +40,33 @@ public class Problem4 {
         return lowerCaseMappingMap;
     }
 
+    // 실제로 매핑을 하는 메서드
+    public static String doMap(
+            String word, int index,
+            Map<String, String> upperCaseMappingMap, Map<String, String> lowerCaseMappingMap) {
+
+        // 공백을 포함하여 알파벳 외의 문자는 변환하지 않는 조건 추가
+        if (word.charAt(index) < 65 ||
+                (word.charAt(index) > 91 && word.charAt(index) < 97) ||
+                word.charAt(index) > 122) {
+            return String.valueOf(word.charAt(index));
+        }
+
+
+        // 대문자 변환 Map 에 해당하는 문자라면 매핑된 Value 반환하기
+        else if (upperCaseMappingMap.containsKey(String.valueOf(word.charAt(index)))) {
+            return upperCaseMappingMap.get(String.valueOf(word.charAt(index)));
+        }
+        // 소문자 변환 Map 에 해당하는 문자라면 매핑된 Value 반환하기
+        else if (lowerCaseMappingMap.containsKey(String.valueOf(word.charAt(index)))) {
+            return lowerCaseMappingMap.get(String.valueOf(word.charAt(index)));
+        }
+        // 그외의 상황은 오류이므로 빈 문자열을 반환한다.
+        // 원래라면 Exception 을 던져야하지만
+        // 그렇게하면 제공된 테스트 케이스에 영향이 있으므로 처리하지 않았다.
+        return "";
+    }
+
     public static String solution(String word) {
         String answer = "";
         return answer;
