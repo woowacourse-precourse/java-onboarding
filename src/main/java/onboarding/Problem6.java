@@ -1,9 +1,7 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -27,6 +25,22 @@ public class Problem6 {
             }
         });
         return memberMap;
+    }
+
+    /**
+     * 두글자 이상 중복된 닉네임을 가진 멤버의 email 반환
+     * @param memberMap
+     * @return
+     */
+    private static List<String> getHasDuplicationNicknameMembers(Map<String, List<Member>> memberMap) {
+        List<String> answer;
+        answer = memberMap.values().stream()
+                .filter(value -> value.size() > 1)  // 중복된 닉네임을 가진 멤버가 2명 이상인 member만 사용하도록 filter
+                .flatMap(Collection::stream)    // filter 를 거친 후의 값을 반환
+                .map(Member::getEmail)  // email 만 가져와서 stream 에 저장
+                .sorted()   // 오름차순 정렬
+                .collect(Collectors.toList());  // stream 의 요소를 list 객체로 변환
+        return answer;
     }
 
     public static class Member {
