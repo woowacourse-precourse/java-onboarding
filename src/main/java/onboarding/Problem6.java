@@ -61,7 +61,7 @@ public class Problem6 {
         List<String> ans = new ArrayList<>();
 
         for (int i=0;i<check.length;i++){
-            if(check[i]){
+            if(check[i] && forms.get(i).get(0).contains("@email.com")){
                 ans.add(forms.get(i).get(0));
             }
         }
