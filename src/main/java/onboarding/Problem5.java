@@ -27,5 +27,8 @@ public class Problem5 {
         return 0;
     }
 
-
+    /* 기능3: 사용한 화폐 개수 세기 */
+    private static int CountMoney(int money, int moneytype){
+        return money/moneytype;
+    }
 }
