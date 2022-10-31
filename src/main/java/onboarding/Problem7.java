@@ -33,7 +33,7 @@ public class Problem7 {
 
         List<Map.Entry<String, Integer>> totalScoreMapList = sortTotalScoreMapListByScore(friendsScoreMap);
 
-        return null;
+        return generateResultList(totalScoreMapList, userFriends);
     }
 
     private static void addUserFriends(String user, List<String> friend, List<String> userFriends) {
@@ -63,5 +63,21 @@ public class Problem7 {
         });
 
         return totalScoreMapList;
+    }
+
+    private static List<String> generateResultList(List<Map.Entry<String, Integer>> totalScoreMapList, List<String> userFriends) {
+        List<String> result = new ArrayList<>();
+        for (Map.Entry<String, Integer> totalScoreMap : totalScoreMapList) {
+            String name = totalScoreMap.getKey();
+            if (userFriends.contains(name)) {
+                continue;
+            }
+            result.add(name);
+
+            if (result.size() == 5) {
+                break;
+            }
+        }
+        return result;
     }
 }
