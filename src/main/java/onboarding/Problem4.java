@@ -10,7 +10,7 @@ public class Problem4 {
         char[] arr = word.toCharArray();
         for (char alphabet : arr){
             if((Character.isAlphabetic(alphabet))){
-                answer.append(change(alphabet));
+                answer.append(get_change_alphabet(alphabet));
             }else{
                 answer.append(alphabet);
             }
@@ -19,7 +19,7 @@ public class Problem4 {
     }
 
 
-    public static String change (char alphabet){
+    public static String get_change_alphabet(char alphabet){
         if (Character.isUpperCase(alphabet)) { //대문자면
             alphabet = (char) (('Z' + 'A') - (int) alphabet);
         } else { //소문자면
