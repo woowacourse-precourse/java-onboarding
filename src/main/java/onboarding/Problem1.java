@@ -35,12 +35,15 @@ class Problem1 {
     private static boolean exception(List<Integer> pages) {
         Integer left = pages.get(0);
         Integer right = pages.get(1);
+        if ((left == null) || (right == null)) {
+            return true;
+        }
 
         if (right - left != 1) {
             System.out.println("wrong number");
             return true;
         }
-        if (left > 399 || left < 1) {
+        if (left >= 399 || left <= 1) {
             System.out.println("out of range left");
             return true;
         }
