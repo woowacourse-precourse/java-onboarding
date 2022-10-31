@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.TreeSet;
 
@@ -18,13 +19,13 @@ public class Problem6 {
     /**
      * TreeSet 전역변수에 email이 존재하는지 확인하는 메서드
      *
-     * @param email 확인을 요청하는 이메일
+     * @param crew 확인을 요청하는 크루 정보
      * @return 이메일이 존재하면 true, 아니라면 false
      */
-    static boolean hasEmail(String email) {
+    static boolean hasEmail(List<String> crew) {
         boolean isTrue = false;
 
-        if (emailSet.contains(email)) {
+        if (emailSet.contains(crew.get(1))) {
             isTrue = true;
         }
 
@@ -51,7 +52,22 @@ public class Problem6 {
     }
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer;
+
+        for (int i = 0; i < forms.size() - 1; i++) {
+            if (hasEmail(forms.get(i))) {
+                continue;
+            } else {
+                for (int j = i + 1; j < forms.size(); j++) {
+                    if (hasEmail(forms.get(j))) {
+                        break;
+                    } else {
+                        checkDuplication(forms.get(i), forms.get(j));
+                    }
+                }
+            }
+        }
+        answer = new ArrayList<>(emailSet);
         return answer;
     }
 }
