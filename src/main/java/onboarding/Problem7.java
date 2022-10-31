@@ -48,6 +48,19 @@ public class Problem7 {
         return totalPoint;
     }
 
+    public static void visitorPoint(List<String> visitors, HashMap<String, Integer> totalPoint, HashMap<String, ArrayList<String>> friendsMap, String user) {
+        for (String visitor : visitors) {
+            if (friendsMap.get(user).contains(visitor)) {
+                continue;
+            }
+            if (!totalPoint.containsKey(visitor)) {
+                totalPoint.put(visitor, 1);
+            } else {
+                totalPoint.put(visitor, totalPoint.get(visitor) + 1);
+            }
+        }
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         HashMap<String, Integer> totalPoint = new HashMap<>();
         // 1. 친구 목록 생성
@@ -56,8 +69,8 @@ public class Problem7 {
         // 2. 친구의 친구의 경우 10점 증가
         HashMap<String, Integer> friendPoint = friendPoint(notDupFriendsMap, totalPoint);
         // 3. 타임라인 방문의 경우 1점 증가
+        visitorPoint(visitors, friendPoint, friendsMap, user);
         // 4. 점수로 정렬(점수 동일한 경우 이름순) 후 5명 출력
-
         return null;
     }
 }
