@@ -5,16 +5,25 @@ import java.util.*;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Set<String> userFriends = new HashSet<>();
-        friends.forEach(elem -> getFriendsInSet(userFriends, user, elem.get(0), elem.get(1)));
+        friends.forEach(elem -> updateFriendsInSet(userFriends, user, elem.get(0), elem.get(1)));
+
+        List<String> friendsOfUserFriends = new ArrayList<>();
+        userFriends.forEach(elem -> updateFriendsInList(elem, friendsOfUserFriends, friends));
     }
 
-    private static void getFriendsInSet(Set<String> setFriends, String user, String friendA, String friendB) {
-        if (friendA.equals(user)) {
+    private static void updateFriendsInSet(Set<String> setFriends, String target, String friendA, String friendB) {
+        if (friendA.equals(target)) {
             setFriends.add(friendB);
         }
-        if (friendA.equals(user)) {
-            setFriends.add(friendB);
+        if (friendB.equals(target)) {
+            setFriends.add(friendA);
         }
+    }
+
+    private static void updateFriendsInList(String target, List<String> listFriends, List<List<String>> friends) {
+        Set<String> targetFriends = new HashSet<>();
+        friends.forEach(elem -> updateFriendsInSet(targetFriends, target, elem.get(0), elem.get(1)));
+        targetFriends.forEach(elem -> listFriends.add(elem));
     }
 }
 
