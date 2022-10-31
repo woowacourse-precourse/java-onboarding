@@ -12,43 +12,31 @@ import java.util.Map.Entry;
 import java.util.Set;
 
 public class Problem7 {
-	static Map<String, List<String>> remainUserAndFriends;
-	static Map<String, Integer> remainUserAndScore;
-	static Set<String> mainUserFriends;
+	private static Map<String, List<String>> remainUserAndFriends;
+	private static Map<String, Integer> remainUserAndScore;
+	private static Set<String> mainUserFriends;
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         
         remainUserAndFriends = new HashMap<>();
         remainUserAndScore = new HashMap<>();
         mainUserFriends = new HashSet<>();
+
         makeAllFriendship(user, friends);
-        //for debug
-        System.out.println(mainUserFriends);
-        System.out.println(remainUserAndFriends);
         
         increaseScoreMutualFriend();
-        //for debug
-        System.out.println(remainUserAndScore);
         increaseScoreVisitors(visitors);
-        //for debug
-        System.out.println(remainUserAndScore);
         
         List<Friend> candidateFriendList = new ArrayList<>();
         makeCandidateFriendList(candidateFriendList);
-        //for debug
-        System.out.println(candidateFriendList);
-        
         sortByScoreThenName(candidateFriendList);
-        //for debug
-        System.out.println(candidateFriendList);
         List<String> answer = getFinalFriendList(candidateFriendList);
-        System.out.println(answer);
-        
+
         return answer;
     }
-	public static void makeAllFriendship(String user, List<List<String>> friends) {
-    	
+	private static void makeAllFriendship(String user, List<List<String>> friends) {
     	String userA = null;
     	String userB = null;
+    	
     	for(List<String> friendship: friends) {
     		userA = friendship.get(0);
     		userB = friendship.get(1);
@@ -70,7 +58,7 @@ public class Problem7 {
     		}
     	}
     }
-    public static void increaseScoreMutualFriend() {
+    private static void increaseScoreMutualFriend() {
     	String name = null;
     	List<String> friends = null;
     	
@@ -84,20 +72,21 @@ public class Problem7 {
     		}
     	}
     }
-    public static void increaseScoreVisitors(List<String> visitors) {
+    private static void increaseScoreVisitors(List<String> visitors) {
     	for(String visitor: visitors) {
     		increaseOne(visitor);
     	}
     }
-    public static void increaseTen(String name) {
+    private static void increaseTen(String name) {
     	remainUserAndScore.put(name, remainUserAndScore.getOrDefault(name, 0) + 10);
     }
-    public static void increaseOne(String name) {
+    private static void increaseOne(String name) {
     	remainUserAndScore.put(name, remainUserAndScore.getOrDefault(name, 0) + 1);
     }
-    public static void makeCandidateFriendList(List<Friend> list) {
+    private static void makeCandidateFriendList(List<Friend> list) {
     	String name = null;
     	int score = 0;
+    	
     	for(Entry<String, Integer> nameAndScore: remainUserAndScore.entrySet()) {
     		name = nameAndScore.getKey();
     		score = nameAndScore.getValue();
@@ -107,7 +96,7 @@ public class Problem7 {
     		list.add(new Friend(name, score));
     	}
     }
-    public static void sortByScoreThenName(List<Friend> list) {
+    private static void sortByScoreThenName(List<Friend> list) {
     	Collections.sort(list, new Comparator<>() {
 			@Override
 			public int compare(Friend o1, Friend o2) {
@@ -118,10 +107,10 @@ public class Problem7 {
 			}
 		});
     }
-    public static List<String> getFinalFriendList(List<Friend> candidateFriendList) {
-    	
+    private static List<String> getFinalFriendList(List<Friend> candidateFriendList) {
     	List<String> finalFriendList = new ArrayList<>();
     	int cnt = 0;
+    	
     	for(Friend friend: candidateFriendList) {
     		finalFriendList.add(friend.name);
     		cnt += 1;
