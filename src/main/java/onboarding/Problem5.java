@@ -8,4 +8,8 @@ public class Problem5 {
         List<Integer> answer = Collections.emptyList();
         return answer;
     }
+
+    private static void calculate(int money, List<Integer> answer, int[] moneyUnits) {
+
+    }
 }
