@@ -12,10 +12,8 @@ public class Problem7 {
             String name1 = relation.get(0);
             String name2 = relation.get(1);
 
-            if (friendList.get(name1) == null)
-                friendList.put(name1, new HashSet<>());
-            if (friendList.get(name2) == null)
-                friendList.put(name2, new HashSet<>());
+            putNewFriendList(friendList, name1);
+            putNewFriendList(friendList, name2);
 
             friendList.get(name1).add(name2);
             friendList.get(name2).add(name1);
@@ -67,6 +65,11 @@ public class Problem7 {
             addNameToAnswer(answer, entry);
         }
         return answer;
+    }
+    public static void putNewFriendList(HashMap<String, HashSet<String>> friendList,
+                                        String name) {
+        if (friendList.get(name) == null)
+            friendList.put(name, new HashSet<>());
     }
     public static void calculateScoreByVisitor(HashMap<String, Integer> scoreMap,
                                                HashSet<String> userFriendList,
