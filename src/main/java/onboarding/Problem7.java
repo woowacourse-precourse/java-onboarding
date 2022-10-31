@@ -43,4 +43,12 @@ public class Problem7 {
             }
         }
     }
+    private static void notUserFriendRecommend(List<String> visitors, Map<String, Integer> recommendScore, int i) {
+        String recommendFriends = visitors.get(i);
+        int score = 0;
+        if (recommendScore.get(recommendFriends) != null) {
+            score = recommendScore.get(recommendFriends);
+        }
+        recommendScore.put(recommendFriends, score + 1);
+    }
 }
