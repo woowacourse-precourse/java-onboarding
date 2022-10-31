@@ -65,7 +65,12 @@ public class Problem7 {
 
     private static void deleteUserFriends(String user, Map<String, Set<String>> friendsMap, Map<String, Integer> recommendScoreMap) {
         recommendScoreMap.remove(user);
-        // 이미 등록된 친구는 추천 대상에서 제외
+        friendsMap.get(user).forEach(friend -> {
+            recommendScoreMap.remove(friend);
+        });
+    }
+    private static void deleteUserAndFriends(String user, Map<String, Set<String>> friendsMap, Map<String, Integer> recommendScoreMap){
+        recommendScoreMap.remove(user);
         friendsMap.get(user).forEach(friend -> {
             recommendScoreMap.remove(friend);
         });
