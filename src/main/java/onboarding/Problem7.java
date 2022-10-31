@@ -30,14 +30,17 @@ public class Problem7 {
     public static void main(String[] args) {
         String user = "mrko";
         List<List<String>> friends = List.of(
-            List.of("donut", "andole"),
+            List.of("mrko", "jun"),
+            List.of("bedi", "jun"),
+            List.of("donut", "bedi"),
             List.of("donut", "jun"),
             List.of("donut", "mrko"),
             List.of("shakevan", "andole"),
+            List.of("jun", "andole"),
             List.of("shakevan", "jun"),
             List.of("shakevan", "mrko")
         );
-        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+        List<String> visitors = List.of("donut", "shakevan");
         System.out.println(solution(user, friends, visitors));
     }
 }
