@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import onboarding.domain.problem6.Form;
-import onboarding.domain.problem6.InvalidForms;
-import onboarding.domain.problem6.UsedTwoWordsDictionary;
+import onboarding.domain.problem6.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
