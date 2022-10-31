@@ -30,11 +30,11 @@
 ## 기능 요구사항 및 체크리스트 정리(1차)
 
 ### 1. 문제풀이 기본 요구사항 정리
-- ⬜ solution 메소드 구현
-  - ⬜ makePeopleMap 메소드를 사용하여 친구관계 정보가 저장된 HashMap 클래스 객체 생성
-  - ⬜ calculateFriendsScore 메소드를 사용하여 HashMap 내 People 객체마다 함께 아는 친구에 대한 점수 계산
-  - ⬜ calculateVisitorsScore 메소드를 사용하여 HashMap 내 People 객체마다 사용자의 타임 라인에 방문한 횟수에 대한 점수를 계산
-  - ⬜ makeRecommendedList 메소드를 사용하여 점수가 높은 순으로 정렬된 추천 친구 리스트 생성
+- ✅ solution 메소드 구현
+  - ✅ makePeopleMap 메소드를 사용하여 친구관계 정보가 저장된 HashMap 클래스 객체 생성
+  - ✅ calculateFriendsScore 메소드를 사용하여 HashMap 내 People 객체마다 함께 아는 친구에 대한 점수 계산
+  - ✅ calculateVisitorsScore 메소드를 사용하여 HashMap 내 People 객체마다 사용자의 타임 라인에 방문한 횟수에 대한 점수를 계산
+  - ✅ makeRecommendedList 메소드를 사용하여 점수가 높은 순으로 정렬된 추천 친구 리스트 생성
 
 <br/>
 
