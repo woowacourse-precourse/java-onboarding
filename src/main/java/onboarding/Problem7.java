@@ -1,6 +1,8 @@
 package onboarding;
 
+import java.sql.Array;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     public static HashMap<String,List<String>> getFriends(List<List<String>> friends) {
@@ -48,9 +50,26 @@ public class Problem7 {
         }
         return scores;
     }
-    
+
+    public static List<String> getTop5(HashMap<String, Integer> scores) {
+        List<String> top5 = new ArrayList<String>();
+        List<String> finalTop = top5;
+        scores.entrySet().stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .forEach(entry -> finalTop.add(entry.getKey()));
+
+        if (top5.size() > 5) {
+            top5 = top5.subList(0, 5);
+        }
+
+        return top5;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        HashMap<String,List<String>> friendmap = getFriends(friends);
+        HashMap<String, Integer> scores = getScore(user, friendmap, visitors);
+        scores = removeFriend(scores, friendmap.get(user));
+        List<String> answer = getTop5(scores);
         return answer;
     }
 }
