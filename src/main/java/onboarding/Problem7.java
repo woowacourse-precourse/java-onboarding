@@ -71,5 +71,12 @@ public class Problem7 {
         }
         return false;
     }
+    private static boolean checkFriend(String target,List<String> userFriendList,List<List<String>> friends){
+        for (String userFriend : userFriendList) {
+            if(isFriend(target,userFriend,friends)) return true;
+        }
+        return false;
+    }
+
 
 }
