@@ -8,6 +8,14 @@ public class Problem6 {
 
         List<String> answer = List.of("answer");
 
+        List<List<String>> saveInList = new ArrayList<>();
+
+        for(int i = 0; i < forms.size(); i++){
+
+            String nowString = forms.get(i).get(1);
+            saveInList.add(getAllWordList(nowString));
+        }
+
         return answer;
     }
 
