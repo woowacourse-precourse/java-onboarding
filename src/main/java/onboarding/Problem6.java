@@ -24,4 +24,12 @@ public class Problem6 {
 
     }
 
+    private static void isValidNickName(String nickname) {
+
+        if (!getRegexMatcherResult("^[가-힣]{1,19}$", nickname)) {
+            throw new Error("닉네임 형식이 올바르지 않습니다.");
+        }
+
+    }
+
 }
