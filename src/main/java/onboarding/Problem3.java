@@ -15,19 +15,12 @@ public class Problem3 {
         //손뼉을 친 횟수 초기화
         int clapCount = 0;
 
-        //1의 자리 3,6,9에 의해 손뼉을 친 횟수를 더함
-        clapCount += digitBaseCount(number, 1);
-        //10의 자리 3,6,9에 의해 손뼉을 친 횟수를 더함
-        if(number >= 10){
-            clapCount += digitBaseCount(number, 10);
-        }
-        //100의 자리 3,6,9에 의해 손뼉을 친 횟수를 더함
-        if(number >= 100){
-            clapCount += digitBaseCount(number, 100);
-        }
-        //1000의 자리 3,6,9에 의해 손뼉을 친 횟수를 더함
-        if(number >= 1000){
-            clapCount += digitBaseCount(number, 1000);
+        //각 1,10,100 ... 자리마다 손뼉을 친 횟수를 더함
+        //digitNum은 10의 승수(n), digitBase는 10의 n제곱 형태의 자리수의 베이스
+        for (int digitNum = 0 ; digitNum < Math.log10(number) ; digitNum++){
+            int digitBase = (int)Math.pow(10,digitNum);
+            //10의 n제곱 자리 3,6,9에 의해 손뼉을 친 횟수를 더함
+            clapCount += digitBaseCount(number, digitBase);
         }
 
         return clapCount;
