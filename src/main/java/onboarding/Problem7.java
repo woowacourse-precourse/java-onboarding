@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.regex.Pattern;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -95,4 +96,11 @@ class ExceptionProblem7 {
             throw new IllegalArgumentException();
         }
     }
+
+    private static void validateEnglish(String id) {
+        if(!Pattern.matches("^[a-zA-Z]*$", id)) {
+            throw new IllegalArgumentException();
+        }
+    }
+
 }
