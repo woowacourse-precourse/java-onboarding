@@ -9,6 +9,7 @@ public class Problem5 {
         List<Integer> answer = Collections.emptyList();
 
         initWon();
+        bankDraw(money, answer);
         return answer;
     }
 
@@ -22,5 +23,14 @@ public class Problem5 {
         won[6] = 50;
         won[7] = 10;
         won[8] = 1;
+    }
+
+    public static void bankDraw(int money, List<Integer> answer) {
+        int calculating = money;
+
+        for (int i = 0; i < won.length; i++) {
+            answer.add(calculating / won[i]);
+            calculating %= won[i];
+        }
     }
 }
