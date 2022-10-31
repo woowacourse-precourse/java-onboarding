@@ -57,4 +57,26 @@ public class Problem7 {
         return candidate;
     }
 
+    public static HashMap<String,Integer> CalculateVisitor(ArrayList<String> userFriends, List<String> visitors, HashMap<String,Integer> candidate){
+        for(int i = 0; i < visitors.size(); i++){
+            int countNotFriend = 0;
+            for(int j = 0; j < userFriends.size(); j++){
+                String visitor = visitors.get(i);
+                String friend = userFriends.get(j);
+                if(!visitor.equals(friend)){
+                    countNotFriend++;
+                }
+                if(countNotFriend == userFriends.size()){
+                    if(candidate.containsKey(visitor)){
+                        int value = candidate.get(visitor);
+                        candidate.replace(visitor,value,value+visited);
+                    }else{
+                        candidate.put(visitor,visited);
+                    }
+                }
+            }
+        }
+        return candidate;
+    }
+
 }
