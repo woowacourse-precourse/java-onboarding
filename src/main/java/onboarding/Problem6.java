@@ -3,10 +3,6 @@ package onboarding;
 import java.util.*;
 
 public class Problem6 {
-    public static void main(String[] args) {
-
-    }
-
     public static List<String> solution(List<List<String>> forms) {
         List<String> slice_list = slice_count(forms);
         return email_finder(forms, slice_list);
