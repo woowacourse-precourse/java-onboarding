@@ -36,8 +36,8 @@ public class Problem7 {
                 }
             }
         }
-
     }
+
     private static final List<String> myFriends = new ArrayList<>();
     private static final List<String> aFriendWeKnow = new ArrayList<>();
     private static final Map<String, Integer> result = new HashMap<>();
@@ -171,6 +171,7 @@ public class Problem7 {
                 userRanking.add(key);
             }
         }
+        Collections.sort(userRanking);
 
         return userRanking;
     }
