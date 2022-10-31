@@ -5,6 +5,15 @@ import java.util.Collections;
 import java.util.List;
 
 class Problem1 {
+
+    private static final int EXCEPTION = -1;
+    private static final int DRAW = 0;
+    private static final int POBI_WIN = 1;
+    private static final int CRONG_WIN = 2;
+
+    private static final int FIRST_PAGE = 1;
+    private static final int LAST_PAGE = 400;
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int pobiLeftPage = pobi.get(0);
         int pobiRightPage = pobi.get(1);
@@ -14,7 +23,7 @@ class Problem1 {
 
         if (!isValidPage(pobiLeftPage, pobiRightPage)
                 || !isValidPage(crongLeftPage, crongRightPage)) {
-            return -1;
+            return EXCEPTION;
         }
 
         List<Integer> pobiNumbers = getAllNumbers(pobiLeftPage, pobiRightPage);
@@ -71,19 +80,19 @@ class Problem1 {
 
     private static int getAnswer(int pobiScore, int crongScore) {
         if (pobiScore > crongScore) {
-            return 1;
+            return POBI_WIN;
         }
         if (pobiScore < crongScore) {
-            return 2;
+            return CRONG_WIN;
         }
-        return 0;
+        return DRAW;
     }
 
     private static boolean isValidPage(int leftPage, int rightPage) {
         if (rightPage - leftPage != 1) {
             return false;
         }
-        if (leftPage < 1 || rightPage > 400) {
+        if (leftPage < FIRST_PAGE || rightPage > LAST_PAGE) {
             return false;
         }
         return true;
