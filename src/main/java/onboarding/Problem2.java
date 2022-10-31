@@ -5,4 +5,13 @@ public class Problem2 {
         String answer = "answer";
         return answer;
     }
+
+    public static String removeContinuity(String subString, char c){
+        int index = subString.indexOf(c);
+        while(index == 0){
+            subString = subString.substring(1);
+            index = subString.indexOf(c);
+        }
+        return subString;
+    }
 }
