@@ -112,43 +112,44 @@ public class Problem7 {
     }
 
     private static void validateRecommendAlgorithm(String userId, List<List<String>> friendRelationships, List<String> visitors) {
-        if(!validateUserLength(userId)) {
+        if(validateUserLengthFail(userId)) {
             throw new IllegalArgumentException(EXCEPTION_MESSAGE_PREFIX + USER_ID_LENGTH_EXCEPTION_MESSAGE);
         }
-        if(!validateUserIdType(userId)) {
+        if(validateUserIdTypeFail(userId)) {
             throw new IllegalArgumentException(EXCEPTION_MESSAGE_PREFIX + USER_ID_REGEX_EXCEPTION_MESSAGE);
         }
-        if(!validateFriendRelationshipsSize(friendRelationships)) {
+        if(validateFriendRelationshipsSizeFail(friendRelationships)) {
             throw new IllegalArgumentException(EXCEPTION_MESSAGE_PREFIX + FRIEND_RELATIONSHIPS_SIZE_EXCEPTION_MESSAGE);
         }
-        if(!validateUserIds(friendRelationships)) {
+        if(validateUserIdsFail(friendRelationships)) {
             throw new IllegalArgumentException(EXCEPTION_MESSAGE_PREFIX + USER_IDS_SIZE_EXCEPTION_MESSAGE);
         }
-        if(!validateVisitorsSize(visitors)) {
+        if(validateVisitorsSizeFail(visitors)) {
             throw new IllegalArgumentException(EXCEPTION_MESSAGE_PREFIX + VISITORS_SIZE_EXCEPTION_MESSAGE);
         }
     }
 
-    private static boolean validateUserLength(String userId) {
-        return (userId.length() >= MIN_USER_ID_LENGTH && userId.length() <= MAX_USER_ID_LENGTH);
+    private static boolean validateUserLengthFail(String userId) {
+        return (userId.length() < MIN_USER_ID_LENGTH || userId.length() > MAX_USER_ID_LENGTH);
     }
 
-    private static boolean validateUserIdType(String userId) {
-        return Pattern.compile(USER_ID_REGEX).matcher(userId).matches();
+    private static boolean validateUserIdTypeFail(String userId) {
+        return !Pattern.compile(USER_ID_REGEX).matcher(userId).matches();
     }
 
-    private static boolean validateFriendRelationshipsSize(List<List<String>> friendRelationships) {
-        return (friendRelationships.size() >= MIN_FRIEND_RELATIONSHIP_SIZE && friendRelationships.size() <= MAX_FRIEND_RELATIONSHIP_SIZE);
+    private static boolean validateFriendRelationshipsSizeFail(List<List<String>> friendRelationships) {
+        return (friendRelationships.size() < MIN_FRIEND_RELATIONSHIP_SIZE || friendRelationships.size() > MAX_FRIEND_RELATIONSHIP_SIZE);
+
     }
 
-    private static boolean validateUserIds(List<List<String>> friendRelationships) {
+    private static boolean validateUserIdsFail(List<List<String>> friendRelationships) {
         List<List<String>> filteredFriendRelationships = friendRelationships.stream()
                 .filter(friendRelationship -> friendRelationship.size() == USER_IDS_SIZE)
                 .collect(Collectors.toList());
-        return (filteredFriendRelationships.size() == friendRelationships.size());
+        return (filteredFriendRelationships.size() != friendRelationships.size());
     }
 
-    private static boolean validateVisitorsSize(List<String> visitors) {
-        return (visitors.size() >= MIN_VISITORS_SIZE && visitors.size() <= MAX_VISITORS_SIZE);
+    private static boolean validateVisitorsSizeFail(List<String> visitors) {
+        return (visitors.isEmpty()|| visitors.size() > MAX_VISITORS_SIZE);
     }
 }
