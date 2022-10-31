@@ -59,7 +59,13 @@ class ApplicationTest {
             assertThat(Problem2.isValid(cryptogram)).isFalse();
         }
 
-        
+        @Test
+        void 중복_제거_검사() {
+            String cryptogram = "sblllac";
+            String expected = "sbac";
+
+            assertThat(Problem2.removeDuplicate(cryptogram)).isEqualTo(expected);
+        }
 
     }
 
