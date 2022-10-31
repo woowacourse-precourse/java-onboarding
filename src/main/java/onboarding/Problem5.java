@@ -10,6 +10,9 @@ public class Problem5 {
     }
 
     private static void calculate(int money, List<Integer> answer, int[] moneyUnits) {
-
+        for (int moneyUnit : moneyUnits) {
+            answer.add(money / moneyUnit);
+            money %= moneyUnit;
+        }
     }
 }
