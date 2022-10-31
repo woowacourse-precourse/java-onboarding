@@ -20,6 +20,7 @@ public class Problem6 {
     }
 
     private static void saveNicknameToMap(List<List<String>> forms) {
+        //연속된 닉네임을 식별하기 위해서 두 글자씩 잘라 저장한다.
         for (List<String> crew : forms) {
             String nickname = crew.get(1);
 
