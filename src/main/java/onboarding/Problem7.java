@@ -31,6 +31,7 @@ public class Problem7 {
             friendsScoreMap.merge(visitor, 1, (oldValue, newValue) -> oldValue + 1);
         }
 
+        List<Map.Entry<String, Integer>> totalScoreMapList = sortTotalScoreMapListByScore(friendsScoreMap);
 
         return null;
     }
@@ -49,5 +50,18 @@ public class Problem7 {
                 friendsScoreMap.merge(s, 10, (oldValue, newValue) -> oldValue + 10);
             }
         }
+    }
+
+    private static List<Map.Entry<String, Integer>> sortTotalScoreMapListByScore(Map<String, Integer> friendsScoreMap) {
+        List<Map.Entry<String, Integer>> totalScoreMapList = new LinkedList<>(friendsScoreMap.entrySet());
+        totalScoreMapList.sort((o1, o2) -> {
+            if (Objects.equals(o1.getValue(), o2.getValue())) {
+                return o1.getKey()
+                         .compareTo(o2.getKey());
+            }
+            return o2.getValue() - o1.getValue();
+        });
+
+        return totalScoreMapList;
     }
 }
