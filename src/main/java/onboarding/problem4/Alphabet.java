@@ -6,14 +6,11 @@ public class Alphabet {
     static final char Z_LOWERCASE = 'z';
     static final char Z_UPPERCASE = 'Z';
 
-    public static char changeAlphabet(char alphabet) {
-        if (!Character.isAlphabetic(alphabet)) {
-            return alphabet;
+    public static char changeAlphabet(char character) {
+        if (!Character.isAlphabetic(character)) {
+            return character;
         }
-        if (isCapitalAlphabet(alphabet)) {
-            return capAlphabetReverse(alphabet);
-        }
-        return smlAlphabetReverse(alphabet);
+        return alphabetReverse(character);
     }
 
     public static boolean isCapitalAlphabet(char character) {
@@ -23,11 +20,11 @@ public class Alphabet {
         return false;
     }
 
-    public static char capAlphabetReverse(char alphabet) {
-        return (char)(Z_UPPERCASE - alphabet + A_UPPERCASE);
-    }
-
-    public static char smlAlphabetReverse(char alphabet) {
+    public static char alphabetReverse(char alphabet) {
+        if (isCapitalAlphabet(alphabet)){
+            return (char) (Z_UPPERCASE - alphabet + A_UPPERCASE);
+        }
         return (char)(Z_LOWERCASE - alphabet + A_LOWERCASE);
     }
+
 }
