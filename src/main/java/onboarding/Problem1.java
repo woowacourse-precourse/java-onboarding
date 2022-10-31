@@ -5,8 +5,15 @@ import java.util.NoSuchElementException;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        //  유효성 검사
+        if (!verifyInput(pobi)||!verifyInput(crong)) return -1;
+
+        //  최대값 변수 설정
+        int maxValuePobi = findMaxValueInList(pobi);
+        int maxValueCrong = findMaxValueInList(crong);
+
+        //  최대값 비교
+        return compareValue(maxValuePobi, maxValueCrong);
     }
 
     //  입력값의 유효성 검사
