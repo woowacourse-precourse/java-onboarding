@@ -6,6 +6,7 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Map<String, User> userMap = new HashMap<>();
         userMap.put(user, new User(user));
+        List<String> answer = Collections.emptyList();
 
         for (int i = 0; i < friends.size(); i++) {
             if (userMap.containsKey(friends.get(i).get(0))) { //0번 객체가 map에 있음
@@ -28,13 +29,23 @@ public class Problem7 {
                     userMap.get(friends.get(i).get(0)).addFriend(userMap.get(friends.get(i).get(1)));
                     userMap.get(friends.get(i).get(1)).addFriend(userMap.get(friends.get(i).get(0)));
                 }
-
-                userMap.get(0);
+            }
+            for (String str:visitors) {
+                if (userMap.containsKey(str)) { // 유저맵에 들어오는 키가 있음
+                    userMap.get(str).add1Point();
+                    List<User> friendUser = userMap.get(str).getFriendList();
+                    for (int j = 0; j < friendUser.size(); j++) {
+                        friendUser.get(j).add10Point();
+                    }
+                } else { // 유저맵에 들어오는 키가 없음
+                    userMap.put(str,new User(str));
+                    userMap.get(str).add1Point();
+                }
             }
 
 
         }
-        List<String> answer = Collections.emptyList();
+
         return answer;
     }
 }
@@ -46,6 +57,7 @@ class User implements Comparator<User> {
         return o1.getPoint() > o2.getPoint() ? 1 : (o1.getPoint() < o2.getPoint() ? -1 : 0);
     }
 
+
     public User(String userName) {
         this.userName = userName;
     }
@@ -53,6 +65,10 @@ class User implements Comparator<User> {
     private String userName;
     private int point = 0;
     private List<User> friendList = new ArrayList<>();
+
+    public List<User> getFriendList() {
+        return friendList;
+    }
 
     public String getUserName() {
         return userName;
@@ -72,6 +88,13 @@ class User implements Comparator<User> {
 
     public void addFriend(User user) {
         friendList.add(user);
+    }
+
+    public void add1Point(){
+        point++;
+    }
+    public void add10Point(){
+        point +=10;
     }
 
 }
