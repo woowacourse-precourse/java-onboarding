@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Problem7 {
@@ -14,14 +11,21 @@ public class Problem7 {
     // 타임라인에 방문한 횟수: 1점
 
     // TODO 전체 유저 닉네임을 반환하는 메서드 -> 중복을 제거한다
-    public static List<String> getUsers(List<List<String>> friends) {
+    public static List<String> getUsers(String user, List<List<String>> friends, List<String> visitors) {
         List<String> users = new ArrayList<>();
         for (int i = 0; i < friends.size(); i++) {
             for (int j = 0; j < friends.get(i).size(); j++) {
                 users.add(friends.get(i).get(j));
             }
         }
-        users = users.stream().distinct().sorted().collect(Collectors.toList());
+
+        for (int i = 0; i < visitors.size(); i++) {
+            users.add(visitors.get(i));
+        }
+        users = users.stream()
+                .distinct()
+                .filter(s -> !s.equals(user))
+                .sorted().collect(Collectors.toList());
 
         return users;
     }
@@ -48,7 +52,7 @@ public class Problem7 {
         // 찾은 친구의 리스트에 담겨있는 유저에게 +10
         //  visitors를 돌며 2차원배열에 +1
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> users = getUsers(friends);
+        List<String> users = getUsers(user, friends, visitors);
         List<String> friendsOfUser = userFriends(user, friends);
         return null;
     }
