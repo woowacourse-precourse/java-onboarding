@@ -6,11 +6,25 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
+        if(validatePages(pobi)==-1||validatePages(crong)==-1){
+            answer = -1;
+            return answer;
+        }
+
         answer = getWinner(pobi, crong);
         return answer;
     }
 
+    public static int validatePages(List<Integer> pages){
+        //페이지 홀짝 판별
+        if(pages.get(0)%2!=1) return -1;
+        if(pages.get(1)%2!=0) return -1;
 
+        //페이지 연속 여부 판별
+        if(pages.get(1)-pages.get(0)!=1) return -1;
+
+        return 0;
+    }
 
     public static int getScore(List<Integer> pages){
         int max_score=0;
