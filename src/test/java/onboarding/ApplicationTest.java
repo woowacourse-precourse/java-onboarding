@@ -193,9 +193,9 @@ class ApplicationTest {
         }
 
         @Test
-        void parameter_nonalphabetic_exception() {
+        void parameter_nonalphabetic_letter() {
             String word = "I& love you";
-            String result = word;
+            String result = "R& olev blf";;
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
     }

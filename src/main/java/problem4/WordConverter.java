@@ -11,7 +11,7 @@ public class WordConverter {
     private static final int LOWERCASE_TRANSLATION_NUMBER = 'a' + 'z';
 
     public static String convert(String word) {
-        validate(word);
+        validateLength(word);
         char[] converted = convert(word.toCharArray());
         return new String(converted);
     }
@@ -30,24 +30,12 @@ public class WordConverter {
         if (Character.isUpperCase(letter)) {
             return (char) (UPPERCASE_TRANSLATION_NUMBER - letter);
         }
-        return ' ';
-    }
-
-    private static void validate(String word) {
-        validateLength(word);
-        validateAlphabetic(word);
+        return letter;
     }
 
     private static void validateLength(String word) {
         if (Objects.requireNonNull(word).length() < LENGTH_LOWER_BOUNDS
                                 ||  word.length() > LENGTH_UPPER_BOUNDS)
             throw new IllegalArgumentException(ERR_WORD_LENGTH);
-    }
-
-    private static void validateAlphabetic(String word) {
-        for (char letter : word.toCharArray()) {
-            if (!Character.isAlphabetic(letter) && letter != ' ')
-                throw new IllegalArgumentException(ERR_NON_ALPHABETIC_WORD);
-        }
     }
 }

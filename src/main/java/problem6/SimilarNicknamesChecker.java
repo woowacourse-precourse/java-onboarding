@@ -3,12 +3,11 @@ package problem6;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.IntStream;
 
 public class SimilarNicknamesChecker {
 
     private final Set<String> capturedEmails = new HashSet<>();
-    private final Map<String, String> nicknameKeyToEmail = new HashMap<>();
+    private final Map<String, String> partialNicknameToEmail = new HashMap<>();
     public SimilarNicknamesChecker(List<List<String>> forms) {
         Validator.validate(forms);
         check(forms);
@@ -19,25 +18,28 @@ public class SimilarNicknamesChecker {
             String email = form.get(0);
             String nickname = form.get(1);
 
-            captureSimilarNicknamesOf(email, nickname);
+            captureSimilarNicknamesOf(nickname, email);
             store(email, nickname);
         }
     }
 
-    private void captureSimilarNicknamesOf(String email, String nickname) {
-        IntStream.range(0, nickname.length() - 1)
-                .mapToObj(index -> nickname.substring(index, index + 2))
-                .filter(nicknameKey -> nicknameKeyToEmail.containsKey(nicknameKey))
-                .forEach(nicknameKey -> {
-                    capturedEmails.add(email);
-                    capturedEmails.add(nicknameKeyToEmail.get(nicknameKey));
-                });
+    private void captureSimilarNicknamesOf(String nickname, String email) {
+        for (int i = 0; i < nickname.length() - 1; i++) {
+            captureSimilarNicknamesUsing(nickname.substring(i, i + 2), email);
+        }
+    }
+
+    private void captureSimilarNicknamesUsing(String partialNickname, String email) {
+        if (partialNicknameToEmail.containsKey(partialNickname)) {
+            capturedEmails.add(email);
+            capturedEmails.add(partialNicknameToEmail.get(partialNickname));
+        }
     }
 
     private void store(String email, String nickname) {
-        IntStream.range(0, nickname.length() - 1)
-                .mapToObj(index -> nickname.substring(index, index + 2))
-                .forEach(nicknameKey -> nicknameKeyToEmail.put(nicknameKey, email));
+        for (int i = 0; i < nickname.length() - 1; i++) {
+            partialNicknameToEmail.put(nickname.substring(i, i + 2), email);
+        }
     }
 
     public List<String> getEmailsOf() {

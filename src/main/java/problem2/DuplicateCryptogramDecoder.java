@@ -10,10 +10,13 @@ public class DuplicateCryptogramDecoder {
     public static String decode(String cryptogram) {
         Validator.validateLength(cryptogram);
         Validator.validateLowerCase(cryptogram);
+
         List<Character> cryptogramList = asCharacterList(cryptogram);
+
         while (hasContinuousDuplication(cryptogramList)) {
             cryptogramList = deleteContinuousDuplicationFrom(cryptogramList);
         }
+
         return asString(cryptogramList);
     }
 
