@@ -3,34 +3,37 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
-    static boolean check(int left, int right) {
-        if (left >= right || right - left > 1 || left % 2 == 0 || right % 2 == 1)
+    static boolean check_range (int page){
+        if(page<0||page>400)
+            return true;
+        return false;
+    }
+    static boolean exception_check(int left, int right) {
+        if (check_range(left)||check_range(right)||left >= right || right - left > 1 || left % 2 == 0 || right % 2 == 1)
             return true;
         else
             return false;
     }
 
     static int pow(int num) {
-        int ans = 1;
-        int test_num = num;
-        int len;
+        int pow_answer = 1;
 
         while (num / 10 != 0) {
-            ans *= num % 10;
+            pow_answer *= num % 10;
             num /= 10;
         }
-        ans *= num;
+        pow_answer *= num;
 
-        return ans;
+        return pow_answer;
     }
 
     static int add(int num) {
-        int ans = 0;
+        int add_answer = 0;
         while (num != 0) {
-            ans += num % 10;
+            add_answer += num % 10;
             num /= 10;
         }
-        return ans;
+        return add_answer;
     }
 
     static int bigger(int a, int b) {
@@ -49,7 +52,7 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
-        if (check(pobi.get(0), pobi.get(1)) || check(crong.get(0), crong.get(1))) {
+        if (exception_check(pobi.get(0), pobi.get(1)) || exception_check(crong.get(0), crong.get(1))) {
             answer = -1;
         } else {
             int p_ans = output(pobi.get(0), pobi.get(1));

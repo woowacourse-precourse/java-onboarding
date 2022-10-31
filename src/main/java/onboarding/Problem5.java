@@ -12,12 +12,12 @@ public class Problem5 {
 
         List<Integer> ans = new ArrayList<>();
         for (int i = 0; i < 8; i++) {
-            int ad = 0;
+            int count = 0;
             while (money >= list.get(i)) {
-                ad++;
+                count++;
                 money -= list.get(i);
             }
-            ans.add(ad);
+            ans.add(count);
         }
         ans.add(money);
         answer = ans;

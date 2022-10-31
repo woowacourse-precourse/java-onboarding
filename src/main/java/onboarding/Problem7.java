@@ -11,89 +11,93 @@ import java.util.HashMap;
 import java.util.ArrayList;
 
 public class Problem7 {
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         Set<String> user_friend = new HashSet<String>();  //user와 친구인 사람들
-        HashMap<String, Integer> friend_list = new HashMap<String, Integer>(); //전체의 friend리스트, 점수체크용
-        List<String> ans=new ArrayList<String>();
+        HashMap<String, Integer> user_list = new HashMap<String, Integer>(); //전체의 friend리스트, 점수체크용
+        List<String> answerList=new ArrayList<String>();
 
         //user와의 친구 관계 확인
-        for (List<String> ls : friends) {
-            if (ls.get(0) == user) {
-                user_friend.add(ls.get(1));
-            } else if (ls.get(1) == user) {
-                user_friend.add(ls.get(0));
+        for (List<String> friendship : friends) {
+            if (friendship.get(0) == user) {
+                user_friend.add(friendship.get(1));
+            } else if (friendship.get(1) == user) {
+                user_friend.add(friendship.get(0));
             }
-            friend_list.put(ls.get(0), 0);
-            friend_list.put(ls.get(1), 0);
+            user_list.put(friendship.get(0), 0);
+            user_list.put(friendship.get(1), 0);
         }
 
         //user와 친구가 같은경우 +10점
-        for (List<String> ls : friends) {
-            if(user_friend.contains(ls.get(0))){
-                friend_list.put(ls.get(1),friend_list.get(ls.get(1))+10);
+        for (List<String> friendship : friends) {
+            if(user_friend.contains(friendship.get(0))){
+                user_list.put(friendship.get(1),user_list.get(friendship.get(1))+10);
             }
-            if(user_friend.contains(ls.get(1))){
-                friend_list.put(ls.get(0),friend_list.get(ls.get(0))+10);
+            if(user_friend.contains(friendship.get(1))){
+                user_list.put(friendship.get(0),user_list.get(friendship.get(0))+10);
             }
         }
 
 
         //user의 방문횟수에 따른 +1점
-        for(String s: visitors){
-            if(!friend_list.containsKey(s)){
-                friend_list.put(s,1);
+        for(String visitor: visitors){
+            if(!user_list.containsKey(visitor)){
+                user_list.put(visitor,1);
             }
             else
-                friend_list.put(s,friend_list.get(s)+1);
+                user_list.put(visitor,user_list.get(visitor)+1);
         }
-
-        friend_list.remove(user);
+        
+        //user_list에서 user자신과 user의 친구들을 제거
+        user_list.remove(user);
         for(String s:user_friend){
-            friend_list.remove(s);
+            user_list.remove(s);
         }
 
         //각각을 돌려보는게 제일 편할듯하다
-        List<String> sname=new ArrayList<String>();
+        List<String> save_name=new ArrayList<String>();
+        int before_max=0;
 
-        int cmax=0;
-        for(int i=0;i<5;i++){
+        while(answerList.size()<5){
             String name="";
             int max=0;
-            for(String s:friend_list.keySet()){
-                int cmp=friend_list.get(s);
-                if(cmp>max){
-                 max=cmp;
-                 name=s;
+            for(String friend_name:user_list.keySet()){
+                int point=user_list.get(friend_name);
+                if(point>max){
+                 max=point;
+                 name=friend_name;
                 }
             }
+
             if(max>0){
-                if(max==cmax||i==0){ //여기 else문이 위로 오게 조정할 필요
-                    sname.add(name);
-                    //cmax=max;
+                if(max!=before_max &&!save_name.isEmpty()){
+                    Collections.sort(save_name);
+                    for(String s:save_name)
+                        answerList.add(s);
+                    save_name.clear();
                 }
-                else{
-                    //cmax=max;
-                    Collections.sort(sname);
-                    for(String s:sname)
-                        ans.add(s);
-                    sname.clear();
-                    sname.add(name);
-                }
-                cmax=max;
-                friend_list.remove(name);
-                if(friend_list.isEmpty())
+                
+                save_name.add(name);
+                before_max=max;
+                user_list.remove(name);
+                if(user_list.isEmpty())
                     break;
             }
-            else{
+            else
                 break;
+        }
+
+        if(!save_name.isEmpty()) {
+            Collections.sort(save_name);
+            for (String name : save_name) {
+                if (answerList.size() == 5)
+                    break;
+                answerList.add(name);
             }
         }
 
-        for(String s:sname)
-            ans.add(s);
-
-        answer=ans;
+        answer=answerList;
 
         return answer;
     }

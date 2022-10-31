@@ -3,18 +3,18 @@ package onboarding;
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
-        StringBuilder sb = new StringBuilder();
+        StringBuilder swap_answer = new StringBuilder();
         for (int i = 0; i < word.length(); i++) {
-            char c = word.charAt(i);
-            if (c >= 'a' && c <= 'z') {
-                sb.append((char) ('z' - (c - 'a')));
-            } else if (c >= 'A' && c <= 'Z') {
-                sb.append((char) ('Z' - (c - 'A')));
+            char word_digit = word.charAt(i);
+            if (word_digit >= 'a' && word_digit <= 'z') {
+                swap_answer.append((char) ('z' - (word_digit - 'a')));
+            } else if (word_digit >= 'A' && word_digit <= 'Z') {
+                swap_answer.append((char) ('Z' - (word_digit - 'A')));
             } else
-                sb.append(" ");
+                swap_answer.append(word_digit);
         }
 
-        answer = sb.toString();
+        answer = swap_answer.toString();
         return answer;
     }
 }
