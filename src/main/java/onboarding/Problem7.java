@@ -78,12 +78,7 @@ public class Problem7 {
 			data.put(person, Integer.parseInt(relation.get(person).get(0)));
 		}
 
-		// user와 이미 친구인 관계는 목록에서 제거
-		for (String name : userFriends) {
-			if (data.containsKey(name)) {
-				data.remove(name);
-			}
-		}
+		removeAlreadyFriends(data, userFriends);
 
 		//점수가 0인 값 전부 삭제
 		data.entrySet().removeIf(
@@ -109,5 +104,13 @@ public class Problem7 {
 			result.add(list.get(i).getKey());
 		}
 		return result;
+	}
+
+	private static void removeAlreadyFriends(Map<String, Integer> user, List<String> userFriends) {
+		for (String name : userFriends) {
+			if (user.containsKey(name)) {
+				user.remove(name);
+			}
+		}
 	}
 }
