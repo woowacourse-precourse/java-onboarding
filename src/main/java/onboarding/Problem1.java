@@ -5,7 +5,7 @@ import java.util.List;
 class Problem1 {
 
     /**
-     * @param pageList  : page List(Integer)
+     * @param pageList : page List(Integer)
      * @return boolean : 주어진 페이지 리스트가 valid 한가?
      */
     public static boolean validCheck(List<Integer> pageList) {
@@ -73,6 +73,17 @@ class Problem1 {
         return maxNumberFromPage;
     }
 
+    public static int judgeWinner(int poby, int crong) {
+        if (poby > crong) {
+            return 1;
+        } else if (poby < crong) {
+            return 2;
+        } else if (poby == crong) {
+            return 0;
+        }
+        return -1;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         // exception
         if (!validCheck(pobi) || !validCheck(crong)) {
@@ -81,20 +92,6 @@ class Problem1 {
         // game logic
         int pobiMaxNumber = getMaxNumberFromPageList(pobi);
         int crongMaxNumber = getMaxNumberFromPageList(crong);
-
-        // pobi win
-        if (pobiMaxNumber > crongMaxNumber) {
-            return 1;
-        }
-        // crong win
-        if (pobiMaxNumber < crongMaxNumber) {
-            return 2;
-        }
-        // draw
-        if (pobiMaxNumber == crongMaxNumber) {
-            return 0;
-        }
-
-        return -1;
+        return judgeWinner(pobiMaxNumber, crongMaxNumber);
     }
 }

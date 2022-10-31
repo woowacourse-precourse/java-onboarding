@@ -42,5 +42,5 @@ TODO
 - 리팩터링 
 1. ~~validCheck(int[], int[])를 일반화하여 validCheck(int[])로 만들기~~
 2. ~~게임 로직 함수화~~
-3. 승자 판단 로직 함수화
+3. ~~승자 판단 로직 함수화~~
 4. 상수 static final const 화
