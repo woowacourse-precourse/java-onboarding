@@ -8,7 +8,14 @@ public class Problem4 {
     	for (int i=0;i<temp.length();i++) {
     		char c = temp.charAt(i);
     		int idx = temp.indexOf(c);
-    		answer = answer + alpha.charAt((alpha.length() - 1) - idx); // 해당 알파벳의 인덱스를 이용해 변환
+    		
+    		if ((int)c >= 97 && (int)c <= 122) { // 알파벳인 경우에만 변환
+    			answer = answer + alpha.charAt((alpha.length() - 1) - idx); // 해당 알파벳의 인덱스를 이용해 변환
+    		}
+    		else {
+				answer = answer + c;
+			}
+    		
     		
     	}
     	
