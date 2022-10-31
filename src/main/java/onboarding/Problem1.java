@@ -7,6 +7,7 @@ class Problem1 {
         if(player.get(1) - player.get(0) != 1) return false;
         else if(player.get(0)==null || player.get(1) ==null) return false;
         else if(player.get(0) > 400 || player.get(1) == 400) return false;
+        else if(player.get(0) < 1 || player.get(1) < 1) return false;
         return true;
     }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
