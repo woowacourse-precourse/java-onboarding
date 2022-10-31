@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 
 public class Problem7 {
@@ -15,7 +16,7 @@ public class Problem7 {
         getUserFriends(user, friends);
         getRecommendScoreByRelationship(user, friends);
         getRecommendScoreByVisitor(visitors);
-        return new ArrayList<>();
+        return getTotalRecommendUsers();
     }
 
     private static void getUserFriends(String user, List<List<String>> friends) {
@@ -68,5 +69,20 @@ public class Problem7 {
                 RECOMMEND_SCORE.put(visitor, RECOMMEND_SCORE.get(visitor) + VISITOR_POINT);
             }
         }
+    }
+
+    private static List<String> getTotalRecommendUsers() {
+        List<Map.Entry<String, Integer>> entries = new ArrayList<>(RECOMMEND_SCORE.entrySet());
+        return entries.stream()
+                .sorted((o1, o2) -> {
+                    int num = Integer.compare(o2.getValue(), o1.getValue());
+                    if (num == 0) {
+                        num  = o1.getKey().compareTo(o2.getKey());
+                    }
+                    return num;
+                })
+                .limit(5)
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
     }
 }
