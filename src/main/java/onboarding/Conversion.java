@@ -18,5 +18,19 @@ class Conversion {
         return 0;
     }
 
+    String convert() {
+        String convertWord = "";
 
+        for(int i = 0; i < word.length(); i++) {
+            if(word.charAt(i) >= 'A' && word.charAt(i) <= 'Z') {
+                convertWord = convertWord.concat(String.valueOf((char)(capital - word.charAt(i))));
+            } else if(word.charAt(i) >= 'a' && word.charAt(i) <= 'z') {
+                convertWord = convertWord.concat(String.valueOf((char)(small - word.charAt(i))));
+            } else {
+                convertWord = convertWord.concat(String.valueOf(word.charAt(i)));
+            }
+        }
+
+        return convertWord;
+    }
 }
