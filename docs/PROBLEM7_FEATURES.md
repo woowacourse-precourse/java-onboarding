@@ -1,5 +1,5 @@
 ## 🚀 기능 요구 사항
-* [ ] 사용자(Member)
+* [x] 사용자(Member)
   * instance variables
     * 사용자 아이디(String) : userId
     * 친구관계 정보(Set<Member>) : friends
