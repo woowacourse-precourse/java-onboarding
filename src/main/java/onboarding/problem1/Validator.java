@@ -2,7 +2,7 @@ package onboarding.problem1;
 
 import java.util.List;
 
-public class Validation {
+public class Validator {
     private static final int START_PAGE = 1;
     private static final int END_PAGE = 400;
 
