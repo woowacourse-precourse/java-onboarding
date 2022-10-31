@@ -7,6 +7,10 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         int pobiNum=-1, crongNum=-1;
 
+        //예외사항 -1
+        if(pobi.get(0)!=pobi.get(1)-1)return -1;
+        if(crong.get(0)!=crong.get(1)-1)return -1;
+
         //pobi의 큰 수 구하기
         for(int po:pobi){
             int sum=0,mul=1;
