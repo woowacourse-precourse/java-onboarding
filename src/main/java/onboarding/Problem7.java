@@ -13,26 +13,41 @@ public class Problem7 {
 
         /* 방문자의 점수 계산 */
         addVisitorScore(score, visitors);
-        /* 이미 친구인 사람들 제거 */
-        score = removeUsersFriends(score, friendships, user);
+        /* 이미 친구인 사람들 + user 제거 */
+        removeUsersFriends(score, friendships, user);
 
         /* 점수순, 이름순 정렬을 위한 Pair */
+        Pair[] temp = initScore(score);
+        Arrays.sort(temp);
+
+        List<String> answer = new ArrayList<>();
+        getAnswer(temp, score, answer);
+        return answer;
+    }
+
+    private static Pair[] initScore(Map<String, Integer> score){
         Pair[] temp = new Pair[score.size()];
         int i = 0;
         for (String key : score.keySet()){
             temp[i] = new Pair(key, score.get(key));
             i += 1;
         }
-        Arrays.sort(temp);
+        return temp;
 
-        List<String> answer = new ArrayList<>();
-        for (int j = 0; j < score.size(); j++) {
-            answer.add(temp[j].getName());
-            if (answer.size() >= 5){
+    }
+
+    private static void getAnswer(Pair[] temp, Map<String, Integer> score, List<String> answer){
+        for (int i = 0; i < score.size(); i++) {
+            answer.add(temp[i].getName());
+            if (isOverAnswer(answer.size())){
                 break;
             }
         }
-        return answer;
+    }
+
+    private static Boolean isOverAnswer(int size){
+        final int MAX_ANSWER = 5;
+        return size >= MAX_ANSWER;
     }
 
     private static Map<String,List<String>> setFriendship(List<List<String>> friends){
@@ -43,8 +58,6 @@ public class Problem7 {
             /* 친구 관계는 상호 관계이므로 둘다 관계성 추가 */
             addRelationToHash(friendships, currentA, currentB);
             addRelationToHash(friendships, currentB, currentA);
-
-
         }
         return friendships;
     }
@@ -88,16 +101,15 @@ public class Problem7 {
         }
     }
 
-    private static Map<String, Integer> removeUsersFriends(Map<String, Integer> score, Map<String,List<String>> friendships, String user){
+    private static void removeUsersFriends(Map<String, Integer> score, Map<String,List<String>> friendships, String user){
         if (friendships.get(user) == null){
-            return score;
+            return;
         }
 
         for (int i = 0; i < friendships.get(user).size(); i++) {
             score.remove(friendships.get(user).get(i));
         }
         score.remove(user);
-        return score;
     }
 
 
@@ -128,6 +140,6 @@ public class Problem7 {
         public String getName(){
             return name;
         }
-
+        public int getScore(){ return score;}
     }
 }
