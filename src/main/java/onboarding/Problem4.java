@@ -9,14 +9,13 @@ public class Problem4 {
         String answer = "";
         return answer;
     }
-
-    private static char chageUppercase(int c){
-        char changeWord = (char)(UPPER_CASE_SUM - c);
-        return changeWord;
+    private static char changeUppercase(int c){
+        char reverse_Word = (char)(UPPER_CASE_SUM - c);
+        return reverse_Word;
     }
 
     private static char changeLowercase(int c){
-        char changeWord = (char)(LOWER_CASE_SUM - c);
-        return changeWord;
+        char reverse_Word = (char)(LOWER_CASE_SUM - c);
+        return reverse_Word;
     }
 }
