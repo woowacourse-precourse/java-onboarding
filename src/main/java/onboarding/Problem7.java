@@ -1,11 +1,28 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+
+        List<String> myFriendList = findMyFriend(user, friends);
+        HashMap<String, Integer> findMyfriendsFriend = findMyFriendsFriend(user, myFriendList, friends);
+        HashMap<String, Integer> findMyVisitors = findMyVisitors(user, myFriendList, visitors);
+
+        HashMap<String, Integer> answerMap = new HashMap<>();
+        answerMap.putAll(findMyVisitors);
+        answerMap.putAll(findMyfriendsFriend);
+
+        answerMap = sortByValue(answerMap);
+
+        Iterator<String> keys = answerMap.keySet().iterator();
+        while(keys.hasNext()) {
+            String key = keys.next();
+            answer.add(key);
+            System.out.println(answer);
+        }
+
         return answer;
     }
 
