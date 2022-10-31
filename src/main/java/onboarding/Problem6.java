@@ -4,14 +4,26 @@ import java.util.*;
 
 public class Problem6 {
 
-    //<twoChar, 처음으로 twoChar를 가진 크루 index> 저장
-    private static Map<String, Integer> twoChar = new HashMap<>();
+    //<twoChar, 처음으로 twoChar를 가진 크루 이메일> 저장
+    private static Map<String, String> twoChar = new HashMap<>();
 
-    //answer에 포함되는 크루 idx 저장
-    private static Set<Integer> duplicatedAnswer = new HashSet<>();
+    //answer에 포함되는 크루 이메일 저장
+    private static Set<String > duplicatedAnswer = new HashSet<>();
 
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
+
+        if(detectError(forms))
+            return answer;
+
+        for(List<String> form: forms){
+            isDuplicateOtherNickname(form);
+        }
+
+        answer = new ArrayList<>(duplicatedAnswer);
+
+        Collections.sort(answer);
+
         return answer;
     }
 
@@ -30,20 +42,25 @@ public class Problem6 {
         return false;
     }
 
-    private static void isDuplicateOtherNickname(String nickname, int idx){
+    private static void isDuplicateOtherNickname(List<String> form){
+        String nickname = form.get(1);
+        String email = form.get(0);
         for(int i=0;i<nickname.length()-1;i++){
             String twoC = nickname.substring(i, i+2);
 
-            if(twoChar.containsKey(twoC)){
-                duplicatedAnswer.add(idx);
+            if(twoChar.containsKey(twoC) && !twoChar.get(twoC).equals(email)){
+                duplicatedAnswer.add(email);
                 duplicatedAnswer.add(twoChar.get(twoC));
+            }
+            else {
+                storeTwoChar(twoC, email);
             }
         }
     }
 
-    private static void storeTwoChar(String str, int idx){
+    private static void storeTwoChar(String str, String email){
         if(!twoChar.containsKey(str)){
-            twoChar.put(str, idx);
+            twoChar.put(str, email);
         }
     }
 }
