@@ -20,7 +20,14 @@ public class Problem6 {
 	}
 
 	public static void checkDuplicate(List<List<String>> forms, List<String> form, int index) {
-
+		String formNickname = form.get(1);
+		for (int i = index + 1; i < forms.size(); i++) {
+			String formsNickname = forms.get(i).get(1);
+			if (isDuplicateNickName(formsNickname, formNickname)) {
+				duplicateUser[i] = true;
+				duplicateUser[index] = true;
+			}
+		}
 	}
 
 	public static boolean isDuplicateNickName(String formsNickname, String formNickname) {
