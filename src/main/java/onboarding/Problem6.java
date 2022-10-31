@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import Exception.EmailFormException;
 import Exception.RangeException;
+import Exception.KoreanException;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -12,6 +13,7 @@ public class Problem6 {
             emailCheck(forms.get(0).get(0));
             emailLengthCheck(forms.get(0).get(0));
             nickNameLengthCheck(forms.get(0).get(1));
+            koreanCheck(forms.get(0).get(1));
             crewSizeCheck(forms);
         }catch (EmailFormException e)
         {
@@ -24,6 +26,10 @@ public class Problem6 {
         {
             answer= new ArrayList<>();
             answer.add("Range"); //test
+        }catch (KoreanException e)
+        {
+            answer= new ArrayList<>();
+            answer.add("Korean"); //test
         }
         return answer;
     }
@@ -70,5 +76,16 @@ public class Problem6 {
     public static void crewSizeCheck(List<List<String>> forms) throws RangeException
     {
         if(forms.size()<1||forms.size()>10000) throw new RangeException("Crew원의 인원이 1~10000에 해당하지않습니다");
+    }
+
+    /**
+     * 한글이 아닌 입력이 있는가?
+     *
+     * @param nickName list에서 닉네임만 입력한다
+     * @throws KoreanException 한글이 아닌경우 발생
+     */
+    public static void koreanCheck(String nickName)throws KoreanException
+    {
+        if(!nickName.matches(".*[ㄱ-ㅎㅏ-ㅣ가-힣]+.*")) throw new KoreanException("한글이 아닌 입력이 있습니다");
     }
 }
