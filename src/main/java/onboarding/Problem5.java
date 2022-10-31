@@ -7,6 +7,7 @@ import java.util.List;
 public class Problem5 {
     public static List<Integer> solution(int money) {
         List<Integer> answer = Collections.emptyList();
+        Bank.validateMoney(money);
         answer = withdrawMoney(money);
         return answer;
     }
@@ -38,6 +39,21 @@ public class Problem5 {
 
         public int calculateBalance(int money) {
             return money - unit * countCurrencyAmount(money);
+        }
+    }
+
+    private static class Bank {
+        private static final int MIN_AMOUNT = 1;
+        private static final int MAX_AMOUNT = 1_000_000;
+
+        public static void validateMoney(int money) {
+            if(checkMoneyAmount(money)) {
+                throw new IllegalArgumentException("The money should be greater than or equal to 1, and less than or equal to 1,000,000.");
+            }
+        }
+
+        private static boolean checkMoneyAmount(int money) {
+            return money < MIN_AMOUNT || money > MAX_AMOUNT;
         }
     }
 }
