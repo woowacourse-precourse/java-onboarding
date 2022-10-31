@@ -1,5 +1,6 @@
 package onboarding.domain.problem7;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
@@ -12,8 +13,8 @@ import java.util.Set;
 public class VisitsDictionary {
     private final Map<String, Integer> visitsDictionary;
     
-    public VisitsDictionary(VisitsDictionaryGenerator generator) {
-        this.visitsDictionary = generator.getDictionary();
+    public VisitsDictionary(FriendRelations relations, String user, List<String> visitors) {
+        this.visitsDictionary = new VisitsDictionaryGenerator(relations, user, visitors).getDictionary();
     }
     
     public Set<String> getAllVisitors() {
