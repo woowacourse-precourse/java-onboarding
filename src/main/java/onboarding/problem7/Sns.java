@@ -44,6 +44,20 @@ public class Sns {
         updateRecommendMapUsingVisitLog(recommendMap, user, membersNotFriendWithUser);
     }
 
+    private void updateRecommendMapUsingFriendShip(HashMap<String, Integer> recommendMap, String user, List<String> membersNotFriendWithUser) {
+        HashSet<String> usersFriends = friendShip.get(user);
+        for (String member : membersNotFriendWithUser) {
+            int numOfMemberKnowTogether = 0;
+            HashSet<String> membersFriends = friendShip.getOrDefault(member, new HashSet<>());
+            for (String memberFriend : membersFriends) {
+                if (usersFriends.contains(memberFriend)) {
+                    numOfMemberKnowTogether++;
+                }
+            }
+            recommendMap.put(member, recommendMap.getOrDefault(member, 0) + (numOfMemberKnowTogether * 10));
+        }
+    }
+
     private List<String> findMembersNotFriendWith(String user) {
         ArrayList<String> members = new ArrayList<>();
         HashSet<String> userFriendsSet = friendShip.getOrDefault(user, new HashSet<>());
