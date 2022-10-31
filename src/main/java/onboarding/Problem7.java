@@ -2,6 +2,8 @@ package onboarding;
 
 import java.util.*;
 
+import static java.util.stream.Collectors.toList;
+
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
@@ -54,21 +56,31 @@ public class Problem7 {
 
         private void addScoreByFriend(String friendA, String friendB) {
             if (!earlyFriends.contains(friendB)) return;
-            int value = 10;
-            if (scores.containsKey(friendA)) {
-                value += scores.get(friendA);
-            }
-            scores.put(friendA, value);
+            scores.put(friendA, scores.computeIfAbsent(friendA, v -> 0) + 10);
         }
 
 
         private void addScoreByVisit(String friend) {
             if (earlyFriends.contains(friend)) return;
-            int value = 1;
-            if (scores.containsKey(friend)) {
-                value += scores.get(friend);
+            scores.put(friend, scores.computeIfAbsent(friend, v -> 0) + 1);
+
+        }
+
+        private List<String> getRecommend() {
+            return scores.entrySet().stream()
+                    .filter(entry -> !earlyFriends.contains(entry.getKey()))
+                    .sorted(this::compare)
+                    .limit(5)
+                    .map(Map.Entry::getKey)
+                    .collect(toList());
+
+        }
+
+        private int compare(Map.Entry<String, Integer> entry1, Map.Entry<String, Integer> entry2) {
+            if (entry1.getValue() == entry2.getValue()) {
+                return entry1.getKey().compareTo(entry2.getKey());
             }
-            scores.put(friend, value);
+            return entry2.getValue().compareTo(entry1.getValue());
         }
     }
 }
