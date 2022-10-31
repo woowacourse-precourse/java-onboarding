@@ -28,7 +28,8 @@ import java.util.*;
 // 2-1. user의 친구목록 생성
 // 2-2. 각 user들의 친구를 확인 후 user의 친구와 비교
 // 2-3. 비교 후 친구가 같다면, 해당 user 점수에 10점 추가
-// 3-1.
+// 3. visitors에 있는 user마다 1점 추가
+//
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -73,6 +74,9 @@ public class Problem7 {
             }
         }
 
+        for (String visitor : visitors) {
+            usersScoreMap.put(visitor, usersScoreMap.get(visitor) + 1);
+        }
 
         System.out.println(usersScoreMap);
         System.out.println(userFriendList);
