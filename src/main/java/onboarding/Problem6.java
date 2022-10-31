@@ -17,6 +17,9 @@ public class Problem6 {
         // find overlapping area
         // euc-kr encode a word into 2 byte
         // so checking 2 words mean checking 4 byte
+        if((target_name.length < 4) || (move_name.length < 4)){ // if the nickname is less than 2word,
+            return false;
+        }
         for(int i = 0; i < target_name.length - 3; i++){
             for(int j = 0; j < move_name.length - 3; j++){
                 if((target_name[i] == move_name[j])
