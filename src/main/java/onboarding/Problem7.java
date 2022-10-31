@@ -100,7 +100,7 @@ public class Problem7 {
     }
 
     public static void addNotFriendUserToList(List<User> userList, User targetUser, User newUser){
-        if(targetUser.isNotFriendWith(newUser)){
+        if(targetUser != newUser && targetUser.isNotFriendWith(newUser)){
             userList.add(newUser);
         }
     }
