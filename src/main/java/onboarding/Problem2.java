@@ -23,7 +23,7 @@ public class Problem2 {
         int stringSize = cryptogram.length();
         boolean overlapCheck = false;
         int overlapCount = 1;
-        char pastChar = getCharfromStringIndex(cryptogram, stringSize - 1);
+        char pastChar = getCharFromStringIndex(cryptogram, stringSize - 1);
         for (int i = stringSize - 2; i >= 0; i--) {
             if (pastChar == cryptogram.charAt(i)) {
                 overlapCheck = true;
@@ -43,13 +43,13 @@ public class Problem2 {
         return cryptogram;
     }
 
-    public static char getCharfromStringIndex(String cryptogram, int index) {
+    public static char getCharFromStringIndex(String cryptogram, int index) {
         return cryptogram.charAt(index);
     }
 
     public static String overlapCharsDelete(String cryptogram, int position, int size) {
         String startSubString = cryptogram.substring(0, position);
-        String endSubString = cryptogram.substring(position + size, cryptogram.length());
+        String endSubString = cryptogram.substring(position + size);
         return startSubString.concat(endSubString);
     }
 }
