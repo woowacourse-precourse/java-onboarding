@@ -2,17 +2,32 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         Map<String, List<String>> FragmentsMap = new HashMap<>();
+        Set<String> nickNamesSet = new HashSet<>();
 
         makeFragmentsMap(forms, FragmentsMap);
+        makeNickNameSet(FragmentsMap, nickNamesSet);
         return answer;
     }
+
+    private static void makeNickNameSet(Map<String, List<String>> fragmentsMap,
+        Set<String> nickNamesSet) {
+        for (List<String> emails : fragmentsMap.values()) {
+            System.out.println("emails = " + emails);
+            if (emails.size() > 1) {
+                nickNamesSet.addAll(emails);
+            }
+        }
+    }
+
     private static void makeFragmentsMap(List<List<String>> forms,
         Map<String, List<String>> nickNameFragmentsMap) {
         for (List<String> form : forms) {
