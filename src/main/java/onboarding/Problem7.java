@@ -48,6 +48,7 @@ public class Problem7 {
 			}
 		}
 		reconmmendedFriends.remove(user);
+		reconmmendedFriends.addAll(visitors);
 		System.out.println(reconmmendedFriends);
 
 		List<String> answer = Collections.emptyList();
