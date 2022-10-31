@@ -1,25 +1,53 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Problem7 {
-    private class User implements Comparable<User> {
+    private static class User implements Comparable<User> {
         int score;
         String name;
 
+        public User(String name, int score) {
+            this.name = name;
+            this.score = score;
+        }
+
         @Override
         public int compareTo(User o) {
-            if(this.score==o.score) return this.name.compareTo(o.name);
-            return this.score > o.score ? 1 : -1;
+            if(this.score==o.score) return -this.name.compareTo(o.name);
+            return -Integer.compare(this.score, o.score);
         }
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
         Map<String, User> users = new HashMap<>();
+
+        List<String> userFriends = findFriends(user, friends);
+
+        for(String userFriend: userFriends){
+            for(String userFriendOfFriend: findFriends(userFriend, friends)){
+                users.put(userFriendOfFriend, new User(userFriendOfFriend, 10));
+            }
+        }
+
+        for(String visitor: visitors){
+            users.put(visitor, new User(visitor, users.get(visitor).score+1));
+        }
+
+        List<User> recommendUser = new ArrayList<>();
+        for(String key: users.keySet()){
+            if(!isMeOrUserFriends(users.get(key).name, user, userFriends)){
+                recommendUser.add(users.get(key));
+            }
+        }
+
+        Collections.sort(recommendUser);
+
+        for(int i=0;i<recommendUser.size()&&i<5;i++){
+            answer.add(recommendUser.get(i).name);
+        }
+
         return answer;
     }
 
@@ -27,7 +55,7 @@ public class Problem7 {
 
     }
 
-    private static boolean isMeOrUserFriends(String userName, String user, String userFriends){
+    private static boolean isMeOrUserFriends(String userName, String user, List<String> userFriends){
 
     }
 
