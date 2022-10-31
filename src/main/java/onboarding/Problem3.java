@@ -10,10 +10,7 @@ public class Problem3 {
 
         return answer;
     }
-
-    /**
-     * 매개변수로 주어진 n에 들어가는 3, 6, 9의 개수를 구해 리턴
-     */
+    
     public static int count369(int n) {
         int cnt = 0;
 
