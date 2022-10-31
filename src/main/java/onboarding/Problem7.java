@@ -6,19 +6,28 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     private static final Set<String> userFriends = new HashSet<>();
     private static final Map<String, Integer> recommendScoreMap = new HashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
         setFriendsOfUser(user, friends);
 
         increaseMutualScore(user, friends);
         increaseVisitScore(visitors);
 
-        return answer;
+        return getRecommendFriends();
+    }
+
+    private static List<String> getRecommendFriends() {
+        return recommendScoreMap.entrySet().stream()
+                .sorted(Map.Entry.comparingByKey())
+                .sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
+                .map(Map.Entry::getKey)
+                .limit(5)
+                .collect(Collectors.toList());
     }
 
     private static void setFriendsOfUser(String user, List<List<String>> friends) {
