@@ -11,6 +11,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -184,8 +185,6 @@ class Problem6Test {
     class MainClassTest {
 
         private Main main;
-        private Crew crew;
-        private Crews crews;
 
         @Test
         @DisplayName("makeCrewByNicknameAndEmail 메소드가 Crew 객체를 반환하는지 확인한다")
@@ -221,6 +220,31 @@ class Problem6Test {
             List<String> sortedEmailList = List.of("jason@email.com", "jm@email.com", "mj@email.com");
             main = new Main();
             assertThat(main.getAscendingEmailListFrom(crewList)).isEqualTo(sortedEmailList);
+        }
+    }
+
+    @Nested
+    @DisplayName("Crews 클래스의 메소드를 테스트한다")
+    class CrewsClassTest {
+
+        private Main main = new Main();
+        @Test
+        @DisplayName("getCrewSetOverlappingWith 메소드가 crew 인스턴스를 전달했을 때 nickname이 중복되는 크루원들의 set을 반환하는지 확인한다")
+        void getCrewSetOverlappingWithTest() {
+            List<List<String>> forms = List.of(
+                    List.of("jm@email.com", "제이엠"),
+                    List.of("jason@email.com", "제이슨"),
+                    List.of("woniee@email.com", "워니"),
+                    List.of("mj@email.com", "엠제이"),
+                    List.of("nowm@email.com", "이제엠")
+            );
+            Crews crews = main.makeCollectionCrews(forms);
+            Crew crew = new Crew("jay@email.com", "제이");
+            Set<Crew> crewSet = Set.of(new Crew("jm@email.com", "제이엠"),
+                    new Crew("jason@email.com", "제이슨"),
+                    new Crew("mj@email.com", "엠제이"));
+
+            assertThat(crews.getCrewSetOverlappingWith(crew)).isEqualTo(crewSet);
         }
     }
 }
