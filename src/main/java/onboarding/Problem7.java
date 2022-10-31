@@ -7,7 +7,11 @@ package onboarding;
     4. 목록의 유저들의 추천 점수를 구하는 기능 -> setPoint
     5. 추천 목록 리스트를 정렬하는 기능 -> sortRecommendList
  */
-import java.util.*;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -28,18 +32,18 @@ public class Problem7 {
     private static List<String> getFriendList(String user, List<List<String>> friends) {
         List<String> friendList = new ArrayList<>();
 
-        for (int i = 0; i < friends.size(); i++) {
-            if (friends.get(i).get(0).equals(user))
-                friendList.add(friends.get(i).get(1));
-            else if (friends.get(i).get(1).equals(user))
-                friendList.add(friends.get(i).get(0));
+        for (List<String> friend : friends) {
+            if (friend.get(0).equals(user))
+                friendList.add(friend.get(1));
+            else if (friend.get(1).equals(user))
+                friendList.add(friend.get(0));
         }
         return friendList;
     }
 
     private static boolean checkFriend(String name, List<String> friendList) {
-        for (int i = 0; i < friendList.size(); i++) {
-            if (friendList.get(i).equals(name))
+        for (String s : friendList) {
+            if (s.equals(name))
                 return true;
         }
         return false;
@@ -47,38 +51,33 @@ public class Problem7 {
 
     private static Map<String, Integer> getRecommendList(String user, List<List<String>> friends, List<String> friendList, List<String> visitors) {
         Map<String, Integer> recommendList = new HashMap<>();
-        List<String> friend;
 
-        for (int i = 0; i < friends.size(); i++) {
-            friend = friends.get(i);
-            if (friend.get(0).equals(user) == false && checkFriend(friend.get(0), friendList) == false)
+        for (List<String> friend : friends) {
+            if (!friend.get(0).equals(user) && !checkFriend(friend.get(0), friendList))
                 recommendList.put(friend.get(0), 0);
-            if (friend.get(1).equals(user) == false && checkFriend(friend.get(1), friendList) == false)
+            if (!friend.get(1).equals(user) && !checkFriend(friend.get(1), friendList))
                 recommendList.put(friend.get(1), 0);
         }
-        for (int i = 0; i < visitors.size(); i++) {
-            if (checkFriend(visitors.get(i), friendList) == false)
-                recommendList.put(visitors.get(i), 0);
+        for (String visitor : visitors) {
+            if (!checkFriend(visitor, friendList))
+                recommendList.put(visitor, 0);
         }
         return recommendList;
     }
 
     private static void setPoint(String user, Map<String, Integer> recommendList, List<String> friendList,
                                  List<List<String>> friends, List<String> visitors) {
-        List<String> friend;
-
-        for (int i = 0; i < friends.size(); i++) {
-            friend = friends.get(i);
+        for (List<String> friend : friends) {
             if (friend.get(0).equals(user) || friend.get(1).equals(user))
                 continue;
-            if (checkFriend(friend.get(0), friendList) == false && checkFriend(friend.get(1), friendList) == true)
+            if (!checkFriend(friend.get(0), friendList) && checkFriend(friend.get(1), friendList))
                 recommendList.put(friend.get(0), recommendList.get(friend.get(0)) + 10);
-            else if (checkFriend(friend.get(1), friendList) == false && checkFriend(friend.get(0), friendList) == true)
+            else if (!checkFriend(friend.get(1), friendList) && checkFriend(friend.get(0), friendList))
                 recommendList.put(friend.get(1), recommendList.get(friend.get(1)) + 10);
         }
-        for (int i = 0; i < visitors.size(); i++) {
-            if (checkFriend(visitors.get(i), friendList) == false)
-                recommendList.put(visitors.get(i), recommendList.get(visitors.get(i)) + 1);
+        for (String visitor : visitors) {
+            if (!checkFriend(visitor, friendList))
+                recommendList.put(visitor, recommendList.get(visitor) + 1);
         }
     }
 
@@ -86,13 +85,10 @@ public class Problem7 {
         List<Map.Entry<String, Integer>> entries = new ArrayList<>(recommendList.entrySet());
         Map<String, Integer> sorted = new LinkedHashMap<>();
 
-        Collections.sort(entries, new Comparator<>() {
-            @Override
-            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
-                if (o2.getValue().compareTo(o1.getValue()) == 0)
-                    return o1.getKey().compareTo(o2.getKey());
-                return o2.getValue().compareTo(o1.getValue());
-            }
+        entries.sort((o1, o2) -> {
+            if (o2.getValue().compareTo(o1.getValue()) == 0)
+                return o1.getKey().compareTo(o2.getKey());
+            return o2.getValue().compareTo(o1.getValue());
         });
         for (Map.Entry<String, Integer> entry : entries)
             sorted.put(entry.getKey(), entry.getValue());
