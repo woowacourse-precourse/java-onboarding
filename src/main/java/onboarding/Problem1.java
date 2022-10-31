@@ -8,7 +8,6 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         if (pageException(pobi, crong) == -1) {
-            // System.out.println(-1);
             return -1;
         }
         User Pobi = new User(pobi);
@@ -18,16 +17,12 @@ class Problem1 {
     }
 
     public static int pageException(List<Integer> usr1, List<Integer> usr2) {
-        //pageException()
-        //예외 처리 3. 1~400 범위 안인가?
         if (pageInRange(usr1, usr2) == -1) {
             return -1;
         }
-        //예외 처리 1. 왼쪽 홀수, 오른쪽 짝수
         if (evenOddCheck(usr1, usr2) == -1) {
             return -1;
         }
-        //예외 처리 2.  오른쪽 = 왼쪽 + 1.
         if (pagesInPair(usr1, usr2) == -1) {
             return -1;
         }
