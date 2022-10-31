@@ -37,5 +37,13 @@ public class Problem6 {
 			return nicknamePieces;
 		}
 
+		private boolean isNicknameSimilarWith(ArrayList<String> nicknamePieces) {
+			for (String nicknamePiece : nicknamePieces) {
+				if (nickname.contains(nicknamePiece)) {
+					return true;
+				}
+			}
+			return false;
+		}
 	}
 }
