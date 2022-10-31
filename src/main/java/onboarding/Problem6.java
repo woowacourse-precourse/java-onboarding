@@ -5,17 +5,10 @@ import java.util.*;
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         HashSet<String> answerSet = new HashSet<>();
-        HashMap<String, HashSet<String>> words = new HashMap<>();
+        HashMap<String, HashSet<String>> words;
 
         // 크루들 닉네임을 2글자씩 분리
-        for(List<String> form : forms) {
-            String email = form.get(0);
-            String name = form.get(1);
-            words.put(email, new HashSet<>());
-            for(int i = 0; i < name.length() - 1; i++) {
-                words.get(email).add(name.substring(i, i + 2));
-            }
-        }
+        words = spliteNamePerCrewLength2(forms);
 
         // 연속되는 글자가 있는지 확인
         for(int i = 0; i < forms.size() - 1; i++) {
@@ -35,6 +28,21 @@ public class Problem6 {
         List<String> answer = new ArrayList<>(answerSet);
         Collections.sort(answer);
         return answer;
+    }
+
+    private static HashMap<String, HashSet<String>> spliteNamePerCrewLength2(List<List<String>> forms) {
+        HashMap<String, HashSet<String>> words = new HashMap<>();
+
+        for(List<String> form : forms) {
+            String email = form.get(0);
+            String name = form.get(1);
+            words.put(email, new HashSet<>());
+            for(int i = 0; i < name.length() - 1; i++) {
+                words.get(email).add(name.substring(i, i + 2));
+            }
+        }
+
+        return words;
     }
 
     private static boolean isCommon(HashSet<String> set1, HashSet<String> set2) {
