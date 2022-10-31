@@ -5,7 +5,9 @@ import java.util.List;
 class Problem1 {
 
     // func : sum each digit
-
+    private static int getSum(int n){
+        return (n % 10) + (n % 100 - n % 10) + (n / 100);
+    }
     // func : multiple each digit
 
     // func : Get max number on page number
