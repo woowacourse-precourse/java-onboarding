@@ -27,7 +27,7 @@ class Problem1 {
         String toString = String.valueOf(page);
         int add = 0;
         int multi = 1;
-        for(int i=0; i<toString.length(); i++) {
+        for(int i = 0; i < toString.length(); i++) {
             add += Character.getNumericValue(toString.charAt(i));
             multi *= Character.getNumericValue(toString.charAt(i));
         }
@@ -50,7 +50,7 @@ class Problem1 {
 
     public static int[] changeArr(List<Integer> list) {
         int[] arr = new int[2];
-        for(int i=0; i<2; i++) {
+        for(int i = 0; i < 2; i++) {
             arr[i] = list.get(i);
         }
         return arr;
