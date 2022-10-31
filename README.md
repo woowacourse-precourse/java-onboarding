@@ -15,6 +15,10 @@
    
 
 3. Problem 3
+   - [ ] number 내에 3 혹은 6 혹은 9가 존재하는지 확인하는 기능
+   - [ ] 전체 손뼉 횟수를 계산하는 기능
+
+
 4. Problem 4 
 5. Problem 5 
 6. Problem 6
