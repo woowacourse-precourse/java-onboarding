@@ -32,6 +32,7 @@ public class Problem7 {
         currentFriends = new HashMap<>();
 
         scoreBySameFriend(user, friends); // 겹치는 친구를 기준으로 점수를 세는 기능
+        scoreByVisitHistory(user, visitors); // 방문 기록을 기준으로 점수를 세는 기능
 
         return null;
     }
@@ -85,6 +86,24 @@ public class Problem7 {
             }
 
             scores.put(another, scores.getOrDefault(another, 0) + cnt*10);
+        }
+    }
+
+    /**
+     * DESCRIPTION
+     *   user의 SNS 방문 기록 1번당 1점을 부여한 점수를 저장하는 기능
+     *
+     * Params
+     *   user - 추천 친구 찾기 기능을 적용해야하는 user
+     *   visitors - user의 SNS를 방문한 친구들의 이름이 적힌 list
+     *
+     * RETURN
+     *   없음
+     */
+    public static void scoreByVisitHistory(String user, List<String> visitors){
+        for(String visitor : visitors) {
+            if(!currentFriends.get(user).contains(visitor)) // 이미 친구이면 카운팅 안함
+                scores.put(visitor, scores.getOrDefault(visitor, 0) + 1);
         }
     }
 }
