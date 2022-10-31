@@ -7,6 +7,12 @@ public class Problem4 {
     public static String solution(String word) {
         List<Character> contraryAlphabetArray = new ArrayList<>();
         String answer = "";
+
+        for (int i = 0; i < word.length(); i++){
+            char character = word.charAt(i);
+            answer += contraryAlphabet(character);
+        }
+
         return answer;
     }
     public static char contraryAlphabet(char word) {
