@@ -24,7 +24,7 @@ class Problem1 {
         playerCrong.setPage(crong);
 
         PageGame pageGame = new PageGame();
-        return pageGame.play(pobi, crong);
+        return pageGame.play(playerPobi, playerCrong);
     }
 
 }
@@ -56,15 +56,23 @@ class Player {
 
     private boolean isWrongInput() {
 
-        if (leftPage % 2 != 1 || rightPage + 1  != leftPage || leftPage <= 1 || rightPage >= 400) {
+        if (leftPage % 2 != 1 || leftPage + 1  != rightPage || leftPage <= 1 || rightPage >= 400) {
             return true;
         }
 
         return false;
     }
 
-    public boolean ready() {
-        return pageStatus;
+    public boolean notReady() {
+        return !pageStatus;
+    }
+
+    public int getLeftPage() {
+        return leftPage;
+    }
+
+    public int getRightPage() {
+        return rightPage;
     }
 }
 class PageGame {
@@ -75,25 +83,29 @@ class PageGame {
 
     public int play(Player player1, Player player2) {
 
-        if (!player1.ready() || !player2.ready()) {
+        if (player1.notReady() || player2.notReady()) {
             return WRONG_INPUT;
         }
 
-        return getGameResult(getScore(player1), getScore(player2));
+        int player1Score = getScore(player1);
+        int player2Score = getScore(player2);
+
+        return getGameResult(player1Score, player2Score);
     }
 
 
-    private int getScore(List<Integer> pages) {
+    private int getScore(Player player) {
+        int leftPageMaxScore = getMaxScoreOnEachPage(player.getLeftPage());
+        int rightPageMaxScore = getMaxScoreOnEachPage(player.getRightPage());
 
-        int leftPage = pages.get(0);
-        int rightPage = pages.get(1);
-
-        return Math.max(getMaxScoreOnEachPage(leftPage), getMaxScoreOnEachPage(rightPage));
+        return Math.max(leftPageMaxScore, rightPageMaxScore);
     }
 
     private int getMaxScoreOnEachPage(int page) {
+        int sumScore = getScoreBySumAllDigits(page);
+        int mulScore = getScoreByMulAllDigits(page);
 
-        return Math.max(getScoreBySumAllDigits(page), getScoreByMulAllDigits(page));
+        return Math.max(sumScore, mulScore);
     }
 
     private int getScoreBySumAllDigits(int page) {
@@ -122,13 +134,13 @@ class PageGame {
         return score;
     }
 
-    private int getGameResult(int pobiScore, int crongScore) {
+    private int getGameResult(int player1Score, int player2Score) {
 
-        if (pobiScore > crongScore) {
+        if (player1Score > player2Score) {
             return POBI_WIN;
         }
 
-        if (pobiScore < crongScore) {
+        if (player1Score < player2Score) {
             return CRONG_WIN;
         }
 
