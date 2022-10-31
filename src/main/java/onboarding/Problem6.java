@@ -9,6 +9,20 @@ public class Problem6 {
         List<String> answer = List.of("answer");
         return answer;
     }
+    private static Set<String> getDuplicateFragments(List<String> words) {
+        Set<String> existingFragments = new HashSet<>();
+        Set<String> duplicateFragments = new HashSet<>();
+        for (String word : words) {
+            for (String fragment: toFragments(word)) {
+                if (existingFragments.contains(fragment)) {
+                    duplicateFragments.add(fragment);
+                } else {
+                    existingFragments.add(fragment);
+                }
+            }
+        }
+        return duplicateFragments;
+    }
     private static Set<String> toFragments(String word) {
         Set<String> fragments = new HashSet<>();
         for (int i = 1; i < word.length(); i++) {
