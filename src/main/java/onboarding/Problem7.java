@@ -41,4 +41,16 @@ public class Problem7 {
         }
         return friendsMap;
     }
+
+    /**
+     * user의 친구와 user friendsMap에서 제거
+     */
+    private static Map<String,Integer> removeKnown(Map<String,Integer> friendsMap, List<String> userFriendList, String user){
+        friendsMap.remove(user);
+        for (String userFriend : userFriendList) {
+            friendsMap.remove(userFriend);
+        }
+        return friendsMap;
+    }
+
 }
