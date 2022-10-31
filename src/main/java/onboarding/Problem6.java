@@ -51,7 +51,7 @@ public class Problem6 {
 
         return allWords.entrySet().stream()
                 .filter(e -> e.getValue() >= 2)
-                .map(Map.Entry :: getKey)
+                .map(Map.Entry::getKey)
                 .collect(Collectors.toList());
     }
 
