@@ -14,7 +14,22 @@ public class Problem4 {
         String uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
         String lowercase = "abcdefghijklmnopqrstuvwxyz";
         String lowercaseReverse = "zyxwvutsrqponmlkjihgfedcba";
-        
+
+        Map uppercaseMap = new HashMap();
+        Map lowercaseMap = new HashMap();
+
+        for(int i = 0, j = 0 ; i<uppercase.length();i++,j++){
+            char a = uppercaseReverse.charAt(i);
+            char b = uppercase.charAt(j);
+            uppercaseMap.put(a,b);
+        }
+
+        for(int i = 0, j = 0 ; i<uppercase.length();i++,j++){
+            char a = lowercaseReverse.charAt(i);
+            char b = lowercase.charAt(j);
+            lowercaseMap.put(a,b);
+        }
+
         String answer ="";
         return answer;
     }
