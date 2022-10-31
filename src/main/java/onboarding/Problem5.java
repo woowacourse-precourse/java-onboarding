@@ -14,5 +14,14 @@ public class Problem5 {
             bank.put(money, 0);
         }
     }
+    private static void exchangeMoney(Integer money) {
+
+        for(Integer key: bank.keySet()) {
+
+            Integer count = (Integer)(money / key);
+            bank.put(key, count);
+            money -= (key * count);
+        }
+    }
 
 }
