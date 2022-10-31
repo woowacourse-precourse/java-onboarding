@@ -29,6 +29,14 @@ public class Problem2 {
             previous = now;
         }
 
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (int i = 0; i < cryptogram.length(); i++) {
+            if (!set.contains(i)) {
+                stringBuilder.append(cryptogram.charAt(i));
+            }
+        }
+
         return null;
     }
 }
