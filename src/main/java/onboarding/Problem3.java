@@ -5,7 +5,9 @@ import java.util.List;
 public class Problem3 {
     public static int solution(int number) {
         int answer = number;
-        return answer;
+        Game3 game3 = new Game3(answer);
+        return game3.gameResult();
+
     }
 }
 
@@ -55,5 +57,17 @@ class Number{
             specificNunber/=10;
         }
         return clapCount;
+    }
+}
+
+class Game3{
+    private Clap clap;
+
+    public Game3(int number){
+        clap=new Clap(number);
+    }
+
+    public int gameResult(){
+        return clap.sumClap();
     }
 }

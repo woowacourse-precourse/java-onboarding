@@ -24,4 +24,6 @@
 * Clap
     * 1 ~ 10,000까지의 number인지 validation하기
     * 한 number 을 자릿수 단위로 쪼개기
-    * 한 number의 자릿수 단위에 3,6,9가 들어가 있으면 손뼉
+    * 1 ~ numbers까지의 총 clap수 구하기
+* Number
+  * 한 number의 자릿수 단위에 3,6,9가 들어가 있으면 손뼉치기
