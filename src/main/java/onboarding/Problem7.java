@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -64,5 +65,25 @@ public class Problem7 {
         }
 
         return result;
+    }
+
+    // 정렬 : 점수가 가장 높은 순으로 정렬, 점수가 같으면 이름순으로 정렬
+    private static List<Friend> sortList(List<Friend> result) {
+
+        // 정렬 : 점수가 높은 순으로 하되, 점수가 같으면 이름 순으로 정렬
+        Collections.sort(result, new Comparator<Friend>() {
+            public int compare(Friend s1, Friend s2) {
+                if(s1.getScore() < s2.getScore()) {
+                    return 1;
+                }
+                if(s1.getScore() > s2.getScore()) {
+                    return -1;
+                }
+                return s1.getName().compareTo(s2.getName());
+            }
+        });
+
+        return result;
+
     }
 }
