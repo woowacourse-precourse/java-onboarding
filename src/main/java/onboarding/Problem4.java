@@ -28,6 +28,29 @@ class Word {
             throw new IllegalStateException(NOT_ALLOWED_OVER_MAX_LENGTH);
         }
     }
+    private char[] toArray() {
+        return letters.toCharArray();
+    }
+}
+
+class Result {
+    private char[] wordArray;
+
+    public Result(char[] wordArray) {
+        this.wordArray = wordArray;
+    }
+
+    public void changeUpperAndLower(){
+        for(char wordChar:wordArray){
+            isUpperCase(wordChar);
+        }
+    }
+
+    public boolean isUpperCase(char wordChar){
+        return Character.isUpperCase(wordChar);
+    }
+
+
 }
 
 
