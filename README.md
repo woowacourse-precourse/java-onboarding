@@ -148,4 +148,3 @@ BUILD SUCCESSFUL in 0s
 |  7.1.2 | 주어진 두 유저가 서로 친구인지를 출력 | Problem7.socialGraph.areFriend | 
 |  7.1.3 | 출력값 요구사항 2: 주어진 유저들의 목록을 이름순으로 출력 | Problem7.socialGraph.users | 
 |  7.1.2 | 주어진 유저들의 목록의 길이를 출력 | Problem7.socialGraph.usersLength | 
-|  7.2 | 출력값 요구사항 1: 추천 점수 Descending Order로 유저들의 목록을 출력  | Problem7.makeUserListByRecomandation | 

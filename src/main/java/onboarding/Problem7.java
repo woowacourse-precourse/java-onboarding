@@ -44,7 +44,8 @@ public class Problem7 {
     private static class SocialGraph {
         private List<Entry> orderedList = new ArrayList<>();
         private boolean[][] isConnected;
-        public SocialGraph(List<List<String>> friends, List<String> visitors) {
+
+        private void _initializeOrderedList (List<List<String>> friends, List<String> visitors){
             for(int i = 0; i < friends.size(); i++) {
                 String usernameA = friends.get(i).get(0);
                 String usernameB = friends.get(i).get(1);
@@ -54,6 +55,7 @@ public class Problem7 {
 
                 if (!orderedList.contains(userA)) orderedList.add(userA);
                 if (!orderedList.contains(userB)) orderedList.add(userB);
+
             }
 
             for( String username : visitors){
@@ -61,6 +63,9 @@ public class Problem7 {
                 if(!orderedList.contains(userEntry)) orderedList.add(userEntry);
             }
             Collections.sort(orderedList);
+
+        }
+        private void _makeConnectionMap (List<List<String>> friends){
             int n = orderedList.size();
             isConnected = new boolean[n][n];
 
@@ -74,9 +79,14 @@ public class Problem7 {
                 int a = orderedList.indexOf(userA);
                 int b = orderedList.indexOf(userB);
 
-                 isConnected[a][b] = true;
-                 isConnected[b][a] = true;
+                isConnected[a][b] = true;
+                isConnected[b][a] = true;
             }
+        }
+
+        public SocialGraph(List<List<String>> friends, List<String> visitors) {
+            _initializeOrderedList(friends,visitors);
+            _makeConnectionMap(friends);
         }
 
         private int findIndex(String username){
