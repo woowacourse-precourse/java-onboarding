@@ -15,5 +15,10 @@ public class Problem2 {
 			}
 			stack.push(cryptogram.charAt(i));
 		}
+		StringBuilder sb = new StringBuilder();
+		for (Character c : stack) {
+			sb.append(c);
+		}
+		return sb.toString();
 	}
 }
