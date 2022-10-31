@@ -1,46 +1,70 @@
+/**
+* 클래스 이름
+* - 문제 1
+*
+* 버전정보
+* - openjdk version "11.0.15"
+*
+* 날짜
+* - 2022-10-31
+*
+*/
+
 package onboarding;
 
 import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-
         try{
-            // 예외 처리
-            if (pobi.get(0) + 1 != pobi.get(1)) {
-                throw new Exception();
-            }
-            if (crong.get(0) + 1 != crong.get(1)) {
-                throw new Exception();
-            }
+            /* 예외 처리 */
+            processException(pobi, crong);
 
-            int pobiMaxResult = 0;
-            for(int i=0;i<pobi.size();i++){
-                Integer num = pobi.get(i);
-                int sum = sumNumberOfDigits(num);
-                int mul = mulNumberOfDigits(num);
-                pobiMaxResult = Math.max(pobiMaxResult, sum);
-                pobiMaxResult = Math.max(pobiMaxResult, mul);
-            }
-            int crongMaxResult = 0;
-            for(int i=0;i<crong.size();i++){
-                Integer num = crong.get(i);
-                int sum = sumNumberOfDigits(num);
-                int mul = mulNumberOfDigits(num);
-                crongMaxResult = Math.max(crongMaxResult, sum);
-                crongMaxResult = Math.max(crongMaxResult, mul);
-            }
+            int pobiMaxResult = getMaxResult(pobi);
+            int crongMaxResult = getMaxResult(crong);
+
+            // 포비승리
             if(pobiMaxResult>crongMaxResult) return 1;
+            // 크롱승리
             else if (pobiMaxResult<crongMaxResult) return 2;
+            // 무승부
             else return 0;
         } catch (Exception exception){
             return -1;
         }
-
-
     }
 
+    private static void processException(List<Integer> pobi, List<Integer> crong) throws Exception {
+        // 책 페이지가 연속되지 않은 경우
+        if (pobi.get(0) + 1 != pobi.get(1) && pobi.get(1) + 1 != pobi.get(0)) {
+            throw new Exception();
+        }
+        if (crong.get(0) + 1 != crong.get(1) && pobi.get(1) + 1 != pobi.get(0)) {
+            throw new Exception();
+        }
+        // 시작 면이나 마지막 면이 나오는 경우
+        if (pobi.get(0) == 0 || pobi.get(1) == 0) {
+            throw new Exception();
+        }
+        if (crong.get(0) == 0 || crong.get(1) == 0) {
+            throw new Exception();
+        }
+    }
+
+    // 가장 큰 수 구하는 메소드 (규칙 2, 3, 4)
+    private static int getMaxResult(List<Integer> person) {
+        int result = 0;
+
+        for (Integer num : person) {
+            int sum = sumNumberOfDigits(num);
+            int mul = mulNumberOfDigits(num);
+            result = Math.max(result, sum);
+            result = Math.max(result, mul);
+        }
+        return result;
+    }
+
+    // 각 자리수 모두 더하는 메소드
     private static int sumNumberOfDigits(Integer number) {
         int result = 0;
         while(number != 0){
@@ -49,6 +73,7 @@ class Problem1 {
         }
         return result;
     }
+    // 각 자리수 모두 곱하는 메소드
     private static int mulNumberOfDigits(Integer number) {
         int result = 1;
         while(number != 0){
