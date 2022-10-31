@@ -12,15 +12,10 @@ public class Problem2 {
         String cryptoCleared = "";
         boolean flagDupli = true;
         int idxCrypto = 0;
-        System.out.println("HEllo1");
 
-        for(int i = idxCrypto; i < cryptogram.length()-1; i++) {
-
-            if (cryptogram.charAt(i) == cryptogram.charAt(i + 1)) {
-                flagDupli = true;
-                System.out.println("HEllo2");
-
-            }
+        for(int i = idxCrypto; i < cryptogram.length(); i++)
+        {
+            System.out.print(cryptogram.charAt(i));
         }
 
 
