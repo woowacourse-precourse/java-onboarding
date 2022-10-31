@@ -122,6 +122,12 @@ public class Problem7{
         }
     }
 
+    public static void sortRecommendList(List<RecommendScore> allfriends){
+        //Comparator<RecommendScore> reverse = Comparator.comparing(RecommendScore::getName);
+        allfriends.sort(Comparator.comparing(RecommendScore::getScore).reversed().thenComparing(RecommendScore::getName));
+
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
 
@@ -129,6 +135,7 @@ public class Problem7{
         List<String> friendList = friendsKnowTogether(user, friends, allList);
         visitorsScore(visitors, allList);
         deleteFriends(friendList, allList);
+        sortRecommendList(allList);
 
         return answer;
     }
