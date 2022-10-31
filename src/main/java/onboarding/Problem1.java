@@ -30,6 +30,15 @@ class Problem1 {
         return result;
     }
 
+    static int calculateMulti(int number) {
+        int result = 1;
+        while(number > 0){
+            result *= number % 10;
+            number = number / 10;
+        }
+        return result;
+    }
+
     static boolean exceptionCheck(List<Integer> list) {
         int left = list.get(0);
         int right = list.get(1);
