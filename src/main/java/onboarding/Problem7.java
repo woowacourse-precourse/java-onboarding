@@ -42,17 +42,32 @@ public class Problem7 {
         return result;
     }
 
-    private static void setFriendsScore(String user, Map<String, Set<String>> friendsMap , Map<String , Integer> recommendScoreMap){
+    private static void setFriendsScore(String user, Map<String, Set<String>> friendsMap , Map<String , Integer> recommendScoreMap) {
         friendsMap.get(user).forEach(friend -> {
-            friendsMap.get(friend).forEach(friendsfriend -> {
-                addScore(friendsfriend, 10, recommendScoreMap);
+            friendsMap.get(friend).forEach(friendsFriend -> {
+                addScore(friendsFriend, 10, recommendScoreMap);
             });
         });
     }
 
-    private static void setVisitorScore(List<String > visitors, Map<String, Integer> recommendScoreMap){
+    private static void setVisitorScore(List<String > visitors, Map<String, Integer> recommendScoreMap) {
         visitors.forEach(visitor -> {
             addScore(visitor, 1, recommendScoreMap);
+        });
+    }
+
+    private static void addScore(String recommendUser, int score, Map<String , Integer> recommendScoreMap) {
+        recommendScoreMap.put(
+                recommendUser,
+                recommendScoreMap.get(recommendUser) != null ? recommendScoreMap.get(recommendUser) + score : score
+        );
+    }
+
+    private static void deleteUserFriends(String user, Map<String, Set<String>> friendsMap, Map<String, Integer> recommendScoreMap) {
+        recommendScoreMap.remove(user);
+        // 이미 등록된 친구는 추천 대상에서 제외
+        friendsMap.get(user).forEach(friend -> {
+            recommendScoreMap.remove(friend);
         });
     }
 }
