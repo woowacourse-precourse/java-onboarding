@@ -28,6 +28,10 @@
 
 ## 기능 구현 목록
 
+- checkException(String cryptogram)
+  - 문자열의 예외를 검사하는 기능
+- isLowerCaseString(String cryptogram)
+  - 문자열이 소문자로 이루어져있으면 true 반환
 - isValidLengthStringException(String cryptogram)
   - 문자열의 길이가 유효하면 true 반환
 - isLengthZero(String cryptogram)
