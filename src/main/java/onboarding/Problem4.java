@@ -15,14 +15,17 @@ public class Problem4 {
         String result="";
         for(int i=0; i<word.length(); i++){
             char charWord = word.charAt(i);
-            if(Character.isUpperCase(charWord)) {
-                result += (char) (maxUpperAscii -((charWord)-minUpperAscii));
-            }
-            else if(Character.isLowerCase(charWord)){
-                result += (char) (maxLowerAscii -((charWord)-minLowerAscii));
+            if((charWord<=90 && charWord>=65) || (charWord<=122 && charWord>=97)) {
+                if (Character.isUpperCase(charWord)) {
+                    result += (char) (maxUpperAscii - ((charWord) - minUpperAscii));
+                } else if (Character.isLowerCase(charWord)) {
+                    result += (char) (maxLowerAscii - ((charWord) - minLowerAscii));
+                } else {
+                    result += " ";
+                }
             }
             else{
-                result +=" ";
+                result += charWord;
             }
         }
         return result;
