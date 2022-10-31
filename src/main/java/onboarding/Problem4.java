@@ -2,12 +2,12 @@ package onboarding;
 
 public class Problem4 {
 
-	public static final int asciiCapitalA = 65;
-	public static final int asciiCapitalZ = 90;
-	public static final int asciiLowerCaseA = 97;
-	public static final int asciiLowerCaseZ = 122;
-	public static final int asciiCapitalCalculationNumber = 155;
-	public static final int asciiLowerCaseCalculationNumber = 219;
+	public static final int ASCII_CAPITAL_A = 65;
+	public static final int ASCII_CAPITAL_Z = 90;
+	public static final int ASCII_LOWER_CASE_A = 97;
+	public static final int ASCII_LOWER_CASE_Z = 122;
+	public static final int ASCII_CAPITAL_CALCULATION_NUMBER = 155;
+	public static final int ASCII_LOWER_CASE_CALCULATION_NUMBER = 219;
 
 	public static String solution(String word) {
 
@@ -28,12 +28,12 @@ public class Problem4 {
 
 		int reversedAscii = ascii;
 
-		if (ascii >= asciiCapitalA && ascii <= asciiCapitalZ) {
-			reversedAscii = asciiCapitalCalculationNumber - ascii;
+		if (ascii >= ASCII_CAPITAL_A && ascii <= ASCII_CAPITAL_Z) {
+			reversedAscii = ASCII_CAPITAL_CALCULATION_NUMBER - ascii;
 		}
 
-		if (ascii >= asciiLowerCaseA && ascii <= asciiLowerCaseZ) {
-			reversedAscii = asciiLowerCaseCalculationNumber - ascii;
+		if (ascii >= ASCII_LOWER_CASE_A && ascii <= ASCII_LOWER_CASE_Z) {
+			reversedAscii = ASCII_LOWER_CASE_CALCULATION_NUMBER - ascii;
 		}
 
 		return (Character) (char) reversedAscii;
