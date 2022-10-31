@@ -4,8 +4,6 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-
         Map<String, ArrayList<String>> friend_link = new HashMap<>();
 
         for(List<String> friend : friends){
@@ -46,6 +44,16 @@ public class Problem7 {
             friends_ordered_by_score.get(score).add(friend);
         }
 
+        List<String> answer = new ArrayList<>();
+        for(int same_score_friends : friends_ordered_by_score.keySet()){
+            List<String> same_score_friends_list = friends_ordered_by_score.get(same_score_friends);
+            Collections.sort(same_score_friends_list);
+            for(String string : same_score_friends_list){
+                if(answer.size() >= 5)
+                    break;
+                answer.add(string);
+            }
+        }
 
         return answer;
     }
