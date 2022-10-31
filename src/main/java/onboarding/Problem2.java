@@ -1,9 +1,5 @@
 package onboarding;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = decodeCryptogram(cryptogram);
