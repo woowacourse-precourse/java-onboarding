@@ -17,6 +17,9 @@ public class Problem7 {
         // visitors에 있는 사람들 1점씩 점수 추가
         addVisitorsScore(visitors, recommendFds);
 
+        // user, user의 친구, 점수가 0점인 사람 제거
+        removeScore(user, alreadyFds, recommendFds);
+
         return answer;
     }
 
@@ -62,5 +65,20 @@ public class Problem7 {
         for (String visitor : visitors) {
             recommendFds.put(visitor, recommendFds.get(visitor) + 1);
         }
+    }
+
+    public static void removeScore(String user, Set<String> alreadyFds, HashMap<String, Integer> recommendFds) {
+        // 사용자 제거
+        recommendFds.remove(user);
+
+        // 사용자의 친구 제거
+        for (String fd : alreadyFds) recommendFds.remove(fd);
+
+        // 점수가 0점인 사람 제거
+        List<String> keys = new ArrayList<>();
+        for (Map.Entry<String, Integer> entry : recommendFds.entrySet()) {
+            if (recommendFds.get(entry.getKey()) == 0) keys.add(entry.getKey());
+        }
+        for (String key : keys) recommendFds.remove(key);
     }
 }
