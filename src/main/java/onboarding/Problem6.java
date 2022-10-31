@@ -37,8 +37,7 @@ public class Problem6 {
     }
 
     private static void initCrewInfoMap(List<List<String>> crewForms) {
-        crewForms.stream()
-                .forEach(crewInfo -> {
+        crewForms.forEach(crewInfo -> {
                     String crewNickname = crewInfo.get(CREW_NICKNAME_INDEX);
                     String crewEmail = crewInfo.get(CREW_EMAIL_INDEX);
                     crewInfoMap.put(crewNickname, crewEmail);
@@ -100,8 +99,7 @@ public class Problem6 {
         if(!validateNumberOfCrew(crewForms)) {
             throw new IllegalArgumentException(EXCEPTION_MESSAGE_PREFIX + WRONG_NUMBER_OF_CREW_EXCEPTION_MESSAGE);
         }
-        crewForms.stream()
-                .forEach(crewForm -> {
+        crewForms.forEach(crewForm -> {
                     String crewEmail = crewForm.get(0);
                     String crewNickname = crewForm.get(1);
                     if(!validateEmailType(crewEmail)) {
