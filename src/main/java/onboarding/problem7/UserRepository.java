@@ -1,7 +1,6 @@
 package onboarding.problem7;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class UserRepository {
     private final Map<String, User> users = new HashMap<>();

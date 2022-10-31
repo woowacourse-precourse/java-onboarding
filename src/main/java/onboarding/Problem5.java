@@ -2,7 +2,6 @@ package onboarding;
 
 import onboarding.problem5.Changes;
 
-import java.util.Collections;
 import java.util.List;
 
 public class Problem5 {

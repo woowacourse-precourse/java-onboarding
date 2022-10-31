@@ -1,7 +1,5 @@
 package onboarding.problem1;
 
-import java.util.List;
-
 public abstract class Page {
     private PageNumber pageNumber;
 

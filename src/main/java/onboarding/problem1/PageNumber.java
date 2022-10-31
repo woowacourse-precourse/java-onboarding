@@ -1,9 +1,7 @@
 package onboarding.problem1;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.IntStream;
 
 public class PageNumber {
     public static String PAGE_NUMBER_IS_LESS_THAN_MIN_NUMBER = "[ERROR] 페이지 번호가 1이거나 1보다 작은 값입니다.";
@@ -13,7 +11,7 @@ public class PageNumber {
     private static final Integer MIN_NUMBER = 1;
     // 책 페이지는 400 그리고 그보다 큰 수를 가질 수 없습니다.
     private static final Integer MAX_NUMBER = 400;
-    
+
     private Integer sum;
     private Integer multiple;
 

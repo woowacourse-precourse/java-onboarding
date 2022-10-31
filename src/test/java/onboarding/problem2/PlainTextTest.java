@@ -5,10 +5,6 @@ import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
 
-import java.util.Stack;
-
-import static org.junit.jupiter.api.Assertions.*;
-
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class PlainTextTest {
 
@@ -24,7 +20,6 @@ class PlainTextTest {
     @Test
     void 연속하는_문자열에서_특별한경우(){
         String test ="abbbbbabbbbbcdddddebbbbbfggggggggggggggggopppppp";
-        //
         Assertions.assertThat(PlainText.decodeCipherText(test)).isEqualTo("cefo");
     }
     @Test

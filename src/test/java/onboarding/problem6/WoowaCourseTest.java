@@ -1,7 +1,6 @@
 package onboarding.problem6;
 
 import org.assertj.core.api.Assertions;
-import org.assertj.core.internal.Lists;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
