@@ -21,3 +21,8 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능 목록
+
+1. 길이가 2이상인 닉네임에 대해 길이가 2인 모든 연속된 부분 문자열을 key, 이메일 List를 value로 Map을 구성한다.
+2. 1에서 구성한 Map에서 이메일 List의 size가 2이상인 List의 원소를 TreeSet에 삽입하고 List로 반환한다.
