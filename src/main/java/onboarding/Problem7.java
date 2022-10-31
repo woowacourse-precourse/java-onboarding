@@ -5,20 +5,17 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Problem7 {
+    private static final int NUMBER_OF_OUTPUT = 5;
     private static TreeMap<String, Integer> friendsScore = new TreeMap<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer;
         List<String> userFriends;
-
         initFriendsScore();
 
         userFriends = getUserFriends(user, friends);
-
         scoringFriend(user, userFriends, friends);
-
         scoringVisitor(userFriends, visitors);
-
         answer = sortByScore();
 
         return answer;
@@ -112,7 +109,7 @@ public class Problem7 {
         for (String key : keySet) {
             topFiveUser.add(key);
 
-            if (topFiveUser.size() == 5) {
+            if (topFiveUser.size() == NUMBER_OF_OUTPUT) {
                 break;
             }
         }
