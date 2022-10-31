@@ -52,8 +52,30 @@ class Problem1 {
         return Math.max(getPageMaxResult(leftPage), getPageMaxResult(rightPage));
     }
 
+    // 페이지 번호 게임의 결과 도출
+    public static int getAnswer(Integer pobiLeftPage, Integer pobiRightPage, Integer crongLeftPage, Integer crongRightPage) {
+        int pobiResult = getMaxResult(pobiLeftPage, pobiRightPage);
+        int crongResult = getMaxResult(crongLeftPage, crongRightPage);
+
+        if (pobiResult > crongResult) {
+            return 1;
+        } else if (pobiResult < crongResult) {
+            return 2;
+        } else {
+            return 0;
+        }
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        Integer pobiLeftPage = pobi.get(0);
+        Integer pobiRightPage = pobi.get(1);
+        Integer crongLeftPage = crong.get(0);
+        Integer crongRightPage = crong.get(1);
+
+        if (checkException(pobiLeftPage, pobiRightPage) || checkException(crongLeftPage, crongRightPage)) {
+            return -1;
+        }
+
+        return getAnswer(pobiLeftPage, pobiRightPage, crongLeftPage, crongRightPage);
     }
 }
