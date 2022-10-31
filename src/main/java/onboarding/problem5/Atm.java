@@ -3,8 +3,6 @@ package onboarding.problem5;
 import java.util.ArrayList;
 import java.util.List;
 
-import static onboarding.problem5.MoneyValidator.*;
-
 public class Atm {
 
     private final ChangesList changesList;
@@ -14,7 +12,6 @@ public class Atm {
     }
 
     public List<Integer> withdraw(int money) {
-        validateMoney(money);
         return getChanges(money);
     }
 
