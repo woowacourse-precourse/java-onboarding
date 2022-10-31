@@ -16,6 +16,25 @@ class Problem1 {
     }
 
     /**
+     * 두 참가자의 승자 가리기
+     * @param pobi 포비의 페이지 정보
+     * @param crong 크롱의 페이지 정보
+     * @return 결과
+     */
+    private static int getResult(List<Integer> pobi, List<Integer> crong) {
+        int pobiNumber = getBiggerNumberAtPages(pobi);
+        int crongNumber = getBiggerNumberAtPages(crong);
+        int compareTwoNumbers = Integer.compare(pobiNumber, crongNumber);
+
+        switch (compareTwoNumbers) {
+            case -1: return WIN_CRONG;
+            case 0: return DRAW;
+            case 1: return WIN_POBI;
+            default: return EXCEPTION;
+        }
+    }
+
+    /**
      * 페이지 정보를 기반으로 계산된 2개의 수를 비교
      * @param pages 페이지 정보
      * @return 두 페이지 중 가장 큰 수
