@@ -184,8 +184,39 @@ public class Problem6 {
         return result;
     }
 
-    private static void addEmailsByNickname(List<String> form, HashMap<String, HashSet<String>> twoCharNicknames){
-        return;
+    /**
+     * 닉네임을 두 글자씩마다 해당 유저의 이메일을 추가합니다.
+     *
+     * @param form 닉네임 신청서입니다.
+     * @param twoCharNicknames 닉네임 조합마다 유저 이메일을 추가할 해시맵입니다.
+     */
+    private static void addEmailsByNickname(List<String> form,
+                                            HashMap<String, HashSet<String>> twoCharNicknames){
+        String email = form.get(0);
+        String nickname = form.get(1);
+
+        for (int i = 1; i < nickname.length(); i++) {
+            String nicknameCombination = nickname.substring(i-1, i+1);
+            addEmails(nicknameCombination, email, twoCharNicknames);
+        }
+    }
+
+    /**
+     * 닉네임 조합이 존재한다면 기존 해시셋에 추가를, 아니면 새로운 해시셋을 추가합니다.
+     *
+     * @param nicknameCombination 닉네임 두 글자 조합입니다.
+     * @param email 추가할 이메일입니다.
+     * @param twoCharNicknames 닉네임 조합마다 유저 이메일을 추가할 해시맵입니다.
+     */
+    private static void addEmails(String nicknameCombination,
+                                  String email,
+                                  HashMap<String, HashSet<String>> twoCharNicknames) {
+        if (twoCharNicknames.containsKey(nicknameCombination)) {
+            twoCharNicknames.get(nicknameCombination)
+                    .add(email);
+            return;
+        }
+        twoCharNicknames.put(nicknameCombination, new HashSet<>(Arrays.asList(email)));
     }
 
     private static void getEmailsByNickname(HashSet<String> nicknameUsers, HashSet<String> duplicateNicknameUser){
@@ -209,5 +240,15 @@ public class Problem6 {
         }
         List<String> answer = getDuplicateNicknameUsers(forms);
         return answer;
+    }
+
+    public static void main(String[] args) {
+        getDuplicateNicknameUsers(List.of(
+                List.of("jm@email.com", "제이엠"),
+                List.of("jason@email.com", "제이슨"),
+                List.of("woniee@email.com", "워니"),
+                List.of("mj@email.com", "엠제이"),
+                List.of("nowm@email.com", "이제엠")
+        ));
     }
 }

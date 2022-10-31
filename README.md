@@ -102,7 +102,7 @@
 - [X] getDuplicateNicknameUsers
 - 중복 닉네임을 가진 유저들의 이메일을 알려준다.
 - 원소 검색이 O(1)으로 이루어지는 해시맵을 사용해 검사한다.
-  - [ ] addEmailsByNickname
+  - [X] addEmailsByNickname
   - 각 유저의 닉네임을 두 글자씩 떼어서, 해당 조합을 사용하는 유저들의 수를 검사한다.
   - 닉네임 두 글자를 키로, 이메일은 그 안의 해시셋에 저장한다.
   - [ ] getEmailsByNickname
