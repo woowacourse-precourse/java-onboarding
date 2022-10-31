@@ -52,8 +52,8 @@ public class FindList {
 
         for (String ignored : userFriend) {
             friendOfFriend = elementOfFriends.stream()
-                    .filter(f -> ((!f.equals(user)) &&
-                            (!userFriend.contains(f) || !elementOfFriends.contains(f))))
+                    .filter(id -> ((!id.equals(user)) &&
+                            (!userFriend.contains(id) || !elementOfFriends.contains(id))))
                     .collect(Collectors.joining());
         }
 

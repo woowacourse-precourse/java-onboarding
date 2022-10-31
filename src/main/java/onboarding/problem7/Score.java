@@ -71,13 +71,13 @@ public class Score {
         int count = 0;
 
         for (List<String> friend : friends) {
-            count += isFriendIdExist(friendList, id, friend);
+            count += isFriendIdExist(friend, friendList, id);
         }
 
         return count;
     }
 
-    private static int isFriendIdExist(List<String> friendList, String id, List<String> friend) {
+    private static int isFriendIdExist(List<String> friend, List<String> friendList, String id) {
         boolean isIdExist = false;
 
         for (String friendId : friendList) {
@@ -91,7 +91,7 @@ public class Score {
         return 0;
     }
 
-    private static boolean getInteger(String id, List<String> friend, String s) {
-        return friend.contains(s) && friend.contains(id);
+    private static boolean getInteger(String id, List<String> friend, String friendId) {
+        return friend.contains(friendId) && friend.contains(id);
     }
 }
