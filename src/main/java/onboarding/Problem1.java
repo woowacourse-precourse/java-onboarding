@@ -35,6 +35,8 @@ class Problem1 {
         int rightPage = list.get(1);
         if(rightPage - leftPage != 1) return true;
         if(leftPage % 2 == 0 || rightPage % 2 == 1) return true;
+        if(leftPage < 1 || rightPage < 1) return true;
+        if(leftPage > 400 || rightPage > 400) return true;
         return false;
     }
 
