@@ -2,6 +2,8 @@ package problem7;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,18 +51,6 @@ public class UserTest {
         assertThat(userService.isFriend("shakevan", "mrko")).isTrue();
     }
 
-    private List<List<String>> createFriends() {
-        List<List<String>> friends = new ArrayList<>();
-        friends.add(List.of("donut", "andole"));
-        friends.add(List.of("donut", "jun"));
-        friends.add(List.of("donut", "mrko"));
-        friends.add(List.of("shakevan", "andole"));
-        friends.add(List.of("shakevan", "jun"));
-        friends.add(List.of("shakevan", "mrko"));
-
-        return friends;
-    }
-
     @Test
     void 디폴트_친구추천리스트_만들기() {
         userService.addFriends(createFriends());
@@ -98,5 +88,43 @@ public class UserTest {
         assertThat(andole.getScore()).isEqualTo(20);
         assertThat(jun.getScore()).isEqualTo(20);
         assertThat(bedi.getScore()).isEqualTo(3);
+    }
+
+    private List<List<String>> createFriends() {
+        List<List<String>> friends = new ArrayList<>();
+        friends.add(List.of("donut", "andole"));
+        friends.add(List.of("donut", "jun"));
+        friends.add(List.of("donut", "mrko"));
+        friends.add(List.of("shakevan", "andole"));
+        friends.add(List.of("shakevan", "jun"));
+        friends.add(List.of("shakevan", "mrko"));
+
+        return friends;
+    }
+
+    @CsvSource(value = {"0:andole:20", "1:jun:20", "2:pobi:10", "3:bedi:3", "4:anna:2"}, delimiter = ':')
+    @ParameterizedTest
+    void 점수가높은순_같으면이름순_최대5명선정(int index, String userId, int score) {
+        userService.addFriends(createFriends2());
+        List<FriendCommendResponseDto> result =
+                userService.operateFriendCommendation("mrko",
+                        List.of("bedi", "bedi", "donut", "bedi", "shakevan", "yuna", "anna", "anna"));
+
+        assertThat(result.get(index).getUserId()).isEqualTo(userId);
+        assertThat(result.get(index).getScore()).isEqualTo(score);
+    }
+
+    private List<List<String>> createFriends2() {
+        List<List<String>> friends = new ArrayList<>();
+        friends.add(List.of("donut", "jun"));
+        friends.add(List.of("donut", "andole"));
+        friends.add(List.of("donut", "mrko"));
+        friends.add(List.of("shakevan", "andole"));
+        friends.add(List.of("shakevan", "jun"));
+        friends.add(List.of("shakevan", "mrko"));
+        friends.add(List.of("pobi", "donut"));
+        friends.add(List.of("yuna", "andole"));
+
+        return friends;
     }
 }

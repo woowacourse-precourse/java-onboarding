@@ -1,9 +1,13 @@
 package problem7;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 import java.util.stream.Collectors;
+
+import static java.util.Map.Entry.comparingByKey;
 
 public class UserService {
 
@@ -13,6 +17,7 @@ public class UserService {
     public static final int VISITOR_DEFAULT_SCORE = 0;
     public static final int VISITOR_SCORE = 1;
     public static final int COMMON_FRIEND_SCORE = 10;
+    public static final int RESPONSE_MAX_SIZE = 5;
 
     private final UserRepository userRepository;
 
@@ -68,7 +73,7 @@ public class UserService {
     }
 
     public List<FriendCommendResponseDto> operateFriendCommendation(String userId, List<String> visitors) {
-        Map<String, Integer> commendFriend = new HashMap<>();
+        Map<String, Integer> commendFriend = new LinkedHashMap<>();
 
         List<String> candidateUserIds = operateFriendCommendation(userId);
         candidateUserIds.forEach(s -> commendFriend.put(s, INIT_SCORE));
@@ -77,7 +82,12 @@ public class UserService {
         scoreVisitors(visitors, commendFriend, user);
         scoreCommonFriend(commendFriend, user);
 
-        return createResponseDtos(commendFriend);
+        Set<Entry<String, Integer>> entries = commendFriend.entrySet();
+        return entries.stream()
+                .sorted(Entry.<String,Integer>comparingByValue().reversed().thenComparing(comparingByKey()))
+                .limit(RESPONSE_MAX_SIZE)
+                .map(entry -> new FriendCommendResponseDto(entry.getKey(), entry.getValue()))
+                .collect(Collectors.toList());
     }
 
     private void scoreVisitors(List<String> visitors, Map<String, Integer> commendFriend, User user) {
@@ -95,9 +105,4 @@ public class UserService {
         }
     }
 
-    private List<FriendCommendResponseDto> createResponseDtos(Map<String, Integer> commendFriend) {
-        return commendFriend.keySet().stream()
-                .map(id -> new FriendCommendResponseDto(id, commendFriend.get(id)))
-                .collect(Collectors.toList());
-    }
 }
