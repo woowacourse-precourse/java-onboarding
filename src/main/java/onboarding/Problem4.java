@@ -18,4 +18,16 @@ public class Problem4 {
         }
         return code;
     }
+
+    public static String wordTransform(Map<Character, Character> code, String word) {
+        String result = "";
+        for (int i = 0; i < word.length(); i++) {
+            if ((65 <= word.charAt(i) && word.charAt(i) <= 90) || (97 <= word.charAt(i) && word.charAt(i) <= 122)) {
+                result += code.get(word.charAt(i));
+            }else{
+                result += word.charAt(i);
+            }
+        }
+        return result;
+    }
 }
