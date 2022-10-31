@@ -36,8 +36,17 @@ public class Problem7 {
             else fscore.put(k,score + 10*common_friends(user,k));
         }
     }
+
+    public static void cal_visitor(String user, List<String> visitors){
+        for(String v: visitors){
+            if(friend_list.get(user).contains(v)) continue;
+            Integer score = fscore.get(v);
+            if(score == null) fscore.put(v,1);
+            else fscore.put(v,1 + score);
+        }
+    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<String>();
 
         //make friend list
         for(List<String>f : friends) {
@@ -46,6 +55,7 @@ public class Problem7 {
             friend_list.get(f2).add(f1);
         }
         cal_fscore(user);
+        cal_visitor(user, visitors);
 
         return answer;
     }
