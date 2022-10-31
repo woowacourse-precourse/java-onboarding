@@ -40,6 +40,10 @@ public class Problem7 {
             }
         }
 
+        // 추천 점수가 0점일 경우 삭제
+        boolean removed = friendWithUserDict.entrySet().removeIf(
+                entry -> entry.getValue().equals(0));
+
         // 해쉬맵을 value값으로 내림차순 정렬 후 return
         List<Map.Entry<String,Integer>> checkArr = new ArrayList<>(friendWithUserDict.entrySet());
         checkArr.sort(new Comparator<Map.Entry<String, Integer>>() {
