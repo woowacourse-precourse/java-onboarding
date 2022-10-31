@@ -258,19 +258,21 @@ class ApplicationTest {
         }
         @Test
         void totalTest() {
-        	String word = "Woo wA PreCOuRsE";
-        	String expected = "Dll dZ KivXLfIhV";
+        	String word = "Woo wA PreCOuRsEZ";
+        	String expected = "Dll dZ KivXLfIhVA";
         	assertThat(Problem4.solution(word)).isEqualTo(expected);
         }
         @Test
-        void convertCharReverseTest() {
-        	char[] lowerAlphabets = new char[26];
-        	for(int i=0; i<lowerAlphabets.length; i++) {
-        		lowerAlphabets[i] = (char)(97 + i);
-        	}
-        	System.out.println(Arrays.toString(lowerAlphabets));
-        	Problem4.convertCharArrReverse(lowerAlphabets);
-        	System.out.println(Arrays.toString(lowerAlphabets));
+        void execptionTest() {
+        	String word = "알파벳외의문자는변환하지않아요abcdeZYX-_~?!";
+        	String expected = "알파벳외의문자는변환하지않아요zyxwvABC-_~?!";
+        	assertThat(Problem4.solution(word)).isEqualTo(expected);
+        }
+        @Test
+        void totalTest2() {
+        	String word = "abcd ! efghij ? klmn 가 opqrstu 나 vwxyzABC 뷁 DEFGHI ~JKL^MNOPQRSTUVWXYZ";
+        	String expected = "zyxw ! vutsrq ? ponm 가 lkjihgf 나 edcbaZYX 뷁 WVUTSR ~QPO^NMLKJIHGFEDCBA";
+        	assertThat(Problem4.solution(word)).isEqualTo(expected);
         }
     }
 
