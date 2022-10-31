@@ -15,12 +15,17 @@ class Problem1 {
     public static boolean checkException(List<Integer> checkList){
         Integer leftNum = checkList.get(0)+1;
         Integer rightNum = checkList.get(1);
-        return checkSniffling(leftNum, rightNum) || checkRange(leftNum,rightNum);
+        return checkSniffling(leftNum, rightNum)
+                || checkRange(leftNum,rightNum)
+                || checkContinueNum(leftNum,rightNum);
     }
     public static boolean checkSniffling(Integer num1, Integer num2){
         return num1 % 2 != 0 || num2 % 2 != 0;
     }
     public static boolean checkRange(Integer num1, Integer num2){
         return num1 <=2 || num2 >=400;
+    }
+    public static boolean checkContinueNum(Integer num1,Integer num2){
+        return !num1.equals(num2);
     }
 }
