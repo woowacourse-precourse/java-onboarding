@@ -13,7 +13,7 @@ public class Problem3 {
 		return answer;
 	}
 
-	static int get369Number(int[] array) {
+	private static int get369Number(int[] array) {
 		int sum = 0;
 
 		for (int j : array) {
@@ -25,7 +25,7 @@ public class Problem3 {
 		return sum;
 	}
 
-	static boolean is369(int j) {
+	private static boolean is369(int j) {
 		return (j == 3) || (j == 6) || (j == 9);
 	}
 
