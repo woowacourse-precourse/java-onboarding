@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.Set;
 
 public class Problem7 {
@@ -23,6 +24,10 @@ public class Problem7 {
         //for debug
         System.out.println(mainUserFriends);
         System.out.println(remainUserAndFriends);
+        
+        increaseScoreMutualFriend();
+        //for debug
+        System.out.println(remainUserAndScore);
         
         return answer;
     }
@@ -50,5 +55,22 @@ public class Problem7 {
     			remainUserAndFriends.get(userB).add(userA);
     		}
     	}
+    }
+    public static void increaseScoreMutualFriend() {
+    	String name = null;
+    	List<String> friends = null;
+    	
+    	for(Entry<String, List<String>> friendship: remainUserAndFriends.entrySet()) {
+    		name = friendship.getKey();
+    		friends = friendship.getValue();
+    		for(String friend: friends) {
+    			if(mainUserFriends.contains(friend)) {
+    				increaseTen(name);
+    			}
+    		}
+    	}
+    }
+    public static void increaseTen(String name) {
+    	remainUserAndScore.put(name, remainUserAndScore.getOrDefault(name, 0) + 10);
     }
 }
