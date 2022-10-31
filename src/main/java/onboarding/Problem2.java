@@ -6,7 +6,6 @@ import java.util.Set;
 public class Problem2 {
 
     /**
-     *
      * @param cryptogram : 검사할 문자열
      * @return Set<Integer> 지워야 할 인덱스들 집합
      */
@@ -24,21 +23,22 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = cryptogram;
         Set<Integer> deleteIndexSet = new HashSet<>();
-        boolean alive[] = new boolean[cryptogram.length()];
+        boolean valid[] = new boolean[cryptogram.length()];
         do {
-            for(int i=0;i<cryptogram.length();i++){
-                alive[i] = true;
+            for (int i = 0; i < cryptogram.length(); i++) {
+                valid[i] = true;
             }
-            for(Integer l : deleteIndexSet){
-                alive[l] = false;
+            for (Integer l : deleteIndexSet) {
+                valid[l] = false;
             }
             String save = answer;
             answer = "";
-            for(int i=0;i<save.length();i++){
-                if(alive[i])
+            for (int i = 0; i < save.length(); i++) {
+                if (valid[i]) {
                     answer += save.charAt(i);
+                }
             }
-        }while (!(deleteIndexSet = getDeleteIndexSet(answer)).isEmpty());
+        } while (!(deleteIndexSet = getDeleteIndexSet(answer)).isEmpty());
         return answer;
     }
 }
