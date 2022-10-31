@@ -10,4 +10,11 @@ public class Problem3 {
 
         return answer;
     }
+
+    private static int isClapNumber(int unitNumber) {
+        if ((unitNumber % 3 == 0) && (unitNumber != 0)) {
+            return 1;
+        }
+        return 0;
+    }
 }
