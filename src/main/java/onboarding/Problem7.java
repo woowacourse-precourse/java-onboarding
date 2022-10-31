@@ -20,14 +20,14 @@ class Person{
 
 }
 public class Problem7 {
-    public static List<String> solution(String userID, ArrayList<ArrayList> friends, ArrayList<String> visitors) {
-        ArrayList<String> result = new ArrayList<>();
-        ArrayList<String> userFriends = new ArrayList<>();
-        ArrayList<Person> recList = new ArrayList<>();
+    public static List<String> solution(String userID, List<List<String>> friends, List<String> visitors) {
+        List<String> result = new ArrayList<>();
+        List<String> userFriends = new ArrayList<>();
+        List<Person> recList = new ArrayList<>();
         boolean check = false;
 
         for(int i=0;i<friends.size();i++){      //user의 친구목록
-            ArrayList<String> m1 = friends.get(i);
+            List<String> m1 = friends.get(i);
             String id1 = m1.get(0);
             String id2 = m1.get(1);
 
@@ -40,7 +40,7 @@ public class Problem7 {
         }
 
         for(int i=0;i<friends.size();i++){
-            ArrayList<String> m1 = friends.get(i);
+            List<String> m1 = friends.get(i);
             String id1 = m1.get(0);
             String id2 = m1.get(1);
 
@@ -56,7 +56,7 @@ public class Problem7 {
                 if(!userFriends.contains(id1)){
                     ArrayList<String> otherFriendsList = new ArrayList<>();
                     for(int j=0;j<friends.size();j++){
-                        ArrayList<String> m2 = friends.get(j);
+                        List<String> m2 = friends.get(j);
                         String t1 = m2.get(0);
                         String t2 = m2.get(1);
 
@@ -102,7 +102,7 @@ public class Problem7 {
                 if(!userFriends.contains(id2)){
                     ArrayList<String> otherFriendsList = new ArrayList<>();
                     for(int j=0;j<friends.size();j++){
-                        ArrayList<String> m2 = friends.get(j);
+                        List<String> m2 = friends.get(j);
                         String t1 = m2.get(0);
                         String t2 = m2.get(1);
 

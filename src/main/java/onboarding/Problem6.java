@@ -4,11 +4,11 @@ import java.util.*;
 
 
 public class Problem6 {
-    public static ArrayList<String> solution(ArrayList<ArrayList<String>> stList) {
-        ArrayList<String>emailList = new ArrayList<>();
+    public static List<String> solution(List<List<String>> stList) {
+        List<String>emailList = new ArrayList<>();
         String nick1, nick2;
         String cmpStr;
-        ArrayList<String> temp1, temp2;
+        List<String> temp1, temp2;
         boolean bool = false;
 
         for(int i=0;i<stList.size();i++){
