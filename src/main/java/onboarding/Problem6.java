@@ -2,9 +2,26 @@ package onboarding;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.TreeSet;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
+        HashMap<String, Integer> counter = makeCounter(forms);
+        TreeSet<String> set = new TreeSet<>();
+
+        for (List<String> form: forms) {
+            String nickname = form.get(1);
+
+            removePartialNickname(nickname, counter);
+            if (isRestricted(nickname, counter)) {
+                String emailDomain = form.get(0);
+                int len = emailDomain.length();
+                String email = emailDomain.substring(0, len - 10);
+                set.add(email);
+            }
+            addPartialNickname(nickname, counter);
+        }
+
         List<String> answer = List.of("answer");
         return answer;
     }
