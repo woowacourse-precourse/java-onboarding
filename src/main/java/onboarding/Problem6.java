@@ -14,13 +14,15 @@ public class Problem6 {
         }
 
     }
-    public static List<String> solution(List<List<String>> forms) {
-        List<String> emails = new ArrayList<>();
-        Map<String, String> subNickNames = new HashMap<>();
+    private static Map<String, String> subNickNames = new HashMap<>();
+    private static List<String> emails = new ArrayList<>();
 
+    public static List<String> solution(List<List<String>> forms) {
         List<User> userList = new ArrayList<>();
-        forms.forEach(form -> userList.add(new User(form.get(0), form.get(1))));
-        
+        forms.forEach(
+                form -> userList.add(new User(form.get(0), form.get(1)))
+        );
+
         for(int i=0; i<userList.size(); i++) {
             User user = userList.get(i);
             String nickname = user.nickname;
@@ -28,22 +30,26 @@ public class Problem6 {
                 continue;
             for(int j=0; j<nickname.length()-1; j++) {
                 String subNickname = nickname.substring(j, j+2);
-                if(subNickNames.containsKey(subNickname)) { // 닉네임 중복 가능성 O
-                    String email = subNickNames.get(subNickname);
-                    if(!email.equals(user.email)) {
-                        emails.add(email);
-                        emails.add(user.email);
-                    }
-                }
+                checkDuplicatedNickname(subNickname, user);
                 subNickNames.put(subNickname, user.email);
             }
         }
-
         return removeDuplicateAndSort(emails);
     }
 
+    private static void checkDuplicatedNickname(String subNickname, User user) {
+        if(subNickNames.containsKey(subNickname)) { // 닉네임 중복 가능성 O
+            String email = subNickNames.get(subNickname);
+            if(!email.equals(user.email)) {
+                emails.add(email);
+                emails.add(user.email);
+            }
+        }
+    }
+
     private static List<String> removeDuplicateAndSort(List<String> emails) {
-        List<String> deduplicatedEmails = emails.stream().distinct().collect(Collectors.toList());
-        Collections.sort(deduplicatedEmails);
+        List<String> result = emails.stream().distinct().collect(Collectors.toList());
+        Collections.sort(result);
+        return result;
     }
 }
