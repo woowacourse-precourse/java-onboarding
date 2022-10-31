@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 /*
 0. friends 를 순회하면서 친구점수 리스트를 만듦(중복x) [name, score] + user_info 클래스 정의
 1. friends 리스트를 순회하면서 user, user와 이미 친구인 사람은 추천목록에서 제외(친구제외 리스트에 추가, 친구 점수 리스트에는 점수를 -1점으로 설정)
@@ -14,14 +11,14 @@ import java.util.List;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = new ArrayList<String>();
-        HashMap<String, Integer> friends_score = makeFriendsScore(friends);
+        Map<String, Integer> friends_score = makeFriendsScore(friends);
         List<String> exception_list = makeFriendsException(user, friends);
         initFriendsScore(friends_score, exception_list, user);
-        setScore(friends, friends_score, exception_list, user);
+        setScore(friends, friends_score, exception_list, visitors);
+
         return answer;
     }
-    public static HashMap<String, Integer> makeFriendsScore(List<List<String>> friends) {
+    public static Map<String, Integer> makeFriendsScore(List<List<String>> friends) {
         List<String> name_list = new ArrayList<String>();
         HashMap<String, Integer> friends_score = new HashMap<String, Integer>();
         for (List<String> friend : friends) {
@@ -48,13 +45,26 @@ public class Problem7 {
         }
         return exception_list;
     }
-    public static void initFriendsScore(HashMap<String, Integer> friends_score, List<String> exception_list, String user) {
+    public static void initFriendsScore(Map<String, Integer> friends_score, List<String> exception_list, String user) {
         for (String name : exception_list) {
             friends_score.put(name, -1);
         }
-        friends_score.put(user, -1); // 유저 자신도 추천하면 안됨
+        friends_score.put(user, -1);
     }
-    public static void setScore(List<List<String>> friends, HashMap<String, Integer> friends_score, List<String> exception_list, String user) {
+    public static void setScore(List<List<String>> friends, Map<String, Integer> friends_score, List<String> exception_list, List<String> visitors) {
+        for (String excepted_user : exception_list) {
+            for (List<String> friend_relation : friends) {
+                if (friend_relation.contains(excepted_user)) {
+                    for (String name : friend_relation) {
+                        if (name != excepted_user)
+                            friends_score.put(name, friends_score.get(name) + 10);
+                    }
+                }
+            }
+        }
+        for (String visitor : visitors) {
+            friends_score.put(visitor, friends_score.get(visitor) + 1);
+        }
+    }
 
-    }
 }
