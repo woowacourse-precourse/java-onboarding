@@ -16,4 +16,10 @@ public class Problem6 {
         }
         return fragments;
     }
+    private static String getEmail(List<String> form) {
+        return form.get(0);
+    }
+    private static String getNickname(List<String> form) {
+        return form.get(1);
+    }
 }
