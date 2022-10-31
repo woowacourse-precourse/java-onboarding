@@ -12,6 +12,9 @@ class MoneyTransformation{
     void withdraw(int amount){
         changes-=amount;
     }
+    int calculateAmount(int voucherCount, int moneyVoucher){
+        return voucherCount*moneyVoucher;
+    }
     int moneyVoucherCount(int money, int moneyVoucher){
         return money/moneyVoucher;
     }
