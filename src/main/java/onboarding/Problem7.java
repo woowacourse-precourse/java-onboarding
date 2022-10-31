@@ -49,12 +49,8 @@ public class Problem7 {
 
         private void calculateRecommendScore(List<String> recommendedFriends, int weight) {
             for (String name : recommendedFriends) {
-                if (this.isContainInRecommendList(name)) {
-                    this.getFriendRecommendScore().put(name, this.getFriendRecommendScore().get(name) + weight);
-                }
-                if (!this.isContainInRecommendList(name)) {
-                    this.getFriendRecommendScore().put(name, weight);
-                }
+                this.getFriendRecommendScore().computeIfPresent(name, (k,v) -> v + weight);
+                this.getFriendRecommendScore().putIfAbsent(name, weight);
             }
         }
 
