@@ -22,8 +22,14 @@ public class Problem7 {
             setFriendList(friendLists, friend2, friend1);
         }
 
+        // 전체 유저 목록 (List)
+        HashSet<String> totalUserList = getTotalUserList(friendLists, visitors);
+
         // 각 유저별 점수를 저장하는 HashMap (key : username / value : 점수 (전부 0으로 초기화))
-        HashMap<String, Integer> scoreMap = getScoreMap(friendLists, visitors);
+        HashMap<String, Integer> scoreMap = new HashMap<>();
+        for (String account : totalUserList) {
+            scoreMap.put(account, 0); // 0으로 초기화
+        }
 
         // 각각의 유저에 대한 점수 계산
         // 1. 사용자와 함께 아는 친구의 수 = 10점
@@ -52,23 +58,18 @@ public class Problem7 {
         }
     }
 
-    // scoreMap을 초기화하여 반환하는 함수 (key : username / value : 점수 (0으로 초기화))
-    private static HashMap<String, Integer> getScoreMap(HashMap<String, HashSet<String>> friendLists, List<String> visitors) {
-        HashMap<String, Integer> scoreMap = new HashMap<>(); // 각 유저별 점수를 저장할 HashMap
+    // 전체 유저 목록을 반환하는 함수
+    private static HashSet<String> getTotalUserList(HashMap<String, HashSet<String>> friendLists, List<String> visitors) {
+        HashSet<String> totalUserList = new HashSet<>(friendLists.keySet()); // friends에 들어있는 유저는 전부 List에 넣기
 
-        // friends에 들어있는 유저에 대한 entity 생성
-        for (String user : friendLists.keySet()) {
-            scoreMap.put(user, 0); // 0으로 초기화
-        }
-
-        // friends에 들어있지 않으며, visitors에만 들어있는 유저에 대한 entity 생성
+        // friends에 들어있지 않으며, visitors에만 들어있는 유저를 List에 추가
         for (String visitor : visitors) {
-            if (!friendLists.containsKey(visitor)) { // friends에 들어있지 않았던 경우 (= friendLists에서 같은 이름의 key가 존재하지 않음)
-                scoreMap.put(visitor, 0); // 0으로 초기화
+            if (!friendLists.containsKey(visitor)) { // friends에 들어있지 않았던 경우 = friendLists에서 같은 이름의 key가 존재하지 않는 경우
+                totalUserList.add(visitor);
             }
         }
 
-        return scoreMap;
+        return totalUserList;
     }
 
 }
