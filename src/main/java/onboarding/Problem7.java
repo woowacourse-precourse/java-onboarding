@@ -21,12 +21,13 @@ import java.util.*;
 // 그 다음 user의 친구들과 다른 users의 친구들이 같은지 비교하고, 있다면 +10
 
 // todo
-// 1. java에서 list는 순서가 보장되므로..하나의 리스트에 여러개의 리스트를 넣고,
-//    각 리스트의 첫번째를 각 user의 이름으로 해서 friends 리스트를 정리해보자..
+// 1. 점수를 정리할 hashmap 생성
 // 1-1. java에서 set은 중복을 허용하지 않으므로 friends와 visitors의 모든 user을 하나의 set에 넣는다.
 // 1-2. 중복이 제거된 users리스트를 키로 하고, 점수를 value로 하는 hashmap을 생성한다.
-// 1-3.
-
+// 2. user의 친구목록을 따로 만들고, 각 user들의 친구와 겹치는지 확인후, 겹치면 해당 user의 점수에 10점 추가
+// 2-1. user의 친구목록 생성
+// 2-2. 각 user들의 친구를 확인 후 user의 친구와 비교
+// 2-3. 비교 후 친구가 같다면, 해당 user 점수에 10점 추가
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -35,42 +36,33 @@ public class Problem7 {
 
         Set<String> users = new HashSet<String>();
 
-        HashMap<String,Integer> userList = new HashMap<String, Integer>();
+        Set<String> userFriendList = new HashSet<String>();
+
+        HashMap<String,Integer> usersScoreMap = new HashMap<String, Integer>();
 
         for (List friend : friends) {
+            if(friend.get(0) == user){
+                userFriendList.add((String) friend.get(1));
+            }
+            if(friend.get(1) == user){
+                userFriendList.add((String) friend.get(0));
+            }
             users.add((String) friend.get(0));
             users.add((String) friend.get(1));
         }
         for (String visitor : visitors) {
             users.add(visitor);
         }
-
         System.out.println(users);
 
         for (String keyUser : users) {
             System.out.println(keyUser);
-            userList.put(keyUser,0);
+            usersScoreMap.put(keyUser,0);
         }
-
-        for (String keyUser : users) {
-            System.out.println(keyUser);
-            userList.put(keyUser,0);
-        }
-
-        System.out.println(userList);
+        System.out.println(usersScoreMap);
+        System.out.println(userFriendList);
 
 
-//        List<String> testString1 = new ArrayList<String>();
-//        testString1.add("abc");
-//        testString1.add("abc");
-//        List<String> testString2 = new ArrayList<String>();
-//        testString2.add("abc");
-//        testString2.add("abc");
-//        List<List<String>> testString3 = new ArrayList<>();
-//        testString3.add(testString1);
-//        testString3.add(testString2);
-//
-//        System.out.println(testString3);
 
         return answer;
     }
