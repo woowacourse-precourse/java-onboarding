@@ -60,4 +60,15 @@ public class Problem6 {
     {
         if(nickName.length()<1||nickName.length()>=20) throw new RangeException("NickName 입력범위 1~20자미만에 해당하지 않습니다");
     }
+
+    /**
+     * 크루원의 사이즈가 1~10000인가?
+     *
+     * @param forms list를 입력한다
+     * @throws RangeException 1~10000가 아니면 발생
+     */
+    public static void crewSizeCheck(List<List<String>> forms) throws RangeException
+    {
+        if(forms.size()<1||forms.size()>10000) throw new RangeException("Crew원의 인원이 1~10000에 해당하지않습니다");
+    }
 }
