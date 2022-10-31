@@ -29,6 +29,7 @@ public class Problem7 {
     private static final Map<String, Integer> friendRecommendScoreMap = new HashMap<>();
 
     public static List<String> solution(String userId, List<List<String>> friendRelationships, List<String> userTimelineVisitors) {
+        validateRecommendAlgorithm(userId, friendRelationships, userTimelineVisitors);
         initFriendRecommendScoreMap(friendRelationships, userTimelineVisitors);
         Set<String> userFriends = getUserFriends(userId, friendRelationships);
         List<String> friendsOfUserFriends = getFriendsOfUserFriends(userId, friendRelationships, userFriends);
