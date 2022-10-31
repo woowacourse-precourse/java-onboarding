@@ -3,12 +3,8 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
-    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        // List<String> answer = Collections.emptyList();
-        List<String> answer = new ArrayList<>();
+    public static List<String> saveUserFriends(String user, List<List<String>> friends) {
         List<String> userFriends = new ArrayList<>();
-        HashMap<String, Integer> scores = new HashMap<>();
-
         // 사용자의 친구 리스트 저장하기
         for (int i=0; i<friends.size(); i++) {
             if (friends.get(i).get(0).equals(user) && !userFriends.contains(friends.get(i).get(1))) {
@@ -19,6 +15,12 @@ public class Problem7 {
                 userFriends.add(friends.get(i).get(0));
             }
         }
+
+        return userFriends;
+    }
+
+    public static HashMap<String, Integer> saveScoreByfriends(List<String> userFriends, List<List<String>> friends, String user) {
+        HashMap<String, Integer> scores = new HashMap<>();
 
         // 친구 목록에서 사용자의 친구의 친구 찾기
         for (int i=0; i<userFriends.size(); i++) {
@@ -48,7 +50,11 @@ public class Problem7 {
                 }
             }
         }
-        
+
+        return scores;
+    }
+
+    public static HashMap<String, Integer> saveScoreByVisitor(List<String> visitors, List<String> userFriends, HashMap<String, Integer> scores) {
         // 사용자의 타임 라인에 방문한 횟수 저장
         for (int i=0; i<visitors.size(); i++) {
             if (userFriends.contains(visitors.get(i))) continue;
@@ -60,7 +66,18 @@ public class Problem7 {
                 scores.put(visitors.get(i), 1);
             }
         }
+    }
 
-        return answer;
+    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        // List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
+        List<String> userFriends;
+        HashMap<String, Integer> scores;
+
+        userFriends = saveUserFriends(user, friends);
+        scores = saveScoreByfriends(userFriends, friends, user);
+        scores = saveScoreByVisitor(visitors, userFriends, scores);
+
+       return answer;
     }
 }
