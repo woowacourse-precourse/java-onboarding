@@ -54,8 +54,7 @@ public class Problem6 {
     }   
 
     private static List<String> getListOfDuplicateNickname(List<List<String>> forms){
-        for(int i=0; i<forms.size(); i++){
-            List<String> user = forms.get(i);
+        for(List<String> user : forms){
             List<String> devidedNicknamePiece = getDevidedNicknamePiece(user.get(1));
             String pieceOwnerEmail = user.get(0);
             enrollNicknamePieceAndOwner(devidedNicknamePiece, pieceOwnerEmail);
@@ -72,8 +71,7 @@ public class Problem6 {
     }
 
     private static void enrollNicknamePieceAndOwner(List<String> pieces, String owner){
-        for(int i = 0; i<pieces.size(); i++){
-            String nicknamePiece = pieces.get(i);
+        for(String nicknamePiece : pieces){
             if(nicknamePieceAndOwner.containsKey(nicknamePiece)){
                 addUserInDuplicatedUser(owner);
                 addUserInDuplicatedUser(nicknamePieceAndOwner.get(nicknamePiece));
