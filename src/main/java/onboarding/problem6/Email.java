@@ -6,6 +6,8 @@ public class Email {
 
 	private static final Pattern EMAIL_COM_DOMAIN_PATTERN = Pattern.compile(".+@email.com");
 	private static final Pattern EMAIL_FORMAT_PATTERN = Pattern.compile(".+@.+\\..+");
+	private static final int MINIMUM_LENGTH = 11;
+	private static final int MAXIMUM_LENGTH = 20;
 
 	private final String email;
 
@@ -28,10 +30,10 @@ public class Email {
 	}
 
 	private void validateLength(String email) {
-		if (email.length() < 11) {
+		if (email.length() < MINIMUM_LENGTH) {
 			throw new IllegalArgumentException("이메일은 11글자 이상입니다");
 		}
-		if (email.length() >= 20) {
+		if (email.length() >= MAXIMUM_LENGTH) {
 			throw new IllegalArgumentException("이메일은 20글자 미만입니다");
 		}
 	}

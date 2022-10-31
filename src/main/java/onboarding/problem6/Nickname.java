@@ -2,6 +2,9 @@ package onboarding.problem6;
 
 public class Nickname {
 
+	private static final int MINIMUM_LENGTH = 1;
+	private static final int MAXIMUM_LENGTH = 20;
+
 	private final String nickname;
 
 	public Nickname(String nickname) {
@@ -27,10 +30,10 @@ public class Nickname {
 	}
 
 	private void validateLength(String nickname) {
-		if (nickname.length() < 1) {
+		if (nickname.length() < MINIMUM_LENGTH) {
 			throw new IllegalArgumentException("이름은 1자 이상입니다");
 		}
-		if (nickname.length() >= 20) {
+		if (nickname.length() >= MAXIMUM_LENGTH) {
 			throw new IllegalArgumentException("이름은 20자 미만입니다");
 		}
 	}
