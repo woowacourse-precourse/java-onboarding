@@ -18,6 +18,7 @@ public class Problem6 {
             email.add(i, forms.get(i).get(0));
         }
 
+        //boolean 배열 두고 i,j 둘다 true 해서 시간 단축 시키기
         for (int i = 0; i < name.size(); i++) {
             for (int j = 0; j < name.size(); j++) {
                 if (i == j) {
