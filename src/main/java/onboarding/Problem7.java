@@ -6,6 +6,18 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Problem7 {
+    static void inputUserFriednsScore(HashMap<String,List<String>> friendsGroups,HashMap<String,Integer> friendsGroupsScore,List<String> userFriends){
+        for(int i=0; i<userFriends.size(); i++){
+            List<String> score = friendsGroups.get(userFriends.get(i));
+            for(int j=0; j<score.size(); j++){
+                if(!friendsGroupsScore.containsKey(score.get(j))){
+                    continue;
+                }
+                friendsGroupsScore.put(score.get(j),friendsGroupsScore.get(score.get(j)) + 10);
+            }
+        }
+
+    }
     static List<String> createUserFriends(HashMap<String,List<String>> friendsGroups,String userName){
         List<String> userFriendsGroups = friendsGroups.get(userName);
         return userFriendsGroups;
@@ -54,6 +66,8 @@ public class Problem7 {
         createfriendsGroups(friendsGroups,friends,user);
         createfriendsGroupsScore(friendsGroupsScore,friends,user,visitors);
         userFriends = createUserFriends(friendsGroups,user);
+        inputUserFriednsScore(friendsGroups,friendsGroupsScore,userFriends);
+
         return answer;
     }
 }
