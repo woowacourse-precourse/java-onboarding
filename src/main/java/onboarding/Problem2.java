@@ -2,6 +2,12 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
+        /*
+        기능
+        1. 문자 저장 및 연속한 중복 문자 제거
+        2. 연속하여 중복하는 문자 없을 때까지 반복
+        */
+
         String answer = "answer";
         int count = 1;
         while (count != 0) {
@@ -19,6 +25,7 @@ public class Problem2 {
         for (int i = 0; i < cryptogram.length(); i++) {
             if (c == cryptogram.charAt(i)) {
                 c = cryptogram.charAt(i);
+                // 문제: 문자 두 개를 함수 내에서 삭제를 해서 charAt(i)의 값이 달라짐
                 cryptogram = cryptogram.substring(0, i - 1) + cryptogram.substring(i + 1);
             } else {
                 c = cryptogram.charAt(i);
@@ -27,6 +34,7 @@ public class Problem2 {
         return cryptogram;
     }
 
+    // 중복 문자 없을 때 반복 그만하기 위한 메서드
     public static int countSameChar(String cryptogram) {
         char c = '\0';
         int count = 0;
@@ -40,9 +48,3 @@ public class Problem2 {
         return count;
     }
 }
-
-/*
-기능
-1. 문자 저장 및 연속한 중복 문자 제거
-2. 연속하여 중복하는 문자 없을 때까지 반복
- */
