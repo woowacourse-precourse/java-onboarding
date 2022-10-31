@@ -7,6 +7,10 @@ public class Problem3 {
     static final String NINE = "9";
 
     public static int solution(int number) {
+        return calculateResult(number);
+    }
+
+    private static int calculateResult(int number){
         int answer = 0;
         for(int i=1; i<=number; i++){
             answer += addClapCount(Integer.toString(i));
