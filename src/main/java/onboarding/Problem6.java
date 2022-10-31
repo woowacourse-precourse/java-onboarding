@@ -46,11 +46,13 @@ public class Problem6 {
 
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
 
         Map<String, List<String>> tokenMap = makeTokenDict(forms);
 
         HashSet<String> set = findEmailSet(tokenMap);
+
+        List<String> answer = new ArrayList<>(set);
+        Collections.sort(answer);
 
         return answer;
     }
