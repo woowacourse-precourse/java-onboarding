@@ -1,6 +1,6 @@
 package onboarding.problem7.repository;
 
-import onboarding.problem7.validation.FriendValidator;
+import onboarding.problem7.validation.UserValidator;
 import onboarding.problem7.vo.Member;
 
 import java.util.*;
@@ -16,7 +16,7 @@ public class FriendRepository {
     }
 
     public static FriendRepository of(String user) {
-        FriendValidator.validateUser(user);
+        UserValidator.validateUser(user);
         return new FriendRepository(user);
     }
 

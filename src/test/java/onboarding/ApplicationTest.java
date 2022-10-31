@@ -10,7 +10,8 @@ import java.util.stream.Stream;
 import onboarding.problem2.validation.CryptogramValidator;
 import onboarding.problem3.validation.ThreeSixNineValidator;
 import onboarding.problem6.validation.UserValidator;
-import onboarding.problem7.validation.FriendValidator;
+import onboarding.problem7.validation.RelationsValidator;
+import onboarding.problem7.validation.VisitorsValidator;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -631,9 +632,9 @@ class ApplicationTest {
                     assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
                             .isInstanceOf(IllegalArgumentException.class)
                             .hasMessage(
-                                    String.format(FriendValidator.INVALID_ID_LENGTH_MESSAGE_FORMAT,
-                                            FriendValidator.MIN_ID_LENGTH_RANGE,
-                                            FriendValidator.MAX_ID_LENGTH_RANGE)
+                                    String.format(onboarding.problem7.validation.UserValidator.INVALID_ID_LENGTH_MESSAGE_FORMAT,
+                                            onboarding.problem7.validation.UserValidator.MIN_ID_LENGTH_RANGE,
+                                            onboarding.problem7.validation.UserValidator.MAX_ID_LENGTH_RANGE)
                             );
                 }
 
@@ -653,9 +654,9 @@ class ApplicationTest {
                     assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
                             .isInstanceOf(IllegalArgumentException.class)
                             .hasMessage(
-                                    String.format(FriendValidator.INVALID_ID_LENGTH_MESSAGE_FORMAT,
-                                            FriendValidator.MIN_ID_LENGTH_RANGE,
-                                            FriendValidator.MAX_ID_LENGTH_RANGE)
+                                    String.format(onboarding.problem7.validation.UserValidator.INVALID_ID_LENGTH_MESSAGE_FORMAT,
+                                            onboarding.problem7.validation.UserValidator.MIN_ID_LENGTH_RANGE,
+                                            onboarding.problem7.validation.UserValidator.MAX_ID_LENGTH_RANGE)
                             );
                 }
 
@@ -675,11 +676,10 @@ class ApplicationTest {
                     assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
                             .isInstanceOf(IllegalArgumentException.class)
                             .hasMessage(
-                                    String.format(
-                                            FriendValidator.INVALID_ID_LENGTH_MESSAGE_FORMAT,
-                                            FriendValidator.MIN_ID_LENGTH_RANGE,
-                                            FriendValidator.MAX_ID_LENGTH_RANGE
-                                    ));
+                                    String.format(onboarding.problem7.validation.UserValidator.INVALID_ID_LENGTH_MESSAGE_FORMAT,
+                                            onboarding.problem7.validation.UserValidator.MIN_ID_LENGTH_RANGE,
+                                            onboarding.problem7.validation.UserValidator.MAX_ID_LENGTH_RANGE)
+                            );
                 }
             }
 
@@ -695,9 +695,9 @@ class ApplicationTest {
                     assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
                             .isInstanceOf(IllegalArgumentException.class)
                             .hasMessage(String.format(
-                                    FriendValidator.INVALID_RELATIONS_SIZE_MESSAGE_FORMAT,
-                                    FriendValidator.MIN_RELATION_SIZE,
-                                    FriendValidator.MAX_RELATION_SIZE
+                                    RelationsValidator.INVALID_RELATIONS_SIZE_MESSAGE_FORMAT,
+                                    RelationsValidator.MIN_RELATION_SIZE,
+                                    RelationsValidator.MAX_RELATION_SIZE
                             ));
                 }
 
@@ -710,9 +710,9 @@ class ApplicationTest {
                     assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
                             .isInstanceOf(IllegalArgumentException.class)
                             .hasMessage(String.format(
-                                    FriendValidator.INVALID_RELATIONS_SIZE_MESSAGE_FORMAT,
-                                    FriendValidator.MIN_RELATION_SIZE,
-                                    FriendValidator.MAX_RELATION_SIZE
+                                    RelationsValidator.INVALID_RELATIONS_SIZE_MESSAGE_FORMAT,
+                                    RelationsValidator.MIN_RELATION_SIZE,
+                                    RelationsValidator.MAX_RELATION_SIZE
                             ));
                 }
 
@@ -728,9 +728,9 @@ class ApplicationTest {
                     assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
                             .isInstanceOf(IllegalArgumentException.class)
                             .hasMessage(String.format(
-                                    FriendValidator.INVALID_RELATIONS_SIZE_MESSAGE_FORMAT,
-                                    FriendValidator.MIN_RELATION_SIZE,
-                                    FriendValidator.MAX_RELATION_SIZE
+                                    RelationsValidator.INVALID_RELATIONS_SIZE_MESSAGE_FORMAT,
+                                    RelationsValidator.MIN_RELATION_SIZE,
+                                    RelationsValidator.MAX_RELATION_SIZE
                             ));
                 }
 
@@ -749,8 +749,8 @@ class ApplicationTest {
                     assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
                             .isInstanceOf(IllegalArgumentException.class)
                             .hasMessage(String.format(
-                                    FriendValidator.INVALID_RELATION_SIZE_MESSAGE_FORMAT,
-                                    FriendValidator.VALID_RELATION_SIZE)
+                                    RelationsValidator.INVALID_RELATION_SIZE_MESSAGE_FORMAT,
+                                    RelationsValidator.VALID_RELATION_SIZE)
                             );
                 }
             }
@@ -773,9 +773,9 @@ class ApplicationTest {
                     assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
                             .isInstanceOf(IllegalArgumentException.class)
                             .hasMessage(String.format(
-                                    FriendValidator.INVALID_VISITORS_SIZE_MESSAGE_FORMAT,
-                                    FriendValidator.MIN_VISITORS_SIZE,
-                                    FriendValidator.MAX_VISITORS_SIZE
+                                    VisitorsValidator.INVALID_VISITORS_SIZE_MESSAGE_FORMAT,
+                                    VisitorsValidator.MIN_VISITORS_SIZE,
+                                    VisitorsValidator.MAX_VISITORS_SIZE
                             ));
                 }
 
@@ -798,9 +798,9 @@ class ApplicationTest {
                     assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
                             .isInstanceOf(IllegalArgumentException.class)
                             .hasMessage(String.format(
-                                    FriendValidator.INVALID_VISITORS_SIZE_MESSAGE_FORMAT,
-                                    FriendValidator.MIN_VISITORS_SIZE,
-                                    FriendValidator.MAX_VISITORS_SIZE
+                                    VisitorsValidator.INVALID_VISITORS_SIZE_MESSAGE_FORMAT,
+                                    VisitorsValidator.MIN_VISITORS_SIZE,
+                                    VisitorsValidator.MAX_VISITORS_SIZE
                             ));
                 }
 
@@ -819,7 +819,7 @@ class ApplicationTest {
                     List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
                     assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
                             .isInstanceOf(IllegalArgumentException.class)
-                            .hasMessage(FriendValidator.INVALID_ID_FORMAT_MESSAGE);
+                            .hasMessage(onboarding.problem7.validation.UserValidator.INVALID_ID_FORMAT_MESSAGE);
                 }
 
                 @Test
@@ -837,7 +837,7 @@ class ApplicationTest {
                     List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
                     assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
                             .isInstanceOf(IllegalArgumentException.class)
-                            .hasMessage(FriendValidator.DUPLICATING_RELATION_MESSAGE);
+                            .hasMessage(RelationsValidator.DUPLICATING_RELATION_MESSAGE);
                 }
             }
         }

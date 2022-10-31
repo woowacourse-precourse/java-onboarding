@@ -1,6 +1,6 @@
 package onboarding.problem7.vo;
 
-import onboarding.problem7.validation.FriendValidator;
+import onboarding.problem7.validation.RelationsValidator;
 
 import java.util.HashSet;
 import java.util.List;
@@ -20,7 +20,7 @@ public class Relation {
     }
 
     public static List<Relation> ofList(List<List<String>> relations) {
-        FriendValidator.validateRelations(relations);
+        RelationsValidator.validateRelations(relations);
         return relations.stream()
                 .map(Relation::of)
                 .collect(Collectors.toList());
