@@ -56,13 +56,6 @@ class Result {
         return toLowerCase(replaceChar);
     }
 
-    public boolean isAlphaUpper(int wordChar) {
-        if (wordChar >= 'A' && wordChar <= 'Z') {
-            return true;
-        }
-        return false;
-    }
-
     public boolean isAlphaLower(int wordChar) {
         if (wordChar >= 'a' && wordChar <= 'z') {
             return true;
