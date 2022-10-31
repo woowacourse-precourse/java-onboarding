@@ -1,11 +1,36 @@
 package onboarding;
 
 public class Problem2 {
-
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        if(isValid(cryptogram))
+            return delDuplicate(cryptogram);
+        else
+            return "";
     }
+
+    static String delDuplicate(String cryptogram){
+        String regex;
+        String del_regex;
+        String decode = "";
+
+        for (char c : cryptogram.toCharArray()) {
+            regex = String.format(".*[%c]{2}.*", c); // 연속된 문자를 찾는 정규표현식
+            del_regex = String.format("[%c]{2}", c); // 연속된 문자를 제거하는 정규표현식
+
+            if (cryptogram.matches(regex)) {
+                decode = cryptogram.replaceAll(del_regex, "");
+                break;
+            } else {
+                decode = cryptogram;
+            }
+        }
+        if (decode.length() == cryptogram.length()) { // 연속된 문자가 없다면
+            return decode;
+        } else {
+            return delDuplicate(decode);
+        }
+    }
+
     static boolean isValid(String cryptogram){
         int min_length = 1;
         int max_length = 1000;
