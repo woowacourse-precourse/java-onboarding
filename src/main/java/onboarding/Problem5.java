@@ -11,7 +11,7 @@ public class Problem5 {
 
     public static List<Integer> solution(int money) {
         if (money < 1 || 1_000_000 < money) {
-            return null;
+            throw new IllegalArgumentException();
         }
 
         // Make wallet
