@@ -13,7 +13,7 @@ import java.util.List;
  */
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if(isException(pobi) || isException(crong)) {
+        if(isValidPage(pobi) || isValidPage(crong)) {
             return -1;
         }
 
@@ -37,7 +37,7 @@ class Problem1 {
 
     // 책은 펼쳤을 때 연속된 수가 나와야한다.
     // 왼쪽 페이지는 홀수, 오른쪽 페이지는 짝수번호다.
-    private static boolean isException(List<Integer> person) {
+    private static boolean isValidPage(List<Integer> person) {
         Integer leftPage = person.get(0);
         Integer rightPage = person.get(1);
 
