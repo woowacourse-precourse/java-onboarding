@@ -83,7 +83,12 @@ public class Problem7 {
     }
 
     private static void addMaximumFiveHighScore(List<String> answer, List<String> keyset) {
-
+        for (int i = 0; i < keyset.size(); i++) {
+            if (i >= 5) {
+                break;
+            }
+            answer.add(keyset.get(i));
+        }
     }
 }
 
