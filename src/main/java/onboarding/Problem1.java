@@ -2,6 +2,8 @@ package onboarding;
 
 import java.util.List;
 
+import static java.lang.Math.max;
+
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int pl = pobi.get(0); //pl: 포비의 왼쪽 페이지 넘버
@@ -14,7 +16,11 @@ class Problem1 {
             return -1;
         }
 
-        return 0;
+        if (get_max_value(pl, pr) > get_max_value(cl, cr)){
+            return 1;
+        } else {
+            return 0;
+        }
     }
 
     //0. 예외처리
@@ -33,5 +39,30 @@ class Problem1 {
         }
 
         return false;
+    }
+
+    //1. 최댓값 구하기
+    static int get_max_value(int l, int r) {
+        int l_added_value = 0;
+        int l_multiplied_value = 1;
+        int r_added_value = 0;
+        int r_multiplied_value = 1;
+
+        //왼쪽 페이지 번호의 최댓값
+        while(l > 0){
+            l_added_value += l%10;
+            l_multiplied_value *= l%10;
+            l/=10;
+        }
+
+        //오른쪽 페이지 번호의 최댓값
+        while(r > 0){
+            r_added_value += r%10;
+            r_multiplied_value *= r%10;
+            r/=10;
+        }
+
+        //가장 큰 값이 최종 값
+        return max(max(l_added_value, l_multiplied_value), max(r_added_value, r_multiplied_value));
     }
 }
