@@ -5,9 +5,8 @@ import java.util.stream.Collectors;
 
 /*
 1. 문자열 토큰 얻기
-2. 중복 확인하기
-3. 중복이라면 이메일 추가하기
-4. 정렬하기
+2. 중복이라면 이메일 추가하기
+3. 정렬하기
  */
 
 public class Problem6 {
@@ -25,17 +24,17 @@ public class Problem6 {
     }
 
     private static List<String> getDuplicationEmails(List<List<String>> forms, Map<String, Integer> nameTokenMap) {
-        List<String> removeEmails = new ArrayList<>();
+        List<String> duplicationEmails = new ArrayList<>();
         for (List<String> form : forms) {
             String email = form.get(0);
             String name = form.get(1);
             for (String token : nameTokenMap.keySet()) {
                 if (name.contains(token)) {
-                    removeEmails.add(email);
+                    duplicationEmails.add(email);
                 }
             }
         }
-        return removeEmails;
+        return duplicationEmails;
     }
 
     public static List<String> solution(List<List<String>> forms) {
