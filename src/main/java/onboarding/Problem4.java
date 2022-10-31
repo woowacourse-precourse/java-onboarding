@@ -3,17 +3,17 @@ package onboarding;
 public class Problem4 {
     private static char convertUpper(char letter) {
         int difference = letter - 65;
-        char converted = 90 - difference;
+        int converted = 90 - difference;
 
-        return converted;
+        return (char) converted;
 
     }
 
     private static char convertLower(char letter) {
         int difference = letter - 97;
-        char converted = 122 - difference;
+        int converted = 122 - difference;
 
-        return converted;
+        return (char) converted;
     }
 
     public static String solution(String word) {
