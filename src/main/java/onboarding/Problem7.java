@@ -5,6 +5,8 @@ import java.util.*;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         HashMap<String, HashSet<String>> friendList = new HashMap<>();
+        /* 유저의 친구 목록 추가하기 */
+        friendList.put(user, new HashSet<>());
         /* 친구 목록 만들기 */
         for (List<String> relation: friends) {
             String name1 = relation.get(0);
@@ -83,7 +85,8 @@ public class Problem7 {
 
 /*
 <<기능 목록>>
-- [V] 친구 목록을 만든다
+- [V] 유저의 친구목록을 먼저 만든다
+- [V] 친구관계를 이용해 친구 목록을 만든다
   - [V] 각 인물의 친구 목록을 담을 HashMap을 만든다
   - [V] 친구관계목록의 각 친구관계마다 두 개의 이름을 뽑아낸다
   - [V] 각 이름이 친구 목록 HashMap에 없으면 친구목록 HashMap에 넣는다
