@@ -3,6 +3,17 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
+    private static Map<String,Integer> plusVisit(Map<String,Integer> friendScore,List<String> visitors){
+
+        for (String visiter: visitors){
+            if (friendScore.containsKey(visiter)){ //친구관계에 존재한 user라면
+                friendScore.replace(visiter,friendScore.get(visiter)+1);
+            }else{
+                friendScore.put(visiter,1);
+            }
+        }
+        return friendScore;
+    }
     private static Map<String,Integer> plusFriend(Map<String,List<String>> friendList,String user){
         Map<String,Integer> friendScore = new HashMap<>();
         Map<String,List<String>> newFriendList = new HashMap<>(friendList); //여기서 삭제하면 heap영역의 friendList에도 영향이 가기 때문
@@ -46,6 +57,6 @@ public class Problem7 {
     }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Map<String,List<String>> friendMap =friendmake(friends);
-        Map<String,Integer> friendScore = plusFriend(friendMap,user);
+        Map<String,Integer> friendScore = plusVisit(plusFriend(friendMap,user),visitors);
     }
 }
