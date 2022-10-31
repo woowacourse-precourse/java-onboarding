@@ -1,9 +1,33 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
+//문제 7번 기능 요구사항
+//1. 특정 아이디 주면 그 아이디와 친구인 아이디 반환하는 함수
+//2. 사용자와 친구인 사람 찾아서 리스트로 반환하는 함수
+//3. 사용자와 친구인 사람과 친구인 사람 점수 10점 주는 함수
+//4. 방문자에서 사용자와 친구를 제거하는 함수
+//5. 방문한 횟수 세어서 점수 주는 함수
+//6. 점수 순으로 정렬하고 점수 같으면 문자 순으로 정렬하는 함수
+
 public class Problem7 {
+
+    //기능 1
+    public static String findFriend(String id, List<String> friend) {
+        if(friend.get(0).equals(id)) {
+            return friend.get(1);
+        }
+        else if(friend.get(1).equals(id)){
+            return friend.get(0);
+        }
+        else {
+            return null;
+        }
+    }
+    
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
