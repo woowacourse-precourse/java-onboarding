@@ -6,7 +6,7 @@ import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 /**
- * Programs should be written for people to read, and only incidectally for machine to execute
+ * Programs should be written for people to read, and only incidentally for machine to execute
  */
 
 class Problem1 {
