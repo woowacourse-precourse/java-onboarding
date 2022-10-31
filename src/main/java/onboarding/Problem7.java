@@ -69,10 +69,29 @@ public class Problem7 {
             recommendScoreMap.remove(friend);
         });
     }
-    private static void deleteUserAndFriends(String user, Map<String, Set<String>> friendsMap, Map<String, Integer> recommendScoreMap){
-        recommendScoreMap.remove(user);
-        friendsMap.get(user).forEach(friend -> {
-            recommendScoreMap.remove(friend);
-        });
+    private static List<String> recommendListByScoreMap(Map<String, Integer> recommendScoreMap){
+
+        List<String> result = new ArrayList<>();
+        
+        while (!recommendScoreMap.isEmpty() && result.size() < 5){
+            String maxScoreUser = Collections.max(recommendScoreMap.entrySet(), comparator).getKey();
+            result.add(maxScoreUser);
+            recommendScoreMap.remove(maxScoreUser);
+        }
+
+        return result;
     }
+    private static Comparator<Map.Entry<String , Integer>> comparator = new Comparator<Map.Entry<String , Integer>>() {
+        @Override
+        public int compare(Map.Entry<String , Integer> o1, Map.Entry<String , Integer> o2) {
+            if (o1.getValue() > o2.getValue()){
+                return 1;
+            } else if (o1.getValue() == o2.getValue()) {
+                return -1 * o1.getKey().compareTo(o2.getKey());
+            } else {
+                return -1;
+            }
+        }
+    };
+
 }
