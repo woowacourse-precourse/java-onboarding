@@ -20,7 +20,24 @@ public class Problem7 {
         if (!user.toLowerCase().equals(user))
             return null;
 
+        ArrayList<String> oldFriends= (ArrayList<String>) getOldFriends(user, friends);
+
+
         return answer;
+    }
+
+    public static List<String> getOldFriends(String user, List<List<String>> friends){
+        ArrayList<String> oldFriends = new ArrayList<String>();
+
+        for (int i=0; i<friends.size(); i++){
+            if (friends.get(i).contains(user)){
+                if (friends.get(i).get(0).equals(user))
+                    oldFriends.add(friends.get(i).get(1));
+                else
+                    oldFriends.add(friends.get(i).get(0));
+            }
+        }
+        return oldFriends;
     }
 }
 
