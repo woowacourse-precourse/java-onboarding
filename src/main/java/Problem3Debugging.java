@@ -1,9 +1,10 @@
-package onboarding;
-
 import java.util.ArrayList;
 
-public class Problem3 {
-    public static int solution(int number) {
+public class Problem3Debugging {
+
+    public static void main(String[] args) {
+        int number = 13;
+
         int answer = 0;
 
 
@@ -47,6 +48,6 @@ public class Problem3 {
 
 
 
-        return answer;
+
     }
 }
