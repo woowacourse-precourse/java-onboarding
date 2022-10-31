@@ -9,7 +9,7 @@ public class Problem4 {
 
     public static String solution(String word) {
         treeFrogs = new HashMap<>();
-        createTreeFrogMap();
+        createTreeFrogs();
         return changeWordWithTreeFrogs(word);
     }
 
@@ -26,7 +26,7 @@ public class Problem4 {
         return changeWord.toString();
     }
 
-    private static void createTreeFrogMap() {
+    private static void createTreeFrogs() {
         char start = 'a';
         char end = 'z';
         mappingAlphabetToMap(start, end);
