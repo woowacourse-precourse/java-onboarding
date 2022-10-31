@@ -16,6 +16,7 @@ public class Problem7 {
         initFriendsScore(friends_score, exception_list, user);
         setScore(friends, friends_score, exception_list, visitors);
         List<Map.Entry<String, Integer>> sortedList = sortScore(friends_score);
+        List<String> answer = getAnswer(sortedList);
         return answer;
     }
     public static Map<String, Integer> makeFriendsScore(List<List<String>> friends) {
@@ -71,5 +72,13 @@ public class Problem7 {
         sortedList.sort(((o1, o2) -> friends_score.get(o2.getKey()) - friends_score.get(o1.getKey())));
         return sortedList;
     }
-
+    public static List<String> getAnswer(List<Map.Entry<String, Integer>> sortedList) {
+        List<String> answer = new ArrayList<String>();
+        for(Map.Entry<String, Integer> user_info : sortedList) {
+            Integer score = user_info.getValue();
+            if (answer.size() < 5 && score> 0)
+                answer.add(user_info.getKey());
+        }
+        return answer;
+    }
 }
