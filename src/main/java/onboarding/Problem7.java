@@ -41,8 +41,8 @@ public class Problem7 {
 			}
 		});
 
-		for(Entry<String, Integer> ent: pointArr)
-			answer.add(ent.getKey());
+		for(int i = 0;i < 5 && i <  pointArr.size();i++)
+			answer.add(pointArr.get(i).getKey());
 
 		return answer;
 	}
