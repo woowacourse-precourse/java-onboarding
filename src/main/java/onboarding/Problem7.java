@@ -11,7 +11,17 @@ public class Problem7 {
 
         calcFriendsScore(userFriends, notUserFriendsScore, friends);
 
+        calcVisitScore(notUserFriendsScore, visitors);
+
         return answer;
+    }
+
+    public static void calcVisitScore(HashMap<String, Integer> notUserFriendsScore, List<String> visitors) {
+        for (String visitorId : visitors) {
+            if (notUserFriendsScore.containsKey(visitorId)) {
+                notUserFriendsScore.replace(visitorId, notUserFriendsScore.get(visitorId) + 1);
+            }
+        }
     }
 
     public static void calcFriendsScore(HashSet<String> userFriends, HashMap<String, Integer> notUserFriendsScore, List<List<String>> friends) {
