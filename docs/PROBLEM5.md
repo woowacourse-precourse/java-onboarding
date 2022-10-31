@@ -21,5 +21,7 @@
 
 ## 기능 구현 목록
 
+- isValidRangeNumberException(int number)
+  - 돈의 범위가 유효하면 true를 반환한다.
 - getCount(int money)
   - 인수로 들어온 금액을 바탕으로 정답을 구해준다.
