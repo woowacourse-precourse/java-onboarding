@@ -34,7 +34,7 @@ class Problem1 {
         if(answer==pobiMaxNum)
             answer = 1;
         else
-            answer = 0;
+            answer = 2;
         
         return answer;
     }
