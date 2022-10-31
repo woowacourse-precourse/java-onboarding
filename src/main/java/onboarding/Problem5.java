@@ -12,22 +12,23 @@ public class Problem5 {
     }
 
     public static List<Integer> solution(int money) {
-        List<Integer> answer = new ArrayList<>(Collections.emptyList());
+        List<Integer> answer = new ArrayList<>();
         int fiveMoney = 50000;
         int oneMoney = 10000;
 
-        if (!checkParam(money)) {
-            while (oneMoney != 0)
-            {
-                if (fiveMoney != 5) {
-                    answer.add(money / fiveMoney);
-                    money %= fiveMoney;
-                    fiveMoney /= 10;
-                }
-                answer.add(money / oneMoney);
-                money %= oneMoney;
-                oneMoney /= 10;
+        if (checkParam(money)) {
+            return Collections.emptyList();
+        }
+        while (oneMoney != 0)
+        {
+            if (fiveMoney != 5) {
+                answer.add(money / fiveMoney);
+                money %= fiveMoney;
+                fiveMoney /= 10;
             }
+            answer.add(money / oneMoney);
+            money %= oneMoney;
+            oneMoney /= 10;
         }
         return answer;
     }
