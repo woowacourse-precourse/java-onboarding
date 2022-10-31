@@ -65,11 +65,10 @@ public class Problem7 {
         });
 
         List<String> answer = new ArrayList<>();
+        int MAX_LOOP_SIZE = 5;
+        int loopSize = Math.min(MAX_LOOP_SIZE, scoreList.size());
 
-        for (int i=0; i<scoreList.size(); i++) {
-            if (i == 5)
-                break;
-
+        for (int i=0; i<loopSize; i++) {
             Map.Entry<String, Integer> entry = scoreList.get(i);
             addNameToAnswer(answer, entry);
         }
