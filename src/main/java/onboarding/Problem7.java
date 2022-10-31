@@ -42,7 +42,7 @@ public class Problem7 {
         if (!isValidVisitorsSize(visitors)) {
             throw new IllegalArgumentException();
         }
-        visitors.forEach(visitor -> validateUser(visitor));
+        visitors.forEach(Problem7::validateUser);
     }
 
     private static boolean isValidVisitorsSize(List<String> visitors) {
@@ -53,17 +53,14 @@ public class Problem7 {
         if (!isValidFriendsSize(friends)) {
             throw new IllegalArgumentException();
         }
-        friends.forEach(friend -> friend.forEach(user -> validateUser(user)));
+        friends.forEach(friend -> friend.forEach(Problem7::validateUser));
     }
 
     private static boolean isValidFriendsSize(List<List<String>> friends) {
         if (friends.size() < FRIENDS_LIST_SIZE_MIN || friends.size() > FRIENDS_LIST_SIZE_MAX) {
             return false;
         }
-        if (countInvalidFriendsElement(friends) != 0) {
-            return false;
-        }
-        return true;
+        return countInvalidFriendsElement(friends) == 0;
     }
 
     private static int countInvalidFriendsElement(List<List<String>> friends) {
@@ -95,15 +92,16 @@ public class Problem7 {
 
             userAndRecommendScoreList.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
             answer = userAndRecommendScoreList.stream()
-                .filter(entry -> entry.getKey() != mainCharacter)
+                .filter(entry -> !entry.getKey()
+                    .equals(mainCharacter))
                 .filter(entry -> !mainCharacterFriends.contains(entry.getKey()))
                 .filter(entry -> entry.getValue() > 0)
-                .map(entry -> entry.getKey())
+                .map(Map.Entry::getKey)
                 .limit(ANSWER_SIZE_MAX)
                 .collect(Collectors.toList());
         }
 
-        public static List<String> get() {
+        public List<String> get() {
             return answer;
         }
     }
@@ -123,7 +121,7 @@ public class Problem7 {
             });
         }
 
-        public static Map<String, Integer> get() {
+        public Map<String, Integer> get() {
             return userAndRecommendScore;
         }
     }
@@ -140,17 +138,17 @@ public class Problem7 {
             visitors.forEach(visitor -> userAndVisitScore.put(visitor, userAndVisitScore.get(visitor) + 1));
         }
 
-        public static Map<String, Integer> get() {
+        public Map<String, Integer> get() {
             return userAndVisitScore;
         }
     }
 
     public static class Friends {
 
-        private static final Map<String, List<String>> userAndFriends = new HashMap<>();
+        private static Map<String, List<String>> userAndFriends;
 
         public Friends(String mainCharacter, List<List<String>> friends) {
-
+            userAndFriends = new HashMap<>();
             friends.forEach(user -> {
                 addFriend(userAndFriends, user.get(0), user.get(1));
                 addFriend(userAndFriends, user.get(1), user.get(0));
@@ -176,9 +174,10 @@ public class Problem7 {
 
     public static class BothKnowFriendsScore {
 
-        private static Map<String, Integer> userAndBothKnowFriendsScore = new HashMap<>();
+        private static Map<String, Integer> userAndBothKnowFriendsScore;
 
         public BothKnowFriendsScore(String mainCharacter, Map<String, List<String>> userAndFriends) {
+            userAndBothKnowFriendsScore = new HashMap<>();
             List<String> mainCharacterFriends = userAndFriends.get(mainCharacter);
 
             userAndFriends.forEach((user, friends) -> {
@@ -187,13 +186,13 @@ public class Problem7 {
             });
         }
 
-        private static int countBothKnowFriends(List<String> friends1, List<String> friends2) {
+        private int countBothKnowFriends(List<String> friends1, List<String> friends2) {
             return (int) friends1.stream()
-                .filter(friend1 -> friends2.contains(friend1))
+                .filter(friends2::contains)
                 .count();
         }
 
-        public static Map<String, Integer> get() {
+        public Map<String, Integer> get() {
             return userAndBothKnowFriendsScore;
         }
     }
