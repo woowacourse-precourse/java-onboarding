@@ -48,4 +48,22 @@ public class Problem6 {
             map.put(sub, map.getOrDefault(sub, 0) + 1);
         }
     }
+
+    // 2번 이상 사용 된 단어이며, 닉네임에 해당 단어가 포함되어있다면, 해당 단어에 방문 체크하는 메소드
+    private static void createContainWord(List<List<String>> forms) {
+        for (int idx = 0; idx < forms.size(); idx++) {
+            checkContainWord(forms, idx);
+        }
+    }
+
+    // 해당 문자열이 단어를 포함되는지 판단하고 방문체크하는 메소드
+    private static void checkContainWord(List<List<String>> forms, int idx) {
+        String str = forms.get(idx).get(1);
+        for (String key : map.keySet()) {
+            if (map.get(key) >= 2 && str.contains(key)) {
+                isContainWord[idx] = true;
+                break;
+            }
+        }
+    }
 }
