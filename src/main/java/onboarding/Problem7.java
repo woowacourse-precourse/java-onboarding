@@ -34,4 +34,14 @@ public class Problem7 {
             }
         }
     }
+
+    public static void addVisitorScore(Map<String, Integer> scores, List<String> visitors, List<String> friends) {
+        for (String visitor : visitors) {
+            if (friends.contains(visitor))
+                continue;
+            if (!scores.containsKey(visitor))
+                scores.put(visitor, 0);
+            scores.put(visitor, scores.get(visitor) + 1);
+        }
+    }
 }
