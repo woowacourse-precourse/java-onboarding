@@ -2,15 +2,7 @@ package onboarding;
 
 public class Problem3 {
     public static int solution(int number) {
-        int answer = 0;
-        if (isValidInput(number)) {
-            answer = sumTotalClap(number);
-        }
-        return answer;
-    }
-
-    private static boolean isValidInput(int number) {
-        return number >= 1 && number <= 10000;
+        return sumTotalClap(number);
     }
 
     private static int sumTotalClap(int number) {

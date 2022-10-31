@@ -2,20 +2,11 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 
 public class Problem5 {
     public static List<Integer> solution(int money) {
-        if (isValidInput(money)) {
-            List<Integer> answer = returnResultList(money);
-            return answer;
-        }
-        return null;
-    }
-
-    private static boolean isValidInput(int money) {
-        return money >= 1 && money <= 1000000;
+        return returnResultList(money);
     }
 
     private static List<Integer> returnResultList(int money) {

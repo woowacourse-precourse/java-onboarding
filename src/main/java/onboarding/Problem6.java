@@ -6,8 +6,7 @@ import java.util.List;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = sortResult(returnResult(forms));
-        return answer;
+        return sortResult(returnResult(forms));
     }
 
     private static List<String> sortResult(List<String> result) {

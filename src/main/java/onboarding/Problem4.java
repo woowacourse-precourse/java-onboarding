@@ -2,14 +2,7 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        if (isValidLength(word)) {
-            return changeWord(word);
-        }
-        return word;
-    }
-
-    private static boolean isValidLength(String word) {
-        return word.length() >= 1 && word.length() <= 1000;
+        return changeWord(word);
     }
 
     private static String changeWord(String word) {

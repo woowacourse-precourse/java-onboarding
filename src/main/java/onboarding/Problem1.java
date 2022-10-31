@@ -4,8 +4,7 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = returnResult(pobi, crong);
-        return answer;
+        return returnResult(pobi, crong);
     }
 
     private static int returnResult(List<Integer> pobi, List<Integer> crong) {
@@ -21,14 +20,11 @@ class Problem1 {
         return 0;
     }
     private static boolean isInvalidInput(List<Integer> pageList) {
-        return isInvalidRange(pageList) || isNotAdjoin(pageList) || isInvalidListSize(pageList) || isInvalidParity(pageList);
+        return isInvalidRange(pageList) || isNotAdjoin(pageList) || isInvalidParity(pageList);
     }
 
     private static boolean isInvalidParity(List<Integer> pageList) {
         return pageList.get(0) % 2 == 0 || pageList.get(1) % 2 == 1;
-    }
-    private static boolean isInvalidListSize(List<Integer> pagelist) {
-        return pagelist.size() != 2;
     }
 
     private static boolean isNotAdjoin(List<Integer> pageList) {
