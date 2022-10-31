@@ -53,6 +53,16 @@ class Problem1 {
                 .getAsInt();
     }
 
+    private static int getMul(List<Integer> NumList) {
+        return NumList.stream()
+                .mapToInt(Integer::intValue)
+                .reduce((a, b) -> {
+                    return a * b;
+                })
+                .getAsInt();
+    }
+
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if (validList(pobi) == false || validList(crong) == false)
             return -1;
