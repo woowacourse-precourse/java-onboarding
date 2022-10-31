@@ -31,6 +31,14 @@
 
 ## 기능 구현 목록
 
+- checkException(String user, List<List<String>> friends, List<String> visitors)
+  - 문제에서 요구하는 예외를 처리해주는 기능
+- isValidUserLength(String user)
+  - user의 길이가 유효한지 확인해주는 기능
+- isValidFriendsLength(List<List<String>> friends)
+  - friends의 길이가 유효한지 확인해주는 기능
+- isValidIdLengthAndIdSmallCaseRegex(String user, List<List<String>> friends, List<String> visitors)
+  - 친구들의 아이디와, 아이디가 소문자로 이루어졌는지 확인해주는 기능
 - isFriendsContainUser(List<String> friends, String user)
   - 유저와 친구 관계인지 확인해주는 기능
 - updateRecommendScore(String user, int score)
