@@ -30,6 +30,12 @@ public class Problem2 {
     }
 
     private static int popResultStack(Stack<Character> stackResult, int flag, char checkChar) {
+        if (flag > 0 && checkChar != stackResult.peek()) {
+            for (int i = 0; i < flag + 1; i++) {
+                stackResult.pop();
+            }
+            flag = 0;
+        }
         return flag;
     }
 
