@@ -24,3 +24,10 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 구현 기능
+
+- [이름, 점수] 형태의 map을 생성하는 기능
+- user와 이미 친구인 목록의 list를 생성하는 기능
+- 방문 점수 및 친구 점수를 추가하는 기능
+- 점수가 큰 순서대로 친구를 추천하고 0점인 대상은 제거하는 기능
