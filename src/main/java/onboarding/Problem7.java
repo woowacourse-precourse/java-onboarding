@@ -89,7 +89,11 @@ public class Problem7 {
 
     }
     public void calculateFriendsScore(String user, HashMap<String, People> map){
-
+        ArrayList<String> userFriendsList = map.get(user).friendList;
+        if(userFriendsList.isEmpty()) return;
+        for(People person : map.values()){
+            scoreToUserFriend(userFriendsList, person);
+        }
     }
 
     public void calculateVisitorsScore(String user, HashMap<String, People> map, List<String> visitors){

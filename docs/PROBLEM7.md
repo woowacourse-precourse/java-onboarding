@@ -74,8 +74,8 @@
 
 <br/>
 
-- ⬜ calculateFriendsScore 메소드 구현
-  - ⬜ 사용자와 함께 아는 친구수에 대한 점수를 계산
+- ✅ calculateFriendsScore 메소드 구현
+  - ✅ 사용자와 함께 아는 친구수에 대한 점수를 계산
 
 <br/>
 
