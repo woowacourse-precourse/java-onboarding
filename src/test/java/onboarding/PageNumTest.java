@@ -57,4 +57,20 @@ class PageNumTest {
 		assertThat(60).isEqualTo(mulPage2);
 		assertThat(0).isEqualTo(mulPage3);
 	}
+
+	@Test
+	public void 점수_구하기() {
+	    //given
+		PageNum pageNum1 = new PageNum(123);
+		PageNum pageNum2 = new PageNum(345);
+		PageNum pageNum3 = new PageNum(40);
+	    //when
+		int score1 = pageNum1.getScore();
+		int score2 = pageNum2.getScore();
+		int score3 = pageNum3.getScore();
+	    //then
+		assertThat(score1).isEqualTo(6);
+		assertThat(score2).isEqualTo(60);
+		assertThat(score3).isEqualTo(4);
+	}
 }

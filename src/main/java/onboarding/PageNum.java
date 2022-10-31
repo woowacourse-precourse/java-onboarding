@@ -50,4 +50,8 @@ public class PageNum {
 		}
 		return reduce.get();
 	}
+
+	public int getScore() {
+		return Math.max(addEachPageNumber(), multiplyEachPageNumber());
+	}
 }
