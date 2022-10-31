@@ -50,6 +50,10 @@ public class Problem6 {
     }
     static List<String> findEmail() {
         List<String> result = new ArrayList<>();
+        Iterator iter = data.iterator();
+        while(iter.hasNext()){
+            result.add(email.get((Integer) iter.next()));
+        }
         return result;
     }
     static void sortEmail(List<String> email){
