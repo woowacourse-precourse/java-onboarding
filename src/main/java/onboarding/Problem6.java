@@ -14,7 +14,7 @@ public class Problem6 {
         for(int i=0; i<nickname.length()-1; i++){
             String token=nickname.substring(i, i+2);
 
-            if (tokens.containsKey(token)) {
+            if (tokens.containsKey(token) && !tokens.get(token).equals(email)) {
                 answer.add(tokens.get(token));
                 answer.add(email);
                 continue;
