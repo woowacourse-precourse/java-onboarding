@@ -9,4 +9,8 @@ public class Problem3 {
     private static String intToString(int number) {
         return Integer.toString(number);
     }
+
+    private static boolean containsNumber(String fullNumber, String number) {
+        return fullNumber.contains(number);
+    }
 }
