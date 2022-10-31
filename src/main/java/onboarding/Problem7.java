@@ -38,6 +38,12 @@ public class Problem7 {
         }
     }
 
+    public static void scoringWithVisits(List<String> visitors) {
+        for (String i : visitors) {
+            score.put(i, score.get(i) + 1);
+        }
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         // 친구들의 이름과 점수를 map으로 저장
         Hashing(user, friends, visitors);
@@ -45,7 +51,8 @@ public class Problem7 {
         // 사용자와 함께 아는 친구의 수에 따른 점수 계산
         scoringWithFriends(user, friends);
 
-
+        // 방문 횟수에 따른 점수 계산
+        scoringWithVisits(visitors);
 
         List<String> answer = Collections.emptyList();
         return answer;
