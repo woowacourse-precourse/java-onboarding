@@ -12,7 +12,15 @@ public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
 
-
+        String str1;
+        for(int i=1; i<number+1; i++){
+            str1 = Integer.toString(i);
+            for(int j=0; j<str1.length(); j++){
+                if(str1.charAt(j)=='3' || str1.charAt(j)=='6' || str1.charAt(j)=='9' ){
+                    answer += 1;
+                }
+            }
+        }
 
         return answer;
     }
