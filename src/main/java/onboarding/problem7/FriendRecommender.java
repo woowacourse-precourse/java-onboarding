@@ -37,7 +37,7 @@ public class FriendRecommender {
     public List<String> recommend() {
         addRelationships();
         List<String> userFriends = relationships.get(user);
-        // Check user friends' friend list
+        introduceFriends(userFriends);
         // Check visitors
         // Create candidate list sorted by score(name if same)
         // Create new friend list(maximum 5) and return
@@ -64,5 +64,21 @@ public class FriendRecommender {
     private void addRelationship(String idA, String idB) {
         if (relationships.containsKey(idA)) relationships.get(idA).add(idB);
         else relationships.put(idA, new ArrayList<>(List.of(idB)));
+    }
+
+    /**
+     * Introduce new friends in current friends' friends
+     * @param userFriends current friend list of user
+     */
+    private void introduceFriends(List<String> userFriends) {
+        for (String name : relationships.keySet()) {
+            if (userFriends.contains(name)) {
+                List<String> nameFriends = relationships.get(name);
+                for (String nameFriend : nameFriends) {
+                    if (nameFriend.equals(user) || userFriends.contains(nameFriend)) continue;
+                    scores.put(nameFriend, scores.getOrDefault(nameFriend, new Friend(nameFriend)).addScore(10));
+                }
+            }
+        }
     }
 }
