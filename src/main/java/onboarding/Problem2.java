@@ -26,13 +26,11 @@ public class Problem2 {
         int pointer = 0;
 
         for (int i = 0; i < crypto.length(); i++) {
-            if (cache == crypto.charAt(i)) {
+            if (isCachedChar(cache, crypto.charAt(i))) {
                 pointer++;
-                cache = crypto.charAt(i);
-                continue;
             }
 
-            else if (pointer > 0) {
+            if (pointer > 0) {
                 return removeDuplicate(crypto, pointer, i);
             }
 
@@ -44,6 +42,10 @@ public class Problem2 {
         }
 
         return crypto;
+    }
+
+    private static boolean isCachedChar(char cache, char cur) {
+        return cache == cur;
     }
 
     private static String removeDuplicate(String crypto, int pointer, int current) {
