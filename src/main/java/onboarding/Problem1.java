@@ -16,6 +16,22 @@ class Problem1 {
 				&& 1 < right && right < 400
 				&& right % 2 == 0);
 	}
+	private static int	getDigitSum(int page)
+	{
+		return (page / 100 + (page % 100) / 10 + page % 10);
+	}
+	private static int	getDigitMultiplication(int page)
+	{
+		int	remainder = page;
+		int	result = 1;
+
+		while (remainder > 0)
+		{
+			result *= remainder % 10;
+			remainder /= 10;
+		}
+		return (result);
+	}
 	public static int solution(List<Integer> pobi, List<Integer> crong) {
 		int answer = Integer.MAX_VALUE;
 		return answer;
