@@ -30,17 +30,17 @@ class Calculator {
         this.pages = pages;
     }
 
-    int returnScore(){
-        int page1_score = getScore(pages.get(0));
-        int page2_score = getScore(pages.get(1));
+    int returnFinalScore(){
+        int page1_score = compareScore(pages.get(0));
+        int page2_score = compareScore(pages.get(1));
         return Integer.max(page1_score, page2_score);
     }
-    int getScore(int page) {
-        int max_page = Integer.max(getSum(page), getMulti(page));
-        return max_page;
+    private int compareScore(int page) {
+        int max_score = Integer.max(getSum(page), getMulti(page));
+        return max_score;
     }
 
-    int getSum(int page) {
+    private int getSum(int page) {
         int sum = 0;
         while (page>0) {
             int q = page/10;
@@ -51,7 +51,7 @@ class Calculator {
         return sum;
     }
 
-    int getMulti(int page) {
+    private int getMulti(int page) {
         int multi = 1;
         while (page>0) {
             int q = page/10;
