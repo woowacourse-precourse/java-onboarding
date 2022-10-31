@@ -24,22 +24,42 @@ public class Problem7 {
         for (int i=0; i<userFriends.size(); i++) {
             String userFriendName = userFriends.get(i);
             for (int j=0; j<friends.size(); j++) {
+                if (friends.get(j).contains(user)) continue;
                 if (friends.get(j).get(0).equals(userFriendName) && !userFriends.contains(friends.get(j).get(1))) {
                     // 내 친구를 발견했고, 친구의 친구가 내 친구가 아니라면 저장한다.
-                    scores.put(friends.get(j).get(1), 10);
+                    Integer friendScore = scores.get(friends.get(j).get(1));
+                    if (friendScore != null) {
+                        friendScore += 10;
+                        scores.put(friends.get(j).get(1), friendScore);
+                    } else {
+                        scores.put(friends.get(j).get(1), 10);
+                    }
                 }
 
                 if (friends.get(j).get(1).equals(userFriendName) && !userFriends.contains(friends.get(j).get(0))) {
                     // 내 친구를 발견했고, 친구의 친구가 내 친구가 아니라면 저장한다.
-                    scores.put(friends.get(j).get(0), 10);
+                    Integer friendScore = scores.get(friends.get(j).get(0));
+                    if (friendScore != null) {
+                        friendScore += 10;
+                        scores.put(friends.get(j).get(0), friendScore);
+                    } else {
+                        scores.put(friends.get(j).get(0), 10);
+                    }
                 }
             }
         }
-
-
-
-        System.out.println(scores);
-        System.out.println(userFriends);
+        
+        // 사용자의 타임 라인에 방문한 횟수 저장
+        for (int i=0; i<visitors.size(); i++) {
+            if (userFriends.contains(visitors.get(i))) continue;
+            Integer friendScore = scores.get(visitors.get(i));
+            if (friendScore != null) {
+                friendScore++;
+                scores.put(visitors.get(i), friendScore);
+            } else {
+                scores.put(visitors.get(i), 1);
+            }
+        }
 
         return answer;
     }
