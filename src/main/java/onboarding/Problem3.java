@@ -1,5 +1,7 @@
 package onboarding;
 
+import java.util.ArrayList;
+
 public class Problem3 {
 //    기능 요구 사항
 //      배달이가 좋아하는 369게임을 하고자 한다. 놀이법은 1부터 숫자를 하나씩 대면서,
@@ -20,6 +22,25 @@ public class Problem3 {
 //    3. 매개변수는 1 ~ 10,000 자연수
     public static int solution(int number) {
         int answer = 0;
+        answer = clapCount(number);
         return answer;
+    }
+
+    public static int clapCount(int number) {
+        int clapResult = 0;    // 박수친 횟수 결과
+        for (int sequence = 0; sequence  <= number; sequence++) {   // number를 최대한도로 0부터 순서대로 카운트
+            ArrayList<Integer> temp = new ArrayList<>();    // 한자리식 담을 임시 저장소
+            String num = Integer.toString(sequence);    // 자릿수 계산을 위한 문자열 변환
+            for (int index = 0; index < num.length(); index++) {    // 일, 십, 백,천 만 단위 별 숫사 한개씩 비교 조건
+                temp.add(num.charAt(index) - '0');  // ArrayList에 한자릿식 더하기
+            }
+            for (int units : temp) {
+                if (units == 3 || units == 6 || units == 9) {   // 자릿수별 3,6,9 확인
+                    clapResult += 1;    //
+                }
+            }
+        }
+
+        return clapResult;
     }
 }
