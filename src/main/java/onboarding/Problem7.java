@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
 
@@ -36,7 +33,7 @@ public class Problem7 {
     }
 
     /**
-     *함께 아는 친구의 수를 세는 메서드
+     * 함께 아는 친구의 수를 세는 메서드
      * @param user1 사용자1
      * @param user2 사용자2
      * @return user1과 user2가 함께 아는 친구의 수
@@ -73,8 +70,51 @@ public class Problem7 {
         }
     }
 
+    /**
+     * 친구 확인 메서드
+     * @param user1 사용자1
+     * @param user2 사용자2
+     * @return user1 과 user2 가 이미 친구면 true
+     */
+    public static boolean isFriend(String user1, String user2) {
+        List<String> friendList = hpFriend.get(user1);
+        if (friendList != null && friendList.contains(user2)) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * 친구 추천 메서드
+     * @param user 친구 추천을 받을 사용자
+     * @return 추천 친구 리스트
+     */
+    public static List<String> recommendFriend(String user) {
+        List<String> result = new ArrayList<>();
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(hpScore.entrySet());
+        entryList.sort(new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                if (o2.getValue() == o1.getValue()) {
+                    return o1.getKey().compareTo(o2.getKey());
+                }
+                return o2.getValue() - o1.getValue();
+            }
+        });
+        for (Map.Entry<String, Integer> entry : entryList) {
+            if (result.size()==5) return result;
+            if (isFriend(user, entry.getKey())) continue;
+            result.add(entry.getKey());
+        }
+        return result;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        saveFriend(friends);
+        calcFriend(user);
+        calcVisitor(visitors);
+
+        List<String> answer = recommendFriend(user);
         return answer;
     }
 }
