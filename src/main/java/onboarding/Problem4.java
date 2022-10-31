@@ -11,11 +11,13 @@ public class Problem4 {
             for (char c = 'a'; c <= 'z'; c++) {
                 put(c, (char) ('z' + 'a' - c));
             }
+            for (char c = 'A'; c <= 'Z'; c++) {
+                put(c, (char) ('Z' + 'A' - c));
+            }
         }
     };
 
     /**
-     *
      * @param plain : 평문
      * @return char : 암호문
      */
@@ -25,6 +27,14 @@ public class Problem4 {
 
     public static String solution(String word) {
         String answer = "";
+        for (int i = 0; i < word.length(); i++) {
+            char plain = word.charAt(i);
+            if (Character.isAlphabetic(plain)) {
+                answer += convert(plain);
+            } else {
+                answer += plain;
+            }
+        }
         return answer;
     }
 }
