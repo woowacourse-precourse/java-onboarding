@@ -22,6 +22,10 @@ public class Problem6 {
                 }
             }
         }
+        for(String email : answerSet){
+            answer.add(email);
+        }
+
         return answer;
     }
 
