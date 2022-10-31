@@ -52,4 +52,16 @@ class Problem1 {
         }
         return false;
     }
+    public static boolean isOdd(int left){
+        if(left % 2 == 1){
+            return true;
+        }
+        return false;
+    }
+    public static boolean isEven(int right){
+        if(right % 2 == 0){
+            return true;
+        }
+        return false;
+    }
 }
