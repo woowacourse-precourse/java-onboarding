@@ -13,4 +13,9 @@ public class Problem4 {
     public static boolean isUpperAlpha(Character ch) {
         return ch >= 'A' && ch <= 'Z';
     }
+
+    public static boolean isLowerAlpha(Character ch) {
+        return ch >= 'a' && ch <= 'z';
+    }
+
 }
