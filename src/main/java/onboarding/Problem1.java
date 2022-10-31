@@ -1,77 +1,72 @@
 package onboarding;
 
 import java.util.List;
-import java.util.Map;
 
 class Problem1 {
 
     static boolean isVaild(List<Integer> pages) {
         int leftPage = pages.get(0);
         int rightPage = pages.get(1);
+
         if (rightPage - leftPage != 1)
             return false;
-
-        if (leftPage >= 3 && leftPage <= 397) {
-            return leftPage % 2 == 1;
-        } else {
+        if (leftPage < 3 || leftPage > 397) {
             return false;
         }
+        return leftPage % 2 == 1;
     }
 
-    static int addCalc(List<Integer> pages) {
-        int maxResult = 0;
-        for (int page : pages) {
-            int divisor = 100;
-            int result = 0;
-            while (divisor > 0) {
-                result += (int) (page / divisor);
-                page %= divisor;
-                divisor /= 10;
-            }
-            maxResult = Math.max(maxResult, result);
+    static int addCalc(int page) {
+        int divisor = 100;
+        int result = 0;
+        while (divisor > 0) {
+            result += (int) (page / divisor);
+            page %= divisor;
+            divisor /= 10;
         }
-        return maxResult;
+        return result;
     }
 
-    static int multiplyCalc(List<Integer> pages) {
-        int maxResult = 0;
-        for (int page : pages) {
-            int divisor = 100;
-            if (page >= 10 && page < 100) {
-                divisor = 10;
-            } else if (page < 10) {
-                divisor = 1;
-            }
-            int result = 1;
-            while (divisor > 0) {
-                result *= (int) (page / divisor);
-                page %= divisor;
-                divisor /= 10;
-            }
-            maxResult = Math.max(maxResult, result);
+    static int multiplyCalc(int page) {
+        int divisor = 100;
+        int result = 1;
+        if (page >= 10 && page < 100) {
+            divisor = 10;
+        } else if (page < 10) {
+            divisor = 1;
         }
-        return maxResult;
+        while (divisor > 0) {
+            result *= (int) (page / divisor);
+            page %= divisor;
+            divisor /= 10;
+        }
+        return result;
     }
 
-    static int maxScore(List<Integer> pages) {
-        int addScore = addCalc(pages);
-        int multiplyScore = multiplyCalc(pages);
-        return Math.max(addScore, multiplyScore);
+    static int calcMaxScore(List<Integer> pages) {
+        int leftPage = pages.get(0);
+        int rightPage = pages.get(1);
+        int maxScore = 0;
+
+        maxScore = Math.max(maxScore, addCalc(leftPage));
+        maxScore = Math.max(maxScore, addCalc(rightPage));
+        maxScore = Math.max(maxScore, multiplyCalc(leftPage));
+        maxScore = Math.max(maxScore, multiplyCalc(rightPage));
+
+        return maxScore;
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if (!isVaild(pobi) || !isVaild(crong)) {
             return -1;
         }
-        int pobi_score = maxScore(pobi);
-        int crong_score = maxScore(crong);
+        int pobi_score = calcMaxScore(pobi);
+        int crong_score = calcMaxScore(crong);
 
-        if (pobi_score > crong_score) {
+        if (pobi_score > crong_score)
             return 1;
-        } else if (pobi_score < crong_score) {
+        if (pobi_score < crong_score)
             return 2;
-        } else {
-            return 0;
-        }
+        return 0;
     }
 }
