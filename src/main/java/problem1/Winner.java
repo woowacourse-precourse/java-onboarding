@@ -1,22 +1,18 @@
 package problem1;
 
-public enum Result {
+public enum Winner {
     POBI_WIN(1),
     CRONG_WIN(2),
     DRAW(0),
-    ERROR(-1);
+    ;
     
     private final int result;
 
-    Result(int result) {
+    Winner(int result) {
         this.result = result;
     }
 
-    public int getResult() {
-        return result;
-    }
-
-    public Result of(int score1, int score2) {
+    public static Winner of(int score1, int score2) {
         if (score1 > score2) {
             return POBI_WIN;
         }
@@ -24,5 +20,9 @@ public enum Result {
             return CRONG_WIN;
         }
         return DRAW;
+    }
+
+    public int getResult() {
+        return result;
     }
 }
