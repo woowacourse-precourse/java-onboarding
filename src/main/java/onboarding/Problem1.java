@@ -3,6 +3,13 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+    /**
+     * 페이지 번호 게임
+     *
+     * @param pobi
+     * @param crong
+     * @return answer || -1 if exception
+     */
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
@@ -19,7 +26,11 @@ class Problem1 {
         return answer;
     }
 
-    // 왼쪽 페이지 연산 결과의 최댓값과 오른쪽 페이지 연산 결과의 최댓값 중 큰 값을 리턴
+    /**
+     * 왼쪽 페이지 연산 결과의 최댓값과 오른쪽 페이지 연산 결과의 최댓값 중 큰 값을 리턴
+     * @param pages
+     * @return MAX value
+     */
     public static int game(List<Integer> pages) {
         int left = pages.get(0);
         int right = pages.get(1);
@@ -27,7 +38,11 @@ class Problem1 {
         return Math.max(calc(left), calc(right));
     }
 
-    // 각 자리 숫자를 모두 더하거나, 모두 곱해 가장 큰 수를 구함
+    /**
+     * 각 자리 숫자를 모두 더하거나, 모두 곱해 가장 큰 수를 구함
+     * @param num
+     * @return MAX value
+     */
     public static int calc(int num) {
         int add = 0, multiply = 1;
         while(num != 0) {
@@ -38,6 +53,11 @@ class Problem1 {
         return Math.max(add, multiply);
     }
 
+    /**
+     * 예외처리
+     * @param pages
+     * @return 예외발생 시, true
+     */
     public static boolean exception(List<Integer> pages) {
         int left = pages.get(0);
         int right = pages.get(1);
