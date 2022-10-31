@@ -28,19 +28,24 @@ public class DecodeUtil {
         return decode(originalString.toString());
     }
 
-    private static boolean deleteDuplication(StringBuilder decodedString, int i, int duplicatedIndex) {
-        if (duplicatedIndex - i > DUPLICATION_INTERVAL) {
-            decodedString.delete(i, duplicatedIndex);
+    private static boolean deleteDuplication(StringBuilder decodedString, int baseIndex, int duplicatedIndex) {
+        if (duplicatedIndex - baseIndex > DUPLICATION_INTERVAL) {
+            decodedString.delete(baseIndex, duplicatedIndex);
             return true;
         }
         return false;
     }
 
-    private static int getDuplicatedIndex(StringBuilder originalString, int i, int duplicatedIndex) {
-        while (duplicatedIndex < originalString.length() && originalString.charAt(i) == originalString.charAt(duplicatedIndex)) {
+    private static int getDuplicatedIndex(StringBuilder originalString, int baseIndex, int duplicatedIndex) {
+        while (isDuplicated(originalString, baseIndex, duplicatedIndex)) {
             duplicatedIndex++;
         }
         return duplicatedIndex;
+    }
+
+    private static boolean isDuplicated(StringBuilder originalString, int baseIndex, int duplicatedIndex) {
+        return duplicatedIndex < originalString.length()
+                && originalString.charAt(baseIndex) == originalString.charAt(duplicatedIndex);
     }
 
     private static boolean isNotDecoded(String originalString, String decodedString) {
