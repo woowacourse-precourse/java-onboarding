@@ -8,6 +8,17 @@ class Problem1 {
 
         // pobi win = 1, crong win = 2, draw = 0, exception = -1
         int answer = Integer.MAX_VALUE;
+        int pobi_score = calSelfScore(pobi);
+        int crong_score = calSelfScore(crong);
+        if ((pobi_score < 0) || (crong_score < 0)) {
+            answer = -1;
+        } else if (pobi_score > crong_score) {
+            answer = 1;
+        } else if (pobi_score < crong_score) {
+            answer = 2;
+        } else if (pobi_score == crong_score) {
+            answer = 0;
+        }
         return answer;
     }
 
