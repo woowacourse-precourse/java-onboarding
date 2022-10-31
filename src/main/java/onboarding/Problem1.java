@@ -24,11 +24,11 @@ class Problem1 {
     }
 
     // 왼쪽 페이지 연산 결과의 최댓값과 오른쪽 페이지 연산 결과의 최댓값 중 큰 값을 리턴
-    public static int game(List<Integer> player) {
-        int odd = player.get(0);
-        int even = player.get(1);
+    public static int game(List<Integer> pages) {
+        int left = pages.get(0);
+        int right = pages.get(1);
 
-        return Math.max(calc(odd), calc(even));
+        return Math.max(calc(left), calc(right));
     }
 
     // 각 자리 숫자를 모두 더하거나, 모두 곱해 가장 큰 수를 구함
@@ -42,16 +42,16 @@ class Problem1 {
         return Math.max(add, multiply);
     }
 
-    public static boolean exception(List<Integer> player) {
-        int odd = player.get(0);
-        int even = player.get(1);
+    public static boolean exception(List<Integer> pages) {
+        int left = pages.get(0);
+        int right = pages.get(1);
 
-        if(odd < 1 || odd > 400 || even < 1 || even > 400) return true; // 페이지 번호 범위(1~400) 벗어남
-        if(odd > even) return true; // 왼쪽 페이지 번호가 오른쪽 페이지 번호보다 큼
-        if(odd % 2 != 1) return true; // 왼쪽 페이지 번호가 홀수값이 아님
-        if(even % 2 != 0) return true; // 오른쪽 페이지 번호가 짝수값이 아님
-        if(even - odd != 1) return true; // 연속된 페이지 번호가 아님
-        if(odd == 1 || even == 400) return true; // 시작 면이나 마지막 면 제외
+        if(left < 1 || left > 400 || right < 1 || right > 400) return true; // 페이지 번호 범위(1~400) 벗어남
+        if(left > right) return true; // 왼쪽 페이지 번호가 오른쪽 페이지 번호보다 큼
+        if(left % 2 != 1) return true; // 왼쪽 페이지 번호가 홀수값이 아님
+        if(right % 2 != 0) return true; // 오른쪽 페이지 번호가 짝수값이 아님
+        if(right - left != 1) return true; // 연속된 페이지 번호가 아님
+        if(left == 1 || right == 400) return true; // 시작 면이나 마지막 면 제외
 
         return false;
     }
