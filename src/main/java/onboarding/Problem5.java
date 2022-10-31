@@ -13,9 +13,7 @@ public class Problem5 {
         List<Integer> answer = new ArrayList<>();
 
         // 입력된 금액에 대한 검증을 진행한다.
-        ValidationUtil moneyValidation = new ValidationUtil();
-        moneyValidation.addVarName("money");
-        moneyValidation.checkNumRange(money, 1, 100000);
+        moneyValidation(money);
 
         // 내림차순으로 정렬된 화폐 단위를 순회한다.
         for(int unit : MONETARY_UNIT) {
@@ -31,5 +29,17 @@ public class Problem5 {
         }
 
         return answer;
+    }
+
+    /**
+     * 입력으로 들어온 금액에 대해 검증한다.
+     *
+     * @param money 입력받은 금액
+     */
+    private static void moneyValidation(int money) {
+        ValidationUtil moneyValidation = new ValidationUtil();
+        moneyValidation.addVarName("money");
+        // 금액은 1~1000000 사이의 값이어야 한다. 
+        moneyValidation.checkNumRange(money, 1, 1000000);
     }
 }
