@@ -19,4 +19,20 @@ public class TotalScoreStorageTest {
 		Assertions.assertThat(totalScoreStorage.getScore("jerry")).isEqualTo(10);
 	}
 
+	@Test
+	void get_max_score_list() {
+		TotalScoreStorage totalScoreStorage = new TotalScoreStorage();
+		totalScoreStorage.add(List.of("mikea"), 7);
+		totalScoreStorage.add(List.of("mikeb"), 5);
+		totalScoreStorage.add(List.of("mikec"), 6);
+		totalScoreStorage.add(List.of("miked"), 7);
+		totalScoreStorage.add(List.of("mikee"), 8);
+		totalScoreStorage.add(List.of("mikef"), 9);
+		totalScoreStorage.add(List.of("mikeg"), 10);
+
+		Assertions.assertThat(totalScoreStorage.getRecommendedfriends())
+			.isEqualTo(List.of("mikeg", "mikef", "mikee", "mikea", "miked"));
+
+	}
+
 }
