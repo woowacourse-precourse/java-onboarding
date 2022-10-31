@@ -14,7 +14,7 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         duplicationList = new TreeSet<>();
         partOfNicknameToEmail = new HashMap<>();
-        return null;
+        return deduplication(forms);
     }
     // 크루 전체를 탐색하는 기능
     private static List<String> deduplication(List<List<String>> forms) {
