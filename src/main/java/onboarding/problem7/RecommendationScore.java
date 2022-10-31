@@ -39,6 +39,6 @@ public class RecommendationScore implements Comparable<RecommendationScore> {
 
     @Override
     public int compareTo(RecommendationScore o) {
-        return this.score.compareTo(o.score);
+        return score.compareTo(o.score);
     }
 }
