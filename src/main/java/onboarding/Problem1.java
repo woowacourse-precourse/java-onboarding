@@ -16,4 +16,12 @@ class Problem1 {
         }
         return true;
     }
+    public static List<Integer> splitPagenumber(Integer pagenumber){
+        List<Integer> pageSplits = new ArrayList<>();
+        while(pagenumber > 0){
+            pageSplits.add(pagenumber%10);
+            pagenumber /= 10;
+        }
+        return pageSplits;
+    }
 }
