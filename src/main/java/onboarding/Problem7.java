@@ -21,13 +21,15 @@ public class Problem7 {
             makeFriendRelation(friend, relationMap);
         }
 
-        List<String> userFriends = relationMap.get(user);
+        if(hasUserFriend(user, relationMap)) {
+            List<String> userFriends = relationMap.get(user);
 
-        for (String userFriend : userFriends) {
+            for (String userFriend : userFriends) {
 
-            List<String> userFriendFriends = relationMap.get(userFriend);
+                List<String> userFriendFriends = relationMap.get(userFriend);
 
-            chargeTenUserFriendFriend(scoreMap, userFriendFriends);
+                chargeTenUserFriendFriend(scoreMap, userFriendFriends);
+            }
         }
 
         for (String visitor : visitors) {
@@ -86,10 +88,18 @@ public class Problem7 {
             return false;
         }
 
+        if (!hasUserFriend(user, relationMap)) {
+            return true;
+        }
+
         for (String userFriend : relationMap.get(user)) {
             if (userFriend.equals(name)) return false;
         }
 
         return true;
+    }
+
+    private static boolean hasUserFriend(String user, Map<String, List<String>> relationMap) {
+        return relationMap.get(user) != null;
     }
 }
