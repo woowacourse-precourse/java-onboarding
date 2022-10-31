@@ -1,12 +1,14 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.Collections;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer;
         Set<String> emailSet = new HashSet<>();
 
         for (int i = 0; i < forms.size(); i++) {
@@ -14,6 +16,10 @@ public class Problem6 {
                 emailSet.addAll(getOverlapCrewsEmail(forms.get(i), forms.get(j)));
             }
         }
+
+        answer = new ArrayList<>(emailSet);
+        Collections.sort(answer);
+
         return answer;
     }
 
