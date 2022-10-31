@@ -64,9 +64,4 @@ public class Problem5 {
         }
         return answer;
     }
-
-    public static void main(String[] args) {
-        List<Integer> solution = Problem5.solution(50237);
-        System.out.println(solution);
-    }
 }

@@ -57,14 +57,4 @@ class Problem1 {
             return -1;
         }
     }
-
-//    public static void main(String[] args) {
-//
-//
-//        List<Integer> pobi = new ArrayList<Integer>(Arrays.asList(97, 98));
-//        List<Integer> crong = new ArrayList<Integer>(Arrays.asList(197, 198));
-//        int solution = Problem1.solution(pobi, crong);
-//        System.out.println(solution);
-//
-//    }
 }

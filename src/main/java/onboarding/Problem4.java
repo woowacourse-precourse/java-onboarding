@@ -5,20 +5,15 @@ public class Problem4 {
         String answer = "";
         for (int i = 0; i < word.length(); i++) {
             char c = word.charAt(i);
-            if(c>=65 && c<=90){
-                answer += (char)(155-c);
+            if (c >= 65 && c <= 90) {
+                answer += (char) (155 - c);
 
-            }else if(c>=97 && c<=122){
-                answer += (char)(219-c);
-            }else{
+            } else if (c >= 97 && c <= 122) {
+                answer += (char) (219 - c);
+            } else {
                 answer += c;
             }
         }
         return answer;
-    }
-
-    public static void main(String[] args) {
-        String s = Problem4.solution(new String("I love you"));
-        System.out.println(s);
     }
 }
