@@ -59,20 +59,9 @@ class Problem1 {
             if (crongScoreFinal > crongScore.get(i)) crongScoreFinal = crongScore.get(i);
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+        if (pobiScoreFinal > crongScoreFinal) answer = 1;
+        if (pobiScoreFinal == crongScoreFinal) answer = 0;
+        if (pobiScoreFinal < crongScoreFinal) answer = 2;
 
         return answer;
     }
