@@ -8,8 +8,8 @@ import java.util.Set;
 public class DuplicationCheckerImp implements DuplicationChecker {
 
 	private boolean checkDuplication(String nickname1, String nickname2) {
-		for (int i = 0; i < nickname1.length(); i++) {
-			if (nickname2.contains(nickname1.substring(i, i + 1))) {
+		for (int i = 0; i < nickname1.length() - 1; i++) {
+			if (nickname2.contains(nickname1.substring(i, i + 2))) {
 				return true;
 			}
 		}
