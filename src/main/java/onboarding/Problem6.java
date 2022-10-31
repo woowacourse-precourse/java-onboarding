@@ -71,7 +71,7 @@ public class Problem6 {
     }
 
     public static boolean isValidNickname(String nickname) {
-        String nicknameRegex = "^[ㄱ-ㅎ가-힣]*";
+        String nicknameRegex = "^[ㄱ-ㅎ가-힣ㅏ-ㅣ]*";
         return nickname.length() >= MIN_NICKNAME_LENGTH && nickname.length() < MAX_NICKNAME_LENGTH
                 && nickname.matches(nicknameRegex);
     }
