@@ -27,8 +27,8 @@ public class Problem5 {
      * 현재 지폐를 이용해 변환할 수 있는 가장 큰 금액 구하기
      *
      * @param money
-     * @param index
-     * @return bills[index]으로 바꿀 수 있는 돈 액수
+     * @param bill
+     * @return bill 으로 바꿀 수 있는 돈 액수
      */
     private static int getMoneyWithBill(int money, int bill) {
         if (money >= bill) {
