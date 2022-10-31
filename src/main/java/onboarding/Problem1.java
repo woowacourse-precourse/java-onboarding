@@ -7,4 +7,14 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
+
+    //  입력된 수의 자릿수별 덧셈연산
+    private static int valueByPlus(int num) {
+        int result = num % 10;
+        while (num >= 10) {
+            num /= 10;
+            result += num % 10;
+        }
+        return result;
+    }
 }
