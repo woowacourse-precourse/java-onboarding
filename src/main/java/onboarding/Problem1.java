@@ -9,8 +9,12 @@ class Problem1 {
     // 3. 나의 큰수 결정하는 메소드
     // 4. 포비랑 크롱을 비교하는 메소드 -> return 값을 정하는 메소드 : solution
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+
+        if(checkPage(pobi) && checkPage(crong)){
+            if(calMax(pobi)>calMax(crong)) return 1;
+            else if(calMax(pobi)<calMax(crong)) return 2;
+            else return 0;
+        }else return -1;
     }
 
     public static boolean checkPage(List<Integer> list){ // 페이지 연속 확인하는 메소드
@@ -43,8 +47,5 @@ class Problem1 {
 
         return max;
     }
-
-
-
 
 }
