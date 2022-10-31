@@ -7,7 +7,6 @@ public class Problem6 {
     private static final int EMAIL = 0;
     private static final int NICKNAME = 1;
 
-
     public static List<String> solution(List<List<String>> forms) {
 
         Set<String> resultSet = new HashSet<>();
