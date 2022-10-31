@@ -5,20 +5,12 @@ import java.util.*;
 
 class Problem1 {
     public static int get_sum(int num){
-        int hund_d=0; int ten_d=0; int units=0;
-        hund_d=num/100;
-        ten_d=(num%100)/10;
-        units=num%10;
-        return hund_d+ten_d+units;
+
+        return get_digitList(num).stream().mapToInt(Integer::intValue).sum();
     }
     public static int get_prod(int num) {
-        int hund_d = 0;
-        int ten_d = 0;
-        int units = 0;
-        hund_d = num / 100;
-        ten_d = (num % 100) / 10;
-        units = num % 10;
-        return hund_d* ten_d * units;
+        return get_digitList(num).stream().reduce(1,(a,b) -> a*b);
+
     }
 
     public static int get_max(int num1, int num2) {
@@ -33,6 +25,20 @@ class Problem1 {
             }
         }
         return max;
+    }
+    public static List<Integer> get_digitList(int num){
+        List<Integer> digitList=new ArrayList<>();
+        int hund_d=0;
+        int ten_d=0;
+        int one_d=0;
+        hund_d=num/100;
+        ten_d=(num%100)/10;
+        one_d=num%10;
+
+
+        digitList=Arrays.asList(hund_d,ten_d,one_d);
+
+        return digitList;
     }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int Max_p=0,Max_c = 0;// hund_d= 백의자리, ten_d 십의자리, units 일의 자리
