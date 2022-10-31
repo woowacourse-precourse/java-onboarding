@@ -12,6 +12,8 @@ import java.util.List;
 
 public class Problem5 {
 
+    private static final int MIN_MONEY = 1;
+    private static final int MAX_MONEY = 1000000;
     final static int[] AMOUNT = {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
     public static List<Integer> solution(int money) {
         List<Integer> count = new ArrayList<>();
