@@ -25,6 +25,14 @@ public class Problem7 {
                 }
             }
         }
+
+        for (String visitor : visitors) {
+            friendsScoreMap.merge(visitor, 1, (oldValue, newValue) -> oldValue + 1);
+        }
+
+        List<Map.Entry<String, Integer>> totalScoreMapList = sortTotalScoreMapListByScore(friendsScoreMap);
+
+        return generateResultList(totalScoreMapList, friendUsers);
     }
 
     private static void addFriendUsers(String user, List<String> friend, List<String> friendUsers) {
@@ -43,4 +51,33 @@ public class Problem7 {
         }
     }
 
+    private static List<Map.Entry<String, Integer>> sortTotalScoreMapListByScore(Map<String, Integer> friendsScoreMap) {
+        List<Map.Entry<String, Integer>> totalScoreMapList = new LinkedList<>(friendsScoreMap.entrySet());
+        totalScoreMapList.sort((o1, o2) -> {
+            if (Objects.equals(o1.getValue(), o2.getValue())) {
+                return o1.getKey()
+                         .compareTo(o2.getKey());
+            }
+            return o2.getValue() - o1.getValue();
+        });
+
+        return totalScoreMapList;
+    }
+
+
+    private static List<String> generateResultList(List<Map.Entry<String, Integer>> totalScoreMapList, List<String> friendUsers) {
+        List<String> result = new ArrayList<>();
+        for (Map.Entry<String, Integer> totalScoreMap : totalScoreMapList) {
+            String name = totalScoreMap.getKey();
+            if (friendUsers.contains(name)) {
+                continue;
+            }
+            result.add(name);
+
+            if (result.size() == 5) {
+                break;
+            }
+        }
+        return result;
+    }
 }
