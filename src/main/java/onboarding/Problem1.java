@@ -7,8 +7,7 @@ import java.util.stream.Stream;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        return 1;
     }
 
     public static boolean validation(List<Integer> pages) {
@@ -50,8 +49,10 @@ class Problem1 {
                 .reduce(1,(a,b)->a*b);
     }
 
-    public static int selectValue(int sumValue, int multipliedValue){
-        return Math.max(sumValue, multipliedValue);
+    public static int selectValue(List<Integer> pages){
+        int leftPage = pages.get(0);
+        int rightPage = pages.get(1);
+        return Math.max(getDigitSum(getDigitList(leftPage)), getDigitMultiplied(getDigitList(rightPage)));
     }
 
     public static int selectWinner(int pobiNum, int crongNum){
