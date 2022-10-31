@@ -5,37 +5,6 @@ import java.util.Collections;
 import java.util.List;
 
 class Problem1 {
-    public static int solution(List<Integer> pobi, List<Integer> crong) {
-
-        int answer = Integer.MAX_VALUE;
-
-        if(Math.abs(pobi.get(0) - pobi.get(1)) > 1) {
-            return -1;
-        } else if(Math.abs(crong.get(0) - crong.get(1)) > 1) {
-            return -1;
-        }
-
-        if(pobi.get(0) >= pobi.get(1) || crong.get(0) >= crong.get(1)) {
-            return -1;
-        }
-
-        List<Integer> pobiMax = getOpMax(pobi);
-        List<Integer> crongMax = getOpMax(crong);
-
-        int pobiMaxVal = Collections.max(pobiMax);
-        int crongMaxVal = Collections.max(crongMax);
-
-        if(pobiMaxVal > crongMaxVal) {
-            answer = 1;
-        } else if(pobiMaxVal < crongMaxVal) {
-            answer = 2;
-        } else if(pobiMaxVal == crongMaxVal) {
-            answer = 0;
-        }
-
-        return answer;
-    }
-
     public static List<Integer> convertDigitNum(int num) {
         List<Integer> digitNums = new ArrayList<>();
         while(num > 0) {
@@ -81,4 +50,34 @@ class Problem1 {
         return playerMax;
     }
 
+    public static int solution(List<Integer> pobi, List<Integer> crong) {
+
+        int answer = Integer.MAX_VALUE;
+
+        if(Math.abs(pobi.get(0) - pobi.get(1)) > 1) {
+            return -1;
+        } else if(Math.abs(crong.get(0) - crong.get(1)) > 1) {
+            return -1;
+        }
+
+        if(pobi.get(0) >= pobi.get(1) || crong.get(0) >= crong.get(1)) {
+            return -1;
+        }
+
+        List<Integer> pobiMax = getOpMax(pobi);
+        List<Integer> crongMax = getOpMax(crong);
+
+        int pobiMaxVal = Collections.max(pobiMax);
+        int crongMaxVal = Collections.max(crongMax);
+
+        if(pobiMaxVal > crongMaxVal) {
+            answer = 1;
+        } else if(pobiMaxVal < crongMaxVal) {
+            answer = 2;
+        } else if(pobiMaxVal == crongMaxVal) {
+            answer = 0;
+        }
+
+        return answer;
+    }
 }
