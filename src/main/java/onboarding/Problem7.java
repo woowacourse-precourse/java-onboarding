@@ -51,8 +51,17 @@ public class Problem7 {
         return scoreMap;
     }
 
+    // 친구 추천 점수 구하기
+    private static Map<String, Integer> getScoreMap(String user, List<List<String>> friends, List<String> visitors, List<String> friendList) {
+        Map<String, Integer> scoreMap = new HashMap<>();
+        scoreMap = checkFriends(scoreMap, user, friends, friendList);
+        scoreMap = checkVisitors(scoreMap, visitors, friendList);
+        return scoreMap;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> friendList = getFriendsList(user, friends);
+        Map<String, Integer> scoreMap = getScoreMap(user, friends, visitors, friendList);
         List<String> answer = Collections.emptyList();
         return answer;
     }
