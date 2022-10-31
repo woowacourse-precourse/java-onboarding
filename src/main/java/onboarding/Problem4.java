@@ -26,4 +26,14 @@ public class Problem4 {
             return asciiToAlphabet(219 - asciiNumber);
         }
     }
+
+    private static String concatAlphabet(String word) {
+        StringBuilder sb = new StringBuilder();
+
+        for (char alphabet : word.toCharArray()) {
+            sb.append(convertAlphabet(alphabet));
+        }
+
+        return sb.toString();
+    }
 }
