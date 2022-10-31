@@ -2,9 +2,16 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-
-        String answer  = deleteDuplicate(cryptogram);
-        return answer;
+        int preDeleteLength = cryptogram.length();
+        int postDeleteLength = 0;
+        String resultString = cryptogram;
+        
+        while(preDeleteLength != postDeleteLength && resultString.length() != 0){
+            resultString  = deleteDuplicate(resultString);
+            preDeleteLength = postDeleteLength;
+            postDeleteLength = resultString.length();
+        }
+        return resultString;
     }
 
     private static String deleteDuplicate(String crytogram) {
@@ -26,6 +33,9 @@ public class Problem2 {
                 preChar = charArray[i];
                 continueLength = 1;
             }
+        }
+        if(continueLength == 1){
+            sb.append(charArray[charArray.length-1]);
         }
         return sb.toString();
     }
