@@ -1,81 +1,60 @@
 package onboarding;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
- * 기능 사항
- * a. nickname과 email을 포함한 User Class 구현
- * b. 중복된 이름일 경우 set에 저장
- * c. 두 자씩 map에 저장
+ * 기능 구현 사항
+ * a. 중복 처리 함수
+ * b. result 문자열 오름차순 정렬
  */
 public class Problem6 {
-
-    static Map<String, Integer> nickname = new HashMap<>();
-    static Set<Integer> answer = new HashSet<>();
-    /**
-     * a. User Class
-     */
-    static class User {
-
-        private String nickname;
-        private String email;
-
-        public String getEmail() {
-            return email;
-        }
-
-        public User(String nickname, String email) {
-            this.nickname = nickname;
-            this.email = email;
-
-        }
-    }
-
+    static List<Boolean> Duplicate;
 
     /**
-     * b. 중복된 이름일 경우 set에 저장
-     * idx를 answer set에 저장
+     * a. 중복 처리
+     * @param str1
+     * @param str2
+     * @return 중복이면 true
      */
-    static void addAnswer(int idx){
-        answer.add(idx);
-
-    }
-
-    /**
-     * c. 두 자씩 map에 저장
-     * @param s 유저의 닉네임
-     * @param idx 해당 유저의 인덱스
-     */
-    static void cal(String s, Integer idx) {
-        for (int i = 0; i + 1 < s.length(); i++) {
-            if (nickname.containsKey(s.substring(i, i + 2))) {
-                if (!Objects.equals(nickname.get(s.substring(i, i + 2)), idx)) {
-                    addAnswer(idx);
-                    addAnswer(nickname.get(s.substring(i,i+2)));
-                    answer.add(idx);
-                    answer.add(nickname.get(s.substring(i, i + 2)));
+    private static boolean isOverlap(String str1, String str2){
+        for(int i = 0; i < str1.length() - 1 ; i++){
+            for (int j = 0; j < str2.length() - 1; j++){
+                if (str1.substring(i, i + 2).equals(str2.substring(j, j + 2))){
+                    return true;
                 }
-            } else {
-                nickname.put(s.substring(i, i + 2), idx);
             }
         }
+        return false;
     }
-
     public static List<String> solution(List<List<String>> forms) {
-        nickname.clear();
-        answer.clear();
+        List<String> answer = new ArrayList<>();
+        Duplicate = new ArrayList<>();
+        List<String> nicknames = new ArrayList<>();
 
-        List<User> ids = forms.stream().map(s -> new User(s.get(1), s.get(0))).collect(Collectors.toList());
-
-        for (int i = 0; i < ids.size(); i++) {
-            cal(ids.get(i).nickname, i);
+        for (int i = 0; i < forms.size(); i++){
+            Duplicate.add(false);
+            nicknames.add(forms.get(i).get(1));
         }
-        List<Integer> ans = new ArrayList<>(answer);
-        Set<String> answer = new HashSet<>();
-        ans.forEach((i) -> answer.add(ids.get(i).getEmail()));
-        List<String> result = new ArrayList<>(answer);
-        Collections.sort(result);
-        return result;
+
+        for (int i = 0; i < forms.size() - 1; i++){
+            for (int j = i + 1; j < forms.size(); j++){
+                if (!Duplicate.get(j) && isOverlap(nicknames.get(i), nicknames.get(j))){
+                    Duplicate.set(i, true);
+                    Duplicate.set(j, true);
+                }
+            }
+        }
+
+        for (int i = 0; i < forms.size(); i++){
+            if (Duplicate.get(i)){
+                answer.add(forms.get(i).get(0));
+            }
+        }
+
+        // 오름차순 정렬
+        Collections.sort(answer);
+        return answer;
     }
 }
