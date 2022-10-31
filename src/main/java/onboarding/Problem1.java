@@ -15,18 +15,34 @@ class Problem1 {
         int leftPage = pages.get(0);
         int rightPage = pages.get(1);
 
-        if (leftPage + 1 != rightPage) { // 왼쪽 페이지와 오른쪽 페이지 차가 1이 아닌 경우
+        if (leftPage + 1 != rightPage) {
             return false;
         }
-        if(leftPage%2 !=1 || rightPage%2!=0){ // 왼쪽에 홀수 페이지, 오른쪽에 짝수 페이지가 아닌 경우
+        if(leftPage%2 !=1 || rightPage%2!=0){
             return false;
         }
-        if (leftPage==1 || rightPage == 400){ // 시작 페이지와 끝 페이지 인 경우
+        if (leftPage==1 || rightPage == 400){
             return false;
         }
         return true;
     }
 
+    /**
+     * 규칙에 따라 구할 수 있는 가장 큰 값을 구하는 함수
+     *
+     * @param num : 페이지 번호
+     * @return 페이지 번호로 부터 구할 수 있는 가장 큰 수
+     */
+    public static int pageMaxNum(int num) {
+        int add_result = 0;
+        int max_result = 1;
+        while (num != 0) {
+            add_result += num % 10;
+            max_result *= num % 10;
+            num /= 10;
+        }
+        return Math.max(add_result, max_result);
+    }
 
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
@@ -35,6 +51,8 @@ class Problem1 {
         if (!(checkPage(pobi) && checkPage(crong))) {
             return -1;
         }
+        int pobiMaxNum = Math.max(pageMaxNum(pobi.get(0)), pageMaxNum(pobi.get(1)));
+        int crongMaxNum = Math.max(pageMaxNum(crong.get(0)), pageMaxNum(crong.get(1)));
 
         return answer;
     }
