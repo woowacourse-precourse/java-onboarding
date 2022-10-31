@@ -69,6 +69,8 @@ public class Problem7 {
             }
         });
         for(Map.Entry<String, Integer> entry:entries){
+            if(result.size()==5)
+                break;
             result.add(entry.getKey());
         }
         return result;
