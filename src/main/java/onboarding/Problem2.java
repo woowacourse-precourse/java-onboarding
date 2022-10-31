@@ -12,8 +12,7 @@ public class Problem2 {
      * List 문자 합치기
      */
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        return removeAll(cryptogram);
     }
 
     /**
