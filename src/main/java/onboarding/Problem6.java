@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     static Map<String, Set<String>> nicknameEmailMap;
@@ -14,9 +15,7 @@ public class Problem6 {
             addPartOfNickname(email, nickname);
         }
 
-        List<String> answer = new ArrayList<>(makeEmailSet());
-        answer.sort(Comparator.naturalOrder());
-        return answer;
+        return makeEmailList();
     }
 
     /*
@@ -34,19 +33,16 @@ public class Problem6 {
     }
 
     /*
-    * Map의 Value 중 size가 2 이상인 Set의 이메일들을 List에 추가해 반환
+    * Map의 Value 중 size가 2 이상인 Set의 이메일들을 List로 반환
     *
     * @return List<String>
     * */
-    private static Set<String> makeEmailSet() {
-        Set<String> emailList = new HashSet<>();
-
-        for (Set<String> emails : nicknameEmailMap.values()) {
-            if (emails.size() >= 2) {
-                emailList.addAll(emails);
-            }
-        }
-
-        return emailList;
+    private static List<String> makeEmailList() {
+        return nicknameEmailMap.values().stream()
+                .filter(emailSet -> emailSet.size() >= 2)
+                .flatMap(Set::stream)
+                .distinct()
+                .sorted()
+                .collect(Collectors.toList());
     }
 }
