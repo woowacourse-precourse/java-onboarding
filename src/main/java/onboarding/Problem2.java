@@ -22,5 +22,12 @@ public class Problem2 {
                 }else answer.offerLast(word);
             }else answer.offerLast(word);
         }
+
+        int size = answer.size();
+        StringBuilder result = new StringBuilder();
+        for(int i = 0; i < size; i++) {
+            result.append(answer.pollFirst());
+        }
+        return String.valueOf(result);
     }
 }
