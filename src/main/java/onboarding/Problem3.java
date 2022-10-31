@@ -9,14 +9,10 @@ public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
         for (int i = 1; i <= number; i++) {
+            // 1. 숫자를 문자열 리스트로 변형
             answer += counter(String.valueOf(i).toCharArray());
             }
         return answer;
-    }
-
-    // 1. 숫자를 문자열리스트로 변형
-    public static String numToStr(int number) {
-        return String.valueOf(number);
     }
 
     // 2. 리스트에 3,6,9가 포함되면 개수만큼 세어서 반환
