@@ -16,9 +16,13 @@ public class Problem4 {
 
     private static char changeCase(char c) {
         if (c >= 65 && c <= 90) {
-            return c;
+            return toFrogUpperCase(c);
         }
         return toFrogLowerCase(c);
+    }
+
+    private static char toFrogUpperCase(char c) {
+        return (char)('M' + 'N' - c);
     }
 
     private static char toFrogLowerCase(char c) {
