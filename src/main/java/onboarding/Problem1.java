@@ -41,4 +41,16 @@ class Problem1 {
 
         return numberList;
     }
+
+    private static int chooseSumOrMultiply(List<Integer> numberList) {
+        int sum = 0;
+        int multiply = 1;
+
+        for (int i: numberList) {
+            sum += i;
+            multiply *= i;
+        }
+
+        return Math.max(sum, multiply);
+    }
 }
