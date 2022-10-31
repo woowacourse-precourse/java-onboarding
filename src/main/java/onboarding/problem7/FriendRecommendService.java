@@ -43,7 +43,7 @@ public class FriendRecommendService {
      * @return 친구 추천 목록
      */
     public List<String> getRecommendedFriendsName() {
-        List<Account> accounts = mapAccountInfoToList();
+        List<Account> accounts = findRecommendedAccounts();
 
         sortedScoreDescAndNameAsc(accounts);
         return accounts.stream()
@@ -70,7 +70,7 @@ public class FriendRecommendService {
         account
             .getFriendRelationStream()
             .filter(this::isAddFriendsRelationScoreTarget)
-            .forEach(abc -> abc.addScore(FRIEND_RELATION_SCORE));
+            .forEach(target -> target.addScore(FRIEND_RELATION_SCORE));
     }
 
     /**
@@ -98,9 +98,9 @@ public class FriendRecommendService {
     /**
      * 사용자의 친구로 추천할 수 있는 유의미한 사용자의 목록을 조회하는 메소드
      *
-     * @return 친구 추천 목록을 추천받을 사용자가 아니고 친구 추천 점수가 0을 초과하는 사용자의 목록
+     * @return 추천받을 사용자가 아니면서 친구 추천 점수가 0을 초과하는 사용자의 목록
      */
-    private List<Account> mapAccountInfoToList() {
+    private List<Account> findRecommendedAccounts() {
         return accountRepository.findAllAccount().stream()
             .filter(account -> !account.isAccountId(targetUser))
             .filter(Account::scoreOverThanZero)
@@ -110,10 +110,10 @@ public class FriendRecommendService {
     /**
      * 사용자의 친구 추천 목록을 점수 내림차순, 이름 오름차순으로 정렬하는 메소드
      *
-     * @param accounts 정렬된 친구 추천 목록
+     * @param recommendedAccounts 정렬된 친구 추천 목록
      */
-    private void sortedScoreDescAndNameAsc(List<Account> accounts) {
-        accounts.sort((accountA, accountB) -> {
+    private void sortedScoreDescAndNameAsc(List<Account> recommendedAccounts) {
+        recommendedAccounts.sort((accountA, accountB) -> {
             if (accountA.isEqualsScore(accountB)) {
                 return accountA.getId().compareTo(accountB.getId());
             }
