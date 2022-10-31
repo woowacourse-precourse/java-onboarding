@@ -7,20 +7,30 @@ class Problem1 {
         /*
          * 1. 우선, 페이지 번호의 유효성을 검증한다.
          * 2. 페이지 번호의 각 자리의 숫자를 모두 더하거나 모두 곱해 가장 큰 수를 계산한다.
+         * 3. 2번에서 구한 값을 바탕으로 결과를 구한다.
          * */
         int answer = Integer.MAX_VALUE;
+        int pobiScore; // 포비 점수
+        int crongScore; // 크롱 점수
 
         // 1. 페이지 유효성 검증
-        if (isValidPage(pobi) == false || isValidPage(crong) == false){
+        if (isValidPage(pobi) == false || isValidPage(crong) == false) {
             return -1;
         }
+
+        // 2. 가장 큰 수 계산
+        pobiScore = getMaxScore(pobi);
+        crongScore = getMaxScore(crong);
+
+        // 3. 결과 계산
+        answer = getResult(pobiScore, crongScore);
 
         return answer;
     }
 
     public static boolean isValidPage(List<Integer> bookPages) {
-        int leftPage = bookPages.get(0);
-        int rightPage = bookPages.get(1);
+        int leftPage = bookPages.get(0); // 왼쪽 페이지
+        int rightPage = bookPages.get(1); // 오른쪽 페이지
 
         // 각 페이지의 번호가 [1,400]을 벗어나는 경우
         if (leftPage < 1 || leftPage > 400 || rightPage < 1 || rightPage > 400) {
@@ -40,24 +50,34 @@ class Problem1 {
         return true;
     }
 
-    public static int getMaxScore(List<Integer> bookPages){
-        int maxScore = 0;
+    public static int getMaxScore(List<Integer> bookPages) {
+        int maxScore = 0; // 반환하는 가장 큰 수
 
         for (Integer bookPage : bookPages) {
-            int pageSum = 0;
-            int pageProduct = 0;
+            int pageSum = 0; // 페이지 번호 각 자리의 합
+            int pageProduct = 1; // 페이지 번호 각 자리의 곱
 
             String strNum = Integer.toString(bookPage);
-            for(int j=0; j<strNum.length(); j++){
+            for (int j = 0; j < strNum.length(); j++) {
                 pageSum += strNum.charAt(j) - '0';
                 pageProduct *= strNum.charAt(j) - '0';
             }
 
-            if (maxScore < Math.max(pageSum, pageProduct)){
+            if (maxScore < Math.max(pageSum, pageProduct)) {
                 maxScore = Math.max(pageSum, pageProduct);
             }
         }
 
         return maxScore;
+    }
+
+    public static int getResult(int pScore, int cScore) {
+        if (pScore > cScore) {
+            return 1; // 포비가 이긴다면
+        } else if (pScore < cScore) {
+            return 2; // 크롱이 이긴다면
+        } else {
+            return 0; // 무승부
+        }
     }
 }
