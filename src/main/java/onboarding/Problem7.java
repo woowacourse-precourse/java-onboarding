@@ -32,6 +32,11 @@ public class Problem7 {
             }
         }
 
+        for(String visitor : visitors){
+            if(!friend_link.get(user).contains(visitor))
+                friends_score.put(visitor, friends_score.getOrDefault(visitor, 0) + 1);
+        }
+
         return answer;
     }
 }
