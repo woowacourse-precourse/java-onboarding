@@ -21,19 +21,13 @@ class Problem1 {
         int pobiMaxPoint = maxPoint.maxPoint(pobi);
         int crongMaxPoint = maxPoint.maxPoint(crong);
 
-        if (pobiMaxPoint==-1 || crongMaxPoint==-1){
-            return -1;
-        }
         if (pobiMaxPoint>crongMaxPoint){
             return 1;
         }
         if (pobiMaxPoint<crongMaxPoint){
             return 2;
         }
-        if (pobiMaxPoint==crongMaxPoint) {
-            return 0;
-        }
-        return -1;
+        return 0; // 비겼다면
     }
 }
 
