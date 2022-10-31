@@ -10,12 +10,12 @@ public class Problem3 {
     private static final int CLAP_CONDITION3 = 9;
 
     public static int solution(int number) {
-        return getTotalClapSum(number);
+        return getAllNumberClapSum(number);
     }
 
-    private static int getTotalClapSum(int number) {
+    private static int getAllNumberClapSum(int number) {
         return IntStream.range(1, number + 1)
-                .map(Problem3::checkClapNumber)
+                .map(Problem3::getNumberClapSum)
                 .sum();
     }
 
@@ -32,18 +32,10 @@ public class Problem3 {
         return number == CLAP_CONDITION1 || number == CLAP_CONDITION2 || number == CLAP_CONDITION3;
     }
 
-    private static int checkClapNumber(int number) {
+    private static int getNumberClapSum(int number) {
         List<Integer> splitNumberList = splitDigitNumber(number);
-        int clapSum = 0;
-        for (int splitNumber : splitNumberList) {
-            if (isClapNumber(splitNumber)) {
-                clapSum = addClapSum(clapSum);
-            }
-        }
-        return clapSum;
-    }
-
-    private static int addClapSum(int clapCnt) {
-        return clapCnt + 1;
+        return splitNumberList.stream()
+                .filter(Problem3::isClapNumber)
+                .mapToInt(count -> 1).sum();
     }
 }
