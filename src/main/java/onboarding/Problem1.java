@@ -90,6 +90,15 @@ class Problem1 {
 		// 최종 크롱 결과값
 		int crongResult = Math.max(crongPlus, crongMul);
 
+		// 결과값에 따른 answer 처리
+		if (pobiResult > crongResult) {
+			answer = 1;
+		} else if (pobiResult < crongResult) {
+			answer = 2;
+		} else {
+			answer = 0;
+		}
+
 		return answer;
 	}
 }
