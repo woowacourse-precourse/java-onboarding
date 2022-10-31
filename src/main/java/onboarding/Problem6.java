@@ -92,7 +92,7 @@ public class Problem6 {
     }
 
     private static boolean isValidNickname(String nickname) {
-        String nicknameExp = "^[ㄱ-ㅎ가-힣]*$";
+        String nicknameExp = "^[ㄱ-ㅎ가-힣ㅏ-ㅣ]+$";
         if (nickname.length() < MIN_NICKNAME_SIZE || nickname.length() >= MAX_NICKNAME_SIZE) {
             return false;
         }
