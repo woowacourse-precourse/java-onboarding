@@ -1,7 +1,10 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Problem6 {
     public static boolean isCharEqual(String firstString, int firstIndex, String secondString, int secondIndex) {
@@ -40,6 +43,13 @@ public class Problem6 {
     public static String getNickname(List<List<String>> forms, int index) {
         return forms.get(index).get(1);
     }
+    public static List<String> removeDuplication(List<String> listWithDuplication) {
+        Set<String> resultSet = new HashSet<>(listWithDuplication);
+        List<String> result = new ArrayList<>(resultSet);
+
+        return result;
+    }
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
 
@@ -53,6 +63,8 @@ public class Problem6 {
                 }
             }
         }
+        removeDuplication(answer);
+        Collections.sort(answer);
         return answer;
     }
 }
