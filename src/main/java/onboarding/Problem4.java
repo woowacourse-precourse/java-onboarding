@@ -12,21 +12,11 @@ public class Problem4 {
             char c = tmp.charAt(i);
             int rem = 0;
             if(Character.isUpperCase(c)) {
-                if(c <= 'M') {
-                    rem = 65 + ('Z' - c);
-                }
-                else if(c > 'M') {
-                    rem = 90 - (c - 'A');
-                }
+                rem = 'Z' - c + 'A';
                 result += (char)(rem);
             }
             else if(Character.isLowerCase(c)) {
-                if(c <= 'm') {
-                    rem = 97 + ('z' - c);
-                }
-                else if(c > 'M') {
-                    rem = 122 - (c - 'a');
-                }
+                rem = 'z' - c + 'a';
                 result += (char)(rem);
             }
             else if(c == ' ') {
