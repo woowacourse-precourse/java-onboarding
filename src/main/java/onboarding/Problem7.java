@@ -61,6 +61,8 @@ public class Problem7 {
             visitorMap.put(str, Collections.frequency(visitors, str));
         }
 
+        visitorMap.forEach((key, value) -> map.merge(key, value, (v1,v2) -> v1+v2));
+
 
         List<String> answer = Collections.emptyList();
 
