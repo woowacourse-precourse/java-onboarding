@@ -32,6 +32,12 @@ class FrogDictionary{
         return frogDictionary;
     }
 }
+class Translation{
+    boolean isUpperLetter(char letter){
+        final char LAST_CAPITAL_LETTER='Z';
+        return ((int)letter)>=((int)LAST_CAPITAL_LETTER);
+    }
+}
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
