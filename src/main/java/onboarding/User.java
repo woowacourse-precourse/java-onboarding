@@ -39,11 +39,20 @@ public class User implements Comparable<User> {
     }
 
     @Override
+    public String toString() {
+        return "User{" +
+                "username='" + username + '\'' +
+                ", friends=" + friends +
+                ", score=" + score +
+                '}';
+    }
+
+    @Override
     public int compareTo(User u) {
         if (this.score == u.getScore()) {
             return this.username.compareTo(u.getUsername());
         } else {
-            return Integer.compare(this.score, u.getScore());
+            return -Integer.compare(this.score, u.getScore());
         }
     }
 }

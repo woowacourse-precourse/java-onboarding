@@ -10,11 +10,13 @@ public class Problem7 {
         addVisitorsScore(visitors, userFriendsInfo);
 
         return userFriendsInfo.values().stream()
+                .filter(eachUser -> !userFriendsInfo.get(user).getFriends().contains(eachUser.getUsername()))
                 .filter(eachUser -> eachUser.getScore() != 0)
                 .sorted()
                 .limit(5)
                 .map(eachUser -> eachUser.getUsername())
                 .collect(Collectors.toList());
+
     }
 
     private static Map<String, User> makeFriendConnection(List<List<String>> friends) {
