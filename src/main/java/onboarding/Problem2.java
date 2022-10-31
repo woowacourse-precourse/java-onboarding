@@ -31,4 +31,10 @@ public class Problem2 {
         }
         return stack;
     }
+
+    public static String reverse(String result){
+        StringBuffer sb = new StringBuffer(result);
+        result = sb.reverse().toString();
+        return result;
+    }
 }
