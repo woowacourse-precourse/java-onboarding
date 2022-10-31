@@ -18,7 +18,7 @@ public class Problem4 {
     }
 
     // 알파벳 반대로 변환
-    static char convertChar(char c) {
+    private static char convertChar(char c) {
         int ascii;
 
         if (Character.isUpperCase(c)) {
@@ -28,6 +28,14 @@ public class Problem4 {
         }
 
         return (char)ascii;
+    }
+
+    // 알파벳 확인
+    private static boolean isAlphabet(char c) {
+        if ((c >= 'A' && c <= 'Z') || (c >= 'a' && c <= 'z')) {
+            return true;
+        }
+        return false;
     }
 
     public static String solution(String word) {
