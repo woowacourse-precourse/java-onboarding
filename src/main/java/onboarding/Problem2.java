@@ -10,10 +10,8 @@ public class Problem2 {
         Integer len = 1001;
         String decodeString = cryptogram;
         while (len > decodeString.length()) {
-            System.out.println(decodeString);
             len = decodeString.length();
             decodeString = deduplicate(decodeString);
-            System.out.println(decodeString);
         }
         return decodeString;
     }
