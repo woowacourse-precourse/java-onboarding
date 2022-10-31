@@ -1,41 +1,48 @@
+
 package onboarding;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Problem6 {
+
+    // 중복된 이름을 찾아내는 메서드
+    private static List<String> findDuplicatedNickname(List<List<String>> forms, String word, int index){
+        List<String> list = new ArrayList<>();
+        for(int i=index+1; i< forms.size(); i++){
+            if(forms.get(i).get(1).contains(word))
+                list.add(forms.get(i).get(0));
+        }
+        if(list.size()>0)
+            list.add(forms.get(index).get(0));
+        return list;
+    }
+
+    // 중복된 이메일을 삭제하는 메서드
+    private static List<String> removeDuplicatedEmail(List<String> list){
+        return list.stream().distinct().collect(Collectors.toList());
+    }
+
+    // List의 구성요소를 Sorting하는 메서드
+    private static List<String> sortList(List<String> list){
+        Collections.sort(list);
+        return list;
+    }
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
-        final Comparator<String> COMPARATOR = new Comparator<String>() {
-            @Override
-            public int compare(String o1, String o2) {
-                String[] str1 = o1.split("@");
-                String[] str2 = o2.split("@");
-                return str1[0].compareTo(str2[0]);
-            }
-        };
 
-        boolean[] count = new boolean[forms.size()];
-        for (int i = 0; i < forms.size() - 1; i++) {
-            String wooaCrew = forms.get(i).get(1);
-
-            for (int j = 0; j <= wooaCrew.length() - 2; j++) {
-                String str = wooaCrew.substring(j, j + 2);
-
-                for (int k = i + 1; k < forms.size(); k++) {
-                    if (forms.get(k).get(1).contains(str)) {
-                        count[i] = true;
-                        count[k] = true;
-                    }
-                }
+        for(int i=0; i< forms.size(); i++){
+            String nickname = forms.get(i).get(1); // 이름을 뽑는다
+            for(int j=0; j < nickname.length()-1; j++){
+                String word = nickname.substring(j, j+2); // 두 글자씩 뽑아가면서 비교한다
+                answer.addAll(findDuplicatedNickname(forms, word, i)); // 중복된 이름을 answer List에 더한다.
             }
         }
-
-        for (int i = 0; i < count.length; i++) {
-            if (count[i]) {
-                answer.add(forms.get(i).get(0));
-            }
-        }
-        answer.sort(COMPARATOR);
-        return answer;
+        answer = removeDuplicatedEmail(answer); // answer에서 Duplicated된 Email을 제거한다.
+        answer = sortList(answer); // 정렬하고
+        return answer; // 반환한다.
     }
 }
