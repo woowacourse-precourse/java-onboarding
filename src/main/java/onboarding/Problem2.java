@@ -48,8 +48,10 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         if(!checkInput(cryptogram)) {
             return "";
-        };
+        }
+
         String answer = cryptogram;
+
         while(!removeOverlap(answer).equals(answer)) {
             answer = removeOverlap(answer);
         }
