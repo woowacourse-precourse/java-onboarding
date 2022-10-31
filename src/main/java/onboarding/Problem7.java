@@ -12,6 +12,15 @@ public class Problem7 {
     }
 
     /**
+     * 가까운 친구를 추천 점수 목록에서 제외시킨다.
+     */
+    private static void excludeCloseFriends(Map<String, Integer> scores, List<String> closeFriends) {
+        for (String userFriend : closeFriends) {
+            scores.remove(userFriend);
+        }
+    }
+
+    /**
      * 사용자의 타임 라인에 방문한 친구에게 추천 점수를 부여한다.
      */
     private static void addVisitorScore(Map<String, Integer> scores, List<String> visitors) {
