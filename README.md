@@ -60,3 +60,20 @@ BUILD SUCCESSFUL in 0s
 
 - 미션은 [java-onboarding](https://github.com/woowacourse-precourse/java-onboarding) 저장소를 Fork & Clone해 시작한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+---
+
+##	기능 목록
+**문제 1**  
+1. 입력값을 리스트로 관리  
+  1.1 페이지 리스트  
+  1.2 사용자별 최댓값   
+2. 입력 값 예외 처리  
+  2.1 펼친 페이지 리스트의 길이  
+  2.2 페이지 범위  
+  2.3 첫페이지가 짝수인 경우  
+  2.4 두 페이지가 연속되지 않을 경우  
+3. pobi와 crong의 최댓값 구하기  
+  3.1 pobi와 crong 각각의 페이지 각 자릿수 합과 곱중 최댓값 저장  
+4. pobi와 crong의 최댓값 비교 후 결과(answer) 반환  4. pobi와 crong의 최댓값 비교 후 결과(answer) 반환  4. pobi와 crong의 최댓값 비교 후 결과(answer) 반환  4. pobi와 crong의 최댓값 비교 후 결과(answer) 반환  
+   
