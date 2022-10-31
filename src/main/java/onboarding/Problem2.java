@@ -30,12 +30,19 @@ public class Problem2 {
     private static Boolean checkStr(String string){
         for (int i=0;i<string.length()-1;i++)
             if (string.charAt(i) == string.charAt(i+1))
-                return false;
-        return true;
+                return true;
+        return false;
     }
     // func : recursive decoding algorithm return decoded string
+    private static String algorithm(String string){
+
+        if (checkStr(string))
+            return algorithm(decode(string));
+        else
+            return string;
+    }
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String answer = algorithm(cryptogram);
         return answer;
     }
 }
