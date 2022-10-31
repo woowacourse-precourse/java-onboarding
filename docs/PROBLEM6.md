@@ -21,3 +21,9 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+## 기능 목록
+- 사용자 이름 두글자씩 분리하기
+    - ex. 제이엠 → 제이, 이엠
+    - 두글자만 겹친다면 그 이상 겹치는 것에 대해 판별하지 않아도 된다
+- 닉네임이 겹치는 사용자가 있는지 확인

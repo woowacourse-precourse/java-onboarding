@@ -24,3 +24,17 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+## 기능 목록
+- 친구관계 만들기
+- 친구 관계 살펴보기
+  - user의 친구라면, 살피지 않고 넘어가기
+  - user의 친구가 아니라면, 일치하는 친구 개수 * 10점 획득
+- visitor 살펴보기
+  - user의 친구라면, 넘어가기
+  - user의 친구가 아니라면, +1점 획득
+- 점수 계산하기
+  - 점수가 0이 아닌 친구들을 친구추천 목록에 추가
+  - 친구추천 목록을 점수순으로 정렬
+  - 점수가 같다면, 이름순으로 정렬
+  - 상위 5개 리턴
