@@ -19,8 +19,6 @@ class Problem1 {
     static final int LEFTPAGE = 0;
     static final int RIGHTPAGE = 1;
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-
         try {
             if (gamerExceptionCheck(pobi) == EXCEPTION) {
                 throwException();
@@ -32,8 +30,18 @@ class Problem1 {
         catch(Exception e) {
             return EXCEPTION;
         }
+        int pobiScore = listPageGetMax(pobi);
+        int crongScore = listPageGetMax(crong);
 
-        return answer;
+        if (pobiScore > crongScore) {
+            return POBI;
+        } else if (pobiScore < crongScore) {
+            return CRONG;
+        } else if (pobiScore == crongScore) {
+            return TIE;
+        } else {
+            return EXCEPTION;
+        }
     }
 
     public static int gamerExceptionCheck(List<Integer> gamer) {
