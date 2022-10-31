@@ -5,17 +5,18 @@ import java.util.stream.Collectors;
 
 public class Problem7 {
     static Map<String, Set<String>> userFriendsMap;
-    static Map<String, Integer> visitorsScoreMap;
-    static Set<String> userFriends;
+    static Map<String, Integer> userScore;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         userFriendsMap = new HashMap<>();
-        visitorsScoreMap = new LinkedHashMap<>();
-        userFriends = new HashSet<>();
+        userScore = new HashMap<>();
 
         userFriendsMap.put(user, new HashSet<>());
         setUserFriendsMap(friends);
         countVisitors(visitors);
+
+        Set<String> userFriends = userFriendsMap.get(user);
+        computeScoreOfFriends(user, userFriends);
 
         return userScore.keySet().stream()
                 .filter(o -> !userFriends.contains(o))
@@ -61,7 +62,7 @@ public class Problem7 {
     * @return void
     * */
     private static void setUserScore(String person) {
-        visitorsScoreMap.put(person, visitorsScoreMap.getOrDefault(person, 0) + 1);
+        userScore.put(person, userScore.getOrDefault(person, 0) + 1);
     }
 
     /*
@@ -72,6 +73,33 @@ public class Problem7 {
     private static void countVisitors(List<String> visitors) {
         for (String visitor : visitors) {
             setUserScore(visitor);
+        }
+    }
+
+    /*
+    * user의 친구의 친구들 중, user를 제외한 사용자들의 점수를 계산
+    *
+    * @return void
+    * */
+    private static void computeScoreOfFriends(String user, Set<String> userFriends) {
+        for (String userFriend : userFriends) {
+            Set<String> friendsOfFriend = userFriendsMap.get(userFriend);
+
+            getAnonymousScore(user, friendsOfFriend);
+        }
+    }
+
+    /*
+    * 주어진 사용자 Set에 user가 아니고, user와 친구도 아닌 사용자들의 점수를 계산
+    *
+    * @return void
+    * */
+    private static void getAnonymousScore(String user, Set<String> friendsOfFriend) {
+        for (String friend : friendsOfFriend) {
+            if (friend.equals(user) || userFriendsMap.get(friend).contains(user)) {
+                continue;
+            }
+            userScore.put(friend, userFriendsMap.get(friend).size() * 10 + userScore.getOrDefault(friend, 0));
         }
     }
 }
