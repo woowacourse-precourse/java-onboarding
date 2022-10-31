@@ -18,17 +18,18 @@ class MembersTest {
 
         var members = new Members(
                 Arrays.asList(
-                        Arrays.asList("이메일1", "제이엠"),
-                        Arrays.asList("이메일2", "제이슨"),
-                        Arrays.asList("이메일3", "워니"),
-                        Arrays.asList("이메일4", "엠제이"),
-                        Arrays.asList("이메일5","이제엠")
+                        Arrays.asList("이메일1@email.com", "제이엠"),
+                        Arrays.asList("이메일2@email.com", "제이슨"),
+                        Arrays.asList("이메일3@email.com", "워니"),
+                        Arrays.asList("이메일4@email.com", "엠제이"),
+                        Arrays.asList("이메일5@email.com","이제엠")
                 )
         );
 
-        var expected = Arrays.asList("이메일1","이메일2","이메일4");
+        var expected = Arrays.asList("이메일1@email.com","이메일2@email.com","이메일4@email.com");
         var actual = members.findCrewsAtSimilarUserName();
 
+        System.out.println(actual);
         assertThat(actual).hasSize(3);
 
         actual.forEach(crew ->{
