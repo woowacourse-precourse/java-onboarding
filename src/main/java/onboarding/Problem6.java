@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.List;
 
 public class Problem6 {
+    public static boolean addToAnswer[];
+
     public static boolean containsSameLetterConsecutively(String name1, String name2) {
         for (int i = 0; i + 1 < name1.length(); i++) {
             for (int j = 0; j  + 1 < name2.length(); j++) {
@@ -17,9 +19,8 @@ public class Problem6 {
         return false;
     }
 
-    public static List<String> solution(List<List<String>> forms) {
-        // 모든 두 사람 쌍을 비교하여, 중복 닉네임 판별.
-        boolean addToAnswer[] = new boolean[forms.size()];
+    public static void compareAllTwoPersonPairs(List<List<String>> forms) {
+        addToAnswer = new boolean[forms.size()];
 
         for (int i = 0; i < forms.size(); i++) {
             for (int j = i + 1; j < forms.size(); j++) {
@@ -31,15 +32,25 @@ public class Problem6 {
                 }
             }
         }
+    }
 
-        // 중복 이메일 반환
-        List<String> answer = new ArrayList<>();
+    public static List<String> getDuplicateEmail(List<List<String>> forms) {
+        List<String> result = new ArrayList<>();
         for (int i = 0; i < forms.size(); i++) {
             if (addToAnswer[i]) {
                 String email = forms.get(i).get(0);
-                answer.add(email);
+                result.add(email);
             }
         }
+        return result;
+    }
+
+    public static List<String> solution(List<List<String>> forms) {
+        // 모든 두 사람 쌍을 비교하여, 중복 닉네임 판별.
+        compareAllTwoPersonPairs(forms);
+
+        // 중복 이메일 반환
+        List<String> answer = getDuplicateEmail(forms);
 
         Collections.sort(answer);
 
