@@ -28,10 +28,10 @@ class Problem1 {
     private static boolean isNotHaveTwoPages(List<Integer> pages) {
         if (pages.size() != 2) {
             System.out.println("페이지 값이 2개가 아닙니다.");
-            return false;
+            return true;
         }
 
-        return true;
+        return false;
     }
 
     /**
@@ -43,21 +43,21 @@ class Problem1 {
         for (Integer page : pages) {
             if (Objects.isNull(page)) {
                 System.out.println("페이지 값이 null 이 될 수 없습니다.");
-                return false;
+                return true;
             }
 
             if (page <= 1 || page >= 400) {
                 System.out.println("페이지 값이 1 초과 400 미만이어야 합니다.");
-                return false;
+                return true;
             }
         }
 
         if ((pages.get(1) - pages.get(0)) != 1) {
             System.out.println("두 페이지 값은 연속되어야 합니다.");
-            return false;
+            return true;
         }
 
-        return true;
+        return false;
     }
 
     /**
