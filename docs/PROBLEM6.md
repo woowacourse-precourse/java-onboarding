@@ -4,7 +4,6 @@
 
 혼란을 막기 위해 크루들의 닉네임 중 **같은 글자가 연속적으로 포함** 될 경우 해당 닉네임 사용을 제한하려 한다. 이를 위해 같은 글자가 연속적으로 포함되는 닉네임을 신청한 크루들에게 알려주는 시스템을 만들려고 한다.
 
-
 신청받은 닉네임 중 **같은 글자가 연속적으로 포함** 되는 닉네임을 작성한 지원자의 이메일 목록을 return 하도록 solution 메서드를 완성하라.
 
 ### 제한사항
@@ -18,6 +17,19 @@
 
 ### 실행 결과 예시
 
-| forms | result |
-| --- | --- |
+| forms                                                                                                                                                 | result                                              |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+---
+
+### 기능 구현 목록
+
+- getDuplicatedCrewEmails(List<List<String>> forms)
+  같은 글자가 연속적으로 포함된 지원자의 이메일 목록을 정렬해서 반환
+- getDuplicatedEmailSet(List<List<String>> forms)
+  이름 목록 중 같은 글자가 연속적으로 포함된 이름의 이메일 집합을 반환
+- putCharSet(List<String> form, Map<Integer, Set<String>> charSetEmailMap)
+  주어진 닉네임을 2글자씩 분해하여 해당 문자열을 갖는 닉네임의 인덱스 집합을 charSetEmailMap에 할당
+- sortEmailList(List<String> emailList)
+  이메일 리스트를 도메인을 제외한 부분으로 오름차순 정렬

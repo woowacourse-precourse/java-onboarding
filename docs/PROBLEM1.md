@@ -18,8 +18,23 @@
 
 ### 실행 결과 예시
 
-| pobi | crong | result |
-| --- | --- | --- |
-| [97, 98] | [197, 198] | 0 |
-| [131, 132] | [211, 212] | 1 |
-| [99, 102] | [211, 212] | -1 |
+| pobi       | crong      | result |
+| ---------- | ---------- | ------ |
+| [97, 98]   | [197, 198] | 0      |
+| [131, 132] | [211, 212] | 1      |
+| [99, 102]  | [211, 212] | -1     |
+
+<br>
+
+---
+
+### 기능 구현 목록
+
+- getResult(List<Integer> pages1, List<Integer> pages2)
+  참여자 두 명의 페이지 번호 리스트들을 받아 게임 결과를 반환
+- checkParameterValidation(List<Integer> pages1, List<Integer> pages2)
+  게임 입력값의 유효성을 검사
+- getDigitList(List<Integer> numList)
+  숫자 리스트를 받아 각 자리의 한 자리 숫자 리스트를 반환
+- getScore(List<Integer> pages)
+  두 개의 페이지 번호를 받아 게임 점수를 반환

@@ -17,7 +17,16 @@
 
 ### 실행 결과 예시
 
-| cryptogram | result |
-| --- | --- |
+| cryptogram        | result  |
+| ----------------- | ------- |
 | "browoanoommnaon" | "brown" |
-| "zyelleyz" | "" |
+| "zyelleyz"        | ""      |
+
+---
+
+### 기능 구현 목록
+
+- decodeCryptogram(String cryptogram)
+  cryptogram 으로 암호화된 문자열을 해독하는 메소드
+- removeDuplication(String str)
+  문자열의 중복 문자를 찾아 제거하는 메소드
