@@ -82,8 +82,11 @@ public class Problem7 {
 
     private static List<String> getSortedRecommendFriend(Map<String, Integer> scoreRecommendFriendMap) {
         List<String> result = scoreRecommendFriendMap.keySet().stream().sorted((user1, user2) -> {
-            if (!Objects.equals(scoreRecommendFriendMap.get(user1), scoreRecommendFriendMap.get(user2))) {
-                return scoreRecommendFriendMap.get(user2).compareTo(scoreRecommendFriendMap.get(user1));
+            int user1Score = scoreRecommendFriendMap.get(user1);
+            int user2Score = scoreRecommendFriendMap.get(user2);
+
+            if (!Objects.equals(user1Score, user2Score)) {
+                return Boolean.FALSE.compareTo(user1Score > user2Score);
             } else {
                 return user1.compareTo(user2);
             }
