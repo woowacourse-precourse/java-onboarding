@@ -13,7 +13,9 @@ class Problem1 {
         return (n % 10) * (n % 100 - n % 10) * (n / 100);
     }
     // func : Get max number on page number
-
+    private static int getMaxNumPage(int n){
+        return Math.max(getSum(n), getMulti(n));
+    }
     // func : Get max number result between left and right page
 
     // func : decide answer by compare two lists
