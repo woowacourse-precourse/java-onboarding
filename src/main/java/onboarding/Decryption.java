@@ -32,7 +32,7 @@ public class Decryption {
 	}
 
 	public String getResult() {
-		while (!cryptogram.equals(decipher())) {
+		while (cryptogram.length() > 1 && !cryptogram.equals(decipher())) {
 			cryptogram = decipher();
 		}
 		return cryptogram;
