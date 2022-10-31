@@ -66,4 +66,3 @@ class Problem1 {
         }else return A;
     }
     }
-}
