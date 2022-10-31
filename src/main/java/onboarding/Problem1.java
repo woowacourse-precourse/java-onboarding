@@ -8,6 +8,16 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         List<Integer> pobiScore = new ArrayList<>();
 
+        for (int i = 0; i < pobi.size(); i++) {
+            int pobiPage = pobi.get(i);
+            int pobiPageSum = 0;
+            while (pobiPage != 0) {
+                pobiPageSum += pobiPage%10;
+                pobiPage = pobiPage/10;
+            }
+            pobiScore.add(pobiPageSum);
+        }
+
 
 
 
