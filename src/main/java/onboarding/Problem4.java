@@ -2,12 +2,12 @@ package onboarding;
 
 public class Problem4 {
 
-    public static final char FIRST_LOWER = 'a';
-    public static final char LAST_LOWER = 'z';
-    public static final char FIRST_UPPER = 'A';
-    public static final char LAST_UPPER = 'Z';
-    public static final char LOWER_SUM = 'a' + 'z';
-    public static final char UPPER_SUM = 'A' + 'Z';
+    private static final char FIRST_LOWER = 'a';
+    private static final char LAST_LOWER = 'z';
+    private static final char FIRST_UPPER = 'A';
+    private static final char LAST_UPPER = 'Z';
+    private static final char LOWER_SUM = 'a' + 'z';
+    private static final char UPPER_SUM = 'A' + 'Z';
 
 
     public static String solution(String word) {
