@@ -8,8 +8,24 @@ public class Problem2 {
   public static String solution(String cryptogram) {
     String answer = "answer";
     List<int[]> needRemoveIndexes = findNeedRemoveIndexes(cryptogram);
+    String s = removeDuplicate(needRemoveIndexes, cryptogram);
 
     return answer;
+  }
+
+  public static String removeDuplicate(List<int[]> needRemoveIndexes, String str) {
+    /*
+     *  문자열을 제거하면, index가 감소하므로 그만큼 offset으로 제거.
+     */
+    int offset = 0;
+    while (!needRemoveIndexes.isEmpty()) {
+      int[] indexs = needRemoveIndexes.remove(0);
+      int start = indexs[0];
+      int end = indexs[1];
+      str = str.substring(0, start - offset) + str.substring(end + 1 - offset);
+      offset += end - start + 1;
+    }
+    return str;
   }
 
   public static List<int[]> findNeedRemoveIndexes(String str) {
