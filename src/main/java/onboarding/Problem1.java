@@ -2,6 +2,14 @@ package onboarding;
 
 import java.util.List;
 
+/**
+ * 예외의 경우
+ * 1. 왼쪽이 홀수, 오른쪽이 짝수가 아닌 경우
+ * 2. 두 페이지의 차이가 1보다 클 경우
+ * 3. 페이지에 음수 혹은 0이 들어갈 경우
+ * 4. 첫 장 혹은 마지막 장을 폈을 경우 -> 1,2 혹은 399,400을 펼 경우 점수를 미리 알 수 있으니 예외라고 판단.
+ */
+
 class Problem1 {
     public static int getAddMultiple(int page){
         int add = 0;
@@ -37,7 +45,7 @@ class Problem1 {
         if(page1<=0 || page2<=0){
             return false;
         }
-        if(page1==0 || page2 == 400){
+        if(page1==1 || page2 == 400){
             return false;
         }
         return true;
