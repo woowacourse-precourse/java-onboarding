@@ -5,7 +5,7 @@ import java.util.*;
 public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = new ArrayList<>();
+        List<String> answer;
         Set<String> friendList = new HashSet<>();
         HashMap<String, Integer> score = new HashMap<>();
 
@@ -14,12 +14,12 @@ public class Problem7 {
         getScoreInVisitors(user, visitors, friendList, score);
 
         if (score.isEmpty() == true) {
-            return answer;
+            return Collections.emptyList();
         }
 
-        List<String> compareList = new ArrayList<>(score.keySet());
+        answer = new ArrayList<>(score.keySet());
 
-        Collections.sort(compareList, (o1, o2) -> {
+        Collections.sort(answer, (o1, o2) -> {
             if (score.get(o1) != score.get(o2)) {
                 return score.get(o2).compareTo(score.get(o1));
             } else {
@@ -27,10 +27,8 @@ public class Problem7 {
             }
         });
 
-        for (String compareData : compareList) {
-            if (answer.size() > 5)
-                return answer;
-            answer.add(compareData);
+        if (answer.size() > 5) {
+            answer = answer.subList(0, 5);
         }
 
         return answer;
