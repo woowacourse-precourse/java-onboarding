@@ -43,7 +43,7 @@ public class Problem7 {
         List<String> friendCheckList=new ArrayList<>(friend);
         friendCheckList.add(owner);
         for(List<String> relationship : friendData){
-            Long numberOfFriendByFriendList = relationship.stream().filter(a->friendCheckList.contains(a)).count();
+            long numberOfFriendByFriendList = relationship.stream().filter(a->friendCheckList.contains(a)).count();
             if(numberOfFriendByFriendList>=1){
                 relationship.stream()
                         .filter(a->!friendCheckList.contains(a))
