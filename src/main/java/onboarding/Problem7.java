@@ -85,11 +85,9 @@ public class Problem7 {
 
             }
         });
-        System.out.println(entryList);
         for(int i = 0; i < entryList.size(); i++){
             answer.add(entryList.get(i).getKey());
         }
-        System.out.println(answer);
         return answer;
     }
 }
