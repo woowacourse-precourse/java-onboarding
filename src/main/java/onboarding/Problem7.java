@@ -5,39 +5,34 @@ import java.util.*;
 public class Problem7 {
     static HashMap<String,Integer> f_map=new HashMap<>();
     static ArrayList<String> user_f_list=new ArrayList<>();
+    static List<String> answer = new ArrayList<>();
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = new ArrayList<>();
-        if (validation("user_length",user.length())&&validation("friends_size",friends.size())&&validation("visitors_size",visitors.size())){
-            //닉네임 길이 예외처리&&친구 리스트 배열길이 예외처리
+        if (validation("user_length",user.length())
+                &&
+                validation("friends_size",friends.size())){
+
             setUser_F_list(user,friends);
+
             for (List<String> friend:friends){
                 if(validation("friends_e_length",friend.size())){
+
                     String own = friend.get(0);
                     String fri = friend.get(1);
-                    if (validation("user_valid",own)&&validation("user_valid",fri)){
-                        for (int i=0;i<user_f_list.size();i++){
-                            if (own.equals(user_f_list.get(i))) {
-                                if (fri.equals(user)) continue;
-                                f_map.put(fri,f_map.getOrDefault(fri,0)+10);
-                            }
-                            else if (fri.equals(user_f_list.get(i))) {
-                                if (own.equals(user)) continue;
-                                f_map.put(own,f_map.getOrDefault(own,0)+10);
-                            }
-                        }
+
+                    if (validation("user_valid",own)
+                            &&
+                            validation("user_valid",fri)){
+
+                        getRelationFriendScore(own,fri,user);
                     }
                 }
             }
-
-            for (String visitor:visitors){
-                f_map.put(visitor,f_map.getOrDefault(visitor,0)+1);
-            }
-
-            for (String key:f_map.keySet()){
-                if(user_f_list.contains(key)) f_map.put(key,-100000);
+            if (validation("visitors_size",visitors.size())){
+                getVisitorScore(visitors);
             }
 
             List<Map.Entry<String, Integer>> entryList=new LinkedList<>(f_map.entrySet());
+
             entryList.sort(new Comparator<Map.Entry<String, Integer>>() {
                 @Override
                 public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
@@ -53,23 +48,49 @@ public class Problem7 {
                 }
             });
 
-            if (entryList.size()>=5){
-                for (int i=0;i<5;i++){
-                    if (entryList.get(i).getValue()>0){
-                        String r_friends = entryList.get(i).getKey();
-                        answer.add(r_friends);
-                    }
-                }
-            }else {
-                for (int i=0;i<entryList.size();i++){
-                    if (entryList.get(i).getValue()>0){
-                        String r_friends = entryList.get(i).getKey();
-                        answer.add(r_friends);
-                    }
-                }
+            if (!entryList.isEmpty()){
+                getAnswer(entryList);
             }
         }
         return answer;
+    }
+
+    public static void getRelationFriendScore(String own,String fri,String user){
+        for (int i=0;i<user_f_list.size();i++){
+            if (own.equals(user_f_list.get(i))) {
+                if (fri.equals(user)) continue;
+                f_map.put(fri,f_map.getOrDefault(fri,0)+10);
+            }
+            else if (fri.equals(user_f_list.get(i))) {
+                if (own.equals(user)) continue;
+                f_map.put(own,f_map.getOrDefault(own,0)+10);
+            }
+        }
+    }
+
+    public static void getVisitorScore(List<String> visitors){
+        for (String visitor:visitors){
+            if(user_f_list.contains(visitor)) f_map.put(visitor,-100000);
+            f_map.put(visitor,f_map.getOrDefault(visitor,0)+1);
+        }
+    }
+
+    public static void getAnswer(List<Map.Entry<String, Integer>> entryList){
+        if (entryList.size()>=5){
+            for (int i=0;i<5;i++){
+                if (entryList.get(i).getValue()>0){
+                    String r_friends = entryList.get(i).getKey();
+                    answer.add(r_friends);
+                }
+            }
+        }else {
+            for (int i=0;i<entryList.size();i++){
+                if (entryList.get(i).getValue()>0){
+                    String r_friends = entryList.get(i).getKey();
+                    answer.add(r_friends);
+                }
+            }
+        }
     }
 
     public static void setUser_F_list(String user,List<List<String>> f_list){
@@ -108,4 +129,5 @@ public class Problem7 {
         }
         return false;
     }
+
 }
