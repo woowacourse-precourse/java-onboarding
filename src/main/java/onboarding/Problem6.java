@@ -3,12 +3,10 @@ package onboarding;
 import java.util.*;
 
 public class Problem6 {
-
-    private static List<Boolean> isdup_list = new ArrayList<>();
-
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
-        checkDuplicateList(forms);
+        DupeChecker dc = new DupeChecker(forms);
+        List<Boolean> isdup_list = dc.check();
 
         for (int i = 0; i < forms.size(); i++) {
             if (isdup_list.get(i)) {
@@ -19,8 +17,17 @@ public class Problem6 {
         // System.out.println(answer);
         return answer;
     }
+}
 
-    static List<List<String>> makeBigramsList(List<List<String>> forms) {
+class DupeChecker {
+    private static List<Boolean> isdup_list = new ArrayList<>();
+    private static List<List<String>> forms;
+
+    public DupeChecker(List<List<String>> forms) {
+        this.forms = forms;
+    }
+
+    static List<List<String>> makeBigramsList() {
         List<List<String>> bigrams_list = new ArrayList<>();
         for (int i=0; i<forms.size(); i++) {
             String str = forms.get(i).get(1);
@@ -43,8 +50,8 @@ public class Problem6 {
         }
     }
 
-    static void checkDuplicateList(List<List<String>> forms) {
-        List<List<String>> bigrams_list = makeBigramsList(forms);
+    static List<Boolean> check() {
+        List<List<String>> bigrams_list = makeBigramsList();
         setIsdupList(forms);
         for (int idx=0; idx<bigrams_list.size(); idx++) {
             if (isdup_list.get(idx)) {
@@ -65,5 +72,6 @@ public class Problem6 {
                 }
             }
         }
+        return isdup_list;
     }
 }
