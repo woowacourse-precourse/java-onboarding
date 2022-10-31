@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.List;
+import java.util.Map;
 
 /* 기능 목록
  *
@@ -10,13 +11,12 @@ import java.util.List;
  */
 class Problem1 {
     private static final int PAGE_MIN = 1, PAGE_MAX = 400;
-    private enum GameResult {
-        ERROR(-1), DRAW(0), POBI_WIN(1), CRONG_WIN(2);
 
-        private final int value;
-        GameResult(int value) { this.value = value; }
-        public int getValue() { return this.value; }
-    };
+    private static final Map<String, Integer> gameResult = Map.of(
+            "ERROR", -1,
+            "DRAW", 0,
+            "POBI_WIN", 1,
+            "CRONG_WIN", 2);
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         try {
@@ -27,12 +27,12 @@ class Problem1 {
             int cScore = maxScore(crong);
 
             if (pScore > cScore)
-                return GameResult.POBI_WIN.getValue();
+                return gameResult.get("POBI_WIN");
             else if (pScore < cScore)
-                return GameResult.CRONG_WIN.getValue();
-            return GameResult.DRAW.getValue();
+                return gameResult.get("CRONG_WIN");
+            return gameResult.get("DRAW");
         } catch(Exception e) {
-            return GameResult.ERROR.getValue();
+            return gameResult.get("ERROR");
         }
     }
 
