@@ -60,11 +60,31 @@ public class Problem7 {
     }
 
 
+    /**
+     * 타임라인 방문 점수 추가 함수
+     * @param score : 유저별 점수 map
+     * @param visitors : 타임라인 방문 정보
+     */
+    public static void calcVisitorsPoint(Map<String,Integer> score, List<String> visitors){
+
+        for(String visitor : visitors){
+            if(score.containsKey(visitor)){
+                score.put(visitor, score.get(visitor) +1);
+            }else{
+                score.put(visitor, 1);
+            }
+        }
+    }
+
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
 
         Map<String, List<String>> snsFriendMap = makeFriendInfoMap(friends);
         Map<String,Integer> score = calcBothFriendPoint(snsFriendMap, user);
+
+        calcVisitorsPoint(score, visitors);
+
 
         return answer;
     }
