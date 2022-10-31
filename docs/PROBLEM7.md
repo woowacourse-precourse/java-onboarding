@@ -24,3 +24,10 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능 목록
+- 사용자의 친구 목록을 반환한다.
+- 함께 아는 친구 점수를 구한다.
+- 방문자 점수를 구한다.
+- 점수를 내림차순으로 정렬한다.
+- 사용자 아이디 최대 5개를 구한다.
