@@ -35,4 +35,23 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
         return answer;
     }
+
+    private static HashMap<String, Integer> scoreRelation(List<String> candidate, HashMap<String, Integer> scoreRelation) {
+        for (String candi : candidate) {
+            int before = scoreRelation.getOrDefault(candi, 0);
+            scoreRelation.put(candi, before+10);
+            scoreRelation.put(candi, before+10);
+        }
+        return scoreRelation;
+    }
+    private static HashMap<String, Integer> extraRelation(HashMap<String, List<String>> friendsRelation, HashMap<String, Integer> scoreRelation, String user) {
+        List<String> basic = new ArrayList<String> ();
+        List<String> friends = friendsRelation.getOrDefault(user, basic);
+        for (String friend: friends) {
+            List<String> candidate = friendsRelation.getOrDefault(friend, basic);
+            scoreRelation = scoreRelation(candidate, scoreRelation);
+        }
+        scoreRelation = removeFriends(friends, scoreRelation);
+        return scoreRelation;
+    }
 }
