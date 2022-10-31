@@ -26,7 +26,6 @@ public class Problem5 {
     }
 
     private static int withdraw(int units, int moneyUnit) {
-        int withdrawnMoney = units * moneyUnit;
-        return withdrawnMoney;
+        return units * moneyUnit;
     }
 }
