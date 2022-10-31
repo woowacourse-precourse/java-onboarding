@@ -1,6 +1,10 @@
 package onboarding;
 
+import onboarding.exception.InputRangeException;
+import onboarding.exception.InputTypeException;
+
 import java.util.*;
+import java.util.regex.Pattern;
 
 public class Problem6 {
     // 부분 닉네임 문자열과 이메일 정보를 담은 맵이다.
@@ -13,10 +17,18 @@ public class Problem6 {
         partNameWithEmail = new HashMap<>();
         answer = new TreeSet<>();
 
+        // 크루의 인원 수에  대해서 검증한다.
+        checkCrewNumRange(forms.size());
+
         for(List<String> form : forms) {
             // 크루들의 이메일과 닉네임 정보를 각각 추출한다.
             String email = form.get(0);
+            // 이메일에 대한 도메인 검증을 진행한다.
+            checkEmailCond(email);
+
             String nickname = form.get(1);
+            // 닉네임에 대한 조건을 검증한다.
+            checkNicknameCond(nickname);
 
             // 이메일을 한 글자씩 끊어서 배열로 만든다.
             String[] nameArr = nickname.split("");
@@ -30,6 +42,46 @@ public class Problem6 {
         answerList.sort(String::compareTo);
 
         return answerList;
+    }
+
+    /**
+     * 닉네임에 대한 형식을 검증한다.
+     *
+     * @param nickname 입력받은 닉네임
+     */
+    private static void checkNicknameCond(String nickname) {
+        String regex = "^[ㄱ-ㅎㅏ-ㅣ가-힣]{1,19}$";
+        if (!Pattern.matches(regex, nickname)) {
+            throw new InputRangeException("닉네임은 한글로만 이루어져야 하며, 길이는 1~19자까지 가능합니다.");
+        }
+    }
+
+    /**
+     * 이메일에 대한 형식을 검증한다.
+     *
+     * @param email 입력받은 이메일
+     */
+    private static void checkEmailCond(String email) {
+
+        // 이메일은 @email.com 도메인으로 구성되어 있으며, 전체 길이는 11~20자 미만이다.
+        // @email.com이 10자이기 때문에, 앞단의 아이디는 1~9자까지 될 수 있다.
+        String regex = "^[a-zA-Z0-9]{1,9}@email[.]com$";
+
+        if (!Pattern.matches(regex, email)) {
+            throw new InputTypeException("이메일은 11~20자 사이이며, 도메인은 @email.com로 제한되어 있습니다.");
+        }
+
+    }
+
+    /**
+     * 크루의 인원수에 대해 검증을 진행한다.
+     *
+     * @param crewSize 입력으로 들어온 crewSize
+     */
+    private static void checkCrewNumRange(int crewSize) {
+        if (crewSize < 1 || crewSize > 10000) {
+            throw new InputRangeException("크루는 1~10000명 사이여야 합니다.");
+        }
     }
 
     /**
