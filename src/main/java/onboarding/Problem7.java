@@ -8,7 +8,7 @@ import java.util.Map;
 
 public class Problem7 {
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-		HashMap<String, List<String>> relation = makeFriendsRelation(user, friends, visitors);
+		Map<String, List<String>> relation = makeFriendsRelation(user, friends, visitors);
 
 		List<String> userFriends = relation.get(user);
 		relation.remove(user);
@@ -20,14 +20,14 @@ public class Problem7 {
 		return result;
 	}
 
-	private static HashMap makeFriendsRelation(String user, List<List<String>> data, List<String> visitors) {
-		HashMap<String, List<String>> temp = new HashMap<>();
+	private static Map makeFriendsRelation(String user, List<List<String>> data, List<String> visitors) {
+		Map<String, List<String>> temp = new HashMap<>();
 		temp.put(user, new ArrayList<>());
 
 		for (List info : data) {
 			for (Object person : info) {
 				if (!temp.containsKey((String)person)) {
-					ArrayList<String> defaultScore = new ArrayList<>();
+					List<String> defaultScore = new ArrayList<>();
 					defaultScore.add("0");
 					temp.put((String)person, defaultScore);
 				}
@@ -47,7 +47,7 @@ public class Problem7 {
 
 			for (String visitor : visitors) {
 				if (!temp.containsKey(visitor)) {
-					ArrayList<String> defaultScore = new ArrayList<>();
+					List<String> defaultScore = new ArrayList<>();
 					defaultScore.add("0");
 					temp.put(visitor, defaultScore);
 				}
@@ -56,7 +56,7 @@ public class Problem7 {
 		return temp;
 	}
 
-	private static void getAcquaintanceScore(HashMap<String, List<String>> relation, List<String> userFriends) {
+	private static void getAcquaintanceScore(Map<String, List<String>> relation, List<String> userFriends) {
 		for (String name : userFriends) {
 			for (String person : relation.keySet()) {
 				if (relation.get(person).contains(name)) {
@@ -66,13 +66,13 @@ public class Problem7 {
 		}
 	}
 
-	private static void getVisitorScore(HashMap<String, List<String>> relation, List<String> visitors) {
+	private static void getVisitorScore(Map<String, List<String>> relation, List<String> visitors) {
 		for (String visitor : visitors) {
 			relation.get(visitor).set(0, String.valueOf(Integer.parseInt(relation.get(visitor).get(0)) + 1));
 		}
 	}
 
-	private static List<String> processData(HashMap<String, List<String>> relation, List<String> userFriends) {
+	private static List<String> processData(Map<String, List<String>> relation, List<String> userFriends) {
 		Map<String, Integer> data = new HashMap<>();
 		for (String person : relation.keySet()) {
 			data.put(person, Integer.parseInt(relation.get(person).get(0)));
