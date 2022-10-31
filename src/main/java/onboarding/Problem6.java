@@ -1,15 +1,27 @@
 package onboarding;
 
 import java.util.*;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
+
+        //제한사항 체크
+        try{
+           validate(forms);
+        } catch (IllegalArgumentException e){
+            throw new IllegalArgumentException(e);
+        }
+
         // 분리된 닉네임들과 어떤 닉네임에서 사용되었는지를 표시하는 List를 함께 Mapping한다.
         Map<String, List<Integer>> stringToDuplicated = makeDuplicatedMap(forms);
 
         //answer에 담아서 리턴
         List<String> answer = new ArrayList<>(findDuplicatedNickNamesForEmail(stringToDuplicated,forms));
+
+        //오름차순으로 정렬
+        Collections.sort(answer);
 
         return answer;
     }
@@ -84,5 +96,32 @@ public class Problem6 {
         }
 
         return duplicatedEmails;
+    }
+
+    public static void validate(List<List<String>> forms){
+        if(forms.size()< 1 || forms.size()>10000){
+            throw new IllegalArgumentException("크루원이 1명 이상 10000명 이하가 아닙니다!");
+        }
+
+        for(List<String> user : forms){
+            if (user.get(0).length()<11 || user.get(0).length() >= 20){
+                throw new IllegalArgumentException(user.get(1) + "의" + user.get(0) + "이메일 길이가 11이상 20미만이 아닙니다!");
+            }
+
+            // 이메일의 마지막 9자는 항상 도메인인 eamil.com이 되어야 한다.
+            if ( user.get(0).substring(user.get(0).length() - 9).equals("email.com") == false){
+                throw new IllegalArgumentException(user.get(1) + "의" + user.get(0) + "이메일의 도메인이 email.com이 아닙니다!");
+            }
+
+            if( Pattern.matches("^[ㄱ-ㅎ가-힣]*$", user.get(1)) == false){
+                throw new IllegalArgumentException(user.get(1) + "의 닉네임이 한글로만 이루어져 있지 않습니다!");
+            }
+
+            if(user.get(1).length() < 1 || user.get(1).length() >= 20){
+                throw new IllegalArgumentException(user.get(1) + "의 닉네임의 길이가 1글자 이상, 20글자 미만이 아닙니다!");
+            }
+
+        }
+
     }
 }
