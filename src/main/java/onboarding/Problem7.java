@@ -3,8 +3,11 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
+
+    private static final int MAX_NUMBER_OF_RECOMMENDED_FRIENDS = 5;
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer;
         Map<String, ArrayList<String>> friendsMap = new HashMap<>();    // 친구 관계 그래프
         Map<String, Integer> scoreMap = new HashMap<>();        // 친구 점수 맵
 
@@ -31,7 +34,20 @@ public class Problem7 {
         }
         excludeMySelf(scoreMap, user);
 
+        sortScoreMap(scoreMap); // 점수 내림차순, 이름 오름차순 정렬
+
+        answer = new ArrayList<>(scoreMap.keySet()); // scoreMap에서 key(이름) 추출
+        if (answer.size()>MAX_NUMBER_OF_RECOMMENDED_FRIENDS) // 최대 5개
+            return answer.subList(0,MAX_NUMBER_OF_RECOMMENDED_FRIENDS);
         return answer;
+    }
+
+    private static void sortScoreMap(Map<String, Integer> scoreMap) {
+        LinkedHashMap<String, Integer> sortedScoreList;
+        scoreMap.entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))  // sort by score(value) in reverse order
+                .sorted(Map.Entry.comparingByKey());                            // sort by name(key)
     }
 
     private static void excludeMySelf(Map<String, Integer> scoreMap, String userName){
