@@ -15,9 +15,13 @@ public class Problem4 {
         }
         return String.valueOf(aCharacter);
     }
-    
+
     public static String solution(String word) {
         String answer = "";
+
+        for(int i=0; i<word.length(); i++){
+            answer += convert(word.charAt(i));
+        }
         return answer;
     }
 }
