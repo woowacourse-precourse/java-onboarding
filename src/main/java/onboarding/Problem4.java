@@ -7,15 +7,7 @@ public class Problem4 {
         for (int i=0; i<word.length(); i++) {
             char currentCh = word.charAt(i);
             if (Character.isAlphabetic(currentCh)) {
-                char convertedCh;
-                if (Character.isUpperCase(currentCh)) {
-                    int distanceFromBegin = currentCh - 'A';
-                    convertedCh = (char)((int)'Z' - distanceFromBegin);
-                }
-                else {
-                    int distanceFromBegin = currentCh - 'a';
-                    convertedCh = (char)((int)'z' - distanceFromBegin);
-                }
+                char convertedCh = getConvertedLetter(currentCh);
                 answer += convertedCh;
             }
             else {
@@ -24,6 +16,17 @@ public class Problem4 {
         }
 
         return answer;
+    }
+
+    public static char getConvertedLetter(char ch) {
+        if (Character.isUpperCase(ch)) {
+            int distanceFromBegin = ch - 'A';
+            return (char)((int)'Z' - distanceFromBegin);
+        } else if (Character.isLowerCase(ch)) {
+            int distanceFromBegin = ch - 'a';
+            return (char)((int)'z' - distanceFromBegin);
+        }
+        return ch;
     }
 }
 
