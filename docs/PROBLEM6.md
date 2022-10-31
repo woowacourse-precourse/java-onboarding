@@ -23,7 +23,7 @@
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
 
 ### 기능 목록
-- [ ] Crew class 생성
+- [x] Crew class 생성
 - [ ] 닉네임 두 글자 단위로 나누기
 - [ ] 다른 사람의 닉네임과 비슷한지 확인
 - [ ] Woowacourse class 생성
