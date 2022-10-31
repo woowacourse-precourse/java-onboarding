@@ -13,8 +13,8 @@ public class Problem6 {
     public static final int MIN_LENGTH_OF_EMAIL = 11;
     public static final int MAX_LENGTH_OF_FORM_LETTERS = 20;
 
-    private static Map<String, String> twoLetterNameForms = new HashMap<>();
-    private static Set<String> duplicatedUserEmails = new TreeSet<>();
+    private static final Map<String, String> twoLetterNameForms = new HashMap<>();
+    private static final Set<String> duplicatedUserEmails = new TreeSet<>();
 
     public static List<String> solution(List<List<String>> forms) {
         try {
@@ -23,7 +23,25 @@ public class Problem6 {
             e.printStackTrace();
         }
 
-        return new ArrayList<>();
+        updateDuplicatedUserEmails(forms);
+
+        return new ArrayList<>(duplicatedUserEmails);
+    }
+
+    private static void updateDuplicatedUserEmails(List<List<String>> forms) {
+        for (List<String> form : forms) {
+            saveTwoLetterNameForms(form);
+        }
+    }
+
+    private static void saveTwoLetterNameForms(List<String> form) {
+        String email = form.get(0);
+        String nickname = form.get(1);
+        List<String> twoLetterNames = parseTwoLetterNames(nickname);
+
+        for (String twoLetterName : twoLetterNames) {
+            saveTwoLetterNameForm(twoLetterName, email);
+        }
     }
 
     private static List<String> parseTwoLetterNames(String nickname) {
@@ -35,8 +53,21 @@ public class Problem6 {
         return twoLetterNames;
     }
 
+    private static void saveTwoLetterNameForm(String twoLetterName, String email) {
+        if (checkDuplicateName(twoLetterName)) {
+            addDuplicatedUserEmails(twoLetterName, email);
+        }
+
+        twoLetterNameForms.put(twoLetterName, email);
+    }
+
     private static boolean checkDuplicateName(String twoLetterName) {
         return (twoLetterNameForms.containsKey(twoLetterName));
+    }
+
+    private static void addDuplicatedUserEmails(String twoLetterName, String email) {
+        duplicatedUserEmails.add(email);
+        duplicatedUserEmails.add(twoLetterNameForms.get(twoLetterName));
     }
 
     public static void validate(List<List<String>> forms) {
@@ -79,7 +110,7 @@ public class Problem6 {
         if (!email.endsWith("@email.com")){
             throw new IllegalArgumentException("올바르지 않은 이메일 형식입니다.");
         }
-     }
+    }
 
     private static void validateNameLength(List<String> form) {
         String nickname = form.get(1);
@@ -97,5 +128,4 @@ public class Problem6 {
             throw new IllegalArgumentException("닉네임에 한글이 아닌 다른 문자가 포함되어 있습니다.");
         }
     }
-
 }
