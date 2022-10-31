@@ -8,10 +8,6 @@ public class Problem7 {
         List<String> exceptNames = new ArrayList<>();
 
         for (List<String> friend : friends) {
-            if (isAlreadyFriends(exceptNames, friend)){     //이미 친구인 경우가 존재하면 건너뛴다.
-                continue;
-            }
-
             if (registerIsFriend(user, exceptNames, friend)) {  //친구인 경우를 등록해야할 경우 등록을 한다.
                 continue;
             }
@@ -21,17 +17,28 @@ public class Problem7 {
             }
         }
 
-        for (String visitor : visitors) {               // 이미 친구인 경우, Map에서 삭제후 건너뛴다.
+        deleteAlreadyFriends(friendsScore, exceptNames);
+
+
+        for (String visitor : visitors) {               // 이미 친구인 경우 건너뛴다
             if (isAlreadyFriends(exceptNames, visitor)){
-                friendsScore.remove(visitor);
                 continue;
             }
-
             countScore(friendsScore, visitor, 1);   // 요구사항에 따라서 1점을 더한다.
         }
 
         List<String> answer = new ArrayList<>(friendsScore.keySet());
 
+        setOrderBase(friendsScore, answer); // 정렬기준 정리
+
+        if (answer.size() < 5){     // anwerList의 길이가 5보다 작은경우 그대로 return하고, 5보다 큰경우 상위 5개만 return시킨다.
+            return answer;
+        } else {
+            return answer.subList(0, 5);
+        }
+    }
+
+    private static void setOrderBase(Map<String, Integer> friendsScore, List<String> answer) {
         answer.sort(new Comparator<String>() {             // 점수순으로 정렬을 하고, 동률인 경우 이름순으로 정렬을 하도록 한다.
             @Override
             public int compare(String o1, String o2) {
@@ -44,11 +51,18 @@ public class Problem7 {
                 return o1.compareTo(o2);
             }
         });
+    }
 
-        if (answer.size() < 5){     // anwerList의 길이가 5보다 작은경우 그대로 return하고, 5보다 큰경우 상위 5개만 return시킨다.
-            return answer;
-        } else {
-            return answer.subList(0, 5);
+    /**
+     * ExceptionNames에 있는 이미 친구인 리스트에 있는 것들을 이때까지 모은 Map의 Key와 비교하여 제거한다.
+     * @param friendsScore
+     * @param exceptNames
+     */
+    private static void deleteAlreadyFriends(Map<String, Integer> friendsScore, List<String> exceptNames) {
+        for (String friendName : Set.copyOf(friendsScore.keySet())) {
+            if (isAlreadyFriends(exceptNames, friendName)){
+                friendsScore.remove(friendName);
+            }
         }
     }
 
@@ -83,15 +97,12 @@ public class Problem7 {
     }
 
     /**
-     * 이미 친구인 경우를 저장하는 exceptNames에서 들어온 파라미터가 exceptName에 존재하는지 확인
+     * 이미 친구인 경우를 저장하는 exceptNames에서 들어온 파라미터가 exceptNames에 존재하는지 확인
      * @param exceptNames
-     * @param friend
+     * @param friendName
      * @return
      */
-    private static boolean isAlreadyFriends(List<String> exceptNames, List<String> friend){
-        return exceptNames.contains(friend.get(0)) || exceptNames.contains(friend.get(1));
-    }
-    private static boolean isAlreadyFriends(List<String> exceptNames, String friend){
-        return exceptNames.contains(friend);
+    private static boolean isAlreadyFriends(List<String> exceptNames, String friendName){
+        return exceptNames.contains(friendName);
     }
 }
