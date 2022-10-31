@@ -13,6 +13,9 @@ public class Problem4 {
                     a = (char) (now + ('m' - now) * 2 + 1);
                 }
 
+                answer+=Character.toString(a);
+            }else{
+                answer+=Character.toString(now);
 
             }
         }
