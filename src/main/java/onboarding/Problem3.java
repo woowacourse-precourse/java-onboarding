@@ -4,10 +4,10 @@ public class Problem3 {
 
   public static int solution(int number) {
     int answer = 0;
-    int i = calculateClapCount(13);
-    /*
-     *  i toBe 1
-     */
+    while (number > 0) {
+      answer += calculateClapCount(number);
+      number--;
+    }
     return answer;
   }
 
