@@ -25,7 +25,9 @@ public class Problem4 {
 
     private static String convertStringByDict(String word){
         Stream<Character> charStream = word.chars().mapToObj(i -> (char)i);
-        String convertedString = charStream.map(getFilter()).collect(()-> new StringBuffer(), (c, e)->c.append(e), (c1,c2)-> c1.append(c2)).toString();
+        String convertedString = charStream.map(getFilter())
+                .collect(()-> new StringBuffer(), (c, e)->c.append(e), (c1,c2)-> c1.append(c2))
+                .toString();
         return convertedString;
     }
 
