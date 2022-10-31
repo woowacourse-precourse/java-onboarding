@@ -18,6 +18,9 @@ public class Problem6 {
     }
 
     private static void nickNameCombination(String email, String nickName) {
+        if (nickName.length() < 2) {
+            return;
+        }
         for (int i = 0; i < nickName.length() - 1; i++) {
             String combination = nickName.substring(i, i + 2);
             final String prevEmail = map.get(combination);
