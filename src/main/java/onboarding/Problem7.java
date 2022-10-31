@@ -1,9 +1,7 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.stream.Stream;
 
 public class Problem7 {
 
@@ -21,7 +19,31 @@ public class Problem7 {
 
     private class FriendRecommender {
         private Map<String, Map<String, Boolean>> friendsRelation;
+        private Map<String, Integer> friendsScore;
+
         public List<String> recommend(String user, List<List<String>> friends, List<String> visitors) {
+
+        }
+
+        private void setFriendScore(String user) {
+            friendsScore = new HashMap<>();
+            Set<String> userFriends = friendsRelation.get(user).keySet();
+            for (String friend : friendsRelation.keySet()) {
+                if (friend.equals(user) || userFriends.contains(friend)) {
+                    continue;
+                }
+                int friendScore = 0;
+                for (String other : friendsRelation.get(friend).keySet()) {
+                    if (userFriends.contains(other)) {
+                        friendScore += 10;
+                    }
+                }
+                if (!friendsScore.containsKey(friend)) {
+                    friendsScore.put(friend, friendScore);
+                } else {
+                    friendsScore.put(friend, friendScore + friendsScore.get(friend));
+                }
+            }
 
         }
 
