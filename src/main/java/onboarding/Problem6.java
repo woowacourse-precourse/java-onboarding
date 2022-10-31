@@ -44,6 +44,7 @@ public class Problem6 {
                             && !nicknameCombinations.contains(partialNickname)) {
 
                         emails.add(email);
+                        String appliedFirstEmail = namesAlreadyApplied.get(partialNickname);
                     }
                 }
             }
