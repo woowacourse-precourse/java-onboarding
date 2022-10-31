@@ -59,7 +59,7 @@ public class Problem7 {
     }
     
     // 정렬(점수, 이름 순)된 키 set 구하기
-    private static List<String> getKeySet(Map<String, Integer> scoreMap) {
+    private static List<String> getSortedKeySet(Map<String, Integer> scoreMap) {
         Comparator<String> comparator = (s1, s2) -> {
             if (scoreMap.get(s1) > scoreMap.get(s2))
                 return -1;
@@ -76,7 +76,7 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> friendList = getFriendsList(user, friends);
         Map<String, Integer> scoreMap = getScoreMap(user, friends, visitors, friendList);
-        List<String> keySet = getKeySet(scoreMap);
+        List<String> keySet = getSortedKeySet(scoreMap);
         
         // 상위 5명만 뽑기
         List<String> result = new ArrayList<>();
