@@ -16,7 +16,7 @@ class Problem1 {
             } else if (pobiNum > crongNum) {
                 answer = 1;
             } else {
-                answer = -1;
+                answer = 2;
             }
         }
         return answer;
@@ -34,18 +34,12 @@ class Problem1 {
 
     public static int makeNum(int number) {
         int startNum = number;
-            int[] arrNum = {};
-            int i = 0;
-            while (startNum > 0) {
-                arrNum[i] = startNum % 10;
-                startNum /= 10;
-                i++;
-            }
             int addNum = 0;
             int mulNum = 1;
-            for (int a = 0; a < arrNum.length; a++) {
-                addNum += arrNum[a];
-                mulNum *= arrNum[a];
+            while (startNum > 0) {
+                addNum += startNum % 10;
+                mulNum *= startNum % 10;
+                startNum /= 10;
             }
             if (addNum > mulNum) {
                 return addNum;
