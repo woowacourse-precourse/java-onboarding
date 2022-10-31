@@ -1,6 +1,11 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
+import static java.util.Collections.sort;
 
 class NicknameDuplicate {
     List<List<String>> forms;
@@ -17,6 +22,7 @@ class NicknameDuplicate {
             for(int i = 0; i < forms.size(); i++) {
                 emailLength = forms.get(i).get(0).length();
                 nicknameLength = forms.get(i).get(1).length();
+
                 if((emailLength < 11) || (emailLength >= 20)) {
                     return -1;
                 } else if(!(forms.get(i).get(0).substring(emailLength - 9, emailLength).equals("email.com"))) {
@@ -30,4 +36,35 @@ class NicknameDuplicate {
         return 0;
     }
 
+    List<String> duplicate() {
+        Set<String> nicknameDup = new HashSet<>();
+
+        for(int i = 0; i < forms.size(); i++) {
+            String nicknameA = forms.get(i).get(1);
+
+            for(int j = i + 1; j < forms.size(); j++) {
+                String nicknameB = forms.get(j).get(1);
+
+                if(checkDuplicate(nicknameA, nicknameB)) {
+                    nicknameDup.add(forms.get(i).get(0));
+                    nicknameDup.add(forms.get(j).get(0));
+                }
+            }
+        }
+
+        List<String> result = new ArrayList<>(nicknameDup);
+        sort(result);
+
+        return result;
+    }
+
+    boolean checkDuplicate(String nicknameA, String nicknameB) {
+        for(int i = 0; i < nicknameA.length() - 1; i++) {
+            if(nicknameB.contains(nicknameA.substring(i, i + 2))) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
