@@ -30,6 +30,12 @@ class Problem1 {
         return page >=1 && page <=400;
     }
 
+    public static boolean isValidNumber(List<Integer> pages){
+        Integer leftPage = pages.get(0);
+        Integer rightPage = pages.get(1);
+        return leftPage != null && rightPage != null;
+    }
+
     public static int sumDigit(int page) {
         int sum = 0;
         while (page > 0) {
