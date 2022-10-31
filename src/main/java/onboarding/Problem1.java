@@ -6,6 +6,10 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
+        if (isInvalid(pobi) || isInvalid(crong)) {
+            return -1;
+        }
+
         int maxValueOfPobi = pobi.stream()
             .map(Problem1::getMaxValue)
             .mapToInt(x-> x)
@@ -22,6 +26,15 @@ class Problem1 {
 
         return maxValueOfPobi > maxValueOfCrong ? 1 :
             (maxValueOfPobi == maxValueOfCrong ? 0 : 2);
+    }
+
+    private static boolean isInvalid(List<Integer> input) {
+        return input.size() != 2
+            || input.get(1) - input.get(0) != 1
+            || input.get(0) % 2 != 1
+            || input.get(0) <= 1
+            || input.get(1) >= 400
+            ;
     }
 
     private static int getMaxValue(Integer number) {
