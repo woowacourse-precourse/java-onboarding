@@ -8,6 +8,7 @@ import java.util.HashMap;
 
 public class Problem7 {
     public static final Integer KNOW_TOGETHER_SCORE = 10;
+    public static final Integer VISIT_SCORE = 1;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
@@ -50,5 +51,20 @@ public class Problem7 {
             }
         }
         return knowTogetherScoreMap;
+    }
+
+    public static Map<String, Integer> getVisitScoreMap(List<String> visitors, List<String> friendList) {
+        Map<String, Integer> visitScoreMap = new HashMap<>();
+        for (String name : visitors) {
+            if (visitScoreMap.containsKey(name)) {
+                visitScoreMap.put(name, visitScoreMap.get(name) + VISIT_SCORE);
+            } else {
+                visitScoreMap.put(name, VISIT_SCORE);
+            }
+        }
+        for (String name : friendList) {
+            visitScoreMap.remove(name);
+        }
+        return visitScoreMap;
     }
 }
