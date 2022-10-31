@@ -8,23 +8,7 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         // 예외사항
-        // 1. pobi와 crong의 길이는 2여야 한다.
-        if (pobi.size()!=2 || crong.size()!=2) {
-            return -1;
-        }
-        // 2. left는 홀수, right는 짝수
-        if (pobi.get(0)%2!=1 | pobi.get(1)%2!=0 | crong.get(0)%2!=1 | crong.get(1)%2!=0) {
-            return -1;
-        }
-        // 3. left = right - 1
-        if (pobi.get(1)-pobi.get(0)!=1 | crong.get(1)-crong.get(0)!=1) {
-            return -1;
-        }
-        // 4. 1 <= left <= 399 and 2 <= right <= 400
-        if (pobi.get(0)<1 | pobi.get(0)>399 | pobi.get(1)<2 | pobi.get(1)>400) {
-            return -1;
-        }
-        if (crong.get(0)<1 | crong.get(0)>399 | crong.get(1)<2 | crong.get(1)>400) {
+        if (except(pobi, crong)) {
             return -1;
         }
 
@@ -41,6 +25,29 @@ class Problem1 {
             answer = 1;
         }
         return answer;
+    }
+
+    static boolean except(List<Integer> pageList1, List<Integer> pageList2) {
+        // 1. pobi와 crong의 길이는 2여야 한다.
+        if (pageList1.size()!=2 || pageList2.size()!=2) {
+            return true;
+        }
+        // 2. left는 홀수, right는 짝수
+        if (pageList1.get(0)%2!=1 | pageList1.get(1)%2!=0 | pageList2.get(0)%2!=1 | pageList2.get(1)%2!=0) {
+            return true;
+        }
+        // 3. left = right - 1
+        if (pageList1.get(1)-pageList1.get(0)!=1 | pageList2.get(1)-pageList2.get(0)!=1) {
+            return true;
+        }
+        // 4. 1 <= left <= 399 and 2 <= right <= 400
+        if (pageList1.get(0)<1 | pageList1.get(0)>399 | pageList1.get(1)<2 | pageList1.get(1)>400) {
+            return true;
+        }
+        if (pageList2.get(0)<1 | pageList2.get(0)>399 | pageList2.get(1)<2 | pageList2.get(1)>400) {
+            return true;
+        }
+        return false;
     }
 
     static int sumDigits(int digits){
