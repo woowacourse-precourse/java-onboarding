@@ -333,6 +333,20 @@ class ApplicationTest {
       assertThrows(IllegalStateException.class, () -> {
         Problem7.isAllowedId(id3);
       });
-     }
+    }
+
+    @Test
+    void isAllowedFriendsInfoSizeTest() {
+      //given
+      int friendsLength1 = 1001;
+      int friendsLength2 = 1000001;
+
+      //then
+      assertThat(Problem7.isAllowedFriendsInfoSize(friendsLength1)).isEqualTo(true);
+      assertThrows(IllegalStateException.class, () -> {
+        Problem7.isAllowedFriendsInfoSize(friendsLength2);
+      });
+    }
+
   }
 }
