@@ -3,13 +3,19 @@ package onboarding;
 import java.util.Stack;
 
 public class Problem2 {
+    private static StringBuilder sb;
     public static String solution(String cryptogram) {
-        String answer = "";
-
         Stack<Character> stack = checkDuplication(cryptogram);
-        Object[] toArray = stackToArray(stack);
-        answer = getAnswer(toArray);
-        return answer;
+        stackToString(stack);
+
+        return sb.toString();
+    }
+
+    private static void stackToString(Stack<Character> stack) {
+        sb = new StringBuilder();
+        stack.forEach(alphabet -> {
+            sb.append(alphabet);
+        });
     }
 
     private static Stack<Character> checkDuplication(String cryptogram) {
@@ -30,18 +36,5 @@ public class Problem2 {
             }
         }
         return stack;
-    }
-
-    private static String getAnswer(Object[] toArray) {
-        String sumLetter = "";
-        for (Object o : toArray) {
-            sumLetter += o;
-        }
-        return sumLetter;
-    }
-
-    private static Object[] stackToArray(Stack<Character> stack) {
-        Object[] toArray = stack.toArray();
-        return toArray;
     }
 }
