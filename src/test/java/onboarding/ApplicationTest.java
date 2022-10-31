@@ -25,6 +25,21 @@ class ApplicationTest {
             int result = 0;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
+        @Test
+        void case2() {
+            List<Integer> pobi = List.of(131, 132);
+            List<Integer> crong = List.of(211, 212);
+            int result = 1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
+        @Test
+        void case3() {
+            List<Integer> pobi = List.of(99, 102);
+            List<Integer> crong = List.of(211, 212);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
         //region Problem1 Method Test
         @Test
         void SplitNumberTest() {
@@ -42,21 +57,6 @@ class ApplicationTest {
 //            assertThat(calculateMaxService.CalculateMul(new int[]{9,7})).isEqualTo(63);
         }
         //endregion
-        @Test
-        void case2() {
-            List<Integer> pobi = List.of(131, 132);
-            List<Integer> crong = List.of(211, 212);
-            int result = 1;
-            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
-        }
-
-        @Test
-        void case3() {
-            List<Integer> pobi = List.of(99, 102);
-            List<Integer> crong = List.of(211, 212);
-            int result = -1;
-            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
-        }
     }
 
     @Nested
