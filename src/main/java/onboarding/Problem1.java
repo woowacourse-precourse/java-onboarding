@@ -10,7 +10,38 @@ class Problem1 {
             return -1;
         }
 
+        int pobiScore = calculateResultScore(pobi.get(0), pobi.get(1));
+        int crongScore = calculateResultScore(crong.get(0), crong.get(1));
+
+        if (pobiScore > crongScore) {
+            return 1;
+        }
+        if (pobiScore == crongScore) {
+            return 0;
+        }
+        if (pobiScore < crongScore){
+            return 2;
+        }
+
         return -1;
+    }
+
+    public static int calculateResultScore(int leftPageNum, int rightPageNum) {
+        return Math.max(calculatePageScore(leftPageNum), calculatePageScore(rightPageNum));
+    }
+
+    public static int calculatePageScore(int pageNum) {
+        int tmp = pageNum;
+        int plus = 0;
+        int multiply = 1;
+
+        while (tmp > 0) {
+            plus += tmp % 10;
+            multiply *= tmp % 10;
+            tmp /= 10;
+        }
+
+        return Math.max(plus, multiply);
     }
 
     public static boolean exceptionCheck(List<Integer> pobi, List<Integer> crong){
