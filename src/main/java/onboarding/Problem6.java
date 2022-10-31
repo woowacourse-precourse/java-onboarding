@@ -9,19 +9,19 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Problem6 {
-    static Map<String, Integer> nicknameMap;
-    static Set<Integer> duplicateNicknameIdxSet;
+    static Map<String, Integer> nicknames;
+    static Set<Integer> duplicateNicknameIndexes;
 
     public static List<String> solution(List<List<String>> forms) {
-        nicknameMap = new HashMap<>();
-        duplicateNicknameIdxSet = new HashSet<>();
+        nicknames = new HashMap<>();
+        duplicateNicknameIndexes = new HashSet<>();
         findDuplicateNicknames(forms);
         return parseEmails(forms);
     }
 
     private static List<String> parseEmails(List<List<String>> forms) {
         List<String> emails = new ArrayList<>();
-        for (Integer idx : duplicateNicknameIdxSet) {
+        for (Integer idx : duplicateNicknameIndexes) {
             String email = forms.get(idx).get(0);
             emails.add(email);
         }
@@ -35,20 +35,20 @@ public class Problem6 {
             String nickname = crewForm.get(1);
             validateEmail(email);
             validateNickname(nickname);
-            findDuplicateNickname(nickname, i);
+            findDuplicationNickname(nickname, i);
         }
     }
 
-    private static void findDuplicateNickname(String nickname, int idx) {
+    private static void findDuplicationNickname(String nickname, int idx) {
         for (int i = 0; i < nickname.length() - 1; i++) {
             String twoLetterNickname = nickname.substring(i, i + 2);
-            Integer nicknameIdx = nicknameMap.get(twoLetterNickname);
+            Integer nicknameIdx = nicknames.get(twoLetterNickname);
             if (nicknameIdx == null) {
-                nicknameMap.put(twoLetterNickname, idx);
+                nicknames.put(twoLetterNickname, idx);
                 continue;
             }
-            duplicateNicknameIdxSet.add(idx);
-            duplicateNicknameIdxSet.add(nicknameIdx);
+            duplicateNicknameIndexes.add(idx);
+            duplicateNicknameIndexes.add(nicknameIdx);
         }
     }
 
