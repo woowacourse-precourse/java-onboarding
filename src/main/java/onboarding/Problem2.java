@@ -13,12 +13,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class Problem2 {
     private static int index(String src) {
         char fir = src.charAt(0);
-        for (int i = 1; i < src.length(); i++) {
+        for (int i = 1; i <= src.length(); i++) {
+            if (i == src.length() && src.charAt(i - 1) == src.charAt(i - 2)){
+                return 1;
+            }
             if (src.charAt(i) != fir) {
                 return (i - 1);
-            }
-            if (src.charAt(i) != fir && i == src.length() - 1){
-                return 1;
             }
         }
         return 0;
