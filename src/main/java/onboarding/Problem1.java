@@ -33,18 +33,16 @@ class Problem1 {
 		int leftPage = lst.get(0);
 		int rightPage = lst.get(1);
 
-		if (leftPage <= FIRST_PAGE || rightPage >= LAST_PAGE || leftPage % 2 == 0 || rightPage % 2 == 1 || leftPage + 1 != rightPage)
+		if (leftPage <= FIRST_PAGE || rightPage >= LAST_PAGE || leftPage % 2 == 0 || rightPage % 2 == 1
+				|| leftPage + 1 != rightPage)
 			return true;
 
 		return false;
 	}
 
 	private static int getScore(List<Integer> lst) {
-		int leftScore = 0;
-		int rightScore = 0;
-
-		leftScore = Math.max(addDigit(lst.get(0)), multiplyDigit(lst.get(0)));
-		rightScore = Math.max(addDigit(lst.get(1)), multiplyDigit(lst.get(1)));
+		int leftScore = Math.max(addDigit(lst.get(0)), multiplyDigit(lst.get(0)));
+		int rightScore = Math.max(addDigit(lst.get(1)), multiplyDigit(lst.get(1)));
 
 		int score = Math.max(leftScore, rightScore);
 
