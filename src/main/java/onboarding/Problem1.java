@@ -46,6 +46,14 @@ class Problem1 {
         return max;
     }
 
+    public static int result(int pobiMax, int crongMax) {
+        if (pobiMax == crongMax) {
+            return 0;
+        } else {
+            return pobiMax > crongMax ? 1 : 2;
+        }
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         // 1. page 정상인지 확인 후 비정상일 경우 -1 return
         int answer = Integer.MAX_VALUE;
@@ -59,6 +67,7 @@ class Problem1 {
         int pobiMax = maxResult(pobiResult);
         int crongMax = maxResult(crongReuslt);
         // 4. 승부에 따라 0,1,2 return
+        answer = result(pobiMax, crongMax);
 
         return answer;
     }
