@@ -21,3 +21,8 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+## 기능 구현 목록
+- [ ] 각 유저의 정보를 저장할 User클래스 구현
+- [ ] 전달받은 닉네임이 가지고 있는 닉네임을 포함하는지 여부 반환 기능 구현
+- [ ] 알림을 보낼 이메일 중 중복 제거 기능 구현
