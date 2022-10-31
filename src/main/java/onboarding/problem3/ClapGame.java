@@ -8,7 +8,7 @@ public class ClapGame {
     }
 
     public int getClapCount() {
-        return gameNumber.getRange().reduce(0, (total, number) -> total += getClapCountWithNumber(number));
+        return gameNumber.getRange().reduce(0, (total, number) -> total + getClapCountWithNumber(number));
     }
 
     private int getClapCountWithNumber(int currentNumber) {
