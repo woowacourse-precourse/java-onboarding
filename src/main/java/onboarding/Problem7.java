@@ -1,40 +1,47 @@
 package onboarding;
-
-import java.sql.Array;
 import java.util.*;
-
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        return Point.calcFriendsPoint(user, friends, visitors);
+        return Point.calcTotalPotint(user, friends, visitors);
     }
 }
+class UserInfo{
+    private static final int MINIMUM_LENGTH_ID = 1;
+    private static final int MAXIMUM_LENGTH_ID = 30;
+    private static final String OUT_OF_RANGE = "길이가 1 이상 30 이하의 아이디를 입력해주세요";
+    void validateRange(String id){
+        if(id.length() < MAXIMUM_LENGTH_ID || id.length() > MINIMUM_LENGTH_ID)
+            throw new IllegalArgumentException(OUT_OF_RANGE);
+    }
 
+
+/*    - user는 길이가 1 이상 30 이하인 문자열이다.
+    - friends는 길이가 1 이상 10,000 이하인 리스트/배열이다.
+    - friends의 각 원소는 길이가 2인 리스트/배열로 [아이디 A, 아이디 B] 순으로 들어있다.
+    - 아이디는 길이가 1 이상 30 이하인 문자열이다.
+    - visitors는 길이가 0 이상 10,000 이하인 리스트/배열이다.
+    - 사용자 아이디는 알파벳 소문자로만 이루어져 있다.
+    - 동일한 친구 관계가 중복해서 주어지지 않는다.
+    - 추천할 친구가 없는 경우는 주어지지 않는다.*/
+}
 class Point{
-    static List<String> calcFriendsPoint(String user, List<List<String>> friends,List<String> visitors) {
+    static List<String> calcTotalPotint(String user, List<List<String>> friends,List<String> visitors) {
         int[] scoreTable = new int[friends.size()];
         boolean[][] friendsInfoTable = getFriendsInfoTable(friends, visitors);
         Object[] arrayFriends = countFriends(friends,visitors);
         int userIndex = getUserIndex(user, arrayFriends);
-        for (int i = 0; i < friendsInfoTable.length; i++) {
-            for (int j = 0; j < friendsInfoTable.length; j++) {
-                if(friendsInfoTable[userIndex][i] && friendsInfoTable[i][j]) {
-                    scoreTable[j] += 10;
-                }
-            }
-        }
-        for (int i = 0; i < visitors.size(); i++) {
-            int friendsIndex = getFriendIndex(visitors.get(i),arrayFriends);
-            if( !friendsInfoTable[userIndex][friendsIndex] )
-                scoreTable[friendsIndex] += 1;
-        }
 
-//        총 스코어 출력해보기
-        for (int i = 0; i < friendsInfoTable.length; i++) {
-            System.out.println(arrayFriends[i] + "score : " + scoreTable[i]);
-        }
+        getFriendsPoint(scoreTable, friendsInfoTable, userIndex);
+        getVisitorsPoint(visitors, scoreTable, friendsInfoTable, arrayFriends, userIndex);
+        List<String> answer = getTopFiveList(scoreTable, arrayFriends, userIndex);
+
+        return answer;
+    }
+
+    private static List<String> getTopFiveList(int[] scoreTable, Object[] arrayFriends, int userIndex) {
         List<String> answer = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
-            int maxIndex = findIndexByMaxValue(scoreTable,userIndex);
+            int maxIndex = findIndexByMaxValue(scoreTable, userIndex);
             // 점수가 0인 경우
             if(maxIndex == -1) continue;
             // user를 지칭한 경우 친구에서 제외
@@ -44,6 +51,24 @@ class Point{
             setValueToZeroIndexValue(scoreTable,maxIndex);
         }
         return answer;
+    }
+
+    private static void getVisitorsPoint(List<String> visitors, int[] scoreTable, boolean[][] friendsInfoTable, Object[] arrayFriends, int userIndex) {
+        for (int i = 0; i < visitors.size(); i++) {
+            int friendsIndex = getFriendIndex(visitors.get(i), arrayFriends);
+            if( !friendsInfoTable[userIndex][friendsIndex] )
+                scoreTable[friendsIndex] += 1;
+        }
+    }
+
+    private static void getFriendsPoint(int[] scoreTable, boolean[][] friendsInfoTable, int userIndex) {
+        for (int i = 0; i < friendsInfoTable.length; i++) {
+            for (int j = 0; j < friendsInfoTable.length; j++) {
+                if(friendsInfoTable[userIndex][i] && friendsInfoTable[i][j]) {
+                    scoreTable[j] += 10;
+                }
+            }
+        }
     }
 
     private static int findIndexByMaxValue(int[] arr,int userIndex) {
@@ -61,11 +86,9 @@ class Point{
         if(max == 0) return -1;
         return maxIndex;
     }
-
     private static void setValueToZeroIndexValue(int[] scoreTable, int index) {
         scoreTable[index] = 0;
     }
-
     private static int getFriendIndex(String s,Object[] friendsInfoTable) {
         for (int i = 0; i < friendsInfoTable.length; i++) {
             if(friendsInfoTable[i] == s)
@@ -73,8 +96,6 @@ class Point{
         }
         return 0;
     }
-
-
     private static int getUserIndex(String user, Object[] friendsInfoTable) {
         for (int i = 0; i < friendsInfoTable.length; i++) {
             if(friendsInfoTable[i].equals(user)){
@@ -93,7 +114,6 @@ class Point{
             countFriendsSet.add(visit);
         return countFriendsSet.toArray();
     }
-
         private static boolean[][] getFriendsInfoTable(List<List<String>> friends,List<String> visitors) {
             boolean[][] arr = new boolean[friends.size()][friends.size()];
             Object[] objects = countFriends(friends,visitors);
