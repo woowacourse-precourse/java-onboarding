@@ -18,12 +18,20 @@ public class Problem4 {
         return wordList;
     }
 
-    private static Boolean isAlphabet(String word) {
-        if(Pattern.matches("^[a-zA-Z]*$", word)) {
+    private static Boolean isAlphabet(String letter) {
+        if(Pattern.matches("^[a-zA-Z]*$", letter)) {
             return true;
         } else {
             return false;
         }
+    }
+
+    private static String convertLetter(String letter) {
+        String result = letter;
+        if (isAlphabet(letter)) {
+            result = frogsDictionary.get(letter);
+        }
+        return result;
     }
 
     private static Map<String, String> frogsDictionary = Map.ofEntries(
