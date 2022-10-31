@@ -5,11 +5,12 @@ import java.util.*;
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = result(forms);
+        Collections.sort(answer);
         return answer;
     }
 
     public static List<String> result(List<List<String>> forms) {
-        Set<String> result = new HashSet<>();
+        HashSet<String> result = new HashSet<>();
         int numberOfCrew = forms.size();
 
         for (int i = 0; i < numberOfCrew - 1; i++) {
@@ -22,7 +23,8 @@ public class Problem6 {
                 }
             }
         }
-        return List.copyOf(result);
+        List<String> returnList = new ArrayList<>(result);
+        return returnList;
     }
 
     public static boolean haveDuplicate(List<String> crew1, List<String> crew2) {
@@ -36,6 +38,15 @@ public class Problem6 {
         }
         return false;
     }
+    public static void main(String[] args) {
+        List<List<String>> forms = new ArrayList<>();
 
+        forms.add(List.of(new String[]{"nowm@email.com", "이제엠"}));
+        forms.add(List.of(new String[]{"jm@email.com", "제이엠"}));
+        forms.add(List.of(new String[]{"jason@email.com", "제이슨"}));
+        forms.add(List.of(new String[]{"woniee@email.com", "워니"}));
+        forms.add(List.of(new String[]{"mj@email.com", "엠제이"}));
 
+        System.out.println(solution(forms));
+    }
 }
