@@ -22,31 +22,8 @@ class CheckException{
 }
 
 class Game{
-
-}
-class Problem1 {
-    public static int solution(List<Integer> pobi, List<Integer> crong) {
-        /*
-        기능목록
-        1.예외처리
-        2.숫자 -> 문자열 전환
-        3.문자열 -> 문자 -> 숫자 전환 후 덧셈/곱셈에 값 추가.
-        4. pobi,crong의 덧셈/곱셈 중 최대값 구하기
-        5. pobi,crong중 큰 값을 탐색하고, 이에 맞는 answer값 할당 후 return.
-        * */
-
-        HashMap<String,Integer> map = new HashMap<>();
-        map.put("pobi",1);
-        map.put("crong",2);
-        map.put("same",0);
-        map.put("exception",-1);
-
-        int answer = Integer.MAX_VALUE;
-
-        //예외사항처리
-        CheckException ce = new CheckException();
-        if (!ce.check(pobi,crong)) return map.get("exception");
-
+    public int play(List<Integer> pobi , List<Integer> crong){
+        int response = 0;
         ArrayList<String> pobi_string = new ArrayList<>();
         ArrayList<String> crong_string = new ArrayList<>();
 
@@ -81,14 +58,35 @@ class Problem1 {
         int max_crong = Math.max(plus_crong,multiple_crong);
 
         if (max_pobi>max_crong){
-            answer = 1;
+            response = 1;
         }
         else if (max_pobi<max_crong){
-            answer = 2;
+            response = 2;
         }
-        else{
-            answer = 0;
-        }
+
+        return response;
+    }
+}
+class Problem1 {
+    public static int solution(List<Integer> pobi, List<Integer> crong) {
+        /*
+        기능목록
+        1.예외처리
+        2.숫자 -> 문자열 전환
+        3.문자열 -> 문자 -> 숫자 전환 후 덧셈/곱셈에 값 추가.
+        4. pobi,crong의 덧셈/곱셈 중 최대값 구하기
+        5. pobi,crong중 큰 값을 탐색하고, 이에 맞는 answer값 할당 후 return.
+        * */
+
+
+        int answer = Integer.MAX_VALUE;
+
+        //예외사항처리
+        CheckException ce = new CheckException();
+        if (!ce.check(pobi,crong)) return -1;
+
+        Game game = new Game();
+        answer = game.play(pobi,crong);
 
 
         return answer;
