@@ -62,12 +62,9 @@ public class Problem7 {
         addScoreByVisit(visitors);
 
         List<FriendRecommendation> friendRecommendations = new ArrayList<>();
-        for (Map.Entry recommendedFriend : scoreOfUser.entrySet()) {
-            String name = (String) recommendedFriend.getKey();
-            int score = (int) recommendedFriend.getValue();
-
+        scoreOfUser.forEach((name, score) -> {
             friendRecommendations.add(new FriendRecommendation(name, score));
-        }
+        });
 
         for (FriendRecommendation fr : friendRecommendations) {
             System.out.println(fr.user + " " + fr.score);
