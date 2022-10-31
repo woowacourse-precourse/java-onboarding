@@ -11,6 +11,7 @@ public class Problem7 {
 
         try {
             ExceptionProblem7.validateUser(user);
+            ExceptionProblem7.validateFriends(friends);
         } catch (IllegalArgumentException e) {
             return Collections.emptyList();
         }
@@ -95,6 +96,10 @@ class ExceptionProblem7 {
         validateSamllLetter(user);
     }
 
+    public static void validateFriends(List<List<String>> friends) {
+        validateFriendsListSize(friends);
+    }
+
     private static void validateUserLength(String user) {
         if (user.length() < 1 || user.length() > 30) {
             throw new IllegalArgumentException();
@@ -123,6 +128,12 @@ class ExceptionProblem7 {
 
     private static void haveSpace(String id) {
         if (id.contains(" ")) {
+            throw new IllegalArgumentException();
+        }
+    }
+
+    public static void validateFriendsListSize(List<List<String>> friends) {
+        if (friends.size() < 1 || friends.size() > 10000) {
             throw new IllegalArgumentException();
         }
     }
