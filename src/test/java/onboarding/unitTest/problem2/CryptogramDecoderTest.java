@@ -1,4 +1,4 @@
-package onboarding.unitTest;
+package onboarding.unitTest.problem2;
 
 import onboarding.problem2.CryptogramDecoder;
 import org.junit.jupiter.api.Nested;
@@ -13,18 +13,15 @@ import java.util.stream.Stream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class Problem2UnitTest {
+@Nested
+public class CryptogramDecoderTest {
 
-    @Nested
-    class CryptogramDecoderTest{
-
-        @ParameterizedTest(name = "Case {index}")
-        @ArgumentsSource(CryptogramDecoderTestData.class)
-        void cryptogramDecoderTest(List<Character> cryptogramCharList, List<Character> decodedCharList){
-            assertThat(CryptogramDecoder.decode(cryptogramCharList)).isEqualTo(decodedCharList);
-        }
-
+    @ParameterizedTest(name = "Case {index}")
+    @ArgumentsSource(CryptogramDecoderTestData.class)
+    void cryptogramDecoderTest(List<Character> cryptogramCharList, List<Character> decodedCharList){
+        assertThat(CryptogramDecoder.decode(cryptogramCharList)).isEqualTo(decodedCharList);
     }
+
 
     static class CryptogramDecoderTestData implements ArgumentsProvider {
 
