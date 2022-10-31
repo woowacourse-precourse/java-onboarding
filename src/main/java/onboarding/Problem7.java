@@ -14,6 +14,19 @@ public class Problem7 {
 
         friendMember = friendList(user, friendMember, friends);
         friendScore = calcBothFriend(user,friendScore,friendMember,friends);
+        friendScore = calcVisited(friendScore,friendMember,visitors);
+
+        List<Map.Entry<String, Integer>> sortlist = new LinkedList<>(friendScore.entrySet());
+        sortlist.sort(Map.Entry.comparingByKey());
+        sortlist.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
+
+        int printValue=sortlist.size();
+        if(sortlist.size()>5){
+            printValue=5;
+        }
+        for(int i=0; i<printValue; i++){
+            answer.add(sortlist.get(i).getKey());
+        }
 
 
         return answer;
@@ -51,6 +64,20 @@ public class Problem7 {
                     score += friendScore.get(firstName) + 10;
                     friendScore.put(firstName,score);
                 }
+            }
+        }
+        return friendScore;
+    }
+
+
+    private static HashMap calcVisited(HashMap<String,Integer> friendScore, List<String> friendMember, List<String> visitor){
+        int score=0;
+        for(int i=0; i<visitor.size(); i++) {
+            if (!friendMember.contains(visitor.get(i))) {
+                if(!friendScore.containsKey(visitor.get(i)))
+                    friendScore.put(visitor.get(i),0);
+                score = friendScore.get(visitor.get(i))+1;
+                friendScore.put(visitor.get(i),score);
             }
         }
         return friendScore;
