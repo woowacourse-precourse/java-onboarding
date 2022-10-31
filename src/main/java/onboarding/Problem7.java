@@ -7,14 +7,16 @@ import problem7.User;
 import java.util.List;
 
 public class Problem7 {
-    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+    public static List<String> solution(String userName, List<List<String>> friendsList, List<String> visitors) {
         try {
-            FriendConnectionRepository.create(friends);
-            User user1 = new User(user);
+            FriendConnectionRepository.create(friendsList);
+            FriendConnectionRepository.addUsers(visitors);
 
-            user1.calculateRecommendationScoreWith(visitors);
+            User user = new User(userName);
 
-            return user1.calculateRecommendationScoreWithCommonFriends();
+            user.calculateRecommendationScoreWith(visitors);
+
+            return user.calculateRecommendationScoreWithCommonFriends();
         } catch (NullPointerException e) {
             System.out.println(e.getMessage());
             return null;

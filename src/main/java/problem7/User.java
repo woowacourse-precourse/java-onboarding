@@ -4,36 +4,37 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class User {
-    private final Map<String, Integer> strangerToRecommendationScore = new HashMap<>();
     private final String name;
+    private final Map<String, Integer> recommendationScores = new HashMap<>();
 
     public User(String name) {
         this.name = name;
+        preprocessRecommendationScores();
     }
 
-    public void calculateRecommendationScoreWith(List<String> visitors) {
-        VisitorValidator.validateVisitors(visitors);
+    public void preprocessRecommendationScores() {
+        recommendationScores.clear();
 
         var friends = FriendConnectionRepository.getFriends(name);
 
-        visitors.stream()
-                .filter(visitor -> !friends.contains(visitor) && !visitor.equals(name))
-                .filter(stranger -> !strangerToRecommendationScore.containsKey(stranger))
-                .forEach(newStranger -> strangerToRecommendationScore.put(newStranger, 0));
+        FriendConnectionRepository.getUsers().stream()
+                .filter(person -> !name.equals(person) && !friends.contains(person))
+                .forEach(person -> recommendationScores.put(person, 0));
+    }
 
+    public void calculateRecommendationScoreWith(List<String> visitors) {
+        VisitorsValidator.validateVisitors(visitors);
         visitors.stream()
-                .filter(visitor -> !friends.contains(visitor) && !visitor.equals(name))
-                .filter(stranger -> strangerToRecommendationScore.containsKey(stranger))
-                .forEach(existingStranger -> strangerToRecommendationScore.put(existingStranger
-                        , strangerToRecommendationScore.get(existingStranger) + 1));
-
+                .filter(visitor -> recommendationScores.containsKey(visitor))
+                .forEach(stranger ->
+                        recommendationScores.put(stranger, recommendationScores.get(stranger) + 1));
     }
 
     public List<String> calculateRecommendationScoreWithCommonFriends() {
         var friends = new HashSet<>(FriendConnectionRepository.getFriends(name));
 
         if (friends.size() == 0) {
-            List<Map.Entry<String, Integer>> list = new ArrayList<>(strangerToRecommendationScore.entrySet());
+            List<Map.Entry<String, Integer>> list = new ArrayList<>(recommendationScores.entrySet());
             Collections.sort(list, (e1, e2) -> {
                 if (e2.getValue() != e1.getValue()) return e2.getValue() - e1.getValue();
                 return e1.getKey().compareTo(e2.getKey());
@@ -50,11 +51,11 @@ public class User {
                 if (friends.contains(hisFriendsFriend) || name.equals(hisFriendsFriend)) {
                     continue;
                 } else {
-                    if (strangerToRecommendationScore.containsKey(hisFriendsFriend)) {
-                        strangerToRecommendationScore.put(hisFriendsFriend
-                                , strangerToRecommendationScore.get(hisFriendsFriend) + 10);
+                    if (recommendationScores.containsKey(hisFriendsFriend)) {
+                        recommendationScores.put(hisFriendsFriend
+                                , recommendationScores.get(hisFriendsFriend) + 10);
                     } else {
-                        strangerToRecommendationScore.put(hisFriendsFriend
+                        recommendationScores.put(hisFriendsFriend
                                 , 10);
                     }
                 }
@@ -64,7 +65,7 @@ public class User {
         // map을 entryset으로 변환한다.
         // 그걸 list로 변환한다.
         // list를 정렬한다.
-        List<Map.Entry<String, Integer>> list = new ArrayList<>(strangerToRecommendationScore.entrySet());
+        List<Map.Entry<String, Integer>> list = new ArrayList<>(recommendationScores.entrySet());
         Collections.sort(list, (e1, e2) -> {
             if (e2.getValue() != e1.getValue()) return e2.getValue() - e1.getValue();
             return e1.getKey().compareTo(e2.getKey());
@@ -79,7 +80,7 @@ public class User {
 
     }
 
-    public static class VisitorValidator {
+    public static class VisitorsValidator {
 
         private static final int VISITORS_SIZE_LOWER_BOUNDS = 0;
         private static final int VISITORS_SIZE_UPPER_BOUNDS = 10_000;

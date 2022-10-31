@@ -19,17 +19,16 @@ public class FriendConnectionRepository {
 
     private static void preprocessFriendConnection(List<List<String>> friends) {
         friends.stream()
-                .flatMap(friendship -> friendship.stream())
+                .flatMap(Collection::stream)
                 .distinct()
-                .filter(person -> !friendConnection.containsKey(person))
-                .forEach(person -> friendConnection.put(person, new HashSet<>()));
+                .filter(user -> !friendConnection.containsKey(user))
+                .forEach(user -> friendConnection.put(user, new HashSet<>()));
     }
 
-    private static void configureFriendConnection(List<List<String>> friends) {
-        friends.stream()
-                .forEach(friend -> {
-                    var first = friend.get(0);
-                    var second = friend.get(1);
+    private static void configureFriendConnection(List<List<String>> friendsList) {
+        friendsList.forEach(friends -> {
+                    var first = friends.get(0);
+                    var second = friends.get(1);
 
                     friendConnection.get(first).add(second);
                     friendConnection.get(second).add(first);
@@ -38,6 +37,16 @@ public class FriendConnectionRepository {
 
     public static Set<String> getFriends(String user) {
         return friendConnection.get(user);
+    }
+
+    public static Set<String> getUsers() {
+        return friendConnection.keySet();
+    }
+
+    public static void addUsers(List<String> users) {
+        users.stream()
+                .filter(user -> !friendConnection.containsKey(user))
+                .forEach(user -> friendConnection.put(user, new HashSet<>()));
     }
 
     private static class Validator {
