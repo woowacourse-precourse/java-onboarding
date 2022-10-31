@@ -1,12 +1,22 @@
 package onboarding;
 
-import java.util.List;
-import java.util.Map;
+import onboarding.problem6.CustomException;
+
+import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+        CustomException.checkException(forms);
+
+        List<String> duplicatedCrew = new ArrayList<>();
+        Map<String, String> nickNameCombination = new HashMap<>();
+
+        for (List<String> crew : forms) {
+            checkDuplicatedCombination(nickNameCombination, crew, duplicatedCrew);
+        }
+
+        Collections.sort(duplicatedCrew);
+        return duplicatedCrew;
     }
 
     private static void checkDuplicatedCombination(Map<String, String> nickNameCombination, List<String> crew, List<String> duplicatedCrew) {
