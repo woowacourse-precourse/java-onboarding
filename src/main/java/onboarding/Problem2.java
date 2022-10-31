@@ -17,7 +17,18 @@ public class Problem2 {
     }
 
     public String decrypt(String cryptogram){
-        return "";
+        StringBuilder decryptSb = new StringBuilder();
+        Stack<Character> stk = new Stack<>();
+        int dupCount=0;
+        for(char c : cryptogram.toCharArray()){
+            dupCount = countDuplication(stk, dupCount, c);
+        }
+        removeStackDuplication(stk, dupCount);
+
+        while(!stk.isEmpty()){
+            decryptSb.append(stk.pop());
+        }
+        return decryptSb.reverse().toString();
     }
 
     public static String solution(String cryptogram) {

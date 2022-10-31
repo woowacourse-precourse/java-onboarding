@@ -31,9 +31,9 @@
   - ✅ decrypt 메소드를 사용하여 cryptogram을 입력했을 때 결과값이 동일하다면 복호화가 다 된 것이므로 해당 값을 반환
   - ✅ compareTwoGram 메소드를 사용하여 cryptogram과 decryptgram을 비교 후 복호화 과정이 더 필요한 지 참/거짓 값을 반환
 
-- ⬜ decrypt 메소드 구현
-  - ⬜ countDuplication 메소드를 사용하여 Stack에 문자들을 삽입하면서 중복 여부 및 중복 문자의 개수 확인 및 제거
-  - ⬜ 남은 문자들을 문자열로 만들어 반환
+- ✅ decrypt 메소드 구현
+  - ✅ countDuplication 메소드를 사용하여 Stack에 문자들을 삽입하면서 중복 여부 및 중복 문자의 개수 확인 및 제거
+  - ✅ 남은 문자들을 문자열로 만들어 반환
 
 - ⬜ compareTwoGrams 메소드 구현
   - ⬜ 두 개의 문자열이 동일한 문자열인지 확인하여 참/거짓 값을 반환 
