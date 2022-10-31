@@ -6,11 +6,16 @@ import java.util.List;
 
 public class Problem4 {
     public static String solution(String word) {
-        // 27 - 1 = 26, 27 - 26 = 1 인걸 이용할거임
         String answer = "";
         StringBuilder ans = new StringBuilder();
         ArrayList<String> answerList = new ArrayList<>();
 
+        /**
+         * 1번인 a를 26번인 z로
+         * 2번인 b를 25번인 y로
+         * 바꾸기 위한 방법인 27 - 알파벳 번호 = 원하는 알파벳 번호
+         * 를 통해서 원하는 알파벳으로 바꾸는 과정
+         */
         for(int i=0; i<word.length(); i++){
             char tmp = word.charAt(i);
             if(tmp >= 65 && tmp <= 90){
