@@ -29,12 +29,16 @@ public class Problem7 {
     public static int countRelatedFriendsWithUser(String user, String other, HashMap<String, List<String>> friendsMap){
         List<String> friendsOfUser = friendsMap.get(user);
         List<String> friendsOfOther = friendsMap.get(other);
-        int relatedFriends = 0;
+        int numberOfRelatedFriends = 0;
         for(String friend : friendsOfOther){
             if(friendsOfUser.contains(friend)){
-            relatedFriends++;
+                numberOfRelatedFriends++;
         }
         }
-        return relatedFriends;
+        return numberOfRelatedFriends;
+    }
+
+    public static void addTenPoints(String other, int numberOfRelatedFriends, HashMap<String, Integer> scoreMap){
+        scoreMap.put(other, scoreMap.getOrDefault(other,0) + 10*numberOfRelatedFriends);
     }
 }
