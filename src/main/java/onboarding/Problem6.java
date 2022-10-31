@@ -51,7 +51,10 @@ public class Problem6 {
 
             if (crewIndices.size() >= 2) {
                 for (int crewIdx : crewIndices) {
-                    emailSet.add(forms.get(crewIdx).get(EMAIL_IDX));
+                    String email = forms.get(crewIdx).get(EMAIL_IDX);
+                    validateEmailFormat(email);
+
+                    emailSet.add(email);
                 }
             }
         }
@@ -60,6 +63,14 @@ public class Problem6 {
     private static void validateCrewNumber(List<List<String>> forms) {
         if (forms.size() == 0 || forms.size() > 10000) {
             throw new IllegalArgumentException("크루는 1명 이상 10000명 이하여야 합니다.");
+        }
+    }
+
+    private static void validateEmailFormat(String email) {
+        String[] splitEmail = email.split("@");
+
+        if (splitEmail[1].equals("email.com") == false) {
+            throw new IllegalArgumentException("이메일의 도메인은 email.com으로만 제합됩니다.");
         }
     }
 }
