@@ -2,26 +2,26 @@ package onboarding.problem6;
 
 import java.util.List;
 
-public class Crew implements Comparable<Crew> {
+public class Member implements Comparable<Member> {
     private final Email email;
     private final NickName nickName;
 
-    public Crew(Email email, NickName nickName) {
+    public Member(Email email, NickName nickName) {
         this.email = email;
         this.nickName = nickName;
     }
 
-    public Crew(List<String> notCrew) {
+    public Member(List<String> notCrew) {
         this.email = new Email(notCrew.get(0));
         this.nickName = new NickName(notCrew.get(1));
     }
 
-    public boolean isDuplicate(Crew crew) {
+    public boolean isDuplicate(Member crew) {
         return nickName.isDuplicate(crew.getNickName());
     }
 
     @Override
-    public int compareTo(Crew o) {
+    public int compareTo(Member o) {
         if (isDuplicate(o)) {
             return 1;
         }

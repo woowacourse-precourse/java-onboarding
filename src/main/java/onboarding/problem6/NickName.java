@@ -38,8 +38,6 @@ public class NickName {
         }
     }
 
-
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -55,11 +53,6 @@ public class NickName {
 
     public String getNickName() {
         return nickName;
-    }
-
-    @Override
-    public String toString() {
-        return "" + nickName + "";
     }
 
     public List<String> getSeparateNicks() {

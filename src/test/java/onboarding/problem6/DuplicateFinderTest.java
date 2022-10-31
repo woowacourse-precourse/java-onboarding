@@ -6,7 +6,7 @@ import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class CrewsTest {
+public class DuplicateFinderTest {
     @Test
     void find_the_email_the_duplicate_nick() {
         List<List<String>> forms = List.of(
@@ -17,7 +17,7 @@ public class CrewsTest {
                 List.of("nowm@email.com", "이제엠")
         );
         List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com");
-        Crews crews = new Crews();
-        assertThat(crews.findNotCrews(forms)).isEqualTo(result);
+        DuplicateNickMemberFinder crews = new DuplicateNickMemberFinder();
+        assertThat(crews.findDuplicateNick(forms)).isEqualTo(result);
     }
 }
