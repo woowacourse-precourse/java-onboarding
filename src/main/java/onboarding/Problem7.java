@@ -12,9 +12,8 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Map<String, List<String>> friendList = createFriendList(friends);
         Map<String, Integer> recommendedFriendList = createRecommendedFriendList(user, friendList);
-        recommendedFriendList = visitorScore(friendList.get(user), recommendedFriendList, visitors);
-        List<String> result = findNames(recommendedFriendList);
-        return result;
+        visitorScore(friendList.get(user), recommendedFriendList, visitors);
+        return findNames(recommendedFriendList);
     }
 
     private static Map<String, List<String>> createFriendList(List<List<String>> friends) {
@@ -52,11 +51,10 @@ public class Problem7 {
         return result;
     }
 
-    private static Map<String, Integer> visitorScore(List<String> userFriendList, Map<String, Integer> recommendedFriendList, List<String> visitors) {
+    private static void visitorScore(List<String> userFriendList, Map<String, Integer> recommendedFriendList, List<String> visitors) {
         visitors.stream()
                 .filter(visitor -> isNotUserFriend(userFriendList, visitor))
                 .forEach(visitor -> recommendedFriendList.put(visitor, getScore(recommendedFriendList, visitor) + 1));
-        return recommendedFriendList;
     }
 
     private static boolean isNotUserFriend(List<String> userFriendList, String name) {
