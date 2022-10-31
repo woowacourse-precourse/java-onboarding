@@ -100,8 +100,8 @@ public class Problem7 {
                 valueSet.add(friend);
             }
             Collections.sort(valueSet);
-            for (String value : valueSet) {
-                answer.add(value);
+            for (int i = 0; i < valueSet.size() && i < 5; i++) {
+                answer.add(valueSet.get(i));
             }
         }
         return answer;
@@ -154,18 +154,18 @@ public class Problem7 {
         return user.length() >= MIN_ID_LENGTH && user.length() <= MAX_ID_LENGTH;
     }
 
-    // public static void main(String[] args) {
-    //     String user = "mrko";
-    //     List<List<String>> friends = List.of(
-    //         List.of("donut", "andole"),
-    //         List.of("donut", "jun"),
-    //         List.of("donut", "mrko"),
-    //         List.of("shakevan", "andole"),
-    //         List.of("shakevan", "jun"),
-    //         List.of("shakevan", "mrko")
-    //     );
-    //     List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
-    //     List<String> result = List.of("andole", "jun", "bedi");
-    //     solution(user, friends, visitors);
-    // }
+    public static void main(String[] args) {
+        String user = "mrko";
+        List<List<String>> friends = List.of(
+            List.of("donut", "andole"),
+            List.of("donut", "jun"),
+            List.of("donut", "mrko"),
+            List.of("shakevan", "andole"),
+            List.of("shakevan", "jun"),
+            List.of("shakevan", "mrko")
+        );
+        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+        List<String> result = List.of("andole", "jun", "bedi");
+        solution(user, friends, visitors);
+    }
 }
