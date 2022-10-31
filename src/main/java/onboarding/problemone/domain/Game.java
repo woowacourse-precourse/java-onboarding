@@ -36,7 +36,7 @@ public class Game {
 	}
 
 	private boolean validatePage(User user) {
-		if (user.getLeftPage() < 1 || user.getLeftPage() > 400) {
+		if (user.getLeftPage() < 1 || user.getRightPage() > 400) {
 			return false;
 		} else if (user.getLeftPage() % 2 == 0 || user.getRightPage() % 2 == 1) {
 			return false;
