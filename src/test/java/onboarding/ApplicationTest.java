@@ -128,6 +128,13 @@ class ApplicationTest {
             String result = "R olev blf";
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
+
+        @Test
+        void case2() {
+            String word = "Hello  Everyone!";
+            String result = "Svool  Veviblmv!";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
     }
 
     @Nested
