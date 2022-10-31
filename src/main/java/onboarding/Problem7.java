@@ -14,6 +14,9 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         setFriendsOfUser(user, friends);
+
+        increaseMutualScore(user, friends);
+
         return answer;
     }
 
@@ -23,6 +26,18 @@ public class Problem7 {
                 .forEach(userFriends::addAll);
 
         userFriends.remove(user);
+    }
+
+    private static void increaseMutualScore(String user, List<List<String>> friends) {
+        friends.stream()
+                .filter(friend ->
+                        userFriends.contains(friend.get(0)) || userFriends.contains(friend.get(1)))
+                .filter(friend ->
+                        !(friend.get(0).equals(user) || friend.get(1).equals(user)))
+                .forEach(friend -> {
+                    increaseOnePersonScore(friend.get(0), 10);
+                    increaseOnePersonScore(friend.get(1), 10);
+                });
     }
 
     private static void increaseOnePersonScore(String person, Integer score) {
