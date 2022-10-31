@@ -16,7 +16,7 @@ class Problem1 {
     }
 
     private static boolean isRightLength(List<Integer> pobi, List<Integer> crong) {
-        return false;
+        return pobi.size() == 2 && crong.size() == 2;
     }
 
     private static boolean isRightPage(List<Integer> pobi, List<Integer> crong) {
