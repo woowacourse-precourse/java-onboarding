@@ -9,9 +9,8 @@ class Problem1 {
     final static int DRAW = 0;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        int pobiScore = 0;
-        int crongScore = 0;
+        int pobiScore;
+        int crongScore;
 
         if (!(checkPage(pobi) && checkPage(crong))) {
             return EXCEPTION;
@@ -23,7 +22,13 @@ class Problem1 {
         pobiScore = getMax(sum(pobi.get(0)), mul(pobi.get(1)));
         crongScore = getMax(sum(crong.get(0)), mul(crong.get(1)));
 
-        return answer;
+        if (pobiScore > crongScore) {
+            return POBI_WIN;
+        }
+        if (crongScore > pobiScore) {
+            return CRONG_WIN;
+        }
+        return DRAW;
     }
 
     private static boolean checkPage(List<Integer> page) {
