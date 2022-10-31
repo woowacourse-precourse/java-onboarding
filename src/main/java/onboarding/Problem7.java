@@ -44,6 +44,34 @@ public class Problem7 {
         return userFriend;
     }
 
+    //기능 3
+    public static HashMap<String, Integer> findSameFriend(String user, List<List<String>> friends, List<String> userFriend){
+
+        HashMap<String, Integer> sameFriendList=new HashMap<String, Integer>();
+
+        for(int i=0;i<friends.size();i++) {
+
+            List<String> onePairFriend=friends.get(i);
+
+            for(int j=0;j<userFriend.size();j++) {
+                String sameFriend=userFriend.get(j);
+                String friendName=findFriend(sameFriend,onePairFriend);
+
+                if(friendName!=null) {
+                    if(friendName!=user)
+                        if(!sameFriendList.containsKey(friendName)) {
+                            sameFriendList.put(friendName,10);
+                        }
+                        else {
+                            int point=sameFriendList.get(friendName)+10;
+                            sameFriendList.put(friendName,point);
+                        }
+                }
+            }
+        }
+        return sameFriendList;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
