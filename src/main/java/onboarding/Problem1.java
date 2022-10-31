@@ -6,9 +6,25 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
+        if (isException(pobi) || isException(crong)){
+            return -1;
+        }
+
         answer = selectWinner(pobi, crong);
 
         return answer;
+    }
+
+    public static boolean isException(List<Integer> target){
+        if (target.get(1) - target.get(0) != 1){
+            return true;
+        }
+
+        if (target.get(0) == 1 || target.get(1) == 400){
+            return true;
+        }
+
+        return false;
     }
 
     private static int selectWinner(List<Integer> firstTarget, List<Integer> secondTarget){
