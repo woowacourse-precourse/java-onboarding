@@ -73,12 +73,19 @@ public class Problem6 {
 
 	/**
 	 * 
+	 *  중복된 문자열이 있는지 확인하고 있으면 setName에 집어넣는 기능이다
+	 * 
 	 * @param id
-	 * @param inow
-	 * @param know
+	 * @param inow overLapCheck의 현재의 i번째
+	 * @param know overLapCheck의 현재의 k번째
 	 */
 	public static void check(String id, int inow, int know) {
-
+		for (int i = 0; i < name[know].length() - 1; i++) {
+			if (id.equals(name[know].substring(i, i + 2))) {
+				setName.add(name[inow]);
+				setName.add(name[know]);
+			}
+		}
 	}
 
 	/**
