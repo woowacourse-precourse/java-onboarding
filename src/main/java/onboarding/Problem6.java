@@ -6,11 +6,12 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class Problem6 {
+    final static int name = 1;
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer;
 
         checkException(forms);
-        answer = findEmail(saveSameUser(savaUser(forms)), forms);
+        answer = findEmail(saveSameUser(saveUser(forms)), forms);
 
         return answer;
     }
@@ -20,43 +21,36 @@ public class Problem6 {
         int email = 0;
         List<String> email_list = new ArrayList<>();
 
-        for (int i = 0; i < user_list.size(); i++)
-        {
-            String emailTxt = forms.get(user_list.get(i)).get(email);
+        for (Integer integer : user_list) {
+            String emailTxt = forms.get(integer).get(email);
             if (email_list.contains(emailTxt))
                 continue;
-            email_list.add(forms.get(user_list.get(i)).get(email));
+            email_list.add(forms.get(integer).get(email));
         }
 
         Collections.sort(email_list);
 
         return email_list;
     }
+    public static boolean checkSameUser(int first, int second) {
+        return first == second;
+    }
     //중복 닉네임 찾기
     //char형으로 비교하면 값이 안같아도 조건문을 넘어감..
     public static boolean findSameUser(String first, String second) {
-        int firstName;
-        int secondName;
-
         for (int i = 0; i < first.length() - 1; i++) {
             for (int j = 0; j < second.length() - 1; j++) {
-                firstName = first.charAt(i);
-                secondName = second.charAt(j);
-
-                if (firstName == secondName) {
-                    firstName = first.charAt(i + 1);
-                    secondName = second.charAt(j + 1);
-
-                    if (firstName == secondName)
+                if (checkSameUser(first.charAt(i), second.charAt(j))) {
+                    if (checkSameUser(first.charAt(i + 1), second.charAt(j + 1)))
                         return true;
+                    if (!checkSameUser(first.charAt(i + 1), second.charAt(j + 1)))
+                        break;
                 }
             }
         }
         return false;
     }
-    public static List<String> savaUser(List<List<String>> forms) {
-        int name = 1;
-
+    public static List<String> saveUser(List<List<String>> forms) {
         List<String> user_list = new ArrayList<>();
 
         for (List<String> form : forms)
@@ -76,6 +70,7 @@ public class Problem6 {
                 }
             }
         }
+
         return userMemo_list;
     }
 
