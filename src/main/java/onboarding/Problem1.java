@@ -9,7 +9,22 @@ class Problem1 {
         if(isException(pobi,crong)){
             return -1;
         }
-        return -1;
+
+        int[] pobiLeftPageDigits= splitDigits(pobi.get(0));
+        int[] pobiRightPageDigits= splitDigits(pobi.get(1));
+        int pobiScore= findMaxScore(pobiLeftPageDigits,pobiRightPageDigits);
+
+        int[] crongLeftPageDigits= splitDigits(crong.get(0));
+        int[] crongRightPageDigits= splitDigits(crong.get(1));
+        int crongScore= findMaxScore(crongLeftPageDigits,crongRightPageDigits);
+
+        if(pobiScore>=crongScore){
+            if(pobiScore==crongScore){
+                return 0;
+            }
+            return 1;
+        }
+        return 2;
     }
 
     private static boolean isException(List<Integer> pobi, List<Integer> crong){
