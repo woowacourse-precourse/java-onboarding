@@ -37,4 +37,16 @@ class Problem1 {
                 .boxed()
                 .collect(Collectors.toList());
     }
+
+    public static int getDigitSum(List<Integer> digitList){
+        return digitList.stream()
+                .mapToInt(i->i)
+                .sum();
+    }
+
+    public static int getDigitMultiplied(List<Integer> digitList){
+        return digitList.stream()
+                .mapToInt(i->i)
+                .reduce(1,(a,b)->a*b);
+    }
 }
