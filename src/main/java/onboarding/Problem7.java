@@ -84,11 +84,15 @@ public class Problem7 {
 
     public static List<String> commendList(String user, List<String> sortedList, List<String> friendList) {
         List<String> result = new ArrayList<>();
+        int friendsNumber = 0;
         for(int i=0; i<sortedList.size(); i++) {
             String friend = sortedList.get(i);
             if(! friendList.contains(friend) && ! user.equals(friend)) {
-                System.out.println("friend: " + friend);
                 result.add(friend);
+                friendsNumber += 1;
+            }
+            if(friendsNumber==5) {
+                return result;
             }
         }
         return result;
