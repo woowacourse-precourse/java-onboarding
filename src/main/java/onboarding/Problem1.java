@@ -7,6 +7,18 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
+    public static int winner(int pobiScore, int crongScore){
+        if(pobiScore > crongScore){
+            return 1;
+        }
+        else if(pobiScore < crongScore){
+            return 2;
+        }
+        else {
+            return 0;
+        }
+    }
+
     public static int biggestScoreByPageNum(int leftPageNum, int rightPageNum){
         int leftScore = toScore(leftPageNum);
         int rightScore = toScore(rightPageNum);
