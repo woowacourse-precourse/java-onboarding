@@ -10,6 +10,7 @@ public class Problem3 {
 			isValidNumber(number);
 		} catch (IllegalStateException illegalStateException) {
 			illegalStateException.printStackTrace();
+			return answer;
 		}
 
 		answer = countClaps(number);
