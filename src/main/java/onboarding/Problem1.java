@@ -9,6 +9,13 @@ class Problem1 {
         return answer;
     }
 
+    //  입력된 두 숫자 비교
+    private static int compareValue(int maxPobi, int maxCrong) {
+        if (maxPobi == maxCrong) return 0;
+        if (maxPobi > maxCrong) return 1;
+        return 2;
+    }
+
     //  List로 주어진 입력값에 대한 최대값 계산
     private static int findMaxValueInList(List<Integer> input) {
         return input.stream().map(Problem1::findMaxValueInNum).max(Integer::compareTo).orElseThrow(NoSuchElementException::new);
