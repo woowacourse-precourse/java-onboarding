@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
         Set<String> friendsWithUser = new HashSet<>();
 
         friendsWithUser = checkUserFriends(user, friends, friendsWithUser);
@@ -16,6 +16,8 @@ public class Problem7 {
         score = checkFriendsScore(friends, score, friendsWithUser);
 
         score = checkVisitorsScore(score, visitors);
+
+        answer = getResult(answer, score);
 
         return answer;
     }
@@ -79,5 +81,17 @@ public class Problem7 {
             }
         }
         return score;
+    }
+
+    public static List<String> getResult(List<String> answer, Map<String, Integer> score) {
+        List<Map.Entry<String, Integer>> entries = new ArrayList<>(score.entrySet());
+        Collections.sort(entries, (score1, score2) -> score2.getValue().compareTo(score1.getValue()));
+        for (int i = 0; i < entries.size(); i++) {
+            if (i == 5 || entries.get(i).getValue() == 0) {
+                break;
+            }
+            answer.add(entries.get(i).getKey());
+        }
+        return answer;
     }
 }
