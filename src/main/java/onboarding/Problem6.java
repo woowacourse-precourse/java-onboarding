@@ -44,6 +44,9 @@ public class Problem6 {
         }
     }
     static void checkEmailIndex(String substr, int mypos ) {
+        for(int i=0; i<nickname.size(); i++){
+            if (nickname.get(i).contains(substr) && i!=mypos) data.add(i);
+        }
     }
     static List<String> findEmail() {
         List<String> result = new ArrayList<>();
