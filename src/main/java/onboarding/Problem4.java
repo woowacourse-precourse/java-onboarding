@@ -1,5 +1,7 @@
 package onboarding;
 
+import onboarding.exception.InputRangeException;
+
 public class Problem4 {
     static final char START_ASCII_BY_UPPER_CASE = 'A';
     static final char END_ASCII_BY_UPPER_CASE = 'Z';
@@ -8,6 +10,11 @@ public class Problem4 {
 
     public static String solution(String word) {
         StringBuilder answer = new StringBuilder("");
+
+        // 입력 문자열에 대한 검증 작업을 진행한다.
+        if(isNotStrLengthRange(word)) {
+            throw new InputRangeException("word의 길이는 1~1000 사이여야 합니다.");
+        }
 
         // 입력 문자열을 배열로 변환한다.
         char[] wordArr = getCharArr(word);
@@ -23,8 +30,17 @@ public class Problem4 {
             char reversedVal = changeReversed(wordVal);
             answer.append(reversedVal);
         }
-        
+
         return answer.toString();
+    }
+
+    /**
+     * 입력 문자열에 대한 검증을 진행한다.
+     *
+     * @param word 입력 문자열
+     */
+    private static boolean isNotStrLengthRange(String word) {
+        return word.length() < 1 || word.length() > 1000;
     }
 
     /**
