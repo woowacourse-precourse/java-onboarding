@@ -5,11 +5,13 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
-        /*  포비나 크롱이 펼친 페이지들이 1만큼 차이나지 않으면 -1을 리턴 */
         boolean isValidPages = true;
-        if(pobi.get(1) - pobi.get(0) != 1 || crong.get(1) - crong.get(0) != 1)
+        /*  포비나 크롱이 펼친 페이지들이 유효하지 않은지 검사 */
+        if (pobi.get(0) % 2 != 1 || crong.get(0) % 2 != 1)
             isValidPages = false;
-        if(!isValidPages)
+        if (pobi.get(1) - pobi.get(0) != 1 || crong.get(1) - crong.get(0) != 1)
+            isValidPages = false;
+        if (!isValidPages)
             return -1;
 
         /* 각자 왼쪽 페이지 번호의 각 자리수를 더한 것과 곱한 것중 가장 큰 수 취하기 */
@@ -84,7 +86,9 @@ class Problem1 {
 
 /*
 <<기능 목록>>
-- [V] 포비 또는 크롱의 왼쪽 페이지와 오른쪽 페이지가 1차이가 나지 않을 경우 -1을 리턴한다
+- [V] 포비 또는 크롱이 펼친 페이지가 유효하지 않을 경우 -1을 리턴한다
+  - [V] 포비/크롱이 펼친 페이지가 왼쪽이 홀수, 오른쪽이 짝수가 아닌 경우
+  - [V] 포비/크롱이 펼친 페이지가 왼쪽이 홀수, 오른쪽이 짝수가 아닌 경우
 - [V] 포비와 크롱의 왼쪽 페이지 번호에 대해 각 자리 수를 모두 더하거나 모두 곱한 것 중 가장 큰 수를 구한다
 - [V] 포비와 크롱의 오른쪽 페이지 번호에 대해 각 자리 수를 모두 더하거나 모두 곱한 것 중 가장 큰 수를 구한다
 - [V] 포비와 크롱이 각자 왼쪽 오른쪽 페이지에 대해 구한 값 중 더 큰 값을 자신의 최종점수로 갖게 한다
