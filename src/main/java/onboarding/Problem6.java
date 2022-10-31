@@ -29,18 +29,6 @@ public class Problem6 {
             }
         }
 
-        for(int i=0; i<nickList.length; i++){
-            System.out.print(nickList[i]+" ");
-        }
-        System.out.println();
-        Iterator<String> listMapItr = listMap.keySet().iterator();
-        for(int i=0; i< listMap.size(); i++){
-            System.out.print(listMapItr.next() + " ");
-        }
-
-
-
-
         // 닉네임 중 같은 글자가 연속적으로 포함 되는 경우 찾기
         // 중복 확인할 기준 문자열 구하고 닉네임 set에 넣기
         Set<String> collectNickname = selectDuplicatedNickname(nickList);
