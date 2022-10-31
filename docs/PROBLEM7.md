@@ -26,10 +26,10 @@
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
 ------------
 
-### 문제 접근 방법 & 기능 리스트업
-1. friends 배열에 있는 정보들로 전체 친구 정보 map 을 만드는 기능 : MAP(String, LIST)
+### 문제 접근 방법 & 기능 리스트 
+1. friends 배열에 있는 정보들로 전체 친구 정보 map 을 만드는 기능 : MAP(String, List)
 2. user의 친구 리스트를 만드는 기능 : map.get(user) 
-3. 친구 추천 점수 map 을 만드는 기능 
+3. 친구 추천 점수 map 을 만드는 기능 : MAP(String, Integer)
    1. (user을 제외하고) 전체 친구 정보 map에서 user의 친구들을 알고 있는(value에 user의 친구가 있는) key를 찾는 기능
       1. 친구 추천 점수 map에서 key(user의 친구를 알고 있는)의 value를 +10 하는 기능
    2. 친구 추천 점수 map에서 방문자 목록(key)들의 value를 +1 하는 기능
