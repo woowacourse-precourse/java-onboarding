@@ -63,4 +63,10 @@ public class Problem6 {
         }
     }
 
+    private static List<String> sortByKey(List<String> keyList) {
+
+        keyList.sort(String::compareTo);
+        return keyList;
+    }
+
 }
