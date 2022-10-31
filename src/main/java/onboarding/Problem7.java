@@ -7,7 +7,7 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<List<String>> notFriendList = new ArrayList<>();
         HashSet<String> friendList = new HashSet<>();
-        HashMap<String, Integer> RelatedFriendsList = new HashMap<>();
+        HashMap<String, Integer> relatedFriendsScoreList = new HashMap<>();
         Problem7 problem = new Problem7();
 
         // 주어진 friends 관계도에서 user와 친구인 사람, 친구가 아닌 사람들의 관계끼리 자료 분리
@@ -30,40 +30,41 @@ public class Problem7 {
             String person2 = connection.get(1);
 
             if (friendList.contains(person1)) {
-                if (!RelatedFriendsList.containsKey(person2)) {
-                    RelatedFriendsList.put(person2, 10);
-                } else {
-                    RelatedFriendsList.put(person2, RelatedFriendsList.get(person2) + 10);
-                }
+                problem.getScoreByConnection(relatedFriendsScoreList, person2);
             }
 
             if (friendList.contains(person2)) {
-                if (!RelatedFriendsList.containsKey(person1)) {
-                    RelatedFriendsList.put(person1, 10);
-                } else {
-                    RelatedFriendsList.put(person1, RelatedFriendsList.get(person1) + 10);
-                }
+                problem.getScoreByConnection(relatedFriendsScoreList, person1);
             }
         });
 
         // 방문 수 만큼 점수 계산
         List<String> visitConnections = visitors.stream().filter(x -> !friendList.contains(x)).collect(Collectors.toList());
         visitConnections.forEach((visitor) -> {
-            if (!RelatedFriendsList.containsKey(visitor)) {
-                RelatedFriendsList.put(visitor, 1);
+            if (!relatedFriendsScoreList.containsKey(visitor)) {
+                relatedFriendsScoreList.put(visitor, 1);
             } else {
-                RelatedFriendsList.put(visitor, RelatedFriendsList.get(visitor) + 1);
+                relatedFriendsScoreList.put(visitor, relatedFriendsScoreList.get(visitor) + 1);
             }
         });
 
         // 점수 별로 정렬한 후 유저 이름대로 해시맵 정렬
-        HashMap<String, Integer> sortedFriendsList = problem.sortbyScoreThenName(RelatedFriendsList);
+        HashMap<String, Integer> sortedFriendsList = problem.sortbyScoreThenName(relatedFriendsScoreList);
 
         // 맵에서 key값만 가져오기
         Set<String> keySet = sortedFriendsList.keySet();
         ArrayList<String> recommendUserList = new ArrayList<>(keySet);
 
         return problem.HeadCountLimit(recommendUserList, 5);
+    }
+
+    public void getScoreByConnection (HashMap<String, Integer> hashmap,String person) {
+        int score = 10;
+        if (!hashmap.containsKey(person)) {
+            hashmap.put(person, score);
+        } else {
+            hashmap.put(person, hashmap.get(person) + score);
+        }
     }
 
     public HashMap<String, Integer> sortbyScoreThenName(HashMap<String, Integer> unsortedList) {
