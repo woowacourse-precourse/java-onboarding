@@ -18,6 +18,11 @@ public class Problem4 {
         return answer;
     }
 
+    public char convertBigAlphabet(char alphabet) {
+        char result = (char) (155 - alphabet);
+        return result;
+    }
+
     // 대문자 1, 소문자 0, 둘다 아닐경우 -1
     public int checkAlphabetWhatType(char alphabet) {
         if (checkIsBigAlphabet(alphabet)) {
