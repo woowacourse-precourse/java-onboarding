@@ -14,6 +14,31 @@ public class Problem6 {
 
         return answer;
     }
-    
+
+    private static List<String> getDuplicateNickNames(List<String> nameList, String name) {
+        List<String> duplicateNickNameList = getOtherDuplicateNickNames(nameList, name);
+        if (!duplicateNickNameList.isEmpty()) {
+            duplicateNickNameList.add(name);
+        }
+        return duplicateNickNameList;
+    }
+
+    private static List<String> getOtherDuplicateNickNames(List<String> nameList, String name) {
+        int index = 0;
+        int count = 2;
+        List<String> duplicateNickNameList = new ArrayList<>();
+        while (index + count <= name.length()) {
+            String subName = name.substring(index, index + count);
+            for (String otherName : nameList) {
+                if (otherName.equals(name))
+                    continue;
+                if (otherName.contains(subName))
+                    duplicateNickNameList.add(otherName);
+            }
+            index += 1;
+            count += 1;
+        }
+        return duplicateNickNameList;
+    }
 
 }
