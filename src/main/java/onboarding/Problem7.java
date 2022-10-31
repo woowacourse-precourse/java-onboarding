@@ -74,4 +74,15 @@ class SNS {
 class Relation {
     private static final List<List<String>> friendsTable = new ArrayList<>();
     private static final List<List<String>> requestTable = new ArrayList<>();
+
+    static List<List<String>> findFriends(String id) {
+        ArrayList<List<String>>friendList = new ArrayList<>();
+        for (int i = 0; i < friendsTable.size(); i++) {
+            if (friendsTable.get(i).contains(id)) {
+                friendList.add(friendsTable.get(i));
+            }
+        }
+        return friendList;
+    }
+
 }
