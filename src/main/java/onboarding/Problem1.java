@@ -6,16 +6,10 @@ class Problem1 {
     public static final int LEFT = 0;
     public static final int RIGHT = 1;
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer;
-
-        try {
-            Validator.isValidate(pobi, crong);
-            answer =  whoIsWin(pobi, crong);
-        } catch (Exception error) {
-            answer = -1;
+        if (!Validator.isValidate(pobi, crong)){
+            return -1;
         }
-
-        return answer;
+        return whoIsWin(pobi, crong);
     }
 
     private static int getMaxNum(List<Integer> page){
@@ -62,17 +56,22 @@ class Problem1 {
     }
 
     static class Validator {
-        protected static void isValidate(List<Integer> pobi, List<Integer> crong){
-            isCorrectSize(pobi);
-            isCorrectSize(crong);
-            isCorrectRange(pobi);
-            isCorrectRange(crong);
-            isConsecutive(pobi);
-            isConsecutive(crong);
-            isLeftOdd(pobi);
-            isLeftOdd(crong);
-            isRightEven(pobi);
-            isRightEven(crong);
+        protected static boolean isValidate(List<Integer> pobi, List<Integer> crong){
+            try {
+                isCorrectSize(pobi);
+                isCorrectSize(crong);
+                isCorrectRange(pobi);
+                isCorrectRange(crong);
+                isConsecutive(pobi);
+                isConsecutive(crong);
+                isLeftOdd(pobi);
+                isLeftOdd(crong);
+                isRightEven(pobi);
+                isRightEven(crong);
+                return true;
+            } catch (Exception error) {
+                return false;
+            }
         }
 
         private static void isCorrectSize(List<Integer> array){
