@@ -10,8 +10,6 @@ public class Problem2 {
     private static final String INPUT_STRING_IS_NOT_LOWERCASE = "입력 문자열이 소문자로만 이루어져 있지 않습니다. ";
     private static final int INPUT_MINIMUM_LENGTH = 1;
     private static final int INPUT_MAXIMUM_LENGTH = 1000;
-    private static final int ALPHABET_START_INDEX = 0;
-    private static final int ALPHABET_END_INDEX = 25;
     private static Stack<String> deletedCryptogram = new Stack<>();
 
     public static String solution(String cryptogram) {
