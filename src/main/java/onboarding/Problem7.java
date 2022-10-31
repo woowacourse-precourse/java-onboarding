@@ -1,7 +1,10 @@
 package onboarding;
 
 import java.util.*;
-import java.util.function.Predicate;
+//(3차 리팩토링) 기능 목록
+// (List<List<String>> friends 를 한번만 순회 하기 위해 변경함)
+//(변경 전) 1. friends돌며 userFriend Set 생성 -> friends돌며 userFriend의 friend리스트 형성 -> friendmap 완성
+// 1. friendMap 형성 -> 2. friends돌며 친구 사이 추가하기 ->3.user(key)로 userFriend리스트 생성
 
 public class Problem7 {
     public static int ACQUAINTANCE_POINT = 10;
@@ -9,77 +12,70 @@ public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
-        //1. 유저의 친구 set형성하기
-        Set<String> userFriend = createUserFriend(user, friends);
-        //2. 친구 맵 만들기
-        Map<String,List<String>> friendMap = createFriendMap(userFriend, friends);
+        //1. 친구 맵 만들기
+        Map<String, List<String>> friendMap = createFriendMap(friends);
+        //2. user의 친구 리스트 뽑기 (user가 없으면 빈 리스트)
+        List<String> userFriendList = friendMap.getOrDefault(user, Collections.emptyList());
 
         //3. 추천 맵 만들기.
         Map<String,Integer> recommendFriendPoint = new HashMap<>();
         //4. 아는사이, 방문자 추가하고 점수 주기.
-        recommendAcquaintance(friendMap, recommendFriendPoint);
-        recommendVisitors(visitors, userFriend, recommendFriendPoint);
+        recommendAcquaintance(user, userFriendList,friendMap, recommendFriendPoint);
+        recommendVisitors(user, userFriendList, visitors, recommendFriendPoint);
+
+        //체크
+        System.out.println(recommendFriendPoint);
 
         //5. 정렬한 리스트 제공
         return createRecommendList(recommendFriendPoint);
     }
 
-    //1. 유저의 친구관계 알아내기
-    public static Set<String> createUserFriend(String user, List<List<String>> friends) {
-        Set<String> userFriend = new HashSet<>();
-        for (List<String> f : friends) {         //user이름 포함되면 set에 넣기
-            if (f.contains(user)) {
-                userFriend.add(f.get(0));
-                userFriend.add(f.get(1));
-            }
+    //1. 친구 맵 만들기
+    public static Map<String, List<String>> createFriendMap (List<List<String>> friends){
+        Map<String, List<String>> friendMap = new HashMap<>();
+        for(List<String> relation : friends){
+            String userA =  relation.get(0) ,userB = relation.get(1);
+            addUserToFriendMap(userA, userB, friendMap); //각 유저마다 friendlist friend맵에 추가하기
+            addUserToFriendMap(userB, userA, friendMap);
         }
-        return userFriend;
-    }
 
-
-    //2. 유저의 친구관계로, 친구 맵 만들기
-    public static Map<String,List<String>> createFriendMap(Set<String> userFriends, List<List<String>> friends){
-        Map<String,List<String>> friendMap = new HashMap<>();
-        for (String friend : userFriends){
-            List<String> myFriendList =  createMyFriendList(userFriends, friend, friends);
-            friendMap.put(friend,myFriendList);  //수정필요. 친구와, 친구관계로 ->친구 리스트 만들기
-        }
         return friendMap;
     }
 
-
-    //3. 친구의 친구관계 리스트 만들기
-    public static List<String> createMyFriendList(Set<String> userFriend, String friend, List<List<String>> friends) {
-        ArrayList<String> friendList = new ArrayList<>();
-
-        for(List<String> list : friends){ //friend이름과 같고, userFriend에 속한 user가 아니면 추가
-            if (list.get(0).equals(friend) && !userFriend.contains(list.get(1))) friendList.add(list.get(1));
-            if (list.get(1).equals(friend) && !userFriend.contains(list.get(0))) friendList.add(list.get(0));
-        }
-        return friendList;
+    //2. 친구- 친구 리스트 연결하기 (user, 상대. 상대를 user의 arraylist에 넣기)
+    public static void addUserToFriendMap(String user, String myFriend, Map<String, List<String>> friendMap){
+        List<String> myFriendList = friendMap.getOrDefault(user, new ArrayList<>());
+        myFriendList.add(myFriend);
+        friendMap.put(user, myFriendList);
     }
 
 
 
 
-    //4. 추천리스트에 아는 사이 넣기 : (유저) 프랜드 맵 순회하면서 VALUE꺼내서, 추천리스트에 넣고 점수주기
-    public static void recommendAcquaintance(Map<String,List<String>> friendMap, Map<String,Integer> recommendFriendPoint){
-        for(Map.Entry<String,List<String>> e : friendMap.entrySet()){
-            for(String person : e.getValue()){
-                if (recommendFriendPoint.containsKey(person)){
-                    recommendFriendPoint.replace(person,recommendFriendPoint.get(person)+ACQUAINTANCE_POINT);
+    //4. 추천Map에 친구의 아는 사람 넣기
+    public static void recommendAcquaintance(String user, List<String> userFriendList, Map<String,List<String>> friendMap, Map<String,Integer> recommendFriendPoint){
+        if (userFriendList.isEmpty()) return;
+        for(String userFriend : userFriendList){
+            List<String> myFriendList = friendMap.getOrDefault(userFriend, Collections.emptyList());
+
+            for(String friend : myFriendList){
+                if(friend.equals(user)) continue; //user본인인 경우
+                if(userFriendList.contains(friend)) continue;  // user의 친구인 경우
+                if(recommendFriendPoint.containsKey(friend)){
+                    recommendFriendPoint.replace(friend,recommendFriendPoint.get(friend)+ACQUAINTANCE_POINT);
                     continue;
                 }
-                recommendFriendPoint.put(person, ACQUAINTANCE_POINT);
+                recommendFriendPoint.put(friend, ACQUAINTANCE_POINT);
             }
         }
     }
 
 
 
-    //5. 추천리스트에 방문자 횟수 넣기.
-    public static void recommendVisitors(List<String> visitors, Set<String> userFriends, Map<String,Integer> recommendFriendPoint){
+    //5. 방문자 추천하기 (user본인이나 친구가 아닌경우만)
+    public static void recommendVisitors(String user, List<String> userFriends, List<String> visitors, Map<String,Integer> recommendFriendPoint){
         for(String visitor : visitors){
+            if (visitor.equals(user)) continue;
             if (userFriends.contains(visitor)) continue;
             if (recommendFriendPoint.containsKey(visitor)){
                 recommendFriendPoint.replace(visitor, recommendFriendPoint.get(visitor)+VISITOR_POINT);
@@ -87,7 +83,6 @@ public class Problem7 {
             }
             recommendFriendPoint.put(visitor,VISITOR_POINT);
         }
-
     }
 
 
