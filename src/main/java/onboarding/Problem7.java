@@ -105,7 +105,14 @@ public class Problem7 {
         }
     }
 
-
+    public static List<User> getListOfUsersNotFriendWithTarget(String targetUserName){
+        List<User> userList = new LinkedList<>();
+        User targetUser = getUserFromName(targetUserName);
+        for(User user : USER_MAP.values()){
+            addNotFriendUserToList(userList, targetUser, user);
+        }
+        return userList;
+    }
 
     public static void processVisitorsList(List<String> visitors){
         for(String visitorName : visitors){
