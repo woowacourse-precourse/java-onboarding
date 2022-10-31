@@ -28,9 +28,6 @@ public class Problem7 {
         }
         return output;
     }
-    private static void addScores(String member, HashMap Scores){
-
-    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         //List<String> answer = Collections.emptyList();
         HashMap<String, Integer> scores = new HashMap<>();
@@ -70,6 +67,10 @@ public class Problem7 {
         List<String> answer = new ArrayList<>(scores.keySet());
         answer.sort(Comparator.naturalOrder());
         answer.sort((s1, s2) -> scores.get(s2) - scores.get(s1));
+
+        if(answer.size() > 5){
+            answer = answer.subList(0, 5);
+        }
         return answer;
     }
 }
