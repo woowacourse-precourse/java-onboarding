@@ -22,6 +22,7 @@ public class Problem6 {
 
         for (int crewIdx = 0; crewIdx <= forms.size() - 1; crewIdx++) {
             String nickname = forms.get(crewIdx).get(NICKNAME_IDX);
+            validateNicknameFormat(nickname);
 
             for (int charIdx = 0; charIdx <= nickname.length() - 2; charIdx++) {
                 char[] charArray = {nickname.charAt(charIdx), nickname.charAt(charIdx + 1)};
@@ -79,5 +80,12 @@ public class Problem6 {
         if (email.length() < 11 || email.length() >= 20) {
             throw new IllegalArgumentException("이메일의 길이는 11자 이상 20자 미만이여야 합니다.");
         }
+    }
+
+    private static void validateNicknameFormat(String nickname) {
+        if (nickname.matches("^[ㄱ-ㅎㅏ-ㅣ가-힣]*$") == false) {
+            throw new IllegalArgumentException("닉네임은 한글로만 구성되어야 합니다.");
+        }
+
     }
 }
