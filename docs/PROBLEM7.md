@@ -24,3 +24,11 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 체크리스트
+- 예외사항
+  - 따로 없을 것 같다
+- 기능 구현
+  - [x] 유저의 친구를 구한다.
+  - [x] 다른 유저들의 점수를 구한다.
+    - [x] 이미 유저의 친구라면 추천하지 않는다.
