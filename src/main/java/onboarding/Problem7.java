@@ -9,51 +9,86 @@ public class Problem7 {
         2. 친구의 친구 점수 해시맵 반환 함수
         3. 방문자 점수 해시맵 반환 함수
         4. 해시맵 정렬 함수
-        5. solution (함수 순서대로 실행)
+        5. solution 함수
     */
 
-    // 주어진 사용자의 친구 리스트 반환 함수
-    private static List<String> userFriend(String user, List<List<String>> friendDb) {
+    static int ACQ_SCORE = 10;
+    static int VISIT_SCORE = 1;
+
+    // 사용자의 친구 반환 함수
+    private static String userInRelation(String user, List<String> relationship) {
+        if (relationship.contains(user)) {
+            int userIndex = relationship.indexOf(user); // 사용자의 인덱스
+            int friendIndex = 1 - userIndex;            // 사용자 친구의 인덱스
+            return relationship.get(friendIndex);
+        }
+        return null;
+    }
+
+    // 해시맵에 값 추가
+    private static HashMap<String, Integer> addKeyToMap(
+            HashMap<String, Integer> recommend,
+            String person,
+            Integer score
+    ) {
+        if (!recommend.containsKey(person))
+            recommend.put(person, score);
+        else
+            recommend.put(person, recommend.get(person) + score);
+        return recommend;
+    }
+
+    // 사용자의 친구 리스트 반환 함수
+    private static List<String> userFriends(String user, List<List<String>> friendDb) {
         List<String> friends = new ArrayList<>(List.of());
 
         for (List<String> relationship : friendDb) {
-            if (relationship.contains(user)) {
-                int userIndex = relationship.indexOf(user); // 사용자의 인덱스
-                int friendIndex = 1 - userIndex;            // 사용자 친구의 인덱스
-                String userFriend = relationship.get(friendIndex);
-                friends.add(userFriend);
-            }
+            String userFriend = userInRelation(user, relationship);
+            if (userFriend != null) friends.add(userFriend);
         }
         return friends;
     }
 
-    // 추천 점수 해시맵 반환 함수 (친구의 친구)
-    private static HashMap<String, Integer> acquaintance(String user, List<List<String>> db, List<String> userFriends) {
-        HashMap<String, Integer> recommend = new HashMap<>();
+    // 한 관계에 친구의 친구가 있는지 확인
+    private static HashMap<String, Integer> friendOfFriend(
+            List<String> userFriends,
+            List<String> relationship,
+            HashMap<String, Integer> recommend
+    ) {
+        for (String friend : userFriends) {
+            String acquaintance = userInRelation(friend, relationship);
+            if (acquaintance == null) continue;
 
-        for (List<String> relationship : db) {
-            if (relationship.contains(user)) continue;
-
-            for (String friend : userFriends) {
-                if (relationship.contains(friend)) {
-                    int friendIndex = relationship.indexOf(friend); // 사용자 친구의 인덱스
-                    int acqIndex = 1 - friendIndex;                 // 친구의 친구 인덱스
-                    String acq = relationship.get(acqIndex);
-                    if (!recommend.containsKey(acq)) recommend.put(acq, 10);
-                    else recommend.put(acq, recommend.get(acq) + 10);
-                }
-            }
+            // 친구의 친구를 알아내면 해시맵에 점수와 함께 추가
+            addKeyToMap(recommend, acquaintance, ACQ_SCORE);
         }
         return recommend;
     }
 
-    // 추천 점수 해시맵 반환 함수 (방문자)
-    private static HashMap<String, Integer> looker(HashMap<String, Integer> recommend, List<String> visitors, List<String> userFriends) {
+    // 친구의 친구 점수
+    private static HashMap<String, Integer> acqScore(
+            String user,
+            List<List<String>> db,
+            List<String> userFriends
+    ) {
+        HashMap<String, Integer> recommend = new HashMap<>();
+
+        for (List<String> relationship : db) {
+            if (relationship.contains(user)) continue;
+            friendOfFriend(userFriends, relationship, recommend);
+        }
+        return recommend;
+    }
+
+    // (친구의 친구 점수 +) 방문자 점수
+    private static HashMap<String, Integer> visitorScore(
+            HashMap<String, Integer> recommend,
+            List<String> visitors,
+            List<String> userFriends
+    ) {
         for (String visitor : visitors) {
             if (userFriends.contains(visitor)) continue;
-
-            if (!recommend.containsKey(visitor)) recommend.put(visitor, 1);
-            else recommend.put(visitor, recommend.get(visitor) + 1);
+            addKeyToMap(recommend, visitor, VISIT_SCORE);
         }
         return recommend;
     }
@@ -73,9 +108,9 @@ public class Problem7 {
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> userFriends = userFriend(user, friends);
-        HashMap<String, Integer> acq = acquaintance(user, friends, userFriends);
-        HashMap<String, Integer> recommend = looker(acq, visitors, userFriends);
+        List<String> userFriends = userFriends(user, friends);
+        HashMap<String, Integer> acq = acqScore(user, friends, userFriends);
+        HashMap<String, Integer> recommend = visitorScore(acq, visitors, userFriends);
         HashMap<String, Integer> sorted = sortRecommend(recommend);
         List<String> answer = new ArrayList<>(sorted.keySet());
         return answer;
