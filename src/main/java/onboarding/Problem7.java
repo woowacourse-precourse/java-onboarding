@@ -27,7 +27,8 @@ public class Problem7 {
 
         // 5.
         List<String> answer = new ArrayList<>(scoreMap.keySet());
-        answer.sort((o1, o2) -> scoreMap.get(o2).compareTo(scoreMap.get(o1)));
+        Collections.sort(answer); // 이름으로 먼저 정렬한 후 점수로 정렬
+        answer.sort((o1, o2) -> scoreMap.get(o2).compareTo(scoreMap.get(o1))); // 점수로 정렬
 
         if (answer.size() > 5) {
             answer = answer.subList(0, 6);
