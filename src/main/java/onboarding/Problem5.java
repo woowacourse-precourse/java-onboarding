@@ -24,6 +24,9 @@ public class Problem5 {
         answer.add(remain/500);
         remain = remain%500;
 
+        answer.add(remain/100);
+        remain = remain%100;
+
 
         return answer;
     }
