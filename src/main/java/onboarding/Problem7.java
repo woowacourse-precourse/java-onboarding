@@ -37,6 +37,16 @@ public class Problem7 {
                 friends_score.put(visitor, friends_score.getOrDefault(visitor, 0) + 1);
         }
 
+        Map<Integer, List<String>> friends_ordered_by_score = new TreeMap<>(Comparator.reverseOrder());
+        for(String friend : friends_score.keySet()){
+            int score = friends_score.get(friend);
+            if(!friends_ordered_by_score.containsKey(score)){
+                friends_ordered_by_score.put(score, new ArrayList<>());
+            }
+            friends_ordered_by_score.get(score).add(friend);
+        }
+
+
         return answer;
     }
 }
