@@ -1,19 +1,15 @@
 package onboarding;
 
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
         HashMap<String, ArrayList<String>> friendGraph = initFriendGraph(friends);
         HashMap<String, Integer> recommendScore = initRecommendScoreList();
         AddRecommendScoreOfFriends(recommendScore, friendGraph, user);
         AddRecommendScoreOfVisitors( recommendScore, friendGraph,user,visitors);
-        System.out.println(recommendScore);
+        List<String> answer = topRecommendScoreList(recommendScore);
         return answer;
     }
 
@@ -81,5 +77,39 @@ public class Problem7 {
             if (!checkUserInRecommendScoreList(recommendScore, visitor)) recommendScore.put(visitor, 0);
             recommendScore.replace(visitor, recommendScore.get(visitor) + 1);
         }
+    }
+
+    // 점수를 오름차순으로 정렬하여 주어진 조건에 따라 리턴하는 함수
+    public static List<String> topRecommendScoreList(HashMap<String, Integer> recommendScore) {
+        ArrayList<HashMap<String, Integer>> tempList = new ArrayList<HashMap<String, Integer>>();
+        ArrayList<String> resultList = new ArrayList<String>();
+        for (String friend : recommendScore.keySet()) {
+            HashMap<String, Integer> tempHashMap = new HashMap<String, Integer>();
+            tempHashMap.put(friend, recommendScore.get(friend));
+            tempList.add(tempHashMap);
+        }
+        System.out.println(tempList);
+       Collections.sort(tempList, new Comparator<HashMap<String, Integer>>() {
+           @Override
+           public int compare(HashMap<String, Integer> o1, HashMap<String, Integer> o2) {
+               String key1 = o1.keySet().toString();
+               key1 = key1.substring(1, key1.length()-1);
+               String key2 = o2.keySet().toString();
+               key2 = key2.substring(1, key2.length()-1);
+               if (o1.get(key1) < o2.get(key2)) return 1;
+               else if (o1.get(key1) > o2.get(key2)) return -1;
+
+               // 점수가 동일한 경우 문자열의 크기를 통해 정렬
+               return (key1.compareTo(key2));
+           }
+       });
+
+        for (HashMap<String, Integer> temp: tempList) {
+            for (String friends : temp.keySet()) {
+                resultList.add(friends);
+            }
+            if (resultList.size() >= 5) break;
+        }
+        return resultList;
     }
 }
