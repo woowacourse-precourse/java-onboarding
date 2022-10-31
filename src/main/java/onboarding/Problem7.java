@@ -13,6 +13,7 @@ public class Problem7 {
 	static HashMap<String, List<String>> friendList = new HashMap<>();
 	static HashMap<String, Integer> distanceMap = new HashMap<>();
 	static List<String> mutualFriends = new ArrayList<>();
+	static HashMap<String, Integer> scoreMap = new HashMap<>();
 
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 		List<String> answer = Collections.emptyList();
@@ -28,7 +29,15 @@ public class Problem7 {
 		System.out.println("distanceMap = " + distanceMap);
 		choiceMutualFriends();
 		System.out.println("mutualFriends = " + mutualFriends);
+		countKnowFriends();
+		System.out.println("scoreMap = " + scoreMap);
 
+		countFeedVisitors(visitors);
+		System.out.println("scoreMap = " + scoreMap);
+
+		// scoreMap 정렬 (1. 값큰수 / 2. 키 이름순)
+		// 정렬후 큰거부터 5개뽑기
+		// 리펙토링 -> 우선순위 큐
 		return answer;
 	}
 
@@ -62,15 +71,47 @@ public class Problem7 {
 		}
 	}
 
-	// public static void countKnowFriends{
-	//
-	// }
+	public static void countKnowFriends() {
+		for (String mate : mutualFriends) {
+			for (String closeMate : friendList.get(mate)) {
+				if (distanceMap.get(closeMate) == 1) {
+					if (!scoreMap.containsKey(mate)) {
+						scoreMap.put(mate, 10);
+						continue;
+					}
+					scoreMap.put(mate, scoreMap.get(mate) + 10);
+				}
+			}
+		}
+	}
+
 	public static void choiceMutualFriends() {
 		Set<Map.Entry<String, Integer>> entrySet = distanceMap.entrySet();
 		for (Map.Entry<String, Integer> entry : entrySet) {
 			if (entry.getValue() == 2) {
 				mutualFriends.add(entry.getKey());
 			}
+		}
+	}
+
+	public static void countFeedVisitors(List<String> visitors) {
+		for (String visitor : visitors) {
+			System.out.println("visitor = " + visitor);
+			if (distanceMap.containsKey(visitor)) {
+				if (distanceMap.get(visitor) == 1) {    // 이미친구
+					continue;
+				}
+				if (!scoreMap.containsKey(visitor)) {    // 거리:2이상친구
+					scoreMap.put(visitor, 1);
+					continue;
+				}
+				scoreMap.put(visitor, scoreMap.get(visitor) + 1);    // 함께아는 친구
+			}
+			if (scoreMap.containsKey(visitor)) {
+				scoreMap.put(visitor, scoreMap.get(visitor) + 1);    // 난생처음보는데 또 피드본 친구
+				continue;
+			}
+			scoreMap.put(visitor, 1);    // 난생처음보는 친구
 		}
 	}
 
