@@ -8,10 +8,18 @@ import java.util.List;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+        // 모든 유저의 친구 관계 저장
         HashMap<String, ArrayList<String>> friend_map = get_friendsMap(friends);
+        // 추천할 대상과 점수를 저장
+        HashMap<String, Integer> recommand = new HashMap<>();
+        // 추천을 받는 대상(= user)의 친구 관계를 탐색하여 이미 친구인 사람을 저장
+        ArrayList<String> already_friends = friend_map.get(user);
 
-        for(String friend : friend_map.keySet())
-            System.out.println("Key : " + friend + " / value : " + friend_map.get(friend));
+        // 친구 관계를 탐색하여 이미 친구인 사람 및 자기 자신을 제외하고 추천 대상에 저장해둠.
+        for(String friend : friend_map.keySet()){
+            if(!already_friends.contains(friend) && !friend.equals(user))
+                recommand.put(friend, 10);
+        }
 
         return answer;
     }
