@@ -27,4 +27,6 @@ public class Problem6 {
         return false;
     }
 
+    // 리스트에 없는 이메일만 추가하는 함수 addEmail()
+
 }
