@@ -12,6 +12,7 @@ public class Problem7 {
         findFriendShip(friends, friendsMap);
         calculateRelatedFriends(user, friendsMap, scoreMap);
         calculateVisitor(user, visitors, scoreMap);
+        removeUserFriends(friendsMap.get(user), scoreMap);
         List<String> answer = Collections.emptyList();
         return answer;
     }
@@ -45,6 +46,15 @@ public class Problem7 {
 
     public static void calculateVisitor(String user, List<String> visitors, HashMap<String, Integer> scoreMap){
         visitors.stream().forEach(visitor -> addOnePoint(user, visitor, scoreMap));
+    }
+
+    public static void removeUserFriends(List<String> userFriends, HashMap<String, Integer> scoreMap){
+        if(userFriends==null){
+            return;
+        }
+        for(String userFriend: userFriends){
+            scoreMap.remove(userFriend);
+        }
     }
 
     public static int countRelatedFriendsWithUser(String user, String other, HashMap<String, List<String>> friendsMap){
