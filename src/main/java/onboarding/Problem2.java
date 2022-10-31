@@ -6,42 +6,55 @@ public class Problem2 {
     public static String solution(String cryptogram) {
     	
     	char[] cryptogramArr = cryptogram.toCharArray();
-    	findDuplicateChars(cryptogramArr);
+    	getDeduplicateCrypto(cryptogramArr);
     	
         String deduplicationCrypto = getFinalCrypto(cryptogramArr);
         
         return deduplicationCrypto;
     }
-    public static void findDuplicateChars(char[] cryptogramArr) {
+    public static void getDeduplicateCrypto(char[] cryptogramArr) {
     	
     	Stack<Character> pastChars = new Stack<>();
     	Stack<Integer> pastIdxes = new Stack<>();
+    	Stack<Integer> duplicateCharIdxes = new Stack<>();
     	
-    	for(int i=0; i<cryptogramArr.length; i++) {
-    		char cur = cryptogramArr[i];
+    	for(int idx=0; idx<cryptogramArr.length; idx++) {
+    		char cur = cryptogramArr[idx];
     		
     		if(pastChars.isEmpty()) {
     			pastChars.add(cur);
-    			pastIdxes.add(i);
+    			pastIdxes.add(idx);
     		} else {
-
     			char pastChar = pastChars.peek();
     			int pastIdx = pastIdxes.peek();
     			
     			if(pastChar == cur) {
-    				pastChars.pop();
-    				pastIdxes.pop();
-    				removeDuplicateChars(cryptogramArr, pastIdx, i);
+    				if(idx!=cryptogramArr.length-1) {
+        				duplicateCharIdxes.add(idx);    					
+    				} else {
+    					cryptogramArr[idx] = '0';
+    					removeDuplicateChars(cryptogramArr, pastIdx, duplicateCharIdxes);
+    				}
     			} else {
-    				pastChars.add(cur);
-    				pastIdxes.add(i);
+    				
+    				if(duplicateCharIdxes.isEmpty()) {
+    					pastChars.add(cur);
+    					pastIdxes.add(idx);
+    				} else {
+    					pastChars.pop();
+    					pastIdxes.pop();
+    					removeDuplicateChars(cryptogramArr, pastIdx, duplicateCharIdxes);
+    					idx -= 1;
+    				}
     			}
     		}
     	}
     }
-    public static void removeDuplicateChars(char[] cryptogramArr, int pastIdx, int curIdx) {
+    public static void removeDuplicateChars(char[] cryptogramArr, int pastIdx, Stack<Integer> duplicateCharIdxes) {
     	cryptogramArr[pastIdx] = '0';
-    	cryptogramArr[curIdx] = '0';
+    	while(!duplicateCharIdxes.isEmpty()) {
+    		cryptogramArr[duplicateCharIdxes.pop()] = '0';
+    	}
     }
     public static String getFinalCrypto(char[] cryptogramArr) {
         String deduplicationCrypto = "";
