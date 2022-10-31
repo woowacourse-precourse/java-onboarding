@@ -22,7 +22,6 @@ public class Problem4 {
             map.put(upperCase[i],upperCase[25-i]);
             map.put(lowerCase[i],lowerCase[25-i]);
         }
-        map.put(' ',' ');
         return;
     }
     public static String solution(String word) {
@@ -33,9 +32,9 @@ public class Problem4 {
         setMap();
         for(int i=0; i<word.length(); i++){
 
-            char temp = map.getOrDefault(((char)(word.charAt(i))),'!');
-            if(temp!='!')
-                answer += temp;
+            char temp = map.getOrDefault(((char)(word.charAt(i))),((char)(word.charAt(i))));
+
+            answer += temp;
         }
 
         return answer;
