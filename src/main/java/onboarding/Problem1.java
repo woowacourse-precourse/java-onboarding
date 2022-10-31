@@ -10,15 +10,24 @@ class Problem1 {
         int pobiMax = 0;
         int crongMax = 0;
 
-        pobiMax = maxScore(pobi);
-        crongMax = maxScore(crong);
+        try {
 
-        if (pobiMax > crongMax) {
-            answer = 1;
-        } else if (pobiMax < crongMax) {
-            answer = 2;
-        } else {
-            answer = 0;
+            if (pobi.get(0)+1!=pobi.get(1) || crong.get(0)+1!=crong.get(1)) {
+                throw new Exception();
+            }
+
+            pobiMax = maxScore(pobi);
+            crongMax = maxScore(crong);
+
+            if (pobiMax > crongMax) {
+                answer = 1;
+            } else if (pobiMax < crongMax) {
+                answer = 2;
+            } else {
+                answer = 0;
+            }
+        }catch (Exception e){
+            answer = -1;
         }
 
         return answer;
