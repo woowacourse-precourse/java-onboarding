@@ -2,7 +2,7 @@
 
 레벨 2의 팀 프로젝트 미션으로 SNS(Social Networking Service)를 만들고자 하는 팀이 있다. 팀에 속한 크루 중 평소 알고리즘에 관심이 많은 미스터코는 친구 추천 알고리즘을 구현하고자 아래와 같은 규칙을 세웠다.
 
-- 사용자와 함께 아는 친구의 수 = 10점 
+- 사용자와 함께 아는 친구의 수 = 10점
 - 사용자의 타임 라인에 방문한 횟수 = 1점
 
 사용자 아이디 user와 친구 관계 정보 friends, 사용자 타임 라인 방문 기록 visitors가 매개변수로 주어질 때, 미스터코의 친구 추천 규칙에 따라 점수가 가장 높은 순으로 정렬하여 최대 5명을 return 하도록 solution 메서드를 완성하라. 이때 추천 점수가 0점인 경우 추천하지 않으며, 추천 점수가 같은 경우는 이름순으로 정렬한다.
@@ -21,6 +21,25 @@
 
 ### 실행 결과 예시
 
-| user | friends | visitors | result |
-| --- | --- | --- | --- |
+| user   | friends                                                                                                                         | visitors                                      | result                    |
+| ------ | ------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------- | ------------------------- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+---
+
+### 기능 구현 목록
+
+- getRecommendList(String user,List<List<String>> friends ,List<String> visitors)
+  사용자의 아이디와 친구관계 정보, 사용자 타임라인 방문 기록으로 추천 친구 리스트를 반환
+- getFriendsMap(List<List<String>> friends)
+  친구 관계 정보를 받아 친구 관계 맵을 만들어 반환
+- setFriendsScore(String user, Map<String, Set<String>> friendsMap , Map<String , Integer> recommendScoreMap)
+  유저 이름과 친구 관계 맵을 받아 추천 점수 맵에 등록
+- setVisitorScore(List<String > visitors, Map<String, Integer> recommendScoreMap)
+  타임라인 방문자 기록을 받아 추천 점수 맵에 등록
+- addScore(String recommendUser, int score, Map<String , Integer> recommendScoreMap)
+  추천 점수 맵에 점수를 등록
+- deleteUserAndFriends(String user, Map<String, Set<String>> friendsMap, Map<String, Integer> recommendScoreMap)
+  추천 점수 맵에서 자신과 이미 등록된 친구를 삭제
+- getRecommendListByScoreMap(Map<String, Integer> recommendScoreMap)
+  추천 점수 맵의 점수가 높은 유저 순으로 추천 유저 리스트를 반환
