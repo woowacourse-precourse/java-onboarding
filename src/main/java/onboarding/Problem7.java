@@ -52,7 +52,13 @@ public class Problem7 {
         }
     }
 
-    public static void Add_point(String visitor){}
+    public static void Add_point(String visitor){
+        if (map.containsKey(visitor)){
+            map.put(visitor, map.get(visitor) + 1);
+        } else {
+            map.put(visitor, 1);
+        }
+    }
 
     public static List<String> recommendation(){
         List<String> answer = new ArrayList<>();
