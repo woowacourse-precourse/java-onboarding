@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /* 기능 목록
@@ -11,13 +10,11 @@ import java.util.List;
 
 public class Problem5 {
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
+        List<Integer> answer = new ArrayList<>();
         int[] currencies = {50_000, 10_000, 5_000, 1_000, 500, 100, 50, 10, 1};
-        Problem5 problem5 = new Problem5();
 
-        answer = new ArrayList<>();
         for (int currency : currencies) {
-            answer.add(problem5.change(money, currency));
+            answer.add(change(money, currency));
             money %= currency;
         }
 
@@ -32,7 +29,7 @@ public class Problem5 {
      * @param currency 화폐 단위
      * @return 변환 가능한 화폐 개수 반환
      */
-    int change(int money, int currency) {
+    static int change(int money, int currency) {
         return money / currency;
     }
 }
