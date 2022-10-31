@@ -40,7 +40,7 @@ public class Problem7 {
 
     private static final List<String> myFriends = new ArrayList<>();
     private static final List<String> aFriendWeKnow = new ArrayList<>();
-    private static final Map<String, Integer> result = new HashMap<>();
+    private static final HashMap<String, Integer> result = new HashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         UserVerifier.userIdAndFriendsListVerifier(user, friends);
@@ -164,15 +164,19 @@ public class Problem7 {
     private static List<String> sortMapAndMapToList() {
         List<String> userRanking = new ArrayList<>();
 
-        List<String> listKeySet = new ArrayList<>(result.keySet());
-        listKeySet.sort((value1, value2) -> (result.get(value2).compareTo(result.get(value1))));
-        for (String key : listKeySet) {
-            if (result.get(key) != 0) {
-                userRanking.add(key);
-                if (userRanking.size() == 5) break;
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(result.entrySet());
+        entryList.sort(new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                if (Objects.equals(o1.getValue(), o2.getValue())) return o1.getKey().compareTo(o2.getKey());
+                return o2.getValue() - o1.getValue();
             }
+        });
+
+        for (Map.Entry<String, Integer> stringIntegerEntry : entryList) { //최대 top 5 반환
+            if (userRanking.size() == 5 || stringIntegerEntry.getValue() == 0) break;
+            userRanking.add(stringIntegerEntry.getKey());
         }
-        Collections.sort(userRanking);
 
         return userRanking;
     }
