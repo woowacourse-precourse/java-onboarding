@@ -93,4 +93,20 @@ public class Problem7 {
         }
         return key;
     }
+
+    /**
+     * 이미 친구인 사람 추출
+     */
+    static List<String> friends(List<String> answer,String user, List<List<String>> friends){
+        List<String> result = userFriends(user,friends);
+        List<String> remove = new ArrayList<>();
+        for (String s : answer) {
+            for (String value : result) {
+                if (s.equals(value)) {
+                    remove.add(s);
+                }
+            }
+        }
+        return remove;
+    }
 }
