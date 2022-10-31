@@ -38,7 +38,7 @@
 
 #### 3. 두 크루의 닉네임 비교 후 제한 여부 확인하기 ```isSimilar```
 ```List<String> names```(```[name1, name2]```) => ```boolean```
-- ```names```의 길이가 2가 아닌 경우 잘못된 입력으로 예외처리한다
+
 1. ```getTokens```를 이용해 ```name1```의 token 배열을 구한다
 2. 각 token에 대해 ```name2```의 token 포함 여부를 확인한다
 3. ```name2```에 포함된 token이 존재할 경우 ```true```를 반환한다
@@ -51,7 +51,13 @@
 
 <br/>
 
-#### 5. 각 크루 조합에 대해 닉네임 제한 여부 확인 후 이메일 목록 구하기 ```solution```
-- ```combination```으로 구한 각 조합에 대하여 ```isSimilar```가 ```true```인 경우 result에 이메일을 추가한다
+#### 5. 제한된 닉네임의 이메일 추가하기 ```addEmailList```
+```List<String> emailPair, Map<String, String> formsMap, List<String> prevList``` => ```List<String>```
+- ```isSimilar```가 ```true```인 경우 result에 이메일을 추가한다
+
+<br/>
+
+#### 6. 닉네임 사용 제한된 이메일 목록 구하기 ```solution```
+
 
 
