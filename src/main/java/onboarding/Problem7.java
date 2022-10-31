@@ -21,6 +21,17 @@ public class Problem7 {
             friend_link.put(friend2, list2);
         }
 
+        Map<String, Integer> friends_score = new HashMap<>();
+        ArrayList<String> user_friends = friend_link.get(user);
+        for(String user_friend : user_friends){
+            ArrayList<String> share_friends = friend_link.get(user_friend);
+            for(String share_friend : share_friends){
+                if((!share_friend.equals(user)) && (!friend_link.get(user).contains(share_friend))){
+                    friends_score.put(share_friend, friends_score.getOrDefault(share_friend, 0) + 10);
+                }
+            }
+        }
+
         return answer;
     }
 }
