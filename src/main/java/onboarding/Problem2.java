@@ -9,8 +9,15 @@ import java.util.stream.Stream;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        String next = cryptogram;
+        String prev;
+
+        do {
+            prev = next;
+            next = prev.replaceAll(getPattern(prev), "");
+        } while(!prev.equals(next));
+
+        return next;
     }
 
     static String getPattern(String cryptogram){
