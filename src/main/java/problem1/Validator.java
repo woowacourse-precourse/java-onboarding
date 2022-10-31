@@ -41,7 +41,7 @@ public class Validator {
     }
 
     private boolean checkRange(int page) {
-        return page >= 1 && page <= 400;
+        return (page >= 1) && (page <= 400);
     }
 
     private boolean checkEven(int page) {
