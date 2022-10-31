@@ -155,4 +155,57 @@ class Algorithm {
         }
     }
 
+    public void scoreKnownFriend() {
+
+        Set<List<String>> knownFriendsSet = makeKnownFriendsSet();
+        Iterator<List<String>> iterator = knownFriendsSet.iterator();
+        while (iterator.hasNext()) {
+            List<String> next = iterator.next();
+            String knownFriend = getKnownFriend(next);
+            for (int i = 0; i < next.size(); i++) {
+                caculateKnownFriendScore(knownFriend);
+            }
+        }
+
+    }
+
+    private Set<List<String>> makeKnownFriendsSet() {
+        HashSet<List<String>> knownFriends = new HashSet<>();
+
+        List<List<String>> friends = Relation.findFriends(user.getId());
+        for (int i = 0; i < friends.size(); i++) {
+            String friend = choiceFriend(friends.get(i));
+            List<List<String>> friendsList = Relation.findFriends(friend);
+            for (int j = 0; j < friendsList.size(); j++) {
+                knownFriends.add(friendsList.get(j));
+            }
+        }
+        return knownFriends;
+    }
+
+    private String getKnownFriend(List<String> next) {
+        ArrayList<String> listConverter = new ArrayList<>(next);
+        String friend = choiceFriend(listConverter);
+        listConverter.remove(friend);
+        return listConverter.get(0);
+    }
+
+    private String choiceFriend(List<String> friends) {
+        String id1 = friends.get(0);
+        String id2 = friends.get(1);
+        if (id1 != user.getId()) {
+            return id1;
+        } else {
+            return id2;
+        }
+    }
+
+    private void caculateKnownFriendScore(String knownFriend) {
+        if (knownFriend != user.getId() && recommend.containsKey(knownFriend)) {
+            recommend.put(knownFriend, (int) (recommend.get(knownFriend) + 10));
+        } else if(knownFriend != user.getId()){
+            recommend.put(knownFriend, 10);
+        }
+    }
+
 }
