@@ -1,6 +1,9 @@
 package onboarding;
 
 public class Problem3 {
+    private static char THREE = '3';
+    private static char SIX = '6';
+    private static char NINE = '9';
     public static int solution(int number) {
         int answer = 0;
         answer = intToStringAndCount(number, answer);
@@ -26,6 +29,6 @@ public class Problem3 {
     }
 
     private static boolean existThreeSixNine(char checkNumber) {
-        return checkNumber == '3' || checkNumber == '6' || checkNumber == '9';
+        return checkNumber == THREE || checkNumber == SIX || checkNumber == NINE;
     }
 }
