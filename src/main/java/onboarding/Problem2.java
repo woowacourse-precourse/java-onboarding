@@ -10,14 +10,24 @@ public class Problem2 {
 			return cryptogram;
 		}
 		List<Character> list = new ArrayList<>();
-		for (char c : cryptogram.toCharArray()) {
-			add(list, c);
+		char[] chars = cryptogram.toCharArray();
+		add(list, chars[0]);
+		add(list, chars[1]);
+		for (int i = 2; i < chars.length; i++) {
+			if (isRepeated(chars, i)) {
+				continue;
+			}
+			add(list, chars[i]);
 		}
 		for (Character character : list) {
 			answer.append(character);
 		}
         return answer.toString();
     }
+
+	private static boolean isRepeated(char[] chars, int i) {
+		return chars[i - 2] == chars[i - 1] && chars[i-1] == chars[i];
+	}
 
 	private static void add(List<Character> list, char c) {
 		list.add(c);
