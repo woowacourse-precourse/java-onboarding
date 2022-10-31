@@ -10,7 +10,6 @@ public class Calculator {
         /**
          * 공통 실행 코드 추출
          * else 키워드 제거
-         * 아직 result 중복
          */
         while (pageNumber != 0 && pageNumber != 400) {
 
