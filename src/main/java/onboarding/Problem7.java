@@ -53,4 +53,22 @@ public class Problem7 {
         }
     }
 
+    // 4. 친구 추천 목록 만들기
+    public static void makeRecommendFriendsList(Map<String, Integer> recommendedFriends, List<String> friendList, List<String> answer) {
+        List<Map.Entry<String, Integer>> entryList = new ArrayList<>(recommendedFriends.entrySet());
+
+        // value 값을 기준으로 내림차순 정렬 하기
+        entryList.sort(new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                return o2.getValue() - o1.getValue();   // 내림차순 정렬
+            }
+        });
+
+        // 내림차순 정렬된 것을 answer에 넣기
+        for(Map.Entry<String, Integer> entry : entryList){
+            if (!friendList.contains(entry.getKey()))
+                answer.add(entry.getKey());
+        }
+    }
 }
