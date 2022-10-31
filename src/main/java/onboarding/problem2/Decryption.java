@@ -1,7 +1,8 @@
-package onboarding;
+package onboarding.problem2;
 
 import java.util.Deque;
 import java.util.LinkedList;
+import onboarding.StringPatterUtils;
 
 public class Decryption {
 	private static final int MAX_INPUT_LENGTH = 1000;

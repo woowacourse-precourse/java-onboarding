@@ -1,4 +1,4 @@
-package onboarding;
+package onboarding.problem2;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
