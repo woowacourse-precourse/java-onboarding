@@ -14,6 +14,8 @@ public class FriendRecommender {
     private List<List<String>> friends;
     private List<String> visitors;
 
+    private final Map<String, List<String>> relationships = new HashMap<>();
+
     /**
      * Constructor with user, friends, visitors
      * @param user name of user
@@ -31,7 +33,6 @@ public class FriendRecommender {
      * @return new friend list
      */
     public List<String> recommend() {
-        Map<String, List<String>> relationships = new HashMap<>();
         // Create relationship list by friends
         Map<String, Friend> scores = new HashMap<>();
         List<String> userFriends = relationships.get(user);
@@ -44,38 +45,32 @@ public class FriendRecommender {
 
     /**
      * Search relationships in friend list and add relationships
-     * @param relationships relationship list created by friends
      */
-    private void searchRelationships(Map<String, List<String>> relationships) {
+    private void searchRelationships() {
         for (List<String> relationship : friends) {
             String idA = relationship.get(0);
             String idB = relationship.get(1);
-            addRelationship(relationships, idA, idB);
+            addRelationship(idA, idB);
         }
     }
 
     /**
      * Add single relationship
-     * @param relationships relationships created by friends
      * @param idA friend of idB
      * @param idB friend of idA
      */
-    private void addRelationship(Map<String, List<String>> relationships, String idA, String idB) {
-        addFriend(relationships, idA, idB);
-        addFriend(relationships, idB, idA);
+    private void addRelationship(String idA, String idB) {
+        addFriend(idA, idB);
+        addFriend(idB, idA);
     }
 
     /**
      * Add friend idB to relationship list of friend idA
-     * @param relationships relationships created by friends
      * @param idA friend of idB
      * @param idB friend of idA
      */
-    private void addFriend(Map<String, List<String>> relationships, String idA, String idB) {
-        if (relationships.containsKey(idA)) {
-            relationships.get(idA).add(idB);
-        } else {
-            relationships.put(idA, new ArrayList<>(List.of(idB)));
-        }
+    private void addFriend(String idA, String idB) {
+        if (relationships.containsKey(idA)) relationships.get(idA).add(idB);
+        else relationships.put(idA, new ArrayList<>(List.of(idB)));
     }
 }
