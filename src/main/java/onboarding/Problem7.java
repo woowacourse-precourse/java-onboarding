@@ -15,8 +15,9 @@ public class Problem7 {
         Map<String, Integer> map = visitorsCount(visitors); //방문한 사람 추가
         List<String> friendList = followedFriends(user, friends);
         Map<String, Integer> newMap = newFriend(friends,friendList,map);
-        newMap = sortByValue(newMap);
-        // System.out.println(newMap);
+        List<String> newmap = sortByValues(newMap);
+
+        System.out.println(newmap);
         return answer;
     }
 
@@ -76,18 +77,9 @@ public class Problem7 {
         return map;
     }
 
-    public static Map<String, Integer> sortByValue(Map<String, Integer> hashMap) {
-        List<Map.Entry<String, Integer>> list = new LinkedList<Map.Entry<String, Integer>>(hashMap.entrySet());
-        Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
-            public int compare(Map.Entry<String, Integer> o1,
-                               Map.Entry<String, Integer> o2) {
-                return (o2.getValue()).compareTo(o1.getValue());
-            }
-        });
-        Map<String, Integer> temp = new LinkedHashMap<String, Integer>();
-        for (Map.Entry<String, Integer> aa : list) {
-            temp.put(aa.getKey(), aa.getValue());
-        }
-        return temp;
+    public static List<String> sortByValues(Map<String, Integer> map) {
+        List<String> sortedList = new ArrayList<>(map.keySet());
+        Collections.sort(sortedList, (value1, value2) -> (map.get(value2).compareTo(map.get(value1))));
+        return sortedList;
     }
 }
