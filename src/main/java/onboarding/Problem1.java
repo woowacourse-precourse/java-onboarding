@@ -8,10 +8,7 @@ class Problem1 {
         int pobiLeft = pobi.get(0), pobiRight = pobi.get(1);
         int crongLeft = crong.get(0), crongRight = crong.get(1);
 
-        if (pobiLeft == 1 || crongLeft == 1 || pobiRight == 400 || crongRight == 400) {
-            return -1;
-        }
-        if (pobiRight - pobiLeft != 1 || crongRight - crongLeft != 1) {
+        if (isImproperPage(pobiLeft, pobiRight) || isImproperPage(crongLeft, crongRight)) {
             return -1;
         }
 
@@ -20,7 +17,14 @@ class Problem1 {
 
         if (pobiScore > crongScore) return 1;
         else if (pobiScore < crongScore) return 2;
-        else return 0;
+        return 0;
+    }
+
+    public static boolean isImproperPage(int left, int right) {
+        boolean isFirstOrLastPage = (left == 1 || right == 400);
+        boolean isDiscontinuousPage = (right - left) != 1;
+
+        return isFirstOrLastPage || isDiscontinuousPage;
     }
 
     public static int getBigNumberByPage(int page) {
