@@ -10,7 +10,7 @@
 ### 🔥 구현 기능 목록
 
 - [x] FEATURE1. 크루 닉네임에서 2글자 부분 문자열 반환 함수
-- [ ] FEATURE2. solution 함수
+- [x] FEATURE2. solution 함수
 
 ### 제한사항
 
