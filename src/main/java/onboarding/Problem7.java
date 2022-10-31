@@ -7,18 +7,18 @@ public class Problem7 {
     private static int[][] arr;
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
-        SortedMap<String, Integer> map = new TreeMap<>();
+        SortedMap<String, Integer> sortedmap = new TreeMap<>();
         ArrayList<ArrayList<Integer>> al = new ArrayList<>();
 
-        initializeMap(user, friends, visitors, map);
+        initializeMap(user, friends, visitors, sortedmap);
 
-        initializeGraph(friends, map, al);
+        initializeGraph(friends, sortedmap, al);
 
         initializeArray();
 
-        calculateScore(user, visitors, map, al);
+        calculateScore(user, visitors, sortedmap, al);
 
-        recommendFriend(answer, map);
+        recommendFriend(answer, sortedmap);
 
         return answer;
     }
