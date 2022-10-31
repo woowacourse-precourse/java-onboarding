@@ -5,8 +5,26 @@ public class Problem2 {
     static StringBuilder beforeRemoval = new StringBuilder();
 
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        return repeatRemoveOverlap(cryptogram);
+    }
+
+    static String repeatRemoveOverlap(String cryptogram) {
+        beforeRemoval = new StringBuilder();
+        beforeRemoval.append(cryptogram).append(' ');
+
+        int nowLength = beforeRemoval.length();
+        int nextLength = 0;
+
+        while (nowLength != nextLength) {
+            nowLength = nextLength;
+
+            beforeRemoval = checkOverlap();
+            beforeRemoval.append(' ');
+
+            nextLength = beforeRemoval.length();
+        }
+
+        return beforeRemoval.toString();
     }
 
     static StringBuilder checkOverlap() {
