@@ -9,7 +9,7 @@ public class Problem2 {
         while (!isChange) {
             String original = answer;
             answer = replaceRepeatCharacter(original);
-            isChange = original.equals(answer) ? true : false;
+            isChange = original.equals(answer);
         }
 
         return answer;
