@@ -25,7 +25,15 @@ public class Problem3 {
         return answer;
     }
 
+    private static int countTSN(int number) {
+        int result = 0;
+        while (number > 0) {
+            result += isClap(number % 10);
+            number /= 10;
+        }
 
+        return result;
+    }
 
     private static int isClap(int n) {
         if(n == 3 || n == 6 || n == 9) return 1;
