@@ -38,6 +38,23 @@ public class Problem7 {
                 .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
                 .forEachOrdered(x -> reverseSortedMap.put(x.getKey(), x.getValue()));
 
+        // 0점을 제외하고 내림차순으로 5개 이하의 요소를 가진 list를 answer에 집어넣는다.
+        for(Map.Entry<String,Integer> person : reverseSortedMap.entrySet()) {
+            if (person.getValue() == 0) {
+                reverseSortedMap.remove(person.getKey());
+            }
+        }
+        Iterator it = reverseSortedMap.entrySet().iterator();
+        for(int i=0; i<4; i++) {
+            if (it.hasNext())
+                it.next();
+        }
+        while(it.hasNext()) {
+            it.next();
+            it.remove();
+        }
+
+        answer = new ArrayList<>(reverseSortedMap.keySet());
 
         return answer;
     }
