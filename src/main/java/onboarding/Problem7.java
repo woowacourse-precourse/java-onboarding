@@ -127,6 +127,10 @@ public class Problem7 {
      * @param point 기본 점수 설정
      */
     private static void putPreFriendAndPoint(String user, int point) {
+        if (user.equals(getMe())) {
+            return;
+        }
+
         preFriends.put(user, point);
     }
 
