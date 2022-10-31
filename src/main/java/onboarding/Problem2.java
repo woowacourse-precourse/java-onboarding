@@ -7,14 +7,22 @@ public class Problem2 {
         boolean flag = true;
 
         while (flag) {
-            for (int start = 0; start < cryptoAvail.length()-1; start++) {
+            for (int start = 0; start < cryptoAvail.length() - 1; start++) {
                 int end = 0;
-                for (int i = start; i < cryptoAvail.length()-1; i++)  {
-                    if (cryptoAvail.charAt(i) != cryptoAvail.charAt(i+1)) break;
-                    if (cryptoAvail.charAt(i) == cryptoAvail.charAt(i+1)) end = i+1;
+                for (int i = start; i < cryptoAvail.length() - 1; i++) {
+                    if (cryptoAvail.charAt(i) != cryptoAvail.charAt(i + 1)) break;
+                    if (cryptoAvail.charAt(i) == cryptoAvail.charAt(i + 1)) end = i + 1;
                 }
-        }
 
+                if (end > 0) {
+                    for (int i = start; i <= end; i++) {
+                        char[] temp = cryptoAvail.toCharArray();
+                        temp[i] = ' ';
+                        cryptoAvail = String.valueOf(temp);
+                    }
+                }
+            }
+        }
         return answer;
     }
 }
