@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.IntStream;
 
 public class ScoreCalculatorImp implements ScoreCalculator {
@@ -42,13 +43,18 @@ public class ScoreCalculatorImp implements ScoreCalculator {
 		return scoreMap1;
 	}
 
-	private Map<String, Integer> exceptFriend(String user, Map<String, Integer> scoreMap,
+	private Map<String, Integer> getValidScoreMap(String user, Map<String, Integer> scoreMap,
 		Map<String, List<String>> friendMap) {
-		for (String friend : scoreMap.keySet()) {
-			if (friendMap.get(user).contains(friend)) {
-				friendMap.remove(friend);
+		Set<String> names = scoreMap.keySet();
+		List<String> removeKeys = new ArrayList<>();
+		for (String name : names) {
+			if (friendMap.get(user).contains(name) || user.equals(name)) {
+				removeKeys.add(name);
 			}
 		}
+
+		scoreMap.entrySet().removeIf(e -> removeKeys.contains(e.getKey()));
+
 		return scoreMap;
 	}
 
@@ -58,6 +64,6 @@ public class ScoreCalculatorImp implements ScoreCalculator {
 		Map<String, Integer> friendScoreMap = getFriendScoreMap(user, friendMap);
 		Map<String, Integer> visitorScoreMap = getVisitorScoreMap(user, visitors);
 		Map<String, Integer> scoreMap = mergeScoreMaps(friendScoreMap, visitorScoreMap);
-		return exceptFriend(user, scoreMap, friendMap);
+		return getValidScoreMap(user, scoreMap, friendMap);
 	}
 }
