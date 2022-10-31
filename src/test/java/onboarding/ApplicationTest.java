@@ -101,6 +101,13 @@ class ApplicationTest {
             List<Integer> result = List.of(0, 1, 1, 0, 0, 0, 0, 0, 0);
             assertThat(Problem5.solution(money)).isEqualTo(result);
         }
+
+        @Test
+        void case3() {
+            int money = 10000000;
+            List<Integer> result = List.of();
+            assertThat(Problem5.solution(money)).isEqualTo(result);
+        }
     }
 
     @Nested
