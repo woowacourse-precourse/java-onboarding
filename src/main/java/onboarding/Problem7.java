@@ -82,4 +82,15 @@ public class Problem7 {
 
         return keyList;
     }
+
+    /**
+     * map의 key 값만 추출
+     */
+    static List<String> list(List<Map.Entry<String,Integer>> keyList){
+        List<String> key = new ArrayList<>();
+        for(Map.Entry<String,Integer> entry : keyList){
+            key.add(entry.getKey());
+        }
+        return key;
+    }
 }
