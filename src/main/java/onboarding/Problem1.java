@@ -67,8 +67,8 @@ class Problem1 {
             return POBI_WIN;
         } else if (pobiMaxValue < crongMaxValue) {
             return CRONG_WIN;
-        } else {
-            return TIE_GAME;
         }
+
+        return TIE_GAME;
     }
 }
