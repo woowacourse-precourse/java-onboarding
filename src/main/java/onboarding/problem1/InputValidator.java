@@ -19,6 +19,6 @@ public class InputValidator {
     }
 
     private boolean validateValues(int left, int right) {
-        return left < SIZE && left % 2 == 1 && left + 1 == right;
+        return (1 <= left && left <= 400) && (1 <= right && right <= 400) && (left + 1 == right) && (left % 2 == 1 && right % 2 == 0);
     }
 }
