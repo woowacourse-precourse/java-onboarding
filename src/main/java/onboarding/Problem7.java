@@ -98,6 +98,17 @@ public class Problem7 {
         return sortedScore;
     }
 
+    public static int getResultSize(List<String> recommendedCrewList) {
+        int resultSize;
+        int maxSize = 5;
+        int recommendedCrewSize = recommendedCrewList.size();
+
+        if (recommendedCrewSize > maxSize) resultSize = 5;
+        else resultSize = recommendedCrewSize;
+
+        return resultSize;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
