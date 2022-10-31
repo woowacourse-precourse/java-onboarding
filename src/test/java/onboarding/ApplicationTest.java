@@ -69,26 +69,29 @@ class ApplicationTest {
 
         @Test
         void case3() {
-            String cryptogram = "";
-            String result = "";
-            try {
-                assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
-            } catch (RuntimeException e) {
-                System.out.println(e.getMessage());
-            }
+            String cryptogram = "a";
+            String result = "a";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
 
         @Test
         void case4() {
-            String cryptogram = "aaaaaaaaaa";
-            String result = "";
+            String cryptogram = "zyalllelyz";
+            String result = "zyaelyz";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
 
         @Test
         void case5() {
-            String cryptogram = "aaaaaaaaa";
+            String cryptogram = "aabba";
             String result = "a";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
+        void case6() {
+            String cryptogram = "aaa";
+            String result = "";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
     }
