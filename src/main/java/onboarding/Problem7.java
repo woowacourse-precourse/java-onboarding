@@ -9,7 +9,11 @@ public class Problem7 {
     static final int knowFriend = 10;
     static final int visited = 1;
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        ArrayList<String> userFriends = findFriends(user,friends);
+        HashMap<String,Integer> candidate = CalculateFriend(user,friends,userFriends);
+        candidate = CalculateVisitor(userFriends,visitors,candidate);
+
+        List<String> answer = sortByScore(candidate);
         return answer;
     }
 
