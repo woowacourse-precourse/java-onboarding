@@ -8,6 +8,7 @@ import java.util.TreeSet;
 
 public class Problem6 {
 
+    private static final int MINIMAL_SIZE = 2;
     private static final int EMAIL_LENGTH = 10;
 
     public static List<String> solution(List<List<String>> forms) {
@@ -29,7 +30,7 @@ public class Problem6 {
 
     private static boolean isDuplicated(List<List<String>> forms, List<String> form, String nickname, int index) {
         return forms.stream()
-            .anyMatch(anotherForm -> anotherForm.get(1).contains(nickname.substring(index, index + 2)) && !form.equals(
+            .anyMatch(anotherForm -> anotherForm.get(1).contains(nickname.substring(index, index + MINIMAL_SIZE)) && !form.equals(
                 anotherForm));
     }
 
