@@ -8,7 +8,6 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> friendWithUserList = new ArrayList<>();
         Map<String, Integer> friendWithUserDict = new HashMap<>();
-        List<String> answer = new ArrayList<>();
         // 사용자와 친구인 유저의 이름 배열에 담기
         for (List<String> friend : friends) {
             if (friend.contains(user)) {
@@ -39,6 +38,11 @@ public class Problem7 {
                 friendWithUserDict.computeIfPresent(visit, (k, v) -> v + 1);
             }
         }
-        return answer;
+        // 해쉬맵을 value값으로 내림차순 정렬 후 retun
+        return friendWithUserDict.entrySet().stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder())
+                )
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
     }
 }
