@@ -18,6 +18,15 @@ public class Problem7 {
         }
         System.out.println("alreadyFriend: "+Arrays.toString(alreadyFriend.toArray()));
 
+        //방문 점수
+        for(String visitor : visitors) {
+            if(!alreadyFriend.contains(visitor)) {
+                getScoreValue(scores, visitor, 1);
+            }
+        }
+        System.out.println("scores: "+Arrays.toString(scores.keySet().toArray(new String[0])));
+        System.out.println("scores: "+Arrays.toString(scores.values().toArray()));
+
         List<String> answer = Collections.emptyList();
         return answer;
     }
