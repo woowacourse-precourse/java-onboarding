@@ -138,37 +138,36 @@ public class Problem7 {
                 if(tem == sum[j] && visit[j] == false){
                     order_idx[i] = j;
                     visit[j] = true;
+                    break;
                 }
-            else{
-
-                }
-
-
         }
 
+        String[] order_nickname = new String[list[0].length];
 
-    /*        for(i =0; i< list[0].length;i++) { //list 2차원 배열에 점수 저장 완료
-            list[1][i] =String.valueOf(sum[i]);
-        }*/ // 내림차순 정렬 후 삽입하기!!!!!!!!!!
-
-
-
-
-        for(i =0; i< res.length;i++) {
-            System.out.print(res[i] + " ");
+        for(i =0; i< order_idx.length;i++) { //list 2차원 배열에 점수 저장 완료
+            order_nickname[i] = list[0][i];
         }
-        System.out.println();
-        for(i =0; i< guest.length;i++) {
-            System.out.println(guest[i] + " ");
+        for(i =0; i< order_idx.length;i++) { //list 2차원 배열에 점수 저장 완료
+
+            list[0][i] = order_nickname[order_idx[i]];
+            list[1][i] = String.valueOf(sort_sum[i]);
+        } // 내림차순 정렬 후 삽입하기!!!!!!!!!!
+
+
+        List<String> ans = new ArrayList<>(Arrays.asList(list[0]));
+        cnt = 0;
+        for(i =0; i< 5;i++){
+            if(Integer.parseInt(list[1][i]) != 0){
+                cnt++;
+            }
         }
-        System.out.println();
-        for(i =0; i< guest.length;i++) {
-            System.out.print(guest_score[i] + " ");
+        List<String> temp_ans = new ArrayList<>();
+        for(i =0; i< cnt;i++){
+            temp_ans.add(ans.get(i));
         }
-        System.out.println();
-        for(i =0; i< sum.length;i++) {
-            System.out.print(sum[i] + " ");
-        }
+        answer = temp_ans;
+
+
         System.out.println();
         for(i =0; i< order_idx.length;i++) {
             System.out.print(order_idx[i] + " ");
@@ -180,9 +179,11 @@ public class Problem7 {
             }
             System.out.println();
         }
-
         System.out.println();
 
+        for(i =0; i< answer.size();i++) {
+            System.out.print(answer.get(i) + " ");
+        }
         return answer;
     }
 
