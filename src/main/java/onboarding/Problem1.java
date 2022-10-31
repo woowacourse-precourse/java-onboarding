@@ -126,6 +126,14 @@ enum ResultCode {
     }
 }
 
+/*
+기능 목록
+1. Game, Player, Players 클래스 통한 게임 구성
+2. 페이지 최대값 구하기, player 점수 구하기
+3. 승리자 구하기
+4. Enum 통한 예외 및 상태 표시
+5. 추가사항. 만약 플레이어가 3명 이상일 경우 고려
+ */
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         List<Player> players = Arrays.asList(new Player(pobi, 1), new Player(crong, 2));
