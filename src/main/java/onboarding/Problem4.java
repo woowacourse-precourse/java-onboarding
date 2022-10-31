@@ -28,6 +28,7 @@ class Word {
             throw new IllegalStateException(NOT_ALLOWED_OVER_MAX_LENGTH);
         }
     }
+
     private char[] toArray() {
         return letters.toCharArray();
     }
@@ -39,45 +40,41 @@ class Result {
 
     public Result(char[] wordArray) {
         this.wordArray = wordArray;
-        this.sb=new StringBuilder();
+        this.sb = new StringBuilder();
     }
 
 
-    public char changeWordByRule(){
-        for(int wordChar:wordArray){
-            if(!Character.isAlphabetic(wordChar)){
-                return ' ';
-            }
-            if(isAlphaLower(wordChar)){
-                char replaceChar= (char)(155-wordChar);
-                return toUpperCase(replaceChar);
-            }
-            if(isAlphaUpper(wordChar)){
-                char replaceChar= (char)(219-wordChar);
-                return toLowerCase(replaceChar);
-            }
+    public char changeWordByRule(int wordChar) {
+        if (!Character.isAlphabetic(wordChar)) {
+            return ' ';
         }
+        if (isAlphaLower(wordChar)) {
+            char replaceChar = (char) (155 - wordChar);
+            return toUpperCase(replaceChar);
+        }
+        char replaceChar = (char) (219 - wordChar);
+        return toLowerCase(replaceChar);
     }
 
-    public boolean isAlphaUpper(int wordChar){
-        if(wordChar>='A'&&wordChar<='Z'){
+    public boolean isAlphaUpper(int wordChar) {
+        if (wordChar >= 'A' && wordChar <= 'Z') {
             return true;
         }
         return false;
     }
 
-    public boolean isAlphaLower(int wordChar){
-        if(wordChar>='a'&&wordChar<='z'){
+    public boolean isAlphaLower(int wordChar) {
+        if (wordChar >= 'a' && wordChar <= 'z') {
             return true;
         }
         return false;
     }
 
-    public char toUpperCase(char wordChar){
+    public char toUpperCase(char wordChar) {
         return Character.toUpperCase(wordChar);
     }
 
-    public char toLowerCase(char wordChar){
+    public char toLowerCase(char wordChar) {
         return Character.toLowerCase(wordChar);
     }
 
