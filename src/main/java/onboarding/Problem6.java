@@ -16,6 +16,7 @@ public class Problem6 {
 
         return false;
     }
+
     public static List<String> solution(List<List<String>> forms) {
         // 모든 두 사람 쌍을 비교하여, 중복 닉네임 판별.
         boolean addToAnswer[] = new boolean[forms.size()];
