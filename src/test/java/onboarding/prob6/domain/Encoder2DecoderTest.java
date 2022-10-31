@@ -6,7 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-class DecoderTest {
+class Encoder2DecoderTest {
     private static Stream<Arguments> argumentsStream1() {
         return Stream.of(
             Arguments.of("{안녕} -> {안녕}", "안녕", "안녕"),
@@ -18,7 +18,9 @@ class DecoderTest {
     @ParameterizedTest(name = "{index}: {0}")
     @MethodSource("argumentsStream1")
     void test1(String message, String origin, String result) {
-        String decode = Decoder.decode(origin);
+        String encode = Encoder.encode(origin);
+        Assertions.assertNotEquals(result, encode);
+        String decode = Decoder.decode(encode);
         Assertions.assertEquals(result, decode);
     }
 }
