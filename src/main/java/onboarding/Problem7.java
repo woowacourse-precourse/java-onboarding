@@ -48,6 +48,9 @@ public class Problem7 {
 
     static List<Friend> friends = new ArrayList<>();
     static Map<String, Integer> numberOfFriends = new HashMap<>();
+    static final int ACQUAINTANCE_SCORE = 10;
+    static final int VISITANT_SCORE = 1;
+
     public static List<String> solution(String user, List<List<String>> friendships, List<String> visitors) {
         init(friendships, visitors);
         updateScores(user);
@@ -72,7 +75,7 @@ public class Problem7 {
 
         for (String userFriend : userFriends) {
             if (myFriends.contains(userFriend)) {
-                friend.addScore(10);
+                friend.addScore(ACQUAINTANCE_SCORE);
             }
         }
     }
@@ -100,7 +103,7 @@ public class Problem7 {
                 initFriend(idx++, visitor);
             }
 
-            friends.get(numberOfFriends.get(visitor)).addScore(1);
+            friends.get(numberOfFriends.get(visitor)).addScore(VISITANT_SCORE);
         }
     }
 
