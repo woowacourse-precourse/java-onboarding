@@ -8,12 +8,6 @@ public class Problem3 {
         	//입력받은 숫자의 각 자리를 추출하기 위해 String으로 형변환
         	String str = String.valueOf(i);
         	
-        	//n자리 수의 n만큼 반복
-        	for(int j=0; j<str.length(); j++) {
-        		//각 자리 숫자 추출
-        		int num = Integer.parseInt(String.valueOf(str.charAt(j)));
-        		if ( num!=0 && num%3== 0 ) answer++ ;	
-        	}
         }
         return answer;
     }   
