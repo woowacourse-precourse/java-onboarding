@@ -15,7 +15,7 @@ public class Problem6 {
     private static final int STUDENT_NUM_MIN = 1;
     private static final int STUDENT_NUM_MAX = 10000;
     private static final String EMAIL_REGEX = "^[0-9a-zA-Z(-_.?0-9a-zA-Z)*]{1,9}@email.com$";
-    private static final String NICKNAME_REGEX = "^[ㄱ-ㅎ|가-힣]{1,19}$";
+    private static final String NICKNAME_REGEX = "^[ㄱ-ㅎ|가-힣|ㅏ-ㅣ|]{1,19}$";
 
     public static List<String> solution(List<List<String>> forms) {
         validateForms(forms);
