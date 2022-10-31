@@ -24,3 +24,20 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+---
+## 구현 할 기능 목록
+
+## 
+
+1. friends를 순회하며 함께 아는 친구의 아이디에 10점을 더해주는 기능
+  1. user의 친구가 누구인지 구함
+    1. A or B 한쪽이 user라면 usersFreind 리스트에 추가
+    2. 아니라면 check 해야 할 리스트에 추가
+  2. A or B 한쪽만 user의 친구라면 반대 쪽에 10점 부여
+
+2. visitor를 순회하며 친구가 아닌 아이디에 1점을 더해주는 기능
+  1.  만약 set에 아이디가 없다면 새로 추가하여 점수 1점으로 입력
+
+1. 점수 높은 5명의 리스트를 뽑아주는 기능
+
+1. 위의 기능을 바탕으로 user, friend, visior를 받아 추천친구를 찾아주는 기능
