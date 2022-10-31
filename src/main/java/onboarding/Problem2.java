@@ -1,6 +1,5 @@
 package onboarding;
 
-// 맵을 이용해보는게 어떨까...
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = cryptogram;
