@@ -42,52 +42,76 @@ class ApplicationTest {
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
 
-//        @Test
-//        void isCorrectSize(){
-//            List<Integer> pobi = List.of(101, 102);
-//            List<Integer> crong = List.of(41, 42, 43);
-//
-//            assertThat(Problem1.solution(pobi, crong)).isEqualTo(-1);
-//        }
-//
-//        @Test
-//        void isCorrectRange1(){
-//            List<Integer> pobi = List.of(1, 2);
-//            List<Integer> crong = List.of(41, 42);
-//
-//            assertThat(Problem1.solution(pobi, crong)).isEqualTo(-1);
-//        }
-//        @Test
-//        void isCorrectRange2(){
-//            List<Integer> pobi = List.of(10, 11);
-//            List<Integer> crong = List.of(399, 400);
-//
-//            assertThat(Problem1.solution(pobi, crong)).isEqualTo(-1);
-//        }
-//
-//        @Test
-//        void isConsecutive(){
-//            List<Integer> pobi = List.of(11, 14);
-//            List<Integer> crong = List.of(399, 400);
-//
-//            assertThat(Problem1.solution(pobi, crong)).isEqualTo(-1);
-//        }
-//
-//        @Test
-//        void leftOddCheck(){
-//            List<Integer> pobi = List.of(10, 12);
-//            List<Integer> crong = List.of(399, 400);
-//
-//            assertThat(Problem1.solution(pobi, crong)).isEqualTo(-1);
-//        }
-//
-//        @Test
-//        void rightEvenCheck(){
-//            List<Integer> pobi = List.of(11, 12);
-//            List<Integer> crong = List.of(398, 399);
-//
-//            assertThat(Problem1.solution(pobi, crong)).isEqualTo(-1);
-//        }
+        @Test
+        void case5(){
+            List<Integer> pobi = List.of(99, 103);
+            List<Integer> crong = List.of(211, 212);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
+        @Test
+        void case6(){
+            List<Integer> pobi = List.of(399, 400);
+            List<Integer> crong = List.of(211, 212);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
+        @Test
+        void case7(){
+            List<Integer> pobi = List.of(401, 402);
+            List<Integer> crong = List.of(211, 212);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
+        @Test
+        void correctSizeTest(){
+            List<Integer> pobi = List.of(101, 102);
+            List<Integer> crong = List.of(41, 42, 43);
+
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(-1);
+        }
+
+        @Test
+        void correctRangeTest1(){
+            List<Integer> pobi = List.of(1, 2);
+            List<Integer> crong = List.of(41, 42);
+
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(-1);
+        }
+        @Test
+        void correctRangeTest2(){
+            List<Integer> pobi = List.of(10, 11);
+            List<Integer> crong = List.of(399, 400);
+
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(-1);
+        }
+
+        @Test
+        void consecutiveTest(){
+            List<Integer> pobi = List.of(11, 14);
+            List<Integer> crong = List.of(399, 400);
+
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(-1);
+        }
+
+        @Test
+        void leftOddTest(){
+            List<Integer> pobi = List.of(10, 12);
+            List<Integer> crong = List.of(399, 400);
+
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(-1);
+        }
+
+        @Test
+        void rightEvenTest(){
+            List<Integer> pobi = List.of(11, 12);
+            List<Integer> crong = List.of(398, 399);
+
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(-1);
+        }
     }
 
     @Nested
@@ -106,30 +130,51 @@ class ApplicationTest {
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
 
-//        @Test
-//        void case3() {
-//            String cryptogram = "zzeeelleyz";
-//            String result = "eyz";
-//            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
-//        }
+        @Test
+        void case3() {
+            String cryptogram = "zzeeelleyz";
+            String result = "eyz";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
 
-//        @Test
-//        void isCorrectSize1() {
-//            String cryptogram = "";
-//            assertThat(Problem2.Validator.isValidate(cryptogram)).isFalse();
-//        }
-//
-//        @Test
-//        void isCorrectSize2() {
-//            String cryptogram = "adbawkbdadjvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkb";
-//            assertThat(Problem2.Validator.isValidate(cryptogram)).isFalse();
-//        }
-//
-//        @Test
-//        void isOnlyLowerCase() {
-//            String cryptogram = "zyelleAyz";
-//            assertThat(Problem2.Validator.isValidate(cryptogram)).isFalse();
-//        }
+        @Test
+        void case4() {
+            String cryptogram = "zyellleyz";
+            String result = "";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
+        void case5() {
+            String cryptogram = "zyalllelyz";
+            String result = "zyaelyz";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
+        void case6() {
+            String cryptogram = "abbaa";
+            String result = "a";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
+        void correctSizeTest1() {
+            String cryptogram = "";
+            assertThat(Problem2.Validator.isValidate(cryptogram)).isFalse();
+        }
+
+        @Test
+        void correctSizeTest2() {
+            String cryptogram = "adbawkbdadjvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkbdajvbjkzbvkjznsckascasadbawkb";
+            assertThat(Problem2.Validator.isValidate(cryptogram)).isFalse();
+        }
+
+        @Test
+        void isOnlyLowerCase() {
+            String cryptogram = "zyelleAyz";
+            assertThat(Problem2.Validator.isValidate(cryptogram)).isFalse();
+        }
     }
 
     @Nested
@@ -148,17 +193,17 @@ class ApplicationTest {
             assertThat(Problem3.solution(number)).isEqualTo(result);
         }
 
-//        @Test
-//        void isCorrectRange1() {
-//            int number = 0;
-//            assertThat(Problem3.Validator.isValidate(number)).isFalse();
-//        }
-//
-//        @Test
-//        void isCorrectRange2() {
-//            int number = 10001;
-//            assertThat(Problem3.Validator.isValidate(number)).isFalse();
-//        }
+        @Test
+        void correctRangeTest1() {
+            int number = 0;
+            assertThat(Problem3.Validator.isValidate(number)).isFalse();
+        }
+
+        @Test
+        void correctRangeTest2() {
+            int number = 10001;
+            assertThat(Problem3.Validator.isValidate(number)).isFalse();
+        }
     }
 
     @Nested
@@ -170,11 +215,11 @@ class ApplicationTest {
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
 
-//        @Test
-//        void correctSizeTest(){
-//            String word = "";
-//            assertThat(Problem4.Validator.isValidate(word)).isFalse();
-//        }
+        @Test
+        void correctSizeTest(){
+            String word = "";
+            assertThat(Problem4.Validator.isValidate(word)).isFalse();
+        }
     }
 
     @Nested
@@ -200,17 +245,17 @@ class ApplicationTest {
             assertThat(Problem5.solution(money)).isEqualTo(result);
         }
 
-//        @Test
-//        void correctRangeTest1(){
-//            int money = 0;
-//            assertThat(Problem5.Validator.isValidate(money)).isFalse();
-//        }
-//
-//        @Test
-//        void correctRangeTest2(){
-//            int money = 1000001;
-//            assertThat(Problem5.Validator.isValidate(money)).isFalse();
-//        }
+        @Test
+        void correctRangeTest1(){
+            int money = 0;
+            assertThat(Problem5.Validator.isValidate(money)).isFalse();
+        }
+
+        @Test
+        void correctRangeTest2(){
+            int money = 1000001;
+            assertThat(Problem5.Validator.isValidate(money)).isFalse();
+        }
     }
 
     @Nested
@@ -228,74 +273,74 @@ class ApplicationTest {
             assertThat(Problem6.solution(forms)).isEqualTo(result);
         }
 
-//        @Test
-//        void crewCountTest(){
-//            List<List<String>> forms = List.of();
-//            assertThat(Problem6.Validator.isValidate(forms)).isFalse();
-//        }
-//
-//        @Test
-//        void emailFormTest1(){
-//            List<List<String>> forms = List.of(
-//                    List.of("jm@email.com", "제이엠"),
-//                    List.of("nowm@emaail.com", "이제엠")
-//            );
-//            assertThat(Problem6.Validator.isValidate(forms)).isFalse();
-//        }
-//
-//        @Test
-//        void emailFormTest2(){
-//            List<List<String>> forms = List.of(
-//                    List.of("jm@email.com", "제이엠"),
-//                    List.of("nowm@email.co", "이제엠")
-//            );
-//            assertThat(Problem6.Validator.isValidate(forms)).isFalse();
-//        }
-//
-//        @Test
-//        void emailSizeTest1(){
-//            List<List<String>> forms = List.of(
-//                    List.of("jmasdadasd@email.com", "제이엠"),
-//                    List.of("nowm@email.co", "이제엠")
-//            );
-//            assertThat(Problem6.Validator.isValidate(forms)).isFalse();
-//        }
-//
-//        @Test
-//        void emailSizeTest2(){
-//            List<List<String>> forms = List.of(
-//                    List.of("@email.com", "제이엠"),
-//                    List.of("nowm@email.co", "이제엠")
-//            );
-//            assertThat(Problem6.Validator.isValidate(forms)).isFalse();
-//        }
-//
-//        @Test
-//        void nickNameTest1(){
-//            List<List<String>> forms = List.of(
-//                    List.of("jason@email.com", ""),
-//                    List.of("woniee@email.com", "워니")
-//            );
-//            assertThat(Problem6.Validator.isValidate(forms)).isFalse();
-//        }
-//
-//        @Test
-//        void nickNameTest2(){
-//            List<List<String>> forms = List.of(
-//                    List.of("jason@email.com", "jason"),
-//                    List.of("woniee@email.com", "워니")
-//            );
-//            assertThat(Problem6.Validator.isValidate(forms)).isFalse();
-//        }
-//
-//        @Test
-//        void nickNameTest3(){
-//            List<List<String>> forms = List.of(
-//                    List.of("jason@email.com", "무구정광대다라나니경무구정광대다라나니경"),
-//                    List.of("woniee@email.com", "워니")
-//            );
-//            assertThat(Problem6.Validator.isValidate(forms)).isFalse();
-//        }
+        @Test
+        void crewCountTest(){
+            List<List<String>> forms = List.of();
+            assertThat(Problem6.Validator.isValidate(forms)).isFalse();
+        }
+
+        @Test
+        void emailFormTest1(){
+            List<List<String>> forms = List.of(
+                    List.of("jm@email.com", "제이엠"),
+                    List.of("nowm@emaail.com", "이제엠")
+            );
+            assertThat(Problem6.Validator.isValidate(forms)).isFalse();
+        }
+
+        @Test
+        void emailFormTest2(){
+            List<List<String>> forms = List.of(
+                    List.of("jm@email.com", "제이엠"),
+                    List.of("nowm@email.co", "이제엠")
+            );
+            assertThat(Problem6.Validator.isValidate(forms)).isFalse();
+        }
+
+        @Test
+        void emailSizeTest1(){
+            List<List<String>> forms = List.of(
+                    List.of("jmasdadasd@email.com", "제이엠"),
+                    List.of("nowm@email.co", "이제엠")
+            );
+            assertThat(Problem6.Validator.isValidate(forms)).isFalse();
+        }
+
+        @Test
+        void emailSizeTest2(){
+            List<List<String>> forms = List.of(
+                    List.of("@email.com", "제이엠"),
+                    List.of("nowm@email.co", "이제엠")
+            );
+            assertThat(Problem6.Validator.isValidate(forms)).isFalse();
+        }
+
+        @Test
+        void nickNameTest1(){
+            List<List<String>> forms = List.of(
+                    List.of("jason@email.com", ""),
+                    List.of("woniee@email.com", "워니")
+            );
+            assertThat(Problem6.Validator.isValidate(forms)).isFalse();
+        }
+
+        @Test
+        void nickNameTest2(){
+            List<List<String>> forms = List.of(
+                    List.of("jason@email.com", "jason"),
+                    List.of("woniee@email.com", "워니")
+            );
+            assertThat(Problem6.Validator.isValidate(forms)).isFalse();
+        }
+
+        @Test
+        void nickNameTest3(){
+            List<List<String>> forms = List.of(
+                    List.of("jason@email.com", "무구정광대다라나니경무구정광대다라나니경"),
+                    List.of("woniee@email.com", "워니")
+            );
+            assertThat(Problem6.Validator.isValidate(forms)).isFalse();
+        }
     }
 
     @Nested
