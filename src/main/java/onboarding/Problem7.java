@@ -39,20 +39,18 @@ public class Problem7 {
 
     // user의 추천친구 리스트에 파라미터로 전달된 유저가 있는지 확인하는 함수
     public static boolean checkUserInRecommendScoreList(HashMap<String, Integer> recommendScore, String user) {
-        for (int i = 0; i < recommendScore.size(); i++) {
-            if (recommendScore.keySet().contains(user)) return true;
-        }
-        return false;
+        return recommendScore.keySet().contains(user);
     }
 
     // 전달받은 파라미터가 user의 친구인지 확인하는 함수
-    public static boolean checkUserInRecommendScoreList(HashMap<String, ArrayList<String>> friendGraph, String user, String other) {
-        if (friendGraph.get(user).contains(other)) return true;
-        return false;
+    public static boolean checkUserFriends(HashMap<String, ArrayList<String>> friendGraph, String user, String other) {
+        return friendGraph.get(user).contains(other);
     }
 
     // 점수를 갱신할 때 제한조건을 체크하는 함수
     public static boolean checkBeforeAddRecommendScore(HashMap<String, Integer> recommendScore, HashMap<String, ArrayList<String>> friendGraph, String user, String other) {
-        return checkUserInRecommendScoreList(recommendScore, user) && checkUserInRecommendScoreList(friendGraph, user, other);
+        return user != other && checkUserFriends(friendGraph, user, other);
     }
+
+
 }
