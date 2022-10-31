@@ -44,15 +44,12 @@ public class Problem7 {
 
     void setVisitorScore(List<String> visitors) {
         for (String visitor : visitors) {
-            if (user_score.containsKey(visitor)) {
-                user_score.put(visitor, user_score.get(visitor) + 1);
-            } else {user_score.put(visitor, 1);}
+            user_score.put(visitor, user_score.getOrDefault(visitor, 0) + 1);
         }
     }
 
     void setFriendScore(String user, List<List<String>> friends) {
         setUserFriends(friends);
-        System.out.println(user_friends);
         List<String> friends_list = user_friends.get(user);
         for (String friend : friends_list) {
             List<String> f2f_list = user_friends.get(friend);
@@ -60,34 +57,20 @@ public class Problem7 {
                 if (f2f.equals(user)) {
                     continue;
                 }
-                if (user_score.containsKey(f2f)) {
-                    user_score.put(f2f, user_score.get(f2f) + 10);
-                } else {user_score.put(f2f, 10);}
+                user_score.put(f2f, user_score.getOrDefault(f2f, 0) + 10);
             }
         }
     }
 
     void setUserFriends(List<List<String>> friends) {
         for (List<String> friend_list : friends) {
-            String friend1 = friend_list.get(0);
-            String friend2 = friend_list.get(1);
-            if (user_friends.containsKey(friend1)) {
-                List<String> array = user_friends.get(friend1);
-                array.add(friend2);
-                user_friends.put(friend1, array);
-            } else {
-                ArrayList<String> array = new ArrayList<>();
-                array.add(friend2);
-                user_friends.put(friend1, array);
-            }
-            if (user_friends.containsKey(friend2)) {
-                List<String> array = user_friends.get(friend2);
-                array.add(friend1);
-                user_friends.put(friend2, array);
-            } else {
-                ArrayList<String> array = new ArrayList<>();
-                array.add(friend1);
-                user_friends.put(friend2, array);
+            for (int i = 0; i <= 1; i++) {
+                String friend1 = friend_list.get(i);
+                String friend2 = friend_list.get(1 - i);
+                List<String> array = new ArrayList<>();
+                List<String> friend1_friend_list = user_friends.getOrDefault(friend1, array);
+                friend1_friend_list.add(friend2);
+                user_friends.put(friend1, friend1_friend_list);
             }
         }
     }
