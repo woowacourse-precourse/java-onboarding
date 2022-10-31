@@ -30,7 +30,10 @@ public class Problem2 {
         }
         if(seq) deque.pollLast(); // 연속된 문자가 나타난 경우 - stack에서 하나의 원소를 pop함
 
-
+        // 3. 처리가 완료된 결과(Stack에 남아있는 문자)를 출력함
+        for(char c : deque)
+            sb.append(c);
+        answer = sb.toString();
 
         return answer;
     }
