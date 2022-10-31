@@ -37,7 +37,17 @@ public class Problem7 {
             }
         }
 
-        return formatTheAnswer(result, user, friendList);
+        if (result.containsKey(user)) {
+            result.remove(user);
+        }
+
+        for (int i = 0; i < friendList.size(); i += 1) {
+            if (result.containsKey(friendList.get(i))) {
+                result.remove(friendList.get(i));
+            }
+        }
+
+        return formatTheAnswer(result);
     }
 
     public static List<String> getFriendList(List<List<String>> friends, String user) {
@@ -57,16 +67,7 @@ public class Problem7 {
         }
     }
 
-    public static List<String> formatTheAnswer(HashMap<String, Integer> result, String user, List<String> friendList){
-        if (result.containsKey(user)) {
-            result.remove(user);
-        }
-
-        for (int i = 0; i < friendList.size(); i += 1) {
-            if (result.containsKey(friendList.get(i))) {
-                result.remove(friendList.get(i));
-            }
-        }
+    public static List<String> formatTheAnswer(HashMap<String, Integer> result){
 
         Map<String, Integer> sortedMap = new TreeMap<>(result);
         List<String> keySet = new ArrayList<>(sortedMap.keySet());
