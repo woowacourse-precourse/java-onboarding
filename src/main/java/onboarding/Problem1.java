@@ -70,11 +70,22 @@ class Problem1 {
     }
     /*  포비나 크롱이 펼친 페이지들이 유효한지 검사 */
     public static boolean isValidPages(List<Integer> pobi, List<Integer> crong) {
+        int pobiLeftPage = pobi.get(0);
+        int pobiRightPage = pobi.get(1);
+        int crongLeftPage = crong.get(0);
+        int crongRightPage = crong.get(1);
+        /* 각각의 페이지들 범위가 유효한지 검사 */
+        if (pobiLeftPage < 1 || 400 < pobiLeftPage
+                || pobiRightPage < 1 || 400 < pobiRightPage)
+            return false;
+        if (crongLeftPage < 1 || 400 < crongLeftPage
+                || crongRightPage < 1 || 400 < crongRightPage)
+            return false;
         /*  각각의 왼쪽 페이지가 홀수가 맞는지 검사 */
-        if (pobi.get(0) % 2 != 1 || crong.get(0) % 2 != 1)
+        if (pobiLeftPage % 2 != 1 || crongLeftPage % 2 != 1)
             return false;
         /*  각각의 왼쪽 오른쪽 페이지가 연속하는지 검사 */
-        if (pobi.get(1) - pobi.get(0) != 1 || crong.get(1) - crong.get(0) != 1)
+        if (pobiRightPage - pobiLeftPage != 1 || crongRightPage - crongLeftPage != 1)
             return false;
         return true;
     }
@@ -92,8 +103,9 @@ class Problem1 {
 /*
 <<기능 목록>>
 - [V] 포비 또는 크롱이 펼친 페이지가 유효하지 않을 경우 -1을 리턴한다
+  - [V] 포비/크롱이 펼친 페이지가 페이지 범위가 유효하지 않을 경우
   - [V] 포비/크롱이 펼친 페이지가 왼쪽이 홀수, 오른쪽이 짝수가 아닌 경우
-  - [V] 포비/크롱이 펼친 페이지가 왼쪽이 홀수, 오른쪽이 짝수가 아닌 경우
+  - [V] 포비/크롱이 펼친 페이지가 연속하지 않은 경우
 - [V] 포비와 크롱의 왼쪽 페이지 번호에 대해 각 자리 수를 모두 더하거나 모두 곱한 것 중 가장 큰 수를 구한다
 - [V] 포비와 크롱의 오른쪽 페이지 번호에 대해 각 자리 수를 모두 더하거나 모두 곱한 것 중 가장 큰 수를 구한다
 - [V] 포비와 크롱이 각자 왼쪽 오른쪽 페이지에 대해 구한 값 중 더 큰 값을 자신의 최종점수로 갖게 한다
