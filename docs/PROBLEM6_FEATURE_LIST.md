@@ -32,4 +32,5 @@ problem6(list<list<string>> forms){
 - 중복된 닉네임 substring을 사용하는 유저를 찾아 그 이메일을 모두 찾는 로직
 
 TODO
-- 
+- ~~테스트 확인~~
+- 상수화
