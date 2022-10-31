@@ -1,7 +1,5 @@
 package onboarding.problem7;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -14,8 +12,9 @@ public class FriendRecommender {
 
     /**
      * Constructor with user, friends, visitors
-     * @param user name of user
-     * @param friends friend relationship list
+     *
+     * @param user     name of user
+     * @param friends  friend relationship list
      * @param visitors visitor names of user sns
      */
     public FriendRecommender(String user, List<List<String>> friends, List<String> visitors) {
@@ -24,6 +23,7 @@ public class FriendRecommender {
 
     /**
      * Recommend new SNS friends (maximum 5)
+     *
      * @return new friend list
      */
     public List<String> recommend() {

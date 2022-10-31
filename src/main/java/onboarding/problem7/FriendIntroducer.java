@@ -18,8 +18,9 @@ public class FriendIntroducer {
 
     /**
      * Constructor with user, friends, visitors
-     * @param user name of user
-     * @param friends friend relationship list
+     *
+     * @param user     name of user
+     * @param friends  friend relationship list
      * @param visitors visitor names of user sns
      */
     public FriendIntroducer(String user, List<List<String>> friends, List<String> visitors) {
@@ -62,8 +63,9 @@ public class FriendIntroducer {
 
     /**
      * Introduce new friends in current friends' friends
+     *
      * @param userFriends current friend list of user
-     * @param scores map of name and score
+     * @param scores      map of name and score
      */
     private void introduceFriends(List<String> userFriends, Map<String, Friend> scores) {
         for (String name : relationships.keySet()) {
@@ -79,8 +81,9 @@ public class FriendIntroducer {
 
     /**
      * Introduce visitors of user's SNS
+     *
      * @param userFriends current friend list of user
-     * @param scores map of name and score
+     * @param scores      map of name and score
      */
     private void introduceVisitors(List<String> userFriends, Map<String, Friend> scores) {
         for (String visitor : visitors) {

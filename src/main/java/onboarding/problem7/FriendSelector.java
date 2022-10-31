@@ -13,6 +13,7 @@ public class FriendSelector {
 
     /**
      * Constructor with candidates
+     *
      * @param candidateMap new friend candidates
      */
     public FriendSelector(Map<String, Friend> candidateMap) {
@@ -21,6 +22,7 @@ public class FriendSelector {
 
     /**
      * Select maximum 5 friends
+     *
      * @return new friend list
      */
     public List<String> select() {
@@ -35,6 +37,7 @@ public class FriendSelector {
 
     /**
      * Extract candidate list from candidate map and sort(descending order of score -> if same ascending order of name)
+     *
      * @return list of friend candidates sorted
      */
     private List<Friend> sortCandidates() {
