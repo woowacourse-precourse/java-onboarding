@@ -58,9 +58,20 @@ public class Problem7 {
         return friendOfFriend;
     }
 
+    static Map<String, Integer> calFriendOfFriend(List<List<String>> friends, String user){
+        List<String> friendOfFriend = new ArrayList<>(waveOfFriends(friends, user));
+        Map<String, Integer> recommendFriendsList = new HashMap<>();
+
+        for(int idx = 0; idx < friendOfFriend.size(); idx++){
+            String name = friendOfFriend.get(idx);
+            recommendFriendsList.put(name, 10);
+        }
+        return recommendFriendsList;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
-
+        
         return answer;
     }
 }
