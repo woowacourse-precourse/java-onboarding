@@ -23,6 +23,18 @@ public class Problem7 {
                 userFriends.add(friend.get(0));
             }
         }
+        List<String> friendOfFriends = new ArrayList<>();
+        for (List<String> friend : friends) {
+            if (friend.get(0).equals(user) || friend.get(1).equals(user)) {
+                continue;
+            }
+            if (userFriends.contains(friend.get(0))) {
+                friendOfFriends.add(friend.get(1));
+            }
+            if (userFriends.contains(friend.get(1))) {
+                friendOfFriends.add(friend.get(0));
+            }
+        }
 
         List<String> answer = Collections.emptyList();
         return answer;
