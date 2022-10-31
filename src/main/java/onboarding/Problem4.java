@@ -27,6 +27,7 @@ public class Problem4 {
         boolean isAlphabet = isAlphabet(character);
 
         if (isAlphabet) {
+            System.out.println("alphabet");
             return getConvertedChar(character);
         }
 
@@ -34,7 +35,7 @@ public class Problem4 {
     }
 
     static boolean isAlphabet(char character) {
-        String pattern = "[a-zA-z]";
+        String pattern = "[a-zA-Z]";
         boolean regex = Pattern.matches(pattern, Character.toString(character));
 
         return regex;
