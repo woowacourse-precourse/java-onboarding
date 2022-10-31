@@ -8,18 +8,10 @@ public class Problem4 {
     public static String solution(String word) {
         String answer = "";
 
-        // 입력받은 문자열을 어절 단위로 자름
-        String[] chunk = word.split(" ");
-        // 변환하기
-        for(int i=0; i<chunk.length; i++){
-            String str = chunk[i];
-            answer += changeChunk(str);
-            answer += " ";
-        }
-
         // 변환된 문자열 만들기
+        answer = changeCharacter(word);
 
-        return answer.substring(0, answer.length()-1);
+        return answer;
     }
 
     /**
@@ -27,7 +19,7 @@ public class Problem4 {
      * @param chunk
      * @return 변환된 문자열을 반환
      */
-    static String changeChunk(String chunk){
+    static String changeCharacter(String chunk){
         String result = "";
 
         for(int i=0; i<chunk.length(); i++){
@@ -36,9 +28,9 @@ public class Problem4 {
                 result += changeUpperChar(c);
             } else if(Character.isLowerCase(c)){
                 result += changeLowerChar(c);
+            } else {
+                result += c;
             }
-
-
         }
 
         return result;
