@@ -2,8 +2,12 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        StringBuffer stringBuffer = new StringBuffer();
+        char[] splitWordArray = splitStringArray(word);
+        for (char c : splitWordArray) {
+            stringBuffer.append(transChar(c));
+        }
+        return stringBuffer.toString();
     }
 
     // string을 한글자씩 분리하기
