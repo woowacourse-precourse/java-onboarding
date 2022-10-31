@@ -51,7 +51,8 @@ class Problem1 {
             return -1;
         int p = getBigNum(pobi);
         int c = getBigNum(crong);
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        if (p == c)
+            return 0;
+        return p > c ? 1 : 2;
     }
 }
