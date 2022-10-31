@@ -19,10 +19,9 @@ public class Problem2 {
         while (index < cryptogram.length()) {
             if (isOverlap(cryptogram, stack)) {
                 removeOverlap(cryptogram, stack);
+                continue;
             }
-            if (index < cryptogram.length()) {
-                stack.add(cryptogram.charAt(index++));
-            }
+            stack.push(cryptogram.charAt(index++));
         }
 
         return stackToString(stack);
@@ -34,11 +33,9 @@ public class Problem2 {
 
     private static void removeOverlap(String cryptogram, Stack<Character> stack) {
         while (isOverlap(cryptogram, stack)) {
-            while (isOverlap(cryptogram, stack)) {
-                index++;
-            }
-            stack.pop();
+            index++;
         }
+        stack.pop();
     }
 
     private static String stackToString(Stack<Character> stack) {
