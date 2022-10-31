@@ -23,19 +23,20 @@ public class Problem6 {
 		return List.copyOf(answer);
 	}
 
-	private static List<String> getDuplicateEmails(List<User> userList, String token) {
-		List<String> duplicateEmails = new ArrayList<>();
-		for (User targetUser : userList) {
-			if (targetUser.checkDuplicate(token)) {
-				duplicateEmails.add(targetUser.email);
-			}
-		}
-		return duplicateEmails;
+	private static Set<String> getDuplicateEmails(List<User> userList, String token) {
+		return userList.stream()
+				.filter(user -> user.checkDuplicate(token))
+				.map(User::getEmail)
+				.collect(Collectors.toSet());
 	}
 
 	static class User {
 		private String email;
 		private String nickname;
+
+		public String getEmail() {
+			return email;
+		}
 
 		public User(List<String> form) {
 			this.email = form.get(0);
