@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.Stack;
+import java.util.stream.Collectors;
 
 public class Problem2 {
 
@@ -22,6 +23,17 @@ public class Problem2 {
             }
         }
         return st;
+    }
+
+    /**
+     * 주어진 stack을 문자열로 바꿔 리턴합니다.
+     * @param st character 타입의 stack
+     * @return 변경된 문자열
+     */
+    public static String convertStackToString(Stack<Character> st) {
+        return st.stream()
+                .map(Object::toString)
+                .collect(Collectors.joining());
     }
 
     public static String solution(String cryptogram) {
