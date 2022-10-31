@@ -39,10 +39,31 @@ public class Database {
         user2.addFriend(user1);
     }
     //누군가의 친구로 추천하기위해 겹치는 친구 수 방문기록을 기준으로 점수를 갱신한다.
+    private void calculateScoreByTargetName(String name) {
+        User user = findByName(name);
+        for (var entry : database.entrySet()) {
+            entry.getValue().resetScore();
+            if (entry.getKey() == name) continue;
+            User otherUser = entry.getValue();
+            otherUser.calculateFriendsScore(user);
+        }
+        for (var log : visitLogs) {
+            if (database.containsKey(log)) database.get(log).addScore();
+        }
+    }
+
     //친구 추천 목록 반환함수
 
-
-
-
+    public List<User> getRecommendedUsersByName(String name) {
+        User target = findByName(name);
+        calculateScoreByTargetName(name);
+        List<User> users = new ArrayList<>();
+        for (var userEntry : database.entrySet()) {
+            User user = userEntry.getValue();
+            if (user == target || user.isScoreZero() || user.isFriend(target)) continue;
+            users.add(user);
+        }
+        return users;
+    }
 
 }
