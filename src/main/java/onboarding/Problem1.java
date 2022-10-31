@@ -28,6 +28,21 @@ class Problem1 {
         return number;
     }
 
+    /**
+     * 입력된 모든 숫자 곱하기
+     * @param numbers 숫자 집합
+     * @return 결과값
+     */
+    private static int multiplyNumbers(int[] numbers) {
+        int number = 1;
+
+        for (int n: numbers) {
+            number *= n;
+        }
+
+        return number;
+    }
+
 
 
 }
