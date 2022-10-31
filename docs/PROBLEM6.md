@@ -21,3 +21,9 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능 목록
+
+- [x] 두 닉네임이 겹치는지 확인해주는 기능
+- [x] 겹치는 닉네임을 가진 유저의 이메일을 Set에 추가해주는 기능
+- [x] Set을 List로 바꾸어 사전순으로 정렬해주는 기능

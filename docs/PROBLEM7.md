@@ -24,3 +24,11 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능 목록
+
+- [x] 유저의 친구 목록을 생성해주는 기능
+- [x] 함께 아는 친구 점수를 추가해주는 기능
+- [x] 방문 점수를 추가해주는 기능
+- [x] 함께 아는 친구의 점수나 방문 점수를 통해 점수를 획득하면 추천친구 점수 Map에 점수를 추가해주는 기능
+- [x] 추천 친구 목록을 조건에 맞게 필터링 및 맵핑해주는 기능
