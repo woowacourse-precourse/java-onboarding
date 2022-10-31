@@ -8,7 +8,7 @@ public class Problem4 {
         String answer = "";
 
         if (isWrongLength(word)){
-            throw new IllegalArgumentException("1 이상 1000 이하의 길이를 가진 문자열이어야 합니다.");
+            throw new IllegalArgumentException("1 이상 1000 이하의 길이를 가진 단어이어야 합니다.");
         }
 
         for (int i=0; i<word.length(); i++){
@@ -28,15 +28,7 @@ public class Problem4 {
             return Character.toString(LOWER_ASCII_SUM - curChar);
         }
 
-        if (isNotAlphabet(curChar)){
-            return Character.toString(curChar);
-        }
-
         return Character.toString(curChar);
-    }
-
-    private static boolean isNotAlphabet(char ch){
-        return (!isUpperAlpha(ch) && !isLowerAlpha(ch));
     }
 
     private static boolean isUpperAlpha(char ch){
@@ -47,9 +39,9 @@ public class Problem4 {
         return (a_ASCII_VALUE <= ch && ch <= z_ASCII_VALUE);
     }
 
-    private static boolean isWrongLength(String checkString){
-        int length = checkString.length();
-        return (length < 1 || length > 1000);
+    private static boolean isWrongLength(String word){
+        int length = word.length();
+        return (length < WORD_MIN_LENGTH || length > WORD_MAX_LENGTH);
     }
 
     static class Const{
@@ -61,5 +53,8 @@ public class Problem4 {
 
         public static final int UPPER_ASCII_SUM = A_ASCII_VALUE + Z_ASCII_VALUE;
         public static final int LOWER_ASCII_SUM = a_ASCII_VALUE + z_ASCII_VALUE;
+
+        public static final int WORD_MIN_LENGTH = 1;
+        public static final int WORD_MAX_LENGTH = 1000;
     }
 }
