@@ -19,6 +19,26 @@ public class Problem7 {
         }
         return ;
     }
+    private static void checkFriends(String user, List<List<String>> friends) {
+        for (List<String> friend : friends) {
+            if (friendsList.contains(friend.get(0))) {
+                if (friendsBook.containsKey(friend.get(1))) {
+                    friendsBook.put(friend.get(1), friendsBook.get(friend.get(1)) + 10);
+                }
+                else {
+                    friendsBook.put(friend.get(1), 10);
+                }
+            }
+            else if (friend.get(1).contains(user)) {
+                if (friendsBook.containsKey(friend.get(0))) {
+                    friendsBook.put(friend.get(0), friendsBook.get(friend.get(1)) + 10);
+                }
+                else {
+                    friendsBook.put(friend.get(0), 10);
+                }
+            }
+        }
+    }
     private static void checkVisitors(List<String> visitors) {
         for (String visitor : visitors ) {
             if (friendsBook.containsKey(visitor)) {
