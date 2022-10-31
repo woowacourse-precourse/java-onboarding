@@ -1,6 +1,6 @@
 package onboarding;
 
-import onboarding.exception.InputRangeException;
+import onboarding.common.ValidationUtil;
 
 public class Problem3 {
     static final String[] NUM_FOR_CLAPS = {"3", "6", "9"};
@@ -8,8 +8,8 @@ public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
 
-        // 입력된 숫자에 대한 검증 작업을 진행한다.
-        checkInputNumber(number);
+        // 입력받은 숫자에 대한 검증 작업을 진행한다.
+        verifyNumber(number);
 
         // 1부터 입력으로 주어진 번호까지 순회를 진행한다.
         for (int num = 1; num <= number; num++) {
@@ -24,14 +24,15 @@ public class Problem3 {
     }
 
     /**
-     * 입력 number에 대해 검증을 진행한다.
+     * 입력받은 숫자에 대한 검증 작업을 진행한다.
      *
-     * @param number 입력으로 들어온 number
+     * @param number 입력받은 숫자
      */
-    private static void checkInputNumber(int number) {
-        if (number < 1 || number > 10000) {
-            throw new InputRangeException("number는 1~10000 사이여야 합니다.");
-        }
+    private static void verifyNumber(int number) {
+        ValidationUtil numValidation = new ValidationUtil();
+        numValidation.addVarName("number");
+        // 숫자의 범위는 1~10000 사이로 제한되어 있다.
+        numValidation.checkNumRange(number, 1, 10000);
     }
 
     /**
@@ -71,7 +72,6 @@ public class Problem3 {
         return -1;
     }
 
-
     /**
      * 문자열에 존재하는 clapNum (3/6/9)를 제거한다.
      *
@@ -82,5 +82,4 @@ public class Problem3 {
     private static String removeClapNum(String strNum, String clapNum) {
         return strNum.replaceAll(clapNum, "");
     }
-
 }

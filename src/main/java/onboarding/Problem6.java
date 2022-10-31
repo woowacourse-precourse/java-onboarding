@@ -1,5 +1,6 @@
 package onboarding;
 
+import onboarding.common.ValidationUtil;
 import onboarding.exception.InputRangeException;
 import onboarding.exception.InputTypeException;
 
@@ -17,8 +18,8 @@ public class Problem6 {
         partNameWithEmail = new HashMap<>();
         answer = new TreeSet<>();
 
-        // 크루의 인원 수에  대해서 검증한다.
-        checkCrewNumRange(forms.size());
+        // 크루의 인원 수에 대해서 검증한다.
+        verifyCrewNum(forms);
 
         for(List<String> form : forms) {
             // 크루들의 이메일과 닉네임 정보를 각각 추출한다.
@@ -45,6 +46,18 @@ public class Problem6 {
     }
 
     /**
+     * 입력받은 크루의 인원수에 대해서 검증한다.
+     *
+     * @param forms 크루 리스트
+     */
+    private static void verifyCrewNum(List<List<String>> forms) {
+        ValidationUtil crewSizeValidation = new ValidationUtil();
+        crewSizeValidation.addVarName("crew member size");
+        // 크루의 사이즈는 1~10000 사이이다.
+        crewSizeValidation.checkNumRange(forms.size(), 1, 10000);
+    }
+
+    /**
      * 닉네임에 대한 형식을 검증한다.
      *
      * @param nickname 입력받은 닉네임
@@ -62,25 +75,12 @@ public class Problem6 {
      * @param email 입력받은 이메일
      */
     private static void checkEmailCond(String email) {
-
         // 이메일은 @email.com 도메인으로 구성되어 있으며, 전체 길이는 11~20자 미만이다.
         // @email.com이 10자이기 때문에, 앞단의 아이디는 1~9자까지 될 수 있다.
         String regex = "^[a-zA-Z0-9]{1,9}@email[.]com$";
 
         if (!Pattern.matches(regex, email)) {
             throw new InputTypeException("이메일은 11~20자 사이이며, 도메인은 @email.com로 제한되어 있습니다.");
-        }
-
-    }
-
-    /**
-     * 크루의 인원수에 대해 검증을 진행한다.
-     *
-     * @param crewSize 입력으로 들어온 crewSize
-     */
-    private static void checkCrewNumRange(int crewSize) {
-        if (crewSize < 1 || crewSize > 10000) {
-            throw new InputRangeException("크루는 1~10000명 사이여야 합니다.");
         }
     }
 

@@ -1,10 +1,8 @@
 package onboarding;
 
-import onboarding.exception.InputRangeException;
-import onboarding.exception.InputTypeException;
+import onboarding.common.ValidationUtil;
 
 import java.util.*;
-import java.util.regex.Pattern;
 
 public class Problem7 {
 
@@ -23,19 +21,13 @@ public class Problem7 {
         friendMap = new HashMap<>();
         scoreMap = new HashMap<>();
 
-        // 입력으로 받은 user 문자열에 대해 검증한다.
-        checkRangeValidation(user.length(), 1, 30);
-
-        // friends의 사이즈에 대해서 검증한다.
-        checkRangeValidation(friends.size(), 1, 10000);
-
-        // visitors 사이즈에 대해서 검증한다.
-        checkRangeValidation(visitors.size(), 0, 10000);
+        // 입력받은 리스트들에 대한 검증 작업을 진행한다.
+        verifyInputList(user, friends, visitors);
 
         // 전체 사용자에 대한 친구 관계를 정의한다.
         for(List<String> relationship : friends) {
             // 각 원소의 길이가 2인지 검증한다.
-            checkRangeValidation(relationship.size(), 2, 2);
+            verifyRelationship(relationship);
             defineFriendship(relationship);
         }
 
@@ -70,29 +62,39 @@ public class Problem7 {
     }
 
     /**
-     * 입력 범위에 대한 검증을 진행한다.
+     * 친구 관계 리스트에 대한 검증 작업을 진행한다.
      *
-     * @param number 검증할 숫자
-     * @param start 첫 범위
-     * @param end 끝 범위
+     * @param relationship 친구 관계 리스트
      */
-    private static void checkRangeValidation(int number, int start, int end) {
-        if(number < start || number > end) {
-            throw new InputRangeException(start + "~" + end + " 사이여야 합니다.");
-        }
+    private static void verifyRelationship(List<String> relationship) {
+        ValidationUtil relationshipValidation = new ValidationUtil();
+        relationshipValidation.addVarName("relationship size");
+        // 각 원소의 길이는 2여야 한다.
+        relationshipValidation.checkNumRange(relationship.size(), 2, 2);
     }
 
     /**
-     * 입력받은 아이디에 대한 검증을 진행한다.
+     * 입력받은 리스트들에 대한 검증 작업을 진행한다.
      *
-     * @param userId 사용자의 아이디
+     * @param user 사용자 아이디
+     * @param friends 친구 관계 정보
+     * @param visitors 사용자 타임라인 방문 기록
      */
-    private static void checkIdValidation(String userId) {
-        // 아이디의 길이는 1~30 사이로, 소문자로만 구성되어야 한다.
-        String regex = "^[a-z]{1,30}$";
-        if (!Pattern.matches(regex, userId)) {
-            throw new InputTypeException("아이디의 길이는 1~30 사이로, 소문자로만 구성되어야 합니다.");
-        }
+    private static void verifyInputList(String user, List<List<String>> friends, List<String> visitors) {
+        // 입력으로 받은 user 문자열에 대해 검증한다.
+        ValidationUtil userValidation = new ValidationUtil();
+        userValidation.addVarName("user length");
+        userValidation.checkNumRange(user.length(), 1, 30);
+
+        // friends의 사이즈에 대해서 검증한다.
+        ValidationUtil friendsValidation = new ValidationUtil();
+        friendsValidation.addVarName("friends size");
+        friendsValidation.checkNumRange(friends.size(), 1, 10000);
+
+        // visitors 사이즈에 대해서 검증한다.
+        ValidationUtil visitorsValidation = new ValidationUtil();
+        visitorsValidation.addVarName("visitors size");
+        visitorsValidation.checkNumRange(visitors.size(), 0, 10000);
     }
 
     /**
@@ -195,7 +197,7 @@ public class Problem7 {
         String userB = relationship.get(1);
 
         // 아이디에 대한 검증을 진행한다.
-        checkIdValidation(userA);
+        idValidation(userA, userB);
 
         // 만약 처음 삽입된다면 초기화 작업을 진행해준다.
         List<String> friendListOfUserA = friendMap.getOrDefault(userA, new ArrayList<>());
@@ -208,5 +210,22 @@ public class Problem7 {
         // 친구 관계 Map에 추가한다.
         friendMap.put(userA, friendListOfUserA);
         friendMap.put(userB, friendListOfUserB);
+    }
+
+    /**
+     * 사용자의 아이디에 대한 검증 작업을 진행한다.
+     *
+     * @param userA 사용자 A
+     * @param userB 사용자 B
+     */
+    private static void idValidation(String userA, String userB) {
+        // 사용자의 아이디의 길이는 1~30 사이여야 한다.
+        ValidationUtil userAValidation = new ValidationUtil();
+        userAValidation.addVarName("userId");
+        userAValidation.checkStrLowerCase(userA, 1, 30);
+
+        ValidationUtil userBValidation = new ValidationUtil();
+        userBValidation.addVarName("userId");
+        userBValidation.checkStrLowerCase(userB, 1, 30);
     }
 }
