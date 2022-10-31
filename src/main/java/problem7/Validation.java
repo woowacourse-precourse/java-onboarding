@@ -1,12 +1,12 @@
 package problem7;
 
-public class Validator {
+public class Validation {
 
-    public void validate(String name) throws Exception {
+    public static void validate(String name) throws Exception {
         alphabetValidate(name, lengthValidate(name));
     }
 
-    private void alphabetValidate(String name, int length) throws Exception {
+    private static void alphabetValidate(String name, int length) throws Exception {
         char letter;
 
         for (int i = 0; i < length; i++) {
@@ -15,7 +15,7 @@ public class Validator {
         }
     }
 
-    private int lengthValidate(String name) throws Exception {
+    private static int lengthValidate(String name) throws Exception {
         int length = name.length();
         if(length < 1 || length > 30) throw new Exception("Invalid name length");
         return length;
