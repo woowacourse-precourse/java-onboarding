@@ -6,11 +6,21 @@ import java.util.stream.Collectors;
 public class Problem2 {
     public static String solution(String cryptogram) {
         Stack<Character> stack = new Stack<>();
-        cryptogram.chars().forEach(letter -> duplicateCheck(stack, (char) letter));
+        char[] chars = cryptogram.toCharArray();
+        duplicateCheck(stack, chars);
+
         return stack.stream().map(String::valueOf).collect(Collectors.joining());
     }
 
-    private static void duplicateCheck(Stack<Character> stack, Character aChar) {
+    private static void duplicateCheck(Stack<Character> stack, char[] chars) {
+        int count = 0;
+        for (char aChar : chars) {
+            stackProcess(stack, chars, aChar, count);
+            count++;
+        }
+    }
+
+    private static void stackProcess(Stack<Character> stack, char[] chars, char aChar, int count) {
         if (stack.isEmpty()) {
             stack.push(aChar);
             return;
@@ -19,7 +29,8 @@ public class Problem2 {
             stack.pop();
             return;
         }
-        stack.push(aChar);
+        if (aChar != chars[count - 1]) {
+            stack.push(aChar);
+        }
     }
-
 }
