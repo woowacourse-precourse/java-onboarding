@@ -65,7 +65,7 @@ public class Problem7 {
 
         for(Map.Entry<String, Integer> entry : sort_list) {
             sortedScore.add(entry.getKey());
-            if(sortedScore.size() > 5)
+            if(sortedScore.size() == 5)
                 break;
         }
 
