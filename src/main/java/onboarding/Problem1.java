@@ -51,6 +51,11 @@ class Problem1 {
     }
 
     private static int calculateResult(int maxValueOfPobi, int maxValueOfCrong) {
+        if (maxValueOfPobi > maxValueOfCrong) {
+            return 1;
+        } else if (maxValueOfPobi < maxValueOfCrong) {
+            return 2;
+        }
         return 0;
     }
 }
