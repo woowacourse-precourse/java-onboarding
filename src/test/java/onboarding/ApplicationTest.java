@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -159,6 +160,46 @@ class ApplicationTest {
             List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com");
             assertThat(Problem6.solution(forms)).isEqualTo(result);
         }
+
+        @Test
+        void 이메일_양식_예외처리() {
+            List<List<String>> forms = List.of(
+                    List.of("jmddddddddddddd@email.com", "제이엠"),
+                    List.of("jason@email.com", "제이슨"),
+                    List.of("woniee@email.com", "워니"),
+                    List.of("mj@email.com", "엠제이"),
+                    List.of("nowm@email.com", "이제엠")
+            );
+
+            Assertions.assertThrows(IllegalArgumentException.class, () -> {
+                Problem6.solution(forms);
+            });
+        }
+
+        @Test
+        void 닉네임_양식_예외처리() {
+            List<List<String>> forms = List.of(
+                    List.of("jm@email.com", "제이dldldldlddd엠"),
+                    List.of("jason@email.com", "제이슨"),
+                    List.of("woniee@email.com", "워니"),
+                    List.of("mj@email.com", "엠제이"),
+                    List.of("nowm@email.com", "이제엠")
+            );
+
+            Assertions.assertThrows(IllegalArgumentException.class, () -> {
+                Problem6.solution(forms);
+            });
+        }
+
+        @Test
+        void 크루_인원수_예외처리() {
+            List<List<String>> forms = new ArrayList<>(10001);
+
+            Assertions.assertThrows(IllegalArgumentException.class, () -> {
+                Problem6.solution(forms);
+            });
+        }
+
     }
 
     @Nested
