@@ -6,6 +6,7 @@ public class Problem3 {
         answer = calc369(number);
         return answer;
     }
+    //369 계산 함수 구현
     private static int calc369(int number){
         int result=0;
         for(int i=1; i<=number; i++){
