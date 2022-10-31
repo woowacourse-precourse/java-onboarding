@@ -11,8 +11,56 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+    static final int POBI = 1;
+    static final int CRONG = 2;
+    static final int TIE = 0;
+    static final int EXCEPTION = -1;
+    static final int NOPROBLEM = 1;
+    static final int LEFTPAGE = 0;
+    static final int RIGHTPAGE = 1;
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+
+        try {
+            if (gamerExceptionCheck(pobi) == EXCEPTION) {
+                throwException();
+            }
+            if (gamerExceptionCheck(crong) == EXCEPTION) {
+                throwException();
+            }
+        }
+        catch(Exception e) {
+            return EXCEPTION;
+        }
+
         return answer;
+    }
+
+    public static int gamerExceptionCheck(List<Integer> gamer) {
+        int leftPage = getPageLeftOrRight(gamer, LEFTPAGE);
+        int rightPage = getPageLeftOrRight(gamer, RIGHTPAGE);
+        try {
+            if (leftPage < 1 || rightPage > 400) {
+                throwException();
+            }
+            if (leftPage % 2 == 0) {
+                throwException();
+            }
+            if (rightPage - 1 != leftPage) {
+                throwException();
+            }
+        }
+        catch(Exception e) {
+            return EXCEPTION;
+        }
+        return NOPROBLEM;
+    }
+
+    public static void throwException() throws Exception {
+        throw new Exception();
+    }
+
+    public static int getPageLeftOrRight(List<Integer> gamer, int way) {
+        return gamer.get(way);
     }
 }
