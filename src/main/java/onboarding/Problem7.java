@@ -88,6 +88,7 @@ public class Problem7 {
 
 class ExceptionProblem7 {
     public static void validateUser(String user) {
+        enterId(user);
         validateUserLength(user);
         validateEnglish(user);
         validateSamllLetter(user);
@@ -113,4 +114,9 @@ class ExceptionProblem7 {
         }
     }
 
+    private static void enterId(String id) {
+        if (id.equals("")) {
+            throw new IllegalArgumentException();
+        }
+    }
 }
