@@ -8,12 +8,31 @@ public class Problem2 {
         
         Stack<Character> stack = new Stack<>();
         for(int i=0;i<cryptogram.length();i++) {
-        	char cur_char = cryptogram.charAt(i);
+        	char next_char = cryptogram.charAt(i);
         	
-        	if(stack.size()!=0 && stack.peek()==cur_char) {
-        		stack.pop();
-        	}else {
-        		stack.add(cur_char);
+        	if(stack.size()==0) {
+        		stack.add(next_char);
+        		continue;
+        	}
+        	
+        	char cur_char = stack.pop();
+        	if(next_char!=cur_char) {
+        		boolean plag = true;
+        		while(!stack.isEmpty()) {
+        			char before_char = stack.pop();
+        			if(before_char!=cur_char) {
+        				stack.add(before_char);
+        				break;
+        			}
+        			
+    				plag = false;
+        		}
+        		
+        		if(plag) {
+        			stack.add(cur_char);
+        		}
+        		
+        		stack.add(next_char);
         	}
         }
         
