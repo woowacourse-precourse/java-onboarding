@@ -13,7 +13,6 @@ public class Problem2 {
         cryptogramLength = cryptogram.length();
 
         Stack<Character> stack = new Stack<>();
-        stack.push(cryptogram.charAt(index++));
 
         while (index < cryptogramLength) {
             char currentCharacter = cryptogram.charAt(index);
