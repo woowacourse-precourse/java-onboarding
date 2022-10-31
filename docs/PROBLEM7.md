@@ -24,3 +24,12 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+## 기능목록
+
+- 사용자 아이디 user와 친구 관계인 사용자를 구한다.
+- 위에서 구한 사용자와 친구 관계이면서 user가 아닌 사용자를 구하고, 이 사용자는 10점의 점수를 얻는다.
+- visitors에서 user와 친구 관계가 아닌 사용자는 1점의 점수를 얻는다.
+- 점수를 모두 더해 점수가 높은 순으로 정렬하여 최대 5명의 사용자를 return한다.
+  - 점수가 같은 경우 이름순으로 정렬한다.
+  - 점수가 0점인 경우 return하지 않는다.
