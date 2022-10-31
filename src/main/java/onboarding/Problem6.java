@@ -10,7 +10,7 @@ public class Problem6 {
      * @return : 토큰화된 닉네임 딕셔너리
      */
     public static Map<String, List<String>> makeTokenDict(List<List<String>> forms){
-        Map<String, List<String>> tokenMap = new HashMap<>(); // 토큰 정보 저장
+        Map<String, List<String>> tokenMap = new HashMap<>();
 
         for(List<String> info : forms){
             String email = info.get(0);
