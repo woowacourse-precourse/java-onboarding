@@ -23,5 +23,20 @@ class Problem1 {
 
         return DigitList;
     }
+
+    static int FindMaxValue(int num){
+        int MaxValue = 0;
+        int sum = 0;
+        int multiple = 1;
+
+        for(int i=0;i<FindDigitByPage(num).size();i++){
+            sum += FindDigitByPage(num).get(i);
+            multiple *= FindDigitByPage(num).get(i);
+        }
+
+        MaxValue = Math.max(sum, multiple);
+
+        return MaxValue;
+    }
 }
 
