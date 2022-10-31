@@ -50,6 +50,13 @@ public class Problem7 {
                 getPerson(visitor).count();
             }
         }
+
+        void addFriend(List<String> friend) {
+            Person a = getPerson(friend.get(0));
+            Person b = getPerson(friend.get(1));
+            a.friends.add(b);
+            b.friends.add(a);
+        }
         int getScore(Person p) {
             String name = p.name;
             int score = 0;
@@ -74,7 +81,10 @@ public class Problem7 {
             return count;
         }
     }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        Persons persons = new Persons(user);
+        persons.countVisit(visitors);
         List<String> answer = new ArrayList<>();
 
         return answer;
