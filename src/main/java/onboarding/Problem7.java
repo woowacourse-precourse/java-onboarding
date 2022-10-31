@@ -36,8 +36,6 @@ public class Problem7 {
             }
         }
 
-        System.out.println(scores);
-
         List<Map.Entry<String, Integer>> list = new ArrayList<Map.Entry<String, Integer>>(scores.entrySet());
         Collections.sort(list, new ValueThenKeyComparator<String, Integer>());
 
@@ -45,7 +43,11 @@ public class Problem7 {
             answer.add(i.getKey());
         }
 
-        return answer.subList(0,5);
+        if (answer.size() > 5) {
+            answer = answer.subList(0,5);
+        }
+
+        return answer;
    }
     private static class ValueThenKeyComparator<K extends Comparable<? super K>, V extends Comparable<? super V>>
             implements Comparator<Map.Entry<K, V>> {
