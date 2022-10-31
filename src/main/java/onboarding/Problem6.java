@@ -24,7 +24,7 @@ public class Problem6 {
     	
         return finalNik;
     }
-	public static void makeIdAndNikNameForm(String[][] newForms, List<List<String>> forms) {
+	private static void makeIdAndNikNameForm(String[][] newForms, List<List<String>> forms) {
     	String[] iDAndEmailForm = null;
     	String nikName = null;
     	int idx = 0;
@@ -36,12 +36,12 @@ public class Problem6 {
     		idx += 1;
     	}
     }
-    public static void putTwoLengthNikAndIds(String[][] form, Map<String, List<String>> twoLengthNikAndIds) {
-    	
+    private static void putTwoLengthNikAndIds(String[][] form, Map<String, List<String>> twoLengthNikAndIds) {
     	String emailId = null;
     	String nikName = null;
     	String twoLengthNikName = null;
     	StringBuilder sb = new StringBuilder();
+    	
     	for(int i=0; i<form.length; i++) {
     		emailId = form[i][0];
     		nikName = form[i][1];
@@ -53,13 +53,12 @@ public class Problem6 {
     			if(!twoLengthNikAndIds.containsKey(twoLengthNikName)) {
         			twoLengthNikAndIds.put(twoLengthNikName.toString(), new ArrayList<>());    				
     			}
-    			
     			twoLengthNikAndIds.get(twoLengthNikName).add(emailId);
         		sb.setLength(0);
     		}
     	}
     }
-    public static void addIdAboutDuplicateNikName(Map<String, List<String>> twoLengthNikAndIds, Set<String> idAboutDuplicateNik) {
+    private static void addIdAboutDuplicateNikName(Map<String, List<String>> twoLengthNikAndIds, Set<String> idAboutDuplicateNik) {
     	
     	for(List<String> ids: twoLengthNikAndIds.values()) {
     		if(ids.size() < 2) {
@@ -70,10 +69,10 @@ public class Problem6 {
     		}
     	}
     }
-    public static void sortAscending(List<String> finalNik) {
+    private static void sortAscending(List<String> finalNik) {
     	Collections.sort(finalNik);
 	}
-    public static void makeEmailForm(List<String> nikList) {
+    private static void makeEmailForm(List<String> nikList) {
     	StringBuilder sb = new StringBuilder();
     	for(int i=0; i<nikList.size(); i++) {
     		sb.append(nikList.get(i));
