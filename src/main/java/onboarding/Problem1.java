@@ -48,4 +48,46 @@ class Problem1 {
         }
         return Respobi;
     }
+
+    public static int calcrong(int crong1, int crong2) {
+
+        int Rescrong = 0;
+
+        int x1 = crong1 / 100;
+        int y1 = (crong1 % 100) / 10;
+        int z1 = crong1 % 10;
+
+        int x2 = crong2 / 100;
+        int y2 = (crong2 % 100) / 10;
+        int z2 = crong2 % 10;
+
+        if (x1 != 0) {
+            int multcrong1T = x1 * y1 * z1;
+            int pluscrong1T = x1 + y1 + z1;
+
+            int multcrong2T = x2 * y2 * z2;
+            int pluscrong2T = x2 + y2 + z2;
+
+            int max_mult = Math.max(multcrong2T, multcrong1T);
+            int max_plus = Math.max(pluscrong2T, pluscrong1T);
+
+            Rescrong = Math.max(max_plus, max_mult);
+        }
+
+        else {
+            if (y1 != 0) {
+                int multcrong1D = y1 * z1;
+                int pluscrong1D = y1 + z1;
+
+                int multcrong2D = y2 * z2;
+                int pluscrong2D = y2 + z2;
+
+                int max_mult = Math.max(multcrong2D, multcrong1D);
+                int max_plus = Math.max(pluscrong2D, pluscrong1D);
+
+                Rescrong = Math.max(max_plus, max_mult);
+            }
+        }
+        return Rescrong;
+    }
 }
