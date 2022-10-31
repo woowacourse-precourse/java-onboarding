@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     static void inputUserFriednsScore(HashMap<String,List<String>> friendsGroups,HashMap<String,Integer> friendsGroupsScore,List<String> userFriends){
@@ -85,6 +82,11 @@ public class Problem7 {
         inputUserFriednsScore(friendsGroups,friendsGroupsScore,userFriends);
         deleteZeroScore(friendsGroupsScore);
         deleteOverLapFriends(userFriends,friendsGroupsScore);
+
+        Map<String,Integer> sortedFriendsGroups = new TreeMap<>(friendsGroupsScore);
+        List<String> listKeySet = new ArrayList<>(sortedFriendsGroups.keySet());
+        Collections.sort(listKeySet, (value1, value2) -> (sortedFriendsGroups.get(value2).compareTo(sortedFriendsGroups.get(value1))));
+
 
         return answer;
     }
