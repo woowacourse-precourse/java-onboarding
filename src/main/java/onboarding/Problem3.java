@@ -7,7 +7,7 @@ class Game369 {
         this.number = number;
     }
 
-    public static int clapCountOf(int number) {
+    public int calculateClapCount() {
         int clapCnt = 0;
         for (int i = 1; i <= number; i++) {
             clapCnt += addClapCnt(i);
@@ -15,7 +15,7 @@ class Game369 {
         return clapCnt;
     }
 
-    private static int addClapCnt(int num) {
+    private int addClapCnt(int num) {
         int clapCnt = 0;
         String[] split = String.valueOf(num).split("");
         for (String s : split) {
@@ -26,8 +26,8 @@ class Game369 {
         return clapCnt;
     }
 
-    private static boolean isClapCondition(int now) {
-        if(now == 3 || now == 6 || now == 9)
+    private boolean isClapCondition(int num) {
+        if(num == 3 || num == 6 || num == 9)
             return true;
         return false;
     }
@@ -39,7 +39,7 @@ class Game369 {
  */
 public class Problem3 {
     public static int solution(int number) {
-        return Game369
-                .clapCountOf(number);
+        Game369 game369 = new Game369(number);
+        return game369.calculateClapCount();
     }
 }
