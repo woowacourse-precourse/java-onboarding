@@ -2,16 +2,16 @@ package onboarding;
 
 import java.util.List;
 
+
 import static java.lang.Math.*;
 
 class Problem1 {
-    public static int solution(List<Integer> pobi, List<Integer> crong) { /// [399, 400]
+    public static int solution(List<Integer> pobi, List<Integer> crong) { /// [52, 53] , [160, 161]
         int answer = Integer.MAX_VALUE;
 
         if (checkException(pobi.get(0), pobi.get(1)) && checkException(crong.get(0), crong.get(1))) {
-            answer = 1;
-        }
-        else {
+            answer = winner(pobi, crong);
+        } else {
             answer = -1;
         }
         return answer;
@@ -25,20 +25,36 @@ class Problem1 {
 
     }
 
-    private static int mulPage(int number) {
+    public static int winner(List<Integer> pobi, List<Integer> crong) {
+        int p = Math.max(mulPage(pobi.get(0)), addPage(pobi.get(1)));
+        int c = Math.max(mulPage(crong.get(0)), addPage(crong.get(1)));
+
+        if (p < c) {
+            return 2;
+        }
+        else if (p > c) {
+            return 1;
+        }
+        else        {
+            return 0;
+        }
+
+    }
+
+    private static int mulPage(int page) {
         int score = 1;
-        while (number != 0) {
-            score *= number % 10;
-            number /= 10;
+        while (page != 0) {
+            score *= page % 10;
+            page /= 10;
         }
         return score;
     }
 
-    private static int addPage(int number) {
+    private static int addPage(int page) {
         int score = 0;
-        while (number != 0) {
-            score += number % 10;
-            number /= 10;
+        while (page != 0) {
+            score += page % 10;
+            page /= 10;
         }
         return score;
     }
