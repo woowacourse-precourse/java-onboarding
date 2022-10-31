@@ -23,19 +23,15 @@ public class Problem3 {
 
     /**
      * 박수 세기
-     * @param number 분리된 숫자
+     * @param number 숫자
      * @return 박수 횟수
      */
     private static int countClap(int number) {
         int countClap = 0;
 
         for(int i = 1; i <= number; i++) {
-            int[] oneLetterNumbers = getOneLetterNumbers(i);
-
-            for(int j : oneLetterNumbers) {
-                if (j == 3 || j == 6 || j == 9) {
-                    countClap ++;
-                }
+            if (isClapNumber(i)) {
+                countClap++;
             }
         }
 
@@ -56,7 +52,7 @@ public class Problem3 {
             }
         }
 
-        return false
+        return false;
     }
 
     /**
