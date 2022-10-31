@@ -19,3 +19,12 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+---
+
+### 기능 구현
+
+- [x] 문자를 반대로 변환하는 함수 작성
+  - Character & modulus를 이용
+  - 알파벳 범위 내에서만
+- [x] 주어진 문자열을 순회하며 변환
