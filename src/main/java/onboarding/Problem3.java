@@ -19,9 +19,16 @@ public class Problem3 {
             for (int i = 0; i < arr.length; i++) {
                 list.add(arr[i]);
             }
+
+            for (int j = 0; j < list.size(); j++) {
+                if (list.get(j) == '3' || list.get(j) == '6' || list.get(j) == '9') {
+                    count++;
+                }
+            }
+
         }
 
-            int answer = 0;
+        int answer = 0;
 
         return answer;
     }
