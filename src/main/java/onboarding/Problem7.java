@@ -33,4 +33,17 @@ public class Problem7 {
         }
 
     }
+
+    public static void calculateFriendsScore(List<List<String>> friends, List<String> userFriends ,HashMap<String, Integer> hashMap, String user){
+        for (List<String> friend : friends) {
+            if (!Objects.equals(friend.get(0), user) && !Objects.equals(friend.get(1), user)) {
+                if (userFriends.contains(friend.get(0))){
+                    updateScore(hashMap,10,friend.get(1));
+                }
+                if (userFriends.contains(friend.get(1))){
+                    updateScore(hashMap,10,friend.get(0));
+                }
+            }
+        }
+    }
 }
