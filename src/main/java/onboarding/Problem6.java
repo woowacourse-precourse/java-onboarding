@@ -14,7 +14,7 @@ public class Problem6 {
         Collections.sort(answer);
         return answer;
     }
-
+    // 이름을 하나씩 checkTwoWord 메소드에 비교하며 같은게 있는지 확인하는 메소드
     static boolean checkName(String name1, List<List<String>> forms) {
         for (int i = 0; i < forms.toArray().length; i++) {
             String name2 = forms.get(i).get(1);
@@ -27,8 +27,10 @@ public class Problem6 {
         return false;
     }
 
+    // 두글자 이상 같은 이름이 있으면 true로 반환하는 메소드
     static boolean checkTwoWord(String name1, String name2) {
         int i = 0;
+        // i,j 포인터를 이용하여 비교한다.
         while(i<name1.length()){
             int j = 0;
             int count = 0;
