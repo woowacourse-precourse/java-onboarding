@@ -32,6 +32,15 @@ class Problem1 {
         return result.stream().mapToInt(Integer::intValue).max().orElse(0);
     }
 
+    // 유저가 펼친 페이지에서 가장 큰 값을 찾는 메서드
+    public static int findMaxNumber(List<Integer> list){
+        if(list.contains(1) || list.contains(400)){
+            return -1;
+        }
+        if(list.get(0)+1 != list.get(1)) return -1;
+        return Math.max(sumNumber(list), multiplyNumber(list));
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
