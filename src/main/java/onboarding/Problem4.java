@@ -12,7 +12,11 @@ public class Problem4 {
             if(num >= 65 && num <= 90) {
                 if(num <= 77)  num = 77 + (78-num);
                 else num = 78 - (num-77);
-            }
+            //2) 소문자의 경우
+	        } else if(num >= 97 && num <= 122){
+	            if(num <= 109) num = 109 + (110-num);
+	            else num = 110 - (num-109);
+	        }
             answer += String.valueOf((char)num);
         }
         return answer;
