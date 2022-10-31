@@ -3,7 +3,7 @@ package onboarding;
 import java.util.HashSet;
 import java.util.Set;
 
-public class User {
+public class User implements Comparable<User> {
     private String username;
     private Set<String> friends;
     private int score;
@@ -36,5 +36,14 @@ public class User {
 
     public void addScore(int score) {
         this.score += score;
+    }
+
+    @Override
+    public int compareTo(User u) {
+        if (this.score == u.getScore()) {
+            return this.username.compareTo(u.getUsername());
+        } else {
+            return Integer.compare(this.score, u.getScore());
+        }
     }
 }
