@@ -1,5 +1,7 @@
 package onboarding;
 
+import java.util.Stack;
+
 public class Problem2 {
     private static boolean isAllLowerCase(String cryptogram)
     {
@@ -20,6 +22,27 @@ public class Problem2 {
     private static boolean isValidCryptogram(String cryptogram)
     {
         return (cryptogram != null && isAllLowerCase(cryptogram) && isValidLength(cryptogram));
+    }
+    private static void removeDuplicate(Stack<Character> stack)
+    {
+        if (stack.size() == 1)
+            return;
+        if (stack.peek() == stack.elementAt(stack.size() - 2))
+        {
+            stack.pop();
+            stack.pop();
+        }
+    }
+    private static Stack<Character> deciper(String cryptogram)
+    {
+        Stack<Character> stack = new Stack<>();
+        int len = cryptogram.length();
+
+        for (int i = 0; i < len; i++) {
+            stack.push(cryptogram.charAt(i));
+            removeDuplicate(stack);
+        }
+        return (stack);
     }
     public static String solution(String cryptogram) {
         if (!isValidCryptogram(cryptogram))
