@@ -1,6 +1,11 @@
 package onboarding;
 
 public class Problem3 {
+    /**
+     * 369 게임
+     * @param number
+     * @return
+     */
     public static int solution(int number) {
         int answer = 0;
         if(number < 1 || number > 10000) return -1; // 숫자 범위 예외처리
@@ -10,6 +15,12 @@ public class Problem3 {
         return answer;
     }
 
+
+    /**
+     * 박수 횟수 리턴
+     * @param num
+     * @return count
+     */
     public static int clap(int num) {
         int cnt = 0;
         String target;
