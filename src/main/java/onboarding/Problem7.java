@@ -66,5 +66,12 @@ public class Problem7 {
     public static void visitCheck(Map<String, Integer> friendshipScore, List<String> visitors) {
         friendListCheck(friendshipScore, visitors, VISIT);
     }
-    
+
+    public static void alreadyFriendCheck(Map<String, Integer> friendshipScore, List<String> userfriend) {
+        for (String name : userfriend) {
+            if (friendshipScore.containsKey(name)) {
+                friendshipScore.remove(name);
+            }
+        }
+    }
 }
