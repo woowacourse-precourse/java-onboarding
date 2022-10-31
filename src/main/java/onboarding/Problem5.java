@@ -7,7 +7,13 @@ import java.util.List;
 
 public class Problem5 {
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
+        List<Integer> answer = new ArrayList<>();
+
+        int[] ans = count_money(money);
+
+        for (int i=0;i<9;i++){
+            answer.add(ans[i]);
+        }
         return answer;
     }
 
