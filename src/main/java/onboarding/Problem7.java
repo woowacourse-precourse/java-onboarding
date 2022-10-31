@@ -59,7 +59,15 @@ public class Problem7 {
 			scoreOfRecommendation.put(member, 0);
 		}
 
-		System.out.println(recommendedFriends);
+		for (String friend : friendshipChart.get(user)) {
+			for (String friendOfFriend : friendshipChart.get(friend)) {
+				if (scoreOfRecommendation.containsKey(friendOfFriend)) {
+					scoreOfRecommendation.put(friendOfFriend, scoreOfRecommendation.get(friendOfFriend) + 10);
+				}
+			}
+		}
+
+		System.out.println(scoreOfRecommendation);
 
 		List<String> answer = Collections.emptyList();
 		return answer;
