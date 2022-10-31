@@ -15,6 +15,10 @@ public class Problem6 {
 
         validateRegistrationForms(forms, refinedCrewForms);
 
+        for (String nickname : refinedCrewForms.keySet()) {
+            generateDuplicatedNicknameCandidate(nickname, duplicatedNicknameCandidate);
+        }
+
         return results;
     }
 
@@ -44,5 +48,14 @@ public class Problem6 {
         }
 
         return email.split(ATSIGN)[1].equals(DOMAIN);
+    }
+
+    private static void generateDuplicatedNicknameCandidate(String nickname, Map<String, Integer> duplicatedNicknameCandidate) {
+        for (int i = 0; i < nickname.length() - 1; i++) {
+            for (int j = i + 2; j <= nickname.length(); j++) {
+                String substring = nickname.substring(i, j);
+                duplicatedNicknameCandidate.put(substring, duplicatedNicknameCandidate.getOrDefault(substring, 0) + 1);
+            }
+        }
     }
 }
