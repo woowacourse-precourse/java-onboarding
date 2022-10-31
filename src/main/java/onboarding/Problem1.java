@@ -2,9 +2,7 @@ package onboarding;
 
 import onboarding.problem1.Calculator;
 
-import java.awt.print.Book;
 import java.util.List;
-import java.util.Random;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
@@ -16,6 +14,7 @@ class Problem1 {
         int pobiRight = pobi.get(1); //98
         int crongLeft = crong.get(0); //197
         int crongRight = crong.get(1); //198
+
 
         //예외처리
         if((pobiLeft % 2 == 0) || (pobiRight % 2 == 1) || (crongLeft % 2 == 0) || (crongRight % 2 == 1)
@@ -30,6 +29,7 @@ class Problem1 {
         if((crongLeft < 1) || (crongLeft > 399) || (crongRight < 2) || (crongRight > 400)) {
             return -1;
         }
+
 
         pSum = calculator.sum(pobiLeft, pobiRight);
         pMul = calculator.mul(pobiLeft, pobiRight);
