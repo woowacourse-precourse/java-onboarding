@@ -67,6 +67,12 @@ public class Problem7 {
 			}
 		}
 
+		for (String visitor : visitors) {
+			if (scoreOfRecommendation.containsKey(visitor)) {
+				scoreOfRecommendation.put(visitor, scoreOfRecommendation.get(visitor) + 1);
+			}
+		}
+
 		System.out.println(scoreOfRecommendation);
 
 		List<String> answer = Collections.emptyList();
