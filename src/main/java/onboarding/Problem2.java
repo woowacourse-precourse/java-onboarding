@@ -7,8 +7,9 @@ public class Problem2 {
 
     /**
      * 주어진 char 배열을 crypto로 변환한 stack을 반환합니다.
+     *
      * @param chars
-     * @return  crypto로 변환한 stack
+     * @return crypto로 변환한 stack
      */
     public static Stack<Character> makeCrypto(char[] chars) {
         Stack<Character> st = new Stack<>();
@@ -27,6 +28,7 @@ public class Problem2 {
 
     /**
      * 주어진 stack을 문자열로 바꿔 리턴합니다.
+     *
      * @param st character 타입의 stack
      * @return 변경된 문자열
      */
@@ -38,6 +40,9 @@ public class Problem2 {
 
     public static String solution(String cryptogram) {
         char[] chars = cryptogram.toCharArray();
+
         Stack<Character> st = makeCrypto(chars);
+
+        return convertStackToString(st);
     }
 }
