@@ -21,10 +21,8 @@ public class Problem7 {
     public static Map<String, List<String>> createFriendsList(List<List<String>> friends) {
         Map<String, List<String>> friendsList = new HashMap<>();
         for (List<String> friend : friends) {
-            if (!friendsList.containsKey(friend.get(0)))
-                friendsList.put(friend.get(0), new ArrayList<String>());
-            if (!friendsList.containsKey(friend.get(1)))
-                friendsList.put(friend.get(1), new ArrayList<String>());
+            friendsList.putIfAbsent(friend.get(0), new ArrayList<String>());
+            friendsList.putIfAbsent(friend.get(1), new ArrayList<String>());
             friendsList.get(friend.get(0)).add(friend.get(1));
             friendsList.get(friend.get(1)).add(friend.get(0));
         }
@@ -35,22 +33,16 @@ public class Problem7 {
         List<String> userFriends = friendsList.get(user);
         for (String friend : userFriends) {
             for (String person : friendsList.get(friend)) {
-                if (person.equals(user))
-                    continue;
-                if (!scores.containsKey(person))
-                    scores.put(person, 0);
-                scores.put(person, scores.get(person) + 10);
+                if (!person.equals(user))
+                    scores.put(person, scores.getOrDefault(person, 0) + 10);
             }
         }
     }
 
     public static void addVisitorScore(Map<String, Integer> scores, List<String> visitors, List<String> friends) {
         for (String visitor : visitors) {
-            if (friends.contains(visitor))
-                continue;
-            if (!scores.containsKey(visitor))
-                scores.put(visitor, 0);
-            scores.put(visitor, scores.get(visitor) + 1);
+            if (!friends.contains(visitor))
+                scores.put(visitor, scores.getOrDefault(visitor, 0) + 1);
         }
     }
 }
