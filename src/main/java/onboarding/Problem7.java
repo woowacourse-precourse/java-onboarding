@@ -1,15 +1,20 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-
         Map<String, User> userFriendsInfo = makeFriendConnection(friends);
+        findScoreOfAcquaintanceAllUser(user, userFriendsInfo);
+        addVisitorsScore(visitors, userFriendsInfo);
 
-
-        return answer;
+        return userFriendsInfo.values().stream()
+                .filter(eachUser -> eachUser.getScore() != 0)
+                .sorted()
+                .limit(5)
+                .map(eachUser -> eachUser.getUsername())
+                .collect(Collectors.toList());
     }
 
     private static Map<String, User> makeFriendConnection(List<List<String>> friends) {
@@ -41,7 +46,7 @@ public class Problem7 {
                 .forEach(eachUserName -> {
                     int eachScore = findScoreOfAcquaintanceEachUser(user, eachUserName, userFriendsInfo);
                     User eachUser = userFriendsInfo.get(eachUserName);
-                    eachUser.setScore(eachUser.getScore() + 10);
+                    eachUser.addScore(eachScore);
                 });
     }
 
@@ -55,8 +60,8 @@ public class Problem7 {
                 .sum();
     }
 
-    private static void addVisitorsScore(List<String> visitors, Map<String, Integer> score) {
-
+    private static void addVisitorsScore(List<String> visitors, Map<String, User> userFriendsInfo) {
+        visitors.forEach(visitor -> userFriendsInfo.get(visitor).addScore(1));
     }
 }
 
