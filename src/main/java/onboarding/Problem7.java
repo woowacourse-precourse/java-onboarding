@@ -29,6 +29,9 @@ public class Problem7 {
         // 1. 모든 친구 후보에 대한 Object Pool을 생성 및 구성
         HashMap<String, Candidate> candidates = buildObjectPool(user, friends, visitors);
 
+        // 2. 제공된 친구 관계 정보를 Graph로 구성
+        HashMap<String, ArrayList<Candidate>> al = buildFriendsNetworkGraph(friends, candidates);
+
 
         return answer;
     }
@@ -55,5 +58,20 @@ public class Problem7 {
                 candidates.put(visitor, new Candidate(visitor, 0));
 
         return candidates;
+    }
+
+    // 제공된 친구관계 정보를 Graph로 구성
+    private static HashMap<String, ArrayList<Candidate>> buildFriendsNetworkGraph(List<List<String>> friends, HashMap<String, Candidate> candidates) {
+        HashMap<String, ArrayList<Candidate>> al = new HashMap<>(); // adjacency list
+        for(List<String> friend : friends) {
+            if(!al.containsKey(friend.get(0)))
+                al.put(friend.get(0), new ArrayList<>());
+            al.get(friend.get(0)).add(candidates.get(friend.get(1)));
+
+            if(!al.containsKey(friend.get(1)))
+                al.put(friend.get(1), new ArrayList<>());
+            al.get(friend.get(1)).add(candidates.get(friend.get(0)));
+        }
+        return al;
     }
 }
