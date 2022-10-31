@@ -7,58 +7,40 @@ import java.util.List;
 public class Problem2 {
     public static String solution(String cryptogram) {
         Deque<String> queue = new ArrayDeque<>(List.of(cryptogram.split("")));
-
-        while (!queue.isEmpty()) {
-            int queueSize = queue.size();
-            if (queueSize == 1) {
-                break;
-            }
-
-            queue = removeDuplicatedStr(queue);
-
-            if (isFinished(queue, queueSize)) {
-                break;
-            }
-        }
-
-        return String.join("", queue);
+        return String.join("", removeDuplicatedStr(queue));
     }
 
     private static Deque<String> removeDuplicatedStr(Deque<String> queue) {
-        Deque<String> tempQueue = new ArrayDeque<>();
-        String previousChar = queue.pollFirst();
+        Deque<String> stack = new ArrayDeque<>();
 
         while (!queue.isEmpty()) {
+            if (stack.isEmpty()) {
+                stack.add(queue.pollFirst());
+            }
+
+            String previousChar = stack.getLast();
             boolean isDeleted = popDuplicatedChar(queue, previousChar);
-            if (!isDeleted) {
-                tempQueue.add(previousChar);
+
+            if (isDeleted) {
+                stack.pollLast();
             }
 
-            if (queue.isEmpty()) {
-                break;
-            }
-
-            previousChar = queue.pollFirst();
-            if (queue.isEmpty()) {
-                tempQueue.add(previousChar);
+            if (!isDeleted && !queue.isEmpty()) {
+                stack.add(queue.pollFirst());
             }
         }
 
-        return tempQueue;
+        return stack;
     }
 
-    private static boolean popDuplicatedChar(Deque<String> queue, String targetStr) {
+    private static boolean popDuplicatedChar(Deque<String> queue, String previousChar) {
         boolean isDeleted = false;
 
-        while (!queue.isEmpty() && targetStr.equals(queue.getFirst())) {
+        while (!queue.isEmpty() && previousChar.equals(queue.getFirst())) {
             queue.pollFirst();
             isDeleted = true;
         }
 
         return isDeleted;
-    }
-
-    private static boolean isFinished(Deque<String> tempQueue, int queueSize) {
-        return queueSize == tempQueue.size();
     }
 }
