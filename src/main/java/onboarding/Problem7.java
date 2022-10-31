@@ -11,7 +11,7 @@ public class Problem7 {
         List<Person> friendList = findRecommendationFromFriends(user, friends, userFriends);
         List<Person> visitorList = findRecommendationFromVisitors(visitors, userFriends);
         List<Person> combineList = combineList(friendList, visitorList);
-
+        answer = sortList(combineList);
         return answer;
     }
 
@@ -57,6 +57,34 @@ public class Problem7 {
         combineList.addAll(friendList);
         combineList.addAll(visitorList);
         return combineList;
+    }
+
+    private static List<String> sortList(List<Person> list){
+        Collections.sort(list, new PersonComparator().reversed());
+        List<String> sortList = new ArrayList<>();
+        int count =1;
+        for(Person person : list){
+            if(count <= 5){
+                count++;
+                sortList.add(person.name);
+            }
+        }
+
+        return sortList;
+    }
+
+    static class PersonComparator implements Comparator<Person>{
+        @Override
+        public int compare(Person p1, Person p2){
+            if(p1.score == p2.score){
+                return p2.name.compareTo(p1.name);
+            }
+            if(p1.score > p2.score)
+                return 1;
+            if(p1.score < p2.score)
+                return -1;
+            return 0;
+        }
     }
 
     static class Person{
