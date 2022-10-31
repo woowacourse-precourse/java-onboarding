@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -53,7 +54,7 @@ public class Problem7 {
      * friends의 사람들을 Map에 저장하는 함수
      */
     private static Map<String,Integer> listToMap(List<List<String>> friends){
-        Map<String, Integer> friendsMap = new HashMap<>();
+        Map<String, Integer> friendsMap = new TreeMap<>();
         for (List<String> friend : friends) {
             friendsMap.put(friend.get(0),0);
             friendsMap.put(friend.get(1),0);
