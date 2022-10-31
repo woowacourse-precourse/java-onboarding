@@ -22,6 +22,12 @@ public class Problem2 {
         return answerBuffer.toString();
     }
 
+    public static void removeDuplicateCharacter(Stack<Character> stack, Integer dupliCount) {
+        for (int i=0; i<dupliCount; i++) {
+            stack.pop();
+        }
+    }
+
     public static String remove(String cryptogram, Stack<Character> stack) {
         int dupliCount = 1;
         boolean isDuplicate = false;
@@ -31,11 +37,11 @@ public class Problem2 {
                 dupliCount += 1;
                 if (i == cryptogram.length() - 1 && (isDuplicate || cryptogram.length() == 2)) {
                     stack.push(cryptogram.charAt(i));
-                    // 중복값 제거 로직
+                    removeDuplicateCharacter(stack, dupliCount);
                     break;
                 }
             } else if (!stack.isEmpty() && cryptogram.charAt(i) != stack.peek() && isDuplicate) {
-                // 중복값 제거 로직
+                removeDuplicateCharacter(stack, dupliCount);
                 dupliCount = 1;
                 isDuplicate = false;
             }
