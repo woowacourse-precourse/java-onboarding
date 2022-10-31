@@ -9,8 +9,7 @@ public class Problem4 {
                 answer += wordChar;
                 continue;
             }
-            String reversedString = getReversedString(wordChar);
-            answer += reversedString;
+            answer += getReversedString(wordChar);
         }
 
         return answer;
