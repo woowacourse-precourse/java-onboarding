@@ -58,7 +58,7 @@ public class Problem7 {
         });
         List<String> result = new ArrayList<String>();
         for (Map.Entry<String, Integer> friendScore : scoreBoard) {
-            if (friendScore.getValue() != 0) {
+            if (friendScore.getValue() != 0 && result.size() < 5) {
                 result.add(friendScore.getKey());
             }
         }
