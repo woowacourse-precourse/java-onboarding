@@ -51,6 +51,18 @@ public class Problem7 {
         return userFriends;
     }
 
+    // 내 타임라인 방문자 추천 스코어 반영하기 (단, 이미 친구인 사람은 스코어를 고려하지 않는다.)
+    public static void setVisitorsScore(
+            Map<String, Integer> recommendScore, List<String> visitors, List<String> userFriends) {
+
+        for (String visitor : visitors) {
+            // 이미 친구인 사람은 추천 스코어를 올리지 않도록 한다.
+            if (!userFriends.contains(visitor)) {
+                recommendScore.put(visitor, (recommendScore.get(visitor) + 1));
+            }
+        }
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
