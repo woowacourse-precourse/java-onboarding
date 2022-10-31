@@ -22,4 +22,11 @@ public class Problem5 {
         moneyList.add(10);
         moneyList.add(1);
     }
+
+    public static int getUnitCount(int money, int unit){
+        if(money >= unit){
+            return money/unit;
+        }
+        return 0;
+    }
 }
