@@ -11,20 +11,20 @@ public class Problem6 {
         List<String> userNickname = new ArrayList<>();
         List<String> answer = new ArrayList<>();
 
-        for (int i = 0; i < forms.size(); i++) {
-            List<String> currentForm= forms.get(i);
-            userEmail.add(getEmail(currentForm));
-            userNickname.add(getNickname(currentForm));
+        addNicknameAndEmail(forms, userEmail, userNickname);
+
+        if (!isValidEmails(userEmail)){
+            return List.of("Wrong email!");
         }
 
-        for (int i = 0; i < userEmail.size(); i++) {
-            String currentEmail = userEmail.get(i);
-            if (!isValidEmail(currentEmail)){
-                answer = List.of("wrong email");
-                return answer;
-            }
-        }
+        addAnswer(userNickname, userEmail, answer);
 
+        answer = convertAnswer(answer);
+        Collections.sort(answer);
+        return answer;
+    }
+
+    private static void addAnswer(List<String> userNickname, List<String> userEmail, List<String> answer){
         for (int i = 0; i < userNickname.size(); i++) {
             String currentName;
             currentName = userNickname.get(i);
@@ -32,10 +32,22 @@ public class Problem6 {
                 answer.add(userEmail.get(i));
             }
         }
+    }
 
-        answer = convertAnswer(answer);
-        Collections.sort(answer);
-        return answer;
+    private static void addNicknameAndEmail(List<List<String>> forms, List<String> userEmail, List<String> userNickname){
+        for (List<String> currentForm : forms) {
+            userEmail.add(getEmail(currentForm));
+            userNickname.add(getNickname(currentForm));
+        }
+    }
+
+    private static Boolean isValidEmails(List<String> userEmail){
+        for (String currentEmail : userEmail) {
+            if (!isValidEmail(currentEmail)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     private static Boolean isValidEmail(String email){
