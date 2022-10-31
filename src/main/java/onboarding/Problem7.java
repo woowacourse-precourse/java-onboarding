@@ -10,8 +10,6 @@ public class Problem7 {
         HashMap<String,Boolean> userfriend=new HashMap<>();
         HashMap<String,Integer> visitpoint=new HashMap<>();
         PriorityQueue<friendpoint> priorityQueue=new PriorityQueue<>();
-
-
         for(int i=0;i<friends.size();i++){
 
             for(int j=0;j<2;j++){
@@ -28,59 +26,58 @@ public class Problem7 {
                     news.add(friends.get(i).get((j+1)%2));
                     friendmap.put(friends.get(i).get(j), news);
                 }
-                for(String visitor:visitors){
-                    if(!friendmap.containsKey(visitor))
-                        friendmap.put(visitor,new ArrayList<>());
+                // System.out.println(friends.get(i).get(j)+" "+friends.get(i).get((j+1)%2));
 
 
-                    if(visitpoint.containsKey(visitor))
-                        visitpoint.put(visitor,visitpoint.get(visitor)+1);
-                    else
-                        visitpoint.put(visitor,1);
+            }}
+
+        for(String visitor:visitors){
+            if(!friendmap.containsKey(visitor))
+                friendmap.put(visitor,new ArrayList<>());
 
 
-
-                }
-                for(String name:friendmap.keySet()){
-
-                    if(name==user ||userfriend.containsKey(name))
-                        continue;
-
-
-                    int point=0;
-                    for(String friend:friendmap.get(name)){
-                        if(userfriend.containsKey(friend)){
-                            point+=10;
-                        }
-                    }
-
-                    if(visitpoint.containsKey(name))
-                        priorityQueue.add(new friendpoint(name,point+visitpoint.get(name)));
-                    else
-                        priorityQueue.add(new friendpoint(name, point));
+            if(visitpoint.containsKey(visitor))
+                visitpoint.put(visitor,visitpoint.get(visitor)+1);
+            else
+                visitpoint.put(visitor,1);
 
 
 
-                }
+        }
+        for(String name:friendmap.keySet()){
 
-            }
-            int count=0;
-            while(priorityQueue.size()!=0||count==5) {
-                friendpoint now=priorityQueue.poll();
-                if(now.point>0) {
-                    count++;
-                    answer.add(now.getUser());
+            if(name==user ||userfriend.containsKey(name))
+                continue;
 
+
+            int point=0;
+            for(String friend:friendmap.get(name)){
+                if(userfriend.containsKey(friend)){
+                    point+=10;
                 }
             }
 
+            if(visitpoint.containsKey(name))
+                priorityQueue.add(new friendpoint(name,point+visitpoint.get(name)));
+            else
+                priorityQueue.add(new friendpoint(name, point));
 
 
-            return answer;
+
+        }
+        int count=0;
+        while(priorityQueue.size()!=0||count==5) {
+            friendpoint now=priorityQueue.poll();
+            if(now.point>0) {
+                count++;
+                answer.add(now.getUser());
+
+            }
         }
 
 
-return answer;
+
+        return answer;
     }
     static class friendpoint implements Comparable<friendpoint>{
         private String user;
@@ -110,3 +107,4 @@ return answer;
         }
     }
 }
+
