@@ -18,9 +18,13 @@ public class Problem4 {
                 result1[i] = result[i];
             }
         }
+        for (int i = 0; i < result1.length; i++) {
+            answer += (char)result1[i];
 
-
+        }
 
         return answer;
 
     }
+
+}
