@@ -1,13 +1,14 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        User user1 = new User();
-        user1.setUserName(user);
+        Map<String, User> userMap = new HashMap<>();
+        userMap.put(user, new User(user));
+
+
+
 
         List<String> answer = Collections.emptyList();
         return answer;
@@ -17,11 +18,15 @@ public class Problem7 {
 class User implements Comparator<User> {
     @Override
     public int compare(User o1, User o2) {
-        return o1.getPoint() > o2.getPoint() ? 1 : ( o1.getPoint() < o2.getPoint() ? -1 : 0 );
+        return o1.getPoint() > o2.getPoint() ? 1 : (o1.getPoint() < o2.getPoint() ? -1 : 0);
+    }
+
+    public User(String userName) {
+        this.userName = userName;
     }
 
     private String userName;
-    private int point;
+    private int point = 0;
     private List<User> friendList;
 
     public String getUserName() {
