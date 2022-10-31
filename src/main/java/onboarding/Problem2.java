@@ -29,6 +29,16 @@ public class Problem2 {
     }
 
     //입력으로 주어진 단어에 중복이 있는지 없는지 확인하는 함수
+    static boolean repeat_finish(String word) {
+        boolean[] finish = repeat_word_check(word);
+
+        for (int i = 0; i < finish.length; i++) {
+            if (finish[i] == true) {
+                return false;
+            }
+        }
+        return true;
+    }
 
     //단어의 중복을 제거하고 새로운 단어를 생성하는 함수
 
