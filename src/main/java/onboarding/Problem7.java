@@ -8,6 +8,21 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
         return answer;
     }
+	private static Map<String, Integer> getFinalScore(Map<String, Integer> friendScore,
+		Map<String, Integer> visitorScore) {
+		Map<String, Integer> score = new HashMap<>();
+
+		for (String name : friendScore.keySet()) {
+			score.put(name, friendScore.getOrDefault(name, 0));
+		}
+
+		for (String name : visitorScore.keySet()) {
+			score.put(name, visitorScore.getOrDefault(name, 0));
+		}
+
+		return score;
+	}
+
 	private static Map<String, Integer> getVisitScore(Map<String, Set<String>> friendMapSet, List<String> visitors,
 		String user) {
 		Map<String, Integer> score = new HashMap<>();
