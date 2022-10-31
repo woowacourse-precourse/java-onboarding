@@ -84,7 +84,23 @@ public class Problem7 {
 		
 		Collections.sort(list_entries, new Comparator<Entry<String, Integer>>(){
 			public int compare(Entry<String, Integer> obj1, Entry<String, Integer> obj2) {
-				return obj2.getValue().compareTo(obj1.getValue());
+				int ret = 0;
+				if (obj1.getValue() < obj2.getValue()) {
+					ret = 1;
+				}else if (obj1.getValue() == obj2.getValue()) {
+					if (obj1.getKey().compareTo(obj2.getKey()) < 0) {
+						ret = -1;
+					}else if (obj1.getKey().compareTo(obj2.getKey()) == 0) {
+						ret = 0;
+					}else if (obj1.getKey().compareTo(obj2.getKey()) > 0) {
+						ret = 1;
+					}
+					
+					
+				}else if (obj1.getValue() > obj2.getValue()){
+					ret = -1;
+				}
+				return ret;
 			}	
 		});
 		
