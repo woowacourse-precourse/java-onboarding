@@ -47,5 +47,7 @@ public class Problem6 {
             }
         }
 
+        Collections.sort(result);
+        return result;
     }
 }
