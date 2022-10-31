@@ -74,7 +74,12 @@ public class Problem7 {
     }
 
     private static List<String> sortScoreThenName(Map<String, Integer> userScore) {
-        return null;
+        List<String> keyset = new ArrayList<>(userScore.keySet());
+
+        // value 정렬 -> 이름 정렬
+        Collections.sort(keyset);
+        keyset.sort((key1, key2) -> userScore.get(key2).compareTo(userScore.get(key1)));
+        return keyset;
     }
 
     private static void addMaximumFiveHighScore(List<String> answer, List<String> keyset) {
