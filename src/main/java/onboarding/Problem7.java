@@ -11,6 +11,7 @@ public class Problem7 {
         HashMap<String, List<String>> friendsMap = new HashMap<>();
         findFriendShip(friends, friendsMap);
         calculateRelatedFriends(user, friendsMap, scoreMap);
+        calculateVisitor(user, visitors, scoreMap);
         List<String> answer = Collections.emptyList();
         return answer;
     }
@@ -40,6 +41,10 @@ public class Problem7 {
             int numberOfRelatedFriends = countRelatedFriendsWithUser(user, friend, friendsMap);
             addTenPoints(friend, numberOfRelatedFriends, scoreMap);
         }
+    }
+
+    public static void calculateVisitor(String user, List<String> visitors, HashMap<String, Integer> scoreMap){
+        visitors.stream().forEach(visitor -> addOnePoint(user, visitor, scoreMap));
     }
 
     public static int countRelatedFriendsWithUser(String user, String other, HashMap<String, List<String>> friendsMap){
