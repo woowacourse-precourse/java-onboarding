@@ -1,13 +1,12 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         answer = makeList(forms);
+        mailSort(answer);
         return answer;
     }
     public static boolean findRedundancy(String string1, String string2){
@@ -54,16 +53,7 @@ public class Problem6 {
         }
         return sol;
     }
-
-//    public static void main(String[] args) {
-//        List<List<String>> forms = List.of(
-//                List.of("jm@email.com", "제이엠"),
-//                List.of("jason@email.com", "제이슨"),
-//                List.of("woniee@email.com", "워니"),
-//                List.of("mj@email.com", "엠제이"),
-//                List.of("nowm@email.com", "이제엠")
-//        );
-//        List<String> solu = solution(forms);
-//        System.out.println(solu);
-//    }
+    public static void mailSort(List<String> anwser){
+        Collections.sort(anwser);
+    }
 }
