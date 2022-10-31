@@ -2,7 +2,7 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = Decoder.runDecoder(cryptogram);
+        String answer = Decoder.decoding(cryptogram);
         return answer;
     }
 }
@@ -10,15 +10,10 @@ public class Problem2 {
 
 class Decoder {
 
-    static String runDecoder(String str) {
+    static String decoding(String str) {
         String n_str = deleteDuplicate(str);
-//        System.out.println("_____변경전_____");
-//        System.out.println(str);
-//        System.out.println("_____변경후_____");
-//        System.out.println(n_str);
-//        System.out.println();
         if (str.equals(n_str)) return str;
-        return runDecoder(n_str);
+        return decoding(n_str);
     }
 
     private static String deleteDuplicate(String str) {
