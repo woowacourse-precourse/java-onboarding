@@ -6,9 +6,10 @@ package onboarding;
 * */
 public class Problem2 {
     private static String delDuplicate(String cryptogram){
-        // flag가 false가 된다면 while문을 탈출 할 수 있음
+        // while문 탈출 조건을 만들기 위해
         int flag = 1;
 
+        // 삭제할 것이 없는 입력이라면 공백 출력
         if (cryptogram.length() == 0) {
             return "";
         }
@@ -19,7 +20,7 @@ public class Problem2 {
                 if (cryptogram.charAt(i) == cryptogram.charAt(i + 1)) {
                     // 중복되는 부분을 제외한 부분을 다시 cryptogram으로 갱신
                     cryptogram = cryptogram.substring(0, i) + cryptogram.substring(i + 2);
-                    // 중복되는 것이 있다는 것을 나타내기 위해
+                    // 중복되는 것이 있다면 2 더해주기
                     flag += 2;
                 }
             }
