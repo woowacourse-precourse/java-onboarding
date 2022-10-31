@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /*
 
@@ -118,10 +115,34 @@ public class Problem6 {
         return null;
     }
 
-
+    // 닉네임 중복 여부를 담고있는 nicknameOverlapStatusMap -> List 로 변환하기
+    public static List<String> nicknameOverlapStatusMapConvertToList() {
+        List<String> result = new ArrayList<>();
+        for (String nickname : nicknameOverlapStatusMap.keySet()) {
+            if (nicknameOverlapStatusMap.get(nickname) && extractEmailInMapByNickname(nickname) != null) {
+                result.add(extractEmailInMapByNickname(nickname));
+            }
+        }
+        return result;
+    }
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+
+        // 입력값 Map 자료형으로 변환
+        Map<String, String> emailNicknameMap = convertToEmailNicknameMap(forms);
+
+        // 입력값에 포함된 Nickname 항목 List 로 추출
+        List<String> nicknameList = extractNicknameList(forms);
+
+        // 중복 여부를 담을 Map 셋팅하기
+        initNicknameOverlapStatus(emailNicknameMap);
+
+        // 중복 확인을 위한 메서드 호출
+        checkNicknameOverlap(nicknameList);
+
+        List<String> result = nicknameOverlapStatusMapConvertToList();
+        Collections.sort(result);
+
+        return result;
     }
 }
