@@ -4,6 +4,10 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Problem7 {
+    private static final Integer ANSWER_LIMIT_SIZE = 5;
+    private static final Integer VISITOR_SCORE = 1;
+    private static final Integer MUTUAL_FRIEND_SCORE = 10;
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         HashSet<String> userFriendMap = new HashSet<>(getFriendListOfUser(user, friends));
 
@@ -21,7 +25,8 @@ public class Problem7 {
             return o2.getValue() - o1.getValue();
         });
 
-        return list.stream().map(Map.Entry::getKey).collect(Collectors.toList());
+
+        return list.stream().map(Map.Entry::getKey).limit(ANSWER_LIMIT_SIZE).collect(Collectors.toList());
     }
 
     private static Map<String, Integer> getScoreMap(HashSet<String> userFriendMap, List<List<String>> friends,
@@ -29,19 +34,19 @@ public class Problem7 {
         Map<String, Integer> result = new HashMap<>();
 
         mutualFriendScore(result, userFriendMap, friends);
-        timelineScore(result, userFriendMap, visitors);
+        visitorScore(result, userFriendMap, visitors);
 
         return result;
     }
 
-    private static void timelineScore(Map<String, Integer> scoreMap, HashSet<String> userFriendMap,
+    private static void visitorScore(Map<String, Integer> scoreMap, HashSet<String> userFriendMap,
                                       List<String> visitors) {
         for (String visitor: visitors) {
             if (userFriendMap.contains(visitor)) {
                 continue;
             }
 
-            updateScore(scoreMap, visitor, 1);
+            updateScore(scoreMap, visitor, VISITOR_SCORE);
         }
     }
 
@@ -68,7 +73,7 @@ public class Problem7 {
 
     private static Integer getMutualFriendScore(HashSet<String> userFriendMap, String scoreReceiver, String friend) {
         if (userFriendMap.contains(friend) && !userFriendMap.contains(scoreReceiver)) {
-            return 10;
+            return MUTUAL_FRIEND_SCORE;
         }
         return 0;
     }
