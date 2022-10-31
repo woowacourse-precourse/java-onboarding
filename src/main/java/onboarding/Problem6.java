@@ -16,14 +16,19 @@ public class Problem6 {
 
         for (List<String> form : forms) {
             for (int i = 0; i < form.get(1).length() - 1; i++) {
-                duplications.put(form.get(1).substring(i, i + 2), Boolean.TRUE);
+                if (duplications.containsKey(form.get(1).substring(i, i + 2))) {
+                    duplications.put(form.get(1).substring(i, i + 2), Boolean.TRUE);
+                } else {
+                    duplications.put(form.get(1).substring(i, i + 2), Boolean.FALSE);
+                }
             }
         }
 
         for (List<String> form : forms) {
             for (int i = 0; i < form.get(1).length() - 1; i++) {
-                if (duplications.containsKey(form.get(1).substring(i, i + 2))) {
+                if (duplications.get(form.get(1).substring(i, i + 2))) {
                     answer.add(form.get(0));
+                    break;
                 }
             }
         }
