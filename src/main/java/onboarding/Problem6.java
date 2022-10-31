@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
@@ -27,10 +28,19 @@ public class Problem6 {
 
             for (int j=i+1; j<nicknamesLen; j++) { // 비교 대상인 닉네임 인덱스: j
                 String target = nicknames.get(j);
+
+                for (int k=0; k<standardLen-1; k++) { // 기준 닉네임의 글자 인덱스: k
+                    if (target.contains(standard.substring(k, k+2))) {
+                        similarNicknames.add(emails.get(i));
+                        similarNicknames.add(emails.get(j));
+                    }
+                }
             }
         }
 
-        List<String> answer = List.of("answer");
+        List<String> answer = new ArrayList<>(similarNicknames);
+        Collections.sort(answer);
+
         return answer;
     }
 }
