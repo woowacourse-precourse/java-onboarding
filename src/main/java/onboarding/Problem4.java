@@ -18,6 +18,19 @@ public class Problem4 {
     }
 
     public static String solution(String word) {
-        return "";
+        StringBuilder result = new StringBuilder();
+        char c;
+
+        for (int i = 0; i < word.length(); i++) {
+            c = word.charAt(i);
+            if (frogDict.containsKey(c)) {
+                result.append(frogDict.get(c));
+            } else {
+                result.append(c);
+            }
+
+        }
+
+        return result.toString();
     }
 }
