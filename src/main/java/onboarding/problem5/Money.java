@@ -10,15 +10,15 @@ public class Money {
     public static List<Integer> splitMoney(int money) {
         List<Integer> resultList = new ArrayList<>();
         for (int i = 0; i < CHANGE_LIST.size(); i++) {
-            int baseMoney = CHANGE_LIST.get(i);
-            int quotient = Calculator.getQuotient(money, baseMoney);
-            money = subtractChange(money, baseMoney);
+            int change = CHANGE_LIST.get(i);
+            int quotient = Calculator.getQuotient(money, change);
+            money = getSurplus(money, change);
             resultList.add(quotient);
         }
         return resultList;
     }
 
-    public static int subtractChange(int money, int baseMoney) {
+    public static int getSurplus(int money, int baseMoney) {
         int updatedMoney = money % baseMoney;
         return updatedMoney;
     }
