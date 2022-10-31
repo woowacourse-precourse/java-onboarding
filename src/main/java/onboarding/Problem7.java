@@ -29,4 +29,18 @@ public class Problem7 {
 
     }
 
+    public static Map friendsfriendsList(Set friendsSet, String user, List<List<String>> friends){
+        // 받아온 친구목록이랑 0번값이 친구면 친구의친구 -> 추천친구에 무조건 추가 +10
+        Map<String, Integer> recommendedFriend = new HashMap<>();
+        for (int i =0; i<friends.size();i++){
+            String left = friends.get(i).get(0);
+            String right = friends.get(i).get(1);
+            if(!friendsSet.add(left) && !right.equals(user))recommendedFriend.put(right, recommendedFriend.getOrDefault(right,0)+10);
+        }
+        return recommendedFriend;
+    }
+
+
+
+
 }
