@@ -21,7 +21,7 @@ public class Problem7 {
         add1point(visitors, friendPoints, notToAdd);
         List<String> sortedList = sortByPointAndId(friendPoints);
 
-        return Collections.emptyList();
+        return sortedList;
     }
 
     /**
@@ -57,11 +57,42 @@ public class Problem7 {
         return friendGraph;
     }
 
+    /**
+     * 나 혹은 내 친구가 아니라면 친구 점수를 더합니다.
+     *
+     * @param point 더할 점수입니다.
+     * @param otherUser 친구 점수를 더할 유저입니다.
+     * @param friendPoints 친구 점수 해시맵입니다.
+     * @param notToAdd 나와 내 친구를 포함한 해시셋입니다.
+     */
+    private static void addPoint(int point,
+                                  String otherUser,
+                                  HashMap<String, Integer> friendPoints,
+                                  HashSet<String> notToAdd) {
+        if (notToAdd.contains(otherUser)) {
+            return;
+        }
+        int updatedPoint = friendPoints.get(otherUser) + point;
+        friendPoints.put(otherUser, updatedPoint);
+    }
+
+    /**
+     * 친구의 친구에게 점수를 10점 부여합니다.
+     *
+     * @param user 내 ID 입니다.
+     * @param friendGraph 친구 관계 그래프입니다.
+     * @param friendPoints 친구 점수 해시맵입니다.
+     * @param notToAdd 나와 내 친구를 포함한 해시셋입니다.
+     */
     private static void add10points(String user,
                                HashMap<String, List<String>> friendGraph,
                                HashMap<String, Integer> friendPoints,
                                HashSet<String> notToAdd) {
-        return;
+        for (String myFriend: friendGraph.get(user)) {
+            for (String friendFriend: friendGraph.get(myFriend)) {
+                addPoint(10, friendFriend, friendPoints, notToAdd);
+            }
+        }
     }
 
     private static void add1point(List<String> visitors,
