@@ -35,4 +35,19 @@ public class Problem6 {
         }
         return flag;
     }
+    public static Boolean verifyEmail(String email) {
+        boolean flag = false;
+        int atIndex = 0;
+        for(int j = 0; j < email.length(); j++) {
+            if(email.charAt(j) == '@') {
+                atIndex = j;
+                break;
+            }
+        }
+        String domain = email.substring(atIndex+1);
+        if(domain.equals("email.com")) {
+            flag = true;
+        }
+        return flag;
+    }
 }
