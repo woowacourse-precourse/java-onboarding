@@ -219,8 +219,16 @@ public class Problem6 {
         twoCharNicknames.put(nicknameCombination, new HashSet<>(Arrays.asList(email)));
     }
 
+    /**
+     * 특정 닉네임 조합을 사용하는 유저 수가 2명 이상인 유저들의 이메일을 찾습니다.
+     *
+     * @param nicknameUsers 특정 닉네임 조합을 사용하는 유저들의 이메일입니다.
+     * @param duplicateNicknameUser 중복 닉네임을 사용하는 모든 유저들의 이메일 집합입니다.
+     */
     private static void getEmailsByNickname(HashSet<String> nicknameUsers, HashSet<String> duplicateNicknameUser){
-        return;
+        if (nicknameUsers.size() >= 2) {
+            duplicateNicknameUser.addAll(nicknameUsers);
+        }
     }
 
     private static List<String> sortEmails(HashSet duplicateNicknameUsers){

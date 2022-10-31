@@ -105,7 +105,7 @@
   - [X] addEmailsByNickname
   - 각 유저의 닉네임을 두 글자씩 떼어서, 해당 조합을 사용하는 유저들의 수를 검사한다.
   - 닉네임 두 글자를 키로, 이메일은 그 안의 해시셋에 저장한다.
-  - [ ] getEmailsByNickname
+  - [X] getEmailsByNickname
   - 특정 닉네임 조합을 둘 이상이 사용하면, 해당 유저들의 이메일을 저장합니다.
   - [ ] sortEmails
   - 이메일을 알파벳 순으로 정렬시켜 줍니다.
