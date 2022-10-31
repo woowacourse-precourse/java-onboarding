@@ -1,7 +1,5 @@
 package onboarding;
 
-import com.sun.source.tree.Tree;
-
 import java.util.*;
 
 public class Problem7 {
