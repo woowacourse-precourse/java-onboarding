@@ -12,8 +12,7 @@ public class Problem7 {
         friendScore = new HashMap<>();
         findPotentialFriendAndScore(user, friends);
         findVisitedFriendAndScore(visitors);
-        arrangeList(answer);
-        return answer;
+        return arrangeList(answer);
     }
     /*
         사용자를 직접 알고있다면 -1(목록에서 제외)를
@@ -23,12 +22,14 @@ public class Problem7 {
         for (List<String> friend : friends) {
             if (Objects.equals(friend.get(0), user)) {
                 friendScore.put(friend.get(1), -1);
-            } else if (Objects.equals(friend.get(1), user)) {
-                friendScore.put(friend.get(0), -1);
-            } else {
-                friendScore.put(friend.get(0), friendScore.getOrDefault(friend.get(0), 0) + 10);
-                friendScore.put(friend.get(1), friendScore.getOrDefault(friend.get(1), 0) + 10);
+                continue;
             }
+            if (Objects.equals(friend.get(1), user)) {
+                friendScore.put(friend.get(0), -1);
+                continue;
+            }
+            friendScore.put(friend.get(0), friendScore.getOrDefault(friend.get(0), 0) + 10);
+            friendScore.put(friend.get(1), friendScore.getOrDefault(friend.get(1), 0) + 10);
         }
     }
     /*
@@ -36,7 +37,7 @@ public class Problem7 {
      */
     private static void findVisitedFriendAndScore(List<String> visitors) {
         for (String visitor : visitors) {
-            if (friendScore.getOrDefault(visitor, 0) != -1) {
+            if (friendScore.getOrDefault(visitor,0) != -1) {
                 friendScore.put(visitor, friendScore.getOrDefault(visitor, 0) + 1);
             }
         }
@@ -44,11 +45,13 @@ public class Problem7 {
     /*
    점수 순으로 정렬
     */
-    private static void arrangeList(List<String> answer) {
+    private static List<String> arrangeList(List<String> answer) {
         for (String Key : friendScore.keySet()) if (friendScore.get(Key)!=-1) answer.add(Key);
         answer.sort((o1, o2) -> {
             if (friendScore.get(o2) - friendScore.get(o1) > 0) return 1;
             else return 0;
         });
+        if (answer.size()>5) return answer.subList(0,5);
+        return answer;
     }
 }
