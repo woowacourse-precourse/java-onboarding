@@ -4,11 +4,13 @@ public class Problem3 {
     public static int solution(int number) {
 
         int answer10 = 0;
-
-        int restTen = number % 10; // number를 10으로 나눈 나머지
+        int answer100 = 0;
+        int answer = 0;
+        int restTen = number % 10;
 
         int restHun = number % 100;
 
+        int restTho = number % 1000;
 
         //1~10까지 각각 박수치는 횟수를 repeatNum에 담음
 
@@ -21,7 +23,7 @@ public class Problem3 {
                 answer10 += repeatNum[i];
             }
         }
-        //두자리 숫자까지 369 손뼉횟수를 측정하는 기능
+        //10의 자리 해결
         if(restHun / 10 == 3){
             answer10 += restTen+1;
         }
@@ -32,8 +34,21 @@ public class Problem3 {
             answer10 += restTen+21;
         }
 
-        return answer10;
-//        0010010010 -> 1~10까지
+//      100의 자리
+
+        answer100 += answer10 + ((restTho-restHun) / 100) * 60;
+
+        if((restTho-restHun) / 100 == 3){
+            answer100 += answer10;
+        }
+        else if((restTho-restHun) / 100 == 6){
+            answer100 += 60 + answer10;
+        }
+        else if((restTho-restHun) / 100 == 9){
+            answer100 += 120 + answer10;
+        }
+
+        return answer;
 
     }
 
