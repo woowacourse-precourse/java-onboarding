@@ -7,7 +7,7 @@ public class Problem4 {
     public static Character convert(Character originalChar) {
         Integer position = spelling.indexOf(Character.toUpperCase(originalChar));
         Character convertCharacter = spelling.charAt((spelling.length()-1) - position);
-        return convertCase(originalChar, convertCharacter);;
+        return convertCase(originalChar, convertCharacter);
     }
 
     public static Character convertCase(Character originalChar, Character convertedChar) {
@@ -19,6 +19,9 @@ public class Problem4 {
 
     public static String solution(String word) {
         String answer = "";
+        for (int i=0; i<word.length(); i++) {
+            answer += convert(word.charAt(i));
+        }
         return answer;
     }
 
