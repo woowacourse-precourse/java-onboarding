@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -30,7 +31,7 @@ public class Problem6 {
 				emailSet.addAll(checkNicknameIsOverlap(forms.get(i), forms.get(j)));
 			}
 		}
-
+		answer = new ArrayList<String>();
 		answer.addAll(emailSet);
 		Collections.sort(answer);
         return answer;

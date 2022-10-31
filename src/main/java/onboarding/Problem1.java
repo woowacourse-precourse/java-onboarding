@@ -3,7 +3,7 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
-	static boolean invalid(List<Integer> list) {
+	private static boolean invalid(List<Integer> list) {
 		/*List 길이가 2가 아니거나 페이지 다음장이 아닌 경우*/
 		if(list.size() != 2 || list.get(0)+1 != list.get(1)) { 
 			return true;
@@ -11,7 +11,7 @@ class Problem1 {
 		return false;
 	}
 
-	static int calc(List<Integer> list) {
+	private static int calc(List<Integer> list) {
 
 		for(int page : list) { //비교 반복문
 			int plus = 0;
