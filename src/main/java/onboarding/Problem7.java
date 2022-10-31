@@ -43,6 +43,10 @@ public class Problem7 {
                 return o1.getKey().compareTo(o2.getKey());
             }
         });
+        for (Map.Entry<String, Integer> stringIntegerEntry : recommendScore.entrySet()) {
+            if (stringIntegerEntry.getValue() == 0) continue;
+            System.out.println("name: " + stringIntegerEntry.getKey() + " score: " + stringIntegerEntry.getValue());
+        }
         return entries.stream()
                 .map(Map.Entry::getKey)
                 .limit(MAX_SIZE)
@@ -58,17 +62,26 @@ public class Problem7 {
         return recommendScore;
     }
 
-    private static void scoringFriendsOfFriends(String user, Map<String, Set<String>> friendMap, Set<String> userFriendSet, Map<String, Integer> recommendScore) {
+    private static void scoringFriendsOfFriends(String user,
+                                                Map<String, Set<String>> friendMap,
+                                                Set<String> userFriendSet,
+                                                Map<String, Integer> recommendScore) {
         for (String friend : userFriendSet) {
-            Set<String> recommendList = friendMap.get(friend);
-            for (String recommendUser : recommendList) {
-                if (!(userFriendSet.contains(recommendUser) ||
-                        recommendUser.equals(user))) {
-                    recommendScore.put(recommendUser,
-                            recommendScore.getOrDefault(recommendUser, 0) + FRIEND_SCORE);
-                }
+            Set<String> friendsListOfFriend = friendMap.get(friend);
+            for (String friendOfFriend : friendsListOfFriend) {
+                scoringIfRecommendUser(user, userFriendSet, recommendScore, friendOfFriend);
             }
         }
+    }
+
+    private static void scoringIfRecommendUser(String user, Set<String> userFriendSet, Map<String, Integer> recommendScore, String friendOfFriend) {
+        if (isRecommendUser(user, userFriendSet, friendOfFriend)) {
+            recommendScore.put(friendOfFriend, recommendScore.getOrDefault(friendOfFriend, 0) + FRIEND_SCORE);
+        }
+    }
+
+    private static boolean isRecommendUser(String user, Set<String> userFriendSet, String recommendUser) {
+        return !(userFriendSet.contains(recommendUser) || recommendUser.equals(user));
     }
 
     private static void scoringVisitors(List<String> visitors, Set<String> userFriendSet, Map<String, Integer> recommendScore) {
