@@ -36,14 +36,14 @@
 3. solution 메서드:
   - user와 친구인 아이디를 리스트에 저장한다.
   - set형식으로 user의 친구의 친구인 아이디를 저장하여 중복을 제거한 후 다시 리스트로 변환한다.
-  - 아이디와 점수를 입력 받을 HashMap을 생성한다.
+  - 아이디와 점수를 입력 받을 HashMap형식의idScore을 생성한다.
   - acquitancescore 메서드를 호출한다.
   - visitscore 메서드를 호츨한다.
-  - hashmap 형식을 리스트 형식으로 변환한 후 key와 value를 따로 리스트에 저장한다.
-  - 2차원 배열에 key와 value를 저장한다.
-  - 2차원 배열을 정렬한다. value 기준 내림차순, value가 같을 경우 key 기준 오름차순
-  - convertToList 메서드를 호출한다.
-  - 유저의 아이디와 유저의 친구인 아이디가 결과에 포함되지 않도록 중복을 제거한다.
+  - hashmap idScore의 value를 기준으로 정렬하기 위해 comparator 인터페이스를 implements한 후에 compare 메서드를 오버라이딩 한다.
+      - hashmap의 <Key, Value> 쌍을 유지한 상태로 정렬하기 위해 Map.Entry를 이용한다.
+      - 순서 유지를 위해 LinkedHashMap을 이용하여 정렬한다.
+  - 정렬된 해쉬맵에서 key값(아이디)만 뽑아서 리스트에 저장한다.
+  - 유저와 친구인 아이디가 결과에 포함되지 않도록 제거한다.
   - 5명 이상일 경우 5명까지만 저장하여 answer을 반환한다.
 4. acquitancescore 메서드: 함께 아는 친구의 점수를 계산한다.
   - 전체 친구 관계 목록에서 친구를 찾고, 그 옆에 있는 아이디가 친구의 친구인 아이디 목록에 있을 경우 10점을 추가한다.
