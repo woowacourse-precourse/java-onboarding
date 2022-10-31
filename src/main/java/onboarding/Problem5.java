@@ -8,6 +8,10 @@ public class Problem5 {
         return money/paper;
     }
 
+    public static int remainder(int money, int paper) {
+        return money%paper;
+    }
+
     public static List<Integer> solution(int money) {
         List<Integer> answer = Collections.emptyList();
         return answer;
