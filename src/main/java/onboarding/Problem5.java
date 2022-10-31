@@ -59,8 +59,7 @@ public class Problem5 {
     }
 
     private static List<Integer> moneyMapValuesConvertToMoneyList() {
-        return moneyMap.values().stream()
-                .collect(Collectors.toList());
+        return new ArrayList<>(moneyMap.values());
     }
 
     private static void validateWithdrawMoney(int withdrawMoney) {
