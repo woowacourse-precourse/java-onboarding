@@ -21,7 +21,7 @@ class Problem1 {
         }
 
 
-        for (int j : my_num) {
+        for (int j : myNum) {
             result = Math.max(result, j);
         }
 

@@ -25,27 +25,21 @@ public class Problem6 {
         int size = forms.size();
         List<Boolean> chk = new ArrayList<>(size);
         List<String> answer = new ArrayList<>();
-        String email, name;
-
         for(int i=0; i<size; i++) chk.add(true);
 
 
         for(int i=0; i<size; i++) {
             for(int j=i+1; j<size; j++) {
 
-                email = forms.get(i).get(0);
-                name  = forms.get(i).get(1);
-
-
-                if (is_duplicate(name, email)) {
+                if (is_duplicate(forms.get(i).get(1), forms.get(j).get(1))) {
 
                     if (chk.get(i)) {
-                        answer.add(email);
+                        answer.add(forms.get(i).get(0));
                         chk.set(i, false);
                     }
 
                     if (chk.get(j)) {
-                        answer.add(name);
+                        answer.add(forms.get(j).get(0));
                         chk.set(j, false);
                     }
 

@@ -11,7 +11,7 @@ public class Problem3 {
         ArrayList<Integer> lst369 = new ArrayList<>();
         int length = (int) Math.log10(n);
         int tmp = 0, res = 0;
-        int each_num, q3_each_num;
+        int eachNum, q3EachNum;
 
 
         // 0 부터 10^1 - 1까지 369 개수 합, 10^1 ~ 10^2-1까지 369 개수 합, ...
@@ -24,12 +24,12 @@ public class Problem3 {
         for(int i = length; i>0; i--) {
 
             tmp         = (int) Math.pow(10, i);
-            each_num    = n/tmp;
-            q3_each_num = each_num/3;
-            res        += each_num * lst369.get(i-1);
+            eachNum    = n/tmp;
+            q3EachNum = eachNum/3;
+            res        += eachNum * lst369.get(i-1);
 
-            if(q3_each_num>0) {
-                for (int j=0; j < q3_each_num-1; j++){
+            if(q3EachNum>0) {
+                for (int j=0; j < q3EachNum-1; j++){
                     res += Math.pow(10,i);
                 }
                 res += n%tmp + 1;
