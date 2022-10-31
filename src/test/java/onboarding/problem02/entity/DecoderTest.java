@@ -1,9 +1,8 @@
 package onboarding.problem02.entity;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.junit.jupiter.api.Assertions.*;
 
-import onboarding.problem02.util.exception.WithoutPermitLetterException;
+import onboarding.problem02.infra.util.exception.WithoutPermitLetterException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;

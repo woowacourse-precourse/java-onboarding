@@ -1,4 +1,4 @@
-package onboarding.problem02.util.exception;
+package onboarding.problem02.infra.util.exception;
 
 public class WithoutPermitLetterException extends IllegalArgumentException {
 
