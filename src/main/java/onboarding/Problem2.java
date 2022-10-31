@@ -9,18 +9,11 @@ public class Problem2 {
         String answer = "";
         List<String> duplicatedParts = new ArrayList<>();
 
-        while (true) {
-            duplicatedParts.clear();
-            /* 문자열을 왼쪽부터 읽는다 */
-            readCryptogram(cryptogram, duplicatedParts);
-            /* 연속되는 구간들을 빈 문자열로 교체한다 */
-            if (duplicatedParts.size() != 0) {
-                cryptogram = deleteConsecutiveRange(cryptogram, duplicatedParts);
-                continue;
-            }
-            /* 암호문을 answer에 담고 반복문을 벗어난다 */
+        while (answer != cryptogram) {
             answer = cryptogram;
-            break;
+            duplicatedParts.clear();
+            readCryptogram(cryptogram, duplicatedParts);
+            cryptogram = getCompactedCryptogram(cryptogram, duplicatedParts);
         }
         return answer;
     }
@@ -32,7 +25,11 @@ public class Problem2 {
             j++;
         return j;
     }
-
+    public static String getCompactedCryptogram(String cryptogram, List<String> duplicatedParts) {
+        if (duplicatedParts.size() != 0)
+            cryptogram = deleteConsecutiveRange(cryptogram, duplicatedParts);
+        return cryptogram;
+    }
     public static String deleteConsecutiveRange(String cryptogram, List<String> duplicatedParts) {
         for (String part: duplicatedParts) {
             cryptogram = cryptogram.replaceFirst(part, "");
