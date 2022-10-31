@@ -5,10 +5,10 @@ Problem3 {
     public static int solution(int number) {
         int answer = 0;
 
-        String tmpString = "";
+        StringBuffer tmpString = new StringBuffer();
 
         for(int i =0; i<=number;i++){ // 1~number 까지 문자화
-            tmpString+= i ;
+            tmpString.append(i);
         }
 
         for( int i =0; i<tmpString.length(); i++){ // 박수 횟수 count
