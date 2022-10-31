@@ -4,6 +4,7 @@ import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.List;
+import java.util.Set;
 
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -23,6 +24,63 @@ class Problem6Test {
 	 *   -> 2) 중복없이 저장된 패턴을 kmp알고리즘으로 패턴을 체크함
 	 *       => kmp : O(N) , 중복없이 저장된 패턴을 순회하며 일치찾기? O(N) O(N^2)일거같은데.... 일단 구현해보자
 	 */
+
+	@Test
+	void 패턴_생성_체크() {
+		List<List<String>> forms = List.of(
+			List.of("jm@email.com", "제이엠"),
+			List.of("jason@email.com", "제이슨"),
+			List.of("woniee@email.com", "워니"),
+			List.of("mj@email.com", "엠제이"),
+			List.of("nowm@email.com", "이제엠")
+		);
+
+
+		Set<String> check = Set.of("제이");
+		Assertions.assertThat(new Problem6.Pattern(forms)).isEqualTo(new Problem6.Pattern(check));
+	}
+
+	@Test
+	void 패턴_생성_체크2() {
+		List<List<String>> forms = List.of(
+			List.of("jm@email.com", "사랑해사랑해"),
+			List.of("jason@email.com", "제이슨"),
+			List.of("woniee@email.com", "워니"),
+			List.of("mj@email.com", "엠제이"),
+			List.of("nowm@email.com", "이제엠")
+		);
+
+		Set<String> check = Set.of("제이");
+		Assertions.assertThat(new Problem6.Pattern(forms)).isEqualTo(new Problem6.Pattern(check));
+	}
+
+
+	@Test
+	void 패턴_생성_체크3() {
+		List<List<String>> forms = List.of(
+			List.of("onepiece@email.com", "원피수"),
+			List.of("jason@email.com", "제이슨"),
+			List.of("onepisu@email.com", "원피수"),
+			List.of("mj@email.com", "엠제이"),
+			List.of("suonepi@email.com", "수원피")
+		);
+
+		Set<String> check = Set.of("원피", "피수","제이");
+		Assertions.assertThat(new Problem6.Pattern(forms)).isEqualTo(new Problem6.Pattern(check));
+	}
+
+	@Test
+	void 패턴_생성_체크4() {
+		List<List<String>> forms = List.of(
+			List.of("aaa@email.com", "이름"),
+			List.of("bbb@email.com", "이름"),
+			List.of("ccc@email.com", "이름"),
+			List.of("ddd@email.com", "이름")
+		);
+		Set<String> check = Set.of("이름");
+		Assertions.assertThat(new Problem6.Pattern(forms)).isEqualTo(new Problem6.Pattern(check));
+	}
+
 
 	@Test
 	void 추가_테스트_케이스(){
