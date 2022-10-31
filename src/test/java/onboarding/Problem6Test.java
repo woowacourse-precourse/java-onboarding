@@ -144,5 +144,36 @@ class Problem6Test {
                 }
             }
         }
+        @Nested
+        @DisplayName("equals 메소드와 hashCode 메소드는")
+        class equalsAndHashCodeTest {
+            @Nested
+            @DisplayName("같은 닉네임과 이름의 객체를 비교하면")
+            class Context_with_same_nickname_and_email {
+                @Test
+                @DisplayName("true 를 반환한다")
+                void it_returns_true() {
+                    Crew crew1 = new Crew("crong@email.com", "크롱");
+                    Crew crew2 = new Crew("crong@email.com", "크롱");
+
+                    assertThat(crew1.equals(crew2)).isTrue();
+                    assertThat(crew1.hashCode() == crew2.hashCode()).isTrue();
+                }
+            }
+        }
+
+        @Nested
+        @DisplayName("다른 닉네임과 이름의 객체를 비교하면")
+        class Context_with_different_nickname_and_email {
+            @Test
+            @DisplayName("false 를 반환한다")
+            void it_returns_true() {
+                Crew crew1 = new Crew("crongg@email.com", "크롱");
+                Crew crew2 = new Crew("crong@email.com", "크롱");
+
+                assertThat(crew1.equals(crew2)).isFalse();
+                assertThat(crew1.hashCode() == crew2.hashCode()).isFalse();
+            }
+        }
     }
 }
