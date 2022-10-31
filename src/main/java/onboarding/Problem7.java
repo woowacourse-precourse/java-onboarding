@@ -14,12 +14,14 @@ public class Problem7 {
         int count = 0;
         for (String name : relation.keySet()) {
             if(name.equals(user)) continue;
+            if(relation.get(user).contains(name)) continue;
             count = relationshipScore(relation.get(name), relation.get(user));
             friendscore.put(name, count*10);
         }
 
         int visitscore = 0;
         for (String visitor : visitors) {
+            if(relation.get(user).contains(visitor)) continue;
             visitscore = friendscore.getOrDefault(friendscore.get(visitor), 0);
             visitscore++;
             friendscore.put(visitor, visitscore);
