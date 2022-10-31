@@ -17,12 +17,17 @@ class Problem1 {
             List<Integer> crongPageScores = crong.stream().map(problem::getScore).collect(Collectors.toList());
             int pobiScore = Collections.max(pobiPageScores);
             int crongScore = Collections.max(crongPageScores);
-            if (pobiScore > crongScore) {
-                return 1;
-            } else if (pobiScore < crongScore) {
-                return 2;
-            } else return 0;
+
+            return problem.compareScore(pobiScore, crongScore);
         }
+    }
+
+    public int compareScore(int score1, int score2) {
+        if (score1 > score2) {
+            return 1;
+        } else if (score1 < score2) {
+            return 2;
+        } else return 0;
     }
 
     public boolean findException(List<Integer> arr) {
