@@ -65,6 +65,18 @@ public class Problem7 {
             }
         }
 
+        result.sort((o1, o2) -> {
+            if (o1.point < o2.point) {
+                return 1;
+            }
+            else if (o1.point == o2.point) {
+                return o1.name.compareTo(o2.name);
+            }
+            else {
+                return -1;
+            }
+        });
+
         return null;
     }
 }
