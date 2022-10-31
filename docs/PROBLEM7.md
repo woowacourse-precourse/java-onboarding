@@ -24,3 +24,10 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능 구현 목록
+- [x] user의 친구 찾기
+- [x] 친구의 친구 찾기
+- [x] 방문자 찾기
+- [x] 점수 계산
+- [x] 추천 친구 목록
