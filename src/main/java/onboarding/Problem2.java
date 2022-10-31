@@ -3,11 +3,16 @@ package onboarding;
 public class Problem2 {
     public static String solution(String cryptogram) {
 
-        String answer = "answer";
+        String result = cryptogram + " ";
+        while (true) {
+            String after = deduplicate(result);
+            if (result.equals(after)) {
+                break;
+            }
+            result = after;
+        }
 
-        String result = deduplicate(cryptogram);
-
-        return answer;
+        return result.trim();
     }
 
     private static String deduplicate(String cryptogram) {
