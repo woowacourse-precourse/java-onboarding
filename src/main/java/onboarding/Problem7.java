@@ -71,7 +71,7 @@ public class Problem7 {
         }
     }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
         HashMap<String,List<String>> friendsGroups = new HashMap<>();
         HashMap<String, Integer> friendsGroupsScore = new HashMap<>();
         List<String> userFriends = new ArrayList<>();
@@ -87,6 +87,16 @@ public class Problem7 {
         List<String> listKeySet = new ArrayList<>(sortedFriendsGroups.keySet());
         Collections.sort(listKeySet, (value1, value2) -> (sortedFriendsGroups.get(value2).compareTo(sortedFriendsGroups.get(value1))));
 
+        if(listKeySet.size() <= 5) {
+            for (String str : listKeySet) {
+                answer.add(str);
+            }
+        }
+        else if(listKeySet.size() > 5){
+            for(int i=0; i<5; i++){
+                answer.add(listKeySet.get(i));
+            }
+        }
 
         return answer;
     }
