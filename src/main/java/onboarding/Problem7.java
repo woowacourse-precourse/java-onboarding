@@ -58,10 +58,26 @@ public class Problem7 {
         scoreMap = checkVisitors(scoreMap, visitors, friendList);
         return scoreMap;
     }
+    
+    // 정렬(점수, 이름 순)된 키 set 구하기
+    private static List<String> getKeySet(Map<String, Integer> scoreMap) {
+        Comparator<String> comparator = (s1, s2) -> {
+            if (scoreMap.get(s1) > scoreMap.get(s2))
+                return -1;
+            else if (scoreMap.get(s1) < scoreMap.get(s2))
+                return 1;
+            else
+                return s1.compareTo(s2);
+        };
+        List<String> keySet = new ArrayList<>(scoreMap.keySet());
+        keySet.sort(comparator);
+        return keySet;
+    }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> friendList = getFriendsList(user, friends);
         Map<String, Integer> scoreMap = getScoreMap(user, friends, visitors, friendList);
+        List<String> keySet = getKeySet(scoreMap);
         List<String> answer = Collections.emptyList();
         return answer;
     }
