@@ -38,21 +38,58 @@ class ScoredUser {
 }
 
 public class Problem7 {
-
+    private static final Map<String, ScoredUser> scoredUserStorage = new HashMap<>();
     private static final Map<String, Set<String>> followerStorage = new HashMap<>();
 
+    private static final SortedSet<ScoredUser> scoreBoard = new TreeSet<>(new scoreBoardComparator());
 
+    private static class scoreBoardComparator implements Comparator<ScoredUser> {
+        @Override
+        public int compare(ScoredUser o1, ScoredUser o2) {
+            if (o1.getScore() == o2.getScore()) {
+                return o1.getName().compareTo(o2.getName());
+            }
+            return o2.getScore() - o1.getScore();
+        }
+    }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
         computeRecommendScore(user, friends, visitors);
 
+        ScoredUser[] rankBoard = scoreBoard.toArray(new ScoredUser[5]);
+        List<String> result = new ArrayList<>(5);
 
+        for (ScoredUser scoredUser : rankBoard) {
+            if (scoredUser == null) {
+                break;
+            }
+            result.add(scoredUser.getName());
+        }
+
+        return result;
     }
 
     private static void computeRecommendScore(String user, List<List<String>> friends, List<String> visitors) {
         setFollowers(friends);
 
+        Set<String> myFollowers = followerStorage.get(user);
+
+        myFollowers.forEach(follower -> {
+            Set<String> followersOfFollower = followerStorage.get(follower);
+
+            followersOfFollower.forEach(followerOfFollower -> {
+                if (!followerOfFollower.equals(user) && !myFollowers.contains(followerOfFollower)) {
+                    addScore(followerOfFollower, 10);
+                }
+            });
+        });
+
+        visitors.forEach(visitorName -> {
+            if (!visitorName.equals(user) && !myFollowers.contains(visitorName)) {
+                addScore(visitorName, 1);
+            }
+        });
     }
 
     private static void setFollowers(List<List<String>> friends) {
@@ -78,4 +115,15 @@ public class Problem7 {
         });
     }
 
+    private static void addScore(String username, int score) {
+        ScoredUser scoredUser = scoredUserStorage.get(username);
+
+        if (scoredUser == null) {
+            scoredUser = new ScoredUser(0, username);
+            scoredUserStorage.put(scoredUser.getName(), scoredUser);
+        }
+
+        scoredUser.plusScore(score);
+        scoreBoard.add(scoredUser);
+    }
 }
