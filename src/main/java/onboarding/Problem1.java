@@ -4,7 +4,7 @@ import java.util.List;
 
 class Problem1 {
 
-    private static int compare(int num1, int num2) {
+    private static int compareBigNum(int num1, int num2) {
         int bigNum = 0;
 
         if (num1 > num2) {
@@ -25,7 +25,7 @@ class Problem1 {
             num /= 10;
         }
 
-        return compare(add, mul);
+        return compareBigNum(add, mul);
     }
 
 
@@ -41,8 +41,8 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
 
         //포비와 크롱의 가장 큰 수
-        int pobiNum = compare(compareAddAndMul(pobi.get(0)), compareAddAndMul(pobi.get(1)));
-        int crongNum = compare(compareAddAndMul(crong.get(0)), compareAddAndMul(crong.get(1)));
+        int pobiNum = compareBigNum(compareAddAndMul(pobi.get(0)), compareAddAndMul(pobi.get(1)));
+        int crongNum = compareBigNum(compareAddAndMul(crong.get(0)), compareAddAndMul(crong.get(1)));
 
         //출력값
         if (pobiNum > crongNum) {
