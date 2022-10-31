@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Problem6 {
 
-    static HashMap<String, Set<String>> emailAndNicknameMap;
+    static HashMap<String, ArrayList<String>> emailAndNicknameMap;
 
     public static List<String> solution(List<List<String>> forms) {
 
@@ -15,42 +15,46 @@ public class Problem6 {
             String email = form.get(0);
             String nickname = form.get(1);
 
-            for (int i = 0; i < nickname.length() - 1; i++) {
-                addNicknameSubstring(i, email, nickname, "");
-            }
+            addNicknameSubstring(email, nickname);
+
         }
 
-        ArrayList<String> result = getResultFromHashMap();
+        ArrayList<String> result = new ArrayList<>(getResultFromHashMap());
 
         Collections.sort(result);
 
         return result;
-
     }
 
-    static void addNicknameSubstring(int index, String email, String nickname, String substring) {
+    static void addNicknameSubstring(String email, String nickname) {
 
-        if (substring.length() >= 2) {
-            Set<String> set = emailAndNicknameMap.getOrDefault(substring, new HashSet<>());
-            set.add(email);
-            emailAndNicknameMap.put(substring, set);
+        Set<String> nicknameSubstringSet = new HashSet();
+
+        for (int i = 0; i < nickname.length() - 1; i++) {
+            nicknameSubstringSet.add(nickname.substring(i, i + 2));
         }
 
-        if(index >= nickname.length())
-            return;
+        Iterator<String> iterator = nicknameSubstringSet.iterator();
 
-        addNicknameSubstring(index + 1, email, nickname, substring + nickname.charAt(index));
+        while(iterator.hasNext()) {
+
+            String nicknameSubstring = iterator.next();
+
+            ArrayList<String> emailList = emailAndNicknameMap.getOrDefault(nicknameSubstring, new ArrayList<>());
+            emailList.add(email);
+            emailAndNicknameMap.put(nicknameSubstring, emailList);
+        }
 
 
     }
 
-    static ArrayList<String> getResultFromHashMap() {
+    static Set<String> getResultFromHashMap() {
 
-        ArrayList<String> result = new ArrayList<>();
+        Set<String> result = new HashSet<>();
 
         for (String nicknameSubstring : emailAndNicknameMap.keySet()) {
 
-            Set<String> emailList = emailAndNicknameMap.get(nicknameSubstring);
+            ArrayList<String> emailList = emailAndNicknameMap.get(nicknameSubstring);
 
             if (emailList.size() > 1) {
                 addEmailToResult(result, emailList);
@@ -60,7 +64,7 @@ public class Problem6 {
         return result;
     }
 
-    static void addEmailToResult(ArrayList<String> result, Set<String> emailList) {
+    static void addEmailToResult(Set<String> result, ArrayList<String> emailList) {
 
         for (String email : emailList) {
             result.add(email);
