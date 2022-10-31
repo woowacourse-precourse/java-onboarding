@@ -41,6 +41,20 @@ public class Problem7 {
             score[count].name_score += 1;
         }
 
+        // 점수가 높은 순서대로 answer에 add
+        for (int i = 0; i < score.length; i++, count++) {
+            int tempscore = 0;
+            int biggest = 0;
+            if (score[i].name_score > tempscore) {
+                tempscore = score[i].name_score;
+                if (score[i].name_score != 0)
+                    answer.add(score[i].name);
+                score[i].name_score = 0;
+
+            }
+
+        }
+        
         return answer;
     }
 
