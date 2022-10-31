@@ -49,7 +49,12 @@ public class Problem7 {
                 getPerson(visitor).count();
             }
         }
-
+        int getScore(String name) {
+            int score = 0;
+            score += numOfFriends(name) * 10;
+            score += getPerson(name).visit;
+            return score;
+        }
         int numOfFriends(String name) {
             return numOfIntersection(getPerson(user).friends, getPerson(name).friends);
         }
