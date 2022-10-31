@@ -10,8 +10,6 @@ import java.util.Map;
  */
 public class FriendRecommender {
 
-    private final Map<String, List<String>> relationships = new HashMap<>();
-    private final Map<String, Friend> scores = new HashMap<>();
     private final FriendIntroducer introducer;
 
     /**
