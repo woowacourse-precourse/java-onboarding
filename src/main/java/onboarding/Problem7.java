@@ -9,6 +9,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -18,7 +19,10 @@ public class Problem7 {
         calculatorFriendsPoint(friendsMap,pointMap,user);
         calculatorVisitorPoint(friendsMap.get(user),pointMap,visitors);
         Map<String, Integer> sortPointMap = sortPointMap(pointMap);
-        return answer;
+        return getMaptoList(sortPointMap);
+    }
+    public static List<String> getMaptoList(Map<String, Integer> sortPointMap){
+        return new ArrayList<>(sortPointMap.keySet());
     }
     public static Map<String,List<String>> getFriendsMap(List<List<String>> friends){
         Map<String,List<String>> map = new HashMap<>();
