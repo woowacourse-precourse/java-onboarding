@@ -387,6 +387,14 @@ class ApplicationTest {
 								      "ssse@email.com");
         	assertThat(Problem6.solution(forms)).isEqualTo(result);
         }
+        @Test
+        void exceptionTest() {
+        	List<List<String>> forms = List.of(
+        			List.of("jungi123@email.com", "예외사항확인"),
+        			List.of("jungi@email.com", "예외"));
+        	List<String> result = List.of("jungi123@email.com", "jungi@email.com");
+        	assertThat(Problem6.solution(forms)).isEqualTo(result);
+        }
     }
 
     @Nested
