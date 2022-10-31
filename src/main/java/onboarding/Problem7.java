@@ -16,6 +16,7 @@ public class Problem7 {
      */
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         FriendsRelation totalFriendsRelation = new FriendsRelation(friends);
+        Set<String> userFriends = totalFriendsRelation.get(user);
         List<String> answer = Collections.emptyList();
         return answer;
     }
@@ -41,4 +42,7 @@ class FriendsRelation {
     }
 
 
+    public Set<String> get(String user) {
+        return totalFriendsMap.getOrDefault(user, new HashSet<>());
+    }
 }
