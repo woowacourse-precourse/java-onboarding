@@ -7,8 +7,6 @@ import java.util.List;
 
 public class Problem6 {
 
-//    static HashMap<String, List<String>> fragmentMap = new HashMap<>();
-
     public static List<String> solution(List<List<String>> forms) {
 
         List<String> answer = new ArrayList<>();

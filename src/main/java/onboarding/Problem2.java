@@ -1,7 +1,5 @@
 package onboarding;
 
-import java.util.Arrays;
-
 public class Problem2 {
     public static String solution(String cryptogram) {
 
