@@ -12,6 +12,7 @@ public class Problem6 {
         findNickName(nickname);
         answer = findEmail();
         sortEmail(answer);
+        initData();
         return answer;
     }
     static void checkForms(List<List<String>> forms) {
@@ -58,6 +59,11 @@ public class Problem6 {
     }
     static void sortEmail(List<String> email){
         Collections.sort(email);
+    }
+    static void initData(){
+        email.clear();
+        nickname.clear();
+        data.clear();
     }
 }
 
