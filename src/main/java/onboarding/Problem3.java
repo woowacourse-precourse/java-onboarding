@@ -39,12 +39,12 @@ public class Problem3 {
     }
 
     private static void validateNumber(int number) {
-        if(!validateNumberRange(number)) {
+        if(validateNumberRangeFail(number)) {
             throw new IllegalArgumentException(EXCEPTION_MESSAGE_PREFIX + NUMBER_RANGE_EXCEPTION_MESSAGE);
         }
     }
 
-    private static boolean validateNumberRange(int number) {
-        return (number >= MIN_NUMBER_RANGE && number <= MAX_NUMBER_RANGE);
+    private static boolean validateNumberRangeFail(int number) {
+        return (number < MIN_NUMBER_RANGE || number > MAX_NUMBER_RANGE);
     }
 }
