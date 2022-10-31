@@ -58,7 +58,7 @@ public class Problem7 {
 
         for (Map.Entry<String, Integer> entry : entryList) {
             if (answer.size() == 5) break;
-            if (friendList.get(user).contains(entry.getKey()) || entry.getValue() == 0) continue;
+            if (friendList.get(user).contains(entry.getKey()) || entry.getValue() == 0 || entry.getKey().equals(user)) continue;
             answer.add(entry.getKey());
         }
     }
