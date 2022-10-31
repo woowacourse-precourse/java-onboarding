@@ -77,7 +77,7 @@ public class Problem7 {
     }
 
     /**
-     * 친구의 친구에게 점수를 10점 부여합니다.
+     * 친구의 친구에게 친구 점수를 10점 부여합니다.
      *
      * @param user 내 ID 입니다.
      * @param friendGraph 친구 관계 그래프입니다.
@@ -95,10 +95,18 @@ public class Problem7 {
         }
     }
 
+    /**
+     * 타임라인 방문자들에게 친구 점수를 1점을 부여합니다.
+     * @param visitors 방문자 ID 배열입니다.
+     * @param friendPoints 친구 점수 해시맵입니다.
+     * @param notToAdd 나와 내 친구를 포함한 해시셋입니다.
+     */
     private static void add1point(List<String> visitors,
                                   HashMap<String, Integer> friendPoints,
                                   HashSet<String> notToAdd) {
-        return;
+        for (String visitor: visitors) {
+            addPoint(1, visitor, friendPoints, notToAdd);
+        }
     }
 
     private static List<String> sortByPointAndId(HashMap<String, Integer> friendPoints) {

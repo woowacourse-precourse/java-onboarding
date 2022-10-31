@@ -75,7 +75,7 @@
    - 친구 관계를 토대로 친구 관계 그래프를 만든다.
    - [X] add10points
    - 친구의 친구에게 10점을 부여한다.
-   - [ ] add1point
+   - [X] add1point
    - 방문자에게 1점을 부여한다.
    - [ ] sortByPointAndId
    - 친구 점수 및 ID에 따라 정렬한다.
