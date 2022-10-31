@@ -3,13 +3,10 @@ package onboarding;
 public class Problem4 {
 
     public static String solution(String word) {
-        String answer = "";
-
         StringBuilder sb = new StringBuilder();
         changeAlphabet(word, sb);
-        answer = sb.toString();
 
-        return answer;
+        return sb.toString();
     }
 
     private static void changeAlphabet(String word, StringBuilder sb) {
