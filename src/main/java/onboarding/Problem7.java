@@ -122,10 +122,27 @@ public class Problem7{
         }
     }
 
+    //전체 추천 친구 리스트를 점수 순, 이름 순으로 정렬
     public static void sortRecommendList(List<RecommendScore> allfriends){
         //Comparator<RecommendScore> reverse = Comparator.comparing(RecommendScore::getName);
         allfriends.sort(Comparator.comparing(RecommendScore::getScore).reversed().thenComparing(RecommendScore::getName));
 
+    }
+
+    //전체 추천 친구 리스트에서 점수 0을 제외한 top 5 친구 리스트를 반환
+    public static List<String> recommendList(List<RecommendScore> allfriends){
+        List<String> list = new ArrayList<>();
+        int count =0;
+        for(int i = 0; i<allfriends.size(); i++){
+            if(allfriends.get(i).getScore() != 0){
+                list.add(allfriends.get(i).getName());
+                count++;
+            }
+
+            if(count == 5)
+                break;
+        }
+        return list;
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -136,6 +153,7 @@ public class Problem7{
         visitorsScore(visitors, allList);
         deleteFriends(friendList, allList);
         sortRecommendList(allList);
+        answer = recommendList(allList);
 
         return answer;
     }
