@@ -75,10 +75,10 @@ public class Problem7 {
 
 		scoreOfRecommendation.entrySet().removeIf(entry -> entry.getValue() == 0);
 
-		System.out.println(scoreOfRecommendation);
+		List<String> sortedRecommendation = new ArrayList<>(scoreOfRecommendation.keySet());
+		sortedRecommendation.sort((a, b) -> scoreOfRecommendation.get(b) - scoreOfRecommendation.get(a));
 
-		List<String> answer = Collections.emptyList();
-		return answer;
+		return sortedRecommendation;
 	}
 
 	private static void setConnectedMembers(String member, HashMap<String, ArrayList<String>> friendshipChart,
