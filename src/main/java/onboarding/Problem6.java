@@ -15,6 +15,9 @@ public class Problem6 {
             checkDuplication.addAll(splitName.get(key));
         }
 
+        answer.addAll(checkDuplication);
+        Collections.sort(answer);
+
         return answer;
     }
 
