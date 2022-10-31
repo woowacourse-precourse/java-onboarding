@@ -104,6 +104,9 @@ public class Problem7 {
         Collections.sort(list, (a, b) -> a.name.compareTo(b.name));
     }
 
+    void sortByScore(List<Person> list, Persons persons) {
+        Collecitons.sort(list, (Person a, Person b) -> Integer.compare(persons.getScore(a), persons.getScore(b)));
+    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Persons persons = new Persons(user);
         persons.countVisit(visitors);
