@@ -15,6 +15,17 @@ class Problem1 {
         }
         return Math.max(sum, multiplication);
     }
+
+    private static int determineWinner(int pobiMaxScore, int crongMaxScore){
+        if(pobiMaxScore > crongMaxScore) {
+            return 1;
+        }
+        if(pobiMaxScore < crongMaxScore) {
+            return 2;
+        }
+        return 0;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         int pobiMaxScore = Integer.MIN_VALUE;
@@ -22,6 +33,8 @@ class Problem1 {
 
         pobiMaxScore = Math.max(getMaxScore(pobi.get(LEFT_PAGE)), getMaxScore(pobi.get(RIGHT_PAGE)));
         crongMaxScore = Math.max(getMaxScore(crong.get(LEFT_PAGE)), getMaxScore(crong.get(RIGHT_PAGE)));
+
+        answer = determineWinner(pobiMaxScore, crongMaxScore);
 
         return answer;
     }
