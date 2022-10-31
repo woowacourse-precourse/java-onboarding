@@ -5,7 +5,7 @@ public class Problem4 {
         String answer = "";
         
         for(char spell : word.toCharArray()) {
-        	frog(spell);        	 
+        	answer += frog(spell);        	 
         }
         
         return answer;
