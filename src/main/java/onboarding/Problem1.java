@@ -14,38 +14,37 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
         //예외처리
-        //== 기능목록1 ==//
         if (rangeException(pobi) || rangeException(crong)) return -1;
 
-        //==기능목록 3 ==//
+        //가 사람의 max값
         int pobiMax = calculateMaxValue(pobi);
         int crongMax = calculateMaxValue(crong);
 
-        //==기능목록4==//
+        //결과 출력
         return showResult(pobiMax,crongMax);
     }
 
+    //포비가 이기는 경우 1, 크롱이 이기면2, 비기면 0을 리턴한다.
     private static int showResult(int first, int second){
         if(first==second) return 0;
         else if(first<second) return 2;
         else return 1;
     }
 
+    //오른쪽 왼쪽페이지의 가장 큰 값을 계산한다
     private static int calculateMaxValue(List<Integer> list){
-        int leftMax = calculateLeftpage(list.get(0));
-        int rightMax = calculateRightpage(list.get(1));
+        int leftMax = calculatePage(list.get(0));
+        int rightMax = calculatePage(list.get(1));
         return Math.max(leftMax,rightMax);
     }
 
-    private static int calculateLeftpage(int num){
+    //각 페이지의 max 값을 계산한다.
+    private static int calculatePage(int num){
         return Math.max(calculatePlusMax(num),calculateMultiplyMax(num));
     }
 
-    private static int calculateRightpage(int num){
-        return Math.max(calculatePlusMax(num),calculateMultiplyMax(num));
-    }
 
-    //==기능목록2==//
+    //각페이지의 덧셈 계산
     private static int calculatePlusMax(int num) {
         int sum = 0;
         while (num > 0) {
@@ -55,6 +54,7 @@ class Problem1 {
         return sum;
     }
 
+    //페이지의 곱셈을 계산
     private static int calculateMultiplyMax(int num) {
         int sum = 1;
 
