@@ -27,7 +27,23 @@ public class Problem7 {
             return null;
         }
     }
-    
+
+    //기능 2
+    public static List<String> findUserFriend(String user, List<List<String>> friends){
+        List<String> userFriend=new ArrayList<String>();
+
+        for(int i=0;i<friends.size();i++) {
+
+            List<String> onePairFriend=friends.get(i);
+            String friendName=findFriend(user,onePairFriend);
+
+            if(friendName!=null) {
+                userFriend.add(friendName);
+            }
+        }
+        return userFriend;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
