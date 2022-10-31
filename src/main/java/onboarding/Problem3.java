@@ -8,6 +8,13 @@ public class Problem3 {
      */
     public static int solution(int number) {
         int answer = 0;
+
+        for(int i = 1; i <= number; i++) {
+            // 숫자를 문자 배열로 만들기
+            for(char c : String.valueOf(i).toCharArray()) {
+            }
+        }
+
         return answer;
     }
 }
