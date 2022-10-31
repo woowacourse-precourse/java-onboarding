@@ -6,7 +6,7 @@ public class Problem4 {
     public static String solution(String word) {
         String answer = "";
 
-        if (checkInput(word)) {
+        if (isError(word)) {
             return "-1";
         }
 
@@ -17,7 +17,7 @@ public class Problem4 {
         return answer;
     }
 
-    public static boolean checkInput(String word) {
+    public static boolean isError(String word) {
         return word.length() < 1 || word.length() > 1000;
     }
 
