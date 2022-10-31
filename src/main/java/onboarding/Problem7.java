@@ -105,12 +105,34 @@ public class Problem7 {
 
         return friendsScore;
     }
+    private static HashMap<String, Integer> getVisitorsScore(List<String> userFriends, List<String> visitors){
+
+        HashMap<String, Integer> visitorsScore = new HashMap<>();
+
+        for (String visitor : visitors){
+            if (!userFriends.contains(visitor)){
+
+                if (visitorsScore.containsKey(visitor)){
+                    int score = visitorsScore.get(visitor);
+                    score += 1;
+                    visitorsScore.put(visitor, score);
+
+                }else{
+                    int score = 1;
+                    visitorsScore.put(visitor, score);
+                }
+            }
+        }
+
+        return visitorsScore;
+    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
         List<String> userFriends = getFriends(user, friends);
         HashMap<String, List<String>> userFriendsOfFriends = getFriendsOfFriends(user, friends, userFriends);
         HashMap<String, Integer> friendsScore = getFriendsScore(userFriends, userFriendsOfFriends);
-        
+        HashMap<String, Integer> visitorsScore = getVisitorsScore(userFriends, visitors);
+
         List<String> answer = Collections.emptyList();
         return answer;
     }
