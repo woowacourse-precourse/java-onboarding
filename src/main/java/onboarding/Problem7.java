@@ -20,6 +20,15 @@ public class Problem7 {
         return answer;
     }
 
+    public static void increaseFriendShipPoint(List<List<String>> friends, List<String> userKnowFriends){
+        for(List<String> friendship: friends){
+            String recommendationFriend = findFriendKnowFriend(friendship, userKnowFriends);
+            if(recommendationFriend != null) {
+                increasePoint(recommendationFriend, friendshipPoint);
+            }
+        }
+    }
+
     public static void increasePoint(String name, int point){
         if(recommendationPoiont.containsKey(name)) {
             int beforePoint = recommendationPoiont.get(name);
