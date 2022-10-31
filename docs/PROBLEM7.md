@@ -35,7 +35,7 @@
     - [x] 먼 친구 : +10점 → `addDistantFriendScore()`
     - [x] 방문 친구 : +1점 → `addVisitorScore()`
 - [x] 가까운 친구를 추천 점수 목록에서 제외시킨다. → `excludeCloseFriends()`
-- [ ] 추천 점수 목록을 정렬한다. → `sortScore()`
+- [x] 추천 점수 목록을 정렬한다. → `sortScore()`
   - 추천 점수가 높은 순으로 내림차순 정렬
   - 추천 점수가 같은 경우 이름 순으로 정렬
 - [ ] 최대 5명의 친구 추천 목록을 구한다 → `getRecommendedFriends()`

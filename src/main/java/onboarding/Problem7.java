@@ -1,14 +1,32 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
+    }
+
+    /**
+     * Map을 Value(추천 점수)를 기준으로 내림차순 정렬하고,
+     * Value(추천 점수)가 같다면 key(이름)를 기준으로 오름차순 정렬한다.
+     */
+    private static LinkedHashMap<String, Integer> sortScore(Map<String, Integer> map) {
+        LinkedList<Map.Entry<String, Integer>> entries = new LinkedList<>(map.entrySet());
+
+        // value(점수) 내림차순으로 정렬하고, value(점수)가 같으면 key(이름) 사전 순으로 정렬
+        Collections.sort(entries, (o1, o2) -> {
+            int compare = o2.getValue().compareTo(o1.getValue());
+            return compare == 0 ? o1.getKey().compareTo(o2.getKey()) : compare;
+        });
+
+        LinkedHashMap<String, Integer> result = new LinkedHashMap<>();
+        for (Map.Entry<String, Integer> entry : entries) {
+            result.put(entry.getKey(), entry.getValue());
+        }
+
+        return result;
     }
 
     /**
