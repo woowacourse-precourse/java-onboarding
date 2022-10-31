@@ -29,7 +29,7 @@ public class Problem2 {
             }
 
             if(temp.length() >= 2) {
-                answer = answer.replace(temp, "");
+                answer = answer.replaceFirst(temp, "");
             }
 
             if(temp.length() < 2) {
