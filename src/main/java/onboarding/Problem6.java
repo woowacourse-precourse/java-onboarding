@@ -22,7 +22,22 @@ public class Problem6 {
         String name = crew.get(1);
         for (int i = 1; i < name.length(); i++) {
             String sequenceName = name.substring(i - 1, i + 1);
+
+            if (isDuplicateName(sequenceName)) {
+
+            }
+
             sequenceNamesMap.put(sequenceName, email);
+        }
+
+    }
+
+    private static boolean isDuplicateName(String sequenceName) {
+
+        if (sequenceNamesMap.get(sequenceName) == null) {
+            return false;
+        } else {
+            return true;
         }
 
     }
