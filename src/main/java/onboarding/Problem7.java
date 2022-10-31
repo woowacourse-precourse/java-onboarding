@@ -22,6 +22,7 @@ public class Problem7 {
                     }
                     return Integer.compare(userScore.get(o2), userScore.get(o1));
                 })
+                .limit(5)
                 .collect(Collectors.toList());
     }
 
