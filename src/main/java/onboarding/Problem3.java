@@ -1,5 +1,8 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
@@ -11,5 +14,13 @@ public class Problem3 {
             return true;
 
         return false;
+    }
+
+    public static List<Integer> makeList(Integer number){
+        List<Integer> numberList = new ArrayList<>();
+        for (int i = 1; i <= number; i++) {
+            numberList.add(i);
+        }
+        return numberList;
     }
 }
