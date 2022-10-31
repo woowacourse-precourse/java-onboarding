@@ -18,15 +18,15 @@ public class Problem2 {
         Deque<Character> charDeque = new ArrayDeque<>();
         char lastRemove = initLastRemove();
 
-        for (int i = 0; i < cryptogramArray.length; i++) {
-            lastRemove = getNewWord(charDeque, i, cryptogramArray[i], lastRemove);
+        for (char digit : cryptogramArray) {
+            lastRemove = getNewWord(charDeque, digit, lastRemove);
         }
 
-        return isOutputBlank(charDeque) ? OUTPUT_IS_BLANK : getCharDequeToString(charDeque);
+        return isEmptyDeque(charDeque) ? OUTPUT_IS_BLANK : getCharDequeToString(charDeque);
     }
 
-    private static char getNewWord(Deque<Character> charDeque, int index, char digit, char lastRemove) {
-        if (isEmptyDeque(charDeque, index)) {
+    private static char getNewWord(Deque<Character> charDeque, char digit, char lastRemove) {
+        if (isEmptyDeque(charDeque)) {
             addElementToDeque(charDeque, digit);
             return lastRemove;
         }
@@ -57,12 +57,8 @@ public class Problem2 {
         return sb.toString();
     }
 
-    private static boolean isOutputBlank(Deque<Character> deque) {
+    private static boolean isEmptyDeque(Deque<Character> deque) {
         return deque.isEmpty();
-    }
-
-    private static boolean isEmptyDeque(Deque<Character> deque, int dequeIndex) {
-        return dequeIndex == 0 || deque.isEmpty();
     }
 
     private static void addElementToDeque(Deque<Character> deque, char element) {
