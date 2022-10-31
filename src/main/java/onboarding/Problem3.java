@@ -15,6 +15,13 @@ class Utility{
         return digitNum;
     }
 }
+class Game{
+    final int[] clapCondition = {3,6,9};
+    boolean isClap(int digit){
+        return IntStream.of(clapCondition).anyMatch(condition->condition==digit);
+    }
+}
+
 public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
