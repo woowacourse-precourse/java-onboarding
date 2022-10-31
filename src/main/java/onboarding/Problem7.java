@@ -1,6 +1,7 @@
 package onboarding;
 
-import java.util.Collections;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -13,7 +14,64 @@ import java.util.List;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        HashMap<String, Integer> scoresOfUsers = new HashMap<>();
+        HashMap<String, ArrayList<String>> friendsOfUsers = new HashMap<>();
+
+        for (List<String> relationship : friends) {
+            initializeScores(scoresOfUsers, relationship);
+            getFriendsOfUser(friendsOfUsers, relationship);
+        }
+
+        final ArrayList<String> friendsOfUser = friendsOfUsers.get(user);
+        for (String friendUser : scoresOfUsers.keySet()) {
+            scoresOfUsers.put(friendUser, CalculateScoreByFriends(friendsOfUser, friendsOfUsers.get(friendUser)));
+        }
+    }
+
+    /**
+     * 해당 친구 관계로 두 유저의 친구 관계 업데이트
+     *
+     * @param friendsOfUser
+     * @param relationship
+     */
+    private static void getFriendsOfUser(HashMap<String, ArrayList<String>> friendsOfUser, List<String> relationship) {
+        ArrayList<String> friendList = friendsOfUser.getOrDefault(relationship.get(0), new ArrayList<>());
+        friendList.add(relationship.get(1));
+        friendsOfUser.put(relationship.get(0), friendList);
+
+        friendList = friendsOfUser.getOrDefault(relationship.get(1), new ArrayList<>());
+        friendList.add(relationship.get(0));
+        friendsOfUser.put(relationship.get(1), friendList);
+    }
+
+    /**
+     * 각 친구의 점수를 0으로 초기화
+     *
+     * @param scoresOfUser
+     * @param relationship
+     */
+    private static void initializeScores(HashMap<String, Integer> scoresOfUser, List<String> relationship) {
+        scoresOfUser.put(relationship.get(0), 0);
+        scoresOfUser.put(relationship.get(1), 0);
+    }
+
+    /**
+     * 사용자와 함께 아는 친구의 수로 점수 계산
+     *
+     * @param friendsOfUser
+     * @param friendsOfFriendUser
+     * @return 사용자와 함께 아는 친구의 수로 얻은 점수
+     */
+    private static int CalculateScoreByFriends(ArrayList<String> friendsOfUser, ArrayList<String> friendsOfFriendUser) {
+        int score = 0;
+        final int SCORE = 10;
+
+        for (String friend : friendsOfFriendUser) {
+            if (friendsOfUser.contains(friend)) {
+                score += SCORE;
+            }
+        }
+
+        return score;
     }
 }
