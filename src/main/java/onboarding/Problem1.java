@@ -11,6 +11,11 @@ class Problem1 {
         int pobiScoreFinal = 0;
         int crongScoreFinal = 0;
 
+        if(pobi.get(0)%2 == 0) return -1;
+        if(pobi.get(1)%2 == 1) return -1;
+
+
+
         for (int i = 0; i < pobi.size(); i++) {
             int pobiPage = pobi.get(i);
             int pobiPageSum = 0;
