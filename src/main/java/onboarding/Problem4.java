@@ -36,5 +36,11 @@ public class Problem4 {
         return Character.isLowerCase(oneWord);
     }
 
+    private static boolean isSpace(char oneWord) {
+        if (oneWord == ' ') {
+            return true;
+        }
+        return false;
+    }
 
 }
