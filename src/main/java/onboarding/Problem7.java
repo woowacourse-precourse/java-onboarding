@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,31 +10,49 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Problem7 {
+    private static final int RECOMMEND_FRIEND_SIZE = 5;
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
         List<String> userFriendList = new ArrayList<>();
         Map<String,Integer> friendScoreMap = new HashMap<>();
 
         initUserFriendList(user, friends, userFriendList);
         initFriendScoreMap(friends, friendScoreMap);
 
-        addScoreFriendsFriend(friends, userFriendList, friendScoreMap);
+        addScoreFriendsFriend(friends, userFriendList, friendScoreMap,user);
         addScoreVisitor(visitors, friendScoreMap);
 
+        return genUserListSortedByScore(friendScoreMap,userFriendList);
+    }
 
+    private static List<String> genUserListSortedByScore(Map<String,Integer> friendScoreMap, List<String> userFriendList){
+        List<String> userListSortedByScore = sortScoreMapByValue(friendScoreMap).stream()
+            .filter(person -> !userFriendList.contains(person))
+            .collect(Collectors.toList());
+        if(userListSortedByScore.size()>5)
+            return new ArrayList<>(userListSortedByScore.subList(0,5));
+        return userListSortedByScore;
+    }
 
-        return answer;
+    private static List<String> sortScoreMapByValue(Map<String, Integer> friendScoreMap) {
+        return friendScoreMap.entrySet().stream()
+            .sorted(Comparator.comparing(Map.Entry<String,Integer>::getValue).reversed())
+            .filter(user -> user.getValue() != 0).map(Map.Entry::getKey)
+            .collect(Collectors.toList());
     }
 
     private static void addScoreVisitor(List<String> visitors, Map<String, Integer> friendScoreMap) {
-        visitors.forEach(user ->
-            friendScoreMap.replace(user, friendScoreMap.get(user)+1));
+        for (String visitor : visitors){
+            if(friendScoreMap.containsKey(visitor))
+                friendScoreMap.replace(visitor,friendScoreMap.get(visitor)+1);
+            else
+                friendScoreMap.put(visitor,1);
+        }
     }
 
     private static void addScoreFriendsFriend(List<List<String>> friends, List<String> userFriendList,
-        Map<String, Integer> friendScoreMap) {
+        Map<String, Integer> friendScoreMap, String user) {
         for (List<String> friendRelation : friends) {
-            if(Collections.disjoint(friendRelation, userFriendList))
+            if(Collections.disjoint(friendRelation, userFriendList) || friendRelation.contains(user))
                 continue;
             addScoreFriendsFriend(userFriendList, friendScoreMap, friendRelation);
         }
@@ -65,5 +84,4 @@ public class Problem7 {
             }
         }
     }
-
 }
