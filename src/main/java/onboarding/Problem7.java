@@ -18,6 +18,7 @@ public class Problem7 {
 
         List<String> sortedRecommendFriend = getSortedRecommendFriend(refineScoreRecommendFriend);
         List<String> fiveRecommendFriend = getFiveRecommendFriend(sortedRecommendFriend);
+
         answer = fiveRecommendFriend;
 
         return answer;
@@ -42,6 +43,7 @@ public class Problem7 {
         Map<String, Boolean> friendVisited = new TreeMap<>();
         Map<String, Integer> friendLevel = new TreeMap<>();
         Queue<String> friendQueue = new LinkedList<>();
+        List<String> resultTwoLevelFriend;
 
         friendQueue.add(user);
         friendVisited.put(user, true);
@@ -59,7 +61,6 @@ public class Problem7 {
                     });
         }
 
-        List<String> resultTwoLevelFriend;
         resultTwoLevelFriend = friendLevel.keySet().stream()
                 .filter(friend -> friendLevel.get(friend) == 2)
                 .collect(Collectors.toList());

@@ -13,6 +13,7 @@ public class Problem2 {
         while(checkDuplicateString(cryptogram)) {
             cryptogram = getAmendString(cryptogram);
         }
+
         answer = cryptogram;
 
         return answer;
@@ -20,7 +21,8 @@ public class Problem2 {
 
     private static boolean checkDuplicateString(String inputString) {
         IntStream inputIntStream = inputString.chars();
-        int result = inputIntStream.reduce(0, (a, b) -> a == FIND_DUPLICATION ? a : (a == b) ? FIND_DUPLICATION : b);
+        int result = inputIntStream
+                .reduce(0, (a, b) -> a == FIND_DUPLICATION ? a : (a == b) ? FIND_DUPLICATION : b);
 
         return result == -1;
     }
@@ -35,6 +37,7 @@ public class Problem2 {
         for(int i = 0; i < inputString.length(); i++) {
             nowSize = resultList.size();
             nowChar = inputString.charAt(i);
+
             try {
                 if (resultList.get(nowSize - 1).equals(nowChar)) {
                     deleteChar = nowChar;

@@ -22,6 +22,7 @@ public class Problem6 {
 
             for(int i = 1; i < nickname.length(); i++) {
                 String twoLengthName = getSubString(nickname, i);
+
                 if (twoNameMap.get(twoLengthName).size() > 1) {
                     result.add(email);
                     break;
@@ -39,9 +40,11 @@ public class Problem6 {
 
         for (List<String> form : forms) {
             String nickname = form.get(1);
+
             for(int i = 1; i <nickname.length(); i++) {
                 String name = getSubString(nickname, i);
                 TreeSet<String> nameTreeSet = result.getOrDefault(name, new TreeSet<>());
+
                 nameTreeSet.add(nickname);
                 result.put(name, nameTreeSet);
             }

@@ -32,6 +32,7 @@ public class Problem3 {
 
         for (int i = 0; i < inputString.length(); i++) {
             nowChar = inputString.charAt(i);
+
             if (nowChar == THREE || nowChar == SIX || nowChar == NINE) {
                 result++;
             }
