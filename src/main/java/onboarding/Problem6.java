@@ -15,23 +15,22 @@ public class Problem6 {
 
         for(int i=0; i<forms.size(); i++) {
             List<String> info = forms.get(i);
-            String email = info.get(0);
             String nickname = info.get(1);
 
-            if(nickname.length() > 1) {
-                for(int j=0; j<nickname.length()-1; j++) {
-                    String twoWords = nickname.substring(j, j+2);
+            for(int j=0; j<nickname.length()-1; j++) {
+                String twoWords = nickname.substring(j, j+2);
+                int index = getIndexOfExistNickname(existNicknameMap, twoWords);
 
-                    int index = getIndexOfExistNickname(existNicknameMap, twoWords);
-                    if(index == -1)
-                        existNicknameMap.put(twoWords, i);
-                    if(index != -1) {
-                        emailSet.add(email);
-                        emailSet.add(forms.get(index).get(0));
-                    }
+                if(index == -1)
+                    existNicknameMap.put(twoWords, i);
+
+                if(index != -1) {
+                    emailSet.add(getEmailByIndex(forms, i));
+                    emailSet.add(getEmailByIndex(forms, index));
                 }
             }
         }
+
         answer = setToArrayList(emailSet);
 
         return answer;
@@ -43,6 +42,10 @@ public class Problem6 {
             return existNicknameMap.get(twoWords);
 
         return -1;
+    }
+
+    public static String getEmailByIndex(List<List<String>> forms, int index) {
+        return forms.get(index).get(0);
     }
 
     public static List<String> setToArrayList(Set<String> emailSet) {
