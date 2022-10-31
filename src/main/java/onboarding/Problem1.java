@@ -53,10 +53,7 @@ class Problem1 {
     }
     private static boolean isCorrectPage(Integer leftPage, Integer rightPage) {
     	
-    	if(isNullPage(leftPage, rightPage)) {
-    		return false;
-    	}
-    	if(!isRightPageOneMore(leftPage, rightPage)) {
+    	if(nullPointException(leftPage, rightPage)) {
     		return false;
     	}
     	if(!isLeftPageInRange(leftPage)) {
@@ -71,6 +68,15 @@ class Problem1 {
     	if(!isRightPageEven(rightPage)) {
     		return false;
     	}
+    	if(!isRightPageOneMore(leftPage, rightPage)) {
+    		return false;
+    	}
+    	if(isOpeningPage(leftPage, rightPage)) {
+    		return false;
+    	}
+    	if(isClosingPage(leftPage, rightPage)) {
+    		return false;
+    	}
     	return true;
     	
     }
@@ -83,7 +89,7 @@ class Problem1 {
     private static boolean isRightPageOneMore(int leftPage, int rightPage) {
     	return (rightPage - leftPage)==1;
     }
-    private static boolean isNullPage(Integer leftPage, Integer rightPage) {
+    private static boolean nullPointException(Integer leftPage, Integer rightPage) {
     	return leftPage==null || rightPage==null;
     }
     private static boolean isLeftPageInRange(int leftPage) {
@@ -91,6 +97,12 @@ class Problem1 {
     }
     private static boolean isRightPageInRange(int rightPage) {
     	return 2<=rightPage && rightPage<=400;
+    }
+    private static boolean isOpeningPage(int leftPage, int rightPage) {
+    	return (leftPage==1 && rightPage==2);
+    }
+    private static boolean isClosingPage(int leftPage, int rightPage) {
+    	return (leftPage==399 && rightPage==400);
     }
     
 }
