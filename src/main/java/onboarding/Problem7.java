@@ -27,6 +27,9 @@ public class Problem7 {
             }
         }
 
+        // 점수를 기준으로 내림차순하여 결과에 저장해둔다.
+        answer = sort_recommand(recommand);
+
         return answer;
     }
     // 추천 점수 테이블에 대한 내림차순 정렬
@@ -81,8 +84,8 @@ public class Problem7 {
                 List.of("shakevan", "mrko")
         );
         List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
-        List<String> result = List.of("andole", "jun", "bedi");
 
-        solution(user, friends, visitors);
+        for(String friend : solution(user, friends, visitors))
+            System.out.println(friend);
     }
 }
