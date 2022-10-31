@@ -20,7 +20,14 @@ public class Problem7 {
         return null;
     }
 
-    private static void findScoreOfAcquaintanceAllUser(String user, Map<String, User> userFriendsInfo, Map<String, Integer> score) {
+    private static Map<String, Integer> findScoreOfAcquaintanceAllUser(String user, Map<String, User> userFriendsInfo, Map<String, Integer> score) {
+        userFriendsInfo.keySet().stream()
+                .filter(eachUser -> !eachUser.equals(user))
+                .forEach(eachUser -> {
+                    int eachScore = findScoreOfAcquaintanceEachUser(user, eachUser, userFriendsInfo);
+                    score.put(eachUser, eachScore);
+                });
+        return score;
     }
 
     private static int findScoreOfAcquaintanceEachUser(String user, String each, Map<String, User> userFriendsInfo) {
