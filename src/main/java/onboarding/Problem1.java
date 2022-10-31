@@ -3,7 +3,7 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
-    //예외 입력 검사
+    // 예외 입력 검사
     private static boolean isValidInput(List<Integer> array) {
         int leftpage = array.get(0);
         int rightpage = array.get(1);
@@ -20,7 +20,7 @@ class Problem1 {
         return true;
     }
 
-    //페이지 번호 각 자리 수 더하기
+    // 페이지 번호 각 자리 수 더하기
     private static int sumPage(int page) {
         int result = 0;
         while(page > 0) {
@@ -30,7 +30,7 @@ class Problem1 {
         return result;
     }
 
-    //페이지 번호 각 자리 수 곱하기
+    // 페이지 번호 각 자리 수 곱하기
     private static int mulPage(int page) {
         int result = 1;
         while(page > 0) {
@@ -40,7 +40,7 @@ class Problem1 {
         return result;
     }
 
-    //가장 큰 수 구하기
+    // 가장 큰 수 구하기
     private static int getScore(List<Integer> pageArray) {
         ArrayList<Integer> scoreList = new ArrayList<>();
 
@@ -51,7 +51,7 @@ class Problem1 {
         return Collections.max(scoreList)
     }
 
-    //게임 결과 구하기
+    // 게임 결과 구하기
     private static int findResult(int pobi_score, int crong_score) {
         if(pobi_score > crong_score) {
             return 1;
