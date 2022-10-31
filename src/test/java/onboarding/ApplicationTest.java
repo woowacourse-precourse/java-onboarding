@@ -408,6 +408,7 @@ class ApplicationTest {
         }
         @Test
         void makeAllFriendshipTest() {
+        	//given
         	String user = "e";
         	List<List<String>> friends = List.of(
                     List.of("a", "b"),
@@ -422,5 +423,21 @@ class ApplicationTest {
             );
         	Problem7.solution(user, friends, null);
         }
+        @Test
+        void increaseScoreMutualFriend() {
+        	//given
+        	String user = "e";
+        	List<List<String>> friends = List.of(
+                    List.of("a", "b"),
+                    List.of("b", "c"),
+                    List.of("c", "d"),
+                    List.of("e", "f"),
+                    List.of("f", "e"),
+                    List.of("g", "h"),
+                    List.of("h", "i")
+            );
+        	Problem7.solution(user, friends, null);
+        }
+        
     }
 }
