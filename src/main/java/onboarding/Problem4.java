@@ -10,6 +10,10 @@ public class Problem4 {
     public static String solution(String word) {
         StringBuilder answer = new StringBuilder();
 
+        if (isNotInRange(word.length())) {
+            return word;
+        }
+
         char[] frogWords = {'Z', 'Y', 'X', 'W', 'V', 'U', 'T', 'S',
                 'R', 'Q', 'P', 'O', 'N', 'M', 'L', 'K', 'J', 'I', 'H',
                 'G', 'F', 'E', 'D', 'C', 'B', 'A'};
@@ -67,6 +71,13 @@ public class Problem4 {
         }
 
         return changedWord;
+    }
+
+    private static boolean isNotInRange(int number) {
+        if (number >= 1 && number <= 1000) {
+            return false;
+        }
+        return true;
     }
 
 }
