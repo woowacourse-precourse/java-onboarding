@@ -7,16 +7,7 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         Map<String, Integer> duplicatedNamesMap = generateDuplicatedNamesMap(forms);
 
-        List<String> compareNames = new ArrayList<>();
-
-        for (Map.Entry<String, Integer> entry : duplicatedNamesMap.entrySet()) {
-            String key = entry.getKey();
-            int value = entry.getValue();
-
-            if (value > 1) {
-                compareNames.add(key);
-            }
-        }
+        List<String> compareNames = generateCompareNames(duplicatedNamesMap);
 
         List<String> results = new ArrayList<>();
 
@@ -46,6 +37,20 @@ public class Problem6 {
         return duplicatedNamesMap;
     }
 
+    private static List<String> generateCompareNames(Map<String, Integer> duplicatedNamesMap) {
+        List<String> compareNames = new ArrayList<>();
+
+        for (Map.Entry<String, Integer> entry : duplicatedNamesMap.entrySet()) {
+            String key = entry.getKey();
+            int value = entry.getValue();
+
+            if (value > 1) {
+                compareNames.add(key);
+            }
+        }
+
+        return compareNames;
+    }
     private static boolean containName(String name, String compareName) {
         for (int i = 0; i < name.length() - 1; i++) {
             String substring = name.substring(i, i + 2);
