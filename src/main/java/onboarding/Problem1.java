@@ -1,10 +1,45 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
+    }
+
+    private static int makeOutScore(List<Integer> pageList){
+        // 1. 왼쪽, 오른쪽 페이지 번호 추출
+        int left = pageList.get(0);
+        int right = pageList.get(1);
+
+        // 2. 왼쪽, 오른쪽 페이지 번호를 처리하여 점수 후보군 리스트로 만들기
+        List<Integer> joinedTmpList = new ArrayList<>();
+        joinedTmpList.addAll(makeTmpList(left));
+        joinedTmpList.addAll(makeTmpList(right));
+
+        // 3. 점수 리스트에서 최댓값(=최종 점수) 도출하기
+        int max = 0;
+        for (int tmp : joinedTmpList) {
+            max = Math.max(tmp, max);
+        }
+        return max;
+    }
+
+    private static List<Integer> makeTmpList(int pageNumber) {
+        // 각 자리 숫자를 더할 경우/곱할 경우를 분리하여 진행
+        int plusTmp = 0;
+        int multiplyTmp = 1;
+
+        // 페이지 번호를 변환하여 각자리 숫자를 더하기/곱하기
+        while(pageNumber > 0) {
+            int eachNum = pageNumber % 10;
+            plusTmp += eachNum;
+            multiplyTmp *= eachNum;
+            pageNumber /= 10;
+        }
+        // 각 자리를 더한 경우, 곱한 경우 모두 return
+        return List.of(plusTmp, multiplyTmp);
     }
 }
