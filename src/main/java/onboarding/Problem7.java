@@ -16,6 +16,7 @@ public class Problem7 {
         setFriendsOfUser(user, friends);
 
         increaseMutualScore(user, friends);
+        increaseVisitScore(visitors);
 
         return answer;
     }
@@ -38,6 +39,12 @@ public class Problem7 {
                     increaseOnePersonScore(friend.get(0), 10);
                     increaseOnePersonScore(friend.get(1), 10);
                 });
+    }
+
+    private static void increaseVisitScore(List<String> visitors) {
+        for (String visitor: visitors) {
+            increaseOnePersonScore(visitor, 1);
+        }
     }
 
     private static void increaseOnePersonScore(String person, Integer score) {
