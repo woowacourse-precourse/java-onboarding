@@ -11,11 +11,29 @@ public class Problem7 {
         checkValidation(user, friends, visitors);
 
         List<String> answer = Collections.emptyList();
+        Set<String> alreadyFriends = getAlreadyFriends(user, friends);
 
         return answer;
     }
 
+    private static Set<String> getAlreadyFriends(String user, List<List<String>> friends){
+        Set<String> alreadyFriend = new HashSet<>();
 
+        for (List<String> friend : friends) {
+            String name1 = friend.get(0);
+            String name2 = friend.get(1);
+
+            if (name1.equals(user)){
+                alreadyFriend.add(name2);
+            }
+
+            if (name2.equals(user)){
+                alreadyFriend.add(name1);
+            }
+        }
+
+        return alreadyFriend;
+    }
 
     private static void checkValidation(String user, List<List<String>> friends, List<String> visitors) {
         if (isUserWrongLength(user)){
