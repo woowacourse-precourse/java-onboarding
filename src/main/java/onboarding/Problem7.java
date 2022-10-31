@@ -12,11 +12,13 @@ public class Problem7 {
             String firstFriend = friend.get(0);
             String secondFriend = friend.get(1);
             // 첫 번째 친구 리스트
-            if (!friendsMap.containsKey(firstFriend)) friendsMap.put(firstFriend, new HashSet<>());
+            if (!friendsMap.containsKey(firstFriend))
+                friendsMap.put(firstFriend, new HashSet<>());
             friendsMap.get(firstFriend).add(secondFriend);
 
             // 두 번째 친구 리스트
-            if (!friendsMap.containsKey(secondFriend)) friendsMap.put(secondFriend, new HashSet<>());
+            if (!friendsMap.containsKey(secondFriend))
+                friendsMap.put(secondFriend, new HashSet<>());
             friendsMap.get(secondFriend).add(firstFriend);
         }
 
@@ -35,7 +37,8 @@ public class Problem7 {
 
         // 타임 라인 방문 점수
         for(String visitor : visitors) {
-            if(score.containsKey(visitor)) score.put(visitor, score.get(visitor) + 1);
+            if(score.containsKey(visitor))
+                score.put(visitor, score.get(visitor) + 1);
             else score.put(visitor, 1);
         }
 
@@ -48,6 +51,7 @@ public class Problem7 {
             else return obj1.getKey().compareTo(obj2.getKey());
         });
 
+        // answer 구하기
         for(int i = 0; i < listScore.size(); i++) {
             answer.add(listScore.get(i).getKey());
             if(i == 2) break;
