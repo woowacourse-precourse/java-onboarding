@@ -14,6 +14,14 @@ class Problem1 {
         int pobiNumber = chooseLeftOrRight(pobi);
         int crongNumber = chooseLeftOrRight(crong);
 
+        if (pobiNumber > crongNumber) {
+            answer = 1;
+        } else if (crongNumber > pobiNumber) {
+            answer = 2;
+        } else {
+            answer = 0;
+        }
+
         return answer;
     }
 
