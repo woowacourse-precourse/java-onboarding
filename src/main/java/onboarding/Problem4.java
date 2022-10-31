@@ -1,8 +1,21 @@
 package onboarding;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
         return answer;
+    }
+    public static Map<Character, Character> codeTransform() {
+        Map<Character, Character> code = new HashMap<>();
+        for (int i = 65; i < 91; i++) {
+            code.put((char) i, (char) (155 - i));
+        }
+        for (int i = 97; i < 123; i++) {
+            code.put((char) i, (char) (219 - i));
+        }
+        return code;
     }
 }
