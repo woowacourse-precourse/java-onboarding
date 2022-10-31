@@ -1,31 +1,41 @@
 package onboarding;
 
-import java.util.Stack;
+import java.util.List;
+import java.util.ArrayList;
 
 public class Problem2 {
     static String decrypt(String crypt){
-        Stack<Character> stack = new Stack<>();
-        stack.add(crypt.charAt(0));
-        char top = stack.peek();
-        for(int i= 1; i < crypt.length(); i++) {
-            if (crypt.charAt(i) == stack.peek()) {
-                top = stack.peek();
-                stack.pop();
-            }
-            if (crypt.charAt(i) != top) {
-                stack.add(crypt.charAt(i));
-                top = stack.peek();
-            }
-        }
+        List<Boolean> is_removable = new ArrayList<>();
         StringBuilder ret_value = new StringBuilder();
-        for (Character character : stack) {
-            ret_value.append(character.toString());
+        for(int i = 0; i <crypt.length(); i++){
+            is_removable.add(false);
         }
-        //System.out.println(ret_value);
+
+        for(int i = 0; i < crypt.length()-1; i++){
+            if(crypt.charAt(i) == crypt.charAt(i+1)){
+                is_removable.set(i, true);
+                is_removable.set(i+1, true);
+            }
+        }
+
+        for(int i = 0; i < crypt.length(); i++) {
+            if(!is_removable.get(i)){
+                ret_value.append(crypt.charAt(i));
+            }
+
+        }
         return ret_value.toString();
     }
 
+    static String decryption(String cryptogram){
+        String tmp_decrypto = decrypt(cryptogram);
+        if(cryptogram.equals(tmp_decrypto) || tmp_decrypto.length() == 0){
+            return tmp_decrypto;
+        }
+        return decryption(tmp_decrypto);
+    }
+
     public static String solution(String cryptogram) {
-        return decrypt(cryptogram);
+        return decryption(cryptogram);
     }
 }
