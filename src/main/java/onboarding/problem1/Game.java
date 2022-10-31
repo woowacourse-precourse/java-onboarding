@@ -24,7 +24,14 @@ public class Game {
         return sum;
     }
 
-    private int mulAll(){return -1;}
+    private int mulAll(){
+        int mul = 1;
+        while (numMul >= 1) {
+            mul *= numMul % 10;
+            numMul /= 10;
+        }
+        return mul;
+    }
 
     public int getResult(){
         return result;

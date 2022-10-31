@@ -14,9 +14,9 @@ class Problem1 {
     }
 
     public static void main(String[] args) {
-        System.out.println(new Game(3, 0).getResult());
-        System.out.println(new Game(13, 0).getResult());
-        System.out.println(new Game(342, 0).getResult());
+        System.out.println(new Game(0, 42).getResult());
+        System.out.println(new Game(0, 531).getResult());
+        System.out.println(new Game(0, 10).getResult());
     }
     private static boolean isRight(List<Integer> list) {
         return isRightPage(list) && isNotFirstOrLastPage(list);
