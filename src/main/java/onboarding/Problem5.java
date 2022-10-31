@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 public class Problem5 {
     // 우선순위를 보장하기 위한 LinkedHashMap 지갑
     private static Map<Integer, Integer> wallet = new LinkedHashMap<>();
+
     public static List<Integer> solution(int money) {
         setWallet(); // 지갑 초기화
         exchangeMoney(money); // 환전 시작
