@@ -20,9 +20,15 @@ public class Problem7 {
                 realFriends.add(friend.get(0));
                 continue;
             }
-            nearFriend.compute(friend.get(0), (key, value) -> value == null ? new ArrayList<>() : value).add(friend.get(1));
+            nearFriend.compute(friend.get(0), (key, value) -> value == null ? new ArrayList<>() : value)
+                .add(friend.get(1));
         }
-
+        Map<String, Integer> scores = new HashMap<>();
+        for (String visitor : visitors) {
+            if (!nearFriend.containsKey(visitor)) {
+                scores.put(visitor, scores.getOrDefault(visitor, 0) + 1);
+            }
+        }
         return answer;
     }
 }
