@@ -12,7 +12,7 @@ public class Problem4 {
             for(char charvalue : charArray){
                 if( Classification(charvalue) == BIG) ans += ReverseBig(charvalue);
                 if( Classification(charvalue) == SMALL) ans += ReverseSmall(charvalue);
-                if( Classification(charvalue) == ETC) ;
+                if( Classification(charvalue) == ETC) ans += charvalue;
             }return ans;
         }throw new IllegalArgumentException("잘못된 입력값");
     }
