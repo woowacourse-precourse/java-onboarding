@@ -69,8 +69,8 @@
 
 <br/>
 
-- ⬜ scoreToUserFriend 메소드 구현
-  - ⬜ userFriendList에 이름이 존재하는 People 객체에 10점을 부여
+- ✅ scoreToUserFriend 메소드 구현
+  - ✅ userFriendList에 이름이 존재하는 People 객체에 10점을 부여
 
 <br/>
 

@@ -86,8 +86,13 @@ public class Problem7 {
     }
 
     public void scoreToUserFriend(ArrayList<String> userFriendsList, People person){
-
+        for(String personFriend : person.friendList){
+            if(userFriendsList.contains(personFriend)){
+                person.addScore(10);
+            }
+        }
     }
+
     public void calculateFriendsScore(String user, HashMap<String, People> map){
         ArrayList<String> userFriendsList = map.get(user).friendList;
         if(userFriendsList.isEmpty()) return;
