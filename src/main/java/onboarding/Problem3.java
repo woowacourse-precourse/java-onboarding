@@ -1,6 +1,14 @@
 package onboarding;
 
 
+// 숫자 number가 매개변수로 주어질 때,                              숫자 저장
+//  1부터 number까지 손뼉을 몇 번 쳐야 하는지 횟수를 return 하도록   369 게임의 박수를 카운트 해주는 함수 구현
+//                                                      369게임은 10 단위로 3개씩 증가, 35라면 십의 자리 3을 0~5번 총 6번을 추가 
+//                                                      같은 방식으로 자리수를 증가시키며 카운트를 구한다.
+//  solution 메서드를 완성하라.
+
+
+
 public class Problem3 {
     public static int solution(int number) {
         
