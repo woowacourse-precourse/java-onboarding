@@ -1,6 +1,5 @@
 package onboarding;
 
-import java.util.ArrayDeque;
 import java.util.Deque;
 
 public class Problem2 {
@@ -60,8 +59,29 @@ public class Problem2 {
      * @return 해독한 문자열
      */
     public static String solution(String cryptogram) {
-        Deque<Character> decryptionCharStack = new ArrayDeque<>();
-        checkCryptogramCharsUsingIdx(decryptionCharStack, cryptogram);
-        return decryptionCharStackToString(decryptionCharStack);
+        Decrypt decrypt = new Decrypt();
+        decrypt.setCryptogram(cryptogram);
+        return decrypt.run();
+    }
+}
+
+class Decrypt {
+    private String cryptogram;
+
+    public void setCryptogram(String cryptogram) {
+        this.cryptogram = cryptogram;
+    }
+
+    public String run() {
+        String beforeDecode = "";
+        String afterDecode = cryptogram;
+
+        while (beforeDecode.length() != afterDecode.length()) {
+            beforeDecode = afterDecode;
+
+            afterDecode = decode(beforeDecode);
+        }
+
+        return afterDecode;
     }
 }
