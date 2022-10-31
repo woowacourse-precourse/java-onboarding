@@ -1,13 +1,21 @@
 package onboarding;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Problem5 {
     static int balance;
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
+        List<Integer> answer = new ArrayList<>();
         balance = money;
+        answer.add(countFiveMillion());
+        answer.add(countMillion());
+        answer.add(countFiveThousand());
+        answer.add(countThousand());
+        answer.add(countFiveHundred());
+        answer.add(countHundred());
+        answer.add(countTen());
+        answer.add(countOne());
         return answer;
     }
 
