@@ -7,12 +7,19 @@ import java.util.TreeSet;
 
 public class Problem6 {
     private static String[][] emailAndNickname;
+    private static boolean[] inAnswerSet;
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
         emailAndNickname = new String[forms.size()][2];
 
         addToArray(forms);
 
+        for (int i = 0; i < emailAndNickname.length; i++) {
+            inAnswerSet = new boolean[emailAndNickname.length];
+            inAnswerSet[i] = true;
+
+            checkDuplicatedNickname(i);
+        }
 
         return answer;
     }
@@ -27,4 +34,18 @@ public class Problem6 {
             emailAndNickname[i][1] = nickname;
         }
     }
+
+    private static void checkDuplicatedNickname(int nowIndex) {
+        String s = emailAndNickname[nowIndex][1];
+
+        for (int i = 0; i < s.length() - 1; i++) {
+            StringBuilder sb = new StringBuilder();
+            sb.append(s.charAt(i));
+            sb.append(s.charAt(i + 1));
+            String s2 = sb.toString();
+
+            haveThisWord(s2, nowIndex);
+        }
+    }
+    
 }
