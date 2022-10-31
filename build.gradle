@@ -6,16 +6,16 @@ repositories {
     mavenCentral()
     maven { url 'https://jitpack.io' }
 }
-
+sourceCompatibility = '11'
 dependencies {
     implementation 'com.github.woowacourse-projects:mission-utils:1.0.0'
 }
 
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(11)
-    }
-}
+//java {
+//    toolchain {
+//        languageVersion = JavaLanguageVersion.of(11)
+//    }
+//}
 
 test {
     useJUnitPlatform()
