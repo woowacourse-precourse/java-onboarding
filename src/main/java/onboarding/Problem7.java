@@ -13,23 +13,10 @@ public class Problem7 {
             String user1 = f.get(0);
             String user2 = f.get(1);
 
-            // 새로운 이름일 경우
-            if(!friendList.containsKey(user1)) {
-                friendList.put(user1, new ArrayList<>());
-                friendList.get(user1).add(user2);
-            }
-            if(!friendList.containsKey(user2)) {
-                friendList.put(user2, new ArrayList<>());
-                friendList.get(user2).add(user1);
-            }
-
-            // 1번 이상 나온 이름일 경우
-            if(friendList.containsKey(user1)) {
-                friendList.get(user1).add(user2);
-            }
-            if(friendList.containsKey(user2)) {
-                friendList.get(user2).add(user1);
-            }
+            friendList.put(user1, friendList.getOrDefault(user1, new ArrayList<>()));
+            friendList.put(user2, friendList.getOrDefault(user2, new ArrayList<>()));
+            friendList.get(user1).add(user2);
+            friendList.get(user2).add(user1);
 
             if(user1.equals(user) || user2.equals(user)) continue;
             if(!scores.containsKey(user1)) scores.put(user1, 0);
@@ -47,9 +34,7 @@ public class Problem7 {
 
         // 방문한 횟수
         for(String visitor : visitors) {
-            //if(friendList.get(user).contains(visitor)) continue; // visitor 가 user 의 친구일 경우
-            if(!scores.containsKey(visitor)) scores.put(visitor, 1);  // 그동안 언급되지 않았던 user 일 경우
-            scores.put(visitor, (scores.get(visitor) + 1)); // 기존 점수 + (1 * 방문 수)
+            scores.put(visitor, (scores.getOrDefault(visitor, 0) + 1));
         }
 
         List<Map.Entry<String, Integer> > scoreList = new LinkedList<>(scores.entrySet());
@@ -60,14 +45,13 @@ public class Problem7 {
             {
                 if(o1.getValue() == o2.getValue()) {
                     return o1.getKey().compareTo(o2.getKey()); // 점수가 같으면 이름순으로 정렬
-                } else {
-                    return o2.getValue().compareTo(o1.getValue()); // 점수를 내림차순으로 정렬
                 }
+                return o2.getValue().compareTo(o1.getValue()); // 점수를 내림차순으로 정렬
             }
         });
 
         int cnt = 0; // 추천한 횟수 카운트
-        HashMap<String, Integer> temp = new HashMap<String, Integer>();
+        Map<String, Integer> temp = new HashMap<String, Integer>();
         for (Map.Entry<String, Integer> candidate : scoreList) {
             if(friendList.get(user).contains(candidate.getKey())) continue;
             if(cnt == 5) break;                  // 5명 추천이 끝났으면 실행 종료
