@@ -56,4 +56,16 @@ public class Crew {
         }
         return twoLetterList;
     }
+
+    public boolean isOverlappedWith(Crew crew) {
+        List<String> twoLetterList = crew.getTwoLetterListFromNickname();
+        boolean duplicateStatus = false;
+        int index = 0;
+        while(!duplicateStatus && index < twoLetterList.size()) {
+            String twoLetter = twoLetterList.get(index);
+            duplicateStatus = this.nickname.contains(twoLetter);
+            index++;
+        }
+        return duplicateStatus;
+    }
 }
