@@ -15,6 +15,25 @@ class Problem1 {
 
     }
 
+    /**
+     * 페이지 정보를 기반으로 계산된 2개의 수를 비교
+     * @param pages 페이지 정보
+     * @return 두 페이지 중 가장 큰 수
+     */
+    private static int getBiggerNumberAtPages(List<Integer> pages) {
+        int leftPage = pages.get(0);
+        int rightPage = pages.get(1);
+        int bestLeftPage = getBiggerNumberAtAddOrMultiply(leftPage);
+        int bestRightPage = getBiggerNumberAtAddOrMultiply(rightPage);
+
+        return Math.max(bestLeftPage, bestRightPage);
+    }
+
+    /**
+     * 곱하거나 더한 수 중 큰 수 구하기
+     * @param number 숫자
+     * @return 큰 수
+     */
     private static int getBiggerNumberAtAddOrMultiply(int number) {
         int[] oneLetterNumbers = getOneLetterNumbers(number);
 
@@ -68,5 +87,6 @@ class Problem1 {
 
         return oneLetterNumber.stream().mapToInt(i -> i).toArray();
     }
+
 
 }
