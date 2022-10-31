@@ -15,6 +15,11 @@ public class Problem2 {
     }
 
     private static boolean isAnyRemovable(List<Character> characterList) {
+        for (int i = 0; i < characterList.size()-1; i++) {
+            if (characterList.get(i) == characterList.get(i + 1)) {
+                return true;
+            }
+        }
         return false;
     }
 
