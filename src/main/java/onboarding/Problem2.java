@@ -9,8 +9,14 @@ package onboarding;
 // cryptogram은 알파벳 소문자로만 이루어져 있다.
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        Problem2 p2 = new Problem2();
+        while (true) {
+            int index = p2.findIndexIfDuplicate(cryptogram);
+            if (index == -1) {
+                return cryptogram;
+            }
+            cryptogram = p2.deleteDuplicate(cryptogram, index);
+        }
     }
 
     public int findIndexIfDuplicate(String value) {
@@ -21,4 +27,16 @@ public class Problem2 {
         }
         return -1;
     }
+
+    public String deleteDuplicate(String value, int index) {
+        StringBuilder result = new StringBuilder();
+        for (int i = 0; i < value.length(); i++) {
+            if (i == index || i == index + 1) {
+                continue;
+            }
+            result.append(value.charAt(i));
+        }
+        return result.toString();
+    }
+
 }
