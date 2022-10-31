@@ -3,13 +3,11 @@ package onboarding;
 public class Problem4 {
     public static char convertAlphabet(char alphabet) {
         int convertAscii = 0;
-        int ascii = 0;
+        int ascii = (int)alphabet;
         if(Character.isUpperCase(alphabet)){
-            ascii = (int)alphabet;
-            convertAscii = Math.abs(155 - ascii);
+            convertAscii = 155 - ascii;
         } else if (Character.isLowerCase(alphabet)) {
-            ascii = (int)alphabet;
-            convertAscii = Math.abs(219 - ascii);
+            convertAscii = 219 - ascii;
         }
         char convert = (char)convertAscii;
         return convert;
