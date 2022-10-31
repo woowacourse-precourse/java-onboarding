@@ -17,4 +17,9 @@ class Problem1 {
     private static boolean isConsecutivePages(int startPage, int endPage) {
         return startPage + 1 == endPage;
     }
+
+    //페이지의 왼쪽면이 홀수이고 오른쪽 면이 짝수인치 체크
+    private static boolean isCorrectOddAndEven(int startPage, int endPage) {
+        return startPage % 2 == 1 && endPage % 2 == 0;
+    }
 }
