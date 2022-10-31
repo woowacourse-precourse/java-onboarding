@@ -13,9 +13,10 @@ public class Problem7 {
             List<String> scoreTargets = friendMap.get(userFriend);
             plusFriendScore(userScore, scoreTargets);
         }
+        // 방문자 점수 주기
+        plusVisitorScore(visitors, userScore);
         return List.of("");
     }
-
 
     private static void plusFriendScore(Map<String, Integer> userScore, List<String> scoreTargets) {
         for (String target : scoreTargets) {
@@ -32,12 +33,24 @@ public class Problem7 {
         return friendMap;
     }
 
-
     public static void makeFriends(Map<String, List<String>> userFriends, String me, String friend) {
         List<String> friendList = userFriends.getOrDefault(me, Collections.emptyList());
         List<String> newFriendList = new ArrayList<>(friendList);
         newFriendList.add(friend);
         userFriends.put(me, newFriendList);
     }
+    private static List<Map.Entry<String, Integer>> getRecommendList(Map<String, Integer> userScore) {
+        List<Map.Entry<String, Integer>> entries = userScore.entrySet()
+                .stream().sorted(Map.Entry.comparingByValue()).collect(Collectors.toList());
+        Collections.reverse(entries);
+        return entries;
+    }
+
+    private static void plusVisitorScore(List<String> visitors, Map<String, Integer> userScore) {
+        visitors.forEach(
+                visitor -> userScore.put(visitor, userScore.getOrDefault(visitor, 0) + 1)
+        );
+    }
+
 
 }
