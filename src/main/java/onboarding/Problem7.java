@@ -39,7 +39,13 @@ public class Problem7 {
                 }
             }
         }
-
+        for (int i = 0; i < visitors.size(); i++) {
+            String visitor = visitors.get(i);
+            int tmp = 0;
+            if (candidates.containsKey(visitor))
+                tmp = candidates.get(visitor);
+            candidates.put(visitor, tmp + 1);
+        }
 
         return answer;
     }
