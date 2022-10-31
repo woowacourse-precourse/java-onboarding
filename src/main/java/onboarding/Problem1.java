@@ -17,4 +17,12 @@ class Problem1 {
         }
         return eachDigit;
     }
+
+    private static int sumValue(List<Integer> eachDigit) {
+        int sum = 0;
+        for(Integer digit : eachDigit) {
+            sum = sum + digit;
+        }
+        return sum;
+    }
 }
