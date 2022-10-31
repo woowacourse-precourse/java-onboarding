@@ -9,26 +9,17 @@ public class Problem4 {
             char[] charArray = word.toCharArray();
             String ans = "";
 
-            for(char c : charArray){
-                if( Classification(c) == BIG){
-                    System.out.println("BIG");
-                }
-                if( Classification(c) == SMALL){
-                    ans += ReverseSmall(c);
-                }
-                if( Classification(c) == ETC){
-                    System.out.println("ETC");
-                }
-            }
-            return ans;
-
+            for(char charvalue : charArray){
+                if( Classification(charvalue) == BIG) ans += ReverseBig(charvalue);
+                if( Classification(charvalue) == SMALL) ans += ReverseSmall(charvalue);
+                if( Classification(charvalue) == ETC) ;
+            }return ans;
         }throw new IllegalArgumentException("잘못된 입력값");
     }
 
     /* 기능1 : input 확인 */
     private static boolean CheckInput(String word){
         if(word.length() > 0 && word.length() < 10001){
-            System.out.println(word.length());
             return true;
         }return false;
     }
@@ -43,5 +34,10 @@ public class Problem4 {
     /* 기능3 : 소문자 변환 */
     private static char ReverseSmall(char small){
         return (char)(122-(small-97));
+    }
+
+    /* 기능3 : 대문자 변환 */
+    private static char ReverseBig(char big){
+        return (char)(90-(big-65));
     }
 }
