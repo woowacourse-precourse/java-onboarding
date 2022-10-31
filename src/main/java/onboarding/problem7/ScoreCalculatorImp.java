@@ -28,4 +28,12 @@ public class ScoreCalculatorImp {
 		});
 		return friendScoreMap;
 	}
+
+	private Map<String, Integer> getVisitScoreMap(String user, List<String> visitors) {
+		Map<String, Integer> visitorScoreMap = new HashMap<>();
+		visitors.forEach(visitor -> {
+			visitorScoreMap.merge(visitor, 1, Integer::sum);
+		});
+		return visitorScoreMap;
+	}
 }
