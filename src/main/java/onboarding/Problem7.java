@@ -9,7 +9,6 @@ import java.util.List;
 public class Problem7 {
     private static Users users;
     private static List<String> userFriends;
-    private static boolean isFriendsExist;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         init(user, friends);
@@ -21,7 +20,6 @@ public class Problem7 {
     private static void init(String user, List<List<String>> friends) {
         users = new Users();
         userFriends = new ArrayList<>();
-        isFriendsExist = false;
         addUserFriends(user, friends);
     }
 
@@ -35,9 +33,7 @@ public class Problem7 {
                     User findUser = users.findUserByName(friend);
                     findUser.addFriendScore();
                 });
-                continue;
             }
-            addUserFriends(friendship, user);
         }
         checkUserFriends();
     }
@@ -52,15 +48,6 @@ public class Problem7 {
         return true;
     }
 
-    private static void addUserFriends(List<String> friendship, String user) {
-        isFriendsExist = true;
-        if (friendship.indexOf(user) == 1) {
-            userFriends.add(friendship.get(0));
-        } else if (friendship.indexOf(user) == 0) {
-            userFriends.add(friendship.get(1));
-        }
-    }
-
     private static void createUserInVisitors(List<String> visitors) {
         for (String visitor : visitors) {
             User findUser = users.findUserByName(visitor);
@@ -69,7 +56,7 @@ public class Problem7 {
     }
 
     private static void checkUserFriends() {
-        if (!isFriendsExist) {
+        if(userFriends.isEmpty()) {
             users = new Users();
         }
     }
