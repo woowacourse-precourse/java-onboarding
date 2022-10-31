@@ -16,7 +16,8 @@ public class Problem3 {
     }
 
     private static void isProperNumber(int number){
-        if (number<MIN_NUMBER||number>MAX_NUMBER)throw new IllegalArgumentException();
+        if (number<MIN_NUMBER||number>MAX_NUMBER)
+            throw new IllegalArgumentException("숫자는 1이상 10000이하인 자연수입니다.");
     }
 
     private static int getClapCount(int number){
