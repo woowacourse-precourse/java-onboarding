@@ -21,3 +21,24 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+<br>
+
+---
+
+## 기능 구현 목록
+
+- checkException(String cryptogram)
+  - 문자열의 예외를 검사하는 기능
+- isLowerCaseString(String cryptogram)
+  - 문자열이 소문자로 이루어져있으면 true 반환
+- isValidLengthStringException(String cryptogram)
+  - 문자열의 길이가 유효하면 true 반환
+- isLengthZero(String cryptogram)
+  - 문자열의 길이가 0이면 true 반환
+- isNotMoreDelete(String cryptogram)
+  - 더이상 중복을 제거 할 수 없으면 true 반환
+- deleteOverlapChar(String cryptogram)
+  - 2개 이상의 문자열이 중복일 시 중복 문자를 제거해주고, 중복이 제거된 문자를 리턴 
+- getAnswer(String cryptogram)
+  - 문자열에서 중복이 모두 제거되거나, 길이가 0이 될 때까지 중복을 제거

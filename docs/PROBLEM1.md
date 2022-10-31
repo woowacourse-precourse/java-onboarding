@@ -23,3 +23,22 @@
 | [97, 98] | [197, 198] | 0 |
 | [131, 132] | [211, 212] | 1 |
 | [99, 102] | [211, 212] | -1 |
+
+<br>
+
+---
+
+## 기능 구현 목록
+
+- checkExeption(List<Integer> page)
+  - 잘못된 페이지(ex. {97,100}, {96,97}) 인 경우 예외 처리
+- getResult(int scoreOfPobi, int scoreOfCrong)
+  - 값이 같은 경우에는 Draw 처리, 그게 아니라면 가장 큰 값을 기준으로 값을 반환
+- getMaxValueOfPlayer(List<Integer> pages)
+  - 페이지를 기준으로 플레이어가 얻을 수 있는 가장 큰 값을 반환
+- getMaxValueOfPage(int page)
+  - 페이지의 값을 인수로 받고, 합한 값과 곱한 값 중 더 큰 걸 반환
+- getSumOfPage(String pageTypeOfString)
+  - 페이지의 각 자리를 합한 값을 반환
+- getMultipleOfPage(String pageTypeOfString)
+  - 페이지의 각 자리를 곱한 값을 반환

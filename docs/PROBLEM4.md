@@ -19,3 +19,16 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+<br>
+
+---
+
+## 기능 구현 목록
+
+- isValidRangeString(String word)
+  - 들어온 문자열의 길이가 유효하면 true를 반환해준다.
+- getFrogWord(char alphabet)
+  - 들어온 알파벳을 청개구리 사전을 참고해서 바꿔주고 리턴한다.
+- getAnswer(String word)
+  - 들어온 문자열을 청개구리 사전을 참고해서 바꿔주고 리턴한다.

@@ -24,3 +24,28 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+<br>
+
+---
+
+## 기능 구현 목록
+
+- checkException(String user, List<List<String>> friends, List<String> visitors)
+  - 문제에서 요구하는 예외를 처리해주는 기능
+- isValidUserLength(String user)
+  - user의 길이가 유효한지 확인해주는 기능
+- isValidFriendsLength(List<List<String>> friends)
+  - friends의 길이가 유효한지 확인해주는 기능
+- isValidIdLengthAndIdSmallCaseRegex(String user, List<List<String>> friends, List<String> visitors)
+  - 친구들의 아이디와, 아이디가 소문자로 이루어졌는지 확인해주는 기능
+- isFriendsContainUser(List<String> friends, String user)
+  - 유저와 친구 관계인지 확인해주는 기능
+- updateRecommendScore(String user, int score)
+  - 추천 점수를 올려주는 기능
+- friendsSetup(List<List<String>> friends, String user)
+  - user의 친구 관계를 구해주는 기능
+- removeMyFriendsAndValueIsZero
+  - user와 친구이거나, 추천 점수가 0점이라면 추천 목록에서 제거해주는 기능
+- updateScore(List<List<String>> friends, List<String> visitors)
+  - 친구와 함께아는 친구이거나, 방문자라면 추천 점수를 올려주는 기능

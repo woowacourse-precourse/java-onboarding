@@ -14,3 +14,20 @@
 | --- | --- |
 | 13 | 4 |
 | 33 | 14 |
+
+<br>
+
+---
+
+## 기능 구현 목록
+
+- isValidRangeNumberException(int number)
+  - number가 유효한 범위에 있으면 true 리턴
+- isClapTiming(char numTypeOfChar)
+  - numTypeOfChar 변수가 3, 6, 9에 해당되면 true 리턴
+- makeStringNumber(int number)
+  - 매개변수로 들어온 int형 number를 String 타입으로 바꾼 후 리턴
+- getClapCountByNumber(String numberStr)
+  - 매개변수로 들어온 값으로 박수를 몇 번 쳐야하는지 리턴해준다.
+- getAnswer(int number)
+  - 1 ~ number까지 총 박수를 몇 번 쳐야하는지 알려준다.
