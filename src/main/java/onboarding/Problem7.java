@@ -12,7 +12,10 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Map<String, List<String>> friendList = createFriendList(friends);
         Map<String, Integer> recommendedFriendList = createRecommendedFriendList(user, friendList);
-        visitorScore(friendList.get(user), recommendedFriendList, visitors);
+
+        List<String> userFriendList = getFriendListByName(friendList, user);
+        visitorScore(userFriendList, recommendedFriendList, visitors);
+
         return findNames(recommendedFriendList);
     }
 
@@ -30,7 +33,7 @@ public class Problem7 {
     }
 
     private static void addFriendList(Map<String, List<String>> friendList, String user, String friend) {
-        List<String> userFriends = friendList.getOrDefault(user, new ArrayList<>());
+        List<String> userFriends = getFriendListByName(friendList, user);
         userFriends.add(friend);
         friendList.put(user, userFriends);
     }
@@ -38,17 +41,27 @@ public class Problem7 {
 
     private static Map<String, Integer> createRecommendedFriendList(String user, Map<String, List<String>> friendList) {
         Map<String, Integer> result = new HashMap<>();
-        List<String> userFriends = friendList.getOrDefault(user, new ArrayList<>());
+
+        List<String> userFriends = getFriendListByName(friendList, user);
         for (String userFriend : userFriends) {
-            List<String> friends = friendList.getOrDefault(userFriend, new ArrayList<>());
-            for (String friend : friends) {
-                if (!user.equals(friend)) {
-                    Integer score = result.getOrDefault(friend, 0);
-                    result.put(friend, score + 10);
-                }
-            }
+            List<String> friends = getFriendListByName(friendList, userFriend);
+            friends.stream()
+                    .filter(friend -> isNotUser(user, friend))
+                    .forEach(friend -> addScore(result, friend, 10));
         }
         return result;
+    }
+
+    private static List<String> getFriendListByName(Map<String, List<String>> friendList, String name) {
+        return friendList.getOrDefault(name, new ArrayList<>());
+    }
+
+    private static boolean isNotUser(String user, String target) {
+        return !user.equals(target);
+    }
+
+    private static void addScore(Map<String, Integer> content, String name, int score) {
+        content.put(name, content.getOrDefault(name, 0) + score);
     }
 
     private static void visitorScore(List<String> userFriendList, Map<String, Integer> recommendedFriendList, List<String> visitors) {
