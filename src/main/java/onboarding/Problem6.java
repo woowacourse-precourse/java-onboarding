@@ -4,37 +4,44 @@ import java.util.*;
 
 public class Problem6 {
 
-    //두 글자씩 문자 나누기
-    private static List<String> divideByTwoChars(String nickNames) {
-        List<String> eachTwoChars = new ArrayList<>();
+    private final static int NUM_OF_DUPLICATE_CRITERIA = 2; //중복 기준 글자 수
 
-        for (int i = 0; i < nickNames.length() - 1; i++) {
-            eachTwoChars.add("" + nickNames.charAt(i) + nickNames.charAt(i + 1));
+    //중복 기준 글자로 문자 나누기
+    private static List<String> divideChars(String nickNames) {
+        List<String> eachChars = new ArrayList<>();
+        String eachChar;
+
+        for (int i = 0; i < nickNames.length() - (NUM_OF_DUPLICATE_CRITERIA-1); i++) {
+            eachChar = "";
+            for (int j = 0; j < NUM_OF_DUPLICATE_CRITERIA; j++) {
+                eachChar += nickNames.charAt(i + j);
+            }
+            eachChars.add(eachChar);
         }
 
-        return eachTwoChars;
+        return eachChars;
     }
 
     //중복 제거하기
-    private static List<String> removeRepeated(List<String> containRepeated) {
+    private static List<String> removeRepeated(List<String> includeRepeated) {
 
-        Set<String> set = new HashSet<>(containRepeated);
-        List<String> singleList = new ArrayList<>(set);
-        return singleList;
+        Set<String> set = new HashSet<>(includeRepeated);
+        List<String> excludeRepeated = new ArrayList<>(set);
+        return excludeRepeated;
     }
 
     //중복되는 문자 list 반환
-    private static List<String> findRepeatedWords(List<String> allTwoChars) {
+    private static List<String> findRepeatedChars(List<String> allChars) {
 
-        List<String> repeatedWords = new ArrayList<>();
+        List<String> repeatedChars = new ArrayList<>();
 
-        for (String word : allTwoChars) {
-            if (2 <= Collections.frequency(allTwoChars, word)) {
-                repeatedWords.add(word);
+        for (String chars : allChars) {
+            if (2 <= Collections.frequency(allChars, chars)) {
+                repeatedChars.add(chars);
             }
         }
 
-        return repeatedWords;
+        return repeatedChars;
     }
 
     public static List<String> solution(List<List<String>> forms) {
@@ -42,9 +49,9 @@ public class Problem6 {
         List<String> answer = new ArrayList<>();
         List<String> emails = new ArrayList<>();
 
-        List<List<String>> indexTwoChars = new ArrayList<>();
-        List<String> allTwoChars = new ArrayList<>();
-        List<String> repeatedWords = new ArrayList<>();
+        List<List<String>> dividedCharsWithSameFormsIndex = new ArrayList<>();
+        List<String> allChars = new ArrayList<>();
+        List<String> repeatedChars = new ArrayList<>();
 
         String nickname;
 
@@ -52,26 +59,24 @@ public class Problem6 {
         for (int i = 0; i < forms.size(); i++) {
             nickname = forms.get(i).get(1);
 
-            //닉네임을 나눈 리스트의 인덱스가 forms 닉네임 인덱스와 같은 이중리스트
-            indexTwoChars.add(removeRepeated(divideByTwoChars(nickname)));
+            dividedCharsWithSameFormsIndex.add(removeRepeated(divideChars(nickname)));
             //중복 단어를 찾기 위한 리스트
-            allTwoChars.addAll(removeRepeated(divideByTwoChars(nickname)));
+            allChars.addAll(removeRepeated(divideChars(nickname)));
         }
 
         //다른 크루와 중복되는 문자 list 받기
-        if (allTwoChars.size() != allTwoChars.stream().distinct().count()) {
-            repeatedWords.addAll(removeRepeated(findRepeatedWords(allTwoChars)));
+        if (allChars.size() != allChars.stream().distinct().count()) {
+            repeatedChars.addAll(removeRepeated(findRepeatedChars(allChars)));
         }
 
         //이중리스트에 담은 분리문자들 중 중복문자가 있을 경우 같은 인덱스로 forms에서 이메일 찾기
-        for (int i = 0; i < indexTwoChars.size(); i++) {
-            for (String repeatedWord : repeatedWords) {
-                if (indexTwoChars.get(i).contains(repeatedWord)) {
+        for (int i = 0; i < dividedCharsWithSameFormsIndex.size(); i++) {
+            for (String repeatedWord : repeatedChars) {
+                if (dividedCharsWithSameFormsIndex.get(i).contains(repeatedWord)) {
                     emails.add(forms.get(i).get(0));
                 }
             }
         }
-
         //중복제거와 오름차순정렬
         answer.addAll(removeRepeated(emails));
         answer.sort(Comparator.naturalOrder());
