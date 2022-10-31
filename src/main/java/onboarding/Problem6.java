@@ -30,6 +30,19 @@ public class Problem6 {
         return result;
     }
 
+    static List<String> addEmailList(List<String> emailPair, Map<String, String> formsMap,List<String> prevList) {
+        List<String> resultList = prevList;
+        String email1 = emailPair.get(0);
+        String email2 = emailPair.get(1);
+
+        if (isSimilar(formsMap.get(email1), formsMap.get(email2))){
+            resultList.add(email1);
+            resultList.add(email2);
+        }
+
+        return resultList;
+    }
+
     static boolean isSimilar(String name1, String name2){
 
         Stream<String> tokenStream = getTokens(name1).stream();
