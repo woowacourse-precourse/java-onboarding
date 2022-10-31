@@ -9,6 +9,8 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         HashMap<String, Integer> scoreMap = new HashMap<>();
         HashMap<String, List<String>> friendsMap = new HashMap<>();
+        findFriendShip(friends, friendsMap);
+        calculateRelatedFriends(user, friendsMap, scoreMap);
         List<String> answer = Collections.emptyList();
         return answer;
     }
@@ -54,5 +56,11 @@ public class Problem7 {
 
     public static void addTenPoints(String other, int numberOfRelatedFriends, HashMap<String, Integer> scoreMap){
         scoreMap.put(other, scoreMap.getOrDefault(other,0) + 10*numberOfRelatedFriends);
+    }
+
+    public static void addOnePoint(String user, String visitor, HashMap<String, Integer> scoreMap){
+        if(visitor!=user){
+            scoreMap.put(visitor, scoreMap.getOrDefault(visitor,0)+1);
+        }
     }
 }
