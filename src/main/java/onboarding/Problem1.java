@@ -3,15 +3,6 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
-    /*
-    * 다음의 기능을 하는 클래스와 메서드를 구현.
-    * 1. gamer1과 gamer2의 리스트를 가지고 다음의 기능들을 가진 클래스 PageNumGame
-    * 2. 각 자리 숫자를 더하는 메서드 sumValue
-    * 3. 각 자리 숫자를 곱하는 메서드 mulValue
-    * 4. 왼쪽 페이지와 오른쪽 페이지의 각 자리 숫자를 더하고 곱하고 비교하여 가장 큰수를 리턴하는 메서드 getMaxValue
-    * 5. 점수를 비교하여 승자를 정하는 메서드 whoIsWinner
-    * 6. 예외사항인지 검사하는 메서드 checkException
-    * */
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         PageNumGame pobiCrong = new PageNumGame(pobi, crong);
