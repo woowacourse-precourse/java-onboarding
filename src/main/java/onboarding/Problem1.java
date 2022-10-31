@@ -4,22 +4,7 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if ((isPageNotEmpty(pobi) && isPageNotEmpty(crong)) == false) {
-            return -1;
-        }
-        if ((isTwoPages(pobi) && isTwoPages(crong)) == false) {
-            return -1;
-        }
-
-        if ((isValidPageNumber(pobi) && isValidPageNumber(crong)) == false) {
-            return -1;
-        }
-
-        if ((isValidPlace(pobi) && isValidPlace(crong)) == false) {
-            return -1;
-        }
-
-        if ((isGapOfPagesOne(pobi) && isGapOfPagesOne(crong)) == false) {
+        if (isExceptionExists(pobi, crong)) {
             return -1;
         }
 
@@ -33,6 +18,27 @@ class Problem1 {
             return 1;
         }
         return 2;
+    }
+
+    public static boolean isExceptionExists(List<Integer> pobi, List<Integer> crong) {
+        if ((isPageNotEmpty(pobi) && isPageNotEmpty(crong)) == false) {
+            return true;
+        }
+        if ((isTwoPages(pobi) && isTwoPages(crong)) == false) {
+            return true;
+        }
+
+        if ((isValidPageNumber(pobi) && isValidPageNumber(crong)) == false) {
+            return true;
+        }
+        if ((isValidPlace(pobi) && isValidPlace(crong)) == false) {
+            return true;
+        }
+
+        if ((isGapOfPagesOne(pobi) && isGapOfPagesOne(crong)) == false) {
+            return true;
+        }
+        return false;
     }
 
     public static boolean isTwoPages(List<Integer> page) {
