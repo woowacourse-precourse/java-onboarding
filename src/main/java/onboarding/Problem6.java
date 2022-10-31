@@ -12,7 +12,10 @@ public class Problem6 {
                 String tmp = name.substring(j,j+2);
                 for(int k=i+1; k<forms.size(); k++){
                     String tmp2 = forms.get(k).get(1);
-                    if(tmp2.contains(tmp)) answer.add(forms.get(k).get(0));
+                    if(tmp2.contains(tmp)) {
+                        answer.add(forms.get(k).get(0));
+                        answer.add(forms.get(i).get(0));
+                    }
                 }
             }
         }
