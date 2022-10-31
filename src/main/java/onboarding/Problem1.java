@@ -64,6 +64,8 @@ class Gamer {
 }
 
 class Problem1 {
+    private static final int STRAT_PAGE = 1;
+    private static final int END_PAGE = 400;
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         // 입력값에 대한 예외처리
         if (isException(pobi) || isException(crong)) {
@@ -82,8 +84,8 @@ class Problem1 {
         return 2;
     }
 
-    private static boolean inbound(int page) {
-        return page >= 1 && page <= 400;
+    private static boolean isInbound(int page) {
+        return page >= STRAT_PAGE && page <= END_PAGE;
     }
 
     private static boolean isOdd(int page) {
@@ -98,7 +100,7 @@ class Problem1 {
         int leftPage = pages.get(0);
         int rightPage = pages.get(1);
 
-        if (!inbound(leftPage) || !inbound(rightPage)) {
+        if (!isInbound(leftPage) || !isInbound(rightPage)) {
             return true;
         }
 
