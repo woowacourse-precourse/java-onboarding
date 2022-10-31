@@ -10,11 +10,17 @@ class Problem1 {
 			answer = -1;
 			return answer;
 		}
-		int pobiHighScore = scoreCompare(addHighScore(pobi),multiHighScore(crong));
-		int crongHighScore;
+		int pobiHighScore = scoreCompare(addHighScore(pobi),multiHighScore(pobi));
+		int crongHighScore = scoreCompare(addHighScore(crong),multiHighScore(crong));
 		//각자 수 가져와서 더하기 따로 곱하기 따로 함수 만들어서 높은수 추출
-		//추출한 수 비교하는 함수 하나 더 만듬
-		//더하기,곱하기 비교
+		if(pobiHighScore > crongHighScore) {
+			return answer = 1;
+		}else if(pobiHighScore < crongHighScore) {
+			return answer = 2;
+		}else if(pobiHighScore == crongHighScore) {
+			return answer = 0;
+		}
+		
 		//점수비교 후 1,2,0 return 만들고
 		return answer;
 	}
@@ -23,9 +29,7 @@ class Problem1 {
 		int leftPage = pageList.get(0);
 		int rightPage = pageList.get(1);
 		
-		if(rightPage - leftPage != 1) return true;
-		if(leftPage / 2 != 1 ) return true;
-        if(rightPage / 2 != 0 ) return true;
+		if(rightPage - leftPage != 1 && leftPage / 2 != 1 && rightPage / 2 != 0) return true;
 		return false;
 	}
 	public static int addScore(int page) {
