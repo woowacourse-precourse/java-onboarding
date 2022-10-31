@@ -26,22 +26,18 @@
 
 ## ✅ 구현 기능 목록
 1. 각 자리 숫자를 모두 더하는 함수
-    - getSumOfDigits
-    - 파라미터 타입: int
-    - 반환 타입: int
+    - int getSumOfDigits(int number)
 2. 각 자리 숫자를 모두 곱하는 함수
-    - getMultipliedOfDigits
-    - 파라미터 타입: int
-    - 반환 타입: int
+    - int getMultipliedOfDigits(int number)
 3. 1, 2를 이용해 계산한 최종 점수를 반환하는 함수
-    - getScore
-    - 파라미터 타입: List<Integer>
-    - 반환 타입: int
+    - int getScore(int leftPage, int rightPage)
 4. 예외사항을 처리하기 위해 값을 검사하는 함수
-	- isValid
-	- 파라미터 타입: Integer, Integer
-	- 반환 타입: boolean
+	- boolean isValid(Integer number1, Integer number2)
 	- 시작면이나 마지막면이 나온 경우 (ex: null, 1)
-	- 페이지가 순서대로 주어지지 않은 경우 (ex: 99, 102)
 	- 각 페이지가 홀수, 짝수가 아닌 경우 (ex: 100, 101)
+	- 페이지가 순서대로 주어지지 않은 경우 (ex: 99, 102 or 101, 100)
+5. 두 개의 점수를 비교한 결과를 정수로 표현하는 함수
+    - int compareScore(int score1, int score2)
+    - 유효하지 않은 점수를 전달받았을 경우 -1을 반환한다.
+    - 동등하면 0을, score1이 더 크면 1을, score2가 더 크면 2를 반환한다.
 
