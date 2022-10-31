@@ -8,6 +8,8 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         List<Integer> pobiScore = new ArrayList<>();
         List<Integer> crongScore = new ArrayList<>();
+        int pobiScoreFinal = 0;
+        int crongScoreFinal = 0;
 
         for (int i = 0; i < pobi.size(); i++) {
             int pobiPage = pobi.get(i);
