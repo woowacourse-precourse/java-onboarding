@@ -101,7 +101,7 @@ public class Problem7 {
         if (userFriendArr != null) {
             List<String> userFriendList = new ArrayList<>(Arrays.asList(userFriendArr));
             for (Map.Entry<String, Integer> entry : entries) {
-                if ((i > 5) | entry.getValue() < 1) {
+                if ((i >= 5) | entry.getValue() < 1) {
                     return result;
                 }
                 if (!userFriendList.contains(entry.getKey())) {
@@ -112,11 +112,12 @@ public class Problem7 {
             }
         } else {
             for (Map.Entry<String, Integer> entry : entries) {
-                if ((i > 5) | entry.getValue() < 1) {
+                if ((i >= 5) | entry.getValue() < 1) {
                     return result;
                 }
                 result.add(entry.getKey());
                 i++;
+                i = i;
             }
         }
         return result;
