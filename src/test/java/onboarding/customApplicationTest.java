@@ -177,6 +177,19 @@ public class customApplicationTest
             List<String> result = List.of("제이","이엠");
             assertThat(Problem6.stringTrim2(forms)).isEqualTo(result);
         }
+        @Test
+        void case7()
+        {
+            List<List<String>> forms = List.of(
+                    List.of("jm@email.com", "제이엠"),
+                    List.of("jdm@email.com", "제이엠"),
+                    List.of("jam@email.com", "제이엠"),
+                    List.of("jxam@email.com", "제이엠"));
+            List<String> tmp = Problem6.stringTrim2(forms);
+            List<String> result = List.of("제이","이엠");
+            List<Integer> deleteIdx= Problem6.deleteIdx(tmp,Problem6.nickNameList(forms));
+            assertThat(Problem6.deleteForms(forms,deleteIdx)).isEqualTo(result);
+        }
 
     }
 

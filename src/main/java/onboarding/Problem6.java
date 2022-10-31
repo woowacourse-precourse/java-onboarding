@@ -1,7 +1,10 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
+
 import Exception.EmailFormException;
 import Exception.RangeException;
 import Exception.KoreanException;
@@ -9,7 +12,6 @@ import Exception.KoreanException;
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
-        List<String> dupCheck = new ArrayList<>();
         try {
             crewSizeCheck(forms);
             for (int i=0;i<=1;i++)
@@ -19,8 +21,14 @@ public class Problem6 {
                 nickNameLengthCheck(forms.get(i).get(1));
                 koreanCheck(forms.get(i).get(1));
             }
-            dupCheck=stringTrim2(forms);
             answer = new ArrayList<>();
+            List <String> nickName = nickNameList(forms);
+            List <String> trim = stringTrim2(forms);
+            List <Integer> deleteIdx = deleteIdx(trim,nickName);
+            System.out.println("nick : "+nickName);
+            System.out.println("trim : "+trim);
+            System.out.println("deleteIdx : "+deleteIdx);
+            answer.addAll(deleteForms(forms,deleteIdx));
         }catch (EmailFormException e)
         {
             //문제에 예외를 어떻게 처리하라는 말이 없음
@@ -117,6 +125,50 @@ public class Problem6 {
                 trim.add(tmp);
             }
         }
-        return trim;
+        List <String> distinct =  trim.stream().distinct().collect(Collectors.toList());
+
+        return distinct;
+    }
+    public static List<Integer> deleteIdx(List<String>dupCheck,List<String> nickName)
+    {
+        List<Integer> deleteIdx = new ArrayList<>();
+        List<Integer> tmpIdx = new ArrayList<>();
+        for (int j=0;j<dupCheck.size();j++) {
+            int count = 0;
+            for (int i = 0; i < nickName.size(); i++) {
+                if(nickName.get(i).contains(dupCheck.get(j)))
+                {
+                    tmpIdx.add(i);
+                    count++;
+                }
+            }
+            if(count>1)
+            {
+                deleteIdx.addAll(tmpIdx);
+            }
+        }
+        List <Integer> distinct =  deleteIdx.stream().distinct().collect(Collectors.toList());
+        List <Integer> sortedDeleteIdx = distinct.stream().sorted(Comparator.reverseOrder()).collect(Collectors.toList());
+        return sortedDeleteIdx;
+    }
+    public static List<String> nickNameList(List<List<String>> forms)
+    {
+        List <String> nickNameList = new ArrayList<>();
+        for (int i=0;i<forms.size();i++)
+        {
+            nickNameList.add(forms.get(i).get(1));
+        }
+        return nickNameList;
+    }
+    public static List<String> deleteForms (List<List<String>>forms,List<Integer> deleteIdx)
+    {
+        List<List<String>> tmpForms = new ArrayList<>();
+        tmpForms.addAll(forms);
+        List <String> answer = new ArrayList<>();
+        for (int i=0;i<deleteIdx.size();i++)
+        {
+            answer.add(tmpForms.get(deleteIdx.get(i).intValue()).get(0));
+        }
+        return answer.stream().sorted().collect(Collectors.toList());
     }
 }
