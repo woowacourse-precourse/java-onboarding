@@ -21,6 +21,7 @@ public class Problem4 {
 
                 if (Character.isLowerCase(aChar)) {
                     reverseChars[i] = (char) (LOWER_CASE_STANDARD - aChar);
+                    continue;
                 }
 
             }
