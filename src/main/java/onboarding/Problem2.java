@@ -24,7 +24,24 @@ public class Problem2 {
     }
 
     private static void deduplicate(List<Character> characterList, boolean flag) {
-
+        while (flag) {
+            for (int i = 0; i < characterList.size()-1; i++) {
+                if (characterList.get(i) == characterList.get(i + 1)) {
+                    int count = 0;
+                    for (int j = i; j < characterList.size(); j++) {
+                        if (characterList.get(j) != characterList.get(i)) {
+                            break;
+                        }
+                        count++;
+                    }
+                    for (int j = 0; j < count; j++) {
+                        characterList.remove(i);
+                    }
+                    i--;
+                }
+            }
+            flag = isAnyRemovable(characterList);
+        }
     }
 
     private String charListToString(List<Character> characterList) {
