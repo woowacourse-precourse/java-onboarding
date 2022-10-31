@@ -4,7 +4,10 @@ import java.util.stream.Stream;
 
 public class Problem3 {
     public static int solution(int number) {
-        int answer = 0;
+        int answer;
+
+        // 0. 예외체크
+        checkException(number);
 
         // 1. number 을 1 ~ number 까지 배열로 나열
         int[] numberArr = intToArray(number);
@@ -62,5 +65,12 @@ public class Problem3 {
         }
 
         return result;
+    }
+
+    // number는 1 이상 10,000 이하 자연수 예외처리
+    private static void checkException(int number) throws IllegalArgumentException {
+        if(!(number >= 1 && number <= 10_000)) {
+            throw new IllegalArgumentException("number 은 1 이상 10,000 이하인 자연수만 가능합니다.");
+        }
     }
 }
