@@ -5,11 +5,12 @@ import java.util.stream.Collectors;
 
 /**
  * 📚 기능 목록
- *
- * 1. 사용자의 친구를 구하는 기능
- * 2. 함께 아는 친구(위에서 구한 친구)를 가진 사용자를 구하는 기능
- * 3. 점수를 부여하는 기능
- * 4. 결과를 정렬하는 기능
+ * 1. 사전 객체 - Dictionary
+ * 1-1. 사용자의 친구와 전체 인원의 점수 map을 가진다. - friends, memberAndScore
+ * 1-2. 사용자와 친구관계 List를 받아 위 변수를 초기화한다. - Dictionary(String user, List friendsForm)
+ * 1-3. 주어진 친구관계 List를 받아 해당하는 인원에게 점수를 적용한다. - updateScoreByRelationShip
+ * 1-4. 주어진 방문자 목록을 받아 해당하는 인원에게 점수를 적용한다. - updateScoreByVisit
+ * 1-5. 가지고있는 정보를 토대로 주어진 조건에 맞춰 결과값을 반환한다. - getResult
  */
 public class Problem7 {
 
