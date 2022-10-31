@@ -6,10 +6,16 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
-        System.out.println(selectLargerPageResult(pobi));
         return answer;
     }
-    
+
+    private static int selectWinner(List<Integer> firstTarget, List<Integer> secondTarget){
+        int firstTargetResult = selectLargerPageResult(firstTarget);
+        int secondTargetResult = selectLargerPageResult(secondTarget);
+
+        return Integer.compare(firstTargetResult, secondTargetResult);
+
+    }
 
     private static int selectLargerPageResult(List<Integer> target){
         Integer left = selectMultiplyOrSumLarger(target.get(0));
