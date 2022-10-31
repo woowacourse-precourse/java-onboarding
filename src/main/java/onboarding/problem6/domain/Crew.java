@@ -82,4 +82,8 @@ public class Crew {
     public int hashCode() {
         return Objects.hash(nickname, email);
     }
+
+    public String getEmail() {
+        return email;
+    }
 }
