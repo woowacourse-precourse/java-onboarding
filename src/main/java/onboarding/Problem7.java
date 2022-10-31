@@ -82,6 +82,19 @@ public class Problem7 {
                 return obj2.getValue().compareTo(obj1.getValue());
             }
         });
+
+        //7. 리스트에 있는 값을 문제의 조건에 따라 answer에 추가 후 반환
+        int cnt = 0;
+        for(Map.Entry<String, Integer> entry : list_entries)
+        {
+            if (entry.getValue() > 0)
+            {
+                answer.add(entry.getKey());
+                cnt += 1;
+            }
+            if(cnt == 5)
+                break;
+        }
         return answer;
     }
 }
