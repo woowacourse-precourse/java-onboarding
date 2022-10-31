@@ -77,15 +77,20 @@ public class Problem7 {
     private static List<String> findNames(Map<String, Integer> recommendedFriendList) {
         List<RecommendedFriend> collect = recommendedFriendList.keySet()
                 .stream()
-                .map(name -> new RecommendedFriend(name, recommendedFriendList.get(name)))
+                .map(name -> createRecommendedFriend(name, recommendedFriendList))
                 .sorted(Collections.reverseOrder())
                 .collect(Collectors.toList());
 
         return filterByLimitSize(collect);
     }
 
+    private static RecommendedFriend createRecommendedFriend(String name, Map<String, Integer> recommendedFriendList) {
+        return new RecommendedFriend(name, recommendedFriendList.get(name));
+    }
+
     private static List<String> filterByLimitSize(List<RecommendedFriend> content) {
-        return content.stream().map(RecommendedFriend::getName)
+        return content.stream()
+                .map(RecommendedFriend::getName)
                 .limit(LIMIT_SIZE)
                 .collect(Collectors.toList());
     }
