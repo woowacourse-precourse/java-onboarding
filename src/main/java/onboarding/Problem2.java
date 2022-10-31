@@ -19,7 +19,8 @@ public class Problem2 {
 
     //중복 제거 함수
     private static String deduplication(String cryptogram){
-        String changeString = cryptogram.replaceAll("(([a-zA-Z0-9])\\2+)","");
+        //정규식으로 연속된 문자열 모두 지우기
+        String changeString = cryptogram.replaceAll("(([a-z])\\2+)","");
 
         //원래 문자와 같다면 FALSE 문자 반환
         if(cryptogram.equals(changeString)){
