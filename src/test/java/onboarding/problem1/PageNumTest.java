@@ -1,4 +1,4 @@
-package onboarding;
+package onboarding.problem1;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -10,12 +10,10 @@ import org.junit.jupiter.api.Test;
 class PageNumTest {
 	@Test
 	public void 잘못된_페이지_에러_테스트() {
-		assertThatThrownBy(() -> {
-			PageNum pageNum = new PageNum(1);})
+		assertThatThrownBy(() -> new PageNum(1))
 			.isInstanceOf(IllegalArgumentException.class);
 
-		assertThatThrownBy(() -> {
-			PageNum pageNum = new PageNum(400);})
+		assertThatThrownBy(() -> new PageNum(400))
 			.isInstanceOf(IllegalArgumentException.class);
 	}
 
