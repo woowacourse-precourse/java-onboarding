@@ -7,27 +7,34 @@ public class Problem4 {
         char[] wordArray = word.toCharArray();
 
         for (char c : wordArray) {
-            System.out.println("c = " + c);
-            System.out.println(isUpperOrLower(c));
+
+            if (c == ' ') {
+                answer += ' ';
+                continue;
+            }
+
+            if (Character.isUpperCase(c)) {
+                answer += reverse(c,155);
+            } else {
+                answer += reverse(c,219);
+            }
         }
         return answer;
     }
 
-    public static int isUpperOrLower(char c) {
-        if(Character.isUpperCase(c)){
-            return 1;
-        } else {
-            return 2;
-        }
+
+    public static char reverse(char c, int total) {
+
+        int ascii = c;
+
+        return (char) (total - ascii);
     }
-
-
 
 
     public static void main(String[] args) {
 
         String word = "I love you";
 
-        solution(word);
+        System.out.println(solution(word));
     }
 }
