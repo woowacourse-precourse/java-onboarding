@@ -48,7 +48,7 @@ class Problem1 {
         return multi_answer;
     }
 
-    // main 함수
+    // 작동 함수
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
