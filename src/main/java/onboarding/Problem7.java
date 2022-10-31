@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /*
@@ -54,6 +51,10 @@ class Crew {
         suggestions = new ArrayList<>();
     }
 
+    public List<String> getFriends() {
+        return friends;
+    }
+
     public List<Suggestion> getSuggestions() {
         return suggestions;
     }
@@ -70,8 +71,29 @@ class Crew {
 }
 
 public class Problem7 {
+    private static Map<String, Crew> friendsMap;
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        initFriendsMap(friends);
+
+        return List.of();
+    }
+
+    private static void initFriendsMap(List<List<String>> friends) {
+        friendsMap = new HashMap<>();
+
+        for (List<String> friend : friends) {
+            String crewA = friend.get(0);
+            String crewB = friend.get(1);
+
+            if (!friendsMap.containsKey(crewA)) {
+                friendsMap.put(crewA, new Crew(crewA));
+            }
+            if (!friendsMap.containsKey(crewB)) {
+                friendsMap.put(crewB, new Crew(crewB));
+            }
+
+            friendsMap.get(crewA).getFriends().add(crewB);
+            friendsMap.get(crewB).getFriends().add(crewA);
+        }
     }
 }
