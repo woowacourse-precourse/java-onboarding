@@ -3,10 +3,49 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
-    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+    private static final int FRIEND_COUNT_POINT = 10;
+    private static final int VISITOR_COUNT_POINT = 1;
+
+    public static List<String> solution(String myUser, List<List<String>> friends, List<String> visitors) {
         Map<String, List<String>> friendGraph = createFrinedGraph(friends);
+        List<String> myFriendList = friendGraph.getOrDefault(myUser, Collections.emptyList());
+        Map<String, Integer> friendPoint = new HashMap<>(); // [(andole , 20), (jun, 20), (bedi, 3)]
+
+        // 사용자와 함께 아는 친구의 수 => 10점 추가
+        calculateFriendCountPoint(myUser, friendPoint, myFriendList, friendGraph);
         List<String> answer = Collections.emptyList();
         return answer;
+    }
+
+    public static void calculateFriendCountPoint(String myUser, Map<String, Integer> friendPoint, List<String> myFriendList, Map<String, List<String>> friendGraph){
+        if(myFriendList.isEmpty()){
+            return;
+        }
+        for(String other : friendGraph.keySet()){ // donut, andole, jun, shakevan, mrko(x)
+            countFriend(myUser, other, friendPoint, myFriendList, friendGraph);
+        }
+    }
+
+    public static void countFriend(String myUser, String other, Map<String, Integer> friendPoint, List<String> myFriendList, Map<String, List<String>> friendGraph){
+        if (myUser.equals(other)){ //본인 = mrko
+            return;
+        }
+        if (myFriendList.contains(other)){ // 이미 친구 = donut, shakevan
+            return;
+        }
+        for (String othersFriend : friendGraph.get(other)){ // andole의 친구 목록, jun의 친구 목록 iteration
+            checkHaveSameFriendAndIncreasePoint(other, othersFriend, friendPoint,  myFriendList);
+        }
+    }
+
+    public static void checkHaveSameFriendAndIncreasePoint(String other, String othersFriend, Map<String, Integer> friendPoint, List<String> myFriendList){
+        if (myFriendList.contains(othersFriend)){ // mrko의 친구 목록 중 andole의 친구가 있다면, andole에게 10점 추가
+            if (!friendPoint.containsKey(other)){
+                friendPoint.put(other, FRIEND_COUNT_POINT);
+                return;
+            }
+            friendPoint.put(other, friendPoint.get(other) + FRIEND_COUNT_POINT);
+        }
     }
 
     public static Map<String, List<String>> createFrinedGraph(List<List<String>> friends){
