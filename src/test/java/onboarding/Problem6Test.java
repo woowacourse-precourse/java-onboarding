@@ -4,8 +4,11 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
+import static org.assertj.core.api.Assertions.as;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Nested
@@ -68,4 +71,13 @@ public class Problem6Test {
         List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com", "munk@email.com");
         assertThat(Problem6.solution(forms)).isEqualTo(result);
     }
+
+    @Test
+    @DisplayName("기능1 테스트: 주어진 닉네임에 대해 연속된 두 글자 이상의 문자열 부분집합을 생성한다.")
+    void check_ContinuousSubsetByNickname_Works() {
+        String nickname = "나사라스";
+        Set<String> result = Set.of("나사", "사라", "라스", "나사라", "사라스", "나사라스");
+        assertThat(Problem6.makeContinuousSubSet(nickname)).isEqualTo(result);
+    }
+
 }
