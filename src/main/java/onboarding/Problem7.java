@@ -99,6 +99,19 @@ public class Problem7 {
         user2.addFriend(user1);
     }
 
+    public static void calculateScore(String targetUserName, List<String> visitors){
+        User targetUser = USER_MAP.get(targetUserName);
+        processVisitorsList(visitors);
+        targetUser.addScoreToMutualFriends(MUTUAL_FRIEND_SCORE);
+    }
+
+    public static void processVisitorsList(List<String> visitors){
+        for(String visitorName : visitors){
+            User visitor = getUserFromName(visitorName);
+            visitor.addScore(VISIT_SCORE);
+        }
+    }
+
     public static void addNotFriendUserToList(List<User> userList, User targetUser, User newUser){
         if(targetUser != newUser && targetUser.isNotFriendWith(newUser)){
             userList.add(newUser);
@@ -114,17 +127,10 @@ public class Problem7 {
         return userList;
     }
 
-    public static void processVisitorsList(List<String> visitors){
-        for(String visitorName : visitors){
-            User visitor = getUserFromName(visitorName);
-            visitor.addScore(VISIT_SCORE);
-        }
-    }
-
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         processFriendsList(friends);
-        processVisitorsList(visitors);
+        calculateScore(user, visitors);
         return answer;
     }
 }
