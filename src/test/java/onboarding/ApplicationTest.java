@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 class ApplicationTest {
     @Nested
@@ -122,6 +123,19 @@ class ApplicationTest {
                     List.of("nowm@email.com", "이제엠")
             );
             List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com");
+            assertThat(Problem6.solution(forms)).isEqualTo(result);
+        }
+
+        @Test
+        void case2() {
+            List<List<String>> forms = List.of(
+                    List.of("jun@email.com", "제ㅡ엠"),
+                    List.of("jason@email.com", "ㅡㅡ엠"),
+                    List.of("woniee@email.com", "ㅡ"),
+                    List.of("mj@email.com", "제ㅡ이"),
+                    List.of("nowm@email.com", "ㅡㅡ이")
+            );
+            List<String> result = List.of("jason@email.com", "jun@email.com", "mj@email.com", "nowm@email.com");
             assertThat(Problem6.solution(forms)).isEqualTo(result);
         }
     }
