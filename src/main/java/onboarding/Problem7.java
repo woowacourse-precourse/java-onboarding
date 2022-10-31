@@ -19,11 +19,20 @@ public class Problem7 {
                 if (relation.contains(user)) {
                     break;
                 }
-
             }
         }
         return answer;
     }
+
+    private static void addScore(Map<String, Integer> recommendScore, String knownFriend, int x) {
+        if(recommendScore.containsKey(knownFriend)){
+            recommendScore.replace(knownFriend, recommendScore.get(knownFriend) + x);
+        }
+        if(!recommendScore.containsKey(knownFriend)){
+            recommendScore.put(knownFriend, x);
+        }
+    }
+
     private static void addUserFriend(String user, List<String> userFriendList, List<String> relation) {
         for (String friend : relation) {
             if(friend != user){
