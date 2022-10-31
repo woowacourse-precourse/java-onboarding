@@ -5,6 +5,7 @@ import java.util.regex.Pattern;
 public class Email {
 
 	public static final Pattern EMAIL_COM_DOMAIN_PATTERN = Pattern.compile(".+@email.com");
+
 	private final String email;
 
 	public Email(String email) {
@@ -12,6 +13,10 @@ public class Email {
 		validateFormat(email);
 		validateDomain(email);
 		this.email = email;
+	}
+
+	public String getEmail() {
+		return email;
 	}
 
 	private void validateFormat(String email) {
