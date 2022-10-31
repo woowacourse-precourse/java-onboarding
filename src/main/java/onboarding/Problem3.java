@@ -5,4 +5,15 @@ public class Problem3 {
         int answer = 0;
         return answer;
     }
+    public static int countClaps(int number) {
+        int tmp, cnt = 0;
+        while (number > 0) {
+            tmp = number % 10;
+            if (tmp == 3 || tmp == 6 || tmp == 9)
+                cnt++;
+            number /= 10;
+        }
+        return cnt;
+    }
+
 }
