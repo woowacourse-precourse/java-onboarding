@@ -27,40 +27,50 @@ public class Problem7 {
     private static List<String> findFriends(String user, List<List<String>> friendRelations) {
         List<String> output = new ArrayList<>();
 
-        for(int i = 0; i < friendRelations.size(); i++) {
-            if(friendRelations.get(i).get(0).equals(user))
-                output.add(friendRelations.get(i).get(1));
-            else if(friendRelations.get(i).get(1).equals(user))
-                output.add(friendRelations.get(i).get(0));
+        for(List<String> friendRelation : friendRelations) {
+            String firstOnRelation = friendRelation.get(0);
+            String secondOnRelation = friendRelation.get(1);
+
+            if(firstOnRelation.equals(user)) {
+                output.add(secondOnRelation);
+            } else if(secondOnRelation.equals(user)) {
+                output.add(firstOnRelation);
+            }
         }
 
         return output;
     }
 
     private static void addScoreByFriends(Map<String, Integer> score, String user, List<String> userFriends, List<List<String>> friendRelations) {
-        for(int i = 0; i < friendRelations.size(); i++) {
-            List<String> friendRelation = friendRelations.get(i);
+        for(List<String> friendRelation : friendRelations) {
+            String firstOnRelation = friendRelation.get(0);
+            String secondOnRelation = friendRelation.get(1);
             String possibleFriend;
 
-            if(userFriends.contains(friendRelation.get(0)))
-                possibleFriend = friendRelation.get(1);
-            else if(userFriends.contains(friendRelation.get(1)))
-                possibleFriend = friendRelation.get(0);
-            else
+            if(userFriends.contains(firstOnRelation)) {
+                possibleFriend = secondOnRelation;
+            } else if(userFriends.contains(secondOnRelation)) {
+                possibleFriend = firstOnRelation;
+            } else {
                 continue;
+            }
 
-            if(!(possibleFriend.equals(user) || userFriends.contains(possibleFriend)))
+            if(isNotUserSelfOrFriend(possibleFriend, user, userFriends)) {
                 score.put(possibleFriend, score.getOrDefault(possibleFriend, 0) + 10);
+            }
         }
     }
 
     private static void addScoreByVisitors(Map<String, Integer> score, String user, List<String> userFriends, List<String> visitors) {
-        for(int i = 0; i < visitors.size(); i++) {
-            String possibleFriend = visitors.get(i);
-
-            if(!(possibleFriend.equals(user) || userFriends.contains(possibleFriend)))
-                score.put(possibleFriend, score.getOrDefault(possibleFriend, 0) + 1);
+        for(String visitor : visitors) {
+            if(isNotUserSelfOrFriend(visitor, user, userFriends)) {
+                score.put(visitor, score.getOrDefault(visitor, 0) + 1);
+            }
         }
+    }
+
+    private static boolean isNotUserSelfOrFriend(String possibleFriend, String user, List<String> userFriends) {
+        return !(possibleFriend.equals(user) || userFriends.contains(possibleFriend));
     }
 
     private static List<Map.Entry<String, Integer>> sortScoreMap(Map<String, Integer> scoreMap) {
