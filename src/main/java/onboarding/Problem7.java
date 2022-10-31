@@ -1,6 +1,8 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,9 +27,21 @@ public class Problem7 {
     }
 
 
-    // TODO freinds의 요소중 user가 들어있는 리스트를 뽑는다.
+    // TODO user와 친구 관계인 유저들을 반환하는 메서드
     public static List<String> userFriends (String user, List<List<String>> friends) {
-        return null;
+        List<List<String>> list = new ArrayList<>();
+        List<String> friendsOfUser = new ArrayList<>();
+        for (int i = 0; i < friends.size(); i++) {
+            if (friends.get(i).contains(user)) list.add(friends.get(i));
+        }
+
+        for (int i = 0; i < list.size(); i++) {
+            friendsOfUser.addAll(list.get(i));
+        }
+
+        friendsOfUser.removeAll(Arrays.asList(user));
+        Collections.sort(friendsOfUser);
+        return friendsOfUser;
     }
 
     // TODO 뽑은 요소들에서 user와 친구인 유저를 찾는다.
@@ -35,6 +49,7 @@ public class Problem7 {
         //  visitors를 돌며 2차원배열에 +1
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> users = getUsers(friends);
+        List<String> friendsOfUser = userFriends(user, friends);
         return null;
     }
 }
