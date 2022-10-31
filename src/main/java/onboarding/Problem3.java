@@ -14,9 +14,6 @@ public class Problem3 {
         }
 
         for (int i = 0; i <= number; i++) {
-            System.out.println("---");
-            System.out.println(i);
-            System.out.println("---");
             if((Integer.toString(i).indexOf("3") != -1) || (Integer.toString(i).indexOf("6") != -1)||(Integer.toString(i).indexOf("9") != -1)){
                 answer += Integer.toString(i).chars().filter(c -> c == '3').count();
                 answer += Integer.toString(i).chars().filter(c -> c == '6').count();
