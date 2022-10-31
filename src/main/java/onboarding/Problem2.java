@@ -22,7 +22,7 @@ public class Problem2 {
                     stack.push(c);
                     duplication = c;
                 } else {
-                    if (!stack.isEmpty()) {
+                    if (!stack.isEmpty() && stack.peek()==duplication) {
                         stack.pop();
                     }
                     flag=true;
@@ -32,6 +32,7 @@ public class Problem2 {
             for (char c : stack) {
                 cryptogram += c;
             }
+            System.out.println(cryptogram);
             if(flag==false || cryptogram.length()==0){
                 break;
             }
