@@ -47,6 +47,13 @@ public class Problem7 {
             map.put(str,Collections.frequency(friendsRelationShip, str)*10);
         }
 
+        for(int p=0; p<visitors.size(); p++){
+            for(int q=0; q<userRelationShip.size(); q++){
+                if(visitors.get(p) == userRelationShip.get(q)){
+                    visitors.remove(p);
+                }
+            }
+        }
 
         List<String> answer = Collections.emptyList();
 
