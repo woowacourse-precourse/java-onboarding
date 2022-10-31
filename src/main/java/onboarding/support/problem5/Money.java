@@ -9,6 +9,15 @@ public class Money {
 
     public Money(int money) {
         this.moneyList = new ArrayList<>();
+        for (int type : moneyTypes) {
+            int usedMoney = getUsedMoney(money, type);
+            money -= usedMoney;
+            this.moneyList.add(usedMoney / type);
+        }
+    }
+
+    private int getUsedMoney(int money, int type) {
+        return (money / type) * type;
     }
 
     public List<Integer> getMoneyList() {
