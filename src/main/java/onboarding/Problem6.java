@@ -74,7 +74,8 @@ public class Problem6 {
     }
 
     private static void isProperCrewRange(List<List<String>> forms) {
-        if (forms.size() < MIN_CREW_COUNT || forms.size() > MAX_CREW_COUNT) throw new IllegalArgumentException();
+        if (forms.size() < MIN_CREW_COUNT || forms.size() > MAX_CREW_COUNT)
+            throw new IllegalArgumentException("크루는 1명이상 10000명 이하입니다.");
     }
 
 }
