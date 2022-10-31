@@ -20,8 +20,7 @@ public class Cryptogram {
     }
 
     private boolean outOfRange(String inputString) {
-        int len = inputString.length();
-        if (len > 1000 && len <1)
+        if (inputString.length() > 1000)
             return true;
         return false;
     }
@@ -36,7 +35,7 @@ public class Cryptogram {
         return false;
     }
 
-    private List mapString(String inputString) {
+    private List<String> mapString(String inputString) {
         List<String> mapped = new ArrayList<>();
         for (int i = 0; i< inputString.length(); i++) {
             mapped.add(inputString.substring(i,i+1));
