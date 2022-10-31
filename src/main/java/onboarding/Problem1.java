@@ -37,7 +37,6 @@ class Problem1 {
             page /= 10;
         }
 
-        int bigNumber = Math.max(addSum, multiplySum);
-        return bigNumber;
+        return Math.max(addSum, multiplySum);
     }
 }
