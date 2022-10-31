@@ -62,4 +62,9 @@ public class Problem7 {
             friendshipScore.put(name, score);
         }
     }
+
+    public static void visitCheck(Map<String, Integer> friendshipScore, List<String> visitors) {
+        friendListCheck(friendshipScore, visitors, VISIT);
+    }
+    
 }
