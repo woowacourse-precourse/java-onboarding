@@ -11,5 +11,8 @@ public class CryptogramGenerator {
 
     //2. 크립토그램 변환함수, Cryptogram의 중복 제거 반복호출 후 반환
 
-
+    public String generate(){
+        while(cryptogram.removeDuplicated());
+        return cryptogram.getCryptogram();
+    }
 }
