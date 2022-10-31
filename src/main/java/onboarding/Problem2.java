@@ -24,14 +24,13 @@ public class Problem2 {
 
     private static String getAnswerWithoutDuplicate(String cryptogram) {
         StringBuilder answer = new StringBuilder();
-        boolean isDuplicate;
 
         for (int i = 0; i < cryptogram.length(); i++) {
             char currentCharacter = cryptogram.charAt(i);
             char frontCharacter = getFrontCharacter(i, cryptogram);
             char backCharacter = getBackCharacter(i, cryptogram);
 
-            isDuplicate = isSameCharacter(currentCharacter, frontCharacter) || isSameCharacter(currentCharacter, backCharacter);
+            boolean isDuplicate = isSameCharacter(currentCharacter, frontCharacter) || isSameCharacter(currentCharacter, backCharacter);
 
             if (!isDuplicate) {
                 answer.append(cryptogram.charAt(i));
