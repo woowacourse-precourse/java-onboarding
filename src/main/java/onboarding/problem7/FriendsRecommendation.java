@@ -24,7 +24,16 @@ public class FriendsRecommendation {
         findRecommendationFromVisitors(visitors);
         removeExistFriends();
 
-        return null;
+        // TreeMap 에서 이름 정렬은 완료, Collections.Sort 는 stable 한 sort 이기 때문에 value 에 대한 정렬만 한다.
+        List<Map.Entry<String, Integer>> recommendationsForUserList
+                = new LinkedList<Map.Entry<String, Integer>>(recommendationsForUser.entrySet());
+        Collections.sort(recommendationsForUserList, (src, dest) -> dest.getValue() - src.getValue());
+
+        return recommendationsForUserList
+                .stream()
+                .map(entry -> entry.getKey())
+                .limit(5)
+                .collect(Collectors.toList());
     }
 
     private void findFriendsOfUser(List<List<String>> friends) {
