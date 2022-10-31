@@ -15,8 +15,10 @@ import java.util.List;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+        visitors = new ArrayList<>(visitors);
         List<String> userFriends = findFriends(user,friends);
         List<String> userFOAF = findFOAF(user,friends,userFriends);
+        setVisitors(visitors,userFriends);
         return answer;
     }
 
@@ -49,5 +51,9 @@ public class Problem7 {
         }
         userFOAF.removeAll(userFriends);
         return userFOAF;
+    }
+
+    static void setVisitors(List<String> visitors, List<String> userFriends) {
+        visitors.removeAll(userFriends);
     }
 }
