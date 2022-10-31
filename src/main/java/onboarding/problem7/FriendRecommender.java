@@ -1,34 +1,37 @@
 package onboarding.problem7;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Recommends maximum 5 new friends
- */
 public class FriendRecommender {
 
-    private final FriendIntroducer introducer;
+    private final CandidateIntroducer introducer;
+    private final Map<String, List<String>> relationships = new HashMap<>();
 
-    /**
-     * Constructor with user, friends, visitors
-     *
-     * @param user     name of user
-     * @param friends  friend relationship list
-     * @param visitors visitor names of user sns
-     */
     public FriendRecommender(String user, List<List<String>> friends, List<String> visitors) {
-        introducer = new FriendIntroducer(user, friends, visitors);
+        addRelationships(friends);
+        introducer = new CandidateIntroducer(user, visitors, relationships);
     }
 
-    /**
-     * Recommend new SNS friends (maximum 5)
-     *
-     * @return new friend list
-     */
     public List<String> recommend() {
         Map<String, Friend> candidateMap = introducer.introduce();
         FriendSelector selector = new FriendSelector(candidateMap);
         return selector.select();
+    }
+
+    private void addRelationships(List<List<String>> friends) {
+        for (List<String> relationship : friends) {
+            String idA = relationship.get(0);
+            String idB = relationship.get(1);
+            addRelationship(idA, idB);
+            addRelationship(idB, idA);
+        }
+    }
+
+    private void addRelationship(String idA, String idB) {
+        if (relationships.containsKey(idA)) relationships.get(idA).add(idB);
+        else relationships.put(idA, new ArrayList<>(List.of(idB)));
     }
 }
