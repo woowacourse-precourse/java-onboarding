@@ -18,12 +18,14 @@ public class Problem7 {
 
 
         userHashMap = makeHashMap(userHashMap, user, friends);
-        scoreHashMap = getFriendsHashMap(userHashMap, scoreHashMap, user, friends);
+        scoreHashMap = getScoreHashMap(userHashMap, scoreHashMap, user, friends);
+        scoreHashMap = plusVisitorsScoreHashMap(scoreHashMap, visitors, userHashMap, user);
 
         return answer;
     }
 
-    public static HashMap<String, List<String>> makeHashMap(HashMap<String, List<String>> hashMap, String name, List<List<String>> friends) {
+    public static HashMap<String, List<String>> makeHashMap
+            (HashMap<String, List<String>> hashMap, String name, List<List<String>> friends) {
         List<String> friendsList = new ArrayList<>();
         hashMap.put(name, friendsList);
 
@@ -48,7 +50,6 @@ public class Problem7 {
 
     public static HashMap<String, Integer> makeScoreHashMap
             (HashMap<String, Integer> scoreHashMap, String friendName, List<List<String>> friends, String user) {
-        List<String> friendsList = new ArrayList<>();
 
         for(int i = 0; i < friends.size(); i++) {
             List<String> tempFriendsList = friends.get(i);
@@ -90,13 +91,37 @@ public class Problem7 {
     }
 
 
-    public static HashMap<String, Integer> getFriendsHashMap
+    public static HashMap<String, Integer> getScoreHashMap
             (HashMap<String, List<String>> userHashMap, HashMap<String, Integer> scoreHashMap, String user, List<List<String>> friends) {
         List<String> userFriends = userHashMap.get(user);
 
         for (int i = 0; i < userFriends.size(); i++) {
             String friendName = userFriends.get(i);
             scoreHashMap = makeScoreHashMap(scoreHashMap, friendName, friends, user);
+        }
+
+        return scoreHashMap;
+    }
+
+    public static HashMap<String, Integer> plusVisitorsScoreHashMap
+            (HashMap<String, Integer> scoreHashMap, List<String> visitors, HashMap<String, List<String>> userFriendsHashMap, String user) {
+
+        List<String> userFriends = userFriendsHashMap.get(user);
+
+        for (int i = 0; i < visitors.size(); i++) {
+            String visitorName = visitors.get(i);
+
+            if(userFriends.contains(visitorName)) {
+                continue;
+            }
+
+            if (scoreHashMap.containsKey(visitorName)) {
+                int curScore = scoreHashMap.get(visitorName);
+                scoreHashMap.put(visitorName, curScore + 1);
+            }
+            else {
+                scoreHashMap.put(visitorName, 1);
+            }
         }
 
         return scoreHashMap;
