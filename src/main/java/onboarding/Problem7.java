@@ -105,7 +105,9 @@ public class Problem7 {
         String group = friends_unioned.get(user);
 
         for (String key : friends_score.keySet()) {
-            if (key.equals(group)) {
+            String key_group = friends_unioned.get(key);
+
+            if (key_group.equals(group)) {
                 friends_score.put(key, 10);
             }
         }
