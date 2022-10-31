@@ -3,7 +3,10 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class Problem7 {
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -21,6 +24,19 @@ public class Problem7 {
 			}
 			friendshipChart.get(member).add(friendOfMember);
 			friendshipChart.get(friendOfMember).add(member);
+		}
+
+		Map<String, Boolean> memberUpdated = new HashMap<>();
+		for (String member : friendshipChart.keySet()) {
+			memberUpdated.put(member, false);
+		}
+		for (String member : friendshipChart.keySet()) {
+			Set<String> connectedMember = null;
+			if (!memberUpdated.get(member)) {
+				connectedMember = new HashSet<>();
+				memberUpdated.put(member, true);
+				connectedMember.add(member);
+			}
 		}
 
 		List<String> answer = Collections.emptyList();
