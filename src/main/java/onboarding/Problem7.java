@@ -54,7 +54,9 @@ public class Problem7 {
     }
 
     public void removeUserFriend(HashMap<String,People> map, String name){
-
+        if(map.containsKey(name) && map.get(name).getUserFriendStatus()){
+            map.remove(name);
+        }
     }
 
     public HashMap<String, People> makePeopleMap(String user, List<List<String>> friends, List<String> visitors){

@@ -55,8 +55,8 @@
 
 <br/>
 
-- ⬜ removeUserFriend 메소드 구현
-  - ⬜ map 내에서 userFriendStatus 속성이 true인 people 객체들을 삭제
+- ✅ removeUserFriend 메소드 구현
+  - ✅ map 내에서 userFriendStatus 속성이 true인 people 객체들을 삭제
 
 <br/>
 
