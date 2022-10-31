@@ -1,6 +1,8 @@
 package onboarding;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * <기능 목록>
@@ -19,5 +21,30 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
+    }
+
+
+    public static Set<String> partNames(List<String> names){
+
+        Set<String> result = new HashSet<>();
+
+        for (String name : names){
+            //이름이 인접하기 위해서는 이름이 두 글자 이상이어야 함
+            if (name.length() > 1){
+
+                int len = name.length();
+
+                for (int i = 2; i <= len; i++) {
+                    for (int j = 0; i + j <= len; j++){
+                        String part = name.substring(j, i+j);
+                        result.add(part);
+                    }
+                }
+            }
+        }
+
+        System.out.println(result);
+
+        return result;
     }
 }
