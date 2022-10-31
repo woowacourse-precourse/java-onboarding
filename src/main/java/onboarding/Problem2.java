@@ -20,7 +20,8 @@ public class Problem2 {
                 if (cryptogram.charAt(i) == cryptogram.charAt(i + 1)) {
                     // 중복되는 부분을 제외한 부분을 다시 cryptogram으로 갱신
                     cryptogram = cryptogram.substring(0, i) + cryptogram.substring(i + 2);
-                    // 중복되는 것이 있다면 2 더해주기
+
+                    // 중복되는 것이 있다면 2 더해주기, while문에 걸리기 위해
                     flag += 2;
                 }
             }
