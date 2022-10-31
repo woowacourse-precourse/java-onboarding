@@ -3,6 +3,17 @@ package onboarding;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
+
+        while(true){
+            String decoded = removeDuplicates(cryptogram);
+            if(decoded.equals(cryptogram)){
+                break;
+            } else{
+                cryptogram = decoded;
+            }
+        }
+        answer = cryptogram;
+
         return answer;
     }
 
