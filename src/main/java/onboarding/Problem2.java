@@ -3,7 +3,7 @@ package onboarding;
 public class Problem2 {
     public static String solution(String cryptogram) {
         int i = 0;
-        int len = 0;
+        int len;
 
         while (i < cryptogram.length()) {
             len = cryptogram.length();
