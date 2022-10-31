@@ -18,6 +18,18 @@ public class Problem4 {
 
     public static String solution(String word) {
         String answer = "";
+        char letter;
+
+        for (int i = 0; i < word.length(); i++) {
+            letter = word.charAt(i);
+            if ((letter >= 65) && (letter <= 90)) {
+                answer += convertUpper(letter);
+            } else if ((letter >= 97) && (letter <= 122)) {
+                answer += convertLower(letter);
+            } else {
+                answer += letter;
+            }
+        }
 
         return answer;
     }
