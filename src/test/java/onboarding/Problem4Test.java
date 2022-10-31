@@ -31,4 +31,16 @@ class Problem4Test {
         stringBuilder.append("a");
         Assertions.assertThatThrownBy(() -> Problem4.solution(stringBuilder.toString()));
     }
+
+    @Test
+    void 테스트케이스() {
+        Assertions.assertThat(Problem4.solution("Hello  Everyone!"))
+            .isEqualTo("Svool  Veviblmv!");
+        Assertions.assertThat(Problem4.solution("abcdefghijklmnopqrstuvwxyz"))
+            .isEqualTo("zyxwvutsrqponmlkjihgfedcba");
+        Assertions.assertThat(Problem4.solution("abcdefghijklmnopqrstuvwxyz !@#!#  "))
+            .isEqualTo("zyxwvutsrqponmlkjihgfedcba !@#!#  ");
+        Assertions.assertThat(Problem4.solution("Svool, Dliow! 123"))
+            .isEqualTo("Hello, World! 123");
+    }
 }
