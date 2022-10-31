@@ -4,6 +4,10 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+        return competePobiAndCrong(pobi, crong);
+    }
+
+    private static int competePobiAndCrong(List<Integer> pobi, List<Integer> crong) {
         int pobiResult, crongResult;
 
         if(hasErrorOnInput(pobi) ||hasErrorOnInput(crong)) {
