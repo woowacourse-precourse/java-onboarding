@@ -75,7 +75,7 @@ class ApplicationTest {
         void case1() {
             String word = "I love you";
             String result = "R olev blf";
-            assertThat(Problem4.solution(word)).isEqualTo(result);
+            assertThat(onboarding.Problem4.solution(word)).isEqualTo(result);
         }
     }
 
