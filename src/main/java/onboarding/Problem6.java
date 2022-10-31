@@ -1,16 +1,28 @@
 package onboarding;
 
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
+        Set<String> set = new HashSet<String>();
+        Problem6 problem = new Problem6();
         List<String> emails = forms.stream().map(x -> x.get(0)).collect(Collectors.toList());
         List<String> usernames = forms.stream().map(x -> x.get(1)).collect(Collectors.toList());
         int headCount = forms.size();
 
-        List<String> answer = List.of("jason@email.com", "jm@email.com", "mj@email.com");
-        return answer;
+
+        for (int i = 0; i < headCount; i++) {
+            for (int j = i + 1; j < headCount; j++) {
+                boolean isExits = problem.findCommonSubStringExists(usernames.get(i), usernames.get(j));
+                if(isExits) {
+                    set.add(emails.get(i));
+                    set.add(emails.get(j));
+                }
+            }
+        }
+
+        return set.stream().sorted().collect(Collectors.toList());
     }
 
     public boolean findCommonSubStringExists (String str1, String str2) {
