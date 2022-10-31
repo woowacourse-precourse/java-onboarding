@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 // TODO
 // 1. 책을 임의로 펼친다.
@@ -18,6 +19,19 @@ class Problem1 {
      */
     public static boolean checkSize(List<Integer> list) {
         return list.isEmpty();
+    }
+
+    /**
+     * 주어진 리스트에서 페이지의 범위를 벗어나는 페이지가 있다면 true, 아니라면 false를 반환한다.
+     *
+     * @param list 주어진 리스트
+     * @return 페이지가 있다면 true, 아니라면 false
+     */
+    public static boolean checkPageBound(List<Integer> list) {
+        List<Integer> outOfBounds = list.stream()
+                .filter(x -> x > 400 || x < 1)
+                .collect(Collectors.toList());
+        return !outOfBounds.isEmpty();
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
