@@ -22,4 +22,4 @@
 ### 메서드 구현 목록
 - boolean isClap(int n) : 숫자 n이 박수를 쳐야하는 차례인지를 구분하는 메서드
 - int getClaps(int n) : 숫자 n의 박수 횟수를 구하는 메서드
-- int getAnswer(int n) : n 까지의 총 박수 횟수를 구하는 메서드
+- int getAnswer(int n) : n 까지의 총 박수 횟수를 구하는 메서드.
