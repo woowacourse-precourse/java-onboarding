@@ -1,21 +1,20 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem6 {
 
     static Map<String, String> splitNickMap;
-    static ArrayList<String> answer;
+    static Set<String> answer;
 
     public static List<String> solution(List<List<String>> forms) {
-        answer = new ArrayList<String>();
+        answer = new HashSet<>();
         List<String> form;
         List<String> subStringList;
         String currentEmail;
         String currentNickName;
+
         for (int index = 0; index< forms.size(); index++){
             form = forms.get(index);
             currentEmail = form.get(0);
@@ -25,7 +24,7 @@ public class Problem6 {
             addSplitNickName(subStringList, currentEmail);
         }
 
-        return answer;
+        return answer.stream().sorted().collect(Collectors.toList());
     }
 
     public static List<String> splitTwiceList(String nickName){
