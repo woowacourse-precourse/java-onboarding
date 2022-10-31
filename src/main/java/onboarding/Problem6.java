@@ -7,6 +7,8 @@ import java.util.*;
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         if (CheckInput(forms)) {
+            Map<String, Integer> nickHash = new HashMap<>();
+            MakeNickHash(forms,nickHash);
         }throw new IllegalArgumentException("잘못된 입력값");
     }
 
@@ -42,5 +44,14 @@ public class Problem6 {
         }return false;
     }
 
-
+    /* 기능2 : 닉네임 중복 확인할 Hash 생성 */
+    private static void MakeNickHash(List<List<String>> forms, Map<String, Integer> nickHash) {
+        for(int i=0;i<forms.size();i++){
+            String nickname = forms.get(i).get(1);
+            for(int j=0;j<nickname.length()-1;j++){
+                String tmp = nickname.substring(j,j+2);
+                nickHash.put(tmp,nickHash.getOrDefault(tmp,0)+1);
+            }
+        }
+    }
 }
