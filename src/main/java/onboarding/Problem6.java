@@ -1,12 +1,18 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 
 public class Problem6 {
     static HashSet<String> result = new HashSet<>();
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        for (int i = 0; i < forms.size(); i++) {
+            findAndAddSerialNickname(forms, i);
+        }
+        List<String> answer = new ArrayList<>(result);
+        answer.sort(Comparator.naturalOrder());
         return answer;
     }
 
@@ -18,7 +24,7 @@ public class Problem6 {
             checkContainsSerialChar(serialChar, currentUserIdx, forms);
         }
     }
-    
+
     public static void checkContainsSerialChar(String serialChar, int currentUserIdx, List<List<String>> forms) {
         for (int i = currentUserIdx+1; i < forms.size(); i++) {
             if (forms.get(i).get(1).contains(serialChar)) {
