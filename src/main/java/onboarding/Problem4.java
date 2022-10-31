@@ -2,7 +2,10 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
+        String answer;
+        // 0. 예외처리
+        checkException(word);
+
         // 1. String 을 char[] 로 변환
         char[] input = changeToChar(word);
         // 2. 결과를 담을 배열 result[] 를 생성
@@ -66,5 +69,19 @@ public class Problem4 {
         }
         // 공백일 경우 리턴
         return input;
+    }
+
+    private static void checkException(String word) throws IllegalArgumentException {
+        // word 길이
+        boolean length = (word.length() >= 1 && word.length() <= 1_000);
+        // word 알파벳 외 문자포함 인지 : 정규식 이용
+        boolean alpha = word.matches("^[a-zA-Z]*$");
+
+        if(!length) {
+            throw new IllegalArgumentException("단어의 길이는 1 이상 1,000 이하만 가능합니다.");
+        }
+        if(alpha) {
+            throw new IllegalArgumentException("단어는 알파벳만 가능합니다.");
+        }
     }
 }
