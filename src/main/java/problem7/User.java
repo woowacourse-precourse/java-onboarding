@@ -35,6 +35,7 @@ public class User {
         System.out.println(list);
 
         return list.stream()
+                .filter(e -> e.getValue() > 0)
                 .map(e -> e.getKey())
                 .limit(RECOMMENDATION_LIMIT)
                 .collect(Collectors.toList());
@@ -49,10 +50,6 @@ public class User {
 
     public void calculateRecommendationScoreWithCommonFriends() {
         var friends = FriendConnectionRepository.getFriends(name);
-
-        if (friends.size() == 0) {
-            // ,,
-        }
 
         for (var friend : friends) {
             var hisFriends = FriendConnectionRepository.getFriends(friend);
@@ -70,19 +67,15 @@ public class User {
                 }
             }
         }
-
-        // map을 entryset으로 변환한다.
-        // 그걸 list로 변환한다.
-        // list를 정렬한다.
-
     }
 
     private List<Map.Entry<String, Integer>> sortRecommendationScores() {
-        List<Map.Entry<String, Integer>> list = new ArrayList<>(recommendationScores.entrySet());
-        Collections.sort(list, (e1, e2) -> {
-            if (e2.getValue() != e1.getValue()) return e2.getValue() - e1.getValue();
-            return e1.getKey().compareTo(e2.getKey());
+        List<Map.Entry<String, Integer>> recommendationScoresList = new ArrayList<>(recommendationScores.entrySet());
+        Collections.sort(recommendationScoresList, (leftEntry, rightEntry) -> {
+            if (leftEntry.getValue() != rightEntry.getValue())
+                return rightEntry.getValue() - leftEntry.getValue();
+            return leftEntry.getKey().compareTo(rightEntry.getKey());
         });
-        return list;
+        return recommendationScoresList;
     }
 }

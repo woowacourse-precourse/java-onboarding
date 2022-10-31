@@ -14,6 +14,8 @@ public class Problem7 {
 
             FriendConnectionRepository.create(friendsList);
             FriendConnectionRepository.addUsers(visitors);
+            FriendConnectionRepository.addUsers(List.of(userName));
+
 
             User user = new User(userName);
 
