@@ -21,6 +21,16 @@ public class Problem7 {
                 friendWithUserDict.put(friend.get(1), 0);
             }
         }
+
+        for (String f : friendWithUserList)
+            friendWithUserDict.remove(f);
+        // 사용자와 함께 아는 친구의 이름 10점 주기
+        friendWithUserDict.forEach((key, value) -> {
+            for (List<String> friend : friends) {
+                if (friend.contains(key))
+                    friendWithUserDict.computeIfPresent(key, (k, v) -> v + 10);
+            }
+        });
         return answer;
     }
 }
