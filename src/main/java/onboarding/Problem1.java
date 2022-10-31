@@ -7,6 +7,18 @@ import java.util.stream.Stream;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        if (myMaxNum(pobi) > myMaxNum(crong)) {
+            answer = 1;
+        }
+        if (myMaxNum(pobi) < myMaxNum(crong)) {
+            answer = 2;
+        }
+        if (myMaxNum(pobi) == myMaxNum(crong)) {
+            answer = 0;
+        }
+        if(isException(pobi)|| isException(crong)){
+            return -1;
+        }
         return answer;
     }
     public static int[] eachPageNum(int num) {
