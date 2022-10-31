@@ -11,6 +11,7 @@ public class Problem7 {
         List<String> answer = new ArrayList<>();
         friendScore = new HashMap<>();
         findPotentialFriendAndScore(user, friends);
+        findVisitedFriendAndScore(visitors);
         return answer;
     }
     /*
@@ -26,6 +27,16 @@ public class Problem7 {
             } else {
                 friendScore.put(friend.get(0), friendScore.getOrDefault(friend.get(0), 0) + 10);
                 friendScore.put(friend.get(1), friendScore.getOrDefault(friend.get(1), 0) + 10);
+            }
+        }
+    }
+    /*
+    사용자를 방문한 횟수당 1점씩 부여
+     */
+    private static void findVisitedFriendAndScore(List<String> visitors) {
+        for (String visitor : visitors) {
+            if (friendScore.getOrDefault(visitor, 0) != -1) {
+                friendScore.put(visitor, friendScore.getOrDefault(visitor, 0) + 1);
             }
         }
     }
