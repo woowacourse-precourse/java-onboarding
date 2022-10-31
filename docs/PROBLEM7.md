@@ -24,3 +24,14 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능 구현 목록
+
+- 사용자와 친구인 사람들을 찾는다. #getUserFriendsList()
+  - friends 배열에서 사용자의 친구를 찾고 찾은 뒤에는 friends 해당 요소를 삭제한다.
+- 사용자와 함께 아는 친구가 있는 사람의 추천 점수를 계산한다. #getUserFriendScore
+- 사용자의 타임 라인에 방문한 사람의 추천 점수를 계산한다. #getVisitorScore()
+  - 이미 사용자와 친구인 경우는 계산에서 제외한다.
+- 앞서 계산한 추천 점수에 대한 내용을 합친다. #mergeScore()
+- 추천 점수가 높은 순으로 정렬하고, 점수가 같으면 이름 순으로 정렬한다.#sortScore()
+- 최대 5명만 return 하도록 제한한다.
