@@ -43,6 +43,12 @@ public class Problem6 {
         // 같은 글자 연속 포함 크루들의 Index를 add.
         addDuplicateCrews();
 
+        // 이메일을 담은 후 정렬
+        for (Integer idx : duplicateIdx) {
+            answer.add(forms.get(idx).get(0));
+        }
+        Collections.sort(answer);
+
         return answer;
     }
 }
