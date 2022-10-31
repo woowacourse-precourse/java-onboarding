@@ -12,6 +12,15 @@ public class Problem4 {
         }
         return answer;
     }
+    static char changeWord(char ch){
+        char reverse_ch = 'A';
+        if(Character.isUpperCase(ch)){
+            reverse_ch = (char) ('Z' - ch + 'A');
+        }else{
+            reverse_ch = (char) ('z' - ch + 'a');
+        }
+        return reverse_ch;
+    }
     static boolean checkChar(char ch){
         if (ch >= 'a' && ch <= 'z'){return true;}
         if (ch >= 'A' && ch <= 'Z'){return true;}
