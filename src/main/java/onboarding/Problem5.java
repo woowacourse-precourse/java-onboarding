@@ -1,14 +1,20 @@
 package onboarding;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Problem5 {
-	private static final int NO_MONEY = 0;
     private static final List<CURRENCY> CURRENCY_LIST = List.of(CURRENCY.values());
 
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
+		List<Integer> answer = new ArrayList<>();
+
+		for (CURRENCY UNIT : CURRENCY_LIST) {
+			int count = countMaxNumberOfCurrencies(UNIT, money);
+			answer.add(count);
+			money = remainedMoney(UNIT, money);
+		}
+
         return answer;
     }
 
@@ -22,10 +28,6 @@ public class Problem5 {
 
         return money - transformedMoney;
     }
-
-	public static boolean noMoreMoney(int money) {
-		return money == NO_MONEY;
-	}
 
     enum CURRENCY {
         W_50000(50000), W_10000(10000), W_5000(5000), W_1000(1000),
