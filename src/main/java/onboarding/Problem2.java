@@ -21,6 +21,11 @@ public class Problem2 {
         List<Character> remove_dupicate_list = list;
 
         for (int i = 0; i < remove_dupicate_list.size() - 1; i++) {
+            if (remove_dupicate_list.size() == 1) {
+                break;
+            }
+
+
             if (remove_dupicate_list.get(i) == remove_dupicate_list.get(i + 1)) {
                 remove_dupicate_list.remove(i);
                 remove_dupicate_list.remove(i);
