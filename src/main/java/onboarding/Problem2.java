@@ -6,13 +6,13 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "";
 
-        Stack<Character> stack = checkDuplicate(cryptogram);
+        Stack<Character> stack = checkDuplication(cryptogram);
         Object[] toArray = stackToArray(stack);
         answer = getAnswer(toArray);
         return answer;
     }
 
-    private static Stack<Character> checkDuplicate(String cryptogram) {
+    private static Stack<Character> checkDuplication(String cryptogram) {
         Stack<Character> stack = new Stack<>();
         stack.push(cryptogram.charAt(0));
         char before = stack.peek();
