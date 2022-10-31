@@ -31,6 +31,10 @@ class Problem1 {
         if (pobi.get(0) == 1 || crong.get(1) == 400) {
             answer = -1;
         }
+        //매개변수로 주어진 페이지들이 연속된 번호가 아닌 경우
+        if (pobi.get(1) - pobi.get(0) != 1 || crong.get(1) - crong.get(0) != 1) {
+            answer = -1;
+        }
         return answer;
     }
 
