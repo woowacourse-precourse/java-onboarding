@@ -10,7 +10,6 @@ public class Problem2 {
     }
 
     private static String stringDeduplication(String cryptogram) {
-        StringBuilder answer = new StringBuilder();
         Stack<Character> stack = new Stack<>();
         char[] alphabets = getAlphabets(cryptogram);
         char pointer = alphabets[0];
@@ -45,10 +44,14 @@ public class Problem2 {
             stack.pop();
         }
 
+
+        return makeStackToString(stack);
+    }
+    private static String makeStackToString(Stack<Character> stack) {
+        StringBuilder answer = new StringBuilder();
         while (!stack.isEmpty()) {
             answer.append(stack.pop());
         }
-
         return answer.reverse().toString();
     }
 
