@@ -21,3 +21,9 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+
+### 구현할 기능 목록
+1. 암호문 해독 기능
+    - [x] 1.1. 스택 peek와 중복되지 않을 경우 push
+    - [x] 1.2. 스택 peek와 중복될 경우 pop
