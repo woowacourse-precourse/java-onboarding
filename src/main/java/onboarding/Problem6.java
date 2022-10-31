@@ -1,6 +1,8 @@
 package onboarding;
 
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     /***
@@ -25,5 +27,15 @@ public class Problem6 {
             }
         }
         return false;
+    }
+
+
+    /**
+     * 중복 제거, 닉네임 오름차순 정렬 함수
+     */
+    static List<String> organize(List<String> answer){
+        answer = answer.stream().distinct().collect(Collectors.toList());
+        Collections.sort(answer);
+        return answer;
     }
 }
