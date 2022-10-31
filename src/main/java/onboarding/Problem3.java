@@ -23,4 +23,13 @@ public class Problem3 {
         }
         return numberList;
     }
+
+    public static List<Integer> divideDigit(Integer number){
+        List<Integer> list = new ArrayList<>();
+        while(number > 0){
+            list.add(number%10);
+            number/=10;
+        }
+        return list;
+    }
 }
