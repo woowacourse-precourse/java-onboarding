@@ -32,6 +32,17 @@ public class Problem2 {
         return stack;
     }
 
+    public static String stackToString(Stack<Character> stack){
+        String result = "";
+        final int size = stack.size();
+        for(int i = 0; i < size; i++){
+            result += stack.peek();
+            stack.pop();
+        }
+        result = reverse(result);
+        return result;
+    }
+
     public static String reverse(String result){
         StringBuffer sb = new StringBuffer(result);
         result = sb.reverse().toString();
