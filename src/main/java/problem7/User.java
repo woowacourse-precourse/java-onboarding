@@ -12,7 +12,7 @@ public class User {
         preprocessRecommendationScores();
     }
 
-    public void preprocessRecommendationScores() {
+    private void preprocessRecommendationScores() {
         recommendationScores.clear();
 
         var friends = FriendConnectionRepository.getFriends(name);
@@ -23,7 +23,6 @@ public class User {
     }
 
     public void calculateRecommendationScoreWith(List<String> visitors) {
-        VisitorsValidator.validateVisitors(visitors);
         visitors.stream()
                 .filter(visitor -> recommendationScores.containsKey(visitor))
                 .forEach(stranger ->
@@ -78,17 +77,5 @@ public class User {
                 .limit(5)
                 .collect(Collectors.toList());
 
-    }
-
-    public static class VisitorsValidator {
-
-        private static final int VISITORS_SIZE_LOWER_BOUNDS = 0;
-        private static final int VISITORS_SIZE_UPPER_BOUNDS = 10_000;
-        private static final String ERR_VISITORS_SIZE = "방문자는 0명 이상 10,000명 이하로 입력하세요.";
-
-        public static void validateVisitors(List<String> visitors) {
-            if (visitors.size() < VISITORS_SIZE_LOWER_BOUNDS || visitors.size() > VISITORS_SIZE_UPPER_BOUNDS)
-                throw new IllegalArgumentException(ERR_VISITORS_SIZE);
-        }
     }
 }
