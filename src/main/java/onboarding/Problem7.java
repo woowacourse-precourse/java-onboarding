@@ -36,29 +36,33 @@ public class Problem7 {
         }
 //        System.out.println("모르는 친구들 : " + get_dont_know_friend);
 
+        get_score_board(visitors, score_board, my_friend_friend, get_dont_know_friend);
+
+        return get_result(score_board, my_friend);
+    }
+
+    private static void get_score_board(List<String> visitors, Map<String, Integer> score_board, Map<String, List<String>> my_friend_friend, List<String> get_dont_know_friend) {
         // 친구의 친구에게 점수를 +10 해줌
-        for(List<String>  s1: my_friend_friend.values()){
-            for(String s2 : s1){
-                if (get_dont_know_friend.contains(s2)){
-                    score_board.put(s2,score_board.get(s2) + 10);
-                }
-            }
-        }
+        my_friend_friend.values().stream().flatMap(Collection::stream).
+                filter(get_dont_know_friend::contains).forEach(s2 -> score_board.put(s2, score_board.get(s2) + 10));
 //        System.out.println("+10점 해준 점수판 : " + score_board);
 
         // 방문자 점수 더 해줌
-        for(String visitor : visitors){
-            if(!score_board.containsKey(visitor)){
-                score_board.put(visitor,0);
+        visitors.forEach(visitor -> {
+            if (!score_board.containsKey(visitor)) {
+                score_board.put(visitor, 0);
             }
-            score_board.put(visitor,score_board.get(visitor) + 1);
-        }
+            score_board.put(visitor, score_board.get(visitor) + 1);
+        });
 //        System.out.println("최종 점수판 : " + score_board);
+    }
 
+    private static List<String> get_result(Map<String, Integer> score_board, List<String> my_friend) {
         //1차 - 친구 삭제
         my_friend.forEach(score_board.keySet()::remove);
 //        System.out.println("친구 삭제한 1차 수정본 : " + score_board);
 
+        //2차 - 점수로 먼저 정렬, 같으면 이름 순으로 정렬
         List<Map.Entry<String, Integer>> entry_list = new LinkedList<>(score_board.entrySet());
         entry_list.sort(((o1, o2) -> {
             if(o1.getValue().equals(o2.getValue())) {
@@ -78,7 +82,6 @@ public class Problem7 {
             result.add(entry.getKey());
             cnt++;
         }
-
         return result;
     }
 
