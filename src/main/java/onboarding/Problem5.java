@@ -17,7 +17,9 @@ public class Problem5 {
             if (money / i > 0) {
                 list.add(money / i);
                 money %= i;
-            } else list.add(0);
+            } else {
+                list.add(0);
+            }
         }
         return list;
     }
