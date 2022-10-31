@@ -149,3 +149,5 @@ BUILD SUCCESSFUL in 0s
 |  7.1.4 | 주어진 유저들의 목록의 길이를 출력 | Problem7.socialGraph.usersLength | 
 |  7.1.5 | friends리스트 visitor리스트를 가지고 정렬된 유저 리스트를 만들어 초기화 | Problem7.socialGraph._initializeOrderedList | 
 |  7.1.6 | friends리스트와 정렬된 유저리스트를 가지고 각 유저간의 친구 정보를 업데이트 | Problem7.socialGraph._makeConnectionMap | 
+|  7.1.7 | 주어진 username string을 입력받아 정렬된 유저리스트의 인덱스를 반환 | Problem7.socialGraph.findIndex | 
+|  7.2.0 | 유저의 이름과 추천점수를 지닌 객체 | Problem7.Entry | 
