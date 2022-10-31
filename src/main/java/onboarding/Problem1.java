@@ -6,13 +6,15 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
-        getMultiplyOfNumber(pobi.get(0));
-        getSumOfNumber(pobi.get(0));
+        System.out.println(selectMultiplyOrSumLarger(pobi.get(0)));
         return answer;
     }
 
-    private int selectMultiplyOrSumLarger (Integer targetNum){
+    private static Integer selectMultiplyOrSumLarger (Integer targetNum){
+        int multiplyResult = getMultiplyOfNumber(targetNum);
+        int sumResult = getSumOfNumber(targetNum);
 
+        return Math.max(multiplyResult, sumResult);
     }
 
     private static int getMultiplyOfNumber(Integer targetNum) {
@@ -26,7 +28,6 @@ class Problem1 {
             curPos *= 10;
         }
 
-        System.out.println(ret);
         return ret;
     }
 
@@ -41,7 +42,6 @@ class Problem1 {
             curPos *= 10;
         }
 
-        System.out.println(ret);
         return ret;
     }
 }
