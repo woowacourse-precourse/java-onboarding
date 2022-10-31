@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -26,106 +27,143 @@ public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
         validate(forms);
-        List<String> answer = new ArrayList<>(getOverlapEmailsByNickname(findPattern(forms), forms));
-        Collections.sort(answer);
 
+        List<String> answer = Result.getResult(new Pattern(forms), forms);
         return answer;
     }
-    public static Set<String> getOverlapEmailsByNickname(Set<String> overlapPattern, List<List<String>> forms) {
-        Set<String> emails = new HashSet<>();
-        for (String pattern : overlapPattern) {
+
+    private static void validate(final List<List<String>> forms) {
+        Advice.validate(forms);
+    }
+
+    static class Result{
+        private Result(){}
+        public static List<String> getResult(Pattern pattern, List<List<String>> forms) {
+            List<String> emailsList = new ArrayList<>(pattern.getOverlapEmails(forms));
+            Collections.sort(emailsList);
+            return emailsList;
+        }
+
+    }
+
+    static class Pattern{
+        private Set<String> pattern;
+
+        public Pattern() {
+            this(new HashSet<>());
+        }
+
+        public Pattern(Set<String> pattern) {
+            this.pattern = pattern;
+        }
+
+        public Pattern(List<List<String>> forms) {
+            this.pattern = findPattern(forms);
+        }
+
+        private Set<String> findPattern(List<List<String>> forms) {
+            Set<String> allPattern = new HashSet<>();
+            Set<String> overlapPattern = new HashSet<>();
+            for (List<String> form : forms) {
+                if (form.get(1).length() == 1) {
+                    continue;
+                }
+                overlapPattern = findPatternByWord(allPattern, overlapPattern, form.get(1));
+            }
+            return overlapPattern;
+        }
+
+        private Set<String> findPatternByWord(Set<String> allPattern,Set<String> overlapPattern, String word) {
+            Set<String> wordPatterns = new HashSet<>();
+            for (int j = 0; j < word.length() - 1; j ++ ) {
+                String subWord = word.substring(j, j + 2);
+                wordPatterns.add(subWord);
+            }
+            return addPatternToHashSet(allPattern, overlapPattern, wordPatterns);
+        }
+
+        private Set<String> addPatternToHashSet(Set<String> allPattern,Set<String> overlapPattern, Set<String> wordPatterns) {
+            for (String wordPattern : wordPatterns) {
+                if (allPattern.contains(wordPattern)) {
+                    overlapPattern.add(wordPattern);
+                }
+                allPattern.add(wordPattern);
+            }
+            return overlapPattern;
+        }
+
+        public Set<String> getOverlapEmails(List<List<String>> forms) {
+            Set<String> emails = new HashSet<>();
+            for (String pattern : this.pattern) {
+                getKmpTableByPattern(forms, emails, pattern);
+            }
+            return emails;
+        }
+
+        private void getKmpTableByPattern(List<List<String>> forms, Set<String> emails, String pattern) {
             int[] kmpTable = makeKmpTable(pattern);
             for (List<String> form : forms) {
-                if (form.get(1).length() != 1 && doKMP(form.get(1), pattern, kmpTable)){
+                if (form.get(1).length() != 1 && doKMP(form.get(1), pattern, kmpTable)) {
                     emails.add(form.get(0));
                 }
             }
         }
 
-        return emails;
-    }
-
-    public static int[] makeKmpTable(String pattern){
-        int patternLength = pattern.length();
-        int[] kmpTable = new int[patternLength];
-
-        int count = 0;
-        for (int i = 1; i < patternLength; i++) {
-            while (count > 0 && pattern.charAt(i) != pattern.charAt(count)) {
-                count = kmpTable[count - 1];
-            }
-
-            if (pattern.charAt(i) == pattern.charAt(count)) {
-                count += 1;
-                kmpTable[i] = count;
-            }
-        }
-        return kmpTable;
-    }
-    public static Boolean doKMP(String nickname, String pattern, int[] kmpTable){
-        int nicknameLen = nickname.length();
-        int patternLen = pattern.length();
-
-        int count = 0;
-        for (int i = 0; i < nicknameLen; i++) {
-            while (count > 0 && nickname.charAt(i) != pattern.charAt(count)) {
-                count = kmpTable[count - 1];
-            }
-            if (nickname.charAt(i) == pattern.charAt(count)) {
-                if (count == patternLen - 1) {
-                    return true;
+        private int[] makeKmpTable(String pattern){
+            int patternLength = pattern.length();
+            int[] kmpTable = new int[patternLength];
+            int count = 0;
+            for (int i = 1; i < patternLength; i++) {
+                while (count > 0 && pattern.charAt(i) != pattern.charAt(count)) {
+                    count = kmpTable[count - 1];
                 }
-                count += 1;
+                if (pattern.charAt(i) == pattern.charAt(count)) {
+                    count += 1;
+                    kmpTable[i] = count;
+                }
             }
+            return kmpTable;
         }
-        return false;
-    }
 
-    public static Set<String> findPattern(List<List<String>> forms) {
-        Set<String> allPattern = new HashSet<>();
-        Set<String> overlapPattern = new HashSet<>();
-        for (List<String> form : forms) {
-            if (form.get(1).length() == 1) {
-                continue;
+        private Boolean doKMP(String nickname, String pattern, int[] kmpTable){
+            int nicknameLen = nickname.length();
+            int patternLen = pattern.length();
+
+            int count = 0;
+            for (int i = 0; i < nicknameLen; i++) {
+                while (count > 0 && nickname.charAt(i) != pattern.charAt(count)) {
+                    count = kmpTable[count - 1];
+                }
+                if (nickname.charAt(i) == pattern.charAt(count)) {
+                    if (count == patternLen - 1) {
+                        return true;
+                    }
+                    count += 1;
+                }
             }
-            findPatternByWord(allPattern, overlapPattern, form.get(1));
+            return false;
         }
 
-        return overlapPattern;
-    }
-    public static void findPatternByWord(Set<String> allPattern, Set<String> overlapPattern, String word) {
-        Set<String> wordPatterns = new HashSet<>();
-        for (int j = 0; j < word.length() - 1; j ++ ) {
-            String subWord = word.substring(j, j + 2);
-            wordPatterns.add(subWord);
+        @Override
+        public boolean equals(Object o) {
+            if (this == o)
+                return true;
+            if (o == null || getClass() != o.getClass())
+                return false;
+            Pattern pattern1 = (Pattern)o;
+            return Objects.equals(pattern, pattern1.pattern);
         }
-        addPatternToHashSet(allPattern, overlapPattern, wordPatterns);
-    }
 
-    private static void addPatternToHashSet(Set<String> allPattern, Set<String> overlapPattern, Set<String> wordPatterns) {
-        for (String wordPattern : wordPatterns) {
-            if (allPattern.contains(wordPattern)) {
-                overlapPattern.add(wordPattern);
-            }
-            allPattern.add(wordPattern);
+        @Override
+        public int hashCode() {
+            return Objects.hash(pattern);
         }
-    }
 
-    private static void validate(final List<List<String>> forms) {
-        validateInputData(forms);
-        validateEmailAndNickname(forms);
-    }
-
-    private static void validateInputData(final List<List<String>> forms){
-        Advice.checkInputDataLength(forms);
-    }
-
-    private static void validateEmailAndNickname(final List<List<String>> forms) {
-        for (List<String> form : forms) {
-            Advice.checkEmailValidation(form.get(0));
-            Advice.checkEmailLength(form.get(0));
-            Advice.checkNicknameLength(form.get(1));
-            Advice.checkNicknameIsKorean(form.get(1));
+        @Override
+        public String toString() {
+            return "Pattern{" +
+                "pattern=" + pattern +
+                '}';
         }
     }
 
@@ -135,6 +173,16 @@ public class Problem6 {
         private static final char KOREAN_FINAL = "힣".charAt(0);
 
         private Advice(){}
+
+        public static void validate(final List<List<String>> forms) {
+            checkInputDataLength(forms);
+            for (List<String> form : forms) {
+                checkEmailValidation(form.get(0));
+                checkEmailLength(form.get(0));
+                checkNicknameLength(form.get(1));
+                checkNicknameIsKorean(form.get(1));
+            }
+        }
         public static void checkInputDataLength(final List<List<String>> forms) {
             if (forms.size() < 1 || forms.size() > 10000) {
                 throw new IllegalArgumentException();
