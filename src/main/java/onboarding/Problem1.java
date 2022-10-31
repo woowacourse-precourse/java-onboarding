@@ -17,38 +17,40 @@ class Problem1 {
         return sum;
     }
 
+    /* 각 자리수 곱하기 메서드 */
     public static int multiply(String individualNums) {
-        int sum = 1;
+        int result = 1;
         for (int i = 0; i < individualNums.length(); i++) {
-            sum *= (individualNums.charAt(i) - '0');
+            result *= (individualNums.charAt(i) - '0');
         }
-        System.out.println(sum);
-        return sum;
+        return result;
     }
 
+    /* 두 수 비교 메서드 */
+    public static int compareInt(int pobi, int crong) {
+        return pobi - crong;
+    }
+
+    /*  */
     public static int getHighestScore(List<Integer> arr) {
-        int max = 0;
+        int comparison;
+        int bigger = 0;
         int tmpAdd;
         int tmpMult;
-        int tmp;
         for(Integer score : arr) {
-            System.out.println(score);
             String seperatedNum = integerToString(score);
             tmpAdd = add(seperatedNum);
             tmpMult = multiply(seperatedNum);
-            tmp = (tmpAdd > tmpMult) ? tmpAdd : tmpMult;
-            if(tmp > max) {
-                max = tmp;
-            }
+            comparison = compareInt(tmpAdd, tmpMult);
+            bigger = (comparison > 0) ? tmpAdd : tmpMult;
         }
-        return max;
+        return bigger;
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong){
         int pobiScore = getHighestScore(pobi);
         int crongScore = getHighestScore(crong);
-        System.out.println(pobiScore);
-        System.out.println(crongScore);
+        int comparison = compareInt(pobiScore, crongScore);
         int answer = Integer.MAX_VALUE;
         return answer;
     }
