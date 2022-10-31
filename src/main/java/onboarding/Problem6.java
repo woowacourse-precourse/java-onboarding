@@ -3,10 +3,13 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
+
+        List<String> duplicationNames = new ArrayList<>();
 
         HashMap<String, List<String>> nameHashMap = new HashMap<>();
 
@@ -14,6 +17,14 @@ public class Problem6 {
             String name = forms.get(i).get(1);
             nameHashMap = subNameList(nameHashMap, name);
         }
+
+        nameHashMap.forEach((subName, names) -> {
+            if (names.size() > 1) {
+                duplicationNames.addAll(names);
+            }
+        });
+
+        List<String> duplicationDistinctNames = duplicationNames.stream().distinct().collect(Collectors.toList());
 
         return answer;
     }
