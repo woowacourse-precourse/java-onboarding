@@ -10,18 +10,18 @@ public class Problem5 {
 
 		List<Integer> answer = new ArrayList<>();
 	
-		for (int a : typeOfMoney) {
-			answer.add(withdrawMoney(money, a));
-			money = updateMoney(money, a);
+		for (int change : typeOfMoney) {
+			answer.add(withdrawMoney(money, change));
+			money = updateMoney(money, change);
 		}
 		return answer;
     }
 
-	private static int withdrawMoney(int money, int won) {
-		return money / won;
+	private static int withdrawMoney(int money, int currency) {
+		return money / currency;
 	}
 
-	private static int updateMoney(int money, int won) {
-		return money % won;
+	private static int updateMoney(int money, int currency) {
+		return money % currency;
 	}
 }
