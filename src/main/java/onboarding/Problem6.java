@@ -25,6 +25,12 @@ public class Problem6 {
         return answer;
     }
 
+
+    public static boolean isValidNicknameRegex(List<List<String>> forms) {
+        return forms.stream().allMatch(form -> form.get(FORM_NICKNAME).matches(NAME_REG));
+    }
+
+
     public static boolean isValidNicknameLength(List<List<String>> forms) {
         return forms.stream().allMatch(form -> form.get(FORM_NICKNAME).length() >= MIN_NICKNAME_LENGTH && form.get(FORM_NICKNAME).length() <= MAX_NICKNAME_LENGTH);
     }
