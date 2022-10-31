@@ -7,8 +7,7 @@ import java.util.*;
  * 1. 이미 friends인 사람을 set에 담는다.
  * 2. friends를 탐색하면서, map의 key에 친구, value에 추천점수 +10을 한다.
  * 3. visitors를 탐색하면서, map의 key에 친구, value에 추천점수 +1을 한다.
- * 4. 친구들과 점수가 담긴 map에서 이미 친구인 목록을 제거한다.
- * 5. 결과인 result에 추천친구를 담는다.
+ * 4. 결과를 요구사항에 맞게 정렬하고 result에 추가한 뒤 return한다.
  */
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -40,9 +39,21 @@ public class Problem7 {
                 map.put(visitors.get(i), map.getOrDefault(visitors.get(i), 0)+1);
             }
         }
-
-        result = new ArrayList<>(map.keySet());
-        Collections.sort(result,(a,b) -> (map.get(b).compareTo(map.get(a))));
+        List<Map.Entry<String, Integer>> list = SortList(map);
+        for(Map.Entry<String, Integer> entry : list){
+            result.add(entry.getKey());
+        }
         return result;
+    }
+    private static List<Map.Entry<String, Integer>> SortList (Map<String, Integer> m){
+        List<Map.Entry<String, Integer>> list = new LinkedList<>(m.entrySet());
+        list.sort((o1, o2) ->{
+            int comparison = (o1.getValue() - o2.getValue()) * -1;
+            return comparison == 0 ? o1.getKey().compareTo(o2.getKey()) : comparison;
+        });
+        while (list.size()>5){
+            list.remove(list.size()-1);
+        }
+        return list;
     }
 }
