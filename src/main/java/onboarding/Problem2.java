@@ -51,6 +51,7 @@ class Decoder {
         for (char c : cryptogram.toCharArray()) {
             if (cryptogramQueue.isEmpty()) {
                 cryptogramQueue.addLast(c);
+                continue;
             }
             char lastLetter = cryptogramQueue.removeLast();
             if (c != lastLetter) {
