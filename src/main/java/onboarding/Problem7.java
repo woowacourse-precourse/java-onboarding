@@ -13,12 +13,12 @@ public class Problem7 {
         addScore10(map, user, userFriends, friends);
         addScore1(map, visitors, userFriends);
 
-        getTop10(map);
-        List<String> answer = new ArrayList<>(getTop10(map).keySet());
+        getTop5(map);
+        List<String> answer = new ArrayList<>(getTop5(map).keySet());
         return answer;
     }
 
-    private static HashMap<String, Integer> getTop10 (HashMap<String, Integer> map) {
+    private static HashMap<String, Integer> getTop5 (HashMap<String, Integer> map) {
         //  entrySet로 key, value 가져올 수 있음.
         HashMap<String, Integer> result = map.entrySet().stream()
                 .sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
