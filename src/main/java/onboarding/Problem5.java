@@ -17,4 +17,10 @@ public class Problem5 {
         return fiveMillion;
     }
 
+    private static int countMillion() {
+        int Million = balance / 10000;
+        balance -= 10000 * Million;
+        return Million;
+    }
+
 }
