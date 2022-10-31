@@ -4,9 +4,17 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
 
+        if (isError(cryptogram)) {
+            return "-1";
+        }
+
         answer = decodingText(cryptogram);
 
         return answer;
+    }
+
+    public static boolean isError(String cryptogram) {
+        return cryptogram.length() < 1 || cryptogram.length() > 1000 || !cryptogram.matches("^[a-z]*$");
     }
 
     public static String decodingText(String cryptogram) {
