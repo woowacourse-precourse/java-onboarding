@@ -5,11 +5,11 @@ public class DictionaryConverter {
     private final String convertedString;
 
     public DictionaryConverter(String word) {
-        StringBuilder sb = new StringBuilder();
+        StringBuilder convertedStringBuilder = new StringBuilder();
         for (int i = 0; i < word.length(); i++) {
-            sb.append(getConvertedCharacter(word.charAt(i)));
+            convertedStringBuilder.append(getConvertedCharacter(word.charAt(i)));
         }
-        this.convertedString = sb.toString();
+        this.convertedString = convertedStringBuilder.toString();
     }
 
     public String getConvertedString() {
