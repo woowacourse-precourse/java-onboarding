@@ -1,7 +1,6 @@
 package onboarding;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.ArrayList;
@@ -10,7 +9,7 @@ import java.util.HashMap;
 import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Map;
-import onboarding.Problem7.UserPoint;
+import onboarding.Problem7.RelationShips;
 import org.junit.jupiter.api.Test;
 
 class Problem7Test {
@@ -26,10 +25,10 @@ class Problem7Test {
                 List.of("jaewoo", "minjae"),
                 List.of("hansu", "jaewoo")
         );
-        Map<String, List<String>> relationShips = Problem7.makeRelationShips(friends);
+        RelationShips relationShips = Problem7.makeRelationShips(friends);
         List<String> result = List.of("sungjoon", "jiwon", "minjae", "jaewoo");
 
-        assertThat(Problem7.fillUserFriends(user, relationShips)).isEqualTo(result);
+        assertThat(relationShips.friendsFor(user)).isEqualTo(result);
     }
 
     @Test
@@ -43,12 +42,13 @@ class Problem7Test {
                 List.of("jaewoo", "minjae"),
                 List.of("hansu", "jaewoo")
         );
-        Map<String, List<String>> relationShips = Problem7.makeRelationShips(friends);
-        List<String> userFriends = Problem7.fillUserFriends(user, relationShips);
+
+        RelationShips relationShips = Problem7.makeRelationShips(friends);
+        List<String> userFriends = relationShips.friendsFor(user);
         Map<String, Integer> result = new HashMap<String, Integer>();
         result.put("chaemin", 10);
 
-        assertThat(Problem7.getPointFrom(relationShips, user, userFriends)).isEqualTo(result);
+        assertThat(Problem7.makeUserPointMap(relationShips, user, userFriends).value()).isEqualTo(result);
 
     }
 
@@ -64,8 +64,8 @@ class Problem7Test {
                 List.of("jaewoo", "minjae"),
                 List.of("hansu", "jaewoo")
         );
-        Map<String, List<String>> relationShips = Problem7.makeRelationShips(friends);
-        List<String> userFriends = Problem7.fillUserFriends(user, relationShips);
+        RelationShips relationShips = Problem7.makeRelationShips(friends);
+        List<String> userFriends = relationShips.friendsFor(user);
 
         List<String> visitors = List.of("hansu", "sungjoon", "sungjoon", "minjae", "jiwon", "invidam", "invidam",
                 "sonny");
@@ -73,38 +73,9 @@ class Problem7Test {
         result.put("invidam", 2);
         result.put("sonny", 1);
 
-        assertThat(Problem7.getPointFrom(visitors, user, userFriends)).isEqualTo(result);
+        assertThat(Problem7.makeUserPointMap(visitors, user, userFriends).value()).isEqualTo(result);
 
     }
-
-    @Test
-    void 결과정렬테스트() {
-        List<UserPoint> list = new ArrayList<>();
-
-        list.add(new UserPoint("ahansu", 1));
-        list.add(new UserPoint("chansu", 1));
-        list.add(new UserPoint("sungjoon", 20));
-        list.add(new UserPoint("minji", -3));
-        list.add(new UserPoint("faker", 5));
-        list.add(new UserPoint("chovy", 40));
-        list.add(new UserPoint("invidam", 7));
-
-        List<UserPoint> result = new ArrayList<>();
-
-        result.add(new UserPoint("chovy", 40));
-        result.add(new UserPoint("sungjoon", 20));
-        result.add(new UserPoint("invidam", 7));
-        result.add(new UserPoint("faker", 5));
-        result.add(new UserPoint("ahansu", 1));
-        result.add(new UserPoint("chansu", 1));
-        result.add(new UserPoint("minji", -3));
-
-        Problem7.sortUserPoints(list);
-
-        assertThat(list).isEqualTo(result);
-
-    }
-
 
     @Test
     void 결과테스트() {
@@ -125,6 +96,7 @@ class Problem7Test {
 
         assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
     }
+
     @Test
     void 작은결과테스트() {
         String user = "hansu";
@@ -132,11 +104,12 @@ class Problem7Test {
                 List.of("hansu", "sungjoon"),
                 List.of("hansu", "jiwon")
         );
-        List<String> visitors = List.of("sungjoon", "sungjoon","invidam", "invidam", "sonny");
+        List<String> visitors = List.of("sungjoon", "sungjoon", "invidam", "invidam", "sonny");
         List<String> result = List.of("invidam", "sonny");
 
         assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
     }
+
     @Test
     void 사용자아이디예외테스트() {
         String user = "hansu";
@@ -148,14 +121,15 @@ class Problem7Test {
                 List.of("hansu", "sungjoon"),
                 List.of("hansu", "jiw0n")
         );
-        List<String> visitors = List.of("sungjoon", "sungjoon","invidam", "invidam", "sonny");
-        List<String> invalidVisitors = List.of("sungjoon123", "sungjoon","invidam", "invidam", "sonny");
+        List<String> visitors = List.of("sungjoon", "sungjoon", "invidam", "invidam", "sonny");
+        List<String> invalidVisitors = List.of("sungjoon123", "sungjoon", "invidam", "invidam", "sonny");
         List<String> result = List.of("invidam", "sonny");
 
-        assertThrows(InputMismatchException.class,() -> Problem7.solution("박한수", friends, visitors));
-        assertThrows(InputMismatchException.class,() -> Problem7.solution(user, invalidFriends, visitors));
-        assertThrows(InputMismatchException.class,() -> Problem7.solution(user, friends, invalidVisitors));
+        assertThrows(InputMismatchException.class, () -> Problem7.solution("박한수", friends, visitors));
+        assertThrows(InputMismatchException.class, () -> Problem7.solution(user, invalidFriends, visitors));
+        assertThrows(InputMismatchException.class, () -> Problem7.solution(user, friends, invalidVisitors));
     }
+
     @Test
     void 리스트길이() {
         String user = "hansu";
@@ -168,16 +142,16 @@ class Problem7Test {
             invalidFriends.add(
                     List.of("hansu", "jiwon"));
         }
-        List<String> visitors = List.of("sungjoon", "sungjoon","invidam", "invidam", "sonny");
+        List<String> visitors = List.of("sungjoon", "sungjoon", "invidam", "invidam", "sonny");
         List<String> invalidVisitors = new ArrayList<>();
         for (int i = 0; i < 10_005; ++i) {
             invalidVisitors.add("sungjoon");
         }
         List<String> result = List.of("invidam", "sonny");
 
-        assertThrows(InputMismatchException.class,() -> Problem7.solution(user, invalidFriends, visitors));
-        assertThrows(InputMismatchException.class,() -> Problem7.solution(user, Collections.emptyList(), visitors));
-        assertThrows(InputMismatchException.class,() -> Problem7.solution(user, friends, invalidVisitors));
-        assertThrows(InputMismatchException.class,() -> Problem7.solution(user, friends, Collections.emptyList()));
+        assertThrows(InputMismatchException.class, () -> Problem7.solution(user, invalidFriends, visitors));
+        assertThrows(InputMismatchException.class, () -> Problem7.solution(user, Collections.emptyList(), visitors));
+        assertThrows(InputMismatchException.class, () -> Problem7.solution(user, friends, invalidVisitors));
+        assertThrows(InputMismatchException.class, () -> Problem7.solution(user, friends, Collections.emptyList()));
     }
 }
