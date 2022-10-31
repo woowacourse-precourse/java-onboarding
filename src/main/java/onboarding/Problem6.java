@@ -44,6 +44,22 @@ public class Problem6 {
         }
 
 
+        //Hashmap의 key를 모두가져온후 key에 해당하는 값이 2개이상인 key를 찾는다.
+        for (String key : checkDuplicateWord.keySet()) {
+            //특정 단어(key)값을 포함하는 이메일 리스트
+            List<String> emailList = checkDuplicateWord.get(key);
+
+            //이메일리스트 사이즈가 2이상일시 같은 글자가 연속적으로 포함되는 닉네임이 존재한다는 뜻이므로
+            //해당 이메일을 답에 추가해준다.
+            if(emailList.size() >= 2){
+                for (String email : emailList) {
+                    if(!answer.contains(email))
+                        answer.add(email);
+                }
+            }
+
+        }
+        Collections.sort(answer);
         return answer;
     }
 }
