@@ -48,41 +48,34 @@ class IsOverlap {
                 }
             }
         }
-
         return false;
     }
 }
 
 class IsValidEmail {
-    public boolean isValidEmail (String email) {
+    public boolean isValidEmail(String email) {
         int emailLength = email.length();
         if (emailLength < 11 || 20 <= emailLength) {
             return false;
         }
         return true;
     }
-
-    public boolean isValidID (String ID) {
-
-        for (int i=0; i<ID.length(); i++) {
-            if (65 <= ID.charAt(i) && ID.charAt(i) <= 90) {
-                continue;
-            }
-            if (97 <= ID.charAt(i) && ID.charAt(i) <= 122) {
-                continue;
-            }
-            if (48 <= ID.charAt(i) && ID.charAt(i) <= 57) {
-                continue;
-            }
-            //특수문자 파트
-        }
-        return true;
-    }
-
     public boolean isValidHOST (String HOST) {
         if (! HOST.equals("email.com")) {
             return false;
         }
         return true;
+    }
+}
+
+class IsValidNickName {
+    public boolean isValidNickName(String nickName) {
+        //한글만 제한할 기능을 넣을지 고민
+        int nickNameLength = nickName.length();
+        if(nickNameLength < 1 || 20 <= nickNameLength) {
+            return false;
+        }
+        return true;
+
     }
 }
