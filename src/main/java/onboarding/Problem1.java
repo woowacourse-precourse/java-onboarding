@@ -19,14 +19,15 @@ class Problem1 {
         return true;
     }
 
-    public static int SumOfDigit(int value){
+    public static int SumOfDigit(int page){
         int result = 0;
-        while(value != 0){
-            result += value % 10;
-            value /= 10;
+        while(page != 0){
+            result += page % 10;
+            page /= 10;
         }
         return result;
     }
+    
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
