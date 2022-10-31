@@ -2,30 +2,36 @@ package onboarding;
 
 import java.lang.reflect.Array;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem6 {
-    // HashMap<String, ArrayList<Integer>> charToIndices 생성 : {두 글자 : [닉네임 인덱스]}
-    HashMap<String, ArrayList<Integer>> charToIndices = new HashMap<String, ArrayList<Integer>>();
+    HashMap<String, ArrayList<Integer>> charToIndices = new HashMap<String, ArrayList<Integer>>();  // charToIndices 생성 : {두 글자 : [닉네임 인덱스]}
     public static List<String> solution(List<List<String>> forms) {
+        Problem6 problem = new Problem6();
+
         /* 제한 사항 처리 */
         forms = except(forms);
 
-        Problem6 problem = new Problem6();
         for (int i = 0; i < forms.size(); i++) {
             problem.updateEvery2SequentialChar(i, forms.get(i).get(1)); // 닉네임에서 2글자씩 분절해  charToIndices에 추가
         }
-        
-        List<Integer> answerIndices = problem.getDuplicateIndices();
 
-        // answer 배열 생성
-        List<String> answer = new ArrayList<>();
-        // Index 배열을 이용해 answer에 email add
-        for (int i : answerIndices) {
-            answer.add(forms.get(i).get(0));
+        List<Integer> answerIndices = problem.charToIndices.values()
+                                                            .stream()
+                                                            .filter(intList -> intList.size() > 1)  // 길이가 2이상인 Index 배열 반환
+                                                            .findFirst()
+                                                            .orElse(new ArrayList<>());
+        if (answerIndices.size()==0) { // 중복 닉네임이 없는 경우 빈 리스트 return
+            return Collections.emptyList();
         }
-        // 중복 제거 & 오름차순 정렬
-        TreeSet<String> distinceAnswer = new TreeSet<>(answer);
-        answer = new ArrayList<String>(distinceAnswer);
+
+        List<List<String>> finalForms = forms;
+        List<String> answer = answerIndices.stream()
+                                            .map(i -> finalForms.get(i).get(0)) // answer에 중복 닉네임 크루의 email add
+                                            .collect(Collectors.toList());
+
+        TreeSet<String> distinceAnswer = new TreeSet<>(answer); // 중복 제거 & 오름차순 정렬
+        answer = new ArrayList(distinceAnswer);
         return answer;
     }
 
@@ -54,12 +60,4 @@ public class Problem6 {
             this.charToIndices.put(key, formIndices);
         }
     }
-
-    List<Integer> getDuplicateIndices() {
-        return this.charToIndices.values().stream()
-                    .filter(intList -> intList.size() > 1)  // 길이가 2이상인 Index 배열 반환
-                    .findFirst()
-                    .orElse(new ArrayList<>());
-    }
-
 }
