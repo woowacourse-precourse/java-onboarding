@@ -9,16 +9,19 @@ public class Problem2 {
         1. 기능 목록 1~4를 cryptogram 길이가 짧아지고 1보다 클 동안 반복
          */
         do {
+            /*
+            2. 필요한 변수 셋팅
+            - preCharacter: i - 1번째 문자
+            - nowCharacter: i번째 문자
+            - count: 연속된 문자 수
+            - cryptogramLength: 문자열 cryptogram의 길이
+             */
+            char preCharacter = cryptogram.charAt(0);
+            char nowCharacter;
+            String tmp = "";
+            int count = 1;
 
         } while (cryptogramLength > cryptogram.length() && cryptogram.length() > 1);
-
-        /*
-        2. 필요한 변수 셋팅
-        - preCharacter: i - 1번째 문자
-        - nowCharacter: i번째 문자
-        - count: 연속된 문자 수
-        - cryptogramLength: 문자열 cryptogram의 길이
-         */
 
         /*
         3. cryptogram에서 i번째 문자 추출
