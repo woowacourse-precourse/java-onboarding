@@ -44,7 +44,13 @@ public class Problem7 {
     }
 
 
-    public static void Add_10_points(String friend){}
+    public static void Add_10_points(String friend){
+        if (map.containsKey(friend)){
+            map.put(friend, map.get(friend) + 10);
+        } else {
+            map.put(friend, 10);
+        }
+    }
 
     public static void Add_point(String visitor){}
 
