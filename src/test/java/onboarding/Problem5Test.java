@@ -5,8 +5,13 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.MethodSource;
 
+
+import java.util.List;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -251,29 +256,24 @@ class Problem5Test {
 		}
 	}
 
-	@DisplayName("돈이 더 남았을 때 false 를 반환해야 함")
-	@Test
-	void hasMoreMoneyTest() {
-		// given : 남은 돈이 주어질 때
-		final int REMAINED_MONEY = 4999;
+	@ParameterizedTest(name = "{0}won ==> {1}")
+	@MethodSource("generateMoneyAndExpectedResults")
+	void solutionTest(int money, List<Integer> expected) {
+		//
+		List<Integer> result = Problem5.solution(money);
 
-		// when : 돈이 더 남았는지 확인
-		boolean result = Problem5.noMoreMoney(REMAINED_MONEY);
-
-		// then : 돈이 4999 원 남았기에 false 를 반환해야 함
-		assertThat(result).isFalse();
+		assertThat(result).isEqualTo(expected);
 	}
 
-	@DisplayName("돈이 더 안남았을 때 true 를 반환해야 함")
-	@Test
-	void hasNoMoreMoneyTest() {
-		// given : 남은 돈이 없을 때
-		final int REMAINED_MONEY = 0;
-
-		// when : 돈이 더 남았는지 확인
-		boolean result = Problem5.noMoreMoney(REMAINED_MONEY);
-
-		// then : 돈이 안남았기에 true 를 반환해야 함
-		assertThat(result).isTrue();
+	private static Stream<Arguments> generateMoneyAndExpectedResults() {
+		return Stream.of(
+				Arguments.of(459519, List.of(9, 0, 1, 4, 1, 0, 0, 1, 9)),
+				Arguments.of(59416, List.of(1, 0, 1, 4, 0, 4, 0, 1, 6)),
+				Arguments.of(123456, List.of(2, 2, 0, 3, 0, 4, 1, 0, 6)),
+				Arguments.of(99, List.of(0, 0, 0, 0, 0, 0, 1, 4, 9)),
+				Arguments.of(9, List.of(0, 0, 0, 0, 0, 0, 0, 0, 9)),
+				Arguments.of(19, List.of(0, 0, 0, 0, 0, 0, 0, 1, 9)),
+				Arguments.of(333, List.of(0, 0, 0, 0, 0, 3, 0, 3, 3))
+		);
 	}
 }
