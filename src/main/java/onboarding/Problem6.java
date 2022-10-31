@@ -5,13 +5,6 @@ import java.util.Collections;
 import java.util.List;
 
 public class Problem6 {
-    /*
-     * for문을 돌면서 forms에서 닉네임을 하나 뽑아.
-     * 그리고 그 닉네임을 바탕으로 for문을 하나 더 돌면서 다른 닉네임들하고 비교를 해
-     * 비교 => 연속으로 두글자가 겹치는지 true or false return해.
-     * 두글자가 겹치는지 확인하는 함수는 substring([n], [n+1])을 통해 0부터 문자열 length - 1까지 돌면서 contains 함수를 통해 확인해.
-     *
-     */
     private static boolean[] hasDuplicatePartInNickname;
     public static List<String> solution(List<List<String>> forms) {
         List<String> result = new ArrayList<>();
