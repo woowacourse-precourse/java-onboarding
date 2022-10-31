@@ -5,7 +5,6 @@ import java.util.*;
 public class Problem7 {
 
     Map<String, Integer> user_score = new HashMap<>();
-    Map<String, List<String>> user_friends = new HashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         // List<String> answer = Collections.emptyList();
@@ -42,35 +41,37 @@ public class Problem7 {
     }
 
 
-    void setVisitorScore(List<String> visitors) {
+    private void setVisitorScore(List<String> visitors) {
         for (String visitor : visitors) {
             user_score.put(visitor, user_score.getOrDefault(visitor, 0) + 1);
         }
     }
 
-    void setFriendScore(String user, List<List<String>> friends) {
-        setUserFriends(friends);
-        List<String> friend_list = user_friends.get(user);
-        for (String friend : friend_list) {
-            List<String> cross_friend_list = user_friends.get(friend);
-            for (String cross_friend : cross_friend_list) {
-                if (cross_friend.equals(user)) {
-                    continue;
-                }
-                user_score.put(cross_friend, user_score.getOrDefault(cross_friend, 0) + 10);
-            }
-        }
-    }
-
-    void setUserFriends(List<List<String>> friends) {
+    private Map<String, List<String>> makeFriendsMap(List<List<String>> friends) {
+        Map<String, List<String>> friends_map = new HashMap<>();
         for (List<String> friend_list : friends) {
             for (int i = 0; i <= 1; i++) {
                 String friend1 = friend_list.get(i);
                 String friend2 = friend_list.get(1 - i);
                 List<String> array = new ArrayList<>();
-                List<String> friend1_friend_list = user_friends.getOrDefault(friend1, array);
+                List<String> friend1_friend_list = friends_map.getOrDefault(friend1, array);
                 friend1_friend_list.add(friend2);
-                user_friends.put(friend1, friend1_friend_list);
+                friends_map.put(friend1, friend1_friend_list);
+            }
+        }
+        return friends_map;
+    }
+
+    private void setFriendScore(String user, List<List<String>> friends) {
+        Map<String, List<String>> friends_map = makeFriendsMap(friends);
+        List<String> friend_list = friends_map.get(user);
+        for (String friend : friend_list) {
+            List<String> cross_friend_list = friends_map.get(friend);
+            for (String cross_friend : cross_friend_list) {
+                if (cross_friend.equals(user)) {
+                    continue;
+                }
+                user_score.put(cross_friend, user_score.getOrDefault(cross_friend, 0) + 10);
             }
         }
     }
