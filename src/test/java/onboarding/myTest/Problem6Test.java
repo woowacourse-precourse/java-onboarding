@@ -49,5 +49,20 @@ public class Problem6Test {
         assertThat(Problem6.solution(forms)).isEqualTo(result);
     }
 
+    //"원피스", "제이슨", "원피수", "엠제이", "수원피"
+    @Test
+    void case4() {
+        List<List<String>> forms = List.of(
+                List.of("jm@email.com", "원피스"),
+                List.of("jm@email.com", "제이엠"),
+                List.of("jason@email.com", "원피수"),
+                List.of("woniee@email.com", "수원피"),
+                List.of("mj@email.com", "엠제이"),
+                List.of("nowm@email.com", "이제엠")
+        );
+        List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com",  "woniee@email.com");
+        assertThat(Problem6.solution(forms)).isEqualTo(result);
+    }
+
 
 }

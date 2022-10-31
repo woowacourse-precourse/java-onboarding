@@ -17,7 +17,7 @@ public class Problem1 {
             return 1;
         } else if (pobiMaxData < crongMaxData) {
             return 2;
-        } else{
+        } else {
             return 0;
         }
     }
@@ -52,6 +52,9 @@ public class Problem1 {
             return false;
         }
         if (list.size() != 2) {
+            return false;
+        }
+        if (list.get(0) < 1 || list.get(0) > 400 || list.get(1) < 1 || list.get(1) > 400) {
             return false;
         }
         if (list.get(0) == 1 || list.get(1) == 400) {
