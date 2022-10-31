@@ -30,6 +30,16 @@ class Problem1 {
         return result;
     }
 
+    //페이지 번호 각 자리 수 곱하기
+    private static int mulPage(int page) {
+        int result = 1;
+        while(page != 0) {
+            result *= page % 10;
+            page /= 10;
+        }
+        return result;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
