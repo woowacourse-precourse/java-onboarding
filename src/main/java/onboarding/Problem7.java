@@ -13,6 +13,8 @@ public class Problem7 {
         putFriendsToMap(user, friends);
         give10ScoreForFriendOfFriend(friends);
         give1ScoreForVisitor(visitors);
+        removeUnnecessary(user);
+
     }
 
     private static void init(String user) {
@@ -57,6 +59,12 @@ public class Problem7 {
                 scoreMap.put(visitor, 1);
             }
         }
+    }
+
+    private static void removeUnnecessary(String user) {
+        // map에 들어가있던 user와 user의 친구는 결과값에 불필요하므로, 제거한다.
+        scoreMap.remove(user);
+        alreadyFriend.forEach(scoreMap::remove);
     }
 
 }
