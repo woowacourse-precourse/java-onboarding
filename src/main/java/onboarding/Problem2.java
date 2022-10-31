@@ -11,11 +11,6 @@ public class Problem2 {
         	password.add(cryptogram.charAt(i));
         }
         
-        for(int i=0; i<password.size(); i++) {
-        	System.out.print(password.get(i));
-        }
-        System.out.println();
-        
         for(int i=1; i<password.size(); i++) {
         	if(password.get(i)==password.get(i-1)) {        		
         		password.remove(i);
@@ -23,11 +18,6 @@ public class Problem2 {
         		i=0;
         	}
         }
-        
-        for(int i=0; i<password.size(); i++) {
-        	System.out.print(password.get(i));
-        }
-        System.out.println();
         
         for(char spelling : password) {
         	answer += spelling;
