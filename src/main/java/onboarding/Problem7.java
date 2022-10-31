@@ -7,10 +7,24 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
 
         HashSet<String> userFriends = makeUserFriendList(user, friends);
-        HashMap<String, Integer> notUserFriends = makeNotUserFriendList(user, friends, visitors, userFriends);
+        HashMap<String, Integer> notUserFriendsScore = makeNotUserFriendList(user, friends, visitors, userFriends);
 
+        calcFriendsScore(userFriends, notUserFriendsScore, friends);
 
         return answer;
+    }
+
+    public static void calcFriendsScore(HashSet<String> userFriends, HashMap<String, Integer> notUserFriendsScore, List<List<String>> friends) {
+        for (String notFriendId : notUserFriendsScore.keySet()) {
+            for (String friendId : userFriends) {
+                for (List<String> pair : friends) {
+                    if (isFriend(notFriendId, friendId, pair)) {
+                        notUserFriendsScore.put(notFriendId, notUserFriendsScore.get(notFriendId) + 10);
+                        break;
+                    }
+                }
+            }
+        }
     }
 
     public static HashSet<String> makeUserFriendList(String user, List<List<String>> friends) {
@@ -23,6 +37,7 @@ public class Problem7 {
         }
         return userFriends;
     }
+
     public static HashMap<String, Integer> makeNotUserFriendList(String user, List<List<String>> friends, List<String> visitors, HashSet<String> userFriends) {
         HashMap<String, Integer> notUserFriends = new HashMap<>();
 
@@ -36,16 +51,28 @@ public class Problem7 {
         }
 
         for (String id : visitors) {
-            if (!(userFriends.contains(id) || notUserFriends.containsKey(id))) {
+            if (!userFriends.contains(id)) {
                 notUserFriends.put(id, 0);
             }
         }
 
-        if (notUserFriends.containsKey(user)) {
-            notUserFriends.remove(user);
-        }
+        notUserFriends.remove(user);
 
         return notUserFriends;
+    }
+
+    public static boolean isFriend(String user1, String user2, List<String> pair) {
+        String tmp1 = pair.get(0);
+        String tmp2 = pair.get(1);
+
+        if (user1.equals(tmp1) && user2.equals(tmp2)) {
+            return true;
+        }
+        if (user1.equals(tmp2) && user2.equals(tmp1)) {
+            return true;
+        }
+
+        return false;
     }
 
     public static boolean isUserFriend(String user, List<String> pair) {
