@@ -7,7 +7,7 @@ import java.util.List;
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>(forms.size());
-        List<String> result = new ArrayList<>();
+        List<String> emailList = new ArrayList<>();
 
         //입력받은 이메일과 닉네임 중, 닉네임만 추출
         for (int i = 0; i < forms.size(); i++) {
@@ -37,25 +37,18 @@ public class Problem6 {
 
         //추출한 겹치는 닉네임과 입력받은 매개변수의 닉네임을 비교하여, 해당 닉네임의 이메일을 추출
         for (String str : overlapNickname) {
-            for (int q = 0; q < forms.size(); q++) {
-                if (str.equals(forms.get(q).get(1))) {
-                    result.add(forms.get(q).get(0));
-                }
-            }
+            emailList.add(emailExtraction(forms, str));
         }
 
         //이메일의 형태가 email.com인지 확인
-        List<String> lastResult = new ArrayList<>();
-        for (int w = 0; w < result.size(); w++) {
-            if (result.get(w).matches("\\w+@email\\.com$")) {
-                lastResult.add(result.get(w));
-            }
-        }
+        List<String> result = new ArrayList<>();
+        checkDomain(emailList,result);
+
         //문자열 오름차순 순서로 정렬
-        Collections.sort(lastResult);
+        Collections.sort(result);
 
 
-        return lastResult;
+        return result;
     }
 
 
@@ -67,5 +60,23 @@ public class Problem6 {
             }
         }
         return overlapNickname;
+    }
+
+    private static String emailExtraction(List<List<String>> forms, String str) {
+        String email = "";
+        for (int q = 0; q < forms.size(); q++) {
+            if (str.equals(forms.get(q).get(1))) {
+                email = forms.get(q).get(0);
+            }
+        }
+        return email;
+    }
+
+    private static void checkDomain(List<String> emailList, List<String> result) {
+        for (int i = 0; i < emailList.size(); i++) {
+            if (emailList.get(i).matches("\\w+@email\\.com$")) {
+                result.add(emailList.get(i));
+            }
+        }
     }
 }
