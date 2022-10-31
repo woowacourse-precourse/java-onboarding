@@ -5,6 +5,7 @@ import java.util.Map;
 import java.util.HashSet;
 import java.util.HashMap;
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * 기능 목록 1) putHash 2) putName 3) overLapCheck 4) check 5) makeAnswer
@@ -28,6 +29,12 @@ public class Problem6 {
 		putName(forms);
 		overLapCheck();
 		makeAnswer();
+		
+		for(String email : setEmail) {
+			answer.add(email);
+		}
+		
+		Collections.sort(answer);
 		return answer;
 	}
 
@@ -52,6 +59,7 @@ public class Problem6 {
 		int i = 0;
 		for (List<String> list : forms) {
 			name[i] = list.get(1);
+			i++;
 		}
 	}
 
