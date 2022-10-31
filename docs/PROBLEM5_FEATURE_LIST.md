@@ -13,5 +13,7 @@ problem5(int money){
 
 
 TODO
+- 슈도 코드에 맞게 로직 짜기
+- 테스트 확인
 - coinList 상수화
 - 예외처리(coinList <= 0인 경우)
