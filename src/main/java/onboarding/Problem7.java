@@ -9,11 +9,11 @@ public class Problem7 {
 		
 		HashMap<String, Integer> scoreMap = new HashMap<>();
 		for (List<String> relation : exceptFriendList) {
-			if (myFriendList.contains(relation.get(0))) {
+			if (myFriendList.contains(relation.get(0)) && !myFriendList.contains(relation.get(1))) {
 				scoreMap = calculateScore(scoreMap, relation.get(1));
 			}
 			
-			if (myFriendList.contains(relation.get(1))) {
+			if (myFriendList.contains(relation.get(1)) && !myFriendList.contains(relation.get(0))) {
 				scoreMap = calculateScore(scoreMap, relation.get(0));
 			}
 		}
@@ -45,7 +45,7 @@ public class Problem7 {
 					return -1;
 				} else if (o1.getValue() < o2.getValue()) {
 					return 1;
-				}else{
+				} else {
 					return dictionarySorting(o1, o2);
 				}
 			}
@@ -55,7 +55,7 @@ public class Problem7 {
 					return 1;
 				} else if (o1.getKey().compareTo(o2.getKey()) < 0) {
 					return -1;
-				} else{
+				} else {
 					return 0;
 				}
 			}
