@@ -18,12 +18,9 @@ class Problem1 {
 
         /* 포비가 만들수 있는 가장 큰 수 구하기*/
         int pobiMax = getMaxNumber(pobi);
-//        System.out.println("포비"+pobiMax);
 
         /* 크롱이 만들수 있는 가장 큰 수 구하기*/
         int crongMax = getMaxNumber(crong);
-//        System.out.println("크롱"+crongMax);
-//        int answer = Integer.MAX_VALUE;
 
         if(pobiMax > crongMax) {
             return 1;

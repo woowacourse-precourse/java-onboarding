@@ -3,8 +3,6 @@ package onboarding;
 public class Problem2 {
     public static String solution(String cryptogram) {
 
-        /* 문자열 길이 / 대문자 찾으면 예외처리 해줘야하는지? */
-
         int cnt = 0;
 
         /* do while */
