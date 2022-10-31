@@ -159,6 +159,13 @@ class ApplicationTest {
         }
 
         @Test
+        void case7() {
+            String cryptogram = "aabba";
+            String result = "a";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
         void correctSizeTest1() {
             String cryptogram = "";
             assertThat(Problem2.Validator.isValidate(cryptogram)).isFalse();

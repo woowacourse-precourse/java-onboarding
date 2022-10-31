@@ -1,6 +1,9 @@
 package onboarding;
 
+import java.util.Arrays;
 import java.util.Locale;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
@@ -10,37 +13,53 @@ public class Problem2 {
     }
 
     private static void doingZip(Cryptogram crypto) {
-        int idx = crypto.getZipIdx();
-        while (idx != -1){
-            crypto.zipCryptogram(idx);
-            idx = crypto.getZipIdx();
+        while (crypto.canZip()){
+            crypto.zipCryptogram();
         }
     }
 
     static class Cryptogram{
         private String cryptogram;
+        private final char REPLACE_CHAR = 0;
 
         public Cryptogram(String word) {
-            Validator.isValidate(word);
-            setCryptogram(word);
-        }
-
-        public void zipCryptogram(int start){
-            StringBuilder sb = new StringBuilder(cryptogram);
-            int end = start + 1;
-            while (end < cryptogram.length() && charAt(start) == charAt(end)){
-                end++;
+            if (Validator.isValidate(word)){
+                setCryptogram(word);
             }
-            setCryptogram(new String(sb.delete(start, end)));
         }
 
-        public int getZipIdx(){
+        public boolean canZip(){
             for (int i = 0; i < cryptogram.length() - 1; i++) {
-                if (cryptogram.charAt(i) == cryptogram.charAt(i + 1)){
-                    return i;
+                if (charAt(i) == charAt(i + 1)){
+                    return true;
                 }
             }
-            return -1;
+            return false;
+        }
+
+        public void zipCryptogram(){
+            char[] cryCharArr = cryptogram.toCharArray();
+            setRemoveChar(cryCharArr);
+            this.cryptogram = getZippedString(cryCharArr);
+        }
+
+        private void setRemoveChar(char[] cryCharArr) {
+            for (int i = 0; i < cryptogram.length() - 1; i++) {
+                if (charAt(i) == charAt(i + 1)){
+                    cryCharArr[i] = REPLACE_CHAR;
+                    cryCharArr[i + 1] = REPLACE_CHAR;
+                }
+            }
+        }
+
+        private String getZippedString(char[] cryCharArr) {
+            String newString = "";
+            for (char ch : cryCharArr){
+                if (ch != REPLACE_CHAR){
+                    newString += String.valueOf(ch);
+                }
+            }
+            return newString;
         }
 
         public char charAt(int i){
@@ -62,10 +81,10 @@ public class Problem2 {
             try {
                 isCorrectSize(cryptogram);
                 isOnlyLowerCase(cryptogram);
+                return true;
             } catch (Exception error) {
                 return false;
             }
-            return true;
         }
 
         private static void isCorrectSize(String str){
