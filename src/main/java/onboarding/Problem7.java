@@ -6,7 +6,16 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
 
+        Map<String, List<String>> relation = snsRelation(friends);
+        List<String> userFriends = relation.get(user);
+        userFriends.add(user);
 
+        Map<String, Integer> friendScore = new HashMap<>();
+
+        scoreFriendFriend(relation, userFriends, friendScore);
+        scoreVisitFriend(friendScore, userFriends, visitors);
+
+        answer = sortAsc(friendScore);
 
 
         return answer;
