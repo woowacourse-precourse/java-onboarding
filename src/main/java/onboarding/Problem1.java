@@ -19,15 +19,10 @@ class Problem1 {
     static final int LEFTPAGE = 0;
     static final int RIGHTPAGE = 1;
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        try {
-            if (gamerExceptionCheck(pobi) == EXCEPTION) {
-                throwException();
-            }
-            if (gamerExceptionCheck(crong) == EXCEPTION) {
-                throwException();
-            }
+        if (gamerExceptionCheck(pobi) == EXCEPTION) {
+            return EXCEPTION;
         }
-        catch(Exception e) {
+        if (gamerExceptionCheck(crong) == EXCEPTION) {
             return EXCEPTION;
         }
         int pobiScore = listPageGetMax(pobi);
