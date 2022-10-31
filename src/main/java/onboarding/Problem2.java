@@ -4,6 +4,7 @@ import java.util.Stack;
 
 /** 기능 목록
  * solutionLogic    : 메인 솔루션
+ * eraseIfSame      : 같은 문자들을 지워줌
  * stackToString    : Stack을 String으로 변환
  * checkValid       : 에러 처리
  * checkLength      : 문자열 길이 유효성 검사
@@ -21,15 +22,28 @@ public class Problem2 {
 
     private static Stack<Character> solutionLogic(String s) {
         char[] charArray = s.toCharArray();
+        boolean needPop = false;
         Stack<Character> stack = new Stack<>();
         for (char c : charArray) {
-            if (stack.isEmpty() || stack.peek() != c) {
-                stack.add(c);
-            } else if (stack.peek() == c) {
-                stack.pop();
+            if (!stack.isEmpty() && stack.peek() != c) {
+                eraseIfSame(stack);
             }
+            stack.add(c);
         }
+        eraseIfSame(stack);
         return stack;
+    }
+
+    private static void eraseIfSame(Stack<Character> stack) {
+        char compare = stack.pop();
+        boolean isDeleted = false;
+        while (!stack.isEmpty() && stack.peek() == compare) {
+            isDeleted = true;
+            stack.pop();
+        }
+        if (!isDeleted) {
+            stack.add(compare);
+        }
     }
 
     private static String stackToString(Stack<Character> stack) {
