@@ -12,11 +12,55 @@ import java.util.*;
 
 public class Problem7 {
 
+    static class RecFriend {
+        private String name;
+        private Integer score;
+
+        RecFriend(String name, Integer score) {
+            this.name = name;
+            this.score = score;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public Integer getScore() {
+            return score;
+        }
+
+    }
+
     static HashMap<String, Set<String>> friendsHashMap = new HashMap<>();
     static HashMap<String, Integer> points = new HashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        friendsHashMap.clear();
+        points.clear();
+        friendList(user, friends);
+        addFriendPoint(user);
+        addVisitorPoint(visitors);
+
+        List<RecFriend> recFriendList = new ArrayList<>();
+        for (String name : points.keySet()) {
+            if (points.get(name) == 0) continue;
+            if (friendsHashMap.get(user).contains(name)) continue;
+            recFriendList.add(new RecFriend(name, points.get(name)));
+        }
+
+
+        Collections.sort(recFriendList, (a, b) -> {
+
+            if (!a.getScore().equals(b.getScore())) {
+                return -Integer.compare(a.getScore(), b.getScore());
+            }
+            return String.CASE_INSENSITIVE_ORDER.compare(a.getName(), b.getName());
+        });
+
+        List<String> answer = new ArrayList<>();
+        for (int i = 0; i < Integer.min(recFriendList.size(), 5); i++) {
+            answer.add(recFriendList.get(i).name);
+        }
         return answer;
     }
 
