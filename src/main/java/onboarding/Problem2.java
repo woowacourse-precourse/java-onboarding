@@ -39,17 +39,18 @@ public class Problem2 {
         for (int i =1; i<lastList.size(); i++){ // zyelleyz -> zyeeyz -> zyyz -> zz
             if(!last.equals(lastList.get(i))) {
                 newList.add(lastList.get(i-1));
+                last= lastList.get(i);
             }else {
+                last= lastList.get(i);
                 i++;
             }
-            if(!lastList.isEmpty()) last= lastList.get(i);
-            else newList.add("");
+
 
         }
         if(lastList.size()==2 && last.equals(lastList.get(lastList.size()-1))) {
 
         }else newList.add(lastList.get(lastList.size()-1));
-        System.out.println(newList);
+        //System.out.println(newList);
 
 
         return  newList;
