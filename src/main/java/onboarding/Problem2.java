@@ -7,7 +7,7 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         checkCorrectCryptogram(cryptogram);
 
-        return removeDuplicateString(cryptogram);
+        return decryptCryptogram(cryptogram);
     }
 
     /**
@@ -28,28 +28,28 @@ public class Problem2 {
     }
 
     /**
-     * 중복 문자를 제거합니다.
-     * @param cryptogram 암호문
-     * @return 제거된 문자열
+     * 중복 문자를 제거하여 복호화
+     * @param cryptogram 암호
+     * @return 복호환된 단어
      */
-    private static String removeDuplicateString(String cryptogram) {
-        List<String> splitCryptogram = getOneLetterCryptograms(cryptogram);
-        int sizeSplitCryptogram = splitCryptogram.size();
+    private static String decryptCryptogram(String cryptogram) {
+        List<String> oneLetterCryptograms = getOneLetterCryptograms(cryptogram);
+        int sizeOneLetterCryptograms = oneLetterCryptograms.size();
 
-        // 문자열 순차 읽기
-        for (int i = 0; i < sizeSplitCryptogram; i++) {
-            // 지난 문자와 현재 문자가 같은지 확인하기.
-            if (i > 0 && Objects.equals(splitCryptogram.get(i - 1), splitCryptogram.get(i))) {
-                //중복 문자 제거
-                for (int j = 0; j < 2; j++) {
-                    splitCryptogram.remove(i);
-                    sizeSplitCryptogram --;
-                    i --;
+        for (int oneLetterIndex = 1; oneLetterIndex < sizeOneLetterCryptograms; oneLetterIndex++) {
+            String previousOneLetter = oneLetterCryptograms.get(oneLetterIndex - 1);
+            String currentOneLetter = oneLetterCryptograms.get(oneLetterIndex);
+
+            if (Objects.equals(previousOneLetter, currentOneLetter)) {
+                for (int i = 0; i < 2; i++) {
+                    oneLetterCryptograms.remove(oneLetterIndex);
+                    sizeOneLetterCryptograms--;
+                    oneLetterIndex--;
                 }
             }
         }
 
-        return String.join("",splitCryptogram);
+        return String.join("", oneLetterCryptograms);
     }
 
     /**
