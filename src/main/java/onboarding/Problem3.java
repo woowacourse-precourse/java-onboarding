@@ -5,6 +5,7 @@ public class Problem3 {
         int answer = 0;
         int dp[] = new int[10001];
         dp[1] =0;
+        //1부터 i까지 박수를 치는 횟수를 dp[i]에 저장한다.
         for(int i=2; i<=number; i++){
             int cnt =0;
             int tmp =i;
