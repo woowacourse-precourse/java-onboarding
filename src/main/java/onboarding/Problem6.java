@@ -7,8 +7,6 @@ import java.util.regex.Pattern;
 
 public class Problem6 {
 
-    private static final String DOMAIN = "@email.com";
-
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
 
