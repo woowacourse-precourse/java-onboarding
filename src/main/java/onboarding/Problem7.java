@@ -71,9 +71,23 @@ public class Problem7 {
             visitorScore(visitor);
         }
 
-        System.out.println(answerMap);
+        List<Map.Entry<String, Integer>> entryList = new ArrayList<>(answerMap.entrySet());
+        Collections.sort(entryList, new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                if (o1.getValue()-o2.getValue()>0) {
+                    return -1;
+                } else if (o1.getValue() - o2.getValue() < 0) {
+                    return 1;
+                }
+                return o1.getKey().compareTo(o2.getKey());
 
-        List<String> answer = Collections.emptyList();
+            }
+        });
+        List<String> answer = new ArrayList<>();
+        for (Map.Entry<String, Integer> stringIntegerEntry : entryList) {
+            answer.add(stringIntegerEntry.getKey());
+        }
 
         return answer;
     }
