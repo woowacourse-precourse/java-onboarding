@@ -9,6 +9,20 @@ public class Problem2 {
     }
 
     public int countDuplication(Stack<Character> stk, int dupCount, char c) {
+        if (stk.isEmpty()) {
+            stk.push(c);
+            return dupCount + 1;
+        }
+        if (stk.peek() != c) {
+            removeStackDuplication(stk, dupCount);
+            stk.push(c);
+            dupCount = 1;
+            return dupCount;
+        }
+        if (stk.peek() == c) {
+            stk.push(c);
+            return dupCount + 1;
+        }
         return dupCount;
     }
 
