@@ -8,6 +8,8 @@ class Problem1 {
         if (isPageOutOfRange(pobi) || isPageOutOfRange((crong)) || isPageSubDiff((pobi)) || isPageSubDiff((crong))) {
             return -1;
         }
+        if(calPageMaxSumMul(pobi) > calPageMaxSumMul(crong)) answer = 1;
+        if(calPageMaxSumMul(pobi) < calPageMaxSumMul(crong)) answer = 2;
         return answer;
     }
     private static int calPageMaxSumMul(List<Integer> l){
