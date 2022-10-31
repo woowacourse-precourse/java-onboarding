@@ -2,6 +2,11 @@ package onboarding;
 
 import java.util.Vector;
 
+/*
+기능 목록
+1. 정답 문자열에 문자가 추가 될 수 있는지 확인하는 기능
+2. 크립토그램을 해석하는 기능
+ */
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
