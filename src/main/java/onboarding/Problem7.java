@@ -41,7 +41,27 @@ public class Problem7 {
 
 
                 }
+                for(String name:friendmap.keySet()){
 
+                    if(name==user ||userfriend.containsKey(name))
+                        continue;
+
+
+                    int point=0;
+                    for(String friend:friendmap.get(name)){
+                        if(userfriend.containsKey(friend)){
+                            point+=10;
+                        }
+                    }
+
+                    if(visitpoint.containsKey(name))
+                        priorityQueue.add(new friendpoint(name,point+visitpoint.get(name)));
+                    else
+                        priorityQueue.add(new friendpoint(name, point));
+
+
+
+                }
 
             }}
 
