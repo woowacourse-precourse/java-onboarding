@@ -39,6 +39,10 @@ public class Problem7 {
         return map;
     }
 
+    public static Set<String> getOrDefaultSet(HashMap<String,Set<String>> map,String key){
+        return map.getOrDefault(key,new TreeSet<>());
+    }
+
     public static void createScoreMap(String user){
         scoreMap = new HashMap<>();
         for(String key : friendsMap.keySet()){
