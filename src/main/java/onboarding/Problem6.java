@@ -13,7 +13,7 @@ public class Problem6 {
             addSequenceName(crew);
         }
 
-        List<String> answer = List.of("answer");
+        List<String> answer = List.of();
         return answer;
     }
 
@@ -46,8 +46,20 @@ public class Problem6 {
 
     private static void addReportEmails(String reportEmail1, String reportEmail2) {
 
-        reportEmailsSet.add(reportEmail1);
-        reportEmailsSet.add(reportEmail2);
+        if (isNotSameEmail(reportEmail1, reportEmail2)) {
+            reportEmailsSet.add(reportEmail1);
+            reportEmailsSet.add(reportEmail2);
+        }
+
+    }
+
+    private static boolean isNotSameEmail(String reportEmail1, String reportEmail2) {
+
+        if (reportEmail1.equals(reportEmail2)) {
+            return false;
+        } else {
+            return true;
+        }
 
     }
 
