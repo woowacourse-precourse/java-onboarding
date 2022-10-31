@@ -3,7 +3,7 @@ package onboarding;
 /*
 <내가 생각하는 문제 푸는 알고리즘>
 1. while문으로 완전한 문장이 될 때까지 돌린다.
-: 반복의 횟수를 모를 때에는 while문을, 횟수를 알 때에는 for문을 사용한다.
+: 반복의 횟수를 모를 때에는 for문이 아닌 while문을 사용하기 때문.
 
 2. 중복되는 문자가 존재한다면, 그 문자를 삭제한다.
 : 삭제할 때에는 StringBuilder의 delete를 사용한다.
@@ -13,6 +13,8 @@ package onboarding;
  */
 
 public class Problem2 {
+    
+    // 
     private static boolean isNeedFix(StringBuilder sb) {
         for (int i = 1; i < sb.length(); i++) {
             if(sb.charAt(i) == sb.charAt(i-1)) {
@@ -25,10 +27,10 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         StringBuilder sb = new StringBuilder(cryptogram);
 
-        while (isNeedFix(sb)) {
+        while (isNeedFix(sb)) { // 중복되는 문자가 존재한다면
             for (int i = 1; i < sb.length(); i++) {
                 if(sb.charAt(i) == sb.charAt(i-1)) {
-                    sb.delete(i-1,i+1);
+                    sb.delete(i-1,i+1); // 그 문자를 삭제한다.
                 }
             }
         }
