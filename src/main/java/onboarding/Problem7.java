@@ -5,11 +5,13 @@ import java.util.*;
 public class Problem7 {
     // 모든 friends 목록 + 방문자 리스트를 탐색하면서 아이디를 담은 리스트 만들기 - (1)
     // -> 이걸 아예 사용자와 사용자의 친구를 뺀 리스트를 구현함
+    // -> 그리고 알파벳 순으로 정렬!
     // 사용자의 친구를 담는 리스트 만들기
     // 다른 사용자들의 친구를 담는 List<List<String>> 리스트 만들기
+    // -> (1)리스트에 담긴 사용자만의 친구들을 리스트로 담음
     // 사용자들의 점수를 매기는 리스트 만들기 (user와 다른 사람들 모두 이미 친구인 사람 인원수+방문자 수)
-
-    // 점수를 기반으로 (1)-리스트를 다시 배열하기
+    // -> (1)리스트에 담긴 사용자만의 점수를 매김
+    // 점수를 기반으로 (1)-리스트를 다시 배열하기 (퀵소트를 오름차순으로 배열함)
     // 마지막에는 인덱스가 5를 넘어가면 잘라내기로 함, 추천 친구가 없으면 없는 채로 반환
 
     public static List<String> getFriend(List<List<String>> friends, String user, List<String> visitor, List<String> userFriends) {
@@ -134,11 +136,7 @@ public class Problem7 {
     }
 
     public static List<String> setRecommendList(List<String> allId, List<Integer> userScore) {
-        Map<String, Integer> idAndScore = new HashMap<>();
         List<String> recommendList = new ArrayList<>();
-        for(int i = 0; i < allId.size(); i++) {
-            idAndScore.put(allId.get(i), userScore.get(i));
-        }
         quickSort(allId, userScore, 0, allId.size()-1);
         return allId;
     }
