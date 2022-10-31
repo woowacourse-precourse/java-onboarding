@@ -3,6 +3,14 @@ package onboarding;
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
+        char[] chars = word.toCharArray();
+        for(int i = 0; i < chars.length; i++){
+            if(chars[i] == ' '){
+                answer += " ";
+            } else {
+                answer += Reverse(chars[i]);
+            }
+        }
         return answer;
     }
     public static char Reverse(char c){
@@ -18,5 +26,6 @@ public class Problem4 {
     public static void main(String[] args){
         System.out.println(Reverse('A'));
         System.out.println(Reverse('a'));
+        System.out.println(solution("I love you"));
     }
 }
