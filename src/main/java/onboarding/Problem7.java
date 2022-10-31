@@ -111,11 +111,24 @@ public class Problem7{
         }
     }
 
+    //전체 추천 친구 리스트에서 친구 리스트에 있는 친구는 삭제해 줌
+    public static void deleteFriends(List<String> userFriendList, List<RecommendScore> allfriends){
+        for(int i = 0; i<allfriends.size(); i++){
+            for(int j = 0; j<userFriendList.size(); j++){
+                if(((allfriends.get(i)).getName()).equals(userFriendList.get(j))){
+                    allfriends.remove(i);
+                }
+            }
+        }
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
 
         List<RecommendScore> allList = AllFriendsList(user, friends, visitors);
         List<String> friendList = friendsKnowTogether(user, friends, allList);
+        visitorsScore(visitors, allList);
+        deleteFriends(friendList, allList);
 
         return answer;
     }
