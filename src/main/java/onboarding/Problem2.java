@@ -26,9 +26,10 @@ public class Problem2 {
         }
         List<String> tokenList = List.of(cryptogram.split(""));
         Set<String> tokenSet = new HashSet<>(tokenList);
-        Stream<String> patternStream = tokenSet.stream().map(token -> token + "{2,}");
+        List<String> patternList = tokenSet.stream()
+                .map(token -> token + "{2,}")
+                .collect(Collectors.toList());
 
-        List<String> patternList = patternStream.collect(Collectors.toList());
         String pattern = String.join("|", patternList);
 
         return pattern;
