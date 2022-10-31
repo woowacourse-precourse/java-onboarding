@@ -43,9 +43,22 @@ class Problem1 {
          * 먼저 페이지의 유효성을 체크하고, 그 다음 승자를 계산한다.
          */
         int answer = Integer.MAX_VALUE;
+        int pobiScore;
+        int crongScore;
 
         if (isValidPage(pobi) == false || isValidPage(crong) == false) {
             return -1;
+        }
+
+        pobiScore = getScore(pobi);
+        crongScore = getScore(crong);
+
+        if (pobiScore > crongScore) {
+            answer = 1;
+        } else if (pobiScore < crongScore) {
+            answer = 2;
+        } else if (pobiScore == crongScore) {
+            answer = 0;
         }
 
         return answer;
