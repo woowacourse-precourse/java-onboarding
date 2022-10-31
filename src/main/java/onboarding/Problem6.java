@@ -21,7 +21,6 @@ public class Problem6 {
 
             // 이메일 형식에 문제가 있다면
             if(emailValidation(email)){
-                System.out.println("문제 발생 " + email);
                 continue loop;
             }
 
