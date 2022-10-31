@@ -21,4 +21,11 @@ public class Problem4 {
     }
 
     // 알파벳(소문자)을 반대쪽 알파벳으로 알파벳(대문자)을 반대쪽 알파벳으로 변환해주는 함수 reversLowerAlphabet()
+    private static char reverseLowerAlphabet(char c){
+        char result = c;
+        if ('a'<=c && c<='z'){
+            result = (char) ('z'-c+'a');
+        }
+        return result;
+    }
 }
