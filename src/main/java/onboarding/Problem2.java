@@ -19,22 +19,7 @@ public class Problem2 {
         char lastRemove = initLastRemove();
 
         for (int i = 0; i < cryptogramArray.length; i++) {
-            if (isEmptyDeque(charDeque, i)) {
-                addElementToDeque(charDeque, cryptogramArray[i]);
-                continue;
-            }
-
-            char lastElement = charDeque.getLast();
-            if (isSameLastRemove(cryptogramArray[i], lastRemove)) {
-                continue;
-            }
-
-            if (isSamePrevElement(cryptogramArray[i], lastElement, charDeque)) {
-                lastRemove = initLastRemove(lastElement);
-                continue;
-            }
-            lastRemove = initLastRemove();
-            addElementToDeque(charDeque, cryptogramArray[i]);
+            lastRemove = getNewWord(charDeque, i, cryptogramArray[i], lastRemove);
         }
 
         if (isOutputBlank(charDeque)) {
@@ -42,6 +27,28 @@ public class Problem2 {
         }
 
         return getCharDequeToString(charDeque);
+    }
+
+    private static char getNewWord(Deque<Character> charDeque, int index, char digit, char lastRemove) {
+        if (isEmptyDeque(charDeque, index)) {
+            addElementToDeque(charDeque, digit);
+            return lastRemove;
+        }
+
+        char lastElement = charDeque.getLast();
+        if (isSameLastRemove(digit, lastRemove)) {
+            return lastRemove;
+        }
+
+        if (isSamePrevElement(digit, lastElement, charDeque)) {
+            lastRemove = initLastRemove(lastElement);
+            return lastRemove;
+        }
+
+        lastRemove = initLastRemove();
+        addElementToDeque(charDeque, digit);
+
+        return lastRemove;
     }
 
     private static char[] getStringToChar(String str) {
