@@ -7,10 +7,27 @@ import java.util.stream.Collectors;
 
 public class DuplicateNicknameChecker {
 
-    private List<String> DuplicateUserEmails;
+    private final List<String> DuplicateUserEmails;
 
     public DuplicateNicknameChecker(List<List<String>> forms) {
         Set<String> duplicatedUserEmail = new HashSet<>();
+        checkForms(forms, duplicatedUserEmail);
+    }
+
+    private static void checkForms(List<List<String>> forms, Set<String> duplicatedUserEmail) {
+        for (List<String> first : forms) {
+            for (List<String> second : forms) {
+                if (first.equals(second)) return;
+
+                String firstEmail = first.get(0);
+                String firstName = first.get(1);
+
+                String secondEmail = second.get(0);
+                String secondName = second.get(1);
+
+                checkDuplicate(duplicatedUserEmail, firstName, firstEmail, secondName, secondEmail);
+            }
+        }
     }
 
     private static void checkDuplicate(Set<String> duplicatedUserEmail, String firstName, String firstEmail, String secondName, String secondEmail) {
