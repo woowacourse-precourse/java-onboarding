@@ -12,6 +12,14 @@ import java.util.*;
  * 6. 최대 5명의 이름 반환하기
  */
 public class Problem7 {
+    static class Score {
+        int score;
+        String name;
+        Score(int s, String n) {
+            this.score = s;
+            this.name = n;
+        }
+    }
     static Map<String, List<String>> makeRelation(List<List<String>> friends) {
         Map<String, List<String>> relation = new HashMap<>();
 
@@ -62,6 +70,21 @@ public class Problem7 {
         for (String userFriend: userFreinds) {
             scores.remove(userFriend);
         }
+    }
+
+    static List<Score> SortByScoreAndName(Map<String, Integer> scores) {
+        List<Score> result = new ArrayList<>();
+        for (String key: scores.keySet()) {
+            result.add(new Score(scores.get(key), key));
+        }
+
+        Comparator<Score> comparator = (a, b) -> {
+            if (a.score != b.score)
+                return b.score - a.score;
+            return a.name.compareTo(b.name);
+        };
+        result.sort(comparator);
+        return result;
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
