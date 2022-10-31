@@ -36,14 +36,9 @@ public class Problem7 {
         List<String> friendsOfUser = friendMap.get(user);
         HashMap<String, Integer> friendScoreMap = new HashMap<>();
 
-        for (String name : friendMap.keySet()) {
-            if (name.equals(user) || friendsOfUser.contains(name))
-                continue;
-
-            int score = getScore(friendsOfUser, friendMap.get(name));
-
-            if (score > 0)
-                friendScoreMap.put(name, score);
+        for (String friend : friendMap.keySet()) {
+            List<String> friendsOfFriend = friendMap.get(friend);
+            makeFriendScoreMap(user, friendsOfUser, friend, friendsOfFriend, friendScoreMap);
         }
 
         for (String name : visitors) {
@@ -82,6 +77,16 @@ public class Problem7 {
             newList.add(a);
             friendMap.put(b, newList);
         }
+    }
+
+    private static void makeFriendScoreMap(String user, List<String> friendsOfUser, String friend, List<String> friendsOfFriend, HashMap<String, Integer> friendScoreMap) {
+        if (friend.equals(user) || friendsOfUser.contains(friend))
+            return;
+
+        int score = getScore(friendsOfUser, friendsOfFriend);
+
+        if (score > 0)
+            friendScoreMap.put(friend, score);
     }
 
     public static int getScore(List<String> userFriend, List<String> findFriendsList) {
