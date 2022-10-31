@@ -12,6 +12,10 @@ public class Problem4 {
     public static String[] convertStringToArray(String str){
         return str.split("");
     }
+    public static String convertArrayToString(String[] strArray){
+        return String.join("", strArray);
+    }
+
     public static String solution(String word) {
         String answer = "";
         return answer;
