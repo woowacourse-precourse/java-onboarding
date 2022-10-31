@@ -11,7 +11,7 @@ problem4(string word){
 ```
 
 ## 기능 요구 사항
-- 규칙에 맞게 주어진 문자를 변환하는 char convert(char) 함수
+- ~~규칙에 맞게 주어진 문자를 변환하는 char convert(char) 함수~~
 
 TODO
-- 
+- 슈도 코드에 맞게 로직 작성
