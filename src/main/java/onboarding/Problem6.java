@@ -12,7 +12,7 @@ public class Problem6 {
         for(List<String> person : forms) {
             List<String> words = collectTwoCharacters(person.get(0));
 
-            if (isInCandidates(words)) {
+            if (getIndexOfDuplication(words) != -1) {
                 answer.add(person.get(1));
             }
 
@@ -37,20 +37,19 @@ public class Problem6 {
     }
 
     /**
-     * 이전에 모여진 2글자들의 모음에서 현재 가지고있는 2글자들이 이미 등록되어있는지 확인한다
+     * 이전에 모여진 2글자들의 모음에서 현재 가지고있는 2글자들 발견된 index를 반환한다.
+     * 해당 index는 form의 index와 동일함
      *  (등록되어 있다면 같은 글자가 연속적으로 포함된다는 뜻)
-     * @param words
-     * @return
      */
-    private static boolean isInCandidates(List<String> words) {
+    private static int getIndexOfDuplication(List<String> words) {
         for(int i=0; i<candidates.size(); i++) {
             for(String twoCharacter : words) {
-                if (candidates.get(i).indexOf(twoCharacter) != -1) {
-                    return true;
+                if ( candidates.get(i).contains(twoCharacter) ) {
+                    return i;
                 }
             }
         }
 
-        return false;
+        return -1;
     }
 }
