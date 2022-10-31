@@ -4,8 +4,8 @@ import java.util.*;
 
 public class Problem6 {
 
-    //<twoChar, 처음으로 twoChar를 가진 email>
-    private static Map<String, String> twoChar = new HashMap<>();
+    //<twoChar, 처음으로 twoChar를 가진 크루 index> 저장
+    private static Map<String, Integer> twoChar = new HashMap<>();
 
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
@@ -27,11 +27,13 @@ public class Problem6 {
         return false;
     }
 
-    private static boolean isDuplicateOtherNickname(List<String> form){
+    private static void isDuplicateOtherNickname(List<String> form, int idx){
 
     }
 
-    private static void storeTwoChar(String twoChar){
-
+    private static void storeTwoChar(String str, int idx){
+        if(!twoChar.containsKey(str)){
+            twoChar.put(str, idx);
+        }
     }
 }
