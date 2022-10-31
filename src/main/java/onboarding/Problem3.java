@@ -3,7 +3,18 @@ package onboarding;
 public class Problem3 {
 
     public static int solution(int number) {
+        return checkFromOneToNumber(number);
+    }
+
+    static int checkFromOneToNumber(int numbers) {
+        String stringOfNumbers = "";
         int answer = 0;
+
+        for (int i = 1; i <= numbers; i++) {
+            stringOfNumbers = String.valueOf(i);
+            answer += splitSingleDigit(stringOfNumbers);
+        }
+
         return answer;
     }
 
