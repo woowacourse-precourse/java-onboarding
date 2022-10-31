@@ -31,7 +31,12 @@ public class Problem6 {
 	}
 
 	public static boolean isDuplicateNickName(String formsNickname, String formNickname) {
-
+		for (int i = 0; i < formNickname.length() - 1; i++) {
+			String subNickname = formNickname.substring(i, i + 2);
+			if (formsNickname.contains(subNickname)) {
+				return true;
+			}
+		}
 		return false;
 	}
 

@@ -31,7 +31,7 @@
 
 ## 필요 기능 목록
 
-- [ ] 닉네임이 중복되는 사용자가 있는지 확인합니다
+- [x] 닉네임이 중복되는 사용자가 있는지 확인합니다
 - [ ] 중복되는 닉네임이 있는 시용자가 있다면 answer배열에 추가합니다.
 - [ ] answer배열을 정렬 후 return합니다.
 
@@ -39,10 +39,10 @@
 
 - [x] 전역변수로 boolean 타입의 duplicateUser배열을 선언합니다. 배열의 크기는 forms의 크기와 같으며 이 배열의 i번째가 true라면,forms의 i번째 사용자가 중복된 닉네임을 갖는다는
   의미입니다.
-- [ ] void 타입의 checkDuplicate(List<List<String>> forms, List<String> form, int index) 메서드를 구현합니다
+- [x] void 타입의 checkDuplicate(List<List<String>> forms, List<String> form, int index) 메서드를 구현합니다
     - [x] forms의 index + 1번째 부터 form의 원소를 비교합니다.
-    - [ ] isDuplicateNickName(String formsNickName, String formNickName) 메서드를 구현합니다.
-        - [ ] 닉네임이 같은지 비교하여 같다면, duplicateUser에 true로 표시해줍니다.
+    - [x] isDuplicateNickName(String formsNickName, String formNickName) 메서드를 구현합니다.
+        - [x] 닉네임이 같은지 비교하여 같다면, duplicateUser에 true로 표시해줍니다.
 - [ ] void타입의 addDuplicateUser(List<String> answer) 메서드를 구현합니다.
     - [ ] duplicateUser배열에 true로 체크되어있는 user를 answer배열에 추가합니다.
 - [ ] answer배열을 정렬하여 return합니다.
