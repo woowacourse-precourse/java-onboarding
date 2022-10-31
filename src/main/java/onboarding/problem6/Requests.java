@@ -22,14 +22,21 @@ public class Requests {
 
 	public Collection<String> getOverlapCrewEmails() {
 		Set<String> overlapCrewEmails = new TreeSet<>();
-		for (int i = 0; i < requests.size(); i++) {
-			Request request = requests.get(i);
-			for (int j = i + 1; j < requests.size(); j++) {
-				Request otherRequest = requests.get(j);
-				if (request.hasOverlapOf(otherRequest)) {
-					overlapCrewEmails.add(request.getEmail());
-					overlapCrewEmails.add(otherRequest.getEmail());
-				}
+		for (Request request : requests) {
+			overlapCrewEmails.addAll(findOverlapCrewEmailsBy(request));
+		}
+		return overlapCrewEmails;
+	}
+
+	private List<String> findOverlapCrewEmailsBy(Request request) {
+		List<String> overlapCrewEmails = new ArrayList<>();
+		for (Request otherRequest : requests) {
+			if (request.equals(otherRequest)) {
+				continue;
+			}
+			if (request.hasOverlapWith(otherRequest)) {
+				overlapCrewEmails.add(request.getEmail());
+				overlapCrewEmails.add(otherRequest.getEmail());
 			}
 		}
 		return overlapCrewEmails;

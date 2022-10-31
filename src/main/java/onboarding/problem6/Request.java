@@ -10,7 +10,7 @@ public class Request {
 		this.nickname = new Nickname(nickname);
 	}
 
-	public boolean hasOverlapOf(Request other) {
+	public boolean hasOverlapWith(Request other) {
 		return nickname.hasOverlapOf(other.nickname);
 	}
 
