@@ -131,7 +131,6 @@ public class Problem7 {
     }
 
     public static List<String> setRecommendList(List<String> allId, List<Integer> userScore) {
-        List<String> recommendList = new ArrayList<>();
         quickSort(allId, userScore, 0, allId.size()-1);
         return allId;
     }
