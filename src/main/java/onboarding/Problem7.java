@@ -51,6 +51,11 @@ public class Problem7 {
             }
         }
 
+        void addFriends(List<List<String>> friends) {
+            for(List<String> friend : friends) {
+                addFriend(friend);
+            }
+        }
         void addFriend(List<String> friend) {
             Person a = getPerson(friend.get(0));
             Person b = getPerson(friend.get(1));
