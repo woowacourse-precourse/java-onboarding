@@ -26,6 +26,10 @@ public class Problem6 {
             if (!email.endsWith(EMAIL_RULE)) {
                 continue;
             }
+
+            if (nickname.length() == 1) {
+                continue;
+            }
         }
 
         List<String> answer = List.of("answer");
