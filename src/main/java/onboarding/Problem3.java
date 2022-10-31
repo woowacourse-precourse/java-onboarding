@@ -10,7 +10,16 @@ public class Problem3 {
             int tmp = i;
             System.out.println("tmp: "+tmp);
 
-
+            //tmp가 0이 될 때까지 반복
+            while(tmp!=0) {
+                //1의 자리 만들기
+                int tenMod = tmp%10;
+                //만약 1의 자리가 0이면 tmp/=10
+                if(tenMod==0) {
+                    tmp/=10;
+                    continue;
+                }
+            }
         }
 
         return answer;
