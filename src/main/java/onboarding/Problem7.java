@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Objects;
 
 public class Problem7 {
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -13,6 +15,10 @@ public class Problem7 {
 		findUserFriend(friends, userFriends, user);
 		calcFriendsScore(user, friendScore, friends, userFriends);
 		calcVisitorScore(visitors, friendScore);
+
+		List<Entry<String, Integer>> entries = new ArrayList<>(friendScore.entrySet());
+		sortScore(entries);
+
 		return answer;
 	}
 
@@ -53,8 +59,13 @@ public class Problem7 {
 		}
 	}
 
-	public static void sortScore() {
-
+	public static void sortScore(List<Entry<String, Integer>> entries) {
+		entries.sort((o1, o2) -> {
+			if (Objects.equals(o1.getValue(), o2.getValue())) {
+				return o1.getKey().compareTo(o2.getKey());
+			}
+			return o2.getValue().compareTo(o1.getValue());
+		});
 	}
 
 	public static void recommendFriend() {
