@@ -17,5 +17,13 @@ public class Problem5 {
         }
         return answer;
     }
- 
+    /*
+    public static void main(String[] args) { // TEST
+        int money = 15000;
+
+        solution(money);
+    }
+
+     */
+
 }
