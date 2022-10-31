@@ -12,6 +12,12 @@ public class FriendRecommender {
     private List<List<String>> friends;
     private List<String> visitors;
 
+    /**
+     * Constructor with user, friends, visitors
+     * @param user name of user
+     * @param friends friend relationship list
+     * @param visitors visitor names of user sns
+     */
     public FriendRecommender(String user, List<List<String>> friends, List<String> visitors) {
         this.user = user;
         this.friends = friends;
