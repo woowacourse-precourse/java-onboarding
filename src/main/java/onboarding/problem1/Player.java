@@ -28,7 +28,7 @@ public class Player {
     /**
      * 플레이어의 페이지 정보, 점수를 초기화하는 생성자
      *
-     * @param leftPageNumber 플레이어의 검증된 왼쪽 페이지
+     * @param leftPageNumber  플레이어의 검증된 왼쪽 페이지
      * @param rightPageNumber 플레이어의 검증된 오른쪽 페이지
      */
     public Player(int leftPageNumber, int rightPageNumber) {

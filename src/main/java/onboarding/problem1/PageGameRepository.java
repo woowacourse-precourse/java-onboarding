@@ -98,7 +98,7 @@ public class PageGameRepository {
     /**
      * 두 페이지가 연속된 페이지인지 검증하는 메소드
      *
-     * @param leftPageNumber 왼쪽 페이지
+     * @param leftPageNumber  왼쪽 페이지
      * @param rightPageNumber 오른쪽 페이지
      * @throws IllegalArgumentException 두 페이지의 차가 1이 아닌 경우
      */
