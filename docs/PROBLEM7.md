@@ -24,3 +24,20 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 요구사항 분석
+- 친구는 추천 대상에서 제외된다.
+- 친구, 방문자, 사용자를 통해 친구 목록과 사용자 목록을 만들 수 있다.
+- 결과는 점수에 따라 먼저 정렬하고, 이름 오름차순으로 정렬한다.
+- 친구의 친구는 10점씩, 방문자는 1점씩 증가시킨다
+- 0점은 추천 대상에서 제외된다.
+
+
+### 메서드 구현 목록
+- Map<String, Integer> getAllUsers(String user, List<List<String>> friends, List<String> visitors) : 사용자, 전체 친구목록, 방문자를 통해 모든 사용자의 목록을 반환하는 메서드
+- Set<String> getMyFriends(String str, List<List<String>> doubleList) : 전체 친구목록을 통해 사용자의 친구 목록을 얻는 메서드
+- void setScore10(String str, Set<String> set, List<List<String>> doubleList, Map<String, Integer> map) : 전체 친구 목록을 확인해 특정 인물이 사용자의 친구의 친구인 경우 10점을 추가하는 메서드
+- setScore1(String str, Set<String> myFriends, List<String> visitors, Map<String, Integer> map) : 친구와 사용자를 제외한 방문자들에게 1점을 추가하는 메서드
+- List<String> removeZero(List<String> list, Map<String, Integer> map) : 0점을 이상인 사용자의 목록을  반환하는 메서드
+- int compareAsc(String o1, String o2) : o1과 o2중 오름차순으로 빠른 값에 따라 -1, 0, 1을 반환하는 메서드
+- List<String> getAnswer(Map<String, Integer> map) : 각 사용자의 점수를 판단하고 정렬해 최종 결과값을 반환하는 메서드

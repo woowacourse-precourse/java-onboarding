@@ -19,3 +19,12 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+### 요구사항 분석
+- 주어진 문자열의 n번째 문자는 A(a)로부터의 양수 간격만큼 Z(z) 로부터 음수 간격만큼 떨어진 문자로 변환된다.
+- 알파벳만을 변환한다.
+- 대 소 문자를 구분한다.
+
+### 메서드 구현 목록
+- char getReversed(char c) : 입력받은 c를 사전의 방식으로 변환하는 메서드
+- String getAnswer(String word) : 입력받은 문자열을 getReversed()를 사전의 방식으로 변환하는 메서드
