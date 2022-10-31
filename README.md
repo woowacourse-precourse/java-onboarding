@@ -75,6 +75,42 @@
   - 최소한의 화폐 개수로 나눠줄 수 있는 경우를 찾는다.
 
 6. [문제 6](./docs/PROBLEM6.md)
+- [ ] isValidInput
+- 인자값이 유효한지 검사한다.
+  - [ ] isValidForms
+  - 신청서 배열이 조건에 부합하는지 검사한다.
+    - [ ] hasValidCrewsLength
+    - 신청서 배열의 크기가 1 ~ 10000 사이의 값인지 검사한다.
+  - [ ] isValidForm
+  - 신청서 하나가 조건에 부합하는지 검사한다.
+    - [ ] hasValidEmail
+    - 이메일이 조건에 부합하는지 검사한다.
+      - [ ] hasValidEmailLength
+      - 이메일의 길이가 11 ~ 19 사이의 값인지 검사한다.
+      - [ ] hasValidEmailForm
+      - 이메일의 형식이 올바른지 검사한다.
+      - [ ] hasValidEmailDomain
+      - `email.com`을 도메인으로 갖는지 검사한다.
+    - [ ] hasValidNickname
+    - 닉네임이 조건에 부합하는지 검사한다.
+      - [ ] hasValidNicknameLength
+      - 닉네임의 길이가 1 ~ 19 사이의 값인지 검사한다.
+      - [ ] hasValidNicknameForm
+      - 닉네임이 오로지 한글로만 이루어져있는지 검사한다.
+- [ ] getDuplicateNicknameUsers
+- 중복 닉네임을 가진 유저들의 이메일을 알려준다.
+- 원소 검색이 O(1)으로 이루어지는 해시맵을 사용해 검사한다.
+  - [ ] addEmailsByNicknameCombination
+  - 각 유저의 닉네임을 두 글자씩 떼어서, 해당 조합을 사용하는 유저들의 수를 검사한다.
+  - 닉네임 두 글자를 키로, 이메일은 그 안의 해시셋에 저장한다.
+    - [ ] checkDuplicate
+    - 닉네임이 중복인지 확인한다.
+    - [ ] checkUserNumber
+    - 특정 두 글자 조합의 닉네임의 유저가 둘이 되면, 해당 닉네임 조합을 알림 발송 리스트에 추가한다.
+  - [ ] getEmails
+  - 알림 발송 리스트에 포함된 닉네임 조합으로부터 이메일을 뽑아준다.
+  - [ ] sortEmails
+  - 이메일을 알파벳 순으로 정렬시켜 줍니다.
 7. [문제 7](./docs/PROBLEM7.md)
 
 ---
