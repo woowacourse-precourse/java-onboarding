@@ -30,8 +30,12 @@ public class Pages {
     }
 
     private Integer sumPageNumber(Integer pageNumber){
-        return 0;
-        //1.각 자리 숫자를 모두 더하는 메소드
+        Integer sum = 0;
+        while (pageNumber > 0) {
+            sum += pageNumber % 10;
+            pageNumber /= 10;
+        }
+        return sum;
     }
 
     private Integer multiplyPageNumber(Integer pageNumber){
