@@ -9,10 +9,10 @@ public class Problem7 {
      * 미스터코의 친구 추천 규칙에 따라 점수가 가장 높은 순으로 정렬하여 최대 5명을 return 하도록 solution 메서드를 완성하라.
      * 이때 추천 점수가 0점인 경우 추천하지 않으며, 추천 점수가 같은 경우는 이름순으로 정렬한다.
      *
-     * @param user
-     * @param friends
-     * @param visitors
-     * @return
+     * @param user 추천친구 목록을 받을 유저
+     * @param friends 유저의 친구들
+     * @param visitors 유저의 프로필을 방문한 사람들
+     * @return 최대 5명의 추천 친구 목록
      */
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         FriendsRelation totalFriendsRelation = new FriendsRelation(friends);
