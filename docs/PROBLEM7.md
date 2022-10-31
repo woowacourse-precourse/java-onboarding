@@ -24,3 +24,25 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능 목록
+
+#### input이 적절한지 판단한다.
+
+- user가 길이 1 이상 30이하인지 판단한다.
+- friends의 id길이는 1 이상 30 이하인지 판단한다.
+- friends의 길이가 1이상 10000이하의 리스트인지 판단한다.
+- friends의 리스트가 2개인지 확인한다.
+- visitors의 길이가 0 이상 10000 이하의 리스트인지 판단한다.
+- 모든 아이디가 소문자인지 확인한다.
+- 위의 모든 상황을 만족하면 그때 결과값을 반환하도록 한다.
+- 만족을 하나라도 안하면 emptyList를 반환한다.
+
+#### input이 적절하다면 실행결과를 반환한다.
+
+- user + friends + visitors에 들어가있는 모든 유저의 아이디를 저장한다. --> A
+- friends를 이용하여 친구관계를 저장한다. --> B
+- B를 기준으로 함께아는 친구를 알아두기 위해 user의 친구를 저장한다. --> C
+- A에서 C와 user 값을 제외한 result 후보값으로 저장한다. --> D
+- D를 돌며 visitors * 1, 함께아는친구명수 * 10 한 결과값들을 저장해둔다. --> E
+- E 의 상위값 5개를 반환한다.
