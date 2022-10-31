@@ -21,8 +21,19 @@ public class Problem4 {
         return alpa;
     }
 
+    public static boolean checkInput(String word) {
+        if(word.length() < 1 || word.length() > 1000) {
+            return false;
+        }
+
+        return true;
+    }
 
     public static String solution(String word) {
+        if(!checkInput(word)) {
+            return "";
+        }
+
         String answer = "";
         for(int i=0 ; i<word.length() ; i++) {
             answer = answer + translateAlpa(word.charAt(i));
