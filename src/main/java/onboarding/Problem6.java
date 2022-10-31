@@ -38,6 +38,13 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<String>();
         make_duplist(forms);
+
+        for(List<String> f : forms){
+            String email = f.get(0); String name = f.get(1);
+            if(exist_duplist(name)) answer.add(email);
+        }
+        Collections.sort(answer);
+
         return answer;
     }
 }
