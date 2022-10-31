@@ -42,8 +42,7 @@ public class Problem5 {
         List<Integer> listOfUsableBill = new ArrayList<>(moneyStorage.keySet());
         Collections.sort(listOfUsableBill, Collections.reverseOrder());
         while(money!=0){
-            for(int i=0; i<listOfUsableBill.size(); i++){
-                int bill = listOfUsableBill.get(i);
+            for(int bill : listOfUsableBill){
                 moneyStorage.put(bill, money/bill);
                 money%=bill;
             }
