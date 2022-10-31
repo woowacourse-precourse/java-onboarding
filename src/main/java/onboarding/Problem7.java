@@ -77,7 +77,7 @@ public class Problem7 {
         return scoreBoard;
     }
 
-    public List<String> sortScore(HashMap<String, Integer> scoreBoard) {
+    public static List<String> sortScore(HashMap<String, Integer> scoreBoard) {
         List<String> result = new ArrayList<>();
         List<String> keySetList = new ArrayList<>(scoreBoard.keySet());
         Collections.sort(keySetList, (o1, o2) -> (scoreBoard.get(o2).compareTo(scoreBoard.get(o1))));
@@ -87,7 +87,7 @@ public class Problem7 {
         return result;
     }
 
-    public List<String> removeSelfAndFriend(List<String> sortedScore, String user, List<List<String>> friends) {
+    public static List<String> removeSelfAndFriend(List<String> sortedScore, String user, List<List<String>> friends) {
         sortedScore.remove(user);
         List<String> userFriend = getUserFriend(user, friends);
         for (String crew : userFriend) {
