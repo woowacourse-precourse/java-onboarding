@@ -38,15 +38,4 @@ public class Problem6 {
         }
         return false;
     }
-    public static void main(String[] args) {
-        List<List<String>> forms = new ArrayList<>();
-
-        forms.add(List.of(new String[]{"nowm@email.com", "이제엠"}));
-        forms.add(List.of(new String[]{"jm@email.com", "제이엠"}));
-        forms.add(List.of(new String[]{"jason@email.com", "제이슨"}));
-        forms.add(List.of(new String[]{"woniee@email.com", "워니"}));
-        forms.add(List.of(new String[]{"mj@email.com", "엠제이"}));
-
-        System.out.println(solution(forms));
-    }
 }
