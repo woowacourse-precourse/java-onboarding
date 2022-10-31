@@ -28,7 +28,7 @@ public class Problem6 {
     }
 
     private static List<String> getInvalidEmails(HashMap<String, String> separatedNameToEmail, List<String> form) {
-        String email = getString(form);
+        String email = getEmail(form);
         String nickname = getNickname(form);
 
         if (!isValidDomain(email)) {
@@ -56,7 +56,7 @@ public class Problem6 {
         return form.get(NICKNAME_INDEX);
     }
 
-    private static String getString(List<String> form) {
+    private static String getEmail(List<String> form) {
         return form.get(EMAIL_INDEX);
     }
 
