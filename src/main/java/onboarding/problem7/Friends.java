@@ -19,6 +19,11 @@ public class Friends {
 		return friendsList.contains(userID);
 	}
 
+	public boolean haveSameFriend(Friends friendsB) {
+		return friendsList.stream()
+			.anyMatch(friendsB::isFriend);
+	}
+
 	@Override
 	public boolean equals(Object o) {
 		if (this == o)
@@ -34,8 +39,4 @@ public class Friends {
 		return Objects.hash(friendsList);
 	}
 
-	public boolean haveSameFriend(Friends friendsB) {
-		return friendsList.stream()
-			.anyMatch(friendsB::isFriend);
-	}
 }

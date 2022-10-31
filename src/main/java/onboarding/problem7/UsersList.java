@@ -13,9 +13,9 @@ public class UsersList {
 
 	}
 
-	public void add(List<String> userIDs) {
-		UserID firstUserID = new UserID(userIDs.get(0));
-		UserID secondUserID = new UserID(userIDs.get(1));
+	public void add(List<UserID> userIDs) {
+		UserID firstUserID = userIDs.get(0);
+		UserID secondUserID = userIDs.get(1);
 		Friends firstUserFriends = usersList.computeIfAbsent(firstUserID, key -> new Friends());
 		Friends secondUserFriends = usersList.computeIfAbsent(secondUserID, key -> new Friends());
 		firstUserFriends.add(secondUserID);
@@ -26,8 +26,7 @@ public class UsersList {
 		return usersList.containsKey(userID);
 	}
 
-	public List<String> getFriendOfFriend(String targetUserIDName) {
-		UserID targetUserID = new UserID(targetUserIDName);
+	public List<String> getFriendOfFriend(UserID targetUserID) {
 		Friends targetUserFriends = usersList.get(targetUserID);
 		return usersList.entrySet().stream()
 			.filter(friendsEntry -> !friendsEntry.getValue().isFriend(targetUserID))
@@ -38,9 +37,9 @@ public class UsersList {
 			.collect(toList());
 	}
 
-	public List<String> removeFriend(String user, List<String> visitors) {
+	public List<String> removeFriend(UserID userID, List<String> visitors) {
 		return visitors.stream()
-			.filter(visitor -> !usersList.get(new UserID(user)).isFriend(new UserID(visitor)))
+			.filter(visitor -> !usersList.get(userID).isFriend(new UserID(visitor)))
 			.collect(toList());
 	}
 }
