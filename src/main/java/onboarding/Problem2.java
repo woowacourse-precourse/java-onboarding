@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Problem2 {
@@ -7,7 +8,16 @@ public class Problem2 {
     public static StringBuilder sb;
 
     public static String solution(String cryptogram) {
+        sb = new StringBuilder();
+        duplicatedIndexList = new ArrayList<>();
+
+
+
         return cryptogram;
+    }
+
+    public static void initDuplicatedIndexList(String cryptogram){
+        addDuplicatedIndex(cryptogram);
     }
 
     public static void addDuplicatedIndex(String cryptogram) {
