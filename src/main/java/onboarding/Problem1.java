@@ -26,10 +26,27 @@ class Problem1 {
         return 0;
     }
 
+    private static boolean exceptionHandler(int leftPage, int rightPage){
+        if(Math.abs(leftPage - rightPage) != 1) {
+            return false;
+        }
+        if(leftPage % 2 != 1) {
+            return false;
+        }
+        if(rightPage % 2 != 0) {
+            return false;
+        }
+        return true;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         int pobiMaxScore = Integer.MIN_VALUE;
         int crongMaxScore = Integer.MIN_VALUE;
+
+        if(!exceptionHandler(pobi.get(LEFT_PAGE), pobi.get(RIGHT_PAGE)) || !exceptionHandler(crong.get(LEFT_PAGE), crong.get(RIGHT_PAGE))) {
+            return -1;
+        }
 
         pobiMaxScore = Math.max(getMaxScore(pobi.get(LEFT_PAGE)), getMaxScore(pobi.get(RIGHT_PAGE)));
         crongMaxScore = Math.max(getMaxScore(crong.get(LEFT_PAGE)), getMaxScore(crong.get(RIGHT_PAGE)));
