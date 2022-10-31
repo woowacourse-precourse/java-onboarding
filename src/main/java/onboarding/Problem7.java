@@ -12,6 +12,7 @@ public class Problem7 {
         HashMap<String, ArrayList<String>> friendGraph = initFriendGraph(friends);
         HashMap<String, Integer> recommendScore = initRecommendScoreList();
         AddRecommendScoreOfFriends(recommendScore, friendGraph, user);
+        AddRecommendScoreOfVisitors( recommendScore, friendGraph,user,visitors);
         System.out.println(recommendScore);
         return answer;
     }
@@ -59,6 +60,7 @@ public class Problem7 {
         // 함께 아는 친구: other, 친구: friend
         for (String friend: friendGraph.get(user)) {
             if (!friendGraph.containsKey(friend)) continue;
+
             for (String other: friendGraph.get(friend)) {
 
                 // 추천친구 list에 추가할지 말지 체크
@@ -68,8 +70,16 @@ public class Problem7 {
                 if (!checkUserInRecommendScoreList(recommendScore, other)) recommendScore.put(other, 0);
 
                 recommendScore.replace(other, recommendScore.get(other) + 10);
-
             }
+        }
+    }
+
+    // visitor의 점수를 추가하는 함수
+    public static void AddRecommendScoreOfVisitors(HashMap<String, Integer> recommendScore, HashMap<String, ArrayList<String>> friendGraph, String user, List<String> visitors) {
+        for (String visitor: visitors) {
+            if (checkBeforeAddRecommendScore(recommendScore, friendGraph, user, visitor)) continue;
+            if (!checkUserInRecommendScoreList(recommendScore, visitor)) recommendScore.put(visitor, 0);
+            recommendScore.replace(visitor, recommendScore.get(visitor) + 1);
         }
     }
 }
