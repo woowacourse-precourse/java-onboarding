@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -25,5 +26,22 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
+    }
+
+    // input 과 일치하는 친구를 찾기 위한 함수
+    // user 을 추가적으로 매개변수로 받는 이유는 user 자신은 탐색 대상이 아니므로 제외시키기 위해
+    private static List<String> find(String target, String user, List<List<String>> friends) {
+        List<String> find = new ArrayList<>();
+        for(int i = 0; i<friends.size(); i++) {
+            // target 과 일치 && 상대가 user 이 아닌 대상 -> user 자신은 친구 대상이 아니므로
+            if(friends.get(i).get(0).equals(target) && !friends.get(i).get(1).equals(user)) {
+                find.add(friends.get(i).get(1));
+            }
+            if(friends.get(i).get(1).equals(target) && !friends.get(i).get(0).equals(user)) {
+                find.add(friends.get(i).get(0));
+            }
+        }
+
+        return find;
     }
 }
