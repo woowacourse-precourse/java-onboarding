@@ -21,3 +21,7 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+## 기능 목록
+
+- 같은 글자가 연속적으로 포함된 닉네임의 이메일 목록을 구한다.
