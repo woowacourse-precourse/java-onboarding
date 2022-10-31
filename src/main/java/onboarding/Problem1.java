@@ -8,7 +8,8 @@ class Problem1 {
             return true;
         if (list.get(0) % 2 == 0 || list.get(1) != (list.get(0) + 1))
             return true;
-        return list.get(0) < 1 || list.get(1) > 400;
+        // 시작면 : 1, 마지막면 : 400 제외
+        return list.get(0) <= 1 || list.get(1) >= 400;
     }
 
     private static int getPlusNumber(int leftPage) {
