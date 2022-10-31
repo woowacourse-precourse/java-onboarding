@@ -54,7 +54,7 @@ public class Problem6 {
 		}
 	}
 
-	static List<String> makeNicknameList(List<List<String>> forms) {
+	private static List<String> makeNicknameList(List<List<String>> forms) {
 		List<String> nicknameList = new ArrayList<>();
 		for (List<String> list : forms) {
 			nicknameList.add(list.get(1));
@@ -62,13 +62,13 @@ public class Problem6 {
 		return nicknameList;
 	}
 
-	static List<String> makeExtraNicknameList(List<String> nicknameList, String nickname) {
+	private static List<String> makeExtraNicknameList(List<String> nicknameList, String nickname) {
 		List<String> list = new ArrayList<>(nicknameList);
 		list.remove(nickname);
 		return list;
 	}
 
-	static List<String> makeSplitStringList(String s) {
+	private static List<String> makeSplitStringList(String s) {
 		List<String> splitStringList = new ArrayList<>();
 
 		for (int i = 0; i <= s.length(); i++) {
@@ -80,7 +80,7 @@ public class Problem6 {
 		return splitStringList;
 	}
 
-	static boolean isDuplicate(String nickname, String checkString) {
+	private static boolean isDuplicate(String nickname, String checkString) {
 		return nickname.contains(checkString);
 	}
 

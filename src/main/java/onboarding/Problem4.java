@@ -1,10 +1,10 @@
 package onboarding;
 
 public class Problem4 {
-	private static final String[] UPPER_CASE_ARR = {"Z", "Y", "X", "W", "V", "U", "T", "S", "R", "Q", "P", "O", "N", "M", "L",
-		"K", "J", "I", "H", "G", "F", "E", "D", "C", "B", "A"};
-	private static final String[] LOWER_CASE_ARR = {"z", "y", "x", "w", "v", "u", "t", "s", "r", "q", "p", "o", "n", "m", "l",
-		"k", "j", "i", "h", "g", "f", "e", "d", "c", "b", "a"};
+	private static final String[] UPPER_CASE_ARR = {"Z", "Y", "X", "W", "V", "U", "T", "S", "R", "Q", "P", "O", "N",
+		"M", "L", "K", "J", "I", "H", "G", "F", "E", "D", "C", "B", "A"};
+	private static final String[] LOWER_CASE_ARR = {"z", "y", "x", "w", "v", "u", "t", "s", "r", "q", "p", "o", "n",
+		"m", "l", "k", "j", "i", "h", "g", "f", "e", "d", "c", "b", "a"};
 
 	public static String solution(String word) {
 
