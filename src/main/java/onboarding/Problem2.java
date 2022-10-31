@@ -54,10 +54,13 @@ public class Problem2 {
         return reuslt;
 
     }
+    /*
     public static void main(String[] args) { // TEST
         String s = "browoanoommnaon";
 
         solution(s);
     }
+    
+     */
 
 }
