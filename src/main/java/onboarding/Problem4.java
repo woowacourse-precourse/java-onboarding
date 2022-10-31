@@ -1,7 +1,7 @@
 package onboarding;
 
 public class Problem4 {
-    private static String convertUpper(char letter) {
+    private static char convertUpper(char letter) {
         int difference = letter - 65;
         char converted = 90 - difference;
 
