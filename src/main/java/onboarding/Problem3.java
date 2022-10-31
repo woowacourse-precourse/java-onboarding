@@ -7,13 +7,16 @@ package onboarding;
  */
 
 public class Problem3 {
+    private static final int MIN_NUMBER = 1;
+    private static final int MAX_NUMBER =10000;
+
     public static int solution(int number) {
         isProperNumber(number);
         return getClapCount(number);
     }
 
     private static void isProperNumber(int number){
-        if (number<1||number>10000)throw new IllegalArgumentException();
+        if (number<MIN_NUMBER||number>MAX_NUMBER)throw new IllegalArgumentException();
     }
 
     private static int getClapCount(int number){
