@@ -15,20 +15,23 @@ class Problem1 {
                 throw new IllegalArgumentException();
 
             // pobi의 점수 계산
-            int pMax = getMax(pobi.get(0));
-            pMax = max(pMax, getMax(pobi.get(1)));
+            int pobiMax = getMax(pobi.get(0));
+            pobiMax = max(pobiMax, getMax(pobi.get(1)));
 
             // crong의 점수 계산
-            int cMax = getMax(crong.get(0));
-            cMax = max(cMax, getMax(crong.get(1)));
+            int crongMax = getMax(crong.get(0));
+            crongMax = max(crongMax, getMax(crong.get(1)));
 
-            if(pMax > cMax) {
+            if (pobiMax > crongMax) {
                 return 1;
-            } else if(pMax < cMax) {
+            }
+            if (pobiMax < crongMax) {
                 return 2;
-            } else {
+            }
+            if (pobiMax == crongMax) {
                 return 0;
             }
+            return -1;
 
         } catch (Exception e) {
             return -1;
