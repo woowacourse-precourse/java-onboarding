@@ -1,5 +1,8 @@
 package onboarding;
 
+import java.util.Stack;
+import java.util.stream.Collectors;
+
 public class Problem2 {
 
     static class Cryptogram {
@@ -23,21 +26,31 @@ public class Problem2 {
         }
 
         private boolean hasRepetition() {
-            for(int i=1 ; i<duplication.length() ; i++) {
-                if (checkRepetition(i)) return true;
+            Stack<Character> stack = new Stack<>();
+            boolean flag = false;
+            int prev = 0;
+
+            for(int i=0 ; i<duplication.length() ; i++) {
+                if(duplication.length()==2) {
+                    duplication=(duplication.charAt(0)==duplication.charAt(1))? "" : duplication;
+                    break;
+                }
+                if(stack.empty() || duplication.charAt(prev)!=duplication.charAt(i)) {
+                    stack.push(duplication.charAt(i));
+                    prev = i;
+                    continue;
+                }
+                while(duplication.charAt(prev)==duplication.charAt(i)){
+                    i++;
+                }
+                i--;
+                stack.pop();
+                flag=true;
             }
-            return false;
+
+            duplication = stack.stream().map(String::valueOf).collect(Collectors.joining());
+            return flag;
         }
-
-        private boolean checkRepetition(int idx) {
-            if(duplication.charAt(idx-1)==duplication.charAt(idx)) {
-                duplication = duplication.substring(0, idx-1) + duplication.substring(idx+1);
-                return true;
-            }
-            return false;
-        }
-
-
     }
     public static String solution(String cryptogram) {
         Cryptogram c = new Cryptogram(cryptogram);
