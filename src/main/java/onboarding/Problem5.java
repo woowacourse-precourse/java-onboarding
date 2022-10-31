@@ -16,4 +16,8 @@ public class Problem5 {
     private static Integer calculateNumberOfMoney(int withdrawalAmount, int moneyValue) {
         return withdrawalAmount/moneyValue;
     }
+
+    private static int calculateRestOfMoney(int withdrawalAmount, int moneyValue) {
+        return withdrawalAmount%moneyValue;
+    }
 }
