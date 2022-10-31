@@ -2,14 +2,18 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        StringBuilder answer = new StringBuilder();
-        for(int i = 0; i < word.length(); i++) {
-            answer.append(encryptChar(word.charAt(i)));
-        }
-        return answer.toString();
+        return encryptByFrogDict(word);
     }
 
-    private static char encryptChar(char plainChar) {
+    private static String encryptByFrogDict(String word) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for(int i = 0; i < word.length(); i++) {
+            stringBuilder.append(encryptCharByFrogDict(word.charAt(i)));
+        }
+        return stringBuilder.toString();
+    }
+
+    private static char encryptCharByFrogDict(char plainChar) {
         if(plainChar >= 65 && plainChar <= 90)
             return (char) ((90 - plainChar) + 65);
         else if(plainChar >= 97 && plainChar <= 122)
