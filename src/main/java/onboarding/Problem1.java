@@ -12,10 +12,10 @@ class Problem1 {
 
         answerOfPoi = getBiggestNumber(pobi);
         answerOfCrong = getBiggestNumber(crong);
-
         if (answerOfPoi == answerOfCrong)
             return 0;
         return answerOfPoi > answerOfCrong ? 1 : 2;
+
     }
     static boolean isValidBookPage(List<Integer> person) {
         boolean isLeftOddNumber = (person.get(0) % 2) == 1;
