@@ -32,8 +32,7 @@ public class Problem6 {
                 }
             }
         }
-        answer = new ArrayList<>(emailSet);
-        answer.sort(Comparator.naturalOrder());
+        answer = setToArrayList(emailSet);
 
         return answer;
     }
@@ -44,5 +43,13 @@ public class Problem6 {
             return existNicknameMap.get(twoWords);
 
         return -1;
+    }
+
+    public static List<String> setToArrayList(Set<String> emailSet) {
+
+        List<String> emailList = new ArrayList<>(emailSet);
+        emailList.sort(Comparator.naturalOrder());
+
+        return emailList;
     }
 }
