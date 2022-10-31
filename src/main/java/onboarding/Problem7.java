@@ -10,6 +10,20 @@ public class Problem7 {
         // 2. 유저별 친구 목록을 저장할 맵 생성
         HashMap<String, Set<String>> personalFriendsMap = makePersonalFriendsMap(friends);
 
+        // 3. 함께 아는 친구 점수 계산
+        for (String userName : personalFriendsMap.keySet()) {
+            // 본인 제외
+            if (user.equals(userName)) {
+                continue;
+            }
+            // 아는 사람 명수 계산
+            int countWithFriend = howDuplicationFriends(personalFriendsMap, user, userName);
+            if (countWithFriend > 0) {
+                scoreMap.put(userName, countWithFriend * 10);
+            }
+        }
+
+
 
         List<String> answer = Collections.emptyList();
         return answer;
@@ -37,8 +51,22 @@ public class Problem7 {
             personalFriendsMap.put(friend.get(1), new HashSet<>());
         }
         personalFriendsMap.get(friend.get(1)).add(friend.get(0));
-
     }
+
+    // 함께 아는 사람 수 계산
+    private static int howDuplicationFriends(HashMap<String, Set<String>> personalFriendsMap, String user, String friend) {
+        Set<String> friendListOfUser = personalFriendsMap.get(user);
+        Set<String> friendListOfFriend = personalFriendsMap.get(friend);
+
+        int countFriendsOfUser = friendListOfUser.size();
+        int countFriendsOfFriend = friendListOfFriend.size();
+        int totalCount = countFriendsOfUser + countFriendsOfFriend;
+        HashSet<String> unionSet = new HashSet<>();
+        unionSet.addAll(friendListOfUser);
+        unionSet.addAll(friendListOfFriend);
+        return totalCount - unionSet.size();
+    }
+
 
 
 }
