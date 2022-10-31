@@ -3,7 +3,7 @@ package onboarding;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class Problem7 {
+public class Problem7_try {
 
     public static void main(String[] args) {
         String user = "mrko";
@@ -23,7 +23,6 @@ public class Problem7 {
     }
 
     static class Person {
-
         private String name;
         private int score;
 

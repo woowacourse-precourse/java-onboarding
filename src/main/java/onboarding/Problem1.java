@@ -36,15 +36,15 @@ class Problem1 {
         else if (pobi_max < crong_max) {
             return 2;
         }
-        else {
+        else { //pobi_max == crong_max
             return 0;
         }
     }
 
     // 포비와 크롱의 Max를 구하는 메소드
-    private static int getMax(List<Integer> list) {
+    private static int getMax(List<Integer> pageList) {
         int max = Integer.MIN_VALUE;
-        for (Integer pageNumber : list) {
+        for (Integer pageNumber : pageList) {
             int sum = sum_page(pageNumber);
             if (sum > max) {
                 max = sum;
