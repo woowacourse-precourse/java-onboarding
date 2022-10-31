@@ -24,3 +24,12 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능 목록
+- 사용자 친구를 찾는다.
+- 친구 관계 추천 목록을 찾는다.
+- 방문자 추천 목록을 찾는다.
+- 점수를 계산한다.
+- 추천 목록을 결합한다.
+- 목록을 정렬한다.
+- 점수를 비교한다.
