@@ -62,6 +62,13 @@ public class Problem7 {
             }
         }
 
+        for (int i = 0; i < visitors.size(); i++) {
+            if (recomList.contains(visitors.get(i))) {
+                int index = recomList.indexOf(visitors.get(i));
+                recomScore.set(index, recomScore.get(index) + 1);
+            }
+        }
+
 
 
 
