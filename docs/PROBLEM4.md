@@ -12,7 +12,7 @@
 
     **→ 만약 공백이 연속적으로 있을 경우는?** 의 경우를 생각해본결과 문자열 문장을 토큰화 하는 기능을 빼고, 문장에서 바로 각 문자를 반대로 바꿔주는 기능만을 만들기로 결정
 
-- [ ] `word` 문자들을 모두 반대로 바꿔주는 기능 - `solution`
+- [x] `word` 문자들을 모두 반대로 바꿔주는 기능 - `solution`
 
 <br>
 
@@ -24,7 +24,7 @@
 
 2. `stream` api의 `collect` 라는 terminal method를 사용하여 문자를 문자열로 만들려는 중 예외 케이스를 발견
 
-   - `'  Hello World  '` → `Svool Dliow` 로 '좌우공백'이 무시되는 현상 발견
+   - `'  Hello World  '` → `'Svool Dliow'` 로 '좌우공백'이 무시되는 현상 발견
 
      → 해결 - [무시되는 원인 파악 방법](https://xi-jjun.github.io/2022-10-31/wootecoBackendFirstWeek_problem4)
 
