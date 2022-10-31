@@ -17,7 +17,7 @@ public class Problem2 {
 
     public static void checkException(String cryptogram) {
         if (!isValidLengthStringException(cryptogram)) {
-            throw new IllegalArgumentException("유효한 문자열의 길이를 입력해주세요. (1~1000 자)");
+            throw new IllegalArgumentException("유효한 문자열의 길이를 입력해주세요. (1~1000자)");
         }
         if(!isLowerCaseString(cryptogram)) {
             throw new IllegalArgumentException("유효한 문자를 입력해주세요. 문자는 소문자로만 이루어져 있습니다.");
