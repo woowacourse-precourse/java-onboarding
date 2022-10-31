@@ -85,4 +85,12 @@ public class Problem6 {
             }
         }
     }
+
+    public static List<String> needToSendEmail(List<String> emailList) {
+        Iterator<String> email = sendEmailID.iterator();
+        while (email.hasNext()) {
+            emailList.add(email.next());
+        }
+        return emailList;
+    }
 }
