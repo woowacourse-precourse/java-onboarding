@@ -89,6 +89,8 @@ public class Problem7 {
 class ExceptionProblem7 {
     public static void validateUser(String user) {
         validateUserLength(user);
+        validateEnglish(user);
+        validateSamllLetter(user);
     }
 
     private static void validateUserLength(String user) {
@@ -100,6 +102,14 @@ class ExceptionProblem7 {
     private static void validateEnglish(String id) {
         if(!Pattern.matches("^[a-zA-Z]*$", id)) {
             throw new IllegalArgumentException();
+        }
+    }
+
+    private static void validateSamllLetter(String id) {
+        for (char c : id.toCharArray()) {
+            if (!Character.isLowerCase(c)) {
+                throw new IllegalArgumentException();
+            }
         }
     }
 
