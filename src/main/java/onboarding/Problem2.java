@@ -2,21 +2,21 @@ package onboarding;
 
 public class Problem2 {
     // 연속하는 중복 문자 제거
-    private static String removeOverlap(String crypt) {
+    private static String removeOverlap(String cryptogram) {
         String result = "";
         int cur = 0;
         char curChar;
 
-        while (cur < crypt.length()) {
-            if (cur == crypt.length() - 1 ||
-                    crypt.charAt(cur) != crypt.charAt(cur + 1)) {
-                result += crypt.charAt(cur);
+        while (cur < cryptogram.length()) {
+            if (cur == cryptogram.length() - 1 ||
+                    cryptogram.charAt(cur) != cryptogram.charAt(cur + 1)) {
+                result += cryptogram.charAt(cur);
                 cur++;
             } else {
-                curChar = crypt.charAt(cur);
-                while (curChar == crypt.charAt(cur)) {
+                curChar = cryptogram.charAt(cur);
+                while (curChar == cryptogram.charAt(cur)) {
                     cur++;
-                    if (cur == crypt.length()) {
+                    if (cur == cryptogram.length()) {
                         break;
                     }
                 }
@@ -24,8 +24,8 @@ public class Problem2 {
         }
     }
 
-    public static String solution(String crypt) {
-        String answer = crypt;
+    public static String solution(String cryptogram) {
+        String answer = cryptogram;
         int preLen = 0;
 
         while (answer.length() > 0) {
