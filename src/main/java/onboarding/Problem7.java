@@ -6,6 +6,13 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
 
+        List<String> alreadyFriend = getAlreadyFriend(user, friends);
+        List<List<String>> recommendationFriend = getFriendCountKnownTogether(user, alreadyFriend, friends);
+        recommendationFriend = getCountofVisitor(visitors, recommendationFriend);
+        List<List<String>> result = getRecommendedFriend(recommendationFriend, alreadyFriend);
+        sortByScore(result);
+
+        getAnswer(result, answer);
         return answer;
     }
 
