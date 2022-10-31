@@ -19,13 +19,7 @@ public class Controller {
         Friend.addWeight(visitors, Constant.VISITOR_WEIGHT);
 
         List<String> recommendedList = Friend.recommendedList(user);
-        List<String> friendList = relation.getFriendsList(user);
-        for (int i = 0; i < recommendedList.size(); i++) {
-            String person = recommendedList.get(i);
-            if (friendList.contains(person)) {
-                recommendedList.remove(person);
-            }
-        }
+        recommendedList.removeAll(myFriends);
         return recommendedList;
     }
     private static void init(Relations relation, Visitors visitor) {
