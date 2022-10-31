@@ -21,13 +21,14 @@ public class Problem7 {
 
     private static void init(String user, List<List<String>> friends, List<String> visitors) {
         repository = new ArrayList<>();
-        initUsers(friends, visitors);
+        initUsers(user, friends, visitors);
         initFriend(friends);
         getUserFromList(user).setVisitor(visitors);
     }
 
-    private static void initUsers (List<List<String>> friends, List<String> visitors) {
+    private static void initUsers (String user, List<List<String>> friends, List<String> visitors) {
         List<String> names = getNamesFromFriends(friends);
+        names.add(user);
         names.addAll(visitors);
         names.stream()
                 .distinct()
