@@ -62,7 +62,12 @@ public class TreeFrogTest {
 	@DisplayName("단어 변환 테스트")
 	@Test
 	void 단어_변환() {
-		String word = TreeFrog.translate("I love you");
-		assertThat(word).isEqualTo("R olev blf");
+		assertThat(
+			TreeFrog.translate("I love you")
+		).isEqualTo("R olev blf");
+
+		assertThat(
+			TreeFrog.translate("I love you-")
+		).isEqualTo("R olev blf-");
 	}
 }
