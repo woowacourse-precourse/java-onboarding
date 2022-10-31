@@ -21,8 +21,8 @@ public class Problem3 {
     private static int computeClapCountSum(int number) {
         return IntStream.rangeClosed(START_NUM, number)
             .map(Problem3::computeClapCount)
-            .reduce((clapCount1, clapCount2) -> clapCount1 + clapCount2)
-            .getAsInt();
+            .reduce(Integer::sum)
+            .orElse(0);
     }
 
     private static void validateNum(int number) {
@@ -36,7 +36,7 @@ public class Problem3 {
 
         return (int) Arrays.stream(String.valueOf(num)
                 .split(""))
-            .filter(n -> only369.contains(n))
+            .filter(only369::contains)
             .count();
     }
 }
