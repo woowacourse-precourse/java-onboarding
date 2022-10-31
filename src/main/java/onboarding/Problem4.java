@@ -17,16 +17,16 @@ public class Problem4 {
         }
 
         private String speak(String word) {
-            String result = "";
+            StringBuilder result = new StringBuilder();
             for (int i = 0; i < word.length(); i++) {
                 Character key = word.charAt(i);
-                if (key.equals(' ')) {
-                    result += ' ';
+                if (Character.isAlphabetic(key)) {
+                    result.append(mapper.get(key));
                 } else {
-                    result += mapper.get(key);
+                    result.append(key);
                 }
             }
-            return result;
+            return result.toString();
         }
     }
     private static Map<Character, Character> reverseAlpha() {
