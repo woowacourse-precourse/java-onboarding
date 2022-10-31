@@ -44,4 +44,31 @@ class Problem1 {
         }
         return result;
     }
+
+    // 예외 처리
+    private static void validCheck(List<Integer> pages) throws Exception{
+        if (pages.get(0)==1 || pages.get(1)==400){
+            throw new Exception("시작 페이지나 마지막 페이지를 펼칠 수 없습니다.");
+        }
+        if (pages.get(0)>399 || pages.get(1)>400){
+            throw new Exception("책 페이지 범위는 1~400 입니다.");
+        }
+        if (pages.get(0)<1 || pages.get(1)<1){
+            throw new Exception("책 페이지는 양수입니다.");
+        }
+        if (pages.get(0)>399 || pages.get(1)>400){
+            throw new Exception("책 페이지 범위는 1~400 입니다.");
+        }
+
+        if (pages.get(1)-pages.get(0) != 1){
+            throw new Exception("페이지 값 차이는 반드시 1 입니다.");
+        }
+        if (pages.get(0)%2 == 0){
+            throw new Exception("왼쪽 페이지가 짝수일 수 없습니다.");
+        }
+        if (pages.get(1)%2 == 1){
+            throw new Exception("오른쪽 페이지가 홀수일 수 없습니다.");
+        }
+
+    }
 }
