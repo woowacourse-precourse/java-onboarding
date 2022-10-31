@@ -24,3 +24,31 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능 목록
+- 친구관계를 저장할 HashMap을 초기화하는 함수
+> HashMap<String, ArrayList<String>> initFriendGraph()
+
+- 친구관계를 추가하는 함수
+> void addFriend(HashMap<String, ArrayList<String>>, ArrayList<String>)
+
+- user의 추천친구에 대한 정보를 저장할 ArrayList를 초기화하는 함수
+> ArrayList<HashMap<String, Integer>> initRecommendScoreList()
+
+- user의 추천친구 리스트에 파라미터로 전달된 유저가 있는지 확인하는 함수
+> boolean checkUserInRecommendScoreList(ArrayList<HashMap<String, Integer>>, String)
+
+- 전달받은 파라미터가 user의 친구인지 확인하는 함수
+> boolean checkUserInRecommendScoreList(HashMap<String, ArrayList<String>>, String)
+
+- 점수를 갱신할 때 제한조건을 체크하는 함수
+> boolean checkBeforeAddRecommendScore(ArrayList<HashMap<String, Integer>>, HashMap<String, ArrayList<String>>, String)
+
+- 함께 아는 친구의 수에 따라 점수를 추가하는 함수
+> void AddRecommendScoreOfFriends(ArrayList<HashMap<String, Integer>>, HashMap<String, ArrayList<String>>)
+
+- visitor의 점수를 추가하는 함수
+> void AddRecommendScoreOfVisitors(ArrayList<HashMap<String, Integer>>, HashMap<String, ArrayList<String>>)
+
+- 점수를 오름차순으로 정렬하여 주어진 조건에 따라 리턴하는 함수
+> List<String> topRecommendScoreList(ArrayList<HashMap<String, Integer>>)
