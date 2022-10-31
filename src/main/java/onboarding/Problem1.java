@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -50,35 +49,35 @@ class Problem1 {
         return false;
     }
 
-    static int sumDigits(int digits){
-        /* 정수 digit가 주어졌을 때 자리수별 숫자의 합을 return */
+    static int sumNumberByDigit(int number){
+        /* 정수 number 가 주어졌을 때 자리수(digit)별 숫자의 합을 return */
         int sum = 0;
-        while(digits!=0) {
-            sum += digits%10;   // digit를 10으로 나눈 나머지(자리수 숫자)를 sum에 더한다.
-            digits /= 10;   // digit를 10으로 나눈 몫을 digit에 저장한다.
+        while(number!=0) {
+            sum += number%10;   // number 를 10으로 나눈 나머지(자리수 숫자)를 sum 에 더한다.
+            number /= 10;   // number 를 10으로 나눈 몫을 number 에 저장한다.
         }
         return sum;
     }
 
-    static int multiplyDigits(int digits) {
-        /* 숫자 digit가 주어졌을 때 자리수별 숫자의 곱을 return */
+    static int mulNumberByDigit(int number) {
+        /* 숫자 number 가 주어졌을 때 자리수(digit)별 숫자의 곱을 return */
         int mul = 1;
-        while(digits!=0) {
-            mul *= digits%10;   // digit를 10으로 나눈 나머지(자리수 숫자)를 mul에 곱한다.
-            digits /= 10;   // digit를 10으로 나눈 볷을 digit에 저장한다.
+        while(number!=0) {
+            mul *= number%10;   // number 를 10으로 나눈 나머지(자리수 숫자)를 mul 에 곱한다.
+            number /= 10;   // number 를 10으로 나눈 볷을 number 에 저장한다.
         }
         return mul;
     }
 
     static List<Integer> mapToSum(List<Integer> intList) {
         List<Integer> sumList =  new ArrayList<>(intList);
-        sumList.replaceAll(i -> sumDigits(i));
+        sumList.replaceAll(i -> sumNumberByDigit(i));
         return sumList;
     }
 
     static List<Integer> mapToMul(List<Integer> intList) {
         List<Integer> mulList =  new ArrayList<>(intList);
-        mulList.replaceAll(i -> multiplyDigits(i));
+        mulList.replaceAll(i -> mulNumberByDigit(i));
         return mulList;
     }
 
