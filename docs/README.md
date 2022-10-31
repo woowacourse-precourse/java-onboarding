@@ -69,7 +69,7 @@
 - [x] 내림차순 정렬한 값을 리스트로 반환 후, userFriendList에 있는 값을 제외하고, 반환
 - [ ] 예외 사항을 체크해줄 Problem7ValidateChecker class 추가
   - [x] user가 null인 경우
-  - [ ] user의 길이가 0이거나, 30초과인 경우
+  - [x] user의 길이가 0이거나, 30초과인 경우
   - [x] frineds가 null인 경우
   - [ ] friends의 길이가 0이거나, 10,000초과 인 경우
   - [x] friendRelation이 null인 경우

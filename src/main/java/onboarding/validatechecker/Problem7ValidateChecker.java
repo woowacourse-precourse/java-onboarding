@@ -9,7 +9,12 @@ public class Problem7ValidateChecker {
 		isVisitorNotNull(visitors);
 		isFriendRelationNotNull(friends);
 		isIdNotNull(friends);
+		isUserInRange(user);
+	}
 
+	private static void isUserInRange(String user) {
+		if(user.length() == 0 || user.length() > 30)
+			throw new IllegalArgumentException("user의 길이가 0이거나, 30초과입니다.");
 	}
 
 	private static void isFriendRelationNotNull(List<List<String>> friends) {
