@@ -3,6 +3,14 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
+    private static Map<String,Integer> sortBy(Map<String,Integer> friendScore){
+        List<Map.Entry<String,Integer>> entryList = entryReturn(friendScore);
+        entryList.sort(Map.Entry.comparingByKey()); //key로 한번
+        friendScore=fillMap(entryList);
+        entryList = entryReturn(friendScore);
+        entryList.sort(Map.Entry.comparingByValue(Comparator.reverseOrder())); //value로 한번
+        return fillMap(entryList);
+    }
     private static void minusUserFriend(Map<String,Integer> friendScore, Map<String,List<String>> friendMap, String user){
         List<String> userFriends=friendMap.remove(user);
         for (String userFriend: userFriends){
@@ -64,5 +72,6 @@ public class Problem7 {
         Map<String,List<String>> friendMap =friendmake(friends);
         Map<String,Integer> friendScore = plusVisit(plusFriend(friendMap,user),visitors);
         minusUserFriend(friendScore, friendMap, user);//userfriend는 제외
+        friendScore = sortBy(friendScore);
     }
 }
