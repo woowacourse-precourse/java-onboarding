@@ -29,34 +29,34 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Problem7 problem = new Problem7();
         /* personToRecommend: 추천 목록 생성  */
-        List<String>personToRecommend  = flatten2DimStringList(friends);   // 배열 평탄화
-        personToRecommend.addAll(visitors);
+        List<String> personToRecommend  = flatten2DimStringList(friends);   // friends 배열 평탄화
+        personToRecommend.addAll(visitors); // 방문자 추가
         personToRecommend = dropDuplicate(personToRecommend);   // 중복 제거
         personToRecommend.remove(user); // 친구 목록에서 user 제거
         List<String> directFriends = getDirectFriends(user, friends);
         for (String name : directFriends) {
-            personToRecommend.remove(name);
+            personToRecommend.remove(name); // user 이미 친구인 사람 목록에서 제거
         }
 
-        /* hashFriendshipScores 에 Friends 객체 추가 */
+        /* hashFriendshipScores 에 Recommend 객체 추가 */
         for (String name : personToRecommend) {
             problem.updateFriend(name);
         }
 
-        /* directFriends 와 함께 아는 친구( coFriend )에 대해 score 10점 추가 */
+        /* 함께 아는 친구( coFriend ) score 10점씩 추가 */
         List<String> coFriends = getCoFriends(user, friends, directFriends);
         for (String name : coFriends) {
             problem.updateScore(name, 10);
         }
 
-        /* visitors 를 순회하며 방문자의 score 1점씩 추가 */
+        /* 방문자의 score 1점씩 추가 */
         for (String name : visitors) {
             if (!directFriends.contains(name)) {
                 problem.updateScore(name, 1);
             }
         }
 
-        // hashFriendshipScores의 value 를 점수 내림차순, 이름 오름차순으로 정렬
+        /* 점수 내림차순, 이름 오름차순으로 정렬 */
         List<Recommend> friendList = new ArrayList(problem.hashPersonToRecommend.values());
         friendList.sort(Comparator
                 .comparing(Recommend::getScore).reversed()     // 점수 내림차순
