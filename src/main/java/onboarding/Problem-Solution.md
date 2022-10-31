@@ -15,7 +15,7 @@ Problem3
 Problem4
 
 Problem5
-1. 5만원 부터 1원까지 배열 unit 생성
+1. 5만원부터 1원까지 배열 unit 생성
 2. 입력받은 money를 unit과 비교 기능
 
 Problem6
