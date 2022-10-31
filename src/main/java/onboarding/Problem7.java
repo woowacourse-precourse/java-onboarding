@@ -29,12 +29,14 @@ public class Problem7 {
     public static HashMap<String, Set<String>> createFriendsList(List<List<String>> friends){
         HashMap<String, Set<String>> map = new HashMap<>();
         for(List<String> friend : friends){
-            Set<String> set = getOrDefaultSet(map,friend.get(0));
-            set.add(friend.get(1));
-            map.put(friend.get(0),set);
-            set = map.getOrDefault(friend.get(1),new TreeSet<>());
-            set.add(friend.get(0));
-            map.put(friend.get(1),set);
+            String firstFriends = friend.get(0);
+            String secondFriends = friend.get(1);
+            Set<String> set = getOrDefaultSet(map,firstFriends);
+            set.add(secondFriends);
+            map.put(firstFriends,set);
+            set = map.getOrDefault(secondFriends,new TreeSet<>());
+            set.add(firstFriends);
+            map.put(secondFriends,set);
         }
         return map;
     }
