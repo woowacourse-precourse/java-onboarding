@@ -1,69 +1,64 @@
 package onboarding;
 
 import java.util.List;
+import java.util.stream.Stream;
 
-class Problem1 {
+public class Problem1 {
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
-        int pobiLeftPage = pobi.get(0);
-        int pobiRightPage = pobi.get(1);
-        int crongLeftPage = crong.get(0);
-        int crongRightPage = crong.get(1);
+        int answer;
 
-        // 입력된 페이지의 값이 예외 사향이면 -1을 리턴한다.
-        if (isValidPages(pobiLeftPage, pobiRightPage) == false || isValidPages(crongLeftPage, crongRightPage) == false) {
+        if (isInValidPages(pobi)|| isInValidPages(crong)) {
             return -1;
         }
 
-        int pobiScore = getMaxScore(
-                List.of(sum(pobiLeftPage),
-                        sum(pobiRightPage),
-                        multiply(pobiLeftPage),
-                        multiply(pobiRightPage)
-                )
-        );
+        int pobiScore = getMaxScore(pobi);
+        int crongScore = getMaxScore(crong);
 
-        int crongScore = getMaxScore(
-                List.of(sum(crongLeftPage),
-                        sum(crongRightPage),
-                        multiply(crongLeftPage),
-                        multiply(crongRightPage)
-                )
-        );
-
-        // 출력
-        if (pobiScore > crongScore) {
-            return 1;
-        } else if (pobiScore < crongScore) {
-            return 2;
-        } else {
-            return 0;
-        }
+        answer = getWinner(pobiScore, crongScore);
+        return answer;
     }
 
 
-    private static boolean isValidPages(int leftPage, int rightPage) {
-        // 시작 면이나 마지막 면이 나오는 예외사항 || 시작 면이나 마지막 면을 벗어나는 예외사항
-        if (leftPage <= 1 || rightPage <= 2 || leftPage >= 399 || rightPage >= 400) {
-            return false;
+    private static boolean isInValidPages(List<Integer> pages) {
+        Integer leftPage = pages.get(0);
+        Integer rightPage = pages.get(1);
+
+        if (isInValidRange(leftPage) || isInValidRange(rightPage)) {
+            return true;
         }
 
-        // 왼쪽 페이지가 항상 홀수이며, 오른쪽 페이지는 항상 짝수이다.
-        if (leftPage % 2 == 0 || rightPage % 2 == 1) {
-            return false;
+        if (isEven(leftPage) || isOdd(rightPage)) {
+            return true;
         }
 
-        // 오른쪽 페이지에서 왼쪽 페이지의 차는 1이다.
-        return (rightPage - leftPage == 1);
+        return isNotConsecutive(leftPage, rightPage);
     }
 
-    private static int getMaxScore(List<Integer> scores) {
-        // 항상 MAX 값은 존재한다. (pobi와 crong의 길이는 2이다.)
-        return scores.stream()
+    private static boolean isInValidRange(Integer page) {
+        return page < 1 || page > 400;
+    }
+
+    private static boolean isEven(Integer page) {
+        return page % 2 == 0;
+    }
+
+    private static boolean isOdd(Integer page) {
+        return !isEven(page);
+    }
+
+    private static boolean isNotConsecutive(Integer leftPage, Integer rightPage) {
+        return rightPage - leftPage != 1;
+    }
+
+    private static int getMaxScore(List<Integer> pages) {
+        Integer leftPage = pages.get(0);
+        Integer rightPage = pages.get(1);
+        return Stream.of(sum(leftPage), sum(rightPage), multiply(leftPage), multiply(rightPage))
                 .mapToInt(score -> score)
                 .max()
                 .getAsInt();
-        //.orElse(Integer.MIN_VALUE);
     }
 
     private static int sum(int page) {
@@ -86,6 +81,15 @@ class Problem1 {
         }
 
         return ret;
+    }
+
+    private static int getWinner(int pobiScore, int crongScore) {
+        if (pobiScore > crongScore) {
+            return 1;
+        } else if (pobiScore < crongScore) {
+            return 2;
+        }
+        return 0;
     }
 
 }
