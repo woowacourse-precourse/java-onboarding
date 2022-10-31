@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 public class Problem6 {
 
@@ -27,8 +24,11 @@ public class Problem6 {
         // 중복 닉네임 목록 (Set)
         HashSet<String> duplicatedNicknames = getDuplicatedNicknames(nicknameList);
 
-        // Set에 들어가있는 닉네임을 통해 이메일 목록을 가져오고, 이메일 목록을 오름차순으로 정렬
+        // 중복 닉네임을 가진 크루원들의 이메일 목록 (List)
+        List<String> emailList = getEmailList(getEmailByNickname, duplicatedNicknames);
+        Collections.sort(emailList); // 이메일 목록을 오름차순으로 정렬
 
+        answer = emailList;
         return answer;
     }
 
@@ -77,6 +77,18 @@ public class Problem6 {
         }
 
         return duplicatedNicknames;
+    }
+
+    // 중복 닉네임 목록에 들어간 크루원들의 이메일 목록을 List로 반환하는 함수
+    private static List<String> getEmailList(HashMap<String, String> getEmailByNickname, HashSet<String> duplicatedNicknames) {
+        List<String> emailList = new ArrayList<>(); // 이메일 목록
+
+        for (String duplicatedNickname : duplicatedNicknames) {
+            String email = getEmailByNickname.get(duplicatedNickname); // 중복 닉네임을 가진 크루원의 이메일
+            emailList.add(email);
+        }
+
+        return emailList;
     }
 
 }
