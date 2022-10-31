@@ -189,5 +189,24 @@ class ApplicationTest {
             List<String> result = List.of("e","d","c","b","a");
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
         }
+        @Test
+        void 점수가_같을경우_이름순으로_정렬되었는가(){
+            String user = "mrko";
+            List<List<String>> friends = List.of(
+              List.of("v", "mrko"),
+              List.of("w", "mrko"),
+              List.of("x", "mrko"),
+              List.of("y", "mrko"),
+              List.of("z", "mrko"),
+              List.of("z", "c"),
+              List.of("y", "e"),
+              List.of("x", "d"),
+              List.of("w", "b"),
+              List.of("v", "a")
+            );
+            List<String> visitors = List.of();
+            List<String> result = List.of("a","b","c","d","e");
+            assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+        }
     }
 }
