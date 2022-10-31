@@ -9,6 +9,13 @@ public class Problem4 {
 
     }
 
+    private static char convertLower(char letter) {
+        int difference = letter - 97;
+        char converted = 122 - difference;
+
+        return converted;
+    }
+
     public static String solution(String word) {
         String answer = "";
 
