@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -90,7 +89,15 @@ public class Problem7 {
         public Answer(String mainCharacter, List<String> mainCharacterFriends, Map<String, Integer> userAndRecommendScore) {
             List<Map.Entry<String, Integer>> userAndRecommendScoreList = new ArrayList<>(userAndRecommendScore.entrySet());
 
-            userAndRecommendScoreList.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
+            userAndRecommendScoreList.sort((entry1, entry2) -> {
+                if (entry1.getValue() != entry2.getValue()) {
+                    return entry2.getValue()
+                        .compareTo(entry1.getValue());
+                }
+                return entry1.getKey()
+                    .compareTo(entry2.getKey());
+            });
+
             answer = userAndRecommendScoreList.stream()
                 .filter(entry -> !entry.getKey()
                     .equals(mainCharacter))
