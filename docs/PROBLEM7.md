@@ -27,13 +27,13 @@
 
 ### 기능 목록
 - 친구관계를 저장할 HashMap을 초기화하는 함수
-> HashMap<String, ArrayList<String>> initFriendGraph()
-
-- 친구관계를 추가하는 함수
-> void addFriend(HashMap<String, ArrayList<String>>, ArrayList<String>)
+> HashMap<String, ArrayList<String>> initFriendGraph(List<List<String>> friends)
 
 - user의 추천친구에 대한 정보를 저장할 ArrayList를 초기화하는 함수
 > ArrayList<HashMap<String, Integer>> initRecommendScoreList()
+
+- 친구관계를 추가하는 함수
+> void addFriend(HashMap<String, ArrayList<String>>, ArrayList<String>)
 
 - user의 추천친구 리스트에 파라미터로 전달된 유저가 있는지 확인하는 함수
 > boolean checkUserInRecommendScoreList(ArrayList<HashMap<String, Integer>>, String)
