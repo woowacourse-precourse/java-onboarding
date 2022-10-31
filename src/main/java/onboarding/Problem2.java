@@ -24,7 +24,15 @@ public class Problem2 {
                 }
             }
 
-            cryptogram = cryptoAvail.replaceAll(" ", "");
+            cryptoAvail = cryptoAvail.replaceAll(" ", "");
+
+            for (int i = 0; i < answer.length()-1; i++) {
+                flag = false;
+                if (answer.charAt(i) == answer.charAt(i+1)) {
+                    flag = true;
+                    break;
+                }
+            }
         }
         return answer;
     }
