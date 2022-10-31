@@ -10,7 +10,16 @@ class Problem1 {
         }
         return -1;
     }
-
+    // 두 플레이어의 승부를 각 점수로 판별하는 기능
+    private static int judgedScore(int pobi, int crong) {
+        if (pobi > crong) {
+            return 1;
+        }
+        else if (pobi < crong) {
+            return 2;
+        }
+        return 0;
+    }
     // 예외처리 기능
     @SafeVarargs
     private static boolean checkValidPage(List<Integer>...list) {
