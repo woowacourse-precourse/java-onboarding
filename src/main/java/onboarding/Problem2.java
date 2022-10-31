@@ -6,6 +6,25 @@ public class Problem2 {
         return answer;
     }
 
+    public static String decodeOneCycle(String cryptogram){
+        int length = cryptogram.length();
+        String result = null;
+
+        for(int i = 0; i < length - 1; i++){
+            char c = cryptogram.charAt(i);
+            String substring = cryptogram.substring(i);
+
+            if(isContinuitySubstring(substring)){
+                String fixedSubstring = removeContinuity(substring, c);
+                cryptogram = cryptogram.substring(0, i) + fixedSubstring;
+                length = cryptogram.length();
+                result = cryptogram;
+            }
+        }
+
+        return result;
+    }
+
     public static boolean isContinuitySubstring(String substring) {
         return substring.charAt(0) == substring.charAt(1);
     }
