@@ -47,21 +47,18 @@ public class Problem3 {
         memory[number] = accumClapCount(number-1) + calcClapCount(number);
 
         return memory[number];
-
     }
 
     // 개별 number에서 박수 횟수 계산
     public int calcClapCount(int number){
         int numberLength = String.valueOf(number).length();
         int answer = 0;
-        int digit = 0; // 3,6,9 인지 비교할 각 자리의 숫자
+        int digit; // 3,6,9 인지 비교할 각 자리의 숫자
 
-        if (numberLength == 1) {
-            // 일의 자리수 일때
+        if (numberLength == 1) {        // 일의 자리수 일때
             digit = number % 10;
             answer += isThreeContain(digit);
-        } else {
-            // 십의 자리수 이상 일때 가장 큰 자리수 부터 하나씩 내려가면서 비교해준다.
+        } else {        // 십의 자리수 이상 일때 가장 큰 자리수 부터 하나씩 내려가면서 비교해준다.
             while (numberLength > 0) {
                 // 해당 자리수에서 3,6,9 비교
                 digit = (int) (number / (Math.pow(10, numberLength - 1)));
