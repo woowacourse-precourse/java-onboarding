@@ -40,7 +40,7 @@ public class Problem7 {
         int sc;
         List<String> userFriends = friendsMap.get(user);
 
-        if (s == "mrko" || userFriends.contains(s))
+        if (s == user || ((userFriends != null) && userFriends.contains(s)))
             return ;
         if (!score.containsKey(s))
             sc = 1;
@@ -55,7 +55,7 @@ public class Problem7 {
 
         for (int i = 0; i < friendsList.size(); i++) {
             String name = friendsList.get(i);
-            if (name == "mrko" || userFriends.contains(name))
+            if (name == user || userFriends.contains(name))
                 continue;
             int sc = score.get(name);
             score.put(name, sc + 10);
@@ -68,18 +68,30 @@ public class Problem7 {
         for (int i = 0; i < friends.size(); i++)
             addFriends(friends.get(i));
 
-        List<String> friendsList = friendsMap.get(user);
+        if (friendsMap.containsKey(user)) {
+            List<String> friendsList = friendsMap.get(user);
 
-        for (int i = 0; i < friendsList.size(); i++)
-            addFriendsScore(friendsList.get(i), user);
+            for (int i = 0; i < friendsList.size(); i++)
+                addFriendsScore(friendsList.get(i), user);
+        }
 
-        for (int i = 0; i < visitors.size(); i++)
-            addVisitScore(visitors.get(i), user);
+            for (int i = 0; i < visitors.size(); i++)
+                addVisitScore(visitors.get(i), user);
 
         List<String> keySet = new ArrayList<>(score.keySet());
 
-        // Value 값으로 오름차순 정렬
-        keySet.sort((o1, o2) -> score.get(o2).compareTo(score.get(o1)));
+        keySet.sort(new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                int ret = score.get(o2).compareTo(score.get(o1));
+
+                if (ret == 0)
+                    return o1.compareTo(o2);
+                return ret;
+            }
+        });
+
+        System.out.println("score = " + score);
 
         for (int i = 0; i < 5; i++){
             String name = keySet.get(i);
