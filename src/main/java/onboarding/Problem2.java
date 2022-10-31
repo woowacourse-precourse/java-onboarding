@@ -17,4 +17,12 @@ public class Problem2 {
     public static String deleteRepeatWords(String s){
         return s.replace(repeatWords(s),"");
     }
+    public static boolean existRepeat(String s){
+        for(int i=1; i<s.length(); i++){
+            if(s.charAt(i-1)==s.charAt(i)){
+                return true;
+            }
+        }
+        return false;
+    }
 }
