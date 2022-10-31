@@ -22,10 +22,6 @@ public class Problem2 {
             lastRemove = getNewWord(charDeque, i, cryptogramArray[i], lastRemove);
         }
 
-        if (isOutputBlank(charDeque)) {
-            return OUTPUT_IS_BLANK;
-        }
-
         return isOutputBlank(charDeque) ? OUTPUT_IS_BLANK : getCharDequeToString(charDeque);
     }
 
