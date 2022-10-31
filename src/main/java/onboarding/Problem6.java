@@ -32,20 +32,33 @@ public class Problem6 {
         requests.add(forms.get(j));
         return requests;
     }
+    public static void checkAndAddEachEmails(List<List<String>> requests,
+                                             HashSet<String> emailSet) {
+        String shortNickName = requests.get(0).get(1);
+
+        for (int k=0; k<shortNickName.length() - 1; k++) {
+            String somePart = shortNickName.substring(k, k + 2);
+            addEachEmails(requests, emailSet, somePart);
+        }
+    }
+    public static void addEachEmails(List<List<String>> requests,
+                                     HashSet<String> emailSet,
+                                     String somePart) {
+        String longNickName = requests.get(1).get(1);
+        String email1 = requests.get(0).get(0);
+        String email2 = requests.get(1).get(0);
+
+        if (longNickName.contains(somePart)) {
+            emailSet.add(email1);
+            emailSet.add(email2);
+        }
+    }
     public static void findAndAddEmail(HashSet<String> emailSet,
                                        List<List<String>> forms,
                                        int start) {
         for (int j=start+1; j<forms.size(); j++) {
             List<List<String>> eachRequests = getEachRequests(forms, start, j);
-            String shortNickName = eachRequests.get(0).get(1);
-
-            for (int k=0; k<shortNickName.length() - 1; k++) {
-                String somePart = eachRequests.get(0).get(1).substring(k, k + 2);
-                if (eachRequests.get(1).get(1).contains(somePart)) {
-                    emailSet.add(eachRequests.get(0).get(0));
-                    emailSet.add(eachRequests.get(1).get(0));
-                }
-            }
+            checkAndAddEachEmails(eachRequests, emailSet);
         }
     }
 }
