@@ -1,6 +1,5 @@
 package onboarding;
 
-import java.lang.reflect.Array;
 import java.util.Collections;
 import java.util.List;
 import java.util.HashMap;
@@ -24,6 +23,14 @@ public class Problem7 {
 
         friendfrinedlist = problem.extractFriendFriend(userfriendslist, friends);
         while(friendfrinedlist.remove("") || friendfrinedlist.remove(user)){};
+
+        for(int i=0; i<friendfrinedlist.size(); i++) {
+            if(listpeople.containsKey(friendfrinedlist.get(i))) {
+                listpeople.put(friendfrinedlist.get(i), listpeople.get(friendfrinedlist.get(i)) + 10);
+            }
+        }
+
+        
 
         return answer;
     }
