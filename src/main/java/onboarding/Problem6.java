@@ -12,10 +12,9 @@ import java.util.List;
 public class Problem6 {
     static List<Boolean> Duplicate;
     private static boolean isDuplicate(String str1, String str2){
-        int count = 0;
-        for(int i=0; i<str1.length()-1 ; i++){
-            for (int j=0; j<str2.length()-1; j++){
-                if (str1.substring(i,i+2).equals(str2.substring(j,j+2))){
+        for(int i = 0; i < str1.length() - 1 ; i++){
+            for (int j = 0; j < str2.length() - 1; j++){
+                if (str1.substring(i, i + 2).equals(str2.substring(j, j + 2))){
                     return true;
                 }
             }
