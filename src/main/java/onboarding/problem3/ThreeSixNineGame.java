@@ -2,13 +2,9 @@ package onboarding.problem3;
 
 import java.util.stream.IntStream;
 
-import static onboarding.problem3.InputNumberValidator.validateNumber;
-
 public class ThreeSixNineGame {
 
     public int do369(int number) {
-        validateNumber(number);
-
         return IntStream.range(1, number + 1)
                 .mapToObj(String::valueOf)
                 .filter(this::contains369)
@@ -26,4 +22,5 @@ public class ThreeSixNineGame {
                 .filter(num -> (num == 3 || num == 6 || num == 9))
                 .count();
     }
+
 }
