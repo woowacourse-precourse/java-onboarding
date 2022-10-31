@@ -17,10 +17,9 @@ public class Problem4 {
     }
 
     public static int convertCapitalLetter(int inputAscii){
-        return outputAscii;
+        return 155-inputAscii;
     }
-
     public static int convertSmallLetter(int inputAscii){
-        return outputAscii;
+        return 219-inputAscii;
     }
 }
