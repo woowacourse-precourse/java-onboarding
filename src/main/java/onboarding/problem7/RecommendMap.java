@@ -11,10 +11,6 @@ public class RecommendMap {
         this.stringIntegerMap = new HashMap<>();
     }
 
-    public RecommendMap(RecommendMap recommendMap) {
-        this.stringIntegerMap = recommendMap.getStringListMap();
-    }
-
     public Map<String, Integer> getStringListMap() {
         return stringIntegerMap;
     }

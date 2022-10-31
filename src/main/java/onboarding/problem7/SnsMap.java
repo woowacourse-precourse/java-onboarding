@@ -19,6 +19,6 @@ final class SnsMap {
     }
 
     public List<UserId> get(UserId userId) {
-        return snsMap.getOrDefault(userId.getId(), new ArrayList<UserId>());
+        return snsMap.getOrDefault(userId.getId(), new ArrayList<>());
     }
 }
