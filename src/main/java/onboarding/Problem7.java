@@ -5,7 +5,16 @@ import java.util.*;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Map<String, Integer> scores = new HashMap<>();
-        List<String> answer = Collections.emptyList();
+        Map<String, List<String>> friendsList = createFriendsList(friends);
+        addFriendScore(user, scores, friendsList);
+        addVisitorScore(scores, visitors, friendsList.get(user));
+        return makeResult(scores);
+    }
+
+    private static List<String> makeResult(Map<String, Integer> scores) {
+        List<String> answer = new ArrayList<>(scores.keySet());
+        answer.sort(Comparator.naturalOrder());
+        answer.sort((o1, o2) -> scores.get(o2).compareTo(scores.get(o1)));
         return answer;
     }
 
