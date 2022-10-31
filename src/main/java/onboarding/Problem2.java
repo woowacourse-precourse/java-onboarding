@@ -30,22 +30,59 @@ public class Problem2 {
 
     }
 
-    static boolean isSameCharacter(char now, char after) {
+    private static boolean isSameCharacter(char now, char after) {
         return now == after;
     }
 
-    static String setNewString(String cryptogram, PriorityQueue<Integer> PQ) {
+    private static String setNewString(String cryptogram, PriorityQueue<Integer> PQ) {
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < PQ.size(); i++) {
-            int index = PQ.poll();
-            sb.append(cryptogram.charAt(index));
+        for (int i = 0; i <cryptogram.length() ; i++) {
+            char c = cryptogram.charAt(i);
+            if (PQ.isEmpty()) {
+                sb.append(c);
+                continue;
+            }
+
+            if (PQ.peek() == i) {
+                PQ.poll();
+                continue;
+            }
+            sb.append(c);
         }
 
         return sb.toString();
+
     }
 
-    public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+    private static String Deduplication(String cryptogram) {
+
+        for (int i = 0; i <cryptogram.length()-1 ; i++) {
+            addValuePriorityQueue(i, cryptogram);
+        }
+
+        return setNewString(cryptogram, PQ);
     }
+    private static void addValuePriorityQueue(int index, String cryptogram)
+    {
+        if (isSameCharacter(cryptogram.charAt(index), cryptogram.charAt(index + 1))) {
+            PQ.add(index);
+            PQ.add(index + 1);
+        }
+    }
+
+
+    static PriorityQueue<Integer> PQ;
+    public static String solution(String cryptogram) {
+        boolean checkDuplicate = true;
+        while (checkDuplicate)
+        {
+            PQ = new PriorityQueue<>();
+            String temp = cryptogram;
+            cryptogram = Deduplication(cryptogram);
+            if(cryptogram.equals(temp)) checkDuplicate = false;
+        }
+        return cryptogram;
+    }
+
+
 }
