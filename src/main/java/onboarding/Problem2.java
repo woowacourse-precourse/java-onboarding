@@ -44,9 +44,19 @@ public class Problem2 {
         }
         return (stack);
     }
+    private static String buildString(Stack<Character> stack)
+    {
+        StringBuilder sb = new StringBuilder();
+        int size = stack.size();
+
+        for (int i = 0; i < size; i++) {
+            sb.append(stack.pop());
+        }
+        return (sb.reverse().toString());
+    }
     public static String solution(String cryptogram) {
         if (!isValidCryptogram(cryptogram))
             throw (new RuntimeException("유효하지 않은 문자열"));
-        return ("");
+        return (buildString(deciper(cryptogram)));
     }
 }
