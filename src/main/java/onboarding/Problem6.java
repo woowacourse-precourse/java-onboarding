@@ -22,6 +22,24 @@ public class Problem6 {
         return false;
     }
 
+    private static List<String> findSimilarCrew(List<List<String>> forms) {
+        List<String> duplicateEmailList = new ArrayList<>();
 
+        for (int i = 0; i < forms.size(); i++) {
+            for (int j = i + 1; j < forms.size(); j++){
+                if (checkSimilarNickname(forms.get(i).get(1), forms.get(j).get(1))) {
+                    duplicateEmailList.add(forms.get(i).get(0));
+                    duplicateEmailList.add(forms.get(j).get(0));
+                    break;
+                }
+            }
+        }
+
+        return  duplicateEmailList;
+    }
+
+    private static List<String> removeDuplicateEmail(List<String> duplicateEmailList){
+
+    }
 
 }
