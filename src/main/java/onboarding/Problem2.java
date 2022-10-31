@@ -29,7 +29,7 @@ public class Problem2 {
     }
 
     private static String decodingCryptogram(String cryptogram) {
-        Stack stack = new Stack<>();
+        Stack<Character> stack = new Stack<>();
         char[] arrayOfCryptogram = cryptogram.toCharArray();
         stack.push(arrayOfCryptogram[0]);
 
