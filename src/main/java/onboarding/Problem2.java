@@ -7,12 +7,9 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
         if(CheckCryptogram(cryptogram)){
-            List<Integer> duplicateslist = CheckDuplicates(cryptogram);
-
-            return DeleteDuplicates(cryptogram,duplicateslist);
+            return RunGame(cryptogram);
         }
-        return "0";
-        //throw new IllegalArgumentException();
+        throw new IllegalArgumentException("잘못된 입력값");
     }
 
     /* 기능1 : input 예외 확인 */
@@ -57,5 +54,14 @@ public class Problem2 {
             str = str.substring(0,duplicateslist.get(i)-i)+str.substring(duplicateslist.get(i)-i+1);
         }
         return str;
+    }
+
+    /* 기능4 : 중복 문자 없을 때까지 반복 */
+    private static String RunGame(String cryptogram){
+        List<Integer> duplicateslist = CheckDuplicates(cryptogram);
+        while(duplicateslist.size() != 0){
+            cryptogram = DeleteDuplicates(cryptogram,duplicateslist);
+            duplicateslist = CheckDuplicates(cryptogram);
+        }return cryptogram;
     }
 }
