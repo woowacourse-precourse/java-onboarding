@@ -1,20 +1,31 @@
 #### 기능목록
 
-`convertCharArrReverse`: 문자열을 청개구리 사전에 맞게 변환해주는 기능
+`convertCharArrReverse`: 문자열을 청개구리 사전에 맞게 변환
 
-​	`convertCharReverse`: `알파벳 대문자`는 `알파벳 대문자`에 맞게 변환, `알파벳 소문자`는 `알파벳 소문자`에 맞게 변환
+`convertCharReverse`: `알파벳 대문자`는 `알파벳 대문자`에 맞게 변환, `알파벳 소문자`는 `알파벳 소문자`에 맞게 변환
 
-​	`알파벳 대문자` --> `90 ('Z'아스키코드)` - `Target 아스키코드` + `65 ('A'아스키코드)`
+- `알파벳 대문자` --> `90 ('Z'아스키코드)` - `Target 아스키코드` + `65 ('A'아스키코드)`
+- `알파벳 소문자` --> `122 ('z' 아스키코드)` - `Target 아스키코드` + `97 ('a'아스키코드)`
 
-​	`알파벳 소문자` --> `122 ('z' 아스키코드)` - `Target 아스키코드` + `97 ('a'아스키코드)`
+`isUpperCase`: 알파벳 대문자 확인
 
-​		`isUpperCase`: 알파벳 대문자 확인 기능
+`isLowerCase`: 알파벳 소문자 확인
 
-​		`isLowerCase`: 알파벳 소문자 확인 기능 
+- (※`Character.isUpperCase` or `.isLowerCase` 사용 시, `알파벳이 아닌 문자도 변환`)
+
+
 
 `charArrToString`: `StringBuilder의 append 메소드`를 활용하여 `문자열을 String객체로 변환`해주는 기능
 
-(※String의 immutable 특성으로 인해, "+" 연산자 사용시 불필요한 메모리 낭비 발생)
+- (※String의 immutable 특성으로 인해, "+" 연산자 사용시 불필요한 메모리 낭비 발생)
+
+
+
+
+
+
+
+
 
 
 

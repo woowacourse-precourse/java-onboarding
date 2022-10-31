@@ -12,21 +12,21 @@
 
 
 
-- case1) `pastChar`이 비어있는 경우 (`논리적인 의미`에 의해 `duplicateCharIdx`도 비어있는 상태)
+case1) `pastChar`이 비어있는 경우 (`논리적인 의미`에 의해 `duplicateCharIdx`도 비어있는 상태)
 
-  - `pastChar`에 `현재 문자` 추가
-  - `pastIdx`에 `현재 문자 idx` 추가
+- `pastChar`에 `현재 문자` 추가
+- `pastIdx`에 `현재 문자 idx` 추가
 
-- case2) `pastChar`이 차있는 경우
+case2) `pastChar`이 차있는 경우
 
-  - case1) `연속하는 중복문자`인 경우 `duplicateCharIdx`에 `현재 문자 idx`추가. 단, 마지막 문자인 경우 `연속하는 중복 문자 모두 제거` 후 종료
+- case1) `연속하는 중복문자`인 경우 `duplicateCharIdx`에 `현재 문자 idx`추가. 단, 마지막 문자인 경우 `연속하는 중복 문자 모두 제거` 후 종료
 
-  - case2) `연속하는 중복문자`가 아닌 경우 `이전에 연속하는 중복문자`가 있었는지 확인
+- case2) `연속하는 중복문자`가 아닌 경우 `이전에 연속하는 중복문자`가 있었는지 확인
 
-    - `duplicateCharIdx가 비었다면`(`이전에 연속하는 중복문자가 없었다면`) `pastChar`에 `현재문자` 추가, `pastIdx`에 `현재 문자 idx` 추가
-    - `duplicateCharIdx가 차있다면`(`이전에 연속하는 중복문자가 있었다면`) `연속하는 중복 문자 모두 제거` 후, `idx -= 1`
+  - `duplicateCharIdx가 비었다면`(`이전에 연속하는 중복문자가 없었다면`) `pastChar`에 `현재문자` 추가, `pastIdx`에 `현재 문자 idx` 추가
+  - `duplicateCharIdx가 차있다면`(`이전에 연속하는 중복문자가 있었다면`) `연속하는 중복 문자 모두 제거` 후, `idx -= 1`
 
-    
+  
 
 #### 기능목록
 
@@ -34,7 +34,15 @@
 
 `removeDuplicateChars`: `연속하는 중복 문자 제거`
 
+
+
 `getFinalCrypto`: 중복을 제거한 최종 문자열 얻기
+
+
+
+
+
+
 
 
 

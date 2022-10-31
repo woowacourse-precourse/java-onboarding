@@ -24,25 +24,35 @@
 
 `isCorrectPage`: 옳바른 페이지인지 확인
 
-1) `nullPointException`: `페이지`가`null 값`인 경우
+`nullPointException`: `페이지`가`null 값`인 경우 확인
 
-2) `isLeftPageInRange`: 왼쪽 페이지 범위 확인
+`isLeftPageInRange`: 왼쪽 페이지 범위 확인
 
-3) `isRightPageInRange`: 오른쪽 페이지 범위 확인
+`isRightPageInRange`: 오른쪽 페이지 범위 확인
 
-4) `isLeftPageOdd`: 왼쪽 페이지 홀수 확인
+`isLeftPageOdd`: 왼쪽 페이지 홀수 확인
 
-5) `isRightPageEven`: 오른쪽 페이지 짝수 확인
+`isRightPageEven`: 오른쪽 페이지 짝수 확인
 
-6) `isRightPageOneMore`: 오른쪽 페이지가 1이 더 큰지 확인
-7) `isOpeningPage`: `시작면`인지 확인
-8) `isClosingPage`: `마지막면`인지 확인
+`isRightPageOneMore`: 오른쪽 페이지가 1이 더 큰지 확인
 
-`getScore`: 점수 구하기 메소드
+`isOpeningPage`: `시작면`인지 확인
 
-1) `sumAllNum`: 각 자릿수별 합 구하기
+`isClosingPage`: `마지막면`인지 확인
 
-2) `multiAllNum`: 각 자릿수별 곱 구하기
+
+
+`getScore`: 점수 구하기
+
+`sumAllNum`: 각 자릿수별 합 구하기
+
+`multiAllNum`: 각 자릿수별 곱 구하기
+
+
+
+
+
+
 
 
 

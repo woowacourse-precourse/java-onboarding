@@ -3,30 +3,44 @@
 1. `친구목록`에 대해 `이름으로 O(1) 접근`을 위해 `HashMap<이름, [친구이름 리스트]>` 사용
 
 2. `user의 친구인지 O(1)로 확인`하기 위해 user의 친구목록은 `HashSet<친구이름>` 사용
+
 3. `점수를 관리`하고 `이름으로 O(1) 접근`을 위해 `HashMap<이름, 점수>` 사용
+
 4. 점수 작업이 끝난 후, `점수 -> 이름`순으로 정렬하기 위해 `점수와 이름을 상태로 갖는 Friend 객체`사용
+
+   
 
 #### 기능목록
 
 `makeAllFriendShip`: 
 
-​	`user`를 제외한 `나머지 사람들의 친구목록`을 나타내는 `remainUserAndFriends<String, List<String>>` HashMap에 친구 추가
+- `user`를 제외한 `나머지 사람들의 친구목록`을 나타내는 `remainUserAndFriends<String, List<String>>` HashMap에 친구 추가
 
-​	`user의 친구목록` 나타내는 `mainUserFriends<User>` HashSet에 친구 추가
+- `user의 친구목록` 나타내는 `mainUserFriends<User>` HashSet에 친구 추가
+
+  
 
 `increaseScoreMutualFriend`:
 
-​	`remainUserAndFriends` 의 `Entry`를 순회하며, `친구목록(values)`를 순회
+- `remainUserAndFriends` 의 `Entry`를 순회하며, `친구목록(values)`를 순회
 
-​	`user와 함께 아는 친구`면 `increaseTen`메소드 호출
+- `user와 함께 아는 친구`면 `increaseTen`메소드 호출
 
-​	`increaseTen`: `remainUserAndScore` 의 `이름(key)`에 해당하는 `점수(value)`를 10증가
+`increaseTen`: `remainUserAndScore` 의 `이름(key)`에 해당하는 `점수(value)`를 10증가
+
+
 
 `increaseScoreVisitors`:
 
-​	visitors를 순회하며, `increaseOne`메소드 호출. `visitor`가 `user`인 경우 예외처리
+- visitors를 순회하며, `increaseOne`메소드 호출. `visitor`가 `user`인 경우 예외처리
 
-​	`increaseOne`: `remainUserAndScore` 의 `이름(key)`에 해당하는 `점수(value)`를 1증가 
+`increaseOne`: `remainUserAndScore` 의 `이름(key)`에 해당하는 `점수(value)`를 1증가 
+
+
+
+
+
+
 
 
 

@@ -2,7 +2,15 @@
 
 `startGame`: 369 게임 시작. 1 ~ number 까지 순회하며 `countAllThreeSixNine` 메소드 호출
 
-​	`countAllThreeSixNine`: 숫자에 포함된 모든 3,6,9 숫자 개수 반환
+`countAllThreeSixNine`: 숫자에 포함된 모든 3,6,9 숫자 개수 반환
+
+
+
+
+
+
+
+
 
 
 
