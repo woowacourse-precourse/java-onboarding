@@ -3,11 +3,12 @@ package onboarding;
 public class Problem4 {
 
     public static String solution(String word) {
+        Problem4 pb4 = new Problem4();
         StringBuilder answer = new StringBuilder();
         for(char c: word.toCharArray()) {
-            String charType = checkAlphabet((int)c);
+            String charType = pb4.checkAlphabet((int)c);
             if(!charType.equals("NOTALPHABET")) {
-                answer.append(changeLetter((int)c, charType));
+                answer.append(pb4.changeLetter((int)c, charType));
                 continue;
             }
             answer.append(c);
@@ -15,7 +16,7 @@ public class Problem4 {
         return answer.toString();
     }
 
-    public static String checkAlphabet(int asciiNum) {
+    public String checkAlphabet(int asciiNum) {
         if(asciiNum >= (int)'A' && asciiNum <= (int)'Z') {
             return "UPPERCASE";
         }
@@ -25,7 +26,7 @@ public class Problem4 {
         return "NOTALPHABET";
     }
 
-    public static char changeLetter(int asciiNum, String characterType) {
+    public char changeLetter(int asciiNum, String characterType) {
         int total = 0;
         if (characterType.equals("UPPERCASE")) {
             total = (int)'A' + (int)'Z';

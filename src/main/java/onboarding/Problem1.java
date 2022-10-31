@@ -5,7 +5,8 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if(isNotValidPage(pobi)|| isNotValidPage(crong)) {
+        Problem1 pb1 = new Problem1();
+        if(pb1.isNotValidPage(pobi)|| pb1.isNotValidPage(crong)) {
             return -1;
         }
         int LIST_SIZE = 2;
@@ -13,10 +14,10 @@ class Problem1 {
         int crongMax = Integer.MIN_VALUE;
 
         for (int i =0; i < LIST_SIZE; i++) {
-            List<Integer> pobiPageDigit = getEachDigit(pobi.get(i));
-            List<Integer> crongPageDigit = getEachDigit(crong.get(i));
-            pobiMax = getMaximumValue(pobiPageDigit);
-            crongMax = getMaximumValue(crongPageDigit);
+            List<Integer> pobiPageDigit = pb1.getEachDigit(pobi.get(i));
+            List<Integer> crongPageDigit = pb1.getEachDigit(crong.get(i));
+            pobiMax = pb1.getMaximumValue(pobiPageDigit);
+            crongMax = pb1.getMaximumValue(crongPageDigit);
         }
 
         if(pobiMax > crongMax) return 1;
@@ -25,7 +26,7 @@ class Problem1 {
     }
 
     // 각 자리수를 구한다.
-    public static List<Integer> getEachDigit(int page) {
+    public List<Integer> getEachDigit(int page) {
         List<Integer> pageDigitList = new ArrayList<>();
         while(page > 0){
             pageDigitList.add(page % 10);
@@ -35,7 +36,7 @@ class Problem1 {
     }
 
     // 각 자리수의 합을 구한다.
-    public static int getAdditionTotal(List<Integer> pageDigitList) {
+    public int getAdditionTotal(List<Integer> pageDigitList) {
         int answer = 0;
         for (Integer digit : pageDigitList) {
             answer += digit;
@@ -44,7 +45,7 @@ class Problem1 {
     }
 
     // 각 자리수의 곱을 구한다.
-    public static int getMultiplicationTotal(List<Integer> pageDigitList) {
+    public int getMultiplicationTotal(List<Integer> pageDigitList) {
         int answer = 1;
         for (Integer digit : pageDigitList) {
             answer *= digit;
@@ -55,14 +56,14 @@ class Problem1 {
         return answer;
     }
     // 합과 곱 중 최댓값을 구한다.
-    public static int getMaximumValue(List<Integer> pageDigit) {
+    public int getMaximumValue(List<Integer> pageDigit) {
         int additionValue = getAdditionTotal(pageDigit);
         int multiplicationValue = getMultiplicationTotal(pageDigit);
         return Math.max(additionValue, multiplicationValue);
     }
 
     // 예외 처리 체크
-    public static boolean isNotValidPage(List<Integer> user) {
+    public boolean isNotValidPage(List<Integer> user) {
         int leftPage = user.get(0);
         int rightPage = user.get(1);
         boolean isLeftPageOdd = leftPage % 2 == 1;

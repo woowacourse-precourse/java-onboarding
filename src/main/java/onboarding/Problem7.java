@@ -4,17 +4,18 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        Problem7 pb7 = new Problem7();
         List<String> answer = Collections.emptyList();
-        List<String> userFriends = getUserFriends(user, friends);
+        List<String> userFriends = pb7.getUserFriends(user, friends);
         Map<String, Integer> listOfScore = new HashMap<>();
-        getAcquaintance(user, listOfScore, userFriends, friends);
-        getVisitorScore(listOfScore, visitors, userFriends);
-        List<Map.Entry<String, Integer>> sortedListOfScore = getSortedListOfScore(listOfScore);
-        answer = getTopFive(sortedListOfScore);
+        pb7.getAcquaintance(user, listOfScore, userFriends, friends);
+        pb7.getVisitorScore(listOfScore, visitors, userFriends);
+        List<Map.Entry<String, Integer>> sortedListOfScore = pb7.getSortedListOfScore(listOfScore);
+        answer = pb7.getTopFive(sortedListOfScore);
         return answer;
     }
 
-    public static List<String> getUserFriends(String user, List<List<String>> friends) {
+    public List<String> getUserFriends(String user, List<List<String>> friends) {
         List<String> userFriends = new ArrayList<>();
         for (List<String> friend: friends) {
             String user1 = friend.get(0);
@@ -31,7 +32,7 @@ public class Problem7 {
         return userFriends;
     }
 
-    public static void getAcquaintance (String user, Map<String, Integer> listOfScore, List<String> userFriends, List<List<String>> friends) {
+    public void getAcquaintance (String user, Map<String, Integer> listOfScore, List<String> userFriends, List<List<String>> friends) {
         final int acquaintanceScore = 10;
         for (String friendId: userFriends) {
             List<String> acquaintanceList = getUserFriends(friendId, friends);
@@ -43,7 +44,7 @@ public class Problem7 {
         }
     }
 
-    public static void getVisitorScore (Map<String, Integer> listOfScore, List<String> visitors, List<String> userFriends) {
+    public void getVisitorScore (Map<String, Integer> listOfScore, List<String> visitors, List<String> userFriends) {
         final int visitorScore = 1;
         for(String visitor: visitors) {
             if(!userFriends.contains(visitor)) {
@@ -52,11 +53,11 @@ public class Problem7 {
         }
     }
 
-    public static void setScore (Map<String, Integer> listOfScore, String userId, Integer score){
+    public void setScore (Map<String, Integer> listOfScore, String userId, Integer score){
         listOfScore.put(userId, listOfScore.getOrDefault(userId, 0) + score);
     }
 
-    public static List<Map.Entry<String, Integer>>  getSortedListOfScore(Map<String, Integer> listOfScore) {
+    public List<Map.Entry<String, Integer>>  getSortedListOfScore(Map<String, Integer> listOfScore) {
         List<Map.Entry<String, Integer>> entryList = new LinkedList<>(listOfScore.entrySet());
         entryList.sort(new Comparator<Map.Entry<String, Integer>>() {
             @Override
@@ -71,7 +72,7 @@ public class Problem7 {
         return entryList;
     }
 
-    public static Integer sortedWithKey(Map.Entry<String, Integer> user1, Map.Entry<String, Integer> user2) {
+    public Integer sortedWithKey(Map.Entry<String, Integer> user1, Map.Entry<String, Integer> user2) {
         String user1Key = user1.getKey();
         String user2Key = user2.getKey();
         int n = 0;
@@ -81,7 +82,7 @@ public class Problem7 {
         return user1Key.charAt(n) - user2Key.charAt(n);
     }
 
-    public static List<String> getTopFive(List<Map.Entry<String, Integer>> entryList) {
+    public List<String> getTopFive(List<Map.Entry<String, Integer>> entryList) {
         List<String> recommendList = new ArrayList<>();
         int numOfPeople = Math.min(entryList.size(), 5);
         for(int i = 0; i < numOfPeople; i++) {
