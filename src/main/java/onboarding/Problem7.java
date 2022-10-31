@@ -47,5 +47,15 @@ public class Problem7 {
         }
     }
 
+    private static void findVisitors(List<String> visitors) {
+        for (String visitor : visitors) {
+            if (recommendDict.containsKey(visitor)) {
+                recommendDict.put(visitor, recommendDict.get(visitor) + 1);
+            } else {
+                recommendDict.put(visitor, 1);
+            }
+        }
+    }
+
 
 }
