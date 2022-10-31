@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -76,7 +75,12 @@ public class Problem7 {
 		scoreOfRecommendation.entrySet().removeIf(entry -> entry.getValue() == 0);
 
 		List<String> sortedRecommendation = new ArrayList<>(scoreOfRecommendation.keySet());
-		sortedRecommendation.sort((a, b) -> scoreOfRecommendation.get(b) - scoreOfRecommendation.get(a));
+		sortedRecommendation.sort((a, b) -> {
+			if (scoreOfRecommendation.get(a).equals(scoreOfRecommendation.get(b))) {
+				return a.compareTo(b);
+			}
+			return scoreOfRecommendation.get(b) - scoreOfRecommendation.get(a);
+		});
 
 		return sortedRecommendation;
 	}
