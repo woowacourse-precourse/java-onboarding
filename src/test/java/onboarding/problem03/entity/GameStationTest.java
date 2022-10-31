@@ -1,10 +1,7 @@
 package onboarding.problem03.entity;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-import onboarding.problem03.infra.GameNumberOutOfRange;
+import onboarding.problem03.infra.exception.GameNumberOutOfRange;
 import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
 

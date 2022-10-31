@@ -1,4 +1,4 @@
-package onboarding.problem03.infra;
+package onboarding.problem03.infra.exception;
 
 public class GameNumberOutOfRange extends IllegalArgumentException {
 
