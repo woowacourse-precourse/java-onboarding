@@ -15,7 +15,6 @@ public class Problem6 {
 
     }
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer;
         List<String> emails = new ArrayList<>();
         Map<String, String> subNickNames = new HashMap<>();
 
@@ -39,9 +38,12 @@ public class Problem6 {
                 subNickNames.put(subNickname, user.email);
             }
         }
-        answer = emails.stream().distinct().collect(Collectors.toList());
-        Collections.sort(answer);
-        return answer;
+
+        return removeDuplicateAndSort(emails);
     }
 
+    private static List<String> removeDuplicateAndSort(List<String> emails) {
+        List<String> deduplicatedEmails = emails.stream().distinct().collect(Collectors.toList());
+        Collections.sort(deduplicatedEmails);
+    }
 }
