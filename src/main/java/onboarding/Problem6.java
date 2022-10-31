@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Problem6 {
@@ -33,9 +34,24 @@ public class Problem6 {
     private static List<String> keyCheck(List<String> answer, List<List<String>> forms, String key){
         for(int i = 0; i < forms.size(); i++){
             if(forms.get(i).get(1).contains(key)){
-                answer.add(forms.get(i).get(0));
+                answer = overlapCheck(answer, forms.get(i).get(0));
             }
         }
         return answer;
+    }
+
+    private static List<String> overlapCheck(List<String> emailList, String email){
+        if(emailList.size() == 0) {
+            emailList.add(email);
+        }
+        if(emailList.size() != 0) {
+            for (int i = 0; i < emailList.size(); i++) {
+                if (emailList.get(i) == email) {
+                    return emailList;
+                }
+            }
+            emailList.add(email);
+        }
+        return emailList;
     }
 }
