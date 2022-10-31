@@ -43,7 +43,9 @@ class Players {
 
         playerList.sort(Collections.reverseOrder());
 
-        Set<Integer> scoreSet = playerList.stream().map(Player::getScore).collect(Collectors.toSet());
+        Set<Integer> scoreSet = playerList.stream()
+                .map(Player::getScore)
+                .collect(Collectors.toSet());
 
         if (scoreSet.size() == 1) {
             return ResultCode.DRAW.getCode();
@@ -64,8 +66,12 @@ class Player implements Comparable<Player> {
     }
 
     public void initScore() {
-        if (pageResult.size() != 2) throw new IllegalArgumentException("페이지 개수는 2개여야 한다.");
-        if (pageResult.get(0) + 1 != pageResult.get(1)) throw new IllegalArgumentException("페이지는 연속되어야 한다.");
+        if (pageResult.size() != 2){
+            throw new IllegalArgumentException("페이지 개수는 2개여야 한다.");
+        }
+        if (pageResult.get(0) + 1 != pageResult.get(1)){
+            throw new IllegalArgumentException("페이지는 연속되어야 한다.");
+        }
 
         int max = Integer.MIN_VALUE;
 
