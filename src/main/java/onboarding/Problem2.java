@@ -1,8 +1,6 @@
 package onboarding;
 
-import onboarding.pkgProblem2.decryptionService;
-
-import java.util.Stack;
+import onboarding.pkgProblem2.service.decryptionService;
 
 /**
  * 중복문자를 이용한 암호문을 복호화하는 문제
