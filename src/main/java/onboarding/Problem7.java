@@ -33,5 +33,9 @@ public class Problem7 {
         return false;
     }
 
-
+    //추천리스트에 사람 추가
+    public static HashMap<String,Integer> addRecommandList(String userId, int score, HashMap<String,Integer> recommandList){
+        recommandList.put(userId, score);
+        return recommandList;
+    }
 }
