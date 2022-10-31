@@ -1,6 +1,5 @@
 package onboarding;
 
-import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
@@ -9,9 +8,9 @@ class Problem1 {
         int crongScore = findUserScore(crong);
 
         /*
-        * 어떤 경우가 예외인지 한눈에 확인하기 힘들다.
-        * 최소한 내부 메서드로 빼던가 밖으로 뺏던 메소드를 다시 넣어야할 것 같다.
-        */
+         * 어떤 경우가 예외인지 한눈에 확인하기 힘들다.
+         * 최소한 내부 메서드로 빼던가 밖으로 뺏던 메소드를 다시 넣어야할 것 같다.
+         */
         if (Problem1Exception.isException(pobi)) {
             return -1;
         }
@@ -44,22 +43,16 @@ class Problem1 {
     }
 
     private static int sumAllNumbersInPage(int page) {
-        int result = 0;
-        for (Integer number : Util.changeIntToIntList(page)) {
-            result = result + number;
-        }
-        return result;
+        return Util.changeIntToIntList(page).stream()
+                .mapToInt(number -> number)
+                .sum();
     }
 
     private static int multiplyAllNumbersInPage(int page) {
-        int result = 1;
-        for (Integer number : Util.changeIntToIntList(page)) {
-            result = result * number;
-        }
-        return result;
+        return Util.changeIntToIntList(page).stream()
+                .mapToInt(number -> number)
+                .reduce(1, (a, b) -> a * b);
     }
-
-
 
 
 }
