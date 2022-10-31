@@ -8,7 +8,7 @@ public class Problem3 {
 
         for (int i = 1; i <= number; i++) {
             String[] numberArr = String.valueOf(i).split("");
-            if(checkNumber(numberArr)) {
+            if (checkNumber(numberArr)) {
                 answer += countClap(numberArr);
             }
         }
@@ -19,7 +19,7 @@ public class Problem3 {
     // 각 숫자에 3,6,9가 듣어가는지 확인하는 메서드
     static boolean checkNumber(String[] numberArr) {
         for (int i = 0; i < numberArr.length; i++) {
-            if(numberArr[i].equals("3") || numberArr[i].equals("6") || numberArr[i].equals("9")) {
+            if (numberArr[i].equals("3") || numberArr[i].equals("6") || numberArr[i].equals("9")) {
                 return true;
             }
         }
@@ -30,7 +30,7 @@ public class Problem3 {
     static int countClap(String[] numberArr) {
         int cnt = 0;
         for (int i = 0; i < numberArr.length; i++) {
-            if(numberArr[i].equals("3") || numberArr[i].equals("6") || numberArr[i].equals("9")) {
+            if (numberArr[i].equals("3") || numberArr[i].equals("6") || numberArr[i].equals("9")) {
                 cnt++;
             }
         }
