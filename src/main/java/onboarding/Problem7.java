@@ -1,6 +1,8 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -39,10 +41,61 @@ public class Problem7 {
         }
     }
 
-    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+    static List<String> createFriendsList(String user, List<List<String>> friends, List<String> alreadyFriends) {
+        for (int i = 0; i < friends.size(); i++) {
+            for (int j = 0; j <= 1; j++) {
+                if (friends.get(i).get(j).contains(user) && j == 0) {
+                    alreadyFriends.add(friends.get(i).get(1));
+                } else if (friends.get(i).get(j).contains(user) && j == 1) {
+                    alreadyFriends.add(friends.get(i).get(0));
+                }
+            }
+        }
+        return alreadyFriends;
+    }
 
+    static HashMap<String, Integer> friendsScore(String user, List<List<String>> friends, List<String> alreadyFriends, HashMap<String, Integer> friendsRecommendation) {
+        createFriendsList(user, friends, alreadyFriends);
+
+        for (int i = 0; i < alreadyFriends.size(); i++) {
+            for (int j = 0; j < friends.size(); j++) {
+                for (int k = 0; k <= 1; k++) {
+                    if (friends.get(j).get(k).contains(alreadyFriends.get(i)) && k == 0
+                            && friends.get(j).get(1) != user) {
+                        if (isContains(i, j, friends, friendsRecommendation)) {
+                            friendsRecommendation.put(friends.get(j).get(1), friendsRecommendation.get(friends.get(j).get(1)) + 10);
+                        } else {
+                            friendsRecommendation.put(friends.get(j).get(1), 10); // 없다면
+                        }
+
+                    } else if (friends.get(j).get(k).contains(alreadyFriends.get(i)) && k == 1
+                            && friends.get(j).get(0) != user) {
+                        if (isContains(i, j, friends, friendsRecommendation))
+                            friendsRecommendation.put(friends.get(j).get(0), friendsRecommendation.get(friends.get(j).get(1)) + 10);
+                        } else {
+                            friendsRecommendation.put(friends.get(j).get(0), 10); // (j)(0)를 넣어줘라
+                        }
+                    }
+                }
+            }
+        return friendsRecommendation;
+    }
+
+    static boolean isContains(int i, int j, List<List<String>> friends, HashMap<String, Integer> friendsRecommendation) {
+        if (friendsRecommendation.containsKey(friends.get(j).get(1))) {
+            return true;
+        }
+        return false;
+    }
+
+    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        List<String> answer = new ArrayList<>();
+        HashMap<String, Integer> friendsRecommendation = new HashMap<>();
+        List<String> alreadyFriends = new ArrayList<>(); // 이건 확인용(이미 친구)
         isCheck(user, friends, visitors);
+
+        friendsScore(user, friends, alreadyFriends, friendsRecommendation);
+
         return answer;
     }
 }
