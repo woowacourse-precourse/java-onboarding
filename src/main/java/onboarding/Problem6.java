@@ -12,6 +12,10 @@ public class Problem6 {
         // 2. 수집한 Token을 사용하여 유사 닉네임을 가진 신청정보의 index Set을 구성함
         HashSet<Integer> idxSet = getDuplCaseId(tokens, forms);
 
+        // 3. 구성한 index Set을 사용하여 중복되는 신청정보의 email을 수집함
+        for (int id : idxSet)
+            answer.add(forms.get(id).get(0));
+
         return answer;
     }
 
