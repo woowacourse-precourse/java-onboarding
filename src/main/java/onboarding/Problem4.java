@@ -23,7 +23,7 @@ public class Problem4 {
      * @return 바뀐 문자입니다. 영문자가 아닌 경우 그대로 반환합니다.
      * */
     private static String encryptCharacter(char letter) {
-        if (isAlphabet(letter) == false) {
+        if (!isAlphabet(letter)) {
             return String.valueOf(letter);
         }
         char oppositeLetter = getOppositeAlphabet(letter);

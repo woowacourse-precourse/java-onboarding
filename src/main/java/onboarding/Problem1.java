@@ -11,13 +11,13 @@ class Problem1 {
      * @param pageNumbers 두 개의 페이지 배열입니다.
      * @return 두 페이지 배열이 모두 유효하면 참, 아니면 거짓을 반환합니다.
      * */
-    private static boolean isValidInput(List[] pageNumbers) {
+    private static boolean isValidInput(List<List<Integer>> pageNumbers) {
 
         for(List<Integer> pages: pageNumbers) {
             boolean valid =
                 hasTwoElements(pages) &&
                 hasValidNumbers(pages);
-            if(valid == false) {
+            if(!valid) {
                 return false;
             }
         }
@@ -62,10 +62,10 @@ class Problem1 {
      * @param pageNumbers 두 개의 페이지 배열입니다.
      * @return 자연수 배열이 포함된 배열을 반환합니다.
      * */
-    private static List<List> convertIntoSplitPageNumbers(List[] pageNumbers) {
-        List<List> splitPageNumbers = new ArrayList<>();
+    private static List<List<List<Integer>>> convertIntoSplitPageNumbers(List<List<Integer>> pageNumbers) {
+        List<List<List<Integer>>> splitPageNumbers = new ArrayList<>();
         for (List<Integer> pages: pageNumbers) {
-            List<List> splitPages = new ArrayList<>();
+            List<List<Integer>> splitPages = new ArrayList<>();
             for (int number: pages) {
                 List<Integer> splitNumber = splitByDigit(number);
                 splitPages.add(splitNumber);
@@ -96,9 +96,9 @@ class Problem1 {
      * @param splitPageNumbers 두 개의 페이지 배열입니다.
      * @return 무승부는 0, 포비의 승리는 1, 크롱의 승리는 2입니다.
      * */
-    private static int findWinner(List<List>  splitPageNumbers) {
-        List<List> splitPobi = splitPageNumbers.get(0);
-        List<List> splitCrong = splitPageNumbers.get(1);
+    private static int findWinner(List<List<List<Integer>>>  splitPageNumbers) {
+        List<List<Integer>> splitPobi = splitPageNumbers.get(0);
+        List<List<Integer>> splitCrong = splitPageNumbers.get(1);
 
         int pobiMax = getBiggerNumber(addNumbers(splitPobi.get(0)), multiplyNumbers(splitPobi.get(1)));
         int crongMax = getBiggerNumber(addNumbers(splitCrong.get(0)), multiplyNumbers(splitCrong.get(1)));
@@ -162,12 +162,12 @@ class Problem1 {
      * */
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        List[] pageNumbers = {pobi, crong};
-        if (isValidInput(pageNumbers) == false) {
+        List<List<Integer>> pageNumbers = List.of(pobi, crong);
+        if (!isValidInput(pageNumbers)) {
             return -1;
-        };
+        }
 
-        List<List> splitPageNumbers = convertIntoSplitPageNumbers(pageNumbers);
+        List<List<List<Integer>>> splitPageNumbers = convertIntoSplitPageNumbers(pageNumbers);
         int result = findWinner(splitPageNumbers);
 
         return result;
