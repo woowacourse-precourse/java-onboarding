@@ -19,8 +19,6 @@ public class Problem7 {
         // 방문 횟수 => 1점 추가
         calculateVisitingCountPoint(myUser, visitors, friendPoint, myFriendList);
 
-        Comparator compare = Map.Entry.<String, Integer>comparingByValue();
-
         return friendPoint.entrySet().stream()
                 .sorted(Comparator.comparing(Map.Entry<String, Integer> ::getValue).reversed() // 점수 큰 순
                         .thenComparing(Map.Entry<String, Integer>::getKey)) // 사전 순
