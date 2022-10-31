@@ -7,7 +7,7 @@ public class Problem2 {
         return answer;
     }
 
-    public static StringBuilder changeToStringBuilder(String crpytogram) {
+    public static StringBuilder toStringBuilder(String crpytogram) {
         StringBuilder stringBuilder = new StringBuilder(crpytogram);
         return stringBuilder;
     }
@@ -37,7 +37,7 @@ public class Problem2 {
     }
 
     public static StringBuilder decrypt(String cryptogram) {
-        StringBuilder stringBuilderCryptogram = changeToStringBuilder(cryptogram);
+        StringBuilder stringBuilderCryptogram = toStringBuilder(cryptogram);
         for (int i = 0; i < stringBuilderCryptogram.length() - 1; i++) {
             if (isDuplicate(stringBuilderCryptogram, i)) {
                 int range = getDuplicateRange(stringBuilderCryptogram, i);
