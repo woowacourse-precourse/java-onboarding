@@ -35,7 +35,7 @@ public class Problem7 {
      * 친구 관계에 점수를 더한다.
      *
      * @param recommendScore 친구 추천 점수
-     * @param friend         SNS 친구 관계
+     * @param friend         친구
      * @param score          점수
      */
     private static void addRecommendScore(Map<String, Long> recommendScore, String friend, long score) {
