@@ -35,14 +35,11 @@ class Problem1 {
     private static boolean pageErrorChecking(List<Integer> pobi, List<Integer> crong) {
        if(pobi.get(1) - pobi.get(0) != 1) {
            return true;
-       }
-       if(crong.get(1) - crong.get(0) != 1) {
+       }else if(crong.get(1) - crong.get(0) != 1) {
            return true;
-       }
-       if(pobi.contains(1) || pobi.contains(400)) {
+       }else if(pobi.contains(1) || pobi.contains(400)) {
            return true;
-       }
-        if(crong.contains(1) || crong.contains(400)) {
+       }else if(crong.contains(1) || crong.contains(400)) {
             return true;
         }
        return false;
@@ -51,7 +48,6 @@ class Problem1 {
     private static int compareScore(int score) {
         return Math.max(sumOfDigits(score), multiplicationOfDigits(score));
     }
-
     //TODO(페이지 번호의 각 숫자를 모두 더하는 함수)
     private static int sumOfDigits(int pageNumber) {
         int result = 0;
