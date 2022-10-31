@@ -12,6 +12,10 @@ class Problem1 {
             return answer;
         }
 
+        // 1. 포비와 그롱의 점수를 구함
+        int pobiScore = getScore(pobi);
+        int crongScore = getScore(crong);
+
         return answer;
     }
 
@@ -38,5 +42,12 @@ class Problem1 {
             pageNum /= 10;
         }
         return mult;
+    }
+
+    // 주어진 페이지 정보를 바탕으로 해당 사람의 점수를 구함
+    private static int getScore(List<Integer> pages) {
+        int left = Math.max(allSum(pages.get(0)), allMult(pages.get(1)));  // 왼쪽 페이지의 점수
+        int right = Math.max(allSum(pages.get(0)), allMult(pages.get(1))); // 오른쪽 페이지의 점수
+        return Math.max(left, right);
     }
 }
