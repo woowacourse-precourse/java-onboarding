@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Problem7 {
-    private static class Friend {
+    public static class Friend {
         private int score;
         private String name;
 
@@ -25,6 +25,12 @@ public class Problem7 {
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        // 예외처리
+        checkUserLength(user);
+        checkFriendsLength(friends);
+        checkID(friends);
+        checkVisitors(visitors);
+
         // 0. 필요한 변수 생성
         List<Friend> result = new ArrayList<>(); // 최종 결과를 담아놓는 Friend 타입의 리스트
         List<String> friends10 = new ArrayList<>(); // user 의 친구의 친구들을 담아놓는 리스트
@@ -141,6 +147,38 @@ public class Problem7 {
 
     }
 
+    // 예외처리
+    private static void checkUserLength(String user) throws IllegalArgumentException {
+        if(!(user.length() >= 1 && user.length() <= 30)) {
+            throw new IllegalArgumentException("user 은 길이가 1 이상 30 이하인 문자열입니다.");
+        }
+    }
+
+    private static void checkFriendsLength(List<List<String>> friends) throws IllegalArgumentException {
+        if(!(friends.size() >= 1 && friends.size() <= 10_000)) {
+            throw new IllegalArgumentException("friends 의 길이는 1 이상 10,000 이하이어야 합니다.");
+        }
+    }
+    // ID 관련 제한 사항 : 아이디 길이, 알파벳 소문자만
+    private static void checkID(List<List<String>> friends) throws IllegalArgumentException {
+        for(int i = 0; i<friends.size(); i++) {
+            boolean alpha = !(friends.get(i).get(0).matches("^[a-z]*$") && friends.get(i).get(1).matches("^[a-z]*$"));
+            boolean length = !((friends.get(i).get(0).length() >= 1 && friends.get(i).get(0).length() <= 30) &&
+                    (friends.get(i).get(1).length() >= 1 && friends.get(i).get(1).length() <= 30));
+            if(alpha) {
+                throw new IllegalArgumentException("ID 값은 알파벳 소문자만 가능합니다.");
+            }
+            if(length) {
+                throw new IllegalArgumentException("ID 글자수는 1 이상 30 이하여야 합니다.");
+            }
+        }
+    }
+    // visitors 길이 제한 사항
+    private static void checkVisitors(List<String> visitors) throws IllegalArgumentException {
+        if(!(visitors.size() <= 10_000)) {
+            throw new IllegalArgumentException("visitors 의 수는 0 이상 10,000 이하여야 합니다.");
+        }
+    }
 
 
 }
