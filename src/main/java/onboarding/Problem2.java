@@ -12,7 +12,7 @@ public class Problem2 {
         //중복문자가 존재할시 while문 반복
         while(isDuplicate(answer)){
             //중복문자가 존재할시 중복문자 제거
-            //answer = removeDuplicate(answer);
+            answer = removeDuplicate(answer);
         }
 
         return answer;
