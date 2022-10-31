@@ -32,7 +32,7 @@ public class Problem2 {
                 answer = answer.substring(0, answer.length() - 1);
             }
 
-            if(cryptogram.equals(answer)){
+            if(cryptogram.equals(answer)||answer.length()==0){
                 flag = false;
             }
             else{
