@@ -23,4 +23,10 @@ class User {
         return id;
     }
 
+    static void validateIdLength(String id) {
+        if (id.length() < 1 || 30 < id.length()) {
+            throw new IllegalStateException("id는 1이상 30이하의 문자열로 입력해주세요");
+        }
+    }
+
 }
