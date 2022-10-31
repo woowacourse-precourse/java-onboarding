@@ -2,6 +2,28 @@ package onboarding;
 
 import java.util.*;
 
+
+class CheckException{
+    public boolean check(List<Integer> pobi, List<Integer> crong){
+        boolean response = true;
+        int pobi_left = pobi.get(0);
+        int pobi_right = pobi.get(1);
+        int crong_left = crong.get(0);
+        int crong_right = crong.get(1);
+
+        if (pobi_left<1 || pobi_right>400 || crong_left<1 || crong_right>400) response=false;
+
+        if (pobi_left%2 != 1 || pobi_right%2 != 0 || crong_left%2 != 1 || crong_right%2 != 0) response=false;
+
+        if (pobi_left+1 != pobi_right || crong_left+1 != crong_right) response=false;
+
+        return response;
+    }
+}
+
+class Game{
+
+}
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         /*
@@ -12,22 +34,18 @@ class Problem1 {
         4. pobi,crong의 덧셈/곱셈 중 최대값 구하기
         5. pobi,crong중 큰 값을 탐색하고, 이에 맞는 answer값 할당 후 return.
         * */
+
+        HashMap<String,Integer> map = new HashMap<>();
+        map.put("pobi",1);
+        map.put("crong",2);
+        map.put("same",0);
+        map.put("exception",-1);
+
         int answer = Integer.MAX_VALUE;
 
-        //예외 사항 처리 1,2번
-        if (pobi.get(0) %2==1 && pobi.get(1) %2==0 && crong.get(0) %2==1 && crong.get(1) %2==0 ){
-            if ((pobi.get(0)+1) != pobi.get(1) || (crong.get(0)+1) != crong.get(1)){
-                //예외사항 넘김.
-                return -1;
-            }
-        }
-        else{
-            return -1;
-        }
-        //예외 사항 처리 3번
-        if (pobi.get(0)==1 || pobi.get(1)==400 || crong.get(0)==1 || crong.get(1)==400){
-            return -1;
-        }
+        //예외사항처리
+        CheckException ce = new CheckException();
+        if (!ce.check(pobi,crong)) return map.get("exception");
 
         ArrayList<String> pobi_string = new ArrayList<>();
         ArrayList<String> crong_string = new ArrayList<>();
