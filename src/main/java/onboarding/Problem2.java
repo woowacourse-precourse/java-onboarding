@@ -1,8 +1,11 @@
 package onboarding;
 
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
@@ -11,11 +14,15 @@ public class Problem2 {
     }
 
     static String getPattern(String cryptogram){
-        String pattern = "";
-        Set<String> tokenSet = Set.of(cryptogram.split(""));
-        String tokenString = String.join("", tokenSet);
+        if (cryptogram.length() == 0) {
+            return "";
+        }
+        List<String> tokenList = List.of(cryptogram.split(""));
+        Set<String> tokenSet = new HashSet<>(tokenList);
+        Stream<String> patternStream = tokenSet.stream().map(token -> token + "{2,}");
 
-        pattern = "[" + tokenString + "]{2}";
+        List<String> patternList = patternStream.collect(Collectors.toList());
+        String pattern = String.join("|", patternList);
 
         return pattern;
     }
