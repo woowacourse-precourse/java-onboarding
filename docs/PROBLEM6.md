@@ -21,3 +21,24 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+---
+
+## 도메인 목록
+### DuplicateNicknameDetector
+- 유저 닉네임 중복을 관리하는 저장소 클래스
+#### 멤버
+**- duplicateNicknameOwnerEmails**
+  - 현재까지 닉네임이 중복된 유저의 이메일을 저장하는 컬렉션
+
+
+**- slicedNicknameStorage**
+  - 닉네임을 2글자씩 잘라 해시한 저장소(닉네임 : 이메일)
+     
+    
+    void registerUserAndUpdateDuplicate(List<String> userInfo)
+- 신규 유저를 등록 및 닉네임 중복 발생 시 duplicateNicknameOwnerEmails 갱신하는 메서드
+
+    
+    List<String> getDuplicateNicknameOwnerEmails()
+-  현재까지 닉네임이 중복된 유저의 이메일을 리스트 형태로 반환하는 메서드
