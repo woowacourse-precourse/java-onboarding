@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -17,6 +18,8 @@ import java.util.stream.Collectors;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+        List<String> toBeRemoved = findFriendOfUser(user, friends);
+        toBeRemoved.add(user);
         return answer;
     }
 
@@ -43,5 +46,13 @@ public class Problem7 {
         recommendedFriends.addAll(friendOfFriend);
         recommendedFriends.addAll(visitors);
         return recommendedFriends.stream().distinct().collect(Collectors.toList());
+    }
+
+    private static HashMap<String, Integer> getRecommendedFriendScore(List<String> recommendedFriends) {
+        HashMap<String, Integer> recommendedFriendScore = new HashMap<>();
+        for (String recommendedFriend : recommendedFriends) {
+            recommendedFriendScore.put(recommendedFriend, 0);
+        }
+        return recommendedFriendScore;
     }
 }
