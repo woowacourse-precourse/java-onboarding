@@ -43,9 +43,11 @@ class Result {
     public void changeUpperAndLower(){
         for(char wordChar:wordArray){
             if(isAlphaLower(wordChar)){
+                char replaceChar= (char)(155-(int)wordChar);
                 toUpperCase(wordChar);
             }
             if(isAlphaUpper(wordChar)){
+                char replaceChar= (char)(219-(int)wordChar);
                 toLowerCase(wordChar);
             }
         }
