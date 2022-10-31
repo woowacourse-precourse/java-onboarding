@@ -18,9 +18,7 @@ public class Player {
     }
 
     public Integer number() {
-        Integer sum      = leftPage.sum() + rightPage.sum();
-        Integer multiple = leftPage.multiple() * rightPage.multiple();
-        return Math.max(sum, multiple);
+        return Math.max(leftPage.number(), rightPage.number());
     }
 
     // 2번째 값이 1번째보다 1커야만 합니다.
