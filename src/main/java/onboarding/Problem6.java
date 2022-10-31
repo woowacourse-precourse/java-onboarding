@@ -12,15 +12,13 @@ public class Problem6 {
 
         // 해시맵에 key - 이름, value - 이메일로 한다음에
         Map<String, String> formMaps = p.insertMap(forms);
-        System.out.println("이메일 : " + formMaps.get("제이엠"));
+
         // 어레이리스트에 이름만 저장
         String[] names = p.seperateName(forms);
         Set<String> overlapName = p.overlap(names);
         for (String s : overlapName) {
-            System.out.println(s);
             answer.add(formMaps.get(s));
         }
-
         answer.sort(Comparator.naturalOrder());
 
         // 반복문 돌리면서 해보자.
