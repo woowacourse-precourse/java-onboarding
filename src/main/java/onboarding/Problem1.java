@@ -7,7 +7,7 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
 
         int pobiScore = getMaxScore(pobi.get(0), pobi.get(1));
-        int crongScore = getMaxScore(pobi.get(0), pobi.get(1));
+        int crongScore = getMaxScore(crong.get(0), crong.get(1));
 
         if(pobiScore == -1 || crongScore == -1) {
             answer = -1;
