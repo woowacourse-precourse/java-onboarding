@@ -27,8 +27,6 @@ class Problem1 {
                     maxC = crongArr[i];
             }
 
-            System.out.println(maxP);
-            System.out.println(maxC);
             if(maxP == maxC)
                 answer = 0;
             else if (maxP > maxC)
