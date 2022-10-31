@@ -9,6 +9,15 @@ public class Problem7 {
     }
 
     /**
+     * user에게 추천할 수 있는 사람들을 모아 map으로 반환하는 함수
+     */
+    private static Map<String,Integer> recommendationFriendsMap(String user, List<List<String>> friends){
+        List<String> userFriendList = userFriends(user, friends);
+        Map<String, Integer> friendsMap = listToMap(friends);
+        return removeKnown(friendsMap,userFriendList,user);
+    }
+
+    /**
      * user의 친구들을 반환하는 함수
      */
     private static List<String> userFriends(String user, List<List<String>> friends){
