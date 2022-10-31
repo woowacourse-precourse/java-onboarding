@@ -37,6 +37,10 @@ class Translation{
         final char LAST_CAPITAL_LETTER='Z';
         return ((int)letter)>=((int)LAST_CAPITAL_LETTER);
     }
+    boolean isAlphabet(char alphabet){
+        String letter= String.valueOf(alphabet);
+        return letter.matches("^[a-zA-Z]*$");
+    }
 }
 public class Problem4 {
     public static String solution(String word) {
