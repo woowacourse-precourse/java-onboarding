@@ -16,11 +16,16 @@ class Problem1 {
     private static boolean checkValidPage(List<Integer>...list) {
         for (int i = 0; i < list.length; i++) {
             if (isNotConsecutiveNumber(list[i])) return false;
+            if (isNotEvenNumber(list[i].get(1))) return false;
         }
         return true;
     }
     // 두 페이지가 연속된 숫자인지 판별하는 기능
     private static boolean isNotConsecutiveNumber(List<Integer> list) {
         return list.get(1) - list.get(0) != 1;
+    }
+    // 왼쪽 페이지가 짝수인지 판별하는 기능
+    private static boolean isNotEvenNumber(int number) {
+        return number % 2 != 0;
     }
 }
