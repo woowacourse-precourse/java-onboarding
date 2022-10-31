@@ -15,6 +15,12 @@ class Problem1 {
 
     }
 
+    private static int getBiggerNumberAtAddOrMultiply(int number) {
+        int[] oneLetterNumbers = getOneLetterNumbers(number);
+
+        return Math.max(addNumbers(oneLetterNumbers), multiplyNumbers(oneLetterNumbers));
+    }
+
     /**
      * 입력된 모든 숫자 더하기
      * @param numbers 숫자 집합
