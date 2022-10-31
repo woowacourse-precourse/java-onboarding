@@ -5,7 +5,7 @@ public class Problem2 {
         String answer = "";
         Cryptogram cryptogram1 = new Cryptogram(cryptogram);
 
-        while(cryptogram1.isDuplicate()){
+        while (cryptogram1.isDuplicate()) {
             answer = cryptogram1.deleteDuplicate();
         }
 

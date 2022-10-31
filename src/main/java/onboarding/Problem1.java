@@ -9,7 +9,7 @@ class Problem1 {
         playerPobi = new PageGamePlayer(pobi);
         playerCrong = new PageGamePlayer(crong);
 
-        if(!playerCrong.isValid() || !playerPobi.isValid())
+        if (!playerCrong.isValid() || !playerPobi.isValid())
             return -1;
 
         return PageGame.winner(playerPobi.maxPageNum(), playerCrong.maxPageNum());

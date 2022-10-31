@@ -11,12 +11,12 @@ public class PageGamePlayer {
         this.rightPage = list.get(1);
     }
 
-    private void validPageList(List<Integer> pages){
+    private void validPageList(List<Integer> pages) {
         if (pages.size() != 2)
             throw new IllegalArgumentException("2개의 페이지를 입력해주세요.");
     }
 
-    public boolean isValid(){
+    public boolean isValid() {
         if (leftPage <= 0 || rightPage > 400)
             return false;
 
