@@ -69,6 +69,23 @@ public class Problem7 {
         return recommendFriendsList;
     }
 
+    static  Map<String, Integer> calVisitors(List<List<String>> friends, String user, List<String> visitors){
+        Map<String, Integer> recommendFriendsList = calFriendOfFriend(friends, user);
+        Map<String, Set<String>> friendsList = findFriends(friends);
+        List<String> userFriends = new ArrayList<>(friendsList.get(user));
+
+        for(int idx = 0; idx < visitors.size(); idx++){
+            String visitorName = visitors.get(idx);
+            if(recommendFriendsList.containsKey(visitorName))
+                recommendFriendsList.put(visitorName,recommendFriendsList.get(visitorName) + 1);
+            else{
+                if(userFriends.contains(visitorName)) continue;
+                recommendFriendsList.put(visitorName, 1);
+            }
+        }
+        return recommendFriendsList;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         
