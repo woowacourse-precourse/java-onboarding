@@ -1,6 +1,10 @@
 package onboarding;
 
+import org.assertj.core.data.MapEntry;
+import org.assertj.core.internal.ComparatorBasedComparisonStrategy;
+
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
 
@@ -49,8 +53,7 @@ public class Problem7 {
         return relation;
     }
 
-    public static List<String> findRecommendedFriends(String user, List<List<String>> friends, List<String> visitors) {
-        Map<String, Integer> recommendedFriedScore = new HashMap<>();
+    public static List<String> findRecommendedFriends(String user, List<List<String>> friends, List<String> visitors, Map<String, Integer> recommendedFriedScore) {
         Map<String, List<String>> relation = createRelation(friends);
         Set<String> userFriends = Set.copyOf(relation.get(user));
 
@@ -61,7 +64,13 @@ public class Problem7 {
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        Map<String, Integer> recommendedFriedScore = new HashMap<>();
 
-        return findRecommendedFriends(user, friends, visitors);
+        List<String> answer = findRecommendedFriends(user, friends, visitors, recommendedFriedScore);
+
+        return answer.stream()
+                .sorted()
+                .sorted((id1, id2) -> recommendedFriedScore.get(id2).compareTo(recommendedFriedScore.get(id1)))
+                .collect(Collectors.toList());
     }
 }
