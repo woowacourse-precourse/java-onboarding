@@ -3,6 +3,13 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
+    public static List<String> getTopFive(Map<String, Integer> scoreMap){
+        List<String> keyList = new ArrayList<>(scoreMap.keySet());
+        if(keyList.size()>5){
+            keyList=keyList.subList(0,5);
+        }
+        return keyList;
+    }
     public static Map<String, Integer> getVisitorScore( Map<String, List<String>> friendsMap,List<String> visitors,Map<String, Integer> scoreMap,String user){
         for(String visitor: visitors){
             if(!friendsMap.get(user).contains(visitor)){
@@ -48,11 +55,7 @@ public class Problem7 {
         }
         scoreMap=getFriendScore(friendsMap,scoreMap,user);
         scoreMap=getVisitorScore(friendsMap,visitors,scoreMap,user);
-        scoreMap=sortByValue(scoreMap);
-        List<String> keyList = new ArrayList<>(scoreMap.keySet());
-        if(keyList.size()>5){
-            keyList=keyList.subList(0,5);
-        }
-        return keyList;
+
+        return getTopFive(sortByValue(scoreMap));
     }
 }
