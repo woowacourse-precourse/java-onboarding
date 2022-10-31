@@ -1,8 +1,11 @@
 package onboarding;
 
+import java.lang.reflect.Field;
 import java.util.List;
 
 class Problem1 {
+    private static final int FIRST_PAGE = 1;
+    private static final int LAST_PAGE = 400;
     private static final int POBI_WIN = 1;
     private static final int CRONG_WIN = 2;
     private static final int DRAW = 0;
@@ -20,7 +23,8 @@ class Problem1 {
     }
 
     private static boolean isInvalidPages(List<Integer> pages) {
-        return pages.get(1) - pages.get(0) != 1 || pages.get(0) % 2 == 0 || pages.get(1) % 2 == 1;
+        return pages.get(0) < FIRST_PAGE || pages.get(1) > LAST_PAGE
+                || pages.get(1) - pages.get(0) != 1 || pages.get(0) % 2 == 0 || pages.get(1) % 2 == 1;
     }
 
     private static int getResult(List<Integer> pages) {
