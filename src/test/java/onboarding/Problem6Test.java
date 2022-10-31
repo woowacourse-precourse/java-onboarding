@@ -209,5 +209,18 @@ class Problem6Test {
             main = new Main();
             assertThat(main.makeCollectionCrews(forms)).isInstanceOf(Crews.class);
         }
+
+        @Test
+        @DisplayName("getAscendingEmailListFrom 메소드가 Crew 리스트에서 오름차순 정렬한 이메일 리스트를 반환하는지 확인한다")
+        void getAscendingEmailListFromTest() {
+            List<Crew> crewList = new ArrayList<>();
+            crewList.add(new Crew("jm@email.com", "제이엠"));
+            crewList.add(new Crew("jason@email.com", "제이슨"));
+            crewList.add(new Crew("mj@email.com", "엠제이"));
+
+            List<String> sortedEmailList = List.of("jason@email.com", "jm@email.com", "mj@email.com");
+            main = new Main();
+            assertThat(main.getAscendingEmailListFrom(crewList)).isEqualTo(sortedEmailList);
+        }
     }
 }
