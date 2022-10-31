@@ -5,6 +5,7 @@ public class Problem3 {
         return game369(number);
     }
 
+    // 369 게임 중 손뼉 치는 횟수 반환 함수
     static int game369(int number) {
         int count = 0;
         int j;

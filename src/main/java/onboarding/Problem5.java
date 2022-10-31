@@ -8,6 +8,7 @@ public class Problem5 {
         return convert(money);
     }
 
+    // 돈 변환하는 함수
     static List<Integer> convert(int money) {
         List<Integer> moneyCount =
                 new ArrayList<>(List.of(50000, 10000, 5000, 1000, 500, 100, 50, 10, 1));

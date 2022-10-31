@@ -10,6 +10,7 @@ public class Problem6 {
         return findDuplicateName(forms);
     }
 
+    // 같은 글자 연속으로 포함되는 닉네임 찾는 함수
     static List<String> findDuplicateName(List<List<String>> forms) {
         Set<String> duplicateName = new HashSet<>();
         List<String> result;
@@ -21,6 +22,7 @@ public class Problem6 {
             flag = 0;
             current = forms.get(i).get(1);
             for (int j = 0; j < current.length() - 1; j++) {
+                // 두 글자만 비교
                 currentName = current.substring(j,j+2);
                 for (int k = 0; k < forms.size(); k++) {
                     // 닉네임 1자인 사람 건너뛰기
@@ -33,6 +35,7 @@ public class Problem6 {
                     }
                 }
             }
+            // 자신과 중복된 닉네임이 있었다면 마지막에 자신의 이메일도 추가
             if (flag == 1) {
                 duplicateName.add(forms.get(i).get(0));
             }
