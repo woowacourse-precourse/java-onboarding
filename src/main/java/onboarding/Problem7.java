@@ -13,6 +13,7 @@ class UserInfo{
     private static final int MIMIMUM_SIZE_VISITOR = 0;
     private static final int MAXIMUM_SIZE_VISITOR = 10000;
     private static final String NOT_LOWERCASE_MESSAGE = "영어 소문자만 입력해주세요";
+    private static final String EMPTY_FRIENDSCASE_MESSAGE = "추천할 친구를 입력해주세요";
 
     void validateRange(String id){
         if(id.length() < MINIMUM_LENGTH_ID || id.length() > MAXIMUM_LENGTH_ID)
@@ -26,6 +27,10 @@ class UserInfo{
         if(!id.matches("^[a-z]*$")){
             throw new IllegalArgumentException(NOT_LOWERCASE_MESSAGE);
         }
+    }
+    void validateNoFriends(List<String> visitors){
+        if(visitors.isEmpty())
+            throw new IllegalArgumentException(EMPTY_FRIENDSCASE_MESSAGE);
     }
 }
 class Point{
