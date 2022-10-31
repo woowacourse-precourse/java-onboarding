@@ -18,8 +18,9 @@ public class Form {
 
     public HashSet<String> getAllUsedTwoWordsByNickname() {
         HashSet<String> twoWords = new HashSet<>();
-        for (int i = 0; i < this.nickname.length() - 1; i++) {
-            twoWords.add(this.nickname.substring(i, i + 2));
+        String nickname = this.nickname;
+        for (int i = 0; i < nickname.length() - 1; i++) {
+            twoWords.add(nickname.substring(i, i + 2));
         }
         return twoWords;
     }

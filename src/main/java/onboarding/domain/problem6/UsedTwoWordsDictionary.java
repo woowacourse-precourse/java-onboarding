@@ -10,10 +10,10 @@ public class UsedTwoWordsDictionary {
     private final Map<String, List<Form>> usedTwoWordsDictionary = new HashMap<>();
 
     public UsedTwoWordsDictionary(List<Form> forms) {
-        init(forms);
+        initDictionary(forms);
     }
 
-    private void init(List<Form> forms) {
+    private void initDictionary(List<Form> forms) {
         for (Form form : forms) {
             updateDictionary(form);
         }
