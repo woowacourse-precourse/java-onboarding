@@ -5,6 +5,7 @@ import java.util.*;
 public class Problem7 {
     static Map<String, Integer> score_friend = new HashMap<>();
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        
         List<String> user_friends = new ArrayList<>();
 
         for (List<String> relation : friends) {

@@ -51,7 +51,9 @@ class Problem1 {
     }
 
     static int max_score(Integer page) {
+
         List<Integer> new_list = new ArrayList<>();
+
         int sum = 0;
         int duplicate = 1;
         int number = page;
