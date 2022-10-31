@@ -127,11 +127,13 @@ public class Problem7 {
             }
         }
 
+        // 점수가 높은 순으로 정렬해준다. 점수가 같을 경우 이름순으로 졍렬되도록 한다.
         List<String> keySet_list = new ArrayList<>(friends_score.keySet());
         Collections.sort(keySet_list);
-
         Collections.sort(keySet_list, (o1, o2) -> (friends_score.get(o2).compareTo(friends_score.get(o1))));
+
         for(String key : keySet_list) {
+            // 점수가 0점이거나 5명이 된다면 반복문을 끝내고 answer를 반환한다.
             if (friends_score.get(key) == 0 || answer.size() == 5) {
                 break;
             }
