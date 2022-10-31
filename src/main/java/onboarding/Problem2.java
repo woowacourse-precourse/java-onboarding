@@ -9,7 +9,7 @@ public class Problem2 {
         stack = new Stack<>();
         sb = new StringBuilder();
         for(int i=0; i<cryptogram.length(); i++){
-            if(i == 0) {
+            if(i == 0 || stack.isEmpty()) {
                 stack.push(cryptogram.charAt(i));
                 continue;
             }
