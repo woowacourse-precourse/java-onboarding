@@ -11,16 +11,14 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        Problem7 problem7 = new Problem7();
+        List<String> answer = new ArrayList<>();
 
-        List<String> myFriends = problem7.getMyFriends(user, friends);
-        List<String> subFriends = problem7.getSubFriends(myFriends, friends);
-        HashMap<String, Integer> recommends = problem7.getRecommends(myFriends, subFriends, visitors);
-        List<Map.Entry<String, Integer>> sortedList = problem7.getSortedList(recommends);
+        List<String> myFriends = getMyFriends(user, friends);
+        List<String> friendsOfFriend = getFriendsOfFriend(myFriends, friends);
+        HashMap<String, Integer> recommends = getRecommends(myFriends, friendsOfFriend, visitors);
+        List<Map.Entry<String, Integer>> sortedList = getSortedList(recommends);
 
-        answer = new ArrayList<>();
-        int len = sortedList.size() < 5 ? sortedList.size() : 5;
+        int len = Math.min(sortedList.size(), 5);
         for (int i = 0; i < len; i++) {
             answer.add(sortedList.get(i).getKey());
         }
@@ -35,7 +33,7 @@ public class Problem7 {
      * @param friends 친구 관계 목록
      * @return user의 친구 목록을 반환
      */
-    List<String> getMyFriends(String user, List<List<String>> friends) {
+    static List<String> getMyFriends(String user, List<List<String>> friends) {
         List<String> myFriends = new ArrayList<>();
         myFriends.add(user);
 
@@ -61,7 +59,7 @@ public class Problem7 {
      * @param friends     친구 관계 목록
      * @return 친구의 친구 목록 반환
      */
-    List<String> getSubFriends(List<String> userFriends, List<List<String>> friends) {
+    static List<String> getFriendsOfFriend(List<String> userFriends, List<List<String>> friends) {
         List<String> subFriends = new ArrayList<>();
 
         for (List<String> friend : friends) {
@@ -82,7 +80,7 @@ public class Problem7 {
      * @param visitors   방문자 리스트
      * @return 추천 사용자의 이름과 점수 쌍들 반환
      */
-    HashMap<String, Integer> getRecommends(List<String> myFriends, List<String> subFriends, List<String> visitors) {
+    static HashMap<String, Integer> getRecommends(List<String> myFriends, List<String> subFriends, List<String> visitors) {
         HashMap<String, Integer> recommends = new HashMap<>();
 
         for (String friend : subFriends) {
@@ -114,7 +112,7 @@ public class Problem7 {
      * @param recommends 추천 사용자의 이름과 점수 쌍
      * @return 정렬한 key, value 리스트 반환
      */
-    List<Map.Entry<String, Integer>> getSortedList(HashMap<String, Integer> recommends) {
+    static List<Map.Entry<String, Integer>> getSortedList(HashMap<String, Integer> recommends) {
         Comparator<Map.Entry<String, Integer>> valueComparator =
                 Map.Entry.comparingByValue(Comparator.reverseOrder());
 
@@ -122,7 +120,7 @@ public class Problem7 {
                 Map.Entry.comparingByKey();
 
         List<Map.Entry<String, Integer>> sortedList = new LinkedList<>(recommends.entrySet());
-        Collections.sort(sortedList, valueComparator.thenComparing(keyComparator));
+        sortedList.sort(valueComparator.thenComparing(keyComparator));
 
         return sortedList;
     }
