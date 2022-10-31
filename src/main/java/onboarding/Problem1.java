@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 페이지 번호 게임
+ * 페이지 번호 게임 문제
  *
- * 게임 설명 :
+ * 문제 설명 :
  * 포비와 크롱이 페이지 번호가 1부터 시작되는 400 페이지의 책을 주웠다.
  * 책을 살펴보니 왼쪽 페이지는 홀수, 오른쪽 페이지는 짝수 번호이고 모든 페이지에는 번호가 적혀있었다.
  * 책이 마음에 든 포비와 크롱은 페이지 번호 게임을 통해 게임에서 이긴 사람이 책을 갖기로 한다.
@@ -25,7 +25,7 @@ import java.util.List;
  * - pobi와 crong에는 [왼쪽 페이지 번호, 오른쪽 페이지 번호]가 순서대로 들어있다.
  *
  * @author scyllacore
- * @version 1.00 2022/10/31
+ * @version 1.1 2022/10/31
  */
 
 class Problem1 {
@@ -36,7 +36,7 @@ class Problem1 {
      * 3-1. getBiggerCalculation : getSeparatedDigits에서 반환된 list를 가지고 score 계산.
      * 3-2. getBiggerPageScore : getBiggerCalculation에서 반환된 값을 가지고 최종 score 계산.
      * 4. solution : getBiggerPageScore을 통해 두 user의 최종 score를 비교하고 승부 결과 return.
-     * */
+     */
 
 
     /**
