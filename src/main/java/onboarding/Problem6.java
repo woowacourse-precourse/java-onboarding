@@ -35,6 +35,10 @@ public class Problem6 {
         return twoLetterNames;
     }
 
+    private static boolean checkDuplicateName(String twoLetterName) {
+        return (twoLetterNameForms.containsKey(twoLetterName));
+    }
+
     public static void validate(List<List<String>> forms) {
         validateFormSize(forms);
         validateEmail(forms);
