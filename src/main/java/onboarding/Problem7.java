@@ -26,6 +26,20 @@ public class Problem7 {
       }
     }
 
+    public static void calculateRelatedFriends(String user, HashMap<String, List<String>> friendsMap, HashMap<String, Integer> scoreMap){
+        if(!friendsMap.containsKey(user)){
+            return;
+        }
+
+        for(String friend : friendsMap.keySet()){
+            if(friend.equals(user)){
+                continue;
+            }
+            int numberOfRelatedFriends = countRelatedFriendsWithUser(user, friend, friendsMap);
+            addTenPoints(friend, numberOfRelatedFriends, scoreMap);
+        }
+    }
+
     public static int countRelatedFriendsWithUser(String user, String other, HashMap<String, List<String>> friendsMap){
         List<String> friendsOfUser = friendsMap.get(user);
         List<String> friendsOfOther = friendsMap.get(other);
