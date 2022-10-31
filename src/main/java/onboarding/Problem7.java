@@ -23,8 +23,8 @@ public class Problem7 {
         for(int index=0;index<friends.size();index++){
             String leftPerson = friends.get(index).get(0);
             String rightPerson = friends.get(index).get(1);
-            if(isAlreadyFriend(leftPerson,userFriend))friendRecommend.put(rightPerson,friendRecommend.getOrDefault(rightPerson,0)+10);
-            if(isAlreadyFriend(rightPerson,userFriend))friendRecommend.put(leftPerson,friendRecommend.getOrDefault(leftPerson,0)+10);
+            if(isAlreadyFriend(leftPerson,userFriend)&&!isAlreadyFriend(rightPerson,userFriend))friendRecommend.put(rightPerson,friendRecommend.getOrDefault(rightPerson,0)+10);
+            if(isAlreadyFriend(rightPerson,userFriend)&&!isAlreadyFriend(leftPerson,userFriend))friendRecommend.put(leftPerson,friendRecommend.getOrDefault(leftPerson,0)+10);
         }
         visitorFindRecommend(visitors,friendRecommend,userFriend);
         return friendRecommend;
