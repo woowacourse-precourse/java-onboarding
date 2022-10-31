@@ -50,13 +50,30 @@
 - [x] 같은 글자가 연속적으로 포함 되는 닉네임을 작성한 지원자의 이메일 목록 리스트로 반환
 - [x] 이메일 목록 리스트를 오름차순으로 정렬, 중복 제거 후 반환
 - [ ] 예외 사항을 체크해줄 Problem6ValidateChecker class
-  - [ ] etc...
+  - [ ] 크루 수가 0이거나, 10,000 초과인 경우
+  - [ ] 이메일 길이가 11자 미만이거나, 20자 초과인 경우
+  - [ ] 이메일의 도메인이 email.com이 아닌 경우
+  - [ ] 닉네임에 한글이 아닌 다른 문자가 포함된 경우
+  - [ ] 닉네임의 길이가 0이거나, 20자 이상인 경우
+  - [x] form이 null인 경우
+  - [ ] 닉네임이나, email이 null인 경우
+  - [ ] 이메일에 중복이 있는 경우
 
 ## 문제 7번
-- [ ] 사람 이름을 key, 점수를 value로 저장하는 friendScoreMap 생성
-- [ ] user와 현재 친구인 사람을 저장할  userFriendList를 생성
-- [ ] friend 리스트 중에서 userFriendList와 겹치는 값을 갖고 있는 사람을 탐색하여, friendScoreMap에서 + 10
-- [ ] visitor를 참조하여 friendScoreMap에 +1
-- [ ] friendScoreMap을 점수 기준으로 내림차순 정렬
-- [ ] 내림차순 정렬한 값을 리스트로 반환 후, userFriendList에 있는 값을 제외하고, 반환
+- [x] 사람 이름을 key, 점수를 value로 저장하는 friendScoreMap 생성
+- [x] user와 현재 친구인 사람을 저장할 userFriendList를 생성
+- [x] friend 리스트 중에서 userFriendList와 겹치는 값을 갖고 있는 사람을 탐색하여, friendScoreMap에서 + 10
+- [x] visitor를 참조하여 friendScoreMap에 +1
+- [x] friendScoreMap을 점수 기준으로 내림차순 정렬
+- [x] 내림차순 정렬한 값을 리스트로 반환 후, userFriendList에 있는 값을 제외하고, 반환
 - [ ] 예외 사항을 체크해줄 Problem7ValidateChecker class 추가
+  - [ ] user가 null인 경우
+  - [ ] user의 길이가 0이거나, 30초과인 경우
+  - [ ] frineds가 null인 경우
+  - [ ] friends의 길이가 0이거나, 10,000초과 인 경우
+  - [ ] 아이디가 null인 경우
+  - [ ] 아이디의 길이가 0이거나, 30초과인 경우
+  - [ ] visitor가 null인 경우
+  - [ ] visitor의 크기가 10,000초과 인 경우
+  - [ ] 아이디에 소문자 외의 문자가 포함 된 경우
+  - [ ] 중복된 친구관계가 있는 경우
