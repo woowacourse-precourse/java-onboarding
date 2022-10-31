@@ -5,4 +5,10 @@ public class Problem4 {
         String answer = "";
         return answer;
     }
+
+    // string을 한글자씩 분리하기
+    public static char[] splitStringArray(String word){
+        return word.toCharArray();
+    }
+
 }
