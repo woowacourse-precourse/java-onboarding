@@ -5,15 +5,13 @@ import java.util.List;
 public class Problem3 {
     public static int solution(int number) {
         int answer = number;
-        Clap clap = new Clap(answer);
-        return clap.sumClap();
+        return answer;
     }
 }
 
 class Clap{
     private int number;
     private int sumClap;
-    private Number numberObject;
     private static final int MIN_NUMBER = 1;
     private static final int MAX_NUMBER = 10000;
     private static final int START_NUMBER=1;
@@ -23,7 +21,6 @@ class Clap{
     public Clap(int number){
         validateNumberRange(number);
         this.number=number;
-        numberObject=new Number();
     }
 
     private void validateNumberRange(int number) {
@@ -37,6 +34,7 @@ class Clap{
 
     public int sumClap(){
         for(int i=START_NUMBER;i<number;i++){
+            Number numberObject=new Number();
             sumClap+=numberObject.countClap(i);
         }
         return sumClap;
@@ -50,6 +48,7 @@ class Number{
     public int countClap(int specificNunber){
         while(specificNunber!=0){
             int remainder=specificNunber%10;
+            System.out.println(remainder);
             if(CLAP_NUMBER.contains(remainder)){
                 clapCount+=1;
             }
