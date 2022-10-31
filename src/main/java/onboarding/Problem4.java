@@ -17,4 +17,13 @@ public class Problem4 {
     private static char asciiToAlphabet(int asciiNumber) {
         return (char) asciiNumber;
     }
+
+    private static char convertAlphabet(char alphabet) {
+        int asciiNumber = alphabetToAscii(alphabet);
+        if (isAlphabetUpperCase(alphabet)) {
+            return asciiToAlphabet(155 - asciiNumber);
+        } else {
+            return asciiToAlphabet(219 - asciiNumber);
+        }
+    }
 }
