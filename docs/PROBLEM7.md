@@ -49,9 +49,9 @@
 
 <br/>
 
-- ⬜ addFriendToPeople 메소드 구현
-  - ⬜ People 객체에 새로운 친구 관계 정보를 저장
-  - ⬜ user가 친구로 입력되었을 때 userFriendStatus 값을 true로 변경
+- ✅ addFriendToPeople 메소드 구현
+  - ✅ People 객체에 새로운 친구 관계 정보를 저장
+  - ✅ user가 친구로 입력되었을 때 userFriendStatus 값을 true로 변경
 
 <br/>
 

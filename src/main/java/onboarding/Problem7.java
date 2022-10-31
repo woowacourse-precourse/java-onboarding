@@ -47,7 +47,10 @@ public class Problem7 {
     }
 
     public void addFriendToPeople(String user, People people, String friendName){
-
+        people.addToFriendList(friendName);
+        if(friendName.equals(user)){
+            people.setUserFriendStatus(true);
+        }
     }
 
     public void removeUserFriend(HashMap<String,People> map, String name){
