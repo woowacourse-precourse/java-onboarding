@@ -1,11 +1,21 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
+    private static HashMap<String, Integer> friendsBook = new HashMap<String, Integer>();
+    private static List<String> friendsList = new ArrayList<>();
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        return ;
+    }
+    private static void findFriends(String user, List<List<String>> friends) {
+        for (List<String> friend : friends) {
+            if (friend.get(0).contains(user)) {
+                friendsList.add(friend.get(1));
+            } else if (friend.get(1).contains(user)) {
+                friendsList.add(friend.get(0));
+            }
+        }
+        return;
     }
 }
