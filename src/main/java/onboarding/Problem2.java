@@ -4,12 +4,12 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         StringBuilder cryptogramSb = new StringBuilder(cryptogram);
 
-        String answer = getAnswer(cryptogramSb);
+        String answer = deleteConsecutiveDuplicateChars(cryptogramSb);
 
         return answer;
     }
 
-    private static String getAnswer(StringBuilder cryptogramSb) {
+    private static String deleteConsecutiveDuplicateChars(StringBuilder cryptogramSb) {
         int i = 0;
         for (; i < cryptogramSb.length() - 1; ) {
             if (cryptogramSb.charAt(i) != cryptogramSb.charAt(i+1)) {
