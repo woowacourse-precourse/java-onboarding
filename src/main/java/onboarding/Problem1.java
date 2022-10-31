@@ -4,7 +4,7 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        int answer;
         int pobiScore, crongScore;
 
         /*
@@ -36,6 +36,10 @@ class Problem1 {
         - 비기면 0
         - 크롱이 이기면 2
          */
+        if(pobiScore > crongScore) answer = 1;
+        else if(pobiScore == crongScore) answer = 0;
+        else answer = 2;
+
         return answer;
     }
 
