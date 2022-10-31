@@ -12,6 +12,13 @@ class Problem1 {
         return pobi.get(0) + 1 == pobi.get(1) && crong.get(0) + 1 == crong.get(1);
     }
 
+    private static int compareTwoOperations(List<Integer> list) {
+        return list.stream()
+          .mapToInt(item ->  Math.max(addEachDigit(item), multiplyEachDigit(item)))
+          .max()
+          .getAsInt();
+    }
+
     private static int multiplyEachDigit(int pageNum) {
         int answer = 1;
         String s = Integer.toString(pageNum);
