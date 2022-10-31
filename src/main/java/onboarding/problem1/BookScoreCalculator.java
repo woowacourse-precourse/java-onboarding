@@ -5,8 +5,8 @@ import java.util.List;
 
 public class BookScoreCalculator {
 
-    public static int score(List<Integer> book){
-        return Math.max(pageScore(book.get(0)), pageScore(book.get(1)));
+    public static int score(BookPage bookPage){
+        return Math.max(pageScore(bookPage.getLeftPage()), pageScore(bookPage.getRightPage());
     }
 
     private static int pageScore(Integer pageNumber){

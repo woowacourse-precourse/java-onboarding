@@ -18,8 +18,11 @@ public class BookPage {
         this.rightPage = bookPage.get(1);
     }
 
-    public List<Integer> getPages(){
-        return List.of(leftPage, rightPage);
+    public int getLeftPage(){
+        return leftPage;
+    }
+    public int getRightPage(){
+        return rightPage;
     }
 
     private boolean isProperBookPage(List<Integer> bookPage){
