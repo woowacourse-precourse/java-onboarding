@@ -30,7 +30,30 @@ public class Problem6 {
      * @param root
      */
     public static void insert(String word, int startIdx, String email, Trie root) {
+        int size = word.length();
+        Trie current = root;
 
+        int idx = startIdx;
+        char target = word.charAt(idx);
+
+        if (!current.children.containsKey(target)) {
+            current.children.put(target, new Trie());
+        }
+
+        current = current.children.get(target);
+
+        for (int i = startIdx + 1; i < size; i++) {
+            target = word.charAt(i);
+
+            if (!current.children.containsKey(target)) {
+                current.children.put(target, new Trie());
+            }
+
+            insert(word, i, email, root);
+            current = current.children.get(target);
+
+            current.userEmail.add(email);
+        }
     }
 
     /**
