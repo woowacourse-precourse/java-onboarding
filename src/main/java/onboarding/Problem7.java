@@ -21,6 +21,12 @@ public class Problem7 {
         addFriendToMap(friendsMap, userB, userA);
     }
 
+    private static void addScoreToMap(int plusScore, List<String> friendOrVisitor, List<String> userFriends, Map<String, Integer> scoreMap) {
+        friendOrVisitor.stream()
+                .filter(key -> !isAlreadyFriend(userFriends, key))
+                .forEach(key -> scoreMap.put(key, scoreMap.getOrDefault(key, 0) + plusScore));
+    }
+
     private static void addFriendToMap(Map<String, List<String>> friendsMap, String userA, String userB) {
         friendsMap.compute(userB, (k, v) -> v == null ? new ArrayList<>() : v).add(userA);
     }
