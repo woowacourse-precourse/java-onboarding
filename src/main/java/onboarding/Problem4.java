@@ -6,10 +6,28 @@ public class Problem4 {
     static final int LOWERCASE_DICTIONARY_SUM = 'a' + 'z';
     static final int ALPHABET_LAST_INDEX = 25;
     static final int ALPHABET_START_INDEX = 0;
+    static final int INPUT_MINIMUM_LENGTH = 1;
+    static final int INPUT_MAXIMUM_LENGTH = 1000;
+    static final String INPUT_TOO_SHORT_EXCEPTION = "입력한 문자열이 존재하지 않습니다. ";
+    static final String INPUT_TOO_LONG_EXCEPTION = "입력한 문자열이 1000자를 넘습니다. ";
 
 
     public static String solution(String word) {
+        checkInput(word);
         return transferWordToOpposite(word);
+    }
+
+    private static void checkInput(String word){
+        inputTooShortException(word);
+        inputTooLongException(word);
+    }
+
+    private static void inputTooShortException(String word){
+        if(word.length() < INPUT_MINIMUM_LENGTH) throw new IllegalArgumentException(INPUT_TOO_SHORT_EXCEPTION);
+    }
+
+    private static void inputTooLongException(String word){
+        if(word.length() > INPUT_MAXIMUM_LENGTH) throw new IllegalArgumentException(INPUT_TOO_LONG_EXCEPTION);
     }
 
     private static String transferWordToOpposite(String word){
