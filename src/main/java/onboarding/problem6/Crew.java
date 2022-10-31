@@ -36,7 +36,7 @@ public class Crew {
             throw new IllegalArgumentException("닉네임의 길이는 1이상 20자 미만이여야 합니다.");
         }
 
-        if (!nickname.matches("[ㄱ-ㅎㅏ-ㅣ가-힣]+")) {
+        if (!nickname.matches("^[ㄱ-ㅎㅏ-ㅣ가-힣]+$")) {
             throw new IllegalArgumentException("nickname은 한글만 주어져야 합니다.");
         }
     }
