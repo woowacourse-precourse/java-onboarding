@@ -36,5 +36,41 @@ class Problem1 {
     private static boolean checkValidatePage(int leftPage, int rightPage) {
         return leftPage % 2 == 1 && rightPage % 2 == 0 && leftPage + 1 == rightPage;
     }
+    /**
+     * 2-3 합과 곱중 큰 값 연산
+     * @param plusResult
+     * @param multiplyResult
+     * @return 합과 곱중 큰 값 리턴
+     */
+    private static int getMaxScore(int plusResult, int multiplyResult) {
+        return Integer.max(plusResult, multiplyResult);
+    }
+
+    /**
+     * 2-2 주어진 리스트의 자릿수 별 곱 연산
+     * @param value
+     * @return 주어진 리스트의 자릿수 별 곱 연산값 리턴
+     */
+    private static int getMultiplyResult(int value) {
+        int multiplyResult = 1;
+        while (value != 0) {
+            multiplyResult *= value % 10;
+            value /= 10;
+        }
+        return multiplyResult;
+    }
+
+    /**
+     * 2-1 주어진 리스트의 자릿수 합 곱 연산
+     * @param value
+     * @return 주어진 리스트의 자릿수 별 합 연산값 리턴
+     */
+    private static int getPlusResult(int value) {
+        int plusResult = 0;
+        while (value != 0) {
+            plusResult += value % 10;
+            value /= 10;
+        }
+        return plusResult;
     }
 }
