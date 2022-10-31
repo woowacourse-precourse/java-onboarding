@@ -39,4 +39,16 @@ public class Problem6 {
         return duplicatedCrewIndexes;
     }
 
+    public static List<String> getDuplicatedCrewEmails(List<List<String>> forms){
+        boolean[] duplicatedCrewIndexes = getDuplicatedCrewIndexes(forms);
+        List<String> duplicatedCrewEmail = new ArrayList<>();
+        for(int i = 0; i< duplicatedCrewIndexes.length; i++){
+            if(duplicatedCrewIndexes[i]){
+                duplicatedCrewEmail.add(forms.get(i).get(0));
+            }
+        }
+        Collections.sort(duplicatedCrewEmail);
+        return duplicatedCrewEmail;
+    }
+
 }
