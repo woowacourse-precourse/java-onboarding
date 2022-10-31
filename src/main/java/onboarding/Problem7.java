@@ -4,20 +4,37 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        /* 친구의 관계를 나타냄 */
         Map<String,List<String>> friendships;
         friendships = setFriendship(friends);
-        System.out.println(friendships);
 
+        /* 사용자의 친구의 친구를 나타냄 */
         List<String> friendsFriends = getFriendsFriends(user, friendships);
-        System.out.println(friendsFriends);
 
+        /* 친구의 친구인 사람들의 점수 계산 */
         Map<String, Integer> score = getRelationScore(friendsFriends);
-        System.out.println(score);
 
+        /* 방문자의 점수 계산 */
+        score = addVisitorScore(score, visitors);
 
-        List<String> answer = Collections.emptyList();
+        /* 이미 친구인 사람들 제거 */
+        score = removeUsersFriends(score, friendships, user);
+
+        /* 점수순, 이름순 정렬을 위한 Pair */
+        Pair[] temp = new Pair[score.size()];
+        int i = 0;
+        for (String key : score.keySet()){
+            temp[i] = new Pair(key, score.get(key));
+            i += 1;
+        }
+        Arrays.sort(temp);
+
+        List<String> answer = new ArrayList<>();
+        for (int j = 0; j < score.size(); j++) {
+            answer.add(temp[j].getName());
+        }
+
         return answer;
-
     }
 
     private static Map<String,List<String>> setFriendship(List<List<String>> friends){
@@ -62,7 +79,6 @@ public class Problem7 {
         Map<String, Integer> temp = new HashMap<>();
         for (int i = 0; i < friendsFriends.size(); i++) {
             String key = friendsFriends.get(i);
-            System.out.println(temp.containsKey(key));
             if (temp.containsKey(key)){
                 temp.put(key, temp.get(key) + 10);
             }
@@ -71,5 +87,56 @@ public class Problem7 {
             }
         }
         return temp;
+    }
+
+    private static Map<String, Integer> addVisitorScore(Map<String, Integer> score, List<String> visitors){
+        for (int i = 0; i < visitors.size(); i++) {
+            String key = visitors.get(i);
+            if (score.containsKey(key)){
+                score.put(key, score.get(key) + 1);
+            }
+            else{
+                score.put(key, 1);
+            }
+        }
+        return score;
+    }
+
+    private static Map<String, Integer> removeUsersFriends(Map<String, Integer> score, Map<String,List<String>> friendships, String user){
+        for (int i = 0; i < friendships.get(user).size(); i++) {
+            score.remove(friendships.get(user).get(i));
+        }
+        return score;
+    }
+
+
+
+    static class Pair implements Comparable<Pair> {
+        String name;
+        int score;
+
+        public String toString(){
+            return "Pair{" +
+                    "name = '" + name + '\'' +
+                    ", score = " + score +
+                    '}';
+        }
+        public Pair(String name, int score){
+            this.name = name;
+            this.score = score;
+        }
+
+        @Override
+        public int compareTo(Pair o){
+            if (this.score == o.score){
+                return this.name.compareTo(o.name);
+            }
+            return o.score - this.score;
+        }
+
+        public String getName(){
+            return name;
+        }
+
     }
 }
