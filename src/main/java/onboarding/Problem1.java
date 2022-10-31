@@ -24,4 +24,10 @@ class Problem1 {
         }
         return false;
     }
+
+    private static int[] splitDigits(int number){
+        return Arrays.stream(Integer.toString(number).split(""))
+                .mapToInt(digit->Integer.parseInt(digit))
+                .toArray();
+    }
 }
