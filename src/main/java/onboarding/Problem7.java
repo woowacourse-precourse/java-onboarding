@@ -38,6 +38,28 @@ public class Problem7 {
         }
         return name;
     }
+
+    // 점수에 따라 유저를 정렬하고 만약 점수가 같다면 이름에 따라 오름차순 정렬을 하는 함수
+    public static List<String> sorting(List<String> result, Map<String, Info> map){
+        List<String> out = new ArrayList<>();
+        int idx =0;
+        Collections.sort(result, new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                int num = map.get(o2).point - map.get(o1).point;
+                if(num == 0) num = o1.compareTo(o2);
+                return num;
+            }
+        });
+
+        for(int i=0; i<result.size(); i++){
+            if(map.get(result.get(i)).point > 0 && idx < 5){
+                idx++;
+                out.add(result.get(i));
+            }
+        }
+        return out;
+    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
