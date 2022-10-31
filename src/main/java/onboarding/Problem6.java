@@ -5,18 +5,20 @@ import java.util.stream.Collectors;
 
 /**
  * 📚 기능 목록
+ * 1. 사용자 객체 - Member
+ * 1-1. 이름과 이메일을 가진다.
  *
- * 1. 사용자의 이름을 두글자 씩 분리하는 기능
- * 2. 사용자의 이름 중복을 확인하는 기능
- * 3. 중복된 이름을 가진 사용자를 저장하는 기능
- * 4. 결과 목록을 정렬하는 기능
+ * 2. 사전 객체 - Dictionary
+ * 2-1. 중복된 사용자 List, 두글자로 slice한 이름 목록을 가진다. - dulplicateMamberList, nameStorage
+ * 2-2. 사용자 List를 받아 초기화한다. - Dictionary(List&lt;Member&gt; member)
+ * 2-3. 주어진 사용자의 이름 중복을 체크하고 저장한다. - checkAndSaveDuplicateMember
+ * 2-4. 중복 사용자를 조건에 맞춰 결과 List로 반환한다. - getDuplicateMemberAsResult
  */
 public class Problem6 {
 
     private static class Member {
         private String name;
         private String email;
-        private boolean duplicated = false;
 
         Member() {
         }
@@ -32,14 +34,6 @@ public class Problem6 {
 
         public String getName() {
             return this.name;
-        }
-
-        public boolean isDuplicated() {
-            return this.duplicated;
-        }
-
-        public void setDuplicated() {
-            this.duplicated = true;
         }
     }
 
@@ -71,9 +65,9 @@ public class Problem6 {
             }
         }
 
-        public List<String> getDuplicationMemberAsResult() {
+        public List<String> getDuplicateMemberAsResult() {
             return duplicateMemberList.stream()
-                    .map(o -> o.email)
+                    .map(Member::getEmail)
                     .sorted()
                     .collect(Collectors.toList());
         }
@@ -99,6 +93,6 @@ public class Problem6 {
             dictionary.checkAndSaveDuplicateMember(member);
         }
 
-        return dictionary.getDuplicationMemberAsResult();
+        return dictionary.getDuplicateMemberAsResult();
     }
 }
