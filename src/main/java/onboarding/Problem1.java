@@ -7,4 +7,9 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
+
+    //페이지가 처음이나 마지막 면이 아닌지 체크
+    private static boolean isValidPage(int startPage, int endPage) {
+        return startPage >= 1 && endPage <= 400;
+    }
 }
