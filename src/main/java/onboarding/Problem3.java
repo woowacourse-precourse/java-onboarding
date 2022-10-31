@@ -20,8 +20,16 @@ public class Problem3 {
         return cnt;
     }
 
-    public static int solution(int number) {
+    // 1부터 해당 숫자까지 369개수 구하기
+    public static int getAnswer(int number) {
         int answer = 0;
+        for (int i = 1; i <= number; i++) {
+            answer += get369Count(i);
+        }
         return answer;
+    }
+
+    public static int solution(int number) {
+        return getAnswer(number);
     }
 }
