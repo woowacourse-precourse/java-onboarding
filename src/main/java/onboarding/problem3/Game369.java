@@ -4,7 +4,7 @@ import java.util.Set;
 
 public class Game369 {
 
-    private static final Set<Integer> clapNumbers = Set.of(3, 6, 9);
+    private static final Set<Integer> CLAP_NUMBERS = Set.of(3, 6, 9);
 
     public static int getTotalClapCount(int lastNumber){
         int count = 0;
@@ -17,7 +17,7 @@ public class Game369 {
     private static int getClapCount(int number){
         int count = 0;
         while(number != 0){
-            if(clapNumbers.contains(number%10)){
+            if(CLAP_NUMBERS.contains(number%10)){
                 count += 1;
             }
             number /= 10;
