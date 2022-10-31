@@ -2,10 +2,10 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = sub_solution(cryptogram);
+        String answer = subSolution(cryptogram);
         return answer;
     }
-    public static String sub_solution(String input){
+    public static String subSolution(String input){
         boolean flag = false;
         String answer = "";
         for(int i = 0 ; i < input.length() ; i++){
@@ -25,7 +25,7 @@ public class Problem2 {
                 else flag = true;
             }
         }
-        if(flag) return sub_solution(answer);
+        if(flag) return subSolution(answer);
         else return answer;
     }
 }

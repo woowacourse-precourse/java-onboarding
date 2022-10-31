@@ -7,16 +7,16 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Map<String, ArrayList<String>> map = new HashMap<>();
         List<String> answer = new ArrayList<>();
-        List<String> user_friends = new ArrayList<>();
-        Map<String, Integer> score_map = new HashMap<>();
+        List<String> userFriends = new ArrayList<>();
+        Map<String, Integer> scoreMap = new HashMap<>();
         for(List <String> friend : friends){
             String id_A = friend.get(0);
             String id_B = friend.get(1);
             if(Objects.equals(id_A, user)){
-                user_friends.add(id_B);
+                userFriends.add(id_B);
             }
             if(Objects.equals(id_B, user)){
-                user_friends.add(id_A);
+                userFriends.add(id_A);
             }
             ArrayList<String> aList = map.getOrDefault(id_A, new ArrayList<>());
             aList.add(id_B);
@@ -26,25 +26,25 @@ public class Problem7 {
             map.put(id_B, bList);
         }
         for(Map.Entry<String, ArrayList<String>> entry : map.entrySet()){
-            String cur_user = entry.getKey();
-            if(user_friends.contains(cur_user) || cur_user == user) continue;
-            ArrayList<String> cur_user_friends = entry.getValue();
-            int friend_score = 0;
-            int visit_score = Collections.frequency(visitors, cur_user);
-            for(String cur_user_friend : cur_user_friends){
-                if(user_friends.contains(cur_user_friend)) friend_score += 10;
+            String curUser = entry.getKey();
+            if(userFriends.contains(curUser) || Objects.equals(curUser, user)) continue;
+            ArrayList<String> curUserFriends = entry.getValue();
+            int friendScore = 0;
+            int visitScore = Collections.frequency(visitors, curUser);
+            for(String curUserFriend : curUserFriends){
+                if(userFriends.contains(curUserFriend)) friendScore += 10;
             }
-            score_map.put(cur_user, friend_score + visit_score);
+            scoreMap.put(curUser, friendScore + visitScore);
         }
-        List<String> distinct_visitors = visitors.stream().distinct().collect(Collectors.toList());
-        for(String distinct_visitor : distinct_visitors){
-            if(!user_friends.contains(distinct_visitor) && !score_map.containsKey(distinct_visitor)){
-                int visit_score = Collections.frequency(visitors, distinct_visitor);
-                score_map.put(distinct_visitor, visit_score);
+        List<String> distinctVisitors = visitors.stream().distinct().collect(Collectors.toList());
+        for(String distinctVisitor : distinctVisitors){
+            if(!userFriends.contains(distinctVisitor) && !scoreMap.containsKey(distinctVisitor)){
+                int visitScore = Collections.frequency(visitors, distinctVisitor);
+                scoreMap.put(distinctVisitor, visitScore);
             }
         }
-        List<Map.Entry<String, Integer>> entry_list = new LinkedList<>(score_map.entrySet());
-        entry_list.sort(new Comparator<Map.Entry<String, Integer>>() {
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(scoreMap.entrySet());
+        entryList.sort(new Comparator<Map.Entry<String, Integer>>() {
             @Override
             public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
                 if(Objects.equals(o2.getValue(), o1.getValue())){
@@ -55,9 +55,10 @@ public class Problem7 {
                 }
             }
         });
-        int recommend_size = Math.min(entry_list.size(), 5);
-        for(int i = 0; i < recommend_size; i++){
-            answer.add(entry_list.get(i).getKey());
+
+        int recommendSize = Math.min(entryList.size(), 5);
+        for(int i = 0; i < recommendSize; i++){
+            answer.add(entryList.get(i).getKey());
         }
         return answer;
     }
