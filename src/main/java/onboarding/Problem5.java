@@ -14,6 +14,10 @@ public class Problem5 {
             int count = money / cash[i];
             answer.add(count);
             money -= cash[i] * count;
+
+            if (money == 0){
+                break;
+            }
         }
 
         return answer;
