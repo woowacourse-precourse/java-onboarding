@@ -13,6 +13,7 @@ public class Problem6 {
         for(List<String> user : forms) {
             List<String> word_combi = createWordCombi(user.get(1));
             Set<String> dup_member = checkDuplicateNickname(forms, word_combi, forms.indexOf(user));
+            temp_answer.addAll(dup_member);
         }
 
         List<String> answer = new ArrayList<>(temp_answer);
