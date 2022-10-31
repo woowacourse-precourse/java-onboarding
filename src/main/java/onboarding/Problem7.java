@@ -1,29 +1,47 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     static List<String> userFriends = new ArrayList<>();
     static HashMap<String, Integer> recommendedFriends = new HashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        List<String> friendsList;
         for (int i = 0; i < friends.size(); i++) {
-            List<String> friendsList = friends.get(i);
+            friendsList = friends.get(i);
             findUserFriend(friendsList, user);
         }
         System.out.println(userFriends);
 
         for (int i = 0; i < friends.size(); i++) {
-            List<String> friendsList = friends.get(i);
+            friendsList = friends.get(i);
             findRecommendedFriend(friendsList, user);
+        }
+        System.out.println(recommendedFriends);
+
+        for (int i = 0; i < friends.size(); i++) {
+            friendsList = friends.get(i);
+            plusScore(friendsList);
         }
         System.out.println(recommendedFriends);
 
         List<String> answer = Collections.emptyList();
         return answer;
+    }
+
+    private static void plusScore(List<String> friendsList) {
+        Iterator iterator = recommendedFriends.keySet().iterator();
+        while (iterator.hasNext()) {
+            String recommendFriend = (String) iterator.next();
+            for (int i = 0; i < userFriends.size(); i++) {
+                if (friendsList.contains(recommendFriend) && friendsList.contains(userFriends.get(i))) {
+                    int score = recommendedFriends.get(recommendFriend);
+                    recommendedFriends.put(recommendFriend, score + 10);
+                }
+            }
+        }
+
     }
 
     private static void findRecommendedFriend(List<String> friendsList, String user) {
