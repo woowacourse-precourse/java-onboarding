@@ -47,5 +47,10 @@ public class Problem6 {
             haveThisWord(s2, nowIndex);
         }
     }
-    
+
+    private static void haveThisWord(String s2, int nowIndex) {
+        for (int i = 0; i < emailAndNickname.length; i++) {
+            addToSet(s2, i, nowIndex);
+        }
+    }
 }
