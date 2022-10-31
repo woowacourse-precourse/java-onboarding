@@ -38,6 +38,14 @@ import java.util.List;
 class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+        Solver1 solver1 = new Solver1();
+        return solver1.solve(pobi, crong);
+    }
+}
+
+class Solver1 {
+
+    public int solve(List<Integer> pobi, List<Integer> crong) {
         try {
             if (pobi.get(0) + 1 != pobi.get(1))
                 throw new IllegalArgumentException("Invalid input from Pobi");
@@ -65,7 +73,7 @@ class Problem1 {
         }
     }
 
-    private static int getDigitSum(int x) {
+    private int getDigitSum(int x) {
         int res = 0;
         while (x > 10) {
             res += x % 10;
@@ -74,7 +82,7 @@ class Problem1 {
         return res + x;
     }
 
-    private static int getDigitMul(int x) {
+    private int getDigitMul(int x) {
         int res = 1;
         while (x > 10) {
             res *= x % 10;
