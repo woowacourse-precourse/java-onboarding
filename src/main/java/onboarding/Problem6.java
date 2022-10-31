@@ -8,7 +8,7 @@ public class Problem6 {
         Set<String> email = new HashSet<String>();
         for (int i = 0; i < forms.size(); i++) {
             for (int j = i + 1; j < forms.size(); j++) {
-                if (search(forms.get(j).get(1), getPattern(forms.get(i).get(1)))){
+                if (search(forms.get(j).get(1), getPattern(forms.get(i).get(1)))) {
                     email.add(forms.get(i).get(0));
                     email.add(forms.get(j).get(0));
                 }
@@ -32,7 +32,7 @@ public class Problem6 {
         Labal:
         while (it.hasNext()) {
             String check = it.next();
-            if(parent.length() == 1) {
+            if (parent.length() == 1) {
                 break;
             }
             for (int i = 0; i < parent.length() - 1; i++) {
@@ -44,7 +44,8 @@ public class Problem6 {
         }
         return isExsist;
     }
-    public static List<String> sort(Set<String> email){
+
+    public static List<String> sort(Set<String> email) {
         List<String> a = new ArrayList<>(email);
         Collections.sort(a);
         return a;
