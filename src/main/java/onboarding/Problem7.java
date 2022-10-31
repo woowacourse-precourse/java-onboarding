@@ -12,6 +12,9 @@ public class Problem7 {
         Map<String, Integer> score = new HashMap<>();
 
         score = makeFriendsList(user, friends, score, visitors, friendsWithUser);
+
+        score = checkFriendsScore(friends, score, friendsWithUser);
+
         return answer;
     }
 
@@ -46,6 +49,22 @@ public class Problem7 {
                 score.put(visitors.get(0), 0);
             } else {
                 continue;
+            }
+        }
+        return score;
+    }
+
+    public static Map<String, Integer> checkFriendsScore(List<List<String>> friends, Map<String, Integer> score, Set<String> friendsWithUser) {
+        for (int i = 0; i < score.size(); i++) {
+            if (friendsWithUser.contains(friends.get(i).get(0))) {
+                if (score.containsKey(friends.get(i).get(1))) {
+                    score.put(friends.get(i).get(1), score.get(friends.get(i).get(1)) + 10);
+                }
+            }
+            if (friendsWithUser.contains(friends.get(i).get(1))) {
+                if (score.containsKey(friends.get(i).get(0))) {
+                    score.put(friends.get(i).get(0), score.get(friends.get(i).get(0)) + 10);
+                }
             }
         }
         return score;
