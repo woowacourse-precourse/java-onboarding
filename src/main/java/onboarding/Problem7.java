@@ -28,7 +28,7 @@ public class Problem7 {
         return rankingList;
     }
     private static void plusVisitPoint(List<String> visitors, HashMap<String, Integer> peopleAndPointMap) {
-        visitors.forEach(visitor -> peopleAndPointMap.compute(visitor, (people, point) -> point + 1));
+        visitors.forEach(visitor -> peopleAndPointMap.computeIfPresent(visitor, (people, point) -> point + 1));
     }
 
     private static void plusFriendPoint(String user, List<List<String>> friends, HashMap<String, Integer> peopleAndPointMap) {
@@ -67,14 +67,23 @@ public class Problem7 {
         return peopleAndPointMap;
     }
     private static List<String> makePeopleList(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> list = new ArrayList<>();
-        list.add(user);
+        List<String> peopleList = new ArrayList<>();
         for (List<String> friend : friends) {
-            list = addToList(list, friend);
+            peopleList = addToList(peopleList, friend);
         }
-        list = addToList(list, visitors);
-        return list;
+        peopleList = addToList(peopleList, visitors);
+        peopleList.remove(user);
+        peopleList = removeFromList(peopleList, returnFriendList(user, friends));
+        return peopleList;
     }
+
+    private static List<String> removeFromList(List<String> list, List<String> target) {
+        List<String> tmp = list.stream()
+            .filter(x -> !target.contains(x))
+            .collect(Collectors.toList());
+        return tmp;
+    }
+
     private static List<String> addToList(List<String> list, List<String> target) {
         List<String> tmp = target.stream()
             .filter(x -> !list.contains(x))
