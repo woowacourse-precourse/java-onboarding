@@ -1,12 +1,12 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Problem5 {
     /**
      * 크기별 돈을 담은 정적 배열을 리턴한다.
+     *
      * @return 돈을 담은 배열
      */
     public static int[] getMoneyArray() {
@@ -19,7 +19,7 @@ public class Problem5 {
 
         List<Integer> list = new ArrayList<>();
 
-        while(i != 9) {
+        while (i != 9) {
             int count = money / moneyArr[i];
             money -= moneyArr[i] * count;
             list.add(count);
