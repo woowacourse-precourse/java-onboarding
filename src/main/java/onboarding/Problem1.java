@@ -1,7 +1,7 @@
 package onboarding;
 
 import java.util.List;
-import onboarding.pagenumbergame.entity.GamePlay;
+import onboarding.problem01.entity.GamePlay;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {

@@ -1,6 +1,6 @@
-package onboarding.pagenumbergame.entity;
+package onboarding.problem01.entity;
 
-import onboarding.pagenumbergame.infra.util.ConsoleOut;
+import onboarding.problem01.infra.util.ConsoleOut;
 
 public class Page {
 

@@ -1,4 +1,4 @@
-package onboarding.pagenumbergame.entity;
+package onboarding.problem01.entity;
 
 import java.util.List;
 

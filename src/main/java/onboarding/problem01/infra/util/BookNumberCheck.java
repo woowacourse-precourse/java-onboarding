@@ -1,4 +1,4 @@
-package onboarding.pagenumbergame.infra.util;
+package onboarding.problem01.infra.util;
 
 import java.util.List;
 

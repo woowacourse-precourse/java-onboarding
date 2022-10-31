@@ -1,11 +1,11 @@
-package onboarding.pagenumbergame.entity;
+package onboarding.problem01.entity;
 
 import java.util.ArrayList;
 import java.util.List;
-import onboarding.pagenumbergame.infra.util.BookNumberCheck;
-import onboarding.pagenumbergame.infra.util.BookPositionCheck;
-import onboarding.pagenumbergame.infra.util.BookSizeCheck;
-import onboarding.pagenumbergame.infra.util.ConsoleOut;
+import onboarding.problem01.infra.util.BookNumberCheck;
+import onboarding.problem01.infra.util.BookPositionCheck;
+import onboarding.problem01.infra.util.BookSizeCheck;
+import onboarding.problem01.infra.util.ConsoleOut;
 
 public class Book {
 
