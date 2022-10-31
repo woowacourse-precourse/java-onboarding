@@ -6,10 +6,6 @@ import java.util.List;
 
 public class Problem5 {
     public static List<Integer> solution(int money) {
-        // TODO
-        // Collections.emptyList()로 선언해둔 이유 고민해보기
-        // List<Integer> answer = Collections.emptyList();
-
         List<Integer> answer = new ArrayList<>();
         List<Integer> moneyUnit = new ArrayList<Integer>(){{
             add(50000);
@@ -32,9 +28,6 @@ public class Problem5 {
             answer.add(Integer.valueOf(money / unit));
             money = money % unit;
         }
-
-        if(answer == null)
-            return Collections.emptyList();
 
         return answer;
     }
