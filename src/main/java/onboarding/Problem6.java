@@ -10,8 +10,6 @@ public class Problem6 {
         HashMap<String, String> profileMap = new HashMap<String, String>();
         HashSet<String> emails = new HashSet<String>();
         
-        String compareStr = "";
-        
         for(int i=0; i<forms.size(); i++) {
         	String name = forms.get(i).get(1);
         	
@@ -25,7 +23,7 @@ public class Problem6 {
         		profileMap.put(nameKey, forms.get(i).get(0));
         	}
         }
-        System.out.println(emails);
+        answer = List.copyOf(emails);
         return answer;
     }
 }
