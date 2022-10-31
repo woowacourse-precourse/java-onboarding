@@ -10,6 +10,7 @@ public class Problem6 {
         List<String> emailList = valueExtraction(forms,0);
         List<String> nameList = valueExtraction(forms,1);
         return checkList(nameList,emailList);
+
     }
     public static List<String> checkList(List<String> nameList,List<String> emailList){
         List<String> answer = new ArrayList<>();
