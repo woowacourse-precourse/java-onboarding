@@ -11,7 +11,6 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
         HashMap<String, ArrayList<String>> friendGraph = initFriendGraph(friends);
         ArrayList<HashMap<String, Integer>> recommendScoreList = initRecommendScoreList();
-        System.out.println(friendGraph);
         return answer;
     }
 
@@ -38,5 +37,11 @@ public class Problem7 {
         return new ArrayList<HashMap<String, Integer>>();
     }
 
-    //
+    // user의 추천친구 리스트에 파라미터로 전달된 유저가 있는지 확인하는 함수
+    public static boolean checkUserInRecommendScoreList(ArrayList<HashMap<String, Integer>> recommendScoreList, String user) {
+        for (int i = 0; i < recommendScoreList.size(); i++) {
+            if (recommendScoreList.get(i).keySet().contains(user)) return true;
+        }
+        return false;
+    }
 }
