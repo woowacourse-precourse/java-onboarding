@@ -1,6 +1,10 @@
 package onboarding;
 
 public class Problem3 {
+    private static final char SAM = '3';
+    private static final char YUK = '6';
+    private static final char GU = '9';
+
     public static int solution(int number) {
         int totalCount = 0;
 
@@ -25,6 +29,6 @@ public class Problem3 {
     }
 
     private static boolean isSamYukGu(char digit) {
-        return digit == '3' || digit == '6' || digit == '9';
+        return digit == SAM || digit == YUK || digit == GU;
     }
 }
