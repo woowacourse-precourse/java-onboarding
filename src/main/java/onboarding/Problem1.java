@@ -7,6 +7,7 @@ class Problem1 {
     static final int CRONG_WIN = 2;
     static final int DRAW = 0;
     static final int EXCEPTION = -1;
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
@@ -18,7 +19,7 @@ class Problem1 {
         int pobi_score = findHighScore(pobi);
         int crong_score = findHighScore(crong);
 
-        return answer;
+        return answer = whoIsWinner(pobi_score, crong_score);
     }
 
     public static boolean isPossible(List<Integer> name) {
@@ -55,5 +56,15 @@ class Problem1 {
         int add = Math.max(calculateAdd(name.get(0)), calculateMult(name.get(0)));
         int mult = Math.max(calculateAdd(name.get(1)), calculateMult(name.get(1)));
         return Math.max(add, mult);
+    }
+
+    public static int whoIsWinner(int pobi, int crong) {
+        if (pobi > crong) {
+            return POBI_WIN;
+        } else if (pobi < crong) {
+            return CRONG_WIN;
+        } else {
+            return DRAW;
+        }
     }
 }
