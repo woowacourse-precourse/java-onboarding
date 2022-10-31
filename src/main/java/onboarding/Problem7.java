@@ -43,12 +43,12 @@ public class Problem7 {
                 String user = relationShip.get(0);
                 String other = relationShip.get(1);
 
-                if (isFriendWithOriginsFriend(user)) {
+                if (isAlreadyFriend(user)) {
                     memberAndScore.put(other, memberAndScore.get(other) + 10);
                 }
 
-                if (isFriendWithOriginsFriend(other)) {
-                    memberAndScore.put(other, memberAndScore.get(other) + 10);
+                if (isAlreadyFriend(other)) {
+                    memberAndScore.put(user, memberAndScore.get(user) + 10);
                 }
 
             });
@@ -60,7 +60,7 @@ public class Problem7 {
 
         public List<String> getResult() {
             return memberAndScore.keySet().stream()
-                    .filter(member -> isZeroScore(member) && !isFriendWithOriginsFriend(member) && !isOriginUser(member))
+                    .filter(member -> !isZeroScore(member) && !isAlreadyFriend(member) && !isOriginUser(member))
                     .sorted()
                     .sorted((o1, o2) -> memberAndScore.get(o2).compareTo(memberAndScore.get(o1)))
                     .limit(5)
@@ -68,14 +68,14 @@ public class Problem7 {
         }
 
         private boolean isZeroScore(String o) {
-            return memberAndScore.get(o) != 0;
+            return memberAndScore.get(o) == 0;
         }
 
         private boolean isOriginUser(String other) {
             return other.equals(originUser);
         }
 
-        private boolean isFriendWithOriginsFriend(String user) {
+        private boolean isAlreadyFriend(String user) {
             return friends.contains(user);
         }
 
