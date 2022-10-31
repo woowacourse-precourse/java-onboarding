@@ -1,8 +1,13 @@
 package onboarding;
 
+import problem2.DuplicateCryptogramDecoder;
+
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        try {
+            return DuplicateCryptogramDecoder.decode(cryptogram);
+        } catch (RuntimeException e) {
+            return null;
+        }
     }
 }
