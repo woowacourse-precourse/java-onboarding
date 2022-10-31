@@ -34,5 +34,7 @@ public class Problem3 {
         for (int i = 1; i <= number; i++) {
             result += count369(i);
         }
+
+        return result;
     }
 }
