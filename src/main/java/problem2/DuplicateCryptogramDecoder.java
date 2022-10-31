@@ -10,31 +10,36 @@ public class DuplicateCryptogramDecoder {
     public static String decode(String cryptogram) {
         Validator.validateLength(cryptogram);
         Validator.validateLowerCase(cryptogram);
-        while (hasDuplication(cryptogram)) {
-            cryptogram = deleteFrom(cryptogram);
+        List<Character> cryptogramList = asCharacterList(cryptogram);
+        while (hasContinuousDuplication(cryptogramList)) {
+            cryptogramList = deleteContinuousDuplicationFrom(cryptogramList);
         }
-        return cryptogram;
+        return asString(cryptogramList);
     }
 
-    public static String deleteFrom(String target) {
-        List<Character> chars = Arrays.stream(target.split(""))
-                .map(str -> Character.valueOf(str.charAt(0)))
+    private static List<Character> asCharacterList(String str) {
+        return Arrays.stream(str.split(""))
+                .map(sttr -> Character.valueOf(sttr.charAt(0)))
                 .collect(Collectors.toList());
+    }
+
+    public static List<Character> deleteContinuousDuplicationFrom(List<Character> target) {
+
 
         List <Character> result = new ArrayList<>();
-        for (int i = 0; i < target.length(); i++) {
-            Character character = chars.get(i);
-            if (isDifferentWithPrev(chars, i) && isDifferentWithNext(chars, i)) {
+        for (int i = 0; i < target.size(); i++) {
+            Character character = target.get(i);
+            if (isDifferentWithPrev(target, i) && isDifferentWithNext(target, i)) {
                 result.add(character);
             }
         }
 
-        return asString(result);
+        return result;
     }
 
-    static boolean hasDuplication(String target) {
-        for (int i = 0; i < target.length() - 1; i++) {
-            if (target.charAt(i) == target.charAt(i + 1)) return true;
+    static boolean hasContinuousDuplication(List<Character> target) {
+        for (int i = 0; i < target.size() - 1; i++) {
+            if (target.get(i).equals(target.get(i + 1))) return true;
         }
         return false;
     }
