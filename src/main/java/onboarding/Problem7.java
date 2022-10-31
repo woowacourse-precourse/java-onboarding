@@ -4,7 +4,10 @@ import java.util.*;
 import java.util.function.Predicate;
 
 public class Problem7 {
+    public static int ACQUAINTANCE_POINT = 10;
+    public static int VISITOR_POINT = 1;
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+
 
         Set<String> userFriend = findUserFriends(user, friends);
         Map<String,List<String>> friendMap = makeFriendMap(userFriend, friends);
@@ -51,6 +54,7 @@ public class Problem7 {
         return friendMap;
     }
 
+
     //추천리스트에 아는 사이 넣기 : (유저) 프랜드 맵 순회하면서 VALUE꺼내서, 추천리스트에 넣고 점수주기
     public static void recommendAcquaintance(Map<String,List<String>> friendMap, HashMap<String,Integer> recommendMap){
         for(Map.Entry<String,List<String>> e : friendMap.entrySet()){
@@ -77,9 +81,9 @@ public class Problem7 {
 
     //추천 리스트 정렬하기
     public static List<String> makeRecommendList(HashMap<String,Integer> recommendMap) {
-            List<String> recommendList = new ArrayList<>();
-            System.out.println(recommendMap);
-            recommendMap.entrySet().stream()
+        List<String> recommendList = new ArrayList<>();
+        System.out.println(recommendMap);
+        recommendMap.entrySet().stream()
                 .sorted(new Comparator<Map.Entry<String, Integer>>() {
                     @Override
                     public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
@@ -98,8 +102,8 @@ public class Problem7 {
                 })
                 .forEach(e->recommendList.add(e.getKey())); //collect(Collectors.toList ->
 
-            if(recommendList.size()>5) return recommendList.subList(0,5);
-            return recommendList;
+        if(recommendList.size()>5) return recommendList.subList(0,5);
+        return recommendList;
 
     }
 
