@@ -21,6 +21,9 @@ public class Problem4 {
             wordDict.put((char)('A'+i), (char)('Z'-i));
         }
 
+        for (int i =0; i<word.length(); i++){ // 반대로 된 문자열 생성
+            answer += wordDict.getOrDefault(word.charAt(i),word.charAt(i));
+        }
 
         return answer;
     }
