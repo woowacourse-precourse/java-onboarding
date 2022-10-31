@@ -26,10 +26,10 @@ public class Problem2 {
      * @param cryptogram 입력 암호문
      */
     private static void verifyCryptogram(String cryptogram) {
-        // 암호문의 길이는 1~30 사이로 제한되어 있다.
+        // 암호문의 길이는 1~1000 사이로 제한되어 있다.
         ValidationUtil cryptogramValidation = new ValidationUtil();
         cryptogramValidation.addVarName("cryptogram");
-        cryptogramValidation.checkStrLowerCase(cryptogram, 1, 30);
+        cryptogramValidation.checkStrLowerCase(cryptogram, 1, 1000);
     }
 
     /**
