@@ -12,22 +12,28 @@ public class FriendConnectionRepository {
 
         friendConnection.clear();
 
-        configureMapEntities(friends);
+        preprocessFriendConnection(friends);
 
-        for (var friend : friends) {
-            String friend1 = friend.get(0);
-            String friend2 = friend.get(1);
-            friendConnection.get(friend1).add(friend2);
-            friendConnection.get(friend2).add(friend1);
-        }
+        configureFriendConnection(friends);
     }
 
-    private static void configureMapEntities(List<List<String>> friends) {
+    private static void preprocessFriendConnection(List<List<String>> friends) {
         friends.stream()
                 .flatMap(friendship -> friendship.stream())
                 .distinct()
                 .filter(person -> !friendConnection.containsKey(person))
                 .forEach(person -> friendConnection.put(person, new HashSet<>()));
+    }
+
+    private static void configureFriendConnection(List<List<String>> friends) {
+        friends.stream()
+                .forEach(friend -> {
+                    var first = friend.get(0);
+                    var second = friend.get(1);
+
+                    friendConnection.get(first).add(second);
+                    friendConnection.get(second).add(first);
+                });
     }
 
     public static Set<String> getFriends(String user) {
