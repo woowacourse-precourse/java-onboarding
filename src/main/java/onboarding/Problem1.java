@@ -4,6 +4,8 @@ import java.util.List;
 
 class Problem1 {
     public static boolean checkPages(List<Integer> pages) {
+        int firstPage = 0;
+        int lastPage = 400;
         if ((pages.get(0) % 2) == 0) {
             return false;
         }
@@ -11,6 +13,9 @@ class Problem1 {
             return false;
         }
         if (pages.get(1) - pages.get(0) != 1) {
+            return false;
+        }
+        if (pages.get(0) < firstPage || pages.get(0) > lastPage || pages.get(1) < firstPage || pages.get(1) > lastPage) {
             return false;
         }
         return true;
