@@ -19,7 +19,6 @@ public class Problem2 {
         return answer.toString();
     }
 
-    //
         public static boolean remove_overlap(ArrayList<Character> check_list){
             boolean list = true;
 //            System.out.println("check_list : " + check_list);
