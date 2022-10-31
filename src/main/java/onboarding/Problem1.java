@@ -12,7 +12,7 @@ class Problem1 {
             return -1;
         }
 
-        answer = findWinner(getMax(pobi), getMax(crong));
+        answer = findWinner(getScore(pobi), getScore(crong));
 
         return answer;
     }
@@ -40,7 +40,7 @@ class Problem1 {
     }
 
     // 자신의 점수인 가장 큰 수 구하기 함수
-    static int getMax(List<Integer> pageList) {
+    static int getScore(List<Integer> pageList) {
         ArrayList<Integer> scoreList = new ArrayList<>();
 
         for (int e: pageList) {
