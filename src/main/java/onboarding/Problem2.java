@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        ArrayList<Character> lst = new ArrayList<Character>();
+        ArrayList<Character> lst = new ArrayList<>();
         char[] cryp = cryptogram.toCharArray();
         for(char c : cryp) lst.add(c);
 

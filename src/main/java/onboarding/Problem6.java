@@ -19,10 +19,10 @@ public class Problem6 {
             }
             name_partitions.add(p);
         }
-        for(int i=0;i<name_partitions.size();i++){ // [[제이, 이엠],...]
-            ArrayList<String> cnp = name_partitions.get(i); // current_name_partition
+        for(int i=0;i<name_partitions.size();i++){
+            ArrayList<String> cnp = name_partitions.get(i);
             for(int j=i+1;j<name_partitions.size();j++){
-                ArrayList<String> nnp = name_partitions.get(j); // next_name_partition
+                ArrayList<String> nnp = name_partitions.get(j);
                 for(int c=0; c<cnp.size(); c++){
                     String cp = cnp.get(c);
                     boolean chk = false;

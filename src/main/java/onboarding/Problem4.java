@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Problem4 {
     public static String solution(String word) {
-        ArrayList<Character> lst = new ArrayList<Character>();
+        ArrayList<Character> lst = new ArrayList<>();
         char[] arr = word.toCharArray();
         for(char c : arr) lst.add(c);
 
