@@ -22,4 +22,13 @@ class Problem1 {
         }
         return sliceList;
     }
+
+    // 2-주어진 수를 모두 더하는 기능
+    public static int sum(List<Integer> page){
+        int result = 0;
+        for (int i=0; i<page.size(); i++){
+            result+=page.get(i);
+        }
+        return result;
+    }
 }
