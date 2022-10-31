@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     private static HashMap<String, List<String>> friendsRelation(List<List<String>> friends) {
@@ -73,5 +70,22 @@ public class Problem7 {
         }
         scores.remove(0);
         return scores;
+    }
+
+    private static List<String> sortScoreTable(HashMap<Integer, List<String>> scoreTable, String user) {
+        Object[] mapkey = scoreTable.keySet().toArray();
+        Arrays.sort(mapkey);
+        List<String> total = new ArrayList<>();
+        for (int key : scoreTable.keySet())
+        {
+            List<String> candidate = scoreTable.get(key);
+            total.addAll(candidate);
+        }
+        total = removeDuplicate(total);
+        total.removeAll(Collections.singleton(user));
+        if (total.size() < 5) {
+            return total;
+        }
+        return total.subList(0, 5);
     }
 }
