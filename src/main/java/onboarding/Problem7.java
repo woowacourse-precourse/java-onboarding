@@ -1,6 +1,5 @@
 package onboarding;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class Problem7 {
@@ -37,8 +36,8 @@ public class Problem7 {
                 updateMyFriend(myFriends, friend1);
                 friendConnection.replace(friend2, myFriends);
             } else{
-                ArrayList<String> myFriend = setMyFriend(friend2);
-                friendConnection.put(friend1, myFriend);
+                ArrayList<String> myFriend = setMyFriend(friend1);
+                friendConnection.put(friend2, myFriend);
             }
         }
 
@@ -74,7 +73,7 @@ public class Problem7 {
                 score += 1;
                 scoreTable.replace(visitor, score);
             } else {
-                int score =1;
+                int score = 1;
                 scoreTable.put(visitor,score);
             }
         }
@@ -90,7 +89,7 @@ public class Problem7 {
 
         for (String userFriend: userFriends){
             ArrayList<String> friendsOfFriend = friendConnection.get(userFriend);
-            setMutualFriendScore(friendsOfFriend, scoreTable, notRecommended)
+            setMutualFriendScore(friendsOfFriend, scoreTable, notRecommended);
         }
 
         setVisitorScore(scoreTable, visitors, notRecommended);
@@ -98,13 +97,29 @@ public class Problem7 {
         return scoreTable;
     }
 
-
+    public static List<Map.Entry<String,Integer>> createSortedScore(Map<String, Integer> scoreTable){
+        List<Map.Entry<String, Integer>> sortedByScore = new LinkedList<>(scoreTable.entrySet());
+        sortedByScore.sort(new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                if (o1.getValue().equals(o2.getValue())){
+                    return o1.getKey().compareTo(o2.getKey());
+                }
+                return o2.getValue() - o1.getValue();
+            }
+        });
+        return sortedByScore;
+    }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
         Map<String, ArrayList<String>> friendConnection = createFriendConnection(friends);
+        Map<String, Integer> scoreTable = createScoreTable(user, friendConnection, visitors);
+        List<Map.Entry<String,Integer>> sortedByScore = createSortedScore(scoreTable);
 
-
+        List<String> answer = new ArrayList<>();
+        for (int i = 0; i<5 && i < sortedByScore.size(); i++){
+            answer.add(sortedByScore.get(i).getKey());
+        }
         return answer;
     }
 }
