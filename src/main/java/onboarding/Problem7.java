@@ -46,24 +46,43 @@ public class Problem7 {
 
 
     public  Map<String, Integer> myFriendScore (List<List<String>> friendList, String user) {
-        List<List<String>> userFriends = new ArrayList<>();
+        List<List<String>> exceptUserList = new ArrayList<>();
         Map<String, Integer> friendScore = new TreeMap<>();
-        int score = 10;
+
+        List<String> userFriends = new ArrayList<>();
+
+        //exceptionUserList 만드는 코드
         for (List<String> friend : friendList){
-            if(friend.get(0).equals(user)){
-                userFriends.add(friend);
+            String s0 = friend.get(0);
+            String s1 =friend.get(1);
+
+            if( !(s0.equals(user)) && !(s1.equals(user)) ){
+                exceptUserList.add(friend);
             }
         }
 
-        for(List<String> userfriend : userFriends) {
-            for(List<String> friend : friendList) {
-                if(userfriend.get(1).equals(friend.get(1))){
-                    if(friendScore.containsKey(friend.get(0))){
-                        friendScore.put(friend.get(0),friendScore.get(friend.get(0))+score);
+        //userFriends 만드는 코드
+        for(List<String> s : friendList) {
+            if(user.equals(s.get(0))){
+                userFriends.add(s.get(1));
+            }
+        }
+
+        //friendScore 만드는 코드
+        int score = 10;
+        for(String f : userFriends){
+            for(List<String> s : exceptUserList) {
+                if( (f.equals(s.get(1))) ) {
+                    System.out.println(friendScore.containsKey(s.get(0))+ " "+ s.get(0));
+                    //만약 이미 map에 존재하는 사람이면 map의 값+10
+                    if(friendScore.containsKey(s.get(0))){
+                        friendScore.put(s.get(0), score);
+                    }else{
+                        friendScore.put(s.get(0), 10);
                     }
-                        friendScore.put(friend.get(0),10);
                 }
             }
+            score+=10;
         }
 
         return friendScore;
