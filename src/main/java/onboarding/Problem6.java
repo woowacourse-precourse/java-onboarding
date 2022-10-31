@@ -1,16 +1,23 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Problem6 {
 
   public static List<String> solution(List<List<String>> forms) {
-    List<String> answer = List.of("answer");
     List<String> duplicateCrewEmails = getDuplicateCrewEmails(forms);
-
-    return duplicateCrewEmails;
+    Collections.sort(duplicateCrewEmails);
+    List<String> answer = distinctEmail(duplicateCrewEmails);
+    return answer;
   }
+
+  public static List<String> distinctEmail(List<String> emailList) {
+    return emailList.stream().distinct().collect(Collectors.toList());
+  }
+
 
   public static List<String> getDuplicateCrewEmails(List<List<String>> forms) {
     List<String> duplicateNameCrews = new ArrayList<>();
@@ -18,7 +25,7 @@ public class Problem6 {
     for (int i = 0; i < forms.size(); i++) {
       List<String> target = forms.get(i);
       String name = target.get(1);
-      if(findOthersByName(name, forms, i)){
+      if (findOthersByName(name, forms, i)) {
         duplicateNameCrews.add(target.get(0));
       }
     }
