@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 /**
@@ -15,10 +16,14 @@ import java.util.List;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+        HashMap<String,Integer> scoreBoard = new HashMap<>();
         visitors = new ArrayList<>(visitors);
+
         List<String> userFriends = findFriends(user,friends);
         List<String> userFOAF = findFOAF(user,friends,userFriends);
         setVisitors(visitors,userFriends);
+        setScore(scoreBoard,userFOAF,10);
+        setScore(scoreBoard,visitors,1);
         return answer;
     }
 
@@ -55,5 +60,16 @@ public class Problem7 {
 
     static void setVisitors(List<String> visitors, List<String> userFriends) {
         visitors.removeAll(userFriends);
+    }
+
+    static HashMap<String, Integer> setScore(HashMap<String,Integer> scoreBoard, List<String> userFOAF, Integer score){
+        for(String FOAF : userFOAF){
+            if(scoreBoard.get(FOAF) == null){
+                scoreBoard.put(FOAF,score);
+                continue;
+            }
+            scoreBoard.put(FOAF,scoreBoard.get(FOAF)+score);
+        }
+        return scoreBoard;
     }
 }
