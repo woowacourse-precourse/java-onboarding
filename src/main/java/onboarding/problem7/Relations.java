@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 public class Relations {
-    private List<List<String>> relation;
+    private final List<List<String>> relation;
 
     Relations(List<List<String>> relation) {
         this.relation = relation;
@@ -23,8 +23,7 @@ public class Relations {
             forJoin.addAll(relation);
         }
         Set<String> distinctSet = new HashSet<>(forJoin);
-        List<String> distinctList = new ArrayList<>(distinctSet);
-        return distinctList;
+        return new ArrayList<>(distinctSet);
     }
 
     public List<String> getFriendsList(String user) {
