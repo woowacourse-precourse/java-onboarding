@@ -8,10 +8,10 @@ public class Problem2 {
     private static final char INIT_LAST_REMOVE = ' ';
 
     public static String solution(String cryptogram) {
-        return isValidStringLength(cryptogram) ? cryptogram : removeAdjacentDuplicate(cryptogram.toCharArray());
+        return isNonDuplicateLength(cryptogram) ? cryptogram : removeAdjacentDuplicate(cryptogram.toCharArray());
     }
 
-    private static boolean isValidStringLength(String str) {
+    private static boolean isNonDuplicateLength(String str) {
         return str.length() == 1;
     }
 
