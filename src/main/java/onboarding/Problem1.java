@@ -1,50 +1,72 @@
 package onboarding;
 
 import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections;
 
 class Problem1 {
-    public static boolean check_list(List<Integer> list) {
-        return ((list.get(0) % 2 == 1) && (1 < list.get(0)) && (list.get(0) < 399) && (list.get(0) + 1 == list.get(1)));
+    // 적합한 입력값이 들어왔는지 검사하는 함수
+    public static boolean input_check(List<Integer> input) {
+        return ((input.get(0) % 2 == 1) && (1 < input.get(0)) && (input.get(0) < 399) && (input.get(0) + 1 == input.get(1)));
     }
 
-    public static int plus_check(int number) {
-        int plus_answer = 0;
+    // 각 자리 숫자를 모두 더하는 함수
+    public static List<Integer> input_plus(List<Integer> input) {
+        List<Integer> plus_answer = new ArrayList<Integer>();
 
-        while (number != 0) {
-            plus_answer += number % 10;
-            number /= 10;
+        for (int i = 0; i < input.size(); i++) {
+            int number = input.get(i);
+            int temp_plus_answer = 0;
+
+            while (number != 0) {
+                temp_plus_answer += number % 10;
+                number /= 10;
+            }
+
+            plus_answer.add(temp_plus_answer);
         }
 
         return plus_answer;
     }
 
-    public static int multi_check(int number) {
-        int multi_answer = 1;
+    // 각 자리 숫자를 모두 곱하는 함수
+    public static List<Integer> input_multi(List<Integer> input) {
+        List<Integer> multi_answer = new ArrayList<Integer>();
 
-        while (number != 0) {
-            multi_answer *= number % 10;
-            number /= 10;
+        for (int i = 0; i < input.size(); i++) {
+            int number = input.get(i);
+            int temp_multi_answer = 1;
+
+            while (number != 0) {
+                temp_multi_answer *= number % 10;
+                number /= 10;
+            }
+
+            multi_answer.add(temp_multi_answer);
         }
 
         return multi_answer;
     }
 
+    // main 함수
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
-        int pobi_result = 0;
-        int crong_result = 0;
+        List<Integer> pobi_results = new ArrayList<Integer>();
+        List<Integer> crong_results = new ArrayList<Integer>();
 
-        if (check_list(pobi) && check_list(crong)) {
-            int pobi_plus = Math.max(plus_check(pobi.get(0)), plus_check(pobi.get(1)));
-            int pobi_multi = Math.max(multi_check(pobi.get(0)), multi_check(pobi.get(1)));
+        if (input_check(pobi) && input_check(crong)) {
+            pobi_results.addAll(input_plus(pobi));
+            pobi_results.addAll(input_multi(pobi));
 
-            pobi_result = Math.max(pobi_plus, pobi_multi);
+            Collections.sort(pobi_results, Collections.reverseOrder());
+            int pobi_result = pobi_results.get(0);
 
-            int crong_plus = Math.max(plus_check(crong.get(0)), plus_check(crong.get(1)));
-            int crong_multi = Math.max(multi_check(crong.get(0)), multi_check(crong.get(1)));
+            crong_results.addAll(input_plus(crong));
+            crong_results.addAll(input_multi(crong));
 
-            crong_result = Math.max(crong_plus, crong_multi);
+            Collections.sort(crong_results, Collections.reverseOrder());
+            int crong_result = crong_results.get(0);
 
             if (pobi_result == crong_result) {
                 answer = 0;
