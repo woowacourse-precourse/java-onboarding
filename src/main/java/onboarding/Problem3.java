@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 class Clap369 {
@@ -25,6 +26,21 @@ class Clap369 {
         }
 
         return digitList;
+    }
+
+    public static int howManyClap(List<Integer> digitList) {
+        /**
+         * 숫자들로 이루어진 리스트에서 3,6,9의 개수의 합을 구하는 메소드
+         */
+
+        int clapCount = 0;
+
+        clapCount = clapCount
+                + Collections.frequency(digitList, 3)
+                + Collections.frequency(digitList, 6)
+                + Collections.frequency(digitList, 9);
+
+        return clapCount;
     }
 }
 
