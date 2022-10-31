@@ -10,10 +10,12 @@ import java.util.stream.Stream;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String[] array = cryptogram.split("");
-        List<String> str = new ArrayList<String>(Arrays.asList(array));
-        List<List<Integer>> removeList = new ArrayList<List<Integer>>();
-        int start = 0, end = 0;
-        List<String> left = new ArrayList<String>(), right = new ArrayList<String>();
+        List<String> str = new ArrayList<>(Arrays.asList(array));
+        List<List<Integer>> removeList;
+        int start;
+        int end;
+        List<String> left;
+        List<String> right;
         String result = "";
 
         while (true) {
@@ -21,6 +23,7 @@ public class Problem2 {
             if (removeList.isEmpty()) {
                 break;
             }
+
             for (int i = removeList.size() - 1; i > -1; i--) {
                 start = removeList.get(i).get(0);
                 end = removeList.get(i).get(1);
@@ -30,6 +33,7 @@ public class Problem2 {
                         .collect(Collectors.toList());
             }
         }
+
         for (String s : str) {
             result += s;
         }
@@ -37,14 +41,15 @@ public class Problem2 {
     }
 
     public static List<List<Integer>> findRemove(List<String> str) {
-        int start = 0, end = 0;
-        List<List<Integer>> removeList = new ArrayList<List<Integer>>();
+        int start = 0;
+        int end = 0;
+        List<List<Integer>> removeList = new ArrayList<>();
         while (start < str.size() && end < str.size()) {
             while (end < str.size() && Objects.equals(str.get(start), str.get(end))) {
                 end += 1;
             }
             if (end - start >= 2) {
-                List<Integer> list = new ArrayList<Integer>(Arrays.asList(start, end));
+                List<Integer> list = new ArrayList<>(Arrays.asList(start, end));
                 removeList.add(list);
             }
             start = end;

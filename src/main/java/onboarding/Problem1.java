@@ -29,12 +29,14 @@ class Problem1 {
 
     public static int getMax(List<Integer> array) {
         int maxValue = 0;
+        int sum;
+        int mul;
         for (int num : array) {
             String str = Integer.toString(num);
             String[] strArray = str.split("");
-            List<String> numList = new ArrayList<String>(Arrays.asList(strArray));
-            int sum = 0;
-            int mul = 1;
+            List<String> numList = new ArrayList<>(Arrays.asList(strArray));
+            sum = 0;
+            mul = 1;
             for (String n : numList) {
                 sum += Integer.parseInt(n);
                 mul *= Integer.parseInt(n);
