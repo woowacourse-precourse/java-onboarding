@@ -62,7 +62,7 @@ class Problem1 {
     }
 
     private static boolean checkException(List<Integer> gamer1, List<Integer> gamer2) {
-        if(!isLeftOddRightEven(gamer1) || !isLeftOddRightEven(gamer2)) {
+        if(notLeftOddRightEven(gamer1) || notLeftOddRightEven(gamer2)) {
             return true;
         }
 
@@ -92,11 +92,13 @@ class Problem1 {
         return false;
     }
 
-    private static boolean isLeftOddRightEven(List<Integer> gamer) {
-        if(gamer.get(0) % 2 == 0 || gamer.get(1) % 2 == 1) {
-            return false;
-        } else {
+    private static boolean notLeftOddRightEven(List<Integer> gamer) {
+        int leftPage = gamer.get(0);
+        int rightPage = gamer.get(1);
+        if(leftPage % 2 == 0 || rightPage % 2 == 1) {
             return true;
+        } else {
+            return false;
         }
     }
 
