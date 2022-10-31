@@ -5,6 +5,7 @@ public class Problem2 {
 
     public static String solution(String cryptogram) {
         String answer = "";
+        initState();
 
         while (state) {
             state = false;
@@ -15,6 +16,10 @@ public class Problem2 {
         }
 
         return answer;
+    }
+
+    private static void initState() {
+        state = true;
     }
 
     private static String getAnswerWithoutDuplicate(String cryptogram) {
