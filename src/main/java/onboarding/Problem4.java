@@ -5,7 +5,6 @@ import java.util.ArrayList;
 public class Problem4 {
     public static String solution(String word) {
 
-        String answer = "";
         ArrayList<String> answerArr = new ArrayList<>();
 
         char[] chArr = word.toCharArray(); // String -> char
@@ -16,22 +15,22 @@ public class Problem4 {
         }
 
         // join answer array and get answer
-        answer = String.join("", answerArr);
+        String answer = String.join("", answerArr);
 
         return answer;
     }
 
-    private static char convertAlphabet(char asciiValue) {
-        int decimalValue = asciiValue; // char -> int
+    private static char convertAlphabet(char charValue) {
+        int intValue = charValue; // char -> int (자동변환)
         // convert Alphabets
-        if(decimalValue >= 65 && decimalValue <= 90){
+        if(intValue >= 65 && intValue <= 90){
             // Alphabet Upper Case
-            decimalValue = 155 - decimalValue;
-        }else if(decimalValue >= 97 && decimalValue <= 122){
+            intValue = 155 - intValue;
+        }else if(intValue >= 97 && intValue <= 122){
             // Alphabet Lower Case
-            decimalValue = 219 - decimalValue;
+            intValue = 219 - intValue;
         }
-        char newChar = (char) decimalValue;
+        char newChar = (char) intValue; // int -> char (강제변환)
         return newChar;
     }
 }
