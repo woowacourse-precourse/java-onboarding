@@ -24,3 +24,21 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+---
+
+### 기능 목록 정리
+#### problem Class
+  - Sns 객체 생성 및 추천 기능 위임
+#### Sns
+  - Sns 멤버 등록
+  - 친구 관계 저장.
+  - 방문 기록 저장.
+  - 추천 점수 업데이트.
+    - 친구가 아닌 멤버 구하기.
+    - 추천 점수 업데이트 by 친구 관계
+    - 추천 점수 업데이트 by 방문 기록
+  - 추천 Map에서 추천 점수 높은 순으로 5명 뽑기
+#### 추천받은 친구 (RecommendedFriend)
+  - 이름과 추천 점수 변수.
+  - CompareTO : 추천 점수 높은 순으로 정렬하도록
