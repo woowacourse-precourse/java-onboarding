@@ -4,7 +4,8 @@ import java.util.List;
 
 public class Problem4 {
     public static String solution(String word) {
-        if(word.length() > 1000 || word.length() < 1) System.exit(1);
+        int length = word.length();
+        if(length > 1000 || length < 1) System.exit(1);
         char[] character = word.toCharArray();
         String answer = "";
         int temp;
