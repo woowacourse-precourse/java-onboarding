@@ -4,17 +4,17 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int pobiResult, cronResult;
+        int pobiResult, crongResult;
 
         if(hasErrorOnInput(pobi) ||hasErrorOnInput(crong)) {
             return -1;
         }
 
         pobiResult = calculateScore(pobi);
-        cronResult = calculateScore(crong);
+        crongResult = calculateScore(crong);
 
-        if(pobiResult == cronResult) return 0;
-        else if(pobiResult > cronResult) return 1;
+        if(pobiResult == crongResult) return 0;
+        else if(pobiResult > crongResult) return 1;
         else return 2;
     }
 
@@ -33,7 +33,7 @@ class Problem1 {
 
     private static int calculateScore(List<Integer> input) {
         int target = input.get(1);
-        int resultCandidate[] = {0, 1};
+        int[] resultCandidate = {0, 1};
 
         if(target % 10 == 0)
             target = input.get(0);
