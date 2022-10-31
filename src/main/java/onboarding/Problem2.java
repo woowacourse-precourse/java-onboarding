@@ -30,7 +30,7 @@ public class Problem2 {
                 pointer++;
             }
 
-            if (pointer > 0) {
+            else if (pointer > 0) {
                 return removeDuplicate(crypto, pointer, i);
             }
 
