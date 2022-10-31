@@ -29,6 +29,9 @@ class Problem1 {
         int[] leftPobi = new int[tmpPobi.size()]; int[] rightPobi = new int[tmpPobi.size()];
         int[] leftCrong = new int[tmpCrong.size()]; int[] rightCrong = new int[tmpCrong.size()];
 
+        getIntArr(leftPobi, rightPobi, tmpPobi);
+        getIntArr(leftCrong, rightCrong, tmpCrong);
+
 
 
         int answer = Integer.MAX_VALUE;
