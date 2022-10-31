@@ -22,10 +22,10 @@ public class Problem7 {
         answer.sort(new Comparator<String>() {
             @Override
             public int compare(String o1, String o2) {
-                return list.get(o1).compareTo(list.get(o2));
+                return list.get(o2).compareTo(list.get(o1));
             }
         });
-        Collections.sort(answer);
+       // Collections.sort(answer);
 
         // answer이 5이상의 데이터를 가지고있으면 나머지는 삭제하기
         if(answer.size()>5) {
