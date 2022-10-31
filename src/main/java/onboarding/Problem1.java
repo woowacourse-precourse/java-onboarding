@@ -30,4 +30,9 @@ class Problem1 {
                 .mapToInt(digit->Integer.parseInt(digit))
                 .toArray();
     }
+
+    private static int getDigitsSum(int[] digits) {
+        return Arrays.stream(digits)
+                .sum();
+    }
 }
