@@ -8,8 +8,13 @@ import java.util.List;
 // 3. 거꾸로 만들어주는 메소드
 public class Problem5 {
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
-        return answer;}
+        List<Integer> moneyTemp = new ArrayList<>();
+        moneyTemp = intToList(money);
+        moneyTemp = makemoneyList(moneyTemp);
+
+        return inversemoneyList(moneyTemp);
+
+    }
     public static List<Integer> intToList(int i){  // int money -> List로 떼어냄
         List<Integer> moneyList = new ArrayList<>();
         while(i>0){ // 50237
