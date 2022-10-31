@@ -35,7 +35,11 @@ public class Problem7 {
         }
 
         // user와 이미 친구가 되어 있는 사람들의 목록
-        HashSet<String> userFriends = friendLists.get(user);
+        HashSet<String> userFriends = new HashSet<>();
+        if (friendLists.containsKey(user)) {
+            userFriends = friendLists.get(user);
+        }
+        // user가 아무와도 친구가 되어있지 않은 경우에는 userFriends을 초기화 상태로 그대로 둠
 
         for (String oneUser : totalUserList) {
             // 본인은 제외 & user와 이미 친구가 되어 있는 사람은 추천하지 않기 때문에 제외
