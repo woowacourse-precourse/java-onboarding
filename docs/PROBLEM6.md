@@ -7,6 +7,16 @@
 
 신청받은 닉네임 중 **같은 글자가 연속적으로 포함** 되는 닉네임을 작성한 지원자의 이메일 목록을 return 하도록 solution 메서드를 완성하라.
 
+### 기능목록
+
+- 주어진 forms의 데이터를 리스트 email과 nickname에 모을 수 있는 checkForms 함수 구현
+- forms의 데이터 중 0번째는 리스트 email에 추가, 1번째는 리스트 nickname에 추가하는 addData 함수 구현
+- 리스트 nickname의 크기만큼 반복문을 도는 findNickName 함수 구현
+- 해당 nickname의 값을 문자열 2개씩 자르는 함수 compareNickName 함수 구현 
+- 2크기로 자른 문자열이 리스트 nickname에 있는지 확인하는 checkEmailIndex 함수 구현
+- 중복되는 문자열을 구한 Index값으로, 같은 위치의 리스트 email의 값을 가져오는 findEmail 함수 구현
+- 찾아온 값 email을 정렬하는 sortEmail 함수 구현
+
 ### 제한사항
 
 - 두 글자 이상의 문자가 연속적으로 순서에 맞추어 포함되어 있는 경우 중복으로 간주한다.
