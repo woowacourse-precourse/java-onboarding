@@ -9,6 +9,12 @@ public class Problem7 {
         Map<String, List<String>> friendsList = new HashMap<>();
         Map<String, Integer> points = new HashMap<>();
 
+        user.toLowerCase();
+
+        if(!checkUserName(user) && !checkFriendsList(friends))
+            return answer;
+
+
         friendsList = addFriendsList(friends);
         points = cal_visitor_Points(friendsList, visitors, user);
         points = cal_friends_Points(points, friendsList, user);
@@ -89,6 +95,26 @@ public class Problem7 {
             }
         }
         return points;
+    }
+    public static boolean checkUserName(String user){
+        System.out.println("checkUserName");
+        return user.length() > 0  && user.length() < 31;
+    }
+
+    public static boolean checkFriendsList(List<List<String>> friends){
+        boolean result = false;
+        for(List<String> key : friends){
+            if(key.size() == 2) {
+                for (String temp : key) {
+                    if (temp.length() < 31) {
+                        result = true;
+                        break;
+                    }
+                }
+            }
+        }
+        System.out.println("checkFriendList");
+        return result;
     }
 
 }
