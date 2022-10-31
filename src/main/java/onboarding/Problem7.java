@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -9,9 +10,18 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
         Problem7 P = new Problem7();
         List<String> following = P.checkFriend(user, friends);
+        List<People> userScore = new ArrayList<>();
 
         for(List list : friends) {
-            P.checkNeighbor(list, following, user);
+            if(P.checkNeighbor(list, following, user)){
+                for(People p : userScore) {
+                    if(p.name == list.get(1)){
+                        p.score += 10;
+                    }else{
+                        userScore.add(new People(String.valueOf(list.get(1)),10));
+                    }
+                }
+            };
         }
         return answer;
     }
@@ -46,6 +56,6 @@ class People {
     int score;
     People(String name, int score){
         this.name = name;
-        this.score += score;
+        this.score = score;
     }
 }
