@@ -16,6 +16,11 @@ public class Problem5 {
         // 화폐 단위로 이루어진 숫자 배열 만들기
         int[] currency = { 50000, 10000, 5000, 1000, 500, 100, 50, 10, 1 };
 
+        for(int num : currency) {
+            // 큰 금액의 화폐 순서로 돈의 액수 나누어서 몫을 배열에 추가하기
+            answer.add(money / num);
+        }
+
         return answer;
     }
 }
