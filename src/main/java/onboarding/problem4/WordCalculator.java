@@ -55,7 +55,7 @@ public class WordCalculator {
      *
      * @param standardA 알파벳 A 혹은 a
      * @param standardZ 알파벳 Z 혹은 z
-     * @param target 변경할 문자
+     * @param target    변경할 문자
      * @return 변경한 문자
      */
     private static char calculateCharacter(char standardA, char standardZ, char target) {
