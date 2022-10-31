@@ -2,8 +2,14 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+
+        while (true) {
+            int beforeLen = cryptogram.length();
+            cryptogram = decode(cryptogram);
+            if (beforeLen == cryptogram.length()) {
+                return cryptogram;
+            }
+        }
     }
 
     private static String decode(String cryptogram) {
