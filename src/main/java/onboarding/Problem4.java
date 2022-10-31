@@ -31,13 +31,12 @@ public class Problem4 {
 
     private static String treeFrogDictionary(String word) {
         char wordChar = word.charAt(0);
-        int wordAscii = wordChar;
 
         if (Character.isUpperCase(wordChar)) {
-            return asciiToString(UPPER_A_ASCII + UPPER_Z_ASCII - wordAscii);
+            return asciiToString(UPPER_A_ASCII + UPPER_Z_ASCII - (int) wordChar);
         }
         if (Character.isLowerCase(wordChar)) {
-            return asciiToString(LOWER_A_ASCII + LOWER_Z_ASCII - wordAscii);
+            return asciiToString(LOWER_A_ASCII + LOWER_Z_ASCII - (int) wordChar);
         }
         return word;
     }
