@@ -49,9 +49,7 @@ class Problem1 {
 
         int crongNumber = checkBigNumber(cLeftBigNumber, cRightBigNumber);
 
-        answer = getAnswer(answer, pobiNumber, crongNumber);
-
-        return answer;
+        return getAnswer(answer, pobiNumber, crongNumber);
     }
 
     private static int getAnswer(int answer, int pobiNumber, int crongNumber) {
