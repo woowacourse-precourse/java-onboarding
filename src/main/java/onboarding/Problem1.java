@@ -3,10 +3,6 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
-    /**
-     * todo 예외처리
-     * 2. pobi, crong 배열 길이
-     */
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
@@ -46,6 +42,7 @@ class Problem1 {
         int left = pages.get(0);
         int right = pages.get(1);
 
+        if(pages.size() != 2) return true; // 배열 길이가 2가 아님
         if(left < 1 || left > 400 || right < 1 || right > 400) return true; // 페이지 번호 범위(1~400) 벗어남
         if(left > right) return true; // 왼쪽 페이지 번호가 오른쪽 페이지 번호보다 큼
         if(left % 2 != 1) return true; // 왼쪽 페이지 번호가 홀수값이 아님
