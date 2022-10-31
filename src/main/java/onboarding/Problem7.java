@@ -35,6 +35,7 @@ public class Problem7 {
     public static List<String> userFriends (String user, List<List<String>> friends) {
         List<List<String>> list = new ArrayList<>();
         List<String> friendsOfUser = new ArrayList<>();
+        
         for (int i = 0; i < friends.size(); i++) {
             if (friends.get(i).contains(user)) list.add(friends.get(i));
         }
@@ -44,8 +45,28 @@ public class Problem7 {
         }
 
         friendsOfUser.removeAll(Arrays.asList(user));
-        Collections.sort(friendsOfUser);
-        return friendsOfUser;
+
+
+        List<List<String>> arr = new ArrayList<>();
+        for (int i = 0; i < friends.size(); i++) {
+            for (int j = 0; j < friends.get(i).size(); j++) {
+                String name = friends.get(i).get(j);
+                if (friends.get(i).contains(name)) arr.add(friends.get(i));
+            }
+        }
+
+        List<String> result = new ArrayList<>();
+        for (int i = 0; i < arr.size(); i++) {
+            for (int j = 0; j < arr.get(i).size(); j++) {
+                result.add(arr.get(i).get(j));
+            }
+        }
+
+        result = result.stream().distinct().filter(s -> !s.equals(user)).collect(Collectors.toList());
+        for (int i = 0; i < friendsOfUser.size(); i++) {
+            result.remove(friendsOfUser.get(i));
+        }
+        return result;
     }
 
     // TODO 뽑은 요소들에서 user와 친구인 유저를 찾는다.
@@ -54,6 +75,26 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> users = getUsers(user, friends, visitors);
         List<String> friendsOfUser = userFriends(user, friends);
-        return null;
+        Map<String, Integer> recommendUser = new HashMap<>();
+
+        // Map에 user의 이름과 점수를 담는다.
+        for (int i = 0; i < users.size(); i++) {
+            recommendUser.put(users.get(i), 0);
+        }
+
+        for (int i = 0; i < friendsOfUser.size(); i++) {
+            String name = friendsOfUser.get(i);
+            if (recommendUser.containsKey(name)) {
+                recommendUser.put(name, recommendUser.get(name)+10);
+            }
+        }
+
+        for (int i = 0; i < visitors.size(); i++) {
+            String name = visitors.get(i);
+            if (recommendUser.containsKey(name)) {
+                recommendUser.put(name, recommendUser.get(name)+1);
+            }
+        }
+        return friendsOfUser;
     }
 }
