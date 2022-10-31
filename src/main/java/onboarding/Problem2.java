@@ -7,13 +7,25 @@ public class Problem2 {
 
     private static final int MIN_LENGTH = 1;
     private static final int MAX_LENGTH = 1000;
+    private static final String LOWERCASE_REG = "^[a-z]*$";
 
     public static String solution(String cryptogram) {
+        checkException(cryptogram);
+        String answer = getAnswer(cryptogram);
+        return answer;
+    }
+
+    public static void checkException(String cryptogram) {
         if (!isValidLengthStringException(cryptogram)) {
             throw new IllegalArgumentException("유효한 문자열의 길이를 입력해주세요. (1~1000 자)");
         }
-        String answer = getAnswer(cryptogram);
-        return answer;
+        if(!isLowerCaseString(cryptogram)) {
+            throw new IllegalArgumentException("유효한 문자를 입력해주세요. 문자는 소문자로만 이루어져 있습니다.");
+        }
+    }
+
+    public static boolean isLowerCaseString(String cryptogram) {
+        return cryptogram.matches(LOWERCASE_REG);
     }
 
     public static boolean isValidLengthStringException(String cryptogram) {
