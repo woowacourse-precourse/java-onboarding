@@ -8,9 +8,11 @@ import java.util.List;
 
 public class Problem3 {
     public static int solution(int number) {
+        int answer = 0;
         List<Integer> list = new ArrayList<>();
         int j = 1;
 
+        //기능1
         for (int i=1;i<number+2;i++) {
             while (j>0) {
                 list.add(j%10);
@@ -18,9 +20,13 @@ public class Problem3 {
             }
             j = i;
         }
-        System.out.println(list);
 
-        int answer = 0;
+        //기능2
+        for (int i=0;i<list.toArray().length;i++) {
+            if (list.get(i)==3 || list.get(i)==6 || list.get(i)==9) {
+                answer++;
+            }
+        }
         return answer;
     }
 }
