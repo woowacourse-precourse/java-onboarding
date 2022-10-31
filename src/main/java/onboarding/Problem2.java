@@ -2,63 +2,54 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
 
-        int startIdx = -1;
+        String answer = "answer";
 
         for (int i = 1; i < cryptogram.length(); i++) {
             if (cryptogram.charAt(i) == cryptogram.charAt(i-1)) {
-                startIdx = i-1;
-                break;
+                
+                int lastIdx = findLastIdx(cryptogram, i-1);
+                System.out.println("startIdx = " + (i-1));
+                System.out.println("lastIdx = " + lastIdx);
             }
         }
 
-
-        answer = findIdx(cryptogram, startIdx);
-
+        
 
         return answer;
     }
 
 
-    public static String findIdx(String cryptogram, int startIdx) {
+    //중복되는 문자열의 마지막 인덱스 찾기
+    public static int findLastIdx(String cryptogram, int startIdx) {
+
+
 
         int lastIdx = startIdx;
 
-        for (int i = startIdx; i < cryptogram.length(); i++) {
 
+
+        for (int i = startIdx+1; i < cryptogram.length(); i++) {
             if (cryptogram.charAt(i) == cryptogram.charAt(i-1)) {
-                System.out.println(cryptogram.charAt(i));
-                System.out.println(cryptogram.charAt(i-1));
                 lastIdx += 1;
 
-            }
-
-            if ((cryptogram.charAt(i) != cryptogram.charAt(i-1)) && lastIdx != startIdx) {
-
-
-                StringBuffer str = new StringBuffer(cryptogram);
-                cryptogram = str.delete(startIdx,lastIdx+1).toString();
-
-                System.out.println("cryptogram = " + cryptogram);
-
+            }else {
                 break;
-
             }
-
-
-
 
         }
 
-        return cryptogram;
+
+        return lastIdx;
     }
 
 
     public static void main (String[] args) {
 
-        String cryptogram = "browoanoommnaon";
+        //String cryptogram = "browoanoommnaon";
+        //String cryptogram = "zyelleyz";
+        String cryptogram = "ddogga";
 
-        solution(cryptogram);
+        System.out.println("answer=" + solution(cryptogram));
     }
 }
