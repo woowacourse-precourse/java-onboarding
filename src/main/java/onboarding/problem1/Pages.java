@@ -30,7 +30,10 @@ public class Pages {
     }
 
     private boolean isFaultSet(){
-        //6. 나올 수 없는 페이지인지, 연속된 페이지인지 체크는 메소드
+        if(pages.get(0) < 2 || pages.get(1) < 3)return true;
+        if(pages.get(0)>398 || pages.get(1) > 399)return true;
+        if (pages.get(0) + 1 != pages.get(1)) return true;
+        if (pages.get(1) == 0) return true;
         return false;
     }
 
