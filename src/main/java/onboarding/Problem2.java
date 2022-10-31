@@ -2,6 +2,14 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
+        Solver2 solver2 = new Solver2();
+        return solver2.solve(cryptogram);
+    }
+}
+
+class Solver2 {
+
+    public String solve(String cryptogram) {
         final char REMOVED = '-';
         char[] chars = cryptogram.toCharArray();
         final int totalLength = cryptogram.length();
@@ -48,7 +56,7 @@ public class Problem2 {
         return new String(chars).replaceAll("-", "");
     }
 
-    private static int getNextNormalCharIdx(char[] chars, int curIdx) {
+    private int getNextNormalCharIdx(char[] chars, int curIdx) {
         int i = curIdx + 1;
         for (; i < chars.length; i++) {
             if (chars[i] != '-')
