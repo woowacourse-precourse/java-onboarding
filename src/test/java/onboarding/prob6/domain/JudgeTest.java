@@ -19,7 +19,8 @@ class JudgeTest {
             Arguments.of("{제이엠}, {이엠박} -> true", "제이엠", "이엠박", true),
             Arguments.of("{가나다라마바}, {아차타카타가나} -> true", "가나다라마바", "아차타카타가나", true),
             Arguments.of("{가나다라마바}, {아차타카타} -> false", "가나다라마바", "아차타카타", false),
-            Arguments.of("{워니}, {워니} -> true", "워니", "워니", true)
+            Arguments.of("{워니}, {워니} -> true", "워니", "워니", true),
+            Arguments.of("{워}, {워} -> false", "워", "워", false)
         );
     }
 
