@@ -8,6 +8,7 @@ import java.util.List;
 public class Problem7 {
 
 	private static final int FRIEND_OF_FRIEND_SCORE = 10;
+	private static final int VISITOR_SCORE = 1;
 
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 		List<String> answer = Collections.emptyList();
@@ -18,6 +19,23 @@ public class Problem7 {
 		InputValidator.checkRightInput(user, friends, visitors);
 		HashMap<String, List<String>> friendsRelations = getFriendsRelations(friends, user);
 		HashMap<String, Integer> friendOfFriendScores = getFriendOfFriendScore(friendsRelations, user);
+		HashMap<String, Integer> visitorsScore = getVisitorsScore(visitors);
+	}
+
+	public static HashMap<String, Integer> getVisitorsScore(final List<String> visitors) {
+		HashMap<String, Integer> visitorsScores = new HashMap<>();
+		for (String visitor : visitors) {
+			putVisitorsScoreMap(visitorsScores, visitor);
+		}
+		return visitorsScores;
+	}
+
+	private static void putVisitorsScoreMap(HashMap<String, Integer> visitorsScores, String visitor) {
+		if (visitorsScores.containsKey(visitor)) {
+			visitorsScores.put(visitor, visitorsScores.get(visitor) + VISITOR_SCORE);
+		} else {
+			visitorsScores.put(visitor, VISITOR_SCORE);
+		}
 	}
 
 	public static HashMap<String, Integer> getFriendOfFriendScore(final HashMap<String, List<String>> relations,
