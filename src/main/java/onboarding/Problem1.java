@@ -32,5 +32,10 @@ class Problem1 {
         return Math.max(multiScore, sumScore);
     }
 
+    public static int getPlayerMaxScore(List<Integer> pages){
+        int leftMaxScore = getMaxScoreOfMultiAndSum(pages.get(0));
+        int rightMaxScore = getMaxScoreOfMultiAndSum(pages.get(1));
+        return Math.max(leftMaxScore, rightMaxScore);
+    }
 
 }
