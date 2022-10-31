@@ -40,8 +40,8 @@ public class Problem2 {
         List<Character> remove_duplicate_list = remove_duplicate(cryptolist);
 
         String temp_answer = "";
-        for (char alpha : remove_duplicate_list) {
-            temp_answer += alpha;
+        for (char alphabet : remove_duplicate_list) {
+            temp_answer += alphabet;
         }
 
         answer = temp_answer;
