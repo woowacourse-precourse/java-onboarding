@@ -6,40 +6,36 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "";
 
-        LinkedList<String> password = new LinkedList<String>();
+        while(true) {
+            String tmp = "";
+            int continuous = 0;     //연속성을 확인할 변수
 
-        for(int i = 0; i < cryptogram.length(); i++){
-            String cryptogram_i = cryptogram.substring(i, i+1);
-            password.add(cryptogram_i);
-        }
+            for (int i = 0; i < cryptogram.length()-1; i++) {
+                String cryptogram_i = cryptogram.substring(i, i + 1);
+                String cryptogram_i_next = cryptogram.substring(i + 1, i + 2);
 
-        while(true){
-            int password_size = password.size();        //검사 전 문자열의 길이 저장
-            removeSameStr(password);
-            if(password_size == password.size()){       //검사 전과 후의 문자열의 길이가 같으면 변하지 않았다는 뜻
+                if (cryptogram_i.equals(cryptogram_i_next)) {   //다음 글자와 같다면
+                    continuous = 1;
+                } else if(continuous == 1){     //다음 글자와는 다르지만 이전 글자와 같았다면
+                    continuous = 0;
+                } else {        //둘 다 아닐 경우
+                    tmp += cryptogram_i;
+                }
+
+                if(i == cryptogram.length() - 2 && continuous == 0){    //마지막 글자가 중복에 해당되지 않을 경우
+                    tmp += cryptogram_i_next;
+                }
+            }
+
+            if(tmp.equals(cryptogram)) {        //cryptogram에 중복이 없어 그대로 저장되었다면
                 break;
+            } else {
+                cryptogram = tmp;
             }
         }
 
-        for(int i = 0; i < password.size(); i++){
-            answer += password.get(i);                  //answer에 password에 남은 문자 하나씩 더해서 붙여줌
-        }
+        answer = cryptogram;
 
         return answer;
-    }
-
-    public static LinkedList<String> removeSameStr(LinkedList<String> password){
-        for(int i = 0; i < password.size() - 1; i++){
-            String password_i = password.get(i);
-            String password_i_next = password.get(i+1);
-
-            if(password_i.equals(password_i_next)) {
-                password.remove(i);
-                password.remove(i);         //위에서 제거하면 i+1에 있던 문자가 i로 옮겨짐, 제거
-                break;
-            }
-        }
-
-        return password;
     }
 }
