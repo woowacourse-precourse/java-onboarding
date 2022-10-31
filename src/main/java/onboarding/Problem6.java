@@ -15,20 +15,27 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
 
-        if (!verificationCheckAboutCrews(forms)) {
+        if(!verificationTotalCheck(forms)) {
             return List.of("Check Restrictions");
-        }
-
-        for (List<String> form : forms) {
-            if (!verificationCheckAboutEmail(form) || !verificationCheckAboutNickname(form)) {
-                return List.of("Check Restrictions");
-            }
         }
 
         TwoLetters twoLetters = new TwoLetters(forms);
         answer = twoLetters.getAnswer();
 
         return answer;
+    }
+
+    public static boolean verificationTotalCheck(List<List<String>> forms) {
+        if (!verificationCheckAboutCrews(forms)) {
+            return false;
+        }
+
+        for (List<String> form : forms) {
+            if (!verificationCheckAboutEmail(form) || !verificationCheckAboutNickname(form)) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public static boolean verificationCheckAboutCrews(List<List<String>> forms) {
