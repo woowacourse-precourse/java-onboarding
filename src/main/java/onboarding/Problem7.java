@@ -12,13 +12,15 @@ import java.util.*;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
-        HashMap<String, Integer> map = visitorsCount(visitors); //방문한 사람 추가
+        Map<String, Integer> map = visitorsCount(visitors); //방문한 사람 추가
         List<String> friendList = followedFriends(user, friends);
-        HashMap<String, Integer> newMap = newFriend(friends,friendList,map);
+        Map<String, Integer> newMap = newFriend(friends,friendList,map);
+        newMap = sortByValue(newMap);
+        // System.out.println(newMap);
         return answer;
     }
 
-    public static HashMap<String, Integer> visitorsCount(List<String> visitors) {
+    public static Map<String, Integer> visitorsCount(List<String> visitors) {
         HashMap<String, Integer> map = new HashMap<String, Integer>();
         for (int i = 0; i < visitors.size(); i++) {
             String visitor = visitors.get(i);
@@ -49,7 +51,7 @@ public class Problem7 {
         return friendList;
     }
 
-    public static HashMap<String, Integer> newFriend(List<List<String>> friends, List<String> friendList, HashMap<String, Integer> map) {
+    public static Map<String, Integer> newFriend(List<List<String>> friends, List<String> friendList, Map<String, Integer> map) {
         for (int i = 0; i < friends.size(); i++) {
             String idA = new String(friends.get(i).get(0));
             String idB = new String(friends.get(i).get(1));
@@ -65,7 +67,7 @@ public class Problem7 {
         return map;
     }
 
-    public static HashMap<String, Integer> plusTenPoints(String id, HashMap<String, Integer> map) {
+    public static Map<String, Integer> plusTenPoints(String id, Map<String, Integer> map) {
         if (map.containsKey(id)) {
             map.put(id, map.get(id) + 10);
         } else {
@@ -74,15 +76,15 @@ public class Problem7 {
         return map;
     }
 
-    public static HashMap<String, Integer> sortByValue(HashMap<String, Integer> hashMap) {
+    public static Map<String, Integer> sortByValue(Map<String, Integer> hashMap) {
         List<Map.Entry<String, Integer>> list = new LinkedList<Map.Entry<String, Integer>>(hashMap.entrySet());
         Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
             public int compare(Map.Entry<String, Integer> o1,
                                Map.Entry<String, Integer> o2) {
-                return (o1.getValue()).compareTo(o2.getValue());
+                return (o2.getValue()).compareTo(o1.getValue());
             }
         });
-        HashMap<String, Integer> temp = new LinkedHashMap<String, Integer>();
+        Map<String, Integer> temp = new LinkedHashMap<String, Integer>();
         for (Map.Entry<String, Integer> aa : list) {
             temp.put(aa.getKey(), aa.getValue());
         }
