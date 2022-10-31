@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -52,7 +53,7 @@ public class Problem7 {
         int getScore(String name) {
             int score = 0;
             score += numOfFriends(name) * 10;
-            score += getPerson(name).visit;
+            score += getPerson(name).getVisit();
             return score;
         }
         int numOfFriends(String name) {
@@ -73,7 +74,8 @@ public class Problem7 {
         }
     }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
+
         return answer;
     }
 }
