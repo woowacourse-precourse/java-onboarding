@@ -76,16 +76,8 @@ class Problem1 {
             return true;
         }
 
-        // 페이지 번호가 정해진 범위에 속하는지 검증
-        for(Integer page : gamer1) {
-            if(page < MIN_PAGE || page > MAX_PAGE) {
-                return true;
-            }
-        }
-        for(Integer page : gamer2) {
-            if(page < MIN_PAGE || page > MAX_PAGE) {
-                return true;
-            }
+        if(notInRange(gamer1) || notInRange(gamer2)) {
+            return true;
         }
         return false;
     }
@@ -117,5 +109,14 @@ class Problem1 {
         } else {
             return false;
         }
+    }
+
+    private static boolean notInRange(List<Integer> gamer) {
+        for(Integer page : gamer) {
+            if(page < MIN_PAGE || page > MAX_PAGE) {
+                return true;
+            }
+        }
+        return false;
     }
 }
