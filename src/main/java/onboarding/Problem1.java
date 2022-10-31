@@ -4,7 +4,10 @@ import java.util.List;
 
 class Problem1 {
     public static boolean isValidParameter(List<Integer> pages) {
-
+        if (pages.get(0) <= 1 || pages.get(0) >= 399) {
+            return false;
+        }
+        return pages.get(1) - pages.get(0) == 1;
     }
 
     public static int getEachMaximumNumber(Integer page) {
