@@ -59,4 +59,13 @@ public class Problem6 {
             nickHash.put(tmp,nickHash.getOrDefault(tmp,0)+1);
         }
     }
+
+    /* 기능 3 : 닉네임 중복 확인 */
+    private static boolean CheckDuplicates(List<String> forms, Map<String, Integer> nickHash) {
+        String nickname = forms.get(1);
+        for(int i=0;i<nickname.length()-1;i++){
+            String tmp = nickname.substring(i,i+2);
+            if(nickHash.get(tmp)>1)return true;
+        }return false;
+    }
 }
