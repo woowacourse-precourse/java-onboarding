@@ -26,6 +26,20 @@ public class Problem4 {
         return upperCaseMappingMap;
     }
 
+    // 소문자 아스키코드 변환 Map 을 생성하는 메서드
+    public static Map<String, String> reverseASCIIForLowerCase() {
+
+        Map<String, String> lowerCaseMappingMap = new HashMap<>();
+
+        // 소문자 아스키코드 시작점 97, 소문자 아스키코드 종료점 123 까지 반복
+        // 현재 소문자 아스키코드를 (97 + 123 - 1) = 219 와 뺄셈한 값으로 매핑
+        for (int i = 97; i < 123; i++) {
+            lowerCaseMappingMap.put(String.valueOf((char) i), String.valueOf((char) (219 - i)));
+        }
+
+        return lowerCaseMappingMap;
+    }
+
     public static String solution(String word) {
         String answer = "";
         return answer;
