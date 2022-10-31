@@ -18,7 +18,18 @@ public class Problem4 {
     }
 
     private static char convertLetter(int asciiLetter) {
+        char convertedLetter = ' ';
 
+        if (isSpace(asciiLetter) == true) { // 공백일 경우
+            return ' ';
+        }
+        if (isLower(asciiLetter) == true) { // 소문자일 경우
+            convertedLetter = convertLowerCase(asciiLetter);
+        }
+        if (isUpper(asciiLetter) == true) { // 대문자일 경우
+            convertedLetter = convertUpperCase(asciiLetter);
+        }
+        return convertedLetter;
     }
 
     private static boolean isSpace(int asciiLetter) {
