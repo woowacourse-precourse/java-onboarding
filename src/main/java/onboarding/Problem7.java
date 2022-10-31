@@ -11,7 +11,10 @@ public class Problem7 {
         Map<String, Integer> scores = new HashMap<>();
 
         registerFriends(friends, userFriends);
+        Friends myFriends = userFriends.get(user);
+
         calculateVisitorScores(visitors, scores);
+        calculateSameFriendsScore(userFriends, scores, myFriends);
         return Collections.emptyList();
     }
 
@@ -31,5 +34,17 @@ public class Problem7 {
 
     private static void calculateVisitorScores(List<String> visitors, Map<String, Integer> scores) {
         visitors.forEach(visitor -> scores.put(visitor, scores.getOrDefault(visitor, 0) + 1));
+    }
+
+    private static void calculateSameFriendsScore(Map<String, Friends> userFriends, Map<String, Integer> scores, Friends myFriends) {
+        for (Map.Entry<String, Friends> userFriend : userFriends.entrySet()) {
+            String username = userFriend.getKey();
+            Friends friends = userFriend.getValue();
+
+            int sameFriendsScore = myFriends.sameFriendsCount(friends) * 10;
+            int score = scores.getOrDefault(username, 0);
+
+            scores.put(username, score + sameFriendsScore);
+        }
     }
 }
