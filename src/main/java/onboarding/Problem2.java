@@ -1,21 +1,34 @@
 package onboarding;
 
+import java.util.Stack;
+
 public class Problem2 {
-    public StringBuilder decrypt(StringBuilder sb, char c){
-        if(sb.length()==0) return sb.append(c);
 
-        int sbLastIndex = sb.length()-1;
-        if(sb.charAt(sbLastIndex)==c) return sb.deleteCharAt(sbLastIndex);
+    public void removeStackDuplication(Stack<Character> stk, int dupCount){
 
-        return sb.append(c);
+    }
+
+    public int countDuplication(Stack<Character> stk, int dupCount, char c) {
+        return dupCount;
+    }
+
+    public boolean compareTwoGrams(String cryptogram, String decryptgram){
+        return true;
+    }
+
+    public String decrypt(String cryptogram){
+        return "";
     }
 
     public static String solution(String cryptogram) {
         Problem2 T = new Problem2();
-        StringBuilder sb = new StringBuilder();
-        for(char c : cryptogram.toCharArray()){
-            sb = T.decrypt(sb,c);
+        String decryptgram = "";
+        boolean whileFlag = true;
+        while(whileFlag){
+            decryptgram = T.decrypt(cryptogram);
+            whileFlag = T.compareTwoGrams(cryptogram, decryptgram);
+            cryptogram = decryptgram;
         }
-        return sb.toString();
+        return decryptgram;
     }
 }
