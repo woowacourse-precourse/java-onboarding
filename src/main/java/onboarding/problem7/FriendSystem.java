@@ -1,26 +1,32 @@
 package onboarding.problem7;
 
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
-import java.util.TreeMap;
 
 public class FriendSystem {
     private static final int MAX_FAIR_INDEX = 1;
+    private String user;
     private final HashSet<String> friends;
+    private final Map<String, Integer> friendMap;
 
-    public FriendSystem() {
-        friends = new HashSet<>();
+    public FriendSystem(String user) {
+        this.friendMap = new HashMap<>();
+        this.friends = new HashSet<>();
+        this.user = user;
     }
 
-    private void findFriend(String user, List<List<String>> friendList) {
+
+    private void findFriend(List<List<String>> friendList) {
         for (List<String> friendPair : friendList) {
-            checkIsUserFriend(user,friendPair);
+            checkIsUserFriend(friendPair);
         }
     }
 
-    private void checkIsUserFriend(String user, List<String> friendPair) {
+    private void checkIsUserFriend(List<String> friendPair) {
         if (friendPair.contains(user)) {
             int userIdx = friendPair.indexOf(user);
             friends.add(friendPair.get(MAX_FAIR_INDEX-userIdx));
@@ -44,6 +50,16 @@ public class FriendSystem {
         if (friends.contains(friend)) {
             int otherFriendIdx = MAX_FAIR_INDEX-idx;
             String otherFriend = friendPair.get(otherFriendIdx);
+            checkIsOtherFriend(otherFriend);
+        }
+    }
+
+    private void checkIsOtherFriend(String otherFriend) {
+        if (!Objects.equals(otherFriend, user)) {
+            if (!friendMap.containsKey(otherFriend)) {
+                friendMap.put(otherFriend, 0);
+            }
+            friendMap.put(otherFriend, friendMap.get(otherFriend)+10);
         }
     }
 }
