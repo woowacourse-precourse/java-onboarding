@@ -6,23 +6,24 @@
 package onboarding;
 
 public class Problem4 {
+
     public static String solution(String word) {
         return convertWord(word);
     }
 
     public static String convertWord(String word) {
-        String newWord = "";
+        StringBuilder newWord = new StringBuilder();
         for (int i = 0; i < word.length(); i++) {
-            newWord += charReturnConvert(word.charAt(i));
+            newWord.append(charReturnConvert(word.charAt(i)));
         }
-        return newWord;
+        return newWord.toString();
     }
 
     public static char charReturnConvert(char c) {
-        if (c >= 65 && c <= 90) {
-            return (char) (155 - c);
-        } else if (c >= 97 && c <= 122) {
-            return (char) (219 - c);
+        if (c >= 'A' && c <= 'Z') {
+            return (char) ('A' + 'Z' - c);
+        } else if (c >= 'a' && c <= 'z') {
+            return (char) ('a' + 'z' - c);
         }
         return c;
     }
