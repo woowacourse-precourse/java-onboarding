@@ -28,14 +28,12 @@ class Problem1 {
         int pobiScore = listPageGetMax(pobi);
         int crongScore = listPageGetMax(crong);
 
-        if (pobiScore > crongScore) {
-            return POBI;
-        } else if (pobiScore < crongScore) {
+        if (pobiScore < crongScore) {
             return CRONG;
-        } else if (pobiScore == crongScore) {
-            return TIE;
+        } else if (pobiScore > crongScore) {
+            return POBI;
         } else {
-            return EXCEPTION;
+            return TIE;
         }
     }
 
