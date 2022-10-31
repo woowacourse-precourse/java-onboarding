@@ -43,6 +43,16 @@ public class Problem7 {
             }
         }
 
+        // 방문자 점수
+        for (String visitor : visitors) {
+            if (!scoreMap.containsKey(visitor) && !alreadyFriends.contains(visitor)) {
+                scoreMap.put(visitor, 1);
+            }else if (scoreMap.containsKey(visitor) && !alreadyFriends.contains(visitor)) {
+                int score = scoreMap.get(visitor) + 1;
+                scoreMap.replace(visitor, score);
+            }
+        }
+
         return answer;
     }
 }
