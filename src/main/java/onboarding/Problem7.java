@@ -45,7 +45,7 @@ public class Problem7 {
             // 본인은 제외 & user와 이미 친구가 되어 있는 사람은 추천하지 않기 때문에 제외
             if (!oneUser.equals(user) && !userFriends.contains(oneUser)) {
                 // 점수 계산 후 scoreMap에 저장
-                scoreMap.replace(oneUser, getScore(friendLists, visitors, oneUser));
+                scoreMap.replace(oneUser, getScore(friendLists, userFriends, visitors, oneUser));
             }
         }
 
@@ -83,11 +83,8 @@ public class Problem7 {
     }
 
     // 유저별 점수를 계산한 후 반환하는 함수
-    private static Integer getScore(HashMap<String, HashSet<String>> friendLists, List<String> visitors, String user) {
+    private static Integer getScore(HashMap<String, HashSet<String>> friendLists, HashSet<String> userFriends, List<String> visitors, String user) {
         int score = 0;
-
-        // user와 이미 친구가 되어 있는 사람들의 목록
-        HashSet<String> userFriends = friendLists.get(user);
 
         // friends에 들어있는 유저만 확인
         if (friendLists.containsKey(user)) {
@@ -149,28 +146,50 @@ public class Problem7 {
             int user1_score = resultMap.get(i - 1).getValue();
             int user2_score = resultMap.get(i).getValue();
 
-            // 두 유저의 점수가 같았을 경우 -> sameScoreUsers에 둘 다 저장
+            // 두 유저의 점수가 같았을 경우 sameScoreUsers에 둘 다 저장
             if (user1_score == user2_score) {
                 sameScoreUsers.add(user1_username);
                 sameScoreUsers.add(user2_username);
                 hasSame = true; // 점수가 같은 유저가 있음을 표시
             }
 
+            // 두 유저의 점수가 같았을 경우 마지막 for문이었다면
+            if (user1_score == user2_score && i == resultMap.size() - 1) {
+                List<String> userList = new ArrayList<>(sameScoreUsers); // sameScoreUsers set에 저장되어 있던 값들을 가져오기
+                Collections.sort(userList); // 이름순 오름차순 정렬
+                result.addAll(userList);
+            }
+
             // 두 유저의 점수가 달랐을 경우
-            // 1. 이전에 점수가 같은 유저들이 있었다면 -> sameScoreUsers에 있던 값들을 오름차순 정렬한 후 result에 전부 추가
+            // 1. 마지막 for문이었다면
+            if (user1_score != user2_score && i == resultMap.size() - 1) {
+                // 이전에 점수가 같은 유저들이 있었다면 -> sameScoreUsers에 있던 값들을 오름차순 정렬한 후 result에 전부 추가
+                if (hasSame) {
+                    List<String> userList = new ArrayList<>(sameScoreUsers); // sameScoreUsers set에 저장되어 있던 값들을 가져오기
+                    Collections.sort(userList); // 이름순 오름차순 정렬
+                    result.addAll(userList);
+                }
+                // 이전에 점수가 같은 유저들이 없었다면 result에 user1의 이름을 저장
+                if (!hasSame) {
+                    result.add(user1_username);
+                }
+                // result에 user2의 이름을 저장
+                result.add(user2_username);
+                continue;
+            }
+
+            // 2. 이전에 점수가 같은 유저들이 있었다면 -> sameScoreUsers에 있던 값들을 오름차순 정렬한 후 result에 전부 추가
             if (user1_score != user2_score && hasSame) {
                 List<String> userList = new ArrayList<>(sameScoreUsers); // sameScoreUsers set에 저장되어 있던 값들을 가져오기
                 Collections.sort(userList); // 이름순 오름차순 정렬
                 result.addAll(userList);
                 sameScoreUsers = new HashSet<>(); // sameScoreUsers 초기화
+                hasSame = false; // hasSame 초기화
             }
-            // 2. 이전에 점수가 같은 유저들이 없었다면 -> result에 user1의 이름을 저장
+
+            // 3. 이전에 점수가 같은 유저들이 없었다면 -> result에 user1의 이름을 저장
             if (user1_score != user2_score && !hasSame) {
                 result.add(user1_username);
-            }
-            // 3. 마지막 for문이었다면 -> result에 user2의 이름을 저장
-            if (user1_score != user2_score &&i == resultMap.size() - 1) {
-                result.add(user2_username);
             }
         }
 
