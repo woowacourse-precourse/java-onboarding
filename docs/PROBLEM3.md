@@ -1,5 +1,5 @@
 ## 🔗 기능 목록
-1. solution (main) : 1부터 number까지 순회하며 손뼉 횟수 더하기
+1. ✅ solution (main) : 1부터 number까지 순회하며 손뼉 횟수 더하기
 2. getNumList : 각 자리 숫자 리스트 구하기
 
 ## 🚀 기능 요구 사항
