@@ -13,6 +13,9 @@ public class Problem7 {
 
         // 사용자와 함께 아는 친구의 수 => 10점 추가
         calculateFriendCountPoint(myUser, friendPoint, myFriendList, friendGraph);
+        // 방문 횟수 => 1점 추가
+        calculateVisitingCountPoint(myUser, visitors, friendPoint, myFriendList);
+        System.out.println("friendPoint = " + friendPoint);
         List<String> answer = Collections.emptyList();
         return answer;
     }
@@ -46,6 +49,26 @@ public class Problem7 {
             }
             friendPoint.put(other, friendPoint.get(other) + FRIEND_COUNT_POINT);
         }
+    }
+
+    public static void calculateVisitingCountPoint(String myUser, List<String> visitors, Map<String, Integer> friendPoint, List<String> myFriendList){
+        for (String visitor: visitors){
+            countVisiting(visitor, myUser, friendPoint, myFriendList);
+        }
+    }
+
+    public static void countVisiting(String visitor, String myUser, Map<String, Integer> friendPoint, List<String> myFriendList){
+        if (visitor.equals(myUser)){ // 본인
+            return;
+        }
+        if(myFriendList.contains(visitor)){ // 이미 친구
+            return;
+        }
+        if(friendPoint.containsKey(visitor)){
+            friendPoint.put(visitor, friendPoint.get(visitor) + VISITOR_COUNT_POINT);
+            return;
+        }
+        friendPoint.put(visitor, VISITOR_COUNT_POINT);
     }
 
     public static Map<String, List<String>> createFrinedGraph(List<List<String>> friends){
