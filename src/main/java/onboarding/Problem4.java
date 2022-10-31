@@ -14,10 +14,10 @@ public class Problem4 {
     }
 
     private static char encryptCharByFrogDict(char plainChar) {
-        if(plainChar >= 65 && plainChar <= 90)
-            return (char) ((90 - plainChar) + 65);
-        else if(plainChar >= 97 && plainChar <= 122)
-            return (char) ((122 - plainChar) + 97);
+        if(plainChar >= 'a' && plainChar <= 'z')
+            return (char) (('z' - plainChar) + 'a');
+        else if(plainChar >= 'A' && plainChar <= 'z')
+            return (char) (('Z' - plainChar) + 'A');
         else return plainChar;
     }
 }
