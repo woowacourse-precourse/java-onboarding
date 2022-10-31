@@ -86,23 +86,30 @@
 
 
 ## - 문제 6
-(클래스를 분리하지 않음)
+- (클래스를 분리하지 않음)
 - 필드
   - a. forms의 인덱스에 맞게 닉네임 중복 여부를 저장하는 List<Boolean>
 - 메소드
-  - b. [["제이", "이엠"], ["제이", "이슨"],..] List<List<String>>을 만드는 함수
+  - b. List<List<String>>을 만드는 함수 (ex.[["제이", "이엠"], ["제이", "이슨"],..])
     - forms에서 한 개의 form을 꺼내와 닉네임만 추출
-    - 두글자씩 묶여진 List<String>을 만듦
-      - "제이엠" -> ["제이", "이엠"]
+    - 두글자씩 묶여진 List<String>을 만듦 (ex."제이엠" -> ["제이", "이엠"])
     - forms와 동일한 인덱스에 위 List<String>를 삽입
   - a 필드를 만드는 함수
   - 닉네임 중복 여부를 확인하는 함수
     - b에서 만들어진 List<List<String>> 길이 만큼 looping 돌기
       - a 필드가 true인 인덱스는 건너뛰고 다음 인덱스로
     - 하나의 List<String>을 꺼내 옴
-    - List<String>을 looping 돌며 한 String(ex. "제이")씩 중복 확인
+    - List<String>을 looping 돌며 한 String(ex."제이")씩 중복 확인
       - 나머지 List<String>에 String이 들어 있으면 a 필드값 true 갱신
         - 현재 String 꺼내진 인덱스와 중복된 인덱스 모두 갱신
+
+- **리팩터링**
+  - 클래스 분리
+    - DupeChecker
+      - isdup_list 필드 제거(반환값으로 필드에 부적절) / forms 필드 추가
+      - ArrayList looping 시 향상된 for문 적용
+      - 반복문 변수명 명료화
+
 
 ---
 
