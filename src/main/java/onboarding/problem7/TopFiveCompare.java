@@ -10,7 +10,7 @@ public class TopFiveCompare {
 
         List<String> five = new ArrayList<>();
         List<HashMap.Entry<String, Integer>> scoreList =
-                        new LinkedList<>(scoreMap.entrySet());
+                new LinkedList<>(scoreMap.entrySet());
 
         scoreList.sort(new Comparator<HashMap.Entry<String, Integer>>() {
             @Override
@@ -29,7 +29,19 @@ public class TopFiveCompare {
         return five;
     }
 
+    public void topFive(List<String> five,
+                        List<Map.Entry<String, Integer>> scoreList) {
+        for (int idx = 0; idx < 5; idx++) {
+            HashMap.Entry<String, Integer> score = scoreList.get(idx);
 
+            if (score.getValue() == 0) {
+                break;
+            }
+
+            five.add(score.getKey());
+        }
+
+    }
 
 
 }
