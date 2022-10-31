@@ -29,5 +29,5 @@ problem2(cryptogram){
 - ~~삭제할 문자열의 인덱스 셋을 반환하는 int[] getDeleteIndexSet(string) 함수~~
 
 TODO
-- 슈도코드에 맞춰 로직 작성
+- ~~슈도코드에 맞춰 로직 작성~~
 - 리팩터링

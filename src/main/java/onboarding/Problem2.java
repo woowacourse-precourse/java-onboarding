@@ -22,7 +22,23 @@ public class Problem2 {
     }
 
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String answer = cryptogram;
+        Set<Integer> deleteIndexSet = new HashSet<>();
+        boolean alive[] = new boolean[cryptogram.length()];
+        do {
+            for(int i=0;i<cryptogram.length();i++){
+                alive[i] = true;
+            }
+            for(Integer l : deleteIndexSet){
+                alive[l] = false;
+            }
+            String save = answer;
+            answer = "";
+            for(int i=0;i<save.length();i++){
+                if(alive[i])
+                    answer += save.charAt(i);
+            }
+        }while (!(deleteIndexSet = getDeleteIndexSet(answer)).isEmpty());
         return answer;
     }
 }
