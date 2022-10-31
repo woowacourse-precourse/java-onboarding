@@ -33,4 +33,22 @@ class PageNumberGame {
 
         return sum;
     }
+
+    public static int getMultiply(int num) {
+        /**
+         * 각 자리수에 해당하는 각각 숫자들의 곱을 구하는 메소드
+         *
+         * @param 페이지 번호
+         * @return 각 숫자들의 곱
+         */
+
+        int[] arrNum = Stream.of(String.valueOf(num).split("")).mapToInt(Integer::parseInt).toArray();
+        int mul = 1;
+
+        for (int i : arrNum) {
+            mul *= i;
+        }
+
+        return mul;
+    }
 }
