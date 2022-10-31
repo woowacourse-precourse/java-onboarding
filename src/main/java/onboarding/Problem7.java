@@ -8,6 +8,23 @@ public class Problem7 {
         return answer;
     }
 
+    private static void scoreVisitor(List<String> visitors, HashMap<String, Integer> scoreRecordMap, String user, HashMap<String, ArrayList<String>> relationshipMap) {
+        ArrayList<String> friendListOfUser = relationshipMap.get(user);
+
+        for (String visitor :
+                visitors) {
+            if (!Objects.equals(visitor, user) && !friendListOfUser.contains(visitor)) {
+                if (!scoreRecordMap.containsKey(visitor)) {
+                    scoreRecordMap.put(visitor, 1);
+                }
+                Integer value = scoreRecordMap.get(visitor);
+                value += 1;
+
+                scoreRecordMap.put(visitor, value);
+            }
+        }
+    }
+
     private static void scoreFriendOfFriend(HashMap<String, Integer> scoreRecordMap, String user, HashMap<String, ArrayList<String>> relationshipMap) {
         ArrayList<String> friendListOfUser = relationshipMap.get(user);
 
