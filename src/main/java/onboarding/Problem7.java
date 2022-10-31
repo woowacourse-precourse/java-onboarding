@@ -7,6 +7,42 @@ import java.util.regex.Pattern;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+        User.validateIdCase(user);
+        User.validateIdLength(user);
+        User mrko = new User(user);
+
+        SNS sns = new SNS(mrko);
+        mrko.addSNS(sns);
+
+        Algorithm algorithm = new Algorithm(mrko);
+
+        for (int i = 0; i < visitors.size(); i++) {
+            sns.visitSNS(visitors.get(i));
+        }
+
+        for (int i = 0; i < friends.size(); i++) {
+            Relation.requestFriend(
+                    friends.get(i).get(0),
+                    friends.get(i).get(1)
+            );
+            Relation.requestFriend(
+                    friends.get(i).get(1),
+                    friends.get(i).get(0)
+            );
+        }
+
+        algorithm.scoreVisitors();
+        algorithm.scoreKnownFriend();
+
+        ArrayList<String> answerList = new ArrayList<>();
+        Map<String, Integer> recommend = algorithm.getRecommend();
+        Set<String> recommendKeySet = recommend.keySet();
+        Iterator<String> iterator = recommendKeySet.iterator();
+        while (iterator.hasNext()) {
+            String next = iterator.next();
+            answerList.add(next);
+        }
+        answer = answerList;
         return answer;
     }
 }
