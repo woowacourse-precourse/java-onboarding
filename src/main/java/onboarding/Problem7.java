@@ -80,7 +80,7 @@ class Crew {
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        Map<String, Crew> friendsMap = initFriendsMap(friends, visitors);
+        Map<String, Crew> friendsMap = initFriendsMap(user, friends, visitors);
 
         Crew currentUser = friendsMap.get(user);
 
@@ -97,8 +97,10 @@ public class Problem7 {
                 .collect(Collectors.toList());
     }
 
-    private static Map<String, Crew> initFriendsMap(List<List<String>> friends, List<String> visitors) {
+    private static Map<String, Crew> initFriendsMap(String user, List<List<String>> friends, List<String> visitors) {
         Map<String, Crew> friendsMap = new HashMap<>();
+
+        friendsMap.put(user, new Crew());
 
         for (List<String> friend : friends) {
             String crewA = friend.get(0);
