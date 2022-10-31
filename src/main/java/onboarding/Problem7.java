@@ -5,7 +5,7 @@ import java.util.*;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
-        HashMap<String, Integer> aa = new HashMap<>();
+        HashMap<String, Integer> map = new HashMap<>();
         List<String> alreadyFriend = new ArrayList<>();
 
         for (int i = 0; i < friends.size(); i++) {
@@ -23,34 +23,34 @@ public class Problem7 {
 
             for (String value : alreadyFriend) {
                 if (friend1.equals(value)) {
-                    if (aa.containsKey(friend2)) {
-                        aa.put(friend2, aa.get(friend2) + 10);
+                    if (map.containsKey(friend2)) {
+                        map.put(friend2, map.get(friend2) + 10);
                     } else {
-                        aa.put(friend2, 10);
+                        map.put(friend2, 10);
                     }
                 }
                 if (friend2.equals(value)) {
-                    if (aa.containsKey(friend1)) {
-                        aa.put(friend1, aa.get(friend1) + 10);
+                    if (map.containsKey(friend1)) {
+                        map.put(friend1, map.get(friend1) + 10);
                     } else {
-                        aa.put(friend1, 10);
+                        map.put(friend1, 10);
                     }
                 }
             }
         }
-        aa.remove(user);
+        map.remove(user);
 
         for (String value : visitors) {
-            if (aa.containsKey(value)) {
-                aa.put(value, aa.get(value) + 1);
+            if (map.containsKey(value)) {
+                map.put(value, map.get(value) + 1);
             } else {
-                aa.put(value, 1);
+                map.put(value, 1);
             }
         }
 
-        aa.keySet().removeAll(alreadyFriend);
+        map.keySet().removeAll(alreadyFriend);
 
-        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(aa.entrySet());
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(map.entrySet());
         entryList.sort(new Comparator<Map.Entry<String, Integer>>() {
             @Override
             public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
