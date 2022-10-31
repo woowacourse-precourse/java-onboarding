@@ -17,8 +17,8 @@ class Problem1 {
 				|| !Problem1ValidateChecker.isPageValidate(crong))
 			return ERROR_CODE;
 
-		int pobiScore = compareLeftAndRight(pobi);
-		int crongScore = compareLeftAndRight(crong);
+		int pobiScore = getGameScore(pobi);
+		int crongScore = getGameScore(crong);
 
 		if(pobiScore > crongScore)
 			return POBI_WIN;
@@ -28,11 +28,11 @@ class Problem1 {
 			return DRAW;
 	}
 
-	private static int compareLeftAndRight(List<Integer> pages){
-		return Math.max(compareSumAndMulti(pages.get(LEFT_PAGE)), compareSumAndMulti(pages.get(RIGHT_PAGE)));
+	private static int getGameScore(List<Integer> pages){
+		return Math.max(getMaxSumAndMulti(pages.get(LEFT_PAGE)), getMaxSumAndMulti(pages.get(RIGHT_PAGE)));
 	}
 
-	private static int compareSumAndMulti(Integer number){
+	private static int getMaxSumAndMulti(Integer number){
 		return Math.max(sumNumberOfDigit(number),multiNumberOfDigit(number));
 	}
 
