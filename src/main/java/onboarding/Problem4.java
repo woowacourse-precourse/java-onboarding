@@ -6,6 +6,11 @@ public class Problem4 {
         if(ch >= 'A' && ch <= 'Z') return true;
         return false;
     }
+    public static boolean isUpperCharacter(char ch){
+        if(ch >= 'A' && ch <= 'Z') return true;
+        else return false;
+    }
+    
     public static String solution(String word) {
         String answer = "";
         return answer;
