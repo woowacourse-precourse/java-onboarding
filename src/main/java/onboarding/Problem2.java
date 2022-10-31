@@ -34,16 +34,19 @@ class FindDuplicatePro2 {
   }
 
   public Stack<Character> eraseDuplicate() {
-    Stack<Character> stack = new Stack<>();
+    int cnt = 0;
     Character tmp = 0;
+    Stack<Character> stack = new Stack<>();
     String cryptogram = this.cryptogram;
     for (int i = 0; i < cryptogram.length(); i++) {
       if (stack.empty()) {
         stack.push(cryptogram.charAt(i));
       } else if (stack.peek() == cryptogram.charAt(i)) {
         tmp = stack.pop();
-      } else if (tmp != cryptogram.charAt(i)) {
+        cnt = 0;
+      } else if (tmp != cryptogram.charAt(i) || cnt == 1) {
         stack.push(cryptogram.charAt(i));
+        cnt += 1;
       }
     }
     return stack;

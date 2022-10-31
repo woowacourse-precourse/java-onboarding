@@ -21,7 +21,7 @@ class ValidatorPro7 {
   public ValidatorPro7(String user, List<List<String>> friends, List<String> visitors) {
     validateUser(user);
     validateFriends(friends);
-    validateVisitors(visitors);
+    validateVisitors(user, visitors);
   }
 
   public static void validateUser(String user) {
@@ -70,7 +70,10 @@ class ValidatorPro7 {
     }
   }
 
-  public static void validateVisitors(List<String> visitors) {
+  public void validateVisitors(String user, List<String> visitors) {
+    if (visitors.contains(user)) {
+      throw new IllegalArgumentException("Users cannot visit their own SNS.");
+    }
     if (visitors.size() < MIN_VISITORS_SIZE || visitors.size() > MAX_VISITORS_SIZE) {
       throw new IllegalArgumentException(
           "Visitors is a list/array of length "
