@@ -32,7 +32,6 @@ public class Problem6 {
                 containsSet.add(targetEmail);
             }
         }
-
         return containsSet;
     }
 
