@@ -54,8 +54,12 @@ public class Problem7 {
         scoreList.sort(new Comparator<Map.Entry<String, Integer>>() {
             @Override
             public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                /* 뒷놈이 더 크면 앞에 오도록 */
                 if (o2.getValue() > o1.getValue())
                     return 1;
+                /* 앞 놈이 더 크면 그대~로 */
+                if (o2.getValue() < o1.getValue())
+                    return -1;
                 return o1.getKey().compareTo(o2.getKey());
             }
         });
