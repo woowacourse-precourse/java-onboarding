@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -18,6 +19,8 @@ class Problem1 {
     public static int calculator(List<Integer> numList){
         int[] leftArray = getNumArray(numList,0);
         int[] rightArray = getNumArray(numList,1);
+        int leftPlusNum= getPlusNumber(leftArray);
+        int rightPlusNum = getPlusNumber(rightArray);
 
         return 1;
     }
@@ -25,6 +28,9 @@ class Problem1 {
         return Stream.of(String.valueOf(numList.get(index)).split(""))
                 .mapToInt(Integer::parseInt)
                 .toArray();
+    }
+    public static int getPlusNumber(int[] arr){
+        return Arrays.stream(arr).sum();
     }
     public static boolean checkException(List<Integer> checkList){
         Integer leftNum = checkList.get(0)+1;
