@@ -56,6 +56,21 @@ public class Problem7 {
             map.put(v, map.getOrDefault(v, 0) + 1);
         }
 
+        // 5. 점수가 가장 높은 순으로 정렬하고 추천 점수가 같은 경우 이름순으로 정렬하기
+        List<Map.Entry<String, Integer>> entries = new ArrayList<Map.Entry<String, Integer>>(map.entrySet());
+        // 비교함수 Comparator를 사용하여 내림차순으로 정렬 (점수 기준으로)
+        Collections.sort(entries, new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                int num = o2.getValue().compareTo(o1.getValue());
+                if(num != 0) {
+                    return num;
+                } else { // 추천 점수가 같은 경우 이름순으로 정렬하기 위함
+                    return o1.getKey().compareTo(o2.getKey());
+                }
+            }
+        });
+
         return answer;
     }
 }
