@@ -6,24 +6,19 @@ public class Validator {
     private static final int START_PAGE = 1;
     private static final int END_PAGE = 400;
 
-    public boolean validate(List<Integer> pages) {
+    public static boolean validate(List<Integer> pages) {
         int leftPage = pages.get(0);
         int rightPage = pages.get(1);
 
-        if (!isInRange(leftPage) || !isInRange(rightPage)) {
-            return false;
-        }
+        if (!(isInRange(leftPage) && isInRange(rightPage))) {return false;}
 
-        if ((leftPage % 2 != 0 ) || ( rightPage % 2 != 1)) {
-            return false;
-        }
+        if (!((leftPage % 2 == 1 ) && ( rightPage % 2 == 0))) {return false;}
 
-        if (leftPage - rightPage != 1) {
-            return false;
-        }
+        if (leftPage - rightPage != -1) {return false;}
+
         return true;
     }
-    public boolean isInRange(int page) {
-        return (page < START_PAGE) || (page > END_PAGE);
+    public static boolean isInRange(int page) {
+        return (page >= START_PAGE) && (page <= END_PAGE);
     }
 }
