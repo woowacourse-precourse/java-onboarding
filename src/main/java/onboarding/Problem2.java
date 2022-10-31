@@ -33,10 +33,25 @@ public class Problem2 {
                     j++;
                 }
             }
+            if (j != i + 1 || l == 1) {
+
+                int k = j - i + l;
+
+                while (k != 0) {
+                    list.remove(i);
+                    k--;
+                }
+                i = -1;
+            }
         }
 
 
-            String answer = "";
+        String answer = "";
+
+        for (char c : list) {
+            answer += c;
+        }
+
         return answer;
     }
 }
