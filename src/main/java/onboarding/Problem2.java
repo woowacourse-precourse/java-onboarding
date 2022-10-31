@@ -11,7 +11,6 @@ public class Problem2 {
                 break;
             }
         }
-
         return cryptogramStringBuilder.toString();
     }
 

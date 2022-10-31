@@ -7,7 +7,6 @@ public class Problem3 {
         for (int i = 1; i <= number; i++) {
             cnt += getNumberCount(i);
         }
-
         return cnt;
     }
 
