@@ -10,7 +10,7 @@ import java.util.*;
 public class Problem7 {
 
     static Map<String, Integer> map = new TreeMap<>();
-    
+
     /**
      * 1.친구목록을 통해 사용자와 함께아는친구 찾기
      */
@@ -87,7 +87,8 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
         List<String> userFriend = friendList(user,friends);
-
+        map = new TreeMap<>();
+        
         friendsScore(userFriend,friends,user);
         visitantScore(userFriend,visitors);
         List<String> keySet = new ArrayList<>(map.keySet());
