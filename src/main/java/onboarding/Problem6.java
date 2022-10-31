@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.regex.Pattern;
 
 public class Problem6 {
-    private static ArrayList<String> changeNeedCrewEmails;
-    private static ArrayList<List<String>> crews;
+    private static List<String> changeNeedCrewEmails;
+    private static List<List<String>> crews;
     private static HashMap<String, Integer> twoLetterNicknamesAndIds;
 
     public static List<String> solution(List<List<String>> forms) {
@@ -144,7 +144,7 @@ public class Problem6 {
     /**
      * 변경 필요 크루 모두 가져오기
      */
-    private static ArrayList<String> getAllChangeNeedCrewEmailByCrewId() {
+    private static List<String> getAllChangeNeedCrewEmailByCrewId() {
         return changeNeedCrewEmails;
     }
 
