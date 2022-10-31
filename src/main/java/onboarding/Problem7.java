@@ -40,7 +40,9 @@ public class Problem7 {
             if(exists(name)) {
                 return personMap.get(name);
             }
-            return personMap.put(name, new Person(name));
+            Person newPerson = new Person(name);
+            personMap.put(name, newPerson);
+            return newPerson;
         }
         boolean exists(String name) {
             return personMap.containsKey(name);
