@@ -1,5 +1,6 @@
-package onboarding.helper;
+package onboarding.unitTest.problem2;
 
+import onboarding.problem2.TypeConverter;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.extension.ExtensionContext;

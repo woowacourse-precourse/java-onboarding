@@ -1,4 +1,4 @@
-package onboarding.helper;
+package onboarding.problem2;
 
 import java.util.ArrayList;
 import java.util.List;
