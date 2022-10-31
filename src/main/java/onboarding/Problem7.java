@@ -18,21 +18,24 @@ public class Problem7 {
     }
 
     private static Map<String, List<String>> createFriendList(List<List<String>> friends) {
-        Map<String, List<String>> result = new HashMap<>();
-        for (List<String> friend : friends) {
+        Map<String, List<String>> friendList = new HashMap<>();
+
+        friends.forEach(friend -> {
             String userA = friend.get(0);
             String userB = friend.get(1);
+            addFriendList(friendList, userA, userB);
+            addFriendList(friendList, userB, userA);
+        });
 
-            List<String> userAFriends = result.getOrDefault(userA, new ArrayList<>());
-            userAFriends.add(userB);
-            result.put(userA, userAFriends);
-
-            List<String> userBFriends = result.getOrDefault(userB, new ArrayList<>());
-            userBFriends.add(userA);
-            result.put(userB, userBFriends);
-        }
-        return result;
+        return friendList;
     }
+
+    private static void addFriendList(Map<String, List<String>> friendList, String user, String friend) {
+        List<String> userFriends = friendList.getOrDefault(user, new ArrayList<>());
+        userFriends.add(friend);
+        friendList.put(user, userFriends);
+    }
+
 
     private static Map<String, Integer> createRecommendedFriendList(String user, Map<String, List<String>> friendList) {
         Map<String, Integer> result = new HashMap<>();
