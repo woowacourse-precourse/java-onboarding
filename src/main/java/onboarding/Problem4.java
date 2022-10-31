@@ -3,9 +3,7 @@ package onboarding;
 public class Problem4 {
 
     public static String solution(String word) {
-        String answer = pro(word);
-
-        return answer;
+        return pro(word);
     }
 
     static String pro(String word) {
