@@ -50,6 +50,7 @@ public class Problem2 {
         return stack;
     }
 
+
     private static void addElementInStack(Deque<Character> stack, char thisTurnWordChar) {
         stack.addLast(thisTurnWordChar);
     }
