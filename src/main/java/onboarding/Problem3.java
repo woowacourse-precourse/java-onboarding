@@ -25,4 +25,14 @@ public class Problem3 {
         }
     }
 
+    private static int calculateNumberOfClaps(int number) {
+        int result=0;
+
+        for(int i=1;i<=number;i++){
+            result+=numberOfClaps[i];
+        }
+
+        return result;
+    }
+
 }
