@@ -95,4 +95,8 @@ BUILD SUCCESSFUL in 0s
 1. 입력값 StringBuilder로 변환  
 2. 글자를 청개구리 사전을 따라 다른 글자로 변환  
 3. StringBuilder를 String으로 변환하여 결괏값 리턴  
-   
+      
+  
+**문제 5**  
+1. 돈을 큰 금액의 화폐 순서대로 변환  
+2. 돈을 특정 화폐금액으로 변환  
