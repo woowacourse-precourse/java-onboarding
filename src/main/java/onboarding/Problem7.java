@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
-import java.util.ArrayList;
+import java.util.*;
 
 public class Problem7 {
     static List<String> findMyFriend(String user, List<List<String>> friends){
@@ -19,10 +16,40 @@ public class Problem7 {
         return friedList;
     }
 
+    static void cntCloseFriend(String user, Map<String, Integer> recommendList, List<String> friendList, List<List<String>> friends){
+        for(int i = 0; i < friends.size(); i++){
+            String recommend = "nothing";
+            if(Objects.equals(friends.get(i).get(0), user) || Objects.equals(friends.get(i).get(1), user)){
+                continue;
+            }
+            if(friendList.contains(friends.get(i).get(0)) && friendList.contains(friends.get(i).get(1))){
+                continue;
+            }
+            if(friendList.contains(friends.get(i).get(0))){
+                recommend = friends.get(i).get(1);
+            }
+            if(friendList.contains(friends.get(i).get(1))){
+                recommend = friends.get(i).get(0);
+            }
+            if(!Objects.equals(recommend, "nothing")){
+                if(recommendList.containsKey(recommend)){
+                    recommendList.put(recommend, recommendList.get(recommend) + 10);
+                }
+                else{
+                    recommendList.put(recommend, 10);
+                }
+            }
+        }
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+
         List<String> friendList = findMyFriend(user, friends);
-        System.out.println(friendList);
+        Map<String, Integer> recommendList = new HashMap<String, Integer>();
+        cntCloseFriend(user, recommendList, friendList, friends);
+        System.out.println(recommendList);
+        //System.out.println(friendList);
         return answer;
     }
 }
