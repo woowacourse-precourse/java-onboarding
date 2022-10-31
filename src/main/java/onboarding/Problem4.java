@@ -5,7 +5,7 @@ public class Problem4 {
         String answer = "";
         for (int i = 0; i < word.length(); i++) {
             char wordChar = word.charAt(i);
-            if (!(('a' <= wordChar && wordChar <= 'z') || ('A' <= wordChar && wordChar <= 'Z'))) {
+            if (!isAlphabet(wordChar)) {
                 answer += wordChar;
                 continue;
             }
@@ -14,6 +14,10 @@ public class Problem4 {
         }
 
         return answer;
+    }
+
+    private static boolean isAlphabet(char wordChar) {
+        return ('a' <= wordChar && wordChar <= 'z') || ('A' <= wordChar && wordChar <= 'Z');
     }
 
     private static String getReversedString(char ch) {
