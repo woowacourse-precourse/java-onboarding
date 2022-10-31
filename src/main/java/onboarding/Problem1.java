@@ -35,6 +35,9 @@ class Problem1 {
         return Math.max(addition, multiply);
     }
 
+    private static int getScore(List<Integer> pages) {
+        return pages.stream().map(i -> reduce(i)).max(Integer::compareTo).orElseThrow();
+    }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
@@ -45,7 +48,18 @@ class Problem1 {
             return ERROR;
         }
 
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        int pobiScore = getScore(pobi);
+        int crongScore = getScore(crong);
+
+        if (pobiScore > crongScore) {
+            return POBI_WIN;
+        }
+        if (pobiScore < crongScore) {
+            return CRONG_WIN;
+        }
+        if (pobiScore == crongScore) {
+            return DROW;
+        }
+        return ERROR;
     }
 }
