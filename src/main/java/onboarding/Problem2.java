@@ -38,7 +38,7 @@ public class Problem2 {
 
     public static int findSame(String cryptogram) {
         for (int i = 0; i < cryptogram.length() - 1; i++) {
-            if (cryptogram.charAt(i) == cryptogram.charAt(i+1)) {
+            if (cryptogram.charAt(i) == cryptogram.charAt(i + 1)) {
                 return i;
             }
         }
