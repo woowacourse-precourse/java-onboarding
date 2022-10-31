@@ -31,7 +31,6 @@ public class Decrypter {
 
     private static int findIndexOfRepeatedChar(StringBuilder cryptogram, int startIndex){
         int repeatedIndex = -1;
-        int index = 0;
         for(int i=startIndex; i<cryptogram.length()-1; i++ ){
             char temp = cryptogram.charAt(i);
             if(temp == cryptogram.charAt(i+1)){
