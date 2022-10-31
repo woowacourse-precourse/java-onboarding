@@ -10,6 +10,11 @@ import java.util.Map;
 import java.util.Set;
 
 public class Problem7 {
+
+	public static final int MAX_RETURN_SIZE = 5;
+	public static final int BOTH_KNOW_SCORE = 10;
+	public static final int TIMELINE_VISIT_SCORE = 1;
+
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 		List<String> answer = new ArrayList<>(Collections.emptyList());
 		Map<String, Integer> map = new HashMap<>(); // [사람 이름, 추천 점수]를 담을 HashMap
@@ -65,7 +70,7 @@ public class Problem7 {
 		});
 
 		// 정렬 후 5명 초과이면 최대 5명까지만
-		while (friends.size() > 5) {
+		while (friends.size() > MAX_RETURN_SIZE) {
 			friends.remove(friends.size() - 1);
 		}
 		return friends;
@@ -89,10 +94,10 @@ public class Problem7 {
 					String friend1 = friendList.get(0); // friend 리스트의 첫 번째 요소
 					String friend2 = friendList.get(1); // friend 리스트의 두 번째 요소
 					if (notYetFriend.contains(friend1)) {
-						map.put(friend1, map.get(friend1) + 10); // friend1 의 친구 점수 + 10
+						map.put(friend1, map.get(friend1) + BOTH_KNOW_SCORE); // friend1 의 친구 점수 + 10
 					}
 					if (notYetFriend.contains(friend2)) { // user 일 수도 있기 때문에 if~else 가 아닌 if 문을 두 번 사용해야 한다.
-						map.put(friend2, map.get(friend2) + 10); // friend2 의 친구 점수 + 10
+						map.put(friend2, map.get(friend2) + BOTH_KNOW_SCORE); // friend2 의 친구 점수 + 10
 					}
 				}
 			}
@@ -101,7 +106,7 @@ public class Problem7 {
 		// 사용자의 타임 라인에 방문한 횟수 * 1점
 		for (String visitor : visitors) {
 			if (notYetFriend.contains(visitor)) {
-				map.put(visitor, map.get(visitor) + 1); // visitor 의 친구 점수 + 1
+				map.put(visitor, map.get(visitor) + TIMELINE_VISIT_SCORE); // visitor 의 친구 점수 + 1
 			}
 		}
 	}
