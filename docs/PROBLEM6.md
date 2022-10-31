@@ -29,6 +29,18 @@
 
 ## 기능 구현 목록
 
+- checkException(List<List<String>> forms)
+  - forms의 값에 대해 예외처리를 해준다.
+- isValidCrewRange(List<List<String>> forms)
+  - 올바른 크루원의 범위인지 확인해준다.
+- isValidEmailLength(List<List<String>> forms)
+  - 이메일의 길이가 유효 길이인지 확인해준다.
+- isValidDomain(List<List<String>> forms)
+  - 신청 가능한 이메일의 도메인인지 확인해준다.
+- isValidNicknameRegex(List<List<String>> forms)
+  - 닉네임이 한글로 이뤄져있는지 확인해준다.
+- isValidNicknameLength(List<List<String>> forms)
+  - 닉네임의 유효길이를 확인해준다.
 - nicknameDecomposition(String nickname)
   - 인수로 들어온 닉네임을 2자씩 끊어서 Set<String> 에 넣는다.
 - setUpData(List<List<String>> forms)
