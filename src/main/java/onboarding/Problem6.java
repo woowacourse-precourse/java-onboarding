@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -44,6 +45,7 @@ public class Problem6 {
             answer.add(forms.get(integer).get(0));
         }
         // 4. 사전순 정렬
+        Collections.sort(answer);
 
         return answer;
     }
