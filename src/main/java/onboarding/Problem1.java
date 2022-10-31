@@ -63,5 +63,15 @@ class Problem1 {
         if (!isVaild(pobi) || !isVaild(crong)) {
             return -1;
         }
+        int pobi_score = maxScore(pobi);
+        int crong_score = maxScore(crong);
+
+        if (pobi_score > crong_score) {
+            return 1;
+        } else if (pobi_score < crong_score) {
+            return 2;
+        } else {
+            return 0;
+        }
     }
 }
