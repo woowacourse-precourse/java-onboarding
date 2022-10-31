@@ -11,6 +11,12 @@ public class Problem4 {
                 sb.append(c);
                 continue;
             }
+
+            if (Character.isLowerCase(c)) {
+                sb.append((char) ('z' - (c - 'a')));
+            } else if (Character.isUpperCase(c)) {
+                sb.append((char) ('Z' - (c - 'A')));
+            }
         }
 
         return sb.toString();
