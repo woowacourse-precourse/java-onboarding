@@ -20,11 +20,13 @@ public class Problem3 {
         int count = 0;
         int in = input;
 
+        int comparison;
         // 입력받은 수가 0이 될 때까지 각 자릿수를 구해 3, 6, 9와 비교
         while(in != 0)
         {
-            // 10으로 나눈 나머지가 3으로 나눠진다면: 3의 배수
-            if((in % 10) % 3 == 0)
+            // 10으로 나눈 나머지가 3, 6, 9라면 : count += 1
+            comparison = in % 10;
+            if(comparison == 3 || comparison == 6 || comparison == 9)
                 ++count;
 
             // 자릿수 줄이기
