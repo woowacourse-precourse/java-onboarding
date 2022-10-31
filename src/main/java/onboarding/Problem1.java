@@ -13,9 +13,11 @@ class Problem1 {
 
     private static final int FIRST_PAGE = 1;
     private static final int LAST_PAGE = 400;
+    private static final int LEFT = 0;
+    private static final int RIGHT = 1;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if (!isValidPageNumber(pobi) || !isValidPageNumber(crong)) {
+        if (isInValidPageNumber(pobi, crong)) {
             return EXCEPTION;
         }
 
@@ -26,6 +28,10 @@ class Problem1 {
         Integer crongScore = getScore(crongDigits);
 
         return getWinner(pobiScore, crongScore);
+    }
+
+    private static boolean isInValidPageNumber(List<Integer> pobi, List<Integer> crong) {
+        return isInValidPageNumber(pobi) || isInValidPageNumber(crong);
     }
 
     public static List<List<Integer>> getEachDigitOfTwoPages(List<Integer> pages) {
@@ -93,14 +99,14 @@ class Problem1 {
         return TIE;
     }
 
-    public static boolean isValidPageNumber(List<Integer> pages) {
-        if (!isValidPageRange(pages)) {
+    public static boolean isInValidPageNumber(List<Integer> pages) {
+        if (isValidPageRange(pages)) {
             return false;
         }
-        if (!isValidPageOddEven(pages)) {
+        if (isValidPageOddEven(pages)) {
             return false;
         }
-        if (!isValidPageSequence(pages)) {
+        if (isValidPageSequence(pages)) {
             return false;
         }
 
@@ -118,8 +124,8 @@ class Problem1 {
     }
 
     public static boolean isValidPageOddEven(List<Integer> pages) {
-        int leftPage = pages.get(0);
-        int rightPage = pages.get(1);
+        int leftPage = pages.get(LEFT);
+        int rightPage = pages.get(RIGHT);
 
         if (isEven(leftPage)) {
             return false;
@@ -136,8 +142,8 @@ class Problem1 {
     }
 
     public static boolean isValidPageSequence(List<Integer> pages) {
-        int leftPage = pages.get(0);
-        int rightPage = pages.get(1);
+        int leftPage = pages.get(LEFT);
+        int rightPage = pages.get(RIGHT);
 
         if (++leftPage != rightPage) {
             return false;
