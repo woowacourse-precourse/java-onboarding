@@ -26,6 +26,14 @@ public class Problem2 {
     }
 
     private static int pushResultStack(Stack<Character> stackResult, int flag, char checkChar) {
+        if (stackResult.peek() == checkChar) {
+            stackResult.push(checkChar);
+            flag += 1;
+        }
+
+        if (flag == 0 && stackResult.peek() != checkChar) {
+            stackResult.push(checkChar);
+        }
         return flag;
     }
 
