@@ -7,11 +7,13 @@ import java.util.stream.IntStream;
 
 public class Page {
 
+    private static final int LEFT_INDEX = 0;
+    private static final int RIGHT_INDEX = 1;
     private final int left;
     private final int right;
 
     public Page(List<Integer> pageNumbers) {
-        this(pageNumbers.get(0), pageNumbers.get(1));
+        this(pageNumbers.get(LEFT_INDEX), pageNumbers.get(RIGHT_INDEX));
     }
 
     public Page(int left, int right) {
