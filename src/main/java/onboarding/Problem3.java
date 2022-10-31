@@ -2,11 +2,14 @@ package onboarding;
 
 public class Problem3 {
     public static int solution(int number) {
+        int answer = 0;
         /*
          * 기능 요구 사항
          * 2. 1번 메서드를 반복해서 사용하여 1 ~ number 까지의 전체 3, 6, 9 개수를 카운트
          * */
-        int answer = 0;
+        for (int index = 1; index <= number; index++) {
+            answer += count_369(index);
+        }
         return answer;
     }
 
