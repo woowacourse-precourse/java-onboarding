@@ -14,7 +14,7 @@ class Problem1 {
         // 왼쪽 페이지가 홀수인가
         if (left % 2 == 0) return true;
 
-        // 두 수가 연속적인가
+        // 두 페이지가 연속적인가
         return (right - left != 1);
     }
 
