@@ -4,8 +4,18 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        int pobiMaxScore  = getPlayerMaxScore(pobi);
+        int crongMaxScore = getPlayerMaxScore(crong);
+
+        if(pobiMaxScore > crongMaxScore){
+            return 1;
+        }
+        else if(crongMaxScore > pobiMaxScore){
+            return 2;
+        }
+        else{
+            return 0;
+        }
     }
 
     public static int sumDigit(int page) {
