@@ -71,6 +71,21 @@ public class Problem7 {
         return sortList;
     }
 
+    // 점수 비교
+    static class PersonComparator implements Comparator<Person> {
+        @Override
+        public int compare(Person p1, Person p2) {
+            if(p1.score == p2.score) {
+                return p2.name.compareTo(p1.name);
+            }
+            if(p1.score > p2.score)
+                return 1;
+            if(p1.score < p2.score)
+                return -1;
+            return 0;
+        }
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
