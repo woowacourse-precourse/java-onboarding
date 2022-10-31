@@ -23,7 +23,17 @@ public class Problem6 {
         // 만들어질 수 있는 단어가 사용 된 횟수를 저장하기 위한 hashmap
         map = new HashMap<>();
 
-        return answer;
+        // forms 의 닉네임 들에서 만들어지는 2개의 단어와 그 단어들이 사용된 횟수를 저장하는 메소드
+        inputData(forms);
+        // 2번 이상 사용 된 단어이며, 닉네임에 해당 단어가 포함되어있다면, 해당 단어에 방문 체크하는 메소드
+        createContainWord(forms);
+        // 해당 단어가 중복되는 단어를 포함하는 단어라면 정답에 넣어주는 메소드
+        createAnswer(forms, answer);
+
+        // stream 을 사용하여 result 를 오름차순 정렬 한 후 중복을 제거해줌.
+        List<String> collect = answer.stream().sorted().distinct().collect(Collectors.toList());
+
+        return collect;
     }
 
     // "단어가 사용된 횟수를 저장"하기 위한 hashmap 을 만들기위한 메소드
