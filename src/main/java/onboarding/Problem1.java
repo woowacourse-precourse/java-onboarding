@@ -18,12 +18,15 @@ class Problem1 {
         int pobiMax = getMax(pobi);
         int crongMax = getMax(crong);
 
-        // TODO if ~ else 문 제거하는 방법 고민
-        if (pobiMax > crongMax) answer = POBI_WIN;
-        else if (pobiMax < crongMax) answer = CRONG_WIN;
-        else answer = DRAW;
-
+        answer = getAnswer(pobiMax, crongMax);
         return answer;
+    }
+
+    // 최종 결과 구하기
+    private static int getAnswer(int pobiMax, int crongMax) {
+        if (pobiMax > crongMax) return POBI_WIN;
+        if (pobiMax < crongMax) return CRONG_WIN;
+        return DRAW;
     }
 
     // 왼쪽 페이지, 오른쪽 페이지 중 최댓값 반환
@@ -55,7 +58,6 @@ class Problem1 {
 
     // 연속된 페이지가 아닌경우
     public static boolean isNotConsecutive(List<Integer> pobi, List<Integer> crong) {
-        // TODO ?.get(0) + 1 != ?.get(1) 로 내용이 중복됨
         return (pobi.get(0) + 1 != pobi.get(1) || crong.get(0) + 1 != crong.get(1));
     }
 
