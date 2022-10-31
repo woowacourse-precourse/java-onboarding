@@ -14,10 +14,19 @@ public class Problem6 {
         //만약 크루가 1명이라면 같은 글자가 연속된 닉네임 없음
         if(forms.size()==1) return null;
 
+        //닉네임과 이메일 배열
         String[] nicks = new String[forms.size()];
         String[] emails = new String[forms.size()];
 
+        int index = 0;
+        for(List<String> list : forms) {
+            nicks[index] = list.get(1);
+            emails[index] = list.get(0);
+            index++;
+        }
 
+        System.out.println("nicks: "+ Arrays.toString(nicks));
+        System.out.println("emails: "+ Arrays.toString(emails));
 
 
 
