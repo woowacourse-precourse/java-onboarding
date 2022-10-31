@@ -523,6 +523,27 @@ class ApplicationTest {
             String result = "    R     !olEv가.     \n''\"\"/@blf10\\    ";
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
+    
+        @Test
+        void case22() {
+            String word = "abcdefghijklmnopqrstuvwxyz";
+            String result = "zyxwvutsrqponmlkjihgfedcba";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+    
+        @Test
+        void case23() {
+            String word = "abcdefghijklmnopqrstuvwxyz !@#!#  ";
+            String result = "zyxwvutsrqponmlkjihgfedcba !@#!#  ";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+    
+        @Test
+        void case24() {
+            String word = "Svool, Dliow! 123";
+            String result = "Hello, World! 123";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
     }
     
     @Nested
