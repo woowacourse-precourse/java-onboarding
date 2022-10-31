@@ -7,4 +7,10 @@ public class Problem6 {
         List<String> answer = List.of("answer");
         return answer;
     }
+
+    private static List<String> findNicknameWordList(String nickname) {
+        List<String> nicknameWordList = IntStream.range(0, nickname.length() - 1)
+            .mapToObj(j -> nickname.substring(j, j + 2)).collect(Collectors.toList());
+        return nicknameWordList;
+    }
 }
