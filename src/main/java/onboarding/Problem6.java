@@ -5,10 +5,10 @@ import java.util.List;
 
 public class Problem6 {
 
-    /*
+    /**
      * 입력이 유효한지 판별합니다.
      *
-     * @param 입력으로 주어진 배열입니다.
+     * @param forms 입력으로 주어진 배열
      * @return 입력이 유효하다면 참, 아니면 거짓을 반환합니다.
      * */
     private static boolean isValidInput(List<List<String>> forms) {
@@ -20,20 +20,22 @@ public class Problem6 {
         return valid;
     }
 
-    /*
+    /**
      * 숫자가 특정 범위 안의 숫자인지 알려줍니다.
      *
-     * @param 확인할 숫자, 범위의 왼쪽 숫자, 범위의 오른쪽 숫자입니다.
+     * @param toCheck 확인할 숫자
+     * @param leftBound 범위의 왼쪽 숫자
+     * @param rightBound 범위의 오른쪽 숫자
      * @return 범위 안에 있으면 참, 아니면 거짓을 반환합니다.
      * */
     private static boolean isInRange(int toCheck, int leftBound, int rightBound) {
         return leftBound <= toCheck && toCheck <= rightBound;
     }
 
-    /*
+    /**
      * 신청서 배열이 올바른지 확인합니다.
      *
-     * @param 신청서 배열입니다.
+     * @param forms 신청서 배열입니다.
      * @return 신청서 배열이 주어진 조건에 부합하면 참, 아니면 거짓을 반환합니다.
      * */
     private static boolean isValidForms(List<List<String>> forms) {
@@ -41,10 +43,10 @@ public class Problem6 {
         return valid;
     }
 
-    /*
+    /**
      * 신청서 배열의 크기가 올바른지 확인합니다.
      *
-     * @param 신청서 배열입니다.
+     * @param forms 신청서 배열입니다.
      * @return 신청서 배열의 크기가 1~10000 사이라면 참, 아니면 거짓을 반환합니다.
      * */
     private static boolean hasValidFormsLength(List<List<String>> forms) {
@@ -52,9 +54,10 @@ public class Problem6 {
         return valid;
     }
 
-    /* 각 신청서가 올바른지 확인합니다.
+    /**
+     * 각 신청서가 올바른지 확인합니다.
      *
-     * @param 이메일과 닉네임이 담긴 신청서입니다.
+     * @param form 이메일과 닉네임이 담긴 신청서입니다.
      * @return 신청서의 정보가 올바르다면 참, 아니면 거짓을 반환합니다.
      * */
     private static boolean isValidForm(List<String> form) {
@@ -69,10 +72,10 @@ public class Problem6 {
         return valid;
     }
 
-    /*
+    /**
      * 신청서가 포함한 정보가 2개인지 확인합니다.
      *
-     * @param 신청서 입니다.
+     * @param form 신청서 입니다.
      * @return 신청서가 2개의 정보를 가지고 있으면 참, 아니면 거짓을 반환합니다.
      * */
     private static boolean hasValidFormLength(List<String> form) {
@@ -80,10 +83,10 @@ public class Problem6 {
         return valid;
     }
 
-    /*
+    /**
      * 신청서 첫 번째 정보가 이메일인지 확인합니다.
      *
-     * @param 신청서 첫 번째 정보입니다.
+     * @param email 신청서 첫 번째 정보입니다.
      * @return 해당 정보가 조건에 부합하는 이메일이면 참, 아니면 거짓을 반환합니다.
      * */
     private static boolean hasValidEmail(String email) {
