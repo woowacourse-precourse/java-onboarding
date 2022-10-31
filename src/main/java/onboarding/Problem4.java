@@ -12,7 +12,7 @@ public class Problem4 {
             return "";
         }
 
-        return changeWord(word);
+        return reverseWord(word);
     }
 
     /**
@@ -30,21 +30,18 @@ public class Problem4 {
      * @param word 변환할 문자열
      * @return 변환된 문자열
      */
-    private static String changeWord(String word) {
-        String[] splitWord = getOneLetterWords(word);
-        LinkedList<String> newWord = new LinkedList<>();
+    private static String reverseWord(String word) {
+        String[] oneLetterWords = getOneLetterWords(word);
+        List<String> newWord = new LinkedList<>();
 
-        // 알파벳 대소문자를 유지하면서 변환
-        for (String character: splitWord) {
-            String lowerCharacter = character.toLowerCase();
-            String newCharacter = alphabetTable.getOrDefault(lowerCharacter, character);
+        for (String oneLetterWord: oneLetterWords) {
+            String newOneLetterWord = getReverseAlphabet(oneLetterWord);
 
-            // 알파벳 소문자인지 체크
-            if (!lowerCharacter.equals(character)) {
-                newCharacter = newCharacter.toUpperCase();
+            if (isUpperCase(oneLetterWord)) {
+                newOneLetterWord = newOneLetterWord.toUpperCase();
             }
 
-            newWord.add(newCharacter);
+            newWord.add(newOneLetterWord);
         }
 
         return String.join("", newWord);
@@ -68,12 +65,30 @@ public class Problem4 {
     }
 
     /**
+     * 대응되는 글자를 반환
+     * @param oneLetterWord 한글자씩 분할된 글자
+     * @return 알파벳 테이블에 대응되는 글자 반환
+     */
+    private static String getReverseAlphabet(String oneLetterWord) {
+        return alphabetTable.getOrDefault(oneLetterWord.toLowerCase(), oneLetterWord);
+    }
+
+    /**
      * 문자를 한글자씩 분할
      * @param word 분할할 글자
      * @return 분할된 글자
      */
     private static String[] getOneLetterWords(String word) {
         return word.split("");
+    }
+
+    /**
+     * 글자가 알파벳 대문자인지 확인
+     * @param word 글자
+     * @return 대문자 여부
+     */
+    private static boolean isUpperCase(String word) {
+        return word.toUpperCase().equals(word);
     }
 
     /**
