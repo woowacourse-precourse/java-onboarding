@@ -1,12 +1,25 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
-    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = new ArrayList<String>();
+    public static List<Map.Entry<String, Integer>> getSortedList(HashMap<String,Integer> l){
+        List<Map.Entry<String, Integer>> sortedList = new ArrayList<Map.Entry<String, Integer>>(l.entrySet());
+
+        Collections.sort(sortedList, (sList1, sList2) -> {
+            if (sList1.getValue() != sList2.getValue()) {
+                return sList2.getValue().compareTo(sList1.getValue());
+            } else {
+                return sList1.getKey().compareTo(sList2.getKey());
+            }
+        });
+        return sortedList;
+    }
+
+    public static HashMap<String,ArrayList<String>> getAdjacencylist(List<List<String>> friends){
         HashMap<String,ArrayList<String>> point = new HashMap<>();
-        HashMap<String,Integer> result = new HashMap<>();
+
         for(List<String> i : friends){
             for(int j=0;j<2;j++){
                 if (!point.containsKey(i.get(j))){
@@ -19,43 +32,47 @@ public class Problem7 {
                 }
             }
         }
+        return point;
+    }
+    
+    public static HashMap<String,Integer> getPointMap(HashMap<String,ArrayList<String>> point,String user, List<String> visitors){
+        HashMap<String,Integer> result = new HashMap<>();
 
-        for(String i : point.get(user)){
-            for(String j : point.get(i)){
-                if (!result.containsKey(j))
-                    result.put(j,10);
+        Stack<Map.Entry<String, Integer>> stack = new Stack<>();
+        stack.push(new AbstractMap.SimpleEntry<>(user,0));
+        while(!stack.isEmpty()) {
+            Map.Entry<String, Integer> name = stack.pop();
+            if (name.getValue()==2) {
+                result.put(name.getKey(), 10);
+                continue;
             }
+            if (point.containsKey(name.getKey()))
+                point.get(name.getKey()).stream().forEach(e-> {
+                    stack.push(new AbstractMap.SimpleEntry<>(e,name.getValue()+1));
+                });
         }
 
-        for (String i : visitors) {
-            if (!result.containsKey(i))
-                result.put(i,1);
-            else
-                result.put(i,result.get(i)+1);
-        }
-
-        result.remove(user);
-        for(String i : point.get(user)){
-            result.remove(i);
-        }
-
-        List<Map.Entry<String, Integer>> list_entries = new ArrayList<Map.Entry<String, Integer>>(result.entrySet());
-
-        Collections.sort(list_entries, (sList1, sList2) -> {
-            if (sList1.getValue() != sList2.getValue()) {
-                return sList2.getValue().compareTo(sList1.getValue());
-            } else {
-                return sList1.getKey().compareTo(sList2.getKey());
-            }
+        visitors.stream().forEach(e->{
+            int visitPoint=(!result.containsKey(e))?1:result.get(e)+1;
+            result.put(e,visitPoint);
         });
 
-        int i=0;
-        for(Map.Entry<String, Integer> entry : list_entries) {
-            if (i>=5)break;
-            answer.add(entry.getKey());
-            i++;
+        if(result.containsKey(user))
+            result.remove(user);
+        if(point.containsKey(user)) {
+            for (String i : point.get(user)) {
+                result.remove(i);
+            }
         }
 
-        return answer;
+        return result;
+    }
+
+    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        HashMap<String,ArrayList<String>> point = getAdjacencylist(friends);
+        HashMap<String,Integer> result = getPointMap(point,user,visitors);
+
+        return getSortedList(result).stream().map(s->s.getKey()).limit(5).collect(Collectors.toList());
+
     }
 }
