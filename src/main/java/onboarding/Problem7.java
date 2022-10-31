@@ -22,6 +22,25 @@ public class Problem7 {
         return true;
     }
 
+    public static boolean isAlpa(String userA, String userB) {
+        for(int i=0 ; i<userA.length() ; i++) {
+            char word = userA.charAt(i);
+            if (!(word >= 'a' && word <= 'z')) {
+                return false;
+            }
+        }
+
+        for(int i=0 ; i<userB.length() ; i++) {
+            char word = userB.charAt(i);
+            if (!(word >= 'a' && word <= 'z')) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+
 
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
