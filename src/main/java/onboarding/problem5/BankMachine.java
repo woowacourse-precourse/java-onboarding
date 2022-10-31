@@ -12,7 +12,6 @@ public class BankMachine {
     }
 
     public CurrencyDto convertMoneyToCurrency() {
-        //Todo 여기 List를 일급 컬렉션으로 바꾸는 게 좋을지?
         List<Integer> currencyList = new ArrayList<>();
         int amount = money.getAmount();
 
