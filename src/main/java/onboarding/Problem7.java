@@ -19,6 +19,11 @@ public class Problem7 {
             search(myFriend);
         }
 
+        for (String visitor : visitors) {
+            boolean isContain = friendList.contains(visitor);
+            calculateVisitorPoint(isContain, visitor);
+        }
+
         return answer;
     }
 
