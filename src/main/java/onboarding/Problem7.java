@@ -10,6 +10,7 @@ public class Problem7 {
         HashMap<String, Integer> suggestScoreList = new HashMap<>();
         Problem7 problem = new Problem7();
 
+        // 주어진 friends 관계도에서 user와 친구인 사람, 친구가 아닌 사람들의 관계끼리 자료 분리
         friends.forEach((relationship) -> {
             String person1 = relationship.get(0);
             String person2 = relationship.get(1);
@@ -23,7 +24,7 @@ public class Problem7 {
             }
         });
 
-        // 관련된 친구 수 만큼 점수 계산
+        // 친구가 아닌 user인 경우, 관련된 친구 수 만큼 점수 계산
         notFriendList.forEach((connection) -> {
             String person1 = connection.get(0);
             String person2 = connection.get(1);
@@ -45,7 +46,7 @@ public class Problem7 {
             }
         });
 
-        // 방문수 만큼 점수 계산
+        // 방문 수 만큼 점수 계산
         List<String> visitConnections = visitors.stream().filter(x -> !friendList.contains(x)).collect(Collectors.toList());
         visitConnections.forEach((visitor) -> {
             if (!suggestScoreList.containsKey(visitor)) {
@@ -62,8 +63,6 @@ public class Problem7 {
         Set<String> keySet = suggestUserSortedByScore.keySet();
         ArrayList<String> recommendUserList = new ArrayList<>(keySet);
 
-
-        System.out.println(suggestUserSortedByScore);
         return problem.HeadCountLimit(recommendUserList, 5);
     }
 
