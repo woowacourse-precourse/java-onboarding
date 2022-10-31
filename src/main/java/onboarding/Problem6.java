@@ -11,6 +11,24 @@ public class Problem6 {
         List<String> answer = List.of("answer");
         return answer;
     }
+    public static List<Integer> checkOverlapUserCycle(int nicknameIndex, List<List<String>> forms){
+        List<Integer> overlapUserIndexList = new ArrayList<Integer>();
+        String nickname = forms.get(nicknameIndex).get(NICK_NAME);
+
+        List<String> substringCombination = new ArrayList<String>();
+        substringCombination.add(nickname);
+
+        if(nickname.length() > 1) {
+            substringCombination = makeSubstringCombination(nickname);
+        }
+        for (String substring: substringCombination) {
+            List<Integer> tempIndex = findOverlabUserIndexList(substring, forms);
+            tempIndex.remove(Integer.valueOf(nicknameIndex)); // 닉네임 본인 인덱스를 제거하는 코드
+            overlapUserIndexList.addAll(tempIndex);
+        }
+
+        return overlapUserIndexList;
+    }
 
     public static List<String> makeSubstringCombination(String nickname){
         List<String> substringCombination = new ArrayList<>();
