@@ -87,4 +87,28 @@ class Problem7Test {
 		assertThrows(IllegalArgumentException.class, () ->
 			Problem7.InputValidator.isRightFriendsInput(finalFriends3));
 	}
+
+	@Test
+	void 올바른_visitors_입력() {
+		boolean result = true;
+		List<String> visitors = List.of("donut", "bedi", "jenny", "lily", "mrko");
+		assertThat(Problem7.InputValidator.isVisitorsInput(visitors)).isEqualTo(result);
+
+		visitors = List.of("hello", "me", "lala");
+		assertThat(Problem7.InputValidator.isVisitorsInput(visitors)).isEqualTo(result);
+	}
+
+	@Test
+	void 잘못된_visitors_입력() {
+		boolean result = true;
+		List<String> visitors = List.of("donut", "DKS", "lily", "mrko");
+		List<String> finalVisitors1 = visitors;
+		assertThrows(IllegalArgumentException.class, () ->
+			Problem7.InputValidator.isVisitorsInput(finalVisitors1));
+
+		visitors = List.of("donut", "DKS", "lily", "mrko");
+		List<String> finalVisitors2 = visitors;
+		assertThrows(IllegalArgumentException.class, () ->
+			Problem7.InputValidator.isVisitorsInput(finalVisitors2));
+	}
 }
