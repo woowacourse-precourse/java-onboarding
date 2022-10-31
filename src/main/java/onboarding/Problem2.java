@@ -46,6 +46,14 @@ public class Problem2 {
         }
     }
 
+    public static String decoding(ArrayList<String> removedChar) {
+        StringBuilder builder = new StringBuilder();
+        for (String s : removedChar) {
+            builder.append(s);
+        }
+        return builder.toString();
+    }
+
     public static String solution(String cryptogram) {
         String answer = "answer";
         // 1. 문자를 따로 나눔
@@ -53,6 +61,7 @@ public class Problem2 {
         // 2. 연속적이고 중복된 문자의 인덱스를 구하고 제거
         ArrayList<String> removedChar = removeChar(word);
         // 3. 제거 후 남은 문자 재조합
+        answer = decoding(removedChar);
 
         return answer;
     }
