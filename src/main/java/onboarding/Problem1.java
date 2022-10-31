@@ -36,6 +36,27 @@ class Problem1 {
     private static boolean checkValidatePage(int leftPage, int rightPage) {
         return leftPage % 2 == 1 && rightPage % 2 == 0 && leftPage + 1 == rightPage;
     }
+
+    /**
+     * 3. 자릴수 별 합과 곱중 큰 값을 연산하는 함수
+     * @param list
+     * @return 자릿수 별 합과 곱중 큰 값 리턴
+     */
+    private static int calMaxScore(List<Integer> list) {
+        int left = list.get(0);
+        int right = list.get(1);
+
+        int leftPlusResult = getPlusResult(left);
+        int leftMultiplyResult = getMultiplyResult(right);
+        int leftResult = getMaxScore(leftPlusResult, leftMultiplyResult);
+
+        int rightPlusResult = getPlusResult(right);
+        int rightMultiplyResult = getMultiplyResult(right);
+        int rightResult = getMaxScore(rightPlusResult, rightMultiplyResult);
+
+        return Integer.max(leftResult, rightResult);
+    }
+
     /**
      * 2-3 합과 곱중 큰 값 연산
      * @param plusResult
