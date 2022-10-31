@@ -45,7 +45,7 @@ public class Problem5 {
     }
 
     private static void convertWithdrawMoney() {
-        moneyMap.keySet().stream()
+        moneyMap.keySet()
                 .forEach(moneyUnit -> {
                     int numberOfMoney = INT_VARIABLE_INIT_VALUE;
                     numberOfMoney = withdrawMoney / moneyUnit;
