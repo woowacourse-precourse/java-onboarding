@@ -33,18 +33,18 @@ public class Problem7 {
             }
         }
 
-        void makeRelationship(List<List<String>> friends) {
-            for(List<String> list : friends){
-                String p1 = list.get(0);
-                String p2 = list.get(1);
+        void makeRelationship(List<List<String>> friendList) {
+            for(List<String> friends : friendList){
+               addOnRelationship(friends);
+            }
+        }
 
-                List<String> p1Friends = relationship.getOrDefault(p1, new ArrayList<>());
-                p1Friends.add(p2);
-                relationship.put(p1, p1Friends);
-
-                List<String> p2Friends = relationship.getOrDefault(p2, new ArrayList<>());
-                p2Friends.add(p1);
-                relationship.put(p2, p2Friends);
+        private void addOnRelationship(List<String> friends) {
+            for(int i=0 ; i<2 ; i++) {
+                List<String> p2Friends = relationship.getOrDefault(friends.get(i), new ArrayList<>());
+                int j = (i==0)? 1 : 0;
+                p2Friends.add(friends.get(j));
+                relationship.put(friends.get(i), p2Friends);
             }
         }
 
