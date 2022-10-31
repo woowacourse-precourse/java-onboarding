@@ -11,6 +11,7 @@ class Problem1 {
             return -1;
         int pobiMaxNum = getMaxNum(getNumByPage(pobi, "left"), getNumByPage(pobi, "right"));
         int crongMaxNum = getMaxNum(getNumByPage(crong, "left"), getNumByPage(crong, "right"));
+        return getWinner(pobiMaxNum, crongMaxNum);
     }
 
     public static int getNumByPage(List<Integer> user, String page) {
@@ -29,6 +30,13 @@ class Problem1 {
         return (leftMaxNum >= rightMaxNum) ? leftMaxNum : rightMaxNum;
     }
 
+    public static int getWinner(int pobiMaxNum, int crongMaxNum) {
+        if (pobiMaxNum > crongMaxNum)
+            return 1;
+        else if (pobiMaxNum < crongMaxNum)
+            return 2;
+        return 0;
+    }
 
     private static boolean hasException(List<Integer> pobi, List<Integer> crong) {
         if (pobi.size() != 2 || crong.size() != 2)
