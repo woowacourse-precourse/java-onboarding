@@ -18,8 +18,9 @@ public class CrewService {
     }
 
     private void saveSplitNickname(Crew crew) {
-        for (int i = 0; i < crew.getNickname().length() - 1; i++) {
-            String splitNickname = crew.getNickname().substring(i, i + 2);
+        String nickname = crew.getNickname();
+        for (int i = 0; i < nickname.length() - 1; i++) {
+            String splitNickname = nickname.substring(i, i + 2);
             usingNicknameRepository.put(splitNickname, 0);
         }
     }

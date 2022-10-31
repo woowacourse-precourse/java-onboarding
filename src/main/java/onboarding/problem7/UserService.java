@@ -43,17 +43,22 @@ public class UserService {
         if (friendRepository.isNotSavedUser(firstUser)) {
             friendRepository.save(firstUser, new Friends(secondUser));
         }
-        friendRepository.findByUser(firstUser).add(secondUser);
+        Friends firstUserFriend = friendRepository.findByUser(firstUser);
+        firstUserFriend.add(secondUser);
 
         if (friendRepository.isNotSavedUser(secondUser)) {
             friendRepository.save(secondUser, new Friends(firstUser));
         }
-        friendRepository.findByUser(secondUser).add(firstUser);
+        Friends secondUserFriend = friendRepository.findByUser(secondUser);
+        secondUserFriend.add(firstUser);
     }
 
     public void saveVisitor(String username, List<String> visitors) {
         User user = userRepository.findByUsername(username);
-        List<User> visitor = visitors.stream().map(userRepository::findByUsername).collect(Collectors.toList());
+        List<User> visitor = visitors.stream()
+                .map(userRepository::findByUsername)
+                .collect(Collectors.toList());
+
         visitorRepository.save(user, new Visitor(visitor));
     }
 
