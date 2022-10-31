@@ -9,7 +9,11 @@ public class Problem6 {
         String email = list.get(0);
 
         if(name_length < 0 || name_length > 20) return false;
+
         if(!email.contains("email.com")) return false;
+
+        if(email.length() > 20 || email.length() <11) return false;
+
 
         return true;
     }
@@ -30,7 +34,9 @@ public class Problem6 {
                 temp = list.get(j);
                 temp_name = temp.get(1);
                 if(temp_name.contains(name.next())){
-                    same.add(temp.get(0));
+                    if(Check_Error(temp)){
+                        same.add(temp.get(0));
+                    }
                 }
             }
         }
@@ -55,6 +61,7 @@ public class Problem6 {
         for(Iterator<String> i = before.iterator() ; i.hasNext() ;){
             after.add(i.next());
         }
+        after.sort(Comparator.naturalOrder());
         return  after;
     }
     public static List<String> solution(List<List<String>> forms) {
