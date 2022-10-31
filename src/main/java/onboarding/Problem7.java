@@ -44,4 +44,10 @@ public class Problem7 {
         }
         return false;
     }
+
+    // 전달받은 파라미터가 user의 친구인지 확인하는 함수
+    public static boolean checkUserInRecommendScoreList(HashMap<String, ArrayList<String>> friendGraph, String user, String other) {
+        if (friendGraph.get(user).contains(other)) return true;
+        return false;
+    }
 }
