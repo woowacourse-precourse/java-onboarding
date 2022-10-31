@@ -18,7 +18,7 @@ public class FriendListScoreCalculation {
 
         calculations(visitors, scoreMap, friendList, userFriends);
 
-        return null;
+        return scoreMap;
     }
 
     public void calculations(List<String> visitors,
