@@ -42,9 +42,9 @@ public class Problem6 {
 
     private static boolean isSimilarName(String name1, String name2) {
         for(int i = 0; i < name1.length() - 1; i++) {
-            for(int j = 0; j < name2.length() - 1; j++) {
-                if(name1.charAt(i) == name2.charAt(j) && name1.charAt(i+1) == name2.charAt(j+1))
-                    return true;
+            String piece = name1.substring(i, i+2);
+            if(name2.contains(piece)) {
+                return true;
             }
         }
         return false;
