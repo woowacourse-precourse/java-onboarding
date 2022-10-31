@@ -3,6 +3,18 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
+    public static Map<String, Integer> getVisitorScore( Map<String, List<String>> friendsMap,List<String> visitors,Map<String, Integer> scoreMap,String user){
+        for(String visitor: visitors){
+            if(!friendsMap.get(user).contains(visitor)){
+                if((!scoreMap.containsKey(visitor)))
+                    scoreMap.putIfAbsent(visitor, 1);
+                else
+                    scoreMap.put(visitor, scoreMap.get(visitor) + 1);
+            }
+        }
+        return scoreMap;
+    }
+
     public static Map<String, Integer> getFriendScore( Map<String, List<String>> friendsMap,Map<String, Integer> scoreMap,String user){
         for(String friend: friendsMap.get(user)){
             for(String notfriend: friendsMap.get(friend)){
@@ -35,14 +47,7 @@ public class Problem7 {
             friendsMap.get(right_name).add(left_name);
         }
         scoreMap=getFriendScore(friendsMap,scoreMap,user);
-        for(String visitor: visitors){
-            if(!friendsMap.get(user).contains(visitor)){
-                if((!scoreMap.containsKey(visitor)))
-                    scoreMap.putIfAbsent(visitor, 1);
-                else
-                    scoreMap.put(visitor, scoreMap.get(visitor) + 1);
-            }
-        }
+        scoreMap=getVisitorScore(friendsMap,visitors,scoreMap,user);
         scoreMap=sortByValue(scoreMap);
         List<String> keyList = new ArrayList<>(scoreMap.keySet());
         if(keyList.size()>5){
