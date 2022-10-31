@@ -33,12 +33,9 @@ public class Problem2 {
             }
             else if (pointer > 0) {
                 crypto = removeDuplicate(crypto, pointer, i);
-                i -= pointer;
-                pointer = 0;
                 redo = true;
-                if (i == crypto.length()) {
-                    return crypto;
-                }
+
+                return crypto;
             }
             cache = crypto.charAt(i);
         }
