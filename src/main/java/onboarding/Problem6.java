@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -35,5 +36,11 @@ public class Problem6 {
         }
     }
 
-
+    private static Map<String, List<String>> getDuplicateEmail(List<List<String>> forms) {
+        Map<String, List<String>> emailMap = new HashMap<>();
+        for(List<String> form : forms) {
+            nicknameSplitByTwo(form.get(1), emailMap, form.get(0));
+        }
+        return emailMap;
+    }
 }
