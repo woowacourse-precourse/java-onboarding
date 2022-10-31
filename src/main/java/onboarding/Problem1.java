@@ -24,4 +24,11 @@ class Problem1 {
         }
         return pageSplits;
     }
+    public static int pagenumberSum(List<Integer> pageSplits){
+        int pagenumberSum = 0;
+        for (int i = 0; i < pageSplits.size(); i++) {
+            pagenumberSum += pageSplits.get(i);
+        }
+        return pagenumberSum;
+    }
 }
