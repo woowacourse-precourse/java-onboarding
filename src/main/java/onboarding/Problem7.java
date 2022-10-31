@@ -30,7 +30,11 @@ public class Problem7 {
             }
         }
 
-        
+        for(String e : visitors) {
+            if(listpeople.containsKey(e)) {
+                listpeople.put(e, listpeople.get(e) + 1);
+            }
+        }
 
         return answer;
     }
