@@ -9,7 +9,15 @@ class Problem1 {
     private final static int WIN_CRONG = 2;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+        if (isNotHaveTwoPages(pobi) || isNotHaveTwoPages(crong)) {
+            return EXCEPTION;
+        }
 
+        if (isIncorrectPageInfo(pobi) || isIncorrectPageInfo(crong)) {
+            return EXCEPTION;
+        }
+
+        return getResult(pobi, crong);
     }
 
     /**
@@ -17,7 +25,7 @@ class Problem1 {
      * @param pages 페이지 정보
      * @return 결과
      */
-    private static boolean validateTwoPagesHave(List<Integer> pages) {
+    private static boolean isNotHaveTwoPages(List<Integer> pages) {
         if (pages.size() != 2) {
             System.out.println("페이지 값이 2개가 아닙니다.");
             return false;
@@ -26,7 +34,12 @@ class Problem1 {
         return true;
     }
 
-    private static boolean validatePageInfo(List<Integer> pages) {
+    /**
+     * 주어진 페이지 값 검증
+     * @param pages 페이지 정보
+     * @return 결과
+     */
+    private static boolean isIncorrectPageInfo(List<Integer> pages) {
         for (Integer page : pages) {
             if (Objects.isNull(page)) {
                 System.out.println("페이지 값이 null 이 될 수 없습니다.");
