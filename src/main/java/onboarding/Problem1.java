@@ -12,7 +12,7 @@ class Problem1 {
     private static final int DROW = 0;
     private static final int ERROR = -1;
 
-    private static final int LEFT_PAGE = 1;
+    private static final int LEFT_PAGE = 0;
     private static final int RIGHT_PAGE = 1;
 
     private static final int MIN_PAGE = 1;
@@ -54,12 +54,11 @@ class Problem1 {
         if (pobiScore > crongScore) {
             return POBI_WIN;
         }
-        if (pobiScore < crongScore) {
+        else if (pobiScore < crongScore) {
             return CRONG_WIN;
         }
-        if (pobiScore == crongScore) {
+        else {
             return DROW;
         }
-        return ERROR;
     }
 }
