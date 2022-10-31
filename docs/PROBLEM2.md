@@ -21,3 +21,11 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+### 기능목록
+
+- 문자열의 길이가 1이상 1000이하인지 확인 isInRange(String) : boolean
+- 알파벳 소문자로만 이루어져 있는지 확인 isLowerCase : boolean
+- 예외발생하는지 확인 isException : boolean
+- 중복 문자열 찾기 findDuplicate : String
+- 문자열 지우기 deleteDuplicate : String
