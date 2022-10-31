@@ -10,6 +10,7 @@ public class Problem7 {
         List<String> recomList =new ArrayList<>();
         List<String> userFriends = new ArrayList<>();
         List<Integer> recomScore = new ArrayList<Integer>();
+        boolean flag = true;
 
         for (int i = 0; i < friends.size(); i++) {
             for (int j = 0; j < 2; j++) {
@@ -68,6 +69,12 @@ public class Problem7 {
                 recomScore.set(index, recomScore.get(index) + 1);
             }
         }
+
+        while (flag) {
+
+        }
+
+
 
 
 
