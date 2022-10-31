@@ -9,7 +9,17 @@ public class Problem4 {
 
     public static String solution(String word) {
         initFrogDict();
+        
+        char[] words = word.toCharArray();
         String answer = "";
+
+        for (char c : words) {
+            if (isAlphabet(c)) {
+                answer += convert(c);
+            } else {
+                answer += c;
+            }
+        }
         return answer;
     }
 
@@ -21,5 +31,16 @@ public class Problem4 {
         for (char c = 'a'; c <= 'z'; c++) {
             frogDict.put(c, (char) ('z' - c + 'a'));
         }
+    }
+
+    private static boolean isAlphabet(char c) {
+        if (('A' <= c && c <= 'Z') || ('a' <= c && c <= 'z')) {
+            return true;
+        }
+        return false;
+    }
+
+    private static char convert(char c) {
+        return frogDict.get(c);
     }
 }
