@@ -97,6 +97,7 @@ public class Problem6 {
 
         duplicateSet = new HashSet<>(sameValueEmail);
         sameValueEmail = new ArrayList<>(duplicateSet);
+        Collections.sort(sameValueEmail);
 
         return sameValueEmail;
     }
