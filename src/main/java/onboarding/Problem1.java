@@ -8,6 +8,11 @@ class Problem1 {
         return answer;
     }
 
+    //  자릿수별 덧셈연산, 곱셈연산된 숫자 중 최대값 계산
+    private static int findMaxValueInNum(int num) {
+        return Math.max(valueByPlus(num), valueByMultiple(num));
+    }
+
     //  입력된 수의 자릿수별 덧셈연산
     private static int valueByPlus(int num) {
         int result = num % 10;
