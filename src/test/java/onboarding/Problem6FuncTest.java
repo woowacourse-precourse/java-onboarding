@@ -89,4 +89,16 @@ public class Problem6FuncTest {
     assertThat(Problem6.solution(forms)).isEqualTo(result);
   }
 
+  @Test
+  public void testCase3() {
+    List<List<String>> forms = List.of(
+        List.of("jj@email.com", "제이제이"),
+        List.of("woniee@email.com", "워니"),
+        List.of("nowm@email.com", "이우엠"),
+        List.of("qq@email.com", "이워니")
+    );
+    List<String> result = List.of("qq@email.com", "woniee@email.com");
+    assertThat(Problem6.solution(forms)).isEqualTo(result);
+  }
+
 }
