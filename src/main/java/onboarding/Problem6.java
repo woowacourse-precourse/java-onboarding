@@ -6,10 +6,19 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Problem6 {
+
+    public static void main(String[] args) {
+
+    }
     public static List<String> solution(List<List<String>> forms) {
         List<String> emailList = valueExtraction(forms,0);
         List<String> nameList = valueExtraction(forms,1);
-        return checkList(nameList,emailList);
+        List<String> answerList= checkList(nameList,emailList);
+
+        return limitList(answerList);
+    }
+    public static List<String> limitList(List<String> answerList){
+        return answerList.stream().limit(5).collect(Collectors.toList());
     }
     public static List<String> checkList(List<String> nameList,List<String> emailList){
         List<String> answer = new ArrayList<>();
