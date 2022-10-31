@@ -1,3 +1,16 @@
+# 🎈 민주
+
+## ✔ 기능 정의
+### 컬렉션
+- {String : List<String>} = key가 알고있는 친구 리스트 List<String>
+- {String : Integer} = key의 점수
+### 기능
+- friends를 이용하여 서로 알고 있는 친구 리스트 업데이트
+  - frieds.get(i)에 있는 두 명의 사람 각각, 아는 사람 리스트에 서로를 추가해주기
+- user와 서로 아는 친구가 있는 사람의 score +=10 
+- visited 리스트에 포함된 사람의 score += 1
+
+# 🎈 본문
 ## 🚀 기능 요구 사항
 
 레벨 2의 팀 프로젝트 미션으로 SNS(Social Networking Service)를 만들고자 하는 팀이 있다. 팀에 속한 크루 중 평소 알고리즘에 관심이 많은 미스터코는 친구 추천 알고리즘을 구현하고자 아래와 같은 규칙을 세웠다.
