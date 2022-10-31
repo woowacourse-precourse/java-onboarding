@@ -3,7 +3,7 @@ package onboarding.problem1;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Calculator {
+public class Calculator implements CalculatorInt {
     private final int score;
 
     public Calculator(Pages pages) {
@@ -19,10 +19,10 @@ public class Calculator {
 
     private int calculateScore(int page) {
         List<Integer> division = dividePage(page);
-        int scoreWithSum = new SumCalculator(division).getScore();
-        int scoreWithMultiple = new MultipleCalculator(division).getScore();
+        CalculatorInt sumCalculator = new SumCalculator(division);
+        CalculatorInt multipleCalculator = new SumCalculator(division);
 
-        return Math.max(scoreWithSum, scoreWithMultiple);
+        return Math.max(sumCalculator.getScore(), multipleCalculator.getScore());
     }
 
     private List<Integer> dividePage(int page) {

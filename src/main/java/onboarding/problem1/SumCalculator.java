@@ -2,7 +2,7 @@ package onboarding.problem1;
 
 import java.util.List;
 
-class SumCalculator {
+class SumCalculator implements CalculatorInt {
     private final List<Integer> division;
 
     public SumCalculator(List<Integer> division) {

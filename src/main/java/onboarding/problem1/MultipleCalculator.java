@@ -2,7 +2,7 @@ package onboarding.problem1;
 
 import java.util.List;
 
-class MultipleCalculator {
+class MultipleCalculator implements CalculatorInt {
     private final List<Integer> division;
 
     public MultipleCalculator(List<Integer> division) {
