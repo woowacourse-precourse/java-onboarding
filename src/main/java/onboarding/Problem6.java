@@ -12,6 +12,7 @@ public class Problem6 {
             return answer;
         }
         answer = keyCheck(answer, forms, key);
+        answer.sort(Comparator.naturalOrder());
         return answer;
     }
 
