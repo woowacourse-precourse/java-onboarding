@@ -9,7 +9,7 @@ import java.util.Set;
 
 public class Problem7 {
     public static int acquaintancePoint = 10;
-    public static int timeLinePoint = 1;
+    public static int visitPoint = 1;
     public static Set<String> getCrewList(List<List<String>> friends, List<String> visitors) {
         Set<String> crewSet = new HashSet<>();
         for (List<String> friend : friends) {
@@ -62,6 +62,16 @@ public class Problem7 {
             int score = scoreBoard.get(target);
             score += acquaintancePoint;
             scoreBoard.put(target, score);
+        }
+
+        return scoreBoard;
+    }
+
+    public static HashMap<String, Integer> updateVisitPoint(HashMap<String, Integer> scoreBoard, List<String> visitors) {
+        for (String visitor : visitors) {
+            int score = scoreBoard.get(visitor);
+            score++;
+            scoreBoard.put(visitor, score);
         }
 
         return scoreBoard;
