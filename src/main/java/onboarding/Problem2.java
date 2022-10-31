@@ -23,6 +23,9 @@ class StringOperation {
         }
         return newCipher;
     }
+    boolean existsRedundantAlphabet(int numberOfRedundant){
+        return numberOfRedundant!=0;
+    }
 }
 public class Problem2 {
     public static String solution(String cryptogram) {
