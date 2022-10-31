@@ -52,7 +52,21 @@ public class Problem7 {
     }
 
     private static List<String> findFriends(String userName, List<List<String>> friends){
+        List<String> ret = new ArrayList<>();
 
+        for(List<String> friend: friends){
+            if(friend.get(0).equals(userName)){
+                ret.add(friend.get(1));
+                break;
+            }
+
+            if(friend.get(1).equals(userName)){
+                ret.add(friend.get(0));
+                break;
+            }
+        }
+
+        return ret;
     }
 
     private static boolean isMeOrUserFriends(String userName, String user, List<String> userFriends){
