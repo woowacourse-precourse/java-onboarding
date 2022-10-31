@@ -10,10 +10,13 @@ public class Problem2 {
     static String result = "";
     public static String solution(String cryptogram) {
 
+        if(!checkStringLength(cryptogram))
+            return result;
+
+        String word = cryptogram.toLowerCase();
         String answer = "answer";
-        String[] arr = cryptogram.split("");
+        String[] arr = word.split("");
         answer = comp(arr);
-        System.out.println(cryptogram + "     " + answer);
         return answer;
     }
 
@@ -34,5 +37,9 @@ public class Problem2 {
         }
 
         return result;
+    }
+
+    public static boolean checkStringLength(String cryptogram){
+        return cryptogram.length()>=1 && cryptogram.length()<=1000;
     }
 }
