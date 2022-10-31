@@ -8,6 +8,7 @@ class Problem1 {
         if (!isValid(pobi) || !isValid(crong)) {
             return -1;
         }
+
         return getWinner(getPoint(pobi), getPoint(crong));
     }
 
@@ -23,19 +24,15 @@ class Problem1 {
     }
 
     private static int getPoint(List<Integer> player) {
-        int leftPage = player.get(0);
-        int rightPage = player.get(1);
-        return getMax(leftPage, rightPage);
+        return getMaxPage(player.get(0), player.get(1));
     }
 
-    private static int getMax(int leftPage, int rightPage) {
+    private static int getMaxPage(int leftPage, int rightPage) {
         return Math.max(getMax(leftPage), getMax(rightPage));
     }
 
     private static int getMax(int page) {
-        int[] arrNum = toArr(page);
-
-        return Math.max(getAddAll(arrNum), getMultiplyAll(arrNum));
+        return Math.max(getAddAll(toArr(page)), getMultiplyAll(toArr(page)));
     }
 
     private static int[] toArr(int page) {
@@ -62,17 +59,21 @@ class Problem1 {
     }
 
     private static boolean isValid(List<Integer> pages) {
+        //짝수 또는 홀수가 아닐때
         if (pages.get(0) % 2 != 1 && pages.get(1) % 2 != 0) {
             return false;
         }
+        //서로 이어진 페이지가 아닐때
         if (pages.get(1) - pages.get(0) != 1) {
             return false;
         }
-
-        if (pages.get(0) <= 1 || pages.get(1) <= 2)
-            if (pages.get(0) >= 399 || pages.get(0) >= 400) {
-                return false;
-            }
+        //시작 면이나 마지막 면이 나오도록 책을 펼치지 않는다.
+        if (pages.get(0) >= 399 || pages.get(1) >= 400) {
+            return false;
+        }
+        if (pages.get(0) <= 1 || pages.get(1) <= 2) {
+            return false;
+        }
         return true;
     }
 }
