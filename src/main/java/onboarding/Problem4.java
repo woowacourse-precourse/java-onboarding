@@ -9,7 +9,6 @@ class Constant {
 	static final String lowerAlphabet = "abcdefghijklmnopqrstuvwxyz";
 	static final String invalidArgument = "InvalidArgument";
 	static final int length = 26;
-
 }
 
 class ValidatationString {
