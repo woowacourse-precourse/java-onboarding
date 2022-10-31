@@ -15,7 +15,6 @@ public class Problem7 {
         List<String> result = new LinkedList<String>();
         Map<String, Integer> map = new HashMap<>();
 
-        // 이미 친구인 목록을 만든다. [shakevan, donut]
         HashSet<String> alreadyfriends = new HashSet<>();
         for(int i=0; i<friends.size(); i++){
             if(friends.get(i).get(0)==user){
@@ -31,20 +30,14 @@ public class Problem7 {
             String s2 = list.get(1);
             if(alreadyfriends.contains(s1) && !s2.contains(user)){
                 map.put(s2, map.getOrDefault(s2, 0)+10);
-            }else if(!s1.contains(user) && alreadyfriends.contains(s1)){
+            }else if(alreadyfriends.contains(s2) && !s1.contains(user)){
                 map.put(s1, map.getOrDefault(s1, 0)+10);
             }
         }
 
         for(int i=0; i<visitors.size(); i++){
-            map.put(visitors.get(i), map.getOrDefault(visitors.get(i), 0)+1);
-        } // {andole=20, jun=20, shakevan=11, bedi=3, donut=11}
-
-        for(int i=0; i< map.size(); i++){
-            for(String key : alreadyfriends){
-                if(map.containsKey(key)){
-                    map.remove(key);
-                }
+            if(!alreadyfriends.contains(visitors.get(i))){
+                map.put(visitors.get(i), map.getOrDefault(visitors.get(i), 0)+1);
             }
         }
 
