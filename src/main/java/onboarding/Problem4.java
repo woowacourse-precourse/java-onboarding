@@ -28,7 +28,6 @@ public class Problem4 {
             }
         }
 
-        String answer = "";
-        return answer;
+        return String.valueOf(reverseChars);
     }
 }
