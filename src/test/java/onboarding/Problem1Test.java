@@ -102,19 +102,19 @@ class Problem1Test {
 		);
 	}
 
-	@ParameterizedTest(name = "Validation Test : {0} : {1}")
-	@MethodSource("generatePlayerInputAndExpectedResult")
-	void validationTest(List<Integer> pages, boolean expected) {
-		// when : 플레이어가 고른 책의 페이지가 유효한지 검증할 때
-		boolean validationResult = Problem1.isInvalidInput(pages);
+	@ParameterizedTest(name = "Validation Test : {0} is invalid")
+	@MethodSource("generatePlayerInvalidInput")
+	void invalidInputTest(List<Integer> invalidPages) {
+		// when : 플레이어가 고른 책의 페이지가 유효하지 않다면
+		boolean invalidResult = Problem1.isInvalidInput(invalidPages);
 
-		// then : 유효한지 확인
-		assertThat(validationResult).isEqualTo(expected);
+		// then : INVALID 를 반환해야 함
+		final boolean INVALID = true;
+		assertThat(invalidResult).isEqualTo(INVALID);
 	}
 
-	private static Stream<Arguments> generatePlayerInputAndExpectedResult() {
+	private static Stream<Arguments> generatePlayerInvalidInput() {
 		final boolean INVALID = true;
-		final boolean VALID = false;
 
 		return Stream.of(
 				Arguments.of(Arrays.asList(1, 2), INVALID),
@@ -127,6 +127,25 @@ class Problem1Test {
 				Arguments.of(Arrays.asList(3, 5), INVALID),
 				Arguments.of(Arrays.asList(0), INVALID),
 				Arguments.of(Arrays.asList(133), INVALID),
+				Arguments.of(Arrays.asList(), INVALID)
+		);
+	}
+
+	@ParameterizedTest(name = "Validation Test : {0} is valid")
+	@MethodSource("generatePlayerValidInput")
+	void validInputTest(List<Integer> validPages) {
+		// when : 플레이어가 고른 책의 페이지가 유효하다면
+		boolean validResult = Problem1.isInvalidInput(validPages);
+
+		// then : VALID 를 반환해야 함
+		final boolean VALID = false;
+		assertThat(validResult).isEqualTo(VALID);
+	}
+
+	private static Stream<Arguments> generatePlayerValidInput() {
+		final boolean VALID = false;
+
+		return Stream.of(
 				Arguments.of(Arrays.asList(97, 98), VALID),
 				Arguments.of(Arrays.asList(243, 244), VALID),
 				Arguments.of(Arrays.asList(123, 124), VALID),
