@@ -12,8 +12,8 @@ class Problem1 {
         int crongLeftPage = crong.get(0);
         int crongRightPage = crong.get(1);
 
-        if (!isValidatePages(pobiLeftPage, pobiRightPage)
-                || !isValidatePages(crongLeftPage, crongRightPage)) {
+        if (!isValidPage(pobiLeftPage, pobiRightPage)
+                || !isValidPage(crongLeftPage, crongRightPage)) {
             return -1;
         }
 
@@ -52,11 +52,14 @@ class Problem1 {
     private static List<Integer> getAllNumbers(int leftPage, int rightPage) {
         List<Integer> numbers = new ArrayList<>();
 
-        numbers.add(getPageSum(getEachPageNumbers(leftPage)));
-        numbers.add(getPageSum(getEachPageNumbers(rightPage)));
+        char[] leftEachPageNumbers = getEachPageNumbers(leftPage);
+        char[] rightEachPageNumbers = getEachPageNumbers(rightPage);
 
-        numbers.add(getPageMultiply(getEachPageNumbers(leftPage)));
-        numbers.add(getPageMultiply(getEachPageNumbers(rightPage)));
+        // 가능한 4가지 값을 모두 List에 추가
+        numbers.add(getPageSum(leftEachPageNumbers));
+        numbers.add(getPageSum(rightEachPageNumbers));
+        numbers.add(getPageMultiply(leftEachPageNumbers));
+        numbers.add(getPageMultiply(rightEachPageNumbers));
 
         return numbers;
     }
@@ -76,7 +79,7 @@ class Problem1 {
         return 0;
     }
 
-    private static boolean isValidatePages(int leftPage, int rightPage) {
+    private static boolean isValidPage(int leftPage, int rightPage) {
         if (rightPage - leftPage != 1) {
             return false;
         }
