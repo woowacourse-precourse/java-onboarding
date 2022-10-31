@@ -34,3 +34,4 @@
 - Left, Right를 가지는 enum 생성
 - 시작면과 마지막면이 나오지 않도록 하는 메서드 -> isNotStartOrEnd (List) : Boolean
 - 각 자리수를 더한 수와 곱한 수중 최대값을 반환하기 -> FindScore(List) : Integer
+- 예외가 있는지 확인 -> FindException(List) : Integer
