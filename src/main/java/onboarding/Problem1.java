@@ -8,32 +8,23 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        answer = 0;
 
-
-        if (pobi.get(0) > 0 && pobi.get(1) < 401 && crong.get(0) > 0 && crong.get(1) < 401) {
-
-            if (pobi.get(0) + 1 == pobi.get(1) && crong.get(0) + 1 == crong.get(1)) {
+            if (checkPages(pobi) && checkPages(crong)) {
                 int final_pobi = comparison(pobi);
                 int final_crong = comparison(crong);
-                if (final_pobi > final_crong) {
+                if (final_pobi > final_crong)
                     answer = 1;
-                } else if (final_pobi < final_crong) {
+                if (final_pobi < final_crong)
                     answer = 2;
-                } else {
-                    answer = 0;
-                }
-            }else {
-                answer = -1;
-            }
-        } else {
-            answer = -1;
-        }
+            } else answer = -1;
+
         return answer;
     }
 
-    public static int comparison(List<Integer> some) {
-        int num1 = some.get(0);
-        int num2 = some.get(1);
+    public static int comparison(List<Integer> someone) {
+        int num1 = someone.get(0);
+        int num2 = someone.get(1);
         int temp1 = 0;
         int temp2 = 1;
         List<Integer> tempNum1 = new ArrayList<>();
@@ -57,4 +48,9 @@ class Problem1 {
 
 
     }
+
+    public static boolean checkPages(List<Integer> pages) {
+        return pages.size() == 2 && pages.get(0) + 1 == pages.get(1);
+    }
+
 }
