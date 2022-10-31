@@ -1,10 +1,18 @@
 package onboarding;
 
-import java.util.List;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 
 public class Problem6 {
-    public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+
+    private static HashMap<String, String> notices = new HashMap<>();
+
+    private static boolean getRegexMatcherResult(String expression, String target) {
+        Pattern pattern = Pattern.compile(expression);
+        Matcher matcher = pattern.matcher(target);
+
+        return matcher.matches();
     }
 }
