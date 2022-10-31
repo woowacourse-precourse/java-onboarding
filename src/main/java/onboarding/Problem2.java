@@ -2,8 +2,9 @@ package onboarding;
 
 /*
 기능 구현 사항
-1. 이전 문자열과 바꾼 문자열이 동일하면 루프 멈추기
-2. 현재 문자가 다음 문자와 같으면
+1. 스택을 사용
+2. 맨 위의 글자와 같은 글자면 pop
+3. 그 외는 push
  */
 public class Problem2 {
     public static String solution(String cryptogram) {
