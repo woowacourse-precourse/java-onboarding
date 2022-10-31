@@ -10,6 +10,10 @@ public class Problem5 {
         return answer;
     }
 
+    static int calculateMaxCount(int totalMoney, int money) {
+        return totalMoney / money;
+    }
+
     static int calculateChange(int totalMoney, int money, int count) {
         if (count == 0) {
             return totalMoney;
