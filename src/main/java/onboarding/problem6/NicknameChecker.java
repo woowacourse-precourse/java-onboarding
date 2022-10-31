@@ -25,7 +25,7 @@ public class NicknameChecker {
     public NicknameChecker checkSimilarNickname(){
         List<Crew> checkedCrews = new ArrayList<>();
         for(Crew crew : crews){
-            addSimilarNicknameCrews(crew, checkedCrews);
+            addSimilarNicknameFromList(crew, checkedCrews);
             checkedCrews.add(crew);
         }
         return this;
@@ -50,8 +50,8 @@ public class NicknameChecker {
         }
     }
 
-    private void addSimilarNicknameCrews(Crew crew, List<Crew> targetCrews) {
-        for(Crew targetCrew : targetCrews){
+    private void addSimilarNicknameFromList(Crew crew, List<Crew> targetCrewList) {
+        for(Crew targetCrew : targetCrewList){
             if(isSimilar(crew.getNickname(), targetCrew.getNickname())){
                 similarUserEmails.add(crew.getEmail());
                 similarUserEmails.add(targetCrew.getEmail());
