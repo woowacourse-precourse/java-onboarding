@@ -6,9 +6,90 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Problem7 {
+    public static List<User> repository = new ArrayList<>();
+    public static final int SAME_FRIEND_SCORE = 10;
+    public static final int VISIT_SCORE = 1;
+    public static final int DEFAULT_SCORE = 0;
+
+    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        initUsers(friends, visitors);
+        initFriend(friends);
+        User userInstance = getUserFromList(user);
+        userInstance.setVisitor(visitors);
+        List<User> candidates = getCandidateList(userInstance);
+        initScore(candidates, DEFAULT_SCORE);
+        calculateScore(userInstance, candidates);
+        return getResultFromCandidates(candidates);
+    }
+
+    private static List<String> getResultFromCandidates(List<User> candidates) {
+        return candidates.stream()
+                .filter(candi -> candi.getScore() > 0)
+                .sorted(Comparator.comparing(User::getScore).reversed()
+                        .thenComparing(Comparator.comparing(User::getName)))
+                .map(User::getName)
+                .collect(Collectors.toList());
+    }
+
+    private static void initUsers (List<List<String>> friends, List<String> visitors) {
+        List<String> names = getNamesFromFriends(friends);
+        names.addAll(visitors);
+        names.stream()
+                .distinct()
+                .forEach(Problem7::registerNewUser);
+    }
+
+    private static List<String> getNamesFromFriends(List<List<String>> friends) {
+        return friends.stream()
+                .flatMap(Collection::stream)
+                .collect(Collectors.toList());
+    }
+
+    private static User registerNewUser(String name){
+        User newUser = new User(name);
+        repository.add(newUser);
+        return newUser;
+    }
+
+    private static void initFriend(List<List<String>> friends) {
+        friends.forEach(friend -> {
+            User userA = getUserFromList(friend.get(0));
+            User userB = getUserFromList(friend.get(1));
+            userA.addFriend(userB);
+            userB.addFriend(userA);
+        });
+    }
+
+    private static User getUserFromList(String name){
+        return repository.stream()
+                .filter(tmpUser -> tmpUser.getName().equals(name))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("can't find user in repository"));
+    }
+
+    private static void initScore(List<User> candidates, int score){
+        candidates.forEach(user -> user.setScore(score));
+    }
+
+    private static List<User> getCandidateList(User user){
+        return repository.stream()
+                .filter(tmpUser -> !tmpUser.getName().equals(user.getName()))
+                .filter(tmpUser -> !tmpUser.isFriend(user))
+                .collect(Collectors.toList());
+    }
+
+    private static void calculateScore(User user, List<User> candidates){
+        candidates.forEach(tmpUser -> {
+            int score = 0;
+            score += user.getSameFriendCount(tmpUser) * SAME_FRIEND_SCORE;
+            score += user.getVisitCount(tmpUser) * VISIT_SCORE;
+            tmpUser.setScore(score);
+        });
+    }
+
     static class User{
         private final String name;
-        private List<String> friends;
+        private List<User> friends;
         private List<String> visitor;
         private int score;
 
@@ -19,19 +100,14 @@ public class Problem7 {
             this.score = 0;
         }
 
-        public User(String name, int score) {
-            this.name = name;
-            this.score = score;
-        }
-
-        public boolean isFriend(String name){
+        public boolean isFriend(User name){
             if (friends.contains(name)){
                 return true;
             }
             return false;
         }
 
-        public void addFriend(String name){
+        public void addFriend(User name){
             friends.add(name);
         }
 
@@ -39,106 +115,33 @@ public class Problem7 {
             this.visitor = visitor;
         }
 
-        public List<String> getFriends() {
+        public List<User> getFriends() {
             return friends;
         }
 
-        public List<String> getVisitor() {
-            return visitor;
+        //
+        public int getSameFriendCount(User srcUser) {
+            return (int)srcUser.getFriends().stream()
+                    .filter(friend -> this.isFriend(friend))
+                    .count();
+        }
+
+        public int getVisitCount(User srcUser){
+            return (int)this.visitor.stream()
+                    .filter(visitor -> visitor.equals(srcUser.getName()))
+                    .count();
+        }
+
+        public String getName() {
+            return name;
         }
 
         public int getScore() {
             return score;
         }
 
-        public String getName() {
-            return name;
+        public void setScore(int score) {
+            this.score = score;
         }
-    }
-
-    public static Map<String, User> repository = new HashMap<>();
-
-    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        Map<String, Integer> newFriendMap = new HashMap<>(); // map 으로 구현하는게 좋을까 arrayList<User> 로 구현하는게 좋을까?
-        List<String> answer;
-
-        initFriend(friends);
-
-
-        User userInstance = repository.get(user);
-        userInstance.setVisitor(visitors); // init visitor
-
-        calculateSameFriendScore(user, newFriendMap);
-        calculateVisitorScore(user, newFriendMap);
-
-        answer = getFilteredResult(newFriendMap);
-        return answer;
-    }
-
-    private static List<String> getFilteredResult(Map<String, Integer> newFriendMap) {
-        List<User> store = new ArrayList<>();
-
-        for (String key : newFriendMap.keySet()){
-            store.add(new User(key, newFriendMap.get(key)));
-        }
-        List<String> collect = store.stream()
-                .filter(user -> user.getScore() > 0)
-                .sorted(Comparator.comparing(User::getScore).reversed().thenComparing(Comparator.comparing(User::getName)))
-                .map(User::getName)
-                .collect(Collectors.toList());
-        return collect;
-    }
-
-    private static void calculateVisitorScore(String user, Map<String, Integer> newFriendMap){
-        User userInstance = repository.get(user);
-        List<String> visitors = userInstance.getVisitor();
-
-        for (String name : visitors){
-            if (!userInstance.isFriend(name)){
-                newFriendMap.put(name, newFriendMap.getOrDefault(name, 0) + 1);
-            }
-        }
-    }
-
-    private static void calculateSameFriendScore(String user, Map<String, Integer> newFriendMap) {
-        User userInstance = repository.get(user);
-        repository.forEach((name, userObj) -> {
-            if (!name.equals(user) && !userObj.isFriend(name)){
-                newFriendMap.put(name, getSameFriendCount(userInstance, userObj) * 10);
-            }
-        });
-    }
-
-    private static int getSameFriendCount(User userA, User userB){
-        List<String> userAFriends = userA.getFriends();
-        List<String> userBFriends = userB.getFriends();
-        List<String> mergeFriends = new ArrayList<>();
-
-        mergeFriends.addAll(userAFriends);
-        mergeFriends.addAll(userBFriends);
-        Set<String> nameSet = new HashSet<>(mergeFriends);
-        return mergeFriends.size() - nameSet.size();
-    }
-
-
-    private static void initFriend(List<List<String>> friends) {
-        for (List<String> friend : friends){
-            String friendA = friend.get(0);
-            String friendB = friend.get(1);
-
-            setFriendToMap(friendA, friendB);
-        }
-    }
-
-    private static void setFriendToMap(String friendA, String friendB) {
-        User tmpUser;
-
-        tmpUser = repository.getOrDefault(friendA, new User(friendA));
-        tmpUser.addFriend(friendB);
-        repository.put(friendA, tmpUser);
-
-        tmpUser = repository.getOrDefault(friendB, new User(friendB));
-        tmpUser.addFriend(friendA);
-        repository.put(friendB, tmpUser);
     }
 }

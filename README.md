@@ -126,6 +126,7 @@ BUILD SUCCESSFUL in 0s
 
 ## 문제 7
 * Map 을 활용하여 구현하였는데 추후 ArrayList로 구현해보는것도 좋을듯
+* 친구가 없는 user가 들어올 수 있음
 ### 과정
 - [X] User 클래스를 생성
   - [X] 각 유저들은 속성으로 친구, 방문자 배열을 가지고 있음
@@ -137,4 +138,5 @@ BUILD SUCCESSFUL in 0s
 - [X] visitor 를 순회하면서 Map 에 점수 추가
 - [X] 점수가 높은 순서대로 정렬
 - [X] 점수가 같으면 이름순으로 정렬
+
 
