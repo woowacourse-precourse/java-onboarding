@@ -1,15 +1,12 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.LinkedList;
+import java.util.*;
 
 public class Problem4 {
-    private static HashMap<String, String>  alphabetTable;
+    private static Map<String, String> alphabetTable;
 
     public static String solution(String word) {
-        alphabetTable = createAlphabetTable();
+        initialize();
 
         if (!validateWord(word)) {
             return "";
@@ -80,5 +77,12 @@ public class Problem4 {
      */
     private static String[] getOneLetterWords(String word) {
         return word.split("");
+    }
+
+    /**
+     * 초기화
+     */
+    private static void initialize() {
+        alphabetTable = createAlphabetTable();
     }
 }
