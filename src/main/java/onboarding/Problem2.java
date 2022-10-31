@@ -8,7 +8,7 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-//        return cryptogramInterpretation(cryptogram);
+        return cryptogramInterpretation(cryptogram);
     }
     public static String cryptogramInterpretation(String cryptogram) {
         String newCryptogram = cryptogram;
