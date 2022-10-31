@@ -3,25 +3,34 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.Collections;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = new ArrayList<>();
+        Set<String> temp_answer = new HashSet<>();
 
         for(List<String> user : forms) {
             List<String> word_combi = createWordCombi(user.get(1));
-            //word_combi를 활용해 나머지 닉네임 중에 해당하는 사람 있는지 확인
+            Set<String> dup_member = checkDuplicateNickname(forms, word_combi, forms.indexOf(user));
         }
 
-        answer = new ArrayList<>(new HashSet<>(answer));
+        List<String> answer = new ArrayList<>(temp_answer);
         Collections.sort(answer);
         return answer;
     }
 
-    public static List<String> checkDuplicateNickname() {
-        List<String> dup_member = new ArrayList<>();
+    public static Set<String> checkDuplicateNickname(List<List<String>> forms, List<String> word_combi, int iter) {
+        Set<String> dup_member = new HashSet<>();
 
+        for(int i = iter+1; i < forms.size(); i++) {
+            for(String word : word_combi) {
+                if(forms.get(i).get(1).contains(word)) {
+                    dup_member.add(forms.get(iter).get(0));
+                    dup_member.add(forms.get(i).get(0));
+                }
+            }
+        }
         return dup_member;
     }
 
