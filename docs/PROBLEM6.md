@@ -21,3 +21,17 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+## 📝 구현 기능 목록
+- 닉네임 분할 기능 구현
+    - 길이가 2인 문자열로 나눈 배열을 HashMap에 저장
+    
+
+- 중복 닉네임 이메일 집합 구현
+  - 두 배열을 비교 후 중복되는 원소 체크 함수 구현
+  - HashMap을 순회하며 원소가 중복될 경우 집합에 추가
+
+
+- 결과 출력 기능 구현
+  - 집합을 List로 변환 후 오름차순으로 정렬하고 return
+
