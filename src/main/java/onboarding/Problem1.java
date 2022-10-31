@@ -39,10 +39,18 @@ class Problem1 {
         }
         return mulNum;
     }
-    
+
+    private static int getBigNum(int[] pages) {
+        int addNum = Math.max(getAddNum(pages[0]), getAddNum(pages[1]));
+        int mulNum = Math.max(getMulNum(pages[0]), getMulNum(pages[1]));
+        return Math.max(addNum, mulNum);
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if (!checkPage(pobi) || !checkPage(crong))
             return -1;
+        int p = getBigNum(pobi);
+        int c = getBigNum(crong);
         int answer = Integer.MAX_VALUE;
         return answer;
     }
