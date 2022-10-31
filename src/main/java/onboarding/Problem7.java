@@ -42,6 +42,9 @@ public class Problem7 {
             recomList.remove(userFriends.get(i));
         }
 
+        for (int i = 0; i < recomList.size(); i++) {
+            recomScore.add(0);
+        }
 
 
 
