@@ -13,6 +13,14 @@ public class Problem2 {
                 .collect(Collectors.joining());
     }
 
+    private static String decrypt(String cryptogram) {
+        String newString = reduceOverlap(cryptogram);
+        while (newString.length() < cryptogram.length()) {
+            cryptogram = newString;
+            newString = reduceOverlap(cryptogram);
+        }
+        return cryptogram;
+    }
 
     private static void checkRules(String cryptogram) {
         if (cryptogram.length() > 1000 || cryptogram.length() < 1)
@@ -23,7 +31,6 @@ public class Problem2 {
 
     public static String solution(String cryptogram) {
         checkRules(cryptogram);
-
-        return null;
+        return decrypt(cryptogram);
     }
 }
