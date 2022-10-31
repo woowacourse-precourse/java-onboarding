@@ -33,10 +33,11 @@ class Problem1 {
     }
 
     private static Boolean getIsValid(List<Integer> pageList) {
-        Boolean check1 = pageList.get(0) % 2 == 1 && pageList.get(1) % 2 == 0 && pageList.get(1) == pageList.get(0) + 1;
-        Boolean check2 = pageList.get(0) != 1 && pageList.get(1) != 400;
-        Boolean isValid = check1 && check2;
-        return isValid;
+        Boolean leftPageValidity = pageList.get(0) % 2 == 1; // 왼쪽 페이지는 홀수
+        Boolean rightPageValidity = pageList.get(1) % 2 == 0; // 오른쪽 페이지는 짝수
+        Boolean bothPageValidity = pageList.get(1) == pageList.get(0) + 1; // 왼쪽, 오른쪽은 1페이지 차이
+        Boolean notFrontOrEnd = pageList.get(0) != 1 && pageList.get(1) != 400; // 시작 면이나 마지막 면이 나오도록 책을 펼치지 않음
+        return notFrontOrEnd && leftPageValidity && rightPageValidity && bothPageValidity;
     }
 
     private static int getScore(List<Integer> pageList) {
