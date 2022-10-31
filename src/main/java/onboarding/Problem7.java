@@ -51,7 +51,12 @@ public class Problem7 {
         Map<String, Integer> numberOfFriends = new HashMap<>();
 
         init(friendships, visitors, numberOfFriends, friends);
+        updateScores(user, friends, numberOfFriends);
 
+        return getAnswer(user, friends);
+    }
+
+    private static void updateScores(String user, List<Friend> friends, Map<String, Integer> numberOfFriends) {
         for (int i = 0; i < friends.size(); i++) {
             if (i != numberOfFriends.get(user)) {
                 addScore(numberOfFriends, friends, user, i);
@@ -59,10 +64,8 @@ public class Problem7 {
         }
 
         Collections.sort(friends);
-
-        return getAnswer(user, friends);
     }
-    
+
     private static void addScore(Map<String, Integer> numberOfFriends, List<Friend> friends, String user, int index) {
         List<String> userFriends = friends.get(numberOfFriends.get(user)).getMyFriends();
         Friend friend = friends.get(index);
