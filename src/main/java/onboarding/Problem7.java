@@ -56,8 +56,8 @@ public class Problem7 {
         }
     }
 
-    private static boolean isException(String friend, List<String> userFriends, String user) {
-        return userFriends.contains(friend) || friend.equals(user);
+    private static boolean isException(String friend, List<String> friendsOfUser, String user) {
+        return friendsOfUser.contains(friend) || friend.equals(user);
     }
 
     private static List<String> sortRecommendScore(Map<String, Integer> recommendScore) {
