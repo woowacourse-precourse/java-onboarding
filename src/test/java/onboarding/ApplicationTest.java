@@ -20,12 +20,14 @@ class ApplicationTest {
 
         @Test
         void case2() {
+
             List<Integer> pobi = List.of(131, 132);
             List<Integer> crong = List.of(211, 212);
             int result = 1;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
 
+        // 예외 검증
         @Test
         void case3() {
             List<Integer> pobi = List.of(99, 102);
@@ -33,6 +35,25 @@ class ApplicationTest {
             int result = -1;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
+
+        // 예외 검증 2
+        @Test
+        void case4() {
+            List<Integer> pobi = List.of(399, 400);
+            List<Integer> crong = List.of(1, 2);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
+        // 여기에 아무 숫자 넣어도 되어야 함
+        @Test
+        void case5() {
+            List<Integer> pobi = List.of(45, 46);
+            List<Integer> crong = List.of(299, 300);
+            int result = 2;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
     }
 
     @Nested
