@@ -22,6 +22,10 @@ public class Problem3 {
             }
         }
 
+        System.out.println("number\tresult");
+
+        System.out.println(number + "\t\t" + answer);
+
         return answer;
     }
 }
