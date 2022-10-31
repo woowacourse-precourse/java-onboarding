@@ -7,14 +7,23 @@ public class Problem7 {
     public static List<String> friendsList;
     public static Map<String, Integer> recommendScore;
     public static Map<String, List<String>> relationships;
+    private final static int MIN_ID_LENGTH = 1;
+    private final static int MAX_ID_LENGTH = 30;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<UserInfo> answerList = new ArrayList<>();
         friendsList = new ArrayList<>();
         recommendScore = new HashMap<>();
         relationships = new HashMap<>();
+        //user가 1이상 30이하이고, 소문자로만 이루어지지 않은 경우 예외
+        if (!isValidId(user)) {
+            return Collections.emptyList();
+        }
 
         for (List<String> friend : friends) {
+            if (!progressValidateId(friend)){
+                continue;
+            }
             initFriendsList(friend, user);
             initRelationships(friend,user);
         }
@@ -30,13 +39,21 @@ public class Problem7 {
 
         visitors.forEach(x -> addRecommendScore(x,1));
 
-
         recommendScore.entrySet().stream()
                 .filter(x -> !userFriendList.contains(x.getKey()))
                 .forEach(x -> answerList.add(new UserInfo(x.getKey(),x.getValue())));
 
 
         return sortByScoreAndName(answerList);
+    }
+
+    private static boolean progressValidateId(List<String> friend) {
+        if (friend.stream()
+                .filter(Problem7::isValidId)
+                .count() == 2){
+            return true;
+        }
+        return false;
     }
 
     public static void initFriendsList(List<String> relationship, String user) {
@@ -88,6 +105,11 @@ public class Problem7 {
                 .map(UserInfo::getUsername)
                 .limit(5)
                 .collect(Collectors.toList());
+    }
+
+    public static boolean isValidId(String id) {
+        String idRegex = "^[a-z]*";
+        return id.length() >= 1 && id.length() <= 30 && id.matches(idRegex);
     }
 
     static class UserInfo{
