@@ -14,14 +14,13 @@ public class DuplicatedNickNameSearch {
     private ArrayList<String> duplicatedCrewsEmail = new ArrayList<>();
 
     public DuplicatedNickNameSearch setNewForms(List<List<String>> forms){
-//        try{
-//            new InputFormValidator(forms);
-//            this.forms = forms;
-//        }catch (InputFormException e){
-//            e.printStackTrace();
-//            System.out.println("umm?");
-//        }
-        this.forms = forms;
+        try{
+            new InputFormValidator(forms);
+            this.forms = forms;
+        }catch (InputFormException e){
+            e.printStackTrace();
+            System.out.println("umm?");
+        }
         return this;
     }
 
