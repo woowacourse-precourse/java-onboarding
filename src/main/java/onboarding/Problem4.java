@@ -1,5 +1,8 @@
 package onboarding;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /*
 1. 대문자 아스키코드 변환 Map 을 생성하는 메서드
 2. 소문자 아스키코드 변환 Map 을 생성하는 메서드
@@ -8,6 +11,21 @@ package onboarding;
 
  */
 public class Problem4 {
+
+    // 대문자 아스키코드 변환 Map 을 생성하는 메서드
+    public static Map<String, String> reverseASCIIForUpperCase() {
+
+        Map<String, String> upperCaseMappingMap = new HashMap<>();
+
+        // 대문자 아스키코드 시작점 65, 대문자 아스키코드 종료점 91 까지 반복
+        // 현재 대문자 아스키코드를 (65 + 91 - 1) = 155 와 뺄셈한 값으로 매핑
+        for (int i = 65; i < 91; i++) {
+            upperCaseMappingMap.put(String.valueOf((char) i), String.valueOf((char) (155 - i)));
+        }
+
+        return upperCaseMappingMap;
+    }
+
     public static String solution(String word) {
         String answer = "";
         return answer;
