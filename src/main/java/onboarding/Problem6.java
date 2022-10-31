@@ -130,7 +130,23 @@ public class Problem6 {
         return valid;
     }
 
+    /**
+     * 신청서 두 번째 정보가 닉네임인지 확인합니다.
+     *
+     * @param nickname 신청서의 두 번째 정보입니다.
+     * @return 해당 정보가 조건에 부합하는 닉네임이면 참, 아니면 거짓을 반환합니다.
+     */
     private static boolean hasValidNickname(String nickname) {
+        boolean valid = hasValidNicknameLength(nickname) &&
+                hasValidNicknameForm(nickname);
+        return valid;
+    }
+
+    private static boolean hasValidNicknameLength(String nickname) {
+        return false;
+    }
+
+    private static boolean hasValidNicknameForm(String nickname) {
         return false;
     }
 
