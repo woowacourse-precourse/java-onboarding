@@ -37,6 +37,9 @@ public class Problem2 {
             }
         }
 
-        return null;
+        if(!isDuplicated) {
+            return stringBuilder.toString();
+        }
+        return deleteContinuousDuplicated(stringBuilder.toString());
     }
 }
