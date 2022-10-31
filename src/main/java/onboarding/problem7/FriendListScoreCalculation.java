@@ -9,6 +9,10 @@ public class FriendListScoreCalculation {
                                                       List<List<String>> friends,
                                                       List<String> visitors) {
 
+        HashMap<Object, Object> scoreMap = new HashMap<>();
+
+
+
         return null;
     }
 }
