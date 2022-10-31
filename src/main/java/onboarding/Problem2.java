@@ -9,6 +9,20 @@ public class Problem2 {
         return answer;
     }
 
+    static StringBuilder checkOverlap() {
+        StringBuilder afterRemoval = new StringBuilder();
+
+        for (int index = 0; index < beforeRemoval.length() - 1; index++) {
+            char nowChar = beforeRemoval.charAt(index);
+            char nextChar = beforeRemoval.charAt(index + 1);
+
+            index = skipOverlap(nowChar, nextChar, index);
+            afterRemoval.append(beforeRemoval.charAt(index));
+        }
+
+        return afterRemoval;
+    }
+
     static int skipOverlap(char nowChar, char nextChar, int index) {
         if (nowChar == nextChar) {
             index = findOverlapEndPoint(nowChar, index + 1);
