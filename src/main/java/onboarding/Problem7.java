@@ -36,14 +36,16 @@ public class Problem7 {
         } else {
             friendList.get(idB).add(idA);
         }
-
-        System.out.println(friendList.toString());
     }
 
     //사용자와 함께 아는 친구 수의 점수 저장
     static void saveFriendScoreByUser(String user) {
 
         int score;
+
+        if (friendList.get(user) == null) {
+            return;
+        }
 
         for (String id : friendList.keySet()) {
             if (id.equals(user)) {
