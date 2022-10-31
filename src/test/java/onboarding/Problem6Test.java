@@ -35,7 +35,7 @@ public class Problem6Test {
                 List.of("munj@email.com", "문제이"),
                 List.of("munj@email.com", "먼제이")
         );
-        List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com");
+        List<String> result = List.of("jason@email.com", "jm@email.com", "munj@email.com");
         assertThat(Problem6.solution(forms)).isEqualTo(result);
     }
 
