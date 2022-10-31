@@ -8,7 +8,7 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         /* 예외 사항 */
-        if (except(pobi, crong)) {
+        if (except(pobi) | except(crong)) {
             return -1;
         }
 
@@ -30,24 +30,21 @@ class Problem1 {
         return answer;
     }
 
-    static boolean except(List<Integer> pageList1, List<Integer> pageList2) {
-        /* pobi와 crong의 길이는 2여야 한다. */
-        if (pageList1.size()!=2 || pageList2.size()!=2) {
+    static boolean except(List<Integer> pageList) {
+        /* pageList의 길이 = 2 */
+        if (pageList.size()!=2) {
             return true;
         }
         /* left는 홀수, right는 짝수 */
-        if (pageList1.get(0)%2!=1 | pageList1.get(1)%2!=0 | pageList2.get(0)%2!=1 | pageList2.get(1)%2!=0) {
+        if (pageList.get(0)%2!=1 | pageList.get(1)%2!=0) {
             return true;
         }
         /* left = right - 1 */
-        if (pageList1.get(1)-pageList1.get(0)!=1 | pageList2.get(1)-pageList2.get(0)!=1) {
+        if (pageList.get(1)-pageList.get(0)!=1) {
             return true;
         }
         /* 1 <= left page <= 399 and 2 <= right page <= 400 */
-        if (pageList1.get(0)<1 | pageList1.get(0)>399 | pageList1.get(1)<2 | pageList1.get(1)>400) {
-            return true;
-        }
-        if (pageList2.get(0)<1 | pageList2.get(0)>399 | pageList2.get(1)<2 | pageList2.get(1)>400) {
+        if (pageList.get(0)<1 | pageList.get(0)>399 | pageList.get(1)<2 | pageList.get(1)>400) {
             return true;
         }
         return false;
