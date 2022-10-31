@@ -31,9 +31,11 @@ public class Problem6 {
                     if(copied_form.get(j).get(1).contains(filter))
                     {
                         flag = 1;
+                        //3. 중복되는 부분이 있는 이메일 answer 에 추가
                         answer_set.add(copied_form.get(j).get(0));
                     }
                 }
+
             }
 
         }
