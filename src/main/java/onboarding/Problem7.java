@@ -101,17 +101,12 @@ public class Problem7 {
             return e2.getValue().compareTo(e1.getValue());
         };
 
-        List<Map.Entry<String, Integer>> entryResults = entryList.stream()
+
+        return entryList.stream()
                 .sorted(valueComparator)
+                .map(Map.Entry::getKey)
                 .limit(RESULT_OFFSET)
                 .collect(Collectors.toList());
-
-        List<String> result = new ArrayList<>();
-        for (Map.Entry<String, Integer> entryResult : entryResults) {
-            result.add(entryResult.getKey());
-        }
-
-        return result;
     }
 
     private static void checkValidation(String user, List<List<String>> friends, List<String> visitors) {
