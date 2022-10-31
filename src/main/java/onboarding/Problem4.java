@@ -7,6 +7,14 @@ public class Problem4 {
         }
         return true;
     }
+
+    public static boolean checkLowerCase(char alphabet) {
+        int ascii = (int)alphabet;
+        if (ascii >= 97 && alphabet <= 122) {
+            return true;
+        }
+        return false;
+    }
     public static String solution(String word) {
         String answer = "";
         return answer;
