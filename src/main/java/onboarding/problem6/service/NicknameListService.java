@@ -3,6 +3,7 @@ package onboarding.problem6.service;
 import onboarding.problem6.utils.Constants;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class NicknameListService {
@@ -11,6 +12,7 @@ public class NicknameListService {
         for(int crewIndex: crewIndexList){
             crewEmailList.add(form.get(crewIndex).get(Constants.CERW_EMAIL));
         }
+        sortEmailAscending(crewEmailList);
         return crewEmailList;
     }
 
@@ -25,6 +27,10 @@ public class NicknameListService {
     public static boolean checkOneWordNickname(String nickname){
         return (nickname.length()==1);
     }
+    private static void sortEmailAscending(ArrayList<String> emailList){
+        Collections.sort(emailList);
+    }
+
     private static boolean isNicknameInList(ArrayList<Integer> crewIndexList, int crewIndex){
         return crewIndexList.contains(crewIndex);
     }
