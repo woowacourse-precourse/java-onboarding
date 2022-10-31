@@ -1,12 +1,12 @@
 package onboarding;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
+        Set<String> temp = checkName(forms);
+        answer = sortName(temp);
         return answer;
     }
     public static Set<String> checkName(List<List<String>> forms){// 중복되는 닉네임 찾기
@@ -27,5 +27,11 @@ public class Problem6 {
             }
         }
         return dupliName;
+    }
+
+    public static List<String> sortName(Set<String> dupliName){ //닉네임 오름차순 정렬
+        List<String> result = new ArrayList<>(dupliName);
+        Collections.sort(result);
+        return result;
     }
 }
