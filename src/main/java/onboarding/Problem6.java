@@ -21,14 +21,15 @@ public class Problem6 {
         for (int i = 0; i < forms.size() - 1; i++) {
             String wooaCrew = forms.get(i).get(1);
 
-            for (int j = 0; j < wooaCrew.length() - 2; j++) {
+            for (int j = 0; j <= wooaCrew.length() - 2; j++) {
                 String str = wooaCrew.substring(j, j + 2);
 
-                for (int k = i; k < forms.size(); k++) {
-                    if (forms.get(k).get(1).contains(str))
+                for (int k = i + 1; k < forms.size(); k++) {
+                    if (forms.get(k).get(1).contains(str)) {
+                        count[i] = true;
                         count[k] = true;
+                    }
                 }
-
             }
         }
 
