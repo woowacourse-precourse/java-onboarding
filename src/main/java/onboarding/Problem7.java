@@ -11,7 +11,7 @@ public class Problem7 {
         ArrayList<String> userRelationShip = new ArrayList<String>();
         ArrayList<String> friendsRelationShip = new ArrayList<String>();
         HashMap<String,Integer> map = new HashMap<String,Integer>();
-
+        visitors = new ArrayList<String>(visitors);
 
         for(int i = 0; i<friends.size(); i++){
             for(int j =0; j<friends.get(i).size(); j++){
@@ -54,6 +54,13 @@ public class Problem7 {
                 }
             }
         }
+
+        Map<String, Integer> visitorMap = new HashMap<String, Integer>();
+        Set<String> visitorSet = new HashSet<String>(visitors);
+        for(String str : visitorSet){
+            visitorMap.put(str, Collections.frequency(visitors, str));
+        }
+
 
         List<String> answer = Collections.emptyList();
 
