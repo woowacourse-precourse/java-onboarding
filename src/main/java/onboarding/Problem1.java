@@ -2,6 +2,8 @@ package onboarding;
 
 import java.util.List;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
@@ -23,13 +25,16 @@ class Problem1 {
         if(crongLeftNum >= crongRightNum) crongNum = crongLeftNum;
         else if(crongLeftNum < crongRightNum) crongNum = crongRightNum;
 
-
-
         int answer = Integer.MAX_VALUE;
+
+        if(pobiNum > crongNum) answer = 1;
+        else if(pobiNum < crongNum) answer = 2;
+        else if(pobiNum == crongNum) answer = 0;
+        else answer = -1;
+
         return answer;
     }
-
-    public static int compare(int pororo){
+        public static int compare(int pororo){
 
         int temp = pororo;
 
