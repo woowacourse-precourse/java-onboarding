@@ -7,6 +7,8 @@ public class ReverseWord {
 
     public ReverseWord(String word) {
         this.word = word;
+        Validator validator = new Validator(word);
+        validator.validate();
     }
 
     public String reverse() {
