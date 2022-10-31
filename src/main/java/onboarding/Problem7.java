@@ -85,8 +85,12 @@ public class Problem7 {
         });
 
         filterRecommendation(friendRecommendations);
+        Collections.sort(friendRecommendations);
 
-        for (FriendRecommendation recommendation : friendRecommendations) {
+        for (int i = 0; i < friendRecommendations.size(); i++) {
+            if (i == 5) break;
+
+            FriendRecommendation recommendation = friendRecommendations.get(i);
             answer.add(recommendation.user);
         }
 
