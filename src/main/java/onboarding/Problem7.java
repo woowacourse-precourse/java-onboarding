@@ -121,4 +121,38 @@ class Algorithm {
         this.user = user;
     }
 
+    public void scoreVisitors() {
+        SNS sns = user.getSns();
+        List<String> visitors = sns.getVisitors();
+        getVistorsList(visitors);
+        calculateVisitorsScore(visitors);
+    }
+
+    private void getVistorsList(List<String> visitors) {
+        for (int i = 0; i < visitors.size(); i++) {
+            List<List<String>> friends = Relation.findFriends(user.getId());
+            extractFriend(visitors, i, friends);
+        }
+    }
+
+    private static void extractFriend(List<String> visitors, int i, List<List<String>> friends) {
+        for (int j = 0; j < friends.size(); j++) {
+            if (friends.get(j)
+                    .contains(visitors.get(i))) {
+                visitors.remove(i);
+                break;
+            }
+        }
+    }
+
+    private void calculateVisitorsScore(List<String> visitors) {
+        for (int i = 0; i < visitors.size(); i++) {
+            if (recommend.containsKey(visitors.get(i))) {
+                recommend.put(visitors.get(i), (int)(recommend.get(visitors.get(i)) + 1));
+            } else {
+                recommend.put(visitors.get(i), 1);
+            }
+        }
+    }
+
 }
