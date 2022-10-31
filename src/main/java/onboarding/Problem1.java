@@ -15,8 +15,7 @@ class Problem1 {
         2. 포비와 크롱, 각 자리수를 더하는 것과, 곱하는 것 중 최댓값을 찾음
         3. 크기 비교하여 answer 리턴
         */        
-        System.out.println("TRUE : " + checkException(List.of(97, 98)));
- 		System.out.println("FAIL : " + checkException(List.of(0, 1)));        
+        System.out.println(16 == getBestScore(182));     
         return answer;
     }
     static boolean checkException(List<Integer> pages){
@@ -25,5 +24,18 @@ class Problem1 {
         if ( right - left != 1 || left % 2 == 0 || 
             left + right < 0 || left + right > 799) return false;
         return true;
+ 	}
+    static int getBestScore(int page){
+ 		int sum = 0;
+ 		int multiple = 1;
+
+ 		while ( page != 0 ){
+ 			sum += page%10;
+ 			multiple *= page%10;
+
+ 			page /= 10;
+ 		}
+
+ 		return Math.max(sum, multiple);
  	}
 }
