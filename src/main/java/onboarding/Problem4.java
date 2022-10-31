@@ -8,6 +8,18 @@ public class Problem4 {
      */
     public static String solution(String word) {
         String answer = "";
+        StringBuffer sb = new StringBuffer();
+        for (int i=0; i<word.length(); i++){
+            char c = word.charAt(i);
+            if('a'<=c && c<='z'){
+                sb.append(reverseLowerAlphabet(c));
+            } else if ('A'<=c && c<='Z'){
+                sb.append(reverseUpperAlphabet(c));
+            } else {
+                sb.append(c);
+            }
+        }
+        answer = sb.toString();
         return answer;
     }
 
