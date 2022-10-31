@@ -21,9 +21,9 @@ public class Problem7 {
 
 	public static List<String> getRecommendFriends(String user, List<List<String>> friends, List<String> visitors) {
 		InputValidator.checkRightInput(user, friends, visitors);
-		HashMap<String, List<String>> friendsRelations = getFriendsRelations(friends, user);
-		HashMap<String, Integer> friendOfFriendScores = getFriendOfFriendScore(friendsRelations, user);
-		HashMap<String, Integer> visitorsScore = getVisitorsScore(visitors);
+		HashMap<String, List<String>> friendsRelations = getFriendsRelationsMap(friends, user);
+		HashMap<String, Integer> friendOfFriendScores = getFriendOfFriendScores(friendsRelations, user);
+		HashMap<String, Integer> visitorsScore = getVisitorsScores(visitors);
 		HashMap<String, Integer> totalScores = getTotalScores(visitorsScore, friendOfFriendScores);
 
 		List<String> friendsOfUser = friendsRelations.get(user);
@@ -78,23 +78,22 @@ public class Problem7 {
 		return friendOfFriendScore;
 	}
 
-	public static HashMap<String, Integer> getVisitorsScore(final List<String> visitors) {
+	public static HashMap<String, Integer> getVisitorsScores(final List<String> visitors) {
 		HashMap<String, Integer> visitorsScores = new HashMap<>();
 		for (String visitor : visitors) {
-			putVisitorsScoreMap(visitorsScores, visitor);
+			visitorsScores.put(visitor, getVisitorsScore(visitorsScores, visitor));
 		}
 		return visitorsScores;
 	}
 
-	private static void putVisitorsScoreMap(HashMap<String, Integer> visitorsScores, String visitor) {
+	private static Integer getVisitorsScore(HashMap<String, Integer> visitorsScores, String visitor) {
 		if (visitorsScores.containsKey(visitor)) {
-			visitorsScores.put(visitor, visitorsScores.get(visitor) + VISITOR_SCORE);
-		} else {
-			visitorsScores.put(visitor, VISITOR_SCORE);
+			return visitorsScores.get(visitor) + VISITOR_SCORE;
 		}
+		return VISITOR_SCORE;
 	}
 
-	public static HashMap<String, Integer> getFriendOfFriendScore(final HashMap<String, List<String>> relations,
+	public static HashMap<String, Integer> getFriendOfFriendScores(final HashMap<String, List<String>> relations,
 		final String user) {
 		HashMap<String, Integer> relationsScore = new HashMap<>();
 		for (String friend : relations.get(user)) {
@@ -107,39 +106,38 @@ public class Problem7 {
 		HashMap<String, Integer> relationsScore,
 		String friend) {
 		for (String friendOfFriend : relations.get(friend)) {
-			addFriendOfFriendScore(relationsScore, friendOfFriend);
+			relationsScore.put(friendOfFriend, getFriendOfFriendScore(relationsScore, friendOfFriend));
 		}
 	}
 
-	private static void addFriendOfFriendScore(HashMap<String, Integer> relationsScore, final String friendOfFriend) {
+	private static Integer getFriendOfFriendScore(HashMap<String, Integer> relationsScore,
+		final String friendOfFriend) {
 		if (relationsScore.containsKey(friendOfFriend)) {
-			relationsScore.put(friendOfFriend, relationsScore.get(friendOfFriend) + FRIEND_OF_FRIEND_SCORE);
-		} else {
-			relationsScore.put(friendOfFriend, FRIEND_OF_FRIEND_SCORE);
+			return relationsScore.get(friendOfFriend) + FRIEND_OF_FRIEND_SCORE;
 		}
+		return FRIEND_OF_FRIEND_SCORE;
 	}
 
-	public static HashMap<String, List<String>> getFriendsRelations(final List<List<String>> friends, String user) {
+	public static HashMap<String, List<String>> getFriendsRelationsMap(final List<List<String>> friends, String user) {
 		HashMap<String, List<String>> relations = new HashMap<>();
 		relations.put(user, new ArrayList<>(List.of()));
 		for (List<String> friend : friends) {
 			String friend1 = friend.get(0);
 			String friend2 = friend.get(1);
-			putFriendsRelationsMap(relations, friend1, friend2);
-			putFriendsRelationsMap(relations, friend2, friend1);
+			relations.put(friend1, getFriendsRelations(relations, friend1, friend2));
+			relations.put(friend2, getFriendsRelations(relations, friend2, friend1));
 		}
 		return relations;
 	}
 
-	private static void putFriendsRelationsMap(HashMap<String, List<String>> relations, String friend1,
+	private static List<String> getFriendsRelations(HashMap<String, List<String>> relations, String friend1,
 		String friend2) {
 		if (relations.containsKey(friend1)) {
 			List<String> relation = relations.get(friend1);
 			relation.add(friend2);
-			relations.put(friend1, relation);
-		} else {
-			relations.put(friend1, new ArrayList<>(List.of(friend2)));
+			return relation;
 		}
+		return new ArrayList<>(List.of(friend2));
 	}
 
 	static class InputValidator {

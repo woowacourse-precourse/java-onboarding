@@ -125,7 +125,7 @@ class Problem7Test {
 		result.put("lily", 20);
 		result.put("anna", 10);
 		result.put("tom", 10);
-		assertThat(Problem7.getFriendOfFriendScore(relations, user)).isEqualTo(result);
+		assertThat(Problem7.getFriendOfFriendScores(relations, user)).isEqualTo(result);
 	}
 
 	@Test
@@ -137,7 +137,7 @@ class Problem7Test {
 		result.put("lala", 2);
 		result.put("meme", 1);
 		result.put("anna", 1);
-		assertThat(Problem7.getVisitorsScore(relations)).isEqualTo(result);
+		assertThat(Problem7.getVisitorsScores(relations)).isEqualTo(result);
 	}
 
 	@Test
