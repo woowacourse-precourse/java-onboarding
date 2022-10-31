@@ -10,6 +10,7 @@ public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
 
+        // 숫자를 1씩 줄여가며 target(3,6,9) 갯수를 count
         while (number > 0)
             answer += countTargets(number--);
 

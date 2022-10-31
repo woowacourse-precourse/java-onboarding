@@ -9,6 +9,12 @@ public class FrogConverter extends AlphabetConverter {
      * A-Z : 65 - 90
      * a-z : 97 - 122
      */
+
+
+    /**
+     * 4.1
+     * 청개구리의 규칙은 알파벳들의 아스키 코드를 이용해 구분
+     */
     @Override
     public char convert(char alphabet) {
         // uppercase
