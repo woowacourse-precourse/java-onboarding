@@ -32,7 +32,7 @@ public class Problem6 {
                 form.remove();
             }
         }
-        return new ArrayList<>(answerSet);
+        return sortListAscendingOrder(new ArrayList<>(answerSet));
     }
 
     private static Set<String> calculateRepetition(List<List<String>> forms, String currentNickname) {
@@ -53,6 +53,11 @@ public class Problem6 {
             }
         }
         return repetitionSet;
+    }
+
+    private static List<String> sortListAscendingOrder(List<String> forms) {
+        forms.sort(Comparator.naturalOrder());
+        return forms;
     }
 
     static abstract class Validation {
