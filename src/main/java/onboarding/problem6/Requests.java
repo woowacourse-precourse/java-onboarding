@@ -13,9 +13,7 @@ public class Requests {
 	public Requests(List<List<String>> forms) {
 		List<Request> requests = new ArrayList<>();
 		for (List<String> form : forms) {
-			String email = form.get(0);
-			String nickname = form.get(1);
-			requests.add(new Request(email, nickname));
+			requests.add(new Request(form));
 		}
 		this.requests = requests;
 	}
