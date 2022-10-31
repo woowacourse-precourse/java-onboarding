@@ -51,6 +51,45 @@ class Problem1 {
 		// 최종 포비 결과값
 		int pobiResult = Math.max(pobiPlus, pobiMul);
 
+		// 크롱 더하기
+		int crongLeftResult = 0;
+		int crongRightResult = 0;
+		int crongLeft = crong.get(0);
+		int crongRight = crong.get(1);
+
+		while (crongLeft > 0) {
+			crongLeftResult += crongLeft % 10;
+			crongLeft /= 10;
+		}
+
+		while (crongRight > 0) {
+			crongRightResult += crongRight % 10;
+			crongRight /= 10;
+		}
+
+		int crongPlus = Math.max(crongLeftResult, crongRightResult);
+
+		// 크롱 곱하기
+		crongLeftResult = 1;
+		crongRightResult = 1;
+		crongLeft = crong.get(0);
+		crongRight = crong.get(1);
+
+		while (crongLeft > 0) {
+			crongLeftResult *= crongLeft % 10;
+			crongLeft /= 10;
+		}
+
+		while (crongRight > 0) {
+			crongRightResult *= crongRight % 10;
+			crongRight /= 10;
+		}
+
+		int crongMul = Math.max(crongLeftResult, crongRightResult);
+
+		// 최종 크롱 결과값
+		int crongResult = Math.max(crongPlus, crongMul);
+
 		return answer;
 	}
 }
