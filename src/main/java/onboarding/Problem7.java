@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 
 public class Problem7 {
 
-    //사용자 친구 찾기
+    // 사용자 친구 찾기
     private static List<String> findUserFriends(String user, List<List<String>> friends) {
         List<String> list = new ArrayList<>();
         for(List<String> item : friends){
@@ -15,7 +15,7 @@ public class Problem7 {
         return list.stream().distinct().collect(Collectors.toList());
     }
 
-    //친구 관계 추천 찾기
+    // 친구 관계 추천 찾기
     private static List<Person> findRecommendationFromFriends(String user, List<List<String>> friends, List<String> userFriends) {
         List<String> list = new ArrayList<>();
         for(List<String> item : friends) {
@@ -25,6 +25,16 @@ public class Problem7 {
                 list.add(item.get(0));
         }
         return calculateScore(list, 10);
+    }
+
+    // 방문자 추천 찾기
+    private static List<Person> findRecommendationFromVisitors(List<String> visitors, List<String> userFriends) {
+        List<String> list = new ArrayList<>();
+        for(String item : visitors) {
+            if(!userFriends.contains(item))
+                list.add(item);
+        }
+        return calculateScore(list, 1);
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
