@@ -5,7 +5,27 @@ public class Problem4 {
     public static String solution(String word) {
         String answer = "";
 
+        answer = reverseWord(word);
+
         return answer;
+    }
+    public static String reverseWord(String word) {
+        StringBuilder result = new StringBuilder();
+        for (char currentCharacter : word.toCharArray()) {
+            //소문자일경우
+            if (checkLowerCase(currentCharacter)) {
+                result.append(convertLowerCase(currentCharacter));
+                continue;
+            }
+            //대문자일경우
+            if (checkUpperCase(currentCharacter)) {
+                result.append(convertUpperCase(currentCharacter));
+                continue;
+            }
+            result.append(currentCharacter);
+
+        }
+        return result.toString();
     }
 
     public static char convertLowerCase(char input) {
