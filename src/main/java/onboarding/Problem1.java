@@ -10,16 +10,15 @@ class Problem1 {
 			answer = -1;
 			return answer;
 		}
+		int pobiHighScore = scoreCompare(addHighScore(pobi),multiHighScore(crong));
+		int crongHighScore;
+		//각자 수 가져와서 더하기 따로 곱하기 따로 함수 만들어서 높은수 추출
+		//추출한 수 비교하는 함수 하나 더 만듬
+		//더하기,곱하기 비교
+		//점수비교 후 1,2,0 return 만들고
 		return answer;
 	}
-	public static int makePage() { //makePage와 동시 3~398까지 추출
-		
-        int Page = (int) (Math.random() * (398+1)-3)+3; //(최대+1)-최소)+최소 3~398
-        do {
-        	Page = (int) (Math.random() * (398+1)-3)+3;
-        }while(Page <= 1 || Page >= 400); //조건 충족 시 리셋
-        return Page;
-	}
+	
 	public static boolean exception(List<Integer> pageList) { //예외를 true로
 		int leftPage = pageList.get(0);
 		int rightPage = pageList.get(1);
@@ -28,6 +27,49 @@ class Problem1 {
 		if(leftPage / 2 != 1 ) return true;
         if(rightPage / 2 != 0 ) return true;
 		return false;
+	}
+	public static int addScore(int page) {
+		int hun = page / 100; // 백
+		int ten = (page / 10) % 10; // 십
+		int one = page % 10; // 일*/
+		return hun+ten+one;
+	}
+	public static int multiScore(int page) {
+		int length = (int)(Math.log10(page)+1);
+		int hun = page / 100; // 백
+		int ten = (page / 10) % 10; // 십
+		int one = page % 10; // 일*/
+		int multi = 0;
+		if(length == 3) { //자릿수에 따른 곱하기
+			multi = hun*ten*one;//100의자리 아니면 곱했을때 무조
+		}else if(length == 2) {
+			multi = ten*one;
+		}else {
+			multi = page;//100의자리 아니면 곱했을때 무조
+		}
+		return multi;
+	}
+	public static int addHighScore(List<Integer> page) {
+		int leftPage=page.get(0);
+	    int rightPage=page.get(1);
+	    
+	    int LScore = addScore(leftPage);
+	    int RScore = addScore(rightPage);
+	    int HighSco = (LScore < RScore) ? RScore : LScore;
+		return HighSco;
+	}
+	public static int multiHighScore(List<Integer> page) {
+		int leftPage=page.get(0);
+	    int rightPage=page.get(1);
+	    
+	    int LScore = multiScore(leftPage);
+	    int RScore = multiScore(rightPage);
+	    int HighSco = (LScore < RScore) ? RScore : LScore;
+		return HighSco;
+	}
+	public static int scoreCompare(int A,int B) {
+		int HighSco = (A < B) ? B : A;
+		return HighSco;
 	}
 	public static int Odd_L_HighScore(int Page) {
 		int PageL = 0;
@@ -106,7 +148,14 @@ class Problem1 {
 		}
 		return HighSco;
 	}
-	
+	public static int makePage() { //makePage와 동시 3~398까지 추출
+		
+        int Page = (int) (Math.random() * (398+1)-3)+3; //(최대+1)-최소)+최소 3~398
+        do {
+        	Page = (int) (Math.random() * (398+1)-3)+3;
+        }while(Page <= 1 || Page >= 400); //조건 충족 시 리셋
+        return Page;
+	}
     public static void main(String[] args){
     	
     	int pobiPage = makePage();
