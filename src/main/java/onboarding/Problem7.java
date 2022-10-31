@@ -33,7 +33,12 @@ public class Problem7 {
         }
         return recommendationFriend;
     }
-//    public static List<String> getCountofVisitor() {}
+    public static List<List<String>> getCountofVisitor(List<String> visitors, List<List<String>> recommendationFriend) {
+        for (int i = 0; i < visitors.size(); i++) {
+            recommendationFriend.add(List.of(visitors.get(i), "1"));
+        }
+        return recommendationFriend;
+    }
 //    public static List<String> getRecommendedFriend() {}
 //    public static void sortByScore() {}
 
