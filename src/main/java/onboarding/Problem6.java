@@ -24,7 +24,14 @@ public class Problem6 {
         }
     }
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");;
+        List<String> answer;
+        List<String> duplicateCheckResult = new ArrayList<>();
+        for (List<String> form : forms) {
+            duplicateCheckResult.addAll(Duplicate.twoLettersDuplicateCheck(form));
+        }
+        answer = duplicateCheckResult.stream().distinct().collect(Collectors.toList());
+        Collections.sort(answer);
         return answer;
     }
+
 }
