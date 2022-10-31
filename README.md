@@ -96,7 +96,7 @@
   - [x] 방문자 등록
   - [x] 친구추천 상위 5명 구하기
     - [x] 이름, 점수를 포함하는 ~~내부 private class 생성~~ 외부클래스로 refactor
-      - [x] comparable -> compareTo 구현 : 추천점수로
+      - [x] comparable -> compareTo 구현 : 추천점수로, 동일 점수시 이름순으로
     - [x] 친구의 친구 점수 더하기
     - [x] 방문자 점수 점수 더하기
     - [x] 이미 친구인 사용자 점수 제거하기
