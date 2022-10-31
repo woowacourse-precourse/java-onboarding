@@ -9,8 +9,29 @@ public class Problem6 {
         Map<String, Integer> map = new HashMap<>();
         Set<String> set = new HashSet<>();
 
+        countNickname(forms, map);
+        findEmailDuplicatedNickname(forms, map, set);
 
         return answer;
+    }
+
+    // 닉네임이 중복된 사람의 이메일 얻기
+    private static void findEmailDuplicatedNickname(List<List<String>> forms, Map<String, Integer> map, Set<String> set) {
+        for (String key : map.keySet()) {
+            if (map.get(key) > 1) {
+                addEmailDuplicatedNickname(forms, set, key);
+            }
+        }
+    }
+
+    private static void addEmailDuplicatedNickname(List<List<String>> forms, Set<String> set, String key) {
+        for (List<String> form : forms) {
+            String nickname = form.get(1);
+            if (nickname.contains(key)) {
+                String email = form.get(0);
+                set.add(email);
+            }
+        }
     }
 
     private static void countNickname(List<List<String>> forms, Map<String, Integer> map) {
