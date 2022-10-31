@@ -33,10 +33,10 @@ public class Problem4 {
     }
 
     private static char getUpperCharConvert(char originalChar) {
-        return (char) ('A' + ('Z' - originalChar));
+        return (char)('A' + ('Z' - originalChar));
     }
 
     private static char getLowerCharConvert(char originalChar) {
-        return (char) ('a' + ('z' - originalChar));
+        return (char)('a' + ('z' - originalChar));
     }
 }
