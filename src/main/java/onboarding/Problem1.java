@@ -27,7 +27,18 @@ class Problem1 {
 		return Math.max(n1, n2);
 	}
 	
+	private static boolean isCorrect(List<Integer> list) {
+		if(list.get(0) + 1 != list.get(1)) {
+			return false;
+		}
+		return true;
+	}
+	
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+    	if(!isCorrect(pobi) || !isCorrect(crong)) {
+    		return -1;
+    	}
+    	
         int answer = Integer.MAX_VALUE;
         int pobiAddLeftPage = allAdd(pobi.get(0));
         int pobiAddRightPage = allAdd(pobi.get(1));
