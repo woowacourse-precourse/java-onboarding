@@ -12,14 +12,16 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
         nicknameEmailQ = new LinkedList<>();
-        for (List<String> form : forms) {
-            String email = form.get(0);
-            String nickname = form.get(1);
-            if (!isValidateEmail(email) || !isValidNickname(nickname)) {
-                continue;
-            }
-            nicknameEmailQ.offer(form);
-        }
+        initValidData(forms);
+
+        collectDuplicateUsersEmail(answer);
+
+        Collections.sort(answer);
+
+        return getTop5RecommendList(answer);
+    }
+
+    private static void collectDuplicateUsersEmail(List<String> answer) {
         int qLength = nicknameEmailQ.size();
 
         for (int i = 0; i < qLength; i++) {
@@ -33,9 +35,9 @@ public class Problem6 {
 
             nicknameEmailQ.add(checkNicknameEmail);
         }
+    }
 
-        Collections.sort(answer);
-
+    private static List<String> getTop5RecommendList(List<String> answer) {
         return answer.stream()
                 .distinct()
                 .collect(Collectors.toList());
