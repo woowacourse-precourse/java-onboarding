@@ -9,7 +9,7 @@ class Problem1 {
     private static int compare(List<Integer> pobi,List<Integer> crong){
         int pobiMax=Math.max(calc(pobi.get(0)),calc(pobi.get(1)));
         int crongMax=Math.max(calc(crong.get(0)),calc(crong.get(1)));
-        if(pobi.get(1)-pobi.get(0) != 1 || crong.get(1)-crong.get(0) != 1) return 1;
+        if(pobi.get(1)-pobi.get(0) != 1 || crong.get(1)-crong.get(0) != 1) return -1;
         else if(pobiMax < crongMax) return 2;
         else if(pobiMax > crongMax) return 1;
         else return 0;

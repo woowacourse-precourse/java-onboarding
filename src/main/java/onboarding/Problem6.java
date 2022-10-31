@@ -1,32 +1,36 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        List<String[]> split = new ArrayList<String[]>();
-        List<Integer[]> LCS = new ArrayList<Integer[]>();
-
-        for (List<String> list:forms) {
-            split.add(list.get(1).split(""));
-            for (List<String> dif:forms) {
-                if (list.get(1).equals(dif.get(1))) continue;
-                else split.add(dif.get(1).split(""));
-//                for (split.get(0)){
-//                    for(){
-//                    }
-//                    /*
-//                        list 값을 배열로 만듬, dif 값을 배열로 만듬
-//                        dif 배열 기준으로 list와 하나씩 비교
-//                        아닌 경우 0 맞는 경우 1로 채우고 만약
-//                        왼쪽 상단이 1일 경우는 같은 그게 있다고 가정하고
-//                        break 후 이메일 값을 집어 넣는다.
-//                     */
-//                }
+        List<String> answer;
+        Set<String> set=new HashSet<String>();
+        int[][] dp;
+        String s1,s2;
+        for(List<String> list:forms){
+            for (List<String> dif:forms){
+                s1=list.get(1);
+                s2=dif.get(1);
+                if(s1.equals(s2))  continue;
+                dp=new int[s1.length()+1][s2.length()+1];
+                for (int i=0; i<s1.length()+1;i++){
+                    for (int j=0; j<s2.length()+1;j++){
+                        if(i*j == 0)  dp[i][j]=0;
+                        else if (s1.charAt(i-1) == s2.charAt(j-1)) {
+                            dp[i][j]=dp[i-1][j-1]+1;
+                            if(dp[i][j] >=2){
+                                set.add(dif.get(0));
+                                break;
+                            }
+                        }
+                        else dp[i][j]=0;
+                    }
+                }
             }
         }
+        answer = new ArrayList<>(set);
+        Collections.sort(answer);
         return answer;
     }
 }

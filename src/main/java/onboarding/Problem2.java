@@ -9,7 +9,7 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         return password(cryptogram,"(.)\\1+");
     }
-    public static String password(String cryptogram,String regex){
+    private static String password(String cryptogram,String regex){
         String answer = cryptogram;
         pattern = Pattern.compile(regex);
         matcher = pattern.matcher(answer);

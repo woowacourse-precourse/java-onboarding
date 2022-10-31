@@ -2,10 +2,9 @@ package onboarding;
 
 public class Problem3 {
     public static int solution(int number) {
-        int answer = step_Main(number);
-        return answer;
+        return step_Main(number);
     }
-    public static int step_Main(int number){
+    private static int step_Main(int number){
         String co=Integer.toString(number);
         int answer=0;
         if(co.length() <=2) answer=step_Ten(number,number/10);
@@ -13,7 +12,7 @@ public class Problem3 {
         else if(co.length() ==4 || (number==10000)) answer= step_Thousand(number,number/1000);
         return answer;
     }
-    public static int step_Ten(int number,int choice_Ten) {
+    private static int step_Ten(int number,int choice_Ten) {
         int answer=0;
         if(number < 10) return number/3;
         answer=((choice_Ten-1)-((choice_Ten-1)/3))*3+((choice_Ten-1)/3)*13+3;
@@ -22,7 +21,7 @@ public class Problem3 {
                 answer+(number%10)/3;
         return answer;
     }
-    public static int step_Hundred(int number,int choice_Hundred) { //100의 자리
+    private static int step_Hundred(int number,int choice_Hundred) { //100의 자리
         int answer=0;
         answer=((choice_Hundred-1)-((choice_Hundred-1)/3))*60+((choice_Hundred-1)/3)*160+60;
 
@@ -36,7 +35,7 @@ public class Problem3 {
 
         return answer;
     }
-    public static int step_Thousand(int number,int choice_Thousand) {
+    private static int step_Thousand(int number,int choice_Thousand) {
         int answer=0;
         answer=((choice_Thousand-1)-((choice_Thousand-1)/3))*900+((choice_Thousand-1)/3)*1900+900;
         answer=number-choice_Thousand*1000 > 99 ? //100보다 작은 경우
