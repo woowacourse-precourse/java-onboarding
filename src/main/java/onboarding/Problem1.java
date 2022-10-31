@@ -31,16 +31,16 @@ class Problem1 {
 //        return Math.max(calc(odd), calc(even));
 //    }
 //
-//    // 각 자리 숫자를 모두 더하거나, 모두 곱해 가장 큰 수를 구함
-//    public static int calc(int num) {
-//        int add = 0, multiply = 1;
-//        while(num != 0) {
-//            add += num % 10;
-//            multiply *= num % 10;
-//            num /= 10;
-//        }
-//        return Math.max(add, multiply);
-//    }
+    // 각 자리 숫자를 모두 더하거나, 모두 곱해 가장 큰 수를 구함
+    public static int calc(int num) {
+        int add = 0, multiply = 1;
+        while(num != 0) {
+            add += num % 10;
+            multiply *= num % 10;
+            num /= 10;
+        }
+        return Math.max(add, multiply);
+    }
 
     public static boolean exception(List<Integer> player) {
         int odd = player.get(0);
