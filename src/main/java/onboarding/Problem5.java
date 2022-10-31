@@ -24,6 +24,7 @@ public class Problem5 {
         }
 
         // 기능요구사항인 리스트/배열에 맞춰준다. 배열 -> 리스트
+        // boxed() int자체로는 Collection에 못 담기 때문에 Integer클래스로 변환하여 List<Integer>로 담기위헤
         List<Integer> result = Arrays.stream(answer).boxed().collect(Collectors.toList());
         return result;
      }
