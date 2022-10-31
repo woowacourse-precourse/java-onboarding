@@ -14,5 +14,17 @@ public class Problem6 {
     }
 
     // 두 닉네임의 중복 여부를 검사하는 함수 isDuplicate()
+    private static boolean isDuplicate(String nickname1, String nickname2) {
+        for (int i=0; i<nickname1.length()-1; i++){
+            String substr1 = nickname1.substring(i, i+2);
+            for (int j=0; j<nickname2.length()-1; j++){
+                String substr2 = nickname2.substring(j, j+2);
+                if(substr1.equals(substr2)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
 }
