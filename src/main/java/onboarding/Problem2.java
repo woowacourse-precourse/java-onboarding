@@ -11,6 +11,16 @@ public class Problem2 {
         return false;
     }
 
+    public static int findNextIndex(String string, int startIndex) {
+        int nextIndex = startIndex;
+        for(int index = startIndex + 1; index < string.length() ; index++) {
+            if(string.charAt(startIndex) != string.charAt(index)) {
+                return index;
+            }
+        }
+        return nextIndex;
+    }
+
     public static String removeDuplicateChars(String string) {
         StringBuilder result = new StringBuilder();
 
