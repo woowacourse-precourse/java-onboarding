@@ -14,6 +14,7 @@ public class Problem7 {
         numOfVisit(recommendScore, visitors);
         List<String> sortedList = sortByValues(recommendScore);
 
+        answer = exceptId(user, userFriends, sortedList);
         return answer;
     }
 
@@ -54,5 +55,15 @@ public class Problem7 {
         Collections.sort(sortedList);
         Collections.sort(sortedList, (value1, value2) -> (map.get(value2).compareTo(map.get(value1))));
         return sortedList;
+    }
+
+    private static List<String> exceptId(String user, List<String> userFriends, List<String> sortedList) {
+        List<String> answer = new ArrayList<>();
+        for (String key : sortedList) {
+            if (!key.equals(user) && !userFriends.contains(key)) {
+                answer.add(key);
+            }
+        }
+        return answer;
     }
 }
