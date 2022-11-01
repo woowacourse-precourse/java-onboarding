@@ -12,6 +12,11 @@ public class DecipherCryptogram {
         this.cryptogram = cryptogram;
     }
 
+    public String start(){
+        decipherCryptogram();
+        return stackToString();
+    }
+    
     private void decipherCryptogram() {
         for (int i = 0; i < cryptogram.length(); i++) {
             if (stack.size() == 0) {
