@@ -16,6 +16,13 @@ public class Problem6 {
         return answer;
     }
 
+    //  입력된 회원 가입 정보 유효성 검사 - 이메일, 회원이름
+    private static Boolean verifyMemberList(List<String> input){
+        if(!verifyEmail(input.get(0))) return false;
+        if(!verifyName(input.get(1))) return false;
+        return true;
+    }
+
     //  이메일 유효성 검사
     private static Boolean verifyEmail(String email){
         if(!verifyEmailLength(email)) return false;
