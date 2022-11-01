@@ -76,7 +76,8 @@ public class Problem7 {
         getUserFriends(user, friends, userFriends);
         List<Person> answerList = getTenPointName(user, friends, userFriends);
         getOnePointName(answerList, visitors, userFriends);
-        
+        listSort(answerList);
+
         List<String> answer = Collections.emptyList();
         return answer;
     }
@@ -230,5 +231,8 @@ public class Problem7 {
                 break;
             }
         }
+    }
+    private static void listSort(List<Person> answerList) {
+        Collections.sort(answerList);
     }
 }
