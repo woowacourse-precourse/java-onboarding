@@ -2,18 +2,18 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        char[] word_array = word.toCharArray();
+        char[] wordArray = word.toCharArray();
 
         for (int i = 0; i < word.length(); i++) {
-            if (isChar(word_array[i])) {
-                word_array[i] = swap_char(word_array[i]);
+            if (isChar(wordArray[i])) {
+                wordArray[i] = swapChar(wordArray[i]);
             }
         }
 
-        return String.valueOf(word_array);
+        return String.valueOf(wordArray);
     }
 
-    public static char swap_char(char c) {
+    public static char swapChar(char c) {
         return (c >= 65 && c <= 90) ? (char) (90 - (c - 65)) : (char) (122 - (c - 97));
     }
 

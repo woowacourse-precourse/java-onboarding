@@ -4,37 +4,37 @@ import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        HashSet<String> duplicated_email_set = new HashSet<String>();
-        HashMap<String, List<String>> duplicated_nickname_map = new HashMap<>();
+        HashSet<String> duplicatedEmailSet = new HashSet<String>();
+        HashMap<String, List<String>> duplicatedNicknameMap = new HashMap<>();
 
         for (List<String> form : forms) {
             String email = form.get(0);
             String nickname = form.get(1);
-            int nickname_length = nickname.length();
+            int nicknameLength = nickname.length();
 
-            if (nickname_length > 1) {
-                for (int i = 0; i < nickname_length - 1; i++) {
-                    String banned_nickname = nickname.substring(i, i + 2);
-                    if (!duplicated_nickname_map.containsKey(banned_nickname)) {
-                        ArrayList<String> banned_email_list = new ArrayList<String>();
-                        banned_email_list.add(email);
-                        duplicated_nickname_map.put(banned_nickname, banned_email_list);
+            if (nicknameLength > 1) {
+                for (int i = 0; i < nicknameLength - 1; i++) {
+                    String bannedNickname = nickname.substring(i, i + 2);
+                    if (!duplicatedNicknameMap.containsKey(bannedNickname)) {
+                        ArrayList<String> bannedEmailList = new ArrayList<String>();
+                        bannedEmailList.add(email);
+                        duplicatedNicknameMap.put(bannedNickname, bannedEmailList);
                     } else {
-                        duplicated_nickname_map.get(banned_nickname).add(email);
+                        duplicatedNicknameMap.get(bannedNickname).add(email);
                     }
                 }
             }
         }
 
-        duplicated_nickname_map.forEach((key, value) -> {
+        duplicatedNicknameMap.forEach((key, value) -> {
             if (value.size() > 1) {
                 value.forEach((email) -> {
-                    duplicated_email_set.add(email);
+                    duplicatedEmailSet.add(email);
                 });
             }
         });
 
-        ArrayList<String> answer = new ArrayList<String>(duplicated_email_set);
+        ArrayList<String> answer = new ArrayList<String>(duplicatedEmailSet);
         Collections.sort(answer);
 
         return answer;
