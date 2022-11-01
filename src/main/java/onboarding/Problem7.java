@@ -116,6 +116,9 @@ class Recommendation{
             }
         }
     }
+    boolean isNewUser(String visitor){
+        return !USERS.containsKey(visitor);
+    }
 }
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
