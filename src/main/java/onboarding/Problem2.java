@@ -34,5 +34,11 @@ public class Problem2 {
         return sb.toString();
     }
 
+    public static String solution(String cryptogram) {
+        while (check(cryptogram)) {
+            cryptogram = deleteChar(cryptogram);
+        }
+        return cryptogram;
+    }
 }
 
