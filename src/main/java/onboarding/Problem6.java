@@ -64,7 +64,7 @@ public class Problem6 {
     }
 
     /*
-    * forms의 이메일 및 닉네임 검증
+    * forms의 이메일 및 닉네임 검증 함수
     */
     private static void validateEmailAndNickname(List<List<String>> forms) {
         for (List<String> form : forms) {
