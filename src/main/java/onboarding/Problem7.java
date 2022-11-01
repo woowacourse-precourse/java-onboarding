@@ -58,6 +58,14 @@ public class Problem7 {
             }
         });
 
+        //정렬된 친구 추천 목록의 원소들을 최대 5명 까지 뽑기
+        for (int i = 0; i < recommendationEntryList.size(); i++) {
+            answer.add(recommendationEntryList.get(i).getKey());
+            if (answer.size() == 5) {
+                break;
+            }
+        }
+
         return answer;
     }
 }
