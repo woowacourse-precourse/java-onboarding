@@ -18,6 +18,7 @@ public class Problem7 {
         }
 
         for (String crew : friendship.keySet()) {
+            /* 유저는 패스한다. */
             if (crew.equals(user)) {
                 continue;
             }
@@ -36,7 +37,7 @@ public class Problem7 {
         List<String> removed = new ArrayList<>();
 
         for(String strValue : userFriends) {
-            // 중복 요소가 없는 경우 요소를 추가
+            /* 중복 요소가 없는 경우 요소를 추가한다. */
             if(!removed.contains(strValue)) {
                 removed.add(strValue);
             }
@@ -69,6 +70,7 @@ public class Problem7 {
         entryList.sort((o1, o2) -> {
             String key1, key2;
 
+
             if (!o2.getValue().equals(o1.getValue())) {
                 return o2.getValue() - o1.getValue();
             }
@@ -84,6 +86,7 @@ public class Problem7 {
         if (userFriends == null) {
             return;
         }
+        /* 유저와 친구라면 건너뛴다. */
         if (userFriends.contains(crew)) {
             return;
         }
@@ -125,6 +128,7 @@ public class Problem7 {
     private static void addFriendship(String crew1, String crew2) {
         List<String> relationship;
 
+        /* 없다면 새로이 추가한다. */
         if (friendship.get(crew1) == null) {
             List<String> list = new ArrayList<>();
             list.add(crew2);
