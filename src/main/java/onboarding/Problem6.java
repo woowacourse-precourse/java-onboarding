@@ -2,9 +2,16 @@ package onboarding;
 
 import java.util.List;
 
+import onboarding.feature6.DuplicateLettersFinder;
+import onboarding.feature6.ResultView;
+import onboarding.feature6.UserInfo;
+
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+        UserInfo userInfo = new UserInfo(forms);
+        DuplicateLettersFinder duplicateLettersFinder = new DuplicateLettersFinder(userInfo);
+        ResultView resultView = new ResultView(userInfo, duplicateLettersFinder);
+        List<String> results = resultView.getResults();
+        return results;
     }
 }
