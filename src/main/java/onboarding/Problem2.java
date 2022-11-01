@@ -3,6 +3,7 @@ package onboarding;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
+        answer = removeDup(cryptogram);
         return answer;
     }
     public static String removeDup(String cryptogram){
