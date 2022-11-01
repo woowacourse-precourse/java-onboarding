@@ -153,6 +153,7 @@ class ApplicationTest {
                     List.of("shakevan", "andole"),
                     List.of("jun", "andole"),
                     List.of("shakevan", "jun"),
+                    List.of("shakevan", "mrko"),
                     List.of("shakevan", "mrko")
             );
             List<String> visitors = List.of("donut", "shakevan");
@@ -202,7 +203,10 @@ class ApplicationTest {
                     List.of("bedi", "shakevan"),
                     List.of("bedi", "anne"),
                     List.of("bedi", "sam"),
-                    List.of("anne", "mrko")
+                    List.of("anne", "mrko"),
+                    List.of("aa", "bb"),
+                    List.of("cc", "dd"),
+                    List.of("ee", "ff")
             );
             List<String> visitors = List.of("donut", "anne", "mrko", "mrko", "sam");
             List<String> result = List.of("mrko", "anne", "donut", "sam");
