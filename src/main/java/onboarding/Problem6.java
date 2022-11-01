@@ -14,21 +14,26 @@ public class Problem6 {
          */
 
         List<String> email = new ArrayList<>();
-        String[] name = new String[20];
+        List<String> nameCut = new ArrayList<>();
 
         for (int i = 0; i < forms.size(); i++) {
-            name = nameCut(forms.get(i));
-            System.out.println(name);
+            nameCut(forms.get(i).get(1), nameCut);
+        }
+
+        for (int i = 0; i < forms.size(); i++) {
+            for (int j = 0; j < nameCut.size(); j++) {
+                if (forms.get(i).get(1).contains(nameCut.get(j))) {
+                    email.add(forms.get(i).get(0));
+                }
+            }
         }
 
         return email;
     }
     // 글자 분리하는 메서드
-    public static String[] nameCut(List<String> name) {
-        String[] cutname = new String[20];
-        for (int i = 0; i < name.size() - 2; i++) {
-            cutname[i] = name.get(1).substring(i, (i + 2));
+    public static void nameCut(String name, List<String> cutname) {
+        for (int i = 0; i < name.length() - 1; i++) {
+            cutname.add(name.substring(i, (i + 2)));
         }
-        return cutname;
     }
 }
