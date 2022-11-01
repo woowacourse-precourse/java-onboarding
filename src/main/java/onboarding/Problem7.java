@@ -27,7 +27,7 @@ public class Problem7 {
         }
 
         for(String key : friendMap.keySet()){
-            if(key==user){
+            if(key==user || userFriend.contains(key)){
                 continue;
             }
             List<String> friendInfo = friendMap.get(key);
@@ -46,7 +46,6 @@ public class Problem7 {
                 friendScore.put(visitor,friendScore.get(visitor) + 1);
             }
         }
-
         List<String> sortedFriendScore = friendScore.entrySet().stream().sorted(Map.Entry.comparingByKey()).filter(h ->h.getValue() > 0).limit(5).collect(Collectors.toMap(
                 Map.Entry::getKey,
                 Map.Entry::getValue)).keySet().stream().collect(Collectors.toCollection(ArrayList::new));
