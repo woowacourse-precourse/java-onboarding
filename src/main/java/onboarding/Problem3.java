@@ -36,6 +36,13 @@ class Clap {
 public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
+        try {
+            Clap numberCandidate = new Clap(number);
+            answer = numberCandidate.findClapNumber();
+        } catch (RestrictException e) {
+            System.out.println(e.exMsg);
+            return -1;
+        }
         return answer;
     }
 }
