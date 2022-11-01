@@ -15,13 +15,10 @@ public class Problem6 {
     }
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
-//        Map<String, String> info = new HashMap<>();
-       // String email = "";
-//        String name = "";
         String[] arrayEmail = new String[forms.size()];
         String[] arrayName = new String[forms.size()];
 
-        // 배열로 이메일, 이름 따로 분류하기
+        // 배열로 이메일, 이름 따로 분류
         for (int i = 0; i < forms.size(); i++) {
             for (int j = 0; j < forms.get(i).size(); j++) {
                 arrayEmail[i] = forms.get(i).get(0);
@@ -29,20 +26,20 @@ public class Problem6 {
             }
         }
 
+        // 이름마다 두 글자씩 분리
+        for (int i = 0; i < arrayName.length; i++) {
+            String name = arrayName[i];
+            for (int j = 0, x = 2; j < name.length() - 1; j++) {
+                String namePart = name.substring(j, x++);
+                System.out.println(namePart);
+            }
+
+        }
+
         System.out.println(Arrays.toString(arrayEmail));
         System.out.println(Arrays.toString(arrayName));
 
-
-//        // 매개변수로 들어온 forms를 HashMap으로 변환
-//        for (int i = 0; i < forms.size(); i++) {
-//            for (int j = 0; j < forms.get(i).size(); j++) {
-//                email = forms.get(i).get(0);
-//                name = forms.get(i).get(1);
-//                info.put(email, name);
-//            }
-//        }
-
-
         return answer;
     }
+
 }
