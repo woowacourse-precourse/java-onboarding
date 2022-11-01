@@ -8,6 +8,17 @@ class Problem1 {
         return answer;
     }
 
+    private static int sumOfDigits(int page) {
+        int sum = 0;
+
+        while (page > 0) {
+            sum += page % 10;
+            page /= 10;
+        }
+
+        return sum;
+    }
+
     private static int productOfDigits(int page) {
         int product = 1;
 
