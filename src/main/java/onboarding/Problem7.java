@@ -70,6 +70,20 @@ public class Problem7 {
         return friendsRecommend;
     }
 
+    // 기능 목록 5 : 점수는 내림차순으로, 이름은 오름차순으로 정렬하는 함수
+    public static List<Map.Entry<String,Integer>> sortScore(Map<String, Integer> friendsRecommend){
+        List<Map.Entry<String,Integer>>entryList = new ArrayList<Map.Entry<String,Integer>>(friendsRecommend.entrySet());
+
+        Collections.sort(entryList, new Comparator<Map.Entry<String, Integer>>(){
+            public int compare(Map.Entry<String,Integer> o1, Map.Entry<String, Integer> o2){
+                return o2.getValue().compareTo(o1.getValue());
+            }
+
+        });
+
+        return entryList;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
