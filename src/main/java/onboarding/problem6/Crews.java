@@ -12,6 +12,29 @@ public class Crews {
         this.crewList = crewList;
     }
 
+    public List<String> getDuplicatedCrewEmailList() {
+        return crewList.stream()
+                .filter(crew -> isDuplicatedCrew(crew))
+                .map(crew -> crew.getEmail())
+                .distinct()
+                .sorted()
+                .collect(Collectors.toList());
+    }
+
+    private boolean isDuplicatedCrew(Crew crew) {
+        return getDuplicatedStringList().stream()
+                .filter(string -> isDuplicatedCrewName(crew.getName(), string))
+                .findAny()
+                .isPresent();
+    }
+
+    private boolean isDuplicatedCrewName(String crewName, String string) {
+        if (crewName.indexOf(string) != -1) {
+            return true;
+        }
+        return false;
+    }
+
     public List<String> getDuplicatedStringList() {
         return getDuplicatedStringCounts().entrySet().stream()
                 .filter(entry -> entry.getValue() > 1)

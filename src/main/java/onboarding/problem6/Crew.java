@@ -9,6 +9,10 @@ public class Crew {
         this.name = name;
     }
 
+    public String getEmail() {
+        return email;
+    }
+
     public String getName() {
         return name;
     }
