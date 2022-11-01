@@ -32,6 +32,9 @@ public class Problem6 {
             answer.add(email);
         }
     }
+    private static List<String> getForm(List<List<String>> forms, int index) {
+        return forms.get(index);
+    }
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
