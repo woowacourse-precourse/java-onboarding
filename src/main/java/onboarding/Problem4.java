@@ -3,6 +3,7 @@ package onboarding;
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
+        
         for(int i=0;i<word.length();i++){
             int chr=(int)word.charAt(i);
             if(chr>=65 && chr<=90){
