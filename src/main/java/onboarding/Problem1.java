@@ -4,8 +4,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
+    private static final int EXCEPTION_VALUE = -1;
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        int answer = EXCEPTION_VALUE;
+        try {
+            int pobiResult = comparePages(pobi);
+            int crongResult = comparePages(crong);
+
+            answer = leftIsWin(pobiResult, crongResult);
+        }
+        catch(IllegalArgumentException exception) {
+            answer = EXCEPTION_VALUE;
+        }
+
         return answer;
     }
 
