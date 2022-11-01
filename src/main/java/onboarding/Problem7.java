@@ -21,14 +21,13 @@ public class Problem7 {
         List<String> answer = new ArrayList<>();
 
         Map<String, Crew> team = new HashMap<>();//crew들을 모아놓는 list
-        List<String> check = new ArrayList<>();//크루가 team에 들어있는지 확인하기 위한 list
         team.put(user, new Crew(user)); //team의 0번은 user이다.
 
-        makeFreinds(friends, team, check);
+        makeFreinds(friends, team);
 
         friendTogetherKnow(user, team);
 
-        visitTimeline(visitors, team, check);
+        visitTimeline(visitors, team);
 
         // 점수 기준으로 오름 차순 정렬
         List<Crew> crews = new ArrayList<>(team.values());
@@ -47,9 +46,9 @@ public class Problem7 {
     }
 
     // 타임라인에 방문한 경우, 1점을 부여하는 기능
-    private static void visitTimeline(List<String> visitors, Map<String, Crew> team, List<String> check) {
+    private static void visitTimeline(List<String> visitors, Map<String, Crew> team) {
         for (String visitor : visitors) {
-            addCrew(team, check, visitor);
+            addCrew(team, visitor);
             team.get(visitor).plusScoreOne();
         }
     }
@@ -68,10 +67,10 @@ public class Problem7 {
     }
 
     // 친구 관계 맺기
-    private static void makeFreinds(List<List<String>> friends, Map<String, Crew> team, List<String> check) {
+    private static void makeFreinds(List<List<String>> friends, Map<String, Crew> team) {
         for (List<String> friend : friends) {
             for (String member : friend) {
-                addCrew(team, check, member);
+                addCrew(team, member);
             }
             team.get(friend.get(0)).getFriends().add(friend.get(1));
             team.get(friend.get(1)).getFriends().add(friend.get(0));
@@ -79,9 +78,8 @@ public class Problem7 {
     }
 
     //크루가 team에 없을 시 객체 생성해서 team에 추가
-    private static void addCrew(Map<String, Crew> team, List<String> check, String member) {
-        if (!check.contains(member)) {
-            check.add(member);
+    private static void addCrew(Map<String, Crew> team, String member) {
+        if (!team.containsKey(member)) {
             team.put(member, new Crew(member));
         }
     }
