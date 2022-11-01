@@ -1,8 +1,5 @@
-package onboarding;
-
-import java.util.List;
-
-class Problem1 {
+////
+public class Prob1 {
 	
 	public int calc (int a) {
 		int plus = 0;
@@ -15,9 +12,8 @@ class Problem1 {
 		return (plus > mult)? plus : mult;
 	}
 	
-    public static int solution(int[] pobi, int[] crong) {
-        int answer = Integer.MAX_VALUE;
-        if (pobi[1]-pobi[0] != 1 || crong[1]-crong[0] != 1 
+	public int win (int[] pobi, int[] crong) {
+		if (pobi[1]-pobi[0] != 1 || crong[1]-crong[0] != 1 
 				|| pobi[1]>=400 || crong[1]>=400 || pobi[0]<=1 || crong[0]<=1 ) { return -1; }
 		pobi[0] = calc(pobi[0]);
 		pobi[1] = calc(pobi[1]);
@@ -30,5 +26,18 @@ class Problem1 {
 		else if(re > 0) { return 1; }
 		else if(re < 0) { return 2; }
 		else { return -1; }
-    }
+		
+	}
+	
+	public static void main(String[] args) {
+		System.out.println("Problem 1");
+		Prob1 prob1 = new Prob1();
+		
+		int[] pobi = {99, 102};
+		int[] crong = {211, 212};
+		
+		int result = prob1.win(pobi, crong);
+		System.out.println(result);
+		
+	}
 }

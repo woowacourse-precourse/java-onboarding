@@ -1,12 +1,10 @@
-package onboarding;
+////
+import java.util.Arrays;
 
-import java.util.Collections;
-import java.util.List;
-
-public class Problem5 {
-    public static List<Integer> solution(int money) {
-        
-    	int[] result = { 0, 0, 0, 0, 0, 0, 0, 0, 0 }; 
+public class Prob5 {
+	
+	public int[] money(int total) {
+		int[] result = { 0, 0, 0, 0, 0, 0, 0, 0, 0 }; 
 		
 		while(total/50000 > 0) {
 			total -= 50000;
@@ -43,5 +41,16 @@ public class Problem5 {
 		result[8] = total;
 		
 		return result;
-    }
+	}
+
+	public static void main(String[] args) {
+		System.out.println("Problem 5");
+		Prob5 prob5 = new Prob5();
+		
+		int total = 50237;
+		
+		int[] result = prob5.money(total);
+		System.out.println(Arrays.toString(result));
+				
+	}
 }
