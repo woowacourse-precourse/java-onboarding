@@ -3,13 +3,12 @@ package onboarding;
 import java.util.*;
 
 public class Problem6 {
+    static HashSet<String> set = new HashSet<>(); // 이메일을 담을 set
+    static HashMap<String, String> map = new HashMap<>();
+
     public static List<String> solution(List<List<String>> forms) {
-
-        HashSet<String> set = new HashSet<>(); // 이메일을 담을 set
-        HashMap<String, String> map = new HashMap<>();
-
         for(int i=0; i<forms.size()-1; i++){
-            String name = forms.get(i).get(1);  //제이엠
+            String name = forms.get(i).get(1);
             if(name.length() < 2){ // 한글자인 경우
                 break;
             }
@@ -25,10 +24,8 @@ public class Problem6 {
                 map.put(sub_name, forms.get(i).get(0));
             }
         }
-
         List<String> answer = new ArrayList<>(set);
         Collections.sort(answer);
-
         return answer;
     }
 }
