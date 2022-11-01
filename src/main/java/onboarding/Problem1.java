@@ -12,6 +12,15 @@ class Problem1 {
             return -1;
         }
 
+        int pobiValue = getMaximum(pobi);
+        int crongValue = getMaximum(crong);
+
+        if (pobiValue > crongValue) {
+            return 1;
+        } else if (pobiValue < crongValue) {
+            return 2;
+        }
+
         return 0;
     }
 
