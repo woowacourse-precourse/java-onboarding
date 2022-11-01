@@ -24,3 +24,25 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+---
+### 기능 목록
+#### 친구 추천 알고리즘 구현한다.
+#### 1. 필요한 변수 정의
+
+- `friendScoreMap` : 아이디와 친구 추천 점수를 저장하는 HashMap
+- `userFriends` : 사용자(`user`)의 친구 목록
+- `answer` : 친구 추천 목록 (최대 5명)
+
+#### 2. 사용자의 친구 목록(`userFriends`)을 구한다.
+
+#### 3. 친구 추천 규칙에 따라 친구 추천 점수를 구한다.
+#### 규칙1. 사용자와 함께 아는 친구면 10점씩 부여
+- 사용자(`user`)와 사용자의 친구(`userFriends`)는 `friendScoreMap`에 추가하지 않는다.
+
+#### 규칙2. 사용자 타임라인에 방문했다면 1점씩 부여
+- 사용자의 친구(`userFriends`)라면 `friendScoreMap`에 추가하지 않는다.
+#### 4. 추천 점수가 높은 순으로 친구 목록 정렬 
+- `friendScoreMap`을 추천 점수가 높은 순으로 정렬한다.
+- 이 때, 추천 점수가 0인 경우 추천하지 않고, 추천 점수가 같다면 아이디순으로 정렬한다.
+#### 5. 친구 목록 최대 5명까지 return
