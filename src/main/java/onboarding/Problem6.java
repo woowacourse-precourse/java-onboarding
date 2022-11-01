@@ -3,6 +3,21 @@ package onboarding;
 import java.util.*;
 
 public class Problem6 {
+    private static List<List<String>> makeSliceByTwo(List<List<String>> forms) {
+        List<List<String>> sliceList = new ArrayList<>();
+
+        for (int i = 0; i < forms.size(); i++) {
+            List<String> slices = new ArrayList<>();
+            String nickname = forms.get(i).get(1);
+            for (int j = 0; j < nickname.length() - 1; j++) {
+                String slice = nickname.substring(j, j + 2);
+                slices.add(slice);
+            }
+            sliceList.add(slices);
+        }
+
+        return sliceList;
+    }
     private static boolean[] makeConsecutiveCheckArray(List<List<String>> forms) {
         boolean[] isConsecutive = new boolean[forms.size()];
         List<List<String>> sliceList = makeSliceByTwo(forms);
