@@ -8,6 +8,7 @@ public class Problem7 {
 
         if (CheckInput(user,friends,visitors)){
             Map<String, Integer> Friends = new HashMap<>();
+
             List<String> userFriends = MakeFriendsList(user,friends);
         }throw new IllegalArgumentException("잘못된 입력값");
     }
@@ -40,5 +41,15 @@ public class Problem7 {
             if(b == user)userFriends.add(a);
         }
         return userFriends;
+    }
+
+    /* 기능3 : 함께 아는 친구 점수 count */
+    private static void FriendOfAFriendCount(List<List<String>> friends, List<String> userFriends,Map<String, Integer> Friends){
+        for(int i=0;i<friends.size();i++){
+            String a = friends.get(i).get(0);
+            String b = friends.get(i).get(1);
+            if(userFriends.contains(a))Friends.put(b,Friends.getOrDefault(b,0)+10);
+            if(userFriends.contains(b))Friends.put(a,Friends.getOrDefault(a,0)+10);
+        }
     }
 }
