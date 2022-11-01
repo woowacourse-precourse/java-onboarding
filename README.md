@@ -5,7 +5,7 @@
 
 ### 문제1
 
-1. ***SeparateDigit*** 클래스의 **isWrongPage**로 예외 상황 확인 후 예외가 발생하면 -1을 반환한다.
+1. **isWrongPage**로 예외 상황 확인 후 예외 상황일 경우 -1을 반환한다.
 2. 인자로 받은 두 List\<Integer>를 이용하여 ***SeparateDigit*** 클래스를 각각 생성한다.
 3. 첫 클래스의 **compareScore**를 이용하여 반환된 결과를 *answer*에 저장하고 *answer*를 반환한다.
 
@@ -65,18 +65,19 @@
     * String *answer*
 * 메소드
 
-| 메소드                      | 기능                  |
-|--------------------------|---------------------|
-| **changeSmallLetters**   | 문자열의 소문자를 조건에 맞게 변경 |
-| **changeCapitalLetters** | 문자열의 대문자를 조건에 맞게 변경 |
+| 메소드                      | 기능                                              |
+|--------------------------|-------------------------------------------------|
+| **changeSmallLetters**   | 문자열의 소문자를 조건에 맞게 변경                             |
+| **changeCapitalLetters** | 문자열의 대문자를 조건에 맞게 변경                             |
+| **changeLetters**        | 인자로 받은 String에서 조건처럼 first와 final을 기준으로 뒤집어 준다. |
 
 
 -----------------------------------------------------------------
 ### 문제5
 1. *balance*에 *money*를 담는다.
-2. *answer*에 **unitCounting**결과를 add한다.
+2. **unitizedMoney**에 balance/unit 의 결과를 add한다.
 3. 전환된 값을 *balance*에서 차감한다.
-4. 위를 9회 반복하면 *answer*를 반환한다.
+4. 위를 9회 반복해 반한된 List를 *answer*에 담아 return한다.
 #### Problem5 클래스
 * 필드
     * List\<Integer> *answer*
@@ -85,9 +86,9 @@
         * *BANKNOTE_UNIT[9]*
 * 메소드
   
-| 메소드              | 기능           |
-|------------------|--------------|
-| **unitCounting** | 단위로 나눈 몫을 반환 | 
+| 메소드           | 기능                                                       |
+|---------------|----------------------------------------------------------|
+| **unitizing** | 입력받은 money로 BANKNOTE_UNIT[9]에 맞춰 변환하여 List\<Integer>를 반환 | 
     
 
 ---------------------------------------
@@ -126,17 +127,17 @@
   * HashMap<String, Integer> *Score*;
 * 메소드
 
-| 메소드                          | 기능                                                            |
-|------------------------------|---------------------------------------------------------------|
-| **makeFriendRelation**       | 각자의 이름을 key로 *friendRelation*에 상대의 이름을 value에 추가              |
-| **addFriendRelation**        | friend1을 key로 *Score*의 value에 freind2를 추가 없으면 새로 생성           |
+| 메소드                          | 기능                                                             |
+|------------------------------|----------------------------------------------------------------|
+| **makeFriendRelation**       | 각자의 이름을 key로 *friendRelation*에 상대의 이름을 value에 추가               |
+| **addFriendRelation**        | friend1을 key로 *Score*의 value에 freind2를 추가 없으면 새로 생성            |
 | **plusScoreByFriend**        | user의 친구를 plusFriendScore에 모두 넣어 친구의 친구의 *Score*의 value에 점수 추가 |
-| **plusFriendScore**          | plusScore에 freind의 친구를 넣어 점수 10점 추가                           |
-| **plusScoreByVisitor**       | 모든 visitor를 **plusVisitorScore**에 넣어 점수 추가                    |
-| **plusVisitorScore**         | **plusScore**에 visitor를 넣어 1점을 추가                             |
-| **plusScore**                | 입력받은 name을 키로 Score에 입력받은 score만큼 Value에 추가. 없으면 새로 생성        |
+| **plusFriendScore**          | plusScore에 freind의 친구를 넣어 점수 10점 추가                            |
+| **plusScoreByVisitor**       | 모든 visitor를 **plusVisitorScore**에 넣어 점수 추가                     |
+| **plusVisitorScore**         | **plusScore**에 visitor를 넣어 1점을 추가                              |
+| **plusScore**                | 입력받은 name을 키로 Score에 입력받은 score만큼 Value에 추가. 없으면 새로 생성         |
 | **recommend**                | Score의 key를 value를 기준으로 정렬해 User와 User의 친구를 제외한 5명까지 List로 반환함 |
-| **sortingByScore**           | List를 Score의 Value를 기준으로 정렬                                   |
-| **compareScore**             | List의 String의 key로 Value를 보고 비교하되 같은 값이면 key를 보고 비교함          |
-| **excludeUserFriendAndUser** | List에서 User와 User의 친구를 제외                                     |
-| **cutFiveRecommendList**     | List에서 순서대로 5개까지 뽑아 List로 반환                                  |
+| **sortingByScore**           | List를 Score의 Value를 기준으로 정렬                                    |
+| **compareScore**             | List의 String의 key로 Value를 보고 비교하되 같은 값이면 key를 보고 비교함           |
+| **excludeUserFriendAndUser** | List에서 User와 User의 친구를 제외                                      |
+| **cutFiveRecommendList**     | List에서 순서대로 5개까지 뽑아 List로 반환                                   |
