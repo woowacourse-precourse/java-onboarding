@@ -99,3 +99,13 @@ public class Problem7 {
     }
 
 }
+
+/**
+ * 배운점
+ * 1. 원래 List는 ArrayList, Set은 HashSet, Map은 HashMap 만을 아무 생각없이 사용하였는데,
+ * 각 인터페이스를 구현한 여러 자료구조들에 장단점이 존재한다는 것을 알았다.
+ * ex) TreeMap은 key가 sorting된 구조를 유지
+ * 2. java의 call by reference와 call by value가 언제 발생하는지 비교분석해보았다.
+ * 3. immutableCollection: solution의 param(friends)을 변경(remove)하려고하니 exception이
+ * 발생하였다.ㄴ
+ */
