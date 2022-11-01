@@ -21,3 +21,13 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+
+
+## 기능 구현 목록 및 과정
+- 각 객체로 들어갈 users, emails을 Map과HashSet으로 만들어준다.
+- form.size를 통해 리스트식으로 돌아갈수있게 파라미터 값을 변환해준뒤, nickname도 차례대로 j,w,m,n부터 돌수있게 해준다.
+- public static boolean emailCheck(String email) >> boolean 타입으로 신청할 수 있는 이메일을 제한하여주고
+- public static boolean nicknameCheck(String nickname) >> boolean 타입으로 닉네임을 한글만 나올수있도록 제한해준다.
+  (정규표현식 : Pattern.matches)
+  

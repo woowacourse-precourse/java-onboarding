@@ -24,3 +24,11 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+
+## 기능 구현 목록 및 과정
+- 함께하는 친구를 구현하기 위한 객체추가 
+- 10점 혹은 1점인지 구별하기 위한 점수 객체 추가
+- visitors에서는 bedi만 유일하기 나와있기 때문에 result 추가할수있는 visitors중에 if/else문을 이용해 방문횟수 생성 
+- if (i > 4) break; 문을 통해 4이상을 scoreSort에 List에 담아놓아 값들을 서로 비교하며 result값에 나타낼수있도록 나타냄
+- donut 과 shakevan 은 이미 visitors에도 존재하므로 해당하지 않음 andole이 함께아는 친구 30점 jun 20점  
