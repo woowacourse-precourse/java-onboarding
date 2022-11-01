@@ -14,8 +14,8 @@ class Problem1 {
         }
 
         else {
-            int scoreOfPobi = getBigger(getPageScore(pobi.get(0)), getPageScore(pobi.get(1)));
-            int scoreOfCrong = getBigger(getPageScore(crong.get(0)), getPageScore(crong.get(1)));
+            int scoreOfPobi = Math.max(getPageScore(pobi.get(0)), getPageScore(pobi.get(1)));
+            int scoreOfCrong = Math.max(getPageScore(crong.get(0)), getPageScore(crong.get(1)));
 
             answer = getComparisonResult(scoreOfPobi, scoreOfCrong);
         }
@@ -26,7 +26,7 @@ class Problem1 {
     public static boolean isValidPage(int leftPageOfPobi, int rightPageOfPobi, int leftPageOfCrong, int rightPageOfCrong) {
         // 시작, 마지막 페이지가 아닌 범위의 페이지인지 체크
         if(leftPageOfPobi <= FIRST_PAGE || leftPageOfPobi >= LAST_PAGE - 1
-                || rightPageOfCrong <= FIRST_PAGE + 1 || rightPageOfCrong >= LAST_PAGE
+                || rightPageOfPobi <= FIRST_PAGE + 1 || rightPageOfPobi >= LAST_PAGE
                 || leftPageOfCrong <= FIRST_PAGE || leftPageOfCrong >= LAST_PAGE - 1
                 || rightPageOfCrong <= FIRST_PAGE + 1 || rightPageOfCrong >= LAST_PAGE) {
                 return false;
@@ -47,19 +47,26 @@ class Problem1 {
     }
 
     // 계산한 점수를 비교하여 승부 결과(0, 1, 2)를 리턴
-    public static int getComparisonResult(int scoreOfPobi, int scoreOfCrong) {
-
-        return -1;
-    }
-
-    public static int getBigger(int a, int b) {
-        return (a > b) ? a : b;
+    public static int getComparisonResult(int p, int c) {
+        if(p < c) {
+            return 2;
+        }
+        else if(p > c) {
+            return 1;
+        }
+        return 0;
     }
 
     // 페이지 숫자를 계산한 값 중 가장 큰 점수를 반환
     public static int getPageScore(int pageNumber) {
-        int score = 0;
+        int addSum = 0, mulSum = 1;
 
-        return  score;
+        while(pageNumber != 0) {
+            addSum += pageNumber % 10;
+            mulSum *= pageNumber % 10;
+            pageNumber /= 10;
+        }
+
+        return  Math.max(addSum, mulSum);
     }
 }
