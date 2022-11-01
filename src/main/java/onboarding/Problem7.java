@@ -30,6 +30,17 @@ public class Problem7 {
         return answer;
     }
 
+    private static List<Friendship> createFriendships(){
+        List<Friendship> friendshipList=new ArrayList<>();
+
+        recommendedFriendScores.forEach((id, recommendedScore)->{
+            friendshipList.add(new Friendship(id,recommendedScore));
+        });
+        Collections.sort(friendshipList);
+
+        return friendshipList;
+    }
+
     private static void calculateRecommendedScoresWithVisitHistory(List<String> visitors){
         for(String visitor:visitors){
             if(!userFriendList.contains(visitor)){
