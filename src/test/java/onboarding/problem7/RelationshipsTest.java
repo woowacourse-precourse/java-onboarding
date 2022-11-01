@@ -7,7 +7,7 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-class FriendsTest {
+class RelationshipsTest {
 
 	@Test
 	@DisplayName("모든 사용자를 알 수 있다")
@@ -20,7 +20,7 @@ class FriendsTest {
 			List.of("shakevan", "jun"),
 			List.of("shakevan", "mrko")
 		);
-		Friends friends = new Friends(relationships);
+		Relationships friends = new Relationships(relationships);
 
 		assertThat(friends.getKnownUsers()).contains("donut", "mrko", "shakevan", "jun", "andole");
 	}
@@ -36,7 +36,7 @@ class FriendsTest {
 			List.of("shakevan", "jun"),
 			List.of("shakevan", "mrko")
 		);
-		Friends friends = new Friends(relationships);
+		Relationships friends = new Relationships(relationships);
 
 		assertThat(friends.countSharedFriends("andole", "jun")).isEqualTo(2);
 	}
@@ -52,7 +52,7 @@ class FriendsTest {
 			List.of("shakevan", "jun"),
 			List.of("shakevan", "mrko")
 		);
-		Friends friends = new Friends(relationships);
+		Relationships friends = new Relationships(relationships);
 
 		assertThat(friends.isTwoFriends("mrko", "shakevan")).isTrue();
 	}

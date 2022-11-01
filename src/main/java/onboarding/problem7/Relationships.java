@@ -7,11 +7,11 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 
-public class Friends {
+public class Relationships {
 
-	private final Map<String, List<String>> friends;
+	private final Map<String, List<String>> relationships;
 
-	public Friends(List<List<String>> relationships) {
+	public Relationships(List<List<String>> relationships) {
 		Map<String, List<String>> friends = new HashMap<>();
 		for (List<String> relationship : relationships) {
 			String friend = relationship.get(0);
@@ -25,20 +25,20 @@ public class Friends {
 			friends.get(friend).add(friend);
 			friends.get(otherFriend).add(otherFriend);
 		}
-		this.friends = friends;
+		this.relationships = friends;
 	}
 
 	public boolean isTwoFriends(String user, String other) {
-		return friends.get(user).contains(other);
+		return relationships.get(user).contains(other);
 	}
 
 	public Set<String> getKnownUsers() {
-		return friends.keySet();
+		return relationships.keySet();
 	}
 
 	public int countSharedFriends(String user, String other) {
-		List<String> userFriends = friends.get(user);
-		List<String> otherUserFriends = friends.get(other);
+		List<String> userFriends = relationships.get(user);
+		List<String> otherUserFriends = relationships.get(other);
 		if (Objects.isNull(userFriends) || Objects.isNull(otherUserFriends)) {
 			return 0;
 		}

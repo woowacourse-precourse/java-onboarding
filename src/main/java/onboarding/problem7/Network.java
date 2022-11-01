@@ -10,17 +10,17 @@ import java.util.TreeMap;
 public class Network {
 
 	private final Visitors visitors;
-	private final Friends friends;
+	private final Relationships relationships;
 
 	public Network(List<List<String>> relationships, List<String> visitors) {
-		this.friends = new Friends(relationships);
+		this.relationships = new Relationships(relationships);
 		this.visitors = new Visitors(visitors);
 	}
 
 	public Collection<String> recommendFriendsFor(String user) {
 		Map<String, Integer> scores = new TreeMap<>();
 		for (String friend : getKnownUsers()) {
-			if (friends.isTwoFriends(user, friend)) {
+			if (relationships.isTwoFriends(user, friend)) {
 				continue;
 			}
 			scores.put(friend, calculateScoreOf(user, friend));
@@ -29,14 +29,14 @@ public class Network {
 	}
 
 	private int calculateScoreOf(String user, String friend) {
-		int sharedFriendsCount = friends.countSharedFriends(user, friend);
+		int sharedFriendsCount = relationships.countSharedFriends(user, friend);
 		int visitCount = visitors.count(friend);
 		return sharedFriendsCount * 10 + visitCount;
 	}
 
 	private Set<String> getKnownUsers() {
 		Set<String> knownUsers = new HashSet<>();
-		knownUsers.addAll(friends.getKnownUsers());
+		knownUsers.addAll(relationships.getKnownUsers());
 		knownUsers.addAll(visitors.getKnownUsers());
 		return knownUsers;
 	}
