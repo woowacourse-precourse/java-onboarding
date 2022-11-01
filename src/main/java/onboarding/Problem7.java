@@ -11,7 +11,7 @@ public class Problem7 {
         createFriendList(user, friends, friendList);
         checkFriendOfFriend(user, friends, friendList, recommendedFriends);
         checkVisitors(visitors, recommendedFriends);
-        makeRecommendFriendsList(recommendedFriends, friendList, answer);
+        makeRecommendFriendList(recommendedFriends, friendList, answer);
 
         return answer;
     }
@@ -49,7 +49,7 @@ public class Problem7 {
             else recommendedFriends.put(visitor, 1);
         }
     }
-    public static void makeRecommendFriendsList(Map<String, Integer> recommendedFriends, List<String> friendList, List<String> answer) {
+    public static void makeRecommendFriendList(Map<String, Integer> recommendedFriends, List<String> friendList, List<String> answer) {
         List<Map.Entry<String, Integer>> entryList = new ArrayList<>(recommendedFriends.entrySet());
         int cnt = 0;
 
