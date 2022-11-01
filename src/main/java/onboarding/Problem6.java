@@ -2,33 +2,38 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeSet;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         /*
-        1. 1번 지원자의 닉네임부터 2글자씩 분리
-        2. 2~n번 지원자의 닉네임에 포함되는지 검사
-        3. 포함 되는 지원자 이메일 list에 저장
-        4. 다음 번호 글자 분리하면서 1~3 반복
-        5. list email 오름차순으로 정렬, 중복은 제거
+        1. 지원자의 닉네임부터 2글자씩 분리 후 저장
+        2. 2~n번 지원자의 닉네임에 포함되는지 검사 / 포함 되는 지원자 이메일 list에 저장
+        3. list email 오름차순으로 정렬, 중복은 제거
          */
 
         List<String> email = new ArrayList<>();
         List<String> nameCut = new ArrayList<>();
+        int num = 0;
 
         for (int i = 0; i < forms.size(); i++) {
+            num = nameCut.size();
             nameCut(forms.get(i).get(1), nameCut);
-        }
-
-        for (int i = 0; i < forms.size(); i++) {
-            for (int j = 0; j < nameCut.size(); j++) {
-                if (forms.get(i).get(1).contains(nameCut.get(j))) {
-                    email.add(forms.get(i).get(0));
+            for (int j = 0; j < forms.size(); j++) {
+                if (i != j) {
+                    for (int k = num; k < nameCut.size(); k++) {
+                        if (forms.get(j).get(1).contains(nameCut.get(k))) {
+                            email.add(forms.get(j).get(0));
+                        }
+                    }
                 }
             }
         }
 
-        return email;
+        TreeSet<String> email1 = new TreeSet<>(email);
+        List<String> email2 = new ArrayList<>(email1);
+
+        return email2;
     }
     // 글자 분리하는 메서드
     public static void nameCut(String name, List<String> cutname) {
