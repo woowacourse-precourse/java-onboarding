@@ -1,11 +1,97 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.List;
-
+import java.util.*;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+
+        List<String> answer;
+        Map<String, Integer> friendsScore = new HashMap<>();
+        List<String> resultFineMyFriend = findMyFriend(user, friends);
+
+        friendsScore = getFriendsFriendsScore(friendsScore, resultFineMyFriend,friends);
+
+        friendsScore = getVisitorsScore(friendsScore,visitors);
+
+        friendsScore = removeMyselfMyfriend(friendsScore,resultFineMyFriend,user);
+
+        answer = sortedFriendList(friendsScore);
+
+        return answer;
+    }
+
+    public static List<String> findMyFriend(String user, List<List<String>> friends){
+
+        String newString;
+        List<String> friend = new ArrayList<>();
+
+        for(int i = 0; i < friends.size(); i++){
+            for (int j = 0; j < friends.get(i).size(); j++){
+                if(friends.get(i).get(j).equals(user)){
+                    List<String> newList = new ArrayList<>(friends.get(i));
+                    newList.remove(user);
+                    newString = String.join(",", newList);
+                    friend.add(newString);
+                }
+            }
+        }
+        return friend;
+    }
+
+    public static Map<String, Integer> getFriendsFriendsScore(Map<String, Integer> friendsScore,List<String> resultFineMyFriend,List<List<String>> friends){
+
+        for (int i = 0; i < resultFineMyFriend.size(); i++) {
+            List<String> myFriendsFriends = findMyFriend(resultFineMyFriend.get(i), friends);
+
+            for (int j = 0; j < myFriendsFriends.size(); j++) {
+
+                friendsScore.put(myFriendsFriends.get(j),friendsScore.getOrDefault(myFriendsFriends.get(j), 0) + 10);
+            }
+        }
+
+        return friendsScore;
+    }
+
+    public static Map<String, Integer> getVisitorsScore(Map<String, Integer> friendsScore,List<String> visitors){
+
+        for (int i = 0; i < visitors.size(); i++) {
+            friendsScore.put(visitors.get(i),friendsScore.getOrDefault(visitors.get(i), 0) + 1);
+        }
+
+        return friendsScore;
+    }
+
+    public static Map<String, Integer> removeMyselfMyfriend(Map<String, Integer> friendsScore,List<String> resultFineMyFriend,String user){
+
+        for (int i = 0; i < resultFineMyFriend.size(); i++) {
+            friendsScore.remove(resultFineMyFriend.get(i));
+        }
+        friendsScore.remove(user);
+
+        return friendsScore;
+
+    }
+
+    public static List<String> sortedFriendList(Map<String, Integer> friendsScore){
+
+        List<String> keySet = new ArrayList<>(friendsScore.keySet());
+        List<String> answer = new ArrayList<>();
+
+        Map<String, Integer> finalFriendsScore = friendsScore;
+        Collections.sort(keySet, (o1, o2) -> (finalFriendsScore.get(o2).compareTo(finalFriendsScore.get(o1))));
+        for (int i = 0; i < keySet.size(); i++) {
+            answer.add(keySet.get(i));
+        }
+
+        List<String> useCheckSize = new ArrayList<>();
+
+        if(answer.size() > 5){
+            for(int i = 0; i < 5; i++){
+                useCheckSize.add(answer.get(i));
+            }
+
+            return useCheckSize;
+        }
+
         return answer;
     }
 }

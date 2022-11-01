@@ -1,3 +1,10 @@
+### 기능 목록
+1. 본인의 친구가 누구인지 찾아 리스트에 저장하는 함수 findMyFriend를 구현한다.
+2. 친구와 함께 아는 친구는 점수 10점을 더해주는 함수 getFriendsFriendsScore를 구현한다.
+3. 내 타임 라인에 방문한 친구의 점수를 1점 더해주는 getVisitorsScore 함수를 구현한다.
+4. 계산을 마친 friendsScore에서 이미 친구인 사용자, 사용자 본인을 삭제해주는 함수 removeMyselfMyfriend 함수를 구현한다.
+5. 출력을 위해 순서를 정렬하고 5명 이상일 경우 5명까지 출력되도록 sortedFriendList 함수를 구현한다.
+
 ## 🚀 기능 요구 사항
 
 레벨 2의 팀 프로젝트 미션으로 SNS(Social Networking Service)를 만들고자 하는 팀이 있다. 팀에 속한 크루 중 평소 알고리즘에 관심이 많은 미스터코는 친구 추천 알고리즘을 구현하고자 아래와 같은 규칙을 세웠다.
