@@ -55,12 +55,13 @@ public class Problem7 {
         scoredFriendOfFriends(notUserFriends);
         // 방문자들의 score을 매긴다.
         scoredVisitors(visitors);
-        // point순으로 정렬한 후 출력
+        // point순으로 정렬
         List<String> answer = recommendedFriend.entrySet().stream()
                 .sorted(Comparator.comparing(Entry::getValue , Comparator.reverseOrder()))
+                .filter( s -> s.getValue()!=0) // score이 0인 사람 제외
                 .map(s -> s.getKey())
+                .limit(5) // 최대 5명까지만 출력
                 .collect(Collectors.toList());
-
         return answer;
     }
 
