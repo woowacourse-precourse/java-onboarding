@@ -21,9 +21,3 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
-
-### 구현 사항
-1. 두 글자를 key로 해당하는 닉네임를 신청한 신청자의 이메일의 리스트를 value로 갖는 map을 생성
-2. 닉네임을 받으면 해당 닉네임이 이미 중복된 닉네임 배열을 가지고 있는지 확인하는 함수 구현
-3. 중복된 닉네임 리스트를 set에 저장하는 함수 구현
-4. set을 오름차순의 list로 변환하는 함수 구현

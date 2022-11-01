@@ -24,11 +24,3 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
-
-### 구현 사항
-
-1. Set<Person> freinds 와 int visit를 가지고 있는 Person class
-2. Person 객체를 관리할 Map<String,Person> persons를 가지고 있는 Persons class
-3. Person user와 Person person사이의 점수를 계산할 함수
-4. Person a 와 Person b의 중복되는 친구의 수를 반환하는 함수
-5. Person p의 방문 횟수에 따른 점수를 반환하는 함수
