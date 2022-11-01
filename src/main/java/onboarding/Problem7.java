@@ -76,4 +76,8 @@ public class Problem7 {
                 throw new IllegalArgumentException("아이디는 소문자로만 지을 수 있습니다.");
         }
     }
+
+    private static boolean isValidVisitorsLength(List<String> visitors) {
+        return visitors.stream().allMatch(visitor -> visitor.length() >= MIN_VISITORS_LENGTH && visitor.length() <= MAX_VISITORS_LENGTH);
+    }
 }
