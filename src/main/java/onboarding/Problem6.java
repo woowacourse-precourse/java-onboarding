@@ -32,4 +32,8 @@ public class Problem6 {
         return nickname.matches("^[가-힣]*$") == true;
     }
 
+    private static boolean checkNickLength(String nickname) {
+        return nickname.length() >= 1 && nickname.length() < 20;
+    }
+
 }
