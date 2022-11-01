@@ -21,3 +21,10 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+### 기능 목록
+
+1. 문자열로 스택을 생성하는 함수 string_to_stack
+2. 문자열 스택에서 중복 문자들을 제외하여 새로운 문자열 스택으로 리턴하는 함수 remove_duplicate
+3. 스택으로부터 문자열을 생성하는 함수 stack_to_string
+4. cryptogram에서 중복 문자들을 삭제한 문자열을 리턴하는 함수 solution
