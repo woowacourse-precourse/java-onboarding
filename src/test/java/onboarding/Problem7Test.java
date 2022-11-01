@@ -4,9 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -73,5 +70,26 @@ class Problem7Test {
 		assertThat(result.size()).isEqualTo(expectedSize);
 		result.values()
 				.forEach(score -> assertThat(score).isEqualTo(expectedValue));
+	}
+
+	@DisplayName("user 의 친구목록을 구하는 테스트")
+	@Test
+	void findFriendsOfUserTest() {
+		// given : 친구관계 그래프와 user 의 이름이 주어졌을 때
+		List<List<String>> friends = List.of(
+				List.of("a", "b"),
+				List.of("b", "c"),
+				List.of("heap", "c"),
+				List.of("pork", "fork")
+		);
+		Problem7.makeFriendRelationGraph(friends);
+		final String user = "c";
+
+		// when : user 의 직접적인 친구들을 찾는다
+		Set<String> friendsOfUser = Problem7.findFriendsOfUser(user);
+
+		// then : user 의 직접적인 친구들은 'b', 'heap' 2명이다.
+		final Set<String> expected = new HashSet<>(List.of("b", "heap"));
+		assertThat(friendsOfUser).isEqualTo(expected);
 	}
 }
