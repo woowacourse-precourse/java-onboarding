@@ -3,7 +3,7 @@
 ## ✔ 기능 정의 
 ### 기능
 - [X] inputSet 예외처리 __(isValidInputSet)__
-  - 각 player의 input 예외처리__(isValidInput)__
+  - 각 player의 input 예외처리 __(isValidInput)__
 
 - [X] 각 player의 Max Score 가져오기 __(getPlayerMaxScore)__
   - [X] 한 숫자(페이지) 각 자리 곱, 각 자리 합 중 Max 값 가져오기__(getMaxScoreOfMultiAndSum)__
