@@ -43,17 +43,21 @@ public class Problem7 {
     }
 
     private static void makeUserFriendSet(String user) {
-        List<String> friends = map.get(user);
-        for (String friend : friends) {
-            userFriends.add(friend);
+        if (map.containsKey(user)) {
+            List<String> friends = map.get(user);
+            for (String friend : friends) {
+                userFriends.add(friend);
+            }
         }
     }
 
     private static void add10PointsToKnowTogether(String user) {
-        List<String> friends = map.get(user);
-        for (String friend : friends) {
-            List<String> friendOfFriends = map.get(friend);
-            add10Points(user, friendOfFriends);
+        if (map.containsKey(user)) {
+            List<String> friends = map.get(user);
+            for (String friend : friends) {
+                List<String> friendOfFriends = map.get(friend);
+                add10Points(user, friendOfFriends);
+            }
         }
     }
 
