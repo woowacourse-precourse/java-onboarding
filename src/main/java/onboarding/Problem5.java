@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -8,7 +9,14 @@ public class Problem5 {
     private static final int[] exchange = {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
 
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
+        //  Variable
+        List<Integer> answer = new ArrayList<>();
+        //  For-Loop : 큰 금액의 화폐부터 교환이 가능한지 계산
+        for(int i = 0; i < exchange.length; i++){
+            answer.add(checkExchange(money, i));
+            money = reminderExchange(money, i);
+        }
+
         return answer;
     }
 
