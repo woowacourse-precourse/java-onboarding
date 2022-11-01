@@ -33,14 +33,19 @@ class Problem1 {
             String pageString = Integer.toString(page);
 
             int sum = 0;
-            int mult = 1;
-            for (char num : pageString.toCharArray()) {
-                sum += Character.getNumericValue(num);
-                mult *= Character.getNumericValue(num);
-            }
-
-            maxNum = Math.max(maxNum, Math.max(sum, mult));
+            int mul = 1;
+            maxNum = selectOperResult(maxNum, pageString, sum, mul);
         }
+        return maxNum;
+    }
+
+    private static int selectOperResult(int maxNum, String pageString, int sum, int mul) {
+        for (char num : pageString.toCharArray()) {
+            sum += Character.getNumericValue(num);
+            mul *= Character.getNumericValue(num);
+        }
+
+        maxNum = Math.max(maxNum, Math.max(sum, mul));
         return maxNum;
     }
 }
