@@ -60,14 +60,35 @@ public class Problem7 {
         // 점수가 0인 값들과 key값이 user인 값 제거해서 반환
         totalScore.keySet().removeIf(n -> n.equals(user));
         totalScore.values().removeIf(n -> n == 0);
-        System.out.println(totalScore);
         return totalScore;
     }
 
     // 결과 값을 점수가 가장 높은 순으로 정렬하여 최대 5명만 반환하는 함수
-    static List<String> highScoreFriends(HashMap<String, Integer> Friends){
-        
+    static List<String> highScoreFriends(HashMap<String, Integer> friends){
+        List<String> result = new ArrayList<>();
+        PriorityQueue<Person> heap = new PriorityQueue<>((p1, p2) -> {
+            if (p1.getScore() < p2.getScore()) return 1;
+            else if (p1.getScore() > p2.getScore()) return -1;
+            else{
+                return p1.getName().compareTo(p2.getName());
+            }
+        });
+        for(Map.Entry<String, Integer> entry : friends.entrySet()){
+            Person person = new Person(entry.getKey(),entry.getValue());
+            heap.add(person);
+        }
+        int cnt = 0;
+        while (!heap.isEmpty()){
+            result.add(heap.poll().getName());
+            cnt++;
+            if (cnt == 5){
+                break;
+            }
+        }
+        return result;
     }
+
+    // Person 객체 생성
     public static class Person{
         private String name;
         private int score;
@@ -84,9 +105,8 @@ public class Problem7 {
         }
     }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        friendRelation(friends);
-        calScore(friendRelation(friends),user,visitors);
+        List<String> answer;
+        answer = highScoreFriends(calScore(friendRelation(friends),user,visitors));
         return answer;
     }
 }
