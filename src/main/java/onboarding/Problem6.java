@@ -6,15 +6,19 @@ import java.util.stream.IntStream;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        final List<Crew> crews = forms.stream()
-                .map(Crew::of)
-                .collect(Collectors.toList());
-
         final Map<String, List<Crew>> crewMap = new HashMap<>();
+
+        final List<Crew> crews = getCrews(forms);
 
         addMapBySubstringInNickname(crewMap, crews);
 
         return getEmailListByDuplicatedNickname(crewMap);
+    }
+
+    private static List<Crew> getCrews(List<List<String>> forms) {
+        return forms.stream()
+                .map(Crew::of)
+                .collect(Collectors.toList());
     }
 
     private static void addMapBySubstringInNickname(Map<String, List<Crew>> crewMap, List<Crew> crews) {
