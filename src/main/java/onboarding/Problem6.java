@@ -45,10 +45,9 @@ public class Problem6 {
     }
 
     private static List<String> excludeLengthOneCrewNickname() {
-        List<String> duplicableCrewNicknames = crewInfoMap.keySet().stream()
+        return crewInfoMap.keySet().stream()
                 .filter(crewNickname -> crewNickname.length() != 1)
                 .collect(Collectors.toList());
-        return duplicableCrewNicknames;
     }
 
     private static List<String> getSubstringCrewNicknames(List<String> duplicableCrewNicknames) {
@@ -64,12 +63,11 @@ public class Problem6 {
     }
 
     private static Set<String> extractDuplicateSubstringCrewNicknames(List<String> substringCrewNicknames) {
-        Set<String> DuplicateSubstringCrewNicknames = substringCrewNicknames.stream()
+        return substringCrewNicknames.stream()
                 .filter(substringCrewNickname ->
                         substringCrewNicknames.indexOf(substringCrewNickname) !=
                                 substringCrewNicknames.lastIndexOf(substringCrewNickname))
                 .collect(Collectors.toSet());
-        return DuplicateSubstringCrewNicknames;
     }
 
     private static List<String> getDuplicateCrewNicknames(List<String> duplicableCrewNicknames, Set<String> duplicateSubstringCrewNicknames) {
@@ -87,12 +85,11 @@ public class Problem6 {
     }
 
     private static List<String> getDuplicateCrewEmails(List<String> duplicateCrewNicknames) {
-        List<String> duplicateCrewEmails = duplicateCrewNicknames.stream()
+        return duplicateCrewNicknames.stream()
                 .map(crewInfoMap::get)
                 .distinct()
                 .sorted()
                 .collect(Collectors.toList());
-        return duplicateCrewEmails;
     }
 
     private static void validateCrewInfo(List<List<String>> crewForms) {
