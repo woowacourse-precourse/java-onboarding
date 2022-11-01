@@ -3,16 +3,17 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+    // TODO : consumer di 로 refactor
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if (!validatePage(pobi) || !validatePage(crong)) return -1;
         int pobiNum = calculatePageMaxNumber(pobi);
         int crongNum = calculatePageMaxNumber(crong);
         int answer = 0;
         if (pobiNum - crongNum < 0) {
-            answer = 1;
+            answer = 2;
         }
         else if (pobiNum - crongNum > 0) {
-            answer = 2;
+            answer = 1;
         }
         return answer;
     }
