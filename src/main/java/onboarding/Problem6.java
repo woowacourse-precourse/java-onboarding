@@ -39,7 +39,8 @@ public class Problem6 {
         return res;
     }
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer = checkNickname(forms);
+        answer = checkDomain(answer);
         return answer;
     }
 }
