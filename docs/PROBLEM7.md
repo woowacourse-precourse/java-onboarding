@@ -24,3 +24,13 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+---
+
+### 기능 구현
+
+- [x] `user`와 1촌 친구인 사용자를 확인한다. -> Arraylist로 저장
+- [x] `user`의 1촌 친구 리스트를 순회하며 `user`가 아닌 다른 사용자들을 HashMap<String, Integer> 자료구조로 10점씩 누적
+- [x] `visitor`도 HashMap<String, Integer> 자료구조에 1점씩 누적
+- [x] Comparator를 사용하여 1순위 점수, 2순위 닉네임 오름차순으로 정렬
+- [x] 상위 5개 추출하여 반환
