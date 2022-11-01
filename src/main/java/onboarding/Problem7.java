@@ -22,6 +22,7 @@ package onboarding;
     3) 방문자 리스트 확인 +1, 리스트 추가
 
  */
+
 import java.util.*;
 
 public class Problem7 {
@@ -29,25 +30,28 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
 
         TreeMap<String, Integer> userList = new TreeMap<String, Integer>();
-
-
+        TreeMap<String, Integer> friendList = new TreeMap<String, Integer>();
 
         for (int i = 0; i < friends.size(); i++) {
             for (int j = 0; j < 2; j++) {
-                if (friends.get(i).contains(user)) {
-                    scoreMap.put(friends.get(i).get(0), scoreMap.getOrDefault(friends.get(i).get(0)+10,0));
-                    scoreMap.put(friends.get(i).get(1), scoreMap.getOrDefault(friends.get(i).get(0)+10,0));
+                String name = friends.get(i).get(j);
+
+                if (name != user) {
+                    userList.put(name, 0);
+                    if (friends.get(i).contains(user)) {
+                        friendList.put(name, 0);
+                }
+
                 }
             }
         }
 
         for (int i = 0; i < visitors.size(); i++) {
-            scoreMap.put(visitors.get(i), scoreMap.getOrDefault(friends.get(i).get(0)+1,0));
+            userList.put(visitors.get(i), 0);
         }
 
-        List<String> totalscores = new ArrayList<>(scoreMap.keySet());
 
-
+        List<String> totalscores = new ArrayList<>(friendList.keySet());
 
         return totalscores;
     }
