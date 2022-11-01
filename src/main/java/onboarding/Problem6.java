@@ -1,8 +1,5 @@
 package onboarding;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
@@ -10,7 +7,7 @@ import java.util.regex.Pattern;
 import java.util.List;
 
 public class Problem6 {
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
 		List<List<String>> forms= new ArrayList<List<String>>(10000);
 		String pattern = "^[a-zA-Z0-9]{1,9}@email\\.com[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]{1,19}$";
 

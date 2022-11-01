@@ -1,9 +1,6 @@
 package onboarding;
 
 import java.util.Collections;
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -18,13 +15,13 @@ import java.util.regex.Pattern;
 public class Problem7 {
 	static HashSet<String> finalfriendlist = new HashSet();
 	static HashMap<String,Integer> recommendscore = new HashMap<>();
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
 		String user_pattern = "^[a-z]{1,30}$";
-		
+
 		String user="";
 		List<List<String>> friends = new ArrayList<List<String>>(10000);
 		List<String> visitors = new ArrayList<String>(10000);
-		
+
 		boolean check = true;
 		if(Pattern.matches(user_pattern,user)) {
 			if(friends.size()>=1&&friends.size()<=10000) {
@@ -32,7 +29,7 @@ public class Problem7 {
 					HashSet friendset1 = new HashSet();
 					friendset1.add(friends.get(i).get(0));
 					friendset1.add(friends.get(i).get(1));
-					
+
 					if(!Pattern.matches(user_pattern,friends.get(i).get(0)) || 
 						!Pattern.matches(user_pattern,friends.get(i).get(1)))
 					{
@@ -42,7 +39,7 @@ public class Problem7 {
 					if(friends.get(i).get(0).equals(friends.get(i).get(1))) {
 						check=false;
 					}
-					
+
 					for(int j=0;j<friends.size();j++) {
 						HashSet friendset2 = new HashSet();
 						friendset2.add(friends.get(j).get(0));
@@ -72,15 +69,15 @@ public class Problem7 {
 			finalfriendlist.addAll(visitors);
 
 			ArrayList<String> finalfriendlistarr = new ArrayList<>(finalfriendlist);
-			
+
 			for(String friend:finalfriendlistarr) {
 				recommendscore.put(friend, 0);
 			}
 			System.out.println(solution(user,friends,visitors));
-		
+
 		}
 	}
-	
+
 	public static List<String> solution(String user,List<List<String>> friends,List<String> visitors) {
 		ArrayList<String> mutualfriend=new ArrayList<>(5);
 		List<String> answer = Collections.emptyList();
@@ -97,7 +94,7 @@ public class Problem7 {
 				}
 			}
 		}
- 		
+
 		for(List friendlist:friends) {
 			for(int i=0;i<2;i++) {
 				String friend=(String)friendlist.get(i);
@@ -111,18 +108,18 @@ public class Problem7 {
 							score = recommendscore.getOrDefault((String)friendlist.get(0), 0)+10;
 							recommendscore.put((String)friendlist.get(0), score);
 						}
-						
+
 					}
 				}
-				
+
 			}
 		}
-		
+
 		for(String visitor:visitors) {
 			int score = recommendscore.getOrDefault(visitor,0)+1;
 			recommendscore.put(visitor, score);
 		}
-		
+
 		List<Map.Entry<String, Integer>> entrylist = new LinkedList<>(recommendscore.entrySet());
 		entrylist.sort(new Comparator<Map.Entry<String,Integer>>(){
 			int res = 0;
@@ -145,8 +142,6 @@ public class Problem7 {
 				return res;
 			}
 		});
-		
-		
 		int count =0;
 		for(int i=0;i<entrylist.size();i++) {
 			String key = entrylist.get(i).getKey();
@@ -162,5 +157,5 @@ public class Problem7 {
 		answer = result;
 		return answer;
 	}
-	
+
 }

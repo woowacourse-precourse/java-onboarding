@@ -1,12 +1,9 @@
 package onboarding;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.regex.Pattern;
 
 public class Problem3 {
-	public static void main(String[] args) throws NumberFormatException, IOException {
+	public static void main(String[] args) {
 		String pattern = "^[0-9]+$";
 		int number = 0;
 		if(Pattern.matches(pattern,number+"")) {

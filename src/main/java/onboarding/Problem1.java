@@ -1,14 +1,11 @@
 package onboarding;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 import java.util.List;
 
 class Problem1 {
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) {
 		
 		ArrayList<Integer> pobi = new ArrayList<>(2);
 		ArrayList<Integer> crong = new ArrayList<>(2);
