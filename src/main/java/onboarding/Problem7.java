@@ -11,6 +11,7 @@ public class Problem7 {
         Set<String> friends_list = new HashSet<>();
         Set<String> final_friends_set = new HashSet<>();
         List<String> friends_list10_count = new ArrayList<>();
+        List<String> real_friend = new ArrayList<>();
         List<Integer> score = new ArrayList<>();
         List<String> answer1 = new ArrayList<>();
 
@@ -25,6 +26,16 @@ public class Problem7 {
                 friends_list1.add(visitors.get(i));
             }//if
         }//for
+
+        for (int i = 0; i < friends.size(); i++) {
+            if (friends.get(i).contains(user)){
+                    if (friends.get(i).get(0) == user){
+                        real_friend.add(friends.get(i).get(1));
+                    } else {
+                        real_friend.add(friends.get(i).get(0));
+                    }
+            }
+        }
 
         for (int i = 0; i < friends.size(); i++) {
             if (friends.get(i).contains(user)){
@@ -54,34 +65,40 @@ public class Problem7 {
         final_friends_set.addAll(friends_list1);
         final_friends_set.addAll(friends_list10);
         List<String> final_friends_list = new ArrayList<>(final_friends_set);
-
+        System.out.println(real_friend);
+        for (int i = 0; i < real_friend.size(); i++) {
+            if (final_friends_list.contains(real_friend.get(i))) {
+                final_friends_list.remove(real_friend.get(i));
+            }
+        }
+        System.out.println(friends_list10_count);
         for (int i = 0; i < final_friends_list.size(); i++) {
             int count = 0;
             if (friends_list10.contains(final_friends_list.get(i))) {
                 count += Collections.frequency(friends_list10_count, final_friends_list.get(i)) * 10;
-            }//if
-            if (friends_list1.contains(final_friends_list.get(i))) {
+            }else if (friends_list1.contains(final_friends_list.get(i))) {
                 count += Collections.frequency(visitors, final_friends_list.get(i));
             }//if
             score.add(count);
         }//for
 
-        for (int i = 0; answer1.size() < 5;) {
+        for (; answer1.size() < 5;) {
             System.out.println(final_friends_list);
             System.out.println(score);
             System.out.println(score.size());
             if (score.size() == 0 || Collections.max(score) == 0){
-                System.out.println(1);
                 break;
             }//if
+            int max_index = score.indexOf(Collections.max(score));
             List<String> same_score = new ArrayList<>();
-            int b = Collections.frequency(score, score.get(i));
+            int b = Collections.frequency(score, score.get(max_index));
+            System.out.println(b);
             if (b > 1){
-                for (; b != 0; b--) {
-                    int max_index = score.indexOf(Collections.max(score));
+                for (; b != 0; ) {
                     same_score.add(final_friends_list.get(max_index));
                     final_friends_list.remove(max_index);
                     score.remove(max_index);
+                    b -= 1;
                 }//for
                 Collections.sort(same_score);
                 System.out.println(same_score);
@@ -93,7 +110,6 @@ public class Problem7 {
                     }
                 }
             } else {
-                int max_index = score.indexOf(Collections.max(score));
                 answer1.add(final_friends_list.get(max_index));
                 final_friends_list.remove(max_index);
                 score.remove(max_index);
