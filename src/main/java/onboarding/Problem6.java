@@ -17,6 +17,7 @@ public class Problem6 {
         savePatternAtMap(nicknameList,nicknamePatternMap);
         checkDuplication(nicknameList,nicknamePatternMap);
         addAnswer(nicknameList,nicknamePatternMap,answerHashSet,forms);
+        hashSetToList(answer,answerHashSet);
 
         return answer;
     }
@@ -70,6 +71,10 @@ public class Problem6 {
         }
     }
 
-
+    public static void hashSetToList(List <String> list,HashSet <String> hash){
+        for(String element : hash){
+            list.add(element);
+        }
+    }
 
 }
