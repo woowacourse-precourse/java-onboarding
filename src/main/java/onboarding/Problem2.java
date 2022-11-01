@@ -28,6 +28,7 @@ public class Problem2 {
 
             // check가 false라면 아무런 중복값없이 for문이 끝남
             // check가 있다면 연속된 반복 알파벳을 모두 삭제
+            // 여기서 매우 틀림...
             if (check) {
                 while(temp < word_list.size()-1 && word_list.get(temp).equals(word_list.get(temp+1))) {
                     word_list.remove(temp + 1);
