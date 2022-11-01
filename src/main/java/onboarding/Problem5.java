@@ -6,14 +6,17 @@ package onboarding;
  * 2. 돈의 액수 money 각 몇개로 반환되는지 solution 메서드 완성
  */
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Problem5 {
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
-
         int[] result = calculateMoney(money);
+
+        List<Integer> answer = new ArrayList<>(Arrays.stream(result).boxed().collect(Collectors.toList()));
         return answer;
     }
     public static int[] calculateMoney(int money) {
