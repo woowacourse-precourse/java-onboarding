@@ -11,6 +11,10 @@ public class Problem7 {
         setUserRelation(userRelationMap,friends);
         findFriendsOfFiends(user,userRelationMap);
         findVisitor(visitors,userRelationMap);
+
+        List<Map.Entry<String,User>> mapEntry = createMapEntry(userRelationMap);
+
+        sorting(userRelationMap,mapEntry);
          return answer;
     }
 
@@ -44,6 +48,28 @@ public class Problem7 {
             userRelationMap.computeIfAbsent(user2,k->new User()).connectingFriends(user1,new User());
         }
     }
+
+    public static void sorting(Map<String,User> userRelationMap, List<Map.Entry<String,User>> mapEntry){
+        mapEntry.sort(new Comparator<>() {
+            @Override
+            public int compare(Map.Entry<String, User> o1, Map.Entry<String, User> o2) {
+
+                int o1Score = o1.getValue().getScore();
+                int o2Score = o2.getValue().getScore();
+
+                if (o2Score - o1Score == 0)
+                    return o1.getKey().compareTo(o2.getKey());
+
+                return o2Score - o1Score;
+            }
+        });
+    }
+    public static List<Map.Entry<String,User>> createMapEntry(Map<String,User> userRelationMap){
+
+        return new LinkedList<>(userRelationMap.entrySet());
+    }
+
+
     static class User {
 
         //연결된 유저를 저장하는 해시맵
