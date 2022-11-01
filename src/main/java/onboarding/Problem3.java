@@ -4,8 +4,11 @@ public class Problem3 {
     private static int count;
 
     public static int solution(int number) {
-        int answer = 0;
-        return answer;
+        count = 0;
+        for (int i = 1; i <= number; i++) {
+            checkNumber(i);
+        }
+        return count;
     }
 
     private static void checkNumber(int num) {
