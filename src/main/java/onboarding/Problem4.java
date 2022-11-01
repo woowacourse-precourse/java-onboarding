@@ -29,14 +29,17 @@ public class Problem4 {
             }
             int dictionaryIndex = convertAlphabetToInt(letter);
             System.out.println((char)(dictionary[dictionaryIndex] + UPPER_CASE_ASCII_CODE));
-            if(isUpperCase(letter)) {
-                result += (char)(dictionary[dictionaryIndex] + UPPER_CASE_ASCII_CODE);
-            }
-            if(isLowerCase(letter)) {
-                result += (char)(dictionary[dictionaryIndex] + LOWER_CASE_ASCII_CODE);
-            }
+            char alphabet = convertIntToAlphabet(dictionaryIndex, letter, dictionary);
+            result += alphabet;
         }
         return result;
+    }
+
+    private static char convertIntToAlphabet(int dictionaryIndex, char letter, int[] dictionary) {
+        if(isUpperCase(letter)) {
+            return (char)(dictionary[dictionaryIndex] + UPPER_CASE_ASCII_CODE);
+        }
+        return (char)(dictionary[dictionaryIndex] + LOWER_CASE_ASCII_CODE);
     }
 
     private static int convertAlphabetToInt(char alphabet) {
