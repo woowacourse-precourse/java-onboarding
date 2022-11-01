@@ -29,7 +29,7 @@ public class Problem7 {
         for (String userFriend : userFriends) {
             for (List<String> friends : friendRelation) {
                 for (String friend : friends) {
-                    if (friends.contains(userFriend) && !friend.equals(userFriend) && !friend.equals(user)) {
+                    if (friends.contains(userFriend) && !friend.equals(userFriend) && !friend.equals(user) && candidates.keySet().contains(friend)) {
                         candidates.put(friend, candidates.get(friend) + 10);
                     }
                 }
@@ -82,9 +82,13 @@ public class Problem7 {
         List<String> userFriend = new ArrayList<>();
 
         candidates = findCandidates(user, friends, visitors);
+        System.out.println("candidates" + candidates);
         userFriend = findUserFriends(user, friends);
+        System.out.println("userFriend" + userFriend);
         candidates = scoreVisitors(candidates, visitors);
+        System.out.println("scoreVisitors" + candidates);
         candidates = scoreFriendRelation(user, candidates, userFriend, friends);
+        System.out.println("scoreFriendRelation" + candidates);
         answer = sortCandidates(candidates);
         return answer;
     }
