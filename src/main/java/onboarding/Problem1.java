@@ -27,5 +27,8 @@ class Problem1 {
     public static int findMaxValue(Integer page) {
         return Math.max(addPageNumber(page), multiplyPageNumber(page));
     }
+    public static int findMaxPage(List<Integer> name) {
+        return Math.max(findMaxValue(name.get(LEFT_PAGE)), findMaxValue(name.get(RIGHT_PAGE)));
+    }
 }
 
