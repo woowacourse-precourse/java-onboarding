@@ -60,7 +60,6 @@ class Friend {
       Collections.sort(list_entries, new Comparator<Entry<String, Integer>>() {
 
         public int compare(Entry<String, Integer> obj1, Entry<String, Integer> obj2) {
-          // 내림 차순 정렬
           int res = obj2.getValue() - obj1.getValue();
           if (res != 0) {
             return res;
@@ -215,7 +214,6 @@ class ScoreCalculator {
         scoreTable.entrySet());
     Collections.sort(list_entries, new Comparator<Entry<String, Integer>>() {
       public int compare(Entry<String, Integer> obj1, Entry<String, Integer> obj2) {
-        // 내림 차순 정렬
         int res = obj2.getValue() - obj1.getValue();
         if (res != 0) {
           return res;
