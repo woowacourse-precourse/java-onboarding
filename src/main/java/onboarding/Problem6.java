@@ -16,11 +16,14 @@ public class Problem6 {
             for(int l = 0; l < ch.length; l++){
                 if(l != ch.length-1){
                     String combined = ch[l] + ch[l+1];
+                    //get used name set
+                    if(nameHashedSet.contains(combined)){
+                        nameDuplicated.add(combined);
+                    }
                     nameHashedSet.add(combined);
                 }
             }
         }
-
         return answer;
     }
 }
