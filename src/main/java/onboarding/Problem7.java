@@ -19,6 +19,13 @@ public class Problem7 {
             }
         });
 
+        if (entries.size() <= 5) {
+            for (int i = 0; i < entries.size(); i++) answer.add(entries.get(i).getKey());
+        }
+        else {
+            for (int i = 0; i < 5; i++) answer.add(entries.get(i).getKey());
+        }
+
         return answer;
     }
 
