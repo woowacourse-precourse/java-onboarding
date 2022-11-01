@@ -1,10 +1,37 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer = new ArrayList<>();
+        List<Integer> answerIndexes = new ArrayList<>();
+        List<String> nicknames = getNickNameList(forms);
+        String current;
+        String part;
+
+        for (int i = 0; i < nicknames.size(); i++) {
+            current = nicknames.get(i);
+            for (int j = 0; j < current.length() - 1; j++) {
+                part = current.substring(j, j + 2);
+                for (int k = 0; k < nicknames.size(); k++) {
+                    if (k != i) {
+                        if (hasSimilarNickName(nicknames.get(k), part)) {
+                            if (!isAlreadyAnswerIndexes(answerIndexes, i)) {
+                                answerIndexes.add(i);
+                            }
+                            if (!isAlreadyAnswerIndexes(answerIndexes, k)) {
+                                answerIndexes.add(k);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        makeAnswer(forms, answer, answerIndexes);
+        Collections.sort(answer);
         return answer;
     }
     public static void makeAnswer(List<List<String>> forms, List<String> answer, List<Integer> answerIndexes) {
