@@ -24,3 +24,24 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 구현 기능 목록
+- 주어진 User에 대한 유효성 검사
+    - 메소드 명 : validateUser
+    - 길이가 1 이상 30 이하이다.
+- Friends List에 대한 유효성 검사
+    - 메소드 명 : validateFriends
+    - 길이가 1 이상 10,000 이하인 리스트/배열
+- Visitors List에 대한 유효성 검사
+    - 메소드 명 : validateVisitors
+    - 길이가 0 이상 10,000 이하인 리스트/배열이다.
+- 주어진 사용자의 친구 리스트를 반환한다.
+    - 메소드 명 : getUsersFriends
+- 친구리스트 중 추천 친구에 해당하는 리스트를 반환한다.
+    - 메소드 명 : getRecommendedFriends
+- 방문리스트 중 추천 친구에 해당하는 리스트를 반환한다.
+    - 메소드 명 : getRecommendedVisitors
+- 알고리즘에 따라 포인트 부여 작업을 한다.
+    - 메소드 명 : addPoint
+- 가장 포인트가 많은 유저 최대 5명을 담은 리스트를 반환한다.
+    - 메소드 명 : getSortedList
