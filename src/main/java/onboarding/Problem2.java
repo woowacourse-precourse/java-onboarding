@@ -3,7 +3,6 @@ import java.util.*;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "";
-
         boolean isTrue = true;
 
         String[] ary = cryptogram.split("");

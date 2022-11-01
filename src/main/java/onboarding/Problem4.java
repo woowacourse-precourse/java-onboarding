@@ -6,6 +6,7 @@ public class Problem4 {
         char[] wordList = word.toCharArray();
         int reverse, temp, ascii = 0;
 
+
         for(int i = 0; i < wordList.length;i++) {
             if(Character.isUpperCase(wordList[i])) {
                 ascii = 65;

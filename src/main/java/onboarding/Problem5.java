@@ -8,6 +8,7 @@ public class Problem5 {
     public static List<Integer> solution(int money) {
         List<Integer> answer = new ArrayList<Integer>();
 
+
         int m_5 = (int)(money/50000);
         money = money-(m_5*50000);
 

@@ -7,7 +7,6 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         int pLeft = pobi.get(0);
         int pRight = pobi.get(1);
-
         int cLeft = crong.get(0);
         int cRight = crong.get(1);
 

@@ -15,7 +15,6 @@ public class Problem6 {
         HashSet<String> mailbox = new HashSet<String>();
 
         Map<String, String> comboMap = new HashMap<String, String>();
-
         String[] basket = new String[forms.size()];
 
         for (int i = 0; i < forms.size(); i++) {
