@@ -2,7 +2,24 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        StringBuilder sb = new StringBuilder();
+        for (char c : word.toCharArray()) {
+            c = convertFrogAlphabet(c);
+            sb.append(c);
+        }
+        return sb.toString();
+    }
+
+    private static char convertFrogAlphabet(char c) {
+        if (!Character.isLetter(c)) {
+            return c;
+        }
+        if (Character.isLowerCase(c)) {
+            return (char)('z' - (c - 'a'));
+        }
+        if (Character.isUpperCase(c)) {
+            return (char)('Z' - (c - 'A'));
+        }
+        return c;
     }
 }
