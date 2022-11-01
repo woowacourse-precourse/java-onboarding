@@ -5,8 +5,8 @@ import static org.assertj.core.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -14,8 +14,7 @@ import org.junit.jupiter.api.Test;
 class Problem6Test {
 
 	@Test
-	void integrationTest() {
-		// given
+	void integrationTest1() {
 		List<List<String>> forms = List.of(
 			List.of("jm@email.com", "제이엠"),
 			List.of("jason@email.com", "제이슨"),
@@ -26,23 +25,38 @@ class Problem6Test {
 			List.of("nadara@email.com", "나다라"),
 			List.of("darama@email.com", "다라마")
 		);
+		List<String> result = List.of("darama@email.com", "ganada@email.com", "jason@email.com", "jm@email.com", "mj@email.com", "nadara@email.com");
+		assertThat(Problem6.solution(forms)).isEqualTo(result);
+	}
 
-		// when
-		List<String> duplicatedUserEmailAscendingList = Problem6.solution(forms);
+	@Test
+	void integrationTest2() {
+		List<List<String>> forms = List.of(
+			List.of("onepiece@email.com", "원피수"),
+			List.of("jason@email.com", "제이슨"),
+			List.of("onepisu@email.com", "원피수"),
+			List.of("mj@email.com", "엠제이"),
+			List.of("suonepi@email.com", "수원피")
+		);
+		List<String> result = List.of("jason@email.com", "mj@email.com", "onepiece@email.com", "onepisu@email.com", "suonepi@email.com");
+		assertThat(Problem6.solution(forms)).isEqualTo(result);
+	}
 
-		// then
-		assertThat(duplicatedUserEmailAscendingList.size()).isEqualTo(6);
-		assertThat(duplicatedUserEmailAscendingList.get(0)).isEqualTo("darama@email.com");
-		assertThat(duplicatedUserEmailAscendingList.get(1)).isEqualTo("ganada@email.com");
-		assertThat(duplicatedUserEmailAscendingList.get(2)).isEqualTo("jason@email.com");
-		assertThat(duplicatedUserEmailAscendingList.get(3)).isEqualTo("jm@email.com");
-		assertThat(duplicatedUserEmailAscendingList.get(4)).isEqualTo("mj@email.com");
-		assertThat(duplicatedUserEmailAscendingList.get(5)).isEqualTo("nadara@email.com");
+	@Test
+	void integrationTest3() {
+		List<List<String>> forms = List.of(
+			List.of("kim@email.com", "김ㅡ이"),
+			List.of("nam@email.com", "ㅡ이야"),
+			List.of("choi@email.com", "최강"),
+			List.of("lee@email.com", "강합니다"),
+			List.of("jun@email.com", "왜ㅇㅡ이야")
+		);
+		List<String> result = List.of("jun@email.com", "kim@email.com", "nam@email.com");
+		assertThat(Problem6.solution(forms)).isEqualTo(result);
 	}
 
 	@Test
 	void getStringEmailHashMapTest() {
-		// given
 		List<List<String>> forms = List.of(
 			List.of("jm@email.com", "제이엠"),
 			List.of("jason@email.com", "제이슨"),
@@ -51,10 +65,8 @@ class Problem6Test {
 			List.of("nowm@email.com", "이제엠")
 		);
 
-		// when
-		HashMap<String, ArrayList<String>> stringEmailHashMap = Problem6.getStringEmailHashMap(forms);
+		HashMap<String, ArrayList<String>> stringEmailHashMap = Problem6.getStringEmailMap(forms);
 
-		// then
 		assertThat(stringEmailHashMap.size()).isEqualTo(7);
 		assertThat(stringEmailHashMap.get("제이").size()).isEqualTo(3);
 		assertThat(stringEmailHashMap.get("워니").size()).isEqualTo(1);
@@ -64,8 +76,7 @@ class Problem6Test {
 	}
 
 	@Test
-	void getDuplicatedUserEmailHashSetTest() {
-		// given
+	void getDuplicatedUserEmailSetTest() {
 		List<List<String>> forms = List.of(
 			List.of("jm@email.com", "제이엠"),
 			List.of("jason@email.com", "제이슨"),
@@ -74,15 +85,13 @@ class Problem6Test {
 			List.of("nowm@email.com", "이제엠")
 		);
 
-		// when
-		HashSet<String> duplicatedUserEmailHashSet = Problem6.getDuplicatedUserEmailHashSet(forms);
+		Set<String> duplicatedUserEmailSet = Problem6.getDuplicatedUserEmailSet(forms);
 
-		// then
-		assertThat(duplicatedUserEmailHashSet.size()).isEqualTo(3);
-		Assertions.assertTrue(duplicatedUserEmailHashSet.contains("jm@email.com"));
-		Assertions.assertTrue(duplicatedUserEmailHashSet.contains("jason@email.com"));
-		Assertions.assertTrue(duplicatedUserEmailHashSet.contains("mj@email.com"));
-		Assertions.assertFalse(duplicatedUserEmailHashSet.contains("woniee@email.com"));
-		Assertions.assertFalse(duplicatedUserEmailHashSet.contains("nowm@email.com"));
+		assertThat(duplicatedUserEmailSet.size()).isEqualTo(3);
+		Assertions.assertTrue(duplicatedUserEmailSet.contains("jm@email.com"));
+		Assertions.assertTrue(duplicatedUserEmailSet.contains("jason@email.com"));
+		Assertions.assertTrue(duplicatedUserEmailSet.contains("mj@email.com"));
+		Assertions.assertFalse(duplicatedUserEmailSet.contains("woniee@email.com"));
+		Assertions.assertFalse(duplicatedUserEmailSet.contains("nowm@email.com"));
 	}
 }

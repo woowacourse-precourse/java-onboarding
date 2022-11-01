@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        Set<String> duplicatedUserEmailSet = getDuplicatedUserEmailHashSet(forms);
+        Set<String> duplicatedUserEmailSet = getDuplicatedUserEmailSet(forms);
         List<String> duplicatedUserEmailAscendingList = getDuplicatedUserEmailAscendingList(duplicatedUserEmailSet);
         return duplicatedUserEmailAscendingList;
     }
@@ -15,14 +15,13 @@ public class Problem6 {
         return duplicatedUserEmailAscendingList;
     }
 
-    public static HashSet<String> getDuplicatedUserEmailHashSet(List<List<String>> forms) {
-        HashMap<String, ArrayList<String>> stringEmailHashMap = getStringEmailHashMap(forms);
-        HashSet<String> duplicatedUserEmailHashSet = getDuplicatedUserEmailHashSet(stringEmailHashMap);
-
+    public static Set<String> getDuplicatedUserEmailSet(List<List<String>> forms) {
+        HashMap<String, ArrayList<String>> stringEmailHashMap = getStringEmailMap(forms);
+        HashSet<String> duplicatedUserEmailHashSet = getDuplicatedUserEmailSet(stringEmailHashMap);
         return duplicatedUserEmailHashSet;
     }
 
-    public static HashMap<String, ArrayList<String>> getStringEmailHashMap(List<List<String>> forms) {
+    public static HashMap<String, ArrayList<String>> getStringEmailMap(List<List<String>> forms) {
         HashMap<String, ArrayList<String>> stringEmailMap = new HashMap<>();
         for (List<String> userInfo : forms) {
             String email = userInfo.get(0);
@@ -40,7 +39,7 @@ public class Problem6 {
         return stringEmailMap;
     }
 
-    public static HashSet<String> getDuplicatedUserEmailHashSet(HashMap<String, ArrayList<String>> stringEmailHashMap) {
+    public static HashSet<String> getDuplicatedUserEmailSet(HashMap<String, ArrayList<String>> stringEmailHashMap) {
         Set<String> partialStringSet = stringEmailHashMap.keySet();
         HashSet<String> duplicatedUserEmailHashSet = new HashSet<>();
         for (String partialString : partialStringSet) {
