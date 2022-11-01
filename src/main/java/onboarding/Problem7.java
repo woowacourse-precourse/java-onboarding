@@ -34,6 +34,17 @@ public class Problem7 {
                 recommendlist.remove(name1);
             }
         }
+        
+        //3) 같이 아는 친구 명수에 따라 추천 점수 증가
+        for(int i=0; i<friends.size(); i++){
+            String name1 = friends.get(i).get(0);
+            String name2 = friends.get(i).get(1);
+            if (friendlist.contains(name1) && name2 != user) {
+                recommendlist.put(name2, recommendlist.get(name2)+10);
+            } else if (friendlist.contains(name2) && name1 != user) {
+                recommendlist.put(name1, recommendlist.get(name1)+10);
+            }
+        }
 
         return answer;
     }
