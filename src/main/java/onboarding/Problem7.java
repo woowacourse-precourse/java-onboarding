@@ -74,6 +74,8 @@ public class Problem7 {
 
         List<String> userFriends = new ArrayList<>();
         getUserFriends(user, friends, userFriends);
+        List<Person> answerList = getTenPointName(user, friends, userFriends);
+
         List<String> answer = Collections.emptyList();
         return answer;
     }
@@ -153,5 +155,46 @@ public class Problem7 {
         }
         return leftName;
     }
+    private static List<Person> getTenPointName(String user, List<List<String>> friends,
+        List<String> userFriends) {
+        List<Person> tenPointNames = new ArrayList<>();
 
+        for (List<String> names : friends) {
+            if (!names.contains(user)) {
+                setTenPointName(names, userFriends, tenPointNames);
+            }
+        }
+        return tenPointNames;
+    }
+
+    private static void setTenPointName(List<String> names, List<String> userFriends,
+        List<Person> tenPointNames) {
+        Person leftFriend = new Person(names.get(0));
+        Person rightFriend = new Person(names.get(1));
+
+        if (userFriends.contains(leftFriend.name) && !userFriends.contains(rightFriend.name)) {
+            addFriend(tenPointNames, rightFriend);
+        } else if (!userFriends.contains(leftFriend.name) && userFriends.contains(rightFriend.name)) {
+            addFriend(tenPointNames, leftFriend);
+        }
+    }
+    private static void addFriend(List<Person> tenPointNames, Person friend) {
+        if (tenPointNames.isEmpty()) {
+            friend.addTenPoint();
+            tenPointNames.add(friend);
+        }
+        else if (!isContainedFriend(tenPointNames, friend)) {
+            friend.addTenPoint();
+            tenPointNames.add(friend);
+        }
+    }
+    private static boolean isContainedFriend(List<Person> tenPointNames, Person friend) {
+        for (Person list : tenPointNames) {
+            if (list.equals(friend)) {
+                list.addTenPoint();
+                return true;
+            }
+        }
+        return false;
+    }
 }
