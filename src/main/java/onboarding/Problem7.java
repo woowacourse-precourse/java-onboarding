@@ -13,6 +13,10 @@ public class Problem7 {
         userService.addFriends(friends);
         List<FriendCommendResponseDto> responseDtos = userService.operateFriendCommendation(user, visitors);
 
+        return mapToUserId(responseDtos);
+    }
+
+    private static List<String> mapToUserId(List<FriendCommendResponseDto> responseDtos) {
         return responseDtos.stream().map(FriendCommendResponseDto::getUserId).collect(Collectors.toList());
     }
 }
