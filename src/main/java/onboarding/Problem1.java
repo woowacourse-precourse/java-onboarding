@@ -11,7 +11,7 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         maxScore(pobi, crong);
-        winner = maxCompare();
+        winner = compareMaxScore();
         pageException(pobi, crong);
         return winner;
     }
@@ -29,7 +29,7 @@ class Problem1 {
         crongScore.clear();
     }
 
-    public static int maxCompare() {
+    public static int compareMaxScore() {
         if (pobiMaxScore > crongMaxScore) {
             return 1;
         }
