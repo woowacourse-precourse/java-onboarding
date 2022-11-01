@@ -16,4 +16,11 @@ public class Problem4 {
         else if (Character.isLowerCase(c)) ascii = 97;
         return ascii;
     }
+    public static char getChangedAlphabet(int ascii, char c){
+        char result;
+        int abs = Math.abs(ascii - c);
+        int reverse = (ascii + 25) - abs;
+        result = (char) reverse;
+        return result;
+    }
 }
