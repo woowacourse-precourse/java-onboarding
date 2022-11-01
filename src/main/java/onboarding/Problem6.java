@@ -26,9 +26,13 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
         List<String> names = getName(forms);
-        List<List<String>> nameCase = new ArrayList<>();
-        for (String name : names) {
-            nameCase.add(getCase(name));
+        List<List<String>> nameCases = new ArrayList<>();
+        for (String name : names)
+            nameCases.add(getCase(name));
+        for (List<String> nameCase : nameCases) {
+            for (String name : nameCase) {
+
+            }
         }
         return answer;
     }
