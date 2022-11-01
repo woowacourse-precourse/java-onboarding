@@ -7,7 +7,6 @@ public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
-
         Map<String, Integer> nicknameSubstringCounts = new HashMap<>();
         Set<String> emails = new HashSet<>();
 
@@ -21,6 +20,7 @@ public class Problem6 {
         Collections.sort(answer, (str1, str2) -> {
             String mail1 = str1.split(EMAIL_DOMAIN)[0];
             String mail2 = str2.split(EMAIL_DOMAIN)[0];
+
             return mail1.compareTo(mail2);
         });
 
@@ -39,8 +39,10 @@ public class Problem6 {
     private static void addEmailByDuplicatedNickname(List<List<String>> forms, Set<String> emails, String substring) {
         for (List<String> form : forms) {
             String nickname = form.get(1);
+
             if (nickname.contains(substring)) {
                 String email = form.get(0);
+
                 emails.add(email);
             }
         }
@@ -49,6 +51,7 @@ public class Problem6 {
     private static void countNickname(List<List<String>> forms, Map<String, Integer> nicknameSubstringCounts) {
         for (List<String> form : forms) {
             String nickname = form.get(1);
+
             countSubstring(nicknameSubstringCounts, nickname);
         }
     }
@@ -67,6 +70,7 @@ public class Problem6 {
         for (int i = 0; i <= nickname.length() - length; i++) {
             String subString = nickname.substring(i, i + length);
             int count = nicknameSubstringCounts.getOrDefault(subString, 0) + 1;
+
             nicknameSubstringCounts.put(subString, count);
         }
     }
