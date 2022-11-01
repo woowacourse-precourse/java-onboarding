@@ -1,7 +1,7 @@
 # 🎈 민주
 
 ## ✔ 기능 정의
-### Collection
+### Collection 
 - 중복된 문자열 인덱스를 저장하는 duplicatedIndexList
 ### 기능
 - [X] duplicatedIndexList 초기화 (initDuplicatedIndexList)
