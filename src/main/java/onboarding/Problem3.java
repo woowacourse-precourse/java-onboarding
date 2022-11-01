@@ -5,14 +5,24 @@ public class Problem3 {
     public static int solution(int number) {
         String num = "";
         if(constraints(number)) return -1; // 제한사항에 걸렸을경우 -1로 리턴
-        int count =0;
-        for(int i = 1; i<number+1; i++) num +=i+"";//1234567891011121314
+        int result =0;
+        for(int i = 1; i<number+1; i++) {num +=i+"";}//1234567891011121314
             for(int j =0; j<num.length();j++){
-                if(num.charAt(j) == '3') count++;
-                if(num.charAt(j) == '6') count++;
-                if(num.charAt(j) == '9') count++;
+                if(num.charAt(j) == '3') result++;
+                if(num.charAt(j) == '6') result++;
+                if(num.charAt(j) == '9') result++;
             }
-        return count;
+        print(number,result);
+
+
+        return result;
+
+    }
+    public static  void print(int number, int result) {
+        System.out.println("| number | result |");
+        System.out.println("| --- | --- |");
+        System.out.println("| "+number+" | "+result+" | ");
+
 
     }
     public static boolean constraints(int number){ // 제한사항

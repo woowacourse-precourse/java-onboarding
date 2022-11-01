@@ -11,7 +11,7 @@ public class Problem2 {
         // 3. 중복 없어진 리스트를 String으로 변경해서 출력한다.
         if(!constraints(cryptogram)){ return cryptogram;} // 제한사항에 걸린다면 원래값 리턴
 
-        String text = "";
+        String result = "";
         List<String> cryptoList = cryptoSplit(cryptogram); // browoanoommnaon
         while (true) {
             List<String> newList = cryptoDedupli(cryptoList); //browoannaon -> browoaaon -> browoon -> brown
@@ -19,8 +19,16 @@ public class Problem2 {
             cryptoList.clear();
             cryptoList = newList;
         }
-        for(String txt : cryptoList) text +=txt+"";
-        return text;
+        for(String txt : cryptoList) result +=txt+"";
+        print(cryptogram,result);
+        return result;
+
+    }
+    public static  void print(String cryptogram, String result) {
+        System.out.println("| cryptogram | result |");
+        System.out.println("| --- | --- |");
+        System.out.println("| "+cryptogram+" | "+result+" | ");
+
 
     }
     public static boolean constraints(String s){ // 제한사항
