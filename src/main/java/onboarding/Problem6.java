@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /*
@@ -18,6 +19,16 @@ public class Problem6 {
                                 .toArray(String[][]::new);
         return array;
     }
+    public static List<String> makeKeyword(String nickName){
+        List<String> keyword = new ArrayList<>();
+        String[] tempNickName = nickName.split("");
+        int len = nickName.length();
+
+        for(int i = 0;i < len - 1;i++)
+            keyword.add(tempNickName[i] + tempNickName[i+1]);
+        return keyword;
+    }
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
