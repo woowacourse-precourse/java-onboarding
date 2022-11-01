@@ -5,4 +5,12 @@ public class Problem4 {
         String answer = "";
         return answer;
     }
+
+    private static int getAsciiNumberOfzIsLowerCaseElseZ(char c){
+        if(Character.isUpperCase(c)) return 'Z';
+
+        return 'z';
+    }
+
+    
 }
