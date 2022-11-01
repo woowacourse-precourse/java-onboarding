@@ -8,9 +8,13 @@ import java.util.stream.Stream;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class Problem7 {
+    // Map을 이용하여 friends 내의 각각의 사용자에 대해 <key, value> 형태로 변환
+    // 이 때 value는 list를 이용하여 해당 사용자의 친구 목록을 의미
     static Map<String, List<String>> friendsDic(List<List<String>> friends){
         Map<String, List<String>> map = new HashMap<>();
         List<String> emptyList = new ArrayList<>();
+        // 모든 인원을 key 값으로 입력
+        // 이 때 value는 빈 List
         for(int i=0; i<friends.size(); i++){
             if(!map.containsKey(friends.get(i).get(0))){
                 map.put(friends.get(i).get(0), emptyList);
@@ -19,6 +23,7 @@ public class Problem7 {
                 map.put(friends.get(i).get(1), emptyList);
             }
         }
+        // 각각의 key에 해당하는 사용자의 친구를 value에 입력
         for(int i=0; i<friends.size(); i++){
             String name1 = friends.get(i).get(0);
             List<String> friendsList1 = new ArrayList<>(map.get(name1));
@@ -35,6 +40,7 @@ public class Problem7 {
         }
         return map;
     }
+    // 모든 사용자에 대해 이름과 점수를 각각 key, value 값으로 갖는 Map 생성
     static Map<String, Integer> pointDic(List<List<String>> friends, List<String> visitors){
         Map<String, Integer> map = new HashMap<>();
         for(int i=0; i<friends.size(); i++){
@@ -52,6 +58,7 @@ public class Problem7 {
         }
         return map;
     }
+    // 함께 아는 친구를 Match 하여 점수 계산
     static Map<String, Integer> compareFriends(String user, Map<String, List<String>> friendsMap, Map<String, Integer> pointMap){
         List<String> userFriends = new ArrayList<>();
         userFriends.addAll(friendsMap.get(user));
@@ -70,6 +77,7 @@ public class Problem7 {
         }
         return pointMap;
     }
+    // 타임 라인에 방문한 횟수를 Count 하여 점수 계산
     static Map<String, Integer> checkVisit(List<String> visitors, Map<String, Integer> pointMap){
         for(int i=0; i<visitors.size(); i++){
             int point = pointMap.get(visitors.get(i));
@@ -78,6 +86,8 @@ public class Problem7 {
         }
         return pointMap;
     }
+    // 점수 계산이 완료된 Map의 Value에 따라 오름차순으로 정렬
+    // 정렬된 Map의 상위 점수의 사용자를 List로 반환
     static List<String> sortedArray(String user, Map<String, List<String>> friendsMap, Map<String, Integer> pointMap) {
         List<Map.Entry<String, Integer>> list_entries = new ArrayList<Map.Entry<String, Integer>>(pointMap.entrySet());
         // 비교함수 Comparator를 사용하여 오름차순으로 정렬
@@ -104,6 +114,11 @@ public class Problem7 {
         for(int i=sortList.size()-1; i>0; i--){
             List<String> userFriends = friendsMap.get(user);
             if(userFriends.contains(sortList.get(i))){
+                sortList.remove(i);
+            }
+        }
+        if(sortList.size() > 5){
+            for(int i=5; i<sortList.size(); i++){
                 sortList.remove(i);
             }
         }
