@@ -12,6 +12,7 @@ public class Problem6 {
         List<String> answer = Collections.emptyList();
 
         makeDict(forms);
+        List<Integer> user = getUser(forms.size());
 
         return answer;
     }
@@ -36,6 +37,22 @@ public class Problem6 {
                 }
             }
         }
+    }
+
+    private static List<Integer> getUser(int n) {
+        List<Integer> users = new ArrayList<>(Collections.nCopies(n, 0));
+
+        for (String word : wordDict.keySet()) {
+            List<Integer> idx = wordDict.get(word);
+
+            if (idx.size() != 1) {
+                for (int i = 0; i < idx.size(); i++) {
+                    users.set(idx.get(i), 1);
+                }
+            }
+        }
+
+        return users;
     }
 
 }
