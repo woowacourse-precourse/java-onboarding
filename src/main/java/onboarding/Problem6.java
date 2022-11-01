@@ -3,6 +3,8 @@ package onboarding;
 import java.util.*;
 
 public class Problem6 {
+    public static final Set<String> registeredNickNames = new HashSet<>();
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = checkNickName(forms);
         return answer;
@@ -33,6 +35,13 @@ public class Problem6 {
     }
 
     public static boolean isOverLap(String nickName) {
-        return true;
+        for (int i = 0; i < nickName.length() - 1; i++) {
+            String seperatedNickName = nickName.substring(i, i + 2);
+            if(registeredNickNames.contains(seperatedNickName)) {
+                return true;
+            }
+            registeredNickNames.add(seperatedNickName);
+        }
+        return false;
     }
 }
