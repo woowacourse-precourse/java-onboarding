@@ -70,13 +70,10 @@ class FriendsRelation {
         raiseScore(friendOfFriend, 10);
         raiseScore(visitors, 1);
 
-        for (String userFriend : userFriends) {
-            notRecommended(userFriend);
-        }
+        notRecommend(userFriends);
+        notRecommend(user);
 
-        notRecommended(user);
-
-        return getTop5();
+        return getRankTop5();
     }
 
     private void raiseScore(List<String> users, int point) {
@@ -90,11 +87,17 @@ class FriendsRelation {
         return totalRecommendedMap.getOrDefault(user, 0);
     }
 
-    private void notRecommended(String user) {
+    private void notRecommend(Set<String> userFriends) {
+        for (String userFriend : userFriends) {
+            notRecommend(userFriend);
+        }
+    }
+
+    private void notRecommend(String user) {
         totalRecommendedMap.remove(user);
     }
 
-    private List<String> getTop5() {
+    private List<String> getRankTop5() {
         Set<String> recommendSet = totalRecommendedMap.keySet();
         List<String> recommendList = new ArrayList<>(recommendSet);
         recommendList.sort(scoreComparator);
