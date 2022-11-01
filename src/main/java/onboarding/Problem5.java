@@ -24,4 +24,8 @@ public class Problem5 {
     public static Integer find10000(Integer money){
         return money/10000;
     }
+
+    public static Integer find5000(Integer money){
+        return money/5000;
+    }
 }
