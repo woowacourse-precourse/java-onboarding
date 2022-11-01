@@ -22,7 +22,7 @@ class Problem1 {
         return answer;
     }
     public static boolean check(List<Integer> list) {
-    	if(list.get(0)+1 == list.get(1))
+    	if(list.get(0)+1 == list.get(1) && list.get(0)%2 == 1 && 1<=list.get(0) && list.get(0)<400)
     		return false;
     	else
     		return true;
