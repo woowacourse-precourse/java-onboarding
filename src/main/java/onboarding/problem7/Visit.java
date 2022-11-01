@@ -1,6 +1,8 @@
 package onboarding.problem7;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Visit {
 
@@ -18,5 +20,9 @@ public class Visit {
 			}
 		}
 		return count;
+	}
+
+	public Set<String> getVisitors() {
+		return new HashSet<>(visitors);
 	}
 }

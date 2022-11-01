@@ -20,7 +20,8 @@ public class FriendsTest {
 			List.of("shakevan", "jun"),
 			List.of("shakevan", "mrko")
 		);
-		Friends friends = new Friends(relationships);
+		List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+		Friends friends = new Friends(relationships, visitors);
 
 		assertThat(friends.isTwoFriends("mrko", "shakevan")).isTrue();
 	}
@@ -36,8 +37,26 @@ public class FriendsTest {
 			List.of("shakevan", "jun"),
 			List.of("shakevan", "mrko")
 		);
-		Friends friends = new Friends(relationships);
+		List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+		Friends friends = new Friends(relationships, visitors);
 
 		assertThat(friends.countSharedFriends("andole", "jun")).isEqualTo(2);
+	}
+
+	@Test
+	@DisplayName("모든 사용자를 알 수 있다")
+	void get_known_users() {
+		List<List<String>> relationships = List.of(
+			List.of("donut", "andole"),
+			List.of("donut", "jun"),
+			List.of("donut", "mrko"),
+			List.of("shakevan", "andole"),
+			List.of("shakevan", "jun"),
+			List.of("shakevan", "mrko")
+		);
+		List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+		Friends friends = new Friends(relationships, visitors);
+
+		assertThat(friends.getKnownUsers()).contains("donut", "mrko", "bedi", "shakevan", "jun", "andole");
 	}
 }
