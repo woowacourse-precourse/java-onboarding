@@ -1,33 +1,52 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Problem5 {
     public static List<Integer> solution(int money) {
 
         Money input = new Money(money);
 
-        List<Integer> answer = new ArrayList<>();
-        //제일 큰 단위부터 체크해야 조건에 맞음
-        int[] unit = {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
+        Coins coins = new Coins();
+        coins.changeCoin(input);
 
-        int count;
-        for (int i = 0; i < unit.length; i++) {
-            // 현재 금액권으로 해결할 수 있는 돈
-            count = money / unit[i];
-            answer.add(count);
-            // 나머지 금액
-            money = money % unit[i];
-        }
-        return answer;
+        return coins.getCoins();
     }
 }
 
+class Coins {
+
+    private final int[] unit = {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
+
+    private final List<Integer> coins = new ArrayList<>();
+
+    public Coins(){}
+
+    public void changeCoin(Money money) {
+        int remain = money.getMoney();
+        for (int change : unit) {
+            // 현재 금액권으로 해결할 수 있는 돈
+            int count = remain / change;
+            coins.add(count);
+            // 나머지 금액
+            remain = remain % change;
+        }
+    }
+
+    public int getCount() {
+        return this.unit.length;
+    }
+
+    public List<Integer> getCoins() {
+        return this.coins;
+    }
+
+}
+
+
 class Money {
 
-    private int money;
+    private final int money;
 
     public Money(int money){
         validateSize(money);
@@ -38,7 +57,7 @@ class Money {
         if (money < 1) {
             throw new IllegalArgumentException("0원 이하는 입력할 수 없습니다.");
         }
-        If (money > 1000000) {
+        if (money > 1000000) {
             throw new IllegalArgumentException("1000000원 이하로 입력해주세요.");
         }
     }
