@@ -68,26 +68,26 @@ public class Problem7 {
         return map;
     }
 
-//    public static ArrayList<String>[] inputFriend(List<List<String>> friends, Map makeFriendLst, List<String> friendLst) {
-//        ArrayList<String>[] allFriendLst = new ArrayList[friendLst.size()];
-//
-//        for(int i=0; i<friendLst.size(); i++) {
-//            allFriendLst[i] = new ArrayList<>();
-//        }
-//
-//
-//        for(int i=0; i<friends.size(); i++) {
-//            Integer tmp1 = (Integer) getKey(makeFriendLst, friends.get(i).get(0)); // Key를 가져온다 이 key를 바탕으로 2차원 배열에 1번째 요소를 넣는다.
-//            allFriendLst[tmp1].add(friends.get(i).get(1));
-//            Integer tmp2 = (Integer) getKey(makeFriendLst, friends.get(i).get(1)); // Key를 가져온다 이 key를 바탕으로 2차원 배열에 2번째 요소를 넣는다.
-//            allFriendLst[tmp2].add(friends.get(i).get(0));
-//        }
-//        System.out.println(Arrays.toString(allFriendLst));
-//
-//        return allFriendLst;
-//
-//    }
-//
+    public static ArrayList<String>[] inputFriend(List<List<String>> friends, Map makeFriendLst, List<String> friendLst) {
+        ArrayList<String>[] allFriendLst = new ArrayList[friendLst.size()];
+
+        for(int i=0; i<friendLst.size(); i++) {
+            allFriendLst[i] = new ArrayList<>();
+        }
+
+
+        for(int i=0; i<friends.size(); i++) {
+            Integer tmp1 = (Integer) getKey(makeFriendLst, friends.get(i).get(0)); // Key를 가져온다 이 key를 바탕으로 2차원 배열에 1번째 요소를 넣는다.
+            allFriendLst[tmp1].add(friends.get(i).get(1));
+            Integer tmp2 = (Integer) getKey(makeFriendLst, friends.get(i).get(1)); // Key를 가져온다 이 key를 바탕으로 2차원 배열에 2번째 요소를 넣는다.
+            allFriendLst[tmp2].add(friends.get(i).get(0));
+        }
+        System.out.println(Arrays.toString(allFriendLst));
+
+        return allFriendLst;
+
+    }
+
 //    public static <K, V> K getKey(Map<K, V> map, V value) {
 //        for (K key : map.keySet()) {
 //            if (value.equals(map.get(key))) {
