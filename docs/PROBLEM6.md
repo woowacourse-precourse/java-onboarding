@@ -21,3 +21,12 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+---
+### 기능 목록
+
+#### 1. 닉네임끼리의 중복 여부 확인
+    두 글자 이상의 문자가 연속적으로 순서에 맞추어 포함되어 있는 경우 중복으로 간주
+    ex. '제이'엠, '제이'슨, 엠'제이' => '제이' 라는 문자가 중복
+#### 2. 닉네임이 중복되는 이메일을 return
+    이메일은 오름차순으로 정렬하고 중복은 제거한다. => TreeSet
