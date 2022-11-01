@@ -21,6 +21,21 @@ class Problem1 {
         rightMax = calculateMax(list.get(1));
         return (leftMax > rightMax) ? leftMax : rightMax;
     }
+    //곱셈과 덧셈의 최대값 비교 후 정하는 함수
+    public static int calculateMax(int num) {
+        int length = (int) (Math.log10(num) + 1);
+        if (length == 1) {
+            return (num);
+        } else if (length == 2) {
+            int sum = (num % 100 / 10) + (num % 10);
+            int multi = (num % 100 / 10) * (num % 10);
+            return (sum > multi) ? sum : multi;
+        } else {
+            int sum = (num % 1000 / 100) + (num % 100 / 10) + (num % 10);
+            int multi = (num % 1000 / 100) * (num % 100 / 10) * (num % 10);
+            return (sum > multi) ? sum : multi;
+        }
+    }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
