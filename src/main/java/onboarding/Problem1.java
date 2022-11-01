@@ -4,14 +4,29 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
         Problem1 p1 = new Problem1();
         if (!p1.validatePage(pobi) || !p1.validatePage(crong)) {
             return -1;
         }
 
+        int pobiResult = p1.getMaxNumberFromPage(pobi);
+        int crongResult = p1.getMaxNumberFromPage(crong);
 
-        return answer;
+        if (pobiResult > crongResult) {
+            return 1;
+        }
+
+        if (pobiResult < crongResult) {
+            return 2;
+        }
+
+        return 0;
+    }
+
+    private int getMaxNumberFromPage(List<Integer> pages) {
+        int multiply = getMax(multiply(pages.get(0)), multiply(pages.get(1)));
+        int addition = getMax(addition(pages.get(0)), addition(pages.get(1)));
+        return getMax(multiply, addition);
     }
 
     private int multiply(int number) {
