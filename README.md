@@ -161,5 +161,12 @@ BUILD SUCCESSFUL in 0s
 4. 정렬  
    - HashSet에 저장된 닉네임이 중복되는 이메일은 오름차순으로 정렬한다.
    
-   
+
+## 문제 7️⃣
+✅은 구현 완료한 기능
+
+1. friends 리스트에서 mrko의 친구들을 분류한다.
+2. friends에서 mrko의 친구의 친구를 haskmap에 저장한다.
+3. visitor에서 mrko의 친구의 친구를 hashmap에 저장한다.
+4. 최종 리스트를 반환한다.(점수순)
 

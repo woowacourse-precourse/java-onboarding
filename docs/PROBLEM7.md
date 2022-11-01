@@ -24,3 +24,13 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+
+## 💥 기능 목록 
+
+✅은 구현 완료한 기능
+
+1. friends 리스트에서 mrko의 친구들을 분류한다.
+2. friends에서 mrko의 친구의 친구를 haskmap에 저장한다.
+3. visitor에서 mrko의 친구의 친구를 hashmap에 저장한다.
+4. 최종 리스트를 반환한다.(점수순)
