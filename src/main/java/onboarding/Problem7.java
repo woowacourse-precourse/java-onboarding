@@ -9,6 +9,7 @@ public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+        answer = getRecommendation(user, friends, visitors);
         return answer;
     }
 
@@ -84,6 +85,13 @@ public class Problem7 {
         }
         return recommend;
     }
+
+    private static List<String> getRecommendation(String user, List<List<String>> AllFriends, List<String> visitors) {
+        List<String> myFriends = findMyFriends(user, AllFriends);
+        HashMap<String, Integer> score = getScoreByVisit(visitors, getScoreByFriends(user, myFriends, AllFriends), myFriends);
+        return getTop5(score);
+    }
+
 
 
 
