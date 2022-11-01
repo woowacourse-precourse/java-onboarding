@@ -11,10 +11,9 @@ package onboarding;
     - 점수가 0인 경우 추천 X, 점수가 같을 경우 이름순 정렬
 
     To dos
-    [ ] 친구 목록 구하기
-
-    [ ] 점수 계산
-    [ ] 0점 유저 제거 및 정렬
+    [X] 친구 목록 구하기
+    [X] 정렬
+    [X] 점수 계산
  */
 
 import java.util.*;
@@ -61,11 +60,27 @@ public class Problem7 {
 
         userList.remove(user);
 
+        List<Map.Entry<String, Integer>> list_entries = new ArrayList<Map.Entry<String, Integer>>(userList.entrySet());
+
+        Collections.sort(list_entries, new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                return o2.getValue().compareTo(o1.getValue());
+            }
+        });
 
 
-        List<String> answer = new ArrayList<>(userList.keySet());
+        List<String> answer = new ArrayList<String>();
 
-
+        if (list_entries.size() > 6) {
+            for (int i = 0; i < 5; i++) {
+                answer.add(list_entries.get(i).getKey());
+            }
+        } else {
+            for (int i = 0; i < list_entries.size(); i++) {
+                answer.add(list_entries.get(i).getKey());
+            }
+        }
         return answer;
     }
 }
