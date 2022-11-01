@@ -19,4 +19,11 @@ public class Friend {
         }
         return userA;
     }
+
+    public User getFriendOf(User user) {
+        if (!contains(user)) {
+            return null;
+        }
+        return getAnotherUserNot(user);
+    }
 }
