@@ -11,6 +11,8 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<String>();
         Map<String, List<String>> friendsMap = getFriendsMap(friends);
+        Map<String, Integer> scoreMap = getScoreMap(friendsMap, user);
+
         return answer;
     }
 
@@ -34,5 +36,18 @@ public class Problem7 {
             friendsMap.put(A, friendList);
         }
         return friendsMap;
+    }
+
+    static Map<String, Integer> getScoreMap(Map<String, List<String>> friendsMap, String user) {
+        Map<String, Integer> scoreMap = new TreeMap<String, Integer>();
+        List<String> friends = friendsMap.get(user);
+        for (String friend : friends) {
+            for (String friendOfFriend : friendsMap.get(friend)) {
+                if (!scoreMap.containsKey(friendOfFriend)) {
+                    scoreMap.put(friendOfFriend, 10);
+                }
+            }
+        }
+        return scoreMap;
     }
 }
