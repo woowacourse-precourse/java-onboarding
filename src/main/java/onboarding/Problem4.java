@@ -4,50 +4,67 @@ public class Problem4 {
 
     public static String solution(String word) {
 
-        StringBuilder resultStringBuilder = new StringBuilder();
-        if(word == null){
+
+        if(!isValidInput(word)){
             return "";
         }
         char[] charArrayWord = word.toCharArray();
-        if(!isValidInput(charArrayWord)){
-            return "";
-        }
+        StringBuilder resultStringBuilder = new StringBuilder();
 
         for (char c : charArrayWord) {
-            if (isAlphabet(c)) {
-                resultStringBuilder.append(decoder(c));
-            } else {
-                resultStringBuilder.append(c);
-            }
+            branchAlphabet(c, resultStringBuilder);
         }
+
         return resultStringBuilder.toString();
     }
-    private static boolean isValidInput(char[] c){
-        return c.length > 0 && c.length <= 1000;
+    private static void branchAlphabet(char c, StringBuilder input){
+        if(Character.isAlphabetic(c)){
+            input.append(decoder(c));
+        } else {
+            input.append(c);
+        }
     }
-    private static boolean isAlphabet(char c){
-        return (c >= 'A' && c <='Z') || (c >='a' && c<='z');
+
+    private static boolean isValidInput(String word){
+        if(word == null)
+            return false;
+
+        return word.length() > 0 && word.length() <= 1000;
     }
+
 
     private static char decoder(char input){
         char result;
         if(Character.isUpperCase(input)){
-            if(input/78 < 65){
-                int k = 25 - 2*(input - 65);
-                result = (char)(input + k);
-            }else{
-                int k = 25 - 2*(90 - input);
-                result = (char)(input - k);
-            }
+            result = decodeLowerCase(input);
         }else{
-            if(input/110 < 97){
-                int k = 25 - 2*(input - 97);
-                result = (char)(input + k);
-            }else{
-                int k = 25 - 2*(90 - input);
-                result = (char)(input - k);
-            }
+            result = decodeUpperCase(input);
         }
         return result;
     }
+
+    private static char decodeLowerCase(int input){
+        char result;
+        if(input/78 < 65){
+            int k = 25 - 2*(input - 65);
+            result = (char)(input + k);
+        }else{
+            int k = 25 - 2*(90 - input);
+            result = (char)(input - k);
+        }
+        return result;
+    }
+
+    private static char decodeUpperCase(int input){
+        char result;
+        if(input/110 < 97){
+            int k = 25 - 2*(input - 97);
+            result = (char)(input + k);
+        }else{
+            int k = 25 - 2*(90 - input);
+            result = (char)(input - k);
+        }
+        return result;
+    }
+
 }
