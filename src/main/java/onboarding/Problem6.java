@@ -10,9 +10,8 @@ public class Problem6 {
         for(int i=0;i<forms.size();i++){
             String word = forms.get(i).get(1);
             String email = forms.get(i).get(0);
-            List<String> wordslist = getWord(word);
-            wordslist.stream()
-                    .forEach(w -> words.put(w,getEmailList(words,w,email)));
+            List<String> wordslist = getWords(word);
+            wordslist.forEach(w -> words.put(w,getEmailList(words,w,email)));
         }
         for(int i=0;i<forms.size();i++){
             String word = forms.get(i).get(1);
@@ -24,7 +23,7 @@ public class Problem6 {
         Collections.sort(answer);
         return answer;
     }
-    public static List<String> getWord(String word){
+    public static List<String> getWords(String word){
         List<String> words = new ArrayList<>();
         for(int i=0;i<word.length()-1;i++){
             words.add(word.substring(i,i+2));
@@ -38,7 +37,7 @@ public class Problem6 {
     }
 
     public static boolean checkDuplication(HashMap<String,Set<String>> words,String word){
-        List<String> wordList = getWord(word);
+        List<String> wordList = getWords(word);
         for(String w:wordList){
             int a= words.get(w).size();
             if (a > 1){
