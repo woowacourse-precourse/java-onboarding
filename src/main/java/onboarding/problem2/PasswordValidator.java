@@ -8,8 +8,8 @@ public class PasswordValidator {
     private static final int MAX_PASSWORD_LENGTH = 1000;
 
     public void validate(String password) {
-       validateUpperCase(password);
-       validateLength(password);
+        validateUpperCase(password);
+        validateLength(password);
     }
 
     private void validateLength(String password) {
