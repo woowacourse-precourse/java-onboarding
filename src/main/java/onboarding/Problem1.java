@@ -68,7 +68,57 @@ class Problem1 {   // Problem1이라는 class 선언 (문제 1에 대한 class �
         }
 
 
-       
+        // 포비와 크롱의 가장 큰 수를 찾기 위해 4가지 경우에 대해 계산
+        for (int d = 0; d < 2; d++){
+
+            int pobi_num_s = pobi.get(d); // 포비의 페이지숫자의 각자리의 합을 계산하기 위한 변수
+            int pobi_num_m = pobi.get(d); // 포비의 페이지숫자의 각자리의 곱을 계산하기 위한 변수
+            int pobi_sum = 0; // 포비의 페이지숫자의 각자리의 합을 저장할 변수
+            int pobi_mul = 1; // 포비의 페이지숫자의 각자리의 곱을 저장할 변수
+            int crong_num_s = crong.get(d); // 크롱의 페이지숫자의 각자리의 합을 계산하기 위한 변수
+            int crong_num_m = crong.get(d); // 크롱의 페이지숫자의 각자리의 곱을 계산하기 위한 변수
+            int crong_sum = 0; // 크롱의 페이지숫자의 각자리의 합을 저장할 변수
+            int crong_mul = 1; // 크롱의 페이지숫자의 각자리의 합을 저장할 변수
+
+
+
+            while(pobi_num_s != 0){
+                // 포비의 페이지 숫자를 10으로 나눈 나머지를 pobi_sum에 더한다.
+                pobi_sum += pobi_num_s % 10;
+                // 그 다음 자리수에 대해 계산하기 위해 pobi_num_s를 10으로 나눈 수로 업데이트
+                pobi_num_s /= 10;
+            }
+            pobi_num[0 + (d*2)] = pobi_sum;
+
+            while(pobi_num_m != 0){
+                // 포비의 페이지 숫자를 10으로 나눈 나머지를 pobi_mul에 곱한다.
+                pobi_mul *= pobi_num_m % 10;
+                // 그 다음 자리수에 대해 계산하기 위해 pobi_num_s를 10으로 나눈 수로 업데이트
+                pobi_num_m /= 10;
+            }
+            pobi_num[1 + (d*2)] = pobi_mul;
+
+
+            while(crong_num_s != 0){
+                // 크롱의 페이지 숫자를 10으로 나눈 나머지를 crong_sum에 더한다.
+                crong_sum += crong_num_s % 10;
+                // 그 다음 자리수에 대해 계산하기 위해 crong_num_s를 10으로 나눈 수로 업데이트
+                crong_num_s /= 10;
+            }
+            crong_num[0 + (d*2)] = crong_sum;
+
+
+            while(crong_num_m != 0){
+                // 크롱의 페이지 숫자를 10으로 나눈 나머지를 crong_mul에 곱한다.
+                crong_mul *= crong_num_m % 10;
+                // 그 다음 자리수에 대해 계산하기 위해 crong_num_s를 10으로 나눈 수로 업데이트
+                crong_num_m /= 10;
+            }
+            crong_num[1 + (d*2)] = crong_mul;
+
+        }
+
+
 
         return answer;
     }
