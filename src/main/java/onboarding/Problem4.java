@@ -10,11 +10,8 @@ public class Problem4 {
                 answer += " ";
                 continue;
             }
-            if (w - 'a' < 0) {
-                answer += (char)('A' + 'Z' - w);
-            } else {
-                answer += (char)('a' + 'z' - w);
-            }
+            if (w - 'a' < 0) answer += (char)('A' + 'Z' - w);
+            else answer += (char)('a' + 'z' - w);
         }
 
         return answer;
