@@ -48,6 +48,42 @@ public class Problem7 {
             map.put(userKey, new LinkedHashSet<>(Set.of(userFriends)));
         }
 
+        // 입력한 사용자의 친구 목록 리스트
+        Set<String> findFriends = map.get(user);
+
+        // 사용자와 친구추천 포인트를 담을 friendPoints
+        Map<String, Integer> friendPoints = new LinkedHashMap<>();
+
+        // 아는 친구 1명 당 점수 10점
+        int relationPoint = 10;
+
+        // 입력한 사용자의 친구 목록 리스트 순회
+        for (String findFriend : findFriends) {
+            Set<String> knowRelationShip = map.get(findFriend);
+
+            // 사이즈 값 조회
+            int knowRelationShipCount = knowRelationShip.size();
+
+            // 아는 친구 목록에 입력한 사용자 즉, 자신이 포함하고 있으면 자신을 제거 한 나머지 결과값에 저장
+            if (knowRelationShip.contains(user)) {
+                knowRelationShipCount = knowRelationShip.size() - 1;
+            }
+
+            int resultRelationPoint = knowRelationShipCount * relationPoint;
+
+            // 아는 친구들을 순회
+            for (String knowUser : knowRelationShip) {
+
+                // 입력한 사용자가 아는 친구와 같으면 다음 반복으로 넘어간다
+                if (knowUser.equals(user)) {
+                    continue;
+                }
+
+                // 그게 아니라면 사용자와 친구추천 포인트를 담을 friendPoints 에 저장한다.
+                friendPoints.put(knowUser, resultRelationPoint);
+            }
+        }
+
 
 
         return Collections.emptyList();
