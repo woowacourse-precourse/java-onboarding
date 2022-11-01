@@ -71,7 +71,7 @@ class Problem1 {
     }
 
     private static Integer multiplyEachDigit(List<Integer> digits) {
-        Integer sum = 1;
+        int sum = 1;
         for (Integer digit : digits) {
             sum *= digit;
         }
@@ -120,14 +120,7 @@ class Problem1 {
         int leftPage = pages.get(LEFT);
         int rightPage = pages.get(RIGHT);
 
-        if (isEven(leftPage)) {
-            return false;
-        }
-        if (!isEven(rightPage)) {
-            return false;
-        }
-
-        return true;
+        return !isEven(leftPage) && isEven(rightPage);
     }
 
     private static boolean isEven(int num) {
