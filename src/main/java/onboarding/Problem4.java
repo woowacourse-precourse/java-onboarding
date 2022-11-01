@@ -14,6 +14,17 @@ public class Problem4 {
         }
         return (char)convertedAsciiCode;
     }
+    public static String convertOriginalWord(String originalWord){
+        String convertedWord="";
+        for(int wordIndex=0;wordIndex<originalWord.length();wordIndex++){
+            if(originalWord.charAt(wordIndex)==' ') { // 공백일 경우
+                convertedWord+=" ";
+            } else{
+                convertedWord+=convertAlphabet(originalWord.charAt(wordIndex));
+            }
+        }
+        return convertedWord;
+    }
     public static String solution(String word) {
         String answer = "";
         return answer;
