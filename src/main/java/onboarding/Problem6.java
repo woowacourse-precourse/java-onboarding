@@ -1,6 +1,8 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Problem6 {
 
@@ -11,7 +13,7 @@ public class Problem6 {
         Problem6 p6 = new Problem6();
         p6.forms = forms;
         p6.iterate();
-        return null;
+        return p6.sortingSet();
     }
 
     private void iterate(){
@@ -33,5 +35,9 @@ public class Problem6 {
             result.add(email);
             result.add(map.get(subStr));
         }
+    }
+
+    private ArrayList<String> sortingSet(){
+        return result.stream().sorted().collect(Collectors.toCollection(ArrayList::new));
     }
 }
