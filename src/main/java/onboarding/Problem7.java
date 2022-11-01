@@ -63,5 +63,23 @@ public class Problem7 {
         }
     }
 
+    private List<String> calculateScore(){
+        Set<String> personsInScoreInfoTable =  scoreInfoTable.keySet();
+
+        for(String person : personsInScoreInfoTable){
+            if(isNotZeroScore(person)){
+                RecommendedUsers.add(person);
+            }
+        }
+
+        Collections.sort(RecommendedUsers,(a, b) -> (scoreInfoTable.get(a)==scoreInfoTable.get(b))? a.compareTo(b) : scoreInfoTable.get(b)- scoreInfoTable.get(a));
+
+        return RecommendedUsers;
+    }
+
+    private boolean isNotZeroScore(String personName){
+        return (scoreInfoTable.get(personName)!=0);
+    }
+
 
 }
