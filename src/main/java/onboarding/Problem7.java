@@ -8,8 +8,10 @@ public class Problem7 {
         Map<String, Integer> scores = new HashMap<>();
         Map<String, List<String>> relations = new HashMap<>();
         Set<String> myFriends = new HashSet<>();
-        myFriends.add(user);
+        List<Map.Entry<String, Integer>> entryList = new ArrayList<>(scores.entrySet());
+        List<String> result = new ArrayList<>();
 
+        myFriends.add(user);
         initVisitors(visitors, scores);
 
         for (List<String> friend : friends) {
@@ -23,19 +25,10 @@ public class Problem7 {
         }
 
         for (String myFriend : myFriends) {
-            List<String> subFriends = relations.get(myFriend);
-
-            for (String subFriend : subFriends) {
-                if (!scores.containsKey(subFriend)) {
-                    scores.put(subFriend, 0);
-                }
-                scores.put(subFriend, scores.get(subFriend) + 10);
-            }
+            calcFriendScore(scores, relations, myFriend);
         }
 
-        List<Map.Entry<String, Integer>> entryList = new ArrayList<>(scores.entrySet());
         entryList.sort(Map.Entry.comparingByValue(Collections.reverseOrder()));
-        List<String> result = new ArrayList<>();
 
         for (Map.Entry<String, Integer> entry : entryList) {
             if (!myFriends.contains(entry.getKey())) {
@@ -48,6 +41,17 @@ public class Problem7 {
         }
 
         return result;
+    }
+
+    private static void calcFriendScore(Map<String, Integer> scores, Map<String, List<String>> relations, String myFriend) {
+        List<String> subFriends = relations.get(myFriend);
+
+        for (String subFriend : subFriends) {
+            if (!scores.containsKey(subFriend)) {
+                scores.put(subFriend, 0);
+            }
+            scores.put(subFriend, scores.get(subFriend) + 10);
+        }
     }
 
     private static void addFriendList(Map<String, List<String>> relations, String name1, String name2) {
