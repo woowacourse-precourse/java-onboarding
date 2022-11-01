@@ -24,3 +24,13 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능 구현 목록
+- [x] user가 아는 친구 목록
+  - friends를 돌며 user가 포함되어 있는지 체크
+  - user가 포함되어 있으면, user가 아닌 다른 유저를 목록에 추가
+  - 포함되어 있지 않으면 다른 목록 생성 -> user와 친구 관계가 아닌 friends List
+- [x] 점수 추가 기능
+  - Map을 통해 user에게 점수를 부여
+  - user의 친구를 알고있는 유저 구분 후 +10점
+  - user친구 목록을 통해 visitor에서 제외 후 +1점
