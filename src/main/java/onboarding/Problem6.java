@@ -1,5 +1,7 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
@@ -21,9 +23,9 @@ public class Problem6 {
         return nick;
     }
 
-    static HashSet<String> splitNick(String nick) {
-        HashSet<String> splitedNick = new HashSet<>();
-        for (int i = 0; i < nick.length()-1; i++) {
+    static ArrayList<String> splitNick(String nick) {
+        ArrayList<String> splitedNick = new ArrayList<>();
+        for (int i = 0; i < nick.length() - 1; i++) {
             String casesNick = nick.substring(i, i+2);
             splitedNick.add(casesNick);
         }
@@ -32,6 +34,7 @@ public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
+        HashSet<String> splited = new HashSet<>();
 
         for (int i = 0; i < forms.size(); i++) {
             String email = getEmail(forms, i);
