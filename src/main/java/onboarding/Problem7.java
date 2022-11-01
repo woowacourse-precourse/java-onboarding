@@ -1,11 +1,15 @@
 package onboarding;
 
-import java.util.Collections;
+import onboarding.problem7.repository.MemberRepository;
+import onboarding.problem7.repository.MemberRepositoryImpl;
+import onboarding.problem7.service.RecommendService;
+
 import java.util.List;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        MemberRepository memberRepository = MemberRepositoryImpl.of(user);
+        RecommendService recommendService = new RecommendService(memberRepository);
+        return recommendService.recommendFriends(friends, visitors);
     }
 }
