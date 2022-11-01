@@ -10,6 +10,7 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         validateUserLength(user);
         validateFriendsLength(friends);
+        validateFriendsElementLength(friends);
 
         List<String> answer = new ArrayList<>();
         HashMap<String, List<String>> friendRelationshipMap = new HashMap<>();
@@ -139,6 +140,14 @@ public class Problem7 {
     private static void validateFriendsLength(List<List<String>> friends) {
         if (friends.size() == 0 || friends.size() > 10000) {
             throw new IllegalArgumentException("friends의 길이는 1이상 10000이하여야 합니다.");
+        }
+    }
+
+    private static void validateFriendsElementLength(List<List<String>> friends) {
+        for (List<String> friendsElement : friends) {
+            if (friendsElement.size() != 2) {
+                throw new IllegalArgumentException("friends 각 원소의 길이는 2여야 합니다.");
+            }
         }
     }
 }
