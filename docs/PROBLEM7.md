@@ -24,3 +24,13 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+## 기능 목록
+
+1. 전체 사용자 목록 set 반환 메소드 추가
+2. 사용자별 친구 리스트 map 생성 메소드 추가
+3. user의 추천 친구가 될 수 있는 사용자별 점수 map 생성 메소드 추가
+4. 방문자 id 별 count map 생성 메소드 추가
+5. 함께 아는 친구 숫자 구하는 메소드 추가
+6. 추천 점수 계산하는 메소드 추가
+7. solution 함수 완성
