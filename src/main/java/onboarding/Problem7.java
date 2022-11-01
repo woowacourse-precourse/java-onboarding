@@ -26,6 +26,28 @@ public class Problem7 {
         return result;
     }
 
+    private static void friendScore(List<String> initialList) {
+        for (String name : initialList) {
+            if (recommendScore.containsKey(name)) {
+                recommendScore.put(name, recommendScore.get(name) + 10);
+                continue;
+            }
+            recommendScore.put(name, 10);
+        }
+    }
+
+    private static void visitingScore(List<String> visitors, List<String> friendsList) {
+        for (String visitor : visitors) {
+            if (recommendScore.containsKey(visitor) && !friendsList.contains(visitor)) {
+                recommendScore.put(visitor, recommendScore.get(visitor) + 1);
+                continue;
+            }
+            if (!friendsList.contains(visitor)) {
+                recommendScore.put(visitor, 1);
+            }
+        }
+    }
+
     private static void scoreInitial(String user, List<List<String>> friends, List<String> visitors) {
         recommendScore.clear();
         List<String> initialList = new ArrayList<>();
@@ -43,23 +65,8 @@ public class Problem7 {
             }
         }
 
-        for (String s : initialList) {
-            if (recommendScore.containsKey(s)) {
-                recommendScore.put(s, recommendScore.get(s) + 10);
-                continue;
-            }
-            recommendScore.put(s, 10);
-        }
-
-        for (String visitor : visitors) {
-            if (recommendScore.containsKey(visitor) && !friendsList.contains(visitor)) {
-                recommendScore.put(visitor, recommendScore.get(visitor) + 1);
-                continue;
-            }
-            if (!friendsList.contains(visitor)) {
-                recommendScore.put(visitor, 1);
-            }
-        }
+        friendScore(initialList);
+        visitingScore(visitors, friendsList);
 
     }
 
