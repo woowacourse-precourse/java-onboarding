@@ -45,6 +45,21 @@ public class Problem2 {
         return listToString(cryptogramWithoutDuplication);
     }
 
+    public String repeatRemoveDuplication(String cryptogram) {
+        int prevLength = cryptogram.length();
+
+        String cryptogramWithoutDuplication = removeDuplication(cryptogram);
+        int nextLength = cryptogramWithoutDuplication.length();
+
+        while(prevLength != nextLength) {
+            prevLength = nextLength;
+            String word = cryptogramWithoutDuplication;
+            cryptogramWithoutDuplication = removeDuplication(word);
+            nextLength = cryptogramWithoutDuplication.length();
+        }
+        return cryptogramWithoutDuplication;
+    }
+
     public String listToString(List<Character> characters) {
         StringBuilder answer = new StringBuilder();
         for (char c: characters) {
