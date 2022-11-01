@@ -13,7 +13,15 @@ public class Problem6 {
     }
 
     public static boolean isDuplicated(String nickname, String targetNickname) {
+        for (int i = 0; i < nickname.length() - 1; i++) {
+            String parsedCharacter = parseNicknameWithIndex(nickname, i, i+2, 0);
+            if (targetNickname.contains(parsedCharacter.trim())) {
+                System.out.println("Hello");
+                return true;
+            }
+        }
 
+        return false;
     }
 
 
