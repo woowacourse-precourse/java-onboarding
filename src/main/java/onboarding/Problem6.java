@@ -12,7 +12,14 @@ public class Problem6 {
         countToken(forms);
         removeNotDuplicateTokens();
 
+        for (List<String> form : forms) {
+            String email = form.get(0);
+            String nickname = form.get(1);
 
+            makeAnswer(email, nickname);
+        }
+
+        Collections.sort(answer);
         return answer;
     }
 
@@ -39,6 +46,14 @@ public class Problem6 {
         duplicateCount.forEach((token, count) -> {
             if (count == 1) {
                 duplicateCount.remove(token);
+            }
+        });
+    }
+
+    public static void makeAnswer(String email, String nickname) {
+        duplicateCount.forEach((token, count) -> {
+            if(nickname.contains(token)) {
+                answer.add(email);
             }
         });
     }
