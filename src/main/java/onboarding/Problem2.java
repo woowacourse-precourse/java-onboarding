@@ -1,5 +1,8 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Problem2 {
     public static String solution(String cryptogram) {
         /*
@@ -25,12 +28,12 @@ public class Problem2 {
         for (int i = 0; i < cryptogram.length(); i++) {
             if (c == cryptogram.charAt(i)) {
                 c = cryptogram.charAt(i);
-                // 문제: 문자 두 개를 함수 내에서 삭제를 해서 charAt(i)의 값이 달라짐
-                cryptogram = cryptogram.substring(0, i - 1) + cryptogram.substring(i + 1);
+                cryptogram = cryptogram.substring(0, (i - 1)) + "  " + cryptogram.substring(i + 1);
             } else {
                 c = cryptogram.charAt(i);
             }
         }
+        cryptogram = cryptogram.replaceAll("\\s", "");
         return cryptogram;
     }
 
