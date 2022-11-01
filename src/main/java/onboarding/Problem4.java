@@ -51,7 +51,7 @@ public class Problem4 {
             } else {
                 //A-Z, a-z에도 포함되지 않는다면 문자를 그대로 저장
                 answer += arrayWord[w];
-            }]
+            }
         }
         return answer;
     }
