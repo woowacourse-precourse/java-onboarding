@@ -1,10 +1,10 @@
 # 프리코스 1주차 미션 - 온보딩
 <p  align="center">  
-	<img  src="https://img.shields.io/badge/java-jdk11-brightgreen" width="80"/>  
+	<img  src="https://img.shields.io/badge/java-jdk11-brightgreen" width="70"/>  
 	<img  src="https://img.shields.io/badge/junit-jupiter-blue" width="80"/>
     <img  src="https://img.shields.io/badge/gradle-build-red" width="80"/>  
 </p>
-프리코스-웹 백엔드의 1주차 미션으로 독립적인 7개의 문제를 해결하는 미션을 진행하였습니다. 1). 다음 사항을 고려하며 진행하였습니다.
+프리코스-웹 백엔드의 1주차 미션으로 독립적인 7개의 문제를 해결하는 미션을 진행하였습니다. 다음 사항을 고려하며 진행하였습니다.
 
 ❗️1) 매 프로젝트마다 반복할 fork-clone-branch checkout-develop-pull request-merge 의 싸이클을 경험해보며 git을 익히고, 2) JAVA 에 익숙해지도록 한다.  
 ❗️각 문제의 제한사항에 위배되는 테스트케이스는 주어지지 않는다고 가정한다.  
