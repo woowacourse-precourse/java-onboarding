@@ -51,6 +51,11 @@ public class Problem7 {
             team.get(visitor).plusScoreOne();
         }
 
+        // 점수 기준으로 오름 차순 정렬
+        List<Crew> crews = new ArrayList<>(team.values());
+        Collections.sort(crews, (a, b) -> b.getScore() - a.getScore()); //score 별로 정렬
+
+
         return answer;
     }
 
