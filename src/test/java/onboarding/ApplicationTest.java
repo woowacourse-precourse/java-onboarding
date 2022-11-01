@@ -52,6 +52,7 @@ class ApplicationTest {
         }
     }
 
+
     @Nested
     class Problem3Test {
         @Test
@@ -68,6 +69,7 @@ class ApplicationTest {
             assertThat(Problem3.solution(number)).isEqualTo(result);
         }
     }
+
 
     @Nested
     class Problem4Test {
@@ -112,6 +114,7 @@ class ApplicationTest {
         }
     }
 
+
     @Nested
     class Problem7Test {
         @Test
@@ -130,4 +133,6 @@ class ApplicationTest {
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
         }
     }
+
+
 }
