@@ -2,7 +2,9 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Pattern;
 
 public class Problem7 {
@@ -21,6 +23,35 @@ public class Problem7 {
         return answer;
     }
 
+    private static Map<String, Integer> extractFriendPointList(String user, List<List<String>> friends,
+        List<String> visitors, List<String> userFriends) {
+        Map<String, Integer> userPoint = new HashMap<>();
+        for (List<String> friend : friends) {
+            for (String userFriend : userFriends){
+                if (friend.contains(userFriend)){
+                    for (String name : friend){
+                        if (!name.equals(user) && !userFriend.contains(name)){
+                            if (!userPoint.containsKey(name)){
+                                userPoint.put(name,10);
+                            }else{
+                                userPoint.put(name,userPoint.get(name)+10);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        for (String visitor : visitors) {
+            if (!userFriends.contains(visitor)){
+                if (!userPoint.containsKey(visitor)){
+                    userPoint.put(visitor,1);
+                }else{
+                    userPoint.put(visitor,userPoint.get(visitor)+1);
+                }
+            }
+        }
+        return userPoint;
+    }
     private static List<String> makeUserFriendsList(String user, List<List<String>> friends) {
         List<String> userFriends = new ArrayList<>();
         for (List<String> friend : friends) {
