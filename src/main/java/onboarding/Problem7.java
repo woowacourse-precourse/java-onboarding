@@ -1,25 +1,15 @@
 package onboarding;
 
 import java.util.*;
+import onboarding.domain.Score;
+import static onboarding.validation.NumberValidate.rangeValidate;
 
 public class Problem7 {
-
-    static class Person {
-        int score;
-        String name;
-
-        Person(int score, String name) {
-            this.score = score;
-            this.name = name;
-        }
-    }
-
 
     public static Map<String, Set<String>> createMap(List<List<String>> friends) {
 
         Map<String, Set<String>> answer = new HashMap<>();
         String f1, f2;
-
 
         for (List<String> friend : friends) {
 
@@ -44,12 +34,21 @@ public class Problem7 {
         return answer;
 
     }
-    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
-        Map<String, Set<String>> graph = createMap(friends);
-        Map<String, Integer> score = new HashMap<>();
+    private static boolean problemValidate(String user, List<List<String>> friends, List<String> visitors) {
+        if(!rangeValidate(1, user.length(), 30)) return false;
+        if(!rangeValidate(1, friends.size(), 10000)) return false;
+        for(List<String> lst : friends) {
+            if(!rangeValidate(1, lst.size(), 2)) return false;
+            if(!rangeValidate(1, lst.get(0).length(), 30)) return false;
+            if(!rangeValidate(1, lst.get(1).length(), 30)) return false;
+        }
+        if(!rangeValidate(0, visitors.size(), 10000)) return false;
+        return true;
+    }
 
 
+    private static void addingScore(String user, Map<String, Set<String>> graph, Map<String, Integer> score, List<String> visitors) {
         for(String i : graph.get(user)){
             for(String j : graph.get(i)) {
                 if (j.compareTo(user) == 0) {
@@ -63,7 +62,6 @@ public class Problem7 {
             }
         }
 
-
         for(String i : visitors){
             if(score.containsKey(i)) {
                 score.replace(i, score.get(i) +1);
@@ -71,27 +69,27 @@ public class Problem7 {
                 score.put(i, 1);
             }
         }
-
-
         for(String i : graph.get(user)) score.remove(i);
-
-        List<Person> lst = new ArrayList<>();
-
-        for(String i : score.keySet()) lst.add(new Person(score.get(i), i));
+    }
 
 
-        Comparator<Person> comparator = (p1, p2) -> {
-            if (p2.score != p1.score) {
-                return p2.score - p1.score;
-            } else {
-                return p1.name.compareTo(p2.name);
-            }
-        };
+    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
-        Collections.sort(lst, comparator);
+        if(!problemValidate(user, friends, visitors)) return null;
+
+        Map<String, Set<String>> graph = createMap(friends);
+        Map<String, Integer> score = new HashMap<>();
+
+        addingScore(user, graph, score, visitors);
+
+        List<Score> lst = new ArrayList<>();
+
+        for(String i : score.keySet()) lst.add(new Score(score.get(i), i));
+
+        Collections.sort(lst, Score.comparator);
 
         List<String> answer = new ArrayList<>();
-        for (Person i : lst) answer.add(i.name);
+        for (Score i : lst) answer.add(i.name);
 
         return answer;
     }

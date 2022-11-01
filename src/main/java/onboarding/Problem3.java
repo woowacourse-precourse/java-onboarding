@@ -4,6 +4,7 @@ import java.util.List;
 
 public class Problem3 {
 
+    // 0~10^1-1 369 개수, 10^1~10^2-1 369 개수, ...
     private static List<Integer> lst369(Integer n) {
         List<Integer> lst369 = List.of(3);
         for(int i=0; i<n-1; i++) {
@@ -11,7 +12,6 @@ public class Problem3 {
         }
         return lst369;
     }
-
 
     public static int solution(int n) {
 
@@ -22,8 +22,6 @@ public class Problem3 {
         int eachNum, q3EachNum;
         List<Integer> lst369 = lst369(length);
 
-
-        // 0 부터 10^1 - 1까지 369 개수 합, 10^1 ~ 10^2-1까지 369 개수 합, ...
 
         for(int i = length; i>0; i--) {
 

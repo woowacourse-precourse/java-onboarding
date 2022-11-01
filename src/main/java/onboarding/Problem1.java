@@ -5,6 +5,12 @@ import static onboarding.validation.NumberValidate.*;
 
 class Problem1 {
 
+    private static boolean validateProblem(List<Integer> pobi, List<Integer> crong) {
+        return bookValidate(crong)
+                && bookValidate(pobi)
+                && rangeValidate(1, crong.get(0), 400)
+                && rangeValidate(1, pobi.get(0), 400);
+    }
 
     private static int max_num(List<Integer> pages) {
 
@@ -22,7 +28,6 @@ class Problem1 {
             myNum[3] *= right.charAt(i) - '0';
         }
 
-
         for (int j : myNum) result = Math.max(result, j);
 
         return result;
@@ -31,13 +36,7 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
-        boolean chk = bookValidate(crong)
-                && bookValidate(pobi)
-                && rangeValidate(1, crong.get(0), 400)
-                && rangeValidate(1, pobi.get(0), 400);
-
-
-        if (chk) {
+        if (validateProblem(pobi, crong)) {
 
             int pobi_num  = max_num(pobi);
             int crong_num = max_num(crong);

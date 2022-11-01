@@ -4,25 +4,16 @@ import java.util.List;
 
 public class NumberValidate {
 
-    public static Boolean rangeValidate(Integer min, Integer i, Integer max) {
-        if (min <= i && i <= max) {
-            return true;
-        }
-        return false;
+    public static boolean rangeValidate(Integer min, Integer i, Integer max) {
+        return min <= i && i <= max;
     }
 
-    public static Boolean mod0Validate(Integer i, Integer divisor) {
-        if (i % divisor == 0) {
-            return true;
-        }
-        return false;
+    public static boolean mod0Validate(Integer i, Integer divisor) {
+        return i % divisor == 0;
     }
 
-    public static Boolean bookValidate(List<Integer> lst) {
-        if (lst.get(0) + 1 == lst.get(1) && mod0Validate(lst.get(1), 2)) {
-            return true;
-        }
-        return false;
+    public static boolean bookValidate(List<Integer> lst) {
+        return lst.get(0) + 1 == lst.get(1) && mod0Validate(lst.get(1), 2);
     }
 
 }
