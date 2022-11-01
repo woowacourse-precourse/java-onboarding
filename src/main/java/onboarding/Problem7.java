@@ -106,7 +106,7 @@ public class Problem7 {
                                 (!userFriends.contains(friendRecommendScoreMapEntry.getKey()))
                 )
                 .sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
-                .map(friendRecommendScoreMapEntry -> friendRecommendScoreMapEntry.getKey())
+                .map(Map.Entry::getKey)
                 .limit(RETURN_MAX_SIZE)
                 .collect(Collectors.toList());
     }
