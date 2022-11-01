@@ -2,11 +2,14 @@ package problem4;
 
 public class ReverseWord {
     private final String word;
-    private final String lowerAlphabet = "abcdefghijklmnopqrstuvwxyz";
-    private final String upperAlphabet = lowerAlphabet.toUpperCase();
+    private final String lowerAlphabet;
+    private final String upperAlphabet;
 
     public ReverseWord(String word) {
         this.word = word;
+        this.lowerAlphabet = "abcdefghijklmnopqrstuvwxyz";
+        this.upperAlphabet = lowerAlphabet.toUpperCase();
+
         Validator validator = new Validator(word);
         validator.validate();
     }
