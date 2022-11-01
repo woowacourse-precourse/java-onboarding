@@ -11,11 +11,11 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        Map<String, Integer> map = visitorsCount(visitors); //방문한 사람 추가
-        List<String> friendList = followedFriends(user, friends);
-        Map<String, Integer> newMap = newFriend(friends,friendList,map);
-        List<String> sortedList = sortByValues(newMap);
-        List<String> answer = commendList(user, sortedList, friendList);
+        Map<String, Integer> map = visitorsCount(visitors); //방문한 사람 점수 추가
+        List<String> friendList = followedFriends(user, friends); //이미 user와 친구인 사람들 리스트
+        Map<String, Integer> newMap = newFriend(friends,friendList,map); //친구의 친구 점수 추가
+        List<String> sortedList = sortByValues(newMap); //점수, 사전 순으로 정렬
+        List<String> answer = commendList(user, sortedList, friendList); //이미 친구인 사람들이 아니고 자신이 아닌 사람들 리스트
 
         return answer;
     }
