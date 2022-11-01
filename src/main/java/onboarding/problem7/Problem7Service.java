@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 public class Problem7Service {
     private static Problem7SnsRepository repository=RepositoryFactory.makeProblem7SnsRepository();
 
-
     public void save(String userName) {
         User user = new User(userName);
         save(user);
