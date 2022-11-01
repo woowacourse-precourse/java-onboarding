@@ -1,11 +1,11 @@
 package onboarding.problem7;
 
 public class Friend {
-    private String name;
+    private final String NAME;
     private int score = 0;
 
     public Friend(String name) {
-        this.name = name;
+        this.NAME = name;
     }
 
     public Friend addScore(int score) {
@@ -14,7 +14,7 @@ public class Friend {
     }
 
     public String getName() {
-        return name;
+        return NAME;
     }
 
     public int getScore() {
