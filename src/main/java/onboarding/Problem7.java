@@ -1,6 +1,10 @@
 package onboarding;
 
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 기능 1: 사용자의 친구 목록을 뽑는 함수 작성
