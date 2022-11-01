@@ -46,9 +46,13 @@ class Problem1 {
         return result;
     }
 
-    private static int mulDigit(Integer integer) {
-
+    private static int mulDigit(Integer num) {
+        Integer result = 1;
+        while (num != 0) {
+            result *= num % 10;
+            num /= 10;
+        }
+        return result;
     }
-
 
 }
