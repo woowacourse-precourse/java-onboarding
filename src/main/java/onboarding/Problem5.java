@@ -1,36 +1,28 @@
 package onboarding;
 
+import problem5.moneyRepository;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+
+import static problem5.BankNoteCounter.countBankNote;
+import static problem5.moneyRepository.postMoney;
+
 
 public class Problem5 {
     public static List<Integer> solution(int money) {
         List<Integer> answer = Collections.emptyList();
 
-        int result = 0;
-        // 화폐 단위 저장소능 기능
-        int[] moneyRepository = new int[9];
+        List<Integer> answerList = new ArrayList<Integer>(answer);
 
-        moneyRepository[0] = 50000;
-        moneyRepository[1] = 10000;
-        moneyRepository[2] = 5000;
-        moneyRepository[3] = 1000;
-        moneyRepository[4] = 500;
-        moneyRepository[5] = 100;
-        moneyRepository[6] = 50;
-        moneyRepository[7] = 10;
-        moneyRepository[8] = 1;
+        // 화폐 저장소
+        int[] postMoney = postMoney();
 
+        // 지폐 계수기 -> answer
+        answer = countBankNote((ArrayList<Integer>) answerList, postMoney, money);
 
-        for (int i=0; i<moneyRepository.length; i++){
-            int count = money % moneyRepository[i];
-            answer.add(count);
-            result += count;
-        }
-
-
-        return answer;
+        return answerList;
     }
 
 
