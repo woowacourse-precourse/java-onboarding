@@ -58,7 +58,7 @@ class Spread {
             this.NUMBER = number;
         }
 
-        int getScore() {
+        private int getScore() {
             return Math.max(addDigits(), multiplyDigits());
         }
 
