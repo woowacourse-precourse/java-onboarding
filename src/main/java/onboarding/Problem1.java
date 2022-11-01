@@ -5,15 +5,19 @@ import java.util.*;
 class Problem1 {
     static int pobiMaxScore;
     static int crongMaxScore;
-    static int winner;
+    static int gemaResult;
     static List<Integer> pobiScore = new ArrayList<>();
     static List<Integer> crongScore = new ArrayList<>();
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        maxScore(pobi, crong);
-        winner = compareMaxScore();
-        pageException(pobi, crong);
-        return winner;
+        if (!pageException(pobi, crong)) {
+            gemaResult = -1;
+        }
+        if (pageException(pobi, crong)) {
+            maxScore(pobi, crong);
+            gemaResult = compareMaxScore();
+        }
+        return gemaResult;
     }
 
     public static void maxScore(List<Integer> pobi, List<Integer> crong) {
@@ -102,17 +106,18 @@ class Problem1 {
         }
     }
 
-    public static void pageException(List<Integer> pobi, List<Integer> crong) {
+    public static boolean pageException(List<Integer> pobi, List<Integer> crong) {
         int pobiRightPage = pobi.get(1);
         int pobiLeftPage = pobi.get(0);
         if (pobiRightPage - pobiLeftPage != 1) {
-            winner = -1;
+            return false;
         }
 
         int crongRightPage = crong.get(1);
         int crongLeftPage = crong.get(0);
         if (crongRightPage - crongLeftPage != 1) {
-            winner = -1;
+            return false;
         }
+        return true;
     }
 }
