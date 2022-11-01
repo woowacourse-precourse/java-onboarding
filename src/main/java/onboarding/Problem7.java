@@ -52,7 +52,11 @@ public class Problem7 {
     }
 
     public static int findNearFriend(ArrayList<String> userFriendList, ArrayList<String> otherFriendList) {
-
+        int cnt = 0;
+        for (int i = 0; i < userFriendList.size(); i++) {
+            if (otherFriendList.contains((userFriendList.get(i)))) cnt++;
+        }
+        return cnt;
     }
 
     public static HashMap<String, Integer> calScore(String user,
