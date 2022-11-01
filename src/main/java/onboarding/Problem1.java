@@ -79,7 +79,7 @@ class Problem1 {
         int rightPage = pages.get(1);
 
         // 페이지 범위 예외 확인
-        if (leftPage < 1 || leftPage > 400 || rightPage < 1 || rightPage > 400) {
+        if (leftPage <= 1 || leftPage >= 400 || rightPage <= 1 || rightPage >= 400) {
             throw new RuntimeException("페이지 범위 예외");
         }
 
