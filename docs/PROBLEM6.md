@@ -21,3 +21,8 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+# 기능 목록
+1. 같은 글자가 연속적으로 포함되는지 확인하기 위한 닉네임들의 일부분으로 구성된 리스트 만들기
+2. 같은 글자가 연속적으로 포함되는지 확인하기
+3. 이메일에 해당하는 부분을 오름차순으로 정렬하고 중복 제거하
