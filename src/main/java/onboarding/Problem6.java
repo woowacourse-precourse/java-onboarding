@@ -17,6 +17,16 @@ public class Problem6 {
                 .collect(Collectors.toList());
     }
 
+    // 닉네임 검증 메서드
+    public static boolean nickNameCheck(String nickName) {
+        return nickName.length() >= 1 && nickName.length() < 20 && Pattern.matches("^[가-힣a-zA-Z]*$", nickName);
+    }
+
+    // 이메일 검증 메서드
+    public static boolean emailCheck(String email) {
+        return email.length() >= 11 && email.length() < 20 && Pattern.matches("^[_a-zA-Z0-9-\\.]+@email.com+$", email);
+    }
+
     // 차출 나올 수 있는 연속문자 검색
     public static String esNgram(String nickName, int n){
         StringTokenizer stringTokenizer = new StringTokenizer(nickName.trim()," ");
