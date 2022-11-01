@@ -165,8 +165,34 @@ public class Problem7 {
 	 */
 	private static void calcScore(List<List<String>> friends, List<String> visitors, Map<String, Integer> map,
 		Set<String> notYetFriend, Set<String> alreadyFriend) {
+		calcBothKnowScore(friends, map, notYetFriend, alreadyFriend);
+		calcVisitScore(visitors, map, notYetFriend);
+	}
 
-		// 사용자와 함께 아는 친구 수 * 10점
+	/**
+	 * (사용자의 타임 라인에 방문한 횟수 * 1점) 을 계산하는 메서드
+	 * @param visitors
+	 * @param map
+	 * @param notYetFriend
+	 */
+	private static void calcVisitScore(List<String> visitors, Map<String, Integer> map, Set<String> notYetFriend) {
+		for (String visitor : visitors) {
+			if (notYetFriend.contains(visitor)) {
+				map.put(visitor, map.get(visitor) + TIMELINE_VISIT_SCORE); // visitor 의 친구 점수 + 1
+			}
+		}
+	}
+
+	/**
+	 * (사용자와 함께 아는 친구 수 * 10점) 을 계산하는 메서드
+	 * @param friends
+	 * @param map
+	 * @param notYetFriend
+	 * @param alreadyFriend
+	 */
+	private static void calcBothKnowScore(List<List<String>> friends, Map<String, Integer> map,
+		Set<String> notYetFriend,
+		Set<String> alreadyFriend) {
 		for (List<String> friendList : friends) {
 			for (String friend : alreadyFriend) {
 				if (friendList.contains(friend)) { // 사용자와 함께 아는 친구가 있다면
@@ -179,13 +205,6 @@ public class Problem7 {
 						map.put(friend2, map.get(friend2) + BOTH_KNOW_SCORE); // friend2 의 친구 점수 + 10
 					}
 				}
-			}
-		}
-
-		// 사용자의 타임 라인에 방문한 횟수 * 1점
-		for (String visitor : visitors) {
-			if (notYetFriend.contains(visitor)) {
-				map.put(visitor, map.get(visitor) + TIMELINE_VISIT_SCORE); // visitor 의 친구 점수 + 1
 			}
 		}
 	}
