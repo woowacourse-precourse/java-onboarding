@@ -15,12 +15,15 @@ public class Problem7 {
     RecommendScoreBoard scoreBoard = new RecommendScoreBoard();
 
     List<String> findFriends = friendShip.findFriends(user);
-    List<String> findFriendsOfFriends = filterUser(filterFriends(friendShip.findFriends(findFriends), findFriends), user);
-    scoreBoard.keepScore(findFriendsOfFriends, RecommendType.FRIEND);
-
-    List<String> filterVisitors = filterUser(filterFriends(visitors, findFriends), user);
-    scoreBoard.keepScore(filterVisitors, RecommendType.VISITOR);
-
+    if (findFriends == null || findFriends.isEmpty()) {
+      List<String> filterVisitors = filterUser(visitors, user);
+      scoreBoard.keepScore(filterVisitors, RecommendType.VISITOR);
+    } else {
+      List<String> findFriendsOfFriends = filterUser(filterFriends(friendShip.findFriends(findFriends), findFriends), user);
+      scoreBoard.keepScore(findFriendsOfFriends, RecommendType.FRIEND);
+      List<String> filterVisitors = filterUser(filterFriends(visitors, findFriends), user);
+      scoreBoard.keepScore(filterVisitors, RecommendType.VISITOR);
+    }
     return scoreBoard.getResult();
   }
 
