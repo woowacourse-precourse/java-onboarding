@@ -63,7 +63,11 @@ class Problem1 {
         return 0;
     }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        if (isValidPage(pobi) && isValidPage(crong)) {
+            int pobiPoint = calculatePoint(pobi);
+            int crongPoint = calculatePoint(crong);
+            return comparePoint(pobiPoint, crongPoint);
+        }
+        return -1;ㅇㅇ
     }
 }
