@@ -18,6 +18,17 @@ class Problem1 {
         return (right - left != 1);
     }
 
+    public static int sumPage(List<Integer> list){
+        int sum = 0;
+        for (int i = 0; i < list.size(); i++) {
+            char[] chars = list.get(i).toString().toCharArray();
+            for(char x : chars){
+                sum += Integer.parseInt(String.valueOf(x));
+            }
+        }
+        return sum;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = 0;
         return answer;
