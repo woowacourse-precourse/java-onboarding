@@ -1,13 +1,23 @@
 package onboarding;
 
-import java.util.List;
+
+import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+        Set<Integer> dupIndSet = new HashSet<>();
+        solution1(forms, dupIndSet);
+        List<String> duplicateEmails = new ArrayList<>();
+
+        Iterator<Integer> it = dupIndSet.iterator();
+
+        while (it.hasNext()) {
+            duplicateEmails.add(forms.get(it.next()).get(0));
+        }
+
+        Collections.sort(duplicateEmails);
+        return duplicateEmails;
     }
-}
 
     public static void solution1(List<List<String>> forms, Set<Integer> duplicateIndexSet) {
         Map<String, Integer> subnameIndMap = new HashMap<>();
