@@ -7,7 +7,7 @@ public class Problem7 {
         HashMap<String, HashSet<String>> friendSetMap = mapFriendSet(friends);
         HashMap<String, Integer> scoreMap = new HashMap<>();
 
-        mapScoreByFriendsList(user, friendSetMap, scoreMap);
+        mapScoreByCommonFriend(user, friendSetMap, scoreMap);
         mapScoreByVisit(visitors, scoreMap);
 
         List<String> answer = Collections.emptyList();
@@ -29,7 +29,7 @@ public class Problem7 {
         return ret;
     }
 
-    private static void mapScoreByFriendsList(String user, HashMap<String, HashSet<String>> friendSetMap,
+    private static void mapScoreByCommonFriend(String user, HashMap<String, HashSet<String>> friendSetMap,
                                               HashMap<String, Integer> scoreMap) {
 
         if (!friendSetMap.containsKey(user)) {
