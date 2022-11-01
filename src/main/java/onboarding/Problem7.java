@@ -36,6 +36,9 @@ class User{
         }
         relationship=myFriends;
     }
+    String getName(){
+        return user;
+    }
 }
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
