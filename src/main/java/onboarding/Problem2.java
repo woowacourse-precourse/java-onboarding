@@ -6,39 +6,49 @@ import java.util.Stack;
 public class Problem2 {
     public static String solution(String cryptogram) {
         Problem2 pb2 = new Problem2();
-        List<Character> cryptogramWithoutDuplication = pb2.removeDuplication(cryptogram);
-        return pb2.getStringByStack(cryptogramWithoutDuplication);
+        return pb2.repeatRemoveDuplication(cryptogram);
     }
 
-    public List<Character> removeDuplication(String cryptogram) {
+    public String removeDuplication(String cryptogram) {
+        int cryptoLength = cryptogram.length();
+        if(cryptoLength <= 1) return cryptogram;
+
         int lt = 0;
         int rt = 1;
         List<Character> cryptogramWithoutDuplication = new ArrayList<>();
-        while(lt < rt && rt < cryptogram.length()) {
-            char character1 = cryptogram.charAt(lt);
-            char character2 = cryptogram.charAt(rt);
-            if(character1 != character2) {
+
+        while(rt < cryptoLength) {
+            char prevChar = cryptogram.charAt(lt);
+            char nextChar = cryptogram.charAt(rt);
+            if(prevChar != nextChar) {
                 // 단어가 중복되지 않을 때
-                cryptogramWithoutDuplication.add(character1);
+                cryptogramWithoutDuplication.add(prevChar);
+                if(rt == cryptoLength - 1) {
+                    cryptogramWithoutDuplication.add(nextChar);
+                    break;
+                }
                 lt++;
                 rt++;
                 continue;
             }
 
-            while (character1 == cryptogram.charAt(rt)) {
+            while (rt < cryptoLength && prevChar == cryptogram.charAt(rt) ) {
                 rt++;
             }
-
+            if(rt == cryptoLength - 1) {
+                cryptogramWithoutDuplication.add(cryptogram.charAt(rt));
+                break;
+            }
             lt = rt;
             rt++;
         }
-        return cryptogramWithoutDuplication;
+        return listToString(cryptogramWithoutDuplication);
     }
 
-    public String getStringByStack (Stack<Character> cryptoStack) {
+    public String listToString(List<Character> characters) {
         StringBuilder answer = new StringBuilder();
-        while(!cryptoStack.isEmpty()) {
-            answer.insert(0, cryptoStack.pop());
+        for (char c: characters) {
+            answer.append(c);
         }
         return answer.toString();
     }
