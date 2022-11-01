@@ -12,9 +12,9 @@ class ApplicationTest {
     class Problem1Test {
         @Test
         void case1() {
-            List<Integer> pobi = List.of(97, 98);
-            List<Integer> crong = List.of(197, 198);
-            int result = 0;
+            List<Integer> pobi = List.of(1, 2);
+            List<Integer> crong = List.of(211, 212);
+            int result = 2;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
 
