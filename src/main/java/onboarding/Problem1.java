@@ -34,4 +34,12 @@ class Problem1 {
         return sum;
     }
 
+    private static int getProductOfDigits(int number) {
+        int product = 1;
+        while (number > 0) {
+            product *= number%10;
+            number /= 10;
+        }
+        return product;
+    }
 }
