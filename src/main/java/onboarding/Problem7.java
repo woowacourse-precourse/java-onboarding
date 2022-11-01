@@ -65,5 +65,23 @@ public class Problem7 {
         return result;
     }
 
+    public static Map<String, Integer> countScoreByNumberOfVisitors(Map<String,Integer> nameandscore,List<String> visitors, List<String> userfriends){
+        Map<String,Integer> result = nameandscore;
+
+        for(int i=0; i<visitors.size(); i++){
+            String visitorname = visitors.get(i);
+            if(!userfriends.contains(visitorname)) {
+                if (!result.containsKey(visitorname)) {
+                    result.put(visitorname, 1);
+                }
+                else if (result.containsKey(visitorname)) {
+                    int score = result.get(visitorname);
+                    result.put(visitorname, score+1 );
+                }
+            }
+        }
+        return result;
+    }
+
 }
 
