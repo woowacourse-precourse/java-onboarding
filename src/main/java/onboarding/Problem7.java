@@ -6,6 +6,7 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
 
+
         HashMap<String, Integer> refArr = new HashMap<>();
         List<String> friendArr = new ArrayList<>();
         String userfriend;
@@ -48,6 +49,17 @@ public class Problem7 {
                 }
             }
         }
+
+        // 4. 추천 점수대로 정렬하되 추천 점수가 같은 경우, 이름순으로 정렬.
+        final List<String> valueArr = new ArrayList<>();
+        refArr.entrySet().stream()
+                .sorted(Map.Entry.<String, Integer>comparingByValue()
+                        .reversed()
+                        .thenComparing(Map.Entry.comparingByKey()))
+                .forEach(k -> {
+                    valueArr.add(String.valueOf(k.getKey()));
+                });
+        answer = valueArr;
         return answer;
     }
 }
