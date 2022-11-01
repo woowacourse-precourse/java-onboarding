@@ -56,6 +56,9 @@ public class Problem7 {
         	System.out.println(key + " : " + value);
         });
         
+        answer = new ArrayList<String>(scoreMap.keySet());
+        
+        System.out.println("Key : " + answer.toString());
         return answer;
     }
 }
