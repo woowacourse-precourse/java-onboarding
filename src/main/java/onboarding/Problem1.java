@@ -17,16 +17,18 @@ class Problem1 {
         return returnResultValue(pobiValue,crongSum);
     }
 
-    //유효한 좌우 페이지인지 확인
+    //유효한 좌우 페이지인지,시작 면이나 마지막 면이 나오지 않는지 확인
     public static void validate(List<Integer> pages){
 
         int leftPage = pages.get(0);
         int rightPage = pages.get(1);
 
-        if(leftPage+1 == rightPage)
-            return;
+        if(leftPage+1 != rightPage)
+            throw new IllegalArgumentException();
 
-        throw new IllegalArgumentException();
+        if(leftPage <3 || leftPage >= 399 || rightPage <4 || rightPage >= 399)
+            throw new IllegalArgumentException();
+
     }
 
     public static int compareSumWithMultiplyValue(List<Integer> user){
