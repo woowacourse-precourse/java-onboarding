@@ -12,9 +12,9 @@ public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
         List<List<String>> crewsWithSimilarNickname = findCrewsWithSimilarNickname(forms);
-        List<String> emailOfDuplicatedCrew = getEmails(crewsWithSimilarNickname);
-        Collections.sort(emailOfDuplicatedCrew);
-        return emailOfDuplicatedCrew;
+        List<String> emailsOfDuplicatedCrews = getEmails(crewsWithSimilarNickname);
+        Collections.sort(emailsOfDuplicatedCrews);
+        return emailsOfDuplicatedCrews;
     }
 
     private static List<String> getEmails(List<List<String>> forms) {
@@ -37,14 +37,14 @@ public class Problem6 {
         for (int j = i + 1; j < forms.size(); j++) {
             List<String> formToCompare = forms.get(j);
             String nickNameToCompare = formToCompare.get(INDEX_OF_NICKNAME);
-            if (containsConsecutiveLetters(nickName, nickNameToCompare)) {
+            if (containsSimilarLetters(nickName, nickNameToCompare)) {
                 crewsWithSimilarNicknames.add(form);
                 crewsWithSimilarNicknames.add(formToCompare);
             }
         }
     }
 
-    private static boolean containsConsecutiveLetters(String nickName, String nickNameToCompare) {
+    private static boolean containsSimilarLetters(String nickName, String nickNameToCompare) {
         for (int i = 1; i < nickName.length(); i++) {
             String lettersToCompare = nickName.substring(0, i + 1);
             if (nickNameToCompare.contains(lettersToCompare)) {
