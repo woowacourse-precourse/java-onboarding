@@ -5,6 +5,11 @@ import java.util.*;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
+        getFriendsOfFriends(getFriendsOfUser(user,friends),friends);
+        getVisitors(visitors);
+        deleteNameFromMap(user,getFriendsOfUser(user,friends));
+        answer = sortName(scoreMap);
+
         return answer;
     }
     static HashMap<String, Integer> scoreMap = new HashMap<String, Integer>();
