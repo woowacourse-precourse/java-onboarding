@@ -11,6 +11,7 @@ public class Problem4 {
         for(int i=0;i<word.length();i++) {
             int asci = word.charAt(i);
             if (asci > 96) answer += Character.toString((char) 219 - asci);
+            else answer += Character.toString((char) 155 - asci);
         }
         return answer;
     }
