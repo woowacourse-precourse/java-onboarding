@@ -7,7 +7,6 @@ public class Problem7 {
 
         //친구 추천 점수를 받을 수 있는 인물의 이름만 모아둔 리스트를 생성
         List<String> nameList = extractNameList(user,friends,visitors);
-        System.out.println("nameList : " + nameList);
 
         //인물별 점수가 포함된 2차원 배열을 생성
         String[][] scoreInNameArr = new String[nameList.size()][2];
