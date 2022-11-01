@@ -35,4 +35,13 @@ public class Problem6 {
             }
         }
     }
+
+    private void findAllSubstringOfLength2InUserNames(){
+        Set<String> userNames = usersInfo.keySet();
+        for(String str : userNames){
+            for(int i=0;i<str.length()-1;i++){
+                substringsOfLength2.add(str.substring(i,i+2));
+            }
+        }
+    }
 }
