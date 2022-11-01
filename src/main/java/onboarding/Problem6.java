@@ -31,6 +31,16 @@ public class Problem6 {
             if(count > 1) searchTwoWord.add(two);
         }
 
+        //전체 닉네임 반복문
+        for(int i = 0 ; i < forms.size() ; i++) {
+            //두글자 반복문
+            for (int j = 0; j < searchTwoWord.size(); j++) {
+                //닉네임이 두글자를 포함하면 sortEmail에 추가
+                if (forms.get(i).get(1).contains(searchTwoWord.get(j))) {
+                    sortEmail.add(forms.get(i).get(0));
+                }
+            }
+        }
 
         List<String> answer = sortEmail;
         return answer;
