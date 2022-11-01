@@ -12,8 +12,11 @@ public class Problem7 {
             if(user == friends.get(i).get(0)) userFriends.add(friends.get(i).get(1));
             else if(user == friends.get(i).get(1)) userFriends.add(friends.get(i).get(0));
         }
-
         return answer;
     }
-
+    public static void addFriendScore(String name, int score) {
+        if(scoreList.containsKey(name))
+            score += scoreList.get(name);
+        scoreList.put(name, score);
+    }
 }
