@@ -4,7 +4,6 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        // List<String> answer = Collections.emptyList();
         HashMap<String,ArrayList<String>> friendMap = getFriendMap(friends);
         HashMap<String, Integer> scoreMap = new HashMap<>();
         scoreMap = getFreindScore(user, friendMap, scoreMap);
@@ -41,7 +40,7 @@ public class Problem7 {
             return scoreMap.get(s2) - scoreMap.get(s1);
         });
         List<String> answer = new ArrayList<>();
-        for(int i = 0; i < keySet.size() & i <= 5; i++){
+        for(int i = 0; i < keySet.size() & i < 5; i++){
             answer.add(keySet.get(i));
         }
         return answer;
