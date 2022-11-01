@@ -14,7 +14,7 @@ public class Nickname {
     }
 
     private void isValidName(String value) {
-        if (!value.matches("^[가-힣+]{1,19}$")) {
+        if (!value.matches("^[ㄱ-ㅎㅏ-ㅣ가-힣]{1,19}$")) {
             throw new IllegalArgumentException("Invalid Nickname Value!");
         }
     }
