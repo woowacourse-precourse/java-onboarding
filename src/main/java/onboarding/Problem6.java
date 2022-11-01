@@ -17,16 +17,17 @@ public class Problem6 {
         String[] name = new String[20];
 
         for (int i = 0; i < forms.size(); i++) {
-            name = nameCut(forms.get(i).get(i));
+            name = nameCut(forms.get(i));
+            System.out.println(name);
         }
 
         return email;
     }
     // 글자 분리하는 메서드
-    public static String[] nameCut(String name) {
+    public static String[] nameCut(List<String> name) {
         String[] cutname = new String[20];
-        for (int i = 0; i < name.length(); i++) {
-            cutname[i] = name.substring(i, (i + 2));
+        for (int i = 0; i < name.size() - 2; i++) {
+            cutname[i] = name.get(1).substring(i, (i + 2));
         }
         return cutname;
     }
