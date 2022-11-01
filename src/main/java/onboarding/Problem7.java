@@ -5,6 +5,18 @@ import java.util.*;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+        // user의 친구 리스트
+        List<String> friendList = findUserFriend(user, friends);
+        // user의 친구의 친구 리스트
+        List<String> linkedFriend = findLinkedFriends(user,friends, friendList);
+        // 방문자에서 친구 제거
+        List<String> visitor = removeDuplication(friendList, visitors);
+        // 친구 추천 리스트
+        HashMap<String, Integer> recommendList = new HashMap<>();
+        recommendList = calculateScore(recommendList, linkedFriend, 10);
+        recommendList = calculateScore(recommendList, visitor, 1);
+        List<Map.Entry<String, Integer>> finalRecommendList = sortList(recommendList);
+        answer = mapToList(finalRecommendList);
         return answer;
     }
     // user의 친구 찾기
