@@ -20,11 +20,8 @@ class Problem1 {
             return EXCEPTION;
         }
 
-        List<List<Integer>> pobiDigits = getEachDigitOfTwoPages(pobi);
-        Integer pobiScore = getScore(pobiDigits);
-
-        List<List<Integer>> crongDigits = getEachDigitOfTwoPages(crong);
-        Integer crongScore = getScore(crongDigits);
+        Integer pobiScore = getScore(pobi);
+        Integer crongScore = getScore(crong);
 
         return getWinner(pobiScore, crongScore);
     }
@@ -50,9 +47,10 @@ class Problem1 {
         return digits;
     }
 
-    private static Integer getScore(List<List<Integer>> digitsOfTwoPages) {
-        List<Integer> num = new ArrayList<>();
+    private static Integer getScore(List<Integer> pages) {
+        List<List<Integer>> digitsOfTwoPages = getEachDigitOfTwoPages(pages);
 
+        List<Integer> num = new ArrayList<>();
         for (List<Integer> digits : digitsOfTwoPages) {
             num.add(plusEachDigit(digits));
             num.add(multiplyEachDigit(digits));
