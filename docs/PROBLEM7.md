@@ -24,3 +24,11 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+---
+## 기능 목록
+- user와 이미 친구인 사람을 먼저 찾음
+- 함께 아는 친구의 수로 친구가 아닌 사람들의 점수를 산정
+- 타임라인 방문 횟수로 친구가 아닌 사람들의 점수를 산정
+- 추천 점수가 0점 이상인 사람을 점수가 가장 높은 순으로 정렬
+- 정렬된 추천 친구 중 상위 5명까지만 리턴. 그 보다 적다면 모두 리턴
