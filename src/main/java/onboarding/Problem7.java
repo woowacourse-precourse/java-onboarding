@@ -9,10 +9,22 @@ public class Problem7 {
     public static HashMap<String, Integer> scoreboard = new HashMap<>();
 
     private static List<String> getRecommendedFriends(String user) {
+        List<String> recommendedFriends = new ArrayList<>();
+
         calculateScore(user);
         List<String> friends = new ArrayList<>(scoreboard.keySet());
         Collections.sort(friends, (value1, value2) -> (scoreboard.get(value2).compareTo(scoreboard.get(value1))));
-        return friends;
+
+        List<String> userFriends = new ArrayList<>(friendList.get(user));
+        for (int i = 0; i < friends.size(); i++) {
+            if(userFriends.contains(friends.get(i))) {
+               continue;
+            }
+            else {
+                recommendedFriends.add(friends.get(i));
+            }
+        }
+        return recommendedFriends;
     }
 
     private static void calculateScore(String user) {
