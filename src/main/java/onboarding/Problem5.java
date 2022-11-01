@@ -26,4 +26,12 @@ public class Problem5 {
             money %= monetaryUnit[i];
         }
     }
+
+    public static boolean moneyOutOfRangeException(int money) {
+        if (money < 1 || money > 1_000_000) {
+            System.out.println("돈의 범위는 1원부터 1,000,000원까지 입니다.");
+            return true;
+        }
+        return false;
+    }
 }
