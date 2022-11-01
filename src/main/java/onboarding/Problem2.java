@@ -10,6 +10,7 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         // 3. 중복 없어진 리스트를 String으로 변경해서 출력한다.
         if(!constraints(cryptogram)){ return cryptogram;} // 제한사항에 걸린다면 원래값 리턴
+
         String text = "";
         List<String> cryptoList = cryptoSplit(cryptogram); // browoanoommnaon
         while (true) {
