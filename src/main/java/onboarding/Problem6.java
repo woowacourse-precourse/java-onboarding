@@ -20,7 +20,14 @@ public class Problem6 {
     private static List<Set<String>> partitionsList = new ArrayList<>();
     private static Map<String, Integer> nicknameAndCount = new HashMap<>();
 
+    public static Set<String> getPartitionsOfNickname(String nickname) {
+        Set<String> partitions = new HashSet<>();
+        for (int i = 0; i < nickname.length() - 1; i++) {
+            partitions.add(nickname.substring(i, i + 2));
+        }
 
+        return partitions;
+    }
 
 
 }
