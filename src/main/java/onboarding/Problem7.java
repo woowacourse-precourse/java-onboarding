@@ -12,18 +12,21 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
 
+        // 그래프 도출
         graph = makeFriendGraph(friends);
         System.out.println(graph);
 
+        // 친구, 함께아는 친구 리스트 생성
         List<List<String>> friendAndKnownFriendList = searchFriendAndKnownFriendListByBst(user, user, new LinkedList<String>(),
                 new LinkedList<String>(), new ArrayList<String>(),0);
 
         List<String> friendList = friendAndKnownFriendList.get(0);
         List<String> knownFriendList = friendAndKnownFriendList.get(1);
 
+        // 점수 도출
         Map<String, Integer> point = calculateRecommendPoint(knownFriendList, visitors, friendList);
 
-
+        // 제한조건에 맞게 데이터 처리 및 반환
         return sortRecommendPoint(point);
     }
 
@@ -41,9 +44,9 @@ public class Problem7 {
 
     /**
      * 함께아는 친구 정보와 방문자 수를 통해 점수 도출
-     * @param knownFriendList
-     * @param visitors
-     * @param friend
+     * @param knownFriendList 함께아는 친구
+     * @param visitors timeline 방문자
+     * @param friend 친구
      * @return
      */
     private static Map<String, Integer> calculateRecommendPoint(List<String> knownFriendList, List<String> visitors, List<String> friend){
@@ -74,8 +77,8 @@ public class Problem7 {
     /**
      * 친구 관계 그래프 만들기 <br/>
      * - 인접 행렬을 통해 구현
-     * @param friends
-     * @return
+     * @param friends Solution method input으로 주어진 friends
+     * @return 친구 관계 graph
      */
     private static Map<String, ArrayList<String>> makeFriendGraph(List<List<String>> friends) {
         Map<String, ArrayList<String>> graph = new HashMap();
@@ -109,12 +112,12 @@ public class Problem7 {
     /**
      * BST를 통해 함꼐아는 친구 및 친구 리스트를 만듬
      * @param user
-     * @param currentVertex
-     * @param currentLevelTargets
-     * @param nextLevelTargets
-     * @param visited
-     * @param currentLevel
-     * @return List.get(0)은 친구, List.get(1)은 함께 아는 친구
+     * @param currentVertex 현재 조사중인 점.
+     * @param currentLevelTargets 현재 level에서 조사해야 하는 점.
+     * @param nextLevelTargets 다음 level에서 조사해야 하는 점. level1이 끝났을 때 해당 Queue에는 함께아는 친구가 들어있음.
+     * @param visited 방문한 vertex들. level1까지 모두 돌았을 때 visited에는 친구와 자기 자신이 들어있음.
+     * @param currentLevel 현재 bst level.
+     * @return List.get(0)은 친구, List.get(1)은 함께 아는 친구.
      */
     private static List<List<String>> searchFriendAndKnownFriendListByBst(String user, String currentVertex, Queue<String> currentLevelTargets,
                                        Queue<String> nextLevelTargets, List<String> visited, int currentLevel){
