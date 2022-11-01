@@ -21,3 +21,10 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+---
+
+### 기능목록
+- 문자열을 비교하기 위해 저장할 Stack 생성
+- 첫번째 문자는 push
+- 문자를 하나씩 비교하며 push하거나 pop
