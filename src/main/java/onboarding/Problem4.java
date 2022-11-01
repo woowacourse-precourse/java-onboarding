@@ -6,6 +6,10 @@ public class Problem4 {
             ,'J','I','H','G','F','E','D','C','B','A'};
 
     public static String solution(String word) {
+        return createWordByDictionary(word);
+    }
+
+    private static String createWordByDictionary(String word) {
         StringBuilder answer=new StringBuilder();
 
         for(int i=0;i<word.length();i++){
