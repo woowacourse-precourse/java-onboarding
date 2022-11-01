@@ -1,6 +1,11 @@
 package onboarding;
 
-import java.util.*;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.List;
 
 public class Problem6 {
     private static HashMap<String, List<String>> twoLetters = new HashMap<>();
