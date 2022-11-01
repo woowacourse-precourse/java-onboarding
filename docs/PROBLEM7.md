@@ -24,3 +24,10 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능 목록
+1. 주어진 친구 관계 정보를 받아 친구 목록을 만드는 기능
+2. 하나의 친구 관계를 받아 map에 추가하는 기능
+3. 점수를 추가하는 기능
+4. 본인과 기존 친구를 추천 목록에서 제외하는 기능
+5. 추천 목록의 상위 5명을 리턴하는 기능
