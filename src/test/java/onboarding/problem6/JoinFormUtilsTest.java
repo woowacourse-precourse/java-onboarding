@@ -3,14 +3,20 @@ package onboarding.problem6;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.Arrays;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 public class JoinFormUtilsTest {
 
-	private final static JoinFormUtils JOIN_FORM_UTILS = new JoinFormUtils();
+	private static JoinFormUtils JOIN_FORM_UTILS;
+
+	@BeforeEach
+	public void init() {
+		JOIN_FORM_UTILS = new JoinFormUtils();
+	}
+
 	@Test
 	public void 닉네임_중복_처리_테스트() {
 	    //given
