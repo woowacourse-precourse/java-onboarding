@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Problem7 {
     public static Map<String, Set<String>> makeFriendRelation(List<List<String>> friends) {
@@ -37,7 +36,7 @@ public class Problem7 {
         Map<String, Set<String>> relation = makeFriendRelation(friends);
 
 
-        Set<String> userfriends = relation.getOrDefault(user, Collections.EMPTY_SET);
+        Set<String> userfriends = relation.getOrDefault(user, Collections.emptySet());
         if (!userfriends.isEmpty()) {
             for (String key : relation.keySet()) {
                 if (isException(relation, key, user)) {
