@@ -1,15 +1,16 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     static Set<String> userFriends = new HashSet<>();
     static Map<String, Integer> userToScore = new HashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
         getFriends(user, friends);
         getScore(user, friends, visitors);
+        List<String> answer = getTop5((HashMap<String, Integer>) userToScore);
         return answer;
     }
 
@@ -46,5 +47,13 @@ public class Problem7 {
 
     public static void increaseScore(String user, int score) {
         userToScore.put(user, userToScore.getOrDefault(user, 0) + score);
+    }
+
+    public static List<String> getTop5(HashMap<String, Integer> userToScore) {
+        return userToScore.entrySet().stream().filter(e -> !userFriends.contains(e.getKey()) && e.getValue() > 0)
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .map(Map.Entry::getKey)
+                .limit(5)
+                .collect(Collectors.toList());
     }
 }
