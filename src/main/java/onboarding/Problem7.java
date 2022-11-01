@@ -17,35 +17,35 @@ public class Problem7 {
         removeUsersFriends(score, friendships, user);
 
         /* 점수순, 이름순 정렬을 위한 Pair */
-        Pair[] temp = initScore(score);
-        Arrays.sort(temp);
+        Pair[] pairForNameScore = initScore(score);
+        Arrays.sort(pairForNameScore);
 
         List<String> answer = new ArrayList<>();
-        getAnswer(temp, score, answer);
+        getAnswer(pairForNameScore, score, answer);
         return answer;
     }
 
     private static Pair[] initScore(Map<String, Integer> score){
-        Pair[] temp = new Pair[score.size()];
+        Pair[] pairForNameScore = new Pair[score.size()];
         int i = 0;
         for (String key : score.keySet()){
-            temp[i] = new Pair(key, score.get(key));
+            pairForNameScore[i] = new Pair(key, score.get(key));
             i += 1;
         }
-        return temp;
+        return pairForNameScore;
 
     }
 
     private static void getAnswer(Pair[] temp, Map<String, Integer> score, List<String> answer){
         for (int i = 0; i < score.size(); i++) {
             answer.add(temp[i].getName());
-            if (isOverAnswer(answer.size())){
+            if (isOverAnswerLength(answer.size())){
                 break;
             }
         }
     }
 
-    private static Boolean isOverAnswer(int size){
+    private static Boolean isOverAnswerLength(int size){
         final int MAX_ANSWER = 5;
         return size >= MAX_ANSWER;
     }
@@ -69,30 +69,28 @@ public class Problem7 {
     }
 
     private static List<String> getFriendsFriends(String user, Map<String,List<String>> friendships){
-        List<String> temp = new ArrayList<>();
+        List<String> friendsFriends = new ArrayList<>();
         List<String> userFriend = friendships.get(user);
         if (userFriend == null){
-            return temp;
+            return friendsFriends;
         }
-        for (int i = 0; i < userFriend.size(); i++) {
-            List<String> currentFriendsFriends = friendships.get(userFriend.get(i));
-            temp.addAll(currentFriendsFriends);
+        for (String s : userFriend) {
+            List<String> currentFriendsFriends = friendships.get(s);
+            friendsFriends.addAll(currentFriendsFriends);
         }
-        return temp;
+        return friendsFriends;
     }
 
     private static Map<String, Integer> getRelationScore(List<String> friendsFriends){
-        Map<String, Integer> temp = new HashMap<>();
-        for (int i = 0; i < friendsFriends.size(); i++) {
-            String key = friendsFriends.get(i);
-            if (temp.containsKey(key)){
-                temp.put(key, temp.get(key) + 10);
-            }
-            else{
-                temp.put(key, 10);
+        Map<String, Integer> score = new HashMap<>();
+        for (String key : friendsFriends) {
+            if (score.containsKey(key)) {
+                score.put(key, score.get(key) + 10);
+            } else {
+                score.put(key, 10);
             }
         }
-        return temp;
+        return score;
     }
 
     private static void addVisitorScore(Map<String, Integer> score, List<String> visitors){
