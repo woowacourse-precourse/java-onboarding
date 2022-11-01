@@ -62,5 +62,5 @@
 - (6) 친구 추천 리스트생성 기능
 
   ```java
-  public static List<String> getRecommendFriendList(Map<String, Integer> totalScoreMap)
+  public static List<String> makeRecommendFriendList(Map<String, Integer> totalScoreMap)
   ```
