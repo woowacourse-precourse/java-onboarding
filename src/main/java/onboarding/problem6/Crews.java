@@ -1,6 +1,7 @@
 package onboarding.problem6;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Crews {
 
@@ -18,6 +19,18 @@ public class Crews {
 
         crews.add(crew);
         return true;
+    }
+
+    public List<String> getEmailsByDuplicateNickname() {
+        return getDuplicateNicknameMap().values().stream()
+                .filter(set -> set.size() > 1)
+                .flatMap(Collection::stream)
+                .map(Crew::getEmail)
+                .map(Email::getEmail)
+                .distinct()
+                .sorted()
+                .collect(Collectors.toList());
+
     }
 
     private Map<String, Set<Crew>> getDuplicateNicknameMap() {
