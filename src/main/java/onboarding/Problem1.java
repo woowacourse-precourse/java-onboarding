@@ -1,15 +1,12 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
-        int pobiLeft = pobi.get(0);
-        int pobiRight = pobi.get(1);
-        int crongLeft = crong.get(0);
-        int crongRight = crong.get(1);
         return answer;
     }
 
@@ -41,7 +38,14 @@ class Problem1 {
         return result;
     }
 
-    // 4-두 수를 비교하는 기능
-    public static boolean compare(int a, int b){
-        return a > b;
+    // 4-주어진 수에서 가장 큰 수 구하는 기능
+    public static int compare(int[] numArr) {
+        int max = numArr[0];
+        for (int i = 1; i < numArr.length; i++) {
+            if (max < numArr[i]) {
+                max = numArr[i];
+            }
+        }
+        return max;
+    }
 }
