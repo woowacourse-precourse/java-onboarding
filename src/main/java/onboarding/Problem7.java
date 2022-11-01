@@ -4,6 +4,7 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        // 친구 집합
         TreeSet<String> friendSet = findFriends(user, friends);
         TreeSet<String> peopleSet = findPeople(user, friends, visitors, friendSet);
         LinkedHashMap commonFriendCount = new LinkedHashMap();
@@ -29,27 +30,19 @@ public class Problem7 {
         // 추천 점수가 0점인 경우 추천하지 않으며
         scoreResult = removeZeros(scoreResult);
 
-        scoreResult = sortResult(scoreResult);
+        // 점수가 가장 높은 순으로 정렬하며,
+        // 추천 점수가 같은 경우는 이름순으로 정렬한다.
+        List<Map.Entry<String, Integer>> finalResult = sortResult(scoreResult);
 
-        System.out.println("scoreResult is");
-        System.out.println(scoreResult);
+        // 최대 5명
+        List<String> answer = maxFive(finalResult);
 
-        List<String> answer = new ArrayList<>();
-
-        if (scoreResult.keySet().size() > 5) {
-            ArrayList<String> resultList = new ArrayList<>(scoreResult.keySet());
-            for (int i = 0; i <= 4; i++) {
-                answer.add(resultList.get(i));
-            }
-        } else if (scoreResult.keySet().size() <= 5) {
-            for (String key : scoreResult.keySet()) {
-                answer.add(key);
-            }
-        }
+        System.out.println("answer is");
+        System.out.println(answer);
 
         return answer;
     }
-
+    
     private static TreeSet<String> findFriends(String user, List<List<String>> friends) {
         TreeSet<String> Set = new TreeSet<String>();
         for (List<String> e : friends) {
@@ -134,11 +127,31 @@ public class Problem7 {
         Collections.sort(finalResult, new Comparator<Map.Entry<String, Integer>>() {
             @Override
             public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
-                int comparison = (o1.getValue() - o2.getValue());
+                int comparison = (o1.getValue() - o2.getValue()) * -1;
                 return comparison == 0 ? o1.getKey().compareTo(o2.getKey()) : comparison;
             }
         });
 
         return finalResult;
+    }
+
+    /**
+     * 최대 5명
+     * @param finalResult
+     * @return answer
+     */
+
+    private static List<String> maxFive(List<Map.Entry<String, Integer>> finalResult) {
+        List<String> answer = new ArrayList<>();
+        if (finalResult.size() >= 5) {
+            for (int i = 0; i <= 4; i++) {
+                answer.add(finalResult.get(i).getKey());
+            }
+        } else if (finalResult.size() < 5) {
+            for (int i = 0; i <= finalResult.size() - 1; i++) {
+                answer.add(finalResult.get(i).getKey());
+            }
+        }
+        return answer;
     }
 }
