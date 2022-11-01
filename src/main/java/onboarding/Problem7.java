@@ -40,4 +40,17 @@ public class Problem7 {
         }
         return map;
     }
+
+    private static HashMap<String, Integer> getVisitedCount(List<String> visitors, List<String> userFriendsList, HashMap<String, Integer> map) {
+        for (String visitor : visitors) {
+            if (!userFriendsList.contains(visitor)) {
+                if (map.containsKey(visitor)) {
+                    map.put(visitor, map.get(visitor) + 1);
+                } else {
+                    map.put(visitor, 1);
+                }
+            }
+        }
+        return map;
+    }
 }
