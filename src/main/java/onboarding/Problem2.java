@@ -1,107 +1,77 @@
 package onboarding;
 
-import java.util.Stack;
+import java.util.LinkedList;
+import java.util.Queue;
 
 public class Problem2 {
-    private static Stack<Character> words = new Stack<>();
-    private static Boolean wasTopDuplicate;
+    private static Queue<Character> queue = new LinkedList<>();
+
     public static String solution(String cryptogram) {
-        words.clear();
-        wasTopDuplicate = false;
-        deleteDuplicateWordsInRow(cryptogram);
-        String answer = toString(words);
+        queue.clear();
+        initializeQueue(cryptogram);
+        int count;
+        while (true) {
+            count = deleteInQueue();
+            if (count == 0) {
+                break;
+            }
+        }
+
+        String answer = queueToString();
         return answer;
     }
 
 
-    public static void deleteDuplicateWordsInRow(String cryptogram) {
-        words.push(cryptogram.charAt(0)); //첫 문자는 바로 push
+    private static void initializeQueue(String cryptogram) {
+        for (int i = 0; i < cryptogram.length(); i++) {
+            char nowChar = cryptogram.charAt(i);
+            queue.offer(nowChar);
+        }
+    }
 
-        for (int i = 1; i < cryptogram.length(); i++) {
-            Character nowChar = getNewChar(i, cryptogram);
-            char top = words.peek();
+    private static int deleteInQueue() {
+        int count = 0;
+        int size = queue.size();
 
-            Boolean isNewCharDuplicate = checkNewCharDuplicate(nowChar, top);
-            if (isNewCharDuplicate) {
+        if (size <= 1) {
+            return 0;
+        }
+
+        char nowChar;
+        char nextChar;
+        char recentDuplicateChar = ' ';
+
+        for (int i = 0; i < size; i++) {
+            nowChar = queue.poll();
+
+            if (recentDuplicateChar == nowChar) {
+                count++;
                 continue;
             }
 
-            Character nextChar = getNewChar(i + 1, cryptogram);
-            updateStack(nowChar, nextChar);
+            if (i == size - 1) {
+                queue.offer(nowChar);
+                continue;
+            }
+
+            nextChar = queue.peek();
+            if (nowChar == nextChar) {
+                recentDuplicateChar = nowChar;
+                count++;
+                continue;
+            }
+
+            recentDuplicateChar = ' ';
+            queue.offer(nowChar);
         }
 
-        checkLastStackTop();
-        return;
+        return count;
     }
 
-    private static Boolean checkNewCharDuplicate(char nowChar, char top) {
-        if (isNowCharTopSame(nowChar, top)) {
-            wasTopDuplicate = true;
-            return true;
-        }
-        return false;
-    }
-
-    private static Character getNewChar(int idx, String cryptogram) {
-        if (idx < cryptogram.length()) {
-            return cryptogram.charAt(idx);
-        }
-        return null;
-    }
-
-    private static Boolean isNowCharTopSame(char nowChar, char top) {
-        if (nowChar == top) {
-            return true;
-        }
-        return false;
-    }
-
-    private static void updateStack(char nowChar, Character nextChar) {
-        if (wasTopDuplicate) {
-            changeStackTop(nowChar, nextChar);
-        }
-        putNewCharToStack(nowChar);
-    }
-
-    private static void checkLastStackTop() {
-        if (wasTopDuplicate) {
-            words.pop();
-        }
-    }
-
-    private static void changeStackTop(char nowChar, Character nextChar) {
-        words.pop();
-
-        if (words.isEmpty()) {
-            wasTopDuplicate = false;
-            return;
-        }
-
-        if(nextChar != null && nowChar == nextChar) {
-            wasTopDuplicate = false;
-            return;
-        }
-
-        //이 전에 새 char 와 다음 char 가 연속되는지 체크 -> 연속되면 newTop 이랑 비교 안하고 그냥 push 함
-        char newTop = words.peek();
-        if (isNowCharTopSame(nowChar, newTop)) {
-            wasTopDuplicate = true;
-            return;
-        }
-        wasTopDuplicate = false;
-    }
-
-    private static void putNewCharToStack(char nowChar) {
-        if (wasTopDuplicate) {
-            return;
-        }
-        words.push(nowChar);
-    }
-
-    private static String toString(Stack<Character> words) {
+    private static String queueToString() {
         StringBuilder sb = new StringBuilder();
-        while (!words.isEmpty()) {
-            sb.insert(0, words.pop());
+        while (!queue.isEmpty()) {
+            sb.append(queue.poll());
         }
         return sb.toString();
     }
