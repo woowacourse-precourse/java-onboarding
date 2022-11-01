@@ -1,12 +1,8 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.regex.Pattern;
+import net.bytebuddy.dynamic.scaffold.MethodGraph.Linked;
 
 public class Problem6 {
     private static final int MIN_CREW_NUMBER = 1;
@@ -18,8 +14,7 @@ public class Problem6 {
     private static final String DOMAIN_FORMAT = "email.com";
     public static List<String> solution(List<List<String>> forms) {
         validityChecker(forms);
-        List<String> answer = List.of("answer");
-        return answer;
+        return getAnswer(forms);
     }
     private static void validityChecker(List<List<String>> forms) {
         isValidateCrew(forms);
@@ -39,7 +34,7 @@ public class Problem6 {
             if (nickName.length() < MIN_NICK_NAME_LENGTH || MAX_NICK_NAME_LENGTH < nickName.length()) {
                 throw new IllegalArgumentException("올바른 길이가 아닙니다");
             }
-            if (!Pattern.matches("[ㄱ-힣]*$", nickName)) {
+            if (!Pattern.matches("[가-힣]*$", nickName)) {
 
                 throw new IllegalArgumentException("닉네임이 한글로 구성되지 않았습니다.");
             }
@@ -65,6 +60,8 @@ public class Problem6 {
         }
     }
     private static void isValidateDomain(List<List<String>> forms) {
+//    @가 하나만 있는가
+//    @뒤로 email.com이 있는가
         String[] splitEmail;
         for (List<String> form : forms) {
             String email = form.get(0);
@@ -74,6 +71,7 @@ public class Problem6 {
             }
         }
     }
+
     private static List<String> getAnswer(List<List<String>> forms) {
         Map<String, String> map = new HashMap<>();
         Set<String> set = new HashSet<>();
@@ -84,8 +82,7 @@ public class Problem6 {
                 set.add(map.get(nickName));
             }
         }
-        return new ArrayList<>();
-//        return makeSort(set);
+        return makeSort(set);
     }
     private static void makeMap(Map<String, String> map, List<List<String>> forms) {
         for (List<String> form : forms) {
@@ -106,5 +103,10 @@ public class Problem6 {
                 return true;
         }
         return false;
+    }
+    private static List<String> makeSort(Set<String> set) {
+        List<String> answer = new ArrayList(set);
+        Collections.sort(answer);
+        return answer;
     }
 }
