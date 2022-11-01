@@ -8,6 +8,20 @@ class Problem1 {
     static final int POBI_WIN = 1;
     static final int CRONG_WIN = 2;
     static final int DRAW = 0;
+    static final int Exception = -1;
+    static final int BOOK_START_PAGE = 1;
+    static final int BOOK_END_PAGE = 400;
+
+    private static boolean isOutofRange(int left, int right){
+        return left < BOOK_START_PAGE || right <=BOOK_START_PAGE || left>=BOOK_END_PAGE|| right >BOOK_END_PAGE ;
+    }
+    private static boolean isValidPage(List<Integer> pages){
+        int left = pages.get(LEFT);
+        int right = pages.get(RIGHT);
+        boolean isValid = true;
+        if(isOutofRange(left,right)) isValid=false;
+        return isValid;
+    }
 
     private static int compare_left_right(List<Integer> pages){
         return Math.max(getMaxScores(pages.get(LEFT)),getMaxScores(pages.get(RIGHT)));
@@ -23,6 +37,7 @@ class Problem1 {
         return Math.max(tmp_add,tmp_mul);
     }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+        if(!isValidPage(pobi) || !isValidPage(crong)) return Exception;
         int p_score = compare_left_right(pobi);
         int c_score = compare_left_right(crong);
         if(p_score>c_score) return POBI_WIN;
