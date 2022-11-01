@@ -67,8 +67,8 @@
 
 - `Alphabet` enum: 알파벳 A, Z, a, z를 가진다.
 - `WordConverter` 클래스 : word를 사전에 맞게 변환한다.   
- > - `convertWord(String word)`: word를 convertWithDictionary 메서드를 통해 변환한다.
- > - `convertWithDictionary(char letter)`: char 변수 letter가 매개변수로 주어질 때, 청개구리 사전을 참고해 반대로 반환한 char 값을 반환한다.
+  > - `convertWord(String word)`: word를 convertWithDictionary 메서드를 통해 변환한다.
+  > - `convertWithDictionary(char letter)`: char 변수 letter가 매개변수로 주어질 때, 청개구리 사전을 참고해 반대로 반환한 char 값을 반환한다.
  - `solution(String word)`: WordConverter 클래스를 이용해 word를 변환한다.
 </div>
 </details>
