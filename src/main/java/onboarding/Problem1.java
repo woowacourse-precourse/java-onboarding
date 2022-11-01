@@ -5,12 +5,17 @@ import java.util.stream.Stream;
 
 public class Problem1 {
 
+    private static final int EXCEPTION = -1;
+    private static final int POBI_WIN = 1;
+    private static final int CRONG_WIN = 2;
+    private static final int TIE = 0;
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
-        int answer;
+        int answer = Integer.MAX_VALUE;
 
         if (isInValidPages(pobi)|| isInValidPages(crong)) {
-            return -1;
+            return EXCEPTION;
         }
 
         int pobiScore = getMaxScore(pobi);
@@ -85,11 +90,11 @@ public class Problem1 {
 
     private static int getWinner(int pobiScore, int crongScore) {
         if (pobiScore > crongScore) {
-            return 1;
+            return POBI_WIN;
         } else if (pobiScore < crongScore) {
-            return 2;
+            return CRONG_WIN;
         }
-        return 0;
+        return TIE;
     }
 
 }
