@@ -8,15 +8,14 @@ public class Problem4 {
     public static String solution(String word) {
         StringBuilder answer = new StringBuilder();
 
-        List<String> arr = Stream.of(word.split("")).collect(Collectors.toList());
+        List<String> stringBySplit = Stream.of(word.split("")).collect(Collectors.toList());
 
-        for (String a : arr) {
-            if (a.equals(" ")) {
-                answer.append(a);
+        for (String s : stringBySplit) {
+            if (" ".equals(s)) {
+                answer.append(s);
                 continue;
             }
-            char c = a.charAt(0);
-            answer.append(getOpposite(c));
+            answer.append(getOpposite(s.charAt(0)));
         }
 
         return answer.toString();
@@ -26,6 +25,7 @@ public class Problem4 {
         if (isUpper(c)) {
             return (char)(155 - c);
         }
+
         return (char)(219 - c);
     }
 
