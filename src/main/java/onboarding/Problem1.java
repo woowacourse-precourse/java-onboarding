@@ -14,7 +14,7 @@ class Problem1 {
     static int addAndMulti(int n1, int n2) { // 점수 구하기
         int maxNum = 0;
         int resultAdd1 = 0, resultAdd2 =0;
-        int resultMulti1 = 0 , resultMulti2 = 0;
+        int resultMulti1 = 1 , resultMulti2 = 1;
 
         while(n1 > 0 && n2 > 0){
 
