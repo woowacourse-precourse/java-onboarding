@@ -22,12 +22,36 @@ public class Problem7 {
 			listB.add(idA);
 		}
 	}
+	private static int isMutualFriend(String user, List<String> friendList) {
+		if (friendList.contains(user))
+			return (1);
+		return (0);
+	}
+	private static int countMutualFriend(String user, List<String> friendList) {
+		int ret = 0;
+
+		for (String id : friendList) {
+			ret += isMutualFriend(user, friendTable.get(id));
+		}
+		return (ret);
+	}
+	private static void scoreMutualFriends(String user) {
+		Set<Map.Entry<String, List<String>>> entrySet = friendTable.entrySet();
+		String id;
+		List<String> friendsOfId;
+
+		for (Map.Entry<String, List<String>> entry : entrySet) {
+			id = entry.getKey();
+			friendsOfId = entry.getValue();
+			scoreTable.put(id, 10 * countMutualFriend(user, friendsOfId));
+		}
+	}
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 		scoreTable = new Hashtable<>();
 		friendTable = new Hashtable<>();
 
 		setFriendTable(friends);
-//		scoreMutualFriends(user);
+		scoreMutualFriends(user);
 //		scoreVisitors(visitors);
 //		removeUserAndFriends(user);
 //		removeZeros();
