@@ -7,6 +7,33 @@ import java.lang.String;
 
 public class Problem6 {
 
+    static int [] arr=new int[10001];
+    public static void go(String [] Str,String str,int check,int now) {
+
+        for (int i = 0; i < str.length() - 1; i++) {
+            String ss = "";
+            ss += (char)(str.charAt(i));
+            ss+=(char)str.charAt(i + 1);
+
+            for (int j = now+1; j < check; j++) { // 체크까지 간
+                for (int k = 0; k < Str[j].length() - 1; k++) {
+
+                    String ss2 = "";
+                    ss2+=(char)Str[j].charAt(k);
+                    ss2+=(char)Str[j].charAt(k+1);
+
+
+                    if (ss.compareTo(ss2)==0) {
+                        arr[i] = 1;
+                        arr[j]=1;
+                        break;
+                    }
+
+                }
+            }
+        }
+    }
+
         public static List<String> solution(List<List<String>> forms) {
 
             String [] str= new String[10001];
