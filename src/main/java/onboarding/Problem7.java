@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -13,7 +12,7 @@ public class Problem7 {
 
     public static final int FRIEND_SCORE = 10;
     public static final int VISITOR_SCORE = 1;
-    public static final int MAX_SIZE = 5;
+    public static final int MAX_RECOMMEND_LIST_SIZE = 5;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Map<String, Set<String>> friendMap = makeFriendMap(friends);
@@ -33,24 +32,10 @@ public class Problem7 {
         return friendMap;
     }
 
-    private static List<String> getRecommendList(Map<String, Integer> recommendScore) {
-        ArrayList<Map.Entry<String, Integer>> entries = new ArrayList<>(recommendScore.entrySet());
-        entries.sort((o1, o2) -> {
-            int res = o2.getValue().compareTo(o1.getValue());
-            if (res != 0) {
-                return res;
-            } else {
-                return o1.getKey().compareTo(o2.getKey());
-            }
-        });
-        for (Map.Entry<String, Integer> stringIntegerEntry : recommendScore.entrySet()) {
-            if (stringIntegerEntry.getValue() == 0) continue;
-            System.out.println("name: " + stringIntegerEntry.getKey() + " score: " + stringIntegerEntry.getValue());
-        }
-        return entries.stream()
-                .map(Map.Entry::getKey)
-                .limit(MAX_SIZE)
-                .collect(Collectors.toList());
+    private static void makeFriendConnection(Map<String, Set<String>> friendMap, String user, String friend) {
+        Set<String> userFriendSet = friendMap.getOrDefault(user, new HashSet<>());
+        userFriendSet.add(friend);
+        friendMap.put(user, userFriendSet);
     }
 
     private static Map<String, Integer> getRecommendScore(String user, List<String> visitors, Map<String, Set<String>> friendMap) {
@@ -76,7 +61,7 @@ public class Problem7 {
 
     private static void scoringIfRecommendUser(String user, Set<String> userFriendSet, Map<String, Integer> recommendScore, String friendOfFriend) {
         if (isRecommendUser(user, userFriendSet, friendOfFriend)) {
-            recommendScore.put(friendOfFriend, recommendScore.getOrDefault(friendOfFriend, 0) + FRIEND_SCORE);
+            scoringRecommendUser(recommendScore, friendOfFriend, FRIEND_SCORE);
         }
     }
 
@@ -87,14 +72,30 @@ public class Problem7 {
     private static void scoringVisitors(List<String> visitors, Set<String> userFriendSet, Map<String, Integer> recommendScore) {
         for (String visitor : visitors) {
             if (!userFriendSet.contains(visitor)) {
-                recommendScore.put(visitor, recommendScore.getOrDefault(visitor, 0) + VISITOR_SCORE);
+                scoringRecommendUser(recommendScore, visitor, VISITOR_SCORE);
             }
         }
     }
 
-    private static void makeFriendConnection(Map<String, Set<String>> friendMap, String user, String friend) {
-        Set<String> userFriendSet = friendMap.getOrDefault(user, new HashSet<>());
-        userFriendSet.add(friend);
-        friendMap.put(user, userFriendSet);
+    private static void scoringRecommendUser(Map<String, Integer> recommendScore, String visitor, int score) {
+        recommendScore.put(visitor, recommendScore.getOrDefault(visitor, 0) + score);
+    }
+
+    private static List<String> getRecommendList(Map<String, Integer> recommendScore) {
+        ArrayList<Map.Entry<String, Integer>> entries = new ArrayList<>(recommendScore.entrySet());
+        entries.sort(Problem7::compareScoreAndDictOrder);
+        return entries.stream()
+                .map(Map.Entry::getKey)
+                .limit(MAX_RECOMMEND_LIST_SIZE)
+                .collect(Collectors.toList());
+    }
+
+    private static int compareScoreAndDictOrder(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+        int res = o2.getValue().compareTo(o1.getValue());
+        if (res != 0) {
+            return res;
+        } else {
+            return o1.getKey().compareTo(o2.getKey());
+        }
     }
 }
