@@ -8,10 +8,12 @@ public class Problem6 {
         Map<String, Integer> tokenAndCountMap = new HashMap<>(); // K : token, V : count
         List<Set<String>> allTokens = new ArrayList<>();
 
+        setTokenAndCountMap(forms, tokenAndCountMap, allTokens);
+
         for (int i = 0; i < allTokens.size(); i++) {
             Set<String> tokens = allTokens.get(i);
             for (String token : tokens) {
-                if (tokenAndCountMap.get(token) > 1) {
+                if (isDuplicatedToken(tokenAndCountMap, token)) {
                     List<String> eachCrew = forms.get(i);
                     String email = getEmailFromCrew(eachCrew);
                     answer.add(email);
