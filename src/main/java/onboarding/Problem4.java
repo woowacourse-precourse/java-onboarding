@@ -45,8 +45,8 @@ public class Problem4 {
 
     public static void backwardMap(Map<Character, Character> alphaMap) {
         for (int i = 0; i < 26; i++) {
-            alphaMap.put((char) ('A' + i), (char) ('Z' - 1));
-            alphaMap.put((char) ('a' + i), (char) ('z' - 1));
+            alphaMap.put((char) ('A' + i), (char) ('Z' - i));
+            alphaMap.put((char) ('a' + i), (char) ('z' - i));
         }
     }
 }
