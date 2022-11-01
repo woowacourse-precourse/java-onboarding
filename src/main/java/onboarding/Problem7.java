@@ -29,6 +29,13 @@ public class Problem7 {
             relations.add(relation);
         }
     }
+    private static List<List<String>> getRelations(String user, List<List<String>> friends) {
+        List<List<String>> relations = new LinkedList<>();
+        for (List<String> relation : friends) {
+            addRelation(relations, relation, user);
+        }
+        return relations;
+    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
