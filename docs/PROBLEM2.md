@@ -21,3 +21,11 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+### 기능 구현 목록
+1. 탐색할 index의 정보를 담고 있는 leftIndex, rightIndex 변수 선언
+2. leftIndex, rightIndex에 위치한 문자가 서로 같은지 확인
+   1. 같다면
+      1. 해당 부분 삭제
+   2. 다르다면
+      3. leftIndex, rightIndex 한 칸씩 증가
