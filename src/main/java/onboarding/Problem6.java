@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Problem6 {
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
 
@@ -19,10 +20,13 @@ public class Problem6 {
 
     private static void checkNicknames(List<String> nicknames) {
         for (int i = 0; i < nicknames.size()-1; i++) {
-            String nowChecking = nicknames.get(i);
+            String checkingNickname = nicknames.get(i);
+            List<String> checkingNicknameSlices = devideIntoTwo(checkingNickname);
             List<String> others = new ArrayList<>(nicknames.subList(i+1,nicknames.size()));
             for (String other : others) {
-                boolean doubleTF = isDouble(nowChecking, other);
+                for (String nowChecking : checkingNicknameSlices) {
+                    boolean doubleTF = isDouble(nowChecking, other);
+                }
             }
         }
     }
@@ -30,5 +34,16 @@ public class Problem6 {
     private static boolean isDouble(String nowChecking, String otherNickname) {
         boolean doubleTF = false;
         return doubleTF;
+    }
+
+    private static List<String> devideIntoTwo(String nickname) {
+        List<String> twoLetters = new ArrayList<>();
+            for (int i = 0; i < nickname.length() - 1; i++) {
+                String slicedStr = nickname.substring(i, i + 1);
+                if (!twoLetters.contains(slicedStr)) {
+                    twoLetters.add(slicedStr);
+                }
+            }
+        return twoLetters;
     }
 }
