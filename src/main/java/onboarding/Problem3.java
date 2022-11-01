@@ -2,7 +2,6 @@ package onboarding;
 
 public class Problem3 {
     static int count=0;
-
     static int check(int a){
         int count=0;
         while(a>0){
