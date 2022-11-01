@@ -44,6 +44,12 @@ public class Problem7 {
             }
         }
 
+        // 타임라인에 방문한 경우, 1점을 부여하는 기능
+        for (String visitor : visitors) {
+            addCrew(team, check, visitor);
+            team.get(visitor).plusScoreOne();
+        }
+
         return answer;
     }
 
