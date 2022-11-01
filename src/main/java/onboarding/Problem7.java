@@ -56,6 +56,18 @@ public class Problem7 {
         HashMap<String, Integer> recommendedFriends = new HashMap<>();
         HashSet<String> friends = friendList.get(user);
 
+        for (String friend: friends) {
+            for (String recommendedFriend: friendList.get(friend)) {
+                if (!isUserFriends(friendList, user, recommendedFriend) && !Objects.equals(recommendedFriend, user)) {
+                    recommendedFriends.put(
+                            recommendedFriend,
+                            recommendedFriends.getOrDefault(recommendedFriend, friendScore) + friendScore
+                    );
+                }
+            }
+        }
+
+        return recommendedFriends;
     }
 
     public static List<String> getRecommendedUsers(HashMap<String, Integer> recommendedFriends, int number) {
