@@ -1,8 +1,12 @@
 package onboarding;
 
 public class Problem4 {
+
+    static StringBuilder sb = new StringBuilder();
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        if (wordLengthOutOfRangeException(word)) {
+            return word;
+        }
+        return mergeConvertedCharacters(word);
     }
 }
