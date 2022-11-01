@@ -1,10 +1,11 @@
 package onboarding;
 
 import java.util.*;
+import java.util.Map.Entry;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
         HashMap<String,Integer> graph =new HashMap<>();
 
         //user의 친구 리스트
@@ -24,7 +25,14 @@ public class Problem7 {
         // 방문자 점수 매기기
         graph = addVisitPoint(graph, visitors,friendsList);
 
+        // 점수를 기준으로 내림차순 정렬하기
 
+        List<Map.Entry<String,Integer>> entryList = new LinkedList<>(graph.entrySet());
+        entryList.sort(Map.Entry.comparingByValue());
+
+        for(Map.Entry<String, Integer> entry : entryList){
+            answer.add(entry.getKey());
+        }
 
 
 
@@ -100,14 +108,16 @@ public class Problem7 {
     public static void main(String[] args) {
         String user = "mrko";
         List<List<String>> friends = List.of(
-                List.of("donut", "andole"),
-                List.of("donut", "jun"),
-                List.of("donut", "mrko"),
-                List.of("shakevan", "andole"),
+                List.of("rovan", "mrko"),
                 List.of("shakevan", "jun"),
+                List.of("shakevan", "andole"),
+
                 List.of("shakevan", "mrko"),
                 List.of("rovan", "andole"),
-                List.of("rovan", "mrko")
+                List.of("donut", "andole"),
+                List.of("donut", "jun"),
+                List.of("donut", "mrko")
+
         );
         List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
         List<String> result = List.of("andole", "jun", "bedi");
