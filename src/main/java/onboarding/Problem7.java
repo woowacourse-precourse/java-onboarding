@@ -35,13 +35,21 @@ class Problem7 {
         }
 
         while (withfriendList.remove(String.valueOf(user))){} ; // user제거
-//        System . out . println ( withfriendList );
+
         Set<String> set = new HashSet<String>(withfriendList);
         List<String> tmpwithfriendList = new ArrayList<String>(set);
 
         for (int i = 0; i < tmpwithfriendList.size(); i++) {
             map1.put(tmpwithfriendList.get(i), Collections.frequency(withfriendList, tmpwithfriendList.get(i)) * 10);
         }
+
+        visitcount.addAll(visitors);
+        for (int i = userfriendList.size() - 1; i >= 0; i--) {
+            visitcount.remove(String.valueOf(userfriendList.get(i)));
+        }
+
+        Set<String> set2 = new HashSet<String>(visitcount);
+        List<String> tmpvisitlist = new ArrayList<String>(set2); // 함께하는 친구 중복제거
 
         return answer;
     }
