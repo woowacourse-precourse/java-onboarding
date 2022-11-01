@@ -43,7 +43,10 @@ public class Problem6 {
                 nickNameCheck(forms.get(i), forms.get(j));
             }
         }
-
+        
+        //4) 오름차순 정렬
+        Collections.sort(answer);
+        return answer;
     }
     
 }
