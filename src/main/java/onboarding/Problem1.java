@@ -14,6 +14,12 @@ class Problem1 {
     private static final int MAX = 400;
     private static final int LEFT = 0;
     private static final int RIGHT = 1;
+
+    public static int solution(List<Integer> pobi, List<Integer> crong) {
+        if (!canPage(pobi) || !canPage(crong)) return EXCEPTION;
+        return getFinalResult(getUserScore(pobi), getUserScore(crong));
+
+    }
     public static int getFinalResult(int pobiScore, int crongScore) {
 
         return (pobiScore > crongScore) ? POBI_WIN : (pobiScore == crongScore) ? DRAW : CRONG_WIN;
