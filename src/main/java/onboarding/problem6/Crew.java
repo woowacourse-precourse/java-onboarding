@@ -1,11 +1,11 @@
 package onboarding.problem6;
 
-public class CrewMember {
+public class Crew {
 
     private final String email;
     private final String nickname;
 
-    public CrewMember(String email, String nickname) {
+    public Crew(String email, String nickname) {
         this.email = email;
         this.nickname = nickname;
     }
