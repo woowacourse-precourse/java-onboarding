@@ -1,5 +1,7 @@
 package onboarding;
 
+import java.util.Stack;
+
 public class Problem2 {
     /*
     - 문제 요구사항 정리 및 해결방법
@@ -11,7 +13,10 @@ public class Problem2 {
         - 선언한 Stack을 제출 형식에 맞게 타입 변경
      */
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String answer = "";
+        Stack<String> visited = new Stack<>();  // 중복 문자가 체크된 stack 선언
+        visited.push(cryptogram.substring(0, 1));    // 스택 초기값 세팅
+
         return answer;
     }
 }
