@@ -30,6 +30,8 @@ public class Problem7 {
         friend_of_friend(user);
         visitorPoint(user, visitors);
 
+        List<Map.Entry<String,Integer>> entryList = new LinkedList<>(scoreCard.entrySet());
+
 
         List<String> answer = List.of();
         return answer;
