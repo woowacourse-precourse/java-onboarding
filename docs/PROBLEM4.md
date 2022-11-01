@@ -19,3 +19,8 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+## 기능 목록
+
+1. 청개구리 변환 메소드 추가
+2. solution 함수 완성
