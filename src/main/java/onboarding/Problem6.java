@@ -42,4 +42,11 @@ public class Problem6 {
 
         return tokens;
     }
+
+    private static void addTokenAndCountToMap(Map<String, Integer> tokenAndCountMap,
+                                              Set<String> tokens) {
+        for (String token : tokens) {
+            tokenAndCountMap.put(token, tokenAndCountMap.getOrDefault(token, 0) + 1);
+        }
+    }
 }
