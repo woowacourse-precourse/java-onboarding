@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
@@ -11,6 +12,7 @@ public class Problem7 {
     private static final int FRIENDS_MIN_LENGTH = 1;
     private static final int FRIENDS_MAX_LENGTH = 10000;
     private static final String LOWERCASE_ALPHABET = "^[a-z]*$";
+    private static final List<String> FRIENDS_LIST = new ArrayList<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
@@ -60,5 +62,17 @@ public class Problem7 {
             return false;
         }
         return true;
+    }
+
+    //user 친구들을 친구리스트에 구성하는 기능
+    public static void putUserFriendToList(String user, List<List<String>> friends) {
+        for(List<String> friend : friends) {
+            if(friend.get(0).equals(user)) {
+                FRIENDS_LIST.add(friend.get(1));
+            }
+            if(friend.get(1).equals(user)) {
+                FRIENDS_LIST.add(friend.get(0));
+            }
+        }
     }
 }
