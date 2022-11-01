@@ -8,11 +8,11 @@ public class Problem3 {
     public static int countNumber(int number) {
         int count = 0; // clap's total count
 
-        for(int n = 1; n < number; n++) {
+        for(int n = 1; n < number+1; n++) {
             String stringNum = Integer.toString(n);
             String[] numArr = stringNum.split("");
 
-            for(int i = 1; i < numArr.length; i++) {
+            for(int i = 0; i < numArr.length; i++) {
                 if(numArr[i].contains("3") || numArr[i].contains("6") || numArr[i].contains("9")) {
                     count += 1;
                 }
