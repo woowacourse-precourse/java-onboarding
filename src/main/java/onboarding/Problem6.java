@@ -19,6 +19,17 @@ public class Problem6 {
         return dividedName;
     }
 
+    private static List<String> findEmailsContainWord(List<List<String>> forms, String target, String compareWords) {
+        List<String> email = new ArrayList<>();
+        for (List<String> form : forms) {
+            String name = form.get(1);
+            if(name.contains(compareWords) && !target.equals(name)) {
+                email.add(form.get(0));
+            }
+        }
+        return email;
+    }
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
         List<String> words;
@@ -26,7 +37,15 @@ public class Problem6 {
 
         for(List<String> form: forms) {
             words = divideNameByTwoChars(form);
+            for(String word: words) {
+                email = findEmailsContainWord(forms, form.get(1), word);
+                if(email.size() > 0) {
+                    answer.addAll(email);
+                    answer.add(form.get(0));
+                }
+            }
         }
+        Collections.sort(answer);
         return answer;
     }
 }
