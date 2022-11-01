@@ -4,13 +4,17 @@ import java.util.*;
 
 public class Problem6 {
 
-    static final int MIN_EMAIL_LENGTH = 11;
-    static final int MAX_EMAIL_LENGTH = 19;
-
-    static final int FORM_EMAIL_INDEX = 0;
-    static final int FORM_NICKNAME_INDEX = 1;
+    private static final int MIN_CREW_COUNT = 1;
+    private static final int MAX_CREW_COUNT = 10000;
+    private static final int MIN_EMAIL_LENGTH = 11;
+    private static final int MAX_EMAIL_LENGTH = 19;
+    private static final String VALID_EMAIL_DOMAIN = "@email.com";
+    
+    private static final int FORM_EMAIL_INDEX = 0;
+    private static final int FORM_NICKNAME_INDEX = 1;
 
     public static List<String> solution(List<List<String>> forms) {
+
         return getRestrictedNicknames(forms);
     }
 
@@ -42,18 +46,36 @@ public class Problem6 {
         return false;
     }
 
-    static boolean validateEmailLength(List<List<String>> forms) {
-        return forms.stream()
-                .allMatch(form -> form.get(FORM_EMAIL_INDEX).length() >= MIN_EMAIL_LENGTH
-                                && form.get(FORM_EMAIL_INDEX).length() <= MAX_EMAIL_LENGTH);
-    }
-
     static String getFormEmail(List<List<String>> forms, int index) {
         return forms.get(index).get(FORM_EMAIL_INDEX);
     }
 
     static String getFormName(List<List<String>> forms, int index) {
         return forms.get(index).get(FORM_NICKNAME_INDEX);
+    }
+
+    static void checkForExceptions(List<List<String>> forms) {
+        if (!validateCrewCount(forms)) {
+            throw new IllegalArgumentException("크루원은 1명 이상 10,000명 이하이어야 합니다.");
+        }
+        if (!validateEmailLength(forms)) {
+            throw new IllegalArgumentException("이메일의 길이는 11자 이상 19자 이하이어야 합니다.");
+        }
+        if (!validateEmailDomain(forms)) {
+            throw new IllegalArgumentException("신청 가능하신 이메일의 도메인은 @email.com 입니다.");
+        }
+    }
+
+    static boolean validateCrewCount(List<List<String>> forms) {
+        return forms.size() >= MIN_CREW_COUNT && forms.size() <= MAX_CREW_COUNT;
+    }
+
+    static boolean validateEmailLength(List<List<String>> forms) {
+        return forms.stream().allMatch(form -> form.get(FORM_EMAIL_INDEX).length() >= MIN_EMAIL_LENGTH && form.get(FORM_EMAIL_INDEX).length() <= MAX_EMAIL_LENGTH);
+    }
+
+    static boolean validateEmailDomain(List<List<String>> forms) {
+        return forms.stream().allMatch(form -> form.get(FORM_EMAIL_INDEX).contains(VALID_EMAIL_DOMAIN));
     }
 
 }
