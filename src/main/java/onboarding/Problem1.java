@@ -23,4 +23,10 @@ class Problem1 {
         }
         return result;
     }
+    private static int scoreEvaluate(int first_num, int second_num){
+        int result = 0;
+        result = (first_num > second_num) ? 1 : 2;
+        result = (first_num == second_num) ? 0 : result;
+        return result;
+    }
 }
