@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 class UsersInfo {
@@ -69,10 +66,72 @@ class Friends extends UsersInfo {
             friendsFriend = list;
         }
     }
-    private int findFriendsIndex(String user, List<String> friendList) {
+    public int findFriendsIndex(String user, List<String> friendList) {
         return friendList.get(0).equals(user) ? 1 : 0;
     }
+
+    public List<String> getFriendsFriend() {
+        return friendsFriend;
+    }
+
+    public static boolean isIncludeUserOrFriends(String name) {
+        return (getUsersFriends.contains(name) || getUser().equals(name)) ? true : false;
+    }
 }
+
+class Score extends Friends {
+    static final int friendsFriendScore = 10;
+    static final int visitorScore = 1;
+    static Map<String, Integer> recommendFriends = new HashMap<String, Integer>();
+
+    public static List<String> limitList(List<String> recommendedList) {
+        List<String> list = recommendedList.stream().limit(5).collect(Collectors.toList());
+        return list;
+    }
+
+    public static List<String> orderRecommendedList() {
+        List<Map.Entry<String, Integer>> entries = recommendFriends.entrySet()
+                .stream()
+                .sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
+                .collect(Collectors.toList());
+        List<String> orderedRecommendedList = entries.stream().map(i -> i.getKey()).collect(Collectors.toList());
+        System.out.println(entries);
+        return orderedRecommendedList;
+    }
+
+    public static void forCaseFriendsFriend() {
+        Iterator<String> iterator = getFriendsFriend().iterator();
+        while (iterator.hasNext()) {
+            String recommendedFriend = iterator.next();
+            if (isIncludeUserOrFriends(recommendedFriend)) {
+                continue;
+            }
+            if (recommendedFriends.containsKey(recommendedFriend)) {
+                recommendedFriends.put(recommendedFriend,
+                        recommendedFriends.get(recommendedFriend) + friendsFriendScore);
+                continue;
+            }
+            recommendedFriends.put(recommendedFriend, friendsFriendScore);
+        }
+    }
+
+    public static void forCaseVisitors() {
+        //removeFriends(visitors);
+        Iterator<String> iterator = getVisitors().iterator();
+        while (iterator.hasNext()) {
+            String recommendedFriend = iterator.next();
+            if (isIncludeUserOrFriends(recommendedFriend)) {
+                continue;
+            }
+            if (recommendedFriends.containsKey(recommendedFriend)) {
+                recommendedFriends.put(recommendedFriend, recommendedFriends.get(recommendedFriend) + visitorScore);
+                continue;
+            }
+            recommendedFriends.put(recommendedFriend, visitorScore);
+        }
+    }
+}
+
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
