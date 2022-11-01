@@ -24,9 +24,33 @@ class Problem1 {
         return max;
     }
 
+    private static boolean isException(List<Integer> person) {
+        // 주어진 페이지가 책 페이지 내의 페이지 수여야 함
+        if(1 <= person.get(0) && person.get(1) <= 400) {
+            return false;
+        }
+
+        // 왼쪽페이지가 홀수, 오른쪽페이지가 짝수여야 함
+        if(person.get(0)%2 == 1 && person.get(1)%2 == 0) {
+            return false;
+        }
+
+        // 두 페이지가 연속되어야 함
+        if(person.get(1) - person.get(0) == 1){
+            return false;
+        }
+
+        return true;
+    }
+
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+
+        // 예외사항 체크
+        if(isException(pobi) || isException(crong)) {
+            return -1;
+        }
 
         int pobiMax = findMax(pobi);
         int crongMax = findMax(crong);
