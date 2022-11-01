@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
 
@@ -15,6 +12,7 @@ public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
+        List<String> answer = new ArrayList<>();
 
         // 자신과 직접 연관이 있는 친구들 돌아가면서 찾기
         for(List<String> friend : friends)
@@ -73,7 +71,31 @@ public class Problem7 {
             score.put(visit,visitScore+1);
         }
 
-        List<String> answer = new ArrayList<>();
+        // Hashmap 정렬
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(score.entrySet());
+
+        entryList.sort(new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                return o2.getValue() - o1.getValue();
+            }});
+
+
+        // 최대 5명 까지 추천 받기 위해 카운트 설정
+        int maxCount = 0;
+        for (int i =0 ; i < entryList.size(); i++) {
+
+            if(maxCount == 5)
+            {
+                break;
+            }
+            if(entryList.get(i).getValue() != 0)
+            {
+                answer.add(entryList.get(i).getKey());
+                maxCount+=1;
+            }
+        }
+
         return answer;
     }
 
