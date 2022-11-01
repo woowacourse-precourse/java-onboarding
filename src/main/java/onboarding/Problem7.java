@@ -45,21 +45,22 @@ public class Problem7{
                 map.put(visitors.get(i),1);
             }
         }
-        // Map.Entry 리스트 작성
         List<Entry<String, Integer>> list_entries = new ArrayList<Entry<String, Integer>>(map.entrySet());
 
-        // 비교함수 Comparator를 사용하여 내림 차순으로 정렬
-        Collections.sort(list_entries, new Comparator<Entry<String, Integer>>() {
-            // compare로 값을 비교
-            public int compare(Entry<String, Integer> obj1, Entry<String, Integer> obj2)
-            {
-                // 내림 차순으로 정렬
-                return obj2.getValue().compareTo(obj1.getValue());
+        Collections.sort(list_entries, (obj1, obj2) -> {
+            if(obj1.getValue().equals(obj2.getValue())){
+                return obj1.getKey().compareTo(obj2.getKey());
             }
+            else
+                return obj2.getValue().compareTo(obj1.getValue());
         });
+        int cnt=0;
         for(Entry<String, Integer> entry : list_entries) {
-            if(!friend.contains(entry.getKey())){
+            if(cnt == 5)
+                break;
+            if(!friend.contains(entry.getKey())&&entry.getValue()!=0){
                 answer.add(entry.getKey());
+                cnt++;
             }
         }
         return answer;
