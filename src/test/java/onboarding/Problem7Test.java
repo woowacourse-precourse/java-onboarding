@@ -29,4 +29,20 @@ public class Problem7Test {
 
         assertThat(result).isEqualTo(answer);
     }
+
+    @Test
+    @DisplayName("intersection 메소드 테스트")
+    void intersectionTest(){
+        List<String> list1 = List.of(
+                "a", "b", "c"
+        );
+
+        List<String> list2 = List.of(
+                "b", "d", "e"
+        );
+
+        int count = Problem7.intersection(list1, list2);
+
+        assertThat(count).isEqualTo(1);
+    }
 }

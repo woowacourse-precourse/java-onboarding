@@ -68,4 +68,18 @@ public class Problem7 {
 
         return friendMap;
     }
+
+    // 두 리스트의 공통 요소 개수를 반환
+    public static int intersection(List<String> list1, List<String> list2){
+
+        int count = 0;
+
+        for (String member : list1) {
+            if (list2.contains(member)) {
+                ++count;
+            }
+        }
+
+        return count;
+    }
 }
