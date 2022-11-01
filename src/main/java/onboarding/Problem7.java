@@ -104,7 +104,12 @@ public class Problem7 {
      * @return
      */
     public static List<String> changeRecommendedRankingList(Map<String, Integer> scoreBoard) {
-        return new ArrayList<>();
+        return scoreBoard.entrySet().stream()
+                .sorted(Map.Entry.comparingByKey())
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .map(Map.Entry::getKey)
+                .limit(5)
+                .collect(Collectors.toList());
     }
 
 }
