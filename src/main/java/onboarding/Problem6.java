@@ -41,8 +41,8 @@ public class Problem6 {
 			if (email.length() < 11 || email.length() > 20) {
 				throw new IllegalArgumentException("email의 길이가 맞지 않습니다.");
 			}
-			if (!email.substring(email.length() - 9).equals("email.com")) {
-				throw new IllegalArgumentException("\"email.com\"도메인이 아닙니다.");
+			if (!email.substring(email.length() - 10).equals("@email.com")) {
+				throw new IllegalArgumentException("\"@email.com\"도메인이 아닙니다.");
 			}
 			if (!name.matches("^[가-힣]*$")) {
 				throw new IllegalArgumentException("닉네임은 한글만 가능합니다.");
