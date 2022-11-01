@@ -42,4 +42,45 @@ public class Problem6 {
         return validFormat;
     }
 
+    private static List<String> duplicatedNickname(List<List<String>> forms){
+        List<String> duplicatedEmail = new ArrayList<>();
+        List<List<String>> formCopy = forms;
+        List<Integer> isduplicatedIdx = new ArrayList<>();
+
+        for(int i=0; i<formCopy.size(); i++){
+            List<String> nowCrew = formCopy.get(i);
+            String nowCrewEmail = nowCrew.get(0);
+            String nowCrewNickname = nowCrew.get(1);
+
+            if(isduplicatedIdx.contains(i))
+                continue;
+
+            boolean isDuplicated = false;
+            for(int j=i+1; j<formCopy.size(); j++){
+                List<String> nextCrew = formCopy.get(j);
+                String nextCrewEmail = nextCrew.get(0);
+                String nextCrewNickname = nextCrew.get(1);
+
+                boolean isContain = false;
+                for(int k=0; k<nowCrewNickname.length() - 1; k++){
+                    if(isContain)
+                        break;
+                    if(nextCrewNickname.contains(nowCrewNickname.substring(k, k+2))){
+                        isContain = true;
+                        isDuplicated = true;
+                        isduplicatedIdx.add(j);
+                    }
+                }
+            }
+            if(isDuplicated){
+                isduplicatedIdx.add(i);
+            }
+        }
+
+        for(int i=0; i<isduplicatedIdx.size(); i++)
+            duplicatedEmail.add(formCopy.get(isduplicatedIdx.get(i)).get(0));
+
+        return duplicatedEmail;
+    }
+
 }
