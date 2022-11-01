@@ -77,6 +77,9 @@ public class Problem7 {
 
         Collections.sort(keySetList, (o1, o2) -> (nameAndPoint.get(o2).compareTo(nameAndPoint.get(o1))));
 
+        for (int i =0 ; i<friendsOfUser.size() ; i ++) {
+            keySetList.remove(friendsOfUser.get(i));
+        }
 
         List<String> answer = Collections.emptyList();
         return answer;
