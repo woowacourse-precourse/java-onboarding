@@ -8,7 +8,7 @@
 - [x] user가 모르는 sns 사용자들을 map에 넣는 기능
   - user의 친구는 map에 넣지 않는다.
   - user 본인은 map에 넣지 않는다.
-- [ ] user sns에 방문한 사용자를 map에 넣는 기능
+- [x] user sns에 방문한 사용자를 map에 넣는 기능
   - user 친구는 map에 넣지 않는다.
 - [ ] user와 함께 아는 친구 수 점수를 산출하는 기능
 - [ ] user sns를 방문한 사람들에 점수를 산출하는 기능
