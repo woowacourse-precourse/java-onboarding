@@ -21,3 +21,15 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능 목록
+
+1. 예외처리 기능
+2. 이메일 형식 판별 기능
+3. 닉네임 형식 판별 기능
+4. 자료구조 초기화 기능
+5. 파라미터 정보 파싱 기능
+6. 각 단어별 트라이 리스트 생성 기능
+7. 각 닉네임 중복 판별 기능
+8. 결과 반환 기능
+

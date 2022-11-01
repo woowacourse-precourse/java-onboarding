@@ -24,3 +24,16 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능 목록
+
+1. 예외처리 기능
+2. 문자열 소문자 판별 기능
+3. 유저 이름 형식 판별 기능
+4. 유저 리스트의 각 유저별 이름 형식 판별 기능
+5. 프렌드 리스트의 각 유저별 이름 형식 판별 기능
+6. 자료구조 초기화 기능 
+7. 총 점수 리스트 초기화 기능
+8. 친구 관계 점수 계산 기능
+9. 방문기록 점수 계산 및 결과 반환 기능
+
