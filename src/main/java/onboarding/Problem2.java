@@ -7,14 +7,24 @@ public class Problem2 {
 		Stack<String> stack = new Stack<>();
 		String[] cryptogramArray = cryptogram.split("");
 
+		boolean flag = false;
 		for (String alphabet : cryptogramArray) {
-			if (!stack.isEmpty() && alphabet.equals(stack.peek())) {
+			if (flag) {
+				if (!stack.isEmpty() && stack.peek().equals(alphabet)) {
+					continue;
+				}
 				stack.pop();
+				flag = false;
+			}
+			if (!stack.isEmpty() && stack.peek().equals(alphabet)) {
+				flag = true;
 				continue;
 			}
 			stack.push(alphabet);
 		}
-
+		if (!stack.isEmpty() && flag) {
+			stack.pop();
+		}
 		return String.join("", stack);
 	}
 }
