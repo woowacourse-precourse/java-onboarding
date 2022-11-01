@@ -6,7 +6,14 @@ public class Problem4 {
     public static String solution(String word) {
         String answer = "";
         HashMap<Character,Character> map = makeHashMap();
-
+        for(char data : word.toCharArray()){
+           if(map.containsKey(data) == true){
+               answer += map.get(data);
+           }
+           else{
+               answer += data;
+           }
+        }
         return answer;
     }
 
