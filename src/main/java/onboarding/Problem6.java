@@ -26,8 +26,8 @@ public class Problem6 {
                 if(userMap.containsKey(partedWord)){
                     wrongNameSet.add(email);
                     wrongNameSet.add(userMap.get(partedWord));
-                }else
-                    userMap.put(partedWord, email);
+                }
+                userMap.put(partedWord, email);
             }
         }
 
