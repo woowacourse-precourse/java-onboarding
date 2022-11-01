@@ -17,5 +17,9 @@
 # 기능 명세
 * makeLetterSet(): 크루원들을 순회하면서 해당 닉네임의 연속된 두 글자를 추출하여 집합을 만든다.
 * getDuplicateSet(): 두글자 집합을 순회하면서 중복된 닉네임이 2개 이상 존재 시, 해당 이메일들을 집합에 담는다.
+* validation(): 중복된 닉네임이 2개 이상 존재시 집합에 담는 메서드를 getDuplicateSet()에서 분리
+* validateEmail(): 이메일 email.com 도메인인지 체크
+* validateNickname(): 닉네임 한글만 가능한지 체크
+* validateLength(start, end): 길이가 start이상 end이상인지 체크
 ******
 # 학습 한 내용
