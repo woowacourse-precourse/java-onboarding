@@ -37,6 +37,15 @@ public class Problem2 {
                 count += 1; //횟수 + 1
             }
 
+            //가운데 문자 반복문
+            for (int i = 1 ; i < arr.length - 1 ; i++){
+                //인접한 좌, 우 글자에 해당 문자가 없을 경우 글자 저장
+                if ( !( arr[i].equals(arr[i-1]) || arr[i].equals(arr[i+1]) ) ) {
+                    sb.append(arr[i]);
+                    count += 1; //횟수 + 1
+                }
+            }
+
         }
 
         return word;
