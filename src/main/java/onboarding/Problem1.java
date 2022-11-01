@@ -18,21 +18,21 @@ class Problem1 {
     }
     // 페이지가 맞으면 1, 아니면 -1
     private static int validateNum(List<Integer> list) {
-        if (lst.get(0) < 1 || lst.get(1) > 400)
+        if (list.get(0) < 1 || list.get(1) > 400)
             return -1;
-        if (lst.get(0) % 2 == 0 || lst.get(1) % 2 == 1)
+        if (list.get(0) % 2 == 0 || list.get(1) % 2 == 1)
             return  -1;
-        if (lst.get(0) + 1 != lst.get(1))
+        if (list.get(0) + 1 != list.get(1))
             return  -1;
 
         return 1;
     }
-    private static int getScore(List<Integer> lst) {
+    private static int getScore(List<Integer> list) {
         int leftScore = 0;
         int rightScore = 0;
 
-        leftScore = Math.max(addDigit(lst.get(0)), multiplyDigit(lst.get(0)));
-        rightScore = Math.max(addDigit(lst.get(1)), multiplyDigit(lst.get(1)));
+        leftScore = Math.max(addDigit(list.get(0)), multiplyDigit(list.get(0)));
+        rightScore = Math.max(addDigit(list.get(1)), multiplyDigit(list.get(1)));
 
         return Math.max(leftScore, rightScore);
     }
