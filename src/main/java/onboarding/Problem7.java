@@ -126,10 +126,20 @@ public class Problem7 {
 
     //user sns를 방문한 사람들에게 점수를 산출하는 기능
     public static void plusUnknownVisitorUserScore(List<String> visitors) {
-        for(String visitor : visitors) {
-            if(!FRIENDS_LIST.contains(visitor)) {
+        for (String visitor : visitors) {
+            if (!FRIENDS_LIST.contains(visitor)) {
                 UNKNOWN_USER_SCORE.replace(visitor, UNKNOWN_USER_SCORE.get(visitor) + VISIT_SCORE);
             }
         }
+    }
+
+    //총 추천점수를 산출하는 기능
+    public static void calcurateTotalRecommendationScore(String user, List<List<String>> friends,
+        List<String> visitors) {
+        putUserFriendToList(user, friends);
+        putFriendsUserUnknown(user, friends);
+        putVisitorUserUnknown(visitors);
+        plusUnknownFriendUserScore(user, friends);
+        plusUnknownVisitorUserScore(visitors);
     }
 }
