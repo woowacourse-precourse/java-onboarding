@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
  * 기능 목록
  * 1. 초기화 과정.
  * 2. 닉네임을 중복확인. (즉 연속적인 문자가 있는 것들을 인지 할 수 있어야한다.)
- * 3. 각각의 닉네임들을 모두 잘라서 후보로 두어야한다.
+ * 3. 각각의 닉네임들을 모두 잘라서 후보로 두어야한다. ==> 자신의 닉네임은 포함시키지 않아야한다.
  * 4. HashMap<email,name> , HashMap<email,boolean>
  * 5. 후보들과 비교 하여 , 중복된다면 리스트에 넣고
  * 6. 해당 리스트를 정렬 하여 리턴.
@@ -45,8 +45,16 @@ public class Problem6 {
         return answerMap;
     }
 
+    private List<String> removeOwnCandidate(String value, List duplicateCandidate) {
+        ArrayList<String> ownCandidate = new ArrayList<>();
+        for (String own : getDivide2WordList(ownCandidate, value)) {
+            duplicateCandidate.remove(own);
+        }
+        return duplicateCandidate;
+    }
+
     private Boolean compare(String value,List<String> duplicateCandidate) {
-        for (String compareWord : duplicateCandidate) {
+        for (String compareWord : removeOwnCandidate(value, duplicateCandidate)) {
             if (compareEachAlphabet(value, compareWord)) {
                 return Boolean.TRUE;
             }
