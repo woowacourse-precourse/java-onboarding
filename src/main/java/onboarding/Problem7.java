@@ -26,9 +26,7 @@ public class Problem7 {
 
         initFriends(user, friends, relations, myFriends);
 
-        for (String myFriend : myFriends) {
-            calcFriendScore(scores, relations, myFriend);
-        }
+        verifyFriendsFriend(scores, relations, myFriends);
 
         entryList = new ArrayList<>(scores.entrySet());
         entryList.sort(Map.Entry.comparingByValue(Collections.reverseOrder()));
@@ -40,6 +38,18 @@ public class Problem7 {
         return result;
     }
 
+    /**
+     * 친구의 친구 검토 메소드
+     */
+    private static void verifyFriendsFriend(Map<String, Integer> scores, Map<String, List<String>> relations, Set<String> myFriends) {
+        for (String myFriend : myFriends) {
+            calcFriendScore(scores, relations, myFriend);
+        }
+    }
+
+    /**
+     * 초기 친구 관계 메소드
+     */
     private static void initFriends(String user, List<List<String>> friends, Map<String, List<String>> relations, Set<String> myFriends) {
         for (List<String> friend : friends) {
             String name1 = friend.get(0);
