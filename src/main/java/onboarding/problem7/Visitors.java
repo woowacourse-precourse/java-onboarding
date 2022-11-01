@@ -4,11 +4,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class Visit {
+public class Visitors {
 
 	private List<String> visitors;
 
-	public Visit(List<String> visitors) {
+	public Visitors(List<String> visitors) {
 		this.visitors = visitors;
 	}
 
@@ -22,7 +22,7 @@ public class Visit {
 		return count;
 	}
 
-	public Set<String> getVisitors() {
+	public Set<String> getKnownUsers() {
 		return new HashSet<>(visitors);
 	}
 }

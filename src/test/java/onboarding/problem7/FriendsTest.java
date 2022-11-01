@@ -7,11 +7,11 @@ import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-public class FriendsTest {
+class FriendsTest {
 
 	@Test
-	@DisplayName("친구관계에 있는지 알 수 있다")
-	void check_if_two_are_friends() {
+	@DisplayName("모든 사용자를 알 수 있다")
+	void get_known_users() {
 		List<List<String>> relationships = List.of(
 			List.of("donut", "andole"),
 			List.of("donut", "jun"),
@@ -20,10 +20,9 @@ public class FriendsTest {
 			List.of("shakevan", "jun"),
 			List.of("shakevan", "mrko")
 		);
-		List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
-		Friends friends = new Friends(relationships, visitors);
+		Friends friends = new Friends(relationships);
 
-		assertThat(friends.isTwoFriends("mrko", "shakevan")).isTrue();
+		assertThat(friends.getKnownUsers()).contains("donut", "mrko", "shakevan", "jun", "andole");
 	}
 
 	@Test
@@ -37,15 +36,14 @@ public class FriendsTest {
 			List.of("shakevan", "jun"),
 			List.of("shakevan", "mrko")
 		);
-		List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
-		Friends friends = new Friends(relationships, visitors);
+		Friends friends = new Friends(relationships);
 
 		assertThat(friends.countSharedFriends("andole", "jun")).isEqualTo(2);
 	}
 
 	@Test
-	@DisplayName("모든 사용자를 알 수 있다")
-	void get_known_users() {
+	@DisplayName("친구관계에 있는지 알 수 있다")
+	void check_if_two_are_friends() {
 		List<List<String>> relationships = List.of(
 			List.of("donut", "andole"),
 			List.of("donut", "jun"),
@@ -54,9 +52,8 @@ public class FriendsTest {
 			List.of("shakevan", "jun"),
 			List.of("shakevan", "mrko")
 		);
-		List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
-		Friends friends = new Friends(relationships, visitors);
+		Friends friends = new Friends(relationships);
 
-		assertThat(friends.getKnownUsers()).contains("donut", "mrko", "bedi", "shakevan", "jun", "andole");
+		assertThat(friends.isTwoFriends("mrko", "shakevan")).isTrue();
 	}
 }
