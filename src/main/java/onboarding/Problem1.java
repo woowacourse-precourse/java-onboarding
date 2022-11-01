@@ -15,6 +15,11 @@ class Problem1 {
     private static final int LEFT = 0;
     private static final int RIGHT = 1;
 
+    public static int getUserScore(List<Integer> user) {
+        int firstPage = getBiggerScore(user.get(LEFT));
+        int secondPage = getBiggerScore(user.get(RIGHT));
+        return firstPage > secondPage ? firstPage : secondPage;
+    }
     public static int getBiggerScore(int page) {
         return getSumPage(page) > getMultiplyPage(page) ? getSumPage(page) : getMultiplyPage(page);
     }
