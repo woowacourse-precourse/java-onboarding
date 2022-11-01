@@ -14,6 +14,15 @@ public class Problem7 {
         setId(allNames, nameToIdMap, idToNameMap);
         setFriendship(friends, friendship, nameToIdMap);
 
+        Set<String> userFriends = new HashSet<>();
+        userFriends.add(user);
+
+        int[] scores = new int[allNames.size()];
+        for (int i = 0; i < friendship[nameToIdMap.get(user)].size(); i++) {
+            int numberOfUserFriend = friendship[nameToIdMap.get(user)].get(i);
+            userFriends.add(idToNameMap.get(numberOfUserFriend));
+        }
+
         List<String> answer = Collections.emptyList();
         return answer;
     }
