@@ -31,7 +31,9 @@ public class Problem7 {
 
         // 점수 기준으로 오름 차순 정렬
         List<Crew> crews = new ArrayList<>(team.values());
-        Collections.sort(crews, (a, b) -> b.getScore() - a.getScore()); //score 별로 정렬
+
+        crews.sort(Comparator.comparing(Crew::getName));
+        crews.sort(Comparator.comparing(Crew::getScore).reversed());
 
         // user이거나, 이미 친구이거나, 점수가 0점인 경우를 제외한 친구를 5명까지 answer에 추가하는 기능
         for (Crew crew : crews) {
@@ -39,7 +41,7 @@ public class Problem7 {
                 if (answer.size() >= 5) {
                     return answer;
                 }
-                answer.add(crew.name);
+                answer.add(crew.getName());
             }
         }
         return answer;
@@ -112,5 +114,19 @@ public class Problem7 {
         public void plusScoreOne() {
             this.score += 1;
         }
+    }
+
+    public static void main(String[] args) {
+        String user = "mrko";
+        List<List<String>> friends = List.of(
+                List.of("donut", "andole"),
+                List.of("donut", "jun"),
+                List.of("donut", "mrko"),
+                List.of("shakevan", "andole"),
+                List.of("shakevan", "jun"),
+                List.of("shakevan", "mrko")
+        );
+        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+        solution(user, friends, visitors);
     }
 }
