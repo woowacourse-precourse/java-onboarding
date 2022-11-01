@@ -28,6 +28,7 @@ public class Problem2 {
                 cryptogram = cryptogram.substring(0, i) + fixedSubstring;
                 length = cryptogram.length();
                 result = cryptogram;
+                i = i - 1; // 중복문자열을 삭제하고 인덱스 위치를 제자리로 유지시키기 위함
             }
         }
 
