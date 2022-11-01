@@ -4,15 +4,13 @@ import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
         Map<String, List<String>> combi = new HashMap<>();
 
         for(List<String> form : forms){
             NickName2Combi(combi, form);
         }
-        System.out.println("combi.values() = " + combi.values());
-        System.out.println("combi.keySet() = " + combi.keySet());
-        return answer;
+
+        return DuplicatedNickName(combi);
     }
 
     public static void NickName2Combi(Map<String, List<String>> combi, List<String> form){
@@ -30,4 +28,13 @@ public class Problem6 {
         }
     }
 
+    public static List<String> DuplicatedNickName(Map<String, List<String>> combi) {
+        Set<String> result = new HashSet<>();
+
+        for (String key : combi.keySet() ) {
+            if(combi.get(key).size() >1)
+                result.addAll(combi.get(key));
+        }
+        return new ArrayList<>(result);
+    }
 }
