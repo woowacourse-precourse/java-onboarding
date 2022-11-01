@@ -73,6 +73,24 @@ public class Problem7 {
 			removeIfZero(scoreTable.get(id) == 0, id);
 		}
 	}
+	private static List<String> getSortedList() {
+		List<String> ret = new ArrayList<>();
+		TreeMap<Integer, List<String>> treeMap = new TreeMap<>();
+		String name;
+		int score;
+
+		for (Map.Entry<String, Integer> entry : scoreTable.entrySet()) {
+			score = entry.getValue();
+			name = entry.getKey();
+			treeMap.putIfAbsent(-score, new ArrayList<>());
+			treeMap.get(-score).add(name);
+		}
+		for (List<String> list : treeMap.values()) {
+			Collections.sort(list);
+			ret.addAll(list);
+		}
+		return (ret);
+	}
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 		scoreTable = new Hashtable<>();
 		friendTable = new Hashtable<>();
@@ -82,7 +100,7 @@ public class Problem7 {
 		scoreVisitors(visitors);
 		removeUserAndFriends(user);
 		removeZeros();
-//		return (getSortedList());
+		return (getSortedList());
 	}
 
 }
