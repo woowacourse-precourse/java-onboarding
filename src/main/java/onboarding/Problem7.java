@@ -49,6 +49,7 @@ public class Problem7 {
             List<String> list = map.get(s);
             for (String s1 : list) {
                 if(s1.equals(user)) continue;
+                if(userFriend.contains(s1)) continue;
                 answerMap.put(s1, answerMap.getOrDefault(s1, 0)+10);
             }
         }
