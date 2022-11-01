@@ -17,6 +17,7 @@ public class Problem7 {
 
         createFriendList(user, friends, friendList);
         checkFriendOfFriend(user, friends, friendList, recommendedFriends);
+        checkVisit(visitors, recommendedFriends);
 
         return answer;
     }
@@ -38,6 +39,14 @@ public class Problem7 {
                             recommendedFriends.put(name, recommendedFriends.get(name) + 10);
                         else
                             recommendedFriends.put(name, 10);
+    }
+
+    private static void checkVisit(List<String> visitors, Map<String, Integer> recommendedFriends) {
+        for (String visitor : visitors)
+            if (recommendedFriends.containsKey(visitor))
+                recommendedFriends.put(visitor, recommendedFriends.get(visitor) + 1);
+            else
+                recommendedFriends.put(visitor, 1);
     }
 
 }
