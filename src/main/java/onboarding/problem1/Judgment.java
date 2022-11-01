@@ -20,6 +20,7 @@ public class Judgment {
 
         if (pobiMax < crongMax) {
             return 2;
+
         } else if (pobiMax > crongMax) {
             return 1;
         }
@@ -40,14 +41,14 @@ public class Judgment {
             }
         }
 
-        int pobiLeftPage = pobi.get(0); // 100
+        int pobiLeftPage = pobi.get(0);
         int pobiRightPage = pobiLeftPage + 1;
 
         if (!(pobiRightPage == pobi.get(1))) {
             return -1;
         }
 
-        int crongLeftPage = crong.get(0); // 100
+        int crongLeftPage = crong.get(0);
         int crongRightPage = crongLeftPage + 1;
 
         if (!(crongRightPage == crong.get(1))) {

@@ -21,6 +21,7 @@ public class FriendListScoreCalculation {
         return scoreMap;
     }
 
+
     public void calculations(List<String> visitors,
                              HashMap<String, Integer> scoreMap,
                              HashMap<String, List<String>> relationships,

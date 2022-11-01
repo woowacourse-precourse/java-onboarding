@@ -8,7 +8,6 @@ public class Bank {
     public List<Integer> withdraw(int money) {
 
         List<Integer> coinChanges = findAmount(money);
-
         return coinChanges;
     }
 

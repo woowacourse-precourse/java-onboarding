@@ -23,10 +23,8 @@ public class FriendMap {
 
             friendMap.put(friendA, aRelationship);
             friendMap.put(friendB, bRelationship);
-
         }
 
         return friendMap;
     }
-
 }

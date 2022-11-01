@@ -9,6 +9,7 @@ public class IterativeGenerator {
         CheckNumbers checkNumbers = new CheckNumbers();
 
         for (int numberIndex = 1; numberIndex <= number; numberIndex++) {
+
             String strNumber = String.valueOf(numberIndex);
             compare += checkNumbers.compare(strNumber);
         }

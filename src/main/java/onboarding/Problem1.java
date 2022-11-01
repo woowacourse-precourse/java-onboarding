@@ -10,6 +10,7 @@ class Problem1 {
         Judgment judgment = new Judgment();
 
         if (judgment.verification(pobi, crong) == 0) {
+
             int answer = judgment.compare(pobi, crong);
             return answer;
         }

@@ -17,5 +17,4 @@ public class DictionaryGenerator {
 
         return characterMap;
     }
-
 }

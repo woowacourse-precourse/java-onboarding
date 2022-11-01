@@ -1,7 +1,5 @@
 package onboarding.problem7;
 
-import org.junit.jupiter.api.Order;
-
 import java.util.*;
 
 public class TopFiveCompare {
@@ -30,8 +28,7 @@ public class TopFiveCompare {
     }
 
 
-    public void topFive(List<String> five,
-                        List<Map.Entry<String, Integer>> scoreList) {
+    public void topFive(List<String> five, List<Map.Entry<String, Integer>> scoreList) {
         for (int idx = 0; idx < 5; idx++) {
             HashMap.Entry<String, Integer> score = scoreList.get(idx);
 
