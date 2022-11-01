@@ -6,6 +6,7 @@ import onboarding.problem7.service.PointService;
 import onboarding.problem7.service.UserInfoServiceImpl;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 
@@ -18,14 +19,20 @@ public class Problem7 {
     private static final int DIFFERENT_USER_NAME_INDEX = 1;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        UserNameValidation validation = new UserNameValidation();
-        valid(user, friends, visitors, validation);
+        try {
+            UserNameValidation validation = new UserNameValidation();
+            valid(user, friends, visitors, validation);
 
-        userInfoCreate(friends);
-        Set<String> findFriends = userRepository.findFriends(user);
-        pointCalcul(user, visitors, findFriends);
+            userInfoCreate(friends);
+            Set<String> findFriends = userRepository.findFriends(user);
+            pointCalcul(user, visitors, findFriends);
 
-        return pointService.getFriendshipList(user);
+            return pointService.getFriendshipList(user);
+        } catch (IllegalArgumentException e) {
+
+            System.out.println(e.getMessage());
+            return Collections.emptyList();
+        }
     }
 
     private static void valid(String user, List<List<String>> friends, List<String> visitors, UserNameValidation validation) {
@@ -70,7 +77,7 @@ public class Problem7 {
             add(new ArrayList<>(List.of("shakevan", "mrko")));
         }};
 
-        List<String> visitors = new ArrayList<>(){{
+        List<String> visitors = new ArrayList<>() {{
             addAll(List.of("bedi", "bedi", "donut", "bedi", "shakevan"));
         }};
 
