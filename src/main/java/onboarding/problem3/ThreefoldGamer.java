@@ -4,15 +4,15 @@ import java.util.stream.IntStream;
 
 public class ThreefoldGamer {
 
-    private final int NUM;
+    private final int MAX_NUM;
 
     public ThreefoldGamer(int number) {
-        this.NUM = number;
+        this.MAX_NUM = number;
     }
 
     public int play() {
         StringBuilder builder = new StringBuilder();
-        IntStream.range(1, NUM + 1).forEach(builder::append);
+        IntStream.range(1, MAX_NUM + 1).forEach(builder::append);
         return (int) builder.chars().filter(this::isThreefoldNum).count();
     }
 
