@@ -4,7 +4,9 @@ import onboarding.problem7.collections.FriendList;
 import onboarding.problem7.collections.VisitorList;
 import onboarding.problem7.wrapper.User;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class FriendAndScore {
 
@@ -28,5 +30,12 @@ public class FriendAndScore {
     public List<User> getVisitorsNotFriendOf(User user) {
         List<User> friendsOfUser = friendList.getFriendListOf(user);
         return visitorList.getVisitorListExcluding(friendsOfUser);
+    }
+
+    public List<User> addTwoListsWithoutDuplicate(List<User> friendsOfUserFriends, List<User> visitorsOfNotFriendOfUser) {
+        Set<User> set = new HashSet<>();
+        set.addAll(friendsOfUserFriends);
+        set.addAll(visitorsOfNotFriendOfUser);
+        return List.copyOf(set);
     }
 }
