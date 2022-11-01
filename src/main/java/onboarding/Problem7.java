@@ -1,7 +1,6 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  * <기능 목록>
@@ -33,5 +32,40 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
+    }
+
+    public static Map<String, List<String>> makeFriendMap(List<List<String>> friends){
+
+        // 친구관계도 HashMap
+        Map<String, List<String>> friendMap = new HashMap<>();
+
+        for (List<String> friend : friends) {
+
+            // friendMap에 friends에서 주어진 멤버 A, B의 친구 목록 List가 이미 들어가있는지 체크
+            // 들어가 있다면 해당 멤버의 친구 목록 List에 추가
+            // 들어가 있지 않다면 해당 멤버의 친구 목록 List를 만들고 거기다가 추가
+            boolean firstMember = friendMap.containsKey(friend.get(0));
+            boolean secondMember = friendMap.containsKey(friend.get(1));
+
+
+            // 첫번째 멤버의 친구관계 수정
+            if (!firstMember) {
+                friendMap.put(friend.get(0), new ArrayList<String>());
+                friendMap.get(friend.get(0)).add(friend.get(1));
+            } else {
+                friendMap.get(friend.get(0)).add(friend.get(1));
+            }
+
+            // 두번째 멤버의 친구관계 수정
+            if (!secondMember) {
+                friendMap.put(friend.get(1), new ArrayList<String>());
+                friendMap.get(friend.get(1)).add(friend.get(0));
+            } else {
+                friendMap.get(friend.get(1)).add(friend.get(0));
+            }
+
+        }
+
+        return friendMap;
     }
 }
