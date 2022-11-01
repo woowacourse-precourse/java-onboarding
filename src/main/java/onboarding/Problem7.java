@@ -12,6 +12,7 @@ public class Problem7 {
         calcVisitorsPoints(visitors);
         calcMyFriends(user, friends);
         calcFriendsPoints(user, friends, myFriends);
+        getRecommendedFriends(answer);
         return answer;
     }
 
@@ -61,5 +62,21 @@ public class Problem7 {
                 recommenedFreinds.put(id2,10);
             }
         }
+    }
+
+    private static void getRecommendedFriends(List<String> answer) {
+        removeMyFriendsFromPoints();
+        List<Map.Entry<String, Integer>> pointList = sortList();
+        int max = pointList.size() < 5 ? pointList.size() : 5;
+        for (int i = 0; i < max; i++) {
+            answer.add(pointList.get(i).getKey());
+        }
+    }
+
+    private static void removeMyFriendsFromPoints() {
+    }
+
+    private static List<Map.Entry<String, Integer>> sortList() {
+        return null;
     }
 }
