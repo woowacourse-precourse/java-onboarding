@@ -31,7 +31,7 @@ public class Problem7 {
     }
 
     // 친구와 함께 아는 사람에게 점수를 부여하는 메서드
-    static void addScore(String user, List<String> list, List<List<String>> friends, TreeMap<String, Integer> score) {
+    static void addScore(String user, List<String> list, List<List<String>> friends, Map<String, Integer> score) {
         for (int i = 0; i < list.size(); i++) {
             String friend = list.get(i);
             for (int j = 0; j < friends.size(); j++) {
@@ -46,7 +46,7 @@ public class Problem7 {
     }
 
     // 사용자의 타임 라인에 방문한 사람에게 점수를 부여하는 메서드
-    static void addVisitScore(List<String> visitors, List<String> list, TreeMap<String, Integer> score) {
+    static void addVisitScore(List<String> visitors, List<String> list, Map<String, Integer> score) {
         List<String> temp = new ArrayList<>(visitors);
         temp.removeAll(list);
 
@@ -64,7 +64,7 @@ public class Problem7 {
     }
 
     // 정렬하는 메서드
-    static List<String> sortScore(TreeMap<String, Integer> score) {
+    static List<String> sortScore(Map<String, Integer> score) {
         List<String> result = new ArrayList<>(score.keySet());
         result.sort((Comparator.comparingInt(score::get).reversed()));
 
