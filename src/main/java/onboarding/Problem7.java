@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     public static final int ACQUAINTANCE_SCORE = 10;
@@ -18,6 +15,7 @@ public class Problem7 {
         increaseAcquaintanceScore(user, friendRelationshipMap, scoreMap);
         increaseVisitorScore(user, friendRelationshipMap, scoreMap, visitors);
 
+        getRecommendedFriends(scoreMap, answer);
         return answer;
     }
 
@@ -84,6 +82,18 @@ public class Problem7 {
                 scoreMap.put(visitor, currentScore + VISITOR_SCORE);
             } else {
                 scoreMap.put(visitor, VISITOR_SCORE);
+            }
+        }
+    }
+
+    private static void getRecommendedFriends(HashMap<String, Integer> scoreMap, List<String> answer) {
+        Iterator iterator = scoreMap.keySet().iterator();
+
+        while (iterator.hasNext()) {
+            String id = (String)iterator.next();
+
+            if (scoreMap.containsKey(id) && scoreMap.get(id) != 0) {
+                answer.add(id);
             }
         }
     }
