@@ -6,11 +6,12 @@ import java.util.Map;
 
 public class Visitors {
 
-	private static final Map<String, Integer> visitors = new HashMap<>();
+	private static Map<String, Integer> visitors;
 
 	public static void init(List<String> inputVisitorsId) {
+		visitors = new HashMap<>();
 		for (String inputVisitorId : inputVisitorsId) {
-			User user = new User(inputVisitorId);
+			new User(inputVisitorId);
 			visitors.put(inputVisitorId, visitors.getOrDefault(inputVisitorId, 0) + 1);
 		}
 	}

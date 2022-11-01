@@ -15,8 +15,8 @@ public class RecommendResult {
 
 	void persist(String inputUserId, List<List<String>> inputFriends,
 		List<String> inputVisitorsId) {
-		User targetUser = new User(inputUserId);
-		InputFriends friends = new InputFriends(inputFriends);
+		new User(inputUserId);
+		new InputFriends(inputFriends);
 		Visitors.init(inputVisitorsId);
 	}
 

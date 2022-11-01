@@ -10,7 +10,7 @@ public class InputFriends {
 	public InputFriends(List<List<String>> inputFriends) {
 		validateInputFriends(inputFriends);
 		for (List<String> inputFriend : inputFriends) {
-			Friend friend = new Friend(inputFriend);
+			new Friend(inputFriend);
 		}
 	}
 
