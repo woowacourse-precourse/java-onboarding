@@ -15,6 +15,9 @@ public class Problem5 {
         List<Integer> answer = Collections.emptyList();
         return answer;
     }
+    private static int getRemainder(int numerator, int denominator) {
+        return numerator % denominator;
+    }
     private static void validateWithdrawnMoney(int money) {
         if (money < MIN_WITHDRAWABLE_MONEY || money > MAX_WITHDRAWABLE_MONEY) {
             throw new IllegalArgumentException("1원 이상 1,000,000원 이하만 출금 가능합니다");
