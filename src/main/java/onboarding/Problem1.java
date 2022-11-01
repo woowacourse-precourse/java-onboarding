@@ -68,6 +68,6 @@ class Problem1 {
             int crongPoint = calculatePoint(crong);
             return comparePoint(pobiPoint, crongPoint);
         }
-        return -1;ㅇㅇ
+        return -1;
     }
 }
