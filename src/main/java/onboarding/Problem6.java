@@ -19,8 +19,6 @@ public class Problem6 {
 		Map<String, String> map = new HashMap<>();
 		List<String> splitNicknames = new ArrayList<>(); // 각 크루의 닉네임을 두 글자씩 쪼개어 담을 리스트
 		Set<String> duplicateNicknames = new HashSet<>(); // 중복된 닉네임 set
-		char[] nicknameArr;
-		String email;
 
 		if (checkRestrictions(forms) == EXCEPTION) {
 			return answer;
@@ -33,17 +31,31 @@ public class Problem6 {
 
 		initSplitNicknames(map, splitNicknames);
 		initDuplicateNicknames(splitNicknames, duplicateNicknames);
+		answer = getCrewUsingInvalidNickname(map, duplicateNicknames);
 
-		// 크루의 닉네임 안에 duplicateNicknames 의 요소가 포함되어 있으면 닉네임 사용 제한
+		return answer;
+	}
+
+	/**
+	 * 사용이 제한되는 닉네임을 사용하는 크루들을 반환하는 메서드
+	 * (크루의 닉네임 안에 duplicateNicknames 의 요소가 포함되어 있으면 사용이 제한되는 닉네임이다.)
+	 * @param map
+	 * @param duplicateNicknames
+	 */
+	private static List<String> getCrewUsingInvalidNickname(Map<String, String> map,
+		Set<String> duplicateNicknames) {
+		List<String> answer = new ArrayList<>();
+		String nickname;
+		String email;
 		for (Map.Entry<String, String> entry : map.entrySet()) {
 			for (String duplicateNickname : duplicateNicknames) {
-				if (entry.getValue().contains(duplicateNickname)) {
+				nickname = entry.getValue();
+				if (nickname.contains(duplicateNickname)) {
 					email = entry.getKey();
 					answer.add(email);
 				}
 			}
 		}
-
 		return answer;
 	}
 
