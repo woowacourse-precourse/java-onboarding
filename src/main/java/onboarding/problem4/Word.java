@@ -1,5 +1,7 @@
 package onboarding.problem4;
 
+import java.util.stream.Collectors;
+
 public class Word {
 
     private static final int UPPER_TYPE = 1;
@@ -45,5 +47,12 @@ public class Word {
         int offset = 'Z' - ch;
 
         return String.valueOf((char) ('A' + offset));
+    }
+
+    public String convert() {
+        return word.codePoints()
+                .map(i -> (char) i)
+                .mapToObj(Word::convert)
+                .collect(Collectors.joining(""));
     }
 }
