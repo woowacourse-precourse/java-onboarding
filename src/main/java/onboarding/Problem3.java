@@ -17,4 +17,15 @@ public class Problem3 {
         }
         return sum;
     }
+
+    public static int checknumber(int n){
+        count=0;
+        while(n!=0) {
+            if (n % 10 == 3 || n % 10 == 6 || n % 10 == 9) {
+                count++;
+            }
+            n/=10;
+        }
+        return count;
+    }
 }
