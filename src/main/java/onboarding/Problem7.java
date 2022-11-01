@@ -25,4 +25,14 @@ public class Problem7 {
         return FRIENDS_MIN_LENGTH <= friends.size() && friends.size() <= FRIENDS_MAX_LENGTH;
     }
 
+    //friends의 아이디의 길이가 1이상 30이하인지 검증하는 기능
+    public static boolean checkFriendsIdLengthValidation(List<List<String>> friends) {
+        for (List<String> friend : friends) {
+            if (!(USER_MIN_LENGTH <= friend.get(0).length()
+                && friend.get(1).length() <= FRIENDS_MAX_LENGTH)) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
