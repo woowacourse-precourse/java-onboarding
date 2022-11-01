@@ -85,8 +85,27 @@ public class Problem7 {
             }
         }
         
-        
-        List<String> answer = Collections.emptyList();
-        return answer;
+        List<Integer> pointSet = new ArrayList<>(scoreFriend.keySet());
+        List<String> result = new ArrayList<>();
+        Collections.sort(pointSet);
+        Collections.reverse(pointSet);
+
+        for(Integer point : pointSet){
+            List<String> samePoint = new ArrayList<>();
+            for(String friend : scoreFriend.get(point)){
+                samePoint.add(friend);
+            }
+            Collections.sort(samePoint);
+            
+            for(int i=0; i< samePoint.size() && result.size()<5; i++){
+                result.add(samePoint.get(i));
+            }
+        }
+    HashSet<String> order = new HashSet<>(result);
+    
+    List<String> answer = new ArrayList<>(order);
+    
+    return answer;
+
     }
 }
