@@ -60,7 +60,27 @@ class Problem1 {
         }
     }
 
+    public static boolean exceptionAll (List<Integer> pobi, List<Integer> crong) {
+        if (pobi.size() != 2 || crong.size() != 2) {
+            return true;
+        }else if (pobi.get(0) >= 400 || pobi.get(1) > 400) {
+            return true;
+        }else if (crong.get(0) >= 400 || crong.get(1) > 400 ) {
+            return true;
+        }else if (pobi.get(0) != (pobi.get(1) -1)) {
+            return true;
+        }else if (crong.get(0) != (crong.get(1) -1)) {
+            return true;
+        }else if (pobi.get(0) % 2 != 1 || crong.get(0) % 2 != 1) {
+            return true;
+        }else return false;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+
+        if(exceptionAll(pobi, crong)) {
+            return -1;
+        }
 
         ArrayList<ArrayList<Integer>> pobipagelistlist = new ArrayList<>();
         pobipagelistlist.add(convertPage(pobi.get(0)));
