@@ -11,6 +11,17 @@ public class DuplicationNotificator {
         checkDuplication(forms);
     }
 
+    public List<String> notifyEmails() {
+        List<String> emails = new ArrayList<>();
+        for (String key : parts.keySet()) {
+            List<String> emailsOfParts = parts.get(key);
+            if (emailsOfParts.size() > 1)
+                emails.addAll(emailsOfParts);
+        }
+        emails.sort(String::compareTo);
+        return emails.stream().distinct().collect(Collectors.toList());
+    }
+
     private void checkDuplication(List<List<String>> forms) {
         for (List<String> form : forms) {
             String email = form.get(0);
@@ -26,16 +37,5 @@ public class DuplicationNotificator {
                 }
             }
         }
-    }
-
-    public List<String> notifyEmails() {
-        List<String> emails = new ArrayList<>();
-        for (String key : parts.keySet()) {
-            List<String> emailsOfParts = parts.get(key);
-            if (emailsOfParts.size() > 1)
-                emails.addAll(emailsOfParts);
-        }
-        emails.sort(String::compareTo);
-        return emails.stream().distinct().collect(Collectors.toList());
     }
 }
