@@ -9,6 +9,20 @@ class Problem1 {
         return answer;
     }
 
+    // 양쪽 페이지를 확인하여 더 큰 페이지를 반환하는 함수
+    private static int comparePages(List<Integer> pages) {
+        int result = Integer.MIN_VALUE;
+        //verifyPages(pages);
+
+        for(int page: pages) {
+            List<Integer> pageNumbers = splitInt(page);
+            int nowScore = maxScore(pageNumbers);
+            if(result < nowScore)
+                result = nowScore;
+        }
+        return result;
+    }
+
     // 숫자를 각 자릿수로 나눠서 배열로 반환하는 함수
     private static List<Integer> splitInt(Integer number) {
         List<Integer> result = new ArrayList<Integer>();
