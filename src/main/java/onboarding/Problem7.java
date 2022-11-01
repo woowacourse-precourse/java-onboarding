@@ -6,6 +6,18 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Problem7 {
+    public HashMap<String, Integer> putCommon(String user, HashMap<String, List<String>> friends_list, HashMap<String, Integer> map){
+        List<String> user_friends = friends_list.get(user);
+        for(String user_friend : user_friends){
+            List<String> user_friend_list = friends_list.get(user_friend);
+            for(String user_friend_friend: user_friend_list){
+                if(user_friend_friend != user && !user_friends.contains(user_friend_friend)){
+                    map.put(user_friend_friend, map.getOrDefault(user_friend_friend, 0)+10);
+                }
+            }
+        }
+        return map;
+    }
     public  HashMap<String, Integer> putVisitors(String user, List<String> visitors, HashMap<String, List<String>> friends_list){
         HashMap<String, Integer> map = new HashMap<>();
         List<String> user_friends = friends_list.get(user);
