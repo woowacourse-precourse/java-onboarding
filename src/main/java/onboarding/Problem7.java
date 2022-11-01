@@ -11,6 +11,62 @@ public class Problem7 {
             return Collections.emptyList();
         }
 
+        HashMap<String, ArrayList<Node>> graph;
+        PriorityQueue<Node> pq = new PriorityQueue<>((a, b) -> a.cost != b.cost ? b.cost - a.cost : a.v.compareTo(b.v));
+        List<String> answer = new ArrayList<>();
+
+    }
+
+    private static class Node {
+        String v;
+        int cost;
+
+        public Node(String v, int cost) {
+            this.v = v;
+            this.cost = cost;
+        }
+
+        @Override
+        public String toString() {
+            return this.v;
+        }
+    }
+
+    public static HashMap<String, ArrayList<Node>> initializeGraph(List<List<String>> friends) {
+        HashMap<String, ArrayList<Node>> graph = new HashMap<>();
+
+
+        for (List<String> edge : friends) {
+
+            ArrayList<Node> ls = new ArrayList<>();
+
+            String a = edge.get(0);
+            String b = edge.get(1);
+
+            if (graph.containsKey(a)) {
+                ls = graph.get(a);
+                ls.add(new Node(b, 1));
+            } else {
+                ls.add(new Node(b, 1));
+            }
+
+            graph.put(a, ls);
+
+            ls = new ArrayList<>();
+
+            if (graph.containsKey(b)) {
+                ls = graph.get(b);
+                ls.add(new Node(a, 1));
+            } else {
+                ls.add(new Node(a, 1));
+            }
+
+
+            graph.put(b, ls);
+
+        }
+
+        return graph;
     }
 
 
