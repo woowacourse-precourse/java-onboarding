@@ -74,7 +74,17 @@ public class Problem7 {
         return answer;
     }
     public static Map<String,Integer> UpperSort(Map<String,Integer> FriendsAndscore_map){
+        List<String> keyset= new ArrayList<>(FriendsAndscore_map.keySet());
 
+        keyset.sort(new Comparator<String>() {
+            @Override
+            public int compare(String o1,String o2){
+                return FriendsAndscore_map.get(o1).compareTo(FriendsAndscore_map.get(o2));
+            }
+        });
+
+
+        return FriendsAndscore_map;
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
