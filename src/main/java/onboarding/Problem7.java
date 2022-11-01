@@ -1,21 +1,35 @@
 package onboarding;
 
+import java.util.List;
 import java.util.*;
+import java.util.HashMap;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
-        return answer;
-    }
-    // 점수 계산기
-    public static HashMap<String, Integer> scoreCal(List<String> justList, int score) {
-        HashMap<String, Integer> result = new HashMap<String, Integer>();
-        for (int i = 0; i < justList.size(); i++) {
-            Integer count = result.get(justList.get(i));
-            if (count == null) result.put(justList.get(i), score);
-            else result.put(justList.get(i), count + score);
+        Set<String> trueFriends = trueFriends(user, friends);
+
+        HashMap<String, Integer> featuredMap = featuredFriends(user, friends, trueFriends);
+        HashMap<String, Integer> visitorMap = visitorsPeople(visitors, trueFriends);
+
+        featuredMap.putAll(visitorMap);
+
+        List<String> sortList = new ArrayList<>(featuredMap.keySet());
+        Collections.sort(sortList);
+        sortList.sort(new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                return featuredMap.get(o2).compareTo(featuredMap.get(o1));
+            }
+        });
+        //5명까지만 추천하기
+        if (sortList.size() <= 5) answer.addAll(sortList);
+        else if (sortList.size() > 5) {
+            for (int i = 0; i < 5; i++) {
+                answer.add(sortList.get(i));
+            }
         }
-        return result;
+        return answer;
     }
     //user의 친구 구하기
     public static Set<String> trueFriends(String user, List<List<String>> friends) {
@@ -39,7 +53,7 @@ public class Problem7 {
         List<String> friendsAndNot = new ArrayList<String>();
 
         //user가 들어간 list 제외하고, 친구가 포함된 list만 저장
-        for(List<String>friend : friends){
+        for(List<String> friend : friends){
             if(user.equals(friend.get(0)) || user.equals(friend.get(1))) continue;
             else for(int i=0; i<trueList.length; i++){
                 if(trueList[i].equals(friend.get(0))){
@@ -50,13 +64,18 @@ public class Problem7 {
             }
         }
 
-        //점수 계산하기
         List<String> trueFriendList = new ArrayList<>(trueFriends);
         // 방문자 리스트 중 친구 제외
         List<String> recommendList = new ArrayList<>();
         recommendList.addAll(friendsAndNot);
         recommendList.removeAll(trueFriendList);
-        HashMap<String, Integer> result = scoreCal(recommendList, 10);
+
+        HashMap<String, Integer> result = new HashMap<String, Integer>();
+        for (int i = 0; i < recommendList.size(); i++) {
+            Integer count = result.get(recommendList.get(i));
+            if (count == null) result.put(recommendList.get(i), 10);
+            else result.put(recommendList.get(i), count + 10);
+        }
         return result;
     }
     //방문자 목록 정리, +1계산
@@ -66,7 +85,15 @@ public class Problem7 {
         List<String> visitorsList = new ArrayList<>();
         visitorsList.addAll(visitors);
         visitorsList.removeAll(trueFriendList);
-        HashMap<String, Integer> result = scoreCal(visitorsList, 1);
+
+        //계산하기 +1
+        HashMap<String, Integer> result = new HashMap<String, Integer>();
+        for (int i = 0; i < visitorsList.size(); i++) {
+            Integer count = result.get(visitorsList.get(i));
+            if (count == null) result.put(visitorsList.get(i), 1);
+            else result.put(visitorsList.get(i), count + 1);
+        }
+
         return result;
     }
 }
