@@ -21,3 +21,20 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+### 기능 분할
+
+1. input 유효성 검사
+
+- input String이 null인지 검증
+- input이 소문자만 들어왔는지 검증
+- input 길이가 1 이상 1000 이하인지 검증
+
+2. 중복 제거
+- 연속된 값이 다른 지 검증
+- 다르다면 result 값에 기입
+- 다를 때까지 input 탐색 증가
+- loop fence 처리
+
+3. 중복 제거 전체 문자열 적용
+- 재귀적 처리
