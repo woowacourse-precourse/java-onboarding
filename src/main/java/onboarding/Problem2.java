@@ -22,4 +22,13 @@ public class Problem2 {
             findWord(false);
         }
     }
+    public static int findLength(int index){
+        int count = 1;
+        char ch = answer[index];
+        for (int i = index+1 ; i < answer.length ;i++){
+            if (ch==answer[i]) count++;
+            else if (ch!=answer[i]) break;
+        }
+        return count;
+    }
 }
