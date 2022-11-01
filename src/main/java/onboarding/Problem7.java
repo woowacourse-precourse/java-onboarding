@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.nio.charset.CoderMalfunctionError;
 import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -8,50 +9,43 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
 
-        List<String> allUserList = getUsers(friends, visitors);
-        System.out.println(allUserList);
-        List<String> userFriendList = getFriends(user, friends);
-        Stream<String> notUserFriendStream = allUserList.stream().filter(id -> !userFriendList.contains(id) && !id.equals(user));
-        //notUserFriendStream.forEach(item -> System.out.println(item));
+        List<Candidate> candidateList = getCandidateList(user, friends, visitors);
+        sortCandidateList(candidateList);
 
-        List<List<String>> userScore = new ArrayList<>();
-
-        for (String id : notUserFriendStream.collect(Collectors.toList())){
-            int score = getScore(user, id, friends, visitors);
-            List<String> newElement = List.of(id, String.valueOf(score));
-            userScore.add(newElement);
-            System.out.println(userScore);
-        }
-
-        Comparator<List<String>> compareFriends = new Comparator<List<String>>() {
-            @Override
-            public int compare(List<String> o1, List<String> o2) {
-                int score1 = Integer.parseInt(o1.get(1));
-                int score2 = Integer.parseInt(o2.get(1));
-                int result = 1;
-
-                if (score1 < score2) {
-                    result = -1;
-                } else if (score1 == score2) {
-                    result = o2.get(0).compareTo(o1.get(0));
-                }
-
-                return result;
-            }
-        };
-
-        Collections.sort(userScore, compareFriends.reversed());
-        System.out.println(userScore);
-        if (userScore.size() >= 5){
-            userScore = userScore.subList(0, 5);
-        }
-
-        answer = userScore.stream()
-                .map(entry -> entry.get(0))
+        List<Candidate> top5CandidateList = candidateList.size() > 5 ? candidateList.subList(0, 5)
+                                                                        : candidateList;
+        answer = top5CandidateList.stream()
+                .map(Candidate::getId)
                 .collect(Collectors.toList());
 
         return answer;
     }
+
+    static List<Candidate> getCandidateList(String user, List<List<String>> friends, List<String> visitors){
+        List<Candidate> candidateList = new ArrayList<>();
+
+        List<String> allUserList = getUsers(friends, visitors);
+        List<String> userFriendList = getFriends(user, friends);
+        Stream<String> candidateIdStream = allUserList.stream()
+                .filter(id -> !userFriendList.contains(id) && !id.equals(user));
+
+        candidateIdStream.forEach(id -> {
+            int score = getScore(user, id, friends, visitors);
+            candidateList.add(new Candidate(id, score));
+        });
+
+        return candidateList;
+    }
+
+    static void sortCandidateList(List<Candidate> candidateList){
+        Comparator<Candidate> candidateComparator = Comparator
+                .comparing(Candidate::getScore)
+                .reversed()
+                .thenComparing(Candidate::getId);
+
+        Collections.sort(candidateList, candidateComparator);
+    }
+
 
     static List<String> getUsers(List<List<String>> friends, List<String> visitors) {
         List<String> result = new ArrayList<>();
@@ -95,5 +89,27 @@ public class Problem7 {
 
     static int getVisitCnt(List<String> visitors, String visitor){
         return Collections.frequency(visitors, visitor);
+    }
+}
+
+class Candidate {
+    private String id;
+    private int score;
+
+    Candidate(String id, int score){
+        this.id = id;
+        this.score = score;
+    }
+    String getId() {
+        return id;
+    }
+
+    int getScore() {
+        return score;
+    }
+
+    void setScore(int score) {
+        if (score < 0) return;
+        this.score = score;
     }
 }
