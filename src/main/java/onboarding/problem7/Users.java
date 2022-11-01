@@ -1,6 +1,7 @@
 package onboarding.problem7;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Users {
 
@@ -29,6 +30,25 @@ public class Users {
         users.add(newUser);
 
         return newUser;
+    }
+
+    public List<String> recommendFriends(String id, List<String> visitors) {
+
+        User user = getUserById(id);
+
+        return getScore(user, visitors).entrySet().stream()
+                .filter(e -> e.getValue() != 0)
+                .filter(e -> !user.hasFriend(e.getKey()))
+                .sorted((e1, e2) -> {
+                    int compareValue = Integer.compare(e2.getValue(), e1.getValue());
+
+                    if (compareValue == 0) return e1.getKey().compareTo(e2.getKey());
+                    return compareValue;
+                })
+                .limit(RECOMMEND_COUNT)
+                .map(Map.Entry::getKey)
+                .map(User::getId)
+                .collect(Collectors.toList());
     }
 
     private Map<User, Integer> getScore(User user, List<String> visitors) {

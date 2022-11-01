@@ -38,6 +38,10 @@ public class User {
         return id.equals(this.id);
     }
 
+    public boolean hasFriend(User user) {
+        return friends.contains(user);
+    }
+
     public int countCoFriends(User user) {
         int count = 0;
 
