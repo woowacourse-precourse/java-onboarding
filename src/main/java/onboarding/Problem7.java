@@ -4,14 +4,11 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-
         Map<String, ArrayList<String>> friendMap = makeFriendMap(friends);
         Map<String, Integer> recommendScore = addScoreFriendKnow(user, friendMap);
         recommendScore = addScoreVisit(recommendScore, visitors);
-        System.out.println(recommendScore);
 
-        return answer;
+        return recommendFriend(recommendScore);
     }
 
     public static Map<String, ArrayList<String>> makeFriendMap(List<List<String>> friends) {
@@ -54,5 +51,21 @@ public class Problem7 {
             recommendScore.put(visitor, recommendScore.getOrDefault(visitor, 0) + 1);
         }
         return recommendScore;
+    }
+
+    public static List<String> recommendFriend(Map<String, Integer> recommendScore) {
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(recommendScore.entrySet());
+        entryList.sort(((o1, o2) -> recommendScore.get(o2.getKey()) - recommendScore.get(o1.getKey())));
+
+        int count = 0;
+        List<String> recommendList = new ArrayList<>();
+        for(Map.Entry<String, Integer> entry : entryList) {
+            if (count == 5) break;
+            if (entry.getValue() <= 0) break;
+            recommendList.add(entry.getKey());
+            count++;
+        }
+
+        return recommendList;
     }
 }
