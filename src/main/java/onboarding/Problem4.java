@@ -12,7 +12,12 @@ public class Problem4 {
     }
 
     private static String getWord(String word){
-
+        char[] char_word=word.toCharArray();
+        String result="";
+        for(int i=0;i<word.length();i++){
+            result+=CONVERSION(char_word[i]);
+        }
+        return result;
     }
 
     private static boolean input_exception(String input){
