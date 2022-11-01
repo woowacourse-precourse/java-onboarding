@@ -34,6 +34,7 @@ public class Problem6 {
         return answer;
     }
 
+    /*
         public static void main(String[] args) { // TEST
 
             List<List<String>> forms = List.of(List.of("\"jm@email.com\"", "\"제이엠\""),
@@ -44,5 +45,7 @@ public class Problem6 {
 
             solution(forms);
         }
+
+     */
 
 }
