@@ -4,9 +4,24 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+    	int pLeft=pobi.get(0);
+        int cLeft=crong.get(0); 
+    	int pobiMax=0;
+         int crongMax=0;
+       //pobi의 최댓값
+         if(maxSum(pLeft)>pobiMax) pobiMax=maxSum(pLeft);
+         if(maxMul(pLeft)>pobiMax) pobiMax=maxMul(pLeft);
+         //crong의 최댓값
+         if(maxSum(cLeft)>crongMax) crongMax=maxSum(cLeft);
+         if(maxMul(cLeft)>crongMax) crongMax=maxMul(cLeft);
+         int answer=0;
+         //pobi와 crong의 최댓값 비교
+         if(pobiMax==crongMax) answer=0;
+         else if(pobiMax>crongMax) answer=1;
+         else answer=2;
+         return answer;
     }
+    
     // 각 자리의 숫자 더하는 메서드
     public static int sumNum(int num){
         int sum=0;
