@@ -14,4 +14,13 @@ class Problem1 {
         }
         return sum;
     }
+
+    public static int multi_number(int n){
+        int sum = 1;
+        while (n > 0){
+            sum *= n % 10;
+            n /= 10;
+        }
+        return sum;
+    }
 }
