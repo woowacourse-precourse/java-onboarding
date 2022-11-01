@@ -33,4 +33,8 @@ class Problem1 {
     private  void validateIsContinuousPage(Integer leftPageNum, Integer rightPageNum) throws Exception {
         if(rightPageNum-leftPageNum!=1) throw new Exception();
     }
+
+    private  void validatePageNumScope(Integer pageNum) throws Exception {
+        if(pageNum<1||pageNum>400) throw new Exception();
+    }
 }
