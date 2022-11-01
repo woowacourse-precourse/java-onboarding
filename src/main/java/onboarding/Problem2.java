@@ -20,11 +20,7 @@ public class Problem2 {
         matcher = pattern.matcher(cryptogram);
 
         while (matcher.find()) {
-            String[] splitStrings = cryptogram.split(matcher.group());
-            if (splitStrings.length <= 1) {
-                return "";
-            }
-            cryptogram = splitStrings[0] + removeDuplicate(splitStrings[1]);
+            cryptogram = matcher.replaceAll("");
             matcher = pattern.matcher(cryptogram);
         }
 
