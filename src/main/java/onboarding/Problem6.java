@@ -32,6 +32,13 @@ public class Problem6 {
             }
         }
 
+        // 2. HashMap 순회하며 둘 이상 담겨있는 이메일들 answer set 에 담기
+        Set<String> answerSet = new HashSet<>();
+        for(Set<String> emails : map.values())
+            if(emails.size() > 1)
+                for(String email : emails)
+                    answerSet.add(email);
+
         return answer;
     }
 }
