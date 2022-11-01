@@ -15,6 +15,7 @@ public class Problem7 {
         Map<String, Integer> scoreMap = getScoreMap(friends, userFriends, visitors);
         List<Map.Entry<String, Integer>> entryList = sortedByScoreAscending(scoreMap);
         
+        answer = getRecommendList(user, userFriends, entryList);
         
         return answer;
     }
@@ -87,5 +88,22 @@ public class Problem7 {
         });
         
         return entryList;
+    }
+    
+    private static List<String> getRecommendList(String user, List<String> userFriends, List<Map.Entry<String, Integer>> entryList){
+    	List<String> list = new LinkedList<>();
+        for(Map.Entry<String, Integer> entry : entryList) {
+        	if(userFriends.contains(entry.getKey()) || entry.getKey().equals(user)) {
+        		continue;
+        	}
+        	if(entry.getValue() != 0) {
+        		list.add(entry.getKey());
+        	}
+        	if(list.size() == 5) {
+        		break;
+        	}
+        }
+        
+        return list;
     }
 }
