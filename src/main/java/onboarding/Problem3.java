@@ -7,7 +7,7 @@ public class Problem3 {
         try {
             validateInputSize(number);
         } catch (IllegalArgumentException e) {
-            return 0;
+            e.printStackTrace();
         }
 
         return countClaps(number);
@@ -49,6 +49,6 @@ public class Problem3 {
     }
 
     private static boolean isMultipleThree(int digit) {
-        return (digit % 3 == 0);
+        return (digit != 0 && digit % 3 == 0);
     }
 }
