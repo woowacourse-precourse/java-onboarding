@@ -6,12 +6,22 @@ public class BookGame {
     private User user1, user2;
     private int user1Score, user2Score;
     private int result = -1;
-    
+
     public BookGame(List<Integer> page1, List<Integer> page2){
         this.user1 = new User(page1);
         this.user2 = new User(page2);
     }
 
+    public int start(){
+        getUsersScore();
+
+        if(checkValidation()){
+            judgeWinner();
+        }
+
+        return result;
+    }
+    
     private boolean checkValidation(){
         try{
             user1.checkPageValidation();
