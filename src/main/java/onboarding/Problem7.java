@@ -67,7 +67,7 @@ public class Problem7 {
 		}
 		
 		
-		List<String> answer = Collections.emptyList();
+		List<String> answer = new ArrayList<String>();
 		if(crew1.size()>5) {
 			for(int i =0; i<5; i++) {
 				int max =0;
