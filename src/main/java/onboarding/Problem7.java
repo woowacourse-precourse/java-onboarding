@@ -13,9 +13,21 @@ import static java.util.stream.Collectors.toList;
 
 public class Problem7 {
 
+	public static final int ID_MIN_LENGTH = 1;
+	public static final int ID_MAX_LENGTH = 30;
+	public static final int USER_MAX_SIZE = 10_000;
+	public static final int FRIEND_SIZE = 2;
+	public static final int VISITOR_MAX_SIZE = 10_000;
 	public static final int MAX_LIMIT_SIZE = 5;
+	public static final String ID_IS_TOO_SHORT_OR_LONG = "이름이 너무 짧거나 깁니다.";
+	public static final String FRIENDS_ARE_TOO_SHORT_OR_LONG = "친구 목록이 너무 짧거나 깁니다.";
+	public static final String RELATIONSHIP_IS_NOT_RIGHT = "친구 관계가 맞지 않습니다.";
+	public static final String VISITORS_ARE_TOO_MANY = "방문자가 너무 많습니다.";
 
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+
+		validateParams(user, friends, visitors);
+
 		Map<String, Set<String>> relations = new HashMap<>();
 		Map<String, Integer> recommends = new HashMap<>();
 
@@ -28,6 +40,58 @@ public class Problem7 {
 		findVisitedFriends(user, visitors, relations, recommends);
 
 		return findRecommendFriendLimitFive(recommends);
+	}
+
+	private static void validateParams(String user, List<List<String>> friends, List<String> visitors) {
+		validateUser(user);
+		validateFriends(friends);
+		validateVisitors(visitors);
+	}
+
+	private static void validateUser(String user) {
+		validateIdLength(user);
+	}
+
+	private static void validateIdLength(String id) {
+		if (isRightRangeOfId(id)) {
+			throw new IllegalArgumentException(ID_IS_TOO_SHORT_OR_LONG);
+		}
+	}
+
+	private static boolean isRightRangeOfId(String id) {
+		return id.length() < ID_MIN_LENGTH || id.length() > ID_MAX_LENGTH;
+	}
+
+	private static void validateFriends(List<List<String>> friends) {
+		if (isRightRangeOfFriend(friends)) {
+			throw new IllegalArgumentException(FRIENDS_ARE_TOO_SHORT_OR_LONG);
+		}
+
+		for (List<String> friend : friends) {
+			validateFriendSizeAndLength(friend);
+		}
+	}
+
+	private static boolean isRightRangeOfFriend(List<List<String>> friends) {
+		return friends.isEmpty() || friends.size() > USER_MAX_SIZE;
+	}
+
+	private static void validateFriendSizeAndLength(List<String> friend) {
+		if (friend.size() != FRIEND_SIZE) {
+			throw new IllegalArgumentException(RELATIONSHIP_IS_NOT_RIGHT);
+		}
+
+		String one = friend.get(0);
+		validateIdLength(one);
+
+		String another = friend.get(1);
+		validateIdLength(another);
+	}
+
+	private static void validateVisitors(List<String> visitors) {
+		if (visitors.size() > VISITOR_MAX_SIZE) {
+			throw new IllegalArgumentException(VISITORS_ARE_TOO_MANY);
+		}
 	}
 
 	private static List<String> findRecommendFriendLimitFive(Map<String, Integer> recommends) {
