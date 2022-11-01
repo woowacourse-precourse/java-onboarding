@@ -1,16 +1,14 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.TreeSet;
+import java.util.*;
 
 // <기능 목록>
 // <기능 목록>
 // 0. class twoLetter(string letter, boolean overlap)
 //  : letter가 중복이면 overlap은 true
-// 1. 닉네임 두글자씩 잘라서 Treeset에 저장
-//  a. 닉네임 두글자씩 자름 String[] cutNickname
-//  b. cutNickname이 각각 Treeset에 저장되어 있는지 확인
+// 1. 닉네임 두글자씩 잘라서 Treeset<twoLetter> twoLetterTreeSet에 저장
+//  a. 닉네임 두글자씩 자름 HashSet<String> cutNickname
+//  b. cutNickname이 각각 twoLetterTreeSet에 저장되어 있는지 확인
 //  c. 저장되어 있다면 twoLetter.overlap=true로 설정, 저장이 안되어있다면 Treeset.add
 // 2. 중복 닉네임을 가진 이메일 찾기
 //  a. 닉네임 두글자씩 자름 String[] cutNickname
@@ -23,7 +21,7 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
 
-        // 1. 닉네임 두글자씩 잘라서 Treeset에 저장
+        // 1. 닉네임 두글자씩 잘라서 Treeset<twoLetter> twoLetterTreeSet에 저장
         addAllTwoLettersInTreeSet(forms);
 
         // 2. 중복 닉네임을 가진 이메일 찾기
@@ -35,11 +33,11 @@ public class Problem6 {
         return answer;
     }
 
-    // 1. 닉네임 두글자씩 잘라서 Treeset에 저장
+    // 1. 닉네임 두글자씩 잘라서 Treeset<twoLetter> twoLetterTreeSet에 저장
     public static void addAllTwoLettersInTreeSet(List<List<String>> forms) {
         for (int i = 0; i < forms.size(); i++) {
-            // 1-a. 닉네임 두글자씩 자름 String[] cutNickname
-            String[] cutNickname = cutNicknameByTwoLetters(forms.get(i).get(1)); // nickname
+            // 1-a. 닉네임 두글자씩 자름 HashSet<String> cutNickname
+            HashSet<String> cutNickname = cutNicknameByTwoLetters(forms.get(i).get(1)); // nickname
 
             // 1-b. cutNickname이 각각 Treeset에 저장되어 있는지 확인
             // 1-c. 저장되어 있는게 맞다면 twoLetter.overlap=true로 설정, 저장이 안되어있다면 Treeset.add
@@ -47,38 +45,40 @@ public class Problem6 {
         }
     }
 
-    // 1-a. 닉네임 두글자씩 자름 String[] cutNickname
-    // 2-a. 닉네임 두글자씩 자름 String[] cutNickname
-    public static String[] cutNicknameByTwoLetters(String nickname) {
-        String[] cutNickname = new String[nickname.length() - 1];
+    // 1-a. 닉네임 두글자씩 자름 HashSet<String> cutNickname
+    // 2-a. 닉네임 두글자씩 자름 HashSet<String> cutNickname
+    public static HashSet<String> cutNicknameByTwoLetters(String nickname) {
+        HashSet<String> cutNickname = new HashSet<>();
         for (int i = 0; i < nickname.length() - 1; i++) {
-            cutNickname[i] = nickname.substring(i, i + 2);
+            cutNickname.add(nickname.substring(i, i + 2));
         }
         return cutNickname;
     }
 
     // 1-b. cutNickname이 각각 Treeset에 저장되어 있는지 확인
     // 1-c. 저장되어 있는게 맞다면 twoLetter.overlap=true로 설정, 저장이 안되어있다면 Treeset.add
-    public static void addTwoLettersInTreeSet(String[] cutNickname) {
+    public static void addTwoLettersInTreeSet(HashSet<String> cutNickname) {
         // 1-b. cutNickname이 각각 Treeset에 저장되어 있는지 확인
-        for (int i = 0; i < cutNickname.length; i++) {
+        Iterator<String> iter = cutNickname.iterator();
+        while (iter.hasNext()) {
+            String iterCutNickname = iter.next();
             if (twoLetterTreeSet.isEmpty()) {
-                twoLetterTreeSet.add(new twoLetter(cutNickname[i], false));
+                twoLetterTreeSet.add(new twoLetter(iterCutNickname, false));
                 continue;
             }
 
             // 1-c. 저장되어 있는게 맞다면 twoLetter.overlap=true로 설정
-            twoLetter ceilingLetter = twoLetterTreeSet.ceiling(new twoLetter(cutNickname[i], false));
+            twoLetter ceilingLetter = twoLetterTreeSet.ceiling(new twoLetter(iterCutNickname, false));
             if (ceilingLetter == null) {
-                twoLetterTreeSet.add(new twoLetter(cutNickname[i], false));
-            } else if (cutNickname[i].equals(ceilingLetter.letter)) {
+                twoLetterTreeSet.add(new twoLetter(iterCutNickname, false));
+            } else if (iterCutNickname.equals(ceilingLetter.letter)) {
                 // overlap==true일때는 다시 저장할 필요 없음
                 if (!ceilingLetter.overlap) {
-                    twoLetterTreeSet.remove(new twoLetter(cutNickname[i], false));
-                    twoLetterTreeSet.add(new twoLetter(cutNickname[i], true));
+                    twoLetterTreeSet.remove(new twoLetter(iterCutNickname, false));
+                    twoLetterTreeSet.add(new twoLetter(iterCutNickname, true));
                 }
             } else {
-                twoLetterTreeSet.add(new twoLetter(cutNickname[i], false));
+                twoLetterTreeSet.add(new twoLetter(iterCutNickname, false));
             }
         }
     }
@@ -87,8 +87,8 @@ public class Problem6 {
     public static List<String> findOverlapNickname(List<List<String>> forms) {
         List<String> email = new ArrayList<>();
         for (int i = 0; i < forms.size(); i++) {
-            // 2-a. 닉네임 두글자씩 자름 String[] cutNickname
-            String[] cutNickname = cutNicknameByTwoLetters(forms.get(i).get(1)); // nickname
+            // 닉네임 두글자씩 자름 HashSet<String> cutNickname
+            HashSet<String> cutNickname = cutNicknameByTwoLetters(forms.get(i).get(1)); // nickname
 
             // 2-b. cutNickname의 overlap이 true인지 확인
             if (isOverlapNickname(cutNickname)) {
@@ -99,9 +99,10 @@ public class Problem6 {
     }
 
     // 2-b. cutNickname의 overlap이 true인지 확인
-    public static boolean isOverlapNickname(String[] cutNickname) {
-        for (int i = 0; i < cutNickname.length; i++) {
-            twoLetter ceilingLetter = twoLetterTreeSet.ceiling(new twoLetter(cutNickname[i], true));
+    public static boolean isOverlapNickname(HashSet<String> cutNickname) {
+        Iterator<String> iter = cutNickname.iterator();
+        while (iter.hasNext()) {
+            twoLetter ceilingLetter = twoLetterTreeSet.ceiling(new twoLetter(iter.next(), true));
             if (ceilingLetter.overlap) {
                 return true;
             }
@@ -114,20 +115,6 @@ public class Problem6 {
         TreeSet<String> emailTreeSet = new TreeSet<String>(email);
         List<String> resultEmail = new ArrayList<String>(emailTreeSet);
         return resultEmail;
-    }
-
-    public static void main(String[] args) {
-        List<List<String>> forms = List.of(
-                List.of("jm@email.com", "제이엠"),
-                List.of("jason@email.com", "제이슨"),
-                List.of("woniee@email.com", "차이차이차이문"),
-                List.of("mj@email.com", "엠제이"),
-                List.of("nowm@email.com", "이제엠"));
-        List<String> answer = solution(forms);
-
-        for (int i = 0; i < answer.size(); i++) {
-            System.out.println(answer.get(i));
-        }
     }
 
     // 0. class twoLetter(string letter, boolean overlap)
