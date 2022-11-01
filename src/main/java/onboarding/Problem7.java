@@ -21,6 +21,11 @@ public class Problem7 {
                 }
             }
         }
+        for (int i = 0; i < visitors.size(); ++i) {
+            if (!visitors.get(i).equals(user) && !map.containsKey(visitors.get(i))) {
+                map.put(visitors.get(i), 0);
+            }
+        }
         return answer;
     }
 }
