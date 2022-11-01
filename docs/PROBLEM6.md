@@ -21,3 +21,12 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+## 기능 구현 목록
+
+- 전체 기능 호출
+- 크루 전체를 탐색하는 기능
+- 닉네임을 2글자씩 분리하는 기능
+- 분리한 닉네임이 중복인지 확인하는 기능
+- 리스트배열의 이메일 문자열을 반환하는 기능
+- 리스트배열의 닉네임 문자열을 반환하는 기능
