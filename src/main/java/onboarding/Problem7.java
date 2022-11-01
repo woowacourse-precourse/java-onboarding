@@ -12,6 +12,16 @@ public class Problem7 {
     private static Map<String, List<String>> friendsMap = new TreeMap<>();
     private static Map<String, Integer> scoreMap = new TreeMap<>();
 
+    static class RecommendFriend {
+        private String id;
+        private int score;
+
+        RecommendFriend(String id, int score) {
+            this.id = id;
+            this.score = score;
+        }
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         makeListOfFriends(friends);
         makeScoreMapOfFriendsList(user, visitors);
