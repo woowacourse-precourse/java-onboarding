@@ -163,6 +163,16 @@ class Recommendation{
     boolean exceedBounds(int numberOfRecommendation){
         return numberOfRecommendation>MAXIMUM_RECOMMENDATION;
     }
+    List<String> recommendFriends(){
+        List<String> recommendFriend=new ArrayList<>();
+        for(User friend: FriendScore){
+            if(canRecommend(friend)){
+                recommendFriend.add(friend.user);
+            }
+
+        }
+        return recommendFriend;
+    }
 }
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
