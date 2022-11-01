@@ -2,7 +2,11 @@ package onboarding;
 
 public class Problem3 {
 
+    private static final int minLength = 1;
+    private static final int maxLength = 10000;
+
     public static int solution(int number) {
+        isValidate(number);
         int answer = getCountClap(number);
         return answer;
     }
@@ -23,5 +27,11 @@ public class Problem3 {
             result+=countClap(i);
         }
         return result;
+    }
+
+    private static void isValidate(int money) {
+        if (money < minLength || money > maxLength) {
+            throw new IllegalArgumentException("숫자가 1이상 10000이하 이어야합니다.");
+        }
     }
 }
