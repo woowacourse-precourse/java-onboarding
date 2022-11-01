@@ -62,6 +62,47 @@ class ValidatorPro6 {
   }
 }
 
+class FindDuplicatePro6 {
+
+  public final static int EMAIL = 0;
+  public final static int NICKNAME = 1;
+
+  private final Set<String> emails;
+
+  public FindDuplicatePro6(List<List<String>> forms) {
+    this.emails = findDuplicateWord(forms);
+  }
+
+  public static Set<String> findDuplicateWord(List<List<String>> forms) {
+    Set<String> seen = new HashSet<>();
+    Set<String> emails = new HashSet<>();
+    for (int crewIdx = 0; crewIdx < forms.size(); crewIdx++) {
+      for (int i = 0; i < forms.get(crewIdx).get(NICKNAME).length() - 1; i++) {
+        String compareStr = forms.get(crewIdx).get(NICKNAME).substring(i, i + 2);
+        seen.add(compareStr);
+      }
+      boolean noDuplicate = false;
+      for (int j = crewIdx + 1; j < forms.size(); j++) {
+        for (String str : seen) {
+          if (forms.get(j).get(NICKNAME).contains(str)) {
+            emails.add(forms.get(j).get(EMAIL));
+            noDuplicate = true;
+          }
+        }
+      }
+      seen.clear();
+      if (noDuplicate) {
+        emails.add(forms.get(crewIdx).get(EMAIL));
+      }
+    }
+    return emails;
+  }
+
+  public Set<String> getEmails() {
+    return emails;
+  }
+}
+
 public class Problem6 {
 
   public static List<String> solution(List<List<String>> forms) {
