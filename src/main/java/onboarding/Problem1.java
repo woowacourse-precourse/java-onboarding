@@ -12,6 +12,9 @@ class Problem1 {
         return answer;
     }
 
+    private static int getMaxScore(int plusNum, int multiplyNum) {
+        return Math.max(plusNum, multiplyNum);
+    }
     private static int getPlusNum(List<Integer> member) {
         int PlusNum = 0;
         for (int i = 0; i < 2; i++) {
