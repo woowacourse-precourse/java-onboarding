@@ -16,6 +16,14 @@ public class Problem6 {
         return answer;
     }
 
+    //  회원 이름 유효성 검사 - 길이
+    private static Boolean verifyNameLength(String name){
+        int length = name.length();
+        if(length < MIN_ID_LENGTH) return false;
+        if(length >= MAX_ID_LENGTH) return false;
+        return true;
+    }
+
     // 회원 이름 유효성 검사 - 소문자
     private static Boolean verifyNameType(String name){
         for(int i = 0; i < name.length(); i++){
