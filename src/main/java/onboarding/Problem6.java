@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 class FormManager {
     Map<String, Integer> wordOfNickname = new HashMap<String, Integer>();
@@ -46,10 +43,27 @@ class FormManager {
             }
         }
     }
+
+    /**
+     * 두 글자 이상 중복되는 nickname들의 리스트를 반환
+     */
+    List<String> getOverlapNicknames(){
+        List<String> overlapNicnames = new ArrayList<String>();
+        for(int i = 0; i< forms.size(); i++){
+            if(isOverlap[i]){
+                overlapNicnames.add(forms.get(i).get(0));
+            }
+        }
+        Collections.sort(overlapNicnames);
+        return overlapNicnames;
+    }
 }
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
+        FormManager formManager = new FormManager(forms);
+        formManager.checkOverlap();
+        answer = formManager.getOverlapNicknames();
         return answer;
     }
 }
