@@ -26,7 +26,7 @@ public class Problem6 {
             }
         }
 
-        Collections.sort(answer);
+        answer.sort(Comparator.naturalOrder());
         return answer;
     }
 
