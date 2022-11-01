@@ -33,6 +33,22 @@ class ApplicationTest {
             int result = -1;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
+
+        @Test
+        void case4() {
+            List<Integer> pobi = List.of(99, 100);
+            List<Integer> crong = List.of(399, 400);
+            int result = 2;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
+        @Test
+        void case5() {
+            List<Integer> pobi = List.of(98, 99);
+            List<Integer> crong = List.of(399, 400);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
     }
 
     @Nested
@@ -108,6 +124,21 @@ class ApplicationTest {
                     List.of("nowm@email.com", "이제엠")
             );
             List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com");
+            assertThat(Problem6.solution(forms)).isEqualTo(result);
+        }
+
+        @Test
+        void case2() {
+            List<List<String>> forms = List.of(
+                    List.of("jm@email.com", "제이콘"),
+                    List.of("jason@email.com", "제이지"),
+                    List.of("woniee@email.com", "고제이"),
+                    List.of("mj@email.com", "젠"),
+                    List.of("mj@email.com", "이"),
+                    List.of("nowm@email.com", "이지우스"),
+                    List.of("ez@email.com", "지우걸")
+            );
+            List<String> result = List.of("ez@email.com", "jason@email.com", "jm@email.com", "nowm@email.com", "woniee@email.com");
             assertThat(Problem6.solution(forms)).isEqualTo(result);
         }
     }
