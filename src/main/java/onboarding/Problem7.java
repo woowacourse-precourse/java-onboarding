@@ -96,6 +96,15 @@ public class Problem7 {
            return user2.point - user1.point;
         });
     }
+    private static void makeAnswer(List<String> answer, List<User> users) {
+        int usersSize = users.size();
+        usersSize = Math.min(usersSize, 5);
+        for (int i = 0; i < usersSize; i++) {
+            User user = users.get(i);
+            String name = user.name;
+            answer.add(name);
+        }
+    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
