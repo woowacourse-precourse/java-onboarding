@@ -11,10 +11,7 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
         List<String> for_final = new ArrayList<>();
-        String name= "";
-        String name2= "";
-        String email = "";
-        String email2 = "";
+        String name= "", name2 = "", email = "", email2 = "";
 
         if(checkCrewAmount(forms)) {
             for (int i = 0; i < forms.size(); i++) {
