@@ -9,6 +9,7 @@ import java.util.Map;
 public class Problem7 {
     private static final int VISIT_SCORE = 1;
     private static final int FRIEND_SCORE = 10;
+    private static final int MAX_RECOMMEND = 5;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
@@ -19,7 +20,8 @@ public class Problem7 {
         addVisitorScore(score, visitors);
         addFriendScore(score, user, friendsInfo);
         removeUserFriendScore(score, friendsInfo.get(user));
-        
+
+        answer = setRecommendFriend(score);
         return answer;
     }
 
@@ -63,6 +65,21 @@ public class Problem7 {
         for (String userFriend : userFriends) {
             score.remove(userFriend);
         }
+    }
+
+    private static List<String> setRecommendFriend(Map<String, Integer> score) {
+        List<String> recommendFriends = new ArrayList<>(score.keySet());
+
+        recommendFriends.sort((user1, user2) -> {
+
+            if (score.get(user1).equals(score.get(user2))) {
+                return user1.compareTo(user2);
+            }
+
+            return score.get(user2).compareTo(score.get(user1));
+        });
+
+        return recommendFriends.subList(0, Math.min(recommendFriends.size(), MAX_RECOMMEND));
     }
 
 }
