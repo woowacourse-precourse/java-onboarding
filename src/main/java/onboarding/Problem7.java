@@ -6,10 +6,10 @@ public class Problem7 {
     static Map<String,Integer> map = new HashMap<>();
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
-        List<String> user_friend = new ArrayList<>();
+        Set<String> user_friend = new HashSet<>();
         user_friend = findFriends(user,friends);
-        checkFriends(user,friends,user_friend);
-        checkIsVisited(visitors,user_friend);
+        checkFriends(user,friends, (HashSet<String>) user_friend);
+        checkIsVisited(visitors, (HashSet<String>) user_friend);
         sortMaps(map,answer);
         return answer;
     }
@@ -33,13 +33,13 @@ public class Problem7 {
             if(count == 5){break;}
         }
     }
-    static void checkIsVisited(List<String> visitors,List<String> user_friend){
+    static void checkIsVisited(List<String> visitors,HashSet<String> user_friend){
         for(String info : visitors){
             if(map.get(info) == null && !user_friend.contains(info)){map.put(info,1);}
             else if(map.get(info) != null && !user_friend.contains(info)){map.put(info,map.get(info)+1);}
         }
     }
-    static void checkFriends(String host,List<List<String>> friends,List<String> user_friend){
+    static void checkFriends(String host,List<List<String>> friends,HashSet<String> user_friend){
         for(List<String> info : friends){
             if(user_friend.contains(info.get(0)) && info.get(1) != host){
                 if(map.get(info.get(1)) == null){map.put(info.get(1),10);}
@@ -49,12 +49,12 @@ public class Problem7 {
                 else{map.put(info.get(0),map.get(info.get(0))+10);}}
         }
     }
-    static List<String> findFriends(String host,List<List<String>> friends){
-        List<String> friend_info = new ArrayList<>();
+    static HashSet<String> findFriends(String host,List<List<String>> friends){
+        Set<String> friend_info = new HashSet<>();
         for(List<String> info : friends){
             if(info.get(0).equals(host)){friend_info.add(info.get(1));}
             if(info.get(1).equals(host)){friend_info.add(info.get(0));}
         }
-        return friend_info;
+        return (HashSet<String>) friend_info;
     }
 }
