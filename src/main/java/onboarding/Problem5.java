@@ -11,12 +11,12 @@ class Money {
   private List<Integer> answer = new ArrayList<>();
 
   Money(int money, int[] moneylist) {
-    rangeValidityCheck(money);
+   // rangeValidityCheck(money);
     this.money = money;
     this.moneyList = moneylist;
   }
 
-  private void rangeValidityCheck(int money) {
+  void rangeValidityCheck() {
     if (money < 1 || money > 1000000) {
       throw new IllegalArgumentException("Money is not in range");
     }
@@ -37,6 +37,7 @@ public class Problem5 {
     int[] moneyList = {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
 
     Money money1 = new Money(money, moneyList);
+    money1.rangeValidityCheck();
     return (money1.getAnswer());
   }
 }
