@@ -13,4 +13,11 @@ public class Problem5 {
         return answer;
     }
 
+    //지폐 갯수를 계산하는 기능
+    public static List<Integer> calculation(int money) {
+        int count = 0; //지폐 갯수 저장
+
+        return arr;
+    }
+
 }
