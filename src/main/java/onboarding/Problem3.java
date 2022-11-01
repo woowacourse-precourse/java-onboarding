@@ -1,5 +1,10 @@
 package onboarding;
-
+/*
+ * 기능구현
+ * 1. 범위 체크 함수
+ * 2. 3,6,9의 수 세는 함수
+ * 3. 수를 더하는 함수
+ * */
 public class Problem3 {
 
     static final int EXCEPTION = -1;
