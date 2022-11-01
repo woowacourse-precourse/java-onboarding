@@ -13,7 +13,7 @@ public class Problem6 {
 //        List<String> answer = List.of("");
 //        System.out.println(forms.get(0).get(0));
         List<String> answer=getList(forms);
-        return List.of("true");
+        return answer;
     }
 
     private static List<String> getList(List<List<String>> forms){
@@ -44,8 +44,18 @@ public class Problem6 {
         return result;
     }
 
-    private static boolean isOverlap(String fomrer,String latter){
+    private static boolean isOverlap(String former,String latter){
+        char[] char_former=former.toCharArray();
+        char[] char_latter=latter.toCharArray();
 
+        for(int i=0;i<former.length()-1;i++){
+            for(int j=0;j<latter.length()-1;j++){
+                if(char_former[i]==char_latter[j]&&char_former[i+1]==char_latter[j+1])
+                    return true;
+            }
+        }
+
+        return false;
     }
 
     private static boolean input_exception(List<List<String>> forms){
