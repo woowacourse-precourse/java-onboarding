@@ -21,8 +21,8 @@ public class Problem2 {
     }
 
     private static Pattern createConsecutiveDuplicatePattern(String cryptogram) {
-        String createConsecutiveDuplicateRegex = createConsecutiveDuplicateRegex(cryptogram);
-        return Pattern.compile(createConsecutiveDuplicateRegex);
+        String consecutiveDuplicateRegex = createConsecutiveDuplicateRegex(cryptogram);
+        return Pattern.compile(consecutiveDuplicateRegex);
     }
 
     private static String createConsecutiveDuplicateRegex(String cryptogram) {
