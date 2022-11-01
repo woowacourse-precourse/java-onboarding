@@ -8,7 +8,8 @@ public class Problem7 {
         Map<String,HashSet<String>> friendMap = setFriend(friends);
         Map<String, Integer> friendScoreMap = getFriendScore(user,friendMap);
         Map<String, Integer> visitorScoreMap = getVisitorScore(user, friendMap, visitors);
-        return answer;
+
+        return getRecommendedFriend(friendScoreMap, visitorScoreMap);
     }
     
     private static Map<String,HashSet<String>> setFriend(List<List<String>> friends) {
@@ -62,5 +63,27 @@ public class Problem7 {
             visitorScoreMap.put(visitor,visitorScoreMap.containsKey(visitor) ? visitorScoreMap.get(visitor) + 1 : 1);
         }
         return visitorScoreMap;
+    }
+
+    private static List<String> getRecommendedFriend(Map<String, Integer> friendScoreMap, Map<String, Integer> visitorScoreMap) {
+        List<String> answer = new ArrayList<>();
+        friendScoreMap.forEach((k, v) -> visitorScoreMap.merge(k, v, Integer::sum));
+
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(visitorScoreMap.entrySet());
+        entryList.sort(new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                int comparision = (o1.getValue() - o2.getValue()) * -1;
+                return comparision == 0 ? o1.getKey().compareTo(o2.getKey()) : comparision;
+            }
+        });
+
+        for(Map.Entry<String, Integer> entry : entryList){
+            if(answer.size() < 5){
+                answer.add(entry.getKey());
+            }
+        }
+
+        return answer;
     }
 }
