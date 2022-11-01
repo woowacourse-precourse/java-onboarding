@@ -19,10 +19,13 @@ public class Problem2 {
     private static String checkDuplicated(String code) {
         for (int i =0; i < code.length() - 1; i++) {
             if (code.charAt(i) == code.charAt(i+1)) {
-                //중복문자 제거 함수 호출
+                code = removeDuplicated(code);
             }
         }
         return code;
     }
 
+    private static String removeDuplicated(String cryptogram) {
+        return cryptogram.replaceAll("(([a-z])\\2{1,})", "");
+    }
 }
