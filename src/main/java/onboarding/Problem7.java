@@ -22,7 +22,17 @@ public class Problem7 {
                 userfriends = (friends.get(0));
             }
         }
+        return userfriends;
+    }
 
+    public static List<String> findUserFreinds(String user, List<List<String>> friends){
+        List<String> userfriends= new ArrayList<>();
+        for (int i=0; i< friends.size(); i++) {
+            String uesrfriend = findMyFriend(user, friends.get(i));
+            if (!uesrfriend.isEmpty()) {
+                userfriends.add(findMyFriend(user, friends.get(i)));
+            }
+        }
         return userfriends;
     }
 
