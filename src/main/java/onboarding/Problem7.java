@@ -16,7 +16,17 @@ public class Problem7 {
         Map<String, Integer> friendRelationScoreRepo = new HashMap<>();
         findUserFriends(user, friends, userFriends);
         calculateRelationScore(user, friends, userFriends, friendRelationScoreRepo);
+        calculateVisitScore(userFriends, visitors, friendRelationScoreRepo);
         return answer;
+    }
+
+    private static Map<String, Integer> calculateVisitScore(Set<String> userFriends,
+                                                            List<String> visitors,
+                                                            Map<String, Integer> friendRelationScoreRepo) {
+        visitors.stream().forEach(visitor -> friendRelationScoreRepo.put(visitor,
+            friendRelationScoreRepo.getOrDefault(visitor, 0) + 1));
+        userFriends.stream().forEach(friendRelationScoreRepo::remove);
+        return friendRelationScoreRepo;
     }
 
     private static Map<String, Integer> calculateRelationScore(
