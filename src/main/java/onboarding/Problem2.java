@@ -6,13 +6,21 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         Problem2 problem2 = new Problem2();
 
+        problem2.InitializeForDecryption(cryptogram);
+
         while(problem2.isHappenedDecryption());
 
         return problem2.getDecodedCryptograph();
     }
 
+    private void InitializeForDecryption(String cryptogram){
+        cryptograph = new StringBuffer(cryptogram);
+        cryptograph.insert(0," ");
+        cryptograph.append(" ");
+    }
+
     public String getDecodedCryptograph() {
-        return cryptograph.toString();
+        return cryptograph.toString().trim();
     }
     private boolean isHappenedDecryption(){
 
