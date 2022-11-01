@@ -13,6 +13,7 @@ public class Problem7 {
     private static final int USER_MAX_LENGTH = 30;
     private static final int FRIENDS_MIN_LENGTH = 1;
     private static final int FRIENDS_MAX_LENGTH = 10000;
+    private static final int KNOW_WITH_FRIEND_SCORE = 10;
     private static final String LOWERCASE_ALPHABET = "^[a-z]*$";
     private static final List<String> FRIENDS_LIST = new ArrayList<>();
     private static final Map<String, Integer> UNKNOWN_USER_SCORE = new HashMap<>();
@@ -97,9 +98,27 @@ public class Problem7 {
 
     //user sns에 방문한 사용자들을 map에 넣는 기능
     public static void putVisitorUserUnknown(List<String> visitors) {
-        for(String visitor : visitors) {
-            if(!FRIENDS_LIST.contains(visitor)) {
-                UNKNOWN_USER_SCORE.put(visitor,0);
+        for (String visitor : visitors) {
+            if (!FRIENDS_LIST.contains(visitor)) {
+                UNKNOWN_USER_SCORE.put(visitor, 0);
+            }
+        }
+    }
+
+    //user와 함께 아는 친구 수 점수를 산출하는 기능
+    public static void plusUnknownFriendUserScore(String user, List<List<String>> friends) {
+        for (List<String> friend : friends) {
+            if (FRIENDS_LIST.contains(friend.get(0)) && FRIENDS_LIST.contains(friend.get(1))
+                || friend.contains(user)) {
+                continue;
+            }
+            if (FRIENDS_LIST.contains(friend.get(0))) {
+                UNKNOWN_USER_SCORE.replace(friend.get(1),
+                    UNKNOWN_USER_SCORE.get(friend.get(1)) + KNOW_WITH_FRIEND_SCORE);
+            }
+            if (FRIENDS_LIST.contains(friend.get(1))) {
+                UNKNOWN_USER_SCORE.replace(friend.get(0),
+                    UNKNOWN_USER_SCORE.get(friend.get(0)) + KNOW_WITH_FRIEND_SCORE);
             }
         }
     }
