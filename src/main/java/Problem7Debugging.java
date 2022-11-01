@@ -71,6 +71,12 @@ public class Problem7Debugging {
 
                 String friendNameOfFriendOfUser = friends.get(i).get(friendOfFriendIndex);
 
+                int presentPoint = nameAndPoint.get(friendNameOfFriendOfUser);
+
+                presentPoint += 10;
+
+                nameAndPoint.put(friendNameOfFriendOfUser,presentPoint);
+
             }
         }
 

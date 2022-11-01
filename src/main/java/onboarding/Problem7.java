@@ -56,6 +56,11 @@ public class Problem7 {
 
                 String friendNameOfFriendOfUser = friends.get(i).get(friendOfFriendIndex);
 
+                int presentPoint = nameAndPoint.get(friendNameOfFriendOfUser);
+
+                presentPoint += 10;
+
+                nameAndPoint.put(friendNameOfFriendOfUser,presentPoint);
             }
         }
 
