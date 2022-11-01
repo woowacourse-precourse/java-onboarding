@@ -38,15 +38,18 @@ public class Problem6 {
 
             for (int j = 0; j < crewNickname.length() - 1; j++) {
                 String splitNickname = crewNickname.substring(j, j + 2);
-                if (!duplicatedMap.containsKey(splitNickname)) {
-                    duplicatedMap.put(splitNickname, new ArrayList<>());
-                }
-                duplicatedMap.get(splitNickname).add(crewEmail);
+                putSplitNickname(splitNickname, crewEmail, duplicatedMap);
             }
         }
         return duplicatedMap;
     }
 
+    private static void putSplitNickname(String splitNickname, String crewEmail, Map<String, ArrayList<String>> duplicatedMap) {
+        if (!duplicatedMap.containsKey(splitNickname)) {
+            duplicatedMap.put(splitNickname, new ArrayList<>());
+        }
+        duplicatedMap.get(splitNickname).add(crewEmail);
+    }
 
     private static boolean isValidEmail(String email) {
         if (email.length() < 11 || email.length() >= 20) {
