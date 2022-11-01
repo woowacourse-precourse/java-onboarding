@@ -32,10 +32,10 @@ public class Problem6 {
         for (int k = 0; k < nicknames.size(); k++) {
             if (k != i) {
                 if (hasSimilarNickName(nicknames.get(k), part)) {
-                    if (!isAlreadyAnswerIndexes(i)) {
+                    if (isNotInAnswerIndexes(i)) {
                         answerIndexes.add(i);
                     }
-                    if (!isAlreadyAnswerIndexes(k)) {
+                    if (isNotInAnswerIndexes(k)) {
                         answerIndexes.add(k);
                     }
                 }
