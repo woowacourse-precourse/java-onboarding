@@ -12,4 +12,16 @@ class Problem1 {
 
         return answer;
     }
+
+    // 합구하기
+    public static int subNum(int num) {
+        int sum = 0;
+
+        while(num!=0) {
+            sum += num % 10;
+            num /= 10;
+        }
+
+        return sum;
+    }
 }
