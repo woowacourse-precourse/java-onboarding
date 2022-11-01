@@ -10,6 +10,7 @@ public class Problem3 {
         return answer;
     }
 
+    //숫자에서 3, 6, 9의 개수를 체크하는 기능
     static int checkThree(int n){
         int result = 0;
         while(n>0){
