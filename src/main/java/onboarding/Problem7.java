@@ -173,6 +173,30 @@ public class Problem7 {
         }
     }
 
+    // 5. 친구 추천하기
+    static List<String> getResultList(List<List<String>> infoScoreList)
+    {
+        // 최종 명단 정보 리스트
+        List<String> resultList = new ArrayList<>();
+
+        for (List<String> personInfo : infoScoreList)
+        {
+            int score = Integer.parseInt(personInfo.get(1));
+
+            // 최종 명단 리스트가 꽉찬 경우
+            if(personInfo.size() == 5)
+                break;
+
+            // 점수가 0보다 크면서 최종 명단 리스트가 5보다 작다면 추가
+            if((score > 0) && (resultList.size() < 5))
+            {
+                resultList.add(personInfo.get(0));
+            }
+        }
+
+        return resultList;
+    }
+
     // 점수 타입 변환 & 점수 순 정렬 수행
     static int getNumSort(String listOne, String listTwo)
     {
@@ -223,8 +247,11 @@ public class Problem7 {
         // 친구 추천 명단 정렬
         getRecoSort(infoScoreList);
 
-        // 친구 추천 명단 정렬 결과
-        System.out.println("정렬 결과 : " + infoScoreList);
+        // 친구 추천 상위 5명
+        answer = getResultList(infoScoreList);
+
+        // 친구 추천 결과 확인
+        System.out.println(answer);
 
         return answer;
     }
