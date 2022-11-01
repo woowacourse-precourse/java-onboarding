@@ -12,8 +12,8 @@ public class Problem7 {
 
         // 3. 함께 아는 친구 점수 계산
         for (String userName : personalFriendsMap.keySet()) {
-            // 본인 제외
-            if (user.equals(userName)) {
+            // 본인과 이미 친구인 유저 제외
+            if (user.equals(userName) || personalFriendsMap.get(user).contains(userName)) {
                 continue;
             }
             // 아는 사람 명수 계산
@@ -24,7 +24,7 @@ public class Problem7 {
         }
         // 4. 방문자 점수 계산
         for (String visitor : visitors) {
-            if (user.equals(visitor)) {
+            if (user.equals(visitor) || personalFriendsMap.get(user).contains(visitor)) {
                 continue;
             }
             // 점수가 없었던 사람이라면
@@ -34,17 +34,28 @@ public class Problem7 {
             scoreMap.put(visitor, scoreMap.get(visitor) + 1);
         }
 
-        // 5. 정렬 및 3명의 친구 추천
-        List<String> answer = new ArrayList<>(scoreMap.keySet());
-        answer.sort(new Comparator<String>() {
+        // 5. 정렬
+        List<String> sortedFriendList = new ArrayList<>(scoreMap.keySet());
+        sortedFriendList.sort(new Comparator<String>() {
             @Override
             public int compare(String o1, String o2) {
                 Integer score1 = scoreMap.get(o1);
                 Integer score2 = scoreMap.get(o2);
+                if (score2.equals(score1)) {
+                    return o1.compareTo(o2);
+                }
                 return score2.compareTo(score1);
             }
         });
-        return answer.subList(0, 3);
+        // 6. 최대 5명의 유저 추천
+        ArrayList<String> answer = new ArrayList<>();
+        for (int i = 0; i < sortedFriendList.size(); i++) {
+            if (i > 5) {
+                break;
+            }
+            answer.add(sortedFriendList.get(i));
+        }
+        return answer;
     }
 
     // 유저별 친구 목록 생성 기능
