@@ -30,8 +30,8 @@ class Problem1 {
         ArrayList<Integer> pLeftList = new ArrayList<>();
         ArrayList<Integer> pRightList = new ArrayList<>();
 
-        addList(pLeftPage, pLeftList);
-        addList(pRightPage, pRightList);
+        addPageNumber(pLeftPage, pLeftList);
+        addPageNumber(pRightPage, pRightList);
 
         int pLeftBigNumber = calculateNumber(pLeftList);
         int pRightBigNumber = calculateNumber(pRightList);
@@ -41,8 +41,8 @@ class Problem1 {
         ArrayList<Integer> cLeftList = new ArrayList<>();
         ArrayList<Integer> cRightList = new ArrayList<>();
 
-        addList(cLeftPage, cLeftList);
-        addList(cRightPage, cRightList);
+        addPageNumber(cLeftPage, cLeftList);
+        addPageNumber(cRightPage, cRightList);
 
         int cLeftBigNumber = calculateNumber(cLeftList);
         int cRightBigNumber = calculateNumber(cRightList);
@@ -95,7 +95,7 @@ class Problem1 {
         return leftPage % 2 == 0 || rightPage % 2 != 0;
     }
 
-    private static void addList(int page, ArrayList<Integer> list) {
+    private static void addPageNumber(int page, ArrayList<Integer> list) {
         while (true) {
             int num = page % 10;
             if (num != 0) {
