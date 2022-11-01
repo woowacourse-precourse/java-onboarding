@@ -9,14 +9,21 @@ public class Problem4 {
         StringBuilder sb = new StringBuilder();
         for(int i=0; i<str.length(); i++){
             char c = str.charAt(i);
-            if('A' < c && c < 'M'){
-                c = (char)('Z' - (c  - 'A'));
-            }else if('N' < c && c < 'Z'){
-                c = (char)('A'+('Z' - c));
-            }else if('a' < c && c < 'm'){
-                c = (char)('z' - (c  - 'a'));
-            }else if('n' < c && c < 'z'){
-                c = (char)('a'+('z' - c));
+            if('A' <= c && c <= 'M'){
+                sb.append((char)('Z' - (c  - 'A')));
+                continue;
+            }
+            if('N' <= c && c <= 'Z'){
+                sb.append((char)('A'+('Z' - c)));
+                continue;
+            }
+            if('a' <= c && c <= 'm'){
+                sb.append((char)('z' - (c  - 'a')));
+                continue;
+            }
+            if('n' <= c && c <= 'z'){
+                sb.append((char)('a'+('z' - c)));
+                continue;
             }
             sb.append(c);
         }
