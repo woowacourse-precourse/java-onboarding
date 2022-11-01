@@ -1,6 +1,7 @@
 package onboarding.problem7;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class FriendRecommendation {
     private String user;
@@ -61,5 +62,19 @@ public class FriendRecommendation {
                 continue;
             visitorScore.put(visitor, visitorScore.containsKey(visitor) ? visitorScore.get(visitor) + 1 : 1);
         }
+    }
+
+    private List<String> calculateRecommendationScore(){
+        friendScore.forEach((k, v) -> visitorScore.merge(k, v, Integer::sum));
+        Map<String, Integer> sortedMap = visitorScore.entrySet()
+                .stream()
+                .sorted(Collections
+                        .reverseOrder(Map.Entry.<String, Integer>comparingByValue())
+                        .thenComparing(Map.Entry.comparingByKey()))
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        Map.Entry::getValue,
+                        (oldValue, newValue) -> oldValue, LinkedHashMap::new));
+        return new ArrayList<>(sortedMap.keySet());
     }
 }
