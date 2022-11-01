@@ -10,11 +10,33 @@ public class Problem7 {
     3. 점수-이름 순 정렬
      */
 
-    static HashMap<String, List<String>> friendList;
-    static HashMap<String, Integer> scoreBoard;
+    static HashMap<String, List<String>> friendList = new HashMap<>();
+    static HashMap<String, Integer> scoreBoard = new HashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
+        for (int i=0; i<friends.size(); i++){
+            String user1 = friends.get(i).get(0);
+            String user2 = friends.get(i).get(1);
+            addFriend(user1, user2);
+            addFriend(user2, user1);
+        }
+
+        List<String> userList = new ArrayList<>(friendList.keySet());
+        for (int i=0; i<userList.size(); i++){
+            if (user.equals(userList.get(i))) continue;
+            int commonFriend = countCommonFriend(user, userList.get(i));
+            addScore(userList.get(i), commonFriend*10);
+        }
+
+        for (int i=0; i<visitors.size(); i++){
+            addScore(visitors.get(i), 1);
+        }
+
+        List<String> finalScoreBoard = sortScoreBoard();
+        for (int i=0; i<3; i++){
+            answer.add(finalScoreBoard.get(i));
+        }
         return answer;
     }
 
