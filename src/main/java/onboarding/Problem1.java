@@ -13,6 +13,11 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
+        if(isException(pobi.get(0), pobi.get(1)) || isException(crong.get(0), crong.get(1))){
+            int exception = -1;
+            return exception;
+        }
+
         char[] leftPageNumberForPobi = String.valueOf(pobi.get(0)).toCharArray();
         char[] rightPageNumberForPobi = String.valueOf(pobi.get(1)).toCharArray();
 
@@ -20,6 +25,10 @@ class Problem1 {
         char[] rightPageNumberForCrong = String.valueOf(crong.get(1)).toCharArray();
 
         return answer;
+    }
+
+    public static boolean isException(int leftPageNumber, int rightPageNumber){
+        return rightPageNumber - leftPageNumber != 1;
     }
 
     public static int maxPageNumber(char[] leftPageNumber, char[] rightPageNumber){
