@@ -57,11 +57,18 @@ class Problem1 {
                 System.out.println(max);
             }
         }
+        int crongMax = max;
 
         //승자 출력 기능
+        if(pobiMax > crongMax)
+            answer= 1;
+        else if(pobiMax < crongMax)
+            answer= 2;
+        else if(pobiMax == crongMax)
+            answer= 0;
+        else
+            answer = -1;
 
-
-       int answer = nteger.MAX_VALUE;
         return answer;
     }
 }
