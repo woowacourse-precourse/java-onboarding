@@ -6,6 +6,7 @@ package onboarding;
  */
 public class Problem3 {
     public static int solution(int number) {
+        validateNumber(number);
         int cnt = 0;
         for (int i = 1; i <= number; ++i) {
             String s = String.valueOf(i);
@@ -22,5 +23,12 @@ public class Problem3 {
             }
         }
         return cnt;
+    }
+
+    private static void validateNumber(int number) {
+        if (1 <= number && number <= 10000) {
+            return;
+        }
+        throw new RuntimeException("number는 1이상 10000이하 자연수만 입력 가능합니다");
     }
 }
