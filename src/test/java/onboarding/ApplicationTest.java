@@ -199,13 +199,9 @@ class ApplicationTest {
                     List.of("drake", "millo"),
                     List.of("shakevan", "mrko")
             );
-            List<List<String>> friends_form = new ArrayList<>(friends);
-            List<String> friend = new ArrayList<>(List.of("shakevan", "mrko"));
-            friends_form.remove(friend);
-            System.out.println("test1");
-            System.out.println(friends);
-            System.out.println("test2");
-            System.out.println(friends_form);
+            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+            List<String> result = List.of("andole", "jun", "bedi");
+            assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
         }
         @Test
         void case1() {

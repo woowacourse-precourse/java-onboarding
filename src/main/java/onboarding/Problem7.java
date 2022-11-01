@@ -41,25 +41,26 @@ public class Problem7 {
     }
     public static void calculateScoreTenPoints(HashMap<String, Integer> friends_score, List<String> friends_list, List<List<String>> friends){
 
-        HashSet<String> already_set = new HashSet<>(friends_list);
-
+        HashSet<String> already_friend_set = new HashSet<>(friends_list);
+        System.out.println(friends);
+        System.out.println(already_friend_set);
         // 이미 친구 인 사람은 0 점 : 0점은 추천 x
         for (List<String> friend : friends) {
             if (!friends_score.containsKey(friend.get(0)))
             {
-                friends_score.put(friend.get(0),0);
+                friends_score.put(friend.get(1),0);
             }
             else if (!friends_score.containsKey(friend.get(1)))
             {
-                friends_score.put(friend.get(1),0);
+                friends_score.put(friend.get(0),0);
             }
         }
-
+        System.out.println(friends_score);
         // check name and add 10points for friends fo already friends
         for (List<String> friend : friends) {
-            if (!already_set.contains(friend.get(0))) {
+            if (already_friend_set.contains(friend.get(0))) {
                 friends_score.put(friend.get(1), friends_score.get(friend.get(1)) + 10);
-            } else if (!already_set.contains(friend.get(1))) {
+            } else if (already_friend_set.contains(friend.get(1))) {
                 friends_score.put(friend.get(0), friends_score.get(friend.get(0)) + 10);
             }
         }
