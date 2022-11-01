@@ -116,6 +116,9 @@ public class Problem7 {
                 continue;
             usersList.put(visitorsArray[i], usersList.get(visitorsArray[i]) + 1);
         }
+
+        usersList = resetRealFriendScore(usersList, userLinkFriend);
+
         List<Map.Entry<String, Integer>> list_entries = new ArrayList<Map.Entry<String, Integer>>(usersList.entrySet());
 
         Collections.sort(list_entries, new Comparator<Map.Entry<String, Integer>>() {
@@ -138,6 +141,9 @@ public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+
+
+
         return answer;
     }
 }
