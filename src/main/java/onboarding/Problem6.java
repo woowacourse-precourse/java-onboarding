@@ -7,15 +7,13 @@ import java.util.List;
 public class Problem6 {
 
     public static HashMap<String,Integer> map;
-    public static List<String> answer;
-    public static int[] visit;
-
+    public static boolean[] visit;
 
     public static List<String> solution(List<List<String>> forms) {
 
         map = new HashMap<String,Integer>();
-        answer = new ArrayList<>();
-        visit = new int[10001];
+        visit = new boolean[10001];
+        listCheck(forms);
 
         return answer;
     }
@@ -32,12 +30,15 @@ public class Problem6 {
         for(int i=0;i<nickname.length()-2;i++){
 
             if(map.containsKey(nickname.substring(i,i+2))){
-                map.put(nickname,index);
+                map.put(nickname.substring(i,i+2),index);
             }
             else{
-
+                if(map.get(nickname.substring(i,i+2))!=index){
+                    visit[index]=true;
+                    visit[map.get(nickname.substring(i,i+2))]=true;
+                }
+                else continue;
             }
         }
     }
-
 }
