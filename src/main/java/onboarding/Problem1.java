@@ -3,18 +3,18 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
-    public static int checkPages(List<Integer> pobi, List<Integer> crong) {
-        if (pobi.size() != 2 || crong.size() != 2)
-            return 0;
-        else if (pobi.get(0) <= 1 || crong.get(0) <= 1)
-            return 0;
-        else if (pobi.get(1) >= 400 || crong.get(1) >= 400)
-            return 0;
-        else if (pobi.get(0) % 2 == 0 || crong.get(0) % 2 == 0)
-            return 0;
-        else if (pobi.get(1) - pobi.get(0) != 1 || crong.get(1) - crong.get(0) != 1)
-            return 0;
-        return 1;
+    public static boolean validateInput(List<Integer> who) {
+        if (who.size() != 2)
+            return false;
+        else if (who.get(0) <= 1)
+            return false;
+        else if (who.get(1) >= 400)
+            return false;
+        else if (who.get(0) % 2 == 0)
+            return false;
+        else if (who.get(1) - who.get(0) != 1)
+            return false;
+        return true;
     }
     public static int getPageMaxNumber(int page) {
         int add = 0;
@@ -43,7 +43,7 @@ class Problem1 {
         return 0;
     }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if (checkPages(pobi, crong) == 0)
+        if (!validateInput(pobi) || !validateInput(crong))
             return -1;
         return getResult(pobi, crong);
     }
