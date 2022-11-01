@@ -3,6 +3,16 @@ package onboarding;
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
+
+        for(char ch : word.toCharArray()){
+            if(Character.isUpperCase(ch))
+                answer += isUpperAlpha(ch);
+            else if(Character.isLowerCase(ch))
+                answer += isLowerAlpha(ch);
+            else
+                answer += ch;
+        }
+
         return answer;
     }
 
