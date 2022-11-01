@@ -24,3 +24,9 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능 구현 목록
+1. 유저마다 친구 목록을 생성하는 기능 
+2. 유저와 함께 아는 친구 점수를 부여하는 기능
+3. 유저의 타임 라인에 방문한 점수를 부여하는 기능
+4. 추천 목록을 정렬하고 최대 5명을 반환하는 기능 
