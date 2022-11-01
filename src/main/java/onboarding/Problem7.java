@@ -23,6 +23,19 @@ public class Problem7 {
         return sortedRecommend;
     }
 
+    /**
+     * 친구가 아닌 방문자의 추천 점수 구하기
+     * @param scoreList
+     * @param visitorsNotFriends
+     * @return List<FriendsFriends>
+     */
+    private static List<FriendsFriends> wholeScore(List<FriendsFriends> scoreList, List<String> visitorsNotFriends) {
+        Set<String> set = new HashSet<>(visitorsNotFriends);
+        for (String s : set) {
+            scoreList.add(new FriendsFriends(s, Collections.frequency(visitorsNotFriends, s)));
+        }
+        return scoreList;
+    }
 
     /**
      * 친구가 아닌 방문자 찾기
