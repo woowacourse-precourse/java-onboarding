@@ -1,53 +1,69 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Stack;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        char[] cry = cryptogram.toCharArray();
+
+        String answer = "";
+        String[] crypto = cryptogram.split("");
+        List<String> question = new ArrayList<>(Arrays.asList(crypto));
         Stack stack = new Stack();
-        int count = 0;
+        for (String q : question)
+            stack.push(q);
 
-        for (int i = 0 ; i < cryptogram.length() ; i ++){
-            System.out.println(stack);
 
-            if(stack.size() == 0){
-                stack.push(cry[i]);
-                continue;
-            }
+        while (true) {
 
-            if(String.valueOf(stack.peek()).charAt(0) == cry[i]) {
-                count = 1;
-                continue;
-            }
+            Stack newStack = calculation(stack);
 
-            if(count == 0){
-                stack.push(cry[i]);
-            }else{
-                stack.pop();
-                if(stack.size() == 0){
-                    stack.push(cry[i]);
-                    count = 0;
-                    continue;
-                } else if(String.valueOf(stack.peek()).charAt(0) == cry[i]) {
-                    continue;
+            if(stack.size() == 0 ||check(newStack)){
+                for(int i = 0 ; i < newStack.size(); i ++){
+                    answer += newStack.get(i);
                 }
-                stack.push(cry[i]);
-                count = 0;
+                break;
+            }
+
+            stack = newStack;
+        }
+
+
+        return answer;
+    }
+
+    public static boolean check(Stack stack){
+        for (int i = 0 ; i < stack.size() -1; i ++){
+            if(String.valueOf(stack.get(i)).equals(String.valueOf(stack.get(i+1)))){
+                return false;
             }
         }
-        if(count == 1){
-            stack.pop();
-        }
+        return true;
+    }
 
-        System.out.println(stack);
-        StringBuffer answer = new StringBuffer();
+    public static Stack calculation( Stack stack) {
+        List<String> crypto = new ArrayList<>(stack);
+        Stack returnStack = new Stack();
+        String last = crypto.get(0);
+        returnStack.push(crypto.get(0));
+        boolean sameLast = false;
+        for (int i = 1; i < crypto.size(); i++) {
+            if (!(last.equals(crypto.get(i)))) {
+                if (sameLast == true)
+                    returnStack.pop();
 
-        while (stack.size() != 0){
-            answer.append(stack.pop());
+                returnStack.push(crypto.get(i));
+                last = crypto.get(i);
+                sameLast = false;
+            } else {
+                sameLast = true;
+            }
         }
-        System.out.println(answer);
-        String a = String.valueOf(answer.reverse());
-        return a;
+        if(sameLast == true){
+            returnStack.pop();
+        }
+        return returnStack;
     }
 }
