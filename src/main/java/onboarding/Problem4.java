@@ -12,7 +12,9 @@ public class Problem4 {
         String answer = "";
         for (int i=0; i<word.length(); i++) {
             char c = word.charAt(i);
-
+            if('a' <= c && c <= 'z') {
+                c = (char)('z' - c + 'a');
+            }
         }
         return answer;
     }
