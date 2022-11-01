@@ -26,10 +26,24 @@ public class Problem7 {
 
         return friendList;
     }
+
     private static void setScoreToFriendOfUserFriend(List<String> friendsOfUserFriends) {
 
         for(String friend: friendsOfUserFriends)
             recommends.putIfAbsent(friend, 10);
+    }
+
+    private static void getFriendsScore(String user, List<List<String>> friends) {
+        List<String> userFriends = getfriendListOfUser(user, friends);
+
+        for(String friend : userFriends) {
+            List<String> friendsOfUserFriends = getfriendListOfUser(friend, friends);
+            friendsOfUserFriends.remove(user);
+            friendsOfUserFriends.removeAll(userFriends);
+
+            setScoreToFriendOfUserFriend(friendsOfUserFriends);
+
+        }
     }
 
 }
