@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Problem6 {
 
@@ -87,5 +88,9 @@ public class Problem6 {
 
     public static void emailSort(List<String> emails) {
         emails.sort(String.CASE_INSENSITIVE_ORDER);
+    }
+
+    public static List<String> checkEmailDuplication(List<String> emails) {
+        return emails.stream().distinct().collect(Collectors.toList());
     }
 }
