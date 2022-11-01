@@ -22,6 +22,16 @@
 
 ### 기능목록
 
-- 기능1. String process(String word) : 문자열을 입력 받아 처리를 하고 변경된 값을 return한다.
-- 기능2. int isCapital(char elem) : 입력 받은 문자열의 문자가 대문자인지 소문자인지 또는 예외문자인지 파악한다.
-- 기능3. char reverse(char elem, int determination) : 대문자면 대문자 중 반대문자로 변환, 소문자면 소문자 중 반대문자로 변환을 한다.
+> **<기능 1><br>
+문자열의 글자마다 반대글자를 찾아서 반대 문자열을 완성시킨다.**<br>
+*private static String getReversedWord(String word)* <br>
+
+> **<기능 2><br>
+규칙에 따라 하나의 글자를 반대글자로 변환시켜 출력한다.**<br>
+*private static char reverseCharacter(char original, int UpperOrLower)*
+
+> **<기능 3><br>
+글자가 대문자인지 소문자인지 파악하고<br>
+대문자면 64, 소문자면 96을 출력한다.<br>
+둘 다 아니라면 -1을 출력한다.**<br>
+*private static int isCapital(char elem)*
