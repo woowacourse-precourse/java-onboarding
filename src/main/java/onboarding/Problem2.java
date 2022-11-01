@@ -1,14 +1,14 @@
 package onboarding;
 
-import onboarding.newExceptions.InvalidStringException;
+import onboarding.newExceptions.InvalidRestrictionException;
 
 import java.util.ArrayList;
 
 public class Problem2 {
-    public static String solution(String cryptogram) throws InvalidStringException {
+    public static String solution(String cryptogram) throws InvalidRestrictionException {
         Problem2 problem = new Problem2();
         if(problem.isViolatedRestrictions(cryptogram)){
-            throw new InvalidStringException("제한사항이 지켜지지 않았습니다.");
+            throw new InvalidRestrictionException("제한사항이 지켜지지 않았습니다.");
         }
 
         StringBuilder builder = new StringBuilder(cryptogram);
