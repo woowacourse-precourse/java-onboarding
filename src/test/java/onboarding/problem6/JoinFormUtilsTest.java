@@ -2,13 +2,12 @@ package onboarding.problem6;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import java.util.List;
 import java.util.Set;
 import org.junit.jupiter.api.Test;
 
-public class NickNameUtilsTest {
+public class JoinFormUtilsTest {
 
-	private final static NickNameUtils nickNameUtils = new NickNameUtils();
+	private final static JoinFormUtils JOIN_FORM_UTILS = new JoinFormUtils();
 	@Test
 	public void 닉네임_중복_처리_테스트() {
 	    //given
@@ -18,12 +17,12 @@ public class NickNameUtilsTest {
 		String input4 = "이제엠";
 
 	    //when
-		nickNameUtils.join(input);
-		nickNameUtils.join(input2);
-		nickNameUtils.join(input3);
-		nickNameUtils.join(input4);
+		JOIN_FORM_UTILS.join(input);
+		JOIN_FORM_UTILS.join(input2);
+		JOIN_FORM_UTILS.join(input3);
+		JOIN_FORM_UTILS.join(input4);
 	    //then
-		Set<String> duplicateNickNames = nickNameUtils.getDuplicateNickNames();
+		Set<String> duplicateNickNames = JOIN_FORM_UTILS.getDuplicateNickNames();
 		assertThat(duplicateNickNames)
 			.containsExactlyInAnyOrder(input, input2, input3);
 	}

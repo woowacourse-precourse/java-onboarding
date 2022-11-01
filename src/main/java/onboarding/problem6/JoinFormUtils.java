@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
-public class NickNameUtils {
+public class JoinFormUtils {
 
 	private final Map<String, String> joinNickNames = new HashMap<>();
 	private final Set<String> duplicateNickNames = new HashSet<>();
