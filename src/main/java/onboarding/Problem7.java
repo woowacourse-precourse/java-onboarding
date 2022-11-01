@@ -1,12 +1,12 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Problem7 {
 	static final int SCORE_FRIENDS_KNOW_WITH_USER = 10;
@@ -18,8 +18,39 @@ public class Problem7 {
 	static Set<String> directFriendsOfUserSet = new HashSet<>();
 
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-		List<String> answer = Collections.emptyList();
-		return answer;
+		makeFriendRelationGraph(friends);
+		makeRecommendationScores(user, visitors);
+		getDirectFriendsOfUser(user);
+
+		return recommendationScores.entrySet()
+				.stream()
+				.filter(Problem7::isRecommendable)
+				.sorted((o1, o2) -> isSameScore(o1, o2) ? compareNames(o1, o2) : compareScores(o1, o2))
+				.map(Map.Entry::getKey)
+				.limit(5)
+				.collect(Collectors.toList());
+	}
+
+	private static void makeRecommendationScores(String user, List<String> visitors) {
+		giveScoresToFriendsKnowWithUser(user);
+		giveScoresToFriendsWhoVisitUserTimeline(visitors);
+		recommendationScores.remove(user);
+	}
+
+	private static int compareScores(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+		return o2.getValue().compareTo(o1.getValue());
+	}
+
+	private static int compareNames(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+		return o1.getKey().compareTo(o2.getKey());
+	}
+
+	private static boolean isSameScore(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+		return compareScores(o2, o1) == 0;
+	}
+
+	private static boolean isRecommendable(Map.Entry<String, Integer> entry) {
+		return !directFriendsOfUserSet.contains(entry.getKey()) && entry.getValue() > DEFAULT_SCORE;
 	}
 
 	public static void getDirectFriendsOfUser(String user) {
