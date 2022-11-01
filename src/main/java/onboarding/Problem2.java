@@ -8,13 +8,13 @@ public class Problem2 {
         Stack<Character> stack;
         StringBuilder sb;
 
-        public Decryptor(char initChar) {
+        public Decryptor() {
             this.stack = new Stack<>();
-            this.stack.push(initChar);
+            this.stack.push('/');
             this.sb = new StringBuilder();
         }
 
-        public Decryptor decrypto(String cryptogram) {
+        public String decrypto(String cryptogram) {
             int strLen = cryptogram.length();
 
             for (int i = 0; i < strLen; i++) {
@@ -27,10 +27,10 @@ public class Problem2 {
                 }
             }
 
-            return this;
+            return result();
         }
 
-        public String result() {
+        private String result() {
             int stackLen = this.stack.size();
             for (int i = 1; i < stackLen; i++) {
                 this.sb.append(this.stack.pop());
@@ -41,7 +41,7 @@ public class Problem2 {
     }
 
     public static String solution(String cryptogram) {
-        Decryptor decryptor = new Decryptor('/');
-        return decryptor.decrypto(cryptogram).result();
+        Decryptor decryptor = new Decryptor();
+        return decryptor.decrypto(cryptogram);
     }
 }
