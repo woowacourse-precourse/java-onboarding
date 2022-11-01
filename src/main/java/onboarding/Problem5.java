@@ -1,9 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.TreeMap;
 
 /*
 1. 돈의 액수 초기화 설정
