@@ -37,10 +37,13 @@ public class Problem6 {
     }
 
     public static List<String> removeDuplicate(List<String> answer) {
-        List<String> result = answer.stream()
+        List<String> result = new ArrayList<>();
+
+        result = answer.stream()
                 .distinct()
                 .sorted()
                 .collect(Collectors.toList());
+
         return result;
     }
 
