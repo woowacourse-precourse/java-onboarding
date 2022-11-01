@@ -19,7 +19,7 @@ public class Crews {
                 .collect(Collectors.toList());
     }
 
-    public Map<String, Integer> getDuplicatedStringCounts() {
+    private Map<String, Integer> getDuplicatedStringCounts() {
         Map<String, Integer> stringCount = new HashMap<>();
         for (Crew crew : crewList) {
             countSubStringInName(stringCount, crew.getName());
