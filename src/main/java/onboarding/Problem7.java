@@ -25,8 +25,8 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         for (List i : friends){
             if (i.get(0)==user){
-//                friends 이중리스트에서 나랑 친구 찾기
-                String friend = i.get(1).toString(); // .toString()이 될지 모르겠다.
+//
+                String friend = i.get(1).toString();
                 friend_lis.add(friend);
                 Friend_find(user,friend, friends);
             }else if(i.get(1)==user){
@@ -36,22 +36,22 @@ public class Problem7 {
             }
         }
         for (String k : common_friend_lis) {
-            if (treemap.get(k) == null) { // 공통 친구가 해시맵에 없다면 새롭게 추가
+            if (treemap.get(k) == null) {
                 treemap.put(k, 10);
             } else {  // 있으면 기존 값에  10더하기
                 treemap.put(k, treemap.get(k) + 10);
             }
         }
         for (String j : visitors){
-            if(!friend_lis.contains(j)) { // 친구리스트에 해당 방문자가 없을때
-                if (treemap.get(j) == null) { // 공통 친구가 해시맵에 없다면 새롭게 추가
+            if(!friend_lis.contains(j)) {
+                if (treemap.get(j) == null) {
                     treemap.put(j, 1);
-                } else {  // 있으면 기존 값에  10더하기
+                } else {
                     treemap.put(j, treemap.get(j) + 1);
                 }
             }
         }
-//        여기까지 친구 추천 트리맵을 만들었음!!!!!!
+
 
 
         List<Map.Entry<String, Integer>> entryList = new LinkedList<>(treemap.entrySet());
