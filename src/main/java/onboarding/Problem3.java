@@ -17,18 +17,22 @@ public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
         for(int i = 1; i < number+1; i++){
-            answer+=check369Number(i);
+            answer+=checkNumber(i);
         }
         return answer;
     }
 
-    static int check369Number(int number){
-        int [] ArrayNum = NumAndArray.makeNumToArray(number);
+    static int checkNumber(int number){
+        int [] numArray = NumAndArray.makeNumToArray(number);
         int count = 0;
-        for (int num : ArrayNum) {
-            if (num == 3 || num == 6 || num == 9) {
-                count++;
-            }
+        for (int num : numArray) {
+            count= checkAddCount(count, num);
+        }
+        return count;
+    }
+    static int checkAddCount(int count, int number){
+        if (number == 3 || number == 6 || number == 9) {
+            count=count+1;
         }
         return count;
     }
