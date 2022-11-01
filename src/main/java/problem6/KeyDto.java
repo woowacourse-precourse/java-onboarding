@@ -3,12 +3,10 @@ package problem6;
 public class KeyDto {
     private String nickname;
     private int start;
-    private int end;
 
-    public KeyDto(String nickname, int start, int end) {
+    public KeyDto(String nickname, int start) {
         this.nickname = nickname;
         this.start = start;
-        this.end = end;
     }
 
     public String getNickname() {
@@ -19,7 +17,4 @@ public class KeyDto {
         return start;
     }
 
-    public int getEnd() {
-        return end;
-    }
 }

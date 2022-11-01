@@ -31,23 +31,15 @@ public class Forms {
 
     private void checkConsecutiveCharacter(CheckDto checkDto) {
         boolean stop = false;
-        for (int j = 0; j < getNickname(checkDto.getIndex()).length(); j++) {
-            stop = canCheck(checkDto, stop, j);
+        for (int j = 0; j < getNickname(checkDto.getIndex()).length() - 1; j++) {
+            stop = check(checkDto, stop, j);
         }
     }
 
-    private boolean canCheck(CheckDto checkDto, boolean stop, int index) {
+    private boolean check(CheckDto checkDto, boolean stop, int index) {
         if (!stop) {
-            stop = check(checkDto, stop, index);
-        }
-        return stop;
-    }
-
-    private boolean check(CheckDto checkDto, boolean stop, int start) {
-        String nickname = getNickname(checkDto.getIndex());
-        for (int k = start + 1; k < nickname.length(); k++) {
-            KeyDto keyDto = new KeyDto(nickname, start, k);
-            stop = canDuplication(checkDto, stop, keyDto);
+            stop = canDuplication(checkDto, stop,
+                    new KeyDto(getNickname(checkDto.getIndex()), index));
         }
         return stop;
     }
@@ -81,13 +73,7 @@ public class Forms {
 
     private void countConsecutiveCharacter(HashMap<String, Integer> count, String nickname) {
         for (int j = 0; j < nickname.length() - 1; j++) {
-            count(count, nickname, j);
-        }
-    }
-
-    private void count(HashMap<String, Integer> count, String nickname, int start) {
-        for (int k = start + 1; k < nickname.length(); k++) {
-            addCount(count, getKey(new KeyDto(nickname, start, k)));
+            addCount(count, getKey(new KeyDto(nickname, j)));
         }
     }
 
@@ -96,7 +82,7 @@ public class Forms {
     }
 
     private String getKey(KeyDto keyDto) {
-        return keyDto.getNickname().substring(keyDto.getStart(), keyDto.getEnd() + 1);
+        return keyDto.getNickname().substring(keyDto.getStart(), keyDto.getStart() + 2);
     }
 
     private String getNickname(int index) {
