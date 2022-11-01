@@ -30,19 +30,14 @@ public class Problem2 {
 
     private static String decodingCryptogram(String cryptogram) {
         Stack<Character> stack = new Stack<>();
-        char[] arrayOfCryptogram = cryptogram.toCharArray();
-        stack.push(arrayOfCryptogram[0]);
-
-        for (int i = 1; i < arrayOfCryptogram.length; i++) {
-            if (!stack.empty() && stack.peek().equals(arrayOfCryptogram[i])) stack.pop();
-            else if (arrayOfCryptogram[i - 1] == arrayOfCryptogram[i]) ;
-            else stack.push(arrayOfCryptogram[i]);
+        stack.push(cryptogram.charAt(0));
+        for (int i = 1; i < cryptogram.length(); i++) {
+            if (!stack.empty() && stack.peek().equals(cryptogram.charAt(i))) stack.pop();
+            else if (cryptogram.charAt(i-1) == cryptogram.charAt(i)) ;
+            else stack.push(cryptogram.charAt(i));
         }
-
         return stack.stream()
                 .map(String::valueOf)
-                .collect(Collectors.joining())
-                .toString();
-
+                .collect(Collectors.joining());
     }
 }
