@@ -51,6 +51,10 @@ class Problem7 {
         Set<String> set2 = new HashSet<String>(visitcount);
         List<String> tmpvisitlist = new ArrayList<String>(set2); // 함께하는 친구 중복제거
 
+        for (int i = 0; i < tmpvisitlist.size(); i++) {
+            map1.put(tmpvisitlist.get(i), Collections.frequency(visitcount, tmpvisitlist.get(i)) * 1);
+        }
+
         return answer;
     }
 }
