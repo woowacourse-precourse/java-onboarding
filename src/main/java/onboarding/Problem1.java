@@ -16,4 +16,13 @@ class Problem1 {
         }
         return result;
     }
+
+    private static int multiplyEachDigits(int page){
+        int result=1;
+        while(page!=0){
+            result *= page%10;
+            page /= 10;
+        }
+        return result;
+    }
 }
