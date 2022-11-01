@@ -52,6 +52,14 @@ public class Problem7 {
         // 사용자 이름 넣고 시작
         DFS(user,user,0);
 
+
+        // 10점 대상 크루들을 찾아서 점수 부여
+        for (String name : tenPointUserList) {
+
+            Integer friendScore = score.getOrDefault(name, 0);
+            score.put(name,friendScore+10);
+        }
+
         List<String> answer = new ArrayList<>();
         return answer;
     }
