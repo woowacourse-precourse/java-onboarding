@@ -13,6 +13,17 @@ public class Problem7 {
         userFriends = new ArrayList<>();
         List<String> answer = new ArrayList<>();
 
+        findFriendsByUser(user, friends);
+
         return answer;
+    }
+
+    public static void findFriendsByUser(String user, List<List<String>> friends){
+        for(List<String> friend : friends){
+            String friendId = friend.get(1);
+            if(friendId.equals(user)) {
+                userFriends.add(friend.get(0));
+            }
+        }
     }
 }
