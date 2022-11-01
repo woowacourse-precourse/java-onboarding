@@ -25,6 +25,7 @@ public class Problem4 {
     }
 
     private static Integer getOffset(char standardCharacter, char character) {
+        return character - standardCharacter;
     }
 
     private static boolean isCharacterUpperCase(char character) {
