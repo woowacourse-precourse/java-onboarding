@@ -53,7 +53,11 @@ public class Problem7 {
             if (friendScore.get(o2) - friendScore.get(o1) > 0) return 1;
             else return 0;
         });
-        if (answer.size()>5) return answer.subList(0,5);
+        if (answer.size()>5) {
+            List<String> subList;
+            subList = new ArrayList<>(answer.subList(0, 5));
+            return subList;
+        }
         return answer;
     }
 }
