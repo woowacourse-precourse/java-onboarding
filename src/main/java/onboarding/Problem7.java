@@ -2,7 +2,9 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class Problem7 {
@@ -10,8 +12,20 @@ public class Problem7 {
         List<String> answer = Collections.singletonList("aa");
         List<String> userFriendList = getUserList(user, friends);
         List<String> userList =  getUserList(friends, visitors);
+        Map<String, Integer> userObject = getUserObject(userList);
+
 
         return answer;
+    }
+
+    public static  Map<String, Integer> getUserObject(List<String> userList){
+        Map<String, Integer> userObject = new HashMap<>();
+
+        for (String mapUser : userList){
+            userObject.put(mapUser, 0);
+        }
+
+        return userObject;
     }
     public static List<String> getUserList(String user, List<List<String>> friends){
         List<String> userFriendList = new ArrayList<>();
