@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Problem7 {
 
@@ -11,6 +12,7 @@ public class Problem7 {
     private static final int USER_VISITED_POINT = 1;
     private static final int FRIEND_A = 0;
     private static final int FRIEND_B = 1;
+    private static final int MAX_RECOMMEND_COUNT = 5;
 
     private static List<String> userFriends = new ArrayList<>();
     private static Map<String, User> relationShips = new HashMap<>();
@@ -23,6 +25,9 @@ public class Problem7 {
         reflectAlreadyUserFriends(user, friends);
         reflectFriendsRelated(friends, user);
         reflectVisited(visitors);
+        List<String> recommendResult = getRecommendResult(user);
+
+        return recommendResult;
     }
 
     private static void reflectAlreadyUserFriends(String user, List<List<String>> friends) {
@@ -67,6 +72,17 @@ public class Problem7 {
         }
     }
 
+    private static List<String> getRecommendResult(String user) {
+        return relationShips.values()
+                .stream()
+                .filter(User::checkRecommendPointNotZero)
+                .filter(friend -> !userFriends.contains(friend.getName()) && !user.equals(friend.getName()))
+                .sorted()
+                .limit(MAX_RECOMMEND_COUNT)
+                .map(User::getName)
+                .collect(Collectors.toList());
+    }
+
     static class User implements Comparable<User> {
 
         private final String name;
@@ -78,6 +94,10 @@ public class Problem7 {
 
         public String getName() {
             return name;
+        }
+
+        public boolean checkRecommendPointNotZero() {
+            return recommendPoint != 0;
         }
 
         public void reflectFriend(User friend) {
