@@ -1,5 +1,7 @@
 package onboarding.problem3;
 
+import java.util.Arrays;
+
 public class Number {
 
     private final int MIN_NUMBER = 1;
@@ -18,5 +20,11 @@ public class Number {
 
     private boolean isOutOfBounds(int number) {
         return number < MIN_NUMBER || number > MAX_NUMBER;
+    }
+
+    private static int[] toDigits(String s) {
+        return Arrays.stream(s.split(""))
+                .mapToInt(Integer::parseInt)
+                .toArray();
     }
 }
