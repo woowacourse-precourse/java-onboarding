@@ -55,6 +55,16 @@ class Problem1 {
             result = true;
         }
 
+        //예외 사항 - 왼쪽 페이지가 1보다 작을 경우
+        if (member.get(0) < 1) {
+            result = true;
+        }
+
+        //예외 사항 - 오른쪽 페이지가 400보다 클 경우
+        if (member.get(1) > 400) {
+            result = true;
+        }
+
         return result;
     }
 
