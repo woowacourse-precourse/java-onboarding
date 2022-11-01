@@ -1,10 +1,11 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -12,8 +13,22 @@ public class Problem7 {
             throw new RuntimeException("올바르지 않은 인자입니다.");
         }
 
-        List<String> answer = Collections.emptyList();
-        return answer;
+        List<String> userFriends = new ArrayList<>();
+        Map<String, List<String>> friendsMap = getFriendsMap(friends, userFriends, user);
+        Map<String, Integer> scoreMap = getScoreMap(friendsMap, userFriends);
+        scoreMap = getScoreMapWithVisitors(visitors, scoreMap);
+
+        //stream 사용을 위한 임시 변수
+        //stream 사용을 위한 임시 변수
+        Map<String, Integer> finalScoreMap = getScoreMapWithoutMyFriends(scoreMap, userFriends);
+        List<String> recommendFriends = finalScoreMap.entrySet().stream()
+                .sorted(Map.Entry.comparingByKey())
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .filter(set -> set.getValue() > 0)
+                .limit(5)
+                .map(set -> set.getKey()).collect(Collectors.toList());
+
+        return recommendFriends;
     }
 
     private static Boolean isUserException(String user) {
