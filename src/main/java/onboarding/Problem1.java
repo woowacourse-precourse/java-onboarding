@@ -8,6 +8,14 @@ class Problem1 {
 
         if (!isValid(pobi) || !isValid(crong)) {
             answer = -1;
+        } else {
+            if (maxNum(pobi) > maxNum(crong)) {
+                answer = 1;
+            } else if (maxNum(pobi) == maxNum(crong)) {
+                answer = 0;
+            } else {
+                answer = 2;
+            }
         }
 
         return answer;
@@ -23,13 +31,17 @@ class Problem1 {
         return true;
     }
 
+    public static int maxNum(List<Integer> pages) {
+        return Math.max(maxNumForAPage(pages.get(0)), maxNumForAPage(pages.get(1)));
+    }
+
     public static int maxNumForAPage(int page) {
         int sum = 0;
         int multiply = 1;
 
         while (page != 0) {
             int number = page % 10;
-            page /=10;
+            page /= 10;
             sum += number;
             multiply *= number;
         }
