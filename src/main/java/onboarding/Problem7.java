@@ -36,7 +36,7 @@ public class Problem7 {
             }
         }
         return friendsAndScores;
-    }/*
+    }
     public static List<String> userfriends_set(List<List<String>> friends,String user) {
         List<String> user_fri=new ArrayList<>();
         for(int i=0; i<friends.size(); i++){
@@ -48,6 +48,7 @@ public class Problem7 {
             }
         }return user_fri;
     }
+
     public static Map<String,Integer> friendslist_set(List<String> ls,List<String> user_fri) {
         Map<String,Integer> map = new HashMap<>();
         for(int i=0; i<ls.size(); i++ ) {
@@ -85,7 +86,7 @@ public class Problem7 {
 
         return FriendsAndscore_map;
     }
-   */
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         List<String> ls=new ArrayList<>();
