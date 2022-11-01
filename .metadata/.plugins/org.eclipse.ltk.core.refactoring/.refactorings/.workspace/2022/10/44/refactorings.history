@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Delete resource &apos;java-onboarding&apos;" deleteContents="false" description="Delete resource &apos;java-onboarding&apos;" element1="/java-onboarding" flags="7" id="org.eclipse.ltk.core.refactoring.delete.resources" resources="1" stamp="1666781345788"/>
+</session>
