@@ -10,16 +10,18 @@ public class Problem7 {
     4. 점수-이름 순 정렬 후 상위 3명 리턴
      */
 
-    static HashMap<String, List<String>> friendList = new HashMap<>();
-    static HashMap<String, Integer> scoreBoard = new HashMap<>();
+    static HashMap<String, List<String>> friendList;
+    static HashMap<String, Integer> scoreBoard;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
+        friendList = new HashMap<>();
+        scoreBoard = new HashMap<>();
 
         updateFriendList(friends);
         updateCommonFriendScore(user);
         updateVisitorScore(user, visitors);
-        answer = getTop5Ranker();
+        answer = getTop5Ranker(user);
 
         return answer;
     }
@@ -75,7 +77,11 @@ public class Problem7 {
     private static void updateVisitorScore(String user, List<String> visitors) {
         for (int i = 0; i < visitors.size(); i++) {
             String visitor = visitors.get(i);
-            if (hasFriend(user) && !friendList.get(user).contains(visitor)) {
+            if(!hasFriend(user)){
+                addScore(visitor, 1);
+                continue;
+            }
+            if (!friendList.get(user).contains(visitor)) {
                 addScore(visitor, 1);
             }
         }
@@ -91,16 +97,19 @@ public class Problem7 {
         scoreBoard.put(user, userScore);
     }
 
-    private static List<String> getTop5Ranker() {
+    private static List<String> getTop5Ranker(String user) {
         List<String> finalScoreBoard = sortScoreBoard();
         List<String> rankers = new ArrayList<>();
         for (int i = 0; i < finalScoreBoard.size(); i++) {
             if (rankers.size() == 5) {
                 return rankers;
             }
-            String user = finalScoreBoard.get(i);
-            if (scoreBoard.get(user) > 0) {
-                rankers.add(user);
+            String newFriend = finalScoreBoard.get(i);
+            if(hasFriend(user) && friendList.get(user).contains(newFriend)) {
+                continue;
+            }
+            if (scoreBoard.get(newFriend) > 0) {
+                rankers.add(newFriend);
             }
         }
         return rankers;
