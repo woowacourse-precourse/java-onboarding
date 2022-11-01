@@ -3,7 +3,6 @@ package onboarding;
 import java.util.*;
 
 public class Problem6 {
-// 슬라이딩 윈도우
     public static List<String> solution(List<List<String>> forms) {
         Map<String, Integer> duplicatedNamesMap = generateDuplicatedNamesMap(forms);
 
