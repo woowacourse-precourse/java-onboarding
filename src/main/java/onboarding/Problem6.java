@@ -24,8 +24,8 @@ public class Problem6 {
         }
     }
 
-    private static void checkDuplicate(HashMap<String, String> nicknameEmailMap, HashSet<String> duplicateCrewEmailList, String wordOfNickname, String email){
-        if(!nicknameEmailMap.containsKey(wordOfNickname)){
+    private static void checkDuplicate(HashMap<String, String> nicknameEmailMap, HashSet<String> duplicateCrewEmailList, String wordOfNickname, String email) {
+        if (!nicknameEmailMap.containsKey(wordOfNickname)) {
             nicknameEmailMap.put(wordOfNickname, email);
             return;
         }
@@ -41,7 +41,7 @@ public class Problem6 {
 
         selectCrew(forms, nicknameEmailMap, duplicateCrewEmailList);
 
-//        duplicateCrewEmailList.stream().sorted().forEach(email -> result.add(email));
+        duplicateCrewEmailList.stream().sorted().forEach(email -> result.add(email));
 
         answer = result;
 
