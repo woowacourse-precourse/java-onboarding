@@ -61,7 +61,7 @@ class Problem1 {
 		if (!isPagesEvenOddValid(pages)) {
 			return -1;
 		}
-		return -0;
+		return 0;
 	}
 
 	// 페이지 리스트의 요소가 2개가 아닌 경우 예외
