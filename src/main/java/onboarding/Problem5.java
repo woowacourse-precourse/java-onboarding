@@ -13,7 +13,10 @@ public class Problem5 {
     private static final List<Integer> MONETARY_UNITS = Arrays.stream(MONETARY).boxed().collect(
         Collectors.toList());
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
+        validateWithdrawnMoney(money);
+
+        List<Integer> answer = putMonetaryUnitNumber(money,MONETARY_UNITS);
+
         return answer;
     }
 
