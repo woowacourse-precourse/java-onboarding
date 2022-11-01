@@ -28,4 +28,13 @@ class Problem1 {
         return pages.get(0) + 1 == pages.get(1);
     }
 
+    private static int sumPageNumber(int page) {
+        int score = 0;
+        while (page > 0) {
+            score += page % 10;
+            page /= 10;
+        }
+        return score;
+    }
+
 }
