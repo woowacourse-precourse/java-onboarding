@@ -19,6 +19,7 @@ public class Problem4 {
             wordCopy[i] = (char)wordCopyNum[i];
         }
 
+        answer = String.valueOf(wordCopy);
         return answer;
     }
 }
