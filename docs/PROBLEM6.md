@@ -21,3 +21,23 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+---
+
+## 기능 요구사항 및 체크리스트 정리(1차)
+
+### 1. 문제풀이 기본 요구사항 정리
+- ✅ solution 메소드 구현
+  - ✅ makeCheckMap 메소드를 사용하여 각 닉네임 별 중복되는 부분 문자열을 담고 있는 HashMap 객체 생성
+  - ✅ duplicatedEmails 메소드를 사용하여 중복된 닉네임을 갖는 이메일들의 ArrayList를 생성하여 반환
+- ✅ 닉네임 배열을 매개변수로 받아 각 닉네임 별 길이가 2인 부분 문자열을 따서 키값으로 HashMap 객체에 삽입 후 반환하는 makeCheckMap 메소드 구현
+  - ✅ 전체 닉네임들에 대해 부분 문자열이 몇 번 등장하는지 count 수를 HashMap의 값으로 저장
+  - ✅ HashMap에서 1번만 count된 key값들은 삭제처리해서 중복 등장한 부분 문자열만 남기기
+- ✅ HashMap 객체와 forms 배열을 매개변수로 받아 중복된 닉네임의 이메일들을 ArrayList로 반환하는 duplicatedEmails 메소드 구현
+  - ✅ HashMap의 key값을 닉네임의 부분 문자열로 가지는 forms의 요소값에서 반환 ArrayList에 삽입한다
+  - ✅ 반환 ArrayList를 오름차순 정렬 후 반환한다
+
+### 2. 검토사항
+- 정렬 기준
+  - ✅ "@email.com" 도메인 부분을 포함하여 정렬하는 것으로 구현
+    - ✅ 테스트 케이스 추가해보기
