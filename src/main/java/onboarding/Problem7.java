@@ -2,9 +2,11 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -18,6 +20,7 @@ public class Problem7 {
         setRecommendScoreByVisit(visitors, scoreMap);
         setRecommendBySameFriends(user, friendMap, scoreMap);
         removeNotRecommendFriendInScoreMap(user, friendMap, scoreMap);
+        sortScore(scoreMap);
 
         return answer;
     }
@@ -89,6 +92,20 @@ public class Problem7 {
         for (String friend : existFriends) {
             scoreMap.remove(friend);
         }
+    }
+
+    private static  void sortScore(HashMap<String, Integer> scoreMap) {
+        List<Map.Entry<String, Integer>> listEntry = new ArrayList<>(scoreMap.entrySet());
+        listEntry.sort(new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                if (o2.getValue() != o1.getValue()) {
+                    return o2.getValue() - o1.getValue();
+                } else {
+
+                }
+            }
+        });
     }
 }
 
