@@ -40,5 +40,16 @@ public class Problem7 {
         });
         return score;
     }
+    public static Map<String, Integer> scoreByVisitor(String user, Map<String, Integer> score,
+                                                      Map<String, List<String>> friends, List<String> visitors) {
+        for (int i = 0; i < visitors.size(); i++) {
+            if (score.containsKey(visitors.get(i))) {
+                score.put(visitors.get(i), score.get(visitors.get(i)) + 1);
+            }else if(!friends.get(user).contains(visitors.get(i))) {
+                score.put(visitors.get(i), 1);
+            }
+        }
+        return score;
+    }
 }
 
