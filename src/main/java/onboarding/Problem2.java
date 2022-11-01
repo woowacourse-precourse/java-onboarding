@@ -33,7 +33,7 @@ public class Problem2 {
             return decrypt(String.valueOf(endDecryptogram));
         }
 
-        return cryptogram;
+        return String.valueOf(endDecryptogram);
     }
 
 }
