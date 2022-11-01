@@ -22,16 +22,16 @@ public class Problem7 {
         return friendMap;
     }
 
-    public static Map<String, Integer> getKnowTogetherMembersPoint(List<String> knowTogetherMembers, List<String> userAndUserFriends) {
+    public static Map<String, Integer> getAcquaintancesPoint(List<String> acquaintances, List<String> userAndUserFriends) {
         Map<String, Integer> points = new HashMap<>();
-        for (String knowTogetherMember : knowTogetherMembers) {
-            points.put(knowTogetherMember, points.getOrDefault(knowTogetherMember, 0) + getKnowTogetherMemberPoint(knowTogetherMember, userAndUserFriends));
+        for (String acquaintance : acquaintances) {
+            points.put(acquaintance, points.getOrDefault(acquaintance, 0) + getAcquaintancePoint(acquaintance, userAndUserFriends));
         }
         return points;
     }
 
-    private static int getKnowTogetherMemberPoint(String knowTogetherMember, List<String> userAndUserFriends) {
-        if (userAndUserFriends.contains(knowTogetherMember)) {
+    private static int getAcquaintancePoint(String acquaintance, List<String> userAndUserFriends) {
+        if (userAndUserFriends.contains(acquaintance)) {
             return 0;
         }
         return 10;
@@ -46,7 +46,7 @@ public class Problem7 {
         return userFriends;
     }
 
-    public static List<String> getKnowTogetherMembers(Map<String, List<String>> friendMap, List<String> userFriends, String user) {
+    public static List<String> getAcquaintances(Map<String, List<String>> friendMap, List<String> userFriends, String user) {
         return userFriends.stream()
                 .flatMap(userFriend -> friendMap.get(userFriend).stream())
                 .filter(userFriend -> isUserOrUserFriend(userFriends, user, userFriend))
