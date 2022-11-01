@@ -16,6 +16,7 @@ public class Problem7 {
 
         fillFriendAndScoreMap(friends, friendMap, scoreMap);
         setRecommendScoreByVisit(visitors, scoreMap);
+        setRecommendBySameFriends(user, friendMap, scoreMap);
 
         return answer;
     }
@@ -56,5 +57,20 @@ public class Problem7 {
                 }
             }
         }
+
+    private static void setRecommendBySameFriends(String user, HashMap<String, HashSet<String>> friendMap, HashMap<String, Integer> scoreMap) {
+        HashSet<String> userValues = friendMap.get(user);
+        // System.out.println(user + "(" + userValues + ")");
+        for (String friend : friendMap.keySet()) {
+            HashSet<String> mapValues = friendMap.get(friend);
+            // System.out.println(friend + "(" + mapValues + ")");
+
+            if (userValues.equals(mapValues)) {
+                int score = scoreMap.get(friend);
+                scoreMap.put(friend, score + 10);
+            }
+        }
     }
+
 }
+
