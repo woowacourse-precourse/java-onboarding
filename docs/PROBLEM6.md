@@ -21,3 +21,18 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### <기능 목록>
+
+1. 닉네임으로 만들 수 있는 연속된 두 글자 조합 생성
+   - 매개변수로 받은 forms에서 닉네임만 뽑아서 배열로
+   - 각 닉네임으로 만들 수 있는 연속된 두 글자를 caseOfNickName에 추가
+2. 같은 글자가 연속적으로 포함된 닉네임의 index, 횟수 구하기
+   - nickName index를 key로, 포함 횟수를 value로 HashMap 생성
+   - caseOfNickName 배열의 원소를 포함하는 nickName 찾기
+   - 위의 nickName index와 value+1을 duplicateIndex에 추가
+   - 포함하지 않는다면 값은 그대로
+3. 이메일 return
+   - 포함 횟수 - (각 닉네임으로 만들 수 있는 두 글자의 개수) > 0 이라면
+   - emailList에 해당 index의 email을 forms에서 찾아 배열에 추가
+   - 오름차순으로 정렬
