@@ -11,7 +11,6 @@ class Problem1 {
         }
         return num;
     }
-
     static int multiply(int a){
         int num=1;
         while(a>0){
