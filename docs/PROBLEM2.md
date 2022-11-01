@@ -25,8 +25,8 @@
 
 ## 기능 목록
 
-- [ ] lowerCase를 나타내는 Alphabet enum
-  - [ ] 연속하는 알파벳을 매칭하는 regex를 반환하는 기능
+- [x] lowerCase를 나타내는 Alphabet enum
+  - [x] 연속하는 알파벳을 매칭하는 regex를 반환하는 기능
 - [ ] cryptogram에서 사용하는 알파벳의 집합을 반환하는 기능
 - [ ] cryptogram에서 사용하는 알파벳의 집합을 이용해 연속하는 알파벳들을 매칭하는 regex를 반환하는 기능
 - [ ] cryptogram에서 연속하는 알파벳들을 매칭하는 regex를 이용해 Pattern을 반환하는 기능
