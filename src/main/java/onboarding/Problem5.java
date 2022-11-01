@@ -8,29 +8,31 @@ import java.util.LinkedHashMap;
 import java.util.List;
 
 public class Problem5 {
-    private static LinkedHashMap<Integer, Integer> map;
+    private static LinkedHashMap<Integer, Integer> moneyIdx;
     private static List<Integer> answer;
     private static int currentMoney;
 
+
     public static void setMap()
     {
-        map = new LinkedHashMap<>();
-        map.put(50000, 0);
-        map.put(10000,1);
-        map.put(5000,2);
-        map.put(1000,3);
-        map.put(500,4);
-        map.put(100,5);
-        map.put(50,6);
-        map.put(10,7);
-        map.put(1,8);
+        moneyIdx = new LinkedHashMap<>();
+        moneyIdx.put(50000, 0);
+        moneyIdx.put(10000,1);
+        moneyIdx.put(5000,2);
+        moneyIdx.put(1000,3);
+        moneyIdx.put(500,4);
+        moneyIdx.put(100,5);
+        moneyIdx.put(50,6);
+        moneyIdx.put(10,7);
+        moneyIdx.put(1,8);
     }
+    // money 나눠가며 카운트 증가시킨다.
     public static void  ChangeNum (int divisor)
     {
         if (currentMoney-divisor>=0)
         {
             int count = currentMoney/divisor;
-            answer.set(map.get(divisor),count);
+            answer.set(moneyIdx.get(divisor),count);
             currentMoney-= count* divisor;
         }
     }
@@ -42,17 +44,8 @@ public class Problem5 {
         answer = new ArrayList<>();
         for (int i = 0 ; i < 9 ; i++)
             answer.add(0);
-        for ( Integer key : map.keySet())
+        for ( Integer key : moneyIdx.keySet())
             ChangeNum(key);
         return answer;
     }
-
-    /*
-    public static void main(String[] args) {
-        List<Integer> result = List.of(0, 1, 1, 0, 0, 0, 0, 0, 0);
-        List<Integer> result2=  solution(15_000);
-        System.out.println(result);
-        System.out.println(result2);
-        assertThat(result2).isEqualTo(result);
-    }*/
 }
