@@ -8,7 +8,7 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         List<Character> charList = convertStringToCharList(cryptogram);
         List<Character> decoded = decode(charList);
-        return null;
+        return convertCharListToString(decoded);
     }
 
     public static List<Character> convertStringToCharList(String s) {
@@ -69,5 +69,12 @@ public class Problem2 {
         return newCharList;
     }
 
+    public static String convertCharListToString(List<Character> charList) {
+        StringBuilder builder = new StringBuilder(charList.size());
+        for (Character ch : charList) {
+            builder.append(ch);
+        }
+        return builder.toString();
+    }
 
 }
