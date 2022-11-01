@@ -41,8 +41,8 @@ public class Problem2 {
         return range;
     }
 
-    public static StringBuilder removeDuplicate(StringBuilder crpytogram, int start, int range) {
-        return crpytogram.delete(start, start + range);
+    public static void removeDuplicate(StringBuilder cryptogram, int start, int range) {
+        cryptogram.delete(start, start + range);
     }
 
     public static void decrypt(StringBuilder stringBuilderCryptogram) {
