@@ -62,8 +62,8 @@ public class Problem7 {
     }
 
     public static List<String> getAcquaintanceList(String user, String userFriend) {
-        return userFriendsListMap.get(userFriend).stream().
-                filter(acquaintance -> !acquaintance.equals(user))
+        return userFriendsListMap.get(userFriend).stream()
+                .filter(acquaintance -> !acquaintance.equals(user))
                 .collect(Collectors.toList());
     }
 
