@@ -9,6 +9,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 @DisplayName("[Problem7] Test")
+@Disabled
 class Problem7Test {
     @Test
     @DisplayName("[Problem7] solution Test")
