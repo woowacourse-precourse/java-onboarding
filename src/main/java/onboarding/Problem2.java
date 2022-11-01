@@ -14,14 +14,32 @@ public class Problem2 {
         while (isDuple) {
             charList.clear();
             char prev = 0;
-
             removeRepeat(chars, charList, prev);
 
+            chars = String.join("", charList).toCharArray();
 
+            if (chars.length <= 1) {
+                isDuple = false;
+            }
+
+            isDuple = hasDuple(chars, isDuple);
         }
 
 
+
         return answer;
+    }
+
+    private static boolean hasDuple(char[] chars, boolean isDuple) {
+        for (int i = 0; i < chars.length -1; i++) {
+            if (chars[i] != chars[i+1]) {
+                isDuple = false;
+            } else {
+                isDuple = true;
+                break;
+            }
+        }
+        return isDuple;
     }
 
     private static void removeRepeat(char[] chars, List<String> charList, char prev) {
@@ -36,5 +54,4 @@ public class Problem2 {
             }
         }
     }
-
 }
