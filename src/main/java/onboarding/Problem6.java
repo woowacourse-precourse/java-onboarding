@@ -8,7 +8,9 @@
  */
 package onboarding;
 
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 public class Problem6 {
     static final int EMAIL = 0;
@@ -19,7 +21,33 @@ public class Problem6 {
         return answer;
     }
 
+    public static void divideNickname(Map<String, List<String>> nicknameSectionMap, List<String> userInfo) {
+        String nickname = returnNicknameOREmail(userInfo, NICKNAME);
+        String email = returnNicknameOREmail(userInfo, EMAIL);
+        for (int i = 0; i < nickname.length() - 1; i++) {
+            putNicknameSection(nicknameSectionMap, nickname.substring(i, i + 2), email);
+        }
+    }
+
     public static String returnNicknameOREmail(List<String> userInfo, int data) {
         return userInfo.get(data);
+    }
+
+    public static void putNicknameSection(Map<String, List<String>> nicknameSectionMap, String nicknameSection, String email) {
+        if (!nicknameSectionMap.containsKey(nicknameSection)) {
+            List<String> indexList = emailListAddEmail(null, email);
+            nicknameSectionMap.put(nicknameSection, indexList);
+        } else {
+            List<String> indexList = emailListAddEmail(nicknameSectionMap.get(nicknameSection), email);
+            nicknameSectionMap.replace(nicknameSection, indexList);
+        }
+    }
+
+    public static List<String> emailListAddEmail(List<String> emailList, String email) {
+        if (emailList == null) {
+            emailList = new LinkedList<>();
+        }
+        emailList.add(email);
+        return emailList;
     }
 }
