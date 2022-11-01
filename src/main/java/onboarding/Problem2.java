@@ -11,6 +11,22 @@ public class Problem2 {
             this.stack = new Stack<>();
             this.stack.push(initChar);
         }
+
+        public Decryptor decrypto(String cryptogram) {
+            int strLen = cryptogram.length();
+
+            for (int i = 0; i < strLen; i++) {
+                Character c = cryptogram.charAt(i);
+
+                if (this.stack.peek() == c) {
+                    this.stack.pop();
+                } else {
+                    this.stack.push(c);
+                }
+            }
+
+            return this;
+        }
     }
 
     public static String solution(String cryptogram) {
