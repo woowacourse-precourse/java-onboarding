@@ -35,6 +35,11 @@ public class Problem7 {
                 map.put(friends.get(i).get(0), map.get(friends.get(i).get(0)) + 10);
             }
         }
+        for (int i = 0; i < visitors.size(); ++i) {
+            if (!visitors.get(i).equals(user) && !userFriends.contains(visitors.get(i))) {
+                map.put(visitors.get(i), map.get(visitors.get(i)) + 1);
+            }
+        }
         return answer;
     }
 }
