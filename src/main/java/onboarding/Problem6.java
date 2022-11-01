@@ -34,17 +34,17 @@ public class Problem6 {
 
         if(nickNameSimilarCheck(nickName1, nickName2))
         {
-            if (visitedCheck(email1)== false)
+            if (!visitedCheck(email1))
                 visitedAdd(email1);
-            if (visitedCheck(email2)== false)
+            if (!visitedCheck(email2))
                 visitedAdd(email2);
         }
     }
 
     public static List<String> solution(List<List<String>> forms) {
-        answer = new ArrayList<String>();
+        answer = new ArrayList<>();
         map = new LinkedHashMap<>();
-        for (int i = 0 ; i< forms.size() ; i++){
+        for (int i = 0 ; i < forms.size() ; i++){
             map.put(forms.get(i).get(0), false);
         }
         for (int i = 0 ; i < forms.size(); i++)

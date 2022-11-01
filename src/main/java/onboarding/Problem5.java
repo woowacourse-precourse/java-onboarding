@@ -12,10 +12,6 @@ public class Problem5 {
     private static List<Integer> answer;
     private static int currentMoney;
 
-    public static void setMoney(int money)
-    {
-      currentMoney = money;
-    }
     public static void setMap()
     {
         map = new LinkedHashMap<>();
@@ -41,8 +37,8 @@ public class Problem5 {
 
     public static List<Integer> solution(int money)
     {
-        setMoney(money);
         setMap();
+        currentMoney = money;
         answer = new ArrayList<>();
         for (int i = 0 ; i < 9 ; i++)
             answer.add(0);
