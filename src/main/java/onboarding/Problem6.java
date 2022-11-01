@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -21,7 +22,6 @@ import java.util.List;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
         HashMap<String, List<String>> all_pos = new HashMap<String, List<String>>();
         HashSet<String> filter = new HashSet<>(); // 중복 제거용 집합
         
@@ -43,6 +43,8 @@ public class Problem6 {
         		filter.addAll(all_pos.get(key));
         	}
         }
+        ArrayList<String> answer = new ArrayList<>(filter);
+        Collections.sort(answer);
         return answer;
     }
 }
