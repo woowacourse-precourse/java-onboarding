@@ -17,7 +17,6 @@ public class Problem2 {
     }
 
     private static boolean checkDecodeNotFinished(StringBuilder cryptogramBuilder, int cryptogramLength) {
-
         return cryptogramLength != cryptogramBuilder.length();
     }
 
@@ -34,10 +33,7 @@ public class Problem2 {
         return cryptogramLength - 1 - deletedCount;
     }
 
-    private static int deleteRepeatedCharacters(StringBuilder cryptogramBuilder,
-                                                int deletedCount,
-                                                int currIndex) {
-
+    private static int deleteRepeatedCharacters(StringBuilder cryptogramBuilder, int deletedCount, int currIndex) {
         int endIndex = currIndex;
         while (checkRepeatedCharacter(cryptogramBuilder, currIndex, endIndex)) {
             endIndex++;
@@ -51,10 +47,7 @@ public class Problem2 {
         return deletedCount - 1;
     }
 
-    private static boolean checkRepeatedCharacter(StringBuilder cryptogramBuilder,
-                                                  int currIndex,
-                                                  int endIndex) {
-
+    private static boolean checkRepeatedCharacter(StringBuilder cryptogramBuilder, int currIndex, int endIndex) {
         return checkCryptogramRange(cryptogramBuilder, endIndex) &&
                 checkSameCharacter(cryptogramBuilder, currIndex, endIndex);
     }
@@ -63,10 +56,7 @@ public class Problem2 {
         return endIndex < cryptogramBuilder.length();
     }
 
-    private static boolean checkSameCharacter(StringBuilder cryptogramBuilder,
-                                              int currIndex,
-                                              int endIndex) {
-
+    private static boolean checkSameCharacter(StringBuilder cryptogramBuilder, int currIndex, int endIndex) {
         return cryptogramBuilder.charAt(currIndex) == cryptogramBuilder.charAt(endIndex);
     }
 

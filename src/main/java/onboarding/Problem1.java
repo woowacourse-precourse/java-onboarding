@@ -16,7 +16,6 @@ class Problem1 {
     private static final int ANSWER_CRONG_WIN = 2;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-
         if (validatePlayerNotReady(pobi)) {
             return ANSWER_EXCEPTION;
         }
