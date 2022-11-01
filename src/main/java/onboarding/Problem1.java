@@ -47,7 +47,7 @@ class Problem1 {
     }
 
     static boolean validateInput(List<Integer> list) {
-        boolean validList = !list.isEmpty() && list.size() <= 2;
+        boolean validList = list.size() == 2;
         boolean pageBoundary = list.get(0) > FIRST_PAGE && list.get(1) < LAST_PAGE;
         boolean startWithOdd = list.get(0) % 2 == 1;
         boolean pagesInRow = (list.get(0) + NEXT_PAGE_INC) == list.get(1);
