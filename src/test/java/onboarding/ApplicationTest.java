@@ -99,30 +99,6 @@ class ApplicationTest {
             assertThat(Problem5.solution(money)).isEqualTo(result);
         }
 
-        @Test
-        void case3() {
-            // 최소금액
-            int money = 1;
-            List<Integer> result = List.of(0, 0, 0, 0, 0, 0, 0, 0, 1);
-            assertThat(Problem5.solution(money)).isEqualTo(result);
-        }
-
-        @Test
-        void case4() {
-            // 5만원권 제외한 최대금액
-            int money = 49_999;
-            List<Integer> result = List.of(0, 4, 1, 4, 1, 4, 1, 4, 9);
-            assertThat(Problem5.solution(money)).isEqualTo(result);
-        }
-
-        @Test
-        void case5() {
-            // 최대금액
-            int money = 1_000_000;
-            List<Integer> result = List.of(20, 0, 0, 0, 0, 0, 0, 0, 0);
-            assertThat(Problem5.solution(money)).isEqualTo(result);
-        }
-
     }
 
     @Nested
