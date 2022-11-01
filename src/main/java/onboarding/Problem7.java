@@ -54,6 +54,19 @@ public class Problem7 {
             }
         }
 
+        //add each 10 if friend's friend
+        for(int j = 0; j < friends.size(); j++){
+            String firstPerson = friends.get(j).get(0);
+            String secondPerson = friends.get(j).get(1);
+
+            //if first is not friend but second is friend
+            if(notFriend.contains(firstPerson) && friend.contains(secondPerson)) {
+                addScore(score, firstPerson,10);
+            } else if (notFriend.contains(secondPerson) && friend.contains(firstPerson)){ //if first is friend and second is not friend
+                addScore(score, secondPerson,10);
+            }
+        }
+
         return answer;
     }
 }
