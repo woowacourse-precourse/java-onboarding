@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem6 {
 
@@ -72,5 +73,12 @@ public class Problem6 {
                 }
             }
         }
+    }
+
+    public ArrayList<String> getAlerterEmails() {
+
+        ArrayList<String> result = AlerterEmails.stream().collect(Collectors.toCollection(ArrayList::new));
+
+        return result;
     }
 }
