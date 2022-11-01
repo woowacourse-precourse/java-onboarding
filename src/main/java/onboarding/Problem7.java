@@ -15,13 +15,13 @@ public class Problem7 {
         visitFriends(my_friends, visitors); // 사용자의 타임 라인에 방문한 횟수 점수 계산
         sortScore(); // 추천점수 및 이름순 정렬
 
-//        // 최대 5명 리턴
-//        int size = 0;
-//        for (Map.Entry<String, Integer> ans : entryList){
-//            if (size == 5) break;
-//            answer.add(ans.getKey());
-//            size++;
-//        }
+        // 최대 5명 리턴
+        int size = 0;
+        for (Map.Entry<String, Integer> ans : entryList){
+            if (size == 5) break;
+            answer.add(ans.getKey());
+            size++;
+        }
         return answer;
     }
 
