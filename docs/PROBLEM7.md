@@ -24,3 +24,12 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+## 기능 목록
+1. 친구인 사용자 목록과 친구가 아닌 사용자 목록 생성 기능
+2. 사용자별 점수 set 초기화 기능
+3. 점수를 추가해주는 메서드
+4. 방문 횟수에 따라 점수를 추가하는 기능
+5. 함께 아는 친구 수에 따라 점수를 추가하는 기능
+6. 점수가 높은 순으로 정렬하는 기능
+7. key 값(사용자명)만 뽑아오는 기능
