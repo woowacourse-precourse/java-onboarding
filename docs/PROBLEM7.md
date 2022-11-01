@@ -26,7 +26,7 @@
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
 
 - [x] user의 친구 리스트를 구하는 기능
-- [ ] 리스트 내 친구 점수 구하기
-- [ ] 방문한 사람 점수 구하기
+- [x] 리스트 내 친구 점수 구하기
+- [x] 방문한 사람 점수 구하기
 - [ ] 이미 친구인 사람 점수 삭제
 - [ ] 정리된 점수-이름 이름 순으로 정렬하는 기능
