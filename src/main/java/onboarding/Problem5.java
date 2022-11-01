@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -17,7 +18,7 @@ public class Problem5 {
 //      50237	[1, 0, 0, 0, 0, 2, 0, 3, 7]
 //      15000	[0, 1, 1, 0, 0, 0, 0, 0, 0]
 
-//    -- 요약 --
+    //    -- 요약 --
 //    1. 높은 금액 돈단위별로 나누어서 나머지가 0이 되게 해보면 되지않을까?
 //    2. 매개변수는 int 형
 //    3. 비교 대상은 List 인터페이스
@@ -25,7 +26,30 @@ public class Problem5 {
 //     List<Integer> result = List.of(1, 0, 0, 0, 0, 2, 0, 3, 7);
     public static List<Integer> solution(int money) {
         List<Integer> answer = Collections.emptyList();
-
+        answer = countMoney(money);
+        System.out.println(answer); // 결과 확인(임시)
         return answer;
+    }
+
+    public static List<Integer> countMoney(int money) {
+        List<Integer> result = new ArrayList<>();
+        result.add(money / 50000); // 5만원으로 나눈 몫이 있다면 카운트
+        money %= 50000;      // 5만원으로 나눈 나머지는 다른 돈단위로
+        result.add(money / 10000);  //위와 동일 반복
+        money %= 10000;
+        result.add(money / 5000);
+        money %= 5000;
+        result.add(money / 1000);
+        money %= 1000;
+        result.add(money / 500);
+        money %= 500;
+        result.add(money / 100);
+        money %= 100;
+        result.add(money / 50);
+        money %= 50;
+        result.add(money / 10);
+        money %= 10;
+        result.add(money);      // 일원 동전
+        return result;
     }
 }
