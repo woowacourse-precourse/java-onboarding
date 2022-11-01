@@ -16,6 +16,13 @@ public class Problem6 {
         return answer;
     }
 
+    //  회원 이름 유효성 검사
+    private static Boolean verifyName(String name){
+        if(!verifyNameLength(name)) return false;
+        if(!verifyNameType(name)) return false;
+        return true;
+    }
+
     //  회원 이름 유효성 검사 - 길이
     private static Boolean verifyNameLength(String name){
         int length = name.length();
