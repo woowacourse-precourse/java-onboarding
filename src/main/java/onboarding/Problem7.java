@@ -26,14 +26,7 @@ public class Problem7 {
             friendScore.remove(userFriend);
         }
 
-        List<String> scoreResult = friendScore.entrySet()
-                .stream()
-                .filter(e-> e.getValue() != 0)
-                .sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
-                .map(Map.Entry::getKey)
-                .limit(5)
-                .collect(Collectors.toList());
-        return scoreResult;
+        return convertMapToList();
     }
 
     private static void createFriendRelation(List<List<String>> friends) {
@@ -87,5 +80,16 @@ public class Problem7 {
         ArrayList<String> otherUserFriends = friendRelation.get(otherUser);
         sameFriends.retainAll(otherUserFriends);
         return sameFriends;
+    }
+
+    private static List<String> convertMapToList() {
+        List<String> scoreResult = friendScore.entrySet()
+                .stream()
+                .filter(e-> e.getValue() != 0)
+                .sorted(Collections.reverseOrder(Map.Entry.comparingByValue()))
+                .map(Map.Entry::getKey)
+                .limit(5)
+                .collect(Collectors.toList());
+        return scoreResult;
     }
 }
