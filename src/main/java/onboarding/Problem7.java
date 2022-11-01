@@ -8,6 +8,19 @@ public class Problem7 {
         return answer;
     }
 
+    // 친구별 방문 수 반환
+    private static Map<String, Integer> getVisitScore(List<String> visitors) {
+        Map<String, Integer> visitScore = new HashMap<>();
+
+        for (String visitor : visitors) {
+            if (visitScore.containsKey(visitor))
+                visitScore.put(visitor, visitScore.get(visitor) + 1);
+            else
+                visitScore.put(visitor, 1);
+        }
+        return visitScore;
+    }
+
     // 친구별 함께 아는 친구의 수 -> 점수 반환 (1 이상인 친구만)
     private static Map<String, Integer> getFOFScore(String user, List<List<String>> friends, Set<String> neighbor) {
         Map<String, Integer> fof = new HashMap<>();
