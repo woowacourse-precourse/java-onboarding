@@ -16,7 +16,7 @@ public class Problem5 {
         List<Integer> answer = Collections.emptyList();
 
         //값을 저장할 빈 배열 생성
-        ArrayList<Integer> List = new ArrayList<Integer>();
+        ArrayList<Integer> list = new ArrayList<Integer>();
 
         //금액 단위 별 count 변수 생성
         int count50000 = 0;
@@ -57,6 +57,18 @@ public class Problem5 {
         count1 = money / 1;
         money -= count1 * 1;
 
+        //빈 배열에 count 값을 전달
+        list.add(count50000);
+        list.add(count10000);
+        list.add(count5000);
+        list.add(count1000);
+        list.add(count500);
+        list.add(count100);
+        list.add(count50);
+        list.add(count10);
+        list.add(count1);
+
+        answer = list;
 
         return answer;
     }
