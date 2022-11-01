@@ -5,7 +5,7 @@ import java.util.*;
 public class Problem7 {
 
     private static final int MAX_NUMBER_OF_RECOMMENDED_FRIENDS = 5;
-    private static final int POINTS_FOR_VISITORS = 1;
+    private static final int POINTS_FOR_VISITOR = 1;
     private static final int POINTS_FOR_FRIEND_OF_FRIEND = 10;
 
     // 친구 추천 클래스
@@ -18,12 +18,12 @@ public class Problem7 {
             this.point = point;
         }
 
-        public void addPoint(int added) {
+        public void addPoints(int added) {
             this.point += added;
         }
 
         public void addPointsForVisitor() {
-            this.point += POINTS_FOR_VISITORS;
+            this.point += POINTS_FOR_VISITOR;
         }
 
         public void addPointsForFriendOfFriend() {
@@ -36,15 +36,14 @@ public class Problem7 {
         Map<String, ArrayList<String>> friendsMap = new HashMap<>();    // 친구 관계 그래프
         List<UserPoint> pointMap = new ArrayList<>();                   // 친구 점수 맵
 
-        pointMap.add(new UserPoint(user, 0));
-
         // 친구 관계 그래프 만들기
         for (List<String> friendRelation : friends) {
             addFriendsMap(friendsMap, friendRelation);
         }
 
         // 친구의 친구인 경우 점수 맵에 10점 추가하기
-        for (Object friend : friendsMap.get(user)) {
+        for (String friend : friendsMap.get(user)) {
+            if (!friendsMap.containsKey(friend)) continue;
             ArrayList<String> friendsList = friendsMap.get(friend); // 친구의 친구 목록 가져오기
             addPointsForFriend(pointMap, friendsList);
         }
@@ -55,14 +54,14 @@ public class Problem7 {
         }
 
         sortPointMap(pointMap); // score 기준 내림차순 정렬 (+name 기준 오름차순 정렬)
-
-        // 이미 친구 관계인 친구들, 그리고 자기 자신은 제외하여 scoreMap을 answer 리스트에 추가하기
-        ArrayList<String> friendsOfUser = friendsMap.get(user);
+        
+        ArrayList<String> friendsOfUser = friendsMap.get(user); // user 의 친구 목록
         for (UserPoint friend : pointMap) {
-            if(!(friendsOfUser.contains(friend.name) || friend.name.equals(user))) {
+            if(!(friendsOfUser.contains(friend.name) || friend.name.equals(user))) { // 친구 관계인 친구들, 나 자신 제외
                 answer.add(friend.name);
             }
         }
+
         if (answer.size() > MAX_NUMBER_OF_RECOMMENDED_FRIENDS) // 최대 5개
             return answer.subList(0, MAX_NUMBER_OF_RECOMMENDED_FRIENDS);
         return answer;
@@ -80,7 +79,7 @@ public class Problem7 {
     private static void addPointsForVisitor(List<UserPoint> scoreMap, String visitor){
         Optional<UserPoint> user = scoreMap.stream().filter(u -> u.name.equals(visitor)).findFirst();
         if(user.isEmpty()) {
-            scoreMap.add(new UserPoint(visitor, 1));
+            scoreMap.add(new UserPoint(visitor, POINTS_FOR_VISITOR));
         }else{
             user.get().addPointsForVisitor();
         }
@@ -89,7 +88,7 @@ public class Problem7 {
     private static void addToPointsMap(List<UserPoint> pointMap, String friend){
         Optional<UserPoint> user = pointMap.stream().filter(u -> u.name.equals(friend)).findFirst();
         if(user.isEmpty()) {
-            pointMap.add(new UserPoint(friend, 10));
+            pointMap.add(new UserPoint(friend, POINTS_FOR_FRIEND_OF_FRIEND));
         }else{
             user.get().addPointsForFriendOfFriend();
         }
@@ -105,8 +104,8 @@ public class Problem7 {
         ArrayList<String> friendsList = new ArrayList<>();
         if (friendsMap.containsKey(key)) {
             friendsList = friendsMap.get(key);
-            friendsList.add(value);
-        } else friendsList.add(value);
+        }
+        friendsList.add(value);
         friendsMap.put(key, friendsList);
     }
 
