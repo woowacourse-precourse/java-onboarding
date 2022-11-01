@@ -134,8 +134,13 @@ public class Problem7 {
         List<String> recommendList = new ArrayList<>();
         Iterator<Person> iter = recommendTSet.iterator();
         for (int i = 0; i < recommendTSet.size(); i++) {
+
+            if (i == 5) {
+                break;
+            }
             recommendList.add(iter.next().name);
         }
+
 
         return recommendList;
     }
