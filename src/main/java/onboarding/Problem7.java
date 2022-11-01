@@ -56,5 +56,25 @@ public class Problem7 {
             scoreMap.remove(name);
         }
     }
+    public static List<String> sortName(HashMap<String,Integer> scores) {
+        List<String> scoreList = new ArrayList(scores.keySet());
+        List<String> name = new ArrayList<>();
+        List<Integer> score = new ArrayList<>();
+
+        scoreList.sort(new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                return scores.get(o2).compareTo(scores.get(o1));
+            }
+        });
+
+
+        for (String key : scoreList) {
+            score.add(scores.get(key));
+            name.add(key);
+        }
+
+        return name;
+    }
 
 }
