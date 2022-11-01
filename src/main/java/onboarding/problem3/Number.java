@@ -27,4 +27,8 @@ public class Number {
                 .mapToInt(Integer::parseInt)
                 .toArray();
     }
+
+    private static boolean isClap(int n) {
+        return n == 3 || n == 6 || n == 9;
+    }
 }
