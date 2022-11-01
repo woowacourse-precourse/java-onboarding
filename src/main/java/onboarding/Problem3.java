@@ -9,7 +9,6 @@ public class Problem3 {
 
         answer += divid*3;
 
-
         if(divid == 0){
             return remain/3;
         }
@@ -18,18 +17,13 @@ public class Problem3 {
         if(divid % 3 == 0 && divid /3 !=0){
             if(divid /3 == 1){
                 answer += remain + 1;
-                if(remain /3 ==1){
-                    answer+=1;
-                } else if (remain /3 == 2) {
-                    answer+=2;
-                }
             }else{
                 answer = (divid/3 -1) * 13;
-                if(remain /3 ==1){
-                    answer+=1;
-                } else if (remain /3 == 2) {
-                    answer+=2;
-                }
+            }
+            if(remain /3 ==1){
+                answer+=1;
+            } else if (remain /3 == 2) {
+                answer+=2;
             }
         }else{
             if(divid/3 >=1){
