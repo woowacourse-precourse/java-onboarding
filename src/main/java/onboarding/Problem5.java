@@ -17,4 +17,9 @@ public class Problem5 {
         }
         return count;
     }
+
+    public static boolean canMoney(int money) {
+        if (money >= MIN && money <= MAX) return true;
+        return false;
+    }
 }
