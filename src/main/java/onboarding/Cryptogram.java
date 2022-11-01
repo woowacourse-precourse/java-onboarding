@@ -5,7 +5,7 @@ public class Cryptogram {
     private boolean duplicated;
 
     public Cryptogram(String value) {
-        isValidCryptogram(value);
+        validCryptogram(value);
 
         this.value = value;
         duplicated = true;
@@ -13,7 +13,7 @@ public class Cryptogram {
         checkDuplicate();
     }
 
-    private void isValidCryptogram(String value) {
+    private void validCryptogram(String value) {
         if (!value.matches("^[a-z]*$"))
             throw new IllegalArgumentException("cryptogram은 알파벳 소문자로만 이루어져 있어야 합니다.");
 

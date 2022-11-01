@@ -6,7 +6,7 @@ public class Bank {
     private int money;
 
     public Bank(int money) {
-        isValidMoney(money);
+        validMoney(money);
 
         this.money = money;
     }
@@ -17,7 +17,7 @@ public class Bank {
         return moneyExchanger.toUnits(money);
     }
 
-    private void isValidMoney(int money) {
+    private void validMoney(int money) {
         if (money < 1 || money > 1000000)
             throw new IllegalArgumentException("money는 1 이상 1,000,000 이하여야 합니다.");
     }

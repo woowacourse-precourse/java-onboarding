@@ -1,12 +1,11 @@
 package onboarding;
 
 public class Word {
-
     private String word;
 
     public Word(String word) {
-        isValidWord(word);
-        
+        validWord(word);
+
         this.word = word;
     }
 
@@ -43,9 +42,8 @@ public class Word {
         return false;
     }
 
-    private void isValidWord(String word) {
+    private void validWord(String word) {
         if (word.length() < 1 || word.length() > 1000)
             throw new IllegalArgumentException("문자의 길이는 1 이상 1000 이하여야 합니다.");
     }
-
 }

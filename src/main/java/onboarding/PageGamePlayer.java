@@ -6,13 +6,13 @@ public class PageGamePlayer {
     private int leftPage, rightPage;
 
     public PageGamePlayer(List<Integer> list) {
-        if (validPageList(list)) {
+        if (isValidPageList(list)) {
             this.leftPage = list.get(0);
             this.rightPage = list.get(1);
         }
     }
 
-    private boolean validPageList(List<Integer> pages) {
+    private boolean isValidPageList(List<Integer> pages) {
         if (pages.size() != 2)
             return false;
 
