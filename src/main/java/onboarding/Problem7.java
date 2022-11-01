@@ -74,4 +74,20 @@ public class Problem7 {
         }
     }
 
+    private static List<Integer> getSortedScores(Map<String, Integer> nameAndScoreMap) {
+        List<Integer> sortedScores = new ArrayList<>();
+        for (int score : nameAndScoreMap.values()) {
+            // 점수 중복을 제거
+            if (sortedScores.contains(score)) {
+                continue;
+            }
+
+            sortedScores.add(score);
+        }
+
+        Collections.sort(sortedScores, Collections.reverseOrder());
+
+        return sortedScores;
+    }
+
 }
