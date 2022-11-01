@@ -58,7 +58,17 @@ public class Problem7 {
     //추천친구를 생성하는 기능
     public static void findRecommend(List<List<String>> friends, List<String> visitors) {
 
+        //친구가 아닌 리스트 전체탐색
+        for (String notfriend : notFriendsList) {
+            // notFriendsList에서 방문자 목록에 해당하는 사람이 있으면 count += 1
+            int visitCount = 0;
+            for (String visitor : visitors) {
+                if(visitor.contains(notfriend)) {
+                    visitCount += 1;
+                }
+            }
 
+        }
 
     }
 
