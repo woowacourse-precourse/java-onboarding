@@ -3,12 +3,12 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
+    static Map<String, Integer> nameMap = new HashMap<>();
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
     }
     public static Map<String, Integer> getId(List<List<String>> friends){
-        Map<String, Integer> nameMap = new HashMap<>();
         for (List<String> friend: friends){
             String name1 = friend.get(0);
             String name2 = friend.get(1);
