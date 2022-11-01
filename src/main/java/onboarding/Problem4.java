@@ -3,7 +3,6 @@ package onboarding;
 import java.util.ArrayList;
 
 public class Problem4 {
-
     public static int change(int charIndex){
         if(Character.isUpperCase(charIndex)){
             charIndex = 155-charIndex;
@@ -23,11 +22,10 @@ public class Problem4 {
     }
 
     public static String charToString(ArrayList cArr){
-        String result = "";
-        for(int i = 0; i < cArr.size(); i++){
-            result += cArr.get(i).toString();
-        }
-        return result;
+        StringBuilder result = new StringBuilder();
+        for(Object c : cArr){
+            result.append(c);
+        } return result.toString();
     }
 
     public static String solution(String word) {

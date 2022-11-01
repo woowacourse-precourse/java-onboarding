@@ -1,7 +1,6 @@
 package onboarding;
 
 public class Problem3 {
-
     public static int countNum(int number){
         int count = 0;
         for(int i = 1; i < number+1; i++){
@@ -14,7 +13,6 @@ public class Problem3 {
         }
         return count;
     }
-
     public static int solution(int number) {
         int answer = countNum(number);
         return answer;

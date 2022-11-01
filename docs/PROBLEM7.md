@@ -29,5 +29,5 @@
 - recommend: 추천 친구를 key로, 점수를 value로 가지는 HashMap
 
 1. 함께 아는 친구의 수 점수계산
-   
 2. 방문한 횟수 점수계산
+3. sorting 기능

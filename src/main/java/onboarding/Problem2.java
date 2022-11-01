@@ -21,7 +21,6 @@ public class Problem2 {
             if(str.charAt(i) == str.charAt(i+1)) return i;
         }return -1;
     }
-
     public static String solution(String cryptogram) {
         StringBuilder str = new StringBuilder(cryptogram);
         String answer = String.valueOf(deleteDuplicate(str));

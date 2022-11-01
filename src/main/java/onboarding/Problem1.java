@@ -9,7 +9,7 @@ class Problem1 {
         int rightPage = pageList.get(1);
         int result;
 
-        if(rightPage-1 != leftPage || rightPage == leftPage || leftPage == 1 || rightPage == 400)
+        if(rightPage-1 != leftPage || leftPage == 1 || rightPage == 400)
             return -1;
 
         int maxLeft = CompareMax(Sum(leftPage), Mul(leftPage));
@@ -35,10 +35,10 @@ class Problem1 {
     }
 
     public static int CompareMax(int c1, int c2){
-        int max = 0;
+        int max;
 
-        if(c1>c2){max = c1;}
-        else if(c1==c2){max = c1;}
+        if (c1>c2){max = c1;}
+        else if (c1==c2){max = c1;}
         else{max = c2;}
 
         return max;
@@ -55,11 +55,11 @@ class Problem1 {
 
         }else {
             switch (Integer.compare(pobiAns, crongAns)) {
-                case 0:
-                    answer = 0;
-                    break;
                 case 1:
                     answer = 1;
+                    break;
+                case 0:
+                    answer = 0;
                     break;
                 case -1:
                     answer = 2;
