@@ -38,5 +38,11 @@ class Problem1 {
         if (num >= MIN_VALUE && num <= MAX_VALUE) return true;
         return false;
     }
+
+    private static boolean isValidSize(List<Integer> pages){
+        final int PAGES_SIZE = 2;
+        if (pages.size() == PAGES_SIZE) return true;
+        return false;
+    }
     }
 }
