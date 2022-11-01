@@ -3,20 +3,37 @@ package onboarding;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
+//(2차 리팩토링) 기능 목록
+// 리팩토링 이유 : List<List<String>> forms 를 적게 순회 하기 위해 변경함)
+//(변경 전) 1. forms돌며,유효한 forms 생성 -> 2.유효forms 돌며, 닉네임마다 dupleSet 생성 -> 3.유효forms돌며, dupleSet과 중복처리
+//(변경 후))1. forms돌며,유효한 forms 생성 -> 2.유효forms 돌며, {twochars:이메일} 맵 생성 ->3. 동시에, 중복 처리
+
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<List<String>> validForms = makeValidForms(forms);
-        return makeLimitList(validForms);
+        Set<String> answer = new HashSet<>();
+        Map<String,String> twoCharMap = new HashMap<>();
+
+        forms.stream()
+                .filter(Problem6::isValidForm)
+                .forEach(form-> checkDuplicated(form,twoCharMap, answer));
+
+        //3.정렬하기
+        List<String> answerList = new ArrayList<>(answer);
+        answerList.sort(String::compareTo);
+        return answerList;
     }
 
 
-    // 이메일 형식체크
-    public static boolean isValidEmail(String email) {
-        if (email.isEmpty()) return false;  //null값인 경우(빈값)
 
-        //방법 :정규식
+    //1. 유효한 form만 남기기
+    public static boolean isValidForm (List<String> form) {
+        if(isValidEmail(form.get(0)) && isValidNickname(form.get(1))) return true;
+        return false;
+    }
+
+    // 1-1. 이메일 형식체크 : 정규식
+    public static boolean isValidEmail(String email) {
         String regex = "^[a-z_0-9]{1,9}(@email.com)$";  //전체 길이 제한, 도메인 형식에 맞게
         Pattern p = Pattern.compile(regex);
         Matcher m = p.matcher(email);
@@ -24,10 +41,8 @@ public class Problem6 {
         return false;
     }
 
-    // 닉네임 형식체크 :정규식
+    // 1-2. 닉네임 형식체크 :정규식
     public static boolean isValidNickname(String nickname) {
-        if (nickname.isEmpty()) return false;  //null값인 경우(빈값)
-
         String regex = "^[ㄱ-ㅎㅏ-ㅣ가-힣]{1,19}$";
         Pattern p = Pattern.compile(regex);
         Matcher m = p.matcher(nickname);
@@ -35,55 +50,27 @@ public class Problem6 {
         return false;
     }
 
-    //통과한 것만  hashmap<닉네임, 이메일>에 저장
-    public static List<List<String>> makeValidForms (List<List<String>> forms) {
-        List<List<String>> validForms = new ArrayList<>();
-        for(List<String> form: forms){
-            if(isValidEmail(form.get(0))&& isValidNickname(form.get(1))){
-                validForms.add(form);
-            }
-        }
-        return validForms;
-    }
 
-    //닉네임 두글자 이상 뽑기 Set
-    public static Set<String> makeDupleSet(String nickname){
-        Set<String> dupleSet = new HashSet<>();
+
+
+    //2. 닉네임 {두글자:이메일} map만들기 + map에 이미 두글자 있으면, 중복 처리.
+    public static void checkDuplicated(List<String>form, Map<String,String>dupleMap,Set<String>answer){
+        String email = form.get(0);
+        String nickname = form.get(1);
+
+        //닉네임 한번 순회.
         for(int i=0; i< nickname.length()-1 ;i++){
-            dupleSet.add(nickname.substring(i,i+2));
-        }
-        return dupleSet;
-    }
-
-    // 연속 글자 확인 함수 - 있으면 true 반환
-    public static boolean isDupleName(String nickname, Set<String> dupleSet){
-        for(String s : dupleSet){
-            if(nickname.contains(s)) return true;
-        }
-        return false;
-    }
-
-    //여러 닉네임 순회 함수 (메인함수)
-    public static  List<String> makeLimitList (List<List<String>> validForms){
-        Set<String> set = new HashSet<String>();
-
-        for(int i=0; i<validForms.size() ;i++){
-            String nick = validForms.get(i).get(1);
-            Set<String> dupleSet= makeDupleSet(nick);
-
-            for(int j=i+1; j<validForms.size() ;j++){
-                boolean b = isDupleName(validForms.get(j).get(1), dupleSet);
-                if(b){
-                    set.add(validForms.get(i).get(0));
-                    set.add(validForms.get(j).get(0));
-                }
+            String twoChars = nickname.substring(i,i+2);
+            if(dupleMap.containsKey(twoChars)){
+                answer.add(dupleMap.get(twoChars));
+                answer.add(email);
+                continue;
             }
+            dupleMap.put(twoChars, email);
         }
-
-        List<String> answer = set.stream().sorted().collect(Collectors.toList());
-
-        return answer;
-
     }
+
+
+
 
 }
