@@ -1,5 +1,4 @@
 package onboarding;
-
 public class Problem4 {
     public static char convertAlphabet(char originalAlphabet){
         int originalAsciiCode=(int) originalAlphabet;
@@ -28,6 +27,7 @@ public class Problem4 {
     }
     public static String solution(String word) {
         String answer = "";
+        answer=convertOriginalWord(word);
         return answer;
     }
 }
