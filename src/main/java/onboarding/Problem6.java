@@ -16,11 +16,14 @@ public class Problem6 {
         Map<String, Set<String>> twoSeqSubNameEmailMap = getSeqNameEmailMap(forms);
         Set<String> duplicateEmailSet = getDuplicateEmailSet(twoSeqSubNameEmailMap);
 
+        return toSortedList(duplicateEmailSet);
+    }
+
+    private static List<String> toSortedList(Set<String> duplicateEmailSet) {
         return duplicateEmailSet.stream()
                 .sorted()
                 .collect(Collectors.toList());
     }
-
 
     private static Map<String, Set<String>> getSeqNameEmailMap(List<List<String>> forms) {
         Map<String, Set<String>> seqSubNameEmailMap = new HashMap<>();
