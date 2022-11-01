@@ -20,6 +20,7 @@ class Problem1 {
 		int crongNum = 0;
 		for (int i = 0; i < 2; i++) {
 			int pobiCase = pobi.get(i);
+			pobiNum = 0;
 			while (pobiCase > 0) {
 				pobiNum += pobiCase % 10;
 				pobiCase = (int) (pobiCase / 10);
@@ -28,6 +29,7 @@ class Problem1 {
 				pobiMax = pobiNum;
 			}
 			pobiCase = pobi.get(i);
+			pobiNum = 1;
 			while (pobiCase > 0) {
 				pobiNum *= pobiCase % 10;
 				pobiCase = (int) (pobiCase / 10);
@@ -36,6 +38,7 @@ class Problem1 {
 				pobiMax = pobiNum;
 			}
 			int crongCase =crong.get(i);
+			crongNum = 0;
 			while (crongCase > 0) {
 				crongNum += crongCase % 10;
 				crongCase = (int) (crongCase / 10);
@@ -44,6 +47,7 @@ class Problem1 {
 				crongMax = crongNum;
 			}
 			crongCase =crong.get(i);
+			crongNum = 1;
 			while (crongCase > 0) {
 				crongNum *= crongCase % 10;
 				crongCase = (int) (crongCase / 10);
@@ -56,8 +60,10 @@ class Problem1 {
 			return 1;
 		} else if (pobiMax == crongMax) {
 			return 0;
-		} else{
+		} else if (pobiMax<crongMax){
 			return 2;
+		} else {
+			return 4;
 		}
     	
     }
