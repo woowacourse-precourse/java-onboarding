@@ -43,4 +43,12 @@ public class CollectionMaker {
                 .collect(Collectors.toList());
         return new VisitorList(visitorList);
     }
+
+    public FriendList getFriendList() {
+        return friendList;
+    }
+
+    public VisitorList getVisitorList() {
+        return visitorList;
+    }
 }
