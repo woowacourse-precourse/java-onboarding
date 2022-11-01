@@ -19,15 +19,8 @@ public class Problem2 {
 
         while(isDuplicate){
             decryption = eraseDuplicateString(decryption, toErase);
-            toErase = checkDuplicate(decryption.toString());
-
-            isDuplicate = false;
-            stringSize = decryption.length();
-            for (int i = 0; i < stringSize; ++i) {
-                if (toErase[i]) {
-                    isDuplicate = true;
-                }
-            }
+            toErase = findDuplicate(decryption.toString());
+            isDuplicate = checkDuplicate(toErase, decryption.length());
         }
         return decryption.toString();
     }
@@ -44,7 +37,7 @@ public class Problem2 {
         return nonDuplicateString;
     }
 
-    private static boolean[] checkDuplicate(String str) {
+    private static boolean[] findDuplicate(String str) {
         boolean[] isDuplicate = new boolean[1010];
         int stringSize = str.length();
 
@@ -55,5 +48,14 @@ public class Problem2 {
             }
         }
         return isDuplicate;
+    }
+
+    private static boolean checkDuplicate(boolean[] bool, int stringSize) {
+        for (int i = 0; i < stringSize; ++i) {
+            if (bool[i]) {
+                return true;
+            }
+        }
+        return false;
     }
 }
