@@ -86,6 +86,9 @@ public class Problem7 {
             }
         });
         for(int i = 0; i < entryList.size(); i++){
+            if(i == 5){
+                break;
+            }
             answer.add(entryList.get(i).getKey());
         }
         return answer;
