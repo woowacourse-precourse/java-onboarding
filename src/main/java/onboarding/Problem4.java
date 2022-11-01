@@ -11,7 +11,7 @@ public class Problem4 {
                 answer += up_change_word(word.charAt(i));
             }else if(word.charAt(i)>='a' && word.charAt(i)<='z') {
                 answer += low_change_word(word.charAt(i));
-            }else answer += ' ';
+            }else answer += word.charAt(i);
         }
 
 
