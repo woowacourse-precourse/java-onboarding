@@ -16,8 +16,10 @@ public class Problem7 {
         int[] score = new int[users.size()];
         int userIdx = users.indexOf(user);
 
-        for(int w : graph[userIdx]){
-            score = calculateScore(score, w);
+        if(userIdx != -1) {
+            for (int w : graph[userIdx]) {
+                score = calculateScore(score, w);
+            }
         }
 
         /*4. visitor 리스트를 조사하여, 방문한 사용자에게 1점씩 부여한다.*/
@@ -49,11 +51,22 @@ public class Problem7 {
             }
         });
 
+        List<String> result = createResult(user, users, entry);
+
+        return result;
+    }
+
+    public static List<String> createResult(String user, List<String> users, List<Map.Entry<String, Integer>> entry){
         int userIdx = users.indexOf(user);
         List<String> result = new ArrayList<>();
         for(Map.Entry<String, Integer> e : entry){
             String name = e.getKey();
-            if(!graph[userIdx].contains(users.indexOf(name))) {
+
+            if(userIdx == -1 && e.getValue() > 0) {
+                result.add(e.getKey());
+            }
+
+            if(userIdx != -1 && !graph[userIdx].contains(users.indexOf(name)) && e.getValue() > 0) {
                 result.add(e.getKey());
             }
 
