@@ -83,5 +83,46 @@ public class Problem7 {
         return result;
     }
 
+    public static List<String> recommendFriend(Map<String, Integer> nameandscore ){
+        List<Map.Entry<String,Integer>> sortedbyscore = nameandscore.entrySet()
+                .stream().sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .collect(Collectors.toList());
+
+        System.out.println("sortedbyscore = " + sortedbyscore);
+        List<String> result = new ArrayList<>();
+        List<String> tmp;
+        for (int i=0; i<sortedbyscore.size()-1; i++) {
+            int j=1;
+            if(!result.contains(sortedbyscore.get(i).getKey())) {
+                tmp = new ArrayList<>();
+                tmp.add(sortedbyscore.get(i).getKey());
+                if(sortedbyscore.get(i).getValue() == sortedbyscore.get(i+j).getValue() ) {
+                    while (sortedbyscore.get(i).getValue() == sortedbyscore.get(i + j).getValue()) {
+                        tmp.add(sortedbyscore.get(i + j).getKey());
+                        j++;
+                        if( i+j == sortedbyscore.size()){
+                            break;
+                        }
+                        System.out.println("tmp = " + tmp);
+                    }
+                    tmp.sort(Comparator.naturalOrder());
+                }
+                else if(sortedbyscore.get(i).getValue() != sortedbyscore.get(i+j).getValue()){
+                    tmp.add(sortedbyscore.get(i + j).getKey());
+                }
+                if(i+j == sortedbyscore.size()-1){
+                    tmp.add(sortedbyscore.get(i + j).getKey());
+                }
+                for (String name : tmp) {
+                    if(result.size()<5) {
+                        result.add(name);
+                    }
+                }
+            }
+        }
+        return  result;
+    }
+
+
 }
 
