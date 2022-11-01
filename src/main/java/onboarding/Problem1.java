@@ -12,27 +12,27 @@ class Problem1 {
 //        }
 //        return Math.max(sum, mul);
 //    }
-//
-//    public static ArrayList<Integer> intToDigits(int num)
-//    {
-//        ArrayList<Integer> Digits = new ArrayList<Integer>();
-//        int hundreds = num / 100;
-//        int tens = (num / 10) - (hundreds * 10);
-//        int units = num % 10;
-//        if (num < 10){
-//            Digits.add(units);
-//        }
-//        else if (num < 100){
-//            Digits.add(tens);
-//            Digits.add(units);
-//        }
-//        else{
-//            Digits.add(hundreds);
-//            Digits.add(tens);
-//            Digits.add(units);
-//        }
-//        return (Digits);
-//    }
+
+    public static ArrayList<Integer> intToDigits(int num)
+    {
+        ArrayList<Integer> Digits = new ArrayList<Integer>();
+        int hundreds = num / 100;
+        int tens = (num / 10) - (hundreds * 10);
+        int units = num % 10;
+        if (num < 10){
+            Digits.add(units);
+        }
+        else if (num < 100){
+            Digits.add(tens);
+            Digits.add(units);
+        }
+        else{
+            Digits.add(hundreds);
+            Digits.add(tens);
+            Digits.add(units);
+        }
+        return (Digits);
+    }
 
     public static boolean isProperInput(List<Integer> inputList)
     {
