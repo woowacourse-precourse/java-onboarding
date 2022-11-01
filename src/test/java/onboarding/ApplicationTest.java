@@ -1,16 +1,12 @@
 package onboarding;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 import java.util.ArrayList;
-import java.util.Objects;
-import java.util.UUID;
-import org.jetbrains.annotations.NotNull;
+import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 class ApplicationTest {
 
@@ -460,7 +456,6 @@ class ApplicationTest {
       }
     }
 
-    @NotNull
     private List<String> generateVisitors() {
       List<String> visitors = new ArrayList<>(10_000);
       for (int i = 20_000; i < 30_000; i++) {
@@ -469,7 +464,6 @@ class ApplicationTest {
       return visitors;
     }
 
-    @NotNull
     private List<List<String>> generateFriends() {
       List<List<String>> friends = new ArrayList<>();
       for (int i = 0; i < 10_000; i++) {
