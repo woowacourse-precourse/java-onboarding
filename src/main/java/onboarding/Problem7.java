@@ -1,19 +1,18 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = new ArrayList<>();
         List<String> CurrentFriends = CurrentFriends(user, friends);
         HashMap<String, Integer> PossibleFriends = PossibleFriend(user, friends, CurrentFriends);
         CountOverlappingFriend(PossibleFriends, CurrentFriends, friends);
         CountVisitors(PossibleFriends, CurrentFriends, visitors);
-
-        return answer;
+        List<String> answer = sortSuggestionList(PossibleFriends);
+        List<String> ret = new ArrayList<>();
+        for (int i = 0; i < 5; i++)
+            ret.add(answer.get(i));
+        return ret;
     }
 
     private static HashMap<String, Integer> PossibleFriend(String usr, List<List<String>> friends, List<String> CurrentFriends) {
@@ -62,5 +61,23 @@ public class Problem7 {
                 PossibleFriend.put(visitors.get(i), 0);
             }
         }
+    }
+
+    private static List<String> sortSuggestionList(HashMap < String, Integer > PossibleFriend){
+        List<Map.Entry<String, Integer>> list = new LinkedList<>(PossibleFriend.entrySet());
+        Collections.sort(list, (o1, o2) -> {
+            int comparision = (o1.getValue() - o2.getValue()) * -1;
+            return comparision == 0 ? o1.getKey().compareTo(o2.getKey()) : comparision;
+        });
+
+        Map<String, Integer> sortedMap = new LinkedHashMap<>();
+        for(Iterator<Map.Entry<String, Integer>> iter = list.iterator(); iter.hasNext();){
+            Map.Entry<String, Integer> entry = iter.next();
+            sortedMap.put(entry.getKey(), entry.getValue());
+        }
+
+        List<String> ret = new ArrayList<>();
+        sortedMap.forEach((k,v)->ret.add(k));
+        return ret;
     }
 }
