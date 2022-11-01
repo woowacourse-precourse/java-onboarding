@@ -60,6 +60,24 @@ class FriendPoint{
         return point_map;
     }
 }
+
+class VisitorPoint{
+    public static void getVisitorPoint(HashMap<String,Integer> point_map,
+                                       List<String> visitors,
+                                       List<String> user_friend_list){
+        for(String visitor:visitors){
+            if (point_map.containsKey(visitor)){
+                point_map.put(visitor,point_map.get(visitor)+1);
+            }
+            else{
+                if (user_friend_list!= null && user_friend_list.contains(visitor)) continue;
+                else point_map.put(visitor,1);
+            }
+        }
+    }
+}
+
+
 public class Problem7 {
 
     /*
@@ -77,21 +95,13 @@ public class Problem7 {
         //각 사람들끼리의 친구관계 설정.
 
         ArrayList<String> user_friend_list = friend_map.get(user);
+
         HashMap<String,Integer> point_map = FriendPoint.getFriendPoint(friend_map,user_friend_list,user);
 
-        //친구의 친구 = 10점. user에 대한 ArrayList가 생성되지 않았을때에 대한 NPE처리 필요.
+        VisitorPoint.getVisitorPoint(point_map,visitors,user_friend_list);
+
 
         //방문자 1점씩.
-        for(String visitor:visitors){
-            if (point_map.containsKey(visitor)){
-                point_map.put(visitor,point_map.get(visitor)+1);
-            }
-            else{
-                //여기서도 NPE처리.
-                if (user_friend_list!= null && user_friend_list.contains(visitor)) continue;
-                else point_map.put(visitor,1);
-            }
-        }
         System.out.println("point_map = " + point_map);
         //point_map을 2차원배열로 만든 후, x[1]에 대해 내림차순으로 정렬하고 x[0]에 대해선 오름차순으로 정렬한다.
 
