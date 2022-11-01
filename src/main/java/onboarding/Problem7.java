@@ -173,6 +173,17 @@ class Recommendation{
         }
         return recommendFriend;
     }
+    List<String> checkBounds(List<String> recommendFriend){
+        final int INITIALIZER=0;
+        int numberOfRecommendation=recommendFriend.size();
+
+        if(exceedBounds(numberOfRecommendation)){
+            return recommendFriend.subList(INITIALIZER, MAXIMUM_RECOMMENDATION+1);
+        }
+        else{
+            return recommendFriend;
+        }
+    }
 }
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
