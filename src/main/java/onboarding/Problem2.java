@@ -8,6 +8,7 @@ public class Problem2 {
             cryptogram = removeRepeated(cryptogram);
         }
         return cryptogram;
+
     }
 
     /**

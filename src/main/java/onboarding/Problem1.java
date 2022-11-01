@@ -13,9 +13,9 @@ class Problem1 {
             int repCrong = -1;
             repCrong = calculateScore(crong, repCrong);           // 크롱의 점수
 
-            if (repPobi > repCrong) {                               // 포비점수가 높은경우
+            if (repPobi > repCrong) {
                 return 1;
-            } else if (repPobi < repCrong) {                         // 크롱의 점수가 높은 경우
+            } else if (repPobi < repCrong) {
                 return 2;
             } else return 0;                                     // 점수가 같은 경우
         }
