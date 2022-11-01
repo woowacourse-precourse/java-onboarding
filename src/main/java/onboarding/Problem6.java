@@ -47,6 +47,7 @@ public class Problem6 {
     }
 
     private static boolean validateEmail(String email) {
+        return email.length() > 10 && email.length() < 20;
     }
 
 }
