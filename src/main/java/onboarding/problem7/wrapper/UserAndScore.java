@@ -9,4 +9,12 @@ public class UserAndScore {
         this.newFriendUser = newFriendUser;
         this.score = score;
     }
+
+    public String getUser() {
+        return newFriendUser.getUserId();
+    }
+
+    public int getScore() {
+        return score;
+    }
 }
