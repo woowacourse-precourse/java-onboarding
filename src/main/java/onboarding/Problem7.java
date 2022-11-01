@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 
 public class Problem7 {
 
@@ -48,6 +49,15 @@ public class Problem7 {
                 .matches(LOWERCASE_ALPHABET))) {
                 return false;
             }
+        }
+        return true;
+    }
+
+    //동일한 친구관계가 중복되어 있는지 검증하는 기능
+    public static boolean checkFriendRelationshipOverlap(List<List<String>> friends) {
+        Set<List<String>> deleteSameFriendRelationship = Set.copyOf(friends);
+        if(!(friends.size() == deleteSameFriendRelationship.size())) {
+            return false;
         }
         return true;
     }
