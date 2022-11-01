@@ -88,29 +88,29 @@ public class Problem7 {
 
     }
 
-//    public static <K, V> K getKey(Map<K, V> map, V value) {
-//        for (K key : map.keySet()) {
-//            if (value.equals(map.get(key))) {
-//                return key;
-//            }
-//        }
-//        return null;
-//    }
-//
-//    public static List<String> getPointFriend(ArrayList<String>[] inputFriend, String user, Map makeFriendLst, List<List<String>> friends) {
-//        Integer king = (Integer) getKey(makeFriendLst, user);
-//        System.out.println(king);
-//
-//
-//        ArrayList<String> realFriend = new ArrayList<>(); // user의 친구리스트, allFriendLst에서 user 순서의 리스트를 가져오면 됨
-//
-//        realFriend.addAll(inputFriend[king]);
-//        System.out.println(realFriend); //얘네들을 기준으로 가져오면 됨
-//
-//        return realFriend;
-//    }
-//
-//    public static void getPointVisit(List<String> visitors) {
-//
-//    }
+    public static <K, V> K getKey(Map<K, V> map, V value) {
+        for (K key : map.keySet()) {
+            if (value.equals(map.get(key))) {
+                return key;
+            }
+        }
+        return null;
+    }
+
+    public static List<String> getPointFriend(ArrayList<String>[] inputFriend, String user, Map makeFriendLst, List<List<String>> friends) {
+        Integer king = (Integer) getKey(makeFriendLst, user);
+        System.out.println(king);
+
+
+        ArrayList<String> realFriend = new ArrayList<>(); // user의 친구리스트, allFriendLst에서 user 순서의 리스트를 가져오면 됨
+
+        realFriend.addAll(inputFriend[king]);
+        System.out.println(realFriend); //얘네들을 기준으로 가져오면 됨
+
+        return realFriend;
+    }
+
+    public static void getPointVisit(List<String> visitors) {
+
+    }
 }
