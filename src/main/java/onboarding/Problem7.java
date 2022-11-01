@@ -30,7 +30,38 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+
+        Map<String, List<String>> friendMap = makeFriendMap(friends);
+
+        Map<String, Integer> resultCount = calculateScore(user, friendMap, visitors);
+
+        // 정렬
+        List<Map.Entry<String, Integer>> resultList = new LinkedList<>(resultCount.entrySet());
+
+        Collections.sort(resultList, new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                int cValue = o2.getValue() - o1.getValue();
+                return cValue == 0? o1.getKey().compareTo(o2.getKey()) : cValue;
+            }
+        });
+
+
+        List<String> answer = new ArrayList<>();
+
+        int count = 0;
+
+        for (Map.Entry<String, Integer> member : resultList) {
+
+            answer.add(member.getKey());
+            ++count;
+
+            if (count == 5){
+                break;
+            }
+
+        }
+
         return answer;
     }
 

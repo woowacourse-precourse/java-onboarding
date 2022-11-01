@@ -126,7 +126,31 @@ public class Problem7Test {
         answer.put("bedi", 3);
 
         assertThat(result).isEqualTo(answer);
+    }
+
+    @Test
+    @DisplayName("solution 메소드 테스트")
+    void solutionTest(){
+
+        String user = "mrko";
+        List<List<String>> friends = List.of(
+                List.of("donut", "andole"),
+                List.of("donut", "jun"),
+                List.of("donut", "mrko"),
+                List.of("shakevan", "andole"),
+                List.of("shakevan", "jun"),
+                List.of("shakevan", "mrko"),
+                List.of("teco", "mrko"),
+                List.of("teco", "jun")
+        );
+
+        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
 
 
+        List<String> result = Problem7.solution(user, friends, visitors);
+
+        List<String> answer = List.of("jun", "andole", "bedi");
+
+        assertThat(result).isEqualTo(answer);
     }
 }
