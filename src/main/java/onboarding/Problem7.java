@@ -19,7 +19,13 @@ public class Problem7 {
             List<String> visitors,
             String user
     ) {
+        for (String visitor: visitors) {
+            if (!isUserFriends(friendList, user, visitor) && !Objects.equals(visitor, user)) {
+                recommendedFriends.put(visitor, recommendedFriends.getOrDefault(visitor, visitScore) + visitScore);
+            }
+        }
 
+        return recommendedFriends;
     }
 
     public static HashMap<String, HashSet<String>> createFriendList(List<List<String>> friends) {
