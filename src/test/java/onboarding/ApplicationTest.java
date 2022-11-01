@@ -11,7 +11,7 @@ class ApplicationTest {
     @Nested
     class Problem1Test {
         @Test
-        void case1() {
+        void case1(){
             List<Integer> pobi = List.of(97, 98);
             List<Integer> crong = List.of(197, 198);
             int result = 0;
@@ -19,7 +19,7 @@ class ApplicationTest {
         }
 
         @Test
-        void case2() {
+        void case2(){
             List<Integer> pobi = List.of(131, 132);
             List<Integer> crong = List.of(211, 212);
             int result = 1;
@@ -27,7 +27,7 @@ class ApplicationTest {
         }
 
         @Test
-        void case3() {
+        void case3(){
             List<Integer> pobi = List.of(99, 102);
             List<Integer> crong = List.of(211, 212);
             int result = -1;
