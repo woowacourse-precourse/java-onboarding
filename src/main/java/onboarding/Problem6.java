@@ -7,20 +7,20 @@ import java.util.TreeSet;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        Set<String> emailSet = new TreeSet<>();
+        Set<String> duplicateNicknameEmailSet = new TreeSet<>();
 
         for(int i=0;i<forms.size()-1;i++){
             for(int j=i+1;j<forms.size();j++){
                 List<String> list1 = forms.get(i);
                 List<String> list2 = forms.get(j);
                 if(isDuplicateNickName(list1.get(1), list2.get(1))) {
-                    emailSet.add(list1.get(0));
-                    emailSet.add(list2.get(0));
+                    duplicateNicknameEmailSet.add(list1.get(0));
+                    duplicateNicknameEmailSet.add(list2.get(0));
                 }
             }
         }
 
-        return new ArrayList<>(emailSet);
+        return new ArrayList<>(duplicateNicknameEmailSet);
     }
 
     public static boolean isDuplicateNickName(String nick1, String nick2) {
