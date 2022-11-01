@@ -11,7 +11,7 @@ public class Problem7 {
         makeRelationships(friends);
         makeUserFriendSet(user);
         add10PointsToKnowTogether(user);
-
+        add1PointToVisitor(user, visitors);
         List<String> answer = Collections.emptyList();
         return answer;
     }
@@ -62,4 +62,15 @@ public class Problem7 {
         }
     }
 
+    private static void add1PointToVisitor(String user, List<String> visitors) {
+        for (String visitor : visitors) {
+            if (user.equals(visitor)) {
+                continue;
+            }
+            if (userFriends.contains(visitor)) {
+                continue;
+            }
+            scores.put(visitor, scores.getOrDefault(visitor, 0) + 1);
+        }
+    }
 }
