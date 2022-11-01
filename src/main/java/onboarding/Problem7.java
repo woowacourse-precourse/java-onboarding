@@ -24,5 +24,35 @@ public class Problem7 {
         return result;
     }
 
+    public static List<List<String>> countFriend(String user, List<List<String>> friends, List<String> mFriends) {
+        int cnt = 0;
 
+        List<String> g = new ArrayList<>();
+        List<List<String>> result = new ArrayList<>();
+
+        for (int i = 0; i < mFriends.size(); i++) {
+            // 있으면 넣지 않도록
+            List<String> m = findFriend(mFriends.get(i), friends);
+            for (int j = 0; j < m.size(); j++) {
+                g.add(m.get(j));
+            }
+        }
+
+        while (g.remove(user)) {}
+
+        for (int i = 0; i < g.size(); i++) {
+            cnt = 0;
+            for (int j = 0 ; j < g.size(); j++) {
+                if(g.get(i).equals(g.get(j))) {
+                    cnt++;
+                }
+            }
+            if (cnt > 1) {
+                if (!result.contains(List.of(g.get(i), String.valueOf(cnt))))
+                    result.add(List.of(g.get(i), String.valueOf(cnt * 10)));
+            }
+        }
+
+        return result;
+    }
 }
