@@ -20,7 +20,63 @@ public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
+
+        // 1. 닉네임 두글자씩 잘라서 Treeset에 저장
+        addAllTwoLettersInTreeSet(forms);
+
         return answer;
+    }
+
+    // 1. 닉네임 두글자씩 잘라서 Treeset에 저장
+    public static void addAllTwoLettersInTreeSet(List<List<String>> forms) {
+        for (int i = 0; i < forms.size(); i++) {
+            System.out.println(i + ": " + forms.get(i).get(1));
+
+            // 1-a. 닉네임 두글자씩 자름 String[] cutNickname
+            String[] cutNickname = cutNicknameByTwoLetters(forms.get(i).get(1)); // nickname
+
+            // 1-b. cutNickname이 각각 Treeset에 저장되어 있는지 확인
+            // 1-c. 저장되어 있는게 맞다면 twoLetter.overlap=true로 설정, 저장이 안되어있다면 Treeset.add
+            addTwoLettersInTreeSet(cutNickname);
+        }
+    }
+
+    // 1-a. 닉네임 두글자씩 자름 String[] cutNickname
+    // 2-a. 닉네임 두글자씩 자름 String[] cutNickname
+    public static String[] cutNicknameByTwoLetters(String nickname) {
+        String[] cutNickname = new String[nickname.length() - 1];
+        for (int i = 0; i < nickname.length() - 1; i++) {
+            cutNickname[i] = nickname.substring(i, i + 2);
+        }
+        return cutNickname;
+    }
+
+    // 1-b. cutNickname이 각각 Treeset에 저장되어 있는지 확인
+    // 1-c. 저장되어 있는게 맞다면 twoLetter.overlap=true로 설정, 저장이 안되어있다면 Treeset.add
+    public static void addTwoLettersInTreeSet(String[] cutNickname) {
+        // 1-b. cutNickname이 각각 Treeset에 저장되어 있는지 확인
+        for (int i = 0; i < cutNickname.length; i++) {
+            if (twoLetterTreeSet.isEmpty()) {
+                twoLetterTreeSet.add(new twoLetter(cutNickname[i], false));
+                continue;
+            }
+
+            // 1-c. 저장되어 있는게 맞다면 twoLetter.overlap=true로 설정
+            twoLetter tmp = twoLetterTreeSet.ceiling(new twoLetter(cutNickname[i], false));
+            System.out.println(tmp);
+            if (tmp == null) {
+                twoLetterTreeSet.add(new twoLetter(cutNickname[i], false));
+            } else if (cutNickname[i].equals(tmp.letter)) {
+                // overlap==true일때는 다시 저장할 필요 없음
+                if (!tmp.overlap) {
+                    twoLetterTreeSet.remove(new twoLetter(cutNickname[i], false));
+                    twoLetterTreeSet.add(new twoLetter(cutNickname[i], true));
+                }
+            } else {
+                twoLetterTreeSet.add(new twoLetter(cutNickname[i], false));
+            }
+        }
+        System.out.println("end");
     }
 
     // 0. class twoLetter(string letter, boolean overlap)
