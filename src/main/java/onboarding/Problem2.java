@@ -12,8 +12,7 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         validityChecker(cryptogram);
 
-        String answer = "answer";
-        return answer;
+        return modifyString(cryptogram);
     }
     private static void validityChecker(String cryptogram) {
         if (!isValidLength(cryptogram)) {
@@ -30,6 +29,19 @@ public class Problem2 {
     }
     private static boolean isVaildCompo(String cryptogram) {
         return Pattern.matches("^[a-z]*$", cryptogram);
+    }
+    private static String modifyString(String cryptogram) {
+        duplicateFlag = true;
+        StringBuilder sb = new StringBuilder(cryptogram);
+
+        while (duplicateFlag) {
+            duplicateFlag = false;
+//            getIndex(sb.toString());
+            if (duplicateFlag) {
+                sb.delete(start, end + 1);
+            }
+        }
+        return sb.toString();
     }
 
 }
