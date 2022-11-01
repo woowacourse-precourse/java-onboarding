@@ -26,6 +26,21 @@ public class Problem7 {
         }
         return friendsOfUser;
     }
+
+    /**
+     * map을 value와 알파벳 순에 따라 정렬한 list를 리턴합니다.
+     *
+     * @param map 정렬시킬 map
+     * @return 값에 따라 정렬된 list
+     */
+    public static List<String> getResultByValue(Map<String, Integer> map) {
+        return map.keySet().stream()
+                .sorted(Comparator
+                        .comparing(x -> map.get(x))
+                        .reversed())
+                .collect(Collectors.toList());
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Set<String> friendsOfUser = findFriends(user, friends);
 
@@ -52,5 +67,6 @@ public class Problem7 {
             pointUser.put(member, pointUser.getOrDefault(member, 0) + 1);
         }
 
+        return getResultByValue(pointUser);
     }
 }
