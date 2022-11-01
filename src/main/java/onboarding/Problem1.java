@@ -3,15 +3,15 @@ import java.util.List;
 import java.util.ArrayList;
 
 class Problem1 {
-//    public static int getMaxOfSumAndMul(ArrayList<Integer> digits) {
-//        int sum = 0;
-//        int mul = 1;
-//        for (int digit: digits){
-//            sum += digit;
-//            mul *= digit;
-//        }
-//        return Math.max(sum, mul);
-//    }
+    public static int getMaxOfSumAndMul(ArrayList<Integer> digits) {
+        int sum = 0;
+        int mul = 1;
+        for (int digit: digits){
+            sum += digit;
+            mul *= digit;
+        }
+        return Math.max(sum, mul);
+    }
 
     public static ArrayList<Integer> intToDigits(int num)
     {
