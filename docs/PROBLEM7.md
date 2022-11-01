@@ -13,6 +13,6 @@
 <br>주어진 제한 사항에 따라 예외 처리
 3. findFriendOfUserFriend (In : List<List<String>>, String)
 <br>user와 친구가 아니면서 user와 함께 아는 친구를 찾아 (List<String>) friendsOfUserFriends에 저장.
-4. ScoringFriend (In : None / Out : List<String)
+4. scoringUnknownUsers (In : None / Out : List<String)
 <br>먼저 모든 unknownUsers들을 이름순으로 정렬한 뒤, visitors는 +1점, 사용자와 함께 아는 친구는 +10점을 메긴다. 그리고 점수순으로 정렬하고 0점인 사람은 제외한다.
 최대 5명까지 반환한다.
