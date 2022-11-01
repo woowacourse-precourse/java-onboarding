@@ -4,12 +4,8 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = cryptogram;
         while (true) {
-            if(!hasReduplication(answer)){
-                return answer;
-            }
-            if(hasReduplication(answer)){
-                answer = removeReduplication(answer);
-            }
+            if(!hasReduplication(answer)) return answer;
+            answer = removeReduplication(answer);
         }
     }
 
