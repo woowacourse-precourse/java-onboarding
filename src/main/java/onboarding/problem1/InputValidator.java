@@ -4,10 +4,10 @@ import java.util.List;
 
 public class InputValidator {
 
-    private final int SIZE;
+    private final int MAX_PAGE;
 
-    public InputValidator(int size) {
-        SIZE = size;
+    public InputValidator(int maxPage) {
+        MAX_PAGE = maxPage;
     }
 
     public boolean validate(List<Integer> pages) {
@@ -19,6 +19,6 @@ public class InputValidator {
     }
 
     private boolean validateValues(int left, int right) {
-        return left < SIZE && 1 < right && left + 1 == right && left % 2 == 1 && right % 2 == 0;
+        return left < MAX_PAGE && 1 < right && left + 1 == right && left % 2 == 1 && right % 2 == 0;
     }
 }
