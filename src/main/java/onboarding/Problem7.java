@@ -8,23 +8,23 @@ public class Problem7 {
         HashMap<String, Integer> score = new HashMap<>();
         chk_user_friend(user, friends, score);
 
-        List<String> alr_frd=new ArrayList<>();
+        List<String> alr_frd = new ArrayList<>();
         /*친구의 친구 찾기*/
         findFF(friends, score, alr_frd);
         /*방문자 점수 올리기*/
         for (String s : visitors) {
-            if (score.containsKey(s)) { // 키가 있다면
+            if (score.containsKey(s)) {
                 score.replace(s, score.get(s) + 1);
             } else {
-                score.put(s,1);
+                score.put(s, 1);
             }
         }
         score.remove(user); // 사용자 본인은 제외하고
 
-        List<String> tmp=new ArrayList<>();
+        List<String> tmp = new ArrayList<>();
         /*사용자와 직접 친구인 사람들 제거*/
         for (Map.Entry<String, Integer> entry : score.entrySet()) {
-            if (entry.getValue()<=0) {          // 점수가 0점이거나 그 이하(직접적인 친구) 일 경우 제거하기 위해서
+            if (entry.getValue() <= 0) {          // 점수가 0점이거나 그 이하(직접적인 친구) 일 경우 제거하기 위해서
                 tmp.add(entry.getKey());
             }
         }
@@ -43,7 +43,10 @@ public class Problem7 {
             return answer.subList(0, 6);
         } else return answer;
     }
-    /**친구의 친구 찾아서 점수 업데이트**/
+
+    /**
+     * 친구의 친구 찾아서 점수 업데이트
+     **/
     private static void findFF(List<List<String>> friends, HashMap<String, Integer> score, List<String> alr_frd) {
         for (Map.Entry<String, Integer> entry : score.entrySet()) {
             String Key = entry.getKey();
@@ -55,8 +58,8 @@ public class Problem7 {
                 String a = relationship.get(0);
                 String b = relationship.get(1);
 
-                if (a.equals(s)) { // 이미 친구인 크루의 관계도가 발견되면
-                    if (score.containsKey(b)) { // 이미 점수가 있으면
+                if (a.equals(s)) {                          // 이미 친구인 크루의 관계도가 발견되면
+                    if (score.containsKey(b)) {             // 이미 점수가 있으면
                         score.replace(b, score.get(b) + 10);
                     } else {
                         score.put(b, 10);

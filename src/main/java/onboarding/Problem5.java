@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.List;
+
 public class Problem5 {
     public static List<Integer> solution(int money) {
         List<Integer> answer = new ArrayList<>();
@@ -12,7 +13,10 @@ public class Problem5 {
         }
         return answer;
     }
-    /**큰 액수의 화폐를 최대한 많이 사용하여 변환**/
+
+    /**
+     * 큰 액수의 화폐를 최대한 많이 사용하여 변환
+     **/
     private static int getChanges(int money, List<Integer> answer, int money_lst) {
         int num = money / money_lst;
         answer.add(num);
