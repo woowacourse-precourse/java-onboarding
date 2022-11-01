@@ -41,6 +41,27 @@ public class Problem7 {
             friendInfo.put(friends.get(i).get(1),list2);
         }
 
+        /*친구 목록 점수 계산*/
+
+        List<String> userFriends = List.of();
+
+        if(friendInfo.containsKey(user)) userFriends = friendInfo.get(user);
+        Map<String,Integer> friendScore = new HashMap<>();
+
+        for(String key:friendInfo.keySet()) {
+            if(key == user) continue;
+            int score =0;
+            for(int i=0; i<userFriends.size(); i++){
+                if(friendInfo.get(key).contains(userFriends.get(i))) score +=10;
+            }
+            if(score > 0){
+                if(friendScore.containsKey(key)){
+                    score += friendScore.get(key);
+                }
+                friendScore.put(key,score);
+            }
+        }
+
         return answer;
     }
 }
