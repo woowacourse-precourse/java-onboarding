@@ -8,7 +8,21 @@ import java.util.List;
 public class Problem7 {
 
     public static List<String> recommendFriends(String user, List<List<String>> friends, List<String> visitors) {
+        HashMap<String, Integer> score = new HashMap<>();
 
+        // 친구 리스트 생성
+        List<String> friendList = makeFriendList(user, friends, visitors);
+
+        // 관련 친구 점수 계산
+        score = calculateScore(friends, visitors, friendList);
+
+        // 결과 리스트 정렬
+        Map<String, Integer> sortedByKey = new TreeMap<>(score); // 알파벳 순 정렬
+        sortedByKey = valueSort(sortedByKey);   // 점수 순 정렬
+        List<String> result =  new ArrayList<>(sortedByKey.keySet());
+        System.out.println(result);
+
+        return friendList;
     }
 
     private static List<String> makeFriendList(String user, List<List<String>> friends, List<String> visitors) {
@@ -95,9 +109,38 @@ public class Problem7 {
         return result;
     }
 
+    public static <K, V extends Comparable<V> > Map<K, V> valueSort(final Map<K, V> map) {
+        // Static Method with return type Map and
+        // extending comparator class which compares values
+        // associated with two keys
+        Comparator<K> valueComparator = new Comparator<K>() {
+
+            // return comparison results of values of
+            // two keys
+            public int compare(K k1, K k2)
+            {
+                int comp = map.get(k2).compareTo(
+                        map.get(k1));
+                if (comp == 0)
+                    return 1;
+                else
+                    return comp;
+            }
+
+        };
+
+        // SortedMap created using the comparator
+        Map<K, V> sorted = new TreeMap<K, V>(valueComparator);
+
+        sorted.putAll(map);
+
+        return sorted;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
         List<String> answer = Collections.emptyList();
+        answer = makeFriendList(user, friends, visitors);
         return answer;
 
     }
