@@ -24,11 +24,15 @@ public class Problem3 {
     int count = 0;
     while (number > 0) {
       int digitNumber = number % 10;
-      if ((digitNumber == 3) || (digitNumber == 6) || (digitNumber == 9)) {
+      if (is369Number(digitNumber)) {
         count++;
       }
       number /= 10;
     }
     return count;
+  }
+
+  private static boolean is369Number(int digitNumber) {
+    return (digitNumber == 3) || (digitNumber == 6) || (digitNumber == 9);
   }
 }
