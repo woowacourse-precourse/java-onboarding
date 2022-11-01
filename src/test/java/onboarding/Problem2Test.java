@@ -18,11 +18,27 @@ class Problem2Test {
         assertThat(solution("jualllauj")).isEqualTo("");
     }
 
-    private String rereplace(String input){
-        while(deleteIdx(input).size()!=0){
-            input = replace(input);
+    private String solution(String input) {
+
+        while (true) {
+            char[] charInput = input.toCharArray();
+            boolean[] check = checkJungbok(charInput);
+            boolean again = false;
+            String temp = "";
+
+            for (int i =0; i<charInput.length; i++) {
+                // 중복되지 않은 문자 answer에 포함
+                if (!check[i]) {
+                    temp += String.valueOf(charInput[i]);
+                } else if (check[i]) again = true;
+            }
+            input = temp;
+            temp = "";
+            if (again == false) break;
         }
-        return input;
+
+        String answer = input;
+        return answer;
     }
 
     @Test
