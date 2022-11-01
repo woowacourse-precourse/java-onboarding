@@ -45,6 +45,10 @@ public class Problem7 {
 			firstUser.friendList.add(secondUser);
 			secondUser.friendList.add(firstUser);
 		}
+
+		public void addScoreByVisit() {
+			recommendedScore.addScoreByVisit();
+		}
 	}
 
 	private static class SocialService {
@@ -61,6 +65,10 @@ public class Problem7 {
 				User.addFriendRelation(firstUser, secondUser);
 			}
 
+			for (String visitor : visitors) {
+				User currentVisitor = addUser(visitor);
+				currentVisitor.addScoreByVisit();
+			}
 		}
 
 		private User addUser(String name) {
