@@ -1,7 +1,14 @@
 package onboarding;
 
+import onboarding.newExceptions.InvalidRestrictionException;
+
 public class Problem4 {
     public static String solution(String word) {
+        Problem4 restrictions = new Problem4();
+        if(restrictions.isViolatedRestrictions(word)){
+            throw new InvalidRestrictionException("word 의 길이가 1 이상 1,000 이하의 문자열이 아닙니다.");
+        }
+
         StringBuilder answer = new StringBuilder();
         char[] wordArray = word.toCharArray();
 
@@ -24,5 +31,8 @@ public class Problem4 {
     static char convertSmallLetter(char c){
         int convertAscii = 122 - ((byte)c - 97);
         return (char)convertAscii;
+    }
+    boolean isViolatedRestrictions(String input){
+        return !(1 <= input.length() && input.length() <= 1_000);
     }
 }

@@ -1,11 +1,18 @@
 package onboarding;
 
+import onboarding.newExceptions.InvalidRestrictionException;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class Problem5 {
     public static List<Integer> solution(int money) {
+        Problem5 restriction = new Problem5();
+        if(restriction.isViolatedRestrictions(money)){
+            throw new InvalidRestrictionException("money 가 1 이상 10,000 이하의 자연수가 아닙니다.");
+        }
+
         List<Integer> answer = new ArrayList<>(Collections.emptyList());
 
         //5만원, 1만원, 5천원, 1천원, 5백원, 1백원, 50원, 10원, 1원
@@ -21,5 +28,8 @@ public class Problem5 {
             }
         }
         return answer;
+    }
+    boolean isViolatedRestrictions(int money){
+        return !(1 <= money && money <= 10_000);
     }
 }
