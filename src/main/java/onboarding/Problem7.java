@@ -54,4 +54,17 @@ public class Problem7 {
                 friendsScore.put(visitor, friendsScore.getOrDefault(visitor, 0) + TIMELINE_VISIT_SCORE)
         );
     }
+
+
+    private static boolean recommendPolicy(Map.Entry<String, Integer> userScore) {
+        return recommendIfNot0Score(userScore) && notAlreadyFriend(userScore);
+    }
+
+    private static boolean recommendIfNot0Score(Map.Entry<String, Integer> userScore) {
+        return userScore.getValue() != 0;
+    }
+
+    private static boolean notAlreadyFriend(Map.Entry<String, Integer> userScore) {
+        return !userFriends.contains(userScore.getKey());
+    }
 }
