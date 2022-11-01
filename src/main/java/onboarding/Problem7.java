@@ -1,7 +1,10 @@
 package onboarding;
 
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Problem7 {
 
@@ -9,6 +12,18 @@ public class Problem7 {
         List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
+    }
+
+    private static List<String> getUserFriends(String user, List<List<String>> friends) {
+        Stream<List<String>> userFriendPairs = friends.stream()
+            .filter(friendPair -> friendPair.contains(user));
+
+        Stream<String> userFriends = userFriendPairs
+            .flatMap(Collection::stream)
+            .filter(userFriend -> !userFriend.equals(user));
+
+        return userFriends
+            .collect(Collectors.toList());
     }
 
     private enum Score {
