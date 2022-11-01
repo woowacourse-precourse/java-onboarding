@@ -6,10 +6,12 @@ import java.io.*;
 public class Problem2 {
     static class Decryptor{
         Stack<Character> stack;
+        StringBuilder sb;
 
         public Decryptor(char initChar) {
             this.stack = new Stack<>();
             this.stack.push(initChar);
+            this.sb = new StringBuilder();
         }
 
         public Decryptor decrypto(String cryptogram) {
@@ -27,29 +29,19 @@ public class Problem2 {
 
             return this;
         }
+
+        public String result() {
+            int stackLen = this.stack.size();
+            for (int i = 1; i < stackLen; i++) {
+                this.sb.append(this.stack.pop());
+            }
+
+            return this.sb.reverse().toString();
+        }
     }
 
     public static String solution(String cryptogram) {
-        Stack<Character> stack = new Stack<>();
-        stack.push('/');
-        int strLen = cryptogram.length();
-
-        for (int i = 0; i < strLen; i++) {
-            Character c = cryptogram.charAt(i);
-
-            if (stack.peek() == c) {
-                stack.pop();
-            } else {
-                stack.push(c);
-            }
-        }
-
-        StringBuilder sb = new StringBuilder();
-        int stackLen = stack.size();
-        for (int i = 1; i < stackLen; i++) {
-            sb.append(stack.pop());
-        }
-
-        return sb.reverse().toString();
+        Decryptor decryptor = new Decryptor('/');
+        return decryptor.decrypto(cryptogram).result();
     }
 }
