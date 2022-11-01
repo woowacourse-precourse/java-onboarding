@@ -6,10 +6,14 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Problem7 {
-    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
-        static HashMap<String,ArrayList<String>> friendRelationMap = new HashMap<>();
-        static HashMap<String,Integer> score  =new HashMap<>();
+
+    static HashMap<String,ArrayList<String>> friendRelationMap = new HashMap<>();
+    static List<String> tenPointUserList = new ArrayList<>();
+    static HashMap<String,Integer> score  =new HashMap<>();
+
+
+    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
 
         // 자신과 직접 연관이 있는 친구들 돌아가면서 찾기
@@ -45,7 +49,36 @@ public class Problem7 {
             }
         }
 
+        // 사용자 이름 넣고 시작
+        DFS(user,user,0);
+
         List<String> answer = new ArrayList<>();
         return answer;
+    }
+
+    public static void DFS(String startName, String nextUser,int depth)
+    {
+        // 만약 depth 2이면 이름 추가 , 10점 줄 예정
+        if(depth == 2)
+        {
+            tenPointUserList.add(nextUser);
+            return;
+        }
+        // 먼저 가져오기
+        List<String> temp = friendRelationMap.get(nextUser);
+
+        for (String t : temp) {
+            if(t.equals(startName))
+            {
+                continue;
+            }
+
+            int next = depth + 1;
+
+            DFS(startName,t,next);
+        }
+
+
+
     }
 }
