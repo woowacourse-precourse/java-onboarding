@@ -12,7 +12,7 @@ public class Problem4 {
         return answer;
     }
 
-    private static String changeCharacter(char character) {
+    private static char changeCharacter(char character) {
         if (isCharacterUpperCase(character)) {
             return getShiftedCharacterWithOffset('Z', getOffset('A', character));
         } else if (isCharacterLowerCase(character)) {
@@ -22,6 +22,7 @@ public class Problem4 {
     }
 
     private static char getShiftedCharacterWithOffset(char standardCharacter, Integer offset) {
+        return (char) (standardCharacter - offset);
     }
 
     private static Integer getOffset(char standardCharacter, char character) {
