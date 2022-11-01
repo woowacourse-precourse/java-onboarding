@@ -13,10 +13,10 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         try {
             Pages pobiPages = new Pages(pobi.stream()
-                    .map(pobiPage -> new Page(pobiPage))
+                    .map(Page::new)
                     .collect(Collectors.toList()));
             Pages crongPages = new Pages(crong.stream()
-                    .map(crongPage -> new Page(crongPage))
+                    .map(Page::new)
                     .collect(Collectors.toList()));
             Referee referee = new Referee(pobiPages, crongPages);
             return referee.getMatchResult();

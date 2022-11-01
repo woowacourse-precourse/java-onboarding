@@ -49,7 +49,7 @@ public class Members {
                 .filter(member -> member.getPoint() > 0)
                 .sorted(Comparator.comparing(Member::getPoint).reversed()
                         .thenComparing(Member::getName))
-                .map(member -> member.getName())
+                .map(Member::getName)
                 .collect(Collectors.toList());
     }
 

@@ -30,14 +30,14 @@ public class Pages {
 
     public int getMaxScoreBySum() {
         return pageList.stream()
-                .map(page -> page.getSumOfPageDigits())
+                .map(Page::getSumOfPageDigits)
                 .max(Comparator.comparing(Integer::intValue))
                 .get();
     }
 
     public int getMaxScoreByProduct() {
         return pageList.stream()
-                .map(page -> page.getProductOfPageDigits())
+                .map(Page::getProductOfPageDigits)
                 .max(Comparator.comparing(Integer::intValue))
                 .get();
     }

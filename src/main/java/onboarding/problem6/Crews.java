@@ -14,8 +14,8 @@ public class Crews {
 
     public List<String> getDuplicatedCrewEmailList() {
         return crewList.stream()
-                .filter(crew -> isDuplicatedCrew(crew))
-                .map(crew -> crew.getEmail())
+                .filter(this::isDuplicatedCrew)
+                .map(Crew::getEmail)
                 .distinct()
                 .sorted()
                 .collect(Collectors.toList());
