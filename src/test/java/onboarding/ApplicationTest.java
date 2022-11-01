@@ -216,17 +216,6 @@ class ApplicationTest {
             List<String> result = List.of("abc@email.com", "bcd@email.com", "cde@email.com");
             assertThat(Problem6.solution(forms)).isEqualTo(result);
         }
-        @Test
-        //효율성 테스트
-        void case3() {
-            List<List<String>> forms = new ArrayList<>();
-            for (int i = 0; i < 10000; i++) {
-                List<String> form = List.of("jm@email.com", "제이엠");
-                forms.add(form);
-            }
-            List<String> result = List.of("jm@email.com");
-            assertThat(Problem6.solution(forms)).isEqualTo(result);
-        }
     }
 
     @Nested
