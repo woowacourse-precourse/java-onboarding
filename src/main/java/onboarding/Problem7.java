@@ -72,6 +72,24 @@ public class Problem7 {
         return scoreMap;
     }
 
+    private static List<String> recommend(List<String> answer, HashMap<String, Integer> scoreMap) {
+        List<HashMap.Entry<String, Integer>> scoreList = new ArrayList<>(scoreMap.entrySet());
+
+        scoreList.sort(comparator);
+
+        int count = 0;
+
+        for (HashMap.Entry<String, Integer> list : scoreList) {
+            answer.add(list.getKey());
+            count++;
+            if (count == 5) {
+                break;
+            }
+        }
+
+        return answer;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
         HashMap<String, List<String>> friendMap;
@@ -84,6 +102,8 @@ public class Problem7 {
         scoreMap = scoreVisitors(scoreMap, visitors);
 
         scoreMap = removeUserAndFriend(scoreMap, friendMap, user);
+
+        answer = recommend(answer, scoreMap);
 
         return answer;
     }
