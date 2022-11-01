@@ -10,4 +10,8 @@ public class Problem3 {
         int answer = 0;
         return answer;
     }
+
+    private static int count369(String str) {
+        return str.length() - str.replaceAll("[369]", "").length();
+    }
 }
