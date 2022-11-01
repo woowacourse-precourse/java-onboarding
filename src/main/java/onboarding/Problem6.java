@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -18,9 +19,20 @@ import java.util.List;
 //3. 최종적으로 map을 반복하며 value가 2개 이상인 모든 닉네임에 대해 value 값을 set에 저장
 //4. set를 리스트로 변환후 정렬해보자.
 
+//이메일 길이 제한
+//닉네임이 한 글자이며 완전히 똑같을 경우는? -> 중복으로 간주하겠음
+
 
 
 public class Problem6 {
+	
+	public static boolean length_check(String str, List<Integer> arr) { // 이메일과 닉네임의 길이제한에 맞는지 확인
+		if(str.length() >= arr.get(0) && str.length() <= arr.get(1)) {
+			return true;
+		}
+		return false;
+	}
+	
     public static List<String> solution(List<List<String>> forms) {
         HashMap<String, List<String>> all_pos = new HashMap<String, List<String>>();
         HashSet<String> filter = new HashSet<>(); // 중복 제거용 집합
@@ -28,6 +40,17 @@ public class Problem6 {
         for (List <String> data: forms) {
         	String email = data.get(0);
         	String name = data.get(1);
+        	
+        	if (!(length_check(email,Arrays.asList(11,19)) && length_check(name, Arrays.asList(1,19)))) { // 길이제한에 맞지 않으면 제외
+        		continue;
+        	}
+        	
+        	if(name.length() == 1) { // 만약 닉네임이 한글자라면 따로 처리
+        		if (!all_pos.containsKey(name)) {
+        			all_pos.put(name, new ArrayList<String>());       			
+        		}
+        		all_pos.get(name).add(email);
+        	}
         	for (int i=0; i<name.length() - 1;i++) {
         		String temp = String.valueOf(name.charAt(i)) + String.valueOf(name.charAt(i + 1));
         		if (!all_pos.containsKey(temp)) { // 두글자가 이미 키로 저장되어 있지 않으면 새로운 빈리스트 생성
