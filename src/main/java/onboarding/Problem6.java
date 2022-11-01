@@ -23,10 +23,10 @@ package onboarding;
  *          - find_email_from_form(List form) = form 에서 email 을 찾아서 반환
  *
  *  - check_all_nickname() = candidate_arr 를 맨처음부터 돌면서 중복이 있는지 확인
- *      - is_duplicate_exist(Candidate target) = target 과 중복인 닉네임이 있는지 candidate_arr 을 돌면서 확인
- *          - is_nickname_duplicate_with(Candidate target, Candidate compare) = target, compare 의 닉네임이 중복인지 모든 조합을 이용해서 탐색
+ *      - compare_with_all_nickname(Candidate candidate) = candidate 과 중복인 닉네임이 있는지 candidate_arr 을 돌면서 확인
+ *          - check_all_cases(Candidate candidate, Candidate target) = candidate, target 의 닉네임이 중복인지 모든 조합을 이용해서 탐색
  *              - make_two_letter_word_start_from(String str, int index ) = str 에서 index 부터 시작하는 길이가 2인 substring 을 반환
- *              - check_nickname_duplicate(Candidate candidate, String word) = candidate 의 닉네임에 word 가 있으면 중복 닉네임 찾음 표시
+ *              - check_target_contains_word(Candidate candidate, String word) = candidate 의 닉네임에 word 가 있으면 중복 닉네임 찾음 표시
  *
  *  - make_result() = candidate 들 중 중복 아이디가 있는 candidate 의 이메일을 담은 list 를 생성
  *      - add_result_who_has_duplicate_nickname(Candidate candidate) = candidate 와 중복된 아이디가 있는 경우 result 에 email 을 add
@@ -105,33 +105,33 @@ class Nickname_validator {
 
     public void check_all_nickname() {
         for (Candidate candidate : candidate_arr) {
-            is_duplicate_exist(candidate);
+            compare_with_all_nickname(candidate);
         }
     }
 
-    private void is_duplicate_exist(Candidate target) {
-        for (Candidate candidate : candidate_arr) {
-            is_nickname_duplicate_with(target, candidate);
+    private void compare_with_all_nickname(Candidate candidate) {
+        for (Candidate target : candidate_arr) {
+            check_all_cases(candidate, target);
         }
     }
 
-    private void is_nickname_duplicate_with(Candidate target, Candidate compare) {
-        if (target == compare)
+    private void check_all_cases(Candidate candidate, Candidate target) {
+        if (candidate == target)
             return;
-        String target_nickname = target.show_nickname();
-        for (int start = 0; start < target_nickname.length() - 1; start++) {
-            check_nickname_duplicate(compare, make_two_letter_word_start_from(target_nickname, start));
+        String candidate_nickname = candidate.show_nickname();
+        for (int start = 0; start < candidate_nickname.length() - 1; start++) {
+            check_target_contains_word(target, make_two_letter_word_start_from(candidate_nickname, start));
+        }
+    }
+
+    private void check_target_contains_word(Candidate candidate, String word) {
+        if (candidate.show_nickname().contains(word)) {
+            candidate.find_duplicate_nickname();
         }
     }
 
     private String make_two_letter_word_start_from(String str, int index) {
         return str.substring(index, index + 2);
-    }
-
-    private void check_nickname_duplicate(Candidate candidate, String word) {
-        if (candidate.show_nickname().contains(word)) {
-            candidate.find_duplicate_nickname();
-        }
     }
 
     public void make_result() {
