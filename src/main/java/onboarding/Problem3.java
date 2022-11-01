@@ -20,10 +20,9 @@ public class Problem3 {
         }
     }
 
-    private static int checkScore(char number) {
-        if(number == '3' || number == '6' || number == '9'){
+    private static void checkScore(char number) {
+        if (number == '3' || number == '6' || number == '9') {
             result++;
         }
-        return result;
     }
 }
