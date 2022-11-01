@@ -7,8 +7,8 @@ import java.util.*;
 // 1. friendMap 형성 -> 2. friends돌며 친구 사이 추가하기 ->3.user(key)로 userFriend리스트 생성
 
 public class Problem7 {
-    public static int ACQUAINTANCE_POINT = 10;
-    public static int VISITOR_POINT = 1;
+    private static int ACQUAINTANCE_POINT = 10;
+    private static int VISITOR_POINT = 1;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
@@ -57,19 +57,22 @@ public class Problem7 {
         if (userFriendList.isEmpty()) return;
         for(String userFriend : userFriendList){
             List<String> myFriendList = friendMap.getOrDefault(userFriend, Collections.emptyList());
-
-            for(String friend : myFriendList){
-                if(friend.equals(user)) continue; //user본인인 경우
-                if(userFriendList.contains(friend)) continue;  // user의 친구인 경우
-                if(recommendFriendPoint.containsKey(friend)){
-                    recommendFriendPoint.replace(friend,recommendFriendPoint.get(friend)+ACQUAINTANCE_POINT);
-                    continue;
-                }
-                recommendFriendPoint.put(friend, ACQUAINTANCE_POINT);
-            }
+            calculateAcquaintance(user, userFriendList, myFriendList, recommendFriendPoint);
         }
     }
 
+    //4. 친구의 아는 사람을 추천 맵에 넣고 점수주기
+    public static void calculateAcquaintance(String user, List<String> userFriendList ,List<String> myFriendList, Map<String,Integer> recommendFriendPoint){
+        for(String friend : myFriendList){
+            if(friend.equals(user)) continue; //user본인인 경우
+            if(userFriendList.contains(friend)) continue;  // user의 친구인 경우
+            if(recommendFriendPoint.containsKey(friend)){
+                recommendFriendPoint.replace(friend,recommendFriendPoint.get(friend)+ACQUAINTANCE_POINT);
+                continue;
+            }
+            recommendFriendPoint.put(friend, ACQUAINTANCE_POINT);
+        }
+    }
 
 
     //5. 방문자 추천하기 (user본인이나 친구가 아닌경우만)
