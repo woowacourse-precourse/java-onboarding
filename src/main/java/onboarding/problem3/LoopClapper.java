@@ -13,4 +13,12 @@ public class LoopClapper implements Clapper{
         }
         return totalClap;
     }
+    private int getClap(int n) {
+        int count = 0;
+        String strOfNum = String.valueOf(n);
+        for(int i = 0; i < strOfNum.length(); i++) {
+            count += multipleOfThree(strOfNum.charAt(i));
+        }
+        return count;
+    }
 }
