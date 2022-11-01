@@ -1,33 +1,32 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Problem5 {
-    static List<Integer> moneyList;
+    static List<Integer> unitList;
 
     public static List<Integer> solution(int money) {
         List<Integer> answer = new ArrayList<>();
-        initMoneyList();
-        for (Integer unit : moneyList) {
+        initUnitList();
+        for (Integer unit : unitList) {
             answer.add(getUnitCount(money, unit));
             money = getNextMoney(money, unit);
         }
         return answer;
     }
 
-    public static void initMoneyList(){
-        moneyList = new ArrayList<>();
-        moneyList.add(50000);
-        moneyList.add(10000);
-        moneyList.add(5000);
-        moneyList.add(1000);
-        moneyList.add(500);
-        moneyList.add(100);
-        moneyList.add(50);
-        moneyList.add(10);
-        moneyList.add(1);
+    public static void initUnitList(){
+        unitList = new ArrayList<>();
+        unitList.add(50000);
+        unitList.add(10000);
+        unitList.add(5000);
+        unitList.add(1000);
+        unitList.add(500);
+        unitList.add(100);
+        unitList.add(50);
+        unitList.add(10);
+        unitList.add(1);
     }
 
     public static int getUnitCount(int money, int unit){
