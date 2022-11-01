@@ -33,6 +33,17 @@ public class Problem7 {
             team.get(friend.get(1)).getFriends().add(friend.get(0));
 
         }
+
+        // 함께 아는 친구일 경우, 10점을 부여하는 기능
+        for (String member : team.keySet()) {
+            Crew crew = team.get(member);
+            for (String friend : crew.getFriends()) {
+                if (team.get(user).getFriends().contains(friend)) {
+                    crew.plusScoreTen();
+                }
+            }
+        }
+
         return answer;
     }
 
