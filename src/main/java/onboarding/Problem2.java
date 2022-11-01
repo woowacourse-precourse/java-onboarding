@@ -30,17 +30,19 @@ public class Problem2 {
             boolean flag = false;
             int prev = 0;
 
+            if(duplication.length()==2) {
+                duplication = (isCharRepeated(0, 1)) ? "" : duplication;
+                return flag;
+            }
+
             for(int i=0 ; i<duplication.length() ; i++) {
-                if(duplication.length()==2) {
-                    duplication=(duplication.charAt(0)==duplication.charAt(1))? "" : duplication;
-                    break;
-                }
-                if(stack.empty() || duplication.charAt(prev)!=duplication.charAt(i)) {
+                if(stack.empty() || ! isCharRepeated(prev, i)) {
                     stack.push(duplication.charAt(i));
                     prev = i;
                     continue;
                 }
-                while(duplication.charAt(prev)==duplication.charAt(i)){
+
+                while(isCharRepeated(prev, i)){
                     i++;
                 }
                 i--;
@@ -50,6 +52,10 @@ public class Problem2 {
 
             duplication = stack.stream().map(String::valueOf).collect(Collectors.joining());
             return flag;
+        }
+
+        private boolean isCharRepeated(int i, int j) {
+            return duplication.charAt(i) == duplication.charAt(j);
         }
     }
     public static String solution(String cryptogram) {
