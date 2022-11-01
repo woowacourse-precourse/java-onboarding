@@ -1,5 +1,7 @@
 package onboarding.problem7;
 
+import onboarding.problem7.exception.UserInputException;
+
 import java.util.Objects;
 import java.util.regex.Pattern;
 
@@ -17,6 +19,11 @@ public class SnsId {
              throw new UserInputException("아이디는 영어 소문자로 1자 이상 30자 이하여야 합니다.");
         }
     }
+
+    public String getUser() {
+        return user;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -28,9 +35,5 @@ public class SnsId {
     @Override
     public int hashCode() {
         return Objects.hash(user);
-    }
-
-    public String getUser() {
-        return user;
     }
 }

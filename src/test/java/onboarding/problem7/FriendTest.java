@@ -1,5 +1,6 @@
 package onboarding.problem7;
 
+import onboarding.problem7.exception.FriendsException;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;

@@ -1,5 +1,6 @@
 package onboarding.problem7;
 
+import onboarding.problem7.exception.UserInputException;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertAll;
