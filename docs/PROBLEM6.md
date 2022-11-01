@@ -21,3 +21,9 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능목록
+
+1. 이름을 2글자씩 분할 (divideNameByTwoChars)
+2. 1에서 2글자씩 분할한 글자가 forms의 name에 포함되어 있는 이메일 찾기 (findEmailContainWord)
+3. 2에서 구한 이메일들의 중복 제거 (removeDuplicatedEmail)
