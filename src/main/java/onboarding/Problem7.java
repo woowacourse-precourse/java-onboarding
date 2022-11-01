@@ -1,11 +1,12 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     private static final int bothKnownScore = 10;
     private static final int visitScore = 1;
-    
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
@@ -87,5 +88,21 @@ public class Problem7 {
         }
 
         return totalCount;
+    }
+
+    private static List<String> getResult(Map<String, Integer> totalScore) {
+        List<String> keySetList = new ArrayList<>(totalScore.keySet());
+
+        keySetList.sort((o1, o2) -> {
+            if (totalScore.get(o1) < totalScore.get(o2)) {
+                return 1;
+            } else if (totalScore.get(o1) > totalScore.get(o2)) {
+                return -1;
+            }
+
+            return o1.compareTo(o2);
+        });
+
+        return keySetList.stream().limit(5).collect(Collectors.toList());
     }
 }
