@@ -50,7 +50,7 @@ public class Problem7 {
         }
     }
     private static void scoreVisitedUser(HashMap<String, HashSet<String>> graph, HashMap<String, Integer> scoreMap, String user, String visitor) {
-        HashSet<String> friendOfUser = graph.get(user);
+        HashSet<String> friendOfUser = graph.getOrDefault(user, new HashSet<>());
 
         if (visitor.equals(user))
             return;
