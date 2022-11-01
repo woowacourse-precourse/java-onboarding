@@ -18,4 +18,16 @@ public class FrogDictionary {
 	static boolean isUpperAlphabet(char input) {
 		return input >= START_UPPER_ASCII && input <= END_UPPER_ASCII;
 	}
+
+	static char convert(char input) {
+		if (!isAlphabet(input)) {
+			return input;
+		}
+		if (isLowerAlphabet(input)) {
+			int asciiSum = START_LOWER_ASCII + END_LOWER_ASCII;
+			return (char) (asciiSum - input);
+		}
+		int asciiSum = START_UPPER_ASCII + END_UPPER_ASCII;
+		return (char) (asciiSum - input);
+	}
 }
