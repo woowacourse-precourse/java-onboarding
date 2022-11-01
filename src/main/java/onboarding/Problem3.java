@@ -6,16 +6,21 @@ public class Problem3 {
         int result = 0;
 
         for (int i = 1; i <= number; i++) {
-            int pow = 0;
-            while (i >= Math.pow(10, pow)) {
-                int n = digitNumber(i, pow);
-                if (needCrap(n)) {
-                    result += 1;
-                }
-                pow += 1;
-            }
+            result = verify(result, i);
         }
 
+        return result;
+    }
+
+    private static int verify(int result, int i) {
+        int pow = 0;
+        while (i >= Math.pow(10, pow)) {
+            int n = digitNumber(i, pow);
+            if (needCrap(n)) {
+                result += 1;
+            }
+            pow += 1;
+        }
         return result;
     }
 
