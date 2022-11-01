@@ -102,7 +102,10 @@ public class Problem7 {
         Map<String, Integer> sortedTotalScoreMap = new LinkedHashMap<>();
         for (Iterator<Map.Entry<String, Integer>> iterator = entryList.iterator(); iterator.hasNext(); ) {
             Map.Entry<String, Integer> entry = iterator.next();
-            recommendFriendList.add(entry.getKey());
+            sortedTotalScoreMap.put(entry.getKey(), entry.getValue());
+        }
+        for (Map.Entry<String, Integer> name : sortedTotalScoreMap.entrySet()) {
+            recommendFriendList.add(name.getKey());
         }
         return recommendFriendList;
     }
