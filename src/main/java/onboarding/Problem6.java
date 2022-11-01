@@ -9,6 +9,9 @@ import java.util.Set;
 
 public class Problem6 {
 
+	public static final int EMAIL = 0;
+	public static final int NICKNAME = 1;
+
 	public static final int EXCEPTION = -1;
 
 	public static List<String> solution(List<List<String>> forms) {
@@ -25,7 +28,7 @@ public class Problem6 {
 
 		// HashMap 초기화
 		for (List<String> form : forms) {
-			map.put(form.get(0), form.get(1));
+			map.put(form.get(EMAIL), form.get(NICKNAME));
 		}
 
 		// 두 글자씩 쪼개어 splitNicknames 에 추가
@@ -85,7 +88,7 @@ public class Problem6 {
 	// 이메일의 전체 길이가 11자 이상 20자 미만이 아닌 경우 예외
 	private static boolean isEmailRangeValid(List<List<String>> forms) {
 		for (List<String> form : forms) {
-			if (form.get(0).length() < 11 || form.get(0).length() >= 20) {
+			if (form.get(EMAIL).length() < 11 || form.get(EMAIL).length() >= 20) {
 				return false;
 			}
 		}
@@ -95,7 +98,7 @@ public class Problem6 {
 	// 닉네임의 전체 길이가 1자 이상 20자 미만이 아닌 경우 예외
 	private static boolean isNicknameRangeValid(List<List<String>> forms) {
 		for (List<String> form : forms) {
-			if (form.get(1).length() < 1 || form.get(1).length() >= 20) {
+			if (form.get(NICKNAME).length() < 1 || form.get(NICKNAME).length() >= 20) {
 				return false;
 			}
 		}
