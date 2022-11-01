@@ -10,6 +10,30 @@ import java.util.Stack;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
+
+        Stack<Character> password = new Stack<>();
+
+        char[] cryptogramChar = cryptogram.toCharArray();
+
+        for (char letter : cryptogramChar) {
+
+            if (password.isEmpty()) {
+                password.add(letter);
+                continue;
+            }
+
+            char peekLetter = password.peek();
+
+            if (peekLetter == letter) {
+                password.pop();
+            }
+
+            if(peekLetter != letter){
+                password.add(letter);
+            }
+
+        }
+
         return answer;
     }
 }
