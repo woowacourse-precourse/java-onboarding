@@ -7,8 +7,22 @@ import java.util.List;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+        HashMap<String, String> words = new HashMap<String, String>();
+        List<String> duplicateEmailList = new ArrayList<String>();
+        UsersTool usersTool = new UsersTool(words, duplicateEmailList);
+
+        // 순차적으로 유저 정보를 체크합니다.
+        for(List<String> form : forms) {
+            String email = form.get(0);
+            String nickname = form.get(1);
+
+            // 2글자씩 나눠서 대입합니다.
+            List<String> word = getTwoWords(nickname);
+            for(String w : word)
+                usersTool.insertWord(email, w);
+        }
+
+        return usersTool.getDuplicateEmailList();
     }
 
     // 닉네임의 연속된 2글자로 만들 수 있는 경우의 수를 모두 찾습니다,
