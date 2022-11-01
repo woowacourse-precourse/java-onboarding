@@ -32,8 +32,7 @@ public class Problem6 {
         Set<String> answerSet = new HashSet<>();
         for(Set<String> emails : map.values())
             if(emails.size() > 1)
-                for(String email : emails)
-                    answerSet.add(email);
+                answerSet.addAll(emails);
 
         // 3. 이메일 오름차순 정렬, 중복 제거
         List<String> answer = new ArrayList<>(answerSet);
