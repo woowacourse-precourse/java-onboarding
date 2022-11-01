@@ -25,4 +25,12 @@ public interface Calc {
 
         return result;
     }
+
+    // 3. 배열의 모든 요소들을 연산하기
+    // 덧셈/곱셈을 실제 연산하는 getCalc와 분리함 -> 확장성 / 유지보수를 위해
+    default int getResult(List<Integer> list) {
+        List<Integer> arr = mergeTwoArray(list);
+        int num = getCalc(arr);
+        return num;
+    }
 }
