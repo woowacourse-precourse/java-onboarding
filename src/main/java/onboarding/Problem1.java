@@ -2,8 +2,10 @@ package onboarding;
 
 import onboarding.problem1.Page;
 
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 class Problem1 {
     private static final int LEFT_PAGE_INDEX = 0;
@@ -13,45 +15,29 @@ class Problem1 {
         try {
             validatePageNumberGap(pobi.get(LEFT_PAGE_INDEX), pobi.get(RIGHT_PAGE_INDEX));
             validateLeftPageNumberIsOdd(pobi.get(LEFT_PAGE_INDEX));
-            pobi.stream()
-                    .forEach(pobiPage -> new Page(pobiPage));
+            List<Page> pobiPages = pobi.stream()
+                    .map(pobiPage -> new Page(pobiPage))
+                    .collect(Collectors.toList());
             validatePageNumberGap(crong.get(LEFT_PAGE_INDEX), crong.get(RIGHT_PAGE_INDEX));
             validateLeftPageNumberIsOdd(crong.get(LEFT_PAGE_INDEX));
-            crong.stream()
-                    .forEach(crongPage -> new Page(crongPage));
+            List<Page> crongPages = crong.stream()
+                    .map(crongPage -> new Page(crongPage))
+                    .collect(Collectors.toList());
+            
+            Integer pobiScore = pobiPages.stream()
+                    .map(page -> getMaxNumber(page.getSumOfPageDigits(), page.getProductOfPageDigits()))
+                    .max(Comparator.comparing(Integer::intValue))
+                    .get();
+
+            Integer crongScore = crongPages.stream()
+                    .map(page -> getMaxNumber(page.getSumOfPageDigits(), page.getProductOfPageDigits()))
+                    .max(Comparator.comparing(Integer::intValue))
+                    .get();
+
+            return getMatchResult(pobiScore, crongScore);
         } catch (IllegalArgumentException e) {
             return -1;
         }
-
-        Integer pobiScore = pobi.stream()
-                .map(page -> getMaxNumber(getSumOfPageDigits(page), getProductOfPageDigits(page)))
-                .max(Comparator.comparing(Integer::intValue))
-                .get();
-
-        Integer crongScore = crong.stream()
-                .map(page -> getMaxNumber(getSumOfPageDigits(page), getProductOfPageDigits(page)))
-                .max(Comparator.comparing(Integer::intValue))
-                .get();
-
-        return getMatchResult(pobiScore, crongScore);
-    }
-
-    public static int getSumOfPageDigits(int pageNumber) {
-        int result = 0;
-        while (pageNumber > 0) {
-            result += pageNumber % 10;
-            pageNumber /= 10;
-        }
-        return result;
-    }
-
-    public static int getProductOfPageDigits(int pageNumber) {
-        int result = 1;
-        while (pageNumber > 0) {
-            result *= pageNumber % 10;
-            pageNumber /= 10;
-        }
-        return result;
     }
 
     public static int getMaxNumber(int number1, int number2) {

@@ -11,9 +11,27 @@ public class Page {
         this.pageNumber = pageNumber;
     }
 
-    private static void validatePageNumberRange(int pageNumber) {
+    private void validatePageNumberRange(int pageNumber) {
         if (pageNumber <= START_PAGE || pageNumber >= END_PAGE) {
             throw new IllegalArgumentException();
         }
+    }
+
+    public int getSumOfPageDigits() {
+        int result = 0;
+        while (pageNumber > 0) {
+            result += pageNumber % 10;
+            pageNumber /= 10;
+        }
+        return result;
+    }
+
+    public int getProductOfPageDigits() {
+        int result = 1;
+        while (pageNumber > 0) {
+            result *= pageNumber % 10;
+            pageNumber /= 10;
+        }
+        return result;
     }
 }
