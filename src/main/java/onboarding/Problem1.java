@@ -41,4 +41,15 @@ class Problem1 {
 
         return results.stream().max(Integer::compare).orElse(-1);
     }
+
+    
+    private static int winner(int pobi, int crong) {
+        if (pobi > crong) {
+            return 1;
+        } else if (pobi < crong) {
+            return 2;
+        } else {
+            return 0;
+        }
+    }
 }
