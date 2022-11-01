@@ -31,4 +31,15 @@ public class Problem6 {
             tokenCounter.put(token, tokenCount + 1);
         }
     }
+
+    public static String getNickname(List<String> form) {
+        return form.get(1);
+    }
+
+    public static void countAllTokensFromForms(List<List<String>> forms) {
+        forms.stream()
+                .map(list -> getNickname(list))
+                .map(nickname -> extractTokensFromNicknameWithoutDuplication(nickname))
+                .forEach(tokens -> countToken(tokens));
+    }
 }
