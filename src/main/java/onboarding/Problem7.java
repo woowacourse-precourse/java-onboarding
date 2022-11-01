@@ -74,4 +74,17 @@ public class Problem7 {
         return scoreMap;
     } // end calFriendsScore
 
+    private static Map<String, Integer> timeLineScore(LinkedList<String> visitorsArr, Map<String, Integer> scoreMap){
+
+        for(String visitor : visitorsArr){
+            if(scoreMap.containsKey(visitor)){ // 해당 키값이 존재한다면 기존 값에서 + visitTimeLineScore
+                scoreMap.put(visitor, scoreMap.get(visitor) + visitTimeLineScore);
+            }else{ // 해당 키값이 존재하지 않는다면 visitTimeLineScore로 초기화
+                scoreMap.put(visitor, visitTimeLineScore);
+            } // end if
+        } // end for
+
+        return scoreMap;
+    } // end timeLineScore
+
 } // end class
