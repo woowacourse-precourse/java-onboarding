@@ -23,6 +23,7 @@ public class Problem2 {
                     }
                 }
                 indexList = indexList.stream().distinct().sorted().collect(Collectors.toList());
+                //연속되는 중복 문자가 3개일 경우 인덱스 중복으로 인해 생기는 문제 방지용 중복 제거 및 정렬
                 for (int i = indexList.size() - 1; i >= 0; i--) {
                     charArrayList.remove(Integer.parseInt(indexList.get(i).toString()));
                 }
