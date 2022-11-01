@@ -49,14 +49,49 @@ class Problem1 {
 	 * @return
 	 */
 	private static Integer checkRestrictions(List<Integer> pages) {
-		int[] arr = pages.stream().mapToInt(i -> i).toArray();
-		if (arr.length != 2) {
-			return -1;
+		if (isPagesSizeValid(pages) && isPagesContiguousValid(pages)
+			&& isPagesEvenOddValid(pages) && isPagesRangeValid(pages)) {
+			return 0;
 		}
-		if (arr[1] - arr[0] != 1) {
-			return -1;
+		return -1;
+	}
+
+	// 페이지 리스트의 요소가 2개가 아닌 경우 예외
+	private static boolean isPagesSizeValid(List<Integer> pages) {
+		if (pages.size() != 2) {
+			return false;
 		}
-		return 0;
+		return true;
+	}
+
+	// 페이지 리스트의 요소가 연속된 수가 아닌 경우 예외
+	private static boolean isPagesContiguousValid(List<Integer> pages) {
+		Integer leftPage = pages.get(0);
+		Integer rightPage = pages.get(1);
+		if (rightPage - leftPage != 1) {
+			return false;
+		}
+		return true;
+	}
+
+	// 왼쪽 페이지가 홀수이고, 오른쪽 페이지가 짝수가 아닌 경우 예외
+	private static boolean isPagesEvenOddValid(List<Integer> pages) {
+		Integer leftPage = pages.get(0);
+		Integer rightPage = pages.get(1);
+		if (leftPage % 2 != 1 || rightPage % 2 != 0) {
+			return false;
+		}
+		return true;
+	}
+
+	// 페이지 범위가 1 ~ 400 이 아닌 경우 예외
+	private static boolean isPagesRangeValid(List<Integer> pages) {
+		Integer leftPage = pages.get(0);
+		Integer rightPage = pages.get(1);
+		if (leftPage < 1 || rightPage > 400) {
+			return false;
+		}
+		return true;
 	}
 
 	/**
