@@ -67,4 +67,10 @@ public class Problem7 {
             }
         }
     }
+
+    // 0점이면 제외
+    private static void removeZeroScore(Map<String, Integer> scoreInfo) {
+        scoreInfo.entrySet().removeIf(
+                entry -> entry.getValue().equals(0));
+    }
 }
