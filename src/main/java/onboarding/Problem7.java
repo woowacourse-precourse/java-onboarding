@@ -60,6 +60,19 @@ public class Problem7 {
             score.put(name,friendScore+10);
         }
 
+
+        for(String visit : visitors)
+        {
+            // 만약 나와 직접적인 친구 관계라면 제외해주기
+            if(friendRelationMap.get(user).contains(visit))
+            {
+                continue;
+            }
+
+            Integer visitScore = score.getOrDefault(visit, 0);
+            score.put(visit,visitScore+1);
+        }
+
         List<String> answer = new ArrayList<>();
         return answer;
     }
