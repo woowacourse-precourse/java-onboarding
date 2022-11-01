@@ -138,6 +138,12 @@ class ApplicationTest {
             String result = "kseset";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
+        @Test
+        void case6(){
+            String cryptogram = "aabbb";
+            String result = "";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
     }
 
     @Nested

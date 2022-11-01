@@ -3,7 +3,6 @@ package onboarding;
 import onboarding.newExceptions.InvalidStringException;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class Problem2 {
     public static String solution(String cryptogram) throws InvalidStringException {
@@ -25,18 +24,30 @@ public class Problem2 {
     }
     static ArrayList<Integer> duplicateCharacterIndex(StringBuilder str){
         ArrayList<Integer> list = new ArrayList<>();
-        for(int i = 1; i < str.length(); i++){
-            if(str.charAt(i-1) == str.charAt(i)){
+        for(int i = 0; i < str.length()-1; i++){
+            if(str.charAt(i) == str.charAt(i+1)){
                 list.add(i);
             }
         }
         return list.isEmpty() ? null : list;
     }
     static void deleteDuplicateCharacter(StringBuilder builder, ArrayList<Integer> indexList ){
+        for(int i = indexList.size() -1 ; i >= 0; i--){
+            int index = indexList.get(i);
+            deleteDuplicateOneBlock(builder,index);
+        }
+    }
+    static void deleteDuplicateOneBlock(StringBuilder builder, int start){
+        int count = 1;
+        char character = builder.charAt(start);
+        do{
+            count++;
+        }while(start + count < builder.length() && builder.charAt(start + count) == character);
 
+        builder.delete(start,start + count);
     }
     boolean isViolatedRestrictions(String input){
-        boolean isValidStringLength = (1 <= input.length()) && (input.length() <= 1000);
+        boolean isValidStringLength = (input.length() < 1) || (input.length() > 1000);
         boolean isStringHaveOnlySmallLetter = onlyHaveSmallLetter(input);
 
         return isValidStringLength && isStringHaveOnlySmallLetter;
@@ -50,6 +61,5 @@ public class Problem2 {
         }
         return true;
     }
-
 }
 
