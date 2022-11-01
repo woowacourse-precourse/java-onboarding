@@ -46,6 +46,10 @@ public class Problem6 {
         return eachCrew.get(1);
     }
 
+    private static boolean isDuplicatedToken(Map<String, Integer> tokenAndCountMap, String token) {
+        return tokenAndCountMap.get(token) > 1;
+    }
+
     private static Set<String> nicknameToTokens(String nickname) {
         Set<String> tokens = new HashSet<>();
         for (int i = 0; i < nickname.length() - 1; i++) {
