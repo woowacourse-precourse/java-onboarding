@@ -80,4 +80,15 @@ public class Problem7 {
     private static boolean isValidVisitorsLength(List<String> visitors) {
         return visitors.stream().allMatch(visitor -> visitor.length() >= MIN_VISITORS_LENGTH && visitor.length() <= MAX_VISITORS_LENGTH);
     }
+
+    public static void removeUserFriendsAndZeroScore() {
+        for (String friend : myFriendsSet) {
+            userAndScoreMap.remove(friend);
+        }
+        for (String key : userAndScoreMap.keySet()) {
+            if (userAndScoreMap.get(key) == 0) {
+                userAndScoreMap.remove(key);
+            }
+        }
+    }
 }
