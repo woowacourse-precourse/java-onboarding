@@ -34,5 +34,9 @@ class Money {
     private int changeMoney(Money moneyUnit) {
         return this.money / moneyUnit.money;
     }
+
+    private int remainderMoney(Money moneyUnit) {
+        return this.money % moneyUnit.money;
+    }
 }
 
