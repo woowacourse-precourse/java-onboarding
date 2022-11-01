@@ -18,8 +18,6 @@ class Problem1 {
         if(crong.get(1)%2 == 1) return -1;
         if(crong.get(1) - crong.get(0) != 1) return -1;
 
-
-
         for (int i = 0; i < pobi.size(); i++) {
             int pobiPage = pobi.get(i);
             int pobiPageSum = 0;
@@ -61,11 +59,11 @@ class Problem1 {
         }
 
         for (int i = 0; i < pobiScore.size(); i++) {
-            if (pobiScoreFinal > pobiScore.get(i)) pobiScoreFinal = pobiScore.get(i);
+            if (pobiScoreFinal < pobiScore.get(i)) pobiScoreFinal = pobiScore.get(i);
         }
 
         for (int i = 0; i < crongScore.size(); i++) {
-            if (crongScoreFinal > crongScore.get(i)) crongScoreFinal = crongScore.get(i);
+            if (crongScoreFinal < crongScore.get(i)) crongScoreFinal = crongScore.get(i);
         }
 
         if (pobiScoreFinal > crongScoreFinal) answer = 1;
