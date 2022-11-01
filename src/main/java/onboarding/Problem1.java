@@ -26,18 +26,25 @@ class Problem1 {
         }
     }
 
-    private static boolean isValid(int pageNum){
+    private static boolean isValidRange(int pageNum){
+
         return pageNum > 1 && pageNum < 400;
     }
+    private static boolean isListSizeInvalid(List<Integer> pageList){
+        return pageList.size() != 2;
+    }
 
+    private static boolean isPageNotSucession(List<Integer> pageList){
+        return pageList.get(0) + 1 != pageList.get(1);
+    }
     private static boolean checkInput(List<Integer> pageList){
 
 
-        if(pageList.size() != 2 || (pageList.get(0) + 1 != pageList.get(1))){
+        if(isListSizeInvalid(pageList)|| isPageNotSucession(pageList)){
             return false;
         }
 
-        return isValid(pageList.get(0)) && isValid(pageList.get(1));
+        return isValidRange(pageList.get(0)) && isValidRange(pageList.get(1));
     }
 
     private static int getSum(int pageNum){
