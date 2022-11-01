@@ -11,13 +11,14 @@ public class Problem4 {
         // string 별로 변경
         for (int i = 0; i < word.length(); i++) {
             Character target = word.charAt(i);
-
             // 문자일 경우
             if (Character.isLetter(target)) {
-                Character change = charMap.get(target);
-                // 대문자일 경우
+                char change;
+                // 대문자일 경우, 소문자로 변환 후 반대 알파벳 반환 -> 다시 대문자로 변경
                 if (Character.isUpperCase(target)) {
-                    Character.toUpperCase(change);
+                    change = Character.toUpperCase(charMap.get(Character.toLowerCase(target)));
+                } else {
+                    change = charMap.get(target);
                 }
                 wordBuilder.setCharAt(i, change);
             }
