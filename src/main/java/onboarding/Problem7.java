@@ -96,7 +96,8 @@ public class Problem7 {
     }
 
     public static ArrayList<String> recommendInOrder(String user) {
-        List<Entry<String, Integer>> listEntry = new ArrayList<>(recommendList.entrySet());
+        Map<String, Integer> nameOrdered = new TreeMap<>(recommendList);
+        List<Entry<String, Integer>> listEntry = new ArrayList<>(nameOrdered.entrySet());
         ArrayList<String> orderList = new ArrayList<>();
 
         Collections.sort(listEntry, new Comparator<Entry<String, Integer>>() {
