@@ -43,6 +43,11 @@ public class Problem7 {
             }
         }
 
+        // 3. visitor +1점
+        for(String visitor : visitors) {
+            scores.put(visitor, scores.containsKey(visitor) ? scores.get(visitor) + 1 : 1);
+        }
+
         return answer;
     }
 }
