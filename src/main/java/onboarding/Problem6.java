@@ -8,6 +8,17 @@ public class Problem6 {
         List<String> answer = List.of("answer");
         List<String> email = new ArrayList<>();
         List<String> name = new ArrayList<>();
+        int length;
+
+        for (int i = 0; i < forms.size(); i++) {
+            length = name.size();
+            extractName(forms.get(i).get(1), name);
+            for (int j = 0; j < forms.size(); j++) {
+                if (i != j) {
+                    checkRedundant(forms.get(j), name, email, length);
+                }
+            }
+        }
 
         return answer;
     }
