@@ -18,7 +18,7 @@ public class Problem5 {
         return res;
     }
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
+        List<Integer> answer = changeMoney(money);
         return answer;
     }
 }
