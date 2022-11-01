@@ -1,39 +1,39 @@
 package onboarding;
 
-import java.util.LinkedList;
-
 public class Problem2 {
+    private static final int DEFAULT_IDX = -1;
     public static String solution(String cryptogram) {
-        if (isComposedOfSame(cryptogram)) {
-            return "";
-        }
-        LinkedList<Character> list = new LinkedList<>();
-        char[] chars = cryptogram.toCharArray();
-        for (char c : chars) {
-            if (!list.isEmpty() && list.getLast() == c) {
-                list.removeLast();
-            } else {
-                list.addLast(c);
+        while (true) {
+            int start = DEFAULT_IDX;
+            int end = DEFAULT_IDX;
+            for (int i = 0; i < cryptogram.length() - 1; i++) {
+                char now = cryptogram.charAt(i);
+                char next = cryptogram.charAt(i + 1);
+                if (now != next) {
+                    if (start != DEFAULT_IDX) {
+                        end = i + 1;
+                        break;
+                    }
+                    continue;
+                }
+                if (i + 2 == cryptogram.length()) {
+                    end = i + 2;
+                }
+                if (start == DEFAULT_IDX) {
+                    start = i;
+                }
             }
+            if (start == DEFAULT_IDX && end == DEFAULT_IDX) {
+                break;
+            }
+            cryptogram = deleteDuplicatesBeetweenIdx(cryptogram, start, end);
         }
-        if (list.size() == 0) {
-            return "";
-        }
-
-        StringBuilder sb = new StringBuilder(list.size());
-        while (list.size() != 0) {
-            sb.append(list.removeFirst());
-        }
-        return sb.toString();
+        return cryptogram;
     }
 
-    private static boolean isComposedOfSame(String cryptogram) {
-        char target = cryptogram.charAt(0);
-        for (char c : cryptogram.toCharArray()) {
-            if (target != c) {
-                return false;
-            }
-        }
-        return true;
+    public static String deleteDuplicatesBeetweenIdx(String target, int start, int end) {
+        String pre = target.substring(0, start);
+        String post = target.substring(end);
+        return pre + post;
     }
 }
