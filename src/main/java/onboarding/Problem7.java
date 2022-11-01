@@ -13,15 +13,16 @@ public class Problem7 {
         return answer;
     }
 
+    // 친구 추천 받기 기능
     private static List<String> getRecommendation(String user, List<List<String>> AllFriends, List<String> visitors) {
         List<String> myFriends = findMyFriends(user, AllFriends);
         HashMap<String, Integer> score = getScoreByVisit(visitors, getScoreByFriends(user, myFriends, AllFriends), myFriends);
         return getTop5(score);
     }
 
+    // 전체 친구들 중에 user의 친구 찾기
     private static List<String> findMyFriends(String user, List<List<String>> AllFriends) {
         List<String> myFriends = new ArrayList<>();
-        // 전체 친구들 중에 user의 친구 찾기
         AllFriends.forEach(friend -> {
             if (user.equals(friend.get(1))) {
                 myFriends.add(friend.get(0));
@@ -30,22 +31,19 @@ public class Problem7 {
         return myFriends;
     }
 
+    // 함께아는 친구 점수 추가 기능
     private static HashMap<String, Integer> getScoreByFriends(String user, List<String> myFriends, List<List<String>> AllFriends) {
         HashMap<String, Integer> ranking = new HashMap<>();
         if (myFriends.isEmpty()) {
             return ranking;
         }
         AllFriends.forEach(friend -> {
-            String name = friend.get(1);
-            String friendName = friend.get(0);
-            // name의 친구가 나의 친구와 친구 관계이고, name이 내가 아닐 때
+            String name = friend.get(1); // 이름
+            String friendName = friend.get(0); // name의 친구 이름
             if (myFriends.contains(friendName) && !name.equals(user)) {
-                // 추천 랭킹에 이미 이름이 있으면
                 if (ranking.containsKey(name)) {
-                    // 함께아는 친구 점수 추가
                     ranking.put(name, ranking.get(name) + FRIEND_SCORE);
-                } else if(!ranking.containsKey(name)) {
-                    // 그렇지 않으면 name에게 친구 추천 점수를 주고 랭킹에 등록
+                } else if (!ranking.containsKey(name)) {
                     ranking.put(name, FRIEND_SCORE);
                 }
             }
@@ -53,18 +51,14 @@ public class Problem7 {
         return ranking;
     }
 
+    // 방문자 점수 추가 기능
     private static HashMap<String, Integer> getScoreByVisit(List<String> visitors, HashMap<String, Integer> ranking, List<String> myFriends) {
         visitors.forEach(name -> {
-            // 친구 추천 랭킹에 이미 이름이 있으면
             if (ranking.keySet().contains(name)) {
-                // 방문 기록 점수 추가
                 ranking.put(name, ranking.get(name) + VISIT_SCORE);
             }
-            // 친구 추천 랭킹에 이름이 없을 때
-            else if(!ranking.keySet().contains(name)) {
-                // 나와 친구가 아니라면
-                if(!myFriends.contains(name)) {
-                    // name에 방문 기록 점수주고 친구 추천 랭킹에 등록
+            else if (!ranking.keySet().contains(name)) {
+                if (!myFriends.contains(name)) {
                     ranking.put(name, VISIT_SCORE);
                 }
             }
@@ -72,12 +66,13 @@ public class Problem7 {
         return ranking;
     }
 
-    private static List<String> getTop5(HashMap<String,Integer> score){
+    // 추천 친구 랭킹에서 점수가 높은 최대 5명의 친구 추천
+    private static List<String> getTop5(HashMap<String, Integer> score) {
         List<String> recommend = new ArrayList<>();
-        String[][] scoreList = mapToList(score);
+        String[][] scoreList = ScoreMapToList(score);
         List<String> ranking = sortRanking(scoreList);
-        for(int i = 0;i<ranking.size();i++){
-            if(i < MAX_RECOMMEND_VALUE){
+        for (int i = 0; i < ranking.size(); i++) {
+            if (i < MAX_RECOMMEND_VALUE) {
                 recommend.add(ranking.get(i));
                 continue;
             }
@@ -86,7 +81,7 @@ public class Problem7 {
         return recommend;
     }
 
-    private static String[][] mapToList(HashMap<String, Integer> score) {
+    private static String[][] ScoreMapToList(HashMap<String, Integer> score) {
         String[][] scoreList = score.entrySet()
                 .stream()
                 .map(e -> new String[]{e.getKey(), e.getValue().toString()})
@@ -94,15 +89,16 @@ public class Problem7 {
         return scoreList;
     }
 
-    private static List<String> sortRanking(String[][] scoreList){
+    // 점수 내림차순, 이름 오름차순으로 랭킹 정렬
+    private static List<String> sortRanking(String[][] scoreList) {
         List<String> ranker = new ArrayList<>();
         Arrays.sort(scoreList, (o1, o2) -> {
-            if(o1[1].contentEquals(o2[1]))
+            if (o1[1].contentEquals(o2[1]))
                 return o1[0].compareTo(o2[0]);
             else
                 return o1[1].compareTo(o2[1]);
         });
-        for(int i=0;i< scoreList.length;i++){
+        for (int i = 0; i < scoreList.length; i++) {
             ranker.add(scoreList[i][0]);
         }
         return ranker;
