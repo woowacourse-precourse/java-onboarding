@@ -22,7 +22,8 @@
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
 
-## 🚀 기능 구현 사항
+## Problem6🚀 
+###구현할 기능 목록
 
 1. 문자열에서 캐릭터 인덱스를 대조해 같은 글자를 찾는다.
 2. 같은 글자를 찾은 인덱스에서 원본 문자열과 비교 대상 문자열의 char+1이 같은지 확인한다.
