@@ -24,6 +24,7 @@ public class Problem6 {
         // 데이터가 올바른지 나타내는 상태
         boolean isDataValid = true;
 
+        // 이메일과 닉네임의 정규 표현식
         String emailPattern = "^[_a-zA-Z0-9-\\\\.]+@email.com$";
         String nicknamePattern = "^[가-힣]+$";
 
@@ -52,7 +53,7 @@ public class Problem6 {
 
     // 닉네임 중복 검사 메소드
     private static List<String> findDuplicatedNickCrew(List<List<String>> forms) {
-        HashMap<String, HashSet<String>> nicknameHashMap = new HashMap<>();
+        Map<String, HashSet<String>> nicknameHashMap = new HashMap<>();
         List<String> duplicatedCrewEmailList = new ArrayList<>();
 
         // 중복 닉네임을 식별하기 위해 크루원들의 닉네임을 파싱해서 HashSet에 저장 후 최종적으로 HashMap에 추가
