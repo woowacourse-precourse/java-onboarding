@@ -2,6 +2,8 @@ package onboarding;
 
 import java.util.List;
 
+import static java.lang.Math.max;
+
 class Problem1 {
 
     private final static int POBI_WIN = 1;
@@ -19,8 +21,52 @@ class Problem1 {
         if (isInvalidPage(pobi) || isInvalidPage(crong)) {
             return EXCEPTION;
         }
+
+        final int pobiScore = getUserScore(pobi);
+        final int crongScore = getUserScore(crong);
         
         return answer;
+    }
+
+    private static int getUserScore(List<Integer> user) {
+        return max(
+                getMaxInListWithCalculator(user, addEachDigitCalculator()),
+                getMaxInListWithCalculator(user, multiplyEachDigitCalculator())
+        );
+    }
+
+    private static int getMaxInListWithCalculator(List<Integer> pages, IntCalculate calculator) {
+        return pages.stream()
+                .mapToInt(calculator::calculate)
+                .max()
+                .getAsInt();
+    }
+
+    @FunctionalInterface
+    private interface IntCalculate {
+        int calculate(int number);
+    }
+
+    private static IntCalculate addEachDigitCalculator() {
+        return (int number) -> {
+            int ret = 0;
+            while (number != 0) {
+                ret += (number % 10);
+                number /= 10;
+            }
+            return ret;
+        };
+    }
+
+    private static IntCalculate multiplyEachDigitCalculator() {
+        return (int number) -> {
+            int ret = 1;
+            while (number != 0) {
+                ret *= (number % 10);
+                number /= 10;
+            }
+            return ret;
+        };
     }
 
     private static boolean isInvalidPage(List<Integer> page) {
