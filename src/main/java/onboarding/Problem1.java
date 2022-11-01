@@ -65,7 +65,7 @@ class Problem1 {
 		crongScore2 = Math.max(crongScore2, crongScore3);
 		crongScore = Math.max(crongScore, crongScore2);
 		
-		if(pobi.get(1)-pobi.get(0) != 1 || pobi.get(0) < 2 || pobi.get(1) > 400 || crong.get(1)-crong.get(0) != 1 || crong.get(0) < 2 || crong.get(1) > 400) {
+		if(pobi.get(1)-pobi.get(0) != 1 || pobi.get(0) < 2 || pobi.get(1) > 400 || crong.get(1)-crong.get(0) != 1 || crong.get(0) < 2 || crong.get(1) > 400 || pobi.get(0)%2 != 1 || crong.get(0)%2 != 1) {
 			answer = -1;
 		}
 		else if (pobiScore > crongScore) {
