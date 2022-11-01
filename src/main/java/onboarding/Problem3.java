@@ -2,9 +2,15 @@ package onboarding;
 
 public class Problem3 {
   public static int solution(int number) {
-    return 0;
+    return getTotalClap(number);
   }
-
+  private static int getTotalClap(int number) {
+    int count = 0;
+    for (int i = 1; i <= number; i++) {
+      count += getClapCount(i);
+    }
+    return count;
+  }
   private static int getClapCount(int number) {
     int count = 0;
     while (number > 0) {
