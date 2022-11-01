@@ -17,6 +17,7 @@ public class Problem6 {
             return null;
         }
 
+        Collections.sort(answer);
         return answer;
     }
 
@@ -64,6 +65,7 @@ public class Problem6 {
             String name = form.get(1);
             join(name);
         }
+
         return getDuplicateMemberEmailList(forms);
     }
 
@@ -97,7 +99,14 @@ public class Problem6 {
     private static List<String> getDuplicateMemberEmailList(List<List<String>> forms) {
         List<String> duplicateMemberEmailList = new ArrayList<>();
 
+        for (List<String> form : forms) {
+            String name = form.get(1);
+            String email = form.get(0);
 
+            if (duplicatedMembers.contains(name)) {
+                duplicateMemberEmailList.add(email);
+            }
+        }
         return duplicateMemberEmailList;
     }
 
