@@ -84,6 +84,19 @@ public class Problem7 {
         return entryList;
     }
 
+    // 기능 목록 6 : 친구 추천 알고리즘을 만족하는 상위 5명만을 구하는 함수
+    public static List<String> findTopFive(List<Map.Entry<String,Integer>> entryList){
+        List<String> result = new ArrayList<>();
+        for(Map.Entry<String,Integer> entry:entryList){
+            result.add(entry.getKey());
+            if(result.size()==5){
+                break;
+            }
+        }
+
+        return result;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
