@@ -28,7 +28,10 @@ public class Problem7Debugging {
             }
         }
 
-
+        for (int j = 0; j < visitors.size() ; j++){
+            String name = visitors.get(j);
+            nameAndPoint.put(name,0);
+        }
 
         List<String> friendsOfUser = new ArrayList<>();
 

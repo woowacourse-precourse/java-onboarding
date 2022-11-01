@@ -17,6 +17,11 @@ public class Problem7 {
             }
         }
 
+        for (int j = 0; j < visitors.size() ; j++){
+            String name = visitors.get(j);
+            nameAndPoint.put(name,0);
+        }
+
         List<String> friendsOfUser = new ArrayList<>();
 
         for (int i =0 ; i < friends.size() ; i++) {
