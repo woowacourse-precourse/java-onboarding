@@ -9,7 +9,8 @@ public class Problem5 {
     static List<Integer> answer = new ArrayList<Integer>();
 
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
+        moneyConversion(money);
+
         return answer;
     }
 
