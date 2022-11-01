@@ -12,6 +12,10 @@ class Problem1 {
     static final int BOOK_START_PAGE = 1;
     static final int BOOK_END_PAGE = 400;
 
+    private static boolean isnotOddandEven(int left, int right){
+        return left % 2 == 0 || right % 2 == 1;
+    }
+
     private static boolean isOutofRange(int left, int right){
         return left < BOOK_START_PAGE || right <=BOOK_START_PAGE || left>=BOOK_END_PAGE|| right >BOOK_END_PAGE ;
     }
@@ -20,6 +24,7 @@ class Problem1 {
         int right = pages.get(RIGHT);
         boolean isValid = true;
         if(isOutofRange(left,right)) isValid=false;
+        if(isnotOddandEven(left,right)) isValid=false;
         return isValid;
     }
 
