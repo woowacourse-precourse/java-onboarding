@@ -118,6 +118,20 @@ public class Problem7 {
         //System.out.println("사용자와 함께 아는 친구의 수에 따른 점수 반영 결과");
         //System.out.println(score_recomends); // 저장됨
 
+        // 6. 사용자의 타임라인에 방문한 횟수 점수 구하기
+        for (int i = 0; i < visitors.size(); i++){
+            if (score_recomends.containsKey(visitors.get(i)) ){ // 추천친구 목록에 존재한다면
+                int score = score_recomends.get(visitors.get(i));
+                score += 1;
+                score_recomends.put(visitors.get(i),score);
+            }
+        }
+
+        //System.out.println("사용자의 타임 라인에 방문한 횟수에 대한 점수 반영 결과");
+        //System.out.println(score_recomends); // 저장됨
+        // 점수가 0인 것은 제거하기
+        score_recomends.values().remove(0);
+
 
         return result;
     }
