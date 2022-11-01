@@ -1,6 +1,12 @@
-import static org.junit.jupiter.api.Assertions.*;
+package onboarding;
+
+import org.junit.jupiter.api.Test;
+
+import java.util.*;
+
+import static org.assertj.core.api.Assertions.assertThat;
+
 class Problem7Test {
-  
     @Test
     void checkSolution() {
         String user = "mrko";
@@ -71,4 +77,6 @@ class Problem7Test {
         List<String> result = List.of("donut", "anne", "bedi", "mrko", "peter");
         assertThat(solution(user, friends, visitors)).isEqualTo(result);
     }
+
+    static Map<String, Integer> userFriends;
 }
