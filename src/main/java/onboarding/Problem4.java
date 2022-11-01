@@ -11,4 +11,9 @@ public class Problem4 {
         return false;
     }
 
+    private static boolean isLower(char c){
+        if (c >= 'a' && c<= 'z') return true;
+        return false;
+    }
+
 }
