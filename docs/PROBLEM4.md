@@ -19,3 +19,5 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+1. 치환될 문자 저장
