@@ -62,6 +62,15 @@ public class Problem7 {
             }
         }
 
+        /*방문자 점수 계산*/
+        for(int i=0; i<visitors.size(); i++){
+            int score = 1;
+            if(friendScore.containsKey(visitors.get(i))){
+                score += friendScore.get(visitors.get(i));
+            }
+            friendScore.put(visitors.get(i),score);
+        }
+
         return answer;
     }
 }
