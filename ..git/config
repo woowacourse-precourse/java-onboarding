@@ -1,0 +1,10 @@
+[core]
+	repositoryformatversion = 0
+	filemode = false
+	bare = true
+	symlinks = false
+	ignorecase = true
+[remote "origin"]
+	url = C:/Users/ac8co/OneDrive/바탕 화면/광운대학교/2022년 2학기/woowacourse/java-onboarding/.
+	fetch = +refs/*:refs/*
+	mirror = true
