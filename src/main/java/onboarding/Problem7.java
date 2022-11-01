@@ -21,8 +21,7 @@ public class Problem7 {
         Set<String> userFriends = userToFriends.getOrDefault(user, Set.of());
         Map<String, Integer> recommendableIdsToScore = filterOnlyRecommendable(user, userFriends, idToRecommendScore);
 
-
-        return null;
+        return getSortedRecommendList(recommendableIdsToScore);
     }
 
     public static Map<String, Set<String>> getUserToFriendMap(List<List<String>> friends) {
@@ -107,5 +106,14 @@ public class Problem7 {
                 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
 
+    public static List<String> getSortedRecommendList(Map<String, Integer> recommendScores) {
 
+
+        return recommendScores.entrySet()
+                .stream()
+                .sorted(sortConditions)
+                .limit(MAX_RECOMMEND_SIZE)
+                .map(entry -> entry.getKey())
+                .collect(Collectors.toList());
+    }
 }
