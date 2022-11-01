@@ -21,9 +21,9 @@ public class Problem2 {
 
 	private static Stack<Character> removeDuplicateCharacters(String cryptogram) {
 		Stack<Character> decodedCryptogram = new Stack<Character>();
-		char duplicated = ' '; // 중복되는 문자 -> 삭제할 문자
-		char top = ' '; // 스택의 top
-		char cur = ' '; // cur 은 cryptogram 을 순회할 문자
+		char duplicateCharacter = ' ';
+		char top = ' ';
+		char cur = ' ';
 		for (int i = 0; i < cryptogram.length(); i++) {
 			cur = cryptogram.charAt(i);
 
@@ -32,12 +32,12 @@ public class Problem2 {
 				continue;
 			}
 			top = decodedCryptogram.peek();
-			if (cur != top && cur != duplicated) { // push 할 문자가 스택의 top 과 같지 않으면서 중복 문자도 아닐 때
+			if (cur != top && cur != duplicateCharacter) { // push 할 문자가 스택의 top 과 같지 않으면서 중복 문자도 아닐 때
 				decodedCryptogram.push(cur);
-				duplicated = ' '; // dup 초기화
+				duplicateCharacter = ' '; // dup 초기화
 			}
 			if (cur == top) { // push 할 문자와 스택의 top 이 같을 때
-				duplicated = top; // dup 업데이트
+				duplicateCharacter = top; // dup 업데이트
 				decodedCryptogram.pop(); // 중복 문자 제거
 			}
 		}
