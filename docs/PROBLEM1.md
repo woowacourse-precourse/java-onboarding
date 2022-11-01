@@ -26,16 +26,36 @@
 
 ### 기능 목록
 - 각 자리수를 더하는 함수
-> Integer addDigits(Integer pageNum)
+```java
+Integer addDigits(Integer pageNum)
+```
+
 - 각 자리수를 곱하는 함수
-> Integer mulDigits(Integer pageNum)
+```java
+Integer mulDigits(Integer pageNum)
+```
+
 - 각 자리수를 더하고 곱한 값 중 가장 큰 수를 구하는 함수
-> Integer maxNumber(Integer pageNum)
+```java
+Integer maxNumber(Integer pageNum)
+```
+
 - 양 페이지 번호를 전달받아 점수를 구하는 함수
-> Integer calcScore(List<Integer>)
+```java
+Integer calcScore(List<Integer>)
+```
+
 - 점수를 비교해 게임의 승자가 누구인지 정하는 함수
-> int findWinner(List<Integer>, List<Integer>)
+```java
+int findWinner(List<Integer>, List<Integer>)
+```
+
 - 올바른 페이지 번호가 들어왔는지 체크하는 함수
-> boolean checkPageNum(List<Integer>)
+```java
+boolean checkPageNum(List<Integer>)
+```
+
 - 입력 형식이 올바른지 체크하는 함수
-> boolean checkInput(List<Integer> List<integer>)
+```java
+boolean checkInput(List<Integer> List<integer>)
+```
