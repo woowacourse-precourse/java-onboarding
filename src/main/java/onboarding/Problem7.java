@@ -28,5 +28,19 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Set<String> friendsOfUser = findFriends(user, friends);
 
+        Map<String, Integer> pointUser = new HashMap<>();
+
+        for (String friend : friendsOfUser) {
+            for (List<String> li : friends) {
+                Optional<String> first = li.stream()
+                        .filter(x -> !x.equals(user) &&
+                                !x.equals(friend) &&
+                                !friendsOfUser.contains(x) &&
+                                li.contains(friend))
+                        .findFirst();
+
+                first.ifPresent(s -> pointUser.put(s, pointUser.getOrDefault(s, 0) + 10));
+            }
+        }
     }
 }
