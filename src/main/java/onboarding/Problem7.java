@@ -5,13 +5,7 @@ import java.util.*;
 public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> userFriends = new ArrayList<>();
-
-        for (List<String> friend : friends) {
-            if (friend.contains(user)) {
-                addUserFriends(user, friend, userFriends);
-            }
-        }
+        List<String> userFriends = generateUserFriends(friends, user);
 
         Map<String, Integer> friendsScoreMap = generateKnowTogetherFriendsScore(friends, userFriends, user);
 
@@ -22,6 +16,17 @@ public class Problem7 {
         List<Map.Entry<String, Integer>> totalScoreMapList = sortTotalScoreMapListByScore(friendsScoreMap);
 
         return generateResultList(totalScoreMapList, userFriends);
+    }
+
+    private static List<String> generateUserFriends(List<List<String>> friends, String user) {
+        List<String> userFriends = new ArrayList<>();
+
+        for (List<String> friend : friends) {
+            if (friend.contains(user)) {
+                addUserFriends(user, friend, userFriends);
+            }
+        }
+        return userFriends;
     }
 
     private static void addUserFriends(String user, List<String> friend, List<String> userFriends) {
