@@ -6,7 +6,15 @@ import java.util.stream.Stream;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = new ArrayList<>();
+        List<String> answer;
+        List<String> userfriends= findUserFreinds(user,friends);
+        List<String> friendsofuserfriend = findFriendsOfUserFriends(user, userfriends, friends);
+
+        Map<String,Integer> nameandscore = new HashMap<>();
+        nameandscore = countScoreByFriendsOfUserFriends(nameandscore,friendsofuserfriend);
+        nameandscore = countScoreByNumberOfVisitors(nameandscore, visitors, userfriends);
+
+        answer = recommendFriend(nameandscore);
 
         return answer;
     }
