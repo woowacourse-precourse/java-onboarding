@@ -20,8 +20,8 @@ public class Problem6 {
 
 
         while(formsFirstRowLength > 0){
-            emailAddress = forms.toArray()[formsFirstRowNumber].get(0);
-            nickName = forms.toArray()[formsFirstRowNumber].get(1);
+            emailAddress = forms.get(formsFirstRowNumber).get(0);
+            nickName = forms.get(formsFirstRowNumber).get(1);
             int nickNameLength = nickName.length();
 
             for (int i = 0; i < nickNameLength - 1; i++){
