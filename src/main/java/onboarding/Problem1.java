@@ -14,8 +14,10 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
-        if (!(checkPageContinuity(pobi) && checkPageContinuity(crong) && checkPageValidation(pobi)
-            && checkPageValidation(crong))) {
+        if (!(checkPageSize(pobi) && checkPageSize(crong) && checkPageContinuity(pobi)
+            && checkPageContinuity(crong) && checkPageValidation(pobi)
+            && checkPageValidation(crong) && checkLeftPageOddRightPageEven(pobi)
+            && checkLeftPageOddRightPageEven(crong))) {
             return VALID_ERROR;
         }
         int pobiMaxScore = pageMaxScore(pobi);
