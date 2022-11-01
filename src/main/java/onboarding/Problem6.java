@@ -8,8 +8,9 @@ public class Problem6 {
         return answer;
     }
 
-    private static Boolean isThereMatch(String string) {
-        Boolean result = string.matches(".*([a-zA-Z])\\1+.*");
+    private static Boolean isThereMatch(String string, keyword) {
+        String regex = ".*("+keyword+")+.*";
+        Boolean result = string.matches(regex);
         return result;
     }
 }
