@@ -21,3 +21,8 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능 목록
+1. splitToTwoLetters : 닉네임을 앞에서부터 순서대로 2글자씩 쪼개서 list에 담음
+2. findDuplicate : 본인 닉네임을 제외한 다른 닉네임에 대해 자신의 닉네임을 2글자씩 쪼갠 것을 포함하는지 탐색
+3. flattenList : 2차원 List를 1차원 List로 평탄화
