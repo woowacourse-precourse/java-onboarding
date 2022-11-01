@@ -43,9 +43,5 @@ class Problem1 {
 
         if(mul >= sum){return mul;}
         else {return sum;}
-
     }
-
-
-
 }
