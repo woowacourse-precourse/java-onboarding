@@ -4,7 +4,12 @@ import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> nicknameList =getNicknameList(forms);
+        List<String> wordList =findAllTwoWords(nicknameList);
+        List<String> duplicateWords =findDuplicateWords(wordList);
+
+        List<String> answer =findDuplicateEmail(forms, duplicateWords);
+
         return answer;
     }
 
