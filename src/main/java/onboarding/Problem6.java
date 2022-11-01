@@ -6,13 +6,19 @@ import java.util.stream.Collectors;
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
 
+        List<Crew> crewList = new ArrayList<>();
+
         if(isNotInRangeCrew(forms.size())) {
             return new ArrayList<>();
         }
-
-          List<Crew> crewList = forms.stream()
-                .map(Crew::toCrew)
-                .collect(Collectors.toList());
+        
+        for(List<String> form : forms){
+            Crew crew = Crew.toCrew(form);
+            if(isWrongCrewForm(crew)){
+                return new ArrayList<>();
+            }
+            crewList.add(crew);
+        }
 
         Map<String, List<Crew>> crewMap = makeNicknameMap(crewList);
 
@@ -47,6 +53,30 @@ public class Problem6 {
 
     private static boolean isNotInRangeCrew(int number) {
         if (number >= 1 && number <= 10000) {
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean isWrongCrewForm(Crew crew) {
+        String email = crew.getEmail();
+        String nickname = crew.getNickname();
+
+        if(isNotInRangeEmail(email.length()) || isNotInRangeNickname(nickname.length())) {
+            return true;
+        }
+        return false;
+    }
+
+    private static boolean isNotInRangeEmail(int length) {
+        if (length >= 11 && length < 20) {
+            return false;
+        }
+        return true;
+    }
+
+    private static boolean isNotInRangeNickname(int length) {
+        if (length >= 1 && length < 20) {
             return false;
         }
         return true;
