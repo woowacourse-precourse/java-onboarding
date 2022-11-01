@@ -4,6 +4,9 @@ import java.util.List;
 
 class Problem1 {
 
+    static int startPage = 1;
+    static int lastPage = 400;
+
     public static int sumOfPageNumber(int page) {
         int result = 0;
         while (page != 0) {
@@ -54,7 +57,7 @@ class Problem1 {
 
     public static boolean validatePageNumberInRange(List<Integer> pageList) {
         for (int page : pageList) {
-            if (page < 1 || page > 400) {
+            if (page < startPage || page > lastPage) {
                 return false;
             }
         }

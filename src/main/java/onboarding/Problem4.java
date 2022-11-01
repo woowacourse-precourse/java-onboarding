@@ -2,12 +2,15 @@ package onboarding;
 
 public class Problem4 {
 
+    static int sumOfUpperAlphabet = 155;
+    static int sumOfLowerAlphabet = 219;
+
     public static int setSum(char alphabet) {
         int sum;
         if (Character.isUpperCase(alphabet)) {
-            sum = 155;
+            sum = sumOfUpperAlphabet;
         } else if (Character.isLowerCase(alphabet)) {
-            sum = 219;
+            sum = sumOfLowerAlphabet;
         } else {
             sum = 2 * alphabet;
         }
