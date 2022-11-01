@@ -10,14 +10,12 @@ public class Problem5 {
     );
 
     public static List<Integer> solution(int money) {
-        /* [요구] 돈을 큰 금액의 화폐 위주로 변환한다. */
         return reverMoneyToUnit(money);
     }
 
-    // 돈을 큰 금액의 화폐 위주로 변환하는 함수
     public static List<Integer> reverMoneyToUnit(int money) {
-        // 금액이 큰 순서대로 리스트/배열에 담기
         List<Integer> answer = new ArrayList<>(List.of(0, 0, 0, 0, 0, 0, 0, 0, 0));
+
         int index = 0;
         for (int unit : moneyUnitList) {
             if (money >= unit) {

@@ -31,23 +31,18 @@ public class Problem7 {
         makeUserToFriendsMap(friends);
         isExistUserFriend = friendToFriendsMap.containsKey(user) ? Boolean.TRUE : Boolean.FALSE;
 
-        /* [요구] 사용자와 함께 아는 친구의 수 점수 계산 */
         if (isExistUserFriend)
             calculateFriendScore(user);
 
-        /* [요구] 사용자의 타임 라인에 방문한 횟수 점수 계산 */
         calculateVisitScore(user, visitors);
 
-        /* [요구] 점수가 가장 높은 순으로 정렬하여 최대 5명 리턴 */
         return friendToScoreMap.entrySet().stream()
                 .sorted(valueComparator.thenComparing(keyComparator))
                 .filter(s -> s.getValue() > 0)
                 .limit(5)
-                .map(Entry::getKey)
-                .collect(Collectors.toList());
+                .map(Entry::getKey).collect(Collectors.toList());
     }
 
-    // 사용자 사이의 친구 관계 초기화
     public static void makeUserToFriendsMap(List<List<String>> friends) {
         for (List<String> friend : friends) {
             String friendA = friend.get(0);
@@ -67,15 +62,14 @@ public class Problem7 {
         }
     }
 
-    // 사용자와 함께 아는 친구의 수 점수 계산하는 메서드
     public static void calculateFriendScore(String user) {
         friendToFriendsMap.forEach((otherUser, friends) -> {
-            if (otherUser.equals(user)) // 사용자인 경우 제외
+            if (otherUser.equals(user))
                 return;
-            if (friendToFriendsMap.get(user).contains(otherUser)) // 사용자와 이미 친구인 경우 제외
+            if (friendToFriendsMap.get(user).contains(otherUser))
                 return;
 
-            int friendCount = 0; // 사용자와 함께 아는 친구의 수
+            int friendCount = 0;
             for (String friend : friends) {
                 if (friendToFriendsMap.get(user).contains(friend))
                     friendCount++;
@@ -84,11 +78,10 @@ public class Problem7 {
         });
     }
 
-    // 사용자의 타임 라인에 방문한 횟수 점수 계산하는 메서드
     public static void calculateVisitScore(String user, List<String> visitors) {
         for (String visitor : visitors) {
             if (isExistUserFriend)
-                if (friendToFriendsMap.get(user).contains(visitor)) // 사용자와 이미 친구인 경우 제외
+                if (friendToFriendsMap.get(user).contains(visitor))
                     continue;
 
             if (friendToScoreMap.containsKey(visitor)) {
