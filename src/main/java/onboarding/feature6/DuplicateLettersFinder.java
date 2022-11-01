@@ -10,8 +10,8 @@ public class DuplicateLettersFinder {
     private List<String> nicknames;
     private Set<String> nicknamesWithDuplicateLetters;
 
-    public DuplicateLettersFinder(List<String> nicknames) {
-        this.nicknames = nicknames;
+    public DuplicateLettersFinder(UserInfo userInfo) {
+        this.nicknames = userInfo.getNicknames();
     }
 
     public Set<String> getNicknamesWithDuplicateLetters() {

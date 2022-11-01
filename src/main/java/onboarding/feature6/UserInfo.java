@@ -8,26 +8,27 @@ import java.util.List;
 import onboarding.feature6.InputValidator;
 
 public class UserInfo {
-    private List<String> emails = new ArrayList<>();
-    private List<String> nicknames = new ArrayList<>();
+    private List<List<String>> forms;
+    private List<String> nicknames;
 
     public UserInfo(List<List<String>> forms) {
-        for (List<String> userInfo : forms) {
-            String email = userInfo.get(EMAIL_INDEX);
-            String nickname = userInfo.get(NICKNAME_INDEX);
+        this.forms = forms;
+        this.nicknames = new ArrayList<>();
+        for (List<String> userData : forms) {
+            String email = userData.get(EMAIL_INDEX);
+            String nickname = userData.get(NICKNAME_INDEX);
             checkEmailAndNickname(email, nickname);
         }
     }
 
     public void checkEmailAndNickname(String email, String nickname) {
         if (InputValidator.isValidEmailAddress(email) && InputValidator.isValidNickname(nickname)) {
-            emails.add(email);
             nicknames.add(nickname);
         }
     }
 
-    public List<String> getEmails() {
-        return emails;
+    public List<List<String>> getForms() {
+        return forms;
     }
 
     public List<String> getNicknames() {

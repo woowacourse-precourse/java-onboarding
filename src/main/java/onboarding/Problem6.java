@@ -12,12 +12,8 @@ import java.util.Set;
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         UserInfo userInfo = new UserInfo(forms);
-        List<String> userNicknames = userInfo.getNicknames();
-
-        DuplicateLettersFinder duplicateLettersFinder = new DuplicateLettersFinder(userNicknames);
-        Set<String> nicknamesWithDuplicateLetters = duplicateLettersFinder.getNicknamesWithDuplicateLetters();
-
-        ResultView resultView = new ResultView(nicknamesWithDuplicateLetters, forms);
+        DuplicateLettersFinder duplicateLettersFinder = new DuplicateLettersFinder(userInfo);
+        ResultView resultView = new ResultView(userInfo, duplicateLettersFinder);
         List<String> results = resultView.getResults();
         return results;
     }

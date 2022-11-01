@@ -10,18 +10,21 @@ import java.util.Set;
 public class ResultView {
     private List<String> results;
 
-    public ResultView(Set<String> nicknamesWithDuplicateLetters, List<List<String>> forms) {
+    public ResultView(UserInfo userInfo, DuplicateLettersFinder duplicateLettersFinder) {
+        List<List<String>> forms = userInfo.getForms();
+        Set<String> nicknamesWithDuplicateLetters = duplicateLettersFinder.getNicknamesWithDuplicateLetters();
         results = new ArrayList<>();
+
         for (String nickname : nicknamesWithDuplicateLetters) {
-            for (List<String> userInfo : forms) {
-                updateResults(userInfo, nickname);
-            }
+            updateResults(forms, nickname);
         }
     }
 
-    public void updateResults(List<String> userInfo, String nickname) {
-        if (userInfo.contains(nickname)) {
-            results.add(userInfo.get(EMAIL_INDEX));
+    public void updateResults(List<List<String>> forms, String nickname) {
+        for (List<String> userData : forms) {
+            if (userData.contains(nickname)) {
+                results.add(userData.get(EMAIL_INDEX));
+            }
         }
     }
 
