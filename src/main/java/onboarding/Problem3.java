@@ -49,4 +49,8 @@ public class Problem3 {
         return generalThousands() + 1000;
     }
 
+    public static int tenThousand() {
+        return 7 * generalThousands() + 3 * specificThousands();
+    }
+
 }
