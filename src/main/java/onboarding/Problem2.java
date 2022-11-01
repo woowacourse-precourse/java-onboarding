@@ -7,7 +7,19 @@ public class Problem2 {
 
 
     public static String solution(String cryptogram) {
+        String cleaned_cryptogram = "";
 
+        while (true) {
+            cleaned_cryptogram = remove_duplication_from(cryptogram);
+
+            if (cleaned_cryptogram.equals(cryptogram)){
+                break;
+            }
+
+            cryptogram = cleaned_cryptogram;
+        }
+
+        return cleaned_cryptogram;
     }
 
     public static String remove_duplication_from(String cryptogram) {
