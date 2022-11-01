@@ -13,6 +13,8 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
         List<String> userFriends = getUserFriends(user, friends);
         Map<String, Integer> scoreMap = getScoreMap(friends, userFriends, visitors);
+        List<Map.Entry<String, Integer>> entryList = sortedByScoreAscending(scoreMap);
+        
         
         return answer;
     }
@@ -70,5 +72,20 @@ public class Problem7 {
     	}
     	
     	return scoreMap;
+    }
+    
+    private static List<Map.Entry<String, Integer>> sortedByScoreAscending(Map<String, Integer> scoreMap){
+    	List<Map.Entry<String, Integer>> entryList = new LinkedList<>(scoreMap.entrySet());
+        entryList.sort(new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+            	if(o1.getValue() == o2.getValue()) {
+            		return o1.getKey().compareTo(o2.getKey());
+            	}
+            	return o2.getValue() - o1.getValue();
+            }
+        });
+        
+        return entryList;
     }
 }
