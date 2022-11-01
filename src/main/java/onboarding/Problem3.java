@@ -41,4 +41,8 @@ public class Problem3 {
     public static int specificHundreds() {
         return generalHundreds() + 100;
     }
+
+    public static int generalThousands() {
+        return 7 * generalHundreds() + 3 * specificHundreds();
+    }
 }
