@@ -27,7 +27,13 @@ public class Problem2 {
                     }
                 }
             }
-
+            if (!check)
+                break;
+            if (!temp.isEmpty()){
+                String s1 = cryptogram.substring(0,temp.get(0));
+                String s2 = cryptogram.substring(temp.get(temp.size() - 1)+1, cryptogram.length());
+                cryptogram=s1+s2;
+            }
         }
         answer= cryptogram;
         return answer;
