@@ -28,6 +28,12 @@ class Problem1 {
             return -1;
         }
 
+        //예외 사항 - 오른쪽 페이지가 짝수가 아닐 경우
+        if (pobi.get(1) % 2 != 0 || crong.get(1) % 2 != 0) {
+            return -1;
+        }
+
+
 
         return answer;
     }
