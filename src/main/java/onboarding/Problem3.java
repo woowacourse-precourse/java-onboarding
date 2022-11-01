@@ -24,9 +24,11 @@ public class Problem3 {
 
         if (containsNumber(stringNumber, "3")) {
             count += countNumber(stringNumber, '3');
-        } else if (containsNumber(stringNumber, "6")) {
+        }
+        if (containsNumber(stringNumber, "6")) {
             count += countNumber(stringNumber, '6');
-        } else if (containsNumber(stringNumber, "9")) {
+        }
+        if (containsNumber(stringNumber, "9")) {
             count += countNumber(stringNumber, '9');
         }
 
