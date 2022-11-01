@@ -35,6 +35,10 @@ public class Problem7 {
 
         addVisitorsScoreIntoScoreMap(userDirectFriendsSet, scoreMap, visitors);
 
+        List<Recommendation> recommendationList = new ArrayList<>();
+
+        recommendationList = makeRecommendationList(recommendationList, scoreMap);
+
         return answer;
     }
 
@@ -93,6 +97,45 @@ public class Problem7 {
                     scoreMap.put(visitor, 1);
                 }
             }
+        }
+    }
+
+    private static List<Recommendation> makeRecommendationList(List<Recommendation> recommendationList, HashMap<String, Integer> scoreMap) {
+        for (String key : scoreMap.keySet()) {
+            Recommendation recommendation = new Recommendation(key, scoreMap.get(key));
+
+            recommendationList.add(recommendation);
+
+            Collections.sort(recommendationList);
+        }
+
+        return recommendationList;
+    }
+
+    static class Recommendation implements Comparable<Recommendation> {
+        private String name;
+        private int score;
+
+        public Recommendation(String name, int score) {
+            this.name = name;
+            this.score = score;
+        }
+
+        @Override
+        public int compareTo(Recommendation o) {
+            if (score < o.score)
+                return 1;
+
+            if (score > o.score)
+                return -1;
+
+            if (name.compareTo(o.name) < 0)
+                return -1;
+
+            if (name.compareTo(o.name) > 0)
+                return 1;
+
+            return 0;
         }
     }
 }
