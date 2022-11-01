@@ -11,6 +11,19 @@ class Problem1 {
         int pobi_max = getLarger(pobi.get(0),pobi.get(1));
         int crong_max = getLarger(crong.get(0),crong.get(1));
 
+        return getWinner(pobi_max, crong_max);
+    }
+
+    private static int getWinner(int pobi_max, int crong_max) {
+        if(pobi_max > crong_max){
+            return 1;
+        }
+        if(pobi_max == crong_max){
+            return 0;
+        }
+        if(pobi_max < crong_max){
+            return 2;
+        }
         return -1;
     }
 
