@@ -45,6 +45,10 @@ class Problem1 {
         return false;
     }
 
+    public static boolean checkPageSize(List<Integer> page) {
+        return page.size() == 2;
+    }
+
     public static int pageSum(Integer page) {
         int pageSum = 0;
         Integer pageCheck = page;
