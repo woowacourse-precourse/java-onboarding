@@ -1,8 +1,6 @@
 package onboarding;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Problem6 {
     static int NICKNAME = 1;
@@ -37,8 +35,31 @@ public class Problem6 {
         }
     }
 
+    private static Set<String> findDuplicatedNickname(Map<String, List<String>>nicknameMap) {
+        Set<String> emailSet = new HashSet<>();
+        for (List<String> emailList : nicknameMap.values()) {
+            if (emailList.size() > 1) {
+                emailSet.addAll(emailList);
+            }
+        }
+        return emailSet;
+    }
+
+    private static List<String> formsGetList(List<List<String>> forms) {
+        Map<String, List<String>> nicknameMap = new HashMap<>();
+        for (List<String> userInfo : forms) {
+            divideNickName(nicknameMap, userInfo);
+        }
+
+        Set<String> emailSet = findDuplicatedNickname(nicknameMap);
+        List<String> answer = new ArrayList<>(emailSet);
+        Collections.sort(answer);
+        return answer;
+    }
+
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer;
+        answer = formsGetList(forms);
         return answer;
     }
 }
