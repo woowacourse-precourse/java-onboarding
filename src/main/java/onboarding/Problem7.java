@@ -56,7 +56,8 @@ public class Problem7 {
         sortList.sort(new Comparator<Map.Entry<String, Integer>>() {
             @Override
             public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
-                return o2.getValue() - o1.getValue();
+                if(o2.getValue()==o1.getValue()) return o1.getKey().compareTo(o2.getKey());
+                else return o2.getValue() - o1.getValue();
             }
         });
 
