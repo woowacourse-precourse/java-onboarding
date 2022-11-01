@@ -52,6 +52,17 @@ public class Problem6 {
         }
         return 1;
     }
+    private static int compareProcess(List<List<String>> forms, List<String> answer, int controlIndex, int compareIndex) {
+        String controlNickname = getNickname(forms, controlIndex);
+        String compareNickname = getNickname(forms, compareIndex);
+        if (checkOverlap(controlNickname, compareNickname)) {
+            String compareEmail = getEmail(forms, compareIndex);
+            insertAnswer(answer, compareEmail);
+            forms.remove(compareIndex);
+            return 0;
+        }
+        return 1;
+    }
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
