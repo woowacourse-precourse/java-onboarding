@@ -1,15 +1,14 @@
 package onboarding;
 
-import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-
         Map<String, List<String>> allFriends = getAllFriends(friends);
         List<String> userFriends = allFriends.get(user);
 
@@ -25,6 +24,8 @@ public class Problem7 {
         addScoreToVisitors(scoreMap, visitors);
 
         excludeFromScoreMap(scoreMap, user, userFriends);
+
+        List<String> answer = sortByValue(scoreMap);
 
         return answer;
     }
@@ -58,5 +59,14 @@ public class Problem7 {
         for (String uf : userFriends) {
             scoreMap.remove(uf);
         }
+    }
+
+    private static List<String> sortByValue(Map<String, Integer> score) {
+        return score.entrySet().stream()
+                .sorted(Map.Entry.comparingByKey())
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .map(Map.Entry::getKey)
+                .limit(5)
+                .collect(Collectors.toList());
     }
 }
