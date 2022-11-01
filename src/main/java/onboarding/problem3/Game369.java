@@ -13,12 +13,12 @@ public class Game369 {
     }
 
     private void validate(int number) {
-        if (isValidNumber(number))
+        if (isNotValidNumber(number))
             throw new IllegalArgumentException("숫자 범위는 1 이상 10,000 이하 입니다.");
     }
 
-    private boolean isValidNumber(int number) {
-        return number < MAX_NUMBER.getNumber() || number > MIN_NUMBER.getNumber();
+    private boolean isNotValidNumber(int number) {
+        return number < MIN_NUMBER.getNumber() || number > MAX_NUMBER.getNumber();
     }
 
     private int countNumberThreeSixNine(int number) {
