@@ -58,6 +58,18 @@ public class Problem7 {
             }
         }
 
+        // 사용자의 타임 라인에 방문한 횟수를 구하는 기능
+        for(int i = 0; i < visitors.size(); i++) {
+            String visitor = visitors.get(i);
+            if (!userFriends.contains(visitor)) { // 친구 관계가 아닐 경우
+                if (score.containsKey(visitor)) { // 아이디가 이미 존재할 경우
+                    score.put(visitor, score.get(visitor) + 1);
+                } else { // 아이디가 존재하지 않을 경우
+                    score.put(visitor, 1);
+                }
+            }
+        }
+
         return answer;
     }
 }
