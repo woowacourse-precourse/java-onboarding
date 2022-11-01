@@ -131,8 +131,18 @@ public class Problem7 {
     }
 
     public static List<String> setRecommendList(List<String> allId, List<Integer> userScore) {
-        quickSort(allId, userScore, 0, allId.size()-1);
+        if(allId.size() != 0) {
+            quickSort(allId, userScore, 0, allId.size()-1);
+        }
         return allId;
+    }
+
+    public static List<String> removeOverLength(List<String> allId) {
+        List<String> allIdUnderFive = new ArrayList<>();
+        for(int i = 0; i < 5; i++) {
+            allIdUnderFive.add(allId.get(i));
+        }
+        return allIdUnderFive;
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -142,6 +152,6 @@ public class Problem7 {
         List<Integer> userScore = findFriendNumber(friendsList, userFriend, allId, visitors);
         List<String> recommendList = setRecommendList(allId, userScore);
 
-        return recommendList;
+        return recommendList.size() <= 5 ? recommendList : removeOverLength(recommendList);
     }
 }
