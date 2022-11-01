@@ -1,31 +1,42 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Problem7 {
     private static Map<String, Integer> countMap = new HashMap<>();
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        makeCountMap(user, friends, visitors);
+        List<String> answer = new ArrayList<>();
         List<String> userFriendList = userFriends(user, friends);
         List<String> friendAndFriends = friendAndFriends(userFriendList, friends, user);
+        score(userFriendList, friendAndFriends, visitors);
+
+        answer.addAll(countMap.keySet());
         return answer;
     }
 
-    private static void makeCountMap(String user, List<List<String>> friends, List<String> visitors) {
-        for (List<String> i : friends) {
-            for (String s : i) {
-                if (s.equals(user)) {
-                    continue;
-                }
-                countMap.put(s, 0);
-            }
+    private static void score(List<String> userFriendList, List<String> friendAndFriends, List<String> visitors) {
+        Set<String> set = new HashSet<>(friendAndFriends);
+        for (String str : set) {
+            countMap.put(str, Collections.frequency(friendAndFriends, str) * 10);
         }
 
-        for (String s : visitors) {
-            countMap.put(s, 0);
+
+        for (String str : visitors) {
+            if (userFriendList.contains(str)) {
+                continue;
+            }
+            Integer count = countMap.get(str);
+            if (count == null) {
+                countMap.put(str, 1);
+            } else {
+                countMap.put(str, count + 1);
+            }
         }
     }
+
 
     private static List<String> friendAndFriends(List<String> userFriendList, List<List<String>> friends, String user) {
         List<String> friendsAndFriends = new ArrayList<>();
@@ -35,11 +46,11 @@ public class Problem7 {
                     if (friends.get(j).get(1).equals(user)) {
                         continue;
                     }
-                    System.out.println("friends.get(j) = " + friends.get(j));
                     friendsAndFriends.add(friends.get(j).get(1));
                 }
             }
         }
+
         return friendsAndFriends;
     }
 
@@ -51,7 +62,9 @@ public class Problem7 {
             }
         }
 
+
         return userFriendList;
     }
-    
+
+
 }
