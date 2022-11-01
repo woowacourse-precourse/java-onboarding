@@ -139,10 +139,13 @@ class ApplicationTest {
                     List.of("donut", "mrko"),
                     List.of("shakevan", "andole"),
                     List.of("shakevan", "jun"),
+                    List.of("shakevan", "aab"),
+                    List.of("shakevan", "aaa"),
+                    List.of("shakevan", "bbb"),
                     List.of("shakevan", "mrko")
             );
-            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
-            List<String> result = List.of("andole", "jun", "bedi");
+            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan", "bbb");
+            List<String> result = List.of("andole", "jun", "bbb", "aaa", "aab");
             System.out.println("Problem7.solution(user,friends,visitors) = " + Problem7.solution(user,friends,visitors));
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
         }
