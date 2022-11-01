@@ -74,6 +74,13 @@ class CompareName {
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
+        CompareName name = new CompareName(forms);
+        try {
+            name.CheckException(forms);
+            answer = name.findCrews(forms, name.findDuplicated());
+        } catch (RestrictException e) {
+            System.out.println(e.exMsg);
+        }
         return answer;
     }
 }
