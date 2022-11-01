@@ -20,7 +20,7 @@ public class Problem6 {
         String vmail;
         for (int i = 0; i < nickname.length() - 1; i++) {
             String twoLetter = nickname.substring(i, i +2);
-            if ((vmail = prevWords.get(twoLetter)) != null){
+            if ((vmail = prevWords.get(twoLetter)) != null) {
                 emailSet.add(vmail);
                 emailSet.add(email);
             } else {
