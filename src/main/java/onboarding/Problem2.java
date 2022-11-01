@@ -26,6 +26,10 @@ public class Problem2 {
             }
         }
 
+        //위의 반복문 연산에서 마지막 문자를 작성하지 않았으므로 작성
+        testingArray[writingIndex] = testingArray[index-1];
+        writingIndex++;
+
         String newString = new String(testingArray).substring(0,writingIndex);
 
         //중복 제거 완료한 새로운 문자열을 인자로 전달하여 동일한 중복 제거 함수 시행
