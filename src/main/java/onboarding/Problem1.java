@@ -42,4 +42,11 @@ class Problem1 {
         }
         return sum;
     }
+
+    private static boolean error(List<Integer> paper) {
+        if (paper.get(0) == paper.get(1) - 1 && paper.get(0) % 2 == 1 && paper.get(1) <= 400 && paper.get(0) > 0 && paper.size() == 2) {
+            return false;
+        }
+        return true;
+    }
 }
