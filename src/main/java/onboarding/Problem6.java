@@ -26,6 +26,9 @@ public class Problem6 {
                 if(forms.get(i).get(1).contains(two)) count += 1;
             }
 
+            //2개 이상의 닉네임에 해당하면 새로운 List에 넣기
+            //본인 닉네임은 제외해야하기 때문
+            if(count > 1) searchTwoWord.add(two);
         }
 
 
