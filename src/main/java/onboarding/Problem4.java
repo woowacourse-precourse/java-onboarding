@@ -1,9 +1,7 @@
 package onboarding;
 
 public class Problem4 {
-
     public static char transform(char c) {
-
         if (c >= 'A' && c <= 'Z') {
             if (c <= 'M') {
                 c = (char) ('Z' - (c - 'A'));
@@ -25,10 +23,10 @@ public class Problem4 {
     }
 
     public static String solution(String word) {
-        String answer = "";
+        StringBuilder answer = new StringBuilder();
         for (int i = 0; i < word.length(); i++) {
-            answer += transform(word.charAt(i));
+            answer.append(transform(word.charAt(i)));
         }
-        return answer;
+        return answer.toString();
     }
 }
