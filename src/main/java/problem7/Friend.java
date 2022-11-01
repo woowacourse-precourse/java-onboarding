@@ -32,4 +32,30 @@ public class Friend {
         }
         return friendRelations;
     }
+
+    private Map<String, Integer> getFriends(List<String> friends, List<List<String>> relations) {
+        Map<String, Integer> score = new HashMap<>();
+        for (String friend : friends) {
+            for (List<String> relation : relations) {
+                if (relation.contains(friend) && !relation.contains(user)) {
+                    int index = friend.indexOf(friend);
+                    if (index == 0) {
+                        setFriendScore(score, relation.get(1));
+                    }
+                    if (index == 1) {
+                        setFriendScore(score, relation.get(0));
+                    }
+                }
+            }
+        }
+        return score;
+    }
+
+    private void setFriendScore(Map<String, Integer> score, String name) {
+        if(score.size() != 0 && score.containsKey(name)) {
+            score.put(name, score.get(name) + FRIEND_SCORE);
+            return;
+        }
+        score.put(name, FRIEND_SCORE);
+    }
 }
