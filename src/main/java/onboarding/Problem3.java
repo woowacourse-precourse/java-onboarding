@@ -31,22 +31,7 @@ public class Problem3 {
         return clap;
     }
 
-    public static boolean isThreeSixNine(char c) {
-        int number = Character.getNumericValue(c);
-
-        if (number == 0) {
-            return false;
-        }
-        if (number % 3 == 0) {
-            return true;
-        }
-        if (number % 6 == 0) {
-            return true;
-        }
-        if (number % 9 == 0) {
-            return true;
-        }
-
-        return false;
+    public static boolean isThreeSixNine(char number) {
+        return (number == '3') || (number == '6') || (number == '9');
     }
 }
