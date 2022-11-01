@@ -30,6 +30,14 @@ public class Problem7 {
         return recommandList;
     }
 
+    private static void setHashMap(HashMap<String, Integer> recommandList, String recommandName) {
+        if (!recommandList.containsKey(recommandName)) {
+            recommandList.put(recommandName, 10);
+        } else {
+            recommandList.put(recommandName, recommandList.get(recommandName) + 10);
+        }
+    }
+
     private static List<String> getUsersFriends(String user, List<List<String>> friends) {
         List<String> friendList = new ArrayList<>();
 
