@@ -10,7 +10,7 @@ import java.util.Map;
 class RecommenderTest {
 
     Map<String, Member> store;
-    FriendRecommender recommender;
+    MrKoRecommender recommender;
 
     public RecommenderTest() {
         List<List<String>> friends = List.of(
@@ -25,6 +25,7 @@ class RecommenderTest {
         List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
 
         store = Problem7.setMemberStore(friends, visitors);
+        Problem7.setUserVisitors("mrko", visitors);
         recommender = new MrKoRecommender(store);
     }
 
@@ -54,5 +55,30 @@ class RecommenderTest {
         Assertions.assertThat(recommender.hasCoFriend(shakevan.getName(), donut.getName())).isEqualTo(true);
     }
 
+    @Test
+    public void 방문수테스트() throws Exception {
+        //given
+        String user = "mrko";
+        String visitor = "bedi";
 
+        //when
+        int visits = recommender.countVisits(user, visitor);
+
+        //then
+
+        Assertions.assertThat(visits).isEqualTo(3);
+    }
+
+    @Test
+    public void 추천점수테스트() throws Exception {
+        //given
+        String user = "mrko";
+        String[] memberNames = store.keySet().toArray(new String[0]);
+
+        //when
+        int[] scores = recommender.calculateScores(user, memberNames, new int[store.size()]);
+
+        //then
+        Assertions.assertThat(scores).isEqualTo(new int[]{10, 10, 0, 3, 0, 0});
+    }
 }

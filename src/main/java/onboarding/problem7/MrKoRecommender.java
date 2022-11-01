@@ -19,6 +19,18 @@ public class MrKoRecommender extends FriendRecommender{
         String[] memberNames = memberStore.keySet().toArray(new String[0]);
         int[] recommendScores = new int[memberStore.size()];
 
+        recommendScores = calculateScores(userName, memberNames, recommendScores);
+
+
+
+        return null;
+    }
+
+    /**
+     * 7.3.3
+     * 가중치를 이용해 추천 점수 계산
+     */
+    public int[] calculateScores(String userName, String[] memberNames, int[] recommendScores) {
         int i = 0;
         while (i < memberStore.size()) {
 
@@ -26,13 +38,14 @@ public class MrKoRecommender extends FriendRecommender{
             if (!userName.equals(memberNames[i]) && !isFriend(userName, memberNames[i])) {
                 recommendScores[i] += VISITOR_WEIGHT * countVisits(userName, memberNames[i]);
 
+                // 두 멤버가 같은 친구를 맺고 있다면 가중치 + 10
                 if (hasCoFriend(userName,memberNames[i]))
                     recommendScores[i] += COFRIEND_WEIGHT;
             }
-
-
+            i++;
         }
-        return null;
+
+        return recommendScores;
     }
 
     public int countVisits(String userName, String memberName) {
