@@ -22,6 +22,9 @@ public class Problem7 {
         //방문자들 점수 매기기
         initScoreOfVisitors(scoreOfVisitors, visitors, unknownFriends, userFriends);
 
+        //사용자와 함께 아는 친구의 수 점수 매기기
+        setScoreOfBothKnownFriends(scoreOfVisitors, unknownFriends, userFriends);
+
         return answer;
     }
 
@@ -92,6 +95,28 @@ public class Problem7 {
                 scoreOfVisitors.put(visitor, 0);
             }
 
+        }
+    }
+
+    public static void setScoreOfBothKnownFriends(HashMap<String, Integer> scoreOfVisitors,
+                                                  Map<String, List<String>> unknownFriends,
+                                                  List<String> userFriends) {
+
+        for (String unknownFriend : unknownFriends.keySet()) {
+
+            for (String userFriend : userFriends) {
+
+                if (unknownFriends.get(unknownFriend).contains(userFriend)) {
+
+                    if (!scoreOfVisitors.containsKey(unknownFriend)) {
+                        scoreOfVisitors.put(unknownFriend, 10);
+                        continue;
+                    }
+
+                    scoreOfVisitors.put(unknownFriend, scoreOfVisitors.get(unknownFriend) + 10);
+
+                }
+            }
         }
     }
 
