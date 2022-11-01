@@ -48,7 +48,7 @@ public class Sns {
 
     private List<String> extractFiveMember(PriorityQueue<RecommendedMember> memberQueue) {
         List<String> list = new ArrayList<>();
-        while (!memberQueue.isEmpty() && list.size() <= RECOMMEND_NUMBER) {
+        while (!memberQueue.isEmpty() && list.size() < RECOMMEND_NUMBER) {
             extractMemberToList(memberQueue, list);
         }
         return list;
@@ -70,7 +70,7 @@ public class Sns {
     }
 
     private void updateRecommendMapUsingFriendShip(HashMap<String, Integer> recommendMap, String user, List<String> membersNotFriendWithUser) {
-        HashSet<String> usersFriends = friendShip.get(user);
+        HashSet<String> usersFriends = friendShip.getOrDefault(user, new HashSet<>());
         for (String member : membersNotFriendWithUser) {
             int numOfMemberKnowTogether = 0;
             HashSet<String> membersFriends = friendShip.getOrDefault(member, new HashSet<>());

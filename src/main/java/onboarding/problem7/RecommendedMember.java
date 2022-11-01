@@ -10,6 +10,9 @@ public class RecommendedMember implements Comparable<RecommendedMember> {
     }
     @Override
     public int compareTo(RecommendedMember friend) {
+        if (friend.score == this.score) {
+            return this.name.compareTo(friend.name);
+        }
         return friend.score - this.score;
     }
 }
