@@ -12,6 +12,10 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
 
+        if (!verificationTotalCheck(user, friends, visitors)) {
+            return answer = List.of("Check Restrictions");
+        }
+
         HashMap<String, Integer> friendMap = getTotalUser(friends);
 
         Set<String> friendNameSet = friendMap.keySet();
@@ -36,11 +40,56 @@ public class Problem7 {
 
         answer = sortByScoreAndName(friendMap);
 
-        if(answer.size() > 5) {
-            answer = answer.subList(0,5);
+        if (answer.size() > 5) {
+            answer = answer.subList(0, 5);
         }
 
         return answer;
+    }
+
+    public static boolean verificationTotalCheck(String user, List<List<String>> friends, List<String> visitors) {
+        if (!verificationCheckAboutUser(user)) {
+            return false;
+        }
+        if (!verificationCheckAboutFriends(friends)) {
+            return false;
+        }
+        if (!verificationCheckAboutVisitors(visitors)) {
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean verificationCheckAboutUser(String user) {
+        if (user.length() < 1 || user.length() > 30) {
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean verificationCheckAboutFriends(List<List<String>> friends) {
+        if (friends.size() < 1 || friends.size() > 10000) {
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean verificationCheckAboutVisitors(List<String> visitors) {
+        if (visitors.size() > 10000) {
+            return false;
+        }
+        return true;
+    }
+
+    public static boolean verificationCheckAboutID(String id) {
+        String isLowerAlphaRegex = "^[a-z]*$";
+        if(!id.matches(isLowerAlphaRegex)) {
+            return false;
+        }
+        if(id.length() < 1 || id.length() > 30) {
+            return false;
+        }
+        return true;
     }
 
     public static HashMap<String, Integer> getTotalUser(List<List<String>> friends) {
