@@ -3,6 +3,19 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
+    //오름차순을 설정하기 위해서 만든 compare함수
+    static class recommendationSort<T extends Comparable<T>> implements Comparator<List<T>> {
+
+        @Override
+        public int compare(List<T> o1, List<T> o2) {
+            // 점수가 같다면, 이름 오름차순으로
+            if (o1.get(1).equals(o2.get(1))) {
+                return o1.get(0).compareTo(o2.get(0));
+            }
+            // 점수순으로
+            return Integer.compare(Integer.parseInt((String) o2.get(1)), Integer.parseInt((String) o1.get(1)));
+        }
+    }
     //user에 따라 친구 목록을 만드는 map
     public static Map<String, List<String>> getUsersList(List<List<String>> friends){
         Map<String, List<String>> userFriendsList = new HashMap<>();
