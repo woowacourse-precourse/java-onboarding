@@ -47,16 +47,20 @@ public class Problem7 {
             String friend1 = friend.get(0);
             String friend2 = friend.get(1);
 
-            if (isNotEqual(user, friend2)){
+            if (isNotEqual(user, friend2) && isNotAlreadyFriend(alreadyFriends, friend2)){
                 setFriendPoint(alreadyFriends, friend1, recomFriends, friend2);
             }
 
-            if (isNotEqual(user, friend1)){
+            if (isNotEqual(user, friend1) && isNotAlreadyFriend(alreadyFriends, friend1)){
                 setFriendPoint(alreadyFriends, friend2, recomFriends, friend1);
             }
         }
 
         return recomFriends;
+    }
+
+    private static boolean isNotAlreadyFriend(Set<String> alreadyFriends, String friend) {
+        return !alreadyFriends.contains(friend);
     }
 
     private static void setFriendPoint(Set<String> alreadyFriends, String alreadyFriend, Map<String, Integer> recomFriends, String recomFriend) {
