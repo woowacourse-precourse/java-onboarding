@@ -21,6 +21,9 @@ public class Problem7 {
 
         ArrayList<String> sortedMap = new ArrayList<>();
         for(Iterator<Map.Entry<String, Integer>> iter = list.iterator(); iter.hasNext();){
+            if(sortedMap.size() == 5) {
+                break;
+            }
             Map.Entry<String, Integer> entry = iter.next();
             sortedMap.add(entry.getKey());
         }
@@ -96,20 +99,5 @@ public class Problem7 {
         answer = sort(sharedFriendsMap);
         System.out.println(answer);
         return answer;
-    }
-
-    public static void main(String[] args) {
-        String user = "mrko";
-        List<List<String>> friends = List.of(
-                List.of("mrko", "jun"),
-                List.of("donut", "jun"),
-                List.of("donut", "mrko"),
-                List.of("shakevan", "andole"),
-                List.of("jun", "andole"),
-                List.of("shakevan", "jun"),
-                List.of("shakevan", "mrko")
-        );
-        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
-        solution(user, friends, visitors);
     }
 }
