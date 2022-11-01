@@ -34,15 +34,46 @@ public class Problem7 {
             if(userFriends.contains(friend2))
                 personScore.put(friend1, personScore.get(friend1)+10);
         }
+        for(String friend: userFriends)
+            personScore.remove(friend);
         personScore.remove(user);
     }
 
     private static void scoreVisitor(List<String> visitors) {
-
+        for(String visitor: visitors) {
+            if(!personScore.containsKey(visitor))
+                continue;
+            personScore.put(visitor, personScore.get(visitor)+1);
+        }
     }
 
     private static List<String> getMaxScoredPerson() {
-        return new ArrayList<>();
+        int count = 0;
+        List<String> result = new ArrayList<>();
+
+        List<Integer> scoreList = personScore.values().stream().distinct().collect(Collectors.toList());
+        Collections.sort(scoreList, Collections.reverseOrder());
+
+        for(Integer score: scoreList) {
+            if(count >= 5) break;
+            if(score == 0) break;
+
+            List<String> listOfNameWithSameScore = new ArrayList<>();
+            personScore.forEach((k, v) -> {
+                    if(v==score)
+                        listOfNameWithSameScore.add(k);
+                }
+            );
+
+            Collections.sort(listOfNameWithSameScore);
+            for(String name: listOfNameWithSameScore) {
+                if(count>=5) break;
+                result.add(name);
+                count++;
+            }
+        }
+
+        return result;
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
