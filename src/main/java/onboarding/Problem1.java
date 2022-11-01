@@ -1,6 +1,5 @@
 package onboarding;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.Character.*;
@@ -10,8 +9,7 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
-        int answer = getAnswer(pobi, crong);
-        return answer;
+        return getAnswer(pobi, crong);
     }
 
     private static int getAnswer(List<Integer> pobi, List<Integer> crong) {
@@ -66,9 +64,6 @@ class Problem1 {
         char[] digits = num.toCharArray();
 
 
-        //여기 for 문 필요한거 맞음? 없어도 되는거 같은데??
-        for (int i = 0; i < digits.length; i ++)
-
             if (digits.length == 1) {
                 return getNumericValue(digits[0]);
             } else if (digits.length == 2) {
@@ -76,7 +71,6 @@ class Problem1 {
             } else {
                 return getNumericValue(digits[0]) * getNumericValue(digits[1]) * getNumericValue(digits[2]);
             }
+        }
 
-        return Integer.parseInt(null);
     }
-}
