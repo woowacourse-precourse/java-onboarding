@@ -61,4 +61,19 @@ class Problem1 {
         return sum;
     }
 
+    /**
+     * 각 자리의 합과 곱 중 가장 큰 수를 반환한다.
+     * @param data 페이지 번호 [34,35]
+     * @return 각 자리의 합과 곱 중 가장 큰 수
+     */
+    public int getMaxScore(List<Integer> data){
+        Integer leftPage = data.get(0);
+        Integer rightPage = data.get(1);
+        //예외 처리
+        if(checkFirstOrEnd(leftPage) && checkFirstOrEnd(rightPage)) return -1;
+        int leftMax = Math.max(getSumByIndex(leftPage), getMultiplyByIndex(leftPage));
+        int rightMax = Math.max(getSumByIndex(rightPage), getMultiplyByIndex(rightPage));
+        return Math.max(leftMax, rightMax);
+    }
+
 }
