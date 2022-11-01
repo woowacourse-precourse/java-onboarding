@@ -27,15 +27,16 @@ class DuplicateNameChecker {
         for (String changedInnerForm : reappraiseList) {
             String[] strings = changedInnerForm.split("&&&");
 
-            String[] dividedWords = WordDivider.divideWord(strings[0]);
+            String[] dividedWords = WordDivider.divideWord(strings[1]);
 
             for (String word : dividedWords) {
                 if(duplicateWordList.isContainList(
                         duplicateWordList.detection ,word)) {
-                    duplicateMailList = ListAdder.plzAdd(duplicateMailList, strings[1]);
+                    duplicateMailList = ListAdder.plzAdd(duplicateMailList, strings[0]);
                 }
             }
         }
+
         duplicateMailList = ListSorter.plzSort(duplicateMailList);
 
         return duplicateMailList;
@@ -43,11 +44,11 @@ class DuplicateNameChecker {
 
     private static void checkNSortOutName(List<String> innerForm,
                                           DuplicateWordList duplicateWordList) {
-        String nickName = innerForm.get(0);
+        String nickName = innerForm.get(1);
         String[] wordlist = WordDivider.divideWord(nickName);
         int countAdded = duplicateWordList.addWords(wordlist);
         if(wordlist.length != countAdded) {
-            duplicateMailList = ListAdder.plzAdd(duplicateMailList, innerForm.get(1));
+            duplicateMailList = ListAdder.plzAdd(duplicateMailList, innerForm.get(0));
         }
 
         if(wordlist.length == countAdded) {
