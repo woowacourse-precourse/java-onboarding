@@ -12,13 +12,13 @@ public class Problem3 {
     public static int countClap(int number) {
         int sum = 0;
         for (int i = 1; i <= number; i++) {
-            sum += count369(i);
+            sum += countNumber(i);
         }
 
         return sum;
     }
 
-    private static int count369(Integer num) {
+    private static int countNumber(Integer num) {
         String numString = num.toString();
 
         int cnt = 0;
