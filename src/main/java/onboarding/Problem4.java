@@ -25,6 +25,12 @@ public class Problem4 {
         return false;
     }
 
+    //  알파벳 Index 찾기 메소드
+    private static int findCharIndex(char input){
+        int base = getBase(input);
+        return (int) input - base;
+    }
+
     //  입력값에 따라 a,A의 아스키 코드 리턴 메소드
     private static int getBase(char input) {
         if(checkLowerCase(input))
