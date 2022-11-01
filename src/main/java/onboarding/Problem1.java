@@ -7,6 +7,23 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
+        int pobiScore,crongScore;
+
+        //각 페이지를 문자열화 하여 저장
+        String pobiLeft = Integer.toString(pobi.get(0));
+        String pobiRight = Integer.toString(pobi.get(1));
+        String crongLeft = Integer.toString(crong.get(0));
+        String crongRight = Integer.toString(crong.get(1));
+
+        //exception check
+        if(exceptionCheck(pobiLeft,pobiRight) == 1) return -1;
+
+        //pobi , crong이 자신이 가질수 있는 최대의 점수를 점수로 함
+        pobiScore = (getMaxBetweenRightAndLeft(getMaxBetweenSumAndMultiply(pobiLeft),getMaxBetweenSumAndMultiply(pobiRight)));
+        crongScore = (getMaxBetweenRightAndLeft(getMaxBetweenSumAndMultiply(crongLeft),getMaxBetweenSumAndMultiply(crongRight)));
+
+        //pobi vs crong 점수 비교
+        answer = getWinner(pobiScore,crongScore);
 
 
         return answer;
