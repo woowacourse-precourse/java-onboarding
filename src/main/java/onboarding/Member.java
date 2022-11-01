@@ -23,7 +23,7 @@ public class Member {
         if (name.length() < 1 || name.length() > 20)
             throw new IllegalArgumentException("닉네임 글자수 오류");
 
-        if (name.matches(".*[A-z]+.*"))
+        if (!name.matches("^[ㄱ-ㅎ ㅏ-ㅣ 가-힣]*$"))
             throw new IllegalArgumentException("한글 외의 닉네임 포함");
     }
 

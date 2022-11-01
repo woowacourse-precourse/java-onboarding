@@ -55,6 +55,7 @@ public class Members {
 
         for (int i = 0; i < names.size(); i++)
             emails.addAll(getEmailForName(names.get(i)));
+
         return emails.stream()
                 .sorted()
                 .collect(Collectors.toList());
