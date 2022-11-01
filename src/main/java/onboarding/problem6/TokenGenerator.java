@@ -7,8 +7,8 @@ import java.util.stream.IntStream;
 public class TokenGenerator {
     private final List<String> tokens;
 
-    public TokenGenerator(String word) {
-        this.tokens = splitToken(word);
+    public TokenGenerator(UserInfo userInfo) {
+        this.tokens = splitToken(userInfo.getNickname());
     }
 
     private List<String> splitToken(String nickname) {

@@ -22,7 +22,7 @@ public class SimilarityChecker {
     }
 
     private void addUserInfo(UserInfo userInfo) {
-        List<String> tokens = new TokenGenerator(userInfo.getNickname()).getTokens();
+        List<String> tokens = new TokenGenerator(userInfo).getTokens();
 
         tokens.forEach((token) -> addToken(token, userInfo.getEmail()));
     }
