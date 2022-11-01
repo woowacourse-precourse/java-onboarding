@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     static HashMap<String, List<String>> friendMap;
@@ -12,15 +9,58 @@ public class Problem7 {
         init();
         makeFriendsMap(friends);
         findAcquaintance(user);
+        findVisitor(user, visitors);
+        initFriendsScore(user);
+        return recommendFriends();
 
+    }
 
-        List<String> answer = Collections.emptyList();
+    private static void initFriendsScore(String user){
+        List<String> friends = friendMap.get(user);
+        if(friends == null) return;
+        for(String friend : friends){
+            scoreCountMap.put(friend, 0);
+        }
+        System.out.println();
+    }
 
+    private static List<String> recommendFriends() {
+        List<String> recommendFriends = new ArrayList<>();
+        PriorityQueue<String[]> pq = new PriorityQueue<>(new Comparator<String[]>() {
+            @Override
+            public int compare(String[] o1, String[] o2) {
+                if(Integer.parseInt(o1[1]) == Integer.parseInt(o2[1])){
+                    return o1[0].compareTo(o2[0]);
+                }
+                return Integer.parseInt(o2[1])-Integer.parseInt(o1[1]);
+            }
+        });
 
-        return answer;
+        for(String key : scoreCountMap.keySet()){
+            pq.add(new String[]{key, String.valueOf(scoreCountMap.get(key))});
+        }
+        for(int i=0; i<5; i++){
+            if(pq.isEmpty()) break;
+            if(pq.peek()[1].equals("0")){
+                break;
+            }
+            recommendFriends.add(pq.poll()[0]);
+        }
+        return recommendFriends;
+    }
+
+    private static void findVisitor(String user, List<String> visitors) {
+        for (String visitor : visitors) {
+            if(scoreCountMap.containsKey(visitor)) {
+                scoreCountMap.put(visitor, scoreCountMap.get(visitor) + 1);
+            }else{
+                scoreCountMap.put(visitor, 1);
+            }
+        }
     }
 
     private static void findAcquaintance(String user) {
+        if(!friendMap.containsKey(user)) return;
         List<String> friends = friendMap.get(user);
         for (String friend : friends) {
             List<String> friendsOfFriends = friendMap.get(friend);
@@ -28,7 +68,7 @@ public class Problem7 {
                 if (friendOfFriend.equals(user)) {
                     continue;
                 }
-                scoreCountMap.put(friendOfFriend, scoreCountMap.get(friendOfFriend) + 1);
+                scoreCountMap.put(friendOfFriend, scoreCountMap.get(friendOfFriend) + 10);
             }
         }
     }
