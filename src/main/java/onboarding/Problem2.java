@@ -52,6 +52,7 @@ public class Problem2 {
                 lastPopChar = stack.pop();
             } else{
                 pushChar(stack, lastPopChar, curChar);
+                lastPopChar = curChar;
             }
         }
         return stackToString(stack);
