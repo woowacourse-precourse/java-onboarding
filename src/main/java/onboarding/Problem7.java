@@ -92,4 +92,25 @@ public class Problem7 {
 
         return scoreVisitFriend;
     }
+
+    public static <K extends Comparable<? super K>, V extends Comparable<? super V>> List<K> sortAndSlicingFriends(
+            HashMap<K, V> scoreOfFriends
+    ) {
+        List<K> friends = new ArrayList<>(List.of());
+        List<Map.Entry<K, V>> entrySetOfMap = new LinkedList<>(scoreOfFriends.entrySet());
+        entrySetOfMap.sort((o1, o2) -> {
+            if (o1.getValue().equals(o2.getValue()))
+                return o1.getKey().compareTo(o2.getKey());
+            else
+                return o2.getValue().compareTo(o1.getValue());
+        });
+
+        for (Map.Entry<K, V> entry : entrySetOfMap) {
+            friends.add(entry.getKey());
+            if (friends.size() == 5)
+                break;
+        }
+
+        return friends;
+    }
 }
