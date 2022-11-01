@@ -22,10 +22,6 @@ public class Problem7 {
         }
 
         User target = new User(user, friends, visitors);
-        target.setUserFriends();
-        target.setRecommandHashMapByFriends();
-        target.setRecommendHashMapByVisitors();
-        target.sort();
         answer = target.getAnswer();
 
         return answer;
@@ -88,6 +84,11 @@ public class Problem7 {
             this.user = user;
             this.friends = friends;
             this.visitors = visitors;
+
+            setUserFriends();
+            setRecommandHashMapByFriends();
+            setRecommendHashMapByVisitors();
+            sort();
         }
 
         private void setUserFriends() {
