@@ -13,7 +13,6 @@ public class UserService {
 
     public List<String> findHighestRecommendationByUsernameLimitN(String username, int limit) {
         var user = userRepository.findByName(username);
-        var result = userRepository.findAll().stream().filter(user::isNotMeAndFriend).sorted().collect(Collectors.toList());
         return userRepository.findAll()
                              .stream()
                              .filter(user::isNotMeAndFriend)
