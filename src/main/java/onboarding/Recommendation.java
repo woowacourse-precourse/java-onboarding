@@ -7,12 +7,14 @@ class Recommendation {
     List<List<String>> friends;
     List<String> visitors;
     HashMap<String, Integer> users;
+    List<String> userFriend;
 
     public Recommendation(String user, List<List<String>> friends, List<String> visitors) {
         this.user = user;
         this.friends = friends;
         this.visitors = visitors;
         this.users = new HashMap<>();
+        this.userFriend = new ArrayList<>();
     }
 
     int exception() {
@@ -55,7 +57,7 @@ class Recommendation {
     }
 
     void acquainScore() {
-        List<String> userFriend = userFriend();
+        userFriend();
         int value;
 
         for(int i = 0; i < friends.size(); i++) {
@@ -77,9 +79,7 @@ class Recommendation {
         }
     }
 
-    List<String> userFriend() {
-        List<String> userFriend = new ArrayList<>();
-
+    void userFriend() {
         for(int i = 0; i < friends.size(); i++) {
             if(friends.get(i).get(0).equals(user)) {
                 userFriend.add(friends.get(i).get(1));
@@ -87,7 +87,26 @@ class Recommendation {
                 userFriend.add(friends.get(i).get(0));
             }
         }
+    }
 
-        return userFriend;
+    List<String> sorting() {
+        List<String> result = new ArrayList<>();
+        List<String> sortingResult =  new ArrayList<>(users.keySet());
+        Collections.sort(sortingResult, ((o1, o2) -> Integer.compare(users.get(o2), users.get(o1))));
+
+        int cnt = 0;
+        for(int i = 0; i < sortingResult.size(); i++) {
+            if(cnt == 5) {
+                break;
+            }
+
+            if(userFriend.contains(sortingResult.get(i)) || sortingResult.get(i).equals(user)) {
+                continue;
+            } else {
+                result.add(sortingResult.get(i));
+            }
+        }
+
+        return result;
     }
 }
