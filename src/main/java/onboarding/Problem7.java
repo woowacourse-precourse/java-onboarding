@@ -4,6 +4,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Problem7 {
+    public static final int SCORE_COMMON_FRIEND = 10;
+    public static final int SCORE_VISIT = 1;
     public static List<String> solution(String targetUser, List<List<String>> friends, List<String> visitors) {
         // 친구 set 만들기
         Map<String, Set<String>> userToFriends = new HashMap<>(); // 타겟 유저 제외하고 전부 들어감
@@ -50,7 +52,7 @@ public class Problem7 {
             if (targetUserFriends.contains(friend)) {
                 for (String user : userToFriends.get(friend)) {
                     Integer score = notFriendToRecommendScore.get(user);
-                    if (score != null) notFriendToRecommendScore.put(user, score + 10);
+                    if (score != null) notFriendToRecommendScore.put(user, score + SCORE_COMMON_FRIEND);
                 }
             }
         }
@@ -61,7 +63,7 @@ public class Problem7 {
                 if (score == null) {
                     score = 0;
                 }
-                notFriendToRecommendScore.put(visitor, score + 1);
+                notFriendToRecommendScore.put(visitor, score + SCORE_VISIT);
             }
         }
 
