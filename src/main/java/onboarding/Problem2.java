@@ -23,8 +23,8 @@ public class Problem2 {
     }
 
     public static void addDuplicatedIndex(String cryptogram) {
-        clearDuplicatedIndexList();
         char first, second;
+        clearDuplicatedIndexList();
         for (int index = 0; index < cryptogram.length() - 1; index++) {
             first = cryptogram.charAt(index);
             second = cryptogram.charAt(index + 1);
@@ -37,7 +37,6 @@ public class Problem2 {
 
     public static String createNewCryptogram(String cryptogram) {
         clearStringBuilder();
-
         for (int index = 0; index < cryptogram.length(); index++) {
             if (duplicatedIndexList.contains(index)) {
                 continue;
