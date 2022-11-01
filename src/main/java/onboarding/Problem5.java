@@ -17,8 +17,8 @@ public class Problem5 {
         List<Integer> numberOfCurrencies = new ArrayList<Integer>();
 
         for (int i = 0; i< currencies.length; i++) {
-            numberOfCurrencies.add(money/=currencies[i]);
-            money = money%currencies[i];
+            numberOfCurrencies.add(money/currencies[i]);
+            money %= currencies[i];
         }
 
         return numberOfCurrencies;
