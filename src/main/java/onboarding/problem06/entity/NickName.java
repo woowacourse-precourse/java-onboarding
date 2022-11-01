@@ -1,6 +1,7 @@
 package onboarding.problem06.entity;
 
-import onboarding.problem06.infra.exception.NickNameException;
+import onboarding.problem06.infra.exception.NickNameLengthException;
+import onboarding.problem06.infra.exception.NickNameNotKoreanException;
 
 public class NickName {
 
@@ -8,7 +9,10 @@ public class NickName {
 
   private NickName(String name) {
     if (name.length() < 1 || name.length() > 20) {
-      throw new NickNameException();
+      throw new NickNameLengthException();
+    }
+    if (!name.matches(".*[ㄱ-ㅎㅏ-ㅣ가-힣]+.*")) {
+      throw new NickNameNotKoreanException();
     }
     this.name = name;
   }
