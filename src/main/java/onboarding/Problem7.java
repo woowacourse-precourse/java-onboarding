@@ -11,6 +11,7 @@ public class Problem7 {
 
             List<String> userFriends = MakeFriendsList(user,friends);
             CountScore(Friends,visitors,friends,userFriends,user);
+            SortRecommend(Friends);
         }throw new IllegalArgumentException("잘못된 입력값");
     }
 
@@ -75,4 +76,11 @@ public class Problem7 {
         VisitCount(Friends,visitors);
         Exclusion(userFriends,Friends,user);
     }
+
+    /* 기능7 : 추천친구 점수 내림차순 정렬 */
+    private static void SortRecommend(Map<String, Integer> Friends){
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(Friends.entrySet());
+        entryList.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
+    }
+
 }
