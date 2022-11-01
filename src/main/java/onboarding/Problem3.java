@@ -1,11 +1,6 @@
 package onboarding;
 
 public class Problem3 {
-    public static boolean invalidateInput(int number) {
-        if (number < 1 || number > 10000)
-            return false;
-        return true;
-    }
     public static int checkClap(int number) {
         int clap = 0;
         for (; number != 0; number /= 10) {
@@ -16,7 +11,7 @@ public class Problem3 {
         return clap;
     }
     public static int solution(int number) {
-        if (!invalidateInput(number))
+        if (number < 1 || number > 10000)
             return -1;
         int answer = 0;
         for (; number > 0; number--)
