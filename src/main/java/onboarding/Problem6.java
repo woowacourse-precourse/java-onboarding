@@ -10,12 +10,13 @@ package onboarding;
 import java.util.*;
 
 public class Problem6 {
-    static Map<String, Set<Integer>> twoLettersRepository = new HashMap<>();
+    static Map<String, Set<Integer>> twoLettersRepository;
 
     static final int EMAIL = 0;
     static final int NICKNAME = 1;
 
     public static List<String> solution(List<List<String>> forms) {
+        twoLettersRepository = new HashMap<>();
         int formsSize = forms.size();
         for (int i=0; i<formsSize; i++) {
             analyzeNickname(forms.get(i).get(NICKNAME), i);
