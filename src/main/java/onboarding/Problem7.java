@@ -4,15 +4,13 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
         Map<String, List<String>> friendship = Friendship(friends);
         HashMap<String, Integer> scoreTable = ScoreTable(user,friendship);
 
         ScoreFriendOfUser(scoreTable, friendship, user,10);
         ScoreVisitOfUser(scoreTable,visitors, 1);
-        System.out.println("friendship.keySet() = " + scoreTable.keySet());
-        System.out.println("friendship.values() = " + scoreTable.values());
-        return answer;
+
+        return FinalResult(scoreTable,friendship, user, 5);
     }
 
     public static HashMap<String, List<String>> Friendship(List<List<String>> friends) {
@@ -62,4 +60,30 @@ public class Problem7 {
             scoreTable.put(friend, scoreTable.getOrDefault(friend, 0) + score);
     }
 
+    public static List<String> FinalResult(HashMap<String, Integer> scoreTable,
+                                  Map<String, List<String>> friendship, String user, int maxSize) {
+        List<String> result = new ArrayList<>();
+
+        //user와 uesr의 친구 삭제
+        for(String friend: scoreTable.keySet()){
+            if(!friend.equals(user) && !friendship.get(user).contains(friend)){
+                result.add(friend);
+            }
+        }
+
+        //점수 순, 동점은 ueserId 순
+        result.sort((user1, user2) -> {
+            if(scoreTable.get(user1) == scoreTable.get(user2)) {
+                return user1.compareTo(user2);
+            }
+            return scoreTable.get(user2) - scoreTable.get(user1);
+        });
+
+        System.out.println("result = " + result);
+
+        if (result.size() < maxSize) {
+            maxSize = result.size();
+        }
+        return result.subList(0, maxSize);
+    }
 }
