@@ -19,6 +19,10 @@ public class Problem6 {
             String crewEmail = forms.get(i).get(0);
             String crewNickName = forms.get(i).get(1);
 
+            if(crewNickName.length() <= 1) {
+                continue;
+            }
+
             if (isOverLap(crewNickName)) {
                 emails.add(crewEmail);
             }
