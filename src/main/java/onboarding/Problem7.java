@@ -11,9 +11,22 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         setFriends(friends, user);
         updateScore(friends, visitors);
+        removeUnnecessary();
 
         List<String> answer = Collections.emptyList();
         return answer;
+    }
+
+    public static void removeUnnecessary() {
+        for (String friend : friendsOfUserSet) {
+            scoreMap.remove(friend);
+        }
+
+        for (String name : scoreMap.keySet()) {
+            if (scoreMap.get(name) == 0) {
+                scoreMap.remove(name);
+            }
+        }
     }
 
     public static void updateScore(List<List<String>> friends, List<String> visitors) {
