@@ -65,7 +65,7 @@ public class Problem7 {
         List<Map.Entry<String, Integer>> entryList = new LinkedList<>(recommendationScore.entrySet());
         entryList.sort(Entry.comparingByKey());
         entryList.sort(Entry.comparingByValue(Comparator.reverseOrder()));
-        int count = 5;
+        int count = recommendationScore.size();
         for (Entry<String, Integer> entry : entryList) {
             answer.add(entry.getKey());
             count--;
