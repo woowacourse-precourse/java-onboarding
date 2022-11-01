@@ -17,4 +17,10 @@ public class Problem4 {
         }
         return BuildertoString(sb);
     }
+
+    public static String BuildertoString(StringBuilder stringBuilder){
+        x=stringBuilder.toString();
+        stringBuilder.setLength(0);
+        return x;
+    }
 }
