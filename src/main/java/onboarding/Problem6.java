@@ -62,4 +62,11 @@ public class Problem6 {
         return false;
     }
 
+    public static boolean canNickname(List<List<String>> forms) {
+        if (forms.get(FORM_NICKNAME).toString().length() >= MIN_NICKNAME &&
+                forms.get(FORM_NICKNAME).toString().length() <= MAX_NICKNAME && forms.get(FORM_NICKNAME).toString().matches(NAME))
+            return true;
+        return false;
+    }
+
 }
