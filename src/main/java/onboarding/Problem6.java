@@ -14,12 +14,7 @@ public class Problem6 {
 
         addMapBySubstringInNickname(crewMap, crews);
 
-        return crewMap.values().stream()
-                .filter(value -> value.size() > 1)
-                .flatMap(Collection::stream)
-                .map(Crew::getEmail)
-                .sorted()
-                .collect(Collectors.toList());
+        return getEmailListByDuplicatedNickname(crewMap);
     }
 
     private static void addMapBySubstringInNickname(Map<String, List<Crew>> crewMap, List<Crew> crews) {
@@ -32,6 +27,15 @@ public class Problem6 {
                         crewMap.get(key).add(crew);
                     });
         });
+    }
+
+    private static List<String> getEmailListByDuplicatedNickname(Map<String, List<Crew>> crewMap) {
+        return crewMap.values().stream()
+                .filter(value -> value.size() > 1)
+                .flatMap(Collection::stream)
+                .map(Crew::getEmail)
+                .sorted()
+                .collect(Collectors.toList());
     }
 
     public static class Crew {
