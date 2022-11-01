@@ -19,3 +19,9 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+## 🚀 기능 구현 사항
+(word라는 표현을 sentence로 변경)
+1. Dictionary 클래스에서 알파벳을 반대로 변환
+2. 반대로 변환한 문자열 반환
+3. 제한사항 위반 시, 에러 발생과 함께 "Wrong input" 문자열 반환
