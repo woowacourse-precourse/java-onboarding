@@ -3,6 +3,8 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+    public static Integer pl,pr,cl,cr;
+
     public static int addAll(String str){
         int l=str.length();
         int sum=0;
