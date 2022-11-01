@@ -20,7 +20,7 @@ public class Problem4 {
             StringBuilder result = new StringBuilder();
             for (int i = 0; i < word.length(); i++) {
                 Character key = word.charAt(i);
-                if (Character.isAlphabetic(key)) {
+                if ((65 <= key && key <= 90) || (97 <= key && key <= 122)) {
                     result.append(mapper.get(key));
                 } else {
                     result.append(key);
