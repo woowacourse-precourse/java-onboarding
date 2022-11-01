@@ -15,7 +15,16 @@ public class Problem2 {
 		removeIndex = new Boolean[lengthOfString];
 		Arrays.fill(removeIndex, Boolean.FALSE);
 		int nowRemove = 0;
+		return getCurrentString();
+	}
+
+	private static String getCurrentString() {
 		String answer = "";
+		for (int i = 0; i < lengthOfString; i++) {
+			if (!removeIndex[i]) {
+				answer += chars[i];
+			}
+		}
 		return answer;
 	}
 }
