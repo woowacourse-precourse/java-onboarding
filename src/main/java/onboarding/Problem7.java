@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Problem7 {
@@ -23,8 +24,25 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
         List<String> userFriends = new ArrayList<>();
+        HashMap<String, Integer> recommendScore = new HashMap<>();
 
         userFriends = checkUserFriend(friends, user);
+
+        //사용자의 친구와 친구인 경우 10점 추가
+        for(int i=0; i<friends.size(); i++){
+            String people1 = friends.get(i).get(0);
+            String people2 = friends.get(i).get(1);
+
+            if(people1.equals(user) | people2.equals(user)){ //사용자와 친구라면 건너뜀
+                continue;
+            }
+
+            if(userFriends.contains(people1)){
+                recommendScore.put(people2, recommendScore.getOrDefault(people2,0)+10);
+            } else if (userFriends.contains(people2)) {
+                recommendScore.put(people1, recommendScore.getOrDefault(people1,0)+10);
+            }
+        }
 
         return answer;
     }
