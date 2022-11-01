@@ -7,4 +7,7 @@ public class Problem6 {
         List<String> answer = List.of("answer");
         return answer;
     }
+    private static boolean EmailVaildCheck(String input){
+        return input.contains("@email.com");
+    }
 }
