@@ -15,8 +15,8 @@ class Problem1 {
         if (pageNumbers.size() != 2){
             return false;
         }
-        if ((1 <= pageNumbers.get(0) && pageNumbers.get(0) <= 400)
-                && (1 <= pageNumbers.get(1) && pageNumbers.get(1) <= 400)){
+        if ((1 > pageNumbers.get(0) || pageNumbers.get(0) > 400)
+                && (1 > pageNumbers.get(1) || pageNumbers.get(1) > 400)){
             return false;
         }
         if (pageNumbers.get(0)%2 != 1){
