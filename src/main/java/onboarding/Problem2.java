@@ -10,6 +10,7 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         return decryption(cryptogram);
     }
+
     public static String decryption(String cryptogram) {
         String newCryptogram = cryptogram;
         do {
@@ -19,6 +20,7 @@ public class Problem2 {
         cryptogram = newCryptogram;
         return cryptogram;
     }
+
     public static String overlapCheckfromString(String cryptogram) {
         int stringSize = cryptogram.length();
         boolean overlapCheck = false;
