@@ -4,7 +4,9 @@
  *
  */
 package onboarding;
-
+/**
+ * checkNum : 전달받은 숫자가 제한사항과 맞는지 체크하는 메서드
+ **/
 public class Problem3 {
 
     public static int solution(int number) {
