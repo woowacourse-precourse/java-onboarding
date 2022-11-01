@@ -32,6 +32,16 @@ public class Problem2 {
 
 				if (chars[before] != chars[i]) {
 					before = i;
+				} else {
+					isChanged = true;
+					if (!removeIndex[before]) {
+						removeIndex[before] = true;
+						nowRemove += 1;
+					}
+					if (!removeIndex[i]) {
+						removeIndex[i] = true;
+						nowRemove += 1;
+					}
 				}
 			}
 		} while (isChanged);
