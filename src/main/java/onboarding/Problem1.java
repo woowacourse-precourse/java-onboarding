@@ -30,6 +30,26 @@ class Problem1 {
             pobiMaxNum = Math.max(addNum,multipleNum);
         }
 
+        // 크롱의 경우의 수 체크
+        for (Integer integer : crong) {
+
+            int addNum = 0;
+            int multipleNum = 1;
+            int tempAdd = integer;
+            int tempMulti = integer;
+
+            while(tempAdd > 0){
+                addNum += tempAdd%10;
+                tempAdd/=10;
+            }
+
+            while(tempMulti > 0){
+                multipleNum *= tempMulti%10;
+                tempMulti/=10;
+            }
+
+            crongMaxNum = Math.max(addNum,multipleNum);
+        }
         return answer;
     }
 }
