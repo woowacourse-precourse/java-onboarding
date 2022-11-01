@@ -6,6 +6,17 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Problem7 {
+    public  HashMap<String, Integer> putVisitors(String user, List<String> visitors, HashMap<String, List<String>> friends_list){
+        HashMap<String, Integer> map = new HashMap<>();
+        List<String> user_friends = friends_list.get(user);
+        for (String x : visitors){
+            if(!user_friends.contains(x)){
+                map.put(x,map.getOrDefault(x,0)+1);
+            }
+        }
+
+        return map;
+    }
     public HashMap<String, List<String>> arrange_friends_list(List<List<String>> friends){
         HashMap<String, List<String>> friends_list =new HashMap<>();
         for(List<String> link : friends){
