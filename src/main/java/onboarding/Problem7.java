@@ -140,4 +140,26 @@ public class Problem7 {
 
         return result;
     }
+    public static List<String> sortByName(List<List<String>> scores) {
+        List<String> result = new ArrayList<>();
+        List<List<String>> list = new ArrayList<>();
+
+        list.addAll(scores);
+
+        for (int i = 0; i < list.size(); i++) {
+            for (int j = 0; j < list.size() - 1 - i; j++) {
+                if (list.get(j).get(1) == list.get(j + 1).get(1) && list.get(j).get(0).compareTo(list.get(j + 1).get(1)) > 0) {
+                    List<String> tmp = list.get(j);
+                    list.set(j, list.get(j + 1));
+                    list.set(j + 1, tmp);
+                }
+            }
+        }
+
+        for (int i = 0; i < list.size(); i++) {
+            result.add(list.get(i).get(0));
+        }
+
+        return result;
+    }
 }
