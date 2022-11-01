@@ -1,10 +1,11 @@
 package onboarding;
 
 import java.util.*;
+import java.util.Map.*;
 
 public class Problem7 {
     static List<String> userFriends = new ArrayList<>();
-    static HashMap<String, Integer> recommendedFriends = new HashMap<>();
+    static Map<String, Integer> recommendedFriends = new TreeMap<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> friendsList;
@@ -12,7 +13,6 @@ public class Problem7 {
             friendsList = friends.get(i);
             findUserFriend(friendsList, user);
         }
-        System.out.println(userFriends);
 
         for (int i = 0; i < friends.size(); i++) {
             friendsList = friends.get(i);
@@ -24,31 +24,38 @@ public class Problem7 {
             plusScore(friendsList);
         }
 
-        Iterator iterator = recommendedFriends.keySet().iterator();
-        while (iterator.hasNext()) {
-            String recommendFriend = (String) iterator.next();
-            if (visitors.contains(recommendFriend)) {
-                int score = recommendedFriends.get(recommendFriend);
-                recommendedFriends.put(recommendFriend, score + 1);
-            }
-        }
-
         for (int i = 0; i < visitors.size(); i++) {
             String visitor = visitors.get(i);
             if (!userFriends.contains(visitor)) {
                 plusVisitorScore(visitor);
             }
         }
-        System.out.println(recommendedFriends);
 
-        TopFiveRecommendedFriends();
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
+        sortRecommendedFriends(answer);
         return answer;
     }
 
-    private static void TopFiveRecommendedFriends() {
-        List<String> TopFiveScore = new ArrayList<>(recommendedFriends.keySet());
-        TopFiveScore.sort((s1,s2) -> recommendedFriends.get(s2).compareTo(recommendedFriends.get(s1)));
+    private static List sortRecommendedFriends(List<String> answer) {
+        List<Entry<String, Integer>> recommendedFriendsList = new ArrayList<>(recommendedFriends.entrySet());
+        Collections.sort(recommendedFriendsList, (o1, o2) -> o2.getValue().compareTo(o1.getValue()));
+        answer = topFiveRecommededFriends(recommendedFriendsList, answer);
+        return answer;
+    }
+
+    private static List<String> topFiveRecommededFriends(List<Entry<String, Integer>> recommendedFriendsList, List<String> answer) {
+        if (recommendedFriends.size() > 5) {
+            for (int i = 0; i < 5; i++) {
+                answer.add(recommendedFriendsList.get(i).getKey());
+            }
+            return answer;
+        }
+
+        for (int i = 0; i < recommendedFriends.size(); i++) {
+            answer.add(recommendedFriendsList.get(i).getKey());
+        }
+
+        return answer;
     }
 
     private static void plusVisitorScore(String visitor) {
