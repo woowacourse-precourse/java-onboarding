@@ -1,67 +1,35 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Problem5 {
     public static List<Integer> solution(int money) {
+        List<Integer> answer = calc(money);
+
+        return answer;
+    }
+
+    public static List<Integer> calc(int money) {
         List<Integer> result = new ArrayList<>();
-        if (money < 1 || money > 1000000)   return result;
-        if (money >= 50000) {
-            result.add(money / 50000);
-            money %= 50000;
-        } else {
-            result.add(0);
+
+        int[] unitArr = new int[9];
+
+        unitArr[0] = 50000;
+        unitArr[1] = 10000;
+        unitArr[2] = 5000;
+        unitArr[3] = 1000;
+        unitArr[4] = 500;
+        unitArr[5] = 100;
+        unitArr[6] = 50;
+        unitArr[7] = 10;
+        unitArr[8] = 1;
+
+        for (int index = 0; index < unitArr.length; index++) {
+            result.add(money / unitArr[index]);
+            money %= unitArr[index];
         }
-        if (money >= 10000) {
-            result.add(money / 10000);
-            money %= 10000;
-        } else {
-            result.add(0);
-        }
-        if (money >= 5000) {
-            result.add(money / 5000);
-            money %= 5000;
-        } else {
-            result.add(0);
-        }
-        if (money >= 1000) {
-            result.add(money / 1000);
-            money %= 1000;
-        } else {
-            result.add(0);
-        }
-        if (money >= 500) {
-            result.add(money / 500);
-            money %= 500;
-        } else {
-            result.add(0);
-        }
-        if (money >= 100) {
-            result.add(money / 100);
-            money %= 100;
-        } else {
-            result.add(0);
-        }
-        if (money >= 50) {
-            result.add(money / 50);
-            money %= 50;
-        } else {
-            result.add(0);
-        }
-        if (money >= 10) {
-            result.add(money / 10);
-            money %= 10;
-        } else {
-            result.add(0);
-        }
-        if (money >= 1) {
-            result.add(money / 1);
-            money %= 1;
-        } else {
-            result.add(0);
-        }
+
         return result;
     }
 }
