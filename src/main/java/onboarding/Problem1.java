@@ -68,7 +68,7 @@ class Problem1 {
     }
 
     private static int getScore(List<Integer> pages) {
-        int score = -1;
+        int score = Integer.MIN_VALUE;
 
         for (Integer page : pages) {
             int biggestValue = getBiggestValue(page);
