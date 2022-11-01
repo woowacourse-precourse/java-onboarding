@@ -23,6 +23,13 @@ public class Problem7 {
         friendsList.get(personB).add(personA);
     }
 
+    // otherUser에게 점수를 score만큼 더한다.
+    private static void addScore(String otherUser, String user, int score){
+        if (friendsList.get(user).contains(otherUser) || otherUser.equals(user)) return;
+
+        scores.put(otherUser, scores.getOrDefault(otherUser, 0) + score);
+    }
+
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
@@ -36,25 +43,18 @@ public class Problem7 {
             relateFriend(personA, personB);
         }
 
-
-        // 1. user의 친구들을 순회한다.
-        // 2. 그 친구의 친구인 nearFriend를 돌면서, nearFriend의 점수 += 10
+        // (user의 친구)의 친구인 nearFriend를 돈다.
         for (String userFriend : friendsList.get(user)) {
             for (String nearFriend : friendsList.get(userFriend)) {
-                // user와 친구거나, user 자체면 안된다.
-                if (friendsList.get(user).contains(nearFriend) || (user.equals(nearFriend))) continue;
-
                 // 10점을 더한다.
-                scores.put(nearFriend, scores.getOrDefault(nearFriend, 0) + 10);
+                addScore(nearFriend, user, 10);
             }
         }
 
         // visitors를 처리한다.
         for (String visitor : visitors) {
-            // user와 친구거나, user 자체면 안된다.
-            if (friendsList.get(user).contains(visitor) || (user.equals(visitor))) continue;
-
-            scores.put(visitor, scores.getOrDefault(visitor, 0) + 1);
+            // 1점을 더한다.
+            addScore(visitor, user, 1);
         }
 
         // 내림차순으로 정렬한다.
@@ -66,7 +66,6 @@ public class Problem7 {
                 return o1.compareTo(o2);
             return cmpVal;
         });
-
 
         // 최대 5개까지 빼서 반환한다.
         int len = Math.min(keySetList.size(), 5);
