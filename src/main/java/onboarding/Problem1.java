@@ -8,6 +8,18 @@ class Problem1 {
         return true;
     }
 
+    public static int getMax(int N) {
+        int sum = 0;
+        int mul = 1;
+
+        while (N > 0) {
+            sum += N % 10;
+            mul *= N % 10;
+            N /= 10;
+        }
+        return Math.max(sum, mul);
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
