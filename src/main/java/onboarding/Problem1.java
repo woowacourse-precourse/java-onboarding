@@ -20,6 +20,14 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+
+        // 1. 변수 초기화 부분
+        int leftPo, rightPo, leftCr, rightCr, maxPo, maxCr;
+        leftPo = pobi.get(0);
+        rightPo = pobi.get(1);
+        leftCr = crong.get(0);
+        rightCr = crong.get(1);
+
         return answer;
     }
 }
