@@ -28,7 +28,7 @@ public class Problem6 {
         String name = form.get(NAME_INDEX);
         String email = form.get(EMAIL_INDEX);
 
-        Set<String> nameTokens = getNameTokenWithSet(name);
+        Set<String> nameTokens = getNameTokens(name);
         for (String nameToken : nameTokens) {
             if (isNameDuplicate(nameTokenMap, nameToken)){
                 addDupNameList(dupNameLists, email);
@@ -56,7 +56,7 @@ public class Problem6 {
     }
 
     private static void setNameTokens(Map<String, Integer> nameTokenMap, String name) {
-        Set<String> nameTokens = getNameTokenWithSet(name);
+        Set<String> nameTokens = getNameTokens(name);
 
         for (String nameToken : nameTokens) {
             updateNameTokenCount(nameTokenMap, nameToken);
@@ -73,7 +73,7 @@ public class Problem6 {
         }
     }
 
-    private static Set<String> getNameTokenWithSet(String name){
+    private static Set<String> getNameTokens(String name){
         Set<String> nameTokens = new HashSet<>();
         for (int i = 0; i< name.length()-1; i++){
             nameTokens.add(name.charAt(i) + String.valueOf(name.charAt(i+1)));
