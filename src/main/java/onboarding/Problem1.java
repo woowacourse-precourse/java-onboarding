@@ -48,6 +48,7 @@ class Problem1 {
         return max;
     }
 
+    //계산하는 페이지
     private static int operatePage(int pageNumber, String operator) {
         int result = initNumber(operator);
 

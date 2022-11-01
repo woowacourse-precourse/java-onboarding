@@ -20,19 +20,21 @@ public class Problem4 {
             if (isNotAlphabetic(ch)) { // 알파벳이 아니라면, 그냥 반환
                 stringBuilder.append(ch);
             }
-            else { // 알파벳이라면 이제 매핑을 해야함
+            if (Character.isAlphabetic(ch)) { // 알파벳이라면 이제 매핑을 해야함
                 checkCase(stringBuilder, ch, reverseTable);
             }
+            // if ~ else로 가야할 지, if if로 가야할지 기준이 서지 않는다.
+            // 하지만 if if문이 코드를 보다 직관적으로 이해할 수 있어서 이걸 선택했다.
         }
 
         return stringBuilder.toString();
     }
 
     private static void checkCase(StringBuilder sb, char ch, Map<Character, Character> reverseTable) {
-        if (isUpperCase(ch)) {
+        if (Character.isUpperCase(ch)) {
             sb.append(reverseTable.get(ch));
         }
-        else {
+        if (Character.isLowerCase(ch)) {
             char upper_ch = Character.toUpperCase(ch);
             sb.append(Character.toLowerCase(reverseTable.get(upper_ch)));
         }
@@ -50,12 +52,6 @@ public class Problem4 {
         return reverseTable;
     }
 
-    private static boolean isUpperCase(char character) {
-        if (Character.isUpperCase(character)) {
-            return true;
-        }
-        return false;
-    }
     private static boolean isNotAlphabetic(char character) {
         return !Character.isAlphabetic(character);
     }

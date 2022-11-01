@@ -15,6 +15,7 @@ public class Problem6 {
         return duplicatedNicknameList;
     }
 
+    //중복된 닉네임을 가진 멤버의 이메일 리스트 반환
     private static List<String> findDuplicatedNickname(List<List<String>> forms, List<String> duplicatedTable) {
         List<String> list = new ArrayList<>();
 
@@ -27,6 +28,7 @@ public class Problem6 {
                 .collect(Collectors.toList());
     }
 
+    //멤버리스트 중에서 중복된 테이블의 단어가 있는지 확인
     private static void checkingNickname(List<String> form, List<String> duplicatedTable, List<String> list) {
         for (String duplicatedWord : duplicatedTable) {
             if (form.get(1).contains(duplicatedWord)) {
@@ -35,6 +37,7 @@ public class Problem6 {
         }
     }
 
+    //연속된 2글자들 중 두 개 이상 있는 것은 중복이기에 List로 따로 추출하는 메소드
     private static List<String> createDuplicatedTable(Map<String, Integer> checkMap) {
         List<String> duplicateList = new ArrayList<>();
         for (String twoWord : checkMap.keySet()) {
@@ -45,6 +48,7 @@ public class Problem6 {
         return duplicateList;
     }
 
+    //연속된 2글자의 모든 가지 수 맵
     private static Map<String, Integer> createCheckMap(List<List<String>> forms) {
         Map<String, Integer> checkMap = new HashMap<>();
 
@@ -63,6 +67,7 @@ public class Problem6 {
         }
     }
 
+    //제한 사항에 맞는지 확인하는 메소드(이메일 체크 + 닉네임 체크)
     private static List<List<String>> getAvailableForm(List<List<String>> forms) {
         List<List<String>> list = new ArrayList<>();
         for (List<String> form : forms) {

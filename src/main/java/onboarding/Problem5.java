@@ -19,7 +19,7 @@ public class Problem5 {
 
     public static List<Integer> solution(int money) {
 
-
+        //5000 ~ 1원까지 담은 list
         List<Integer> moneyValues = List.of(MONEY_50000, MONEY_10000, MONEY_5000,
                                             MONEY_1000, MONEY_500, MONEY_100,
                                             MONEY_50, MONEY_10, MONEY_1);
@@ -35,7 +35,7 @@ public class Problem5 {
         }
 
         List<Integer> resultList = Arrays.stream(resultArr)
-                .boxed()
+                .boxed() //int는 담을 수가 없어서 Boxing
                 .collect(Collectors.toList());
 
         return resultList;
