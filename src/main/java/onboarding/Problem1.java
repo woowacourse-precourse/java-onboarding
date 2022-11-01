@@ -20,6 +20,7 @@ class Problem1 {
         return 0;
     }
 
+    // 입력으로 받은 값의 검증 메서드
     public static boolean checkValue(List<Integer> list) {
 
         int left = list.get(0);
@@ -39,6 +40,8 @@ class Problem1 {
         }
         return false;
     }
+
+    // value 자릿수의 덧셈, 곱셈중 큰 값을 반환
     public static int calcMax(int value) {
 
         int valueSum = 0;

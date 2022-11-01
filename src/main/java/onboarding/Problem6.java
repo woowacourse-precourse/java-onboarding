@@ -61,6 +61,7 @@ public class Problem6 {
         return table;
     }
 
+    // KMP 알고리즘 메서드
     static boolean KMP(String parent, String pattern) {
         int[] table = makeTable(pattern);
 

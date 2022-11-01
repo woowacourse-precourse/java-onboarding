@@ -16,6 +16,8 @@ public class Problem3 {
         return tot;
     }
 
+    // 3 6 9 규칙에 따라 tot를 증가시키는 메서드
+
     private static int plusTot(int tot, int tmp) {
         if (tmp == 3 || tmp == 6 || tmp == 9) {
             tot++;

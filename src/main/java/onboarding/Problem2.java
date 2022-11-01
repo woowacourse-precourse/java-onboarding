@@ -1,6 +1,7 @@
 package onboarding;
 
 public class Problem2 {
+
     public static String solution(String cryptogram) {
         StringBuilder input = new StringBuilder(cryptogram);
         boolean chk = true;
@@ -11,6 +12,8 @@ public class Problem2 {
         return cryptogram;
     }
 
+
+    // 문자열에서 연속되는 문자를 삭제하는 메서드
     private static boolean checkDuplicatedAndDelete(StringBuilder input) {
         boolean chk = false;
         for (int i = 0; i < input.length() - 1; i++) {

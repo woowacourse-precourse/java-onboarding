@@ -11,7 +11,8 @@ public class Problem5 {
         calcMoneyNum(money, output, arr);
         return output;
     }
-    
+
+    // 지폐 갯수를 계산하는 메서드
     private static void calcMoneyNum(int money, List<Integer> output, int[] arr) {
         for (int j : arr) {
             output.add(money / j);
