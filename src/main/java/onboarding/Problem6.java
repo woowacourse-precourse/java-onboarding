@@ -11,10 +11,12 @@ public class Problem6 {
         answer = new ArrayList<>();
         List<String> nicknameList = new ArrayList<>();
         HashMap<String,Integer> nicknamePatternMap = new HashMap<>();
+        HashSet <String> answerHashSet = new HashSet<>();
 
         makeNickNameList(forms,nicknameList);
         savePatternAtMap(nicknameList,nicknamePatternMap);
         checkDuplication(nicknameList,nicknamePatternMap);
+        addAnswer(nicknameList,nicknamePatternMap,answerHashSet,forms);
 
         return answer;
     }
@@ -50,4 +52,24 @@ public class Problem6 {
             }
         }
     }
+
+    //value를 기준으로 중복되는 패턴을 갖는 사람들의 이메일 저장
+    public static void addAnswer(List <String> nickname,HashMap <String,Integer> nicknamePattern,HashSet <String> answerHashSet,List<List<String>> forms){
+        String key ="";
+        int value = 0;
+
+        for(int i = 0 ; i < nickname.size(); i++){
+            for(int j = 0 ; j < nickname.get(i).length()-1; j++){
+                key = nickname.get(i).substring(j,j+2);
+                value = nicknamePattern.get(key);
+
+                if(value > 1){
+                    answerHashSet.add(forms.get(i).get(0));
+                }
+            }
+        }
+    }
+
+
+
 }
