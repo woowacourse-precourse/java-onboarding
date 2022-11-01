@@ -13,7 +13,8 @@ class Problem1 {
         int p = Math.max(getAddedSum(p1, p2), getMultipliedSum(p1, p2));
         int c = Math.max(getAddedSum(c1, c2), getMultipliedSum(c1, c2));
 
-
+        if ( didCrongWin(p, c) ) return 2;
+        if ( didPobiWin(p, c) ) return 1;
         return 0;
     }
     static boolean isException (int n, int m) {
@@ -45,5 +46,12 @@ class Problem1 {
     }
     static boolean isOverZero (int n) {
         return n > 0;
+    }
+    static boolean didCrongWin (int n, int m) {
+        return m > n;
+    }
+
+    static boolean didPobiWin (int n, int m) {
+        return n > m;
     }
 }
