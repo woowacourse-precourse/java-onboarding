@@ -29,7 +29,7 @@
 - (1) String을 StringBuilder로 변환하는 기능
 
   ```java
-  private static StringBuilder toStringBuilder(String crpytogram)
+  private static StringBuilder toStringBuilder(String cryptogram)
   ```
 
 - (2) 중복 체크 기능
@@ -57,7 +57,7 @@
 - (5) 중복 문자 제거 기능
 
   ```java
-  public static StringBuilder removeDuplicate(StringBuilder crpytogram, int start, int range)
+  public static void removeDuplicate(StringBuilder cryptogram, int start, int range)
   ```
 
 - (6) 암호 해독 기능
@@ -66,7 +66,7 @@
   public static void decrypt(StringBuilder stringBuilderCryptogram)
   ```
 
-  - (2), (3), (4) 기능을 이용해 암호 해독
+  - (2), (4), (5) 기능을 이용해 암호 해독
 
 - (7) 암호 해독이 완료된 평서문을 얻는 기능
 
@@ -74,7 +74,7 @@
   public static StringBuilder getPlainText(String cryptogram)
   ```
 
-  - (6) 기능을 이용
+  - (3), (6) 기능을 이용
 
 - (8) StringBuilder를 String로 변환하는 기능
 
