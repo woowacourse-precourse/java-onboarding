@@ -31,4 +31,27 @@ public class Problem7 {
 
         return friendMap;
     }
+
+    private static Map<String, Integer> getBothKnownCount(String user, Map<String, List<String>> friendMap) {
+        List<String> userFriends = friendMap.getOrDefault(user, new ArrayList<>());
+        List<String> friendList;
+        Integer count;
+
+        Map<String, Integer> bothKnownCount = new HashMap<>();
+
+        for (String userFriend : userFriends) {
+            friendList = friendMap.getOrDefault(userFriend, new ArrayList<>());
+
+            for (String friend : friendList) {
+                if (friend.equals(user) || userFriends.contains(friend)) {
+                    continue;
+                }
+
+                count = bothKnownCount.getOrDefault(friend, 0);
+                bothKnownCount.put(friend, count + 1);
+            }
+        }
+
+        return bothKnownCount;
+    }
 }
