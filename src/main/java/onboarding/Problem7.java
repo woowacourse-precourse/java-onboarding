@@ -71,12 +71,19 @@ public class Problem7 {
         }
     }
 
+    public static void addVisitorScore(List<String> visitors, Map<String, Integer> friendScoreMap) {
+        for (String visitor : visitors) {
+            friendScoreMap.put(visitor, friendScoreMap.get(visitor) + 1);
+        }
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
 
         Map<String, Integer> friendScoreMap = initScoreMap(user, friends, visitors);
         List<String> userFriends = getUserFriends(friends, user);
         addScoreByFriend(user, friends, userFriends, friendScoreMap);
+        addVisitorScore(visitors, friendScoreMap);
         return answer;
     }
 
