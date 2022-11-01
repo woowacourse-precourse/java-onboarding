@@ -3,12 +3,14 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 public class Problem7 {
+
+    public static final int FIRST_FRIEND = 0;
+    public static final int SECOND_FRIEND = 1;
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
 
@@ -16,29 +18,8 @@ public class Problem7 {
             return answer = List.of("Check Restrictions");
         }
 
-        HashMap<String, Integer> friendMap = getTotalUser(friends);
-
-        Set<String> friendNameSet = friendMap.keySet();
-        List<String> friendNameList = new ArrayList<>();
-        Iterator<String> iterator = friendNameSet.iterator();
-        while (iterator.hasNext()) {
-            friendNameList.add(iterator.next());
-        }
-
-        int[][] matrix = fillMatrixByFriend(friends, friendNameList);
-
-        int userIndex = friendNameList.indexOf(user);
-        List<Integer> userFriendIndexes = getUserFriendIndexes(matrix, userIndex);
-        List<String> userFriendList = changeIndexesToName(userFriendIndexes, friendNameList);
-
-        List<Integer> matchFriendIndexes = matchFriendList(matrix, userFriendIndexes);
-        List<String> matchFriendString = changeIndexesToName(matchFriendIndexes, friendNameList);
-
-        friendMap = giveTenPoint(matchFriendString, friendMap);
-        friendMap = giveOnePoint(visitors, friendMap);
-        friendMap = deleteUserAndUserFriend(friendMap, userFriendList, user);
-
-        answer = sortByScoreAndName(friendMap);
+        User target = new User(user, friends, visitors);
+        target.setUserFriends();
 
         if (answer.size() > 5) {
             answer = answer.subList(0, 5);
@@ -83,50 +64,43 @@ public class Problem7 {
 
     public static boolean verificationCheckAboutID(String id) {
         String isLowerAlphaRegex = "^[a-z]*$";
-        if(!id.matches(isLowerAlphaRegex)) {
+        if (!id.matches(isLowerAlphaRegex)) {
             return false;
         }
-        if(id.length() < 1 || id.length() > 30) {
+        if (id.length() < 1 || id.length() > 30) {
             return false;
         }
         return true;
     }
 
-    public static HashMap<String, Integer> getTotalUser(List<List<String>> friends) {
-        HashMap<String, Integer> userList = new HashMap<>();
+    public static class User {
+        String user;
+        List<List<String>> friends;
+        List<String> visitors;
+        List<String> userFriends;
 
-        for (List<String> friend : friends) {
-            userList.put(friend.get(0), 0);
-            userList.put(friend.get(1), 0);
+        User(String user, List<List<String>> friends, List<String> visitors) {
+            this.user = user;
+            this.friends = friends;
+            this.visitors = visitors;
         }
 
-        return userList;
-    }
+        private void setUserFriends() {
+            userFriends = new ArrayList<>();
 
-    public static int[][] fillMatrixByFriend(List<List<String>> friends, List<String> friendNameList) {
-        int[][] matrix = new int[friendNameList.size()][friendNameList.size()];
+            for (List<String> friend : friends) {
+                String firstFriend = friend.get(FIRST_FRIEND);
+                String secondFriend = friend.get(SECOND_FRIEND);
 
-        for (List<String> friend : friends) {
-            int x = friendNameList.indexOf(friend.get(0));
-            int y = friendNameList.indexOf(friend.get(1));
-
-            matrix[x][y] = 1;
-            matrix[y][x] = 1;
-        }
-
-        return matrix;
-    }
-
-    public static List<Integer> getUserFriendIndexes(int[][] matrix, int userIndex) {
-        List<Integer> friendIndexes = new ArrayList<>();
-
-        for (int i = 0; i < matrix.length; i++) {
-            if (matrix[userIndex][i] == 1) {
-                friendIndexes.add(i);
+                if (firstFriend.equals(user)) {
+                    userFriends.add(secondFriend);
+                    continue;
+                }
+                if (secondFriend.equals(user)) {
+                    userFriends.add(firstFriend);
+                }
             }
         }
-
-        return friendIndexes;
     }
 
     public static List<Integer> matchFriendList(int[][] matrix, List<Integer> friendIndexes) {
