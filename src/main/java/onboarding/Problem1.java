@@ -24,5 +24,14 @@ class Problem1 {
         return sumResult;
     }
 
+    public static int getMultiplyPage(int page) {
+        int multiplyResult = 1;
+        String pages = Integer.toString(page);
+        for (int i = 0; i < pages.length(); i++) {
+            multiplyResult *= (pages.charAt(i) - '0');
+        }
+        return multiplyResult;
+    }
+
 
 }
