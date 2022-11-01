@@ -61,24 +61,22 @@ public class Problem7 {
         Map<String, Integer> score = new HashMap<>();
         List<String> userFriends = findUserFriends(user, friends);
 
-        for (List i : friends) {
-            if (!i.contains(user)) {
-                if (userFriends.contains(i.get(0)) && !userFriends.contains(i.get(1))) {
-                    if (!score.containsKey(i.get(1))) {
-                        score.put((String) i.get(1), 0);
-                    }
-                    score.put((String) i.get(1), score.get(i.get(1)) + 10);
-                }
-                if (userFriends.contains(i.get(1)) && !userFriends.contains(i.get(0))) {
-                    if (!score.containsKey(i.get(0))) {
-                        score.put((String) i.get(0), 0);
-                    }
-                    score.put((String) i.get(0), score.get(i.get(0)) + 10);
-                }
+        for (List friend : friends) {
+            if (!friend.contains(user)) {
+                checkEachSide(score, userFriends, friend, 0, 1);
+                checkEachSide(score, userFriends, friend, 1, 0);
             }
-
         }
         return score;
+    }
+
+    private static void checkEachSide(Map<String, Integer> score, List<String> userFriends, List friend, int left, int right) {
+        if (userFriends.contains(friend.get(left)) && !userFriends.contains(friend.get(right))) {
+            if (!score.containsKey(friend.get(right))) {
+                score.put((String) friend.get(right), 0);
+            }
+            score.put((String) friend.get(right), score.get(friend.get(right)) + 10);
+        }
     }
 
     private static List<String> findUserFriends(String user, List<List<String>> friends) {
