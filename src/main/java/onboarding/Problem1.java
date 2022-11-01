@@ -39,9 +39,7 @@ class Problem1 {
             rightPage /= 10;
         }
 
-        if (leftSum >= rightSum)
-            return leftSum;
-        return rightSum;
+        return (leftSum >= rightSum)? leftSum : rightSum;
     }
 
     public static int mulPages(int leftPage, int rightPage) {
@@ -57,9 +55,7 @@ class Problem1 {
             rightPage /= 10;
         }
 
-        if (leftMul >= rightMul)
-            return leftMul;
-        return rightMul;
+        return (leftMul >= rightMul)? leftMul : rightMul;
     }
 
     public static int compareBoth(List<Integer> pages) {
@@ -69,9 +65,7 @@ class Problem1 {
         int addVal = addPages(leftPage, rightPage);
         int mulVal = mulPages(leftPage, rightPage);
 
-        if (addVal >= mulVal)
-            return addVal;
-        return mulVal;
+        return (addVal >= mulVal)? addVal : mulVal;
     }
 
     public static int getResultOfPageGame(List<Integer> pobi, List<Integer> crong) {
@@ -81,8 +75,7 @@ class Problem1 {
 
         if (pobiMaxVal > crongMaxVal) return 1;
         if (pobiMaxVal == crongMaxVal) return 0;
-        if (pobiMaxVal < crongMaxVal) return 2;
+        return 2;
 
-        return -1;
     }
 }
