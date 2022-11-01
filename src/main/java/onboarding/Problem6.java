@@ -37,6 +37,12 @@ public class Problem6 {
             length = forms_list.size();
         }
 
+        for (int i = 0; i < forms.size(); i++) {
+            if (! forms_list.contains(forms.get(i))) answer.add(forms.get(i).get(0));
+        }
+
+        answer.sort(Comparator.naturalOrder());
+
         return answer;
     }
 
