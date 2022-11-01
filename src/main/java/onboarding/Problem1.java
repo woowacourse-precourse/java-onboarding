@@ -13,6 +13,17 @@ class Problem1 {
         return answer;
     }
 
+    private static boolean checkException(List<Integer> pages) {
+        int leftPage = pages.get(0);
+        int rightPage = pages.get(1);
+
+        if (leftPage + 1 != rightPage) {
+            return true;
+        }
+
+        return false;
+    }
+
     private static int compareToScore(int pobisResult, int crongsResult) {
         if (pobisResult == crongsResult) {
             return DRAW;
