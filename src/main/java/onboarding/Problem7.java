@@ -39,13 +39,6 @@ public class Problem7 {
         return friendScore.getOrDefault(visitor, 0) + 1;
     }
 
-    /**
-     * 주어진 친구 정보로 친구관계를 표현한 HashMap을 생성하는 메서드
-     * 해쉬맵은 친구 이름을 key로, 친구관계인 친구들의 정보를 가진 HashSet 을 value 로 가짐
-     *
-     * @param friends 친구 정보
-     * @return 친구 정보를 담은 HashMap
-     */
     public static Map<String, HashSet<String>> makeMap(List<List<String>> friends, String user) {
 
         Map<String, HashSet<String>> friendMap = new HashMap<>();
@@ -84,14 +77,6 @@ public class Problem7 {
         return friendScore;
     }
 
-    /**
-     * 친구관계를 표현한 HashMap에 있는 정보를 가지고 추천친구의 점수를 구하는 메서드
-     *
-     * @param friendB user와 비교할 친구
-     * @param user    주어진 user
-     * @param friendMap 친구관계를 표현한 HashMap
-     * @return 친구추천 점수
-     */
     public static int calculateScore(String friendB, String user, Map<String, HashSet<String>> friendMap) {
 
         int score = 0;

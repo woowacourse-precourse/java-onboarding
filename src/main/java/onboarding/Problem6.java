@@ -10,10 +10,12 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
 
         List<String> answer = new ArrayList<>();
-        HashMap<String, List<String>> fragmentMap = makeMap(forms);
+        HashMap<String, List<String>> fragmentMap = new HashMap<>();
+        fragmentMap =  makeMap(forms);
 
         for (String fragment : fragmentMap.keySet()) {
             List<String> emailList = fragmentMap.get(fragment);
+
             if (emailList.size() >= 2) {
                 for (int i = 0; i < emailList.size(); i++) {
                     if (!answer.contains(emailList.get(i))) {
@@ -27,11 +29,6 @@ public class Problem6 {
         return answer;
     }
 
-    /**
-     * 이름에서 중복되는 이름 조각을 key로 이메일을 value 로 가지는 fragmentMap 을 생성하는 메서드
-     *
-     * @param forms 이름과 이메일이 담긴 리스트
-     */
     public static HashMap<String, List<String>> makeMap(List<List<String>> forms) {
 
         HashMap<String, List<String>> fragmentMap = new HashMap<>();
