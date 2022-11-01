@@ -82,6 +82,7 @@ public class Problem6 {
     }
 
     private static boolean isContainsSameWord(String nickname1, String nickname2, int i, int j) {
+        return nickname2.contains(nickname1.substring(i, j+1));
     }
 
 }
