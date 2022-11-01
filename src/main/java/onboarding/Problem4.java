@@ -1,24 +1,19 @@
 package onboarding;
 
 public class Problem4 {
-    public static char changeChar(char c, String alphabets) {
-        int charIndex = alphabets.indexOf(c);
-        int changeCharIndex = alphabets.length() - 1 - charIndex;
-
-        return alphabets.charAt(changeCharIndex);
-    }
     public static String solution(String word) {
         StringBuilder answer = new StringBuilder();
-
         for (int index = 0; index < word.length(); index++) {
-            char originChar = word.charAt(index);
-            char newChar = originChar;
-
-            if (Character.isUpperCase(originChar))
-                newChar = changeChar(originChar, "ABCDEFGHIJKLMNOPQRSTUVWXYZ");
-            else if (Character.isLowerCase(originChar))
-                newChar = changeChar(originChar, "abcdefghijklmnopqrstuvwxyz");
-            answer.append(newChar);
+            int indexChar = word.charAt(index);
+            if (indexChar >= 65 && indexChar <= 77)
+                indexChar = 90 - (indexChar - 65);
+            else if (indexChar >= 78 && indexChar <= 90)
+                indexChar = 65 + (90 - indexChar);
+            else if (indexChar >= 97 && indexChar <= 109)
+                indexChar = 122 - (indexChar - 97);
+            else if (indexChar >= 110 && indexChar <= 122)
+                indexChar = 97 + (122 - indexChar);
+            answer.append((char)indexChar);
         }
         return answer.toString();
     }
