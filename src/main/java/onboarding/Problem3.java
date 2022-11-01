@@ -6,7 +6,14 @@ public class Problem3 {
 
     public static int solution(int number) {
 
+        int[] crap_count = new int[number+1];
+        crap_count[0] = 0;
 
+        for (int i=1; i <= number; i++) {
+            crap_count[i] = crap_count[i-1] + calculate_clap_count(i);
+        }
+
+        return crap_count[number];
     }
 
     public static int calculate_clap_count(int number){
