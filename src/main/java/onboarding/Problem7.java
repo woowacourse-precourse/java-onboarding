@@ -6,10 +6,15 @@ import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        if (violateId(user)) return Collections.emptyList();
-        if (violateFriends(friends)) return Collections.emptyList();
-        if (violateVisitors(visitors)) return Collections.emptyList();
+        final List<String> ERROR = Collections.emptyList();
+        if (violateId(user)) return ERROR;
+        if (violateFriends(friends)) return ERROR;
+        if (violateVisitors(visitors)) return ERROR;
 
+        return recommendList(score(user, friends, visitors));
+    }
+
+    static Map<String, Integer> score(String user, List<List<String>> friends, List<String> visitors) {
         Map<String, Integer> score = new HashMap<>();
         Map<String, Set<String>> friendMap = setFriendMap(friends);
         Set<String> myFriends = friendMap.getOrDefault(user, new HashSet<>());
@@ -25,7 +30,10 @@ public class Problem7 {
             if (myFriends.contains(visitor)) continue;
             score.put(visitor, score.getOrDefault(visitor, 0) + 1);
         }
+        return score;
+    }
 
+    static List<String> recommendList(Map<String, Integer> score) {
         return score.keySet()
                 .stream()
                 .sorted((o1, o2) -> {
