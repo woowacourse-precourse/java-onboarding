@@ -1,6 +1,8 @@
 package onboarding;
 
 import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 
 public class Problem6 {
@@ -8,6 +10,7 @@ public class Problem6 {
         List<String> answer = List.of("answer");
 
         HashMap<String, Integer> letters = makeLetter(forms);
+        HashSet<String> email = getDuplicate(forms, letters);
 
         return answer;
     }
@@ -22,5 +25,15 @@ public class Problem6 {
             }
         }
         return letters;
+    }
+
+    private static HashSet<String> getDuplicate(List<List<String>> forms, HashMap<String, Integer> letters) {
+        HashSet<String> email = new HashSet<>();
+        Iterator<String> iterator = letters.keySet().iterator();
+        while (iterator.hasNext()) {
+            String letter = iterator.next();
+            addEmail(forms, letters, email, letter);
+        }
+        return email;
     }
 }
