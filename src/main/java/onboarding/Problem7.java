@@ -8,7 +8,6 @@ public class Problem7 {
         HashMap<String, User> userTable = friendsToTable(friends);
         HashMap<String, Integer> recomendTable = new HashMap<String, Integer>();
 
-
         // 방문자에게 점수 부여
         for(String v : visitors) {
             recomendTable.putIfAbsent(v, 0);  // map에 없는 유저를 등록
