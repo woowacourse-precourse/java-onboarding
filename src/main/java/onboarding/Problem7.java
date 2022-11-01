@@ -3,16 +3,23 @@ package onboarding;
 import java.util.*;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 import static java.util.Map.*;
 import static java.util.stream.Collectors.toMap;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+
         Map<String, List<String>> relationMap = createRelationMap(friends);
         Map<String, Integer> pointMap = createPointMap(user, relationMap, visitors);
 
-        return answer;
+        return pointMap.entrySet()
+                       .stream()
+                       .sorted(Entry.comparingByKey())
+                       .sorted(Entry.comparingByValue(Comparator.reverseOrder()))
+                       .map(Entry::getKey)
+                       .collect(Collectors.toList());
     }
 
     public static Map<String, List<String>> createRelationMap(List<List<String>> friends) {
@@ -64,11 +71,6 @@ public class Problem7 {
             pointMap.put(visitor, 1);
         }
 
-    }
-
-    private static boolean hasAnyUserFriend(List<String> userFriendList, List<String> userRelationList) {
-        return userRelationList.stream()
-                               .anyMatch(userFriendList::contains);
     }
 
     private static Integer countMatchesFriend(List<String> userFriendList, List<String> userRelationList) {
