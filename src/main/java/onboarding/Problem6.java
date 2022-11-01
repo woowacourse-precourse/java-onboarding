@@ -5,10 +5,17 @@ import java.util.List;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+
+
+        boolean[] chk = new boolean[forms.size()];
+        calcChk(forms, chk);
+//        System.out.println(Arrays.toString(chk));
+        List<String> output = calcOutput(forms, chk);
+        output.sort(String::compareTo);
+
+        return output;
     }
-    
+
     // chk 배열을 이용해서 중복 닉네임을 가진 크루의 이메일 을 List에 저장
     private static List<String> calcOutput(List<List<String>> forms, boolean[] chk) {
         List<String> output = new ArrayList<>();
