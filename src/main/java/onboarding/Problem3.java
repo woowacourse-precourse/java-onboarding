@@ -8,7 +8,6 @@ public class Problem3 {
             String numToStr = Integer.toString(i);
             answer += numToStr.length() - numToStr.replace("3","").replace("6","").replace("9","").length();
         }
-        System.out.println(answer);
         return answer;
     }
 }
