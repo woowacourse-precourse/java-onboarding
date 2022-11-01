@@ -12,14 +12,31 @@ public class Crew {
   private List<String> matchNameList;
 
   private Crew(String crewEmail, String crewNickName) {
-    email.from(crewEmail);
-    nickName.from(crewNickName);
+    this.email = Email.from(crewEmail);
+    this.nickName = NickName.from(crewNickName);
     matchNameList = new ArrayList<>();
     matchNameList = GenerateReduplicateList.generate(nickName.currentName());
   }
 
   public static Crew of(List<String> crewForm) {
     return new Crew(crewForm.get(0), crewForm.get(1));
+  }
+
+  public String currentEmailAddress() {
+    return email.currentEmail();
+  }
+
+  public List<String> currentCrewMatchNameList() {
+    return matchNameList;
+  }
+
+  public boolean compareCrewName(Crew crew) {
+    for (String nameList : matchNameList) {
+      if (crew.nickName.currentName().contains(nameList)) {
+        return true;
+      }
+    }
+    return false;
   }
 
   @Override
