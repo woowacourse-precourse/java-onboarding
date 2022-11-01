@@ -49,4 +49,12 @@ public class Problem6 {
         }
         return list;
     }
+
+    private static List<String> getDuplicatedNicknameList(List<String> duplicatedList, List<List<String>> forms) {
+        ArrayList<String> answer = new ArrayList<>();
+        for (String item : duplicatedList) {
+            answer.addAll(getDuplicatedNickname(forms, item));
+        }
+        return answer;
+    }
 }
