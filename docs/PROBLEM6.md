@@ -1,3 +1,29 @@
+###Process
+1. 연속된 닉네임의 두글자 조합에 대한 닉네임의 부분 문자열을 생성하고 모든 닉네임의 부분 문자열과 비교한다.
+2. 한글자 닉네임이라면 중복을 확인한다.
+3. 검사에 통과하고 남은 닉네임에 대해 다른 조합으로 다시 검색한다
+4. 모든 닉네임에 대해 1~3 과정을 반복한다.
+5. 결과 반환
+
+###기능
+####연속된 닉네임의 두글자 조합에 대한 닉네임의 부분 문자열을 생성하고 모든 닉네임의 부분 문자열과 비교한다., 검사에 통과하고 남은 닉네임에 대해 다른 조합으로 다시 검색한다
+`List<Integer> checkOverlapUserCycle(int nicknameIndex, List<List<String>> forms)`
+- 입력 닉네임에 대해 중복 체크 후 닉네임 중복유저 리스트를 반환하는 사이클
+
+`List<String> makeSubstringCombination(String nickname)`
+- 입력 닉네임에 대하여 모든 부분문자열 조합의 경우의 수를 리스트로 반환
+
+`List<Integer> findOverlabUserIndexList(String subStringNickname, List<List<String>> forms)`
+- 모든 닉네임에 대하여 부분문자열이 중복되는 유저의 인덱스를 반환한다
+
+####모든 닉네임에 대해 1~3 과정을 반복한다.
+`void checkOverlapUser()`
+- 닉네임 중복 검사 시작
+
+###결과 반환
+`List<String> getOverlabUserEmailByIndex(List<Integer> overlabUserIndexList, List<List<String>> forms)`
+- 중복유저 인덱스로 forms에서 중복유저 정보를 찾아 중복유저 이메일 리스트를 만들어 반환한다
+------------------------------
 ## 🚀 기능 요구 사항
 
 우아한테크코스에서는 교육생(이하 크루) 간 소통 시 닉네임을 사용한다. 간혹 비슷한 닉네임을 정하는 경우가 있는데, 이러할 경우 소통할 때 혼란을 불러일으킬 수 있다.
