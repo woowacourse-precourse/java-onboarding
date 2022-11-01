@@ -27,6 +27,11 @@ public class Problem7 {
         return sortRecommendPoint(point);
     }
 
+    /**
+     * 제한조건에 맞게 결과 처리
+     * @param caculatedPoint
+     * @return
+     */
     private static List<String> sortRecommendPoint(Map<String, Integer> caculatedPoint) {
         List<String> keySet = new ArrayList<>(caculatedPoint.keySet());
         keySet.sort((o1, o2) -> caculatedPoint.get(o2).compareTo(caculatedPoint.get(o1)));
@@ -34,6 +39,13 @@ public class Problem7 {
         return keySet;
     }
 
+    /**
+     * 함께아는 친구 정보와 방문자 수를 통해 점수 도출
+     * @param knownFriendList
+     * @param visitors
+     * @param friend
+     * @return
+     */
     private static Map<String, Integer> calculateRecommendPoint(List<String> knownFriendList, List<String> visitors, List<String> friend){
         Map<String, Integer> point = new TreeMap<>();
 
@@ -59,6 +71,12 @@ public class Problem7 {
         return point;
     }
 
+    /**
+     * 친구 관계 그래프 만들기 <br/>
+     * - 인접 행렬을 통해 구현
+     * @param friends
+     * @return
+     */
     private static Map<String, ArrayList<String>> makeFriendGraph(List<List<String>> friends) {
         Map<String, ArrayList<String>> graph = new HashMap();
 
@@ -88,6 +106,16 @@ public class Problem7 {
         return graph;
     }
 
+    /**
+     * BST를 통해 함꼐아는 친구 및 친구 리스트를 만듬
+     * @param user
+     * @param currentVertex
+     * @param currentLevelTargets
+     * @param nextLevelTargets
+     * @param visited
+     * @param currentLevel
+     * @return List.get(0)은 친구, List.get(1)은 함께 아는 친구
+     */
     private static List<List<String>> searchFriendAndKnownFriendListByBst(String user, String currentVertex, Queue<String> currentLevelTargets,
                                        Queue<String> nextLevelTargets, List<String> visited, int currentLevel){
 
