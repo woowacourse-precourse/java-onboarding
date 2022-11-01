@@ -32,7 +32,17 @@ public class Problem7 {
     static void isAlreadyFriend(List<String> list, String friend, Set<String> friendSet, String user, HashMap<String, Integer> recommend) {
         if (list.contains(friend)) {
             for (int i=0; i<list.size(); i++) {
-                
+                setScore(friendSet, list.get(i), user, recommend, 10);
+            }
+        }
+    }
+
+    static void setScore(Set<String> friendSet, String id, String userId, HashMap<String, Integer> recommend, int score) {
+        if (!friendSet.contains(id) && !id.equals(userId)) {
+            if (recommend.containsKey(id)){
+                recommend.put(id, recommend.get(id)+score);
+            } else {
+                recommend.put(id, score);
             }
         }
     }
