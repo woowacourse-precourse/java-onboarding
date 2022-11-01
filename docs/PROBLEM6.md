@@ -21,3 +21,9 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+
+### 기능 요구 사항
+1. 문자열을 2개씩 나누어 2자리 문자를 key, 해당 인덱스를 list로 하는 해쉬맵 생성
+2. 인덱스 list의 사이즈가 2개 이상인(중복된 닉네임) 인덱스가 들어있는 해쉬셋 생성
+3. 결론 도출하기

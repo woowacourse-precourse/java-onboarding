@@ -24,3 +24,9 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+
+### 기능 요구 사항
+1. 친구 관계를 표시할 해쉬맵 만들기
+2. 친구 관계 점수 추가하기, 방문자 점수 추가하기
+3. 결론 도출하기
