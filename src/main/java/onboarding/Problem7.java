@@ -48,4 +48,14 @@ public class Problem7 {
         }
         return friendList;
     }
+
+    public static List<String> recommendation(Map<String, Integer> users) {
+        List<String> recommendation = new ArrayList<>();
+        List<Map.Entry<String, Integer>> sortedList = new ArrayList<>(users.entrySet());
+        sortedList.sort(Map.Entry.<String, Integer>comparingByValue().reversed());
+        for (int i = 0; (i < 5) && (i < sortedList.size()); i++) {
+            recommendation.add(sortedList.get(i).getKey());
+        }
+        return recommendation;
+    }
 }
