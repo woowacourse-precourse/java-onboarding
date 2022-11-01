@@ -6,8 +6,10 @@ import java.util.List;
 public class Counter {
 
 	public int countTotal369(int number) {
+		validateInputNumber(number);
+
 		int result = 0;
-		for(int i = 1; i <= number; i++) {
+		for (int i = 1; i <= number; i++) {
 			result += count369(i);
 		}
 		return result;
@@ -28,5 +30,11 @@ public class Counter {
 			}
 		}
 		return result;
+	}
+
+	private void validateInputNumber(int number) {
+		if (number < 1 || number > 10000) {
+			throw new RuntimeException("1 이상 10000 이하의 크기만 입력 가능합니다.");
+		}
 	}
 }
