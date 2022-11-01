@@ -15,7 +15,7 @@ public class Problem2 {
 
         return answer;
     }
-    // 리펙토링
+
     static boolean[] check(String s) {
         boolean[] a = new boolean[s.length()];
         for (int i = 0; i < s.length() - 1; i++) {
