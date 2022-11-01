@@ -38,14 +38,13 @@ public class Problem6 {
                   s = String.valueOf(c);
                   if(m.containsKey(s)) {
                	   if(m.get(s) == 2) {
-               		   arr.add(i);
+               		   answer.add(i);
                		   break;
                	   }
                   }
                   
       	    }
       	}
-        answer = arr;
         return answer; 
 }
 }
