@@ -13,28 +13,16 @@ public class Problem7 {
         for (int i = 0; i < friends.size(); i += 1) {
             for (int j = 0; j < friendList.size(); j += 1) {
                 if (friends.get(i).get(1) == friendList.get(j)) {
-                    if (result.containsKey(friends.get(i).get(0))) {
-                        result.put(friends.get(i).get(0), result.get(friends.get(i).get(0)) + 10);
-                    } else {
-                        result.put(friends.get(i).get(0), 10);
-                    }
+                    updatePointByIndex0Friend(result, friends, i);
                 }
                 if (friends.get(i).get(0) == friendList.get(j)) {
-                    if (result.containsKey(friends.get(i).get(1))) {
-                        result.put(friends.get(i).get(1), result.get(friends.get(i).get(1)) + 10);
-                    } else {
-                        result.put(friends.get(i).get(1), 10);
-                    }
+                    updatePointByIndex1Friend(result, friends, i);
                 }
             }
         }
 
         for (int i = 0; i < visitors.size(); i += 1) {
-            if (result.containsKey(visitors.get(i))) {
-                result.put(visitors.get(i), result.get(visitors.get(i)) + 1);
-            } else {
-                result.put(visitors.get(i), 1);
-            }
+            updatePointByVisitor(result, visitors, i);
         }
 
         if (result.containsKey(user)) {
@@ -90,6 +78,27 @@ public class Problem7 {
         for (int i = 5; i < keySet.size(); i += 1) {
             answer.remove(i);
         }
+    }
+
+    public static Integer updatePointByIndex0Friend(HashMap<String, Integer> result, List<List<String>> friends, int index){
+        if (result.containsKey(friends.get(index).get(0))) {
+            return result.put(friends.get(index).get(0), result.get(friends.get(index).get(0)) + 10);
+        }
+        return result.put(friends.get(index).get(0), 10);
+    }
+
+    public static Integer updatePointByIndex1Friend(HashMap<String, Integer> result, List<List<String>> friends, int index){
+        if (result.containsKey(friends.get(index).get(1))) {
+            return result.put(friends.get(index).get(1), result.get(friends.get(index).get(1)) + 10);
+        }
+        return result.put(friends.get(index).get(1), 10);
+    }
+
+    public static Integer updatePointByVisitor(HashMap<String, Integer> result, List<String> visitors, int index){
+        if (result.containsKey(visitors.get(index))) {
+            return result.put(visitors.get(index), result.get(visitors.get(index)) + 1);
+        }
+        return result.put(visitors.get(index), 1);
     }
 
 }
