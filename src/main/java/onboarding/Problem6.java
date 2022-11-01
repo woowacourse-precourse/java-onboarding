@@ -1,20 +1,66 @@
 package onboarding;
 
 import java.util.*;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Problem6 {
 
+    public static class ApplicationException extends RuntimeException {
+
+        public ApplicationException(String message) {
+            super(message);
+        }
+    }
+
     public static List<String> solution(List<List<String>> forms) {
+
         List<String> answer = List.of("answer");
-        List<String> tmpList = new ArrayList<String>();
 
-        tmpList = bruteForce(forms);
+        try {
+            for (int i = 0; i < forms.size(); i++) {
 
-        List<String> collect = tmpList.stream().distinct().collect(Collectors.toList()); // 중복 제거
-        collect.sort(Comparator.naturalOrder()); // 오름차순 정렬
+                if (!(forms.get(i).get(0).length() >= 11 && forms.get(i).get(0).length() < 20)) {
+                    {
+                        throw new ApplicationException("이메일 길이를 다시한번 확인해 주세요");
+                    }
+                }
 
-        answer = collect;
+                if (!forms.get(i).get(0).substring(forms.get(i).get(0).length() - 10).equals("@email.com")) {
+
+                    throw new ApplicationException("이메일 형식을 다시한번 확인해 주세요");
+                }
+
+                String pattern = "^[가-힣]*$";
+
+                if (!Pattern.matches(pattern, forms.get(i).get(1))) {
+
+                    throw new ApplicationException("닉네임은 한글만 가능합니다");
+
+                }
+
+                if (!(forms.get(i).get(1).length() >= 1 && forms.get(i).get(1).length() < 20)) {
+
+                    throw new ApplicationException("닉네임은 길이는 1자 이상20자 미만으로 가능합니다");
+                }
+
+            }
+
+            List<String> tmpList = new ArrayList<String>();
+
+            tmpList = bruteForce(forms);
+
+            List<String> collect = tmpList.stream().distinct().collect(Collectors.toList()); // 중복 제거
+            collect.sort(Comparator.naturalOrder()); // 오름차순 정렬
+
+            answer = collect;
+
+            return answer;
+
+        } catch (ApplicationException e) {
+            System.out.println(e.getMessage());
+        }
+
 
         return answer;
     }
