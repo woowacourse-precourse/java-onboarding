@@ -4,7 +4,7 @@
 3. ✅ calWithAlreadyFriend : 사용자와 함께 아는 친구들 기반 점수 계산 (+10)
 4. ✅ calWithVisitors : 사용자의 타임라인에 방문한 횟수 기반 점수 계산 (+1)
 5. ✅ isAlreadyFriend : 이미 아는 친구인지 아닌지 판단
-6. calculate : 점수 계산
+6. ✅ calculate : 점수 계산
 7. suggestion: 점수가 가장 높은 순으로 정렬하여 최대 5명을 추천 (점수가 같은 경우에는 이름순으로 정렬)
 
 ## 🚀 기능 요구 사항

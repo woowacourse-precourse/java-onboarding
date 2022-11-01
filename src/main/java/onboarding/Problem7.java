@@ -39,6 +39,14 @@ public class Problem7 {
         return false;
     }
 
+    private static void calculate(Map<String, Integer> newFriend, String friend, int score) {
+        if (newFriend.containsKey(friend)) {
+            newFriend.replace(friend, newFriend.get(friend) + score);
+        } else {
+            newFriend.put(friend, score);
+        }
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> alreadyFriend = new ArrayList<>();
         List<List<String>> candidate = new ArrayList<>();
