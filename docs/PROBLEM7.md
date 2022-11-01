@@ -27,7 +27,7 @@
 
 
 ## 기능 목록
-- [ ] User class 생성
+- [x] User class 생성
 - [ ] 친구 목록에 친구 추가 기능(User)
 - [ ] RecommendScore class 생성
 - [ ] 조건에 따른 추천 점수 추가 기능(RecommendedScore)
