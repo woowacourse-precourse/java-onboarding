@@ -14,27 +14,40 @@ public class Problem6 {
 //        List<String> answer = List.of("answer");
         List<String> answer = new ArrayList<>();
         String cp = "";
+        String name = "";
+
         System.out.println(forms);
-        System.out.println(forms.get(0));
-        System.out.println((forms.get(0)).get(0));
+//        System.out.println(forms.get(0));
+//        System.out.println((forms.get(0)).get(0));
 
-        String a = (forms.get(0)).get(1); //제이엠
-        String b = (forms.get(1)).get(1); //제이슨
-        String c = (forms.get(2)).get(1); //워니
-        String d = (forms.get(3)).get(1); //엠제이
-        String e = (forms.get(4)).get(1); //이제엠
-
-        cp = cp.concat(String.valueOf(a.charAt(0)));
-        cp = cp.concat(String.valueOf(a.charAt(1)));
-
-        if (b.contains(cp)) {
-            System.out.println(1); // "제이" 가 겹침 1 출력
-            answer.add((forms.get(1)).get(0));
-            cp = "";
+        for (int k=0;k<forms.size();k++) {
+            name = (forms.get(k)).get(1); //제이엠
+            for (int i = 0; i < name.length() - 1; i++) {
+                cp = "";
+                cp = cp.concat(String.valueOf(name.charAt(i)));
+                cp = cp.concat(String.valueOf(name.charAt(i + 1))); //제이
+                for (int j = k+1; j < forms.size(); j++) {
+                    if ((forms.get(j)).get(1).contains(cp)) {
+                        answer.add(forms.get(j).get(0));
+                        answer.add(forms.get(k).get(0));
+                    }
+                }
+            }
         }
-        cp = cp.concat(String.valueOf(a.charAt(1)));
-        cp = cp.concat(String.valueOf(a.charAt(2)));
-        System.out.println(cp);
+
+
+
+//        cp = cp.concat(String.valueOf(a.charAt(0)));
+//        cp = cp.concat(String.valueOf(a.charAt(1)));
+//
+//        if (b.contains(cp)) {
+//            System.out.println(1); // "제이" 가 겹침 1 출력
+//            answer.add((forms.get(1)).get(0));
+//            cp = "";
+//        }
+//        cp = cp.concat(String.valueOf(a.charAt(1)));
+//        cp = cp.concat(String.valueOf(a.charAt(2)));
+        System.out.println(answer);
 
 
         return answer;
