@@ -3,17 +3,17 @@ package onboarding;
 import java.util.*;
 
 class Problem1 {
-    static int pobiMax;
-    static int crongMax;
-    static int answer;
+    static int pobiMaxScore;
+    static int crongMaxScore;
+    static int winner;
     static List<Integer> pobiScore = new ArrayList<>();
     static List<Integer> crongScore = new ArrayList<>();
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         maxScore(pobi, crong);
-        answer = maxCompare(pobi, crong);
+        winner = maxCompare();
         pageException(pobi, crong);
-        return answer;
+        return winner;
     }
 
     public static void maxScore(List<Integer> pobi, List<Integer> crong) {
@@ -22,24 +22,21 @@ class Problem1 {
         crongAddition(crong);
         crongMultiplication(crong);
 
-        pobiScore.sort(Comparator.reverseOrder());
-        crongScore.sort(Comparator.reverseOrder());
-
-        pobiMax = pobiScore.get(0);
-        crongMax = crongScore.get(0);
+        pobiMaxScore = Collections.max(pobiScore);
+        crongMaxScore = Collections.max(crongScore);
 
         pobiScore.clear();
         crongScore.clear();
     }
 
-    public static int maxCompare(List<Integer> pobi, List<Integer> crong) {
-        if (pobiMax > crongMax) {
+    public static int maxCompare() {
+        if (pobiMaxScore > crongMaxScore) {
             return 1;
         }
-        if (pobiMax < crongMax) {
+        if (pobiMaxScore < crongMaxScore) {
             return 2;
         }
-        if (pobiMax == crongMax) {
+        if (pobiMaxScore == crongMaxScore) {
             return 0;
         }
         return -1;
@@ -109,13 +106,13 @@ class Problem1 {
         int pobiRightPage = pobi.get(1);
         int pobiLeftPage = pobi.get(0);
         if (pobiRightPage - pobiLeftPage != 1) {
-            answer = -1;
+            winner = -1;
         }
 
         int crongRightPage = crong.get(1);
         int crongLeftPage = crong.get(0);
         if (crongRightPage - crongLeftPage != 1) {
-            answer = -1;
+            winner = -1;
         }
     }
 }
