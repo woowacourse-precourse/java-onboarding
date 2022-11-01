@@ -48,7 +48,7 @@ public class Problem7 {
         // 친구 목록을 중복되지 않도록 구성해준다.
         HashSet<String> friends_set = new HashSet<>();
 
-        for (List<String> friend: friends) {
+        for (List<String> friend : friends) {
             for (int i = 0; i < 2; i++) {
                 if (!(friend.get(i).equals(user))) {
                     friends_set.add(friend.get(i));
