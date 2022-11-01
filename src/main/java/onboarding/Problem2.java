@@ -39,7 +39,13 @@ public class Problem2 {
         return result;
     }
     public static String solution(String cryptogram) {
-        String answer = "answer";
+//        String answer = "answer";
+//        return answer;
+
+        String input = cryptogram;
+
+
+        String answer = finder(input);
         return answer;
     }
 }
