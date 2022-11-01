@@ -11,6 +11,14 @@ public class Problem7 {
      * 4. user의 direct 친구는 제거 (removeUserFriends)
      * */
 
+    private static HashMap<String, Integer> addRecommendScore(HashMap<String, Integer> friendScore, String friend, int score) {
+        if (!friendScore.containsKey(friend)) {
+            friendScore.put(friend, score);
+        } else {
+            friendScore.replace(friend, friendScore.get(friend) + score);
+        }
+        return friendScore;
+    }
     private static List<String> findUserFriends(String user, List<List<String>> friends) {
         List<String> userFriends = new ArrayList<String>();
         for(List<String> friend: friends) {
@@ -21,10 +29,12 @@ public class Problem7 {
         }
         return userFriends;
     }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
 
         List<String> userFriends = findUserFriends(user, friends);
+        HashMap<String, Integer> friendScore;
         return answer;
     }
 }
