@@ -5,12 +5,17 @@ import java.util.*;
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         HashMap<String, ArrayList<Integer>> formsMap = new HashMap<>();
-        List<String> answer = (Arrays.asList("answer"));
+        HashSet<Integer> answerSet = new HashSet<>();
 
         //formsMap만들기
         for(int i=0;i<forms.size();i++){
             List<String> tmp = forms.get(i);
             makeFormsMap(tmp.get(1),i,formsMap); //tmp.get(1)은 닉네임
+        }
+
+        //formsSet만들기
+        for(String key : formsMap.keySet()){
+            makeAnswerSet(key,formsMap,answerSet);
         }
 
         return answer;
@@ -29,7 +34,13 @@ public class Problem6 {
                 formsMap.put(doubleChar, new ArrayList<Integer>(Arrays.asList(idx)));
             }
         }
+    }
 
+    public static void makeAnswerSet(String key, HashMap<String, ArrayList<Integer>> formsMap, HashSet<Integer> answerSet){
+
+        if(formsMap.get(key).size()>1){
+            answerSet.addAll(formsMap.get(key));
+        }
     }
 
 }
