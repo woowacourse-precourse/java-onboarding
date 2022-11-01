@@ -25,8 +25,9 @@ class Problem1 {
     private static int getMaxScore(List<Integer> pages) {
         int maxScore = 0;
         for (int page : pages) {
+
             if (sumOfDigit(page) == 0 || multiplyOfDigit(page) == 0) {
-                return -1;
+                throw new Error("점수가 유효하지 않습니다.");
             }
 
             int newScore = Math.max(sumOfDigit(page), multiplyOfDigit(page));
@@ -37,9 +38,7 @@ class Problem1 {
     }
 
     private static int getPageNumberGameResult(int pobiScore, int crongScore) {
-        if (pobiScore == -1 || crongScore == -1) {
-            return -1;
-        }
+
         if (pobiScore > crongScore) {
             return 1;
         } else if (pobiScore < crongScore) {
@@ -49,12 +48,17 @@ class Problem1 {
         }
     }
 
-    public static int solution(List<Integer> pobi,
-            List<Integer> crong) {
+    public static int solution(List<Integer> pobi, List<Integer> crong) {
 
-        int pobiMaxScore = getMaxScore(pobi);
-        int crongMaxScore = getMaxScore(crong);
+        try {
 
-        return getPageNumberGameResult(pobiMaxScore, crongMaxScore);
+            int pobiMaxScore = getMaxScore(pobi);
+            int crongMaxScore = getMaxScore(crong);
+
+            return getPageNumberGameResult(pobiMaxScore, crongMaxScore);
+
+        } catch (Error e) {
+            return -1;
+        }
     }
 }
