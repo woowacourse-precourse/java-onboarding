@@ -70,7 +70,7 @@ public class Problem7 {
         List<String> usersFriendsList = usersFriendsList(user, friends);
         List<String> initialList = extractingList(user, usersFriendsList, friends);
         friendScore(initialList);
-        visitingScore(visitors, usersFriendsList(user, friends));
+        visitingScore(visitors, usersFriendsList);
     }
 
     private static List<String> sorting() {
