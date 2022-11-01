@@ -59,4 +59,11 @@ public class Problem7 {
         }
     }
 
+    private static void removeOriginalFriends(String user,Map<String, List<String>> friendList) {
+        List<String> userFriends = friendList.get(user);
+        for (String userFriend : userFriends) {
+            System.out.println(userFriend+"삭제");
+            scoreMap.remove(userFriend);
+        }
+    }
 }
