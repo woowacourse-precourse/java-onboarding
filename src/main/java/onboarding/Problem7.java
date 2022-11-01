@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Problem7 {
@@ -17,12 +16,13 @@ public class Problem7 {
         List<String> name = new ArrayList<>();
         List<Integer> score = new ArrayList<>();
         int a;
+        int max;
 
         name.add(friends.get(0).get(1));
         score.add(10);
 
         for (int i = 1; i < friends.size(); i++) {
-            if (name.contains(friends.get(i).get(1))) {
+            if (!name.contains(friends.get(i).get(1))) {
                 a = score.get(name.indexOf(friends.get(i).get(1)));
                 score.set(name.indexOf(friends.get(i).get(1)), a + 10);
             } else {
@@ -43,12 +43,32 @@ public class Problem7 {
         if (name.contains(user)) {
             score.set(name.indexOf(user), 0);
         }
-        for (int i = 0; i < friends.size(); i++) {
-            if (name.contains(friends.get(i).get(0))) {
-                score.set(name.indexOf(friends.get(i).get(0)), 0);
+        for (List<String> friend : friends) {
+            if (name.contains(friend.get(0))) {
+                score.set(name.indexOf(friend.get(0)), 0);
             }
         }
 
+
+        do {
+            max = maxScores(score);
+            for (int i = 0; i < score.size(); i++) {
+                if (max == score.get(i)) {
+                    answer.add(name.get(score.indexOf(max)));
+                }
+            }
+        } while (max == 0);
+
         return answer;
+    }
+
+    public static int maxScores(List<Integer> score) {
+        int max = 0;
+        for (int i = 0; i < score.size(); i++) {
+            if (max < score.get(i)) {
+                max = score.get(i);
+            }
+        }
+        return max;
     }
 }
