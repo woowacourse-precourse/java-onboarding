@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,7 +12,22 @@ class Problem1 {
         if(checkException(pobi)) return -1;
         if(checkException(crong)) return -1;
 
-        return answer;
+
+        return -1;
+    }
+
+    static int getPagesMaxScore(List<Integer> pages){
+        return Math.max(getPageMaxScore(pages.get(0)),getPageMaxScore(pages.get(1)));
+    }
+    static int getPageMaxScore(int pageNumber){
+        List<Integer> pageNumberList = new ArrayList<>();
+        int sum = 0, multiply = 1;
+        while(pageNumber != 0){
+            sum += pageNumber%10;
+            multiply *= pageNumber%10;
+            pageNumber /= 10;
+        }
+        return Math.max(sum,multiply);
     }
 
     static boolean checkException(List<Integer> pages){
