@@ -8,6 +8,12 @@ package onboarding;
 public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
+
+        // 1. 1부터 number 까지 i 반복문
+        for(int i=1;i<=number;i++){
+            answer += clapNum(i);
+        }
+
         return answer;
     }
 }
