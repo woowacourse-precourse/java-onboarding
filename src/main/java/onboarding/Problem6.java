@@ -119,4 +119,14 @@ public class Problem6 {
         }
         return false;
     }
+
+    public static boolean emailDomainOutOfRulesException(List<List<String>> forms) {
+        for (List<String> form : forms) {
+            if (!form.get(0).contains("email.com")) {
+                System.out.println("email.com 도메인으로 이메일을 작성해주세요");
+                return true;
+            }
+        }
+        return false;
+    }
 }
