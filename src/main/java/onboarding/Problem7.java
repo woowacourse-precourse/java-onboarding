@@ -47,6 +47,15 @@ public class Problem7 {
                 return o2.getValue() - o1.getValue();
             }
         });
+        int[] value = new int[5];
+        int idx = 0;
+        for (Map.Entry<String, Integer> entry : entryList) {
+            if (entry.getValue() == 0 || idx >= 5) {
+                break;
+            }
+            value[idx++] = entry.getValue();
+            answer.add(entry.getKey());
+        }
         return answer;
     }
 }
