@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 public class Problem6 {
     public static Map<Integer, String> userEmailMap;
     public static Map<String, Integer> subStrUserIndexMap;
-    public static List<Integer> duplicatedIndex;
+    public static List<Integer> duplicatedIndexList;
     public static int EMAIL_INDEX = 0;
     public static int NICK_NAME_INDEX = 1;
 
@@ -19,13 +19,11 @@ public class Problem6 {
         List<String> userInfo;
         for (int userIndex = 0; userIndex < forms.size(); userIndex++) {
             userInfo = forms.get(userIndex);
-            findDuplicated(userIndex, userInfo);
+            modifyDuplicatedIndexList(userIndex, userInfo);
         }
 
         List<Integer> indexList = getDistinctIndexList();
-        List<String> answer = getAnswerList(indexList);
-        Collections.sort(answer);
-        return answer;
+        return getSortedEmailListByIndex(indexList);
     }
 
     public static void initSubStrUserIndexMap() {
@@ -33,7 +31,7 @@ public class Problem6 {
     }
 
     public static void initDuplicatedIndexList() {
-        duplicatedIndex = new ArrayList<>();
+        duplicatedIndexList = new ArrayList<>();
     }
 
     public static void initUserEmailMap(List<List<String>> forms) {
@@ -43,7 +41,7 @@ public class Problem6 {
         }
     }
 
-    public static void findDuplicated(int userIndex, List<String> userInfo) {
+    public static void modifyDuplicatedIndexList(int userIndex, List<String> userInfo) {
         String nickname = userInfo.get(NICK_NAME_INDEX);
         String subStrKey;
 
@@ -51,8 +49,8 @@ public class Problem6 {
             subStrKey = nickname.substring(i, i + 2);
             if (subStrUserIndexMap.containsKey(subStrKey)) {
                 Integer initUserIndex = subStrUserIndexMap.get(subStrKey);
-                duplicatedIndex.add(userIndex);
-                duplicatedIndex.add(initUserIndex);
+                duplicatedIndexList.add(userIndex);
+                duplicatedIndexList.add(initUserIndex);
             } else {
                 subStrUserIndexMap.put(subStrKey, userIndex);
             }
@@ -60,12 +58,13 @@ public class Problem6 {
     }
 
     public static List<Integer> getDistinctIndexList() {
-        return duplicatedIndex.stream().distinct().collect(Collectors.toList());
+        return duplicatedIndexList.stream().distinct().collect(Collectors.toList());
     }
 
-    public static List<String> getAnswerList(List<Integer> indexList) {
+    public static List<String> getSortedEmailListByIndex(List<Integer> indexList) {
         List<String> emailsList = new ArrayList<>();
         indexList.forEach(userIndex -> emailsList.add(userEmailMap.get(userIndex)));
+        Collections.sort(emailsList);
         return emailsList;
     }
 }
