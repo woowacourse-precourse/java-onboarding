@@ -7,38 +7,50 @@ import java.util.Comparator;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = new ArrayList<>();
-        int listSize = forms.size();
-        boolean flag = false;
-        boolean[] result = new boolean[10010];
+        List<String> result = tourNicknames(forms);
+        List<String> answer = organizeResult(result);
 
-        for(int i=0; i<listSize; ++i){
-            String string1 = forms.get(i).get(1);
-            int string1Size = string1.length();
+        return answer;
+    }
 
-            for(int j=0; j<listSize; ++j){
-                if(i==j) continue;
-                String string2= forms.get(j).get(1);
-                int string2Size = string2.length();
+    private static List<String> tourNicknames(List<List<String>> forms) {
+        List<String> result = new ArrayList<>();
+        int formSize = forms.size();
 
-                for(int a=0; a<string1Size; ++a){
-                    for(int b=0; b<string2Size; ++b){
-                        if(Character.compare(string1.charAt(a), string2.charAt(b)) == 0){
-                            if(flag) result[i] = result[j] = true;
-                            flag = true;
-                        }
-                        else flag = false;
+        for (int i = 0; i < formSize; ++i) {
+            for (int j = 0; j < formSize; ++j) {
+                if (i == j) continue;
+                if (isSimilar(forms.get(i).get(1), forms.get(j).get(1))) {
+                    result.add(forms.get(i).get(0));
+                    result.add(forms.get(j).get(0));
+                }
+            }
+        }
+        return result;
+    }
+
+    private static boolean isSimilar(String nickname1, String nickname2) {
+        int nicknameSize1 = nickname1.length();
+        int nicknameSize2 = nickname2.length();
+
+        for (int i = 0; i < nicknameSize1 - 1; ++i) {
+            for (int j = 0; j < nicknameSize2 - 1; ++j) {
+                if (Character.compare(nickname1.charAt(i), nickname2.charAt(j)) == 0) {
+                    if (Character.compare(nickname1.charAt(i + 1), nickname2.charAt(j + 1)) == 0) {
+                        return true;
                     }
                 }
             }
         }
+        return false;
+    }
 
-        for(int i=0; i<listSize; ++i)
-            if(result[i]) answer.add(forms.get(i).get(0));
+    private static List<String> organizeResult(List<String> str) {
+        List<String> sortedList;
 
-        answer.sort(Comparator.naturalOrder());
-        answer = answer.stream().distinct().collect(Collectors.toList());
+        str.sort(Comparator.naturalOrder());
+        sortedList = str.stream().distinct().collect(Collectors.toList());
 
-        return answer;
+        return sortedList;
     }
 }
