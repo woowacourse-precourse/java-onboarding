@@ -104,8 +104,8 @@ public class Problem7 {
             Map.Entry<String, Integer> entry = iterator.next();
             sortedTotalScoreMap.put(entry.getKey(), entry.getValue());
         }
-        for (Map.Entry<String, Integer> name : sortedTotalScoreMap.entrySet()) {
-            recommendFriendList.add(name.getKey());
+        for (Map.Entry<String, Integer> entry : sortedTotalScoreMap.entrySet()) {
+            recommendFriendList.add(entry.getKey());
         }
         return recommendFriendList;
     }
