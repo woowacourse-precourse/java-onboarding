@@ -22,6 +22,7 @@ public class Problem4 {
 
     // 주어진 문자를 청개구리 사전을 통해 변환하는 함수
     public static String convertChar(String s, HashMap<String, String> frogTable) {
+        // 주어진 테이블에 해당 값이 없는 경우 -> 알파벳이 아니기에 그냥 해당값 리턴
         String changeString = s;
         if (frogTable.containsKey(s)) {
             changeString = frogTable.get(s);

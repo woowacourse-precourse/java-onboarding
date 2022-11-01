@@ -22,10 +22,15 @@
 
 ### 기능 목록
 - HashMap를 청개구리 사전으로 초기화 함수
-> HashMap<String, String> initFrogTable()
+```java
+HashMap<String, String> initFrogTable()
+```
 
 - 주어진 문자를 청개구리 사전을 통해 변환하는 함수
-> String convertOneString(String, HashMap<String, String>)
-
+```java
+String convertOneString(String, HashMap<String, String>)
+```
 - 주어진 문자열을 청개구리 사전을 통해 변환하는 함수
-> String convertString(String)
+```java
+String convertString(String)
+```
