@@ -4,99 +4,99 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Problem7 {
-    static Set<String> members;
-    static List<String> recommendFriends;
     static Set<String> userFriends;
-    static List<String> memberList;
-    static int[] memberPoint;
-    static int max;
-    static List memberPointList;
-
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        createFriendsList(user, friends, visitors);
-        recommendPoint(user, friends, visitors);
-        List<String> answer = recommendList();
-        return answer;
+        List<String> recommendFriends = recommendList(user, friends, visitors);
+        return recommendFriends;
     }
 
-    public static List<String> createFriendsList(String user, List<List<String>> friends, List<String> visitors) {
-        members = new HashSet<>();
+    public static List<String> createFriendList(String user, List<List<String>> friends, List<String> visitors) {
+        Set<String> members = new HashSet<>();
         userFriends = new HashSet<>();
+
         for (int i = 0; i < friends.size(); i++) {
             for (int j = 0; j < 2; j++) {
                 String name = friends.get(i).get(j);
-                if (j == 0 && name == user) {
-                    userFriends.add(friends.get(i).get(1));
-                }
-                if (j == 1 && name == user) {
-                    userFriends.add(friends.get(i).get(0));
+                if (name == user) {
+                    if (j == 0) {
+                        String userFriendR = friends.get(i).get(1);
+                        userFriends.add(userFriendR);
+                    }
+                    if (j == 1) {
+                        String userFriendL = friends.get(i).get(0);
+                        userFriends.add(userFriendL);
+                    }
+                    continue;
                 }
                 members.add(name);
             }
         }
-        for (int i = 0; i < visitors.size(); i++) {
-            String name = visitors.get(i);
-            members.add(name);
+        for (String visitor : visitors) {
+            members.add(visitor);
         }
-        members.remove(user);
-        for (String name : userFriends) {
-            members.remove(name);
+        for (String userFriend : userFriends) {
+            members.remove(userFriend);
         }
-        memberList = new ArrayList<>(members);
-        return memberList;
+        List<String> friendList = new ArrayList<>(members);
+        return friendList;
     }
 
     public static List<Integer> recommendPoint(String user, List<List<String>> friends, List<String> visitors) {
-        memberPoint = new int[memberList.size()];
+        List<String> friendList = createFriendList(user, friends, visitors);
+        int[] friendRecommendPoint = new int[friendList.size()];
+
         for (int i = 0; i < friends.size(); i++) {
             if (friends.get(i).contains(user)) {
                 continue;
             }
-            for (String name : userFriends) {
-                if (friends.get(i).contains(name)) {
-                    if (friends.get(i).get(0) == name) {
-                        int index = memberList.indexOf(friends.get(i).get(1));
-                        memberPoint[index] += 10;
+            for (String userFriend : userFriends) {
+                if (friends.get(i).contains(userFriend)) {
+                    String friendL = friends.get(i).get(0);
+                    String friendR = friends.get(i).get(1);
+                    if (friendL == userFriend) {
+                        int index = friendList.indexOf(friendR);
+                        friendRecommendPoint[index] += 10;
                     }
-                    if (friends.get(i).get(1) == name) {
-                        int index = memberList.indexOf(friends.get(i).get(0));
-                        memberPoint[index] += 10;
+                    if (friendR == userFriend) {
+                        int index = friendList.indexOf(friendL);
+                        friendRecommendPoint[index] += 10;
                     }
                 }
             }
         }
         for (String visitor : visitors) {
-            if (memberList.contains(visitor)) {
-                int index = memberList.indexOf(visitor);
-                memberPoint[index]++;
+            if (friendList.contains(visitor)) {
+                int index = friendList.indexOf(visitor);
+                friendRecommendPoint[index]++;
             }
         }
-        for (int i = 0; i < memberPoint.length; i++) {
-        }
-        memberPointList = Arrays.stream(memberPoint).boxed().collect(Collectors.toList());
-
-        return memberPointList;
+        List<Integer> recommendPointList = Arrays.stream(friendRecommendPoint).boxed().collect(Collectors.toList());
+        return recommendPointList;
     }
 
-    public static List<String> recommendList() {
-        recommendFriends = new ArrayList<>();
-        for (int i = 0; i < memberPointList.size(); i++) {
-            max = (int) memberPointList.get(i);
-            for (int j = 0; j < memberPointList.size(); j++) {
-                if ((int) memberPointList.get(j) > max) {
-                    max = (int) memberPointList.get(j); //20
+    public static List<String> recommendList(String user, List<List<String>> friends, List<String> visitors) {
+        List<Integer> recommendPointList = recommendPoint(user, friends, visitors);
+        List<String> recommendFriends = new ArrayList<>();
+        List<String> friendList = createFriendList(user, friends, visitors);
+
+        for (int i = 0; i < recommendPointList.size(); i++) {
+            int maxPoint = recommendPointList.get(i);
+            for (int j = 0; j < recommendPointList.size(); j++) {
+                if (recommendPointList.get(j) > maxPoint) {
+                    maxPoint = recommendPointList.get(j);
                 }
             }
-            if (max == 0) {
+            if (maxPoint == 0) {
                 break;
             }
-            for (int j = 0; j < memberPointList.size(); j++) {
-                if ((int) memberPointList.get(j) == max) {
-                    recommendFriends.add(memberList.get(j));
-                    memberPointList.set(j, 0);
-                    if (j == memberPointList.size()) {
-                        Collections.sort(recommendList(), Collections.reverseOrder());
+            for (int j = 0; j < recommendPointList.size(); j++) {
+                if (recommendPointList.get(j) == maxPoint) {
+                    String friendIndex = friendList.get(j);
+                    recommendFriends.add(friendIndex);
+                    recommendPointList.set(j, 0);
+                    if (j == recommendPointList.size()) {
+                        Collections.sort(recommendList(user, friends, visitors), Collections.reverseOrder());
                     }
                 }
             }
