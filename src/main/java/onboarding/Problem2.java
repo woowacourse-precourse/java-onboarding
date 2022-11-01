@@ -23,7 +23,7 @@ public class Problem2 {
         LinkedList<String> recursiveThird = recursiveThird(recursiveTwice);
 
 
-        answer = returnToString(recursiveThird);
+        answer = returnToString(recursion);
 
         return answer;
     }
