@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -17,6 +14,19 @@ public class Problem7 {
         friendScore = getFriendScore(friendsList, user);
         friendScore = getVisitScore(friendScore, visitors);
         friendScore = removeMyFriend(friendScore, friendsList);
+
+        List<String> keySet = new ArrayList<>(friendScore.keySet());
+        Map<String, Integer> finalScore = friendScore;
+        keySet.sort((o1, o2) -> finalScore.get(o2).compareTo(finalScore.get(o1)));
+        for (String s : finalScore.keySet()) {
+
+        }
+
+        if (keySet.size() < maxRcm) {
+            maxRcm = keySet.size();
+        }
+        answer = keySet.subList(0, maxRcm);
+
 
         return answer;
     }
