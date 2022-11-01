@@ -11,6 +11,14 @@ class Crew {
     public Crew(String email, String nickname) {
         this.email = email;
         this.nickname = nickname;
+        validateCrew();
+    }
+
+    private void validateCrew() {
+        if (!(11 <= email.length() && email.length() < 20))
+            throw new IllegalArgumentException("이메일은 11자 이상 20자 미만.");
+        if (!(1 <= nickname.length() && nickname.length() < 20))
+            throw new IllegalArgumentException("닉네임은 1자 이상 20자 미만.");
     }
 
     public String getNickname() {
@@ -23,7 +31,7 @@ class Crew {
 }
 
 class DuplicateFinder {
-    private List<Crew> crews;
+    private final List<Crew> crews;
 
     public DuplicateFinder(List<Crew> crews) {
         this.crews = crews;
@@ -61,11 +69,11 @@ class DuplicateFinder {
 
     private List<String> getSplitNickList(String nickname) {
         List<String> splitNickList = new ArrayList<>();
-
         for (int i = 0; i < nickname.length() - 1; i++) {
             String sub = nickname.substring(i, i + 2);
             splitNickList.add(sub);
         }
+
         return splitNickList;
     }
 }
