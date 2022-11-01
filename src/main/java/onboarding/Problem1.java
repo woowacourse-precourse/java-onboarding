@@ -60,6 +60,7 @@ class Problem1 {
             if (pobiScore == crongScore) answer = 0;
             if (pobiScore < crongScore) answer = 2;
         }
+
         return answer;
     }
 

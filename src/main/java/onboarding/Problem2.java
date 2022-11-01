@@ -3,16 +3,15 @@ package onboarding;
 import java.util.ArrayList;
 
 public class Problem2 {
-    public static String solution(String cryptogram) {
+    public static String solution(String s){
         int len = 0;
-        String answer = "answer";
-        for(int i=0; i<cryptogram.length(); i++){
-            answer = removeChar(answer);
-            if(len == answer.length()) break;
+        String text = s;
+        for(int i =0; i<s.length(); i++ ){
+            text = removeChar(text);
+            if(len == text.length()) break;
         }
-        return answer;
+        return text;
     }
-
     public static String  removeChar(String s){
         char[] array = s.toCharArray();
         int len = array.length;
@@ -36,5 +35,7 @@ public class Problem2 {
 
         String result =  text.toString();
         return result;
+
     }
+
 }
