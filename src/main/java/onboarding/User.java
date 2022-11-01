@@ -28,4 +28,9 @@ public class User {
         }
         return list;
     }
+
+    public boolean compareSplitList(User user) {
+        return user.splitList.stream()
+                .anyMatch(splitList::contains);
+    }
 }

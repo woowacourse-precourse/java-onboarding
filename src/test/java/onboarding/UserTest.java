@@ -20,4 +20,22 @@ class UserTest {
         //then
         Assertions.assertThat(extractionListByTwoLetters).isEqualTo(Arrays.asList("jo", "oh", "hn", "ng"));
     }
+
+    @Test
+    void 두_글자씩_분리된_리스트를_비교해서_중복값이_있는지_확인_존재() {
+        //when
+        boolean duplicateCheckResult = john.compareSplitList(orange);
+
+        //then
+        Assertions.assertThat(duplicateCheckResult).isTrue();
+    }
+
+    @Test
+    void 두_글자씩_분리된_리스트를_비교해서_중복값이_있는지_확인_존재X() {
+        //when
+        boolean duplicateCheckResult = john.compareSplitList(pobi);
+
+        //then
+        Assertions.assertThat(duplicateCheckResult).isFalse();
+    }
 }
