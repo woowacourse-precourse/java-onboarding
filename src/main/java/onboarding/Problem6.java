@@ -28,10 +28,13 @@ public class Problem6 {
 
 		Collections.sort(duplicatePatternEmailList);
 
-		return duplicatePatternEmailList;
+		//email 중복 제거 후 반환
+		return duplicatePatternEmailList.stream().distinct().collect(Collectors.toList());
 	}
-
-	//pattern(길이가 2인 연속된 부분문자열)이 nickName이 포함되어 있는지 확인하고, 포함되어 있다면, map에서 조회 후, email을 반환.
+	/*
+	pattern(길이가 2인 연속된 부분문자열)이 nickName이 포함되어 있는지 확인하고,
+	포함되어 있다면, map에서 nickName을 key로 조회해, email을 반환하고, 이를 리스트에 담아 반환한다.
+	*/
 	private static List<String> genDuplicatePatternEmailList(Set<String> duplicatePatternSet,
 		Map<String,String> nickEmailMapper, List<String> nickNameList) {
 		List<String> duplicatePatternEmailList = new ArrayList<>();
