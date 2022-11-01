@@ -13,4 +13,9 @@ public class Problem4 {
         String answer = "";
         return answer;
     }
+    private static void wordRangeValidation(String word) {
+        if (word.length() < MIN_WORD_SIZE || word.length() > MAX_WORD_SIZE) {
+            throw new IllegalArgumentException("1이상 1000 이하 길이의 문자열만 입력 가능합니다");
+        }
+    }
 }
