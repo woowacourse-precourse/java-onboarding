@@ -4,7 +4,7 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = cryptogram;
         while (true) {
-            if(!hasReduplication(answer)) return answer;
+            if (!hasReduplication(answer)) return answer;
             answer = removeReduplication(answer);
         }
     }
@@ -23,14 +23,11 @@ public class Problem2 {
                 lastIndex = i + 1;
             }
         }
-        if (startIndex == -1) {
-            return cryptogram;
-        } else {
-            startString = cryptogram.substring(0, startIndex);
-            // 중복 다음 값의 index 부터 시작이라 +1
-            lastString = cryptogram.substring(lastIndex + 1);
-            return startString + lastString;
-        }
+        if (startIndex == -1) return cryptogram;
+        startString = cryptogram.substring(0, startIndex);
+        // 중복 다음 값의 index 부터 시작이라 +1
+        lastString = cryptogram.substring(lastIndex + 1);
+        return startString + lastString;
     }
 
     public static boolean hasReduplication(String str, int index) {
