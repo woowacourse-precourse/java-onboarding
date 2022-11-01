@@ -7,6 +7,14 @@ public class Problem6 {
         List<String> answer = List.of("answer");
         return answer;
     }
+
+    private static boolean hasDuplicatedNickname(List<String> separateNicknames, HashMap<String, Boolean> map){
+        for (String s:separateNicknames) {
+            if (map.get(s) == Boolean.TRUE) return true;
+        }
+        return false;
+    }
+
     private static void insertHash(String separateNickname, HashMap<String, Boolean> map){
         if (map.containsKey(separateNickname)){
             map.put(separateNickname, Boolean.TRUE);
