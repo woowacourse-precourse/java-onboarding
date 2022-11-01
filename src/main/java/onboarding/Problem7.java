@@ -3,12 +3,31 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
-    public static void makeNonFriendList(String user,List<List<String>> friends,List<String> myFriend,List<String> nonFriend,List<String> visitors){
-        Map<String,Integer> scoreMap = new HashMap<>();
+    public static void makeNonFriendList(String user,List<List<String>> friends,List<String> myFriend,List<String> nonFriend,List<String> visitors) {
+        Map<String, Integer> scoreMap = new HashMap<>();
         int score = 0;
-        for(int i=0;i<friends.size();i++){
+        for (int i = 0; i < friends.size(); i++) {
             List<String> friend = friends.get(i);
-            
+            for (int j = 0; j < myFriend.size(); j++) {
+                if (!friend.contains(user) && friend.get(0).equals(myFriend.get(j)) && !friend.get(1).equals(myFriend.get(j))) {
+                    if (!nonFriend.contains(friend.get(1))) {
+                        nonFriend.add(friend.get(1));
+                        scoreMap.put(friend.get(1), score + 10);
+                    } else {//이미 존재
+                        scoreMap.replace(friend.get(1), scoreMap.get(friend.get(1)) + 10);
+
+                    }
+
+                } else if (!friend.contains(user) && !friend.get(0).equals(myFriend.get(j)) && friend.get(1).equals(myFriend.get(j))) {
+                    if (!nonFriend.contains(friend.get(0))) {
+                        nonFriend.add(friend.get(0));
+                        scoreMap.put(friend.get(0), score + 10);
+                    } else {//이미 존재
+                        scoreMap.replace(friend.get(0), scoreMap.get(friend.get(0)) + 10);
+
+                    }
+                }
+            }
         }
     }
     public static void makeFriendList(String user,List<List<String>> friends,List<String> myFriend){
