@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -16,8 +17,6 @@ import java.util.stream.Collectors;
  */
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-
         List<String> myFriends = getFriendsWithUser(user, friends);
         Set<String> users = friends.stream().flatMap(List::stream).collect(Collectors.toSet());
         users.addAll(visitors);
@@ -27,7 +26,16 @@ public class Problem7 {
         increaseScoreByFriends(recommendedScoreByUsers, friends, myFriends);
         increaseScoreByVisitors(recommendedScoreByUsers, friends, visitors);
 
-        System.out.println("recommendedScoreByUsers = " + recommendedScoreByUsers);
+        // 6. 점수가 가장 높은 순으로 정렬하여 최대 5명을 return(단, 0점과 본인 및 친구는 제외)
+        List<String> answer = recommendedScoreByUsers.stream()
+                .filter(recommendedScoreByUser -> !recommendedScoreByUser.getUser().equals(user))
+                .filter(recommendedScoreByUser -> !myFriends.contains(recommendedScoreByUser.getUser()))
+                .filter(recommendedScoreByUser -> recommendedScoreByUser.getScore() > 0)
+                .sorted(Comparator.comparing(RecommendedScoreByUser::getUser))
+                .sorted(Comparator.comparing(RecommendedScoreByUser::getScore).reversed())
+                .map(RecommendedScoreByUser::getUser)
+                .limit(5)
+                .collect(Collectors.toList());
 
         return answer;
     }
