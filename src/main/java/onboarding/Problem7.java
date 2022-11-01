@@ -7,10 +7,7 @@ package onboarding;
 //기능5. value 값이 높은 순으로 리스트에 정렬한다.
 //기능6. 만약 점수가 같으면 알파벳 순으로 출력한다.
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -29,6 +26,7 @@ public class Problem7 {
                 }
             }
         }
+
         for (int i=0;i<visitors.size();i++) {
             if (map.containsKey(visitors.get(i))) { //맵에 비지터의 이름이 있으면
                 map.put((visitors.get(i)), map.get((visitors.get(i)))+1); //1을 더한다.
@@ -37,15 +35,24 @@ public class Problem7 {
             }
         }
 
+        List<String> d = new ArrayList<>();
+        for (int i=0;i<friends.size();i++) {
+            if (friends.get(i).contains(user)) { //리스트의 리스트에 유저가 있다면
+                System.out.println(friends.get(i));
+                if (Objects.equals(user, friends.get(i).get(0))) { //만약 유저가 첫번재 자리라면
+                    d.add(friends.get(i).get(1)); //유저의 친구는 두번째자리
+                } else if (Objects.equals(user, friends.get(i).get(1))) { //유저가 두번재자리라면
+                    d.add(friends.get(i).get(0)); //유저의 친구는 첫번재 자리
+                }
+            }
+        }
 
-
-//        if (friends.get(2).contains("mrko")) {
-//            System.out.println(1);
-//        }
-//        System.out.println(friends);
-
+        for (int i=0;i<d.size();i++) {
+            map.remove(d.get(i)); //유저의 친구들 삭제
+        }
 
         System.out.println(map);
+        System.out.println(d);
 
         return answer;
     }
