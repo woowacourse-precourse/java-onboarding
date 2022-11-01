@@ -11,4 +11,9 @@ public class Problem5 {
         List<Integer> answer = Collections.emptyList();
         return answer;
     }
+
+    //  교환하려는 화폐의 개수를 구하는 메소드
+    private static int checkExchange(int money, int index){
+        return money / exchange[index];
+    }
 }
