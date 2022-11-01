@@ -7,7 +7,9 @@ class Problem1 {
         if (!checkValidity(pobi) || !checkValidity(crong)) {
             return -1;
         }
-        int answer = Integer.MAX_VALUE;
+
+        int answer = computeAnswer(pobi,crong);
+
         return answer;
     }
 
@@ -58,7 +60,7 @@ class Problem1 {
         return ret;
     }
 
-    private static int getScore(List<Integer> list) {
+    private static int computeScore(List<Integer> list) {
         int left = list.get(0);
         int right = list.get(1);
 
@@ -66,5 +68,19 @@ class Problem1 {
         int rightScore = Math.max(add(right), multiply(right));
 
         return Math.max(leftScore, rightScore);
+    }
+
+    private static int computeAnswer(List<Integer> pobi, List<Integer> crong) {
+        int pobiScore = computeScore(pobi);
+        int crongScore = computeScore(crong);
+
+        if (pobiScore > crongScore){
+            return 1;
+        }
+        if (pobiScore < crongScore){
+            return 2;
+        }
+
+        return 0;
     }
 }
