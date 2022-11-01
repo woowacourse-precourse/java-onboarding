@@ -20,6 +20,7 @@ public class Problem4 {
     private static char convertChar(char character) {
         if(isLowerCase(character)) return convertLowerCase(character);
         else if(isUpperCase(character))return convertUpperCase(character);
+        return character;
     }
 
     private static char convertUpperCase(char character) {
