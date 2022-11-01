@@ -5,7 +5,6 @@ public class Problem4 {
         return changeWord(word);
     }
 
-    // 로직에 맞게 알파벳을 변환하는 기능을 가진 함수
     public static String changeWord(String word) {
         StringBuilder sb = new StringBuilder();
 
@@ -22,5 +21,4 @@ public class Problem4 {
         }
         return sb.toString();
     }
-
 }
