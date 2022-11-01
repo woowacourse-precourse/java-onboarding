@@ -4,20 +4,20 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- *  isProperForms 메서드 적절한 형태인지 확인
- *  isProperEmail 메서드 적절한 이메일인지 확인
- *  isProperNickName 매서드 적절한 닉네임인지 확인
- *  getOverlapNickName 메서드 2글자씩잘라서 중복된 값이 있다면 그 닉네임을 Map에 저환
- *  isProperCrewRange 메서드 크루원 수가 올바른지 확인
+ * isProperForms 메서드 적절한 형태인지 확인
+ * isProperEmail 메서드 적절한 이메일인지 확인
+ * isProperNickName 매서드 적절한 닉네임인지 확인
+ * getOverlapNickName 메서드 2글자씩잘라서 중복된 값이 있다면 그 닉네임을 set에 저환
+ * isProperCrewRange 메서드 크루원 수가 올바른지 확인
  */
 
 public class Problem6 {
     private static Map<String, String> nickNameMap = new HashMap<>();
     private static Set<String> overlapNickNameSet = new HashSet<>();
     private static final int EMAIL = 0;
-    private static final int NICKNAME=1;
+    private static final int NICKNAME = 1;
 
-    private static final int FORMS_SIZE =2;
+    private static final int FORMS_SIZE = 2;
 
     private static final String EMAIL_FORM = "email.com";
 
@@ -67,6 +67,7 @@ public class Problem6 {
                 && email.length() < MAX_EMAIL_LENGTH
                 && email.endsWith(EMAIL_FORM);
     }
+
     private static boolean isProperNickName(String nickName) {
         return MIN_NICKNAME_LENGTH <= nickName.length()
                 && nickName.length() < MAX_NICKNAME_LENGTH
