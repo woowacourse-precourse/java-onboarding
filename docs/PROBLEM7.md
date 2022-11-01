@@ -24,3 +24,19 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능 목록
+1. user의 친구목록을 set을 이용해 담는다.
+2. set에 존재하지 않는 사람들을 HashMap에 점수 0으로 담는다.
+3. List<List<String>>에서 Map에 존재하며 관계에 얽여있는 사람이 set에 있는 경우 10점을 추가해준다.
+4. 방문자 리스트에서 set에 존재 하지 않는 이름을 추가하고, 한 번 있을 때 마다 1점씩 추가한다.
+5. HashMap을 점수의 역순, 이름의 정순으로 정렬한 후, 이름만 리턴한다.
+
+### 예외처리
+1. user 아이디가 존재하지 않으면 예외처리한다. (friends, visitors의 사용자 명도 마찬가지로 처리한다.)
+2. user 아이디가 30자를 초과하면 예외처리한다. (friends, visitors의 사용자 명도 마찬가지로 처리한다.)
+3. user 아이디에 소문자 외에 다른 문자가 있으면 예외처리한다. (friends, visitors의 사용자 명도 마찬가지로 처리한다.)
+4. friends의 사이즈가 0이면 예외처리한다. 
+5. friends의 사이즈가 10,000을 초과하면 예외처리한다. 
+6. friends의 값으로 존재하는 리스트에 사람이 2명 있지 않으면 예외처리한다. 
+7. visitors의 사이즈가 10,000을 초과하면 예외처리한다. 
