@@ -13,6 +13,12 @@ public class Problem7 {
         return answer;
     }
 
+    private static List<String> getRecommendation(String user, List<List<String>> AllFriends, List<String> visitors) {
+        List<String> myFriends = findMyFriends(user, AllFriends);
+        HashMap<String, Integer> score = getScoreByVisit(visitors, getScoreByFriends(user, myFriends, AllFriends), myFriends);
+        return getTop5(score);
+    }
+
     private static List<String> findMyFriends(String user, List<List<String>> AllFriends) {
         List<String> myFriends = new ArrayList<>();
         // 전체 친구들 중에 user의 친구 찾기
@@ -101,14 +107,4 @@ public class Problem7 {
         }
         return ranker;
     }
-
-    private static List<String> getRecommendation(String user, List<List<String>> AllFriends, List<String> visitors) {
-        List<String> myFriends = findMyFriends(user, AllFriends);
-        HashMap<String, Integer> score = getScoreByVisit(visitors, getScoreByFriends(user, myFriends, AllFriends), myFriends);
-        return getTop5(score);
-    }
-
-
-
-
 }
