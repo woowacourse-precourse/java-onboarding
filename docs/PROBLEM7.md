@@ -1,3 +1,19 @@
+## 📌 구현할 기능 목록
+- isUserValid(String user, List<List<String>> friends, List<String> visitors)
+  - 예외 처리 기능
+- setFriends(List<List<String>> friends, String user)
+  - user의 친구에 속하게 하는 기능
+- isFriendOfUser(List<String> friend, String user)
+  - user의 친구인지 확인하는 기능
+- updateScore(List<List<String>> friends, List<String> visitors)
+  - 친구의 친구인지, 방문인지에 따라 추천 점수 부여하는 기능
+- giveScore(String user, int score)
+  - 실제로 점수를 올려주는 기능
+- removeUnnecessary()
+  - user와 친구이거나 추천할 친구가 없는 경우를 배제하는 기능
+- theAnswer(Map<String, Integer> scoreMap)
+  - 리턴할 추천 목록을 정렬해주는 기능
+
 ## 🚀 기능 요구 사항
 
 레벨 2의 팀 프로젝트 미션으로 SNS(Social Networking Service)를 만들고자 하는 팀이 있다. 팀에 속한 크루 중 평소 알고리즘에 관심이 많은 미스터코는 친구 추천 알고리즘을 구현하고자 아래와 같은 규칙을 세웠다.
