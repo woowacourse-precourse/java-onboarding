@@ -24,3 +24,10 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능목록
+
+- [x] 이미 친구관계인 user 구하기
+- [x] HashMap을 이용하여 friends를 각 친구관계가 아닌 user의 점수에 반영
+- [x] HashMap을 이용하여 visitors를 각 친구관계가 아닌 user의 점수에 반영
+- [x] 점수 순서대로 정렬 후, 5명까지 나열하기

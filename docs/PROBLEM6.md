@@ -21,3 +21,11 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능목록
+
+- [x] 문자열 두개 주어질 시, 인접한 두글자가 중복되는지 확인하는 기능
+- [x] 닉네임에서 임의의 인접한 두글자가 다른 닉네임과 겹칠 때, 해당 이메일을 answer에 추가
+- [ ] email.com 도메인으로만 제한
+- [ ] 닉네임 한글만 가능으로 제한
+- [ ] 현재보다 더 적은 반복 횟수로 두글자 중복을 확인하는 기능
