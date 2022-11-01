@@ -1,42 +1,15 @@
 package onboarding.problem7;
 
-import onboarding.Problem7;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class FriendRecommendTest {
-    @Test
-    void find_friend() {
-        String user = "mrko";
-        List<List<String>> friends = List.of(
-                List.of("donut", "andole"),
-                List.of("donut", "jun"),
-                List.of("donut", "mrko"),
-                List.of("shakevan", "andole"),
-                List.of("shakevan", "jun"),
-                List.of("shakevan", "mrko")
-        );
-        List<String> result = List.of("donut", "shakevan");
-        assertThat(RecommendFriendFinder.findFriend(user, friends)).isEqualTo(result);
-    }
-
-    @Test
-    void find_friends_of_friends() {
-        String user = "mrko";
-        List<List<String>> friends = List.of(
-                List.of("donut", "andole"),
-                List.of("donut", "jun"),
-                List.of("donut", "mrko"),
-                List.of("shakevan", "andole"),
-                List.of("shakevan", "jun"),
-                List.of("shakevan", "mrko")
-        );
-        List<String> result = List.of("andole", "jun");
-        assertThat(RecommendFriendFinder.findAcquaintance(user, friends)).isEqualTo(result);
-    }
 
     @Test
     void recommend_by_acquaintances_among_visitors_() {
@@ -49,13 +22,18 @@ public class FriendRecommendTest {
                 List.of("shakevan", "jun"),
                 List.of("shakevan", "mrko")
         );
-        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
-        List<String> result = List.of("andole", "jun", "bedi");
-        assertThat(RecommendFriendFinder.findAcquaintanceAmongVisit(user, friends, visitors)).isEqualTo(result);
+
+        Map<String, Integer> result = new HashMap<>();
+        result.put("jun", 10);
+        result.put("andole", 10);
+
+        RecommendFriendFinder recommendFriendFinder = new RecommendFriendFinder();
+        Map<String, Integer> acquaintanceResult = recommendFriendFinder.getAcquaintanceResult(user, friends);
+        assertTrue(acquaintanceResult.equals(result));
     }
 
     @Test
-    void recommend_by_acquaintances_limit_5() {
+    void getVisitResult() {
         String user = "mrko";
         List<List<String>> friends = List.of(
                 List.of("donut", "andole"),
@@ -69,7 +47,12 @@ public class FriendRecommendTest {
                 List.of("shakevan", "cheese")
         );
         List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan", "aizza", "cheese", "bepperoni");
-        List<String> result = List.of( "aizza","bepperoni", "cheese", "andole", "jun");
-        assertThat(RecommendFriendFinder.findAcquaintanceAmongVisit(user, friends, visitors)).isEqualTo(result);
+        Map<String, Integer> result = new HashMap<>();
+        result.put("bedi", 3);
+        result.put("aizza", 1);
+        result.put("cheese", 1);
+        result.put("bepperoni", 1);
+        RecommendFriendFinder recommendFriendFinder = new RecommendFriendFinder();
+        assertThat(recommendFriendFinder.getVisitResult(user, friends, visitors).equals(result)).isTrue();
     }
 }
