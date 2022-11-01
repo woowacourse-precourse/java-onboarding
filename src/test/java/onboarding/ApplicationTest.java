@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
@@ -505,6 +506,7 @@ class ApplicationTest {
       List<String> result = new ArrayList<>();
       assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
     }
+
 
     @Test
     void userNotFoundInList() {
