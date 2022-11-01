@@ -17,10 +17,10 @@ class Problem1 {
     }
 
     public static Integer getMax(Integer pageNumber) {
-        return Math.max(divideAndPlus(pageNumber), divideAndMultiply(pageNumber));
+        return Math.max(plusNumberOfDigits(pageNumber), multiplyNumberOfDigits(pageNumber));
     }
 
-    public static Integer divideAndPlus(Integer pageNumber) {
+    public static Integer plusNumberOfDigits(Integer pageNumber) {
         int result = 0;
         while (pageNumber != 0) {
             result += pageNumber % 10;
@@ -29,7 +29,7 @@ class Problem1 {
         return result;
     }
 
-    public static Integer divideAndMultiply(Integer pageNumber) {
+    public static Integer multiplyNumberOfDigits(Integer pageNumber) {
         int result = 1;
         while (pageNumber != 0) {
             result *= pageNumber % 10;
