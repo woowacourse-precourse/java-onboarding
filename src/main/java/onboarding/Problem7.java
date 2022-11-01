@@ -82,6 +82,7 @@ public class Problem7 {
         for (String visitor : visitors) {
             points.put(visitor, points.getOrDefault(visitor, 0) + getVisitorPoint(visitor, userAndUserFriends));
         }
+        return points;
     }
 
     private static int getVisitorPoint(String visitor, List<String> userAndUserFriends) {
