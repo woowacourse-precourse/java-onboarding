@@ -1,6 +1,5 @@
 package onboarding;
 
-import onboarding.problem7.repository.FriendshipPointRepositoryImpl;
 import onboarding.problem7.repository.UserRepositoryImpl;
 import onboarding.problem7.service.PointService;
 import onboarding.problem7.service.UserInfoServiceImpl;
@@ -12,7 +11,6 @@ import java.util.Set;
 public class Problem7 {
 
     private static final UserRepositoryImpl userRepository = new UserRepositoryImpl();
-    private static final FriendshipPointRepositoryImpl friendshipRepository = new FriendshipPointRepositoryImpl();
     private static final UserInfoServiceImpl userInfoService = new UserInfoServiceImpl();
     private static final PointService pointService = new PointService();
     private static final int USER_NAME_INDEX = 0;
