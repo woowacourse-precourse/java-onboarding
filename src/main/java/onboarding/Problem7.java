@@ -3,22 +3,6 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
-    public static void main(String[] args) {
-        String user = "hello";
-        List<List<String>> friends = List.of(
-                List.of("andole", "jun"),
-                List.of("andole", "bedi"),
-                List.of("jun", "shakevan"),
-                List.of("jun", "kane"),
-                List.of("jun", "sam"),
-                List.of("bedi", "shakevan"),
-                List.of("bedi", "anne"),
-                List.of("bedi", "sam"),
-                List.of("anne", "mrko")
-        );
-        List<String> visitors = List.of("donut", "anne", "mrko", "mrko", "sam");
-        System.out.println(solution(user, friends, visitors));
-    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Map<String, Integer> pointsMap = new HashMap<>();
         Set<String> friendsSet = new HashSet<>();
