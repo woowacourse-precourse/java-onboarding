@@ -13,6 +13,7 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
 //        List<String> answer = List.of("answer");
         List<String> answer = new ArrayList<>();
+        String str = "";
         System.out.println(forms);
         System.out.println(forms.get(0));
         System.out.println((forms.get(0)).get(0));
@@ -23,23 +24,10 @@ public class Problem6 {
         String d = (forms.get(3)).get(1); //엠제이
         String e = (forms.get(4)).get(1); //이제엠
 
-        String str = "제이엠";
+        str = str.concat(String.valueOf(a.charAt(0)));
+        str = str.concat(String.valueOf(a.charAt(1)));
 
-        System.out.println(str.contains("제이슨"));
-
-
-
-//        for (int i=0;i<forms.toArray().length;i++) {
-//            String com1 = (forms.get(i)).get(1); // 제이엠
-//            String com2 = (forms.get(i+1)).get(1); // 제이슨
-//            for (int j=0;j<forms.toArray().length-i;j++) {
-//                if (com1.charAt(0) == (forms.get(j)).get(1).charAt(0)) && ((com2.charAt(1) == (forms.get(j+1)).get(1).charAt(1))) {
-//                    answer.add((forms.get(0)).get(0));
-//            }
-//        }
-//        }
-//        System.out.println(answer);
-
+        System.out.println(str);
 
         return answer;
     }
