@@ -40,33 +40,9 @@ public class Problem6 {
         for (List<String> form : forms) {
             String email = form.get(EMAIL);
             String nickName = form.get(NICK_NAME);
-
-            if (!isValidEmailFormat(email)) {
-                throw new CustomException("이메일 형식에 부합하지 않습니다");
-            }
-
-            if (!isValidNickNameFormat(nickName)) {
-                throw new CustomException("닉네임 형식에 부합하지 않습니다");
-            }
-
             map.put(email, nickName);
         }
         return map;
-    }
-
-    // 이메일 형식에 부합하는지 확인하는 메서드
-    public static boolean isValidEmailFormat(String email) {
-        return (Objects.equals(
-                "email.com", email.split("@")[1])
-                        && 11 <= email.length()
-                        && email.length() < 20);
-    }
-
-    // 닉네임 형식에 부합하는지 확인하는 메서드
-    public static boolean isValidNickNameFormat(String nickName) {
-        return (nickName.matches("[가-힣]")
-                        && 1 <= nickName.length()
-                        && nickName.length() < 20);
     }
 
     // 같은 글자가 연속적으로 포함 되는 닉네임을 작성한 지원자의 이메일 목록 리턴하는 메서드
