@@ -8,9 +8,9 @@ import java.util.List;
 // TODO: 채택 sol1. 스택을 이용한 중복문자 제거
 // sol2. 문자열 나누기를 이용한 중복문자 제거
 public class Problem2 {
-    public static String solution(String cryptogram) throws Exception {
+    public static String solution(String cryptogram)  {
         List<String> stack = new ArrayList<>(Arrays.asList(cryptogram.split("")));
-        valid(cryptogram); //입력조건이 형식에 맞는지 확인
+//        valid(cryptogram); //입력조건이 형식에 맞는지 확인
         while(!stack.isEmpty()){
             int size = stack.size();
             for(int i = 0; i < stack.size(); i++){ //문자 str1 선택

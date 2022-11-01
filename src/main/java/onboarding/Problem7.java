@@ -2,23 +2,9 @@ package onboarding;
 
 import java.util.*;
 
-//해결방법:
-// 1. Map<String, List<String>>자료형을 이용하여 친구 : List(친구들) 관계맵을 만든다.
-// 2. Map<String. Integer> 친구가 아닐때(!map.continas()) 객체를 생성하고 추천점수를 더한다.
-
-/*
-    입력값:
-    user  본인
-    friedns 친구 A : 친구 B
-    visitor 본인sns 방문자
-
-    제한사항:
-    1. 점수 순으로 정렬 하고 점수가 같을 경우 이름순으로 정렬한다.
-    2. 추천 점수가 0점일 때 추천 리스트에서 제외한다.
- */
 public class Problem7 {
-    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) throws Exception {
-        valid(user, friends, visitors);
+    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+//        valid(user, friends, visitors);
         List<String> answer = new ArrayList<>();
         Map<String, ArrayList<String>> friend_link = new HashMap<String, ArrayList<String>>();  //친구들의 관계를 나타내는 맵
         Map<String, Integer> friend_sco = new HashMap<>();  //나에게 보여줄 친구 추천 맵
@@ -29,9 +15,9 @@ public class Problem7 {
             String friend2 = list.get(1);
 
             ArrayList<String> arlist = friend_link.getOrDefault(friend1, new ArrayList<String>());
-            if(arlist.contains(friend2)){
-                throw new Exception("동일한 친구 관계가 중복해서 주어졌습니다.");
-            }
+//            if(arlist.contains(friend2)){
+//                throw new Exception("동일한 친구 관계가 중복해서 주어졌습니다.");
+//            }
             arlist.add(friend2);
             friend_link.put(friend1, arlist);
 
@@ -77,9 +63,9 @@ public class Problem7 {
         for(int i = 0; i < Math.min(5, sort_sc.size()); i++){
             answer.add(sort_sc.get(i).getKey());
         }
-        if(answer.isEmpty()){
-            throw new Exception("추천할 친구가 존재하지 않습니다.");
-        }
+//        if(answer.isEmpty()){
+//            throw new Exception("추천할 친구가 존재하지 않습니다.");
+//        }
 
         return answer;
     }

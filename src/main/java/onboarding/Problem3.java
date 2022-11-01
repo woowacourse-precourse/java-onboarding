@@ -12,9 +12,9 @@ import java.time.LocalDateTime;
 
 // 2번 채택
 public class Problem3 {
-    public static int solution(int number) throws Exception {
+    public static int solution(int number)  {
         int answer = 0 ;
-        valid(number);
+//        valid(number);
         for(int i = 3; i <= number; i++){
             int num = i;
             while(num > 0){

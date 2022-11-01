@@ -4,8 +4,8 @@ import java.util.*;
 import java.util.regex.Pattern;
 
 public class Problem6 {
-    public static List<String> solution(List<List<String>> forms) throws Exception {
-        valid(forms);
+    public static List<String> solution(List<List<String>> forms)  {
+//        valid(forms);
         List<String> answer = new ArrayList<>();
         Map<String, Long> map = new HashMap<>();  //중복 아이디 사전
 

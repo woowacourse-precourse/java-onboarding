@@ -7,8 +7,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Problem4 {
-    public static String solution(String word) throws Exception {
-        valid(word);
+    public static String solution(String word) {
+//        valid(word);
         String answer = "";
         Map<Character, Character> map = new HashMap<>();
         for(int i = 0; i < 26; i++){

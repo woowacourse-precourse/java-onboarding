@@ -7,8 +7,8 @@ import java.util.List;
 //Sol1: 큰 금액부터 나누어 몫을 리스트에 저장한다.
 
 public class Problem5 {
-    public static List<Integer> solution(int money) throws Exception {
-        valid(money);
+    public static List<Integer> solution(int money){
+//        valid(money);
         List<Integer> answer = new ArrayList<>();
         Integer[] amount = {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1}; //지폐의 단위 배열을 만들어준다.
 
