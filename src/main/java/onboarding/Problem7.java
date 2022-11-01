@@ -37,9 +37,8 @@ public class Problem7 {
             score += 1;
         }
 
-        public boolean comparePerson(String name)
-        {
-            if(this.name.equals(name))
+        public boolean comparePerson(String name) {
+            if (this.name.equals(name))
                 return true; //중복되면 TRUE 반환
             return false;
         }
@@ -50,7 +49,7 @@ public class Problem7 {
         List<String> visitors) {
         List<String> result = Collections.emptyList();
         ArrayList<String> friendList = findUserFriend(user, friends);
-        ArrayList<FriendInfo> PersonInfo = findPersonKnowWith(user,friends, friendList);
+        ArrayList<FriendInfo> PersonInfo = findPersonKnowWith(user, friends, friendList);
         PersonInfo = findVisitor(PersonInfo, visitors, friendList);
         result = findTop5(PersonInfo);
         return result;
@@ -61,17 +60,13 @@ public class Problem7 {
         addPersonList(PersonInfo,(ArrayList<String>)visitors,user);*/
     }
 
-    public static ArrayList<String> findUserFriend(String user, List<List<String>> friends)
-    { //user의 친구를 찾아주는 함수
+    public static ArrayList<String> findUserFriend(String user, List<List<String>> friends) { //user의 친구를 찾아주는 함수
         ArrayList<String> friendsList = new ArrayList<>();
-        for(List<String> relationship : friends)
-        {
-            if(relationship.get(0).equals(user))
-            {
+        for (List<String> relationship : friends) {
+            if (relationship.get(0).equals(user)) {
                 friendsList.add(relationship.get(1));
             }
-            if (relationship.get(1).equals(user))
-            {
+            if (relationship.get(1).equals(user)) {
                 friendsList.add(relationship.get(0));
             }
         }
@@ -81,31 +76,24 @@ public class Problem7 {
     public static ArrayList<FriendInfo> findPersonKnowWith(String user, List<List<String>> friends,
         ArrayList<String> userFriend) {
         ArrayList<FriendInfo> PersonInfo = new ArrayList<>();
-        for(List<String> relationship : friends)
-        {
-            if(userFriend.contains(relationship.get(0)) && !userFriend.contains(relationship.get(1))&&!relationship.get(1).equals(user))
-            {
-                int idx =overlapCheck(PersonInfo, relationship.get(1));
-                if(idx ==-1)
-                {
-                    FriendInfo friend =new FriendInfo(relationship.get(1));
+        for (List<String> relationship : friends) {
+            if (userFriend.contains(relationship.get(0)) && !userFriend.contains(relationship.get(1))
+                && !relationship.get(1).equals(user)) {
+                int idx = overlapCheck(PersonInfo, relationship.get(1));
+                if (idx == -1) {
+                    FriendInfo friend = new FriendInfo(relationship.get(1));
                     PersonInfo.add(friend);
                     friend.friendWith();
-                }
-                else{
+                } else {
                     PersonInfo.get(idx).friendWith();
                 }
-            }
-            else if(!userFriend.contains(relationship.get(0)) && userFriend.contains(relationship.get(1)))
-            {
-                int idx =overlapCheck(PersonInfo, relationship.get(0));
-                if(idx ==-1)
-                {
-                    FriendInfo friend =new FriendInfo(relationship.get(0));
+            } else if (!userFriend.contains(relationship.get(0)) && userFriend.contains(relationship.get(1))) {
+                int idx = overlapCheck(PersonInfo, relationship.get(0));
+                if (idx == -1) {
+                    FriendInfo friend = new FriendInfo(relationship.get(0));
                     PersonInfo.add(friend);
                     friend.friendWith();
-                }
-                else{
+                } else {
                     PersonInfo.get(idx).friendWith();
                 }
             }
@@ -113,24 +101,20 @@ public class Problem7 {
         return PersonInfo;
     }
 
-    public static ArrayList<FriendInfo> findVisitor(ArrayList<FriendInfo> PersonInfo, List<String> visitors, ArrayList<String> userFriend)
-    {
+    public static ArrayList<FriendInfo> findVisitor(ArrayList<FriendInfo> PersonInfo, List<String> visitors,
+        ArrayList<String> userFriend) {
         ArrayList<FriendInfo> temp = PersonInfo;
-        for(int i=0; i< visitors.size(); i++)
-        {
-            for(int j=0; j<temp.size(); j++)
-            {
-                int idx = overlapCheck(temp, visitors.get(i));
-                if(idx==-1 && !userFriend.contains(visitors.get(i)))
-                {
-                    FriendInfo friend =new FriendInfo(visitors.get(i));
-                    temp.add(friend);
-                    friend.visited();
-                }
-                else if (idx!=-1 && !userFriend.contains(visitors.get(i))){
-                    temp.get(idx).visited();
-                }
+        for (int i = 0; i < visitors.size(); i++) {
+
+            int idx = overlapCheck(temp, visitors.get(i));
+            if (idx == -1 && !userFriend.contains(visitors.get(i))) {
+                FriendInfo friend = new FriendInfo(visitors.get(i));
+                temp.add(friend);
+                friend.visited();
+            } else if (idx != -1 && !userFriend.contains(visitors.get(i))) {
+                temp.get(idx).visited();
             }
+
         }
         return temp;
     }
