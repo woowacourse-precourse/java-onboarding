@@ -24,3 +24,20 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 문제 분석
+1. 해쉬맵을 사용해서 사용자 정보, 점수 정보 저장
+   - 사용자 정보: {key: 본인 이름, value: 해쉬셋으로 친구들 저장}
+   - 점수 정보: {key: 사용자 이름, value: 점수(0으로 초기화)}
+2. user 로 입력 받은 사람의 친구들 해쉬셋 리스트를 가져옴
+3. 사용자 정보가 저장된 해쉬맵을 전체 다 순환하면서 user 의 친구들 해쉬셋에 포함되어 있는지 확인하고 있으면 점수에 +10
+4.  visitor를 순환하면서 점수 정보에 +1
+
+### 기능 목록
+1. createUserInfo
+   - parameter: friends 리스트
+   - return: 해쉬맵
+2. createPointInfo
+   - parameter: 사람들 리스트
+   - return: 해쉬맵
+   - 1번 함수로 만들어진 해쉬맵의 key 값들 리스트를 받아와 실행
