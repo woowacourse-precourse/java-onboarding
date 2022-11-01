@@ -15,6 +15,8 @@ public class Problem5 {
             money = exchange(currency, money);
         }
         makeAnswer(answer, currencies);
+        counter.clear();
+
         return answer;
     }
 
