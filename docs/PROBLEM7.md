@@ -17,7 +17,6 @@
 |  10.31   | 점수 상위 최대 5명 이름 리스트 반환          | getListOfTopUserName()              | String                    |<List\<String\>  | committed|
 
 ### TODO
--점수가 0인 사용자는 추천하지않는 조건 추가
 
 ## 🚀 기능 요구 사항
 
