@@ -1,6 +1,8 @@
 package onboarding.problem2;
 
+import java.util.ArrayList;
 import java.util.Stack;
+import java.util.stream.Collectors;
 
 public class DecipherCryptogram {
     private String cryptogram;
@@ -24,5 +26,8 @@ public class DecipherCryptogram {
         }
     }
 
-    
+    private String stackToString(){
+        ArrayList<Character> tempArrayList = new ArrayList<>(stack);
+        return tempArrayList.stream().map(String::valueOf).collect(Collectors.joining());
+    }
 }
