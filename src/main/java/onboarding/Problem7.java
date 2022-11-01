@@ -50,6 +50,13 @@ public class Problem7 {
         }
         return number;
     }
-
-
+    public static int getVisitorNumber(String name, List<String> visitors) {
+        int number = 0;
+        for(String visitor : visitors) {
+            if(visitor.equals(name)) {
+                number = number + 1;
+            }
+        }
+        return number;
+    }
 }
