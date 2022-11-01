@@ -13,6 +13,10 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
+        //각자 점수 정하기
+        int pobiScore = determineScore(pobi);
+        int crongScore = determineScore(crong);
+
         return answer;
     }
 
@@ -41,6 +45,17 @@ class Problem1 {
 
         if (sum > multiply) score = sum;
         else score = multiply;
+        return score;
+    }
+
+    static int determineScore(List<Integer> pages) {
+        int score = 0;
+
+        int leftScore = makeScore(pages.get(0));
+        int rightScore = makeScore(pages.get(1));
+
+        if (leftScore > rightScore) score = leftScore;
+        else score = rightScore;
         return score;
     }
 }
