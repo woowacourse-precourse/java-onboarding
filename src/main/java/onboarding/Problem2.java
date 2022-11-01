@@ -30,12 +30,13 @@ public class Problem2 {
 				decodedCryptogram.push(current);
 				continue;
 			}
-			duplicateCharacter = removeDuplicateCharacters(decodedCryptogram, duplicateCharacter, current);
+			duplicateCharacter = pushWhileRemovingDuplicateCharacters(decodedCryptogram, duplicateCharacter, current);
 		}
 		return decodedCryptogram;
 	}
 
-	private static char removeDuplicateCharacters(Stack<Character> decodedCryptogram, char duplicateCharacter,
+	private static char pushWhileRemovingDuplicateCharacters(Stack<Character> decodedCryptogram,
+		char duplicateCharacter,
 		char current) {
 		char top = decodedCryptogram.peek();
 		if (current != top && current != duplicateCharacter) {
