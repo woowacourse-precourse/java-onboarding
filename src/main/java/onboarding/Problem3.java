@@ -13,7 +13,7 @@ public class Problem3 {
         return count;
     }
     public static int solution(int number) {
-        int answer = 0;
+        int answer = countThreeSixNine(number);
         return answer;
     }
 }
