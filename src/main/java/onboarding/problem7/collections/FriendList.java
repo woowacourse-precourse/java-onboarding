@@ -3,6 +3,7 @@ package onboarding.problem7.collections;
 import onboarding.problem7.wrapper.Friend;
 import onboarding.problem7.wrapper.User;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,5 +28,14 @@ public class FriendList {
                 .filter(x -> x.contains(user))
                 .map(x -> x.getFriendOf(user))
                 .collect(Collectors.toList());
+    }
+
+    public List<User> getFriendsOfFriendBy(User user, List<User> friendListOfUser) {
+        List<User> newFriendOfUser = new LinkedList<>();
+        for (User friend : friendListOfUser) {
+            newFriendOfUser.addAll(getFriendListOf(friend));
+        }
+        newFriendOfUser.removeAll(List.of(user));
+        return newFriendOfUser;
     }
 }
