@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     private static final Map<String, Integer> scoreMap = new HashMap<>();
@@ -14,8 +15,19 @@ public class Problem7 {
         updateScore(friends, visitors);
         removeUnnecessary();
 
-        List<String> answer = Collections.emptyList();
+        List<String> answer = theAnswer(scoreMap);
         return answer;
+    }
+
+    public static List<String> theAnswer(Map<String, Integer> scoreMap) {
+        List<String> sortedList = scoreMap.entrySet().stream()
+                .sorted(Map.Entry.comparingByKey())
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .map(Map.Entry::getKey)
+                .limit(5)
+                .collect(Collectors.toList());
+
+        return sortedList;
     }
 
     public static void isUserValid(String user, List<List<String>> friends, List<String> visitors) {
