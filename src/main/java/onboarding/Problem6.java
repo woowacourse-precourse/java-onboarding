@@ -43,7 +43,7 @@ int[] index = new int[10000];
     					continue;
     					}
     				if(forms.get(g).get(1).contains(sub) && !result.contains(forms.get(g).get(0))) {
-    				result.add(forms.get(g).get(0));
+    					result.add(forms.get(g).get(0));
     				}
     			}
     		
