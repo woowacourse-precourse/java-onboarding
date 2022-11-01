@@ -1,12 +1,14 @@
 package onboarding;
 
+import javax.security.auth.login.AccountLockedException;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Problem6 {
     private static final Map<String, List<String>> map = new HashMap<>();
     public static List<String> solution(List<List<String>> forms) {
         TreeSet<String> set = new TreeSet<>();
+
+        clear();
 
         initMap(forms);
 
@@ -18,6 +20,10 @@ public class Problem6 {
 
         List<String> answer = new ArrayList<>(set);
         return answer;
+    }
+
+    private static void clear() {
+        map.clear();
     }
 
     private static void initMap(List<List<String>> forms) {
