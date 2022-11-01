@@ -4,9 +4,12 @@ public class Problem2 {
 
     static int countOverLap;
     public static String solution(String cryptogram) {
-        String answer = "answer";
+
         countOverLap = Integer.MAX_VALUE;
-        return answer;
+        while(countOverLap != 0){
+            cryptogram = removeOverlap(cryptogram);
+        }
+        return cryptogram;
     }
 
     static String removeOverlap(String cryptogram) {
