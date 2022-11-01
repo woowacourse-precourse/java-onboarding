@@ -12,10 +12,20 @@ public class Problem7 {
 
 	private static class RecommendedScore {
 		private final static int DEFAULT_SCORE = 0;
+		private final static int SHARING_FRIEND_BONUS = 10;
+		private final static int VISITED_BONUS = 1;
 		private int score;
 
 		RecommendedScore() {
 			this.score = DEFAULT_SCORE;
+		}
+
+		public void addScoreBySharingFriend() {
+			score += SHARING_FRIEND_BONUS;
+		}
+
+		public void addScoreByVisit() {
+			score += VISITED_BONUS;
 		}
 	}
 
