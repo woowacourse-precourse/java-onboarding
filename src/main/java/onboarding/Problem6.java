@@ -8,8 +8,9 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
+/**가
  * isCompare : forms에 속한 크루들의 닉네임과 이메일을 두 개씩 짝지어 비교하기 위한 메서드
+ * isContinuous : 두 개씩 짝지은 크루원들의 닉네임 중 같은 글자가 연속적으로 포함되는 지 확인하는 메서드
  **/
 
 public class Problem6 {
@@ -17,7 +18,7 @@ public class Problem6 {
 
         List<String> answer;
         answer = isCompare(forms);
-        
+
         return answer;
     }
 
@@ -31,13 +32,37 @@ public class Problem6 {
                 if(i == j) {
                     continue;
                 }
-                String aMail = forms.get(i).get(0);
-                String bMail = forms.get(j).get(0);
+                String iMail = forms.get(i).get(0);
+                String jMail = forms.get(j).get(0);
                 String aName = forms.get(i).get(1);
                 String bName = forms.get(j).get(1);
+
+                if (isContinuous(aName, bName)) {
+                    answer.addAll(List.of(iMail, jMail));
+                }
             }
         }
-
         return answer;
+    }
+
+    static boolean isContinuous(String nameA, String nameB) {
+        int lenA = nameA.length();
+        int lenB = nameB.length();
+
+        ArrayList<String> listA = new ArrayList<>();
+        ArrayList<String> listB = new ArrayList<>();
+
+        for (int i = 0; i < lenA - 1; i++) {
+            listA.add(nameA.substring(i, i + 2));
+        }
+        for (int i = 0; i < lenB-1; i++) {
+            listB.add(nameB.substring(i, i + 2));
+        }
+        for (int i = 0; i < listA.size(); i++) {
+            if (listB.contains(listA.get(i))) {
+                return true;
+            }
+        }
+        return false;
     }
 }
