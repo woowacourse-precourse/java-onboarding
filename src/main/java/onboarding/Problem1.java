@@ -33,12 +33,16 @@ class Problem1 {
     }
 
     /**
-     * 첫번째 페이지 또는 마지막 페이지인 경우 False를 반환한다.
+     * 첫번째 페이지 또는 마지막 페이지인 경우 True를 반환한다.
      * @param pageNum 페이지 번호
      * @return boolean
      */
     private boolean checkFirstOrEnd(int pageNum){
-        return pageNum != firstPageNum && pageNum != lastPageNum;
+        return pageNum == firstPageNum || pageNum == lastPageNum;
+    }
+    private boolean checkPage(List<Integer> page){
+        if(page.get(1) - page.get(0) != 1) return false;
+        return true;
     }
 
     /**
@@ -78,7 +82,8 @@ class Problem1 {
         Integer leftPage = data.get(0);
         Integer rightPage = data.get(1);
         //예외 처리
-        if(checkFirstOrEnd(leftPage) && checkFirstOrEnd(rightPage)) return -1;
+        if(!checkPage(data)) return -1;
+        if(checkFirstOrEnd(leftPage) || checkFirstOrEnd(rightPage)) return -1;
         int leftMax = Math.max(getSumByIndex(leftPage), getMultiplyByIndex(leftPage));
         int rightMax = Math.max(getSumByIndex(rightPage), getMultiplyByIndex(rightPage));
         return Math.max(leftMax, rightMax);
