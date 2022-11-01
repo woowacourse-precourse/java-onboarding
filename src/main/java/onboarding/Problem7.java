@@ -47,7 +47,12 @@ public class Problem7 {
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        Map<String, List<String>> friendTable = makeFriendGraph(friends);
+        List<String> bestFriends = friendTable.get(user);
+
+        Map<String, Integer> scoreTable = makeScoreTable(user, friendTable, bestFriends);
+        checkVisitor(visitors, bestFriends, scoreTable);
+
+        return convertAndSortScoreTable(scoreTable);
     }
 }
