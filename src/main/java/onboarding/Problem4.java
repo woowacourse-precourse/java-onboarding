@@ -73,14 +73,6 @@ class Result {
         }
         return false;
     }
-
-    private char toUpperCase(char wordChar) {
-        return Character.toUpperCase(wordChar);
-    }
-
-    private char toLowerCase(char wordChar) {
-        return Character.toLowerCase(wordChar);
-    }
 }
 
 
