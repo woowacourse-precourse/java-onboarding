@@ -21,3 +21,10 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+---
+## 💻 기능 목록
+1. 닉네임을 2글자로 쪼개기.
+2. 쪼갠 2글자 중복 제거
+3. 쪼갠 2글자를 포함한 닉네임이 2개이상일 때 해당 닉네임 사용을 제한.
+4. 제한될 닉네임 리스트를 오름차순으로 정렬. 
