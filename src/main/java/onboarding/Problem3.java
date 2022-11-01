@@ -53,4 +53,8 @@ public class Problem3 {
         return 7 * generalThousands() + 3 * specificThousands();
     }
 
+    public static int calculateOnesClapCase(int oneNumber) {
+        return oneNumber / 3;
+    }
+
 }
