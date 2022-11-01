@@ -13,6 +13,11 @@ public class Problem7 {
 
         scoreByFriends(user,friends,score);
         scoreByVisitors(visitors,score);
+        deleteUserAndFriendsFromHashmap(user,friends,score);
+
+        for(String element : score.keySet()){
+            answer.add(element);
+        }
 
         return answer;
     }
@@ -65,6 +70,30 @@ public class Problem7 {
             if(score.containsKey(visitors.get(i))) currentScore = score.get(visitors.get(i));
             currentScore+=1;
             score.put(visitors.get(i),currentScore);
+        }
+    }
+
+    //점수 기반으로 만들어진 hashmap에서 유저, 유저 친구 제거
+    public static void deleteUserAndFriendsFromHashmap(String user, List<List<String>> friends, HashMap<String,Integer> score){
+        List<String> usersFriends = new ArrayList<>();
+        String friendsOne ,friendsTwo;
+
+        usersFriends.add(user);
+        for(int i = 0; i < friends.size(); i++){
+            friendsOne = friends.get(i).get(0);
+            friendsTwo = friends.get(i).get(1);
+
+            if(friendsOne.equals(user)){
+                usersFriends.add(friendsTwo);
+            }
+
+            if(friendsTwo.equals(user)){
+                usersFriends.add(friendsOne);
+            }
+        }
+
+        for(int i = 0 ; i < usersFriends.size(); i++){
+            score.remove(usersFriends.get(i));
         }
     }
 }
