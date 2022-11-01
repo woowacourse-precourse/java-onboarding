@@ -50,6 +50,7 @@ public class Problem7 {
             }
         }
 
+        //
         List<String> keyList = new ArrayList<>(points.keySet());
         for (int i = 0; i < keyList.size() - 1; i++) {
             for (int j = i + 1; j < keyList.size(); j++) {
@@ -65,6 +66,9 @@ public class Problem7 {
                     }
                 }
             }
+        }
+        if (keyList.size() > 5) {
+            keyList = keyList.subList(0, 5);
         }
 
         return keyList;
