@@ -15,6 +15,14 @@ public class Problem4 {
         return (char)temp_ascii;
     }
 
+    String getReversedString(String word){
+        String temp_string = "";
+        for (int i = 0; i < word.length(); i++){
+            temp_string += getReversedAlphabet(word.charAt(i));
+        }
+        return temp_string;
+    }
+
 
     public static String solution(String word) {
         String answer = "";
