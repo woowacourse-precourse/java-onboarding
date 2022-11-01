@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -9,7 +10,26 @@ import java.util.List;
  */
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer = new ArrayList<>();
+        boolean[] isSelected = new boolean[forms.size()];
+
+        for (int i = 0; i < forms.size(); i++) {
+
+            if (isSelected[i]) {
+                continue;
+            }
+
+            List<String> standardForm = forms.get(i);
+            String standardFormEmail = standardForm.get(0);
+            String standardFormNickname = standardForm.get(1);
+
+            List<String> twoLetters = new ArrayList<>();
+
+            for (int j = 0; j < standardFormNickname.length() - 1; j++) {
+                twoLetters.add(standardFormNickname.substring(j, j + 2));
+            }
+
+        }
         return answer;
     }
 }
