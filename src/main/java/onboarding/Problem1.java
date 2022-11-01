@@ -7,10 +7,25 @@ class Problem1 {
     private static final int DRAW = 0;
     private static final int POBI_WIN = 1;
     private static final int CRONG_WIN = 2;
+    private static final int EXCEPTION = -1;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        return answer(pobi, crong);
+    }
+
+    private static int answer(List<Integer> pobi, List<Integer> crong) {
+        if (checkException(pobi)) {
+            return EXCEPTION;
+        }
+
+        if (checkException(crong)) {
+            return EXCEPTION;
+        }
+
+        int pobisResult = calculateScores(pobi);
+        int crongsResult = calculateScores(crong);
+
+        return compareToScore(pobisResult, crongsResult);
     }
 
     private static int calculateScores(List<Integer> pages) {
