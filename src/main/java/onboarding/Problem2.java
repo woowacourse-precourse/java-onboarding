@@ -41,6 +41,11 @@ public class Problem2 {
             if(count == 0) break;
         }
 
+        // convert List to String
+        for(String word: cryptogramArray){
+            answer += word;
+        }
+
         return answer;
     }
 }
