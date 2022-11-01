@@ -12,7 +12,7 @@ public class Problem7 {
         HashMap<String,Integer> score = new HashMap<>();
 
         scoreByFriends(user,friends,score);
-
+        scoreByVisitors(visitors,score);
 
         return answer;
     }
@@ -57,4 +57,14 @@ public class Problem7 {
         }
     }
 
+    //유저의 타임라인에 방문했을때 점수 획득
+    public static void scoreByVisitors(List<String> visitors, HashMap<String,Integer> score){
+
+        for(int i = 0 ; i < visitors.size(); i++){
+            int currentScore = 0;
+            if(score.containsKey(visitors.get(i))) currentScore = score.get(visitors.get(i));
+            currentScore+=1;
+            score.put(visitors.get(i),currentScore);
+        }
+    }
 }
