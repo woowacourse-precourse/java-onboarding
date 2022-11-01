@@ -2,10 +2,10 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeSet;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
         List<String> email = new ArrayList<>();
         List<String> name = new ArrayList<>();
         int length;
@@ -19,6 +19,8 @@ public class Problem6 {
                 }
             }
         }
+        TreeSet<String> draft = new TreeSet<>(email);
+        List<String> answer = new ArrayList<>(draft);
 
         return answer;
     }
