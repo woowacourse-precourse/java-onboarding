@@ -8,7 +8,7 @@ import java.util.Collections;
 
 public class Problem4 {
 
-	public String solution(String word) {
+	public static String solution(String word) {
 		
 		char[] arr = word.toCharArray();
 		
@@ -63,7 +63,7 @@ public class Problem4 {
 
 	////////////////////////
 	// ㅜ 알파벳 배열을 만드는 함수
-	public ArrayList<Character> createAlphabetList(char a) {
+	public static ArrayList<Character> createAlphabetList(char a) {
 
 		int LENGTH = 26;
 
@@ -122,7 +122,7 @@ public class Problem4 {
 
 	///////////////////////////
 	// ㅜ 배열을 뒤집어서 반환하는 함수
-	public ArrayList<Character> reverseNewList(ArrayList<Character> alphabetList) {
+	public static ArrayList<Character> reverseNewList(ArrayList<Character> alphabetList) {
 
 		ArrayList<Character> newList = new ArrayList<Character>(alphabetList);
 
@@ -133,7 +133,7 @@ public class Problem4 {
 
 	///////////////////////////////////////
 	// ㅜ 어레이리스트를 문자열로 변환해서 반환하는 함수
-	public String fromArrayListToString(ArrayList<Character> list) {
+	public static String fromArrayListToString(ArrayList<Character> list) {
 
 		StringBuilder stringBuilder = new StringBuilder(list.size());
 
@@ -147,7 +147,7 @@ public class Problem4 {
 
 	/////////////////////////////////////////////////////////////////////////////
 	// ㅜ 리스트에서 일치하는 알파벳 인덱스를 찾아 뒤집은 리스트에서 인덱스에 해당하는 값을 반환하는 함수
-	public char replaceCharacter(char character, ArrayList<Character> alphabetList,
+	public static char replaceCharacter(char character, ArrayList<Character> alphabetList,
 			ArrayList<Character> reverseAlphabetList) {
 
 		int idx = alphabetList.indexOf(character);
