@@ -11,19 +11,23 @@ public class Problem6 {
 
     private static final String EMAIL_DOMAIN = "@email.com";
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
         Map<String, ArrayList<String>> consecutiveLettersMap = new HashMap<>();
+        List<String> crewEmailList = new ArrayList<>(); // answer
 
         for (List<String> form : forms) {
             String email = form.get(0);
             String nickname = form.get(1);
 
-            if (isValidForm(email, nickname)){ // email, nicknamee 유효성 검사
+            if (isValidForm(email, nickname)) { // email, nickname 유효성 검사
                 makeConsecutiveLettersMap(consecutiveLettersMap, form); // 닉네임의 모든 연속적인 두 글자에 대한 맵 만들기
             }
         }
 
-        return answer;
+        // 중복되는 글자 가진 지원자 이메일 목록 만들기
+        makeCrewEmailList(crewEmailList, consecutiveLettersMap);
+        crewEmailList.sort(String::compareTo);
+
+        return crewEmailList;
     }
 
 
@@ -33,8 +37,26 @@ public class Problem6 {
         return (isValidEmail && isValidNickname);
     }
 
+    private static void addToEmailList(List<String> emailList, Map.Entry<String, ArrayList<String>> entry){
+        if(entry.getValue().size() <= 1) {
+            return;
+        }
+        for(String email: entry.getValue()){
+            if(!emailList.contains(email)){
+                emailList.add(email);
+            }
+        }
+    }
+
+    private static void makeCrewEmailList(List<String> emailList, Map<String, ArrayList<String>> lettersMap){
+        for(Map.Entry<String, ArrayList<String>> entry : lettersMap.entrySet()){
+            addToEmailList(emailList, entry);
+        }
+    }
+
     private static String getConsecutiveLetters(char firstLetter, char secondLetter){
-        return append(firstLetter)
+        return new StringBuilder()
+                .append(firstLetter)
                 .append(secondLetter)
                 .toString();
     }
@@ -48,8 +70,8 @@ public class Problem6 {
             String letters = getConsecutiveLetters(nickNameArray[i],nickNameArray[i+1]);
             addToLettersMap(lettersMap, letters, email);
         }
-
     }
+
     private static void addToLettersMap(Map<String, ArrayList<String>> lettersMap, String letters, String email){
         ArrayList<String> arr;
         if(lettersMap.containsKey(letters)){
