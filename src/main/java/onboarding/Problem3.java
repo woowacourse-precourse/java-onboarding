@@ -11,16 +11,16 @@ public class Problem3 {
         return answer;
     }
 
-    public static int get369Count(int n) {
-        int cnt = 0;
-        while (n > 0) {
-            if (is369(n)) cnt++;
-            n /= 10;
+    private static int get369Count(int number) {
+        int count = 0;
+        while (number > 0) {
+            if (is369(number % 10)) count++;
+            number /= 10;
         }
-        return cnt;
+        return count;
     }
 
-    private static boolean is369(int n) {
-        return (n % 10 != 0) && (n % 10) % 3 == 0;
+    private static boolean is369(int number) {
+        return (number != 0) && (number % 3 == 0);
     }
 }
