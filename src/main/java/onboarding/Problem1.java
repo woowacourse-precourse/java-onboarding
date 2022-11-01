@@ -4,7 +4,7 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if(!checkValidity(pobi)||!checkValidity(crong)){
+        if (!checkValidity(pobi) || !checkValidity(crong)) {
             return -1;
         }
         int answer = Integer.MAX_VALUE;
@@ -34,5 +34,16 @@ class Problem1 {
         }
 
         return true;
+    }
+
+    private static int add(Integer integer) {
+        int ret = 0;
+
+        while (integer > 0) {
+            ret += integer % 10;
+            integer=integer/10;
+        }
+
+        return ret;
     }
 }
