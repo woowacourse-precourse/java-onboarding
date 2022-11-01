@@ -3,7 +3,7 @@ package onboarding;
 
 
 public class Problem4 {
-    public static char convertAlpahbet(char ch) {   // 해당 문자를 변환
+    public static char convertAlphabet(char ch) {   // 해당 문자를 변환
         char converted = ch;
 
         if (Character.isUpperCase(ch)) {
@@ -21,7 +21,7 @@ public class Problem4 {
 
         for (char ch : word.toCharArray()) {
             if (Character.isLetter(ch)) {
-                ch = convertAlpahbet(ch);
+                ch = convertAlphabet(ch);
             }
             converted += ch;
         }
