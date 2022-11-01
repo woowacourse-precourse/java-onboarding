@@ -27,6 +27,14 @@ public class Problem7 {
 
     private static void scoreFriendsKnowWithUser(String user, List<List<String>> friends) {
         Set<String> userFriends = getUserFriends(user, friends);
+        for(List<String> friend: friends) {
+            String friend1 = friend.get(0), friend2 = friend.get(1);
+            if(userFriends.contains(friend1))
+                personScore.put(friend2, personScore.get(friend2)+10);
+            if(userFriends.contains(friend2))
+                personScore.put(friend1, personScore.get(friend1)+10);
+        }
+        personScore.remove(user);
     }
 
     private static void scoreVisitor(List<String> visitors) {
