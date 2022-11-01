@@ -1,5 +1,8 @@
 package onboarding;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class Problem3 {
 
     public static int solution(int number) {
@@ -13,19 +16,13 @@ public class Problem3 {
     }
 
     private static int checkNumber(int number) {
-        int count = 0;
-
-        for (char c : makeString(number).toCharArray()) {
-            if (c == '3' || c == '6' || c == '9') {
-                count++;
-            }
-        }
-
-        return count;
+        return (int) makeList(number).stream()
+            .filter(c -> c.equals("3") || c.equals("6") || c.equals("9"))
+            .count();
     }
 
-    private static String makeString(int number) {
-        return Integer.toString(number);
+    private static List<String> makeList(int number) {
+        return Arrays.asList(Integer.toString(number).split(""));
     }
 
 }
