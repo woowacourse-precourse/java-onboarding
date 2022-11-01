@@ -1,10 +1,29 @@
 package onboarding;
 
-import java.util.List;
+import org.assertj.core.util.Lists;
+
+import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        Set emails = new TreeSet();
+        HashMap<String, Boolean> nicknameMap = new HashMap<String, Boolean>();
+
+        for (List<String> item:forms) {
+            List<String> separated = separateNickname((item.get(1)));
+            for (String s:separated) {
+                insertHash(s, nicknameMap);
+            }
+        }
+
+        for (List<String> item:forms) {
+            List<String> separated = separateNickname((item.get(1)));
+            if (hasDuplicatedNickname(separated, nicknameMap)){
+                emails.add(item.get(0));
+            }
+        }
+
+        List<String> answer = Lists.newArrayList(emails);
         return answer;
     }
 
