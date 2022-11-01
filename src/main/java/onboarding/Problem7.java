@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 public class Problem7 {
@@ -43,6 +44,15 @@ public class Problem7 {
 		public static void addFriendRelation(User firstUser, User secondUser) {
 			firstUser.friendList.add(secondUser);
 			secondUser.friendList.add(firstUser);
+		}
+	}
+
+	private static class SocialService {
+		private final User receivedUser;
+		private LinkedHashMap<String, User> users = new LinkedHashMap<>();
+
+		SocialService(String user, List<List<String>> friends, List<String> visitors) {
+			receivedUser = new User(user);
 		}
 	}
 }
