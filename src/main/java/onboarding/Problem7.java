@@ -1,10 +1,3 @@
-/*
-1. 친구 목록 만들기
-2. 현재 친구가 아니면서 친구 2명의 친구는 점수 + 10
-3. 현재 친구가 아닌 visitor 점수 + 1
-4. 최대 5명 리턴
- */
-
 package onboarding;
 
 import java.util.*;
