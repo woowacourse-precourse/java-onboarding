@@ -1,8 +1,11 @@
 package onboarding;
 
-import java.util.List;
+import java.util.*;
+import java.util.Collections;
 
 public class Problem6 {
+
+    static List<String> answer = new ArrayList<String>();
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
@@ -19,4 +22,15 @@ public class Problem6 {
         }
         return check;
     }
+
+    public static void emailAddressInput(Set<Integer> printListNumberSet, List<List<String>> originForms) {
+        Iterator<Integer> it = printListNumberSet.iterator();
+
+        while (it.hasNext())
+            answer.add(originForms.get((int)it.next()).get(0));
+
+        Collections.sort(answer);
+    }
+
+
 }
