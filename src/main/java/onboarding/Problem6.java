@@ -17,7 +17,7 @@ public class Problem6 {
         return answer;
     }
 
-    public static Map<String, List<String>> toHashMap(List<List<String>> forms) {
+    private static Map<String, List<String>> toHashMap(List<List<String>> forms) {
         Map<String, List<String>> nicknameParts = new HashMap<>();
         for (List<String> form : forms) {
             nicknameParts.put(form.get(0), separateNickname(form.get(1)));
