@@ -18,6 +18,7 @@ public class Problem4 {
             else if ('A' <= c && c <= 'Z') {
                 c = (char)('Z' - c + 'A' );
             }
+            answer += String.valueOf(c);
         }
         return answer;
     }
