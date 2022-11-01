@@ -164,8 +164,8 @@ class ValidityCheckerProb7 {
   }
 
   private void visitorsValidityCheck(List<String> visitors) {
-    for (int i = 0; i < visitors.size(); i++) {
-      if (visitors.get(i).length() < 0 || visitors.get(i).length() > 10000) {
+    for (String visitor : visitors) {
+      if (visitor.length() < 0 || visitor.length() > 10000) {
         throw new IllegalArgumentException("visitors length out of range.");
       }
     }
@@ -189,14 +189,14 @@ class ScoreCalculator {
 
   List<String> calculateScore() {
     List<String> answer = new ArrayList<>();
-    for (int i = 0; i < visitors.size(); i++) {
-      if (scoreTable.containsKey(visitors.get(i))) {
-        int score = scoreTable.get(visitors.get(i));
+    for (String visitor : visitors) {
+      if (scoreTable.containsKey(visitor)) {
+        int score = scoreTable.get(visitor);
         score++;
-        scoreTable.put(visitors.get(i), score);
+        scoreTable.put(visitor, score);
       }
-      if (!scoreTable.containsKey(visitors.get(i))) {
-        scoreTable.put(visitors.get(i), 1);
+      if (!scoreTable.containsKey(visitor)) {
+        scoreTable.put(visitor, 1);
       }
     }
     for (String iter : relationTable.get(user)) {
