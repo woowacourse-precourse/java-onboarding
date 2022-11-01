@@ -28,7 +28,6 @@ public class Problem6 {
                     }
                 }                
             }
-
         }
         return idx;
     }
