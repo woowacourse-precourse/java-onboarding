@@ -41,6 +41,7 @@ public class Problem7 {
         /* [요구] 점수가 가장 높은 순으로 정렬하여 최대 5명 리턴 */
         return friendToScoreMap.entrySet().stream()
                 .sorted(valueComparator.thenComparing(keyComparator))
+                .filter(s -> s.getValue() > 0)
                 .limit(5)
                 .map(Entry::getKey)
                 .collect(Collectors.toList());
