@@ -15,7 +15,8 @@ class Problem1 {
         }
         return answer;
     }
-    public static int calculate(Integer leftPage,Integer rightPage){
+   
+    public static int calculate(Integer leftPage,Integer rightPage){  
 
         String left = leftPage.toString();
         String right =rightPage.toString();
