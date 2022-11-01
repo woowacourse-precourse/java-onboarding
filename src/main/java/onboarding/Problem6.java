@@ -12,40 +12,46 @@ import Exception.KoreanException;
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
+        List<List<String>> newForms = new ArrayList<>();
+        newForms.addAll(forms);
         try {
-            crewSizeCheck(forms);
-            for (int i=0;i<=1;i++)
+            crewSizeCheck(newForms);
+            for (int i=0;i<newForms.size();i++)
             {
-                emailCheck(forms.get(i).get(0));
-                emailLengthCheck(forms.get(i).get(0));
-                nickNameLengthCheck(forms.get(i).get(1));
-                koreanCheck(forms.get(i).get(1));
+                System.out.println(i);
+                if(emailLengthCheck(newForms.get(i).get(0))) {
+                    newForms.remove(i);
+                    i=0;
+                }
+                if(nickNameLengthCheck(newForms.get(i).get(1))) {
+                    newForms.remove(i);
+                    i=0;
+                }
+                if(koreanCheck(newForms.get(i).get(1)))
+                {
+                    newForms.remove(i);
+                    i=0;
+                };
+                if(!emailCheck(newForms.get(i).get(0))){
+                    newForms.remove(i);
+                    i=0;
+                }
             }
             answer = new ArrayList<>();
-            List <String> nickName = nickNameList(forms);
-            List <String> trim = stringTrim2(forms);
+            List <String> nickName = nickNameList(newForms);
+            List <String> trim = stringTrim2(newForms);
             List <Integer> deleteIdx = deleteIdx(trim,nickName);
-            System.out.println("nick : "+nickName);
-            System.out.println("trim : "+trim);
-            System.out.println("deleteIdx : "+deleteIdx);
-            answer.addAll(deleteForms(forms,deleteIdx));
-        }catch (EmailFormException e)
-        {
-            //문제에 예외를 어떻게 처리하라는 말이 없음
-            //log.error OR log.warn
-            //System.out.println(e.toString());
+            answer.addAll(deleteForms(newForms,deleteIdx));
         }catch (RangeException e)
         {
-            //문제에 예외를 어떻게 처리하라는 말이 없음
-            //log.error OR log.warn
-            //System.out.println(e.toString());
-        }catch (KoreanException e)
-        {
+            System.out.println("range");
             //문제에 예외를 어떻게 처리하라는 말이 없음
             //log.error OR log.warn
             //System.out.println(e.toString());
         }catch (IndexOutOfBoundsException e)
         {
+            System.out.println("index");
+
             //문제에 예외를 어떻게 처리하라는 말이 없음
             //log.error OR log.warn
             //System.out.println(e.toString());
@@ -59,9 +65,10 @@ public class Problem6 {
      * @param email list에서 이메일만 입력
      * @throws EmailFormException @email.com이 아니면 발생
      */
-    public static void emailCheck(String email) throws EmailFormException
+    public static boolean emailCheck(String email)
     {
-        if(!email.contains("@email.com"))throw new EmailFormException("@email.com이 아닙니다");
+        if(email.contains("@email.com")) return true;
+        else return false;
     }
 
     /**
@@ -70,9 +77,10 @@ public class Problem6 {
      * @param email list에서 이메일만 입력
      * @throws RangeException 11~20자미만이 아니면 발생
      */
-    public static void emailLengthCheck(String email) throws RangeException
+    public static boolean emailLengthCheck(String email)
     {
-        if(email.length()<11||email.length()>=20) throw new RangeException("Email 입력범위 11~20미만에 해당하지 않습니다");
+        if(email.length()<11||email.length()>=20) return true;
+        else return false;
     }
 
     /**
@@ -81,9 +89,10 @@ public class Problem6 {
      * @param nickName list에서 닉네임만 입력
      * @throws RangeException 1~20자미만이 아니면 발생
      */
-    public static void nickNameLengthCheck(String nickName) throws RangeException
+    public static boolean nickNameLengthCheck(String nickName)
     {
-        if(nickName.length()<1||nickName.length()>=20) throw new RangeException("NickName 입력범위 1~20자미만에 해당하지 않습니다");
+        if(nickName.length()<1||nickName.length()>=20) return true;
+        else return false;
     }
 
     /**
@@ -103,9 +112,10 @@ public class Problem6 {
      * @param nickName list에서 닉네임만 입력한다
      * @throws KoreanException 한글이 아닌경우 발생
      */
-    public static void koreanCheck(String nickName)throws KoreanException
+    public static boolean koreanCheck(String nickName)
     {
-        if(!nickName.matches(".*[ㄱ-ㅎㅏ-ㅣ가-힣]+.*")) throw new KoreanException("한글이 아닌 입력이 있습니다");
+        if(!nickName.matches(".*[ㄱ-ㅎㅏ-ㅣ가-힣]+.*")) return true;
+        else return false;
     }
 
     /**

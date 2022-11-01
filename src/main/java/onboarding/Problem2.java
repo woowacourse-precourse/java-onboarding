@@ -30,29 +30,48 @@ public class Problem2 {
      */
     public static String deleteConsecutiveChar(String cryptogram)
     {
-        int i=1;
+        int i=0;
+        int j=0;
+        String oldString = new String();
         while (true)
         {
-            if(i==cryptogram.length()||cryptogram.length()==0)
+            if(i>=cryptogram.length()-1||cryptogram.length()==0)
             {
                 break;
             }
-            if(cryptogram.charAt(i)==cryptogram.charAt(i-1)) {
-                cryptogram = cryptogram.substring(0, i - 1) + cryptogram.substring(i+1);
-                i = 1;
-                continue;
+            while(i<cryptogram.length()-1) {
+                System.out.println("i : " + i + "j : " + j);
+                if (cryptogram.charAt(i) == cryptogram.charAt(j)) {
+                    j++;
+                    //abba
+                    continue;
+                } else if (i != j - 1) {
+                    cryptogram = cryptogram.substring(0, i) + cryptogram.substring(j);
+                    System.out.println(cryptogram);
+                    j--;
+                    continue;
+                }
+                System.out.println(cryptogram);
+//            }
+                i++;
             }
-            i++;
+            if(oldString!=cryptogram) {
+                oldString=cryptogram;
+            }else {
+                break;
+            }
+            i=0;
+            j=0;
         }
         return cryptogram;
     }
 
     /**
-     * 문제의 예외인 대문자입력, 문자열 길이 범위 1~40000초과시
+     * 문제의 예외인 대문자입력, 문자열 길이 범위 1~1000초과시
      *
      * @param cryptogram 문자열
      * @throws IsUpperCaseException 대문자입력시 예외발생
-     * @throws RangeException 문자열 길이 범위 1~40000이 아닌경우 예외발생
+     * @throws RangeException 문자열 길이 범위 1~1000이 아닌경우 예외발생
      */
     public static void exception(String cryptogram) throws IsUpperCaseException, RangeException
     {
@@ -61,6 +80,6 @@ public class Problem2 {
         {
            if (Character.isUpperCase(isUpperCaseTestChar)) throw new IsUpperCaseException("입력값에 대문자가 있습니다");
         }
-        if (cryptogram.length()<1||cryptogram.length()>40000) throw new RangeException("문자열 길이 범위 1~40000에 일치하지 않습니다");
+        if (cryptogram.length()<1||cryptogram.length()>1000) throw new RangeException("문자열 길이 범위 1~1000에 일치하지 않습니다");
     }
 }

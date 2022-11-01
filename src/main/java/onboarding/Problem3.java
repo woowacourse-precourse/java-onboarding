@@ -33,7 +33,6 @@ public class Problem3 {
             {
                 if(c=='3'||c=='6'||c=='9')
                 {
-                    System.out.println(i);
                     count++;
                 }
             }
