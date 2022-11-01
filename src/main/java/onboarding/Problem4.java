@@ -18,6 +18,9 @@ public class Problem4 {
         ArrayList<Character> upperCase = new ArrayList<Character>(26);
         ArrayList<Character> lowerCase = new ArrayList<Character>(26);
 
+        //주어진 문자 word를 저장
+        char[] arrayWord  =new char[word.length()];
+
         for(int i=0; i<26; i++) {
             //ASCII
             upperCase.add((char)(65+i));
@@ -28,9 +31,10 @@ public class Problem4 {
             lowerCase.add((char)(97+j));
         }
 
-        System.out.print(upperCase);
-        System.out.print(lowerCase);
-
+        for(int w=0; w<arrayWord.length; w++) {
+            //char 배열 형태로 word 문자 저장
+            arrayWord[w] = (word.charAt((w)));
+        }
         return answer;
     }
 }
