@@ -1,6 +1,7 @@
 package onboarding;
 
 public class Problem3 {
+
     //박수 카운트 세기
     public static int countClapNum(int num, int answer) {
         int digit;
