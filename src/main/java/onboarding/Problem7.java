@@ -68,6 +68,23 @@ public class Problem7 {
 
         }
 
+        // 타임 라인 점수 계산
+        for(int i = 0; i < visitors.size(); i++){
+
+            String name = visitors.get(i);
+
+            // 이미 map 에 있다면, 기존 점수에 + 1
+            if(map.containsKey(name)){
+                map.put(name, map.get(name) + 1);
+            }
+
+            else{
+                if(!user_friend_list.contains(name)) {
+                    map.put(name, 1);
+                }
+            }
+        }
+
         return answer;
     }
 }
