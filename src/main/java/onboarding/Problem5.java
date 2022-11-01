@@ -7,9 +7,8 @@ import java.util.List;
 public class Problem5 {
     public static List<Integer> solution(int money) {
 
-//        String result = converter(money, 0);
-//        List<Integer> answer = convertToList(result);
-        List<Integer> answer = Collections.emptyList();
+        String result = converter(money, 0);
+        List<Integer> answer = convertToList(result);
 
         return answer;
     }

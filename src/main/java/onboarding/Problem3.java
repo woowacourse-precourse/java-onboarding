@@ -2,8 +2,7 @@ package onboarding;
 
 public class Problem3 {
     public static int solution(int number) {
-//        int answer = looper(number);
-        int answer = 0;
+        int answer = looper(number);
         return answer;
     }
 
