@@ -16,15 +16,27 @@ public class Problem6 {
             List<String> nameList = setInit(forms, 1);
 
             verificationEmail(emailList);
-            duplicateName(nameList);
+            List<String> duplicateNameList = duplicateName(nameList);
 
-
+            return getResult(forms, duplicateNameList);
         } catch (Exception error) {
-            throw error;
+            return (List<String>) error;
         }
     }
 
-
+    private static List<String> getResult(List<List<String>> forms,
+        List<String> duplicateNameList) {
+        List<String> sortedList = new ArrayList<>();
+        for (List<String> form : forms) {
+            for (String duplicateName : duplicateNameList) {
+                if (Objects.equals(form.get(1), duplicateName)) {
+                    sortedList.add(form.get(0));
+                }
+            }
+        }
+        Collections.sort(sortedList);
+        return sortedList;
+    }
 
     public static List<String> setInit(List<List<String>> forms, int index) {
         List<String> initlist = new ArrayList<>();
