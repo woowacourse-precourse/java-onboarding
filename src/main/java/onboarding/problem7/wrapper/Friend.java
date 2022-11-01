@@ -8,4 +8,8 @@ public class Friend {
         this.userA = userA;
         this.userB = userB;
     }
+
+    public boolean contains(User user) {
+        return userA.equals(user) || userB.equals(user);
+    }
 }
