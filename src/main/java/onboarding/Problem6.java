@@ -7,7 +7,21 @@ public class Problem6 {
 
     static List<String> answer = new ArrayList<String>();
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+
+        Set<Integer> printListSet = new HashSet<Integer>();
+
+        for (int i = 0; i < forms.size() - 1; i++) {
+            for (int j = i + 1; j < forms.size(); j++) {
+                if (similarNameCheck(forms.get(i).get(1), forms.get(j).get(1))) {
+                    printListSet.add(i);
+                    printListSet.add(j);
+                }
+
+            }
+        }
+
+        emailAddressInput(printListSet, forms);
+
         return answer;
     }
 
