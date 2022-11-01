@@ -3,16 +3,17 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String>  solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.singletonList("aa");
-        List<String> userFriendList = getUserFriendList(user, friends);
-        List<String> flattenFriendList = flatFriendList(friends);
+        List<String> userFriendList = getUserList(user, friends);
+        List<String> userList =  getUserList(friends, visitors);
 
         return answer;
     }
-    public static List<String> getUserFriendList(String user, List<List<String>> friends){
+    public static List<String> getUserList(String user, List<List<String>> friends){
         List<String> userFriendList = new ArrayList<>();
         for (List<String> friend : friends){
             if (friend.indexOf(user) == 1){
@@ -25,13 +26,16 @@ public class Problem7 {
         return userFriendList;
     }
 
-    public static List<String> flatFriendList(List<List<String>> friends) {
-        List<String> flattenFriendList = new ArrayList<>();
+    public static List<String> getUserList(List<List<String>> friends, List<String> visitors) {
+        List<String> flattenUserList = new ArrayList<>();
 
         for (List<String> friend : friends) {
-            flattenFriendList.addAll(friend);
+            flattenUserList.addAll(friend);
         }
-        System.out.println(flattenFriendList);
-        return flattenFriendList;
+        flattenUserList.addAll(visitors);
+
+        return flattenUserList.stream().distinct().collect(Collectors.toList());
     }
+
+//    public static List<String>
 }
