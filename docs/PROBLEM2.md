@@ -13,8 +13,10 @@
 ### 기능목록
 
 - cryptogram의 반복되는 문자를 찾는 checkString 함수 구현
-- 반복된 문자의 인덱스와 문자열을 이용하여 갱신할 splitString() 함수 구현
-- splitString 함수에서 인덱스 값을 확인후 끝 문자를 추가할지 검사
+- 연속된 중복 문자열이 있는지 확인해주는 validCheck 함수 구현
+- 문자열 내에 중복 문자의 인덱스를 저장하는 catchSameIndex 함수 구현 
+- 반복된 문자의 인덱스와 문자열을 이용하여 갱신할 splitString 함수 구현
+- 문자열 길이만큼 해당 인덱스가 중복했던 자리인지 확인하는 checkIndex 함수 구현
 
 ### 제한사항
 
