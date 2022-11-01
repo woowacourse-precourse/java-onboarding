@@ -9,9 +9,8 @@ public class Problem7 {
         Map<String, Integer> friendMap = p7.myFriendScore(newFriendList, user);
         Map<String, Integer> visitMap = p7.getVisitScore(visitors);
         Map<String, Integer> totalMap = p7.getTotalScore(visitMap, friendMap);
-        List<String> answer = p7.getReverseMap(totalMap, newFriendList,user);
 
-        return answer;
+        return p7.getReverseMap(totalMap, newFriendList,user);
     }
 
     public Map<String, Integer> getTotalScore(Map<String, Integer> visitScore, Map<String, Integer> friendScore){
@@ -31,20 +30,6 @@ public class Problem7 {
             }
             totalScore.put(vkey, visitScore.get(vkey));
         }
-
-
-        while(viterator.hasNext()){ // 양쪽 리스트에 같은 키가 있으면 그것만 계산
-            while(fiterator.hasNext()) {
-                String vkey = viterator.next();
-                String fkey = fiterator.next();
-                //---
-                if(fkey.equals(vkey)){
-                    totalScore.put(fkey, friendScore.get(fkey)+visitScore.get(fkey));
-
-                }
-            }
-        }
-
 
         return totalScore;
     }
@@ -211,6 +196,7 @@ public class Problem7 {
             for(String f : userFriends){
                 if(f.equals(name[i])){
                     name[i]=null;
+                    break;
                 }
             }
         }
