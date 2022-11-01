@@ -6,8 +6,10 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         Map<String, List<String>> friendship = Friendship(friends);
-        System.out.println("friendship.keySet() = " + friendship.keySet());
-        System.out.println("friendship.values() = " + friendship.values());
+        HashMap<String, Integer> scoreTable = ScoreTable(user,friendship);
+
+        System.out.println("friendship.keySet() = " + scoreTable.keySet());
+        System.out.println("friendship.values() = " + scoreTable.values());
         return answer;
     }
 
@@ -30,5 +32,15 @@ public class Problem7 {
             hashMap.get(key).add(value);
         else
             hashMap.put(key,new ArrayList<>(List.of(value)));
+    }
+
+    public static HashMap<String, Integer> ScoreTable(String user, Map<String, List<String>> friendship){
+        HashMap<String, Integer> scoreTable= new HashMap<>();
+        for(String friend: friendship.keySet()){
+            if(!friend.equals(user) && !friendship.get(user).contains(friend)){
+                scoreTable.put(friend,0);
+            }
+        }
+        return scoreTable;
     }
 }
