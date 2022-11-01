@@ -34,7 +34,7 @@ class Problem1 {
      * 리스트가 유효한 지 검사
      *
      * @param pages
-     * @return true if list is validate
+     * @return 리스트가 유효햐면 true, 아니면 false
      */
     private static boolean checkValidation(List<Integer> pages) {
         final int leftPage = pages.get(0);
@@ -59,7 +59,7 @@ class Problem1 {
      * 페이지 번호를 각 자리 숫자의 배열로 변환
      *
      * @param page
-     * @return int[] with page numbers
+     * @return 페이지 번호의 각 자리 숫자를 담은 array
      */
     private static int[] toList(Integer page) {
         return Arrays.stream(page.toString().split(""))
@@ -71,7 +71,7 @@ class Problem1 {
      * 페이지 번호의 각 자리 숫자를 연산 해 가장 큰 수를 계산
      *
      * @param page
-     * @return largest number of calculation
+     * @return 페이지 번호로 덧/곱셈 한 결과 중 가장 큰 수
      */
     private static int getLargestNum(Integer page) {
         final int[] pageNums = toList(page);
@@ -85,7 +85,7 @@ class Problem1 {
      * 본인의 점수 계산
      *
      * @param pages
-     * @return 본인의 점현
+     * @return 본인의 점수
      */
     private static int getScore(List<Integer> pages) {
         final int leftPage = getLargestNum(pages.get(0));
@@ -98,7 +98,7 @@ class Problem1 {
      *
      * @param pobi
      * @param crong
-     * @return result
+     * @return 결과(무승부, 포비 승, 크롱 승)
      */
     private static int getResult(int pobi, int crong) {
         if (pobi == crong) {

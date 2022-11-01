@@ -21,7 +21,7 @@ public class Problem3 {
      * 현재 숫자에 따른 손뼉치는 횟수 계산
      *
      * @param number
-     * @return count
+     * @return 손뼉치는 횟수
      */
     private static int countClap(int number) {
         List<Integer> plusCount = List.of(3, 6, 9);
