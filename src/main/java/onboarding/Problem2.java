@@ -35,17 +35,17 @@ public class Problem2 {
         return flag;
     }
 
-    private static boolean checkSameChar(StringBuilder encodedCode, int preIndex, int currentIndex) {
+    public static boolean checkSameChar(StringBuilder encodedCode, int preIndex, int currentIndex) {
         return encodedCode.charAt(preIndex) == encodedCode.charAt(currentIndex);
     }
 
-    private static void clearSpaces(StringBuilder encodedCode) {
+    public static void clearSpaces(StringBuilder encodedCode) {
         String clearSpaceCode = encodedCode.toString().replaceAll("\\s", "");
         encodedCode.setLength(0);
         encodedCode.append(clearSpaceCode);
     }
 
-    private static String getEmptySpace(int count) {
+    public static String getEmptySpace(int count) {
         StringBuilder emptySpace = new StringBuilder();
         for (int i = 0; i < count; i++) {
             emptySpace.append(" ");

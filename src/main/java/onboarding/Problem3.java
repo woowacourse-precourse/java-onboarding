@@ -16,7 +16,7 @@ public class Problem3 {
         return answer;
     }
 
-    private static int getCountOfNumber(int target, int number) {
+    public static int getCountOfNumber(int target, int number) {
         int count = 0;
         while (true) {
             int rest = number % TEN;

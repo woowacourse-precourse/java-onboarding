@@ -34,7 +34,7 @@ public class Problem7 {
         return createSortedIdList();
     }
 
-    private static void sortRecommendFriendList() {
+    public static void sortRecommendFriendList() {
         recommendFriendList.sort((o1, o2) -> {
             if (o1.score == o2.score) {
                 return o1.id.compareTo(o2.id);
@@ -43,7 +43,7 @@ public class Problem7 {
         });
     }
 
-    private static List<String> createSortedIdList() {
+    public static List<String> createSortedIdList() {
         int count = 0;
         List<String> idList = new ArrayList<>();
         for (RecommendFriend recommendFriend : recommendFriendList) {
@@ -56,12 +56,12 @@ public class Problem7 {
         return idList;
     }
 
-    private static void makeRecommendFriendList() {
+    public static void makeRecommendFriendList() {
         scoreMap.keySet()
                 .forEach(key -> recommendFriendList.add(new RecommendFriend(key, scoreMap.get(key))));
     }
 
-    private static void removeZeroScoreFriends() {
+    public static void removeZeroScoreFriends() {
         recommendFriendList.forEach(friend -> {
             if (friend.score == 0) {
                 recommendFriendList.remove(friend);
@@ -69,22 +69,22 @@ public class Problem7 {
         });
     }
 
-    private static void removeFriendsAlreadyKnow(List<String> userFriendList) {
+    public static void removeFriendsAlreadyKnow(List<String> userFriendList) {
         userFriendList.forEach(userFriend -> scoreMap.remove(userFriend));
     }
 
-    private static void makeScoreMapOfAllId(String user, List<String> visitors) {
+    public static void makeScoreMapOfAllId(String user, List<String> visitors) {
         List<String> userFriendList = friendsMap.get(user);
         friendsMap.keySet()
                 .forEach(key -> scoreMap.put(key, scoreMap.getOrDefault(key, ZERO_SCORE) + calcSameFriendsScore(userFriendList, key)));
         visitors.forEach(visitor -> scoreMap.put(visitor, scoreMap.getOrDefault(visitor, ZERO_SCORE) + VISIT_SCORE));
     }
 
-    private static int calcSameFriendsScore(List<String> userFriendList, String key) {
+    public static int calcSameFriendsScore(List<String> userFriendList, String key) {
         return SAME_FRIEND_SCORE * getCountOfSameFriends(friendsMap.get(key), userFriendList);
     }
 
-    private static int getCountOfSameFriends(List<String> someoneFriendList, List<String> userFriendList) {
+    public static int getCountOfSameFriends(List<String> someoneFriendList, List<String> userFriendList) {
         int count = 0;
         for (String someone : someoneFriendList) {
             if (userFriendList.contains(someone)) {
@@ -94,14 +94,14 @@ public class Problem7 {
         return count;
     }
 
-    private static void makeFriendMapOfFriendsList(List<List<String>> friends) {
+    public static void makeFriendMapOfFriendsList(List<List<String>> friends) {
         friends.forEach(twoFriends -> {
             putToFriendsMap(twoFriends.get(FIRST_ID), twoFriends.get(SECOND_ID));
             putToFriendsMap(twoFriends.get(SECOND_ID), twoFriends.get(FIRST_ID));
         });
     }
 
-    private static void putToFriendsMap(String key, String valueOfList) {
+    public static void putToFriendsMap(String key, String valueOfList) {
         if (friendsMap.containsKey(key)) {
             friendsMap.get(key).add(valueOfList);
             return;

@@ -18,7 +18,7 @@ public class Problem6 {
         return crewEmailListOfDuplicatedNickname;
     }
 
-    private static List<String> getCrewEmailListOfDuplicatedNickname(List<List<String>> separatedAllCrewNicknameList, List<List<String>> forms) {
+    public static List<String> getCrewEmailListOfDuplicatedNickname(List<List<String>> separatedAllCrewNicknameList, List<List<String>> forms) {
         List<String> emailList = new ArrayList<>();
         for (int i = 0; i < separatedAllCrewNicknameList.size(); i++) {
             int countOfSeparatedNickname = getMaxCountOfSeparatedNickname(separatedAllCrewNicknameList.get(i));
@@ -29,11 +29,11 @@ public class Problem6 {
         return emailList;
     }
 
-    private static String getEmail(List<String> crew) {
+    public static String getEmail(List<String> crew) {
         return crew.get(EMAIL);
     }
 
-    private static int getMaxCountOfSeparatedNickname(List<String> separatedCrewNickname) {
+    public static int getMaxCountOfSeparatedNickname(List<String> separatedCrewNickname) {
         int count = -1;
         for (String twoLetters : separatedCrewNickname) {
             count = Math.max(twoLetterCountMap.get(twoLetters), count);
@@ -42,21 +42,21 @@ public class Problem6 {
     }
 
 
-    private static void countListToMap(List<List<String>> separatedAllCrewNicknameList) {
+    public static void countListToMap(List<List<String>> separatedAllCrewNicknameList) {
         separatedAllCrewNicknameList.forEach(Problem6::putListToMap);
     }
 
-    private static void putListToMap(List<String> separatedCrewNickname) {
+    public static void putListToMap(List<String> separatedCrewNickname) {
         separatedCrewNickname.forEach(str -> twoLetterCountMap.put(str, twoLetterCountMap.getOrDefault(str, 0) + 1));
     }
 
-    private static List<List<String>> getSeparatedAllCrewNicknameList(List<List<String>> forms) {
+    public static List<List<String>> getSeparatedAllCrewNicknameList(List<List<String>> forms) {
         List<List<String>> separatedAllCrewNicknameList = new ArrayList<>();
         forms.forEach(crew -> separatedAllCrewNicknameList.add(getSeparatedCrewNicknameList(crew.get(NICKNAME))));
         return separatedAllCrewNicknameList;
     }
 
-    private static List<String> getSeparatedCrewNicknameList(String nickname) {
+    public static List<String> getSeparatedCrewNicknameList(String nickname) {
         List<String> separatedCrewNickname = new ArrayList<>();
         for (int i = 0; i < nickname.length() - 1; i++) {
             String twoLetters = nickname.substring(i, i + SEPARATE_COUNT);

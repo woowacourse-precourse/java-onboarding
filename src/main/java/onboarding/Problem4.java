@@ -14,7 +14,7 @@ public class Problem4 {
         return answer.toString();
     }
 
-    private static char getReverseAlphabet(char alphabet) {
+    public static char getReverseAlphabet(char alphabet) {
         if (Character.isLowerCase(alphabet)) {
             return getLowerReverseCase(alphabet);
         }
@@ -24,11 +24,11 @@ public class Problem4 {
         return alphabet;
     }
 
-    private static char getLowerReverseCase(char alphabet) {
+    public static char getLowerReverseCase(char alphabet) {
         return (char) (alphabet + (ALPHABET_COUNT_WITHOUT_A - (alphabet - LOWERCASE_A) * DOUBLE));
     }
 
-    private static char getUpperReverseCase(char alphabet) {
+    public static char getUpperReverseCase(char alphabet) {
         return (char) (alphabet + (ALPHABET_COUNT_WITHOUT_A - (alphabet - UPPERCASE_A) * DOUBLE));
     }
 }

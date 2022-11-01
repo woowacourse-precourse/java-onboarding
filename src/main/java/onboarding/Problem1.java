@@ -25,7 +25,7 @@ class Problem1 {
 
     }
 
-    private static Integer checkException(List<Integer> pobi, List<Integer> crong) {
+    public static Integer checkException(List<Integer> pobi, List<Integer> crong) {
         if (isHavingFirstPage(pobi) || isHavingLastPage(pobi)
                 || isHavingFirstPage(crong) || isHavingLastPage(crong)) {
             return Constant.EXCEPTION;
@@ -41,7 +41,7 @@ class Problem1 {
         return null;
     }
 
-    private static int getWinner(int maxPointOfPobi, int maxPointOfCrong) {
+    public static int getWinner(int maxPointOfPobi, int maxPointOfCrong) {
         if (maxPointOfPobi > maxPointOfCrong) {
             return Constant.WIN_POBI;
         }
@@ -51,21 +51,21 @@ class Problem1 {
         return Constant.DRAW;
     }
 
-    private static int getMaxPoint(List<Integer> crew) {
+    public static int getMaxPoint(List<Integer> crew) {
         int maxLeftPoint = getMaxLeftPoint(crew);
         int maxRightPoint = getMaxRightPoint(crew);
         return Math.max(maxLeftPoint, maxRightPoint);
     }
 
-    private static int getMaxRightPoint(List<Integer> openPages) {
+    public static int getMaxRightPoint(List<Integer> openPages) {
         return Math.max(getSumOfEachDigits(openPages.get(Constant.RIGHT_PAGE)), getMulOfEachDigits(openPages.get(Constant.RIGHT_PAGE)));
     }
 
-    private static int getMaxLeftPoint(List<Integer> openPages) {
+    public static int getMaxLeftPoint(List<Integer> openPages) {
         return Math.max(getSumOfEachDigits(openPages.get(Constant.LEFT_PAGE)), getMulOfEachDigits(openPages.get(Constant.LEFT_PAGE)));
     }
 
-    private static int getMulOfEachDigits(int page) {
+    public static int getMulOfEachDigits(int page) {
         char[] digitsArray = getDigitsArray(page);
         int sum = 1;
         for (char c : digitsArray) {
@@ -74,7 +74,7 @@ class Problem1 {
         return sum;
     }
 
-    private static int getSumOfEachDigits(int page) {
+    public static int getSumOfEachDigits(int page) {
         char[] digitsArray = getDigitsArray(page);
         int sum = 0;
         for (char c : digitsArray) {
@@ -83,7 +83,7 @@ class Problem1 {
         return sum;
     }
 
-    private static char[] getDigitsArray(int page) {
+    public static char[] getDigitsArray(int page) {
         return String.valueOf(page).toCharArray();
 
     }
