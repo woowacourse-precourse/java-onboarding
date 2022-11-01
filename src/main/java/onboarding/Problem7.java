@@ -19,6 +19,23 @@ public class Problem7 {
             if (!neighbor.contains(elem.getKey()))
                 recommendScore.put(elem.getKey(), elem.getValue());
         }
+
+        List<Map.Entry<String, Integer>> entryList = new ArrayList<>(recommendScore.entrySet());
+        entryList.sort(new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                if (o1.getValue() != o2.getValue())
+                    return o2.getValue() - o1.getValue();
+                return o1.getKey().compareTo(o2.getKey());
+            }
+        });
+
+        List<String> result = new ArrayList<>();
+        for (Map.Entry<String, Integer> elem : entryList) {
+            result.add(elem.getKey());
+        }
+
+        return result;
     }
 
     // 친구별 방문 수 반환
@@ -33,6 +50,8 @@ public class Problem7 {
         }
         return visitScore;
     }
+
+
 
     // 친구별 함께 아는 친구의 수 -> 점수 반환 (1 이상인 친구만)
     private static Map<String, Integer> getFOFScore(String user, List<List<String>> friends, Set<String> neighbor) {
@@ -65,6 +84,7 @@ public class Problem7 {
         return -1;
     }
 
+
     // 사용자와 직접 친구인 neighbor 찾기
     private static Set<String> getNeighbor(String user, List<List<String>> friends) {
         Set<String> neighbor = new HashSet<>();
@@ -81,4 +101,5 @@ public class Problem7 {
         }
         return neighbor;
     }
+
 }
