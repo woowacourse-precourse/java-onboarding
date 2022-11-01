@@ -2,10 +2,10 @@ package onboarding;
 //문자열 중복이 아니면 문자열에 붙이기
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String answer = cryptogram;
         String answer2 = "";
-        while(answer!=answer2){
-            answer=decrypt(cryptogram);
+        while(!answer.equals(answer2)){
+            answer=decrypt(answer);
             answer2 = decrypt(answer);
         }
         return answer;

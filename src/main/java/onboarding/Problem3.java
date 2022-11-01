@@ -8,10 +8,14 @@ public class Problem3 {
     }
     public static int clapcount(int number){
         int count=0;
+
         for(int i=1;i<=number;i++) {
-            if (i % 10 == 3 || i % 10 == 6 || i % 10 == 9) {
-                count++;
-                i /= 10;
+            int temp=i;
+            while(temp!=0){
+                if (temp % 10 == 3 || temp % 10 == 6 || temp % 10 == 9) {
+                    count++;
+                }
+                temp/=10;
             }
         }
         return count;
