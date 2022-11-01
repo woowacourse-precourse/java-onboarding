@@ -8,8 +8,10 @@ public class Problem4 {
         for(int i = 0; i < word.length(); i++) {
             char c = word.charAt(i);
             if(Character.isLowerCase(c)) {  // 소문자
+                c = (char)('z' - c + 'a');
             }
             if(Character.isUpperCase(c)) {  // 대문자
+                c = (char)('Z' - c + 'A');
             }
             //System.out.println(c + "  " + (c + 0) + "  " + ('Z' - c) + "  " + ('z' - c));
             answer += c;
