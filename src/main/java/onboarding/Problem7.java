@@ -59,7 +59,19 @@ public class Problem7 {
             relation.get(visitor).set(0, String.valueOf(Integer.parseInt(relation.get(visitor).get(0)) + 1));
         }
     }
-    // 이미 친구면 제외
+
+    private static List<String> processData(Map<String, List<String>> relation, List<String> userFriends) {
+        Map<String, Integer> data = new HashMap<>();
+        for (String person : relation.keySet()) {
+            data.put(person, Integer.parseInt(relation.get(person).get(0)));
+        }
+        removeAlreadyFriends(data, userFriends);
+        removeZeroScore(data);
+        List<Map.Entry<String, Integer>> recommendedFriendsList = getSortedList(data);
+        return "";
+    }
+
+        // 이미 친구면 제외
     private static void removeAlreadyFriends(Map<String, Integer> user, List<String> userFriends) {
         for (String name : userFriends) {
             if (user.containsKey(name)) {
@@ -72,5 +84,20 @@ public class Problem7 {
     private static void removeZeroScore(Map<String, Integer> scoreInfo) {
         scoreInfo.entrySet().removeIf(
                 entry -> entry.getValue().equals(0));
+    }
+
+    // 점수가 큰 순으로 정렬, 점수가 같다면 사전순 정렬
+    private static List<Map.Entry<String, Integer>> getSortedList(Map<String, Integer> scoreInfo) {
+        List<Map.Entry<String, Integer>> list = new ArrayList<>(scoreInfo.entrySet());
+        Collections.sort(list, (first, second) -> {
+            if (first.getValue() > second.getValue()) {
+                return -1;
+            }
+            if (first.getValue() < second.getValue()) {
+                return 1;
+            }
+            return first.getKey().compareTo(second.getKey());
+        });
+        return list;
     }
 }
