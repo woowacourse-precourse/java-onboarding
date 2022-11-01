@@ -8,7 +8,8 @@ public class P1ExceptionValidation {
 
         return inputBetweenZeroandTwo(list)
                 && pageBetween1and400(list)
-                && pageNumberContinuous(list);
+                && pageNumberContinuous(list)
+                && pageOddandEvenPair(list);
 
     }
 
@@ -39,6 +40,18 @@ public class P1ExceptionValidation {
         }
         return false;
     }
+
+    private static boolean pageOddandEvenPair(List<Integer> userInput) {
+        Integer leftPage = userInput.get(0);
+        Integer rightPage = userInput.get(1);
+
+        if((leftPage % 2 == 1) && (rightPage % 2 == 0)){
+            return true;
+        }
+        return false;
+    }
+
+
 
 
 
