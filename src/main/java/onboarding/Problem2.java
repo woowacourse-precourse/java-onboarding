@@ -10,7 +10,7 @@ public class Problem2 {
 
     public static String solution(String cryptogram) {
         if (validateCryptoSize(cryptogram)) {
-            return "";
+            throw new IllegalArgumentException("유효한 암호문의 길이를 입력해 주세요. (1 ~ 1000자)");
         }
 
         return decrypt(cryptogram.toLowerCase());
