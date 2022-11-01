@@ -22,4 +22,16 @@ public class Problem6 {
         Collections.sort(answer);
         return answer;
     }
+    private static void setTwoName(Set overlapIndexSet, int formIndex, List<List<String>> forms, HashMap<String, Integer> twoNameMap) {
+        String name = forms.get(formIndex).get(1);
+        for (int i = 0; i < name.length() - 1; i++) {
+            String twoName = name.charAt(i) + Character.toString(name.charAt(i + 1));
+            if (twoNameMap.containsKey(twoName)) {
+                overlapIndexSet.add(twoNameMap.get(twoName));
+                overlapIndexSet.add(formIndex);
+            } else {
+                twoNameMap.put(twoName, i);
+            }
+        }
+    }
 }
