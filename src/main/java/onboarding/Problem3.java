@@ -69,4 +69,10 @@ public class Problem3 {
                 specificHundredNumber * specificHundreds();
     }
 
+    public static int calculateThousandsClapCase(int thousandNumber) {
+        int specificThousandNumber = (thousandNumber - 1) / 3;
+        return (thousandNumber - specificThousandNumber) * generalThousands() +
+                specificThousandNumber * specificThousands();
+    }
+
 }
