@@ -15,7 +15,7 @@ public class Problem5 {
             else{
                 answer.add(0);
             }
-            
+            money%=item;
         }
         return answer;
     }
