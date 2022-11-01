@@ -5,4 +5,10 @@ public class Problem4 {
         String answer = "";
         return answer;
     }
+
+    private static boolean isUpper(char c){
+        if (c >= 'A' && c<= 'Z') return true;
+        return false;
+    }
+
 }
