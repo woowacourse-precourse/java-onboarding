@@ -24,3 +24,30 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+## 📑 기능 목록
+### 1. 각 사용자와 그의 친구들을 hashMap 생성
+  다음과 같이 key, value 설정 이때 친구 관계는 양방향
+
+| key      | value                |
+| --- | --- |
+| "donut"  | [andole, jun, mrko ] |
+| "andole" | [donut, shakevan ]   |
+| "jun"    | [donut, shakevan ]   |
+| ...      | [...   ]             |
+
+### 2. user와 uesr의 친구들을 제외한 사용자들의 점수테이블 생성
+    +) HashMap에 value(list)에 요소 추가 함수 
+      HashMap에 value를 추가할 key가 있다면 value(list)에 값 추가
+      HashMap에 value룰 추가할 key가 없다면 키와 새로운 list인 value 추가
+
+  HashMap 사용 : Map<String, int> score
+
+### 3. user의 친구와 친구인 사용자의 점수 계산
+  score[key] += 10
+### 4. user를 방문한 사용자의 점수 계산
+  score[key] += 1
+### 5. 친구 점수가 높은 순(동점 = 이름순)으로 상위 5명
+  [예외] 점수가 0이면 제외
+  [예외] user이거나 user의 친구제외
+  
