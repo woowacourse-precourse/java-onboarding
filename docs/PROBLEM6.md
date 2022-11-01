@@ -29,8 +29,6 @@
   -  이름이 겹치는 사람이 있는지 확인하기 위해 선언한 checkDuplication를 모두 false로 초기화해준다.
 - nameDeduplicationMethod()
     - 중복된 이름이 있는지 검사
-- saveEmailForDuplicatedName()
-    - 중복된 닉네임으로 분류된 사람들의 이메일을 저장
 - duplicateNameDetectionMethod()
     - 특정 닉네임으로 다른 사람들의 닉네임과 중복이 있는지 확인
 - charToString
@@ -54,7 +52,7 @@
     - 크루인원 수 예외처리
 - isValidNicknameRegex()
     - 입력으로 들어온 이름이 한글이 맞는지 확인(예외처리)
-- NicknameOutOfRangeException
+- nicknameOutOfRangeException
     - 닉네임 길이 예외처리
 - emailDomainOutOfRulesException
     - 이메일 도메인에 대한 예외처리
