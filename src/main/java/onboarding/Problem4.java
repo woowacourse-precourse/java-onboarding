@@ -3,19 +3,8 @@ package onboarding;
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
-        char uppercaseAlphabetArr[] = {'Z', 'Y', 'X', 'W', 'V', 'U', 'T', 'S', 'R', 'Q', 'P', 'O', 'N', 'M', 'L', 'K', 'J', 'I', 'H', 'G', 'F', 'E', 'D', 'C', 'B', 'A'};
         
-        for(int i = 0; i < word.length(); i++) {
-        	char c = word.charAt(i);
-        	
-        	if(c == ' ') {
-        		answer += c;
-        	} else if(Character.isUpperCase(c)) {
-        		answer += uppercaseAlphabetArr[getAlphabetIdx(c)];
-        	} else {
-        		answer += (char)(uppercaseAlphabetArr[getAlphabetIdx(c)] + 'a' - 'A');
-        	}
-        }
+        answer = changeStr(word);
         
         return answer;
     }
@@ -28,6 +17,24 @@ public class Problem4 {
     	} else {
     		res = c - 'a';
     	}
+    	
+    	return res;
+    }
+    
+    private static String changeStr(String s) {
+    	String res = "";
+    	
+    	for(int i = 0; i < s.length(); i++) {
+        	char c = s.charAt(i);
+        	
+        	if(c == ' ') {
+        		res += c;
+        	} else if(Character.isUpperCase(c)) {
+        		res += (char)('Z' - getAlphabetIdx(c));
+        	} else {
+        		res += (char)('z' - getAlphabetIdx(c));
+        	}
+        }
     	
     	return res;
     }
