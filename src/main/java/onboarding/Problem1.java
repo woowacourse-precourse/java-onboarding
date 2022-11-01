@@ -14,4 +14,29 @@ class Problem1 {
 
         return 0;
     }
+
+    private static int getMaximum(List<Integer> pages) {
+        int res = 0;
+
+        for (Integer page : pages) {
+
+            String pageNumber = String.valueOf(page);
+
+            String[] nums = pageNumber.split("");
+
+            int plus = 0;
+            for (String n : nums) {
+                plus += Integer.parseInt(n);
+            }
+
+            int times = 1;
+            for (String n : nums) {
+                times *= Integer.parseInt(n);
+            }
+
+            res = Math.max(plus, times);
+        }
+
+        return res;
+    }
 }
