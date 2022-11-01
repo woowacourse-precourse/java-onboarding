@@ -40,6 +40,13 @@ public class Problem7 {
             }
         });
 
+        //추천 유저 상위 5명만 최종 리턴
+        for(Map.Entry<String, Integer> entry : entryList){
+            if (answer.size()<=5) {
+                answer.add(entry.getKey());
+            }
+        }
+
         return answer;
     }
 
