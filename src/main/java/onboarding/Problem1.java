@@ -13,6 +13,14 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        /*예외 사항
+        * 1. (4) 시작면이나 마지막 면이 나오도록 책을 펼치지 않는다.
+        * 2. 왼쪽 페이지, 오른쪽 페이지 번호 순서대로 들어가 있다.
+        * 3. 왼쪽 페이지는 홀수, 오른쪽 페이지는 짝수 번호이다.*/
+        if(pobi.get(0) <= 1 || pobi.get(1) >=400 || crong.get(0) <= 1 || crong.get(1) >=400) return -1;
+        if(pobi.get(0) != pobi.get(1)-1 || crong.get(0) !=crong.get(1) -1) return -1;
+        if(pobi.get(0)%2 == 0 || pobi.get(1)%2 ==1 || crong.get(0)%2 == 0 || crong.get(1)%2 ==1) return -1;
+
         return answer;
     }
 }
