@@ -11,6 +11,9 @@ public class Problem4 {
         if(!(P4ExceptionValidation.p4ExceptionValidation(word))){
             return "";
         }
+        String reverseWord = findReverseWord(word);
+
+        return reverseWord;
     }
 
 
@@ -22,6 +25,19 @@ public class Problem4 {
             map.put(ch, (char) (155 - ch));
             map.put((char) (ch + 32), (char) (187 - ch));
         }
+
+        for (int i = 0; i < word.length(); i++) {
+
+            String s = word.substring(i, i + 1);
+
+            if (s.equals(" ")) {
+                builder.append(" ");
+            } else {
+                builder.append(map.get(s.charAt(0)));
+            }
+        }
+
+        return builder.toString();
     }
 
 
