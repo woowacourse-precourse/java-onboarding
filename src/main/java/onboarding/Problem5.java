@@ -19,8 +19,21 @@ public class Problem5 {
         return result;
     }
 
+    public static boolean checkInput(int money) {
+        if(money < 1 || money > 1000000) {
+            return false;
+        }
+
+        return true;
+    }
+
     public static List<Integer> solution(int money) {
-        List<Integer> answer = new ArrayList<>();
+        List<Integer> answer = Collections.emptyList();
+        if(!checkInput(money)) {
+            return answer;
+        }
+
+        answer = new ArrayList<>();
         for(int element : splitMoney(money)) {
             answer.add(element);
         }
