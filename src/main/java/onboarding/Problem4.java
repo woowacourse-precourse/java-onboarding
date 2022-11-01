@@ -10,6 +10,9 @@ public class Problem4 {
             // 1. 문자가 대문자일 경우, 아스키코드값을 65로 설정.
             if (Character.isUpperCase(word.charAt(i))) {
                 ascii = 65;
+                // 2. 문자가 소문자일 경우, 아스키코드값을 97로 설정.
+            } else if (Character.isLowerCase(word.charAt(i))) {
+                ascii = 97;
             }
         }
         return answer;
