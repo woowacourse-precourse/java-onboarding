@@ -132,9 +132,7 @@ public class Problem7 {
 	}
 
 	public static int getFriendScore(Set<String> myFriends, Set<String> friendList) {
-		long cnt = myFriends.stream().filter(friendList::contains).count();
-		return (int)(cnt * 10);
-		//return (int)(myFriends.stream().filter(friendList::contains).count() * 10);
+		return (int)(myFriends.stream().filter(friendList::contains).count() * 10);
 	}
 
 	public static void getFriendRecomScore(String user, Map<String, Integer> recomScoreMap, List<String> userList,
