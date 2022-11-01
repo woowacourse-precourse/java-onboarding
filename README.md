@@ -6,7 +6,7 @@
 - 문제를 차례대로 해결하며 앞 문제에서 배웠던 내용을 적용해 보려 노력하였습니다.
 
 <details>
-  <summary><strong>< PRObLEM 1 ></strong></summary>
+  <summary><strong>< PROBLEM 1 ></strong></summary>
   <div markdown="1">
     - 기능 별로 함수 작게 나누기 <br> 
     - 테스트 코드 연습 <br>
@@ -15,7 +15,7 @@
 </details>
 
 <details>
-  <summary><strong>< PRObLEM 2 ></strong></summary>
+  <summary><strong>< PROBLEM 2 ></strong></summary>
   <div markdown="1">
     - String < = > List 변환 <br>
     - Primitive type, Reference type <br>
@@ -24,7 +24,7 @@
 </details>
 
 <details>
-  <summary><strong>< PRObLEM 4 ></strong></summary>
+  <summary><strong>< PROBLEM 4 ></strong></summary>
   <div markdown="1">
     - static, final, static final <br>
     - enum <br>
@@ -34,7 +34,7 @@
 </details>
 
 <details>
-  <summary><strong>< PRObLEM 5 ></strong></summary>
+  <summary><strong>< PROBLEM 5 ></strong></summary>
   <div markdown="1">
     - enum 활용 <br>
     - private 메소드 테스트 <br>
@@ -42,14 +42,14 @@
 </details>
 
 <details>
-  <summary><strong>< PRObLEM 6 ></strong></summary>
+  <summary><strong>< PROBLEM 6 ></strong></summary>
   <div markdown="1">
     - Set <br>
   </div>
 </details>
 
 <details>
-  <summary><strong>< PRObLEM 7 ></strong></summary>
+  <summary><strong>< PROBLEM 7 ></strong></summary>
   <div markdown="1">
     - Map <br>
     - Comparable, Comparator <br>
