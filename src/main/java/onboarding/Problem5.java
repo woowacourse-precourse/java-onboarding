@@ -12,5 +12,7 @@ public class Problem5 {
     private static int countMoney(int money, int won) {
         return money / won;
     }
-
+    private static int balanceMoney(int money, int won) {
+        return money % won;
+    }
 }
