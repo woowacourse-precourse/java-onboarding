@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Problem5 {
+
     public static List<Integer> solution(int money) {
         List<Integer> answer = Collections.emptyList();
         return answer;
@@ -24,6 +25,10 @@ public class Problem5 {
 
         MoneyUnit(int value) {
             this.value = value;
+        }
+
+        public int getExchange(int money) {
+            return money / this.value;
         }
     }
 }
