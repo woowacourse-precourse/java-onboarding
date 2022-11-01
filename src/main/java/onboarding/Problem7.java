@@ -31,6 +31,15 @@ public class Problem7 {
             setScore(friendSet, visitor, user, recommendList, 1);
         }
 
+        //점수 내림차순 정렬하기
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(recommendList.entrySet());
+        entryList.sort(new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> obj1, Map.Entry<String, Integer> obj2) {
+                return obj2.getValue().compareTo(obj1.getValue());
+            }
+        });
+
         return answer;
     }
 
