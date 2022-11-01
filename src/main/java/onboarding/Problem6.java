@@ -18,6 +18,9 @@ public class Problem6 {
         for (int i = 0; i < forms.size(); i++) {
             List<String> form = forms.get(i);
             String nickname = form.get(1);
+            for (int j = 0; j < nickname.length() - 1; j++) {
+                String subNickname = nickname.substring(j, j + 2);
+            }
         }
         return answer;
     }
