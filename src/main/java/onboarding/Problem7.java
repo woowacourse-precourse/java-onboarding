@@ -15,10 +15,16 @@ public class Problem7 {
 
 	static final Map<String, List<String>> friendRelationGraph = new HashMap<>();
 	static final Map<String, Integer> recommendationScores = new HashMap<>();
+	static Set<String> directFriendsOfUserSet = new HashSet<>();
 
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 		List<String> answer = Collections.emptyList();
 		return answer;
+	}
+
+	public static void getDirectFriendsOfUser(String user) {
+		List<String> directFriendsOfUserList = friendRelationGraph.get(user);
+		directFriendsOfUserSet = new HashSet<>(directFriendsOfUserList);
 	}
 
 	public static void giveScoresToFriendsWhoVisitUserTimeline(List<String> visitors) {
