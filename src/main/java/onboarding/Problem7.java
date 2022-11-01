@@ -2,9 +2,12 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.Map.Entry;
+import java.util.PriorityQueue;
+import java.util.Set;
 
 public class Problem7 {
 
@@ -22,6 +25,7 @@ public class Problem7 {
         target.setUserFriends();
         target.setRecommandHashMapByFriends();
         target.setRecommendHashMapByVisitors();
+        target.sort();
 
         if (answer.size() > 5) {
             answer = answer.subList(0, 5);
@@ -81,6 +85,7 @@ public class Problem7 {
         List<String> visitors;
         List<String> userFriends;
         HashMap<String, Integer> recommendHashMap;
+        PriorityQueue<Friend> friendQueue;
 
         User(String user, List<List<String>> friends, List<String> visitors) {
             this.user = user;
@@ -140,49 +145,41 @@ public class Problem7 {
         private void giveOnePoint(String target) {
             recommendHashMap.put(target, recommendHashMap.getOrDefault(target, 0) + 1);
         }
-    }
 
-    public static HashMap<String, Integer> deleteUserAndUserFriend(HashMap<String, Integer> friendMap,
-                                                                   List<String> frinedNameList, String user) {
-        friendMap.put(user, 0);
-        for (String friendName : frinedNameList) {
-            friendMap.put(friendName, 0);
+        private void sort() {
+            friendQueue = new PriorityQueue<>(new friendComparator());
+
+            Set<Entry<String, Integer>> entries = recommendHashMap.entrySet();
+            for(Entry<String, Integer> entry : entries) {
+                friendQueue.add(new Friend(entry.getKey(), entry.getValue()));
+            }
         }
-        return friendMap;
     }
 
-    public static List<String> sortByScoreAndName(HashMap<String, Integer> friendMap) {
-        List<Integer> scoreList = new ArrayList(friendMap.values());
-        Collections.sort(scoreList, Collections.reverseOrder());
+    public static class Friend {
+        String name;
+        int point;
 
-        List<String> sortedList = new ArrayList<>();
-        for (Integer score : scoreList) {
-            if (score != 0) {
-                List<String> nameList = findNameByValue(friendMap, score);
-                for (String name : nameList) {
-                    {
-                        if (!sortedList.contains(name)) {
-                            sortedList.add(name);
-                        }
-                    }
+        Friend(String name, int point) {
+            this.name = name;
+            this.point = point;
+        }
+    }
+
+    public static class friendComparator implements Comparator<Friend> {
+        @Override
+        public int compare(Friend o1, Friend o2) {
+            if (o1.point < o2.point) {
+                return 1;
+            }
+            if (o1.point == o2.point) {
+                if (o1.name.compareTo(o2.name) > 0) {
+                    return 1;
                 }
+                return -1;
             }
+            return -1;
         }
-
-        return sortedList;
-    }
-
-    public static List<String> findNameByValue(HashMap<String, Integer> friendMap, int score) {
-        List<String> nameList = new ArrayList<>();
-
-        for (Map.Entry<String, Integer> entry : friendMap.entrySet()) {
-            if (entry.getValue().equals(score)) {
-                nameList.add(entry.getKey());
-            }
-        }
-
-        Collections.sort(nameList);
-        return nameList;
     }
 }
 
