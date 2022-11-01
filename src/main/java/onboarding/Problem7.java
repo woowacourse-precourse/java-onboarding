@@ -65,5 +65,11 @@ public class Problem7 {
         return false;
     }
 
+    public static boolean canFriends(List<List<String>> friends) {
+        if(friends.size()>=FRIENDS_MIN && friends.size()<=FRIENDS_MAX && friends.get(0).toString().length()>=FRIENDS_ID_MIN &&
+                friends.get(1).toString().length()<=FRIENDS_ID_MAX) return true;
+        return false;
+    }
+
 
 }
