@@ -1,6 +1,7 @@
 package onboarding;
 
 import onboarding.problem7.Member;
+import onboarding.problem7.Members;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -10,21 +11,25 @@ public class Problem7 {
         Map<String, Member> memberObjectMep = getMemberObjectMep(friends, visitors);
         Map<Member, List<Member>> friendsMap = getFriendsMap(friends, memberObjectMep);
 
-        List<String> userFriends = getUserFriends(friendsMap, user);
-        List<String> userAndUserFriends = getUserAndUserFriends(userFriends, user);
-        List<String> acquaintances = getAcquaintances(friendsMap, userFriends, user);
-        Map<String, Integer> acquaintancesPoint = getAcquaintancesPoint(acquaintances, userAndUserFriends);
-        Map<String, Integer> visitorsPoint = getVisitorsPoint(visitors, userAndUserFriends);
+        Members members = new Members(friendsMap);
+        Member userMember = memberObjectMep.get(user);
 
-        visitorsPoint
-                .forEach((key, value) -> acquaintancesPoint.merge(key, value, (value1, value2) -> value1 + value2));
-
-        return acquaintancesPoint.entrySet().stream()
-                .filter(entry -> entry.getValue() > 0)
-                .map(entry -> new Member(entry.getKey(), entry.getValue()))
-                .sorted(Comparator.comparing(Member::getPoint).reversed().thenComparing(Member::getName))
-                .map(Member::getName)
-                .collect(Collectors.toList());
+        List<Member> userFriends = members.getUserFriends(userMember);
+        List<Member> userAndUserFriends = members.getUserAndUserFriends(userMember);
+//        List<String> acquaintances = getAcquaintances(friendsMap, userFriends, user);
+//        Map<String, Integer> acquaintancesPoint = getAcquaintancesPoint(acquaintances, userAndUserFriends);
+//        Map<String, Integer> visitorsPoint = getVisitorsPoint(visitors, userAndUserFriends);
+//
+//        visitorsPoint
+//                .forEach((key, value) -> acquaintancesPoint.merge(key, value, (value1, value2) -> value1 + value2));
+//
+//        return acquaintancesPoint.entrySet().stream()
+//                .filter(entry -> entry.getValue() > 0)
+//                .map(entry -> new Member(entry.getKey(), entry.getValue()))
+//                .sorted(Comparator.comparing(Member::getPoint).reversed().thenComparing(Member::getName))
+//                .map(Member::getName)
+//                .collect(Collectors.toList());
+        return Collections.emptyList();
     }
 
     public static Map<Member, List<Member>> getFriendsMap(List<List<String>> friends, Map<String, Member> memberObjectMap) {
@@ -83,15 +88,6 @@ public class Problem7 {
             return 0;
         }
         return 10;
-    }
-
-    public static List<String> getUserFriends(Map<String, List<String>> friendMap, String user) {
-        return friendMap.get(user);
-    }
-
-    public static List<String> getUserAndUserFriends(List<String> userFriends, String user) {
-        userFriends.add(user);
-        return userFriends;
     }
 
     public static List<String> getAcquaintances(Map<String, List<String>> friendMap, List<String> userFriends, String user) {
