@@ -5,18 +5,9 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
-        int answer = Integer.MAX_VALUE;
-
         if(!verifyPages(pobi) || !verifyPages(crong)) return -1;
 
-        int pobiMaxVal = compareBoth(pobi);
-        int crongMaxVal = compareBoth(crong);
-
-        if (pobiMaxVal > crongMaxVal) answer = 1;
-        if (pobiMaxVal == crongMaxVal) answer = 0;
-        if (pobiMaxVal < crongMaxVal) answer = 2;
-
-        return answer;
+        return getResultOfPageGame(pobi, crong);
     }
 
     public static boolean verifyPages(List<Integer> pages) {
@@ -81,5 +72,17 @@ class Problem1 {
         if (addVal >= mulVal)
             return addVal;
         return mulVal;
+    }
+
+    public static int getResultOfPageGame(List<Integer> pobi, List<Integer> crong) {
+
+        int pobiMaxVal = compareBoth(pobi);
+        int crongMaxVal = compareBoth(crong);
+
+        if (pobiMaxVal > crongMaxVal) return 1;
+        if (pobiMaxVal == crongMaxVal) return 0;
+        if (pobiMaxVal < crongMaxVal) return 2;
+
+        return -1;
     }
 }
