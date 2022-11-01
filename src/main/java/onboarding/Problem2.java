@@ -37,8 +37,7 @@ public class Problem2 {
         return false;
     }
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        answer = cryptogram;
+        String answer = cryptogram;
         while(existsRedundant(answer)){
             answer = removeRedundant(answer);
         }
