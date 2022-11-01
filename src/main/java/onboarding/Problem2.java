@@ -13,11 +13,11 @@ public class Problem2 {
                 cryptogram = cryptogram.substring(0, leftIndex) + cryptogram.substring(rightIndex + 1);
                 leftIndex = 0;
                 rightIndex = 1;
+            } else {
+                leftIndex++;
+                rightIndex++;
             }
-            leftIndex++;
-            rightIndex++;
         }
-
         answer = cryptogram;
         return answer;
     }
