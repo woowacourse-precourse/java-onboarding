@@ -28,6 +28,16 @@ public class Problem6 {
         return res;
     }
 
+    public static List<String> checkDomain(List<String> emailArr) {
+        List<String> res = new ArrayList<>();
+        for(String email: emailArr) {
+            String domainArr = email.split("@")[1];
+            if(domainArr.equals("email.com")) {
+                res.add(email);
+            }
+        }
+        return res;
+    }
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
