@@ -50,6 +50,45 @@ class ApplicationTest {
             String result = "";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
+
+        //stack  에 다 넣으면서 -> "지금 당장 중복되는 것만 삭제"
+        //그리고 다시 stack clear 하고
+        //temp stack 에 새롭게 옮겨 담으면서 또 지금 당장 중복되는 것만 삭제
+        //더 이상 바꾸는게 없을 때 까지 반복
+        @Test
+        void custom1() {
+            String cryptogram = "acccabba";
+            String result = "";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
+        void custom2() {
+            String cryptogram = "abbaa";
+            String result = "a";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
+        void custom3() {
+            String cryptogram = "a";
+            String result = "a";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
+        void custom4() {
+            String cryptogram = "zyalllely";
+            String result = "zyaely";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
+        void custom5() {
+            String cryptogram = "abvdces";
+            String result = "abvdces";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
     }
 
     @Nested
