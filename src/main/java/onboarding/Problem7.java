@@ -29,10 +29,10 @@ class Recommendation {
         Map<String, Integer> visitor_score = setVisitorScore(friend_score);
         Map<String, Integer> user_score = setUserScore(visitor_score);
         Map<String, Integer> fltr_user_score = filterUserScore(user_score);
-        List<Map.Entry<String, Integer>> entryList = sortUserScore(fltr_user_score);
+        List<Map.Entry<String, Integer>> sorted_user_entryList = sortUserScore(fltr_user_score);
         int i = 0;
-        while (i < 5 & i < entryList.size()) {
-            result.add(entryList.get(i).getKey());
+        while (i < 5 & i < sorted_user_entryList.size()) {
+            result.add(sorted_user_entryList.get(i).getKey());
             i += 1;
         }
         return result;
