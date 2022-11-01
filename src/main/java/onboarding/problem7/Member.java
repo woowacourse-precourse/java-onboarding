@@ -11,13 +11,13 @@ public class Member {
         this.point = point;
     }
 
-    private void getAcquaintancePoint(List<String> userAndUserFriends) {
+    public void getAcquaintancePoint(List<String> userAndUserFriends) {
         if (userAndUserFriends.contains(this)) {
             this.point += 10;
         }
     }
 
-    private void getVisitorPoint(List<String> userAndUserFriends) {
+    public void getVisitorPoint(List<String> userAndUserFriends) {
         if (userAndUserFriends.contains(this)) {
             this.point += 1;
         }
