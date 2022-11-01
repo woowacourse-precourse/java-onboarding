@@ -19,7 +19,7 @@ public class Problem4 {
             } else if ('A' <= alphabet && 'Z' >= alphabet) {
                 reverseWord += (char)('Z' - (alphabet - 'A'));
             } else {
-                reverseWord += ' ';
+                reverseWord += alphabet;
             }
         }
         return reverseWord;
