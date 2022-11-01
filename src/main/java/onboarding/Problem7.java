@@ -53,4 +53,12 @@ public class Problem7 {
             scoreMap.put(friends.get(j), score);
         }
     }
+    private static void giveOnePoint(List<String> visitors, ArrayList<String> friendsList, HashMap<String, Integer> scoreMap, int score) {
+        for(int i = 0; i< visitors.size(); i++){
+            if(!friendsList.contains(visitors.get(i))) {
+                setScore1(scoreMap, visitors, i, 1);
+            }
+        }
+    }
+
 }
