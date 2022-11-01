@@ -34,4 +34,14 @@ class Recommendation {
 
         return 0;
     }
+
+    void init() {
+        for(int i = 0; i < friends.size(); i++) {
+            users.put(friends.get(i).get(0), 0);
+            users.put(friends.get(i).get(1), 0);
+        }
+        for(int i = 0; i < visitors.size(); i++) {
+            users.put(visitors.get(i), 0);
+        }
+    }
 }
