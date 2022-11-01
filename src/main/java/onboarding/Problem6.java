@@ -19,6 +19,10 @@ public class Problem6 {
                 return Collections.emptyList();
             }
         }
+
+        List<String> duplicatedEmailList = findDuplicatedEmailList(forms);
+
+        return duplicatedEmailList;
     }
 
     public static List<String> findDuplicatedEmailList(List<List<String>> forms) {
@@ -46,6 +50,19 @@ public class Problem6 {
             }
         }
 
+        for (int i = 0; i < forms.size(); i++) {
+            String userName = forms.get(i).get(1);
+            for (int j = 0; j < userName.length() - 1; j++) {
+                String candidatedUser = userName.substring(j, j + 2);
+                if (validationSet.contains(candidatedUser)) {
+                    String email = forms.get(i).get(0);
+                    duplicatedUserSet.add(email);
+                }
+            }
+
+        }
+
+        return duplicatedUserSet.stream().sorted().collect(Collectors.toList());
     }
 }
 
