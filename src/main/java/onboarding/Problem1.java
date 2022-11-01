@@ -17,9 +17,8 @@ class Problem1 {
         if (isInvalidInput(pobi) || isInvalidInput(crong)) {
             return EXCEPTION;
         }
-
-        int pobiScore = computeScore(pobi.get(0), pobi.get(1));
-        int crongScore = computeScore(crong.get(0), crong.get(1));
+        int pobiScore = computeScore(pobi);
+        int crongScore = computeScore(crong);
 
         return computeMatch(pobiScore, crongScore);
     }
@@ -34,7 +33,9 @@ class Problem1 {
         return DRAW;
     }
 
-    private static int computeScore(int leftPage, int rightPage) {
+    private static int computeScore(List<Integer> pages) {
+        int leftPage = pages.get(0);
+        int rightPage = pages.get(1);
         int leftPageScore = Math.max(plusEachDigit(leftPage), multiplyEachDigit(leftPage));
         int rightPageScore = Math.max(plusEachDigit(rightPage), multiplyEachDigit(rightPage));
 
