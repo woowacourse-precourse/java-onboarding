@@ -63,6 +63,9 @@ class Problem1 {
         List<Integer> leftPageCiphers = parsePageToCiphers(leftPage);
         List<Integer> rightPageCiphers = parsePageToCiphers(rightPage);
 
+        int leftPageMaxPoint = calculateMaxPointBy(leftPageCiphers);
+        int rightPageMaxPoint = calculateMaxPointBy(rightPageCiphers);
+
         return comparePoint(leftPageMaxPoint, rightPageMaxPoint);
     }
 
@@ -74,6 +77,25 @@ class Problem1 {
         return Stream.of(String.valueOf(page).split(""))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
+    }
+
+    private static int calculateMaxPointBy(List<Integer> pageCiphers) {
+        int plusResult = plusEachBy(pageCiphers);
+        int multiplyResult = multiplyEachBy(pageCiphers);
+
+        return comparePoint(plusResult, multiplyResult);
+    }
+
+    private static int plusEachBy(List<Integer> ciphers) {
+        return ciphers.stream()
+                .reduce(Integer::sum)
+                .orElse(ANSWER_EXCEPTION);
+    }
+
+    private static int multiplyEachBy(List<Integer> ciphers) {
+        return ciphers.stream()
+                .reduce((value, cipher) -> value * cipher)
+                .orElse(ANSWER_EXCEPTION);
     }
 
 
