@@ -5,7 +5,6 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        
         // 각 캐릭터의 점수 계산
         int[] pobi_arr = new int[4];
         for(int i = 0; i<pobi.size(); i++){
@@ -53,7 +52,15 @@ class Problem1 {
             if (crong_arr[i]>crong_max)crong_max = crong_arr[i];
         }
 
+        // 승자를 정하는 조건
         int answer = 0;
+
+        if(crong_max>pobi_max)answer = 2;
+        else if(crong_max<pobi_max)answer = 1;
+        else if(crong_max==pobi_max)answer = 0;
+
+        if(crong.get(1) != crong.get(0)+1 || pobi.get(1) != pobi.get(0)+1)answer = -1;
+
         return answer;
     }
     
