@@ -67,4 +67,18 @@ public class Problem7 {
         }
     }
 
+    static void consider_visitor(String user, List<String> visitors) {
+        for(String visited : visitors) {
+
+            if(friend_map.get(user).contains(visited) || user.equals(visited)) continue;
+
+            if(score_map.containsKey(visited)) {
+                score_map.put(visited, score_map.get(visited)+SCORE_OF_TIMELINE_VISIT);
+            }
+            else {
+                score_map.put(visited, SCORE_OF_TIMELINE_VISIT);
+            }
+        }
+    }
+
 }
