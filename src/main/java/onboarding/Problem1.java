@@ -1,3 +1,5 @@
+package onboarding;
+
 import java.util.List;
 
 class PlayerPro1 {
@@ -33,6 +35,50 @@ class PagePro1 {
 
   public int getScore() {
     return this.pageScore;
+  }
+}
+
+class ScorePro1 {
+
+  private final int score;
+
+  public ScorePro1(int left, int right) {
+    this.score = makeScore(left, right);
+  }
+
+  public int getScore() {
+    return this.score;
+  }
+
+  public static int findMaxScore(int page) {
+    int max = 0;
+    int sum = 0;
+    int multi = 1;
+    int tmp1 = page;
+    int tmp2 = page;
+    while (tmp1 > 0) {
+      sum += tmp1 % 10;
+      tmp1 /= 10;
+    }
+    while (tmp2 > 0) {
+      multi *= tmp2 % 10;
+      tmp2 /= 10;
+    }
+    return Math.max(sum, multi);
+  }
+
+  public int makeScore(int left, int right) {
+    return Math.max(findMaxScore(left), findMaxScore(right));
+  }
+
+  public static int compareScore(int a, int b) {
+    int answer = 0;
+    if (a > b) {
+      answer = 1;
+    } else if (a < b) {
+      answer = 2;
+    }
+    return answer;
   }
 }
 
