@@ -155,14 +155,6 @@ public class Problem7 {
         }
     }
 
-    // static class User{
-    //     private final String name;
-    //     private final List<String> friends;
-    //
-    //
-    // }
-
-
     static class RelationShip {
         private static final int FRIEND_OF_FRIEND = 10;
         private Map<String, List<String>> relationShipMap;
