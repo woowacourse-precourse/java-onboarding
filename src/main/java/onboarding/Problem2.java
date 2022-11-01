@@ -4,9 +4,13 @@ import java.util.*;
 import java.io.*;
 
 public class Problem2 {
-    public static void main(String[] args) {
-        String str = "browoanoommnaon";
-        System.out.println(solution(str));
+    static class Decryptor{
+        Stack<Character> stack;
+
+        public Decryptor(char initChar) {
+            this.stack = new Stack<>();
+            this.stack.push(initChar);
+        }
     }
 
     public static String solution(String cryptogram) {
@@ -27,7 +31,7 @@ public class Problem2 {
         StringBuilder sb = new StringBuilder();
         int stackLen = stack.size();
         for (int i = 1; i < stackLen; i++) {
-            System.out.println(sb.toString());
+            sb.append(stack.pop());
         }
 
         return sb.reverse().toString();
