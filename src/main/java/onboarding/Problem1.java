@@ -30,7 +30,7 @@ import java.util.List;
 
 class Problem1 {
     /*
-     * 구현 사항 :
+     * 기능 목록
      * 1. isValidPage : page 쌍 오류 검사.
      * 2. createSeparatedDigitList : 각 자리를 분리하고 그 값을 list로 만들어 줌.
      * 3-1. getBiggerCalculation : getSeparatedDigits에서 반환된 list를 가지고 score 계산.
@@ -150,18 +150,18 @@ class Problem1 {
      */
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if (!isValidPage(pobi) || !isValidPage(crong)) {
-            return -1;      // 게임 진행 불가
+            return -1;      // 게임 진행 불가.
         }
 
         int pobiScore = getBiggerPageScore(pobi);
         int crongScore = getBiggerPageScore(crong);
 
         if (pobiScore > crongScore) {
-            return 1;       // pobi 승
+            return 1;       // pobi 승.
         } else if (pobiScore < crongScore) {
-            return 2;       // crong 승
+            return 2;       // crong 승.
         } else {
-            return 0;       // 무승부
+            return 0;       // 무승부.
         }
 
     }

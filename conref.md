@@ -24,7 +24,7 @@
 - [암호화](https://kiffblog.tistory.com/147)
 - [문자열(String) forEach(Enhanced for) 사용법](https://dlee0129.tistory.com/94)
 - [대소문자 구분 함수](https://dongjin94.tistory.com/171)
-- [아스키코드 변환](https://blog.naver.com/PostView.nhn?blogId=jysaa5&logNo=221831226674) : C++과 다르게 반드시 변환할 형을 명시해 ****줘야한다.
+- [아스키코드 변환](https://blog.naver.com/PostView.nhn?blogId=jysaa5&logNo=221831226674) : C++과 다르게 반드시 변환할 형을 명시해 줘야한다.
 
 ### Problem5
 - [EmptyList 개념](https://dololak.tistory.com/48)

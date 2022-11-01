@@ -25,14 +25,14 @@ package onboarding;
 
 public class Problem2 {
     /*
-     * 구현 사항
+     * 기능 목록
      * 1. isDuplicates : 중복 확인.
      * 2. removeDuplicates : 문자열의 중복을 모두 제거.
      * 3. solution : 최종적으로 중복이 제거된 문자열 반환.
      */
 
     /**
-     * 1. 문자열에 중복이 존재하는지 확인
+     * 1. 문자열에 중복이 존재하는지 확인.
      *
      * @param str 중복이 존재하는지 검사할 문자열.
      * @return 문자열에서 중복이 시작되는 지점 반환. 중복이 없을 시 -1 반환.

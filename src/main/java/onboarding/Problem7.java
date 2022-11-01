@@ -30,8 +30,8 @@ import java.util.*;
  */
 
 public class Problem7 {
-    /**
-     * 구현 사항
+    /*
+     * 기능 목록
      * 1. setFriendsGraph : friends정보를 가지고 친구 관계 그래프를 만든 후, 사용자와 친구관계인 다른 친구에 대한 정보는 삭제.
      * 2. setFriendsScore : setFriendsGraph의 관계 정보를 가지고 추천 친구들에 대한 각각의 score를 산출하여 저장.
      * 3. getFriendRecommendation : setFriendsScore에서 받은 친구 name과 score정보를 UserInformation 객체에 저장하고 정렬.
@@ -40,16 +40,16 @@ public class Problem7 {
      */
 
     /**
-     * 1-1. 친구 관계 그래프 정보를 저장할 hashMap
+     * 1-1. 친구 관계 그래프 정보를 저장할 hashMap.
      */
     private static Map<String, Set<String>> friendsGraph = new HashMap<>();
     /**
-     * 2-1. 각 친구의 score를 저장할 hashMap
+     * 2-1. 각 친구의 score를 저장할 hashMap.
      */
     private static Map<String, Integer> friendsScore = new HashMap<>();
 
     /**
-     * 3-1. 각 user name과 score정보를 저장할 객체
+     * 3-1. 각 user name과 score정보를 저장할 객체.
      */
     static class UserInformation {
         String name;
@@ -126,7 +126,7 @@ public class Problem7 {
 
             friendsScore.put(anotherUser, 0);
 
-            int size = friends.size();
+            int size = friends.size(); // 일일이 친구 목록을 탐색할 필요없이 size()를 이용해 명 수를 추려낼 수 있다.
             int score = size * 10;
 
             friendsScore.put(anotherUser, friendsScore.get(anotherUser) + score);
@@ -188,7 +188,7 @@ public class Problem7 {
      *
      * @param user     친구 추천을 받을 사용자.
      * @param friends  친구 관계 list.
-     * @param visitors 친구 추천을 받을 사용자의 sns에 방문한 다른 user list
+     * @param visitors 친구 추천을 받을 사용자의 sns에 방문한 다른 user list.
      * @return 최종 추천 친구 목록.
      */
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {

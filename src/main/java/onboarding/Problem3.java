@@ -20,18 +20,18 @@ import java.util.List;
 
 public class Problem3 {
     /*
-     * 구현 사항
+     * 기능 목록
      * 1. createNumberList : 1부터 number까지 나열한 숫자들을 list에 저장.
      * 2. getMultipleOfThreeCount : 어떤 수에 대해 3의 배수(3,6,9)가 들어간 횟수를 셈.
      * 3. getCountSummation : getMultipleOfThreeCount를 통해 구한 각 숫자의 3의 개수를 모두 누적함.
-     * 4. solution : 최종 3의 개수 반환
+     * 4. solution : 최종 3의 개수 반환.
      */
 
     /**
      * 1. 1부터 number까지 나열한 숫자들을 list에 저장.
      *
-     * @param number 나열할 숫자의 범위 지정
-     * @return 1~number까지 나열한 숫자 list
+     * @param number 나열할 숫자의 범위 지정.
+     * @return 1~number까지 나열한 숫자 list.
      */
     private static List<Integer> createNumberList(int number) {
 

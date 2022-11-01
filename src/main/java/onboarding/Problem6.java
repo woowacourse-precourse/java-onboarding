@@ -26,7 +26,7 @@ import java.util.*;
 
 public class Problem6 {
     /*
-     * 구현 사항
+     * 기능 목록
      *1. setFormMap : name 통해 email을 찾을 수 있도록 설정.
      *2-1. createNameOfCasesAndCount : 하나의 name을 가지고 만들 수 있는 모든 두 글자 문자열의 경우를 중복없이 따져 저장해두고, 각 문자열에 대한 개수를 1씩 누적함.
      *2-2. setNameCountMap : createNumberOfCases을 forms에 있는 모든 name에 대해 진행함으로써, 각 문자열의 개수가 모두 누적됨.
@@ -63,7 +63,7 @@ public class Problem6 {
      * 2-1. 하나의 name을 가지고 만들 수 있는 모든 두 글자 문자열의 경우를 중복없이 따져 저장해두고,
      * 각 문자열에 대한 개수를 1씩 누적함.
      *
-     * @param name 한 user의 name
+     * @param name 한 user의 name.
      */
     private static void createNameOfCasesAndCount(String name) {
 
@@ -78,7 +78,7 @@ public class Problem6 {
             }
         }
 
-        /* 2-1-2. 이렇게 만든 문자열들을 nameCountMap의 key로 사용하여 각 문자열에 대한 개수를 1씩 누적함 */
+        /* 2-1-2. 이렇게 만든 문자열들을 nameCountMap의 key로 사용하여 각 문자열에 대한 개수를 1씩 누적함. */
         nameSet.forEach((nameOfCase) -> {
             if (nameCountMap.containsKey(nameOfCase)) {
                 nameCountMap.put(nameOfCase, nameCountMap.get(nameOfCase) + 1);
@@ -91,7 +91,7 @@ public class Problem6 {
 
 
     /**
-     * 2-2. createNumberOfCases을 forms에 있는 모든 name에 대해 진행함으로써,
+     * 2-2. createNameOfCasesAndCount을 forms에 있는 모든 name에 대해 진행함으로써,
      * 각 문자열의 개수가 모두 누적됨.
      *
      * @param forms user들의 name,email list.
@@ -115,7 +115,7 @@ public class Problem6 {
         List<String> nameList = new ArrayList<>();
 
         nameCountMap.forEach((name, count) -> {
-            if (count >= 2) {       // 누적한 값(value)이 2이상이 될 때
+            if (count >= 2) {       // 누적된 값(value)이 2 이상이라면 이름이 겹치는 경우임.
                 nameList.add(name);
             }
         });
@@ -156,8 +156,8 @@ public class Problem6 {
     private static List<String> sortAndDeduplication(List<String> emailList) {
 
         Set<String> set = new HashSet<>(emailList);
-        List<String> newEmailList = new ArrayList<>(set);
-        newEmailList.sort(Comparator.naturalOrder());
+        List<String> newEmailList = new ArrayList<>(set); // Set을 통해 중복 제거.
+        newEmailList.sort(Comparator.naturalOrder()); // 오름차순 정렬.
 
         return newEmailList;
     }

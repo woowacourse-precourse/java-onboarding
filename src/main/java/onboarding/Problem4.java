@@ -21,18 +21,18 @@ package onboarding;
 
 public class Problem4 {
     /*
-     * 구현 사항
+     * 기능 목록
      * 1. setLetterCaseMappingTable : 대문자,소문자 나눠서 청개구리 사전에 따라 문자 mapping.
      * 2. getChangedString : mapping 배열을 가지고 문자열 변환.
      * 3. solution : 변경시킨 최종 문자열 반환.
      */
 
     /**
-     * 대문자 mapping 사전
+     * 대문자 mapping 사전.
      */
     private static int upperCase[] = new int[26];
     /**
-     * 소문자 mapping 사전
+     * 소문자 mapping 사전.
      */
     private static int lowerCase[] = new int[26];
 
