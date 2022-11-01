@@ -1,7 +1,9 @@
 package onboarding;
 
 import java.util.*;
-import java.util.stream.Collectors;
+
+import static onboarding.Problem6.Problem6Validation.validate;
+import static onboarding.Util.sortListAscendingOrder;
 
 public class Problem6 {
 
@@ -16,7 +18,7 @@ public class Problem6 {
     }
 
     private static boolean validateInput(List<List<String>> forms) {
-        return Validation.validate(forms);
+        return validate(forms);
     }
 
     private static List<String> calculateAnswer(ArrayList<List<String>> forms) {
@@ -55,70 +57,16 @@ public class Problem6 {
         return repetitionSet;
     }
 
-    private static List<String> sortListAscendingOrder(List<String> forms) {
-        forms.sort(Comparator.naturalOrder());
-        return forms;
-    }
 
-    static abstract class Validation {
-
+    static abstract class Problem6Validation extends Validation {
         private static final int MIN_LIST_SIZE = 1;
         private static final int MAX_LIST_SIZE = 10000;
-        private static final int MIN_EMAIL_LENGTH = 11;
-        private static final int MAX_EMAIL_LENGTH = 19;
-        private static final int MIN_NICKNAME_LENGTH = 1;
-        private static final int MAX_NICKNAME_LENGTH = 19;
-        private static final String EMAIL_FORM_REGEX = "^(.+)@(.+)$";
-        private static final String NICKNAME_FORM_REGEX = "^[가-힣]*$";
-        private static final String EMAIL_DOMAIN = "email.com";
-
 
         public static boolean validate(List<List<String>> forms) {
-            return validateListSize(forms)
+            return validateListSizeRange(forms, MIN_LIST_SIZE, MAX_LIST_SIZE)
                     && validateEmailForm(forms)
                     && validateEmailDomain(forms)
                     && validateNicknameForm(forms);
-        }
-
-        private static boolean validateListSize(List<List<String>> forms) {
-            return forms.size() >= MIN_LIST_SIZE
-                    && forms.size() <= MAX_LIST_SIZE;
-        }
-
-        private static boolean validateEmailForm(List<List<String>> forms) {
-            for (List<String> form : forms) {
-                String email = form.get(0);
-                if (!email.matches(EMAIL_FORM_REGEX)) {
-                    return false;
-                }
-                if (email.length() <= MIN_EMAIL_LENGTH || email.length() >= MAX_EMAIL_LENGTH) {
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        private static boolean validateEmailDomain(List<List<String>> forms) {
-            for (List<String> form : forms) {
-                String email = form.get(0);
-                if (!email.endsWith(EMAIL_DOMAIN)) {
-                    return false;
-                }
-            }
-            return true;
-        }
-
-        private static boolean validateNicknameForm(List<List<String>> forms) {
-            for (List<String> form : forms) {
-                String nickname = form.get(1);
-                if (!nickname.matches(NICKNAME_FORM_REGEX)) {
-                    return false;
-                }
-                if (nickname.length() <= MIN_NICKNAME_LENGTH || nickname.length() >= MAX_NICKNAME_LENGTH) {
-                    return false;
-                }
-            }
-            return true;
         }
     }
 }

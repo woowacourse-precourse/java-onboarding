@@ -2,26 +2,29 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+
+import static onboarding.Problem2.Problem2Validation.validate;
+import static onboarding.Util.convertCharacterListToString;
+import static onboarding.Util.convertStringToCharacterList;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
         if (!validateInput(cryptogram)) {
             return cryptogram;
         }
-        return decodeCryptogram(cryptogram);
+        return calculateAnswer(cryptogram);
     }
 
     private static boolean validateInput(String cryptogram) {
-        return Validation.validate(cryptogram);
+        return validate(cryptogram);
     }
 
-    private static String decodeCryptogram(String cryptogram) {
-        if (isDecoded(cryptogram)) {
+    private static String calculateAnswer(String cryptogram) {
+        if (calculateIsDecoded(cryptogram)) {
             return cryptogram;
         }
         cryptogram = deleteDuplication(cryptogram);
-        return decodeCryptogram(cryptogram);
+        return calculateAnswer(cryptogram);
     }
 
     private static String deleteDuplication(String cryptogram) {
@@ -42,7 +45,7 @@ public class Problem2 {
         return convertCharacterListToString(newCharacterList);
     }
 
-    private static boolean isDecoded(String cryptogram) {
+    private static boolean calculateIsDecoded(String cryptogram) {
         char previousCharacter = 0;
         for (char character : convertStringToCharacterList(cryptogram)) {
             if (previousCharacter == character) {
@@ -53,43 +56,14 @@ public class Problem2 {
         return true;
     }
 
-    private static List<Character> convertStringToCharacterList(String string) {
-        return string
-                .chars()
-                .mapToObj(c -> (char) c)
-                .collect(Collectors.toList());
-    }
-
-    private static String convertCharacterListToString(List<Character> characterList) {
-        return characterList
-                .stream()
-                .map(String::valueOf)
-                .collect(Collectors.joining());
-    }
-
-    static abstract class Validation {
-
+    static abstract class Problem2Validation extends Validation {
         private static final int MIN_LENGTH = 1;
         private static final int MAX_LENGTH = 1000;
-        private static final String LOWER_ALPHABET_REGEX = "^[a-z]*$";
 
         public static boolean validate(String cryptogram) {
             return validateNotNull(cryptogram)
-                    && validateSize(cryptogram)
+                    && validateStringLengthRange(cryptogram, MIN_LENGTH, MAX_LENGTH)
                     && validateLowerAlphabet(cryptogram);
-        }
-
-        private static boolean validateNotNull(String cryptogram) {
-            return cryptogram != null;
-        }
-
-        private static boolean validateSize(String cryptogram) {
-            return cryptogram.length() >= MIN_LENGTH
-                    && cryptogram.length() <= MAX_LENGTH;
-        }
-
-        private static boolean validateLowerAlphabet(String cryptogram) {
-            return cryptogram.matches(LOWER_ALPHABET_REGEX);
         }
     }
 }

@@ -5,8 +5,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-public class Problem5 {
+import static onboarding.Problem5.Problem5Validation.validate;
 
+public class Problem5 {
     private static final List<Integer> moneyUnitList = Arrays.asList(50000, 10000, 5000, 1000, 500, 100, 50, 10, 1);
     private static final String MONEY_KEY = "MONEY";
     private static final String COUNT_KEY = "COUNT";
@@ -19,7 +20,7 @@ public class Problem5 {
     }
 
     private static boolean validateInput(int money) {
-        return Validation.validate(money);
+        return validate(money);
     }
 
     private static List<Integer> calculateMoney(int money) {
@@ -40,16 +41,12 @@ public class Problem5 {
         return calculateMoneyUnitCount(money - moneyUnit, moneyUnit, ++count);
     }
 
-    static abstract class Validation {
+    static abstract class Problem5Validation extends Validation {
         private static final int MIN_VALUE = 1;
         private static final int MAX_VALUE = 1000000;
 
         public static boolean validate(int money) {
-            return validateRange(money);
-        }
-
-        private static boolean validateRange(int money) {
-            return money >= MIN_VALUE && money <= MAX_VALUE;
+            return validateIntegerRange(money, MIN_VALUE, MAX_VALUE);
         }
     }
 }
