@@ -6,8 +6,8 @@ class Problem1 {
     public static boolean checkException(List<Integer> pobi, List<Integer> crong) { //에러 반환
         if ((pobi.get(0)%2==0 | crong.get(0)%2==0) |    //왼쪽 페이지가 짝수인 경우
                 (pobi.get(0)%2==1 && pobi.get(1)!=pobi.get(0)+1) |  //오른쪽 페이지가 왼쪽페이지+1이 아닌 경우
-                (crong.get(0)%2==1 && crong.get(1)!=crong.get(0)+1)) return false; //에러 반환
-        return true;
+                (crong.get(0)%2==1 && crong.get(1)!=crong.get(0)+1)) return true; //에러 반환
+        return false;
     }
 
     public static int getScore(Integer page) {
