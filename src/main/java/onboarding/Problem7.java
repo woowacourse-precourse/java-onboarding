@@ -194,14 +194,10 @@ public class Problem7 {
         return sortScoreList;
     }
 
-    //추천 사용자를 추출하는 기능
+    //추천 사용자를 추출하는 기능 5명이 넘으면 5명까지만 그렇지 않으면 전부
     public static List<String> extractRecommendUserAllOrTop5(List<String> list) {
-        if (list.size() >= 5) {
-            return list.stream()
-                .limit(5)
-                .collect(Collectors.toList());
-        }
         return list.stream()
+            .limit(5)
             .collect(Collectors.toList());
     }
 }
