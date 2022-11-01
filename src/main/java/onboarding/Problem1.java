@@ -5,7 +5,6 @@ import java.util.*;
 
 class Problem1 {
     public static int get_sum(int num){
-
         return get_digitList(num).stream().mapToInt(Integer::intValue).sum();
     } //리스트의 모든원소들의 합을 반환하는 메서드
     public static int get_prod(int num) {
