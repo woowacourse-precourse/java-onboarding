@@ -10,11 +10,12 @@ public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Map<String, ArrayList<String>> friendMap = createFriendMap(friends);
-        ArrayList<String> friendsOfUser = friendMap.getOrDefault(user, new ArrayList<>());
+        List<String> friendsOfUser = friendMap.getOrDefault(user, new ArrayList<>());
+        List<String> exceptionUsers = createExceptionUsers(friendsOfUser, user);
 
-        Map<String, Integer> recommendScore = new TreeMap<>();
-        addFriendScore(recommendScore, friendMap, friendsOfUser, user);
-        addVisitorScore(recommendScore, visitors, friendsOfUser, user);
+        Map<String, Integer> recommendScore = new HashMap<>();
+        addFriendScore(recommendScore, friendMap, friendsOfUser, exceptionUsers);
+        addVisitorScore(recommendScore, visitors, exceptionUsers);
 
         List<String> answer = sortRecommendScore(recommendScore);
         return getTop5User(answer);
@@ -31,33 +32,39 @@ public class Problem7 {
         return friendMap;
     }
 
+    private static List<String> createExceptionUsers(List<String> friendsOfUser, String user) {
+        List<String> exceptionUsers = new ArrayList<>(friendsOfUser);
+        exceptionUsers.add(user);
+        return exceptionUsers;
+    }
+
     private static void storeUser(Map<String, ArrayList<String>> friendMap, String user1, String user2) {
         ArrayList<String> friendList = friendMap.getOrDefault(user1, new ArrayList<>());
         friendList.add(user2);
         friendMap.put(user1, friendList);
     }
 
-    private static void addFriendScore(Map<String, Integer> recommendScore, Map<String, ArrayList<String>> friendMap, List<String> friendsOfUser, String user) {
+    private static void addFriendScore(Map<String, Integer> recommendScore, Map<String, ArrayList<String>> friendMap, List<String> friendsOfUser, List<String> exceptionUsers) {
         for (String friend : friendsOfUser) {
-            addRecommendScore(recommendScore, friendMap.get(friend), FRIEND_SCORE, friendsOfUser, user);
+            addRecommendScore(recommendScore, friendMap.get(friend), FRIEND_SCORE, exceptionUsers);
         }
     }
 
-    private static void addVisitorScore(Map<String, Integer> recommendScore, List<String> visitors, List<String> friendsOfUser, String user) {
-        addRecommendScore(recommendScore, visitors, VISITOR_SCORE, friendsOfUser, user);
+    private static void addVisitorScore(Map<String, Integer> recommendScore, List<String> visitors, List<String> exceptionUsers) {
+        addRecommendScore(recommendScore, visitors, VISITOR_SCORE, exceptionUsers);
     }
 
-    private static void addRecommendScore(Map<String, Integer> recommendScore, List<String> friendsOfFriend, int score, List<String> friendsOfUser, String user) {
-        for (String friend : friendsOfFriend) {
-            if (isException(friend, friendsOfUser, user)) {
+    private static void addRecommendScore(Map<String, Integer> recommendScore, List<String> candidateFriends, int score, List<String> exceptionUsers) {
+        for (String friend : candidateFriends) {
+            if (isException(exceptionUsers, friend)) {
                 continue;
             }
             recommendScore.put(friend, recommendScore.getOrDefault(friend, 0) + score);
         }
     }
 
-    private static boolean isException(String friend, List<String> friendsOfUser, String user) {
-        return friendsOfUser.contains(friend) || friend.equals(user);
+    private static boolean isException(List<String> exceptionUsers, String friend) {
+        return exceptionUsers.contains(friend);
     }
 
     private static List<String> sortRecommendScore(Map<String, Integer> recommendScore) {
