@@ -49,5 +49,18 @@ public class Problem7 {
             }
         }
         return scoreMap;
+    static void calculateVisitorScore(List<String> visitors) {
+        List<String> userFriends = friendsMap.get(userID);
+        for (String visitor : visitors) {
+            // 친구 목록에 없을 경우: 친구의 친구, 혹은 모르는 사람
+            if (!userFriends.contains(visitor)) {
+                if (scoreMap.containsKey(visitor)) {
+                    scoreMap.put(visitor, scoreMap.get(visitor) + 1);
+                } else {
+                    scoreMap.put(visitor, 1);
+                }
+            }
+        }
+    }
     }
 }
