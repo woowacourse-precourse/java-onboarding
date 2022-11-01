@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * 기능 1: 이메일, 이름을 가져와 주는 함수 작성
@@ -35,6 +36,14 @@ public class Problem6 {
         }
     }
 
+    public static List<String> removeDuplicate(List<String> answer) {
+        List<String> result = answer.stream()
+                .distinct()
+                .sorted()
+                .collect(Collectors.toList());
+        return result;
+    }
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
 
@@ -43,6 +52,8 @@ public class Problem6 {
         for (int i = 0; i < forms.size(); i++) {
             checkDuplicateName(answer, keyWithEmailMap, forms.get(i));
         }
+
+        answer = removeDuplicate(answer);
 
         return answer;
     }
