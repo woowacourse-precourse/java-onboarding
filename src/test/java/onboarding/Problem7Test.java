@@ -80,6 +80,16 @@ class Problem7Test {
 
     static Map<String, Integer> userFriends;
 
+    // 이전 친구 찾기
+    private List<String> getOldFriends(String user, List<List<String>> friends) {
+        List<String> result = new ArrayList<>();
+        // user 친구 찾기
+        for (List<String> relation : friends){
+            if(relation.contains(user))  result.add(relation.get(0)==user ? relation.get(1) : relation.get(0));
+        }
+        return result;
+    }
+
     void addPoint(String user, int point) {
         // 추천 점수 추가
         if(userFriends.containsKey(user)) {
