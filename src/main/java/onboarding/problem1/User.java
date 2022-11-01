@@ -22,4 +22,15 @@ public class User {
             throw new PageException();
         }
     }
+    
+    private Integer calculateSumScore(Integer page){
+        int sum = 0;
+
+        while(page != 0){
+            sum += page % 10;
+            page /= 10;
+        }
+
+        return sum;
+    }
 }
