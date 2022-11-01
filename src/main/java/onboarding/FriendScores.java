@@ -1,6 +1,5 @@
 package onboarding;
 
-import java.lang.reflect.Array;
 import java.util.*;
 
 public class FriendScores {
@@ -36,10 +35,11 @@ public class FriendScores {
     private void addFriendScore(User user) {
         Score score = new Score();
 
-        if (checkUserExist(user)) {
+        if (isUserExist(user)) {
             score = friendScores.get(user);
-            score.addFriendScore();
         }
+
+        score.addFriendScore();
 
         friendScores.put(user, score);
     }
@@ -47,7 +47,7 @@ public class FriendScores {
     private void addVisitorScore(User user) {
         Score score = new Score();
 
-        if (checkUserExist(user)) {
+        if (isUserExist(user)) {
             score = friendScores.get(user);
         }
 
@@ -69,6 +69,7 @@ public class FriendScores {
                     return user1.getName()
                             .compareTo(user2.getName());
                 }
+
                 return o2.getValue().getScore() - o1.getValue().getScore();
             }
         });
@@ -85,7 +86,7 @@ public class FriendScores {
         return recommends;
     }
 
-    private boolean checkUserExist(User user) {
+    private boolean isUserExist(User user) {
         return friendScores.containsKey(user);
     }
 }
