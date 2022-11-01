@@ -1,8 +1,12 @@
 package onboarding;
 
+import onboarding.problem4.TreeFrogConverter;
+
 public class Problem4 {
+
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        TreeFrogConverter treeFrogConverter = new TreeFrogConverter();
+
+        return treeFrogConverter.convert(word);
     }
 }
