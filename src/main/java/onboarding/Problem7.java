@@ -67,6 +67,15 @@ public class Problem7 {
             }
         }
 
+        // 큐에서 뺀 값 중 추천 점수가 0점인 사람은 제외
+        for (int i = 0; i < 5; i++) {
+            if (!queue.isEmpty()) {
+                Problem7.User u = queue.poll();
+                if (isScoreZero(u)) continue;
+                answer.add(u.userName);
+            }
+        }
+
         return answer;
     }
 
