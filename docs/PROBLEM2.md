@@ -2,15 +2,29 @@
 ## 구현 기능 목록
 
 - 저장 기능
-  - 연속으로 이어지는 문자가 중복이 아닐 경우에만 추출
   - 추출한 문자가 순서대로 저장된 리스트를 반환
+  - 연속으로 이어지는 문자가 중복이 아닐 경우에만 추출
+- 재귀 기능
+  - 순회가 끝나고 중복문자를 한번 더 재귀해주는 기능 필요
+    - StringIndexOutOfBoundsException 해결 결과로 인해 순회 횟수 부족으로 인해 생긴 기능
 - 반환 기능
   - 저장된 리스트를 넘겨받고 문자열로 형변환하여 반환
 
 ---
+>- update : ~~LinkedList -> ArrayList로 전환~~
+  - 테스팅의 끝이 보일즈음 StringIndexOutOfBoundsException 으로 고통받던 중, 자바의 사용법을 모르는게 문제가 아니라 놓치는게 있다는 것을 발견
+  - LinkedList는 메모리 할당이 아닌 포인터 참조의 원리를 가지고 있었기 때문에 애초에 용량이 없음
+  - 크기를 직접 지정해서 사용할 수 있는 ArrayList로 전환
+  - 정답이 아니었음으로 실패..
 
->암호해독 규칙 발견
->1. 탐색하면서 만나게 되는 첫번째 중복문자들만 제거한다.
+>- update : LinkedList vs ArrayList 조사 결과
+- LinkedList : 삽입, 삭제가 일어날 때 O(1)의 시작 복잡도
+- ArrayList : 삽입, 삭제 이후 다른 데이터를 복사해야 함으로 최악의 경우 O(N) 의 성능
+- 저장 기능에 필요한 삽입에 복잡도가 적은 LinkedList 선택
+- 배열엔 get, add 기능이 없어 List 선택
+
+>- update :암호해독 규칙 발견
+>1. 중복문자는 앞에서부터 2개씩 순서대로 제거된다.
 >2. 나머지 문자열은 다음 순서로 넘어가 순회한다.
    (애초에 Set으로 한 번에 중복 문자를 제거하면 원하는 결과가 안나오는 것이었다!)
 
@@ -41,10 +55,10 @@
 
 암호문을 좋아하는 괴짜 개발자 브라운이 이번에는 중복 문자를 이용한 새로운 암호를 만들었다. 예를 들어 "browoanoommnaon"이라는 암호문은 다음과 같은 순서로 해독할 수 있다.
 
-1. "browoanoommnaon"
-2. "browoannaon"
-3. "browoaaon"
-4. "browoon"
+1. "browoanoommnaon" 
+2. "browoannaon" 
+3. "browoaaon" 
+4. "browoon" 
 5. "brown"
 
 임의의 문자열 cryptogram이 매개변수로 주어질 때, 연속하는 중복 문자들을 삭제한 결과를 return 하도록 solution 메서드를 완성하라.
