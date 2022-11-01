@@ -5,6 +5,25 @@ import java.util.List;
 import java.util.stream.Stream;
 
 class Problem1 {
+	public static int solution(List<Integer> pobi, List<Integer> crong) {
+		int answer;
+
+		if (isInvalid(pobi) || isInvalid(crong)) {
+			answer = -1;
+			return answer;
+		}
+
+		int pobiScore = getScore(pobi);
+		int crongScore = getScore(crong);
+
+		if (pobiScore == crongScore) {
+			answer = 0;
+			return answer;
+		}
+		answer = pobiScore > crongScore ? 1 : 2;
+		return answer;
+	}
+
 	public static int getScore(List<Integer> pageList) {
 		int max = Integer.MIN_VALUE;
 		int[] numList;
@@ -29,27 +48,5 @@ class Problem1 {
 			return (right - left) != 1 || left % 2 == 0;
 		}
 		return true;
-	}
-
-	public static int solution(List<Integer> pobi, List<Integer> crong) {
-		int answer;
-
-		if (isInvalid(pobi) || isInvalid(crong)) {
-			answer = -1;
-			return answer;
-		}
-
-		int pobiScore = getScore(pobi);
-		int crongScore = getScore(crong);
-
-		if (pobiScore > crongScore) {
-			answer = 1;
-		} else if (pobiScore < crongScore) {
-			answer = 2;
-		} else {
-			answer = 0;
-		}
-
-		return answer;
 	}
 }
