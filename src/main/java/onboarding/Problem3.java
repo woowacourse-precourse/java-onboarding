@@ -12,12 +12,6 @@ public class Problem3 {
         return answer;
     }
 
-    /**
-     * 현재 숫자의 박수치는지 여부와 박수횟수를 계산하는 메서드
-     *
-     * @param currentNumber 현재 숫자
-     * @return 쳐야하는 박수 횟수
-     */
     public static int calculateClap(int currentNumber) {
 
         int clap = 0;

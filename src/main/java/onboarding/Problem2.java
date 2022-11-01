@@ -13,12 +13,6 @@ public class Problem2 {
         return cryptogram;
     }
 
-    /**
-     * 복호화가 필요한 문자열을 복호화하는 메서드
-     *
-     * @param cryptogram 현재 cryptogram
-     * @return 복호화한 cryptogram
-     */
     public static String decryption(String cryptogram) {
 
         if (cryptogram.length() == 2) {
@@ -49,13 +43,6 @@ public class Problem2 {
         return cryptogram;
     }
 
-
-    /**
-     * 현재 cryptogram 이 복호화가 필요한지 체크하는 메서드
-     *
-     * @param cryptogram 주어진 문자열
-     * @return 복호화 필요 체크하는 boolean
-     */
     public static boolean isEncrypted(String cryptogram) {
 
         for (int i = 1; i < cryptogram.length(); i++) {
