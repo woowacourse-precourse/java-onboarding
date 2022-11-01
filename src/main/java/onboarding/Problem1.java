@@ -50,8 +50,17 @@ class Problem1 {
         }
     }
 
+    public static int comparePobiAndCrong(int pobi, int crong) {
+        if (pobi < crong) {
+            return 2;
+        }else if (pobi > crong) {
+            return 1;
+        }else {
+            return 0;
+        }
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
 
         ArrayList<ArrayList<Integer>> pobipagelistlist = new ArrayList<>();
         pobipagelistlist.add(convertPage(pobi.get(0)));
@@ -98,7 +107,9 @@ class Problem1 {
         crongsecondpagemultiply = multiplyPage(crongpagelistlist.get(1));
         crongsecondpage = comparePlusAndMulti(crongsecondpageplus, crongsecondpagemultiply);
 
-        return answer;
+        realcrongpage = compareFirstAndSecond(crongfirstpage, crongsecondpage);
+
+        return comparePobiAndCrong(realpobipage, realcrongpage);
 
     }
 }
