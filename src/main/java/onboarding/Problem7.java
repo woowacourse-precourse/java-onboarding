@@ -8,7 +8,7 @@ public class Problem7 {
     static Map<String, Integer> friendsScoreList = new HashMap<>(); // 친구/점수 리스트
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+
         // 1. 직접 친구(아는 친구X) 리스트 초기화
         directFriends = getDirectFriends(user, friends);
 
@@ -24,7 +24,10 @@ public class Problem7 {
         // 5. 추천 친구 정렬
         friendsScoreList = sortByScore(friendsScoreList);
 
-        return answer;
+        // 6. 추천 친구 결과 리스트로 만들기
+        List<String> friendRecommendation = findFriendRecommendation(friendsScoreList);
+
+        return friendRecommendation;
     }
 
     // 1. 직접 친구(아는 친구X) 리스트 초기화
@@ -93,5 +96,16 @@ public class Problem7 {
         Collections.sort(keySetList, (x, y) -> (friendsScoreList.get(y).compareTo(friendsScoreList.get(x))));
 
         return friendsScoreList;
+    }
+
+    // 6. 추천 친구 결과 리스트로 만들기
+    static List<String> findFriendRecommendation(Map<String, Integer> friendsScoreList){
+        List<String> friendRecommendation = new ArrayList<>();
+
+        friendsScoreList.forEach((key, value)->{
+            if (!directFriends.contains(key)) friendRecommendation.add(key);
+        });
+
+        return friendRecommendation;
     }
 }
