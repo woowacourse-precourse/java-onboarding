@@ -80,6 +80,15 @@ class Problem1 {
         int pobiMaxNum = Collections.max(pobiMaxArray);
         int crongMaxNum = Collections.max(crongMaxArray);
 
+        //최대 값 비교
+        if(pobiMaxNum > crongMaxNum) {
+            answer = -1;
+        } else if (pobiMaxNum < crongMaxNum) {
+            answer = 2;
+        } else if (pobiMaxNum == crongMaxNum) {
+            answer = 0;
+        }
+
         return answer;
     }
 }
