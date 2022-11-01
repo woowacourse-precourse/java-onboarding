@@ -71,12 +71,13 @@ public class Problem7 {
         List<String> recommendFriends = new ArrayList<>(score.keySet());
 
         recommendFriends.sort((user1, user2) -> {
+            Integer[] scores = {score.get(user1), score.get(user2)};
 
-            if (score.get(user1).equals(score.get(user2))) {
+            if (scores[0].equals(scores[1])) {
                 return user1.compareTo(user2);
             }
 
-            return score.get(user2).compareTo(score.get(user1));
+            return scores[1].compareTo(scores[0]);
         });
 
         return recommendFriends.subList(0, Math.min(recommendFriends.size(), MAX_RECOMMEND));
