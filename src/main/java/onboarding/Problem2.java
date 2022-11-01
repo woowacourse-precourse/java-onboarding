@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.Deque;
 import java.util.Stack;
 
 public class Problem2 {
@@ -23,41 +24,58 @@ public class Problem2 {
 	{
 		return (cryptogram != null && isAllLowerCase(cryptogram) && isValidLength(cryptogram));
 	}
-	private static int fillStack(Stack<Character> stack, String cryptogram, int index)
+	private static Stack<Character> getFilledStack(String cryptogram)
 	{
-		char newCh = cryptogram.charAt(index);
-		char top;
-		int len;
+		Stack<Character> stack = new Stack<>();
+		char[] arr = cryptogram.toCharArray();
 
-		if (stack.isEmpty() || stack.peek() != newCh) {
-			stack.push(newCh);
-			return (index + 1);
+		for (char ch : arr)
+			stack.push(ch);
+		return (stack);
+	}
+	private static void removeDup(Stack<Character> left, Stack<Character> right)
+	{
+		boolean dupFlag = false;
+
+		right.push(left.pop());
+		if (!left.isEmpty() && left.peek() == right.peek())
+			dupFlag = true;
+		if (!dupFlag)
+			return;
+		while (!left.isEmpty() && left.peek() == right.peek())
+			left.pop();
+		right.pop();
+	}
+	private static void examineCryptogram(Stack<Character> left, Stack<Character> right)
+	{
+		while (!left.isEmpty()) {
+			removeDup(left, right);
 		}
-		len = cryptogram.length();
-		top = stack.pop();
-		while (index < len && cryptogram.charAt(index) == top)
-			index++;
-		return (index);
+	}
+	private static void moveAllToLeft(Stack<Character> left, Stack<Character> right)
+	{
+		while (!right.isEmpty())
+			left.push(right.pop());
 	}
 	private static Stack<Character> deciper(String cryptogram)
 	{
-		Stack<Character> stack = new Stack<>();
-		int i = 1;
-		int len = cryptogram.length();
+		Stack<Character> left = getFilledStack(cryptogram);
+		Stack<Character> right = new Stack<>();
+		int sizeBefore = -1;
 
-		stack.push(cryptogram.charAt(0));
-		while (i < len)
-			i = fillStack(stack, cryptogram, i);
-		return (stack);
+		while (left.size() != sizeBefore) {
+			sizeBefore = left.size();
+			examineCryptogram(left, right);
+			moveAllToLeft(left, right);
+		}
+		return (left);
 	}
 	private static String buildString(Stack<Character> stack)
 	{
 		StringBuilder sb = new StringBuilder();
-		int size = stack.size();
 
-		for (int i = 0; i < size; i++) {
+		while (!stack.isEmpty())
 			sb.append(stack.pop());
-		}
 		return (sb.reverse().toString());
 	}
 	public static String solution(String cryptogram) {

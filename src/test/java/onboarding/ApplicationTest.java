@@ -33,22 +33,6 @@ class ApplicationTest {
             int result = -1;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
-
-        @Test
-        void case4() {
-            List<Integer> pobi = List.of(1, 2);
-            List<Integer> crong = List.of(399, 400);
-            int result = -1;
-            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
-        }
-
-        @Test
-        void case5() {
-            List<Integer> pobi = List.of(3, 4);
-            List<Integer> crong = List.of(97, 98);
-            int result = 2;
-            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
-        }
     }
 
     @Nested
@@ -63,34 +47,6 @@ class ApplicationTest {
         @Test
         void case2() {
             String cryptogram = "zyelleyz";
-            String result = "";
-            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
-        }
-
-        @Test
-        void case3() {
-            String cryptogram = "a";
-            String result = "a";
-            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
-        }
-
-        @Test
-        void case4() {
-            String cryptogram = "zyalllelyz";
-            String result = "zyaelyz";
-            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
-        }
-
-        @Test
-        void case5() {
-            String cryptogram = "aabba";
-            String result = "a";
-            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
-        }
-
-        @Test
-        void case6() {
-            String cryptogram = "aaa";
             String result = "";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
@@ -111,13 +67,6 @@ class ApplicationTest {
             int result = 14;
             assertThat(Problem3.solution(number)).isEqualTo(result);
         }
-
-        @Test
-        void case3() {
-            int number = 40;
-            int result = 22;
-            assertThat(Problem3.solution(number)).isEqualTo(result);
-        }
     }
 
     @Nested
@@ -126,20 +75,6 @@ class ApplicationTest {
         void case1() {
             String word = "I love you";
             String result = "R olev blf";
-            assertThat(Problem4.solution(word)).isEqualTo(result);
-        }
-
-        @Test
-        void case2() {
-            String word = "..*.aaZZ.*..";
-            String result = "..*.zzAA.*..";
-            assertThat(Problem4.solution(word)).isEqualTo(result);
-        }
-
-        @Test
-        void case3() {
-            String word = " ";
-            String result = " ";
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
     }
@@ -157,27 +92,6 @@ class ApplicationTest {
         void case2() {
             int money = 15_000;
             List<Integer> result = List.of(0, 1, 1, 0, 0, 0, 0, 0, 0);
-            assertThat(Problem5.solution(money)).isEqualTo(result);
-        }
-
-        @Test
-        void case3() {
-            int money = 1;
-            List<Integer> result = List.of(0, 0, 0, 0, 0, 0, 0, 0, 1);
-            assertThat(Problem5.solution(money)).isEqualTo(result);
-        }
-
-        @Test
-        void case4() {
-            int money = 1_000_000;
-            List<Integer> result = List.of(20, 0, 0, 0, 0, 0, 0, 0, 0);
-            assertThat(Problem5.solution(money)).isEqualTo(result);
-        }
-
-        @Test
-        void case5() {
-            int money = 987_654;
-            List<Integer> result = List.of(19, 3, 1, 2, 1, 1, 1, 0, 4);
             assertThat(Problem5.solution(money)).isEqualTo(result);
         }
     }
