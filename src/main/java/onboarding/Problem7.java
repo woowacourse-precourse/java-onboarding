@@ -41,13 +41,31 @@ public class Problem7 {
 			this.friendList = new ArrayList<>();
 		}
 
+		public String name() {
+			return name;
+		}
+
+		public void addScoreByVisit() {
+			recommendedScore.addScoreByVisit();
+		}
+
+		public void addScoreBySharingFriend() {
+			recommendedScore.addScoreBySharingFriend();
+		}
+
 		public static void addFriendRelation(User firstUser, User secondUser) {
 			firstUser.friendList.add(secondUser);
 			secondUser.friendList.add(firstUser);
 		}
 
-		public void addScoreByVisit() {
-			recommendedScore.addScoreByVisit();
+		public List<String> getFriendsOfFriends() {
+			List<String> friendsOfFriends = new ArrayList<>();
+			for (User friend : friendList) {
+				friend.friendList.stream()
+					.map(User::name)
+					.forEach(friendsOfFriends::add);
+			}
+			return friendsOfFriends;
 		}
 	}
 
@@ -64,6 +82,7 @@ public class Problem7 {
 				User secondUser = addUser(friend.get(1));
 				User.addFriendRelation(firstUser, secondUser);
 			}
+			updateScoreBySharedFriend();
 
 			for (String visitor : visitors) {
 				User currentVisitor = addUser(visitor);
@@ -78,6 +97,13 @@ public class Problem7 {
 			User newUser = new User(name);
 			users.put(name, newUser);
 			return newUser;
+		}
+
+		private void updateScoreBySharedFriend() {
+			List<String> sharedFriends = receivedUser.getFriendsOfFriends();
+			for (String sharedFriend : sharedFriends) {
+				users.get(sharedFriend).addScoreBySharingFriend();
+			}
 		}
 
 	}
