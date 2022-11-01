@@ -3,8 +3,6 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
-    static int pobi_score;  // pobi의 점수
-    static int crong_score; // crong의 점수
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         return determineWinner(pobi, crong);
@@ -16,8 +14,8 @@ class Problem1 {
         if(exceptionCheck(crong.get(0), crong.get(1))) return -1;  // crong 에서 예외상황
 
         // pobi와 crong의 최고 점수 계산
-        calcPobiScore(pobi.get(0), pobi.get(1));
-        calcCrongScore(crong.get(0), crong.get(1));
+        int pobi_score = calcPobiScore(pobi.get(0), pobi.get(1));
+        int crong_score = calcCrongScore(crong.get(0), crong.get(1));
 
         // 결과 리턴
         if(pobi_score > crong_score) return 1;
@@ -37,7 +35,9 @@ class Problem1 {
     }
 
     // pobi의 점수를 계산하는 함수
-    static void calcPobiScore(int left_page, int right_page) {
+    static int calcPobiScore(int left_page, int right_page) {
+        int pobi_score = Integer.MIN_VALUE;
+
         // 왼쪽 페이지
         pobi_score = Math.max(pobi_score, sum(left_page));      // 왼쪽 페이지 숫자의 합
         pobi_score = Math.max(pobi_score, multiply(left_page)); // 왼쪽 페이지 숫자의 곱
@@ -45,10 +45,14 @@ class Problem1 {
         // 오른쪽 페이지
         pobi_score = Math.max(pobi_score, sum(right_page));      // 오른쪽 페이지 숫자의 합
         pobi_score = Math.max(pobi_score, multiply(right_page)); // 오른쪽 페이지 숫자의 곱
+
+        return pobi_score;
     }
 
     // crong의 점수를 계산하는 함수
-    static void calcCrongScore(int left_page, int right_page) {
+    static int calcCrongScore(int left_page, int right_page) {
+        int crong_score = Integer.MIN_VALUE;
+
         // 왼쪽 페이지
         crong_score = Math.max(crong_score, sum(left_page));      // 왼쪽 페이지 숫자의 합
         crong_score = Math.max(crong_score, multiply(left_page)); // 왼쪽 페이지 숫자의 곱
@@ -56,6 +60,8 @@ class Problem1 {
         // 오른쪽 페이지
         crong_score = Math.max(crong_score, sum(right_page));      // 오른쪽 페이지 숫자의 합
         crong_score = Math.max(crong_score, multiply(right_page)); // 오른쪽 페이지 숫자의 곱
+
+        return crong_score;
     }
 
     static int sum(int page) {
