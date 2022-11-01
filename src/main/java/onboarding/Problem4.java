@@ -11,7 +11,8 @@ public class Problem4 {
 
     char getReversedAlphabet(char alpha_bet){
         int temp_ascii = (int)alpha_bet;
-        temp_ascii = 90 - (temp_ascii-65);
+        if (65 <= temp_ascii && temp_ascii <= 90) temp_ascii = 90 - (temp_ascii-65);
+        if (97 <= temp_ascii && temp_ascii <= 122) temp_ascii = 122 - (temp_ascii-97);
         return (char)temp_ascii;
     }
 
