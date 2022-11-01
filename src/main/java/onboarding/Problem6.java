@@ -6,9 +6,9 @@ import java.util.TreeSet;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        TreeSet<String> filteredCrewList = detectCrewOfAll(forms);
+        List<String> answer = new ArrayList<>(filteredCrewList);
         return answer;
-
     }
 
     /*
