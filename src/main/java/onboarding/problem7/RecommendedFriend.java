@@ -2,12 +2,10 @@ package onboarding.problem7;
 
 public class RecommendedFriend implements Comparable<RecommendedFriend> {
 
-	private static final int SAME = 0;
-
 	private final String name;
-	private final Integer score;
+	private final int score;
 
-	public RecommendedFriend(String name, Integer score) {
+	public RecommendedFriend(String name, int score) {
 		this.name = name;
 		this.score = score;
 	}
