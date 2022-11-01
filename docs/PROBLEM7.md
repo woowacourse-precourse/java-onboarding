@@ -4,7 +4,7 @@
 | 1  | 사용자의 친구 목록을 생성하는 기능                        | ```createFriendList()```        |
 | 2  | ```1```에 포함되어있는지 체크하는 기능  ➡️  **맞으면 +10점** | ```checkFriendOfFriend()```     |
 | 3  | 사용자의 타임라인에 방문했는지 체크하는 기능  ➡️  **맞으면 +1점**  | ```checkVisitors()```           |
-| 4  | 친구 추천 목록을 만드는 기능                           | ```makeRecommendFriendsList()``` |
+| 4  | 친구 추천 목록을 만드는 기능                           | ```makeRecommendFriendList()``` |
 
 
 
