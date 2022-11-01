@@ -1,0 +1,30 @@
+# <type>(<$scope>): <subject>
+
+######## Subject 70 characters #################################### -> |
+
+# Body
+
+######## Body 70 characters ###################################### -> |
+
+# Footer
+
+# --- COMMIT END ---
+#  Type
+#   feat    : new feature
+#   fix     : bug fix
+#   refactor: refactoring production code
+#   style   : formatting, missing semi colons, etc; no code change
+#   docs    : changes to documentation
+#   test    : adding or refactoring tests. no productin code change
+#   chore   : updating grunt tasks etc. no production code change
+# ------------------
+#  Subject
+#     imperative, present tense
+#     only lower case, no dot(.)
+#  Body
+#     imperative, present tense
+#     focus on why, what
+#  Footer
+#    Before : scope: { ~~ } After : scope: { ~~}
+#    issue number : #123
+# ------------------
