@@ -16,6 +16,10 @@ public class Problem4 {
         return answer;
     }
 
+    private static boolean isAlphabet(Character letter, Map<Character, Character> cachedAlphabet) {
+        return cachedAlphabet.containsKey(letter);
+    }
+
     private static void putLowerCaseKeyAndValue(Map<Character, Character> cachedAlphabet) {
         int lowercaseASCIIValue = 122;
         for (int i = LOWERCASE_ASCII_START; i <= LOWERCASE_ASCII_END; i++) {
