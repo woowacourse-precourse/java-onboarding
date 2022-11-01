@@ -14,15 +14,18 @@ public class Problem2 {
                         sb.append(std);
                     std = cur;
                     cnt=1;
-                    if(i == cryptogram.length()-1)
-                        sb.append(cur);
+
                 }
                 else{
                     isFinish = false;
                     cnt++;
                 }
-
+                if(i == cryptogram.length()-1 && cnt < 2)
+                    sb.append(cur);
             }
+            if(cryptogram.length() < 2)
+                return cryptogram;
+
             cryptogram = sb.toString();
             if(isFinish || sb.toString().equals("")){
                 break;
