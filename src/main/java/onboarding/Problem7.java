@@ -4,25 +4,27 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        LinkedHashMap<String, Integer> commonFriendCount = new LinkedHashMap<>();
+        LinkedHashMap<String, Integer> visitCount = new LinkedHashMap<>();
+        HashMap<String, Integer> scoreResult = new HashMap<>();
+
         // 친구 집합
         TreeSet<String> friendSet = findFriends(user, friends);
-        TreeSet<String> peopleSet = findPeople(user, friends, visitors, friendSet);
-        LinkedHashMap commonFriendCount = new LinkedHashMap();
-        LinkedHashMap visitCount = new LinkedHashMap();
-        HashMap<String, Integer> scoreResult = new HashMap();
 
+        // 본인과 친구 제외한 집합
+        TreeSet<String> peopleSet = findPeople(user, friends, visitors, friendSet);
+
+        // 함께 아는 친구의 수
         for (String person : peopleSet) {
             commonFriendCount.put(person, makeCommonFriends(person, friends).size());
         }
-        System.out.println("commonFriendCount is");
-        System.out.println(commonFriendCount);
 
+        // 타임 라인에 방문한 횟수
         for (String person : peopleSet) {
             visitCount.put(person, countVisits(person, visitors));
         }
-        System.out.println("visitCount is");
-        System.out.println(visitCount);
 
+        // 점수 계산
         for (String person : peopleSet) {
             scoreResult.put(person, makeScores(person, commonFriendCount, visitCount));
         }
@@ -37,14 +39,11 @@ public class Problem7 {
         // 최대 5명
         List<String> answer = maxFive(finalResult);
 
-        System.out.println("answer is");
-        System.out.println(answer);
-
         return answer;
     }
     
     private static TreeSet<String> findFriends(String user, List<List<String>> friends) {
-        TreeSet<String> Set = new TreeSet<String>();
+        TreeSet<String> Set = new TreeSet<>();
         for (List<String> e : friends) {
             int indexOfMe = e.indexOf(user);
             if (indexOfMe == 1) {
@@ -59,7 +58,7 @@ public class Problem7 {
     }
 
     private static TreeSet<String> findPeople(String user, List<List<String>> friends, List<String> visitors, TreeSet<String> friendSet) {
-        TreeSet<String> Set = new TreeSet<String>();
+        TreeSet<String> Set = new TreeSet<>();
         for (List<String> e : friends) {
             Set.add(e.get(0));
             Set.add(e.get(1));
@@ -75,7 +74,7 @@ public class Problem7 {
     private static TreeSet<String> makeCommonFriends(String person, List<List<String>> friends) {
         TreeSet<String> commonFriendSet = new TreeSet<>();
         for (List<String> friend : friends) {
-            if (friend.indexOf(person) != -1) {
+            if (friend.contains(person)) {
                 int indexOfPerson = friend.indexOf(person);
                 if (indexOfPerson == 1) {
                     String friendName = friend.get(0);
@@ -92,18 +91,17 @@ public class Problem7 {
     private static int countVisits(String person, List<String> visitors) {
         int count = 0;
         for (String visitor : visitors) {
-            if (visitor.indexOf(person) != -1) {
+            if (visitor.contains(person)) {
                 count = count + 1;
             }
         }
         return count;
     }
 
-    private static int makeScores(String person, LinkedHashMap commonFriendCount, LinkedHashMap visitCount) {
-        int commonFriendScore = 10 * (int)commonFriendCount.get(person);
-        int visitScore = (int)visitCount.get(person);
-        int scoreResult = commonFriendScore + visitScore;
-        return scoreResult;
+    private static int makeScores(String person, LinkedHashMap<String, Integer> commonFriendCount, LinkedHashMap<String, Integer> visitCount) {
+        int commonFriendScore = 10 * commonFriendCount.get(person);
+        int visitScore = visitCount.get(person);
+        return commonFriendScore + visitScore;
     }
 
     /**
