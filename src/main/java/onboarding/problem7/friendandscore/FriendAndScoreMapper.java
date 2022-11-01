@@ -30,4 +30,8 @@ public class FriendAndScoreMapper {
             newFriendAndScore.put(newFriend, value + score);
         }
     }
+
+    public Map<User, Integer> getFriendAndScore() {
+        return newFriendAndScore;
+    }
 }
