@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Problem6 {
@@ -22,8 +23,6 @@ public class Problem6 {
                 }
             }
         }
-        System.out.println(names);
-        System.out.println(emails);
         
         for(int n = 1; n < names.size(); n++){
             String cname = names.get(n-1);
@@ -31,7 +30,6 @@ public class Problem6 {
                 String compare = "" + cname.charAt(p-1) + cname.charAt(p);
                 for (int l = n; l < names.size(); l++){
                     if (names.get(l).contains(compare)){
-                        System.out.println(compare + l);
                         if(repeats.contains(emails.get(n-1)) == false){
                             repeats.add(emails.get(l));
                             repeats.add(emails.get(l-1));
@@ -43,7 +41,7 @@ public class Problem6 {
                 }
             }
         }
-        
+        Collections.sort(repeats);
         return repeats;
     }
 }
