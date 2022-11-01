@@ -50,7 +50,20 @@ class Problem1 {
         }
     }
 
+    static boolean exception(List<Integer> user) {
+        if (user.get(1) - user.get(0) != 1) {
+            return true;
+        }
+        return false;
+    }
+
+
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+
+        if (exception(pobi) || exception(crong)) {
+            return -1;
+        }
 
         int pobiScore = 0;
         int crongScore = 0;
