@@ -1,5 +1,8 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * isProperCryptogram 메서드 암호문이 적절한지 확인
  * getDecodingCryptogram 메서드 해독된 암호문을 반환
@@ -33,5 +36,20 @@ public class Problem2 {
             if (cryptogram.charAt(i) == cryptogram.charAt(i - 1)) return false;
         }
         return true;
+    }
+
+    private static String deleteOverlap(String cryptogram) {
+        List<Integer> overlapIndex = new ArrayList<>();
+        StringBuilder result = new StringBuilder();
+        for (int i = 1; i < cryptogram.length(); i++) {
+            if (cryptogram.charAt(i) == cryptogram.charAt(i - 1)) {
+                overlapIndex.add(i - 1);
+                overlapIndex.add(i);
+            }
+        }
+        for (int i = 0; i < cryptogram.length(); i++) {
+            if (!overlapIndex.contains(i)) result.append(cryptogram.charAt(i));
+        }
+        return result.toString();
     }
 }
