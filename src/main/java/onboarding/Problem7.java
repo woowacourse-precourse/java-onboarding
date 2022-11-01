@@ -95,6 +95,29 @@ public class Problem7 {
             }
         }
 
+        // 5. 사용자와 함께 아는 친구의 수 점수 구하기
+        for (int i = 0; i < friends.size(); i++){
+            int userIndex = friends.get(i).indexOf(user); // friends의 원소들 중 user가 포함 되어 있는 리스트의 인덱스, 없다면 -1 return
+            if (userIndex == -1) { // user가 없는 원소라면
+                if ( (user_freinds.contains(friends.get(i).get(0)) ||  user_freinds.contains(friends.get(i).get(1))) &&
+                        score_recomends.containsKey(friends.get(i).get(0)) || score_recomends.containsKey(friends.get(i).get(1)) ){
+                    if (user_freinds.contains(friends.get(i).get(0))){
+                        int score = score_recomends.get(friends.get(i).get(1));
+                        score += 10;
+                        score_recomends.put(friends.get(i).get(1),score);
+                    }
+                    else if (user_freinds.contains(friends.get(i).get(1))){
+                        int score = score_recomends.get(friends.get(i).get(0));
+                        score += 10;
+                        score_recomends.put(friends.get(i).get(0),score);
+                    }
+                }
+            }
+
+        }
+        //System.out.println("사용자와 함께 아는 친구의 수에 따른 점수 반영 결과");
+        //System.out.println(score_recomends); // 저장됨
+
 
         return result;
     }
