@@ -3,7 +3,7 @@ package onboarding.problem2;
 public class Cryptogram {
 
     /*
-     * 를
+     * 연속하는 중복 문자 제거하는 함수
      */
     public static String removeDuplicateCharacters(String str) {
         char[] chars = str.toCharArray();
