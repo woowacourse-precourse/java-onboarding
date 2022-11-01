@@ -20,7 +20,17 @@ class Problem1 {
     }
 
     private static Integer getWinnerWithComparingPobiCrong(List<Integer> pobi, List<Integer> crong) {
-
+        return comparePobiCrongScore(getPageScore(pobi),getPageScore(crong));
     }
-    
+
+
+    private static Integer comparePobiCrongScore(Integer pobiScore, Integer crongScore) {
+        if (pobiScore > crongScore) return 1;
+        else if (pobiScore < crongScore) return 2;
+        return 0;
+    }
+
+    private static Integer getPageScore(List<Integer> pobi) {
+    }
+
 }
