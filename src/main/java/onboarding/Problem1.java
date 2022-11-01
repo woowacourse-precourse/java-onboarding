@@ -6,6 +6,17 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Scanner;
 
+/**
+ * [기능 목록]
+ * 1. 점수 구하는 기능
+ * - 페이지 번호의 각 자리 숫자 분리
+ * - 분리한 숫자 연산(모두 더하기, 모두 곱하기)
+ * - 연산 결과 중 가장 큰 수가 본인의 점수
+ * 2. 게임 결과 출력 기능
+ * - 포비가 이기면 1, 크롱이 이기면 2, 무승부는 0, 예외사항은 -1 리턴
+ * 3. 예외처리
+ * - 연속된 페이지 번호가 아닌 경우
+ */
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
