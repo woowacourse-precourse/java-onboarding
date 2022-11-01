@@ -7,6 +7,12 @@ public class Problem4 {
         // 입력된 문자열을 한글자씩 확인하며 청개구리 문자로 바꾼다.
         for(int i = 0; i < word.length(); i++) {
             char c = word.charAt(i);
+            if(Character.isLowerCase(c)) {  // 소문자
+            }
+            if(Character.isUpperCase(c)) {  // 대문자
+            }
+            //System.out.println(c + "  " + (c + 0) + "  " + ('Z' - c) + "  " + ('z' - c));
+            answer += c;
         }
 
         return answer;
