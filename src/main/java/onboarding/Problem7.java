@@ -11,9 +11,26 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         init();
         makeFriendsMap(friends);
+        findAcquaintance(user);
+
+
         List<String> answer = Collections.emptyList();
 
+
         return answer;
+    }
+
+    private static void findAcquaintance(String user) {
+        List<String> friends = friendMap.get(user);
+        for (String friend : friends) {
+            List<String> friendsOfFriends = friendMap.get(friend);
+            for (String friendOfFriend : friendsOfFriends) {
+                if (friendOfFriend.equals(user)) {
+                    continue;
+                }
+                scoreCountMap.put(friendOfFriend, scoreCountMap.get(friendOfFriend) + 1);
+            }
+        }
     }
 
     private static void init(){
