@@ -1,45 +1,55 @@
 package onboarding;
 
-public class Problem2 {
+class Decoder {
+    private String cryptogram;
 
-    private static String removeRepeatedChar(String cryptogram) {
-        boolean flag = false;
-        int lidx = 0;
-        int ridx = 0;
-        for (int i=1; i<cryptogram.length(); i++) {
-            if ((flag) && (cryptogram.charAt(i) != cryptogram.charAt(i-1))) {
-                ridx = i;
-                break;
+    Decoder(String cryptogram) {
+        this.cryptogram = cryptogram;
+    }
+
+    public boolean removeRepeatedChar() {
+        String removeRepeatedString = "";
+        boolean isDuplicatedAlphabet = false;
+        Character charBox = null;
+
+        for (int i = 0; i < cryptogram.length(); i++) {
+            char ch = cryptogram.charAt(i);
+
+            if (charBox != null && charBox == ch) {
+                isDuplicatedAlphabet = true;
+                continue;
             }
-            if (cryptogram.charAt(i) == cryptogram.charAt(i-1)) {
-                char repeatedChar = cryptogram.charAt(i);
-                lidx = i-1;
-                flag = true;
+
+            if (charBox != null && !isDuplicatedAlphabet) {
+                removeRepeatedString += charBox;
             }
+
+            charBox = ch;
+            isDuplicatedAlphabet = false;
         }
+
+        if(!isDuplicatedAlphabet) {
+            removeRepeatedString += charBox;
+        }
+
+        boolean flag = removeRepeatedString.length() != cryptogram.length();
         if (flag) {
-            return cryptogram.replace(cryptogram.substring(lidx, ridx), "");
+            cryptogram = removeRepeatedString;
+        }
+
+        return flag;
+    }
+
+    public String decode() {
+        while (cryptogram.length() > 0 && removeRepeatedChar()) {
+            removeRepeatedChar();
         }
         return cryptogram;
     }
-
+}
+public class Problem2 {
     public static String solution(String cryptogram) {
-        String cryptogramAddedSpace = cryptogram += " ";
-        boolean flag = true;
-
-        while (flag) {
-            int beforeLength = cryptogramAddedSpace.length();
-            cryptogramAddedSpace = removeRepeatedChar(cryptogramAddedSpace);
-            int afterLength = cryptogramAddedSpace.length();
-
-            if (beforeLength == afterLength) {
-                flag = false;
-            }
-
-            if (cryptogramAddedSpace.length() <= 1) {
-                break;
-            }
-        }
-        return cryptogramAddedSpace.replace(" ", "");
+        Decoder decoder = new Decoder(cryptogram);
+        return decoder.decode();
     }
 }
