@@ -22,7 +22,7 @@ public class OpenBookPageValidator {
 
     private void validateBetweenStartAndEnd(OpenBookPage openBookPage) {
         if(openBookPage.getLeftPage() <= START_PAGE ||
-                openBookPage.getLeftPage() >= END_PAGE) {
+                openBookPage.getRightPage() >= END_PAGE) {
             throw new OpenBookPageValidException(OpenBookPageValid.PAGE_OVER);
         }
     }
