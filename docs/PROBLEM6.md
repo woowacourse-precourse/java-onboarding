@@ -21,3 +21,11 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+## 기능목록
+
+- 리스트의 값을 Map 컬렉션에 담아 email과 닉네임을 짝지어 저장한다.
+- 저장된 Map에서 닉네임을 가져온다.
+- 닉네임에 두 글자 이상의 같은 글자가 연속적으로 포함되는 닉네임들을 중복으로 간주한다.
+- 중복된 닉네임의 이메일을 반환한다.
+- 이메일을 오름차순으로 정렬한다.
