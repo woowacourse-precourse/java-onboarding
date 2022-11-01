@@ -47,4 +47,7 @@ public class Problem2 {
         }
         return cryptogram;
     }
+    public static Boolean checkModify(boolean checkPre, boolean checkCurrent) {
+        return checkCurrent || checkPre != checkCurrent;
+    }
 }
