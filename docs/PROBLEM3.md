@@ -14,3 +14,11 @@
 | --- | --- |
 | 13 | 4 |
 | 33 | 14 |
+
+
+##기능목록
+
+1. 각 자리수를 배열로 반환(NumAndArray.makeNumToArray 함수)
+2. 각 자리가 3, 6, 9인지 확인(checkAddCount 함수)
+2. 확인이 되면 count를 상승(checkAddCount)
+3. count를 저장하면서, 1부터 지정된 수까지 반복(checkNumber, solution 함수)

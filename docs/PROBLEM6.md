@@ -21,3 +21,13 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+
+## 기능목록
+
+1. 기준 인덱스(_standardIndex_)와 비교할 인덱스(_compareIndex_)를 만든다.
+2. 기준 인덱스에서의 닉네임(_getNickName_)에서 2글자씩 추출한 문자열 배열(_makeCompareString_)을 만든다.
+3. 만든 문자열 배열과 나머지 닉네임들을 비교한다.(_addOverlapedEmailList_)
+4. 만약 문자열 배열과 다른 닉네임이 겹치면, (_isOverlaped_)
+5. 해당하는 위치의 비교인덱스의 이메일(_getEmail_ 함수)을 문자열 배열에 추가한다.
+6. 이메일이 들어있는 문자열 배열의 중복을 제거하고 정렬한다.(_deleteOverlapAndSort_)
