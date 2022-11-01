@@ -25,13 +25,14 @@ public class Game369InputVailidatorTest {
 		@Test
 		void 게임_입력_숫자_출현_횟수_카운트() {
 			// give
-			int gameNumber = 36093;
+			int gameNumber = 360936;
 			SolveGame369 solveGame369 = new SolveGame369();
 
 			// when
 			int resultCount = 5;
 
-			assertThat(solveGame369.count369OfSeparatedNum(gameNumber)).isEqualTo(resultCount);
+			assertThat(solveGame369.count369Frequency(solveGame369.makeSeparatedNum(gameNumber)))
+					.isEqualTo(resultCount);
 		}
 	}
 }
