@@ -53,7 +53,7 @@ public class Problem7 {
                 }
             }
         }
-        List<Map.Entry<String, Integer>> scoreSort = new ArrayList<>(score.entrySet());
+        List<Map.Entry<String, Integer>> scoreSort = new ArrayList<>(score.entrySet()); // 결과값이 큰 사람을 구하자.
         scoreSort.sort(((o1, o2) -> o2.getValue().compareTo(o1.getValue())));
 
         for (int i = 0; i < scoreSort.size(); i++) {
