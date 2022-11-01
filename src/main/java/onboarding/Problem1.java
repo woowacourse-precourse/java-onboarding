@@ -6,6 +6,7 @@ class Problem1 {
     public static boolean checkPages(List<Integer> pages) {
         int firstPage = 0;
         int lastPage = 400;
+
         if ((pages.get(0) % 2) == 0) {
             return false;
         }
@@ -18,6 +19,7 @@ class Problem1 {
         if (pages.get(0) < firstPage || pages.get(0) > lastPage || pages.get(1) < firstPage || pages.get(1) > lastPage) {
             return false;
         }
+
         return true;
     }
 
@@ -28,11 +30,13 @@ class Problem1 {
         if (crongScore < pobiScore) {
             return 2;
         }
+
         return 0;
     }
 
     public static int getLeftPageScore(List<Integer> pages) {
         int score;
+
         score = Math.max(getSumOfDigits(pages.get(0)), getMultiplyOfDigits(pages.get(0)));
 
         return score;
@@ -40,6 +44,7 @@ class Problem1 {
 
     public static int getRightPageScore(List<Integer> pages) {
         int score;
+
         score = Math.max(getSumOfDigits(pages.get(1)), getMultiplyOfDigits(pages.get(1)));
 
         return score;
@@ -47,6 +52,7 @@ class Problem1 {
 
     public static int getMultiplyOfDigits(int number) {
         int multiply = 1;
+
         while(number != 0){
             multiply *= number%10;
             number /= 10;
@@ -57,6 +63,7 @@ class Problem1 {
 
     public static int getSumOfDigits(int number) {
         int sum = 0;
+
         while(number != 0){
             sum += number%10;
             number /= 10;
