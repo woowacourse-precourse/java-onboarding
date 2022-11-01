@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -9,8 +10,31 @@ public class Problem7 {
         List<String> userFriends = getUserFriends(user, friends);
         Map<String, Integer> map = getCloseFriends(user, friends, userFriends);
         addVisitScore(visitors,userFriends,map);
+        answer = sort(map);
+
         return answer;
     }
+
+    private static List<String> sort(Map<String, Integer> map) {
+        List<Map.Entry<String, Integer>> entries;
+
+        Comparator<Map.Entry<String, Integer>> compareByValue = Map.Entry.comparingByValue(Comparator.reverseOrder());
+        Comparator<Map.Entry<String, Integer>> compareByKey = Map.Entry.comparingByKey();
+        Comparator<Map.Entry<String, Integer>> compare = compareByValue.thenComparing(compareByKey);
+
+
+        entries = map.entrySet().stream()
+                .sorted(compare)
+                .collect(Collectors.toList());
+
+
+        List<String > sortedList = new ArrayList<>();
+        for (Map.Entry<String, Integer> entry : entries) {
+            sortedList.add(entry.getKey());
+        }
+        return sortedList;
+    }
+
 
     private static void addVisitScore(List<String> visitors, List<String> userFriends, Map<String, Integer> map) {
         for (int i = 0; i < visitors.size(); i++) {
