@@ -15,7 +15,7 @@ public class Problem6 {
         Map<String, Set<String>> substringToId = new HashMap<>();
 
         for (List<String> form : forms) {
-            String id = form.get(0).substring(0, form.get(0).length() - 9);
+            String id = getIdFromEmail(form.get(0));
             String nickName = form.get(1);
 
             get2LengthSubstrings(nickName)
@@ -25,6 +25,10 @@ public class Problem6 {
         }
 
         return substringToId;
+    }
+
+    public static String getIdFromEmail(String email) {
+        return email.substring(0, email.length() - DOMAIN.length());
     }
 
 
