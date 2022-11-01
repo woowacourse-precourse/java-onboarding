@@ -23,6 +23,7 @@ public class Problem7 {
 //        List<String> answer = Collections.emptyList();
         
         HashMap<String, List<String>> friends_info = new HashMap<String, List<String>>();
+        HashMap<String, Integer> points = new HashMap<String, Integer>(); // 친구 추천 점수 기록용
         
         for (List<String> data: friends) { // 모든 친구관계를 매핑 -> 유저id - [친구들]
         	String id_1 = data.get(0); // ID_1
@@ -39,6 +40,18 @@ public class Problem7 {
         	}
         	friends_info.get(id_2).add(id_1);
         	
+        }
+        if (friends_info.containsKey(user)) { // user가 친구가 하나도 없는 경우를 방지
+        	for (String f: friends_info.get(user)) { // 유저의 친구들을 순회
+        		
+        		for (String f_f :friends_info.get(f)) {// 친구의 친구 = f_f를 확인하며 첨수를 더해줌
+        			if (!points.containsKey(f_f)) {
+        				points.put(f_f, 0);
+                	}
+        			points.put(f_f, points.get(f_f) + 10);
+        			
+        		}
+        	}
         }
         
 //        return answer;
