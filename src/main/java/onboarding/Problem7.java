@@ -26,10 +26,7 @@ public class Problem7 {
         target.setRecommandHashMapByFriends();
         target.setRecommendHashMapByVisitors();
         target.sort();
-
-        if (answer.size() > 5) {
-            answer = answer.subList(0, 5);
-        }
+        answer = target.getAnswer();
 
         return answer;
     }
@@ -150,9 +147,28 @@ public class Problem7 {
             friendQueue = new PriorityQueue<>(new friendComparator());
 
             Set<Entry<String, Integer>> entries = recommendHashMap.entrySet();
-            for(Entry<String, Integer> entry : entries) {
+            for (Entry<String, Integer> entry : entries) {
                 friendQueue.add(new Friend(entry.getKey(), entry.getValue()));
             }
+        }
+
+        private List<String> getAnswer() {
+            List<String> answer = new ArrayList<>();
+
+            if (friendQueue.size() <= 5) {
+                for (Friend friend : friendQueue) {
+                    answer.add(friend.name);
+                }
+            }
+
+            if (friendQueue.size() > 5) {
+                for (int i = 0; i < 5; i++) {
+                    Friend friend = friendQueue.poll();
+                    answer.add(friend.name);
+                }
+            }
+
+            return answer;
         }
     }
 
