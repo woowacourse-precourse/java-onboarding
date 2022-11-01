@@ -43,7 +43,7 @@ public class Problem7 {
         Set<String> userFriendSet = friendMap.getOrDefault(user, new HashSet<>());
 
         scoringFriendsOfFriends(user, friendMap, userFriendSet, recommendScore);
-        scoringVisitors(visitors, userFriendSet, recommendScore);
+        scoringVisitors(user, visitors, userFriendSet, recommendScore);
         return recommendScore;
     }
 
@@ -53,28 +53,20 @@ public class Problem7 {
                                                 Map<String, Integer> recommendScore) {
         for (String friend : userFriendSet) {
             Set<String> friendsListOfFriend = friendMap.get(friend);
-            for (String friendOfFriend : friendsListOfFriend) {
-                scoringIfRecommendUser(user, userFriendSet, recommendScore, friendOfFriend);
-            }
+            friendsListOfFriend.stream()
+                    .filter(friendOfFriend -> isRecommendUser(user, userFriendSet, friendOfFriend))
+                    .forEach(recommendUser -> scoringRecommendUser(recommendScore, recommendUser, FRIEND_SCORE));
         }
     }
 
-    private static void scoringIfRecommendUser(String user, Set<String> userFriendSet, Map<String, Integer> recommendScore, String friendOfFriend) {
-        if (isRecommendUser(user, userFriendSet, friendOfFriend)) {
-            scoringRecommendUser(recommendScore, friendOfFriend, FRIEND_SCORE);
-        }
+    private static void scoringVisitors(String user, List<String> visitors, Set<String> userFriendSet, Map<String, Integer> recommendScore) {
+        visitors.stream()
+                .filter(visitor -> isRecommendUser(user, userFriendSet, visitor))
+                .forEach(recommendUser -> scoringRecommendUser(recommendScore, recommendUser, VISITOR_SCORE));
     }
 
     private static boolean isRecommendUser(String user, Set<String> userFriendSet, String recommendUser) {
         return !(userFriendSet.contains(recommendUser) || recommendUser.equals(user));
-    }
-
-    private static void scoringVisitors(List<String> visitors, Set<String> userFriendSet, Map<String, Integer> recommendScore) {
-        for (String visitor : visitors) {
-            if (!userFriendSet.contains(visitor)) {
-                scoringRecommendUser(recommendScore, visitor, VISITOR_SCORE);
-            }
-        }
     }
 
     private static void scoringRecommendUser(Map<String, Integer> recommendScore, String visitor, int score) {
