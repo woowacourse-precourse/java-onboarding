@@ -1,6 +1,8 @@
 package onboarding;
 
 import java.util.Stack;
+import java.util.ArrayList;
+import java.util.List;
 public class Problem2 {
 
     public static String removeDuplication (String cryptogram) {
@@ -29,7 +31,20 @@ public class Problem2 {
     }
 
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        List<String> comparedStrings = new ArrayList<>();
+        comparedStrings.add(cryptogram);
+        int lastIndex;
+        while (true) {
+            cryptogram = removeDuplication(cryptogram);
+            comparedStrings.add(cryptogram);
+            lastIndex = comparedStrings.size()-1;
+
+            if (comparedStrings.get(lastIndex).equals(comparedStrings.get(lastIndex-1))) {
+                break;
+            }
+        }
+
+
+        return cryptogram;
     }
 }
