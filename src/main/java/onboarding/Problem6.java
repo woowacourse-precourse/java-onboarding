@@ -4,7 +4,19 @@ import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
+        Map<String, Integer> twoNameList = new HashMap<>();
         List<String> answer = new ArrayList<>();
+        for(List<String> form : forms) {
+            List<String> twoWords = myTwoNames(form.get(1));
+            for (String word : twoWords) {
+                if (twoNameList.containsKey(word)) {
+                    twoNameList.put(word, twoNameList.get(word)+1);
+                } else {
+                    twoNameList.put(word, 1);
+                }
+            }
+        }
+        
 
         return answer;
     }
