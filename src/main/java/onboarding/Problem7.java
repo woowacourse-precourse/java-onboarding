@@ -8,9 +8,26 @@ public class Problem7 {
 
         List<String> userFriends = getUserFriends(user, friends);
         Map<String, Integer> map = getCloseFriends(user, friends, userFriends);
-
+        addVisitScore(visitors,userFriends,map);
         return answer;
     }
+
+    private static void addVisitScore(List<String> visitors, List<String> userFriends, Map<String, Integer> map) {
+        for (int i = 0; i < visitors.size(); i++) {
+            String visitor = visitors.get(i);
+
+            if (!userFriends.contains(visitor)) {
+                if (map.containsKey(visitor)) {
+                    map.put(visitor, map.get(visitor) + 1);
+                } else {
+                    map.put(visitor, 1);
+                }
+
+            }
+
+        }
+    }
+
     private static List<String> getUserFriends(String user, List<List<String>> friends) {
         Set<String> userFriendSet = new HashSet<>();
         for (int i = 0; i < friends.size(); i++) {
