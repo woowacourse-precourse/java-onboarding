@@ -10,7 +10,7 @@ public class Problem5 {
     public static List<Integer> solution(int money) {
 
         List<Integer> result = new ArrayList<>();
-        if(!constraints(money)) return result;
+        if(!constraints(money)) return Collections.EMPTY_LIST;
         result = intToList(money);
         result = makemoneyList(result);
 
