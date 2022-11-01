@@ -2,6 +2,10 @@ package onboarding;
 
 import java.util.*;
 
+/**
+ * 문제 풀이 방식 & 기능 목록서는
+ * docs/PROBLEM7.md 의 하단에 기술되어 있습니다
+ */
 public class Problem7 {
     static HashMap<String, List<String>> friendMap;
     static HashMap<String, Integer> scoreCountMap;
@@ -82,23 +86,27 @@ public class Problem7 {
             String user1 = friend.get(0);
             String user2 = friend.get(1);
 
-            if (friendMap.containsKey(user1)) {
-                friendMap.get(user1).add(user2);
-            } else {
-                scoreCountMap.put(user1, 0);
-                List<String> list = new ArrayList<>();
-                list.add(user2);
-                friendMap.put(user1, list);
-            }
+            addFriendRelationship(user1, user2);
+        }
+    }
 
-            if (friendMap.containsKey(user2)) {
-                friendMap.get(user2).add(user1);
-            } else {
-                scoreCountMap.put(user2, 0);
-                List<String> list = new ArrayList<>();
-                list.add(user1);
-                friendMap.put(user2, list);
-            }
+    private static void addFriendRelationship(String user1, String user2) {
+        if (friendMap.containsKey(user1)) {
+            friendMap.get(user1).add(user2);
+        } else {
+            scoreCountMap.put(user1, 0);
+            List<String> list = new ArrayList<>();
+            list.add(user2);
+            friendMap.put(user1, list);
+        }
+
+        if (friendMap.containsKey(user2)) {
+            friendMap.get(user2).add(user1);
+        } else {
+            scoreCountMap.put(user2, 0);
+            List<String> list = new ArrayList<>();
+            list.add(user1);
+            friendMap.put(user2, list);
         }
     }
 }
