@@ -11,7 +11,13 @@ public class Problem7 {
     ArrayList<String> RecommendedUsers = new ArrayList<>();
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
-        return answer;
+
+        Problem7 problem7 = new Problem7();
+        problem7.fillFriendInfoTable(friends);
+        problem7.give10ScoreForNumberOfFriendsKnowWithUser(user);
+        problem7.give1ScoreForNumberOfVisitToUserTimeline(user,visitors);
+
+        return problem7.calculateScore();
     }
 
     private void fillFriendInfoTable(List<List<String>> friends){
