@@ -3,7 +3,7 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
-    public static Map<String, Set<String>> getFriendRelation(List<List<String>> friends) {
+    public static Map<String, Set<String>> makeFriendRelation(List<List<String>> friends) {
         Map<String, Set<String>> relation = new HashMap<>();
         for (List<String> elem : friends) {
             String id1 = elem.get(0);
@@ -21,12 +21,13 @@ public class Problem7 {
     }
 
 
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
         Map<String, Integer> result = new TreeMap<>(); //점수 계산용
 
         //1. 사용자와 함께 아는 친구
-        Map<String, Set<String>> relation = getFriendRelation(friends);
+        Map<String, Set<String>> relation = makeFriendRelation(friends);
         //user와 교집합
         for (String key : relation.keySet()) {
             Set<String> userfriends = relation.get(user);
@@ -45,17 +46,18 @@ public class Problem7 {
         //3. 점수가 가장 높은 순으로 정렬하여 최대 5명 return, 0점은 추천x
         List<String> keySet = new ArrayList<>(result.keySet());
 
-        //user와 이미 친구인 경우 제외
+        //예외처리
+        // - user와 이미 친구인 경우 제외
+        // - user 제외
         keySet.remove(user);
         for(String key:relation.keySet()){
             if(relation.get(key).contains(user)){
                 keySet.remove(key);
             }
-
         }
         // Value 값으로 내림차순 정렬
         keySet.sort((k1, k2) -> result.get(k2).compareTo(result.get(k1)));
-        System.out.println(keySet);
+
         //최대 5명만 추출, 0점인 경우 제외
         int answerLength = Math.min(keySet.size(), 5);
         for(int i = 0; answer.size() < answerLength; i++){
