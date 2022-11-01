@@ -47,4 +47,8 @@ public class Problem6 {
             }
         }
     }
+
+    public static String charToString(char ch) {
+        return ch + "";
+    }
 }
