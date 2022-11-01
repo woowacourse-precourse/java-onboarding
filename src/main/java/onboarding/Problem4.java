@@ -3,6 +3,11 @@ package onboarding;
 public class Problem4 {
     public static char[] stringtochar;
 
+    public static char splitWord(int i){
+        char splitingword=stringtochar[i];
+        return splitingword;
+    }
+
     public static char changeWord(char word){
         int newword=(int)word;
         if(newword>64&&newword<97){
