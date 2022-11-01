@@ -77,7 +77,13 @@ public class Problem7 {
     }
 
     public static List<String> getRecommendedUsers(HashMap<String, Integer> recommendedFriends, int number) {
-
+        return recommendedFriends
+                .entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .map(Map.Entry::getKey)
+                .limit(number)
+                .collect(Collectors.toList());
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
