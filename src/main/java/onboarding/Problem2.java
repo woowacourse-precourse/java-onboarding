@@ -2,8 +2,17 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return removeDuplicateString(cryptogram);
+        String answer = cryptogram;
+
+        while (true) {
+            int beforeLength = answer.length();
+            answer = removeDuplicateString(answer);
+
+            if (beforeLength == answer.length()) break;
+            if (answer.length() == 0) break;
+        }
+
+        return answer;
     }
 
     public static String removeDuplicateString(String cryptogram) {
