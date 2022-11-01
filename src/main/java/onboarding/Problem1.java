@@ -41,7 +41,10 @@ class Problem1 {
         int leftPage = getPageLeftOrRight(gamer, LEFTPAGE);
         int rightPage = getPageLeftOrRight(gamer, RIGHTPAGE);
         try {
-            if (leftPage < 1 || rightPage > 400) {
+            if (leftPage <= 1 || leftPage >= 400) {
+                throwException();
+            }
+            if (rightPage <= 1 || rightPage >= 400) {
                 throwException();
             }
             if (leftPage % 2 == 0) {
