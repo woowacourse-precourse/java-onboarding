@@ -1,20 +1,18 @@
 package onboarding.problem2;
 
 
-import java.util.Stack;
-
 public class Decryptor {
     PasswordValidator passwordValidator = new PasswordValidator();
 
     public String decrypt(String password) {
         passwordValidator.validate(password);
-        Stack<Character> decryptStack = getDecryptStack(password);
+        DecryptStack decryptStack = getDecryptStack(password);
 
         return mapToString(decryptStack);
     }
 
-    private Stack<Character> getDecryptStack(String password) {
-        Stack<Character> stack = new Stack<>();
+    private DecryptStack getDecryptStack(String password) {
+        DecryptStack stack = new DecryptStack();
         int passwordLength = password.length();
         int passwordIndex = 0;
 
@@ -33,23 +31,23 @@ public class Decryptor {
         return stack;
     }
 
-    private int skipIndex(String password, Stack<Character> stack, int passwordIndex) {
+    private int skipIndex(String password, DecryptStack stack, int passwordIndex) {
         while (isSkipCase(password, stack, passwordIndex)) {
             passwordIndex++;
         }
         return passwordIndex;
     }
 
-    private boolean isSkipCase(String password, Stack<Character> stack, int passwordIndex) {
+    private boolean isSkipCase(String password, DecryptStack stack, int passwordIndex) {
         return passwordIndex < password.length() &&
                 password.charAt(passwordIndex) == stack.peek();
     }
 
-    private static boolean isInsertable(Stack<Character> stack, char passwordChar) {
+    private static boolean isInsertable(DecryptStack stack, char passwordChar) {
         return stack.isEmpty() || stack.peek() != passwordChar;
     }
 
-    private String mapToString(Stack<Character> stack) {
+    private String mapToString(DecryptStack stack) {
         StringBuilder stringBuilder = new StringBuilder();
         while (!stack.isEmpty()) {
             stringBuilder.append(stack.pop());
