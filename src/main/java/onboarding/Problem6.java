@@ -41,10 +41,12 @@ public class Problem6 {
                 }
             }
         }
-        //오름차순으로 정렬
-        Collections.sort(answer);
         //중복 제거
         Set<String> set = new HashSet<String>(answer);
-        return answer;
+        List<String> result = new ArrayList<>(set);
+
+        //오름차순으로 정렬
+        Collections.sort(result);
+        return result;
     }
 }
