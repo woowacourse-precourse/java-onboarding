@@ -1,8 +1,11 @@
 package onboarding.problem07.entity;
 
 import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 import onboarding.problem07.entity.wrapper.Name;
 import onboarding.problem07.entity.wrapper.NameScore;
 
@@ -12,14 +15,14 @@ public class RecommendService {
   private Friends friends;
   private Visitors visitors;
 
-  private List<NameScore> result;
+  private Set<NameScore> result;
 
   public RecommendService(String userName, List<List<String>> friendsNames,
       List<String> visitorsNames) {
     user = User.from(userName);
     friends = Friends.of(friendsNames);
     visitors = Visitors.of(visitorsNames);
-    result = new ArrayList<>();
+    result = new HashSet<>();
   }
 
   public static RecommendService of(String user, List<List<String>> friends,
@@ -32,11 +35,17 @@ public class RecommendService {
     resultListSetting();
 
     result = friends.runService(result, user);
-
-    result = visitors.runService(result, user);
+    result = visitors.runService(result);
 
     // TODO: 2022/11/01 result to order name by score
-    return null;
+    List<NameScore> nameScoreList = result.stream()
+        .sorted(Comparator.comparing(NameScore::currentScore).reversed())
+        .collect(Collectors.toList());
+
+    return nameScoreList.stream().filter(nameScore -> nameScore.currentScore() != -1 &&
+            nameScore.currentScore() != 0)
+        .map(name -> name.currentName()).collect(Collectors.toList());
+
   }
 
   private void resultListSetting() {

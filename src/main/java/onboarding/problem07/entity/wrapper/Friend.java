@@ -47,4 +47,11 @@ public class Friend {
   public int hashCode() {
     return friend != null ? friend.hashCode() : 0;
   }
+
+  @Override
+  public String toString() {
+    return "Friend{" +
+        "friend=" + friend +
+        '}';
+  }
 }

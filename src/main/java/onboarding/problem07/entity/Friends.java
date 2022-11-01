@@ -53,21 +53,37 @@ public class Friends {
   }
 
 
-  public List<NameScore> runService(List<NameScore> nameScores, User user) {
+  public Set<NameScore> runService(Set<NameScore> nameScores, User user) {
     Name standardUser = user.currentUser();
 
+    // 이미 친구인 사람 체크 flow
     for (Friend friend : friends) {
-      List<Name> names = friend.currentFriend();
+      List<Name> nameList = friend.currentFriend();
 
-      Name postName = names.get(1);
+      Name preName = nameList.get(0);
+      Name postName = nameList.get(1);
 
-      for (NameScore nameScore : nameScores) {
-        // 이미 친구인 상황이라면 -1로 스코어 책정
-        if (postName.equals(standardUser)) {
-          nameScore.alreadyFriend();
+      if (standardUser.currentName().equals(postName.currentName())) {
+        for (NameScore nameScore : nameScores) {
+          if (nameScore.currentName().equals(preName.currentName())) {
+            nameScore.alreadyFriend();
+          }
         }
-        // 새로운 친구라면 10점 더하기
-        nameScore.newFriend();
+      }
+    }
+
+    for (Friend friend : friends) {
+      List<Name> nameList = friend.currentFriend();
+
+      Name preName = nameList.get(0);
+      Name postName = nameList.get(1);
+
+      if (!standardUser.currentName().equals(postName.currentName())) {
+        for (NameScore nameScore : nameScores) {
+          if (nameScore.currentName().equals(postName.currentName())) {
+            nameScore.newFriend();
+          }
+        }
       }
     }
     return nameScores;

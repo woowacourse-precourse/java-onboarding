@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import onboarding.problem07.entity.wrapper.Friend;
 import onboarding.problem07.entity.wrapper.Name;
 import onboarding.problem07.entity.wrapper.NameScore;
 import onboarding.problem07.infra.exception.VisitorLengthException;
@@ -17,7 +18,9 @@ public class Visitors {
       throw new VisitorLengthException();
     }
     visitor = new ArrayList<>();
-
+    for (String name : names) {
+      visitor.add(Name.from(name));
+    }
   }
 
   public static Visitors of(List<String> names) {
@@ -32,7 +35,16 @@ public class Visitors {
     return userFriend;
   }
 
-  public List<NameScore> runService(List<NameScore> result, User user) {
-    return null;
+  public Set<NameScore> runService(Set<NameScore> nameScores) {
+
+    for (Name visitUser : visitor) {
+      for (NameScore nameScore : nameScores) {
+        if (nameScore.currentName().equals(visitUser.currentName()) && (nameScore.currentScore()
+            != -1)) {
+          nameScore.visitFriend();
+        }
+      }
+    }
+    return nameScores;
   }
 }
