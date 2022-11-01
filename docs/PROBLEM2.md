@@ -21,3 +21,6 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+### 기능 목록
+- createNewCryptogram(String cryptogram): 연속되는 문자열을 제거한, 새로운 문자열을 반환한다.
