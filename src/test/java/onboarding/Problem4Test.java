@@ -7,9 +7,10 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Nested
+@DisplayName("문제4번: 알파벳 변환")
 public class Problem4Test {
     @Test
-    @DisplayName("I love you는 R olev blf로 변환횐다")
+    @DisplayName("알파벳만 주어져도 정상동작한다.")
     void convertCase1() {
         String word = "I love you";
         String result = "R olev blf";
@@ -17,7 +18,7 @@ public class Problem4Test {
     }
 
     @Test
-    @DisplayName("All is Well.는 Zoo rh Dvoo.로 변환횐다")
+    @DisplayName("알파벳 여러 개와 특수문자 1개가 입력되도 정상동작한다.")
     void convertCase2() {
         String word = "All is Well.";
         String result = "Zoo rh Dvoo.";
@@ -25,7 +26,7 @@ public class Problem4Test {
     }
 
     @Test
-    @DisplayName("#$Ap!@#&%^.는 #$Zk!@#&%^.로 변환횐다")
+    @DisplayName("특수문자만 입력되도 정상동작한다.")
     void convertCase3() {
         String word = "#$Ap!@#&%^.";
         String result = "#$Zk!@#&%^.";
