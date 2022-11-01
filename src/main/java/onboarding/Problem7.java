@@ -4,14 +4,27 @@ import java.util.*;
 
 public class Problem7 {
 
-    static Map<String, Integer> peopleMap = new HashMap<>();
+    static Map<String, Integer> peopleMap;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        peopleMap = new HashMap<>();
         List<String> answer = Collections.emptyList();
+        Map<String, ArrayList<String>> friendGraph = new HashMap<>();
 
         makePeopleMap(user, friends, visitors);
-        makeGraph(friends);
+        friendGraph = makeGraph(friends);
         return answer;
+    }
+
+    public static void countVisitors(List<String> visitors){
+        String visitor;
+        int value;
+        for (int index=0; index<visitors.size(); index++){
+            visitor = visitors.get(index);
+            value = peopleMap.get(visitor);
+            value += 1;
+            peopleMap.put(visitor, value);
+        }
     }
 
     public static HashMap<String, ArrayList<String>> makeGraph(List<List<String>> friends){
