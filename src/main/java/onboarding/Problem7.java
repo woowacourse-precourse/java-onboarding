@@ -67,4 +67,13 @@ public class Problem7 {
     private static boolean notAlreadyFriend(Map.Entry<String, Integer> userScore) {
         return !userFriends.contains(userScore.getKey());
     }
+
+    private static int recommendListSortPolicy(
+            Map.Entry<String, Integer> userScore1,
+            Map.Entry<String, Integer> userScore2) {
+        if (Objects.equals(userScore1.getValue(), userScore2.getValue())) {
+            return userScore1.getKey().compareTo(userScore2.getKey());
+        }
+        return userScore2.getValue().compareTo(userScore1.getValue());
+    }
 }
