@@ -19,3 +19,6 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+### 기능 목록
+- convertWord(char word): 알파벳을 주어진 규칙으로 변환한다.

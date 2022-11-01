@@ -23,3 +23,9 @@
 | [97, 98] | [197, 198] | 0 |
 | [131, 132] | [211, 212] | 1 |
 | [99, 102] | [211, 212] | -1 |
+
+### 기능 목록
+
+- checkException(List<Integer> pobi, List<Integer> crong): 왼쪽과 오른쪽 페이지 수가 잘못된 예외를 처리한다.
+- getScore(Integer page): 각 페이지의 점수를 반환한다.
+- compareWinner(int pobi_result, int crong_result): 최종 결과를 반환한다.
