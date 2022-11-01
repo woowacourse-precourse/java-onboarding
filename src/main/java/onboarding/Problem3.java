@@ -12,6 +12,14 @@ public class Problem3 {
         }
     }
 
+    private static int playTurn(int clapCount, int speakNumber) {
+        while (speakNumber > 0) {
+            clapCount = addClapNumber(clapCount, speakNumber % 10);
+            speakNumber = speakNumber / 10;
+        }
+        return clapCount;
+    }
+
     private static int addClapNumber(int clapCount, int number) {
         if (isClapCondition(number)) {
             clapCount++;
