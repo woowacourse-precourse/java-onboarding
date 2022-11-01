@@ -13,7 +13,7 @@ public class Problem7Test {
 
     @Test
     @DisplayName("makeFriendMap 메소드 테스트")
-    void makeFriendMapTest(){
+    void makeFriendMapTest() {
         List<List<String>> friends = List.of(
                 List.of("donut", "andole"),
                 List.of("donut", "jun")
@@ -32,7 +32,7 @@ public class Problem7Test {
 
     @Test
     @DisplayName("intersection 메소드 테스트")
-    void intersectionTest(){
+    void intersectionTest() {
         List<String> list1 = List.of(
                 "a", "b", "c"
         );
@@ -44,5 +44,31 @@ public class Problem7Test {
         int count = Problem7.intersection(list1, list2);
 
         assertThat(count).isEqualTo(1);
+    }
+
+    @Test
+    @DisplayName("friendCount 메소드 테스트")
+    void friendCountTest() {
+
+        String user = "mrko";
+        List<List<String>> friends = List.of(
+                List.of("donut", "andole"),
+                List.of("donut", "jun"),
+                List.of("donut", "mrko"),
+                List.of("shakevan", "andole"),
+                List.of("shakevan", "jun"),
+                List.of("shakevan", "mrko")
+        );
+
+        Map<String, List<String>> friendMap = Problem7.makeFriendMap(friends);
+
+        Map<String, Integer> result = Problem7.friendCount(user, friendMap);
+
+        Map<String, Integer> answer = new HashMap<>();
+        answer.put("andole", 20);
+        answer.put("jun", 20);
+
+        assertThat(result).isEqualTo(answer);
+
     }
 }

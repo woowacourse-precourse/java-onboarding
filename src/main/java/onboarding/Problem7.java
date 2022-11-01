@@ -69,6 +69,35 @@ public class Problem7 {
         return friendMap;
     }
 
+    // user와 함께 하는 친구의 수를 바탕으로 점수를 매기고, 멤버와 그에게 매겨진 점수가 든 Map을 반환
+    public static Map<String, Integer> friendCount(String user, Map<String, List<String>> friendMap) {
+
+        // "멤버" : (함께 아는 친구의 수를 바탕으로)"멤버에게 매겨진 점수"를 저장할 result Map
+        Map<String, Integer> countResult = new HashMap<>();
+
+        List<String> userFriends = friendMap.get(user);
+
+        // 1. friendMap에 저장된 member들 중에서
+        for (String member : friendMap.keySet()) {
+
+
+            // 2. user, 그리고 user와 직접 친구인 member에게는 점수를 매기지 않는다.
+            if (!member.equals(user) && !userFriends.contains(member)) {
+
+                List<String> friendsOfMember = friendMap.get(member);
+
+                int count = intersection(userFriends, friendsOfMember);
+
+                // 공통으로 아는 친구가 있을 때에만 countResult에 저장
+                if (count > 0) {
+                    countResult.put(member, count * 10);
+                }
+            }
+        }
+
+        return countResult;
+    }
+
     // 두 리스트의 공통 요소 개수를 반환
     public static int intersection(List<String> list1, List<String> list2){
 
