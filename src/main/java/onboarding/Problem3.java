@@ -9,8 +9,19 @@ public class Problem3 {
         String num;
         for (int i = 0; i < number; i++) {
             num = Integer.toString(i + 1);
-
+            answer += countGameNumber(num);
         }
         return answer;
+    }
+
+    private static int countGameNumber(String num) {
+        int size = num.length();
+        int count = 0;
+
+        for (int i = 0; i < size; i++) {
+            if (num.charAt(i) == '3' || num.charAt(i) == '6' || num.charAt(i) == '9')
+                count++;
+        }
+        return count;
     }
 }
