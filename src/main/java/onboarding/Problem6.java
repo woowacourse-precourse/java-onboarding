@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -29,7 +30,35 @@ public class Problem6 {
                 twoLetters.add(standardFormNickname.substring(j, j + 2));
             }
 
+            for (int j = 0; j < forms.size(); j++) {
+                boolean isDuplicate = false;
+
+                for (String letter : twoLetters) {
+
+                    List<String> nextForm = forms.get(j);
+                    String nextFormEmail = nextForm.get(0);
+                    String nextFormNickname = nextForm.get(1);
+
+                    // 기준이랑 문자열이 아예 같으면 continue
+                    // 선택 됐는지 체크하기
+                    if (isSelected[j] || standardFormNickname == nextFormNickname) {
+                        break;
+                    }
+
+                    if (nextFormNickname.contains(letter)) {
+                        answer.add(nextFormEmail);
+                        isDuplicate = true;
+                        isSelected[j] = true;
+                    }
+                }
+
+                if (isDuplicate && !isSelected[i]) {
+                    answer.add(standardFormEmail);
+                    isSelected[i] = true;
+                }
+            }
         }
+        Collections.sort(answer);
         return answer;
     }
 }
