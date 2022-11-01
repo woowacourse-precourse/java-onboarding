@@ -17,4 +17,14 @@ class Problem1 {
         }
         return total_sum;
     }
+
+    public static int multiple(int page){
+        int total_multiple = 1;
+
+        while(page > 0){
+            total_multiple *= page%10;
+            page /= 10;
+        }
+        return total_multiple;
+    }
 }
