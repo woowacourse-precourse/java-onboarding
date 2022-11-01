@@ -118,9 +118,7 @@ public class Problem7 {
             List<String> friendOfUser) {
         Map<String, Integer> result = scoreRecommendFriend;
 
-        for(String friend : friendOfUser) {
-            result.remove(friend);
-        }
+        friendOfUser.forEach(result::remove);
 
         return result;
     }
@@ -132,11 +130,12 @@ public class Problem7 {
                     int user1Score = scoreRecommendFriendMap.get(user1);
                     int user2Score = scoreRecommendFriendMap.get(user2);
 
-                    if (!Objects.equals(user1Score, user2Score)) {
+                    if (user1Score != user2Score) {
                         return Boolean.FALSE.compareTo(user1Score > user2Score);
-                    } else {
-                        return user1.compareTo(user2);
-                    }})
+                    }
+
+                    return user1.compareTo(user2);
+                })
                 .collect(Collectors.toList());
 
         return result;
