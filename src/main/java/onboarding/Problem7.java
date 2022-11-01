@@ -31,7 +31,23 @@ public class Problem7 {
                 String[] strings = {friend.get(0)};
                 friendList.put(friend.get(1),Arrays.asList(strings));
             }
+
         }
+        //점수 정렬
+        for (String key : friendList.keySet()) {
+            int cnt = 0;
+            List<String> lists = friendList.get(user);
+            if(!lists.contains(key)){
+                for (String name : friendList.get(key)) {
+                    if (friendList.get(user).contains(name)){
+                        cnt+=10;
+                    }
+                }
+                result.put(key, cnt);
+            }
+
+        }
+
 
 
         return answer;
