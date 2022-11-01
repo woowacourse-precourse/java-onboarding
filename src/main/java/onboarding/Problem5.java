@@ -11,7 +11,6 @@ class Money {
   private List<Integer> answer = new ArrayList<>();
 
   Money(int money, int[] moneylist) {
-   // rangeValidityCheck(money);
     this.money = money;
     this.moneyList = moneylist;
   }
