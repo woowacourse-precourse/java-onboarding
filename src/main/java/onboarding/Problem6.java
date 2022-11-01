@@ -34,7 +34,6 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer;
         answer = makeHash(forms);
-        System.out.println(answer);
         return answer;
     }
 }

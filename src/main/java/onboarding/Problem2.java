@@ -29,7 +29,6 @@ public class Problem2 {
                 return answer;
             }
             if (answer.equals(cryptogram)){ // 암호 해독을 했는데 전 문자와 같은 문자가 나오는 경우 바로 리턴
-                System.out.println(answer);
                 return answer;
             }else{ // 다른 문자가 나오는 경우 cryptogram 갱신 후 다시 해독 함수에 넣어줌
                 cryptogram = answer;
