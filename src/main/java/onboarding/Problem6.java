@@ -13,12 +13,20 @@ public class Problem6 {
     }
 
     public static Set<String> sliceName (String nickName){
-        Set<String> mass = new HashSet<>();
+        Set<String> WordMass = new HashSet<>();
 
         for (int i = 0; i < nickName.length()-1; i++) {
-            mass.add(nickName.substring(i, i+2));
+            WordMass.add(nickName.substring(i, i+2));
         }
 
-        return mass;
+        return WordMass;
+    }
+
+    public static boolean isAlreadyExist(Set<String> WordMass, Set<String> dic){
+        for (String wordMass : WordMass) {
+            if(dic.contains(wordMass))
+                return true;
+        }
+        return false;
     }
 }
