@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Problem4 {
     public static String UPPER_ALPHA = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -15,17 +12,32 @@ public class Problem4 {
 
 
         backwardMap(alphaMap);
-        String answer = "";
+        splitAlpha(word, originSrc);
+        String answer = reverseAlpha(alphaMap,originSrc);
 
         return answer;
     }
 
-    public static String reverseAlpha() {
-        String result = "";
+    public static String reverseAlpha(Map<Character, Character> alphaMap, List<Character> originSrc) {
+        String reverseResult = "";
 
-
-        return result;
+        for (Character ch : originSrc) {
+            reverseResult += (isAlpha((int) ch)) ? alphaMap.get(ch) : ch;
+        }
+        return reverseResult;
     }
+
+    public static void
+
+    public static void splitAlpha(String word, List<Character> originSrc) {
+        StringTokenizer st = new StringTokenizer(word, TOKEN, true);
+
+        while (st.hasMoreTokens()) {
+            String str = st.nextToken();
+            originSrc.add(str.charAt(0));
+        }
+    }
+
     public static void backwardMap(Map<Character, Character> alphaMap) {
         for (int i = 0; i < 26; i++) {
             alphaMap.put((char) ('A' + i), (char) ('Z' - 1));
