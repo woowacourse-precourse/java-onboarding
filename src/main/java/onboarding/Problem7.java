@@ -45,7 +45,7 @@ public class Problem7 {
     /**
      * 사용자 친구의 집합을 찾는다.
      * @param user 사용자 이름
-     * @param friends 주어진 친구 관계 매개변수
+     * @param friends 주어진 친구 관계 인자
      * @return 사용자 친구의 집합
      */
     private static TreeSet<String> findFriends(String user, List<List<String>> friends) {
@@ -69,8 +69,8 @@ public class Problem7 {
     /**
      * 본인과 친구가 아닌 사람의 집합을 찾는다.
      * @param user 사용자 이름
-     * @param friends 주어진 친구 관계 매개변수
-     * @param visitors 주어진 타임 라인 방문자 매개변수
+     * @param friends 주어진 친구 관계 인자
+     * @param visitors 주어진 타임 라인 방문자 인자
      * @param friendSet 사용자 친구의 집합
      * @return 본인과 친구가 아닌 사람의 집합
      */
@@ -98,7 +98,7 @@ public class Problem7 {
     /**
      * 함께 아는 친구의 집합을 만든다.
      * @param person 본인과 친구를 제외한 사람
-     * @param friends 주어진 친구 관계 매개변수
+     * @param friends 주어진 친구 관계 인자
      * @return 함께 아는 친구의 집합
      */
     private static TreeSet<String> makeCommonFriends(String person, List<List<String>> friends) {
@@ -124,7 +124,7 @@ public class Problem7 {
     /**
      * 타임 라인에 방문한 횟수를 계산한다.
      * @param person 본인과 친구를 제외한 사람
-     * @param visitors 주어진 타임 라인 방문자 매개변수
+     * @param visitors 주어진 타임 라인 방문자 인자
      * @return 타임 라인에 방문한 횟수
      */
     private static int countVisits(String person, List<String> visitors) {
