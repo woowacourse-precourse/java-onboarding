@@ -13,9 +13,20 @@ public class Problem6 {
 
     Set<String> substringsOfLength2 = new HashSet<>();
     Set<String> AlerterEmails = new TreeSet<>();
+
+
     public static List<String> solution(List<List<String>> forms) {
+
+        Problem6 problem6 = new Problem6();
+
         List<String> answer = List.of("answer");
-        return answer;
+
+        problem6.putUsersInfoInMapExceptForIsName1LengthCase(forms);
+        problem6.findAllSubstringOfLength2InUserNames();
+        problem6.connectNamesContainingItToFoundSubstrings();
+        problem6.putEmailInAlerterEmailListWhenTwoOrMoreNamesConnectedToFoundSubstring();
+
+        return problem6.getAlerterEmails();
     }
 
     private void putUsersInfoInMapExceptForIsName1LengthCase(List<List<String>> forms){
@@ -52,11 +63,10 @@ public class Problem6 {
         for(String substring : substringsOfLength2){
             for(String name : userNames){
                 if(name.contains(substring)){
-                    ArrayList<String> emailsMappedThisSubstring = namesMappedToEachSubstringInfo.getOrDefault(substring,new ArrayList<>());
-                    String userEmail = usersInfo.get(name);
-                    emailsMappedThisSubstring.add(userEmail);
+                    ArrayList<String> listMappedThisSubstring = namesMappedToEachSubstringInfo.getOrDefault(substring,new ArrayList<>());
+                    listMappedThisSubstring.add((usersInfo.get(name)));
 
-                    namesMappedToEachSubstringInfo.put(substring,emailsMappedThisSubstring);
+                    namesMappedToEachSubstringInfo.put(substring,listMappedThisSubstring);
                 }
             }
         }
