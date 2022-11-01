@@ -1,5 +1,7 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 
 public class Problem4 {
@@ -24,8 +26,17 @@ public class Problem4 {
             char toCh = (char) tmp;
             map.put(frCh, toCh);
         }
+        String[] arrayWord = word.split("");
+        ArrayList<String> arr = new ArrayList<>();
+        Collections.addAll(arr, arrayWord);
+        for (int i = 0; i < arrayWord.length; i++) {
+            if (isAlpha(arrayWord[i].charAt(0))) {
+                String str = String.valueOf(arrayWord[i]);
+                arr.set(i, String.valueOf(map.get(str.charAt(0))));
+            }
+            System.out.println(arr.get(i));
+        }
 
-        
 
 
 
@@ -35,6 +46,12 @@ public class Problem4 {
     }
 
     public static boolean isAlpha(char ch) {
+        int a = ch;
+        if (a < 65 || a > 122) {
+            return false;
+        } else if (a>90 && a<97) {
+            return false;
+        }
         return true;
     }
 }
