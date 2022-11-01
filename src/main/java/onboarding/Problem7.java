@@ -1,8 +1,7 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
+
 class User implements Comparable<User>{
     final int FRIEND_A=0;
     final int FRIEND_B=1;
@@ -59,6 +58,17 @@ class User implements Comparable<User>{
             return Integer.compare(u.totalScore,totalScore);
         }
         return user.compareTo(u.user);
+    }
+}
+class RelationShip {
+    List<String> uniqueFriends = new ArrayList<>();
+
+    void getUniqueFriends(List<List<String>> friends) {
+        for (List<String> friend : friends) {
+            uniqueFriends.addAll(friend);
+        }
+        HashSet<String> uniqueFriend = new HashSet<>(uniqueFriends);
+        uniqueFriends = new ArrayList<>(uniqueFriend);
     }
 }
 public class Problem7 {
