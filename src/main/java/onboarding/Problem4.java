@@ -7,14 +7,14 @@ public class Problem4 {
     public static String solution(String word) {
         char[] alphabetArray = word.toCharArray();
         StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < alphabetArray.length; i++) {
+        for (char c : alphabetArray) {
             Character result;
-            if (Character.isAlphabetic(alphabetArray[i]) && Character.isUpperCase(alphabetArray[i])) {
-                result = (char) (UPPER_LAST_ALPHABET - alphabetArray[i] + 'A');
-            } else if (Character.isAlphabetic(alphabetArray[i]) && Character.isLowerCase(alphabetArray[i])) {
-                result = (char) (LOWER_LAST_ALPHABET - alphabetArray[i] + 'a');
+            if (Character.isAlphabetic(c) && Character.isUpperCase(c)) {
+                result = (char) (UPPER_LAST_ALPHABET - c + 'A');
+            } else if (Character.isAlphabetic(c) && Character.isLowerCase(c)) {
+                result = (char) (LOWER_LAST_ALPHABET - c + 'a');
             } else {
-                result = alphabetArray[i];
+                result = c;
             }
             stringBuilder.append(result);
         }
