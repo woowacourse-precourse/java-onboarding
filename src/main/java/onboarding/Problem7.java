@@ -5,7 +5,7 @@ import java.util.*;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         // user의 친구가 들어있는 변수
-        List<String> answer = new ArrayList<>();
+        List<String> bestFriends = new ArrayList<>();
 
         // 방목자와 이름과 점수를 저장하는 변수
         Map<String,Integer> score = new HashMap<>();
@@ -13,17 +13,17 @@ public class Problem7 {
         for(int i = 0; i<friends.size(); i++){
             if(friends.get(i).contains(user)){
                 if(friends.get(i).get(0).equals(user)){
-                    answer.add(friends.get(i).get(1));
+                    bestFriends.add(friends.get(i).get(1));
                 }else{
-                    answer.add(friends.get(i).get(0));
+                    bestFriends.add(friends.get(i).get(0));
                 }
             }
         }
 
-        for(int i = 0; i<answer.size(); i++){
+        for(int i = 0; i<bestFriends.size(); i++){
             for(int j = 0; j<friends.size(); j++){
-                if(friends.get(j).contains(answer.get(i)) && !friends.get(j).contains(user)){
-                    if(friends.get(j).get(0).equals(answer.get(i))){
+                if(friends.get(j).contains(bestFriends.get(i)) && !friends.get(j).contains(user)){
+                    if(friends.get(j).get(0).equals(bestFriends.get(i))){
                         if(score.containsKey(friends.get(j).get(1))){
                             score.put(friends.get(j).get(1),score.get(friends.get(j).get(1))+10);
                         }else{
@@ -41,7 +41,7 @@ public class Problem7 {
         }
 
         for(int i = 0; i<visitors.size(); i++){
-            if(!answer.contains(visitors.get(i)) && !visitors.get(i).equals(user)){
+            if(!bestFriends.contains(visitors.get(i)) && !visitors.get(i).equals(user)){
                 if(score.containsKey(visitors.get(i))){
                     score.put(visitors.get(i), score.get(visitors.get(i))+1);
                 }else{
