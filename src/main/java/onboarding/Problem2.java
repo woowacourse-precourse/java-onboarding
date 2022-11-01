@@ -1,6 +1,16 @@
 package onboarding;
 
 public class Problem2 {
+    public static boolean validateInput(String cryptogram) {
+        if (cryptogram.length() > 1000 || cryptogram.length() < 1)
+            return false;
+        String[] strArray = cryptogram.split("");
+        for(String s : strArray) {
+            if (!Character.isLowerCase(s.charAt(0)))
+                return false;
+        }
+        return true;
+    }
     public static int getRepeatEndIndex(StringBuilder answer, int index) {
         while (index > 0) {
             if (answer.charAt(index) == answer.charAt(index - 1))
@@ -31,6 +41,8 @@ public class Problem2 {
         return repeat;
     }
     public static String solution(String cryptogram) {
+        if (!validateInput(cryptogram))
+            return "";
         StringBuilder answer = new StringBuilder(cryptogram);
         boolean repeat = true;
         while (repeat) {
