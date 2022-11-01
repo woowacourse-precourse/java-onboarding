@@ -1,12 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.PriorityQueue;
-import java.util.Set;
+import java.util.*;
 
 public class Problem7 {
     public static HashMap<String, Integer> userScoreHashMap = new HashMap<>();
@@ -14,8 +8,7 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         HashMap<String, ArrayList<String>> friendsHashMap = getFriendsHashMap(friends);
         setUserScoreHashMap(user, friendsHashMap, visitors);
-        List<String> answer = getHighScoreList();
-        return answer;
+        return getHighScoreList();
     }
 
     public static HashMap<String, ArrayList<String>> getFriendsHashMap(List<List<String>> friendsList) {
