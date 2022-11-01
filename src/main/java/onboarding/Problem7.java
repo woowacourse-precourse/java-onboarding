@@ -93,11 +93,17 @@ public class Problem7 {
                 }
             }
 
-            for (int i = start; i <= end; i ++) {
-                temp.add(recomList.get(i));
+            if (end == start) answer.add(recomList.get(start));
+            if (end > start) {
+                for (int i = start; i <= end; i ++) {
+                    temp.add(recomList.get(i));
+                }
+
+                Collections.sort(temp);
+                answer.add(temp);
             }
 
-            Collections.sort(temp);
+
 
         }
 
