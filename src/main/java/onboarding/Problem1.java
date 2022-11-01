@@ -81,20 +81,20 @@ class Problem1 {
     }
 
     //솔루션 메소드
-    public static int solution(List<Integer> player1, List<Integer> player2) {
+    public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
-        int maxNumOfPlayer1;
-        int maxNumOfPlayer2;
+        int maxNumOfPobi;
+        int maxNumOfCrong;
         final int EXCEPTION = -1;
 
-        if(!isValidPageNum(player1) || !isValidPageNum(player2)) { //예외 사항 처리
+        if(!isValidPageNum(pobi) || !isValidPageNum(crong)) { //예외 사항 처리
             return EXCEPTION;
         }
 
-        maxNumOfPlayer1 = findMaxNum(player1); //포비 최대값 찾기
-        maxNumOfPlayer2 = findMaxNum(player2); //크롱 최대값 찾기
+        maxNumOfPobi = findMaxNum(pobi); //포비 최대값 찾기
+        maxNumOfCrong = findMaxNum(crong); //크롱 최대값 찾기
 
-        answer = determineWinner(maxNumOfPlayer1, maxNumOfPlayer2); //승자 결정
+        answer = determineWinner(maxNumOfPobi, maxNumOfCrong); //승자 결정
 
         return answer;
     }
