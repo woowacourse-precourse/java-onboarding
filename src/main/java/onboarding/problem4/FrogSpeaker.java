@@ -14,7 +14,7 @@ public class FrogSpeaker {
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < message.length(); i++) {
             char messageChar = message.charAt(i);
-            if (message.charAt(i) != NON_BREAKING_SPACE) {
+            if (isAlphabet(messageChar)) {
                 messageChar = getReverseChar(messageChar);
             }
 
@@ -31,12 +31,18 @@ public class FrogSpeaker {
 
         return transToLowerCase(c);
     }
+    private boolean isAlphabet(char c) {
+        String s = String.valueOf(c);
+        final String REGEX = "^[a-zA-Z]*$";
 
-    private static char transToLowerCase(char c) {
+        return s.matches(REGEX);
+    }
+
+    private char transToLowerCase(char c) {
         return (char) (LOWER_CASE_END_CHAR - c + LOWER_CASE_START_CHAR);
     }
 
-    private static char transToUpperCase(char c) {
+    private char transToUpperCase(char c) {
         return (char) (UPPER_CASE_END_CHER - c + UPPER_CASE_START_CHAR);
     }
 
