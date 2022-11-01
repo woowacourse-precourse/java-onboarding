@@ -10,7 +10,7 @@ public class Problem4 {
         char capital = 'A';
         int maxlen = 'Z' - 'A';
 
-        for (int i=0; i<maxlen; i++) {
+        for (int i=0; i<=maxlen; i++) {
             map.put(small++, (char)('z' - i));
             map.put(capital++, (char) ('Z' - i));
         }
@@ -34,6 +34,7 @@ public class Problem4 {
     public static String solution(String word) {
         Map<Character, Character> map = new HashMap<>();
         mapSet(map);
+        System.out.println(map);
 
         return reverString(word, map);
     }
