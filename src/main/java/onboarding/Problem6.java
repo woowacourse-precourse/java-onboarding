@@ -7,9 +7,9 @@ public class Problem6 {
         List<String> answer = new ArrayList<>();
         List<String> nicknames = collectNicknames(forms);
 
-        for (List info : forms) {
-            String email = (String) info.get(0);
-            String nickname = (String) info.get(1);
+        for (List<String> info : forms) {
+            String email = info.get(0);
+            String nickname = info.get(1);
             nicknames.remove(nickname);
 
             if (checkNickname(nickname, nicknames)) {
