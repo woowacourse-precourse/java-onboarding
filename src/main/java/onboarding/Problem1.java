@@ -6,6 +6,21 @@ import java.util.ArrayList;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+
+        int pobiNum = maxNumber(pobi.get(0), pobi.get(1));
+        int crongNum = maxNumber(crong.get(0), crong.get(1));
+
+
+        if (checkNumber(pobi, crong) == 1) {
+            answer = -1;
+        } else if (pobiNum > crongNum) {
+            answer = 1;
+        } else if (pobiNum < crongNum) {
+            answer = 2;
+        } else {
+            answer = 0;
+        }
+
         return answer;
     }
 
