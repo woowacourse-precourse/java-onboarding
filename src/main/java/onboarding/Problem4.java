@@ -22,7 +22,6 @@ public class Problem4 {
 
         return wordBuilder.toString();
     }
-
     static HashMap<Character, Character> charMap = new HashMap<Character, Character>(){{
         put('a', 'z');
         put('b', 'y');
