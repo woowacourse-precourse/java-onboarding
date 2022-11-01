@@ -1,11 +1,11 @@
 package onboarding.feature6;
 
-import static onboarding.feature6.Constants.*;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
+
+import static onboarding.feature6.Constants.*;
 
 public class ResultView {
     private List<String> results;

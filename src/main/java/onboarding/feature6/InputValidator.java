@@ -1,9 +1,9 @@
 package onboarding.feature6;
 
-import static onboarding.feature6.Constants.*;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+
+import static onboarding.feature6.Constants.*;
 
 public class InputValidator {
     public static boolean isValidEmailAddress(String email) {

@@ -1,10 +1,10 @@
 package onboarding.feature6;
 
-import static onboarding.feature6.Constants.*;
-
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import static onboarding.feature6.Constants.*;
 
 public class DuplicateLettersFinder {
     private List<String> nicknames;

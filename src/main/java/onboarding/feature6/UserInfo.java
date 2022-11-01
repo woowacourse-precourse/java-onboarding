@@ -1,11 +1,9 @@
 package onboarding.feature6;
 
-import static onboarding.feature6.Constants.*;
-
 import java.util.ArrayList;
 import java.util.List;
 
-import onboarding.feature6.InputValidator;
+import static onboarding.feature6.Constants.*;
 
 public class UserInfo {
     private List<List<String>> forms;
