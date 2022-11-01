@@ -55,8 +55,15 @@ public class Problem7 {
             entries.sort((o1, o2) -> recommendationScore.get(o2.getKey())-recommendationScore.get(o1.getKey()));    // 내림차순
             for(Entry<String,Integer> entry: entries) {
                 result.add(entry.getKey());
+                if(isResultSizeOverFive(result)) {
+                    break;
+                }
             }
             return result;
+        }
+
+        private boolean isResultSizeOverFive(List<String> result) {
+            return result.size() > 5;
         }
 
     }
