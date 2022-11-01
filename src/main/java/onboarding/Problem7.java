@@ -58,25 +58,19 @@ public class Problem7 {
     }
 
     private static void makeRecommendFriendList() {
-        for (String key : scoreMap.keySet()) {
-            recommendFriendList.add(new RecommendFriend(key, scoreMap.get(key)));
-        }
+        scoreMap.keySet()
+                .forEach(key -> recommendFriendList.add(new RecommendFriend(key, scoreMap.get(key))));
     }
 
     private static void removeFriendsAlreadyKnow(List<String> userFriendList) {
-        for (String userFriend : userFriendList) {
-            scoreMap.remove(userFriend);
-        }
+        userFriendList.forEach(userFriend -> scoreMap.remove(userFriend));
     }
 
     private static void makeScoreMapOfFriendsList(String user, List<String> visitors) {
         List<String> userFriendList = friendsMap.get(user);
-        for (String key : friendsMap.keySet()) {
-            scoreMap.put(key, scoreMap.getOrDefault(key, ZERO_SCORE) + calcSameFriendsScore(userFriendList, key));
-        }
-        for (String visitor : visitors) {
-            scoreMap.put(visitor, scoreMap.getOrDefault(visitor, ZERO_SCORE) + VISIT_SCORE);
-        }
+        friendsMap.keySet()
+                .forEach(key -> scoreMap.put(key, scoreMap.getOrDefault(key, ZERO_SCORE) + calcSameFriendsScore(userFriendList, key)));
+        visitors.forEach(visitor -> scoreMap.put(visitor, scoreMap.getOrDefault(visitor, ZERO_SCORE) + VISIT_SCORE));
     }
 
     private static int calcSameFriendsScore(List<String> userFriendList, String key) {
@@ -94,10 +88,10 @@ public class Problem7 {
     }
 
     private static void makeFriendMapOfFriendsList(List<List<String>> friends) {
-        for (List<String> twoFriends : friends) {
+        friends.forEach(twoFriends -> {
             putToFriendsMap(twoFriends.get(FIRST_ID), twoFriends.get(SECOND_ID));
             putToFriendsMap(twoFriends.get(SECOND_ID), twoFriends.get(FIRST_ID));
-        }
+        });
     }
 
     private static void putToFriendsMap(String key, String valueOfList) {
