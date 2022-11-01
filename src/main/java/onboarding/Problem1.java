@@ -22,10 +22,12 @@ class Problem1 {
     // 예외 케이스면 false 반환
     public static boolean checkException(List<Integer> pages) {
         boolean result = true;
+        int page1 = pages.get(0), page2 = pages.get(1);
         int start = 1, end = 400;
 
-        if (pages.get(0) + 1 != pages.get(1)) result = false; // 연속된 페이지가 아닌 경우
-        if (pages.get(0) <= start || pages.get(1) >= end) result = false; // 첫페이지, 마지막 페이지 포함하는 경우
+        if (page1 + 1 != page2) result = false; // 연속된 페이지가 아닌 경우
+        if (page1 % 2 != 1 || page2 % 2 != 0) result = false; // 홀수, 짝수 페이지 조건 안맞는 경우
+        if (page1 <= start || page2 >= end) result = false; // 첫페이지, 마지막 페이지 포함하는 경우
 
         return result;
     }
