@@ -22,13 +22,14 @@ public class Problem2 {
         return input;
     }
 
-    // 삭제할 문자 인덱스 반환
-    private static List<Integer> deleteIdx(String input){
-        char[] chars = input.toCharArray();
-        List<Integer> delete = new ArrayList<>();
-        for (int i=1; i<chars.length; i++){
-            if (chars[i-1]==chars[i]) delete.add(i);
+    private static boolean[] checkJungbok(char[] input) {
+        boolean[] result = new boolean[input.length];
+        for (int i=1; i<input.length; i++){
+            if (input[i-1]==input[i]) {
+                result[i-1] = true;
+                result[i] = true;
+            }
         }
-        return delete;
+        return result;
     }
 }
