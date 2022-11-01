@@ -104,8 +104,22 @@ class Recommendation {
                 continue;
             } else {
                 result.add(sortingResult.get(i));
+                cnt++;
             }
         }
+
+        return result;
+    }
+
+    List<String> recommend() {
+        List<String> result;
+
+        init();
+
+        visitScore();
+        acquainScore();
+
+        result = sorting();
 
         return result;
     }
