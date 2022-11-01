@@ -3,8 +3,27 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
-    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+    public static HashMap<String, ArrayList<String>> createFriendship(List<List<String>> friends) {
         HashMap<String, ArrayList<String>> hs = new HashMap<>();
+
+        for (int i=0; i<friends.size(); i++) {  //친구들과의 연관관계를 HashMap으로 설정
+            String friend_1=friends.get(i).get(0), friend_2=friends.get(i).get(1);
+            if (!hs.containsKey(friend_1)) {    //키가 없다면 생성
+                ArrayList<String> tmp = new ArrayList<>();
+                hs.put(friend_1,tmp);
+            }
+            if (!hs.containsKey(friend_2)) {
+                ArrayList<String> tmp = new ArrayList<>();
+                hs.put(friend_2,tmp);
+            }
+            hs.get(friend_1).add(friend_2);
+            hs.get(friend_2).add(friend_1);
+        }
+        return hs;
+    }
+
+    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        HashMap<String, ArrayList<String>> hs = createFriendship(friends);
         HashMap<String, Integer> ans = new HashMap<>();
 
         for (int i=0; i<friends.size(); i++) {  //친구들과의 연관관계를 HashMap으로 설정
