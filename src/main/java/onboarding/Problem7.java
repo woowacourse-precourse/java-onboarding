@@ -62,6 +62,18 @@ public class Problem7 {
             }
         }
 
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(scoreMap.entrySet());
+        entryList.sort((o1,o2) -> o2.getValue().compareTo(o1.getValue())); //내림차순 정렬
+        int cnt = 1;
+        for(Map.Entry<String, Integer> entry : entryList) {
+            if(cnt < 6) {
+                answer.add(entry.getKey());
+                cnt++;
+            } else {
+                break;
+            }
+        }
+
         return answer;
     }
 }
