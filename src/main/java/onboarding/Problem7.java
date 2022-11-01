@@ -1,14 +1,11 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * [ ] 친구 추천 규칙에 따라 점수가 가장 높은 순으로 5명을 return한다.
- * [ ] 추천 점수가 0인 경우에는 추천하지 않는다.
- * [ ] 추천 점수가 같은 경우에는 이름 순으로 정렬한다.
+ * [o] 추천 점수가 0인 경우에는 추천하지 않는다.
+ * [o] 추천 점수가 같은 경우에는 이름 순으로 정렬한다.
  */
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -18,8 +15,17 @@ public class Problem7 {
         recommendScore = getScoreByKnowEachOther(user, friends, friendsOfUser, recommendScore);
         recommendScore = getScoreByVisit(visitors, recommendScore);
 
-        System.out.println(recommendScore);
-        return friendsOfUser;
+        List<Map.Entry<String,Integer>> entries = new ArrayList<>(recommendScore.entrySet());
+        entries.sort(((o1, o2) -> o2.getValue().compareTo(o1.getValue())));
+
+        List<String> answer = new ArrayList<>();
+
+        for(Map.Entry<String,Integer> entry:entries) {
+            answer.add(entry.getKey());
+        }
+        answer.removeAll(friendsOfUser);
+
+        return answer;
     }
 
     public static List<String> makeListOfFriendsUser(String user, List<List<String>> friends) {
