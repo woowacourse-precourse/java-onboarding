@@ -76,8 +76,8 @@ class Problem1 {
     private static int getScore(List<Integer> pageList) {
         List<Integer> leftPageDigits = getDigits(pageList.get(0));
         List<Integer> rightPageDigits = getDigits(pageList.get(1));
-        int maxSum = getMaxSum(leftPageDigits, rightPageDigits);
-        int maxMul = getMaxMul(leftPageDigits, rightPageDigits);
+        int maxSum = Math.max(getSum(leftPageDigits), getSum(rightPageDigits));
+        int maxMul = Math.max(getMul(leftPageDigits), getMul(rightPageDigits));
         return Math.max(maxSum, maxMul);
     }
 
@@ -90,12 +90,15 @@ class Problem1 {
         return digits;
     }
 
-    private static int getMaxSum(List<Integer> left, List<Integer> right) {
-
-        return 0;
+    private static int getSum(List<Integer> digits) {
+        int sum = 0;
+        for (int digit : digits) {
+            sum += digit;
+        }
+        return sum;
     }
 
-    private static int getMaxMul(List<Integer> left, List<Integer> right) {
+    private static int getMul(List<Integer> digits) {
 
         return 0;
     }
