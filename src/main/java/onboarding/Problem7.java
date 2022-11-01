@@ -2,7 +2,19 @@ package onboarding;
 
 import java.util.*;
 
+
 public class Problem7 {
+
+    static class Item{
+        String name;
+        Integer point;
+
+        public Item(String name, Integer point) {
+            this.name = name;
+            this.point = point;
+        }
+
+    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
 
@@ -95,16 +107,34 @@ public class Problem7 {
                 score.remove(name);
             }
         }
+
         keyset = new ArrayList<>(score.keySet());
-        keyset.sort(((o1, o2) -> score.get(o2).compareTo(score.get(o1))));
+
+        List<Item> items = new ArrayList<>();
+
+        for(String name : keyset) {
+            items.add(new Item(name, score.get(name)));
+        }
+        Collections.sort(items, new Comparator<Item>() {
+            @Override
+            public int compare(Item o1, Item o2) {
+                if(o1.point > o2.point) return -1;
+                if(o1.point < o2.point) return 1;
+
+                if(o1.name.compareTo(o2.name) < 0) return -1;
+                if(o1.name.compareTo(o2.name) > 0) return 1;
+
+                return 0;
+            }
+        });
 
         int count = 1;
-        for(String name : keyset) {
+        for(Item item: items){
 
             if(count > 5){
                 return answer;
             }
-            answer.add(name);
+            answer.add(item.name);
             count++;
         }
 

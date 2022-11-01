@@ -35,9 +35,13 @@ class Problem1 {
 
         //error 처리
         //배열 안의 숫자가 1~400 사이가 아니면 에러
-        if(pobi.get(0) < 1 && pobi.get(1) > 401)
+        if(pobi.get(0) < 1 || pobi.get(0) > 401)
             return -1;
-        if(crong.get(0) < 1 && crong.get(1) > 401)
+        if(pobi.get(1) < 1 || pobi.get(1) > 401)
+            return -1;
+        if(crong.get(0) < 1 || crong.get(0) > 401)
+            return -1;
+        if(crong.get(1) < 1 || crong.get(1) > 401)
             return -1;
 
         //error 처리
@@ -47,6 +51,12 @@ class Problem1 {
         if(crong.get(0) % 2 == 0)
             return -1;
 
+        //error 처리
+        //오른쪽 숫자가 홀수이면 에러
+        if(pobi.get(1) % 2 == 1)
+            return -1;
+        if(crong.get(1) % 2 == 1)
+            return -1;
 
         int pobi_max = 0;
         int crong_max= 0;
