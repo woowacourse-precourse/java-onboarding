@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -84,9 +85,24 @@ public class Problem7 {
             }
         }
 
+        // 방문한 사용자 목록을 순회
+        for (String visitor : visitors) {
 
+            // 사용자와 친구추천 포인트를 담을 friendPoints 에 merge 한다
+            // 방문한 사람의 점수는 1점 추가 된다.
+            friendPoints.put(visitor, friendPoints.getOrDefault(visitor, 0) + 1);
+        }
 
-        return Collections.emptyList();
+        // 결과 값을 반환한다.
+        // 내림차순으로 정렬 (포인트 값으로 비교) 같으면 닉네임으로 정렬
+        // 자신의 친구를 포함하지 않고 아는 친구만 가져와야함
+        // 결과 값을 5개 사이즈로 반환해야 한다.
+        return  friendPoints.entrySet().stream()
+                .sorted((o1, o2) -> o2.getValue().compareTo(o1.getValue()))
+                .map(Map.Entry::getKey)
+                .filter(s -> !map.get(user).contains(s))
+                .limit(5)
+                .collect(Collectors.toList());
     }
 
     public static void main(String[] args) {
