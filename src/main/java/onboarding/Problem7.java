@@ -33,8 +33,15 @@ public class Problem7 {
             userfriends.retainAll(target);
             result.put(key, userfriends.size() * 10);
         }
+        //2. 사용자의 타임 라인에 방문한 횟수
+        for(String visitor : visitors){
+            if(!result.containsKey(visitor)){
+                result.put(visitor,0);
+            }
+            result.put(visitor,result.get(visitor)+1);
+        }
 
-        return answer;
+
     }
 
 }
