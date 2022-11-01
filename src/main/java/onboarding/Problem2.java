@@ -31,11 +31,11 @@ public class Problem2 {
 	}
 
 	static String removeDuplication(String cryptogram) {
-		List<String> inputArrayList = new ArrayList<>(Arrays.asList(cryptogram.split("")));
-		Set<Integer> duplicationIndexSet = getDuplicationIndexSet(inputArrayList);
-		List<String> outputArrayList = removeDuplicationBySet(inputArrayList,
+		List<String> inputList = new ArrayList<>(Arrays.asList(cryptogram.split("")));
+		Set<Integer> duplicationIndexSet = getDuplicationIndexSet(inputList);
+		List<String> outputList = removeDuplicationBySet(inputList,
 			duplicationIndexSet);
-		String answer = joinStringWithoutNull(outputArrayList);
+		String answer = joinStringWithoutNull(outputList);
 		return answer;
 	}
 
@@ -65,10 +65,10 @@ public class Problem2 {
 		return stringList;
 	}
 
-	static String joinStringWithoutNull(List<String> arrayList) {
+	static String joinStringWithoutNull(List<String> stringList) {
 		String result = "";
-		for (int i = 0; i < arrayList.size(); i++) {
-			String str = arrayList.get(i);
+		for (int i = 0; i < stringList.size(); i++) {
+			String str = stringList.get(i);
 			if (str != null) {
 				result += str;
 			}

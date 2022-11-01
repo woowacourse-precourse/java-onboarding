@@ -22,8 +22,8 @@ public class Problem3 {
 	}
 
 	static int count369ByNumber(int number) {
-		List<String> arrayListOfNumber = convertNumberToArrayList(number);
-		int count = countByArrayListOfNumber(arrayListOfNumber);
+		List<String> listOfNumber = convertNumberToArrayList(number);
+		int count = countByArrayListOfNumber(listOfNumber);
 		return count;
 	}
 
@@ -37,9 +37,9 @@ public class Problem3 {
 
 	static List<String> convertNumberToArrayList(int number) {
 		String stringOfNumber = Integer.toString(number);
-		List<String> arrayListOfStringNumber = new ArrayList<>(
+		List<String> listOfStringNumber = new ArrayList<>(
 			Arrays.asList(stringOfNumber.split("")));
-		return arrayListOfStringNumber;
+		return listOfStringNumber;
 	}
 
 	static void validate(int number) throws Exception {
