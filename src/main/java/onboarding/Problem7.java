@@ -144,6 +144,10 @@ class Recommendation{
     void sortFriendScore(){
         Collections.sort(FriendScore);
     }
+    boolean isNonZero(User friend){
+        int friendScore=friend.getTotalScore();
+        return friendScore!=0;
+    }
 }
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
