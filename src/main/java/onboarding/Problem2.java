@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 public class Problem2 {
 
+    // 2글자 이상 반복되는 문자열 찾아서 삭제
     public static String removeDuplication (String cryptogram) {
         Stack<Character> stringStack = new Stack<>();
         if (cryptogram.length() == 1) return cryptogram;
@@ -23,6 +24,8 @@ public class Problem2 {
                 }
             }
         }
+
+        // Stack에 있던 문자들 문자열로 합치기
         String removedDuplicateString = "";
         for (char answerelEment : stringStack) {
             removedDuplicateString += answerelEment;
@@ -33,7 +36,9 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         List<String> comparedStrings = new ArrayList<>();
         comparedStrings.add(cryptogram);
-        int lastIndex;
+
+        int lastIndex; // cryptogram 문자열의 마지막 인덱스
+
         while (true) {
             cryptogram = removeDuplication(cryptogram);
             comparedStrings.add(cryptogram);
