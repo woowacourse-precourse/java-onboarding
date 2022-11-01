@@ -30,6 +30,18 @@ public class Problem7 {
                     usersPoint.put(usersFriendsMap.get(key).get(j), usersPoint.get(usersFriendsMap.get(key).get(j)) + 10);
             }
         }
+        Set<String> userFriends = new HashSet<>();
+        userFriends.addAll(usersFriendsMap.get(user));
+        for(String visitorInfo : visitors){
+            if (userFriends.contains(visitorInfo))
+                continue ;
+            else if (usersPoint.containsKey(visitorInfo))
+                usersPoint.put(visitorInfo, usersPoint.get(visitorInfo) + 1);
+            else
+                usersPoint.put(visitorInfo, 1);
+        }
+        return usersPoint;
+    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
