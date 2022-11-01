@@ -8,18 +8,22 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Problem7 {
-    static final HashMap<String, ArrayList<String>> friendRelationship = new HashMap<>();
-    static final HashMap<String, Integer> recommendationList = new HashMap<>();
+    static HashMap<String, ArrayList<String>> friendRelationship;
+    static HashMap<String, Integer> recommendationList;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        friendRelationship = new HashMap<>();
+        recommendationList = new HashMap<>();
+
         if (!checkValidInput(user, friends, visitors)) {
             return Collections.emptyList();
         }
 
         connectFriends(friends);
 
-        ArrayList<String> userFriends = friendRelationship.get(user);
-        calculateRecommendScore(visitors, userFriends);
+        ArrayList<String> userFriends = friendRelationship.getOrDefault(user, new ArrayList<>());
+        calculateFriendsScore(userFriends);
+        calculateVisitScore(visitors);
 
         return recommendationList.keySet()
                 .stream()
@@ -30,17 +34,25 @@ public class Problem7 {
                 .collect(Collectors.toList());
     }
 
-    private static void calculateRecommendScore(List<String> visitors, ArrayList<String> userFriends) {
-        userFriends.stream()
+    private static void calculateFriendsScore(ArrayList<String> userFriends) {
+        if (userFriends.isEmpty()) {
+            return;
+        }
+
+        List<String> friendOfFriend = userFriends.stream()
                 .map(friendRelationship::get)
                 .flatMap(Collection::stream)
-                .forEach(friendOfFriend -> recommendationList.put(
-                        friendOfFriend,
-                        recommendationList.getOrDefault(friendOfFriend, 0) + 10));
+                .collect(Collectors.toList());
 
-        visitors.forEach(visitor -> recommendationList.put(
-                visitor,
-                recommendationList.getOrDefault(visitor, 0) + 1));
+        for (String otherUser : friendOfFriend) {
+            recommendationList.put(otherUser, recommendationList.getOrDefault(otherUser, 0) + 10);
+        }
+    }
+
+    private static void calculateVisitScore(List<String> visitors) {
+        for (String visitor : visitors) {
+            recommendationList.put(visitor, recommendationList.getOrDefault(visitor, 0) + 1);
+        }
     }
 
     private static void connectFriends(List<List<String>> friends) {
