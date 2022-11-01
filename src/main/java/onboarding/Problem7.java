@@ -32,8 +32,11 @@ public class Problem7 {
         // 방문자 확인
         for(int i=0; i<visitors.size(); i++) { // 5
         	// 방문 했을 때 점수 추가
-        	if(!scoreMap.containsKey(visitors.get(i))) scoreMap.put(visitors.get(i), visit);
-        	else scoreMap.put(visitors.get(i), scoreMap.get(visitors.get(i))+visit);
+        	if(!userFriends.contains(visitors.get(i))) {
+        		if(!scoreMap.containsKey(visitors.get(i))) scoreMap.put(visitors.get(i), visit);
+        		else scoreMap.put(visitors.get(i), scoreMap.get(visitors.get(i))+visit);        		
+        	}
+
         	
         	for(int j=0; j<userFriends.size(); j++) { // 유저의 친구 목록
         		// 유저의 친구 목록에 방문자가 있을 때
