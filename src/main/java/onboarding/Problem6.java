@@ -24,7 +24,7 @@ final class Solver6 {
     /**
      * 중복 사용자의 이메일
      */
-    private final List<String> duplicateUsersEmails = new ArrayList<>();
+    private List<String> duplicateUsersEmails = new ArrayList<>();
 
     /**
      * 두 글자에 해당하는 이름을 저장한다.
