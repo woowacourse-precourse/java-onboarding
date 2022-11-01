@@ -23,4 +23,18 @@ public class Problem7 {
         friendMap.put(friendsList.get(0), list1);
         friendMap.put(friendsList.get(1), list2);
     }
+
+    public static void friendsPlusPoint(String user, ArrayList arrayList) {
+        // arrayList {donut shakevan}
+        for (String keyName : friendMap.keySet()) { //an, jun, sh, do, mr
+            if (!keyName.equals(user)) {
+                ArrayList friendList = friendMap.get(keyName); //jun {donut, shakevan}
+                for (int k = 0; k < arrayList.size(); k++) { // donut shakevan
+                    if (friendList.contains(arrayList.get(k))) {
+                        mapPoints.put(keyName, mapPoints.getOrDefault(keyName, 0) + 10);
+                    }
+                }
+            }
+        }
+    }
 }
