@@ -6,21 +6,7 @@ import java.util.List;
 import java.util.Stack;
 
 public class Problem2 {
-    public static void main(String[] args) {
-        System.out.println(solution("zyalllelyz"));
-    }
     public static String solution(String cryptogram) {
-        Stack<Character> stack = new Stack<>();
-
-//        for (int i = 0; i < cryptogram.length(); i++) {
-//            char ch = cryptogram.charAt(i);
-//            if (!stack.isEmpty() && stack.peek() == ch) {
-//                stack.pop();
-//            } else {
-//                stack.push(ch);
-//            }
-//        }
-
         // 매개변수로 받은 cryptogram 문자열을 ArrayList로 변환
         String[] arrayOfCryptoString = cryptogram.split("");
         List<String> listOfCryptoString = new ArrayList<>(Arrays.asList(arrayOfCryptoString));
@@ -35,13 +21,8 @@ public class Problem2 {
     }
 
     private static boolean removeContinuousChar(List<String> listOfCryptoString) {
-        int start = 0;
-        int count = 1;
         for (int i = 1; i < listOfCryptoString.size(); i++) {
             if (listOfCryptoString.get(i - 1).equals(listOfCryptoString.get(i))) {
-                start = i - 1;
-                count++;
-
                 listOfCryptoString.remove(i);
                 listOfCryptoString.remove(i - 1);
                 return true;

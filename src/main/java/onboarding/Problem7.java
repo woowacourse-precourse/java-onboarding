@@ -4,19 +4,19 @@ import java.util.*;
 
 public class Problem7 {
     public static void main(String[] args) {
-        String user = "andole";
+        String user = "hello";
         List<List<String>> friends = List.of(
                 List.of("andole", "jun"),
-                List.of("donut", "jun"),
-                List.of("donut", "shakevan"),
-                List.of("shakevan", "andole"),
-                List.of("shakevan", "jun"),
-                List.of("shakevan", "bedi"),
-                List.of("anne", "jun")
-//                List.of("shakevan", "jun"),
-//                List.of("shakevan", "mrko")
+                List.of("andole", "bedi"),
+                List.of("jun", "shakevan"),
+                List.of("jun", "kane"),
+                List.of("jun", "sam"),
+                List.of("bedi", "shakevan"),
+                List.of("bedi", "anne"),
+                List.of("bedi", "sam"),
+                List.of("anne", "mrko")
         );
-        List<String> visitors = List.of("donut", "mrko", "peter", "sam");
+        List<String> visitors = List.of("donut", "anne", "mrko", "mrko", "sam");
         System.out.println(solution(user, friends, visitors));
     }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -30,7 +30,6 @@ public class Problem7 {
                 friendsSet.add(friendName);
             }
         }
-        System.out.println("친구는 누구인가? : " + friendsSet);
 
         // 친구의 친구를 구해서 HashMap에 점수와 함께 저장
         Iterator it = friendsSet.iterator();
@@ -46,7 +45,6 @@ public class Problem7 {
                 }
             }
         }
-        System.out.println("친구의 친구는 누구인가? : " + pointsMap.keySet());
 
         // 방문자 점수 추가
         List<String> friendsList = new ArrayList<>(friendsSet);
@@ -59,13 +57,29 @@ public class Problem7 {
             pointsMap.put(visitor, point);
         }
 
-        List<Map.Entry<String, Integer>> entries = new ArrayList<>(pointsMap.entrySet());
-        entries.sort((v1, v2) -> (v2.getValue().compareTo(v1.getValue())));
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(pointsMap.entrySet());
+        entryList.sort(new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                if (o1.getValue() == o2.getValue()) {
+                    return o1.getKey().compareTo(o2.getKey());
+                }
+                return o2.getValue() - o1.getValue();
+            }
+        });
+
+        System.out.println(entryList);
 
         List<String> answer = new ArrayList<>();
 
-        for (int i = 0; i < 5; i++) {
-            answer.add(entries.get(i).getKey());
+        if (entryList.size() > 5) {
+            for (int i = 0; i < 5; i++) {
+                answer.add(entryList.get(i).getKey());
+            }
+        } else {
+            for (int i = 0; i < entryList.size(); i++) {
+                answer.add(entryList.get(i).getKey());
+            }
         }
 
         return answer;
@@ -78,13 +92,4 @@ public class Problem7 {
             return friend.get(0);
         }
     }
-
-//    private static List<String> printTop5(List<String> sortedList) {
-//        List<String> top5List = new ArrayList<>();
-//
-//        for (int i = 0; i < 5; i++) {
-//            System.out.println(sortedList.get(i));
-//        }
-//        return top5List;
-//    }
 }
