@@ -16,5 +16,13 @@ public class Problem6 {
         }
         return nicknameList;
     }
+    // 본인 제외 닉네임 리스트
+    public static List<String> nicknameExcept(List<String> nickname, int index){
+        List<String> nicknames = new ArrayList<>();
+        for(int i=0; i<nickname.size(); i++){
+            if(i!=index) nicknames.add(nickname.get(i));
+        }
+        return nicknames;
+    }
 
 }
