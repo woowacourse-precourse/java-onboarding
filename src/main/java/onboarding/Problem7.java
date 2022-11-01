@@ -69,4 +69,15 @@ public class Problem7 {
         return entries;
     }
 
+    private static List<String> convertEntriesToList(List<Map.Entry<String, Integer>> entries) {
+        List<String> result = new ArrayList<>(Collections.emptyList());
+
+        for(Map.Entry<String, Integer> entry: entries)
+            result.add(entry.getKey());
+
+        return result;
+
+    }
+
+
 }
