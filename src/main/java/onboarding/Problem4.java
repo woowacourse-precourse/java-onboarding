@@ -27,5 +27,11 @@ public class Problem4 {
         return frogDictionary.charAt(index);
     }
 
+    // 배열 역순 정렬
+    public static String reverseString(String dictionary){
+        StringBuffer sb = new StringBuffer(dictionary);
+        return sb.reverse().toString();
+    }
+
 
 }
