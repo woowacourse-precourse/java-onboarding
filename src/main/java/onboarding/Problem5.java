@@ -16,11 +16,15 @@ public class Problem5 {
 
     private static void convertToMoneyFrom(int money) {
         int currentCashIndex = 0;
-        while (money != 0) {
+        while (checkNotEnoughMoney(money)) {
             boolean isCashBiggerThanMoney = checkCashIsBiggerThanLeftMoney(money, currentCashIndex);
             money = calculateLeftMoney(money, currentCashIndex, isCashBiggerThanMoney);
             currentCashIndex = getNextCashIndex(currentCashIndex, isCashBiggerThanMoney);
         }
+    }
+
+    private static boolean checkNotEnoughMoney(int money) {
+        return money != 0;
     }
 
     private static boolean checkCashIsBiggerThanLeftMoney(int money, int currentMoneyIndex) {
