@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class ConvertUtils {
 
@@ -28,5 +29,13 @@ public class ConvertUtils {
         }
         convertReverseCharacterMap.put(' ', ' ');
         return convertReverseCharacterMap;
+    }
+
+    public String convertToReverseWord() {
+        return word.chars()
+                .mapToObj(i -> (char) i)
+                .map(w -> convertReverseCharacterMap.get(w))
+                .map(String::valueOf)
+                .collect(Collectors.joining());
     }
 }
