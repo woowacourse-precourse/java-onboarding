@@ -16,7 +16,14 @@ public class Problem6 {
                 String key = nickName.substring(j, j + 2); // 조건 - 최소 두글자가 중복될 시
                 if (hashMap.containsKey(key))
                 {
+                    String email = hashMap.get(key);
+                    if (!email.equals(form.get(0)))
+                    {
+                        emails.add(email);
+                        emails.add(form.get(0));
+                    }
                 }
+                hashMap.put(key, form.get(0)); // 위의 if문으로 판별 후 중복 조건에 걸릴 시 HashSet으로 생성된 emails에 저장
             }
         }
     }
