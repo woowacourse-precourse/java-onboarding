@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -79,5 +76,15 @@ public class Problem6 {
                         .get(0));
             }
         }
+    }
+
+    
+    private static List<String> sortAnswer(List<String> answer) {
+        Set<String> set = new HashSet<>(answer);
+        List<String> sortedList = new ArrayList<>(set);
+
+        Collections.sort(sortedList);
+
+        return sortedList;
     }
 }
