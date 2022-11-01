@@ -20,10 +20,11 @@ public class Problem2 {
         while(rt < cryptoLength) {
             char prevChar = cryptogram.charAt(lt);
             char nextChar = cryptogram.charAt(rt);
+            // 단어가 중복되지 않을 때
             if(prevChar != nextChar) {
-                // 단어가 중복되지 않을 때
                 cryptogramWithoutDuplication.add(prevChar);
                 if(rt == cryptoLength - 1) {
+                    // rt가 마지막 인덱스를 가리키는 경우 바로 추가한다.
                     cryptogramWithoutDuplication.add(nextChar);
                     break;
                 }
@@ -32,10 +33,12 @@ public class Problem2 {
                 continue;
             }
 
+            // 단어가 중복될 때
             while (rt < cryptoLength && prevChar == cryptogram.charAt(rt) ) {
                 rt++;
             }
             if(rt == cryptoLength - 1) {
+                // rt가 마지막 인덱스이고, 이 전의 문자와 같지 않는 경우 바로 추가한다.
                 cryptogramWithoutDuplication.add(cryptogram.charAt(rt));
                 break;
             }
