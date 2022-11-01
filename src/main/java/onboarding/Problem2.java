@@ -24,9 +24,13 @@ public class Problem2 {
     }
     static ArrayList<Integer> duplicateCharacterIndex(StringBuilder str){
         ArrayList<Integer> list = new ArrayList<>();
+        boolean isReading = false;
         for(int i = 0; i < str.length()-1; i++){
-            if(str.charAt(i) == str.charAt(i+1)){
+            if(str.charAt(i) == str.charAt(i+1) && !isReading){
                 list.add(i);
+                isReading = true;
+            }else{
+                isReading = false;
             }
         }
         return list.isEmpty() ? null : list;
