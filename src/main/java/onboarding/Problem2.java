@@ -27,7 +27,7 @@ public class Problem2 {
 		if (cryptogram.charAt(0) == cryptogram.charAt(1)) {
 			return "";
 		}
-		return cryptogram.substring(0, 1);
+		return String.valueOf(cryptogram.charAt(0));
 	}
 
 	private static String checkMiddleLetter(String cryptogram, int index) {
@@ -35,13 +35,13 @@ public class Problem2 {
 			index + 1)) {
 			return "";
 		}
-		return cryptogram.substring(index, index + 1);
+		return String.valueOf(cryptogram.charAt(index));
 	}
 
 	private static String checkLastLetter(String cryptogram) {
 		if (cryptogram.charAt(cryptogram.length() - 1) == cryptogram.charAt(cryptogram.length() - 2)) {
 			return "";
 		}
-		return cryptogram.substring(cryptogram.length() - 1);
+		return String.valueOf(cryptogram.charAt(cryptogram.length() - 1));
 	}
 }

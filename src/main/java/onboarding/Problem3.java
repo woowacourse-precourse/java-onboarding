@@ -1,9 +1,9 @@
 package onboarding;
 
-import java.util.List;
+import java.util.Set;
 
 public class Problem3 {
-	static final List<Integer> CLAP_NUMBERS = List.of(3, 6, 9);
+	static final Set<Integer> CLAP_NUMBERS = Set.of(3, 6, 9);
 	static final int BASE_OF_NUMERAL_SYSTEM = 10;
 
 	public static int solution(int number) {

@@ -15,17 +15,17 @@ class Problem1 {
 	static final int MAXIMUM_PAGE_NUMBER = 398;
 
 	public static int solution(List<Integer> pobi, List<Integer> crong) {
-		return returnResult(pobi, crong);
+		return getResult(pobi, crong);
 	}
 
-	private static int returnResult(List<Integer> pobi, List<Integer> crong) {
+	private static int getResult(List<Integer> pobi, List<Integer> crong) {
 		if (isInvalidInput(pobi) || isInvalidInput(crong)) {
 			return EXCEPTION;
 		}
-		if (selectSide(pobi) > selectSide(crong)) {
+		if (getMaxValueFromPages(pobi) > getMaxValueFromPages(crong)) {
 			return POBI_IS_WINNER;
 		}
-		if (selectSide(pobi) < selectSide(crong)) {
+		if (getMaxValueFromPages(pobi) < getMaxValueFromPages(crong)) {
 			return CRONG_IS_WINNER;
 		}
 		return DRAW;
@@ -47,21 +47,19 @@ class Problem1 {
 		return pages.get(LEFT_PAGE) < MINIMUM_PAGE_NUMBER || pages.get(RIGHT_PAGE) > MAXIMUM_PAGE_NUMBER;
 	}
 
-	private static int selectSide(List<Integer> pages) {
-		int left = selectOperation(pages.get(LEFT_PAGE));
-		int right = selectOperation(pages.get(RIGHT_PAGE));
-
+	private static int getMaxValueFromPages(List<Integer> pages) {
+		int left = getMaxValueFromPage(pages.get(LEFT_PAGE));
+		int right = getMaxValueFromPage(pages.get(RIGHT_PAGE));
 		return Math.max(left, right);
 	}
 
-	private static int selectOperation(int num) {
+	private static int getMaxValueFromPage(int page) {
 		int sum = 0;
 		int multiple = 1;
-
-		while (num != 0) {
-			sum += num % 10;
-			multiple *= num % 10;
-			num /= 10;
+		while (page != 0) {
+			sum += page % 10;
+			multiple *= page % 10;
+			page /= 10;
 		}
 		return Math.max(sum, multiple);
 	}

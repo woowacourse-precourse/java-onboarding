@@ -5,16 +5,17 @@ public class Problem4 {
 	static final char RIGHT_BOUND_OF_UPPER_CASE = 'Z';
 	static final char LEFT_BOUND_OF_LOWER_CASE = 'a';
 	static final char RIGHT_BOUND_OF_LOWER_CASE = 'z';
+
 	public static String solution(String word) {
 		return changeWord(word);
 	}
 
 	private static String changeWord(String word) {
-		String answer = "";
+		StringBuilder answer = new StringBuilder();
 		for (int index = 0; index < word.length(); index++) {
-			answer = answer.concat(String.valueOf(changeLetter(word.charAt(index))));
+			answer.append(changeLetter(word.charAt(index)));
 		}
-		return answer;
+		return answer.toString();
 	}
 
 	private static char changeLetter(char letter) {

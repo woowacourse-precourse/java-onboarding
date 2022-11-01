@@ -2,98 +2,104 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Problem7 {
-	static final int RANKING_LIST_SIZE_LIMIT = 5;
+	static final int MAXIMUM_COUNT_OF_RECOMMENDATION = 5;
 
-	static final int FRIEND_POINT = 10;
-	static final int VISIT_POINT = 1;
+	static final int FRIEND_SCORE = 10;
+	static final int VISITOR_SCORE = 1;
 
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-		HashMap<String, Integer> strangersAndPoints = makeHashMap(returnStrangers(user, friends, visitors));
-		plusFriendPoint(user, friends, strangersAndPoints);
-		plusVisitPoint(visitors, strangersAndPoints);
-		return returnRankingList(strangersAndPoints);
+		return getRecommendedFriendCandidates(user, friends, visitors);
 	}
 
-	private static List<String> returnRankingList(HashMap<String, Integer> strangersAndPoints) {
-		List<String> rankingList = new ArrayList<>();
-		List<Map.Entry<String, Integer>> strangersAndPointsList = new ArrayList<>(strangersAndPoints.entrySet());
-		preprocessEntryList(strangersAndPointsList);
-		if (strangersAndPointsList.size() > RANKING_LIST_SIZE_LIMIT) {
-			strangersAndPointsList = strangersAndPointsList.subList(0, RANKING_LIST_SIZE_LIMIT);
+	private static List<String> getRecommendedFriendCandidates(String user, List<List<String>> friends,
+		List<String> visitors) {
+		Map<String, Integer> friendCandidatesAndScores = initFriendCandidateAndScoreMap(
+			getFriendCandidates(user, friends, visitors));
+		computeFriendScore(user, friends, friendCandidatesAndScores);
+		computeVisitorScore(visitors, friendCandidatesAndScores);
+		return getHighScorers(friendCandidatesAndScores);
+	}
+
+	private static List<String> getHighScorers(Map<String, Integer> friendCandidatesAndScores) {
+		List<String> highScorers = new ArrayList<>();
+		List<Map.Entry<String, Integer>> friendCandidatesAndScoresList = new ArrayList<>(
+			friendCandidatesAndScores.entrySet());
+		preprocessEntryList(friendCandidatesAndScoresList);
+		if (friendCandidatesAndScoresList.size() > MAXIMUM_COUNT_OF_RECOMMENDATION) {
+			friendCandidatesAndScoresList = friendCandidatesAndScoresList.subList(0, MAXIMUM_COUNT_OF_RECOMMENDATION);
 		}
-		strangersAndPointsList.forEach(strangerAndPoint -> rankingList.add(strangerAndPoint.getKey()));
-		return rankingList;
+		friendCandidatesAndScoresList.forEach(
+			friendCandidateAndScore -> highScorers.add(friendCandidateAndScore.getKey()));
+		return highScorers;
 	}
 
 	private static void preprocessEntryList(List<Map.Entry<String, Integer>> entries) {
 		entries.sort(Map.Entry.comparingByKey());
 		entries.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
-		removeZeroValue(entries);
+		removeEntriesWithZeroValue(entries);
 	}
 
-	private static void removeZeroValue(List<Map.Entry<String, Integer>> entries) {
-		entries.removeIf(x -> x.getValue() == 0);
+	private static void removeEntriesWithZeroValue(List<Map.Entry<String, Integer>> entries) {
+		entries.removeIf(entry -> entry.getValue() == 0);
 	}
 
-	private static void plusVisitPoint(List<String> visitors, HashMap<String, Integer> strangersAndPoints) {
-		visitors.forEach(
-			visitor -> strangersAndPoints.computeIfPresent(visitor, (stranger, point) -> point + VISIT_POINT));
+	private static void computeVisitorScore(List<String> visitors, Map<String, Integer> friendCandidatesAndScores) {
+		visitors.forEach(visitor -> friendCandidatesAndScores.computeIfPresent(visitor,
+			(friendCandidate, score) -> score + VISITOR_SCORE));
 	}
 
-	private static void plusFriendPoint(String user, List<List<String>> friends,
-		HashMap<String, Integer> strangersAndPoints) {
-		strangersAndPoints.forEach((stranger, point) -> strangersAndPoints.put(stranger,
-			point + returnCommonFriendNumber(user, stranger, friends) * FRIEND_POINT));
+	private static void computeFriendScore(String user, List<List<String>> friends,
+		Map<String, Integer> friendCandidatesAndScores) {
+		friendCandidatesAndScores.forEach(
+			(friendCandidate, score) -> friendCandidatesAndScores.replace(friendCandidate, score,
+				score + getCommonFriendsCount(user, friendCandidate, friends) * FRIEND_SCORE));
 	}
 
-	private static int returnCommonFriendNumber(String user, String person, List<List<String>> friends) {
-		List<String> userFriends = returnFriendList(user, friends);
-		List<String> personFriends = returnFriendList(person, friends);
-		int commonFriendNumber = 0;
-		commonFriendNumber += personFriends.stream().filter(userFriends::contains).count();
-		return commonFriendNumber;
+	private static int getCommonFriendsCount(String user, String friendCandidate, List<List<String>> friends) {
+		Set<String> userFriends = getIndividualFriendsSet(user, friends);
+		Set<String> friendCandidateFriends = getIndividualFriendsSet(friendCandidate, friends);
+		Set<String> commonFriends = userFriends;
+		commonFriends.retainAll(friendCandidateFriends);
+		return commonFriends.size();
 	}
 
-	private static List<String> returnFriendList(String person, List<List<String>> friends) {
-		HashSet<String> friendsSet = new HashSet<>();
+	private static Set<String> getIndividualFriendsSet(String individual, List<List<String>> friends) {
+		Set<String> friendsSet = new HashSet<>();
 		friends.stream()
-			.filter(friend -> friend.contains(person))
+			.filter(friend -> friend.contains(individual))
 			.forEach(friend -> friendsSet.add(
-				friend.stream().filter(someone -> !someone.equals(person)).collect(Collectors.joining())));
-		return new ArrayList<>(friendsSet);
+				friend.stream().filter(someone -> !someone.equals(individual)).collect(Collectors.joining())));
+		return friendsSet;
 	}
 
-	private static HashMap<String, Integer> makeHashMap(List<String> strangers) {
-		HashMap<String, Integer> strangersAndPoints = new HashMap<>();
-		strangers.forEach(stranger -> strangersAndPoints.put(stranger, 0));
-		return strangersAndPoints;
+	private static Map<String, Integer> initFriendCandidateAndScoreMap(List<String> friendCandidates) {
+		return friendCandidates.stream().collect(Collectors.toMap(friendCandidate -> friendCandidate, score -> 0));
 	}
 
-	private static List<String> returnStrangers(String user, List<List<String>> friends, List<String> visitors) {
-		List<String> strangers = new ArrayList<>();
+	private static List<String> getFriendCandidates(String user, List<List<String>> friends, List<String> visitors) {
+		List<String> friendCandidates = new ArrayList<>();
 		for (List<String> friend : friends) {
-			strangers = addTargetToList(strangers, friend);
+			friendCandidates = mergeLists(friendCandidates, friend);
 		}
-		strangers = addTargetToList(strangers, visitors);
-		strangers.remove(user);
-		strangers = removeTargetFromList(strangers, returnFriendList(user, friends));
-		return strangers;
+		friendCandidates = mergeLists(friendCandidates, visitors);
+		List<String> alreadyFriends = new ArrayList<>(getIndividualFriendsSet(user, friends));
+		friendCandidates.remove(user);
+		friendCandidates.removeAll(alreadyFriends);
+		return friendCandidates;
 	}
 
-	private static List<String> removeTargetFromList(List<String> list, List<String> target) {
-		return list.stream().filter(x -> !target.contains(x)).collect(Collectors.toList());
-	}
-
-	private static List<String> addTargetToList(List<String> list, List<String> target) {
-		List<String> result = target.stream().filter(x -> !list.contains(x)).collect(Collectors.toList());
-		result.addAll(list);
-		return result;
+	private static List<String> mergeLists(List<String> list1, List<String> list2) {
+		Set<String> set1 = Set.copyOf(list1);
+		Set<String> set2 = Set.copyOf(list2);
+		Set<String> result = new HashSet<>(set1);
+		result.addAll(set2);
+		return new ArrayList<>(result);
 	}
 }

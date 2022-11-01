@@ -1,40 +1,34 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Problem6 {
 	static final int EMAIL = 0;
 	static final int NICKNAME = 1;
 
 	public static List<String> solution(List<List<String>> forms) {
-		return sortResult(returnResult(forms));
+		return getEmailsWithSimilarNicknames(forms);
 	}
 
-	private static List<String> sortResult(List<String> result) {
-		result.sort(Comparator.naturalOrder());
-		return result;
+	private static List<String> getEmailsWithSimilarNicknames(List<List<String>> forms) {
+		return forms.stream()
+			.filter(emailAndNickname -> checkSimilarityInNicknames(emailAndNickname.get(NICKNAME), forms))
+			.map(emailAndNickname -> emailAndNickname.get(EMAIL))
+			.distinct()
+			.sorted()
+			.collect(Collectors.toList());
 	}
 
-	private static List<String> returnResult(List<List<String>> forms) {
-		HashSet<String> result = new HashSet<>();
-		forms.stream()
-			.filter(emailAndNickname -> checkSimilarityInCrewList(emailAndNickname.get(NICKNAME), forms))
-			.forEach(emailAndNickname -> result.add(emailAndNickname.get(EMAIL)));
-		return new ArrayList<>(result);
-	}
-
-	private static boolean checkSimilarityInCrewList(String nickname, List<List<String>> forms) {
+	private static boolean checkSimilarityInNicknames(String nickname, List<List<String>> forms) {
 		return forms.stream()
 			.filter(emailAndNickname -> !nickname.equals(emailAndNickname.get(NICKNAME)))
 			.anyMatch(emailAndNickname -> checkSimilarity(nickname, emailAndNickname.get(NICKNAME)));
 	}
 
-	private static boolean checkSimilarity(String nickname, String target) {
-		for (int index = 0; index < nickname.length() - 1; index++) {
-			if (target.contains(returnTwoLettersFromIndex(nickname, index))) {
+	private static boolean checkSimilarity(String nickname1, String nickname2) {
+		for (int index = 0; index < nickname1.length() - 1; index++) {
+			if (nickname2.contains(returnTwoLettersFromIndex(nickname1, index))) {
 				return true;
 			}
 		}
