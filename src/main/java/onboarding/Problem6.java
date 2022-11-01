@@ -18,6 +18,24 @@ public class Problem6 {
 
         return sliceList;
     }
+    private static Set<String> makeSliceSet(List<List<String>> sliceList) {
+        Set<String> tempSet = new HashSet<>();
+        Set<String> sliceSet = new HashSet<>();
+
+        for (int i = 0; i < sliceList.size(); i++) {
+            for (int j = 0; j < sliceList.get(i).size(); j++) {
+                String slice = sliceList.get(i).get(j);
+
+                if (tempSet.contains(slice)) {
+                    sliceSet.add(slice);
+                    continue;
+                }
+                tempSet.add(slice);
+            }
+        }
+
+        return sliceSet;
+    }
     private static boolean[] makeConsecutiveCheckArray(List<List<String>> forms) {
         boolean[] isConsecutive = new boolean[forms.size()];
         List<List<String>> sliceList = makeSliceByTwo(forms);
