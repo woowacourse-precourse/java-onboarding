@@ -102,20 +102,7 @@ public class Problem7 {
                 Collections.sort(temp);
                 answer.add(temp);
             }
-
-
-
         }
-
-
-
-
-
-
-
-
-
-
 
         return answer;
     }
