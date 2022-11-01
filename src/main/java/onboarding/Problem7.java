@@ -36,6 +36,20 @@ public class Problem7 {
         }
         return relations;
     }
+    private static int searchUser(List<User> users, String userName) {
+        int index = 0;
+        boolean stop = false;
+        while (!stop && index < users.size()) {
+            User user = users.get(index);
+            String name = user.name;
+            stop = name.equals(userName);
+            index++;
+        }
+        if (stop) {
+            return index - 1;
+        }
+        return -1;
+    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
