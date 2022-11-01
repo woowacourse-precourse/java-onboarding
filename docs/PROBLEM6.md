@@ -21,3 +21,10 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 🎯 구현 기능 목록
+
+1. 두 글자씩 나누어 생성할 수 있는 경우의 수를 저장하기
+2. 두 글자가 포함된 이메일을 분류하기
+3. 2개 이상의 이메일이 존재하는 중복없이 저장하기
+4. 문자열 오름차순 정렬하기
