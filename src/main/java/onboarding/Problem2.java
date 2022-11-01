@@ -11,23 +11,6 @@ public class Problem2 {
         while (checkDuplicate(answer)) {
             answer = removeDuplicate(answer);
         }
-        // Stack<Character> stack = new Stack<>();
-        //
-        // for (int i = 0; i < cryptogram.length(); i++) {
-        //     if(!stack.isEmpty() && stack.peek().equals(cryptogram.charAt(i))) {
-        //         stack.pop();
-        //         while(cryptogram.charAt(i) == cryptogram.charAt(i+1)) {
-        //             i++;
-        //         }
-        //
-        //     } else {
-        //         stack.push(cryptogram.charAt(i));
-        //     }
-        // }
-        //
-        // for (Character character : stack) {
-        //     answer.append(character);
-        // }
         return answer;
     }
 
@@ -51,7 +34,6 @@ public class Problem2 {
                 sb.append(str.charAt(i));
             }
         }
-
         return sb.toString();
     }
 }
