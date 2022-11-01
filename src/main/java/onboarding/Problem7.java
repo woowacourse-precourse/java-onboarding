@@ -89,6 +89,32 @@ public class Problem7 {
 
         flag = true;
 
+        while (flag) {
+            for (int i = 0; i < recomList.size()-1; i++) {
+                if (recomScore.get(i) == recomScore.get(i+1)) {
+                    String former = recomList.get(i);
+                    String latter = recomList.get(i+1);
+                    if (former.compareTo(latter) > 0) {
+                        Collections.swap(recomList, i, i + 1);
+                        System.out.println("recomList " + recomList);
+                        System.out.println("recomScore " + recomScore);
+                    }
+                }
+            }
+
+            for (int i = 0; i < recomList.size()-1; i++) {
+                if (recomScore.get(i) == recomScore.get(i+1)) {
+                    String former = recomList.get(i);
+                    String latter = recomList.get(i+1);
+                    flag = false;
+                    if (former.compareTo(latter) > 0) {
+                        flag = true;
+                        break;
+                    }
+                }
+            }
+        }
+
         return answer;
     }
 }
