@@ -1,8 +1,6 @@
 package onboarding;
 
-import onboarding.problem7.RecommendFriendFinder;
 
-import java.util.Collections;
 import java.util.List;
 
 public class Problem7 {
