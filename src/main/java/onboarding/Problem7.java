@@ -37,4 +37,13 @@ public class Problem7 {
         }
         return result;
     }
+    private static HashMap<String, Integer> addVisitor(HashMap<String, Integer> notFriendMap, Set<String> friends, List<String> visitors) {
+        for (int i = 0; i < visitors.size(); i++) {
+            String friend_key = visitors.get(i);
+            if (friends.contains(friend_key))
+                continue;
+            notFriendMap.put(friend_key, notFriendMap.getOrDefault(friend_key, 0) + 1);
+        }
+        return notFriendMap;
+    }
 }
