@@ -15,7 +15,15 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         makeListOfFriends(friends);
         makeScoreMapOfFriendsList(user, visitors);
+        removeFriendsAlreadyKnow(friendsMap.get(user));
+        scoreMap.remove(user);
         return new ArrayList<>();
+    }
+
+    private static void removeFriendsAlreadyKnow(List<String> userFriendList) {
+        for (String userFriend : userFriendList) {
+            scoreMap.remove(userFriend);
+        }
     }
 
     private static void makeScoreMapOfFriendsList(String user, List<String> visitors) {
