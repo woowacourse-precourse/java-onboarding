@@ -1,11 +1,22 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
+    }
+    
+    // chk 배열을 이용해서 중복 닉네임을 가진 크루의 이메일 을 List에 저장
+    private static List<String> calcOutput(List<List<String>> forms, boolean[] chk) {
+        List<String> output = new ArrayList<>();
+        for (int i = 0; i < forms.size(); i++) {
+            if(chk[i])
+                output.add(forms.get(i).get(0));
+        }
+        return output;
     }
 
     // KMP 알고리즘을 사용해서 chk 배열 계산
