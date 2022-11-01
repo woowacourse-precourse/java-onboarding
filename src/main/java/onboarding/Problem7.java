@@ -174,8 +174,8 @@ public class Problem7 {
 		}
 		notYetFriendWithUser.addAll(visitors);
 
-		for (String s : alreadyFriendWithUser) {
-			notYetFriendWithUser.remove(s);
+		for (String alreadyFriend : alreadyFriendWithUser) {
+			notYetFriendWithUser.remove(alreadyFriend);
 		}
 		return notYetFriendWithUser;
 	}
