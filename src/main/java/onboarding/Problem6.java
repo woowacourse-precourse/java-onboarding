@@ -39,10 +39,9 @@ public class Problem6 {
         }
         return false;
     }
-    private static List<String> arrangeEmail(List<String> email) {
-        Set<String> set = new HashSet<String>(email);
-        email = new ArrayList<String>(set);
-        Collections.sort(email);
-        return email;
+    private static List<String> arrangeEmail(List<String> emails) {
+        List<String> uniqueEmails = new ArrayList(new HashSet(emails));
+        Collections.sort(uniqueEmails);
+        return uniqueEmails;
     }
 }
