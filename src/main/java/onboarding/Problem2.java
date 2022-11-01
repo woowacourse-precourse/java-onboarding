@@ -23,7 +23,7 @@ public class Problem2 {
 
     }
     public static boolean constraints(String s){ // 제한사항
-        if(s.length()<0 || s.length()>1000) {System.out.println("cryptogram 길이가 올바르지 않습니다."); return false;}
+        if(s.length()<1 || s.length()>1000) {System.out.println("cryptogram 길이가 올바르지 않습니다."); return false;}
         for (int i =0; i<s.length();i++) {
             int num = Integer.valueOf(s.charAt(i));
             if (num > 64 && num < 91) { // 대문자 아스키 코드 A ~Z : 65~91
