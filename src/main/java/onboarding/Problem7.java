@@ -7,7 +7,7 @@ public class Problem7 {
     public static final int VISITOR_SCORE = 1;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
         HashMap<String, List<String>> friendRelationshipMap = new HashMap<>();
         HashMap<String, Integer> scoreMap = new HashMap<>();
 
@@ -17,6 +17,11 @@ public class Problem7 {
 
         getRecommendedFriends(scoreMap, answer);
         sortRecommendedFriends(scoreMap, answer);
+
+        if (answer.size() > 5) {
+            answer = answer.subList(0, 5);
+        }
+
         return answer;
     }
 
