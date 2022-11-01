@@ -22,4 +22,11 @@ public class Problem2 {
 
         return result.toString();
     }
+
+    private static String checkEnd(String cryptogram) {
+        while (!cryptogram.equals(getDecryptedWord(cryptogram))) {
+            cryptogram = getDecryptedWord(cryptogram);
+        }
+        return cryptogram;
+    }
 }
