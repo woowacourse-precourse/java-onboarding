@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     public static final int MAX_RECOMMEND_SIZE = 5;
@@ -16,6 +17,9 @@ public class Problem7 {
         Map<String, Set<String>> userToFriends = getUserToFriendMap(friends);
 
         Map<String, Integer> idToRecommendScore = getIdToRecommendScore(user, userToFriends, visitors);
+
+        Set<String> userFriends = userToFriends.getOrDefault(user, Set.of());
+        Map<String, Integer> recommendableIdsToScore = filterOnlyRecommendable(user, userFriends, idToRecommendScore);
 
 
         return null;
@@ -91,6 +95,16 @@ public class Problem7 {
             recommendScores
                     .put(id, recommendScores.getOrDefault(id, 0) + VISITOR_SCORE);
         }
+    }
+
+    private static Map<String, Integer> filterOnlyRecommendable(String user, Set<String> userFriends, Map<String, Integer> idToRecommendScore) {
+        return idToRecommendScore
+                .entrySet()
+                .stream()
+                .filter(entry -> !userFriends.contains(entry.getKey()))
+                .filter(entry -> !entry.getKey().equals(user))
+                .filter(entry -> entry.getValue() >= MINIMUM_RECOMMEND_SCORE)
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
     }
 
 
