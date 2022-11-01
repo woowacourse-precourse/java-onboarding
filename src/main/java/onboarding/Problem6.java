@@ -51,24 +51,24 @@ public class Problem6 {
 
         // 도메인 형식
         if (!infoEmail.contains("@email.com")) {
-            System.out.println("도메인 형식이 올바르지 않습니다.");
+            // System.out.println("도메인 형식이 올바르지 않습니다.");
             return false;
         }
         // 이메일 길이 제한
         else if (infoEmail.length() < 11 || infoEmail.length() > 19) {
-            System.out.println("이메일 길이가 올바르지 않습니다.");
+            // System.out.println("이메일 길이가 올바르지 않습니다.");
             return false;
         }
         // 한글만 가능한 닉네임 형식
         else if(!isHangeul(infoNickName))
         {
-            System.out.println("닉네임이 한글이 아닙니다!");
+            // System.out.println("닉네임이 한글이 아닙니다!");
             return false;
         }
         // 넥네임 길이 제한
         else if(infoNickName.length() < 1 || infoNickName.length() > 19)
         {
-            System.out.println("닉네임 길이가 올바르지 않습니다.");
+            // System.out.println("닉네임 길이가 올바르지 않습니다.");
             return false;
         }
 
@@ -94,7 +94,7 @@ public class Problem6 {
 
             if(infoCheck == false)
             {
-                System.out.println(email + " , " + nickName + " : 에러");
+                // System.out.println(email + " , " + nickName + " : 에러");
                 return answer;
             }
 
@@ -108,7 +108,7 @@ public class Problem6 {
 
                 if(infoCheck == false)
                 {
-                    System.out.println(compareEmail + " , " + compareNickName + " : 에러");
+                    // System.out.println(compareEmail + " , " + compareNickName + " : 에러");
                     return answer;
                 }
 
