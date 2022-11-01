@@ -8,101 +8,119 @@ import static java.lang.Math.max;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
+        int answer ;
+
         int pobiLeftPage = pobi.get(0);
         int pobiRightPage = pobi.get(1);
         int crongLeftPage = crong.get(0);
         int crongRightPage = crong.get(1);
 
         // 예외사항 작성
-        if ( pobiLeftPage < 3 || crongLeftPage < 3 || pobiLeftPage > 397 || crongLeftPage > 397 ) {
+        if ( pobiLeftPage < 3 || crongLeftPage < 3 || pobiLeftPage > 397 || crongLeftPage > 397 ) { //첫페이지와 마지막 페이지를 안 펼치도록
             return -1;
-        } else if ( pobiRightPage != pobiLeftPage + 1 || crongRightPage != crongLeftPage + 1) {
+        } else if ( pobiRightPage != pobiLeftPage + 1 || crongRightPage != crongLeftPage + 1) { //왼쪽 페이지와 오른쪽 페이지가 1만큼 차이난다는 의존성
             return -1;
-        } else if ( pobiRightPage%2 != 0 || crongRightPage%2 != 0 ) {
+        } else if ( pobiRightPage%2 != 0 || crongRightPage%2 != 0 ) { //오른쪽 페이지가 짝수인지 확인
             return -1;
-        } else if ( pobi.size() != 2 || crong.size() != 2 ){
+        } else if ( pobi.size() != 2 || crong.size() != 2 ){ //받아오는 list의 size가 2개가 아닌지 확인
             return -1;
         }
 
-        // pobi와 crong 페이지 값에 따른 최대 값 계산
+        // pobi와 crong 페이지의 각 자리수들을 저장해줄 List 정의
         ArrayList<Integer> arrNumPobiLeft = new ArrayList<>();
         ArrayList<Integer> arrNumPobiRight = new ArrayList<>();
         ArrayList<Integer> arrNumCrongLeft = new ArrayList<>();
         ArrayList<Integer> arrNumCrongRight = new ArrayList<>();
 
-        // While문 및 나누셈을 통한 페이지의 각 자리수 분리하기
-        int numPL = pobiLeftPage ;
-        int numPR = pobiRightPage ;
-        int numCL = crongLeftPage ;
-        int numCR = crongRightPage ;
-
-        while ( numPL > 0 ) {
-            arrNumPobiLeft.add(numPL%10);
-            numPL /= 10;
-        }
-        int lenghtPL = arrNumPobiLeft.size();
-        int sumPL = 0;
-        int productPL = 1;
-
-        while ( lenghtPL > 0 ) {
-            sumPL += arrNumPobiLeft.get(lenghtPL - 1);
-            productPL *= arrNumPobiLeft.get(lenghtPL - 1);
-            lenghtPL -= 1;
-        }
+        int pobiMax = 0;
+        int crongMax = 0;
 
 
-        while ( numPR > 0 ) {
-            arrNumPobiRight.add(numPR%10);
-            numPR /= 10;
-        }
-        int lenghtPR = arrNumPobiRight.size();
-        int sumPR = 0;
-        int productPR = 1;
+        if (pobiRightPage%10 == 0) { //십의 자리수 혹은 백의 자리수가 바뀔 때는 '왼쪽 페이지의 자릿수 곱 혹은 덧셈'이 항상 더 큰 것을 활용
 
-        while ( lenghtPR > 0 ) {
-            sumPR += arrNumPobiRight.get(lenghtPR - 1);
-            productPR *= arrNumPobiRight.get(lenghtPR - 1);
-            lenghtPR -= 1;
-        }
+            while ( pobiLeftPage > 0 ) {
+                arrNumPobiLeft.add(pobiLeftPage%10);
+                pobiLeftPage /= 10;
+            }
+            int lenghtPL = arrNumPobiLeft.size();
+            int sumPL = 0;
+            int productPL = 1;
 
-        while ( numCL > 0 ) {
-            arrNumCrongLeft.add(numCL%10);
-            numCL /= 10;
-        }
-        int lenghtCL = arrNumCrongLeft.size();
-        int sumCL = 0;
-        int productCL = 1;
+            while ( lenghtPL > 0 ) {
+                sumPL += arrNumPobiLeft.get(lenghtPL - 1);
+                productPL *= arrNumPobiLeft.get(lenghtPL - 1);
+                lenghtPL -= 1;
+            }
 
-        while ( lenghtCL > 0 ) {
-            sumCL += arrNumCrongLeft.get(lenghtCL - 1);
-            productCL *= arrNumCrongLeft.get(lenghtCL - 1);
-            lenghtCL -= 1;
+            pobiMax = Math.max(sumPL, productPL);
+
+        } else if (pobiRightPage%10 != 0) {
+
+            while ( pobiRightPage > 0 ) {
+                arrNumPobiRight.add(pobiRightPage%10);
+                pobiRightPage /= 10;
+            }
+            int lenghtPR = arrNumPobiRight.size();
+            int sumPR = 0;
+            int productPR = 1;
+
+            while ( lenghtPR > 0 ) {
+                sumPR += arrNumPobiRight.get(lenghtPR - 1);
+                productPR *= arrNumPobiRight.get(lenghtPR - 1);
+                lenghtPR -= 1;
+            }
+
+            pobiMax = Math.max(sumPR, productPR);
+
         }
 
-        while ( numCR > 0 ) { //numCR(CrongRight)은 페이지 값
-            arrNumCrongRight.add(numCR%10); //페이지 값을 10으로 나눠 나머지 값을 CrongRight라는 배열에 순서대로 저장
-            numCR /= 10; //페이지 값을 10으로 나눈 후 나머지를 버린 값
-        }
-        int lenghtCR = arrNumCrongRight.size();
-        int sumCR = 0;
-        int productCR = 1;
+        if (crongRightPage%10 == 0) {
+            while ( crongRightPage > 0 ) {
+                arrNumCrongLeft.add(crongRightPage%10);
+                crongRightPage /= 10;
+            }
+            int lenghtCL = arrNumCrongLeft.size();
+            int sumCL = 0;
+            int productCL = 1;
 
-        while ( lenghtCR > 0 ) {
-            sumCR += arrNumCrongRight.get(lenghtCR - 1);
-            productCR *= arrNumCrongRight.get(lenghtCR - 1);
-            lenghtCR -= 1;
+            while ( lenghtCL > 0 ) {
+                sumCL += arrNumCrongLeft.get(lenghtCL - 1);
+                productCL *= arrNumCrongLeft.get(lenghtCL - 1);
+                lenghtCL -= 1;
+            }
+
+            crongMax = Math.max(sumCL, productCL);
+
+
+        } else if (crongRightPage%10 != 0) {
+
+            while ( crongRightPage > 0 ) {
+                arrNumCrongRight.add(crongRightPage%10);
+                crongRightPage /= 10;
+            }
+            int lenghtCR = arrNumCrongRight.size();
+            int sumCR = 0;
+            int productCR = 1;
+
+            while ( lenghtCR > 0 ) {
+                sumCR += arrNumCrongRight.get(lenghtCR - 1);
+                productCR *= arrNumCrongRight.get(lenghtCR - 1);
+                lenghtCR -= 1;
+            }
+            crongMax = Math.max(sumCR, productCR);
         }
 
-        if (Math.max(Math.max(sumPR, productPR), Math.max(sumPL, productPL)) > Math.max(Math.max(sumCR, productCR), Math.max(sumCL, productCL))){
+
+
+        if ( pobiMax > crongMax ){
             return 1;
-        } else if (Math.max(Math.max(sumPR, productPR), Math.max(sumPL, productPL)) < Math.max(Math.max(sumCR, productCR), Math.max(sumCL, productCL))) {
+        } else if (pobiMax < crongMax ) {
             return 2;
+        } else if (pobiMax == crongMax) {
+            return 0;
         }
-
-
-        return 0;
+        return -1;
     }
 
-    //수정해야하는 부분 1) return 값을 answer로 받아오는 (처음 있는 그대로로), 2) 더 간단하게 코딩할 수 없는지
 
 }
