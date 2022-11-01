@@ -49,11 +49,19 @@ class Problem1 {
 	 * @return
 	 */
 	private static Integer checkRestrictions(List<Integer> pages) {
-		if (isPagesSizeValid(pages) && isPagesContiguousValid(pages)
-			&& isPagesEvenOddValid(pages) && isPagesRangeValid(pages)) {
-			return 0;
+		if (!isPagesSizeValid(pages)) {
+			return -1;
 		}
-		return -1;
+		if (!isPagesRangeValid(pages)) {
+			return -1;
+		}
+		if (!isPagesContiguousValid(pages)) {
+			return -1;
+		}
+		if (!isPagesEvenOddValid(pages)) {
+			return -1;
+		}
+		return -0;
 	}
 
 	// 페이지 리스트의 요소가 2개가 아닌 경우 예외
