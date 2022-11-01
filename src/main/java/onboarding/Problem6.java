@@ -4,23 +4,25 @@ import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-
-       for(int i=0;i<forms.size();i++){
-           Email email = new Email(forms.get(i).get(0));
-           if(email.isValidDomain()&& email.isValidLength()){  // 이메일 유효성 통과
-               Nickname nickname = new Nickname(forms.get(i).get(1));
-               if(nickname.isValidNick()){ // 닉네임 유효성 통과
-                   wrongCrew crew = new wrongCrew(forms);
-                   List<String> result = crew.nickDuplicate(nickname.allCaseNickEmail(forms));
-                   HashSet<String> delduple = new HashSet<>(result);
-                   result = new ArrayList<>(delduple);  // 중복 제거하기
-                   Collections.sort(result); // 오름차순 정렬
-                   return result;
-               }
-           }else
-               return null;
-       }
-       return null;
+        int forms_len = forms.size();
+        if(forms_len >= 1 && forms_len <= 10000){
+            for(int i=0;i<forms.size();i++){
+                Email email = new Email(forms.get(i).get(0));
+                if(email.isValidDomain()&& email.isValidLength()) {  // 이메일 유효성 통과
+                    Nickname nickname = new Nickname();
+                    if (nickname.isValidNick(forms.get(i).get(1))) { // 닉네임 유효성 통과
+                        wrongCrew crew = new wrongCrew(forms);
+                        List<String> result = crew.nickDuplicate(nickname.allCaseNickEmail(forms));
+                        HashSet<String> delduple = new HashSet<>(result);
+                        result = new ArrayList<>(delduple);  // 중복 제거하기
+                        Collections.sort(result); // 오름차순 정렬
+                        return result;
+                    }return
+                            null;
+                }
+            }
+        }
+        return null;
     }
 
     private static class wrongCrew {
@@ -44,13 +46,11 @@ public class Problem6 {
             }
             return result;
         }
+
     }
 
     private static class Nickname {
-        private final String crewNick;
-        public Nickname(String nick) {
-            this.crewNick = nick;
-        }
+
         public List<List<String>> allCaseNickEmail(List<List<String>> forms) {
             List<List<String>> result_nicklist = new ArrayList<>();
 
@@ -83,7 +83,7 @@ public class Problem6 {
             return nicklist;
         }
 
-        public boolean isValidNick() {
+        public boolean isValidNick(String crewNick) {
             String regex_nick = ".*[가-힣].*";
             int nick_length = crewNick.length();
 
