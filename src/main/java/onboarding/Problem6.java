@@ -2,59 +2,106 @@ package onboarding;
 
 import java.util.*;
 
+class Form {
+
+    private final String email;
+    private final String nickName;
+    private Set<String> wordBag;
+
+    public Form(String email, String nickName) {
+        this.email = email;
+        this.nickName = nickName;
+    }
+
+    public String getEmail() {
+        return this.email;
+    }
+
+    public void makeWordBagFromNickName(int wordLength) {
+        wordBag = new HashSet<>();
+        int nickNameLength = nickName.length();
+        nickNameLength = nickNameLength - wordLength + 1;
+        for (int i = 0; i < nickNameLength; i++) {
+            wordBag.add(nickName.substring(i, i + wordLength));
+        }
+    }
+
+    public void setDuplicatedWord(Map<String, Integer> duplicatedCountPerWord) {
+        if (wordBag == null || duplicatedCountPerWord == null) {
+            return;
+        }
+        Integer duplicatedCount;
+        for (String partialWord : wordBag) {
+            if (!duplicatedCountPerWord.containsKey(partialWord)) {
+                duplicatedCountPerWord.put(partialWord, 0);
+            }
+            duplicatedCount = duplicatedCountPerWord.get(partialWord);
+            duplicatedCountPerWord.put(partialWord, duplicatedCount + 1);
+        }
+    }
+
+    public boolean doesHaveDuplicatedWord(Map<String, Integer> duplicatedCountPerWord) {
+        if (wordBag == null || duplicatedCountPerWord == null) {
+            return false;
+        }
+        for (String partialWord : wordBag) {
+            if (duplicatedCountPerWord.get(partialWord) > 1) {
+                return true;
+            }
+        }
+        return false;
+    }
+}
+
 public class Problem6 {
 
     private static final int WORD_LENGTH = 2;
-    private static Map<String, Integer> duplicatedCountPerWord = new HashMap<>();
-    private static Set<String> emailsOfCrewWhoHasDuplicatedNickName = new HashSet<>();
 
     public static List<String> solution(List<List<String>> forms) {
-        for (List<String> crew : forms) {
-            makeLengthTwoWordsBag(crew.get(1));
-        }
+        List<Form> crews = getCrewList(forms);
 
-        for (List<String> crew : forms) {
-            findCrewWhoHasDuplicatedNickName(crew);
-        }
+        Map<String, Integer> duplicatedCountPerWord = getDuplicatedCountPerWord(crews);
 
-        List<String> answer = getSortedEmails();
-        return answer;
+        Set<String> emailsOfCrewWhoHasDuplicatedNickName = getEmailsOfCrewWhoHasDuplicatedNickName(
+            crews, duplicatedCountPerWord);
+
+        return getSortedEmails(emailsOfCrewWhoHasDuplicatedNickName);
     }
 
-    private static void makeLengthTwoWordsBag(String nickName) {
-        int nickNameLength = nickName.length();
-        nickNameLength--;
-        for (int i = 0; i < nickNameLength; i++) {
-            savePartialWordsToMap(nickName.substring(i, i + WORD_LENGTH));
+    private static List<Form> getCrewList(List<List<String>> forms) {
+        String email, nickName;
+        Form newbie;
+        List<Form> crews = new LinkedList<>();
+        for (List<String> form : forms) {
+            email = form.get(0);
+            nickName = form.get(1);
+            newbie = new Form(email, nickName);
+            newbie.makeWordBagFromNickName(WORD_LENGTH);
+            crews.add(newbie);
         }
+        return crews;
     }
 
-    private static void savePartialWordsToMap(String partialWord) {
-        if (!duplicatedCountPerWord.containsKey(partialWord)) {
-            duplicatedCountPerWord.put(partialWord, 0);
+    private static Map<String, Integer> getDuplicatedCountPerWord(List<Form> crews) {
+        Map<String, Integer> duplicatedCountPerWord = new HashMap<>();
+        for (Form crew : crews) {
+            crew.setDuplicatedWord(duplicatedCountPerWord);
         }
-        Integer duplicatedCount = duplicatedCountPerWord.get(partialWord);
-        duplicatedCountPerWord.put(partialWord, duplicatedCount + 1);
+        return duplicatedCountPerWord;
     }
 
-    private static void findCrewWhoHasDuplicatedNickName(List<String> crew) {
-        String email = crew.get(0);
-        String nickName = crew.get(1);
-        int nickNameLength = nickName.length();
-        nickNameLength--;
-        for (int i = 0; i < nickNameLength; i++) {
-            saveEmailOfDuplicatedNickName(nickName.substring(i, i + WORD_LENGTH), email);
+    private static Set<String> getEmailsOfCrewWhoHasDuplicatedNickName(List<Form> crews,
+        Map<String, Integer> duplicatedCountPerWord) {
+        Set<String> emailsOfCrewWhoHasDuplicatedNickName = new HashSet<>();
+        for (Form crew : crews) {
+            if (crew.doesHaveDuplicatedWord(duplicatedCountPerWord)) {
+                emailsOfCrewWhoHasDuplicatedNickName.add(crew.getEmail());
+            }
         }
+        return emailsOfCrewWhoHasDuplicatedNickName;
     }
 
-    private static void saveEmailOfDuplicatedNickName(String partialWord, String email) {
-        Integer duplicatedCount = duplicatedCountPerWord.get(partialWord);
-        if (duplicatedCount > 1) {
-            emailsOfCrewWhoHasDuplicatedNickName.add(email);
-        }
-    }
-
-    private static List<String> getSortedEmails() {
+    private static List<String> getSortedEmails(Set<String> emailsOfCrewWhoHasDuplicatedNickName) {
         List<String> emails = new LinkedList<>(emailsOfCrewWhoHasDuplicatedNickName);
         Collections.sort(emails);
         return emails;
