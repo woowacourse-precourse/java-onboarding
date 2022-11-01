@@ -3,12 +3,14 @@ package onboarding;
 import java.util.*;
 
 public class Problem6 {
+    /* email 정렬 메서드 */
     public static List<String> orderList(HashSet<String> emailSet) {
         List<String> emailList = new ArrayList<>(emailSet);
         emailList.sort(Comparator.naturalOrder());
         return emailList;
     }
 
+    /* 중복되는 닉네임을 가진 이메일 목록 생성 메서드 */
     public static HashSet<String> getResult(HashMap<String, HashSet<String>> emailMap) {
         HashSet<String> emailSet = new HashSet<String>();
         for(HashSet<String> values : emailMap.values()) {
@@ -21,6 +23,7 @@ public class Problem6 {
         return emailSet;
     }
 
+    /* (닉네임, 이메일) 해시맵 생성 메서드 */
     public static HashMap<String, HashSet<String>> createEmailMap(List<List<String>> forms) {
         HashMap<String, HashSet<String>> emailMap = new HashMap<String, HashSet<String>>();
         for(List<String> crewInfo : forms) {

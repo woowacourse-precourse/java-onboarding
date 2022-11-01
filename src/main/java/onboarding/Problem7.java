@@ -3,6 +3,7 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
+    /* value 기준 내림차순 정렬, 같은 value는 key 기준 오름차순 정렬하는 메서드 */
     public static ArrayList<String> sort(HashMap<String, Integer> sharedFriends) {
         List<Map.Entry<String, Integer>> list = new LinkedList<>(sharedFriends.entrySet());
 
@@ -11,11 +12,9 @@ public class Problem7 {
             public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
                 if (o1.getValue() > o2.getValue()) {
                     return -1;
-                }
-                else if (o1.getValue() < o2.getValue()) {
+                } else if (o1.getValue() < o2.getValue()) {
                     return 1;
                 }
-
                 return o1.getKey().compareTo(o2.getKey());
             }
         });
@@ -28,6 +27,7 @@ public class Problem7 {
         return sortedMap;
     }
 
+    /* 방문자 점수 등록 메서드 */
     public static HashMap<String, Integer> checkVisitors(List<String> visitors, HashMap<String, Integer> sharedFrineds, HashSet<String> userFriends) {
         for(String visitor : visitors) {
             if(userFriends.contains(visitor)) {
@@ -42,6 +42,7 @@ public class Problem7 {
         return sharedFrineds;
     }
 
+    /* 함께 아는 친구 점수 등록 메서드 */
     public static HashMap<String, Integer> createSharedFriendsHashmap(List<List<String>> friends, HashSet<String> userFriends, String user) {
         HashMap<String, Integer> sharedFriends = new HashMap<String, Integer>();
         for(String userFriend : userFriends) {
@@ -60,9 +61,11 @@ public class Problem7 {
                 }
             }
         }
+        System.out.println(sharedFriends);
         return sharedFriends;
     }
 
+    /* user 친구 목록 저장 메서드 */
     public static HashSet<String> findUserFriends(String user, List<List<String>> friends) {
         HashSet<String> userFriend = new HashSet<String>();
         for(List<String> friend :  friends) {
@@ -88,10 +91,11 @@ public class Problem7 {
     public static void main(String[] args) {
         String user = "mrko";
         List<List<String>> friends = List.of(
+                List.of("mrko", "jun"),
                 List.of("donut", "jun"),
                 List.of("donut", "mrko"),
-                List.of("donut", "andole"),
                 List.of("shakevan", "andole"),
+                List.of("jun", "andole"),
                 List.of("shakevan", "jun"),
                 List.of("shakevan", "mrko")
         );

@@ -2,9 +2,9 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        String alphabet = "abcdefghijklmnopqrstuvwxyz";
+        String alphabet = "abcdefghijklmnopqrstuvwxyz"; // alphabet
         StringBuffer sb = new StringBuffer(alphabet);
-        String reversedAlphabet = sb.reverse().toString();
+        String reversedAlphabet = sb.reverse().toString(); // 역순 alphabet
 
         String answer = "";
         int idx = -1;
