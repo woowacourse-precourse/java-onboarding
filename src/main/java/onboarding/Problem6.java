@@ -24,11 +24,13 @@ public class Problem6 {
 		Set<String> duplicatePatternSet = genDuplicatePatternSet(patternList);
 		List<String> duplicatePatternEmailList =
 			genDuplicatePatternEmailList(duplicatePatternSet,nickEmailMapper,nickNameList);
+
 		Collections.sort(duplicatePatternEmailList);
 
 		return duplicatePatternEmailList;
 	}
 
+	//pattern(길이가 2인 연속된 부분문자열)이 nickName이 포함되어 있는지 확인하고, 포함되어 있다면, map에서 조회 후, email을 반환.
 	private static List<String> genDuplicatePatternEmailList(Set<String> duplicatePatternSet,
 		Map<String,String> nickEmailMapper, List<String> nickNameList) {
 		List<String> duplicatePatternEmailList = new ArrayList<>();
@@ -44,6 +46,7 @@ public class Problem6 {
 			.collect(Collectors.toSet());
 	}
 
+	//pattern(길이가 2인 연속된 부분문자열)의 종류를 list로 반환해주는 메소드
 	private static List<String> genPatternList(List<String> nickNameList) {
 		List<String> patternList = new ArrayList<>();
 		for (String nickName : nickNameList) {
