@@ -37,5 +37,17 @@ public class Problem7 {
     }
 
     private static List<String> getFriendOfFriendOfUser(List<String> friendsOfUser, List<List<String>> friends, String user) {
+        List<String> friendsOfFriendOfUser = new ArrayList<>();
+        for (String friendOfUser : friendsOfUser) {
+            for (List<String> friend : friends) {
+                if (friend.get(0).equals(friendOfUser) && !friend.get(1).equals(user)) {
+                    friendsOfFriendOfUser.add(friend.get(1));
+                }
+                else if (friend.get(1).equals(friendOfUser) && !friend.get(0).equals(user)) {
+                    friendsOfFriendOfUser.add(friend.get(0));
+                }
+            }
+        }
+        return friendsOfFriendOfUser;
     }
 }
