@@ -1,5 +1,6 @@
 package onboarding;
 
+import onboarding.problem7.repository.FriendshipPointRepositoryImpl;
 import onboarding.problem7.repository.UserRepositoryImpl;
 
 import java.util.*;
@@ -8,6 +9,7 @@ import java.util.stream.Collectors;
 public class Problem7 {
 
     private static final UserRepositoryImpl userRepository = new UserRepositoryImpl();
+    private static final FriendshipPointRepositoryImpl friendshipRepository = new FriendshipPointRepositoryImpl();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         // 입력 폼을 받아 저장하는 map <사용자, 친구목록 리스트>
@@ -56,8 +58,11 @@ public class Problem7 {
             userRepository.save(userKey, new LinkedHashSet<>(Set.of(userFriend)));
         }
 
+
+
         // 입력한 사용자의 친구 목록 리스트
-        Set<String> findFriends = map.get(user);
+        Set<String> findFriends = userRepository.findFriends(user);
+//        Set<String> findFriends = map.get(user);
 
         // 사용자와 친구추천 포인트를 담을 friendPoints
         Map<String, Integer> friendPoints = new LinkedHashMap<>();
@@ -67,7 +72,10 @@ public class Problem7 {
 
         // 입력한 사용자의 친구 목록 리스트 순회
         for (String findFriend : findFriends) {
-            Set<String> knowRelationShip = map.get(findFriend);
+            Set<String> friendList = userRepository.findFriends(findFriend);
+
+            // 친구가 몇명인지 ???
+            Set<String> knowRelationShip = userRepository.findFriends(findFriend);
 
             // 사이즈 값 조회
             int knowRelationShipCount = knowRelationShip.size();
@@ -79,6 +87,7 @@ public class Problem7 {
 
             int resultRelationPoint = knowRelationShipCount * relationPoint;
 
+
             // 아는 친구들을 순회
             for (String knowUser : knowRelationShip) {
 
@@ -88,7 +97,7 @@ public class Problem7 {
                 }
 
                 // 그게 아니라면 사용자와 친구추천 포인트를 담을 friendPoints 에 저장한다.
-                friendPoints.put(knowUser, resultRelationPoint);
+                friendshipRepository.save(knowUser, resultRelationPoint);
             }
         }
 
@@ -97,19 +106,15 @@ public class Problem7 {
 
             // 사용자와 친구추천 포인트를 담을 friendPoints 에 merge 한다
             // 방문한 사람의 점수는 1점 추가 된다.
-            friendPoints.put(visitor, friendPoints.getOrDefault(visitor, 0) + 1);
+            friendshipRepository.save(visitor, friendshipRepository.findFriendshipPoint(visitor) + 1);
         }
 
         // 결과 값을 반환한다.
         // 내림차순으로 정렬 (포인트 값으로 비교) 같으면 닉네임으로 정렬
         // 자신의 친구를 포함하지 않고 아는 친구만 가져와야함
         // 결과 값을 5개 사이즈로 반환해야 한다.
-        return  friendPoints.entrySet().stream()
-                .sorted((o1, o2) -> o2.getValue().compareTo(o1.getValue()))
-                .map(Map.Entry::getKey)
-                .filter(s -> !map.get(user).contains(s))
-                .limit(5)
-                .collect(Collectors.toList());
+        List<String> result = friendshipRepository.friendshipOrderByPointAndLimitFive();
+        return result.stream().filter(s -> !userRepository.findFriends(user).contains(s)).collect(Collectors.toList());
     }
 
     public static void main(String[] args) {
