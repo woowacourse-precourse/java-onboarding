@@ -7,12 +7,7 @@ public class Problem4 {
     public static final int LOWER_SUM = 219;
 
     public static String solution(String word) {
-        String answer = word.chars()
-                .mapToObj(c -> (char)c)
-                .map(Problem4::toFrogChar)
-                .map(String::valueOf)
-                .collect(Collectors.joining());
-        return answer;
+        return toFrogWord(word);
     }
 
     public static char toFrogChar(char c) {
@@ -21,5 +16,13 @@ public class Problem4 {
         if(Character.isLowerCase(c))
             return (char)(LOWER_SUM-c);
         return c;
+    }
+
+    public static String toFrogWord(String word) {
+        return word.chars()
+                .mapToObj(c -> (char)c)
+                .map(Problem4::toFrogChar)
+                .map(String::valueOf)
+                .collect(Collectors.joining());
     }
 }
