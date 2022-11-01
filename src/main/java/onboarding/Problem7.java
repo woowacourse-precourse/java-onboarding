@@ -1,94 +1,34 @@
 package onboarding;
 
+import onboarding.problem7.FriendShip;
+import onboarding.problem7.RecommendScoreBoard;
+import onboarding.problem7.RecommendType;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class Problem7 {
-  static final int FRIEND_SCORE = 10;
-  static final int VISIT_SCORE = 1;
+  public static List<String> solution(String user, List<List<String>> friendLists, List<String> visitors) {
+    FriendShip friendShip = new FriendShip();
+    friendShip.fromFriendLists(friendLists);
 
-  public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-    List<String> friendsByUser = findFriendsByUser(user, friends);
-    List<String> friendOfFriend = findFriends(friendsByUser, friends);
-    List<String> userFriendOfFriend = exceptDuplicateNameAndUserOfFriends(user, friendOfFriend);
+    RecommendScoreBoard scoreBoard = new RecommendScoreBoard();
 
-    Map<String, Integer> record = new HashMap<>();
-    setFriendScore(record, userFriendOfFriend);
+    List<String> findFriends = friendShip.findFriends(user);
+    List<String> findFriendsOfFriends = filterUser(filterFriends(friendShip.findFriends(findFriends), findFriends), user);
+    scoreBoard.keepScore(findFriendsOfFriends, RecommendType.FRIEND);
 
-    List<String> visitor = exceptUserAndUserFrinedsOfVisitors(user, friendsByUser, visitors);
-    setVisitorScore(record, visitor);
+    List<String> filterVisitors = filterUser(filterFriends(visitors, findFriends), user);
+    scoreBoard.keepScore(filterVisitors, RecommendType.VISITOR);
 
-    List<Map.Entry<String, Integer>> list = new ArrayList<Map.Entry<String, Integer>>(record.entrySet());
-    Collections.sort(list, new ValueThenKeyComparator<String, Integer>());
-    return list.stream().map(s -> s.getKey()).collect(Collectors.toList());
+    return scoreBoard.getResult();
   }
 
-  private static List<String> exceptUserAndUserFrinedsOfVisitors(String user, List<String> friendsByUser, List<String> visitors) {
-    return visitors.stream()
-            .filter(name -> name != user)
-            .filter(name -> !friendsByUser.contains(name))
-            .collect(Collectors.toList());
+  private static List<String> filterUser(List<String> visitors, String user) {
+    return visitors.stream().filter(visitor -> !visitor.equals(user)).collect(Collectors.toList());
   }
 
-  public static List<String> exceptDuplicateNameAndUserOfFriends(String user, List<String> friends) {
-    return friends.stream().distinct().filter((name) -> name != user).collect(Collectors.toList());
-  }
-
-  private static List<String> findFriendsByUser(String user, List<List<String>> friends) {
-    List<String> userFriends = new ArrayList<>();
-    for (List<String> friendList : friends) {
-      if (!friendList.contains(user)) {
-        continue;
-      }
-      String friend = friendList.stream()
-              .filter(name -> name != user)
-              .findFirst()
-              .get();
-      userFriends.add(friend);
-    }
-    return userFriends;
-  }
-
-  public static List<String> findFriends(List<String> users, List<List<String>> friends) {
-    List<String> result = new ArrayList<>();
-    for (String user : users) {
-      List<String> userFriends = findFriendsByUser(user, friends);
-      result.addAll(userFriends);
-    }
-    return result;
-  }
-
-  public static void setFriendScore(Map<String, Integer> record, List<String> friends) {
-    for (String friend : friends) {
-      if (record.containsKey(friend)) {
-        record.put(friend, record.get(friend) + FRIEND_SCORE);
-        continue;
-      }
-      record.put(friend, FRIEND_SCORE);
-    }
-  }
-
-  private static void setVisitorScore(Map<String, Integer> record, List<String> visitors) {
-    for (String visitor : visitors) {
-      if (record.containsKey(visitor)) {
-        record.put(visitor, record.get(visitor) + VISIT_SCORE);
-        continue;
-      }
-      record.put(visitor, VISIT_SCORE);
-    }
-  }
-
-  static class ValueThenKeyComparator<K extends Comparable<? super K>,
-          V extends Comparable<? super V>>
-          implements Comparator<Map.Entry<K, V>> {
-
-    public int compare(Map.Entry<K, V> a, Map.Entry<K, V> b) {
-      int cmp1 = b.getValue().compareTo(a.getValue());
-      if (cmp1 != 0) {
-        return cmp1;
-      } else {
-        return a.getKey().compareTo(b.getKey());
-      }
-    }
+  private static List<String> filterFriends(List<String> users, List<String> friends) {
+    return users.stream().filter(user -> !friends.contains(user)).collect(Collectors.toList());
   }
 }
