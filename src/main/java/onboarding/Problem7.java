@@ -45,5 +45,9 @@ public class Problem7 {
         public void plusScoreTen(){
             this.score += 10;
         }
+
+        public void plusScoreOne() {
+            this.score += 1;
+        }
     }
 }
