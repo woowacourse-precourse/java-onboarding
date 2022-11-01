@@ -13,6 +13,7 @@ public class Problem4 {
 
     public static Character getCharacter(Character alphabet) {
         int gap = 25;
+
         for (int ascii = (int)'a'; ascii <= (int)'m'; ascii++) {
             if ((char)ascii == alphabet) {
                 return (char)((int)alphabet + gap);
@@ -46,7 +47,9 @@ public class Problem4 {
 
     public static String solution(String word) {
         String answer = "";
+
         answer = getWord(word);
+
         return answer;
     }
 }

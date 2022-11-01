@@ -57,8 +57,10 @@ public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
+
         answer = findEmails(forms);
         Collections.sort(answer);
+
         return answer;
     }
 }

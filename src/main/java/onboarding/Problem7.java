@@ -82,14 +82,11 @@ public class Problem7 {
         List<String> userFriend = new ArrayList<>();
 
         candidates = findCandidates(user, friends, visitors);
-        System.out.println("candidates" + candidates);
         userFriend = findUserFriends(user, friends);
-        System.out.println("userFriend" + userFriend);
         candidates = scoreVisitors(candidates, visitors);
-        System.out.println("scoreVisitors" + candidates);
         candidates = scoreFriendRelation(user, candidates, userFriend, friends);
-        System.out.println("scoreFriendRelation" + candidates);
         answer = sortCandidates(candidates);
+
         return answer;
     }
 }

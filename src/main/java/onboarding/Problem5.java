@@ -19,7 +19,9 @@ public class Problem5 {
 
     public static List<Integer> solution(int money) {
         List<Integer> answer = Collections.emptyList();
+
         answer = getCounts(money);
+
         return answer;
     }
 }
