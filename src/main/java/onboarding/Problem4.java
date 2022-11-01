@@ -9,12 +9,14 @@ public class Problem4 {
         }
         return answer.toString();
     }
-
+    
+    // 문자열이 적합한지 체크
     static boolean violation(String word) {
         int length = word.length();
         return length == 0 || length > 1000;
     }
-
+    
+    // 각 문자를 청개구리가 변환한 결과
     static char frog(char c) {
         char frogC = c;
         if (Character.isLowerCase(c)) {
