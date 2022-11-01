@@ -1,3 +1,12 @@
+## 구현 기능 목록
+1. 반환값 ret = List<String>
+2. 현재 친구인 목록 구하기 => Current Friend
+3. 2번째 인자 이용하여 자기 자신과 지금 친구인 사람 뺀 친구 목록 만들기 => Possible Friend
+4. 친구 공통 점수 계산
+5. visitor 점수 계산. 현재 친구가 아니고 3번 친구 목록에도 없으면 Possible Friend 에 추가
+6. Possible Friend 점수 내림차순, 알파벳 오름차순 정렬
+7. 최대 5개 ret 에 추가
+
 ## 🚀 기능 요구 사항
 
 레벨 2의 팀 프로젝트 미션으로 SNS(Social Networking Service)를 만들고자 하는 팀이 있다. 팀에 속한 크루 중 평소 알고리즘에 관심이 많은 미스터코는 친구 추천 알고리즘을 구현하고자 아래와 같은 규칙을 세웠다.
