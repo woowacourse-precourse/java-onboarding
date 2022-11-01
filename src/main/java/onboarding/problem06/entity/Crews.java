@@ -12,7 +12,6 @@ public class Crews {
     for (List<String> form : forms) {
       crewList.add(Crew.of(form));
     }
-    this.crewList = crewList;
   }
 
   public static Crews from(List<List<String>> forms) {

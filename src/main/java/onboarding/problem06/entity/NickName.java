@@ -21,6 +21,10 @@ public class NickName {
     return new NickName(name);
   }
 
+  public String currentName() {
+    return name;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {

@@ -1,15 +1,21 @@
 package onboarding.problem06.entity;
 
+import java.util.ArrayList;
 import java.util.List;
+import onboarding.problem06.infra.util.GenerateReduplicateList;
 
 public class Crew {
 
   private Email email;
   private NickName nickName;
 
+  private List<String> matchNameList;
+
   private Crew(String crewEmail, String crewNickName) {
     email.from(crewEmail);
     nickName.from(crewNickName);
+    matchNameList = new ArrayList<>();
+    matchNameList = GenerateReduplicateList.generate(nickName.currentName());
   }
 
   public static Crew of(List<String> crewForm) {

@@ -21,6 +21,10 @@ public class Email {
     return new Email(email);
   }
 
+  public String currentEmail() {
+    return email;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
