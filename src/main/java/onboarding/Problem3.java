@@ -8,7 +8,7 @@ public class Problem3 {
     static final int INPUT_MINIMUM_VALUE = 1;
     static final int INPUT_MAXIMUM_VALUE = 10000;
     static final String INPUT_TOO_SMALL_EXCEPTION = "입력한 값이 1보다 작습니다. ";
-    static final String INPUT_TOO_BIG_EXCEPTION = "입력한 값이 10000보다 큽니다. ";
+    static final String INPUT_TOO_BIG_EXCEPTION = "입력한 값이 10,000보다 큽니다. ";
 
     public static int solution(int number) {
         checkInput(number);
