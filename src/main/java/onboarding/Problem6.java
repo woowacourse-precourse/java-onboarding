@@ -3,41 +3,22 @@ package onboarding;
 import java.util.*;
 
 public class Problem6 {
-    //크루의 닉네임에 존재하는 모든 두글자 문자열의 개수를 저장하는 hashmap
-    private static HashMap<String, Integer> count = new HashMap<String, Integer>();
+    //크루의 닉네임이 중복되는지 판별해주는 함수
+    private static void is_duplicate(List<List<String>> forms, HashMap<String, Integer> index, int[] duplicated){
+        for(int i = 0; i<forms.size(); i++){
+            String nickname = forms.get(i).get(1);
+            for(int j = 0; j<nickname.length()-1; j++){
+                String key = nickname.substring(j, j+2);
 
-    //주어진 nickname을 이용해 hashmap을 업데이트하는 함수
-    private static void _update(String nickname){
-        for(int j = 0; j<nickname.length()-1; j++){
-            String key = nickname.substring(j, j+2);
-
-            if (count.containsKey(key)) count.put(key, count.get(key) + 1);
-            else count.put(key, 1);
-        }
-    }
-    
-    //주어진 nickname이 중복된 nickname인지 판별하는 함수
-    private static int _is_duplicate(String nickname){
-        for(String str: count.keySet()){
-            if (count.get(str) >= 2){
-                if (nickname.contains(str)) return 1;
+                if (index.containsKey(key)) {
+                    if (index.get(key) != i) {
+                        duplicated[index.get(key)] = 1;
+                        duplicated[i] = 1;
+                    }
+                    index.put(key, i);
+                }
+                else index.put(key, i);
             }
-        }
-        return 0;
-    }
-
-    //크루의 닉네임이 중복되는지 판별해 배열로 반환해주는 함수
-    private static void is_duplicate(List<List<String>> forms, int[] duplicated){
-        //닉네임이 중복되는지 판별하는 데 사용할 hashmap을 업데이트한다.
-        for(int i = 0; i<forms.size(); i++){
-            String nickname = forms.get(i).get(1);
-            _update(nickname);
-        }
-
-        //닉네임이 중복되는지 판별한다.
-        for(int i = 0; i<forms.size(); i++){
-            String nickname = forms.get(i).get(1);
-            duplicated[i] = _is_duplicate(nickname);
         }
     }
 
@@ -71,11 +52,15 @@ public class Problem6 {
     }
 
     public static List<String> solution(List<List<String>> forms) {
+        //두글자 문자열이 마지막으로 나타나는 인덱스를 저장하는 hashmap
+        HashMap<String, Integer> index = new HashMap<String, Integer>();
+
+        //크루별 닉네임 중복 여부를 나타내는 배열
         int[] duplicated = new int[forms.size()];
         List<String> ans = new ArrayList<String>();
 
         //크루의 닉네임이 중복되는지 판별한다.
-        is_duplicate(forms, duplicated);
+        is_duplicate(forms, index, duplicated);
 
         //중복되는 닉네임을 가지는 크루들의 이메일을 리스트에 담는다.
         ans = email_list(forms, duplicated);
