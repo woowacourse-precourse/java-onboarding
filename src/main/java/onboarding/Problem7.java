@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 public class Problem7 {
@@ -46,6 +47,19 @@ public class Problem7 {
         return editVisitor;
 
     }
+    // 점수
+    public static HashMap<String,Integer> calculateScore(HashMap<String,Integer> recommendFriends, List<String> people, int score){
+        for(String person: people){
+            if(!recommendFriends.containsKey(person)) {
+                recommendFriends.put(person,score);
+            } else{
+                int temp = recommendFriends.get(person) + score;
+                recommendFriends.replace(person, temp);
+            }
+        }
+        return recommendFriends;
+    }
+
 
 
 
