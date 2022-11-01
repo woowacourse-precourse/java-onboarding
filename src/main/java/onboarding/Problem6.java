@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = new ArrayList<>();
+        List<String> ans = new ArrayList<>();
         Hashtable<String, Integer> ht = new Hashtable<>();
         String s, subs;
         int len, count;
@@ -28,12 +28,20 @@ public class Problem6 {
                 subs = s.substring(i, i + 2);
                 count = ht.get(subs);
                 if(count >= 2) {
-                    answer.add(f.get(0));
+                    ans.add(f.get(0));
                     break;
                 }
             }
         }
-        Collections.sort(answer);
+        Collections.sort(ans);
+
+        List<String> answer = new ArrayList<>();
+        int asz = ans.size();
+        answer.add(ans.get(0));
+        for(int i = 1; i < asz; i++) {
+            if(ans.get(i).equals(ans.get(i-1))) continue;
+            else answer.add(ans.get(i));
+        }
         return answer;
     }
 }
