@@ -95,7 +95,7 @@ public class Problem7 {
             recommendedFriend.replace(user, value + point);
         }
         else{
-            recommendedFriend.put(user, 10);
+            recommendedFriend.put(user, point);
         }
     }
 
