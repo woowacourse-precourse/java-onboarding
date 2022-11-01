@@ -13,24 +13,24 @@ import java.util.stream.Collectors;
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
 
-        List<String> arr = new ArrayList<>(); // 중복된 아이디들 모아 놓은 곳
+        List<String> answer = new ArrayList<>(); // 중복된 아이디들 모아 놓은 곳
 
         for(int i = 0; i < forms.size(); i++){
             for(int j = i + 1; j < forms.size() - i; j++){
-                if(isCheck(forms.get(i).get(1), forms.get(j).get(1))){
-                    arr.add(forms.get(i).get(0));
-                    arr.add(forms.get(j).get(0));
-//                    System.out.println("arr : " + arr);
+                if(is_check(forms.get(i).get(1), forms.get(j).get(1))){
+                    answer.add(forms.get(i).get(0));
+                    answer.add(forms.get(j).get(0));
+//                    System.out.println("answer : " + answer);
                 }
             }
         }
-        return arr.stream()
+        return answer.stream()
                 .distinct()
                 .sorted()
                 .collect(Collectors.toList());
     }
 
-    private static boolean isCheck(String nickname_1, String nickname_2){
+    private static boolean is_check(String nickname_1, String nickname_2){
         List<String> check = new ArrayList<>();
         for(int i = 0; i < nickname_1.length()-1; i++){
             check.add(nickname_1.substring(i, i+2));

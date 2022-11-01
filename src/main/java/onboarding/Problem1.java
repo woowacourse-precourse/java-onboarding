@@ -30,8 +30,8 @@ class Problem1 {
             return except;
         }
 
-        int pobi_cal = Math.max(sum_or_mul(pobi.get(0)), sum_or_mul(pobi.get(1)));
-        int crong_cal = Math.max(sum_or_mul(crong.get(0)), sum_or_mul(crong.get(1)));
+        int pobi_cal = Math.max(get_calculate_result(pobi.get(0)), get_calculate_result(pobi.get(1)));
+        int crong_cal = Math.max(get_calculate_result(crong.get(0)), get_calculate_result(crong.get(1)));
 //        System.out.println("포비승 : " + pobi_cal);
 //        System.out.println("크롱승 : " + crong_cal);
         return print_number(pobi_cal,crong_cal);
@@ -40,7 +40,7 @@ class Problem1 {
     /*
     계산 해주는 함수
      */
-    private static int sum_or_mul(int page){
+    private static int get_calculate_result(int page){
         int cal;
         int sum = 0;
         int mul = 1;

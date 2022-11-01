@@ -14,18 +14,18 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
         // 유저 기준 사람들 목록과 점수 저장 해쉬맵
-        Map<String, Integer> score_board = get_people_name_and_point(friends);
+        Map<String, Integer> score_board = create_score_board(friends);
         score_board.remove(user);
 //        System.out.println("점수판 : " + score_board);
 
         // 내 친구
-        List<String> my_friend = get_my_friend(user, friends);
+        List<String> my_friend = create_my_friend(user, friends);
 //        System.out.println("내 친구들 : " + my_friend);
 
         //내 친구의 친구들 모음(유저 제외)
         Map<String, List<String>> my_friend_friend = new HashMap<>();
         for(String s : my_friend){
-            my_friend_friend.put(s, get_my_friend_relation(user, s, friends));
+            my_friend_friend.put(s, create_my_friend_relation(user, s, friends));
         }
 //        System.out.println("친구의 친구들 모음 : " + my_friend_friend);
 
@@ -36,12 +36,12 @@ public class Problem7 {
         }
 //        System.out.println("모르는 친구들 : " + get_dont_know_friend);
 
-        get_score_board(visitors, score_board, my_friend_friend, get_dont_know_friend);
+        get_score_board_result(visitors, score_board, my_friend_friend, get_dont_know_friend);
 
         return get_result(score_board, my_friend);
     }
 
-    private static void get_score_board(List<String> visitors, Map<String, Integer> score_board, Map<String, List<String>> my_friend_friend, List<String> get_dont_know_friend) {
+    private static void get_score_board_result(List<String> visitors, Map<String, Integer> score_board, Map<String, List<String>> my_friend_friend, List<String> get_dont_know_friend) {
         // 친구의 친구에게 점수를 +10 해줌
         my_friend_friend.values().stream().flatMap(Collection::stream).
                 filter(get_dont_know_friend::contains).forEach(s2 -> score_board.put(s2, score_board.get(s2) + 10));
@@ -85,7 +85,7 @@ public class Problem7 {
         return result;
     }
 
-    private static List<String> get_my_friend_relation(String user, String friend, List<List<String>> friends) {
+    private static List<String> create_my_friend_relation(String user, String friend, List<List<String>> friends) {
         List<String> friends_friend_list = new ArrayList<>();
 
         for(List<String> relation_list: friends){
@@ -99,7 +99,7 @@ public class Problem7 {
         return friends_friend_list;
     }
     //내 친구만 들어있는 배열 만들어주는 메서드
-    private static List<String> get_my_friend(String user, List<List<String>> friends) {
+    private static List<String> create_my_friend(String user, List<List<String>> friends) {
         List<String> my_friend = new ArrayList<>(30);
         //내 친구들 구함
         for(List<String> relation_list : friends){
@@ -112,7 +112,7 @@ public class Problem7 {
     }
 
     //사람들 이름과 점수판을 만들어주는 메서드
-    private static Map<String, Integer> get_people_name_and_point(List<List<String>> friends) {
+    private static Map<String, Integer> create_score_board(List<List<String>> friends) {
         //사람들 이름 모아놓을 곳
         List<String> people_name = new ArrayList<>();
 

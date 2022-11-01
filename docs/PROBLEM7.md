@@ -30,10 +30,10 @@
 friends에 있는 친구 관계를 이용해 해쉬맵 점수판, 여러 리스트와 메서드들을 만들어 줬습니다.
 
   + score_board = 점수판(해쉬맵)
-    + get_user_name_and_point()메서드를 이용
+    + create_score_board()메서드를 이용
 
   + my_friend = 내 친구들을 모아놓은 리스트
-    + get_my_friend()
+    + create_my_friend() 메서드를 이용
 
   + my_friend_friend = 내 친구의 친구들(유저 제외)을 모아놓은 리스트
     + friends에서 내 친구가 포함된(유저는 제외) 배열을 구해줌
