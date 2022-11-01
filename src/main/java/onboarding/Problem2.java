@@ -8,7 +8,10 @@ public class Problem2 {
 
         for (i = 0; i < cryptoLen; i++) // 전체 문자열을 돌면서 인접한 문자와 중복한 위치 찾기
         {
+            if (i + 1 < cryptoLen) // 두개씩 검사하므로 뒤의 문자가 cryptogram의 길이보다 작게
+            {
 
+            }
         }
         return duplicate.toString();
     }
