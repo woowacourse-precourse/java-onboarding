@@ -63,4 +63,20 @@ public class Problem7 {
         scoreMap.replace(user, 0);
     }
 
+    public static List<String> sortedList(Map<String, Integer> scoreMap) {
+        List<String> sortedFinalList = new ArrayList<>();
+        SortedSet<Map.Entry<String, Integer>> sortedMap = new TreeSet<>((e1, e2) -> {
+            int compare = e1.getValue().compareTo(e2.getValue());
+            if (compare == 0) return e1.getKey().compareTo(e2.getKey());
+
+            return -1*compare;
+        });
+
+        sortedMap.addAll(scoreMap.entrySet());
+        for (Map.Entry<String, Integer> entry : sortedMap) {
+            if (entry.getValue() == 0 || sortedFinalList.size() >= 5) break;
+            sortedFinalList.add(entry.getKey());
+        }
+        return sortedFinalList;
+    }
 }
