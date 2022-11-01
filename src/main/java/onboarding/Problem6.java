@@ -29,12 +29,16 @@ public class Problem6 {
 
     public static void checkTwoCharacterListDuplicate(List<String> twoCharacterList, String email){
         for(String twoCharacter : twoCharacterList){
-            if(TWO_CHARACTER_MAP.containsKey(twoCharacter)){
-                addEmailOfDuplicate(twoCharacter, email);
-                continue;
-            }
-            TWO_CHARACTER_MAP.put(twoCharacter, email);
+            checkMapContainsTwoCharacter(twoCharacter, email);
         }
+    }
+
+    public static void checkMapContainsTwoCharacter(String twoCharacter, String email){
+        if(TWO_CHARACTER_MAP.containsKey(twoCharacter)){
+            addEmailOfDuplicate(twoCharacter, email);
+            return;
+        }
+        TWO_CHARACTER_MAP.put(twoCharacter, email);
     }
 
     public static void addEmailOfDuplicate(String twoCharacter, String newEmail){
