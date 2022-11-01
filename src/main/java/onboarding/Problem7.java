@@ -96,6 +96,31 @@ public class Problem7 {
         }
     }
 
+//  5. ArrayList<String> sortingSet(HashMap<java.lang.String,Integer> recommScore)
+//     - 입력받은 hash map 의 key 를 value 기준 내림차순으로 5개까지 list로 반환한다.
+    private static ArrayList<String> sortingMap(HashMap<java.lang.String,Integer> recommScore){
+        ArrayList<java.lang.String> answer = new ArrayList<>();
+        List<Map.Entry<java.lang.String, Integer>> entryList = new LinkedList<>(recommScore.entrySet());
+        entryList.sort(new Comparator<Map.Entry<java.lang.String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<java.lang.String, Integer> o1, Map.Entry<java.lang.String, Integer> o2) {
+                if(o2.getValue() - o1.getValue() != 0){
+                    return o2.getValue() - o1.getValue();
+                }else{
+                    return o1.getKey().compareTo(o2.getKey());
+                }
+            }
+        });
+
+        int index = 0;
+        for(Map.Entry<java.lang.String, Integer> entry : entryList){
+            index++;
+            if(index > 5){
+                break;
+            }
+            answer.add(entry.getKey());
+        }
+
         return answer;
     }
 }
