@@ -13,6 +13,29 @@ public class Member {
         this.name = name;
     }
 
+    // this가 aMember의 친구인지 판별
+    public boolean isFriendOf(Member aMember) {
+        List<Member> aMemberFriends = aMember.getFriends();
+
+        for (Member friend : aMemberFriends)
+            if (friend.getName().equals(this.getName()))
+                return true;
+
+        return false;
+    }
+
+    // this가 aMember의 방문자인지 판별
+    public boolean isVisitorOf(Member aMember) {
+        List<Member> aMemberVisitors = aMember.getVisitors();
+
+        for (Member friend : aMemberVisitors)
+            if (friend.getName().equals(this.getName()))
+                return true;
+
+        return false;
+    }
+
+    /* Getter Setter */
     public String getName() {
         return name;
     }
