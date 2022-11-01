@@ -68,25 +68,38 @@ public class Problem7 {
         List<String> recommendedFriendList = new ArrayList<>();
         List<NameScore> nameScoreList = new ArrayList<>();
 
+        for (Map.Entry<String, Integer> entry : friendCandidateHashMap.entrySet()) {
+            NameScore nameScore = new NameScore(entry.getKey(), entry.getValue());
+            nameScoreList.add(nameScore);
+        }
+
+        Comparator<NameScore> reversedNameComparator = Comparator.comparing(NameScore::getName).reversed();
+        nameScoreList.sort(Comparator.comparing(NameScore::getScore).thenComparing(reversedNameComparator).reversed());
+
+        for (NameScore nameScore : nameScoreList) {
+            if (recommendedFriendList.size() < 6 && nameScore.getScore() != 0) {
+                recommendedFriendList.add(nameScore.getName());
+            }
+        }
 
         return recommendedFriendList;
     }
 
     private static class NameScore {
         private String name;
-        private String Score;
+        private Integer score;
 
-        public NameScore(String name, String score) {
+        public NameScore(String name, Integer score) {
             this.name = name;
-            Score = score;
+            this.score = score;
         }
 
         public String getName() {
             return name;
         }
 
-        public String getScore() {
-            return Score;
+        public Integer getScore() {
+            return score;
         }
     }
 }
