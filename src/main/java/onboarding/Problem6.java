@@ -31,13 +31,7 @@ public class Problem6 {
 			map.put(form.get(EMAIL), form.get(NICKNAME));
 		}
 
-		// 두 글자씩 쪼개어 splitNicknames 에 추가
-		for (String nickname : map.values()) {
-			nicknameArr = nickname.toCharArray();
-			for (int i = 0; i < nicknameArr.length - 1; i++) {
-				splitNicknames.add(Character.toString(nicknameArr[i]) + nicknameArr[i + 1]);
-			}
-		}
+		initSplitNicknames(map, splitNicknames);
 
 		// 두 글자씩 쪼갠 리스트에서 중복을 찾아 duplicateNicknames 에 추가
 		for (String splitNickname : splitNicknames) {
@@ -57,6 +51,21 @@ public class Problem6 {
 		}
 
 		return answer;
+	}
+
+	/**
+	 * 닉네임을 두 글자씩 쪼개어 splitNicknames 에 추가하는 메서드
+	 * @param map
+	 * @param splitNicknames
+	 */
+	private static void initSplitNicknames(Map<String, String> map, List<String> splitNicknames) {
+		char[] nicknameArr;
+		for (String nickname : map.values()) {
+			nicknameArr = nickname.toCharArray();
+			for (int i = 0; i < nicknameArr.length - 1; i++) {
+				splitNicknames.add(Character.toString(nicknameArr[i]) + nicknameArr[i + 1]);
+			}
+		}
 	}
 
 	/**
