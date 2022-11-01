@@ -60,6 +60,18 @@ public class Problem7 {
 
     }
 
-    
+    private static List<String> highestScoreOf5() {
+        List<String> keys = new ArrayList<>(recommendScore.keySet());
+        keys.sort((o1, o2) -> recommendScore.get(o2).compareTo(recommendScore.get(o1)));
+        List<String> result = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            if (recommendScore.get(keys.get(i)) == 0) {
+                break;
+            }
+            result.add(keys.get(i));
+        }
+
+        return result;
+    }
 
 }
