@@ -52,7 +52,7 @@ public class Problem2 {
             isPrevSame = (Integer)args.get(2);
             args = remove(stack, removed, isPrevSame);
         }
-        if (isPrevSame == 1) {
+        if ((Integer)args.get(2) == 1) {
             removed.pop();
         }
         return removed;
