@@ -39,8 +39,8 @@ class ApplicationTest {
     class Problem2Test {
         @Test
         void case1() {
-            String cryptogram = "browoanoommnaon";
-            String result = "brown";
+            String cryptogram = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dui nunc, accumsan vel metus ac, auctor convallis arcu. Phasellus sollicitudin accumsan leo et malesuada. Cras auctor, nulla tincidunt rutrum aliquam, nisl metus interdum felis, id viverra velit orci ac lorem. Etiam felis mi, tempus id tincidunt vel, mollis at nulla. Sed nisi ex, malesuada ut consequat convallis, commodo id velit. Pellentesque et urna eleifend purus dictum dignissim ac id massa. Phasellus ullamcorper lorem odio, sed tempor est vehicula sed. Phasellus sagittis ipsum diam, vel consequat odio varius sit amet. Suspendisse pharetra nulla sit amet eros ultrices ultrices. Nullam quam mauris, posuere sed magna eu, bibendum varius augue. Praesent hendrerit diam ante, ut tempor justo luctus ac. Phasellus cursus elementum neque, sed semper orci venenatis nec. Ut quis rhoncus diam, congue tempus mauris. Maecenas ac metus a nunc consectetur consequat. Duis eget est sit amet nisl elementum tempus a vitae nunc. Pellentesque euismod ligula ac nunc suscipit ultricies.";
+            String result = "-1";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
 
