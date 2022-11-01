@@ -5,16 +5,15 @@ public class Problem3 {
         int answer = 0;
 
         for (int i = 1; i <= number; i++) {
-            String s = Integer.toString(i);
-            char[] arr = s.toCharArray();
+            String strNumber = Integer.toString(i);
+            char[] arrNumber = strNumber.toCharArray();
 
-            for(int j=0;j<arr.length;j++) {
-                if(arr[j] == '3' || arr[j] == '6' || arr[j] == '9') {
+            for(int j=0;j<arrNumber.length;j++) {
+                if(arrNumber[j] == '3' || arrNumber[j] == '6' || arrNumber[j] == '9') {
                     answer++;
                 }
             }
         }
-
         return answer;
     }
 }

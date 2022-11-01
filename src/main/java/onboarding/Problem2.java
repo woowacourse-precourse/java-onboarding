@@ -4,29 +4,28 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
 
-
         for (;;) {
-            String[] arr = cryptogram.split("");
-            StringBuilder sb = new StringBuilder();
+            String[] arrCryptogram = cryptogram.split("");
+            StringBuilder decode = new StringBuilder();
 
-            for (int i = 0; i < arr.length; i++) {
-                if (i == 0) {
-                    if (!arr[i].equals(arr[i + 1])) {
-                        sb.append(arr[i]);
+            for (int i = 0; i < arrCryptogram.length; i++) {
+                if (i == 0) { //첫글자일때
+                    if (!arrCryptogram[i].equals(arrCryptogram[i + 1])) {
+                        decode.append(arrCryptogram[i]);
                     }
-                } else if (i == arr.length - 1) {
-                    if (!arr[i].equals(arr[i - 1])) {
-                        sb.append(arr[i]);
+                } else if (i == arrCryptogram.length - 1) { //마지막 글자일때
+                    if (!arrCryptogram[i].equals(arrCryptogram[i - 1])) {
+                        decode.append(arrCryptogram[i]);
                     }
-                } else {
-                    if (!arr[i].equals(arr[i - 1]) && !arr[i].equals(arr[i + 1])) {
-                        sb.append(arr[i]);
+                } else { //첫글자도 마지막글자도 아닐때
+                    if (!arrCryptogram[i].equals(arrCryptogram[i - 1]) && !arrCryptogram[i].equals(arrCryptogram[i + 1])) {
+                        decode.append(arrCryptogram[i]);
                     }
                 }
             }
-            cryptogram = sb.toString();
+            cryptogram = decode.toString();
 
-            if (arr.length == cryptogram.length() || cryptogram.length()==0) {
+            if (arrCryptogram.length == cryptogram.length() || cryptogram.length()==0) {
                 break;
             }
         }
