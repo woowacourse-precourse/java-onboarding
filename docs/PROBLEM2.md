@@ -24,6 +24,22 @@
 
 ### 기능목록
 
-- 기능1. void decode(String cryptogram) : 암호해독을 한다.
-- 기능2. void findDuplicated(String cryptogram) : 암호에서 중복되는 글자의 범위를 모두 찾고 리스트에 저장한다.
-- 기능3. void deleteDuplicated(String cryptogram) : 리스트에 있는 범위의 글자를 모두 제거한 후 새로운 String객체에 저장한다.
+> **<기능 1><br>
+암호해독을 한다.**<br>
+*private static String decrypt(String cryptogram)* <br>
+
+> **<기능 2><br>
+암호해독이 모두 끝났는지 확인한다.**<br>
+*private static boolean isDone(List<String> duplicatedLetters)*
+
+> **<기능 3><br>
+중복문자열을 찾아낸다.**<br>
+*private static List<String> findLetters(String cryptogram)*
+> - 기능 3-1<br>
+    찾아낸 중복문자의 길이만큼 문자열을 만들어낸다.<br>
+    *private static String getLetter(int length, char charAt)*
+
+> **<기능 4><br>
+중복문자열 리스트가 가진 문자열을 암호문에서 제거한다.**<br>
+*private static String removeDuplicatedLetters(String cryptogram,
+List<String> duplicatedLetters)*
