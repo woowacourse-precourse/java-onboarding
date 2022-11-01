@@ -15,4 +15,13 @@ public class Problem7 {
             	friendList.add(friend.get(0));
             }
         }
+        List <String> friendPoint = new LinkedList<>();
+        for(List <String> list : friends){
+            if(friendList.contains(list.get(0)) && !list.get(1).equals(user)) { 
+            	friendPoint.add(list.get(1));
+            }else if(friendList.contains(list.get(1)) && !list.get(0).equals(user)) {
+            	friendPoint.add(list.get(0));
+            }
+        }
+    }
 }
