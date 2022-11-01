@@ -50,4 +50,7 @@ public class Problem2 {
     public static Boolean checkModify(boolean checkPre, boolean checkCurrent) {
         return checkCurrent || checkPre != checkCurrent;
     }
+    public static Boolean checkDuplicate(char pre, char current) {
+        return pre == current;
+    }
 }
