@@ -43,9 +43,10 @@ public class Problem7 {
             if (myFriends.contains(friendName) && !name.equals(user)) {
                 if (ranking.containsKey(name)) {
                     ranking.put(name, ranking.get(name) + FRIEND_SCORE);
-                } else if (!ranking.containsKey(name)) {
-                    ranking.put(name, FRIEND_SCORE);
+                    return;
                 }
+                ranking.put(name, FRIEND_SCORE);
+
             }
         });
         return ranking;
@@ -54,13 +55,13 @@ public class Problem7 {
     // 방문자 점수 추가 기능
     private static HashMap<String, Integer> getScoreByVisit(List<String> visitors, HashMap<String, Integer> ranking, List<String> myFriends) {
         visitors.forEach(name -> {
-            if (ranking.keySet().contains(name)) {
-                ranking.put(name, ranking.get(name) + VISIT_SCORE);
+            if (ranking.containsKey(name)) {
+                int currentScore = ranking.get(name);
+                ranking.put(name, currentScore + VISIT_SCORE);
+                return;
             }
-            else if (!ranking.keySet().contains(name)) {
-                if (!myFriends.contains(name)) {
-                    ranking.put(name, VISIT_SCORE);
-                }
+            if (!myFriends.contains(name)) {
+                ranking.put(name, VISIT_SCORE);
             }
         });
         return ranking;
