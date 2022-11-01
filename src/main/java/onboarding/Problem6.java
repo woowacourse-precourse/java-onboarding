@@ -21,7 +21,7 @@ import java.util.*;
  * - result는 이메일에 해당하는 부분의 문자열을 오름차순으로 정렬하고 중복은 제거한다.
  *
  * @author scyllacore
- * @version 1.1 2022/10/31
+ * @version 1.1 2022/11/01
  */
 
 public class Problem6 {
@@ -39,11 +39,11 @@ public class Problem6 {
     /**
      * 1-1. forms의  name을 key, email은 value로 저장할 HashMap.
      */
-    static Map<String, String> formMap = new HashMap<>();
+    private static Map<String, String> formMap = new HashMap<>();
     /**
      * 2-1-2. name을 가지고 만들어진 문자열들의 개수를 누적해줄 HashMap.
      */
-    static Map<String, Integer> nameCountMap = new HashMap<>();
+    private static Map<String, Integer> nameCountMap = new HashMap<>();
 
 
     /**
@@ -51,7 +51,7 @@ public class Problem6 {
      *
      * @param forms user들의 name,email list.
      */
-    static void setFormMap(List<List<String>> forms) {
+    private static void setFormMap(List<List<String>> forms) {
         for (int i = 0; i < forms.size(); i++) {
             String name = forms.get(i).get(1);
             String email = forms.get(i).get(0);
@@ -61,11 +61,11 @@ public class Problem6 {
 
     /**
      * 2-1. 하나의 name을 가지고 만들 수 있는 모든 두 글자 문자열의 경우를 중복없이 따져 저장해두고,
-     *      각 문자열에 대한 개수를 1씩 누적함.
+     * 각 문자열에 대한 개수를 1씩 누적함.
      *
      * @param name 한 user의 name
      */
-    static void createNameOfCasesAndCount(String name) {
+    private static void createNameOfCasesAndCount(String name) {
 
         /* 2-1-1. 하나의 name을 가지고 만들 수 있는 두 글자 문자열들을 Set을 사용하여 중복없이 모두 저장함. */
         Set<String> nameSet = new HashSet<>();
@@ -96,7 +96,7 @@ public class Problem6 {
      *
      * @param forms user들의 name,email list.
      */
-    static void setNameCountMap(List<List<String>> forms) {
+    private static void setNameCountMap(List<List<String>> forms) {
         for (int i = 0; i < forms.size(); i++) {
             String name = forms.get(i).get(1);
             createNameOfCasesAndCount(name);
@@ -110,7 +110,7 @@ public class Problem6 {
      *
      * @return 겹치는 문자열 list.
      */
-    static List<String> getNameList() {
+    private static List<String> getNameList() {
 
         List<String> nameList = new ArrayList<>();
 
@@ -125,12 +125,12 @@ public class Problem6 {
 
     /**
      * 4. getNameList을 통해 받은 겹치는 문자열 list를 가지고
-     *    혼란을 일으킬 원본 name(key)을 찾아 해당되는 email(value)을 모두 저장.
+     * 혼란을 일으킬 원본 name(key)을 찾아 해당되는 email(value)을 모두 저장.
      *
      * @param nameList name이 겹치는 문자열 list
      * @return 겹치는 문자열이 포함된 모든 name을 통해 구한 email list.
      */
-    static List<String> getEmailList(List<String> nameList) {
+    private static List<String> getEmailList(List<String> nameList) {
 
 
         List<String> emailList = new ArrayList<>();
@@ -153,7 +153,7 @@ public class Problem6 {
      * @param emailList getEmailList에서 받아온 email list.
      * @return 혼란을 일으킬 name의 email list.
      */
-    static List<String> sortAndDeduplication(List<String> emailList) {
+    private static List<String> sortAndDeduplication(List<String> emailList) {
 
         Set<String> set = new HashSet<>(emailList);
         List<String> newEmailList = new ArrayList<>(set);

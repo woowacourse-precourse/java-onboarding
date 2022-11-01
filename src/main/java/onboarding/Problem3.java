@@ -5,17 +5,17 @@ import java.util.List;
 
 /**
  * 369게임 박수 횟수 세기 문제
- *
+ * <p>
  * 문제 설명 :
- *  배달이가 좋아하는 369게임을 하고자 한다.
- *  놀이법은 1부터 숫자를 하나씩 대면서, 3, 6, 9가 들어가는 숫자는 숫자를 말하는 대신 3, 6, 9의 개수만큼 손뼉을 쳐야 한다.
- *  숫자 number가 매개변수로 주어질 때, 1부터 number까지 손뼉을 몇 번 쳐야 하는지 횟수를 return 하도록 solution 메서드를 완성하라.
- *
+ * 배달이가 좋아하는 369게임을 하고자 한다.
+ * 놀이법은 1부터 숫자를 하나씩 대면서, 3, 6, 9가 들어가는 숫자는 숫자를 말하는 대신 3, 6, 9의 개수만큼 손뼉을 쳐야 한다.
+ * 숫자 number가 매개변수로 주어질 때, 1부터 number까지 손뼉을 몇 번 쳐야 하는지 횟수를 return 하도록 solution 메서드를 완성하라.
+ * <p>
  * 제한사항
- *  - number는 1 이상 10,000 이하인 자연수이다.
+ * - number는 1 이상 10,000 이하인 자연수이다.
  *
- * @author      scyllacore
- * @version     1.1 2022/10/31
+ * @author scyllacore
+ * @version 1.1 2022/10/31
  */
 
 public class Problem3 {
@@ -33,7 +33,7 @@ public class Problem3 {
      * @param number 나열할 숫자의 범위 지정
      * @return 1~number까지 나열한 숫자 list
      */
-    static List<Integer> createNumberList(int number) {
+    private static List<Integer> createNumberList(int number) {
 
         List<Integer> numberList = new ArrayList<>();
 
@@ -50,7 +50,7 @@ public class Problem3 {
      * @param number 이 수를 가지고 3의 배수를 찾아냄.
      * @return 해당 수의 3의 배수 총 개수.
      */
-    static int getMultipleOfThreeCount(int number) {
+    private static int getMultipleOfThreeCount(int number) {
 
         int remainedNumber = number;
         int count = 0;
@@ -71,12 +71,12 @@ public class Problem3 {
     }
 
     /**
-     * 3. getMultipleOfThreeCount을 통해 받아온 각 숫자에 대한 3의 배수 개수를 누적. 
-     * 
+     * 3. getMultipleOfThreeCount을 통해 받아온 각 숫자에 대한 3의 배수 개수를 누적.
+     *
      * @param number 나열할 숫자의 범위 지정.
      * @return 범위 안에서 누적된 3의 배수의 개수.
      */
-    static int getCountSummation(int number) {
+    private static int getCountSummation(int number) {
         int totalCount = 0;
 
         List<Integer> numberList = createNumberList(number);

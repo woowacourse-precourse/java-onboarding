@@ -42,11 +42,11 @@ public class Problem7 {
     /**
      * 1-1. 친구 관계 그래프 정보를 저장할 hashMap
      */
-    static Map<String, Set<String>> friendsGraph = new HashMap<>();
+    private static Map<String, Set<String>> friendsGraph = new HashMap<>();
     /**
      * 2-1. 각 친구의 score를 저장할 hashMap
      */
-    static Map<String, Integer> friendsScore = new HashMap<>();
+    private static Map<String, Integer> friendsScore = new HashMap<>();
 
     /**
      * 3-1. 각 user name과 score정보를 저장할 객체
@@ -76,7 +76,7 @@ public class Problem7 {
      * @param friends 친구 관계 list.
      * @param user    친구 추천을 받을 사용자.
      */
-    static void setFriendsGraph(List<List<String>> friends, String user) {
+    private static void setFriendsGraph(List<List<String>> friends, String user) {
 
         /* 1-2. 모든 친구 관계를 따져 그래프를 만듬. */
         for (int i = 0; i < friends.size(); i++) {
@@ -114,7 +114,7 @@ public class Problem7 {
      * @param visitors 친구 추천을 받을 사용자의 sns에 방문한 다른 user list.
      * @param user     친구 추천을 받을 사용자.
      */
-    static void setFriendsScore(List<String> visitors, String user) {
+    private static void setFriendsScore(List<String> visitors, String user) {
         
         /* 2-2. 방문 친구(visitors) 중 사용자와 친구 관계인 다른 user가 있을 수 있기 때문에
                 score 산출 후 사용자와 친구 관계인 user를 삭제할 때 쓸 임시 Set. */
@@ -154,7 +154,7 @@ public class Problem7 {
      *
      * @return 최종적으로 추천할 친구 목록.
      */
-    static List<String> getFriendRecommendation() {
+    private static List<String> getFriendRecommendation() {
 
         /* 3-2. 추천 정보 객체 저장. */
         List<UserInformation> friendRecommendation = new ArrayList<>();
