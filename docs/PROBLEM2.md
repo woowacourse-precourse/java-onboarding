@@ -21,3 +21,13 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+## 🚀 기능 목록
+
+- changeLetter
+  - [X] 문자열을 리스트로 형태로 변환
+  - [X] 문자열에서 앞뒤 문자를 비교하는 코드 작성
+  - [X] 문자열에서 연속해서 같은 문자가 없는 경우 종류한느 코드 작성
+  
+- solution
+  - [X] changeLetter의 결과물에 연속된 동일한 문자가 없는지 확인
