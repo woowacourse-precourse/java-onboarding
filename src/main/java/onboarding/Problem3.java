@@ -24,5 +24,17 @@ public class Problem3 {
         }
         return false;
     }
+
+    //2. 전체 자리의 정수의 3, 6, 9개수를 세는 기능(getClapCount)
+    private static int getClapCount(int n){
+        int clap = 0;
+        while(n > 0){
+            if(is369(n%10)){
+                clap += 1;
+            }
+            n/=10;
+        }
+        return clap;
+    }
 }
 
