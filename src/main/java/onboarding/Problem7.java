@@ -116,6 +116,17 @@ class User {
     void addVisitPoint(){
         setRecommendPoint(visitors, UserManager.VISIT_POINT);
     }
+
+    /** 함께 아는 친구가 있는 유저의 추천 포인트 추가
+     * @param friendsMap 모든 유저들의 친구 관계가 저장된 UserManager 클래스의 friendMap
+     * */
+    void addFriendPoint(Map<String, List<String>> friendsMap){
+
+        for(String friend : this.friends){
+            List<String> candidates = friendsMap.get(friend);
+            setRecommendPoint(candidates, UserManager.FRIEND_POINT);
+        }
+    }
 }
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
