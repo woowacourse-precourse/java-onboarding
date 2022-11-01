@@ -34,4 +34,25 @@ class Problem1 {
 
         return separateList;
     }
+
+    public static int addNumber(int left, int right) {
+        List<Integer> leftNumList = separateNumber(left);
+        List<Integer> rightNumList = separateNumber(right);
+
+        int resultLeft = 0, resultRight = 0;
+
+        for (int i = 0; i < leftNumList.size(); i++) {
+            resultLeft += leftNumList.get(i);
+        }
+
+        for (int i = 0; i < rightNumList.size(); i++) {
+            resultRight += rightNumList.get(i);
+        }
+
+        if (resultLeft > resultRight) {
+            return resultLeft;
+        } else {
+            return resultRight;
+        }
+    }
 }
