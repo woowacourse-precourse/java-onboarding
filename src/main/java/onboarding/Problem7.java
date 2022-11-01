@@ -5,14 +5,13 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     static final HashMap<String, ArrayList<String>> friendRelationship = new HashMap<>();
     static final HashMap<String, Integer> recommendationList = new HashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = new ArrayList<>();
-
         if (!checkValidInput(user, friends, visitors)) {
             return Collections.emptyList();
         }
@@ -22,7 +21,13 @@ public class Problem7 {
         ArrayList<String> userFriends = friendRelationship.get(user);
         calculateRecommendScore(visitors, userFriends);
 
-        return answer;
+        return recommendationList.keySet()
+                .stream()
+                .filter(otherUser -> recommendationList.get(otherUser) != 0)
+                .filter(otherUser -> !userFriends.contains(otherUser) && !user.equals(otherUser))
+                .sorted(Problem7::recommendPriority)
+                .limit(5)
+                .collect(Collectors.toList());
     }
 
     private static void calculateRecommendScore(List<String> visitors, ArrayList<String> userFriends) {
@@ -33,8 +38,9 @@ public class Problem7 {
                         friendOfFriend,
                         recommendationList.getOrDefault(friendOfFriend, 0) + 10));
 
-        visitors.forEach(visitor ->
-                recommendationList.put(visitor, recommendationList.getOrDefault(visitor, 0) + 1));
+        visitors.forEach(visitor -> recommendationList.put(
+                visitor,
+                recommendationList.getOrDefault(visitor, 0) + 1));
     }
 
     private static void connectFriends(List<List<String>> friends) {
@@ -66,5 +72,16 @@ public class Problem7 {
         }
 
         return true;
+    }
+
+    private static int recommendPriority(String userA, String userB) {
+        int recommendScoreA = recommendationList.get(userA);
+        int recommendScoreB = recommendationList.get(userB);
+
+        if (recommendScoreA == recommendScoreB) {
+            return userA.compareTo(userB);
+        }
+
+        return recommendScoreB - recommendScoreA;
     }
 }
