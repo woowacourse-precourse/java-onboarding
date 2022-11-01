@@ -8,6 +8,14 @@ iii) solution -> ii) 을 이용하여 정답 반환
 package onboarding;
 
 public class Problem4 {
+
+    char getReversedAlphabet(char alpha_bet){
+        int temp_ascii = (int)alpha_bet;
+        temp_ascii = 90 - (temp_ascii-65);
+        return (char)temp_ascii;
+    }
+
+
     public static String solution(String word) {
         String answer = "";
         return answer;
