@@ -1,6 +1,8 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     //  Static-Variable
@@ -12,8 +14,13 @@ public class Problem6 {
     private static final String ID_PATTERN = "[ㄱ-ㅎㅏ-ㅣ가-힣]";
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+        //  Variable
+        List<String> answer = new ArrayList<>();
+        //  For-Loop : 입력된 회원 가입 정보의 유효성을 검사하는 반복문
+        for(List<String> target : forms){
+            if(verifyMemberList(target)) answer.add(target.get(0));
+        }
+        return answer.stream().sorted().collect(Collectors.toList());
     }
 
     //  입력된 회원 가입 정보 유효성 검사 - 이메일, 회원이름
