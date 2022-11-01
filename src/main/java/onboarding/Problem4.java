@@ -17,11 +17,11 @@ public class Problem4 {
             if(curr >= 'a' && curr <= 'z'){
                 curr = (char)(smallConstant - curr);
             }
-            /*2.변환한 암호를 결과 String에 이어붙인다.*/
+            /*2.변환한 암호를 결과 문자열에 이어붙인다.*/
             sb.append(curr);
         }
 
-        /*3.입력 문자열을 끝까지 순회했다면 결과 String을 반환한다.*/
+        /*3.입력 문자열을 끝까지 순회했다면 결과 문자열을 반환한다.*/
         answer = sb.toString();
 
         return answer;
