@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        Recommendation rec = new Recommendation();
+        Recommendation rec = new Recommendation(user, friends, visitors);
         List<String> answer = rec.returnResult(user, friends, visitors);
         return answer;
     }
@@ -12,6 +12,17 @@ public class Problem7 {
 
 class Recommendation {
     Map<String, Integer> user_score = new HashMap<>();
+    final String user;
+    final List<List<String>> friends;
+    final List<String> visitors;
+    final Map<String, List<String>> friends_map;
+
+    Recommendation(String user, List<List<String>> friends, List<String> visitors) {
+        this.user = user;
+        this.friends = friends;
+        this.visitors = visitors;
+        this.friends_map = makeFriendsMap(friends);
+    }
 
     List<String> returnResult(String user, List<List<String>> friends, List<String> visitors) {
         List<String> result = new ArrayList<>();
@@ -59,21 +70,6 @@ class Recommendation {
         }
     }
 
-    private Map<String, List<String>> makeFriendsMap(List<List<String>> friends) {
-        Map<String, List<String>> friends_map = new HashMap<>();
-        for (List<String> friend_list : friends) {
-            for (int i = 0; i <= 1; i++) {
-                String friend1 = friend_list.get(i);
-                String friend2 = friend_list.get(1 - i);
-                List<String> array = new ArrayList<>();
-                List<String> friend1_friend_list = friends_map.getOrDefault(friend1, array);
-                friend1_friend_list.add(friend2);
-                friends_map.put(friend1, friend1_friend_list);
-            }
-        }
-        return friends_map;
-    }
-
     private void setFriendScore(String user, List<List<String>> friends) {
         Map<String, List<String>> friends_map = makeFriendsMap(friends);
         // user key에 대한 친구 목록이 없는 경우 빈 array 반환
@@ -88,5 +84,20 @@ class Recommendation {
                 user_score.put(cross_friend, user_score.getOrDefault(cross_friend, 0) + 10);
             }
         }
+    }
+
+    private Map<String, List<String>> makeFriendsMap(List<List<String>> friends) {
+        Map<String, List<String>> friends_map = new HashMap<>();
+        for (List<String> friend_list : friends) {
+            for (int i = 0; i <= 1; i++) {
+                String friend1 = friend_list.get(i);
+                String friend2 = friend_list.get(1 - i);
+                List<String> array = new ArrayList<>();
+                List<String> friend1_friend_list = friends_map.getOrDefault(friend1, array);
+                friend1_friend_list.add(friend2);
+                friends_map.put(friend1, friend1_friend_list);
+            }
+        }
+        return friends_map;
     }
 }
