@@ -14,7 +14,7 @@ public class Problem6 {
         map = new HashMap<String,Integer>();
         visit = new boolean[10001];
         listCheck(forms);
-
+        List<String> answer=overlapResult(forms);
         return answer;
     }
 
@@ -27,9 +27,9 @@ public class Problem6 {
     }
 
     public static void overlapCheck(String nickname,int index){
-        for(int i=0;i<nickname.length()-2;i++){
+        for(int i=0;i<nickname.length()-1;i++){
 
-            if(map.containsKey(nickname.substring(i,i+2))){
+            if(map.containsKey(nickname.substring(i,i+2))==false){
                 map.put(nickname.substring(i,i+2),index);
             }
             else{
@@ -40,5 +40,16 @@ public class Problem6 {
                 else continue;
             }
         }
+    }
+
+    public static List<String> overlapResult(List<List<String>> forms){
+
+        List<String> result = new ArrayList<>();
+
+        for(int i=0;i<forms.size();i++){
+            if(visit[i]==true) result.add(forms.get(i).get(0));
+        }
+
+        return result;
     }
 }
