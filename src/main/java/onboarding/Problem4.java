@@ -31,8 +31,10 @@ public class Problem4 {
         		res += c;
         	} else if(Character.isUpperCase(c)) {
         		res += (char)('Z' - getAlphabetIdx(c));
-        	} else {
+        	} else if(Character.isLowerCase(c)){
         		res += (char)('z' - getAlphabetIdx(c));
+        	} else {
+        		res += c;
         	}
         }
     	
