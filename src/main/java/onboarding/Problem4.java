@@ -17,10 +17,11 @@ public class Problem4 {
     public static String convertOriginalWord(String originalWord){
         String convertedWord="";
         for(int wordIndex=0;wordIndex<originalWord.length();wordIndex++){
-            if(originalWord.charAt(wordIndex)==' ') { // 공백일 경우
+            char digitInWordByIndex=originalWord.charAt(wordIndex);
+            if(digitInWordByIndex==' ') { // 공백일 경우
                 convertedWord+=" ";
             } else{
-                convertedWord+=convertAlphabet(originalWord.charAt(wordIndex));
+                convertedWord+=convertAlphabet(digitInWordByIndex);
             }
         }
         return convertedWord;
