@@ -52,8 +52,19 @@ public class Problem7 {
         visited(visitors, list, map);
         sorted(map);
 
-        for (String key : map.keySet()) {
-            answer.add(key);
+        int num = map.size();
+        if(num>5){
+            int cnt = 0;
+            while(cnt<=5){
+                for(String key : map.keySet()) {
+                    answer.add(key);
+                    cnt++;
+                }
+            }
+        }else{
+            for (String key : map.keySet()) {
+                answer.add(key);
+            }
         }
         return answer;
     }
