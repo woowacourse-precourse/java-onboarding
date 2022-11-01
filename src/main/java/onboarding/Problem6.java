@@ -32,6 +32,11 @@ public class Problem6 {
     }
 
     public static boolean saveIfValidate(String userEmail, String pattern, Set<String> emailSet, Map<String, String> subNicknameMap){
-        return true;
+        if(subNicknameMap.containsKey(pattern)){
+            emailSet.add(subNicknameMap.get(pattern));
+            emailSet.add(userEmail);
+            return true;
+        }
+        return false;
     }
 }
