@@ -14,6 +14,9 @@ public class Problem2 {
 
         for (int i = 1; i < cryptogram.length(); i++) {
             if (!stack.isEmpty() && stack.peek() == cryptogram.charAt(i)) {
+                if (i + 1 != cryptogram.length() && cryptogram.charAt(i + 1) == stack.peek()) {
+                    continue;
+                }
                 stack.pop();
                 continue;
             }
