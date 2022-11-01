@@ -23,4 +23,10 @@ public class Problem4 {
 
         return (char) ('z' - i);
     }
+
+    private static char convertUpperCase(char c) {
+        int i = c - 'A';
+
+        return (char) ('Z' - i);
+    }
 }
