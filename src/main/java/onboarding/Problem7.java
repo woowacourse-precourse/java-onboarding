@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.*;
 import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     //  Static-Variable
@@ -13,8 +14,21 @@ public class Problem7 {
     private static final Map<String, Integer> recommend = new LinkedHashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        //  VALID
+        verifyUser(user);
+        verifyFriends(friends);
+        verifyVisitors(visitors);
+        //  Get-Point : Visit , Friends
+        increasePoint(visitors,POINT_VISIT);
+        increasePointFriends(user, friends);
+        //  Delete : User, FriendWithUser
+        deleteUserAndFriend(user, friends);
+
+        return recommend.entrySet().stream()
+                   .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                   .limit(5)
+                   .map(Map.Entry::getKey)
+                   .collect(Collectors.toList());
     }
 
     //  추천 목록에서 본인과 이미 친구인 유저들을 제외하는 메소드
