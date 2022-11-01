@@ -16,7 +16,15 @@ public class Problem6 {
                 }
             }
         }
-        
+        for (List<String> form : forms) {
+            for (String word : myTwoNames(form.get(1))) {
+                if (twoNameList.get(word) > 1) {
+                    answer.add(form.get(0));
+                    break;
+                }
+            }
+        }
+
 
         return answer;
     }
