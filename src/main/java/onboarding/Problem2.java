@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.regex.Pattern;
 
 /**
  * 1. 정규식 초기화
@@ -13,6 +14,9 @@ public class Problem2 {
 
         // 1. 정규식 초기화
         String regex = "^\\w*(\\w)\\1\\w*$";
+
+        // 2. 정규식으로 pattern객체 생성
+        Pattern pattern = Pattern.compile(regex);
 
         return answer;
     }
