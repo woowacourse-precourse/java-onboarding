@@ -12,7 +12,7 @@ public class Problem2 {
         3. 2번 케이스 발생 시 index 'i', 'i+1' 문자 삭제 및 처음부터 재 탐색
         4. 2번 케이스 미 발생 시 탐색 종료, 문자 출력
         */
-        String answer = "answer";
+        String answer = "";
 
         //문자 별 배열에 저장
         ArrayList<Character> charList = new ArrayList<Character>();
@@ -21,17 +21,29 @@ public class Problem2 {
             charList.add(temp);
         }
 
-        for (int j=0; j<charList.size()-1; j++) {
-            Character currentChar = charList.get(j);
-            Character nextChar = charList.get(j+1);
-            // index 'i' == 'i+1'인 경우
-            if(currentChar == nextChar) {
-                charList.remove(j);
-                charList.remove(j+1);
+        //재 탐색을 위한 bool 변수
+        boolean isContinued = true;
+        while(isContinued) {
+            int currentSize = charList.size();
+            for (int j=0; j<charList.size()-1; j++) {
+                Character currentChar = charList.get(j);
+                Character nextChar = charList.get(j+1);
+                // index 'i' == 'i+1'인 경우
+                if(currentChar == nextChar) {
+                    charList.remove(j+1);
+                    charList.remove(j);
+                }
+            }
+
+            //삭제가 발생하지 않는 경우 while 종료
+            if(currentSize == charList.size()) {
+                isContinued = false;
             }
         }
 
-        System.out.print(charList);
+        for(char item : charList) {
+            answer += item;
+        }
 
         return answer;
     }
