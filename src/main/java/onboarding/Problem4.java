@@ -23,7 +23,10 @@ public class Problem4 {
     }
 
     private static char convertUpperCase(char character) {
-        return 0;
+        int gap = character - 'A';
+        int newChar = 'Z' - gap;
+        System.out.println(character + " -> " + (char)newChar);
+        return (char) newChar;
     }
 
     private static char convertLowerCase(char character) {
