@@ -7,7 +7,7 @@ public class Problem2 {
         return answer;
     }
 
-    public static String deduplicate(String s) {
+    private static String deduplicate(String s) {
         return s.replaceAll("(([a-zA-Z\\d])\\2+)", "");
     }
 
