@@ -1,26 +1,21 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 import static java.util.Collections.sort;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends_form, List<String> visitors) {
 
-        List<String> answer = Collections.emptyList();
         List<String> friends_list = new ArrayList<>(); //get list of Already_freinds
         List<List<String>> friends = new ArrayList<>(friends_form); // change ClassType java.util.ArrayList와 java.util.arrays.ArrayList로 다르게 구현되어 있다.
         HashMap<String,Integer> friends_score = new LinkedHashMap<>(); // 순서를 보장
 
         findAlreadyFreinds(friends_list, user, friends);
-        sort(friends_list);
         calculateScoreTenPoints(friends_score,friends_list,friends);
-        System.out.println("after calculate 10 points");
-        System.out.println(friends_score);
         calculateScoreOnePoints(visitors,friends_list,friends_score);
-
-
-        return answer;
+        return selectForAnswer(friends_score);
     }
     public static void  findAlreadyFreinds(List<String> friends_list ,String user, List<List<String>> friends)
     {
@@ -42,8 +37,6 @@ public class Problem7 {
     public static void calculateScoreTenPoints(HashMap<String, Integer> friends_score, List<String> friends_list, List<List<String>> friends){
 
         HashSet<String> already_friend_set = new HashSet<>(friends_list);
-        System.out.println(friends);
-        System.out.println(already_friend_set);
         // 이미 친구 인 사람은 0 점 : 0점은 추천 x
         for (List<String> friend : friends) {
             if (!friends_score.containsKey(friend.get(0)))
@@ -55,7 +48,6 @@ public class Problem7 {
                 friends_score.put(friend.get(0),0);
             }
         }
-        System.out.println(friends_score);
         // check name and add 10points for friends fo already friends
         for (List<String> friend : friends) {
             if (already_friend_set.contains(friend.get(0))) {
@@ -78,6 +70,26 @@ public class Problem7 {
             }
         }
 
+    }
+    public static List<String> selectForAnswer(HashMap<String,Integer> friends_score){
+        // value 0 인것들 삭제 ,
+        friends_score.values().removeAll(Collections.singleton(0));
+        // 점수기준 내림차순 정렬 + 동점인 경우 이름 정렬
+        Map<String, Integer> result = friends_score.entrySet().stream()
+                .sorted(Comparator.<Map.Entry<String, Integer>>comparingInt(Map.Entry::getValue)
+                        .reversed().thenComparing(Map.Entry::getKey))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
+                        (a,b)->b, LinkedHashMap::new));
+
+        // 5개만 출력
+        List<String> answer = new ArrayList<>();
+
+        for(String key:result.keySet()) {
+            if(answer.size()==5) return answer;
+            answer.add(key);
+        }
+
+        return answer;
     }
 
 }
