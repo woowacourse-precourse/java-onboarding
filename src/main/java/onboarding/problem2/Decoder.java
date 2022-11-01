@@ -14,6 +14,7 @@ public class Decoder {
         while (beforeLength > removeConsecutive(beforeRemove).length()) {
             beforeLength = beforeRemove.length();
         }
+
         return beforeRemove.toString();
     }
 
@@ -23,6 +24,7 @@ public class Decoder {
             new Deleter(cipher).delete(new RangeDto(deleteStart, last));
             last = deleteStart;
         }
+
         return cipher;
     }
 }

@@ -13,9 +13,9 @@ public class SimilarityChecker {
 
     public EmailListDto getSimilarEmails(Users validUsers) {
         this.deduplication = new Deduplication();
+
         for (UserInfo userInfo : validUsers.getUserInfos()) {
             addUserInfo(userInfo);
-
         }
 
         return deduplication.getRemoved();
@@ -23,6 +23,7 @@ public class SimilarityChecker {
 
     private void addUserInfo(UserInfo userInfo) {
         List<String> tokens = new TokenGenerator(userInfo.getNickname()).getTokens();
+
         tokens.forEach((token) -> addToken(token, userInfo.getEmail()));
     }
 
@@ -32,6 +33,7 @@ public class SimilarityChecker {
             deduplication.add(tokenMap.get(token));
             return;
         }
+
         tokenMap.set(token, email);
     }
 }

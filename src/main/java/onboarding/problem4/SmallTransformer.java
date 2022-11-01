@@ -7,6 +7,7 @@ class SmallTransformer implements Transformer {
 
     public SmallTransformer(String target) {
         this.smallBuilder = new StringBuilder(target);
+
         IntStream.range(0, smallBuilder.length()).forEach(this::transform);
     }
 
@@ -18,7 +19,9 @@ class SmallTransformer implements Transformer {
         if (!isCapital(index)) {
             return;
         }
+
         char afterAlphabet = inverseAlphabet(smallBuilder.charAt(index));
+
         smallBuilder.setCharAt(index, afterAlphabet);
     }
 

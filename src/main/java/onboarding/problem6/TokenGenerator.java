@@ -13,7 +13,9 @@ public class TokenGenerator {
 
     private List<String> splitToken(String nickname) {
         List<String> tokens = new ArrayList<>();
+
         IntStream.range(0, nickname.length() - 1).forEach(i -> tokens.add(nickname.substring(i, i + 2)));
+
         return tokens;
     }
 

@@ -14,6 +14,7 @@ final class SnsMap {
 
     public void put(UserId userId, UserId value) {
         List<UserId> before = this.get(userId);
+
         before.add(value);
         snsMap.put(userId.getId(), before);
     }

@@ -11,6 +11,7 @@ class Deleter {
         if (range.getTo() == range.getFrom()) {
             return;
         }
+
         cipher.delete(range.getFrom(), range.getTo() + 1);
     }
 }

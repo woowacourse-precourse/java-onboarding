@@ -13,10 +13,12 @@ public class IntegerSplitter {
     public List<Integer> getSplitList() {
         List<Integer> outcome = new ArrayList<>();
         int operand = target;
+
         while (operand > 0) {
             outcome.add(0, operand % 10);
             operand /= 10;
         }
+
         return outcome;
     }
 }

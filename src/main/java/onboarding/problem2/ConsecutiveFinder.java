@@ -14,6 +14,7 @@ class ConsecutiveFinder {
         while (isBeforeSame(last, sameStart)) {
             sameStart--;
         }
+
         return sameStart;
     }
 

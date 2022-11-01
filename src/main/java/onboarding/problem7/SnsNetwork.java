@@ -7,12 +7,14 @@ public class SnsNetwork {
 
     public SnsNetwork(FriendRelation friendRelation) {
         this.snsMap = new SnsMap();
+
         friendRelation.getFriends().forEach(this::addConnection);
     }
 
     private void addConnection(List<UserId> connection) {
         UserId first = connection.get(0);
         UserId second = connection.get(1);
+
         snsMap.put(first, second);
         snsMap.put(second, first);
     }
@@ -24,10 +26,12 @@ public class SnsNetwork {
     public RecommendMap getRecommend(UserId target) {
         List<UserId> directFriends = snsMap.get(target);
         RecommendMap recommendMap = new RecommendMap();
+
         directFriends.forEach((friend) -> {
             List<UserId> friendRelations = snsMap.get(friend);
             setRecommendMap(recommendMap, friendRelations);
         });
+
         return recommendMap;
     }
 

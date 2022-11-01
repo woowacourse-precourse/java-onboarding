@@ -21,6 +21,7 @@ public class RecommendMap {
 
     public void add(UserId key, int value) {
         int before = this.get(key.getId());
+        
         stringIntegerMap.put(key.getId(), before + value);
     }
 

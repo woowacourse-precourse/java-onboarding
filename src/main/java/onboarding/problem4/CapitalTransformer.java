@@ -18,6 +18,7 @@ class CapitalTransformer implements Transformer {
         if (!isCapital(index)) {
             return;
         }
+
         char afterAlphabet = inverseAlphabet(capitalBuilder.charAt(index));
         capitalBuilder.setCharAt(index, afterAlphabet);
     }

@@ -48,17 +48,21 @@ public class UserInfo {
 
     private boolean isEmailValid() {
         String email = emailAndNickname.get(0);
+
         if (!email.endsWith("email.com")) {
             return false;
         }
+
         return MIN_EMAIL_LENGTH <= email.length() && email.length() <= MAX_EMAIL_LENGTH;
     }
 
     private boolean isNicknameValid() {
         String nickname = emailAndNickname.get(1);
+
         if (!KOREAN.matcher(nickname).matches()) {
             return false;
         }
+
         return MIN_NICKNAME_LENGTH <= nickname.length() && nickname.length() <= MAX_NICKNAME_LENGTH;
     }
 }

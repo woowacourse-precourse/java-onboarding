@@ -20,6 +20,7 @@ public class BankMachine {
             currencyList.add(amount / moneys);
             amount %= moneys;
         }
+
         return new CurrencyDto(currencyList);
     }
 }
