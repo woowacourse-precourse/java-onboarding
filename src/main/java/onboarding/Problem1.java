@@ -1,6 +1,6 @@
 package onboarding;
 
-import onboarding.problem1.PageGamer;
+import onboarding.problem1.RandomPageGamer;
 import onboarding.problem1.WrongInputException;
 
 import java.util.List;
@@ -15,7 +15,7 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         try {
-            PageGamer gamer = new PageGamer(pobi, crong, 400);
+            RandomPageGamer gamer = new RandomPageGamer(pobi, crong, 400);
             return gamer.play();
         } catch (WrongInputException e) {
             return -1;

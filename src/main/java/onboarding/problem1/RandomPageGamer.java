@@ -2,7 +2,7 @@ package onboarding.problem1;
 
 import java.util.List;
 
-public class PageGamer {
+public class RandomPageGamer {
 
     private final List<Integer> pagesA;
     private final List<Integer> pagesB;
@@ -10,7 +10,7 @@ public class PageGamer {
     private final InputValidator validator;
     private final PageCalculator calculator;
 
-    public PageGamer(List<Integer> pagesA, List<Integer> pagesB, int size) {
+    public RandomPageGamer(List<Integer> pagesA, List<Integer> pagesB, int size) {
         this.pagesA = pagesA;
         this.pagesB = pagesB;
         validator = new InputValidator(size);
