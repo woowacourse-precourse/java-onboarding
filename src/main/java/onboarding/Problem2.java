@@ -11,7 +11,7 @@ import static org.assertj.core.api.Assertions.assertThat;
  * 3. 답이 나올 때까지 반복
  */
 public class Problem2 {
-    private static int index(String src) {
+    private static int findLastIndex(String src) {
         char fir = src.charAt(0);
         for (int i = 1; i <= src.length(); i++) {
             if (i == src.length() && src.charAt(i - 1) == src.charAt(i - 2)){
@@ -23,12 +23,12 @@ public class Problem2 {
         }
         return 0;
     }
-    private static String deleteChar(String cryptogram){
+    private static String deleteDuplicateChar(String cryptogram){
         String result = "";
         int lastIndex = cryptogram.length() - 1;
         for (int i = 0; i < lastIndex + 1; i++){
             if ((i != lastIndex) && (cryptogram.charAt(i) == cryptogram.charAt(i+1))) {
-                i += index(cryptogram.substring(i));
+                i += findLastIndex(cryptogram.substring(i));
                 continue;
             }
             result += cryptogram.charAt(i);
@@ -39,7 +39,7 @@ public class Problem2 {
         String answer = cryptogram;
         String deleteString = "";
         while (true) {
-            deleteString = deleteChar(answer);
+            deleteString = deleteDuplicateChar(answer);
             if (!deleteString.equals(answer)){
                 answer = deleteString;
             } else {
