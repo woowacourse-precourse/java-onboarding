@@ -20,7 +20,8 @@ public class Problem6 {
             answer.addAll(getEmailList(forms, i));
         }
 
-        return new ArrayList<>(answer);
+        // 정렬 후 리스트로 변환하여 반환
+        return answer.stream().sorted().collect(Collectors.toList());
     }
 
     /**
