@@ -49,8 +49,7 @@ public class Problem2 {
                 inputList.remove(index + 1);
                 inputList.remove(index);
                 isDeleted = true;
-            }
-            else {
+            } else {
                 index++;
             }
 
