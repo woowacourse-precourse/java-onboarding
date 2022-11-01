@@ -21,3 +21,11 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+<br>
+
+## 💡 필요한 기능 구현 리스트
+* [x] 중복 없이 크루들의 이메일을 담아줄 set을 생성한다
+* [x] for문을 돌며 크루들의 닉네임을 뽑아준다.
+  * [x] 뽑은 닉네임을 2문자씩 잘라, 다른 크루의 닉네임과 겹치는지 for문을 통해 확인해준다.
+* [x] set을 List로 다시 변경하고, 오름차순으로 정렬해준다.

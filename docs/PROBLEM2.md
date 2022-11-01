@@ -21,3 +21,10 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+<br>
+
+## 💡 필요한 기능 목록
+* [x] while문과 for 문을 활용해 앞뒤 문자들을 비교하면서 중복되지 않는 값이면 StringBuilder에 값 담기
+  * [x] 만약, 문자열이 모두 중복이여서 비어있다면 바로 빈값을 return
+  * [x] 더이상의 중복된 문자가 없다면 flag를 통해 while 문 탈출
