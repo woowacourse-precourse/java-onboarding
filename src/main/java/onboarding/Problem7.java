@@ -13,7 +13,6 @@ public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends,
         List<String> visitors) {
-
         HashMap<String, Set<String>> friendsMap = makeInitMap(friends);
         HashMap<String, Integer> scoreMap = makeScoreMap();
         Set<String> removeFriendsSet = makeRemoveFriendsSet(user, friendsMap);
@@ -22,24 +21,24 @@ public class Problem7 {
         updateVisitorsScore(scoreMap, visitors, removeFriendsSet);
 
         List<String> collect = scoreMap.entrySet().stream()
-            .sorted(Comparator.comparing((Entry<String, Integer> entry) -> entry.getValue()).reversed()
-                .thenComparing((Entry<String, Integer> entry) -> entry.getKey()))
+            .sorted(
+                Comparator.comparing((Entry<String, Integer> entry) -> entry.getValue()).reversed()
+                    .thenComparing((Entry<String, Integer> entry) -> entry.getKey()))
             .map(entry -> entry.getKey())
             .collect(Collectors.toList());
+
         return collect;
     }
 
     private static void updateVisitorsScore(Map<String, Integer> scoreMap,
         List<String> visitorsList, Set<String> removeFriendsSet) {
-
         visitorsList.stream().
             filter(visitor -> !removeFriendsSet.contains(visitor)).
-            forEach(visitor -> putValueScore(scoreMap,visitor,1));
+            forEach(visitor -> putValueScore(scoreMap, visitor, 1));
     }
 
     private static void updateFriendsScore(Map<String, Integer> scoreMap,
         Map<String, Set<String>> friendsMap, String user, Set<String> removeFriendsSet) {
-
         Set<String> friendsSet = friendsMap.get(user);
 
         for (String userFriend : friendsSet) {
@@ -51,10 +50,12 @@ public class Problem7 {
         }
     }
 
-    private static Set<String> makeRemoveFriendsSet(String user, Map<String, Set<String>> friendsMap) {
+    private static Set<String> makeRemoveFriendsSet(String user,
+        Map<String, Set<String>> friendsMap) {
         Set<String> friendsSet = friendsMap.get(user);
         Set<String> removeFriendsSet = new HashSet<>(Set.of(user));
         removeFriendsSet.addAll(friendsSet);
+
         return removeFriendsSet;
     }
 
@@ -68,10 +69,12 @@ public class Problem7 {
             putValue(initMap, friend.get(0), friend.get(1));
             putValue(initMap, friend.get(1), friend.get(0));
         }
+
         return initMap;
     }
 
-    private static void putValue(HashMap<String, Set<String>> initMap, String friend1, String friend2) {
+    private static void putValue(HashMap<String, Set<String>> initMap, String friend1,
+        String friend2) {
         if (!initMap.containsKey(friend1)) {
             initMap.put(friend1, new HashSet<>(Set.of(friend2)));
             return;
@@ -80,6 +83,7 @@ public class Problem7 {
         tmpSet.add(friend2);
         initMap.put(friend1, tmpSet);
     }
+
     private static void putValueScore(Map<String, Integer> scoreMap, String friend, int score) {
         if (!scoreMap.containsKey(friend)) {
             scoreMap.put(friend, score);

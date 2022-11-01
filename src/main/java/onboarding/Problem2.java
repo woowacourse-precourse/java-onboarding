@@ -3,6 +3,7 @@ package onboarding;
 import java.util.Stack;
 
 public class Problem2 {
+
     public static String solution(String cryptogram) {
         StringBuilder answer = new StringBuilder();
         Stack<Character> stackOrigin = new Stack<>();
@@ -15,7 +16,8 @@ public class Problem2 {
         return answer.toString();
     }
 
-    private static void makeStackResult(Stack<Character> stackOrigin, Stack<Character> stackResult) {
+    private static void makeStackResult(Stack<Character> stackOrigin,
+        Stack<Character> stackResult) {
         stackResult.push('A');
         int flag = 0;
 
@@ -35,6 +37,7 @@ public class Problem2 {
         if (flag == 0 && stackResult.peek() != checkChar) {
             stackResult.push(checkChar);
         }
+
         return flag;
     }
 
@@ -45,6 +48,7 @@ public class Problem2 {
             }
             flag = 0;
         }
+
         return flag;
     }
 

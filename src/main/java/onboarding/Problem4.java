@@ -6,8 +6,8 @@ public class Problem4 {
 
     public static String solution(String word) {
         StringBuilder answer = new StringBuilder();
-
         HashMap<Character, Character> alphabetMap = makeHashMap();
+
         for (char c : word.toCharArray()) {
             if (alphabetMap.containsKey(c)) {
                 answer.append(alphabetMap.get(c));
@@ -15,6 +15,7 @@ public class Problem4 {
             }
             answer.append(c);
         }
+
         return answer.toString();
     }
 

@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Set;
 
 public class Problem6 {
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
         Map<String, List<String>> FragmentsMap = new HashMap<>();
@@ -32,7 +33,7 @@ public class Problem6 {
     private static void makeNickNameSet(Map<String, List<String>> fragmentsMap,
         Set<String> nickNamesSet) {
         fragmentsMap.values().stream()
-            .filter(emails -> emails.size()>1)
+            .filter(emails -> emails.size() > 1)
             .forEach(nickNamesSet::addAll);
     }
 
