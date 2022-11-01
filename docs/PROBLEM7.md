@@ -24,3 +24,15 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 구현 설명
+ - user의 친구를 담을 리스트 선언
+ - 주어진 friends 리스트에 0번째와 1번째에 user가 들어가 있는 경우, user의 친구이므로 친구리스트에 저장
+ - 다시 한번 friends 리스트의 크기만큼 반복문 실행
+ - 0번째와 1번째가 user인 경우, continue로 무시
+ - user의 친구의 친구인 경우 map에 10점 추가함, 이미 있는 경우 해당 값의 +10 부여 
+ - visitors 리스트의 크기만큼 반복문 실행
+ - 해당 이름이 유저의 친구와 유저가 아닌 경우, 방문점수 추가
+ - 주어진 map을 value별로 정렬하기 위해 리스트 사용
+ - 주어진 value값이 같을 경우 key값을 정렬하여 반환, 아닐 경우 value의 차이를 반환하여 정렬
+ - 정렬된 리스트를 정답 리스트에 저장 후 반환
