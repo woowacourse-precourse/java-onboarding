@@ -3,6 +3,8 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /*
 1. 중복을 제거하는 기능
@@ -17,5 +19,27 @@ public class Problem7 {
         List <String> friendList = new ArrayList<>();
         List<String> answer = Collections.emptyList();
         return answer;
+    }
+    public static List<String> myFriendsSearch(String user,List<List<String>> friends)
+    {
+        List<List<String>> copyFriends = new ArrayList<>();
+        copyFriends.addAll(friends);
+        List<String> myFriends = new ArrayList<>();
+        System.out.println();
+        for (int i=0;i<copyFriends.size();i++) {
+            if(copyFriends.get(i).contains(user))
+            {
+                myFriends.addAll(copyFriends.get(i));
+            }
+            System.out.println(myFriends);
+        }
+
+        System.out.println(myFriends);
+//        myFriends.addAll();
+        myFriends=new ArrayList<>(myFriends.stream().distinct().collect(Collectors.toList()));
+        System.out.println(myFriends);
+
+        myFriends.remove(user);
+        return myFriends;
     }
 }
