@@ -21,6 +21,9 @@ class Problem1 {
         if(pRightPage - pLeftPage != 1 || cRightPage - cLeftPage != 1)
             return -1;
 
+        if(pRightPage > 400 || pLeftPage > 400 || cRightPage > 400 || cLeftPage > 400)
+            return -1;
+
         //3.각 페이지 자릿수의 합과 곱을 구한다.
         int pMax = Math.max(getSum(pRightPage), Math.max(getSum(pLeftPage),
                 Math.max(getMultiple(pRightPage), getMultiple(pLeftPage))));
