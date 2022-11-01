@@ -21,3 +21,9 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능 목록
+
+1. 같은 글자가 연속적으로 포함되는 닉네임을 작성한 지원자의 이메일 목록을 계산하는 기능
+   1. 연속하는 두 글자가 이미 존재하는 지 확인하는 기능
+2. 최종적으로 얻은 지원자의 이메일 목록을 오름차순으로 정렬하는 기능
