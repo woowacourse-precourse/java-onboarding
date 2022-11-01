@@ -31,7 +31,7 @@ public class Problem6 {
         for(int i = 0; i < valid_forms.size(); i++) {
             checkDuplicate(nickname_origin, nickname_index, forms.get(i).get(1), i);
         }
-        // 4. 오름차순 정렬, 중복제거 <- 여기 중요
+        // 4. 오름차순 정렬, 중복제거
         Collections.sort(nickname_index);
         List<Integer> listWithoutDuplicates = nickname_index.stream()
                 .distinct()
