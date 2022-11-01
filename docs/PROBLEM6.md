@@ -24,35 +24,59 @@
 
 ### 기능 목록
 - 이메일과 닉네임을 저장할 HashMap을 초기화하는 함수
-> HashMap<String, String> initDatabaseOfNickname()
+```java
+HashMap<String, String> initDatabaseOfNickname()
+```
 
 - 이메일과 닉네임의 중복 여부를 판단할 HashMap을 초기화하는 함수
-> HashMap<String, Integer> initDuplicationOfNickname()
+```java
+HashMap<String, Integer> initDuplicationOfNickname()
+```
 
 - 이메일과 닉네임을 HashMap에 추가하는 함수
-> void AddUser(HashMap<String, String> databaseOfNickname, HashMap<String, Boolean> duplicationOfNickname, List<String> user)
-> input: 이메일과 닉네임을 저장한 HashMap, 이메일과 닉네임의 중복 여부를 판단할 HashMap, user 정보를 담은 List
+  - input: 이메일과 닉네임을 저장한 HashMap, 이메일과 닉네임의 중복 여부를 판단할 HashMap, user 정보를 담은 List
+```java
+void AddUser(HashMap<String, String> databaseOfNickname, HashMap<String, Boolean> duplicationOfNickname, List<String> user)
+```
 
-- 이메일과 닉네임을 추가한 뒤 중복 여부를 판단하는 함수
-> boolean checkDuplicationOfNicknames(HashMap<String, String> databaseOfNickname, List<String> user)
 
-- 유저들 각각에 대해 중복 여부를 판단하는 함수
-> boolean checkDuplicationOfNickname(String, String)
+- 이메일과 닉네임을 추가한 뒤 중복 여부를 판단하는 함수 
+```java
+boolean checkDuplicationOfNicknames(HashMap<String, String> databaseOfNickname, List<String> user)
+```
+
+- 유저들 각각에 대해 중복 여부를 판단하는 함수 
+```java
+boolean checkDuplicationOfNickname(String, String)
+```
 
 - 이메일과 닉네임의 중복이 있으면 이메일에 대한 중복 여부를 체크하는 함수
-> void checkDuplication(HashMap<String, String> databaseOfNickname, HashMap<String, Boolean> duplicationOfNickname)
+
+```java
+void checkDuplication(HashMap<String, String> databaseOfNickname, HashMap<String, Boolean> duplicationOfNickname, List<String> user)
+```
 
 - 중복된 이메일을 리스트에 저장하여 리턴하는 함수
-> List<String> createDuplicationUserList(HashMap<String, Boolean> duplicationOfNickname)
+```java
+List<String> createDuplicationUserList(HashMap<String, Boolean> duplicationOfNickname)
+```
 
-- 주어진 이메일, 닉네임 리스트를 하나씩 추가하는 함수
-> void AddUsers(HashMap<String, String> databaseOfNickname, HashMap<String, Boolean> duplicationOfNickname, List<List<String>> forms)
+- 주어진 이메일, 닉네임 리스트를 하나씩 추가하는 함수 
+```java
+void AddUsers(HashMap<String, String> databaseOfNickname, HashMap<String, Boolean> duplicationOfNickname, List<List<String>> forms)
+```
 
 - 주어진 이메일이 형식에 맞게 입력됐는지 확인하는 함수
-> boolean checkEmailForm(String email)
+```java
+boolean checkEmailForm(String email)
+```
 
 - 주어진 닉네임이 형식에 맞게 입력됐는지 확인하는 함수
-> boolean checkNicknameForm(String nickname)
+```java
+boolean checkNicknameForm(String nickname)
+```
 
-- 주어진 유저 정보가 형식에 맞게 입력됐는지 확인하는 함수
-> boolean checkUserForm(List<String> user)
+- 주어진 유저 정보가 형식에 맞게 입력됐는지 확인하는 함수 
+```java
+boolean checkUserForm(List<String> user)
+```
