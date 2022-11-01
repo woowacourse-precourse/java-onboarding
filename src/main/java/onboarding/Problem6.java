@@ -15,7 +15,19 @@ public class Problem6 {
     static final int NICKNAME = 1;
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        return formsGetList(forms);
+    }
+
+    public static List<String> formsGetList(List<List<String>> forms) {
+        Map<String, List<String>> nicknameSection = new HashMap<>();
+        for (List<String> userInfo : forms) {
+            divideNickname(nicknameSection, userInfo);
+        }
+
+        Set<String> emailSet = overlapNicknameWho(nicknameSection);
+        List<String> answer = new ArrayList<>(emailSet);
+        Collections.sort(answer);
+        System.out.println(answer);
         return answer;
     }
 
