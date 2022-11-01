@@ -8,10 +8,12 @@ import java.util.List;
 import java.util.Set;
 
 public class Problem6 {
-	static Set<String> duplicateEmailSet = new HashSet<>();
-	static HashMap<String, String> duplicateMap = new HashMap<>();
+	static Set<String> duplicateEmailSet;
+	static HashMap<String, String> duplicateMap;
 
 	public static List<String> solution(List<List<String>> forms) {
+		duplicateEmailSet = new HashSet<>();
+		duplicateMap = new HashMap<>();
 		List<String> answer;
 		String email;
 		String nickName;
