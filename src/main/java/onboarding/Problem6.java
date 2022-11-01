@@ -56,6 +56,19 @@ class CompareName {
         List<String> result = new ArrayList<>(setDuplicated);
         return result;
     }
+
+    public List<String> findCrews(List<List<String>> forms, List<String> duplicatedNames) {
+        List<String> answer = new ArrayList<>();
+        for (int i = 0; i < forms.size(); i++) {
+            for (String duplicatedName : duplicatedNames) {
+                if (forms.get(i).get(1).contains(duplicatedName)) {
+                    answer.add(forms.get(i).get(0));
+                }
+            }
+        }
+        answer.sort(Comparator.naturalOrder());
+        return answer;
+    }
 }
 
 public class Problem6 {
