@@ -73,6 +73,9 @@ public class Problem7 {
 		if (!isFriendsRangeValid(friends)) {
 			return EXCEPTION;
 		}
+		if (!isIdRangeValid(friends)) {
+			return EXCEPTION;
+		}
 		return 0;
 	}
 
@@ -88,6 +91,18 @@ public class Problem7 {
 	private static boolean isFriendsRangeValid(List<List<String>> friends) {
 		if (friends.size() < 1 || friends.size() > 10000) {
 			return false;
+		}
+		return true;
+	}
+
+	// 사용자 아이디의 길이가 1 이상 30 이하가 아닌 경우 예외
+	private static boolean isIdRangeValid(List<List<String>> friends) {
+		for (List<String> friend : friends) {
+			for (String id : friend) {
+				if (id.length() < 1 || id.length() > 30) {
+					return false;
+				}
+			}
 		}
 		return true;
 	}
