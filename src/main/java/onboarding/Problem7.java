@@ -51,6 +51,7 @@ public class Problem7 {
         return false;
     }
 
+    // 최종 결과 형식에 맞게 반환
     private static List<String> getTotalScore(Map<String, Integer> result) {
         List<String> answer = new ArrayList<>();
 
@@ -70,6 +71,7 @@ public class Problem7 {
         return answer;
     }
 
+    // 친구 추천 알고리즘에 따른 최종 점수 부여
     private static Map<String, Integer> giveScores(Map<String, Integer> allUsers, String user, List<String> userFriends, List<String> relatedFriends, List<String> visitors) {
         for (Map.Entry<String, Integer> pair : allUsers.entrySet()) {
             String current = pair.getKey();
@@ -101,14 +103,16 @@ public class Problem7 {
             allUsers.put(name, 0);
         }
 
-        // 높은 점수 순으로 정렬
+        // 높은 점수 순, 값은 점수는 알파벳 순으로 정렬
         LinkedHashMap<String, Integer> sortedMap = new LinkedHashMap<>();
         allUsers.entrySet()
-            .stream()
-            .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
-            .forEachOrdered(x -> sortedMap.put(x.getKey(), x.getValue()));
+                .stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .limit(5)
+                .forEachOrdered(x -> sortedMap.put(x.getKey(), x.getValue()));
 
-        return sortedMap;
+        return sortAlphabetical(sortedMap);
+
     }
 
     private static List<String> findRelatedFriends(List<String> userFriends, List<List<String>> friends) {
@@ -171,4 +175,26 @@ public class Problem7 {
         return result;
     }
 
+    // 같은 value 값에서 key 알파벳 순서대로 정렬하는 함수
+    public static <String, Integer extends Comparable<? super Integer>> Map<String , Integer> sortAlphabetical(Map<String , Integer> map) {
+
+        List<Map.Entry<String, Integer>> list = new LinkedList<Map.Entry<String, Integer>>(map.entrySet());
+
+        Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String , Integer> o2) {
+                int val = o2.getValue().compareTo(o1.getValue());
+                if (val == 0) { // 같은 값일때 key 비교
+                    return o1.getKey().toString().compareTo(o2.getKey().toString());
+                }
+                return val;
+            }
+        });
+        Map<String, Integer> result = new LinkedHashMap<String, Integer>();
+        for (Map.Entry<String , Integer> entry : list) {
+            result.put(entry.getKey(), entry.getValue());
+        }
+
+        return result;
+    }
 }
