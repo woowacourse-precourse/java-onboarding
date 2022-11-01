@@ -42,6 +42,7 @@ public class Problem7 {
 			isValidVisitors(visitors);
 		} catch (IllegalStateException exception) {
 			exception.printStackTrace();
+			return answer;
 		}
 
 		answer = getTop5Scorer(getRecomScore(user, friends, visitors));
