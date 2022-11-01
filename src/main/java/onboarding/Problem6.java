@@ -18,7 +18,7 @@ public class Problem6 {
 
 	public static List<String> solution(List<List<String>> forms) {
 		List<String> answer = new ArrayList<>();
-		Map<String, String> map;
+		Map<String, String> emailAndNicknames;
 		List<String> splitNicknames; // 각 크루의 닉네임을 두 글자씩 쪼개어 담을 리스트
 		Set<String> duplicateNicknames; // 중복된 닉네임 set
 
@@ -26,10 +26,10 @@ public class Problem6 {
 			return answer;
 		}
 
-		map = initMapWithEmailAndNickname(forms);
-		splitNicknames = initSplitNicknames(map);
+		emailAndNicknames = initMapWithEmailAndNicknames(forms);
+		splitNicknames = initSplitNicknames(emailAndNicknames);
 		duplicateNicknames = initDuplicateNicknames(splitNicknames);
-		answer = getCrewUsingInvalidNickname(map, duplicateNicknames);
+		answer = getCrewUsingInvalidNickname(emailAndNicknames, duplicateNicknames);
 		Collections.sort(answer);
 
 		return answer;
@@ -39,25 +39,26 @@ public class Problem6 {
 	 * 크루들의 이메일과 닉네임으로 map 을 초기화하는 메서드
 	 * @param forms
 	 */
-	private static Map<String, String> initMapWithEmailAndNickname(List<List<String>> forms) {
-		Map<String, String> map = new HashMap<>();
+	private static Map<String, String> initMapWithEmailAndNicknames(List<List<String>> forms) {
+		Map<String, String> emailAndNicknames = new HashMap<>();
 		for (List<String> form : forms) {
-			map.put(form.get(EMAIL), form.get(NICKNAME));
+			emailAndNicknames.put(form.get(EMAIL), form.get(NICKNAME));
 		}
-		return map;
+		return emailAndNicknames;
 	}
 
 	/**
 	 * 사용이 제한되는 닉네임을 사용하는 크루들을 반환하는 메서드
 	 * (크루의 닉네임 안에 duplicateNicknames 의 요소가 포함되어 있으면 사용이 제한되는 닉네임이다.)
-	 * @param map
+	 * @param emailAndNicknames
 	 * @param duplicateNicknames
 	 */
-	private static List<String> getCrewUsingInvalidNickname(Map<String, String> map, Set<String> duplicateNicknames) {
+	private static List<String> getCrewUsingInvalidNickname(Map<String, String> emailAndNicknames,
+		Set<String> duplicateNicknames) {
 		Set<String> answer = new HashSet<>();
 		String nickname;
 		String email;
-		for (Map.Entry<String, String> entry : map.entrySet()) {
+		for (Map.Entry<String, String> entry : emailAndNicknames.entrySet()) {
 			nickname = entry.getValue();
 			for (String duplicateNickname : duplicateNicknames) {
 				if (nickname.contains(duplicateNickname)) {
@@ -85,11 +86,11 @@ public class Problem6 {
 
 	/**
 	 * 닉네임을 두 글자씩 쪼개어 splitNicknames 에 추가하는 메서드
-	 * @param map
+	 * @param emailAndNicknames
 	 */
-	private static List<String> initSplitNicknames(Map<String, String> map) {
+	private static List<String> initSplitNicknames(Map<String, String> emailAndNicknames) {
 		List<String> splitNicknames = new ArrayList<>();
-		for (String nickname : map.values()) {
+		for (String nickname : emailAndNicknames.values()) {
 			for (int i = 0; i < nickname.length() - 1; i++) {
 				splitNicknames.add(nickname.substring(i, i + SPLIT_UNIT));
 			}
