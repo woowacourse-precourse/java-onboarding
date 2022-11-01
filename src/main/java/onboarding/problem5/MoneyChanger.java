@@ -1,9 +1,7 @@
 package onboarding.problem5;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
+import java.util.*;
+import java.util.stream.*;
 
 public class MoneyChanger {
     private final List<Integer> changedList = new ArrayList<>();
