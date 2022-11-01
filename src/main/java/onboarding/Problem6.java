@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     private static HashMap<String, List<Integer>> ordersByDividedNickname;
@@ -11,7 +12,7 @@ public class Problem6 {
             String nickname = forms.get(order).get(1);
             saveDividedNickname(order, splitNickname(nickname));
         }
-        return sortEmails(getDuplicateEmails(forms, getDuplicateCrews()));
+        return distinctAndSortEmails(getDuplicateEmails(forms, getDuplicateCrewOrders()));
     }
 
     private static List<String> splitNickname(String nickname) {
@@ -29,27 +30,26 @@ public class Problem6 {
         }
     }
 
-    private static Set<Integer> getDuplicateCrews() {
-        Set<Integer> duplicateCrews = new HashSet<>();
-        for (List<Integer> orders : ordersByDividedNickname.values()) {
-            if (orders.size() < 2) {
-                continue;
-            }
-            duplicateCrews.addAll(orders);
-        }
-        return duplicateCrews;
+    private static List<Integer> getDuplicateCrewOrders() {
+        return ordersByDividedNickname.values().stream()
+                .filter(o -> o.size() >= 2)
+                .flatMap(Collection::stream)
+                .distinct()
+                .collect(Collectors.toList());
     }
 
-    private static List<String> getDuplicateEmails(List<List<String>> forms, Set<Integer> duplicateCrews) {
+    private static List<String> getDuplicateEmails(List<List<String>> forms, List<Integer> duplicateCrewOrders) {
         List<String> duplicateEmails = new ArrayList<>();
-        for (int order : duplicateCrews) {
+        for (int order : duplicateCrewOrders) {
             duplicateEmails.add(forms.get(order).get(0));
         }
         return duplicateEmails;
     }
 
-    private static List<String> sortEmails(List<String> duplicateEmails) {
-        Collections.sort(duplicateEmails);
-        return duplicateEmails;
+    private static List<String> distinctAndSortEmails(List<String> duplicateEmails) {
+        return duplicateEmails.stream()
+                .distinct()
+                .sorted()
+                .collect(Collectors.toList());
     }
 }
