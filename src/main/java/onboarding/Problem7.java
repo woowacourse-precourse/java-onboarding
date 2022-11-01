@@ -16,7 +16,7 @@ public class Problem7 {
 
         List<Member> userFriends = members.getUserFriends(userMember);
         List<Member> userAndUserFriends = members.getUserAndUserFriends(userMember);
-//        List<String> acquaintances = getAcquaintances(friendsMap, userFriends, user);
+        List<Member> acquaintances = members.getAcquaintances(userMember);
 //        Map<String, Integer> acquaintancesPoint = getAcquaintancesPoint(acquaintances, userAndUserFriends);
 //        Map<String, Integer> visitorsPoint = getVisitorsPoint(visitors, userAndUserFriends);
 //
@@ -75,12 +75,7 @@ public class Problem7 {
                 ));
     }
 
-    private static int getAcquaintancePoint(String acquaintance, List<String> userAndUserFriends) {
-        if (userAndUserFriends.contains(acquaintance)) {
-            return 0;
-        }
-        return 10;
-    }
+
 
 
 

@@ -1,5 +1,7 @@
 package onboarding.problem7;
 
+import java.util.List;
+
 public class Member {
     private String name;
     private Integer point;
@@ -7,6 +9,12 @@ public class Member {
     public Member(String name, Integer point) {
         this.name = name;
         this.point = point;
+    }
+
+    private void getAcquaintancePoint(List<String> userAndUserFriends) {
+        if (userAndUserFriends.contains(this)) {
+            this.point += 10;
+        }
     }
 
     public String getName() {
