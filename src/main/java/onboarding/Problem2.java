@@ -15,12 +15,8 @@ import java.util.List;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "";
-
-        //cryptogram을 하나씩 잘라 List로 변환하는 기능
-        List<String> subCryptograms = new ArrayList<>();
-        for (int i = 0; i < cryptogram.length(); i++) {
-            subCryptograms.add(cryptogram.substring(i, i + 1));
-        }
+        
+        List<String> subCryptograms = stringToList(cryptogram);
 
         while (!isDecoded(subCryptograms)) {
             removeSameLetter(subCryptograms);
@@ -29,8 +25,16 @@ public class Problem2 {
         for (String subCryptogram : subCryptograms) {
             answer += subCryptogram;
         }
-        
         return answer;
+    }
+
+    //cryptogram을 하나씩 잘라 List로 변환하는 기능
+    private static List<String> stringToList(String cryptogram) {
+        List<String> subCryptograms = new ArrayList<>();
+        for (int i = 0; i < cryptogram.length(); i++) {
+            subCryptograms.add(cryptogram.substring(i, i + 1));
+        }
+        return subCryptograms;
     }
 
     // 해독되었는지 확인하는 기능
