@@ -2,6 +2,8 @@ package onboarding.problem6;
 
 public class Crew implements Comparable<Crew> {
 
+    CrewValidator crewValidator = new CrewValidator();
+
     private final String email;
     private final String nickname;
 
@@ -10,6 +12,7 @@ public class Crew implements Comparable<Crew> {
     public Crew(String email, String nickname) {
         this.email = email;
         this.nickname = nickname;
+        crewValidator.validate(this);
     }
 
     public String getEmail() {
