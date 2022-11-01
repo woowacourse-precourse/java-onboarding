@@ -21,3 +21,11 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+
+### [아리] 기능 목록
+
+ - 두 닉네임간의 연속성 판별
+ - 연속하다면, 이메일 값을 answer에 추가
+ - 중복 저장하면 안되므로, 중복 검사 필요
+ - 결과 answer값 오름차순 정렬
