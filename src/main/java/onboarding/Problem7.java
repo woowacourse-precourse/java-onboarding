@@ -33,11 +33,15 @@ public class Problem7 {
                 if(id == user) {
                     continue;
                 } else {
-                    if(scoreMap.get(id) == null) {
-                        scoreMap.put(id, 10);
+                    if(friendsMap.get(user).contains(id)) {
+                        continue;
                     } else {
-                        int curScore = scoreMap.get(id);
-                        scoreMap.replace(id,curScore + 10);
+                        if(scoreMap.get(id) == null) {
+                            scoreMap.put(id, 10);
+                        } else {
+                            int curScore = scoreMap.get(id);
+                            scoreMap.replace(id,curScore + 10);
+                        }
                     }
                 }
             }
