@@ -10,7 +10,11 @@ public class Problem5 {
         List<Integer> answer = new ArrayList<>();
 
         int[] array = {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
-
+        for (int i = 0; i < array.length; i++) {
+            int ans = money / array[i];
+            answer.add(ans);
+            money -= array[i] * ans;
+        }
         return answer;
     }
 }
