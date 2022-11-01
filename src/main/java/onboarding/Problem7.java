@@ -45,13 +45,13 @@ class Person implements Comparable<Person> {
     public int compareTo(Person p) {
         if (getPointAsInteger() < p.getPointAsInteger()) {
             return 1;
-        } else if (getPointAsInteger() < p.getPointAsInteger()) {
+        } else if (getPointAsInteger() > p.getPointAsInteger()) {
             return -1;
         } else {
             int compareString = getNameAsString().compareTo(p.getNameAsString());
-            if (compareString == 1) {
+            if (compareString > 0) {
                 return 1;
-            } else if (compareString == -1) {
+            } else if (compareString < 0) {
                 return -1;
             }
         }
@@ -93,7 +93,7 @@ public class Problem7 {
         List<String> visitors) {
         userChecker(user);
         friendsChecker(friends);
-        visitorsChecker(visitors);
+        visitorsChecker(visitors, user);
     }
     private static void userChecker(String user) {
         checkLength(user, user.length());
@@ -101,7 +101,7 @@ public class Problem7 {
     }
     private static void checkLength(String type, int length) {
         if (length < 1 || 30 < length) {
-            throw new IllegalArgumentException(type+"는 길이가 1 이상 30 이하인 문자열이어야 합니다.");
+            throw new IllegalArgumentException(type+"는 길이가 1 이상 30 이하인 문자열이어야 합니다");
         }
     }
 
@@ -113,22 +113,25 @@ public class Problem7 {
             checkOverlapFriendRelation(friendRelation);
         }
     }
-    private static void checkOverlapFriendRelation(List<String> friends) {
-        String leftUser = friends.get(0);
-        String rightUser = friends.get(1);
+    private static void checkOverlapFriendRelation(List<String> friendRelation) {
+        String leftUser = friendRelation.get(0);
+        String rightUser = friendRelation.get(1);
 
         if (Pattern.matches(leftUser, rightUser)) {
-            throw new IllegalArgumentException("동일한 친구 관계가 중복해서 주어지면 안됩니다.");
+            throw new IllegalArgumentException("동일한 친구 관계가 중복해서 주어지면 안됩니다");
         }
 
     }
     private static void checkSize(String type, int size, int minSize, int maxSize) {
         if (size < minSize || maxSize < size) {
-            throw new IllegalArgumentException(type+"는 길이가 1 이상 10,000 이하인 리스트/배열이어야 합니다.");
+            throw new IllegalArgumentException(type+"는 길이가 1 이상 10,000 이하인 리스트/배열이어야 합니다");
         }
     }
     private static void checkFriendRelation(List<List<String>> friends) {
         for (List<String> friendRelation : friends) {
+            if (friendRelation.size() != 2) {
+                throw new IllegalArgumentException("친구 관계가 2명으로 구성되지 않았습니다");
+            }
             String leftUser = friendRelation.get(0);
             String rightUser = friendRelation.get(1);
 
@@ -136,12 +139,21 @@ public class Problem7 {
             checkLength("friendsElement", rightUser.length());
         }
     }
-    private static void visitorsChecker(List<String> visitors) {
+    private static void visitorsChecker(List<String> visitors, String user) {
         checkSize("visitors", visitors.size(), VISITORS_MIN_SIZE, VISITORS_MAX_SIZE);
-        checkElements(visitors);
+        checkElements(visitors, user);
     }
     private static void checkElements(List<String> names) {
         for (String name : names) {
+            checkConsistOfLowerCase(name);
+        }
+
+    }
+    private static void checkElements(List<String> names, String user) {
+        for (String name : names) {
+            if (user == name) {
+                throw new IllegalArgumentException("방문자 목록에 user가 들어있습니다");
+            }
             checkConsistOfLowerCase(name);
         }
 
@@ -249,8 +261,12 @@ public class Problem7 {
     }
 
     private static void makeAnswer(List<Person> answerList, List<String> answer) {
+
+        int count = 5;
         for (Person friend : answerList) {
-            answer.add(friend.name);
+            if (count-- != 0) {
+                answer.add(friend.name);
+            }
         }
     }
 }
