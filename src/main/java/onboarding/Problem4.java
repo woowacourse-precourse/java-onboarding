@@ -2,8 +2,8 @@ package onboarding;
 
 public class Problem4 {
 
-    private final static int  UPPER_CASE_SUM = 155;
-    private final static int  LOWER_CASE_SUM = 219;
+    private final static int  UPPER_CASE_SUM = 'A'+'Z';
+    private final static int  LOWER_CASE_SUM = 'a'+'z';
 
     public static String solution(String word) {
         String answer = changeWord(word);
