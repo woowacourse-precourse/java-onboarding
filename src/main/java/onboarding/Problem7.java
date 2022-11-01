@@ -50,6 +50,13 @@ public class Problem7 {
         }
     }
 
+    public static void excludeFriend(String user){
+        List <String> userfriend1 = map.get(user);
+        for(int i=0; i<userfriend1.size(); i++) {
+            point.put(userfriend1.get(i), 0);
+        }
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         for(int i=0; i<friends.size(); i++) {
             String friend1 = friends.get(i).get(0);
