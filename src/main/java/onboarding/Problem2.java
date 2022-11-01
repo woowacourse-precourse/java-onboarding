@@ -3,6 +3,7 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
@@ -16,7 +17,6 @@ public class Problem2 {
             if (cryptogram.charAt(index) == cryptogram.charAt(index + 1)) {     // 다음 글자와 같을 경우
                 charsToRemove.add(index);
                 charsToRemove.add(index + 1);
-                index++;
             }
         }
         return charsToRemove;
@@ -28,6 +28,8 @@ public class Problem2 {
         if (charsToRemove.size() == 0) {    // 더이상 연속되는 문자가 없을 경우
             return cryptogram;
         }
+
+        charsToRemove = charsToRemove.stream().distinct().collect(Collectors.toList());
         Collections.sort(charsToRemove);
         Collections.reverse(charsToRemove);
 
