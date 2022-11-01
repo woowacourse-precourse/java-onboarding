@@ -39,8 +39,20 @@ public class Problem7 {
             return s2.getValue()-s1.getValue();
         });
 
+        List<String> answer = findMax5(entryList);
+        return answer;
+    }
 
-        List<String> answer = List.of();
+    private static List<String> findMax5(List<Map.Entry<String, Integer>> entryList) {
+        List<String> answer = new ArrayList<>();
+        int idx=0;
+        for(Map.Entry key: entryList){
+            answer.add(key.getKey().toString());
+            idx+=1;
+            if(idx==5){
+                break;
+            }
+        }
         return answer;
     }
 
