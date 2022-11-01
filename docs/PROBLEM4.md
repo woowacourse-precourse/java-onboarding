@@ -1,11 +1,11 @@
 🎈 민주
 
 ## ✔ 기능 정의
-- [X] 대문자 -> 소문자 변환 메소드
-- [X] 소문자 -> 대문자 변환 메소드
-- [X] 해당 character 값을 반대로 변환해주는 메소드
-- [X] 조건에 맞게 character 값을 변환하는 메소드
-- [X] 문자열 내 모든 character 값을 변환한 String 만들어주는 메소드
+- [X] 조건에 맞게 변환한 character 값을 반환하는 메소드 (getFinalChangeCharacter)
+  - [X] 표에 맞게 character 변환하는 메소드 (getChangeCharacter)
+  - [X] 대문자 -> 소문자 변환 메소드 (toUpperCase)
+  - [X] 소문자 -> 대문자 변환 메소드 (toLowerCase)
+
 
 # 🎈 본문
 ## 🚀 기능 요구 사항
