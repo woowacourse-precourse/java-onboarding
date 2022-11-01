@@ -20,6 +20,15 @@ class Problem1 {
         return sum;
     }
 
+    public static boolean is_valid(List<Integer> list){
+        if (list.get(0) < 1 || list.get(0) > 400 || list.get(0) % 2 == 0
+                || list.get(1) < 1 || list.get(1) > 400 || list.get(1) % 2 == 1)
+            return false;
+        if (list.get(1) - list.get(0) != 1)
+            return false;
+        return true;
+    }
+
     public static int multi_number(int n){
         int sum = 1;
         while (n > 0){
