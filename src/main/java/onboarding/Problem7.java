@@ -70,6 +70,18 @@ public class Problem7 {
         return list_entries;
     }
 
+    public static List <String> convertResultMapToList(List<Map.Entry<String, Integer>> resultmap){
+        List <String> answer = new ArrayList <>();
+        int cnt=0;
+        for(int i=resultmap.size()-1; i>=0; i--) {
+            if(resultmap.get(i).getValue()==0) break;
+            if(cnt==5) break;
+            answer.add(resultmap.get(i).getKey());
+            cnt++;
+        }
+        return answer;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         for(int i=0; i<friends.size(); i++) {
             String friend1 = friends.get(i).get(0);
