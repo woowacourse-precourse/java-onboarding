@@ -116,7 +116,7 @@ public class Problem6 {
         }
 
         // 중복이 제거되고, 정렬된 데이터를 최종 답으로 정제한다.
-        List<String> answer = rawAnswer;
+        List<String> answer = getRefinedAnswer(rawAnswer);
 
         return answer;
     }
