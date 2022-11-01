@@ -15,6 +15,10 @@ public class Problem7 {
     private static Set<String> userFriend;
     private static Set<String> candidate;
 
+    private static final int SCORE_FRIEND_OF_FRIEND = 10;
+    private static final int SCORE_VISITOR = 1;
+    private static final int MAX_RECOMMEND_SIZE = 5;
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         userFriend = getMyFriend(user, friends);
         candidate = getCandidate(user, userFriend, friends, visitors);
@@ -44,8 +48,8 @@ public class Problem7 {
             return Integer.compare(score2, score1);
         });
 
-        if (answer.size() > 5) {
-            answer = new ArrayList<>(answer.subList(0, 5));
+        if (answer.size() > MAX_RECOMMEND_SIZE) {
+            answer = new ArrayList<>(answer.subList(0, MAX_RECOMMEND_SIZE));
         }
 
         return answer;
@@ -53,14 +57,14 @@ public class Problem7 {
 
     private static void plusIfVisitor(Map<String, Integer> candidateMap, String v) {
         if (candidate.contains(v)) {
-            candidateMap.put(v, candidateMap.getOrDefault(v, 0) + 1);
+            candidateMap.put(v, candidateMap.getOrDefault(v, 0) + SCORE_VISITOR);
         }
     }
 
     private static void plusIfFriendOfFriend(Map<String, Integer> candidateMap, String f1, String f2) {
         if (candidate.contains(f1)) {
             if (userFriend.contains(f2)) {
-                candidateMap.put(f1, candidateMap.getOrDefault(f1, 0) + 10);
+                candidateMap.put(f1, candidateMap.getOrDefault(f1, 0) + SCORE_FRIEND_OF_FRIEND);
             }
         }
     }
