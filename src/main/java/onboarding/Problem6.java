@@ -24,15 +24,13 @@ public class Problem6 {
         return emails;
     }
 
-    public static List<String> getSlicedNicknames(List<List<String>> forms) {
+    public static List<String> getSlicedNicknames(List<String> nicknames) {
         List<String> slicedNicknames = new ArrayList<>();
-        String nickName = "";
         String slicedNickname = "";
 
-        for (List<String> userInfo : forms) {
-            nickName = userInfo.get(1);
-            for (int index = 0; index < nickName.length() - 1; index++) {
-                slicedNickname = nickName.substring(index, index + 2);
+        for (String nickname : nicknames) {
+            for (int index = 0; index < nickname.length() - 1; index++) {
+                slicedNickname = nickname.substring(index, index + 2);
                 if (!slicedNicknames.contains(slicedNickname)) {
                     slicedNicknames.add(slicedNickname);
                 }
