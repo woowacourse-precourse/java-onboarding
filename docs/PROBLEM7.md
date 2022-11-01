@@ -26,22 +26,8 @@
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
 -------------
 ## 기능 목록
-* 사용자 친구 저장
-~~~
-private static ArrayList<String> storeUserFriends(String user, List<List<String>> friends)
-~~~
+1. 사용자 친구 찾아서 저장
+2. 함께 아는 친구와 점수를 함께 저장
+3. 방문자 점수 계산
+4. 높은 점수 기준 최대 5명 반환
 
-* Map에 key = 함께 아는 친구, value = 점수(10점) 저장
-~~~
-private static Map<String, Integer> storeFriendAndScore(String user, List<List<String>> friends, ArrayList<String> withFriends)
-~~~
-
-* 방문자 점수 계산 기능 이미 Map에 있는 명단은 점수+1 없으면 Map에 key = 이름, value = 점수(1점)저장 단, 사용자의 친구는 제외
-~~~
-private static void visitScore(List<String> visitors, ArrayList<String> withFriends, Map<String, Integer> friendScore)
-~~~
-
-* solution 메서드 return을 위한 Map -> List 변환
-~~~
-private static List<String> mapToList(Map<String, Integer> friendScore)
-~~~
