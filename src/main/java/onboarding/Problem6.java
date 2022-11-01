@@ -18,6 +18,16 @@ public class Problem6 {
                     result.add(forms.get(i).get(0));
                 }
             }
+            List<String> twoLetterWords = getTwoLetterWords(name);
+            for (int j = i + 1; j < forms.size(); j++) {
+                for (String word : twoLetterWords) {
+                    if (forms.get(j).get(1).contains(word)) {
+                        result.add(forms.get(i).get(0));
+                        result.add(forms.get(j).get(0));
+                        duplicatedWords.add(word);
+                    }
+                }
+            }
         }
         return result.stream().collect(Collectors.toList());
     }
