@@ -10,12 +10,12 @@ import java.util.*;
 public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of();
 
-        CrewCalculator crewCalculator = new CrewCalculator(forms);
-        answer = crewCalculator.calculation();
+        Calculator<List<List<String>>, List<String>> crewCalculator
+                = new CrewCalculator();
+        crewCalculator.setVariable(forms);
 
-        return answer;
+        return crewCalculator.calculation();
     }
 
     public enum Crew{
@@ -32,15 +32,17 @@ public class Problem6 {
         }
     }
 
-    public static class CrewCalculator{
+    public static class CrewCalculator implements Calculator<List<List<String>>, List<String>>{
         private List<List<String>> forms;
         private static final int REPEAT = 2;
         private static List<List<String>> snList = new ArrayList<>();
 
-        public CrewCalculator(List<List<String>> forms) {
+        @Override
+        public void setVariable(List<List<String>> forms) {
             this.forms = forms;
         }
 
+        @Override
         public List<String> calculation(){
             List<String> answer = new ArrayList<>();
             Map<String, Integer> snAndCountMap = new HashMap<>();

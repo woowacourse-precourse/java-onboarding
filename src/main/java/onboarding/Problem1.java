@@ -13,11 +13,13 @@ class Problem1 {
 
         if(!pobiBook.isValid() || !crongBook.isValid()) return Winner.EXCEPTION.getScore();
 
-        BookPageCalculator po = new BookPageCalculator(pobiBook);
-        BookPageCalculator cr = new BookPageCalculator(crongBook);
+        Calculator<BookPage, Integer> po = new BookPageCalculator();
+        po.setVariable(pobiBook);
+        Calculator<BookPage, Integer> cr = new BookPageCalculator();
+        cr.setVariable(crongBook);
 
-        int pobiMaxNumber = po.getMaxValue();
-        int crongMaxNumber = cr.getMaxValue();
+        int pobiMaxNumber = po.calculation();
+        int crongMaxNumber = cr.calculation();
 
         if(pobiMaxNumber > crongMaxNumber) answer = Winner.POBI.getScore();
         else if(pobiMaxNumber < crongMaxNumber) answer = Winner.CRONG.getScore();
@@ -54,7 +56,7 @@ class Problem1 {
         }
     }
 
-    public static class BookPage {
+    public static class BookPage{
         private int left, right;
 
         BookPage(int left, int right){
@@ -75,17 +77,18 @@ class Problem1 {
         }
     }
 
-    private static class BookPageCalculator{
-
+    private static class BookPageCalculator implements Calculator<BookPage, Integer>{
         private int left, right;
 
-        BookPageCalculator(BookPage book){
-            left = book.getLeft();
-            right = book.getRight();
+        @Override
+        public Integer calculation(){
+            return calMaxValue();
         }
 
-        private int getMaxValue(){
-            return calMaxValue();
+        @Override
+        public void setVariable(BookPage bookPage) {
+            left = bookPage.getLeft();
+            right = bookPage.getRight();
         }
 
         private int calMaxValue(){

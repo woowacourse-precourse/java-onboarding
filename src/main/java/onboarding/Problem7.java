@@ -7,9 +7,24 @@ public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
-        RecommendCalculator recommendCalculator =
-                new RecommendCalculator(user, friends, visitors);
+        Sns sns = new Sns(user, friends, visitors);
+        Calculator<Sns, List<String>> recommendCalculator =
+                new RecommendCalculator();
+        recommendCalculator.setVariable(sns);
+
         return recommendCalculator.calculation();
+    }
+
+    private static class Sns{
+        String user;
+        List<List<String>> friends;
+        List<String> visitors;
+
+        public Sns(String user, List<List<String>> friends, List<String> visitors) {
+            this.user = user;
+            this.friends = friends;
+            this.visitors = visitors;
+        }
     }
 
     private static class Connect {
@@ -53,7 +68,7 @@ public class Problem7 {
         }
     }
 
-    public static class RecommendCalculator{
+    public static class RecommendCalculator implements Calculator<Sns, List<String>>{
         private static Map<String, List<String>> connectMap;
         private static Map<String, Integer> distance;
         private static final int DEFAULT_VALUE = 0;
@@ -64,14 +79,15 @@ public class Problem7 {
         private List<List<String>> friends;
         private List<String> visitors;
 
-        public RecommendCalculator(String user, List<List<String>> friends, List<String> visitors) {
-            this.user = user;
-            this.friends = friends;
-            this.visitors = visitors;
+        @Override
+        public void setVariable(Sns sns) {
+            this.user = sns.user;
+            this.friends = sns.friends;
+            this.visitors = sns.visitors;
         }
 
+        @Override
         public List<String> calculation(){
-            List<String> answer = List.of();
             connectMap = new HashMap<>();
             distance = new HashMap<>();
 
@@ -79,9 +95,9 @@ public class Problem7 {
             initDistance();
             searchFriends();
             visitorPoint();
-            answer = makeAnswer();
+            makeAnswer();
 
-            return answer;
+            return makeAnswer();
         }
 
         /*

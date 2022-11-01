@@ -3,9 +3,10 @@ package onboarding;
 public class Problem4 {
     public static String solution(String word) {
 
-        WordConversion wordConversion = new WordConversion(word);
+        Calculator<String, String> wordConversion = new WordCalculator();
+        wordConversion.setVariable(word);
 
-        return wordConversion.convertString();
+        return wordConversion.calculation();
     }
 
     public enum Alphabet{
@@ -26,11 +27,17 @@ public class Problem4 {
         }
     }
 
-    public static class WordConversion {
+    public static class WordCalculator implements Calculator<String, String>{
         private String word;
 
-        WordConversion(String word){
+        @Override
+        public void setVariable(String word) {
             this.word = word;
+        }
+
+        @Override
+        public String calculation() {
+            return convertString();
         }
 
         public String convertString(){

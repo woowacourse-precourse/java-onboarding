@@ -5,12 +5,12 @@ import java.util.List;
 
 public class Problem5 {
     public static List<Integer> solution(int money) {
-        List<Integer> answer = List.of();
 
-        MoneyCalculator moneyCalculator = new MoneyCalculator(money);
-        answer = moneyCalculator.calculation();
+        Calculator<Integer, List<Integer>> moneyCalculator
+                = new MoneyCalculator();
+        moneyCalculator.setVariable(money);
 
-        return answer;
+        return moneyCalculator.calculation();
     }
 
     public enum Money{
@@ -30,10 +30,11 @@ public class Problem5 {
         }
     }
 
-    public static class MoneyCalculator{
+    public static class MoneyCalculator implements Calculator<Integer, List<Integer>>{
         private int money;
 
-        public MoneyCalculator(int money) {
+        @Override
+        public void setVariable(Integer money) {
             this.money = money;
         }
 
@@ -41,6 +42,7 @@ public class Problem5 {
          * 나누는 금액이 1/2와 1/5 순서대로 줄어들고 있다.
          * 몫을 리스트에 저장하고, 나머지를 다음 계산을 위한 돈으로 할당한다.
          * */
+        @Override
         public List<Integer> calculation(){
             List<Integer> result = new ArrayList<>();
 
