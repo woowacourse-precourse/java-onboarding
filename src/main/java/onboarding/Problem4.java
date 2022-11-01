@@ -2,14 +2,16 @@ package onboarding;
 
 public class Problem4 {
 	public static String solution(String word) {
+		String answer = "answer";
 
 		try {
 			isValidWord(word);
 		} catch (IllegalStateException illegalStateException) {
 			illegalStateException.printStackTrace();
+			return answer;
 		}
 
-		String answer = applyTreeFrogDict(word);
+		answer = applyTreeFrogDict(word);
 
 		return answer;
 	}
