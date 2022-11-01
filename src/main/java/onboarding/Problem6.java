@@ -20,7 +20,7 @@ public class Problem6 {
         return list;
     }
 
-    public static Set<String> result(int index, List<String> list1, List<String> list2){ //list1은 nickname 차출, list2는 쪼갠걸 모음
+    public static Set<String> compare(int index, List<String> list1, List<String> list2){ //list1은 nickname 차출, list2는 쪼갠걸 모음
         for(int i=0; i<list1.size(); i++){
             if(i==index) continue;
             String name = list1.get(i);
@@ -34,7 +34,7 @@ public class Problem6 {
 
     public static List<String> piece(String name){ //문자열의 부분집합들을 구해주는 함수
         List<String> sub = new ArrayList<>();
-        int len = name.length();//3
+        int len = name.length();
         for(int k=0; k<len; k++){
             int i = k+2;
             while(i<=len){
@@ -50,7 +50,6 @@ public class Problem6 {
             String name = forms.get(i).get(1);
             nicknames.add(name);
         }
-//        System.out.println("이름만 차출해낸 리스트 : " + nicknames.toString());
         return nicknames;
     }
 
@@ -62,9 +61,7 @@ public class Problem6 {
         for(int i=0; i< nicknames.size(); i++){
             String name = nicknames.get(i);
             List<String> sublist = piece(name); //닉네임 하나를 가능한 여러 경우로 쪼갠 걸 list에 넣음
-//            System.out.println( name + "을 쪼갤 수 있는 경우: " + sublist.toString());
-            set = result(i, nicknames, sublist);
-//            System.out.println("set에 넣은 결과: " + result_set.toString());
+            set = compare(i, nicknames, sublist);
         }
         answer = result(forms, set);
         Collections.sort(answer);
