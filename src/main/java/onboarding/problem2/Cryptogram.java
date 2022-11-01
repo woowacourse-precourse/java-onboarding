@@ -38,4 +38,16 @@ public class Cryptogram {
         String regex = "(([a-z])\\2+)";
         return this.decrypted.replaceAll(regex, "");
     }
+
+    public String decipher() {
+
+        String temp = removeDuplicateCharacter();
+
+        while (decrypted.length() != temp.length()) {
+            decrypted = temp;
+            temp = removeDuplicateCharacter();
+        }
+
+        return decrypted;
+    }
 }
