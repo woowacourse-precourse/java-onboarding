@@ -17,4 +17,10 @@ public class Problem4 {
         return (char)convertedCharAsci;
     }
 
+    private static boolean isAlphabet(char singleChar){
+        if ((singleChar >= 'A' && singleChar <= 'Z') || (singleChar >= 'a' && singleChar <= 'z'))
+            return true;
+        else
+            return false;
+    }
 }
