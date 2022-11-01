@@ -28,6 +28,14 @@ public class Problem4 {
         }
     }
 
+    private static boolean isLower(char word) {
+        if ((int) word >= 97 && (int) word <= 122) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     private static char upperToLower(char word) {
         return (char)(90 - ((int) word - 65));
     }
