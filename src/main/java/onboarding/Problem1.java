@@ -37,8 +37,8 @@ class Problem1 {
     public static boolean isCheck(List<Integer> pages) {
         if (pages.get(0) + 1 != pages.get(1)) {return false;} // 페이지가 순서대로 들어있지 않은 경우, false 반환.
 
-        for (int i = 0; i < pages.size(); i++) {
-            if (pages.get(i) <= 2 && pages.get(i) >= 399) {return false;} // 나올 수 있는 페이지의 범위 수를 넘어서는 경우, false 반환.
+        for (Integer page : pages) {
+            if (page <= 2 || page >= 399) {return false;}
         }
 
         return true;
