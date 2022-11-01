@@ -82,14 +82,14 @@ public class Problem7 {
         for (String key : friendsList.keySet()) {
             if (friendsList.get(key).contains(user)) {
                 findKey = key;
-                List<String> asdf = friendsList.get(findKey);
-                for (String qqq : asdf) {
-                    if (qqq.equals(user) || qqq.equals(findKey))
+                List<String> stringList = friendsList.get(findKey);
+                for (String temp : stringList) {
+                    if (temp.equals(user) || temp.equals(findKey))
                         continue;
-                    if (points.containsKey(qqq)) {
-                        points.merge(qqq, 10, Integer::sum);
+                    if (points.containsKey(temp)) {
+                        points.merge(temp, 10, Integer::sum);
                     } else {
-                        points.put(qqq, 10);
+                        points.put(temp, 10);
                     }
                 }
             }
