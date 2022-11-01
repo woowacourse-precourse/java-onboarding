@@ -5,4 +5,8 @@ public class Problem2 {
         String answer = "answer";
         return answer;
     }
+
+    private static String removeDuplicated(String str){
+        return str;
+    }
 }
