@@ -26,4 +26,17 @@ public class Problem2 {
         return getChangeCryptogram(s);
     }
 
+    public static String getChangeCryptogram(Stack<Character> s) {
+        String reverse_result = "";
+        while (!s.isEmpty()) {
+            reverse_result += s.peek();
+            s.pop();
+        }
+        String result = "";
+        for (int i = reverse_result.length() - 1; i >= 0; i--) {
+            result += reverse_result.charAt(i);
+        }
+        return result;
+    }
+
 }
