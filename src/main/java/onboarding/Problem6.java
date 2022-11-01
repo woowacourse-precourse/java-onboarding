@@ -36,14 +36,7 @@ public class Problem6 {
 
         for (int i = 0; i < forms.size(); i++) {
             nickname = forms.get(i).get(1);
-            nicknameValid = true;
-            for (int j = i + 1; j < forms.size(); j++) {
-                result = duplicateCheck(nickname, forms.get(j).get(1));
-                if (result == false) {
-                    nicknameValid = false;
-                    answerSet.add(forms.get(j).get(0));
-                }
-            }
+            nicknameValid = nicknameValidCheck(forms, answerSet, nickname, i);
             if (nicknameValid == false) {
                 answerSet.add(forms.get(i).get(0));
             }
@@ -51,6 +44,21 @@ public class Problem6 {
 
         List<String> answer = new ArrayList<>(answerSet);
         return answer;
+    }
+
+    private static boolean nicknameValidCheck(List<List<String>> forms, TreeSet<String> answerSet, String nickname, int i) {
+
+        boolean duplicateResult;
+        boolean nicknameValid = true;
+
+        for (int j = i + 1; j < forms.size(); j++) {
+            duplicateResult = duplicateCheck(nickname, forms.get(j).get(1));
+            if (duplicateResult == true) {
+                nicknameValid = false;
+                answerSet.add(forms.get(j).get(0));
+            }
+        }
+        return nicknameValid;
     }
 
     private static boolean duplicateCheck(String nickname1, String nickname2) {
@@ -67,12 +75,12 @@ public class Problem6 {
                 compare2.append(nickname2.charAt(j));
                 compare2.append(nickname2.charAt(j + 1));
                 if (compare1.toString().equals(compare2.toString())) {
-                    return false;
+                    return true;
                 }
             }
         }
 
-        return true;
+        return false;
     }
 
 }
