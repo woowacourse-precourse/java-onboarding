@@ -8,20 +8,17 @@ import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer = getDuplicateEmail(forms);
         return answer;
     }
 
-    private static List<String> getDuplicateEmail(String[][] forms){
+    private static List<String> getDuplicateEmail(List<List<String>> forms){
 
         HashSet<String> emails = new HashSet<>();
-        Map<String, String > nickNameMap = new HashMap<>();
-        for (int i = 0; i < forms.length; i++) {
-            String targetName = forms[i][1];
-            String targetEmail= forms[i][0];
-            if(targetName.length() < 2){
-                break;
-            }
+        Map<String, String> nickNameMap = new HashMap<>();
+        for (List<String> form : forms){
+            String targetName = form.get(1);
+            String targetEmail = form.get(0);
             for (int j = 0; j < targetName.length() - 1; j++) {
                 String key = targetName.substring(j, j+2);
                 if(nickNameMap.containsKey(key)){
