@@ -8,7 +8,36 @@ import java.util.List;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        Problem7_Functions func = new Problem7_Functions();
+
+        List<String> usersFriendsList = func.getUsersFriendsList(user, friends);
+
+        HashMap<String, List<String>> usersFriendsRelationMap = func.getUsersFriendsRelationMap(
+                user,
+                usersFriendsList,
+                friends);
+
+        HashMap<String, Integer> UsersRecommandFriendsPointsMap = func.getUsersRecommandFriendsPointsMap(
+                usersFriendsList,
+                usersFriendsRelationMap,
+                visitors);
+
+        List<String> answer = new ArrayList<>(UsersRecommandFriendsPointsMap.keySet());
+
+        Collections.sort(answer, (r, l) -> {
+            int r_score = UsersRecommandFriendsPointsMap.get(r);
+            int l_score = UsersRecommandFriendsPointsMap.get(l);
+
+            /*
+             * 점수가 같을경우 추천 친구의 아이디 오름차순 정렬
+             * 점수 내림차순 정렬
+             */
+            return (r_score == l_score
+                    ? r.compareTo(l)
+                    : l_score - r_score);
+
+        });
+
         return answer;
     }
 
@@ -122,7 +151,7 @@ public class Problem7 {
 
             return UsersRecommandFriendsPointsMap;
         }
-        
+
         /**
          * 추천 친구별 점수 정보를 바탕으로 사용자의 추천 친구 목록을 반환한다.
          * 
