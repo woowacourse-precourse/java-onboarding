@@ -1,5 +1,12 @@
 package onboarding;
 
+/**
+ * [기능 목록]
+ * 1. 알파벳 뒤집는 기능
+ * - 알파벳 대문자는 대문자로, 소문자는 소문자로
+ * 2. 결과 출력 기능
+ */
+
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
@@ -20,14 +27,16 @@ public class Problem4 {
 
             abs = Math.abs(num - ch[i]); // 절대값
 
-            /* 알파벳 뒤집기 연산
-            trans = (소/대문제 알파벳 시작 부분) + (알파벳 개수) - (a/A부터 얼마나 떨어져 있는 지)
+            /**
+             * 1. 알파벳 뒤집는 기능
+             * trans = (소/대문제 알파벳 시작 부분) + (알파벳 개수) - (a/A부터 얼마나 떨어져 있는 지)
              */
             trans = num + 25 - abs;
 
+            // 2. 결과 출력 기능
             answer += String.valueOf((char) trans);
         }
-        System.out.println("answer: " + answer);
+        //System.out.println("answer: " + answer);
         return answer;
     }
 /*
@@ -36,6 +45,6 @@ public class Problem4 {
 
         solution(s);
     }
-    
+
  */
 }
