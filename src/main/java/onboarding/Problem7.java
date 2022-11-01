@@ -50,6 +50,9 @@ class User{
     int getTotalScore(){
         return totalScore;
     }
+    List<String> getRelationship(){
+        return relationship;
+    }
 }
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
