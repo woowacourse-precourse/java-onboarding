@@ -26,11 +26,6 @@ class Problem1 {
         return result;
     }
 
-    /* 두 수 비교 메서드 */
-    public static int compareInt(int firstNum, int secondNum) {
-        return firstNum - secondNum;
-    }
-
     /* 예외 처리 */
     public static boolean handleException(List<Integer> arr) {
         int firstPage = arr.get(0);
@@ -68,7 +63,7 @@ class Problem1 {
             String seperatedNum = integerToString(score);
             tmpAdd = add(seperatedNum);
             tmpMult = multiply(seperatedNum);
-            int tmpBigger = (compareInt(tmpAdd, tmpMult) > 0) ? tmpAdd : tmpMult;
+            int tmpBigger = (tmpAdd > tmpMult) ? tmpAdd : tmpMult;
             if(tmpBigger > bigger) {
                 bigger  = tmpBigger;
             }
@@ -84,10 +79,9 @@ class Problem1 {
             answer = -1;
             return answer;
         }
-        int comparison = compareInt(pobiScore, crongScore);
-        if(comparison > 0) {
+        if(pobiScore > crongScore) {
             answer = 1;
-        } else if(comparison < 0) {
+        } else if(pobiScore < crongScore) {
             answer = 2;
         } else {
             answer = 0;
