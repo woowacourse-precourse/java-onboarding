@@ -38,20 +38,24 @@ public class Problem6 {
         for (int j = 0; j < standardMember.length - 1; j++) {
             String standardMemberString = standardMember[j] + standardMember[j+1];
 
-            for (int k = i +1; k < nicknameArrays.size(); k++) {
-                String[] comparedMember = nicknameArrays.get(k);
+            pickMemberExceptStandardMember(nicknameArrays, duplicatedNames, i, standardMember, standardMemberString);
+        }
+    }
 
-                for (int l = 0; l < comparedMember.length - 1; l++) {
-                    String comparedMemberString = comparedMember[l] + comparedMember[l+1];
+    private static void pickMemberExceptStandardMember(List<String[]> nicknameArrays, Set<String> duplicatedNames, int i, String[] standardMember, String standardMemberString) {
+        for (int k = i +1; k < nicknameArrays.size(); k++) {
+            String[] comparedMember = nicknameArrays.get(k);
 
-                    if (standardMemberString.equals(comparedMemberString)) {
-                        duplicatedNames.add(String.join("", standardMember));
-                        duplicatedNames.add(String.join("", comparedMember));
-                        break;
-                    }
+            for (int l = 0; l < comparedMember.length - 1; l++) {
+                String comparedMemberString = comparedMember[l] + comparedMember[l+1];
+
+                if (standardMemberString.equals(comparedMemberString)) {
+                    duplicatedNames.add(String.join("", standardMember));
+                    duplicatedNames.add(String.join("", comparedMember));
+                    break;
                 }
-
             }
+
         }
     }
 
