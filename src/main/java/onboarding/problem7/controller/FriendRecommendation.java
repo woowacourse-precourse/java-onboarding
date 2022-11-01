@@ -26,6 +26,18 @@ public class FriendRecommendation {
         }
     }
 
+    private void addAllFriendRelation(){
+        for(List<String> friendRelation: friends){
+            crossAddFriend(friendRelation);
+        }
+    }
+
+    private void crossAddFriend(List<String> friendRelation){
+        userTable.get(friendRelation.get(0)).addFriend(friendRelation.get(1));
+        userTable.get(friendRelation.get(1)).addFriend(friendRelation.get(0));
+    }
+
+
     private void putUser(String name){
         if(!alreadyInHashMap(name)){
             userTable.put(name, new User(name));
