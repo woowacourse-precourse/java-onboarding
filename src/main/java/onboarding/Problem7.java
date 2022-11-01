@@ -2,7 +2,11 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -24,5 +28,30 @@ public class Problem7 {
     	}
     	
     	return userFriends;
+    }
+    
+    private static Map<String, Integer> calculateScoreFriendOfFriend(List<List<String>> friends, List<String> userFriends){
+    	Map<String, Integer> scoreMap = new HashMap<>();
+    	
+    	for(int i = 0; i < friends.size(); i++) {
+    		for(int j = 0; j < friends.get(i).size(); j++) {
+    			int score = 0;
+    			
+    			if(isFriendOfFriend(friends.get(i).get(j), userFriends)) {
+    				score = 10;
+    			}
+    			
+    			if(scoreMap.containsKey(friends.get(i).get(1 - j))) {
+    				scoreMap.replace(friends.get(i).get(1 - j), scoreMap.get(friends.get(i).get(1 - j)) + score);
+    				continue;
+    			}
+    			scoreMap.put(friends.get(i).get(1 - j), score);
+    		}
+    	}
+    	return scoreMap;
+    }
+    
+    private static boolean isFriendOfFriend(String id, List<String> userFriends) {
+    	return userFriends.contains(id);
     }
 }
