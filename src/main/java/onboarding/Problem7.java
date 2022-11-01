@@ -18,7 +18,8 @@ public class Problem7 {
 
         pointInfo = givePointUsingFriendRelationship(user, userInfo, pointInfo);
         pointInfo = givePointUsingVisitorList(userInfo.get(user), visitors, pointInfo);
-
+        pointInfo = deleteZero(pointInfo);
+        findFriendsList(pointInfo);
 
         return answer;
     }
@@ -81,10 +82,47 @@ public class Problem7 {
 
         return pointInfo;
     }
-//    private static List<String> findFriendsList(HashMap<String, Integer> pointInfo){
-//
-//    }
-//    private static HashMap<String, Integer> deleteZero(HashMap<String, Integer> pointInfo){
-//        return pointInfo;
-//    }
+    private static List<String> findFriendsList(HashMap<String, Integer> pointInfo){
+        List<String> recommendations = new ArrayList<>();
+
+        Comparator<Integer> c = (i1, i2)-> i2.compareTo(i1);
+        TreeMap<Integer, List<String>> pointInfoByPointKey = new TreeMap<Integer, List<String>>(c);
+
+        for (String name: pointInfo.keySet()) {
+            int point = pointInfo.get(name);
+            if (pointInfoByPointKey.containsKey(point)){
+                List<String> temp = pointInfoByPointKey.get(point);
+                temp.add(name);
+                Collections.sort(temp);
+            }
+            else {
+                List<String> temp = new ArrayList<>();
+                temp.add(name);
+                pointInfoByPointKey.put(point, temp);
+            }
+        }
+
+        int count=0;
+
+        for (int keyPoint: pointInfoByPointKey.keySet()) {
+            for (String name: pointInfoByPointKey.get(keyPoint)) {
+                if (count<5){
+                    count+=1;
+                    recommendations.add(name);
+                }
+            }
+        }
+
+        return recommendations;
+    }
+    private static HashMap<String, Integer> deleteZero(HashMap<String, Integer> pointInfo){
+        List<String> keyList = new ArrayList<>(pointInfo.keySet());
+
+        for (String name:keyList) {
+            if (pointInfo.get(name)==0){
+                pointInfo.remove(name);
+            }
+        }
+        return pointInfo;
+    }
 }
