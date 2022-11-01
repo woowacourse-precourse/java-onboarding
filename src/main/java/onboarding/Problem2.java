@@ -26,11 +26,10 @@ public class Problem2 {
                 continue;
             }
 
-            if (STACK.peek().equals(c)) {
+            if (STACK.peek().equals(c))
                 STACK.pop();
-            } else if (!prev.equals(c)) {
+            else if (!prev.equals(c))
                 STACK.push(c);
-            }
             prev = c;
         }
     }

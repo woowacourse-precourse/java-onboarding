@@ -11,9 +11,8 @@ class Problem1 {
     private static final int EXCEPTION = -1;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if (checkInvalidPage(pobi) || checkInvalidPage(crong)) {
+        if (checkInvalidPage(pobi) || checkInvalidPage(crong))
             return EXCEPTION;
-        }
         int pobiResult = getMaxFromLeftAndRightPage(pobi);
         int crongResult = getMaxFromLeftAndRightPage(crong);
         return getWinner(pobiResult, crongResult);
@@ -52,12 +51,10 @@ class Problem1 {
     }
 
     private static int getWinner(Integer pobiMaxNum, Integer crongMaxNum) {
-        if (pobiMaxNum.equals(crongMaxNum)) {
+        if (pobiMaxNum.equals(crongMaxNum))
             return TIE;
-        }
-        if (pobiMaxNum > crongMaxNum) {
+        if (pobiMaxNum > crongMaxNum)
             return POBI_WIN;
-        }
         return CRONG_WIN;
     }
 

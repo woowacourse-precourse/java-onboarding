@@ -14,9 +14,8 @@ public class Problem6 {
         for (List<String> info : forms) {
             String email = info.get(0);
             String nickName = info.get(1);
-            if (!isAllowedDomain(email)) {
+            if (!isAllowedDomain(email))
                 throw new NotAllowedDomainException("허용되지 않는 도메인입니다.");
-            }
             addAllSubNickName(email, nickName);
         }
         findDuplicateNickNameUserEmail();
@@ -49,9 +48,8 @@ public class Problem6 {
 
     private static void findDuplicateNickNameUserEmail() {
         for(List<String> emails : STUDENTS_INFO.values()) {
-            if (emails.size() > 1) {
+            if (emails.size() > 1)
                 DUPLICATE_STUDENTS.addAll(emails);
-            }
         }
     }
 

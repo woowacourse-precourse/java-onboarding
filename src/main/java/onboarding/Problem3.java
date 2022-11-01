@@ -16,9 +16,8 @@ public class Problem3 {
         for (int i = 1; i <= num; i++) {
             int temp = i;
             while ( temp > 0) {
-                if (canClap(temp % 10)) {
+                if (canClap(temp % 10))
                     totalClap += 1;
-                }
                 temp /= 10;
             }
         }
@@ -27,9 +26,8 @@ public class Problem3 {
 
     private static boolean canClap(int n) {
         for (int clap : CLAP_LIST) {
-            if (n == clap) {
+            if (n == clap)
                 return true;
-            }
         }
         return false;
     }

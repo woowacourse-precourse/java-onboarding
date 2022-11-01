@@ -31,13 +31,10 @@ public class Problem7 {
             String userA = info.get(0);
             String userB = info.get(1);
 
-            if (userA.equals(user)) {
+            if (userA.equals(user))
                 USER_FRIENDS.add(userB);
-            }
-
-            if (userB.equals(user)) {
+            if (userB.equals(user))
                 USER_FRIENDS.add(userA);
-            }
         }
     }
 
@@ -46,15 +43,13 @@ public class Problem7 {
             String userA = info.get(0);
             String userB = info.get(1);
 
-            if (isUserException(info, user) || isUserFriendException(userA, userB)) {
+            if (isUserException(info, user) || isUserFriendException(userA, userB))
                 continue;
-            }
 
-            if (USER_FRIENDS.contains(userA)) {
+            if (USER_FRIENDS.contains(userA))
                 addToRecommendScoreMap(userB, NEIGHBOR_POINT);
-            } else if (USER_FRIENDS.contains(userB)) {
+            else if (USER_FRIENDS.contains(userB))
                 addToRecommendScoreMap(userA, NEIGHBOR_POINT);
-            }
         }
     }
 
@@ -68,16 +63,14 @@ public class Problem7 {
 
     private static void getRecommendScoreByVisitor(List<String> visitors) {
         for (String visitor : visitors) {
-            if (USER_FRIENDS.contains(visitor)) {
+            if (USER_FRIENDS.contains(visitor))
                 continue;
-            }
             addToRecommendScoreMap(visitor, VISITOR_POINT);
         }
     }
 
     private static void addToRecommendScoreMap(String user, int score) {
-        RECOMMEND_SCORE.put(user,
-                RECOMMEND_SCORE.containsKey(user) ? RECOMMEND_SCORE.get(user) + score : score);
+        RECOMMEND_SCORE.put(user, RECOMMEND_SCORE.containsKey(user) ? RECOMMEND_SCORE.get(user) + score : score);
     }
 
     private static List<String> getTotalRecommendUsers() {
