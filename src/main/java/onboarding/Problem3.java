@@ -20,11 +20,6 @@ public class Problem3 {
                 answer += countNum(strNumber);
             }
         }
-        System.out.println(answer);
         return answer;
-    }
-
-    public static void main(String[] args) {
-        solution(2);
     }
 }
