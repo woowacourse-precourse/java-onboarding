@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -25,6 +26,11 @@ public class Problem6 {
                 crewList.put(key, forms.get(i).get(0));
             }
         }
+
+        answer = emails.stream()
+                .sorted()
+                .collect(Collectors.toList());
+
 
         return answer;
     }
