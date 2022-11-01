@@ -22,7 +22,6 @@ public class Problem2 {
         for(int i = 1; i < charArray.length; i++){
             if(preChar == charArray[i]){
                 continueLength++;
-                continue;
             }
             else if(continueLength == 1){
                 sb.append(preChar);
