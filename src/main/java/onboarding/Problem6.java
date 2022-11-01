@@ -10,6 +10,13 @@ public class Problem6 {
             fragment.add(nickname.substring(i, i + 2));
         return fragment;
     }
+
+    public static boolean searchSameSeq(String nickname, List<String> fragments) {
+        for (String frag : fragments)
+            if (nickname.contains(frag)) return true;
+        return false;
+    }
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
