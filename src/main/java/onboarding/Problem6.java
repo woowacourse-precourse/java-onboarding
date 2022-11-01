@@ -5,26 +5,36 @@ import java.util.regex.Pattern;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        if (violation(forms)) return Collections.emptyList();
-        boolean[] duplicate = new boolean[forms.size()];
-        Set<String> totalSubNickNameSet = new HashSet<>();
-        Set<String> subNickNameSetFrom2 = new HashSet<>();
+        final List<String> ERROR = Collections.emptyList();
+        if (violation(forms)) return ERROR;
+
+        Map<String, Integer> countSubNickname = new HashMap<>();
+        Set<String>[] currSet = new HashSet[forms.size()];
         for (int i = 0; i < forms.size(); i++) {
-            int currTotalSize = totalSubNickNameSet.size();
-            int currSize = forms.get(i).get(1).length() - 1;
-            totalSubNickNameSet.addAll(subNicknameSet(forms.get(i).get(1)));
-            duplicate[i] = (totalSubNickNameSet.size() - currTotalSize) < currSize;
-            subNickNameSetFrom2.addAll(subNicknameSet(forms.get(i).get(1)));
+            currSet[i] = subNicknameSet(forms.get(i).get(1));
+            for (String currSubNickname : currSet[i]) {
+                int before = countSubNickname.getOrDefault(currSubNickname, 0);
+                countSubNickname.put(currSubNickname, before + 1);
+            }
         }
-        duplicate[0] = (totalSubNickNameSet.size() - subNickNameSetFrom2.size()) < (forms.get(0).get(1).length() - 1);
+
         List<String> answer = new ArrayList<>();
         for (int i = 0; i < forms.size(); i++) {
-            if (duplicate[i]) {
+            if (duplicated(i, currSet, countSubNickname)) {
                 answer.add(forms.get(i).get(0));
             }
         }
         answer.sort(Comparator.naturalOrder());
         return answer;
+    }
+
+    static boolean duplicated(int i, Set<String>[] currSet, Map<String, Integer> countSubNickname) {
+        for (String currSubNickname : currSet[i]) {
+            if (countSubNickname.get(currSubNickname) > 1) {
+                return true;
+            }
+        }
+        return false;
     }
 
     static boolean violation(List<List<String>> forms) {
