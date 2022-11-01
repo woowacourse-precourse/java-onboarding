@@ -46,6 +46,7 @@ public class Problem2 {
 
     private static int findLastDuplicatedIndex(String cryptogram, int index) {
         char duplicatedCharacter = cryptogram.charAt(index);
+
         while (index < cryptogram.length()) {
             if (duplicatedCharacter != cryptogram.charAt(index)) {
                 break;

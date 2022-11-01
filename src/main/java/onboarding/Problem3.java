@@ -13,10 +13,15 @@ public class Problem3 {
 
     private static int get369Count(int number) {
         int count = 0;
+
         while (number > 0) {
-            if (is369(number % 10)) count++;
+            if (is369(number % 10)){
+                count++;
+            }
+
             number /= 10;
         }
+
         return count;
     }
 

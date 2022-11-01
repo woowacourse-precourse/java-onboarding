@@ -10,13 +10,15 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        int pobiMaxValue;
+        int crongMaxValue;
 
         if (isWrongInput(pobi, crong)) {
             return EXCEPTION;
         }
 
-        int pobiMaxValue = getMax(pobi);
-        int crongMaxValue = getMax(crong);
+        pobiMaxValue = getMax(pobi);
+        crongMaxValue = getMax(crong);
 
         answer = getAnswer(pobiMaxValue, crongMaxValue);
         return answer;
@@ -40,10 +42,12 @@ class Problem1 {
 
     // 해당 페이지에서 각 자리수 합 or 곱 중 큰값 반환
     private static int getGreaterValueSumMultiply(String page) {
-        int sum = 0, multiply = 1;
+        int sum = 0;
+        int multiply = 1;
 
         for (int i = 0; i < page.length(); i++) {
             int n = page.charAt(i) - '0';
+
             sum += n;
             multiply *= n;
         }
