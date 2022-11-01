@@ -10,11 +10,15 @@ import java.util.Comparator;
 import java.util.stream.Collectors;
 
 public class Problem6 {
-    static final Set<String> usingNickname = new HashSet<>();
-    static final Set<String> limitedWords = new HashSet<>();
-    static final List<String> words = new ArrayList<>();
+    static Set<String> usingNickname;
+    static Set<String> limitedWords;
+    static List<String> words;
 
     public static List<String> solution(List<List<String>> forms) {
+        usingNickname = new HashSet<>();
+        limitedWords = new HashSet<>();
+        words = new ArrayList<>();
+
         if (forms.size() < 1 || forms.size() > 10000) {
             return Collections.emptyList();
         }
