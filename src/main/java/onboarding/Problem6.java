@@ -29,8 +29,18 @@ public class Problem6 {
         return answer;
     }
 
+    private static List<String> cleanAndOrder(List<String> answer) {
+        TreeSet<String> set = new TreeSet<>(answer);
+        answer = new ArrayList<>(set);
+
+        return answer;
+    }
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
+
+        answer = checkNickname(forms, answer);
+        answer = cleanAndOrder(answer);
 
         return answer;
     }
