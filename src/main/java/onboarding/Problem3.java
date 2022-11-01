@@ -7,7 +7,7 @@ public class Problem3 {
     }
 
     //재귀적으로 계산
-    public static int countFigures(int number, int figures){
+    public static int countClaps(int number, int figures){
         int count = 0;
         int noCount = 0;
         int figureSquareTen = squareTen(figures);
@@ -21,21 +21,21 @@ public class Problem3 {
             return count;
         }
 
-        //두 자리 수 이상이면면
+        //두 자리 수 이상이면
        if(number/figureSquareTen%3 ==0)
             noCount = number/figureSquareTen;
 
         for(int i = 0; i<=number/figureSquareTen; i++){
             if(i%3 == 0 & i!=noCount & i!=0){
                 count += figureSquareTen;
-                count += countFigures(figureSquareTen-1, figures-1);
+                count += countClaps(figureSquareTen-1, figures-1);
             }else if(i == noCount& i!=0){
                 count += number %figureSquareTen + 1;
-                count+= countFigures(number%figureSquareTen, figures-1);
+                count+= countClaps(number%figureSquareTen, figures-1);
             }else if(i == number/figureSquareTen){
-                count += countFigures(number%figureSquareTen, figures-1);
+                count += countClaps(number%figureSquareTen, figures-1);
             }else{
-                count += countFigures(figureSquareTen-1, figures-1);
+                count += countClaps(figureSquareTen-1, figures-1);
             }
         }
         return count;
@@ -43,17 +43,17 @@ public class Problem3 {
     }
 
     //clap 수 계산 method
-    public static int countClap(int number){
+    public static int countFigures(int number){
         int count = 0;
 
         if((number/1000)!=0){//천의 자리 수이면
-            count += countFigures(number, 4);
+            count += countClaps(number, 4);
         }else if((number/100)!=0){
-            count += countFigures(number, 3);
+            count += countClaps(number, 3);
         }else if((number/10)!=0){
-            count += countFigures(number, 2);
+            count += countClaps(number, 2);
         }else{
-            count += countFigures(number, 1);
+            count += countClaps(number, 1);
         }
 
         return count;
@@ -61,7 +61,7 @@ public class Problem3 {
 
     public static int solution(int number) {
         int answer = 0;
-        answer = countClap(number);
+        answer = countFigures(number);
         return answer;
     }
 }
