@@ -33,13 +33,13 @@ public class Members {
 
     public void upAcquaintancesPoint(List<Member> acquaintances, List<Member> userAndUserFriends) {
         for (Member acquaintance : acquaintances) {
-            acquaintance.getAcquaintancePoint(userAndUserFriends);
+            acquaintance.upAcquaintancePoint(userAndUserFriends);
         }
     }
 
     public void upVisitorsPoint(List<Member> visitors, List<Member> userAndUserFriends) {
         for (Member visitor : visitors) {
-            visitor.getVisitorPoint(userAndUserFriends);
+            visitor.upVisitorPoint(userAndUserFriends);
         }
     }
 
