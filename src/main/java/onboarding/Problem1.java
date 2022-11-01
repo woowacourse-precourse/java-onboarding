@@ -4,30 +4,28 @@ import java.util.List;
 
 class Problem1 {
     private int digitSum(int num){
-        int a = num % 10;
-        int b = num % 100 / 10;
-        int c = num / 100;
-        return a + b + c;
+        int units = num % 10;
+        int tens = num % 100 / 10;
+        int hundreds = num / 100;
+        return units + tens + hundreds;
     }
     private int digitProd(int num){
-        int a = num % 10;
-        int b = num % 100 / 10;
-        int c = num / 100;
-        if(c == 0){
-            if(b == 0){ //1자리수
-                return a;
+        int units = num % 10;
+        int tens = num % 100 / 10;
+        int hundreds = num / 100;
+        if(hundreds == 0){
+            if(tens == 0){ //1자리수
+                return units;
             } else{ //2자리수
-                return a*b;
+                return units*tens;
             }
         } else{ //3자리수
-            return a*b*c;
+            return units*tens*hundreds;
         }
     }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
-        /**
-         * 예외사항을 처리한다.
-         */
+        /* 예외사항을 처리한다. */
         if(pobi == null || crong == null)
             return -1;
         if(pobi.size() != 2 || crong.size() != 2)
