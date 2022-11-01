@@ -1,9 +1,7 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.function.Predicate;
 
 public class Problem7 {
     //  Static-Variable
@@ -17,6 +15,17 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
+    }
+
+    //  입력받은 유저의 친구 목록을 추출하는 메소드
+    private static List<String> findFriendsWithUser(String id, List<List<String>> friends){
+        List<String> friendsWithUser = new ArrayList<>();
+        for(List<String> friend : friends){
+            if(friend.contains(id)){
+                friend.stream().filter(Predicate.not(s -> s.equals(id))).forEach(friendsWithUser::add);
+            }
+        }
+        return friendsWithUser;
     }
 
     //  회원 유효성 검사
