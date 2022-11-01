@@ -43,6 +43,21 @@ class Problem1 {
         return result;
     }
 
+    // 기능 목록 3 : 두 사람의 점수를 비교해 게임의 결과를 도출하는 함수
+    public static int findResult(int pobi, int crong) {
+        int result = -1;
+        if (pobi > crong) {
+            result = 1;
+        }
+        if (pobi < crong) {
+            result = 2;
+        }
+        if (pobi == crong) {
+            result = 0;
+        }
+        return result;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
