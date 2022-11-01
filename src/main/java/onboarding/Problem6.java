@@ -4,40 +4,42 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Problem6 {
-    static List<String> nameList;
-    static List<String> emailList;
 
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = deduplicateAndSort(forms);
         return answer;
     }
 
-    public static void createNameList(List<List<String>> forms) {
-        nameList = new ArrayList<>();
+    public static List createNameList(List<List<String>> forms) {
+        List<String> nameList = new ArrayList<>();
+
         for (int i = 0; i < forms.size(); i++) {
-            nameList.add(forms.get(i).get(1));
+            String name = forms.get(i).get(1);
+            nameList.add(name);
         }
+        return nameList;
     }
 
     public static List deduplicateName(List<List<String>> forms) {
-        createNameList(forms);
-        String name;
-        emailList = new ArrayList<>();
+        List<String> nameList = createNameList(forms);
+        List<String> emailList = new ArrayList<>();
 
         for (int i = 0; i < nameList.size(); i++) {
-            name = nameList.get(i);
-
+            String name = nameList.get(i);
             int nameSize = name.length();
             String substringName;
+
             for (int j = 0; j < nameSize - 1; j++) {
                 substringName = name.substring(j, j + 2);
 
                 for (int k = i + 1; k < nameList.size(); k++) {
+                    String email = forms.get(k).get(0);
+                    String standardEmail = forms.get(i).get(0);
                     if (nameList.get(k).contains(substringName)) {
-                        if (!emailList.contains(forms.get(i).get(0))) {
-                            emailList.add(forms.get(i).get(0));
+                        if (!emailList.contains(standardEmail)) {
+                            emailList.add(standardEmail);
                         }
-                        emailList.add(forms.get(k).get(0));
+                        emailList.add(email);
                     }
                 }
             }
@@ -46,9 +48,9 @@ public class Problem6 {
     }
 
     public static List deduplicateAndSort(List<List<String>> forms) {
-        deduplicateName(forms);
-        List<String> deduplicatedEmails = emailList.stream().distinct().collect(Collectors.toList());
-        Collections.sort(deduplicatedEmails);
-        return deduplicatedEmails;
+        List<String> emailList = deduplicateName(forms);
+        emailList = emailList.stream().distinct().collect(Collectors.toList());
+        Collections.sort(emailList);
+        return emailList;
     }
 }
