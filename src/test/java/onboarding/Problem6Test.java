@@ -4,25 +4,45 @@ import static org.assertj.core.api.Assertions.*;
 
 import java.util.*;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 
 class Problem6Test {
 
-	@Test
-	void integrationTest1() {
-		List<List<String>> forms = List.of(
-			List.of("jm@email.com", "제이엠"),
-			List.of("jason@email.com", "제이슨"),
-			List.of("woniee@email.com", "워니"),
-			List.of("mj@email.com", "엠제이"),
-			List.of("nowm@email.com", "이제엠"),
-			List.of("ganada@email.com", "가나다"),
-			List.of("nadara@email.com", "나다라"),
-			List.of("darama@email.com", "다라마")
-		);
-		List<String> result = List.of("darama@email.com", "ganada@email.com", "jason@email.com", "jm@email.com", "mj@email.com", "nadara@email.com");
-		assertThat(Problem6.solution(forms)).isEqualTo(result);
+	@Nested
+	class IntegrationTest {
+		@Test
+		void integrationTest1() {
+			List<List<String>> forms = List.of(
+				List.of("jm@email.com", "제이엠"),
+				List.of("jason@email.com", "제이슨"),
+				List.of("woniee@email.com", "워니"),
+				List.of("mj@email.com", "엠제이"),
+				List.of("nowm@email.com", "이제엠"),
+				List.of("ganada@email.com", "가나다"),
+				List.of("nadara@email.com", "나다라"),
+				List.of("darama@email.com", "다라마")
+			);
+			List<String> result = List.of("darama@email.com", "ganada@email.com", "jason@email.com", "jm@email.com", "mj@email.com", "nadara@email.com");
+			assertThat(Problem6.solution(forms)).isEqualTo(result);
+		}
+		@Test
+		void integrationTest2() {
+			List<List<String>> forms = List.of(
+				List.of("jason@email.com", "제이슨"),
+				List.of("mj@email.com", "엠제이"),
+				List.of("onepiece@email.com", "원피수"),
+				List.of("onepisu@email.com", "원피수"),
+				List.of("suonepi@email.com", "수원피")
+			);
+			List<String> result = List.of("jason@email.com", "mj@email.com", "onepiece@email.com", "onepisu@email.com", "suonepi@email.com");
+			assertThat(Problem6.solution(forms)).isEqualTo(result);
+		}
+
+		@Test
+		void case2() {
+			List<List<String>> forms = List.of();
+			assertThat(Problem6.solution(forms)).isNullOrEmpty();
+		}
 	}
 
 	@Test

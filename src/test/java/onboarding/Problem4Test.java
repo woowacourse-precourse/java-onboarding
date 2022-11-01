@@ -10,9 +10,22 @@ import org.junit.jupiter.api.Test;
 class Problem4Test {
 
 	@Test
-	void integrationTest() {
+	void integrationTest1() {
 		assertThat(solution("I love you")).isEqualTo("R olev blf");
 		assertThat(solution("123 $..$ 456")).isEqualTo("123 $..$ 456");
+	}
+
+	@Test
+	void integrationTest2() {
+		String word = "abcdefghijklmnopqrstuvwxyZ !@#!#";
+		String result = "zyxwvutsrqponmlkjihgfedcbA !@#!#";
+		assertThat(Problem4.solution(word)).isEqualTo(result);
+	}
+	@Test
+	void integrationTest3() {
+		String word = "안녕I love you";
+		String result = "안녕R olev blf";
+		assertThat(Problem4.solution(word)).isEqualTo(result);
 	}
 
 	@Test

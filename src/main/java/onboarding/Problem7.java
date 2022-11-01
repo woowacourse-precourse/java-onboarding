@@ -31,8 +31,11 @@ public class Problem7 {
     }
 
     public static void setUserScoreHashMap(String user, HashMap<String, ArrayList<String>> friendsHashMap,
-        List<String> visitors) {
-        ArrayList<String> friendsList = friendsHashMap.get(user);
+            List<String> visitors) {
+        ArrayList<String> friendsList = new ArrayList<>();
+        if (friendsHashMap.containsKey(user)) {
+            friendsList = friendsHashMap.get(user);
+        }
         HashSet<String> excludeUser = new HashSet<>(friendsList);
         excludeUser.add(user);
         addScoreToTwoHopUsers(friendsHashMap, friendsList, excludeUser);
