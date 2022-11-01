@@ -11,7 +11,6 @@ public class Problem4 {
     private static int[] dic = new int[26];
 
     public static String solution(String word) {
-
         String answer = "";
 
         initDic();
@@ -31,12 +30,28 @@ public class Problem4 {
         char translation [] = new char[len];
 
         for (int i = 0; i < len; i++) {
-            if (isLower(word.charAt(i))) {
-                translation[i] = (char)(dic[word.charAt(i) - 32 - 48] + 32);
+            if (isSpace(word.charAt(i)))
+                translation[i] = word.charAt(i);
+            else if (isLower(word.charAt(i))) {
+                translation[i] = (char)(dic[word.charAt(i) - 32 - 65] + 32);
             } else {
-                translation[i] = (char) dic[word.charAt(i) - 48];
+                translation[i] = (char) dic[word.charAt(i) - 65];
             }
         }
         return new String(translation);
+    }
+
+    private static boolean isSpace(char charAt) {
+        if (charAt == ' ')
+            return true;
+        else
+            return false;
+    }
+
+    private static boolean isLower(char charAt) {
+        if (charAt >= 'a' && charAt <= 'z')
+            return true;
+        else
+            return false;
     }
 }
