@@ -21,23 +21,23 @@ public class Problem7 {
         Map<String, List<String>> temp = new HashMap<>();
         temp.put(user, new ArrayList<>());
 
-        for (List info : friends) {
-            for (Object person : info) {
-                if (!temp.containsKey((String)person)) {
+        for (List<String> info : friends) {
+            for (String person : info) {
+                if (!temp.containsKey(person)) {
                     List<String> defaultScore = new ArrayList<>();
                     defaultScore.add("0");
-                    temp.put((String)person, defaultScore);
+                    temp.put(person, defaultScore);
                 }
             }
 
             if (temp.containsKey(info.get(0))) {
                 List<String> friendsList = temp.get(info.get(0));
-                friendsList.add((String)info.get(1));
+                friendsList.add(info.get(1));
             }
 
             if (temp.containsKey(info.get(1))) {
                 List<String> friendsList = temp.get(info.get(1));
-                friendsList.add((String)info.get(0));
+                friendsList.add(info.get(0));
             }
 
             for (String visitor : visitors) {
