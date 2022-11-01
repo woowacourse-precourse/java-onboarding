@@ -18,18 +18,7 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
-        //예외 사항 - 페이지가 연속적이지 않을 경우
-        if (pobi.get(1) - pobi.get(0) != 1 || crong.get(1) - crong.get(0) != 1) {
-            return -1;
-        }
-
-        //예외 사항 - 페이지의 왼쪽이 홀수가 아닐 경우
-        if (pobi.get(0) % 2 != 1 || crong.get(0) % 2 != 1) {
-            return -1;
-        }
-
-        //예외 사항 - 오른쪽 페이지가 짝수가 아닐 경우
-        if (pobi.get(1) % 2 != 0 || crong.get(1) % 2 != 0) {
+        if (isException(pobi) || isException(crong)) {
             return -1;
         }
 
@@ -45,6 +34,22 @@ class Problem1 {
         }
 
         return answer;
+    }
+
+    private static boolean isException(List<Integer> member) {
+        boolean result = false;
+        
+        //예외 사항 - 페이지가 연속적이지 않을 경우
+        if (member.get(1) - member.get(0) != 1) {
+            result = true;
+        }
+
+        //예외 사항 - 페이지의 왼쪽이 홀수가 아니거나, 오른쪽이 짝수가 아닐 경우
+        if (member.get(0) % 2 != 1 || member.get(1) % 2 != 0) {
+            result = true;
+        }
+
+        return result;
     }
 
     private static int sumDigits(int number) {
