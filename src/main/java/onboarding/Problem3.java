@@ -21,6 +21,16 @@ class Clap {
             }
         }
     }
+
+    public int findClapNumber() {
+        int clapNumber = 0;
+        for (String element : this.stringList) {
+            if (element.equals("3") || element.equals("6") || element.equals("9")) {
+                clapNumber += 1;
+            }
+        }
+        return clapNumber;
+    }
 }
 
 public class Problem3 {
