@@ -55,7 +55,7 @@ public class Problem6 {
         //두글자 문자열이 마지막으로 나타나는 인덱스를 저장하는 hashmap
         HashMap<String, Integer> index = new HashMap<String, Integer>();
 
-        //크루별 닉네임 중복 여부를 나타내는 배열
+        //크루별 닉네임 중복 여부를 나타내는 array
         int[] duplicated = new int[forms.size()];
         List<String> ans = new ArrayList<String>();
 
