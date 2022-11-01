@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -25,6 +22,27 @@ public class Problem7 {
         }
 
         return userFriends;
+    }
+
+    // 모든 사용자를 가진 맵 반환 (키: 사용자, 밸류: 점수(초기값 0))
+    public Map<String, Integer> getPeopleMap(List<List<String>> friends, List<String> visitors){
+        Map<String, Integer> allPeople = new HashMap<>();
+
+        for (List<String> friendsList : friends){
+            for (String friend : friendsList){
+                if(!allPeople.containsKey(friend)){
+                    allPeople.put(friend, 0);
+                }
+            }
+        }
+
+        for (String visitor : visitors){
+            if(!allPeople.containsKey(visitor)){
+                allPeople.put(visitor, 0);
+            }
+        }
+
+        return allPeople;
     }
 
 
