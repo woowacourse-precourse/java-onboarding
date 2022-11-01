@@ -6,22 +6,22 @@ public class Problem3 {
     public static int solution(int number) {
         result =0;
         for(int i=1; i<=number; i++){
-            calculration(i);
+            validateType(i);
         }
         return result;
     }
 
 
-    private static void calculration(int i) {
-        String a = String.valueOf(i);
+    private static void validateType(int i) {
+        String number = String.valueOf(i);
 
-        for(int s=0; s<a.length(); s++){
-            calculration2(a.charAt(s));
+        for(int j=0; j<number.length(); j++){
+            checkScore(number.charAt(j));
         }
     }
 
-    private static int calculration2(char charAt) {
-        if(charAt == '3' || charAt == '6' || charAt == '9'){
+    private static int checkScore(char number) {
+        if(number == '3' || number == '6' || number == '9'){
             result++;
         }
         return result;
