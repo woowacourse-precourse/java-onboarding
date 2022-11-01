@@ -14,7 +14,6 @@ public class Problem7 {
 
         // 그래프 도출
         graph = makeFriendGraph(friends);
-        System.out.println(graph);
 
         // 친구, 함께아는 친구 리스트 생성
         List<List<String>> friendAndKnownFriendList = searchFriendAndKnownFriendListByBst(user, user, new LinkedList<String>(),
