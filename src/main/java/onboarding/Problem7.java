@@ -7,6 +7,9 @@ import java.util.List;
 import java.util.Map;
 
 public class Problem7 {
+    private static final int VISIT_SCORE = 1;
+    private static final int FRIEND_SCORE = 10;
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
 
@@ -37,7 +40,7 @@ public class Problem7 {
 
     private static void addVisitorScore(Map<String, Integer> score, List<String> visitors) {
         for (String visitor : visitors) {
-            score.put(visitor, score.getOrDefault(visitor, 0) + 1);
+            score.put(visitor, score.getOrDefault(visitor, 0) + VISIT_SCORE);
         }
     }
 }
