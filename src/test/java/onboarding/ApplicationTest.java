@@ -113,8 +113,8 @@ class ApplicationTest {
 
         @Test
         void case2() {
-            String word = "[az] \"by\"";
-            String result = "[za] \"yb\"";
+            String word = "Abcdefghijk lmnopqrstuvwxyz";
+            String result = "Zyxwvutsrqp onmlkjihgfedcba";
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
     }
@@ -137,8 +137,8 @@ class ApplicationTest {
 
         @Test
         void case3() {
-            int money = 11_111;
-            List<Integer> result = List.of(0, 1, 0, 1, 0, 1, 0, 1, 1);
+            int money = 147_082;
+            List<Integer> result = List.of(2, 4, 1, 2, 0, 0, 1, 3, 2);
             assertThat(Problem5.solution(money)).isEqualTo(result);
         }
     }
@@ -161,13 +161,14 @@ class ApplicationTest {
         @Test
         void case2() {
             List<List<String>> forms = List.of(
-                    List.of("jm@email.com", "제나이엠"),
-                    List.of("jason@email.com", "제엠이슨"),
-                    List.of("woniee@email.com", "워니나이"),
-                    List.of("mj@email.com", "엠제가이"),
-                    List.of("nowm@email.com", "이제엠제")
+                    List.of("a@email.com", "가나다"),
+                    List.of("ab@email.com", "나다파"),
+                    List.of("ba@email.com", "가나"),
+                    List.of("bd@email.com", "다파마"),
+                    List.of("be@email.com", "파마산"),
+                    List.of("cd@email.com", "마산역")
             );
-            List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com", "nowm@email.com", "woniee@email.com");
+            List<String> result = List.of("a@email.com", "ab@email.com", "ba@email.com", "bd@email.com", "be@email.com", "cd@email.com");
             assertThat(Problem6.solution(forms)).isEqualTo(result);
         }
     }
@@ -201,8 +202,8 @@ class ApplicationTest {
                     List.of("shakevan", "jun"),
                     List.of("shakevan", "mrko")
             );
-            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
-            List<String> result = List.of("andole", "jun", "bedi");
+            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan", "abc", "abc", "abb", "abb", "d", "d", "korea", "korea", "korea", "j", "j");
+            List<String> result = List.of("andole", "jun", "bedi", "korea", "abb");
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
         }
     }
