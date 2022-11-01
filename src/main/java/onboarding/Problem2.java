@@ -45,16 +45,13 @@ public class Problem2 {
         return crpytogram.delete(start, start + range);
     }
 
-    public static StringBuilder decrypt(String cryptogram) {
-        StringBuilder stringBuilderCryptogram = toStringBuilder(cryptogram);
+    private static void decrypt(StringBuilder stringBuilderCryptogram) {
         for (int i = 0; i < stringBuilderCryptogram.length() - 1; i++) {
             if (isDuplicate(stringBuilderCryptogram, i)) {
                 int range = getDuplicateRange(stringBuilderCryptogram, i);
                 removeDuplicate(stringBuilderCryptogram, i, range);
-                i = -1;
             }
         }
-        return stringBuilderCryptogram;
     }
 
     private static String toString(StringBuilder stringBuilderCryptogram) {
