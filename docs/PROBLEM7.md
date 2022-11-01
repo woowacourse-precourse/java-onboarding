@@ -24,3 +24,13 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+<br/>
+
+## 구현할 기능 목록
+1. 사용자의 친구 찾기
+2. 친구의 친구 찾기
+3. 친구의 친구의 추천 점수 구하기
+4. 친구가 아닌 방문자 찾기
+5. 친구가 아닌 방문자의 추천 점수 구하기
+6. 점수가 높은 순으로 친구 추천 리스트 정렬
