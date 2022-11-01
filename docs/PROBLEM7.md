@@ -24,3 +24,17 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+
+### 구현 기능 목록
+- [x]  user와 친구인 사람 필터링하기
+- [x]  사용자와 함께 아는 친구 구하기 (친구의 친구)
+   - [x]  이 경우 해당 사람에게 10점 더하기
+   - [x]  friends의 원소 중 두 아이디가 user, user의 친구 누구와도 관계가 없을 경우 넘어가기
+- [x]  사용자의 타임 라인에 방문한 사람과 횟수 구하기
+   - [x]  이 경우 해당 사람에게 1점 더하기
+- [x]  점수가 높은 순으로 정렬하기
+   - [x] 점수가 같은 경우 아이디 오름차순으로 정렬  
+- [x]  상위 5명 아이디 가져오기
+- [x]  ~~0점인 경우 제거~~
+   - 0점인 경우의 아이디는 friendsScore에 추가되지 않기에 제거할 데이터가 없음
