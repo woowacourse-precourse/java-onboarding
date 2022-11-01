@@ -24,3 +24,9 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능 목록
+- 각 유저의 친구 관계를 저장하는 메소드
+- 점수를 계산하는 메소드
+- 추가 점수를 받아 유저에게 점수를 더해주는 메소드
+- 사용자-점수 목록을 점수 기준으로 정렬하여 추천목록을 반환하는 메소드

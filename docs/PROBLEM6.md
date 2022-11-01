@@ -21,3 +21,9 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능 목록
+
+- 각 닉네임을 두 글자씩 잘라서 중복되는 문자열을 Set에 저장하는 메소드
+- 닉네임에 중복되는 문자열이 포함되어 있는지 판별하는 메소드
+- 중복되는 문자열이 포함된 닉네임을 반환하는 메인 메소드
