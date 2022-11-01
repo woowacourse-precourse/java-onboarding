@@ -45,4 +45,18 @@ public class Problem7 {
     }
 
 
+    //방문목록을 이용하여 방문한 유저의 추천 포인트를 증가시키는 기능 추가
+    public static void addVisitPoint(HashMap<String, Integer> pointList,
+        List<String> visitors) {
+        //방문자에 대해 추천점수 1을 증가시켜준다.
+        for (String visitor : visitors) {
+            //추천점수 Map에 없는 유저라면 추가해준다.
+            if (!pointList.containsKey(visitor)) {
+                pointList.put(visitor, 0);
+            }
+            pointList.put(visitor, pointList.get(visitor) + 1);
+        }
+    }
+
+
 }
