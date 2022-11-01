@@ -45,11 +45,11 @@ public class Problem7 {
 
     static void score10(String user, Map<String, List<String>> relation, Map<String, Integer> scores) {
         for (String userFriend: relation.get(user)) {
-            for (String friends: relation.get(userFriend)) {
-                if (scores.containsKey(friends)) {
-                    scores.put(friends, scores.get(friends) + 10);
+            for (String friend: relation.get(userFriend)) {
+                if (scores.containsKey(friend)) {
+                    scores.put(friend, scores.get(friend) + 10);
                 } else {
-                    scores.put(friends, 10);
+                    scores.put(friend, 10);
                 }
             }
         }
