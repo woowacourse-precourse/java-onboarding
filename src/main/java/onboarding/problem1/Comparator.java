@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Comparator {
     private static int compareSumAndMultiplication(int number) {
-        return Math.max(Operator.sum(number), Operator.multiply(number));
+        return Math.max(Operator.getSumOfDigits(number), Operator.multiplyByDigits(number));
     }
 
     private static int comparePages(int leftPage, int rightPage) {
