@@ -32,6 +32,7 @@ class Problem1 {
             }
         }
     }
+
     private static class SelfMax {
         int[] maximumCandidates = {0, 1, 0, 1};
 
@@ -61,6 +62,7 @@ class Problem1 {
             return maximumCandidates[3];
         }
     }
+
     private static class Winner {
         int pobi;
         int crong;
@@ -78,6 +80,7 @@ class Problem1 {
             } else return 0;
         }
     }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         try {

@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+
 class ListifyCryptogram {
     private ArrayList<Character> listCrypto = new ArrayList<>();
     private String finalCrypto = "";

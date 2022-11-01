@@ -1,5 +1,5 @@
 # 🚀 기능 구현 목록
-## Class
+## Class 목록
 ### ListifyCryptogram
 주어진 크립토그램을 char타입의 원소들로 List화 하는 클래스
 #### Methods
