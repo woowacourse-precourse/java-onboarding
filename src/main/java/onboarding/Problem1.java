@@ -22,14 +22,7 @@ class Problem1 {
         /**
          * 반환
          */
-        if (pobiScore > crongScore) {
-            return 1;
-        } else if (pobiScore < crongScore) {
-            return 2;
-        } else {
-            return 0;
-        }
-
+        return getWinner(pobiScore, crongScore);
     }
 
     private static boolean exception(List<Integer> pages) {
@@ -38,13 +31,10 @@ class Problem1 {
         if ((left == null) || (right == null)) {
             return true;
         }
-
         if (right - left != 1) {
-            System.out.println("wrong number");
             return true;
         }
         if (left >= 399 || left <= 1) {
-            System.out.println("out of range left");
             return true;
         }
 
@@ -59,23 +49,26 @@ class Problem1 {
     }
 
     private static Integer calScore(Integer page){
-        List<Integer> digits = new ArrayList<>();
-
-        while (page != 0) {
-            digits.add(page % 10);
-            page /= 10;
-        }
-
         Integer sum = 0;
         Integer multi = 1;
 
-        for (int i = 0; i < digits.size(); i++) {
-            Integer num = digits.get(i);
-            sum += num;
-            multi *= num;
+        while (page != 0) {
+            Integer digit = page % 10;
+            sum += digit;
+            multi *= digit;
+            page /= 10;
         }
 
         return Math.max(sum, multi);
     }
 
+    private static Integer getWinner(Integer pScore, Integer cScore) {
+        if (pScore > cScore) {
+            return 1;
+        } else if (pScore < cScore) {
+            return 2;
+        } else {
+            return 0;
+        }
+    }
 }
