@@ -98,7 +98,30 @@ public class Problem7 {
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer=new ArrayList<>();
+
+        List<String> myfriends = new ArrayList<>();
+        List<String> friendsOffriends = new ArrayList<>();
+        Map<String, Integer> friendsRecommend = new TreeMap<>();
+
+        // 내 친구 찾기
+        myfriends = findUserFriends(friends, user);
+
+        // 내 친구의 친구 찾기
+        friendsOffriends = findFriendsOfFriends(friends, myfriends, user);
+
+        // 10점 점수 구하기
+        friendsRecommend = tenScoreCalculation(myfriends, friendsOffriends);
+
+        // 1점 점수 구하기
+        friendsRecommend = oneScoreCalculation(myfriends, visitors, friendsRecommend);
+
+        // 추천 점수순
+        List<Map.Entry<String,Integer>>entryList = sortScore(friendsRecommend);
+
+        // 상위 다섯명을 구하는 함수
+        answer = findTopFive(entryList);
+
         return answer;
     }
 }
