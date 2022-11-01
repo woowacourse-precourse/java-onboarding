@@ -17,10 +17,11 @@ class Problem1 {
 	public static final int DRAW = 0;
 	public static final int FIRST_PAGE = 1;
 	public static final int LAST_PAGE = 400;
+	public static final int PAGE_DIFFERENCE = 1;
 
 	public static int solution(List<Integer> pobi, List<Integer> crong) {
 
-		if (!checkBook(pobi, crong)) {
+		if (validateBook(pobi, crong)) {
 			return EXCEPTION;
 		}
 
@@ -38,8 +39,8 @@ class Problem1 {
 		return DRAW;
 	}
 
-	private static boolean checkBook(List<Integer> pobi, List<Integer> crong) {
-		return isRightBook(pobi) && isRightBook(crong);
+	private static boolean validateBook(List<Integer> pobi, List<Integer> crong) {
+		return !(isRightBook(pobi) && isRightBook(crong));
 	}
 
 	private static boolean isRightBook(List<Integer> book) {
@@ -55,7 +56,7 @@ class Problem1 {
 	private static boolean isRightOrder(List<Integer> book) {
 		return isLeftPageOdd(book) &&
 				rightPageEven(book) &&
-				rightPage(book) - leftPage(book) == 1;
+				isRightSizeOfBook(book);
 	}
 
 	private static Integer leftPage(List<Integer> book) {
@@ -72,6 +73,10 @@ class Problem1 {
 
 	private static boolean rightPageEven(List<Integer> book) {
 		return rightPage(book) % 2 == 0;
+	}
+
+	private static boolean isRightSizeOfBook(List<Integer> book) {
+		return rightPage(book) - leftPage(book) == PAGE_DIFFERENCE;
 	}
 
 	private static int getMaxNumber(List<Integer> book) {
