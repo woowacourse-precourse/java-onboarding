@@ -14,13 +14,16 @@ import java.util.List;
 class Problem1 {
     //페이지 규칙 확인하는 기능
     public static boolean checkPage(Integer left, Integer right){
+        if(left>=right){
+            return false;
+        }
         if(Math.abs(left-right)>1){ //왼쪽 오른쪽 페이지의 차이가 1보다 큰 경우
             return false;
         }
-        if(left==1){ //시작 면인경우
+        if(left<=1 || right<=1){ //시작 면인경우
             return false;
         }
-        if(right==400){ //마지막인경우
+        if(right>=400 || left>=400){ //마지막인경우
             return false;
         }
         return true;
