@@ -5,11 +5,11 @@ import java.util.List;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        while(deleteIdx(cryptogram).size()!=0){
-            cryptogram = replace(cryptogram);
-        }
-        return cryptogram;
-    }
+        while (true) {
+            char[] charInput = cryptogram.toCharArray();
+            boolean[] check = checkJungbok(charInput);
+            boolean again = false;
+            String temp = "";
 
             for (int i =0; i<charInput.length; i++) {
                 // 중복되지 않은 문자 answer에 포함
