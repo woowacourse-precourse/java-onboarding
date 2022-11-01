@@ -9,13 +9,16 @@ class Problem1 {
     private static final int maxPage = 400;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+        if (!(isValidation(pobi) || !isValidation(crong))) {
+            return -1;
+        }
         int pobiScore = getScore(pobi);
         int crongScore = getScore(crong);
         int answer = getResult(pobiScore,crongScore);
         return answer;
     }
 
-    private static boolean validation(List<Integer> page){
+    private static boolean isValidation(List<Integer> page){
         int leftPage = page.get(0);
         int rightPage = page.get(1);
         if(isNotPageSize(page)){
@@ -30,7 +33,7 @@ class Problem1 {
         if(!isEvenNumber(rightPage)){
             return false;
         }
-        if(notCheckPageOrder(leftPage,rightPage)){
+        if(!CheckPageOrder(leftPage,rightPage)){
             return false;
         }
         return true;
@@ -86,7 +89,7 @@ class Problem1 {
         return page % 2 == 0;
     }
 
-    private static boolean notCheckPageOrder(int leftPage, int rightPage) {
-        return (rightPage - leftPage) != 1;
+    private static boolean CheckPageOrder(int leftPage, int rightPage) {
+        return (rightPage - leftPage) == 1;
     }
 }
