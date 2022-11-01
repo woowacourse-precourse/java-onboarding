@@ -7,4 +7,15 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
+
+    private static int productOfDigits(int page) {
+        int product = 1;
+
+        while (page > 0) {
+            product *= page % 10;
+            page /= 10;
+        }
+
+        return product;
+    }
 }
