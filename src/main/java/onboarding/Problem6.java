@@ -17,6 +17,16 @@ public class Problem6 {
         List<String> answer = List.of("answer");
         return answer;
     }
+    private static boolean checkDuplication(String nickname1, String nickname2) {
+        for (int i = 0; i < nickname1.length() - 1; i++) {
+            for (int j = 0; j < nickname2.length() - 1; j++) {
+                if (checkEquals(nickname1, nickname2, i, j)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
     private static boolean checkEquals(String nickname1, String nickname2, int i, int j) {
         if (nickname1.substring(i, i + 2).equals(nickname2.substring(j, j + 2))) {
             return true;
