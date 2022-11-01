@@ -38,6 +38,22 @@ public class Problem7 {
         }
         System.out.println(pointsMap);
 
+        // 각 친구관계를 friendsMap에 추가
+        // 친구1  : [친구1의 친구들] 형태
+        for (int i = 0; i < friends.size(); i++){
+
+            String me = friends.get(i).get(0);
+            String friend = friends.get(i).get(1);
+            if (friendsMap.containsKey(me)){
+                friendsMap.get(me).add(friend);
+            }
+            me = friends.get(i).get(1);
+            friend = friends.get(i).get(0);
+            if (friendsMap.containsKey(me)){
+                friendsMap.get(me).add(friend);
+            }
+        }
+        System.out.println(friendsMap);
 
 
 
