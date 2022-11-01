@@ -17,7 +17,6 @@ public class Problem5 {
 			answer.add(moneyCount);
 			money = money - moneyCount*moneyUnit[i];
 		}
-		
         return answer;
     }
 }
