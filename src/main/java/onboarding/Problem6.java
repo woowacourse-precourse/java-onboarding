@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -19,6 +20,9 @@ public class Problem6 {
         return answer;
     }
 
+    private static void sortDuplicatedEmail(List<String> duplicatedEmail) {
+        Collections.sort(duplicatedEmail);
+    }
     private static List<String> makeDuplicatedEmails(List<List<String>> forms) {
         List<String> duplicatedEmail = new ArrayList<>();
         for (int i = 0; i < forms.size() - 1; i++) {
