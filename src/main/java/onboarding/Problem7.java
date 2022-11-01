@@ -27,8 +27,8 @@ public class Problem7 {
         initUserFriendList(user, friends, userFriendList);
         initFriendScoreMap(friends, friendScoreMap);
 
-        addScoreFriendsFriend(friends, userFriendList, friendScoreMap,user);
-        addScoreVisitor(visitors, friendScoreMap);
+        addFriendsFriendScore(friends, userFriendList, friendScoreMap,user);
+        addVisitorScore(visitors, friendScoreMap);
 
         return genUserListSortedByScore(friendScoreMap,userFriendList);
     }
@@ -49,7 +49,7 @@ public class Problem7 {
             .collect(Collectors.toList());
     }
 
-    private static void addScoreVisitor(List<String> visitors, Map<String, Integer> friendScoreMap) {
+    private static void addVisitorScore(List<String> visitors, Map<String, Integer> friendScoreMap) {
         for (String visitor : visitors){
             if(friendScoreMap.containsKey(visitor))
                 friendScoreMap.replace(visitor,friendScoreMap.get(visitor)+VISITOR_SCORE);
@@ -58,23 +58,19 @@ public class Problem7 {
         }
     }
 
-    private static void addScoreFriendsFriend(List<List<String>> friends, List<String> userFriendList,
+    private static void addFriendsFriendScore(List<List<String>> friends, List<String> userFriendList,
         Map<String, Integer> friendScoreMap, String user) {
         for (List<String> friendRelation : friends) {
-            if(Collections.disjoint(friendRelation, userFriendList) || friendRelation.contains(user))
-                continue;
-            addScoreFriendsFriend(userFriendList, friendScoreMap, friendRelation);
-        }
-    }
+            if(Collections.disjoint(friendRelation, userFriendList) || friendRelation.contains(user)) continue;
 
-    private static void addScoreFriendsFriend(List<String> userFriendList, Map<String, Integer> friendScoreMap,
-        List<String> friendRelation) {
-        String friendFirst = friendRelation.get(FIRST_FRIEND);
-        String friendSecond = friendRelation.get(SECOND_FRIEND);
-        if(userFriendList.contains(friendFirst))
-            friendScoreMap.replace(friendSecond,friendScoreMap.get(friendSecond)+FRIENDS_FRIEND_SCORE);
-        else
-            friendScoreMap.replace(friendFirst,friendScoreMap.get(friendFirst)+FRIENDS_FRIEND_SCORE);
+            String friendFirst = friendRelation.get(FIRST_FRIEND);
+            String friendSecond = friendRelation.get(SECOND_FRIEND);
+
+            if(userFriendList.contains(friendFirst))
+                friendScoreMap.replace(friendSecond,friendScoreMap.get(friendSecond)+FRIENDS_FRIEND_SCORE);
+            else
+                friendScoreMap.replace(friendFirst,friendScoreMap.get(friendFirst)+FRIENDS_FRIEND_SCORE);
+        }
     }
 
     private static void initFriendScoreMap(List<List<String>> friends, Map<String, Integer> friendScoreMap) {
@@ -83,7 +79,6 @@ public class Problem7 {
         userSet.forEach(user -> friendScoreMap.put(user,INIT_SCORE));
     }
 
-    //리팩토링 할 수 있을 듯?
     private static void initUserFriendList(String user, List<List<String>> friends, List<String> userFriendList) {
         for (List<String> friendRelation : friends) {
             if(friendRelation.contains(user)){
