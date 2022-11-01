@@ -19,7 +19,7 @@ public class Problem7 {
 
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 		List<String> answer = new ArrayList<>(Collections.emptyList());
-		Map<String, Integer> nameAndScores = new HashMap<>();
+		Map<String, Integer> nameAndScores;
 		Set<String> notYetFriendWithUser;
 		Set<String> alreadyFriendWithUser = new HashSet<>();
 
@@ -29,10 +29,7 @@ public class Problem7 {
 
 		notYetFriendWithUser = initNotYetFriendWithUser(user, friends, visitors, alreadyFriendWithUser);
 		alreadyFriendWithUser.remove(user);
-
-		for (String friend : notYetFriendWithUser) {
-			nameAndScores.put(friend, 0);
-		}
+		nameAndScores = initNameAndScores(notYetFriendWithUser);
 
 		calcScore(friends, visitors, nameAndScores, notYetFriendWithUser, alreadyFriendWithUser);
 
@@ -51,6 +48,14 @@ public class Problem7 {
 		}
 
 		return answer;
+	}
+
+	private static Map<String, Integer> initNameAndScores(Set<String> notYetFriendWithUser) {
+		Map<String, Integer> nameAndScores = new HashMap<>();
+		for (String friend : notYetFriendWithUser) {
+			nameAndScores.put(friend, 0);
+		}
+		return nameAndScores;
 	}
 
 	private static Integer checkRestrictions(String user, List<List<String>> friends, List<String> visitors) {
