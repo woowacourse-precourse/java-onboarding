@@ -12,8 +12,8 @@ import java.util.Set;
 public class MutualDictionary {
     private final Map<String, Integer> mutualDictionary;
 
-    public MutualDictionary(FriendRelations relations, String user) {
-        this.mutualDictionary = new MutualDictionaryGenerator(relations, user).getDictionary();
+    public MutualDictionary(String user, FriendRelations relations) {
+        this.mutualDictionary = new MutualDictionaryGenerator(user, relations).getDictionary();
     }
     
     public Set<String> getAllMutuals() {

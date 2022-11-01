@@ -16,7 +16,7 @@ public class VisitsDictionaryGenerator {
     private final List<String> visitors;
     private final Map<String, Integer> dictionary;
     
-    public VisitsDictionaryGenerator(FriendRelations relations, String user, List<String> visitors) {
+    public VisitsDictionaryGenerator(String user, FriendRelations relations, List<String> visitors) {
         this.relations = relations;
         this.user = user;
         this.visitors = visitors;

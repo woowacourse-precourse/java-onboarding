@@ -13,8 +13,8 @@ import java.util.Set;
 public class VisitsDictionary {
     private final Map<String, Integer> visitsDictionary;
     
-    public VisitsDictionary(FriendRelations relations, String user, List<String> visitors) {
-        this.visitsDictionary = new VisitsDictionaryGenerator(relations, user, visitors).getDictionary();
+    public VisitsDictionary(String user, FriendRelations relations, List<String> visitors) {
+        this.visitsDictionary = new VisitsDictionaryGenerator(user, relations, visitors).getDictionary();
     }
     
     public Set<String> getAllVisitors() {

@@ -21,9 +21,9 @@ public class FriendRecommender {
     private final VisitsDictionary visits;
     private final Map<String, Integer> candidatePoints;
     
-    public FriendRecommender(MutualDictionary mutual, VisitsDictionary visits) {
-        this.mutual = mutual;
-        this.visits = visits;
+    public FriendRecommender(String user, FriendRelations relations, List<String> visitors) {
+        this.mutual = new MutualDictionary(user, relations);
+        this.visits = new VisitsDictionary(user, relations, visitors);
         this.candidatePoints = getCandidatePoints(mergeAllCandidates());
     }
     

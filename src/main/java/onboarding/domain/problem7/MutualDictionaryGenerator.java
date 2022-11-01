@@ -15,7 +15,7 @@ public class MutualDictionaryGenerator {
     private final String user;
     private final Map<String, Integer> dictionary;
     
-    public MutualDictionaryGenerator(FriendRelations relations, String user) {
+    public MutualDictionaryGenerator(String user, FriendRelations relations) {
         this.user = user;
         this.relations = relations;
         this.dictionary = new HashMap<String, Integer>();
