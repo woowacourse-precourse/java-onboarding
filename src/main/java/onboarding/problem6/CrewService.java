@@ -26,21 +26,26 @@ public class CrewService {
     }
 
     private void countUsingNickname(Crew crew) {
-        for (String usingNickname : usingNicknameRepository.keySet()) {
-            if (crew.getNickname().contains(usingNickname)) {
-                usingNicknameRepository.put(usingNickname, usingNicknameRepository.getOrDefault(usingNickname, 0) + 1);
+        for (String splitNickname : usingNicknameRepository.keySet()) {
+            if (crew.containSplitNickname(splitNickname)) {
+                Integer count = getUsingCount(splitNickname);
+                usingNicknameRepository.put(splitNickname, count + 1);
             }
         }
+    }
+
+    private Integer getUsingCount(String splitNickname) {
+        return usingNicknameRepository.get(splitNickname);
     }
 
     public List<Crew> findDuplicateCrewList() {
         Set<Crew> duplicateCrewList = new HashSet<>();
 
         usingNicknameRepository.keySet().stream()
-                .filter(use -> usingNicknameRepository.get(use) > 1)
+                .filter(usingNickname -> getUsingCount(usingNickname) > 1)
                 .forEach(usingNickname -> {
                     crewRepository.values().stream()
-                            .filter(crew -> crew.getNickname().contains(usingNickname))
+                            .filter(crew -> crew.containSplitNickname(usingNickname))
                             .forEach(duplicateCrewList::add);
                 });
 

@@ -26,4 +26,8 @@ public class Crew {
     public String getNickname() {
         return nickname;
     }
+
+    public boolean containSplitNickname(String splitNickname) {
+        return nickname.contains(splitNickname);
+    }
 }
