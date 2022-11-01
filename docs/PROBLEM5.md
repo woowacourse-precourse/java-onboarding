@@ -14,3 +14,14 @@
 | --- | --- |
 | 50237	| [1, 0, 0, 0, 0, 2, 0, 3, 7] |
 | 15000	| [0, 1, 1, 0, 0, 0, 0, 0, 0] |
+
+### 기능목록
+
+> **<기능 1><br>
+돈의 종류에 따라 인덱싱을 한다.<br>
+예를 들어 5만원은 인덱스 0번, 1만원은 인덱스 1번...**<br>
+*private static List<Integer> initMoneyType()* <br>
+
+> **<기능 2><br>
+규칙에 따라 하나의 글자를 반대글자로 변환시켜 출력한다.**<br>
+*private static List<Integer> drawMoney(int money, List<Integer> moneyType)*

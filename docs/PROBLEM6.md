@@ -21,3 +21,29 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능목록
+
+> **<클래스><br>
+문자열의 대소비교를 한다.**<br>
+*class StringComparator implements Comparator<String>* <br>
+> 
+> **<기능 1><br>
+한 사람의 닉네임에서 2글자의 부분문자열을 모두 찾아낸다.**<br>
+*private static List<String> makeSubString(List<String> str)* <br>
+
+
+> **<기능 2><br>
+부분문자열들을 가지고 중복을 확인하고 이메일을 저장한다.**<br>
+*private static HashSet<String> matchSubPatternsToParent(String nameForPattern,
+List<String> subPatterns, List<List<String>> forms)*
+
+
+> **<기능 3><br>
+부분문자열이 닉네임에 포함되어있는지 확인하고 있다면 이메일을 반환한다.**<br>
+*private static String findSubPatternInParent(String nameForPattern, List<String> parent,
+List<String> subPatterns)*
+ 
+> **<기능 4><br>
+문자열을 오름차순으로 정렬한다.**<br>
+*private static List<String> sortForResult(HashSet<String> overlappingEmail)*

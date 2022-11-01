@@ -21,3 +21,25 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+### 기능목록
+
+> **<기능 1><br>
+암호해독을 한다.**<br>
+*private static String decrypt(String cryptogram)* <br>
+
+> **<기능 2><br>
+암호해독이 모두 끝났는지 확인한다.**<br>
+*private static boolean isDone(List<String> duplicatedLetters)*
+
+> **<기능 3><br>
+중복문자열을 찾아낸다.**<br>
+*private static List<String> findLetters(String cryptogram)*
+> - 기능 3-1<br>
+    찾아낸 중복문자의 길이만큼 문자열을 만들어낸다.<br>
+    *private static String getLetter(int length, char charAt)*
+
+> **<기능 4><br>
+중복문자열 리스트가 가진 문자열을 암호문에서 제거한다.**<br>
+*private static String removeDuplicatedLetters(String cryptogram,
+List<String> duplicatedLetters)*

@@ -14,3 +14,17 @@
 | --- | --- |
 | 13 | 4 |
 | 33 | 14 |
+
+### 기능목록
+
+> **<기능 1><br>
+number와 number의 자리수에 따라 쳐야할 박수의 횟수를 계산한다.**<br>
+*private static int countClapNumber(int number, int digits)* <br>
+
+> **<기능 2><br>
+현재 게임의 수가 몇 자리인지 확인하다.**<br>
+*private static int identifyDigits(int number)*
+
+> **<기능 3><br>
+자릿수의 숫자가 3,6,9중 하나라면 true를 반환한다.**<br>
+*private static boolean isClap(int number)*
