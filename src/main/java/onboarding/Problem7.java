@@ -16,6 +16,7 @@ import java.util.List;
 //1.친구관계를 map으로 매핑 -> id-[친구들..]
 //2.현재 주목하는 사람인 user의 친구목록을 순회하며 친구의 친구들을 찾아 점수를 추가해줌
 //2-1.친구관계 map에는 user를 비롯해 이미 친구인 사람들도 겹칠 수 있다.
+//3.visitors 를 순회하며 점수에 추가해준다.
 
 
 public class Problem7 {
@@ -25,7 +26,8 @@ public class Problem7 {
         HashMap<String, List<String>> friends_info = new HashMap<String, List<String>>();
         HashMap<String, Integer> points = new HashMap<String, Integer>(); // 친구 추천 점수 기록용
         
-        for (List<String> data: friends) { // 모든 친구관계를 매핑 -> 유저id - [친구들]
+        // 모든 친구관계를 매핑 -> 유저id - [친구들]
+        for (List<String> data: friends) { 
         	String id_1 = data.get(0); // ID_1
         	String id_2 = data.get(1);// ID_2
         	
@@ -41,6 +43,7 @@ public class Problem7 {
         	friends_info.get(id_2).add(id_1);
         	
         }
+        // 아는 친구를 바탕으로 점수 추가 처리
         if (friends_info.containsKey(user)) { // user가 친구가 하나도 없는 경우를 방지
         	for (String f: friends_info.get(user)) { // 유저의 친구들을 순회
         		
@@ -53,6 +56,16 @@ public class Problem7 {
         		}
         	}
         }
+        //visitors로 점수 추가 처리
+        for (String visitor: visitors) { // points에 점수를 추가해준다
+        	if (!points.containsKey(visitor)) {
+				points.put(visitor, 0);
+        	}
+			points.put(visitor, points.get(visitor) + 1);
+        }
+        
+        // 위에서 나온 points에는 user 자기자신, 이미 친구인 사람까지 포함되기에 이를 제거.
+        // 친구의 친구를 확인하는 과정에서 매번 걸러내는 것보다 밖에서 하는게 더 나을 것 같다.
         
 //        return answer;
     }
