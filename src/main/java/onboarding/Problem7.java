@@ -7,11 +7,11 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 public class Problem7 {
 	static final int SCORE_FRIENDS_KNOW_WITH_USER = 10;
-	static final int SCORE_VISIT_USER_SNS = 1;
+	static final int SCORE_VISIT_USER_TIMELINE = 1;
+	static final int DEFAULT_SCORE = 0;
 
 	static final Map<String, List<String>> friendRelationGraph = new HashMap<>();
 	static final Map<String, Integer> recommendationScores = new HashMap<>();
@@ -19,6 +19,14 @@ public class Problem7 {
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 		List<String> answer = Collections.emptyList();
 		return answer;
+	}
+
+	public static void giveScoresToFriendsWhoVisitUserTimeline(List<String> visitors) {
+		for (String visitor : visitors) {
+			recommendationScores.putIfAbsent(visitor, DEFAULT_SCORE);
+			int score = recommendationScores.getOrDefault(visitor, DEFAULT_SCORE);
+			recommendationScores.put(visitor, score + SCORE_VISIT_USER_TIMELINE);
+		}
 	}
 
 	public static void giveScoresToFriendsKnowWithUser(String user) {
