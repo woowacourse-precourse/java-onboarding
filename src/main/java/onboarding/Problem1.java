@@ -15,7 +15,7 @@ class Problem1 {
         		crong.add(2,crong.get(i)%10 + crong.get(i)/10);
             else crong.add(2,crong.get(i)%10 * crong.get(i)/10);
    
-        }  
+        }   
         return answer;
     }
 }
