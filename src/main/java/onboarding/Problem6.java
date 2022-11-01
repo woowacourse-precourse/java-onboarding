@@ -48,10 +48,14 @@ class ValidatorPro6 {
   public boolean isKorean(String str) {
     return Pattern.matches("[가-힣]*$", str);
   }
+  public boolean isStrangeKorean(String str) {
+    return Pattern.matches("[ㄱ-ㅎ]*$", str);
+  }
 
   public void validateNickName(List<List<String>> forms) {
     for (List<String> crewInfo : forms) {
       if (!isKorean(crewInfo.get(NICKNAME)) ||
+          !isStrangeKorean(crewInfo.get(NICKNAME)) ||
           crewInfo.get(NICKNAME).length() < MIN_NICKNAME_LEN ||
           crewInfo.get(NICKNAME).length() >= MAX_NICKNAME_LEN) {
         throw new IllegalArgumentException(
