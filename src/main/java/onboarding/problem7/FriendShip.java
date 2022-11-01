@@ -1,10 +1,8 @@
 package onboarding.problem7;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class FriendShip {
   private Map<String, List<String>> friendship = new HashMap<>();
@@ -16,15 +14,15 @@ public class FriendShip {
     }
   }
 
-  public List<String> findFriends(String user) {
-    return friendship.get(user);
+  public Optional<List<String>> findFriends(String user) {
+    return Optional.ofNullable(friendship.get(user));
   }
 
-  public List<String> findFriends(List<String> users) {
-    return users.stream()
+  public Optional<List<String>> findFriends(List<String> users) {
+    return Optional.ofNullable(users.stream()
             .map(this::findFriends)
-            .flatMap(friends -> friends.stream())
-            .collect(Collectors.toList());
+            .flatMap(friends -> friends.orElseGet(Collections::emptyList).stream())
+            .collect(Collectors.toList()));
   }
 
   private void makeFriends(String key, String value) {
