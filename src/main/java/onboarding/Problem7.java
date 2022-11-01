@@ -14,6 +14,10 @@ public class Problem7 {
 
         answer = sortNameByScore(scoreMap, user);
 
+        if (answer.size() > 5) {
+            answer = answer.subList(0,5);
+        }
+
         return answer;
     }
 
