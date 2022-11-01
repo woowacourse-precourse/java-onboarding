@@ -3,7 +3,7 @@
 <br>
 
 ## [문제 2](./docs/PROBLEM2.md) 풀이
-![image](https://user-images.githubusercontent.com/61930770/198987244-98aaaf06-738e-49be-9ba0-bbd544af6e39.png)
+![image](https://user-images.githubusercontent.com/61930770/199134907-2310101d-2465-473a-b2f8-6ce3dcda5c4a.png)
 <br>
 
 ## [문제 3](./docs/PROBLEM3.md) 풀이
