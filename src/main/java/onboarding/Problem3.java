@@ -8,6 +8,7 @@ public class Problem3 {
         int answer = 0;
 
         Arrays.setAll(arr, num -> (num + 1)); // scan받은 범위만큼 int형 배열 생성
+        String[] some = Arrays.toString(arr).split(""); //받은 int형 배열을 split으로 하나씩 나눠서 저장
         return answer;
     }
 }
