@@ -6,19 +6,24 @@ import java.util.stream.Collectors;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        List<Character> charList = cryptogram.chars()
-                .mapToObj(e -> (char) e).collect(Collectors.toList());
+        String result;
+        List<Character> charWordList = cryptogram.chars()
+                .mapToObj(oneWord -> (char) oneWord).collect(Collectors.toList());
+        return getWord(charWordList);
+    }
 
-        for (int i = charList.size(); i > 1; i--) {
-            for (int j = charList.size() - 1; j > 0; j--) {
-                if (charList.get(j) == charList.get(j - 1)) {
-                    charList.remove(j - 1);
-                    charList.remove(j - 1);
+    static String getWord(List<Character> word) {
+        for (int i = word.size(); i > 1; i--) {
+            for (int j = word.size() - 1; j > 0; j--) {
+                if (word.get(j) == word.get(j - 1)) {
+                    word.remove(j - 1);
+                    word.remove(j - 1);
                 }
             }
         }
-
-        return charList.toString();
+        return word.stream()
+                .map(String::valueOf)
+                .collect(Collectors.joining());
     }
 
 }
