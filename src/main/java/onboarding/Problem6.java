@@ -17,7 +17,7 @@ public class Problem6 {
             }
             for (int j = 0; j < name.length() - 1; j++) { //
                 String target = name.substring(j, j + 2);// 연속 두글자
-                System.out.println("tar: " + target);
+                //System.out.println("tar: " + target);
                 if (hash.containsKey(target)) {
                     String email = hash.get(target);
                     if (!email.equals(forms.get(i).get(0))) {
@@ -29,9 +29,8 @@ public class Problem6 {
             }
 
         }
-        System.out.println("email: " + emails);
         answer = emails.stream().sorted().collect(Collectors.toList());
-        System.out.println("answer: " + answer);
+        //System.out.println("answer: " + answer);
         return answer;
     }
 
