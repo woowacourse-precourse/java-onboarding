@@ -62,4 +62,27 @@ public class Problem7 {
 
         return sortedByScoreList;
     }
+
+    //점수가 같은 경우 이름을 기준으로 정렬하는 함수
+    public static HashMap<String, Integer> sortByUserId(HashMap<String,Integer> recommandList){
+        List<String> keySet = new ArrayList<>(recommandList.keySet());
+        HashMap<String,Integer> sortedByUserIdList = new HashMap<>();
+        keySet.sort(new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                int score1 = recommandList.get(o1);
+                int score2 = recommandList.get(o2);
+                if(score1==score2){
+                    return o1.compareTo(o2);
+                }
+                return 0;
+            }
+        });
+
+        for(String key : keySet){
+            sortedByUserIdList.put(key,recommandList.get(key));
+        }
+
+        return sortedByUserIdList;
+    }
 }
