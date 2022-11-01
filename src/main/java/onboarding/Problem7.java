@@ -59,8 +59,12 @@ public class Problem7 {
         for(List<String> friend: friends) {
             String friend1 = friend.get(0);
             String friend2 = friend.get(1);
-            if (friend1.equals(user)) userFriend.add(friend.get(1));
-            if (friend2.equals(user)) userFriend.add(friend.get(0));
+            if (friend1.equals(user)) {
+                userFriend.add(friend.get(1));
+            }
+            if (friend2.equals(user)) {
+                userFriend.add(friend.get(0));
+            }
         }
         return userFriend;
     }
@@ -79,8 +83,12 @@ public class Problem7 {
             for (String myFriend: userFriend) {
                 String friend1 = friend.get(0);
                 String friend2 = friend.get(1);
-                if (myFriend.equals(friend1)) friendOfFriend.add(friend2);
-                if (myFriend.equals(friend2)) friendOfFriend.add(friend1);
+                if (myFriend.equals(friend1)) {
+                    friendOfFriend.add(friend2);
+                }
+                if (myFriend.equals(friend2)) {
+                    friendOfFriend.add(friend1);
+                }
             }
         }
         return friendOfFriend;
@@ -119,7 +127,9 @@ public class Problem7 {
         List<String> recommendFriends = new ArrayList<>();
         int i = 0;
         for (Map.Entry<String, Integer> entry : entryList) {
-            if (i == 5) break;
+            if (i == 5) {
+                break;
+            }
             recommendFriends.add(entry.getKey());
             i++;
         }

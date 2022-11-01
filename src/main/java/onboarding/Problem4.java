@@ -9,7 +9,9 @@ public class Problem4 {
      */
     public static String solution(String word) {
         String answer = "";
-        if (!isValid(word)) return "error";
+        if (!isValid(word)) {
+            return "error";
+        }
         for (int i = 0; i < word.length(); i++) {
             char c = word.charAt(i);
             char result = conversionWord(c);
@@ -24,7 +26,9 @@ public class Problem4 {
      * @return 제한 조건에 적합할 경우 true, 제한 조건에 위배될 경우 false
      */
     public static boolean isValid(String word) {
-        if (word.length() < 1 || word.length() > 1000) return false;
+        if (word.length() < 1 || word.length() > 1000) {
+            return false;
+        }
         return true;
     }
 
@@ -34,7 +38,9 @@ public class Problem4 {
      * @return 알파벳인 경우 true, 알파벳이 아닌 경우 false
      */
     public static boolean isAlphabet(char c) {
-        if (('a'<= c && c <= 'z') || ('A'<= c && c <= 'Z')) return true;
+        if (('a'<= c && c <= 'z') || ('A'<= c && c <= 'Z')) {
+            return true;
+        }
         return false;
     }
 
@@ -44,8 +50,12 @@ public class Problem4 {
      * @return 반대로 변환한 글자
      */
     public static char conversionWord(char c) {
-        if (!isAlphabet(c)) return c;
-        if ('a'<= c && c <= 'z') return (char) ('z' + 'a' - c);
+        if (!isAlphabet(c)) {
+            return c;
+        }
+        if ('a'<= c && c <= 'z') {
+            return (char) ('z' + 'a' - c);
+        }
         return (char) ('Z' + 'A' - c);
     }
 }

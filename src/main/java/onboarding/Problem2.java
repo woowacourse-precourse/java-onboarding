@@ -7,7 +7,9 @@ public class Problem2 {
      * @return 중복 문자를 모두 제거한 cryptogram
      */
     public static String solution(String cryptogram) {
-        if (!isValid(cryptogram)) return  "false";
+        if (!isValid(cryptogram)) {
+            return  "false";
+        }
         while (isDuplicate(cryptogram) != -1) {
             cryptogram = deleteDuplicate(cryptogram);
         }
@@ -20,10 +22,14 @@ public class Problem2 {
      * @return 문자열의 길이가 1미만, 1000초과일 경우, 대문자가 있는 경우 false, 이외의 경우 true
      */
     public static boolean isValid(String cryptogram) {
-        if (cryptogram.length() > 1000 || cryptogram.length() < 1) return false;
+        if (cryptogram.length() > 1000 || cryptogram.length() < 1) {
+            return false;
+        }
         for (int i = 0; i < cryptogram.length(); i++) {
             char c = cryptogram.charAt(i);
-            if (Character.isUpperCase(c)) return false;
+            if (Character.isUpperCase(c)) {
+                return false;
+            }
         }
         return true;
     }
@@ -37,7 +43,9 @@ public class Problem2 {
         for (int i = 0; i < cryptogram.length() - 1; i++) {
             char nowChar = cryptogram.charAt(i);
             char nextChar = cryptogram.charAt(i+1);
-            if (nowChar == nextChar) return i;
+            if (nowChar == nextChar) {
+                return i;
+            }
         }
         return -1;
     }

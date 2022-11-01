@@ -35,11 +35,17 @@ class Problem1 {
         int left = page.get(0);
         int right = page.get(1);
         // 페이지 범위 검사
-        if (left < 1 || left > 400) return false;
+        if (left < 1 || left > 400) {
+            return false;
+        }
         // 왼쪽 페이지가 홀수, 오른쪽 페이지가 짝수인지 검사
-        if (left % 2 != 1 || right % 2 != 0) return false;
+        if (left % 2 != 1 || right % 2 != 0) {
+            return false;
+        }
         // 연속된 페이지인지 검사
-        if (right - left != 1) return false;
+        if (right - left != 1) {
+            return false;
+        }
         return true;
     }
     /**
@@ -54,7 +60,9 @@ class Problem1 {
         int leftResult = getSumAndMul(left);
         int rightResult = getSumAndMul(right);
 
-        if (leftResult > rightResult) return leftResult;
+        if (leftResult > rightResult) {
+            return leftResult;
+        }
         return rightResult;
     }
     public static int getSumAndMul(int page) {
@@ -67,7 +75,9 @@ class Problem1 {
             mul *= digit;
             page /= 10;
         }
-        if (sum > mul) return sum;
+        if (sum > mul) {
+            return sum;
+        }
         return mul;
     }
 

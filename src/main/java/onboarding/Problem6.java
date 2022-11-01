@@ -39,7 +39,9 @@ public class Problem6 {
         for (String nickname: nicknames) {
             for (int i = 0; i < nickname.length()-1; i++) {
                 String subString = nickname.substring(i, i+2);
-                if(isDuplicateSub(nicknames, nickname, subString)) duplicatedNicknameSubstring.add(nickname);
+                if(isDuplicateSub(nicknames, nickname, subString)) {
+                    duplicatedNicknameSubstring.add(nickname);
+                }
             }
         }
         return duplicatedNicknameSubstring;
@@ -54,8 +56,12 @@ public class Problem6 {
      */
     public static boolean isDuplicateSub(List<String> nicknames, String name, String subString) {
         for (String nickname: nicknames) {
-            if (name.equals(nickname)) continue;
-            if (nickname.contains(subString)) return true;
+            if (name.equals(nickname)) {
+                continue;
+            }
+            if (nickname.contains(subString)) {
+                return true;
+            }
         }
         return false;
     }
@@ -65,7 +71,10 @@ public class Problem6 {
 
         for (List<String> form: forms) {
             for (String nickname: nicknames) {
-                if (form.get(1).equals(nickname)) emails.add(form.get(0));
+                String checkNickname = form.get(1);
+                if (checkNickname.equals(nickname)) {
+                    emails.add(form.get(0));
+                }
             }
         }
         return emails;
