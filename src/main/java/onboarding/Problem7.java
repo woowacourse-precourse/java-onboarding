@@ -15,8 +15,7 @@ public class Problem7 {
 
         // user, user의 친구는 제외
         List<String> excludes = new ArrayList<>();
-        excludes.add(user);
-        excludes.addAll(friendsOfUser);
+        excludeUserAndFriendsOfUser(excludes, user, friendsOfUser);
 
         for (String friendOfUser : friendsOfUser) {
             //user의 친구의 친구
@@ -28,6 +27,11 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();;
 
         return answer;
+    }
+
+    private static void excludeUserAndFriendsOfUser(List<String> excludes, String user, List<String> friendsOfUser) {
+        excludes.add(user);
+        excludes.addAll(friendsOfUser);
     }
 
     // 첫 파라미터의 친구를 찾는 메서드
