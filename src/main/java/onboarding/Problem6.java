@@ -31,7 +31,8 @@ public class Problem6 {
         // 다시 Set을 List로 변환
         List<String> answer = new ArrayList<>(answerSet);
 
-
+        // 오름차순 정렬
+        Collections.sort(answer);
 
         return answer;
     }
