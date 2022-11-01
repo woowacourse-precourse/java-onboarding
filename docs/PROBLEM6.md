@@ -37,3 +37,7 @@
 1. isContainSameStr
    - parameter: 비교하 두 개의 문자열 ex) String a, String b
    - return: boolean type
+2. createComparisonPair
+   - parameter: List<List<String>> 형태의 입력
+   - return: 인데스 리스트 ex) [[0,1], [0,2], ...]
+
