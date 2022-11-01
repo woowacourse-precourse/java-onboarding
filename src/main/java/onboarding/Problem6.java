@@ -10,7 +10,7 @@ import java.util.stream.Collectors;
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
-        Map<String, List<String>> overlapMap = getOverlapMap(forms);
+        Map<String, List<String>> overlapMap = createOverlapMap(forms);
         
         answer = getListMaximumSizeOnMap(overlapMap);
         answer.sort(Comparator.naturalOrder());
@@ -18,7 +18,7 @@ public class Problem6 {
         return answer;
     }
     
-    private static Map<String, List<String>> getOverlapMap(List<List<String>> list){
+    private static Map<String, List<String>> createOverlapMap(List<List<String>> list){
     	Map<String, List<String>> overlapMap = new HashMap<>();
     	
     	for(int i = 0; i < list.size(); i++) {
@@ -26,7 +26,7 @@ public class Problem6 {
     			String s = list.get(i).get(1).substring(j, j + 2);
     			if(!overlapMap.containsKey(s)) {
     				overlapMap.put(s, new LinkedList<>());
-    				removeOverlap(overlapMap.get(s));
+    				removeOverlapEmail(overlapMap.get(s));
     			}
     			overlapMap.get(s).add(list.get(i).get(0));
     		}
@@ -35,7 +35,7 @@ public class Problem6 {
     	return overlapMap;
     }
     
-    private static List<String> removeOverlap(List<String> list){
+    private static List<String> removeOverlapEmail(List<String> list){
     	return list.stream().distinct().collect(Collectors.toList());
     }
     
