@@ -48,7 +48,7 @@ class Problem1 {
 	private static boolean checkValid(List<Integer> pages) {
 		if (pages.get(0) % 2 == 0 || pages.get(0) < 2)
 			return false;
-		if (pages.get(1) != pages.get(0) + 1 || pages.get(0) > 399)
+		if (pages.get(1) != pages.get(0) + 1 || pages.get(1) > 399)
 			return false;
 		return true;
 	}
