@@ -55,5 +55,13 @@ public class Problem7 {
         return numberOfFriendsKnowWithUser;
     }
 
+    private void give1ScoreForNumberOfVisitToUserTimeline(String user,List<String> visitors){
+        for(String person : visitors){
+            if(IsUserOrUserFriend(user,person)) continue;
+
+            scoreInfoTable.put(person, scoreInfoTable.getOrDefault(person,0)+1);
+        }
+    }
+
 
 }
