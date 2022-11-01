@@ -2,15 +2,20 @@ package onboarding;
 
 import java.util.*;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
+        Map<String, Set<String>> friendList = new HashMap<>();
 
         if (validData(user, friends, visitors)) {
-            Map<String, Set<String>> friendList = organizeFriendList(friends);
-
+            friendList = organizeFriendList(friends, visitors);
+            answer = recommendFriend(user, friendList, visitors);
         }
+        /*else {
+            //answer.add(0,"데이터가 적합하지 않습니다");
+        }*/
 
         return answer;
     }
@@ -45,7 +50,7 @@ public class Problem7 {
     }
 
     // 친구 관계 정리 메소드
-    private static Map<String, Set<String>> organizeFriendList(List<List<String>> friends) {
+    private static Map<String, Set<String>> organizeFriendList(List<List<String>> friends, List<String> visitors) {
         // 친구 관계를 저장하기 위한 HashMap 생성
         Map<String, Set<String>> userFriendList = new HashMap<>();
 
@@ -70,13 +75,51 @@ public class Problem7 {
 
                 userFriendList.put(userIdArray[i], temp);
             }
+
+            for (String visitor: visitors) {
+                if (!(userFriendList.containsKey(visitor))) userFriendList.put(visitor, new HashSet<>());
+            }
         }
 
         return userFriendList;
     }
 
     // 추천 친구 결정 메소드
-    /*private static List<String> recommendFriend() {
+    private static List<String> recommendFriend(String user, Map<String, Set<String>> friendList,
+                                                List<String> visitors) {
+        Set<String> usersFriend = friendList.get(user);
+        Map<String, Integer> candidateCount = new HashMap<>();
+        List<String> tempList = new ArrayList<>();
 
-    }*/
+        for (Map.Entry<String, Set<String>> entry : friendList.entrySet()) {
+            String key = entry.getKey();
+            Set<String> value = entry.getValue();
+            int score = 0;
+
+            if (visitors.contains(key)) score += 1;
+
+            if (!(Objects.equals(key, user))) {
+                for (String temp: usersFriend) {
+                    for (String temp2: value) {
+                        if (Objects.equals(temp, temp2)) score += 10;
+                    }
+                }
+            }
+
+            candidateCount.put(key, score);
+        }
+
+        List<Map.Entry<String, Integer>> entries =
+                candidateCount.entrySet().stream()
+                        .sorted(Map.Entry.comparingByValue(Collections.reverseOrder()))
+                        .collect(Collectors.toList());
+
+        for (Map.Entry<String, Integer> entry : entries) {
+            if (!(usersFriend.contains(entry.getKey())) && (entry.getValue() > 0)) {
+                tempList.add(entry.getKey());
+            }
+        }
+
+        return tempList;
+    }
 }
