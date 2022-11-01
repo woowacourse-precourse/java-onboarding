@@ -8,6 +8,9 @@ class Problem1 {
 	public static final int POBI_WON = 1;
 	public static final int CRONG_WON = 2;
 
+	public static final int LEFT_PAGE = 0;
+	public static final int RIGHT_PAGE = 1;
+
 	public static final int FIRST_PAGE = 1;
 	public static final int LAST_PAGE = 400;
 
@@ -66,8 +69,8 @@ class Problem1 {
 	}
 
 	private static boolean isPagesContiguousValid(List<Integer> pages) {
-		Integer leftPage = pages.get(0);
-		Integer rightPage = pages.get(1);
+		Integer leftPage = pages.get(LEFT_PAGE);
+		Integer rightPage = pages.get(RIGHT_PAGE);
 		if (rightPage - leftPage != 1) {
 			return false;
 		}
@@ -75,8 +78,8 @@ class Problem1 {
 	}
 
 	private static boolean isPagesEvenOddValid(List<Integer> pages) {
-		Integer leftPage = pages.get(0);
-		Integer rightPage = pages.get(1);
+		Integer leftPage = pages.get(LEFT_PAGE);
+		Integer rightPage = pages.get(RIGHT_PAGE);
 		if (leftPage % 2 != 1 || rightPage % 2 != 0) {
 			return false;
 		}
@@ -84,8 +87,8 @@ class Problem1 {
 	}
 
 	private static boolean isPagesRangeValid(List<Integer> pages) {
-		Integer leftPage = pages.get(0);
-		Integer rightPage = pages.get(1);
+		Integer leftPage = pages.get(LEFT_PAGE);
+		Integer rightPage = pages.get(RIGHT_PAGE);
 		if (leftPage < FIRST_PAGE || rightPage > LAST_PAGE) {
 			return false;
 		}
