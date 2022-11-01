@@ -47,9 +47,9 @@ class ApplicationTest {
 
         @Test
         void case4() {
-            List<Integer> pobi = List.of(2, 3);
+            List<Integer> pobi = List.of(1, 2);
             List<Integer> crong = List.of(399, 400);
-            int result = -1;
+            int result = 2;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
     }
@@ -72,8 +72,8 @@ class ApplicationTest {
 
         @Test
         void case3() {
-            String cryptogram = "bbbaaa";
-            String result = "ba";
+            String cryptogram = "abbbccba";
+            String result = "";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
     }
@@ -96,8 +96,8 @@ class ApplicationTest {
 
         @Test
         void case3() {
-            int number = 15;
-            int result = 4;
+            int number = 99;
+            int result = 60;
             assertThat(Problem3.solution(number)).isEqualTo(result);
         }
     }
@@ -113,8 +113,8 @@ class ApplicationTest {
 
         @Test
         void case2() {
-            String word = "aaa B! ZZZ a@";
-            String result = "zzz Y! AAA z@";
+            String word = "[az] \"by\"";
+            String result = "[za] \"yb\"";
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
     }

@@ -27,7 +27,7 @@ public class Problem4 {
         Map<Character, Character> dictionary = makeDictionary();
 
         for (int i=0; i<ans.length(); i++) {
-            if (isAlphabet(ans.charAt(i))){
+            if (dictionary.containsKey(ans.charAt(i))) {
                 ans.setCharAt(i, dictionary.get(ans.charAt(i)));
             }
         }
@@ -46,14 +46,5 @@ public class Problem4 {
             dictionary.put((char)('a'+i), (char)('z'- i));
         }
         return dictionary;
-    }
-
-    /**
-     * 알파벳인지 판단하는 함수
-     * @param origin
-     * @return 알파벳이면 True, 아니면 False
-     */
-    public static boolean isAlphabet(char origin) {
-        return ((origin >= 'A' && origin <= 'Z') || (origin >= 'a' && origin <= 'z'));
     }
 }
