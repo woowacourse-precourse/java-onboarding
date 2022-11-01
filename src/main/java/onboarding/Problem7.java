@@ -10,12 +10,7 @@ public class Problem7 {
 
         initFriendShip(memberMap, friends);
 
-        Member member = getMember(memberMap, user);
-
-        visitors.forEach(userId -> {
-            Member visitor = getMember(memberMap, userId);
-            visitor.visit(member);
-        });
+        initVisitor(user, memberMap, visitors);
 
         return getUserIdsByFriendProposalScoreLimit5(memberMap, user);
     }
@@ -25,6 +20,15 @@ public class Problem7 {
             Member member1 = getMember(memberMap, friend.get(0));
             Member member2 = getMember(memberMap, friend.get(1));
             member1.friend(member2);
+        });
+    }
+
+    private static void initVisitor(String user, Map<String, Member> memberMap, List<String> visitors) {
+        Member member = getMember(memberMap, user);
+
+        visitors.forEach(userId -> {
+            Member visitor = getMember(memberMap, userId);
+            visitor.visit(member);
         });
     }
 
