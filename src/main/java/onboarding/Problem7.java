@@ -46,7 +46,7 @@ public class Problem7 {
         }
 
     }
-    
+
     public static void friendException(String name){
         if(user_friend.containsKey(name)==true) return;
         else{
@@ -58,4 +58,11 @@ public class Problem7 {
             }
         }
     }
+
+    public static void friendVisitCheck(List<String> visitors){
+        for(int i=0;i<visitors.size();i++){
+            
+        }
+    }
+
 }
