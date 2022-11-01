@@ -14,7 +14,7 @@ public class Problem5 {
         for(int coinUnitIndex=0;coinUnitIndex<countOfCoinUnit;coinUnitIndex++){
             int coinCountByUnit=money/coinValueByCoinUnit[coinUnitIndex];
             money-=coinCountByUnit*coinValueByCoinUnit[coinUnitIndex];
-            coinCountByCoinUnit.set(coinUnitIndex, coinCountByUnit);
+            coinCountByCoinUnit.add(coinCountByUnit);
         }
         return coinCountByCoinUnit;
     }
