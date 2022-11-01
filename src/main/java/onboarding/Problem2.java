@@ -16,7 +16,7 @@ public class Problem2 {
         return answer;
     }
 
-    private static String removeDuplicates(String cryptogram){
+    private static String removeDuplicates(final String cryptogram){
         String result="";
         char prevCharacter=cryptogram.charAt(0);
         boolean checkDuplication=false;
@@ -40,7 +40,7 @@ public class Problem2 {
         return result;
     }
 
-    private static boolean isDuplicated(String prevCryptogram, String cryptogram){
+    private static boolean isDuplicated(final String prevCryptogram, final String cryptogram){
         if(prevCryptogram.length()==cryptogram.length()){
             return false;
         }

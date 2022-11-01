@@ -2,7 +2,6 @@ package onboarding;
 
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Problem5 {
@@ -21,11 +20,11 @@ public class Problem5 {
         return answer;
     }
 
-    private static Integer calculateNumberOfMoney(int withdrawalAmount, int moneyValue) {
+    private static Integer calculateNumberOfMoney(final int withdrawalAmount, final int moneyValue) {
         return withdrawalAmount/moneyValue;
     }
 
-    private static int calculateRestOfMoney(int withdrawalAmount, int moneyValue) {
+    private static int calculateRestOfMoney(final int withdrawalAmount, final int moneyValue) {
         return withdrawalAmount%moneyValue;
     }
 }

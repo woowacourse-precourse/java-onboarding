@@ -9,15 +9,15 @@ public class Problem6 {
         Set<String> answer = new HashSet<>();
 
         for (List<String> crew : forms) {
-            String nickName = crew.get(1);
+            final String nickName = crew.get(1);
             if (nickName.length() < 2) {
                 continue;
             }
 
             String email = crew.get(0);
             for (int i = 0; i < nickName.length() - 1; i++) {
-                String partialName = nickName.substring(i, i+2);
-                String userEmailWithDuplicatedName = duplicateNames.getOrDefault(partialName,"");
+                final String partialName = nickName.substring(i, i+2);
+                final String userEmailWithDuplicatedName = duplicateNames.getOrDefault(partialName,"");
 
                 if(isDuplicatedName(userEmailWithDuplicatedName,email)){
                     answer.add(email);

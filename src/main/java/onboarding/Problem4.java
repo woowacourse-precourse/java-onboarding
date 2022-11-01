@@ -9,11 +9,11 @@ public class Problem4 {
         return createWordByDictionary(word);
     }
 
-    private static String createWordByDictionary(String word) {
+    private static String createWordByDictionary(final String word) {
         StringBuilder answer=new StringBuilder();
 
         for(int i=0;i<word.length();i++){
-            char character=word.charAt(i);
+            final char character=word.charAt(i);
 
             if(Character.isAlphabetic(character)){
                 answer.append(convertWordByDictionary(character));
@@ -24,7 +24,7 @@ public class Problem4 {
         return answer.toString();
     }
 
-    private static char convertWordByDictionary(char character) {
+    private static char convertWordByDictionary(final char character) {
         if(Character.isLowerCase(character)){
             return Character.toLowerCase(dictionary[character-'a']);
         }
