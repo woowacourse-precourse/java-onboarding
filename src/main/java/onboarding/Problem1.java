@@ -29,7 +29,8 @@ class Problem1 {
         int max = Math.max(pages.get(0), pages.get(1));
         return min < 1 || max > 400; // 페이지 범위는 1에서 400
     }
-
+    
+    // 페이지 점수 계산
     static int score(int page) {
         int product = 1;
         int sum = 0;
@@ -42,6 +43,7 @@ class Problem1 {
         return Math.max(product, sum);
     }
 
+    // 가장 점수 높은 페이지 출력(두개만 비교해도 되지만, 나중에 게임 방식이 바뀔 수도 있는 것을 고려함)
     static int score(List<Integer> pages) {
         return pages.stream()
                 .mapToInt(Problem1::score)
