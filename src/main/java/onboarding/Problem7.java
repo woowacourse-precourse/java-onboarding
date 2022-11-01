@@ -22,22 +22,20 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer;
 
+        // find already friend with user
         List<String> alreadyFriends = getFriendWithUser(user, friends);
+
+        // set recommend score
         Map<String, Integer> ScoreFriendsMap = setTenScore(user, alreadyFriends, friends);
         ScoreFriendsMap = setOneScore(alreadyFriends, visitors, ScoreFriendsMap);
 
-        /*
-        List<ScoreFriends> ScoreFriends = d;
+        // sorting recommend list
+        List<ScoreFriends> ScoreFriends = mapToScoreFriends(ScoreFriendsMap);
+        ScoreFriends = sortByScoreReverseThenName(ScoreFriends);
 
-        List<Map.Entry<String, Integer>> entryList = sortList(ScoreFriends);
-        answer = setRecommendList(entryList);*/
-        /**
-         * 1. user랑 친구(1차)인 애들을 먼저 찾기
-         * 2. 1차랑 친구인 애들 찾아서 10점씩 주기
-         * 3. visitor한테 1점씩 주기
-         * 4. 점수대로 정렬하기
-         * */
-        return null;
+        // return 5(at most) recommending friend list
+        answer = setRecommendList(ScoreFriends);
+        return answer;
     }
 
     public static List<String> getFriendWithUser(String user, List<List<String>> friends){
@@ -95,25 +93,24 @@ public class Problem7 {
         }
         return ScoreFriendsMap;
     }
-    /*
     public static List<ScoreFriends> mapToScoreFriends(Map<String, Integer> map){
-        for (Map.Entry<String, Integer> entry : map.entrySet())
-    }*/
-    public static List<Map.Entry<String, Integer>> sortList(Map<String, Integer> ScoreFriends){
-        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(ScoreFriends.entrySet());
-        //entryList.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
-        entryList.sort(Comparator.comparing(Map.Entry.stream()::getValue).reversed().thenComparing(Map.Entry::getKey));
-        return entryList;
+        List<ScoreFriends> list = new ArrayList<>();
+        for (Map.Entry<String, Integer> entry : map.entrySet()){
+            list.add(new ScoreFriends(entry.getKey(), entry.getValue()));
+        }
+        return list;
     }
-    public static List<String> setRecommendList(List<Map.Entry<String, Integer>> entryList){
+    public static List<ScoreFriends> sortByScoreReverseThenName(List<ScoreFriends> list){
+        list.sort(Comparator.comparing(ScoreFriends::getScore).reversed()
+                            .thenComparing(ScoreFriends::getName));
+        return list;
+    }
+    public static List<String> setRecommendList(List<ScoreFriends> list){
         List<String> answer = new ArrayList<>();
         for (int i=0; i<5; i++){
-            if (i >= entryList.size()) break;
-            answer.add(entryList.get(i).getKey());
+            if (i >= list.size()) break;
+            answer.add(list.get(i).getName());
         }
         return answer;
     }
 }
-/**제한 사항
- * 1. 추천 점수가 0점이면 5명이 채 되지 않더라도 리턴하지 않을 것
- * */
