@@ -25,11 +25,6 @@ public class Problem5 {
 		return answer;
 	}
 
-	/**
-	 * 제한사항을 위배했는지 체크하는 메서드
-	 * @param money
-	 * @return
-	 */
 	private static Integer checkRestrictions(int money) {
 		if (!isMoneyRangeValid(money)) {
 			return EXCEPTION;
@@ -37,7 +32,6 @@ public class Problem5 {
 		return 0;
 	}
 
-	// money 가 1 이상 1,000,000 이하인 자연수가 아닌 경우 예외
 	private static boolean isMoneyRangeValid(int money) {
 		if (money < 1 || money > 1000000) {
 			return false;
