@@ -45,6 +45,14 @@ public class Problem7 {
                 recommendlist.put(name1, recommendlist.get(name1)+10);
             }
         }
+        
+        //4) 방문 횟수에 따라 추천 점수 증가
+        for(int i=0; i<visitors.size(); i++){
+            String name = visitors.get(i);
+            if (recommendlist.containsKey(name)) {
+                recommendlist.put(name, recommendlist.get(name) + 1);
+            }
+        }
 
         return answer;
     }
