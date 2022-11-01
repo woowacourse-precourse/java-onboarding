@@ -13,9 +13,8 @@ class Problem1 {
         int pobiNumber = Math.max(maxNumberByPage(pobi.get(0)), maxNumberByPage(pobi.get(1)));
         int crongNumber = Math.max(maxNumberByPage(crong.get(0)), maxNumberByPage(crong.get(1)));
 
-        if (pobiNumber > crongNumber) return 1;
-        else if (crongNumber > pobiNumber) return 2;
-        else return 0;
+        int answer = Integer.MAX_VALUE;
+        return answer;
     }
 
     public static boolean except(List<Integer> list) {
