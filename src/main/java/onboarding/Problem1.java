@@ -53,10 +53,7 @@ class Problem1 {
     }
 
     public static int max(int sum, int multi) {
-        if (sum >= multi) {
-            return sum;
-        }
-        return multi;
+        return Math.max(sum, multi);
     }
 
     public static int fight(int pobiScore, int crongScore) {
