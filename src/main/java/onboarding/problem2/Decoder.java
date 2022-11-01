@@ -13,18 +13,18 @@ public class Decoder {
     }
 
     public String decode() {
-        int size;
+        int textSize;
         do {
-            size = decodingText.size();
-            removeDuplication(size);
-        } while (size != decodingText.size() && !decodingText.isEmpty());
+            textSize = decodingText.size();
+            removeDuplication(textSize);
+        } while (textSize != decodingText.size() && !decodingText.isEmpty());
         return buildPlainText();
     }
 
-    private void removeDuplication(int size) {
+    private void removeDuplication(int textSize) {
         boolean duplicated = false;
 
-        for (int i = 0; i < size - 1; i++) {
+        for (int i = 0; i < textSize - 1; i++) {
             Character ch = decodingText.poll();
             if (decodingText.peek() == ch)
                 duplicated = true;
