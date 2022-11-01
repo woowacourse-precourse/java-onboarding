@@ -45,7 +45,7 @@ class Problem1 {
     }
 
     //각 자리 숫자의 곱과 덧셈 중 더 큰 값을 점수로 하기
-    public static int score(List<Integer> list){
+    public static int makeScore(List<Integer> list){
         int a = list.get(0);
         int b = list.get(1);
         int resultA = 0;
@@ -79,7 +79,7 @@ class Problem1 {
         else if(!(verifyConditions(crong)))
             answer = -1;
         else
-            answer = winner(score(pobi), score(crong));
+            answer = winner(makeScore(pobi), makeScore(crong));
 
         return answer;
     }
