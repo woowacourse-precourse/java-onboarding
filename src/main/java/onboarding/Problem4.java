@@ -28,6 +28,8 @@ public class Problem4 {
     }
 
     private static boolean isCharacterUpperCase(char character) {
+        if (character >= 'A' && character <= 'Z') return true;
+        return false;
     }
 
     private static boolean isCharacterLowerCase(char character) {
