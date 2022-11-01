@@ -20,5 +20,12 @@ public class Problem6 {
         }
         return map;
     }
-   
+    public static HashMap<String, Integer> getNicknameAndCountHashMap(List<List<String>> forms) {
+        HashMap<String, Integer> nicknameAndCountHashMap = new HashMap<>();
+
+        for (List<String> item : forms) {
+            getTwoCharAndCountHashMap(item).forEach((key, value) -> nicknameAndCountHashMap.merge(key, value, Integer::sum));
+        }
+        return nicknameAndCountHashMap;
+    }
 }
