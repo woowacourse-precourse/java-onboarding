@@ -121,7 +121,7 @@ public class Problem7 {
 
     public static List<String> findTop5(ArrayList<FriendInfo> PersonInfo)
     {
-        List<String> top5 = Collections.emptyList();
+        List<String> top5 = new ArrayList<>();
         for(int i=0; i< PersonInfo.size(); i++)
         {
             for(int j=i; j< PersonInfo.size(); j++)
@@ -131,17 +131,17 @@ public class Problem7 {
                     PersonInfo.set(i,PersonInfo.get(j));
                     PersonInfo.set(j,temp);
                 } else if (PersonInfo.get(i).getScore()==PersonInfo.get(j).getScore()) {
-                    if(PersonInfo.get(i).getName().compareTo(PersonInfo.get(j).getName()) < 0)//문자열 비교
+                    if(PersonInfo.get(i).getName().compareTo(PersonInfo.get(j).getName()) > 0)//문자열 비교
                     {
                         PersonInfo.set(i,PersonInfo.get(j));
                         PersonInfo.set(j,temp);
                     }
                 }
-
             }
         }
-        for(int i=0; i<5; i++)
+        for(int i=0; i< PersonInfo.size(); i++)
         {
+            if(i>5) break;
             top5.add(PersonInfo.get(i).getName());
         }
         return top5;
