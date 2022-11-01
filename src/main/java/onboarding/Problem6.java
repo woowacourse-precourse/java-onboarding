@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,13 +13,18 @@ public class Problem6 {
 
 	public static List<String> solution(List<List<String>> forms) {
 
+		List<String> answer = Collections.emptyList();
+
 		try {
 			isValidForms(forms);
 		} catch (IllegalStateException formErrorExceptions) {
 			formErrorExceptions.printStackTrace();
+			return answer;
 		}
 
-		return getResultList(forms);
+		answer = getResultList(forms);
+
+		return answer;
 	}
 
 	public static void isValidForms(List<List<String>> forms) throws IllegalStateException {
