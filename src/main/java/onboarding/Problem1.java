@@ -14,7 +14,6 @@ class Problem1 {
         for (Integer integer : pobi) {
             int[] arr = Stream.of(String.valueOf(integer).split("")).mapToInt(Integer::parseInt).toArray();
             int r = 2;
-
             Combination comb = new Combination(arr.length, r);
             comb.combination(arr, 0, 0, 0);
             ArrayList<ArrayList<Integer>> result = comb.getResult();
