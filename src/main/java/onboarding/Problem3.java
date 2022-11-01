@@ -36,7 +36,7 @@ public class Problem3 {
         return n == 3 || n == 6 || n == 9;
     }
 
-    static boolean isOutOfRange(int number) {
+    private static boolean isOutOfRange(int number) {
         return number < MIN_NUMBER || number > MAX_NUMBER;
     }
 }
