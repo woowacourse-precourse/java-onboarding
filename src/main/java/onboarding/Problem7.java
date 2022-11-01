@@ -49,6 +49,13 @@ public class Problem7 {
             FrFriends.addAll(getFriendSet(friends, name));
         }
 
+        // 3. 친구의 친구들 frFriends 를 순회하며 이 중 noFriend set 에 있는 사람의 score 를 recommScore 에 10 더한다
+        for (String name : FrFriends) {
+            if(noFriend.contains(name)){
+                addRecommScore(recommScore,10, name);
+            }
+        }
+
 
 //  1. getFriendSet(List<List<String>> friends, String user)
 //     - @param String user 에 해당하는 사람의 친구들 set 을 반환
