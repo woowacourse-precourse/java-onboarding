@@ -26,5 +26,10 @@ public class Problem7 {
 
         return friendList;
     }
+    private static void setScoreToFriendOfUserFriend(List<String> friendsOfUserFriends) {
+
+        for(String friend: friendsOfUserFriends)
+            recommends.putIfAbsent(friend, 10);
+    }
 
 }
