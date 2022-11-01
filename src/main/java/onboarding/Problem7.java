@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * 요구사항
@@ -42,10 +39,13 @@ public class Problem7 {
     }
 
     public static HashMap<String, Integer> friendsListMap(String user, List<List<String>> friends, List<String> visitors) {
-        HashMap<String, Integer> scoreMap = new HashMap<>();
+        HashMap<String, Integer> scoreMap = new HashMap<>(); // 추천친구와 추천 점수를 저장
+        HashSet<String> friend = new HashSet<>(); // 이미 친구인 친구를 저장
 
+        // friends
         for (List<String> withFriend : friends) { // 함께 아는 친구를 map에 저장
             String friendName = withFriend.get(1);
+            friend.add(withFriend.get(0));
 
             if (friendName == user)  // 본인일 때
                 continue;
@@ -56,10 +56,16 @@ public class Problem7 {
             scoreMap.put(friendName, 10);
         }
 
+        // visitors
         for (String friendName : visitors) {  // 방문자를 map에 저장
-            if (scoreMap.containsKey(friendName)) // map에 이미 친구가 있을 떄 반복문 continue
+            if(friend.contains(friendName)) { // 이미 친구일 때
                 continue;
-            scoreMap.put(friendName, 0);
+            }
+            if (scoreMap.containsKey(friendName)) { // map에 이미 친구가 있을 떄
+                scoreMap.put(friendName, scoreMap.get(friendName) + 1);
+                continue;
+            }
+            scoreMap.put(friendName, 1);
         }
 
         return scoreMap;
