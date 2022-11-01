@@ -3,6 +3,9 @@ package onboarding;
 public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
+        for(int i = 0; i <= number; i++) {  // 0부터 number 까지 모든 숫자를 확인한다.
+            answer += isIt369(i);
+        }
         return answer;
     }
 
