@@ -7,7 +7,7 @@ public class Problem3 {
 		return answer;
 	}
 
-	public static int countSpecial(int number) {
+	private static int countSpecial(int number) {
 		int count = 0;
 		while (number > 0) {
 			if ((number % 10) != 0 && (number % 10 % 3) == 0) {
