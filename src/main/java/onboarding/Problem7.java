@@ -70,7 +70,7 @@ public class Problem7 {
             for(int no : frRel.get(i))
                 if(userfr[no]) score[i] += 10;
         }
-        ArrayList<Info> recList = new ArrayList<Info>();
+        ArrayList<Info> recList = new ArrayList<>();
         for(int i = 0; i < MX; i++)
             if(score[i] != 0 && !userfr[i] && (i != userNo))
                 recList.add(new Info(score[i], noToId.get(i)));
