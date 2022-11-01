@@ -21,6 +21,22 @@ public class Problem7 {
 
         HashMap<String, Integer> scoreBoard = calculateScore(visitors, dist, graph, user);
 
+        for (String userName : scoreBoard.keySet()) {
+            pq.add(new Node(userName, scoreBoard.get(userName)));
+        }
+
+        int cnt = 0;
+        while (!pq.isEmpty() && cnt <= 5) {
+            Node v = pq.poll();
+            if (dist.containsKey(v.v) && dist.get(v.v) == 1) {
+                continue;
+            }
+            answer.add(v.v);
+            cnt += 1;
+        }
+
+        return answer;
+
     }
 
     private static class Node {
