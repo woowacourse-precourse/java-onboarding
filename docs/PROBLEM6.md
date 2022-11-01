@@ -21,3 +21,10 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+---
+## 🚩 구현할 기능 목록
+- [x] 각 닉네임에서 나올 수 있는 두 글자의 모든 경우의 수 구하기
+- [x] 중복된 부분 닉네임이 있는지 확인하기
+- [x] 닉네임이 중복된 사람 이메일 추가하기
+- [x] 이메일 리스트 정렬하여 반환하기
