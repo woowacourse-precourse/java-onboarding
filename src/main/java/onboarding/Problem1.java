@@ -39,4 +39,23 @@ class Problem1 {
         }
         return false;
     }
+
+    /**
+     * 기능목록 2
+     * @param list
+     * @return list 안의 값들의 각 자릿수들을 모두 더한 값
+     */
+    private static int calculateAdd(List<Integer> list) {
+        int result = 0;
+        for (int i = 0; i < 2; i++) {
+            int sum = 0;
+            int num = list.get(i);
+            while (num > 0) {
+                sum += num % 10;
+                num /= 10;
+            }
+            result += sum;
+        }
+        return result;
+    }
 }
