@@ -16,5 +16,27 @@ public class Problem2 {
         }
         return true;
     }
+    public static String removeDuplication(String str){
+        boolean deleted = false;
+        String previous = "";
+        StringBuilder sb = new StringBuilder();
 
+        for(String word : str.split("")){
+            if(previous.equals(word)){
+                deleted = true;
+                sb.deleteCharAt(sb.lastIndexOf(previous));
+                previous = "";
+                continue;
+            }
+            previous = word;
+            sb.append(word);
+        }
+
+        if(deleted) {
+            removeDuplication(sb.toString());
+        }
+
+
+        return sb.toString();
+    }
 }
