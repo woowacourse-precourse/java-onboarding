@@ -4,11 +4,8 @@ public class Problem2 {
     public static boolean validateInput(String cryptogram) {
         if (cryptogram.length() > 1000 || cryptogram.length() < 1)
             return false;
-        String[] strArray = cryptogram.split("");
-        for(String s : strArray) {
-            if (!Character.isLowerCase(s.charAt(0)))
-                return false;
-        }
+        else if (!cryptogram.toLowerCase().equals(cryptogram))
+            return false;
         return true;
     }
     public static boolean removeRepeatChar(StringBuilder answer) {
