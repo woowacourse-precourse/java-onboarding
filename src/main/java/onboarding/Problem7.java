@@ -53,6 +53,12 @@ public class Problem7 {
                 recommendlist.put(name, recommendlist.get(name) + 1);
             }
         }
+        
+        //5) Value값(추천 점수)에 따라 정렬
+        answer = new ArrayList<>();
+        List<String> keySet = new ArrayList<>(recommendlist.keySet());
+        keySet.sort((o1, o2) -> recommendlist.get(o2) - recommendlist.get(o1));
+        for (String key : keySet) answer.add(key);
 
         return answer;
     }
