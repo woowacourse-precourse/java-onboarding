@@ -72,6 +72,13 @@ public class Problem7 {
                     guest_score[i] += 1; //사용자의 타임 라인에 방문한 횟수 = 1점
             }
         }
+        for (i = 0; i < guest.length; i++) {
+            for (j = 0; j < nickname.length; j++) {
+                if (guest[i] == nickname[j])
+                    guest_score[i] = 0; // 이미 친구이면 방문 점수 0으로 초기화!!
+            }
+        }
+
 
         int cnt = 0;
         int width = 0;
@@ -168,18 +175,13 @@ public class Problem7 {
         answer = temp_ans;
 
 
-        System.out.println();
-        for(i =0; i< order_idx.length;i++) {
-            System.out.print(order_idx[i] + " ");
-        }
-        System.out.println();
-        for(i =0; i< list.length;i++) {
+/*        for(i =0; i< list.length;i++) {
             for (j = 0; j < list[0].length; j++) {
                 System.out.print(list[i][j] + " ");
             }
             System.out.println();
         }
-        System.out.println();
+        System.out.println();*/
 
         for(i =0; i< answer.size();i++) {
             System.out.print(answer.get(i) + " ");
