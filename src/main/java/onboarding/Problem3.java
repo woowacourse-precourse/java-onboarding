@@ -11,6 +11,7 @@ public class Problem3 {
 		private final static int DEFAULT_MAXIMUM_CLAPPING = 0;
 		private final static int UNIT_CONVERT_CRITERIA = 10;
 		private final static int COMMON_CLAP_CYCLE = 3;
+		private final static int COUNT_FROM_ZERO = 1;
 		private int currentDigitUnit;
 		private int previousUnitMaxClap;
 
@@ -26,7 +27,7 @@ public class Problem3 {
 
 			while (number > 0) {
 				currentDigit = number % 10;
-				totalClaps += getCurrentTotal(currentDigit, currentDigitUnit, previousUnitMaxClap, previousNumberSum);
+				totalClaps += getNumberOfClap(currentDigit, previousNumberSum);
 				previousUnitMaxClap += getCurrentTotal(9, currentDigitUnit, previousUnitMaxClap, currentDigitUnit - 1);
 				previousNumberSum += currentDigit * currentDigitUnit;
 				number /= UNIT_CONVERT_CRITERIA;
@@ -46,6 +47,14 @@ public class Problem3 {
 
 		private boolean isUnfilledCaseHasClap(int number) {
 			return number % COMMON_CLAP_CYCLE == 0;
+		}
+
+		private int getNumberOfClap(int number, int previousNumberSum) {
+			int clapping = getFilledCaseClap(number);
+			if (isUnfilledCaseHasClap(number)) {
+				clapping += previousNumberSum + COUNT_FROM_ZERO;
+			}
+			return clapping;
 		}
 	}
 }
