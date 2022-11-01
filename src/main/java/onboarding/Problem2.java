@@ -54,6 +54,15 @@ public class Problem2 {
         }
     }
 
+    private static StringBuilder getPlainText(String cryptogram) {
+        StringBuilder plainText = toStringBuilder(cryptogram);
+        do {
+            decrypt(plainText);
+        } while (isDuplicateFullRange(plainText));
+
+        return plainText;
+    }
+
     private static String toString(StringBuilder stringBuilderCryptogram) {
         return stringBuilderCryptogram.toString();
     }
