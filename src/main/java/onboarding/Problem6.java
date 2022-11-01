@@ -48,12 +48,12 @@ public class Problem6 {
         savePiece(emailIndex, currentPieces, pieceStorage);
     }
 
-    public static void savePiece(int emailIndex, List<String> currentPieces, Map<String, Integer> pieceStorage) {
+    private static void savePiece(int emailIndex, List<String> currentPieces, Map<String, Integer> pieceStorage) {
         for(String piece : currentPieces) {
             pieceStorage.put(piece, emailIndex);
         }
     }
-    public static void saveDuplicatedEmail(int emailIndex, String piece,
+    private static void saveDuplicatedEmail(int emailIndex, String piece,
                                            List<String> duplicatedEmails, String[] emails
             , boolean[] emailsDuplicateCheck,
                                            Map<String, Integer> pieceStorage) {
