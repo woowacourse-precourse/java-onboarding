@@ -12,6 +12,7 @@ public class Problem7 {
         Map<Integer, String> idToNameMap = new HashMap<>();
 
         setId(allNames, nameToIdMap, idToNameMap);
+        setFriendship(friends, friendship, nameToIdMap);
 
         List<String> answer = Collections.emptyList();
         return answer;
@@ -48,6 +49,16 @@ public class Problem7 {
             idToNameMap.put(sequence, name);
 
             sequence++;
+        }
+    }
+
+    private static void setFriendship(List<List<String>> friends, List<Integer>[] friendship, Map<String, Integer> nameToIdMap) {
+        for (int i = 0; i < friends.size(); i++) {
+            int people = nameToIdMap.get(friends.get(i).get(0));
+            int otherPeople = nameToIdMap.get(friends.get(i).get(1));
+
+            friendship[people].add(otherPeople);
+            friendship[otherPeople].add(people);
         }
     }
 }
