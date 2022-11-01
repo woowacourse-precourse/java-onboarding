@@ -16,6 +16,9 @@ class User {
     public String getName() {
         return this.name;
     }
+    public List<String> getFriendList() {
+        return this.friendList;
+    }
 
     public void classFriend(String friendName) {//클래스에 넣기
         this.friendList.add(friendName);
@@ -35,22 +38,42 @@ public class Problem7 {
         return classList.get(name); //User 클래스 리턴
     }
 
-    public static void makeFriend(List<List<String>> friendList) { //친구 목록에 추가하기
+    public static void makeFriend(List<List<String>> friendList) { //친구 맺기
         for (int i = 0; i < friendList.size(); i++) {
-/*            //클래스 만들기, 멤버변수 Hashmap에 상대방 저장
 
+            //i번째 node의 각 원소에 대한 클래스 가져오기
             User first = findClass(friendList.get(i).get(0)); //i번째 node의 첫 번째 원소
             User second = findClass(friendList.get(i).get(1)); //i번째 node의 두 번째 원소
 
-            //친구 추가하기
-            first.classFriend(second.getName());*/
+            //User 멤버변수 classFriend에 없는 String(name)일 경우 추가하기
+            if (!first.getFriendList().contains(second.getName()))
+                first.classFriend(second.getName());
+            if (!second.getFriendList().contains(first.getName()))
+                second.classFriend(first.getName());
         }
+    }
+
+    public static void friendScore() {
+        
+    }
+    public static void visitorScore() {
+
+    }
+    public static List<Integer> scoreManage() {
+
+        friendScore();
+        visitorScore();
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+
+        //1. 친구 맺기
         makeFriend(friends);
 
+        //2. scoreManage - 추천 점수 매기기
+
+        //3. 추천 점수 상위 5명 담긴 리스트 리턴받기
 
         return answer;
     }
