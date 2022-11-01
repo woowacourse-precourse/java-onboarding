@@ -5,6 +5,10 @@ public class Problem2 {
         String answer = "answer";
         StringBuilder sb = new StringBuilder(cryptogram);
 
+        if (isError(cryptogram)) {
+            answer = "에러메세지";
+            return answer;
+        }
         while (hasConsecutiveWord(sb)) {
             sb = removeConsecutiveWord(sb);
         }
@@ -47,6 +51,16 @@ public class Problem2 {
             }
             break;
         }
+
         return end;
+    }
+
+    public static boolean isError(String cryptogram) {
+        for (int i = 0; i < cryptogram.length(); i++) {
+            if (Character.isUpperCase(cryptogram.charAt(i))) {
+                return true;
+            }
+        }
+        return (cryptogram.length() < 1) || (cryptogram.length() > 100);
     }
 }
