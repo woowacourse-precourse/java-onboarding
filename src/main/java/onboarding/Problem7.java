@@ -33,4 +33,9 @@ public class Problem7 {
         }
         return friendMap;
     }
+
+    public static boolean isFriend(String user, String friend, HashMap<String, HashSet<String>> friendMap){
+        if (friendMap.get(user).contains(friend) || friend.equals(user)) return true;
+        else return false;
+    }
 }
