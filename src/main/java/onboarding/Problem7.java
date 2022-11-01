@@ -43,6 +43,21 @@ public class Problem7 {
     }
 
 
+    private static HashMap<String, Integer> addPointByFriends(HashMap<String, Integer> recommend, HashMap<String, HashSet<String>> graph, String user){
+        HashSet<String> userFriends = graph.get(user);
+        for(String friend:userFriends){ //유저의 친구들
+            HashSet<String> userFriendsOfFriend = graph.get(friend); //유저의 친구들의 친구들
+            for(String friendOfFriend:userFriendsOfFriend){
+                if(friendOfFriend.equals(user) || friendOfFriend.equals(friend)) continue;  //이미 친구거나 자기자신이면 넘어감
+                if(recommend.containsKey(friendOfFriend))
+                    recommend.put(friendOfFriend, recommend.get(friendOfFriend)+10);
+                else
+                    recommend.put(friendOfFriend, 10);
+            }
+        }
+        return recommend;
+    }
+
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         HashMap<String, HashSet<String>> graph = getGraphOf(friends);
@@ -51,6 +66,7 @@ public class Problem7 {
         HashMap<String, Integer> recommend = new HashMap<>();
         addPointByVisitor(recommend, visitors);
         deleteAlreadyFriend(recommend, graph, user);
+        addPointByFriends(recommend, graph, user);
 
         return null;
     }
