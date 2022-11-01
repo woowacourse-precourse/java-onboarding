@@ -39,7 +39,6 @@ class FriendInfoController {
             }
             friendsShouldCheck.add(friendsRelation);
         }
-        usersFriends.remove(user);
     }
 
     private static void addPoint(Map<String, Integer> friendAndScore, String friend, int point) {
@@ -90,6 +89,7 @@ class FriendInfoController {
         distinguishUsersFriend(user, friends, usersFriends, friendsShouldCheck);
         checkFriends(friendAndScore, friendsShouldCheck, usersFriends);
         checkVisitors(friendAndScore, visitors, usersFriends);
+        friendAndScore.remove(user);
         return returnTopFiveFriends(friendAndScore);
     }
 
