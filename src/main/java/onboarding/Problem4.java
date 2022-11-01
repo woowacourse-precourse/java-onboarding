@@ -33,8 +33,8 @@ public class Problem4 {
     }
 
     public static void reverseUpperCase(StringBuilder stringBuilder, char character, int index) {
-        char reverse = (char) (UPPER_CASE_TOTAL - character);
-        stringBuilder.setCharAt(index, reverse);
+        char reverseChar = (char) (UPPER_CASE_TOTAL - character);
+        stringBuilder.setCharAt(index, reverseChar);
     }
 
     public static void reverseLowerCase(StringBuilder stringBuilder, char character, int index) {
