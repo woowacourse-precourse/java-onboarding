@@ -23,11 +23,8 @@ public class Problem6 {
         List<String> flattenDuplicateNicknames = flattenList(duplicateNicknames).stream()
                 .distinct()
                 .collect(Collectors.toList());
-        List<String> emails = new ArrayList<>();
-        for (int i = 0; i < flattenDuplicateNicknames.size(); i++) {
-            emails.add(profile.get(flattenDuplicateNicknames.get(i)));
-        }
-        Collections.sort(emails);
+        List<String> emails = getEmail(flattenDuplicateNicknames, profile);
+
         return emails;
     }
     public static List<String> splitToTwoLetters(String nickname){
@@ -54,5 +51,12 @@ public class Problem6 {
         }
         return result;
     }
-
+    public static List<String> getEmail(List<String> flattenDuplicateNicknames, HashMap<String, String> profile){
+        List<String> emails = new ArrayList<>();
+        for (int i = 0; i < flattenDuplicateNicknames.size(); i++) {
+            emails.add(profile.get(flattenDuplicateNicknames.get(i)));
+        }
+        Collections.sort(emails);
+        return emails;
+    }
 }
