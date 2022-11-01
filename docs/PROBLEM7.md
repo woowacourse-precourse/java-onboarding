@@ -24,3 +24,11 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+## 기능 목록
+1. 모든 사람들을 리스트에 정리하는 함수 -> getAll
+2. 사람들 수 만큼 점수 리스트를 만들어주는 함수 -> setScore
+3. 유저의 친구를 리스트에 정리하는 함수 -> getFriend
+4. 함께 아는 친구의 수를 측정해 점수 리스트에 저장하는 함수 -> knowWithFriendScore
+5. 방문 횟수를 측정해 점수 리스트에 저장하는 함수 -> VisitorScore
+6. 추천 친구를 리스트에 저장하는 함수 -> recommendFriend
