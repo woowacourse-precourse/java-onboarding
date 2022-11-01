@@ -17,6 +17,14 @@ public class Problem2 {
         }
         return answer;
     }
+    private static String decodeCryptogram(String cryptogram) {
+        Stack<Character> decodeStack = new Stack<>();
+        for (int i = 0; i < cryptogram.length(); i++) {
+            char letter = cryptogram.charAt(i);
+            decodeProcess(decodeStack, letter);
+        }
+        return stackToString(decodeStack);
+    }
     public static String solution(String cryptogram) {
         String answer = "answer";
         return answer;
