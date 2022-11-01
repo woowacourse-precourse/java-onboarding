@@ -6,7 +6,8 @@ public class P1ExceptionValidation {
 
     public static boolean p1ExceptionValidation(List<Integer> list){
 
-        return inputBetweenZeroandTwo(list);
+        return inputBetweenZeroandTwo(list)
+                && pageBetween1and400(list);
 
     }
 
@@ -17,5 +18,17 @@ public class P1ExceptionValidation {
         }
         return false;
     }
+
+    private static boolean pageBetween1and400(List<Integer> userInput) {
+        Integer leftPage = userInput.get(0);
+        Integer rightPage = userInput.get(1);
+
+        if(leftPage<=2 || rightPage>400){
+            return false;
+        }
+        return true;
+    }
+
+
 
 }
