@@ -116,4 +116,8 @@ public class Problem7 {
             }
         }
     }
+
+    public static boolean isFriendsContainUser(List<String> friends, String user) {
+        return friends.contains(user);
+    }
 }
