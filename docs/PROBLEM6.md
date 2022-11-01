@@ -21,3 +21,12 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능 목록
+
+1. 모든 닉네임들을 리스트로 추출
+2. 닉네임에 같은 글자가 연속적으로 포함되는지 확인
+3. 닉네임이 중복으로 들어갈 시 하나만 기입
+4. 같은 글자가 포함되는 이메일 추출
+5. 이메일 오름차순으로 정렬
+6. 예외처리
