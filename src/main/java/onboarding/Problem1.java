@@ -7,4 +7,12 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
+
+    private static int getMul(int n, int mul) {
+        while(n / 10 != 0 || n % 10 != 0) {
+            mul *= n % 10;
+            n /= 10;
+        }
+        return mul;
+    }
 }
