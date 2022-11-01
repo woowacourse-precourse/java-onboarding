@@ -8,6 +8,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 import onboarding.problem07.entity.wrapper.Name;
 import onboarding.problem07.entity.wrapper.NameScore;
+import onboarding.problem07.infra.exception.ServiceResultSizeException;
 
 public class RecommendService {
 
@@ -42,10 +43,16 @@ public class RecommendService {
         .sorted(Comparator.comparing(NameScore::currentScore).reversed())
         .collect(Collectors.toList());
 
-    return nameScoreList.stream().filter(nameScore -> nameScore.currentScore() != -1 &&
+    List<String> answer = nameScoreList.stream()
+        .filter(nameScore -> nameScore.currentScore() != -1 &&
             nameScore.currentScore() != 0)
         .map(name -> name.currentName()).collect(Collectors.toList());
 
+    if (answer.size() > 5) {
+      throw new ServiceResultSizeException();
+    }
+
+    return answer;
   }
 
   private void resultListSetting() {
