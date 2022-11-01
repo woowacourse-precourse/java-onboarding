@@ -2,7 +2,7 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String answer;
         StringBuilder sb = new StringBuilder(cryptogram);
 
         if (isError(cryptogram)) {
@@ -38,6 +38,7 @@ public class Problem2 {
             }
             i = temp;
         }
+
         return sb;
     }
 
