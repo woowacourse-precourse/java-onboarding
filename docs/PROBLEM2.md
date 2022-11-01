@@ -28,5 +28,11 @@
 
 - isProperCryptogram(String cryptogram)
     - 문자열의 길이가 올바른지 소문자로만 이루어졌는지 확인
-- decodingCryptogram(String cryptogram)
-    - 들어온 문자열에서 중복 문자를 제거한 값을 반환
+- getDecodingCryptogram(String cryptogram)
+    - 암호문의 중복된 문자열이 없어질때 까지 반복한후, 제거된 값을 반환
+- isLengthZero(String cryptogram)
+    - 문자열의 길이가 0인지 확인
+- isDecodingCryptogram(String cryptogram)
+    - 문자열의 중복이 없는지 확인
+- deleteOverlap(String cryptogram)
+    - 문자열의 중복을 제거한 값을 반환
