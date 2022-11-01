@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.Comparator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -85,7 +86,10 @@ public class Problem6 {
         }
     }
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<List<String>> forms2 = new LinkedList<>(forms);
+        List<String> answer = new LinkedList<>();
+        controlLoop(forms2, answer);
+        answer.sort(Comparator.naturalOrder());
         return answer;
     }
 }
