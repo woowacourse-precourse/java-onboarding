@@ -107,7 +107,7 @@ class Problem1 {
         int realCrongPage;
 
         pobiPage.add(comparePlusAndMulti(plusPage(pobiPageListList.get(0)), multiplyPage(pobiPageListList.get(0))));
-        pobiPage.add(comparePlusAndMulti(plusPage(pobiPageListList.get(1)), multiplyPage(pobiPageListList.get(1)));
+        pobiPage.add(comparePlusAndMulti(plusPage(pobiPageListList.get(1)), multiplyPage(pobiPageListList.get(1))));
         realPobiPage = compareFirstAndSecond(pobiPage.get(0), pobiPage.get(1));
 
         crongPage.add(comparePlusAndMulti(plusPage(crongPageListList.get(0)), multiplyPage(crongPageListList.get(0))));
