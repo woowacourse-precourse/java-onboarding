@@ -24,3 +24,10 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+
+## 기능 목록
+- [ ] 각 규칙의 점수를 나타내는 Score enum
+- [ ] 유저의 친구 리스트를 구하는 기능
+- [ ] 추천 점수를 구하는 기능
+- [ ] 구한 추천 점수를 기반으로 추천할 친구를 구하는 기능
