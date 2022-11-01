@@ -13,10 +13,10 @@ public class Problem7 {
         List<String> friendsOfUser = new ArrayList<String>();
 
         for(List<String> person : friends) { //user와 친구이면 add
-            if(person.get(0) == user) {
+            if(person.get(0).equals(user)) {
                 friendsOfUser.add(person.get(1));
             }
-            else if(person.get(1) == user) {
+            else if(person.get(1).equals(user)) {
                 friendsOfUser.add(person.get(0));
             }
         }
@@ -39,10 +39,10 @@ public class Problem7 {
 
         for(String friendName : friendsOfUser) {
             for(List<String> person : friends) {
-                if(friendName == person.get(0)) { //friends의 첫번째 원소가 친구인 경우
+                if(friendName.equals(person.get(0))) { //friends의 첫번째 원소가 친구인 경우
                     addScore(score, person.get(1), POINT);
                 }
-                else if(friendName == person.get(1)) { //friends의 두번째 원소가 친구인 경우
+                else if(friendName.equals(person.get(1))) { //friends의 두번째 원소가 친구인 경우
                     addScore(score, person.get(0), POINT);
                 }
             }
