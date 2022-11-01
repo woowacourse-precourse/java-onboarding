@@ -41,3 +41,7 @@
    - parameter: 사람들 리스트
    - return: 해쉬맵
    - 1번 함수로 만들어진 해쉬맵의 key 값들 리스트를 받아와 실행
+3. givePointUsingFriendRelationship
+   - paremeter: String user, Hashmap userInfo, Hashmap pointInfo
+   - return: HashMap pointInfo
+   - 유저정보에서 key를 순회 하면서 사용자와 같이 아는 친구를 찾아 pointInfo의 점수에 점수를 증가시킴
