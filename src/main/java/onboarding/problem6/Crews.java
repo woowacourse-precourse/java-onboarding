@@ -1,5 +1,7 @@
 package onboarding.problem6;
 
+import java.util.*;
+
 public class Crews {
 
     private final int MAX_CREWS_SIZE = 10_000;
@@ -18,4 +20,19 @@ public class Crews {
         return true;
     }
 
+    private Map<String, Set<Crew>> getDuplicateNicknameMap() {
+        Map<String, Set<Crew>> map = new HashMap<>();
+
+        for (Crew crew : crews) {
+            List<String> partOfNickname = crew.getPartOfNickname();
+            for (String nickname : partOfNickname) {
+                if (!map.containsKey(nickname)) {
+                    map.put(nickname, new HashSet<>());
+                }
+                map.get(nickname).add(crew);
+            }
+        }
+
+        return map;
+    }
 }

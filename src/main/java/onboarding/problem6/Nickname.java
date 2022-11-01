@@ -34,4 +34,15 @@ public class Nickname {
                 .findAny()
                 .isEmpty();
     }
+
+    public List<String> getPartOfNickname() {
+
+        List<String> partOfNickname = new LinkedList<>();
+
+        for (int i = 0; i < this.nickname.length() - 1; i++) {
+            partOfNickname.add(nickname.substring(i, i + 2));
+        }
+
+        return partOfNickname;
+    }
 }

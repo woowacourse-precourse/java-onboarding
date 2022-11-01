@@ -26,4 +26,8 @@ public class Email {
     private boolean isValidDomain(String email) {
         return email.endsWith(DOMAIN);
     }
+
+    public String getEmail() {
+        return email;
+    }
 }
