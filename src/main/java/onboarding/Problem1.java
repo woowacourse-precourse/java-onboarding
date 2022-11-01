@@ -35,7 +35,7 @@ class Problem1 {
             crongs2 += Integer.parseInt(String.valueOf(crong2.charAt(i)));
             crongm2 *= Integer.parseInt(String.valueOf(crong2.charAt(i)));
         }
-        
+
 
 
         return answer;
