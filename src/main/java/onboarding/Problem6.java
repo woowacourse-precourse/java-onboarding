@@ -11,7 +11,13 @@ public class Problem6 {
     static int numOfPeople = 0;
 
     public static void makeDivTwoCharList(List<String> names) {
-
+        for(String name: names) {
+            List<String> splitName = new ArrayList<>();
+            for(int i=0; i<name.length()-1; i++) {
+                splitName.add(name.substring(i, i+2));
+            }
+            divTwoChar.add(splitName);
+        }
     }
 
     public static void makeTwoCharMap() {
