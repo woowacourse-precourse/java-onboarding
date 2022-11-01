@@ -39,4 +39,18 @@ class Problem1 {
         return false;
     }
 
+    private static Integer calScore(Integer page){
+        Integer sum = 0;
+        Integer multi = 1;
+
+        while (page != 0) {
+            Integer digit = page % 10;
+            sum += digit;
+            multi *= digit;
+            page /= 10;
+        }
+
+        return Math.max(sum, multi);
+    }
+
 }
