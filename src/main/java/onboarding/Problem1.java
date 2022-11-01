@@ -24,6 +24,12 @@ class Problem1 {
         return 0;
     }
 
+
+    /**
+     * 페이지 정보를 입력받아 구할 수 있는 최대값을 반환한다.
+     * @param pages
+     * @return {@code int} 최대값
+     */
     private static int getMaximum(List<Integer> pages) {
         int res = 0;
 
