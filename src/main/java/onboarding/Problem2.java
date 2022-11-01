@@ -4,52 +4,92 @@ package onboarding;
 
 [기능 목록]
 1. 중복 검사를 수행하는 메서드 (중복을 제거해야하는 인덱스를 뽑아 한 번에 제거하기)
-
+2. 중복된 문자열을 삭제하는 메서드
  */
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Stack;
 
 public class Problem2 {
 
-    // 문자열 내 중복을 제거하는 메서드
-    public static String overlapRemover(String cryptogram) {
+    // 문자열 내 중복을 확인하는 메서드
+    public static List<String> overlapChecker(String cryptogram) {
 
-        // 문자열 처리의 편의를 위하여 StringBuilder 로 치환하였다.
-        StringBuilder cryptogramStringBuilder = new StringBuilder(cryptogram);
+        // 스택에 문자열을 하나씩 삽입하고 그 다음 문자열과 하나씩 비교하기 위함
+        Stack<String> stack = new Stack<>();
+        // 중복 대상 리스트로 스택에서 참조하여 넣는다.
+        List<String> overlapTargetList = new ArrayList<>();
+        // 스택에서 참조한 값을 이어붙이기 위한 StringBuilder
+        StringBuilder deleteTargetElement = new StringBuilder();
 
         // 문자열 길이만큼 반복한다. (단, 인덱스 + 1 비교하는 구문이 있으므로 문자열 길이의 -1 까지 비교한다.)
-        for (int i = 0; i < cryptogramStringBuilder.length() - 1; i++) {
-            // 문자열 중복 시작 인덱스 (삭제 대상 시작을 가리킨다.)
-            int overlapStartIndex = 0;
-            // 문자열 중복 종료 인덱스 (삭제 대상 종료를 가리킨다.)
-            int overlapEndIndex = 0;
+        for (int i = 0; i < cryptogram.length() - 1; i++) {
+            // 현재 순회중인 값
+            String currentValue = cryptogram.substring(i, i + 1);
+            // 다음 순회할 값
+            String nextValue = cryptogram.substring(i + 1, i + 2);
 
-            // (인덱스 i) 와 (인덱스 i + 1) 의 값이 일치하면
-            if (cryptogramStringBuilder.charAt(i) == cryptogramStringBuilder.charAt(i + 1)) {
-                // 중복 시작 인덱스 기록
-                overlapStartIndex = i;
-                // 중복 종료 인덱스 기록
-                overlapEndIndex = overlapStartIndex + 1;
+            // 입력 문자열 길이가 2이고, 서로 같은 문자라면 빈 List 반환
+            if (cryptogram.length() == 2 && currentValue.equals(nextValue)) {
+                return overlapTargetList;
+            }
+            
+            // 현재 순회중인 값 스택에 삽입
+            stack.push(currentValue);
 
-                // 중복된 인덱스 이후로 추가적으로 중복된 문자열이 있는지 확인하기 위해 반복문을 수행한다.
-                for (int j = overlapEndIndex; j < cryptogramStringBuilder.length() - 2; j++) {
-                    // (중복 시작 인덱스)와 (중복 종료 인덱스 + 1) 을 비교한다.
-                    // 그 값이 같으면 중복 종료 인덱스를 + 1 한다.
-                    if (cryptogramStringBuilder.charAt(j) == cryptogramStringBuilder.charAt(j + 1)) {
-                        overlapEndIndex = j + 1;
-                    }
-                }
-                // Delete 범위는 start <= 삭제대상범위 < end 이므로 +1 추가해준다.
-                cryptogramStringBuilder.delete(overlapStartIndex, overlapEndIndex + 1);
+            // 스택 크기가 0이 아니고, 스택의 맨 위 문자가 다음 순회할 값과 같으면 스택 pop 후, 그 결과 값을 deleteTargetElement 에삽입
+            if (stack.size() != 0 && stack.peek().equals(nextValue)) {
+                deleteTargetElement.append(stack.pop());
+            }
+            // 스택 크기가 0이 아니고, 스택의 맨 위 문자가 다음 순회할 값과 다르면 현재 스택에 있는 값을 deleteTargetElement 에 삽입
+            // 중복 대상 리스트에 중복된 문자열을 이어붙인 deleteTargetElement 를 삽입 후 초기화
+            else if (stack.size() != 0 && !stack.peek().equals(nextValue)) {
+                deleteTargetElement.append(stack.pop());
+                overlapTargetList.add(deleteTargetElement.toString());
+                deleteTargetElement = new StringBuilder();
+            }
+        }
+        return overlapTargetList;
+    }
 
-                // 재귀하여 현재 제거된 문자열을 다시 한 번 검사한다.
-                return overlapRemover(cryptogramStringBuilder.toString());
+
+    // 실제로 중복된 문자열을 제거하는 메서드
+    public static String overlapRemover(String cryptogram, List<String> overlapTargetList) {
+
+        // 중복 대상 문자열을 담은 리스트가 비어있다면 중복 된 값이 없는 것이므로 입력값 재반환
+        if (overlapTargetList.size() < 1) {
+            return cryptogram;
+        }
+
+        String result = cryptogram;
+
+        // 중복 대상 리스트를 순회하며 그 길이가 1이 넘지 않는다면 중복이다.
+        // 따라서 그 문자열을 지워준다. (replace 로 대체함)
+        for (String target : overlapTargetList) {
+            if (target.length() != 1) {
+                result = result.replace(target, "");
             }
         }
 
-        // 반복문 및 반복분 내의 조건에 맞지 않는 시점이 오면 중복 제거가 끝난 것이다.
-        return cryptogramStringBuilder.toString();
+        return result;
     }
 
     public static String solution(String cryptogram) {
-        return overlapRemover(cryptogram);
+
+        String overlapDeletedCryptogram = cryptogram;
+
+        while (true) {
+            List<String> overlapTarget = overlapChecker(overlapDeletedCryptogram);
+            if (overlapTarget.size() == 0) {
+                return "";
+            } else if (overlapRemover(overlapDeletedCryptogram, overlapTarget).equals(overlapDeletedCryptogram)) {
+                break;
+            }
+            overlapDeletedCryptogram = overlapRemover(overlapDeletedCryptogram, overlapTarget);
+        }
+
+
+        return overlapDeletedCryptogram;
     }
 }
