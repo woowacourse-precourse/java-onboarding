@@ -24,6 +24,14 @@ public class Problem7 {
         }
     }
 
+    //  점수 계산 메소드 : 함께 아는 친구가 있는 경우 +10점
+    private static void increasePointFriends(String user, List<List<String>> friends){
+        List<String> friendWithUser = findFriendsWithUser(user, friends);
+        for(String s : friendWithUser){
+            increasePoint(findFriendsWithUser(s,friends),POINT_FRIEND);
+        }
+    }
+
     //  MAP에 유저 정보와 점수를 입력하는 메소드
     private static void putPointAndUser(String id, int point){
         if(!recommend.containsKey(id)) {
