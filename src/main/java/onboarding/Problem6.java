@@ -28,6 +28,15 @@ public class Problem6 {
             keyword.add(tempNickName[i] + tempNickName[i+1]);
         return keyword;
     }
+    public static boolean checkKeywordInNickname(String nickName, String[] keyword){
+        int len = keyword.length;
+
+        for(int i = 0;i < len;i++){
+            if(nickName.contains(keyword[i]))
+                return true;
+        }
+        return false;
+    }
 
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
