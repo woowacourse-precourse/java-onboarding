@@ -55,6 +55,16 @@ public class Problem7 {
             temp.add(String.valueOf(allUsersPoints.get(key)));
             sortingList.add(temp);
         }
+        Collections.sort(sortingList, new recommendationSort<>());
+        System.out.println(sortingList);
+        List<String> result = new ArrayList<>();
+        for (List<String> strings : sortingList) {
+            result.add(strings.get(0));
+            if (result.size() >= 5)
+                break;
+        }
+        return result;
+    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
