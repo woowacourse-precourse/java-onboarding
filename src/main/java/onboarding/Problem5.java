@@ -1,11 +1,29 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class Problem5 {
+    private static final int[] bills = { 50_000, 10_000, 5_000, 1_000, 500, 100, 50, 10, 1 };
+
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
-        return answer;
+        List<Integer> wallet = new ArrayList<>();
+
+        for (int bill : bills) {
+            int billCount = countBill(money, bill);
+            money = exchangeBill(money, billCount, bill);
+            wallet.add(billCount);
+        }
+
+        return wallet;
+    }
+
+    private static int countBill(int money, int bill) {
+        return money / bill;
+    }
+
+    private static int exchangeBill(int money, int billCount, int bill) {
+        return money - billCount * bill;
     }
 }
