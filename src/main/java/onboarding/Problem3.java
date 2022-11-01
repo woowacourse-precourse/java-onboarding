@@ -8,4 +8,9 @@ public class Problem3 {
         int answer = 0;
         return answer;
     }
+    private static void numberRangeValidation(int number) {
+        if (number < MIN_LENGTH || number > MAX_LENGTH) {
+            throw new IllegalArgumentException("1 이상 10000 이하 숫자만 입력 가능합니다");
+        }
+    }
 }
