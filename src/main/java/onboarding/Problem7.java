@@ -25,7 +25,6 @@ public class Problem7 {
             if (answer.size() == 5) {
                 break;
             } else {
-                //한번도 방문한 적도 없고 같이 아는 친구도 없으며 이미 친구인 경우는 추천할 필요가 없음
                 if (friendScore.get(friend) != 0 && friendScore.get(friend) != -1) {
                     answer.add(friend);
                 }
@@ -81,7 +80,6 @@ public class Problem7 {
 
         int score = 0;
 
-        //이미 친구인 경우는 -1
         if (friendMap.get(user).contains(friendB)) {
             score = -1;
             return score;
