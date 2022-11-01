@@ -50,5 +50,4 @@ class Problem1 {
         int answer = (Max_p > Max_c) ? 1 : 0;
         return answer;
     }
-    }
 }
