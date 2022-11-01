@@ -7,6 +7,16 @@ public class Problem6 {
         List<String> answer = List.of("answer");
         return answer;
     }
+    public static void makeAnswer(List<List<String>> forms, List<String> answer, List<Integer> answerIndexes) {
+        List<String> form;
+        String email;
+
+        for (int i : answerIndexes) {
+            form = forms.get(i);
+            email = form.get(0);
+            answer.add(email);
+        }
+    }
 
     static List<String> getNickNameList(List<List<String>> forms) {
         List<String> nicknames = new ArrayList<>();
