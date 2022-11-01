@@ -3,7 +3,7 @@ package onboarding;
 import java.util.*;
 
 public class Problem6 {
-
+    private static final int SEPERATE_STANDARD = 2;
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         answer = checkNicknameDuplication(forms);
@@ -53,14 +53,14 @@ public class Problem6 {
         List<String> nickNamePieces = new ArrayList<>();
         String piece;
         for (int i = 0; i < nickname.length() - 1; i++) {
-            piece = nickname.substring(i, i + 2);
+            piece = nickname.substring(i, i + SEPERATE_STANDARD);
             nickNamePieces.add(piece);
         }
         return nickNamePieces;
     }
 
     private static boolean checkNicknameLength(String nickname) {
-        if (nickname.length() < 2) {
+        if (nickname.length() < SEPERATE_STANDARD) {
             return true;
         }
         return false;
