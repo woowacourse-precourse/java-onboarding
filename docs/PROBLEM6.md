@@ -21,3 +21,21 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+## 기능 목록
+
+- result 변수를 TreeSet으로 선언
+
+- forms 아이템 반복
+
+    - 2번째 이름 문자열을 두 글자씩 따로 분리하여 배열에 저장
+
+    - 현재 아이템의 다음 forms 아이템부터 내부 반복
+
+        - 중복 문자열 리스트 중 포함하는 문자열 유무 검사
+
+        - 중복 문자열을 포함하지 않을 경우, 분리된 문자열 추출하여 검사
+
+        - 검사 일치할 경우 result에 이메일 추가
+
+- result 반환
