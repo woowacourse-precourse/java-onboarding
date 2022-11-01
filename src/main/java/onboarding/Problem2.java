@@ -14,15 +14,14 @@ public class Problem2 {
 			return ERROR_MESSAGE;
 		}
 
-		decodedCryptogram = removeDuplicateCharacters(cryptogram);
+		decodedCryptogram = decode(cryptogram);
 
 		return stackToString(decodedCryptogram);
 	}
 
-	private static Stack<Character> removeDuplicateCharacters(String cryptogram) {
+	private static Stack<Character> decode(String cryptogram) {
 		Stack<Character> decodedCryptogram = new Stack<Character>();
 		char duplicateCharacter = ' ';
-		char top = ' ';
 		char current = ' ';
 		for (int i = 0; i < cryptogram.length(); i++) {
 			current = cryptogram.charAt(i);
@@ -31,17 +30,23 @@ public class Problem2 {
 				decodedCryptogram.push(current);
 				continue;
 			}
-			top = decodedCryptogram.peek();
-			if (current != top && current != duplicateCharacter) {
-				decodedCryptogram.push(current);
-				duplicateCharacter = ' ';
-			}
-			if (current == top) {
-				duplicateCharacter = top;
-				decodedCryptogram.pop();
-			}
+			duplicateCharacter = removeDuplicateCharacters(decodedCryptogram, duplicateCharacter, current);
 		}
 		return decodedCryptogram;
+	}
+
+	private static char removeDuplicateCharacters(Stack<Character> decodedCryptogram, char duplicateCharacter,
+		char current) {
+		char top = decodedCryptogram.peek();
+		if (current != top && current != duplicateCharacter) {
+			decodedCryptogram.push(current);
+			duplicateCharacter = ' ';
+		}
+		if (current == top) {
+			duplicateCharacter = top;
+			decodedCryptogram.pop();
+		}
+		return duplicateCharacter;
 	}
 
 	private static Integer checkRestrictions(String cryptogram) {
