@@ -105,9 +105,10 @@ class ApplicationTest {
                     List.of("jason@email.com", "제이슨"),
                     List.of("woniee@email.com", "워니"),
                     List.of("mj@email.com", "엠제이"),
-                    List.of("nowm@email.com", "이제엠")
+                    List.of("nowm@email.com", "이제엠"),
+                    List.of("s@email.com","제이엠")
             );
-            List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com");
+            List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com","s@email.com");
             assertThat(Problem6.solution(forms)).isEqualTo(result);
         }
     }
