@@ -3,9 +3,26 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+
+    private static final int DRAW = 0;
+    private static final int POBI_WIN = 1;
+    private static final int CRONG_WIN = 2;
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
+    }
+
+    private static int compareToScore(int pobisResult, int crongsResult) {
+        if (pobisResult == crongsResult) {
+            return DRAW;
+        }
+
+        if (pobisResult > crongsResult) {
+            return POBI_WIN;
+        }
+
+        return CRONG_WIN;
     }
 
     private static int sumOfDigits(int page) {
