@@ -30,6 +30,17 @@ public class Problem7 {
 
     private static List<String> recommendFriends() {
         List<String> recommendFriends = new ArrayList<>();
+        PriorityQueue<String[]> pq = getPriorityQueue();
+        for(int i=0; i<5; i++){
+            if(pq.isEmpty() || pq.peek()[1].equals("0")){
+                break;
+            }
+            recommendFriends.add(pq.poll()[0]);
+        }
+        return recommendFriends;
+    }
+
+    private static PriorityQueue<String[]> getPriorityQueue() {
         PriorityQueue<String[]> pq = new PriorityQueue<>(new Comparator<String[]>() {
             @Override
             public int compare(String[] o1, String[] o2) {
@@ -43,14 +54,7 @@ public class Problem7 {
         for(String key : scoreCountMap.keySet()){
             pq.add(new String[]{key, String.valueOf(scoreCountMap.get(key))});
         }
-        for(int i=0; i<5; i++){
-            if(pq.isEmpty()) break;
-            if(pq.peek()[1].equals("0")){
-                break;
-            }
-            recommendFriends.add(pq.poll()[0]);
-        }
-        return recommendFriends;
+        return pq;
     }
 
     private static void findVisitor(String user, List<String> visitors) {
