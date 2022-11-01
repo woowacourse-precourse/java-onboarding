@@ -30,3 +30,4 @@
 - 함께하는 친구 점수 계산
 - visitor 점수 계산
 - 정렬
+- validation

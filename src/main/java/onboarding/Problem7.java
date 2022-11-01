@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.regex.Pattern;
 
 public class Problem7 {
 
@@ -24,9 +25,44 @@ public class Problem7 {
         return count;
     }
 
+    public static boolean validation(String user, List<List<String>> friends, List<String> visitors) {
+        if (user.length() < 1 || user.length() > 30 || !Pattern.matches("^[a-z]*$", user)) {
+            return false;
+        }
+        if (friends.size() < 1 || friends.size() > 10000) {
+            return false;
+        }
+        if (visitors.size() > 10000) {
+            return false;
+        }
+
+        for (int i = 0; i < friends.size(); i++) {
+            String f1 = friends.get(i).get(0);
+            String f2 = friends.get(i).get(1);
+
+            if (friends.get(i).size() != 2 || !Pattern.matches("^[a-z]*$", f1) || !Pattern.matches("^[a-z]*$", f2)) {
+                return false;
+            }
+            if (f1.length() < 1 || f1.length() > 30 || f2.length() < 1 || f2.length() > 30) {
+                return false;
+            }
+        }
+        for (int i = 0; i < visitors.size(); i++) {
+            String vis = visitors.get(i);
+            if (vis.length() < 1 || vis.length() > 30 || !Pattern.matches("^[a-z]*$", vis)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
         HashMap<String, List<String>> relation = new HashMap<>();
+        if (!validation(user, friends, visitors)) {
+            return null;
+        }
+
         for (List<String> list : friends) {
             String f1 = list.get(0);
             String f2 = list.get(1);
