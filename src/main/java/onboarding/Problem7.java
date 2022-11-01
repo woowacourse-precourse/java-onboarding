@@ -86,10 +86,10 @@ public class Problem7 {
         List<Entry<String, Integer>> sortScoreMapEntryList = getSortScoreMapEntryList();
         if(isUserHasFriend(user)){
             return sortScoreMapEntryList.stream().filter(entry -> entry.getValue() > 0).filter(entry -> !friendsMap.get(user).contains(entry.getKey()))
-                    .limit(3).map(entry -> entry.getKey()).collect(Collectors.toList());
+                    .limit(5).map(entry -> entry.getKey()).collect(Collectors.toList());
         }
         return sortScoreMapEntryList.stream().filter(entry -> entry.getValue() > 0)
-                .limit(3).map(entry -> entry.getKey()).collect(Collectors.toList());
+                .limit(5).map(entry -> entry.getKey()).collect(Collectors.toList());
     }
 
     public static boolean isUserHasFriend(String user){
