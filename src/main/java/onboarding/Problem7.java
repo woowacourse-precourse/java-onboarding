@@ -153,6 +153,12 @@ class Recommendation{
         friendRelation=friend.getRelationship();
         return !friendRelation.contains(THE_USER_NAME);
     }
+    boolean canRecommend(User friend){
+        boolean alreadyFriend=isAlreadyFriend(friend);
+        boolean wrongUser=isFriend(friend.getName());
+        boolean underScore=isNonZero(friend);
+        return alreadyFriend && wrongUser && underScore;
+    }
 }
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
