@@ -50,7 +50,13 @@ public class Problem7 {
     }
 
     public static void scoreBasedOnVisitors(String user, List<String> visitors) {
-
+        for (int i = 0; i < visitors.size(); i++) {
+            String friend = visitors.get(i);
+            if(alreadyFriends.contains(friend) || friend.equals(user)) {
+                continue;
+            }
+            score.put(friend, score.getOrDefault(friend, 1) + 1);
+        }
     }
 
     public static List<String> returnAnswer() {
