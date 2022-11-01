@@ -13,5 +13,11 @@ public class Problem4 {
         return false;
     }
 
+    public static boolean isNotAlpha(char word){
+        if (word < 65 || word > 122 || (91 <= word < 96){
+            return true;
+        }
 
+        return false;
+    }
 }
