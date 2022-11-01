@@ -5,11 +5,13 @@ package onboarding;
 //기능3. 기능1,2 를 2중포문으로 만들어 모든 닉네임끼리 비교하게 한다.
 //기능4 . answer 을 오름차순으로 정렬한뒤 리턴한다.
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+//        List<String> answer = List.of("answer");
+        List<String> answer = new ArrayList<>();
         System.out.println(forms);
         System.out.println(forms.get(0));
         System.out.println((forms.get(0)).get(0));
@@ -18,8 +20,9 @@ public class Problem6 {
         String b = (forms.get(1)).get(1); //제이슨
 
         if ((a.charAt(0) == b.charAt(0)) && (a.charAt(1) == a.charAt(1))) {
-            System.out.println(1);
+            answer.add((forms.get(0)).get(0));
         }
+        System.out.println(answer);
 
 
         return answer;
