@@ -11,7 +11,7 @@ public class Member {
         this.email = email;
     }
 
-    public void validEmail(String email) {
+    private void validEmail(String email) {
         if (email.length() < 11 || email.length() > 20)
             throw new IllegalArgumentException("이메일 글자수 오류");
 
@@ -19,8 +19,8 @@ public class Member {
             throw new IllegalArgumentException("잘못된 이메일 도메인");
     }
 
-    public void validNickname(String name) {
-        if (name.length() <= 0 || name.length() > 20)
+    private void validNickname(String name) {
+        if (name.length() < 1 || name.length() > 20)
             throw new IllegalArgumentException("닉네임 글자수 오류");
 
         if (name.matches(".*[A-z]+.*"))
