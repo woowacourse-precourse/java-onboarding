@@ -6,8 +6,23 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
         Map<String ,Integer> friendRecommendMap = new HashMap<>();
+        List<String> userFriendList = getUserFriendList(user, friends);
 
         return answer;
+    }
+    private static List<String> getUserFriendList(String user, List<List<String>> friends) {
+        List<String> userFriendList = new ArrayList<>();
+        for(int i = 0; i< friends.size(); i++){
+            String first = friends.get(i).get(0);
+            String second = friends.get(i).get(1);
+            if(first== user){
+                userFriendList.add(second);
+            }
+            else if(second == user){
+                userFriendList.add(first);
+            }
+        }
+        return userFriendList;
     }
 
 
