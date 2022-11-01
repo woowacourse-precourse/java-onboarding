@@ -8,13 +8,13 @@ import java.util.regex.Pattern;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
         if (!validCheck(forms))
             return List.of("error");
 
         Crew crew = new Crew(forms);
         return crew.alarm();
     }
+
     static boolean validCheck(List<List<String>> forms) {
         for (List<String> form : forms) {
             String email = form.get(0);

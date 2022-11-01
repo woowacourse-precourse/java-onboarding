@@ -3,9 +3,7 @@ package model;
 import java.util.regex.Pattern;
 
 public class Encryption {
-    //복호화한 문자열
     private String decryptedText;
-    // 동일한 문자가 연속하는지 정규표현식
     private static final String CONTINUERS = "(\\w)\\1";
 
     public Encryption(String cryptogram) {
@@ -20,7 +18,6 @@ public class Encryption {
         }
     }
 
-    //연속된 문자 삭제
     void deleteContinueChar() {
         String stringTest = this.decryptedText;
         setDecryptedText(stringTest.replaceAll(CONTINUERS, ""));
@@ -36,7 +33,7 @@ public class Encryption {
         this.decryptedText = data;
     }
 
-    public String getDecryptedText(){
+    public String getDecryptedText() {
         return this.decryptedText;
     }
 

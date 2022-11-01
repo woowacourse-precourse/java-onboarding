@@ -3,17 +3,17 @@ package model;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Debits{
+public class Debits {
     private int money;
 
-    public Debits(int money){
+    public Debits(int money) {
         this.money = money;
     }
 
-    public List<Integer> getDebitsDetail(){
+    public List<Integer> getDebitsDetail() {
         List<Integer> debitsDetail = new ArrayList<>();
         initDebitsDetail(debitsDetail, 9);
-        for (int i = 0; i < debitsDetail.size(); i++){
+        for (int i = 0; i < debitsDetail.size(); i++) {
             int exchangeMoney = getExchangeMoney(i);
             int exchangeAmount = getExchangeAmount(exchangeMoney);
             debitsDetail.set(i, exchangeAmount);
@@ -22,20 +22,20 @@ public class Debits{
         return debitsDetail;
     }
 
-    void initDebitsDetail(List<Integer> debitsDetail, int size){
-        for (int i = 0; i < size; i++){
+    void initDebitsDetail(List<Integer> debitsDetail, int size) {
+        for (int i = 0; i < size; i++) {
             debitsDetail.add(0);
         }
     }
 
-    int getExchangeAmount(int exchangeMoney){
+    int getExchangeAmount(int exchangeMoney) {
         int exchangeAmount = money / exchangeMoney;
         this.money -= exchangeMoney * exchangeAmount;
         return exchangeAmount;
     }
 
-    int getExchangeMoney(int idx){
-        switch (idx){
+    int getExchangeMoney(int idx) {
+        switch (idx) {
             case 0:
                 return 50000;
             case 1:

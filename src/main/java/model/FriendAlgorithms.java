@@ -10,7 +10,7 @@ public class FriendAlgorithms {
     private HashSet<String> friendSet;
     private List<String> visitors;
 
-    public FriendAlgorithms(String user, List<List<String>> friends, List<String> visitors){
+    public FriendAlgorithms(String user, List<List<String>> friends, List<String> visitors) {
         this.user = user;
         this.friends = friends;
         this.visitors = visitors;
@@ -18,15 +18,15 @@ public class FriendAlgorithms {
         this.friendMap = initFriendMap();
     }
 
-    public List<String> friendRecommend(){
+    public List<String> friendRecommend() {
         raisingFriendOfFriendScore();
         raisingVisitorScored();
 
         List<String> keySetList = new ArrayList<>(friendScoreMap.keySet());
         keySetList.sort(((o1, o2) -> (this.friendScoreMap.get(o2).compareTo(this.friendScoreMap.get(o1)))));
-
         List<String> recommendList = new ArrayList<>();
-        for(String key : keySetList) {
+
+        for (String key : keySetList) {
             if (friendScoreMap.get(key) != 0)
                 recommendList.add(key);
         }
@@ -34,13 +34,12 @@ public class FriendAlgorithms {
         return recommendList;
     }
 
-    void raisingFriendOfFriendScore(){
+    void raisingFriendOfFriendScore() {
         List<String> myFriendList = this.friendMap.get(this.user);
-        // 친구의 친구 10점
-        for (String myFriend: myFriendList) {
+        for (String myFriend : myFriendList) {
             List<String> friendOfFriendList = this.friendMap.get(myFriend);
-            for (String friendOfFriend: friendOfFriendList) {
-                if (!friendOfFriend.equals(this.user)){
+            for (String friendOfFriend : friendOfFriendList) {
+                if (!friendOfFriend.equals(this.user)) {
                     int score = friendScoreMap.get(friendOfFriend);
                     score += 10;
                     friendScoreMap.put(friendOfFriend, score);
@@ -49,9 +48,9 @@ public class FriendAlgorithms {
         }
     }
 
-    void raisingVisitorScored(){
-        for (String visitor: this.visitors) {
-            if (!this.friendMap.get(this.user).contains(visitor)){
+    void raisingVisitorScored() {
+        for (String visitor : this.visitors) {
+            if (!this.friendMap.get(this.user).contains(visitor)) {
                 int score = friendScoreMap.get(visitor);
                 score++;
                 friendScoreMap.put(visitor, score);
@@ -59,10 +58,11 @@ public class FriendAlgorithms {
         }
     }
 
-    HashMap<String, Integer> initFriendScoreMap(){
+    HashMap<String, Integer> initFriendScoreMap() {
         HashMap<String, Integer> friendScoreMap = new HashMap<>();
         HashSet<String> hashSet = new HashSet<>();
-        for (List<String> friend: friends) {
+
+        for (List<String> friend : friends) {
             hashSet.addAll(friend);
         }
 
@@ -78,7 +78,7 @@ public class FriendAlgorithms {
         return friendScoreMap;
     }
 
-    HashMap<String, List<String>> initFriendMap(){
+    HashMap<String, List<String>> initFriendMap() {
         HashMap<String, List<String>> friendMap = new HashMap<>();
 
         for (String user : friendSet) {
@@ -86,7 +86,7 @@ public class FriendAlgorithms {
             friendMap.put(user, friendList);
         }
 
-        for (List<String> friendship: friends) {
+        for (List<String> friendship : friends) {
             String userA = friendship.get(0);
             String userB = friendship.get(1);
             List<String> friendListA = friendMap.get(userA);
@@ -99,8 +99,4 @@ public class FriendAlgorithms {
 
         return friendMap;
     }
-
-
-
-
 }

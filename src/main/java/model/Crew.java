@@ -47,9 +47,7 @@ public class Crew {
         for (String s : duplicatedDic.keySet()) {
             List<String> emailList = duplicatedDic.get(s);
             if (emailList.size() >= 2) {
-                for (String email : emailList) {
-                    hashSet.add(email);
-                }
+                hashSet.addAll(emailList);
             }
         }
         List<String> list = new ArrayList<>(hashSet);
