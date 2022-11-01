@@ -62,23 +62,23 @@ public class Problem7 {
                 }
             }
         }
-//        nominate.sort(Comparator.naturalOrder());
-//        int pointMax = 0;
-//        String personMax = new String();
-//        idx = 0;
-//        while (idx < 5){
-//            for (String nominatePerson: nominate){
-//                if (nominatePoint.get(nominatePerson) > pointMax){
-//                    pointMax = nominatePoint.get(nominatePerson);
-//                    personMax = nominatePerson;
-//                }
-//            }
-//            nominate.remove(personMax);
-//            if (pointMax > 0)
-//                answer.add(personMax);
-//            pointMax = 0;
-//            idx++;
-//        }
+        nominate.sort(Comparator.naturalOrder());
+        int pointMax = 0;
+        String personMax = new String();
+        idx = 0;
+        while (idx < 5){
+            for (String nominatePerson: nominate){
+                if (nominatePoint.get(nominatePerson) > pointMax){
+                    pointMax = nominatePoint.get(nominatePerson);
+                    personMax = nominatePerson;
+                }
+            }
+            nominate.remove(personMax);
+            if (pointMax > 0)
+                answer.add(personMax);
+            pointMax = 0;
+            idx++;
+        }
         return answer;
     }
 }
