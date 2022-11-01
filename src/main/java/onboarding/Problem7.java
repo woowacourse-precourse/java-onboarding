@@ -6,12 +6,15 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Problem7 {
+    public static final int ACQUAINTANCE_SCORE = 10;
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         HashMap<String, List<String>> friendRelationshipMap = new HashMap<>();
         HashMap<String, Integer> scoreMap = new HashMap<>();
 
         getFriendRelationshipMap(user, friends, friendRelationshipMap, scoreMap);
+        increaseAcquaintanceScore(user, friendRelationshipMap, scoreMap);
 
         return answer;
     }
@@ -44,6 +47,25 @@ public class Problem7 {
 
         if (userB.equals(user) == false) {
             scoreMap.put(userB, 0);
+        }
+    }
+
+    private static void increaseAcquaintanceScore(String user, HashMap<String, List<String>> friendRelationshipMap, HashMap<String, Integer> scoreMap) {
+        List<String> userFriends = friendRelationshipMap.get(user);
+
+        for (String userFriend : userFriends) {
+            List<String> acquaintance = friendRelationshipMap.get(userFriend);
+
+            for (String ac : acquaintance) {
+                if (ac.equals(user)) {
+                    continue;
+                } else if (userFriends.contains(ac)) {
+                    continue;
+                }
+
+                int currentScore = scoreMap.get(ac);
+                scoreMap.put(ac, currentScore + ACQUAINTANCE_SCORE);
+            }
         }
     }
 }
