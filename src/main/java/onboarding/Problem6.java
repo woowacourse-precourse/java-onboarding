@@ -7,6 +7,14 @@ public class Problem6 {
         List<String> answer = List.of("answer");
         return answer;
     }
+    private static void insertHash(String separateNickname, HashMap<String, Boolean> map){
+        if (map.containsKey(separateNickname)){
+            map.put(separateNickname, Boolean.TRUE);
+            return;
+        }
+        map.put(separateNickname, Boolean.FALSE);
+    }
+
     private static List<String> separateNickname(String nickname){
         final int length = nickname.length();
         List<String> separatedNicknames = new ArrayList<>();
