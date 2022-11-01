@@ -10,7 +10,7 @@ import java.util.TreeMap;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<String>();
-        Map<String, List<String>> friendMap = getFriendsMap(friends);
+        Map<String, List<String>> friendsMap = getFriendsMap(friends);
         return answer;
     }
 
