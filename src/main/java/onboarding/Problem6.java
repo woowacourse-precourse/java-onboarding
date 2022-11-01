@@ -13,9 +13,7 @@ public class Problem6 {
         List<List<String>> duplicateNicknames = new ArrayList<>();
         for (int i = 0; i < nicknames.size(); i++) {
             List<String> twoLetters = splitToTwoLetters(nicknames.get(i));
-            for (int j = 0; j < twoLetters.size(); j++) {
-                duplicateNicknames.add(findDuplicate(nicknames, twoLetters.get(j), i));
-            }
+            duplicateNicknames = addDuplicate(duplicateNicknames, twoLetters, nicknames, i);
         }
         List<String> flattenDuplicateNicknames = flattenList(duplicateNicknames);
         return getEmail(flattenDuplicateNicknames, profile);
@@ -41,6 +39,12 @@ public class Problem6 {
             if (i != selfNumber && nicknames.get(i).contains(twoLetter)) {
                 duplicateNicknames.add(nicknames.get(i));
             }
+        }
+        return duplicateNicknames;
+    }
+    public static List<List<String>> addDuplicate(List<List<String>> duplicateNicknames, List<String> twoLetters, List<String> nicknames, int i){
+        for (int j = 0; j < twoLetters.size(); j++) {
+            duplicateNicknames.add(findDuplicate(nicknames, twoLetters.get(j), i));
         }
         return duplicateNicknames;
     }
