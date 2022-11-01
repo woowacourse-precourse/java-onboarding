@@ -1,5 +1,8 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Problem4 {
 	public static final char LOWER_SRC = 'a';
 	public static final char LOWER_DEST = 'z';
@@ -10,14 +13,21 @@ public class Problem4 {
 	public static final int EXCEPTION = -1;
 
 	public static String solution(String word) {
-		int askiiSequence = 0; // 아스키코드 표 기준 앞에서부터 몇 번째 캐릭터인지
-		char letter = ' ';
-
+		List<Character> words;
 		if (checkRestrictions(word) == EXCEPTION) {
 			return ERROR_MESSAGE;
 		}
 
-		return new String(conversionWord(word));
+		words = conversionWord(word);
+		return listToString(words);
+	}
+
+	private static String listToString(List<Character> words) {
+		StringBuilder sb = new StringBuilder();
+		for (Character letter : words) {
+			sb.append(letter);
+		}
+		return sb.toString();
 	}
 
 	/**
@@ -25,8 +35,8 @@ public class Problem4 {
 	 * @param word
 	 * @return
 	 */
-	private static char[] conversionWord(String word) {
-		char[] letters = new char[word.length()];
+	private static List<Character> conversionWord(String word) {
+		List<Character> letters = new ArrayList<>();
 		char letter;
 		for (int i = 0; i < word.length(); i++) {
 			letter = word.charAt(i);
@@ -36,7 +46,7 @@ public class Problem4 {
 			if (letter > UPPER_SRC && letter < UPPER_DEST) {
 				letter = (char)('A' + 'Z' - letter);
 			}
-			letters[i] = letter;
+			letters.add(letter);
 		}
 		return letters;
 	}
