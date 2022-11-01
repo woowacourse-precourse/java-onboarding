@@ -17,4 +17,12 @@ public class Problem6 {
             output.add(name.substring(i, (i + 2)));
         }
     }
+
+    public static void checkRedundant(List<String> name, List<String> extracted, List<String> email, int index) {
+        for (int i = index; i < extracted.size(); i++) {
+            if (name.get(1).contains(extracted.get(i))) {
+                email.add(name.get(0));
+            }
+        }
+    }
 }
