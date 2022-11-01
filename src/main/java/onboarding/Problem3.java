@@ -9,7 +9,6 @@ public class Problem3 {
             while (temp != 0) {
                 if (temp%10 == 3 || temp%10 == 6 || temp%10 ==9) answer ++;
                 temp = temp/10;
-
             }
         }
 
