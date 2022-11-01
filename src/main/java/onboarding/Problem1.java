@@ -9,8 +9,8 @@ class Problem1 {
         // 예외사항
         // 1. 요소값 1~400 외
         // 2. 리스트 크기가 2가 아닌경우
-        Integer[] pobiArr = pobi.stream().filter(s->s<1||s>400).toArray(Integer[]::new);
-        Integer[] crongArr = crong.stream().filter(s->s<1||s>400).toArray(Integer[]::new);
+        Integer[] pobiArr = pobi.stream().filter(s->s>=1||s<=400).toArray(Integer[]::new);
+        Integer[] crongArr = crong.stream().filter(s->s>=1||s<=400).toArray(Integer[]::new);
         if(pobiArr.length == 2 && crongArr.length == 2){
             int fpobi = pobiArr[0];
             int spobi = pobiArr[1];
@@ -31,12 +31,11 @@ class Problem1 {
             // 예외사항
             // 3. 연속된 두 값이 아닌경우
             // 4. 왼쪽이 홀수가 아니거나, 오른쪽이 짝수가 아닌경우
-            if((spobi-fpobi)!=1 || (fcrong-scrong)!=1 || (fpobi%2)!=1 || (spobi%2)!=0 || (fcrong%2)!=1 || (scrong%2)!=0)
+            if((spobi-fpobi)!=1 || (scrong-fcrong)!=1 || (fpobi%2)!=1 || (spobi%2)!=0 || (fcrong%2)!=1 || (scrong%2)!=0)
                 answer = -1;
         }else{
             answer = -1;
         }
-        System.out.println("hello");
         return answer;
     }
 
