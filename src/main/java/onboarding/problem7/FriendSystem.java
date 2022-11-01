@@ -25,7 +25,7 @@ public class FriendSystem {
         initSystem(user);
         findFriend(friends);
         findOtherFriend(friends);
-        checkVisitors(visitors);
+        addVisitorPoint(visitors);
         return RecommendedFriendsListSystem.getRecommendedFriendsList(friendMap);
     }
 
@@ -65,17 +65,17 @@ public class FriendSystem {
         if (friends.contains(friend)) {
             int otherFriendIdx = MAX_FAIR_INDEX-idx;
             String otherFriend = friendPair.get(otherFriendIdx);
-            checkIsOtherFriend(otherFriend);
+            addFriendPoint(otherFriend);
         }
     }
 
-    private void checkIsOtherFriend(String otherFriend) {
+    private void addFriendPoint(String otherFriend) {
         if (!Objects.equals(otherFriend, user)) {
-            friendMap.put(otherFriend, getFriendPoint(otherFriend)+FRIEND_POINT);
+            friendMap.put(otherFriend, getPoint(otherFriend)+FRIEND_POINT);
         }
     }
 
-    private void checkVisitors(List<String> visitors){
+    private void addVisitorPoint(List<String> visitors){
         for (String visitor : visitors) {
             addVisitorFriend(visitor);
         }
@@ -83,11 +83,11 @@ public class FriendSystem {
 
     private void addVisitorFriend(String visitor) {
         if (!friends.contains(visitor)) {
-            friendMap.put(visitor, getFriendPoint(visitor)+VISITOR_POINT);
+            friendMap.put(visitor, getPoint(visitor)+VISITOR_POINT);
         }
     }
 
-    private int getFriendPoint(String recommendedFriend) {
+    private int getPoint(String recommendedFriend) {
         if (!friendMap.containsKey(recommendedFriend)) {
             return ZERO_POINT;
         }
