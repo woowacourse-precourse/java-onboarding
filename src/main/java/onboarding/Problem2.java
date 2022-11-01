@@ -30,6 +30,12 @@ public class Problem2 {
             list = cur_string;
         }
 
+        StringBuilder sb = new StringBuilder();
+        for(String s : list){
+            sb.append(s);
+        }
+        answer = sb.toString();
+
         return answer;
     }
 }
