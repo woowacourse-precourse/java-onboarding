@@ -10,11 +10,11 @@ import java.util.Set;
 
 public class Problem7 {
 	
-    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
     	
     	List<String> answer;
         Set<String> friendSet = new HashSet<>();
-        Map<String, Integer> neighborMap = new HashMap<>();
+        Map<String, Integer> relationMap = new HashMap<>();
 
         // user의 친구 목록 구하기
         friendSet.add(user);
@@ -26,46 +26,60 @@ public class Problem7 {
         }
         friendSet.remove(user);
 
-        // 추천 점수 계산
+        // 사용자와 함께 아는 친구의 수 = 10점을 더해준다.
         for(String friend : friendSet) {
             for(List<String> friendList : friends) {
-                String a = friendList.get(0);
-                String b = friendList.get(1);
-                String neighbor = "";
+                String friendA = friendList.get(0);
+                String friendB = friendList.get(1);
+                String relation = "";
 
-                if(a.equals(friend)) {
-                    neighbor = b;
-                } else if(b.equals(friend)) {
-                    neighbor = a;
+                //user의 친구 목록 friendSet에 존재하는 경우
+                if(friendA.equals(friend)) {
+                	relation = friendB;
+                }     
+                else if(friendB.equals(friend)) {
+                	relation = friendA;
                 }
 
-                if(neighbor.equals(user) || neighbor.equals("")) {
+                //user이거나 이름이 없을 경우 무시해준다.
+                if(relation.equals(user) || relation.equals("")) {
                     continue;
                 }
 
-                if(neighborMap.containsKey(neighbor)) {
-                    neighborMap.replace(neighbor, neighborMap.get(neighbor) + 10);
-                } else {
-                    neighborMap.put(neighbor, 10);
+                //사용자와 함께 아는 사람 수 만금 10을 계속 터해준다.
+                if(relationMap.containsKey(relation)) {
+                	//이전에 10을 더한 경우 기존값에 10을 더한다.
+                    relationMap.replace(relation, relationMap.get(relation) + 10);
+                } 
+                else {
+                	//처음으로 사용자와 함께 아는 사람인 경우 10을 넣어준다.
+                    relationMap.put(relation, 10);
                 }
             }
         }
 
-        // 방문 점수 계산
+        // 사용자의 타임 라인에 방문한 횟수 = 1점를 더해준다.
         for(String visitor : visitors) {
             if(!friendSet.contains(visitor)) {
-                if(neighborMap.containsKey(visitor)) {
-                    neighborMap.replace(visitor, neighborMap.get(visitor) + 1);
-                } else {
-                    neighborMap.put(visitor, 1);
+                if(relationMap.containsKey(visitor)) {
+                	//이전에 방문했던 경우 기존값에 1을 던한다.
+                    relationMap.replace(visitor, relationMap.get(visitor) + 1);
+                } 
+                else {
+                	//처음 방문인 경우 1을 넣어준다.
+                    relationMap.put(visitor, 1);
                 }
             }
         }
 
-        // 점수 기준 내림차순 정렬
-        answer = new ArrayList<>(neighborMap.keySet());
-        Collections.sort(answer, (o1, o2) -> (neighborMap.get(o2).compareTo(neighborMap.get(o1))));
+        answer = new ArrayList<>(relationMap.keySet());
+        //합계 점수를 기준으로 하여 친구 이름을 내림 차순 정렬
+        Collections.sort(answer, (o1, o2) -> (relationMap.get(o2).compareTo(relationMap.get(o1))));
 
+        //추천 점수가 0점이 아닌 사람 중 최대 5명만 return
+        if(answer.size() > 5)
+        	answer = answer.subList(0, 5);
+        
         return answer;
     }
 }
