@@ -19,27 +19,8 @@ public class FriendAlgorithms {
     }
 
     public List<String> friendRecommend(){
-        List<String> list = this.friendMap.get(user);
-        // 친구의 친구 10점
-        for (String user: list) {
-            List<String> list2 = this.friendMap.get(user);
-            for (String user2: list2) {
-                if (!user2.equals(this.user)){
-                    int score = friendScoreMap.get(user2);
-                    score += 10;
-                    friendScoreMap.put(user2, score);
-                }
-
-            }
-        }
-        // 방문자 1점
-        for (String user: this.visitors) {
-            if (!this.friendMap.get(this.user).contains(user)){
-                int score = friendScoreMap.get(user);
-                score++;
-                friendScoreMap.put(user, score);
-            }
-        }
+        raisingFriendOfFriendScore();
+        raisingVisitorScored();
 
         List<String> keySetList = new ArrayList<>(friendScoreMap.keySet());
         keySetList.sort(((o1, o2) -> (this.friendScoreMap.get(o2).compareTo(this.friendScoreMap.get(o1)))));
@@ -53,21 +34,44 @@ public class FriendAlgorithms {
         return recommendList;
     }
 
+    void raisingFriendOfFriendScore(){
+        List<String> myFriendList = this.friendMap.get(this.user);
+        // 친구의 친구 10점
+        for (String myFriend: myFriendList) {
+            List<String> friendOfFriendList = this.friendMap.get(myFriend);
+            for (String friendOfFriend: friendOfFriendList) {
+                if (!friendOfFriend.equals(this.user)){
+                    int score = friendScoreMap.get(friendOfFriend);
+                    score += 10;
+                    friendScoreMap.put(friendOfFriend, score);
+                }
+            }
+        }
+    }
+
+    void raisingVisitorScored(){
+        for (String visitor: this.visitors) {
+            if (!this.friendMap.get(this.user).contains(visitor)){
+                int score = friendScoreMap.get(visitor);
+                score++;
+                friendScoreMap.put(visitor, score);
+            }
+        }
+    }
+
     HashMap<String, Integer> initFriendScoreMap(){
         HashMap<String, Integer> friendScoreMap = new HashMap<>();
         HashSet<String> hashSet = new HashSet<>();
         for (List<String> friend: friends) {
-            for (String user: friend) {
-                    hashSet.add(user);
-            }
+            hashSet.addAll(friend);
         }
 
-        for (String user : hashSet) {
-            friendScoreMap.put(user, 0);
+        for (String friend : hashSet) {
+            friendScoreMap.put(friend, 0);
         }
 
-        for (String user : this.visitors) {
-            friendScoreMap.put(user, 0);
+        for (String visitor : this.visitors) {
+            friendScoreMap.put(visitor, 0);
         }
 
         this.friendSet = hashSet;
@@ -78,20 +82,19 @@ public class FriendAlgorithms {
         HashMap<String, List<String>> friendMap = new HashMap<>();
 
         for (String user : friendSet) {
-            List<String> list = new ArrayList<>();
-            friendMap.put(user, list);
+            List<String> friendList = new ArrayList<>();
+            friendMap.put(user, friendList);
         }
 
-        for (List<String> friend: friends) {
-            String friendA = friend.get(0);
-            String friendB = friend.get(1);
-            List<String> friendListA = friendMap.get(friendA);
-            List<String> friendListB = friendMap.get(friendB);
-            friendListA.add(friendB);
-            friendListB.add(friendA);
-            friendMap.put(friendA, friendListA);
-            friendMap.put(friendB, friendListB);
-
+        for (List<String> friendship: friends) {
+            String userA = friendship.get(0);
+            String userB = friendship.get(1);
+            List<String> friendListA = friendMap.get(userA);
+            List<String> friendListB = friendMap.get(userB);
+            friendListA.add(userB);
+            friendListB.add(userA);
+            friendMap.put(userA, friendListA);
+            friendMap.put(userB, friendListB);
         }
 
         return friendMap;

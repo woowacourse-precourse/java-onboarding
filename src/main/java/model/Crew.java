@@ -22,7 +22,7 @@ public class Crew {
         int interval = 2;
         int idx = 0;
         while (interval <= nickname.length()) {
-            makeDuplicatedDictionary(nickname.substring(idx, interval + idx), email);
+            makeDuplicatedDic(nickname.substring(idx, interval + idx), email);
             idx++;
             if (interval + idx > nickname.length()) {
                 idx = 0;
@@ -31,7 +31,7 @@ public class Crew {
         }
     }
 
-    void makeDuplicatedDictionary(String split, String email) {
+    void makeDuplicatedDic(String split, String email) {
         List<String> list;
         if (duplicatedDic.containsKey(split)) {
             list = duplicatedDic.get(split);
