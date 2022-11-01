@@ -23,9 +23,17 @@ class Problem1 {
             if( crongnum < pagecal(crong.get(i)) ) crongnum = pagecal(crong.get(i));
         }
 
-
         //answer 선언
-        int answer = 0;
+        int answer;
+
+        //포비와 크롱의 점수를 비교하여 해당 숫자를 리턴하는 기능
+        if(pobinum > crongnum) { //포비가 크롱을 이겼을 경우
+            answer = 1;
+        } else if (pobinum < crongnum) { //크롱이 포비를 이겼을 경우
+            answer = 2;
+        } else { //포비가 크롱이 동점일 경우
+            answer = 0;
+        }
 
         return answer;
     }
@@ -50,7 +58,5 @@ class Problem1 {
         //덧셈과 곱셈 중 더 큰 수를 리턴하는 기능
         return Math.max(pagesum, pagemulti);
     }
-
-
 
 }
