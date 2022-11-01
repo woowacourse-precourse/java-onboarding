@@ -18,7 +18,6 @@ public class Problem4 {
             if (!Character.isAlphabetic(letter)) { result += letter; }            // 알파벳이 아니면 변환하지 않음
             else                                 { result += converter(letter); } // 알파벳이면 변환 진행
         }
-        System.out.println(result);
         return result;
     }
 
