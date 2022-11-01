@@ -4,9 +4,10 @@ import java.util.*;
 
 /*
 * 1. user의 친구 목록을 구해야 한다. (이미 친구면 추천할 이유가 없기 때문)
-* 2. 목록을 통해 친구의 친구인 원소를 찾아 가중치를 부여한다.
-* 3. 방문자 리스트를 통해 가중치를 부여한다.
-* 4. 사이즈가 5인 친구 추천 리스트를 반환한다.
+* 2. 목록을 통해 친구의 친구인 원소를 찾아 반환한다.
+* 3. 방문자 리스트와 친구의 친구 리스트를 통해 가중치를 얻을 구하도록 Recommend 객체를 생성한다
+* 4. 객체를 통해 리스트를 만들고 가중치를 더해 정렬한다.
+* 5. 사이즈가 5인 친구 추천 리스트를 반환한다.
 * */
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -50,41 +51,4 @@ public class Problem7 {
         eachOtherList.removeAll(Collections.singleton(user)); // 리스트에 user가 들어가기 때문에 user 제외
         return eachOtherList;
     }
-
-    public static void main(String[] args) {
-        List<List<String>> friends = List.of(
-                List.of("donut", "andole"),
-                List.of("donut", "jun"),
-                List.of("donut", "mrko"),
-                List.of("shakevan", "andole"),
-                List.of("shakevan", "jun"),
-                List.of("shakevan", "mrko")
-        );
-
-        List<String> findFriendList = findUserFriends("mrko", friends);
-
-        List<String> strings = knowEachOtherScoreOfFriends(friends, findFriendList, "mrko");
-        for (String s : strings) {
-            System.out.println("s = " + s);
-        }
-    }
 }
-
-//      friend = [donut, andole]
-//      s = donut
-//      s = andole
-//      friend = [donut, jun]
-//      s = donut
-//      s = jun
-//      friend = [donut, mrko]
-//      s = donut
-//      s = mrko
-//      friend = [shakevan, andole]
-//      s = shakevan
-//      s = andole
-//      friend = [shakevan, jun]
-//      s = shakevan
-//      s = jun
-//      friend = [shakevan, mrko]
-//      s = shakevan
-//      s = mrko
