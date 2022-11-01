@@ -39,6 +39,6 @@ public class Problem6 {
             .sorted()//정렬하기
             .collect(Collectors.toList());    //stream to list
 
-        return entries.subList(0, Math.min(entries.size(), 5)); // 5개씩 자르기
+        return entries;
     }
 }
