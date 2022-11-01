@@ -17,6 +17,13 @@ public class Problem7 {
 
 
 
+    public static void setFriendsOfUserFriends(List<List<String>> friends, String user) {
+        for (List<String> friend : friends) {
+            if (isFriendsOfUser(friend, user)) {
+                userFriends.addAll(friend);
+            }
+        }
+    }
 
 
 }
