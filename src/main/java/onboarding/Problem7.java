@@ -46,7 +46,7 @@ public class Problem7 {
             String userA = info.get(0);
             String userB = info.get(1);
 
-            if (isUserException(userA, userB, user) || isUserFriendException(userA, userB)) {
+            if (isUserException(info, user) || isUserFriendException(userA, userB)) {
                 continue;
             }
 
@@ -58,8 +58,8 @@ public class Problem7 {
         }
     }
 
-    private static boolean isUserException(String userA, String userB, String user) {
-        return userA.equals(user) || userB.equals(user);
+    private static boolean isUserException(List<String> info, String user) {
+        return info.get(0).equals(user) || info.get(1).equals(user);
     }
 
     private static boolean isUserFriendException(String userA, String userB) {
