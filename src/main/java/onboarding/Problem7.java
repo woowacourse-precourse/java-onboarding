@@ -15,6 +15,13 @@ public class Problem7 {
 
         Map<String, Integer> scoreMap = new HashMap<>();
 
+        List<String> friendOfFriends = new LinkedList<>();
+        for (String userFriend : userFriends) {
+            List<String> recommendedFriends = allFriends.get(userFriend);
+            friendOfFriends.addAll(recommendedFriends);
+        }
+
+        addScore10(scoreMap, friendOfFriends);
         addScore1(scoreMap, visitors);
 
         return answer;
