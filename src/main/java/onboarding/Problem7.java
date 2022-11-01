@@ -5,6 +5,7 @@ import java.util.*;
 public class Problem7 {
     private static final Integer FRIEND_SCORE = 10;
     private static final Integer VISIT_SCORE = 1;
+    private static final Integer MAX_RECOMMEND_VALUE = 5;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
@@ -65,6 +66,25 @@ public class Problem7 {
         });
         return ranking;
     }
+
+    private static List<String> getTop5(HashMap<String,Integer> score){
+        List<String> recommend = new ArrayList<>();
+        // Map을 List로 변환
+        String[][] scoreList = score.entrySet()
+                .stream()
+                .map(e -> new String[]{e.getKey(), e.getValue().toString()})
+                .toArray(String[][]::new);
+        // 최대 랭킹 순으로 최대 5명 추천 리스트 생성 ( 정렬 알고리즘 추가해야함 )
+        for(int i = 0;i<scoreList.length;i++){
+            if(i < MAX_RECOMMEND_VALUE){
+                recommend.add(scoreList[i][0]);
+                continue;
+            }
+            break;
+        }
+        return recommend;
+    }
+
 
 
 }
