@@ -30,12 +30,12 @@ public class Problem6 {
     private static void setEmails(List<List<String>> forms, List<String> emails, int prev) {
         List<String> prevForm = forms.get(prev);
         String nickname = prevForm.get(NICKNAME);
-        List<String> SubNicknames = getSubNicknames(nickname);
+        List<String> subNicknames = getSubNicknames(nickname);
 
         for (int next = prev + 1; next < forms.size(); next++) {
             List<String> nextForm = forms.get(next);
             String compareNickname = nextForm.get(NICKNAME);
-            if (isDeduplication(SubNicknames, compareNickname)) {
+            if (isDuplication(subNicknames, compareNickname)) {
                 emails.add(prevForm.get(EMAIL));
                 emails.add(nextForm.get(EMAIL));
                 break;
@@ -43,9 +43,9 @@ public class Problem6 {
         }
     }
 
-    private static boolean isDeduplication(List<String> SubNicknames, String compareNickname) {
-        for (String SubNickname : SubNicknames) {
-            if (compareNickname.contains(SubNickname)) {
+    private static boolean isDuplication(List<String> subNicknames, String compareNickname) {
+        for (String subNickname : subNicknames) {
+            if (compareNickname.contains(subNickname)) {
                 return true;
             }
         }
