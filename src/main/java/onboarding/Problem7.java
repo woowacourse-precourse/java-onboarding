@@ -15,6 +15,10 @@ public class Problem7 {
         PriorityQueue<Node> pq = new PriorityQueue<>((a, b) -> a.cost != b.cost ? b.cost - a.cost : a.v.compareTo(b.v));
         List<String> answer = new ArrayList<>();
 
+        graph = initializeGraph(friends);
+
+        HashMap<String, Integer> dist = dijkstra(user, graph);
+
     }
 
     private static class Node {
@@ -67,6 +71,38 @@ public class Problem7 {
         }
 
         return graph;
+    }
+
+    public static HashMap<String, Integer> dijkstra(String start, HashMap<String, ArrayList<Node>> graph) {
+
+        PriorityQueue<Node> q = new PriorityQueue<>((a, b) -> a.cost - b.cost);
+        HashMap<String, Integer> dist = new HashMap<>();
+
+
+        for (String key : graph.keySet()) {
+            dist.put(key, Integer.MAX_VALUE);
+        }
+        q.add(new Node(start, 0));
+        dist.put(start, 0);
+
+        while (!q.isEmpty()) {
+            Node current = q.poll();
+
+            if (dist.get(current.v) < current.cost) {
+                continue;
+            }
+
+            ArrayList<Node> adjacentList = graph.get(current.v);
+            for (Node next : adjacentList) {
+                if (current.cost + next.cost < dist.get(next.v)) {
+                    dist.put(next.v, current.cost + next.cost);
+                    q.add(new Node(next.v, current.cost + next.cost));
+                }
+            }
+
+        }
+
+        return dist;
     }
 
 
