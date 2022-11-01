@@ -15,6 +15,7 @@ public class Problem7 {
 
         findFriendsByUser(user, friends);
         scoreByFriends(user, friends);
+        scoreByVisitors(user, visitors);
 
         return answer;
     }
@@ -35,6 +36,13 @@ public class Problem7 {
                 continue;
             }
             friendScoreMap.put(friendId,friendScoreMap.getOrDefault(friendId,0)+10);
+        }
+    }
+
+    public static void scoreByVisitors(String user, List<String> visitors){
+        for(String visitor: visitors){
+            if(!userFriends.contains(visitor))
+                friendScoreMap.put(visitor, friendScoreMap.getOrDefault(visitor,0)+1);
         }
     }
 }
