@@ -20,8 +20,8 @@ public class Problem6 {
         return form.get(NICKNAME);
     }
 
-    private static Set<String> getDuplicateNickname(List<List<String>> forms) {
-        Set<String> duplicateNickname = new HashSet<>();
+    private static Set<String> getDuplicateNicknames(List<List<String>> forms) {
+        Set<String> duplicateNicknames = new HashSet<>();
         Map<String, Set<String>> nicknameByword = new HashMap<>();
 
         for (List<String> form : forms) {
@@ -33,33 +33,33 @@ public class Problem6 {
                 }
                 nicknameByword.get(part).add(nickname);
                 if (nicknameByword.get(part).size() >= 2) {
-                    duplicateNickname.addAll(nicknameByword.get(part));
+                    duplicateNicknames.addAll(nicknameByword.get(part));
                 }
             }
         }
-        return duplicateNickname;
+        return duplicateNicknames;
     }
 
     private static Set<String> createEmailList(List<List<String>> forms,
                                                Set<String> duplicateNickname) {
-        Set<String> emailList = new TreeSet<>();
+        Set<String> emails = new TreeSet<>();
 
         for (List<String> form : forms) {
             String email = getEmail(form);
             String nickName = getNickName(form);
             if (duplicateNickname.contains(nickName)) {
-                emailList.add(email);
+                emails.add(email);
             }
         }
-        return emailList;
+        return emails;
     }
 
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer;
-        Set<String> duplicateNickname = getDuplicateNickname(forms);
-        Set<String> emailList = createEmailList(forms, duplicateNickname);
+        Set<String> duplicateNicknames = getDuplicateNicknames(forms);
+        Set<String> emails = createEmailList(forms, duplicateNicknames);
 
-        answer = new ArrayList<>(emailList);
+        answer = new ArrayList<>(emails);
         return answer;
     }
 }
