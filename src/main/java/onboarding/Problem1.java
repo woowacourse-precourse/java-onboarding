@@ -14,16 +14,10 @@ class Problem1 {
             return -1;
         }
 
-        int answer = 0;
         int pobiScore = getScore(pobi);
         int crongScore = getScore(crong);
 
-        if (pobiScore > crongScore) {
-            answer = 1;
-        } else if (pobiScore < crongScore) {
-            answer = 2;
-        }
-        return answer;
+        return getAnswer(pobiScore, crongScore);
     }
 
     private static boolean isValidatePage(List<Integer> pageNumList) {
@@ -66,5 +60,15 @@ class Problem1 {
                 .mapToInt(Integer::parseInt)
                 .forEach(digitList::add);
         return digitList;
+    }
+
+    private static int getAnswer(int pobiScore, int crongScore) {
+        int answer = 0;
+        if (pobiScore > crongScore) {
+            answer = 1;
+        } else if (pobiScore < crongScore) {
+            answer = 2;
+        }
+        return answer;
     }
 }
