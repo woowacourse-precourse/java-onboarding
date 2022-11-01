@@ -13,6 +13,13 @@ import java.util.List;
  */
 
 public class Problem7 {
+    public static String[][] listToArray2D(List<List<String>> list){
+        String[][] array = new String[list.size()][];
+
+        for(int i = 0;i < array.length;i++)
+            array[i] = list.get(i).stream().toArray(String[]::new);
+        return array;
+    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
