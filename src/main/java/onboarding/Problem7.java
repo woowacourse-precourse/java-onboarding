@@ -46,4 +46,16 @@ public class Problem7 {
         }
 
     }
+    
+    public static void friendException(String name){
+        if(user_friend.containsKey(name)==true) return;
+        else{
+            if(friend_friend.containsKey(name)==false){
+                friend_friend.put(name,10);
+            }
+            else{
+                friend_friend.put(name,friend_friend.get(name)+10);
+            }
+        }
+    }
 }
