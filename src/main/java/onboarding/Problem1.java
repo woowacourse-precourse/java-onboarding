@@ -9,12 +9,26 @@ class Problem1 {
         try {
 
 
+            // 포비와 크롱이 뽑은 페이지 연산 결과 중 각각 최댓값
+            int pobi_max = find_max_between_pages(pobi);
+            int crong_max = find_max_between_pages(crong);
+
+            if (pobi_max == crong_max) {
+                answer = 0;
+            } else if (pobi_max < crong_max) {
+                answer = 2;
+            } else {
+                answer = 1;
+            }
+
         } catch (Exception e) {
             return -1;
         }
 
         return answer;
     }
+
+
 
 
     // 왼쪽 페이지와 오른쪽 페이지 연산 결과 중에 최댓값
