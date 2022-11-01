@@ -48,7 +48,7 @@ public class Problem7 {
         }
     }
 
-    public static List<String> formatTheAnswer(HashMap<String, Integer> result){
+    public static List<String> formatTheAnswer(HashMap<String, Integer> result) {
 
         Map<String, Integer> sortedMap = new TreeMap<>(result);
         List<String> keySet = new ArrayList<>(sortedMap.keySet());
@@ -67,42 +67,45 @@ public class Problem7 {
         return answer;
     }
 
-    private static void removeExtraUser(List<String> answer, List<String> keySet){
+    private static void removeExtraUser(List<String> answer, List<String> keySet) {
         for (int i = 5; i < keySet.size(); i += 1) {
             answer.remove(i);
         }
     }
 
-    public static Integer updatePointByIndex0Friend(HashMap<String, Integer> result, List<List<String>> friends, int index){
+    public static Integer updatePointByIndex0Friend(HashMap<String, Integer> result, List<List<String>> friends, int index) {
         if (result.containsKey(friends.get(index).get(0))) {
             return result.put(friends.get(index).get(0), result.get(friends.get(index).get(0)) + 10);
         }
         return result.put(friends.get(index).get(0), 10);
     }
 
-    public static Integer updatePointByIndex1Friend(HashMap<String, Integer> result, List<List<String>> friends, int index){
+    public static Integer updatePointByIndex1Friend(HashMap<String, Integer> result, List<List<String>> friends, int index) {
         if (result.containsKey(friends.get(index).get(1))) {
             return result.put(friends.get(index).get(1), result.get(friends.get(index).get(1)) + 10);
         }
         return result.put(friends.get(index).get(1), 10);
     }
 
-    public static Integer updatePointByVisitor(HashMap<String, Integer> result, List<String> visitors, int index){
+    public static Integer updatePointByVisitor(HashMap<String, Integer> result, List<String> visitors, int index) {
         if (result.containsKey(visitors.get(index))) {
             return result.put(visitors.get(index), result.get(visitors.get(index)) + 1);
         }
         return result.put(visitors.get(index), 1);
     }
 
-    public static void checkFriendOfFriend(List<String> friendList, List<List<String>> friends, HashMap<String, Integer> result ,int index){
+    public static void checkFriendOfFriend(List<String> friendList, List<List<String>> friends, HashMap<String, Integer> result, int index) {
         for (int j = 0; j < friendList.size(); j += 1) {
-            if (friends.get(index).get(1) == friendList.get(j)) {
-                updatePointByIndex0Friend(result, friends, index);
-            }
-            if (friends.get(index).get(0) == friendList.get(j)) {
-                updatePointByIndex1Friend(result, friends, index);
-            }
+            checkFriendByIndex(friendList, friends, result, index, j);
         }
     }
 
+    public static void checkFriendByIndex(List<String> friendList, List<List<String>> friends, HashMap<String, Integer> result, int friendsIndex, int index) {
+        if (friends.get(friendsIndex).get(1) == friendList.get(index)) {
+            updatePointByIndex0Friend(result, friends, friendsIndex);
+        }
+        if (friends.get(friendsIndex).get(0) == friendList.get(index)) {
+            updatePointByIndex1Friend(result, friends, friendsIndex);
+        }
+    }
 }
