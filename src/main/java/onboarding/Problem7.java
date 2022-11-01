@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     private static Map<String,Integer> recommendedFriendScores =new HashMap<>();
@@ -25,9 +26,16 @@ public class Problem7 {
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        calculateRecommendedScoresWithFriendship(user,friends);
 
-        return answer;
+        calculateRecommendedScoresWithVisitHistory(visitors);
+
+        List<Friendship>friendships=createFriendships();
+
+        return friendships.stream()
+                .map(friend->friend.id)
+                .limit(5)
+                .collect(Collectors.toList());
     }
 
     private static List<Friendship> createFriendships(){
