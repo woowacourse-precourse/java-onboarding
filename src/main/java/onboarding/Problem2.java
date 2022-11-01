@@ -33,6 +33,8 @@ public class Problem2 {
                     break;
                 }
             }
+
+            if (cryptoAvail.isEmpty()) flag = false;
         }
 
         answer = cryptoAvail;
