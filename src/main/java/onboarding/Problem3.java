@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.InputMismatchException;
 import java.util.List;
 
 public class Problem3 {
@@ -9,7 +10,7 @@ public class Problem3 {
 
     public static int solution(int number) {
         if(isInvalidInput(number)){
-            return -1;
+            throw new InputMismatchException();
         }
 
         int result = 0;

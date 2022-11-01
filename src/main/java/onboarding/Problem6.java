@@ -6,24 +6,38 @@ import java.util.regex.Pattern;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> wrong = new LinkedList<>();
-        List<String> answer = List.of("answer");
-        List<List<String>> bigramList = new LinkedList<>();
 
-        Set<String> emailSet = new LinkedHashSet<>();
+        List<String> answer = List.of("answer");
+
         if(!isValidSize(forms)){
-            return wrong;
+            throw new InputMismatchException();
         }
-        for(List<String> formPair: forms){
+        List<Set<String>> bigramList = getBigramList(forms);
+
+        Set<String> emailSet = getDuplicatedNickNameSet(bigramList, forms);
+
+        answer = new ArrayList<>(emailSet);
+        answer.sort(String::compareTo);
+        return answer;
+    }
+
+    private static List<Set<String>> getBigramList(List<List<String>> input){
+        List<Set<String>> bigramList = new LinkedList<>();
+        for(List<String> formPair: input){
             String email = formPair.get(0);
             String nickname = formPair.get(1);
             if(!isValidEmail(email) || !isValidNickname(nickname)){
-                return wrong;
+                throw new InputMismatchException();
             }
             bigramList.add(getBigramofNickname(nickname));
         }
+        return bigramList;
+    }
+
+    private static Set<String> getDuplicatedNickNameSet(List<Set<String>> bigramList, List<List<String>> forms){
         int j =0;
-        for(List<String> eachBigramList : bigramList){
+        Set<String> emailSet = new LinkedHashSet<>();
+        for(Set<String> eachBigramList : bigramList){
             for(String bigram : eachBigramList){
 
                 for(int k = 0; k<bigramList.size(); k++){
@@ -39,9 +53,7 @@ public class Problem6 {
             }
             j++;
         }
-        answer = new ArrayList<>(emailSet);
-        answer.sort(String::compareTo);
-        return answer;
+        return emailSet;
     }
 
     private static boolean isValidSize(List<List<String>> input){
@@ -77,23 +89,21 @@ public class Problem6 {
         }
         return Pattern.matches("^[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]*$", input);
     }
-    private static List<String> getBigramofNickname(String input){
-        List<String> result = new ArrayList<>();
+    private static Set<String> getBigramofNickname(String input){
+        Set<String> result = new HashSet<>();
         char[] inputCharArray = input.toCharArray();
         int i = 0;
         StringBuilder stringBuilder = new StringBuilder();
+
         for(char c :inputCharArray){
+            stringBuilder.append(c);
             if(i == 1){
-                stringBuilder.append(c);
                 result.add(stringBuilder.toString());
                 i = 0;
                 stringBuilder.setLength(0);
                 stringBuilder.append(c);
-                i++;
-            }else{
-                stringBuilder.append(c);
-                i++;
             }
+            i++;
         }
         return result;
     }

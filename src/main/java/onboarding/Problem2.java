@@ -1,9 +1,11 @@
 package onboarding;
 
+import java.util.InputMismatchException;
+
 public class Problem2 {
     public static String solution(String cryptogram) {
         if(isInputInvalid(cryptogram)){
-            return "";
+            throw new InputMismatchException();
         }
         return recursedRemove(cryptogram);
     }

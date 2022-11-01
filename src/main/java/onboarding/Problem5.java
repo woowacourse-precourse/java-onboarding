@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.InputMismatchException;
 import java.util.List;
 
 public class Problem5 {
@@ -10,7 +11,7 @@ public class Problem5 {
     public static List<Integer> solution(int money) {
         List<Integer> answer = Collections.emptyList();
         if(!isValidInput(money)){
-            return answer;
+            throw new InputMismatchException();
         }
 
         answer = new ArrayList<>();

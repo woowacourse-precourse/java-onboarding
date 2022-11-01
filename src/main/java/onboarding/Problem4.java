@@ -1,12 +1,14 @@
 package onboarding;
 
+import java.util.InputMismatchException;
+
 public class Problem4 {
 
     public static String solution(String word) {
 
 
         if(!isValidInput(word)){
-            return "";
+            throw new InputMismatchException();
         }
         char[] charArrayWord = word.toCharArray();
         StringBuilder resultStringBuilder = new StringBuilder();
