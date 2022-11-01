@@ -115,6 +115,9 @@ public class Problem7 {
             }
         }
 
+        if (recomList.size() < 5) answer = recomList;
+        if (recomList.size() >= 5) answer = recomList.subList(0,5);
+
         return answer;
     }
 }
