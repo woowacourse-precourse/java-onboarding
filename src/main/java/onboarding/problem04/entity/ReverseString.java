@@ -26,7 +26,7 @@ public class ReverseString {
   }
 
   public String processing() {
-    
+
     for (Character character : letterSet) {
 
       int temp = 0;
@@ -41,11 +41,10 @@ public class ReverseString {
             break;
           }
         }
-      result.append(smallLetter[smallLetter.length - temp - 1]);
+        result.append(smallLetter[smallLetter.length - temp - 1]);
       }
 
       if (isCapitalLetter((int) character)) {
-        System.out.println(character);
         for (int i = 0; i < capitalLetter.length; i++) {
           if (character == capitalLetter[i]) {
             temp = i;
