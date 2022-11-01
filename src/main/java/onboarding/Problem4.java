@@ -10,7 +10,6 @@ public class Problem4 {
 	public static final int EXCEPTION = -1;
 
 	public static String solution(String word) {
-		char[] letters = new char[word.length()];
 		int askiiSequence = 0; // 아스키코드 표 기준 앞에서부터 몇 번째 캐릭터인지
 		char letter = ' ';
 
@@ -18,20 +17,29 @@ public class Problem4 {
 			return ERROR_MESSAGE;
 		}
 
+		return new String(conversionWord(word));
+	}
+
+	/**
+	 * 주어진 문자열을 청개구리 사전대로 변환하는 메서드
+	 * @param word
+	 * @return
+	 */
+	private static char[] conversionWord(String word) {
+		char[] letters = new char[word.length()];
+		int askiiSequence;
+		char letter;
 		for (int i = 0; i < word.length(); i++) {
 			letter = word.charAt(i);
 			if (letter > LOWER_SRC && letter < LOWER_DEST) {
-				askiiSequence = letter - 'a';
-				letters[i] = (char)('z' - askiiSequence); // 뒤에서부터 tmp 번째 캐릭터를 대입
+				letters[i] = (char)('a' + 'z' - letter); // 뒤에서부터 tmp 번째 캐릭터를 대입
 			} else if (letter > UPPER_SRC && letter < UPPER_DEST) {
-				askiiSequence = letter - 'A';
-				letters[i] = (char)('Z' - askiiSequence);
+				letters[i] = (char)('A' + 'Z' - letter);
 			} else {
 				letters[i] = letter;
 			}
 		}
-
-		return new String(letters);
+		return letters;
 	}
 
 	/**
