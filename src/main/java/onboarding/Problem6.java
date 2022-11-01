@@ -31,4 +31,15 @@ public class Problem6 {
         }
         return depulicate;
     }
+
+    public static List<String> firstMemberCheck(List<List<String>> forms){
+        Member.clear();
+        for(int i=1; i<forms.size(); i++){
+            if(checkequals(forms.get(0).get(1), forms.get(i).get(1))) {
+                Member.add(forms.get(0).get(0));
+                break;
+            }
+        }
+        return Member;
+    }
 }
