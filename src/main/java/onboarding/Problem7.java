@@ -47,9 +47,9 @@ public class Problem7 {
             return 0;
 
         int cnt = 0;
-        for(String me_friend : me_friends) {
-            for (String you_friend : you_friends) {
-                if (me_friend.equals(you_friend))
+        for(String you_friend : you_friends) {
+            for(String me_friend : me_friends) {
+                if (you_friend.equals(me_friend))
                     cnt++;
             }
         }
@@ -73,6 +73,7 @@ public class Problem7 {
         HashMap<String, List<String>> hash_friends = initMap(friends);
         HashMap<String, Integer> recommend_data = new HashMap<String, Integer>();
 
+        // 방문에 따른 점수
         for(String visitor : visitors) {
             if (!recommend_data.containsKey(visitor))
                 recommend_data.put(visitor, 0);
@@ -80,25 +81,39 @@ public class Problem7 {
                 continue;
 
             int score = recommend_data.get(visitor) + 1;
-            score += get_union_friend(user, visitor, hash_friends) * 10;
 
             recommend_data.put(visitor, score);
         }
 
+        // 친구에 따른 점수
+        List<String> user_friends = hash_friends.get(user);
+        for(String friend : user_friends) {
+            List<String> friend_friends = hash_friends.get(friend);
+            if (friend_friends == null) continue;
+
+            for(String friend_friend : friend_friends) {
+                if (friend_friend.equals(user)) continue;
+                if (!recommend_data.containsKey(friend_friend))
+                    recommend_data.put(friend_friend, 10);
+                else
+                    recommend_data.put(friend_friend, recommend_data.get(friend_friend) + 10);
+            }
+        }
+
         List<String[]> recommend_users = toList(recommend_data);
         recommend_users.sort((o1, o2) -> {
-            if (o1[0].equals(o2[0]))
-                return Integer.parseInt(o1[1]) - Integer.parseInt(o2[1]);
-            return o1[0].compareTo(o2[0]);
+            if (Integer.parseInt(o1[1]) == Integer.parseInt(o2[1]))
+                return (o1[0].compareTo(o2[0]));
+            return Integer.parseInt(o2[1]) - Integer.parseInt(o1[1]);
         });
 
         List<String> result = new LinkedList<>();
         for (int i = 0; i < recommend_users.size() && i < 5; i++) {
             String name = recommend_users.get(i)[0];
             int score = Integer.parseInt(recommend_users.get(i)[1]);
-            System.out.println("NAME : " + name + " / SCORE : " + score);
+            if (score == 0)
+                break;
 
-            if (score == 0) break;
             result.add(name);
         }
         return result;
