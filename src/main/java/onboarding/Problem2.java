@@ -31,7 +31,6 @@ public class Problem2 {
                 String[] array = stringList.toArray(new String[0]);
                 result = String.join("", stringList);
                 comp(array);
-                System.out.println(result);
                 return result;
             }
 
