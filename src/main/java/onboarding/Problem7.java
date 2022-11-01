@@ -7,6 +7,16 @@ import java.util.ArrayList;
 import java.util.Comparator;
 
 public class Problem7 {
+    public static Comparator<HashMap.Entry<String, Integer>> comparator = new Comparator<>() {
+        @Override
+        public int compare(HashMap.Entry<String, Integer> o1, HashMap.Entry<String, Integer> o2) {
+            if (o1.getValue() == o2.getValue()) {
+                return o1.getKey().compareTo(o2.getKey());
+            }
+            return o2.getValue() - o1.getValue();
+        }
+    };
+
     private static HashMap<String, List<String>> createFriendMap(List<List<String>> friends) {
         HashMap<String, List<String>> friendMap = new HashMap<>();
         List<String> friendList;
