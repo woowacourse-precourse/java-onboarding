@@ -31,30 +31,30 @@
     - 중복된 이름이 있는지 검사
 - duplicateNameDetectionMethod()
     - 특정 닉네임으로 다른 사람들의 닉네임과 중복이 있는지 확인
-- charToString
+- charToString()
     - 문자 2개를 문자열로 바꿔서 반환
-- saveNameByTwoCharacters
+- saveNameByTwoCharacters()
     - 닉네임으로 charToString()를 통해 문자 길이가 2인 문자열 리스트 생성
     - (ex) 홍길동 -> 홍길, 길동)
-- checkNameDuplication
+- checkNameDuplication()
     - saveNameByTwoCharacters으로 생성된 리스트로 다른 닉네임이 중복되는지 확인
-- isDuplicateName
+- isDuplicateName()
     - 중복이 된다면 생성된 문자열 리스트의 닉네임과 비교한 닉네임에 해당하는 checkDuplication값을 true로 변경
-- checkExceptionList
+- checkExceptionList()
   - 제한사항들을 체크하는 메서드
-- checkEmailRegex
+- checkEmailRegex()
     - 제한사항에 맞게 이메일 리스트를 바꿈
-- emailSort
+- emailSort()
     - 이메일을 오름차순으로 정렬
-- checkEmailDuplication
+- checkEmailDuplication()
     - 이메일 중복확인
-- crewMembersOutOfRangeException
+- crewMembersOutOfRangeException()
     - 크루인원 수 예외처리
 - isValidNicknameRegex()
     - 입력으로 들어온 이름이 한글이 맞는지 확인(예외처리)
-- nicknameOutOfRangeException
+- nicknameOutOfRangeException()
     - 닉네임 길이 예외처리
-- emailDomainOutOfRulesException
+- emailDomainOutOfRulesException()
     - 이메일 도메인에 대한 예외처리
-- emailLengthOutOfRangeException
+- emailLengthOutOfRangeException()
     - 이메일 길이에 대한 예외처리
