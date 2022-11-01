@@ -12,6 +12,23 @@ import java.util.regex.Pattern;
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
+        String emailReg = "^[_a-z0-9-]+(.[_a-z0-9-]+)*@email.com";
+        String nicknameReg = "^[가-힣]*$";
+        HashMap<String, Integer> nicknameMap = new HashMap<>();
+
+        for(int i = 0 ; i < forms.size() ; i++){
+            String email = forms.get(i).get(0);
+            String nickname = forms.get(i).get(1);
+
+            if(!Pattern.matches(emailReg, email) ||
+                    email.length() < 11 || email.length() >= 20){
+                    continue;
+            }
+            if(!Pattern.matches(nicknameReg, nickname) ||
+                    nickname.length() < 1 || email.length() >= 20){
+                continue;
+            }
+        }
 
         return answer;
     }
