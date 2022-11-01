@@ -9,6 +9,10 @@ public class Problem2 {
 		char top = ' '; // 스택의 top
 		char cur = ' '; // cur 은 cryptogram 을 순회할 문자
 
+		if (checkRestrictions(cryptogram) == -1) {
+			return "제한 사항을 위배했습니다.";
+		}
+
 		for (int i = 0; i < cryptogram.length(); i++) {
 			cur = cryptogram.charAt(i);
 
@@ -27,6 +31,26 @@ public class Problem2 {
 		}
 
 		return stackToString(stack);
+	}
+
+	/**
+	 * 제한사항을 위배했는지 체크하는 메서드
+	 * @param cryptogram
+	 * @return
+	 */
+	private static Integer checkRestrictions(String cryptogram) {
+		if (!isCryptogramSizeValid(cryptogram)) {
+			return -1;
+		}
+		return 0;
+	}
+
+	// cryptogram 의 길이가 1 ~ 1000 이 아닌 경우 예외
+	private static boolean isCryptogramSizeValid(String cryptogram) {
+		if (cryptogram.length() < 1 || cryptogram.length() > 1000) {
+			return false;
+		}
+		return true;
 	}
 
 	private static String stackToString(Stack<Character> stack) {
