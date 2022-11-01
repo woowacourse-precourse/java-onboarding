@@ -1,10 +1,10 @@
 package onboarding.problem7;
 
-public class SNSUser {
+public class SNSId {
     private static final int MAX = 30;
     private final String user;
 
-    public SNSUser(String user) {
+    public SNSId(String user) {
         checkInput(user);
         this.user = user;
     }
