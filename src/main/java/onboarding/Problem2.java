@@ -10,7 +10,7 @@ package onboarding;
  * 우아한 테크코스 - 프리코스 1주차 암호문 해독
  *
  * @author 이준현
- * @version 1.00 2022년 10월 28일
+ * @version 2.00 2022년 11월 01일
  */
 public class Problem2 {
 
@@ -34,23 +34,54 @@ public class Problem2 {
     }
 
     /**
-     * 사이클마다 인접한 문자열의 시작, 끝 인덱스를 구하고 이를 이용하여 인접한 문자열 모두 제거하는 method
-     *
-     * @param str 인접한 중복 문자열을 제거할 string
-     * @return 인접한 중복문자가 모두 제거된 string return
+     * 입력받은 문자열을 해독된 문자열로 만들어 return한다.
+     * @param str 해독할 문자열
+     * @return 해독이 완료된 문자열 return
+     */
+    public static String decode(String str){
+        String result = str;
+        while (checkDuplicates(result)){
+            result = deduplicate(result);
+        }
+        return result;
+    }
+
+    /**
+     * 문자 내 중복이 존재하는지 확인하는 기능
+     * @param str 중복을 확인할 문자열
+     * @return 중복이 있을시 true, 없을시 false
+     */
+    public static boolean checkDuplicates(String str) {
+        for (int i = 1; i < str.length(); i++) {
+            if (str.charAt(i) == str.charAt(i - 1)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * 문자열을 입력받고 처음으로 중복발생하는 부분을 제거하고 남은 subString에 재귀적으로 수행
+     * @param str 중복제거를 수행할 문자열
+     * @return
      */
     public static String deduplicate(String str) {
+        if(str.length() == 0){
+            return "";
+        }
         StringBuilder builder = new StringBuilder(str);
+        StringBuilder result = new StringBuilder();
         int start = 0;
         int end = 0;
-        while (true) {
-            start = findDuplicateStartIndex(builder);
-            if (start == -1) {
-                return builder.toString();
-            }
-            end = findDuplicateEndIndex(builder, start);
-            builder.delete(start, end + 1);
+        start = findDuplicateStartIndex(builder);
+        end = findDuplicateEndIndex(builder, start);
+        if(end == start){
+            return str;
         }
+        result.append(builder.substring(0, start));
+        result.append(deduplicate(builder.substring(end+1, builder.length())));
+        builder.delete(start, end + 1);
+        return result.toString();
     }
 
     /**
@@ -67,7 +98,7 @@ public class Problem2 {
                 return start;
             }
         }
-        return -1;
+        return 0;
     }
 
     /**
@@ -100,7 +131,7 @@ public class Problem2 {
             throw new IllegalStateException("잘못된 입력입니다.");
         }
         String answer = "answer";
-        answer = deduplicate(cryptogram);
+        answer = decode(cryptogram);
         return answer;
     }
 }
