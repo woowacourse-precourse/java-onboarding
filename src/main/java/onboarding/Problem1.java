@@ -13,13 +13,7 @@ class Problem1 {
         if(validation(pobi, crong)){
             pobiScore = getMaxValue(pobi);
             crongScore = getMaxValue(crong);
-            if(pobiScore > crongScore){
-                answer = 1;
-            }else if(pobiScore == crongScore){
-                answer = 0;
-            }else{
-                answer = 2;
-            }
+            answer = compareScore(pobiScore, crongScore);
         }
         return answer;
     }
@@ -55,5 +49,11 @@ class Problem1 {
         int addResult = Math.max(add(array.get(0)), add(array.get(1)));
         int multipleResult = Math.max(multiple(array.get(0)), multiple(array.get(1)));
         return Math.max(addResult, multipleResult);
+    }
+
+    public static int compareScore(int pobiScore, int crongScore){
+        if(pobiScore > crongScore) return 1;
+        if(pobiScore == crongScore) return 0;
+        return 2;
     }
 }
