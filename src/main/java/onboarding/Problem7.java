@@ -7,24 +7,22 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
-import java.util.TreeMap;
 import java.util.stream.Collectors;
 
 public class Problem7 {
 
-  private static final Map<String, Set<String>> friendsMap = new HashMap<>();
-  private static final Map<String, Integer> scoreMap = new TreeMap<>();
-
   public static List<String> solution(String user, List<List<String>> friends,
       List<String> visitors) {
-    makeFriendMap(friends);
-    setAcquaintancePoint(user);
-    setVisitorPoint(user, visitors);
+    Map<String, Set<String>> friendsMap = new HashMap<>();
+    Map<String, Integer> scoreMap = new HashMap<>();
 
-    return getAnswer();
+    makeFriendMap(friends, friendsMap);
+    setAcquaintancePoint(user, friendsMap, scoreMap);
+    setVisitorPoint(user, visitors, friendsMap, scoreMap);
+    return getAnswer(scoreMap);
   }
 
-  private static List<String> getAnswer() {
+  private static List<String> getAnswer(Map<String, Integer> scoreMap) {
     return scoreMap.entrySet()
         .stream()
         .filter(entry -> entry.getValue() != 0)
@@ -35,16 +33,22 @@ public class Problem7 {
         .collect(Collectors.toList());
   }
 
-  private static void setVisitorPoint(String user, List<String> visitors) {
+  private static void setVisitorPoint(String user, List<String> visitors,
+      Map<String, Set<String>> friendsMap, Map<String, Integer> scoreMap) {
+
     for (String visitor : visitors) {
-      if (friendsMap.get(user).contains(visitor)) {
+      if (friendsMap.containsKey(user) && friendsMap.get(user).contains(visitor)) {
         continue;
       }
       scoreMap.put(visitor, scoreMap.getOrDefault(visitor, 0) + 1);
     }
   }
 
-  private static void setAcquaintancePoint(String user) {
+  private static void setAcquaintancePoint(String user, Map<String, Set<String>> friendsMap,
+      Map<String, Integer> scoreMap) {
+    if (!friendsMap.containsKey(user)) {
+      return;
+    }
     for (String person : friendsMap.keySet()) {
       if (person.equals(user) || friendsMap.get(user).contains(person)) {
         continue;
@@ -55,16 +59,18 @@ public class Problem7 {
     }
   }
 
-  private static void makeFriendMap(List<List<String>> friends) {
+  private static void makeFriendMap(List<List<String>> friends,
+      Map<String, Set<String>> friendsMap) {
     for (List<String> friend : friends) {
       String friend1 = friend.get(0);
       String friend2 = friend.get(1);
-      addFriend(friend1, friend2);
-      addFriend(friend2, friend1);
+      addFriend(friend1, friend2, friendsMap);
+      addFriend(friend2, friend1, friendsMap);
     }
   }
 
-  private static void addFriend(String friend1, String friend2) {
+  private static void addFriend(String friend1, String friend2,
+      Map<String, Set<String>> friendsMap) {
     friendsMap.computeIfAbsent(friend1, s -> new HashSet<>()).add(friend2);
   }
 }
