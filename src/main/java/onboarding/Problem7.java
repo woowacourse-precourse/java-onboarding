@@ -79,12 +79,54 @@ class RecommandAlgorithm {
             }
         }
     }
+
+    public List<String> scoringUnknownUsers() {
+        List<String> answerTemp = new ArrayList<>();
+        List<String> answer = new ArrayList<>();
+        LinkedHashMap<String, Integer> sortedScoreMap = new LinkedHashMap<>();
+
+        int score = 0;
+        for (String friend : this.unknownUsers) {
+            this.scoresOfFriends.put(friend, score);
+        }
+        for (String plusTen : this.friendsOfUserFriends) {
+            scoresOfFriends.replace(plusTen, scoresOfFriends.get(plusTen) + 10);
+        }
+        for (String plusOne : this.visitors) {
+            scoresOfFriends.replace(plusOne, scoresOfFriends.get(plusOne) + 1);
+        }
+        List<String> scoresList = new ArrayList<>(scoresOfFriends.keySet());
+        Collections.sort(scoresList, (o1, o2) -> (scoresOfFriends.get(o2).compareTo(scoresOfFriends.get(o1))));
+        for (String str : scoresList) {
+            for (Map.Entry<String, Integer> entry : scoresOfFriends.entrySet()) {
+                if (entry.getKey().equals(str)) {
+                    sortedScoreMap.put(str, entry.getValue());
+                }
+            }
+        }
+        answerTemp.addAll(sortedScoreMap.keySet());
+        if (answerTemp.size() > 5) {
+            for (int i = 0; i < 5; i++) {
+                answer.add(i, answerTemp.get(i));
+            }
+            return answer;
+        }
+        return answerTemp;
+    }
 }
 
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
-        return answer;
+        try {
+            RecommandAlgorithm friend = new RecommandAlgorithm(user, friends, visitors);
+            friend.chechException(user, friends, visitors);
+            friend.findFriendOfUserFriend(friends, user);
+            answer = friend.scoringUnknownUsers();
+            return answer;
+        } catch (Problem_7_Restriction e) {
+            return answer;
+        }
     }
 }
