@@ -32,13 +32,13 @@ public class Problem4 {
     static class AbnormalDictionary {
 
         private char findWord(char c) {
-            int index = 'a'+'z';
-            if('A'<=c && c<='Z') {
-                index = 'A'+'Z';
-            }
-
+            int index =(isUpperCase(c)) ? 'A'+'Z' : 'a'+'z';
             char res = (char)(index - c);
             return res;
+        }
+
+        private boolean isUpperCase(char c) {
+            return 'A'<=c && c<='Z';
         }
     }
 
