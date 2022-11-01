@@ -30,4 +30,11 @@ public class Problem6 {
         }
         return email;
     }
+
+    private static List<String> getSortedData(Set<String> email) {
+        List<String> emails = new ArrayList<>(email);
+        Collections.sort(emails);
+
+        return emails;
+    }
 }
