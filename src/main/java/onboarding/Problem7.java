@@ -67,6 +67,7 @@ public class Problem7 {
         List<String> recommendList = new ArrayList<>();
         friendsScoreTmp.entrySet().stream()
                 .sorted(comparingByValue(reverseOrder()))
+                .limit(5)
                 .forEachOrdered(x -> recommendList.add(x.getKey()));
         return recommendList;
     }
