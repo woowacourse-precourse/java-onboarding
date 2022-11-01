@@ -1,8 +1,11 @@
 package onboarding;
 
+import onboarding.problem2.domain.Decryptor;
+
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        final Decryptor decryptor = new Decryptor(cryptogram);
+        decryptor.decrypt();
+        return decryptor.getCryptogram();
     }
 }

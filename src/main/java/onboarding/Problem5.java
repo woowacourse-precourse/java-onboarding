@@ -1,11 +1,11 @@
 package onboarding;
 
-import java.util.Collections;
+import onboarding.problem5.domain.Money;
+
 import java.util.List;
 
 public class Problem5 {
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
-        return answer;
+        return new Money(money).numberOfEachCurrency();
     }
 }
