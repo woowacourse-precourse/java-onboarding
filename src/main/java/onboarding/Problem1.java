@@ -25,7 +25,6 @@ class Problem1 {
                     total *= num - '0';
                 }
             }
-            System.out.println(total);
             pmax_total = Math.max(pmax_total, total);
         }
         // 2. 크롱도 1과 마찬가지로 가장 큰 수를 구한다.
@@ -48,8 +47,17 @@ class Problem1 {
                     total *= num - '0';
                 }
             }
-            System.out.println(total);
             cmax_total = Math.max(cmax_total, total);
+        }
+        // 3. 포비와 크롱의 점수를 비교해 승, 패, 무승부를 정한다.
+        if(pmax_total == cmax_total){
+            System.out.println(0);
+        }
+        else if(pmax_total > cmax_total){
+            System.out.println(1);
+        }
+        else if(pmax_total < cmax_total){
+            System.out.println(2);
         }
         return answer;
     }
