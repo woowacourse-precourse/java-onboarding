@@ -34,6 +34,15 @@ public class Problem7 {
                 connectMap.put(connect.get(1), friendList);
             }
         }
+
+        // 2. 그래프에서 user 와 인접한 친구의 친구들에게 +10점
+        Map<String, Integer> scores = new HashMap<>();
+        for(String userFriend : connectMap.get(user)) {
+            for(String friendFriend: connectMap.get(userFriend)) {
+                scores.put(friendFriend, scores.containsKey(friendFriend) ? scores.get(friendFriend) + 10 : 10);
+            }
+        }
+
         return answer;
     }
 }
