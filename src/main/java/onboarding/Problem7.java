@@ -50,6 +50,14 @@ public class Problem7 {
         entryList.sort(Entry.comparingByKey());
         entryList.sort(Entry.comparingByValue(Comparator.reverseOrder()));
 
+        int count = 5;
+        for (Entry<String, Integer> entry : entryList) {
+            answer.add(entry.getKey());
+            count--;
+            if (count <= 0) { // 5개 까지만
+                break;
+            }
+        }
 
         System.out.println(answer);
         return answer;
