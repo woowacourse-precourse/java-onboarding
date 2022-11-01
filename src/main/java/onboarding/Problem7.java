@@ -47,6 +47,13 @@ public class Problem7 {
     }
 
     // A에게 점수를 n만큼 추가해주는 함수
-
+    private static void addScore(String user, int score){
+        if(!scoreBoard.containsKey(user)){
+            scoreBoard.put(user, 0);
+        }
+        int userScore = scoreBoard.get(user);
+        userScore += score;
+        scoreBoard.put(user, userScore);
+    }
     // 사용자를 점수-이름 순으로 정렬해주는 함수 sortUserList()
 }
