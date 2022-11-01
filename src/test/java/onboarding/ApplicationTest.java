@@ -62,6 +62,9 @@ class ApplicationTest {
             List<Integer> pobi7 = List.of(389);
             List<Integer> crong7 = List.of(399);
 
+            List<Integer> pobi8 = new ArrayList<>();
+            List<Integer> crong8 = List.of(399);
+
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
             assertThat(Problem1.solution(pobi1, crong1)).isEqualTo(result);
             assertThat(Problem1.solution(pobi2, crong2)).isEqualTo(result);
@@ -70,6 +73,7 @@ class ApplicationTest {
             assertThat(Problem1.solution(pobi5, crong5)).isEqualTo(result);
             assertThat(Problem1.solution(pobi6, crong6)).isEqualTo(result);
             assertThat(Problem1.solution(pobi7, crong7)).isEqualTo(result);
+            assertThat(Problem1.solution(pobi8, crong8)).isEqualTo(result);
         }
     }
 
@@ -99,7 +103,7 @@ class ApplicationTest {
         @Test
         void myCaseForPro2Uppercase1() {
             String result = "";
-            String cryptogram = "ZyelleyZ";
+            String cryptogram = "zelle  yz";
 
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
@@ -166,6 +170,25 @@ class ApplicationTest {
             int result = 12000;
             assertThat(Problem3.solution(number)).isEqualTo(result);
         }
+        @Test
+        void case5() {
+            int number = 0;
+            int result = 0;
+            assertThat(Problem3.solution(number)).isEqualTo(result);
+        }
+        @Test
+        void case6() {
+            int number = 10005;
+            int result = 0;
+            assertThat(Problem3.solution(number)).isEqualTo(result);
+        }
+        @Test
+        void case7() {
+            int number = 1;
+            int result = 0;
+            assertThat(Problem3.solution(number)).isEqualTo(result);
+        }
+
     }
 
     @Nested

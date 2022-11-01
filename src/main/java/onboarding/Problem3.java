@@ -14,11 +14,10 @@ class Num {
   private static final String NINE = "9";
 
   Num(int num) {
-    rangeValidityCheck(num);
     this.num = num;
   }
 
-  private void rangeValidityCheck(int num) {
+  void rangeValidityCheck() {
     if (num < MINLIMIT || num > MAXLIMIT) {
       throw new IllegalArgumentException("number over range (1~10000)");
     }
@@ -56,6 +55,7 @@ public class Problem3 {
 
   public static int solution(int number) {
     Num num = new Num(number);
+    num.rangeValidityCheck();
     return num.returnAnswer();
   }
 }

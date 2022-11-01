@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
+
   private static final int ERROR = -1;
   private static final int POBIWIN = 1;
   private static final int CRONGWIN = 2;
