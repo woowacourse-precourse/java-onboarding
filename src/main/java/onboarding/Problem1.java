@@ -33,6 +33,17 @@ class Problem1 {
             return -1;
         }
 
+        int pobiScore = getMaxNumber(pobi);
+        int crongScore = getMaxNumber(crong);
+
+        if (pobiScore < crongScore) {
+            answer = 2;
+        } else if (crongScore < pobiScore) {
+            answer = 1;
+        } else {
+            answer = 0;
+        }
+
         return answer;
     }
 
