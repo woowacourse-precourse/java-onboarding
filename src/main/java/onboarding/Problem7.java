@@ -67,7 +67,8 @@ public class Problem7 {
     }
     static public List<String> decideRecommends(HashMap<String, Integer> notUserFriends){
         List<Map.Entry<String, Integer>> sortNotUserFriends = notUserFriends.entrySet().stream()
-                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .sorted(Collections.reverseOrder(Map.Entry.<String, Integer>comparingByValue())
+                        .thenComparing(Map.Entry.comparingByKey()))
                 .collect(Collectors.toList());
         List<String> recommendFriends = new ArrayList<>();
         int length = Math.min(sortNotUserFriends.size(), 5);
