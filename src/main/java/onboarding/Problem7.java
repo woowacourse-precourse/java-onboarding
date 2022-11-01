@@ -1,13 +1,12 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Set<String> allNames = getAllNames(friends, visitors, user);
+        List<Integer>[] friendship = new List[allNames.size()];
+        friendshipInnerInit(allNames, friendship);
 
         List<String> answer = Collections.emptyList();
         return answer;
@@ -29,5 +28,11 @@ public class Problem7 {
         allNames.add(user);
 
         return allNames;
+    }
+
+    private static void friendshipInnerInit(Set<String> allNames, List<Integer>[] friendship) {
+        for (int i = 0; i < allNames.size(); i++) {
+            friendship[i] = new ArrayList<>();
+        }
     }
 }
