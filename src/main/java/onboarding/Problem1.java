@@ -36,10 +36,6 @@ class Player {
     public void setPage(List<Integer> pages) {
         this.pageStatus = false;
 
-        if (!isOnlyTwoPages(pages)) {
-            return;
-        }
-
         leftPage = pages.get(0);
         rightPage = pages.get(1);
 
@@ -48,10 +44,6 @@ class Player {
         }
 
         this.pageStatus = true;
-    }
-
-    private boolean isOnlyTwoPages(List<Integer> pages) {
-        return pages.size() == 2;
     }
 
     private boolean isWrongInput() {
