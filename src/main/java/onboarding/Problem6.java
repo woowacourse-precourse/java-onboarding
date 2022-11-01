@@ -16,4 +16,12 @@ public class Problem6 {
     		nick.add(forms.get(i).get(1));
     	}
     }
+	public static boolean contain(String nick, String part) {
+    	for(int i=0;i<part.length()-1;i++) {
+    		if(nick.contains(part.substring(i, i+2))){
+    			return true;
+    		}
+    	}
+    	return false;
+    }
 }
