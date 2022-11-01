@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Problem2 {
+
     public static String solution(String cryptogram) {
         /* [요구] 연속하는 중복 문자들을 삭제 후 리턴 */
         return removeDuplicate(cryptogram);
@@ -13,21 +14,21 @@ public class Problem2 {
     public static String removeDuplicate(String cryptogram) {
         List<String> newCryptogram = new ArrayList<>();
         String pre = "";
-        for (String s: cryptogram.split("")){
+        for (String alphabet : cryptogram.split("")) {
             if (newCryptogram.isEmpty()) {
-                newCryptogram.add(s);
+                newCryptogram.add(alphabet);
                 continue;
             }
-            if (s.equals(newCryptogram.get(newCryptogram.size()-1))) {
-                newCryptogram.remove(newCryptogram.size()-1);
-                pre = s;
+            if (alphabet.equals(newCryptogram.get(newCryptogram.size() - 1))) {
+                newCryptogram.remove(newCryptogram.size() - 1);
+                pre = alphabet;
                 continue;
             }
-            if (pre.equals(s)) {
+            if (pre.equals(alphabet)) {
                 continue;
             }
-            pre = s;
-            newCryptogram.add(s);
+            pre = alphabet;
+            newCryptogram.add(alphabet);
         }
         return String.join("", newCryptogram);
     }
