@@ -62,7 +62,6 @@ class Problem1 {
 
         /* 두 페이지 중 큰 값 비교 */
         int bigger = 0;
-        int comparison;
         int tmpAdd;
         int tmpMult;
         for(Integer score : arr) {
@@ -93,13 +92,6 @@ class Problem1 {
         } else {
             answer = 0;
         }
-        System.out.println(answer);
         return answer;
-    }
-
-    public static void main(String[] args) {
-        List<Integer> pobi = List.of(99, 100);
-        List<Integer> crong = List.of(9, 10);
-        solution(pobi, crong);
     }
 }
