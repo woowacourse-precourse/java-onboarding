@@ -5,16 +5,27 @@ public class Problem2 {
         StringBuilder sb = new StringBuilder(cryptogram);
         int i = 0;
         while(i < sb.length() && sb.length() > 1) {
-            if(i == 0) {
+            int maxSameLength = maxSameCharacter(sb, i);
+            if(maxSameLength == 1) {
                 i++;
                 continue;
             }
-            if(isConsecutiveSameCharacter(sb, i)) {
-                removeConsecutiveSameCharacter(sb, i);
-                i--;
+            removeConsecutiveSameCharacter(sb, i, maxSameLength);
+        }
+        String answer = sb.toString();
+        return answer;
+    }
+
+    private static String removeConsecutiveCharacter(String before) {
+        StringBuilder sb = new StringBuilder(before);
+        int i = 0;
+        while(i < sb.length() && sb.length() > 1) {
+            int maxSameLength = maxSameCharacter(sb, i);
+            if(maxSameLength == 1) {
+                i++;
                 continue;
             }
-            i++;
+            removeConsecutiveSameCharacter(sb, i, maxSameLength);
         }
         String answer = sb.toString();
         return answer;
