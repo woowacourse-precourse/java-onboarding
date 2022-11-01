@@ -59,4 +59,14 @@ public class Problem7 {
         HashMap<String, Integer> result = scoreCal(recommendList, 10);
         return result;
     }
+    //방문자 목록 정리, +1계산
+    public static HashMap<String, Integer> visitorsPeople(List<String> visitors, Set<String> trueFriends) {
+        List<String> trueFriendList = new ArrayList<>(trueFriends);
+        // 방문자 리스트 중 친구 제외
+        List<String> visitorsList = new ArrayList<>();
+        visitorsList.addAll(visitors);
+        visitorsList.removeAll(trueFriendList);
+        HashMap<String, Integer> result = scoreCal(visitorsList, 1);
+        return result;
+    }
 }
