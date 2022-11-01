@@ -5,7 +5,7 @@ package onboarding;
  * 2. 사용자의 친구 리스트 생성
  * 3. 사용자와 함께 아는 친구 수 카운팅
  * 4. 추천 점수 계산(방문자 포함)
- * 5. 추천 점수 기준 정렬후 키값 반환
+ * 5. 조건에 맞게 정렬 후 키값 반환
  */
 
 import java.util.*;
@@ -88,6 +88,20 @@ public class Problem7 {
     }
 
     public static List<String> sortScore(HashMap<String, Integer> score) {
+        List<String> answer = new ArrayList<>();
+        List<Map.Entry<String, Integer>> result = new LinkedList<>(score.entrySet());
+        Collections.sort(result, new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                int comparision = (o1.getValue() - o2.getValue()) * -1;
+                return comparision == 0 ? o1.getKey().compareTo(o2.getKey()) : comparision;
+            }
+        });
 
+        for (Map.Entry<String, Integer> sort : result) {
+            answer.add(sort.getKey());
+        }
+        return answer;
     }
+}
 
