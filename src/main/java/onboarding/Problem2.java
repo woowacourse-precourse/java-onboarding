@@ -16,4 +16,13 @@ public class Problem2 {
 
         return decryption;
     }
+
+    public static String decrypt(String cryptogram){
+        for(int i=0; i<cryptogram.length(); i++){
+            cryptogram= Deduplicate(cryptogram);
+            if(cryptogram== Deduplicate(cryptogram) || cryptogram.length()==0)
+                break;
+        }
+        return Deduplicate(cryptogram);
+    }
 }
