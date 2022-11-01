@@ -7,4 +7,13 @@ public class Problem6 {
         List<String> answer = List.of("answer");
         return answer;
     }
+
+    private static boolean validateNicknameCheck(String nickname) {
+        if (nickname.matches("^[가-힣]*$") &&
+                0 < nickname.length() && nickname.length() < 20) {
+            return true;
+        }
+
+        return false;
+    }
 }
