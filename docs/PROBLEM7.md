@@ -24,3 +24,12 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+## 기능 목록 만들기
+
+1. name, score 변수를 가지는 Friend class 생성, score와 name을 기준으로 정렬하는 메소드까지 포함하여 구현
+2. 친구 이름 목록과 친구의 친구 이름 목록 만들기
+3. Friend class를 인스턴스화 하여 아래 기준으로 이름과 점수 저장하기
+   1. 친구의 친구 목록 (+10점)
+   2. 방문자 목록 (+1점)
+4. 점수가 높은 순으로, 점수가 같다면 이름 순으로 정렬하고, 5개 까지 리스트에 저장하여 반환하기
