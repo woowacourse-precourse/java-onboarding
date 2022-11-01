@@ -60,7 +60,7 @@ class Problem1 {
     }
 
     private static boolean isException(List<Integer> pages) {
-        if(pages.get(1) != pages.get(0) + 1 || pages.get(0) == 1 || pages.get(1) == 400 || pages.get(0) %2 != 1)
+        if(pages.get(1) != pages.get(0) + 1 || pages.get(1) < 1 || pages.get(0) > 400 || pages.get(0) %2 != 1)
             return true;
         return false;
     }
