@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.HashSet;
 import java.util.List;
 
 public class Problem6 {
@@ -8,6 +9,30 @@ public class Problem6 {
         return answer;
     }
 
+    private static HashSet<String> getDuplicatedNameUsersEmailList(HashSet<String> dupList,
+            List<List<String>> forms,
+            List<String> userInfo,
+            int formsIndex) {
+
+        if (formsIndex >= forms.size()) {
+            return dupList;
+        }
+
+        List<String> compareList = forms.get(formsIndex);
+        String compareEmail = compareList.get(0);
+        String compareName = compareList.get(1);
+
+        String userEmail = userInfo.get(0);
+        String userName = userInfo.get(1);
+
+        if (isDuplicated(userName, compareName)) {
+            dupList.add(userEmail);
+            dupList.add(compareEmail);
+        }
+
+        return getDuplicatedNameUsersEmailList(dupList, forms, userInfo, formsIndex + 1);
+    }
+    
     /**
      * 입력받은 문자열 2개를 비교해 2자 이상 중복되었는 판별함
      * 
