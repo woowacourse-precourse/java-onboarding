@@ -6,6 +6,9 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
+        int pobiScore = getPersonalHighestValue(pobi);
+        int crongScore = getPersonalHighestValue(crong);
+
         return answer;
     }
 
@@ -27,5 +30,12 @@ class Problem1 {
             result *= Integer.parseInt(pageNumString.substring(i, i+1));
         }
         return result;
+    }
+
+    private static int getPersonalHighestValue(List<Integer> person){
+        int leftPageHighestValue = Math.max(getPlusValue(person.get(0)), getMultiplyValue(person.get(0)));
+        int rightPageHighestValue = Math.max(getPlusValue(person.get(1)), getMultiplyValue(person.get(1)));
+
+        return Math.max(leftPageHighestValue, rightPageHighestValue);
     }
 }
