@@ -19,8 +19,12 @@ public class Problem7 {
     static Map<String, Integer> score_map;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+
+        get_friend_map(friends);
+        get_score_map(user, visitors);
+        List<String> recommended_friend_list = get_recommended_friend_list();
+
+        return recommended_friend_list;
     }
 
     static void get_friend_map(List<List<String>> friends){
