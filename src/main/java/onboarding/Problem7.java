@@ -54,7 +54,7 @@ public class Problem7 {
         //Step5. 위에서 부터 하나씩 answer에 넣되 점수가 0인 경우에는 넣지 않고, answer 리턴
         int count = 0;
         for (Map.Entry<String, Integer> friend : recommendPointRank) {
-            if (friend.getValue() == 0 || count > 5) {
+            if (friend.getValue() == 0 || count > 4) {
                 break;
             } else {
                 answer.add(friend.getKey());
