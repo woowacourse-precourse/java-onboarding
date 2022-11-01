@@ -13,6 +13,10 @@ public class Problem4 {
         return convertReverse(charWord).toString();
     }
 
+    private static boolean verifyException(char[] word) {
+        return (word != null && word.length >= 1 && word.length <= 1000);
+    }
+
     private static String convertReverse(char[] word) {
         String answer = "";
 
@@ -28,9 +32,5 @@ public class Problem4 {
             }
         }
         return answer;
-    }
-
-    private static boolean verifyException(char[] word) {
-        return (word != null && word.length >= 1 && word.length <= 1000);
     }
 }
