@@ -6,6 +6,22 @@ public class Problem3 {
         return answer;
     }
 
+    private static int calculate(int num) {
+        int n = num;
+        //1의 자리에 369가 들어가는 숫자의 개수 계산
+        int sum = get3or6or9(n);
+        //10의 자리 이상에 계산
+        n /= 10;
+        int placeValue = 10;
+        //10의 자리부터 한자리씩 올리면서 계산
+        while(n > 0) {
+            sum += get3or6or9(n - 1) * placeValue + ((n % 10) != 0 && (n % 10) % 3 == 0 ? num % placeValue + 1 : 0);
+            n /= 10;
+            placeValue *= 10;
+        }
+        return sum;
+    }
+
     //일의 자리에 369가 들어간 숫자가 총 몇 개인가?
     // ex) 333
     // -> howMany10s = 33
