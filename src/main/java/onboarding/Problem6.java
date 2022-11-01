@@ -23,6 +23,11 @@ public class Problem6 {
         List<String> flattenDuplicateNicknames = flattenList(duplicateNicknames).stream()
                 .distinct()
                 .collect(Collectors.toList());
+        List<String> emails = new ArrayList<>();
+        for (int i = 0; i < flattenDuplicateNicknames.size(); i++) {
+            emails.add(profile.get(flattenDuplicateNicknames.get(i)));
+        }
+        Collections.sort(emails);
         return emails;
     }
     public static List<String> splitToTwoLetters(String nickname){
