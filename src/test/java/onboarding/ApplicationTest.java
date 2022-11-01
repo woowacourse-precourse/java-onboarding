@@ -162,6 +162,13 @@ class ApplicationTest {
             String result = "ZYXWVUTSRQPONM lkjihgfedcba";
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
+
+        @Test
+        void case3() {
+            String word = "ABC알파벳 외의 문자는 변환하지 않는다.";
+            String result = "ZYX알파벳 외의 문자는 변환하지 않는다.";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
     }
 
     @Nested
