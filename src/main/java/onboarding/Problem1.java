@@ -3,20 +3,11 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
-    public static boolean validTest(List<Integer> input) {
+    public static boolean isInvalid(List<Integer> input) {
         int left = input.get(0);
         int right = input.get(1);
 
-        if (left + 1 != right){
-            return false;
-        }
-        if (left < 1 || right > 400){
-            return false;
-        }
-        if (left % 2 != 1) {
-            return false;
-        }
-        return true;
+        return left + 1 == right && left >= 1 && right <= 400 && right % 2 == 0;
     }
 
     public static int addEachNum(int...num) {
@@ -54,17 +45,12 @@ class Problem1 {
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-
-        if (!validTest(pobi) || !validTest(crong)) {
+        if (isInvalid(pobi) || isInvalid(crong)) {
             return -1;
         }
-
         int pobiScore = Math.max(calMaxNum(pobi.get(0)), calMaxNum(pobi.get(1)));
         int crongScore = Math.max(calMaxNum(crong.get(0)), calMaxNum(crong.get(1)));
 
-        answer = pobiScore > crongScore ? 1 : pobiScore < crongScore ? 2 : 0;
-
-        return answer;
+        return pobiScore > crongScore ? 1 : pobiScore < crongScore ? 2 : 0;
     }
 }
