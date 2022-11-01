@@ -6,7 +6,8 @@ import java.util.List;
 
 public class Problem5 {
     public static List<Integer> solution(int money) {
-        if (!validation(money)) return Collections.emptyList();
+        final List<Integer> ERROR = Collections.emptyList();
+        if (violation(money)) return ERROR;
         List<Integer> answer = new ArrayList<>(9);
         List<Integer> coins = List.of(50000, 10000, 5000, 1000, 500, 100, 50, 10, 1);
         for (int coin : coins) {
@@ -16,7 +17,7 @@ public class Problem5 {
         return answer;
     }
 
-    static boolean validation(int money) {
-        return money > 0 && money <= 1000000;
+    static boolean violation(int money) {
+        return money <= 0 || money > 1000000;
     }
 }
