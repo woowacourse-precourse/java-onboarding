@@ -11,7 +11,6 @@ public class Problem4 {
             char str = word.charAt(i);
 
             str = reverse(str);  // 대소문자 변환
-            System.out.print(str);
 
             String string = String.valueOf(str);
 

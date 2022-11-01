@@ -84,10 +84,8 @@ class Problem1 {
         int bigNum;
         if (add(str) >= mul(str)){
             bigNum = add(str);
-            System.out.println("add가 큼");
         } else {
             bigNum = mul(str);
-            System.out.println("mul가 큼");
         }
         return bigNum;
     }
