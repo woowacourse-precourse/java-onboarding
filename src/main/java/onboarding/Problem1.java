@@ -8,6 +8,7 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
 
 
+
         return answer;
     }
 
@@ -54,6 +55,13 @@ class Problem1 {
         else
             answer = 0;
         return answer;
+    }
+
+    public static int getMaxBetweenRightAndLeft(int rightScore,int leftScore){
+        if(leftScore > rightScore)
+            return leftScore;
+        else
+            return rightScore;
     }
 }
 
