@@ -9,6 +9,10 @@ public class Problem4 {
         //  3. 알파벳이 대문자이면(아스키 코드 65~90) 90-(알파벳-65)
         //  4. 공백일 때는 answer에 공백 넣어주고 continue
         for(int i=0;i<word.length();i++) {
+            if (word.charAt(i) == ' ') {
+                answer += " ";
+                continue;
+            }
             int asci = word.charAt(i);
             if (asci > 96) answer += Character.toString((char) 219 - asci);
             else answer += Character.toString((char) 155 - asci);
