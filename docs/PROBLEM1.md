@@ -23,3 +23,24 @@
 | [97, 98] | [197, 198] | 0 |
 | [131, 132] | [211, 212] | 1 |
 | [99, 102] | [211, 212] | -1 |
+
+
+class problem1 {
+	public static int solution(list pobi, list crong) {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     {
+	pobi = input();
+	crong = input();
+	if(s_pobi > s_crong);    {
+	 System.out.println("1");
+	 }
+	 
+	 if(s_pobi < s_crong) {
+	 	System.out.println("2");
+	 	
+	 }
+	 if(s_pobi == s_crong) {
+	 	system.out.println("0");
+	 	}
+	 	
+	 else:
+	 	system.out.println("-1");
+	 	
