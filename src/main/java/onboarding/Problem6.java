@@ -16,6 +16,15 @@ public class Problem6 {
                 }
             }
         }
+        Collections.sort(answer);
+        for(int i=0;i< answer.size();i++){
+            for(int j=0;j<answer.size();j++){
+                if(i==j){
+                }else if(answer.get(j).equals(answer.get(i))){
+                    answer.remove(j);
+                }
+            }
+        }
         return answer;
     }
 }
