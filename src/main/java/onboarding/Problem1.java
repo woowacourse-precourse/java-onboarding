@@ -27,5 +27,5 @@ class Problem1 {
         else if(pobi.get(2)==pobi.get(3)&answer!=-1) answer=0;
         else if(pobi.get(2)<pobi.get(3)&answer!=-1) answer=2;
         return answer; 
-    }
+    } 
 }
