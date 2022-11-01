@@ -105,8 +105,7 @@ class ApplicationTest {
                     List.of("jason@email.com", "제이슨"),
                     List.of("woniee@email.com", "워니"),
                     List.of("mj@email.com", "엠제이"),
-                    List.of("nowm@email.com", "이제엠")
-            );
+                    List.of("nowm@email.com", "이제엠"));
             List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com");
             assertThat(Problem6.solution(forms)).isEqualTo(result);
         }
@@ -123,8 +122,7 @@ class ApplicationTest {
                     List.of("donut", "mrko"),
                     List.of("shakevan", "andole"),
                     List.of("shakevan", "jun"),
-                    List.of("shakevan", "mrko")
-            );
+                    List.of("shakevan", "mrko"));
             List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
             List<String> result = List.of("andole", "jun", "bedi");
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
