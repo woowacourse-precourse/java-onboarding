@@ -44,7 +44,7 @@ class Problem1 {
         int score = 0;
 
         for (int page : pages) {
-            int max = getMax(page);
+            int max = max(add(page), multiply(page));
 
             if (score < max) {
                 score = max;
@@ -52,10 +52,6 @@ class Problem1 {
         }
 
         return score;
-    }
-
-    private static int getMax(int page) {
-        return max(add(page), multiply(page));
     }
 
     private static int multiply(int num) {
