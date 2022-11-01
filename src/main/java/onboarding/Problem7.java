@@ -7,8 +7,14 @@ public class Problem7 {
         TreeSet<String> friendSet = findFriends(user, friends);
         TreeSet<String> peopleSet = findPeople(user, friends, visitors, friendSet);
         LinkedHashMap commonFriendMap = new LinkedHashMap();
+        LinkedHashMap visitCount = new LinkedHashMap();
+
         for (String person : peopleSet) {
             commonFriendMap.put(person, makeCommonFriends(person, friends));
+        }
+
+        for (String person : peopleSet) {
+            visitCount.put(person, countVisits(person));
         }
 
 
@@ -61,4 +67,15 @@ public class Problem7 {
         }
         return commonFriendSet;
     }
+
+    private static int countVisits(String person, List<String> visitors) {
+        int count = 0;
+        for (String visitor : visitors) {
+            if (visitor.indexOf(person) != -1) {
+                count = count + 1;
+            }
+        }
+        return count;
+    }
+
 }
