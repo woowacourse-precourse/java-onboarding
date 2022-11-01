@@ -24,7 +24,7 @@ public class Problem6 {
                 }
             }
         }
-
+        answer.sort(Comparator.naturalOrder());
 
         return answer;
     }
