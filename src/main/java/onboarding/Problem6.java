@@ -12,18 +12,23 @@ public class Problem6 {
         Set<String> result = new TreeSet<String>();
         Set<String> duplicatedWords = new HashSet<String>();
         for (int i = 0; i < forms.size(); i++) {
-            String name = forms.get(i).get(1);
+            List<String> form = forms.get(i);
+            String name = form.get(1);
+            String email = form.get(0);
             for (String word : duplicatedWords) {
                 if (name.contains(word)) {
-                    result.add(forms.get(i).get(0));
+                    result.add(email);
                 }
             }
             List<String> twoLetterWords = getTwoLetterWords(name);
             for (int j = i + 1; j < forms.size(); j++) {
+                List<String> target_form = forms.get(j);
+                String target_name = target_form.get(1);
+                String target_email = target_form.get(0);
                 for (String word : twoLetterWords) {
-                    if (forms.get(j).get(1).contains(word)) {
-                        result.add(forms.get(i).get(0));
-                        result.add(forms.get(j).get(0));
+                    if (target_name.contains(word)) {
+                        result.add(email);
+                        result.add(target_email);
                         duplicatedWords.add(word);
                     }
                 }
