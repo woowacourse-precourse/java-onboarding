@@ -32,19 +32,5 @@ public class Problem4 {
     	return A;
     }
     public static void main(String[] args) {
-    	String s = "I love you"; // R olev blf
-    	char[] chars = s.toCharArray();
-    	System.out.println(chars);
-    	chars[0]='R';
-    	System.out.println(chars);		
-    	System.out.println(chars[0]);	// R
-    	System.out.println(chars[0]+0);	// 82
-    	System.out.println(chars[0]+1); // 83
-    	char A = (char)(chars[0]+1);	// S
-    	System.out.println(A);
-    	int B = chars[0]+0;				//82
-    	System.out.println(B);			//82
-    	// 양수 변환 a * -1
-    	System.out.println(solution("I love you") + " solution");
     }
 }
