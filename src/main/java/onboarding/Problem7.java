@@ -3,8 +3,11 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Problem7 {
 	static final Map<String, List<String>> friendRelationGraph = new HashMap<>();
@@ -13,6 +16,11 @@ public class Problem7 {
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 		List<String> answer = Collections.emptyList();
 		return answer;
+	}
+
+	public static Set<String> findFriendsOfUser(String user) {
+		List<String> friendsOfUser = friendRelationGraph.get(user);
+		return new HashSet<>(friendsOfUser);
 	}
 
 	public static void initRecommendationScores() {
