@@ -9,24 +9,49 @@ public class Problem7 {
 
         List<String> usersFriends = getUsersFriends(friends, user);
         List<String> userUnionFriends = getUserUnionFriends(usersFriends, friends, user);
-        List<String> visitUser = getVisitUser(visitors);
+        List<String> visitUser = getVisitUser(visitors, usersFriends);
 
-        Map<String, Integer> point = new HashMap<>();
-        // 겹친구의 Point 계산
-        for(String userName : userUnionFriends) {
-            point.put(userName, point.getOrDefault(userName, 0) + 10);
-        }
-
+        // Map에 추천친구에 해당하는 user의 point 넣기
+        Map<String, Integer> point = setUserMap(visitUser, userUnionFriends);
+        
+        // Point 값에 따라 정렬하기
+        List<String> keySet = new ArrayList<>(point.keySet());
+        Collections.sort(keySet);
+        keySet.sort((o1, o2) -> point.get(o2).compareTo(point.get(o1)));
+        
+        // 상위 5개를 추려서 추천 친구리스트에 담기
+        // for(int i = 0; i < keySet.size() && i < 5; i++) answer.add(keySet.get(i));
 
         return answer;
     }
 
     /**
-     * User의 SNS의 방문한 사람
+     * 추천친구에 해당하는 대상의 point 넣기
+     * @param visitUser User의 SNS의 방문한 사람
+     * @param userUnionFriends User와 겹친구인 친구목록
+     * @return point
+     */
+    private static Map<String, Integer> setUserMap(List<String> visitUser, List<String> userUnionFriends) {
+        Map<String, Integer> point = new HashMap<>();
+
+
+        if(!visitUser.isEmpty()) {
+            for(String userName : visitUser) point.put(userName, point.getOrDefault(userName, 0) + 10);
+        }
+
+        if(!userUnionFriends.isEmpty()) {
+            for(String userName : userUnionFriends) point.put(userName, point.getOrDefault(userName, 0) + 1);
+        }
+
+        return point;
+    }
+
+    /**
+     * User의 SNS의 방문한 사람 중 User와 친구가 아닌 사람을 찾는 메소드
      * @param visitors User의 SNS의 방문한 기록
      * @return visistUser
      */
-    private static List<String> getVisitUser(List<String> visitors) {
+    private static List<String> getVisitUser(List<String> visitors, List<String> userList) {
         HashSet<String> visistUserSet = new HashSet<>();
 
         for (String visistUserName : visitors) {
