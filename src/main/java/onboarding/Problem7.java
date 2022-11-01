@@ -27,6 +27,7 @@ public class Problem7 {
         makeFriendMapOfFriendsList(friends);
         makeScoreMapOfAllId(user, visitors);
         removeFriendsAlreadyKnow(friendsMap.get(user));
+        removeZeroScoreFriends();
         scoreMap.remove(user);
         makeRecommendFriendList();
         sortRecommendFriendList();
@@ -46,10 +47,8 @@ public class Problem7 {
         int count = 0;
         List<String> idList = new ArrayList<>();
         for (RecommendFriend recommendFriend : recommendFriendList) {
-            if (recommendFriend.score > 0) {
-                idList.add(recommendFriend.id);
-                count++;
-            }
+            idList.add(recommendFriend.id);
+            count++;
             if (count >= 5) {
                 break;
             }
@@ -60,6 +59,14 @@ public class Problem7 {
     private static void makeRecommendFriendList() {
         scoreMap.keySet()
                 .forEach(key -> recommendFriendList.add(new RecommendFriend(key, scoreMap.get(key))));
+    }
+
+    private static void removeZeroScoreFriends() {
+        recommendFriendList.forEach(friend -> {
+            if (friend.score == 0) {
+                recommendFriendList.remove(friend);
+            }
+        });
     }
 
     private static void removeFriendsAlreadyKnow(List<String> userFriendList) {
