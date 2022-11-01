@@ -9,12 +9,11 @@ public class Problem6 {
     static HashMap<String, List<Integer>> wordDict = new HashMap<>();
 
     public static List<String> solution(List<List<String>> forms) {
-        makeDict(forms);
-        List<Integer> user = getUser(forms.size());
-        List<String> emailList = getEmail(forms, user);
-        Collections.sort(emailList);
+        List<String> answer = Collections.emptyList();
 
-        return emailList;
+        makeDict(forms);
+
+        return answer;
     }
 
     /**
@@ -39,31 +38,4 @@ public class Problem6 {
         }
     }
 
-    private static List<Integer> getUser(int n) {
-        List<Integer> users = new ArrayList<>(Collections.nCopies(n, 0));
-
-        for (String word : wordDict.keySet()) {
-            List<Integer> idx = wordDict.get(word);
-
-            if (idx.size() != 1) {
-                for (int i = 0; i < idx.size(); i++) {
-                    users.set(idx.get(i), 1);
-                }
-            }
-        }
-
-        return users;
-    }
-
-    private static List<String> getEmail(List<List<String>>forms, List<Integer> users) {
-        List<String> emailList = new ArrayList<>();
-
-        for (int i = 0; i < users.size(); i++) {
-            if (users.get(i) == 1) {
-                emailList.add(forms.get(i).get(0));
-            }
-        }
-
-        return emailList;
-    }
 }

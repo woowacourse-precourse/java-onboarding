@@ -21,3 +21,8 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능 목록
+1. 모든 닉네임을 2글자로 끊어서 HaspMap에 저장, value로 해당 글자를 가지고 있는 인덱스를 넣어주는 기능 : makeDict
+2. 2명이상이 해당 글자를 가지고 있는 경우 해당 인덱스를 1로 반환하는 기능 : getUser
+3. 해당 인덱스에 해당하는 이메일을 리스트로 반환하는 기능 : getEmail
