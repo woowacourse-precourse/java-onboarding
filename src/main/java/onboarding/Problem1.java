@@ -10,7 +10,7 @@ class Problem1 {
     final static int TIE = 0;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if (violation(pobi) && violation(crong)) {
+        if (violation(pobi) || violation(crong)) {
             return ERROR;
         }
         int pobiScore = score(pobi);
@@ -25,7 +25,9 @@ class Problem1 {
         if (pages.get(0) == 1 || pages.get(1) == 400) return true; // 첫 페이지, 마지막 페이지 포함하면 안됨
         if (pages.get(0) % 2 == 0) return true; // 왼쪽 페이지는 홀수여야 함
         if (pages.get(1) - pages.get(0) != 1) return true; // 두 페이지는 연속
-        return pages.get(0) < 1 || pages.get(1) > 400; // 페이지 범위는 1에서 400
+        int min = Math.min(pages.get(0), pages.get(1));
+        int max = Math.max(pages.get(0), pages.get(1));
+        return min < 1 || max > 400; // 페이지 범위는 1에서 400
     }
 
     static int score(int page) {
