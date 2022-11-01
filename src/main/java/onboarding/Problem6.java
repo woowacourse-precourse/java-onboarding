@@ -13,6 +13,24 @@ public class Problem6 {
         }
         return false;
     }
+    
+    //2) 연속적으로 포함되어 있다면, 이메일 값 추가
+    public static void   nickNameCheck(List<String> form1,List<String> form2)
+    {
+        String nickName1 = form1.get(1);
+        String email1 = form1.get(0);
+        String nickName2 = form2.get(1);
+        String email2 = form2.get(0);
 
+        //두 닉네임이 비슷한지 체크
+        if(SimilarCheck(nickName1, nickName2))
+        {
+            //중복 저장하면 안되므로 중복 유무 검사
+            if (!answer.contains(email1))
+                answer.add(email1);
+            if (!answer.contains(email2))
+                answer.add(email2);
+        }
+    }
     
 }
