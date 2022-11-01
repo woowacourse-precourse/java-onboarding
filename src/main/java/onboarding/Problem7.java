@@ -59,4 +59,12 @@ public class Problem7 {
             Friends.put(visitors.get(i),Friends.getOrDefault(visitors.get(i),0)+1);
         }
     }
+
+    /* 기능5 : 사용자와 친구 제외 */
+    private static void Exclusion(List<String> userFriends,Map<String, Integer> Friends,String user){
+        for(int i= 0; i < userFriends.size(); i++){
+            Friends.remove(userFriends.get(i));
+        }
+        Friends.remove(user);
+    }
 }
