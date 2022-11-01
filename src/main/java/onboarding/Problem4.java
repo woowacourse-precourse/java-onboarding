@@ -37,10 +37,10 @@ public class Problem4 {
 
         for(int i = 0; i < word.length(); i++){
             char character = word.charAt(i);
-//            if(!isAlphabet(character)) {
-//                answer += character;
-//                continue;
-//            }
+            if(!isAlphabet(character)) {
+                answer += character;
+                continue;
+            }
             answer += greenFrogDictionary.get(character);
         }
 
