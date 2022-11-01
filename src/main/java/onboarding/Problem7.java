@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.DoubleStream;
 
 public class Problem7 {
 
@@ -126,6 +125,66 @@ public class Problem7 {
         return;
     }
 
+    // 4. 명단 정렬하기
+    static void getRecoSort(List<List<String>> infoScoreList)
+    {
+        int sortNumber = 0;
+
+        while(sortNumber < 2)
+        {
+            if(sortNumber >= 2)
+                break;
+
+            for(int a=1; a<infoScoreList.size(); a++)
+            {
+                for (int b = a; b > 0; b--)
+                {
+                    String listOne = infoScoreList.get(b).get(sortNumber);
+                    String listTwo = infoScoreList.get(b - 1).get(sortNumber);
+
+                    // 이름 순으로 정렬
+                    if(sortNumber == 0)
+                    {
+                        if (listOne.compareTo(listTwo) < 0) {
+                            List<String> temp = infoScoreList.get(b);
+                            infoScoreList.set(b, infoScoreList.get(b - 1));
+                            infoScoreList.set(b - 1, temp);
+                        }
+                        else
+                            break;
+                    }
+
+                    // 추천 점수 순으로 정렬
+                    else if(sortNumber == 1)
+                    {
+                        if(getNumSort(listOne,listTwo) == 1)
+                        {
+                            List<String> temp = infoScoreList.get(b);
+                            infoScoreList.set(b, infoScoreList.get(b - 1));
+                            infoScoreList.set(b - 1, temp);
+                        }
+                        else
+                            break;
+                    }
+                }
+            }
+
+            sortNumber += 1;
+        }
+    }
+
+    // 점수 타입 변환 & 점수 순 정렬 수행
+    static int getNumSort(String listOne, String listTwo)
+    {
+        int num1 = Integer.parseInt(listOne);
+        int num2 = Integer.parseInt(listTwo);
+
+        if(num1 > num2)
+            return 1;
+        else
+            return -1;
+    }
+
     // 점수 타입 변환 & 연산 수행
     static String getScoreCalc(String score1, String score2)
     {
@@ -161,8 +220,11 @@ public class Problem7 {
         // 방문자 점수 추가
         addVisitorScore(infoScoreList, visitors, myFriendsList);
 
-        // 친구 추천 리스트에 방문 점수 매기기 결과 확인
-        System.out.println(infoScoreList);
+        // 친구 추천 명단 정렬
+        getRecoSort(infoScoreList);
+
+        // 친구 추천 명단 정렬 결과
+        System.out.println("정렬 결과 : " + infoScoreList);
 
         return answer;
     }
