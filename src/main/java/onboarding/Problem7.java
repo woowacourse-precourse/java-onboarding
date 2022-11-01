@@ -3,23 +3,22 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
-    private static final int FIRST_FRIEND_ID = 0;
-    private static final int SECOND_FRIEND_ID = 1;
+    private static final int FIRST_ID = 0;
+    private static final int SECOND_ID = 1;
 
     private static final int FRIEND_RECOMMENDATION_SCORE = 10;
 
-    private static final int VISITOR_SCORE = 10;
+    private static final int VISITOR_SCORE = 1;
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
         if (!verifyException(user, friends, visitors)) {
             return List.of("Error");
         }
 
-        List<String> userFriends = findUserFriend(user, friends);
-        Map<String, Integer> recommendFriend = makeRecommend(user, userFriends, friends, visitors);
-        addVisitorScore(recommendFriend, visitors);
+        List<String> userFriend = findUserFriend(user, friends);
+        Map<String, Integer> recommendedFriend = makeRecommend(user, userFriend, friends, visitors);
+        addVisitorScore(recommendedFriend, userFriend,visitors);
 
-        return answer;
+        return makeAnswer(recommendedFriend);
     }
 
     private static boolean verifyException(String user, List<List<String>> friends, List<String> visitors) {
@@ -53,7 +52,7 @@ public class Problem7 {
 
     private static boolean checkFriendId(List<List<String>> friends) {
         for (List<String> friend : friends) {
-            if (checkUser(friend.get(FIRST_FRIEND_ID)) || checkUser(friend.get(SECOND_FRIEND_ID))) {
+            if (checkUser(friend.get(FIRST_ID)) || checkUser(friend.get(SECOND_ID))) {
                 return false;
             }
         }
@@ -90,51 +89,83 @@ public class Problem7 {
     }
 
     private static List<String> findUserFriend(String user, List<List<String>> friends) {
-        List<String> userFriends = new ArrayList<>();
+        List<String> userFriend = new ArrayList<>();
 
-        for (List<String> friendship : friends) {
-            if (friendship.contains(user)) {
-                userFriends.add(getFriend(user, friendship.get(FIRST_FRIEND_ID), friendship.get(SECOND_FRIEND_ID)));
+        for (List<String> friend : friends) {
+            if (friend.contains(user)) {
+                userFriend.add(getFriend(user, friend));
             }
         }
-        return userFriends;
+        return userFriend;
     }
 
-    private static String getFriend(String user, String firstId, String secondId) {
-        if (user.equals(firstId)) {
-            return secondId;
+    private static String getFriend(String user, List<String> friend) {
+        if (user.equals(friend.get(FIRST_ID))) {
+            return friend.get(SECOND_ID);
         }
-        return firstId;
+        return friend.get(FIRST_ID);
     }
 
     private static Map<String, Integer> makeRecommend(String user, List<String> userFriends ,List<List<String>> friends, List<String> visitors) {
-        Map<String, Integer> recommendFriend = new HashMap<>();
-        String recommendId = "";
+        Map<String, Integer> recommendedFriend = new HashMap<>();
+        String recommendedId = "";
 
         for (List<String> friend : friends) {
             for (String userFriend : userFriends) {
                 if (friend.contains(userFriend) && !friend.contains(user)) {
-                    recommendId = getFriend(userFriend, friend.get(FIRST_FRIEND_ID), friend.get(SECOND_FRIEND_ID));
-                    recommendFriend.put(recommendId, getScore(recommendId, recommendFriend) + FRIEND_RECOMMENDATION_SCORE);
+                    recommendedId = getFriend(userFriend, friend);
+                    recommendedFriend.put(recommendedId, getScore(recommendedId, recommendedFriend) + FRIEND_RECOMMENDATION_SCORE);
                 }
             }
         }
-        return recommendFriend;
+        return recommendedFriend;
     }
 
-    private static int getScore(String Id, Map<String, Integer> recommedFriend) {
-        if (recommedFriend.containsKey(Id)) {
-            return (recommedFriend.get(Id));
+    private static int getScore(String Id, Map<String, Integer> recommededFriend) {
+        if (recommededFriend.containsKey(Id)) {
+            return (recommededFriend.get(Id));
         }
         return (0);
     }
 
-    private static void addVisitorScore(Map<String, Integer> recommendFriend, List<String> visitors) {
+    private static void addVisitorScore(Map<String, Integer> recommendedFriend, List<String> userFriend ,List<String> visitors) {
         for (String visitor : visitors) {
-            if (recommendFriend.containsKey(visitor)) {
-                recommendFriend.put(visitor, getScore(visitor, recommendFriend) + VISITOR_SCORE);
+            if (userFriend.contains(visitor)) {
+                continue;
             }
+            if (recommendedFriend.containsKey(visitor)) {
+                recommendedFriend.put(visitor, getScore(visitor, recommendedFriend) + VISITOR_SCORE);
+            } else {
+                recommendedFriend.put(visitor, VISITOR_SCORE);
+            }
+
         }
     }
 
+    private static List<String> makeAnswer(Map<String, Integer> recommendedFriend) {
+        List<Map.Entry<String, Integer>> sortedRocommandedFriend = new LinkedList<>(recommendedFriend.entrySet());
+        Collections.sort(sortedRocommandedFriend, new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                if (o1.getValue().equals(o2.getValue())) {
+                    return o1.getKey().compareTo(o2.getKey());
+                } else {
+                    return o2.getValue().compareTo(o1.getValue());
+                }
+            }
+        });
+        return addMaxFive(sortedRocommandedFriend);
+    }
+
+    private static List<String> addMaxFive(List<Map.Entry<String, Integer>> sortedRocommandedFriend) {
+        List<String> answer = new ArrayList<>();
+
+        for (Map.Entry<String, Integer> entry : sortedRocommandedFriend) {
+            if (answer.size() == 5) {
+                break;
+            }
+            answer.add(entry.getKey());
+        }
+        return answer;
+    }
 }
