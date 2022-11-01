@@ -1,6 +1,8 @@
 package onboarding;
 
+
 import static java.lang.Character.isLowerCase;
+import static java.lang.Character.isUpperCase;
 
 /**
  * 문제 풀이 방식 & 기능 목록서는
@@ -16,21 +18,20 @@ public class Problem4 {
     }
 
     private static char convertChar(char character) {
-        if(isLowerCase(character)){
-            return convertLowerCase(character);
-        }
-        return convertUpperCase(character);
+        if(isLowerCase(character)) return convertLowerCase(character);
+        else if(isUpperCase(character))return convertUpperCase(character);
     }
 
     private static char convertUpperCase(char character) {
         int gap = character - 'A';
         int newChar = 'Z' - gap;
-        System.out.println(character + " -> " + (char)newChar);
         return (char) newChar;
     }
 
     private static char convertLowerCase(char character) {
-        return 0;
+        int gap = character - 'a';
+        int newChar = 'z' - gap;
+        return (char) newChar;
     }
 
 
