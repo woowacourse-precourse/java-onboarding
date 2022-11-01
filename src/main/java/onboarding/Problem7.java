@@ -137,8 +137,8 @@ class Relations {
 }
 
 class Intimacy implements Comparable<Intimacy> {
-    static final int MUTUAL_FRIEND_WEIGHT = 10;
-    static final int VISITED_WEIGHT = 1;
+    private static final int MUTUAL_FRIEND_WEIGHT = 10;
+    private static final int VISITED_WEIGHT = 1;
 
     private String targetId;
     private String userId;
