@@ -51,7 +51,7 @@ class Problem1 {
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        int answer;
         Problem1 p1 = new Problem1();
 
         // pobi와 crong의 예외처리
@@ -64,6 +64,14 @@ class Problem1 {
 
         int pobi_max = p1.calculate_function(pobi); // pobi의 최대값
         int crong_max = p1.calculate_function(crong);   // crong의 최대값
+
+        if (pobi_max > crong_max) { // pobi가 이길경우
+            answer = 1;
+        } else if (pobi_max == crong_max) { // crong이 이길 경우
+            answer = 0;
+        } else {    // 무승부일 경우
+            answer = 2;
+        }
 
         return answer;
     }
