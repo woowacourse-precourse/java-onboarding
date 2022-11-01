@@ -7,7 +7,9 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
 
         Map<String, ArrayList<String>> friendMap = makeFriendMap(friends);
-
+        Map<String, Integer> recommendScore = addScoreFriendKnow(user, friendMap);
+        recommendScore = addScoreVisit(recommendScore, visitors);
+        System.out.println(recommendScore);
 
         return answer;
     }
@@ -29,5 +31,28 @@ public class Problem7 {
         }
 
         return friendMap;
+    }
+
+    public static Map<String, Integer> addScoreFriendKnow(String user, Map<String, ArrayList<String>> friendMap) {
+        Map<String, Integer> recommendScore = new HashMap<>();
+
+        for (String friend : friendMap.get(user)) {
+            recommendScore.put(friend, -1);
+            for (String friendKnow : friendMap.get(friend)) {
+                if (friendKnow.equals(user)) continue;
+                if (recommendScore.getOrDefault(friendKnow, 0) == -1) continue;
+                recommendScore.put(friendKnow, recommendScore.getOrDefault(friendKnow, 0) + 10);
+            }
+        }
+
+        return recommendScore;
+    }
+
+    public static Map<String, Integer> addScoreVisit(Map<String, Integer> recommendScore, List<String> visitors) {
+        for (String visitor : visitors) {
+            if (recommendScore.getOrDefault(visitor, 0) == -1) continue;
+            recommendScore.put(visitor, recommendScore.getOrDefault(visitor, 0) + 1);
+        }
+        return recommendScore;
     }
 }
