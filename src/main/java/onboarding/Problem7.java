@@ -50,6 +50,15 @@ public class Problem7 {
         }
         return -1;
     }
+    private static void pointUp(List<User> users, String userName, int n) {
+        int index = searchUser(users, userName);
+        if (index == -1) {
+            users.add(new User(userName, n));
+            return;
+        }
+        User user = users.get(index);
+        user.point += n;
+    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
