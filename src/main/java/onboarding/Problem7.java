@@ -11,7 +11,8 @@ public class Problem7 {
 
             List<String> userFriends = MakeFriendsList(user,friends);
             CountScore(Friends,visitors,friends,userFriends,user);
-            SortRecommend(Friends);
+
+            return SortRecommend(Friends);
         }throw new IllegalArgumentException("잘못된 입력값");
     }
 
@@ -78,9 +79,21 @@ public class Problem7 {
     }
 
     /* 기능7 : 추천친구 점수 내림차순 정렬 */
-    private static void SortRecommend(Map<String, Integer> Friends){
+    private static List<String> SortRecommend(Map<String, Integer> Friends){
         List<Map.Entry<String, Integer>> entryList = new LinkedList<>(Friends.entrySet());
         entryList.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
+        return SortName(entryList);
     }
+
+    /* 기능8 : 추천친구 이름 오름차순 정렬 */
+    private static List<String> SortName(List<Map.Entry<String, Integer>> entryList){
+        List<String> answer = new ArrayList<>();
+        for(int i= 0; i<entryList.size(); i++){
+            answer.add(entryList.get(i).getKey());
+        }return answer;
+    }
+
+
+
 
 }
