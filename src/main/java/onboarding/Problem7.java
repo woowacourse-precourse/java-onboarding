@@ -26,7 +26,9 @@ public class Problem7 {
         friendData=friends;
         owner=user;
         List<String> olderFriends = getFriendOfUser(user);
-        olderFriends.stream().forEach(a->oldFriend.add(a));
+        for(String friend : olderFriends){
+            oldFriend.add(friend);
+        }
     }
 
     private static List<String> getFriendOfUser(String user) {
