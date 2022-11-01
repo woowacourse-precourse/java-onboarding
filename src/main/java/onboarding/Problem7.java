@@ -43,6 +43,17 @@ public class Problem7 {
             }
         }
 
+        //add 1 if visited
+        for(String name: visitors){
+            if(!friend.contains(name)){
+                if(score.get(name) == null){
+                    score.put(name,1);
+                } else {
+                    addScore(score, name,1);
+                }
+            }
+        }
+
         return answer;
     }
 }
