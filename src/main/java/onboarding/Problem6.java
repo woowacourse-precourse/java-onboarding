@@ -44,6 +44,17 @@ public class Problem6 {
     }
 
 
+    List<String> makeEmailList(List<List<String>> forms, int[] checklist){
+
+        List<String> temp_email = null;
+
+        for (int i = 0; i < forms.size(); i++){
+            if (checklist[i] == 0) temp_email.add(forms.get(i).get(0));
+        }
+
+        return temp_email
+    }
+
 
     int[] checkRedupl(String cryptogram) {
         int[] temp_array = new int[cryptogram.length()];

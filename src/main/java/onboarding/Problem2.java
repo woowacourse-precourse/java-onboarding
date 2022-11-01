@@ -8,6 +8,8 @@ iii) solution -> i) ii) 기능을 적절히 이용하여 답을 반환한다.
 
 package onboarding;
 
+import java.util.List;
+
 public class Problem2 {
 
     int[] checkRedupl(String cryptogram) {
@@ -22,6 +24,9 @@ public class Problem2 {
 
         return temp_array;
     }
+
+
+    List
 
     String reduceRedupl(String cryptogram, int[] index){
         int temp_length = cryptogram.length();
