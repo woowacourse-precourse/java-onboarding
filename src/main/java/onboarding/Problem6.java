@@ -12,13 +12,32 @@ public class Problem6 {
     private final static Pattern emailRegexPattern = compile("^(.+)@email.com");
 
     private static Map<String, List<Integer>> nicknameDuplicateMap;
-    
+
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
         nicknameDuplicateMap = new HashMap<>();
         assert validateEmail(forms);
-        
-        return answer;
+
+        createNicknameDuplicateMap(forms);
+
+        return getDuplicateNicknameUserList(forms);
+    }
+
+    private static List<String> getDuplicateNicknameUserList(List<List<String>> forms) {
+        return forms.stream()
+                .filter(user -> hasDuplicateNickname(user.get(1)))
+                .map(user -> user.get(0))
+                .distinct()
+                .sorted()
+                .collect(Collectors.toList());
+    }
+
+    private static boolean hasDuplicateNickname(String nickname) {
+        return getPartialNicknameSet(nickname).stream()
+                .anyMatch(Problem6::isDuplicate);
+    }
+
+    private static boolean isDuplicate(String partialNickname) {
+        return nicknameDuplicateMap.get(partialNickname).size() > 1;
     }
 
     private static void createNicknameDuplicateMap(List<List<String>> forms) {
