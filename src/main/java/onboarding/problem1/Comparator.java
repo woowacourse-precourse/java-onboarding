@@ -3,6 +3,7 @@ package onboarding.problem1;
 // refactor : 클래스 크기 줄이기
 public class Comparator {
 
+
     // 승자 구하기 기능
     public static int getWinner(int pobiMax, int crongMax) {
 

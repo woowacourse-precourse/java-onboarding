@@ -14,6 +14,7 @@ public class Problem3 {
             int digitOne = i % 10;
             int digitTen = i / 10;
 
+
         // 규칙 기능
             if (i==33 || i==66 || i==99) { answer += 2; break;}
             if (i==333 || i==666 || i==999) { answer += 3; break;}
