@@ -32,4 +32,22 @@ class Problem1 {
         return false;
     }
 
+    public static int addNumbers(List<Integer> List){
+        int leftPage=List.get(0);
+        int rightPage=List.get(1);
+
+        int AddedLeftPage = add(leftPage);
+        int AddedRightPage = add(rightPage);
+
+        return max(AddedLeftPage,AddedRightPage);
+    }
+    public static int add(int num){
+        int hundredDigitComponent = num / 100;
+        int tenDigitComponent = num/10 - (hundredDigitComponent *10);
+        int oneDigitComponent = num - (hundredDigitComponent *100 + tenDigitComponent*10);
+
+        return hundredDigitComponent + tenDigitComponent + oneDigitComponent;
+    }
+
+
 }
