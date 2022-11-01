@@ -22,7 +22,13 @@ public class Problem6 {
     /*
      * 주어진 두 닉네임에 대해서 같은 글자가 연속적으로 포함되는지를 검사하여 반환
      */
-    public static boolean detectConsecutiveLetters(String text, String checkText) {
+    public static boolean checkConsecutiveLetter(String text, String checkText) {
+        List<String> consecutiveLetters = generateConsecutiveLetters(text);
+        for (String letter : consecutiveLetters) {
+            if (checkText.contains(letter)) {
+                return true;
+            }
+        }
         return false;
     }
 
@@ -34,7 +40,7 @@ public class Problem6 {
 
         for (int i = 2; i <= nickName.length(); i++) {
             for (int j = 0; j < nickName.length() - 1; j++) {
-                if ((j + i) > nickName.length()){
+                if ((j + i) > nickName.length()) {
                     break;
                 }
                 consecutiveLetterList.add(nickName.substring(j,
