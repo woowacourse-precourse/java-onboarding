@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class Problem4 {
@@ -12,8 +13,13 @@ public class Problem4 {
     private static final int LOWERCASE_ASCII_START = 97;
     private static final int LOWERCASE_ASCII_END = 122;
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        wordRangeValidation(word);
+
+        Map<Character, Character> cachedAlphabet = new HashMap<>();
+        putUpperCaseKeyAndValue(cachedAlphabet);
+        putLowerCaseKeyAndValue(cachedAlphabet);
+
+        return makeSentence(word, cachedAlphabet);
     }
 
     private static String makeSentence(String word, Map<Character, Character> cachedAlphabet) {
