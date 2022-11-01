@@ -11,7 +11,13 @@ public class Problem6 {
         for (List<String> form : forms) // 리스트 전체 순환 foreach
         {
             String nickName = form.get(1); // 중복검사는 닉네임만
-
+            for (int j = 0; j < nickName.length() - 1; j++)
+            {
+                String key = nickName.substring(j, j + 2); // 조건 - 최소 두글자가 중복될 시
+                if (hashMap.containsKey(key))
+                {
+                }
+            }
         }
     }
 }
