@@ -16,6 +16,9 @@ class Problem1 {
         if(!isPageSizeTwo(pages)) return true;
 
         if(!isPageContinuous(pages)) return true;
+
+        if(!isPageInRange(pages)) return true;
+
         return false;
     }
 
@@ -27,4 +30,7 @@ class Problem1 {
         return (pages.get(1) -pages.get(0)) == 1;
     }
 
+    static boolean isPageInRange(List<Integer> pages){
+        return pages.get(0) >= 1 && pages.get(1) <= 400;
+    }
 }
