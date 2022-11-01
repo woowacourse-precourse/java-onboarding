@@ -8,7 +8,6 @@ iv) solution -> iii)을 이용하여 정답을 반환한다.
 
 package onboarding;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Problem6 {
@@ -26,6 +25,25 @@ public class Problem6 {
 
         return temp_result;
     }
+
+
+    int[] makeIndexList(List<List<String>> forms){
+
+        int[] temp_array = new int[forms.size()];
+
+        for (int i = 0; i < forms.size() - 1; i++){
+            for(int j = i+1; j < forms.size(); j++){
+                if(checkRedupli(forms.get(i).get(1), forms.get(j).get(1))) {
+                    temp_array[i] = 1;
+                    temp_array[j] = 1;
+                }
+            }
+        }
+
+        return temp_array;
+    }
+
+
 
     int[] checkRedupl(String cryptogram) {
         int[] temp_array = new int[cryptogram.length()];
