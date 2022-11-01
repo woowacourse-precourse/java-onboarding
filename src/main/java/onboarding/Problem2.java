@@ -14,6 +14,7 @@ public class Problem2 {
 
         for (int i = 0; i < MAX_CRYPTOGRAM_LENGTH; i++) {
             beforeTryedDecrypting = decrypting;
+            decrypting = decrypting.replaceAll(REGEX_LOWER_ALPHABET, SPACE);
         }
 
         return decrypting;
