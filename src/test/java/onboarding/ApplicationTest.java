@@ -8,6 +8,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ApplicationTest {
+
     @Nested
     class Problem1Test {
         @Test
@@ -35,6 +36,7 @@ class ApplicationTest {
         }
     }
 
+
     @Nested
     class Problem2Test {
         @Test
@@ -52,6 +54,7 @@ class ApplicationTest {
         }
     }
 
+
     @Nested
     class Problem3Test {
         @Test
@@ -67,6 +70,7 @@ class ApplicationTest {
             int result = 14;
             assertThat(Problem3.solution(number)).isEqualTo(result);
         }
+
     }
 
     @Nested
@@ -78,6 +82,8 @@ class ApplicationTest {
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
     }
+
+
 
     @Nested
     class Problem5Test {
