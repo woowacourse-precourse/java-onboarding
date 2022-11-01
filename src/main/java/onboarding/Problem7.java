@@ -63,10 +63,31 @@ public class Problem7 {
                                                     ArrayList<String> userFriendList,
                                                     HashMap<String, ArrayList<String>> friendGraph,
                                                     List<String> visitors) {
+        HashMap<String, Integer> score = new HashMap<>();
+        int otherScore = 0;
 
+        for (String key : friendGraph.keySet()) {
+            if (key == user) continue;
+            String other = key;
+            ArrayList<String> otherFriendList = getFriendList(other, friendGraph);
+            int friendNum = findNearFriend(userFriendList, otherFriendList);
+            otherScore = 10 * friendNum;
+            score.put(other, otherScore);
+        }
+
+        for (String visitor : visitors) {
+            score.put(visitor, score.getOrDefault(visitor, 0) + 1);
+        }
+
+        for (int i = 0; i < userFriendList.size(); i++) {
+            if (score.containsKey(userFriendList.get(i))) {
+                score.remove(userFriendList.get(i));
+            }
+        }
+        return score;
     }
 
     public static List<String> sortScore(HashMap<String, Integer> score) {
 
-}
+    }
 
