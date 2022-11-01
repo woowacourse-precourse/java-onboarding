@@ -5,50 +5,26 @@ import java.util.Arrays;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        return crypto(cryptogram);
-    }
-    public static String crypto(String s){
-        ArrayList<String> strList = new ArrayList<>(Arrays.asList(s.split("")));
-        return String.join("", deleteSameStr(strList));
+        return decode(cryptogram);
     }
 
-    public static ArrayList<String> deleteSameStr(ArrayList<String> strList) {
+    private static boolean isDecoded(String cryptogram) {
+        for (int i = 0; i < cryptogram.length() - 1; i++) {
+            if (cryptogram.charAt(i) == cryptogram.charAt(i + 1)) return false;
+        }
+        return true;
+    }
 
-        int cnt = 0, indexNum = 0;
-        for (int i = 0; i < strList.size() - 1; i++) {
-            if(strList.get(i).equals(strList.get(i + 1))) {
-                cnt++;
-                indexNum = i + 1;
-            }
-            if (cnt >= 1) {
-                int start = indexNum - cnt;
-                while(cnt >= 0) {
-                    strList.remove(start);
-                    cnt--;
-                }
-                cnt = 0;
-                indexNum = 0;
-                i = 0;
+    private static String decode(String cryptogram) {
+        if (isDecoded(cryptogram)) {
+            return cryptogram;
+        }
+        for (int i = 0; i < cryptogram.length() - 1; i++) {
+            if (cryptogram.charAt(i) == cryptogram.charAt(i + 1)) {
+                String next = cryptogram.replaceAll("(([a-z])\\2{1,})", "");
+                return decode(next);
             }
         }
-        if (strList.size() > 1) {
-            for (int i = 0; i < strList.size() - 1; i++) {
-                if(strList.get(i).equals(strList.get(i + 1))) {
-                    cnt++;
-                    indexNum = i + 1;
-                }
-                if (cnt >= 1) {
-                    int start = indexNum - cnt;
-                    while(cnt >= 0) {
-                        strList.remove(start);
-                        cnt--;
-                    }
-                    cnt = 0;
-                    indexNum = 0;
-                    i = 0;
-                }
-            }
-        }
-        return strList;
+        return "error";
     }
 }
