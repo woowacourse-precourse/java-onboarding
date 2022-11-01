@@ -38,7 +38,15 @@ public class Problem7 {
 
     }
     public static List<String> userfriends_set(List<List<String>> friends,String user) {
-
+        List<String> user_fri=new ArrayList<>();
+        for(int i=0; i<friends.size(); i++){
+            if(friends.get(i).get(0)==user) {
+                user_fri.add(friends.get(i).get(1));
+            }
+            if(friends.get(i).get(1)==user){
+                user_fri.add(friends.get(i).get(0));
+            }
+        }return user_fri;
     }
 
     public static Map<String,Integer> friendslist_set(List<String> ls,List<String> user_fri) {
