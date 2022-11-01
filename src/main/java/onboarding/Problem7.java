@@ -103,4 +103,8 @@ public class Problem7 {
             updateRecommendScore(visitor, VISITOR_POINT);
         }
     }
+
+    public static void updateRecommendScore(String user, int score) {
+        userAndScoreMap.put(user, userAndScoreMap.getOrDefault(user, 0) + score);
+    }
 }
