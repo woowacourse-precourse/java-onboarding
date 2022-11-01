@@ -27,7 +27,7 @@ public class Problem3 {
     //제한사항을 검사하는 constraint
     static void constraint3(int number)throws Exception {
         if(number < 1 || number > 10000) {
-            throw new Exception("좌측 페이지는 홀수이어야 합니다.");
+            throw new Exception(" 1 이상 10,000 이하인 자연수이어야 합니다.");
         }
     }
 }

@@ -22,7 +22,7 @@ public class Problem6 {
         HashSet<String> emails = new HashSet<>();
         Map<String, String> keywords = new HashMap<>();
 
-       
+
         for (int i = 0; i < forms_length; i++) {
             String name = forms.get(i).get(1);
             if(!validate_nickname(name)) continue;
