@@ -23,10 +23,10 @@ public class Problem7 {
     // 친구관계를 추가하는 함수
     public static void addFriends(HashMap<String, ArrayList<String>> friendGraph, List<String> friend) {
         for (int i = 0; i < 2; i++) {
-            if (!friendGraph.keySet().contains(friend.get(i%2))) {
-                ArrayList<String> friendList = new ArrayList<String>();
-                friendGraph.put(friend.get(i%2), friendList);
-            }
+            // friendGraph에 key 값으로 user가 없는 경우 생성
+            if (!friendGraph.keySet().contains(friend.get(i%2)))
+                friendGraph.put(friend.get(i%2), new ArrayList<String>());
+
             friendGraph.get(friend.get(i%2)).add(friend.get((i+1) % 2));
             }
     }
@@ -43,7 +43,7 @@ public class Problem7 {
 
     // 전달받은 파라미터가 user의 친구인지 확인하는 함수
     public static boolean checkUserFriends(HashMap<String, ArrayList<String>> friendGraph, String user, String other) {
-        return friendGraph.get(user).contains(other);
+        return friendGraph.containsKey(user) && friendGraph.get(user).contains(other);
     }
 
     // 점수를 갱신할 때 제한조건을 체크하는 함수
@@ -54,6 +54,8 @@ public class Problem7 {
     // 함께 아는 친구의 수에 따라 점수를 추가하는 함수
     public static void AddRecommendScoreOfFriends(HashMap<String, Integer> recommendScore, HashMap<String, ArrayList<String>> friendGraph, String user) {
         // 함께 아는 친구: other, 친구: friend
+        if (!friendGraph.containsKey(user)) return; // user가 key값으로 없는 경우 return;
+
         for (String friend: friendGraph.get(user)) {
             if (!friendGraph.containsKey(friend)) continue;
 
@@ -88,7 +90,7 @@ public class Problem7 {
             tempHashMap.put(friend, recommendScore.get(friend));
             tempList.add(tempHashMap);
         }
-        System.out.println(tempList);
+
        Collections.sort(tempList, new Comparator<HashMap<String, Integer>>() {
            @Override
            public int compare(HashMap<String, Integer> o1, HashMap<String, Integer> o2) {
@@ -96,6 +98,7 @@ public class Problem7 {
                key1 = key1.substring(1, key1.length()-1);
                String key2 = o2.keySet().toString();
                key2 = key2.substring(1, key2.length()-1);
+
                if (o1.get(key1) < o2.get(key2)) return 1;
                else if (o1.get(key1) > o2.get(key2)) return -1;
 
@@ -105,9 +108,7 @@ public class Problem7 {
        });
 
         for (HashMap<String, Integer> temp: tempList) {
-            for (String friends : temp.keySet()) {
-                resultList.add(friends);
-            }
+            for (String friends : temp.keySet()) resultList.add(friends);
             if (resultList.size() >= 5) break;
         }
         return resultList;
