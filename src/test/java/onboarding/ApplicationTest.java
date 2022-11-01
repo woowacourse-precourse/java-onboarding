@@ -1,7 +1,5 @@
 package onboarding;
 
-import onboarding.problem3.ApplauseGame;
-import onboarding.problem3.ClapRule;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 

@@ -24,3 +24,16 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+
+### 기능 구현 목록
+1. 매개 변수 String user의 길이가 1 이상 30이하인지 검증한다.
+2. 매개변수 List friends의 길이가 1이상, 10,000이하인지 검증한다.
+3. 매개변수 List friends의 각 원소에 1를 반복한다.
+4. 매개변수 List Visitor에 대해 2를 반복한다.
+5. friends에서 user와 짝지어진 요소를 찾는다. 이하 짝이라고 부른다.
+6. 짝을 갖고 있는 요소를 찾아 저장한다.
+7. 방문자 정보에서 이미 user와 친구인 아이디를 뺀다.
+8. 남은 방문자 아이디 당 1점을 짝의 아이디엔 10점을 부여한다.
+9. 방문자 정보와 짝 정보를 합쳐 점수와 이름 순으로 나열한다.
+10. 0점을 제외한 상위 5명을 반환한다.

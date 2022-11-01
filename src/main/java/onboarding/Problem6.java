@@ -24,7 +24,7 @@ public class Problem6 {
     }
 
     private static void checkMin(List<List<String>> forms) {
-        if (forms.size() < 1) {
+        if (forms.isEmpty()) {
             throw new CrewException("최소 1명의 크루 멤버가 필요합니다.");
         }
     }
