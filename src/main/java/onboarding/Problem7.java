@@ -40,4 +40,24 @@ public class Problem7 {
         }
         else return special;
     }
+
+    public static String[][] sortMemberList(String user, List<List<String>> friends, List<String> visitors){
+        scoreList = MemberScoreList(user, friends, visitors);
+        memberList = MemberFriendsList(user, friends, visitors);
+        String[][] t=new String[scoreList.size()][2];
+        for(int i = 0; i< scoreList.size(); i++) {
+            t[i][1]= memberList.get(i);
+            t[i][0]= String.valueOf(scoreList.get(i));
+        }
+        Arrays.sort(t, new Comparator<String[]>() {
+            @Override
+            public int compare(String[] o1, String[] o2) {
+                if(o1[0].toString().contentEquals(o2[0].toString()))
+                    return o1[1].toString().compareTo(o2[1].toString());
+                else
+                    return o1[0].toString().compareTo(o2[0].toString());
+            }
+        });
+        return t;
+    }
 }
