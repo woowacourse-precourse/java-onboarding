@@ -116,6 +116,9 @@ class Relations {
     }
 
     public boolean isFriend(String user1, String user2) {
+        if ( !this.relations.containsKey(user1) ) {
+            return false;
+        }
         return relations.get(user1).contains(user2);
     }
 
