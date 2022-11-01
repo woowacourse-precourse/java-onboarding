@@ -8,7 +8,9 @@ import java.util.stream.Stream;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
+        answer = stackToString(decrypt(cryptogram));
         return answer;
+
     }
 
 
@@ -30,5 +32,14 @@ public class Problem2 {
         }
         return decryptionStack;
     }
+
+    private static String stackToString(Stack<Character> stack) {
+        String str = "";
+        for (Character c : stack) {
+            str += String.valueOf(c);
+        }
+        return str;
+    }
+
 
 }
