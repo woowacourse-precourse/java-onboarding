@@ -27,10 +27,9 @@ class Problem1 {
         }
 
         // pobi와 crong 페이지의 각 자리수들을 저장해줄 List 정의
-        ArrayList<Integer> arrNumPobiLeft = new ArrayList<>();
-        ArrayList<Integer> arrNumPobiRight = new ArrayList<>();
-        ArrayList<Integer> arrNumCrongLeft = new ArrayList<>();
-        ArrayList<Integer> arrNumCrongRight = new ArrayList<>();
+        ArrayList<Integer> arrayPobiDigit = new ArrayList<>();
+        ArrayList<Integer> arrayCrongDigit = new ArrayList<>();
+
 
         int pobiMax = 0;
         int crongMax = 0;
@@ -39,16 +38,16 @@ class Problem1 {
         if (pobiRightPage%10 == 0) { //십의 자리수 혹은 백의 자리수가 바뀔 때는 '왼쪽 페이지의 자릿수 곱 혹은 덧셈'이 항상 더 큰 것을 활용
 
             while ( pobiLeftPage > 0 ) {
-                arrNumPobiLeft.add(pobiLeftPage%10);
+                arrayPobiDigit.add(pobiLeftPage%10);
                 pobiLeftPage /= 10;
             }
-            int lenghtPL = arrNumPobiLeft.size();
+            int lenghtPL = arrayPobiDigit.size();
             int sumPL = 0;
             int productPL = 1;
 
             while ( lenghtPL > 0 ) {
-                sumPL += arrNumPobiLeft.get(lenghtPL - 1);
-                productPL *= arrNumPobiLeft.get(lenghtPL - 1);
+                sumPL += arrayPobiDigit.get(lenghtPL - 1);
+                productPL *= arrayPobiDigit.get(lenghtPL - 1);
                 lenghtPL -= 1;
             }
 
@@ -57,16 +56,16 @@ class Problem1 {
         } else if (pobiRightPage%10 != 0) {
 
             while ( pobiRightPage > 0 ) {
-                arrNumPobiRight.add(pobiRightPage%10);
+                arrayPobiDigit.add(pobiRightPage%10);
                 pobiRightPage /= 10;
             }
-            int lenghtPR = arrNumPobiRight.size();
+            int lenghtPR = arrayPobiDigit.size();
             int sumPR = 0;
             int productPR = 1;
 
             while ( lenghtPR > 0 ) {
-                sumPR += arrNumPobiRight.get(lenghtPR - 1);
-                productPR *= arrNumPobiRight.get(lenghtPR - 1);
+                sumPR += arrayPobiDigit.get(lenghtPR - 1);
+                productPR *= arrayPobiDigit.get(lenghtPR - 1);
                 lenghtPR -= 1;
             }
 
@@ -76,16 +75,16 @@ class Problem1 {
 
         if (crongRightPage%10 == 0) {
             while ( crongRightPage > 0 ) {
-                arrNumCrongLeft.add(crongRightPage%10);
+                arrayCrongDigit.add(crongRightPage%10);
                 crongRightPage /= 10;
             }
-            int lenghtCL = arrNumCrongLeft.size();
+            int lenghtCL = arrayCrongDigit.size();
             int sumCL = 0;
             int productCL = 1;
 
             while ( lenghtCL > 0 ) {
-                sumCL += arrNumCrongLeft.get(lenghtCL - 1);
-                productCL *= arrNumCrongLeft.get(lenghtCL - 1);
+                sumCL += arrayCrongDigit.get(lenghtCL - 1);
+                productCL *= arrayCrongDigit.get(lenghtCL - 1);
                 lenghtCL -= 1;
             }
 
@@ -95,16 +94,16 @@ class Problem1 {
         } else if (crongRightPage%10 != 0) {
 
             while ( crongRightPage > 0 ) {
-                arrNumCrongRight.add(crongRightPage%10);
+                arrayCrongDigit.add(crongRightPage%10);
                 crongRightPage /= 10;
             }
-            int lenghtCR = arrNumCrongRight.size();
+            int lenghtCR = arrayCrongDigit.size();
             int sumCR = 0;
             int productCR = 1;
 
             while ( lenghtCR > 0 ) {
-                sumCR += arrNumCrongRight.get(lenghtCR - 1);
-                productCR *= arrNumCrongRight.get(lenghtCR - 1);
+                sumCR += arrayCrongDigit.get(lenghtCR - 1);
+                productCR *= arrayCrongDigit.get(lenghtCR - 1);
                 lenghtCR -= 1;
             }
             crongMax = Math.max(sumCR, productCR);
