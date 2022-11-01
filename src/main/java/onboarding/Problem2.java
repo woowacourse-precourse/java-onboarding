@@ -19,7 +19,12 @@ public class Problem2 {
         }
 
         //결과값 출력 기능
-        String answer = "answer";
+        int size = stack.size();
+        String answer = "";
+        for (int i = 0; i < size; i++) {
+            answer = stack.pop() + answer;
+        }
+
         return answer;
     }
 }
