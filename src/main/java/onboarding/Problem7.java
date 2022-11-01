@@ -83,14 +83,14 @@ public class Problem7 {
 
     private static void scoreVisitorPoint(Map<String, Integer> recommendRank, String visitor, List<String> friendList) {
 
-        boolean visitorValid = myFriendCheck(friendList, visitor);
+        boolean visitorValid = myVisitorCheck(friendList, visitor);
 
         if (visitorValid == true) {
             recommendRank.put(visitor, recommendRank.getOrDefault(visitor, 0) + 1);
         }
     }
 
-    private static boolean myFriendCheck(List<String> friendList, String visitor) {
+    private static boolean myVisitorCheck(List<String> friendList, String visitor) {
 
         boolean result = true;
 
@@ -107,19 +107,34 @@ public class Problem7 {
 
         String friendName1 = friend.get(0);
         String friendName2 = friend.get(1);
+        boolean isFriendName1MyFriend;
+        boolean isFriendName2MyFriend;
 
         if (friendName1.equals(user) || friendName2.equals(user)) {
-            return ;
+            return;
         }
+
+        isFriendName1MyFriend = myFriendCheck(friendName1, friendList);
+        isFriendName2MyFriend = myFriendCheck(friendName2, friendList);
+
+        if (isFriendName1MyFriend == true && isFriendName2MyFriend == true) {
+            return;
+        } else if (isFriendName1MyFriend == true) {
+            recommendRank.put(friendName2, recommendRank.getOrDefault(friendName2, 0) + 10);
+        } else if (isFriendName2MyFriend == true) {
+            recommendRank.put(friendName1, recommendRank.getOrDefault(friendName1, 0) + 10);
+        }
+
+    }
+
+    private static boolean myFriendCheck(String friendName, List<String> friendList) {
+
         for (String myFriend : friendList) {
-            if (friendName1.equals(myFriend)) {
-                recommendRank.put(friendName2, recommendRank.getOrDefault(friendName2, 0) + 10);
-                break;
-            } else if (friendName2.equals(myFriend)) {
-                recommendRank.put(friendName1, recommendRank.getOrDefault(friendName1, 0) + 10);
-                break;
+            if (friendName.equals(myFriend)) {
+                return true;
             }
         }
+        return false;
     }
 
 }
