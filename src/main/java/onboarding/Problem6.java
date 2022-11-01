@@ -8,7 +8,7 @@ import java.util.Set;
 
 public class Problem6 {
 	public static List<String> solution(List<List<String>> forms) {
-		List<String> answer = new ArrayList<>();
+		List<String> answer;
 		List<String> nicknames = collectNicknames(forms);
 
 		answer = makeDuplicateList(forms, nicknames);
@@ -52,8 +52,8 @@ public class Problem6 {
 	}
 
 	private static List<String> processData(List<String> data) {
-		Set<String> set = new HashSet<String>(data);
-		data = new ArrayList<String>(set);
+		Set<String> set = new HashSet<>(data);
+		data = new ArrayList<>(set);
 		Collections.sort(data);
 		return data;
 	}

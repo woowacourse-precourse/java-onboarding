@@ -12,7 +12,7 @@ class Problem1 {
 	static final int LAST_PAGE = 400;
 
 	public static int solution(List<Integer> pobi, List<Integer> crong) {
-		int answer = Integer.MAX_VALUE;
+		int answer;
 
 		if (validateNum(pobi) || validateNum(crong)) {
 			return EXCEPTION_CASE;

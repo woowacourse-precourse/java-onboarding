@@ -5,7 +5,7 @@ public class Problem2 {
 	static final String DUPLICATION_REGEX = "(.)\\1+"; // 문자가 2개 이상 있는지 확인하는 정규표현식
 
 	public static String solution(String cryptogram) {
-		String answer = "answer";
+		String answer;
 
 		while (checkDuplication(cryptogram)) {
 			cryptogram = removeDuplication(cryptogram);
