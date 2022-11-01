@@ -16,6 +16,14 @@ public class Problem7 {
             makeSList(relation, user);
             addFriend(relation);
         }
+        //user의 친구 목록
+        List<String> userFriend = fList.get(user);
+
+        // user의 친구 중, score를 구하고자 하는 회원이 있으면 10점을 추가
+        for (String friend : userFriend) {
+            calScore(friend);
+        }
+
         return answer;
     }
 
@@ -48,5 +56,16 @@ public class Problem7 {
 
         fList.put(relation.get(0), temp);
         fList.put(relation.get(1), temp2);
+    }
+
+    private static void calScore(String person) {
+        List<String> temp = fList.get(person);
+
+        for (String f : temp) {
+            Integer score = sList.get(f);
+            if (score != null) {
+                sList.put(f, score + 10);
+            }
+        }
     }
 }
