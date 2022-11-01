@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Problem6 {
@@ -11,7 +12,7 @@ public class Problem6 {
         if(isNotInRangeCrew(forms.size())) {
             return new ArrayList<>();
         }
-        
+
         for(List<String> form : forms){
             Crew crew = Crew.toCrew(form);
             if(isWrongCrewForm(crew)){
@@ -62,7 +63,7 @@ public class Problem6 {
         String email = crew.getEmail();
         String nickname = crew.getNickname();
 
-        if(isNotInRangeEmail(email.length()) || isNotInRangeNickname(nickname.length())) {
+        if(isNotInRangeEmail(email.length()) || isNotInRangeNickname(nickname.length()) || !isKorean(nickname)) {
             return true;
         }
         return false;
@@ -80,6 +81,11 @@ public class Problem6 {
             return false;
         }
         return true;
+    }
+
+    private static boolean isKorean(String nickname) {
+        Pattern pattern = Pattern.compile("^[가-힣]*$");
+        return pattern.matcher(nickname).matches();
     }
 
 }
