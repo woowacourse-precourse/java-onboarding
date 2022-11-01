@@ -75,7 +75,7 @@ class Problem1 {
         return rightPage - leftPage == 1;
     }
 
-    public static int sumDigit(int page) {
+    public static int getSumDigit(int page) {
         int sum = 0;
         while (page > 0) {
             sum += page % 10;
@@ -84,7 +84,7 @@ class Problem1 {
         return sum;
     }
 
-    public static int multiplyDigit(int page) {
+    public static int getMultiplyDigit(int page) {
         int multi = 1;
         while (page > 0) {
             multi *= page % 10;
@@ -94,8 +94,8 @@ class Problem1 {
     }
 
     public static int getMaxScoreOfMultiAndSum(int page) {
-        int multiScore = multiplyDigit(page);
-        int sumScore = sumDigit(page);
+        int multiScore = getMultiplyDigit(page);
+        int sumScore = getSumDigit(page);
         return Math.max(multiScore, sumScore);
     }
 
