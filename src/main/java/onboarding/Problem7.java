@@ -14,7 +14,7 @@ public class Problem7 {
         // 기능 2 : 지정된 사용자에게 방문한 타 사용자 저장 및 친구 설정
         sns.setAllUsers(friends, visitors);
         // 기능 3 : 각 사용자마다 점수 부여
-
+        sns.setAllUserScore(friends);
         // 기능 4 : 최고 점수 가진 리스트 확보d
 
         return answer;
@@ -91,5 +91,46 @@ class SNS
         }
     }
 
+    // 기능 3 : 각 사용자마다 점수 부여
+    void setAllUserScore(List<List<String>> friendlist)
+    {
+        int i, j;
 
+        // 방문객 점수부터 먼저 추가
+        int index;
+        String name;
+        int size = visitors.size();
+        for(i = 0; i < size; ++i)
+        {
+            name = visitors.get(i);
+            index = users.indexOf(name);
+            ++scores[index]; // 방문객은 1점 추가
+        }
+
+        // 동일하게 아는 친구 추가
+        int relations = friendlist.size();
+        String friend1, friend2;
+        int index1, index2;
+        for(i = 0; i < relations; ++i)
+        {
+            friend1 = friendlist.get(i).get(0);
+            friend2 = friendlist.get(i).get(1);
+            // 둘 중 하나라도 지정된 사용자와 같다면 : 굳이 비교할 필요 없음
+            if(friend1.equals(targetUser))
+                continue;
+            if(friend2.equals(targetUser))
+                continue;
+
+            if(this.friends.contains(friend1))
+            {
+                index1 = users.indexOf(friend2);
+                scores[index1] += 10;
+            }
+            if(this.friends.contains(friend2))
+            {
+                index2 = users.indexOf(friend1);
+                scores[index2] += 10;
+            }
+        }
+    }
 }
