@@ -24,3 +24,23 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+---
+
+## 💡 흐름
+- 먼저 친구 관계를 모두 설정한다. (`Map<String, Set<String>>`)
+- visitors를 탐색하면서 user를 제외한 사용자들의 방문 횟수를 저장한다.
+- user의 친구의 친구들에 대해 점수를 계산하고, 이를 `Map<String, Integer>`에 저장한다.
+- Map을 점수 기준 내림차순한 사용자 목록을 반환한다.
+
+### 💻 구현 기능
+
+- [x] friends를 탐색하면서 사용자들의 친구 관계를 저장하는 기능
+- [x] visitors를 탐색하면서 각 사용자들의 방문 횟수를 구해 점수를 계산하는 기능
+- [x] user의 친구들의 친구들에 대해 점수를 계산하여 `Map<String, Integer>`에 저장하는 기능
+
+### ❗️ 예외 상황
+- 방문자에 자기 자신이 들어올 수도 있을 것 같다.
+
+### 생각해본 것
+- 주어진 사용자와 이미 친구라면 제외해야 한다.

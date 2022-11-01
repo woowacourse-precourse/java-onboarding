@@ -21,3 +21,22 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+---
+
+## 💡 흐름
+- 주어진 forms를 하나씩 읽는다.
+  - 닉네임을 2글자씩 잘라 중복 여부 확인을 위한 `Map<String, Set<String>>`의 Key로 추가하고, 이메일을 Value로 추가한다.
+  - 만약 이미 Map에 있는 Key값이라면 이메일을 Value에 해당하는 Set에 추가한다.
+  - 최종적으로 정답 `List<String>`에는 완성된 Map의 Value 중 size가 2 이상인 이메일들을 추가하고 정렬해서 반환한다.
+
+### 💻 구현 기능
+
+- [x] 주어진 닉네임을 2글자씩 잘라 중복 여부 Map에 추가하는 기능
+- [x] Map의 Value 중 size가 2 이상인 이메일들을 List에 추가해 반환하는 기능
+
+### ❗️ 예외 상황
+
+
+### 생각해본 것
+- 중복 여부를 어떻게 확인할까. 완전 탐색이 아니면 할 방법이 있을까?
