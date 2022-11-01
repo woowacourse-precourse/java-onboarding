@@ -12,6 +12,12 @@ import java.util.List;
  */
 
 public class Problem6 {
+    public static String[][] listToArray(List<List<String>> list){
+        String[][] array = list.stream()
+                                .map(item->item.stream().toArray())
+                                .toArray(String[][]::new);
+        return array;
+    }
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
