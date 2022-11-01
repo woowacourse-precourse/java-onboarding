@@ -12,6 +12,16 @@ public class Problem4 {
      */
     public static String solution(String word) {
         String answer = "";
+        for (char s : word.toCharArray()) {
+            int decimal = (int) s;  // 유니코드 변환
+            if (decimal == 32) {    // 뛰어쓰기(공백)의 10진수값(유니코드 기준) 32이기 때문에, 32일 경우 공백 추가
+                answer += " ";
+            } else if (decimal > 96) { // 소문자일 때-> 반대쪽의 10진수값(유니코드 기준)는 122(=소문자 z의 10진수)에서 (소문자 a와 주어진 문자의 거리)를 뺀 값과 같다.
+                answer += (char) (122 - (decimal-97));
+            } else {    // 대문자일 때 -> 반대쪽의 10진수값(유니코드 기준)는 90(=대문자 Z의 10진수)에서 (대문자 A와 주어진 문자의 거리)를 뺀 값과 같다.
+                answer += (char) (90 - (decimal - 65));
+            }
+        }
         return answer;
     }
 }
