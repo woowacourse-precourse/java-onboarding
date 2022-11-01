@@ -7,9 +7,6 @@ package onboarding;
 3. 각 글자마다 3, 6, 9 인지 확인 후 맞으면 answer++
  */
 
-
-
-
 public class Problem3 {
     public static int solution(int number) {
         int answer = 0;

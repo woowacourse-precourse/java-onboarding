@@ -50,6 +50,7 @@ class Problem1 {
         return answer;
     }
 
+    //오류 검증
     private static boolean validateNums(List<Integer> list) {
         int a = list.get(0);
         int b = list.get(1);
@@ -73,12 +74,13 @@ class Problem1 {
         return temp;
     }
 
-    //리스트의 수 전부 더하기
+    //리스트의 값 전부 더하기
     public static int addList(List<Integer> list){
         int res = list.stream().mapToInt(Integer::intValue).sum();
         return res;
     }
 
+    //리스트의 값 전부 곱하기
     public static int multiplyList(List<Integer> list){
         int res = 1;
         for(int x : list){
