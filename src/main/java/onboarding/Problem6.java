@@ -75,7 +75,7 @@ public class Problem6 {
 
     public static boolean checkExceptionList(List<List<String>> forms) {
         return (crewMembersOutOfRangeException(forms) ||
-                NicknameOutOfRangeException(forms) ||
+                nicknameOutOfRangeException(forms) ||
                 isValidNicknameRegex(forms) ||
                 emailDomainOutOfRulesException(forms) ||
                 emailLengthOutOfRangeException(forms));
@@ -106,6 +106,16 @@ public class Problem6 {
         if (!forms.stream().allMatch(form -> form.get(1).matches(NAME_REG))) {
             System.out.println("올바른 닉네임형식이 아닙니다. 한글만 사용하여 닉네임을 작성헤주세요");
             return true;
+        }
+        return false;
+    }
+
+    public static boolean nicknameOutOfRangeException(List<List<String>> forms) {
+        for (List<String> form : forms) {
+            if (form.get(1).length() < 1 || form.get(1).length() > 19) {
+                System.out.println("닉네임은 1자부터 20자 미만까지 가능합니다");
+                return true;
+            }
         }
         return false;
     }
