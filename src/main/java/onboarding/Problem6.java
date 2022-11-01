@@ -5,13 +5,6 @@ import java.util.Comparator;
 import java.util.List;
 
 public class Problem6 {
-	private static int findMin(int num1, int num2) {
-		if (num1 > num2) {
-			return num2;
-		}
-		return num1;
-	}
-
 	private static boolean checkTwoChar(String str1, String str2) {
 		int flag;
 		for (int i = 0; i + 1 < str1.length(); i++) {
