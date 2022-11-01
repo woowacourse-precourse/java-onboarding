@@ -13,10 +13,17 @@ public class Problem3 {
 
     private static int validateHandclap(String value, int result) {
         for (int i = 0; i < value.length(); i++) {
-            if (value.charAt(i) == '3' || value.charAt(i) == '6' || value.charAt(i) == '9') {
+            if (validateHandClap(value.charAt(i))) {
                 result++;
             }
         }
         return result;
+    }
+
+    private static boolean validateHandClap(char clapCharacter) {
+        if (clapCharacter == '3' || clapCharacter == '6' || clapCharacter == '9') {
+            return true;
+        }
+        return false;
     }
 }
