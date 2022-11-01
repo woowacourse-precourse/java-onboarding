@@ -5,6 +5,14 @@ import java.util.HashMap;
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
+
+        HashMap<Character, Character> map = new HashMap<>();
+        setValue(map);
+
+        for (int i=0; i<word.length(); i++) {
+            answer += map.get(word.charAt(i));
+        }
+
         return answer;
     }
 
