@@ -17,11 +17,6 @@ public class Problem5 {
     private static final int MONEY_10 = 10;
     private static final int MONEY_1 = 1;
 
-    public static void main(String[] args) {
-        System.out.println(solution(50237));
-        System.out.println(solution(15000));
-    }
-
     public static List<Integer> solution(int money) {
 
 

@@ -4,11 +4,6 @@ import java.util.Stack;
 
 public class Problem2 {
 
-    public static void main(String[] args) {
-        System.out.println(solution("browoanoommnaon"));
-        System.out.println(solution("zyelleyz"));
-    }
-
     public static String solution(String cryptogram) {
 
         if(checkDuplicate(cryptogram)) {

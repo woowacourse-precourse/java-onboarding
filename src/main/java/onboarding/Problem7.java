@@ -5,23 +5,6 @@ import java.util.stream.Collectors;
 
 public class Problem7 {
 
-    public static void main(String[] args) {
-        String user = "mrko";
-        List<List<String>> friends = List.of(
-                List.of("donut", "andole"),
-                List.of("donut", "jun"),
-                List.of("donut", "mrko"),
-                List.of("shakevan", "andole"),
-                List.of("shakevan", "jun"),
-                List.of("shakevan", "mrko")
-        );
-        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
-        List<String> result = List.of("andole", "jun", "bedi");
-
-        System.out.println(solution(user, friends, visitors));
-
-    }
-
     // List<List<String>> 이 나을까? 아니면 List<Person> 이 나을까 고민하다가,
     // 눈으로 더 정확하게 보이는 것은 List<Person> 이라고 생각해 Person 클래스 추가.
     static class Person {
