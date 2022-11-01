@@ -20,18 +20,8 @@ public class Problem5 {
 }
 
 class Bank {
-    int[] monetaryUnits = new int[] {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
+    private final int[] monetaryUnits = new int[] {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
 
-    public Bank() {
-    }
-
-    public Bank(int[] monetaryUnits) {
-        setMonetaryUnits(monetaryUnits);
-    }
-
-    public void setMonetaryUnits(int[] monetaryUnits) {
-        this.monetaryUnits = monetaryUnits;
-    }
 
     public List<Integer> withdrawal(int money) {
         List<Integer> answer = new ArrayList<>();
