@@ -1,11 +1,16 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
+import onboarding.problem5.Bank;
 
 public class Problem5 {
+
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
-        return answer;
+
+        Bank bank = new Bank();
+        bank.init();
+        bank.exchangeMoney(money);
+
+        return bank.getExchangeResult();
     }
 }
