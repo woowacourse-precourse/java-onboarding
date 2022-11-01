@@ -17,6 +17,34 @@ class Problem1 {
         return answer;
     }
 
+    private static int getBigNumberInPage(int page) {
+        int plusSum = 0;
+        int multiSum = 1;
+
+        int q = page / 100;
+        if (q != 0) {
+            multiSum *= q;
+        }
+        plusSum += q;
+        page %= 100;
+
+        q = page / 10;
+        if (q != 0) {
+            multiSum *= q;
+        }
+        plusSum += q;
+        page %= 10;
+
+        plusSum += page;
+        multiSum *= page;
+
+        if (plusSum >= multiSum) {
+            return plusSum;
+        } else {
+            return multiSum;
+        }
+    }
+
     private static boolean checkPages(List<Integer> list) {
         int leftPage = list.get(0);
         int rightPage = list.get(1);
