@@ -15,7 +15,7 @@ public class Problem5 {
 			money = updateMoney(money, change);
 		}
 		return answer;
-    }
+	}
 
 	private static int withdrawMoney(int money, int currency) {
 		return money / currency;
