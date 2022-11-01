@@ -135,7 +135,7 @@ class ApplicationTest {
     }
 
     @Nested
-    class Probalem3Test {
+    class Problem3Test {
         @Test
         void case1() {
             int number = 13;
