@@ -34,4 +34,8 @@ public class Page {
         }
         return result;
     }
+
+    public int getPageNumber() {
+        return pageNumber;
+    }
 }

@@ -1,6 +1,7 @@
 package onboarding;
 
 import onboarding.problem1.Page;
+import onboarding.problem1.Pages;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -13,28 +14,26 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         try {
-            validatePageNumberGap(pobi.get(LEFT_PAGE_INDEX), pobi.get(RIGHT_PAGE_INDEX));
-            validateLeftPageNumberIsOdd(pobi.get(LEFT_PAGE_INDEX));
-            List<Page> pobiPages = pobi.stream()
+            Pages pobiPages = new Pages(pobi.stream()
                     .map(pobiPage -> new Page(pobiPage))
-                    .collect(Collectors.toList());
-            validatePageNumberGap(crong.get(LEFT_PAGE_INDEX), crong.get(RIGHT_PAGE_INDEX));
-            validateLeftPageNumberIsOdd(crong.get(LEFT_PAGE_INDEX));
-            List<Page> crongPages = crong.stream()
+                    .collect(Collectors.toList()));
+            Pages crongPages = new Pages(crong.stream()
                     .map(crongPage -> new Page(crongPage))
-                    .collect(Collectors.toList());
+                    .collect(Collectors.toList()));
 
-            Integer pobiScore = pobiPages.stream()
-                    .map(page -> getMaxNumber(page.getSumOfPageDigits(), page.getProductOfPageDigits()))
-                    .max(Comparator.comparing(Integer::intValue))
-                    .get();
-
-            Integer crongScore = crongPages.stream()
-                    .map(page -> getMaxNumber(page.getSumOfPageDigits(), page.getProductOfPageDigits()))
-                    .max(Comparator.comparing(Integer::intValue))
-                    .get();
-
-            return getMatchResult(pobiScore, crongScore);
+//            Integer pobiScore = pobiPages.stream()
+//                    .map(page -> getMaxNumber(page.getSumOfPageDigits(), page.getProductOfPageDigits()))
+//                    .max(Comparator.comparing(Integer::intValue))
+//                    .get();
+//
+//
+//            Integer crongScore = crongPages.stream()
+//                    .map(page -> getMaxNumber(page.getSumOfPageDigits(), page.getProductOfPageDigits()))
+//                    .max(Comparator.comparing(Integer::intValue))
+//                    .get();
+//
+//            return getMatchResult(pobiScore, crongScore);
+            return 0;
         } catch (IllegalArgumentException e) {
             return -1;
         }
@@ -56,15 +55,5 @@ class Problem1 {
         return 0;
     }
 
-    public static void validatePageNumberGap(int leftPage, int rightPage) {
-        if (rightPage - leftPage != 1) {
-            throw new IllegalArgumentException();
-        }
-    }
 
-    public static void validateLeftPageNumberIsOdd(int leftPage) {
-        if (leftPage % 2 == 0) {
-            throw new IllegalArgumentException();
-        }
-    }
 }
