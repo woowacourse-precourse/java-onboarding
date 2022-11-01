@@ -5,8 +5,12 @@ import java.util.*;
 import DTO.FriendCandidate;
 
 public class Problem7 {
+    static final int FRIEND_OF_FRIEND_SCORE = 10;
+    static final int VISITOR_SCORE = 1;
+    static final int RECOMMEND_MAX_SIZE = 5;
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer;
 
         Map<String, List<String>> userFriendListMap = getUserFriendListMap(friends);
         List<FriendCandidate> friendCandidateList = getFriendCandidateList(user, userFriendListMap, visitors);
@@ -43,7 +47,7 @@ public class Problem7 {
             for(String friendOfFriend : friendOfFriendList){
                 if(friendOfFriend.equals(user)) continue;
                 FriendCandidate friendCandidate = friendCandidateIdInfoMap.getOrDefault(friendOfFriend, new FriendCandidate(friendOfFriend));
-                friendCandidate.setScore(friendCandidate.getScore()+10);
+                friendCandidate.setScore(friendCandidate.getScore()+FRIEND_OF_FRIEND_SCORE);
                 friendCandidateIdInfoMap.put(friendOfFriend, friendCandidate);
             }
         }
@@ -51,7 +55,7 @@ public class Problem7 {
         for(String visitor : visitors){
             if(friendList.contains(visitor)) continue;
             FriendCandidate friendCandidate = friendCandidateIdInfoMap.getOrDefault(visitor, new FriendCandidate(visitor));
-            friendCandidate.setScore(friendCandidate.getScore()+1);
+            friendCandidate.setScore(friendCandidate.getScore()+VISITOR_SCORE);
             friendCandidateIdInfoMap.put(visitor, friendCandidate);
         }
 
@@ -65,7 +69,7 @@ public class Problem7 {
         List<String> recommendationList = new ArrayList<>();
 
         for(FriendCandidate friendCandidate : friendCandidateList){
-            if(friendCandidate.getScore() > 0 && recommendationList.size()<5){
+            if(friendCandidate.getScore() > 0 && recommendationList.size()<RECOMMEND_MAX_SIZE){
                 recommendationList.add(friendCandidate.getId());
             }
         }
