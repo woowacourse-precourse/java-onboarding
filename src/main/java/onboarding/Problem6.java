@@ -22,6 +22,9 @@ public class Problem6 {
                 nicknameArr.add(splitNick);
             }
         }
+
+        // 2. 쪼갠 2글자 중복 제거
+        nicknameArr = nicknameArr.stream().distinct().collect(Collectors.toList());
         return answer;
     }
 }
