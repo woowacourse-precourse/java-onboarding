@@ -52,6 +52,13 @@ public class Problem7 {
 
     }
 
+    public static void excludeNotValue() {
+        for (String key : scoreForUser.keySet()) {
+            if (scoreForUser.get(key)==0) {
+                scoreForUser.remove(key);
+            }
+        }
+    }
 
 
 }
