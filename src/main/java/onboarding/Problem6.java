@@ -6,10 +6,9 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         HashMap<String, List<String>> map = mapFragmentedNNEmail(forms);
 
-        List<String> answer = List.of("answer");
+        List<String> answer = findEmail(map);
 
         return answer;
-
     }
 
     private static List<String> fragmentNN(String nickName) {
@@ -38,4 +37,19 @@ public class Problem6 {
         return ret;
     }
 
+    private static List<String> findEmail(HashMap<String, List<String>> map) {
+        HashSet<String> hs = new HashSet<>();
+
+        for (String key : map.keySet()) {
+            if (map.get(key).size() > 1) {
+                hs.addAll(map.get(key));
+            }
+        }
+
+        List<String> ret = new ArrayList<>(hs);
+
+        ret.sort(Comparator.naturalOrder());
+
+        return ret;
+    }
 }
