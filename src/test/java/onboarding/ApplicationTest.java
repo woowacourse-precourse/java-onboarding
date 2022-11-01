@@ -230,16 +230,129 @@ class ApplicationTest {
         @Test
         void case1() {
             List<List<String>> forms = List.of(
-                    List.of("jm@email.com", "제이엠"),
-                    List.of("jason@email.com", "제이슨"),
-                    List.of("woniee@email.com", "워니"),
-                    List.of("mj@email.com", "엠제이"),
-                    List.of("nowm@email.com", "이제엠")
+                List.of("jm@email.com", "제이엠"),
+                List.of("jason@email.com", "제이슨"),
+                List.of("woniee@email.com", "워니"),
+                List.of("mj@email.com", "엠제이"),
+                List.of("nowm@email.com", "이제엠")
             );
             List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com");
             assertThat(Problem6.solution(forms)).isEqualTo(result);
         }
+
+        @Test
+        void noOneMatches() {
+            List<List<String>> forms = List.of(
+                List.of("jm@email.com", "일일"),
+                List.of("jason@email.com", "일이"),
+                List.of("woniee@email.com", "일삼"),
+                List.of("mj@email.com", "일사"),
+                List.of("nowm@email.com", "일오")
+            );
+            List<String> result = List.of();
+            assertThat(Problem6.solution(forms)).isEqualTo(result);
+        }
+
+        @Test
+        void noCrew() {
+            List<List<String>> forms = List.of();
+            List<String> result = List.of();
+            assertThatThrownBy(() -> {
+                Problem6.solution(forms);
+            }).isInstanceOf((IllegalArgumentException.class));
+        }
+
+        @Test
+        void emailLength() {
+            List<List<String>> forms = List.of(
+                List.of("j123456789789789@email.com", "제이엠"),
+                List.of("jason@email.com", "제이슨"),
+                List.of("woniee@email.com", "워니"),
+                List.of("mj@email.com", "엠제이"),
+                List.of("nowm@email.com", "이제엠")
+            );
+            List<String> result = List.of("jason@email.com", "j123456789789789@email.com", "mj@email.com");
+            assertThatThrownBy(() -> {
+                Problem6.solution(forms);
+            }).isInstanceOf((IllegalArgumentException.class));
+        }
+
+        @Test
+        void emailForm() {
+            List<List<String>> forms = List.of(
+                List.of("@email.com", "제이엠"),
+                List.of("jason@email.com", "제이슨"),
+                List.of("woniee@email.com", "워니"),
+                List.of("mj@email.com", "엠제이"),
+                List.of("nowm@email.com", "이제엠")
+            );
+            List<String> result = List.of("jason@email.com", "j@email.com", "mj@email.com");
+            assertThatThrownBy(() -> {
+                Problem6.solution(forms);
+            }).isInstanceOf((IllegalArgumentException.class));
+        }
+
+        @Test
+        void emailForm2() {
+            List<List<String>> forms = List.of(
+                List.of("jm@naver.com", "제이엠"),
+                List.of("jason@email.com", "제이슨"),
+                List.of("woniee@email.com", "워니"),
+                List.of("mj@email.com", "엠제이"),
+                List.of("nowm@email.com", "이제엠")
+            );
+            List<String> result = List.of("jason@email.com", "j@naver.com", "mj@email.com");
+            assertThatThrownBy(() -> {
+                Problem6.solution(forms);
+            }).isInstanceOf((IllegalArgumentException.class));
+        }
+
+        @Test
+        void emailForm3() {
+            List<List<String>> forms = List.of(
+                List.of("@email.com@naver.com", "제이엠"),
+                List.of("jason@email.com", "제이슨"),
+                List.of("woniee@email.com", "워니"),
+                List.of("mj@email.com", "엠제이"),
+                List.of("nowm@email.com", "이제엠")
+            );
+            List<String> result = List.of("jason@email.com", "@email.com@naver.com", "mj@email.com");
+            assertThatThrownBy(() -> {
+                Problem6.solution(forms);
+            }).isInstanceOf((IllegalArgumentException.class));
+        }
+
+        @Test
+        void nicknameKorNum() {
+            List<List<String>> forms = List.of(
+                List.of("jm@email.com", "제2엠"),
+                List.of("jason@email.com", "제2슨"),
+                List.of("woniee@email.com", "워니"),
+                List.of("mj@email.com", "엠제2"),
+                List.of("nowm@email.com", "이제엠")
+            );
+            List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com");
+            assertThatThrownBy(() -> {
+                Problem6.solution(forms);
+            }).isInstanceOf((IllegalArgumentException.class));
+        }
+
+        @Test
+        void nicknameKorEng() {
+            List<List<String>> forms = List.of(
+                List.of("jm@email.com", "제e엠"),
+                List.of("jason@email.com", "제e슨"),
+                List.of("woniee@email.com", "워니"),
+                List.of("mj@email.com", "엠제e"),
+                List.of("nowm@email.com", "이제엠")
+            );
+            List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com");
+            assertThatThrownBy(() -> {
+                Problem6.solution(forms);
+            }).isInstanceOf((IllegalArgumentException.class));
+        }
     }
+
 
     @Nested
     class Problem7Test {
