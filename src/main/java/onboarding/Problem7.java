@@ -50,6 +50,9 @@ public class Problem7 {
             }
         }
 
+        // 내 친구목록 생성에 본인도 추가 - 결과값에 제외할 목록들
+        myFriendList.add(user);
+
         return answer;
     }
 
