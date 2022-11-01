@@ -3,35 +3,41 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
+
+    public static class ScoreFriends {
+        private String name;
+        private int score;
+        public ScoreFriends(){}
+        public ScoreFriends(String name, int score) {
+            this.name = name;
+            this.score = score;
+        }
+        public String getName() {
+            return name;
+        }
+        public int getScore() {
+            return score;
+        }
+    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = new ArrayList<>();
+        List<String> answer;
 
         List<String> alreadyFriends = getFriendWithUser(user, friends);
-        Map<String, Integer> ScoreFriends = setTenScore(user, alreadyFriends, friends);
+        Map<String, Integer> ScoreFriendsMap = setTenScore(user, alreadyFriends, friends);
+        ScoreFriendsMap = setOneScore(alreadyFriends, visitors, ScoreFriendsMap);
 
-        for (int i=0; i<visitors.size(); i++){
-            String tmpUser = visitors.get(i);
-
-            if (!alreadyFriends.contains(tmpUser)){
-
-                if (ScoreFriends.containsKey(tmpUser)){
-                    int tmpScore = ScoreFriends.get(tmpUser);
-                    ScoreFriends.replace(tmpUser, tmpScore+1);
-                } else {
-                    ScoreFriends.put(tmpUser, 1);
-                }
-            }
-        }
+        /*
+        List<ScoreFriends> ScoreFriends = d;
 
         List<Map.Entry<String, Integer>> entryList = sortList(ScoreFriends);
-        answer = setRecommendList(entryList);
+        answer = setRecommendList(entryList);*/
         /**
          * 1. user랑 친구(1차)인 애들을 먼저 찾기
          * 2. 1차랑 친구인 애들 찾아서 10점씩 주기
          * 3. visitor한테 1점씩 주기
          * 4. 점수대로 정렬하기
          * */
-        return answer;
+        return null;
     }
 
     public static List<String> getFriendWithUser(String user, List<List<String>> friends){
@@ -71,15 +77,38 @@ public class Problem7 {
         }
         return TenScoreFriends;
     }
+    public static Map<String, Integer> setOneScore(List<String> alreadyFriends,
+                                                   List<String> visitors,
+                                                   Map<String, Integer> ScoreFriendsMap){
+        for (int i=0; i<visitors.size(); i++){
+            String tmpUser = visitors.get(i);
+
+            if (!alreadyFriends.contains(tmpUser)){
+
+                if (ScoreFriendsMap.containsKey(tmpUser)){
+                    int tmpScore = ScoreFriendsMap.get(tmpUser);
+                    ScoreFriendsMap.replace(tmpUser, tmpScore+1);
+                } else {
+                    ScoreFriendsMap.put(tmpUser, 1);
+                }
+            }
+        }
+        return ScoreFriendsMap;
+    }
+    /*
+    public static List<ScoreFriends> mapToScoreFriends(Map<String, Integer> map){
+        for (Map.Entry<String, Integer> entry : map.entrySet())
+    }*/
     public static List<Map.Entry<String, Integer>> sortList(Map<String, Integer> ScoreFriends){
         List<Map.Entry<String, Integer>> entryList = new LinkedList<>(ScoreFriends.entrySet());
-        entryList.sort(Map.Entry.comparingByValue());
+        //entryList.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
+        entryList.sort(Comparator.comparing(Map.Entry.stream()::getValue).reversed().thenComparing(Map.Entry::getKey));
         return entryList;
     }
     public static List<String> setRecommendList(List<Map.Entry<String, Integer>> entryList){
         List<String> answer = new ArrayList<>();
         for (int i=0; i<5; i++){
-            if (i>entryList.size()) break;
+            if (i >= entryList.size()) break;
             answer.add(entryList.get(i).getKey());
         }
         return answer;
