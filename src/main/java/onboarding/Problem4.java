@@ -2,8 +2,7 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        return getWord(word);
     }
 
     private static String getWord(String word) {
