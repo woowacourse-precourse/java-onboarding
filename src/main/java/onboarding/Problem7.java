@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 
 /*
@@ -22,6 +23,25 @@ public class Problem7 {
     }
     public static String[] listToArray(List<String> list){
         return list.toArray(new String[list.size()]);
+    }
+    public static String[] findFriend(String user, List<List<String>> friends, List<String> visitors){
+        String[][] friendsArray = listToArray2D(friends);
+        String[] visitorsArray = listToArray(visitors);
+        HashSet<String> set = new HashSet<>();
+        int outLen = friendsArray.length;
+        int inLen = friendsArray[0].length;
+        int len = visitorsArray.length;
+
+        set.add(user);
+        for(int i = 0;i < outLen;i++){
+            for(int j = 0;j < inLen;j++){
+                set.add(friendsArray[i][j]);
+            }
+        }
+        for(int i = 0;i < len;i++) {
+            set.add(visitorsArray[i]);
+        }
+        return set.toArray(new String[0]);
     }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
