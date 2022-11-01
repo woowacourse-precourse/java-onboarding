@@ -23,7 +23,7 @@
 | "zyelleyz" | "" |
 
 ### 기능목록
-- [x] 두 char input이 같은지 판별하는 기능
-- [x] answer의 마지막 char와 cryptogram의 해당 인덱스 char가 같으면 answer의 마지막 요소 삭제
-- [x] answer의 마지막 char와 cryptogram의 해당 인덱스 char가 다르면 cyptogram의 해당 인덱스 요소 answer에 추가
+- [x] 문자열에서 인접한 중복되는 문자 모두 제거하는 기능
+- [x] 문자열에서 인접한 중복되는 문자가 있는지 확인하는 기능
+- [x] 문자열에서 인접한 중복되는 문자가 없을 때까지 반복하는 기능
 - [x] "brooon" 처럼 중복된 문자가 3개이상인 경우 고려
