@@ -9,4 +9,8 @@ public class Problem4 {
     public static char isUpperAlpha(char ch){
         return (char)(90 -(ch - 65));
     }
+
+    public static char isLowerAlpha(char ch){
+        return (char)(122 -(ch - 97));
+    }
 }
