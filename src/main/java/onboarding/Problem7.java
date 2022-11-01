@@ -3,7 +3,7 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
-    
+
 
     public static void SetFriendList(List<List<String>> friends, HashSet<String> friendList, String user)
     {
@@ -18,10 +18,35 @@ public class Problem7 {
         }
     }
 
+    public static void SetNotFriendList(List<List<String>> friends, HashSet<String> friendList, HashMap<String, Integer> notFriendList, List<String> visitors, String user)
+    {
+        for (int i = 0; i < friends.size(); i++)
+        {
+            String name1 = friends.get(i).get(0);
+            String name2 = friends.get(i).get(1);
+            if (name1 == user || name2 == user)
+                continue;
+            if (friendList.contains(name1) && friendList.contains(name2))
+                continue;
+            if (!friendList.contains(name1) && !friendList.contains(name2))
+                continue;
+            if (friendList.contains(name1) && !notFriendList.containsKey(name2))
+                notFriendList.put(name2, 0);
+            else if (friendList.contains(name2) && !notFriendList.containsKey(name1))
+                notFriendList.put(name1, 0);
+        }
+
+        for (String name : visitors)
+            if (name != user && !friendList.contains(name) && !notFriendList.containsKey(name))
+                notFriendList.put(name, 0);
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         HashSet<String> friendList = new HashSet<String>();
+        HashMap<String, Integer> notFriendList = new HashMap<String, Integer>();
         SetFriendList(friends, friendList, user);
+        SetNotFriendList(friends, friendList, notFriendList, visitors, user);
         return answer;
     }
 }
