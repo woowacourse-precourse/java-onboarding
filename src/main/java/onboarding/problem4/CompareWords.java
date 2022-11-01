@@ -24,15 +24,4 @@ public class CompareWords {
 
         return result.toString();
     }
-
-    private boolean SpacesCompare(Character split) {
-
-        if (split != ' ') {
-            return false;
-        }
-
-        return true;
-    }
-
-
 }
