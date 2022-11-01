@@ -3,9 +3,12 @@ package onboarding;
 public class Problem4 {
     public static char[] stringtochar;
 
-    public static char splitWord(int i){
-        char splitingword=stringtochar[i];
-        return splitingword;
+    public static void splitWord(){
+        for(int i=0;i<stringtochar.length;i++){
+            char splitingword=stringtochar[i];
+            stringtochar[i]=changeWord(splitingword);
+        }
+
     }
 
     public static char changeWord(char word){
