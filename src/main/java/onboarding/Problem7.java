@@ -11,6 +11,7 @@ public class Problem7 {
         User targetUser = friendGraph.getUser(new User(user));
 
         HashMap<User, Integer> map = new HashMap<>();
+
         List<User> targetUserFriendList = friendGraph.getUser(targetUser).getFriends();
         targetUserFriendList.forEach(freind -> friendGraph.getUser(freind).getFriends().forEach(friendUser -> {
                     if (!friendUser.equals(targetUser)){
@@ -42,7 +43,7 @@ public class Problem7 {
                 }
             }
         }
-        return recommendedUser.stream().sorted().limit(5).map(i -> i.getId()).collect(Collectors.toList());
+        return recommendedUser.stream().sorted().limit(5).map(User::getId).collect(Collectors.toList());
     }
 }
 class ListGraph {

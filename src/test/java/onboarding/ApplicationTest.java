@@ -80,13 +80,6 @@ class ApplicationTest {
         }
 
         @Test
-        @DisplayName("연속 하는 중복된 문자가 떨어져 있을 경우")
-        void testForSeparateDuplicateCharacter() {
-            String cryptogram = "acccabba";
-            String result = "";
-            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
-        }
-        @Test
         @DisplayName("연속하는 중복문자가 주어질 경우 완전 삭제")
         void testForConsecutiveDuplicateCharacter() {
             String cryptogram = "zyellleeyz";
@@ -327,6 +320,5 @@ class ApplicationTest {
             List<String> expected = List.of("bedi", "shakevan");
             Assertions.assertIterableEquals(expected,Problem7.solution(user, friends, visitors), "bedi와 shakevan을 반환" );
         }
-
     }
 }
