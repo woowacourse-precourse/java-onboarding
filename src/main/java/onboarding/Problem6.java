@@ -9,7 +9,9 @@ public class Problem6 {
     private static final int MIN_EMAIL_LENGTH = 11;
     private static final int MAX_EMAIL_LENGTH = 19;
     private static final String VALID_EMAIL_DOMAIN = "@email.com";
-    
+    private static final int MIN_NICKNAME_LENGTH = 1;
+    private static final int MAX_NICKNAME_LENGTH = 19;
+
     private static final int FORM_EMAIL_INDEX = 0;
     private static final int FORM_NICKNAME_INDEX = 1;
 
@@ -64,6 +66,9 @@ public class Problem6 {
         if (!validateEmailDomain(forms)) {
             throw new IllegalArgumentException("신청 가능하신 이메일의 도메인은 @email.com 입니다.");
         }
+        if (!validateNicknameLength(forms)) {
+            throw new IllegalArgumentException("닉네임의 길이는 1자 이상 19자 이하이어야 합니다.");
+        }
     }
 
     static boolean validateCrewCount(List<List<String>> forms) {
@@ -78,4 +83,7 @@ public class Problem6 {
         return forms.stream().allMatch(form -> form.get(FORM_EMAIL_INDEX).contains(VALID_EMAIL_DOMAIN));
     }
 
+    static boolean validateNicknameLength(List<List<String>> forms) {
+        return forms.stream().allMatch(form -> form.get(FORM_NICKNAME_INDEX).length() >= MIN_NICKNAME_LENGTH && form.get(FORM_NICKNAME_INDEX).length() <= MAX_NICKNAME_LENGTH);
+    }
 }
