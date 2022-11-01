@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 class ApplicationTest {
     @Nested
@@ -38,8 +39,6 @@ class ApplicationTest {
         @Test
         void myCaseForPro1() {
             int result = -1;
-            List<Integer> pobi = List.of(99, 102, 10);
-            List<Integer> crong = List.of(211, 212, 100);
 
             List<Integer> pobi1 = List.of(99, 103);
             List<Integer> crong1 = List.of(211, 213);
@@ -62,14 +61,21 @@ class ApplicationTest {
             List<Integer> pobi7 = List.of(389);
             List<Integer> crong7 = List.of(399);
 
-            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+            List<Integer> pobi8 = List.of(99, 102, 10);
+            List<Integer> crong8 = List.of(211, 212, 100);
+
             assertThat(Problem1.solution(pobi1, crong1)).isEqualTo(result);
             assertThat(Problem1.solution(pobi2, crong2)).isEqualTo(result);
             assertThat(Problem1.solution(pobi3, crong3)).isEqualTo(result);
             assertThat(Problem1.solution(pobi4, crong4)).isEqualTo(result);
             assertThat(Problem1.solution(pobi5, crong5)).isEqualTo(result);
             assertThat(Problem1.solution(pobi6, crong6)).isEqualTo(result);
-            assertThat(Problem1.solution(pobi7, crong7)).isEqualTo(result);
+            assertThatThrownBy(() -> {
+                Problem1.solution(pobi7, crong7);
+            }).isInstanceOf((IllegalArgumentException.class));
+            assertThatThrownBy(() -> {
+                Problem1.solution(pobi8, crong8);
+            }).isInstanceOf((IllegalArgumentException.class));
         }
     }
 
@@ -93,37 +99,41 @@ class ApplicationTest {
         void case3() {
             String cryptogram = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
             String result = "";
-            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+            assertThatThrownBy(() -> {
+                Problem2.solution(cryptogram);
+            }).isInstanceOf((IllegalArgumentException.class));
         }
 
         @Test
         void myCaseForPro2Uppercase1() {
             String result = "";
             String cryptogram = "ZyelleyZ";
-
-            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+            assertThatThrownBy(() -> {
+                Problem2.solution(cryptogram);
+            }).isInstanceOf((IllegalArgumentException.class));
         }
         @Test
         void myCaseForPro2Uppercase2() {
             String result = "";
             String cryptogram = "abccbaD";
-
-            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+            assertThatThrownBy(() -> {
+                Problem2.solution(cryptogram);
+            }).isInstanceOf((IllegalArgumentException.class));
         }
 
         @Test
         void myCaseForPro2Space() {
             String result = "";
             String cryptogram = "";
-
-            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+            assertThatThrownBy(() -> {
+                Problem2.solution(cryptogram);
+            }).isInstanceOf((IllegalArgumentException.class));
         }
 
         @Test
         void checkTmpError() {
             String result = "brnown";
             String cryptogram = "brooonown";
-
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
 
@@ -131,10 +141,8 @@ class ApplicationTest {
         void checkEmptyError() {
             String result = "rnown";
             String cryptogram = "bbrooonown";
-
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
-
     }
 
     @Nested
@@ -157,7 +165,9 @@ class ApplicationTest {
         void case3() {
             int number = -3;
             int result = 0;
-            assertThat(Problem3.solution(number)).isEqualTo(result);
+            assertThatThrownBy(() -> {
+                Problem3.solution(number);
+            }).isInstanceOf((IllegalArgumentException.class));
         }
 
         @Test
@@ -180,7 +190,9 @@ class ApplicationTest {
         void over1000() {
             String word = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa";
             String result = "";
-            assertThat(Problem4.solution(word)).isEqualTo(result);
+            assertThatThrownBy(() -> {
+                Problem4.solution(word);
+            }).isInstanceOf((IllegalArgumentException.class));
         }
         @Test
         void case1000() {
@@ -205,6 +217,7 @@ class ApplicationTest {
             List<Integer> result = List.of(0, 1, 1, 0, 0, 0, 0, 0, 0);
             assertThat(Problem5.solution(money)).isEqualTo(result);
         }
+
     }
 
     @Nested
@@ -219,19 +232,6 @@ class ApplicationTest {
                 List.of("nowm@email.com", "이제엠")
             );
             List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com");
-            assertThat(Problem6.solution(forms)).isEqualTo(result);
-        }
-
-        @Test
-        void UppercaseEmail() {
-            List<List<String>> forms = List.of(
-                List.of("Jm@email.com", "제이엠"),
-                List.of("Jason@email.com", "제이슨"),
-                List.of("woniee@email.com", "워니"),
-                List.of("Mj@email.com", "엠제이"),
-                List.of("nowm@email.com", "이제엠")
-            );
-            List<String> result = List.of("Jason@email.com", "Jm@email.com", "Mj@email.com");
             assertThat(Problem6.solution(forms)).isEqualTo(result);
         }
 
@@ -252,7 +252,9 @@ class ApplicationTest {
         void noCrew() {
             List<List<String>> forms = List.of();
             List<String> result = List.of();
-            assertThat(Problem6.solution(forms)).isEqualTo(result);
+            assertThatThrownBy(() -> {
+                Problem6.solution(forms);
+            }).isInstanceOf((IllegalArgumentException.class));
         }
 
         @Test
@@ -265,7 +267,9 @@ class ApplicationTest {
                 List.of("nowm@email.com", "이제엠")
             );
             List<String> result = List.of("jason@email.com", "j123456789789789@email.com", "mj@email.com");
-            assertThat(Problem6.solution(forms)).isEqualTo(result);
+            assertThatThrownBy(() -> {
+                Problem6.solution(forms);
+            }).isInstanceOf((IllegalArgumentException.class));
         }
 
         @Test
@@ -278,7 +282,9 @@ class ApplicationTest {
                 List.of("nowm@email.com", "이제엠")
             );
             List<String> result = List.of("jason@email.com", "j@email.com", "mj@email.com");
-            assertThat(Problem6.solution(forms)).isEqualTo(result);
+            assertThatThrownBy(() -> {
+                Problem6.solution(forms);
+            }).isInstanceOf((IllegalArgumentException.class));
         }
 
         @Test
@@ -291,7 +297,9 @@ class ApplicationTest {
                 List.of("nowm@email.com", "이제엠")
             );
             List<String> result = List.of("jason@email.com", "j@naver.com", "mj@email.com");
-            assertThat(Problem6.solution(forms)).isEqualTo(result);
+            assertThatThrownBy(() -> {
+                Problem6.solution(forms);
+            }).isInstanceOf((IllegalArgumentException.class));
         }
 
         @Test
@@ -304,7 +312,9 @@ class ApplicationTest {
                 List.of("nowm@email.com", "이제엠")
             );
             List<String> result = List.of("jason@email.com", "@email.com@naver.com", "mj@email.com");
-            assertThat(Problem6.solution(forms)).isEqualTo(result);
+            assertThatThrownBy(() -> {
+                Problem6.solution(forms);
+            }).isInstanceOf((IllegalArgumentException.class));
         }
 
         @Test
@@ -317,7 +327,9 @@ class ApplicationTest {
                 List.of("nowm@email.com", "이제엠")
             );
             List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com");
-            assertThat(Problem6.solution(forms)).isEqualTo(result);
+            assertThatThrownBy(() -> {
+                Problem6.solution(forms);
+            }).isInstanceOf((IllegalArgumentException.class));
         }
 
         @Test
@@ -330,20 +342,9 @@ class ApplicationTest {
                 List.of("nowm@email.com", "이제엠")
             );
             List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com");
-            assertThat(Problem6.solution(forms)).isEqualTo(result);
-        }
-
-        @Test
-        void caseAlphaOrder() {
-            List<List<String>> forms = List.of(
-                List.of("abcde@email.com", "제이엠"),
-                List.of("bcdef@email.com", "제이슨"),
-                List.of("woniee@email.com", "워니"),
-                List.of("aaaa@email.com", "엠제이"),
-                List.of("nowm@email.com", "이제엠")
-            );
-            List<String> result = List.of("aaaa@email.com", "abcde@email.com", "bcdef@email.com");
-            assertThat(Problem6.solution(forms)).isEqualTo(result);
+            assertThatThrownBy(() -> {
+                Problem6.solution(forms);
+            }).isInstanceOf((IllegalArgumentException.class));
         }
     }
 
@@ -378,7 +379,9 @@ class ApplicationTest {
             );
             List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
             List<String> result = List.of("andole", "jun", "bedi");
-            assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+            assertThatThrownBy(() -> {
+                Problem7.solution(user, friends, visitors);
+            }).isInstanceOf((IllegalArgumentException.class));
         }
 
         @Test
@@ -394,7 +397,9 @@ class ApplicationTest {
             );
             List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "mrkoooooooooooooooooppppppppppp");
             List<String> result = List.of("andole", "jun", "bedi");
-            assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+            assertThatThrownBy(() -> {
+                Problem7.solution(user, friends, visitors);
+            }).isInstanceOf((IllegalArgumentException.class));
         }
 
         @Test
@@ -410,7 +415,9 @@ class ApplicationTest {
             );
             List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
             List<String> result = List.of("andole", "jun", "bedi");
-            assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+            assertThatThrownBy(() -> {
+                Problem7.solution(user, friends, visitors);
+            }).isInstanceOf((IllegalArgumentException.class));
         }
 
         @Test
@@ -426,7 +433,9 @@ class ApplicationTest {
             );
             List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
             List<String> result = List.of("Andole", "jun", "bedi");
-            assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+            assertThatThrownBy(() -> {
+                Problem7.solution(user, friends, visitors);
+            }).isInstanceOf((IllegalArgumentException.class));
         }
 
         @Test
@@ -442,7 +451,9 @@ class ApplicationTest {
             );
             List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
             List<String> result = List.of("andol2", "jun", "bedi");
-            assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+            assertThatThrownBy(() -> {
+                Problem7.solution(user, friends, visitors);
+            }).isInstanceOf((IllegalArgumentException.class));
         }
 
         @Test
@@ -458,7 +469,9 @@ class ApplicationTest {
             );
             List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
             List<String> result = List.of("andol이", "jun", "bedi");
-            assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+            assertThatThrownBy(() -> {
+                Problem7.solution(user, friends, visitors);
+            }).isInstanceOf((IllegalArgumentException.class));
         }
 
         @Test
@@ -513,7 +526,9 @@ class ApplicationTest {
             );
             List<String> visitors = List.of("bcho", "ejachoi", "bcho", "ejachoi", "yback", "yback", "dayun");
             List<String> result = List.of("bcho", "ejachoi", "yback");
-            assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+            assertThatThrownBy(() -> {
+                Problem7.solution(user, friends, visitors);
+            }).isInstanceOf((IllegalArgumentException.class));
         }
 
         @Test
