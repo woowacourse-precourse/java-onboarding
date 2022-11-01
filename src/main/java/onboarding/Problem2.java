@@ -23,16 +23,13 @@ public class Problem2 {
             if (!checkSameChar(encodedCode, i - 1, i) && count >= 2) {
                 flag = true;
                 encodedCode.replace(i - count, i, getEmptySpace(count));
+                clearSpaces(encodedCode);
                 count = 1;
             }
         }
-
         if (count >= 2) {
             flag = true;
             encodedCode.replace(encodedCode.length() - count, encodedCode.length(), getEmptySpace(count));
-        }
-
-        if (flag) {
             clearSpaces(encodedCode);
         }
         return flag;
