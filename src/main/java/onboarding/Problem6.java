@@ -10,13 +10,18 @@ import java.util.Map;
 import java.util.Set;
 
 public class Problem6 {
-    private static final Map<String, Integer> nicknameMap = new HashMap<>();
+    private static Map<String, Integer> nicknameMap;
     public static List<String> solution(List<List<String>> forms) {
+        initMap();
         saveNicknameToMap(forms);
         List<String> duplicateNicknameList = getDuplicateNicknameList(forms);
         Collections.sort(duplicateNicknameList);
 
         return duplicateNicknameList;
+    }
+
+    private static void initMap() {
+        nicknameMap = new HashMap<>();
     }
 
     private static void saveNicknameToMap(List<List<String>> forms) {
