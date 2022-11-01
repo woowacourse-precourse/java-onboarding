@@ -6,7 +6,7 @@ public class NicknameDuplicationManage {
     private List<List<String>> forms;
     private HashMap<String, Set<String>> nickNameMap = new HashMap<>();
     private List<String> duplicateEmailList = new ArrayList<>();
-    
+
     public NicknameDuplicationManage(List<List<String>> forms){
         this.forms = forms;
     }
@@ -48,5 +48,9 @@ public class NicknameDuplicationManage {
         }
 
         duplicateEmailList = new ArrayList<>(duplicateEmailSet);
+    }
+
+    private void sortEmailList(){
+        Collections.sort(duplicateEmailList);
     }
 }
