@@ -33,6 +33,11 @@ public class Problem6 {
                 }
             }
         }
+        for (int i = 0; i < forms.size(); ++i) {
+            if (visited[i]) {
+                answer.add(forms.get(i).get(0));
+            }
+        }
         return answer;
     }
 }
