@@ -15,13 +15,28 @@ class Problem1 {
 
             for(int j=0;j<3;j++){
                 tmp += i % 10;
-                i = i % 10;
+                i = i / 10;
             }
             max = Math.max(max, tmp);
         }
 
         return max;
     }
+    public static int multiple(List<Integer> value){
+        int max = 0;
+        for(int i:value){
+            int tmp = 1;
+
+            for(int j=0;j<3;j++){
+                tmp *= (i % 10);
+                i = i / 10;
+            }
+            max = Math.max(max, tmp);
+        }
+
+        return max;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
