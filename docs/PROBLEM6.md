@@ -21,3 +21,10 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+## 🚀 기능 목록
+
+1. 주어진 forms를 객체 Student로 초기화할 수 있는 기능
+2. 중복을 제외한 이메일을 정렬할 수 있는 기능
+3. 각 닉네임들을 비교하는 기능
+4. 비교중인 닉네임들이 두 글자 이상의 문자가 연속적으로 순서에 포함되어 있는지 확인하는 기능
