@@ -23,6 +23,7 @@ public class Problem7 {
         3. 타임 라인 방문 점수
         - user를 제외한 사람들 각각에 대해 타임 라인 방문 점수를 더해줌
          */
+        addTimelineVisitScore(visitors, score);
 
         /*
         4. score를 정렬한 후 3명 리턴
@@ -69,6 +70,14 @@ public class Problem7 {
 
             friendsOfPersonA.retainAll(friendsOfUser);
             score.put(personA, friendsOfPersonA.size() * 10);
+        }
+    }
+
+    private static void addTimelineVisitScore(List<String> visitors, Map<String, Integer> score) {
+        for(String visitor : visitors) {
+            if(score.containsKey(visitor))
+                score.put(visitor, score.get(visitor) + 1);
+            else score.put(visitor, 1);
         }
     }
 }
