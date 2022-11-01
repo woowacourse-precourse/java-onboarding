@@ -12,6 +12,7 @@ public class Problem7 {
         Problem7 p7 = new Problem7();
         p7.makeFriendGraph(friends);
         p7.findKnownPeople(user);
+        p7.findVisitors(user, visitors);
 
         return null;
     }
@@ -50,6 +51,17 @@ public class Problem7 {
                     knownList.put(people, 10);
                 }
             }
+        }
+    }
+
+    private void findVisitors(String user, List<String> visitors){
+        for(String visitor : visitors){
+            if(visitor.equals(user) || friendList.contains(visitor)) continue;
+            if(knownList.containsKey(visitor)){
+                Integer score = knownList.get(visitor);
+                knownList.replace(visitor, score, score+1);
+            }
+            else knownList.put(visitor, 1);
         }
     }
 }
