@@ -8,6 +8,21 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
 
+        String email = "";
+        String nickName = "";
+
+        List<String> checkList = new ArrayList<>();
+        for (int i = 0; i < forms.size(); i++) {
+            email = forms.get(i).get(0);
+            nickName = forms.get(i).get(1);
+            if (emailCheck(email) && nickNameCheck(nickName)){
+                // 최소 길이 2이상 연속문자 추출 -> esNgram
+                for (int j = 2; j <= nickName.length(); j++) {
+                    String strNgram = esNgram(nickName, j);
+                    checkList.addAll(Arrays.asList(strNgram.split(" ")));
+                }
+            }
+        }
 
 
         // result로 오름차순 정렬되게 stream 구현
