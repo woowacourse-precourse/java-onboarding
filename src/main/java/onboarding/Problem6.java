@@ -74,6 +74,15 @@ public class Problem6 {
             sortedEmails.add(id[0]);
         }
         sortedEmails.sort(Comparator.naturalOrder());
-        return sortedEmails;
+        return addDomainToEmail(sortedEmails);
+    }
+
+    private static List<String> addDomainToEmail(List<String> emails) {
+        List<String> emailWithDomain = new ArrayList<>();
+        for (String email : emails) {
+            email += "@email.com";
+            emailWithDomain.add(email);
+        }
+        return emailWithDomain;
     }
 }
