@@ -2,6 +2,8 @@ package onboarding.problem7.controller;
 
 import onboarding.problem7.domain.User;
 import onboarding.problem7.utils.Constants;
+import onboarding.problem7.utils.validator.InputParametersValidator;
+import onboarding.problem7.utils.validator.exception.InputParametersException;
 
 import java.util.*;
 
@@ -16,10 +18,14 @@ public class FriendRecommendation {
     private ArrayList<String> recommendedUserList = new ArrayList<>();
 
     public FriendRecommendation(String targetUserName, List<List<String>> friends, List<String> visitors){
-        this.targetUserName = targetUserName;
-        this.friends = friends;
-        this.visitors = visitors;
-        this.targetUser = new User(targetUserName);
+        try{
+            new InputParametersValidator(targetUserName, friends, visitors);
+            this.targetUserName = targetUserName;
+            this.friends = friends;
+            this.visitors = visitors;
+        }catch (InputParametersException e){
+            e.printStackTrace();
+        }
     }
 
     public List<String> getRecommendUserList(){
