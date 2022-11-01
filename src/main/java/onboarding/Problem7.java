@@ -44,6 +44,14 @@ public class Problem7 {
             score(visitor, 1);
         }
 
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(resultScore.entrySet());
+
+        // 정렬
+        entryList.sort(Entry.comparingByKey());
+        entryList.sort(Entry.comparingByValue(Comparator.reverseOrder()));
+
+
+        System.out.println(answer);
         return answer;
     }
 
@@ -54,4 +62,5 @@ public class Problem7 {
         }
         resultScore.put(name, score); // 기존에 없는 경우
     }
+
 }
