@@ -7,6 +7,8 @@ public class Problem6 {
 
         List<String> answer = getEmailSet(forms); // 같은 글자가 연속적으로 포함되는 닉네임을 작성한 지원자의 이메일 목록을 계산
 
+        Collections.sort(answer); // 최종적으로 얻은 지원자의 이메일 목록을 오름차순으로 정렬
+
         return answer;
     }
 
