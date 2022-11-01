@@ -4,6 +4,8 @@ import java.util.*;
 import java.util.Map.Entry;
 
 public class Problem7 {
+    private static final int ANSWER_LENGTH = 3;
+
     private static void getFriendsList(HashMap<String, List<String>> friendsList, List<List<String>> friends) {
         for (int i = 0; i < friends.size(); i++) {
             String member1 = friends.get(i).get(0);
@@ -52,6 +54,20 @@ public class Problem7 {
         }
     }
 
+    private static List<String> sortByScoreAndName(HashMap<String, Integer> recommendScore){
+        List<String> recommendFriendsList = new ArrayList<>();
+        List<Entry<String, Integer>> sortRecommendList = new ArrayList<Entry<String, Integer>>(recommendScore.entrySet());
+        Collections.sort(sortRecommendList, new Comparator<Entry<String, Integer>>() {
+            public int compare(Entry<String, Integer> obj1, Entry<String, Integer> obj2) {
+                return obj2.getValue().compareTo(obj1.getValue());
+            }
+        });
+        for(int i = 0; i < ANSWER_LENGTH; i++){
+            recommendFriendsList.add(sortRecommendList.get(i).getKey());
+        }
+        return recommendFriendsList;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         List<String> userFriends = new ArrayList<>();
@@ -63,6 +79,8 @@ public class Problem7 {
         shareFriends(friendsList, recommendScore, user);
 
         getVisitFriendScore(visitors, recommendScore);
+
+        answer = sortByScoreAndName(recommendScore);
 
         return answer;
     }
