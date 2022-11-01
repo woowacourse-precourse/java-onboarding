@@ -43,4 +43,12 @@ public class Problem7 {
         }
         return true;
     }
+
+    //  친구 목록 유효성 검사 - 목록 길이
+    private static Boolean verifyFriendsLength(List<List<String>> friends){
+        int length = friends.size();
+        if (length < 1) return false;
+        if (length > MAX_LIST_LENGTH) return false;
+        return true;
+    }
 }
