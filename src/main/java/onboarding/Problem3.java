@@ -23,13 +23,9 @@ public class Problem3 {
      */
     public static int clap(int num) {
         int cnt = 0;
-        String target;
-        while(num != 0) {
-            target = Integer.toString(num % 10);
-            if(target.contains("3")) cnt++;
-            if(target.contains("6")) cnt++;
-            if(target.contains("9")) cnt++;
-            num /= 10;
+        String target = Integer.toString(num);
+        for (char c : target.toCharArray()) {
+            if (c == '3' || c == '6' || c == '9') cnt++;
         }
         return cnt;
     }
