@@ -57,4 +57,10 @@ public class Problem3 {
         return oneNumber / 3;
     }
 
+    public static int calculateTensClapCase(int tenNumber) {
+        int specificTenNumber = (tenNumber - 1) / 3;
+        return (tenNumber - specificTenNumber) * generalTensDigit() +
+                specificTenNumber * specificTensDiigt();
+    }
+
 }
