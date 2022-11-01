@@ -31,4 +31,14 @@ public class Problem7 {
             }
         }
     }
+
+    public static void friendsScore(String user, Map<String, Set<String>> relations, Set<String> newFriends, Map<String, Integer> scores) {
+        List<String> myFriends = new ArrayList<>(relations.get(user));
+        for (String friend : myFriends) {
+            newFriends.remove(friend);
+        }
+        for (String friend : newFriends) {
+            scores.put(friend, 10);
+        }
+    }
 }
