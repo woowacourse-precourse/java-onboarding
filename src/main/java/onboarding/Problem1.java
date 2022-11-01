@@ -58,4 +58,23 @@ class Problem1 {
         }
         return result;
     }
+
+    /**
+     * 기능목록 3
+     * @param list
+     * @return list 안의 값들의 각 자릿수들을 모두 곱한 값
+     */
+    private static int calculateMultiply(List<Integer> list) {
+        int result = 1;
+        for (int i = 0; i < 2; i++) {
+            int mult = 1;
+            int num = list.get(i);
+            while (num > 0) {
+                mult *= num % 10;
+                num /= 10;
+            }
+            result *= mult;
+        }
+        return result;
+    }
 }
