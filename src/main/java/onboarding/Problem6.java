@@ -4,7 +4,7 @@
  * 2. 닉네임에서 2글자로 분리하는 함수
  * 3. 2글자로 분리된 닉네임이 겹치는 경우 카운트
  * 4. 겹치는 닉네임의 이메일을 꺼내는 함수
- * 5. 이메일을 sort하는 함수
+ * 5. 이메일을 sort 하는 함수
  */
 package onboarding;
 
@@ -65,15 +65,9 @@ public class Problem6 {
         Set<String> emailSet = new HashSet<>();
         for (List<String> emailList : nicknameSection.values()) {
             if (emailList.size() > 1) {
-                setAnswerEmailList(emailSet, emailList);
+                emailSet.addAll(emailList);
             }
         }
         return emailSet;
-    }
-
-    public static void setAnswerEmailList(Set<String> emailSet, List<String> emailList) {
-        for (String email : emailList) {
-            emailSet.add(email);
-        }
     }
 }
