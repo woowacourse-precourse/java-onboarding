@@ -59,14 +59,12 @@ public class Problem7 {
         for (List<String> friend : friends) {
             // 유저 친구들 따로 체크
             setUserFriendCheck(user, userFriendCheck, friend);
-
             // 친구 관계 그래프로 설정
             setFriendRelation(friendRelation, friend);
         }
 
         // 함께 아는 친구의 수 추천점수
         friendOfFriendScoring(user, friendRelation, score);
-
         // 방문자 추천점수
         visitorScoring(visitors, score);
 
@@ -75,7 +73,6 @@ public class Problem7 {
 
         for (String key : score.keySet()) {
             Boolean check = userFriendCheck.get(key);
-
             // 이미 user와 친구가 아니라면 결과에 저장
             if(check==null) result.add(new Node(key, score.get(key)));
             else if(!check) result.add(new Node(key, score.get(key)));
@@ -83,8 +80,11 @@ public class Problem7 {
 
         Collections.sort(result);
 
+        int count = 0;
         for (Node node : result) {
+            if(count>=5) break;
             answer.add(node.getName());
+            count++;
         }
 
         return answer;
@@ -101,6 +101,10 @@ public class Problem7 {
     }
 
     private static void friendOfFriendScoring(String user, HashMap<String, List<String>> friendRelation, HashMap<String, Integer> score) {
+        if (friendRelation.get(user) == null) {
+            return;
+        }
+
         List<String> userFriendList = friendRelation.get(user);
         for (String friend : userFriendList) {
             // user 친구의 친구리스트
