@@ -71,9 +71,9 @@ class Problem1 {
     }
 
     public static int getWinner(List<Integer> pobi, List<Integer> crong) {
-        int draw = 0;
-        int pobiWin = 1;
-        int crongWin = 2;
+        final int DRAW = 0;
+        final int POBI_WIN = 1;
+        final int CRONG_WIN = 2;
 
         int pobiScore = getPageResult(pobi);
         int crongScore = getPageResult(crong);
