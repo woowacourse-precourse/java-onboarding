@@ -9,7 +9,7 @@ public class Problem6 {
 
     // 연속된 두 글자 닉네임이 중복되는 크루원 목록
     private static Set<String> foundMemberSet = new HashSet<>();
-    
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
@@ -28,5 +28,14 @@ public class Problem6 {
         else {
             tokenMap.put(token, idx);
         }
+    }
+
+    // 닉네임을 두 글자의 토큰들의 리스트로 나누는 메소드
+    private static List<String> splitNickname(String nickname) {
+        List<String> ret = new ArrayList<>();
+        for (int i = 0; i < nickname.length() - 1; i++) {
+            ret.add(nickname.substring(i, i + 2));
+        }
+        return ret;
     }
 }
