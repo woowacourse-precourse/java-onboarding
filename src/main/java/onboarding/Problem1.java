@@ -11,8 +11,9 @@ class Problem1 {
 
         for(int i=0;i<2;i++) {
             pmax=cal(pobi.get(i));
-            cmax=cal(pobi.get(i));
+            cmax=cal(crong.get(i));
         }
+
         if(pmax>cmax)
             answer=1;
         else if(pmax<cmax)
@@ -25,8 +26,8 @@ class Problem1 {
         String s=Integer.toString(x);
         int plussum=0,multisum=1;
         for(int i=0;i<s.length();i++){
-            plussum+=Integer.parseInt(s.split("")[i]);
-            multisum*=Integer.parseInt(s.split("")[i]);
+            plussum+=s.charAt(i)-'0';
+            multisum*=s.charAt(i)-'0';
         }
         return Math.max(plussum,multisum);
     }
