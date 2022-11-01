@@ -5,10 +5,20 @@ public class Cryptogram {
     private boolean duplicated;
 
     public Cryptogram(String value) {
+        isValidCryptogram(value);
+
         this.value = value;
         duplicated = true;
 
         checkDuplicate();
+    }
+
+    private void isValidCryptogram(String value) {
+        if (!value.equals(value.toLowerCase()))
+            throw new IllegalArgumentException("cryptogram은 알파벳 소문자로만 이루어져 있어야 합니다.");
+
+        if (value.length() < 1 || value.length() > 1000)
+            throw new IllegalArgumentException("crpytogram은 1자 이상 1000자 이하여야 합니다.");
     }
 
     public boolean isDuplicate() {
@@ -28,7 +38,6 @@ public class Cryptogram {
     }
 
     public String deleteDuplicate() {
-        String str = value;
         if (!duplicated)
             return value;
 
