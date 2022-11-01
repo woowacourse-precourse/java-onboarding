@@ -2,11 +2,15 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
+        return getAnswer(word);
+    }
+
+    private static String getAnswer(String word){
+        StringBuilder answer = new StringBuilder();
         for (int i = 0; i < word.length(); i++) {
-            answer += changeWord(getAscii(word.charAt(i)));
+            answer.append(changeWord(getAscii(word.charAt(i))));
         }
-        return answer;
+        return answer.toString();
     }
     private static int getAscii(char c){
         return (int)c;
