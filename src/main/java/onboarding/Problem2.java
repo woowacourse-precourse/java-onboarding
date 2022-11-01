@@ -1,6 +1,5 @@
 package onboarding;
 
-
 import java.util.Stack;
 
 public class Problem2 {
@@ -16,20 +15,26 @@ public class Problem2 {
     }
 
     private static String getDecrypto(String cryptogram) {
+        StringBuilder decryptionMessage = new StringBuilder();
         Stack<Character> cryptor = new Stack<>();
-        StringBuilder result = new StringBuilder();
+
+        char recodeCrypto = Character.MIN_VALUE;
 
         for (char crypto : cryptogram.toCharArray()) {
+            if (crypto == recodeCrypto) {
+                continue;
+            }
             if (!cryptor.isEmpty() && cryptor.peek() == crypto) {
                 cryptor.pop();
+                recodeCrypto = crypto;
                 continue;
             }
 
             cryptor.push(crypto);
         }
 
-        cryptor.forEach(result::append);
+        cryptor.forEach(decryptionMessage::append);
 
-        return result.toString();
+        return decryptionMessage.toString();
     }
 }
