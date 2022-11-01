@@ -8,6 +8,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -72,9 +73,15 @@ public class Problem7 {
         });
 
         // 다섯명으로 자르기
+        List<String> finalAnswer = new ArrayList<>();
         if (answer.size() > 5) {
-            return answer.subList(0, 5).stream().map(it -> it.getKey()).toList();
+            finalAnswer = answer.subList(0, 5).stream().map(it -> it.getKey()).collect(Collectors.toList());
         }
-        return answer.stream().map(it -> it.getKey()).toList();
+        else {
+            finalAnswer = answer.stream().map(it -> it.getKey()).collect(Collectors.toList());
+        }
+
+        return finalAnswer;
+        
     }
 }
