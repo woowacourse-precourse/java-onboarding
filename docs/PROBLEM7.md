@@ -1,10 +1,10 @@
 ## 🚀 기능 목록
-1. - [ ] 첫 파라미터의 친구들을 리턴하는 getFriendsFrom 메서드
-2. - [ ] user와 user의 친구는 제외하는 excludeUserAndFriendsOfUser 메서드
-3. - [ ] 사용자들의 이름을 Key, 각각의 score를 Value로 한 nameAndScoreMap을 업데이트하는 updateScore 메서드
-4. - [ ] score를 내림차순으로 정렬하여 리턴하는 getSortedScores 메서드
-5. - [ ] 해당 score에 맞는 name을 반환하는 getNamesByScore 메서드
-6. - [ ] 최대 5개의 이름을 리턴하는 getAnswer 메서드
+1. - [x] 첫 파라미터의 친구들을 리턴하는 getFriendsFrom 메서드
+2. - [x] user와 user의 친구는 제외하는 excludeUserAndFriendsOfUser 메서드
+3. - [x] 사용자들의 이름을 Key, 각각의 score를 Value로 한 nameAndScoreMap을 업데이트하는 updateScore 메서드
+4. - [x] score를 내림차순으로 정렬하여 리턴하는 getSortedScores 메서드
+5. - [x] 해당 score에 맞는 name을 반환하는 getNamesByScore 메서드
+6. - [x] 최대 5개의 이름을 리턴하는 getAnswer 메서드
 
 ## 🚀 기능 요구 사항
 
