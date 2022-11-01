@@ -38,6 +38,7 @@ public class Problem6 {
                 }
             }
         }
+        nicknameSearch(start+1,depth+1,forms.size(),forms,duplicateEmail);
     }
 
     public static List<String> duplication(List<String> arr) {
