@@ -1,12 +1,49 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+
+       for(int i=0;i<forms.size();i++){
+           Email email = new Email(forms.get(i).get(0));
+           if(email.isValidDomain()&& email.isValidLength()){  // 이메일 유효성 통과
+               Nickname nickname = new Nickname(forms.get(i).get(1));
+               if(nickname.isValidNick()){ // 닉네임 유효성 통과
+                   wrongCrew crew = new wrongCrew(forms);
+                   List<String> result = crew.nickDuplicate(nickname.allCaseNickEmail(forms));
+                   HashSet<String> delduple = new HashSet<>(result);
+                   result = new ArrayList<>(delduple);  // 중복 제거하기
+                   Collections.sort(result); // 오름차순 정렬
+                   return result;
+               }
+           }else
+               return null;
+       }
+       return null;
+    }
+
+    private static class wrongCrew {
+        List<String> result = new ArrayList<>();
+        List<List<String>> oriforms;
+
+        public wrongCrew(List<List<String>> oriforms) {
+            this.oriforms = oriforms;
+        }
+
+        public List<String> nickDuplicate(List<List<String>> forms) {
+            for (List<String> oriform : oriforms) {
+                for (List<String> form : forms) {
+                    if (!Objects.equals(form.get(0), oriform.get(0))) {
+                        // 이메일 주소가 다를때만 비교 ( 같은 사람이 아닐 때)
+                        if ((oriform.get(1)).contains(form.get(1))) {
+                            result.add(oriform.get(0));
+                        }
+                    }
+                }
+            }
+            return result;
+        }
     }
 
     private static class Nickname {
