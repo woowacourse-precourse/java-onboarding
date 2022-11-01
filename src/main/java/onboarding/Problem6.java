@@ -22,7 +22,7 @@ public class Problem6 {
 
     public static boolean checkNickname(List<List<String>> forms){
         for(int i = 0; i < forms.size(); i++){
-            String str = forms.get(i).get(0);
+            String str = forms.get(i).get(1);
             // 한글만 허용하는 정규표현식
             String regex = "^[가-힣]*$";
             Pattern p = Pattern.compile(regex);
