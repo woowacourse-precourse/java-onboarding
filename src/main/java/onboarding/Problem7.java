@@ -67,6 +67,14 @@ public class Problem7 {
         });
         return entryList;
     }
+    // map -> list
+    public static List<String> mapToList(List<Map.Entry<String,Integer>> recommendPeople){
+        List<String> finalRecommendFriends = new ArrayList<>();
+        for(Map.Entry<String, Integer> person: recommendPeople){
+            finalRecommendFriends.add(person.getKey());
+        }
+        return finalRecommendFriends;
+    }
 
 
 
