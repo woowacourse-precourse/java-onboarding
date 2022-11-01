@@ -12,6 +12,10 @@ class Problem1 {
     static final int BOOK_START_PAGE = 1;
     static final int BOOK_END_PAGE = 400;
 
+
+    private static boolean isnotDifference_1(int left, int right){
+        return right - left != 1;
+    }
     private static boolean isnotOddandEven(int left, int right){
         return left % 2 == 0 || right % 2 == 1;
     }
@@ -25,6 +29,7 @@ class Problem1 {
         boolean isValid = true;
         if(isOutofRange(left,right)) isValid=false;
         if(isnotOddandEven(left,right)) isValid=false;
+        if(isnotDifference_1(left,right)) isValid=false;
         return isValid;
     }
 
