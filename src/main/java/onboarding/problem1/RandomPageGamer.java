@@ -4,23 +4,22 @@ import java.util.List;
 
 public class RandomPageGamer {
 
-    private final List<Integer> pagesA;
-    private final List<Integer> pagesB;
+    private final List<Integer> playerOnePages, playerTwoPages;
 
     private final InputValidator validator;
     private final PageCalculator calculator;
 
-    public RandomPageGamer(List<Integer> pagesA, List<Integer> pagesB, int size) {
-        this.pagesA = pagesA;
-        this.pagesB = pagesB;
+    public RandomPageGamer(List<Integer> playerOnePages, List<Integer> playerTwoPages, int size) {
+        this.playerOnePages = playerOnePages;
+        this.playerTwoPages = playerTwoPages;
         validator = new InputValidator(size);
         calculator = new PageCalculator();
     }
 
     public int play() throws WrongInputException {
-        if (validator.validate(pagesA) && validator.validate(pagesB))
-            return resultOfGame(calculator.valueOfPages(pagesA.get(0), pagesA.get(1)),
-                    calculator.valueOfPages(pagesB.get(0), pagesB.get(1)));
+        if (validator.validate(playerOnePages) && validator.validate(playerTwoPages))
+            return resultOfGame(calculator.valueOfPages(playerOnePages.get(0), playerOnePages.get(1)),
+                    calculator.valueOfPages(playerTwoPages.get(0), playerTwoPages.get(1)));
         else
             throw new WrongInputException("Wrong input");
     }
