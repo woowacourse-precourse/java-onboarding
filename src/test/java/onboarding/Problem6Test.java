@@ -76,7 +76,7 @@ public class Problem6Test {
     @DisplayName("기능1 테스트: 주어진 닉네임에 대해 연속된 두 글자 이상의 문자열 부분집합을 생성한다.")
     void check_ContinuousSubsetByNickname_Works() {
         String nickname = "나사라스";
-        Set<String> result = Set.of("나사", "사라", "라스", "나사라", "사라스", "나사라스");
+        Set<String> result = Set.of("나사", "사라", "라스");
         assertThat(Problem6.makeContinuousSubSet(nickname)).isEqualTo(result);
     }
 
