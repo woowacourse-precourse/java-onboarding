@@ -2,23 +2,31 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "";
+        String answer = removeStr(cryptogram);
+        System.out.println(answer);
         return answer;
     }
 
     // 중복 문자 제거
     public static String removeStr(String str) {
-        String answer = "";
+        StringBuilder sb = new StringBuilder(str);
+        int i = 0;
 
-        for(int i=0; i<str.length()-1; i++) {
-            if(str.charAt(i)==str.charAt(i+1))
-                i++;
-            else
-                answer += str.charAt(i);
+        while(true) {
+            if(sb.length() == 1)
+                break;
+            else if(sb.length() -2 == i) {
+                if (sb.charAt(i) == sb.charAt(i+1))
+                    sb.delete(i, i+2);
+                break;
+            }
+            else if(sb.charAt(i) == sb.charAt(i+1)) {
+                sb.delete(i, i+2);
+                i = -1;
+            }
+            i++;
         }
 
-        answer += str.charAt(str.length()-1);
-
-        return answer;
+        return sb.toString();
     }
 }
