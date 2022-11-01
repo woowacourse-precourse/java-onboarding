@@ -79,3 +79,19 @@ public class Problem6 {
 
 
 }
+
+class Crew{
+    private String name;
+    private String email;
+
+    Crew(String name, String email){
+        this.name = name;
+        this.email = email;
+    }
+    String getName() {
+        return name;
+    }
+    String getEmail() {
+        return email;
+    }
+}
