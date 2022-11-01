@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -9,6 +10,8 @@ public class Problem6 {
 
         // ngram 저장소 만듬 토큰 , 이메일 종류
         initializeNgramTokenRepository(ngramTokenRepository, forms);
+
+        answer = getEmailsOfDuplicatedNickname(ngramTokenRepository);
 
         return answer;
     }
@@ -24,5 +27,19 @@ public class Problem6 {
                 ngramTokenRepository.put(nickname.substring(i, (i + 2)), emailSetOfDuplicatedNickname);
             }
         });
+    }
+
+    public static List<String> getEmailsOfDuplicatedNickname(Map<String, Set<String>> ngramTokenRepository) {
+        Set<String> set = new HashSet<>();
+
+        Set<Set<String>> emails = ngramTokenRepository.entrySet().stream()
+                .filter(ngramTokenAndEmail -> ngramTokenAndEmail.getValue().size() > 1)
+                .map(Map.Entry::getValue)
+                .collect(Collectors.toSet());
+
+        for (Set<String> duplicatedEmails : emails) {
+            set.addAll(duplicatedEmails);
+        }
+        return List.copyOf(set).stream().sorted().collect(Collectors.toList());
     }
 }
