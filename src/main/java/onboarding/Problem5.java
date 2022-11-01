@@ -10,7 +10,10 @@ public class Problem5 {
         int[] unit={50000,10000,5000,1000,500,100,50,10,1};     //화폐 단위 배열
 
         //unit의 값으로 나눈 값을 차례대로 answer에 저장
-
+        for(int i=0;i<9;i++) {
+            answer.add(money / unit[i]);
+            money %= unit[i];
+        }
         return answer;
     }
 }
