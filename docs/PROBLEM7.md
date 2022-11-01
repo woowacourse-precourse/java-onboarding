@@ -24,3 +24,16 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+## PROBLEM7 기능 구현 사항
+    답안 정렬 기준 
+      (1)점수 내림차순 - 점수 같으면 -> (2)이름 오름차순 으로 최대 5명
+    
+    구현
+    - myFriends 배열 생성, 점수저장 HashMap 생성
+    - 반복문을 통해 friends배열 내부에서 friends[1]이 user인 friends[0] myFriends에 저장
+    - 점수 추가 
+      - 함께 아는 친구 점수 점수 추가
+      - 프로필 방문 점수 추가 : 이미 친구인 사람은 추가X
+    - 점수 저장 HashMap을 점수 저장 List로 변환
+    - 점수 저장 List를 기준대로 정렬 후 최대 5개 반환
