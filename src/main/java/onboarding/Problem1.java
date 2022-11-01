@@ -17,10 +17,10 @@ class Problem1 {
         }
 
         // 왼쪽, 오른쪽 페이지로 만들 수 있는 숫자 만들기
-        int pobiLeftMakeNum = makeNum(pobi.get(0));
-        int pobiRightMakeNum = makeNum(pobi.get(1));
-        int crongLeftMakeNum = makeNum(crong.get(0));
-        int crongRightMakeNum = makeNum(crong.get(1));
+        int pobiLeftMakeNum = returnMaxNumBetweenMultiplicationAndAddition(pobi.get(0));
+        int pobiRightMakeNum = returnMaxNumBetweenMultiplicationAndAddition(pobi.get(1));
+        int crongLeftMakeNum = returnMaxNumBetweenMultiplicationAndAddition(crong.get(0));
+        int crongRightMakeNum = returnMaxNumBetweenMultiplicationAndAddition(crong.get(1));
 
         // 만든 수 중 가장 큰 수 찾기
         int pobiMaxNum = returnMaxNum(pobiLeftMakeNum, pobiRightMakeNum);
@@ -30,7 +30,7 @@ class Problem1 {
         return compareNums(pobiMaxNum, crongMaxNum);
     }
 
-    public static int makeNum(int page) {
+    public static int returnMaxNumBetweenMultiplicationAndAddition(int page) {
         ArrayList<Integer> pageNums = dividePages(page);
 
         int multipleNums = multiplyPages(pageNums);
