@@ -16,6 +16,20 @@ public class Problem7 {
         }
         return userFriendsList;
     }
+    // 친구 목록에 따라 주어지는 포인트를 map<친구이름, 점수>로 저장하는 함수
+    public static Map<String, Integer> getUsersPoint(String user, Map<String, List<String>> usersFriendsMap, List<String> visitors){
+        Map<String, Integer> usersPoint = new HashMap<>();
+        for(String userName : usersFriendsMap.keySet()) {
+            usersPoint.put(userName, 0);
+        }
+        List<String> userOfFriend = new ArrayList<>();
+        userOfFriend.addAll(usersFriendsMap.get(user));
+        for (String key : userOfFriend) {
+            for (int j = 0; j < usersFriendsMap.get(key).size(); j++) {
+                if (!usersFriendsMap.get(key).get(j).equals(user))
+                    usersPoint.put(usersFriendsMap.get(key).get(j), usersPoint.get(usersFriendsMap.get(key).get(j)) + 10);
+            }
+        }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
