@@ -27,4 +27,21 @@ class Problem1 {
         }
         return false;
     }
+    public static int calcMax(int value) {
+
+        int valueSum = 0;
+        int valueMul = 1;
+
+        while (value / 10 > 0) {
+            int digit = value % 10;
+
+            valueSum += digit;
+            valueMul *= digit;
+            value /= 10;
+        }
+        valueSum += value;
+        valueMul *= value;
+
+        return Math.max(valueSum, valueMul);
+    }
 }
