@@ -6,6 +6,7 @@ public class Users {
 
     private final int CO_FRIEND_SCORE = 10;
     private final int VISITOR_SCORE = 1;
+    private final int RECOMMEND_COUNT = 5;
 
     private final List<User> users;
 
@@ -28,6 +29,16 @@ public class Users {
         users.add(newUser);
 
         return newUser;
+    }
+
+    private Map<User, Integer> getScore(User user, List<String> visitors) {
+
+        Map<User, Integer> scoreMap = new HashMap<>();
+
+        getCoFriendScore(user, scoreMap);
+        getVisitorScore(visitors, scoreMap);
+
+        return scoreMap;
     }
 
     private void getCoFriendScore(User user, Map<User, Integer> scoreMap) {
