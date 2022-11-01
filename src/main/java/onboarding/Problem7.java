@@ -23,10 +23,10 @@ public class Problem7 {
     // 친구관계를 추가하는 함수
     public static void addFriends(HashMap<String, ArrayList<String>> friendGraph, List<String> friend) {
         for (int i = 0; i < 2; i++) {
-            if (!friendGraph.keySet().contains(friend.get(i%2))) {
-                ArrayList<String> friendList = new ArrayList<String>();
-                friendGraph.put(friend.get(i%2), friendList);
-            }
+            // friendGraph에 key 값으로 user가 없는 경우 생성
+            if (!friendGraph.keySet().contains(friend.get(i%2)))
+                friendGraph.put(friend.get(i%2), new ArrayList<String>());
+
             friendGraph.get(friend.get(i%2)).add(friend.get((i+1) % 2));
             }
     }
@@ -90,7 +90,7 @@ public class Problem7 {
             tempHashMap.put(friend, recommendScore.get(friend));
             tempList.add(tempHashMap);
         }
-        System.out.println(tempList);
+
        Collections.sort(tempList, new Comparator<HashMap<String, Integer>>() {
            @Override
            public int compare(HashMap<String, Integer> o1, HashMap<String, Integer> o2) {
@@ -98,6 +98,7 @@ public class Problem7 {
                key1 = key1.substring(1, key1.length()-1);
                String key2 = o2.keySet().toString();
                key2 = key2.substring(1, key2.length()-1);
+
                if (o1.get(key1) < o2.get(key2)) return 1;
                else if (o1.get(key1) > o2.get(key2)) return -1;
 
@@ -107,9 +108,7 @@ public class Problem7 {
        });
 
         for (HashMap<String, Integer> temp: tempList) {
-            for (String friends : temp.keySet()) {
-                resultList.add(friends);
-            }
+            for (String friends : temp.keySet()) resultList.add(friends);
             if (resultList.size() >= 5) break;
         }
         return resultList;
