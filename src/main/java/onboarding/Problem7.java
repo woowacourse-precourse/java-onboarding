@@ -18,4 +18,13 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
         return answer;
     }
+
+    //  회원 유효성 검사 - 소문자
+    private static Boolean verifyIdType(String id){
+        for(int i = 0; i < id.length(); i++){
+            int comp = id.charAt(i);
+            if(comp < (int) 'a' || comp > (int) 'z') return false;
+        }
+        return true;
+    }
 }
