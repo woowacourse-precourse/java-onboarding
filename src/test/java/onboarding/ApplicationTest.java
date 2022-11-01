@@ -33,6 +33,52 @@ class ApplicationTest {
             int result = -1;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
+
+        @Test
+        void splitTest() {
+            int num = 408;
+            NumSpliter numSpliter = new NumSpliter();
+            List<Integer> result = List.of(4,0,8);
+            assertThat(numSpliter.splitNum(num)).isEqualTo(result);
+        }
+
+        @Test
+        void sumTest() {
+            List<Integer> numbers = List.of(1,2,3);
+            int result = 6;
+            assertThat(Problem1.getSum(numbers)).isEqualTo(result);
+        }
+
+        @Test
+        void multiTest() {
+            List<Integer> numbers = List.of(0,0,1);
+            int result = 1;
+            assertThat(Problem1.getMulti(numbers)).isEqualTo(result);
+        }
+
+        @Test
+        void maxTest() {
+            List<Integer> numbers = List.of(103,964,323,92);
+            int result = 964;
+            assertThat(Problem1.getMax(numbers)).isEqualTo(result);
+        }
+
+        @Test
+        void normalTest() {
+            List<Integer> numbers1 = List.of(102, 103);
+            List<Integer> numbers2 = List.of(173, 174);
+            List<Integer> numbers3 = List.of(173, 175);
+            assertThat(Problem1.isNormal(numbers1)).isEqualTo(false);
+            assertThat(Problem1.isNormal(numbers2)).isEqualTo(true);
+            assertThat(Problem1.isNormal(numbers3)).isEqualTo(false);
+        }
+
+        @Test
+        void pipelineTest() {
+            List<Integer> numbers = List.of(133,134);
+            int result = 12;
+            assertThat(Problem1.pipeline(numbers)).isEqualTo(result);
+        }
     }
 
     @Nested
@@ -49,6 +95,21 @@ class ApplicationTest {
             String cryptogram = "zyelleyz";
             String result = "";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
+        void DuplicateDetecterTest() {
+            DuplicateDetector duplicateDeleter = new DuplicateDetector();
+            List<Integer> result = List.of(3,4);
+            assertThat(duplicateDeleter.findPattern("abcddef")).isEqualTo(result);
+        }
+
+        @Test
+        void PatternDeleterTest() {
+            PatternDeleter patternDeleter = new PatternDeleter(new DuplicateDetector());
+            String preString = "browoanoommnaon";
+            String result = "brown";
+            assertThat(patternDeleter.process(preString)).isEqualTo(result);
         }
     }
 
