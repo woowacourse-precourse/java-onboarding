@@ -13,6 +13,7 @@ public class Problem7 {
         validateFriendsElementLength(friends);
         validateIdLength(friends);
         validateIdFormat(friends);
+        validateVisitorsLength(visitors);
 
         List<String> answer = new ArrayList<>();
         HashMap<String, List<String>> friendRelationshipMap = new HashMap<>();
@@ -173,6 +174,12 @@ public class Problem7 {
 
                 }
             }
+        }
+    }
+
+    private static void validateVisitorsLength(List<String> visitors) {
+        if (visitors.size() < 0 || visitors.size() > 10000) {
+            throw new IllegalArgumentException("visitors의 길이는 0이상 10000이하여야 합니다.");
         }
     }
 }
