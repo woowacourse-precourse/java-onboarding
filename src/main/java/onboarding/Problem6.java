@@ -8,6 +8,18 @@ public class Problem6 {
         return answer;
     }
 
+    // 3. 중복되는 두글자 리스트만 뽑기
+    public static List<String> findDuplicateWords(List<String> words) {
+        Set<String> wordSet = new HashSet<>(words);
+        List<String> duplicateWords = new ArrayList<>();
+
+        for (String word : words) {
+            if(wordSet.contains(word) || duplicateWords.contains(word)) wordSet.remove(word);
+            else duplicateWords.add(word);
+        }
+        return duplicateWords;
+    }
+
     // 4. 중복되는 사람들의 email 리스트 만들기
     public static List<String> findDuplicateEmail(List<List<String>> forms, List<String> duplicateWords) {
         List<String> emailList = new ArrayList<>();
