@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-class Problem1 { 
+class Problem1 {
 //    public static void main(String[] args) {
 //        List<Integer> pobi = new ArrayList<>(Arrays.asList(123,124));
 //        solution()
