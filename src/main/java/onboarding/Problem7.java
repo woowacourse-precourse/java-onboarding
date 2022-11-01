@@ -13,9 +13,10 @@ public class Problem7 {
 
         Map<String, List<String>> relationMap = createRelationMap(friends);
         Map<String, Integer> pointMap = createPointMap(user, relationMap, visitors);
-
+        System.out.println(pointMap);
         return pointMap.entrySet()
                        .stream()
+                       .filter(stringIntegerEntry -> stringIntegerEntry.getValue() != 0)
                        .sorted(Entry.comparingByKey())
                        .sorted(Entry.comparingByValue(Comparator.reverseOrder()))
                        .map(Entry::getKey)
