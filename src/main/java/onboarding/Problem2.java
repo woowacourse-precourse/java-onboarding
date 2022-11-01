@@ -4,19 +4,19 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = cryptogram;
         while (true) {
-            if (!hasReduplication(answer)) return answer;
-            answer = removeReduplication(answer);
+            if (!hasDuplication(answer)) return answer;
+            answer = removeDuplication(answer);
         }
     }
 
-    private static String removeReduplication(String cryptogram) {
+    private static String removeDuplication(String cryptogram) {
         int startIndex = -1;
         int lastIndex = -1;
         String startString;
         String lastString;
 
         for (int i = 0; i < cryptogram.length() - 1; i++) {
-            if (hasReduplication(cryptogram, i)) {
+            if (hasDuplication(cryptogram, i)) {
                 if (startIndex == -1) startIndex = i;
                 lastIndex = i + 1;
             }
@@ -28,12 +28,12 @@ public class Problem2 {
         return startString + lastString;
     }
 
-    public static boolean hasReduplication(String str, int index) {
+    public static boolean hasDuplication(String str, int index) {
         if (str.charAt(index) == str.charAt(index + 1)) return true;
         return false;
     }
 
-    public static boolean hasReduplication(String str) {
+    public static boolean hasDuplication(String str) {
         for (int index = 0; index < str.length() - 1; index++) {
             if (str.charAt(index) == str.charAt(index + 1)) return true;
         }
