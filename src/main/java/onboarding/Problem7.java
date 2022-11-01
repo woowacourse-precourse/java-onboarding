@@ -4,117 +4,234 @@ import java.util.*;
 
 public class Problem7 {
 
-    //<유저 : 친구목록>인 맵
-    private static Map<String, HashSet<String>> friendMap;
-    //<유저 : 점수>인 맵
-    private static Map<String, Integer> scoreMap;
-    // 내 이름
-    private static String myName;
-    // 이미 친구
-    private static Set<String> userFriend;
-    // 추천 명단
-    private static List<String> answer;
 
-    //solution()
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        // 정적 변수들 초기화
-        friendMap = new HashMap<>();
-        scoreMap = new HashMap<>();
-        answer = new LinkedList<>();
-        myName = user;
+        
+        User myUser = new User(user);
+        FriendMap friendMap = new FriendMap(friends);
+        Visitors visitorList = new Visitors(visitors);
+        RecommendScore recommendScore = new RecommendScore(myUser);
+        recommendScore.addFriendScore(friendMap);
+        recommendScore.addVisitScore(visitorList);
+        recommendScore.removeFriends(friendMap);
+        return recommendScore.top5();
 
-        //친구 관계 짓기
-        setFriendMap(friends);
-        //내친구 목록
-        userFriend = friendMap.get(myName);
-        //친구 관계로 인한 점수
-        friendScore();
-        //방문으로 인한 점수
-        visitScore(visitors);
-        //점수로 추천
-        recommendFriend();
-        return answer;
+    }
+}
+
+class RecommendScore {
+    private final Map<User, Score7> recommendScore;
+    private final User myUser;
+
+    public RecommendScore(User myUser) {
+        this.recommendScore = new HashMap<>();
+        this.myUser = myUser;
     }
 
-    // 추천 친구
-    private static void recommendFriend() {
-        //점수를 키값으로 갖고 그 점수에 해당되는 유저를 리스트로 갖는 맵으로 변환
-        HashMap<Integer, List<String>> scoreToUser = new HashMap<>();
-        for (String user : scoreMap.keySet()) {
-            int score = scoreMap.get(user);
-            if (scoreToUser.containsKey(score)) {
-                scoreToUser.get(score).add(user);
-            } else {
-                List<String> list = new ArrayList<>();
-                list.add(user);
-                scoreToUser.put(score, list);
-            }
-        }
-        // 점수를 통한 정렬
-        List<Integer> scoreList = new ArrayList<>(scoreToUser.keySet());
-        scoreList.sort((o1, o2) -> o2.compareTo(o1));
-        // 점수 순서대로 최대 5명까지만 추천
-        int idx = 0;
-        loop : for (Integer score : scoreList) {
-            List<String> users = scoreToUser.get(score);
-            //동일 점수일 경우 이름으로 오름차순 정렬
-            users.sort((o1, o2)-> o1.compareTo(o2));
-            for (String user : users) {
-                answer.add(user);
-                idx++;
-                if (idx == 5) break loop;
-            }
-        }
-    }
-
-
-    //친구 List를 읽는 메소드
-    private static void setFriendMap(List<List<String>> friends) {
-        String userA, userB;
-        for (int i = 0; i < friends.size(); i++) {
-            userA = friends.get(i).get(0);
-            userB = friends.get(i).get(1);
-            mappingFriend(userA, userB);
-            mappingFriend(userB, userA);
-        }
-    }
-    //두 사람을 친구로 맺어주는 메소드
-    private static void mappingFriend(String userA, String userB) {
-        if (friendMap.containsKey(userA)) {
-            friendMap.get(userA).add(userB);
-        } else {
-            HashSet<String> set = new HashSet<>();
-            set.add(userB);
-            friendMap.put(userA, set);
-        }
-    }
-
-    //친구 관계로 인한 점수
-    private static void friendScore() {
-        //친구의 친구 점수 추가
-        for (String friend : userFriend) {
+    public void addFriendScore (FriendMap friendMap) {
+        Friends myFriends = friendMap.findFriends(myUser);
+        for (User friend : myFriends.getFriends()) {
             // 친구의 친구들
-            HashSet<String> friendFriends = friendMap.get(friend);
-            for (String friendFriend : friendFriends) {
+            Friends friendFriends = friendMap.findFriends(friend);
+            for (User friendFriend : friendFriends.getFriends()) {
                 addScore(friendFriend, 10);
             }
         }
     }
 
-    //방문으로 인한 점수
-    private static void visitScore(List<String> visitors) {
-        //방문자 점수 추가
-        for (String visitor : visitors) {
+    public void addVisitScore(Visitors visitors) {
+        List<User> visitorList = visitors.getVisitors();
+        for (User visitor : visitorList) {
             addScore(visitor, 1);
         }
     }
 
-    //점수를 주는 메소드
-    private static void addScore(String user, int score){
-        //이미 친구가 아니고, 자기자신이 아니라면 score 추가
-        if (!userFriend.contains(user) && !user.equals(myName)) {
-            scoreMap.put(user, scoreMap.getOrDefault(user, 0) + score);
+    private void addScore(User user, int point) {
+        if (user.equals(myUser)){
+            return;
+        }
+        if (!this.recommendScore.containsKey(user)) {
+            Score7 score = new Score7();
+            recommendScore.put(user, score);
+        }
+        recommendScore.get(user)
+                .addScore(point);
+    }
+
+    public void removeFriends(FriendMap friendMap) {
+        Friends friends = friendMap.findFriends(myUser);
+        for (User friend : friends.getFriends()) {
+            recommendScore.remove(friend);
         }
     }
 
+    public List<String> top5() {
+        List<String> result = new ArrayList<>();
+        List<User> sortKey = getSortKey();
+        int idx = 0;
+        while ((idx < sortKey.size()) && (idx < 5)) {
+            String userName = sortKey.get(idx).getUser();
+            result.add(userName);
+            idx++;
+        }
+        return result;
+    }
+
+    private List<User> getSortKey() {
+        List<User> userList = new ArrayList<>(recommendScore.keySet());
+        userList.sort(
+                (user1, user2)
+                        -> user1.getUser()
+                        .compareTo(user2.getUser()));
+        userList.sort(
+                (user1, user2)
+                        -> recommendScore.get(user2).getScore()
+                        - recommendScore.get(user1).getScore());
+        return userList;
+    }
 }
+
+class Score7 {
+    private int score;
+
+    public Score7() {
+        this.score = 0;
+    }
+
+    public void addScore(int score){
+        this.score += score;
+    }
+
+    public int getScore() {
+        return this.score;
+    }
+}
+
+
+class Visitors {
+
+    private final List<User> visitors = new ArrayList<>();
+
+    public Visitors(List<String> visitors) {
+        validateSize(visitors);
+        for (String visitor : visitors) {
+            User user = new User(visitor);
+            this.visitors
+                    .add(user);
+        }
+    }
+
+    private void validateSize(List<String> visitors) {
+        if (visitors.size() > 10000) {
+            throw  new IllegalArgumentException("방문자는 만명 이상일 수 없습니다.");
+        }
+    }
+
+    public List<User> getVisitors() {
+        return this.visitors;
+    }
+}
+
+class FriendMap {
+    private final Map<User, Friends> friendMap;
+
+    public FriendMap(List<List<String>> list) {
+        validationSize(list);
+        this.friendMap = new HashMap<>();
+        setFriendMap(list);
+    }
+
+    private void validationSize(List<List<String>> list) {
+        if(list.isEmpty()) {
+            throw new IllegalArgumentException("친구 관계는 비어있을 수 없습니다.");
+        }
+        if(list.size() > 10000) {
+            throw new IllegalArgumentException("친구 관계는 10000개 이하로 입력해주세요.");
+        }
+    }
+
+    public Friends findFriends(User user) {
+        return this.friendMap
+                .get(user);
+    }
+
+    private void setFriendMap(List<List<String>> friends) {
+        for (List<String> friend : friends) {
+            User userA = new User(friend.get(0));
+            User userB = new User(friend.get(1));
+            mappingFriend(userA, userB);
+            mappingFriend(userB, userA);
+        }
+    }
+
+    private void mappingFriend(User userA, User userB) {
+        if (!this.friendMap.containsKey(userA)) {
+            Friends friends = new Friends();
+            friendMap.put(userA, friends);
+        }
+        friendMap.get(userA)
+                .addFriend(userB);
+    }
+}
+
+class Friends {
+    private final List<User> friends;
+
+    public Friends() {
+        friends = new ArrayList<>();
+    }
+
+    public void addFriend(User user) {
+        this.friends
+                .add(user);
+    }
+
+    public List<User> getFriends(){
+        return this.friends;
+    }
+}
+
+
+class User {
+
+    private final String user;
+
+    public User(String user) {
+        validateLength(user);
+        validateLowerCase(user);
+        this.user = user;
+    }
+
+    private void validateLowerCase(String user) {
+        for (int i = 0; i < user.length(); i++) {
+            if (!Character.isLowerCase(user.charAt(i))){
+                throw new IllegalArgumentException("유저 이름은 소문자만 입력할 수 있습니다.");
+            }
+        }
+    }
+
+    private void validateLength(String user) {
+        if(user.length() < 1) {
+            throw new IllegalArgumentException("유저 이름은 빈문자열일 수 없습니다.");
+        }
+        if (user.length() > 30) {
+            throw new IllegalArgumentException("유저 이름은 30글자 이하여야 합니다.");
+        }
+    }
+
+    public String getUser() {
+        return this.user;
+    }
+
+    @Override
+    public int hashCode() {
+        return user.hashCode();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        return user.hashCode() == ((User)obj).getUser().hashCode();
+    }
+}
+
+

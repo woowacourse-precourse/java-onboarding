@@ -25,8 +25,8 @@ class Problem1 {
 
     // 각 플레이어의 점수를 가져오는 메소드
     private static int getScore(Pages pages) {
-        Score score = new Score(pages);
-        return score.getMaxScore();
+        Score1 score1 = new Score1(pages);
+        return score1.getMaxScore();
     }
 
     private static int getResult(int pobiScore, int crongScore) {
@@ -88,11 +88,11 @@ class Pages {
 }
 
 
-class Score {
+class Score1 {
 
     private final int score;
 
-    public Score(Pages pages) {
+    public Score1(Pages pages) {
         int maxScore = 0;
         for (int i = 0; i < 2; i++) {
             List<Integer> nums = getNum(pages.findPage(i));
