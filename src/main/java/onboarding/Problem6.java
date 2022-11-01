@@ -5,8 +5,11 @@ import java.util.regex.Pattern;
 
 public class Problem6 {
 
+    private static Set<String> duplicatedMembers = new HashSet<>();
+    private static List<String> joinedMembers = new ArrayList<>();
+
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer = getDuplicateMemberList(forms);
 
         try {
             validateData(forms);
@@ -56,6 +59,32 @@ public class Problem6 {
         }
     }
 
+    private static List<String> getDuplicateMemberList(List<List<String>> forms) {
+        for (List<String> form : forms) {
+            String name = form.get(1);
+            join(name);
+        }
+        return getDuplicateMemberEmailList(forms);
+    }
+
+    private static void join(String searchName) {
+        findDuplicateMember(searchName);
+        joinedMembers.add(searchName);
+    }
+
+    private static void findDuplicateMember(String searchName) {
+        List<String> searchingNicknamePieces = getDividableNicknameList(searchName);
+
+        for (String joinedMember : joinedMembers) {
+            for (String searchingNicknamePiece : searchingNicknamePieces) {
+                if (joinedMember.contains(searchingNicknamePiece)) {
+                    duplicatedMembers.add(searchName);
+                    duplicatedMembers.add(joinedMember);
+                }
+            }
+        }
+    }
+
     private static List<String> getDividableNicknameList(String nickname) {
         List<String> nicknameSlices = new ArrayList<>();
 
@@ -64,4 +93,12 @@ public class Problem6 {
         }
         return nicknameSlices;
     }
+
+    private static List<String> getDuplicateMemberEmailList(List<List<String>> forms) {
+        List<String> duplicateMemberEmailList = new ArrayList<>();
+
+
+        return duplicateMemberEmailList;
+    }
+
 }
