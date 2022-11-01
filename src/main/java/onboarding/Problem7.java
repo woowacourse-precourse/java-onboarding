@@ -3,7 +3,7 @@ package onboarding;
 import java.util.*;
 
 /**
- * [ ] 친구 추천 규칙에 따라 점수가 가장 높은 순으로 5명을 return한다.
+ * [o] 친구 추천 규칙에 따라 점수가 가장 높은 순으로 5명을 return한다.
  * [o] 추천 점수가 0인 경우에는 추천하지 않는다.
  * [o] 추천 점수가 같은 경우에는 이름 순으로 정렬한다.
  */
@@ -20,8 +20,12 @@ public class Problem7 {
 
         List<String> answer = new ArrayList<>();
 
+        int cnt=0;
         for(Map.Entry<String,Integer> entry:entries) {
             answer.add(entry.getKey());
+
+            if (cnt == 4) break;
+            cnt++;
         }
         answer.removeAll(friendsOfUser);
 
