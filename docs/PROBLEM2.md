@@ -21,3 +21,18 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+## 📗 기능목록
+
+### 📌 **`Integer getOverlapLength(int index)`**
+
+*  cypherText에서 `index` 번째 문자가 연속되는 중복 범위를 반환
+
+### 📌 **`Boolean deleteOverlap`**
+
+* 문자열에 연속되는 중복 문자들이 있다면 이를 삭제하고 true를 반환
+* 문자열에 연속되는 중복 문자들이 없다면 false를 반환
+
+### 📌 **`String decrypt`**
+
+* 해독한 암호문을 반환

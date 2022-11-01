@@ -21,3 +21,13 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+## 📗 기능 목록
+### 📌 checkOverlapOfWord
+한 nickname안의 두 글자 이상이 중복되는지를 체크
+
+### 📌 checkOverlap
+nickname들이 중복인지를 체크
+
+### 📌 getOverlapNicknames
+중복되는 nickname들의 리스트를 반환
