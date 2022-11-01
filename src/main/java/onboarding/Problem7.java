@@ -15,6 +15,25 @@ public class Problem7 {
     private static final Map<String, Integer> scoreForUser = new HashMap<>();
     private static final Set<String> userFriends = new HashSet<>();
 
+    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        if(!canUser(user) && !canVisitors(visitors) && !canFriends(friends)) {
+            throw new IllegalArgumentException("제한 사항을 위반하였습니다.");
+        }
+
+        setFriendsOfUserFriends(friends, user);
+        updateFinalScore(friends, visitors);
+        excludeUserFriends();
+        excludeNotValue();
+
+        List<String> answer = scoreForUser.entrySet().stream()
+                .sorted(Map.Entry.comparingByKey())
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .map(Map.Entry::getKey)
+                .limit(5)
+                .collect(Collectors.toList());
+
+        return answer;
+    }
 
     public static void updateFinalScore(List<List<String>> friends, List<String> visitors) {
         for (List<String> friend : friends) {
