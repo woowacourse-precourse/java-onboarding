@@ -14,7 +14,42 @@ public class Problem7 {
         return answer;
     }
 
-    public Map<String,Integer> getVisitScore(List<String> visitors) {
+    public Map<String, Integer> getTotalScore(Map<String, Integer> visitScore, Map<String, Integer> friendScore){
+        Set<String> vset = visitScore.keySet();
+        Set<String> fset = friendScore.keySet();
+        Iterator<String> viterator = vset.iterator();
+        Iterator<String> fiterator = fset.iterator();
+
+        Map<String, Integer> totalScore = new TreeMap<>();
+
+
+        while(viterator.hasNext()){ // 양쪽 리스트에 같은 키가 있으면 그것만 계산
+            String vkey = viterator.next();
+            while(fiterator.hasNext()) {
+                String fkey = fiterator.next();
+                totalScore.put(fkey, friendScore.get(fkey));
+            }
+            totalScore.put(vkey, visitScore.get(vkey));
+        }
+
+
+        while(viterator.hasNext()){ // 양쪽 리스트에 같은 키가 있으면 그것만 계산
+            while(fiterator.hasNext()) {
+                String vkey = viterator.next();
+                String fkey = fiterator.next();
+                //---
+                if(fkey.equals(vkey)){
+                    totalScore.put(fkey, friendScore.get(fkey)+visitScore.get(fkey));
+
+                }
+            }
+        }
+
+
+        return totalScore;
+    }
+
+    public  Map<String,Integer> getVisitScore(List<String> visitors) {
         Map<String, Integer> visitScore = new TreeMap<>();
         for (String visitor : visitors) {
             if(visitScore.containsKey(visitor)){
@@ -23,11 +58,13 @@ public class Problem7 {
                 visitScore.put(visitor, 1);
             }
         }
+
         return  visitScore;
     }
 
     public List<List<String>> getFriendList (List<List<String>> friends) {
         List<List<String>> friendsList = new ArrayList<>();
+
         for(List<String> friend : friends){
             List<String> n = new ArrayList<>();
             n.add(0, friend.get(1));
@@ -35,6 +72,7 @@ public class Problem7 {
             friendsList.add(n);
             friendsList.add(friend);
         }
+
         return friendsList;
     }
 
@@ -67,7 +105,6 @@ public class Problem7 {
         for(String f : userFriends){
             for(List<String> s : exceptUserList) {
                 if( (f.equals(s.get(1))) ) {
-                    System.out.println(friendScore.containsKey(s.get(0))+ " "+ s.get(0));
                     //만약 이미 map에 존재하는 사람이면 map의 값+10
                     if(friendScore.containsKey(s.get(0))){
                         friendScore.put(s.get(0), score);
@@ -83,53 +120,16 @@ public class Problem7 {
     }
 
 
-    public Map<String, Integer> getTotalScore(Map<String, Integer> visitScore, Map<String, Integer> friendScore){
-        Set<String> vset = visitScore.keySet();
-        Set<String> fset = friendScore.keySet();
-        Iterator<String> viterator = vset.iterator();
-        Iterator<String> fiterator = fset.iterator();
-
-        Map<String, Integer> totalScore = new TreeMap<>();
-
-
-        while(viterator.hasNext()){ // 양쪽 리스트에 같은 키가 있으면 그것만 계산
-            String vkey = viterator.next();
-            while(fiterator.hasNext()) {
-                String fkey = fiterator.next();
-                totalScore.put(fkey, friendScore.get(fkey));
-            }
-            totalScore.put(vkey, visitScore.get(vkey));
-        }
-
-        viterator = vset.iterator();
-        fiterator = fset.iterator();
-
-        while(viterator.hasNext()){ // 양쪽 리스트에 같은 키가 있으면 그것만 계산
-            while(fiterator.hasNext()) {
-                String vkey = viterator.next();
-                String fkey = fiterator.next();
-                //---
-                if(fkey.equals(vkey)){
-                    totalScore.put(fkey, friendScore.get(fkey)+visitScore.get(fkey));
-
-                }
-            }
-        }
-
-
-        return totalScore;
-    }
-
 
     public List<String> getReverseMap(Map<String,Integer> totalScore, List<List<String>> friendList, String user)  {
 
-        Collection<Integer> val = totalScore.values();
+        Collection val = totalScore.values();
         Set<String> name1 = totalScore.keySet();
 
-        Iterator<Integer> iterator = val.iterator();
+        Iterator iterator = val.iterator();
         List<Integer> maxvallist = new ArrayList<>();
         while(iterator.hasNext()){
-            int a = iterator.next();
+            int a = (int) iterator.next();
             maxvallist.add(a);
         }
         int [] maxval = new int [maxvallist.size()];
@@ -138,10 +138,10 @@ public class Problem7 {
             maxval[i]=maxvallist.get(i);
         }
 
-        Iterator<String> iterator2 = name1.iterator();
+        Iterator iterator2 = name1.iterator();
         List<String> namelist = new ArrayList<>();
         while(iterator2.hasNext()){
-            String str = iterator2.next();
+            String str = (String)iterator2.next();
             namelist.add(str);
         }
 
@@ -209,9 +209,8 @@ public class Problem7 {
 
         for(int i=0;i<name.length;i++){
             for(String f : userFriends){
-                if (f.equals(name[i])) {
-                    name[i] = null;
-                    break;
+                if(f.equals(name[i])){
+                    name[i]=null;
                 }
             }
         }
