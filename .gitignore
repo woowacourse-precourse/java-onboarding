@@ -30,3 +30,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+### Test Class ###
+src/main/java/onboarding/Test.java
