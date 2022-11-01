@@ -8,11 +8,17 @@ import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        return filterByDuplicateNicknames(forms)
+        return filterByDuplicateNicknames(filterInvalidEmailsAndNicknames(forms))
                 .stream()
                 .map(Problem6::getEmail)
                 .sorted()
                 .distinct()
+                .collect(Collectors.toList());
+    }
+    private static List<List<String>> filterInvalidEmailsAndNicknames(List<List<String>> forms) {
+        return forms
+                .stream()
+                .filter(form -> validateEmail(getEmail(form)) & validateNickname(getNickname(form)))
                 .collect(Collectors.toList());
     }
     private static List<List<String>> filterByDuplicateNicknames(List<List<String>> forms) {
@@ -52,6 +58,12 @@ public class Problem6 {
             fragments.add(word.substring(i - 1, i + 1));
         }
         return fragments;
+    }
+    private static boolean validateEmail(String email) {
+        return (email.length() >= 11 & email.length() < 20 & email.endsWith("@email.com"));
+    }
+    private static boolean validateNickname(String nickname) {
+        return (nickname.length() >= 1 & nickname.length() < 20 & nickname.matches("^[ㄱ-ㅎ|ㅏ-ㅣ|가-힣\\s]*$"));
     }
     private static String getEmail(List<String> form) {
         return form.get(0);
