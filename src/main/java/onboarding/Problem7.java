@@ -56,7 +56,7 @@ public class Problem7 {
         for (String notFriendId : notUserFriendsScore.keySet()) {
             for (String friendId : userFriends) {
                 for (List<String> pair : friends) {
-                    if (isFriend(notFriendId, friendId, pair)) {
+                    if (isPairing(notFriendId, friendId, pair)) {
                         notUserFriendsScore.put(notFriendId, notUserFriendsScore.get(notFriendId) + 10);
                         break;
                     }
@@ -69,7 +69,7 @@ public class Problem7 {
         HashSet<String> userFriends = new HashSet<>();
 
         for (List<String> pair : friends) {
-            if (isUserFriend(user, pair)) {
+            if (isPairContainsUser(user, pair)) {
                 userFriends.add(getUserFriend(user, pair));
             }
         }
@@ -80,7 +80,7 @@ public class Problem7 {
         HashMap<String, Integer> notUserFriends = new HashMap<>();
 
         for (List<String> pair : friends) {
-            if (!isUserFriend(user, pair)) {
+            if (!isPairContainsUser(user, pair)) {
                 ArrayList<String> notUserFriend = getNotUserFriend(userFriends, pair);
                 for (String notFriend : notUserFriend) {
                     notUserFriends.put(notFriend, 0);
@@ -99,7 +99,7 @@ public class Problem7 {
         return notUserFriends;
     }
 
-    private static boolean isFriend(String user1, String user2, List<String> pair) {
+    private static boolean isPairing(String user1, String user2, List<String> pair) {
         String tmp1 = pair.get(0);
         String tmp2 = pair.get(1);
 
@@ -113,7 +113,7 @@ public class Problem7 {
         return false;
     }
 
-    private static boolean isUserFriend(String user, List<String> pair) {
+    private static boolean isPairContainsUser(String user, List<String> pair) {
         for (String id : pair) {
             if (id.equals(user)) {
                 return true;
