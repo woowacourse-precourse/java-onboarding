@@ -49,7 +49,18 @@ public class Problem7 {
                 score.put(target, score.get(target) + 10);
             }
         }
+//        System.out.println(score);
+
+        for (String visit_friend : visitors) {
+            if (user_around.contains(visit_friend)) {   // 유저와 관계있는 사람일 경우 제외
+                continue;
+            }
+            score.put(visit_friend, score.get(visit_friend) + 1);   // 사용자의 타임라인에 방문한 횟수 = 1점 규칙에 의해 1점씩 추가
+        }
+        score.remove(user); // Score 객체에서 user정보를 제거
         System.out.println(score);
+
+
 
         return answer;
     }
