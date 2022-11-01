@@ -12,76 +12,8 @@ import java.util.*;
  */
 public class Problem7 {
 
-    static Map<String, Integer> friendsMap = new HashMap<>();
-    static List<String> friendsOfUser = new ArrayList<>();
-
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = new ArrayList<>();
-
-        findFriendsOfUser(user, friends);
-
-        findFriendVisitedFeed(visitors);
-
-        for (List<String> friend : friends) {
-            String firstFriend = friend.get(0);
-            String secondFriend = friend.get(1);
-
-            if (firstFriend.equals(user) || secondFriend.equals(user)) {
-                continue;
-            }
-
-            findFriendOfUserFriends(firstFriend, secondFriend);
-        }
-
+        List<String> answer = Collections.emptyList();
         return answer;
-    }
-
-    public static void findFriendOfUserFriends(String firstFriend, String secondFriend){
-        for (String friendOfUser : friendsOfUser) {
-            int score = 0;
-
-            if (firstFriend.equals(friendOfUser)) {
-                if (friendsMap.containsKey(secondFriend)) {
-                    score = friendsMap.get(secondFriend);
-                }
-                friendsMap.put(secondFriend, score + 10);
-            }
-
-            if (secondFriend.equals(friendOfUser)) {
-                if (friendsMap.containsKey(firstFriend)) {
-                    score = friendsMap.get(firstFriend);
-                }
-
-                friendsMap.put(firstFriend, score + 10);
-            }
-        }
-    }
-
-    public static void findFriendVisitedFeed(List<String> visitors){
-        // 내 타임라인에 방문한 사람 찾고 map에 넣어주기
-        for (String friend : visitors) {
-
-            if (friendsMap.containsKey(friend)) {
-                int score = friendsMap.get(friend);
-                friendsMap.put(friend, score + 1);
-                continue;
-            }
-
-            friendsMap.put(friend, 1);
-        }
-    }
-
-    public static void findFriendsOfUser(String user, List<List<String>> friends) {
-        for (List<String> friend : friends) {
-            String firstFriend = friend.get(0);
-            String secondFriend = friend.get(1);
-
-            if (firstFriend.equals(user)) {
-                friendsOfUser.add(secondFriend);
-            }
-            if (secondFriend.equals(user)) {
-                friendsOfUser.add(firstFriend);
-            }
-        }
     }
 }
