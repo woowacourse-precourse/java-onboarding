@@ -26,7 +26,6 @@ public class Problem6 {
                 String compare = "" + namep.charAt(j-1) + namep.charAt(j);
                 for (int k = i; k < names.size(); k++){
                     if (names.get(k).contains(compare)){
-                        System.out.println(compare + k);
                         if(answer.contains(emails.get(i-1)) == false){
                             answer.add(emails.get(k));
                             answer.add(emails.get(k-1));
