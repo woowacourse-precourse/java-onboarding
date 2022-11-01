@@ -20,12 +20,12 @@ public class Problem7 {
                 score.put(s, 1);
             }
         }
-        score.remove(user); // 사용자 본인은 제외하고
+        score.remove(user);                                          // 사용자 본인은 제외하고
 
         List<String> tmp = new ArrayList<>();
         /*사용자와 직접 친구인 사람들 제거*/
         for (Map.Entry<String, Integer> entry : score.entrySet()) {
-            if (entry.getValue() <= 0) {          // 점수가 0점이거나 그 이하(직접적인 친구) 일 경우 제거하기 위해서
+            if (entry.getValue() <= 0) {                            // 점수가 0점이거나 그 이하(직접적인 친구) 일 경우 제거하기 위해서
                 tmp.add(entry.getKey());
             }
         }
@@ -44,7 +44,7 @@ public class Problem7 {
             }
         }).collect(Collectors.toList()));
 
-        entryList.sort(Map.Entry.comparingByValue(Comparator.reverseOrder())); // 이름순 정렬 구현은?
+        entryList.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));          // 이름순 정렬 구현은?
         for (Map.Entry<String, Integer> stringIntegerEntry : entryList) {
             answer.add(stringIntegerEntry.getKey());
         }
@@ -64,12 +64,12 @@ public class Problem7 {
         }
         for (String s : alr_frd) {
             for (int i = 0; i < friends.size(); i++) {
-                List<String> relationship = friends.get(i); // 리스트의 관계도
+                List<String> relationship = friends.get(i);                     // 리스트의 관계도
                 String a = relationship.get(0);
                 String b = relationship.get(1);
 
-                if (a.equals(s)) {                          // 이미 친구인 크루의 관계도가 발견되면
-                    if (score.containsKey(b)) {             // 이미 점수가 있으면
+                if (a.equals(s)) {                                              // 이미 친구인 크루의 관계도가 발견되면
+                    if (score.containsKey(b)) {                                 // 이미 점수가 있으면
                         score.replace(b, score.get(b) + 10);
                     } else {
                         score.put(b, 10);
@@ -95,7 +95,7 @@ public class Problem7 {
             List<String> relation = friends.get(i);
             for (int j = 0; j < 2; j++) {
                 String currName = relation.get(j);
-                if (currName.equals(user)) {            // 이미 친구인 경우를 처리
+                if (currName.equals(user)) {                                // 이미 친구인 경우를 처리
                     if (j == 0) {
                         score.putIfAbsent(relation.get(1), Integer.MIN_VALUE);
                     } else {

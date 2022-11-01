@@ -19,7 +19,7 @@ public class Problem4 {
      **/
     private static String addReversedStr(String word, HashMap<String, String> map, String answer, int i) {
         String s = String.valueOf(word.charAt(i));
-        answer += map.getOrDefault(s, s);               /*해시맵을 가지고 문자를 치환하여 정답 문자열에 추가*/
+        answer += map.getOrDefault(s, s);                           /*해시맵을 가지고 문자를 치환하여 정답 문자열에 추가*/
         return answer;
     }
 
