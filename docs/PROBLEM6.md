@@ -21,3 +21,11 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+# 기능 구현 사항
+
+1. 주어진 입력값을 Map구조로 바꾸는 기능
+2. 두글자이상 연속된 문자열이 존재하는지 검증하는 기능
+   1. 이름을 이용해 이웃한 두글자 리스트를 만들었다.
+   2. 두글자 리스트를 이용하여 겹치는 요소가 있으면 해당 이름을 Map에서 선택하였다.
+3. 정답 이메일 리스트를 정렬하는 기능

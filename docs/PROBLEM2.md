@@ -21,3 +21,9 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+# 기능 구현 사항
+
+1. 주어진 Input을 각 글자별로 비교할 수 있게  parsing하는 기능
+2. Parsing data를 이용해 중복 문자를 제거하는 기능
+3. 처리된 data를 알맞은 Output으로 출력하는 기능
