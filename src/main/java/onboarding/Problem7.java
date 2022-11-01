@@ -4,8 +4,17 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        HashMap<String, HashSet<String>> graph = constructGraph(friends);
+        HashSet<String> friendOfUser = graph.get(user);
+        HashMap<String, Integer> scoreMap = new HashMap<>();
+
+        for (String friend: friendOfUser)
+            scoreFriendOfFriend(graph, scoreMap, user, friend);
+
+        for (String visitor: visitors)
+            scoreVisitedUser(graph, scoreMap, user, visitor);
+
+        return selectTop5(scoreMap);
     }
     private static HashMap<String, HashSet<String>> constructGraph(List<List<String>> friends) {
         HashMap<String, HashSet<String>> graph = new HashMap<>();
