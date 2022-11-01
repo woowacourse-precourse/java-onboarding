@@ -1,6 +1,5 @@
 package onboarding;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -14,7 +13,7 @@ public class Problem6 {
     public static final int NAME_INDEX = 1;
 
     public static List<String> solution(List<List<String>> forms) {
-        Map<String, List<String>> seqNameEmailMap = getSeqNameEmailMap(forms);
+        Map<String, Set<String>> seqNameEmailMap = getSeqNameEmailMap(forms);
         Set<String> duplicateEmailSet = getDuplicateEmailSet(seqNameEmailMap);
 
         return duplicateEmailSet.stream()
@@ -35,16 +34,17 @@ public class Problem6 {
         return seqNameEmailMap;
     }
 
-    private static void makeSequentialNameEmailMap(Map<String, List<String>> seqNameEmailMap, String email, String name) {
+    private static void makeSequentialNameEmailMap(Map<String, Set<String>> seqNameEmailMap, String email, String name) {
         for (int i = 0; i < name.length() - 1; i++) {
             String sequence = name.substring(i, i + 2);
-            List<String> emailList = seqNameEmailMap.getOrDefault(sequence, new ArrayList<>());
+            Set<String> emailList = seqNameEmailMap.getOrDefault(sequence, new HashSet<>());
             emailList.add(email);
             seqNameEmailMap.put(sequence, emailList);
         }
     }
 
     private static Set<String> getDuplicateEmailSet(Map<String, List<String>> seqNameEmailMap) {
+    private static Set<String> getDuplicateEmailSet(Map<String, Set<String>> seqNameEmailMap) {
         Set<String> duplicateSet = new HashSet<>();
 
         seqNameEmailMap.values()
