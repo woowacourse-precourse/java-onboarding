@@ -11,8 +11,31 @@ public class Problem6 {
     private static Set<String> foundMemberSet = new HashSet<>();
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+
+        for (int i = 0; i < forms.size(); i++) {
+            List<String> member = forms.get(i);
+            String nickname = member.get(1);
+            List<String> tokens = splitNickname(nickname);
+
+            // 닉네임의 모든 토큰에 대해서 중복 검사
+            for (String token : tokens) {
+                findDuplication(forms, token, i);
+            }
+        }
+
+        List<String> foundMembers = new ArrayList<>(foundMemberSet);
+        foundMembers.sort((s1, s2) -> s1.compareTo(s2));
+
+        return foundMembers;
+    }
+
+    // 닉네임을 두 글자의 토큰들의 리스트로 나누는 메소드
+    private static List<String> splitNickname(String nickname) {
+        List<String> ret = new ArrayList<>();
+        for (int i = 0; i < nickname.length() - 1; i++) {
+            ret.add(nickname.substring(i, i + 2));
+        }
+        return ret;
     }
 
     // 토큰에 대해 중복 검사 후 결과를 저장하는 메소드
@@ -28,14 +51,5 @@ public class Problem6 {
         else {
             tokenMap.put(token, idx);
         }
-    }
-
-    // 닉네임을 두 글자의 토큰들의 리스트로 나누는 메소드
-    private static List<String> splitNickname(String nickname) {
-        List<String> ret = new ArrayList<>();
-        for (int i = 0; i < nickname.length() - 1; i++) {
-            ret.add(nickname.substring(i, i + 2));
-        }
-        return ret;
     }
 }
