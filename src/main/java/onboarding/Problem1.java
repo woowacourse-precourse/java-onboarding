@@ -14,6 +14,37 @@ class Problem1 {
         return compareLogic(pobi, crong);
     }
 
+    private static int compareLogic(List<Integer> pobi, List<Integer> crong){
+        int pobi_num = 0;
+        int crong_num = 0;
+        int answer = 0;
+
+        List<Integer> a = new ArrayList<>();
+        List<Integer> b = new ArrayList<>();
+
+        a.add(plusLogic(pobi));
+        a.add(multiplyLogic(pobi));
+        b.add(plusLogic(crong));
+        b.add(multiplyLogic(crong));
+
+        pobi_num = Collections.max(a);
+        crong_num = Collections.max(b);
+
+        if (pobi_num > crong_num){
+            return answer = 1;
+        }
+
+        if (pobi_num < crong_num){
+            return answer = 2;
+        }
+
+        if (pobi_num == crong_num){
+            return answer = 0;
+        }
+        return answer;
+
+    }
+
 
     private static int plusLogic(List<Integer> lst){
         List<Integer> plus = new ArrayList<>();
