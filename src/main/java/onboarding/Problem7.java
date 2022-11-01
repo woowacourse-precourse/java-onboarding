@@ -55,6 +55,15 @@ public class Problem7 {
         List<Crew> crews = new ArrayList<>(team.values());
         Collections.sort(crews, (a, b) -> b.getScore() - a.getScore()); //score 별로 정렬
 
+        // user이거나, 이미 친구이거나, 점수가 0점인 경우를 제외한 친구를 5명까지 answer에 추가하는 기능
+        for (Crew crew : crews) {
+            if (!crew.getName().equals(user) && !team.get(user).getFriends().contains(crew.getName()) && crew.getScore() != 0 ) {
+                if (answer.size() >= 5) {
+                    return answer;
+                }
+                answer.add(crew.name);
+            }
+        }
 
         return answer;
     }
