@@ -27,16 +27,16 @@ class Problem1 {
         int pobiNum = 0;
         int crongNum = 0;
 
-        if (pobiLeftNum == pobiRightNum-1
-            && crongLeftNum == crongRightNum-1
+        if (pobiLeftNum == pobiRightNum - 1
+            && crongLeftNum == crongRightNum - 1
             && pobiLeftNum > 1
             && crongLeftNum > 1
             && 400 > pobiRightNum
             && 400 > crongRightNum
-            && pobiLeftNum%2 == 1
-            && crongLeftNum%2 == 1
-            && pobiRightNum%2 == 0
-            && crongRightNum%2 == 0) {
+            && pobiLeftNum % 2 == 1
+            && crongLeftNum % 2 == 1
+            && pobiRightNum % 2 == 0
+            && crongRightNum % 2 == 0) {
 
             pLeftWinNum = pageCompare(pageSum(pobiLeftNum),pageSum(pobiLeftNum));
             pRightWinNum = pageCompare(pageSum(pobiRightNum),pageMul(pobiRightNum));
@@ -61,9 +61,9 @@ class Problem1 {
         int sum = 0;
 
         if(page>=10){
-            page1 = page/100;
-            page2 = (page%100)/10;
-            page3 = page%10;
+            page1 = page / 100;
+            page2 = (page % 100) / 10;
+            page3 = page % 10;
             sum = page1 + page2 + page3;
             return sum;
         }
@@ -77,9 +77,9 @@ class Problem1 {
         int page3 = 0;
         int mul = 0;
 
-        page1 = page/100;
-        page2 = (page%100)/10;
-        page3 = page%10;
+        page1 = page / 100;
+        page2 = (page % 100) / 10;
+        page3 = page % 10;
 
         if(page1 != 0) {
             mul = page1 * page2 * page3;
@@ -96,7 +96,7 @@ class Problem1 {
     public static int pageCompare(int num1,int num2){
         int winNum = 0;
 
-        if(num1>num2){
+        if(num1 > num2){
             winNum = num1;
             return winNum;
         }
