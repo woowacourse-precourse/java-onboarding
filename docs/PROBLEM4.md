@@ -19,3 +19,7 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+### 기능목록
+1. 청개구리 사전에 따라 문자를 return 해준다.
+2. word를 청개구리 언어로 바꾼다.
