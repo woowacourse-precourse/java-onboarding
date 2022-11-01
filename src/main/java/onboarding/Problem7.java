@@ -3,38 +3,20 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
-    public static void main(String[] args) {
-        String user = "mrko";
-        List<List<String>> friends = List.of(List.of("donut", "andole"), List.of("donut", "jun"), List.of("donut", "mrko"),
-                List.of("shakevan", "andole"), List.of("shakevan", "jun"), List.of("shakevan", "mrko"));
-        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
-
-        System.out.println(solution(user, friends, visitors));
-    }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        Map<String, Integer> map = new HashMap<>();
+        Map<String, Integer> scores = new HashMap<>();
         Map<String, List<String>> relations = new HashMap<>();
         Set<String> myFriends = new HashSet<>();
         myFriends.add(user);
 
-        for (String visitor : visitors) {
-            if (!map.containsKey(visitor)) {
-                map.put(visitor, 0);
-            }
-            map.put(visitor, map.get(visitor) + 1);
-        }
+        initVisitors(visitors, scores);
 
         for (List<String> friend : friends) {
             String name1 = friend.get(0);
             String name2 = friend.get(1);
 
-            if (name1.equals(user)) {
-                myFriends.add(name2);
-            }
-            if (name2.equals(user)) {
-                myFriends.add(name1);
-            }
+            isMyFriend(user, myFriends, name1, name2);
 
             if (!relations.containsKey(name1)) {
                 relations.put(name1, new ArrayList<>());
@@ -55,14 +37,14 @@ public class Problem7 {
             List<String> subFriends = relations.get(myFriend);
 
             for (String subFriend : subFriends) {
-                if (!map.containsKey(subFriend)) {
-                    map.put(subFriend, 0);
+                if (!scores.containsKey(subFriend)) {
+                    scores.put(subFriend, 0);
                 }
-                map.put(subFriend, map.get(subFriend) + 10);
+                scores.put(subFriend, scores.get(subFriend) + 10);
             }
         }
 
-        List<Map.Entry<String, Integer>> entryList = new ArrayList<>(map.entrySet());
+        List<Map.Entry<String, Integer>> entryList = new ArrayList<>(scores.entrySet());
         entryList.sort(Map.Entry.comparingByValue(Collections.reverseOrder()));
         List<String> result = new ArrayList<>();
 
@@ -77,5 +59,25 @@ public class Problem7 {
         }
 
         return result;
+    }
+
+    private static void isMyFriend(String user, Set<String> myFriends, String name1, String name2) {
+        isNameMatching(user, myFriends, name1, name2);
+        isNameMatching(user, myFriends, name2, name1);
+    }
+
+    private static void isNameMatching(String user, Set<String> myFriends, String name1, String name2) {
+        if (user.equals(name1)) {
+            myFriends.add(name2);
+        }
+    }
+
+    private static void initVisitors(List<String> visitors, Map<String, Integer> scores) {
+        for (String visitor : visitors) {
+            if (!scores.containsKey(visitor)) {
+                scores.put(visitor, 0);
+            }
+            scores.put(visitor, scores.get(visitor) + 1);
+        }
     }
 }
