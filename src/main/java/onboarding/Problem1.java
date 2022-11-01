@@ -16,7 +16,13 @@ class Problem1 {
         int crongScore = getPagesMaxScore(crong);
 
 
-        return -1;
+        return result(pobiScore, crongScore);
+    }
+
+    private static int result(int pobiScore, int crongScore) {
+        if(pobiScore > crongScore) return 1;
+        else if(pobiScore < crongScore) return 2;
+        else return 0;
     }
 
     static int getPagesMaxScore(List<Integer> pages){
