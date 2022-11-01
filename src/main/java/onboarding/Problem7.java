@@ -8,15 +8,13 @@ public class Problem7 {
     private static final Map<String, Set<String>> friendList = new HashMap<>();
     private static final Map<String, Integer> recommendScore = new HashMap<>();
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-
         initAllFriendList(friends);
         initAllRecommendScore(user);
 
         calculateRecommendScore(visitors);
         removeFriendWithUser(user);
 
-        return answer;
+        return recommendFriends();
     }
 
     private static void initAllFriendList(List<List<String>> friends) {
@@ -81,5 +79,18 @@ public class Problem7 {
 
     private static void removeFriendWithUser(String user) {
         recommendScore.keySet().removeIf(key -> key.equals(user) || friendList.get(user).contains(key));
+    }
+
+    private static List<String> recommendFriends() {
+        return recommendScore.entrySet().stream()
+                .filter(user -> isNotZeroScore(user.getValue()))
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .limit(MAX_NUMBER_OF_PEOPLE_CAN_RECOMMEND)
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
+    }
+
+    private static boolean isNotZeroScore(Integer score) {
+        return (score != 0);
     }
 }
