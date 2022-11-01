@@ -30,5 +30,52 @@ class Problem1 {
         int pobi_right = pobi.get(1);
 
 
+        int result_pobi_left = sum_multi(pobi_left);
+        int result_pobi_right = sum_multi(pobi_right);
+        int result_pobi = 0;
+        if (result_pobi_left > result_pobi_right) {
+            result_pobi = result_pobi_left;
+        } else {
+            result_pobi = result_pobi_right;
+        }
+
+        int crong_left = crong.get(0);
+        int crong_right = crong.get(1);
+
+        int result_crong_left = sum_multi(crong_left);
+        int result_crong_right = sum_multi(crong_right);
+        int result_crong = 0;
+        if (result_crong_left > result_crong_right) {
+            result_crong = result_crong_left;
+        } else {
+            result_crong = result_crong_right;
+        }
+
+        if (pobi.size() !=2 || crong.size() !=2){
+            return -1;
+        }
+        if (pobi_right-pobi_left !=1 || crong_right-crong_left !=1){
+            return -1;
+        }
+        if (pobi_left ==1 || pobi_right==400 || crong_left ==1 || crong_right==400){
+            return  -1;
+        }
+
+
+
+        int answer = 0;
+
+        if (result_pobi > result_crong) {
+            answer = 1;
+        } else if (result_pobi < result_crong) {
+            answer = 2;
+        } else if (result_pobi == result_crong) {
+            answer = 0;
+        }
+
+        return answer;
+
+
+
     }
 }
