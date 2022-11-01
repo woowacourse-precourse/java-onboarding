@@ -1,6 +1,7 @@
 package onboarding;
 
 public class Problem2 {
+
     public static String solution(String cryptogram) {
 
         while (isEncrypted(cryptogram)) {
@@ -9,7 +10,6 @@ public class Problem2 {
             }
             cryptogram = decryption(cryptogram);
         }
-
         return cryptogram;
     }
 
@@ -29,7 +29,6 @@ public class Problem2 {
             int endConsecutive = cryptogram.length() - 1;
 
             for (int i = 1; i < cryptogram.length(); i++) {
-
 
                 if (cryptogram.charAt(i - 1) == cryptogram.charAt(i)) {
                     startConsecutive = i - 1;

@@ -4,14 +4,12 @@ import java.util.List;
 
 class Problem1 {
 
-
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
         int answer = Integer.MAX_VALUE;
 
         int resultPobi = getScore(pobi);
         int resultCrong = getScore(crong);
-
 
         if (resultPobi == -1 || resultCrong == -1) {
             answer = -1;
@@ -25,7 +23,6 @@ class Problem1 {
             }
         }
 
-
         return answer;
     }
 
@@ -37,7 +34,6 @@ class Problem1 {
      */
     public static int getScore(List<Integer> player) {
 
-        int result = 0;
         if (!isValidList(player)) {
             return -1;
         } else {
