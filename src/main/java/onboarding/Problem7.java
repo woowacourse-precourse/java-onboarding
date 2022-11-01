@@ -78,6 +78,22 @@ class VisitorPoint{
 }
 
 
+class HashMapToList{
+    public static List<List<String>> convert(HashMap<String,Integer> point_map){
+        List<List<String>> point_list = new ArrayList<>();
+
+        for(Map.Entry<String,Integer> entry:point_map.entrySet()){
+            List<String> temp = new ArrayList<>();
+            if (entry.getValue() == 0) continue;    //추천점수 0이면 제외.
+            temp.add(entry.getKey());
+            temp.add(Integer.toString(entry.getValue()));
+            point_list.add(temp);
+        }
+        return point_list;
+    }
+}
+
+
 public class Problem7 {
 
     /*
@@ -100,26 +116,13 @@ public class Problem7 {
 
         VisitorPoint.getVisitorPoint(point_map,visitors,user_friend_list);
 
+        List<List<String>> point_list = HashMapToList.convert(point_map);
 
-        //방문자 1점씩.
-        System.out.println("point_map = " + point_map);
-        //point_map을 2차원배열로 만든 후, x[1]에 대해 내림차순으로 정렬하고 x[0]에 대해선 오름차순으로 정렬한다.
-
-        ArrayList<ArrayList<String>> point_list = new ArrayList<>();
-
-        for(Map.Entry<String,Integer> entry:point_map.entrySet()){
-            ArrayList<String> temp = new ArrayList<>();
-            if (entry.getValue() == 0) continue;    //추천점수 0이면 제외.
-            temp.add(entry.getKey());
-            temp.add(Integer.toString(entry.getValue()));
-            point_list.add(temp);
-        }
-        System.out.println("point_list = " + point_list);
 
         //추천점수에 대해선 내림차순, 이름에 대해선 오름차순으로 정렬해야한다.
-        Collections.sort(point_list, new Comparator<ArrayList<String>>(){
+        Collections.sort(point_list, new Comparator<List<String>>(){
             @Override
-            public int compare(ArrayList<String> o1, ArrayList<String> o2){
+            public int compare(List<String> o1, List<String> o2){
                 Integer o1_point = Integer.parseInt(o1.get(1));
                 Integer o2_point = Integer.parseInt(o2.get(1));
                 if (o1_point < o2_point){//포인트에 대해선 내림차순
@@ -134,7 +137,7 @@ public class Problem7 {
             }
         });
 
-        for (ArrayList<String> p : point_list){
+        for (List<String> p : point_list){
             answer.add(p.get(0));
         }
         if (answer.size()<5) return answer;
