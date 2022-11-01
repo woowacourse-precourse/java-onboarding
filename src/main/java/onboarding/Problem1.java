@@ -14,7 +14,7 @@ class Problem1 {
     private final static int END_PAGE_NUMBER = 400;
     private final static int PAGE_GAP = 1;
     private final static int PAGE_LIST_SIZE = 2;
-    
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if (isInvalidPage(pobi) || isInvalidPage(crong)) {
             return EXCEPTION;
@@ -79,7 +79,7 @@ class Problem1 {
 
     private static boolean isInvalidPage(List<Integer> page) {
         return isNotValidPageSize(page) ||
-                hasFirstOrLastPage(page) ||
+                isInvalidPageRange(page) ||
                 isNotSequencePages(page) ||
                 isEven(page.get(0)) ||
                 isOdd(page.get(1));
@@ -89,8 +89,8 @@ class Problem1 {
         return pages.size() != PAGE_LIST_SIZE;
     }
 
-    private static boolean hasFirstOrLastPage(List<Integer> pages) {
-        return pages.stream().anyMatch(page -> page == START_PAGE_NUMBER | page == END_PAGE_NUMBER);
+    private static boolean isInvalidPageRange(List<Integer> pages) {
+        return pages.stream().anyMatch(page -> page < START_PAGE_NUMBER | page > END_PAGE_NUMBER);
     }
 
     private static boolean isNotSequencePages(List<Integer> pages) {
