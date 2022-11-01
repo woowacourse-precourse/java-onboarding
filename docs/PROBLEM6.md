@@ -21,3 +21,10 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+
+### 기능목록!
+1. 주어진 리스트를 돌며 중복을 체크할 닉네임을 찾는다.
+2. 체크와 2글자가 중복되는 단어가 있으면 리스트에 넣는다.
+3. 중복되고, 섞여있는 리스트에서 중복을 삭제한다.
+4. 정렬한다.
