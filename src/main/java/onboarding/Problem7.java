@@ -7,6 +7,22 @@ import java.util.List;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+
+        List<String> mFriends = findFriend(user, friends);
+
+        List<List<String>> friendScore = countFriend(user, friends, mFriends);
+
+        List<List<String>> visitScore = countVisit(visitors, mFriends);
+
+        List<List<String>> scores = getScore(friendScore, visitScore);
+
+        List<List<String>> score = sortByScore(scores);
+
+        List<String> finalScore = sortByName(score);
+
+        if (!finalScore.isEmpty())
+            answer = finalScore;
+
         return answer;
     }
 
