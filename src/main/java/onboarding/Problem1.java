@@ -89,6 +89,11 @@ class Problem1 {
             answer = 0;
         }
 
+        //예외 Case 처리 : 페이지 번호 차가 1이 넘는 경우
+        if ((pobi.get(1) - pobi.get(0) > 1) || (crong.get(1) - crong.get(0) > 1)) {
+            answer = -1;
+        }
+
         return answer;
     }
 }
