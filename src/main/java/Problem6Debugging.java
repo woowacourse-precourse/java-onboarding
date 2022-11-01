@@ -18,20 +18,22 @@ public class Problem6Debugging {
             String nickName ="";
             String emailAddress ="";
 
-            HashMap<String, String> hashMap = new HashMap<String, String>();
-
+            HashMap<String, String> hashMapCheckOverlap = new HashMap<String, String>();
+            HashMap<String, String> hashMapCollectOverlapEmail = new HashMap<String, String>();
 
 
 
             while(formsFirstRowLength > 0){
-                emailAddress = forms.toArray()[formsFirstRowNumber].get(0);
-                nickName = forms.toArray()[formsFirstRowNumber].get(1);
+                emailAddress = forms.get(formsFirstRowNumber).get(0);
+                nickName = forms.get(formsFirstRowNumber).get(1);
                 int nickNameLength = nickName.length();
 
                 for (int i = 0; i < nickNameLength - 1; i++){
                     String twoWords = nickName.substring(i, i+2);
 
-                    hashMap.put(twoWords,emailAddress);
+
+
+                    hashMapCheckOverlap.put(twoWords,emailAddress);
 
                 }
 
