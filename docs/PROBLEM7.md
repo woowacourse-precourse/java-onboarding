@@ -24,3 +24,23 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+# ----------
+## 문제7
+
+1. set에 user의 친구를 모두 넣는다.
+2. 친구의 친구 10점씩 부여
+3. 방문자 1점씩 부여
+4. 추천점수대로 내림차순 정렬
+5. 같은 점수일 경우 sameScoreId 에 넣어서 오름차순으로 id 출력
+
+
+### 아이디
+- 영어소문자만 가능 
+- 길이는 1~30이하
+
+### - 친구관계
+
+- 1~1000이하
+
+# ----------
