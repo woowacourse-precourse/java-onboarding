@@ -9,7 +9,7 @@ public class Problem7 {
         HashMap<String, Integer> scoreTable = ScoreTable(user,friendship);
 
         ScoreFriendOfUser(scoreTable, friendship, user,10);
-
+        ScoreVisitOfUser(scoreTable,visitors, 1);
         System.out.println("friendship.keySet() = " + scoreTable.keySet());
         System.out.println("friendship.values() = " + scoreTable.values());
         return answer;
@@ -54,6 +54,12 @@ public class Problem7 {
                     scoreTable.put(friend,scoreTable.get(friend) + score);
             }
         }
+    }
+
+    public static void ScoreVisitOfUser(HashMap<String, Integer> scoreTable,
+                                        List<String> visitors, int score) {
+        for(String friend : visitors)
+            scoreTable.put(friend, scoreTable.getOrDefault(friend, 0) + score);
     }
 
 }
