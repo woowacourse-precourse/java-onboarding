@@ -24,3 +24,12 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+
+### 기능목록
+
+- set을 이용해 user의 친구를 저장한다
+  - 함께 아는 친구는 10점 부여
+  - 방문자는 1점 부여
+
+- 추천리스트를 최대 5명만 추려서 리턴
