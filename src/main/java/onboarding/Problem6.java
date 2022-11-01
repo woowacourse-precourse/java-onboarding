@@ -19,33 +19,33 @@ public class Problem6 {
     }
 
     public static List<String> compareNicknames(List<List<String>> forms){
-        List<Integer> result = new ArrayList<>();
+        List<Integer> overlapCrews = new ArrayList<>();
 
         for(int i = 0; i<forms.size(); i++){
             for(int j =i+1; j<forms.size(); j++){
                 if(IsOverlap(forms.get(i).get(1), forms.get(j).get(1))){
-                    result.add(i);
-                    result.add(j);
+                    overlapCrews.add(i);
+                    overlapCrews.add(j);
                 }
             }
         }
 
-        return makeEmailList(result, forms);
+        return makeEmailList(overlapCrews, forms);
     }
 
-    public static List<String> makeEmailList(List<Integer> list ,List<List<String>> forms){
-        Set<Integer> set = Set.copyOf(list);
+    public static List<String> makeEmailList(List<Integer> overlapCrews ,List<List<String>> forms){
+        Set<Integer> overlapCrewsSet = Set.copyOf(overlapCrews);
 
-        List<String> result = new ArrayList<>();
+        List<String> overlapEmails = new ArrayList<>();
 
-        Iterator<Integer> iter = set.iterator();
+        Iterator<Integer> iter = overlapCrewsSet.iterator();
 
         while(iter.hasNext()){
-            result.add(forms.get(iter.next()).get(0));
+            overlapEmails.add(forms.get(iter.next()).get(0));
         }
 
-        Collections.sort(result);
-        return result;
+        Collections.sort(overlapEmails);
+        return overlapEmails;
 
     }
 
