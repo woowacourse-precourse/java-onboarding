@@ -13,9 +13,10 @@ public class Problem7 {
         p7.makeFriendGraph(friends);
         p7.findKnownPeople(user);
         p7.findVisitors(user, visitors);
-
-        return null;
+        return p7.sortByValueAndReturnList();
     }
+
+
 
     private void makeFriendGraph(List<List<String>> friends){
         for(List<String> list : friends){
@@ -63,5 +64,17 @@ public class Problem7 {
             }
             else knownList.put(visitor, 1);
         }
+    }
+    private List<String> sortByValueAndReturnList() {
+        List<String> keySet = new ArrayList<>(knownList.keySet());
+        keySet.sort(new Comparator<>() {
+            @Override
+            public int compare(String o1, String o2) {
+                if (knownList.get(o1).equals(knownList.get(o2))) return o1.compareTo(o2);
+                else return knownList.get(o2).compareTo(knownList.get(o1));
+            }
+        });
+        int size = Math.min(keySet.size(), 5);
+        return keySet.subList(0, size);
     }
 }
