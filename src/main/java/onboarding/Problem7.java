@@ -1,7 +1,6 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /*기능 요구 사항*/
 /* 추천 알고리즘
@@ -19,7 +18,29 @@ import java.util.List;
  */
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
+
+        /*친구 목록 해쉬맵 구현*/
+        Map<String,List<String>> friendInfo = new HashMap<>();
+
+        for(int i=0; i<friends.size(); i++) {
+            List<String> list1 = new ArrayList<>();
+            List<String> list2 = new ArrayList<>();
+
+            if(friendInfo.containsKey(friends.get(i).get(0))){
+                list1 = friendInfo.get(friends.get(i).get(0));
+                list1.add(friends.get(i).get(1));
+            }else list1.add(friends.get(i).get(1));
+
+            if(friendInfo.containsKey(friends.get(i).get(1))){
+                list2 = friendInfo.get(friends.get(i).get(1));
+                list2.add(friends.get(i).get(0));
+            } else list2.add(friends.get(i).get(0));
+
+            friendInfo.put(friends.get(i).get(0),list1);
+            friendInfo.put(friends.get(i).get(1),list2);
+        }
+
         return answer;
     }
 }
