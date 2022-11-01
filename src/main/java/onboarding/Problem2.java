@@ -47,4 +47,16 @@ public class Problem2 {
             }
         }
     }
+
+    // 중복된 문자를 삭제하는 기능
+    private static void removeSameLetter(List<String> subCryptograms) {
+        
+        for (int i = 0; i < subCryptograms.size() - 1; i++) {
+            String s = subCryptograms.get(i);
+            if (s.equals(subCryptograms.get(i + 1))) {
+                //중복 제거
+                removeContinued(subCryptograms, i);
+            }
+        }
+    }
 }
