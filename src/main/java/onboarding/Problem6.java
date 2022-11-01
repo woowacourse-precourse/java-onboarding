@@ -18,17 +18,17 @@ public class Problem6 {
 
 	public static List<String> solution(List<List<String>> forms) {
 		List<String> answer = new ArrayList<>();
-		Map<String, String> map = new HashMap<>();
-		List<String> splitNicknames = new ArrayList<>(); // 각 크루의 닉네임을 두 글자씩 쪼개어 담을 리스트
-		Set<String> duplicateNicknames = new HashSet<>(); // 중복된 닉네임 set
+		Map<String, String> map;
+		List<String> splitNicknames; // 각 크루의 닉네임을 두 글자씩 쪼개어 담을 리스트
+		Set<String> duplicateNicknames; // 중복된 닉네임 set
 
 		if (checkRestrictions(forms) == EXCEPTION) {
 			return answer;
 		}
 
-		initMapWithEmailAndNickname(forms, map);
-		initSplitNicknames(map, splitNicknames);
-		initDuplicateNicknames(splitNicknames, duplicateNicknames);
+		map = initMapWithEmailAndNickname(forms);
+		splitNicknames = initSplitNicknames(map);
+		duplicateNicknames = initDuplicateNicknames(splitNicknames);
 		answer = getCrewUsingInvalidNickname(map, duplicateNicknames);
 		Collections.sort(answer);
 
@@ -38,12 +38,13 @@ public class Problem6 {
 	/**
 	 * 크루들의 이메일과 닉네임으로 map 을 초기화하는 메서드
 	 * @param forms
-	 * @param map
 	 */
-	private static void initMapWithEmailAndNickname(List<List<String>> forms, Map<String, String> map) {
+	private static Map<String, String> initMapWithEmailAndNickname(List<List<String>> forms) {
+		Map<String, String> map = new HashMap<>();
 		for (List<String> form : forms) {
 			map.put(form.get(EMAIL), form.get(NICKNAME));
 		}
+		return map;
 	}
 
 	/**
@@ -52,8 +53,7 @@ public class Problem6 {
 	 * @param map
 	 * @param duplicateNicknames
 	 */
-	private static List<String> getCrewUsingInvalidNickname(Map<String, String> map,
-		Set<String> duplicateNicknames) {
+	private static List<String> getCrewUsingInvalidNickname(Map<String, String> map, Set<String> duplicateNicknames) {
 		Set<String> answer = new HashSet<>();
 		String nickname;
 		String email;
@@ -72,27 +72,29 @@ public class Problem6 {
 	/**
 	 * splitNicknames 트에서 중복을 찾아 duplicateNicknames 에 추가하는 메서드
 	 * @param splitNicknames
-	 * @param duplicateNicknames
 	 */
-	private static void initDuplicateNicknames(List<String> splitNicknames, Set<String> duplicateNicknames) {
+	private static Set<String> initDuplicateNicknames(List<String> splitNicknames) {
+		Set<String> duplicateNicknames = new HashSet<>();
 		for (String splitNickname : splitNicknames) {
 			if (splitNicknames.indexOf(splitNickname) != splitNicknames.lastIndexOf(splitNickname)) {
 				duplicateNicknames.add(splitNickname);
 			}
 		}
+		return duplicateNicknames;
 	}
 
 	/**
 	 * 닉네임을 두 글자씩 쪼개어 splitNicknames 에 추가하는 메서드
 	 * @param map
-	 * @param splitNicknames
 	 */
-	private static void initSplitNicknames(Map<String, String> map, List<String> splitNicknames) {
+	private static List<String> initSplitNicknames(Map<String, String> map) {
+		List<String> splitNicknames = new ArrayList<>();
 		for (String nickname : map.values()) {
 			for (int i = 0; i < nickname.length() - 1; i++) {
 				splitNicknames.add(nickname.substring(i, i + SPLIT_UNIT));
 			}
 		}
+		return splitNicknames;
 	}
 
 	/**
