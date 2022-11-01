@@ -10,8 +10,6 @@ public class Problem2 {
     private static final String INPUT_STRING_IS_NOT_LOWERCASE = "입력 문자열이 소문자로만 이루어져 있지 않습니다. ";
     private static final int INPUT_MINIMUM_LENGTH = 1;
     private static final int INPUT_MAXIMUM_LENGTH = 1000;
-    private static Stack<String> deletedCryptogram = new Stack<>();
-    private static String sameAlphabet = "";
 
     public static String solution(String cryptogram) {
         checkExceptionOfCryptogram(cryptogram);
@@ -42,30 +40,31 @@ public class Problem2 {
     }
 
     private static String encodeCryptogram(String cryptogram){
-        String[] alphabetSeperated = cryptogram.split("");
-        for(String alphabet : alphabetSeperated){
-            encryptCryptogram(alphabet);
+        StringBuilder deletedCryptogram = new StringBuilder();
+        for(int index = 0; index<cryptogram.length(); index++){
+            deletedCryptogram.append(encryptCryptogram(cryptogram, index));
         }
-        return changeStackToString();
+        return deletedCryptogram.toString();
     }
 
-    private static void encryptCryptogram(String alphabet){
-        if(!deletedCryptogram.isEmpty() && deletedCryptogram.peek().equals(alphabet)) {
-            deletedCryptogram.pop();
-            sameAlphabet = alphabet;
-        }
-        if(sameAlphabet.equals(alphabet)){
-            return;
-        }
-        deletedCryptogram.push(alphabet);
+    private static String encryptCryptogram(String cryptogram, int index){
+        if(index == 0) return putFirstAlphabets(cryptogram);
+        if(index == cryptogram.length() - 1) return putLastAlphabets(cryptogram);
+        if(cryptogram.charAt(index) != cryptogram.charAt(index-1) && cryptogram.charAt(index) != cryptogram.charAt(index+1))
+            return Character.toString(cryptogram.charAt(index));
+        return "";
     }
 
-    private static String changeStackToString(){
-        StringBuilder result = new StringBuilder();
-        while(!deletedCryptogram.isEmpty()){
-            result.insert(0, deletedCryptogram.pop());
-        }
-        return result.toString();
+    private static String putFirstAlphabets(String cryptogram){
+        if(cryptogram.charAt(0) != cryptogram.charAt(1)) return Character.toString(cryptogram.charAt(0));
+        return "";
+    }
+
+    private static String putLastAlphabets(String cryptogram){
+        int cryptoLength = cryptogram.length();
+        if(cryptogram.charAt(cryptoLength - 2) != cryptogram.charAt(cryptoLength-1))
+            return Character.toString(cryptogram.charAt(cryptoLength-1));
+        return "";
     }
 
     private static boolean isEmpty(String cryptogram){
