@@ -1,17 +1,14 @@
+import java.util.List;
+
 public class problem1 {
-
-    public static void main(String[] args) {
-        int[] pobi = {97, 98};
-        int[] crong = {197, 198};
-        System.out.println(solution(pobi, crong));
-    }
-
-    public static int solution(int[] pobi, int[] crong) {
-        if (pobi.length != 2 || crong.length != 2) {
+    public static int solution(List<Integer> pobi, List<Integer> crong) {
+        int answer = Integer.MAX_VALUE;
+        if (pobi.size() != 2 || crong.size() != 2) {
             return -1;
-        } else if (pobi[0] > pobi[1] || crong[0] > crong[1]) {
+        } else if (pobi.get(0) > pobi. get(1) || crong.get(0) > crong.get(1)) {
             return -1;
         }
+        //test
         if (maxVal(pobi) > maxVal(crong)) {
             return 1;
         } else if (maxVal(pobi) == maxVal(crong)) {
@@ -19,12 +16,11 @@ public class problem1 {
         } else {
             return 2;
         }
-
     }
-    public static int maxVal (int[] arr) {
+    public static int maxVal (List<Integer> arr) {
         int[] answer = new int[2];
         for (int i = 0; i < 2; i++) {
-            String str = Integer.toString(arr[i]);
+            String str = Integer.toString(arr.get(i));
             String[] s = str.split("");
             int sum = 0;
             int mul = 1;
