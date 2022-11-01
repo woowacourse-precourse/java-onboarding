@@ -27,7 +27,10 @@ public class Problem6 {
             }
         }
         
-        List<String> answer = List.of("answer");
+        List<String> answer = new ArrayList<>(emailset);
+        
+        answer.sort(Comparator.naturalOrder());
+
         return answer;
     }
 }
