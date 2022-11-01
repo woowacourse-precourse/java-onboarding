@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.Map.Entry;
 
 public class Problem7 {
+
     //user의 친구 찾기
     public static List<String> findFriendsOfUser (List<List<String>> friends, String user) {
         List<String> friendsOfUser = new ArrayList<String>();
