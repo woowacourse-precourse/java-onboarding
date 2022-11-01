@@ -9,8 +9,7 @@ public class Problem2 {
 
         for (idx2 = 1; idx2 < cryptogram.length(); idx2++) {
             if(Str.charAt(idx1) == Str.charAt(idx2)) {
-                String changedStr = Str.substring(0,idx1) + Str.substring(idx2+1);
-                Str = changedStr;
+                Str = Str.substring(0,idx1) + Str.substring(idx2+1);
                 idx1 = 0;
                 idx2 = 1;
                 continue;
