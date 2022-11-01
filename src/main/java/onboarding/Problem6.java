@@ -21,5 +21,23 @@ public class Problem6 {
         return cuttedletters;
     }
 
+    public static List<String > findEmailBySimilarNicname(int nowformsindex , List<List<String>> forms , List<String> letters , List<String> answer){
+        List<String> result = answer;
+        int samecount =0;
+
+        for(int j=nowformsindex+1; j<forms.size(); j++){
+            String othernickname = forms.get(j).get(1);
+            for(int k=0; k<letters.size(); k++){
+                if ( othernickname.contains(letters.get(k))) {
+                    if(samecount==0){
+                        result.add(forms.get(nowformsindex).get(0));
+                        samecount++;
+                    }
+                    result.add(forms.get(j).get(0));
+                }
+            }
+        }
+        return result;
+    }
 
 }
