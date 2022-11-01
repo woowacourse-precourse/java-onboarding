@@ -13,7 +13,7 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         String result = decrypt(cryptogram);
         String prevResult = cryptogram;
-        while (!result.equals(prevResult) && !result.equals("")) {
+        while (!result.equals("") && !result.equals(prevResult)) {
             prevResult = result;
             result = decrypt(result);
         }
