@@ -64,6 +64,12 @@ public class Problem6 {
     }
 
     private static void addEmailSetWhenDuplicatedByTwoCharacter(Trainee trainee1, Trainee trainee2, HashSet<String> emailSet) {
+        if (isDuplicatedByTwoCharacter(trainee1, trainee2)) {
+            emailSet.add(trainee1.getEmail());
+            emailSet.add(trainee2.getEmail());
+        }
+    }
+    private static boolean isDuplicatedByTwoCharacter(Trainee trainee1, Trainee trainee2) {
 
     }
 }
