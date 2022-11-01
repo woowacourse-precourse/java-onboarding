@@ -56,12 +56,31 @@ public class Problem7 {
                 notFriendList.put(name, 0);
     }
 
+    public static void SetFriendScore(List<List<String>> friends, HashSet<String> friendList, HashMap<String, Integer> notFriendList)
+    {
+        for (int i = 0; i < friends.size(); i++)
+        {
+            String name1 = friends.get(i).get(0);
+            String name2 = friends.get(i).get(1);
+            if (friendList.contains(name1) && friendList.contains(name2))
+                continue;
+            if (!friendList.contains(name1) && !friendList.contains(name2))
+                continue;
+            if (friendList.contains(name1) && notFriendList.containsKey(name2))
+                notFriendList.put(name2, notFriendList.get(name2) + 10);
+            else if (friendList.contains(name2) && notFriendList.containsKey(name1))
+                notFriendList.put(name1, notFriendList.get(name1) + 10);
+        }
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         HashSet<String> friendList = new HashSet<String>();
         HashMap<String, Integer> notFriendList = new HashMap<String, Integer>();
         SetFriendList(friends, friendList, user);
         SetNotFriendList(friends, friendList, notFriendList, visitors, user);
+
+        SetFriendScore(friends, friendList, notFriendList);
         return answer;
     }
 }
