@@ -12,7 +12,56 @@ public class Problem7 {
 		String fof = "";
 		String visitor = "";
 
-		return Collections.singletonList("");
+		for (int i = 0; i < friends.size(); i++) {
+			List<String> friend = new ArrayList<>(friends.get(i));
+			if (friend.get(0).equals(user)) {
+				temp = friend.get(1); // temp -> 친구의 친구의 기준이 되는 친구
+				for (int j = 0; j < friends.size(); j++) {
+					if (friends.get(j).get(0).equals(temp)) {
+						fofVal += 10;
+						fof = friends.get(j).get(1); // fof -> 기준이 되는 친구의 친구
+					} else if (friends.get(j).get(1).equals(temp)) {
+						fofVal += 10;
+						fof = friends.get(j).get(0);
+					}
+					guys.put(fof, fofVal);
+				}
+				for (int j = 0; j < visitors.size(); j++) { // 방문자 점수 설정
+					if (!visitors.get(j).equals(fof)) {
+						visitVal++;
+						visitor = visitors.get(j);
+					}
+					guys.put(visitor, visitVal);
+				}
+			} else if (friend.get(1).equals(user)) {
+				temp = friend.get(0);
+				for (int j = 0; j < friends.size(); j++) {
+					if (friends.get(j).get(0).equals(temp)) {
+						fofVal += 10;
+						fof = friends.get(j).get(1);
+					} else if (friends.get(j).get(1).equals(temp)) {
+						fofVal += 10;
+						fof = friends.get(j).get(0);
+					}
+					guys.put(fof, fofVal);
+				}
+				for (int j = 0; j < visitors.size(); j++) {
+					if (!visitors.get(j).equals(fof)) {
+						visitVal++;
+						visitor = visitors.get(j);
+					}
+					guys.put(visitor, visitVal);
+				}
+			}
+			// 다시 볼 것
+			guys.remove(temp);
+			guys.remove(fof);
+			guys.remove("donut");
+		}
+
+		List<String> result = new ArrayList<>(guys.keySet());
+
+		return result;
 
 	}
 //	public static void main(String[] args) {
