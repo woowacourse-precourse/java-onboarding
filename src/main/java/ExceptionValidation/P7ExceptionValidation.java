@@ -14,7 +14,8 @@ public class P7ExceptionValidation {
 
     public static boolean p7ExceptionValidation(String user, List<List<String>> friends, List<String> visitors) {
 
-        return userNameBetween1and30(user);
+        return userNameBetween1and30(user)
+                && friendsLowerAlphabet(friends);
     }
 
 
@@ -25,5 +26,19 @@ public class P7ExceptionValidation {
         return true;
     }
 
+    private static boolean friendsLowerAlphabet(List<List<String>> friends) {
+        for (int i = 0; i < 2; i++) {
+            for (List<String> edge : friends) {
+                String current = edge.get(i);
+
+                return current.chars()
+                        .filter(Id -> 'a' <= Id && Id <= 'z')
+                        .count() == current.length();
+            }
+        }
+        return false;
+    }
 }
+
+
 
