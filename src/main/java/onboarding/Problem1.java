@@ -25,6 +25,10 @@ class Problem1 {
         return numbers.stream().reduce((x,y) -> x+y).get();
     }
 
+    private static int getMultiply(List<Integer> numbers){
+        return numbers.stream().reduce((x,y) -> x*y).get();
+    }
+
     private static boolean isOdd(int num){
         if (num%2 == 1) return true;
         return false;
