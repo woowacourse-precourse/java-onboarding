@@ -24,3 +24,13 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+
+## 기능 목록
+- [ ] User class 생성
+- [ ] 친구 목록에 친구 추가 기능(User)
+- [ ] RecommendScore class 생성
+- [ ] 조건에 따른 추천 점수 추가 기능(RecommendedScore)
+- [ ] SocialService class 생성
+- [ ] user 추가 기능
+- [ ] 추천 친구 리스트 조건에 맞게 정렬(SocialService)
