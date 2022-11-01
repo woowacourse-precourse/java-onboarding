@@ -24,14 +24,12 @@ public class Problem2 {
             }
         }
  
+        String s = "";
+        
         if(k!=0) {
         	chars[k++] = chars[i - 1];
-        } else {
-        	chars = "".toCharArray();
+            s = new String(chars).substring(0, k);
         }
- 
-
-        String s = new String(chars).substring(0, k);
  
         if (k != chars.length) {
             return removeAdjDup(s);          
