@@ -51,5 +51,19 @@ public class Problem7 {
         return freindoffriend;
     }
 
+    public static Map<String,Integer> countScoreByFriendsOfUserFriends(Map<String,Integer> nameandscore, List<String>freindsofuserfriend){
+        Map<String,Integer> result = nameandscore;
+        for(int i=0; i<freindsofuserfriend.size(); i++){
+            if(!nameandscore.containsKey(freindsofuserfriend.get(i))){
+                nameandscore.put(freindsofuserfriend.get(i), 10);
+            }
+            else if(nameandscore.containsKey(freindsofuserfriend.get(i))){
+                int score = nameandscore.get(freindsofuserfriend.get(i));
+                nameandscore.put(freindsofuserfriend.get(i), score +10);
+            }
+        }
+        return result;
+    }
+
 }
 
