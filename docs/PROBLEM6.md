@@ -21,3 +21,6 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능 목록
+1. 두 글자 이상의 중복된 문자를 확인 후 해당 이메일을 반환한다.
