@@ -1,11 +1,14 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
+        answer = checkDuplicateNickname(forms);
+        Collections.sort(answer);
         return answer;
     }
     // 닉네임들만 저장
@@ -55,8 +58,5 @@ public class Problem6 {
         }
         return duplicateList;
     }
-
-}
-
 
 }
