@@ -1,7 +1,7 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     /*
@@ -12,7 +12,13 @@ public class Problem7 {
         - visitors중 유저와 친구 관계가 아닌 인물들의 점수 1점씩 추가
      */
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
+
+        List<String> friends_part = friends.stream().flatMap(Collection::stream).collect(Collectors.toList());  // friends를 1d list로 만듬
+        friends_part.addAll(visitors);  // 1차원이 된 friends와 visitors를 합침
+        Set<String> all_friend = new HashSet<>(friends_part);   // 주어진 전체 인물들의 이름이 담긴 Set 객체 세팅 완료
+        System.out.println(all_friend);
+
         return answer;
     }
 }
