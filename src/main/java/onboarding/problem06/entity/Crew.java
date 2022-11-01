@@ -1,17 +1,19 @@
 package onboarding.problem06.entity;
 
+import java.util.List;
+
 public class Crew {
 
-  private NickName nickName;
   private Email email;
+  private NickName nickName;
 
-  private Crew(NickName nickName, Email email) {
-    this.nickName = nickName;
-    this.email = email;
+  private Crew(String crewEmail, String crewNickName) {
+    email.from(crewEmail);
+    nickName.from(crewNickName);
   }
 
-  public static Crew of(NickName nickName, Email email) {
-    return new Crew(nickName, email);
+  public static Crew of(List<String> crewForm) {
+    return new Crew(crewForm.get(0), crewForm.get(1));
   }
 
   @Override
