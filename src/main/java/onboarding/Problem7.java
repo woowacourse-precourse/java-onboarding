@@ -13,7 +13,23 @@ public class Problem7 {
         Map<String, List<String>> allFriends = getAllFriends(friends);
         List<String> userFriends = allFriends.get(user);
 
+        Map<String, Integer> scoreMap = new HashMap<>();
+
+        addScore1(scoreMap, visitors);
+
         return answer;
+    }
+
+        private static void addScore1(Map<String, Integer> score, List<String> visitors) {
+        for (String visitor : visitors) {
+            score.put(visitor, score.getOrDefault(visitor, 0) + 1);
+        }
+    }
+
+    private static void addScore10(Map<String, Integer> score, List<String> friendOfFriends) {
+        for (String friendOfFriend : friendOfFriends) {
+            score.put(friendOfFriend, score.getOrDefault(friendOfFriend, 0) + 10);
+        }
     }
 
     private static Map<String, List<String>> getAllFriends(List<List<String>> friends) {
