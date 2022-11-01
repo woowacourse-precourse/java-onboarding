@@ -13,6 +13,9 @@ public class Problem7 {
         HashMap<String, List<String>> friendsList = new HashMap<String, List<String>>();
         HashMap<String, Integer> friendScore = new HashMap<String, Integer>();
 
+        friendsList = relateFriend(friends);
+        friendScore = getFriendScore(friendsList, user);
+
         return answer;
     }
 
@@ -33,6 +36,26 @@ public class Problem7 {
 
         return friendsList;
     }
+
+    static HashMap<String, Integer> getFriendScore(HashMap<String, List<String>> friendsList, String user) {
+
+        HashMap<String, Integer> friendScore = new HashMap<String, Integer>();
+
+        for (String key : friendsList.keySet()) {
+            if (friendsList.get(key).contains(user)) {
+                for (String friend : friendsList.get(key)) {
+                    if (friendScore.containsKey(friend)) {
+                        friendScore.put(friend, friendScore.get(friend) + 10);
+                        continue;
+                    }
+                    friendScore.put(friend, 10);
+                }
+            }
+        }
+
+        return friendScore;
+    }
+
 
 
 }
