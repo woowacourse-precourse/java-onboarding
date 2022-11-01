@@ -32,12 +32,15 @@ public class Problem5 {
         temp_array.add(temp_int/50);
         temp_int = money % 50;
         temp_array.add(temp_int/10);
+        temp_int = money % 10;
+        temp_array.add(temp_int);
         return temp_array;
     }
 
 
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
+        Problem5 agent = new Problem5();
+        List<Integer> answer = agent.getExchange(money);
         return answer;
     }
 }
