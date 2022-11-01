@@ -42,6 +42,16 @@ public class Problem7 {
         }
     }
 
+    private static void getVisitFriendScore(List<String> visitors, HashMap<String, Integer> recommendScore){
+        for(int i = 0; i < visitors.size(); i++){
+            String visitorName = visitors.get(i);
+            if(!recommendScore.containsKey(visitorName)) {
+                recommendScore.put(visitorName, 0);
+            }
+            recommendScore.put(visitorName, recommendScore.get(visitorName) + 1);
+        }
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         List<String> userFriends = new ArrayList<>();
@@ -51,6 +61,8 @@ public class Problem7 {
         getFriendsList(friendsList, friends);
 
         shareFriends(friendsList, recommendScore, user);
+
+        getVisitFriendScore(visitors, recommendScore);
 
         return answer;
     }
