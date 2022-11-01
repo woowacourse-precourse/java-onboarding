@@ -3,6 +3,8 @@ package onboarding.problem1;
 import java.util.List;
 
 public class OpenBook {
+  private final int MIN_PAGE = 1;
+  private final int MAX_PAGE = 400;
   private int leftPage;
   private int rightPage;
 
@@ -10,6 +12,7 @@ public class OpenBook {
     this.leftPage = leftPage;
     this.rightPage = rightPage;
   }
+
   public static OpenBook fromList(List<Integer> page) {
     return new OpenBook(page.get(0), page.get(1));
   }
@@ -23,24 +26,32 @@ public class OpenBook {
   }
 
   public void validate() {
-    if (includeFirstOrLastPage() || !isBothSidesOfPage() || !isCorrectPage()) {
-      throw new IllegalArgumentException("잘못된 페이지 형식입니다.");
+    if (supportBookPages() && hasLeftRightPage() && hasFollowingPage()) {
+      return;
     }
+    throw new IllegalArgumentException("잘못된 페이지 형식입니다.");
   }
 
-  private boolean includeFirstOrLastPage() {
-    return leftPage == 1 || rightPage == 400;
+  private boolean supportBookPages() {
+    return supportsBookPage(leftPage) && supportsBookPage(rightPage);
   }
-  private boolean isCorrectPage() {
+
+  private boolean supportsBookPage(int page) {
+    return page >= MIN_PAGE && page <= MAX_PAGE;
+  }
+
+  private boolean hasLeftRightPage() {
     return isLeftPage() && isRightPage();
   }
 
-  private boolean isBothSidesOfPage() {
+  private boolean hasFollowingPage() {
     return leftPage + 1 == rightPage;
   }
+
   private boolean isLeftPage() {
     return leftPage % 2 == 1;
   }
+
   private boolean isRightPage() {
     return rightPage % 2 == 0;
   }
