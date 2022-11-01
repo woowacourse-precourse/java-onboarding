@@ -1,27 +1,24 @@
 package onboarding;
 
-import org.assertj.core.util.Lists;
-import org.assertj.core.util.Sets;
-
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         HashMap<String, HashSet<String>> userInfo = createUserInfo(friends);
 
-        HashSet<String> people0 = Sets.newHashSet(userInfo.keySet());
-        HashSet<String> people1 = Sets.newHashSet(visitors);
+        HashSet<String> people0 = new HashSet<>(userInfo.keySet());
+        HashSet<String> people1 = new HashSet<>(visitors);
         HashSet<String> mergedPeopleSet = new HashSet<String>();
         mergedPeopleSet.addAll(people0);
         mergedPeopleSet.addAll(people1);
-        List<String> mergedPeopleList = Lists.newArrayList(mergedPeopleSet);
+        List<String> mergedPeopleList = new ArrayList<>(mergedPeopleSet);
 
         HashMap<String, Integer> pointInfo = createPointInfo(mergedPeopleList);
-        HashMap<String, Integer> pointInfo2 = createPointInfo(mergedPeopleList);
+
+        pointInfo = givePointUsingFriendRelationship(user, userInfo, pointInfo);
+        pointInfo = givePointUsingVisitorList(userInfo.get(user), visitors, pointInfo);
+
 
         return answer;
     }
@@ -57,4 +54,37 @@ public class Problem7 {
         }
         return pointInfo;
     }
+
+    private static HashMap<String, Integer> givePointUsingFriendRelationship(String user, HashMap<String, HashSet<String>> userInfo, HashMap<String, Integer> pointInfo) {
+        HashSet<String> friendOfUser = userInfo.get(user);
+        for (String name : userInfo.keySet()) {
+            // 본인이거나 서로 친구이지 않은 경우
+            if (name != user && !(friendOfUser.contains(name))) {
+                for (String n : userInfo.get(name)) {
+                    if (friendOfUser.contains(n)) {
+                        int point = pointInfo.get(name) + 10;
+                        pointInfo.put(name, point);
+                    }
+                }
+            }
+        }
+        return pointInfo;
+    }
+
+    private static HashMap<String, Integer> givePointUsingVisitorList(HashSet<String> friends, List<String> visitors, HashMap<String, Integer> pointInfo) {
+        for (String visitor : visitors) {
+            if (!friends.contains(visitor)) {
+                int point = pointInfo.get(visitor) + 1;
+                pointInfo.put(visitor, point);
+            }
+        }
+
+        return pointInfo;
+    }
+//    private static List<String> findFriendsList(HashMap<String, Integer> pointInfo){
+//
+//    }
+//    private static HashMap<String, Integer> deleteZero(HashMap<String, Integer> pointInfo){
+//        return pointInfo;
+//    }
 }

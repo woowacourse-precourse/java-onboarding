@@ -44,8 +44,18 @@
 3. givePointUsingFriendRelationship
    - parameter: String user, Hashmap userInfo, HashMap pointInfo
    - return: HashMap pointInfo
-   - 유저정보에서 key 를 순회 하면서 사용자와 같이 아는 친구를 찾아 pointInfo 의 점수에 점수를 증가시킴
+   - 유저정보에서 key 를 순회 하면서 사용자와 같이 아는 친구를 찾아 pointInfo 의 점수에 점수를 증가시킴, 이때 이미 user 와 친구이면 점수 증가 하지 않음.
 4. givePointUsingVisitorList
     - parameter: Visitor list, HashMap pointInfo
     - return: HashMap pointInfo
-    - 방문자 목록을 받아와 점수 증가
+    - 방문자 목록을 받아와 점수 증가, 이때 이미 user 와 친구이면 점수 증가 하지 않음.
+5. deleteZero
+   - parameter: HashMap pointInfo
+   - return: HashMap pointInfo
+   - 점수가 0점인 경우 삭제
+6. findFriendsList
+   - parameter: HashMap pointInfo
+   - return: List<String> friends
+   - deleteZero 실행
+   - 점수가 높은 순으로 정렬
+   - 점수가 동일 하다면 이름 순으로 정렬
