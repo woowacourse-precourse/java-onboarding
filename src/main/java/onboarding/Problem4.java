@@ -34,14 +34,9 @@ public class Problem4 {
                 String str = String.valueOf(arrayWord[i]);
                 arr.set(i, String.valueOf(map.get(str.charAt(0))));
             }
-            System.out.println(arr.get(i));
         }
+        String answer = String.join("", arr);
 
-
-
-
-
-        String answer = "";
         return answer;
     }
 
