@@ -1,6 +1,5 @@
 package onboarding;
 
-import java.util.Collections;
 import java.util.List;
 
 // <기능 목록>
@@ -14,7 +13,31 @@ import java.util.List;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
+
         return answer;
+    }
+
+    // 0. class Person (String name, int score)
+    public static class Person implements Comparable<Person> {
+        String name;
+        int score;
+
+        Person(String name, int score) {
+            this.name = name;
+            this.score = score;
+        }
+
+        public int compareTo(Person o) {
+            // score는 내림차순, name은 오름차순
+            if (this.score < o.score) {
+                return 1;
+            } else if (this.score == o.score) {
+                return this.name.compareTo(o.name);
+            } else {
+                return -1;
+            }
+
+        }
     }
 }
