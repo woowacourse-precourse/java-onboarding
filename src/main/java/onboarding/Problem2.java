@@ -13,6 +13,20 @@ public class Problem2 {
 		int i = 0;
 		int k = 0;
 
+		// 현재와 이전 문자가 동일한지 비교
+		for (i = 1; i < c.length; i++) {
+			if (c[i - 1] != c[i]) {
+				c[k++] = c[i - 1]; // 동일하지 않으면 추가
+			} else {
+				while (i < c.length && c[i - 1] == c[i]) { // 중복 제거
+					i++;
+				}
+			}
+		}
+
+		c[k++] = c[i - 1]; // 마지막 문자는 따로 추가
+
+
 
 		return "";
 
