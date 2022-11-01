@@ -59,8 +59,32 @@ public class Problem7 {
         return score;
     }
 
+    static List<String> filterScore(HashMap<String, Integer> score) {
+        List<String> keys = new ArrayList<String>();
+        List<Integer> values = new ArrayList<Integer>();
+        for (String k : score.keySet()) {
+            if (score.get(k) != 0) {
+                keys.add(k);
+                values.add(score.get(k));
+            }
+        }
+        //정렬
+        for (int i = 0; i < keys.size(); i++) {
+            for (int j = i + 1; j < keys.size(); j++) {
+                if (values.get(i) < values.get(j)) {
+                    Collections.swap(values, i, j);
+                    Collections.swap(keys, i, j);
+                }
+            }
+        }
+        if (keys.size()>5)
+            return(keys.subList(0,5));
+        return keys;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        List<String> currentFriends = findFriends(user, friends);
+        HashMap<String, Integer> recommendationScore = calcVisitScore(currentFriends, visitors, calcFriendsScore(user, currentFriends, friends));
+        return filterScore(recommendationScore);
     }
 }
