@@ -8,8 +8,7 @@ import onboarding.domain.problem6.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        UsedTwoWordsDictionary dictionary = new UsedTwoWordsDictionary(getFormList(forms));
-        InvalidForms invalidForms = new InvalidForms(dictionary);
+        InvalidForms invalidForms = new InvalidForms(getFormList(forms));
         List<String> answer = invalidForms.getAllEmails();
         Collections.sort(answer);
         return answer;

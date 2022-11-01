@@ -14,7 +14,8 @@ import java.util.Set;
 public class InvalidForms {
     private final Set<Form> invalidForms = new HashSet<>();
     
-    public InvalidForms(UsedTwoWordsDictionary dictionary) {
+    public InvalidForms(List<Form> forms) {
+        UsedTwoWordsDictionary dictionary = new UsedTwoWordsDictionary(forms);
         for (String twoWord : dictionary.getAllUsedTwoWords()) {
             List<Form> usingForms = dictionary.getFormsByTwoWords(twoWord);
             if (usingForms.size() > 1) {
