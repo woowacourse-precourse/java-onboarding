@@ -118,4 +118,45 @@ public class Problem7 {
         List<String> data=List.of(string.get(1), string.get(0));
         return data;
     }
+
+    public static boolean error(String user, List<List<String>> friends, List<String> visitors){
+        if(!(user.length()>=1&&user.length()<=30)){
+            return true;
+        }
+
+        if(!(friends.size()>=1&&friends.size()<=10000)){
+            return true;
+        }
+
+        for(int i=0; i<friends.size(); i++){
+            if(!(friends.get(i).size()==2&&
+                    friends.get(i).get(0).length()>=1&&friends.get(i).get(0).length()<=30&
+                    friends.get(i).get(1).length()>=1&&friends.get(i).get(1).length()<=30))
+                return true;
+        }
+
+        if(!(visitors.size()>=0&&visitors.size()<=10000)){
+            return true;
+        }
+
+        for(int i=0; i<friends.size(); i++){
+            for(int j=i+1; j<friends.size(); j++) {
+                if (friends.get(i) == friends.get(j))
+                    return true;
+            }
+        }
+
+        for(int i=0; i<friends.size(); i++){
+            for(int j=i+1; j<friends.size(); j++){
+                if(reverseList(friends.get(i))==friends.get(j))
+                    return true;
+            }
+        }
+
+        if(MemberFriendsList(user, friends, visitors)==null){
+            return true;
+        }
+
+        return false;
+    }
 }
