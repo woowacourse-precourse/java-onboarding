@@ -102,7 +102,7 @@ public class Problem7 {
                 if (o2.getValue() != o1.getValue()) {
                     return o2.getValue() - o1.getValue();
                 } else {
-
+                    return o1.getKey().compareTo(o2.getKey());
                 }
             }
         });
