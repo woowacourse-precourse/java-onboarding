@@ -18,7 +18,7 @@ class Problem1 {
             answer = 1;
         } else if(maxPobi < maxCrong){
             answer = 2;
-        } else if(maxPobi == maxCrong) {
+        } else {
             answer = 0;
         }
 
@@ -26,12 +26,13 @@ class Problem1 {
     }
 
     /**
+      * 왼쪽 페이지와 오른쪽 페이지의 자릿수 합과 곱을 계산
       * @param pages 페이지 쪽수가 적힌 리스트
-      * @return 왼쪽 페이지랑 오른쪽 페이지 중에서 큰 수를 반환
+      * @return 페이지 자릿수 합과 곱 중에서 큰 수를 반환
      */
     public static int GetMaxPageValue(List<Integer> pages){
-        int leftPage = pages.get(0);
-        int rightPage = pages.get(1);
+        int leftPage = pages.get(0); // 왼쪽 페이지 저장
+        int rightPage = pages.get(1); // 오른쪽 페이지 저장
 
         int maxLeftPage = CalculateDecimalPoint(leftPage);
         int maxRightPage = CalculateDecimalPoint(rightPage);
@@ -39,9 +40,9 @@ class Problem1 {
         return CompareNumbers(maxLeftPage, maxRightPage);
     }
 
-    /** 페이지의 자릿수 합과 곱을 구함.
+    /** 페이지의 자릿수 합과 곱을 계산하고 크기를 비교.
      * @param pageNumber 페이지 쪽 수
-     * @return 페이지의 자릿수 합과 곱 중 큰 수를 반환
+     * @return 자릿수 합과 곱 중 더 큰
      */
     public static int CalculateDecimalPoint(int pageNumber){
         int pageSum = 0;
@@ -63,10 +64,9 @@ class Problem1 {
     public static int CompareNumbers(int number1, int number2){
         if(number1 > number2){
             return number1;
-        } else if (number1 <= number2) {
+        } else {
             return number2;
         }
-        return -1;
     }
 
     /** 예외사항 체크 메소드.
