@@ -12,11 +12,7 @@ public class Problem2 {
         String result = "";
 
         for (int i = 1; i < cryptogram.length(); i++) {
-            if (cryptogram.charAt(i) != cryptogram.charAt(i - 1)) {
-                curDuplicated = false;
-            } else {
-                curDuplicated = true;
-            }
+            curDuplicated = isCurDuplicated(cryptogram, i);
 
             if (!curDuplicated && !prevDuplicated) {
                 result += cryptogram.charAt(i - 1);
@@ -24,6 +20,13 @@ public class Problem2 {
             prevDuplicated = curDuplicated;
         }
         return result;
+    }
+
+    private static boolean isCurDuplicated(String cryptogram, int i) {
+        if (cryptogram.charAt(i) == cryptogram.charAt(i - 1)) {
+            return true;
+        }
+        return false;
     }
 
     public static String loopRemoveDuplicatedString(String cryptogram) {
