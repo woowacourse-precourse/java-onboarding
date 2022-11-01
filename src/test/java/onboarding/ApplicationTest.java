@@ -206,12 +206,7 @@ class ApplicationTest {
                     List.of("mj@email.com", "엠제이"),
                     List.of("onepiece@email.com", "원피수"),
                     List.of("onepisu@email.com", "원피수"),
-                    List.of("suonepi@email.com", "수원피"),
-                    List.of("suonepi@naver.com", "수원피스"),
-                    List.of("suonepi@abc.com", "피스피"),
-                    List.of("suonepiaaaaaaaaaaaaaaaaaa@abc.com", "피스"),
-                    List.of("suonepiaaaa@abc.com", ""),
-                    List.of("abcd@abc.com", "피스peace")
+                    List.of("suonepi@email.com", "수원피")
             );
             List<String> result = List.of("jason@email.com", "mj@email.com", "onepiece@email.com", "onepisu@email.com", "suonepi@email.com");
             assertThat(Problem6.solution(forms)).isEqualTo(result);
