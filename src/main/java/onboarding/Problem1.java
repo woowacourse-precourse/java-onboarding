@@ -5,6 +5,9 @@ import java.util.List;
 class Problem1 {
     static final int LEFT = 0;
     static final int RIGHT = 1;
+    static final int POBI_WIN = 1;
+    static final int CRONG_WIN = 2;
+    static final int DRAW = 0;
 
     private static int compare_left_right(List<Integer> pages){
         return Math.max(getMaxScores(pages.get(LEFT)),getMaxScores(pages.get(RIGHT)));
@@ -20,7 +23,10 @@ class Problem1 {
         return Math.max(tmp_add,tmp_mul);
     }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        int p_score = compare_left_right(pobi);
+        int c_score = compare_left_right(crong);
+        if(p_score>c_score) return POBI_WIN;
+        if(p_score<c_score) return CRONG_WIN;
+        else return DRAW;
     }
 }
