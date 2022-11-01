@@ -21,29 +21,33 @@ public class Problem2 {
         return solvedCryptogram;
     }
 
-    // 중복확인하는 함수
+
     static boolean checkOverlap(String str){
-        int count =0;
+        boolean isOverlaped= true;
         for(int i = 0; i < str.length()-1; i++){
-            if (str.charAt(i) == str.charAt(i + 1)) {
-                count =+1;
-                break;
-            }
+            isOverlaped= isCharContinuosOverlaped(str, isOverlaped, i);
         }
-        return count==0;
+        return isOverlaped;
+    }
+    static boolean isCharContinuosOverlaped(String str, boolean isOverlaped, int index){
+        if (str.charAt(index) == str.charAt(index + 1)) {
+            isOverlaped = false;
+        }
+        return isOverlaped;
     }
 
-    // 중복 제거하는 함수
     static String removeOverlap(String str){
-        char[] charArr = str.toCharArray();
-        for(int i = 0; i < charArr.length-1; i++){
-            if(charArr[i]==charArr[i+1]){
-                charArr[i]='@';//null
-                charArr[i+1]='@';
-            }
+        for(int i = 0; i < str.length()-1; i++){
+            str= ifOverlapedRemove(str,i);
         }
 
-        return new String(charArr).replaceAll("@", "");
+        return str;
+    }
+    static String ifOverlapedRemove(String str, int index){
+        if(str.charAt(index) ==str.charAt(index+1)){
+            str= str.substring(0, index)+str.substring(index+2, str.length());
+        }
+        return str;
     }
 
 }
