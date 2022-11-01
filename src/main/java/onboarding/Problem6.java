@@ -12,30 +12,34 @@ import java.util.stream.Collectors;
 
 public class Problem6 {
 	public static List<String> solution(List<List<String>> forms) {
-		HashMap<String, String> crewHashData = new HashMap<>();
-		for (List<String> form : forms) {
-			crewHashData.put(form.get(0), form.get(1));
-		}
+		HashMap<String, String> crewApplicationData = new HashMap<>();
+		inputApplicationData(forms, crewApplicationData);
 
-		Collection<String> crewNicknames = crewHashData.values();
-		HashSet<String> organizedEmails = new HashSet<>();
+		Collection<String> crewNicknamesToCheck = crewApplicationData.values();
+		HashSet<String> organizedEmailsToBeSent = new HashSet<>();
 
-		for (String name : crewNicknames) {
+		for (String name : crewNicknamesToCheck) {
 			for (int j = 0; j <= name.length() - 2; j++) {
 				String checkingWords = name.substring(j, j + 2);
 
-				Set<String> emailsToBeSent = getEmailsToBeSent(crewHashData, checkingWords);
-				checkDuplicateEmail(organizedEmails, emailsToBeSent);
+				Set<String> emailsToBeSent = getEmailsToBeSent(crewApplicationData, checkingWords);
+				checkDuplicateEmail(organizedEmailsToBeSent, emailsToBeSent);
 			}
 		}
 
-		Set<String> sortedEmails = getSortedSet(organizedEmails);
+		Set<String> sortedEmailsToBeSent = getSortedSet(organizedEmailsToBeSent);
 
-		return toList(sortedEmails);
+		return toList(sortedEmailsToBeSent);
 	}
 
-	private static Set<String> getEmailsToBeSent(HashMap<String, String> crewHashData, String checkingWords) {
-		return crewHashData.entrySet().stream()
+	private static void inputApplicationData(List<List<String>> forms, HashMap<String, String> crewApplicationData) {
+		for (List<String> form : forms) {
+			crewApplicationData.put(form.get(0), form.get(1));
+		}
+	}
+
+	private static Set<String> getEmailsToBeSent(HashMap<String, String> crewApplicationData, String checkingWords) {
+		return crewApplicationData.entrySet().stream()
 			.filter(entry -> entry.getValue().contains(checkingWords))
 			.map(Map.Entry::getKey)
 			.collect(Collectors.toSet());

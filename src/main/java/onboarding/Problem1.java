@@ -7,7 +7,7 @@ class Problem1 {
 		int pobiLeftPage = pobi.get(0);
 		int pobiRightPage = pobi.get(1);
 		int crongLeftPage = crong.get(0);
-		int crongRightPage= crong.get(1);
+		int crongRightPage = crong.get(1);
 		int result = 0;
 
 		int pobiLeftSum = 0;
@@ -21,11 +21,11 @@ class Problem1 {
 		int crongRightMultiple = 1;
 
 		result = checkException(pobiLeftPage, pobiRightPage);
-		if(result == -1) {
+		if (result == -1) {
 			return result;
 		}
 		result = checkException(crongLeftPage, crongRightPage);
-		if(result == -1) {
+		if (result == -1) {
 			return result;
 		}
 
@@ -40,7 +40,7 @@ class Problem1 {
 		crongRightMultiple = calculateMultiple(crongRightPage, crongRightMultiple);
 
 		int pobiLeftScore = Math.max(pobiLeftSum, pobiLeftMultiple);
-		int pobiRightScore= Math.max(pobiRightSum, pobiRightMultiple);
+		int pobiRightScore = Math.max(pobiRightSum, pobiRightMultiple);
 		int crongLeftScore = Math.max(crongLeftSum, crongLeftMultiple);
 		int crongRightScore = Math.max(crongRightSum, crongRightMultiple);
 
@@ -53,29 +53,29 @@ class Problem1 {
 	}
 
 	private static int checkException(int LeftPage, int RightPage) {
-		if (LeftPage % 2 == 0 || RightPage % 2 == 1 ) {
-			return  -1;
+		if (LeftPage % 2 == 0 || RightPage % 2 == 1) {
+			return -1;
 		}
-		if(LeftPage +1 != RightPage) {
-			return  -1;
+		if (LeftPage + 1 != RightPage) {
+			return -1;
 		}
-		if(LeftPage <= 1 || RightPage >= 400) {
-			return  -1;
+		if (LeftPage <= 1 || RightPage >= 400) {
+			return -1;
 		}
 		return 0;
 	}
 
-	private static int calculateSum (int page, int sum) {
+	private static int calculateSum(int page, int sum) {
 		while (page > 0) {
-			sum += page % 10 ;
+			sum += page % 10;
 			page /= 10;
 		}
 		return sum;
 	}
 
-	private static int calculateMultiple (int page, int multiple) {
+	private static int calculateMultiple(int page, int multiple) {
 		while (page > 0) {
-			multiple *= page % 10 ;
+			multiple *= page % 10;
 			page /= 10;
 		}
 		return multiple;
@@ -83,9 +83,9 @@ class Problem1 {
 
 	private static int findWinner(int pobiFinalScore, int crongFinalScore) {
 		int result;
-		if(pobiFinalScore > crongFinalScore) {
+		if (pobiFinalScore > crongFinalScore) {
 			result = 1;
-		} else if(pobiFinalScore < crongFinalScore) {
+		} else if (pobiFinalScore < crongFinalScore) {
 			result = 2;
 		} else {
 			result = 0;
