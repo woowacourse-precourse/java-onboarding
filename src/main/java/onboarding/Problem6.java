@@ -20,7 +20,6 @@ public class Problem6 {
                 getAnswerWithPart(nicknames, part, i);
             }
         }
-
         makeAnswer(forms, answer);
         Collections.sort(answer);
         answerIndexes.clear();
