@@ -8,6 +8,26 @@ public class Problem6 {
         return answer;
     }
 
+    // 4. 중복되는 사람들의 email 리스트 만들기
+    public static List<String> findDuplicateEmail(List<List<String>> forms, List<String> duplicateWords) {
+        List<String> emailList = new ArrayList<>();
+
+        String nickname = "";
+        String email = "";
+
+        int length = forms.size();
+
+        for(int i = 0 ; i < length; i++){
+            email  = forms.get(i).get(0);
+            nickname = forms.get(i).get(1);
+
+            if (checkDuplicateUser(nickname, duplicateWords)) emailList.add(email);
+        }
+
+        Collections.sort(emailList);
+        return emailList;
+    }
+
     // 5. 중복되는 닉네임인지 체크하기
     public static Boolean checkDuplicateUser(String nickname, List<String> duplicateWords) {
         for (String word : duplicateWords) {
