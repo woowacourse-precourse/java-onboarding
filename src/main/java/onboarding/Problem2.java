@@ -5,12 +5,6 @@ import java.util.Stack;
 
 public class Problem2 {
 
-//    public static void main(String[] args) {
-//        String ans = "goooing";
-//
-//        System.out.println(solution(ans));
-//    }
-
     public static String solution(String cryptogram) {
         String answer = crypto(cryptogram);
         return answer;

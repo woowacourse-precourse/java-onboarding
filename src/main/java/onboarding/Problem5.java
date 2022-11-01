@@ -6,15 +6,6 @@ import java.util.List;
 
 public class Problem5 {
 
-//    public static void main(String[] args) {
-//        List<Integer> a = solution(15000);
-//        if(!a.isEmpty()){
-//            for(int i=0; i<a.size(); i++){
-//                System.out.print(a.get(i)+" ");
-//            }
-//        }
-//    }
-
     public static List<Integer> solution(int money) {
         List<Integer> answer = new ArrayList<>();//예외 : Collections.emptyList();
         int temp=money;

@@ -1,9 +1,7 @@
 package onboarding;
 
 public class Problem3 {
-//    public static void main(String[] args) {
-//        solution(32);
-//    }
+
     public static int solution(int number) {
 
         int count=0;

@@ -38,9 +38,14 @@ public class Problem7 {
             }
         }
     }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
-        for(List<String> fr : friends){ //add : 리스트요소가 2인지 확인하기
+        for(List<String> fr : friends){
+            //add : 리스트요소가 2인지 확인하기
+            if(fr.size()>2){
+                System.out.println("error : friend is too much");
+            }
             adjFriend(fr, user);
         }
         //친구 점수 매기기
@@ -106,11 +111,7 @@ public class Problem7 {
 
     public static void testPrint(){
         for(int i=0; i<friendList.size(); i++){
-//            if(friendList.get(i).name=="mrko"){
-//                for(String name : friendList.get(i).friendList){
-//                    System.out.println(name);
-//                }
-//            }
+
             System.out.println("name : "+friendList.get(i).name+" score : "+ friendList.get(i).score);
         }
     }
@@ -153,44 +154,6 @@ public class Problem7 {
                     t.friendList.add(fr.get(0));
                 }
             }
-        } //friend - adjList 만들기
-
-
+        }
     }
-//    public static void main(String[] args) {
-//        String user = "mrko";
-//        List<List<String>> fr = new ArrayList<>();
-//
-//        List<String> temp = new ArrayList<>();
-//        temp.add("donut");temp.add("jun");
-//        fr.add(temp);
-//        temp = new ArrayList<>();
-//
-//        temp.add("donut");temp.add("andole");
-//        fr.add(temp);
-//        temp = new ArrayList<>();
-//        temp.add("donut");temp.add("mrko");
-//        fr.add(temp);
-//
-//        temp = new ArrayList<>();
-//        temp.add("shakevan");temp.add("andole");
-//        fr.add(temp);
-//        temp = new ArrayList<>();
-//        temp.add("shakevan");temp.add("jun");
-//        fr.add(temp);
-//        temp = new ArrayList<>();
-//        temp.add("shakevan");temp.add("mrko");
-//        fr.add(temp);
-//        List<String> visit = new ArrayList<>();
-//        visit.add("bedi");
-//        visit.add("bedi");
-//        visit.add("donut");
-//        visit.add("bedi");
-//        visit.add("shakevan");
-//
-//        List<String> answer = solution(user, fr, visit);
-//        for(String a : answer){
-//            System.out.println(a);
-//        }
-//    }
 }

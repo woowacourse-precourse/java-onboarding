@@ -38,12 +38,7 @@ class Problem1 {
             max = Math.max(sum, mul); //모두 곱하거나
         }
         return max;
-        //list가 null이  아니라면
-        //왼 , 오
-        //모두 더하기
-        // 모두 곱하기
-        //left max, right max 비교 -> winner
-        // 1이나 399는 나오지 않음.
+
     }
 
     private static List<Integer> separate(int page) {
