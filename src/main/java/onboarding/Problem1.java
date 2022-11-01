@@ -23,4 +23,15 @@ class Problem1 {
         int max = Math.max(sumResult, productResult);
         return max;
     }
+
+    // pobi와 crong 중 누가 최대인지 비교하기
+    public static int compareMax(int pobiMax, int crongMax) {
+        if (pobiMax > crongMax) {
+            return 1;
+        } else if (pobiMax < crongMax) {
+            return 2;
+        } else {
+            return 0;
+        }
+    }
 }
