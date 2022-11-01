@@ -6,27 +6,22 @@ import java.util.List;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        StringBuilder ans = new StringBuilder(cryptogram);
+        StringBuilder sb = new StringBuilder(cryptogram);
 
-        // 같은게 없는지 확인하는 변수
-        boolean check = true;
-        while(check){
-            check = false;
-            for(int i=0; i<ans.length(); i++){
-                //전의 알파벳과 동일한게 있다면 알파벳과 다른게 나올때까지 실행
-                if(ans.charAt(i) == ans.charAt(i+1)){
-                    for(int j=i+1; j<ans.length(); j++){
-                        //두번째 알파벳부터 삭제 시작
-                        if(ans.charAt(i) == ans.charAt(j))
-                            ans.deleteCharAt(j--);
-                    }
-                    ans.deleteCharAt(i);
-                    check = true;
+        // 0번 부터 길이-2번 까지
+        for (int i=0;i<sb.length()-1;i++) {
+            // 만약 같은게 나온다면 그 다음 문자들까지 같은지 확인 후 삭제
+            if (sb.charAt(i) == sb.charAt(i+1)) {
+                int j = i+1;
+                while(sb.charAt(i) == sb.charAt(j)){
+                    j++;
+                    if(j>=sb.length()) break;
                 }
+                sb.delete(i,j);
+                // 삭제를 하고 i번째를 다시 확인
+                i = i-1;
             }
-            if(!check) break;
         }
-        String answer = ans.toString();
-        return answer;
+        return sb.toString();
     }
 }
