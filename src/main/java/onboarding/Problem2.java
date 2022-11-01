@@ -4,8 +4,11 @@ public class Problem2 {
 
     private StringBuffer cryptograph = new StringBuffer();
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        Problem2 problem2 = new Problem2();
+
+        while(problem2.isHappenedDecryption());
+
+        return problem2.getDecodedCryptograph();
     }
 
     public String getDecodedCryptograph() {
