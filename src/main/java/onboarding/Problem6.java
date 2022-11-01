@@ -26,6 +26,9 @@ class TokenGroup{
     Set<String> getTokenKey(){
         return tokenGroup.keySet();
     }
+    HashMap<Integer, String> getTokenGroup(String tokenKey){
+        return tokenGroup.get(tokenKey);
+    }
 }
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
