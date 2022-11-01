@@ -19,4 +19,11 @@ public class Problem5 {
         countMoney(money);
         return countPaperMoneyList = Arrays.asList(countPaperMoney);
     }
+
+    public static void countMoney(int money) {
+        for (int i = 0; i < monetaryUnit.length; i++) {
+            countPaperMoney[i] = money / monetaryUnit[i];
+            money %= monetaryUnit[i];
+        }
+    }
 }
