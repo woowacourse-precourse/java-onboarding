@@ -7,7 +7,7 @@ public class Problem7 {
     private static final Map<String, Integer> userToScore = new HashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+
         Set<String> myFriends = new HashSet<>();
 
         friends.stream()
@@ -27,7 +27,6 @@ public class Problem7 {
                 .sorted(Map.Entry.comparingByKey())
                 .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
                 .map(Map.Entry::getKey)
-                .limit(5)
                 .collect(Collectors.toList());
     }
 
