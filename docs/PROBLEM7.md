@@ -24,3 +24,18 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능 목록
+- [ ] user의 친구 목록을 구하는 기능
+- [ ] friends의 원소의 2개의 아이디 중 1개가 user의 친구인지 확인
+- [ ] user의 친구면 user를 제외한 friends의 다른 원소를 추천 친구 목록에 추가 (10점 추가)
+- [ ] 방문자 중 user의 친구를 제외한 나머지를 추천 친구 목록에 추가 (1점 추가)
+- [ ] 친구 목록을 정렬한 후 최대 5명으로 제한
+
+### 예외 사항
+
+- [ ] user 의 길이가 1 이상 30 이하가 아닌 경우
+- [ ] friends 의 길이가 1 이상 10,000 이하가 아닌 경우
+- [ ] 아이디의 길이가 1 이상 30 이하가 아닌 경우
+- [ ] 아이디가 알파벳 소문자가 아닌 경우
+- [ ] visitors 의 길이가 0 이상 10,000 이하가 아닌 경우
