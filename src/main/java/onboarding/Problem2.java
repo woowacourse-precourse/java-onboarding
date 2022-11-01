@@ -6,6 +6,10 @@ public class Problem2 {
         String removedResult = cryptogram;
 
         while (!temp.equals(removedResult)) {
+            if (removedResult.length() == 1) {
+                break;
+            }
+
             temp = removedResult;
             removedResult = removeDuplicates(removedResult);
         }
