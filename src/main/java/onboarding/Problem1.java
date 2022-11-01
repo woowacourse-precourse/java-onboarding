@@ -18,36 +18,8 @@ class Problem1 {
         return (right - left != 1);
     }
 
-    public static int sumPage(List<Integer> list){
-        int sum = 0;
-        for (int i = 0; i < list.size(); i++) {
-            char[] chars = list.get(i).toString().toCharArray();
-            for(char x : chars){
-                sum += Integer.parseInt(String.valueOf(x));
-            }
-        }
-        return sum;
-    }
-    public static int multiplyPage(List<Integer> list){
-        int mul = 1;
-        for (int i = 0; i < list.size(); i++) {
-            char[] chars = list.get(i).toString().toCharArray();
-            for(char x : chars){
-                mul *= Integer.parseInt(String.valueOf(x));
-            }
-        }
-        return mul;
-    }
-
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if(hasError(pobi) || hasError(crong)) return -1;
-
-        int scorePobi = Math.max(sumPage(pobi),multiplyPage(pobi));
-        int scoreCrong = Math.max(sumPage(crong),multiplyPage(crong));
-
-        if(scorePobi > scoreCrong) return 1;
-        if(scoreCrong > scorePobi) return 2;
-
-        return 0;
+        int answer = 0;
+        return answer;
     }
 }
