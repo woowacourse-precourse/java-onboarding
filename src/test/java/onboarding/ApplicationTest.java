@@ -46,13 +46,13 @@ class ApplicationTest {
 
         @Test
         void case2() {
-            String cryptogram = "zyellleyz";
+            String cryptogram = "zyelleyz";
             String result = "";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
         @Test
         void case3(){
-            String cryptogram = "abbbaa";
+            String cryptogram = "acccabba";
             String result = "a";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
@@ -133,6 +133,17 @@ class ApplicationTest {
             );
             List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
             List<String> result = List.of("andole", "jun", "bedi");
+            assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+        }
+        @Test
+        void case2() {
+            String user = "mrko";
+            List<List<String>> friends = List.of(
+                    List.of("donut", "mrko"),
+                    List.of("shakevan", "mrko")
+            );
+            List<String> visitors = List.of("donut", "shakevan");
+            List<String> result = List.of();
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
         }
     }
