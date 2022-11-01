@@ -45,11 +45,15 @@ public class Problem7 {
                 map.put(visitors.get(i), map.getOrDefault(visitors.get(i),
                     0) + 1);
         }
-
-
-
-    }
-
+        entryList.sort(new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                return o2.getValue() - o1.getValue();
+            }
+        });
+        for (String key : map.keySet()) {
+            answer.add(key);
+        }
 
         return answer;
     }
