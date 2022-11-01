@@ -1,6 +1,7 @@
 package onboarding;
 
 public class Problem2 {
+    private static boolean flag = true;
     private static String removeDuplicatedChar(String str){
         String modifiedStr = "";
         str+= " ";
@@ -13,12 +14,18 @@ public class Problem2 {
                 isDuplicate = false;
             } else {
                 isDuplicate = true;
+                flag = true;
             }
         }
         return modifiedStr;
     }
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String answer = cryptogram;
+        while (flag) {
+            flag =false;
+            answer = removeDuplicatedChar(answer);
+        }
+        flag = true;
         return answer;
     }
 }
