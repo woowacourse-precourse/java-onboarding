@@ -19,11 +19,11 @@ public class Problem2 {
         return decodingCryptogram(cryptogram);
     }
 
-    private static void isProperCryptogram(String cryptogram){
+    private static void isProperCryptogram(String cryptogram) {
         if (!cryptogram.matches(LOWERCASE)) {
             throw new IllegalArgumentException("암호문은 소문자로만 이루어져 있어야합니다.");
         }
-        if(cryptogram.length()<MIN_LENGTH || cryptogram.length()>MAX_LENGTH) {
+        if (cryptogram.length() < MIN_LENGTH || cryptogram.length() > MAX_LENGTH) {
             throw new IllegalArgumentException("암호문의 길이는 1이상 1000이하인 문자열입니다.");
         }
     }
@@ -33,7 +33,7 @@ public class Problem2 {
         stack.push(cryptogram.charAt(0));
         for (int i = 1; i < cryptogram.length(); i++) {
             if (!stack.empty() && stack.peek().equals(cryptogram.charAt(i))) stack.pop();
-            else if (cryptogram.charAt(i-1) == cryptogram.charAt(i)) ;
+            else if (cryptogram.charAt(i - 1) == cryptogram.charAt(i)) ;
             else stack.push(cryptogram.charAt(i));
         }
         return stack.stream()
