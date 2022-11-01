@@ -79,8 +79,8 @@ public class Problem7 {
         List<String> rank = new ArrayList<>();
         List<Map.Entry<String, Integer>> entryList = new LinkedList<>(pointMap.entrySet());
 
-        entryList.sort((Map.Entry<String, Integer> s1, Map.Entry<String, Integer> s2)
-                -> s2.getValue() - s1.getValue());
+        entryList.sort((Map.Entry<String, Integer> s1, Map.Entry<String, Integer> s2) ->
+                s2.getValue() - s1.getValue());
 
         for(Map.Entry<String, Integer> entry : entryList) {
             if(rank.size() == MAX_PEOPLE) {
