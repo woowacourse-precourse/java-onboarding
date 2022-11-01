@@ -2,10 +2,10 @@ package onboarding;
 
 import java.util.List;
 
-class Problem1 {
+public class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         try {
-            validateInput(pobi, crong);
+            Validate.problem1Input(pobi, crong);
             int pobiMax = getMaxValueFromList(pobi);
             int crongMax = getMaxValueFromList(crong);
             if (pobiMax > crongMax) {
@@ -19,7 +19,41 @@ class Problem1 {
         }
     }
 
-    public static void validateInput(List<Integer> pobi, List<Integer> crong) {
+    public static int getMaxValueFromList(List<Integer> intList) {
+        int leftPageNum = intList.get(0);
+        int rightPageNum = intList.get(1);
+        return Math.max(getMaxValueFromNumber(leftPageNum), getMaxValueFromNumber(rightPageNum));
+    }
+
+    public static int getMaxValueFromNumber(int number) {
+        int sum = getSumOfDigits(number);
+        int product = getProductOfDigits(number);
+        return Math.max(sum, product);
+    }
+
+    public static int getSumOfDigits(int number) {
+        int sum = 0;
+        do {
+            int lsn = number % 10;
+            sum += lsn;
+            number /= 10;
+        } while (number > 0);
+        return sum;
+    }
+
+    public static int getProductOfDigits(int number) {
+        int product = 1;
+        do {
+            int lsn = number % 10;
+            product *= lsn;
+            number /= 10;
+        } while (number > 0);
+        return product;
+    }
+}
+
+class Validate {
+    public static void problem1Input(List<Integer> pobi, List<Integer> crong) {
         int pobiLeft = pobi.get(0);
         int pobiRight = pobi.get(1);
         int crongLeft = crong.get(0);
@@ -32,22 +66,4 @@ class Problem1 {
             throw new IllegalArgumentException("Invalid input value");
         }
     }
-
-    public static int getMaxValueFromList(List<Integer> intList) {
-        int first = intList.get(0);
-        int second = intList.get(1);
-        return Math.max(getMaxValueFromNumber(first), getMaxValueFromNumber(second));
-    }
-
-    public static int getMaxValueFromNumber(int number) {
-        int sum = 0, product = 1;
-        do {
-            int lsn = number % 10;
-            sum += lsn;
-            product *= lsn;
-            number = number / 10;
-        } while (number != 0);
-        return Math.max(sum, product);
-    }
-
 }
