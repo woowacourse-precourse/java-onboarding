@@ -14,7 +14,8 @@ class Problem2Test {
 
     @Test
     void 중복문자_없을때까지_제거() {
-        assertThat(rereplace(input)).isEqualTo("brown");
+        assertThat(solution(input)).isEqualTo("brown");
+        assertThat(solution("jualllauj")).isEqualTo("");
     }
 
     private String rereplace(String input){
