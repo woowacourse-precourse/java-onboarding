@@ -3,7 +3,7 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
-    class Pair implements Comparable<Pair>{
+    static class Pair implements Comparable<Pair>{
         int first;
         String second;
 
@@ -17,7 +17,7 @@ public class Problem7 {
             if(this.first == p.first)
                 return this.second.compareTo(p.second);
             else
-                return Integer.compare(this.first, p.first);
+                return Integer.compare(p.first, this.first);
         }
     }
     public static void SetFriendList(List<List<String>> friends, HashSet<String> friendList, String user)
@@ -81,14 +81,21 @@ public class Problem7 {
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<String>();
+        List<Pair> pairs = new ArrayList<Pair>();
         HashSet<String> friendList = new HashSet<String>();
         HashMap<String, Integer> notFriendList = new HashMap<String, Integer>();
+
         SetFriendList(friends, friendList, user);
         SetNotFriendList(friends, friendList, notFriendList, visitors, user);
-
         SetFriendScore(friends, friendList, notFriendList);
         SetVisitorScore(visitors, notFriendList);
+
+        for (Map.Entry<String, Integer> entry : notFriendList.entrySet())
+            pairs.add(new Pair(entry.getValue(), entry.getKey()));
+        pairs.sort(Comparator.naturalOrder());
+        for (int i = 0; i < pairs.size() && i < 5; i++)
+            answer.add(pairs.get(i).second);
         return answer;
     }
 }
