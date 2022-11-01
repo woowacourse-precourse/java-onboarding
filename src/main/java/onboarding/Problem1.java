@@ -4,9 +4,24 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<String> pobi, List<String> crong) {
+        int pobiMax = 0;
+        int crongMax = 0;
+        int returnValue = 0;
 
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        if (exception(pobi, crong) == 0) {
+            pobiMax = maxValue(pobiValueSetting(pobi));
+            crongMax = maxValue(crongValueSetting(crong));
+            if (pobiMax > crongMax)
+                returnValue = 1;
+            else if (pobiMax < crongMax) {
+                returnValue = 2;
+            } else if (pobiMax == crongMax)
+                returnValue = 0;
+        }
+        else
+            return exception(pobi, crong);
+
+        return returnValue;
     }
 
     public static int exception(List<String> pobi, List<String> crong) {
