@@ -18,6 +18,15 @@ public class Problem6 {
     public static List<String> emailClassific(List<List<String>> forms) { //이메일 분류
         List<String> answer = new ArrayList<>();
 
+        for (int i = 0; i < forms.size() - 1; i++) {
+            for (int j = i + 1; j < forms.size(); j++) {
+                boolean isValid = checkOverlap(forms.get(i).get(1), forms.get(j).get(1));
+                if (isValid) {
+                    answer.add(forms.get(i).get(0));
+                    answer.add(forms.get(j).get(0));
+                }
+            }
+        }
         return answer;
     }
 
@@ -25,6 +34,7 @@ public class Problem6 {
         List<String> answer = List.of("answer"); //연속되는 닉네임의 이메일 주소 담아야 함
 
         answer = emailClassific(forms); //forms 받아서 중복자 찾을거임
+        Collections.sort(answer);
 
         return answer;
     }
