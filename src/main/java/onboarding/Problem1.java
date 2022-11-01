@@ -10,6 +10,9 @@ class Problem1 {
         if (validateNum(pobi) == -1 || validateNum(crong) == -1)
             return -1;
 
+        int pobiScore = getScore(pobi);
+        int crongScore = getScore(crong);
+
         return answer;
     }
     // 페이지가 맞으면 1, 아니면 -1
@@ -22,6 +25,15 @@ class Problem1 {
             return  -1;
 
         return 1;
+    }
+    private static int getScore(List<Integer> lst) {
+        int leftScore = 0;
+        int rightScore = 0;
+
+        leftScore = Math.max(addDigit(lst.get(0)), multiplyDigit(lst.get(0)));
+        rightScore = Math.max(addDigit(lst.get(1)), multiplyDigit(lst.get(1)));
+
+        return Math.max(leftScore, rightScore);
     }
 
     private static int addDigit(int num) {
@@ -39,7 +51,7 @@ class Problem1 {
         return sum;
     }
 
-    private static int muliplyDigit(int num) {
+    private static int multiplyDigit(int num) {
         int sum = 1;
 
         String[] arr = String.valueOf(num).split("");
