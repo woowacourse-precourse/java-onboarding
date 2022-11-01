@@ -60,6 +60,7 @@ public class Problem7 {
             scoreTable.put(friend, scoreTable.getOrDefault(friend, 1) + score);
     }
 
+
     public static List<String> FinalResult(HashMap<String, Integer> scoreTable,
                                   Map<String, List<String>> friendship, String user, int maxSize) {
         List<String> result = new ArrayList<>();
