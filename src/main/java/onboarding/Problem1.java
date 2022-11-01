@@ -21,7 +21,6 @@ class Problem1 {
 		int crongScore = getScore(crong);
 
 		answer = getWinner(pobiScore, crongScore);
-
 		return answer;
 	}
 
