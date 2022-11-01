@@ -16,6 +16,8 @@ class Problem1 {
         /**
          * 점수 계산
          */
+        Integer pobiScore = getScore(pobi);
+        Integer crongScore = getScore(crong);
 
         /**
          * 반환
@@ -53,4 +55,10 @@ class Problem1 {
         return Math.max(sum, multi);
     }
 
+    private static Integer getScore(List<Integer> pages){
+        Integer left = pages.get(0);
+        Integer right = pages.get(1);
+
+        return Math.max(calScore(left), calScore(right));
+    }
 }
