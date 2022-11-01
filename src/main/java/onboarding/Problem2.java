@@ -3,19 +3,28 @@ package onboarding;
 public class Problem2 {
     public static String solution(String cryptogram) {
         StringBuilder decode = new StringBuilder(cryptogram);
-        boolean chk = true;
-
-        while (chk) {
-            chk = false;
-            for (int i = 1; i < decode.length(); i++) {
-                if (decode.charAt(i) == decode.charAt(i - 1)) {
-                    decode.replace(i - 1, i + 1, "");
-                    chk = true;
-                    i--;
+        boolean chk = false;
+        int start = 0;
+        int i;
+        for ( i = 1; i < decode.length(); i++) {
+            if (decode.charAt(start) == decode.charAt(i)) {
+                chk = true;
+            } else{
+                if(chk){
+                    decode.replace(start, i , "");
+                    start--;
+                    i = start;
+                    chk = false;
+                } else{
+                    start = i;
                 }
             }
         }
 
+        if (chk) {
+            decode.replace(start, i , "");
+        }
+        System.out.println(decode.toString());
         return decode.toString();
     }
 }
