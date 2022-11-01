@@ -1,9 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
@@ -11,41 +9,38 @@ public class Problem2 {
         result = checkString(cryptogram);
         return result;
     }
-    static String checkString(String str) {
-        while(validCheck(str)){
-            str = catchSameIndex(str);
+    public static String checkString(String cryptogram) {
+        while(validCheck(cryptogram)){
+            cryptogram = catchSameIndex(cryptogram);
         }
-
-        return str;
+        return cryptogram;
     }
-    static String catchSameIndex(String str){
+    public static String catchSameIndex(String string){
         List<Integer> index = new ArrayList<>();
-        for(int i=0; i<str.length()-1; i++) {
-            if(str.charAt(i) == str.charAt(i+1)) {
+        for(int i=0; i<string.length()-1; i++) {
+            if(string.charAt(i) == string.charAt(i+1)) {
                 index.add(i);
                 index.add(i+1);
             }
         }
-        return splitString(str, index);
+        return splitString(string, index);
     }
-    static String splitString(String str, List<Integer> index) {
+    public static String splitString(String string, List<Integer> index) {
         String newstring = "";
-        for(int i=0; i<str.length(); i++) {
+        for(int i=0; i<string.length(); i++) {
             if(checkIndex(i,index)) continue;
-            newstring += str.charAt(i);
+            newstring += string.charAt(i);
         }
         index.clear();
-        //if(index!=str.length()-2) newstring += str.charAt(str.length()-1);
         return newstring;
     }
-    static boolean checkIndex(int num, List<Integer> index){
+    private static boolean checkIndex(int num, List<Integer> index){
         for(int i=0; i<index.size(); i++){
             if(num==index.get(i)) return true;
         }
         return false;
     }
-
-    static boolean validCheck(String str){
+    private static boolean validCheck(String str){
         for(int i=0; i<str.length()-1; i++){
             if(str.charAt(i)==str.charAt(i+1)) return true;
         }
