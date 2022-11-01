@@ -1,40 +1,25 @@
 package onboarding;
 
+import java.util.Stack;
+
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = delete(cryptogram);
+        Stack<Character> stack = new Stack<>();
+
+        for (int i = 0; i < cryptogram.length(); i++) {
+            char curr = cryptogram.charAt(i);
+
+            if (stack.empty()) stack.add(curr);
+            else {
+                char prev = stack.peek();
+
+                if (curr != prev) stack.add(curr);
+                else stack.pop();
+            }
+        }
+        String answer = "";
+        for (char s : stack) answer += s;
 
         return answer;
-    }
-
-
-    public static String delete(String str) {
-        if (str.equals("")) {
-            return str;
-        }
-
-        int N = str.length();
-        String newStr = "";
-
-        char prev = str.charAt(0);
-        for (int i = 1; i < N; i++) {
-            char curr = str.charAt(i);
-            if (prev == curr) {
-                prev = ' ';
-            } else {
-                if (prev != ' ') {
-                    newStr += prev;
-                }
-                prev = curr;
-            }
-            if (i == N-1) {
-                newStr += prev;
-            }
-        }
-        if (N == newStr.length()) {
-            return newStr;
-        } else {
-            return delete(newStr);
-        }
     }
 }
