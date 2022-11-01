@@ -11,31 +11,8 @@ public class Problem4 {
         }
         return (char)elementascii;
     }
-
-    static char changeLowerElement (char element) {
-        int elementascii = element;
-        if (elementascii >= 97 && elementascii <= 109) {
-            elementascii = 110 + (109 - elementascii);
-        }else if (elementascii <= 122 && elementascii > 109) {
-            elementascii = 109 - (elementascii - 110);
-        }
-        return (char)elementascii;
-    }
     public static String solution(String word) {
         String answer = "";
-
-        for (int i = 0; i < word.length(); i++) {
-            char element = word.charAt((i));
-            if ((int)element == 32) {
-                answer += " ";
-            }else if (Character.isUpperCase(element)) {
-                answer += changeUpperElement(element);
-            }else {
-                answer += changeLowerElement(element);
-            }
-        }
-
-
         return answer;
     }
 }
