@@ -21,7 +21,8 @@ class Problem1 {
         } else if(pobiLeftPage == 1 || pobiRightPage == 400 || crongLeftPage == 1 || crongRightPage == 400) { // 예외사항 2
             answer = -1;
         } else { // 예외사항이 없을 경우
-
+            int pobiScore = Math.max(Math.max(getPageSum(pobiLeftPage), getPageMul(pobiLeftPage)), Math.max(getPageSum(pobiRightPage), getPageMul(pobiRightPage))); // 포비의 점수
+            int crongScore = Math.max(Math.max(getPageSum(crongLeftPage), getPageMul(crongLeftPage)), Math.max(getPageSum(crongRightPage), getPageMul(crongRightPage))); // 크롱의 점수
         }
         return answer;
     }
