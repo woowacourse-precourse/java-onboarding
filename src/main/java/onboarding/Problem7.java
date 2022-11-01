@@ -38,6 +38,19 @@ public class Problem7 {
             return result;
         });
 
+        // 결과 정리 (이미 친구인 사람 제외하여 점수 순으로 추가)
+        int i = 0;
+        for(Map.Entry<String, Integer> entry : list_entries) {
+            // 5명이 넘어가면 중단한다. (5명까지만 친구추천)
+            if(i++ >= 5)
+                break;
+
+            // 친구추천 목록(answer)에 추가
+            String name = entry.getKey();
+            if(name != user && !userTable.get(user).findFriend(name))
+                answer.add(name);
+        }
+
         return answer;
     }
 
