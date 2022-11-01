@@ -1,10 +1,6 @@
 package onboarding;
 
 public class Problem4 {
-    public static void main(String[] args) {
-        String word = "I love you";
-        System.out.println(solution(word));
-    }
     public static String solution(String word) {
         StringBuilder sb = new StringBuilder();
         int strLen = word.length();
@@ -22,5 +18,9 @@ public class Problem4 {
         }
 
         return sb.toString();
+    }
+
+    private static int upperToLower(int word) {
+        return 90 - ((int) word - 65);
     }
 }
