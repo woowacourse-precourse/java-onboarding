@@ -36,7 +36,7 @@ public class Problem7 {
         HashMap<String, Integer> scoreMap = new HashMap<>();
 
         scoreMap = friendsListMap(user, friends, visitors);
-        System.out.println(scoreMap.keySet());
+        System.out.println(scoreMap);
 
         return answer;
     }
@@ -45,15 +45,21 @@ public class Problem7 {
         HashMap<String, Integer> scoreMap = new HashMap<>();
 
         for (List<String> withFriend : friends) { // 함께 아는 친구를 map에 저장
-            if (withFriend.get(1) == user || scoreMap.containsKey(withFriend.get(1)))  // 본인이거나 map에 이미 친구가 있을 떄 반복문 중단
+            String friendName = withFriend.get(1);
+
+            if (friendName == user)  // 본인일 때
                 continue;
-            scoreMap.put(withFriend.get(1), 0);
+            else if (scoreMap.containsKey(friendName)) { // map에 이미 존재
+                scoreMap.put(friendName, scoreMap.get(friendName)+10); // +10점
+                continue;
+            }
+            scoreMap.put(friendName, 10);
         }
 
-        for (String friend : visitors) {  // 방문자를 map에 저장
-            if (scoreMap.containsKey(friend)) // map에 이미 친구가 있을 떄 반복문 중단
+        for (String friendName : visitors) {  // 방문자를 map에 저장
+            if (scoreMap.containsKey(friendName)) // map에 이미 친구가 있을 떄 반복문 continue
                 continue;
-            scoreMap.put(friend, 0);
+            scoreMap.put(friendName, 0);
         }
 
         return scoreMap;
