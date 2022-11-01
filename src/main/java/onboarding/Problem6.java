@@ -1,8 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Problem6 {
 
@@ -12,7 +10,7 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
 
         map = new HashMap<String,Integer>();
-        visit = new boolean[10001];
+        visit = new boolean[forms.size()];
         listCheck(forms);
         List<String> answer=overlapResult(forms);
         return answer;
@@ -49,6 +47,8 @@ public class Problem6 {
         for(int i=0;i<forms.size();i++){
             if(visit[i]==true) result.add(forms.get(i).get(0));
         }
+
+        Collections.sort(result);
 
         return result;
     }
