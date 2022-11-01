@@ -12,6 +12,7 @@ public class Problem7 {
         List<String> userFriends = friendList(user, friends);
         HashMap<String, Integer> recommendScore = acquaintance(friends, userFriends);
         numOfVisit(recommendScore, visitors);
+        List<String> sortedList = sortByValues(recommendScore);
 
         return answer;
     }
@@ -46,5 +47,12 @@ public class Problem7 {
         for (String visitor : visitors) {
             recommendScore.put(visitor, recommendScore.getOrDefault(visitor, 0)+1);
         }
+    }
+
+    private static List<String> sortByValues(HashMap<String, Integer> map) {
+        List<String> sortedList = new ArrayList<>(map.keySet());
+        Collections.sort(sortedList);
+        Collections.sort(sortedList, (value1, value2) -> (map.get(value2).compareTo(map.get(value1))));
+        return sortedList;
     }
 }
