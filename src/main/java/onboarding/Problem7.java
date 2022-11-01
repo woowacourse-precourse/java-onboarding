@@ -12,58 +12,71 @@ import java.util.*;
 
 public class Problem7 {
     public static String User;
-    public static List<String> Visitors;
-    public static HashMap<String, Integer> FriendScore;
+    public static HashMap<String, Integer> FriendScore= new HashMap<>();
+    public static List<String> FriendsOfUser = new ArrayList<>();
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         User=user;
-        Visitors=visitors;
 
-        List<String> friendOfUsers= searchFriendsOfUser(friends);
-        HashMap<String, ArrayList<String>> anotherFriends = getAnotherFriend(friendOfUsers, friends);
+        searchFriendsOfUser(friends);
+        HashMap<String, ArrayList<String>> anotherFriends = getAnotherFriend(FriendsOfUser, friends);
         ArrayList<String> overlapedFriend = getOverlapedFriend(anotherFriends);
 
-        FriendScore = plusTen(overlapedFriend);
-        plusOne(friendOfUsers);
+        plusTen(overlapedFriend);
+        plusOne(FriendsOfUser, visitors);
         return getRecommendedFiveFriends(FriendScore);
     }
 
-    static List<String> searchFriendsOfUser(List<List<String>> friends){
-        List<String> friendOfUser = new ArrayList<>();
-
+    static void searchFriendsOfUser(List<List<String>> friends){
         for (List<String> friendArray : friends) {
-            for (int friendIndex = 0; friendIndex < 2; friendIndex++) {
-                int friendOfUserIndex=(1 - friendIndex);
-
-                if (friendArray.get(friendIndex).equals(User)) {
-                    friendOfUser.add(friendArray.get(friendOfUserIndex));
-                }
-            }
+            getUserContainedArray(friendArray);
         }
-        return friendOfUser;
+    }
+    static void getUserContainedArray(List<String> friendArray){
+        for (int friendIndex = 0; friendIndex < 2; friendIndex++) {
+            getFriendOfUser(friendArray, friendIndex);
+        }
+    }
+    static void getFriendOfUser(List<String> friendArray, int friendIndex){
+        int friendOfUserIndex=(1 - friendIndex);
+
+        if (friendArray.get(friendIndex).equals(User)) {
+            FriendsOfUser.add(friendArray.get(friendOfUserIndex));
+        }
     }
 
     static HashMap<String, ArrayList<String>> getAnotherFriend(List<String> friendsOfUser,
                                                                List<List<String>> friends){
-        HashMap<String, ArrayList<String>> AnotherFriendList=new HashMap<String, ArrayList<String>>();
+        HashMap<String, ArrayList<String>> AnotherFriendList=new HashMap<>();
 
         for (String friendOfUser : friendsOfUser) {
-            ArrayList<String> AnotherFriend = new ArrayList<String>();// 얘가 주인공
-            AnotherFriend.clear();
-            for (List<String> friendArray : friends) {
-                for (int index = 0; index < 2; index++) {
-                    int anotherFriendIndex= (1 - index);
-
-                    if (friendArray.get(index).equals(friendOfUser)
-                            &&
-                            !friendArray.get(anotherFriendIndex).equals(User)) {
-                        AnotherFriend.add(friendArray.get(anotherFriendIndex));
-                    }
-                }
-            }
-            AnotherFriendList.put(friendOfUser, AnotherFriend);
+            ArrayList<String> anotherFriend = new ArrayList<String>();// 얘가 주인공
+            anotherFriend.clear();
+            anotherFriend= getAnotherFriend(friendOfUser, friends, anotherFriend);
+            AnotherFriendList.put(friendOfUser, anotherFriend);
         }
         return AnotherFriendList;
     }
+
+    static ArrayList<String> getAnotherFriend(String friendOfUser,
+                                              List<List<String>> friends,
+                                              ArrayList<String> AnotherFriend){
+        for (List<String> friendArray : friends) {
+            for (int index = 0; index < 2; index++) {
+                int anotherFriendIndex= (1 - index);
+
+                if (friendArray.get(index).equals(friendOfUser)
+                        &&
+                        !friendArray.get(anotherFriendIndex).equals(User)) {
+                    AnotherFriend.add(friendArray.get(anotherFriendIndex));
+                }
+            }
+        }
+        return AnotherFriend;
+    }
+
+
+
 
     static ArrayList<String> findOverlapFriend(ArrayList<String> ArrayListfriend1, ArrayList<String> ArrayListfriend2){
         ArrayList<String> overlapedFriend = new ArrayList<String>();
@@ -90,26 +103,22 @@ public class Problem7 {
         return overlapedFriends;
     }
 
-    static HashMap<String, Integer> plusTen(ArrayList<String> overlapedFriends){
-        HashMap<String, Integer> friendScore = new HashMap<String, Integer>();
+    static void plusTen(ArrayList<String> overlapedFriends){
 
         for (String overlapedFriend : overlapedFriends) {
-            friendScore.put(overlapedFriend, 10);
+            FriendScore.put(overlapedFriend, 10);
         }
-
-        return friendScore;
     }
 
-    static void plusOne(List<String> friendOfUsers){
+    static void plusOne(List<String> friendOfUsers, List<String> visitors){
 
-        for(String visitor: Visitors){
+        for(String visitor: visitors){
             if(FriendScore.containsKey(visitor) && !friendOfUsers.contains(visitor)){
                 FriendScore.put(visitor, FriendScore.get(visitor)+1);
             }else if(!friendOfUsers.contains(visitor)){
                 FriendScore.put(visitor, 1);
             }
         }
-
     }
     static ArrayList<String> getRecommendedFiveFriends(HashMap<String, Integer> friendScore){
         ArrayList<String> recommendedFriends = new ArrayList<>(friendScore.keySet());
@@ -125,9 +134,8 @@ public class Problem7 {
             for(int i=0; i<5; i++){
                 recommendFiveFriends.add(recommendedFriends.get(i));
             }
-        }else{
-            recommendFiveFriends= recommendedFriends;
         }
+        recommendFiveFriends= recommendedFriends;
 
         return recommendFiveFriends;
 
