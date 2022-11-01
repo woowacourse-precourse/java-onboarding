@@ -17,6 +17,12 @@ public class Problem6 {
         List<String> answer = List.of("answer");
         return answer;
     }
+    private static boolean checkEquals(String nickname1, String nickname2, int i, int j) {
+        if (nickname1.substring(i, i + 2).equals(nickname2.substring(j, j + 2))) {
+            return true;
+        }
+        return false;
+    }
     private static void validateNickName(List<List<String>> forms) {
         for (int i = 0; i < forms.size(); i++) {
             String nickName = forms.get(i).get(1);
