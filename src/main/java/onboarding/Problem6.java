@@ -22,6 +22,24 @@ public class Problem6 {
     }
 
     private static void checkSubsetList(String name, String email) {
+        String subset[] = new String[name.length() - 1];
+        for (int i = 0; i < name.length() - 1; i++) {
+            subset[i] = name.substring(i, i + 2);
+        }
+        for (int i = 0; i < subset.length; i++) {
+            if(subsetList.containsKey(subset[i])) {
+                if(subsetList.get(subset[i]).equals(email)) {
+                    continue;
+                }
+                else {
+                    duplicateEmails.add(subsetList.get(subset[i]));
+                    duplicateEmails.add(email);
+                }
+            }
+            else {
+                subsetList.put(subset[i], email);
+            }
+        }
     }
 
     public static List<String> solution(List<List<String>> forms) {
