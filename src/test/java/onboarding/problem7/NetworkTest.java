@@ -13,25 +13,20 @@ public class NetworkTest {
 	@Test
 	@DisplayName("친구를 점수순으로 최대 5명 추천한다")
 	void recommend_friends_maximum_five_score_ordered() {
+		String user = "mrko";
 		List<List<String>> relationships = List.of(
 			List.of("donut", "andole"),
 			List.of("donut", "jun"),
 			List.of("donut", "mrko"),
-			List.of("donut", "aaa"),
-			List.of("donut", "bbb"),
-			List.of("donut", "ccc"),
-			List.of("shakevan", "ccc"),
-			List.of("shakevan", "bbb"),
-			List.of("shakevan", "aaa"),
 			List.of("shakevan", "andole"),
 			List.of("shakevan", "jun"),
 			List.of("shakevan", "mrko")
 		);
 		List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+		List<String> result = List.of("andole", "jun", "bedi");
 		Network network = new Network(relationships, visitors);
 
-		assertThat(network.recommendFriendsFor("mrko")).hasSizeLessThanOrEqualTo(5);
-		assertThat(network.recommendFriendsFor("mrko")).contains("aaa", "andole", "bbb", "ccc", "jun");
+		assertThat(network.recommendFriendsFor(user)).isEqualTo(result);
 	}
 
 	@Test
