@@ -49,6 +49,13 @@ class Problem1 {
         return page.size() == 2;
     }
 
+    public static boolean checkLeftPageOddRightPageEven(List<Integer> page) {
+        if (!(page.get(0) % 2 == 1 && page.get(1) % 2 == 0)) {
+            return false;
+        }
+        return true;
+    }
+
     public static int pageSum(Integer page) {
         int pageSum = 0;
         Integer pageCheck = page;
