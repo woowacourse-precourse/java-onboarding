@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
+import java.util.TreeMap;
 
 public class Problem7 {
 
@@ -31,6 +32,15 @@ public class Problem7 {
             add_relationship(user1, user2);
             add_relationship(user2, user1);
         }
+
+    }
+
+    static void get_score_map(String user, List<String> visitors){
+
+        score_map = new TreeMap<>();
+
+        consider_friend_of_friend(user);
+        consider_visitor(user, visitors);
 
     }
 
