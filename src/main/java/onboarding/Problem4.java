@@ -3,6 +3,13 @@ package onboarding;
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
+        char[] chars = word.toCharArray();
+        StringBuilder sb = new StringBuilder();
+        for (char c: chars) {
+            sb.append(changeCharacter(c));
+        }
+
+        answer = sb.toString();
         return answer;
     }
 
