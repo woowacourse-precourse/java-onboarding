@@ -16,6 +16,20 @@ public class Problem7 {
         return relation;
     }
 
+    public static Map<String, Integer> makeScoreTable(String user, Map<String, List<String>> friendTable, List<String> bestFriends) {
+        Map<String, Integer> scoreTable = new TreeMap<>();
+
+        for (String bestFriend : bestFriends) {
+            for (String friendOfBestFriend : friendTable.get(bestFriend)) {
+                if (!friendOfBestFriend.equals(user)) {
+                    if (!scoreTable.containsKey(friendOfBestFriend)) scoreTable.put(friendOfBestFriend, 10);
+                    else scoreTable.put(friendOfBestFriend, scoreTable.get(friendOfBestFriend) + 10);
+                }
+            }
+        }
+        return scoreTable;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
