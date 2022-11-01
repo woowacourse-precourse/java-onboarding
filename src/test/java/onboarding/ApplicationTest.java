@@ -238,7 +238,6 @@ class ApplicationTest {
     void case4() {
       int money = 0;
       List<Integer> result = List.of(1, 0, 0, 0, 0, 2, 0, 3, 7);
-      //assertThat(Problem5.solution(money)).isEqualTo(result);
       assertThatThrownBy(() -> {
         Problem5.solution(money);
       }).isInstanceOf((IllegalArgumentException.class));
@@ -248,7 +247,6 @@ class ApplicationTest {
     void case5() {
       int money = 1000005;
       List<Integer> result = List.of(1, 0, 0, 0, 0, 2, 0, 3, 7);
-      //assertThat(Problem5.solution(money)).isEqualTo(result);
       assertThatThrownBy(() -> {
         Problem5.solution(money);
       }).isInstanceOf((IllegalArgumentException.class));
@@ -556,7 +554,7 @@ class ApplicationTest {
     }
 
     @Test
-    void OnlyinVisitor() {    //when u should sort visitors only
+    void OnlyinVisitor() {
       String user = "dayun";
       List<List<String>> friends = List.of(
           List.of("donut", "andole"),
@@ -570,7 +568,7 @@ class ApplicationTest {
     }
 
     @Test
-    void UserinVisitor() {    //when u should sort visitors only
+    void UserinVisitor() {
       String user = "dayun";
       List<List<String>> friends = List.of(
           List.of("donut", "andole"),
@@ -586,7 +584,7 @@ class ApplicationTest {
     }
 
     @Test
-    void Morethan5People() {    //when u should sort visitors only
+    void Morethan5People() {
       String user = "dayun";
       List<List<String>> friends = List.of(
           List.of("donut", "andole"),
