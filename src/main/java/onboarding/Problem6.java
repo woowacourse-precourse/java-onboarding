@@ -8,6 +8,14 @@ public class Problem6 {
         return answer;
     }
 
+    // 5. 중복되는 닉네임인지 체크하기
+    public static Boolean checkDuplicateUser(String nickname, List<String> duplicateWords) {
+        for (String word : duplicateWords) {
+            if (nickname.contains(word)) return Boolean.TRUE;
+        }
+        return Boolean.FALSE;
+    }
+
     // 6. email만 따로 리스트 만들기
     public static List<String> getEmailList(List<List<String>> forms) {
         List<String> emailList = new ArrayList<>();
