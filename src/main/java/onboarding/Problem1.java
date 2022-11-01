@@ -33,9 +33,32 @@ class Problem1 {
 		return max;
 		
 	}
+	public static boolean check(List<Integer> p) { //두 페이지가 연속적인가확인
+		if (p.get(0) + 1 == p.get(1)) {
+			return true;
+		}
+		return false;
+	}
 	
-    public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+	public static int solution(List<Integer> pobi, List<Integer> crong) {
+    	int answer, l_max, r_max;
+    	if (check(pobi) && check(crong)) {
+    		l_max = get_max(pobi);
+    		r_max = get_max(crong);
+    		if (l_max > r_max) {
+    			answer = 1;
+    		}else if (l_max < r_max) {
+				answer = 2;
+			}else {
+				answer = 0;
+			}
+    	}
+    	else {
+    		answer = -1;
+    	}
+    	
+    	
+        
         return answer;
     }
 }
