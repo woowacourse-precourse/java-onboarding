@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Problem6 {
@@ -41,6 +42,7 @@ public class Problem6 {
 		
         List<String> answer = List.of("answer");
         answer = mail;
+		Collections.sort(answer);
         return answer;
     }
 }
