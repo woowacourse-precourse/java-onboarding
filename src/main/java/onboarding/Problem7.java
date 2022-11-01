@@ -8,12 +8,27 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+/**
+ * [기능 목록]
+ * 1. 친구 추천 기능
+ * - 사용자와 함께 아는 친구의 수 = 10점, 사용자의 타임 라인에 방문한 횟수 = 1점
+ * 2. 결과 출력 기능
+ * - 점수 높은 순으로 정렬
+ * - 추천 점수가 같은 경우는 이름순으로 정렬
+ * 3. 예외처리
+ * - 최대 4명
+ */
+
 public class Problem7 {
 
     static Map<String, Integer> resultScore = new HashMap<>(); // 추천 id별 점수 list
  
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
+
+        /**
+         * 1. 친구 추천 기능
+         */
 
         // 유저 친구 list
         List<String> userFriends = new ArrayList<>();
@@ -46,15 +61,20 @@ public class Problem7 {
 
         List<Map.Entry<String, Integer>> entryList = new LinkedList<>(resultScore.entrySet());
 
-        // 정렬
+        /**
+         * 2. 결과 출력 기능
+         */
         entryList.sort(Entry.comparingByKey());
         entryList.sort(Entry.comparingByValue(Comparator.reverseOrder()));
 
+        /**
+         * 3. 예외처리
+         */
         int count = 5;
         for (Entry<String, Integer> entry : entryList) {
             answer.add(entry.getKey());
             count--;
-            if (count <= 0) { // 5개 까지만
+            if (count <= 0) {
                 break;
             }
         }
@@ -73,19 +93,21 @@ public class Problem7 {
 
     /*
     public static void main(String[] args) {
-        String user = "mrko";
-        List<List<String>> friends = List.of(List.of("donut", "andole"),
-                List.of("donut", "jun"),
-                List.of("donut", "mrko"),
-                List.of("shakevan", "andole"),
-                List.of("shakevan", "jun"),
-                List.of("shakevan", "mrko"));
+        String user = "\"mrko\"";
+        List<List<String>> friends = List.of(List.of("\"donut\"", "\"andole\""),
+                List.of("\"donut\"", "\"jun\""),
+                List.of("\"donut\"", "\"mrko\""),
+                List.of("\"shakevan\"", "\"andole\""),
+                List.of("\"shakevan\"", "\"jun\""),
+                List.of("\"shakevan\"", "\"mrko\""));
 
-        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+        List<String> visitors = List.of("\"bedi\"", "\"bedi\"", "\"donut\"", "\"bedi\"", "\"shakevan\"");
 
+        //System.out.println("list: " + friends);
         solution(user, friends, visitors);
 
     }
+
 
      */
 
