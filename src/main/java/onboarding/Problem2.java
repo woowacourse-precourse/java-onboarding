@@ -1,37 +1,47 @@
 package onboarding;
 
+import java.util.Objects;
+
 public class Problem2 {
+
+    public static void main(String[] args){
+        String cryptogram = "browoanoommnaon";
+        String result = "brown";
+        solution(cryptogram);
+    }
     public static String solution(String cryptogram) {
         return decrypt(cryptogram);
     }
 
-    public static String decrypt(String crpytogram) {
+    public static String decrypt(String cryptogram) {
         StringBuilder newString = new StringBuilder();
-        boolean check;
         do {
-            if (crpytogram.length() == 0) break;
-            newString.append(crpytogram.charAt(0));
-            int start = 0;
-            int end = 0;
-            check = false;
-            for (int i = 0; i < crpytogram.length(); i++) {
-                end += 1;
-                int length = newString.length();
-                if (end < crpytogram.length()) {
-                    if (crpytogram.charAt(start) != crpytogram.charAt(end)) {
-                        start = end;
-                        newString.append(crpytogram.charAt(end));
-                    } else if (length > 0) {
-                        check = true;
-                        if(newString.charAt(newString.length() - 1) == crpytogram.charAt(end)){
-                            newString.deleteCharAt(newString.length() - 1);
-                        }
-                    }
-                }
-            }
-            crpytogram = String.valueOf(newString);
+            searchOverlap(cryptogram, newString);
+            if (newString.length() == cryptogram.length()) break; // 중복된 단어를 제거할 필요가 없다는 뜻
+            cryptogram = String.valueOf(newString);
             newString.delete(0,newString.length());
-        } while (check);
-        return crpytogram;
+        } while (cryptogram.length() > 0);
+        return cryptogram;
+    }
+
+    public static void searchOverlap(String cryptogram, StringBuilder newString) {
+        String[] array = cryptogram.split("");
+        int next;
+        for(int i = 0; i < array.length; i++){
+            next = searchIndex(i, cryptogram);
+            if(next - i == 1){ // 중복되지 않는다면
+                newString.append(cryptogram.charAt(i));
+                continue;
+            }
+            i = next - 1; // 중복되었다면 중복된 마지막 index로 대입
+        }
+    }
+
+    public static int searchIndex(int start, String crpytogram){
+        char letter = crpytogram.charAt(start);
+        for(int i = start + 1; i < crpytogram.length(); i++){
+            if(letter != crpytogram.charAt(i)) return i;
+        }
+        return crpytogram.length();
     }
 }
