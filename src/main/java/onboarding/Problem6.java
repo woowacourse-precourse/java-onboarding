@@ -5,16 +5,17 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collector;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer = new ArrayList<>();
 
         getRepeatedNicknamesInForms(forms, answer);
         List<String> idList = removeEmailDotCom(new HashSet<>(answer));
         List<String> emailList = appendEmailDotCom(idList);
 
-        return answer;
+        return emailList;
     }
 
     private static void getRepeatedNicknamesInForms(List<List<String>> forms, List<String> answer) {
@@ -26,6 +27,7 @@ public class Problem6 {
         }
     }
 
+    // 닉네임의 부분 닉네임 구하기
     private static void getRepeatedSubnicknamesInNickname(List<List<String>> forms, String nickName,
         List<String> answer) {
         for (int elementLength = 2; elementLength <= nickName.length(); ++elementLength) {
@@ -37,6 +39,7 @@ public class Problem6 {
         }
     }
 
+    // 리스트에서 부분 닉네임과 중복되는 닉네임 찾기
     private static void getReapeatedMatchedNicknameInForms(List<String> answer, List<List<String>> forms,
         String subNickname) {
         int count = 0;
@@ -70,4 +73,5 @@ public class Problem6 {
         }
         return emailList;
     }
+
 }
