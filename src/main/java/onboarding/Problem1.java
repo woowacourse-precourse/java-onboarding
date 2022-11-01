@@ -17,7 +17,7 @@ class Problem1 {
         return answer;
     }
     // 페이지가 맞으면 1, 아니면 -1
-    private static int validateNum(List<Integer> lst) {
+    private static int validateNum(List<Integer> list) {
         if (lst.get(0) < 1 || lst.get(1) > 400)
             return -1;
         if (lst.get(0) % 2 == 0 || lst.get(1) % 2 == 1)
