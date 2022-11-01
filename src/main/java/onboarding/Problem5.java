@@ -1,6 +1,6 @@
 package onboarding;
 
-import java.util.Collections;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Problem5 {
@@ -16,11 +16,23 @@ public class Problem5 {
         moneyUnit.add(1);
     }
 
+    private static int divideByUnit (int money, int unit) {
+        return money / unit;
+    }
+
+    private static int remainderAfterDivide (int money, int unit) {
+        return money % unit;
+    }
+
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
-        List<Integer> moneyUnit = Collections.emptyList();
+        List<Integer> answer = new ArrayList<>();
+        List<Integer> moneyUnit = new ArrayList<>();
         moneyUnitAdd(moneyUnit);
 
+        for (int unit : moneyUnit) {
+            answer.add(divideByUnit(money, unit));
+            money = remainderAfterDivide(money, unit);
+        }
         return answer;
     }
 }
