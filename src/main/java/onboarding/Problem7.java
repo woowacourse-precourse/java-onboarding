@@ -56,7 +56,43 @@ public class Problem7 {
     }
 
     public static HashMap<String, Integer> calculateScore(List<List<String>> friends, List<String> visitors, List<String> friendList) {
+        HashMap<String, Integer> result = new HashMap<>();
+        String friend;
+        int scr;
 
+        for (int i = 0; i < friendList.size(); i++) { // 함께 아는 친구 점수 계산
+
+            scr = 0;
+            friend = friendList.get(i);
+
+            for (int j = 0; j < friends.size(); j++) {
+
+                if (friends.get(j).get(1).contains(friend)) {
+                    scr += 10;
+                }
+
+            }
+
+            result.put(friend, scr);    // 점수 갱신
+
+        }
+
+        for (int i = 0; i < friendList.size(); i++) {   // 방문 횟수 점수 계산
+
+            friend = friendList.get(i);
+            scr = result.get(friend);
+
+            for (int j = 0; j < visitors.size(); j++) {
+
+                if (visitors.get(j) == friend) {
+                    scr += 1;
+                }
+            }
+
+            result.replace(friend, scr); // 점수 갱신
+        }
+
+        return result;
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
