@@ -26,9 +26,9 @@
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
 
 ### 변수 목록
-1. 친구 관계를 저장하는 HashMap : fList
-2. 해당 user의 점수를 저장하는 HashMap : sList
-3. 리스트를 반환하기 위한 score 별로 user를 저장하는 HashMap : scoreUser
+1. 친구 관계를 저장하는 HashMap : friendList
+2. 해당 user의 점수를 저장하는 HashMap : userScoreList
+3. 리스트를 반환하기 위한 score 별로 user를 저장하는 HashMap : scoreUserList
 
 ### 기능 목록
 1. 처음 friends에서 점수를 계산해야할 user 목록을 만드는 기능 : makeSList 

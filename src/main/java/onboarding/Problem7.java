@@ -5,9 +5,9 @@ import java.util.*;
 
 public class Problem7 {
 
-    static HashMap<String, List<String>> fList = new HashMap<>();
-    static HashMap<String, Integer> sList = new HashMap<>();
-    static HashMap<Integer, List<String>> scoreUser = new HashMap<>();
+    static HashMap<String, List<String>> friendList = new HashMap<>();
+    static HashMap<String, Integer> userScoreList = new HashMap<>();
+    static HashMap<Integer, List<String>> scoreUserList = new HashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         for (List<String> relation : friends) {
@@ -15,7 +15,7 @@ public class Problem7 {
             addFriend(relation);
         }
         //user의 친구 목록
-        List<String> userFriend = fList.get(user);
+        List<String> userFriend = friendList.get(user);
 
         // user의 친구 중, score를 구하고자 하는 회원이 있으면 10점을 추가
         for (String friend : userFriend) {
@@ -35,20 +35,20 @@ public class Problem7 {
 
     private static void makeSList(List<String> relation, String user) {
         if (relation.get(0) != user) {
-            sList.put(relation.get(0), 0);
+            userScoreList.put(relation.get(0), 0);
         } else {
-            sList.remove(relation.get(1));
+            userScoreList.remove(relation.get(1));
         }
         if (relation.get(1) != user) {
-            sList.put(relation.get(1), 0);
+            userScoreList.put(relation.get(1), 0);
         } else {
-            sList.remove(relation.get(0));
+            userScoreList.remove(relation.get(0));
         }
     }
 
     private static void addFriend(List<String> relation) {
-        List<String> temp = fList.get(relation.get(0));
-        List<String> temp2 = fList.get(relation.get(1));
+        List<String> temp = friendList.get(relation.get(0));
+        List<String> temp2 = friendList.get(relation.get(1));
 
         if (temp == null) {
             temp = new ArrayList<>();
@@ -60,47 +60,47 @@ public class Problem7 {
         temp.add(relation.get(1));
         temp2.add(relation.get(0));
 
-        fList.put(relation.get(0), temp);
-        fList.put(relation.get(1), temp2);
+        friendList.put(relation.get(0), temp);
+        friendList.put(relation.get(1), temp2);
     }
 
     private static void calScore1(String person) {
-        List<String> temp = fList.get(person);
+        List<String> temp = friendList.get(person);
 
         for (String f : temp) {
-            Integer score = sList.get(f);
+            Integer score = userScoreList.get(f);
             if (score != null) {
-                sList.put(f, score + 10);
+                userScoreList.put(f, score + 10);
             }
         }
     }
 
     private static void calScoreVisitors(String person) {
-        Integer score = sList.get(person);
+        Integer score = userScoreList.get(person);
         if (score == null) {
             score = 0;
         }
         score++;
-        sList.put(person, score);
+        userScoreList.put(person, score);
     }
 
     private static void changeKeyValue() {
-        for (String key : sList.keySet()) {
-            Integer score = sList.get(key);
+        for (String key : userScoreList.keySet()) {
+            Integer score = userScoreList.get(key);
 
-            List<String> temp = scoreUser.get(score);
+            List<String> temp = scoreUserList.get(score);
             if (temp == null) {
                 temp = new ArrayList<>();
             }
             temp.add(key);
-            scoreUser.put(score, temp);
+            scoreUserList.put(score, temp);
         }
     }
 
     private static List<String> getAnswer() {
         List<String> answer = new ArrayList<>();
 
-        List<Integer> keySet = new ArrayList<>(scoreUser.keySet());
+        List<Integer> keySet = new ArrayList<>(scoreUserList.keySet());
 
         Collections.sort(keySet);
         Collections.reverse(keySet);
@@ -110,7 +110,7 @@ public class Problem7 {
                 break;
             }
 
-            List<String> users = scoreUser.get(keySet.get(i));
+            List<String> users = scoreUserList.get(keySet.get(i));
             Collections.sort(users);
             answer.addAll(users);
         }
