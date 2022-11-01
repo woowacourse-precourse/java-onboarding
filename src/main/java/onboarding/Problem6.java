@@ -5,6 +5,9 @@ import java.util.*;
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> list = new ArrayList<>(List.of());
+        if(forms.size() < 1 || forms.size() > 10000){
+            return list;
+        }
         for(int i = 0; i < forms.size(); i++){
             String nickname1 = forms.get(i).get(1);
             for(int j = i+1; j < forms.size(); j++){
