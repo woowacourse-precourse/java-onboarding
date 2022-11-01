@@ -51,6 +51,15 @@ class Problem1 {
         }
         return maxScore(value1,value2);
     }
+
+    static int maxScore(int a, int b){
+        if (a > b) {
+            return a;
+        } else {
+            return b;
+        }
     }
+
+}
 
 
