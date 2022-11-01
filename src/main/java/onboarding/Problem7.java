@@ -65,17 +65,28 @@ public class Problem7 {
     }
 
     private static List<String> getRecommendedFriendList(HashMap<String, Integer> friendCandidateHashMap) {
-
         List<String> recommendedFriendList = new ArrayList<>();
+        List<NameScore> nameScoreList = new ArrayList<>();
 
-        List<Map.Entry<String, Integer>> nameScoreList = new ArrayList<>(friendCandidateHashMap.entrySet());
-        nameScoreList.sort((((o1, o2) -> friendCandidateHashMap.get(o2.getKey()) - friendCandidateHashMap.get(o1.getKey()))));
-        for (Map.Entry<String, Integer> nameScoreEntry : nameScoreList) {
-            if (nameScoreEntry.getValue() != 0 && recommendedFriendList.size() < 6) {
-                recommendedFriendList.add(nameScoreEntry.getKey());
-            }
-        }
+
         return recommendedFriendList;
     }
 
+    private static class NameScore {
+        private String name;
+        private String Score;
+
+        public NameScore(String name, String score) {
+            this.name = name;
+            Score = score;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public String getScore() {
+            return Score;
+        }
+    }
 }
