@@ -2,6 +2,7 @@ package onboarding.problem7.friendandscore;
 
 import onboarding.problem7.wrapper.User;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -20,5 +21,13 @@ public class FriendAndScoreMapper {
                         key -> key,
                         value -> INITIAL_POINT)
                 );
+    }
+
+    public void calculateScoreOfNewFriendWith(List<User> friendList, int point) {
+        for (User newFriend : friendList) {
+            int score = Collections.frequency(friendList, newFriend) * point;
+            int value = newFriendAndScore.get(newFriend);
+            newFriendAndScore.put(newFriend, value + score);
+        }
     }
 }
