@@ -16,5 +16,10 @@ public class Problem4 {
         else
             return 0;
     }
+    public static int replaceReverseLetter(int asciiNumber,int originCharNumber){
+        int replace = 0;
+        replace = asciiNumber - originCharNumber;
+        return replace;
+    }
 
 }
