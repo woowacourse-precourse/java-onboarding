@@ -12,12 +12,18 @@ class Problem1 {
             int pobiScore = calculateScore(pobi);
             int crongScore = calculateScore(crong);
 
-            answer = 1;
+            answer = calculateWinner(pobiScore, crongScore);
         } else {
             answer = -1;
         }
 
         return answer;
+    }
+
+    private static int calculateWinner(int pobiScore, int crongScore) {
+        if (pobiScore > crongScore) return 1;
+        if (pobiScore < crongScore) return 2;
+        return 0;
     }
 
     public static boolean isCorrectCondition(List<Integer> pageNumbers) {
