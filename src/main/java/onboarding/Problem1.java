@@ -15,22 +15,19 @@ class Problem1 {
         if(!(checkValid(pobi) && checkValid(crong))) return -1;
 
         if(pobiScore > crongScore) answer = 1;
-        else if(pobiScore < crongScore) answer = 2;
-        else if(pobiScore == crongScore) answer = 0;
+        if(pobiScore < crongScore) answer = 2;
+        if(pobiScore == crongScore) answer = 0;
 
         return answer;
     }
 
     public static boolean checkValid(List<Integer> pageNums){
-        int leftPage = pageNums.get(0);
-        int rightPage = pageNums.get(1);
-
-        if(checkIsValidPages(leftPage, rightPage) && checkPagesDiff(leftPage, rightPage)) return true;
-
-        return false;
+        return checkIsValidPages(pageNums) && checkPagesDiff(pageNums);
     }
 
-    public static boolean checkIsValidPages(int leftPage, int rightPage){
+    public static boolean checkIsValidPages(List<Integer> pageNums){
+        int leftPage = pageNums.get(0);
+        int rightPage = pageNums.get(1);
 
         if(leftPage%2!=1) return false;
         if(rightPage%2!=0) return false;
@@ -41,7 +38,10 @@ class Problem1 {
         return true;
     }
 
-    public static boolean checkPagesDiff(int leftPage, int rightPage){
+    public static boolean checkPagesDiff(List<Integer> pageNums){
+        int leftPage = pageNums.get(0);
+        int rightPage = pageNums.get(1);
+
         int diff = Math.abs(leftPage - rightPage);
 
         if(diff == 1) return true;
@@ -50,48 +50,29 @@ class Problem1 {
     }
 
     public static int getScore(List<Integer> pageNums){
-        int score = 0;
         int leftPage = pageNums.get(0);
         int rightPage = pageNums.get(1);
 
-        int leftScore = getBiggerNum(leftPage);
+        int leftScore = getBiggerNumOfSumAndProductOfEachDigit(leftPage);
 
-        int rightScore = getBiggerNum(rightPage);
+        int rightScore = getBiggerNumOfSumAndProductOfEachDigit(rightPage);
 
-        score = Math.max(leftScore, rightScore);
-
-        return score;
+        return Math.max(leftScore, rightScore);
     }
 
-    public static int getBiggerNum(int page){
-        int biggerNum = 0;
-
-        int sumOfEachDigit = getSumOfEachDigit(page);
-        int productOfEachDigit = getProductOfEachDigit(page);
-
-        biggerNum = Math.max(sumOfEachDigit, productOfEachDigit);
-
-        return biggerNum;
-    }
-
-    public static int getSumOfEachDigit(int num){
+    public static int getBiggerNumOfSumAndProductOfEachDigit(int pageNum){
         int sum = 0;
-        while(num != 0){
-            int digit = num % 10;
+        int product = 1;
+
+        while(pageNum != 0){
+            int digit = pageNum % 10;
             sum += digit;
-            num /= 10;
+            product *= digit;
+            pageNum /= 10;
         }
-        return sum;
+
+        return Math.max(sum, product);
     }
 
-    public static int getProductOfEachDigit(int num){
-        int product = 1;
-        while(num != 0){
-            int digit = num % 10;
-            product *= digit;
-            num /= 10;
-        }
-        return product;
-    }
 
 }
