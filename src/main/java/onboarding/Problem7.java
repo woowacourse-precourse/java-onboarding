@@ -94,6 +94,7 @@ public class Problem7 {
                 .filter(candi -> candi.getScore() > 0)
                 .sorted(Comparator.comparing(User::getScore).reversed()
                         .thenComparing((User::getName)))
+                .limit(5)
                 .map(User::getName)
                 .collect(Collectors.toList());
     }
