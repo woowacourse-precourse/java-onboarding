@@ -25,7 +25,7 @@ class Problem1 {
 
   public static int pageException(List<Integer> usr1, List<Integer> usr2) {
     if (usr1.size() != 2 || usr2.size() != 2) {
-      return ERROR;
+      throw new IllegalArgumentException("length of pobi and crong is not 2");
     }
     if (pageInRange(usr1, usr2) == -1) {
       return ERROR;
