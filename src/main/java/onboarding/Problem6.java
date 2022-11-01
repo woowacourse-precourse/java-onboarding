@@ -13,12 +13,13 @@ public class Problem6 {
 
         for (int i = 0; i < forms.size() - 1; i++) {
             for (int j = i + 1; j < forms.size(); j++) {
-                if (validateNicknameDuplication(forms.get(i).get(1), forms.get(j).get(1))) {
-                    restrictedNicknames.add(forms.get(i).get(0));
-                    restrictedNicknames.add(forms.get(j).get(0));
+                if (validateNicknameDuplication(getFormName(forms, i), getFormName(forms, j))) {
+                    restrictedNicknames.add(getFormEmail(forms, i));
+                    restrictedNicknames.add(getFormEmail(forms, j));
                 }
             }
         }
+        
         return new ArrayList<>(restrictedNicknames);
     }
 
@@ -33,6 +34,14 @@ public class Problem6 {
         }
 
         return false;
+    }
+
+    static String getFormEmail(List<List<String>> forms, int index) {
+        return forms.get(index).get(0);
+    }
+
+    static String getFormName(List<List<String>> forms, int index) {
+        return forms.get(index).get(1);
     }
 
 }
