@@ -23,14 +23,28 @@ public class Problem6 {
         //연속된 닉네임을 식별하기 위해서 두 글자씩 잘라 저장한다.
         for (List<String> crew : forms) {
             String nickname = crew.get(1);
+            List<String> nicknameUnits = getNicknameUnits(nickname);
+            saveNicknameUnitsToMap(nicknameUnits);
+        }
+    }
 
-            for (int i = 0; i < nickname.length() - 1; i++) {
-                String subStr = nickname.substring(i, i + 2);
-                if (!nicknameMap.containsKey(subStr)) {
-                    nicknameMap.put(subStr, 1);
-                } else {
-                    nicknameMap.put(subStr, nicknameMap.get(subStr) + 1);
-                }
+    private static List<String> getNicknameUnits(String nickname) {
+        Set<String> nickNameUnits = new HashSet<>();
+
+        for (int i = 0; i < nickname.length() - 1; i++) {
+            String nicknameUnit = nickname.substring(i, i + 2);
+            nickNameUnits.add(nicknameUnit);
+        }
+
+        return new ArrayList<>(nickNameUnits);
+    }
+
+    private static void saveNicknameUnitsToMap(List<String> nicknameUnits) {
+        for (String nicknameUnit : nicknameUnits) {
+            if (!nicknameMap.containsKey(nicknameUnit)) {
+                nicknameMap.put(nicknameUnit, 1);
+            } else {
+                nicknameMap.put(nicknameUnit, nicknameMap.get(nicknameUnit) + 1);
             }
         }
     }
