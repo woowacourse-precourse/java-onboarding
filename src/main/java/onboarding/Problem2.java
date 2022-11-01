@@ -12,7 +12,7 @@ public class Problem2 {
         return String.join("", deleteSameStr(strList));
     }
 
-    public static ArrayList<String> deleteSameStr(ArrayList<String> strList){
+    public static ArrayList<String> deleteSameStr(ArrayList<String> strList) {
 
         int cnt = 0, indexNum = 0;
         for (int i = 0; i < strList.size() - 1; i++) {
@@ -26,14 +26,16 @@ public class Problem2 {
                     strList.remove(start);
                     cnt--;
                 }
-                cnt = 0; indexNum = 0; i = 0;
+                cnt = 0;
+                indexNum = 0;
+                i = 0;
             }
         }
         if (strList.size() > 1) {
-            for (int j = 0; j < strList.size() - 1; j++) {
-                if(strList.get(j).equals(strList.get(j + 1))) {
+            for (int i = 0; i < strList.size() - 1; i++) {
+                if(strList.get(i).equals(strList.get(i + 1))) {
                     cnt++;
-                    indexNum = j + 1;
+                    indexNum = i + 1;
                 }
                 if (cnt >= 1) {
                     int start = indexNum - cnt;
@@ -41,14 +43,12 @@ public class Problem2 {
                         strList.remove(start);
                         cnt--;
                     }
-                    cnt = 0; indexNum = 0; j = 0;
+                    cnt = 0;
+                    indexNum = 0;
+                    i = 0;
                 }
             }
         }
         return strList;
     }
-//
-//    public static void main(String[] args) {
-//        System.out.println(solution("browoanoommnaon"));
-//    }
 }
