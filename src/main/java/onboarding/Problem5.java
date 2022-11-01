@@ -14,7 +14,6 @@ public class Problem5 {
             if(money/coinArr[i] > 0) {
                 int curr = money / coinArr[i];
                 answer[i]= curr;
-                System.out.print(curr);
                 money = money % coinArr[i];
             }
         }

@@ -9,7 +9,7 @@ import static java.lang.Math.abs;
 import static java.lang.Math.max;
 
 class Problem1 {
-    static int getMax(List<Integer> input) {
+    private static int getMax(List<Integer> input) {
         int leftSum = 0,leftMulti = 1,rightSum = 0,rightMulti = 1;
         int leftPage = input.get(0);
         int rightPage = input.get(1);

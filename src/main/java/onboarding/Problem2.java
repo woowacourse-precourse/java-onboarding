@@ -1,7 +1,7 @@
 package onboarding;
 
 public class Problem2 {
-    static String decrypt(String cryptogram) {
+    private static String decrypt(String cryptogram) {
         StringBuilder cryptcpy = new StringBuilder(cryptogram);
         char lastchar = '#';
         boolean check = true;
