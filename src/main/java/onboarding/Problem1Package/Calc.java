@@ -33,4 +33,7 @@ public interface Calc {
         int num = getCalc(arr);
         return num;
     }
+
+    // 4. 실제 연산하기(덧셈/곱셈)
+    int getCalc(List<Integer> list);
 }
