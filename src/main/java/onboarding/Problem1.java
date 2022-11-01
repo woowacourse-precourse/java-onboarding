@@ -13,7 +13,11 @@ class Problem1 {
             return -1;
         }
 
-        int answer = Integer.MAX_VALUE;
+        int pobiMax =getMaxOfSumOrProduct(pobi);
+        int crongMax =getMaxOfSumOrProduct(crong);
+
+        int answer =compareMax(pobiMax, crongMax);
+
         return answer;
     }
 
