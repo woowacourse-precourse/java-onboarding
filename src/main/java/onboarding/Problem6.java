@@ -16,6 +16,13 @@ public class Problem6 {
         return answer;
     }
 
+    //  이메일 유효성 검사 - 도메인
+    private static Boolean verifyEmailDomain(String emailDomain){
+        if(emailDomain.equals(domain))
+            return true;
+        return false;
+    }
+
     //  이메일 유효성 검사 - 아이디
     private static Boolean verifyEmailId(String emailId){
         for (int i = 0; i < emailId.length() - 1; i++) {
