@@ -26,6 +26,10 @@ public class Network {
 			}
 			recommendedFriends.add(new RecommendedFriend(friend, calculateScoreOf(user, friend)));
 		}
+		return limitFiveFriendNames(recommendedFriends);
+	}
+
+	private List<String> limitFiveFriendNames(Set<RecommendedFriend> recommendedFriends) {
 		return recommendedFriends
 			.stream()
 			.map(RecommendedFriend::getName)

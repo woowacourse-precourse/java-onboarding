@@ -12,20 +12,19 @@ public class Relationships {
 	private final Map<String, List<String>> relationships;
 
 	public Relationships(List<List<String>> relationships) {
-		Map<String, List<String>> friends = new HashMap<>();
+		Map<String, List<String>> relationshipsMap = new HashMap<>();
 		for (List<String> relationship : relationships) {
 			String friend = relationship.get(0);
 			String otherFriend = relationship.get(1);
-			friends.putIfAbsent(friend, new ArrayList<>());
-			friends.putIfAbsent(otherFriend, new ArrayList<>());
+			relationshipsMap.putIfAbsent(friend, new ArrayList<>());
+			relationshipsMap.putIfAbsent(otherFriend, new ArrayList<>());
 
-			friends.get(friend).add(otherFriend);
-			friends.get(otherFriend).add(friend);
-
-			friends.get(friend).add(friend);
-			friends.get(otherFriend).add(otherFriend);
+			relationshipsMap.get(friend).add(otherFriend);
+			relationshipsMap.get(otherFriend).add(friend);
+			relationshipsMap.get(friend).add(friend);
+			relationshipsMap.get(otherFriend).add(otherFriend);
 		}
-		this.relationships = friends;
+		this.relationships = relationshipsMap;
 	}
 
 	public boolean isTwoFriends(String user, String other) {
@@ -46,7 +45,10 @@ public class Relationships {
 		if (Objects.isNull(userFriends) || Objects.isNull(otherUserFriends)) {
 			return 0;
 		}
+		return countShared(userFriends, otherUserFriends);
+	}
 
+	private int countShared(List<String> userFriends, List<String> otherUserFriends) {
 		int count = 0;
 		for (String otherUserFriend : otherUserFriends) {
 			if (userFriends.contains(otherUserFriend)) {
