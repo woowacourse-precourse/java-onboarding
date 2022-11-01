@@ -100,6 +100,10 @@ public class Problem7 {
                         .thenComparing(Map.Entry.comparingByKey()))
                 .forEachOrdered(x -> sortedList.add(x.getKey()));
 
+        if (sortedList.size() > 5) {
+            return sortedList.subList(0, 5);
+        }
+
         return sortedList;
     }
 
