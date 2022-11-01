@@ -10,10 +10,10 @@ public class Problem2 {
 
     private static String decrypt(String cryptogram) {
         Stack<Character> stack = new Stack<>();
-        char[] chars = cryptogram.toCharArray();
         char before = ' ';
 
-        for (char c : chars) {
+        for (int i = 0; i < cryptogram.length(); i++) {
+            char c = cryptogram.charAt(i);
             if (!stack.isEmpty() && stack.peek() == c) {
                 stack.pop();
                 before = c;
