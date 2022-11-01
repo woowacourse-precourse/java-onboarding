@@ -1,8 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     /* checkUserFriend: 사용자와 친구인 사람 목록 만드는 함수 */
@@ -52,6 +50,18 @@ public class Problem7 {
             }
             recommendScore.put(people, recommendScore.getOrDefault(people, 0) + 1);
         }
+
+        // value(점수) 내림차순 정렬하고 value가 같으면 key 오름차순 정렬
+        List<HashMap.Entry<String, Integer>> list = new LinkedList<>(recommendScore.entrySet());
+        Collections.sort(list, new Comparator<HashMap.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                if(o2.getValue().compareTo(o1.getValue())==0){
+                    return o1.getKey().compareTo(o2.getKey());
+                }
+                return o2.getValue().compareTo(o1.getValue());
+            }
+        });
 
         return answer;
     }
