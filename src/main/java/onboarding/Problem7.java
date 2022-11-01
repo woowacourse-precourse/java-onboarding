@@ -95,4 +95,12 @@ public class Problem7 {
         }
     }
 
+    //user sns에 방문한 사용자들을 map에 넣는 기능
+    public static void putVisitorUserUnknown(List<String> visitors) {
+        for(String visitor : visitors) {
+            if(!FRIENDS_LIST.contains(visitor)) {
+                UNKNOWN_USER_SCORE.put(visitor,0);
+            }
+        }
+    }
 }
