@@ -18,17 +18,40 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
 
-        List<String> myFriends = getMyFriends(user, friends);
+        List<String> myFriends = getFriendsWithUser(user, friends);
         Set<String> users = friends.stream().flatMap(List::stream).collect(Collectors.toSet());
         users.addAll(visitors);
 
-        System.out.println(makeRecommendedScoreByUserListFromFriends(users));
+        List<RecommendedScoreByUser> recommendedScoreByUsers = makeRecommendedScoreByUserListFromFriends(users);
 
+        increaseScoreByFriends(recommendedScoreByUsers, friends, myFriends);
+
+        System.out.println("recommendedScoreByUsers = " + recommendedScoreByUsers);
 
         return answer;
     }
 
-    private static List<String> getMyFriends(String user, List<List<String>> friends) {
+    /**
+     * 4. 사용자의 친구와 친구인 유저들의 추천 점수 10점씩 증가
+     */
+    private static void increaseScoreByFriends(List<RecommendedScoreByUser> recommendedScoreByUsers, List<List<String>> friends, List<String> myFriends) {
+        for (String myFriend : myFriends) {
+            List<String> friendsWithMyFriend = getFriendsWithUser(myFriend, friends);
+
+            for (String friendWithMyFriend : friendsWithMyFriend) {
+                for (RecommendedScoreByUser recommendedScoreByUser : recommendedScoreByUsers) {
+                    if (recommendedScoreByUser.getUser().equals(friendWithMyFriend)) {
+                        recommendedScoreByUser.increaseScoreByFriends();
+                    }
+                }
+            }
+        }
+    }
+
+    /**
+     * 2. 사용자의 친구 목록 추출
+     */
+    private static List<String> getFriendsWithUser(String user, List<List<String>> friends) {
         return friends.stream()
                 .filter(friend -> friend.contains(user))
                 .flatMap(List::stream)
@@ -36,6 +59,9 @@ public class Problem7 {
                 .collect(Collectors.toList());
     }
 
+    /**
+     * 3. friends를 통해 유저별 추천 점수 객체를 생성한다.
+     */
     private static List<RecommendedScoreByUser> makeRecommendedScoreByUserListFromFriends(Set<String> users) {
         List<RecommendedScoreByUser> recommendedScoreByUserList = new java.util.ArrayList<>();
 
@@ -46,6 +72,10 @@ public class Problem7 {
         return recommendedScoreByUserList;
     }
 
+    /**
+     * 유저별 추천 점수를 담을 수 있는 객체
+     * 1. 유저별 추천 점수 담을 수 있는 저장공간 생성
+     */
     private static class RecommendedScoreByUser {
         private String user;
         private int score;
@@ -55,12 +85,12 @@ public class Problem7 {
             this.score = 0;
         }
 
-        public void addScoreByFriends(int count) {
-            this.score += 10 * count;
+        public void increaseScoreByFriends() {
+            this.score += 10;
         }
 
-        public void addScoreByVisitors(int count) {
-            this.score += count;
+        public void increaseScoreByVisitors() {
+            this.score += 1;
         }
 
         public String getUser() {
