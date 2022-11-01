@@ -15,6 +15,9 @@ public class Problem7 {
 
         public void addVisitorScore(List<String> visitors) {
             for(String v : visitors) {
+                if(isUsersFriend(v)){
+                    continue;
+                }
                 Integer score = recommendationScore.getOrDefault(v, 0);
                 recommendationScore.put(v, score+1);
             }
@@ -25,12 +28,19 @@ public class Problem7 {
 
             for(String firstFriend : userFriendList){
                 for(String secondFriend : relationship.get(firstFriend)){
-                    if(!secondFriend.equals(user)){
+                    if(isNotUserAndNotUserFriend(secondFriend)){
                         recommendationScore.put(secondFriend, recommendationScore.getOrDefault(secondFriend,0)+10);
                     }
                 }
-                recommendationScore.remove(firstFriend);
             }
+        }
+
+        private boolean isUsersFriend(String v) {
+            return relationship.get(user).contains(v);
+        }
+
+        private boolean isNotUserAndNotUserFriend(String friendName) {
+            return !friendName.equals(user) && !isUsersFriend(friendName) ;
         }
 
         void makeRelationship(List<List<String>> friendList) {
