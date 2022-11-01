@@ -24,3 +24,14 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+## 기능 목록
+
+- 친구 목록(HashMap) 생성
+  - friends를 순회하면서 A를 key, B를 value에 추가하는 방식으로 구성
+- 사용자와 친구를 제외하고 아이디-점수 맵(HashMap) 생성
+  - 친구의 친구에게는 10점 부여
+- 방문 기록을 순회
+  - 친구나 사용자를 제외
+  - 친구의 친구가 아닐 경우 아이디-점수 맵에 아이디 추가
+- 아이디-점수 맵에서 점수를 기준으로 정렬하여 5명 반환
