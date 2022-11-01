@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Problem7 {
@@ -13,6 +14,13 @@ public class Problem7 {
         else if(user2.equals(user)) {
             myFriends.add(user1);
         }
+    }
+    private static List<String> getMyFriends(String user, List<List<String>> friends) {
+        List<String> myFriends = new LinkedList<>();
+        for (List<String> relation : friends) {
+            addMyFriend(myFriends, relation, user);
+        }
+        return myFriends;
     }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
