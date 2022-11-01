@@ -21,9 +21,42 @@ public class Problem7 {
         countFriends(user, friendGraph);
         System.out.println(peopleMap);
         findAnswer();
+        answer = exceptionControll(user, friends);
         return answer;
     }
 
+    public static ArrayList<String> exceptionControll(String user, List<List<String>> friends){
+        String firstFriend;
+        String secondFriend;
+        ArrayList<String> returnAnswer = new ArrayList<>();
+        ArrayList<String> userFriends = new ArrayList<>();
+        for(int index=0; index<friends.size(); index++){
+            firstFriend = friends.get(index).get(0);
+            secondFriend = friends.get(index).get(1);
+            if(user.equals(firstFriend)){
+                userFriends.add(secondFriend);
+            }
+            if(user.equals(secondFriend)){
+                userFriends.add(firstFriend);
+            }
+        }
+
+        String currentValue;
+        for(int index=0; index<answer.size(); index++){
+            currentValue = answer.get(index);
+            int flag = 0;
+            for(int check=0; check<userFriends.size(); check++){
+                if (userFriends.get(check).equals(currentValue)){
+                    flag = 1;
+                    break;
+                }
+            }
+            if (flag == 0){
+                returnAnswer.add(currentValue);
+            }
+        }
+        return returnAnswer;
+    }
 
     public static void findAnswer(){
         List<Map.Entry<String, Integer>> entryList = new LinkedList<>(peopleMap.entrySet());
