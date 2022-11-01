@@ -22,13 +22,26 @@ public class Problem7 {
     private static void addFriendshipScore(String user, List<List<String>> friends, List<String> friendship, Map<String, Long> recommendScore) {
         for (List<String> friend : friends) {
             if (!friend.contains(user)) {
-                if (hasIdByFriendship(friend.get(0), friendship)) {
-                    addRecommendScore(recommendScore, friend.get(1), 10L);
-                } else if (hasIdByFriendship(friend.get(1), friendship)) {
-                    addRecommendScore(recommendScore, friend.get(0), 10L);
+                String id1 = friend.get(0);
+                String id2 = friend.get(1);
+                if (isRecommendFriend(friendship, id1, id2)) {
+                    addRecommendScore(recommendScore, id2, 10L);
+                } else if (isRecommendFriend(friendship, id2, id1)) {
+                    addRecommendScore(recommendScore, id1, 10L);
                 }
             }
         }
+    }
+
+    /**
+     * 추천 친구 대상인지 확인한다.
+     * @param friendship 유저의 친구 관계
+     * @param userFriend    유저의 친구
+     * @param recommendFriend   추천 친구
+     * @return  추천 친구가 맞다면 true 를 반환
+     */
+    private static boolean isRecommendFriend(List<String> friendship, String userFriend, String recommendFriend) {
+        return hasIdByFriendship(userFriend, friendship) && !hasIdByFriendship(recommendFriend, friendship);
     }
 
     /**
@@ -91,8 +104,9 @@ public class Problem7 {
 
     /**
      * 정렬된 추천 목록을 구한다.
-     * @param recommendScore    친구 추천 점수
-     * @return  친추 추천 목록 반환
+     *
+     * @param recommendScore 친구 추천 점수
+     * @return 친추 추천 목록 반환
      */
     private static List<String> getSortAnswer(Map<String, Long> recommendScore) {
         List<String> answer = new ArrayList<>(recommendScore.keySet());
