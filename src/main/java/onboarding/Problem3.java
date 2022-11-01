@@ -6,7 +6,7 @@ public class Problem3 {
         return answer;
     }
 
-    public static int countClap(int i) {
+    private static int countClap(int i) {
         int count = 0;
 
         while (i > 0) {
