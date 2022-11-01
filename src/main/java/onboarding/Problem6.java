@@ -6,10 +6,8 @@ import java.util.List;
 import java.util.HashSet;
 
 public class Problem6 {
-    /**
-     * str1, str2 의 닉네임 중 두글자 이상이 연속적으로 순서에 맞추어 포함되어 있는지의 여부를 반환한다.
-     * 1<=str1, str2 < 20 으로 짧으므로 단순히 비교한다.
-     */
+    /* str1, str2 의 닉네임 중 두글자 이상이 연속적으로 순서에 맞추어 포함되어 있는지의 여부를 반환한다.
+       1<=str1, str2 < 20 으로 짧으므로 단순히 비교한다. */
     private boolean isContiDup(String str1, String str2){
         boolean prevMatched = false;
         for(int begin = -str2.length() + 1; begin < str1.length(); ++begin){
