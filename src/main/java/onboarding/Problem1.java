@@ -26,7 +26,16 @@ class Problem1 {
         }
 
         return ans;
+    }
 
+    static int getMax(int a, int b) {
+
+        if (a > b) {
+            return a;
+        }
+        else{
+            return b;
+        }
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
