@@ -31,7 +31,7 @@
    - 점수 정보: {key: 사용자 이름, value: 점수(0으로 초기화)}
 2. user 로 입력 받은 사람의 친구들 해쉬셋 리스트를 가져옴
 3. 사용자 정보가 저장된 해쉬맵을 전체 다 순환하면서 user 의 친구들 해쉬셋에 포함되어 있는지 확인하고 있으면 점수에 +10
-4.  visitor를 순환하면서 점수 정보에 +1
+4.  visitor 를 순환하면서 점수 정보에 +1
 
 ### 기능 목록
 1. createUserInfo
@@ -42,6 +42,10 @@
    - return: 해쉬맵
    - 1번 함수로 만들어진 해쉬맵의 key 값들 리스트를 받아와 실행
 3. givePointUsingFriendRelationship
-   - paremeter: String user, Hashmap userInfo, Hashmap pointInfo
+   - parameter: String user, Hashmap userInfo, HashMap pointInfo
    - return: HashMap pointInfo
-   - 유저정보에서 key를 순회 하면서 사용자와 같이 아는 친구를 찾아 pointInfo의 점수에 점수를 증가시킴
+   - 유저정보에서 key 를 순회 하면서 사용자와 같이 아는 친구를 찾아 pointInfo 의 점수에 점수를 증가시킴
+4. givePointUsingVisitorList
+    - parameter: Visitor list, HashMap pointInfo
+    - return: HashMap pointInfo
+    - 방문자 목록을 받아와 점수 증가
