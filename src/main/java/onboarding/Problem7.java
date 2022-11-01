@@ -26,7 +26,7 @@ public class Problem7 {
 		existFriend(user, friends);
 		visitPoint(visitors);
 		friendPoint(user, friends);
-		
+
 		// 점수를 기반으로 오름차순 정렬
 		List<String> userName = new ArrayList<>(point.keySet());
 		userName.sort(new Comparator<String>() {
@@ -34,9 +34,9 @@ public class Problem7 {
 				return point.get(o2).compareTo(point.get(o1));
 			}
 		});
-		
+
 		suggestFriend(userName, answer);
-		
+
 		return answer;
 	}
 
@@ -63,10 +63,11 @@ public class Problem7 {
 	 * @param visitors
 	 */
 	public static void visitPoint(List<String> visitors) {
-		for(String user : visitors) {
-			point.put(user, point.getOrDefault(user, 0)+1);
+		for (String user : visitors) {
+			point.put(user, point.getOrDefault(user, 0) + 1);
 		}
 	}
+
 	/**
 	 * 사용자와 함께 아는 친구의 점수를 +10점씩 point map에 집어넣는 기능이다
 	 * 
@@ -74,19 +75,35 @@ public class Problem7 {
 	 * @param friends
 	 */
 	public static void friendPoint(String user, List<List<String>> friends) {
-		for(List<String> list : friends) {
-			for(int i=0; i<userFriend.size(); i++) {
-				if(userFriend.get(i).equals(list.get(0)) && !list.get(1).equals(user)) {
-					point.put(list.get(1), point.getOrDefault(list.get(1), 0)+10);
+		for (List<String> list : friends) {
+			for (int i = 0; i < userFriend.size(); i++) {
+				if (userFriend.get(i).equals(list.get(0)) && !list.get(1).equals(user)) {
+					point.put(list.get(1), point.getOrDefault(list.get(1), 0) + 10);
 				}
-				if(userFriend.get(i).equals(list.get(1)) && !list.get(1).equals(user)) {
-					point.put(list.get(0), point.getOrDefault(list.get(0), 0)+10);
+				if (userFriend.get(i).equals(list.get(1)) && !list.get(1).equals(user)) {
+					point.put(list.get(0), point.getOrDefault(list.get(0), 0) + 10);
 				}
 			}
 		}
 	}
-	
+
+	/**
+	 * 
+	 * 친구를 추천하는 기능이다
+	 * 
+	 * @param userName
+	 * @param answer
+	 */
 	public static void suggestFriend(List<String> userName, List<String> answer) {
-		
+		int cnt = 0;
+		for (String user : userName) {
+			if (!userFriend.contains(user)) {
+				answer.add(user);
+			}
+			if (cnt == 4) {
+				break;
+			}
+			cnt++;
+		}
 	}
 }
