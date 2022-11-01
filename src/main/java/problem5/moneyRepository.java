@@ -3,7 +3,7 @@ package problem5;
 public class moneyRepository {
 
     // 화폐 단위 저장소 기능
-    public static int[] array(int money){
+    public static int[] postMoney(){
 
         int[] moneyRepository = new int[9];
 
