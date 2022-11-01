@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.sql.Array;
 import java.util.*;
 
 public class Problem7 {
@@ -25,12 +26,12 @@ public class Problem7 {
             // a. 방문객 리스트를 친구의 친구 맵에 넣어준다 (추천할 친구가 없는 경우는 주어지지 않기 때문에 visitors은 무조건 0보다 크다)
             for(String visitor : visitors){
                 // 중복값이라면
-                if(friendsFriendsMap.get(visitor)!=null){
+                if(visitor!= user && friendsFriendsMap.get(visitor)!=null){
                     int point = friendsFriendsMap.get(visitor);
                     friendsFriendsMap.put(visitor, point+ 1);
                 }
                 // 처음입력이라면
-                if(friendsFriendsMap.get(visitor)==null){
+                if(visitor!= user && friendsFriendsMap.get(visitor)==null){
                     friendsFriendsMap.put(visitor, 1);
                 }
             }
@@ -64,12 +65,12 @@ public class Problem7 {
             if(visitors.size()>0){
                 for(String visitor : visitors){
                     // 중복값이라면
-                    if(friendsFriendsMap.get(visitor)!=null){
+                    if(visitor!= user && friendsFriendsMap.get(visitor)!=null){
                         int point = friendsFriendsMap.get(visitor);
                         friendsFriendsMap.put(visitor, point+ 1);
                     }
                     // 처음입력이라면
-                    if(friendsFriendsMap.get(visitor)==null){
+                    if(visitor!= user && friendsFriendsMap.get(visitor)==null){
                         friendsFriendsMap.put(visitor, 1);
                     }
                 }
@@ -87,7 +88,8 @@ public class Problem7 {
         answer = new ArrayList<>();
 
         // 3. 리스트에 넣어서 포인트가 높은 순으로 정렬한뒤 최대 5명 까지만 담아준다
-        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(friendsFriendsMap.entrySet());
+        /*List<Map.Entry<String, Integer>> entryList = new LinkedList<>(friendsFriendsMap.entrySet());
+        entryList.sort(((o1, o2) -> friendsFriendsMap.get(o1.getValue()) - friendsFriendsMap.get(o2.getValue()) ));
         entryList.sort(((o1, o2) -> friendsFriendsMap.get(o2.getKey()) - friendsFriendsMap.get(o1.getKey()) ));
         int cnt = 0 ;
         for(Map.Entry<String, Integer> entry : entryList){
@@ -96,9 +98,41 @@ public class Problem7 {
             if(cnt == 5){
                 break;
             }
+        }*/
+        // 3. 이중배열로 {점수, 아이디} 순서대로 담아서 점수 내림차순, 아이디 오름차순으로 정렬해준다
+        String[][] friendFriendArr = new String[friendsFriendsMap.size()][2];
+        int arrcnt = 0;
+        for(String key: friendsFriendsMap.keySet()){
+            friendFriendArr[arrcnt][0] = String.valueOf(friendsFriendsMap.get(key));
+            friendFriendArr[arrcnt][1] = key;
+            arrcnt++;
+        }
+        // System.out.println(Arrays.deepToString(friendFriendArr));
+
+        Arrays.sort(friendFriendArr, new Comparator<String[]>() {
+            @Override
+            public int compare(String[] o1, String[] o2) {
+                if(o1[0].contentEquals(o2[0])){
+                    return o1[1].compareTo(o2[1]);
+                } else {
+                    return Integer.parseInt(o2[0]) - Integer.parseInt(o1[0]) ;
+                }
+            }
+        });
+        // System.out.println(Arrays.deepToString(friendFriendArr));
+
+        // 4. 정렬된 배열에서 최대 5명 까지만 담아준다
+        int answerCnt = 0 ;
+        for(int i=0; i<friendFriendArr.length; i++){
+            answer.add(friendFriendArr[i][1]) ;
+            answerCnt++;
+            if(answerCnt == 5){
+                break;
+            }
         }
 
         return answer;
     }
+
 
 }
