@@ -2,21 +2,25 @@ package onboarding;
 
 import java.util.Arrays;
 
+
+
 public class Problem3 {
     public static int solution(int number) {
-        if(hasException(number)){
-            return -1;
-        }
-        return getClapNum(number);
+        Problem3 solve = new Problem3();
+        solve.procException(solve.hasException(number));
+        return solve.getClapNum(number);
     }
-
-    public static boolean hasException(int number){
+    private void procException(Boolean isException) {
+        if (isException) {
+            throw new RuntimeException("Error Occur");
+        }
+    }
+    private boolean hasException(int number){
         if(number<1 || number>10000)
             return true;
         return false;
     }
-
-    public static int getClapNum(int number){
+    private int getClapNum(int number){
         int result = 0;
         for(int i = 1; i <= number; i++){
             long count = Arrays.stream(Integer.toString(i).split(""))
