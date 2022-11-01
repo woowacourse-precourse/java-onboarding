@@ -20,6 +20,9 @@ public class Problem6 {
                 duplicateNicknames.add(findDuplicate(nicknames, twoLetters.get(j), i));
             }
         }
+        List<String> flattenDuplicateNicknames = flattenList(duplicateNicknames).stream()
+                .distinct()
+                .collect(Collectors.toList());
         return emails;
     }
     public static List<String> splitToTwoLetters(String nickname){
