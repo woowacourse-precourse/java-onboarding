@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * 기능 목록
@@ -8,37 +9,42 @@ import java.util.*;
  * 2. 타임 라인 방문한 친구들 처리
  * 3. 점수를 매겨서,
  * 4. 순서대로 list 에 넣어주기.
+ * 5. 기존의 친구들도 제외 해주어야한다. (나 자신도 제외.)
  */
-//사용자 아이디 user와 친구 관계 정보 friends, 사용자 타임 라인 방문 기록 visitors가 매개변수로 주어질 때,
-// 미스터코의 친구 추천 규칙에 따라 점수가 가장 높은 순으로 정렬하여 최대 5명을 return 하도록 solution 메서드를 완성하라.
-// 이때 추천 점수가 0점인 경우 추천하지 않으며, 추천 점수가 같은 경우는 이름순으로 정렬한다.
-
-//- 사용자와 함께 아는 친구의 수 = 10점
-//- 사용자의 타임 라인에 방문한 횟수 = 1점
-
-//- user는 길이가 1 이상 30 이하인 문자열이다.
-//- friends는 길이가 1 이상 10,000 이하인 리스트/배열이다.
-//- friends의 각 원소는 길이가 2인 리스트/배열로 [아이디 A, 아이디 B] 순으로 들어있다.
-//  - A와 B는 친구라는 의미이다.
-//  - 아이디는 길이가 1 이상 30 이하인 문자열이다.
-//- visitors는 길이가 0 이상 10,000 이하인 리스트/배열이다.
-//- 사용자 아이디는 알파벳 소문자로만 이루어져 있다.
-//- 동일한 친구 관계가 중복해서 주어지지 않는다.
-//- 추천할 친구가 없는 경우는 주어지지 않는다.
 public class Problem7 {
 
     public static Map<String, Integer> algorithmCandidate = new HashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = new ArrayList<>();
-        return answer;
+        Problem7 p7 = new Problem7();
+        p7.addCandidateFriends(user, friends);
+        p7.addCandidateVisitors(visitors);
+        p7.remove(user, friends);
+
+        return p7.getAnswer();
+    }
+
+    public void remove(String user, List<List<String>> friends) {
+        removeUserFriend(user, friends);
+        removeUser(user);
+    }
+
+    private void removeUserFriend(String user, List<List<String>> friends) {
+        List<String> userFriends = findUserFriends(user, friends);
+        for (String userFriend : userFriends) {
+            algorithmCandidate.remove(userFriend);
+        }
+    }
+
+    private void removeUser (String user) {
+        algorithmCandidate.remove(user);
     }
 
     public void addCandidateVisitors(List<String> visitors) {
         addCandidateIterList(visitors, 1);
     }
 
-    public void addCandidateFriends(String user, List<List<String>> friends) throws Exception {
+    public void addCandidateFriends(String user, List<List<String>> friends) {
         List<String> userFriends = findUserFriends(user, friends);
         for (String userFriend : userFriends) {
             List<String> list = findUserFriends(userFriend, friends);
@@ -46,9 +52,27 @@ public class Problem7 {
         }
     }
 
+    public List<String> getAnswer() {
+        // Map.Entry 리스트 작성
+        ArrayList<Map.Entry<String, Integer>> list_entries = new ArrayList<>(algorithmCandidate.entrySet());
+        Set<String> answer = new HashSet<>();
 
+        Collections.sort(list_entries, new Comparator<Map.Entry<String, Integer>>() {
+            public int compare(Map.Entry<String, Integer> obj1, Map.Entry<String, Integer> obj2) {
+                // 오름 차순 정렬
+                return obj1.getValue().compareTo(obj2.getValue());
+            }
+        }.reversed());
 
-    private List<String> findUserFriends(String user, List<List<String>> list) throws Exception {
+        for (Map.Entry<String, Integer> list_entry : list_entries) {
+            for (int i = 0; i < 5; i++) {
+                answer.add(list_entry.getKey());
+            }
+        }
+        return answer.stream().collect(Collectors.toList());
+    }
+
+    private List<String> findUserFriends(String user, List<List<String>> list) {
         List<String> friends = new ArrayList<>();
         for (List<String> friendList : list) {
             if (checkUserFriend(user, friendList)) {
@@ -58,13 +82,13 @@ public class Problem7 {
         return friends;
     }
 
-    private String getUserFriend(String user, List<String> list) throws Exception {
+    private String getUserFriend(String user, List<String> list) {
         for (String name : list) {
             if (!(user.equals(name))) {
                 return name;
             }
         }
-        throw new Exception("친구목록을 확인해주세요.");
+        return "";
     }
 
     private boolean checkUserFriend(String user, List<String> list) {
@@ -78,9 +102,9 @@ public class Problem7 {
 
     private boolean checkMapIfExist(String name) {
         if (algorithmCandidate.containsKey(name)) {
-            return Boolean.FALSE;
+            return Boolean.TRUE;
         }
-        return Boolean.TRUE;
+        return Boolean.FALSE;
     }
 
     private void addCandidateIterList(List<String> list, int score) {
