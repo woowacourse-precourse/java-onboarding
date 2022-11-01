@@ -1,7 +1,5 @@
 package onboarding;
 
-import java.util.Stack;
-
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = decrypt(cryptogram);
@@ -9,32 +7,36 @@ public class Problem2 {
     }
 
     public static String decrypt(String cryptogram) {
+        String str = "";
         int length = cryptogram.length();
-        Stack<Character> stack = new Stack<>();
+        Character recentCh = null;
 
         for (int i = 0; i < length; i++) {
             char ch = cryptogram.charAt(i);
 
-            if (!stack.isEmpty() && ch == stack.peek()) {
-                if (i < length - 1) {
-                    char nextCh = cryptogram.charAt(i + 1);
-
-                    if (ch == nextCh) {
-                        continue;
-                    }
-                }
-                stack.pop();
+            if (recentCh == null) {
+                recentCh = ch;
+                str += ch;
                 continue;
             }
 
-            stack.add(ch);
+            if (recentCh == ch) {
+                str = str.substring(0, str.length() - 1);
+                continue;
+            }
+
+            if (recentCh != ch) {
+                str += ch;
+                recentCh = ch;
+            }
         }
 
-        StringBuilder sb = new StringBuilder();
-        for (Character ch : stack) {
-            sb.append(ch);
+        if (length != str.length()) {
+            return decrypt(str);
         }
 
-        return sb.toString();
+        cryptogram = str;
+        return cryptogram;
     }
+
 }
