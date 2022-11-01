@@ -7,7 +7,7 @@ class Problem1 {
         if (!isValidePages(pobi) || !isValidePages(crong)) {
             return -1;
         };
-        return 0;
+        return judgeWinner(calculateScore(pobi), calculateScore(crong));
     }
 
     private static boolean isValidePages(List<Integer> pages) {
@@ -26,6 +26,16 @@ class Problem1 {
 
     private static boolean isNextPage(List<Integer> pages) {
         return pages.get(0) + 1 == pages.get(1);
+    }
+
+    private static Integer judgeWinner(int pobiScore, int crongScore) {
+        if (pobiScore > crongScore) {
+            return 1;
+        }
+        if (pobiScore < crongScore) {
+            return 2;
+        }
+        return 0;
     }
 
     private static int calculateScore(List<Integer> pages) {
