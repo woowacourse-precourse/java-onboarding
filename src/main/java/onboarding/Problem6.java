@@ -13,16 +13,22 @@ public class Problem6 {
     private static HashSet<String> resultset = new HashSet<>();
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
+        List<String> names = checkName(forms);
 
 
         return answer;
     }
-    static void checkName(List<List<String>> forms) {
+    static List<String> checkName(List<List<String>> forms) {
+        ArrayList<String> names = new ArrayList<>();
         for (List<String> splitedlist : forms) {
             if (splitedlist.get(0).length() < 1 || splitedlist.get(0).length() > 20) {
                 resultset.add(splitedlist.get(1));
             }
+            else {
+                names.add(splitedlist.get(0));
+            }
         }
+        return names;
     }
 
     static List<String> getNameToken(List<String> names) {
