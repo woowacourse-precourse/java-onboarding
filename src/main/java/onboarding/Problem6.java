@@ -29,7 +29,7 @@ public class Problem6 {
             if (temp.get(i) == 1)  answer.add(forms.get(i).get(0));
         }
 
-
+        answer.sort(Comparator.naturalOrder());
         return answer;
     }
 }
