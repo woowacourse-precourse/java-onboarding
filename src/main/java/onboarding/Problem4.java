@@ -6,3 +6,4 @@ public class Problem4 {
         return answer;
     }
 }
+
