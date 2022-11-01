@@ -23,7 +23,8 @@ public class Problem6 {
             throw new IllegalArgumentException("[error] 잘못된 forms를 입력하셨습니다.");
         }
         List<String> answer = getEmailListOfOverlapedNickname(forms);
-        return sortEmailList(answer);
+        sortEmailList(answer);
+        return answer;
     }
 
     // forms에서 email 리스트를 추출하는 기능
@@ -144,9 +145,7 @@ public class Problem6 {
     }
 
     // 이메일 리스트 오름차순으로 정렬하는 기능
-    public static List<String> sortEmailList(List<String> email) {
-        return email.stream()
-            .sorted()
-            .collect(Collectors.toList());
+    public static void sortEmailList(List<String> email) {
+        email.sort(Comparator.naturalOrder());
     }
 }
