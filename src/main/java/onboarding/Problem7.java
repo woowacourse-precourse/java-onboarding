@@ -33,6 +33,8 @@ public class Problem7 {
             findFriendOfUserFriends(firstFriend, secondFriend);
         }
 
+        deleteUserAndUserFriends(user);
+
         return answer;
     }
 
@@ -55,6 +57,13 @@ public class Problem7 {
                 friendsMap.put(firstFriend, score + 10);
             }
         }
+    }
+
+    public static void deleteUserAndUserFriends(String user){
+        for (String friendOfUser : friendsOfUser) {
+            friendsMap.remove(friendOfUser);
+        }
+        friendsMap.remove(user);
     }
 
     public static void findFriendVisitedFeed(List<String> visitors){
