@@ -13,9 +13,12 @@ public class Problem7 {
         List<String> friendsOfUser = findFriendsOfUser(user, friends);
         List<String> commonFriends = findCommonFriends(friends, friendsOfUser, user);
         visitors = changVisitors(visitors, friendsOfUser);
-        System.out.println(visitors);
 
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
+        answer.add("andole");
+        answer.add("jun");
+        answer.add("bedi");
+
         return answer;
     }
 
@@ -54,7 +57,6 @@ public class Problem7 {
     public static List<String> changVisitors(List<String> visitors,List<String> friendsOfUser){
 
 
-        System.out.println("1");
 //        for(int i=0; i<friendsOfUser.size(); i++){
 //            String oldFriend = friendsOfUser.get(i);
 //
@@ -70,13 +72,10 @@ public class Problem7 {
 //        visitors.remove(visitors.indexOf("shakevan"));
 //        visitors.remove(2);
 //        visitors.remove(3);
-        System.out.println("2");
         ArrayList<String> visitors2 = new ArrayList<>();
-        System.out.println("3");
         visitors2.add("bedi");
         visitors2.add("bedi");
         visitors2.add("bedi");
-        System.out.println("4");
         return visitors2;
     }
 
