@@ -5,13 +5,12 @@ import java.util.*;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Recommendation rec = new Recommendation(user, friends, visitors);
-        List<String> answer = rec.returnResult(user, friends, visitors);
+        List<String> answer = rec.returnResult();
         return answer;
     }
 }
 
 class Recommendation {
-    Map<String, Integer> user_score = new HashMap<>();
     final String user;
     final List<List<String>> friends;
     final List<String> visitors;
@@ -24,11 +23,13 @@ class Recommendation {
         this.friends_map = makeFriendsMap(friends);
     }
 
-    List<String> returnResult(String user, List<List<String>> friends, List<String> visitors) {
+    List<String> returnResult() {
         List<String> result = new ArrayList<>();
-        setUserScore(user, friends, visitors);
-        filterUserScore();
-        List<Map.Entry<String, Integer>> entryList = sortUserScore();
+        Map<String, Integer> friend_score = setFriendScore();
+        Map<String, Integer> visitor_score = setVisitorScore(friend_score);
+        Map<String, Integer> user_score = setUserScore(visitor_score);
+        Map<String, Integer> fltr_user_score = filterUserScore(user_score);
+        List<Map.Entry<String, Integer>> entryList = sortUserScore(fltr_user_score);
         int i = 0;
         while (i < 5 & i < entryList.size()) {
             result.add(entryList.get(i).getKey());
@@ -37,41 +38,41 @@ class Recommendation {
         return result;
     }
 
-    private List<Map.Entry<String, Integer>> sortUserScore() {
+    private List<Map.Entry<String, Integer>> sortUserScore(Map<String, Integer> user_score) {
         List<Map.Entry<String, Integer>> entryList = new LinkedList<>(user_score.entrySet());
         entryList.sort(Map.Entry.comparingByKey());
         entryList.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
         return entryList;
     }
 
-    private void filterUserScore() {
+    private Map<String, Integer> filterUserScore(Map<String, Integer> user_score) {
         for (String key : user_score.keySet()) {
             if (user_score.get(key) == 0) {
                 user_score.remove(key);
             }
         }
+        return user_score;
     }
 
-    private void setUserScore(String user, List<List<String>> friends, List<String> visitors) {
-        setVisitorScore(visitors);
-        setFriendScore(user, friends);
-        Map<String, List<String>> friends_map = makeFriendsMap(friends);
+    private Map<String, Integer> setUserScore(Map<String, Integer> user_score) {
         // user key에 대한 친구 목록이 없는 경우 빈 array 반환
         List<String> array = new ArrayList<>();
         List<String> user_friends = friends_map.getOrDefault(user, array);
         for (String friend : user_friends) {
             user_score.remove(friend);
         }
+        return user_score;
     }
 
-    private void setVisitorScore(List<String> visitors) {
+    private Map<String, Integer> setVisitorScore(Map<String, Integer> user_score) {
         for (String visitor : visitors) {
             user_score.put(visitor, user_score.getOrDefault(visitor, 0) + 1);
         }
+        return user_score;
     }
 
-    private void setFriendScore(String user, List<List<String>> friends) {
-        Map<String, List<String>> friends_map = makeFriendsMap(friends);
+    private Map<String, Integer> setFriendScore() {
+        Map<String, Integer> user_score = new HashMap<>();
         // user key에 대한 친구 목록이 없는 경우 빈 array 반환
         List<String> array = new ArrayList<>();
         List<String> friend_list = friends_map.getOrDefault(user, array);
@@ -84,6 +85,7 @@ class Recommendation {
                 user_score.put(cross_friend, user_score.getOrDefault(cross_friend, 0) + 10);
             }
         }
+        return user_score;
     }
 
     private Map<String, List<String>> makeFriendsMap(List<List<String>> friends) {
