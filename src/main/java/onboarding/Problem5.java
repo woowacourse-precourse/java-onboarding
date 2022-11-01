@@ -7,25 +7,23 @@ import java.util.List;
 public class Problem5 {
 
     // 화폐 및 동전 계산
-    public static Integer isUnit(int number, int index){
+    public static Integer isUnit(int number, int index) {
 
         int unit = number;
 
-        if(index % 2 == 0){ // 오만, 오천, 오백, 오십
+        if (index % 2 == 0) { // 오만, 오천, 오백, 오십
             unit /= 5;
-        }
-
-        else if(index % 2 == 1){ // 만, 천, 백, 십
-            if(unit == 10){ // 십 -> 일
+        } else if (index % 2 == 1) { // 만, 천, 백, 십
+            if (unit == 10) { // 십 -> 일
                 unit /= 10;
-            }
-            else {
+            } else {
                 unit /= 2;
             }
         }
 
         return unit;
     }
+
     public static List<Integer> solution(int money) {
         List<Integer> answer = Collections.emptyList();
 
@@ -38,7 +36,7 @@ public class Problem5 {
         // 인덱스 저장
         int i = 0;
 
-        while (money!= 0){
+        while (money != 0) {
 
             int count = money / unit;
             temp.add(i, count);
@@ -51,7 +49,7 @@ public class Problem5 {
         }
 
         // 나머지 금액의 변환이 필요없는 경우, 0으로 채워준다.
-        for(int j = temp.size(); j < 9; j++){
+        for (int j = temp.size(); j < 9; j++) {
             temp.add(j, 0);
         }
 
