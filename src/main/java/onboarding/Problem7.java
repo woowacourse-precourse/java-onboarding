@@ -76,6 +76,9 @@ public class Problem7 {
 		if (!isIdRangeValid(friends)) {
 			return EXCEPTION;
 		}
+		if (!isVisitorsRangeValid(visitors)) {
+			return EXCEPTION;
+		}
 		return 0;
 	}
 
@@ -103,6 +106,14 @@ public class Problem7 {
 					return false;
 				}
 			}
+		}
+		return true;
+	}
+
+	// visitors 의 길이가 0 이상 10,000 이하가 아닌 경우 예외
+	private static boolean isVisitorsRangeValid(List<String> visitors) {
+		if (visitors.size() > 10000) {
+			return false;
 		}
 		return true;
 	}
