@@ -9,9 +9,8 @@ public class Problem7 {
         ArrayList<String>[] friendsOfUsers;
         ArrayList<String> friendsOfThisUser;
         Map<String, Integer> scoresWithNames = new HashMap<>();
-
-        int[] scores;
-        int idx1, idx2, userIdx, numOfUsers;
+        int userIdx, numOfUsers;
+        Score scores;
 
         for (List<String> friendship : friends) {
             uniqueFriends.addAll(friendship);
@@ -20,54 +19,63 @@ public class Problem7 {
         numOfUsers = uniqueFriends.size();
 
         listOfUniqueFriends = new ArrayList<>(uniqueFriends);
-        friendsOfUsers = new ArrayList[numOfUsers];
-        for (int i = 0; i < numOfUsers; i ++) {
-            friendsOfUsers[i] = new ArrayList<>();
-        }
 
-        for (List<String> friendship : friends) {
-            idx1 = listOfUniqueFriends.indexOf(friendship.get(0));
-            idx2 = listOfUniqueFriends.indexOf(friendship.get(1));
-            friendsOfUsers[idx1].add(friendship.get(1));
-            friendsOfUsers[idx2].add(friendship.get(0));
-        }
+        friendsOfUsers = createListOfFriendships(friends, listOfUniqueFriends, numOfUsers);
 
         userIdx = listOfUniqueFriends.indexOf(user);
         friendsOfThisUser = friendsOfUsers[userIdx];
         friendsOfUsers[userIdx] = new ArrayList<>();
-        scores = new int[numOfUsers];
-        Arrays.fill(scores, 0);
 
-        // 함께 아는 친구 수 당 10점 추가
+        scores = new Score(numOfUsers);
+        scores.setAllToZero();
+
         for (int j = 0; j < numOfUsers; j++) {
             for (String friend : friendsOfUsers[j]) {
                 if (friendsOfThisUser.contains(friend)) {
-                    scores[j] += 10;
+                    scores.increaseBy(j,10);
                 }
             }
         }
 
-        // 방문 횟수 당 1점 추가
         for (String visitor : visitors) {
-            idx1 = listOfUniqueFriends.indexOf(visitor);
-            scores[idx1] ++;
+            scores.increaseBy(listOfUniqueFriends.indexOf(visitor), 1);
         }
 
-        //현재 유저와 이미 친구면 추천 친구에서 제거 (스코어 0점 처리)
         for (String friendOfThisUser : friendsOfThisUser) {
-            idx1 = listOfUniqueFriends.indexOf(friendOfThisUser);
-            scores[idx1] = 0;
+            scores.setToZero(listOfUniqueFriends.indexOf(friendOfThisUser));
         }
 
         for (int k = 0; k < numOfUsers; k++) {
-            scoresWithNames.put(listOfUniqueFriends.get(k), scores[k]);
+            scoresWithNames.put(listOfUniqueFriends.get(k), scores.getValue(k));
         }
 
-        return top_five(sortByValueThenKey(scoresWithNames));
+        return topFive(sortByValueThenKey(scoresWithNames));
 
     }
 
-    public static <K extends Comparable<? super K>, V extends Comparable<? super V>> Map<K, V> sortByValueThenKey(Map<K, V> map) {
+    static class Score {
+        int[] scores;
+        public Score(int size) {
+            scores = new int[size];
+        }
+        public void setAllToZero() {
+            Arrays.fill(scores, 0);
+        }
+        public void setToZero(int idx) {
+            scores[idx] = 0;
+        }
+        public void setValue(int idx, int v) {
+            scores[idx] = v;
+        }
+        public void increaseBy(int idx, int v) {
+            scores[idx] += v;
+        }
+        public int getValue(int idx) {
+            return scores[idx];
+        }
+    }
+
+    static <K extends Comparable<? super K>, V extends Comparable<? super V>> Map<K, V> sortByValueThenKey(Map<K, V> map) {
         List<Map.Entry<K, V>> list = new LinkedList<>(map.entrySet());
         Collections.sort(list, new Comparator<Map.Entry<K, V>>() {
             @Override
@@ -86,7 +94,7 @@ public class Problem7 {
         return sorted;
     }
 
-    static ArrayList<String> top_five(Map<String, Integer> hm) {
+    static ArrayList<String> topFive(Map<String, Integer> hm) {
         int count = 0;
         ArrayList<String> recommended = new ArrayList<>();
         for (Map.Entry<String, Integer> user : hm.entrySet()) {
@@ -96,5 +104,20 @@ public class Problem7 {
             }
         }
         return recommended;
+    }
+
+    static ArrayList<String>[] createListOfFriendships(List<List<String>> friends, List<String> listOfUniqueFriends, int numOfUsers) {
+        int f1, f2;
+        ArrayList<String>[] friendsOfUsers = new ArrayList[numOfUsers];
+        for (int i = 0; i < numOfUsers; i ++) {
+            friendsOfUsers[i] = new ArrayList<>();
+        }
+        for (List<String> friendship : friends) {
+            f1 = listOfUniqueFriends.indexOf(friendship.get(0));
+            f2 = listOfUniqueFriends.indexOf(friendship.get(1));
+            friendsOfUsers[f1].add(friendship.get(1));
+            friendsOfUsers[f2].add(friendship.get(0));
+        }
+        return friendsOfUsers;
     }
 }

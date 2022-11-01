@@ -8,8 +8,8 @@ class Problem1 {
             return -1;
         }
 
-        int p = Math.max(add_or_multiply(pobi.get(0)), add_or_multiply(pobi.get(1)));
-        int c = Math.max(add_or_multiply(crong.get(0)), add_or_multiply(crong.get(1)));
+        int p = Math.max(addOrMultiply(pobi.get(0)), addOrMultiply(pobi.get(1)));
+        int c = Math.max(addOrMultiply(crong.get(0)), addOrMultiply(crong.get(1)));
 
         int answer;
 
@@ -58,7 +58,7 @@ class Problem1 {
         }
         return result;
     }
-    static int add_or_multiply(int value) {
+    static int addOrMultiply(int value) {
         return Math.max(add(value), multiply(value));
     }
 }

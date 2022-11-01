@@ -5,17 +5,12 @@ import java.util.*;
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
-        List<String> nicknames = new ArrayList<>();
-        List<String> emails = new ArrayList<>();
+        List<String> nicknames = createNicknameList(forms);
+        List<String> emails = createEmailList(forms);
         List<String> nicknamesExceptThis;
-        int index;
+        int idxRepeated;
         String nickname;
         boolean exists;
-
-        for (List<String> user : forms) {
-            emails.add(user.get(0));
-            nicknames.add(user.get(1));
-        }
 
         for (int j = 0; j < nicknames.size(); j++) {
             nickname = nicknames.get(j);
@@ -23,9 +18,9 @@ public class Problem6 {
             nicknamesExceptThis.remove(j);
             exists = false;
             for (int k = 0; k < nickname.length(); k++) {
-                index = (toString(nicknamesExceptThis)).indexOf(nickname.charAt(k));
-                if ((index != -1) && (index + 1 < nicknamesExceptThis.size()) && (k + 1 < nickname.length())) {
-                    if (toString(nicknamesExceptThis).charAt(index + 1) == nickname.charAt(k + 1)) {
+                idxRepeated = (toString(nicknamesExceptThis)).indexOf(nickname.charAt(k));
+                if ((idxRepeated != -1) && (idxRepeated + 1 < nicknamesExceptThis.size()) && (k + 1 < nickname.length())) {
+                    if (toString(nicknamesExceptThis).charAt(idxRepeated + 1) == nickname.charAt(k + 1)) {
                         exists = true;
                     }
                 }
@@ -48,4 +43,20 @@ public class Problem6 {
         }
         return str.toString();
     }
+    
+     static List<String> createEmailList(List<List<String>> forms) {
+        List<String> emails = new ArrayList<>();
+        for (List<String> user : forms) {
+            emails.add(user.get(0));
+        }
+        return emails;
+    }
+    static List<String> createNicknameList(List<List<String>> forms) {
+        List<String> nicknames = new ArrayList<>();
+        for (List<String> user : forms) {
+            nicknames.add(user.get(1));
+        }
+        return nicknames;
+    }
+
 }
