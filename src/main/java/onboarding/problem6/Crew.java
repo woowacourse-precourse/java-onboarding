@@ -1,8 +1,9 @@
 package onboarding.problem6;
 
-public class Crew implements Comparable<Crew>{
-    private String email;
-    private String nickname;
+public class Crew implements Comparable<Crew> {
+
+    private final String email;
+    private final String nickname;
 
     private boolean isOverlap = false;
 
