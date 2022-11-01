@@ -25,7 +25,7 @@ public class Problem2 {
             isDuple = hasDuple(chars, isDuple);
         }
 
-
+        answer = String.join("", charList);
 
         return answer;
     }
