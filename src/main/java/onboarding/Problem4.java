@@ -23,4 +23,11 @@ public class Problem4 {
         stringBuilder.setLength(0);
         return x;
     }
+
+    public static boolean error(String string){
+        if((string.length()>=1 && string.length()<=1000)){
+            return false;
+        }
+        return true;
+    }
 }
