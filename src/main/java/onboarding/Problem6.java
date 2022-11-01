@@ -1,11 +1,21 @@
 package onboarding;
 
 import java.util.List;
+import java.util.Set;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
+        Set<String> overlapSet = findOverlapCrew(forms);
+        return sortSet(overlapSet);
+    }
 
-        List<String> answer = List.of("answer");
-        return answer;
+    private static List<String> sortSet(Set<String> overlapSet) {
+
+        return null;
+    }
+
+    private static Set<String> findOverlapCrew(List<List<String>> forms) {
+
+        return null;
     }
 }
