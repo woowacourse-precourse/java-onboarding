@@ -7,7 +7,7 @@ class Problem1 {
         int left = input.get(0);
         int right = input.get(1);
 
-        return left + 1 == right && left >= 1 && right <= 400 && right % 2 == 0;
+        return left + 1 == right && left > 1 && right < 400 && right % 2 == 0;
     }
 
     public static int addEachNum(int num) {
