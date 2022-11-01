@@ -1,6 +1,13 @@
 package onboarding;
 
 public class Problem2 {
+
+    public String solution(String word) {
+        StringBuilder str = new StringBuilder(word);
+        String sol = check(str, word.length());
+        return sol;
+    }
+
     public static String check(StringBuilder str2, int length) {
         StringBuilder str = str2;
         System.out.println(str);
@@ -9,7 +16,7 @@ public class Problem2 {
                 return "";
             }
             //System.out.println("i : " + i);
-            if (i + 1 < str.length()) {
+            if (i+1 < str.length()) {
                 if (str.charAt(i) == str.charAt(i + 1)) {
                     //System.out.println("str.charAt(i) : " + str.charAt(i));
                     //System.out.println("str.charAt(i+1) : " + str.charAt(i + 1));
@@ -27,12 +34,4 @@ public class Problem2 {
     }
 
 
-    public static void main(String[] args) {
-        String s = "browoanoommnaon";
-//		String s = "skkkkkiiiirtttt";
-//		String s = "zyelleyz";
-        StringBuilder str = new StringBuilder(s);
-        System.out.println("test : " + (check(str, s.length())));
-
-    }
 }
