@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 /* 기능 목록
 1. 모든 닉네임을 앞에서부터 2글자씩 끊어서 HashMap 에 저장
@@ -13,7 +10,6 @@ import java.util.Set;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
 
         // 1. 모든 닉네임을 앞에서부터 2글자씩 끊어서 HashMap 에 저장
         HashMap<String, Set<String>> map = new HashMap<>();
@@ -38,6 +34,10 @@ public class Problem6 {
             if(emails.size() > 1)
                 for(String email : emails)
                     answerSet.add(email);
+
+        // 3. 이메일 오름차순 정렬, 중복 제거
+        List<String> answer = new ArrayList<>(answerSet);
+        Collections.sort(answer);
 
         return answer;
     }
