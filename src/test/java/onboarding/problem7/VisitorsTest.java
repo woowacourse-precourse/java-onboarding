@@ -15,6 +15,6 @@ public class VisitorsTest {
 		List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
 		Visitors visitor = new Visitors(visitors);
 
-		assertThat(visitor.count("bedi")).isEqualTo(3);
+		assertThat(visitor.countVisit("bedi")).isEqualTo(3);
 	}
 }

@@ -12,7 +12,7 @@ public class Visitors {
 		this.visitors = visitors;
 	}
 
-	public int count(String user) {
+	public int countVisit(String user) {
 		int count = 0;
 		for (String visitor : visitors) {
 			if (user.equals(visitor)) {

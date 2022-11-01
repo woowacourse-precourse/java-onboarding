@@ -39,7 +39,7 @@ public class Network {
 
 	private int calculateScoreOf(String user, String friend) {
 		int sharedFriendsCount = relationships.countSharedFriends(user, friend);
-		int visitCount = visitors.count(friend);
+		int visitCount = visitors.countVisit(friend);
 		return sharedFriendsCount * 10 + visitCount;
 	}
 
