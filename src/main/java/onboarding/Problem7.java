@@ -42,6 +42,11 @@ public class Problem7 {
 		Collections.sort(answer);
 		Collections.sort(answer, (o1, o2) -> (score.get(o2).compareTo(score.get(o1))));
 
+		answer = sliceAnswerSize(answer);
+		return answer;
+	}
+
+	private static List<String> sliceAnswerSize(List<String> answer) {
 		if (answer.size() > 5) {
 			answer = answer.subList(0, 5);
 		}
