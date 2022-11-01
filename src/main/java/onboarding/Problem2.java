@@ -4,6 +4,14 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         String crypted = cryptogram;
 
+        while(true){
+            String encrypted = deleteDuplicate(crypted);
+            if(encrypted.length() == crypted.length())
+                break;
+            else
+                crypted = encrypted;
+        }
+
         return crypted;
     }
 
