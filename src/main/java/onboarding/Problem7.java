@@ -11,6 +11,7 @@ public class Problem7 {
 
         List<String> userFriends = friendList(user, friends);
         HashMap<String, Integer> recommendScore = acquaintance(friends, userFriends);
+        numOfVisit(recommendScore, visitors);
 
         return answer;
     }
@@ -39,5 +40,11 @@ public class Problem7 {
             }
         }
         return recommendScore;
+    }
+
+    private static void numOfVisit(HashMap<String, Integer> recommendScore, List<String> visitors) {
+        for (String visitor : visitors) {
+            recommendScore.put(visitor, recommendScore.getOrDefault(visitor, 0)+1);
+        }
     }
 }
