@@ -18,6 +18,10 @@ public class Problem4 {
                 answer += ' ';
                 continue;
             }
+            // 4. 변환된 알파벳으로 반환.
+            alphabet = (int)word.charAt(i)-ascii;
+            reverseAlphabet = ascii + 25 - alphabet;
+            answer += String.valueOf((char) reverseAlphabet);
         }
         return answer;
     }
