@@ -1,10 +1,7 @@
 package onboarding;
 
 public class Problem3 {
-    public static void main(String[] args) {
-        int number = 13;
-        System.out.println(solution(number));
-    }
+    static int[] checkNumber = {3, 6, 9};
     public static int solution(int number) {
         int result = 0;
 
@@ -20,5 +17,14 @@ public class Problem3 {
         }
 
         return result;
+    }
+
+    private static boolean needCrap(int number) {
+        for (int check : checkNumber) {
+            if (check == number) {
+                return true;
+            }
+        }
+        return false;
     }
 }
