@@ -1,5 +1,9 @@
 package onboarding;
-
+/*
+ * 기능구현
+ * 1. 아스키 코드를 이용한 key, value인 HashMap생성
+ * 2. 해당하는 함수 StringBuilder에 붙이기
+ * */
 import java.util.HashMap;
 import java.util.Map;
 
