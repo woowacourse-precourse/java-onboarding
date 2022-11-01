@@ -33,6 +33,24 @@ class ApplicationTest {
             int result = -1;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
+
+        @Test
+        void 페이지_홀짝_검사() {
+            List<Integer> pobi = List.of(98, 99);
+            List<Integer> crong = List.of(211, 212);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+        @Test
+        void 페이지_최소_최대_검사() {
+            List<Integer> pobi = List.of(401, 402);
+            List<Integer> crong = List.of(211, 212);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
+
+
     }
 
     @Nested
