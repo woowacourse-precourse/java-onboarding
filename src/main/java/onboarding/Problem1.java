@@ -8,6 +8,19 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        
+        int pobiMax = calculationMax(pobi);
+		int crongMax = calculationMax(crong);
+
+		if (pobiMax > crongMax)
+			answer = 1;
+		if (crongMax > pobiMax)
+			answer = 2;
+		if (crongMax == pobiMax)
+			answer = 0;
+		if (pobiMax == -1 || crongMax == -1)
+			answer = -1;
+        
         return answer;
     }
     
