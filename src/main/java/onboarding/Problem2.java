@@ -3,6 +3,7 @@ package onboarding;
 public class Problem2 {
     public static String solution(String cryptogram) {
 
+
         String answer = cryptogram;
         String temp = "";
         int check1 = 0;
