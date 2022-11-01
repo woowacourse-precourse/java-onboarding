@@ -58,4 +58,20 @@ public class Friend {
         }
         score.put(name, FRIEND_SCORE);
     }
+
+    private void setVisitorScore(Map<String, Integer> score, String name) {
+        if(score.size() != 0 && score.containsKey(name)) {
+            score.put(name, score.get(name) + VISITOR_SCORE);
+            return;
+        }
+        score.put(name, VISITOR_SCORE);
+    }
+
+    private void getVisitorScore(List<String> friendRelations) {
+        for(String visitor: visitors) {
+            if(!friendRelations.contains(visitor)) {
+                setVisitorScore(score, visitor);
+            }
+        }
+    }
 }
