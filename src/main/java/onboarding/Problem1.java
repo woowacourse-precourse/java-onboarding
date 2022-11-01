@@ -14,7 +14,7 @@ class Problem1 {
         int pobiValue = compareSumWithMultiplyValue(pobi);
         int crongSum = compareSumWithMultiplyValue(crong);
 
-        return 0;
+        return returnResultValue(pobiValue,crongSum);
     }
 
     //유효한 좌우 페이지인지 확인
@@ -83,6 +83,18 @@ class Problem1 {
         result *= page;
 
         return result;
+    }
+
+    // 두 수를 비교하기
+    public static int returnResultValue(int pobiValue, int crongValue) {
+
+        if (pobiValue > crongValue)
+            return 1;
+
+        if (pobiValue < crongValue)
+            return 2;
+
+        return 0;
     }
 
     //둘 중 큰 수를 반환
