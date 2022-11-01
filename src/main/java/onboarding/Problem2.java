@@ -26,9 +26,9 @@ public class Problem2 {
 
             cryptoAvail = cryptoAvail.replaceAll(" ", "");
 
-            for (int i = 0; i < answer.length()-1; i++) {
+            for (int i = 0; i < cryptoAvail.length()-1; i++) {
                 flag = false;
-                if (answer.charAt(i) == answer.charAt(i+1)) {
+                if (cryptoAvail.charAt(i) == cryptoAvail.charAt(i+1)) {
                     flag = true;
                     break;
                 }
