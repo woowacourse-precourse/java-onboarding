@@ -14,10 +14,11 @@ import java.util.stream.Collectors;
 public class Problem5 {
 
     public static List<Integer> solution(int money) {
+        validateMoney(money);
         int[] moneyUnit = new int[]{50_000, 10_000, 5_000, 1_000, 500, 100, 50, 10, 1};
         int[] result = new int[moneyUnit.length];
+
         int idx = 0;
-        
         while (money > 0) {
             if (money >= moneyUnit[idx]) {
                 result[idx] += money / moneyUnit[idx];
@@ -26,5 +27,12 @@ public class Problem5 {
             idx += 1;
         }
         return Arrays.stream(result).boxed().collect(Collectors.toList());
+    }
+
+    private static void validateMoney(int money) {
+        if (1 <= money && money < 1_000_000) {
+            return;
+        }
+        throw new RuntimeException("money는 1이상 1_000_000 이하 자연수를 입력하셔야 합니다");
     }
 }
