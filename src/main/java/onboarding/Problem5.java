@@ -16,6 +16,15 @@ public class Problem5 {
 
         // moneyUnit 배열 검사할 돈의 단위를 배열로 순서대로 담았다.
         int[] moneyUnit = {50000,10000,5000,1000,500,100,50,10,1};
+
+        //  1. moneyUnit 배열의 처음 요소부터 money를 나누어 몫을 answer에 담고, 나머지를 money에 다시 저장
+        for(int i=0;i<9;i++){
+            answer.add(money/moneyUnit[i]) ;
+            if(i!=8){
+                money = money % moneyUnit[i];
+            }
+        }
+
         return answer;
     }
 }
