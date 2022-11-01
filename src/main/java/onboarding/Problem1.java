@@ -9,6 +9,9 @@ class Problem1 {
     private static boolean isEven(int page) {
         return page % 2 == 0;
     }
+    private static boolean isPair(int leftPage, int rightPage) {
+        return rightPage - leftPage == 1;
+    }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
