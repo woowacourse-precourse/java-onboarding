@@ -26,11 +26,11 @@ public class Problem6 {
     }
 
     public static List<String> separateNickname(String nickname) {
-        List<String> parts = new ArrayList<>();
+        List<String> separateNicknameList = new ArrayList<>();
         for (int i = 0; i < nickname.length() - 1; i++) {
-            parts.add(nickname.substring(i, i + 2));
+            separateNicknameList.add(nickname.substring(i, i + 2));
         }
-        return parts;
+        return separateNicknameList;
     }
 
     public static List<List<String>> getSeparateNicknameList(Map<String, List<String>> mapForms) {
