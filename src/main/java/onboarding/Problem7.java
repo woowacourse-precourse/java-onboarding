@@ -8,6 +8,8 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         TreeSet<String> friendSet = new TreeSet<String>();
         TreeSet<String> peopleSet = new TreeSet<String>();
+        findFriends(user, friends, friendSet);
+        findPeople(user, friends, visitors, peopleSet);
 
         List<String> answer = Collections.emptyList();
         return answer;
@@ -26,4 +28,12 @@ public class Problem7 {
         }
     }
 
+    private static void findPeople(String user, List<List<String>> friends, List<String> visitors, TreeSet<String> friendSet, TreeSet<String> peopleSet) {
+        for (List<String> e : friends) {
+            peopleSet.add(e.get(0));
+            peopleSet.add(e.get(1));
+        }
+        peopleSet.remove(user);
+        peopleSet.removeAll(friendSet);
+    }
 }
