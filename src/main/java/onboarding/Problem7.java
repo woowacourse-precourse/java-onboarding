@@ -1,7 +1,13 @@
 package onboarding;
 
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class Problem7 {
 
@@ -12,6 +18,7 @@ public class Problem7 {
         List<String> visitorsArr = new LinkedList<>(visitors); // visitors에서 이미 친구인 이름을 용이하게 제외하기 위해 LinkedList로 재생성
 
         List<String> friendsList = idSearch(user, friends); // 사용자의 친구 리스트 저장
+
         // 삽입을 용이하게 하기위해 LinkedList를 사용
         List<List<String>> userFriendsId = new LinkedList<>(); // 사용자와 함께 아는 친구 리스트 저장
 
@@ -49,7 +56,7 @@ public class Problem7 {
     } // end searchId
 
     // Map을 이용하여 이름마다 점수 부여
-    private static List<String> calScore(List<List<String>> userFriendsId, LinkedList<String> visitorsArr){
+    private static List<String> calScore(List<List<String>> userFriendsId, List<String> visitorsArr){
 
         Map<String, Integer> scoreMap = new TreeMap<>();
         scoreMap = calFriendsScore(userFriendsId, scoreMap); // 친구 점수 계산
@@ -73,8 +80,9 @@ public class Problem7 {
 
         return scoreMap;
     } // end calFriendsScore
-
-    private static Map<String, Integer> timeLineScore(LinkedList<String> visitorsArr, Map<String, Integer> scoreMap){
+    
+    // 타임라인 점수 부여
+    private static Map<String, Integer> timeLineScore(List<String> visitorsArr, Map<String, Integer> scoreMap){
 
         for(String visitor : visitorsArr){
             if(scoreMap.containsKey(visitor)){ // 해당 키값이 존재한다면 기존 값에서 + visitTimeLineScore
@@ -86,5 +94,15 @@ public class Problem7 {
 
         return scoreMap;
     } // end timeLineScore
+    
+    // 점수가 높은 순으로 정렬
+    private static List<String> sortedByScore(Map<String, Integer> scoreMap){
+
+        List<String> sortedList = new ArrayList<>(scoreMap.keySet());
+        // 정렬
+        Collections.sort(sortedList, (o1, o2) -> (scoreMap.get(o2).compareTo(scoreMap.get(o1))));
+
+        return sortedList;
+    } // end sortedByScore
 
 } // end class
