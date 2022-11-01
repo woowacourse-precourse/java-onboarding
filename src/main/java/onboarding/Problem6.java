@@ -25,7 +25,6 @@ public class Problem6 {
                         setOfTwoLengthWordsAndIndex.put(subString, idx);
                     }
                 }
-
             }
 
             for(Integer removedIdx : willBeRemovedNickNameIndex) {
