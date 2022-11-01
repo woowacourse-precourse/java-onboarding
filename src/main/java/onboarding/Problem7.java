@@ -1,8 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  * 기능 목록
@@ -17,7 +15,25 @@ import java.util.List;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
+
+        Map<String, Crew> team = new HashMap<>();//crew들을 모아놓는 list
+        List<String> check = new ArrayList<>();//크루가 team에 들어있는지 확인하기 위한 list
+        team.put(user, new Crew(user)); //team의 0번은 user이다.
+
+        // 친구 관계 맺기
+        for (List<String> friend : friends) {
+            for (String member : friend) {
+                if (!check.contains(member)) {
+                    check.add(member);
+                    team.put(member, new Crew(member));
+                }
+            }
+
+            team.get(friend.get(0)).getFriends().add(friend.get(1));
+            team.get(friend.get(1)).getFriends().add(friend.get(0));
+
+        }
         return answer;
     }
 
