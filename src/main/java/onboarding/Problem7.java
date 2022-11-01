@@ -90,6 +90,27 @@ public class Problem7 {
             }
         }
 
+
+        // 3. 방문자들을 순회하며, 방문자에게 1점씩 부여한다. 만약 없다면, 방문자를 닉네임과 점수에 추가후 1점을 부여한다.
+        int visit_idx;
+        boolean in_visit;
+        for(String visit : visitors){
+            in_visit = true;
+            visit_idx = -1;
+            for(int i = 0; i < user_nickname.size(); i++){
+                if (user_nickname.get(i).equals(visit)){
+                    visit_idx = i;
+                    in_visit = false;
+                }
+            }
+            if(in_visit){
+                user_nickname.add(visit);
+                user_score.add(1);
+            }else{
+                if(user_score.get(visit_idx) >= 0)  user_score.set(visit_idx, user_score.get(visit_idx) + 1);
+            }
+        }
+
         // check arrays
         System.out.println("user nickname list");
         System.out.println(user_nickname);
