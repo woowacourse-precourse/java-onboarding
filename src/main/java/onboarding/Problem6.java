@@ -17,8 +17,14 @@ public class Problem6 {
     static final Map<String, Integer> tokenCounter = new HashMap<>();
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+        countAllTokensFromForms(forms);
+
+        return forms.stream()
+                .filter(form -> isDuplicated(getNickname(form)))
+                .map(form -> getEmail(form))
+                .distinct()
+                .sorted()
+                .collect(Collectors.toList());
     }
 
     public static Set<String> extractTokensFromNicknameWithoutDuplication(String nickname) {
@@ -32,6 +38,10 @@ public class Problem6 {
             Integer tokenCount = tokenCounter.getOrDefault(token, DEFAULT_TOKEN_CNT);
             tokenCounter.put(token, tokenCount + 1);
         }
+    }
+
+    public static String getEmail(List<String> form) {
+        return form.get(0);
     }
 
     public static String getNickname(List<String> form) {
