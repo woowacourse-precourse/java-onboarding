@@ -6,10 +6,12 @@ import java.util.List;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
-        answer = new LinkedList<>();
+        checkInput(friends, user, visitors);
         if(!isVaildUser(user) || !isValidFriendsList(friends)){
-            return answer;
+            throw new InputMismatchException();
         }
+
+        answer = new LinkedList<>();
         List<String> userFriends = getUserFriends(friends, user);
         List<String> friendsFriends = getFriendsFriends(friends, userFriends);
         removeUserFriendsInList(userFriends, friendsFriends, user);
@@ -43,6 +45,26 @@ public class Problem7 {
             return false;
         }
         return input.length() >= 1 && input.length() <= 30;
+    }
+
+    private static void checkInput(List<List<String>> friends, String user, List<String> visitors){
+        if(!isValidID(user)){
+            throw new InputMismatchException();
+        }
+        for(List<String> friend2: friends){
+            for(String friend: friend2){
+                if(!isValidID(friend)){
+                    throw new InputMismatchException();
+                }
+            }
+        }
+
+        for(String visitor: visitors){
+            if(!isValidID(visitor)){
+                throw new InputMismatchException();
+            }
+        }
+
     }
     private static List<String> getUserFriends(List<List<String>> friends, String user){
         Set<String> userFriends = new LinkedHashSet<>();

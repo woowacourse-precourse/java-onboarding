@@ -24,3 +24,15 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+
+### 기능 구현
+1. input 유효성 검사
+- id 검증 : 소문자 검증, 길이 검증
+- input list 크기 검증
+
+2. 점수 산출 알고리즘
+- user의 친구 탐색
+- user의 친구의 친구 탐색
+- 친구의 친구에서 user와 user 친구 제거
+- visitor 점수 구하기
