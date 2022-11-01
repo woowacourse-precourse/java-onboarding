@@ -26,6 +26,11 @@ public class Problem7 {
             }
         }
 
+        //방문자 횟수만큼 나와 친구가 아닌 방문자 점수 부여
+        for (String visitor:visitors) {
+            setScore(friendSet, visitor, user, recommendList, 1);
+        }
+
         return answer;
     }
 
