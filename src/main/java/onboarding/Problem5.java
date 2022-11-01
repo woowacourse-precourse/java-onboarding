@@ -11,6 +11,20 @@ public class Problem5 {
 
     public static List<Integer> solution(int money) {
         List<Integer> answer = Collections.emptyList();
+
+        splitMoneyByCurrencyUnits(money, answer);
+
         return answer;
+    }
+
+    private static void splitMoneyByCurrencyUnits(int money, List<Integer> answer) {
+        int index = 0;
+        int count = 0;
+        while (money > 0) {
+            count = splitMoneyByCurrencyUnit(money, index);
+            answer.add(index, count);
+            money %= CURRENCY_UNITS.get(index);
+            index += 1;
+        }
     }
 }
