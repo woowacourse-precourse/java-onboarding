@@ -8,10 +8,17 @@ public class Problem7 {
         List<String> userFriendList = findUserFriend(user,friends);
         Map<String,Integer> recommendFriend = knowingTogetherScore(userFriendList,friends,user);
         recommendFriend = visitTimelineScore(recommendFriend,userFriendList,visitors);
+        List<String> keys = sortingRecommendList(recommendFriend);
         return answer;
     }
 
-
+    //hashmap 정렬
+    public static List<String> sortingRecommendList(Map<String,Integer> recommendFriend){
+        List<String> answer = new ArrayList<>();
+        List<String> keys = new ArrayList<>(recommendFriend.keySet());
+        keys.sort((o1, o2) -> recommendFriend.get(o2).compareTo(recommendFriend.get(o1)));
+        return keys;
+    }
 
     //타임라인 방문 횟수별 가중치 계산 기능
     public static Map<String,Integer> visitTimelineScore(Map<String,Integer> recommendFriend, List<String> userFriendList, List<String> visitors){
@@ -29,6 +36,7 @@ public class Problem7 {
     //friends 배열을 통해 함께 아는 친구 가중치 계산 기능
     public static Map<String,Integer> knowingTogetherScore(List<String> userFriendList, List<List<String>> friends,String user){
         Map<String,Integer> recommendFriend = new HashMap<>();
+
         for(int i=0; i<friends.size(); i++) { //전체 친구 목록을 돌면서
             List<String> nowFriendship = friends.get(i);
             for(int j=0; j<userFriendList.size(); j++){ //유저의 친구 목록과 비교
@@ -46,6 +54,7 @@ public class Problem7 {
                 }
                 if (Objects.equals(nowFriendship.get(0), nowUserFriend) && !nowFriendship.contains(user)) { //유저의 친구의 친구일때
                     String newUserName = nowFriendship.get(1);
+                    System.out.println("newUserName = " + newUserName);
                     if (recommendFriend.containsKey(newUserName)){ //key가 존재한다면
                         int userScore = recommendFriend.get(newUserName);
                         recommendFriend.put(newUserName,userScore+10);
