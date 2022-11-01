@@ -8,11 +8,15 @@ public class Problem3 {
     }
 
     private static int getTotalClap(int num){
-        
+        int result=0;
+        for(int i=0;i<num;i++){
+            result+=getClap(i);
+        }
+        return result;
     }
 
     private static int getClap(int num) {
-
+        
     }
 
     private static boolean input_exception(int input){
