@@ -8,7 +8,6 @@ class Problem1 {
         return get_digitList(num).stream().mapToInt(Integer::intValue).sum();
     }
     public static int get_prod(int num) {
-
         return get_digitList(num).stream().reduce(1,(a,b) -> a*b);
     }
     public static int get_max(int num1, int num2) {
