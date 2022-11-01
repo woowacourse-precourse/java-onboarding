@@ -13,7 +13,7 @@ public class Problem6 {
         List<String> cases = new ArrayList<>();
         for (int length = 2; length <= name.length(); length++) {
             subStrName(name, cases, length);
-        }
+        }sdf
         return cases;
     }
     public static List<String> getName(List<List<String>> forms) {
