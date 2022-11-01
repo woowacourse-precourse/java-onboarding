@@ -2,7 +2,6 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-
         while (cryptogram != "") {
             String temp = roop(cryptogram);
             if (temp.equals(cryptogram)) {
@@ -14,7 +13,6 @@ public class Problem2 {
 
         return cryptogram;
     }
-
     public static String roop(String cryptogram) {
         String ans = "";
 
