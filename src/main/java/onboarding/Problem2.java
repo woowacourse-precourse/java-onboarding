@@ -6,8 +6,18 @@ public class Problem2 {
     private static char character;
 
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        StringBuilder cryptogramStringBuilder = new StringBuilder(cryptogram);
+
+        start = 0;
+        flag = true;
+        while (flag) {
+            getSameCharacterIndex(cryptogram);
+            if (flag) {
+                cryptogramStringBuilder.delete(start, end + 1);
+                cryptogram = cryptogramStringBuilder.toString();
+            }
+        }
+        return cryptogram;
     }
 
     private static void getSameCharacterIndex(String cryptogram) {
