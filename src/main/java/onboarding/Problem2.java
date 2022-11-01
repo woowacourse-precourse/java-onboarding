@@ -17,6 +17,14 @@ public class Problem2 {
         Stack<String> visited = new Stack<>();  // 중복 문자가 체크된 stack 선언
         visited.push(cryptogram.substring(0, 1));    // 스택 초기값 세팅
 
+        for (String s : cryptogram.substring(1).split("")) {
+            if (visited.peek().equals(s)) { // 중복문자 발생!!
+                visited.pop();
+            } else {    // 중복문자 발생 X
+                visited.push(s);
+            }
+        }
+
         return answer;
     }
 }
