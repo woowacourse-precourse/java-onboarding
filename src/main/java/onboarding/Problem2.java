@@ -39,4 +39,9 @@ public class Problem2 {
         return result;
     }
 
+    public static boolean canCryptogram(String cryptogram) {
+        if ((cryptogram.length() >= 1 && cryptogram.length() <= 1000)) return true;
+        return false;
+    }
+
 }
