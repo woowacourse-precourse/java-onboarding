@@ -8,6 +8,11 @@ public class Problem7 {
         List<Integer>[] friendship = new List[allNames.size()];
         friendshipInnerInit(allNames, friendship);
 
+        Map<String, Integer> nameToIdMap = new HashMap<>();
+        Map<Integer, String> idToNameMap = new HashMap<>();
+
+        setId(allNames, nameToIdMap, idToNameMap);
+
         List<String> answer = Collections.emptyList();
         return answer;
     }
@@ -33,6 +38,16 @@ public class Problem7 {
     private static void friendshipInnerInit(Set<String> allNames, List<Integer>[] friendship) {
         for (int i = 0; i < allNames.size(); i++) {
             friendship[i] = new ArrayList<>();
+        }
+    }
+
+    private static void setId(Set<String> allNames, Map<String, Integer> nameToIdMap, Map<Integer, String> idToNameMap) {
+        int sequence = 0;
+        for (String name : allNames) {
+            nameToIdMap.put(name, sequence);
+            idToNameMap.put(sequence, name);
+
+            sequence++;
         }
     }
 }
