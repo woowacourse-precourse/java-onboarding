@@ -65,6 +65,63 @@ public class Problem7 {
 
             return res;
         }
+
+        /**
+         * 사용자를 제외한 사용자의 친구관계목록에서 사용자에게 추천할 친구({@code Key}) 와
+         * 함께 아는 친구의 수에 따라 부여된 점수({@code} Value}) 정보를 담은 {@code HashMap} 을 반환한다.
+         * 
+         * @param usersFriendsList        사용자의 친구목록
+         * @param usersFriendsRelationMap 사용자를 제외한 사용자의 친구관계목록
+         * @param visitors                사용자 타임 라인 방문 기록
+         * @return {@code}HashMap<String, Integer>}추천친구별 점수 정보
+         */
+        public HashMap<String, Integer> getUsersRecommandFriendsPointsMap(
+                List<String> usersFriendsList,
+                HashMap<String, List<String>> usersFriendsRelationMap,
+                List<String> visitors) {
+
+            HashMap<String, Integer> usersRecommandFriendsPointsMap = new HashMap<>();
+
+            List<String> recommandList = getUsersRecommandFriendsList(usersFriendsRelationMap, usersFriendsList);
+
+            for (String recommandFriend : recommandList) {
+                int score = usersRecommandFriendsPointsMap.getOrDefault(recommandFriend, 0);
+                score += 10;
+                usersRecommandFriendsPointsMap.put(recommandFriend, score);
+            }
+
+            HashMap<String, Integer> res = addVisitPointsToRecommandFriends(usersRecommandFriendsPointsMap,
+                    usersFriendsList, visitors);
+
+            return res;
+        }
+
+        /**
+         * 방문 기록을 토대로 사용자의 친구를 제외한 방문자에 대해
+         * 추천친구 점수를 방문 횟수당 1점을 부여한 추천친구별 점수 정보를 새로 반환한다.
+         * 
+         * @param UsersRecommandFriendsPointsMap 추천친구별 점수 정보
+         * @param usersFriendsList               사용자의 친구목록
+         * @param visitors                       사용자 타임 라인 방문 기록
+         * @return {@code}HashMap<String, Integer>}방문 점수가 반영된 추천친구별 점수 정보
+         */
+        private HashMap<String, Integer> addVisitPointsToRecommandFriends(
+                HashMap<String, Integer> UsersRecommandFriendsPointsMap,
+                List<String> usersFriendsList,
+                List<String> visitors) {
+
+            for (String visitor : visitors) {
+                int score = UsersRecommandFriendsPointsMap.getOrDefault(visitor, 0);
+                score++;
+                UsersRecommandFriendsPointsMap.put(visitor, score);
+            }
+
+            for (String usersFriend : usersFriendsList) {
+                UsersRecommandFriendsPointsMap.remove(usersFriend);
+            }
+
+            return UsersRecommandFriendsPointsMap;
+        }
         
         /**
          * 추천 친구별 점수 정보를 바탕으로 사용자의 추천 친구 목록을 반환한다.
