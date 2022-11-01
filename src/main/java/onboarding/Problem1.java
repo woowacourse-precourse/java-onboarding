@@ -24,4 +24,24 @@ class Problem1 {
 
         return (Math.max(calSumMul(left), calSumMul(right)));
     }
+
+    public static int calSumMul(int maxValue) // 곱셈, 덧셈 중 큰 수 찾기
+    {
+        int sum = 0;
+        int mul = 1;
+        int maxValue2 = maxValue;
+
+        while (maxValue != 0) // 나머지로 자릿수 판별, 몫을 이용해 사용이 끝난 나머지 처리
+        {
+            sum += maxValue % 10;
+            maxValue /= 10;
+        }
+
+        while (maxValue2 != 0)
+        {
+            mul *= maxValue2 % 10;
+            maxValue2 /= 10;
+        }
+        return (Math.max(sum, mul));
+    }
 }
