@@ -32,8 +32,6 @@ public class SnsNetwork {
     }
 
     private void setRecommendMap(RecommendMap recommendMap, List<UserId> friendRelations) {
-        friendRelations.forEach((friend) -> {
-            recommendMap.add(friend, 10);
-        });
+        friendRelations.forEach((friend) -> recommendMap.add(friend, 10));
     }
 }
