@@ -24,14 +24,14 @@
 
 ### 기능 목록 - 스택을 이용한 풀이
 
-- [ ] String을 Stack으로 바꾸는 함수
-- [ ] 연속된 문자를 없는 함수
-  - [ ] originalStack에서 resultStack으로 옮기기
-  - [ ] 만약 resultStack과 originalStack이 같으면 두 스택 모두 pop 하기
-  - [ ] 만약 resultStack과 originalStack이 다르면 옮기기
-- [ ] Stack을 String으로 바꾸는 함수
+- [X] String을 Stack으로 바꾸는 함수
+- [X] 연속된 문자를 없는 함수
+  - [X] originalStack에서 resultStack으로 옮기기
+  - [X] 만약 resultStack과 originalStack이 같으면 두 스택 모두 pop 하기
+  - [X] 만약 resultStack과 originalStack이 다르면 옮기기
+- [X] Stack을 String으로 바꾸는 함수
 
 
-- [ ] 정상적인 문자열이 입력되지 않은 경우
-    - [ ] 문자열 길이가 제한 사항에 속하지 않은 경우 (1이상 1000이하)
-    - [ ] 알파벳 소문자로 구성하지 않은 경우
+- [X] 정상적인 문자열이 입력되지 않은 경우
+    - [X] 문자열 길이가 제한 사항에 속하지 않은 경우 (1이상 1000이하)
+    - [X] 알파벳 소문자로 구성하지 않은 경우
