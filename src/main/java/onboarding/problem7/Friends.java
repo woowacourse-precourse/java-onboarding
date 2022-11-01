@@ -25,4 +25,17 @@ public class Friends {
 	public boolean isTwoFriends(String user, String other) {
 		return friends.get(user).contains(other);
 	}
+
+	public int countSharedFriends(String user, String other) {
+		List<String> userFriends = friends.get(user);
+		List<String> otherUserFriends = friends.get(other);
+
+		int count = 0;
+		for (String otherUserFriend : otherUserFriends) {
+			if (userFriends.contains(otherUserFriend)) {
+				count += 1;
+			}
+		}
+		return count;
+	}
 }
