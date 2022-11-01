@@ -19,7 +19,7 @@ public class Problem6 {
     }
 
 
-    private static HashMap makeNicknameHashMap(List<List<String>> forms) {
+    private static HashMap<String, ArrayList<Integer>> makeNicknameHashMap(List<List<String>> forms) {
         HashMap<String, ArrayList<Integer>> hashMap = new HashMap<>();
 
         for (int i = 0; i < forms.size(); i++) {
