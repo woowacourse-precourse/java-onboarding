@@ -5,8 +5,10 @@ import java.util.stream.Collectors;
 
 public class Problem7 {
     public static final int MAX_NUMBER_OF_PEOPLE_CAN_RECOMMEND = 5;
+
     private static final Map<String, Set<String>> friendList = new HashMap<>();
     private static final Map<String, Integer> recommendScore = new HashMap<>();
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         initAllFriendList(friends);
         initAllRecommendScore(user);

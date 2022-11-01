@@ -1,11 +1,6 @@
 package onboarding;
 
-import java.util.Map;
-import java.util.Set;
-import java.util.List;
-import java.util.HashMap;
-import java.util.TreeSet;
-import java.util.ArrayList;
+import java.util.*;
 
 public class Problem6 {
     public static final int MAX_NUMBER_OF_CREW = 10000;
