@@ -49,6 +49,10 @@ public class Problem6 {
             Collections.sort(result);
             return result;
         }
+
+        private boolean isSizeOverOne(List<String> v) {
+            return v.size() > 1;
+        }
     }
 
     public static List<String> solution(List<List<String>> forms) {
