@@ -50,7 +50,6 @@ public class Problem7 {
                 sharedFriends.put(visitor, 1);
             }
         }
-        System.out.println(sharedFriends);
         return sharedFriends;
     }
 
@@ -61,9 +60,7 @@ public class Problem7 {
             for(List<String> friend : friends) {
                 String firstName = friend.get(0);
                 String secondName = friend.get(1);
-                if(firstName == user || secondName == user) {
-                    continue;
-                } else if(firstName == userFriend || secondName == userFriend) {
+                if(firstName == userFriend || secondName == userFriend) {
                     String key = (firstName == userFriend) ? secondName : firstName;
                     if(containsUserFriends(userFriends, user, key)) {
                         continue;
@@ -80,15 +77,15 @@ public class Problem7 {
 
     /* user 친구 목록 저장 메서드 */
     public static HashSet<String> findUserFriends(String user, List<List<String>> friends) {
-        HashSet<String> userFriend = new HashSet<String>();
-        for(List<String> friend :  friends) {
+        HashSet<String> userFriends = new HashSet<String>();
+        for(List<String> friend : friends) {
             if(friend.get(0) == user) {
-                userFriend.add(friend.get(1));
+                userFriends.add(friend.get(1));
             } else if(friend.get(1) == user) {
-                userFriend.add(friend.get(0));
+                userFriends.add(friend.get(0));
             }
         }
-        return userFriend;
+        return userFriends;
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -97,7 +94,6 @@ public class Problem7 {
         HashMap<String, Integer> sharedFriendsMap = createSharedFriendsHashmap(friends, userFriends, user);
         sharedFriendsMap = checkVisitors(visitors, sharedFriendsMap, userFriends, user);
         answer = sort(sharedFriendsMap);
-        System.out.println(answer);
         return answer;
     }
 }
