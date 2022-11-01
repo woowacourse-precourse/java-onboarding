@@ -24,3 +24,18 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+## Problem7
+### 기능 요구 사항
+- RecommendType
+  - [x] 추천 규칙과 점수를 갖음
+- FriendShip
+  - [x] friends를 이용해 친구 관계를 저장
+  - [x] 친구 조회
+- RecommendScoreBoard
+  - [x] 유저의 점수를 기록
+  - [x] 상위 5명의 닉네임 결과 반환
+- [x] 유저들 중 특정 닉네임을 제외하는 함수 구현
+- [x] 유저들 중 특정 닉네임들을 제외하는 함수 구현
+- [x] 친구가 없는 경우 NullPointException 발생 처리
+- [x] 친구의 친구가 없는 경우 NullPointException 발생 처리
