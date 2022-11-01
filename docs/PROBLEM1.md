@@ -23,3 +23,11 @@
 | [97, 98] | [197, 198] | 0 |
 | [131, 132] | [211, 212] | 1 |
 | [99, 102] | [211, 212] | -1 |
+
+
+#기능 목록
+1. 예외처리를 하는 checkException 함수
+2. 각 자릿수를 더하는 plusEachDigit 함수
+3. 각 자릿수를 곱하는 multiEachDigit 함수
+4. solution 함수에 2~3 과정을 통해서 가장 큰 값 pobi_maxvalue 와 crong_maxvalue 구하기
+5. pobi_maxvalue 와 crong_maxvalue 값 비교해서 결과 return

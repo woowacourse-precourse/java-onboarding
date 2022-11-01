@@ -19,3 +19,7 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+#기능 목록
+1. 특수는 문자는 그대로 영문자는 사전을 참고해 반대로 반환하는 reverseLetter() 함수
+2. solution() 에 전체문장에서 문자 하나씩 반대로 뒤집어 answer에 저장 후 결과값 반환

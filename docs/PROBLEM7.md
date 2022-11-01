@@ -24,3 +24,13 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+
+#기능 목록
+1. 나의 친구를 찾아주는 findMyFriend() 함수.
+2. user의 친구를 찾아주는 findUserFreinds() 함수.
+3. user의 함께아는 친구(친구의 친구)를 찾아주는 findFriendsOfUserFriends() 함수.
+4. 친구의 친구인 경우 점수를 계산해주는 countScoreByFriendsOfUserFriends() 함수.
+5. 방문한 친구의 점수를 계산해주는 countScoreByNumberOfVisitors() 함수.
+6. 점수를 토대로 친구 추천을 해주는 recommendFriend() 함수.
+7. solution()에 1~6 과정을 수행하며 추천받은 친구를 answer에 저장 후 결과 반환.
