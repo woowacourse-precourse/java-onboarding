@@ -29,10 +29,10 @@ public class Problem7 {
         Stream<String> candidateIdStream = allUserList.stream()
                 .filter(id -> !userFriendList.contains(id) && !id.equals(user));
 
-        candidateIdStream.forEach(id -> {
-            int score = getScore(user, id, friends, visitors);
-            candidateList.add(new Candidate(id, score));
-        });
+        candidateList = candidateIdStream
+                .map(id -> new Candidate(id, getScore(user, id, friends, visitors)))
+                .filter(candidate -> candidate.getScore() > 0)
+                .collect(Collectors.toList());
 
         return candidateList;
     }
@@ -109,7 +109,7 @@ class Candidate {
     }
 
     void setScore(int score) {
-        if (score < 0) return;
+        if (score <= 0) return;
         this.score = score;
     }
 }
