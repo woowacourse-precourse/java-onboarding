@@ -4,7 +4,16 @@ import java.util.*;
 
 public class Problem7 {
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+		// 친구의 친구 점수, 방문 점수, 친구의 친구의 기준이 되는 친구, 아예 남인 방문자 변수 설정
+		HashMap<String, Integer> guys = new HashMap<>();
+		int fofVal = 0;
+		int visitVal = 0;
+		String temp = "";
+		String fof = "";
+		String visitor = "";
+
 		return Collections.singletonList("");
+
 	}
 //	public static void main(String[] args) {
 //		List<List<String>> friends = new ArrayList<>();
