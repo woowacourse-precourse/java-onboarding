@@ -12,4 +12,11 @@ public class Friend {
     public boolean contains(User user) {
         return userA.equals(user) || userB.equals(user);
     }
+
+    public User getAnotherUserNot(User user) {
+        if (userA.equals(user)) {
+            return userB;
+        }
+        return userA;
+    }
 }
