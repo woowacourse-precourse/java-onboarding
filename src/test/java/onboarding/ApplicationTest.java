@@ -585,23 +585,6 @@ class ApplicationTest {
     }
 
     @Test
-    void findduplicate() {
-      String user = "mrko";
-      List<List<String>> friends = List.of(
-          List.of("donut", "andole"),
-          List.of("donut", "jun"),
-          List.of("andole", "donut"),
-          List.of("shakevan", "andole"),
-          List.of("shakevan", "jun"),
-          List.of("shakevan", "mrko")
-      );
-      List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan", "abcd", "abcz");
-      assertThatThrownBy(() -> {
-        Problem7.solution(user, friends, visitors);
-      }).isInstanceOf((IllegalArgumentException.class));
-    }
-
-    @Test
     void case5() {
       String user = "andole";
       List<List<String>> friends = List.of(
