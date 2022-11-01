@@ -41,6 +41,9 @@ class User implements Comparable<User>{
         return !this.friends.contains(user);
     }
 
+    public boolean isScoreLargerThanZero(){
+        return this.score > 0;
+    }
     public void addNameToList(List<String> nameList){
         nameList.add(this.name);
     }
@@ -137,7 +140,7 @@ public class Problem7 {
     }
 
     public static void addNotFriendUserToList(List<User> userList, User targetUser, User newUser){
-        if(targetUser != newUser && targetUser.isNotFriendWith(newUser)){
+        if(targetUser != newUser && targetUser.isNotFriendWith(newUser) && newUser.isScoreLargerThanZero()){
             userList.add(newUser);
         }
     }
