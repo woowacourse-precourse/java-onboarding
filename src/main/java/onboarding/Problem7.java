@@ -2,7 +2,7 @@ package onboarding;
 
 import java.util.*;
 
-public class Problem7 {
+public class Problem7 { 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> knownFriend = checkFriend(user,friends);
         Map<String,Integer> visitPoint = visitPointFriend(knownFriend,visitors);
