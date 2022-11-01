@@ -12,8 +12,10 @@ public class Problem2 {
         String result = "";
 
         for (int i = 1; i < cryptogram.length(); i++) {
-            curDuplicated = isCurDuplicated(cryptogram, i);
-            result = getNotDuplicatedChar(curDuplicated, prevDuplicated, cryptogram.charAt(i-1));
+            char previous = cryptogram.charAt(i - 1);
+            char current = cryptogram.charAt(i);
+            curDuplicated = isCurDuplicated(previous, current);
+            result = getNotDuplicatedChar(curDuplicated, prevDuplicated, previous);
             prevDuplicated = curDuplicated;
         }
         return result;
@@ -26,8 +28,8 @@ public class Problem2 {
         return "";
     }
 
-    private static boolean isCurDuplicated(String cryptogram, int i) {
-        if (cryptogram.charAt(i) == cryptogram.charAt(i - 1)) {
+    private static boolean isCurDuplicated(char previous, char current) {
+        if (current == previous) {
             return true;
         }
         return false;
