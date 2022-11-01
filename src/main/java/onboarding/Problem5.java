@@ -16,4 +16,9 @@ public class Problem5 {
     private static int checkExchange(int money, int index){
         return money / exchange[index];
     }
+
+    //  교환하지 못한 나머지 금액을 계산하는 메소드
+    private static int reminderExchange(int money, int index) {
+        return money % exchange[index];
+    }
 }
