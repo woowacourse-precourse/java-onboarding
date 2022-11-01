@@ -50,6 +50,8 @@ public class Problem2 {
                 deleteTargetElement = new StringBuilder();
             }
         }
+
+        overlapTargetList.add(deleteTargetElement.toString());
         return overlapTargetList;
     }
 
@@ -75,15 +77,15 @@ public class Problem2 {
         return result;
     }
 
-    public static String solution(String cryptogram) {
-
+    public static String operateOverlapCheckerAndRemover(String cryptogram) {
         String overlapDeletedCryptogram = cryptogram;
 
         while (true) {
             List<String> overlapTarget = overlapChecker(overlapDeletedCryptogram);
             if (overlapTarget.size() == 0) {
                 return "";
-            } else if (overlapRemover(overlapDeletedCryptogram, overlapTarget).equals(overlapDeletedCryptogram)) {
+            }
+            else if (overlapRemover(overlapDeletedCryptogram, overlapTarget).equals(overlapDeletedCryptogram)) {
                 break;
             }
             overlapDeletedCryptogram = overlapRemover(overlapDeletedCryptogram, overlapTarget);
@@ -91,5 +93,10 @@ public class Problem2 {
 
 
         return overlapDeletedCryptogram;
+    }
+
+    public static String solution(String cryptogram) {
+
+        return operateOverlapCheckerAndRemover(cryptogram);
     }
 }
