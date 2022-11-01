@@ -39,6 +39,10 @@ class Problem7 {
         Set<String> set = new HashSet<String>(withfriendList);
         List<String> tmpwithfriendList = new ArrayList<String>(set);
 
+        for (int i = 0; i < tmpwithfriendList.size(); i++) {
+            map1.put(tmpwithfriendList.get(i), Collections.frequency(withfriendList, tmpwithfriendList.get(i)) * 10);
+        }
+
         return answer;
     }
 }
