@@ -35,6 +35,7 @@ public class Problem7 {
         Persons(String user) {
             this.user = user;
             personMap = new HashMap<>();
+            personMap.put(user, new Person(user));
         }
         Person getPerson(String name) {
             if(exists(name)) {
