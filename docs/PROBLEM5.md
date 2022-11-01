@@ -1,11 +1,18 @@
 # 🎈 민주
 ## ✔ 기능 정의
 ### Collection
-- 화폐 단위 리스트 unitList
+- 화폐 단위 리스트 __unitList__
+
 ### 기능
-- [X] unitList 초기화 (initUnitList)
-- [X] money를 출금하기 위해, 해당 화폐 단위(unit)가 몇 개 필요한지 개수를 return (getUnitCount)
-- [X] 다음 화폐 단위 계산을 위해 money 업데이트 (getNextMoney)
+- [X] unitList 초기화 __(initUnitList)__
+
+- [X] money를 출금하기 위해, 해당 화폐 단위(unit)가 몇 개 필요한지 개수를 return __(getUnitCount)__
+
+- [X] 다음 화폐 단위 계산을 위해 money 업데이트 __(getNextMoney)__
+
+<br><br>
+
+
 
 # 🎈 본문
 ## 🚀 기능 요구 사항
