@@ -48,6 +48,13 @@ public class Problem7 {
         //추천리스트 탐색
         findRecommend(friends, visitors);
 
+        //추천목록 정렬하기 위한 List
+        List<String> recommendKeySet = new ArrayList<>(recommend.keySet());
+        //이름 오름차순
+        Collections.sort(recommendKeySet);
+        //점수 내림차순
+        Collections.sort(recommendKeySet, (o1, o2) ->
+                (recommend.get(o2).compareTo(recommend.get(o1))) );
 
         //5개이하만 출력하기 위한 정답List
         List<String> answer = new ArrayList<>();
