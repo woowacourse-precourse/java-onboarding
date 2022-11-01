@@ -13,7 +13,7 @@ public class Problem2 {
         decrypting = cryptogram.replaceAll(REGEX_LOWER_ALPHABET, SPACE);
 
         for (int i = 0; i < MAX_CRYPTOGRAM_LENGTH; i++) {
-
+            beforeTryedDecrypting = decrypting;
         }
 
         return decrypting;
