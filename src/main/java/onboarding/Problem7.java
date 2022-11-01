@@ -74,6 +74,9 @@ public class Problem7 {
     }
 
     private static void removeMyFriendsFromPoints() {
+        for (int j = 0; j < myFriends.size(); j++) {
+            recommenedFreinds.remove(myFriends.get(j));
+        }
     }
 
     private static List<Map.Entry<String, Integer>> sortList() {
