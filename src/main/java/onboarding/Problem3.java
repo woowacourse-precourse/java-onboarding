@@ -16,7 +16,21 @@ public class Problem3 {
 
 
     public static int solution(int number) {
-        return 0;
+        return getTotalClapsUntilNumber(number);
+    }
+
+    public static int getTotalClapsUntilNumber(int number) {
+        if (number < 1) {
+            return 0;
+        }
+
+        if (totalClapsCache[number] != EMPTY) {
+            return totalClapsCache[number];
+        }
+
+        int totalClaps = getTotalClapsUntilNumber(number - 1) + getClaps(number);
+        totalClapsCache[number] = totalClaps;
+        return totalClaps;
     }
 
     public static int getClaps(int order) {
