@@ -20,11 +20,11 @@ class Problem1 {
         return getWinner(pobiMaxNumber, crongMaxNumber);
     }
     private static boolean isNotValidPage(List<Integer> pages) {
-        if (!isValidSize(pages) || !isValidRange(pages)) {
-            return true;
+        if (!isValidSize(pages)) {
+            throw new IllegalArgumentException("입력 받은 size가 2가 아닙니다");
         }
 
-        if (!isValidOddEven(pages) || !isValidInterval(pages)) {
+        if (!isValidRange(pages) || !isValidOddEven(pages) || !isValidInterval(pages)) {
             return true;
         }
         return false;
@@ -101,11 +101,6 @@ class Problem1 {
     }
 
     private static int getWinner(int pobiNum, int crongNum) {
-        if (pobiNum > crongNum) {
-            return (POBI_WIN);
-        } else if (pobiNum < crongNum) {
-            return (CRONG_WIN);
-        }
-        return (DRAW);
+        return (pobiNum == crongNum ? DRAW : (pobiNum > crongNum ? POBI_WIN : CRONG_WIN));
     }
 }
