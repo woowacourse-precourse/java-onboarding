@@ -16,8 +16,16 @@ public class Problem6 {
     private static final String EMAIL_PATTERN = "^[a-zA-z0-9._%+-]+@[a-zA-z0-9.-]+\\.[a-zA-z]{2,6}$";
     private static final String HANGEUL_PATTERN = "^[가-힣]*$";
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+        validateCrewMemberNum(forms);
+        validateDomain(forms);
+        validateEmailExpression(forms);
+        validateEmailSize(forms);
+        validateNickName(forms);
+
+        List<String> duplicatedEmail = makeDuplicatedEmails(forms);
+        sortDuplicatedEmail(duplicatedEmail);
+
+        return duplicatedEmail;
     }
 
     private static void sortDuplicatedEmail(List<String> duplicatedEmail) {
