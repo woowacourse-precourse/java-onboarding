@@ -16,6 +16,15 @@ public class Problem6 {
         return answer;
     }
 
+    //  이메일 유효성 검사 - 아이디
+    private static Boolean verifyEmailId(String emailId){
+        for (int i = 0; i < emailId.length() - 1; i++) {
+            int comp = (int) emailId.charAt(i + 1) - (int) emailId.charAt(i);
+            if ( comp == 0 || comp == 1)  return false;
+        }
+        return true;
+    }
+
     //  회원 이름 유효성 검사
     private static Boolean verifyName(String name){
         if(!verifyNameLength(name)) return false;
