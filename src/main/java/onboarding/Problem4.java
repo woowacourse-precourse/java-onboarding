@@ -10,6 +10,7 @@ public class Problem4 {
         }
 
         answer = sb.toString();
+
         return answer;
     }
 
@@ -23,6 +24,7 @@ public class Problem4 {
         if (ch >= 'a' && ch <= 'z') {
             return (char) ('a' + 'z' - ch);
         }
+
         return ch;
     }
 }
