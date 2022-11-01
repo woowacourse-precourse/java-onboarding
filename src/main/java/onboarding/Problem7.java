@@ -1,9 +1,7 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
+import java.util.Map.Entry;
 
 public class Problem7 {
 
@@ -14,7 +12,9 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
 
         getFriends(user, friends);
-        countVisited(visitors);
+        countVisited(visitors, user);
+        countFriendOfFriend(friends, user);
+        answer = recommendInOrder();
 
         return answer;
     }
@@ -35,15 +35,14 @@ public class Problem7 {
                 userFriend.add(friendsList.get(0));
             }
         }
-
     }
 
-    public static void countVisited(List<String> visitors) {
+    public static void countVisited(List<String> visitors, String user) {
         int index;
         int score;
 
         for(index = 0; index < visitors.size(); index++) {
-            if (userFriend.contains(visitors.get(index))){
+            if (userFriend.contains(visitors.get(index)) || userFriend.contains(user)){
                 continue;
             }
 
@@ -56,7 +55,65 @@ public class Problem7 {
 
             recommendList.put(visitors.get(index), 1);
         }
+    }
 
+    public static void countFriendOfFriend(List<List<String>> friends, String user) {
+        int score;
+
+        for (List<String> friendsArray: friends) {
+            if (userFriend.contains(friendsArray.get(0))) {
+                if (user.equals(friendsArray.get(1))) {
+                    continue;
+                }
+
+                if (recommendList.containsKey(friendsArray.get(1))) {
+                    score = recommendList.get(friendsArray.get(1));
+                    score += 10;
+                    recommendList.put(friendsArray.get(1), score);
+                    continue;
+                }
+
+                recommendList.put(friendsArray.get(1), 10);
+                continue;
+            }
+
+            if (userFriend.contains(friendsArray.get(1))) {
+                if (user.equals(friendsArray.get(0))) {
+                    continue;
+                }
+
+                if (recommendList.containsKey(friendsArray.get(0))) {
+                    score = recommendList.get(friendsArray.get(0));
+                    score += 10;
+                    recommendList.put(friendsArray.get(0), score);
+                }
+
+                recommendList.put(friendsArray.get(0), 10);
+            }
+        }
+
+    }
+
+    public static ArrayList<String> recommendInOrder() {
+        List<Entry<String, Integer>> listEntry = new ArrayList<>(recommendList.entrySet());
+        ArrayList<String> orderList = new ArrayList<>();
+
+        Collections.sort(listEntry, new Comparator<Entry<String, Integer>>() {
+
+            public int compare(Entry<String, Integer> obj1, Entry<String, Integer> obj2) {
+
+                return obj2.getValue().compareTo(obj1.getValue());
+            }
+        });
+
+        for (Entry<String, Integer> entry: listEntry) {
+            if (orderList.size() == 5) {
+                return orderList;
+            }
+            orderList.add(entry.getKey());
+        }
+
+        return orderList;
     }
 
 }
