@@ -10,7 +10,7 @@ public class Problem7 {
     public static boolean isUserFriends(
             HashMap<String, HashSet<String>> friendList, String user, String friend
     ) {
-
+        return friendList.get(user).contains(friend);
     }
 
     public static HashMap<String, Integer> scoreVisitors(
