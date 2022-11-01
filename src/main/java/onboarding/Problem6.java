@@ -18,7 +18,6 @@ public class Problem6 {
                 break;
             }
 
-
             for (int j = 0; j < name.length() - 1; j++) {
                 final String key = name.substring(j, j + 2);
                 if (hashMap.containsKey(key)) {
