@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 public class Problem7 {
@@ -9,6 +10,7 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
 
         List<String> userFriends = friendList(user, friends);
+        HashMap<String, Integer> recommendScore = acquaintance(friends, userFriends);
 
         return answer;
     }
@@ -23,5 +25,19 @@ public class Problem7 {
             }
         }
         return userFriends;
+    }
+
+    private static HashMap<String, Integer> acquaintance(List<List<String>> friends, List<String> userFriends) {
+        HashMap<String, Integer> recommendScore = new HashMap<>();
+        for (List<String> friend : friends) {
+            if (userFriends.contains(friend.get(0))) {
+                String person = friend.get(1);
+                recommendScore.put(person, recommendScore.getOrDefault(person, 0)+10);
+            } else if (userFriends.contains(friend.get(1))) {
+                String person = friend.get(0);
+                recommendScore.put(person, recommendScore.getOrDefault(person, 0)+10);
+            }
+        }
+        return recommendScore;
     }
 }
