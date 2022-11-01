@@ -66,7 +66,7 @@ public class Problem2 {
 
 	private static String removeDuplicateAlphabet(String cryptogram) {
 		for (char c = ALPHABET_START; c <= ALPHABET_END; c++) {
-			StringBuilder duplicateAlphabetRegex = getRegex(c);
+			StringBuilder duplicateAlphabetRegex = makeRegex(c);
 			cryptogram = cryptogram.replaceAll(duplicateAlphabetRegex.toString(), REPLACE_VALUE);
 		}
 		return cryptogram;
@@ -76,7 +76,7 @@ public class Problem2 {
 		return cryptogram.length() != originLength;
 	}
 
-	private static StringBuilder getRegex(char alphabet) {
+	private static StringBuilder makeRegex(char alphabet) {
 		StringBuilder duplicateAlphabet = new StringBuilder();
 		duplicateAlphabet.append(alphabet)
 				.append(DUPLICATE);

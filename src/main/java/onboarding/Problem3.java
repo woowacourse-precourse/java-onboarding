@@ -15,7 +15,7 @@ public class Problem3 {
 	public static int solution(int number) {
 		validateNumber(number);
 
-		return calculateClap(number);
+		return playGame(number);
 	}
 
 	private static void validateNumber(int number) {
@@ -24,16 +24,16 @@ public class Problem3 {
 		}
 	}
 
-	private static int calculateClap(int number) {
+	private static int playGame(int number) {
 		int clap = INITIAL_CLAP;
 		for (int i = 1; i <= number; i++) {
 			String currentNum = String.valueOf(i);
-			clap += getClap(currentNum);
+			clap += calculateClap(currentNum);
 		}
 		return clap;
 	}
 
-	private static int getClap(String currentNum) {
+	private static int calculateClap(String currentNum) {
 		int clap = INITIAL_CLAP;
 		for (int j = 0; j < currentNum.length(); j++) {
 			char digit = currentNum.charAt(j);

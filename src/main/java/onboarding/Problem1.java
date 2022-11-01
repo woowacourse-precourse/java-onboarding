@@ -25,8 +25,8 @@ class Problem1 {
 			return EXCEPTION;
 		}
 
-		int pobiMaxNumber = getMaxNumber(pobi);
-		int crongMaxNumber = getMaxNumber(crong);
+		int pobiMaxNumber = calculateMaxNumber(pobi);
+		int crongMaxNumber = calculateMaxNumber(crong);
 
 		if (pobiMaxNumber > crongMaxNumber) {
 			return POBI_WIN;
@@ -79,14 +79,14 @@ class Problem1 {
 		return rightPage(book) - leftPage(book) == PAGE_DIFFERENCE;
 	}
 
-	private static int getMaxNumber(List<Integer> book) {
-		int leftPageMax = getMaxValue(leftPage(book));
-		int rightPageMax = getMaxValue(rightPage(book));
+	private static int calculateMaxNumber(List<Integer> book) {
+		int leftPageMax = calculateMaxValue(leftPage(book));
+		int rightPageMax = calculateMaxValue(rightPage(book));
 
 		return Math.max(leftPageMax, rightPageMax);
 	}
 
-	private static int getMaxValue(Integer page) {
+	private static int calculateMaxValue(Integer page) {
 		int sum = SUM_START;
 		int multiply = MULTIPLY_START;
 
