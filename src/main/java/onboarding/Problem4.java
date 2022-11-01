@@ -22,6 +22,8 @@ public class Problem4 {
             changedSubWord = (char) (155 - (int) subWord);
         } else if (Character.isLowerCase(subWord)) {
             changedSubWord = (char) (219 - (int) subWord);
+        } else {
+            changedSubWord = subWord;
         }
         return changedSubWord;
     }
