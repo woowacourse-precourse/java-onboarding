@@ -6,40 +6,40 @@ import java.util.stream.Collectors;
 public class RecommendFriendFinder {
     private final Map<String, Integer> visitResult = new HashMap<>();
     private final Map<String, Integer> acquaintanceResult = new HashMap<>();
-    public Map<String, Integer> getVisitResult(String user, List<List<String>> friends, List<String> visitors) {
+    public Map<String, Integer> getVisitResult(SNSId user, List<List<SNSId>> friends, List<SNSId> visitors) {
 
-        List<String> visitor = removeFriendsToVisit(user, friends, visitors);
+        List<SNSId> visitor = removeFriendsToVisit(user, friends, visitors);
 
-        for (String visit : visitor) {
-            visitResult.put(visit, getVisitCount(visitor, visit));
+        for (SNSId visit : visitor) {
+            visitResult.put(visit.getUser(), getVisitCount(visitor, visit));
         }
         return visitResult;
     }
 
-    private List<String> removeFriendsToVisit(String user, List<List<String>> friends, List<String> visitors) {
-        ArrayList<String> visitor = new ArrayList<>(visitors);
-        visitor.removeAll(findFriend(user, friends));
-        return visitor;
+    private List<SNSId> removeFriendsToVisit(SNSId user, List<List<SNSId>> friends, List<SNSId> visitors) {
+        ArrayList<SNSId> snsIds = new ArrayList<>(visitors);
+        snsIds.removeAll(findFriend(user, friends));
+        return snsIds;
     }
 
-    private static int getVisitCount(List<String> visitor, String visit) {
+    private static int getVisitCount(List<SNSId> visitor, SNSId visit) {
         return Math.toIntExact((RecommendationScore.VISITOR.getScore() * visitor.stream().filter(s -> s.equals(visit)).count()));
     }
 
-    public Map<String, Integer> getAcquaintanceResult(String user, List<List<String>> friends) {
-        for (String acq : findAcquaintance(user, friends)) {
-            acquaintanceResult.put(acq, RecommendationScore.ACQUAINTANCE.getScore());
+    public Map<String, Integer> getAcquaintanceResult(SNSId user, List<List<SNSId>> friends) {
+        for (SNSId acq : findAcquaintance(user, friends)) {
+            acquaintanceResult.put(acq.getUser(), RecommendationScore.ACQUAINTANCE.getScore());
         }
         return acquaintanceResult;
     }
 
-    private List<String> findAcquaintance(String user, List<List<String>> friends) {
-        List<String> acquaintance = removeUser(user, friends);
+    private List<SNSId> findAcquaintance(SNSId user, List<List<SNSId>> friends) {
+        List<SNSId> acquaintance = removeUser(user, friends);
         acquaintance.removeAll(findFriend(user, friends));
         return acquaintance;
     }
 
-    private static List<String> findFriend(String user, List<List<String>> friends) {
+    private static List<SNSId> findFriend(SNSId user, List<List<SNSId>> friends) {
 
         return friends.stream()
                 .filter(friend -> friend.contains(user))
@@ -48,7 +48,7 @@ public class RecommendFriendFinder {
                 .collect(Collectors.toList());
     }
 
-    private static List<String> removeUser(String user, List<List<String>> friends) {
+    private static List<SNSId> removeUser(SNSId user, List<List<SNSId>> friends) {
         return friends.stream()
                 .filter(friend -> !friend.contains(user))
                 .flatMap(Collection::stream)
