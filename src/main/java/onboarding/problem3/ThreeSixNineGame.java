@@ -2,7 +2,22 @@ package onboarding.problem3;
 
 public class ThreeSixNineGame {
 
-	public int getClapCount(int num) {
+	private static final int MIN_NUMBER = 1;
+	private static final int MAX_NUMBER = 10000;
+	private final int inputNumber;
+
+	public ThreeSixNineGame(int inputNumber) {
+		validateInputNumber(inputNumber);
+		this.inputNumber = inputNumber;
+	}
+
+	private void validateInputNumber(int inputNumber) {
+		if (inputNumber < MIN_NUMBER || inputNumber > MAX_NUMBER) {
+			throw new IllegalArgumentException("입력값은 1~10,000의 자연수 입니다.");
+		}
+	}
+
+	int getClapCount(int num) {
 		return getClapCount(num, 0);
 	}
 
