@@ -21,6 +21,7 @@ public class Problem6 {
             }
         }
         List<String> wordsDict = createWordsDictionary(answer);
+        Set<String> duplicatedComponents = checkDuplicatedComponents(forms, wordsDict);
 
         return answer;
     }
@@ -57,6 +58,31 @@ public class Problem6 {
             }
         }
         return wordsList;
+    }
+
+    private static Set<String> checkDuplicatedComponents(List<List<String>> forms, List<String> compareWords) {
+        Set<String> duplicatedNickname = new HashSet<>();
+        String preEmail = "";
+        String nextEmail = "";
+        String nextNickname = "";
+
+        for(List<String> data : forms) {
+            preEmail = data.get(0);
+            for(int nxt = forms.indexOf(data) + 1; nxt < forms.size(); nxt++) {
+                nextEmail = forms.get(nxt).get(0);
+                nextNickname = forms.get(nxt).get(1);
+                for (String word : compareWords) {
+                    if(nextNickname.contains(word)) {
+                        duplicatedNickname.add(preEmail);
+                        duplicatedNickname.add(nextEmail);
+                        break;
+                    }
+                    break;
+                }
+            }
+            break;
+        }
+        return duplicatedNickname;
     }
 
 }
