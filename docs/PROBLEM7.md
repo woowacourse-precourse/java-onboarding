@@ -24,3 +24,9 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능 목록
+1. 양방향 관계를 가진 친구 관계를 {"사용자ID" : {친구목록 List}} 형태로 초기화해주는 기능
+2. 타임 라인에 방문 기록으로 점수 초기화
+3. user를 기준으로 dfs 수행 -> 방문 여부를 체크하여 중복 방문 방지 및 user와 친구인 경우 점수 체크 x
+4. 2-3번 과정을 통해 만든 점수표를 리스트로 변환 및 정렬 : 제한사항 요구에 맞게 0점인 경우 추천하지 않고, 5명까지만 한다.
