@@ -11,6 +11,14 @@ public class Problem2 {
         return answer;
     }
 
+    private static Boolean checkThisStringisDuplicate(String answer) {
+        for (int i = 1; i < answer.length(); i++) {
+            if (answer.charAt(i) == answer.charAt(i - 1)) {
+                return true;
+            }
+        }
+        return false;
+    }
     private static String removeDuplicateCharacter(String cryptogram) {
         int OverlappedCharacterSize = 0;
         String answer = "";
