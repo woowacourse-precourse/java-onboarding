@@ -8,7 +8,13 @@ import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> userFriends = getUserFriends(user, friends);
+        Map<String, List<String>> friendsMap = makeFriendsMap(user, friends);
+        Map<String, Integer> scoreMap = makeScoreMap(friendsMap, visitors,userFriends);
+        scoring(scoreMap,friendsMap,userFriends,visitors);
+
+        List<String> answer = getRecommendList(getSortedEntries(scoreMap));
+
         return answer;
     }
 
