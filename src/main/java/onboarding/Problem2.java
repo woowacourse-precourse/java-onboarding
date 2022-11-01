@@ -13,7 +13,7 @@ public class Problem2 {
     }
 
     private static char[] deleteOnce(char[] inputString) {
-        char[] outputString;
+        char[] outputString = inputString;
         int len = inputString.length;
         int deleteLen = 0;
 
