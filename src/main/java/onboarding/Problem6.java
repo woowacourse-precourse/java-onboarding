@@ -1,5 +1,10 @@
 package onboarding;
-
+/*
+ * 기능구현
+ * 1. 이름 List를 구하는 함수
+ * 2. 중복될 수 있는 단어 2글자를 담는 이중 배열
+ * 3. 중복될 수 있는 단어 유무에 따른 index 반환
+ * */
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
