@@ -5,33 +5,34 @@ import java.util.*;
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
+        List<String> repetitiveStrings = findRepetitiveStrings(forms);
 
-        int len = forms.size();
-
-        List<String> repetitiveStrings = generateTestCaseStrings(forms);
+        // find name containing repetitive string
         for (int i=0; i<repetitiveStrings.size(); i++){
             for (int j=0; j<forms.size(); j++){
-                if (forms.get(j).get(1).contains(repetitiveStrings.get(i)))
+                String testName = forms.get(j).get(1);
+                if (testName.contains(repetitiveStrings.get(i)))
                     answer.add(forms.get(j).get(0));
             }
         }
 
-        Set<String> setAnswer = new HashSet<String>(answer);
-        List<String> finalAnswer = new ArrayList<String>(setAnswer);
-        Collections.sort(finalAnswer);
-        return finalAnswer;
+        answer = removeRepetitionFromList(answer); // remove repetition
+        Collections.sort(answer); // sorting
+        return answer;
     }
 
-    public static List<String> generateTestCaseStrings(List<List<String>> forms){
-        List<String> testStrings = new ArrayList<>();
+    public static List<String> findRepetitiveStrings(List<List<String>> forms){
+        List<String> checkedStrings = new ArrayList<>();
         List<String> repetitiveStrings = new ArrayList<>();
 
         for (int i = 0; i < forms.size(); i++){
-            String name = forms.get(i).get(1);
-            for (int j = 0; j < name.length()-1; j++){
-                String tmp = name.substring(j,j+2);
-                if (!testStrings.contains(tmp))
-                    testStrings.add(tmp);
+            String testString = forms.get(i).get(1);
+
+            for (int j = 0; j < testString.length()-1; j++){
+                String tmp = testString.substring(j,j+2);
+
+                if (!checkedStrings.contains(tmp))
+                    checkedStrings.add(tmp);
                 else {
                     if (!repetitiveStrings.contains(tmp))
                         repetitiveStrings.add(tmp);
@@ -41,5 +42,8 @@ public class Problem6 {
 
         return repetitiveStrings;
     }
-
+    public static List<String> removeRepetitionFromList(List<String> tmpList){
+        Set<String> setList = new HashSet<>(tmpList);
+        return new ArrayList<>(setList);
+    }
 }
