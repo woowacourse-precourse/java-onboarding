@@ -50,18 +50,18 @@ public class Problem7 {
             nominate.remove(userFriend);
             nominatePoint.remove(userFriend);
         }
-//        for (String nominatePerson: nominate){
-//            for (String userFriend: userFriends){
-//                idx = 0;
-//                while (idx < friends.size()){
-//                    a = friends.get(idx).get(0);
-//                    b = friends.get(idx).get(1);
-//                    if ((a == nominatePerson && b == userFriend) || (a == userFriend && b == nominatePerson))
-//                        nominatePoint.put(nominatePerson, nominatePoint.get(nominatePerson) + 10);
-//                    idx++;
-//                }
-//            }
-//        }
+        for (String nominatePerson: nominate){
+            for (String userFriend: userFriends){
+                idx = 0;
+                while (idx < friends.size()){
+                    a = friends.get(idx).get(0);
+                    b = friends.get(idx).get(1);
+                    if ((a == nominatePerson && b == userFriend) || (a == userFriend && b == nominatePerson))
+                        nominatePoint.put(nominatePerson, nominatePoint.get(nominatePerson) + 10);
+                    idx++;
+                }
+            }
+        }
 //        nominate.sort(Comparator.naturalOrder());
 //        int pointMax = 0;
 //        String personMax = new String();
