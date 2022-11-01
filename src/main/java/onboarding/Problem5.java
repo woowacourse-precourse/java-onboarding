@@ -29,6 +29,35 @@ public class Problem5 {
         int count10 = 0;
         int count1 = 0;
 
+        //높은 금액 단위부터 낮은 금액 순으로 나눔
+        count50000 = money / 50000;
+        money -= count50000 * 50000;
+
+        count10000 = money / 10000;
+        money -= count10000 * 10000;
+
+        count5000 = money / 5000;
+        money -= count5000 * 5000;
+
+        count1000 = money / 1000;
+        money -= count1000 * 1000;
+
+        count500 = money / 500;
+        money -= count500 * 500;
+
+        count100 = money / 100;
+        money -= count100 * 100;
+
+        count50 = money / 50;
+        money -= count50 * 50;
+
+        count10 = money / 10;
+        money -= count10 * 10;
+
+        count1 = money / 1;
+        money -= count1 * 1;
+
+
         return answer;
     }
 }
