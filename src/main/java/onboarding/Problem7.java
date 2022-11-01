@@ -57,16 +57,18 @@ public class Problem7 {
         }
     }
     static void considerFriendsScore(String user,LinkedList<String> userFriendList,ArrayList<String> countedFriend,Map<String,LinkedList<String>> friendsList){
-        while(!userFriendList.isEmpty()){
-            String selectedFriend = userFriendList.removeFirst();
-            countedFriend.add(selectedFriend);
+        try{
+            while(!userFriendList.isEmpty()){
+                String selectedFriend = userFriendList.removeFirst();
+                countedFriend.add(selectedFriend);
 
-            LinkedList<String> friendsListOfSelectedFriends = friendsList.get(selectedFriend);
+                LinkedList<String> friendsListOfSelectedFriends = friendsList.get(selectedFriend);
 
-            while(!friendsListOfSelectedFriends.isEmpty()){
-                raiseFriendsOfFriendsScore(user,friendsListOfSelectedFriends);
+                while(!friendsListOfSelectedFriends.isEmpty()){
+                    raiseFriendsOfFriendsScore(user,friendsListOfSelectedFriends);
+                }
             }
-        }
+        }catch(NullPointerException ignored){} // User 의 친구가 한명도 없을 때는 NullPointerException 발생.
     }
     static void raiseFriendsOfFriendsScore(String targetUser, LinkedList<String> friendsList){
         String friendKnownTogether = friendsList.removeFirst();
