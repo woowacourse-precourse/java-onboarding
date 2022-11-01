@@ -25,5 +25,11 @@ class Problem1 {
         if (num%2 == 1) return true;
         return false;
     }
+
+    private static boolean isSequential(int leftPage, int rightPage){
+        if (leftPage + 1 == rightPage) return true;
+        return false;
+    }
+
     }
 }
