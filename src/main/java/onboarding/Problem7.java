@@ -1,12 +1,24 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
-    public static HashMap<String, Integer> createSharedFriendsHashmap(List<List<String>> friends, List<String> userFriends, String user) {
+    public static HashMap<String, Integer> checkVisitors(List<String> visitors, HashMap<String, Integer> sharedFrineds, HashSet<String> userFriends) {
+        for(String visitor : visitors) {
+            if(userFriends.contains(visitor)) {
+                continue;
+            }
+            if(sharedFrineds.containsKey(visitor)) {
+                sharedFrineds.replace(visitor, sharedFrineds.get(visitor), sharedFrineds.get(visitor) + 1);
+            } else {
+                sharedFrineds.put(visitor, 1);
+            }
+        }
+        System.out.println(sharedFrineds);
+        return sharedFrineds;
+    }
+
+    public static HashMap<String, Integer> createSharedFriendsHashmap(List<List<String>> friends, HashSet<String> userFriends, String user) {
         HashMap<String, Integer> sharedFriends = new HashMap<String, Integer>();
         for(String userFriend : userFriends) {
             for(List<String> friend : friends) {
@@ -32,11 +44,11 @@ public class Problem7 {
                 }
             }
         }
-        System.out.println(sharedFriends);
         return sharedFriends;
     }
-    public static List<String> findUserFriends(String user, List<List<String>> friends) {
-        List<String> userFriend = new ArrayList<>();
+
+    public static HashSet<String> findUserFriends(String user, List<List<String>> friends) {
+        HashSet<String> userFriend = new HashSet<String>();
         for(List<String> friend :  friends) {
             if(friend.get(0) == user) {
                 userFriend.add(friend.get(1));
@@ -46,11 +58,12 @@ public class Problem7 {
         }
         return userFriend;
     }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
-        List<String> userFriends = findUserFriends(user, friends);
-        createSharedFriendsHashmap(friends, userFriends, user);
-        System.out.println(userFriends);
+        HashSet<String> userFriends = findUserFriends(user, friends);
+        HashMap<String, Integer> sharedFriendsMap = createSharedFriendsHashmap(friends, userFriends, user);
+        checkVisitors(visitors, sharedFriendsMap, userFriends);
         return answer;
     }
 
