@@ -7,8 +7,17 @@ public class Problem4 {
     private static final int ASCII_CODE_ZtoA = 25;
 
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        //  Variable
+        StringBuilder stringBuilder = new StringBuilder(word);
+        //  For-Loop : 문자열을 차례대로 순회하며 변환하는 반복문
+        for(int i = 0; i < word.length(); i++){
+            char targetChar = word.charAt(i);
+            reverseCase(targetChar);
+            Character convertedChar = convertChar(targetChar);
+            stringBuilder.replace(i,i+1, String.valueOf(convertedChar));
+        }
+
+        return stringBuilder.toString();
     }
 
     //  입력된 문자를 변환하는 메소드
