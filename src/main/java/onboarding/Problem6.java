@@ -1,6 +1,10 @@
 package onboarding;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Iterator;
+import java.util.TreeSet;
 
 public class Problem6 {
     static List<String> answer = Collections.emptyList();
