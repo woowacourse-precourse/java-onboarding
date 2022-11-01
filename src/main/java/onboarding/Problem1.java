@@ -20,5 +20,10 @@ class Problem1 {
         separatedNumbers.add(num % NOTATION);
         return separatedNumbers;
     }
+
+    private static boolean isOdd(int num){
+        if (num%2 == 1) return true;
+        return false;
+    }
     }
 }
