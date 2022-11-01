@@ -1,19 +1,22 @@
 package onboarding;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
+        List<String> answer = new ArrayList<>();
+
         List<String> friendsList = getFriendsList(user, friends);
         Map<String, Integer> friendPointMap = getFriendPoint(user, friendsList, friends, visitors);
         Map<String, Integer> totalPointMap = plusVisitPoint(friendsList, visitors, friendPointMap);
+        List<Map.Entry<String, Integer>> sortedFriendsList = sorted(totalPointMap);
 
-        return totalPointMap.entrySet().stream()
-                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
-                .map(Map.Entry::getKey)
-                .collect(Collectors.toList());
+        for(Map.Entry<String, Integer> point : sortedFriendsList){
+            answer.add(point.getKey());
+        }
+
+        return answer;
     }
 
     private static List<String> getFriendsList(String user, List<List<String>> friends) {
@@ -63,5 +66,20 @@ public class Problem7 {
             return true;
         }
         return false;
+    }
+
+    private static List<Map.Entry<String, Integer>> sorted(Map<String, Integer> totalPointMap) {
+        List<Map.Entry<String, Integer>> sortedFriendsList = new LinkedList<>(totalPointMap.entrySet());
+        sortedFriendsList.sort(new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                if (o1.getValue() == o2.getValue()) {
+                    return o1.getKey().compareTo(o2.getKey());
+                }
+                return o2.getValue().compareTo(o1.getValue());
+            }
+        });
+
+        return sortedFriendsList;
     }
 }
