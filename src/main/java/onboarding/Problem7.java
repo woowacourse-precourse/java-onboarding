@@ -9,7 +9,7 @@ public class Problem7 {
 	public static final int VISITOR_SCORE = 1;
 
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-		HashMap<String, Integer> recommendFriends = new HashMap<>();
+		Map<String, Integer> recommendFriends = new HashMap<>();
 		Set<String> userFriends = new HashSet<>();
 
 		for (List<String> friend : friends) {
@@ -38,7 +38,7 @@ public class Problem7 {
 				.collect(toList());
 	}
 
-	private static void addVisitorScore(HashMap<String, Integer> recommendFriends, String id) {
+	private static void addVisitorScore(Map<String, Integer> recommendFriends, String id) {
 		if (recommendFriends.containsKey(id)) {
 			recommendFriends.put(id, recommendFriends.get(id) + VISITOR_SCORE);
 		} else {
@@ -46,7 +46,7 @@ public class Problem7 {
 		}
 	}
 
-	private static void addRecommendFriendScore(HashMap<String, Integer> recommendFriends, String id) {
+	private static void addRecommendFriendScore(Map<String, Integer> recommendFriends, String id) {
 		if (recommendFriends.containsKey(id)) {
 			recommendFriends.put(id, recommendFriends.get(id) + RECOMMEND_SCORE);
 		} else {
