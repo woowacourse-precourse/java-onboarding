@@ -132,7 +132,41 @@ public class Problem7 {
         // 점수가 0인 것은 제거하기
         score_recomends.values().remove(0);
 
+        // 7. 결과를 내림차순으로 정렬
 
+        //~~정렬이 요구사항에 맞게 잘 되는지 테스트 용 데이터
+        //score_recomends.put("jun",50);
+        //score_recomends.put("andole",50);
+        //score_recomends.put("bndole",50);
+        //score_recomends.put("zndole",0);
+        //score_recomends.put("bedi",25);
+        //score_recomends.values().remove(0);
+
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(score_recomends.entrySet()); // 정렬을 하기 위해 리스트로 변환
+
+        Collections.sort(entryList, new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                int comparision = o2.getValue() - o1.getValue();
+                return comparision == 0 ? o1.getKey().compareTo(o2.getKey()) : comparision;
+            }
+        });
+
+        Map<String, Integer> sortedMap = new LinkedHashMap<>();
+        for(Iterator<Map.Entry<String, Integer>> iter = entryList.iterator(); iter.hasNext();){
+            Map.Entry<String, Integer> entry = iter.next();
+            sortedMap.put(entry.getKey(), entry.getValue());
+        }
+
+        //System.out.println("정렬 결과");
+        //System.out.println(sortedMap); // 저장됨
+
+
+        List<String> result_map = new ArrayList<>(sortedMap.keySet());
+        //System.out.println("정렬 후 리스트로 변환한 결과");
+        //System.out.println(result_map);
+
+        List<String> result = result_map;
         return result;
     }
 }
