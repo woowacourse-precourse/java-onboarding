@@ -12,14 +12,12 @@ class Problem1 {
         return sum;
     }
 
-    public static int comparePlusAndMulti(int plusedpage, int multipliedpage) {
-        if (plusedpage < multipliedpage) {
-            return multipliedpage;
-        }else if (plusedpage > multipliedpage) {
-            return plusedpage;
-        }else {
-            return plusedpage;
+    public static int multiplyPage(ArrayList<Integer> pagelist) {
+        int sum = 1;
+        for (int element : pagelist) {
+            sum *= element;
         }
+        return sum;
     }
 
     public static ArrayList<Integer> convertPage(int page) {
@@ -30,6 +28,26 @@ class Problem1 {
         }
         return pagelist;
 
+    }
+
+    public static int comparePlusAndMulti(int plusedpage, int multipliedpage) {
+        if (plusedpage < multipliedpage) {
+            return multipliedpage;
+        }else if (plusedpage > multipliedpage) {
+            return plusedpage;
+        }else {
+            return plusedpage;
+        }
+    }
+
+    public static int compareFirstAndSecond(int firstpage, int secondpage) {
+        if (firstpage < secondpage) {
+            return secondpage;
+        }else if (firstpage > secondpage) {
+            return firstpage;
+        }else {
+            return firstpage;
+        }
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
