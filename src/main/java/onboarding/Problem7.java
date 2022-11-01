@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.regex.Pattern;
@@ -18,6 +19,20 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
+    }
+
+    private static List<String> makeUserFriendsList(String user, List<List<String>> friends) {
+        List<String> userFriends = new ArrayList<>();
+        for (List<String> friend : friends) {
+            for (String name : friend) {
+                if (friend.contains(user)) {
+                    if (!name.equals(user)) {
+                        userFriends.add(name);
+                    }
+                }
+            }
+        }
+        return userFriends;
     }
     private static void validateFriendId(List<List<String>> friends) {
         for (List<String> friend : friends) {
