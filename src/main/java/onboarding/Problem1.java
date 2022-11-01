@@ -25,7 +25,9 @@ class Problem1 {
 
             List<Integer> scores = getParticipantsScores(participants_pages);
 
-            result = 0;
+
+            result = getPageGameWinner(scores);
+
         } catch (IllegalArgumentException e) {
             result = EXCEPTION;
         }
@@ -82,6 +84,21 @@ class Problem1 {
             product *= curr;
         }
         return max(sum, product);
+    }
+
+    public static int getPageGameWinner(List<Integer> scores) {
+        int winnerIndex = 0;
+        for (int i = 0; i < scores.size(); i++) {
+            if (scores.get(i) >= scores.get(winnerIndex)) {
+                winnerIndex = i;
+            }
+        }
+
+        if (winnerIndex != 0 && scores.get(winnerIndex).equals(scores.get(0))) {
+            return TIE;
+        }
+
+        return winnerIndex + 1;
     }
 
 }
