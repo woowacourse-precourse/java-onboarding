@@ -17,7 +17,7 @@ public class Problem4 {
             return null;
         }
         HashMap<Character, Character> alphabetMap = createAlphabetMap();
-        answer = changeText(word, alphabetMap);
+        answer = getFrogText(word, alphabetMap);
         return answer;
     }
 
@@ -30,6 +30,7 @@ public class Problem4 {
         return true;
     }
 
+    // [Key:알파벳, Value:청개구리 알파벳]을 가진 HashMap 생성
     protected static HashMap<Character,Character> createAlphabetMap(){
         HashMap<Character, Character> alphabetMap = new HashMap<>();
         List<Character> alphaList = makeAlphaList();
@@ -41,7 +42,8 @@ public class Problem4 {
         }
         return alphabetMap;
     }
-
+    
+    // a ~ Z 알파벳 리스트 생성
     private static List<Character> makeAlphaList() {
         List<Character> alphaList = new ArrayList<>();
         for(char c=ASCII_a; c <= ASCII_z; c++){
@@ -53,6 +55,7 @@ public class Problem4 {
         return alphaList;
     }
 
+    // z ~ A 알파벳 리스트 생성
     private static List<Character> makeReverseAlphaList() {
         List<Character> reverseAlphaList = new ArrayList<>();
         for(char c=ASCII_z; c >= ASCII_a; c--){
@@ -63,8 +66,9 @@ public class Problem4 {
         }
         return reverseAlphaList;
     }
-
-    protected static String changeText(String text, HashMap<Character, Character> alphabetMap){
+    
+    // 청개구리식으로 텍스트 변환
+    protected static String getFrogText(String text, HashMap<Character, Character> alphabetMap){
         List<Character> charList = seperateText(text);
         Character changedChar;
         String result = "";
@@ -74,7 +78,8 @@ public class Problem4 {
         }
         return result;
     }
-
+    
+    // 텍스트를 문자 배열로 분리
     protected static List<Character> seperateText(String text){
         List<Character> charList = new ArrayList<>();
         for(int i = 0; i < text.length(); i++){
