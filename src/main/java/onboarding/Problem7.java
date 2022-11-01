@@ -20,4 +20,20 @@ public class Problem7 {
         }
         return friendMap;
     }
+
+
+    public static Map<String, Integer> getKnowTogetherMembersPoint(List<String> knowTogetherMembers, List<String> userAndUserFriends) {
+        Map<String, Integer> points = new HashMap<>();
+        for (String knowTogetherMember : knowTogetherMembers) {
+            points.put(knowTogetherMember, points.getOrDefault(knowTogetherMember, 0) + getKnowTogetherMemberPoint(knowTogetherMember, userAndUserFriends));
+        }
+        return points;
+    }
+
+    private static int getKnowTogetherMemberPoint(String knowTogetherMember, List<String> userAndUserFriends) {
+        if (userAndUserFriends.contains(knowTogetherMember)) {
+            return 0;
+        }
+        return 10;
+    }
 }
