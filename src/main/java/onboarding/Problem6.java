@@ -29,18 +29,26 @@ public class Problem6 {
             String email = form.get(EMAIL_INDEX);
             String name = form.get(NAME_INDEX);
 
-            addSequentialNameEmailMap(seqSubNameEmailMap, email, name);
+            Set<String> twoSequentialSubNameSet = getTwoSequentialSubNameSet(name);
+            twoSequentialSubNameSet
+                    .forEach(twoSeqSubName -> addEmail(seqSubNameEmailMap, email, twoSeqSubName));
         }
         return seqSubNameEmailMap;
     }
 
-    private static void addSequentialNameEmailMap(Map<String, Set<String>> seqNameEmailMap, String email, String name) {
+    private static Set<String> getTwoSequentialSubNameSet(String name) {
+        Set<String> twoSequentialSubNameList = new HashSet<>();
         for (int i = 0; i < name.length() - 1; i++) {
             String twoSequentialSubName = getTwoSequentialSubName(name, i);
-            Set<String> emailList = seqNameEmailMap.getOrDefault(twoSequentialSubName, new HashSet<>());
-            emailList.add(email);
-            seqNameEmailMap.put(twoSequentialSubName, emailList);
+            twoSequentialSubNameList.add(twoSequentialSubName);
         }
+        return twoSequentialSubNameList;
+    }
+
+    private static void addEmail(Map<String, Set<String>> seqSubNameEmailMap, String email, String twoSeqSubName) {
+        Set<String> emailSet = seqSubNameEmailMap.getOrDefault(twoSeqSubName, new HashSet<>());
+        emailSet.add(email);
+        seqSubNameEmailMap.put(twoSeqSubName, emailSet);
     }
 
     private static String getTwoSequentialSubName(String name, int i) {
