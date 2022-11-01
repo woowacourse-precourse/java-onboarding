@@ -20,7 +20,48 @@ class Problem1 {
         if (!(crong.get(0) % 2 == 1 && crong.get(1) - 1 == crong.get(0))) return -1;
 
         // 정답 구하기
+        int pobiScore = getScore(pobi);
+        int crongScore = getScore(crong);
+
+        if (pobiScore > crongScore) answer = 1;
+        else if (pobiScore < crongScore) answer = 2;
+        else answer = 0;
 
         return answer;
+    }
+
+    /**
+     * 왼쪽, 오른쪽 페이지를 받아서 점수를 반환하는 메소드
+     * @param pages 왼쪽, 오른쪽 페이지
+     * @return 점수
+     */
+    private static int getScore(List<Integer> pages) {
+        int score = 0;
+        int leftPage = pages.get(0);
+        int rightPage = pages.get(1);
+
+        int leftPageScore = getOnePageScore(leftPage);
+        int rightPageScore = getOnePageScore(rightPage);
+
+        return Math.max(leftPageScore, rightPageScore);
+
+    }
+
+    /**
+     * 한 페이지의 점수를 반환하는 메소드
+     * @param page 한 페이지
+     * @return 점수
+     */
+    private static int getOnePageScore(Integer page) {
+        int[] digits = page.toString().chars().map(Character::getNumericValue).toArray();
+        int allSum = 0;
+        int allMultiplication = 1;
+
+        for (int digit : digits) {
+            allSum += digit;
+            allMultiplication *= digit;
+        }
+
+        return Math.max(allSum, allMultiplication);
     }
 }
