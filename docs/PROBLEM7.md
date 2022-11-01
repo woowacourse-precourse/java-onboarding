@@ -24,3 +24,73 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+
+---
+## 📄 기능 목록
+
+### 전체 동작 과정
+0. **class Person** : 추천 점수 저장
+   1. **compareTo()** : 정렬 기준
+1. **makeRecommendList()** : 추천 목록 만들기
+   1. **userFriendList()** : 유저 친구 목록
+   2. **recommendScoreList()** : 추천 점수 목록
+   3. **removeUserAndUserFriends()** : 추천 점수 목록에서 user와 userFreinds 삭제
+   4. **hashMapToPersonArray()** : 추천 점수 목록을 Person Array로 변환
+2. **sortRecommendList** : 추천 목록 정렬하기
+
+### 함수별 입출력 및 동작 과정
+0. **class Person**
+   - String name, int score
+   1. **compareTo()**
+      1. score는 내림차순
+      2. score가 같을 때, name은 오름차순
+1. **makeRecommendList()** : 추천 목록 만들기
+   - 입력값 : user, friends, visitors
+   - 동작과정 :
+     - userFriendList()
+     - recommendScoreList()
+     - removeUserAndUserFriends()
+     - hashMapToPersonArray()
+   - 출력값 : 추천 점수 목록 (Person[] recommendPersonArray)
+   
+2. **userFriendList()** : 유저 친구 목록
+  - 입력값 : user, friends
+  - 동작과정 
+    - user와 친구인 이름을 HashMap에 저장
+    - HashMap을 String Array로 변환
+  - 출력값 : 유저 친구 목록 (String[] userFriendArray)
+3. **recommendScoreList()** : 추천 점수 목록
+  - 입력값 : user, friends, visitors
+  - 동작과정 : 
+    - 친구일 경우 10을 score에 합함
+    - 방문자일 경우 1을 score에 더해줌
+  - 출력값 : 추천 점수 목록 (Map<String,Integer> recommendHMap)
+4. **removeUserAndUserFriends()** : 추천 점수 목록에서 user와 userFreinds 삭제
+  - 입력값 : user, userFriend, recommendHMap
+  - 동작과정 : recommendMap 에 있는 user와 userFriend 정보 삭제
+  - 출력값 : 추천 점수 목록 (Map<String,Integer> recommendHMap)
+5. **hashMapToPersonArray()** : HashMap을 Person Array로 변환
+6. **sortRecommendList** : 추천 목록 정렬하기
+   - 입력 : 추천 점수 목록 (persons)
+   - 동작과정 :
+     - TreeSet에 persons 넣음
+     - ArrayList로 변환
+   - 출력 : 추천리스트 (List<String> recommendList)
+
+
+---
+## 💡 기타 내용 정리
+
+### Set
+1. HashSet
+2. TreeSet
+3. LinkedHashSet
+
+### List
+1. ArrayList
+2. LinkedList
+
+## Map
+1. HashMap
+2. TreeMap
