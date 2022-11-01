@@ -9,4 +9,8 @@ public class Problem4 {
         }
         return mergeConvertedCharacters(word);
     }
+
+    public static char upperCaseConversion(char character) {
+        return (char) (155 - character);
+    }
 }
