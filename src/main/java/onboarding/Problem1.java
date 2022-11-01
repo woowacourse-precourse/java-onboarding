@@ -33,8 +33,16 @@ class Problem1 {
             return -1;
         }
 
-
-
         return answer;
     }
+
+    public static int sumDigits(int number) {
+        int total = 0;
+        String stringNumber = Integer.toString(number);
+        for (int i = 0; i < stringNumber.length(); i++) {
+            total += Character.getNumericValue(stringNumber.charAt(i));
+        }
+        return total;
+    }
+
 }
