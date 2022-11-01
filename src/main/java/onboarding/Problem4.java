@@ -1,34 +1,35 @@
 package onboarding;
 
 /**
- * 기능 1. 알파벳을 반대로 반환하는 함수
+ * 기능
+ * 1. 해당 문자를 반대로 변환하는 함수
  */
 public class Problem4 {
 
-    public static String solution(String word) {
-        return change(word);
-    }
+    static String upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    static String lower = "abcdefghijklmnopqrstuvwxyz";
 
     /**
-     * 1. 알파벳 반대로 반환 함수
-     *
-     * @param word
-     * @return buffer에 반대로 담은 단어 String으로 반환
+     * 1. 해당 문자를 반대로 변환하는 함수
+     * @param x
+     * @return 반대 문자를 반환
      */
-    static String change(String word) {
-        String[] strings = word.split(" ");
-        StringBuffer bf = null;
-        for (String str : strings) {
-            for (int i = 0; i < str.length(); i++) {
-                char chr = str.charAt(i);
-                if (65 <= (int) chr && (int) chr <= 90) {
-                    bf.append((char) (65 + 90 - (int) chr));
-                } else if (97 <= (int) chr && (int) chr <= 122) {
-                    bf.append((char) (97 + 122 - (int) chr));
-                }
-                bf.append(" ");
-            }
+    static char translate(char x) {
+        char res = x;
+        if (Character.isLowerCase(x)) {
+            res = lower.charAt(25 - x + 'a');
+        } else if (Character.isUpperCase(x)) {
+            res = upper.charAt(25 - x + 'A');
         }
-        return bf.toString();
+        return res;
+    }
+
+
+    public static String solution(String word) {
+        StringBuilder sb = new StringBuilder();
+        for (char cur : word.toCharArray()) {
+            sb.append(translate(cur));
+        }
+        return sb.toString();
     }
 }
