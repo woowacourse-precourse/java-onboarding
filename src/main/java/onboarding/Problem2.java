@@ -16,4 +16,12 @@ public class Problem2 {
         String answer = "answer";
         return answer;
     }
+
+    private static void isProperCryptogram(String cryptogram) {
+        if (cryptogram.length() < MIN_LENGTH || cryptogram.length() > MAX_LENGTH)
+            throw new IllegalArgumentException("cryptogram의 길이는 1이상 1000이하인 문자열입니다.");
+        if (!cryptogram.matches(LOWERCASE))
+            throw new IllegalArgumentException("cryptogram은 소문자로만 이루어져 있어야합니다.");
+    }
+
 }
