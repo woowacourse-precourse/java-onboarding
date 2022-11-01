@@ -4,25 +4,27 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        Map<String, ArrayList<String>> friendMap = makeFriendMap(friends);
-        Map<String, Integer> recommendScore = addScoreFriendKnow(user, friendMap);
-        recommendScore = addScoreVisit(recommendScore, visitors);
+        Map<String, List<String>> friendMap = makeFriendMap(friends);
+
+        Map<String, Integer> recommendScore = new HashMap<>();
+        addScoreFriendKnow(user, recommendScore, friendMap);
+        addScoreVisit(recommendScore, visitors);
 
         return recommendFriend(recommendScore);
     }
 
-    public static Map<String, ArrayList<String>> makeFriendMap(List<List<String>> friends) {
-        HashMap<String, ArrayList<String>> friendMap = new HashMap<>();
+    public static Map<String, List<String>> makeFriendMap(List<List<String>> friends) {
+        HashMap<String, List<String>> friendMap = new HashMap<>();
 
         for (List<String> friend : friends) {
             String friendA = friend.get(0);
             String friendB = friend.get(1);
 
-            ArrayList<String> AFriends = friendMap.getOrDefault(friendA, new ArrayList<>());
+            List<String> AFriends = friendMap.getOrDefault(friendA, new ArrayList<>());
             AFriends.add(friendB);
             friendMap.put(friendA, AFriends);
 
-            ArrayList<String> BFriends = friendMap.getOrDefault(friendB, new ArrayList<>());
+            List<String> BFriends = friendMap.getOrDefault(friendB, new ArrayList<>());
             BFriends.add(friendA);
             friendMap.put(friendB, BFriends);
         }
@@ -30,10 +32,8 @@ public class Problem7 {
         return friendMap;
     }
 
-    public static Map<String, Integer> addScoreFriendKnow(String user, Map<String, ArrayList<String>> friendMap) {
-        Map<String, Integer> recommendScore = new HashMap<>();
-
-        for (String friend : friendMap.get(user)) {
+    public static void addScoreFriendKnow(String user, Map<String, Integer> recommendScore, Map<String, List<String>> friendMap) {
+       for (String friend : friendMap.get(user)) {
             recommendScore.put(friend, -1);
             for (String friendKnow : friendMap.get(friend)) {
                 if (friendKnow.equals(user)) continue;
@@ -41,16 +41,13 @@ public class Problem7 {
                 recommendScore.put(friendKnow, recommendScore.getOrDefault(friendKnow, 0) + 10);
             }
         }
-
-        return recommendScore;
     }
 
-    public static Map<String, Integer> addScoreVisit(Map<String, Integer> recommendScore, List<String> visitors) {
+    public static void addScoreVisit(Map<String, Integer> recommendScore, List<String> visitors) {
         for (String visitor : visitors) {
             if (recommendScore.getOrDefault(visitor, 0) == -1) continue;
             recommendScore.put(visitor, recommendScore.getOrDefault(visitor, 0) + 1);
         }
-        return recommendScore;
     }
 
     public static List<String> recommendFriend(Map<String, Integer> recommendScore) {
