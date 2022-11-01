@@ -22,6 +22,12 @@ public class Problem2 {
             }
         }
 
+        // 연속하는 중복 문자 삭제 결과 반환 기능
+        int stackSize = stack.size(); // 스택의 크기
+        for (int i = 0; i < stackSize; i++) {
+            answer = stack.pop() + answer;
+        }
+
         return answer;
     }
 }
