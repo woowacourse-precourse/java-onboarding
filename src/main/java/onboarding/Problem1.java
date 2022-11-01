@@ -55,4 +55,25 @@ class Problem1 {
             return resultRight;
         }
     }
+
+    public static int mulNumber(int left, int right) {
+        List<Integer> leftNumList = separateNumber(left);
+        List<Integer> rightNumList = separateNumber(right);
+
+        int resultLeft = 1, resultRight = 1;
+
+        for (int i = 0; i < leftNumList.size(); i++) {
+            resultLeft *= leftNumList.get(i);
+        }
+
+        for (int i = 0; i < rightNumList.size(); i++) {
+            resultRight *= rightNumList.get(i);
+        }
+
+        if (resultLeft > resultRight) {
+            return resultLeft;
+        } else {
+            return resultRight;
+        }
+    }
 }
