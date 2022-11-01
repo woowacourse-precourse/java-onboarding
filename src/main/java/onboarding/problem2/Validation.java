@@ -10,17 +10,17 @@ public class Validation {
     private static final String LOWERCASE_EXCEPTION_MESSAGE = "문자열이 소문자로만 구성되어 있어야 합니다.";
 
     public static void validate(String cryptogram) {
-        validateIsNotLowerCaseStr(cryptogram);
-        validateNotInRange(cryptogram);
+        validateIsLowerCaseCryptogram(cryptogram);
+        validateCryptogramRange(cryptogram);
     }
 
-    private static void validateIsNotLowerCaseStr(String cryptogram) {
+    private static void validateIsLowerCaseCryptogram(String cryptogram) {
         if (!Pattern.matches(LOWERCASE_STR_REGEXP, cryptogram)) {
             throw new IllegalArgumentException(LOWERCASE_EXCEPTION_MESSAGE);
         }
     }
 
-    private static void validateNotInRange(String cryptogram) {
+    private static void validateCryptogramRange(String cryptogram) {
         if ((cryptogram.length() < MIN_LENGTH) || (cryptogram.length() > MAX_LENGTH)) {
             throw new IllegalArgumentException(LENGTH_EXCEPTION_MESSAGE);
         }
