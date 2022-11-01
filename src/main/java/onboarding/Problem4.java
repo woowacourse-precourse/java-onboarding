@@ -15,6 +15,8 @@ public class Problem4 {
                 char c = 0;
                 if (letter <= 90)
                     c = (char) (65 + 90 - letter);
+                else
+                    c = (char) (97 + 122 - letter);
                 answer += Character.toString(c);
             }
         }
