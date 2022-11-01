@@ -6,6 +6,7 @@ public class Problem7 {
     public static final int MAX_RECOMMEND_SIZE = 5;
     public static final int FRIEND_IN_COMMON_SCORE = 10;
     public static final int VISITOR_SCORE = 1;
+    public static final int MINIMUM_RECOMMEND_SCORE = 1;
 
     public static final Comparator<Map.Entry<String, Integer>> byValDesc = Map.Entry.comparingByValue(Comparator.reverseOrder());
     public static final Comparator<Map.Entry<String, Integer>> byKeyAsc = Map.Entry.comparingByKey();
@@ -13,6 +14,8 @@ public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Map<String, Set<String>> userToFriends = getUserToFriendMap(friends);
+
+        Map<String, Integer> idToRecommendScore = getIdToRecommendScore(user, userToFriends, visitors);
 
 
         return null;
@@ -64,5 +67,31 @@ public class Problem7 {
         }
         return count;
     }
+
+    public static Map<String, Integer> getIdToRecommendScore(String user, Map<String, Set<String>> userToFriends, List<String> visitors) {
+        Map<String, Integer> idToRecommendScore = new HashMap<>();
+
+        Map<String, Integer> friendsInCommon = getFriendsInCommon(userToFriends, user);
+
+        updateFriendInCommonScore(idToRecommendScore, friendsInCommon);
+
+        updateVisitorScore(idToRecommendScore, visitors);
+
+        return idToRecommendScore;
+    }
+
+    public static void updateFriendInCommonScore(Map<String, Integer> recommendScores, Map<String, Integer> friendsInCommon) {
+        for (String other : friendsInCommon.keySet()) {
+            recommendScores.put(other, friendsInCommon.getOrDefault(other, 0) * FRIEND_IN_COMMON_SCORE);
+        }
+    }
+
+    public static void updateVisitorScore(Map<String, Integer> recommendScores, List<String> visitors) {
+        for (String id : visitors) {
+            recommendScores
+                    .put(id, recommendScores.getOrDefault(id, 0) + VISITOR_SCORE);
+        }
+    }
+
 
 }
