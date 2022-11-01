@@ -68,8 +68,31 @@ public class Problem7 {
                 }
             }
 
+            // notFriend 항목이 가지고 있는 친구리스트 확인 후 점수 계산
+            int sameFriendCount = calScore(findFriends(notfriend, friends));
+
         }
 
+    }
+
+    //관계성 친구목록에 검사할 이름의 친구리스트 생성
+    public static List<String> findFriends(String user, List<List<String>> friends) {
+        //유저이름이 반복적으로 저장되는 것을 막기 위한 임시 저장소
+        HashSet<String> tempList = new HashSet<>();
+
+        //이름이 해당하면 좌, 우 전부 임시저장소에 저장
+        for(int i = 0 ; i < friends.size(); i++) {
+            if (friends.get(i).get(0).contains(user) || friends.get(i).get(1).contains(user)) {
+                tempList.add(friends.get(i).get(0));
+                tempList.add(friends.get(i).get(1));
+            }
+        }
+        //해당 유저이름 제거
+        tempList.remove(user);
+
+        //SetList를 List로 변환
+        List<String> resultList = new ArrayList<>(tempList);
+        return resultList;
     }
 
 }
