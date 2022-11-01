@@ -4,19 +4,20 @@ import java.util.*;
 
 public class Problem7 {
     public static void main(String[] args) {
-        String user = "mrko";
+        String user = "andole";
         List<List<String>> friends = List.of(
-                List.of("donut", "andole"),
+                List.of("andole", "jun"),
                 List.of("donut", "jun"),
-                List.of("donut", "mrko"),
+                List.of("donut", "shakevan"),
                 List.of("shakevan", "andole"),
                 List.of("shakevan", "jun"),
-                List.of("shakevan", "mrko"),
-                List.of("Kim", "mrko"),
-                List.of("andole", "Kim")
+                List.of("shakevan", "bedi"),
+                List.of("anne", "jun")
+//                List.of("shakevan", "jun"),
+//                List.of("shakevan", "mrko")
         );
-        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan", "andole");
-        solution(user, friends, visitors);
+        List<String> visitors = List.of("donut", "mrko", "peter", "sam");
+        System.out.println(solution(user, friends, visitors));
     }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Map<String, Integer> pointsMap = new HashMap<>();
@@ -29,6 +30,7 @@ public class Problem7 {
                 friendsSet.add(friendName);
             }
         }
+        System.out.println("친구는 누구인가? : " + friendsSet);
 
         // 친구의 친구를 구해서 HashMap에 점수와 함께 저장
         Iterator it = friendsSet.iterator();
@@ -37,13 +39,14 @@ public class Problem7 {
             for (int i = 0; i < friends.size(); i++) {
                 if (friends.get(i).contains(friendName)) {
                     String friendOfFriendName = IsLeftOrRight(friends.get(i), friendName);
-                    if (user != friendOfFriendName) {
+                    if (user != friendOfFriendName && !friendsSet.contains(friendOfFriendName)) {
                         int point = pointsMap.get(friendOfFriendName) != null ? pointsMap.get(friendOfFriendName) + 10 : 10;
                         pointsMap.put(friendOfFriendName, point);
                     }
                 }
             }
         }
+        System.out.println("친구의 친구는 누구인가? : " + pointsMap.keySet());
 
         // 방문자 점수 추가
         List<String> friendsList = new ArrayList<>(friendsSet);
@@ -56,10 +59,15 @@ public class Problem7 {
             pointsMap.put(visitor, point);
         }
 
-        sortMap(pointsMap);
+        List<Map.Entry<String, Integer>> entries = new ArrayList<>(pointsMap.entrySet());
+        entries.sort((v1, v2) -> (v2.getValue().compareTo(v1.getValue())));
 
+        List<String> answer = new ArrayList<>();
 
-        List<String> answer = Collections.emptyList();
+        for (int i = 0; i < 5; i++) {
+            answer.add(entries.get(i).getKey());
+        }
+
         return answer;
     }
 
@@ -71,25 +79,12 @@ public class Problem7 {
         }
     }
 
-    private static void sortMap(Map<String, Integer> pointsMap) {
-        Set<Map.Entry<String, Integer>> set = pointsMap.entrySet();
-        System.out.println(set);
-        List list = new ArrayList(set);
-        System.out.println(list);
-
-        Collections.sort(list, new Comparator() {
-            public int compare(Object o1, Object o2) {
-                if (o1 instanceof Map.Entry && o2 instanceof Map.Entry) {
-                    Map.Entry e1 = (Map.Entry) o1;
-                    Map.Entry e2 = (Map.Entry) o2;
-
-                    int v1 = (Integer) e1.getValue();
-                    int v2 = (Integer) e2.getValue();
-
-                    return v1 > v2 ? 1 : (v1 < v2 ? -1 : 0);
-                }
-                return 0;
-            }
-        });
-    }
+//    private static List<String> printTop5(List<String> sortedList) {
+//        List<String> top5List = new ArrayList<>();
+//
+//        for (int i = 0; i < 5; i++) {
+//            System.out.println(sortedList.get(i));
+//        }
+//        return top5List;
+//    }
 }
