@@ -3,13 +3,30 @@ package onboarding;
 import java.util.Collections;
 import java.util.List;
 import java.util.*;
+
 public class Problem7 {
 
     static Map<String, ArrayList> friendMap = new TreeMap<>();
     static Map<String, Integer> mapPoints = new TreeMap<>();
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        List<String> answer = new ArrayList<String>();
+
+        //friends map를 만드는 과정
+        for (int i = 0; i < friends.size(); i++) {
+            makeFriendsMap(friends.get(i));
+        }
+
+        friendsPlusPoint(user, friendMap.get(user));
+        visitorsPlusPoint(visitors, friendMap.get(user));
+
+        List<String> keyList = new ArrayList<>(mapPoints.keySet());
+
+        // 정렬
+        keyList.sort((o1, o2) -> mapPoints.get(o2).compareTo(mapPoints.get(o1)));
+
+        return keyList;
+
     }
 
     public static void makeFriendsMap(List<String> friendsList) {
