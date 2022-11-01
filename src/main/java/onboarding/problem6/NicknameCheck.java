@@ -4,21 +4,21 @@ import java.util.*;
 
 public class NicknameCheck {
 
-    public List<String> DuplicateCrewMember(List<CrewMember> crewMemberList) {
+    public List<String> DuplicateCrew(List<Crew> crewList) {
 
         List<String> result = new ArrayList<>();
 
         NicknameAllCases nicknameAllCases = new NicknameAllCases();
-        Set<String> setList = nicknameAllCases.createCase(crewMemberList);
+        Set<String> setList = nicknameAllCases.createCase(crewList);
 
         TwoWordVerification twoWordVerification = new TwoWordVerification();
-        Map<String, Integer> countOfCase = twoWordVerification.CountOfCase(setList, crewMemberList);
+        Map<String, Integer> countOfCase = twoWordVerification.CountOfCase(setList, crewList);
 
         List<String> duplicatedCase = twoWordVerification.DuplicatedCase(countOfCase);
 
         for (String cases : duplicatedCase) {
 
-            for (CrewMember crew : crewMemberList) {
+            for (Crew crew : crewList) {
                 if (crew.getNickname().contains(cases)) {
                     result.add(crew.getEmail());
                 }

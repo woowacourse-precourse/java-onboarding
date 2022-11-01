@@ -7,12 +7,11 @@ public class NicknameVerification {
     public List<String> verificationCheck(List<List<String>> forms) {
 
         NicknameCheck nicknameCheck = new NicknameCheck();
-        SaveCrewMember saveCrewMember = new SaveCrewMember();
+        SaveCrew saveCrew = new SaveCrew();
 
-        List<CrewMember> crewMembers = saveCrewMember.crewMeberSet(forms);
-        List<String> result = nicknameCheck.DuplicateCrewMember(crewMembers);
+        List<Crew> crewList = saveCrew.crewSet(forms);
+        List<String> result = nicknameCheck.DuplicateCrew(crewList);
 
         return result;
     }
-
 }
