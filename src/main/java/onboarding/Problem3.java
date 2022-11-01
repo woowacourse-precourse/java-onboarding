@@ -5,4 +5,17 @@ public class Problem3 {
         int answer = 0;
         return answer;
     }
+
+    // 현재 숫자에 대해 손뼉을 몇 번 쳐야하는지 반환
+    public static int numOfClaps(int num) {
+        int result = 0;
+        while (num > 1) {
+            int digit = num % 10;
+            if (digit == 3 || digit == 6 || digit == 9)
+                result++;
+
+            num /= 10;
+        }
+        return result;
+    }
 }
