@@ -72,9 +72,9 @@ class Problem1 {
         return maxValue;
     }
 
-    public int findWinner(List<Integer> maxValueOfPlayers) {
-        int pobiMaxValue = maxValueOfPlayers.get(0);
-        int crongMaxValue = maxValueOfPlayers.get(1);
+    public int findWinner(int player1MaxValue, int player2MaxValue) {
+        int pobiMaxValue = player1MaxValue;
+        int crongMaxValue = player2MaxValue;
 
         if (pobiMaxValue > crongMaxValue) {
             return 1;
@@ -97,8 +97,6 @@ class Problem1 {
         List<Integer> crongCalculationValues = problem1.calculateEachDigitOfPageNumber(crong);
         int crongMaxValue = problem1.getMaxValue(crongCalculationValues);
 
-        List<Integer> maxValueOfPlayers = List.of(pobiMaxValue, crongMaxValue);
-
-        return problem1.findWinner(maxValueOfPlayers);
+        return problem1.findWinner(pobiMaxValue, crongMaxValue);
     }
 }
