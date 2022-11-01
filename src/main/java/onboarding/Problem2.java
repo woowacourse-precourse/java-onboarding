@@ -32,7 +32,7 @@ public class Problem2 {
             for (char c : stack) {
                 cryptogram += c;
             }
-            System.out.println(cryptogram);
+            //System.out.println(cryptogram);
             if(flag==false || cryptogram.length()==0){
                 break;
             }
