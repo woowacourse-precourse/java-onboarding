@@ -12,7 +12,7 @@ public class Problem2 {
         return answer;
     }
 
-    public static String decrypt(String cryptogram) {
+    private static String decrypt(String cryptogram) {
 
         Stack<Character> stack = new Stack<>();
         stack.push(cryptogram.charAt(0)); 
