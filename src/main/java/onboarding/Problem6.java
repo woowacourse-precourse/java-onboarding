@@ -30,8 +30,12 @@ public class Problem6 {
         if (b.contains(cp)) {
             System.out.println(1); // "제이" 가 겹침 1 출력
             answer.add((forms.get(1)).get(0));
+            cp = "";
         }
-        System.out.println(answer);
+        cp = cp.concat(String.valueOf(a.charAt(1)));
+        cp = cp.concat(String.valueOf(a.charAt(2)));
+        System.out.println(cp);
+
 
         return answer;
     }
