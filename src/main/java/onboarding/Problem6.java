@@ -9,6 +9,7 @@ public class Problem6 {
 
         CheckDuplicateMemberNames checkDuplicateMemberNames = new CheckDuplicateMemberNames(forms);
         checkDuplicateMemberNames.setDuplicatedWords();
+        answer = checkDuplicateMemberNames.findDuplicatedMembers();
 
         return answer;
     }
@@ -43,6 +44,32 @@ public class Problem6 {
 
             duplicatedWords = duplicatedWords.stream()
                     .filter(e -> Collections.frequency(duplicatedWords, e) > 1)
+                    .collect(Collectors.toList());
+        }
+
+        public List<String> findDuplicatedMembers() {
+
+            if (duplicatedWords.size() == 0) {
+                return null;
+            }
+
+            Set<String> result = new HashSet<>();
+
+            for (List<String> form : forms) {
+
+                String email = form.get(0);
+                String name = form.get(1);
+
+                for (String duplicatedWord : duplicatedWords) {
+
+                    if (name.contains(duplicatedWord)) {
+                        result.add(email);
+                    }
+                }
+            }
+
+            return result.stream()
+                    .sorted()
                     .collect(Collectors.toList());
         }
     }
