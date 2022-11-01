@@ -8,7 +8,13 @@ public class Problem7 {
     private static final Map<String, List<String>> friendMap = new HashMap<String, List<String>>();
     private static Map<String, Integer> scoreMap = new HashMap<>();
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+
+        createFriendsList(friends);
+        createScoreMap(user);
+        scoringFriends(user,friendMap);
+        scoringVisits(visitors);
+        removeOriginalFriends(user,friendMap);
+        List<String> answer = getRecommandFriends();
         return answer;
     }
 
@@ -63,16 +69,15 @@ public class Problem7 {
     private static void removeOriginalFriends(String user,Map<String, List<String>> friendList) {
         List<String> userFriends = friendList.get(user);
         for (String userFriend : userFriends) {
-            System.out.println(userFriend+"삭제");
             scoreMap.remove(userFriend);
         }
     }
 
     private static List<String> getRecommandFriends() {
-        //score.keySet();
+        scoreMap.keySet();
         return scoreMap.entrySet().stream()
                 .filter(sc -> sc.getValue() >0)
-                .sorted(Comparator.comparing(Map.Entry<String, Integer>::getKey).reversed())
+                .sorted(Comparator.comparing(Map.Entry<String, Integer>::getValue).reversed())
                 .map(Map.Entry::getKey)
                 .collect(Collectors.toList());
     }
