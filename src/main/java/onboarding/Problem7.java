@@ -6,8 +6,101 @@ import java.util.List;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+
+        // user의 친구목록 얻음
+        List<String> userFriends = getUserFriends(user, friends);
+//        System.out.println("userFriends = " + userFriends);
+
+        List<String> tmp;
+
+        // userFriend의 친구 목록을 추천 점수와 기록
+        List<FriendCount> friendRecommendList = new ArrayList<>();
+
+        for (List<String> friend : friends) {
+            for (String userFriend : userFriends) {
+                boolean findFlag = false;
+                for (int i = 0; i < friend.size(); i++) {
+
+                    if(findFlag) // 같은 행에서 찾았다면,
+                        break;
+
+                    if (friend.get(i).equals(userFriend)) { // userFriend와 friend 일치
+                        findFlag = true;
+
+                        // 1. user인지 확인
+                        if(isUser(friend.get(1-i), user))
+                            continue;
+
+                        // 2. user친구 목록에 있는 사람인지 확인
+                        if(isExistFriend(friend.get(1-i), userFriends))
+                            continue;
+                        // 만약 1,2에 해당한다면 아무런 동작을 하지 않고 넘어간다.
+
+                        FriendCount friendCount = findFromRecommendList(friend.get(1 - i), friendRecommendList);
+                        if (friendCount == null) {
+                            // 3. user친구의친구 목록에 있는 사람이 아니라면 새로 리스트에 추가한다.
+                            friendRecommendList.add(new FriendCount(friend.get(1 - i), 10));
+                        } else {
+                            // 4. user친구의친구 목록에 있는 사람이라면 해당 친구의친구에 10을 더한다
+                            friendCount.count += 10;
+                        }
+                    }
+                }
+            }
+        }
+//        System.out.println("friendRecommendList = " + friendRecommendList);
+
+        // 방문자 점수 계산
+        // 방문자 리스트 돌기
+
+        for (String visitor : visitors) {
+            FriendCount friendCount = findFromRecommendList(visitor, friendRecommendList);
+
+            // 방문자가 본인이거나, 친구가 아닐경우,
+            if (isUser(visitor, user))
+                continue;
+            if(isExistFriend(visitor, userFriends))
+                continue;
+
+            if (friendCount == null) {
+                // 방문자 이름이 RecommandList에 없다면 생성 & count+1
+                friendRecommendList.add(new FriendCount(visitor, 1));
+            } else {
+                // 방문자 이름이 RecommendList에 있다면 count+1
+                friendCount.count++;
+            }
+        }
+
+//        System.out.println("friendRecommendList = " + friendRecommendList);
+
+
+        // userFriendFriends에서 count 내림차순으로 정렬
+        // 내림차순 정렬한 것에서 이름순으로 정렬하기
+        friendRecommendList.sort(
+                (a, b) -> {
+                    if(a.count > b.count) {
+                        return -1;
+                    } else if (a.count < b.count) {
+                        return 1;
+                    } else {
+                        return a.name.compareTo(b.name);
+                    }
+                }
+        );
+
+        List<String> output = new ArrayList<>();
+        int size = 0;
+
+        if(friendRecommendList.size() > 5)
+            size = 5;
+        else
+            size = friendRecommendList.size();
+
+        for (int i = 0; i < size; i++) {
+            output.add(friendRecommendList.get(i).name);
+        }
+
+        return output;
     }
 
 
