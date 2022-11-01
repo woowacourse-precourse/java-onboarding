@@ -4,9 +4,14 @@ import java.util.ArrayList;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
         ArrayList<Integer> wordList = getAsciiList(word);
         ArrayList<Integer> reflectedList = reflectList(wordList);
+        ArrayList<Character> charList = getCharList(reflectedList);
+        StringBuilder sb = new StringBuilder();
+        for (Character ch : charList) {
+            sb.append(ch);
+        }
+        String answer = sb.toString();
         return answer;
     }
 
@@ -24,6 +29,7 @@ public class Problem4 {
         for (Integer i : asciiList) {
             reflectedList.add(reflectAlphabet(i));
         }
+        return reflectedList;
     }
 
     private static int reflectAlphabet(int i) {
@@ -36,4 +42,12 @@ public class Problem4 {
         return i;
     }
 
+    private static ArrayList<Character> getCharList(ArrayList<Integer> asciiList) {
+        ArrayList<Character> charList = new ArrayList<>();
+        for (Integer i : asciiList) {
+            int num = (int) i;
+            charList.add((char) num);
+        }
+        return charList;
+    }
 }
