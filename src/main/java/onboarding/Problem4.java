@@ -25,10 +25,14 @@ public class Problem4 {
     }
 
     private static char encodeCharacter(char ch) {
-        if (Character.isAlphabetic(ch)) {
+        if (isAlphabet(ch)) {
             return encodeAlphabet(ch);
         }
         return ch;
+    }
+
+    private static boolean isAlphabet(char ch) {
+        return ('a' <= ch && ch <= 'z') || ('A' <= ch && ch <= 'Z');
     }
 
     private static char encodeAlphabet(char ch) {
