@@ -36,4 +36,21 @@ public class Problem2 {
             answer.append(word);
         }
     }
+
+    private static boolean hasDuplicatedWords(Queue<Character> eachWords, char word) {
+        boolean duplicated = false;
+
+        while (!eachWords.isEmpty()) {
+            char targetWord = eachWords.peek();
+
+            if (word == targetWord) {
+                eachWords.poll();
+                duplicated = true;
+            } else {
+                break;
+            }
+        }
+
+        return duplicated;
+    }
 }
