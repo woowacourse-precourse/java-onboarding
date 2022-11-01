@@ -41,7 +41,15 @@ class Problem1 {
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = 0;
-        return answer;
+        if(hasError(pobi) || hasError(crong)) return -1;
+
+        int scorePobi = Math.max(sumPage(pobi),multiplyPage(pobi));
+        int scoreCrong = Math.max(sumPage(crong),multiplyPage(crong));
+
+        if(scorePobi > scoreCrong) return 1;
+        if(scoreCrong > scorePobi) return 2;
+
+        return 0;
+
     }
 }
