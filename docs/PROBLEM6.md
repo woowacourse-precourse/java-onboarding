@@ -21,3 +21,7 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+## 기능 목록
+- 이름 리스트 생성 및 두 글자씩 다른 글자와 비교하면서 중복 시 해당 index를 저장
+- index를 기준으로 이메일 리스트 생성 및 중복을 제거 후 새로운이메일 리스트를 생성하여 출력
