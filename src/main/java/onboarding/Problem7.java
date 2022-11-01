@@ -4,10 +4,11 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+
         List<String> friendList = makeFriendList(user, friends);
         Map<String, Integer> scoreMap = getScore(user, friends, friendList, visitors);
 
+        List<String> answer = getRecoList(scoreMap);
         return answer;
     }
 
@@ -59,6 +60,47 @@ public class Problem7 {
         return scoreMap;
     }
 
+
+    public static List<String> getRecoList(Map<String, Integer> scoreMap){
+        List<String> recoList = new ArrayList<>();
+        PriorityQueue<Friend> pq = new PriorityQueue<>();
+
+        for (Map.Entry<String, Integer> entry : scoreMap.entrySet()) {
+            if(entry.getValue()>0){
+                pq.offer(new Friend(entry.getKey(), entry.getValue()));
+            }
+        }
+
+        int count = 0;
+        while(!pq.isEmpty()&&count<6){
+            recoList.add(pq.poll().id);
+            count++;
+        }
+
+        return recoList;
+    }
+
+}
+
+class Friend implements Comparable<Friend> {
+    String id;
+    int score;
+
+    public Friend(String id, int score) {
+        this.id = id;
+        this.score = score;
+    }
+
+    @Override
+    public int compareTo(Friend target) {
+        if (this.score != target.score) {
+            return this.score < target.score ? 1 : -1;
+        } else {
+            if (this.id.compareTo(target.id) < 0) {
+                return -1;
+            } else return 1;
+        }
+    }
 }
 
 
