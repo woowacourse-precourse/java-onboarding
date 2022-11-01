@@ -87,7 +87,6 @@ class ApplicationTest {
             List<Integer> result = List.of(1, 0, 0, 0, 0, 2, 0, 3, 7);
             assertThat(Problem5.solution(money)).isEqualTo(result);
         }
-
         @Test
         void case2() {
             int money = 15_000;
@@ -95,7 +94,6 @@ class ApplicationTest {
             assertThat(Problem5.solution(money)).isEqualTo(result);
         }
     }
-
     @Nested
     class Problem6Test {
         @Test
