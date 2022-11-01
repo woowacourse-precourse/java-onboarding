@@ -7,7 +7,28 @@ import java.util.List;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<String>();
+        HashMap<String, User> userTable = friendsToTable(friends);
+        HashMap<String, Integer> recomendTable = new HashMap<String, Integer>();
+
+
+        // 방문자에게 점수 부여
+        for(String v : visitors) {
+            recomendTable.putIfAbsent(v, 0);  // map에 없는 유저를 등록
+            recomendTable.put(v, recomendTable.get(v) + 1);
+        }
+
+        // 함께아는 친구에게 점수 부여
+        List<String> myFriendList = userTable.get(user).getFriendList();  // 내 친구목록을 확인한다.
+        for(String friendName : myFriendList) {
+            // 친구가 아는 친구들에게 점수부여
+            List<String> friendList = userTable.get(friendName).getFriendList();
+            for(String name : friendList) {
+                recomendTable.putIfAbsent(name, 0);  // map에 없는 유저를 등록
+                recomendTable.put(name, recomendTable.get(name) + 10);
+            }
+        }
+
         return answer;
     }
 
