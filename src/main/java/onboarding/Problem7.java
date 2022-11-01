@@ -2,14 +2,32 @@ package onboarding;
 
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 public class Problem7 {
 
+    static Map<String, List<String>> friendsList;
+    static Map<String, Integer> scores = new HashMap<>();
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
+    }
+
+    static void calculateVisitScore(List<String> visitors, String user) {
+        for (String visitor : visitors) {
+            CalculateVisitScoreException(user, visitor);
+        }
+    }
+
+    static void CalculateVisitScoreException(String user, String visitor) {
+        if (friendsList.get(user).contains(visitor)) {
+            return;
+        }
+
+        scores.put(visitor, scores.get(visitor) + 1);
     }
 
     static void sortList(List<Map.Entry<String, Integer>> entries) {
