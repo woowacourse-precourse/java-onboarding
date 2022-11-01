@@ -32,7 +32,6 @@ class Name {
             throw new IllegalArgumentException("A name length must be between 1 and 19");
         }
     }
-
 }
 
 class Email {
