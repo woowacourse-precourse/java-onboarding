@@ -1,13 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.*;
 
 public class Problem7 {
     public static Map<String, List<String>> getFriendsList(List<List<String>> friends) {
@@ -41,24 +34,28 @@ public class Problem7 {
         return scoreList;
     }
 
-    public static Map<String,Integer> checkVisitor(List<String> visitors, Map<String, Integer> scoreLists) {
+    public static void checkVisitor(List<String> visitors, Map<String, Integer> scoreLists) {
         for (String visitor : visitors) {
             int score = scoreLists.getOrDefault(visitor,0);
             scoreLists.put(visitor,score + 1);
         }
-        return scoreLists;
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
         Map<String,List<String>> friendsList = getFriendsList(friends);
         Map<String,Integer> scoreLists = getScoreLists(friendsList,user);
-        scoreLists = checkVisitor(visitors,scoreLists);
+        checkVisitor(visitors, scoreLists);
         List<String> keySet = new ArrayList<>(scoreLists.keySet());
 
-        // Value 값으로 오름차순 정렬
-        Map<String, Integer> finalScoreLists = scoreLists;
-        keySet.sort((o1, o2) -> finalScoreLists.get(o2).compareTo(finalScoreLists.get(o1)));
+        keySet.sort((o1, o2) -> {
+            int comp = scoreLists.get(o2).compareTo(scoreLists.get(o1));
+            if (comp != 0) {
+                return comp;
+            }
+            return o1.compareTo(o2);
+        });
+
         for (String key : keySet) {
             if (friendsList.get(user).contains(key)) continue;
             answer.add(key);
@@ -67,5 +64,6 @@ public class Problem7 {
 
         return answer;
     }
+
 
 }
