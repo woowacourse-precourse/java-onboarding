@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 class ApplicationTest {
     @Nested
@@ -38,8 +39,6 @@ class ApplicationTest {
         @Test
         void myCaseForPro1() {
             int result = -1;
-            List<Integer> pobi = List.of(99, 102, 10);
-            List<Integer> crong = List.of(211, 212, 100);
 
             List<Integer> pobi1 = List.of(99, 103);
             List<Integer> crong1 = List.of(211, 213);
@@ -62,19 +61,23 @@ class ApplicationTest {
             List<Integer> pobi7 = List.of(389);
             List<Integer> crong7 = List.of(399);
 
-            List<Integer> pobi8 = new ArrayList<>();
-            List<Integer> crong8 = List.of(399);
+            List<Integer> pobi8 = List.of(99, 102, 10);
+            List<Integer> crong8 = List.of(211, 212, 100);
 
-            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
             assertThat(Problem1.solution(pobi1, crong1)).isEqualTo(result);
             assertThat(Problem1.solution(pobi2, crong2)).isEqualTo(result);
             assertThat(Problem1.solution(pobi3, crong3)).isEqualTo(result);
             assertThat(Problem1.solution(pobi4, crong4)).isEqualTo(result);
             assertThat(Problem1.solution(pobi5, crong5)).isEqualTo(result);
             assertThat(Problem1.solution(pobi6, crong6)).isEqualTo(result);
-            assertThat(Problem1.solution(pobi7, crong7)).isEqualTo(result);
-            assertThat(Problem1.solution(pobi8, crong8)).isEqualTo(result);
+            assertThatThrownBy(() -> {
+                Problem1.solution(pobi7, crong7);
+            }).isInstanceOf((IllegalArgumentException.class));
+            assertThatThrownBy(() -> {
+                Problem1.solution(pobi8, crong8);
+            }).isInstanceOf((IllegalArgumentException.class));
         }
+
     }
 
     @Nested
