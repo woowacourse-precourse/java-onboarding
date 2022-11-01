@@ -151,6 +151,26 @@ class ApplicationTest {
             String result = "R olev blf";
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
+
+        @Test
+        void case2() {
+            String word = "abcdefghijklmnopqrstuvwxyZ !@#!#";
+            String result = "zyxwvutsrqponmlkjihgfedcbA !@#!#";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+
+        @Test
+        void case3() {
+            String word = "안녕I love you";
+            String result = "안녕R olev blf";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+        @Test
+        void case4() {
+            String word = "";
+            String result = "입력하는 문자열의 길이는 반드시 1 이상 1000 이하여야 합니다.";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
     }
 
     @Nested
