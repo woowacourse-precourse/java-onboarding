@@ -14,41 +14,41 @@ class Problem1 {
         if (checkInvalidPage(pobi) || checkInvalidPage(crong)) {
             return EXCEPTION;
         }
-        int pobiResult = getMaxResult(pobi);
-        int crongResult = getMaxResult(crong);
+        int pobiResult = getMaxFromLeftAndRightPage(pobi);
+        int crongResult = getMaxFromLeftAndRightPage(crong);
         return getWinner(pobiResult, crongResult);
     }
 
-    private static int getMaxResult(List<Integer> pages) {
-        int leftResult = findMaxFromOnePage(pages.get(0));
-        int rightResult = findMaxFromOnePage(pages.get(1));
+    private static int getMaxFromLeftAndRightPage(List<Integer> pages) {
+        int leftResult = getMaxFromOnePage(pages.get(0));
+        int rightResult = getMaxFromOnePage(pages.get(1));
         return Math.max(leftResult, rightResult);
     }
 
-    private static int findMaxFromOnePage(Integer page) {
-        int addMaxNum = getMaxAddNum(page);
-        int multipleMaxNum = getMaxMultipleNum(page);
-        return Math.max(addMaxNum, multipleMaxNum);
+    private static int getMaxFromOnePage(Integer page) {
+        int addNum = getAddNum(page);
+        int multipleNum = getMultipleNum(page);
+        return Math.max(addNum, multipleNum);
     }
 
-    private static int getMaxAddNum(Integer page) {
-        int addMaxNum = 0;
+    private static int getAddNum(Integer page) {
+        int addNum = 0;
         while ( page > 0 ) {
             int i = page % 10;
-            addMaxNum += i;
+            addNum += i;
             page /= 10;
         }
-        return addMaxNum;
+        return addNum;
     }
 
-    private static int getMaxMultipleNum(Integer page) {
-        int multipleMaxNum = 1;
+    private static int getMultipleNum(Integer page) {
+        int multipleNum = 1;
         while ( page > 0 ) {
             int i = page % 10;
-            multipleMaxNum *= i;
+            multipleNum *= i;
             page /= 10;
         }
-        return multipleMaxNum;
+        return multipleNum;
     }
 
     private static int getWinner(Integer pobiMaxNum, Integer crongMaxNum) {
