@@ -15,6 +15,12 @@ public class Problem3 {
     }
     public static int solution(int number) {
         int answer = 0;
+
+        // 1부터 number까지 손뼉 치는 횟수를 구하는 반복문
+        for(int i=1;i<=number;i++){
+            answer += clap(i);
+        }
+
         return answer;
     }
 }
