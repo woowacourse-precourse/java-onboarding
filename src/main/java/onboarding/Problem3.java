@@ -5,7 +5,7 @@ public class Problem3 {
         int count = 0;
         int getClap = 0;
 
-        for (int i = 0; i <=number; i++) {
+        for (int i = 1; i <=number; i++) {
             getClap = i;
             while (getClap > 0) {
                 if (getClap % 10 == 3) {
