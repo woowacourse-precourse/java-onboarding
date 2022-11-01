@@ -5,6 +5,10 @@ import java.util.List;
 
 public class Digits {
 
+	private static final int THREE = 3;
+	private static final int SIX = 6;
+	private static final int NINE = 9;
+
 	private final List<Integer> digits;
 
 	public Digits(int number) {
@@ -22,7 +26,7 @@ public class Digits {
 	}
 
 	private boolean isThreeSixNine(int digit) {
-		return digit == 3 || digit == 6 || digit == 9;
+		return digit == THREE || digit == SIX || digit == NINE;
 	}
 
 	private List<Integer> disassemble(int number) {
