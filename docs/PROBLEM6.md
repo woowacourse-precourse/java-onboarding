@@ -21,3 +21,9 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 필요 기능
+
+- ✅ 각 이름을 두글자 단위로 끊어서 저장하는 리스트
+- ✅ 모든 이름을 두글자 단위로 끊어서 해시맵에 저장하는 함수. key는 두글자, value는 해당 key를 갖는 사람의 번호의 누적합
+- ✅ 해시맵을 이용한 중복 여부 판단 함수
