@@ -7,10 +7,16 @@ class Problem1 {
     private static final int RIGHT_PAGE = 1;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+        if (!validateInput(pobi) || !validateInput(crong)) {
+            return -1;
+        }
         return 0;
     }
 
     private static boolean validateInput(List<Integer> pages) {
+        if (pages.get(LEFT_PAGE) == pages.get(RIGHT_PAGE)-1) {
+            return true;
+        }
         return false;
     }
 
@@ -27,6 +33,5 @@ class Problem1 {
     }
 
     private static int getBiggerNumber(int numX, int numY) {
-        return 0;
     }
 }
