@@ -9,32 +9,32 @@ public class Problem2 {
         int currentLeng = cryptogram.length();
 
         String decrypted = decrypt(cryptogram);
-        int decryptedLeng= decrypted.length();
+        int decryptedLeng = decrypted.length();
 
-        while(currentLeng!=decryptedLeng){
+        while (currentLeng != decryptedLeng) {
             currentLeng = decrypted.length();
-            decrypted=decrypt(decrypted);
-            decryptedLeng=decrypted.length();
+            decrypted = decrypt(decrypted);
+            decryptedLeng = decrypted.length();
         }
 
         return decrypted;
     }
 
-    public static String decrypt(String cryptogram){
+    public static String decrypt(String cryptogram) {
         Queue<Character> q = new LinkedList<>();
 
         int decryptedTime = 0;
 
-        String decrypted="";
+        String decrypted = "";
 
-        for(int i=0;i<cryptogram.length();i++){
-            if(q.isEmpty()) {
+        for (int i = 0; i < cryptogram.length(); i++) {
+            if (q.isEmpty()) {
                 q.offer(cryptogram.charAt(i));
                 continue;
             }
-            if(q.peek()!=cryptogram.charAt(i)){
-                if(q.size()>1){
-                    while(!q.isEmpty()){
+            if (q.peek() != cryptogram.charAt(i)) {
+                if (q.size() > 1) {
+                    while (!q.isEmpty()) {
                         q.poll();
                     }
                     decryptedTime++;
@@ -42,26 +42,26 @@ public class Problem2 {
                     continue;
                 }
                 q.offer(cryptogram.charAt(i));
-                decrypted+=q.poll();
+                decrypted += q.poll();
                 continue;
             }
-            if(q.peek()==cryptogram.charAt(i)){
+            if (q.peek() == cryptogram.charAt(i)) {
                 q.offer(cryptogram.charAt(i));
             }
         }
 
-        if(!q.isEmpty()) {
+        if (!q.isEmpty()) {
             if (q.size() > 1) {
                 while (!q.isEmpty()) {
                     q.poll();
                 }
                 decryptedTime++;
-            }else{
-                decrypted+=q.poll();
+            } else {
+                decrypted += q.poll();
             }
         }
 
-        if(decryptedTime==0){
+        if (decryptedTime == 0) {
             return cryptogram;
         }
         return decrypted;
