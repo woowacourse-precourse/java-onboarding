@@ -8,6 +8,23 @@ package onboarding;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
+        while (findDuplication(cryptogram)) {
+
+        }
         return answer;
+    }
+
+    /**
+     * 기능 1
+     * @param check
+     * @return 중복된 문자가 있으면 true, 없으면 false
+     */
+    private static boolean findDuplication(String check) {
+        for (int i = 0; i < check.length(); i--) {
+            if (check.charAt(i) == check.charAt(i + 1)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
