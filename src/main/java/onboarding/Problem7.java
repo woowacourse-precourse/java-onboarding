@@ -46,4 +46,12 @@ public class Problem7 {
         if (scoreMap.containsKey(person)) scoreMap.replace(person, scoreMap.get(person) + addedScore);
         else scoreMap.put(person, addedScore);
     }
+
+    public static void scoreVisitors(List<String> visitors, HashMap<String, Integer> scoreMap) {
+        String person;
+        for (int i = 0; i < visitors.size(); i++) {
+            person = visitors.get(i);
+            updateScore(scoreMap, person, 1);
+        }
+    }
 }
