@@ -7,7 +7,17 @@ public class Problem4 {
     public static String solution(String word) {
         String answer = "";
 
+        Map<Character, Character> convert_dict = make_convert_dict();
 
+        for (char c : word.toCharArray()) {
+
+            if (convert_dict.get(c) != null){
+                answer += convert_dict.get(c);
+
+            } else {
+                answer += c;
+            }
+        }
         return answer;
     }
 
