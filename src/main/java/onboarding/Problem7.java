@@ -6,6 +6,25 @@ import java.util.List;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+    // 추천점수 1이상, 이미 동일한 친구 관계가 아닌 경우 List 반환
+    private static List<String> recommandUser(String user, List<String> oldFriends, Map<String, Integer> userFriends) {
+        List<String> answer = new ArrayList<>();
+
+        // 점수순 -> 이름순 정렬
+        List<Map.Entry<String,Integer>> sortList = new LinkedList<>(userFriends.entrySet());
+        Collections.sort(sortList, new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                if (o2.getValue() == o1.getValue()) return o1.getKey().compareToIgnoreCase(o2.getKey());    // 점수가 똑같다면 이름 순
+                else return o2.getValue() - o1.getValue();      // 아니라면 점수 내림차순
+            }
+        });
+
+        for (int i=0; i<sortList.size(); i++) {
+            String name = sortList.get(i).getKey();
+            if (!oldFriends.contains(name) && !name.equals(user)) answer.add(name);
+            if (answer.size() == 5) break;
+        }
         return answer;
     }
 
