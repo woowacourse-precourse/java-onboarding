@@ -1,39 +1,22 @@
 package onboarding;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class Problem2 {
     public static String solution(String cryptogram) {
-        List<String> cryptList = splitCryptogram(cryptogram);
-        String answer = decode(cryptList);
-        return answer;
+        // 1. 암호문을 복호화 한다.
+        return decode(cryptogram);
     }
 
-    // 암호문 배열로 분리
-    private static List<String> splitCryptogram(String cryptogram) {
-        return Arrays.stream(cryptogram.split("")).collect(Collectors.toList());
-    }
+    public static String decode(String cryptogram) {
+        String pattern = "(([a-z])\\2{1,})";
+        // 문자에서 반복되는 문자가 있을 경우 모두 삭제
+        String decryptogram = cryptogram.replaceAll(pattern, "");
 
-    // 중복되는 문자열 제거
-    private static String decode(List<String> cryptogramList) {
-        int index = 1;
-        while (index < cryptogramList.size()) {
-            if (isDuplicateInCryptogram(cryptogramList, index)) return decode(cryptogramList);
-            index++;
+        // 만약 반복되는 문자열이 없다면 복호화 완료
+        if (decryptogram.equals(cryptogram)) {
+            return decryptogram;
         }
-        return String.join("", cryptogramList);
-    }
-
-    // 중복 여부 확인
-    private static boolean isDuplicateInCryptogram(List<String> cryptList, int index) {
-        if (cryptList.get(index).equals(cryptList.get(index - 1))) {
-            cryptList.remove(index);
-            cryptList.remove(index - 1);
-            return true;
-        }
-        return false;
+        // 복호화가 되었다면 다시 복호화를 진행해야 한다.
+        return decode(decryptogram);
     }
 
 
