@@ -21,8 +21,17 @@ public class Problem7 {
 
     List<String> userFriends = saveUserFriendList(user, friends);
     addScoreOverlappedFriendIfNotFriend(user, friends, userFriends);
+    addScoreVisitFriend(visitors, userFriends);
 
     return new ArrayList<>();
+  }
+  private static void addScoreVisitFriend(List<String> visitors, List<String> userFriends) {
+    for (String visitor : visitors) {
+      if (userFriends.contains(visitor)) {
+        return;
+      }
+      updateUserScore(visitor, VISITED_FRIEND_SCORE);
+    }
   }
   private static void addScoreOverlappedFriendIfNotFriend(
           String user, List<List<String>> friends, List<String> userFriends) {
