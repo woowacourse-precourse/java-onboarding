@@ -28,4 +28,10 @@ public class Problem3 {
         }
         return count;
     }
+
+    public static boolean error(int n) {
+        if(n<1||n>10000)
+            return true;
+        return false;
+    }
 }
