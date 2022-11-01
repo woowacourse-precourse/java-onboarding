@@ -7,25 +7,22 @@ package onboarding;
 //기능5. answer 을 오름차순으로 정렬한뒤 리턴한다.
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-//        List<String> answer = List.of("answer");
         List<String> answer = new ArrayList<>();
         String cp = "";
         String name = "";
 
-        System.out.println(forms);
-//        System.out.println(forms.get(0));
-//        System.out.println((forms.get(0)).get(0));
-
         for (int k=0;k<forms.size();k++) {
-            name = (forms.get(k)).get(1); //제이엠
+            name = (forms.get(k)).get(1);
             for (int i = 0; i < name.length() - 1; i++) {
                 cp = "";
                 cp = cp.concat(String.valueOf(name.charAt(i)));
-                cp = cp.concat(String.valueOf(name.charAt(i + 1))); //제이
+                cp = cp.concat(String.valueOf(name.charAt(i + 1)));
                 for (int j = k+1; j < forms.size(); j++) {
                     if ((forms.get(j)).get(1).contains(cp)) {
                         answer.add(forms.get(j).get(0));
@@ -35,21 +32,9 @@ public class Problem6 {
             }
         }
 
+        Set<String> set = new HashSet<String>(answer);
+        List<String> an =new ArrayList<String>(set);
 
-
-//        cp = cp.concat(String.valueOf(a.charAt(0)));
-//        cp = cp.concat(String.valueOf(a.charAt(1)));
-//
-//        if (b.contains(cp)) {
-//            System.out.println(1); // "제이" 가 겹침 1 출력
-//            answer.add((forms.get(1)).get(0));
-//            cp = "";
-//        }
-//        cp = cp.concat(String.valueOf(a.charAt(1)));
-//        cp = cp.concat(String.valueOf(a.charAt(2)));
-        System.out.println(answer);
-
-
-        return answer;
+        return an;
     }
 }
