@@ -14,10 +14,15 @@ public class Problem4 {
         return alphabet;
     }
 
-    private String greenFlogRule(String word) {
+    public String greenFlogRule(String word) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < word.length(); i++) {
-            sb.append(changeAlphabet(word.charAt(i)));
+            char letter = word.charAt(i);
+            if(letter == ' '){
+                sb.append(letter);
+            } else {
+                sb.append(changeAlphabet(letter));
+            }
         }
         return sb.toString();
     }
