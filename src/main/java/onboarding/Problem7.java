@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -12,20 +9,35 @@ public class Problem7 {
     }
 
     /*
-     * 1. 친구 관계 정보를 받아, 친구 관계를 나타내는 Map 생성
-     * 2. 리스트를 탐색하면서, 사용자가 존재하는 경우
-     * 2. 사용자와 함께 아는 친구를 계산
-     *      2-1. 친구 리스트를 받아,
-     * 3. 사용자의 타임라인에 방문한 횟수 계산
-     */
-
-    /*
      * 친구 관계 정보를 받아, 친구 관계를 나타내는 Map 반환
      */
     public static Map<String, List<String>> generateFriendRelInfo(
-            String user, List<List<String>> friends) {
+            List<List<String>> friends) {
+        Map<String, List<String>> friendRelInfo = new HashMap<>();
 
-        return Collections.emptyMap();
+        for (List<String> friend : friends) {
+            String friendFirstName = friend.get(0);
+            String friendSecondName = friend.get(1);
+
+            if (friendRelInfo.containsKey(friendFirstName)) {
+                friendRelInfo.get(friendFirstName).add(friendSecondName);
+            } else if (!friendRelInfo.containsKey(friendFirstName)) {
+                List<String> friendRelList = new ArrayList<>();
+                friendRelList.add(friendSecondName);
+                friendRelInfo.put(friendFirstName, friendRelList);
+            }
+
+            if (friendRelInfo.containsKey(friendSecondName)) {
+                friendRelInfo.get(friendSecondName).add(friendFirstName);
+
+            } else if (!friendRelInfo.containsKey(friendSecondName)) {
+                List<String> friendRelList = new ArrayList<>();
+                friendRelList.add(friendFirstName);
+                friendRelInfo.put(friendSecondName, friendRelList);
+            }
+        }
+
+        return friendRelInfo;
     }
 
     /*
