@@ -153,6 +153,14 @@ class User {
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+        UserManager userManager = UserManager.getUserManager();
+        Map<String, List<String>> friendsMap = userManager.getFriendsMap(friends);
+        List<String> friendsOfRequestUser = friendsMap.getOrDefault(user, new ArrayList<>());
+        User requestUser = new User(user, visitors, friendsOfRequestUser);
+        requestUser.addVisitPoint();
+        requestUser.addFriendPoint(friendsMap);
+        answer = requestUser.getTopFiveRecommendedFriend();
+
         return answer;
     }
 }
