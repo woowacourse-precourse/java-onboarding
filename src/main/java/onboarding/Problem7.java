@@ -20,14 +20,16 @@ public class Problem7 {
         updateFriendsScore(scoreMap, friendsMap, user, removeFriendsSet);
         updateVisitorsScore(scoreMap, visitors, removeFriendsSet);
 
-        List<String> collect = scoreMap.entrySet().stream()
+        return sortFriendsList(scoreMap);
+    }
+
+    private static List<String> sortFriendsList(HashMap<String, Integer> scoreMap) {
+        return scoreMap.entrySet().stream()
             .sorted(
                 Comparator.comparing((Entry<String, Integer> entry) -> entry.getValue()).reversed()
                     .thenComparing((Entry<String, Integer> entry) -> entry.getKey()))
             .map(entry -> entry.getKey())
             .collect(Collectors.toList());
-
-        return collect;
     }
 
     private static void updateVisitorsScore(Map<String, Integer> scoreMap,
