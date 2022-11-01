@@ -69,6 +69,38 @@ public class Problem7Test {
         answer.put("jun", 20);
 
         assertThat(result).isEqualTo(answer);
+    }
+
+    @Test
+    @DisplayName("visitorCount 메소드 테스트")
+    void visitorCountTest(){
+
+        String user = "mrko";
+        List<List<String>> friends = List.of(
+                List.of("donut", "andole"),
+                List.of("donut", "jun"),
+                List.of("donut", "mrko"),
+                List.of("shakevan", "andole"),
+                List.of("shakevan", "jun"),
+                List.of("shakevan", "mrko")
+        );
+
+        Map<String, List<String>> friendMap = Problem7.makeFriendMap(friends);
+        Map<String, Integer> result = Problem7.friendCount(user, friendMap);
+
+        List<String> userFriends = friendMap.get(user);
+        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+        Map<String, Integer> resultCount = Problem7.visitorCount(result, userFriends, visitors);
+
+        Map<String, Integer> answer = new HashMap<>();
+        answer.put("andole", 20);
+        answer.put("jun", 20);
+        answer.put("bedi", 3);
+
+        assertThat(resultCount).isEqualTo(answer);
+
+
+
 
     }
 }

@@ -69,6 +69,7 @@ public class Problem7 {
         return friendMap;
     }
 
+
     // user와 함께 하는 친구의 수를 바탕으로 점수를 매기고, 멤버와 그에게 매겨진 점수가 든 Map을 반환
     public static Map<String, Integer> friendCount(String user, Map<String, List<String>> friendMap) {
 
@@ -97,6 +98,37 @@ public class Problem7 {
 
         return countResult;
     }
+
+
+    // user의 타임라인에 방문한 횟수를 기준으로 점수를 부여
+    // 단, user의 친구들에게는 점수를 매기지 않는다.
+    public static Map<String, Integer> visitorCount(Map<String, Integer> countResult, List<String> userFriends, List<String> visitors) {
+
+        for (String visitor : visitors){
+
+            // user의 친구 목록에 visitor가 있는지 확인
+            boolean isFriend = userFriends.contains(visitor);
+
+            // isFriend가 false일 경우에만 점수를 부여한다.
+            if (!isFriend) {
+
+                boolean visitorInResult = countResult.containsKey(visitor);
+
+                // visitor가 countResult에 없는 경우
+                if (!visitorInResult) {
+                    countResult.put(visitor, 1);
+                }
+                // visitor가 countResult에 있는 겨우
+                else {
+                    int count = countResult.get(visitor);
+                    countResult.put(visitor, ++count);
+                }
+            }
+        }
+
+        return countResult;
+    }
+
 
     // 두 리스트의 공통 요소 개수를 반환
     public static int intersection(List<String> list1, List<String> list2){
