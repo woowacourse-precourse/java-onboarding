@@ -26,4 +26,7 @@ public class Problem3 {
                 calculateOnesClapCase(saveByDigit[4]);
         return sum;
     }
+    public static int generalTensDigit() {
+        return 3;    // 3,6,9
+    }
 }
