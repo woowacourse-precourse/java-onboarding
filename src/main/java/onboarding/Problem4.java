@@ -7,6 +7,9 @@ public class Problem4 {
     public static final int MAX_WORD_LENGTH = 1000;
 
     public static final int COUNTS_OF_ALPHABET = 26;
+
+    public static final int ASCII_CODE_OF_FIRST_UPPERCASE_ALPHABET = 65;
+    public static final int ASCII_CODE_OF_FIRST_LOWERCASE_ALPHABET = 97;
     public static final int ASCII_CODE_OF_LAST_UPPERCASE_ALPHABET = 90;
     public static final int ASCII_CODE_OF_LAST_LOWERCASE_ALPHABET = 122;
 
@@ -72,18 +75,18 @@ public class Problem4 {
     }
 
     private static char convertLowercaseLetter(char letter) {
-        return LOWERCASE_LETTERS.get(letter - 'a');
+        return LOWERCASE_LETTERS.get(letter - ASCII_CODE_OF_FIRST_LOWERCASE_ALPHABET);
     }
 
     private static char convertUppercaseLetter(char letter) {
-        return UPPERCASE_LETTERS.get(letter - 'A');
+        return UPPERCASE_LETTERS.get(letter - ASCII_CODE_OF_FIRST_UPPERCASE_ALPHABET);
     }
 
     private static boolean isUppercaseLetter(char letter) {
-        return (letter > 'A' && letter < 'Z');
+        return (letter > ASCII_CODE_OF_FIRST_UPPERCASE_ALPHABET && letter < ASCII_CODE_OF_LAST_UPPERCASE_ALPHABET);
     }
 
     private static boolean isLowercaseLetter(char letter) {
-        return (letter > 'a' && letter < 'z');
+        return (letter > ASCII_CODE_OF_FIRST_LOWERCASE_ALPHABET && letter < ASCII_CODE_OF_LAST_LOWERCASE_ALPHABET);
     }
 }
