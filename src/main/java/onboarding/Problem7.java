@@ -130,13 +130,23 @@ public class Problem7 {
         // 우선순위로 정렬
         List<String> keySet = new ArrayList<>(priorityAllNotFriendMap.keySet());
 
-        // Value 값으로 내림차순 정렬
         keySet.sort(new Comparator<String>() {
             @Override
+            // 우선순위로 비교하는 것
             public int compare(String o1, String o2) {
-                return (priorityAllNotFriendMap.get(o2) - priorityAllNotFriendMap.get(o1));
+                // 1. 우선순위 가 같으면 이름으로 정렬
+                // 과연 문자열 비교는 주소로 비교를 하는 것이 맞는가?
+                if (priorityAllNotFriendMap.get(o2) == priorityAllNotFriendMap.get(o1)) {
+                    return (o1.compareTo(o2));
+                }
+                // 2. 우선 순위  값으로 내림차순 정렬
+                else {
+                    return (priorityAllNotFriendMap.get(o2) - priorityAllNotFriendMap.get(o1));
+                }
             }
         });
+
+
         List<String> resultList = new ArrayList<>();
         for (String key : keySet) {
             resultList.add(key);
