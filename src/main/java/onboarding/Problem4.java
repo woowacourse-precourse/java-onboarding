@@ -24,6 +24,9 @@ public class Problem4 {
             if (alphabet == ' ') {
                 answer += ' ';
             }
+            else if (!isAlphabet(alphabet)) {
+                answer += alphabet;
+            }
             if (Character.isUpperCase(alphabet)) {
                 answer += (char)(UPPER_ASCII_SUM - (int)alphabet);
             }
@@ -32,5 +35,9 @@ public class Problem4 {
             }
         }
         return answer;
+    }
+
+    private static boolean isAlphabet(char alphabet) {
+        return ((alphabet >= 'a' && alphabet <= 'z') || (alphabet >= 'A' && alphabet <= 'Z'));
     }
 }
