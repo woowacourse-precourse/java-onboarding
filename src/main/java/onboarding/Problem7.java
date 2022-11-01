@@ -6,21 +6,36 @@ public class Problem7 {
     static Map<String, Integer> scoreMap = new HashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        System.out.println(friends);
-        System.out.println(visitors);
         List<String> userFriends = makeFriendsList(user, friends); // 사용자의 친구 목록
-        System.out.println(userFriends);
         List<List<String>> recommendFriends = makeRecoFriends(userFriends, friends); // 사용자의 친구의 친구 목록
-        System.out.println(recommendFriends);
 
-//        Map<String, Integer> friendsScore = getFriendsScore(user, recommendFriends);
         getFriendsScore(user, recommendFriends);
         getVisitScore(visitors);
         removeAlreadyFriends(userFriends);
         System.out.println(scoreMap);
 
         List<String> answer = Collections.emptyList();
+        answer = sorting(scoreMap);
         return answer;
+    }
+
+    private static List<String> sorting(Map<String, Integer> scoreMap) {
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(scoreMap.entrySet());
+        entryList.sort(new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                return o2.getValue() - o1.getValue();
+            }
+        });
+
+        System.out.println(entryList);
+        List<String> list = new ArrayList<>();
+        for(Map.Entry<String, Integer> entry : entryList){
+//            System.out.println("key : " + entry.getKey() + ", value : " + entry.getValue());
+            list.add(entry.getKey());
+        }
+
+        return list;
     }
 
     private static List<String> makeFriendsList(String user, List<List<String>> friends) {
