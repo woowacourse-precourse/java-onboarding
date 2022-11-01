@@ -18,6 +18,16 @@ public class Problem7 {
         }
     }
 
+    public static void addPoint(String curFriend, int addpoint) {
+        if(point.get(curFriend)==null){
+            point.put(curFriend, addpoint);
+        }
+        else {
+            int curpoint = point.get(curFriend);
+            point.put(curFriend, curpoint+addpoint);
+        }
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         for(int i=0; i<friends.size(); i++) {
             String friend1 = friends.get(i).get(0);
