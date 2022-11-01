@@ -18,6 +18,12 @@ public class Problem7 {
         List<Entry<String,Integer>> list_entries = new ArrayList<>(friendScoreMap.entrySet());
         list_entries = sortByScore(list_entries);
 
+        int i=0;
+        for(Entry<String,Integer> entry : list_entries){
+            answer.add(entry.getKey());
+            i++;
+            if(i==5) break;
+        }
 
         return answer;
     }
