@@ -25,6 +25,11 @@ public class Problem7 {
         // 최대 5명만 추천
         List<String> answer = recommendList.stream().limit(5).collect(Collectors.toList());
 
+        System.out.println(userFriends);
+        System.out.println(recommendedFriendScore);
+        System.out.println(recommendList);
+
+
         return answer;
     }
 
@@ -44,15 +49,14 @@ public class Problem7 {
         return userFriends;
     }
 
+    //이름별로 추천친구 점수를 Mapping하여 반환
     public static Map<String, Integer> calculateRecommendedFriendScore(List<String> userFriends, String user, List<List<String>> friends, List<String> visitors) {
         Map<String, Integer> recommendedFriendScore = new HashMap<>();
 
         // 함께 하는 친구 10점 더하기
         for (List<String> friend : friends) {
-            // user친구와 아는 사이일 때
-            // 그 친구가 나 이면 안된다.
-            // 이미 친구사이면 추천하지 않는다.
-            if (userFriends.contains(friend.get(0)) && friend.get(1).equals(user) == false && userFriends.contains(friend.get(1)) == false) {
+            // B가 함께 아는 친구일 경우
+            if (checkFriendsWeKnow(userFriends, user, friend.get(0), friend.get(1))) {
                 //이미 있는 친구면 10점 더하기
                 if (recommendedFriendScore.containsKey(friend.get(1)) == true) {
                     recommendedFriendScore.put(friend.get(1), recommendedFriendScore.get(friend.get(1)) + 10);
@@ -62,7 +66,7 @@ public class Problem7 {
                 else {
                     recommendedFriendScore.put(friend.get(1), 10);
                 }
-            } else if (userFriends.contains(friend.get(1)) && friend.get(0).equals(user) == false && userFriends.contains(friend.get(0)) == false) {
+            } else if (checkFriendsWeKnow(userFriends, user, friend.get(1), friend.get(0))) { // A가 함께아는 친구일 경우
                 //이미 있는 친구면 10점 더하기
                 if (recommendedFriendScore.containsKey(friend.get(0)) == true) {
                     recommendedFriendScore.put(friend.get(0), recommendedFriendScore.get(friend.get(0)) + 10);
@@ -100,5 +104,28 @@ public class Problem7 {
         }
 
         return recommendedFriendScore;
+    }
+
+    //함께아는 친구인지 확인
+    // user친구와 아는 사이일 때
+    // 그 친구가 나 이면 안된다.
+    // 이미 친구사이면 추천하지 않는다.
+    public static boolean checkFriendsWeKnow(List<String> userFriends, String user, String friendA, String friendB) {
+        return userFriends.contains(friendA) && friendB.equals(user) == false && userFriends.contains(friendB) == false;
+    }
+
+    public static void main(String[] args) {
+        String user = "mrko";
+        List<List<String>> friends = List.of(
+                List.of("donut", "andole"),
+                List.of("mrko", "jun"),
+                List.of("donut", "mrko"),
+                List.of("shakevan", "andole"),
+                List.of("shakevan", "jun"),
+                List.of("shakevan", "mrko")
+        );
+        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan", "ㅌ", "ㅋ");
+
+        System.out.println(solution(user, friends, visitors));
     }
 }
