@@ -12,5 +12,9 @@ public class Problem4 {
         return 'z';
     }
 
-    
+    private static String convertToTreeFrogLanguage(char c){
+        return String.valueOf((char)(2*getAsciiNumberOfzIsLowerCaseElseZ(c)-c-25));
+    }
+
+
 }
