@@ -1,24 +1,49 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
 
-        List<String> usersFriends = getUsersfriends(friends, user);
-        System.out.println(usersFriends.toString());
-        Map<String, List<String>> friend_map = getfriends(friends);
+        List<String> usersFriends = getUsersFriends(friends, user);
+        List<String> userUnionFriends = getUserUnionFriends(usersFriends, friends, user);
+
+
 
         return answer;
     }
 
     /**
+     * User와 겹친구인 친구목록을 찾는 메소드
+     * @param usersFriends 유저의 친구목록
+     * @param friends 친구 관계
+     * @param user 유저 ID
+     * @return {List<String>} userUnionFriends
+     */
+    private static List<String> getUserUnionFriends(List<String> usersFriends, List<List<String>> friends, String user) {
+        HashSet<String> userUnionFriends = new LinkedHashSet<>();
+
+        for(String user_fr : usersFriends) {
+            for(List<String> fr_list : friends) {
+                // 유저 자기자신은 제외
+                if(fr_list.contains(user_fr) && !fr_list.contains(user)) {
+                    if(fr_list.get(0).equals(user_fr)) userUnionFriends.add(fr_list.get(1));
+                    else userUnionFriends.add(fr_list.get(0));
+                }
+            }
+        }
+
+        return userUnionFriends.stream().collect(Collectors.toList());
+    }
+
+    /**
      * User의 친구 목록을 찾는 메소드
-     * @param friends
+     * @param friends 유저의 친구목록
      * @return {List<String>} usersFriends
      */
-    private static List<String> getUsersfriends(List<List<String>> friends, String user) {
+    private static List<String> getUsersFriends(List<List<String>> friends, String user) {
         List<String> usersFriends = new ArrayList<>();
 
         for(List<String> fr_list : friends) {
@@ -31,18 +56,5 @@ public class Problem7 {
         return usersFriends;
     }
 
-    /**
-     * 친구 관계를 정리하여 리턴
-     * @param friends
-     * @return
-     */
-    private static Map<String, List<String>> getfriends(List<List<String>> friends) {
-        Map<String, List<String>> friend_map = new HashMap<>();
 
-
-        for (List<String> fr_list : friends) {
-            // fr_list.contains()
-        }
-        return null;
-    }
 }
