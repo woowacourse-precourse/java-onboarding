@@ -111,7 +111,6 @@ class ApplicationTest {
             assertThat(Problem6.solution(forms)).isEqualTo(result);
         }
     }
-
     @Nested
     class Problem7Test {
         @Test
