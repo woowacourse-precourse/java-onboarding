@@ -2,18 +2,18 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        if(isInputValid(cryptogram)){
+        if(isInputInvalid(cryptogram)){
             return "";
         }
         return recursedRemove(cryptogram);
     }
 
-    private static boolean isInputValid(String input){
+    private static boolean isInputInvalid(String input){
         if(input == null || !input.toLowerCase().equals(input)){
-            return false;
+            return true;
         }
 
-        return input.length() > 0 && input.length() <= 1000;
+        return !(input.length() > 0 && input.length() <= 1000);
     }
 
     private static boolean differentLetter(int i, char[] input, char[] result, int k){
