@@ -30,7 +30,7 @@ public class Problem7 {
         scoreMap.remove(user);
         makeRecommendFriendList();
         sortRecommendFriendList();
-        return new ArrayList<>();
+        return createSortedIdList();
     }
 
     private static void sortRecommendFriendList() {
@@ -41,6 +41,21 @@ public class Problem7 {
                 return o2.score - o1.score;
             }
         });
+    }
+
+    private static List<String> createSortedIdList() {
+        int count = 0;
+        List<String> idList = new ArrayList<>();
+        for (RecommendFriend recommendFriend : recommendFriendList) {
+            if (recommendFriend.score > 0) {
+                idList.add(recommendFriend.id);
+                count++;
+            }
+            if (count >= 5) {
+                break;
+            }
+        }
+        return idList;
     }
 
     private static void makeRecommendFriendList() {
