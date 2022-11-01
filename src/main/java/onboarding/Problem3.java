@@ -63,4 +63,10 @@ public class Problem3 {
                 specificTenNumber * specificTensDiigt();
     }
 
+    public static int calculateHundredsClapCase(int hundredNumber) {
+        int specificHundredNumber = (hundredNumber - 1) / 3;
+        return (hundredNumber - specificHundredNumber) * generalHundreds() +
+                specificHundredNumber * specificHundreds();
+    }
+
 }
