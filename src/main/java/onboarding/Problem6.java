@@ -37,7 +37,7 @@ public class Problem6 {
             if (emailAddressLength<11 || emailAddressLength>20){
                 System.out.println("Please, Enter email address length between 11~20");
                 return new ArrayList<>();
-            } else if (emailAddress.substring(emailAddressLength-8,emailAddressLength+1) != "email.com"){ // 예외사항 3 :신청할 수 있는 이메일은 `email.com` 도메인으로만 제한한다.
+            } else if (!emailAddress.substring(emailAddressLength - 8, emailAddressLength + 1).equals("email.com")){ // 예외사항 3 :신청할 수 있는 이메일은 `email.com` 도메인으로만 제한한다.
                 System.out.println("Please, Enter email domain only 'email.com'");
                 return new ArrayList<>();
             }
