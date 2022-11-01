@@ -17,6 +17,7 @@ public class Problem7 {
         fillFriendAndScoreMap(friends, friendMap, scoreMap);
         setRecommendScoreByVisit(visitors, scoreMap);
         setRecommendBySameFriends(user, friendMap, scoreMap);
+        removeNotRecommendFriendInScoreMap(user, friendMap, scoreMap);
 
         return answer;
     }
@@ -70,6 +71,11 @@ public class Problem7 {
                 scoreMap.put(friend, score + 10);
             }
         }
+    }
+    private static void removeNotRecommendFriendInScoreMap(String user,
+        HashMap<String, HashSet<String>> friendMap, HashMap<String, Integer> scoreMap) {
+        removeUserInScoreMap(user, scoreMap);
+        removeExistFriendInScoreMap(user, friendMap, scoreMap);
     }
 
 }
