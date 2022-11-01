@@ -12,24 +12,20 @@ public class Problem6 {
         char[] nickname=new char[0];
 
         for (List<String> member: forms) {
-            //닉네임 받아 배열로 만들기
             char[] nickString = (member.get(1)).toCharArray();
 
-            //닉네임 중복 확인 및 중복된 닉네임 리스트에 추가
             if (nickname.length==0) {
                 nickname=nickString;
             }
             checkDuplicate(nickname, nickString, member, duplicateNick);
         }
 
-        //이메일 문자열 중복 제거 및 오름차순 정렬
         answer=removeDuplication(duplicateNick);
         answer.sort(Comparator.naturalOrder());
 
         return answer;
     }
 
-    //중복 확인
     static void checkDuplicate(char[] nickArray, char[] nickArray2, List<String> member, List<String> duplicateNickList) {
         for (int i=0; i< nickArray.length-1; i++) {
             for (int j=0; j< nickArray2.length-1; j++) {
@@ -41,7 +37,6 @@ public class Problem6 {
         }
     }
 
-    //리스트 중복 제거
     static List<String> removeDuplication(List<String> list) {
         Set<String> set = new HashSet<String>(list);
         List<String> newList = new ArrayList<String>(set);
