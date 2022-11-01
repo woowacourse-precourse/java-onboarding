@@ -14,13 +14,16 @@ class Problem1 {
     }
 
     private static boolean checkError(List<Integer> user) {
-        for (Integer page : user) {
-            if (page > 400) {
-                return true;
-            }
+        if (checkMaxPage(user)) {
+            return true;
         }
 
+        //check page continuity
         return user.get(1) - user.get(0) != 1;
+    }
+
+    private static boolean checkMaxPage(List<Integer> user) {
+        return user.stream().anyMatch(page -> page > 400);
     }
 
     private static Integer findMaxValue(List<Integer> user) {
@@ -38,7 +41,6 @@ class Problem1 {
 
             maxNum = Math.max(maxNum, Math.max(sum, mult));
         }
-
         return maxNum;
     }
 }
