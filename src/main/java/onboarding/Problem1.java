@@ -56,4 +56,15 @@ class Problem1 {
 
         return max;
     }
+
+    private static int plusSum(Integer num) {
+        int plusSum = 0;
+
+        while (num > 0) {
+            plusSum += num % 10;
+            num /= 10;
+        }
+
+        return plusSum;
+    }
 }
