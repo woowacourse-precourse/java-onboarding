@@ -38,6 +38,15 @@ public class Problem7 {
             map.put(list1.get(i), map.getOrDefault(list1.get(i), 0) + 10);
         }
 
+        for (int i = 0; i < visitors.size(); i++) {
+            String c = list.get(0);
+            String d = list.get(1);
+            if (c != (visitors.get(i)) && d != (visitors.get(i)))
+                map.put(visitors.get(i), map.getOrDefault(visitors.get(i),
+                    0) + 1);
+        }
+
+
 
     }
 
