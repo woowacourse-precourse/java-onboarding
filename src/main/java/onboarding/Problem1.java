@@ -16,9 +16,9 @@ class Problem1 {
         if (pobiScore > crongScore) {
             return 1;
         } else if (pobiScore < crongScore) {
-            return -1;
+            return 2;
         } else {
-            return -1;
+            return 0;
         }
     }
 
@@ -33,7 +33,7 @@ class Problem1 {
             multiplicationScore *= digit;
             page /= 10;
         }
-        return  summationScore > multiplicationScore ? summationScore : multiplicationScore;
+        return  Math.max(summationScore, multiplicationScore);
     }
 
 
