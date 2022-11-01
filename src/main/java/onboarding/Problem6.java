@@ -16,6 +16,15 @@ public class Problem6 {
         return false;
     }
 
+    public static void removeDuplicateEmail(List<String> answer, String email, String comparedEmail) {
+        if (!answer.contains(email)) {
+            answer.add(email);
+        }
+        if (!answer.contains(comparedEmail)) {
+            answer.add(comparedEmail);
+        }
+    }
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
 
@@ -28,7 +37,7 @@ public class Problem6 {
                 String comparedNickname = forms.get(j).get(1);
 
                 if (hasDuplicatePart(nickname, comparedNickname)) {
-
+                    removeDuplicateEmail(answer, email, comparedEmail);
                 }
             }
         }
