@@ -4,7 +4,7 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        int answer;
 
         if (checkArr(pobi) && checkArr(crong)) {
             int pobiMax = getBigNum(pobi);
@@ -39,14 +39,6 @@ class Problem1 {
         }
         return Math.max(add, multi);
     }
-/*
-    public static void main(String[] args) {
-        List<Integer> pobi = Arrays.asList(99, 102);
-        List<Integer> crong = Arrays.asList(211, 212);
-
-        System.out.println(solution(pobi, crong));
-    }
-*/
     public static boolean checkArr(List<Integer> arr) {
         for (Integer a : arr) {
             if (a < 1 || a > 400 || a == 1 || a == 399) {
