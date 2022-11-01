@@ -59,6 +59,14 @@ public class Problem7 {
             score[visitorNumber] += 1;
         }
 
+        // 추천규칙에 따라 점수, 이름 순으로 정렬할 유저 객체를 사용하는 우선순위 큐
+        PriorityQueue<Problem7.User> queue = new PriorityQueue<>();
+        for (int i = 0; i < score.length; i++) {
+            if (myFriendList.add(numberToId.get(i))) {
+                queue.add(new Problem7.User(numberToId.get(i), score[i]));
+            }
+        }
+
         return answer;
     }
 
