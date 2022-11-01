@@ -18,6 +18,21 @@ public class Problem7 {
             makeFriendsMap(friendsMap, member2, member1);
         }
 
+        HashMap<String, Integer> scoreMap = new HashMap<>();
+        HashSet<String> userDirectFriendsSet;
+
+        if (friendsMap.get(user) == null) {
+            userDirectFriendsSet = new HashSet<>();
+        } else {
+            userDirectFriendsSet = friendsMap.get(user);
+        }
+
+        for (String userDirectFriend : userDirectFriendsSet) {
+            HashSet<String> memberSet = friendsMap.get(userDirectFriend);
+
+            checkMemberSet(memberSet, user, friendsMap, scoreMap);
+        }
+
         return answer;
     }
 
@@ -30,6 +45,39 @@ public class Problem7 {
             HashSet<String> set = new HashSet<>();
             set.add(member2);
             friendsMap.put(member1, set);
+        }
+    }
+
+    private static void checkMemberSet(HashSet<String> memberSet, String user, HashMap<String, HashSet<String>> friendsMap, HashMap<String, Integer> scoreMap) {
+        for (String member : memberSet) {
+            if (member.equals(user)) {
+                continue;
+            }
+
+            HashSet<String> anotherMemberSet = friendsMap.get(member);
+
+            boolean anotherMemberKnowsUser = whetherAnotherMemberKnowsUser(anotherMemberSet, user);
+
+            if (!anotherMemberKnowsUser) {
+                addScoreIntoScoreMap(scoreMap, member);
+            }
+        }
+    }
+
+    private static boolean whetherAnotherMemberKnowsUser(HashSet<String> anotherMemberSet, String user) {
+        for (String anotherMember : anotherMemberSet) {
+            if (anotherMember.equals(user)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private static void addScoreIntoScoreMap(HashMap<String, Integer> scoreMap, String member) {
+        if (scoreMap.containsKey(member)) {
+            scoreMap.put(member, scoreMap.get(member) + 10);
+        } else {
+            scoreMap.put(member, 10);
         }
     }
 }
