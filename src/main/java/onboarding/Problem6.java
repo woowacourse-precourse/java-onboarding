@@ -1,11 +1,13 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Problem6 {
     public static List<String> findEmails(List<List<String>> forms) {
         List<String> slicedNicknames = new ArrayList<>();
+        List<String> nicknames = getNicknames(forms);
         List<String> emails = new ArrayList<>();
         String email = "";
         String nickname = "";
@@ -13,12 +15,15 @@ public class Problem6 {
         for (List<String> userInfo : forms) {
             email = userInfo.get(0);
             nickname = userInfo.get(1);
+            nicknames.remove(String.valueOf(nickname));
+            slicedNicknames = getSlicedNicknames(nicknames);
             for (String slicedNickname : slicedNicknames){
                 if (nickname.contains(slicedNickname)) {
                     emails.add(email);
                     break;
                 }
             }
+            nicknames.add(nickname);
         }
 
         return emails;
@@ -52,6 +57,8 @@ public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
+        answer = findEmails(forms);
+        Collections.sort(answer);
         return answer;
     }
 }
