@@ -20,6 +20,11 @@ public class Problem2 {
         //sb에 저장되는 횟수
         int count = 0;
 
+        //1글자일때
+        if( initSize == 1 ) {
+            return cryptogram;
+        }
+
         return word;
     }
 }
