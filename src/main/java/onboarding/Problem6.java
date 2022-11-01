@@ -19,6 +19,14 @@ public class Problem6 {
     private static List<Set<String>> partitionsList = new ArrayList<>();
     private static Map<String, Integer> nicknameAndCount = new HashMap<>();
 
+    public static List<String> solution(List<List<String>> forms) {
+        if (!canCrew(forms) && !canEmail(forms) && !canNickname(forms)) {
+            throw new IllegalArgumentException("제한 사항을 위반하였습니다.");
+        }
+        setupData(forms);
+        setEmailsFromPartitionsOfNickname(forms);
+        return answer;
+    }
 
     public static void setEmailsFromPartitionsOfNickname(List<List<String>> forms) {
         for (int i = 0; i < partitionsList.size(); i++) {
