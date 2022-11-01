@@ -8,6 +8,7 @@ class PageException extends Exception{
 
 public class User {
     private List<Integer> pages;
+    private int userScore = 0;
 
     public User(List<Integer> pages){
         this.pages = pages;
@@ -50,5 +51,9 @@ public class User {
         int rightPageScore = Math.max(calculateSumScore(rightPage), calculateMulScore(rightPage));
 
         return new int[] {leftPageScore, rightPageScore};
+    }
+
+    private void calculateUserScore(int[] pageScore){
+        userScore = Math.max(pageScore[0], pageScore[1]);
     }
 }
