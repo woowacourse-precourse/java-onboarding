@@ -21,3 +21,7 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능 목록
+- createParsingList(List<List<String>> forms): 각 닉네임을 2글자로 Parsing 하여 저장한다.
+- getDuplicatedUser(HashMap<String,ArrayList<String>> map): 중복된 사용자들을 찾는다.
