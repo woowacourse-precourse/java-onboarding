@@ -10,16 +10,7 @@ public class Problem7 {
         List<String> together = userFriends(friends, user);
 
         Map<String, Integer> map = addFriends(friends, together, user);
-
-        for (String v : visitors) {
-            if (!together.contains(v)) {
-                if (map.containsKey(v)) {
-                    map.replace(v, map.get(v) + 1);
-                } else {
-                    map.putIfAbsent(v, 1);
-                }
-            }
-        }
+        addVisitor(visitors, together, map);
 
 //        이때 추천 점수가 0점인 경우 추천하지 않으며, 추천 점수가 같은 경우는 이름순으로 정렬한다.
         Map<String, Integer> sortedMap = new TreeMap<>(new Comparator<String>() {
@@ -38,6 +29,19 @@ public class Problem7 {
             }
         }
         return answer;
+    }
+
+    static Map<String, Integer> addVisitor(List<String> visitors, List<String> userFriend, Map<String, Integer> recommend) {
+        for (String v : visitors) {
+            if (!userFriend.contains(v)) {
+                if (recommend.containsKey(v)) {
+                    recommend.replace(v, recommend.get(v) + 1);
+                } else {
+                    recommend.putIfAbsent(v, 1);
+                }
+            }
+        }
+        return recommend;
     }
 
     static List<String> userFriends(List<List<String>> friends, String user) {
