@@ -4,7 +4,7 @@ public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
 
-        //입력한 숫자까지
+        //1부터 입력한 숫자까지
         for(int i=1; i<=number; i++){
             String numStr = String.valueOf(i);
 
