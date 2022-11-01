@@ -11,11 +11,13 @@ public class Problem4 {
         for (char curChar : word.toCharArray()) {
             if (curChar >= 65 && curChar <= 90) {
                 reverseString.append((char)(155 - curChar));
+                continue;
             }
             if (curChar >= 97 && curChar <= 122) {
                 reverseString.append((char)(219 - curChar));
+                continue;
             }
-            if (curChar == ' ') reverseString.append(' ');
+            reverseString.append(curChar);
         }
         return reverseString.toString();
     }
