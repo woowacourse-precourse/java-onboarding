@@ -5,16 +5,33 @@ public class Problem2 {
         String answer = cryptogram;
         String tmp = "";
         int now = 0;
+        int cnt = 0;
         
         while(now<answer.length()-1) {
-        	if(answer.charAt(now)==answer.charAt(now+1)) {
-        		tmp = ""+answer.charAt(now)+answer.charAt(now);
+        	cnt = count(answer,now);
+        	if(cnt>0) {
+        		for(int i=0;i<=cnt;i++)
+        			tmp += answer.charAt(now);
+     
         		answer = answer.replace(tmp,"");
+        		tmp = "";
         		now--;
         	}
         	else
         		now++;
         }
         return answer;
+    }
+    public static int count(String s,int now) {
+    	int i = now;
+    	int cnt =0;
+    	while(i<s.length()-1) {
+    		if(s.charAt(i)==s.charAt(i+1))
+    			cnt++;
+    		else 
+    			break;
+    		i++;
+    	}
+    	return cnt;
     }
 }
