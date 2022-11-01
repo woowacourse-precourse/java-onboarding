@@ -9,15 +9,14 @@ public class Problem5 {
         List<Integer> answer = Collections.emptyList();
         Money money1 = new Money(money);
         Bill bill = new Bill(money1);
-        return bill.countMoneyUnit();
+        return bill.addMoneyUnitByMoneyAmount();
     }
 
     public static void main(String[] args) {
-        int money = 50_237;
-        Money money1 = new Money(money);
+        List<Integer> answer = Collections.emptyList();
+        Money money1 = new Money(50_237);
         Bill bill = new Bill(money1);
-        bill.countMoneyUnit();
-
+        bill.addMoneyUnitByMoneyAmount();
     }
 }
 
@@ -88,11 +87,13 @@ class Bill {
     public List<Integer> addMoneyUnitByMoneyAmount() {
         for (int i = 0; i < moneyUnitArray.size(); i++) {
             moneyUnitByMoneyAmount.add(countMoneyUnit(i));
-            if (i != 7) {
+            if (i != moneyUnitArray.size()-1) {
                 this.amountMoney = remainderMoney(i);
             }
         }
         return moneyUnitByMoneyAmount;
     }
 }
+
+
 
