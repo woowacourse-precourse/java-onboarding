@@ -1,13 +1,17 @@
 package onboarding.problem3;
 
 public enum ClapNumber {
-    THREE(3),
-    SIX(6),
-    NINE(9);
+    THREE('3'),
+    SIX('6'),
+    NINE('9');
 
-    private int number;
+    private char number;
 
-    ClapNumber(int number) {
+    ClapNumber(char number) {
         this.number = number;
+    }
+
+    public boolean isEqual(char number) {
+        return this.number == number;
     }
 }
