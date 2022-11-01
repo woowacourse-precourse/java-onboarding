@@ -7,7 +7,6 @@ import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
-import onboarding.exception.CustomException;
 
 public class Problem6 {
 
@@ -15,27 +14,20 @@ public class Problem6 {
     private static final int NICK_NAME = 1;
 
     public static List<String> solution(List<List<String>> forms) {
+        // 이메일을 KEY, 닉네임을 VALUE로 갖는 해시맵 생성
+        Map<String, String> emailToNameMap = makeEmailToNameMap(forms);
 
-        try {
-            // 이메일을 KEY, 닉네임을 VALUE로 갖는 해시맵 생성
-            Map<String, String> emailToNameMap = makeEmailToNameMap(forms);
+        // 글자가 연속적으로 포함 되는 닉네임을 작성한 지원자의 이메일 목록
+        Set<String> emailSet = getEmailSetWithDuplicatedName(emailToNameMap);
 
-            // 글자가 연속적으로 포함 되는 닉네임을 작성한 지원자의 이메일 목록
-            Set<String> emailSet = getEmailSetWithDuplicatedName(emailToNameMap);
+        // 오름차순 정렬한 리스트 반환
+        List<String> answer = sortListByAsc(emailSet);
 
-            // 오름차순 정렬한 리스트 반환
-            List<String> answer = sortListByAsc(emailSet);
-
-            return answer;
-        } catch (CustomException e) {
-            e.printStackTrace();
-        }
-        return null;
+        return answer;
     }
 
     // 이메일을 KEY, 닉네임을 VALUE로 갖는 해시맵을 생성하는 메서드
-    public static Map<String, String> makeEmailToNameMap(List<List<String>> forms)
-            throws CustomException {
+    public static Map<String, String> makeEmailToNameMap(List<List<String>> forms) {
         Map<String, String> map = new HashMap<>();
         for (List<String> form : forms) {
             String email = form.get(EMAIL);
