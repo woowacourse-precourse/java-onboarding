@@ -19,3 +19,9 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+### 기능목록
+
+1. String형 word를 StringBuilder로 바꿔준다.(문자열 변경시 성능을 위해)
+2. 문자를 조건에 맞게 바꿔준다.
+
