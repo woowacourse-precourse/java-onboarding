@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -15,6 +16,11 @@ public class Problem5 {
     }
 
     private static List<Integer> getMoneyList(int money) {
-        return null;
+        List<Integer> moneyList = new ArrayList<>();
+        for (int unit : MONEY_UNIT) {
+            moneyList.add(money / unit);
+            money %= unit;
+        }
+        return moneyList;
     }
 }
