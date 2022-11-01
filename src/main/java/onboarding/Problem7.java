@@ -11,6 +11,7 @@ public class Problem7 {
         List<String> answer = new LinkedList<>();
         calcVisitorsPoints(visitors);
         calcMyFriends(user, friends);
+        calcFriendsPoints(user, friends, myFriends);
         return answer;
     }
 
@@ -37,6 +38,27 @@ public class Problem7 {
             myFriends.add(id2);
             if(recommenedFreinds.containsKey(id2)){
                 recommenedFreinds.remove(id2);
+            }
+        }
+    }
+
+    private static void calcFriendsPoints(String user, List<List<String>> friends, List<String> myFriends) {
+        for (int i = 0; i < friends.size(); i++) {
+            List<String> friend =  friends.get(i);
+            if(friend.contains(user)){
+                continue;
+            }
+            setPoints(myFriends, friend.get(0),friend.get(1));
+            setPoints(myFriends, friend.get(1),friend.get(0));
+        }
+    }
+
+    private static void setPoints(List<String> myFriends, String id1, String id2) {
+        if(myFriends.contains(id1)){
+            if(recommenedFreinds.containsKey(id2)){
+                recommenedFreinds.put(id2,recommenedFreinds.get(id2)+10);
+            } else {
+                recommenedFreinds.put(id2,10);
             }
         }
     }
