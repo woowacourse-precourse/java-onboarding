@@ -3,7 +3,6 @@ package onboarding;
 public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
-        // 1부터 number까지 count369의 합을 더하여 반환
         for (int i = 1; i <= number; i++) {
             answer += count369(i);
         }
