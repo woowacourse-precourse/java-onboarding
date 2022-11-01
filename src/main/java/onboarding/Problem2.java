@@ -51,7 +51,6 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
         answer = findDuplication(cryptogram);
-        System.out.println(answer);
         return answer;
     }
 }
