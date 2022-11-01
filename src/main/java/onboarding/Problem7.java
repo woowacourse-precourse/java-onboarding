@@ -38,7 +38,7 @@ public class Problem7 {
             if (friendsWithUser.contains(left) && !friendsWithUser.contains(right)) {
                 recommend.put(right, recommend.containsKey(right) ? recommend.get(right) + 10 : 10);
             } else if (!friendsWithUser.contains(left) && friendsWithUser.contains(right)) {
-                recommend.put(left, recommend.get(left) + 10);
+                recommend.put(left, recommend.containsKey(left) ? recommend.get(left) + 10 : 10);
             } else {
             }
         }
