@@ -24,4 +24,9 @@ public class FriendAndScore {
         List<User> friendsOfUser = friendList.getFriendListOf(user);
         return friendList.getFriendsOfFriendBy(user, friendsOfUser);
     }
+
+    public List<User> getVisitorsNotFriendOf(User user) {
+        List<User> friendsOfUser = friendList.getFriendListOf(user);
+        return visitorList.getVisitorListExcluding(friendsOfUser);
+    }
 }
