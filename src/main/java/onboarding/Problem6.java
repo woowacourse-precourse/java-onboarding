@@ -3,6 +3,8 @@ package onboarding;
 import java.util.*;
 
 class TokenGroup{
+    final int NICK_NAME=1;
+    final int EMAIL=0;
     HashMap<String, HashMap<Integer, String>> tokenGroup=new HashMap<>();
     List<String> divideToken(String nickName){
         final int WINDOW_SIZE=2;
@@ -23,12 +25,24 @@ class TokenGroup{
             tokenGroup.put(token, crewInformation);
         }
     }
+    void addDuplicatedNickName(List<String> tokens, List<String> form){
+        int crewInformationKey;
+        String crewInformationValue;
+        for(String token:tokens){
+            makeNewGroup(token);
+            HashMap<Integer, String> crewInformation = tokenGroup.get(token);
+            crewInformationKey=(form.get(EMAIL)+form.get(NICK_NAME)).hashCode();
+            crewInformationValue=form.get(EMAIL);
+            crewInformation.put(crewInformationKey, crewInformationValue);
+        }
+    }
     Set<String> getTokenKey(){
         return tokenGroup.keySet();
     }
     HashMap<Integer, String> getTokenGroup(String tokenKey){
         return tokenGroup.get(tokenKey);
     }
+
 }
 class Inspection{
     boolean isDuplicated(int sizeOfTokenGroup){
