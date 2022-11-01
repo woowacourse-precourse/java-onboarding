@@ -2,20 +2,48 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = cryptogram;
-        for (int i = 0; i < answer.length() - 1; i++) {
-            char c = answer.charAt(i);
-            if (c == answer.charAt(i + 1)) {
-                answer = removeConsecutiveChars(answer, i);
-                i = -1;
+        String plain = cryptogram;
+        int beforeDecryptionLength;
+        int afterDecryptionLength;
+        do {
+            beforeDecryptionLength = plain.length();
+            plain = decryption(plain);
+            afterDecryptionLength = plain.length();
+        } while (beforeDecryptionLength > afterDecryptionLength);
+
+        return plain;
+    }
+
+    private static String removeConsecutiveChars(String str, int startIndex) {
+        char c = str.charAt(startIndex);
+        int endIndex = startIndex + 1;
+        for ( ; endIndex < str.length(); endIndex++) {
+            if (c != str.charAt(endIndex)) {
+                break;
             }
         }
 
-        return answer;
+        if (endIndex - startIndex > 1) {
+            String targetStr = str.substring(startIndex, endIndex);
+            str = str.replace(targetStr, "");
+        }
+
+        return str;
     }
 
-    private static String removeConsecutiveChars(String str, int index) {
-        String removedStr = str.substring(index, index + 2);
-        return str.replace(removedStr, "");
+    private static String decryption(String cryptogram) {
+        String plain = cryptogram;
+        int beforeLength;
+        int afterLength;
+        for (int i = 0; i < plain.length() - 1; i++) {
+            beforeLength = plain.length();
+            plain = removeConsecutiveChars(plain, i);
+            afterLength = plain.length();
+            if (afterLength < beforeLength) {
+                i--;
+            }
+        }
+
+        return plain;
     }
 }
