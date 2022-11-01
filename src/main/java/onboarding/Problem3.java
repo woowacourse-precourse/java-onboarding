@@ -14,8 +14,21 @@ public class Problem3 {
         return sum;
     }
 
+    public static boolean validation(int number) {
+        if (number < 1 || number > 10000) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     public static int solution(int number) {
         int sum = 0;
+
+        if (validation(number)) {
+            return -1;
+        }
+
         for (int i = 1; i <= number; i++) {
             sum += countOf369(i);
         }
