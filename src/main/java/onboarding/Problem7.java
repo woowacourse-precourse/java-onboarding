@@ -4,25 +4,31 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> getAll(List<List<String>> friends, List<String> visitors) {
-        List<String> all_name = new ArrayList<>();
+        List<String> allName = new ArrayList<>();
 
         for(int i=0;i<friends.size();i++) {
-            if(!all_name.contains(friends.get(i).get(0))) {
-                all_name.add(friends.get(i).get(0));
+            if(!allName.contains(friends.get(i).get(0))) {
+                allName.add(friends.get(i).get(0));
             }
-            if(!all_name.contains(friends.get(i).get(1))) {
-                all_name.add(friends.get(i).get(1));
+            if(!allName.contains(friends.get(i).get(1))) {
+                allName.add(friends.get(i).get(1));
             }
         }
         for(String visitor: visitors) {
-            if(!all_name.contains(visitor)) {
-                all_name.add(visitor);
+            if(!allName.contains(visitor)) {
+                allName.add(visitor);
             }
         }
-        return all_name;
+        return allName;
     }
+    public static List<Integer> setScore(List<String> allName) {
+        List<Integer> allScore = new ArrayList<>();
 
-
+        for (int i=0;i<allName.size();i++) {
+            allScore.add(0);
+        }
+        return allScore;
+    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
