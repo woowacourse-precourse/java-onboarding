@@ -22,6 +22,13 @@ public class Problem7 {
         }
         return myFriends;
     }
+    private static void addRelation(List<List<String>> relations, List<String> relation, String user) {
+        String user1 = relation.get(0);
+        String user2 = relation.get(1);
+        if (!(user1.equals(user) || user2.equals(user))) {
+            relations.add(relation);
+        }
+    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
