@@ -3,6 +3,18 @@ package onboarding;
 import java.util.*;
 
 public class Problem6 {
+    public static boolean hasDuplicatePart(String nickname, String comparedNickname) {
+        for (int i = 0; i < nickname.length() - 1; i++) {
+            String partOfNickname = nickname.substring(i, i + 2);
+            for (int j = 0; j < comparedNickname.length() - 1; j++) {
+                String partOfComparedNickname = comparedNickname.substring(j, j + 2);
+                if (partOfNickname.equals(partOfComparedNickname)) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
 
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
@@ -14,6 +26,10 @@ public class Problem6 {
             for (int j = i + 1; j < forms.size(); j++) {
                 String comparedEmail = forms.get(j).get(0);
                 String comparedNickname = forms.get(j).get(1);
+
+                if (hasDuplicatePart(nickname, comparedNickname)) {
+
+                }
             }
         }
         return answer;
