@@ -8,7 +8,7 @@ public class Problem3 {
     public static int solution(int number) {
         int answer = check369(number);
         return answer;
-    }
+    } 
     public static int check369(int num){
         int result = 0;
         List<String> check_369= new ArrayList<>(Arrays.asList("3","6","9"));

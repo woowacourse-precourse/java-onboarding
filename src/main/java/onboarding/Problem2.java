@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 
-public class Problem2 { 
+public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = checkString(cryptogram);
         return answer;
