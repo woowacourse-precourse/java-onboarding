@@ -3,40 +3,44 @@ package onboarding;
 public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
-        answer = countAllClap(number);
+        answer = getClapCnt(number);
         return answer;
     }
 
-    private static int countAllClap(int number) {
+    // number의 박수 총 박수 횟수 구하기
+    private static int getClapCnt(int number) {
         int clapCnt = 0;
         for(int i=1; i<=number; i++){
-            clapCnt += countNumClap(i);
+            clapCnt += getNumberClapCnt(i);
         }
         return clapCnt;
     }
 
-    private static int countNumClap(int num){
+    // 입력받은 수의 박수 횟수 구하기
+    private static int getNumberClapCnt(int num){
         int numClapCnt = 0;
         if(num < 10){
-            numClapCnt += contain369(num);
+            numClapCnt += check369UnderTen(num);
         } else {
-            numClapCnt += contain369s(num);
+            numClapCnt += check369AboveTen(num);
         }
         return numClapCnt;
     }
 
-    private static int contain369(int num){
+    // 10 미만의 수에 369 포함 체크
+    private static int check369UnderTen(int num){
         if(num == 3 || num == 6 || num == 9){
             return 1;
         }
         return 0;
     }
 
-    private static int contain369s(int num){
+    // 10 이상의 수에 369 포함 체크
+    private static int check369AboveTen(int num){
         int numClapCnt = 0;
         while(num > 0){
             int temp = num % 10;
-            numClapCnt += contain369(temp);
+            numClapCnt += check369UnderTen(temp);
             num/=10;
         }
         return numClapCnt;
