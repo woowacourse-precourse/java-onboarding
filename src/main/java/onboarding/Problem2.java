@@ -5,11 +5,10 @@ import java.util.Stack;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        while (checkDuplication(cryptogram)) {
-            cryptogram = removeDuplication(cryptogram);
+        String answer = cryptogram;
+        while (checkDuplication(answer)) {
+            answer = removeDuplication(answer);
         }
-        answer = cryptogram;
         return answer;
     }
 
