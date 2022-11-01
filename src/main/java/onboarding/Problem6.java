@@ -12,7 +12,14 @@ public class Problem6 {
         Collections.sort(answer);
         return answer;
     }
-//
+
+    private static void checkOtherString(List<List<String>> forms, List<String> answer, int originalStringIndex, List<String> stringUnit, String email) {
+        boolean overlap =false;
+        overlap = reOverlap(forms, originalStringIndex, stringUnit, overlap);
+        if(overlap){
+            answer.add(email);
+        }
+    }
     private static boolean reOverlap(List<List<String>> forms, int originalStringIndex, List<String> stringUnit, boolean overlap) {
         for(int j = 0; j< forms.size(); j++){
             String otherNickName = forms.get(j).get(1);
