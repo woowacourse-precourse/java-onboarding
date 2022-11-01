@@ -14,7 +14,7 @@ public class Problem7 {
         List<List<String>> friendExcetionUserList = new ArrayList<>();
 
         for (List<String> friendPairList : friends) {
-            if (friendPairList.contains(user)) {
+            if (isContainerNameAtList(friendPairList, user)) {
                 String nameUserFriend = getAnotherPairName(friendPairList, user);
                 userFriendList.add(nameUserFriend);
             } else {
@@ -24,7 +24,7 @@ public class Problem7 {
 
         for (String myFriend : userFriendList) {
             for (List<String> friendPair : friendExcetionUserList) {
-                if (friendPair.contains(myFriend)) {
+                if (isContainerNameAtList(friendPair, myFriend)) {
                     String nameAnotherPair = getAnotherPairName(friendPair, myFriend);
                     addMapPriority(nameAnotherPair, 10, priorityPersonMap);
                 }
@@ -34,7 +34,7 @@ public class Problem7 {
 //        visitors
         // 친구들 리스트에 포함이 안되면
         for (String nameVisitor : visitors) {
-            if (!isContains(userFriendList, nameVisitor)) {
+            if (!isContainerNameAtList(userFriendList, nameVisitor)) {
                 addMapPriority(nameVisitor, 1, priorityPersonMap);
             }
         }
@@ -47,7 +47,7 @@ public class Problem7 {
             public int compare(String str_1, String str_2) {
                 // 1. 우선순위 가 같으면 이름으로 정렬
                 // 과연 문자열 비교는 주소로 비교를 하는 것이 맞는가?
-                if (priorityPersonMap.get(str_2) == priorityPersonMap.get(str_1)) {
+                if (isEqualsMapValue(str_1, str_2, priorityPersonMap)) {
                     return (str_1.compareTo(str_2));
                 }
                 // 2. 우선 순위  값으로 내림차순 정렬
@@ -61,8 +61,12 @@ public class Problem7 {
         return answer;
     }
 
-    private static boolean isContains(List<String> userFriendList, String nameVisitor) {
-        return userFriendList.contains(nameVisitor);
+    private static boolean isEqualsMapValue(String str_1, String str_2, Map<String, Integer> map) {
+        return map.get(str_2) == map.get(str_1);
+    }
+
+    private static boolean isContainerNameAtList(List<String> list, String str) {
+        return list.contains(str);
     }
 
     // name이랑
