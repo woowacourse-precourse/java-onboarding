@@ -22,9 +22,21 @@ public class Problem7 {
         return hs;
     }
 
+    public static HashMap<String, Integer> increaseFriendNeighbor(String user, HashMap<String, ArrayList<String>> hs) {
+        HashMap<String, Integer> ans = new HashMap<>();
+
+        for (String key : hs.get(user)) {   //자신의 친구가 아닌 친구 중, 추천 친구 점수 덧셈
+            for (String k : hs.get(key)) {
+                if (!hs.get(user).contains(k) & !k.equals(user)) {  //자신과 자신의 친구일 경우 제외
+                    ans.put(k, ans.getOrDefault(k,0)+10);
+                }
+            }
+        }
+        return ans;
+    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         HashMap<String, ArrayList<String>> hs = createFriendship(friends);
-        HashMap<String, Integer> ans = new HashMap<>();
+        HashMap<String, Integer> ans = increaseFriendNeighbor(user, hs);
 
         for (int i=0; i<friends.size(); i++) {  //친구들과의 연관관계를 HashMap으로 설정
             String friend_1=friends.get(i).get(0), friend_2=friends.get(i).get(1);
