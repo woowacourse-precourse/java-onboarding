@@ -24,6 +24,17 @@ public class Problem4 {
 
     public static String solution(String word) {
         String answer = "";
+
+        for (int i = 0; i < word.length(); i++) {
+            char element = word.charAt((i));
+            if ((int)element == 32) {
+                answer += " ";
+            }else if (Character.isUpperCase(element)) {
+                answer += changeUpperElement(element);
+            }else {
+                answer += changeLowerElement(element);
+            }
+        }
         return answer;
     }
 }
