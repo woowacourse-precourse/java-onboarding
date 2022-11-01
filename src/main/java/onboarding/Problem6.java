@@ -10,14 +10,15 @@ public class Problem6 {
         for (int i = 0; i < forms.size() - 1; i++){
             String str = forms.get(i).get(1);
             for (int j = 0; j < str.length() - 1; j++){
-                String sub_str = str.substring(i, i+2);
+                String sub_str = str.substring(j, j+2);
                 for (int k = i + 1; k < forms.size(); k++){
                     if (forms.get(j).get(1).contains(sub_str))
-                        ret.add(str);
+                        ret.add(forms.get(i).get(0));
                         ret.add(forms.get(j).get(0));
                 }
             }
         }
+        ret = sortEmail(ret);
         return ret;
     }
 
