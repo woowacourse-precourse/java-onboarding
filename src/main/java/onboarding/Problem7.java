@@ -23,11 +23,12 @@ public class Problem7 {
             }
             map.get(second).add(first);
         }
-
-//        for (String candidate : map.get(user)) {
+        
         for (Map.Entry<String, List<String>> entry : map.entrySet()){
             String candidate = entry.getKey();
             if (user.equals(candidate)) continue;
+            // 친구목록에 본인이 없는 경우 함께 아는 친구 계산x -> break;
+            else if (!map.containsKey(user)) break;
             else if(map.get(user).contains(candidate)) continue;
 
             HashSet<String> temp = new HashSet<>(map.get(user));
@@ -42,7 +43,10 @@ public class Problem7 {
         }
 
         for (String visitor : visitors) {
-            if (map.get(user).contains(visitor)) continue;
+            if (map.containsKey(user)) {
+                if (map.get(user).contains(visitor)) continue;
+            }
+
             if (points.getOrDefault(visitor, 0) == 0) {
                 points.put(visitor, 1);
             } else {
