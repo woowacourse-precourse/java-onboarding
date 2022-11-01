@@ -3,7 +3,7 @@ package onboarding;
 public class Problem3 {
 
     public static int solution(int number) {
-        int answer = 0;
+        int answer = getCountClap(number);
         return answer;
     }
 
@@ -15,5 +15,13 @@ public class Problem3 {
             number /= 10;
         }
         return count;
+    }
+
+    static int getCountClap(int number){
+        int result = 0;
+        for(int i=1;i<=number;i++){
+            result+=countClap(i);
+        }
+        return result;
     }
 }
