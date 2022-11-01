@@ -1,58 +1,33 @@
 package onboarding;
 
-import java.util.Stack;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class Problem2 {
-    static int index;
-    static String cryptogram;
-    static int cryptogramLength;
+    static Pattern pattern = Pattern.compile("(\\w)\\1+");
+    static Matcher matcher;
 
     public static String solution(String cryptogram) {
-        index = 0;
-        Problem2.cryptogram = cryptogram;
-        cryptogramLength = cryptogram.length();
+        return removeDuplicate(cryptogram);
+    }
 
-        Stack<Character> stack = new Stack<>();
+    /*
+    * 정규식을 사용해 중복을 제거하고 남은 문자열을 반환
+    *
+    * @return String
+    * */
+    private static String removeDuplicate(String cryptogram) {
+        matcher = pattern.matcher(cryptogram);
 
-        while (index < cryptogramLength) {
-            char currentCharacter = cryptogram.charAt(index);
-
-            if (!stack.empty() && currentCharacter == stack.peek()) {
-                stack.pop();
-                moveIndex(currentCharacter);
-                continue;
+        while (matcher.find()) {
+            String[] splitStrings = cryptogram.split(matcher.group());
+            if (splitStrings.length <= 1) {
+                return "";
             }
-
-            stack.push(currentCharacter);
-            index++;
+            cryptogram = splitStrings[0] + removeDuplicate(splitStrings[1]);
+            matcher = pattern.matcher(cryptogram);
         }
 
-        return makeAnswer(stack);
-    }
-
-    /*
-     * 현재 문자와 같지 않은 다른 문자가 나올 떄까지 인덱스 증가
-     *
-     * @return void
-     * */
-    private static void moveIndex(char character) {
-        while (index < cryptogramLength && character == cryptogram.charAt(index)) {
-            index++;
-        }
-    }
-
-    /*
-     * 주어진 스택으로 문자열을 만들어 반대로 반환
-     *
-     * @return String
-     * */
-    private static String makeAnswer(Stack<Character> stack) {
-        StringBuilder answer = new StringBuilder();
-
-        while (!stack.isEmpty()) {
-            answer.append(stack.pop());
-        }
-
-        return answer.reverse().toString();
+        return cryptogram;
     }
 }
