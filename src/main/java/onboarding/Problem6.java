@@ -6,7 +6,7 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         Map<String, String> repeatNickNameMap = new HashMap<>();
         Set<String> answerSet = new HashSet<>();
-        
+
         for (List<String> crew : forms){
             String email = crew.get(0);
             String nickName = crew.get(1);
@@ -21,7 +21,9 @@ public class Problem6 {
                 }
             }
         }
-        return List.copyOf(answerSet);
+        List<String> answer = new ArrayList<>(answerSet);
+        answer.sort(String::compareTo);
+        return answer;
     }
 
     private static List<String> getSubStringList(String nickName){
