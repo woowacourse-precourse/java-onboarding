@@ -1,35 +1,15 @@
 package onboarding;
 
-import java.util.Stack;
-
 public class Problem2 {
     public static String solution(String cryptogram) {
         if (!validation(cryptogram)) return "ERROR";
-        Stack<Character> answerStack = new Stack<>();
-        boolean delete = false;
-        for (char c : cryptogram.toCharArray()) {
-            if (answerStack.isEmpty()) {
-                answerStack.push(c);
-                continue;
-            }
-            if (answerStack.peek() == c) {
-                delete = true;
-                continue;
-            }
-            if (delete) {
-                answerStack.pop();
-            }
-            delete = (answerStack.peek() == c);
-            if (!delete) {
-                answerStack.push(c);
-            }
+        String curr = cryptogram;
+        while (true) {
+            String next = delete(curr);
+            if (curr.equals(next)) break;
+            curr = next;
         }
-        if (delete) {
-            answerStack.pop();
-        }
-        StringBuilder answer = new StringBuilder();
-        answerStack.forEach(answer::append);
-        return answer.toString();
+        return curr;
     }
 
     static boolean validation(String cryptogram) {
@@ -39,5 +19,22 @@ public class Problem2 {
             if (!Character.isLowerCase(c)) return false;
         }
         return true;
+    }
+
+    static String delete(String curr) {
+        boolean[] delete = new boolean[curr.length()];
+        for (int i = 0; i < curr.length() - 1; i++) {
+            if (curr.charAt(i) == curr.charAt(i + 1)) {
+                delete[i] = delete[i + 1] = true;
+            }
+        }
+        StringBuilder deleted = new StringBuilder();
+        for (int i = 0; i < curr.length(); i++) {
+            if (delete[i]) {
+                continue;
+            }
+            deleted.append(curr.charAt(i));
+        }
+        return deleted.toString();
     }
 }
