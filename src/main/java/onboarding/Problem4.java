@@ -14,11 +14,11 @@ public class Problem4 {
     public static char convertWord(char word) {
         char newWord;
 
-        if('a' <= word && word <= 'z') {            // 소문자
+        if('a' <= word && word <= 'z') {
             newWord = (char) ('a' + 'z' - word);
-        } else if ('A' <= word && word <= 'Z') {    // 대문자
+        } else if ('A' <= word && word <= 'Z') {
             newWord = (char) ('A' + 'Z' - word);
-        } else {                                    // 알파벳 외의 문자
+        } else {
             newWord = word;
         }
 
