@@ -1,15 +1,34 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> emails = new ArrayList<>();
 
+        for (int i = 0; i < forms.size(); i++) {
 
+            for (List<String> form : forms) {
 
-        return answer;
+                if (form == forms.get(i)) {
+                    continue;
+                }
+
+                if (isRepeated(forms.get(i).get(1), form.get(1))) {
+                    emails.add(form.get(0));
+                }
+
+            }
+        }
+
+        emails = emails.stream().distinct().collect(Collectors.toList());
+        Collections.sort(emails);
+
+        return emails;
+
     }
 
     public static boolean checkRepeated(String longerWord, String shorterWord) {
