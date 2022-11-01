@@ -12,14 +12,15 @@ public class Problem7 {
     private static final FriendshipPointRepositoryImpl friendshipRepository = new FriendshipPointRepositoryImpl();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        // 입력 폼을 받아 저장하는 map <사용자, 친구목록 리스트>
-        Map<String, Set<String>> map = new LinkedHashMap<>();
-
         // 사용자 인덱스
         int userNameIndex = 0;
         // 다른 사용자 인덱스
         int differentUserNameIndex = 1;
 
+
+        // TODO
+        //  입력 폼을 받아 새로 사용자와 사용자의 친구리스트를 만드는 작업은 service 에서 하는 작업이 되야 하므로 분리 해야 된다는 생각이 든다.
+        //  code_number - 24 ~ 60
         // 입력 폼을 순회 -> 사용자 인덱스의 원소를 키로 지정 하는 로직
         for (List<String> friend : friends) {
             String userKey = friend.get(userNameIndex);
@@ -59,6 +60,8 @@ public class Problem7 {
         }
 
 
+        // TODO
+        //  아래 로직도 비지니스 로직이기 때문에 service 코드로 분리하고 관리해야 된다는 생각이 든다.
 
         // 입력한 사용자의 친구 목록 리스트
         Set<String> findFriends = userRepository.findFriends(user);
@@ -100,6 +103,10 @@ public class Problem7 {
                 friendshipRepository.save(knowUser, resultRelationPoint);
             }
         }
+
+
+        // TODO
+        //  방문한 사용자의 포인트도 비지니스 로직이기에 service 에서 관리해야 한다.
 
         // 방문한 사용자 목록을 순회
         for (String visitor : visitors) {
