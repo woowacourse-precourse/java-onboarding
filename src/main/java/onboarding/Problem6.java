@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
 
@@ -34,5 +35,8 @@ public class Problem6 {
                 }
             }
         }
+        List<String> listEmails = new ArrayList<String>(setEmails);
+        listEmails.sort(Comparator.naturalOrder());
+        return listEmails;
     }
 }
