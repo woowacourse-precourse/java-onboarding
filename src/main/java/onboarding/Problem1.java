@@ -3,7 +3,6 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
-    // TODO : consumer di 로 refactor
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if (!validatePage(pobi) || !validatePage(crong)) return -1;
         int pobiNum = calculatePageMaxNumber(pobi);
