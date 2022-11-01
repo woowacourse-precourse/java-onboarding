@@ -11,17 +11,27 @@ public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends,
         List<String> visitors) {
-        List<String> answer = Collections.singletonList("aa");
         List<String> userFriendList = getUserList(user, friends);
         List<String> userList = getUserList(friends, visitors);
         Map<String, Integer> userObject = getUserObject(userList);
         Map<String, Integer> userSocreObject = countScore(user, userFriendList, friends, userObject,
             visitors);
 
-        return answer;
+        return getfriendRecomand(userSocreObject);
     }
+    public static List<String> getfriendRecomand(Map<String, Integer> userSocreObject) {
+        List<String> keyList = new ArrayList<>(userSocreObject.keySet());
+        List<String> recommandFriendList = new ArrayList<>();
 
+        Collections.sort(keyList, (o1, o2) -> userSocreObject.get(o2).compareTo(userSocreObject.get(o1)));
+        for (int i = 0; i < 5; i++) {
+            if (userSocreObject.get(keyList.get(i)) > 0) {
+                recommandFriendList.add(keyList.get(i));
+            }
+        }
 
+        return recommandFriendList;
+    }
     public static Map<String, Integer> getUserObject(List<String> userList) {
         Map<String, Integer> userObject = new HashMap<>();
 
@@ -48,13 +58,13 @@ public class Problem7 {
         }
         Map<String, Integer> userFriendScore = countFriendScore(userObject, friendsFirendList);
 
-        return countVisitScore(userFriendScore, visitors);
+        return countVisitScore(userFriendScore, visitors, userFriendList);
     }
 
     private static Map<String, Integer> countVisitScore(Map<String, Integer> userFriendScore,
-        List<String> visitors) {
+        List<String> visitors,List<String> userFriendList) {
         for (String visitor : visitors) {
-            if (userFriendScore.containsKey(visitor)) {
+            if (userFriendScore.containsKey(visitor) && !userFriendList.contains(visitor)) {
                 userFriendScore.put(visitor, userFriendScore.get(visitor) + 1);
             }
         }
