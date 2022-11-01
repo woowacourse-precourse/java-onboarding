@@ -3,6 +3,14 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
+    public static List<String> sortCandidates(Map<String, Integer> candidates) {
+        List<String> candidateKeySet = new ArrayList<>(candidates.keySet());
+
+        candidateKeySet.sort((o1, o2) -> candidates.get(o2).compareTo(candidates.get(o1)));
+
+        return candidateKeySet;
+    }
+
     public static List<String> findUserFriends(String user, List<List<String>> friendRelation) {
         List<String> userFriends = new ArrayList<>();
 
@@ -70,6 +78,14 @@ public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+        Map<String, Integer> candidates = new HashMap<>();
+        List<String> userFriend = new ArrayList<>();
+
+        candidates = findCandidates(user, friends, visitors);
+        userFriend = findUserFriends(user, friends);
+        candidates = scoreVisitors(candidates, visitors);
+        candidates = scoreFriendRelation(user, candidates, userFriend, friends);
+        answer = sortCandidates(candidates);
         return answer;
     }
 }
