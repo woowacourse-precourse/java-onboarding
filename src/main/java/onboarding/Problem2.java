@@ -11,7 +11,7 @@ public class Problem2 {
                     answer = answer.substring(0,i) + answer.substring(i+2);
                     count += 1;
                     break;
-                } // if - 앞뒤문자비교
+                }//if
             }//for
         } while(count != 0); //do
         return answer;
