@@ -62,7 +62,7 @@ public class Problem7 {
 
         int count=0;
         for(Map.Entry<String, Integer> list : sortList){
-            if(count>5) break;
+            if(count>=5) break;
 
             answer.add(list.getKey());
             count++;
