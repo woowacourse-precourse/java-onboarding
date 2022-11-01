@@ -12,6 +12,16 @@ public class Problem6 {
          * 3. 닉네임 중복인 회원의 이메일을 오름차순으로 정렬해서 반환
          * */
 
+        answer = new ArrayList<>();
+        for (int i = 0; i < forms.size(); i++) {
+            for (int j = 0; j < i; j++) {
+                if (duplicate_str(forms.get(i).get(1), forms.get(j).get(1))) {
+                    answer.add(forms.get(i).get(0));
+                    answer.add(forms.get(j).get(0));
+                }
+            }
+        }
+        answer = sort_by_email(answer);
         return answer;
     }
 
