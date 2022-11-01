@@ -148,6 +148,11 @@ class Recommendation{
         int friendScore=friend.getTotalScore();
         return friendScore!=0;
     }
+    boolean isAlreadyFriend(User friend){
+        List<String> friendRelation;
+        friendRelation=friend.getRelationship();
+        return !friendRelation.contains(THE_USER_NAME);
+    }
 }
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
