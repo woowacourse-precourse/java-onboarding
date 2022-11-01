@@ -19,6 +19,13 @@ public class Problem7 {
         return friendsOfUser;
     }
 
+    static String addFriends(String user, List<String> friend) {
+        if (friend.get(0).equals(user)) {
+            return friend.get(1);
+        }
+        return friend.get(0);
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
 
