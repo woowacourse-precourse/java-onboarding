@@ -9,14 +9,14 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         HashMap<String, Integer> scoreMap = new HashMap<>();
-        List<String> oldFriend = new ArrayList<>();
+        List<String> oldFriends = new ArrayList<>();
 
-        oldFriend = getOldFriend(user, friends);
+        oldFriends = getOldFriends(user, friends);
 
         return answer;
     }
 
-    private static List<String> getOldFriend(String user, List<List<String>> friends) {
+    private static List<String> getOldFriends(String user, List<List<String>> friends) {
         List<String> list = new ArrayList<>();
         for (int i = 0; i < friends.size(); i++) {
             for (int j = 0; j < 2; j++) {
@@ -26,5 +26,6 @@ public class Problem7 {
                 }
             }
         }
+        return list;
     }
 }
