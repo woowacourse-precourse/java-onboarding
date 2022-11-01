@@ -56,6 +56,5 @@
 6. findFriendsList
    - parameter: HashMap pointInfo
    - return: List<String> friends
-   - deleteZero 실행
    - 점수가 높은 순으로 정렬
    - 점수가 동일 하다면 이름 순으로 정렬
