@@ -6,6 +6,24 @@ public class Problem7 {
     private static Map<String,Integer> recommendedFriendScores =new HashMap<>();
     private static List<String> userFriendList =new ArrayList<>();
 
+    private static class Friendship implements Comparable<Friendship> {
+        private String id;
+        private int recommendedScore;
+
+        public Friendship(String id, int recommendedScore) {
+            this.recommendedScore = recommendedScore;
+            this.id = id;
+        }
+
+        @Override
+        public int compareTo(Friendship o) {
+            if(recommendedScore==o.recommendedScore){
+                return id.compareTo(o.id);
+            }
+            return o.recommendedScore-recommendedScore;
+        }
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
 
