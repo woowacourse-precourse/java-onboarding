@@ -59,11 +59,11 @@ class Problem1 {
 
 	// 기능 1-1: 플레이어의 페이지가 게임을 할 수 있는지 판단한다.
 	private static boolean isValidPage(List<Integer> player) {
-		if (player.get(1) - player.get(0) > 1) {
+		if (player.get(1) - player.get(0) != 1) {
 			// 펼친 페이지에서 양쪽 수의 차이는 1보다 크면 안된다.
 			return false;
-		} else if (player.get(0) <= 1 || player.get(1) >= 400) {
-			// 첫 번째 면이나 마지막 면이 펼쳐질 때는 게임진행을 진행할 수 없다.
+		} else if (player.get(0) < 1 || player.get(1) > 400) {
+			//페이지 범위를 벗어나면 게임을 진행할 수 없다.
 			return false;
 		}
 		return true;
