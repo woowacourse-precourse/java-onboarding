@@ -14,22 +14,10 @@ public class Problem7 {
         for(int i=0; i<friends.size(); i++){
             if(!map.containsKey(friends.get(i).get(0))){
                 map.put(friends.get(i).get(0), emptyList);
-            } /*else {
-                List<String> friendsList = map.get(friends.get(i).get(0));
-                if(!map.containsKey(friends.get(i).get(1))) {
-                    friendsList.add(friends.get(i).get(1));
-                    map.put(friends.get(i).get(0), friendsList);
-                }
-            }*/
+            }
             if(!map.containsKey(friends.get(i).get(1))){
                 map.put(friends.get(i).get(1), emptyList);
-            } /*else {
-                friendsList = map.get(friends.get(i).get(1));
-                if(!map.containsKey(friends.get(i).get(0))) {
-                    friendsList.add(friends.get(i).get(0));
-                    map.put(friends.get(i).get(1), friendsList);
-                }
-            }*/
+            }
         }
         for(int i=0; i<friends.size(); i++){
             String name1 = friends.get(i).get(0);
