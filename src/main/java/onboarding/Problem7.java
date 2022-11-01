@@ -34,6 +34,11 @@ public class Problem7 {
             }
         }
 
+        for (int i = 0; i < list1.size(); i++) {
+            map.put(list1.get(i), map.getOrDefault(list1.get(i), 0) + 10);
+        }
+
+
     }
 
 
