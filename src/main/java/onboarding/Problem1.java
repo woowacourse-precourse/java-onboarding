@@ -24,6 +24,11 @@ class Problem1 {
             return true;
         }
 
+        // 왼쪽 페이지의 개수가 오른쪽 페이지보다 1 작지 않을 경우
+        if (leftPage != rightPage - 1) {
+            return true;
+        }
+
         // 왼쪽 페이지가 홀수, 오른쪽 페이지가 짝수가 아닌 경우
         if (leftPage % 2 != 1 || rightPage % 2 != 0) {
             return true;
