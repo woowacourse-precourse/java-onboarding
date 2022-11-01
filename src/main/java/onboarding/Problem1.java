@@ -17,6 +17,7 @@ import java.util.Scanner;
  * 3. 예외처리
  * - 연속된 페이지 번호가 아닌 경우
  */
+
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
