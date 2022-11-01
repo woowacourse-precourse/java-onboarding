@@ -21,4 +21,13 @@ public class Problem6 {
         return ret;
     }
 
+    private static List<String> sortEmail(List<String> str){
+        List<String> list = new ArrayList<String>();
+        for(int i=0; i< str.size(); i++)
+            if(!list.contains(str.get(i)))
+                list.add(str.get(i));
+        Collections.sort(list);
+        return list;
+    }
+
 }
