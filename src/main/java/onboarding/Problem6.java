@@ -53,14 +53,6 @@ public class Problem6 {
         return false;
     }
 
-    private HashMap<String, String> getHashMappedForm(List<List<String>> forms) {
-        HashMap<String, String> map = new HashMap<>();
-        for (List<String> info : forms) {
-            map.put(info.get(0), info.get(1));
-        }
-        return map;
-    }
-
     private List<String> getStringTokens(String word) {
         List<String> result = new ArrayList<>();
         for (int i = 0; i < word.length() - 1; i++) {
