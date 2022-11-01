@@ -32,6 +32,24 @@ public class Problem5 {
         // 각 화폐와 동전의 개수를 확인
         List<Integer> temp = new ArrayList<>();
 
+        // 오만원부터 시작해서 십원까지 나누기 5, 나누기 2 반복
+        int unit = 50000;
+
+        // 인덱스 저장
+        int i = 0;
+
+        while (money!= 0){
+
+            int count = money / unit;
+            temp.add(i, count);
+
+            money %= unit;
+
+            unit = isUnit(unit, i);
+            i++;
+
+        }
+
         return answer;
     }
 }
