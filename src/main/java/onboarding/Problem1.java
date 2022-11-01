@@ -32,19 +32,15 @@ class Problem1 {
 
         return Math.max(leftMaxNumber, rightMaxNumber);
     }
-    public static int getResult(List<Integer> pobi, List<Integer> crong) {
+    public static int solution(List<Integer> pobi, List<Integer> crong) {
+        if (!validateInput(pobi) || !validateInput(crong))
+            return -1;
         int pobiMax = getMaxNumber(pobi);
         int crongMax = getMaxNumber(crong);
-
         if (pobiMax > crongMax)
             return 1;
         else if (pobiMax < crongMax)
             return 2;
         return 0;
-    }
-    public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if (!validateInput(pobi) || !validateInput(crong))
-            return -1;
-        return getResult(pobi, crong);
     }
 }
