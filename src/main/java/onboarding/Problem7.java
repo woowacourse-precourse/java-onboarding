@@ -72,6 +72,11 @@ public class Problem7 {
             pointUp(users, user1, 10);
         }
     }
+    private static void calculateFriendsPoint(List<String> myFriends, List<List<String>> relations, List<User> users) {
+        for (List<String> relation : relations) {
+            calculateFriendPoint(myFriends, relation, users);
+        }
+    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
