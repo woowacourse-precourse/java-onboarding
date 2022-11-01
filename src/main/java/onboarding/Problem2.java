@@ -1,75 +1,69 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /*
 기능 구현 사항
-1. 스택을 사용
-2. 맨 위의 글자와 같은 글자면 pop
-3. 그 외는 push
+1. while 돌면서 삭제할 인덱스 찾기
+2. 인덱스 값에 해당하는 글자 공백으로 만들기
+3. 공백 글자를 제외한 나머지 글자 구하기
+4. 인덱스 값이 없거나, 더 이상 남은 글자가 없을 때 종료한다.
  */
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String currentCryptogram = removeOverlapWord(cryptogram);
-        return currentCryptogram;
+        String result = removeDuplicateWord(cryptogram);
+        return result;
     }
 
-    private static class Stack {
-        private int top;
-        private final int stackSize;
-        private final char[] stackArr;
-
-        public Stack(int stackSize) {
-            this.stackSize = stackSize;
-            this.top = -1;
-            this.stackArr = new char[this.stackSize];
-        }
-
-        public boolean isEmpty() {
-            return (top == -1);
-        }
-
-        public boolean isFull() {
-            return (top == this.stackSize - 1);
-        }
-
-        public void push(char letter) {
-            if(!isFull()) {
-                stackArr[++top] = letter;
+    private static String removeDuplicateWord(String cryptogram) {
+        int index = 0;
+        String result = cryptogram;
+        while(true) {
+            List<Integer> removeIndexes = getRemoveIndexes(result, index);
+            if(removeIndexes.size() == 0) {
+                break;
             }
+            System.out.println(removeIndexes);
+            result = changeDuplicateWord(result, removeIndexes);
         }
-
-        public char pop() {
-            if(!isEmpty()) {
-                return stackArr[top--];
-            }
-            return 0;
-        }
-
-        public char peek() {
-            if(!isEmpty()) {
-                return stackArr[top];
-            }
-            return 0;
-        }
-        public String changeArrayToString() {
-            if(isEmpty()) {
-                return "";
-            }
-            String stackString = new String(stackArr);
-            String slicedStackString = stackString.substring(0, top+1);
-            return slicedStackString;
-        }
+        return result;
     }
 
-    private static String removeOverlapWord(String cryptogram) {
-        Stack stack = new Stack(cryptogram.length());
-        for(int i = 0; i<cryptogram.length(); i++) {
-            char cryptoLetter = cryptogram.charAt(i);
-            if(!stack.isEmpty() && stack.peek() == cryptoLetter) {
-                stack.pop();
+    private static List<Integer> getRemoveIndexes(String word, int index) {
+        List<Integer> removeIndexes = new ArrayList<>();
+        if(word.isBlank()) {
+            return removeIndexes;
+        }
+        char previousWord = word.charAt(index);
+        for(int i = index+1; i < word.length(); i++) {
+            if(previousWord == word.charAt(i)) {
+                removeIndexes.add(i);
+                removeIndexes.add(i-1);
+            }
+            previousWord = word.charAt(i);
+        }
+        return removeIndexes;
+    }
+
+    private static String changeDuplicateWord(String cryptogram, List<Integer> duplicateIndexes) {
+        char[] cryptogramCharArray = cryptogram.toCharArray();
+        for (Integer duplicateIndex : duplicateIndexes) {
+            cryptogramCharArray[duplicateIndex] = ' ';
+        }
+        String removedResult = getResult(cryptogramCharArray);
+        System.out.println(removedResult);
+        return removedResult;
+    }
+
+    private static String getResult(char[] cryptogramCharArray) {
+        String removeResult = "";
+        for (char word : cryptogramCharArray) {
+            if (word == ' ') {
                 continue;
             }
-            stack.push(cryptoLetter);
+            removeResult += word;
         }
-        return stack.changeArrayToString();
+        return removeResult;
     }
 }
