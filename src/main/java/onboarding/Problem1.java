@@ -58,7 +58,7 @@ class Problem1 {
             num.add(multiplyEachDigit(digits));
         }
 
-        return getMax(num);
+        return Collections.max(num);
     }
 
     private static Integer plusEachDigit(List<Integer> digits) {
@@ -77,10 +77,6 @@ class Problem1 {
         }
 
         return sum;
-    }
-
-    private static Integer getMax(List<Integer> num) {
-        return Collections.max(num);
     }
 
     private static Integer getWinner(Integer pobiScore, Integer crongScore) {
