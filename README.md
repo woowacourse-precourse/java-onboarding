@@ -6,8 +6,9 @@
 - [x] [문제 2](./docs/PROBLEM2.md)
 - [문제 2 풀이](./src/main/java/onboarding/Problem2.java)
 - [x] [문제 3](./docs/PROBLEM3.md)
-- - [문제 3 풀이](./src/main/java/onboarding/Problem3.java)
-- [ ] [문제 4](./docs/PROBLEM4.md)
+- [문제 3 풀이](./src/main/java/onboarding/Problem3.java)
+- [x] [문제 4](./docs/PROBLEM4.md)
+- [문제 4 풀이](./src/main/java/onboarding/Problem4.java)
 - [ ] [문제 5](./docs/PROBLEM5.md)
 - [ ] [문제 6](./docs/PROBLEM6.md)
 - [ ] [문제 7](./docs/PROBLEM7.md)
@@ -37,4 +38,4 @@
 - [x] solution
 ### 문제 4
 - [x] 문자열 유효 체크 - 길이
-- [ ] solution
+- [x] solution
