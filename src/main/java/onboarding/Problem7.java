@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.Map.Entry;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -10,7 +11,7 @@ public class Problem7 {
         mapScoreByCommonFriend(user, friendSetMap, scoreMap);
         mapScoreByVisit(visitors, scoreMap);
 
-        List<String> answer = Collections.emptyList();
+        List<String> answer = computeRecommendationList(user, friendSetMap.get(user), scoreMap);
 
         return answer;
     }
@@ -56,4 +57,29 @@ public class Problem7 {
         }
     }
 
+    private static List<String> computeRecommendationList(String user, HashSet<String> userFriendSet,
+                                                          HashMap<String, Integer> scoreMap) {
+        List<String> ret = new ArrayList<>();
+        List<Entry<String, Integer>> scoreMapEntryList = new ArrayList<>(scoreMap.entrySet());
+
+        scoreMapEntryList.sort(Entry.comparingByKey());
+        scoreMapEntryList.sort(Entry.comparingByValue(Comparator.reverseOrder()));
+
+        int count = 0;
+        for (Entry<String, Integer> entry : scoreMapEntryList) {
+            String name = entry.getKey();
+            Integer score = entry.getValue();
+
+            if (count > 5) break;
+            if (score <= 0) break;
+
+            if (name.equals(user)) continue;
+            if (userFriendSet.contains(name)) continue;
+
+            ret.add(name);
+            count++;
+        }
+
+        return ret;
+    }
 }
