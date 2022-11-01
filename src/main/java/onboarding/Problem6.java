@@ -100,7 +100,6 @@ public class Problem6 {
                 List.of("jason@email.com", "제이슨"),
                 List.of("woniee@email.com", "워니"),
                 List.of("mj@email.com", "엠제이"),
-                List.of("mj@email.com", "엠제이"),
                 List.of("nowm@email.com", "이제엠")
         );
 
