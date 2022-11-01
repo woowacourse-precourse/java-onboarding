@@ -2,35 +2,9 @@ package onboarding;
 
 import java.util.List;
 
-/**
- * 요구 사항
- * 책을 임의로 펼친다.
- * 왼쪽 페이지는 짝수, 오른쪽 페이지는 홀수
- * 왼쪽 페이지 번호의 각 자리 숫자를 모두 더하거나, 모두 곱해 가장 큰 수를 구한다.
- * 오른쪽 페이지 번호의 각 자리 숫자를 모두 더하거나, 모두 곱해 가장 큰 수를 구한다.
- * 2~3 과정에서 가장 큰 수를 본인의 점수로 한다.
- * 점수를 비교해 가장 높은 사람이 게임의 승자가 된다.
- * 시작 면이나 마지막 면이 나오도록 책을 펼치지 않는다.
- * 비와 크롱이 펼친 페이지가 들어있는 리스트/배열 pobi와 crong이 주어질 때,
- * 포비가 이긴다면 1, 크롱이 이긴다면 2, 무승부는 0, 예외사항은 -1로 return 하도록 solution 메서드를 완성하라.
- */
-
-/**
- * 설계
- * list 를 매개변수로 받아 가장 큰수를 return 하는 함수
- * pobi 점수와 crong 점수를 매개변수로 받아 비교하여 최종 return 값을 결정하는 함수
- */
-
-/**
- * 예외사항(-1을 리턴)
- * 1. 왼쪽 페이지가 홀수이거나 오른쪽 페이지가 짝수
- * 2. 페이지가 1 ~ 400 이 아닐 때
- * 3. 페이지가 연속된 수가 아닐 때 ex) 102 105
- */
-
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE; // int 범위에서 최대값 2147483647
+        int answer = Integer.MAX_VALUE;
 
         int pobyScore = maxScore(pobi);
         int crongScore = maxScore(crong);
@@ -43,45 +17,47 @@ class Problem1 {
         return answer;
     }
 
-    public static int maxScore(List<Integer> name) {  // 각 페이지의 최대값을 구해 각 페이지의 최대값을 비교하여 return
+    public static int maxScore(List<Integer> name) {
 
-        if (name.get(0)%2==0 || name.get(1)%2==1) // 왼쪽 페이지가 홀수이거나 오른쪽 페이지가 짝수
+        if (name.get(0)%2==0 || name.get(1)%2==1)
             return -10;
-         else if (name.get(0)<1 || name.get(0)>400 || name.get(1)<1 || name.get(1)>400) // 페이지가 1 ~ 400 이 아닐 때
+         else if (name.get(0)<1 || name.get(0)>400 || name.get(1)<1 || name.get(1)>400)
             return -10;
-         else if (name.get(0)+1 != name.get(1)) // 페이지가 연속된 수가 아닐 때
+         else if (name.get(0)+1 != name.get(1))
             return -10;
+         else if (name.size()>2)
+             return -10;
 
-        int leftMaxScore = 0; // 왼쪽 페이지에서 가장 큰 값
-        int rightMaxScore = 0; // 오른쪽 페이지에서 가장 큰 값
+        int leftMaxScore = 0;
+        int rightMaxScore = 0;
 
-        for (int i = 0; i < 2; i++) {
-            int pageNumber = name.get(i); // 0일 때 왼쪽, 1일 때 오른쪽
-            int sum = 0; // 각 페이지의 자리수를 합한 결과
-            int multi = 1; // 각 페이지의 자리수를 곱한 결과
+        for (int page = 0; page < 2; page++) {
+            int pageNumber = name.get(page);
+            int sum = 0;
+            int multi = 1;
 
             while (pageNumber > 0) {
-                sum += pageNumber % 10; // 각 자리수를 더함
-                multi *= pageNumber % 10; // 각 자리수를 곱함
+                sum += pageNumber % 10;
+                multi *= pageNumber % 10;
                 pageNumber /= 10;
             }
 
-            if (sum > multi)  // 더한 값이 클 때
+            if (sum > multi)
                 leftMaxScore = sum;
-            else   // 곱한 값이 클 때
+            else
                 rightMaxScore = multi;
         }
 
-        if (leftMaxScore > rightMaxScore) // 왼쪽 페이지가 클 떄
+        if (leftMaxScore > rightMaxScore)
             return leftMaxScore;
 
-        return rightMaxScore; // 오른쪽 페이지가 크거나 같을 때
+        return rightMaxScore;
     }
 
     public static int winResult(int poby, int crong) {
-        if (poby > crong) // poby 가 승리
+        if (poby > crong)
             return 1;
-        else if (crong < poby) // crong 이 승리
+        else if (crong < poby)
             return 2;
 
         return 0;
