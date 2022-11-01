@@ -50,7 +50,8 @@ class Problem1 {
         boolean isValidPageScope = !(person.get(0) <= 1 || person.get(1) >= 400);
         boolean isConsecutivePage = (person.get(1) - person.get(0) == 1);
         boolean isPageExistOnlyTwo = person.size() == 2;
+        boolean isLeftOddRightEven = (person.get(0) % 2 == 1) && (person.get(1) % 2 == 0);
 
-        return  isValidPageScope && isConsecutivePage && isPageExistOnlyTwo;
+        return  isValidPageScope && isConsecutivePage && isPageExistOnlyTwo && isLeftOddRightEven;
     }
 }
