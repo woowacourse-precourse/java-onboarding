@@ -2,9 +2,12 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Map.Entry;
 import java.util.regex.Pattern;
 
 public class Problem7 {
@@ -21,6 +24,23 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
+    }
+
+    private static List<Entry<String, Integer>> sortedFriendsList(Map<String, Integer> RecommendFriendsPoint) {
+        List<Entry<String, Integer>> sortedUserList = new LinkedList<>(RecommendFriendsPoint.entrySet());
+        Collections.sort(sortedUserList, new Comparator<Entry<String, Integer>>() {
+            @Override
+            public int compare(Entry<String, Integer> o1, Entry<String, Integer> o2) {
+                if (o1.getValue() > o2.getValue()) {
+                    return -1;
+                }
+                if (o1.getValue() < o2.getValue()) {
+                    return 1;
+                }
+                return o1.getKey().compareTo(o2.getKey());
+            }
+        });
+        return sortedUserList;
     }
 
     private static Map<String, Integer> extractFriendPointList(String user, List<List<String>> friends,
