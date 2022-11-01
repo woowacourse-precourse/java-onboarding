@@ -19,18 +19,18 @@ class Problem1 {
         return answer;
     }
 
-
+    // 예외 케이스면 false 반환
     public static boolean checkException(List<Integer> pages) {
         boolean result = true;
         int start = 1, end = 400;
 
-        if (pages.get(0) + 1 != pages.get(1)) result = false;
-        if (pages.get(0) <= start || pages.get(1) >= end) result = false;
+        if (pages.get(0) + 1 != pages.get(1)) result = false; // 연속된 페이지가 아닌 경우
+        if (pages.get(0) <= start || pages.get(1) >= end) result = false; // 첫페이지, 마지막 페이지 포함하는 경우
 
         return result;
     }
 
-
+    // 어떤 페이지에 대해서 구할 수 있는 가장 큰 연산 값
     public static int pageMax(int page) {
         List<Integer> nums = new ArrayList<>();
 
