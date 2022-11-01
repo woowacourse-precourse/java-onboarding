@@ -8,7 +8,6 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         HashMap<String, String> map = new HashMap<>();
         TreeSet<String> set = new TreeSet<>();
-
         for(int i = 0; i < forms.size(); i++)
             for(int j = 0; j < forms.get(i).get(1).length() - 1; j++){
                 if(map.get(forms.get(i).get(1).substring(j, j + 2)) == null)
