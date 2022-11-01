@@ -15,7 +15,7 @@ public class Validation {
     }
 
     private static void validateIsNotLowerCaseStr(String cryptogram) {
-        if(!Pattern.matches(LOWERCASE_STR_REGEXP, cryptogram)) {
+        if (!Pattern.matches(LOWERCASE_STR_REGEXP, cryptogram)) {
             throw new IllegalArgumentException(LOWERCASE_EXCEPTION_MESSAGE);
         }
     }

@@ -10,7 +10,7 @@ public class Validation {
     }
 
     private static void validateInRange(String word) {
-        if((word.length() < MIN_LENGTH) || (word.length() > MAX_LENGTH)) {
+        if ((word.length() < MIN_LENGTH) || (word.length() > MAX_LENGTH)) {
             throw new IllegalArgumentException(LENGTH_EXCEPTION_MESSAGE);
         }
     }

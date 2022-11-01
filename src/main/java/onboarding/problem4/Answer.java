@@ -8,7 +8,7 @@ public class Answer {
 
     public static String sayTheOpposite(String word) {
         String answer = "";
-        for(int idx = 0; idx < word.length(); idx++){
+        for (int idx = 0; idx < word.length(); idx++) {
             char message = word.charAt(idx);
             answer += getOppositeChar(message);
         }

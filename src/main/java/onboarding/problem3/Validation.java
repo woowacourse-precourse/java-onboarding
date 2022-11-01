@@ -10,7 +10,7 @@ public class Validation {
     }
 
     private static void validateInRange(int number) {
-        if((number < MIN_NUMBER) || (number > MAX_NUMBER)) {
+        if ((number < MIN_NUMBER) || (number > MAX_NUMBER)) {
             throw new IllegalArgumentException(RANGE_EXCEPTION_MESSAGE);
         }
     }

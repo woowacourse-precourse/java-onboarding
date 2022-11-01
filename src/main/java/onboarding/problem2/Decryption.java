@@ -9,7 +9,7 @@ public class Decryption {
     public static String decrypt(String cryptogram) {
         boolean decryptionComplete = false;
         Pattern repeatPattern = Pattern.compile(REPEAT_PATTERN_REGEXP);
-        while (!decryptionComplete){
+        while (!decryptionComplete) {
             cryptogram = removeRepeatedCharacters(cryptogram);
             decryptionComplete = hasNotRepeatedCharacters(cryptogram, repeatPattern);
         }

@@ -18,7 +18,7 @@ public class Bank {
 
     private static List<Integer> setChangeArrayToChangeList(int[] array) {
         ArrayList<Integer> arrayList = new ArrayList<>();
-        for(int number : array) {
+        for (int number : array) {
             arrayList.add(number);
         }
         return arrayList;
