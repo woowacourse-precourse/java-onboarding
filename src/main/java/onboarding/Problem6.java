@@ -80,13 +80,13 @@ public class Problem6 {
 
     // 주어진 이메일이 형식에 맞게 입력됐는지 확인하는 함수
     public static boolean checkEmailForm(String email) {
-        return email.split("@")[1].equals("email.com");
+        return email.split("@")[1].equals("email.com") && email.length() >= 11 && email.length() < 20;
 
     }
 
     // 주어진 닉네임이 형식에 맞게 입력됐는지 확인하는 함수
     public static boolean checkNicknameForm(String nickname) {
-        return Pattern.matches("^[가-힣]*$", nickname);
+        return Pattern.matches("^[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]*$", nickname) && nickname.length() >= 1 && nickname.length() < 20;
     }
 
     // 주어진 유저 정보가 형식에 맞게 입력됐는지 확인하는 함수
