@@ -23,6 +23,12 @@ public class Problem5 {
     }
 
     private static Integer getMaxCurrencyFromAccountMoney(List<Integer> currencyToGive, Integer currency, int account) {
+        Integer currencyToReturn = 0;
+
+        currencyToReturn += account / currency;
+        currencyToGive.add(currencyToReturn);
+
+        return account % currency;
 
     }
 }
