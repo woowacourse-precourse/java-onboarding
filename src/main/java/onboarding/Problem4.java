@@ -3,6 +3,7 @@ package onboarding;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.regex.Pattern;
 
 public class Problem4 {
     public static String solution(String word) {
@@ -39,19 +40,26 @@ public class Problem4 {
 
         String[] splitWord = word.split("");   // 한단어씩 공백 o
 
-        for (String x : splitWord) {
-            if (!isStringUpperCase(x)) {  // 소문자일시 대문자로 변환
-                x = x.toUpperCase();
-                if (treeFrogDictionary.containsKey(x)) {
-                    answer += (treeFrogDictionary.get(x).toLowerCase());  // 다시 원래 소문자로 변환
-                }
-            } else {     // 대문자 그대로
-                if (treeFrogDictionary.containsKey(x)) {
-                    answer += (treeFrogDictionary.get(x));  // 그대로 반환
+        if(isAlphabet(word)) {
+            for (String x : splitWord) {
+                if (!isStringUpperCase(x)) {  // 소문자일시 대문자로 변환
+                    x = x.toUpperCase();
+                    if (treeFrogDictionary.containsKey(x)) {
+                        answer += (treeFrogDictionary.get(x).toLowerCase());  // 다시 원래 소문자로 변환
+                    }
+                } else {     // 대문자 그대로
+                    if (treeFrogDictionary.containsKey(x)) {
+                        answer += (treeFrogDictionary.get(x));  // 그대로 반환
+                    }
                 }
             }
         }
         return answer;
+    }
+
+    private static boolean isAlphabet(String word) {
+        String replaceWord = word.replace(" ", "");
+        return Pattern.matches("^[a-zA-Z]*$", replaceWord);
     }
 
     private static boolean isStringUpperCase(String str) {
