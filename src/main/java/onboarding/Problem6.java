@@ -6,6 +6,15 @@ import java.util.List;
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
+        answer = new ArrayList<>();
+
+        List<List<String>> dupList = checkDup(forms);
+
+        List<List<String>> sortedList = sortByEmail(dupList);
+
+        for (List<String> email : sortedList) {
+            answer.add(email.get(0));
+        }
         return answer;
     }
 
