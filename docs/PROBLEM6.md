@@ -21,3 +21,10 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능목록
+
+- 닉네임을 두글자씩 자르고 저장하기
+- 이미 동일한 글자가 존재하는지 확인
+- 정답 리스트에 유저 추가하기
+- 존재여부에 따른 유저 제외 메서드
