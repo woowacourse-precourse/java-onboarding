@@ -52,6 +52,15 @@ public class Problem7 {
                 noFriends.add(twoFriends);
             }
         }
+
+        for (List<String> twoNoFriends : noFriends) {
+            if (yesFriends.contains(twoNoFriends.get(0))) {
+                friendsScore.put(twoNoFriends.get(1), friendsScore.get(twoNoFriends.get(1))+10);
+            }else if (yesFriends.contains(twoNoFriends.get(1))) {
+                friendsScore.put(twoNoFriends.get(0), friendsScore.get(twoNoFriends.get(0))+10);
+            }
+        }
+
         return answer;
     }
 }
