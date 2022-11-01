@@ -27,7 +27,8 @@ public class Problem2 {
 				if (cur != top && cur != duplicated) { // push 할 문자가 스택의 top 과 같지 않으면서 중복 문자도 아닐 때
 					stack.push(cur);
 					duplicated = ' '; // dup 초기화
-				} else if (cur == top) { // push 할 문자와 스택의 top 이 같을 때
+				}
+				if (cur == top) { // push 할 문자와 스택의 top 이 같을 때
 					duplicated = top; // dup 업데이트
 					stack.pop(); // 중복 문자 제거
 				}
