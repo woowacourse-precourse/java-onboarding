@@ -9,18 +9,7 @@ public class Problem7 {
         // user 와 친구인 사람 추출
         List<String> together = userFriends(friends, user);
 
-        Map<String, Integer> map = new HashMap<>();
-        for (List<String> friend : friends) {
-            for (String s : friend) {
-                if (!(together.contains(s) || s.equals(user))) {
-                    if (map.containsKey(s)) {
-                        map.replace(s, map.get(s) + 10);
-                    } else {
-                        map.putIfAbsent(s, 10);
-                    }
-                }
-            }
-        }
+        Map<String, Integer> map = addFriends(friends, together, user);
 
         for (String v : visitors) {
             if (!together.contains(v)) {
@@ -31,7 +20,6 @@ public class Problem7 {
                 }
             }
         }
-
 
 //        이때 추천 점수가 0점인 경우 추천하지 않으며, 추천 점수가 같은 경우는 이름순으로 정렬한다.
         Map<String, Integer> sortedMap = new TreeMap<>(new Comparator<String>() {
@@ -51,6 +39,7 @@ public class Problem7 {
         }
         return answer;
     }
+
     static List<String> userFriends(List<List<String>> friends, String user) {
         List<String> list = new ArrayList<>();
         for (List<String> friend : friends) {
@@ -63,5 +52,29 @@ public class Problem7 {
         return list;
     }
 
+    static Map<String, Integer> addFriends(List<List<String>> friends, List<String> userFriend, String user) {
+        Map<String, Integer> map = new HashMap<>();
+        for (List<String> friend : friends) {
+            for (String s : friend) {
+                if (checkFriend(userFriend, s, user)) {
+                    addFriendScore(map, s);
+                }
+            }
+        }
+        return map;
+    }
+
+    static Map<String, Integer> addFriendScore(Map<String, Integer> recommend, String s) {
+        if (recommend.containsKey(s)) {
+            recommend.replace(s, recommend.get(s) + 10);
+        } else {
+            recommend.putIfAbsent(s, 10);
+        }
+        return recommend;
+    }
+
+    static boolean checkFriend(List<String> userFriend, String s, String user) {
+        return !(userFriend.contains(s) || s.equals((user)));
+    }
 
 }
