@@ -23,4 +23,23 @@ class Problem1 {
         }
         return sum;
     }
+
+    private static int getMax(List<Integer> person) {
+        int max = -1;
+        int sum = 0;
+        int mul = 1;
+        int n = person.get(0);
+
+        sum = getSum(n, sum);
+
+        n = person.get(1);
+        mul = getMul(n, mul);
+
+        if (sum > mul) {
+            max = sum;
+        } else {
+            max = mul;
+        }
+        return max;
+    }
 }
