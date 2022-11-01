@@ -4,6 +4,10 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Problem7 {
+    private static final int SAME_FRINED_SCORE = 10;
+    private static final int VISIT_TIMELINE_SCORE = 1;
+    private static final int INITIAL_SCORE = 0;
+    private static final int SHOW_NUMBER_OF_PEOPLE = 5;
     private static Map<String, List<String>> friendship;
     private static Map<String, Integer> idToScore;
 
@@ -33,7 +37,7 @@ public class Problem7 {
 
     private static Map<String, Integer> addScoresByFriendship(String user) {
         for (String id : friendship.keySet()) {
-            idToScore.put(id, 10 * countSameFriend(user, id));
+            idToScore.put(id, SAME_FRINED_SCORE * countSameFriend(user, id));
         }
         return idToScore;
     }
@@ -50,7 +54,7 @@ public class Problem7 {
 
     private static void addScoresByVisitors(List<String> visitors) {
         for (String visitor : visitors) {
-            idToScore.put(visitor, idToScore.getOrDefault(visitor, 0) + 1);
+            idToScore.put(visitor, idToScore.getOrDefault(visitor, INITIAL_SCORE) + VISIT_TIMELINE_SCORE);
         }
     }
 
@@ -58,7 +62,7 @@ public class Problem7 {
         return idToScore.entrySet().stream()
                 .filter(o -> !user.equals(o.getKey()) && !isFriend(user, o.getKey()))
                 .sorted((o1, o2) -> compareByRecommendationAlgorithm(o1, o2))
-                .limit(5)
+                .limit(SHOW_NUMBER_OF_PEOPLE)
                 .map(Map.Entry::getKey)
                 .collect(Collectors.toList());
     }
