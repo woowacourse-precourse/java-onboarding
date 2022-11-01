@@ -12,5 +12,14 @@ public class Problem5 {
 
         return answer;
     }
+
+    private static int changeMoney(int money, List<Integer> answer) {
+        for (int bill : bills) {
+            answer.add(money / bill);
+            money %= bill;
+        }
+
+        return money;
+    }
 }
 
