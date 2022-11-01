@@ -1,7 +1,8 @@
 package onboarding.friendrecommendationsystem;
 
+import static onboarding.friendrecommendationsystem.RecommendationRule.*;
+
 import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,34 +10,35 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class FriendRecommendationSystem {
-
-	private static final int RULE_ONE_POINT = 10;
-
-	private static final int RULE_TWO_POINT = 1;
+	
+	private static final int RECOMMEND_USER_LIMIT = 5;
 
 	private final String user;
 
-	private Map<String, List<String>> friendMap;
+	private final Map<String, List<String>> friendMap;
 
-	private Map<String, Integer> scoreMap;
+	private final Map<String, Integer> recommendScore;
 
 	public FriendRecommendationSystem(String user,
 		List<List<String>> friends,
 		List<String> visitors) {
 
 		this.user = user;
-		initUsersWith(friends);
-		initRecommendationScoreWith(visitors);
+		this.friendMap = new HashMap<>();
+		this.recommendScore = new HashMap<>();
+
+		initUserFriends(friends);
+		initVisitorScore(visitors);
+		initKnowWithUserScore();
 	}
 
-	private void initUsersWith(final List<List<String>> friends) {
-		this.friendMap = new HashMap<>();
+	private void initUserFriends(final List<List<String>> friends) {
 		for (List<String> friend : friends) {
-			initUserWith(friend);
+			initUserFriend(friend);
 		}
 	}
 
-	private void initUserWith(List<String> friend) {
+	private void initUserFriend(final List<String> friend) {
 		String friendA = friend.get(0);
 		String friendB = friend.get(1);
 
@@ -52,16 +54,23 @@ public class FriendRecommendationSystem {
 			.collect(Collectors.toList());
 	}
 
-	private void initRecommendationScoreWith(final List<String> visitors) {
-		this.scoreMap = new HashMap<>();
-		for (String friend : friendMap.keySet()) {
-			if (!user.equals(friend)) {
-				scoreMap.put(friend, 0);
-			}
-		}
+	private void initVisitorScore(final List<String> visitors) {
+		int point = getPointOf(VISITOR);
 		for (String visitor : visitors) {
-			scoreMap.merge(visitor, RULE_TWO_POINT,
-				(score, ignored) -> score + RULE_TWO_POINT);
+			recommendScore.merge(visitor, point,
+				(score, ignored) -> score + point);
+		}
+	}
+
+	private void initKnowWithUserScore() {
+		int point = getPointOf(KNOW_WITH_USER);
+		for (String friend : friendMap.keySet()) {
+			int numberOfFriends = getNumberOfFriendsKnowWith(friend);
+
+			if (numberOfFriends != 0) {
+				recommendScore.merge(friend, point,
+					(score, ignored) -> score + numberOfFriends * point);
+			}
 		}
 	}
 
@@ -69,44 +78,37 @@ public class FriendRecommendationSystem {
 		if (user.equals(other)) {
 			return 0;
 		}
-		int numberOfFriends = 0;
-		for (String friend : getFriendsOf(other)) {
-			if (checkUserContains(friend)) {
-				numberOfFriends++;
-			}
-		}
-		return numberOfFriends;
-	}
-
-	List<String> getFriendsOf(final String user) {
-		return friendMap.getOrDefault(user, Collections.emptyList());
-	}
-
-	private boolean checkUserContains(final String friend) {
-		return !user.equals(friend)
-			&& getFriendsOf(user).contains(friend);
-	}
-
-	public List<String> getRecommendationUsers() {
-		return scoreMap.keySet()
+		return (int)friendMap.get(other)
 			.stream()
-			.filter(other -> !checkUserContains(other))
-			.sorted(this::compare)
+			.filter(this::isUserFriend)
+			.count();
+	}
+
+	private boolean isUserFriend(final String friend) {
+		return friendMap.get(user).contains(friend);
+	}
+
+	public List<String> getRecommendedUsers() {
+		return recommendScore.keySet()
+			.stream()
+			.filter(this::isFriendToRecommend)
+			.sorted(this::compareScore)
+			.limit(RECOMMEND_USER_LIMIT)
 			.collect(Collectors.toList());
 	}
 
-	private int compare(String s1, String s2) {
-		int s1Score = getRecommendationScore(s1);
-		int s2Score = getRecommendationScore(s2);
+	private boolean isFriendToRecommend(String other) {
+		return !isUserFriend(other)
+			&& recommendScore.get(other) != 0;
+	}
+
+	private int compareScore(String s1, String s2) {
+		int s1Score = recommendScore.get(s1);
+		int s2Score = recommendScore.get(s2);
 
 		if (s1Score == s2Score) {
 			return s1.compareTo(s2);
 		}
 		return s2Score - s1Score;
-	}
-
-	public int getRecommendationScore(final String other) {
-		return getNumberOfFriendsKnowWith(other) * RULE_ONE_POINT
-			+ scoreMap.get(other);
 	}
 }

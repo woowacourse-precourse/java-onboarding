@@ -8,6 +8,6 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         FriendRecommendationSystem system
             = new FriendRecommendationSystem(user, friends, visitors);
-        return system.getRecommendationUsers();
+        return system.getRecommendedUsers();
     }
 }

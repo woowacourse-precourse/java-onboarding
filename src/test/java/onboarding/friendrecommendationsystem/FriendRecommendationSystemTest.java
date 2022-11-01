@@ -25,13 +25,6 @@ public class FriendRecommendationSystemTest {
 	static FriendRecommendationSystem system
 		= new FriendRecommendationSystem(user, friends, visitors);
 
-	@DisplayName("특정 유저의 친구 목록 반환 테스트")
-	@Test
-	void 친구_목록_반환() {
-		List<String> friends = system.getFriendsOf("mrko");
-		assertThat(friends).isEqualTo(List.of("donut", "shakevan"));
-	}
-
 	@DisplayName("사용자와 함께 아는 친구의 수 반환 테스트")
 	@Test
 	void 함계_아는_친구_수() {
@@ -46,26 +39,10 @@ public class FriendRecommendationSystemTest {
 		).isEqualTo(0);
 	}
 
-	@DisplayName("특정 유저에 대한 추천 점수 반환 테스트")
-	@Test
-	void 추천_점수_반환() {
-		assertThat(
-			system.getRecommendationScore("andole")
-		).isEqualTo(20);
-
-		assertThat(
-			system.getRecommendationScore("jun")
-		).isEqualTo(20);
-
-		assertThat(
-			system.getRecommendationScore("bedi")
-		).isEqualTo(3);
-	}
-
 	@DisplayName("추천 친구 목록 반환 테스트")
 	@Test
 	void 추천_친구_목록() {
-		List<String> result = system.getRecommendationUsers();
+		List<String> result = system.getRecommendedUsers();
 		assertThat(result).isEqualTo(List.of("andole", "jun", "bedi"));
 	}
 }
