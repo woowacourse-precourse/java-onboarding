@@ -48,6 +48,15 @@ public class Problem6 {
                 return Collections.emptyList();
             }
             //예외사항 5 : 닉네임은 한글만 가능하다.
+            for (int i = 0 ; i < nickNameLength ; i++) {
+                char unicode = nickName.charAt(i);
+
+                if (unicode<'\uAC00' || unicode >'\uD7AF'){
+                    System.out.println("please, Enter Korean Nickname (complete word)");
+                    return Collections.emptyList();
+                }
+
+            }
 
 
 
