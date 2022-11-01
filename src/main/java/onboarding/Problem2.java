@@ -13,13 +13,17 @@ public class Problem2 {
 
         for (int i = 1; i < cryptogram.length(); i++) {
             curDuplicated = isCurDuplicated(cryptogram, i);
-
-            if (!curDuplicated && !prevDuplicated) {
-                result += cryptogram.charAt(i - 1);
-            }
+            result = getNotDuplicatedChar(curDuplicated, prevDuplicated, cryptogram.charAt(i-1));
             prevDuplicated = curDuplicated;
         }
         return result;
+    }
+
+    private static String getNotDuplicatedChar(Boolean curDuplication, Boolean prevDuplication, char previous) {
+        if (!curDuplication && !prevDuplication) {
+            return String.valueOf(previous);
+        }
+        return "";
     }
 
     private static boolean isCurDuplicated(String cryptogram, int i) {
