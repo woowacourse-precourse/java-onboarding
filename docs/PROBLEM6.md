@@ -21,3 +21,10 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능 목록
+1. 리스트 forms에서 닉네임만 분리한다.
+2. 각 닉네임 별로 2글자 이상 문자를 만들어 다른 닉네임에 있는지 확인한다.
+3. 있다면 리스트 duplicate 에 추가한다.
+4. 리스트 duplicate의 각 요소에 해당하는 이메일을 forms에서 가져와 answer에 추가한다.
+5. 이메일을 오름차순으로 정렬한다.

@@ -24,3 +24,11 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능 목록
+1. user 와 친구인 string을 리스트 friends에서 가져와 리스트 together에 추가한다.
+2. together가 포함하지 않는 string이 friends에 있는지 확인한다.
+3. 있다면 map에 10점으로 추가하고, map 에 이미 존재하면 10점을 추가한다.
+4. 리스트 visitor의 각 요소에 대해 map 에 값을 1로 추가한다.
+5. map에 이미 존재하면 해당 요소의 값에 1을 더한다.
+6. 추천점수가 내림차순이 되도록 정렬하고, 추천점수가 같은 경우는 이름순으로 정렬한다.
