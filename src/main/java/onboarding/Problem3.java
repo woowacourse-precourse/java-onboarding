@@ -6,7 +6,6 @@ import java.util.List;
 public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
-        List<Integer> numberList = new ArrayList<>();
 
         for (int i = 1; i <= number; i++) {
             answer += countClaps(putDigitsToList(i));
@@ -26,16 +25,15 @@ public class Problem3 {
     public static int countClaps(List<Integer> numberList) {
         int clap = 0;
         for (int number : numberList) {
-            clap += isThreeSixNine(number, clap);
+            clap += isThreeSixNine(number);
         }
         return clap;
     }
 
-    public static int isThreeSixNine(int number, int clap) {
+    public static int isThreeSixNine(int number) {
         if (number == 3 || number == 6 || number == 9) {
             return 1;
         }
         return 0;
     }
-
 }
