@@ -16,7 +16,7 @@ public class Problem3 {
             // 0이 될때까지 반복
             while (temp != 0) {
                 // 3, 6, 9가 존재하는 경우
-                if (temp % 10 == 3 || temp % 10 == 6 || temp % 10 == 9){
+                if (temp % 10 == 3 || temp % 10 == 6 || temp % 10 == 9) {
                     cnt++;
                 }
                 temp /= 10;
