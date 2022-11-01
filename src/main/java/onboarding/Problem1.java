@@ -35,6 +35,7 @@ class Problem1 {
         int leftPage = pageList.get(LEFT_IDX);
         int rightPage = pageList.get(RIGHT_IDX);
 
+        if (validateLeftPageOddAndRightPageEven(leftPage, rightPage) == false) return -1;
         if (validateAdjacentPage(leftPage, rightPage) == false) return -1;
 
         int leftScore = getLargerValue(leftPage);
@@ -77,6 +78,14 @@ class Problem1 {
 
     private static Boolean validateAdjacentPage(int leftPage, int rightPage) {
         if (rightPage - leftPage != 1) {
+            return false;
+        }
+
+        return true;
+    }
+
+    private static Boolean validateLeftPageOddAndRightPageEven(int leftPage, int rightPage) {
+        if (leftPage % 2 == 0 || rightPage % 2 == 1) {
             return false;
         }
 
