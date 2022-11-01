@@ -14,7 +14,8 @@ public class Problem3 {
 
     private static int getTotalCount(int number) {
         return IntStream.rangeClosed(1, number)
-            .reduce(ZERO, (total, value) -> total + getCount(value));
+            .map(Problem3::getCount)
+            .sum();
     }
 
     private static int getCount(int number) {
