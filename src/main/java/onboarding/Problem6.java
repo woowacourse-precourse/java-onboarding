@@ -39,7 +39,7 @@ public class Problem6 {
             }
         }
 
-        //idx에 아닌데 index 값을 사용하기 위해 resultIdx로 copy
+        //idx에 저장된 index 값을 사용하기 위해 resultIdx로 copy
         List<Integer> resultIdx = new ArrayList<>();
         Iterator iter =idx.iterator();
         while(iter.hasNext()){
