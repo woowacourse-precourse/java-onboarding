@@ -43,4 +43,6 @@ public class Problem2 {
     | 4     | o   | _brow   |
     | 5     | n   | _brown  |
      */
+
+    public static void main(String[] args) {}
 }

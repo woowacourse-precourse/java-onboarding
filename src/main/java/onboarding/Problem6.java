@@ -59,4 +59,6 @@ public class Problem6 {
         Collections.sort(newList);
         return newList;
     }
+
+    public static void main(String[] args) {}
 }

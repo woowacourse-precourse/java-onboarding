@@ -81,4 +81,6 @@ public class Problem7 {
         }
         return recommendation;
     }
+
+    public static void main(String[] args) {}
 }

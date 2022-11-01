@@ -60,4 +60,6 @@ class Problem1 {
         }
         return Math.max(sum, product);
     }
+
+    public static void main(String[] args) {}
 }

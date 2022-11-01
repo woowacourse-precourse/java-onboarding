@@ -26,4 +26,6 @@ public class Problem4 {
         }
         return String.valueOf(wordArray);
     }
+
+    public static void main(String[] args) {}
 }
