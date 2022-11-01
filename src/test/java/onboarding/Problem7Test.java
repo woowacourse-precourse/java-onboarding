@@ -125,4 +125,39 @@ class Problem7Test {
 
 		assertThat(result).isEqualTo(expected);
 	}
+
+	@DisplayName("user 의 timeline 에 방문한 모든 사람들에게 1점 부여하는 기능 테스트")
+	@Test
+	void give1ScoreToVisitingUserTimeline() {
+		// given : 친구관계 그래프 생성, 추천친구 점수 초기화, 방문한 이름 목록 이 주어졌을 때
+		List<List<String>> friends = List.of(
+				List.of("a", "b"),
+				List.of("b", "c"),
+				List.of("heap", "c"),
+				List.of("heap", "fork"),
+				List.of("heap", "a"),
+				List.of("f", "fork")
+		);
+		Problem7.makeFriendRelationGraph(friends); // 친구관계 그래프 생성
+		Problem7.initRecommendationScores(); // 추천친구 점수 초기화
+		final List<String> visitors = List.of("new", "spy", "a", "a", "f", "heap", "heap", "c");
+
+		// when : user timeline 에 방문한 친구들에게 1점 부과
+		Problem7.giveScoresToFriendsWhoVisitUserTimeline(visitors);
+
+		// then : 방문한 사람들에게 1점 부여된다
+		Map<String, Integer> result = Problem7.recommendationScores;
+		final Map<String, Integer> expected = new HashMap<>() {{
+			put("a", 2);
+			put("b", 0);
+			put("c", 1); // 일단 1점씩 모두 부여한다.
+			put("f", 1);
+			put("fork", 0);
+			put("heap", 2);
+			put("new", 1);
+			put("spy", 1);
+		}};
+
+		assertThat(result).isEqualTo(expected);
+	}
 }
