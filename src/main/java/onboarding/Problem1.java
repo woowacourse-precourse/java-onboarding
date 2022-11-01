@@ -4,7 +4,14 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        if (!(exception(pobi) && exception(crong))) {
+            return -1;
+        }
+
+        int pobiScore = score(pobi);
+        int crongScore = score(crong);
+        int answer = win(pobiScore, crongScore);
+
         return answer;
     }
     public static boolean exception(List<Integer> pages){
@@ -16,11 +23,7 @@ class Problem1 {
             return false;
         }else if (pages.get(1) - pages.get(0) != 1) {
             return false;
-        }else if (pages.get(0) % 2 != 1 || pages.get(1) % 2 != 0){
-            return false;
-        }else{
-            return true;
-        }
+        }else return pages.get(0) % 2 == 1 && pages.get(1) % 2 == 0;
     }
     public static int score(List<Integer> pages) {
         int add;
