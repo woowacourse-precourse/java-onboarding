@@ -28,6 +28,9 @@ public class Problem7 {
 
         // 방문 점수 처리
         countVisitScore(visitors);
+
+        // 함께 아는 친구 점수 처리
+        countFriendsScore(user);
         return Collections.emptyList();
     }
 
@@ -60,6 +63,15 @@ public class Problem7 {
         for (String s : visitors) {
             score.putIfAbsent(s, 0);
             score.put(s, score.get(s) + 1);
+        }
+    }
+
+    // 함께 아는 친구 점수 처리
+    static void countFriendsScore (String user) {
+        for (String s1 : friendsForOne.get(index.get(user))) {
+            for (String s2 : friendsForOne.get(index.get(s1))) {
+                score.put(s2, score.get(s2) + 10);
+            }
         }
     }
 }
