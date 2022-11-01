@@ -18,15 +18,14 @@ public class Problem4 {
     }
 
     private static char convertAlphabet(char alphabet) {
-        if (alphabet == ' ') {
-            return alphabet;
-        }
         int asciiNumber = alphabetToAscii(alphabet);
-        if (isAlphabetUpperCase(alphabet)) {
-            return asciiToAlphabet(155 - asciiNumber);
-        } else {
-            return asciiToAlphabet(219 - asciiNumber);
-        }
+        if (asciiNumber >= 65 && asciiNumber <= 90 || asciiNumber >= 97 && asciiNumber <= 122)
+            if (isAlphabetUpperCase(alphabet)) {
+                return asciiToAlphabet(155 - asciiNumber);
+            } else {
+                return asciiToAlphabet(219 - asciiNumber);
+            }
+        return alphabet;
     }
 
     private static String concatAlphabet(String word) {
