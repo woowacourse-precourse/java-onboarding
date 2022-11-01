@@ -10,6 +10,18 @@ import java.util.List;
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
+        System.out.println(forms);
+        System.out.println(forms.get(0));
+        System.out.println((forms.get(0)).get(0));
+
+        String a = (forms.get(0)).get(1); //제이엠
+        String b = (forms.get(1)).get(1); //제이슨
+
+        if ((a.charAt(0) == b.charAt(0)) && (a.charAt(1) == a.charAt(1))) {
+            System.out.println(1);
+        }
+
+
         return answer;
     }
 }
