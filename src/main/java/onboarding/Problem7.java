@@ -54,4 +54,13 @@ public class Problem7 {
             updateScore(scoreMap, person, 1);
         }
     }
+    public static void scoreFriendsOfUser(String user,ArrayList<String> friendsOfUser,HashMap<String, Integer> scoreMap) {
+        String person;
+        for (int i = 0; i < friendsOfUser.size(); i++) {
+            person = friendsOfUser.get(i);
+            scoreMap.replace(person, 0); // user의 친구는 추천하지 않는다
+        }
+        scoreMap.replace(user, 0);
+    }
+
 }
