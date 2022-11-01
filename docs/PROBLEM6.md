@@ -21,3 +21,21 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+# ----------
+## 문제3
+
+### 크루
+- 1~10000명이하
+
+### 이메일
+- email.com 도메인으로만 제한한다. 
+- 길이는 11자 이상 20자 미만이다.
+
+### 닉네임
+- 한글만 가능
+- 길이는 1자 이상 20자 미만이다.
+
+
+
+# ----------
