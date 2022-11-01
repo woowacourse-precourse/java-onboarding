@@ -26,7 +26,7 @@
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
 
 ### 필요 기능
-- 모든 사람의 정보를 저장한 해시맵. key는 이름. value는 점수. static.
+- ✅ 모든 사람의 정보를 저장한 해시맵. key는 이름. value는 점수. static.
 - "user와 함께 아는 친구의 수 점수"를 매기는 함수
 - user의 친구를 hashset에 저장해서 반환하는 함수
 - "visitors 점수"를 매기는 함수

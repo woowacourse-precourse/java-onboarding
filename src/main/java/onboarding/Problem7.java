@@ -3,10 +3,16 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
-    HashMap<String, Integer> personScore = new HashMap<>();
+    private static HashMap<String, Integer> personScore = new HashMap<>();
 
     private static void makeMapOfPersonScore(List<List<String>> friends, List<String> visitors) {
-
+        for(List<String> friend: friends) {
+            personScore.put(friend.get(0), 0);
+            personScore.put(friend.get(1), 0);
+        }
+        for(String visitor: visitors) {
+            personScore.put(visitor, 0);
+        }
     }
 
     private static HashSet<String> getUserFriends(List<List<String>> friends) {
