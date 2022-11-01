@@ -29,11 +29,14 @@ class Problem1 {
         // 첫 페이지, 마지막 페이지 예외 처리
         if (pobi.get(0) == 1 || crong.get(0) == 1 || pobi.get(1) == 400 || crong.get(1) == 400)
             return -1;
-        // 페이지가 제대로 입력되지 않을 때 예외 처리
+        // 왼쪽 페이지가 홀수가 아니거나 오른쪽 페이지가 짝수가 아니면 예외 처리
         if (pobi.get(1) % 2 != 0  || pobi.get(0) % 2 != 1 || crong.get(1) % 2 != 0 || crong.get(0) % 2 != 1)
             return -1;
         // pobi와 crong의 길이가 2가 아니면 에외 처리
         if (pobi.size() != 2 || crong.size() != 2)
+            return -1;
+        // pobi와 crong의 페이지를 펼쳤을 때 양쪽 페이지가 연결되있지 않을 때 예외 처리
+        if (pobi.get(1) - pobi.get(0) > 1 || crong.get(1) - crong.get(0) > 1)
             return -1;
 
         return answer;
