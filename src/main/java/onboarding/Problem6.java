@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 
 // 닉네임: 두 글자 이상의 문자가 연속적으로 같으면 중복
@@ -22,19 +23,24 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         HashMap<String, List<String>> all_pos = new HashMap<String, List<String>>();
+        HashSet<String> filter = new HashSet<>(); // 중복 제거용 집합
         
         for (List <String> data: forms) {
         	String email = data.get(0);
         	String name = data.get(1);
-        	System.out.printf("%s - %s\n",email, name);
         	for (int i=0; i<name.length() - 1;i++) {
         		String temp = String.valueOf(name.charAt(i)) + String.valueOf(name.charAt(i + 1));
-        		System.out.println(temp);
         		if (!all_pos.containsKey(temp)) { // 두글자가 이미 키로 저장되어 있지 않으면 새로운 빈리스트 생성
         			all_pos.put(temp, new ArrayList<String>()); // 두글자-빈리스트 매핑        			
         		}
         		all_pos.get(temp).add(email); // 빈리스트에 이메일 추가
-        		System.out.println(all_pos);
+        	}
+        }
+        
+        for(String key: all_pos.keySet()) { // 중복되는 닉네임을 가진 이메일들을 집합에 넣어줌
+        	List<String> email_list = all_pos.get(key);
+        	if (email_list.size() > 1) { 
+        		filter.addAll(all_pos.get(key));
         	}
         }
         return answer;
