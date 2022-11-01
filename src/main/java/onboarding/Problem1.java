@@ -27,6 +27,15 @@ class Problem1 {
             crongRightPage = crong.get(1);
         }
 
+        /* 위의 메서드들을 합쳐 모두 true인지 확인하는 메서드 */
+        private boolean checkException() {
+            if (checkInnerpages() && checkPageRange() && checkLeftRight() && checkPagesDifferences()){
+                return true;
+            }
+
+            return false;
+        }
+
         /* 책의 첫번째 면 혹은 마지막 면이 있는지 확인. 있으면 false, 없으면 true false면 예외사항 */
         private boolean checkInnerpages() {
             if (pobiLeftPage == 1 || pobiRightPage == 400 || crongLeftPage == 1 || crongRightPage ==400){
@@ -76,15 +85,6 @@ class Problem1 {
 
             return false;
         }
-
-        /* 위의 메서드들을 합쳐 모두 true인지 확인하는 메서드 */
-        private boolean checkException() {
-            if (checkInnerpages() && checkPageRange() && checkLeftRight() && checkPagesDifferences()){
-                return true;
-            }
-
-            return false;
-        }
     }
 
     private static class Game {
@@ -98,6 +98,22 @@ class Problem1 {
             pobiRightPage = pobi.get(1);
             crongLeftPage = crong.get(0);
             crongRightPage = crong.get(1);
+        }
+
+        /* 최종 승자 판별 */
+        private int play(){
+            int pobi = getMax(pobiLeftPage, pobiRightPage);
+            int crong = getMax(crongLeftPage, crongRightPage);
+
+            if (pobi>crong) {
+                return 1;
+            }
+
+            if (pobi < crong) {
+                return 2;
+            }
+
+            return 0;
         }
 
         /* 매개변수로 주어진 숫자 문자열의 모든 수의 합 */
@@ -130,22 +146,6 @@ class Problem1 {
             result = Math.max(result,mutiply(rightPageString));
 
             return result;
-        }
-
-        /* 최종 승자 판별 */
-        private int play(){
-            int pobi = getMax(pobiLeftPage, pobiRightPage);
-            int crong = getMax(crongLeftPage, crongRightPage);
-
-            if (pobi>crong) {
-                return 1;
-            }
-
-            if (pobi < crong) {
-                return 2;
-            }
-
-            return 0;
         }
     }
 }
