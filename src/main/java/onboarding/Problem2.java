@@ -9,8 +9,6 @@ import java.util.Stack;
  */
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-
         Stack<Character> password = new Stack<>();
 
         char[] cryptogramChar = cryptogram.toCharArray();
@@ -34,6 +32,16 @@ public class Problem2 {
 
         }
 
-        return answer;
+        return stackToString(password);
+    }
+
+    public static String stackToString(Stack<Character> password){
+        StringBuilder letters = new StringBuilder();
+
+        for(char letter : password){
+            letters.append(letter);
+        }
+
+        return letters.toString();
     }
 }
