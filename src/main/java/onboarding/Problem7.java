@@ -54,4 +54,26 @@ public class Problem7 {
     private static boolean isValidFriendsLength(List<List<String>> friends) {
         return friends.size() >= MIN_FRIENDS_LENGTH && friends.size() <= MAX_FRIENDS_LENGTH;
     }
+
+    private static void isValidIdLengthAndIdSmallCaseRegex(String user, List<List<String>> friends, List<String> visitors) {
+        if (!(user.length() >= MIN_FRIEND_ID_LENGTH && user.length() <= MAX_FRIEND_ID_LENGTH))
+            throw new IllegalArgumentException("아이디의 길이는 1~30 글자입니다.");
+        if (!(user.matches(LOWERCASE_REG)))
+            throw new IllegalArgumentException("아이디는 소문자로만 지을 수 있습니다.");
+        for (List<String> friend : friends) {
+            for (String id : friend) {
+                if (!(id.length() >= MIN_FRIEND_ID_LENGTH && id.length() <= MAX_FRIEND_ID_LENGTH)) {
+                    throw new IllegalArgumentException("아이디의 길이는 1~30 글자입니다.");
+                }
+                if (!id.matches(LOWERCASE_REG))
+                    throw new IllegalArgumentException("아이디는 소문자로만 지을 수 있습니다.");
+            }
+        }
+        for (String visitor : visitors) {
+            if (!(visitor.length() >= MIN_FRIEND_ID_LENGTH && visitor.length() <= MAX_FRIEND_ID_LENGTH))
+                throw new IllegalArgumentException("아이디의 길이는 1~30 글자입니다.");
+            if (!visitor.matches(LOWERCASE_REG))
+                throw new IllegalArgumentException("아이디는 소문자로만 지을 수 있습니다.");
+        }
+    }
 }
