@@ -30,6 +30,7 @@ public class Problem7 {
 
         isFriend(user, friends);
         isAcrossFriend(user, friends);
+        checkVisitor(user, visitors);
 
         return answer;
     }
@@ -73,5 +74,14 @@ public class Problem7 {
         scoreList.put(person, scoreList.getOrDefault(person, 0) + score);
     }
 
+    /** 방문자 확인 **/
+    private static void checkVisitor(String user, List<String> visitors) {
+        for (String visitor : visitors) {
+            /* user가 아니며, user친구 목록에 없는 사람 */
+            if (!user.equals(visitor) && !userFriend.contains(visitor)) {
+                getScore(visitor, 1);
+            }
+        }
+    }
 
 }
