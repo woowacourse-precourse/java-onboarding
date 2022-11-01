@@ -2,10 +2,28 @@ package onboarding;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.*;
 
 public class Problem7 {
+
+    static Map<String, Integer> friendPoint;
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        friendPoint = new HashMap<>(); // 친밀도 배열 <다른유저, usesr와 친밀도>
+
+        // 친구관계
+        List<String> oldFriends = getOldFriends(user, friends);
+        for (String oldFriend : oldFriends) {
+            NewFriends(user, friends, oldFriend);
+        }
+
+        // 방문자 확인 함수
+        checkVisitors(visitors);
+
+        // 친구 추천 정렬
+        return recommandUser(user, oldFriends, friendPoint);
+    }
+
     // 추천점수 1이상, 이미 동일한 친구 관계가 아닌 경우 List 반환
     private static List<String> recommandUser(String user, List<String> oldFriends, Map<String, Integer> userFriends) {
         List<String> answer = new ArrayList<>();
