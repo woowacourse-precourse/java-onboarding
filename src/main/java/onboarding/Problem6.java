@@ -48,7 +48,6 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         answer = returnDuplicatedNickname(forms);   // 닉네임 중복 반환 메서드 실행
-        System.out.println(answer); // 결과 확인 (임시)
         return answer;
     }
 

@@ -30,7 +30,6 @@ public class Problem4 {
     public static String solution(String word) {
         String answer = "";
         answer = transWords(word);
-        System.out.println("Success");
         return answer;
     }
 

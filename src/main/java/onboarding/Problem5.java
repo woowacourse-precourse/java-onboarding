@@ -27,7 +27,6 @@ public class Problem5 {
     public static List<Integer> solution(int money) {
         List<Integer> answer = Collections.emptyList();
         answer = countMoney(money);
-        System.out.println(answer); // 결과 확인(임시)
         return answer;
     }
 

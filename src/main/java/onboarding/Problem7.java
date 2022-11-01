@@ -40,7 +40,6 @@ public class Problem7 {
 //
         List<String> answer = Collections.emptyList();
         answer = calFinalScore(user, friends, visitors);
-        System.out.println(answer); // 결과 출력 (임시)
         return answer;
     }
 
