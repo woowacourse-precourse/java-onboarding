@@ -65,19 +65,5 @@ public class Problem2 {
         return answer;
     }
 
-    public static void main(String[] args) {
-        String c ="browoanoommnaon";
-
-//        System.out.println("solve    "+solution(c));
-
-        c ="zyelleyz";
-        solution(c);
-//
-//        c ="zyelleyz";
-//        c = c.substring(0, 0);
-//        System.out.println(c);
-//        for (int i = 1; i < 0; i++) {
-//        }
-        }
     }
 
