@@ -41,7 +41,7 @@ class Problem1 {
 
         while (integer > 0) {
             ret += integer % 10;
-            integer=integer/10;
+            integer = integer / 10;
         }
 
         return ret;
@@ -52,9 +52,19 @@ class Problem1 {
 
         while (integer > 0) {
             ret *= integer % 10;
-            integer=integer/10;
+            integer = integer / 10;
         }
 
         return ret;
+    }
+
+    private static int getScore(List<Integer> list) {
+        int left = list.get(0);
+        int right = list.get(1);
+
+        int leftScore = Math.max(add(left), multiply(left));
+        int rightScore = Math.max(add(right), multiply(right));
+
+        return Math.max(leftScore, rightScore);
     }
 }
