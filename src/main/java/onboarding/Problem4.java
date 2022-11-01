@@ -18,7 +18,7 @@ public class Problem4 {
             }
             tmp = Math.abs(ascii - chars[i]);
             reverse = (ascii + 25) - tmp;
-            answer = answer + String.valueOf((char) reverse);
+            answer = answer + ((char) reverse);
         }
         return answer;
     }
