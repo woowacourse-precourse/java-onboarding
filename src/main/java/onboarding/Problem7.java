@@ -4,8 +4,21 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        Map<String, Integer> recommendScore = new HashMap<>();
+        Set<String> neighbor = getNeighbor(user, friends);
+
+        Map<String, Integer> fofScore = getFOFScore(user, friends, neighbor);
+        Map<String, Integer> visitorScore = getVisitScore(visitors);
+
+        for (Map.Entry<String, Integer> elem : fofScore.entrySet()) {
+            if (!neighbor.contains(elem.getKey()))
+                recommendScore.put(elem.getKey(), elem.getValue());
+        }
+
+        for (Map.Entry<String, Integer> elem : visitorScore.entrySet()) {
+            if (!neighbor.contains(elem.getKey()))
+                recommendScore.put(elem.getKey(), elem.getValue());
+        }
     }
 
     // 친구별 방문 수 반환
