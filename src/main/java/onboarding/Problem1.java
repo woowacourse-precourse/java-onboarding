@@ -17,7 +17,7 @@ class Problem1 {
         return answer;
     }
 
-    public static int maxScore(List<Integer> name) {
+    private static int maxScore(List<Integer> name) {
 
         if (name.get(0)%2==0 || name.get(1)%2==1)
             return -10;
@@ -54,7 +54,7 @@ class Problem1 {
         return rightMaxScore;
     }
 
-    public static int winResult(int poby, int crong) {
+    private static int winResult(int poby, int crong) {
         if (poby > crong)
             return 1;
         else if (crong < poby)
