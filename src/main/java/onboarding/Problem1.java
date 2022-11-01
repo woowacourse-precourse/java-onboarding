@@ -82,7 +82,7 @@ class Problem1 {
 
         //최대 값 비교
         if(pobiMaxNum > crongMaxNum) {
-            answer = -1;
+            answer = 1;
         } else if (pobiMaxNum < crongMaxNum) {
             answer = 2;
         } else if (pobiMaxNum == crongMaxNum) {
