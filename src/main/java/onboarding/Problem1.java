@@ -149,12 +149,12 @@ class Problem1 {
         int a, b;
         
         a = pobi_number.get(0);
-        b = pobi_number.get(1);//器厚 公搬己
+        b = pobi_number.get(1);
         
         int result1 = a - b;
         
         a = crong_number.get(0);
-        b = crong_number.get(1);//农氛 公搬己
+        b = crong_number.get(1);
         int result2 = a - b;
         
         if(result1 == -1)
