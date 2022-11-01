@@ -8,7 +8,7 @@ public class Problem2 {
      */
     public static String solution(String cryptogram) {
         if (!isValid(cryptogram)) return  "false";
-        while(isDuplicate(cryptogram) != -1) {
+        while (isDuplicate(cryptogram) != -1) {
             cryptogram = deleteDuplicate(cryptogram);
         }
         return cryptogram;

@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.List;
-import java.util.Map;
 
 class Problem1 {
 
@@ -40,7 +39,7 @@ class Problem1 {
         // 왼쪽 페이지가 홀수, 오른쪽 페이지가 짝수인지 검사
         if (left % 2 != 1 || right % 2 != 0) return false;
         // 연속된 페이지인지 검사
-        if (right - left != 1) return  false;
+        if (right - left != 1) return false;
         return true;
     }
     /**
@@ -62,7 +61,7 @@ class Problem1 {
         int sum = 0;
         int mul = 1;
 
-        while(page > 0) {
+        while (page > 0) {
             int digit = page % 10;
             sum += digit;
             mul *= digit;
