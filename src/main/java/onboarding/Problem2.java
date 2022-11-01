@@ -3,15 +3,19 @@ package onboarding;
 import java.util.Stack;
 
 public class Problem2 {
-    private static Stack<Character> stack = new Stack<>();
-    static boolean flag = false;
+    private static Stack<Character> stack;
+    static boolean flag;
 
     public static String solution(String cryptogram) {
         String answer = "answer";
+        stack = new Stack<>();
+        flag = false;
         for (int i = 0; i < cryptogram.length(); i++) {
             pushOrNot(cryptogram.charAt(i));
         }
-        if (flag) stack.pop();
+        if (flag && !stack.isEmpty()) {
+            stack.pop();
+        }
 
         StringBuffer sb = new StringBuffer();
         while (!stack.isEmpty()) {
@@ -31,7 +35,7 @@ public class Problem2 {
             stack.pop();
             flag = false;
         }
-        if (stack.peek() == c) {
+        if (!stack.isEmpty() && stack.peek() == c) {
             flag = true;
             return;
         }
