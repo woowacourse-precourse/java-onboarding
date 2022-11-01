@@ -21,16 +21,20 @@ public class Problem6 {
         return answer;
     }
 
+//    public HashMap<String, String> initAMap(List<List<String>> forms) {
+//        HashMap<String, String> nameMap = new HashMap<>();
+//        for (List<String> s : forms) {
+//            nameMap = addMapIterList(nameMap, s);
+//        }
+//        return nameMap;
+//    }
+
     public HashMap<String, String> initNameMap(List<List<String>> forms) {
         HashMap<String, String> nameMap = new HashMap<>();
         for (List<String> s : forms) {
-            nameMap = addMapIterList(nameMap, s);
+            nameMap.put(s.get(0), s.get(1));
         }
         return nameMap;
     }
 
-    private HashMap<String, String> addMapIterList(HashMap<String, String> map, List<String> list) {
-        map.put(list.get(0), list.get(1));
-        return map;
-    }
 }
