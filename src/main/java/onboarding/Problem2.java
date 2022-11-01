@@ -15,8 +15,12 @@ public class Problem2 {
             return "";
         }
 
+        // 검증 코드 분리
         String validString = validation.getValidString();
+
+        // 중복제거 코드 분리
         duplicatedStringRemoveProcess(validString);
+
         String result = String.join("", stack);
         stack.clear();
         return result;
@@ -52,6 +56,7 @@ public class Problem2 {
         return isNotEmpty() && isEquals(splitData);
     }
 
+    // 너무 잘게 쪼게지는 않는 것이 좋을 거 같다
     private static void removeDuplicatedString() {
         stack.pop();
     }

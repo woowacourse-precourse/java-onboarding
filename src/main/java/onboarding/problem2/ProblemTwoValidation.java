@@ -4,6 +4,8 @@ import org.assertj.core.util.Strings;
 
 import static onboarding.problem2.LengthValue.*;
 
+// TODO 유효하지 않은 데이터면 예외를 던지는게 좋을 듯하다.
+//  클라이언트에서 예외 처리를 진행하면 좋을 거 같다.
 public class ProblemTwoValidation {
 
     private String cryptogram;
