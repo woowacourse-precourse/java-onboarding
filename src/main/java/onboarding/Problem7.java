@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     /*
@@ -55,5 +52,21 @@ public class Problem7 {
         userScore += score;
         scoreBoard.put(user, userScore);
     }
-    // 사용자를 점수-이름 순으로 정렬해주는 함수 sortUserList()
+    // 사용자를 점수-이름 순으로 정렬해주는 함수 sortScoreBoard()
+    private static List<String> sortScoreBoard() {
+        List<String> users = new ArrayList<>(scoreBoard.keySet());
+
+        users.sort(new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                if(scoreBoard.get(o2).compareTo(scoreBoard.get(o1))==0) {
+                    return o1.compareTo(o2);
+                } else {
+                    return scoreBoard.get(o2).compareTo(scoreBoard.get(o1));
+                }
+            }
+        });
+
+        return users;
+    }
 }
