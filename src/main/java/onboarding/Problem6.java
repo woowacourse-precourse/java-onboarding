@@ -1,17 +1,17 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-
         List<String> duplicatedTraineeEmail = new ArrayList<>();
         List<Trainee> validTrainees = validateEmailAndNickname(forms);
 
+        return getEmailOfDuplicatedNicknameTrainee(validTrainees);
 
-        return answer;
     }
 
     private static class Trainee {
@@ -50,4 +50,20 @@ public class Problem6 {
         return email.length() > 10 && email.length() < 20;
     }
 
+    private static List<String> getEmailOfDuplicatedNicknameTrainee(List<Trainee> validTrainees) {
+        HashSet<String> emailSet = new HashSet<String>();
+
+        for (int i = 0; i < validTrainees.size() - 1; i++) {
+            for (int j = i+1; j < validTrainees.size(); j++) {
+                addEmailSetWhenDuplicatedByTwoCharacter(validTrainees.get(i), validTrainees.get(j), emailSet);
+            }
+        }
+        ArrayList<String> emailList = new ArrayList<>(emailSet);
+        Collections.sort(emailList);
+        return emailList;
+    }
+
+    private static void addEmailSetWhenDuplicatedByTwoCharacter(Trainee trainee1, Trainee trainee2, HashSet<String> emailSet) {
+
+    }
 }
