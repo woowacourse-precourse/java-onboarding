@@ -64,7 +64,19 @@ class Problem1 {
             return answer;
         }
 
+        int p=each_mul(pobi.get(0),pobi.get(1));
+        int q=each_sum(pobi.get(0),pobi.get(1));
+        pobi_Max=Math.max(p,q);
+        int p2=each_mul(crong.get(0),crong.get(1));
+        int q2=each_sum(crong.get(0),crong.get(1));
+        crong_Max=Math.max(p2,q2);
 
+        if(pobi_Max>crong_Max)
+            answer=1;
+        else if(pobi_Max<crong_Max)
+            answer=2;
+        else
+            answer=0;
 
 
 
