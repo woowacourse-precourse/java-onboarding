@@ -26,4 +26,34 @@ public class Problem7 {
         userFriends.add(B);
         friendInfoTable.put(A,userFriends);
     }
+
+    private void give10ScoreForNumberOfFriendsKnowWithUser(String user){
+        Set<String> personsInFriendInfoTable =  friendInfoTable.keySet();
+
+        for(String person : personsInFriendInfoTable){
+            if(IsUserOrUserFriend(user,person)) continue;
+
+            scoreInfoTable.put(person,(calculateNumberOfFriendsKnowWithUser(user,person)*10));
+        }
+    }
+
+    private boolean IsUserOrUserFriend(String userName, String personName){
+        return friendInfoTable.get(userName).contains(personName) || personName.equals(userName);
+    }
+
+    private int calculateNumberOfFriendsKnowWithUser(String user, String person){
+        int numberOfFriendsKnowWithUser = 0;
+
+        for(String userFriend : friendInfoTable.get(user)){
+            for(String personFriend : friendInfoTable.get(person)){
+                if(userFriend.equals(personFriend)){
+                    numberOfFriendsKnowWithUser++;
+                    break;
+                }
+            }
+        }
+        return numberOfFriendsKnowWithUser;
+    }
+
+
 }
