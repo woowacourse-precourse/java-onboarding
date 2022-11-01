@@ -14,6 +14,25 @@ public class Problem6 {
     }
 
     /**
+     * 두 글자로 분할한 닉네임이 2개 이상인 닉네임을 가진 크루의 이메일 찾기
+     * @param reduNameList
+     * @param forms
+     * @return List<String>
+     */
+    private static List<String> findEmails(List<String> reduNameList, List<List<String>> forms) {
+        List<String> emailList = new ArrayList<>();
+        for (int i = 0; i < forms.size(); i++) {
+            for(int j=0; j<reduNameList.size(); j++) {
+                if (forms.get(i).get(1).contains(reduNameList.get(j))) {
+                    emailList.add(forms.get(i).get(0));
+                }
+            }
+        }
+        Collections.sort(emailList);
+        return emailList;
+    }
+
+    /**
      * 두 글자로 분할한 닉네임이 2개 이상인 것을 찾기
      * @param nameList
      * @return List<String>
