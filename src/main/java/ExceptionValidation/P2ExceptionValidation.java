@@ -8,7 +8,7 @@ public class P2ExceptionValidation {
 
     public static boolean p2ExceptionValidation(String cryptogram){
 
-        return inputBetween1and1000(cryptogram);
+        return inputBetween1and1000(cryptogram) && inputLowerAlphabet(cryptogram);
 
     }
 
@@ -19,4 +19,13 @@ public class P2ExceptionValidation {
         return true;
     }
 
+    private static boolean inputLowerAlphabet(String cryptogram) {
+        for (int i = 0; i < cryptogram.length(); i++) {
+            char current = cryptogram.charAt(i);
+            if (!('a' <= current && current <= 'z')) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
