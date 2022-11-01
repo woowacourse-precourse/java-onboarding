@@ -17,6 +17,20 @@ public class Problem7 {
         return userFriends;
     }
 
+    public static Map<String, Integer> scoreFriendRelation(String user, Map<String, Integer> candidates, List<String> userFriends, List<List<String>> friendRelation) {
+        for (String userFriend : userFriends) {
+            for (List<String> friends : friendRelation) {
+                for (String friend : friends) {
+                    if (friends.contains(userFriend) && !friend.equals(userFriend) && !friend.equals(user)) {
+                        candidates.put(friend, candidates.get(friend) + 10);
+                    }
+                }
+            }
+        }
+
+        return candidates;
+    }
+
     public static Map<String, Integer> scoreVisitors(Map<String, Integer> candidates, List<String> visitors) {
         for (String visitor : visitors) {
             if (candidates.containsKey(visitor)) {
