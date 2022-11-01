@@ -6,6 +6,26 @@ public class Problem4 {
         return answer;
     }
 
+    private static String reverseAlphabetString(String word){// 문자열의 알파벳 반대 알파벳으로 변환
+        StringBuffer sb = new StringBuffer();
+        char originChar, reversedAlphabet;
+        for(int i=0; i<word.length(); i++ ){
+            originChar = word.charAt(i);
+            if(whatKindOfChar(originChar)==1){// 소문자
+                reversedAlphabet = reverseAlphabetChar(originChar,1);
+                sb.append(reversedAlphabet);
+            }
+            else if(whatKindOfChar(originChar)==2){// 대문자
+                reversedAlphabet=reverseAlphabetChar(originChar, 2);
+                sb.append(reversedAlphabet);
+            }
+            else if(whatKindOfChar(originChar)==-1){// 알파벳 아닌 문자
+                sb.append(originChar);
+            }
+        }
+        return sb.toString();
+    }
+
     private static int whatKindOfChar(char letter){//소문자 알파벳 =1, 대문자 알파벳 = 2, 그외 -1
         if(letter >='a' && letter <='z'){// 소문자 알파벳인 경우
             return 1;
