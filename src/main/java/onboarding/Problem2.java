@@ -23,6 +23,13 @@ public class Problem2 {
         //1글자일때
         if( initSize == 1 ) {
             return cryptogram;
+        }else if( initSize == 2 ) { //2글자일때
+            //2글자가 서로 같으면 빈문자열 리턴
+            if ((arr[0].equals(arr[1]))) {
+                return word;
+            } else { //2글자인데 서로 다르면 그냥 단어 리턴
+                return cryptogram;
+            }
         }
 
         return word;
