@@ -47,3 +47,73 @@ public class Problem6 {
     }
 
 }
+
+
+class Nickname {
+
+    private final String nickname;
+
+    private final List<String> partNickName = new ArrayList<>();
+
+    public Nickname(String nickname) {
+        validateSize(nickname);
+        this.nickname = nickname;
+        cuttingNickname();
+    }
+
+    private void validateSize(String nickname) {
+        if(nickname.length() < 1) {
+            throw new IllegalArgumentException("닉네임은 공백은 불가합니다.");
+        }
+        if(nickname.length() >= 20){
+            throw new IllegalArgumentException("닉네임은 20자 미만으로 입력해주세요");
+        }
+    }
+
+    private void cuttingNickname() {
+        String temp;
+        for (int j = 0; j < this.nickname.length()-1; j++) {
+            temp = this.nickname.substring(j, j + 2);
+            this.partNickName.add(temp);
+        }
+    }
+
+    public String getNickname() {
+        return this.nickname;
+    }
+
+    public List<String> getPartNickName() {
+        return this.partNickName;
+    }
+}
+
+class Email {
+
+    private final String email;
+
+    public Email(String email) {
+        validateSize(email);
+        validateDomain(email);
+        this.email = email;
+    }
+
+    private void validateDomain(String email) {
+        if(!email.matches(".+@email.com")){
+            throw new IllegalArgumentException("이메일을 ~@email.com 형식으로 입력해주세요.");
+        }
+    }
+
+    private void validateSize(String email){
+        if(email.length() < 11) {
+            throw new IllegalArgumentException("이메일은 11자 이상만 가능합니다.");
+        }
+        if(email.length() > 20) {
+            throw new IllegalArgumentException("이메일은 20자 이하만 가능합니다.");
+        }
+    }
+
+    public String getEmail() {
+        return this.email;
+    }
+
+}
