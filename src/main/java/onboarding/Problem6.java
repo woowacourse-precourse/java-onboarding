@@ -32,4 +32,14 @@ public class Problem6 {
         return eachCrew.get(1);
     }
 
+    private static Set<String> nicknameToTokens(String nickname) {
+        Set<String> tokens = new HashSet<>();
+        for (int i = 0; i < nickname.length() - 1; i++) {
+            String extractedToken = nickname.substring(i, i + 2);
+
+            tokens.add(extractedToken);
+        }
+
+        return tokens;
+    }
 }
