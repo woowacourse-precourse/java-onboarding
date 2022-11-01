@@ -1,7 +1,6 @@
 package onboarding;
 
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * 기능 목록
@@ -20,6 +19,25 @@ public class Problem6 {
         HashMap<String, Boolean> answerMap = p6.initAnswerMap(forms);
 
         return answer;
+    }
+
+    public List<String> getDuplicateCandidate(HashMap<String, String> nameMap) {
+        List<String> candidates = new ArrayList<>();
+        for (String value : nameMap.values()) {
+            if (checkNameNotAlreadyAdd(candidates, value)) {
+                candidates.add(value);
+            }
+        }
+        return candidates;
+    }
+
+    public Boolean checkNameNotAlreadyAdd(List<String> candidates, String candidate) {
+        for (String s : candidates) {
+            if (s.equals(candidate)) {
+                return Boolean.FALSE;
+            }
+        }
+        return Boolean.TRUE;
     }
 
     public HashMap<String, Boolean> initAnswerMap(List<List<String>> forms) {
