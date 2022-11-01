@@ -40,13 +40,27 @@ class Problem1 {
     }
 
     private static int addEachDigit(int pageNum) {
-        return 0;
+        int sum = 0;
+        while (pageNum != 0) {
+            sum += pageNum % 10;
+            pageNum /= 10;
+        }
+        return sum;
     }
 
     private static int multiplyEachDigit(int pageNum) {
-        return 0;
+        int product = 1;
+        while (pageNum != 0) {
+            product *= pageNum % 10;
+            pageNum /= 10;
+        }
+        return product;
     }
 
     private static int getBiggerNumber(int numX, int numY) {
+        if (numX > numY) {
+            return numX;
+        }
+        return numY;
     }
 }
