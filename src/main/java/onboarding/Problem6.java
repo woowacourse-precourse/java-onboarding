@@ -11,7 +11,7 @@ public class Problem6 {
         
         String s;
         String ss;
-        ArrayList<String> arr = new ArrayList<>();
+        List<String> arr = new ArrayList<>();
         char[] c = new char[3];
         HashMap<String, Integer> m = new HashMap<>();
         TreeMap<String, String> map = new TreeMap<String, String>();
