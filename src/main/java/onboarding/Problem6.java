@@ -12,6 +12,14 @@ public class Problem6 {
         }
         return ret;
     }
+
+    public static boolean isValidInput(String email, String nickname){
+        String[] arr = email.split("@");
+        if(!arr[1].equals("email.com")) return false;
+        if(email.length() < 11 || email.length() >= 20) return false;
+        if(nickname.length() < 1 || nickname.length() >= 20) return false;
+        return true;
+    }
     //기능 2
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
@@ -22,14 +30,17 @@ public class Problem6 {
             String email = forms.get(i).get(0);
             String nickname = forms.get(i).get(1);
             if(nickname.length() == 1) continue;
+            if(!isValidInput(email, nickname)) continue;
             int count = 0;
             for(int j=2;j<=nickname.length();j++){
                 List<String> target = getSubString(nickname, j);
                 for(int k=i+1;k<forms.size();k++){
-                    String tmp = forms.get(k).get(1);
+                    String mail = forms.get(k).get(0);
+                    String nick = forms.get(k).get(1);
+                    if(!isValidInput(mail, nick)) continue;
                     for(String sub : target) {
-                        if(tmp.contains(sub)) {
-                            result.add(forms.get(k).get(0));
+                        if(nick.contains(sub)) {
+                            result.add(mail);
                             count += 1;
                         }
                     }
