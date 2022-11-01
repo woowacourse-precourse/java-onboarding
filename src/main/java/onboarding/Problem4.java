@@ -6,7 +6,11 @@ package onboarding;
  */
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        StringBuilder answer = new StringBuilder();
+
+        // 1. 문자열의 첫 문자 부터 끝 문자 까지 반복문 실행
+        for(int i=0; i < word.length() ; i++){
+
+        }
     }
 }
