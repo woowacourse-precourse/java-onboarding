@@ -33,9 +33,9 @@ class Problem1 {
         } else return 0;
     }
 
-    public boolean findException(List<Integer> arr) {
-        int leftPage = arr.get(0);
-        int rightPage = arr.get(1);
+    public boolean findException(List<Integer> pages) {
+        int leftPage = pages.get(0);
+        int rightPage = pages.get(1);
         if (leftPage % 2 == 1 && rightPage == leftPage + 1) {
             return leftPage > 1 && rightPage < 400;
         } else {
