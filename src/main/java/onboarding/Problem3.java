@@ -1,8 +1,16 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
+
+        for (int i = 1; i < number+1; i++) {
+            List<Integer> separatedNumbers = separateNumber(i);
+            answer += countClap(separatedNumbers);
+        }
         return answer;
     }
 
@@ -18,7 +26,7 @@ public class Problem3 {
         separatedNumbers.add(num % NOTATION);
         return separatedNumbers;
     }
-
+    
     private static int countClap(List<Integer> numbers){
         int clapCount = 0;
         System.out.println(numbers.toString());
