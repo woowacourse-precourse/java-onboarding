@@ -73,6 +73,13 @@ public class Problem7 {
         }
     }
 
+    public static void SetVisitorScore(List<String> visitors, HashMap<String, Integer> notFriendList)
+    {
+        for (String name : visitors)
+            if (notFriendList.containsKey(name))
+                notFriendList.put(name, notFriendList.get(name) + 1);
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         HashSet<String> friendList = new HashSet<String>();
@@ -81,6 +88,7 @@ public class Problem7 {
         SetNotFriendList(friends, friendList, notFriendList, visitors, user);
 
         SetFriendScore(friends, friendList, notFriendList);
+        SetVisitorScore(visitors, notFriendList);
         return answer;
     }
 }
