@@ -4,14 +4,17 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class Problem7 {
+    private static Map<String, List<String>> friendship;
+    private static Map<String, Integer> idToScore;
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        Map<String, List<String>> friendship = getFriendshipByFriends(friends);
-        Map<String, Integer> scores = calculateScores(user, visitors, friendship);
-        return getRecommendationsUp2Five(sortRecommendations(scores));
+        initFriendshipByFriends(friends);
+        calculateScores(user, visitors);
+        return getRecommendationsUp2Five(sortRecommendations());
     }
 
-    private static Map<String, List<String>> getFriendshipByFriends(List<List<String>> friends) {
-        Map<String, List<String>> friendship = new HashMap<>();
+    private static void initFriendshipByFriends(List<List<String>> friends) {
+        friendship = new HashMap<>();
         for (List<String> friend : friends) {
             String idA = friend.get(0);
             String idB = friend.get(1);
@@ -20,51 +23,49 @@ public class Problem7 {
             friendship.get(idA).add(idB);
             friendship.get(idB).add(idA);
         }
-        return friendship;
     }
 
-    private static Map<String, Integer> calculateScores(String user, List<String> visitors, Map<String, List<String>> friendship) {
-        Map<String, Integer> scores = new HashMap<>();
-        addScoresByFriendship(user, friendship, scores);
-        addScoresByVisitors(user, visitors, friendship, scores);
-        return scores;
+    private static void calculateScores(String user, List<String> visitors) {
+        idToScore = new HashMap<>();
+        addScoresByFriendship(user);
+        addScoresByVisitors(user, visitors);
     }
 
-    private static Map<String, Integer> addScoresByFriendship(String user, Map<String, List<String>> friendship, Map<String, Integer> scores) {
+    private static Map<String, Integer> addScoresByFriendship(String user) {
         for (String id : friendship.keySet()) {
-            if (user.equals(id) || isFriend(user, id, friendship)) {
+            if (user.equals(id) || isFriend(user, id)) {
                 continue;
             }
-            scores.put(id, 10 * countSameFriend(user, id, friendship));
+            idToScore.put(id, 10 * countSameFriend(user, id));
         }
-        return scores;
+        return idToScore;
     }
 
-    private static int countSameFriend(String user, String otherUser, Map<String, List<String>> friendship) {
+    private static int countSameFriend(String user, String otherUser) {
         int sameFriendCnt = 0;
         for (String friend : friendship.get(otherUser)) {
-            if (isFriend(user, friend, friendship)) {
+            if (isFriend(user, friend)) {
                 sameFriendCnt++;
             }
         }
         return sameFriendCnt;
     }
 
-    private static void addScoresByVisitors(String user, List<String> visitors, Map<String, List<String>> friendship, Map<String, Integer> scores) {
+    private static void addScoresByVisitors(String user, List<String> visitors) {
         for (String visitor : visitors) {
-            if (isFriend(user, visitor, friendship)) {
+            if (isFriend(user, visitor)) {
                 continue;
             }
-            scores.put(visitor, scores.getOrDefault(visitor, 0) + 1);
+            idToScore.put(visitor, idToScore.getOrDefault(visitor, 0) + 1);
         }
     }
 
-    private static boolean isFriend(String user, String otherUser, Map<String, List<String>> friendship) {
+    private static boolean isFriend(String user, String otherUser) {
         return friendship.get(user).contains(otherUser);
     }
 
-    private static List<Map.Entry<String, Integer>> sortRecommendations(Map<String, Integer> scores) {
-        return scores.entrySet().stream()
+    private static List<Map.Entry<String, Integer>> sortRecommendations() {
+        return idToScore.entrySet().stream()
                 .sorted((o1, o2) -> o1.getValue() == o2.getValue()
                         ? o1.getKey().compareTo(o2.getKey())
                         : o2.getValue().compareTo(o1.getValue()))
