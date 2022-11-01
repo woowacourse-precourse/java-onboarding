@@ -53,13 +53,13 @@ class Classifier {
   }
 
   String getChangedString() {
-    StringBuilder stringbuilder = new StringBuilder();
+    StringBuilder stringBuilder = new StringBuilder();
     char chunk;
     for (int i = 0; i < classifier.length(); i++) {
       int classifyId = checkUpperLowerElse(classifier.charAt(i));
-      stringbuilder.append(changeChunk(classifyId, classifier.charAt(i)));
+      stringBuilder.append(changeChunk(classifyId, classifier.charAt(i)));
     }
-    return stringbuilder.toString();
+    return stringBuilder.toString();
   }
 
   int checkUpperLowerElse(char chunk) {
