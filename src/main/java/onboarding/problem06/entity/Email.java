@@ -20,4 +20,23 @@ public class Email {
   public static Email from(String email) {
     return new Email(email);
   }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof Email)) {
+      return false;
+    }
+
+    Email email1 = (Email) o;
+
+    return email != null ? email.equals(email1.email) : email1.email == null;
+  }
+
+  @Override
+  public int hashCode() {
+    return email != null ? email.hashCode() : 0;
+  }
 }

@@ -20,4 +20,23 @@ public class NickName {
   public static NickName from(String name) {
     return new NickName(name);
   }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (!(o instanceof NickName)) {
+      return false;
+    }
+
+    NickName nickName = (NickName) o;
+
+    return name != null ? name.equals(nickName.name) : nickName.name == null;
+  }
+
+  @Override
+  public int hashCode() {
+    return name != null ? name.hashCode() : 0;
+  }
 }
