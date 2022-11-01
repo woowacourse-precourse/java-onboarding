@@ -6,71 +6,72 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
 
-        HashMap<String, Integer> map = new HashMap<>();
-        HashSet<String> set = new HashSet<>();
+        HashMap<String, Integer> recFriendScores = new HashMap<>(); //추천 친구별 점수 Map(key: id, val: score)
+        HashSet<String> userFriends = new HashSet<>(); //user의 친구 Set
 
         for (int i = 0; i < friends.size(); i++) {
-            set.add(friends.get(i).get(0));
+            userFriends.add(friends.get(i).get(0));
         }
+
+        //친구의 친구 10점씩
         for (int i = 0; i < friends.size(); i++) {
-            if (!friends.get(i).get(1).equals(user) && !set.contains(friends.get(i).get(1))) {
-                if (map.containsKey(friends.get(i).get(1))) {
-                    int num = map.get(friends.get(i).get(1)) + 10;
-                    map.put(friends.get(i).get(1), num);
+            if (!friends.get(i).get(1).equals(user) && !userFriends.contains(friends.get(i).get(1))) {
+                if (recFriendScores.containsKey(friends.get(i).get(1))) {
+                    int temp = recFriendScores.get(friends.get(i).get(1)) + 10;
+                    recFriendScores.put(friends.get(i).get(1), temp);
                 } else {
-                    map.put(friends.get(i).get(1), 10);
+                    recFriendScores.put(friends.get(i).get(1), 10);
                 }
             }
         }
 
+        //방문자 1점씩
         for (int i = 0; i < visitors.size(); i++) {
-            if (!set.contains(visitors.get(i))) {
-                if (map.containsKey(visitors.get(i))) {
-                    int num = map.get(visitors.get(i)) + 1;
-                    map.put(visitors.get(i), num);
+            if (!userFriends.contains(visitors.get(i))) {
+                if (recFriendScores.containsKey(visitors.get(i))) {
+                    int temp = recFriendScores.get(visitors.get(i)) + 1;
+                    recFriendScores.put(visitors.get(i), temp);
                 } else {
-                    map.put(visitors.get(i), 1);
+                    recFriendScores.put(visitors.get(i), 1);
                 }
             }
         }
-
-        // map 완성 (이름 + 점수)
+        // recFriendScores Map 완성 (이름 + 점수)
 
         // map의 정보를 리스트에 복사.
-        List<Map.Entry<String, Integer>> list = new ArrayList<Map.Entry<String, Integer>>(map.entrySet());
+        List<Map.Entry<String, Integer>> recFriendScoresList = new ArrayList<Map.Entry<String, Integer>>(recFriendScores.entrySet());
 
-        // top5 점수순대로 오름차순 정렬
-        Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
+        // top5 점수순대로 내림차순 정렬
+        Collections.sort(recFriendScoresList, new Comparator<Map.Entry<String, Integer>>() {
             public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
                 return (o2.getValue()).compareTo(o1.getValue());
             }
         });
 
-        // 오름차순 정렬 된 리스트에서 5명 출력
 
-        List<String> list_score = new ArrayList<>();
+        // 같은 점수일 경우 sameScoreId 에 넣어서 오름차순으로 id 출력
+        List<String> sameScoreId = new ArrayList<>();
 
-
-        int score = list.get(0).getValue();
+        int score = recFriendScoresList.get(0).getValue();
         for (int i = 0; i < 5; i++) {
-            if (list.size() - 1 < i || list.get(i).getValue() == 0) {
+            if (recFriendScoresList.size() - 1 < i || recFriendScoresList.get(i).getValue() == 0) {
                 break;
-            } else if (list.get(i).getValue() != score) {
-                Collections.sort(list_score);
-                for (int j = 0; j < list_score.size(); j++) {
-                    answer.add(list_score.get(j));
+            } else if (recFriendScoresList.get(i).getValue() != score) {
+                Collections.sort(sameScoreId);
+                for (int j = 0; j < sameScoreId.size(); j++) {
+                    answer.add(sameScoreId.get(j));
                 }
-                list_score.clear();
+                sameScoreId.clear();
 
-                answer.add(list.get(i).getKey());
-                score = list.get(i).getValue();
+                answer.add(recFriendScoresList.get(i).getKey());
+                score = recFriendScoresList.get(i).getValue();
             } else {
-                list_score.add(list.get(i).getKey());
+                sameScoreId.add(recFriendScoresList.get(i).getKey());
             }
         }
-        if (!list_score.isEmpty()) {
-            for (int i = 0; i < list_score.size(); i++) {
-                answer.add(list_score.get(i));
+        if (!sameScoreId.isEmpty()) {
+            for (int i = 0; i < sameScoreId.size(); i++) {
+                answer.add(sameScoreId.get(i));
             }
         }
 
