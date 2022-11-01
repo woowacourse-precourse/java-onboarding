@@ -93,4 +93,12 @@ public class Problem6 {
     public static List<String> checkEmailDuplication(List<String> emails) {
         return emails.stream().distinct().collect(Collectors.toList());
     }
+
+    public static boolean crewMembersOutOfRangeException(List<List<String>> forms) {
+        if (forms.size() < 1 || forms.size() > 10000) {
+            System.out.println("크루원은 1명부터 10000명까지 입니다.");
+            return true;
+        }
+        return false;
+    }
 }
