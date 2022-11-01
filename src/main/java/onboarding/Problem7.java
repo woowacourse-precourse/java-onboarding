@@ -20,7 +20,7 @@ public class Problem7 {
         score = new Hashtable<String, Integer>();
     }
 
-    private void addNewNode(String name){
+    private void addNewKey(String name){
         friendsGraph.put(name, new ArrayList<String>());
         score.put(name, 0);
     }
@@ -29,10 +29,10 @@ public class Problem7 {
             String f1 = friends.get(i).get(0);
             String f2 = friends.get(i).get(1);
             if(!friendsGraph.containsKey(f1)){
-                addNewNode(f1);
+                addNewKey(f1);
             }
             if(!friendsGraph.containsKey(f2)){
-                addNewNode(f2);
+                addNewKey(f2);
             }
             friendsGraph.get(f1).add(f2);
             friendsGraph.get(f2).add(f1);
@@ -58,7 +58,7 @@ public class Problem7 {
     private void scoring1(List<String> visitors){
         for(int i = 0; i < visitors.size(); ++i){
             if(!score.containsKey(visitors.get(i))){
-                addNewNode(visitors.get(i));
+                addNewKey(visitors.get(i));
             }
             score.replace(visitors.get(i), score.get(visitors.get(i)) + 1);
         }
