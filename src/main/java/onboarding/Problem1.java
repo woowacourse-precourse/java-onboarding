@@ -87,8 +87,8 @@ class Problem1 {
         int leftPageNumber = player.get(0);
         int rightPageNumber = player.get(1);
 
-        //2.1) 왼쪽페이지 번호가 1~ 399 사이의 값인가?
-        if (leftPageNumber < 1 || leftPageNumber > 399) {
+        //2.1) 왼쪽페이지 번호가 2~ 399 사이의 값인가?
+        if (leftPageNumber <= 1 || leftPageNumber >= 399) {
             return -1;
         }
 
