@@ -1,7 +1,7 @@
 ## 🔗 기능 목록
 1. ✅ solution (main) : search(모든 닉네임 순회) -> 중복 제거하고 정렬
 2. ✅ search : 모든 닉네임을 순회하며 두개 비교
-3. containSameLetters : 두 문자열에 같은 글자가 연속적으로 포함되는지 확인
+3. ✅ containSameLetters : 두 문자열에 같은 글자가 연속적으로 포함되는지 확인
 
 ## 🚀 기능 요구 사항
 
