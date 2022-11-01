@@ -17,4 +17,10 @@ public class Problem4 {
 
         return -1;
     }
+
+    private static char convertLowerCase(char c) {
+        int i = c - 'a';
+
+        return (char) ('z' - i);
+    }
 }
