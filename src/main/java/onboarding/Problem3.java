@@ -75,4 +75,11 @@ public class Problem3 {
                 specificThousandNumber * specificThousands();
     }
 
+    public static boolean numberOutOfRangeException(int number) {
+        if (number < 1 || number > 10000) {
+            System.out.println("숫자의 범위는 1부터 10000까지 입니다.");
+            return true;
+        }
+        return false;
+    }
 }
