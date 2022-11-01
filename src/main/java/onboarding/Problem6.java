@@ -37,9 +37,13 @@ public class Problem6 {
     private static void verifyDupSubNick(Set<String> alertNickName, Map<String, List<String>> nickAndForm, List<String> form, String subName) {
         for (Map.Entry<String, List<String>> entry : nickAndForm.entrySet()) {
             if (entry.getKey().equals(subName) && !entry.getValue().get(0).equals(form.get(0))) {
-                alertNickName.add(entry.getValue().get(0));
-                alertNickName.add(form.get(0));
+                addAlert(alertNickName, form, entry);
             }
         }
+    }
+
+    private static void addAlert(Set<String> alertNickName, List<String> form, Map.Entry<String, List<String>> entry) {
+        alertNickName.add(entry.getValue().get(0));
+        alertNickName.add(form.get(0));
     }
 }
