@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.HashMap;
+import java.util.stream.Collectors;
 
 public class Problem4 {
 
@@ -8,11 +9,22 @@ public class Problem4 {
 
     private final static HashMap<Character, Character> treeFrogDict = new HashMap<>();
 
-
     public static String solution(String word) {
-        String answer = "";
         createTreeFrogDictionary();
-        return answer;
+        return convertWord(word);
+    }
+
+    private static String convertWord(String word) {
+        return word.chars()
+                .mapToObj(c -> applyFrogDictionary((char) c))
+                .collect(Collectors.joining());
+    }
+
+    private static String applyFrogDictionary(char wordUnit) {
+        if (isAlphabet(wordUnit)) {
+            return String.valueOf(treeFrogDict.get(wordUnit));
+        }
+        return String.valueOf(wordUnit);
     }
 
     private static boolean isAlphabet(char c) {
