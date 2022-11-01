@@ -147,7 +147,10 @@
 ### Class FriendAndScoreMapper
 - Map\<User, Integer> newFriendAndScore 자료의 연산을 담당하는 클래스이다.
 
-#### 1. calculateScoreOfNewFriendWith(List\<User> friendList, int point)
+#### 1. setNewFriendAndScore(List\<User> newFriend)
+- List\<User> newFriend 가 입력되면 stream 연산을 통해 User를 key, INITIAL_POINT를 value로 하는 Map 자료를 생성해 반환한다.
+
+#### 2. calculateScoreOfNewFriendWith(List\<User> friendList, int point)
 - friendList와 point가 입력되면, friendList에 존재하는 친구의 수를 세어 point를 곱해 점수를 업데이트한다.
 
-#### 2. getFriendAndScore()
+#### 3. getFriendAndScore()
