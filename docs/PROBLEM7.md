@@ -24,3 +24,11 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능목록
+1. Input을 예외처리하는 메소드
+2. 알파벳인지 확인하는 메소드
+3. user의 친구 목록을 만드는 메소드(에외 처리)
+4. 친구 목록을 통해 점수 목록을 만드는 메소드
+5. 방문자 목록을 통해 점수를 더하는 메소드
+6. 정렬을 하고 옮기는 메소드

@@ -1,0 +1,137 @@
+[33mcommit 62ec9603faa8e7b5601e6105ef5254409231eeb1[m[33m ([m[1;36mHEAD -> [m[1;32mchopinballadeno4[m[33m)[m
+Author: chopinballadeno4 <qo98333@naver.com>
+Date:   Mon Oct 31 13:34:29 2022 +0900
+
+    problem 7, function 5 report friend relation score at HashMap
+
+[33mcommit e0b3412b02a6e2a5a6157e8100012de96c5372a3[m
+Author: chopinballadeno4 <qo98333@naver.com>
+Date:   Mon Oct 31 11:17:14 2022 +0900
+
+    problem 7, function 4 check friends array size 2 and isAlpa
+
+[33mcommit 07564136ce1bfc15eb14da49c271f6fe734566d9[m
+Author: chopinballadeno4 <qo98333@naver.com>
+Date:   Mon Oct 31 10:53:41 2022 +0900
+
+    problem 7, function 2 check friends array size 2
+
+[33mcommit 58dba234cd01c2392c93ae26a0a29edf889c62ee[m
+Author: chopinballadeno4 <qo98333@naver.com>
+Date:   Mon Oct 31 00:01:59 2022 +0900
+
+    problem 7, function 1 checkParameter
+
+[33mcommit c3e70811f8bcbb2d17983da252abc6b5b874347e[m
+Author: chopinballadeno4 <qo98333@naver.com>
+Date:   Sun Oct 30 22:16:15 2022 +0900
+
+    problem 6, function 4 check email form
+
+[33mcommit 8e9cb34408bd5db7ed695a532c147e7c05a8cd5f[m
+Author: chopinballadeno4 <qo98333@naver.com>
+Date:   Sun Oct 30 22:14:01 2022 +0900
+
+    problem 6, function 3 check email overlap and insert array
+
+[33mcommit 8e099b3610a15672cfaa5c51df95163bf3e7f743[m
+Author: chopinballadeno4 <qo98333@naver.com>
+Date:   Sun Oct 30 22:13:00 2022 +0900
+
+    problem 6, function 2 check nickname form and isOverlap
+
+[33mcommit 363b704a59d7f20e9aeb48d521213665deac199a[m
+Author: chopinballadeno4 <qo98333@naver.com>
+Date:   Sun Oct 30 16:15:42 2022 +0900
+
+    problem 6, function 1 check isHangeul
+
+[33mcommit 57f763c16ebdfe7621a3ac293858840097d1508a[m
+Author: chopinballadeno4 <qo98333@naver.com>
+Date:   Sun Oct 30 14:30:06 2022 +0900
+
+    problem 5, function 2 array to ArrayList logic
+
+[33mcommit e283d47e39255f8638281cddc68aa33700327f60[m
+Author: chopinballadeno4 <qo98333@naver.com>
+Date:   Sun Oct 30 14:29:34 2022 +0900
+
+    problem 5, function 1 split money method
+
+[33mcommit 0b1939e6441125aae8ca962ba012e955c27f19fb[m
+Author: chopinballadeno4 <qo98333@naver.com>
+Date:   Sun Oct 30 11:53:27 2022 +0900
+
+    problem 4, function 2 repeat translate word
+
+[33mcommit 71620570194d4d5a865a64aaacd093fa3a72d8d6[m
+Author: chopinballadeno4 <qo98333@naver.com>
+Date:   Sun Oct 30 11:46:59 2022 +0900
+
+    problem 4, function 1 fix method
+
+[33mcommit 5ac4561ff26d637c63926256e6c32890651784fe[m
+Author: chopinballadeno4 <qo98333@naver.com>
+Date:   Sun Oct 30 11:45:26 2022 +0900
+
+    problem 4, function 1 translate alpabet method
+
+[33mcommit 987f75cb18ea4ecb0113669715b078c8b5bbbccb[m
+Author: chopinballadeno4 <qo98333@naver.com>
+Date:   Sat Oct 29 11:02:47 2022 +0900
+
+    problem 3, function 2 calculate result
+
+[33mcommit d5eebd1e292c237dc97add4e6d7ea3fba8da8d78[m
+Author: chopinballadeno4 <qo98333@naver.com>
+Date:   Sat Oct 29 10:54:23 2022 +0900
+
+    problem 3, function 1 count number method
+
+[33mcommit 70cd76eb7691ad581005e0b7f27d40599fd1746b[m
+Author: chopinballadeno4 <qo98333@naver.com>
+Date:   Sat Oct 29 09:50:10 2022 +0900
+
+    problem 2, function 2 eliminate duplication through repetition
+
+[33mcommit 128e0f20a301eaecb9440fd429002b93d5038083[m
+Author: chopinballadeno4 <qo98333@naver.com>
+Date:   Sat Oct 29 09:46:43 2022 +0900
+
+    problem 2, function 1 remove overlap method
+
+[33mcommit 70bbd8aab68118681b5750d7ee7f2e15edd6df65[m
+Author: chopinballadeno4 <qo98333@naver.com>
+Date:   Sat Oct 29 01:02:30 2022 +0900
+
+    problem 1, fix code 2
+
+[33mcommit 8d0944c9bfd115d191fef86a28142a9b46bc2c6a[m
+Author: chopinballadeno4 <qo98333@naver.com>
+Date:   Fri Oct 28 17:55:22 2022 +0900
+
+    problem 1, fix code
+
+[33mcommit 2f613d3622c73a503b2712cfc78bbfe1fa3680b5[m
+Author: chopinballadeno4 <qo98333@naver.com>
+Date:   Fri Oct 28 17:15:58 2022 +0900
+
+    problem 1, function 3 cal winner
+
+[33mcommit 2076730ff5ec7cc27a3920682eb0e49cfe8b2a31[m
+Author: chopinballadeno4 <qo98333@naver.com>
+Date:   Fri Oct 28 17:09:46 2022 +0900
+
+    problem 1, function 2 cal each score
+
+[33mcommit 47022af32f519465d81abc73c19aa75bbc5a3dc0[m
+Author: chopinballadeno4 <qo98333@naver.com>
+Date:   Fri Oct 28 17:01:38 2022 +0900
+
+    problem 1, function 1 compose cal method
+
+[33mcommit 8367693f59c6d16f79c1bd0cc8aca96dbc35909f[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m, [m[1;32mmain[m[33m)[m
+Author: woowabrie <buyong.jo@woowahan.com>
+Date:   Tue Oct 18 15:07:58 2022 +0900
+
+    feat: setup precourse onboarding project

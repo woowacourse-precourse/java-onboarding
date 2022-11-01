@@ -21,3 +21,10 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능목록
+1. 단어가 한글인지 확인하는 메소드 
+2. 두개의 닉네임을 비교해 양식과 중복이 있는지 확인하는 메소드
+3. 중복이 있을때 체크하며 반복을 통해 중복 이메일을 배열에 넣는 로직
+4. 이메일, 닉네임 양식을 예외처리하는 로직
+5. 이메일 배열을 오름차순하는 로직
