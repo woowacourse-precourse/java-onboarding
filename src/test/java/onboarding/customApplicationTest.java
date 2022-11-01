@@ -432,6 +432,22 @@ void case1() {
             List<String> result = List.of("andole", "jun", "bedi");
             assertThat(Problem7.myFriendsSearch(user, friends)).isEqualTo(result);
         }
+        @Test
+        void case3() {
+            String user = "mrko";
+            List<List<String>> friends = List.of(
+                    List.of("donut", "andole"),
+                    List.of("donut", "jun"),
+                    List.of("donut", "mrko"),
+                    List.of("shakevan", "andole"),
+                    List.of("shakevan", "jun"),
+                    List.of("shakevan", "mrko")
+            );
+            List<String> result = List.of("andole", "jun", "bedi");
+            List<String> myFriends = Problem7.myFriendsSearch(user, friends);
+            List<String> friendOfFriends=Problem7.friendOfFriend(friends,myFriends);
+            assertThat(Problem7.deleteMyAndFriend(friendOfFriends,myFriends,user)).isEqualTo(result);
+        }
     }
 
 }
