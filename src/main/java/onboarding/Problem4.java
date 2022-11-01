@@ -26,11 +26,11 @@ public class Problem4 {
     }
 
     public static String solution(String word) {
-        String answer = "";
+        StringBuilder answer = new StringBuilder();
         for(int i = 0; i < word.length(); i++){
             char currentCharacter = word.charAt(i);
-            answer = answer + reverseCharacter(currentCharacter);
+            answer.append(reverseCharacter(currentCharacter));
         }
-        return answer;
+        return answer.toString();
     }
 }
