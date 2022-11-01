@@ -26,7 +26,7 @@ public class Problem2 {
             char previous = cryptogram.charAt(i - 1);
             char current = cryptogram.charAt(i);
             curDuplicated = isCurDuplicated(previous, current);
-            result = getNotDuplicatedChar(curDuplicated, prevDuplicated, previous);
+            result += getNotDuplicatedChar(curDuplicated, prevDuplicated, previous);
             prevDuplicated = curDuplicated;
         }
         return result;
