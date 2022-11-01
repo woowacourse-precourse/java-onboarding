@@ -24,4 +24,15 @@ public class Problem6 {
         }
         return false;
     }
+
+    public static List<String> removeDuplicates(List<String> list) {
+        List<String> newList = new ArrayList<>();
+        for (String s : list) {
+            if (!newList.contains(s)) {
+                newList.add(s);
+            }
+        }
+        Collections.sort(newList);
+        return newList;
+    }
 }
