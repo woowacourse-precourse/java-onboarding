@@ -12,7 +12,7 @@ public class Problem7 {
 
         near.addAll(makeNearList(user, friends));
         makeFarList(user, friends, near, far);
-        result.putAll(PointToFarList(near, far);
+        result.putAll(PointToFarList(near, far));
         PointToVisitors(visitors, near, result);
 
         answer = sortedAnswer(answer, result);
