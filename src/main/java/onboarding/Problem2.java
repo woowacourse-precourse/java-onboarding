@@ -4,8 +4,7 @@ public class Problem2 {
 
     public String solution(String word) {
         StringBuilder str = new StringBuilder(word);
-        String sol = check(str, word.length());
-        return sol;
+        return check(str, word.length());
     }
 
     public static String check(StringBuilder str2, int length) {
