@@ -2,6 +2,7 @@ package onboarding;
 
 import onboarding.problem1.Page;
 import onboarding.problem1.Pages;
+import onboarding.problem1.Referee;
 
 import java.util.Collections;
 import java.util.Comparator;
@@ -20,40 +21,14 @@ class Problem1 {
             Pages crongPages = new Pages(crong.stream()
                     .map(crongPage -> new Page(crongPage))
                     .collect(Collectors.toList()));
-
-//            Integer pobiScore = pobiPages.stream()
-//                    .map(page -> getMaxNumber(page.getSumOfPageDigits(), page.getProductOfPageDigits()))
-//                    .max(Comparator.comparing(Integer::intValue))
-//                    .get();
-//
-//
-//            Integer crongScore = crongPages.stream()
-//                    .map(page -> getMaxNumber(page.getSumOfPageDigits(), page.getProductOfPageDigits()))
-//                    .max(Comparator.comparing(Integer::intValue))
-//                    .get();
-//
-//            return getMatchResult(pobiScore, crongScore);
-            return 0;
+            Referee referee = new Referee(pobiPages, crongPages);
+            return referee.getMatchResult();
         } catch (IllegalArgumentException e) {
             return -1;
         }
     }
 
-    public static int getMaxNumber(int number1, int number2) {
-        return Math.max(number1, number2);
-    }
 
-    public static int getMatchResult(int pobiScore, int crongScore) {
-        if (pobiScore > crongScore) {
-            return 1;
-        }
-
-        if (crongScore > pobiScore) {
-            return 2;
-        }
-
-        return 0;
-    }
 
 
 }
