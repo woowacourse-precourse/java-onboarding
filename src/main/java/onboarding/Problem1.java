@@ -5,10 +5,14 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         // 기능 요구사항 6에 대한 예외 case
-        if((pobi.get(0) == 1) || (pobi.get(1) == 400)) return -1;
-        if((crong.get(0) == 1) || (crong.get(1) == 400)) return -1;
+        for (int i = 0; i < 2; i++) {
+            if((pobi.get(i) <= 1) || (pobi.get(i) >= 400)) return -1;
+            if((crong.get(i) <= 1) || (crong.get(i) >= 400)) return -1;
+        }
 
-        if((pobi.get(1)-pobi.get(0)>1) || (crong.get(1)-crong.get(0)>1)) return -1;
+        // 제한 사항 1 - pobi와 crong의 길이는 2이다.
+        // 제한 사항 2 - pobi와 crong에는 [왼쪽 페이지 번호, 오른쪽 페이지 번호]가 순서대로 들어있다.
+        if((pobi.get(1)-pobi.get(0) != 1) || (crong.get(1)-crong.get(0) !=1)) return -1;
         int pvalue = compare(pobi.get(0),pobi.get(1));
         int cvalue = compare(crong.get(0),crong.get(1));
         if(pvalue>cvalue) return 1;
