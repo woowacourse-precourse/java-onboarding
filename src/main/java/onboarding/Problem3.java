@@ -6,12 +6,13 @@ public class Problem3 {
         int rest = 0;
 
         for (int i=1; i<=number; i++) {
-            while (i > 0) {
-                rest = i % 10;
+            int j = i;
+            while (j > 0) {
+                rest = j % 10;
                 if (rest == 3 || rest == 6 || rest == 9) {
                     answer += 1;
                 }
-                i = i / 10;
+                j = j / 10;
             }
         }
 

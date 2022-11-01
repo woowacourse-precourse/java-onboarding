@@ -14,12 +14,15 @@ public class Problem2 {
         for (int i=0; i<cryptoList.size() -1 ; i++) {
             if (cryptoList.get(i) == cryptoList.get(i+1)) {
                 cryptoList.remove(i);
-                cryptoList.remove(i+1);
-                i = 0;
+                cryptoList.remove(i);
+                i = -1;
             }
         }
 
-        answer = cryptoList.toString();
+        answer = "";
+        for (char ch : cryptoList) {
+            answer += ch;
+        }
         return answer;
     }
 }
