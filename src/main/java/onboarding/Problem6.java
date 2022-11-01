@@ -38,9 +38,8 @@ public class Problem6 {
         }
 
         Collections.sort(emailList);
-        for(int i=0; i<emailList.size(); i++) {
-            String email = emailList.get(i);
-            if(isValidEmail.isValidEmail(email) && ! answer.contains(email)) {
+        for (String email : emailList) {
+            if (isValidEmail.isValidEmail(email) && !answer.contains(email)) {
                 answer.add(email);
             }
         }
@@ -80,10 +79,7 @@ class IsValidEmail {
         }
 
         String host = email.substring(emailLength-9);
-        if( ! host.equals("email.com")) {
-            return false;
-        }
-        return true;
+        return host.equals("email.com");
     }
 }
 
@@ -91,10 +87,7 @@ class IsValidNickName {
     public boolean isValidNickName(String nickName) {
         //한글만 제한할 기능을 넣을지 고민
         int nickNameLength = nickName.length();
-        if(nickNameLength < 1 || 20 <= nickNameLength) {
-            return false;
-        }
-        return true;
+        return nickNameLength >= 1 && 20 > nickNameLength;
 
     }
 }
