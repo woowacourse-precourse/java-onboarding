@@ -1,9 +1,11 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 class TokenGroup{
+    HashMap<String, HashMap<Integer, String>> tokenGroup=new HashMap<>();
     List<String> divideToken(String nickName){
         final int WINDOW_SIZE=2;
         int nickNameLength=nickName.length()-1;
@@ -13,6 +15,9 @@ class TokenGroup{
             token.add(nickName.substring(position,position+WINDOW_SIZE));
         }
         return new ArrayList<>(token);
+    }
+    boolean isGroupKey(String token){
+        return tokenGroup.containsKey(token);
     }
 }
 public class Problem6 {
