@@ -46,6 +46,7 @@ public class Problem6 {
             }
         }
         List<String> answer = subAnswer.parallelStream()
+                .sorted()
                 .collect(Collectors.toList());
         return answer;
     }
