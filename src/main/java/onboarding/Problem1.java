@@ -17,8 +17,42 @@ class Problem1 {
         - 크롱이 이긴 경우 → 2를 리턴
         - 무승부시 → 3을 리턴
     */
+    int sum_function(int temp) {
+        // pobi(또는 crong)가 펼친 특정 페이지 번호의 각 자리 숫자를 모두 더한 값 리턴
+        int value = 0;
+        while (temp>0){
+            value += temp%10;
+            temp /= 10;
+
+        }
+        return value;
+    }
+    int mult_function(int temp) {
+        // pobi(또는 crong)가 펼친 특정 페이지 번호의 각 자리 숫자를 모두 곱한 값 리턴
+        int value = 1;
+        while (temp>0){
+            value *= temp%10;
+            temp /= 10;
+        }
+        return value;
+    }
+    int calculate_function(List<Integer> values) {
+        int left_max, right_max;
+        Problem1 p1 = new Problem1();
+        int left_digit = values.get(0);
+        int right_digit = values.get(1);
+
+        // pobi(또는 crong)가 구한 왼쪽 페이지 번호를 각 자리 숫자를 모두 더한값과 곱한 값중 큰 값을 리턴
+        left_max = Math.max(p1.sum_function(left_digit), p1.mult_function(left_digit));
+        // pobi(또는 crong)가 구한 오른쪽 페이지 번호를 각 자리 숫자를 모두 더한값과 곱한 값중 큰 값을 리턴
+        right_max = Math.max(p1.sum_function(right_digit),p1.mult_function(right_digit));
+        // pobi(또는 crong)의 왼쪽 페이지의 최대값과 오른쪽 페이지의 최대값 중 큰 값을 리턴
+        return Math.max(left_max,right_max);
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        Problem1 p1 = new Problem1();
 
         // pobi와 crong의 예외처리
         if (pobi.get(0) + 1 != pobi.get(1) || crong.get(0) + 1 != crong.get(1) // 왼쪽 페이지와 오른쪽 페이지 짝이 아닌경우
@@ -27,6 +61,9 @@ class Problem1 {
         {
             return -1;  // 예외발생!!
         }
+
+        int pobi_max = p1.calculate_function(pobi); // pobi의 최대값
+        int crong_max = p1.calculate_function(crong);   // crong의 최대값
 
         return answer;
     }
