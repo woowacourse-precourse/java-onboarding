@@ -43,4 +43,16 @@ public class Problem7 {
             scoreMap.put(friendOfFriend, score + 10);
         }
     }
+    private static void scoreVisitedUser(HashMap<String, HashSet<String>> graph, HashMap<String, Integer> scoreMap, String user, String visitor) {
+        HashSet<String> friendOfUser = graph.get(user);
+
+        if (visitor.equals(user))
+            return;
+
+        if (friendOfUser.contains(visitor))
+            return;
+
+        int score = scoreMap.getOrDefault(visitor, 0);
+        scoreMap.put(visitor, score + 1);
+    }
 }
