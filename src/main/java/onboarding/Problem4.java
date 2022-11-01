@@ -2,8 +2,11 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+//        String answer = "";
+//        return answer;
+        Word word1=new Word(word);
+        Result result = new Result(word1.toArray());
+        return result.reverse();
     }
 }
 
@@ -29,7 +32,7 @@ class Word {
         }
     }
 
-    private char[] toArray() {
+    public char[] toArray() {
         return letters.toCharArray();
     }
 }
@@ -37,23 +40,31 @@ class Word {
 class Result {
     private char[] wordArray;
     private StringBuilder sb;
+    private static final int FIND_UPPER_CASE_REPLACE=155;
+    private static final int FIND_LOWER_CASE_REPLACE=219;
 
     public Result(char[] wordArray) {
         this.wordArray = wordArray;
         this.sb = new StringBuilder();
     }
 
-
     private char changeWordByRule(int wordChar) {
         if (!Character.isAlphabetic(wordChar)) {
             return ' ';
         }
         if (isAlphaLower(wordChar)) {
-            char replaceChar = (char) (155 - wordChar);
-            return toUpperCase(replaceChar);
+            char replaceChar = (char) (FIND_LOWER_CASE_REPLACE - wordChar);
+            return replaceChar;
         }
-        char replaceChar = (char) (219 - wordChar);
-        return toLowerCase(replaceChar);
+        char replaceChar = (char) (FIND_UPPER_CASE_REPLACE - wordChar);
+        return replaceChar;
+    }
+
+    public String reverse(){
+        for (char wordChar:wordArray){
+            sb.append(changeWordByRule(wordChar));
+        }
+        return sb.toString();
     }
 
     private boolean isAlphaLower(int wordChar) {
@@ -70,7 +81,6 @@ class Result {
     private char toLowerCase(char wordChar) {
         return Character.toLowerCase(wordChar);
     }
-
 }
 
 
