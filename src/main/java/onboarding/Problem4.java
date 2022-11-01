@@ -30,11 +30,6 @@ public class Problem4 {
 		return sb.toString();
 	}
 
-	/**
-	 * 주어진 문자열을 청개구리 사전대로 변환하는 메서드
-	 * @param word
-	 * @return
-	 */
 	private static List<Character> conversionWord(String word) {
 		List<Character> letters = new ArrayList<>();
 		char letter;
@@ -51,11 +46,6 @@ public class Problem4 {
 		return letters;
 	}
 
-	/**
-	 * 제한사항을 위배했는지 체크하는 메서드
-	 * @param word
-	 * @return
-	 */
 	private static Integer checkRestrictions(String word) {
 		if (!isNumberRangeValid(word)) {
 			return EXCEPTION;
@@ -63,7 +53,6 @@ public class Problem4 {
 		return 0;
 	}
 
-	// word 의 길이가 1 이상 1,000 이하가 아닌 경우 예외
 	private static boolean isNumberRangeValid(String word) {
 		if (word.length() < 1 || word.length() > 1000) {
 			return false;
