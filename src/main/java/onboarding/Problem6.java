@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeSet;
 
 /**
  * 1. for loop 두개로 모든 서로 다른 두개의 이름을 비교한다.
@@ -33,6 +34,16 @@ public class Problem6 {
                 }
             }
         }
+
+        // 3. treeset으로 이메일 정렬 및 중복 제거
+        TreeSet<String> treeSet = new TreeSet<>();
+        for(String item : answer){
+            treeSet.add(item);
+        }
+
+        // 4. list에 treeset 복사 및 list반환
+        answer = List.copyOf(treeSet);
+
         return answer;
     }
 }
