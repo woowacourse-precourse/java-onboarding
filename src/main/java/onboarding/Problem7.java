@@ -23,6 +23,19 @@ public class Problem7 {
             }
         }
 
+        //친구의 친구인 경우 10점을 더하기
+        for (int i = 0; i < recommendationsCandidates.size(); i++) {
+            List<String> relationship = recommendationsCandidates.get(i);
+            String person1 = relationship.get(0);
+            String person2 = relationship.get(1);
+
+            if (myFriends.contains(person1) && !myFriends.contains(person2)) {
+                recommendationScore.put(person2, recommendationScore.getOrDefault(person2, 0) + 10);
+            } else if (myFriends.contains(person2) && !myFriends.contains(person1)) {
+                recommendationScore.put(person1, recommendationScore.getOrDefault(person1, 0) + 10);
+            }
+        }
+
         return answer;
     }
 }
