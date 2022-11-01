@@ -18,11 +18,11 @@ public class Problem6 {
     }
 
     private static Map<String, List<String>> toHashMap(List<List<String>> forms) {
-        Map<String, List<String>> nicknameParts = new HashMap<>();
+        Map<String, List<String>> mapForms = new HashMap<>();
         for (List<String> form : forms) {
-            nicknameParts.put(form.get(0), separateNickname(form.get(1)));
+            mapForms.put(form.get(0), separateNickname(form.get(1)));
         }
-        return nicknameParts;
+        return mapForms;
     }
 
     public static List<String> separateNickname(String nickname) {
