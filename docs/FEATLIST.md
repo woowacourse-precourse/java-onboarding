@@ -14,3 +14,6 @@
 
 ### PROBLEM5
 1. money를 변환하는 메서드 converMoney
+
+### PROBLEM6
+1. 중복되는 이름을 찾아 이메일을 반환하는 메서드 dupName
