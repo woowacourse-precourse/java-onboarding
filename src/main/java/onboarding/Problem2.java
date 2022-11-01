@@ -31,6 +31,7 @@ public class Problem2 {
         return false;
     }
 
+    // 답 구하기
     private static String getAnswer(List<String> listOfCryptoString) {
         String answer = "";
         for (int i = 0; i < listOfCryptoString.size(); i++) {
