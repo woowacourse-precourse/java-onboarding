@@ -50,6 +50,13 @@ public class Problem5 {
 
         }
 
+        // 나머지 금액의 변환이 필요없는 경우, 0으로 채워준다.
+        for(int j = temp.size(); j < 9; j++){
+            temp.add(j, 0);
+        }
+
+        // 정답
+        answer = temp;
         return answer;
     }
 }
