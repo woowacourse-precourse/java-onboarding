@@ -17,23 +17,11 @@ public class Problem5 {
     }
 
     public static void initUnitList(){
-        unitList = new ArrayList<>();
-        unitList.add(50000);
-        unitList.add(10000);
-        unitList.add(5000);
-        unitList.add(1000);
-        unitList.add(500);
-        unitList.add(100);
-        unitList.add(50);
-        unitList.add(10);
-        unitList.add(1);
+        unitList = List.of(50000, 10000, 5000, 1000, 500, 100, 50, 10, 1);
     }
 
     public static int getUnitCount(int money, int unit){
-        if(money >= unit){
-            return money/unit;
-        }
-        return 0;
+        return money/unit;
     }
 
     public static int getNextMoney(int money, int unit){
