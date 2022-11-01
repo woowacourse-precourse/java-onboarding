@@ -4,7 +4,7 @@ import java.util.*;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
-        List<String> answer = new ArrayList<>();
+        List<String> answer;
         Map<String, Integer> friendsScore = new HashMap<>();
         List<String> resultFineMyFriend = findMyFriend(user, friends);
 
@@ -13,6 +13,8 @@ public class Problem7 {
         friendsScore = getVisitorsScore(friendsScore,visitors);
 
         friendsScore = removeMyselfMyfriend(friendsScore,resultFineMyFriend,user);
+
+        answer = sortedFriendList(friendsScore);
 
         return answer;
     }
@@ -67,5 +69,29 @@ public class Problem7 {
 
         return friendsScore;
 
+    }
+
+    public static List<String> sortedFriendList(Map<String, Integer> friendsScore){
+
+        List<String> keySet = new ArrayList<>(friendsScore.keySet());
+        List<String> answer = new ArrayList<>();
+
+        Map<String, Integer> finalFriendsScore = friendsScore;
+        Collections.sort(keySet, (o1, o2) -> (finalFriendsScore.get(o2).compareTo(finalFriendsScore.get(o1))));
+        for (int i = 0; i < keySet.size(); i++) {
+            answer.add(keySet.get(i));
+        }
+
+        List<String> useCheckSize = new ArrayList<>();
+
+        if(answer.size() > 5){
+            for(int i = 0; i < 5; i++){
+                useCheckSize.add(answer.get(i));
+            }
+
+            return useCheckSize;
+        }
+
+        return answer;
     }
 }
