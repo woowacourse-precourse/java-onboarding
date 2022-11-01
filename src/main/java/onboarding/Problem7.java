@@ -4,8 +4,9 @@ import java.util.*;
 
 /*
  * 기능 구현 사항
- * 1. visitor 점수 추가.
- * 2. 각 유저별 친구 HashMap<String, List<String>> 으로 구현.
+ * 1. SNSUser class 구현
+ * 2. 친구마다 관계 추가 기능
+ * 3. 순회하여 점수 계산 기능 -> 본인일 때 제외.
  * */
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
