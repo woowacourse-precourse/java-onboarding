@@ -12,7 +12,7 @@ public class Problem5 {
         if(money < 1 || money > 1000000)
         {
             // 돈의 액수 범위를 넘을 경우
-            System.out.println("돈의 액수 범위 제한");
+            // System.out.println("돈의 액수 범위 제한");
             return answer;
         }
 
