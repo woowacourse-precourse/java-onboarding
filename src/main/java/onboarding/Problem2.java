@@ -25,7 +25,6 @@ public class Problem2 {
                     currint = i;
                     check = 1;
                 }
-
             }
         }
 
