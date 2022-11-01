@@ -20,9 +20,35 @@ public class Problem7 {
 
         return allUserList;
     }
+    private static Map<String, Integer> mappingNameToNumber(List<String> allUserList) {
+        Map<String, Integer> nameToNumber = new TreeMap<>();
+
+        for (int i = 0; i < allUserList.size(); i++) {
+            nameToNumber.put(allUserList.get(i), i + 1);
+        }
+
+        return nameToNumber;
+    }
+    private static Map<Integer, String> mappingNumberToName(List<String> allUserList) {
+        Map<Integer, String> numberToName = new TreeMap<>();
+
+        for (int i = 0; i < allUserList.size(); i++) {
+            numberToName.put(i + 1, allUserList.get(i));
+        }
+
+        return numberToName;
+    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> allUserList = getUserList(user, friends, visitors);
 
+        Map<String, Integer> nameToNumber = mappingNameToNumber(allUserList);
+        Map<Integer, String> numberToName = mappingNumberToName(allUserList);
+
+
         return allUserList;
     }
+
+
+
+
 }
