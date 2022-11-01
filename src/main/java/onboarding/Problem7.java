@@ -31,6 +31,10 @@ public class Problem7 {
 
         // 함께 아는 친구 점수 처리
         countFriendsScore(user);
+
+        // 사용자 본인인 경우와 친구인 경우 제외
+        exceptScore(user);
+
         return Collections.emptyList();
     }
 
@@ -73,5 +77,11 @@ public class Problem7 {
                 score.put(s2, score.get(s2) + 10);
             }
         }
+    }
+
+    // 사용자 본인인 경우와 친구인 경우 제외
+    static void exceptScore (String user) {
+        for (String s1 : friendsForOne.get(index.get(user)))
+            score.put(s1, 0);
     }
 }
