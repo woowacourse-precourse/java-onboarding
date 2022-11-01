@@ -14,6 +14,23 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends,
         List<String> visitors) {
         List<String> answer = Collections.emptyList();
+        HashMap<String, Set<String>> friendList = getFriendList(friends); //각 유저별 친구목록을 가지는 MAP객체
+        HashMap<String, Integer> pointList = new HashMap<>(); //유저별 추천포인트를 저장할 추천점수 Map
+
+        for (String key : friendList.keySet()) { //유저이름,0 으로 추천점수 Map을 초기화해준다.
+            pointList.put(key, 0);
+        }
+        //방문자에 대해 추천점수 1을 증가시켜준다.
+        addVisitPoint(pointList, visitors);
+
+
+        //모든 사용자의 친구목록에 대해 검사하고 user와 같은 친구를 가진다면 10점을 부여한다.
+        addSameFriendPoint(user, friends, friendList, pointList);
+
+
+        //추천점수에 대해 내림차순정렬을 하고 점수가 같을때는 아이디를 기준으로 오름차순정렬을 한다.
+        // 그 후 5명까지 리스트에 담아 리턴한다.
+        answer = getResultList(pointList);
 
         return answer;
     }
