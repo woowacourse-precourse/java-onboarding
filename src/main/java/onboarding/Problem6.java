@@ -63,6 +63,9 @@ public class Problem6 {
         }
         return 1;
     }
+    private static boolean checkDeleteControlIndex(boolean deleteControlIndex, int result) {
+        return deleteControlIndex || result == 0;
+    }
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
