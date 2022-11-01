@@ -75,14 +75,6 @@ public class Problem7 {
                 ));
     }
 
-    public static Map<String, Integer> getAcquaintancesPoint(List<String> acquaintances, List<String> userAndUserFriends) {
-        Map<String, Integer> points = new HashMap<>();
-        for (String acquaintance : acquaintances) {
-            points.put(acquaintance, points.getOrDefault(acquaintance, 0) + getAcquaintancePoint(acquaintance, userAndUserFriends));
-        }
-        return points;
-    }
-
     private static int getAcquaintancePoint(String acquaintance, List<String> userAndUserFriends) {
         if (userAndUserFriends.contains(acquaintance)) {
             return 0;
@@ -90,12 +82,7 @@ public class Problem7 {
         return 10;
     }
 
-    public static List<String> getAcquaintances(Map<String, List<String>> friendMap, List<String> userFriends, String user) {
-        return userFriends.stream()
-                .flatMap(userFriend -> friendMap.get(userFriend).stream())
-                .filter(userFriend -> isUserOrUserFriend(userFriends, user, userFriend))
-                .collect(Collectors.toList());
-    }
+
 
     private static boolean isUserOrUserFriend(List<String> userFriends, String user, String userFriend) {
         if (userFriend.equals(user) || userFriends.contains(userFriend)) {
