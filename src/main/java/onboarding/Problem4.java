@@ -5,7 +5,7 @@ public class Problem4 {
         String answer = "";
         for(int i = 0; i < word.length(); i++) {
             int check = isCheckCase(word.charAt(i));
-            if(check == 0) answer += " ";
+            if(check == 0) answer += anotherCase(word.charAt(i));
             if(check == 1) answer += upperCase(word.charAt(i));
             if(check == 2) answer += lowerCase(word.charAt(i));
         }
@@ -17,6 +17,7 @@ public class Problem4 {
         if(Character.isLowerCase(checkWord)) return 2;
         return 0;
     }
+
     private static Character upperCase(Character upperWord){
         int upper = 155 - upperWord;
         char upperChar = (char) upper;
@@ -27,5 +28,9 @@ public class Problem4 {
         int lower = 219 - lowerWord;
         char lowerChar = (char) lower;
         return lowerChar;
+    }
+
+    private static Character anotherCase(Character another){
+        return another;
     }
 }
