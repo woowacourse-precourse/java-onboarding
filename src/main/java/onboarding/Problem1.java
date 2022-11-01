@@ -100,8 +100,8 @@ class Problem1 {
     }
 
     public static int getPlayerMaxScore(List<Integer> pages) {
-        int leftMaxScore = getMaxScoreOfMultiAndSum(pages.get(0));
-        int rightMaxScore = getMaxScoreOfMultiAndSum(pages.get(1));
+        int leftMaxScore = getMaxScoreOfMultiAndSum(pages.get(LEFT_PAGE_INDEX));
+        int rightMaxScore = getMaxScoreOfMultiAndSum(pages.get(RIGHT_PAGE_INDEX));
         return Math.max(leftMaxScore, rightMaxScore);
     }
 
