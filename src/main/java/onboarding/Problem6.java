@@ -64,6 +64,7 @@ public class Problem6 {
 
                     if (name.contains(duplicatedWord)) {
                         result.add(email);
+                        break;
                     }
                 }
             }
