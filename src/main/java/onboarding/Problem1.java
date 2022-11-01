@@ -16,16 +16,24 @@ class Problem1 {
     private final static int PAGE_LIST_SIZE = 2;
     
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        
         if (isInvalidPage(pobi) || isInvalidPage(crong)) {
             return EXCEPTION;
         }
 
         final int pobiScore = getUserScore(pobi);
         final int crongScore = getUserScore(crong);
-        
-        return answer;
+
+        return getWinner(pobiScore, crongScore);
+    }
+
+    private static int getWinner(int pobiScore, int crongScore) {
+        if (pobiScore > crongScore) {
+            return POBI_WIN;
+        }
+        if (crongScore > pobiScore) {
+            return CRONG_WIN;
+        }
+        return DRAW;
     }
 
     private static int getUserScore(List<Integer> user) {
