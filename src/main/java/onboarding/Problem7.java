@@ -50,7 +50,6 @@ public class Problem7 {
         }
         return answer;
     }
-
     public static Map<String, Set<String>> getUsersFriends(List<List<String>> friends){
         Map<String, Set<String>> usersFriends = new HashMap<>();
         for (List<String> friend : friends){
