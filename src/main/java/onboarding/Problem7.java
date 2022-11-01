@@ -10,8 +10,6 @@ public class Problem7 {
     static HashMap<Integer, List<String>> scoreUser = new HashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-
         for (List<String> relation : friends) {
             makeSList(relation, user);
             addFriend(relation);
@@ -32,7 +30,7 @@ public class Problem7 {
 
         changeKeyValue();
 
-        return answer;
+        return getAnswer();
     }
 
     private static void makeSList(List<String> relation, String user) {
@@ -97,5 +95,25 @@ public class Problem7 {
             temp.add(key);
             scoreUser.put(score, temp);
         }
+    }
+
+    private static List<String> getAnswer() {
+        List<String> answer = new ArrayList<>();
+
+        List<Integer> keySet = new ArrayList<>(scoreUser.keySet());
+
+        Collections.sort(keySet);
+        Collections.reverse(keySet);
+
+        for (int i = 0; i < keySet.size(); i++) {
+            if (keySet.get(i) == 0) {
+                break;
+            }
+
+            List<String> users = scoreUser.get(keySet.get(i));
+            Collections.sort(users);
+            answer.addAll(users);
+        }
+        return answer;
     }
 }
