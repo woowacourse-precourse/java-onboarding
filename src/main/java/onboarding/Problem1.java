@@ -4,12 +4,10 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-
         int pobiScore = getPersonalHighestValue(pobi);
         int crongScore = getPersonalHighestValue(crong);
 
-        return answer;
+        return getResultCode(pobiScore, crongScore);
     }
 
     private static int getPlusValue(Integer pageNum){
@@ -37,5 +35,16 @@ class Problem1 {
         int rightPageHighestValue = Math.max(getPlusValue(person.get(1)), getMultiplyValue(person.get(1)));
 
         return Math.max(leftPageHighestValue, rightPageHighestValue);
+    }
+
+    private static int getResultCode(int pobiScore, int crongScore){
+        if(pobiScore > crongScore)
+            return 1;
+        else if(pobiScore < crongScore)
+            return 2;
+        else if(pobiScore == crongScore)
+            return 0;
+        else
+            return -1;
     }
 }
