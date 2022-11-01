@@ -12,7 +12,7 @@ public class Problem4 {
         StringBuilder sb = new StringBuilder();
         for(int i=0; i<word.length(); i++){
             char cur = word.charAt(i);
-            if(Character.isLetter(cur)){
+            if(('a'<= cur && cur <= 'z') || ('A'<=cur && cur <= 'Z')){
                 if(Character.isUpperCase(cur)){
                     sb.append(upper[cur-'A']);
                 }
