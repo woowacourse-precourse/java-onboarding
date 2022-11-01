@@ -13,6 +13,13 @@ class Problem1 {
         return answer;
     }
 
+    private static int calculateFinalScore(int[] scores) {
+        int LeftScore = Math.max(scores[0], scores[1]);
+        int rightScore = Math.max(scores[2], scores[3]);
+
+        return Math.max(LeftScore, rightScore);
+    }
+
     private static boolean checkException(List<Integer> pages) {
         int leftPage = pages.get(0);
         int rightPage = pages.get(1);
