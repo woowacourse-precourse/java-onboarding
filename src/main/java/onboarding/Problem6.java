@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     public static final String DOMAIN = "email.com";
@@ -8,7 +9,9 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         Map<String, Set<String>> substringToId = getSubstringToIdMap(forms);
 
-        return null;
+        List<String> duplicatedIdList = getDuplicatedIds(substringToId);
+
+        return getEmailsFromIdsOrderByEmail(duplicatedIdList);
     }
 
     public static Map<String, Set<String>> getSubstringToIdMap(List<List<String>> forms) {
@@ -41,5 +44,25 @@ public class Problem6 {
         return substrings;
     }
 
+    public static List<String> getDuplicatedIds(Map<String, Set<String>> substringToId) {
+        Set<String> duplicatedIds = new HashSet<>();
+
+        for (String substring : substringToId.keySet()) {
+            if (substringToId.get(substring).size() >= 2) {
+                duplicatedIds.addAll(substringToId.get(substring));
+            }
+        }
+
+        return new ArrayList<>(duplicatedIds);
+    }
+
+    public static List<String> getEmailsFromIdsOrderByEmail(List<String> ids) {
+        return ids
+                .stream()
+                .map(id -> id + DOMAIN)
+                .sorted()
+                .collect(Collectors.toList());
+
+    }
 
 }
