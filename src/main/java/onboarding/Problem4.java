@@ -1,8 +1,11 @@
 package onboarding;
 
 public class Problem4 {
-    private static final int CONVERSION(int x){
-        return 25-x;
+    private static final char CONVERSION(char x){
+        int result=x;
+        if(x>='a'&&x<='z') result='a'+'z'-x;
+        if(x>='A'&&x<='Z') result='A'+'Z'-x;
+        return (char)result;
     }
 
     public static String solution(String word) {
