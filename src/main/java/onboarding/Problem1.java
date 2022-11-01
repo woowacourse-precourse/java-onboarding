@@ -55,14 +55,12 @@ class Problem1 {
             int[] leftDegitList = getDigitList(leftPageNumber);
             int[] rightDegitList = getDigitList(rightPageNumber);
 
-            for (int i = 0; i < 2; i++) {
-                // (1). 왼쪽 페이지 번호 자릿수 모두 더한 값, 모두 곱한 값 중 가장 큰 수 구하기
-                int leftScore = Math.max(getPlusScore(leftDegitList), getMultiplyScore(leftDegitList));
-                // (2). 오른쪽 페이지 번호 자릿수 모두 더한 값, 모두 곱한 값 중 가장 큰 수 구하기
-                int rightScore = Math.max(getPlusScore(rightDegitList), getMultiplyScore(rightDegitList));
-                // (3). (1)과 (2) 중 가장 큰 수를 본인 점수로 한다.
-                person.setMaxScore(Math.max(leftScore, rightScore));
-            }
+            // (1). 왼쪽 페이지 번호 자릿수 모두 더한 값, 모두 곱한 값 중 가장 큰 수 구하기
+            int leftScore = Math.max(getPlusScore(leftDegitList), getMultiplyScore(leftDegitList));
+            // (2). 오른쪽 페이지 번호 자릿수 모두 더한 값, 모두 곱한 값 중 가장 큰 수 구하기
+            int rightScore = Math.max(getPlusScore(rightDegitList), getMultiplyScore(rightDegitList));
+            // (3). (1)과 (2) 중 가장 큰 수를 본인 점수로 한다.
+            person.setMaxScore(Math.max(leftScore, rightScore));
         }
 
         /* [요구] 게임 승자 구하기 */
