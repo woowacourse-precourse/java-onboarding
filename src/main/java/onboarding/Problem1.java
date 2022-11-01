@@ -13,6 +13,19 @@ class Problem1 {
 		int pobiScore = calcPageNumberScore(pobi);
 		int crongScore = calcPageNumberScore(crong);
 
+		answer = compareScores(pobiScore, crongScore);
+
+		return answer;
+	}
+
+	/**
+	 * 점수를 비교해 알맞은 값을 리턴하는 메서드
+	 * @param pobiScore
+	 * @param crongScore
+	 * @return
+	 */
+	private static int compareScores(int pobiScore, int crongScore) {
+		int answer;
 		if (pobiScore == crongScore) {
 			answer = 0;
 		} else if (pobiScore > crongScore) {
@@ -20,7 +33,6 @@ class Problem1 {
 		} else {
 			answer = 2;
 		}
-
 		return answer;
 	}
 
