@@ -6,7 +6,7 @@ import java.util.HashSet;
 public class Problem3 {
 
     public static int solution(int number) {
-        
+
         Number input = new Number(number);
         Score3 score = new Score3(0);
         for (int i = 1; i <= input.getNumber(); i++) {

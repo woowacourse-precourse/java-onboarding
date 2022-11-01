@@ -2,7 +2,38 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
+
+        Word input = new Word(word);
+
+        input.reverseWord();
+
+        return input.getWord();
+    }
+}
+
+class Word {
+
+    private String word;
+
+    public Word(String word) {
+        validateLength(word);
+        this.word = word;
+    }
+
+    private void validateLength(String word) {
+        if(word.length() < 1) {
+            throw new IllegalArgumentException("빈 문자열은 입력할 수 없습니다.");
+        }
+        if(word.length() > 1000) {
+            throw new IllegalArgumentException("1000자 이상은 입력할 수 없습니다.");
+        }
+    }
+
+    public String getWord() {
+        return this.word;
+    }
+
+    public void reverseWord() {
         StringBuilder sb = new StringBuilder();
 
         char curr, change;
@@ -24,8 +55,6 @@ public class Problem4 {
                 sb.append(change);
             }
         }
-
-        answer = sb.toString();
-        return answer;
+        this.word = sb.toString();
     }
 }
