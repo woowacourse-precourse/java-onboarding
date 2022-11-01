@@ -48,4 +48,30 @@ class Problem1 {
         int[] pobiValues = {pfirst, psecond, pthird, pforth};
         return pobiValues;
     }
+
+    public static int[] crongValueSetting(List<String> crong) {
+        int cfirst = 0;
+        int csecond = 0;
+        int cthird = 1;
+        int cforth = 1;
+
+        for (int i = 0; i < crong.get(0).length(); i++) {
+            cfirst += crong.get(0).charAt(i) - '0';
+        }
+
+        for (int i = 0; i < crong.get(1).length(); i++) {
+            csecond += crong.get(1).charAt(i) - '0';
+        }
+
+        for (int i = 0; i < crong.get(0).length(); i++) {
+            cthird *= crong.get(0).charAt(i) - '0';
+        }
+
+        for (int i = 0; i < crong.get(1).length(); i++) {
+            cforth *= crong.get(1).charAt(i) - '0';
+        }
+
+        int[] crongValues = {cfirst, csecond, cthird, cforth};
+        return crongValues;
+    }
 }
