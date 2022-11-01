@@ -28,4 +28,10 @@ public class Problem2 {
         return cryptogram.length() == 0 ? true : false;
     }
 
+    private static boolean isDecodingCryptogram(String cryptogram) {
+        for (int i = 1; i < cryptogram.length(); i++) {
+            if (cryptogram.charAt(i) == cryptogram.charAt(i - 1)) return false;
+        }
+        return true;
+    }
 }
