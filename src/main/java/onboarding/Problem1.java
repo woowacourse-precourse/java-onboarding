@@ -12,6 +12,9 @@ class Problem1 {
         if(checkException(pobi)) return -1;
         if(checkException(crong)) return -1;
 
+        int pobiScore = getPagesMaxScore(pobi);
+        int crongScore = getPagesMaxScore(crong);
+
 
         return -1;
     }
