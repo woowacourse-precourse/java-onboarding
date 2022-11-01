@@ -4,6 +4,12 @@ import java.util.*;
 
 public class Problem6 {
 
+    static final int MIN_EMAIL_LENGTH = 11;
+    static final int MAX_EMAIL_LENGTH = 19;
+
+    static final int FORM_EMAIL_INDEX = 0;
+    static final int FORM_NICKNAME_INDEX = 1;
+
     public static List<String> solution(List<List<String>> forms) {
         return getRestrictedNicknames(forms);
     }
@@ -19,7 +25,7 @@ public class Problem6 {
                 }
             }
         }
-        
+
         return new ArrayList<>(restrictedNicknames);
     }
 
@@ -36,12 +42,18 @@ public class Problem6 {
         return false;
     }
 
+    static boolean validateEmailLength(List<List<String>> forms) {
+        return forms.stream()
+                .allMatch(form -> form.get(FORM_EMAIL_INDEX).length() >= MIN_EMAIL_LENGTH
+                                && form.get(FORM_EMAIL_INDEX).length() <= MAX_EMAIL_LENGTH);
+    }
+
     static String getFormEmail(List<List<String>> forms, int index) {
-        return forms.get(index).get(0);
+        return forms.get(index).get(FORM_EMAIL_INDEX);
     }
 
     static String getFormName(List<List<String>> forms, int index) {
-        return forms.get(index).get(1);
+        return forms.get(index).get(FORM_NICKNAME_INDEX);
     }
 
 }
