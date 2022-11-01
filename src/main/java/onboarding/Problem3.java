@@ -19,18 +19,18 @@ public class Problem3 {
         int answer = 0;
         int digitLength = 1;
         for (int num = 1; num <= number; num++) {
-            if (isBiggerDigitLength(num, digitLength)) digitLength++;
+            if (isNumBiggerThanDigitLength(num, digitLength)) digitLength++;
             /* 자리수 갯수만큼 반복하며 각 자리수에 대해 반복 */
             for (int digit = 1; digit <= digitLength; digit++) {
                 int digitMask = (int) Math.pow(10, digit - 1);
-                int digitValue = isOneDigitNumber(digitMask) ? getOneDigit(num) : getOtherDigit(num, digitMask);
+                int digitValue = isOneDigitNumber(digitMask) ? getOneDigitValue(num) : getOtherDigitValue(num, digitMask);
                 if (isClapCondition(digitValue)) answer++;
             }
         }
         return answer;
     }
 
-    static boolean isBiggerDigitLength(int number, int digitLength) {
+    static boolean isNumBiggerThanDigitLength(int number, int digitLength) {
         return number >= Math.pow(10, digitLength);
     }
 
@@ -38,11 +38,11 @@ public class Problem3 {
         return digitMask == 1;
     }
 
-    static int getOneDigit(int digitValue) {
+    static int getOneDigitValue(int digitValue) {
         return digitValue % ONE_DIGIT_MASK;
     }
 
-    static int getOtherDigit(int digitValue, int digitMask) {
+    static int getOtherDigitValue(int digitValue, int digitMask) {
         return digitValue / digitMask;
     }
 
