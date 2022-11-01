@@ -15,7 +15,7 @@ public class Problem4 {
             alpha.put(Character.toString((char) ('A' + i)), change_word[i]);
         array_word = word.split(""); //배열에 분할된 단어 저장
 
-        for (String c_word : array_word) {  //대소문자 구분작업
+        for (String c_word : array_word) {  //대소문자 구분 작업
             boolean is_upp = Character.isUpperCase(c_word.charAt(0));   
             String temp_result = alpha.get(c_word.toUpperCase());
             if (temp_result == null)

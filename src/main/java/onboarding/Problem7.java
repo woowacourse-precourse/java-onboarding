@@ -55,7 +55,6 @@ public class Problem7 {
             answer.add(key);
             ct++;
         }
-
         return answer;
     }
 

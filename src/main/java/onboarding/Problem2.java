@@ -15,7 +15,6 @@ class Solution {
             check = false;
             List<String> cur_string = new ArrayList<>();
             cur_string.addAll(list);
-
             for (int i = 0; list.size() - 1 > i; i++)       //문자 중복 제거 구간 시작
                 if (list.get(i).equals(list.get(i + 1))) {
                     cur_string.remove(i + 1);

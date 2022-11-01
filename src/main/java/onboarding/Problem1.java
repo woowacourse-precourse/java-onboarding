@@ -16,7 +16,6 @@ class Problem1 {
             answer = 1;
         else
             answer = 2;    // 점수 비교
-
         return answer;
     }
     static int maxScore(int leftPage, int rightPage) { //최고 점수구하기

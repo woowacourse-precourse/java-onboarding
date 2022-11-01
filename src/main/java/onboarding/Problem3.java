@@ -6,7 +6,6 @@ public class Problem3 {
     }
     private int count(int number) {
         int result = 0;
-
         for (int cnt = 1; cnt <= number; cnt++) {
             String str = String.valueOf(cnt); // 문자열 변환
 

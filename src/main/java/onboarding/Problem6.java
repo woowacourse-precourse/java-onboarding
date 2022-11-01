@@ -1,5 +1,4 @@
 package onboarding;
-
 import java.util.*;
 
 public class Problem6 {
