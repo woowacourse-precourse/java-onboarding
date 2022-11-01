@@ -9,10 +9,14 @@ public class Problem5 {
        
         int[] units = new int[] {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
         
+        Integer[] arr = new Integer[units.length];
+        
         for(int i = 0, len = units.length; i < len; i++) {
-        	answer.add(divWithUnit(money,units[i]));
+        	arr[i] = divWithUnit(money,units[i]);
         	money = money%units[i];
         }
+        
+        answer = List.of(arr);
         
         return answer;
     }
