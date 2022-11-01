@@ -1,11 +1,17 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.List;
+import ExceptionValidation.P7ExceptionValidation;
+
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+
+        if (!(P7ExceptionValidation.p7ExceptionValidation(user, friends, visitors))) {
+            return Collections.emptyList();
+        }
+
     }
+
+
 }
