@@ -23,12 +23,12 @@ public class Problem7 {
         }
 
         List<String> keySetList = new ArrayList<>(calcResult.keySet());
-        // 내림차순 //
+        // 내림차순
         Collections.sort(keySetList, new Comparator<String>() {
             @Override
             public int compare(String o1, String o2) {
                 if (calcResult.get(o1) == calcResult.get(o2)) {
-                    //
+                    return o1.compareTo(o2);
                 }
                 return calcResult.get(o2).compareTo(calcResult.get(o1));
             }
