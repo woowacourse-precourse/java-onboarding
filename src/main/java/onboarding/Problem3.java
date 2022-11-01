@@ -11,7 +11,7 @@ public class Problem3 {
             int tmp =i;
             while(tmp !=0){
                 int tmp2 = tmp % 10;
-                if(tmp2 %3 == 0) cnt++;
+                if(tmp2 %3 == 0 && tmp2 !=0) cnt++;
                 tmp /= 10;
             }
             dp[i] = dp[i-1] + cnt;
