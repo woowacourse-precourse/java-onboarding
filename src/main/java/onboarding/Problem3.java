@@ -3,6 +3,7 @@ package onboarding;
 public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
+        isValidNumber(number);
 
         for (int i = 1; i <= number; i++) {
             answer += numberOfClap(i);
@@ -22,5 +23,10 @@ public class Problem3 {
         }
 
         return count;
+    }
+
+    public static void isValidNumber(int number) {
+        if (number < 1 || number > 10000)
+            throw new IllegalArgumentException("숫자는 1이상 10000 이하여야 합니다.");
     }
 }
