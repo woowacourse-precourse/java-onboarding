@@ -1,4 +1,4 @@
-package onboarding;
+package onboarding.problem2;
 
 public class Decryptor {
     private String cryptogram;
