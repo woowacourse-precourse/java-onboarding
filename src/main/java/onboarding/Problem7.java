@@ -57,7 +57,7 @@ public class Problem7 {
     public static void ScoreVisitOfUser(HashMap<String, Integer> scoreTable,
                                         List<String> visitors, int score) {
         for(String friend : visitors)
-            scoreTable.put(friend, scoreTable.getOrDefault(friend, 0) + score);
+            scoreTable.put(friend, scoreTable.getOrDefault(friend, 1) + score);
     }
 
     public static List<String> FinalResult(HashMap<String, Integer> scoreTable,
