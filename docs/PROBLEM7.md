@@ -24,3 +24,11 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+## 기능 목록
+- [x] 친구관계를 HashMap에 (아이디, 친구목록) 형태로 저장한다.
+- [x] 사용자와 함께 아는 친구의 수를 구하여 점수에 더하는 기능
+- [x] 사용자의 타임 라인에 방문한 횟수를 구하여 점수에 더하는 기능
+- [x] 친구 추천 목록을 점수가 가장 높은 순으로 정렬하고 점수가 같다면 이름순으로 정렬하는 기능
+- 본인과 이미 친구인 아이디는 추천 목록에 추가하지 않는다.
+- [x] 친구 추천 리스트의 길이가 5가 넘는다면 5개까지만 반환하는 기능
