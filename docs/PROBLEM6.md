@@ -21,3 +21,8 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능 구현 목록
+- [x] 이메일과 닉네임을 받아 닉네임을 2글자씩 끊어 Map에 key: nickName value: userInfo 저장
+- [x] 이미 있는 닉네임 구분이라면 List에 email만 넣어서 반환
+- [x] 반환된 정보 저장 후, 중복 제거, 오름차순 정렬
