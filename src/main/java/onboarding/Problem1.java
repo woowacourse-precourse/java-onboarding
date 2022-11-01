@@ -27,9 +27,25 @@ class Problem1 {
         }
         return Math.max(sum, mul);
     }
-    
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        boolean flag = check(pobi, crong);
+        if (flag) {
+            int pobiValue = Math.max(getValue(pobi.get(0)), getValue(pobi.get(1)));
+            int crongValue = Math.max(getValue(crong.get(0)), getValue(crong.get(1)));
+            if (flag) {
+                if (pobiValue > crongValue) {
+                    return 1;
+                } else if (pobiValue < crongValue) {
+                    return 2;
+                } else {
+                    return 0;
+                }
+            } else {
+                return -1;
+            }
+        } else {
+            return -1;
+        }
     }
 }
