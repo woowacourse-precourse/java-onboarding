@@ -21,8 +21,9 @@ public class Problem7 {
 
         }
 
-        // 함께 아는 친구 수 찾기
-        knowmyfriend
+        // 함께 아는 친구 수 찾아서 점수 주기(10점)
+        List<String> myfriend = relation.get(user);
+        knowMyFriend(myfriend, relation, scoreMap);
 
 
         List<String> answer = Collections.emptyList();
@@ -62,6 +63,22 @@ public class Problem7 {
         }
 
 
+    }
+
+    // 함께 아는 친구 찾기
+    public static void knowMyFriend(List<String> myfriend, HashMap<String, List<String>> relation, HashMap<String, Integer> scoreMap) {
+
+        for (int i = 0; i < myfriend.size(); i++) {
+
+            // 친구의 친구 리스트
+            List<String> ffriend = relation.get(myfriend.get(i));
+            for (int j = 0; j < ffriend.size(); j++) {
+                String friend = ffriend.get(j);
+                int value = scoreMap.get(friend);
+                // 친구의 친구에게 10점 부여
+                scoreMap.put(friend, value + 10);
+            }
+        }
     }
 
 }
