@@ -24,6 +24,17 @@ public class Problem7 {
         }
         return friendsRelation;
     }
+
+    public static HashMap<String, Integer> scoreVisitFriend (HashMap<String, Integer> friendsRelation, List<String> visitors) {
+        for (String visitor : visitors) {
+            if (!friendsRelation.containsKey(visitor)){
+                friendsRelation.put(visitor, 1);
+            }else {
+                friendsRelation.put(visitor, friendsRelation.get(visitor)+1);
+            }
+        }
+        return friendsRelation;
+    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
