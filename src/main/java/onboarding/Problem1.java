@@ -5,6 +5,11 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
     }
+    public static int getbignumber(List<Integer> list){
+        int leftpage = Math.max(addnumber(list.get(0)), multi_number((list.get(0))));
+        int rightpage = Math.max(addnumber(list.get(1)), multi_number((list.get(1))));
+        return Math.max(leftpage, rightpage);
+    }
 
     public static int addnumber(int n){
         int sum = 0;
