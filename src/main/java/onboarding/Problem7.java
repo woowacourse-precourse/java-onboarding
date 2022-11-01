@@ -15,12 +15,13 @@ public class Problem7 {
         List<String> result = new ArrayList<>();
 
         fillFriendAndScoreMap(friends, friendMap, scoreMap);
+        setRecommendScoreByVisit(visitors, scoreMap);
 
         return answer;
     }
 
     private static void fillFriendAndScoreMap(List<List<String>> friends, HashMap<String, HashSet<String>> friendMap, HashMap<String, Integer> scoreMap) {
-        for(List<String> friend : friends) {
+        for (List<String> friend : friends) {
             if (friendMap.containsKey(friend.get(0))) {
                 HashSet<String> values = friendMap.get(friend.get(0));
                 values.add(friend.get(1));
@@ -41,6 +42,18 @@ public class Problem7 {
                 values.add(friend.get(0));
                 friendMap.put(friend.get(1), values);
                 scoreMap.put(friend.get(1), 0);
+            }
+        }
+    }
+
+        private static void setRecommendScoreByVisit(List<String> visitors, HashMap<String, Integer> scoreMap) {
+            for (String friend : visitors) {
+                if (scoreMap.containsKey(friend)) {
+                    int score = scoreMap.get(friend);
+                    scoreMap.put(friend, score + 1);
+                } else {
+                    scoreMap.put(friend, 0);
+                }
             }
         }
     }
