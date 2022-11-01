@@ -1,21 +1,27 @@
 package onboarding;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class Problem4 {
     public static String solution(String word) {
-        if(hasException(word)){
-            return null;
-        }
-        return getChangedWord(word);
-    }
+        Problem4 solve = new Problem4();
+        solve.procException(solve.hasException(word));
 
-    public static boolean hasException(String word){
+        return solve.getChangedWord(word);
+    }
+    private void procException(Boolean isException) {
+        if (isException) {
+            throw new RuntimeException("Error Occur");
+        }
+    }
+    private boolean hasException(String word){
         if(word.length()<1 || word.length()>10000)
             return true;
         return false;
     }
 
-
-    public static String getChangedWord(String word){
+    private String getChangedWord(String word){
         String result;
         char[] newWord = word.toCharArray();
         for(int i = 0; i < newWord.length; i++){
@@ -28,5 +34,4 @@ public class Problem4 {
         return result;
 
     }
-
 }
