@@ -30,5 +30,18 @@ class Problem1 {
         return Collections.max(plus);
     }
 
+    private static int multiplyLogic(List<Integer> lst){
+        List<Integer> multiple = new ArrayList<>();
 
+        for(int i = 0; i < lst.size(); i++) {
+            String s = Integer.toString(lst.get(i));
+
+            for (int j = 0; j < s.length(); j++) {
+                int sum = 1;
+                sum *= Integer.parseInt(s.substring(i, i + 1));
+                multiple.add(sum);
+            }
+        }
+        return Collections.max(multiple);
+    }
 }
