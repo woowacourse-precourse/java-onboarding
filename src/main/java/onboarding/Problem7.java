@@ -79,6 +79,9 @@ public class Problem7 {
 		if (!isVisitorsRangeValid(visitors)) {
 			return EXCEPTION;
 		}
+		if (!isIdLowerCase(friends)) {
+			return EXCEPTION;
+		}
 		return 0;
 	}
 
@@ -114,6 +117,18 @@ public class Problem7 {
 	private static boolean isVisitorsRangeValid(List<String> visitors) {
 		if (visitors.size() > 10000) {
 			return false;
+		}
+		return true;
+	}
+
+	// 사용자 아이디가 알파벳 소문자로만 이루어져 있지 않은 경우 예외
+	private static boolean isIdLowerCase(List<List<String>> friends) {
+		for (List<String> friend : friends) {
+			for (String id : friend) {
+				if (!id.equals(id.toLowerCase())) {
+					return false;
+				}
+			}
 		}
 		return true;
 	}
