@@ -67,6 +67,10 @@ public class Problem7 {
             }
         }
 
+        //sort by score
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(score.entrySet());
+        entryList.sort(((o1, o2) -> score.get(o2.getKey()) - score.get(o1.getKey())));
+
         return answer;
     }
 }
