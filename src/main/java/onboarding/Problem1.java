@@ -13,7 +13,7 @@ class Problem1 {
     public static int RIGHT_PAGE_INDEX = 1;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if (isValidInputSet(pobi, crong)) {
+        if (!isValidInputSet(pobi, crong)) {
             return IS_NOT_VALID;
         }
         int pobiMaxScore = getPlayerMaxScore(pobi);
