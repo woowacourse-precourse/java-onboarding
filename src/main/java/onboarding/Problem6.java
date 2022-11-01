@@ -34,4 +34,10 @@ public class Problem6 {
      * 2. 이메일로 정렬하기
      * */
 
+    private static List<String> sort_by_email(List<String> list) {
+        Set<String> new_set = new HashSet<>(list);
+        List<String> new_list = Lists.newArrayList(new_set);
+        Collections.sort(new_list);
+        return new_list;
+    }
 }
