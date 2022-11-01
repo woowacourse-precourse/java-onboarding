@@ -19,3 +19,12 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+### 기능목록
+
+- 알파벳 대문자인지 확인 isUpper
+- 알파벳 소문자인지 확인 isLower
+- 대문자 변환 translateUpper
+- 소문자 변환 translateLower
+- 'A'+'Z'의 값을 정의 SumofAZ
+- 'a'+'z'의 값을 정의 Sumofaz

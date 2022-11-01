@@ -9,6 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class ApplicationTest {
     @Nested
+
     class Problem1Test {
         @Test
         void case1() {
