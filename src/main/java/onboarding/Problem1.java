@@ -104,7 +104,17 @@ class Problem1 {
     	int pScore = pResults.get(0);
     	int cScore = cResults.get(0);
     	
-
+    	// 5. 점수를 비교해 가장 높은 사람이 게임의 승자가 된다.
+    	if(pScore > cScore) {
+    		answer = 1;
+    	} else if(pScore == cScore) {
+    		answer = 0;
+    	} else if(pScore < cScore) {
+    		answer = 2;
+    	} else {
+    		answer = -1;
+    	}
+    	
 		return answer;
 	}
 }
