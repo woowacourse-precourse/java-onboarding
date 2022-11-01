@@ -1,6 +1,10 @@
 package onboarding;
 
+import com.sun.source.tree.NewArrayTree;
+
 import java.util.*;
+import java.util.Map.Entry;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -105,7 +109,7 @@ public class Problem7 {
 
         List<String> scoreList = new ArrayList<>();
         for(String userFriend : userFriends){
-            friendsMap.get(userFriend).forEach(i -> scoreList.add(i));
+            scoreList.addAll(friendsMap.get(userFriend));
         }
 
         for(String user : scoreList){
@@ -113,6 +117,21 @@ public class Problem7 {
             scoreMap.put(user,score+10);
         }
 
+    }
+
+    public static List<Entry<String,Integer>> getSortedEntries(Map<String,Integer> scoreMap){
+        List<Entry<String,Integer>> entries = new ArrayList<>(scoreMap.entrySet());
+        entries.sort((o1, o2) -> o2.getValue().compareTo(o1.getValue()) == 0
+                ? o1.getKey().compareTo(o2.getKey()) : o2.getValue().compareTo(o1.getValue()));
+        return entries;
+    }
+
+    public static List<String> getRecommendList(List<Entry<String,Integer>> entries){
+        return entries.stream()
+                .filter(i-> i.getValue() != 0)
+                .map(Entry::getKey)
+                .limit(5)
+                .collect(Collectors.toList());
     }
 
 }
