@@ -7,7 +7,7 @@ import java.util.List;
 public class Problem6 {
     private static List<String> selectTwoLetters(String nickname) {
         List<String> twoLettersList = new LinkedList<>();
-        for (int i = 0; i < nickname.length(); i++) {
+        for (int i = 1; i < nickname.length(); i++) {
             String twoLetters = nickname.substring(i-1, i+1);
             twoLettersList.add(twoLetters);
         }
