@@ -6,22 +6,24 @@ import java.util.stream.Stream;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = new ArrayList<>();
+        List<String> result = new ArrayList<>();
+        List<List<String>> constrainedEmailList = new ArrayList<>();
 
-        Map<String, String> formsMap = listToMap(forms);
-        List<String> emailList = new ArrayList<>(formsMap.keySet()) ;
-        List<List<String>> combinations = getCombination(emailList);
+        List<Crew> crews = getCrewList(forms);
+        List<List<Crew>> combinations = getCombination(crews);
 
-        for (List<String> emailPair : combinations) {
-            answer = addEmailList(emailPair, formsMap, answer);
+        for (List<Crew> crewPair : combinations) {
+            List<String> newConstrainedEmails = getConstrainedEmailList(crewPair);
+            constrainedEmailList.add(newConstrainedEmails);
         }
 
-        answer = answer.stream()
+        result = constrainedEmailList.stream()
+                .flatMap(Collection::stream)
                 .distinct()
                 .sorted()
                 .collect(Collectors.toList());
 
-        return answer;
+        return result;
     }
     public static List<Crew> getCrewList(List<List<String>> forms){
         List<Crew> result = new ArrayList<>();
@@ -30,7 +32,7 @@ public class Problem6 {
         return result;
     }
 
-    static List<String> addEmailList(List<Crew> crewPair) {
+    static List<String> getConstrainedEmailList(List<Crew> crewPair) {
         List<String> emailList = new ArrayList<>();
 
         Crew crew1 = crewPair.get(0);
@@ -87,7 +89,7 @@ class Crew{
     private String name;
     private String email;
 
-    Crew(String name, String email){
+    Crew(String email, String name){
         this.name = name;
         this.email = email;
     }
