@@ -79,7 +79,8 @@ public class Problem7 {
         return result;
     }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        Map<String, List<String>> usersFriendsList = getUsersList(friends);
+        Map<String, Integer> usersPoints = getUsersPoint(user, usersFriendsList, visitors);
+        return sortValueMap(user, usersPoints);
     }
 }
