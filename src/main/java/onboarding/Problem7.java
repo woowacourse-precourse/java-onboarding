@@ -7,8 +7,11 @@ public class Problem7 {
     public static List<String> findFriends(String user, List<List<String>> friends) {
         List<String> myFriend = new ArrayList<>();
         for(int i=0; i<friends.size(); i++) {
-            if(friends.get(i).get(0).equals(user)) myFriend.add(friends.get(i).get(1));
-            else if(friends.get(i).get(1).equals(user)) myFriend.add(friends.get(i).get(0));
+            String friend1 = friends.get(i).get(0);
+            String friend2 = friends.get(i).get(1);
+
+            if(friend1.equals(user)) myFriend.add(friend2);
+            else if(friend2.equals(user)) myFriend.add(friend1);
         }
         return myFriend;
     }
@@ -18,9 +21,12 @@ public class Problem7 {
         for(int i=0; i<myFriend.size(); i++) {
             String name = myFriend.get(i);
             for(int j=0; j<friends.size(); j++) {
-                if(friends.get(j).get(0).equals(user) || friends.get(j).get(1).equals(user)) continue;
-                if(friends.get(j).get(0).equals(name)) relatedFriend.put(friends.get(j).get(1), 10);
-                else if(friends.get(j).get(1).equals(name)) relatedFriend.put(friends.get(j).get(0), 10);
+                String friend1 = friends.get(j).get(0);
+                String friend2 = friends.get(j).get(1);
+
+                if(friend1.equals(user) || friend2.equals(user)) continue;
+                if(friend1.equals(name)) relatedFriend.put(friend2, 10);
+                else if(friend2.equals(name)) relatedFriend.put(friend1, 10);
             }
         }
         return relatedFriend;
@@ -29,16 +35,18 @@ public class Problem7 {
     public static HashMap<String, Integer> visitorScore(List<String> myFriend, HashMap<String, Integer> related, List<String> visitors) {
         for(int i=0; i<visitors.size(); i++) {
             Boolean friendFlag = false;
+            String visitor = visitors.get(i);
+
             for(String friend : myFriend) {
-                if(visitors.get(i).equals(friend)) friendFlag = true;
+                if(visitor.equals(friend)) friendFlag = true;
             }
 
             if(!friendFlag) {
                 if(related.containsKey(visitors.get(i))) {
-                    related.replace(visitors.get(i), related.get(visitors.get(i))+1);
+                    related.replace(visitor, related.get(visitor)+1);
                 }
                 else {
-                    related.put(visitors.get(i), 1);
+                    related.put(visitor, 1);
                 }
             }
         }
