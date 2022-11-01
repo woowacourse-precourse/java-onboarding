@@ -3,7 +3,6 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
-
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
         List<String> friendList = new ArrayList<>();
@@ -42,7 +41,6 @@ public class Problem7 {
             }
         }
     }
-
     public static void checkVisitors(List<String> visitors, Map<String, Integer> recommendedFriends) {
         for (String visitor : visitors) {
             if (recommendedFriends.containsKey(visitor)) {
@@ -51,7 +49,6 @@ public class Problem7 {
             else recommendedFriends.put(visitor, 1);
         }
     }
-
     public static void makeRecommendFriendsList(Map<String, Integer> recommendedFriends, List<String> friendList, List<String> answer) {
         List<Map.Entry<String, Integer>> entryList = new ArrayList<>(recommendedFriends.entrySet());
         int cnt = 0;
@@ -59,7 +56,7 @@ public class Problem7 {
         entryList.sort(new Comparator<Map.Entry<String, Integer>>() {
             @Override
             public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
-                return o2.getValue() - o1.getValue();   // 내림차순 정렬
+                return o2.getValue() - o1.getValue();
             }
         });
 
