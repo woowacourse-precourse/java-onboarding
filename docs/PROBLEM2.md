@@ -1,8 +1,8 @@
 ## 🚀 기능 목록
-1. - [ ] 입력된 cryptogram을 한 문자씩 eachWords 라는 Queue에 저장
-2. - [ ] 연속된 중복 문자를 제거하는 deleteDuplicatedWords 메서드
-3. - [ ] 연속적으로 중복된 문자를 가지는지 판별하는 hasDuplicatedWords 메서드
-4. - [ ] 연속적으로 중복된 문자가 없으면 answer에 추가하는 addToAnswer 메서드 
+1. - [x] 입력된 cryptogram을 한 문자씩 eachWords 라는 Queue에 저장
+2. - [x] 연속된 중복 문자를 제거하는 deleteDuplicatedWords 메서드
+3. - [x] 연속적으로 중복된 문자를 가지는지 판별하는 hasDuplicatedWords 메서드
+4. - [x] 연속적으로 중복된 문자가 없으면 answer에 추가하는 addToAnswer 메서드 
 
 
 ## 🚀 기능 요구 사항
