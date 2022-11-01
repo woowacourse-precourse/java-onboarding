@@ -21,6 +21,7 @@ public class Problem7 {
         setRecommendBySameFriends(user, friendMap, scoreMap);
         removeNotRecommendFriendInScoreMap(user, friendMap, scoreMap);
         sortScore(scoreMap);
+        setFinalResultList(scoreMap, result);
 
         return answer;
     }
@@ -106,6 +107,22 @@ public class Problem7 {
                 }
             }
         });
+    }
+
+    private static void setFinalResultList(HashMap<String, Integer> scoreMap, List<String> result) {
+        int count = 0;
+        List<Map.Entry<String, Integer>> listEntry = new ArrayList<>(scoreMap.entrySet());
+        for (Map.Entry<String, Integer> entry : listEntry) {
+            if (count == 5) {
+                break;
+            }
+            if (entry.getValue() > 0) {
+                result.add(entry.getKey());
+            } else if (entry.getValue() == 0) {
+                break;
+            }
+
+        }
     }
 }
 
