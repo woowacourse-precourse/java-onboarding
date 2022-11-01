@@ -4,8 +4,16 @@ import java.util.Stack;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+
+        if(cryptogram.length() == 1) {
+            return cryptogram;
+        }
+
+        Stack<Character> stack = deleteDuplicateUsingStack(cryptogram);
+
+        String result = convertStackIntoString(stack);
+
+        return result;
     }
 
     public static String convertStackIntoString(Stack<Character> stack) {
