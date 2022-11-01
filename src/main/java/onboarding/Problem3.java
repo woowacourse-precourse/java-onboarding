@@ -5,12 +5,12 @@ public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
         for (int num = 1; num <= number; num++) {
-            answer += threeSixNineCount(num);
+            answer += getThreeSixNineCount(num);
         }
         return answer;
     }
 
-    public static int threeSixNineCount(int number) {
+    public static int getThreeSixNineCount(int number) {
         int count = 0;
         int nowDigit;
         while (number > 0) {
