@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 /*
@@ -40,6 +41,10 @@ public class Problem6 {
 
     public static String findEmail(String[] form){
         return form[0];
+    }
+
+    public static List<String> setToList(HashSet<String> set){
+        return new ArrayList<>(set);
     }
 
     public static List<String> solution(List<List<String>> forms) {
