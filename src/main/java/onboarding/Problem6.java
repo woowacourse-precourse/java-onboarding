@@ -16,10 +16,11 @@ public class Problem6 {
         names = new ArrayList<String>();
         emails = new ArrayList<String>();
 
-        // implement 1 : 비교를 위한 이메일 배열과 닉네이 배열 설정
+        // implement 1 : 비교를 위한 이메일 배열과 닉네임 배열 설정
         SetNamesAndEmails(forms);
 
         // implement 2 : 각 닉네임 간 비교 후 중복 닉네임 처리
+        CheckDuplicatedNames();
 
         // implement 3 : 중복 닉네임 가진 결과 이메일 배열을 정렬
 
@@ -73,23 +74,40 @@ public class Problem6 {
     // 겹치는 두 닉네임의 이메일들을 결과 리스트에 추가
     static void CheckDuplicatedNames()
     {
-        // implement
-        // O(n^2)
         for(int i = 0; i < len; ++i)
             for(int j = i + 1; j < len; ++j)
-            {
-
-            }
+                if(areNamesDuplicated(names.get(i), names.get(j)) == true)
+                {
+                    if(stringIncluded[i] == false)
+                    {
+                        answer.add(emails.get(i));
+                        stringIncluded[i] = true;
+                    }
+                    if(stringIncluded[j] == false)
+                    {
+                        answer.add(emails.get(j));
+                        stringIncluded[j] = true;
+                    }
+                }
     }
 
     // 겹치는 두 자 이상의 문자가 있는지 비교 : 있으면 true , 없으면 false
     static boolean areNamesDuplicated(String name1, String name2)
     {
-        // implement : 문자열 비교
-        // 첫 번째 문자가 겹치지 않으면 넘기기
-        // 두 번째 문자가 겹치지 않으면 넘기기
-        // 두 글자가 모두 겹치면 바로 true 반환
+        int len1 = name1.length();
+        int len2 = name2.length();
+
+        for(int i = 0; i < len1 - 1; ++i)
+        {
+            for(int j = 0; j < len2 - 1; ++j)
+            {
+                if(name1.charAt(i) != name2.charAt(j))
+                    continue;
+                if(name1.charAt(i+1) != name2.charAt(j+1))
+                    continue;
+                return true;
+            }
+        }
         return false;
     }
-
 }
