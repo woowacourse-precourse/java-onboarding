@@ -8,6 +8,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ApplicationTest {
+/*
     @Nested
     class Problem1Test {
         @Test
@@ -17,7 +18,6 @@ class ApplicationTest {
             int result = 0;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
-
         @Test
         void case2() {
             List<Integer> pobi = List.of(131, 132);
@@ -34,7 +34,8 @@ class ApplicationTest {
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
     }
-
+*/
+/*
     @Nested
     class Problem2Test {
         @Test
@@ -51,7 +52,8 @@ class ApplicationTest {
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
     }
-
+*/
+/*
     @Nested
     class Problem3Test {
         @Test
@@ -68,7 +70,8 @@ class ApplicationTest {
             assertThat(Problem3.solution(number)).isEqualTo(result);
         }
     }
-
+*/
+/*
     @Nested
     class Problem4Test {
         @Test
@@ -78,7 +81,8 @@ class ApplicationTest {
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
     }
-
+*/
+    /*
     @Nested
     class Problem5Test {
         @Test
@@ -96,6 +100,7 @@ class ApplicationTest {
         }
     }
 
+
     @Nested
     class Problem6Test {
         @Test
@@ -111,6 +116,7 @@ class ApplicationTest {
             assertThat(Problem6.solution(forms)).isEqualTo(result);
         }
     }
+    */
 
     @Nested
     class Problem7Test {
