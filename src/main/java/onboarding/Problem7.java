@@ -13,13 +13,15 @@ public class Problem7 {
 		List<String> userfriends = new ArrayList<>();
 		Map<String, Integer> map = new HashMap<>();
 		List<String> answer = new ArrayList<>();
+
 		for (List<String> list : friends) {
 			String friend1 = list.get(0), friend2 = list.get(1);
-			if (friend1 == user) {
-				userfriends.add(friend2);
-			}
-			if (friend2 == user) {
-				userfriends.add(friend1);
+			for (int i = 0; i < userfriends.size(); i++) {
+				if (friend2 != user && userfriends.get(i) == friend1) {
+					map.put(friend2, map.getOrDefault(friend2, 0) + 10);
+				} else if (friend1 != user && userfriends.get(i) == friend2) {
+					map.put(friend1, map.getOrDefault(friend1, 0) + 10);
+				}
 			}
 		}
 
