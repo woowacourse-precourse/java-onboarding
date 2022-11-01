@@ -22,8 +22,10 @@ public class Problem6 {
             for (int j = i + 1; j < forms.size(); j++) {
                 boolean isValid = checkOverlap(forms.get(i).get(1), forms.get(j).get(1));
                 if (isValid) {
-                    answer.add(forms.get(i).get(0));
-                    answer.add(forms.get(j).get(0));
+                    if (!answer.contains(forms.get(i).get(0)))
+                        answer.add(forms.get(i).get(0));
+                    if (!answer.contains(forms.get(j).get(0)))
+                        answer.add(forms.get(j).get(0));
                 }
             }
         }
