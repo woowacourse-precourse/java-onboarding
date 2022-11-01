@@ -43,4 +43,13 @@ public class Problem2 {
         sb.setLength(0);
         return decryption;
     }
+
+    public static boolean error(String cryptogram){
+        for(int i=0; i<cryptogram.length(); i++) {
+            if (!(cryptogram.length() > 0 && cryptogram.length() <= 1000 && cryptogram.charAt(i) >= 97 && cryptogram.charAt(i) <= 122)){
+                return true;
+            }
+        }
+        return false;
+    }
 }
