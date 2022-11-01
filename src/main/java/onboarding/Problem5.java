@@ -18,6 +18,17 @@ public class Problem5 {
         //값을 저장할 빈 배열 생성
         ArrayList<Integer> List = new ArrayList<Integer>();
 
+        //금액 단위 별 count 변수 생성
+        int count50000 = 0;
+        int count10000 = 0;
+        int count5000 = 0;
+        int count1000 = 0;
+        int count500 = 0;
+        int count100 = 0;
+        int count50 = 0;
+        int count10 = 0;
+        int count1 = 0;
+
         return answer;
     }
 }
