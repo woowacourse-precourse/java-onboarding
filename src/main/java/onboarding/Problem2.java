@@ -7,7 +7,15 @@ public class Problem2 {
 			return "";
 		}
 
+		// char 배열로 변환 후 현재 idx i, 다음 idx k
+		char[] c = cryptogram.toCharArray();
+
+		int i = 0;
+		int k = 0;
+
+
 		return "";
+
 	}
 
 //	public static void main(String args) {
