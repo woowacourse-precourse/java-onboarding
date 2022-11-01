@@ -4,7 +4,6 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
         HashMap<String, Integer> scoreMap = new HashMap<>();
         Set<String> oldFriends = getOldFriends(user, friends);
         for (int i = 0; i < friends.size(); i++) {
@@ -24,7 +23,12 @@ public class Problem7 {
             scoreMap.put(visitor, score + 1);
         }
 
-        return answer;
+        scoreMap.remove(user);
+        for (String oldFriend: oldFriends) {
+            scoreMap.remove(oldFriend);
+        }
+
+        return sorting(scoreMap);
     }
 
     private static Set<String> getOldFriends(String user, List<List<String>> friends) {
@@ -38,5 +42,27 @@ public class Problem7 {
             }
         }
         return set;
+    }
+
+    private static List<String> sorting(HashMap<String, Integer> score) {
+
+        Map<String, Integer> sortedMap = new TreeMap<>(score);
+        List<String> keySet = new ArrayList<>(sortedMap.keySet());
+        keySet.sort((o1, o2) -> sortedMap.get(o2).compareTo(sortedMap.get(o1)));
+
+        List<String> answer = new ArrayList<>();
+
+        for (int i = 0; i < keySet.size(); i += 1) {
+            answer.add(keySet.get(i));
+        }
+
+        if (answer.size() > 5) {
+            for (int i = 5; i < keySet.size(); i += 1) {
+                answer.remove(i);
+            }
+        }
+
+        return answer;
+
     }
 }
