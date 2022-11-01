@@ -13,6 +13,7 @@ public class Problem2 {
             }
 
             StringBuilder answer = new StringBuilder();
+            deleteDuplicatedWords(eachWords, answer);
 
             cryptogram = answer.toString();
         }
@@ -29,4 +30,10 @@ public class Problem2 {
         return false;
     }
 
+    private static void deleteDuplicatedWords(Queue<Character> eachWords, StringBuilder answer) {
+        while (!eachWords.isEmpty()) {
+            char word = eachWords.poll();
+            answer.append(word);
+        }
+    }
 }
