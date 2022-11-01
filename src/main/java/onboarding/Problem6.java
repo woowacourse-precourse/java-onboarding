@@ -31,6 +31,12 @@ public class Problem6 {
                 }
             }
         }
+        // 2. 중복 제거하고 오름차순으로 정렬한다.
+        // 중복제거
+        Set<String> set = new HashSet<String>(answer);
+        answer =new ArrayList<String>(set);
+        //오름차순 정렬
+        Collections.sort(answer);
         return answer;
     }
 }
