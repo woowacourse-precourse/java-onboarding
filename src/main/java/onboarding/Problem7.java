@@ -4,17 +4,24 @@ import java.util.List;
 import java.util.*;
 import java.util.HashMap;
 
+/** 구현할 기능
+ * 1. user의 친구 구하기(=> trueFriends)
+ * 2. friends 중 친구의 친구만 남겨서 점수 계산(=>featuredFriends)
+ * 3. visitors 에서 친구 제외 점수 계산(=>visitorsPeople)
+ * 4. 친구의 친구 & visitors 점수 합계하고 정렬, 5명만 반환
+ */
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
-        Set<String> trueFriends = trueFriends(user, friends);
+        Set<String> trueFriends = trueFriends(user, friends);//user 친구 구하기
 
-        HashMap<String, Integer> featuredMap = featuredFriends(user, friends, trueFriends);
-        HashMap<String, Integer> visitorMap = visitorsPeople(visitors, trueFriends);
+        HashMap<String, Integer> featuredMap = featuredFriends(user, friends, trueFriends); // 친구의 친구 점수 구하기
+        HashMap<String, Integer> visitorMap = visitorsPeople(visitors, trueFriends); //방문자 점수 구하기
 
         featuredMap.putAll(visitorMap);
 
         List<String> sortList = new ArrayList<>(featuredMap.keySet());
+        //점수 내림차순 정렬
         Collections.sort(sortList);
         sortList.sort(new Comparator<String>() {
             @Override
@@ -31,7 +38,7 @@ public class Problem7 {
         }
         return answer;
     }
-    //user의 친구 구하기
+
     public static Set<String> trueFriends(String user, List<List<String>> friends) {
         Set<String> result = new HashSet<String>();
         for (int i = 0; i < friends.size(); i++) {
@@ -65,12 +72,11 @@ public class Problem7 {
         }
 
         List<String> trueFriendList = new ArrayList<>(trueFriends);
-        // 방문자 리스트 중 친구 제외
         List<String> recommendList = new ArrayList<>();
         recommendList.addAll(friendsAndNot);
-        recommendList.removeAll(trueFriendList);
+        recommendList.removeAll(trueFriendList);   // 친구의 친구 리스트 중 친구 제외
 
-        HashMap<String, Integer> result = new HashMap<String, Integer>();
+        HashMap<String, Integer> result = new HashMap<String, Integer>(); //친구의 친구 +10
         for (int i = 0; i < recommendList.size(); i++) {
             Integer count = result.get(recommendList.get(i));
             if (count == null) result.put(recommendList.get(i), 10);
