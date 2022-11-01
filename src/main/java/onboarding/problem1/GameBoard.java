@@ -41,4 +41,8 @@ public class GameBoard {
         this.gameResult = (gamePlayer1Score > gamePlayer2Score) ? FIRST_PLAYER_WIN.gameResult() : LAST_PLAYER_WIN.gameResult();
         if (gamePlayer1Score == gamePlayer2Score) this.gameResult = DRAW.gameResult();
     }
+
+    public int getResult() {
+        return this.gameResult;
+    }
 }
