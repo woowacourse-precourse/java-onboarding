@@ -6,6 +6,12 @@ import java.util.List;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
+        int cryptogramLength = cryptogram.length();
+        if (cryptogramLength < 1 || cryptogramLength > 1000 || Character.isUpperCase(Integer.parseInt(cryptogram))) {
+            return "It's not valid input";
+        }
+
+
         String decoded = "";
         List<String> stringList = new ArrayList<>(Arrays.asList(cryptogram.split("")));
         for (int i = 0; i < stringList.size() - 1; i++) {
@@ -20,6 +26,8 @@ public class Problem2 {
         }
         return decoded;
     }
+
+
 
 
 }
