@@ -50,4 +50,19 @@ public class Problem7 {
         return userfriends;
     }
 
+    public static List<String> findFoF(String user, List<String> userfriends, List<List<String>> friends){
+        List<String> freindoffriend = new ArrayList<>();
+        for (int i = 0; i < userfriends.size(); i++) {
+            for(int j=0; j<friends.size(); j++) {
+                if(!friends.get(j).contains(user)) {
+                    String myfreind = findMyFriends(userfriends.get(i), friends.get(j));
+                    if (!myfreind.isEmpty()) {
+                        freindoffriend.add(myfreind);
+                    }
+                }
+            }
+        }
+        return freindoffriend;
+    }
+
 }
