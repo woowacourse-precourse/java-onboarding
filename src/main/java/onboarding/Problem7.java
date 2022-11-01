@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -65,13 +64,22 @@ public class Problem7 {
 
     private static List<String> getSortedScore(HashMap<String, Integer> score) {
         List<String> sortedScoreList = new ArrayList<>();
+        List<Map.Entry<String, Integer>> mapList = new ArrayList<>(score.entrySet());
+        mapList.sort((o1, o2) -> {
+            if (o1.getValue() < o2.getValue()) {
+                return 1;
+            } else if (o1.getValue() > o2.getValue()) {
+                return -1;
+            } else {
+                if (o1.getKey().compareTo(o2.getKey()) > 0) {
+                    return 1;
+                } else {
+                    return -1;
+                }
+            }
+        });
 
-        List<Map.Entry<String, Integer>> entries =
-                score.entrySet().stream()
-                        .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
-                        .collect(Collectors.toList());
-
-        for (Map.Entry<String, Integer> entry : entries) {
+        for (Map.Entry<String, Integer> entry : mapList) {
             sortedScoreList.add(entry.getKey());
         }
 
