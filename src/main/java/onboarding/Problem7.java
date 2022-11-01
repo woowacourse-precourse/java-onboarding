@@ -60,4 +60,15 @@ public class Problem7 {
         });
         return t;
     }
+
+    public static List<Integer> MemberScoreList(String user, List<List<String>> friends, List<String> visitors){
+        scoreList.clear();
+        for(int i=0; i<orgainze(user, friends, visitors).size(); i++) {
+            Member m= makeMemberInfo(user, friends, visitors, i);
+            if(m.score!=0){
+                scoreList.add(m.score);
+            }
+        }
+        return scoreList;
+    }
 }
