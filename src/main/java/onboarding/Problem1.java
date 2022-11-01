@@ -8,7 +8,7 @@ class Problem1 {
             return -1;
         }
 
-        int answer = computeAnswer(pobi,crong);
+        int answer = computeAnswer(pobi, crong);
 
         return answer;
     }
@@ -74,13 +74,16 @@ class Problem1 {
         int pobiScore = computeScore(pobi);
         int crongScore = computeScore(crong);
 
-        if (pobiScore > crongScore){
+        if (pobiScore > crongScore) {
             return 1;
         }
-        if (pobiScore < crongScore){
+        if (pobiScore < crongScore) {
             return 2;
         }
+        if (pobiScore == crongScore) {
+            return 0;
+        }
 
-        return 0;
+        return -1;
     }
 }
