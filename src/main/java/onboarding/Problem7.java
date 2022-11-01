@@ -34,7 +34,7 @@ public class Problem7 {
 //        visitors
         // 친구들 리스트에 포함이 안되면
         for (String nameVisitor : visitors) {
-            if (!userFriendList.contains(nameVisitor)) {
+            if (!isContains(userFriendList, nameVisitor)) {
                 addMapPriority(nameVisitor, 1, priorityPersonMap);
             }
         }
@@ -59,6 +59,10 @@ public class Problem7 {
         answer.addAll(keySet);
         System.out.println("answer = " + answer);
         return answer;
+    }
+
+    private static boolean isContains(List<String> userFriendList, String nameVisitor) {
+        return userFriendList.contains(nameVisitor);
     }
 
     // name이랑
