@@ -21,3 +21,15 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능 구현 목록
+1. forms에서 nickname과 email을 추출한다.
+2. 1과 비교할 nickname과 email을 추출한다.
+3. 중복된 부분이 있는지 확인
+   1. 1, 2에서 추출한 닉네임을 두 글자 단위로 잘라서 같은지 확인
+4. 중복된 부분이 있다면
+    1. 1에 해당하는 이메일이 result에 포함되어 있는지 확인한다.
+        1. 포함되어 있지 않다면 이메일을 result에 추가한다.
+    2. 3에 해당하는 이메일이 result에 포함되어 있는지 확인한다.
+        1. 포함되어 있지 않다면 이메일을 result에 추가한다.
+6. result를 오름차순으로 정렬한다.
