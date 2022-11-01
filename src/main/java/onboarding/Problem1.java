@@ -12,6 +12,15 @@ class Problem1 {
         else
             return true;
     }
+    //각 페이지의 최대값 만들기
+    public static int getMaxValue(List<Integer> list) {
+        int leftMax;
+        int rightMax;
+
+        leftMax = calculateMax(list.get(0));
+        rightMax = calculateMax(list.get(1));
+        return (leftMax > rightMax) ? leftMax : rightMax;
+    }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
