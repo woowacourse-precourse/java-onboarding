@@ -80,6 +80,9 @@ public class Problem7 {
     public static void makeScoresWithFriendship(List<String> userFriends, String crew) {
         int score = 0;
 
+        if (userFriends == null) {
+            return;
+        }
         if (userFriends.contains(crew)) {
             return;
         }
