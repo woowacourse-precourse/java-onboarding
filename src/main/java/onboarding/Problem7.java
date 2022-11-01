@@ -16,6 +16,11 @@ public class Problem7 {
 
         Map<String, Integer> calcResult = calcScore(nonFriendScore, friends, friendList, visitors);
 
+        for (String nonFriend : calcResult.keySet()) {
+            if (calcResult.get(nonFriend) == 0) {
+                calcResult.remove(nonFriend);
+            }
+        }
         return answer;
     }
 
@@ -42,10 +47,12 @@ public class Problem7 {
                 n_nonFriendList.remove(friend);
             }
         }
-        return List.of(friendList, nonFriendList);
+        return List.of(friendList, n_nonFriendList);
     }
 
     private static Map<String, Integer> calcScore(Map<String, Integer> nonFriendScore, List<List<String>> friendRelations, List<String> friendList, List<String> visitors) {
+
+        // 아는 친구 점수 업데이트
         for (List<String> relation : friendRelations) {
             for (String friend : friendList) {
                 if (relation.contains(friend)) {
@@ -55,12 +62,12 @@ public class Problem7 {
             }
         }
 
+        // 방문 점수 업데이트
         for (String visitor : visitors) {
             if (nonFriendScore.containsKey(visitor)){
                 nonFriendScore.put(visitor, nonFriendScore.get(visitor)+1);
             }
         }
-
         return nonFriendScore;
     }
 }
