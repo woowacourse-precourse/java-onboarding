@@ -15,6 +15,9 @@ class Problem1 {
     private static final int LEFT = 0;
     private static final int RIGHT = 1;
 
+    public static int getBiggerScore(int page) {
+        return getSumPage(page) > getMultiplyPage(page) ? getSumPage(page) : getMultiplyPage(page);
+    }
     public static int getSumPage(int page) {
         int sumResult = 0;
         String pages = Integer.toString(page);
