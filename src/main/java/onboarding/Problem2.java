@@ -2,12 +2,12 @@ package onboarding;
 
 import java.util.Stack;
 
-class StackForPro2 {
+class Stack2 {
 
   private static final int MINIMUM_LENGTH = 1;
   private static final int MAXIMUM_LENGTH = 1000;
 
-  public StackForPro2(String cryptogram) {
+  public Stack2(String cryptogram) {
     validateCrypto(cryptogram);
   }
 
@@ -55,8 +55,8 @@ class StackForPro2 {
 public class Problem2 {
 
   public static String solution(String cryptogram) {
-    StackForPro2 material = new StackForPro2(cryptogram);
-    return stackToString(material.pushAndPop(new Stack<>(), cryptogram), new StringBuilder());
+    Stack2 stackClass = new Stack2(cryptogram);
+    return stackToString(stackClass.pushAndPop(new Stack<>(), cryptogram), new StringBuilder());
   }
 
   public static String stackToString(Stack<Character> stack, StringBuilder sb) {
