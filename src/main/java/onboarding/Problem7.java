@@ -5,8 +5,6 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-
         //친구들 점수를 나타내는 해시테이블 생성
         Map<String, Integer> scoreTable = makeHashTable(user, friends);
 
@@ -17,6 +15,33 @@ public class Problem7 {
         keepScoreToVisitors(scoreTable, visitors);
 
         System.out.println(scoreTable);
+
+        List<String> keySetList = new ArrayList<>(scoreTable.keySet());
+        List<String> answer = new ArrayList<>();
+        List<String> userFriends = new ArrayList<>();
+        for (int i = 0; i < friends.size(); i++) {
+            String name1 = friends.get(i).get(0);
+            String name2 = friends.get(i).get(1);
+            if (name1.equals(user)) {
+                userFriends.add(name2);
+            }
+            if (name2.equals(user)) {
+                userFriends.add(name1);
+            }
+        }
+
+        Collections.sort(keySetList, ((o1, o2) -> scoreTable.get(o2).compareTo(scoreTable.get(o1))));
+        Integer cnt = 0;
+        for (String key : keySetList) {
+            if (cnt >= 5) {
+                break;
+            }
+            if (userFriends.contains(key)) {
+                continue;
+            }
+            answer.add(key);
+            cnt++;
+        }
 
         return answer;
     }
