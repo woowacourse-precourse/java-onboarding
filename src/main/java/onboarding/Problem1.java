@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.List;
 
 class Problem1 {
-
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         // 예외사항 확인
         if (pobi.get(0) + 1 != pobi.get(1) || crong.get(0) + 1 != crong.get(1)) {

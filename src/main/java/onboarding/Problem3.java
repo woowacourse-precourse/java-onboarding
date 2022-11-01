@@ -1,7 +1,6 @@
 package onboarding;
 
 public class Problem3 {
-
     public static int solution(int number) {
         if (number <= 2) {
             return 0;
