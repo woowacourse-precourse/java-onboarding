@@ -7,7 +7,7 @@ import java.util.TreeMap;
 
 public class Problem6 {
 	public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer = new ArrayList<>();
         
         String s;
         String ss;
