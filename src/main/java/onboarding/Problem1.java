@@ -98,44 +98,21 @@ class Problem1 {
         crongPageListList.add(convertPage(crong.get(0)));
         crongPageListList.add(convertPage(crong.get(1)));
 
-        int pobiFirstPage;
-        int pobiFirstPagePlus;
-        int pobiFirstPageMultiply;
 
-        int pobiSecondPage;
-        int pobiSecondPagePlus;
-        int pobiSecondPageMultiply;
+        List<Integer> pobiPage = new ArrayList<>();
+        List<Integer> crongPage = new ArrayList<>();
+
 
         int realPobiPage;
-
-        pobiFirstPagePlus = plusPage(pobiPageListList.get(0));
-        pobiFirstPageMultiply = multiplyPage(pobiPageListList.get(0));
-        pobiFirstPage = comparePlusAndMulti(pobiFirstPagePlus, pobiFirstPageMultiply);
-
-        pobiSecondPagePlus = plusPage(pobiPageListList.get(1));
-        pobiSecondPageMultiply = multiplyPage(pobiPageListList.get(1));
-        pobiSecondPage = comparePlusAndMulti(pobiSecondPagePlus, pobiSecondPageMultiply);
-
-        realPobiPage = compareFirstAndSecond(pobiFirstPage, pobiSecondPage);
-
-        int crongFirstPage;
-        int crongFirstPagePlus;
-        int crongFirstPageMultiply;
-
-        int crongSecondPage;
-        int crongSecondPagePlus;
-        int crongSecondPageMultiply;
-
         int realCrongPage;
-        crongFirstPagePlus = plusPage(crongPageListList.get(0));
-        crongFirstPageMultiply = multiplyPage(crongPageListList.get(0));
-        crongFirstPage = comparePlusAndMulti(crongFirstPagePlus, crongFirstPageMultiply);
 
-        crongSecondPagePlus = plusPage(crongPageListList.get(1));
-        crongSecondPageMultiply = multiplyPage(crongPageListList.get(1));
-        crongSecondPage = comparePlusAndMulti(crongSecondPagePlus, crongSecondPageMultiply);
+        pobiPage.add(comparePlusAndMulti(plusPage(pobiPageListList.get(0)), multiplyPage(pobiPageListList.get(0))));
+        pobiPage.add(comparePlusAndMulti(plusPage(pobiPageListList.get(1)), multiplyPage(pobiPageListList.get(1)));
+        realPobiPage = compareFirstAndSecond(pobiPage.get(0), pobiPage.get(1));
 
-        realCrongPage = compareFirstAndSecond(crongFirstPage, crongSecondPage);
+        crongPage.add(comparePlusAndMulti(plusPage(crongPageListList.get(0)), multiplyPage(crongPageListList.get(0))));
+        crongPage.add(comparePlusAndMulti(plusPage(crongPageListList.get(1)), multiplyPage(crongPageListList.get(1))));
+        realCrongPage = compareFirstAndSecond(crongPage.get(0), crongPage.get(1));
 
         return comparePobiAndCrong(realPobiPage, realCrongPage);
 
