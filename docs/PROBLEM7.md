@@ -2,13 +2,24 @@
 
 ## ✔ 기능 정의
 ### 컬렉션
-- {String : List<String>} = key가 알고있는 친구 리스트 List<String>
-- {String : Integer} = key의 점수
+- {String key : List<String>} = user(key)가 알고있는 친구 리스트 userFriendsListMap
+- {String key : Integer} = user(key)의 점수 userScoreMap
+
 ### 기능
-- friends를 이용하여 서로 알고 있는 친구 리스트 업데이트
-  - frieds.get(i)에 있는 두 명의 사람 각각, 아는 사람 리스트에 서로를 추가해주기
-- user와 서로 아는 친구가 있는 사람의 score +=10 
-- visited 리스트에 포함된 사람의 score += 1
+- [X] userScoreMap 초기화 (initUserScoreMap)
+- [X] userFriendsListMap 초기화 (initUserFriendsListMap)
+  - 친구 관계 담긴 List<List<String>> friends 활용
+  - 각각 자신의 친구 리스트에 서로 추가하기 (putUserFriendsMap)
+- [X] 서로 아는 친구 명수만큼 점수 더해주기 (plusAcquaintanceScore)
+  - [X] 서로 아는 친구 리스트 반환 (getAcquaintanceList)
+  - [X] 해당 user의 점수를 업데이트 (plusUserScore)
+- [X] 방문한 만큼 점수 더해주기 (plusVisitorScore)
+- [X] 최대 다섯명의 친구 추천 리스트 반환 (getTopFiveScoreFriends)
+  - [X] userScoreMap을 활용하여 점수 순 정렬 + 같으면 이름 순 정렬한 Entry 반환 (getSortedScoreMapEntryList)
+  - [X] user가 친구가 없는 경우 판별 (isUserHasFriends)
+    - user가 친구가 있으면, user와 친구가 아니면서 점수가 0이 아닌 최대 다섯명의 이름 반환
+    - user가 친구가 없으면, 점수가 0이 아닌 최대 다섯명의 이름 반환
+
 
 # 🎈 본문
 ## 🚀 기능 요구 사항
