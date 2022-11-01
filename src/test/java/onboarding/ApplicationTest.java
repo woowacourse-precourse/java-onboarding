@@ -228,7 +228,14 @@ class ApplicationTest {
     }
 
     @Test
-    void case3() {
+    void case3MaxMoney() {
+      int money = 1000000;
+      List<Integer> result = List.of(20, 0, 0, 0, 0, 0, 0, 0, 0);
+      assertThat(Problem5.solution(money)).isEqualTo(result);
+    }
+
+    @Test
+    void case4() {
       int money = 0;
       List<Integer> result = List.of(1, 0, 0, 0, 0, 2, 0, 3, 7);
       //assertThat(Problem5.solution(money)).isEqualTo(result);
@@ -238,7 +245,7 @@ class ApplicationTest {
     }
 
     @Test
-    void case4() {
+    void case5() {
       int money = 1000005;
       List<Integer> result = List.of(1, 0, 0, 0, 0, 2, 0, 3, 7);
       //assertThat(Problem5.solution(money)).isEqualTo(result);
@@ -246,7 +253,6 @@ class ApplicationTest {
         Problem5.solution(money);
       }).isInstanceOf((IllegalArgumentException.class));
     }
-
   }
 
   @Nested

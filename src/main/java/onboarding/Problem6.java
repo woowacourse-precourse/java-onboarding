@@ -96,7 +96,7 @@ class ValidityChecker {
   private void nicknameValidityCheck(List<List<String>> input) {
     for (List<String> strings : input) {
       String nickName = strings.get(1);
-      if (!Pattern.matches("[가-힣]*$", nickName)) {
+      if (!Pattern.matches("[ㄱ-힣]*$", nickName)) {
         throw new IllegalArgumentException("Nickname is not Korean");
       }
     }
