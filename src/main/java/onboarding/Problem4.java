@@ -3,6 +3,15 @@ package onboarding;
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
+
+        if (exception(word)){
+
+            for(char ch : word.toCharArray()) {
+                answer += "" + reverse(ch);
+            }
+
+        }
+
         return answer;
     }
 
