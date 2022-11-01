@@ -15,6 +15,11 @@
 - cryptogram은 길이가 1 이상 1000 이하인 문자열이다.
 - cryptogram은 알파벳 소문자로만 이루어져 있다.
 
+## 기능 요구 사항 정리
+1. 스택을 만들어 만약 비어있으면 cryptogram의 첫글자를 스택에 푸쉬한다.
+2. 만약 비어있지 않고, 스택의 제일 나중에 들어온 글자와 cryptogram의 글자와 같으면 pop한다.
+3. StringBuilder 를 통해 스택에 있는 것들을 한줄로 만든다.
+
 ### 실행 결과 예시
 
 | cryptogram | result |
