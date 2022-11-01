@@ -80,6 +80,30 @@ class Problem7Test {
 
     static Map<String, Integer> userFriends;
 
+    // 추천점수 1이상, 이미 동일한 친구 관계가 아닌 경우
+    private List<String> recommandUser(String user, List<String> oldFriends, Map<String, Integer> userFriends) {
+        List<String> answer = new ArrayList<>();
+
+        // 점수순 -> 이름순 정렬
+        List<Map.Entry<String,Integer>> sortList = new LinkedList<>(userFriends.entrySet());
+        Collections.sort(sortList, new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                // 점수가 똑같다면 이름 순
+                if (o2.getValue() == o1.getValue()) return o1.getKey().compareToIgnoreCase(o2.getKey());
+                // 아니라면 점수 내림차순
+                else return o2.getValue() - o1.getValue();
+            }
+        });
+
+        for (int i=0; i<sortList.size(); i++) {
+            String name = sortList.get(i).getKey();
+            if (!oldFriends.contains(name) && !name.equals(user)) answer.add(name);
+            if (answer.size() == 5) break;
+        }
+        return answer;
+    }
+    
     // 방문자
     private void checkVisitors(List<String> visitors) {
         for (String visitor : visitors) {
