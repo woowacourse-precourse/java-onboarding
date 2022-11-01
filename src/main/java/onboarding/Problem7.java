@@ -23,10 +23,27 @@ public class Problem7 {
         }
         return graph;
     }
+    private static HashMap<String, Integer> addPointByVisitor(HashMap<String, Integer> recommend, List<String> visitors){
+        //방문자에 대한 1점 추가
+        for(String visitor : visitors){
+            if(recommend.containsKey(visitor))
+                recommend.put(visitor, recommend.get(visitor)+1);
+            else
+                recommend.put(visitor, 1);
+        }
+        return recommend;
+
+    }
+
+
+
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         HashMap<String, HashSet<String>> graph = getGraphOf(friends);
 
+        //사용자들 추천 점수 0으로 세팅
+        HashMap<String, Integer> recommend = new HashMap<>();
+        addPointByVisitor(recommend, visitors);
 
         return null;
     }
