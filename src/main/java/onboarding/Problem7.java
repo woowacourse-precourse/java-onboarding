@@ -33,21 +33,24 @@ public class Problem7 {
         return scores;
     }
 
-    static List<String> recommendList(Map<String, Integer> score) {
-        return score.keySet()
+    // 친구추천점수가 주어졌을 때 가장 높은 점수 5명(0점 아닌 인원이 5명 아래면 전부) 출력
+    static List<String> recommendList(Map<String, Integer> scores) {
+        List<String> recommendList = scores.keySet()
                 .stream()
+                .filter(o -> scores.get(o) > 0)
                 .sorted((o1, o2) -> {
-                    int score1 = score.getOrDefault(o1, 0);
-                    int score2 = score.getOrDefault(o2, 0);
+                    int score1 = scores.get(o1);
+                    int score2 = scores.get(o2);
                     if (score1 != score2) {
                         return score2 - score1;
                     }
                     return o1.compareTo(o2);
                 })
-                .collect(Collectors.toList())
-                .subList(0, Math.min(score.size(), 5));
+                .collect(Collectors.toList());
+        return recommendList.subList(0, Math.min(recommendList.size(), 5));
     }
 
+    // 주어진 아이디가 잘못되었는지 체크
     static boolean violateId(String id) {
         int length = id.length();
         if (length == 0 || length > 30) return true;
@@ -55,6 +58,7 @@ public class Problem7 {
         return !Pattern.matches(regex, id);
     }
 
+    // 주어진 친구관계가 잘못된 입력인지 체크
     static boolean violateFriends(List<List<String>> friends) {
         int size = friends.size();
         if (size == 0 || size > 10000) return true;
@@ -71,6 +75,7 @@ public class Problem7 {
         return false;
     }
 
+    // 주어진 방문자 리스트가 잘못된 입력인지 체크
     static boolean violateVisitors(List<String> visitors) {
         int size = visitors.size();
         if (size == 0 || size > 10000) return true;
@@ -80,6 +85,7 @@ public class Problem7 {
         return false;
     }
 
+    // 친구관계도 : friendMap의 key A에 해당하는 value는 A의 친구들의 집합 
     static Map<String, Set<String>> setFriendMap(List<List<String>> friends) {
         Map<String, Set<String>> friendMap = new HashMap<>();
         for (List<String> friend : friends) {
@@ -97,6 +103,7 @@ public class Problem7 {
         return friendMap;
     }
 
+    // 친구관계 클래스
     static class Friend {
         String a;
         String b;
