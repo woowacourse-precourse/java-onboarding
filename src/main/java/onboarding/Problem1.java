@@ -12,13 +12,7 @@ class Problem1 {
         int pobiScore = getBiggerScore(pobi);
         int crongScore = getBiggerScore(crong);
         
-        if(pobiScore > crongScore) {
-        	answer = 1;
-        } else if(pobiScore < crongScore) {
-        	answer = 2;
-        } else {
-        	answer = 0;
-        }
+        answer = getScoreCompare(pobiScore, crongScore);
         
         return answer;
     }
@@ -65,5 +59,14 @@ class Problem1 {
     
     private static boolean hasZero(int n) {
     	return Integer.toString(n).contains("0");
+    }
+    
+    private static int getScoreCompare(int n1, int n2) {
+    	if(n1 - n2 > 0) {
+    		return 1;
+    	} else if(n1 - n2 < 0) {
+    		return 2;
+    	}
+    	return 0;
     }
 }
