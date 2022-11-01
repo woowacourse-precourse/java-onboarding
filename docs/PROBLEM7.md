@@ -24,3 +24,18 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 변수 목록
+1. 친구 관계를 저장하는 HashMap : fList
+2. 해당 user의 점수를 저장하는 HashMap : sList
+3. 리스트를 반환하기 위한 score 별로 user를 저장하는 HashMap : scoreUser
+
+### 기능 목록
+1. 처음 friends에서 점수를 계산해야할 user 목록을 만드는 기능 : makeSList 
+   - user와 user 친구들을 제외한 나머지 회원들을 0점으로 초기화 해준다.
+2. 회원별 친구관계가 있는 회원들을 모두 list로 넣어주는 기능 : addFriend
+3. sList에 존재하는 회원들 중, user와 함께 아는 친구가 있을 때마다 10점을 추가해주는 기능 : calScore
+4. 방문한 회원의 경우 1점을 추가해주는 기능 : calScoreVisitors
+5. 점수 순으로 나열하기 위해, {key : person -> value : score} 구조인 sList에서 
+   {key : score -> value : person's list} 구조를 가진 scoreUser로 데이터를 넣어주는 기능 : changeKeyValue
+6. 점수 순으로 나열하되, 같은 점수의 회원으 경우 알파벳순으로 나열하는 기능 : getAnswer
