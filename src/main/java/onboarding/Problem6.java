@@ -16,9 +16,16 @@ public class Problem6 {
         userForms = new List[forms.size()];
         setUserForms(forms);
         search(stringBuilder);
+        removeDuplication();
 
         return answer;
     }
+
+    public static void removeDuplication(){
+        Set<String> set =  new HashSet<>(answer);
+        answer = new ArrayList<>(set);
+    }
+
     public static void searchOverlappedUser(){
         for(int i=0;i<isOverlap.length;i++) {
             if (isOverlap[i])
