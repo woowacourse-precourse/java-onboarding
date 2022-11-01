@@ -1,4 +1,4 @@
-package onboarding.problem5.domain.controller;
+package onboarding.problem5.controller;
 
 import onboarding.problem5.domain.Money;
 import org.junit.jupiter.api.Test;

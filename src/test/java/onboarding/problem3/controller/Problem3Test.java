@@ -1,4 +1,4 @@
-package onboarding.problem3.domain.controller;
+package onboarding.problem3.controller;
 
 import onboarding.problem3.domain.Numbers;
 import org.junit.jupiter.api.Test;

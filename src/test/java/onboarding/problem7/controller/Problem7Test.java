@@ -1,4 +1,4 @@
-package onboarding.problem7.domain.controller;
+package onboarding.problem7.controller;
 
 import onboarding.problem7.domain.Users;
 import org.junit.jupiter.api.Test;

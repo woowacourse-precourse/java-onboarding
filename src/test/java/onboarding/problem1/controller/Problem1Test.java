@@ -1,4 +1,4 @@
-package onboarding.problem1.domain.controller;
+package onboarding.problem1.controller;
 
 import onboarding.problem1.domain.Players;
 import org.junit.jupiter.api.Test;
