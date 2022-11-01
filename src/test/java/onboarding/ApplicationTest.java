@@ -216,6 +216,31 @@ class ApplicationTest {
             List<String> result = List.of("abc@email.com", "bcd@email.com", "cde@email.com");
             assertThat(Problem6.solution(forms)).isEqualTo(result);
         }
+
+        @Test
+        void case3() {
+            //효율성 테스트 (통과 목적이 아닌 극한의 상황이 주어 졌을때 프로그램의 실행시간을 체크)
+            List<List<String>> forms = new ArrayList<>();
+            for (int i = 0; i < 10000; i++) {
+
+                StringBuilder email = new StringBuilder();
+                for (int j = 0; j <= 20; j++) {
+                    char ch = (char) ((Math.random() * 26) + 65);
+                    email.append(ch);
+                }
+                email.append("@email.com");
+
+                StringBuilder name = new StringBuilder();
+                for (int j = 0; j <= 20; j++) {
+                    char ch = (char) ((Math.random() * 11172) + 0xAC00);
+                    name.append(ch);
+                }
+                List<String> form = List.of(email.toString(), name.toString());
+                forms.add(form);
+            }
+            List<String> result = Problem6.solution(forms);
+            assertThat(Problem6.solution(forms)).isEqualTo(result);
+        }
     }
 
     @Nested
