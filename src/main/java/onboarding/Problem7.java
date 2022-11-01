@@ -11,20 +11,18 @@ public class Problem7 {
     private static Map<String, Member> memberStore;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        memberStore = setMemberStore(friends);
-
+        memberStore = setMemberStore(friends, visitors);
+        setUserVisitors(user, visitors);
 
         List<String> answer = Collections.emptyList();
         return answer;
     }
 
-
-
     /**
      * 7.1
      * 각 사용자를 나타내는 Member 클래스 생성 -> Map객체로 멤버 관리
      */
-    public static Map<String, Member> setMemberStore(List<List<String>> friends) {
+    public static Map<String, Member> setMemberStore(List<List<String>> friends, List<String> visitors) {
         memberStore = new HashMap<>();
 
         for (List<String> relation : friends) {
@@ -38,6 +36,9 @@ public class Problem7 {
             member1.getFriends().add(member2);
             member2.getFriends().add(member1);
         }
+
+        for (String visitor : visitors)
+            getMember(visitor);
 
         return memberStore;
     }
@@ -59,4 +60,16 @@ public class Problem7 {
 
         return member;
     }
+
+    /**
+     * 7.2
+     * 멤버, 멤버들의 친구 리스트, 방문자 리스트 초기화
+     */
+    public static void setUserVisitors(String user, List<String> visitors) {
+        List<Member> userVisitors = memberStore.get(user).getVisitors();
+
+        for (String visitor : visitors)
+            userVisitors.add(memberStore.get(visitor));
+    }
+
 }
