@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -19,11 +20,16 @@ public class Problem6 {
     			String s = list.get(i).get(1).substring(j, j + 2);
     			if(!overlapMap.containsKey(s)) {
     				overlapMap.put(s, new LinkedList<>());
+    				removeOverlap(overlapMap.get(s));
     			}
     			overlapMap.get(s).add(list.get(i).get(0));
     		}
     	}
     	
     	return overlapMap;
+    }
+    
+    private static List<String> removeOverlap(List<String> list){
+    	return list.stream().distinct().collect(Collectors.toList());
     }
 }
