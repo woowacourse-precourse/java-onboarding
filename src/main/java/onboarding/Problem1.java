@@ -10,11 +10,17 @@ class Problem1 {
     // 4. 포비랑 크롱을 비교하는 메소드 -> return 값을 정하는 메소드 : solution
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
-        if(checkPage(pobi) && checkPage(crong)){
+        if(constraints(pobi) && constraints(crong)){
             if(calMax(pobi)>calMax(crong)) return 1;
             else if(calMax(pobi)<calMax(crong)) return 2;
             else return 0;
         }else return -1;
+    }
+
+    public static boolean constraints(List<Integer> list){
+        if(!checkSize(list)) {System.out.println("올바르지 않은 페이지 길이 입니다."); return false;}
+        if(!checkPage(list)) {System.out.println("페이지가 연속되지 않습니다."); return false;}
+        return true;
     }
     public static boolean checkSize(List<Integer> list){ // 페이지 길이 체크 확인하는 메소드
         if(list.size()!=2) return false;
