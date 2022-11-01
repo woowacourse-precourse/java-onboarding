@@ -31,12 +31,19 @@ public class Problem6 {
                 }
             }
             map.put(crewName, crewEmail);
+            nameList.add(crewName);
         }
         return overlapSet;
 
     }
 
     private static boolean impossibleName(String crewName, String name) {
-        return true;
+        for(int i =0; i< crewName.length()-1; i++){
+            String subStr = crewName.substring(i, i+2);
+            if(name.contains(subStr)){
+                return true;
+            }
+        }
+        return false;
     }
 }
