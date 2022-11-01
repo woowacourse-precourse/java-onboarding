@@ -23,6 +23,9 @@ public class Problem7 {
 	public static final String FRIENDS_ARE_TOO_SHORT_OR_LONG = "친구 목록이 너무 짧거나 깁니다.";
 	public static final String RELATIONSHIP_IS_NOT_RIGHT = "친구 관계가 맞지 않습니다.";
 	public static final String VISITORS_ARE_TOO_MANY = "방문자가 너무 많습니다.";
+	public static final int ZERO = 0;
+	public static final int VISITED_POINT = 1;
+	public static final int MUTUAL_POINT = 10;
 
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
@@ -104,7 +107,7 @@ public class Problem7 {
 	}
 
 	private static Predicate<Entry<String, Integer>> havePoint() {
-		return recommend -> recommend.getValue() != 0;
+		return recommend -> !recommend.getValue().equals(ZERO);
 	}
 
 	private static Comparator<Entry<String, Integer>> pointDescAndNameAsc() {
@@ -136,7 +139,7 @@ public class Problem7 {
 	}
 
 	private static void addOnePoint(Map<String, Integer> recommends, String visitor) {
-		recommends.merge(visitor, 1, Integer::sum);
+		recommends.merge(visitor, VISITED_POINT, Integer::sum);
 	}
 
 	private static void findMutualFriends(Map<String, Set<String>> relations, Map<String, Integer> recommends, String user) {
@@ -166,7 +169,7 @@ public class Problem7 {
 
 	private static void addTenPoint(Map<String, Integer> recommends, String name, Set<String> relation, String friend) {
 		if (isMutual(relation, friend)) {
-			recommends.merge(name, 10, Integer::sum);
+			recommends.merge(name, MUTUAL_POINT, Integer::sum);
 		}
 	}
 
@@ -210,6 +213,6 @@ public class Problem7 {
 	}
 
 	private static void addRecommend(Map<String, Integer> recommend, String name) {
-		recommend.merge(name, 0, (saved, toSave) -> toSave);
+		recommend.merge(name, ZERO, (saved, toSave) -> toSave);
 	}
 }
