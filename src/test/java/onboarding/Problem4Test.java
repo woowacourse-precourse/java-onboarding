@@ -3,8 +3,6 @@ package onboarding;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 class Problem4Test {
@@ -23,5 +21,6 @@ class Problem4Test {
     void keepFrogRule() {
         problem4 = new Problem4();
         assertEquals("R olev blf", problem4.greenFlogRule("I love you"));
+        assertEquals("Dlldz Xlfihv", problem4.greenFlogRule("Woowa Course"));
     }
 }
