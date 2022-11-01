@@ -23,6 +23,14 @@ public class Problem2 {
         return temp_array;
     }
 
+    String reduceRedupl(String cryptogram, int[] index){
+        int temp_length = cryptogram.length();
+        String temp_string = "";
+        for (int i=0; i<temp_length; i++){
+            if (index[i]==0) temp_string += cryptogram.substring(i,i+1);
+        }
+        return temp_string;
+    }
 
     public static String solution(String cryptogram) {
 
