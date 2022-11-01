@@ -87,46 +87,19 @@ public class Problem7 {
 
         answer = new ArrayList<>();
 
-        // 3. 리스트에 넣어서 포인트가 높은 순으로 정렬한뒤 최대 5명 까지만 담아준다
-        /*List<Map.Entry<String, Integer>> entryList = new LinkedList<>(friendsFriendsMap.entrySet());
-        entryList.sort(((o1, o2) -> friendsFriendsMap.get(o1.getValue()) - friendsFriendsMap.get(o2.getValue()) ));
-        entryList.sort(((o1, o2) -> friendsFriendsMap.get(o2.getKey()) - friendsFriendsMap.get(o1.getKey()) ));
+        // 3. 리스트에 넣어서 포인트내림차순, 아이디 오름차순으로 정렬한다
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(friendsFriendsMap.entrySet());
+        entryList.sort(
+                Comparator.comparing(Map.Entry<String, Integer>::getValue).reversed()
+                        .thenComparing(Map.Entry::getKey)
+        );
+
+        // 4. 최대 5명 까지만 answer 리스트에 담아서 return 한다
         int cnt = 0 ;
         for(Map.Entry<String, Integer> entry : entryList){
             answer.add(entry.getKey());
             cnt ++;
             if(cnt == 5){
-                break;
-            }
-        }*/
-        // 3. 이중배열로 {점수, 아이디} 순서대로 담아서 점수 내림차순, 아이디 오름차순으로 정렬해준다
-        String[][] friendFriendArr = new String[friendsFriendsMap.size()][2];
-        int arrcnt = 0;
-        for(String key: friendsFriendsMap.keySet()){
-            friendFriendArr[arrcnt][0] = String.valueOf(friendsFriendsMap.get(key));
-            friendFriendArr[arrcnt][1] = key;
-            arrcnt++;
-        }
-        // System.out.println(Arrays.deepToString(friendFriendArr));
-
-        Arrays.sort(friendFriendArr, new Comparator<String[]>() {
-            @Override
-            public int compare(String[] o1, String[] o2) {
-                if(o1[0].contentEquals(o2[0])){
-                    return o1[1].compareTo(o2[1]);
-                } else {
-                    return Integer.parseInt(o2[0]) - Integer.parseInt(o1[0]) ;
-                }
-            }
-        });
-        // System.out.println(Arrays.deepToString(friendFriendArr));
-
-        // 4. 정렬된 배열에서 최대 5명 까지만 담아준다
-        int answerCnt = 0 ;
-        for(int i=0; i<friendFriendArr.length; i++){
-            answer.add(friendFriendArr[i][1]) ;
-            answerCnt++;
-            if(answerCnt == 5){
                 break;
             }
         }
