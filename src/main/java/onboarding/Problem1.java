@@ -71,26 +71,29 @@ class BookPage {
     * @param  pages the list of two pages.
     * @throws PagesSizeException if the list size is larger than two.
     * @throws PagesFarException if the two pages are not consecutive.
-    * @throws PageNumberException if the left page number is less than 1.
     * @throws PageOrderException if the left page number is not odd.
+    * @throws PageNumberException if the left page number is less than
+    *         or equal to 1, or the right page number is larger than
+    *         or equal to 400.
     */
-    public BookPage(List<Integer> pages) throws PagesSizeException, PagesFarException, PageNumberException, PageOrderException {
+    public BookPage(List<Integer> pages) throws PagesSizeException, PagesFarException, PageOrderException, PageNumberException {
         if (pages.size() != 2) {
             throw new PagesSizeException();
         }
-        if (pages.get(0) + 1 != pages.get(1)) {
+        if (pages.get(0).intValue() + 1 != pages.get(1).intValue()) {
             throw new PagesFarException();
         }
         for (int i = 0; i < 2; i++) {
             final int number = pages.get(i).intValue();
-            if (number < 1) {
-                throw new PageNumberException();
-            }
             if ((number ^ i) == 0) {
                 throw new PageOrderException();
             }
         }
-        this.leftNumber = pages.get(0);
+        final int leftNumber = pages.get(0).intValue();
+        if (leftNumber <= 1 || leftNumber + 1 >= 400) {
+            throw new PageNumberException();
+        }
+        this.leftNumber = leftNumber;
     }
 
     /**
