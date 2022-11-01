@@ -17,6 +17,16 @@ class Problem1 {
         return answer;
     }
 
+    private static int getBigNumberInPair(int pobiMaxSum, int crongMaxSum) {
+        if (pobiMaxSum > crongMaxSum) {
+            return 1;
+        } else if (pobiMaxSum == crongMaxSum) {
+            return 0;
+        } else {
+            return 2;
+        }
+    }
+
     private static int getBigNumberInPages(int leftPage, int rightPage) {
         int maxLeftSum = getBigNumberInPage(leftPage);
         int maxRigntSum = getBigNumberInPage(rightPage);
