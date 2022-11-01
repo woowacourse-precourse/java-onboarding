@@ -26,10 +26,7 @@ public class Problem7 {
         // 친구 관계 맺기
         for (List<String> friend : friends) {
             for (String member : friend) {
-                if (!check.contains(member)) {
-                    check.add(member);
-                    team.put(member, new Crew(member));
-                }
+                addCrew(team, check, member);
             }
 
             team.get(friend.get(0)).getFriends().add(friend.get(1));
@@ -37,6 +34,13 @@ public class Problem7 {
 
         }
         return answer;
+    }
+
+    private static void addCrew(Map<String, Crew> team, List<String> check, String member) {
+        if (!check.contains(member)) {
+            check.add(member);
+            team.put(member, new Crew(member));
+        }
     }
 
     static class Crew {
