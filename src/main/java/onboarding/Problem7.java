@@ -18,7 +18,7 @@ public class Problem7 {
 
         updateFriendList(friends);
         updateCommonFriendScore(user);
-        updateVisitorScore(visitors);
+        updateVisitorScore(user, visitors);
         answer = getTop5Ranker();
 
         return answer;
@@ -68,9 +68,12 @@ public class Problem7 {
         return cnt;
     }
 
-    private static void updateVisitorScore(List<String> visitors) {
+    private static void updateVisitorScore(String user, List<String> visitors) {
         for (int i = 0; i < visitors.size(); i++) {
-            addScore(visitors.get(i), 1);
+            String visitor = visitors.get(i);
+            if (!friendList.get(user).contains(visitor)) {
+                addScore(visitor, 1);
+            }
         }
     }
 
@@ -88,11 +91,11 @@ public class Problem7 {
         List<String> finalScoreBoard = sortScoreBoard();
         List<String> rankers = new ArrayList<>();
         for (int i = 0; i < finalScoreBoard.size(); i++) {
-            if(rankers.size()==5) {
+            if (rankers.size() == 5) {
                 return rankers;
             }
             String user = finalScoreBoard.get(i);
-            if(scoreBoard.get(user)>0){
+            if (scoreBoard.get(user) > 0) {
                 rankers.add(user);
             }
         }
