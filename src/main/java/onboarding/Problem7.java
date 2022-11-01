@@ -15,23 +15,22 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
 
         List<String> myFriendList = findMyFriend(user, friends);
-        HashMap<String, Integer> findMyfriendsFriend = findMyFriendsFriend(user, myFriendList, friends);
-        HashMap<String, Integer> findMyVisitors = findMyVisitors(user, myFriendList, visitors);
+        Map<String, Integer> findMyfriendsFriend = findMyFriendsFriend(user, myFriendList, friends);
+        Map<String, Integer> findMyVisitors = findMyVisitors(user, myFriendList, visitors);
 
-        HashMap<String, Integer> answerMap = new HashMap<>();
-        answerMap.putAll(findMyVisitors);
-        answerMap.putAll(findMyfriendsFriend);
+        Map<String, Integer> friendScoreMap = new HashMap<>();
+        friendScoreMap.putAll(findMyVisitors);
+        friendScoreMap.putAll(findMyfriendsFriend);
 
-        answerMap = sortByValue(answerMap);
+        friendScoreMap = sortByValue(friendScoreMap);
 
-        Iterator<String> keys = answerMap.keySet().iterator();
-        while(keys.hasNext()) {
-            String key = keys.next();
-            answer.add(key);
-            System.out.println(answer);
-        }
+        friendScoreMap = friendScoreMap.entrySet()
+                .stream()
+                .filter(x->x.getValue() != 0)
+                .limit(5)
+                .collect(Collectors.toMap(x->x.getKey(), x->x.getValue()));
 
-        return answer;
+        return friendScoreMap.keySet().stream().collect(Collectors.toList());
     }
 
     public static List<String> findMyFriend(String user, List<List<String>> friends) {
@@ -44,7 +43,7 @@ public class Problem7 {
         return realFriend;
     }
 
-    public static HashMap<String, Integer> findMyFriendsFriend(String user, List<String> myFriend, List<List<String>> friendsList) {
+    public static Map<String, Integer> findMyFriendsFriend(String user, List<String> myFriend, List<List<String>> friendsList) {
 
         HashMap<String, Integer> myFriendsFriend = new HashMap<>();
         for(int i = 0; i < friendsList.size(); i++) {
@@ -53,11 +52,10 @@ public class Problem7 {
                 myFriendsFriend.put(friendsList.get(i).get(1), count += 10);
             }
         }
-        myFriendsFriend = sortByValue(myFriendsFriend);
         return myFriendsFriend;
     }
 
-    public static HashMap<String, Integer> findMyVisitors(String user, List<String> myFriend, List<String> visitors) {
+    public static Map<String, Integer> findMyVisitors(String user, List<String> myFriend, List<String> visitors) {
         HashMap<String, Integer> notMyFriendVisitors = new HashMap<>();
         for(int i = 0; i < visitors.size(); i++) {
             int count = 0;
