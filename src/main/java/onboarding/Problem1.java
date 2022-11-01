@@ -77,6 +77,11 @@ class Problem1 {
         int leftPage = Player.get(0);
         int rightPage = Player.get(1);
 
+
+        //한 플레이어가 두개 이상의 숫자를 입력 했을 경우
+        if(Player.size() != 2){
+            return true;
+        }
         //제대로 된 페이지가 아닐 경우
         if(rightPage - leftPage != 1) {
             return true;
@@ -85,6 +90,7 @@ class Problem1 {
         if(leftPage <= 1 || leftPage >= 400 || rightPage <= 1 || rightPage>=400 ) {
             return true;
         }
+
         return false;
     }
 }
