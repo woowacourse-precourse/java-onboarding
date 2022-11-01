@@ -24,6 +24,16 @@ public class Problem6 {
                 }
             }
         }
+
+        //if the set is duplicated, add
+        for(int k = 0; k < forms.size(); k++){
+            for(String name: nameDuplicated){
+                if(forms.get(k).get(1).contains(name)){
+                    answer.add(forms.get(k).get(0));
+                }
+            }
+        }
+
         return answer;
     }
 }
