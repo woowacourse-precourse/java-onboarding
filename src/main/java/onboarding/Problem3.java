@@ -2,7 +2,7 @@ package onboarding;
 
 public class Problem3 {
     public static int solution(int number) {
-        return 0;
+        return totalClapCount(number);
     }
 
     private static int needClapCount(int number){
@@ -18,4 +18,11 @@ public class Problem3 {
         return result;
     }
 
+    private static int totalClapCount(int number){
+        int result = 0;
+        for(int i=1; i<=number; i++)
+            result += needClapCount(i);
+
+        return result;
+    }
 }
