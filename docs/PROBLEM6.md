@@ -21,3 +21,17 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+
+## 구현할 기능 목록
+- 닉네임을 2-gram씩 잘라 담은 집합 gramSet
+  - [X] 닉네임 하나당 Set하나씩 반환하는 함수
+  - [X] forms을 순회하며 List안에 Set들 담는다
+  - [X] 길이가 1글자 이하인 닉네임 고려
+    - 비어있는 Set을 반환.
+- 모든 gram 별 개수를 셀 gramCntMap
+  - [X] String gram 하나당 Integer 개수 하나
+  - [X] gramSet을 순회하여 gram:개수
+- 2번 이상 나타난 토큰이면 리포트.
+  - [X] 이때 i번째 gramSet에서 검출됐으면 i번째 form의 email을 추가
+    - 1글자 닉네임에는 빈 Set 들어있으므로 개수 맞음

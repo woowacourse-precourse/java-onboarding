@@ -24,3 +24,25 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+## 구현할 기능 목록
+- friends Map 만들기
+  - [X] 사람 : Set 친구 목록
+  - [X] 모든 사람 Set 파악 같이 하기
+- Score Map 만들기
+  - [X] 사람 : 점수 0으로 초기화
+  - [X] 이미 내 친구 목록에 있는 사람이면 Score Map에서 제거
+    - 제거가 꼭 필요한가? 언젠간 해야함.
+    - [X] candidates Set 만들기
+
+- friends Map 보고 Score Map에 점수 더하기
+  - [X] 후보의 친구 목록과 내 친구 목록 교집합 원소 개수 * 10점 더하기
+- visitors 보고 Score Map에 점수 더하기
+  - [X] 순회. 단순히 visitor면 1점 더하기
+  
+- 정렬해서 반환
+  - [X] key List 뽑기
+  - [X] Score Map을 value 순 정렬해 
+  - [ ] 최대 5명 return
+  - [ ] 추천 점수 0점이면 추천하지 않음
+  - [X] 동점이면 이름순
