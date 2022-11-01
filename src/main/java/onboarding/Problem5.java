@@ -11,7 +11,7 @@ public class Problem5 {
         List<Integer> answer = Collections.emptyList();
         int unitOfMoneyArry[] = {50000,10000,5000,1000,500,100,50,10,1};
 
-
+        answer = addAnswerList(money,unitOfMoneyArry);
 
         return answer;
     }
@@ -19,5 +19,21 @@ public class Problem5 {
     public static int getNumberOfUnit(int money, int unit){
         return money / unit;
     }
+    public static List<Integer> addAnswerList(int money,int [] unit){
 
+        List <Integer> answer = new ArrayList<>();
+
+        while(money != 0){
+            for(int i = 0; i < unit.length; i++){
+                if(getNumberOfUnit(money,unit[i]) == 0){
+                    answer.add(0);
+                }
+                else{
+                    answer.add(getNumberOfUnit(money,unit[i])) ;
+                    money -= getNumberOfUnit(money,unit[i]) * unit[i];
+                }
+            }
+        }
+        return answer;
+    }
 }
