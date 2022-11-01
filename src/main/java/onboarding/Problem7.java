@@ -37,10 +37,10 @@ public class Problem7 {
 
     private static void getCofriends(List<List<String>> friends) {
         for (List<String> friend : friends) {
-            if (userFriends.contains(friend.get(0))) {
+            if (userFriends.contains(friend.get(0)) && !userFriends.contains(friend.get(1))) {
                 scores.put(friend.get(1), scores.getOrDefault(friend.get(1), 0) + 10);
             }
-            if (userFriends.contains(friend.get(1))) {
+            if (userFriends.contains(friend.get(1)) && !userFriends.contains(friend.get(0))) {
                 scores.put(friend.get(0), scores.getOrDefault(friend.get(0), 0) + 10);
             }
         }
