@@ -65,5 +65,29 @@ public class Problem7 {
 
             return res;
         }
+        
+        /**
+         * 추천 친구별 점수 정보를 바탕으로 사용자의 추천 친구 목록을 반환한다.
+         * 
+         * @param usersFriendsRelationMap 추천 친구별 점수 정보
+         * @param usersFriendsList        사용자의 친구목록
+         * @return {@code}List<String>} 사용자의 추천 친구 목록
+         */
+        public List<String> getUsersRecommandFriendsList(HashMap<String, List<String>> usersFriendsRelationMap,
+                List<String> usersFriendsList) {
+
+            HashSet<String> res = new HashSet<>();
+
+            for (String usersFriend : usersFriendsRelationMap.keySet()) {
+                List<String> friendsList = usersFriendsRelationMap.get(usersFriend);
+                res.addAll(friendsList);
+            }
+
+            for (String usersFriend : usersFriendsList) {
+                res.remove(usersFriend);
+            }
+
+            return List.copyOf(res);
+        }
     }
 }
