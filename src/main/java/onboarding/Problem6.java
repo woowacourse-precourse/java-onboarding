@@ -12,6 +12,8 @@ public class Problem6 {
     private static final int TOKEN_LENGTH = 2;
     private static final int DEFAULT_TOKEN_CNT = 0;
 
+    private static final int DUPLICATE_THRESHOLD = 1;
+
     static final Map<String, Integer> tokenCounter = new HashMap<>();
 
     public static List<String> solution(List<List<String>> forms) {
@@ -41,5 +43,15 @@ public class Problem6 {
                 .map(list -> getNickname(list))
                 .map(nickname -> extractTokensFromNicknameWithoutDuplication(nickname))
                 .forEach(tokens -> countToken(tokens));
+    }
+
+    public static boolean checkDuplication(String token) {
+        return tokenCounter.containsKey(token) && tokenCounter.get(token) > DUPLICATE_THRESHOLD;
+    }
+
+    public static boolean isDuplicated(String nickname) {
+        return IntStream.range(START_INDEX_OF_TOKENIZATION, nickname.length() - 1)
+                .mapToObj(start -> nickname.substring(start, start + TOKEN_LENGTH))
+                .anyMatch(token -> checkDuplication(token));
     }
 }
