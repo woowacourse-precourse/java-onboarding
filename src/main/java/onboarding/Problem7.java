@@ -94,7 +94,7 @@ public class Problem7 {
                 .stream().sorted((x, y) -> y.getValue().compareTo(x.getValue()))
                 .collect(Collectors.toMap(
                         Map.Entry::getKey,
-                        Map.Entry::getValue, (a, b) -> a, LinkedHashMap::new));;
+                        Map.Entry::getValue, (a, b) -> a, LinkedHashMap::new));
 
         return sortedRecommendation;
     }
