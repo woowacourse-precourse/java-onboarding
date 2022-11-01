@@ -4,7 +4,7 @@ import java.util.*;
 
 class People implements Comparable<People>{
     String name;
-    boolean userFriendStatus = false;
+    boolean isUserFriend = false;
     ArrayList<String> friendList = new ArrayList<>();
     int score=0;
 
@@ -16,12 +16,12 @@ class People implements Comparable<People>{
         return this.score == 0;
     }
 
-    public void setUserFriendStatus(boolean userFriendStatus){
-        this.userFriendStatus=userFriendStatus;
+    public void makeUserFriend(boolean userFriendStatus){
+        this.isUserFriend=userFriendStatus;
     }
 
-    public boolean getUserFriendStatus(){
-        return this.userFriendStatus;
+    public boolean isUserFriend(){
+        return this.isUserFriend;
     }
 
     public void addToFriendList(String friendName){
@@ -50,12 +50,12 @@ public class Problem7 {
     public void addFriendToPeople(String user, People people, String friendName){
         people.addToFriendList(friendName);
         if(friendName.equals(user)){
-            people.setUserFriendStatus(true);
+            people.makeUserFriend(true);
         }
     }
 
     public void removeUserFriend(HashMap<String,People> map, String name){
-        if(map.containsKey(name) && map.get(name).getUserFriendStatus()){
+        if(map.containsKey(name) && map.get(name).isUserFriend()){
             map.remove(name);
         }
     }
