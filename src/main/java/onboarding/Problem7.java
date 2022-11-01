@@ -1,12 +1,15 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends,
@@ -17,7 +20,26 @@ public class Problem7 {
         findUserFriends(user, friends, userFriends);
         calculateRelationScore(user, friends, userFriends, friendRelationScoreRepo);
         calculateVisitScore(userFriends, visitors, friendRelationScoreRepo);
+        answer = getResult(friendRelationScoreRepo);
         return answer;
+    }
+
+    private static List<String> getResult(Map<String, Integer> friendRelationScoreRepo) {
+        List<String> sortedResult = new ArrayList<>();
+        List<Map.Entry<String, Integer>> entries =
+            friendRelationScoreRepo.entrySet().stream().sorted(Map.Entry.comparingByKey())
+                .sorted(new Comparator<Map.Entry<String, Integer>>() {
+                        @Override
+                        public int compare(Map.Entry<String, Integer> o1,
+                                           Map.Entry<String, Integer> o2) {
+                            return o2.getValue() - o1.getValue();
+                        }
+                    })
+                .collect(Collectors.toList());
+        for (Map.Entry<String, Integer> entry : entries) {
+            sortedResult.add(entry.getKey());
+        }
+        return sortedResult.stream().limit(5).collect(Collectors.toList());
     }
 
     private static Map<String, Integer> calculateVisitScore(Set<String> userFriends,
