@@ -6,7 +6,6 @@ public class Problem3 {
 
     private static final int ZERO = 0;
     private static final int THREE = 3;
-    private static final int DECIMAL = 10;
 
     public static int solution(int number) {
         return getTotalCount(number);
@@ -19,15 +18,11 @@ public class Problem3 {
     }
 
     private static int getCount(int number) {
-        int count = ZERO;
-        while (number > ZERO) {
-            int placeNumber = number % DECIMAL;
-            if (isDivisibleByThree(placeNumber)) {
-                count++;
-            }
-            number /= DECIMAL;
-        }
-        return count;
+        return (int) String.valueOf(number)
+            .chars()
+            .map(Character::getNumericValue)
+            .filter(Problem3::isDivisibleByThree)
+            .count();
     }
 
     private static boolean isDivisibleByThree(int placeNumber) {
