@@ -13,12 +13,20 @@ public class P6ExceptionValidation {
 
     public static boolean p6ExceptionValidation(String email, String userName){
 
-        return isEmailFormat(email);
+        return isEmailFormat(email)
+                && isEmailLengthBetween11and20(email);
     }
 
 
     private static boolean isEmailFormat(String email) {
         return email.endsWith(EMAIL_FORMAT);
+    }
+
+    private static boolean isEmailLengthBetween11and20(String email) {
+        if (email.length() < 11 || email.length() > 20) {
+            return false;
+        }
+        return true;
     }
 
 }
