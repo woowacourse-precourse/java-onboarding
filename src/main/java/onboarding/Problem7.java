@@ -6,22 +6,30 @@ import java.util.stream.Collectors;
 public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        Map<String, Member> members = new HashMap<>();
+        Map<String, Member> memberMap = new HashMap<>();
 
+        initFriendShip(memberMap, friends);
+
+        initVisitor(user, memberMap, visitors);
+
+        return getUserIdsByFriendProposalScoreLimit5(memberMap, user);
+    }
+
+    private static void initFriendShip(Map<String, Member> memberMap, List<List<String>> friends) {
         friends.forEach(friend -> {
-            Member member1 = getMember(members, friend.get(0));
-            Member member2 = getMember(members, friend.get(1));
+            Member member1 = getMember(memberMap, friend.get(0));
+            Member member2 = getMember(memberMap, friend.get(1));
             member1.friend(member2);
         });
+    }
 
-        Member member = getMember(members, user);
+    private static void initVisitor(String user, Map<String, Member> memberMap, List<String> visitors) {
+        Member member = getMember(memberMap, user);
 
         visitors.forEach(userId -> {
-            Member visitor = getMember(members, userId);
+            Member visitor = getMember(memberMap, userId);
             visitor.visit(member);
         });
-
-        return getUserIdsByFriendProposalScoreLimit5(members, user);
     }
 
     private static Member getMember(Map<String, Member> members, String userId) {
