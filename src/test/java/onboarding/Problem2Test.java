@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Nested
+@DisplayName("문제 2번: 연속중복문자 제거")
 public class Problem2Test {
     @Test
     @DisplayName("browoanoommnaon의 결과는 brown이다.")
@@ -29,6 +30,14 @@ public class Problem2Test {
     void given_succession_then_sueion() {
         String cryptogram = "succession";
         String result = "sueion";
+        assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+    }
+
+    @Test
+    @DisplayName("연속중복문자가 3개 이상이어도 정상작동한다.")
+    void given_teeen_then_tn() {
+        String cryptogram = "teeen";
+        String result = "tn";
         assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
     }
 }
