@@ -15,9 +15,9 @@ public class Problem3 {
   }
 
   private static void validityChecker(int number) {
-      if (isNotValidNumber(number)) {
-          throw new IllegalArgumentException("Not valid number");
-      }
+    if (isNotValidNumber(number)) {
+      throw new IllegalArgumentException("Not valid number");
+    }
   }
 
   private static boolean isNotValidNumber(int number) {

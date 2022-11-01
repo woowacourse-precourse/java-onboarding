@@ -120,7 +120,9 @@ public class Problem7 {
       checkElements(friendRelation);
     }
   }
-  private static void checkOverlapFriendRelation(List<List<String>> friends, Set<String> overlapCheck) {
+
+  private static void checkOverlapFriendRelation(List<List<String>> friends,
+      Set<String> overlapCheck) {
     for (List<String> friendRelation : friends) {
       String leftUser = friendRelation.get(0);
       String rightUser = friendRelation.get(1);

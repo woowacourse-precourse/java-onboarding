@@ -100,9 +100,9 @@ public class Problem6 {
   }
 
   private static boolean isDuplicated(String nickName, Map<String, String> map) {
-      if (nickName.length() < 2) {
-          return false;
-      }
+    if (nickName.length() < 2) {
+      return false;
+    }
     for (String nickName2 : map.keySet()) {
       return isMatchTwoWord(nickName, nickName2);
     }
@@ -111,9 +111,9 @@ public class Problem6 {
 
   private static boolean isMatchTwoWord(String str1, String str2) {
     for (int i = 0; i < str2.length() - 2; i++) {
-        if (str1.contains(str2.substring(i, i + 2))) {
-            return true;
-        }
+      if (str1.contains(str2.substring(i, i + 2))) {
+        return true;
+      }
     }
     return false;
   }
