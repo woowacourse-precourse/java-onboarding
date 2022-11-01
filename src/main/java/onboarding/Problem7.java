@@ -9,9 +9,11 @@ public class Problem7 {
         Map<String, Integer> userPoints = new HashMap<>();
 
         caculateRelationPoints(user, relationMap, userPoints);
+        caculateVisitPoints(user, visitors, userPoints);
 
         return answer;
     }
+
 
     private static HashMap<String, List<String>> getRelationMap(List<List<String>> friends) {
         HashMap<String, List<String>> relationMap = new HashMap<String, List<String>>();
@@ -29,6 +31,7 @@ public class Problem7 {
         return relationMap;
     }
 
+
     private static void caculateRelationPoints(
             String user,
             Map<String, List<String>> relationMap,
@@ -45,6 +48,17 @@ public class Problem7 {
         while (!queue.isEmpty()) {
             String recommendedFriend = queue.poll();
             userPoints.put(recommendedFriend, userPoints.getOrDefault(recommendedFriend, 0)+10);
+        }
+    }
+
+
+    private static void caculateVisitPoints(
+            String user,
+            List<String> visitors,
+            Map<String, Integer> userPoints
+    ) {
+        for (String visitor: visitors) {
+            if (!visitor.equals(user)) userPoints.put(visitor, userPoints.getOrDefault(visitor, 0)+1);
         }
     }
 }
