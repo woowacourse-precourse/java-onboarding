@@ -18,4 +18,10 @@ class Problem4Test {
         assertEquals('d', problem4.changeAlphabet('w'));
     }
 
+    @Test
+    @DisplayName("청개구리 규칙에 맞게 단어가 변환되는지")
+    void keepFrogRule() {
+        problem4 = new Problem4();
+        assertEquals("R olev blf", problem4.greenFlogRule("I love you"));
+    }
 }
