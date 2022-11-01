@@ -53,7 +53,9 @@ public class Problem3 {
 
         while (sizeOfNumber > 0) {
 
-            answer += ArrayOfCount.get(sizeOfNumber-1) * arrayEachDigitOfNumber.get(sizeOfNumber-1);
+            answer += ArrayOfCount.get(sizeOfNumber-1) * arrayEachDigitOfNumber.get(sizeOfNumber-1); //각 자리 수 * count1To~~~를 해주기 위함.
+
+            //이 밑에서 부터는 각 자리 수를 3으로 나눠서 아까 예에서 보여준 것처럼 1(=4/3) * 1000, 1(=5/3) * 100 등과 같이 더해지게 만드는 작업
 
             int quotientOfEachDigitDivedByThree = arrayEachDigitOfNumber.get(sizeOfNumber-1) / 3;
 
@@ -62,7 +64,7 @@ public class Problem3 {
                 int tenSquaredToProduct = 1;
 
 
-                for (int i = 0; i < sizeOfNumber ; i++) {
+                for (int i = 1; i < sizeOfNumber ; i++) {
                     answer += tenSquaredToProduct * arrayEachDigitOfNumber.get(i-1); //얘들들어 number가 622라면 6이 3의 배수이므로, (백의 자리 박수 개수로 600~622까지 총 23번의 박수가 쳐지므로) 22를 정답에 더하는 과정 (나머지 1은 밑에 answer +=1를 추가해놓음)
                     tenSquaredToProduct *= 10; //몇의 자리 수 인지 확인 후 tenSquaredToProduct라는 변수에 저장
                 }
@@ -74,7 +76,7 @@ public class Problem3 {
 
                 int tenSquaredToProduct = 1;
 
-                for (int i = 0; i < sizeOfNumber ; i++) { //숫자가 몇의 자리 수에서 빼온 것인지 확인
+                for (int i = 1; i < sizeOfNumber ; i++) { //숫자가 몇의 자리 수에서 빼온 것인지 확인
                     tenSquaredToProduct *= 10;
                 }
 
