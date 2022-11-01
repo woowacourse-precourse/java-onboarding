@@ -2,6 +2,11 @@ package onboarding;
 
 import java.util.*;
 
+/** 구현할 기능
+ * 1. 닉네임 2개씩 잘라서 겹치는 크루 있나 확인
+ *      ㄴ 있다면 새로운 list에 추가
+ * 2. 중복 제거, email sort
+ */
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
