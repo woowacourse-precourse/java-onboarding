@@ -83,6 +83,11 @@ public class Problem7 {
         }
         pointUp(users, visitor, 1);
     }
+    private static void calculateVisitorsPoint(List<String> myFriends, List<String> visitors, List<User> users) {
+        for (String visitor : visitors) {
+            calculateVisitorPoint(myFriends, visitor, users);
+        }
+    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
