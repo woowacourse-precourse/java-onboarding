@@ -95,4 +95,21 @@ public class Problem7 {
         return resultList;
     }
 
+    //검사할 리스트가 사용자의 친구리스트에 해당하는 항목마다 10점 추가하는 기능
+    public static int calScore(List<String> listOfFriends) {
+        int count = 0;
+
+        //검사할 리스트 전체탐색
+        for (int i = 0 ; i < listOfFriends.size() ; i++) {
+            //사용자의 친구리스트 전체탐색
+            for (String haveFriend : friendsList) {
+                if (haveFriend.contains(listOfFriends.get(i))){
+                    count += 10;
+                    break;
+                }
+            }
+        }
+        return count;
+    }
+
 }
