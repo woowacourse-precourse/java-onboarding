@@ -55,7 +55,33 @@ public class Problem7 {
                 result.put(visitor,1);
             }
         }
+        for (int i = 0; i < result.size(); i++) {
+            int max=0;
+            String item = "";
+            for (Map.Entry<String, Integer> entry : result.entrySet()) {
+                if(answer.contains(entry.getKey()))
+                    continue;
+                if (entry.getKey()==user || friendList.get(user).contains(entry.getKey())){
+                    continue;
+                }
+                if (entry.getValue() > max){
+                    max = entry.getValue();
+                    item=entry.getKey();
+                }
+                else if (entry.getValue() == max){
+                    if (item.compareTo(entry.getKey()) > 0){
+                        item=entry.getKey();
+                    }
+                }
+            }
+            if (!item.equals("")){
+                if(answer.size()<5)
+                    answer.add(item);
+                else
+                    break;
+            }
 
+        }
 
 
         return answer;
