@@ -27,17 +27,16 @@ public class Problem4 {
 	 */
 	private static char[] conversionWord(String word) {
 		char[] letters = new char[word.length()];
-		int askiiSequence;
 		char letter;
 		for (int i = 0; i < word.length(); i++) {
 			letter = word.charAt(i);
 			if (letter > LOWER_SRC && letter < LOWER_DEST) {
-				letters[i] = (char)('a' + 'z' - letter); // 뒤에서부터 tmp 번째 캐릭터를 대입
-			} else if (letter > UPPER_SRC && letter < UPPER_DEST) {
-				letters[i] = (char)('A' + 'Z' - letter);
-			} else {
-				letters[i] = letter;
+				letter = (char)('a' + 'z' - letter);
 			}
+			if (letter > UPPER_SRC && letter < UPPER_DEST) {
+				letter = (char)('A' + 'Z' - letter);
+			}
+			letters[i] = letter;
 		}
 		return letters;
 	}
