@@ -5,8 +5,10 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
         List<String> answer = new ArrayList<>();
-
+        Map<String, Integer> friendsScore = new HashMap<>();
         List<String> resultFineMyFriend = findMyFriend(user, friends);
+
+        friendsScore = getFriendsFriendsScore(friendsScore, resultFineMyFriend,friends);
 
         return answer;
     }
@@ -27,5 +29,19 @@ public class Problem7 {
             }
         }
         return friend;
+    }
+
+    public static Map<String, Integer> getFriendsFriendsScore(Map<String, Integer> friendsScore,List<String> resultFineMyFriend,List<List<String>> friends){
+
+        for (int i = 0; i < resultFineMyFriend.size(); i++) {
+            List<String> myFriendsFriends = findMyFriend(resultFineMyFriend.get(i), friends);
+
+            for (int j = 0; j < myFriendsFriends.size(); j++) {
+
+                friendsScore.put(myFriendsFriends.get(j),friendsScore.getOrDefault(myFriendsFriends.get(j), 0) + 10);
+            }
+        }
+
+        return friendsScore;
     }
 }
