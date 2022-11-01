@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.TreeMap;
@@ -16,7 +17,20 @@ public class Problem5 {
         return money <= 1000000 && 1 <= money;
     }
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
+        List<Integer> answer = new ArrayList<>();
+        int[] coins ;
+
+        if (ckCoin(money)){
+            coins = initCoin();
+        }else {
+            return answer;
+        }
+
+        for (int coin : coins) {
+            answer.add(money / coin);
+            money = money % coin;
+        }
+
         return answer;
 
     }
