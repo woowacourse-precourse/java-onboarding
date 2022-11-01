@@ -17,6 +17,10 @@ public class Problem4 {
                 chArr[i] = (char) c;
             }
         }
+
+        String ans = new String(chArr);
+        answer = ans;
+
         return answer;
     }
 }
