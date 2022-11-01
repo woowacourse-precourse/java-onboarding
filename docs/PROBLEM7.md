@@ -24,3 +24,18 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+# 기능 구현 목록
+
+1. 친구 관계 Map
+   1. User, friends, visitors의 모든 등장요소에 대해 key를 만들고 friends를 이용하여 각 요소별 친구를 value로 저장
+2. 점수를 산출한 Map
+   1. 친구 관계 Map을 이용
+   2. 주어진 조건에 의해 점수를 산출
+3. 점수 산출 Map을 원하는 출력값으로 만드는 기능
+   1. User 제거
+   2. User 친구 제거
+   3. 이름순 정렬
+   4. 점수순 정렬
+   5. 점수순으로 5개 혹은 5개 이하의 Map의 크기로 이름 리스트 생성
+
