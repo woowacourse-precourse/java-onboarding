@@ -4,14 +4,9 @@ import java.util.List;
 import java.util.stream.Stream;
 
 class Problem1 {
-    static final int POBIWIN = 1;
-    static final int CRONGWIN = 2;
-    static final int DRAW = 0;
-    static final int EXCEPTION = -1;
-
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if (Stream.of(pobi, crong).map(Problem1::valid).anyMatch(e -> e == false))
-            return EXCEPTION;
+            return GameResult.EXCEPTION;
 
         int pobiMaxScore = getMaxScore(pobi);
         int crongMaxScore = getMaxScore(crong);
@@ -62,9 +57,16 @@ class Problem1 {
 
     private static int getGameResult(int score1, int score2) {
         if (score1 > score2)
-            return POBIWIN;
+            return GameResult.POBIWIN;
         if (score1 < score2)
-            return CRONGWIN;
-        return DRAW;
+            return GameResult.CRONGWIN;
+        return GameResult.DRAW;
+    }
+
+    interface GameResult{
+        int POBIWIN = 1;
+        int CRONGWIN = 2;
+        int DRAW = 0;
+        int EXCEPTION = -1;
     }
 }
