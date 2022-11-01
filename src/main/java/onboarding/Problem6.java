@@ -19,6 +19,15 @@ public class Problem6 {
             }
         }
 
+        // twoWord의 두글자가 몇개의 닉네임에 해당하는지 확인
+        for (String two : twoWord) {
+            int count = 0;
+            for(int i = 0 ; i < forms.size() ; i++) {
+                if(forms.get(i).get(1).contains(two)) count += 1;
+            }
+
+        }
+
 
         List<String> answer = sortEmail;
         return answer;
