@@ -21,4 +21,24 @@ public class Problem7 {
         }
         return friendsList;
     }
+    public static Map<String, Integer> scoreByAcquaintance(String user, Map<String, List<String>> friendsList) {
+        Map<String, Integer> score = new HashMap<>();
+        List<String> acquaintance = friendsList.get(user);
+        friendsList.forEach((key, value) -> {
+            if (key != user && !acquaintance.contains(key)) {
+                score.put(key, 0);
+            }
+        });
+        friendsList.forEach((key, value) -> {
+            if (key != user && !acquaintance.contains(key)) {
+                for (int i = 0; i < value.size(); i++) {
+                    if (acquaintance.contains(value.get(i))) {
+                        score.put(key, score.get(key) + 10);
+                    }
+                }
+            }
+        });
+        return score;
+    }
 }
+
