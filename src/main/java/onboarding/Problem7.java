@@ -11,6 +11,15 @@ public class Problem7 {
     }
 
 
+    // user의 친구 목록에 String으로 넘겨준 값의 존재 여부 확인
+    private static boolean isExistFriend(String friendFriendName, List<String> userFriends) {
+        for (String userFriend : userFriends) {
+            if(friendFriendName.equals(userFriend))
+                return true;
+        }
+        return false;
+    }
+
     // user의 이름과 String으로 넘겨준 값이 일치하는지 확인
     private static boolean isUser(String friendFriendName, String user) {
         return friendFriendName.equals(user);
