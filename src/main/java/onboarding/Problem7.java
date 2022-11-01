@@ -1,39 +1,64 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.TreeSet;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        TreeSet<String> friendSet = new TreeSet<String>();
-        TreeSet<String> peopleSet = new TreeSet<String>();
-        findFriends(user, friends, friendSet);
-        findPeople(user, friends, visitors, peopleSet);
+        TreeSet<String> friendSet = findFriends(user, friends);
+        TreeSet<String> peopleSet = findPeople(user, friends, visitors, friendSet);
+        LinkedHashMap commonFriendMap = new LinkedHashMap();
+        for (String person : peopleSet) {
+            commonFriendMap.put(person, makeCommonFriends(person, friends));
+        }
+
 
         List<String> answer = Collections.emptyList();
         return answer;
     }
 
-    private static void findFriends(String user, List<List<String>> friends, TreeSet<String> friendSet) {
+    private static TreeSet<String> findFriends(String user, List<List<String>> friends) {
+        TreeSet<String> Set = new TreeSet<String>();
         for (List<String> e : friends) {
             int indexOfMe = e.indexOf(user);
             if (indexOfMe == 1) {
                 String friendName = e.get(0);
-                friendSet.add(friendName);
+                Set.add(friendName);
             } else if (indexOfMe == 0) {
                 String friendName = e.get(1);
-                friendSet.add(friendName);
+                Set.add(friendName);
             }
         }
+        return Set;
     }
 
-    private static void findPeople(String user, List<List<String>> friends, List<String> visitors, TreeSet<String> friendSet, TreeSet<String> peopleSet) {
+    private static TreeSet<String> findPeople(String user, List<List<String>> friends, List<String> visitors, TreeSet<String> friendSet) {
+        TreeSet<String> Set = new TreeSet<String>();
         for (List<String> e : friends) {
-            peopleSet.add(e.get(0));
-            peopleSet.add(e.get(1));
+            Set.add(e.get(0));
+            Set.add(e.get(1));
         }
-        peopleSet.remove(user);
-        peopleSet.removeAll(friendSet);
+        for (String e : visitors) {
+            Set.add(e);
+        }
+        Set.remove(user);
+        Set.removeAll(friendSet);
+        return Set;
+    }
+
+    private static TreeSet<String> makeCommonFriends(String person, List<List<String>> friends) {
+        TreeSet<String> commonFriendSet = new TreeSet<>();
+        for (List<String> j : friends) {
+            if (j.indexOf(person) != -1) {
+                int indexOfPerson = j.indexOf(person);
+                if (indexOfPerson == 1) {
+                    String friendName = j.get(0);
+                    commonFriendSet.add(friendName);
+                } else if (indexOfPerson == 0) {
+                    String friendName = j.get(1);
+                    commonFriendSet.add(friendName);
+                }
+            }
+        }
+        return commonFriendSet;
     }
 }
