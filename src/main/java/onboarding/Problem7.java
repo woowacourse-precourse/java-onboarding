@@ -33,6 +33,12 @@ public class Problem7 {
         }
     }
 
+    private static boolean isAlreadyFriend(String s, List<String> alreadyFriend) {
+        if (alreadyFriend.contains(s))
+            return true;
+        return false;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> alreadyFriend = new ArrayList<>();
         List<List<String>> candidate = new ArrayList<>();
