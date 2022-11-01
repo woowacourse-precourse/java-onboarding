@@ -26,8 +26,8 @@ public class Problem7 {
         if (!checkInputValidation(user,friends,visitors)) {
             throw new IllegalArgumentException("[error] 잘못된 입력값이 입력되었습니다.");
         }
-        calcurateTotalRecommendationScore(user, friends, visitors);
         assignImplement();
+        calcurateTotalRecommendationScore(user, friends, visitors);
         List<String> answer = sortRecommendScore(deleteRecommendScoreZero(UNKNOWN_USER_SCORE));
         return extractRecommendUserAllOrTop5(answer);
     }
