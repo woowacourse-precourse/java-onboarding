@@ -44,6 +44,15 @@ public class Problem7 {
             }
         }
 
+        //사용자의 친구가 아니고 타임 라인에 방문한 경우 1점 추가
+        for(int i=0; i<visitors.size(); i++){
+            String people = visitors.get(i);
+            if(userFriends.contains(people)){ //사용자의 친구라면 건너뜀
+                continue;
+            }
+            recommendScore.put(people, recommendScore.getOrDefault(people, 0) + 1);
+        }
+
         return answer;
     }
 }
