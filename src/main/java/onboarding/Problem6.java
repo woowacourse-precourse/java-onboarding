@@ -30,6 +30,7 @@ public class Problem6 {
             if (nextL.size() <= 1) break;
             prevL = nextL;
         }
+        Collections.sort(answer);
         return answer;
     }
     static boolean findSameNick (String a, String b) {
