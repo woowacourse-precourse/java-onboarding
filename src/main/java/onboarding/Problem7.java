@@ -32,6 +32,41 @@ public class Problem7 {
             
         }
         
+        HashMap<String, Integer> score = new HashMap<>();
+        
+        if(relation.containsKey(user)){
+            for(String usersFriend : relation.get(user)){
+                for(String usersFriendDouble : relation.get(usersFriend)){
+                    if(!relation.get(user).contains(usersFriendDouble) && !usersFriendDouble.equals(user)){
+                        if(!score.containsKey(usersFriendDouble)){
+                            score.put(usersFriendDouble, 10);
+                        }
+                        if(score.containsKey(usersFriendDouble)){
+                            score.put(usersFriendDouble, score.get(usersFriendDouble)+10);
+                        }
+                    }
+                }
+            }
+        }
+
+        for (String visit : visitors){
+            if(!relation.containsKey(user)){
+                if(!score.containsKey(visit)){
+                    score.put(visit, 1);
+                }
+                if(score.containsKey(visit)){
+                    score.put(visit, score.get(visit)+1);
+                }
+            }
+            if(!relation.get(user).contains(visit)){
+                if(!score.containsKey(visit)){
+                    score.put(visit, 1);
+                }
+                if(score.containsKey(visit)){
+                    score.put(visit, score.get(visit)+1);
+                }
+            }
+        }
         
         
         
