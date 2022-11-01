@@ -19,7 +19,7 @@ public class Problem4 {
 
     private static List<String> stringToWordList(String word) {
         String[] items = word.split ("");
-        ArrayList<String> wordList = new ArrayList<String> (Arrays.asList(items));
+        ArrayList<String> wordList = new ArrayList<> (Arrays.asList(items));
         return wordList;
     }
 
