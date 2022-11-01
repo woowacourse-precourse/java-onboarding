@@ -21,3 +21,10 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+## 기능목록
+
+1. String을 ArrayList로 변환하는 메소드 작성
+2. 암호 해독 메소드 구현(반복문을 이용하여 중복 문자 제거 후 메소드 재호출, 중복 문자가 없다면 현재 값 리턴)
+3. ArrayList를 String으로 변환하는 메소드 작성
+4. solution 메소드 구현
