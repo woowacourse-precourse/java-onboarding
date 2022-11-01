@@ -13,19 +13,7 @@ public class Problem7 {
             }
         }
 
-        Map<String, Integer> friendsScoreMap = new HashMap<>();
-
-        for (List<String> friend : friends) {
-            if (friend.contains(user)) {
-                continue;
-            }
-
-            for (String userFriend : userFriends) {
-                if (friend.contains(userFriend)) {
-                    addKnowTogetherFriendsScore(friend, userFriend, friendsScoreMap);
-                }
-            }
-        }
+        Map<String, Integer> friendsScoreMap = generateKnowTogetherFriendsScore(friends, userFriends, user);
 
         for (String visitor : visitors) {
             friendsScoreMap.merge(visitor, 1, (oldValue, newValue) -> oldValue + 1);
@@ -43,6 +31,24 @@ public class Problem7 {
             }
         }
     }
+
+    private static Map<String, Integer> generateKnowTogetherFriendsScore(List<List<String>> friends, List<String> userFriends, String user) {
+        Map<String, Integer> friendsScoreMap = new HashMap<>();
+
+        for (List<String> friend : friends) {
+            if (friend.contains(user)) {
+                continue;
+            }
+
+            for (String userFriend : userFriends) {
+                if (friend.contains(userFriend)) {
+                    addKnowTogetherFriendsScore(friend, userFriend, friendsScoreMap);
+                }
+            }
+        }
+        return friendsScoreMap;
+    }
+
 
     private static void addKnowTogetherFriendsScore(List<String> friend, String userFriend, Map<String, Integer> friendsScoreMap) {
         for (String s : friend) {
