@@ -54,6 +54,8 @@ public class Problem7 {
     // 함께 아는 친구의 수에 따라 점수를 추가하는 함수
     public static void AddRecommendScoreOfFriends(HashMap<String, Integer> recommendScore, HashMap<String, ArrayList<String>> friendGraph, String user) {
         // 함께 아는 친구: other, 친구: friend
+        if (!friendGraph.containsKey(user)) return; // user가 key값으로 없는 경우 return;
+
         for (String friend: friendGraph.get(user)) {
             if (!friendGraph.containsKey(friend)) continue;
 
