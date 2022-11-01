@@ -2,7 +2,7 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "";
+        String answer = cryptogram;
         Cryptogram cryptogram1 = new Cryptogram(cryptogram);
 
         while (cryptogram1.isDuplicate()) {
