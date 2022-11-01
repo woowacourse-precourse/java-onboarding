@@ -11,13 +11,26 @@ public class Problem7 {
         Set<String> peopleList = new HashSet<>();
         //점수판
         HashMap<String, Integer> friendPoint = new HashMap<>();
-
+        //점수로 정렬된 리스트
+        List<List<String>> listSorted = new ArrayList<>();
+        
         collectAllPeopleAndUserFriends(user, friends, visitors, friendList, peopleList);
 
         gradeScore(friends, visitors, friendList, peopleList, friendPoint);
 
+        sortingListByScore(peopleList, friendPoint, listSorted);
+
         List<String> answer = Collections.emptyList();
         return answer;
+    }
+
+    private static void sortingListByScore(Set<String> peopleList, HashMap<String, Integer> friendPoint, List<List<String>> listSorted) {
+        for (String people : peopleList) {
+            if(friendPoint.get(people)!=0){
+                listSorted.add(new ArrayList<>(List.of(Integer.toString(friendPoint.get(people)), people)));
+            }
+        }
+        Collections.sort(listSorted, new TwoDimensionComparator());
     }
 
     private static void gradeScore(List<List<String>> friends, List<String> visitors, List<String> friendList, Set<String> peopleList, HashMap<String, Integer> friendPoint) {
@@ -65,4 +78,9 @@ public class Problem7 {
     }
 
 }
-
+class TwoDimensionComparator implements Comparator<List<String>> {
+    @Override
+    public int compare(List<String> o1, List<String> o2) {
+        return o1.get(0).equals(o2.get(0)) ? o1.get(1).compareTo(o2.get(1)) : o1.get(0).compareTo(o2.get(0));
+    }
+}
