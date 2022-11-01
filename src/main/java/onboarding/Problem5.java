@@ -17,6 +17,14 @@ public class Problem5 {
     public static List<Integer> calculation(int money) {
         int count = 0; //지폐 갯수 저장
 
+        for(int i = 0 ; i < 9 ; i++){
+            while(money / moneyArr[i] > 0) { //지폐로 나눈 몫이 0보다 크면 반복해서 금액을 차감하는 기능
+                count += 1; //갯수 + 1
+                money -= moneyArr[i]; //금액 차감
+            }
+
+        }
+
         return arr;
     }
 
