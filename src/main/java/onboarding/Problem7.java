@@ -28,7 +28,16 @@ public class Problem7 {
         //방문자 수 점수 추가하기
         setScoreOfVisitors(scoreOfVisitors, visitors);
 
-        return answer;
+        //키를 먼저 정렬
+        Map<String, Integer> sortedMap = new TreeMap<>(scoreOfVisitors);
+
+        //value를 정렬
+        List<String> keys = new ArrayList<>(sortedMap.keySet());
+        keys.sort((v1, v2) -> (sortedMap.get(v2).compareTo(sortedMap.get(v1))));
+
+        List<String> resultFriends = getResultFriends(sortedMap, keys);
+
+        return resultFriends;
     }
 
     public static List<String> getUserFriends(String user, List<List<String>> friends) {
@@ -132,5 +141,27 @@ public class Problem7 {
             }
 
         }
+    }
+
+    public static List<String> getResultFriends(Map<String, Integer> sortedMap, List<String> keys) {
+        List<String> resultFriends = new ArrayList<>();
+
+        int count = 0;
+
+        for (String key : keys) {
+
+            if (count == 5) {
+                break;
+            }
+
+            if (sortedMap.get(key) == 0) {
+                continue;
+            }
+
+            resultFriends.add(key);
+            count++;
+        }
+
+        return resultFriends;
     }
 }
