@@ -36,12 +36,16 @@ public class Problem3 {
 			return totalClaps;
 		}
 
-		private int getFilledCaseClapping(int number) {
+		private int getFilledCaseClap(int number) {
 			return (number * previousUnitMaxClap) + ((number - 1) / COMMON_CLAP_CYCLE) * currentDigitUnit;
 		}
 
 		public static int getCurrentTotal(int currentNumber,int currentUnit, int beforeUnitTotal, int preDigit) {
 			return (currentNumber) * beforeUnitTotal + ((currentNumber - 1) / 3) * currentUnit + (currentNumber % 3 == 0 ? (preDigit + 1) : 0 );
+		}
+
+		private boolean isUnfilledCaseHasClap(int number) {
+			return number % COMMON_CLAP_CYCLE == 0;
 		}
 	}
 }
