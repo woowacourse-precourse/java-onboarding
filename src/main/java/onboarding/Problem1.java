@@ -43,6 +43,7 @@ class Problem1 {
         while(page > 0) {sum *= page%10; page /= 10;}
         return sum;
     }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
