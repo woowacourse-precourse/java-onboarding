@@ -7,7 +7,14 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
-
+    //최대값 구하는 메서드
+    private static int calculateMax(List<Integer> numbers) {
+        int leftPage = numbers.get(0);
+        int rightPage = numbers.get(1);
+        int leftMax = Math.max(sumOfEachDigit(leftPage), multiplicationOfEachDigit(leftPage));
+        int rightMax = Math.max(sumOfEachDigit(rightPage), multiplicationOfEachDigit(rightPage));
+        return Math.max(leftMax, rightMax);
+    }
     //각 자리의 합계 구하는 메서드
     private static int sumOfEachDigit(int num) {
         int sum = 0;
