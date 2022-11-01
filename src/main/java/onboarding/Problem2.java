@@ -1,7 +1,5 @@
 package onboarding;
 
-import org.intellij.lang.annotations.RegExp;
-
 public class Problem2 {
 
     // 기능 요구 사항
