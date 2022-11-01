@@ -2,12 +2,11 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String answer = cryptogram;
 
         while (!isReturn(answer)) {
             answer = removeRepetition(answer);
         }
-
         return answer;
     }
 
@@ -48,3 +47,4 @@ public class Problem2 {
         return result;
     }
 }
+
