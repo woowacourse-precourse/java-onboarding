@@ -33,4 +33,13 @@ class Problem1 {
         }
         return sum;
     }
+
+    private static int multi(int page){
+        sum=1;
+        while(page!=0){
+            sum*=page%10;
+            page/=10;
+        }
+        return sum;
+    }
 }
