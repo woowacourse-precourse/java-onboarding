@@ -12,9 +12,12 @@ public class Problem2 {
 
     static String decrypt(String cryptogram) {
         Stack<String> stack = new Stack<>();
+        String duplicateAlphabet = "";
         for (int i = 0; i < cryptogram.length(); i++) {
-            if (!stack.empty() && String.valueOf(cryptogram.charAt(i)).equals(stack.peek())) {
+            if (String.valueOf(cryptogram.charAt(i)).equals(duplicateAlphabet)) {
                 stack.pop();
+            } else if (!stack.empty() && String.valueOf(cryptogram.charAt(i)).equals(stack.peek())) {
+                duplicateAlphabet = stack.pop();
             } else {
                 stack.push(String.valueOf(cryptogram.charAt(i)));
             }
