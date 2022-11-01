@@ -40,6 +40,19 @@ public class Problem7 {
                 }
             }
         }
+        for(int i=0;i<value.size()-1;i++){
+            for(int j=0;j<visitors.size();j++) {
+                if(!value.contains(visitors.get(j))){
+                    value.add(visitors.get(j));
+                    value.add("1");
+                }
+                else if (!userf.contains(visitors.get(j)) && value.get(i).equals(visitors.get(j))){
+                    int va = Integer.parseInt(value.get(j+1)) + 1;
+                    value.set(j+1,String.valueOf(va));
+                }
+            }
+        }
+        result.add(value);
 
         return answer;
     }
