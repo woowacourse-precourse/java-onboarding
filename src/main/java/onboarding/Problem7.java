@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -11,8 +8,15 @@ public class Problem7 {
         HashMap<String, Integer> recommendMap = getFriendssFriends(user, friends, usersFriends);
         List<String> visitorExceptFriend = getVisitorExceptFriend(visitors, usersFriends);
         setVisitorScore(recommendMap, visitorExceptFriend);
+        List<Map.Entry<String, Integer>> sortedList = sortByScore(recommendMap);
 
-        return answer;
+    }
+
+    private static List<Map.Entry<String, Integer>> sortByScore(HashMap<String, Integer> recommendMap) {
+        List<Map.Entry<String, Integer>> recommandList = new LinkedList<>(recommendMap.entrySet());
+
+        recommandList.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
+        return recommandList;
     }
 
     private static void setVisitorScore(HashMap<String, Integer> recommendMap, List<String> visitorExceptFriend) {
