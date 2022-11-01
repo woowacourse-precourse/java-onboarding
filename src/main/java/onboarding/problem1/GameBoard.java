@@ -1,7 +1,8 @@
 package onboarding.problem1;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import static onboarding.problem1.GameResults.*;
+
 
 public class GameBoard {
 

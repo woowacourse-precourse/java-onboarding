@@ -1,6 +1,6 @@
 package onboarding.problem1;
 
-import java.util.List;
+import java.util.*;
 
 public class ScoreCalculator {
     public int getGameScore(GamePlayer gamePlayer1) {

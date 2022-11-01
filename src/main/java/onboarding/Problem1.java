@@ -1,8 +1,6 @@
 package onboarding;
 
-import onboarding.problem1.GameBoard;
-import onboarding.problem1.PageValidator;
-import onboarding.problem1.ScoreCalculator;
+import onboarding.problem1.*;
 
 import java.util.List;
 
