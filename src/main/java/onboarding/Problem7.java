@@ -14,18 +14,19 @@ public class Problem7 {
 		Map<String, Integer> map = new HashMap<>();
 		List<String> answer = new ArrayList<>();
 
-		for (String list : visitors) {
-			int count = 0;
-			for (int i = 0; i < userfriends.size(); i++) {
-				if (list != userfriends.get(i)) {
-					count++;
-				}
+		List<Map.Entry<String, Integer>> entryList = new LinkedList<>(map.entrySet());
+		entryList.sort(new Comparator<Map.Entry<String, Integer>>() {
+			@Override
+			public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+				return o2.getValue() - o1.getValue();
 			}
-			if (count == userfriends.size()) {
-				map.put(list, map.getOrDefault(list, 0) + 1);
+		});
+		for (String name : map.keySet()) {
+			if (answer.size() <= 5) {
+				answer.add(name);
 			}
 		}
-
+		return answer;
 	}
 
 
