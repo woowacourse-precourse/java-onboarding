@@ -7,10 +7,26 @@ public class Problem7 {
     public static Set<String> alreadyFriends = new HashSet<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        setFriendsNetwork(user, friends);
         scoreBasedOnFriends(user, friends);
         scoreBasedOnVisitors(user, visitors);
         List<String> answer = returnAnswer();
         return answer;
+    }
+
+    public static void setFriendsNetwork(String user, List<List<String>> friends) {
+        for (int i = 0; i < friends.size(); i++) {
+            String friendA = friends.get(i).get(0);
+            String friendB = friends.get(i).get(1);
+
+            if(friendA.equals(user)) {
+                alreadyFriends.add(friendB);
+                continue;
+            }
+            if(friendB.equals(user)) {
+                alreadyFriends.add(friendA);
+            }
+        }
     }
 
     public static void scoreBasedOnFriends(String user, List<List<String>> friends) {
