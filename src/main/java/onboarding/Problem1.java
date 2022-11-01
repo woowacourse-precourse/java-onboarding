@@ -2,6 +2,38 @@ package onboarding;
 
 import java.util.List;
 
+class Score {
+    public int score = 0;
+
+    public Score(List<Integer> player) {   // 생성자
+        for (int num : player) {
+            int side_score = Math.max(get_add(num), get_mul(num));
+            if (score < side_score)
+                score = side_score;
+        }
+    }
+
+    private int get_add(int num) {
+        int sum = 0;
+
+        while (0 < num) {
+            sum += num % 10;
+            num /= 10;
+        }
+        return sum;
+    }
+
+    private int get_mul(int num) {
+        int mul = 1;
+
+        while (0 < num) {
+            mul *= num % 10;
+            num /= 10;
+        }
+        return mul;
+    }
+}
+
 class Problem1 {
     private static final int EXCEPTION = -1;
     private static final int DRAW = 0;
@@ -10,7 +42,8 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
-
+        Score pobi_score = new Score(pobi);
+        Score crong_score = new Score(crong);gi
 
         if (handlingExceptions(pobi) || handlingExceptions(crong))
             return EXCEPTION;
@@ -30,3 +63,4 @@ class Problem1 {
         return false;
     }
 }
+
