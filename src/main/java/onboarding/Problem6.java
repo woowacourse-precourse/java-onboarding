@@ -11,6 +11,8 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         Set<String> result = new TreeSet<String>();
         Set<String> duplicatedWords = new HashSet<String>();
+        for (int i = 0; i < forms.size(); i++) {
+        }
         return result.stream().collect(Collectors.toList());
     }
 
