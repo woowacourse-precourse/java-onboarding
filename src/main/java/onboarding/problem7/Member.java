@@ -1,10 +1,10 @@
 package onboarding.problem7;
 
-public class Crew {
+public class Member {
     private String name;
     private Integer point;
 
-    public Crew(String name, Integer point) {
+    public Member(String name, Integer point) {
         this.name = name;
         this.point = point;
     }

@@ -1,6 +1,6 @@
 package onboarding;
 
-import onboarding.problem7.Crew;
+import onboarding.problem7.Member;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -20,9 +20,9 @@ public class Problem7 {
 
         return acquaintancesPoint.entrySet().stream()
                 .filter(entry -> entry.getValue() > 0)
-                .map(entry -> new Crew(entry.getKey(), entry.getValue()))
-                .sorted(Comparator.comparing(Crew::getPoint).reversed().thenComparing(Crew::getName))
-                .map(Crew::getName)
+                .map(entry -> new Member(entry.getKey(), entry.getValue()))
+                .sorted(Comparator.comparing(Member::getPoint).reversed().thenComparing(Member::getName))
+                .map(Member::getName)
                 .collect(Collectors.toList());
     }
 
