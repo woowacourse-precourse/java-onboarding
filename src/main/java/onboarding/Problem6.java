@@ -8,6 +8,21 @@ public class Problem6 {
         return answer;
     }
 
+    // KMP 알고리즘을 사용해서 chk 배열 계산
+    private static void calcChk(List<List<String>> forms, boolean[] chk) {
+        for (int i = 0; i < forms.size(); i++) {
+            List<String> pattern = forms.get(i);
+
+            for (int j = i + 1; j < forms.size(); j++) {
+                List<String> parent = forms.get(j);
+                if (KMP(parent.get(1), pattern.get(1))) {
+                    chk[i] = true;
+                    chk[j] = true;
+                }
+            }
+        }
+    }
+
     // KMP를 위한 테이블 생성 메서드
     static int[] makeTable(String pattern) {
         int n = pattern.length();
