@@ -1,8 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -23,4 +21,15 @@ public class Problem7 {
 
         return friendsList;
     }
+
+    public static Map<String, Integer> calculateScoreByFriendsList(List<String> usersFriends, List<String> objectsFriends, String object) {
+        int count = 0;
+        for(String usersFriend : usersFriends) {
+            count = (objectsFriends.contains(usersFriend)) ? 1 : 0;
+        }
+        Map<String, Integer> friendsScore = new HashMap<>();
+        friendsScore.put(object, count * 10);
+        return friendsScore;
+    }
+
 }
