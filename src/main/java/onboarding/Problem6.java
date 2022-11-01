@@ -3,6 +3,7 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -31,7 +32,12 @@ public class Problem6 {
                 }
             }
         }
+        result = sortEmails(result);
         return result;
+    }
+
+    private List<String> sortEmails(List<String> emails) {
+        return emails.stream().map(e -> e.split("@")[0]).sorted().map(e -> e + "@email.com").collect(Collectors.toList());
     }
 
     private boolean isAlreadyInList(List<String> list, String target) {
