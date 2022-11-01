@@ -30,6 +30,26 @@ public class Problem7 {
             map.put(userKey, new LinkedHashSet<>(Set.of(userFriends)));
         }
 
+        // 입력 폼을 순회 -> 다른 사용자 인덱스의 원소를 키로 지정 하는 로직
+        for (List<String> friend : friends) {
+            String userKey = friend.get(differentUserNameIndex);
+            String userFriends = friend.get(userNameIndex);
+
+            // map 에 사용자가 존재하는지
+            if (map.containsKey(userKey)) {
+                // 사용자의 친구목록 리스트에 추가허여 merge 작업
+                Set<String> mapFriend = map.get(userKey);
+                mapFriend.add(userFriends);
+                map.put(userKey, mapFriend);
+                continue;
+            }
+
+            // 존재하지 않으면 새로 추가
+            map.put(userKey, new LinkedHashSet<>(Set.of(userFriends)));
+        }
+
+
+
         return Collections.emptyList();
     }
 
