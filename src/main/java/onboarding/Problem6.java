@@ -10,6 +10,7 @@ public class Problem6 {
         // 입력 데이터 검증 메소드 호출 후 반환값으로 데이터 상태 변경
         boolean isDataValid = validData(forms);
 
+        // 데이터 검증 후 적합하면 findDuplicatedNickCrew 메소드 호출
         if (!isDataValid) {
             answer.add("데이터가 적합하지 않습니다.");
         } else {
