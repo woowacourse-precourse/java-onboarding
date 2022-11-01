@@ -10,4 +10,16 @@ public class Problem2 {
         String answer = "answer";
         return answer;
     }
+
+    private static String reduce(String input) {
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < input.length(); i++) {
+            boolean sameWithPrior = i > 0 && input.charAt(i - 1) == input.charAt(i);
+            boolean sameWithAfter = i < input.length() - 1 && input.charAt(i + 1) == input.charAt(i);
+            if (!sameWithAfter && !sameWithPrior) {
+                builder.append(input.charAt(i));
+            }
+        }
+        return builder.toString();
+    }
 }
