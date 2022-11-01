@@ -25,43 +25,69 @@
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
 
-
-
+---
 ## 도메인 목록
 
-### User
-SNS 서비스 유저 하나의 정보를 담고있는 DTO 객체
-- 멤버
-  - 아이디(id)
-- 메서드
-  - 아이디 반환(getId) 
+### FriendGroup
+**한 유저의 친구 정보를 저장하고, 관련 기능을 수행하는 클래스**
 
-### UserConnection
-모든 유저의 친구 관계를 저장하고 있는 저장소 객체
-- 멤버
-  - 모든 유저 데이터(UserGroup)  
-  - 유저별 친구 목록(FriendsOfEachUser)
-- 메서드
-  - 친구 추가(connectNewFriendship)
-  - 친구 여부 확인(isFriendWith)
-  - 서로 공유하고 있는 친구 수 반환(getNumberCommonFriends)
-  - 모든 유저 목록 반환(getUserList)
- 
+
+    boolean isFriendWith(String userId)
+- id가 userId인 사람과의 친구 여부를 반환
+
+
+    void addFriendIfNotExist(String userId)
+- id가 userId인 사람과 친구가 아니라면 친구 목록에 추가
+
+
+    int getNumberOfCommonFriends(FriendGroup otherFriends)
+- 입력으로 들어온 friendGroup 과 공통으로 가진 친구 수를 반환
+
+### FriendGroupRepository
+**각 유저 별 FriendGroup 을 관리하는 저장소 클래스**
+
+
+    FriendGroup getFriendGroupOfUser(String userId)
+- id가 userId인 사람의 friendGroup 을 반환
+
 
 ### Timeline
-각 유저의 타임라인에 방문한 방문 유저의 이름과 횟수를 저장하고 있는 저장소 객체
-- 멤버
-  - 타임라인 로거(visitLoggerOfEachTimeline)
-- 기능
-  - visitor가 host의 타임라인에 방문한 횟수를 반환(getVisitTimes(host, visitor))
-  - 새로운 유저의 타임라인을 등록(addUserTimeline)
-  - 새로운 방문 정보를 등록(addVisitInfo)
-  - 원하는 유저의 타임라인을 반환(getUserTimeline)
+**한 유저의 타임라인 방문 기록과 관련 기능을 제공하는 클래스**
+
+
+    int getTimelineVisitTime(String userId)
+- id가 userId인 사람이 이 타임라인을 몇번 방문했는지 확인
+
+
+    void addTimelineVisitInfo(String userId)
+- id가 userId인 사람이 이 타임라인을 방문한 횟수를 1회 추가
+
+
+### TimelineRepository
+**각 유저별 Timeline 을 관리하는 저장소 클래스**
+
+
+    Timeline getTimelineOfUser(String userId)
+- id가 userId인 사람의 Timeline 반환
+
+### UserRepository
+**전체 유저 목록을 관리하는 저장소 클래스**
+
+
+    void addUserIfNotExist(String userId)
+- id가 userId인 사람이 회원으로 등록되지 않았다면, 회원으로 등록
+
+
+    Set<String> getUserGroup()
+- 전체 유저 목록을 복사해 반환
 
 ### FriendRecommender
-주어진 정보를 바탕으로 친구를 추천해주는 서비스 객체
-- 멤버
-  - UserConnection
-  - TimeLine
-- 기능
-  - 입력으로 주어진 유저의 추천 친구 목록을 반환(최대 5명)
+**주어진 친구 관계 / 유저 ID / 타임라인 정보를 바탕으로 추천 친구 목록을 반환하는 클래스**
+
+    
+    FriendRecommender(List<List<String>> friendGroup)
+- 주어진 친구 관계 목록을 바탕으로 각 Repository 에 유저 정보를 등록하는 메서드
+
+
+    List<String> (String userId, List<String> visitors)
+- 유저 아이디와 타임라인 방문 정보를 제공받아 최대 5명의 친구를 추천하는 메서드
