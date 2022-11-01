@@ -107,4 +107,34 @@ class Problem7MethodTest {
         assertThat(result1).isEqualTo(List.of("donut", "mrko", "andole", "bedi", "shakevan"));
         assertThat(result2).isEqualTo(List.of("jun", "donut", "mrko", "andole", "bedi"));
     }
+
+    @Test
+    void combineScoreOfFriendsTest() {
+        HashMap<String, Integer> map1 = new HashMap<>(Map.of(
+                "mrko", 20,
+                "bedi", 10,
+                "donut", 20,
+                "shakevan", 3,
+                "andole", 10
+        ));
+        HashMap<String, Integer> map2 = new HashMap<>(Map.of(
+                "mrko", 20,
+                "bedi", 10,
+                "jun", 23,
+                "donut", 20,
+                "shakevan", 3,
+                "andole", 10
+        ));
+
+        HashMap<String, Integer> result1 = combineScoreOfFriends(map1, map2);
+
+        assertThat(result1).isEqualTo(Map.of(
+                "mrko", 40,
+                "bedi", 20,
+                "jun", 23,
+                "donut", 40,
+                "shakevan", 6,
+                "andole", 20
+        ));
+    }
 }
