@@ -16,7 +16,7 @@ class Problem1 {
         return checkPage(pobi.get(0), pobi.get(1)) && checkPage(crong.get(0), crong.get(1));
     }
 
-    static int getAddDigit(int val){
+    private static int getAddDigit(int val){
         int ret;
 
         ret = 0;
@@ -27,7 +27,7 @@ class Problem1 {
         return ret;
     }
 
-    static int getMulDigit(int val){
+    private static int getMulDigit(int val){
         int ret;
 
         ret = 1;
