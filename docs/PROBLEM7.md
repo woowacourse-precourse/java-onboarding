@@ -24,3 +24,9 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 구현 기능
+1. user의 친구 list를 구한다.
+2. list에 해당하지 않고 friends list안에 있는 닉네임에 점수를 추가한다.
+3. visitor에게도 점수를 추가한다.
+4. 최종 점수대로 정렬 후 return 한다.
