@@ -16,6 +16,24 @@ public class Problem7 {
         return answer;
     }
 
+    static void searchFriendsException(String user, String friend, String target) {
+        if (target.equals(user)) {
+            return;
+        }
+
+        if (friendsList.get(user).contains(target)) {
+            return;
+        }
+
+        searchFriends(friend, target);
+    }
+
+    static void searchFriends(String friend, String target) {
+        for (int index = 0; index < friendsList.get(target).size(); index++) {
+            calculateAcquaintanceScore(friend, target, index);
+        }
+    }
+
     static void calculateAcquaintanceScore(String friend, String target, int index) {
         if (friendsList.get(target).get(index).equals(friend)) {
             scores.put(target, scores.get(target) + 10);
