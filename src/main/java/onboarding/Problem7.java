@@ -5,7 +5,7 @@ import java.util.*;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         HashMap<String, HashSet<String>> graph = constructGraph(friends);
-        HashSet<String> friendOfUser = graph.get(user);
+        HashSet<String> friendOfUser = graph.getOrDefault(user, new HashSet<>());
         HashMap<String, Integer> scoreMap = new HashMap<>();
 
         for (String friend: friendOfUser)
