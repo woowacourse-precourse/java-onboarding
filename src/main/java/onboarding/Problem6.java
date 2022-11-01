@@ -5,11 +5,23 @@ import java.util.*;
 public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = new ArrayList<>();
+        List<List<String>> answer = new ArrayList<>();
 
         if (!isValidCrewSize(forms.size())) {
             return Collections.emptyList();
         }
+
+        for(List<String> data : forms){
+            if(checkLength(data.get(0)) && checkDomain(data.get(0))
+                    && checkNickValid(data.get(1)) && checkNickLength(data.get(1))){
+                answer.add(data);
+            }
+            else{
+                continue;
+            }
+        }
+
+
 
         return answer;
     }
