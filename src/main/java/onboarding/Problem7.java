@@ -25,6 +25,9 @@ public class Problem7 {
         //사용자와 함께 아는 친구의 수 점수 매기기
         setScoreOfBothKnownFriends(scoreOfVisitors, unknownFriends, userFriends);
 
+        //방문자 수 점수 추가하기
+        setScoreOfVisitors(scoreOfVisitors, visitors);
+
         return answer;
     }
 
@@ -120,4 +123,14 @@ public class Problem7 {
         }
     }
 
+    public static void setScoreOfVisitors(HashMap<String, Integer> scoreOfVisitors, List<String> visitors) {
+
+        for (String visitor : visitors) {
+
+            if (scoreOfVisitors.containsKey(visitor)) {
+                scoreOfVisitors.put(visitor, scoreOfVisitors.get(visitor) + 1);
+            }
+
+        }
+    }
 }
