@@ -29,6 +29,14 @@ public class Problem7 {
             userNumber += 1;
         }
 
+        // 인접배열리스트(친구그래프) 생성
+        for (int i = 0; i < friends.size(); i++) {
+            int fromNumber = idToNumber.get(friends.get(i).get(0));
+            int toNumber = idToNumber.get(friends.get(i).get(1));
+            friendGraph[fromNumber].add(toNumber);
+            friendGraph[toNumber].add(fromNumber);
+        }
+
         return answer;
     }
 
