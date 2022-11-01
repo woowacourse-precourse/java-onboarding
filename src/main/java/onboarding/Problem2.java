@@ -42,11 +42,4 @@ public class Problem2 {
         }
         return answer;
     }
-
-    public static void main(String[] args) {
-        String str = "browoanoommnaon";
-
-        str = solution(str);
-        System.out.println(str);
-    }
 }

@@ -48,12 +48,4 @@ class Problem1 {
         else
             return 1;
     }
-    public static void main(String[] args) {
-        List<Integer> pobi = List.of(131, 132);
-        List<Integer> crong = List.of(211, 212);
-        int result;
-
-        result = solution(pobi, crong);
-        System.out.println(result);
-    }
 }

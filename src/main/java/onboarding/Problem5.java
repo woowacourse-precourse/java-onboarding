@@ -78,10 +78,4 @@ public class Problem5 {
             answer.add(count);
         return answer;
     }
-    public static void main(String[] args) {
-        int money = 50237;
-        List<Integer> answer = solution(money);
-
-        System.out.println(answer);
-    }
 }

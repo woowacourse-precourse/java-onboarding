@@ -32,11 +32,4 @@ public class Problem4 {
         answer = word;
         return answer;
     }
-    public static void main(String[] args) {
-        String str = "I love you";
-        String result;
-
-        result = solution(str);
-        System.out.println(result);
-    }
 }

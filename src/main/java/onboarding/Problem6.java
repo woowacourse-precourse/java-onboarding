@@ -93,18 +93,4 @@ public class Problem6 {
         System.out.println(result);
         return result;
     }
-    public static void main(String[] args) {
-        List<List<String>> forms = List.of(
-                List.of("jm@email.com", "제이준재엠"),
-                List.of("jason@email.com", "제이슨"),
-                List.of("woniee@email.com", "워니"),
-                List.of("mj@email.com", "엠제이"),
-                List.of("nowm@email.com", "이제엠"),
-                List.of("wnswo8628@email.com", "준재곽"),
-                List.of("wnswo8888@email.com", "곽준재"),
-                List.of("wnwnwn@email.com", "준재준재k")
-        );
-        List<String> result = solution(forms);
-        //System.out.println(result);
-    }
 }
