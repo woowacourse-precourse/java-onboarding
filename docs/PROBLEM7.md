@@ -24,3 +24,24 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+---
+
+## 기능 구현 목록
+
+- getMyFriends(List<List<String>> friends, String user)
+  - 유저의 친구를 set에 저장
+- getAcquaintancePoint(List<List<String>> friends)
+  - 유저의 친구와 친구사이면 10점 증가
+- getVisitorsPoint(List<String> friends)
+  - 방문한 사람들의 점수를 1점 증가
+- getAcquaintanceList()
+  - 유저와 이미 친구이거나, 점수가 0점이라면 제거
+- getSortedAcquaintanceList()
+  - 점수가 높은 순으로 정렬, 점수가 같다면 닉네임 순으로 정렬
+- checkUserException(String user)
+  - 유저가 올바른지 확인
+- checkFriendsException(List<List<String>> friends)
+  - 친구의 형식이 올바른지 확인
+- checkVisitorException(List<String> visitors)
+  - 방문자의 형식이 올바른지 확인성
