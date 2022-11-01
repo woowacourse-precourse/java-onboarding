@@ -53,6 +53,7 @@ class NickName {
         this.nickName = nickName;
     }
 
+    //두 글자씩 잘라서 저장함.
     public Set<String> duplicatedCases() {
         Set<String> duplicatedCasesSet = new HashSet<>();
 
@@ -83,10 +84,14 @@ class Crew {
 }
 
 class NickNameDuplicate {
-    public Set<Crew> findCrewWithDuplicatedNickName(List<Crew> crews) {
+    private final Set<Crew> crewsByDuplicatedNickName;
+    private final HashMap<String, Crew> nickNameAndEmail;
 
-        Set<Crew> crewsByDuplicatedNickName = new HashSet<>();
-        HashMap<String, Crew> nickNameAndEmail = new HashMap<>();
+    public NickNameDuplicate(){
+        crewsByDuplicatedNickName= new HashSet<>();
+        nickNameAndEmail= new HashMap<>(); //두 글자랑 크루 연결해놓음
+    }
+    public Set<Crew> findCrewWithDuplicatedNickName(List<Crew> crews) {
 
         for (Crew crew : crews) {
             NickName nickName = crew.getNickName();
