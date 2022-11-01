@@ -2,20 +2,33 @@ package onboarding;
 
 import java.util.*;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Problem6 {
     private static final int MIN_SIZE = 2;
+    private static final int EMAIL_MIN_LENGTH = 11;
+    private static final int MAX_LENGTH = 19;
+    private static final int NICKNAME_MIN_LENGTH = 1;
+    private static List<List<String>> data;
+
     public static List<String> solution(List<List<String>> forms) {
-        forms = validateEmail(forms);
-        HashSet<String> letters = makeLetterSet(forms);
-        TreeSet<String> emails = getDuplicateSet(letters, forms);
+        data = forms;
+        data = validateEmail(data);
+        data = validateLength();
+        HashSet<String> letters = makeLetterSet(data);
+        TreeSet<String> emails = getDuplicateSet(letters, data);
         return new ArrayList<>(emails);
     }
 
     public static List<List<String>> validateEmail(List<List<String>> forms){ // @email.com을 포함하는 체크
-        return forms.stream().filter(data->data.get(0)
-                .contains("@email.com"))
+        return forms.stream()
+                .filter(data->data.get(0).contains("@email.com"))
+                .collect(Collectors.toList());
+    }
+
+    public static List<List<String>> validateLength(){
+        return data.stream()
+                .filter(object->object.get(0).length() <= MAX_LENGTH && object.get(0).length() >= EMAIL_MIN_LENGTH
+                        && object.get(1).length() <= MAX_LENGTH && object.get(1).length() >= NICKNAME_MIN_LENGTH)
                 .collect(Collectors.toList());
     }
 
