@@ -54,4 +54,22 @@ public class Problem7 {
         }
         return score;
     }
+
+    public static List<String> getRecommendFriends (Map<String, Integer> score) {
+        List<String> recommendFriends = new ArrayList<>();
+        SortedSet<Map.Entry<String, Integer>> sortedSet = new TreeSet<>((e1, e2) -> {
+            int result = e1.getValue().compareTo(e2.getValue());
+            if (result == 0)
+                return e1.getKey().compareTo(e2.getKey());
+            return result * -1;
+        });
+        sortedSet.addAll(score.entrySet());
+        for (Map.Entry<String, Integer> entry : sortedSet) {
+            if (entry.getValue() == 0 || recommendFriends.size() == 5) {
+                break;
+            }
+            recommendFriends.add(entry.getKey());
+        }
+        return recommendFriends;
+    }
 }
