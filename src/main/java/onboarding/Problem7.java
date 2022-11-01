@@ -86,16 +86,16 @@ public class Problem7 {
     public static Map<String, Integer> getIdToRecommendScore(String user, Map<String, Set<String>> userToFriends, List<String> visitors) {
         Map<String, Integer> idToRecommendScore = new HashMap<>();
 
-        Map<String, Integer> friendsInCommon = getFriendsInCommon(userToFriends, user);
-
-        updateFriendInCommonScore(idToRecommendScore, friendsInCommon);
+        updateFriendsInCommonScore(idToRecommendScore, user, userToFriends);
 
         updateVisitorScore(idToRecommendScore, visitors);
 
         return idToRecommendScore;
     }
 
-    public static void updateFriendInCommonScore(Map<String, Integer> recommendScores, Map<String, Integer> friendsInCommon) {
+    public static void updateFriendsInCommonScore(Map<String, Integer> recommendScores, String user, Map<String, Set<String>> userToFriends) {
+        Map<String, Integer> friendsInCommon = getFriendsInCommon(userToFriends, user);
+
         for (String other : friendsInCommon.keySet()) {
             recommendScores.put(other, friendsInCommon.getOrDefault(other, 0) * FRIEND_IN_COMMON_SCORE);
         }
