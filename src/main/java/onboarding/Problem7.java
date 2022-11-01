@@ -37,4 +37,13 @@ public class Problem7 {
             }
         }
     }
+
+    public static void visitorsPlusPoint(List<String> visitors, ArrayList arrayList) {
+
+        for (String visitorName : visitors) { //an, jun, sh, do, mr
+            if (!arrayList.contains(visitorName)) {
+                mapPoints.put(visitorName, mapPoints.getOrDefault(visitorName, 0) + 1);
+            }
+        }
+    }
 }
