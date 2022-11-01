@@ -9,6 +9,8 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         createFriendRelation(user, friends);
         relationScore(user);
+        visitedScore(user, visitors);
+
         return null;
     }
 
@@ -24,6 +26,13 @@ public class Problem7 {
                         }
                         recommendScoreMap.put(s, 10);
                     });
+        }
+    }
+    private static void visitedScore(String user, List <String> visitors) {
+        for (String visitor : visitors) {
+            if (!friendsRelationMap.get(user).contains(visitor)) {
+                recommendScoreMap.put(visitor, recommendScoreMap.getOrDefault(visitor, 0) + 1);
+            }
         }
     }
 
