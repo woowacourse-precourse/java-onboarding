@@ -7,7 +7,6 @@ public class Problem4 {
         return answer;
     }
 
-    //TODO: 리팩토링 필요
     public static String fun(String word){
         char[] arr = word.toCharArray();
         StringBuilder str = new StringBuilder();
