@@ -1,13 +1,13 @@
 package onboarding;
 
 public class Problem4 {
-    static int flag = 0;
+    private static int flag = 0;
     public static String solution(String word) {
         String answer = "";
         answer = splitString(word);
         return answer;
     }
-    static String splitString(String word){
+    public static String splitString(String word){
         String result = "";
         String[] wordarr = word.split("");
         for(int i=0; i<wordarr.length; i++){
@@ -19,7 +19,7 @@ public class Problem4 {
         }
         return result;
     }
-    static boolean checkAlpha(String oneword){
+    private static boolean checkAlpha(String oneword){
         if((int)oneword.charAt(0) >= 65 && (int)oneword.charAt(0) <=90) {
             flag = 1;
             return true;
@@ -31,7 +31,7 @@ public class Problem4 {
         flag = 0;
         return false;
     }
-    static char changeAlpha(String oneword){
+    private static char changeAlpha(String oneword){
         char reverseword = 0;
         if(flag == 1) reverseword = (char)(155-(int)oneword.charAt(0));
         if(flag == 2) reverseword = (char)(219-(int)oneword.charAt(0));
