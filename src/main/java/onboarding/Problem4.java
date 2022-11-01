@@ -2,7 +2,7 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        return "";
+        return convertStr(word);
     }
 
     private static char convertChar(char singleChr){
@@ -22,5 +22,13 @@ public class Problem4 {
             return true;
         else
             return false;
+    }
+    private static String convertStr(String origin){
+        char[] charArr = origin.toCharArray();
+        for(int i=0; i<charArr.length; i++){
+            if(isAlphabet(charArr[i]))
+                charArr[i] = convertChar(charArr[i]);
+        }
+        return String.valueOf(charArr);
     }
 }
