@@ -12,4 +12,15 @@ public class Problem5 {
         List<Integer> answer = Collections.emptyList();
         return MoneyNumber(money);
     }
+
+    public static List<Integer> MoneyNumber(int money) {
+        result.clear();
+        if(!error(money)) {
+            for (int i = 0; i < coins.size(); i++) {
+                result.add(money / coins.get(i));
+                money %= coins.get(i);
+            }
+        }
+        return result;
+    }
 }
