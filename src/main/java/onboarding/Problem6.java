@@ -66,17 +66,11 @@ public class Problem6 {
     }
 
     public static boolean hasSimilarNickName(String nickname, String part) {
-        if (nickname.contains(part)) {
-            return true;
-        }
-        return false;
+        return nickname.contains(part);
     }
 
     public static boolean isAlreadyAnswerIndexes(int index) {
-        if (answerIndexes.contains(index)) {
-            return true;
-        }
-        return false;
+        return answerIndexes.contains(index);
     }
 
 }
