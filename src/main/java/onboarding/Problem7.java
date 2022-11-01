@@ -9,13 +9,7 @@ public class Problem7 {
 
         Map<String, Integer> recommendedScoreMap = makeRecommendedScoreMap(friendsMap);
 
-        String[] realFriends = friendsMap.get(user).toArray(new String[0]);
-        for(String friend : realFriends) {
-            for(String nearFriend : friendsMap.get(friend)) {
-                if (nearFriend.equals(user))
-                    recommendedScoreMap.put(nearFriend, recommendedScoreMap.get(nearFriend) + 10);
-            }
-        }
+        giveTenPointsToNearFriends(user, friendsMap, recommendedScoreMap);
 
         for(String visitor : visitors) {
             if(visitor.equals(user) || friendsMap.get(user).contains(visitor))
@@ -85,5 +79,32 @@ public class Problem7 {
         }
 
         return recommendedScoreMap;
+    }
+
+    public static void giveTenPointsToNearFriends(String user, Map<String, Set<String>> friendsMap, Map<String, Integer> recommendedScoreMap) {
+
+        Set<String> realFriendSet = friendsMap.get(user);
+        String[] realFriendsList = realFriendSet.toArray(new String[0]);
+
+        for(String realfriend : realFriendsList) {
+            Set<String> nearFriendSet = friendsMap.get(realfriend);
+
+            updateRecommendScoreofNearFriend(user, nearFriendSet, recommendedScoreMap);
+        }
+    }
+
+    public static void updateRecommendScoreofNearFriend(String user, Set<String> nearFriendSet, Map<String, Integer> recommendedScoreMap) {
+
+        for(String nearFriend : nearFriendSet)
+            scoreIfNearFriend(user, nearFriend, recommendedScoreMap);
+    }
+
+    public static void scoreIfNearFriend(String user, String nearFriend, Map<String, Integer> recommendedScoreMap) {
+
+        if (nearFriend.equals(user)) {
+            int recommendedScore = recommendedScoreMap.get(nearFriend);
+
+            recommendedScoreMap.put(nearFriend, recommendedScore + 10);
+        }
     }
 }
