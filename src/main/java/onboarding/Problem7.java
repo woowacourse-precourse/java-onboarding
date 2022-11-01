@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -28,8 +25,11 @@ public class Problem7 {
         // 방문자 목록 확인해서 점수 주기(1점)
         checkVisitors(visitors, scoreMap);
 
+        // 추천해줄 친구목록 생성
+        List<String> answer = new ArrayList<>();
+        recommendFriend(relation.get(user), user, scoreMap, answer);
 
-        List<String> answer = Collections.emptyList();
+
         return answer;
     }
 
@@ -89,11 +89,52 @@ public class Problem7 {
 
         for (int i = 0; i < visitors.size(); i++) {
             String friend = visitors.get(i);
+
             // 방문자에게 1점 부여
-            scoreMap.put(friend, scoreMap.get(friend) + 1);
+            if (!scoreMap.containsKey(friend)) {
+                scoreMap.put(friend, 0);
+                scoreMap.put(friend, scoreMap.get(friend) + 1);
+            } else {
+                scoreMap.put(friend, scoreMap.get(friend) + 1);
+            }
+
 
         }
 
     }
 
+    // 추천해줄 친구목록 만들기
+    public static void recommendFriend(List<String> myFriends, String user, HashMap<String, Integer> scoreMap, List<String> answer) {
+
+        // 5회 반복해서 최대 5명의 친구추천을 받음
+        for (int i = 0; i < 5; i++) {
+            String maxName = null;
+            Integer maxValue = 0;
+            Iterator<String> keys = scoreMap.keySet().iterator();
+            while (keys.hasNext()) {
+                String key = keys.next();
+
+
+
+                if (scoreMap.get(key)>maxValue) {
+                    maxValue = scoreMap.get(key);
+                    maxName = key;
+                }
+
+            }
+            // 친구목록에 0점 이상이 없는 경우 바로 반환
+            if (maxValue == 0) {
+                return;
+            }
+
+            // 친구추천목록에 추가
+            answer.add(maxName);
+
+            // 추가시킨 이름은 다시 나오지 않게 0으로 초기화 시켜줌
+            scoreMap.put(maxName, 0);
+
+        }
+
+
+    }
 }
