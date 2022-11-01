@@ -15,55 +15,92 @@ public class Problem7 {
      * @return 최대 5명의 추천 친구 목록
      */
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        FriendsRelation totalFriendsRelation = new FriendsRelation(friends);
-        Set<String> userFriends = totalFriendsRelation.get(user);
-        List<String> friendsOfFriends = totalFriendsRelation.getFriendsOfFriendsList(userFriends);
-
-        FriendRecommendedScore friendRecommendedScore =
-                new FriendRecommendedScore(user, userFriends, friendsOfFriends, visitors);
-
-        return friendRecommendedScore.getRank();
+        FriendsRelation friendsRelation = new FriendsRelation();
+        return friendsRelation.getRecommend(user, friends, visitors);
     }
 }
 
 class FriendsRelation {
-    private final Map<String, Set<String>> totalFriendsMap = new HashMap<>();
 
-    public FriendsRelation(List<List<String>> friends) {
+    private Map<String, Set<String>> totalFriendsMap;
+    private Map<String, Integer> totalRecommendedMap;
+
+    public List<String> getRecommend(String user, List<List<String>> friends, List<String> visitors) {
+        totalFriendsMap = new HashMap<>();
+        totalRecommendedMap = new HashMap<>();
+        connectRelation(friends);
+        Set<String> userFriends = getUserFriends(user);
+        List<String> friendsOfFriends = getFriendsOfFriends(userFriends);
+        return getRank(user, userFriends, friendsOfFriends, visitors);
+    }
+
+    private void connectRelation(List<List<String>> friends) {
 
         for (List<String> friend : friends) {
             String friendA = friend.get(0);
             String friendB = friend.get(1);
-            relate(friendA, friendB);
-            relate(friendB, friendA);
+            connect(friendA, friendB);
+            connect(friendB, friendA);
         }
     }
 
-    public void relate(String user, String friend) {
+    private void connect(String user, String friend) {
         Set<String> friendsSet = totalFriendsMap.getOrDefault(user, new HashSet<>());
         friendsSet.add(friend);
         totalFriendsMap.put(user, friendsSet);
     }
 
 
-    public Set<String> get(String user) {
+    private Set<String> getUserFriends(String user) {
         return totalFriendsMap.getOrDefault(user, new HashSet<>());
     }
 
-    public List<String> getFriendsOfFriendsList(Set<String> userFriends) {
+    private List<String> getFriendsOfFriends(Set<String> userFriends) {
         List<String> friendOfFriend = new ArrayList<>();
 
         for (String userFriend : userFriends) {
-            Set<String> friends = this.get(userFriend);
+            Set<String> friends = this.getUserFriends(userFriend);
             friendOfFriend.addAll(friends);
         }
 
         return friendOfFriend;
     }
-}
 
-class FriendRecommendedScore {
-    private final Map<String, Integer> totalRecommendedMap = new HashMap<>();
+    private List<String> getRank(String user, Set<String> userFriends, List<String> friendOfFriend, List<String> visitors) {
+        raiseScore(friendOfFriend, 10);
+        raiseScore(visitors, 1);
+
+        for (String userFriend : userFriends) {
+            notRecommended(userFriend);
+        }
+
+        notRecommended(user);
+
+        return getTop5();
+    }
+
+    private void raiseScore(List<String> users, int point) {
+        for (String user : users) {
+            int nowScore = getScore(user);
+            totalRecommendedMap.put(user, nowScore + point);
+        }
+    }
+
+    private int getScore(String user) {
+        return totalRecommendedMap.getOrDefault(user, 0);
+    }
+
+    private void notRecommended(String user) {
+        totalRecommendedMap.remove(user);
+    }
+
+    private List<String> getTop5() {
+        Set<String> recommendSet = totalRecommendedMap.keySet();
+        List<String> recommendList = new ArrayList<>(recommendSet);
+        recommendList.sort(scoreComparator);
+        return recommendList.subList(0, Math.min(recommendList.size(), 5));
+    }
+
     private final Comparator<String> scoreComparator = (user1, user2) -> {
         int user1Score = getScore(user1);
         int user2Score = getScore(user2);
@@ -78,40 +115,4 @@ class FriendRecommendedScore {
 
         return -1;
     };
-
-    public FriendRecommendedScore(String user, Set<String> userFriends, List<String> friendOfFriend, List<String> visitors) {
-        for (String friendsOfFriend : friendOfFriend) {
-            raiseScore(friendsOfFriend, 10);
-        }
-
-        for (String visitor : visitors) {
-            raiseScore(visitor, 1);
-        }
-
-        for (String userFriend : userFriends) {
-            notRecommended(userFriend);
-        }
-
-        notRecommended(user);
-    }
-
-    private void raiseScore(String user, int point) {
-        int nowScore = getScore(user);
-        totalRecommendedMap.put(user, nowScore + point);
-    }
-
-    private int getScore(String user) {
-        return totalRecommendedMap.getOrDefault(user, 0);
-    }
-
-    private void notRecommended(String user) {
-        totalRecommendedMap.remove(user);
-    }
-
-    public List<String> getRank() {
-        Set<String> recommendSet = totalRecommendedMap.keySet();
-        List<String> recommendList = new ArrayList<>(recommendSet);
-        recommendList.sort(scoreComparator);
-        return recommendList.subList(0, Math.min(recommendList.size(), 5));
-    }
 }
