@@ -29,6 +29,10 @@ public class Problem2 {
             endDecryptogram.append(cryptogramChars[i]);
         }
 
+        if (duplicateCount > 0) {
+            return decrypt(String.valueOf(endDecryptogram));
+        }
+
         return cryptogram;
     }
 
