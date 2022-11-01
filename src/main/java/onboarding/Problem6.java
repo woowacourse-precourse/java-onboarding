@@ -1,16 +1,17 @@
 package onboarding;
 
 import java.util.Comparator;
-import java.util.HashMap;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
-        Map<String, List<String>> overlapMap = createOverlapMap(forms);
+        List<String> emailList = createOverlapEmailList(forms);
         
         answer = getListMaximumSizeOnMap(overlapMap);
         answer.sort(Comparator.naturalOrder());
@@ -18,21 +19,22 @@ public class Problem6 {
         return answer;
     }
     
-    private static Map<String, List<String>> createOverlapMap(List<List<String>> list){
-    	Map<String, List<String>> overlapMap = new HashMap<>();
+    private static List<String> createOverlapEmailList(List<List<String>> list){
+    	Set<String> unitOfNickname = new HashSet<>();
+    	List<String> res = List.of();
     	
     	for(int i = 0; i < list.size(); i++) {
     		for(int j = 0; j < list.get(i).get(1).length() - 1; j++) {
     			String s = list.get(i).get(1).substring(j, j + 2);
-    			if(!overlapMap.containsKey(s)) {
-    				overlapMap.put(s, new LinkedList<>());
-    				removeOverlapEmail(overlapMap.get(s));
+    			if(!unitOfNickname.contains(s)) {
+    				unitOfNickname.add(s);
+    				continue;
     			}
-    			overlapMap.get(s).add(list.get(i).get(0));
+    			res.add(list.get(i).get(0));
     		}
     	}
     	
-    	return overlapMap;
+    	return res;
     }
     
     private static List<String> removeOverlapEmail(List<String> list){
