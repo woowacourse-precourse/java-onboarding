@@ -17,8 +17,8 @@ public class NickNameVerification {
     private static List<String> NicknameList(List<List<String>> forms) {
         List<String> Nickname = new ArrayList<>();
 
-        for (int i = 0; i < forms.size(); i++) {
-            Nickname.add(forms.get(i).get(1));
+        for (List<String> form : forms) {
+            Nickname.add(form.get(1));
 
         }
         return Nickname;

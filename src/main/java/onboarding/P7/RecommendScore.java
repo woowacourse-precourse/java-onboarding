@@ -1,32 +1,25 @@
 package onboarding.P7;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class RecommendScore {
-    public  Map<String, Integer> recommendScore(String user, List<List<String>> friends, List<String> visitors){
+    public Map<String, Integer> giveScroeAll(String user, List<List<String>> friends, List<String> visitors){
         FriendList friendList = new FriendList();
-        List<String> userFriend = friendList.friendsList(user,friends);
-        List<String> friendOfFriend = friendList.FriendOfFriend(user, friends, userFriend);
-        return ScoreMap(visitors, userFriend, friendOfFriend);
-    }
+        NotFriendVisitor notFriendVisitor = new NotFriendVisitor();
 
-    private static Map<String, Integer> ScoreMap(List<String> visitors, List<String> friendList, List<String> friendandfriend){
-        List<String> visit = new ArrayList<>();
-        Map<String, Integer> map1 = new HashMap<>();
-        int sum =0;
-        int sum2 =0;
-        visitors = visitors.stream().filter(x -> !friendList.contains(x)).collect(Collectors.toList());
-        for(String v: visitors){
-            sum += 1;
-            map1.put(v, sum);
-        }
-        for(String a: friendandfriend){
-            sum2 += 10;
-            map1.put(a, sum2);
-        }
-        return map1;
+        Map<String, Integer> memberScore = new HashMap<>();
 
+
+        for(String friend: friendList.getFriendOfFriend(user, friends)){
+            memberScore.put(friend, memberScore.getOrDefault(friend, 0)+10);
+        }
+
+        for(String visit : notFriendVisitor.getvisitors(visitors, user, friends)){
+            memberScore.put(visit, memberScore.getOrDefault(visit, 0)+1);
+        }
+        return memberScore;
     }
 
 

@@ -6,32 +6,44 @@ public class RecomendRank {
 
     public List<String> rankFive(String user, List<List<String>> friends, List<String> visitors){
         RecommendScore recommendScore = new RecommendScore();
-        Map<String, Integer> map = recommendScore.recommendScore(user, friends, visitors);
-        return result(map);
+
+
+        return getRankFive(getAllRank(rankScore(recommendScore.giveScroeAll(user, friends, visitors))));
     }
 
-    private static List<String> result (Map<String, Integer> map1){
-        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(map1.entrySet());
-        entryList.sort((o1, o2) -> o2.getValue().compareTo(o1.getValue()));
+    private static List<Map.Entry<String, Integer>> rankScore(Map<String, Integer> usersScore){
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(usersScore.entrySet());
+        entryList.sort((o1, o2) -> {
+            int comparision = (o1.getValue() - o2.getValue()) * -1;
 
-        Map<String, Integer> valueDescendingMap = new LinkedHashMap<>();
-        for (Map.Entry<String, Integer> entry : entryList) {
-            valueDescendingMap.put(entry.getKey(), entry.getValue());
-        }
-        List<String> rankuser = new ArrayList<>();
-        for(String key : valueDescendingMap.keySet()){
-            rankuser.add(key);
-        }
+            return comparision == 0 ? o1.getKey().compareTo(o2.getKey()) : comparision;
+        });
+        return entryList;
+    }
 
-        List<String> lastresult = new ArrayList<>();
-        int cnt = 1;
-        for(String s: rankuser){
-            if(cnt > 5){
+    private static List<String> getAllRank (List<Map.Entry<String, Integer>> rankScore){
+        Map<String, Integer> sortedMap = new LinkedHashMap<>();
+        for (Map.Entry<String, Integer> entry : rankScore) {
+            sortedMap.put(entry.getKey(), entry.getValue());
+        }
+        List<String> allRank = new ArrayList<>(sortedMap.keySet());
+        return allRank;
+    }
+
+    private static List<String> getRankFive(List<String> memberRank){
+        int cnt =1;
+        List<String> rankFive = new ArrayList<>();
+        for(String member: memberRank){
+            if(cnt>5){
                 break;
             }
-            lastresult.add(s);
-            cnt+=1;
+            rankFive.add(member);
+            cnt += 1;
         }
-        return lastresult;
+        return rankFive;
+
     }
+
+
+
 }
