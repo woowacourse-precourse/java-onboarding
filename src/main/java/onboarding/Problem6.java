@@ -30,6 +30,12 @@ class TokenGroup{
         return tokenGroup.get(tokenKey);
     }
 }
+class Inspection{
+    boolean isDuplicated(int sizeOfTokenGroup){
+        final int MINIMUM_GROUP_SIZE=1;
+        return sizeOfTokenGroup > MINIMUM_GROUP_SIZE;
+    }
+}
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
