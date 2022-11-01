@@ -27,7 +27,37 @@ public class Problem7 {
             putRecommendList(visitors.get(i), recommendList, 1);
         }
 
+        // recommendList에 추가되어있는 user 삭제
+        recommendList.remove(user);
+
+        for (int i = 0; i < userFriends.size(); i++) {
+            recommendList.remove(userFriends.get(i));
+        }
+
+        for (int i = 0; i < recommendList.size(); i++) {
+            System.out.println(recommendList.get(i));
+        }
+
+        Set set = recommendList.entrySet();
+        Iterator iterator = set.iterator();
+
+        List<Friends> friendList = new ArrayList<>();
+
+        while (iterator.hasNext()) {
+            Map.Entry entry = (Map.Entry) iterator.next();
+            String key = (String) entry.getKey();
+            int value = (Integer) entry.getValue();
+            friendList.add(new Friends(value, key));
+        }
+
+        friendList.sort(Comparator.comparing(Friends::getPoint).reversed().thenComparing(Friends::getName));
+
         List<String> answer = new ArrayList<>();
+        for (int i = 0; i < friendList.size(); i++) {
+            if (answer.size() == 5) break;
+            answer.add(friendList.get(i).getName());
+        }
+
         return answer;
     }
 
@@ -71,5 +101,23 @@ public class Problem7 {
         }
 
         if (!isExist) recommendList.put(friend, point);
+    }
+
+    public static class Friends {
+        int point;
+        String name;
+
+        public Friends(int point, String name) {
+            this.point = point;
+            this.name = name;
+        }
+
+        public int getPoint() {
+            return point;
+        }
+
+        public String getName() {
+            return name;
+        }
     }
 }
