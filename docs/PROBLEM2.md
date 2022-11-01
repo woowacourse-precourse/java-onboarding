@@ -21,3 +21,12 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+
+## 기능 목록
+- [x] Code class 생성
+- [x] cryptogram을 ArrayList로 변경
+- [x] code 중복 제거 메서드 구현 
+- [x] 중복 제거 완료된 ArrayList String으로 반환
+- [x] Decoder class 생성 (Code 메서드 호출)
+- [x] solution에서 Decoder 메서드 호출
