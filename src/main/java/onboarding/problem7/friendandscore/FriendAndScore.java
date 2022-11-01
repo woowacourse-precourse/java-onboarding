@@ -6,6 +6,7 @@ import onboarding.problem7.wrapper.User;
 
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public class FriendAndScore {
@@ -37,5 +38,12 @@ public class FriendAndScore {
         set.addAll(friendsOfUserFriends);
         set.addAll(visitorsOfNotFriendOfUser);
         return List.copyOf(set);
+    }
+    public Map<User, Integer> mapNewFriendAndScore(List<User> friendsOfUserFriends, List<User> visitorsOfNotFriendOfUser) {
+        List<User> newFriend = addTwoListsWithoutDuplicate(friendsOfUserFriends, visitorsOfNotFriendOfUser);
+        FriendAndScoreMapper newFriendAndScoreMapper = new FriendAndScoreMapper(newFriend);
+        newFriendAndScoreMapper.calculateScoreOfNewFriendWith(friendsOfUserFriends, FRIENDS_OF_FRIEND_POINT);
+        newFriendAndScoreMapper.calculateScoreOfNewFriendWith(visitorsOfNotFriendOfUser, VISITORS_POINT);
+        return newFriendAndScoreMapper.getFriendAndScore();
     }
 }
