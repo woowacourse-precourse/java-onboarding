@@ -11,7 +11,7 @@ public class Problem2 {
         return s.replaceAll("(([a-zA-Z\\d])\\2+)", "");
     }
 
-    public static String decrypt(String cryptogram) {
+    private static String decrypt(String cryptogram) {
         String deduplication = deduplicate(cryptogram);
 
         if(deduplication.equals(cryptogram)){
