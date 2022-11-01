@@ -8,7 +8,6 @@ public class Problem7 {
         HashMap<String, Integer> scoreMap = new HashMap<>();
 
         mapScoreByCommonFriend(user, friendSetMap, scoreMap);
-        mapScoreByVisit(visitors, scoreMap);
 
         List<String> answer = Collections.emptyList();
 
@@ -48,12 +47,4 @@ public class Problem7 {
         }
 
     }
-
-    private static void mapScoreByVisit(List<String> visitors, HashMap<String, Integer> scoreMap) {
-        for (String visitor : visitors) {
-            int score = scoreMap.getOrDefault(visitor, 0);
-            scoreMap.put(visitor, score + 1);
-        }
-    }
-
 }
