@@ -11,16 +11,8 @@ public class Problem6 {
 		List<String> answer = new ArrayList<>();
 		List<String> nicknames = collectNicknames(forms);
 
-		for (List info : forms) {
-			String email = (String)info.get(0);
-			String nickname = (String)info.get(1);
-			nicknames.remove(nickname);
-			if (checkNickname(nickname, nicknames)) {
-				answer.add(email);
-			}
-			nicknames.add(nickname);
-		}
-		
+		answer = makeDuplicateList(forms, nicknames);
+
 		answer = processData(answer);
 		return answer;
 	}
@@ -33,8 +25,22 @@ public class Problem6 {
 		return collection;
 	}
 
-	private static boolean checkNickname(String name, List<String> comparedNames) {
+	private static List<String> makeDuplicateList(List<List<String>> data, List<String> nicknames) {
+		List<String> temp = new ArrayList<>();
 
+		for (List info : data) {
+			String email = (String)info.get(0);
+			String nickname = (String)info.get(1);
+			nicknames.remove(nickname);
+			if (checkNickname(nickname, nicknames)) {
+				temp.add(email);
+			}
+			nicknames.add(nickname);
+		}
+		return temp;
+	}
+
+	private static boolean checkNickname(String name, List<String> comparedNames) {
 		for (String target : comparedNames) {
 			for (int i = 0; i < name.length() - 1; i++) {
 				if (target.contains(name.substring(i, i + 2))) {
