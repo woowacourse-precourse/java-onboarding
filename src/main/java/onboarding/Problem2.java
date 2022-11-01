@@ -34,4 +34,17 @@ public class Problem2 {
         }
         return true;
     }
+
+    // 연속적으로 중복된 문자를 모두 삭제하는 기능
+    private static void removeContinued(List<String> subCryptograms, int index) {
+        String startOverlap = subCryptograms.get(index);
+        int nextIndex = index++;
+        while (true) {
+            if (nextIndex < subCryptograms.size() && startOverlap.equals(subCryptograms.get(nextIndex))) {
+                subCryptograms.remove(nextIndex);
+            } else {
+                break;
+            }
+        }
+    }
 }
