@@ -16,14 +16,17 @@ import java.util.stream.Collectors;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+
         List<String> friendOfUser = findFriendOfUser(user, friends);
-        List<String> recommendedFriends = getRecommendedFriends(findFriendOfFriend(friends, friendOfUser), visitors);
+        List<String> recommendedFriends = createRecommendationList(findFriendOfFriend(friends, friendOfUser), visitors);
         friendOfUser.add(user);
         recommendedFriends.removeAll(friendOfUser);
-        HashMap<String, Integer> recommendedFriendScore = getRecommendedFriendScore(recommendedFriends);
-        recommendedFriendScore = plusFriendOfFriend(recommendedFriendScore, findFriendOfFriend(friends, friendOfUser));
-        recommendedFriendScore = plusVisitors(recommendedFriendScore, visitors);
-        answer = getFinalRecommendation(recommendedFriendScore);
+
+        HashMap<String, Integer> score = createScoreHashMap(recommendedFriends);
+        score = plusFriendOfFriend(score, findFriendOfFriend(friends, friendOfUser));
+        score = plusVisitors(score, visitors);
+        answer = getFinalRecommendation(score);
+
         return answer;
     }
 
@@ -45,40 +48,40 @@ public class Problem7 {
         return friendOfFriend.stream().distinct().collect(Collectors.toList());
     }
 
-    private static List<String> getRecommendedFriends(List<String> friendOfFriend, List<String> visitors) {
-        List<String> recommendedFriends = new ArrayList<>();
-        recommendedFriends.addAll(friendOfFriend);
-        recommendedFriends.addAll(visitors);
-        return recommendedFriends.stream().distinct().collect(Collectors.toList());
+    private static List<String> createRecommendationList(List<String> friendOfFriend, List<String> visitors) {
+        List<String> recommendations = new ArrayList<>();
+        recommendations.addAll(friendOfFriend);
+        recommendations.addAll(visitors);
+        return recommendations.stream().distinct().collect(Collectors.toList());
     }
 
-    private static HashMap<String, Integer> getRecommendedFriendScore(List<String> recommendedFriends) {
-        HashMap<String, Integer> recommendedFriendScore = new HashMap<>();
-        for (String recommendedFriend : recommendedFriends) {
-            recommendedFriendScore.put(recommendedFriend, 0);
+    private static HashMap<String, Integer> createScoreHashMap(List<String> recommendations) {
+        HashMap<String, Integer> score = new HashMap<>();
+        for (String recommendedFriend : recommendations) {
+            score.put(recommendedFriend, 0);
         }
-        return recommendedFriendScore;
+        return score;
     }
 
-    private static HashMap<String, Integer> plusFriendOfFriend(HashMap<String, Integer> recommendedFriendScore, List<String> friendOfFriends) {
+    private static HashMap<String, Integer> plusFriendOfFriend(HashMap<String, Integer> score, List<String> friendOfFriends) {
         for (String friendOfFriend : friendOfFriends) {
-            if (recommendedFriendScore.containsKey(friendOfFriend))
-                recommendedFriendScore.replace(friendOfFriend, recommendedFriendScore.get(friendOfFriend) + 10);
+            if (score.containsKey(friendOfFriend))
+                score.replace(friendOfFriend, score.get(friendOfFriend) + 10);
         }
-        return recommendedFriendScore;
+        return score;
     }
 
-    private static HashMap<String, Integer> plusVisitors(HashMap<String, Integer> recommendFriendScore, List<String> visitors) {
+    private static HashMap<String, Integer> plusVisitors(HashMap<String, Integer> score, List<String> visitors) {
         for (String visitor : visitors) {
-            if (recommendFriendScore.containsKey(visitor)) {
-                recommendFriendScore.replace(visitor, recommendFriendScore.get(visitor) + 1);
+            if (score.containsKey(visitor)) {
+                score.replace(visitor, score.get(visitor) + 1);
             }
         }
-        return recommendFriendScore;
+        return score;
     }
 
-    private static List<String> getFinalRecommendation(HashMap<String, Integer> recommendedFriendScore) {
-        HashMap<String, Integer> sortedRecommendation = sortRecommendation(recommendedFriendScore);
+    private static List<String> getFinalRecommendation(HashMap<String, Integer> score) {
+        HashMap<String, Integer> sortedRecommendation = sortRecommendation(score);
 
         List<String> finalRecommendation = new ArrayList<>();
         for (String recommendation : sortedRecommendation.keySet())
@@ -86,8 +89,8 @@ public class Problem7 {
         return finalRecommendation;
     }
 
-    private static HashMap<String, Integer> sortRecommendation(HashMap<String, Integer> recommendationScore) {
-        HashMap<String, Integer> sortedRecommendation = recommendationScore.entrySet()
+    private static HashMap<String, Integer> sortRecommendation(HashMap<String, Integer> score) {
+        HashMap<String, Integer> sortedRecommendation = score.entrySet()
                 .stream().sorted((x, y) -> y.getValue().compareTo(x.getValue()))
                 .collect(Collectors.toMap(
                         Map.Entry::getKey,
