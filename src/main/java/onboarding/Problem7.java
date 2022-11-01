@@ -12,10 +12,13 @@ import java.util.List;
  */
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> friendOfUser = makeListOfFriendsUser(user, friends);
+        List<String> friendsOfUser = makeListOfFriendsUser(user, friends);
 
+        HashMap<String, Integer> recommendScore = new HashMap<>();
+        recommendScore = getScoreByKnowEachOther(user, friends, friendsOfUser, recommendScore);
 
-        return friendOfUser;
+        System.out.println(recommendScore);
+        return friendsOfUser;
     }
 
     public static List<String> makeListOfFriendsUser(String user, List<List<String>> friends) {
@@ -31,4 +34,24 @@ public class Problem7 {
         return friendsOfUser;
     }
 
+    public static HashMap<String, Integer> getScoreByKnowEachOther(String user, List<List<String>> friends, List<String> friendsOfUser, HashMap<String, Integer> recommendScore) {
+        for (List<String> relation : friends) {
+            String friendA = relation.get(0);
+            String friendB = relation.get(1);
+
+            if (friendA.equals(user) || friendB.equals(user)) continue;
+
+            if (friendsOfUser.contains(friendA) && !recommendScore.containsKey(friendB))
+                recommendScore.put(friendB, 10);
+            if (friendsOfUser.contains(friendA) && recommendScore.containsKey(friendB))
+                recommendScore.put(friendB, recommendScore.get(friendB) + 10);
+
+            if (friendsOfUser.contains(friendB) && !recommendScore.containsKey(friendA))
+                recommendScore.put(friendA, 10);
+            if (friendsOfUser.contains(friendB) && recommendScore.containsKey(friendA))
+                recommendScore.put(friendA, recommendScore.get(friendA) + 10);
+        }
+
+        return recommendScore;
+    }
 }
