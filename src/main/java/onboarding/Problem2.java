@@ -11,6 +11,7 @@ public class Problem2 {
     private static final int INPUT_MINIMUM_LENGTH = 1;
     private static final int INPUT_MAXIMUM_LENGTH = 1000;
     private static Stack<String> deletedCryptogram = new Stack<>();
+    private static String sameAlphabet = "";
 
     public static String solution(String cryptogram) {
         checkExceptionOfCryptogram(cryptogram);
@@ -49,8 +50,11 @@ public class Problem2 {
     }
 
     private static void encryptCryptogram(String alphabet){
-        if(!deletedCryptogram.isEmpty() &&deletedCryptogram.peek().equals(alphabet)) {
+        if(!deletedCryptogram.isEmpty() && deletedCryptogram.peek().equals(alphabet)) {
             deletedCryptogram.pop();
+            sameAlphabet = alphabet;
+        }
+        if(sameAlphabet.equals(alphabet)){
             return;
         }
         deletedCryptogram.push(alphabet);
