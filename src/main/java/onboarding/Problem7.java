@@ -87,7 +87,7 @@ public class Problem7 {
             }
         }
 
-
+        flag = true;
 
         return answer;
     }
