@@ -3,29 +3,43 @@ package onboarding;
 public class Problem2 {
 	public static String solution(String cryptogram) {
 		char[] cryptogramArray = cryptogram.toCharArray();
-		int outputIndex = getOutputArray(cryptogramArray);
-
-		return getAnswer(cryptogramArray, outputIndex);
+		while (checkContinuousSameLetter(cryptogramArray)) {
+			cryptogramArray = removeContinuousSameLetter(cryptogramArray);
+		}
+		return new String(cryptogramArray).trim();
 	}
 
-	private static int getOutputArray(char[] cryptogramArray) {
-		int outputIndex = 1;
-		char checkingChar = cryptogramArray[0];
+	private static boolean checkContinuousSameLetter(char[] cryptogramArray) {
 		for (int i = 1; i < cryptogramArray.length; i++) {
-			if (outputIndex > 0 && cryptogramArray[i] == cryptogramArray[outputIndex - 1]) {
-				checkingChar = cryptogramArray[outputIndex - 1];
-				while (outputIndex > 0 && cryptogramArray[outputIndex - 1] == checkingChar) {
-					outputIndex--;
-				}
-			} else if (cryptogramArray[i] == checkingChar) {
-			} else {
-				cryptogramArray[outputIndex++] = cryptogramArray[i];
+			if (cryptogramArray[i] == cryptogramArray[i - 1]) {
+				return true;
 			}
 		}
-		return outputIndex;
+		return false;
 	}
 
-	private static String getAnswer(char[] cryptogramArray, int outputIndex) {
-		return new String(cryptogramArray, 0, outputIndex);
+	private static char[] removeContinuousSameLetter(char[] cryptogramArray) {
+		int outputIndex = 1;
+		char[] outputArray = new char[cryptogramArray.length];
+		boolean isSameLetter = false;
+		for (int i = 1; i < cryptogramArray.length; i++) {
+			if (cryptogramArray[i] == cryptogramArray[i - 1]) {
+				isSameLetter = true;
+			} else {
+				if (isSameLetter) {
+					isSameLetter = false;
+				} else {
+					outputArray[outputIndex] = cryptogramArray[i - 1];
+					outputIndex++;
+				}
+			}
+		}
+		if (!isSameLetter) {
+			outputArray[outputIndex] = cryptogramArray[cryptogramArray.length - 1];
+			outputIndex++;
+		}
+		char[] result = new char[outputIndex];
+		System.arraycopy(outputArray, 0, result, 0, outputIndex);
+		return result;
 	}
 }
