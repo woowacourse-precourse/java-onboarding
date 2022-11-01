@@ -12,6 +12,7 @@ public class Problem7 {
         initUserFriends(user, friends);
 
         getCofriends(friends);
+        getVisitors(visitors);
 
         return answer;
     }
@@ -35,6 +36,15 @@ public class Problem7 {
             if (userFriends.contains(friend.get(1))) {
                 scores.put(friend.get(0), scores.getOrDefault(friend.get(0), 0) + 10);
             }
+        }
+    }
+
+    private static void getVisitors(List<String> visitors) {
+        for (String visitor : visitors) {
+            if (userFriends.contains(visitor)) {
+                continue;
+            }
+            scores.put(visitor, scores.getOrDefault(visitor, 0) + 1);
         }
     }
 }
