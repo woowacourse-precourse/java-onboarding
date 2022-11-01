@@ -74,4 +74,15 @@ public class Friend {
             }
         }
     }
+
+    public List<String> sortScore() {
+        List<String> names = new ArrayList<>(score.keySet());
+        names.sort((o1, o2) -> {
+            if (score.get(o1) - score.get(o2) == 0) {
+                return o1.compareTo(o2);
+            }
+            return score.get(o2).compareTo(score.get(o1));
+        });
+        return names;
+    }
 }
