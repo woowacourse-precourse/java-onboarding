@@ -30,6 +30,6 @@ public class Problem5 {
         return answer;
     }
     boolean isViolatedRestrictions(int money){
-        return !(1 <= money && money <= 10_000);
+        return !(1 <= money && money <= 10_000_000);
     }
 }
