@@ -4,7 +4,23 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
+        List<HashMap<String, Object>> list = new ArrayList<>();
+
+        // 추천할 수 있는 친구 목록
+        Map<String, Integer> friendMap = friendLists(user, friends, visitors);
+
+        // 포인트 적립
+        friendMap = setPoint(friends, visitors, friendMap);
+
+        // 정렬
+        list = sorted(list, friendMap);
+
+        for(HashMap<String, Object> o : list) {
+            if(answer.size() > 5) break;
+            if((Integer) o.get("point") == 0) continue;
+            answer.add((String) o.get("name"));
+        }
         return answer;
     }
 
