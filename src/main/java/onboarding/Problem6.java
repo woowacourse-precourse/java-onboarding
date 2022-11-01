@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
@@ -45,6 +46,11 @@ public class Problem6 {
 
     public static List<String> setToList(HashSet<String> set){
         return new ArrayList<>(set);
+    }
+
+    public static List<String> sortList(List<String> list){
+        Collections.sort(list, String.CASE_INSENSITIVE_ORDER);
+        return list;
     }
 
     public static List<String> solution(List<List<String>> forms) {
