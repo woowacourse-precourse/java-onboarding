@@ -26,6 +26,9 @@ public class Problem7 {
         friendList = userToFriendsMap.get(user);
         calculateFriendScore(user);
 
+        /* [요구] 사용자의 타임 라인에 방문한 횟수 점수 계산 */
+        calculateVisitScore(visitors);
+
         List<String> answer = Collections.emptyList();
         return answer;
     }
@@ -66,4 +69,16 @@ public class Problem7 {
         });
     }
 
+    public static void calculateVisitScore(List<String> visitors) {
+        for (String visitor : visitors) {
+            if (friendList.contains(visitor)) { // 사용자와 친구인 유저 제외
+                continue;
+            }
+            if (userToScoreMap.containsKey(visitor)) {
+                userToScoreMap.put(visitor, userToScoreMap.get(visitor) + visitScore);
+            } else {
+                userToScoreMap.put(visitor, visitScore);
+            }
+        }
+    }
 }
