@@ -5,8 +5,9 @@ import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        List<String> userFriendsList = getUserFriendsList(user, friends);
+        HashMap<String, Integer> score = getScore(friends, visitors, userFriendsList, user);
+        return getSortedScore(score);
     }
 
     private static List<String> getUserFriendsList(String user, List<List<String>> friends) {
