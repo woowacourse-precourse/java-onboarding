@@ -15,9 +15,6 @@ public class Problem2 {
 
     public static boolean[] findRedundantPosition(String target){
         boolean[] isRedundant = new boolean[target.length()];
-        for(int i = 0; i < isRedundant.length; i++){ //initialize array
-            isRedundant[i] = false;
-        }
         for(int currentPosition = 0; currentPosition < target.length() - 1; currentPosition++){
             int currentCharacter = target.charAt(currentPosition);
             int nextCharacter = target.charAt(currentPosition + 1);
