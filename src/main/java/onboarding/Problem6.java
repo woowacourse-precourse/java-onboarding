@@ -19,8 +19,8 @@ public class Problem6 {
 	public static final int MAX_NICKNAME_SIZE = 20;
 	public static final String KOREAN = "^[가-힣]*$";
 	public static final String TOO_MANY_CREW = "크루의 수가 너무 많습니다.";
-	public static final String TOO_LONG_EMAIL = "이메일이 너무 깁니다.";
-	public static final String TOO_LONG_NICKNAME = "닉네임이 너무 깁니다.";
+	public static final String TOO_LONG_OR_SHORT_EMAIL = "이메일이 너무 길거나 짧습니다.";
+	public static final String TOO_LONG_OR_SHORT_NICKNAME = "닉네임이 너무 길거나 짧습니다.";
 	public static final String NICKNAME_CAN_ONLY_KOREAN = "닉네임에는 한글만 들어갈 수 있습니다.";
 
 	public static List<String> solution(List<List<String>> forms) {
@@ -49,12 +49,12 @@ public class Problem6 {
 	private static void validateForm(List<String> form) {
 		String email = form.get(0);
 		if (isRightLengthOfEmail(email)) {
-			throw new IllegalArgumentException(TOO_LONG_EMAIL);
+			throw new IllegalArgumentException(TOO_LONG_OR_SHORT_EMAIL);
 		}
 
 		String nickname = form.get(1);
 		if (isRightLengthOfNickname(nickname)) {
-			throw new IllegalArgumentException(TOO_LONG_NICKNAME);
+			throw new IllegalArgumentException(TOO_LONG_OR_SHORT_NICKNAME);
 		}
 
 		if (isKorean(nickname)) {
