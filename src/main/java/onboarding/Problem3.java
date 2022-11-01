@@ -3,6 +3,10 @@ package onboarding;
 public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
+        //  For-Loop : 1부터 입력된 숫자까지 차례대로 확인하는 반복문
+        for (int i = 1; i <= number; i++) {
+            answer += checkNumber(i, 0);
+        }
         return answer;
     }
 
