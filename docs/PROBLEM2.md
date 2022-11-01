@@ -21,3 +21,6 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+### 기능 목록
+1. 한번의 roop를 돌면서, 연속되지 않은 문자만 추가하여 반환하는 기능 : roop
