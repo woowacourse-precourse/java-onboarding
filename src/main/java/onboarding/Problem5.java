@@ -10,7 +10,7 @@ public class Problem5 {
         for (int i = 0; i < 9; i++) {
             answer.add(0);
         }
-
+        // While문을 돌면서 지정 화폐가치보다 크다면 무조건 해당 if문을 통해 money를 -하고, 해당 배열값에 1을 추가
         while (money > 0) {
             if (money >= 50000) {
                 money -= 50000;

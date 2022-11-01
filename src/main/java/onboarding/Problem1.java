@@ -7,7 +7,7 @@ class Problem1 {
         if (check(pobi.get(0),pobi.get(1)) || check(crong.get(0),crong.get(1))) {
             return -1;
         }
-
+        
         int pobi_pv = bigger(plus(pobi.get(0)), plus(pobi.get(1)));
         int pobi_mv = bigger(multiple(pobi.get(1)), multiple(pobi.get(1)));
         int pobi_value = bigger(pobi_mv, pobi_pv);
@@ -28,7 +28,7 @@ class Problem1 {
 
         return answer;
     }
-
+    /** 두 값 더하기 */
     public static int plus(Integer page) {
         String s_page = Integer.toString(page);
         int value = 0;
@@ -38,7 +38,7 @@ class Problem1 {
         }
         return value;
     }
-
+    /** 두 값 곱하기 */
     public static int multiple(Integer page) {
         String s_page = Integer.toString(page);
         int value = 1;
@@ -48,7 +48,7 @@ class Problem1 {
         }
         return value;
     }
-
+    /** 대소 비교(max 메서드가 안먹혀서 만든 함수) */
     public static int bigger(Integer v1, Integer v2) {
         if (v1 > v2) {
             return v1;

@@ -8,6 +8,7 @@ public class Problem4 {
         String[] crypto;
         crypto = word.split("");
         String answer = "";
+        // 아스키코드로 암호문 해독
         for (int i = 0; i < crypto.length; i++) {
             if (crypto[i].equals(" ")){
                 answer += " ";
