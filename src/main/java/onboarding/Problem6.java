@@ -14,8 +14,7 @@ public class Problem6 {
 
 	private static boolean checkTwoChar(String str1, String str2) {
 		int flag;
-		int range = findMin(str1.length(), str2.length());
-		for (int i = 0; i + 1 < range; i++) {
+		for (int i = 0; i + 1 < str1.length(); i++) {
 			for (int j = 0; j + 1 < str2.length(); j++) {
 				flag = 1;
 				for (int idx = 0; idx < 2; idx++) {
@@ -45,7 +44,6 @@ public class Problem6 {
 	public static List<String> solution(List<List<String>> forms) {
 		int length = forms.size();
 		List<String> answer = new ArrayList<>();
-
 		for (int i = 0; i < length; i++) {
 			if (checkRepeat(i, forms)) {
 				answer.add(forms.get(i).get(0));
