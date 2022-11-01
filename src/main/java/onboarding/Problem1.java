@@ -71,7 +71,7 @@ class Problem1 {
     }
 
     public static boolean checkPageNumberRange(int pageNumber){
-        return (pageNumber > FIRST_PAGE && pageNumber < LAST_PAGE);
+        return (pageNumber >= FIRST_PAGE && pageNumber <= LAST_PAGE);
     }
     public static boolean checkInterval(int leftPageNumber, int rightPageNumber){
         return (rightPageNumber - leftPageNumber == INTERVAL);
