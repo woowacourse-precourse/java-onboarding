@@ -6,15 +6,27 @@ import java.util.stream.Stream;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
+        StringBuilder answer = new StringBuilder();
 
         List<String> arr = Stream.of(word.split("")).collect(Collectors.toList());
 
         for (String a : arr) {
-            System.out.println(isUpper(a.charAt(0)));
+            if (a.equals(" ")) {
+                answer.append(a);
+                continue;
+            }
+            char c = a.charAt(0);
+            answer.append(getOpposite(c));
         }
 
-        return answer;
+        return answer.toString();
+    }
+
+    private static char getOpposite(char c) {
+        if (isUpper(c)) {
+            return (char)(155 - c);
+        }
+        return (char)(219 - c);
     }
 
     private static boolean isUpper(char c) {
