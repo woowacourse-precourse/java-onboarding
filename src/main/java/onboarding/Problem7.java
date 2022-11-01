@@ -54,4 +54,16 @@ public class Problem7 {
     private static boolean isFriendOfFriend(String id, List<String> userFriends) {
     	return userFriends.contains(id);
     }
+    
+    private static Map<String, Integer> calculateScoreVisitors(List<String> visitors, Map<String, Integer> scoreMap){
+    	for(int i = 0; i < visitors.size(); i++) {
+    		if(scoreMap.containsKey(visitors.get(i))) {
+    			scoreMap.replace(visitors.get(i), scoreMap.get(visitors.get(i)) + 1);
+    			continue;
+    		}
+    		scoreMap.put(visitors.get(i), 1);
+    	}
+    	
+    	return scoreMap;
+    }
 }
