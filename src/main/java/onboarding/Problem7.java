@@ -41,4 +41,17 @@ public class Problem7 {
             scores.put(friend, 10);
         }
     }
+
+    public static void visitorScore(String user, Map<String, Set<String>> relations, Map<String, Integer> scores, List<String> visitors)
+    {
+        for (String visitor : visitors) {
+            if (relations.get(user).contains(visitor)) continue;
+
+            if (scores.containsKey(visitor)) {
+                scores.put(visitor, scores.get(visitor) + 1);
+            } else {
+                scores.put(visitor, 1);
+            }
+        }
+    }
 }
