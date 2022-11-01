@@ -1,13 +1,22 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Problem6 {
     private static final int MIN_SIZE = 2;
     public static List<String> solution(List<List<String>> forms) {
+        forms = validateEmail(forms);
         HashSet<String> letters = makeLetterSet(forms);
         TreeSet<String> emails = getDuplicateSet(letters, forms);
         return new ArrayList<>(emails);
+    }
+
+    public static List<List<String>> validateEmail(List<List<String>> forms){ // @email.com을 포함하는 체크
+        return forms.stream().filter(data->data.get(0)
+                .contains("@email.com"))
+                .collect(Collectors.toList());
     }
 
     public static HashSet<String> makeLetterSet(List<List<String>> forms) {
