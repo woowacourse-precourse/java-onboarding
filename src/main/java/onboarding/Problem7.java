@@ -50,7 +50,18 @@ public class Problem7 {
     }
 
     public static Map<String,Integer> friendslist_set(List<String> ls,List<String> user_fri) {
-
+        Map<String,Integer> map = new HashMap<>();
+        for(int i=0; i<ls.size(); i++ ) {
+            for(int j=0; j<user_fri.size(); j++) {
+                if (ls.get(i) == user_fri.get(j)) {
+                    ls.remove(user_fri.get(j));
+                }
+            }
+        }
+        for(int i=0; i<ls.size(); i++) {
+            map.put(ls.get(i),0);
+        }
+        return map;
     }
     public static List<String> get_result(Map<String,Integer> FriendsAndscore_map){
 
