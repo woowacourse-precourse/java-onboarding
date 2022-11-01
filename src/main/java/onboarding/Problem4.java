@@ -4,7 +4,6 @@ public class Problem4 {
     public static String solution(String word) {
         String answer = "";
 
-        //char[] word_arr = word.toCharArray();
         for (int i=0; i<word.length(); i++) {
             char word_ch = word.charAt(i);
             int word_int = (int)word_ch;
