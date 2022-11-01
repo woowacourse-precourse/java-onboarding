@@ -85,12 +85,18 @@ public class Problem7 {
 
         for (int start = 0; start < recomScore.size()-1; start++) {
             int end = 0;
+            List<String> temp = new ArrayList<>();
             for (end = start+1; end < recomScore.size(); end++) {
                 if (recomScore.get(start) != recomScore.get(end)) {
                     end--;
                     break;
                 }
             }
+
+            for (int i = start; i <= end; i ++) {
+                temp.add(recomList.get(i));
+            }
+
         }
 
 
