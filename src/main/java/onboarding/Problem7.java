@@ -10,7 +10,10 @@ public class Problem7 {
     private static final int EXCEPTION = -1;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>(Collections.emptyList());
+        Map<String, Integer> map = new HashMap<>(); // [이름, 점수]
+        Set<String> not_yet_friend = new HashSet<>(); // 사용자와 친구가 아닌 유저들
+        Set<String> already_friend = new HashSet<>(); // 사용자와 이미 친구인 유저들
         return answer;
     }
 
@@ -91,6 +94,33 @@ public class Problem7 {
      * 기능 요구 사항
      * 2. 추천 점수 계산하기
      * */
+
+    private static void recommend_score(List<List<String>> friends, List<String> visitors,
+                                        Map<String, Integer> map, Set<String> not_yet_friend, Set<String> already_friend) {
+
+        // 사용자와 함께 아는 친구 수 * 10점
+        for (List<String> friendList : friends) {
+            for (String friend : already_friend) {
+                if (friendList.contains(friend)) {  // 사용자와 함께 아는 친구가 있으면
+                    String friend_a = friendList.get(0); // friend 리스트의 첫 번째 요소
+                    String friend_b = friendList.get(1); // friend 리스트의 두 번째 요소
+                    if (not_yet_friend.contains(friend_a)) {
+                        map.put(friend_a, map.get(friend_a) + KNOW_WITH_USER); // friend_a 의 점수 + 10
+                    }
+                    if (not_yet_friend.contains(friend_b)) { // user 일수 있기 때문에 if-else가 아닌 if문 두번 사용
+                        map.put(friend_b, map.get(friend_b) + KNOW_WITH_USER); // friend_b 의 점수 + 10
+                    }
+                }
+            }
+        }
+
+        // 유저의 타임라인에 방문한 횟수 * 1점
+        for (String visitor : visitors) {
+            if (not_yet_friend.contains(visitor)) {
+                map.put(visitor, map.get(visitor) + VISIT_TIIMELIME_SCORE); // visitor 의 점수 + 1
+            }
+        }
+    }
 
     /*
      * 기능 요구 사항
