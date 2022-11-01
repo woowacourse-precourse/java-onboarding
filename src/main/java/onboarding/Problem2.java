@@ -9,9 +9,6 @@ public class Problem2 {
         if(cryptogram.length()<1 || 1000<cryptogram.length() )
             return "cryptogram은 길이가 1 이상 1000 이하인 문자열이어야 합니다.";
 
-        if(cryptogram.length()<97 || 122<cryptogram.length() )
-            return "cryptogram은 알파벳 소문자로만 이루어져야 합니다.";
-
         while(true) {
             for(int i=0; i<result.length(); i++) {
                 if(i==0 &&result.charAt(i) != result.charAt(i+1)) //i가 0일때
