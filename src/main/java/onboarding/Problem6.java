@@ -1,10 +1,34 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
-        return answer;
+        if(forms.size() < 1 || forms.size() > 10000) {
+            return null;
+        }
+        List<String> emailList = new ArrayList<>();
+        for (int i = 0; i<forms.size(); i++) {
+            String str = forms.get(i).get(1);
+            for (int j = 0; j<forms.size(); j++) {
+                if(i == j) continue;
+                List<String> jStringList = forms.get(j);
+                for (int k = 0; k < str.length()-1; k++) {
+                    String checkStr = str.substring(k, k+2);
+                    if (jStringList.get(1).contains(checkStr)) {
+                        emailList.add(jStringList.get(0));
+                    }
+                }
+            }
+        }
+        List<String> resultList = emailList.stream().distinct().collect(Collectors.toList());
+        resultList.sort(Comparator.naturalOrder());
+        return resultList;
+//        return answer;
     }
 }
