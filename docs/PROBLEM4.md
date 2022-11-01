@@ -19,3 +19,20 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+### 기능 조건
+1. 대문자 -> 대문자 변환 - 아스키코드 활용
+2. 소문자 -> 소문자 변환 - 아스키코드 활용
+3. 알파벳 외의 문자는 변환하지 않는다.
+
+### 기능 구현
+1. 대문자 변환위한 HashMap - upAlphaDictionary
+2. 소문자 변환위한 HashMap - lowAlphaDictionary
+3. 각 HashMap 초기화 - initAlphabetDictionary()
+4. 문자열 charAt으로 읽으며 알파벳인 경우에만 변환 - convertString()
+
+### 고려 사항
+1. 문자열 변환을 위해서 매번 알파벳에 해당되는 아스키 코드 변환 사용 x
+2. HashMap에 초기화하여 O(1)의 시간복잡도로 접근
+3. 1000이하의 문자열에 대하여 외부 반복(iter) 사용해도 충분
+
