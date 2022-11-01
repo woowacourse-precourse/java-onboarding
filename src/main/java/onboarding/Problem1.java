@@ -38,22 +38,13 @@ class Problem1 {
         return ((leftPage>1 && rightPage<400) && (rightPage-leftPage==1) && (leftPage % 2 ==1));
     }
 
-    // 정수를 넣었을 때 각 자리를 배열로 리턴해주는 함수
-    static int[] makeNumToArray(int number){
-        String string = Integer.toString(number);
-        int [] array = new int[string.length()];
-        for (int i=0; i<string.length(); i++ ){
-            array[i] = string.charAt(i) - '0';
-        }
-        return array;
-    }
     //makeNumToArray를 사용하여 더한수와 곱한수중 최댓값을 리턴해주는 함수
     static int CompareMultAndAdd(int pageNum){
         int sumNum=0;
         int mulNum=1;
-        int [] arr= makeNumToArray(pageNum);
+        int [] arr= NumAndArray.makeNumToArray(pageNum);
 
-        for(int i=0; i<makeNumToArray(pageNum).length;i++ ){
+        for(int i=0; i<arr.length;i++ ){
             sumNum += arr[i];
             mulNum *= arr[i];
         };
@@ -69,6 +60,16 @@ class Problem1 {
         return 0;
     }
 
-
+}
+class NumAndArray{
+    // 정수를 넣었을 때 각 자리를 배열로 리턴해주는 함수
+    static int[] makeNumToArray(int number) {
+        String string = Integer.toString(number);
+        int [] array = new int[string.length()];
+        for (int i=0; i<string.length(); i++ ){
+            array[i] = string.charAt(i) - '0';
+        }
+        return array;
+    }
 
 }
