@@ -19,8 +19,14 @@ public class Problem7 {
         List<String> knowEachOtherFriends = knowEachOtherOfFriends(friends, findUserFriends, user); // 친구의 친구 목록
         List<String> excludeFriendInVisitors = excludeFriendInVisitors(visitors, findUserFriends); // 방문자에서 이미 친구를 제외한 목록
 
-        List<String> duplicateEachOther = knowEachOtherFriends.stream().distinct().collect(Collectors.toList()); // knowEachOtherFriends 중복 제거
-        List<String> duplicateVisitor = excludeFriendInVisitors.stream().distinct().collect(Collectors.toList()); // excludeFriendInVisitors 중복 제거
+        List<String> duplicateEachOther = knowEachOtherFriends
+                .stream()
+                .distinct()
+                .collect(Collectors.toList()); // knowEachOtherFriends 중복 제거
+        List<String> duplicateVisitor = excludeFriendInVisitors
+                .stream()
+                .distinct()
+                .collect(Collectors.toList()); // excludeFriendInVisitors 중복 제거
 
         for (String duplicate : duplicateEachOther) { // 친구의 친구 가중치 반환
             int frequency = Collections.frequency(knowEachOtherFriends, duplicate);
