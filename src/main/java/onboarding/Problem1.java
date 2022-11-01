@@ -44,5 +44,18 @@ class Problem1 {
         if (pages.size() == PAGES_SIZE) return true;
         return false;
     }
+
+    private static boolean isValidPage(List<Integer> pages){
+        if (! isValidSize(pages)) return false;
+
+        int left = pages.get(0);
+        int right = pages.get(1);
+
+        if (!(isInRange(left) && isInRange(right))) return false;
+        if (! isSequential(left, right)) return false;
+        if (! isOdd(left)) return false;
+        if (isOdd(right)) return false;
+        return true;
+    }
     }
 }
