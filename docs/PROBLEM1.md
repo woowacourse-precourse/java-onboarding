@@ -1,7 +1,6 @@
+# 문제 1.
 
-**Problem 1.**
-
----
+### **Problem 1.**
 
 **문제 기능 요구 사항**
 
@@ -25,7 +24,7 @@
 1. User 클래스를 생성해 pobi, crong 객체를 생성하고자 하였다.
 2. User 객체를 생성하기 전 예외처리 메서드들을 만들어 위의 유효성 검사를 만족하지 않는 경우 -1을 리턴하도록 하였다.
 
-``` JAVA
+```java
 public static int pageException(List<Integer> usr1, List<Integer> usr2) {
   if (usr1.size() != 2 || usr2.size() != 2) {
     return -1;
@@ -49,3 +48,51 @@ public static int pageException(List<Integer> usr1, List<Integer> usr2) {
   3. getDigit() 메서드에서는 숫자의 자릿수들을 분리해 배열에 저장한다.
 2. pobi의 최대값과 crong의 최댓값을 비교하여 올바른 value를 return 한다.
 
+**예외케이스 구현**
+
+1. 입력 문자열의 길이가 2가 아닌 경우. ( 빈 리스트, 원소 1개, 3개 등)
+2. 왼쪽 페이지와 오른쪽 페이지 차이가 1이 아닌 경우.
+3. 1쪽, 400 쪽이 입력으로 들어오는 경우.
+4. 쪽수 범위를 만족하지 않는 경우.
+
+``` JAVA
+void myCaseForPro1() {
+    int result = -1;
+    List<Integer> pobi = List.of(99, 102, 10);
+    List<Integer> crong = List.of(211, 212, 100);
+
+    List<Integer> pobi1 = List.of(99, 103);
+    List<Integer> crong1 = List.of(211, 213);
+
+    List<Integer> pobi2 = List.of(92, 103);
+    List<Integer> crong2 = List.of(212, 213);
+
+    List<Integer> pobi3 = List.of(92, 102);
+    List<Integer> crong3 = List.of(212, 212);
+
+    List<Integer> pobi4 = List.of(1, 2);
+    List<Integer> crong4 = List.of(399, 400);
+
+    List<Integer> pobi5 = List.of(0, 1);
+    List<Integer> crong5 = List.of(401, 402);
+
+    List<Integer> pobi6 = List.of(-389, -390);
+    List<Integer> crong6 = List.of(-389, -390);
+
+    List<Integer> pobi7 = List.of(389);
+    List<Integer> crong7 = List.of(399);
+
+    List<Integer> pobi8 = new ArrayList<>();
+    List<Integer> crong8 = List.of(399);
+
+assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+assertThat(Problem1.solution(pobi1, crong1)).isEqualTo(result);
+assertThat(Problem1.solution(pobi2, crong2)).isEqualTo(result);
+assertThat(Problem1.solution(pobi3, crong3)).isEqualTo(result);
+assertThat(Problem1.solution(pobi4, crong4)).isEqualTo(result);
+assertThat(Problem1.solution(pobi5, crong5)).isEqualTo(result);
+assertThat(Problem1.solution(pobi6, crong6)).isEqualTo(result);
+assertThat(Problem1.solution(pobi7, crong7)).isEqualTo(result);
+assertThat(Problem1.solution(pobi8, crong8)).isEqualTo(result);
+}
+```
