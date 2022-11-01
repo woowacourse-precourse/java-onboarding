@@ -32,7 +32,7 @@ public class Problem7 {
 
         List<String> allId = new ArrayList<>(recommend.keySet());
         allId.sort((o1, o2) -> {
-            Integer result = recommend.get(o2)-recommend.get(o1);
+            int result = recommend.get(o2)-recommend.get(o1);
             result = (result==0) ? o1.compareTo(o2) : result;
             return result;
         });
@@ -49,7 +49,7 @@ public class Problem7 {
 
     public static void removeAlreadyFriendsOrHimself(Map<String, List<String>> relation, Map<String, Integer> recommend, String user) {
         for(String friend : relation.get(user)){
-            if(recommend.containsKey(friend)) recommend.remove(friend);
+            recommend.remove(friend);
         }
         recommend.remove(user);
     }
