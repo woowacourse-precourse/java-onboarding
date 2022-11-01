@@ -22,6 +22,7 @@ public class Problem7 {
 
     private void fillFriendInfoTable(List<List<String>> friends){
         for(List<String> friendInfo : friends){
+            if(friendInfo.get(USER_IDX)==friendInfo.get(FRIEND_IDX)) continue;
             makeAandBFriend(friendInfo.get(USER_IDX), friendInfo.get(FRIEND_IDX));
             makeAandBFriend(friendInfo.get(FRIEND_IDX), friendInfo.get(USER_IDX));
         }
