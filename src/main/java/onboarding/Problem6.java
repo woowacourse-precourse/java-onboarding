@@ -5,7 +5,15 @@ import java.util.stream.Collectors;
 
 public class Problem6 {
 	public static List<String> solution(List<List<String>> forms) {
-		return Collections.singletonList("");
+		List<String> answer = new ArrayList<>();
+
+		// 이메일들을 모아놓을 set 과 중복체크를 위한 hashMap 설정
+		HashSet<String> emails = new HashSet<>();
+		HashMap<String, String> hashMap = new HashMap<>();
+
+
+
+		return answer;
 	}
 
 //	public static void main(String[] args) {
