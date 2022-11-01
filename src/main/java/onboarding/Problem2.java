@@ -1,26 +1,23 @@
 package onboarding;
 
-import java.util.regex.Pattern;
-
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "";
-        String crypt = cryptogram;
-        int i =0;
-        char dupCrypt = 0;
-        dupCrypt = crypt.charAt(i);
-        /*while(true){
+        String answer = cryptogram;
+        char duplicatedChar;
+        String pattern;
+        int iter = 0;
 
-            if(Pattern.matches(dupCrypt+"{2,}",crypt)){
-                crypt=crypt.replaceAll(dupCrypt+"{2,}","");
+        while(iter<answer.length()-1){
+            duplicatedChar = answer.charAt(iter);
+            if(duplicatedChar == answer.charAt(iter+1)){
+                pattern = duplicatedChar+"{2,}";
+                answer=answer.replaceAll(pattern,"");
+                iter = 0;
             }else{
-                break;
+                iter++;
             }
-        }*/
-        String pattern = "m{2,}";
-        System.out.println(Pattern.matches(pattern,crypt));
-        crypt=crypt.replaceAll("m"+"{2,}","");
-        System.out.println(crypt);
+        }
+
         return answer;
     }
 }
