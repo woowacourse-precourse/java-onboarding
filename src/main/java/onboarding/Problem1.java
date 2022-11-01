@@ -18,6 +18,16 @@ class Problem1 {
         return true;
     }
 
+    public static int getValue(int value) {
+        int sum = 0, mul = 1;
+        while (value > 0) {
+            mul *= value % 10;
+            sum += value % 10;
+            value /= 10;
+        }
+        return Math.max(sum, mul);
+    }
+    
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
