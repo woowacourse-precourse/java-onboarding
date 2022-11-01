@@ -11,9 +11,9 @@ public class Problem2 {
     public static String solution(String cryptogram) {
         Stack<Character> password = new Stack<>();
 
-        char[] cryptogramChar = cryptogram.toCharArray();
+        char[] cryptogramCharArray = cryptogram.toCharArray();
 
-        for (char letter : cryptogramChar) {
+        for (char letter : cryptogramCharArray) {
 
             if (password.isEmpty()) {
                 password.add(letter);
