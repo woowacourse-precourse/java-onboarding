@@ -26,13 +26,19 @@ public class Problem4 {
         }
 
 
-
-
-
-
         String answer = "";
 
-
+        for(int j=0; j<list.size(); j++){
+            if(Character.isUpperCase(list.get(j))) {
+                answer += upperAlphet.get(list.get(j));
+            }
+            else if(Character.isLowerCase(list.get(j))){
+                answer += lowerAlphet.get(list.get(j));
+            }
+            else {
+                answer += list.get(j);
+            }
+        }
         return answer;
     }
 }
