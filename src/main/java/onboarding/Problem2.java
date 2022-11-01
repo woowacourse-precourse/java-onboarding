@@ -2,23 +2,23 @@ package onboarding;
 
 public class Problem2 {
     private static String removeDuplication(String inputString) {
-        String removedString = "";
-        boolean signal = false;
+        String modifiedString = "";
+        int[] arr= new int[inputString.length()];
 
         for (int i = 0; i < inputString.length() - 1; i++) {
             if (inputString.charAt(i) == inputString.charAt(i+1)) {
-                removedString += inputString.substring(0, i);
-                removedString += inputString.substring(i+2);
-                signal = true;
-                break;
+                arr[i] = -1;
+                arr[i+1] = -1;
             }
         }
 
-        if (!signal) {
-            return inputString;
+        for (int j = 0; j < arr.length; j++) {
+            if (arr[j] == 0) {
+                modifiedString += inputString.charAt(j);
+            }
         }
 
-        return removedString;
+        return modifiedString;
     }
 
     public static String solution(String cryptogram) {
