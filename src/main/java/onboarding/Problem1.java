@@ -32,14 +32,15 @@ class Problem1 {
         for (Integer page : user) {
             String pageString = Integer.toString(page);
 
-            int sum = 0;
-            int mul = 1;
-            maxNum = selectOperResult(maxNum, pageString, sum, mul);
+            maxNum = selectOperResult(maxNum, pageString);
         }
         return maxNum;
     }
 
-    private static int selectOperResult(int maxNum, String pageString, int sum, int mul) {
+    private static int selectOperResult(int maxNum, String pageString) {
+
+        int sum = 0;
+        int mul = 1;
         for (char num : pageString.toCharArray()) {
             sum += Character.getNumericValue(num);
             mul *= Character.getNumericValue(num);
