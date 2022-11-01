@@ -11,7 +11,21 @@ public class Problem5 {
 		int sinsa = 50000;
 		int target = 0;
 
+		for (int i = 0; i < 9; i++) {
+			// 화폐별 갯수 기입
+			answer.add(i, money / sinsa);
+			money %= sinsa;
 
+			if (target == 0) {
+				target = 1;
+				sinsa /= 5; // 5로 시작하는 돈 1로
+			} else if (money != 0 && money < 10) {
+				sinsa /= 10; // 1의 자리
+			} else {
+				target = 0;
+				sinsa /= 2; // 1로 시작하는 돈 5로
+			}
+		}
 
         return answer;
     }
