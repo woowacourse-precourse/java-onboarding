@@ -10,9 +10,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 class Problem1 {
-    private static final int LEFT_PAGE_INDEX = 0;
-    private static final int RIGHT_PAGE_INDEX = 1;
-
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         try {
             Pages pobiPages = new Pages(pobi.stream()
