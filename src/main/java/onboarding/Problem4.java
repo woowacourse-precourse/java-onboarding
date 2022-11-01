@@ -5,12 +5,12 @@ import java.util.Map;
 
 public class Problem4 {
     public static String solution(String word) {
-
-        Map<Character, Character> frogMap = reverseFrog();
-        return getAnswer(word,frogMap);
+        Problem4 p4 = new Problem4();
+        Map<Character, Character> frogMap = p4.reverseFrog();
+        return p4.getAnswer(word,frogMap);
     }
 
-    public static Map<Character,Character> reverseFrog(){
+    public Map<Character,Character> reverseFrog(){
         Map<Character,Character> frogMap = new HashMap<>();
         //A=65 a=97
         int reverseCount = 25;
@@ -27,7 +27,7 @@ public class Problem4 {
         return frogMap;
     }
 
-    public  static String getAnswer(String word, Map<Character,Character> frogMap){
+    public String getAnswer(String word, Map<Character,Character> frogMap){
         char[] wordCh = word.toCharArray();
         StringBuilder st = new StringBuilder();
 
