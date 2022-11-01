@@ -66,6 +66,15 @@ class Problem1 {
         if(pobi.get(1) - pobi.get(0) != 1 || crong.get(1) - crong.get(0) != 1){
             return false;
         }
+        for(int i=0; i<2; i++){
+            if(!isValidPage(pobi.get(i)) || !isValidPage(crong.get(i)))
+                return false;
+        }
+        return true;
+    }
+    public static boolean isValidPage(int page){
+        if(page < 1 || page >400)
+            return false;
         return true;
     }
 }
