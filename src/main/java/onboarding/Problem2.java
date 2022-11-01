@@ -4,32 +4,39 @@ public class Problem2 {
 	public static String solution(String cryptogram) {
 		String answer = "";
 
-//		for (int i = 0; i < cryptogram.length(); i++) {
-//			if (cryptogram.indexOf(cryptogram.charAt(i)) == i) {
-//				answer += cryptogram.charAt(i);
-//			}
-//		}
+
 
 		return answer;
 	}
 
-	public static void main(String[] args) {
-		String str = "browoanoommnaon";
-		System.out.println(str.charAt(2));
-		StringBuilder sb = new StringBuilder();
-		int k = 0;
-		char[] chars = str.toCharArray();
+//	public static void main(String args) {
+//		String str = "zyelleyz";
+//		char[] c = str.toCharArray();
+//
+//		int i = 0;
+//		int k = 0;
+//
+//		for (i = 1; i < c.length; i++) {
+//			if (c[i - 1] != c[i]) {
+//				c[k++] = c[i - 1];
+//			} else {
+//				while (i < c.length && c[i - 1] == c[i]) {
+//					i++;
+//				}
+//			}
+//		}
+//
+//		c[k++] = c[i - 1];
+//
+//		String s = new String(c).substring(0, k);
+//
+//		if (k != c.length) {
+//			System.out.println(s);
+//			main(s);
+//		}
+//
+//		System.out.println(s);
+//	}
 
-//	System.out.println(str.indexOf(str.charAt(4)));
 
-		sb.append(str.charAt(0));
-
-		for (int i = 1; i < str.length(); i++) {
-			if (str.charAt(i) != str.charAt(i - 1)) {
-				sb.append(str.charAt(i));
-			}
-		}
-
-		System.out.println(sb);
-	}
 }
