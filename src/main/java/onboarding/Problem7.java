@@ -22,7 +22,7 @@ public class Problem7 {
 		List<String> answer = new ArrayList<>();
 
 		existFriend(user, friends);
-		friendPoint(visitors);
+		visitPoint(visitors);
 
 		return answer;
 	}
@@ -44,7 +44,14 @@ public class Problem7 {
 		}
 	}
 
-	public static void friendPoint(List<String> visitors) {
-
+	/**
+	 * 방문한 친구들 visitors배열 기준으로 +1점씩 point map에 집어넣는 기능이다
+	 * 
+	 * @param visitors
+	 */
+	public static void visitPoint(List<String> visitors) {
+		for(String user : visitors) {
+			point.put(user, point.getOrDefault(user, 0)+1);
+		}
 	}
 }
