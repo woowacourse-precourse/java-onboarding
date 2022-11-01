@@ -1,8 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  * 기능 목록
@@ -23,27 +21,20 @@ public class Problem6 {
     }
 
     static List<String> findDuplEmail(List<List<String>> forms) {
-        List<String> emails = new ArrayList<>();
-        boolean[] isDupl = new boolean[10000];
+        Set<String> emails = new HashSet<>();
         for (int i = 0; i < forms.size() - 1; i++) {
             for (int j = i + 1; j < forms.size(); j++) {
                 List<String> cur = forms.get(i), nxt = forms.get(j);
-                if (isDupl[j])
+                if (emails.contains(nxt.get(0)))
                     continue;
                 if (!isDuplName(cur.get(1), nxt.get(1)))
                     continue;
 
-                if (!isDupl[i]) {
-                    emails.add(cur.get(0));
-                    isDupl[i] = true;
-                }
-                if (!isDupl[j]) {
-                    emails.add(nxt.get(0));
-                    isDupl[j] = true;
-                }
+                emails.add(cur.get(0));
+                emails.add(nxt.get(0));
             }
         }
-        return emails;
+        return new ArrayList<>(emails);
     }
 
     public static List<String> solution(List<List<String>> forms) {
