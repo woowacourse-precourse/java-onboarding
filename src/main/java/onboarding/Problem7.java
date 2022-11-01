@@ -11,11 +11,13 @@ import java.util.stream.Collectors;
 
 public class Problem7 {
 
-  private static final Map<String, Integer> scoreMap = new HashMap<>();
-  private static final Set<String> myFriends = new HashSet<>();
+  private static Map<String, Integer> scoreMap;
+  private static Set<String> myFriends;
 
   public static List<String> solution(String user, List<List<String>> friends,
       List<String> visitors) {
+    myFriends = new HashSet<>();
+    scoreMap = new HashMap<>();
     initMyFriends(user, friends);
     initOthers(friends, visitors);
     setScore(friends, visitors);
