@@ -90,7 +90,6 @@ public class Problem7 {
     public static Integer getSameFriendsScore(String user, String friend, HashMap<String, ArrayList<String>> friendsMap) {
         int score = 0;
         for(String userFriend : friendsMap.get(user)) {
-            System.out.println("userfriend : " + userFriend + "  friend : " + friend);
             if(friendsMap.get(friend).contains(userFriend)) {
                 score += 10;
             }
