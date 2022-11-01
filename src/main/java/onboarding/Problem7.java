@@ -2,8 +2,11 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 // 친구의 친구 -> 10점
 // 타임 라인 방문 -> 1점
@@ -35,7 +38,7 @@ public class Problem7 {
 	}
 	
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-//        List<String> answer = Collections.emptyList();
+    	List<String> answer = new ArrayList<String>();
         
         HashMap<String, List<String>> friends_info = new HashMap<String, List<String>>();
         HashMap<String, Integer> points = new HashMap<String, Integer>(); // 친구 추천 점수 기록용
@@ -83,6 +86,31 @@ public class Problem7 {
         
         points = trim(user, friends_info, points);
         
-//        return answer;
+        //정렬과정 점수순 -> 이름순
+        List<Map.Entry<String, Integer>> list = new LinkedList<>(points.entrySet());
+        Collections.sort(list, new Comparator<Map.Entry<String, Integer>>(){
+        	@Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+        		//1. value는 내림차순으로
+        		if (o1.getValue() > o2.getValue()) {
+                    return -1;
+                }
+                else if (o1.getValue() < o2.getValue()) {
+                    return 1;
+                }
+        		//2.값이 같으면 key는 오름차순으로
+                return o1.getKey().compareTo(o2.getKey());
+            }
+        });
+        
+        
+        for (int i=0;i<list.size();i++) {
+        	if (i > 4) {
+        		break;
+        	}
+        	answer.add(list.get(i).getKey());
+        }
+        
+        return answer;
     }
 }
