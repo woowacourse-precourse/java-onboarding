@@ -39,7 +39,7 @@ public class Problem6 {
                 hashMapCheckOverlap.put(twoWords,emailAddress);
 
             }
-
+            formsFirstRowLength -=1;
 
 
         }

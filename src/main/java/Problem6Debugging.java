@@ -1,3 +1,4 @@
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
@@ -12,14 +13,14 @@ public class Problem6Debugging {
                 List.of("nowm@email.com", "이제엠")
         );
 
-                  int formsFirstRowLength = forms.toArray().length;
+            int formsFirstRowLength = forms.toArray().length;
             int formsFirstRowNumber = formsFirstRowLength - 1; //열에 맞는 번호를 위해 미리 길이에서 1을 빼줌
 
             String nickName ="";
             String emailAddress ="";
 
-            HashMap<String, String> hashMapCheckOverlap = new HashMap<String, String>();
-            HashMap<String, String> hashMapCollectOverlapEmail = new HashMap<String, String>();
+            HashMap<String, String> hashMapCheckOverlap = new HashMap<String, String>(190000);
+            HashMap<String, String> hashMapCollectOverlapEmail = new HashMap<String, String>(10000);
 
 
 
@@ -43,11 +44,12 @@ public class Problem6Debugging {
                     hashMapCheckOverlap.put(twoWords,emailAddress);
 
                 }
-
+                formsFirstRowLength -=1;
 
 
             }
 
-
+        List<String> answer = List.of(hashMapCollectOverlapEmail.keySet().toArray(new String[hashMapCollectOverlapEmail.size()]));
+        answer.sort(Comparator.naturalOrder());
     }
 }
