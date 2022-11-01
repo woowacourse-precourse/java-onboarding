@@ -78,7 +78,7 @@ public class Problem7 {
                 personList.add(person);
                 scoreFriend.put(score.get(person), personList);
             }
-            if(scoreFriend.containsKey(score.get(person))){
+            else if(scoreFriend.containsKey(score.get(person))){
                 List<String> personList = scoreFriend.get(score.get(person));
                 personList.add(person);
                 scoreFriend.put(score.get(person), personList);
@@ -101,11 +101,8 @@ public class Problem7 {
                 result.add(samePoint.get(i));
             }
         }
-    HashSet<String> order = new HashSet<>(result);
-    
-    List<String> answer = new ArrayList<>(order);
-    
-    return answer;
+        
+    return result;
 
     }
 }
