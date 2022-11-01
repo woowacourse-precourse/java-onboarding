@@ -21,3 +21,14 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능 목록
+- 예외처리 기능
+- 1 Path 순회하면서, 중복 키 Set을 만드는 기능
+- 다시 한번 순회하면서, 중복 유저를 찾아내는 기능
+
+### 예외 처리
+- 이메일이 @email.com 이 포함 되어 있는지 확인
+- 이메일의 길이가 11~20 인지 판단
+- 닉네임이 한글인지 판단
+- 닉네임의 길이가 1~20인지 판단
