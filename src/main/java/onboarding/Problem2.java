@@ -31,7 +31,7 @@ public class Problem2 {
             stack.push(c);
             return;
         }
-        if (flag) {
+        if (flag && stack.peek()!=c) {
             stack.pop();
             flag = false;
         }
