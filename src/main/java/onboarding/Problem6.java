@@ -5,61 +5,63 @@ import java.util.stream.Collectors;
 
 public class Problem6 {
 
-	public static List<Set<String>> createAllCrewNicknameTokens(List<List<String>> forms, Map<String, Integer> allCrewNicknameTokens) {
+	public static void createAllCrewNicknameTokens(List<Set<String>> EachCrewTokenList,
+												   Map<String, Integer> allCrewNicknameTokens) {
+		for (Set<String> crew : EachCrewTokenList) {
+			crew.stream().forEach(s -> allCrewNicknameTokens.put(s, allCrewNicknameTokens.getOrDefault(s, 0) + 1));
+		}
+	}
+
+	public static List<Set<String>> createEachCrewNicknameTokenList(List<List<String>> forms) {
 		String crewNickname = "";
-		Map<String, Integer> tokenizedNickname;
+		Set<String> tokenizedNickname;
 		List<Set<String>> allCrewNicknameTokenList = new ArrayList<>();
 
 		for (List<String> crew : forms) {
 			crewNickname = crew.get(1);
 			tokenizedNickname = nicknameTokenizer(crewNickname);
-			allCrewNicknameTokenList.add(tokenizedNickname.keySet());
-			allCrewNicknameTokens = mapMerge(allCrewNicknameTokens, tokenizedNickname);
+			allCrewNicknameTokenList.add(tokenizedNickname);
 		}
 
 		return allCrewNicknameTokenList;
 	}
 
-	public static Map<String, Integer> nicknameTokenizer(String crewNickname){
-		Map<String, Integer> nicknameTokens = new HashMap<>();
+	public static Set<String> nicknameTokenizer(String crewNickname) {
+		Set<String> nicknameTokens = new HashSet<>();
 		String nicknameToken = "";
 
-		for(int i = 0; i < crewNickname.length()-1; i++) {
-			nicknameToken = crewNickname.substring(i,i + 2);
-			nicknameTokens.put(nicknameToken, 1);
+		for (int i = 0; i < crewNickname.length() - 1; i++) {
+			nicknameToken = crewNickname.substring(i, i + 2);
+			nicknameTokens.add(nicknameToken);
 		}
 
 		return nicknameTokens;
 	}
 
-	public static Map<String, Integer> deleteNotDuplicatedToken(Map<String, Integer> allCrewNicknameTokens) {
+	public static void deleteNotDuplicatedToken(Map<String, Integer> allCrewNicknameTokens) {
 		allCrewNicknameTokens.values().removeAll(Arrays.asList(1));
-		return allCrewNicknameTokens;
 	}
 
-	public static Map<String, Integer> mapMerge(Map<String, Integer> map1, Map<String, Integer> map2) {
-		map2.forEach((key, value) -> map1.merge(key, value, (value1, value2) -> value1 + value2));
-		return map1;
-	}
-
-    public static List<String> solution(List<List<String>> forms) {
+	public static List<String> solution(List<List<String>> forms) {
 		// List<String> answer = List.of("answer");
 		List<String> answer = new ArrayList<>();
+		List<Set<String>> EachCrewTokenList;
 		Map<String, Integer> allCrewNicknameTokens = new HashMap<>();
 
-		List<Set<String>> allCrewTokenList = createAllCrewNicknameTokens(forms, allCrewNicknameTokens);
-		allCrewNicknameTokens = deleteNotDuplicatedToken(allCrewNicknameTokens);
+		EachCrewTokenList = createEachCrewNicknameTokenList(forms);
+		createAllCrewNicknameTokens(EachCrewTokenList, allCrewNicknameTokens);
+		deleteNotDuplicatedToken(allCrewNicknameTokens);
 
-		for (int i = 0; i < allCrewTokenList.size(); i++) {
+		for (int i = 0; i < EachCrewTokenList.size(); i++) {
 			Map<String, Integer> finalNicknamesTokens = allCrewNicknameTokens;
 
-			if (allCrewTokenList.get(i).stream().anyMatch(finalNicknamesTokens::containsKey)) {
+			if (EachCrewTokenList.get(i).stream().anyMatch(finalNicknamesTokens::containsKey)) {
 				answer.add(forms.get(i).get(0));
 			}
 		}
 
 		answer = answer.stream().distinct().sorted().collect(Collectors.toList());
 
-        return answer;
-    }
+		return answer;
+	}
 }
