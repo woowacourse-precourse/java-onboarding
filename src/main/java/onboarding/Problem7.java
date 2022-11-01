@@ -37,8 +37,11 @@ public class Problem7 {
                         .thenComparing(Recommend::getName))
                 .collect(Collectors.toList());
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < sortScore.size(); i++) {
             result.add(sortScore.get(i).getName());
+            if (result.size() == 5) {
+                return result;
+            }
         }
 
         return result;
