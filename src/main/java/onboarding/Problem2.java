@@ -7,7 +7,7 @@ public class Problem2 {
     private static int flag=0;
 
     public static String solution(String cryptogram) {
-        validate(cryptogram);
+        isValidate(cryptogram);
         cryptogram=cryptogram+'*';
         while(true){
             if (isDuplicateString(cryptogram)){
@@ -18,6 +18,8 @@ public class Problem2 {
         }
         return cryptogram.substring(0, cryptogram.length()-1);
     }
+
+
 
     private static boolean isDuplicate(char target, char nextTarget){
         return target==nextTarget;
@@ -57,7 +59,7 @@ public class Problem2 {
         return false;
     }
 
-    private static void validate(String cryptogram) {
+    private static void isValidate(String cryptogram) {
         if (!isInRange(cryptogram)) {
             throw new IllegalArgumentException("길이가 1이상 1000이하 이어야 합니다.");
         }
