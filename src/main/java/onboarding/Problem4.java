@@ -19,6 +19,8 @@ public class Problem4 {
                     c = (char) (97 + 122 - letter);
                 answer += Character.toString(c);
             }
+            else
+                answer += Character.toString(letter);
         }
         return answer;
     }
