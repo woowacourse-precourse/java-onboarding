@@ -4,7 +4,7 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if((isPage(pobi)==false) || (isPage(crong)==false)) return -1;
+        if((isPage(pobi) == false) || (isPage(crong) == false)) return -1;
 
         int pobiScore =0;
         int crongScore = 0;
@@ -44,8 +44,10 @@ class Problem1 {
     public static int findWinner(int a, int b){
         if (a>b) {
             return 1;
-        } else if (a<b){
+        }
+        if (a<b){
             return 2;
-        } else return 0;
+        }
+        return 0;
     }
 }
