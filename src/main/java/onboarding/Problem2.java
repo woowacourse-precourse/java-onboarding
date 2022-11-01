@@ -33,7 +33,6 @@ public class Problem2 {
                 answer = beforeDecryption;
                 break;
             }
-            System.out.println(beforeDecryption);
         }
 
         return answer;
