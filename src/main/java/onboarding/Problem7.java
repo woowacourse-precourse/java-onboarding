@@ -10,15 +10,15 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
         friendScore = new HashMap<>();
-        findPotentialFriendAndScore(user, friends);
-        findVisitedFriendAndScore(visitors);
+        findPotentialFriend(user, friends);
+        findVisitedFriend(visitors);
         return arrangeList(answer);
     }
     /*
         사용자를 직접 알고있다면 -1(목록에서 제외)를
         사용자를 간접적으로 알고 있다면 10점씩 부여
      */
-    private static void findPotentialFriendAndScore(String user, List<List<String>> friends) {
+    private static void findPotentialFriend(String user, List<List<String>> friends) {
         for (List<String> friend : friends) {
             if (Objects.equals(friend.get(0), user)) {
                 friendScore.put(friend.get(1), -1);
@@ -35,7 +35,7 @@ public class Problem7 {
     /*
     사용자를 방문한 횟수당 1점씩 부여
      */
-    private static void findVisitedFriendAndScore(List<String> visitors) {
+    private static void findVisitedFriend(List<String> visitors) {
         for (String visitor : visitors) {
             if (friendScore.containsKey(visitor) && friendScore.get(visitor)!= -1) {
                 friendScore.put(visitor, friendScore.getOrDefault(visitor, 0) + 1);
