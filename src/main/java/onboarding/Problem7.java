@@ -106,7 +106,14 @@ public class Problem7 {
         }
     }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new LinkedList<>();
+        List<String> myFriends = getMyFriends(user, friends);
+        List<List<String>> relations = getRelations(user, friends);
+        List<User> users = new LinkedList<>();
+        calculateFriendsPoint(myFriends, relations, users);
+        calculateVisitorsPoint(myFriends, visitors, users);
+        sort(users);
+        makeAnswer(answer, users);
         return answer;
     }
 }
