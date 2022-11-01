@@ -73,15 +73,30 @@ public class Problem7 {
                 .stream()
                 .map(e -> new String[]{e.getKey(), e.getValue().toString()})
                 .toArray(String[][]::new);
-        // 최대 랭킹 순으로 최대 5명 추천 리스트 생성 ( 정렬 알고리즘 추가해야함 )
-        for(int i = 0;i<scoreList.length;i++){
+
+        List<String> ranking = sortRanking(scoreList);
+        for(int i = 0;i<ranking.size();i++){
             if(i < MAX_RECOMMEND_VALUE){
-                recommend.add(scoreList[i][0]);
+                recommend.add(ranking.get(i));
                 continue;
             }
             break;
         }
         return recommend;
+    }
+
+    private static List<String> sortRanking(String[][] scoreList){
+        List<String> ranker = new ArrayList<>();
+        Arrays.sort(scoreList, (o1, o2) -> {
+            if(o1[1].contentEquals(o2[1]))
+                return o1[0].compareTo(o2[0]);
+            else
+                return o1[1].compareTo(o2[1]);
+        });
+        for(int i=0;i< scoreList.length;i++){
+            ranker.add(scoreList[i][0]);
+        }
+        return ranker;
     }
 
     private static List<String> getRecommendation(String user, List<List<String>> AllFriends, List<String> visitors) {
