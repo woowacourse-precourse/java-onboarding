@@ -31,10 +31,14 @@ public class Problem7 {
 
         System.out.println(friendsMap);
 
-        // visitors들을 pointsMap에 추가
+        // visitors들을 pointsMap에 추가, 점수 부여
         for (int i = 0; i < visitors.size(); i++){
-
-            pointsMap.put(visitors.get(i), 0);
+            System.out.println(visitors.get(i));
+            if (pointsMap.containsKey(visitors.get(i))){
+                pointsMap.put(visitors.get(i), pointsMap.get(visitors.get(i)) + 1);
+            }
+            else
+                pointsMap.put(visitors.get(i), 1);
         }
         System.out.println(pointsMap);
 
@@ -54,7 +58,6 @@ public class Problem7 {
             }
         }
         System.out.println(friendsMap);
-
 
 
 
