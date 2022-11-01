@@ -7,6 +7,7 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        answer = getResult(pobi, crong);
         return answer;
     }
 
@@ -53,5 +54,16 @@ class Problem1 {
         }
         return maxPoint;
     }
-    
+
+    private static int getResult(List<Integer> participants1, List<Integer> participants2) {
+        int result = -1;
+        if (isValidPageNumbers(participants1)&&isValidPageNumbers(participants2)) {
+            int participants1MaxPoint = getMaxPoint(participants1);
+            int participants2MaxPoint = getMaxPoint(participants2);
+            result = (participants1MaxPoint == participants2MaxPoint) ?
+                    0: (participants1MaxPoint > participants2MaxPoint) ? 1:2;
+        }
+        return result;
+    }
+
 }
