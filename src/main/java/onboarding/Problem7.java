@@ -12,6 +12,7 @@ public class Problem7 {
         validateFriendsLength(friends);
         validateFriendsElementLength(friends);
         validateIdLength(friends);
+        validateIdFormat(friends);
 
         List<String> answer = new ArrayList<>();
         HashMap<String, List<String>> friendRelationshipMap = new HashMap<>();
@@ -157,6 +158,19 @@ public class Problem7 {
             for (String id : friendsElement) {
                 if (id.length() == 0 || id.length() > 30) {
                     throw new IllegalArgumentException("아이디의 길이는 1이상 30이하여야 합니다.");
+                }
+            }
+        }
+    }
+
+    private static void validateIdFormat(List<List<String>> friends) {
+        for (List<String> friendsElement : friends) {
+            for (String id : friendsElement) {
+                for (int i = 0; i <= id.length() - 1; i ++) {
+                    if (Character.isAlphabetic(id.charAt(i)) == false || Character.isLowerCase(id.charAt(i)) == false) {
+                        throw new IllegalArgumentException("아이디는 알파벳 소문자로만 구성되어야 합니다.");
+                }
+
                 }
             }
         }
