@@ -16,6 +16,7 @@ public class Problem7 {
         friendsList = relateFriend(friends);
         friendScore = getFriendScore(friendsList, user);
         friendScore = getVisitScore(friendScore, visitors);
+        friendScore = removeMyFriend(friendScore, friendsList);
 
         return answer;
     }
@@ -53,6 +54,7 @@ public class Problem7 {
                 }
             }
         }
+        friendScore.remove(user);
 
         return friendScore;
     }
@@ -68,4 +70,14 @@ public class Problem7 {
 
         return friendScore;
     }
+
+    static HashMap<String, Integer> removeMyFriend(HashMap<String, Integer> friendScore,
+                                                      HashMap<String, List<String>> friendsList) {
+        for (String friend : friendsList.keySet()) {
+            friendScore.remove(friend);
+        }
+        return friendScore;
+    }
+
+
 }
