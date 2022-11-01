@@ -13,7 +13,7 @@ public class Problem2 {
         do {
             cryptogram = decodedCryptogram;
             decodedCryptogram = removeConsecutiveDuplicates(cryptogram);
-        } while (!isDecoded(cryptogram, decodedCryptogram));
+        } while (!isCompletedDecoding(cryptogram, decodedCryptogram));
         return decodedCryptogram;
     }
 
@@ -21,7 +21,7 @@ public class Problem2 {
         return cryptogram.replaceAll(REGEX, EMPTY_STRING);
     }
 
-    private static boolean isDecoded(String cryptogram, String decodedCryptogram) {
+    private static boolean isCompletedDecoding(String cryptogram, String decodedCryptogram) {
         return cryptogram.equals(decodedCryptogram);
     }
 }
