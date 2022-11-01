@@ -40,7 +40,33 @@ class RecommandAlgorithm {
             }
         }
     }
+
+    public void chechException(String user, List<List<String>> friends, List<String> visitors) throws Problem_7_Restriction {
+        if (user.length() < 1 || user.length() > 30) {
+            throw new Problem_7_Restriction("UserNickNameOutOfRange");
+        }
+        if (friends.size() < 1 || friends.size() > 10_000) {
+            throw new Problem_7_Restriction("FriendsSizeOutOfRange");
+        }
+        for (int i = 0; i < friends.size(); i++) {
+            if (friends.get(i).size() != 2) {
+                throw new Problem_7_Restriction("FrindsFormatWrong");
+            }
+            if (friends.get(i).get(0).length() < 1 || friends.get(i).get(1).length() > 30) {
+                throw new Problem_7_Restriction("IdOutOfRange");
+            }
+        }
+        if (visitors.size() > 10_000) {
+            throw new Problem_7_Restriction("VisitorsOutOfRange");
+        }
+        for (int i = 0; i < user.length(); i++) {
+            if (user.charAt(i) < 97 || user.charAt(i) > 122) {
+                throw new Problem_7_Restriction("UserIdWrongFormat");
+            }
+        }
+    }
 }
+
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
