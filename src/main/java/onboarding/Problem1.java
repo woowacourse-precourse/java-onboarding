@@ -1,13 +1,5 @@
+package onboarding;
 
-/*
- * Classname(Problem1)
- * 
- * Version Information(0.1.0)
- * 
- * Date(2022/10/28)
- * 
- * Copyright Notice(MIT License)
- */
 import java.util.ArrayList;
 import java.util.List;
 
