@@ -11,7 +11,8 @@
 - [문제 4 풀이](./src/main/java/onboarding/Problem4.java)
 - [x] [문제 5](./docs/PROBLEM5.md)
 - [문제 5 풀이](./src/main/java/onboarding/Problem5.java)
-- [ ] [문제 6](./docs/PROBLEM6.md)
+- [x] [문제 6](./docs/PROBLEM6.md)
+- [문제 6 풀이](./src/main/java/onboarding/Problem6.java)
 - [ ] [문제 7](./docs/PROBLEM7.md)
 ---
 ## 🎯 프로그래밍 요구 사항
@@ -48,3 +49,9 @@
 - [x] 닉네임과 메일을 따로 저장
 - [x] 같은 글자가 연속적으로 포함되는 닉네임 판별
 - [x] 중복 제거 + 오름차순으로 return
+### 문제 7
+- [x] 사용자의 친구 찾기
+- [ ] 사용자의 친구의 친구 찾기(건너 아는 친구)
+- [ ] 해당 사람에게 점수주는 기능 구현
+- [ ] 방문자 확인 
+- [ ] 점수 높은 친구 추천
