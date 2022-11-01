@@ -12,6 +12,12 @@ public class Problem7 {
         HashSet<String> myFriendList = new HashSet<>();
         List<Integer>[] friendGraph;
 
+        // 사용자와 함께 아는 친구의 수만큼 점수 주기위해 인접배열리스트 초기화
+        friendGraph = new List[allUserList.size()];
+        for (int i = 0; i < allUserList.size(); i++) {
+            friendGraph[i] = new ArrayList<>();
+        }
+
         return answer;
     }
 
