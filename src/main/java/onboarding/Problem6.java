@@ -23,9 +23,9 @@ public class Problem6 {
 
         return answer;
     }
-    public static Map<String, String> listToMap(List<List<String>> forms){
-        Map<String, String> result = new HashMap<>();
-        forms.stream().forEach(form -> result.put(form.get(0), form.get(1)));
+    public static List<Crew> getCrewList(List<List<String>> forms){
+        List<Crew> result = new ArrayList<>();
+        forms.stream().forEach(form -> result.add(new Crew(form.get(0), form.get(1))));
 
         return result;
     }
