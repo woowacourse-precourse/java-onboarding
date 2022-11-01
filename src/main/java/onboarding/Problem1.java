@@ -22,10 +22,9 @@ class Problem1 {
             return 1;
         } else if (crongScore > pobiScore) {
             return 2;
-        } else if (crongScore == pobiScore) {
+        } else {
             return 0;
         }
-        return -1;
     }
 
     static boolean checkValid(List<Integer> score) {
@@ -37,10 +36,7 @@ class Problem1 {
         } else if (firstIndex + 1 != secondIndex) {
             return false;
         }
-        if (firstIndex % 2 == 0 || secondIndex % 2 != 0) {
-            return false;
-        }
-        return true;
+        return firstIndex % 2 != 0 && secondIndex % 2 == 0;
     }
 
     static int getSum(int score) {
