@@ -14,14 +14,14 @@ import java.util.List;
  */
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-
         if (exception(pobi) || exception(crong)) {
             return -1;
         }
 
         int pobiMax = calculateMax(calculateAdd(pobi), calculateMultiply(pobi));
         int crongMax = calculateMax(calculateAdd(crong), calculateMultiply(crong));
+
+        int answer = result(pobiMax, crongMax);
 
         return answer;
     }
@@ -97,5 +97,21 @@ class Problem1 {
             return multiply;
         }
         return -1;
+    }
+
+    /**
+     * 기능목록 5
+     * @param pobiMax
+     * @param crongMax
+     * @return pobi의 리턴값이 크면 1, crong의 리턴값이 크면 2, 같으면 0을 리턴
+     */
+    private static int result(int pobiMax, int crongMax) {
+        if (pobiMax > crongMax) {
+            return 1;
+        }
+        if (pobiMax < crongMax) {
+            return 2;
+        }
+        return 0;
     }
 }
