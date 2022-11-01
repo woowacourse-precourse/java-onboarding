@@ -80,6 +80,12 @@ class Problem7Test {
 
     static Map<String, Integer> userFriends;
 
+    // 방문자
+    private void checkVisitors(List<String> visitors) {
+        for (String visitor : visitors) {
+            addPoint(visitor, 1);
+        }
+    }
 
     private void checkFriends(String user, List<List<String>> friends, String oldFriend) {
         // user의 새 친구 찾기
