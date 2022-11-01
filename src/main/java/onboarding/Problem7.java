@@ -41,8 +41,8 @@ public class Problem7 {
         }
         return set.toArray(new String[0]);
     }
-    public static HashMap<String, Integer> initializationFirstScore(String[] users){
-        HashMap<String, Integer> map = new HashMap<>();
+    public static TreeMap<String, Integer> initializationFirstScore(String[] users){
+        TreeMap<String, Integer> map = new TreeMap<>();
         int len = users.length;
 
         for(int i = 0;i < len;i++){
@@ -50,7 +50,7 @@ public class Problem7 {
         }
         return map;
     }
-    public static HashMap<String, Integer> resetRealFriendScore(HashMap<String, Integer> map, String[] friends){
+    public static TreeMap<String, Integer> resetRealFriendScore(TreeMap<String, Integer> map, String[] friends){
         int len = friends.length;
 
         for(int i = 0;i < len;i++){
@@ -85,6 +85,57 @@ public class Problem7 {
         }
         return false;
     }
+
+    public static List<String> findRecommendFriends(String user, List<List<String>> friends, List<String> visitors){
+        TreeMap<String, Integer> usersList = initializationFirstScore(findFriend(user, friends, visitors));
+        String[][] friendsArray = listToArray2D(friends);
+        String[] visitorsArray = listToArray(visitors);
+
+        String[] userLinkFriend = linkFriend(user, friendsArray);
+        int userLinkLen = userLinkFriend.length;
+
+        String[][] userLinkFriendLink = new String[userLinkLen][];
+        for(int i = 0;i < userLinkLen;i++){
+            userLinkFriendLink[i] = linkFriend(userLinkFriend[i], friendsArray);
+        }
+
+        int outLen = userLinkFriendLink.length;
+        int inLen = userLinkFriendLink[0].length;
+
+        for(int i = 0;i < outLen;i++){
+            for(int j = 0;j < inLen;j++){
+                if(userLinkFriendLink[i][j].equals(user) || checkStringExist(userLinkFriendLink[i][j], userLinkFriend))
+                    continue;
+                usersList.put(userLinkFriendLink[i][j], usersList.get(userLinkFriendLink[i][j]) + 10);
+            }
+        }
+
+        int visitorLen = visitorsArray.length;
+        for(int i = 0;i < visitorLen;i++){
+            if(visitorsArray[i].equals(user) || checkStringExist(visitorsArray[i], userLinkFriend))
+                continue;
+            usersList.put(visitorsArray[i], usersList.get(visitorsArray[i]) + 1);
+        }
+        List<Map.Entry<String, Integer>> list_entries = new ArrayList<Map.Entry<String, Integer>>(usersList.entrySet());
+
+        Collections.sort(list_entries, new Comparator<Map.Entry<String, Integer>>() {
+            // compare로 값을 비교
+            public int compare(Map.Entry<String, Integer> obj1, Map.Entry<String, Integer> obj2)
+            {
+                // 내림 차순으로 정렬
+                return obj2.getValue().compareTo(obj1.getValue());
+            }
+        });
+
+        List<String> ret = new ArrayList<>();
+        for(Map.Entry<String, Integer> entry : list_entries){
+            if(entry.getValue() == 0) continue;
+
+            ret.add(entry.getKey());
+        }
+        return ret;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
