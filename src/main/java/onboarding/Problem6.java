@@ -19,6 +19,12 @@ class TokenGroup{
     boolean isGroupKey(String token){
         return tokenGroup.containsKey(token);
     }
+    void makeNewGroup(String token){
+        if(!isGroupKey(token)){
+            HashMap<Integer, String> crewInformation = new HashMap<>();
+            tokenGroup.put(token, crewInformation);
+        }
+    }
 }
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
