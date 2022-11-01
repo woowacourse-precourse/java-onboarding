@@ -10,17 +10,17 @@ class Problem1 {
 
         int answer ;
 
-        int pobiLeftPage = pobi.get(0);
-        int pobiRightPage = pobi.get(1);
-        int crongLeftPage = crong.get(0);
-        int crongRightPage = crong.get(1);
+        int pobiLeftPageNumber = pobi.get(0);
+        int pobiRightPageNumber = pobi.get(1);
+        int crongLeftPageNumber = crong.get(0);
+        int crongRightPageNumber = crong.get(1);
 
         // 예외사항 작성
-        if ( pobiLeftPage < 3 || crongLeftPage < 3 || pobiLeftPage > 397 || crongLeftPage > 397 ) { //첫페이지와 마지막 페이지를 안 펼치도록
+        if ( pobiLeftPageNumber < 3 || crongLeftPageNumber < 3 || pobiLeftPageNumber > 397 || crongLeftPageNumber > 397 ) { //첫페이지와 마지막 페이지를 안 펼치도록
             return -1;
-        } else if ( pobiRightPage != pobiLeftPage + 1 || crongRightPage != crongLeftPage + 1) { //왼쪽 페이지와 오른쪽 페이지가 1만큼 차이난다는 의존성
+        } else if ( pobiRightPageNumber != pobiLeftPageNumber + 1 || crongRightPageNumber != crongLeftPageNumber + 1) { //왼쪽 페이지와 오른쪽 페이지가 1만큼 차이난다는 의존성
             return -1;
-        } else if ( pobiRightPage%2 != 0 || crongRightPage%2 != 0 ) { //오른쪽 페이지가 짝수인지 확인
+        } else if ( pobiRightPageNumber%2 != 0 || crongRightPageNumber%2 != 0 ) { //오른쪽 페이지가 짝수인지 확인
             return -1;
         } else if ( pobi.size() != 2 || crong.size() != 2 ){ //받아오는 list의 size가 2개가 아닌지 확인
             return -1;
@@ -35,11 +35,11 @@ class Problem1 {
         int crongMax = 0;
 
 
-        if (pobiRightPage%10 == 0) { //십의 자리수 혹은 백의 자리수가 바뀔 때는 '왼쪽 페이지의 자릿수 곱 혹은 덧셈'이 항상 더 큰 것을 활용
+        if (pobiRightPageNumber%10 == 0) { //십의 자리수 혹은 백의 자리수가 바뀔 때는 '왼쪽 페이지의 자릿수 곱 혹은 덧셈'이 항상 더 큰 것을 활용
 
-            while ( pobiLeftPage > 0 ) {
-                arrayPobiDigit.add(pobiLeftPage%10);
-                pobiLeftPage /= 10;
+            while ( pobiLeftPageNumber > 0 ) {
+                arrayPobiDigit.add(pobiLeftPageNumber%10);
+                pobiLeftPageNumber /= 10;
             }
             int lenghtPL = arrayPobiDigit.size();
             int sumPL = 0;
@@ -53,11 +53,11 @@ class Problem1 {
 
             pobiMax = Math.max(sumPL, productPL);
 
-        } else if (pobiRightPage%10 != 0) {
+        } else if (pobiRightPageNumber%10 != 0) {
 
-            while ( pobiRightPage > 0 ) {
-                arrayPobiDigit.add(pobiRightPage%10);
-                pobiRightPage /= 10;
+            while ( pobiRightPageNumber > 0 ) {
+                arrayPobiDigit.add(pobiRightPageNumber%10);
+                pobiRightPageNumber /= 10;
             }
             int lenghtPR = arrayPobiDigit.size();
             int sumPR = 0;
@@ -73,10 +73,10 @@ class Problem1 {
 
         }
 
-        if (crongRightPage%10 == 0) {
-            while ( crongRightPage > 0 ) {
-                arrayCrongDigit.add(crongRightPage%10);
-                crongRightPage /= 10;
+        if (crongRightPageNumber%10 == 0) {
+            while ( crongLeftPageNumber > 0 ) {
+                arrayCrongDigit.add(crongLeftPageNumber%10);
+                crongLeftPageNumber /= 10;
             }
             int lenghtCL = arrayCrongDigit.size();
             int sumCL = 0;
@@ -91,11 +91,11 @@ class Problem1 {
             crongMax = Math.max(sumCL, productCL);
 
 
-        } else if (crongRightPage%10 != 0) {
+        } else if (crongRightPageNumber%10 != 0) {
 
-            while ( crongRightPage > 0 ) {
-                arrayCrongDigit.add(crongRightPage%10);
-                crongRightPage /= 10;
+            while ( crongRightPageNumber > 0 ) {
+                arrayCrongDigit.add(crongRightPageNumber%10);
+                crongRightPageNumber /= 10;
             }
             int lenghtCR = arrayCrongDigit.size();
             int sumCR = 0;
