@@ -1,4 +1,4 @@
-package onboarding;
+package test.java.onboarding;
 
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -101,11 +101,11 @@ class ApplicationTest {
         @Test
         void case1() {
             List<List<String>> forms = List.of(
-                    List.of("jm@email.com", "ì œì´ì— "),
-                    List.of("jason@email.com", "ì œì´ìŠ¨"),
-                    List.of("woniee@email.com", "ì›Œë‹ˆ"),
-                    List.of("mj@email.com", "ì— ì œì´"),
-                    List.of("nowm@email.com", "ì´ì œì— ")
+                    List.of("jm@email.com", "? œ?´?— "),
+                    List.of("jason@email.com", "? œ?´?Š¨"),
+                    List.of("woniee@email.com", "?›Œ?‹ˆ"),
+                    List.of("mj@email.com", "?— ? œ?´"),
+                    List.of("nowm@email.com", "?´? œ?— ")
             );
             List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com");
             assertThat(Problem6.solution(forms)).isEqualTo(result);
