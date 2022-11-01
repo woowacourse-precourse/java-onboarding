@@ -1,26 +1,30 @@
 package onboarding.cryptogram;
 
+import static onboarding.cryptogram.CryptogramRegexType.*;
+
 public class CryptogramDecoder {
 
 	private static final int MAX_LENGTH = 1000;
 
 	private static final int MIN_LENGTH = 1;
 
-	private static final String FORMAT_MATCH_REGEX = "^[a-z]+$";
-
-	private static final String REPEATED_MATCH_REGEX = ".*(\\w)\\1+.*";
-
-	private static final String REPEATED_REMOVAL_REGEX = "(\\w)\\1+";
+	static boolean isValidFormat(final String cryptogram) {
+		return cryptogram != null
+			&& validateLength(cryptogram)
+			&& cryptogram.matches(FORMAT_MATCH_REGEX);
+	}
 
 	static boolean validateLength(final String cryptogram) {
 		int length = cryptogram.length();
 		return MIN_LENGTH <= length && length <= MAX_LENGTH;
 	}
 
-	static boolean isValidFormat(final String cryptogram) {
-		return cryptogram != null
-			&& validateLength(cryptogram)
-			&& cryptogram.matches(FORMAT_MATCH_REGEX);
+	public static String decrypt(final String cryptogram) {
+		String clearText = cryptogram;
+		while (containsRepetitions(clearText)) {
+			clearText = removeRepetitions(clearText);
+		}
+		return clearText;
 	}
 
 	static boolean containsRepetitions(final String cryptogram) {
@@ -29,13 +33,5 @@ public class CryptogramDecoder {
 
 	static String removeRepetitions(final String cryptogram) {
 		return cryptogram.replaceAll(REPEATED_REMOVAL_REGEX, "");
-	}
-
-	public static String decode(final String cryptogram) {
-		String clearText = cryptogram;
-		while (containsRepetitions(clearText)) {
-			clearText = removeRepetitions(clearText);
-		}
-		return clearText;
 	}
 }

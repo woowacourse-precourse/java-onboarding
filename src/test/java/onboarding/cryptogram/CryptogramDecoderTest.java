@@ -100,15 +100,15 @@ public class CryptogramDecoderTest {
 	@Test
 	void 암호문_해독() {
 		assertThat(
-			CryptogramDecoder.decode("browoanoommnaon")
+			CryptogramDecoder.decrypt("browoanoommnaon")
 		).isEqualTo("brown");
 
 		assertThat(
-			CryptogramDecoder.decode("zyelleyz")
+			CryptogramDecoder.decrypt("zyelleyz")
 		).isEqualTo("");
 
 		assertThat(
-			CryptogramDecoder.decode("zyellleyz")
+			CryptogramDecoder.decrypt("zyellleyz")
 		).isEqualTo("");
 	}
 }
