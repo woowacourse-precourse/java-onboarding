@@ -13,8 +13,8 @@ public class Problem6 {
     public static final int NAME_INDEX = 1;
 
     public static List<String> solution(List<List<String>> forms) {
-        Map<String, Set<String>> seqNameEmailMap = getSeqNameEmailMap(forms);
-        Set<String> duplicateEmailSet = getDuplicateEmailSet(seqNameEmailMap);
+        Map<String, Set<String>> twoSeqSubNameEmailMap = getSeqNameEmailMap(forms);
+        Set<String> duplicateEmailSet = getDuplicateEmailSet(twoSeqSubNameEmailMap);
 
         return duplicateEmailSet.stream()
                 .sorted()
@@ -22,8 +22,8 @@ public class Problem6 {
     }
 
 
-    private static Map<String, List<String>> getSeqNameEmailMap(List<List<String>> forms) {
-        Map<String, List<String>> seqNameEmailMap = new HashMap<>();
+    private static Map<String, Set<String>> getSeqNameEmailMap(List<List<String>> forms) {
+        Map<String, Set<String>> seqNameEmailMap = new HashMap<>();
 
         for (List<String> form : forms) {
             String email = form.get(EMAIL_INDEX);
@@ -36,14 +36,17 @@ public class Problem6 {
 
     private static void makeSequentialNameEmailMap(Map<String, Set<String>> seqNameEmailMap, String email, String name) {
         for (int i = 0; i < name.length() - 1; i++) {
-            String sequence = name.substring(i, i + 2);
-            Set<String> emailList = seqNameEmailMap.getOrDefault(sequence, new HashSet<>());
+            String twoSequentialSubName = getTwoSequentialSubName(name, i);
+            Set<String> emailList = seqNameEmailMap.getOrDefault(twoSequentialSubName, new HashSet<>());
             emailList.add(email);
-            seqNameEmailMap.put(sequence, emailList);
+            seqNameEmailMap.put(twoSequentialSubName, emailList);
         }
     }
 
-    private static Set<String> getDuplicateEmailSet(Map<String, List<String>> seqNameEmailMap) {
+    private static String getTwoSequentialSubName(String name, int i) {
+        return name.substring(i, i + 2);
+    }
+
     private static Set<String> getDuplicateEmailSet(Map<String, Set<String>> seqNameEmailMap) {
         Set<String> duplicateSet = new HashSet<>();
 
