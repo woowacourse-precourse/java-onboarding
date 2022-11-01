@@ -16,6 +16,8 @@ public class Problem6 {
 
             if (isAlreadyChecked(map, partialNickname))
                 continue;
+
+            map = duplicateCheck(forms, partialNickname, map);
         }
 
         return map;
@@ -36,5 +38,36 @@ public class Problem6 {
         if (map.containsKey(partialNickname))
             return true;
         return false;
+    }
+
+    private static HashMap<String, ArrayList<String>> duplicateCheck(List<List<String>> forms, String partialNickname, HashMap<String, ArrayList<String>> map) {
+        ArrayList<String> list = new ArrayList<String>();
+
+        for (int i = 0; i < forms.size(); i++) {
+            String email = forms.get(i).get(0);
+            String nickname = forms.get(i).get(1);
+
+            if (nickname.contains(partialNickname)) {
+                map = addNicknameAndEmailIntoMap(map, list, partialNickname, email);
+            }
+        }
+
+        return map;
+    }
+
+    private static HashMap<String, ArrayList<String>> addNicknameAndEmailIntoMap(HashMap<String, ArrayList<String>> map, ArrayList<String> list, String partialNickname, String email) {
+        if (map.containsKey(partialNickname)) {
+            list = map.get(partialNickname);
+            list.add(email);
+            map.put(partialNickname, list);
+
+            return map;
+        }
+
+        if (!map.containsKey(partialNickname)) {
+            list.add(email);
+            map.put(partialNickname, list);
+        }
+        return map;
     }
 }
