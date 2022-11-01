@@ -22,7 +22,7 @@ public class Problem7 {
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
         Map<String, ArrayList<String>> friendsMap = new HashMap<>();    // 친구 관계 그래프
         List<UserScore> scoreMap = new ArrayList<>();                   // 친구 점수 맵
 
@@ -44,34 +44,26 @@ public class Problem7 {
             addScoresForVisitor(scoreMap, visitor);
         }
 
-        sortScoreMap(scoreMap); // score 기준 내림차순 정렬 (+name 기준 오름ㅊ차순 정렬)
+        sortScoreMap(scoreMap); // score 기준 내림차순 정렬 (+name 기준 오름차순 정렬)
 
         // 이미 친구 관계인 친구들, 그리고 자기 자신은 제외하여 scoreMap을 answer 리스트에 추가하기
         ArrayList<String> friendsOfUser = friendsMap.get(user);
         for (UserScore friend : scoreMap) {
-            answer = addToRecommendedList(friendsOfUser, friend, user);
+            if(!(friendsOfUser.contains(friend.name) || friend.name.equals(user))) {
+                answer.add(friend.name);
+            }
         }
-        
         if (answer.size() > MAX_NUMBER_OF_RECOMMENDED_FRIENDS) // 최대 5개
             return answer.subList(0, MAX_NUMBER_OF_RECOMMENDED_FRIENDS);
         return answer;
-    }
-
-    private static List<String> addToRecommendedList(List<String> friendsOfUser, UserScore friend, String userName){
-        List<String> recommendedList = new ArrayList<>();
-        if (!(friendsOfUser.contains(friend.name) || friend.name.equals(userName))) {
-            recommendedList.add(friend.name);
-        }
-        return recommendedList;
     }
 
     private static void sortScoreMap(List<UserScore> scoreMap) {
         scoreMap.sort((user1, user2) -> {
             if (user1.score == user2.score) {
                 return user1.name.compareTo(user2.name);
-            } else {
-                return user2.score - user1.score;
             }
+            return user2.score - user1.score;
         });
     }
 
