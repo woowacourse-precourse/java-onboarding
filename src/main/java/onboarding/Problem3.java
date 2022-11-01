@@ -2,7 +2,10 @@ package onboarding;
 
 public class Problem3 {
     public static int solution(int number) {
-        int answer = 0;
+        //f(n) = 일의자리가 369인 수 + 십의자리가 369인 수 + ... + k자리가 369인 수
+        //d(n) = 1 ~ n까지 중 3/6/9가 포함된 숫자 수
+        //f(n) = c(n) + {c(n/10 - 1) + (n % 10 + 1)} + {c(n/100 - 1) + (n % 100 + 1)} + ...
+        int answer = calculate(number);
         return answer;
     }
 
