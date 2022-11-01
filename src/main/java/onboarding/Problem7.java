@@ -77,6 +77,12 @@ public class Problem7 {
             calculateFriendPoint(myFriends, relation, users);
         }
     }
+    private static void calculateVisitorPoint(List<String> myFriends, String visitor, List<User> users) {
+        if (myFriends.contains(visitor)) {
+            return;
+        }
+        pointUp(users, visitor, 1);
+    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
