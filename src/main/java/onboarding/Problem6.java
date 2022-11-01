@@ -25,8 +25,13 @@ public class Problem6 {
                 tmp.addAll(mapEmail.get(key));
             }
         }
+        // 중복 이메일을 제거하기 위해 List를 Set으로 변환
+        Set<String> answerSet = new HashSet<>(tmp);
 
-        List<String> answer = new ArrayList<>();
+        // 다시 Set을 List로 변환
+        List<String> answer = new ArrayList<>(answerSet);
+
+
 
         return answer;
     }
