@@ -6,6 +6,7 @@ Problem 1
 
 
 Problem2
+1. 받은 문자열을 반복 통해 제거되지 않을때 까지 반복 
 
 Problem3
 1. 전달 받은 number의 값을 10으로 나눈 나머지를 통해 count++ 
