@@ -26,4 +26,11 @@ public class Problem4 {
         return answer;
     }
 
+    //대문자일 경우 변환 문자를 리턴하는 기능
+    public static char upperCase(int num) {
+        int distance = num - 65; //첫번호(A)와 해당문자 번호의 차이
+        int back = 90 - distance; //대문자 끝번호에서 차이 빼기
+        return (char)back;
+    }
+
 }
