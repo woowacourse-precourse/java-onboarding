@@ -23,12 +23,18 @@ public class Problem6 {
             }
         }
         List<String> result2 = new ArrayList<>(result);
-        return result2;
+        return sortResult(result2);
     }
-    
+
+    static List<String> sortResult(List<String> result){
+        Collections.sort(result);
+        return result;
+    }
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer;
         answer = makeHash(forms);
+        System.out.println(answer);
         return answer;
     }
 }
