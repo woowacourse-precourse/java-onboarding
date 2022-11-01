@@ -26,17 +26,14 @@ class Problem1 {
     }
 
     private static Integer checkException(List<Integer> pobi, List<Integer> crong) {
-        // 첫 페이지 혹은 끝 페이지 포함하는지 확인
         if (isHavingFirstPage(pobi) || isHavingLastPage(pobi)
                 || isHavingFirstPage(crong) || isHavingLastPage(crong)) {
             return Constant.EXCEPTION;
         }
-        // 좌측 페이지가 홀수이고 우측 페이지가 짝수인지 확인
         if (isEvenPage(pobi.get(Constant.LEFT_PAGE)) || isOddPage(pobi.get(Constant.RIGHT_PAGE))
                 || isEvenPage(crong.get(Constant.LEFT_PAGE)) || isOddPage(crong.get(Constant.RIGHT_PAGE))) {
             return Constant.EXCEPTION;
         }
-        // 좌측과 우측 페이지의 차가 1인지 확인 및 우측 페이지가 더 큰지 확인
         if (pobi.get(Constant.RIGHT_PAGE) - pobi.get(Constant.LEFT_PAGE) != 1
                 || crong.get(Constant.RIGHT_PAGE) - crong.get(Constant.LEFT_PAGE) != 1) {
             return Constant.EXCEPTION;
