@@ -54,7 +54,29 @@ public class Problem6 {
     }
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer = new ArrayList<>();
+        List<String> nickname_forms = new ArrayList<>();
+        List<List<String>> duplication_email = new ArrayList<>();
+
+        // 닉네임을 두글자로 나누는 모든 경우의 수를 구하는 반복문
+        for(List<String> f:forms){
+            // make new nicknmae form
+            List<String> temp = makeNewnickname(f.get(1));
+
+            for(String t:temp){
+                nickname_forms.add(t);
+            }
+        }
+
+        // 닉네임을 두글자로 나누는 모든 경우의 수의 중복 제거
+        Set<String> nickname_set = new HashSet<String>(nickname_forms);
+
+        // 두 글자로 나눠진 닉네임이 포함된 이메일 구하기
+        duplication_email = getemailOfnickname(nickname_set,forms);
+
+        // 같은 글자가 연속적으로 포함되는 닉네임을 작성한 지원자의 이메일 목록 구하기
+        answer = findDuplicationEmail(duplication_email);
+
         return answer;
     }
 }
