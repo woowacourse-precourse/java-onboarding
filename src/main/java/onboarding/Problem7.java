@@ -46,10 +46,10 @@ public class Problem7 {
             }
         }
 
-//        for (String userFriend: userFriends){
-//            nominate.remove(userFriend);
-//            nominatePoint.remove(userFriend);
-//        }
+        for (String userFriend: userFriends){
+            nominate.remove(userFriend);
+            nominatePoint.remove(userFriend);
+        }
 //        for (String nominatePerson: nominate){
 //            for (String userFriend: userFriends){
 //                idx = 0;
