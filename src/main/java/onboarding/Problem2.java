@@ -14,4 +14,17 @@ public class Problem2 {
         }
         return true;
     }
+
+    static String forUnique(String str) {
+        StringBuffer strBuf = new StringBuffer();
+        char before = str.charAt(0);
+        for (int i = 1; i < str.length(); i++) {
+            if (str.charAt(i) != before) {
+                strBuf.append(before);
+                before = str.charAt(i);
+            }
+        }
+        return strBuf.toString();
+    }
+
 }
