@@ -35,11 +35,14 @@ class Problem1 {
     public static Boolean checkException(List<Integer> pages){
         Integer left = pages.get(0);
         Integer right = pages.get(1);
-        if (left == 1 && right == 2) return false;
-        else if(left == 399 && right == 400) return false;
-        else if(right - left != 1) return false;
-        else if(!(left % 2 == 1 && right %2 == 0)) return false;
-        else return true;
+        if (1 >= left || left >= 400)
+            return false;
+        if (1 >= right || right >= 400)
+            return false;
+        if(right - left != 1) return false;
+        if(!(left % 2 == 1 && right %2 == 0)) return false;
+
+        return true;
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
