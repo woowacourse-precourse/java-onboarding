@@ -4,8 +4,28 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = 0;
-        return answer;
+        boolean page = validation(pobi, crong);
+        if (!page) {
+            return -1;
+        }
+
+        int pobisum = sum(pobi);
+        int pobimulti = multi(pobi);
+        int pobiMax = maxScore(pobisum, pobimulti);
+
+        int crongsum = sum(crong);
+        int crongmulti = multi(crong);
+        int crongMax = maxScore(crongsum, crongmulti);
+
+        if (pobiMax > crongMax) {
+            return 1;
+        } else if (pobiMax < crongMax) {
+            return 2;
+        } else if (pobiMax == crongMax) {
+            return 0;
+        } else {
+            return -1;
+        }
     }
 
    static int sum(List<Integer> value) {
