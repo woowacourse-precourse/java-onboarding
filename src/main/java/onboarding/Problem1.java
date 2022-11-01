@@ -7,7 +7,10 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
 
         try {
-
+            // 페이지 정보가 제대로 됐는 지 확인
+            if (is_abnormal_pages(pobi) || is_abnormal_pages(crong)){
+                return -1;
+            }
 
             // 포비와 크롱이 뽑은 페이지 연산 결과 중 각각 최댓값
             int pobi_max = find_max_between_pages(pobi);
@@ -29,7 +32,21 @@ class Problem1 {
     }
 
 
+    // 페이지 오류 확인
+    public static boolean is_abnormal_pages(List<Integer> pages){
+        int left_page = pages.get(0);
+        int right_page = pages.get(1);
 
+        if (left_page < 0 || right_page > 400){
+            return true;
+        }
+
+        if (left_page + 1 != right_page) {
+            return true;
+        }
+
+        return false;
+    }
 
     // 왼쪽 페이지와 오른쪽 페이지 연산 결과 중에 최댓값
     public static int find_max_between_pages(List<Integer> pages){
