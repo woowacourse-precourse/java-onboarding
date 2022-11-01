@@ -101,6 +101,11 @@ class Problem1 {
     }
 
     private static int getWinner(int pobiNum, int crongNum) {
-        return (pobiNum == crongNum ? DRAW : (pobiNum > crongNum ? POBI_WIN : CRONG_WIN));
+        if (pobiNum > crongNum) {
+            return (POBI_WIN);
+        } else if (pobiNum < crongNum) {
+            return (CRONG_WIN);
+        }
+        return (DRAW);
     }
 }
