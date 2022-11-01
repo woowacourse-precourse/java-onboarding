@@ -16,7 +16,8 @@ public class Problem6 {
     private static final int FORM_NICKNAME_INDEX = 1;
 
     public static List<String> solution(List<List<String>> forms) {
-
+        checkForExceptions(forms);
+        
         return getRestrictedNicknames(forms);
     }
 
