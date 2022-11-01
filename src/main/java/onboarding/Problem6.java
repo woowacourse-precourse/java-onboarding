@@ -23,6 +23,16 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
         boolean[] visited = new boolean[forms.size()];
+        for (int i = 0; i < forms.size() - 1; ++i) {
+            if (!visited[i]) {
+                for (int j = 0; j < forms.size(); ++j) {
+                    if (j != i && check(forms.get(i).get(1), forms.get(j).get(1))) {
+                        visited[i] = true;
+                        visited[j] = true;
+                    }
+                }
+            }
+        }
         return answer;
     }
 }
