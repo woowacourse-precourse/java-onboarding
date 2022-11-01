@@ -9,6 +9,7 @@ public class Problem7 {
         List<String> resultFineMyFriend = findMyFriend(user, friends);
 
         friendsScore = getFriendsFriendsScore(friendsScore, resultFineMyFriend,friends);
+        friendsScore = getVisitorsScore(friendsScore,visitors);
 
         return answer;
     }
@@ -40,6 +41,15 @@ public class Problem7 {
 
                 friendsScore.put(myFriendsFriends.get(j),friendsScore.getOrDefault(myFriendsFriends.get(j), 0) + 10);
             }
+        }
+
+        return friendsScore;
+    }
+
+    public static Map<String, Integer> getVisitorsScore(Map<String, Integer> friendsScore,List<String> visitors){
+
+        for (int i = 0; i < visitors.size(); i++) {
+            friendsScore.put(visitors.get(i),friendsScore.getOrDefault(visitors.get(i), 0) + 1);
         }
 
         return friendsScore;
