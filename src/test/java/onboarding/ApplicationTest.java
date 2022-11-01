@@ -360,16 +360,210 @@ class ApplicationTest {
         void case1() {
             String user = "mrko";
             List<List<String>> friends = List.of(
-                    List.of("donut", "andole"),
-                    List.of("donut", "jun"),
-                    List.of("donut", "mrko"),
-                    List.of("shakevan", "andole"),
-                    List.of("shakevan", "jun"),
-                    List.of("shakevan", "mrko")
+                List.of("donut", "andole"),
+                List.of("donut", "jun"),
+                List.of("donut", "mrko"),
+                List.of("shakevan", "andole"),
+                List.of("shakevan", "jun"),
+                List.of("shakevan", "mrko")
             );
             List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
             List<String> result = List.of("andole", "jun", "bedi");
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
         }
+
+        @Test
+        void userLengthOver30() {
+            String user = "mrkoooooooooooooooooppppppppppp";
+            List<List<String>> friends = List.of(
+                List.of("donut", "andole"),
+                List.of("donut", "jun"),
+                List.of("donut", "mrkoooooooooooooooooppppppppppp"),
+                List.of("shakevan", "andole"),
+                List.of("shakevan", "jun"),
+                List.of("shakevan", "mrkoooooooooooooooooppppppppppp")
+            );
+            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+            List<String> result = List.of("andole", "jun", "bedi");
+            assertThatThrownBy(() -> {
+                Problem7.solution(user, friends, visitors);
+            }).isInstanceOf((IllegalArgumentException.class));
+        }
+
+        @Test
+        void friendsLengthOver30() {
+            String user = "mrko";
+            List<List<String>> friends = List.of(
+                List.of("donut", "andole"),
+                List.of("donut", "jun"),
+                List.of("donut", "mrko"),
+                List.of("mrkoooooooooooooooooppppppppppp", "andole"),
+                List.of("mrkoooooooooooooooooppppppppppp", "jun"),
+                List.of("mrkoooooooooooooooooppppppppppp", "mrko")
+            );
+            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "mrkoooooooooooooooooppppppppppp");
+            List<String> result = List.of("andole", "jun", "bedi");
+            assertThatThrownBy(() -> {
+                Problem7.solution(user, friends, visitors);
+            }).isInstanceOf((IllegalArgumentException.class));
+        }
+
+        @Test
+        void friendsListLengthOver2() {
+            String user = "mrko";
+            List<List<String>> friends = List.of(
+                List.of("donut", "andole"),
+                List.of("donut", "jun"),
+                List.of("donut", "mrko"),
+                List.of("shakevan", "andole", "bj"),
+                List.of("shakevan", "jun"),
+                List.of("shakevan", "mrko")
+            );
+            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+            List<String> result = List.of("andole", "jun", "bedi");
+            assertThatThrownBy(() -> {
+                Problem7.solution(user, friends, visitors);
+            }).isInstanceOf((IllegalArgumentException.class));
+        }
+
+        @Test
+        void idOnlyLowercase() {
+            String user = "mrko";
+            List<List<String>> friends = List.of(
+                List.of("donut", "Andole"),
+                List.of("donut", "jun"),
+                List.of("donut", "mrko"),
+                List.of("shakevan", "Andole"),
+                List.of("shakevan", "jun"),
+                List.of("shakevan", "mrko")
+            );
+            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+            List<String> result = List.of("Andole", "jun", "bedi");
+            assertThatThrownBy(() -> {
+                Problem7.solution(user, friends, visitors);
+            }).isInstanceOf((IllegalArgumentException.class));
+        }
+
+        @Test
+        void idOnlyLowercase2() {
+            String user = "mrko";
+            List<List<String>> friends = List.of(
+                List.of("donut", "andol2"),
+                List.of("donut", "jun"),
+                List.of("donut", "mrko"),
+                List.of("shakevan", "andol2"),
+                List.of("shakevan", "jun"),
+                List.of("shakevan", "mrko")
+            );
+            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+            List<String> result = List.of("andol2", "jun", "bedi");
+            assertThatThrownBy(() -> {
+                Problem7.solution(user, friends, visitors);
+            }).isInstanceOf((IllegalArgumentException.class));
+        }
+
+        @Test
+        void idOnlyLowercase3() {
+            String user = "mrko";
+            List<List<String>> friends = List.of(
+                List.of("donut", "andol이"),
+                List.of("donut", "jun"),
+                List.of("donut", "mrko"),
+                List.of("shakevan", "andol이"),
+                List.of("shakevan", "jun"),
+                List.of("shakevan", "mrko")
+            );
+            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+            List<String> result = List.of("andol이", "jun", "bedi");
+            assertThatThrownBy(() -> {
+                Problem7.solution(user, friends, visitors);
+            }).isInstanceOf((IllegalArgumentException.class));
+        }
+
+        @Test
+        void everyonefriend4() {
+            String user = "donut";
+            List<List<String>> friends = List.of(
+                List.of("donut", "andole"),
+                List.of("andole", "jun"),
+                List.of("jun", "donut")
+            );
+            List<String> visitors = List.of("andole", "jun");
+            List<String> result = new ArrayList<>();
+            assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+        }
+
+        @Test
+        void userNotFoundInList() {
+            String user = "dayun";
+            List<List<String>> friends = List.of(
+                List.of("donut", "andole"),
+                List.of("donut", "jun"),
+                List.of("donut", "mrko"),
+                List.of("shakevan", "andole"),
+                List.of("shakevan", "jun"),
+                List.of("shakevan", "mrko")
+            );
+            List<String> visitors = new ArrayList<>();
+            List<String> result = new ArrayList<>();
+            assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+        }
+
+        @Test
+        void OnlyinVisitor() {    //when u should sort visitors only
+            String user = "dayun";
+            List<List<String>> friends = List.of(
+                List.of("donut", "andole"),
+                List.of("andole", "jun"),
+                List.of("jun", "donut")
+            );
+            List<String> visitors = List.of( "ejachoi", "bcho", "bcho", "ejachoi", "yback", "yback", "yback");
+            List<String> result = List.of("yback", "bcho", "ejachoi");
+            assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+        }
+
+        @Test
+        void UserinVisitor() {    //when u should sort visitors only
+            String user = "dayun";
+            List<List<String>> friends = List.of(
+                List.of("donut", "andole"),
+                List.of("andole", "jun"),
+                List.of("jun", "donut")
+            );
+            List<String> visitors = List.of("bcho", "ejachoi", "bcho", "ejachoi", "yback", "yback", "dayun");
+            List<String> result = List.of("bcho", "ejachoi", "yback");
+            assertThatThrownBy(() -> {
+                Problem7.solution(user, friends, visitors);
+            }).isInstanceOf((IllegalArgumentException.class));
+        }
+
+        @Test
+        void Morethan5People() {    //when u should sort visitors only
+            String user = "dayun";
+            List<List<String>> friends = List.of(
+                List.of("donut", "andole"),
+                List.of("andole", "jun"),
+                List.of("jun", "donut")
+            );
+            List<String> visitors = List.of("bcho", "ejachoi",  "yback", "chanwjeo", "sungwoop", "abcdef");
+            List<String> result = List.of("abcdef", "bcho", "chanwjeo", "ejachoi", "sungwoop");
+            assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+        }
+        @Test
+        void casebcho() {
+            String user = "mrko";
+            List<List<String>> friends = List.of(
+                List.of("donut", "andole"),
+                List.of("donut", "jun"),
+                List.of("donut", "mrko"),
+                List.of("shakevan", "andole"),
+                List.of("shakevan", "jun"),
+                List.of("shakevan", "mrko")
+            );
+            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan", "abcd", "abcz");
+            List<String> result = List.of("andole", "jun", "bedi", "abcd", "abcz");
+            assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+        }
     }
+
 }
