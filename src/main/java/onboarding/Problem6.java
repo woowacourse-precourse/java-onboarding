@@ -6,14 +6,10 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
         for (List<String> e : forms) {
-            System.out.println("*"+e.get(1)+"*");
             String targetName = e.get(1);
             ArrayList<String> cutNameList = cutNickname(e.get(1));
             for (String cutName : cutNameList) {
-                System.out.println(cutName);
                 Boolean matchResult = isThereMatch(forms, cutName, targetName);
-                System.out.println(matchResult);
-                System.out.println("ㅡㅡㅡㅡㅡ");
                 if (matchResult) {
                     String email = e.get(0);
                     if(!answer.contains(email)){
@@ -23,7 +19,7 @@ public class Problem6 {
                 }
             }
         }
-        System.out.println("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
+        Collections.sort(answer);
         return answer;
     }
 
@@ -32,8 +28,6 @@ public class Problem6 {
         for (List<String> e : forms) {
             String nickname = e.get(1);
             if (!nickname.equals(targetName)) {
-                System.out.println("in");
-                System.out.println(nickname);
                 Boolean result = nickname.matches(regex);
                 if (result) {
                     return true;
