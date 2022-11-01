@@ -8,17 +8,14 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         Problem1 solve = new Problem1();
-        solve.procException(solve.hasException(pobi, crong));
+        if(solve.hasException(pobi, crong))
+            return -1;
         int pobiMaxNum = solve.getMaxNum(solve.getNumByPage(pobi, "left"), solve.getNumByPage(pobi, "right"));
         int crongMaxNum = solve.getMaxNum(solve.getNumByPage(crong, "left"), solve.getNumByPage(crong, "right"));
         return solve.getWinner(pobiMaxNum, crongMaxNum);
     }
 
-    private void procException(Boolean isException) {
-        if (isException) {
-            throw new RuntimeException("Error Occur");
-        }
-    }
+
 
     private int getNumByPage(List<Integer> user, String page) {
         int index = (page=="left")?0:1;
