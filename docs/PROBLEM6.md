@@ -21,3 +21,10 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능목록
+
+- 닉네임과 이메일을 저장하는 저장소 만들기
+- 닉네임을 두글자씩 자르기
+- 자른 글자를 저장하고 만약 이미 동일한 글자가 존재한다면 저장하지 않는다.
+- 유저 제외시키기
