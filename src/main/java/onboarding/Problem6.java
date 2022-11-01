@@ -23,4 +23,29 @@ public class Problem6 {
         }
         return nameMap;
     }
+
+    public static List<String> getEmail(HashMap<String, Integer> nameMap, List<List<String>> forms){
+        List<String> answer = new ArrayList<>();
+        for (List<String> form : forms){
+            HashMap<String, Integer> eachNameMap = new HashMap<>();
+            String name = form.get(1);
+            String email = form.get(0);
+            for (int i = 0 ; i < name.length() - 1 ; i++){
+                String subsetOfName = name.substring(i, i + 2);
+                if (eachNameMap.containsKey(subsetOfName))
+                    eachNameMap.put(subsetOfName, eachNameMap.get(subsetOfName) + 1);
+                else {
+                    eachNameMap.put(subsetOfName, 1);
+                }
+            }
+            for (String subsetName : eachNameMap.keySet()){
+                if (nameMap.get(subsetName) > eachNameMap.get(subsetName)){
+                    answer.add(email);
+                    break;
+                }
+            }
+        }
+        Collections.sort(answer, Comparator.comparing(s -> s.split("@")[0]));
+        return answer;
+    }
 }
