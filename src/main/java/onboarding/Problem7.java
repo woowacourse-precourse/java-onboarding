@@ -6,16 +6,10 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Problem7 p7 = new Problem7();
         List<List<String>> newFriendList = p7.getFriendList(friends);
-        Map<String, Integer> friendMap = p7.myFriendScore(newFriendList,user);
+        Map<String, Integer> friendMap = p7.myFriendScore(newFriendList, user);
         Map<String, Integer> visitMap = p7.getVisitScore(visitors);
         Map<String, Integer> totalMap = p7.getTotalScore(visitMap, friendMap);
-        Set<String> set = p7.getReverseMap(totalMap);
-
-        List<String> answer = new ArrayList<>();
-        for(String s: set){
-            answer.add(s);
-        }
-
+        List<String> answer = p7.getReverseMap(totalMap, newFriendList,user);
 
         return answer;
     }
@@ -126,26 +120,112 @@ public class Problem7 {
         return totalScore;
     }
 
-    public Set<String> getReverseMap(Map<String,Integer> totalScore) {
-        Set<String> recommadScore = new TreeSet<>();
-        TreeMap<Integer, String> reverse = new TreeMap<>();
 
+    public List<String> getReverseMap(Map<String,Integer> totalScore, List<List<String>> friendList, String user)  {
 
-        Set<String> tset = totalScore.keySet();
-        for (String s : tset) {
-            reverse.put(totalScore.get(s), s);
+        Collection<Integer> val = totalScore.values();
+        Set<String> name1 = totalScore.keySet();
+
+        Iterator<Integer> iterator = val.iterator();
+        List<Integer> maxvallist = new ArrayList<>();
+        while(iterator.hasNext()){
+            int a = iterator.next();
+            maxvallist.add(a);
         }
-        int count=1;
-        NavigableMap<Integer, String> descendingMap = reverse.descendingMap();
-        Set<Map.Entry<Integer,String>>  descendingEntrySet = descendingMap.entrySet();
-        for(Map.Entry<Integer, String> e : descendingEntrySet){
-            recommadScore.add(e.getValue());
+        int [] maxval = new int [maxvallist.size()];
 
-            if(count==5){break;}
-            count++;
+        for(int i=0; i<maxvallist.size();i++) {
+            maxval[i]=maxvallist.get(i);
         }
 
-        return recommadScore;
+        Iterator<String> iterator2 = name1.iterator();
+        List<String> namelist = new ArrayList<>();
+        while(iterator2.hasNext()){
+            String str = iterator2.next();
+            namelist.add(str);
+        }
+
+        String [] name = new String[namelist.size()];
+        for(int i=0; i<namelist.size();i++){
+            name[i] = namelist.get(i);
+        }
+
+
+
+
+
+
+        for(int i=0;i<maxval.length;i++){
+
+            for(int j=i+1;j<maxval.length;j++) {
+                if(maxval[j]>maxval[i]){
+                    int temp = maxval[i];
+                    maxval[i]=maxval[j];
+                    maxval[j]=temp;
+
+                    String str = name[i];
+                    name[i] = name[j];
+                    name[j] = str;
+                }
+            }
+        }
+
+
+        for(int i=0;i<maxval.length-1;i++){
+            if(maxval[i]==maxval[i+1]){
+                char[] n1 = name[i].toCharArray();
+                char[] n2 = name[i+1].toCharArray();
+
+
+                for(int j=0;j<31;j++){
+
+                    if(j<n1.length && j<n2.length){
+                        char c1 = n1[j];
+                        char c2 = n2[j];
+                        if(c1>c2){
+                            System.out.print(name[i]+"과"+name[i+1]);
+                            int temp = maxval[i];
+                            maxval[i]=maxval[i+1];
+                            maxval[i+1]=temp;
+
+                            String str = name[i];
+                            name[i] = name[i+1];
+                            name[i+1] = str;
+                            System.out.println(name[i]+"이 같아야 함"+name[i+1]);
+                        }
+                    }
+                }
+            }
+        }
+
+
+        List<String> userFriends = new ArrayList<>();
+        //userFriends 만드는 코드
+        for(List<String> s : friendList) {
+            if(user.equals(s.get(0))){
+                userFriends.add(s.get(1));
+            }
+        }
+
+        for(int i=0;i<name.length;i++){
+            for(String f : userFriends){
+                if (f.equals(name[i])) {
+                    name[i] = null;
+                    break;
+                }
+            }
+        }
+
+        List<String> answer = new ArrayList<>();
+
+        for (String s : name) {
+            if (s != null) {
+                answer.add(s);
+            }
+        }
+
+        return answer;
+
     }
 
 
