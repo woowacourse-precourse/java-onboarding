@@ -22,9 +22,8 @@ public class Problem3 {
 
     private static int count369(int number) {
         int numberOf369 = 0;
-        int digit = 0;
         while (number > 0) {
-            digit = number % 10;
+            int digit = number % 10;
             numberOf369 += check369(digit);
             number /= 10;
         }
