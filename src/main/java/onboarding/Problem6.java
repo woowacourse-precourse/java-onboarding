@@ -12,6 +12,14 @@ public class Problem6 {
         return email;
     }
 
+    static String getNick(List<List<String>> forms, int i) {
+
+        List<String> formOne = forms.get(i);
+        String nick = formOne.get(1);
+
+        return nick;
+    }
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
 
