@@ -127,6 +127,15 @@ class User {
             setRecommendPoint(candidates, UserManager.FRIEND_POINT);
         }
     }
+
+    /** 정렬된 recommendedFriend(추천 친구 리스트)의 key 반환  */
+    List<String> getSortedKeySet(){
+        List<String> keySet = new ArrayList<>(this.recommendedFriend.keySet());
+        RecommendedFriendComparator recommendedFriendComparator = new RecommendedFriendComparator(this.recommendedFriend);
+        keySet.sort(recommendedFriendComparator);
+        return keySet;
+    }
+
 }
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
