@@ -16,4 +16,11 @@ class Problem1 {
             return 0;
         }
     }
+
+    public static boolean exceptionHandler(List<Integer> pageList) {
+        int left = pageList.get(0);
+        int right = pageList.get(1);
+        return ((left + 1 != right) || (left == 1) || (right == 400));
+    }
+
 }
