@@ -4,6 +4,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.HashMap;
 
 public class Problem7 {
 
@@ -17,6 +18,20 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
+    }
+
+    static void get_friend_map(List<List<String>> friends){
+
+        friend_map = new HashMap<>();
+
+        for(List<String> pair : friends) {
+            String user1 = pair.get(0);
+            String user2 = pair.get(1);
+
+            add_relationship(user1, user2);
+            add_relationship(user2, user1);
+        }
+
     }
 
     static void add_relationship(String user1, String user2){
