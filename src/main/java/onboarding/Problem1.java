@@ -14,7 +14,8 @@ class Problem1 {
             Problem1 P = new Problem1();
             int pobiMax = Math.max(P.findPageMaxNum(pobiLpage),P.findPageMaxNum(pobiRpage));
             int crongMax = Math.max(P.findPageMaxNum(crongLpage),P.findPageMaxNum(crongRpage));
-            answer = pobiMax!=crongMax?pobiMax>crongMax?1:2:0;
+
+            answer = P.matchResult(pobiMax,crongMax);
             return answer;
         }
         else return -1;
@@ -31,6 +32,11 @@ class Problem1 {
         int maxNum = Math.max(plus, multi);
 
         return maxNum;
+    }
+
+    public int matchResult(int num1, int num2) {
+        int result  = num1!=num2?num1>num2?1:2:0;
+        return result;
     }
 
 }
