@@ -15,6 +15,13 @@ public class Problem4 {
         return answer;
     }
 
+    private static boolean isAlphabet(char c) {
+        if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')) {
+            return true;
+        }
+        return false;
+    }
+
     private static void createTreeFrogDictionary() {
         for (int i = 0; i < THE_NUMBER_OF_ALPHABET; i++) {
             treeFrogDict.put((char) ('a' + i), (char) ('z' - i));
