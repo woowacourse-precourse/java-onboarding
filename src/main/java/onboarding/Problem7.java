@@ -3,74 +3,90 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
-    static Set<String> friendList = new HashSet<>();
-    static HashMap<String, Integer> acquaintance = new HashMap<>();
+    private static Set<String> friendList = new HashSet<>();
+    private static HashMap<String, Integer> acquaintance = new HashMap<>();
 
-    //public static
-    /*public static Set<String> makeFriendList(String user, List<List<String>> friends) {
-        Set<String> friendList = new HashSet<>();
-    }*/
+    public static Boolean checkFriend(String name) {
+        if (friendList.contains(name)) {
+            return true;
+        }
+        return false;
+    }
+    public static Boolean checkAcquaintance(String name) {
+        if (acquaintance.containsKey(name)) {
+            return true;
+        }
+        return false;
+    }
+    public static Boolean deleteAcquaintance(String name) {
+        if (checkFriend(name)) {
+            acquaintance.remove(name);
+            return true;
+        }
+        return false;
+    }
+    public static Boolean addFriend(String user, String firstName, String secondName) {
+        if (user.equals(firstName)) {
+            friendList.add(secondName);
+            if (checkAcquaintance(secondName)) deleteAcquaintance(secondName);
+            return true;
+        }
+        if (user.equals(secondName)) {
+            friendList.add(firstName);
+            if (checkAcquaintance(firstName)) deleteAcquaintance(firstName);
+            return true;
+        }
+        return false;
+    }
+    public static Boolean addAcquaintance(String name) {
+        acquaintance.put(name, 0);
+        return true;
+    }
+
+    public static Boolean makeFriendAndAcquaintance(String user, List<List<String>> friends) {
+        for (List<String> lists: friends) {
+            String firstName = lists.get(0);
+            String secondName = lists.get(1);
+
+            if (addFriend(user, firstName, secondName)) continue;
+            addAcquaintance(firstName);
+            addAcquaintance(secondName);
+        }
+        return true;
+    }
+    public static Boolean friendPoint(String name) {
+        acquaintance.put(name, acquaintance.get(name) + 10);
+        return true;
+    }
+    public static Boolean acquaintancePoint(String name) {
+        acquaintance.put(name, 1);
+        return true;
+    }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         answer = new ArrayList<>();
+        makeFriendAndAcquaintance(user, friends);
 
-
-        // 친구목록, 아는사람 목록 만들기
-        //friendList = makeFriendList(user, friends);
+        // 친구의 친구
         for (int i = 0; i < friends.size(); i++) {
             String firstName = friends.get(i).get(0);
             String secondName = friends.get(i).get(1);
 
-            if (user.equals(firstName)) {
-                friendList.add(secondName);
-
-                // 친구가 된 경우 acquaintance에서 빼야 함
-                if (acquaintance.containsKey(secondName))
-                    acquaintance.remove(secondName);
-
-                continue;
-            }
-
-            if (user.equals(secondName)) {
-                friendList.add(firstName);
-                if (acquaintance.containsKey(firstName))
-                    acquaintance.remove(firstName);
-                continue;
-            }
-            acquaintance.put(friends.get(i).get(0), 0);
-            acquaintance.put(friends.get(i).get(1), 0);
-        }
-        //System.out.println(friendList);
-
-        // 친구의 친구 찾기
-        for (int i = 0; i < friends.size(); i++) {
-            String firstName = friends.get(i).get(0);
-            String secondName = friends.get(i).get(1);
-            //System.out.println(friends.get(i));
-            //System.out.println(friends.get(i).get(1));
-
-            if (friends.get(i).get(0).equals(user) || friends.get(i).get(1).equals(user))
-                continue;
-
-            if (friendList.contains(firstName)) {
-                acquaintance.put(secondName, acquaintance.get(secondName) + 10);
-            }
-
-            if (friendList.contains(secondName)) {
-                acquaintance.put(firstName, acquaintance.get(firstName) + 10);
-            }
-            //System.out.println(acquaintance);
+            if (firstName.equals(user) || secondName.equals(user)) continue;
+            if (checkFriend(firstName)) friendPoint(secondName);
+            if (checkFriend(secondName)) friendPoint(firstName);
         }
 
-        // visitor 처리
+        // visitor
         for (int i = 0; i < visitors.size(); i++) {
-            if (!acquaintance.containsKey(visitors.get(i))) {
-                if(friendList.contains(visitors.get(i))) continue;
-                acquaintance.put(visitors.get(i), 1);
-                continue;
+            String visitor = visitors.get(i);
+
+            if (!checkAcquaintance(visitors.get(i))) {
+                if(checkFriend(visitor)) continue;
+                addAcquaintance(visitor);
             }
-            acquaintance.put(visitors.get(i), acquaintance.get(visitors.get(i)) + 1);
+            acquaintancePoint(visitor);
         }
 
         List<Map.Entry<String, Integer>> entryList = new LinkedList<>(acquaintance.entrySet());
