@@ -33,4 +33,11 @@ public class Problem4 {
         return (char)back;
     }
 
+    //소문자일 경우 변환 문자를 리턴하는 기능
+    public static char lowerCase(int num) {
+        int distance = num - 97; //첫번호(a)와 해당문자 번호의 차이
+        int back = 122 - distance; //소문자 끝번호에서 차이 빼기
+        return (char)back;
+    }
+
 }
