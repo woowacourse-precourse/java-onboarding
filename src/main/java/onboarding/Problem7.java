@@ -36,6 +36,9 @@ public class Problem7 {
     }
 
     public static void addFriend(Map<String, Set<String>> userToFriends, String user1, String user2) {
+        if (user1.equals(user2)) {
+            return;
+        }
         userToFriends
                 .computeIfAbsent(user1, k -> new HashSet<>())
                 .add(user2);
@@ -49,26 +52,35 @@ public class Problem7 {
     public static Map<String, Integer> getFriendsInCommon(Map<String, Set<String>> userToFriends, String user) {
         Map<String, Integer> friendsInCommon = new HashMap<>();
 
-        for (String id : userToFriends.keySet()) {
-            friendsInCommon.put(id, getNumberOfFriendsInCommon(userToFriends, user, id));
-        }
-        return friendsInCommon;
-    }
+        Queue<List<String>> queue = new LinkedList<>();
+        List<String> self = List.of(user, "0");
+        queue.add(self);
 
-    public static int getNumberOfFriendsInCommon(Map<String, Set<String>> userToFriends, String user, String other) {
-        if (user.equals(other)) {
-            return 0;
-        }
+        Set<String> visited = new HashSet<>();
 
-        int count = 0;
+        while (queue.isEmpty() == false) {
 
-        for (String id : userToFriends.keySet()) {
+            List<String> current = queue.poll();
+            String id = current.get(0);
+            int depth = Integer.parseInt(current.get(1));
 
-            if (userToFriends.getOrDefault(user, Set.of()).contains(id) && userToFriends.getOrDefault(other, Set.of()).contains(id)) {
-                count += 1;
+            if (visited.contains(id) == true) {
+                continue;
+            }
+
+            visited.add(id);
+
+            if (depth == 2) {
+                friendsInCommon.put(id, friendsInCommon.getOrDefault(id, 0) + 1);
+                continue;
+            }
+
+
+            for (String friend : userToFriends.getOrDefault(id, Set.of())) {
+                queue.add(List.of(friend, String.valueOf(depth + 1)));
             }
         }
-        return count;
+        return friendsInCommon;
     }
 
     public static Map<String, Integer> getIdToRecommendScore(String user, Map<String, Set<String>> userToFriends, List<String> visitors) {
