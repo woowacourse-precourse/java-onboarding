@@ -19,7 +19,7 @@ public class Problem2 {
 				break inf;
 			}
 		}
-		String answer = sb.toString();
+		String answer =  "\"" + sb.toString() + "\"";
         
         return answer;
     }
