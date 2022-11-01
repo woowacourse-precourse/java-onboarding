@@ -5,6 +5,7 @@ import java.util.*;
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
+        answer = searchDuplicate(forms);
         return answer;
     }
 
@@ -37,8 +38,12 @@ public class Problem6 {
             for (int j = 0; j < nickname.length() - 1; j++) {
                 if (allNicknameElements.get(nickname.substring(j, j+2)) != 1) {
                     emails.add(email);
+                    break;
                 }
             }
         }
+        Collections.sort(emails);
+        return emails;
     }
+
 }
