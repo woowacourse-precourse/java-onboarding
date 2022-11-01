@@ -1,8 +1,11 @@
 # 🎈 민주
 ## ✔ 기능 정의
-- [X] 화폐 단위 list 만드는 메소드
-- [X] money를 출금하기 위해, 해당 화폐 단위가 몇 개 필요한지 개수를 return 하는 메소드
-- [X] 두번째 메소드를 화폐 단위 list 개수만큼 반복하여 answer에 담는 메소드
+### Collection
+- 화폐 단위 리스트 unitList
+### 기능
+- [X] unitList 초기화 (initUnitList)
+- [X] money를 출금하기 위해, 해당 화폐 단위(unit)가 몇 개 필요한지 개수를 return (getUnitCount)
+- [X] 다음 화폐 단위 계산을 위해 money 업데이트 (getNextMoney)
 
 # 🎈 본문
 ## 🚀 기능 요구 사항
