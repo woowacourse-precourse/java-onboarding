@@ -1,9 +1,6 @@
 package onboarding.problem7;
 
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class RecommendScoreBoard {
@@ -12,6 +9,7 @@ public class RecommendScoreBoard {
   public void keepScore(List<String> users, RecommendType type) {
     users.forEach(user -> keepScore(user, type));
   }
+
   public void keepScore(String user, RecommendType type) {
     if (scoreBoard.containsKey(user)) {
       scoreBoard.put(user, scoreBoard.get(user) + type.getScore());
@@ -21,9 +19,22 @@ public class RecommendScoreBoard {
   }
 
   public List<String> getResult() {
-    List<Map.Entry<String, Integer>> entries = scoreBoard.entrySet().stream()
-            .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
-            .collect(Collectors.toList());
-    return entries.stream().limit(5).map(Map.Entry::getKey).collect(Collectors.toList());
+    List<Map.Entry<String, Integer>> list = new ArrayList<>(scoreBoard.entrySet());
+    Collections.sort(list, new ValueThenKeyComparator<>());
+    return list.stream().limit(5).map(s -> s.getKey()).collect(Collectors.toList());
+  }
+
+  class ValueThenKeyComparator<K extends Comparable<? super K>,
+          V extends Comparable<? super V>>
+          implements Comparator<Map.Entry<K, V>> {
+
+    public int compare(Map.Entry<K, V> a, Map.Entry<K, V> b) {
+      int cmp1 = b.getValue().compareTo(a.getValue());
+      if (cmp1 != 0) {
+        return cmp1;
+      } else {
+        return a.getKey().compareTo(b.getKey());
+      }
+    }
   }
 }
