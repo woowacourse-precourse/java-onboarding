@@ -14,22 +14,16 @@ public class Problem7 {
         Members members = new Members(friendsMap);
         Member userMember = memberObjectMep.get(user);
 
-        List<Member> userFriends = members.getUserFriends(userMember);
         List<Member> userAndUserFriends = members.getUserAndUserFriends(userMember);
         List<Member> acquaintances = members.getAcquaintances(userMember);
-//        Map<String, Integer> acquaintancesPoint = getAcquaintancesPoint(acquaintances, userAndUserFriends);
-//        Map<String, Integer> visitorsPoint = getVisitorsPoint(visitors, userAndUserFriends);
-//
-//        visitorsPoint
-//                .forEach((key, value) -> acquaintancesPoint.merge(key, value, (value1, value2) -> value1 + value2));
-//
-//        return acquaintancesPoint.entrySet().stream()
-//                .filter(entry -> entry.getValue() > 0)
-//                .map(entry -> new Member(entry.getKey(), entry.getValue()))
-//                .sorted(Comparator.comparing(Member::getPoint).reversed().thenComparing(Member::getName))
-//                .map(Member::getName)
-//                .collect(Collectors.toList());
-        return Collections.emptyList();
+        List<Member> visitorMembers = visitors.stream()
+                .map(visitor -> memberObjectMep.get(visitor))
+                .collect(Collectors.toList());
+
+        members.upAcquaintancesPoint(acquaintances, userAndUserFriends);
+        members.upVisitorsPoint(visitorMembers, userAndUserFriends);
+
+        return members.getSortedMemberNameList();
     }
 
     public static Map<Member, List<Member>> getFriendsMap(List<List<String>> friends, Map<String, Member> memberObjectMap) {

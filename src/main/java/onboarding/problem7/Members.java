@@ -1,6 +1,7 @@
 package onboarding.problem7;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -41,6 +42,15 @@ public class Members {
         for (Member visitor : visitors) {
             visitor.upVisitorPoint(userAndUserFriends);
         }
+    }
+
+    public List<String> getSortedMemberNameList() {
+        return memberListMap.keySet().stream()
+                .filter(member -> member.getPoint() > 0)
+                .sorted(Comparator.comparing(Member::getPoint).reversed()
+                        .thenComparing(Member::getName))
+                .map(member -> member.getName())
+                .collect(Collectors.toList());
     }
 
     private boolean isNotUserAndUserFriend(Member user, List<Member> userFriends, Member acquaintance) {
