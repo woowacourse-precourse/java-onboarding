@@ -14,7 +14,7 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         initialize();
         validateForm(forms);
-        AddAllCrews(forms);
+        addAllCrews(forms);
 
         for (List<String> crew: forms) {
             if (validateCrew(crew)) {
@@ -152,7 +152,7 @@ public class Problem6 {
      * 크루 인덱싱
      * @param forms 크루 신청 데이터
      */
-    private static void AddAllCrews(List<List<String>> forms) {
+    private static void addAllCrews(List<List<String>> forms) {
         crews.addAll(forms);
     }
 
