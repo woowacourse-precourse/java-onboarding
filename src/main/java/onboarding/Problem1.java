@@ -15,7 +15,7 @@ class Problem1 {
         crongMax = Math.max(findMax(crong.get(0)), findMax(crong.get(1)));
         answer = findWinner(pobiMax, crongMax);
         return answer;
-}
+    }
 
     // 예외 경우인지를 판단하는 함수 isException()
     private static boolean isException(List<Integer> pages) {
