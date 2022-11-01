@@ -2,7 +2,7 @@ package onboarding;
 
 public class Problem4 {
     public static char reverseCharacter(int asciiValue, int startNumber, int endNumber) {
-
+        return (char) (asciiValue + (startNumber - asciiValue) + (endNumber - asciiValue));
     }
 
     public static String solution(String word) {
