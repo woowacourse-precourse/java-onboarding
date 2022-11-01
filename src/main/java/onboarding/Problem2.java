@@ -16,4 +16,16 @@ public class Problem2 {
         }
         return false;
     }
+
+    // 몇 번째 인덱스까지 연속된 문자가 나오는지 확인하는 기능
+    public static int getCutIndex(String str) {
+        int cutIndex = 0;
+
+        for (int i = 0; i < str.length() - 1; i++){
+            if (str.charAt(i) == str.charAt(i+1) && str.charAt(0) == str.charAt(i)) {
+                cutIndex = i+1;
+            }
+        }
+        return cutIndex;
+    }
 }
