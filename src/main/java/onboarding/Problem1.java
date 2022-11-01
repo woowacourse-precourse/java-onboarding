@@ -41,8 +41,7 @@ class Problem1 {
      * @return 배열
      */
     private static int[] splitEachNumbers(int number) {
-        int[] arrNum = Stream.of(String.valueOf(number).split("")).mapToInt(Integer::parseInt).toArray();
-        return arrNum;
+        return Stream.of(String.valueOf(number).split("")).mapToInt(Integer::parseInt).toArray();
     }
 
     /**
