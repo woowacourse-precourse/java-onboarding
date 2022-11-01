@@ -13,17 +13,17 @@ public class Problem4 {
         /**
          * 1번인 a를 26번인 z로
          * 2번인 b를 25번인 y로
-         * 바꾸기 위한 방법인 27 - 알파벳 번호 = 원하는 알파벳 번호
+         * 바꾸기 위한 방법인 26 - 알파벳 번호 + 1 = 원하는 알파벳 번호
          * 를 통해서 원하는 알파벳으로 바꾸는 과정
          */
         for(int i=0; i<word.length(); i++){
             char tmp = word.charAt(i);
             if(tmp >= 65 && tmp <= 90){
-                tmp = (char)('[' - tmp + 'A');
+                tmp = (char)('Z' - tmp + 'A');
                 ans.append(tmp);
             }
             else if(tmp >= 97 && tmp <= 122){
-                tmp = (char)('{' - tmp + 'a');
+                tmp = (char)('z' - tmp + 'a');
                 ans.append(tmp);
             }
             else ans.append(tmp);
