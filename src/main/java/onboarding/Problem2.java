@@ -2,8 +2,18 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String answer = getResult(cryptogram);
         return answer;
+    }
+
+    // 1. 현재 문자열의 모든 중복 문자 제거하기
+    public static String getResult(String s)
+    {
+        // 문자열이 남아있고 중복이 있는 지 체크
+        while (checkIfStringRemain(s) &&checkIfDuplicatesRemain(s) ) {
+            s =removeFirstDuplicates(s);
+        }
+        return s;
     }
 
     // 2. 현재 문자열의 중복 문자 한번 제거하기
