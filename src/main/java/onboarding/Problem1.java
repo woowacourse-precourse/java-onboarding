@@ -4,12 +4,13 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        int answer;
         int pobiScore;
         int crongScore;
 
-        if (!isValid(pobi) || !isValid(crong)) {
-            return -1;
+        if (isError(pobi) || isError(crong)) {
+            answer = -1;
+            return answer;
         }
 
         pobiScore = findScore(pobi);
@@ -71,12 +72,12 @@ class Problem1 {
         return answer;
     }
 
-    public static boolean isValid(List<Integer> pages) {
+    public static boolean isError(List<Integer> pages) {
         if (!isInRange(pages)) {
-            return false;
+            return true;
         }
         if ((pages.get(0) + 1) != pages.get(1)) {
-            return false;
+            return true;
         }
         return pages.get(0) % 2 != 1;
     }
