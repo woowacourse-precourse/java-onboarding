@@ -64,17 +64,19 @@ public class Problem7 {
     }
 
 
-    private static List<String> getUsersOrderByPoints(String user, HashMap<String, Integer> userPoints) {
-        List<String> usersOrderByPoints = new ArrayList<String>(userPoints.keySet());
+    private static List<String> getUsersOrderByPoints(Map<String, Integer> userPoints){
+        List<String> userOrderByPoints = new ArrayList<>(userPoints.keySet());
 
-        usersOrderByPoints.sort(new Comparator<String>() {
+        userOrderByPoints.sort(new Comparator<String>() {
             @Override
             public int compare(String o1, String o2) {
-                return userPoints.get(02).compareTo(userPoints.get(o1));
+                return userPoints.get(o2).compareTo(userPoints.get(o1));
             }
         });
 
-        return usersOrderByPoints;
+        return userOrderByPoints;
+    }
+
 
     private static List<String> getRecommendedFriends(
             String user,
