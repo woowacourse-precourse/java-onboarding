@@ -9,11 +9,11 @@ public class Problem2 {
 
     public static String solution(String cryptogram) {
         sb = new StringBuilder();
-        initDuplicatedIndexList(cryptogram);
         return getCryptogram(cryptogram);
     }
 
     public static String getCryptogram(String cryptogram) {
+        initDuplicatedIndexList(cryptogram);
         while (duplicatedIndexList.size() > 0) {
             cryptogram = createNewCryptogram(cryptogram);
             addDuplicatedIndex(cryptogram);
