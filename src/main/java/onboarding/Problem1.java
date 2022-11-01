@@ -39,7 +39,7 @@ class Problem1 {
     private static int sumOrProduct(int pageNum) {
         int sum = digitSum(pageNum);
         int product = digitProduct(pageNum);
-        return (sum > product) ? sum : product;
+        return Math.max(sum, product);
     }
 
     private static int leftOrRight(List<Integer> pages) {
@@ -48,7 +48,7 @@ class Problem1 {
         int leftMax = sumOrProduct(leftPage);
         int rightMax = sumOrProduct(rightPage);
 
-        return (leftMax > rightMax) ? leftMax : rightMax;
+        return Math.max(leftMax, rightMax);
     }
 
     private static  boolean isValid(List<Integer> pages) {
