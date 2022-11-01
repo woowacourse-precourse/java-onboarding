@@ -56,6 +56,18 @@ public class Problem7 {
             }
         }
 
+        // 4. visitors 들을 순회하며 visitor 가 친구가 아닌경우 recommScore 에 1점을 더한다
+        for (String name : visitors) {
+            if(!friendSet.contains(name)){
+                addRecommScore(recommScore,1, name);
+            }
+        }
+
+        // recommScore
+        answer = sortingMap(recommScore);
+
+        return answer;
+    }
 
 //  1. getFriendSet(List<List<String>> friends, String user)
 //     - @param String user 에 해당하는 사람의 친구들 set 을 반환
