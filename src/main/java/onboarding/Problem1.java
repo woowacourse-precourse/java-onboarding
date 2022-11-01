@@ -28,6 +28,20 @@ class Problem1 {
         leftCr = crong.get(0);
         rightCr = crong.get(1);
 
+        // 2. 예외 처리 부분
+        if(!checkException(leftPo, rightPo)){
+            return -1;
+        }
+        if(!checkException(leftCr, rightCr)){
+            return -1;
+        }
+
         return answer;
     }
+
+    private static boolean checkException(int left, int right) {
+        if(left+1 == right && left%2 == 1 && right%2 == 0) return true;
+        else return false;
+    }
+
 }
