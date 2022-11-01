@@ -4,28 +4,17 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        //최대 5명까지 점수 높은 순으로 정렬하여 리턴
-        //점수가 0이면 추천하지 않음
-        //점수가 같으면 이름 순으로 정렬
         List<String> userFriends = getUserFriends(user, friends);
 
-        //유저의 친구를 제외한 나머지 친구 맵 만들기
         Map<String, List<String>> unknownFriends = getUnknownFriends(user, friends, userFriends);
 
-        //나머지 친구 맵에 밸류로 친구 등록
         registerFriendInUnknownFriends(friends, unknownFriends);
 
-        //나머지 친구들 점수를 매길 맵
         HashMap<String, Integer> scoreOfVisitors = new HashMap<>();
 
-        //방문자들 점수 매기기
         initScoreOfVisitors(scoreOfVisitors, visitors, unknownFriends, userFriends);
 
-        //사용자와 함께 아는 친구의 수 점수 매기기
         setScoreOfBothKnownFriends(scoreOfVisitors, unknownFriends, userFriends);
-
-        //방문자 수 점수 추가하기
         setScoreOfVisitors(scoreOfVisitors, visitors);
 
         //키를 먼저 정렬
