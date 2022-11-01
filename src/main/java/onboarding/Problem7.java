@@ -4,19 +4,21 @@ import java.util.*;
 
 public class Problem7 {
 
-    static HashSet<String> directFriends = new HashSet<>(); // 직접 친구 리스트
+    static String nowUser; // 유저본인
+    static HashSet<String> directFriends = new HashSet<>(); // 직접 친구(아는 친구X) 리스트
     static Map<String, Integer> friendsScoreList = new HashMap<>(); // 친구/점수 리스트
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
+        nowUser = user;
         // 1. 직접 친구(아는 친구X) 리스트 초기화
-        directFriends = getDirectFriends(user, friends);
+        directFriends = getDirectFriends(friends);
 
         // 2. 모든 친구/ 점수 리스트 초기화 (모든 친구 = 직접 친구 + 아는 친구)
-        friendsScoreList = getFriendsScoreList(user, friends, visitors);
+        friendsScoreList = getFriendsScoreList(friends, visitors);
 
         // 3. 아는 친구 점수 반영
-        friendsScoreList = scoreByKnownFriends(user, friends);
+        friendsScoreList = scoreByKnownFriends(friends);
 
         // 4. 방문 기록 점수 반영
         friendsScoreList = scoreByVisitRecord(visitors);
@@ -31,20 +33,20 @@ public class Problem7 {
     }
 
     // 1. 직접 친구(아는 친구X) 리스트 초기화
-    static HashSet<String> getDirectFriends(String user, List<List<String>> friends){
+    static HashSet<String> getDirectFriends(List<List<String>> friends){
         HashSet<String> directFriends = new HashSet<>();
         for (List<String> friend : friends) {
-            if (friend.get(0).equals(user))  directFriends.add(friend.get(1));
-            if (friend.get(1).equals(user))  directFriends.add(friend.get(0));
+            if (friend.get(0).equals(nowUser))  directFriends.add(friend.get(1));
+            if (friend.get(1).equals(nowUser))  directFriends.add(friend.get(0));
         }
 
         return directFriends;
     }
 
     // 2. 모든 친구/ 점수 리스트 초기화 (모든 친구 = 직접 친구 + 아는 친구)
-    static Map<String, Integer> getFriendsScoreList(String user, List<List<String>> friends, List<String> visitors){
+    static Map<String, Integer> getFriendsScoreList(List<List<String>> friends, List<String> visitors){
         for (List<String> friend : friends) {
-            if (friend.contains(user)) continue;
+            if (friend.contains(nowUser)) continue;
 
             for (String node : friend) {
                 friendsScoreList.put(node, 0);
@@ -58,13 +60,13 @@ public class Problem7 {
     }
 
     // 3. 아는 친구 점수 반영
-    static Map<String, Integer> scoreByKnownFriends(String user, List<List<String>> friends){
+    static Map<String, Integer> scoreByKnownFriends(List<List<String>> friends){
 
         HashMap<String, Integer> knownFriends = new HashMap<>();
 
         // 아는 친구들
         for (List<String> friendRelation : friends) {
-            if (friendRelation.contains(user)) continue;
+            if (friendRelation.contains(nowUser)) continue;
             if (directFriends.contains(friendRelation.get(1))) knownFriends.put(friendRelation.get(0), 1);
             if (directFriends.contains(friendRelation.get(0))) knownFriends.put(friendRelation.get(1), 1);
         }
