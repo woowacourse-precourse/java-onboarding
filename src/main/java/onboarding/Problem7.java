@@ -17,11 +17,11 @@ public class Problem7 {
     private static Map<String, Integer> scorePossibleFriends(String user, List<List<String>> friendRelations, List<String> visitors) {
         List<String> userFriends = findFriends(user, friendRelations);
 
-        Map<String, Integer> score = new HashMap<>();
-        addScoreByFriends(score, user, userFriends, friendRelations);
-        addScoreByVisitors(score, user, userFriends, visitors);
+        Map<String, Integer> scoreMap = new HashMap<>();
+        addScoreByFriends(scoreMap, user, userFriends, friendRelations);
+        addScoreByVisitors(scoreMap, user, userFriends, visitors);
 
-        return score;
+        return scoreMap;
     }
 
     private static List<String> findFriends(String user, List<List<String>> friendRelations) {
@@ -41,7 +41,7 @@ public class Problem7 {
         return output;
     }
 
-    private static void addScoreByFriends(Map<String, Integer> score, String user, List<String> userFriends, List<List<String>> friendRelations) {
+    private static void addScoreByFriends(Map<String, Integer> scoreMap, String user, List<String> userFriends, List<List<String>> friendRelations) {
         for(List<String> friendRelation : friendRelations) {
             String firstOnRelation = friendRelation.get(0);
             String secondOnRelation = friendRelation.get(1);
@@ -56,15 +56,15 @@ public class Problem7 {
             }
 
             if(isNotUserSelfOrFriend(possibleFriend, user, userFriends)) {
-                score.put(possibleFriend, score.getOrDefault(possibleFriend, 0) + 10);
+                scoreMap.put(possibleFriend, scoreMap.getOrDefault(possibleFriend, 0) + 10);
             }
         }
     }
 
-    private static void addScoreByVisitors(Map<String, Integer> score, String user, List<String> userFriends, List<String> visitors) {
+    private static void addScoreByVisitors(Map<String, Integer> scoreMap, String user, List<String> userFriends, List<String> visitors) {
         for(String visitor : visitors) {
             if(isNotUserSelfOrFriend(visitor, user, userFriends)) {
-                score.put(visitor, score.getOrDefault(visitor, 0) + 1);
+                scoreMap.put(visitor, scoreMap.getOrDefault(visitor, 0) + 1);
             }
         }
     }
