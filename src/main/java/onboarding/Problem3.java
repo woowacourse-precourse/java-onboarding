@@ -14,4 +14,10 @@ public class Problem3 {
         return cnt;
     }
 
+    public static boolean canNumber(int number) {
+        if (number >= 1 && number <= 10000) return true;
+        return false;
+    }
+
+
 }
