@@ -24,16 +24,8 @@ public class Problem7 {
         myFriends.add(user);
         initVisitors(visitors, scores);
 
-        for (List<String> friend : friends) {
-            String name1 = friend.get(0);
-            String name2 = friend.get(1);
+        initFriends(user, friends, relations, myFriends);
 
-            isMyFriend(user, myFriends, name1, name2);
-
-            addFriendList(relations, name1, name2);
-            addFriendList(relations, name2, name1);
-        }
-        
         for (String myFriend : myFriends) {
             calcFriendScore(scores, relations, myFriend);
         }
@@ -46,6 +38,18 @@ public class Problem7 {
         }
 
         return result;
+    }
+
+    private static void initFriends(String user, List<List<String>> friends, Map<String, List<String>> relations, Set<String> myFriends) {
+        for (List<String> friend : friends) {
+            String name1 = friend.get(0);
+            String name2 = friend.get(1);
+
+            isMyFriend(user, myFriends, name1, name2);
+
+            addFriendList(relations, name1, name2);
+            addFriendList(relations, name2, name1);
+        }
     }
 
     /**
