@@ -18,6 +18,7 @@ public class Problem7 {
         createFriendList(user, friends, friendList);
         checkFriendOfFriend(user, friends, friendList, recommendedFriends);
         checkVisit(visitors, recommendedFriends);
+        makeRecommendFriendList(recommendedFriends, friendList, answer);
 
         return answer;
     }
@@ -49,4 +50,18 @@ public class Problem7 {
                 recommendedFriends.put(visitor, 1);
     }
 
+    private static void makeRecommendFriendList(Map<String, Integer> recommendedFriends, List<String> friendList, List<String> answer) {
+        List<Map.Entry<String, Integer>> entryList = new ArrayList<>(recommendedFriends.entrySet());
+
+        entryList.sort(new Comparator<Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                return o2.getValue() - o1.getValue();
+            }
+        });
+
+        for(Map.Entry<String, Integer> entry : entryList)
+            if (!friendList.contains(entry.getKey()) && answer.size() < 5)
+                answer.add(entry.getKey());
+    }
 }
