@@ -1,20 +1,31 @@
 package onboarding;
 
 import onboarding.problem7.Member;
+import onboarding.problem7.MrKoRecommender;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Problem7 {
-    private static Map<String, Member> memberStore;
+    private static Map<String, Member> memberMap;
+    private static MrKoRecommender recommender;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        memberStore = setMemberStore(friends, visitors);
+        List<String> answer = new ArrayList<>();
+
+        // friends와 visitors를 통해 모든 멤버들을 등록
+        memberMap = setMemberMap(friends, visitors);
         setUserVisitors(user, visitors);
 
-        List<String> answer = Collections.emptyList();
+        // 추천객체 MrKoRecommender 초기화
+        recommender = new MrKoRecommender(memberMap);
+
+        // user에게 추천되는 친구리스트 반환
+        List<Member> recommendedFriends = recommender.recommendFor(user);
+
+        // 추천된 친구 리스트를 반환 형태로 변환
+        for (Member member : recommendedFriends)
+            answer.add(member.getName());
+
         return answer;
     }
 
@@ -22,8 +33,8 @@ public class Problem7 {
      * 7.1
      * 각 사용자를 나타내는 Member 클래스 생성 -> Map객체로 멤버 관리
      */
-    public static Map<String, Member> setMemberStore(List<List<String>> friends, List<String> visitors) {
-        memberStore = new HashMap<>();
+    public static Map<String, Member> setMemberMap(List<List<String>> friends, List<String> visitors) {
+        memberMap = new HashMap<>();
 
         for (List<String> relation : friends) {
             String member1Name = relation.get(0);
@@ -40,7 +51,7 @@ public class Problem7 {
         for (String visitor : visitors)
             getMember(visitor);
 
-        return memberStore;
+        return memberMap;
     }
 
     /**
@@ -51,11 +62,11 @@ public class Problem7 {
         Member member = null;
 
         // member의 이름이 memberStore의 키 값에 존재 -> 멤버 존재
-        if (memberStore.containsKey(name)) {
-            member = memberStore.get(name);
+        if (memberMap.containsKey(name)) {
+            member = memberMap.get(name);
         } else { // 멤버가 memberStore에 등록되지 않았다면 객체 생성후 등록
             member = new Member(name);
-            memberStore.put(name, member);
+            memberMap.put(name, member);
         }
 
         return member;
@@ -66,10 +77,10 @@ public class Problem7 {
      * 멤버, 멤버들의 친구 리스트, 방문자 리스트 초기화
      */
     public static void setUserVisitors(String user, List<String> visitors) {
-        List<Member> userVisitors = memberStore.get(user).getVisitors();
+        List<Member> userVisitors = memberMap.get(user).getVisitors();
 
         for (String visitor : visitors)
-            userVisitors.add(memberStore.get(visitor));
+            userVisitors.add(memberMap.get(visitor));
     }
 
 }
