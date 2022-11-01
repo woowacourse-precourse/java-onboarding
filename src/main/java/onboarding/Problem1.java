@@ -54,6 +54,16 @@ class Problem1 {
         int MAX_POBI = getMax(pobi);
         int MAX_CRONG = getMax(crong);
 
+        //discriminate winner
+        if(answer != -1){
+            if(MAX_POBI == MAX_CRONG){
+                answer = 0;
+            } else if(MAX_POBI > MAX_CRONG){
+                answer = 1;
+            } else if(MAX_POBI < MAX_CRONG){
+                answer = 2;
+            }
+        }
         return answer;
     }
 }
