@@ -23,9 +23,7 @@ public class Crews {
 
     private boolean isDuplicatedCrew(Crew crew) {
         return getDuplicatedStringList().stream()
-                .filter(string -> isDuplicatedCrewName(crew.getName(), string))
-                .findAny()
-                .isPresent();
+                .anyMatch(string -> isDuplicatedCrewName(crew.getName(), string));
     }
 
     private boolean isDuplicatedCrewName(String crewName, String string) {
