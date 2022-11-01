@@ -1,37 +1,16 @@
 package onboarding;
 
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import onboarding.problem6.Validation;
 
 
 public class Problem6 {
 
     private static HashMap<String, String> notices = new HashMap<>();
 
-    private static boolean getRegexMatcherResult(String expression, String target) {
-        Pattern pattern = Pattern.compile(expression);
-        Matcher matcher = pattern.matcher(target);
-
-        return matcher.matches();
-    }
-
-    private static void isValidEmail(String email) {
-
-        if (!getRegexMatcherResult("^[a-zA-Z0-9]{1,9}@email.com$", email)) {
-            throw new Error("이메일 형식이 올바르지 않습니다.");
-        }
-
-    }
-
-    private static void isValidNickName(String nickname) {
-
-        if (!getRegexMatcherResult("^[가-힣]{1,19}$", nickname)) {
-            throw new Error("닉네임 형식이 올바르지 않습니다.");
-        }
-
-    }
-
+    /*
+    * 닉네임 글자가 연속적으로 포함되는지 검증 기능
+    */
     private static boolean containConsecutiveLetters(String name1, String name2) {
 
         for (int i = 2; i <= name2.length(); i++) {
@@ -44,6 +23,9 @@ public class Problem6 {
         return false;
     }
 
+    /*
+     * notices map에 닉네임 중복의 교육생 추가
+     */
     private static void putDuplicateCrewInNoticesMap(List<String> currentCrew,
             List<List<String>> forms,
             int currentIndex) {
@@ -63,30 +45,36 @@ public class Problem6 {
         }
     }
 
+    /*
+    * HashMap 키 기반의 오름차순 정렬 기능
+    */
     private static List<String> sortByKey(List<String> keyList) {
-
         keyList.sort(String::compareTo);
         return keyList;
     }
 
+    /*
+    * 중복된 닉네임의 교육생을 찾는 함수
+    */
     private static List<String> findCrewsHavingDuplicateNickName(List<List<String>> forms) {
-
-        for (int index = 0; index < forms.size(); index++) {
+        for (int index = 0; index < forms.size(); index++)
             putDuplicateCrewInNoticesMap(forms.get(index), forms, index);
-        }
 
         return sortByKey(new ArrayList<>(notices.keySet()));
     }
 
-    private static void validateForms(List<List<String>> forms) {
+    /*
+    * forms의 이메일 및 닉네임 검증
+    */
+    private static void validateEmailAndNickname(List<List<String>> forms) {
         for (List<String> form : forms) {
-            isValidEmail(form.get(0));
-            isValidNickName(form.get(1));
+            Validation.isValidEmail(form.get(0));
+            Validation.isValidNickName(form.get(1));
         }
     }
 
     public static List<String> solution(List<List<String>> forms) {
-        validateForms(forms);
+        validateEmailAndNickname(forms);
         return findCrewsHavingDuplicateNickName(forms);
     }
 }
