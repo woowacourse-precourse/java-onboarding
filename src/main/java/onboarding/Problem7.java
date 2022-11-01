@@ -50,4 +50,8 @@ public class Problem7 {
         int length = user.length();
         return length >= MIN_USER_LENGTH && length <= MAX_USER_LENGTH;
     }
+
+    private static boolean isValidFriendsLength(List<List<String>> friends) {
+        return friends.size() >= MIN_FRIENDS_LENGTH && friends.size() <= MAX_FRIENDS_LENGTH;
+    }
 }
