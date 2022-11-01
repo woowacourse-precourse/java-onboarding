@@ -41,6 +41,17 @@ public class Problem6 {
         return slicedNicknames;
     }
 
+    public static List<String> getNicknames(List<List<String>> forms) {
+        List<String> nicknames = new ArrayList<>();
+        String nickName = "";
+
+        for (List<String> userInfo : forms) {
+            nickName = userInfo.get(1);
+            nicknames.add(nickName);
+        }
+        return nicknames;
+    }
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
