@@ -34,4 +34,13 @@ class Problem1 {
         }
         return pageSum;
     }
+
+    public static int getPageMul(int page){ // 페이지의 각 자리 숫자들의 곱을 구하는 함수
+        int pageMul = 1; // 페이지의 각 자리 숫자들의 곱
+        while (page > 0) {
+            pageMul *= page % 10;
+            page /= 10;
+        }
+        return pageMul;
+    }
 }
