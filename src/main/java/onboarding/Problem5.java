@@ -4,11 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/**
- * 기능 구현 사항
- * 1. 화폐 리스트, 결과 리스트 선언
- * 2. 계산 알고리즘 구현
- */
 public class Problem5 {
 
     private static final List<Integer> moneyList = Arrays.asList(50000,10000,5000,1000,500,100,50,10,1);
