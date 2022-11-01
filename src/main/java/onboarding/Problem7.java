@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -46,5 +43,23 @@ public class Problem7 {
         recommandList.replace(userId,newScore);
 
         return recommandList;
+    }
+
+    //점수순으로 정렬하는 함수
+    public static HashMap<String,Integer> sortByScore(HashMap<String,Integer> recommandList){
+        List<String> keySet = new ArrayList<>(recommandList.keySet());
+        HashMap<String,Integer> sortedByScoreList = new HashMap<>();
+        keySet.sort(new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                return recommandList.get(o2).compareTo(recommandList.get(o1));
+            }
+        });
+
+        for(String key : keySet){
+            sortedByScoreList.put(key,recommandList.get(key));
+        }
+
+        return sortedByScoreList;
     }
 }
