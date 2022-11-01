@@ -44,4 +44,20 @@ public class Problem6 {
             }
         }
     }
+
+    private void  connectNamesContainingItToFoundSubstrings(){
+        Set<String> userNames = usersInfo.keySet();
+
+        for(String substring : substringsOfLength2){
+            for(String name : userNames){
+                if(name.contains(substring)){
+                    ArrayList<String> emailsMappedThisSubstring = namesMappedToEachSubstringInfo.getOrDefault(substring,new ArrayList<>());
+                    String userEmail = usersInfo.get(name);
+                    emailsMappedThisSubstring.add(userEmail);
+
+                    namesMappedToEachSubstringInfo.put(substring,emailsMappedThisSubstring);
+                }
+            }
+        }
+    }
 }
