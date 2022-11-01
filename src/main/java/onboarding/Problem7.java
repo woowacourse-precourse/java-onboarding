@@ -35,6 +35,17 @@ public class Problem7 {
         }
         return linkedFriends;
     }
+    // 중복제거
+    public static List<String> removeDuplication(List<String> friendList, List<String> visitors) {
+        List<String> editVisitor = new ArrayList<>(visitors);
+        for (String friend : friendList) {
+            if (visitors.contains(friend)) {
+                editVisitor.remove(friend);
+            }
+        }
+        return editVisitor;
+
+    }
 
 
 
