@@ -18,7 +18,7 @@ public class Problem7 {
         for(List<String> list : friends){
             if(list.get(0).equals(user))
                 myFriends.add(list.get(1));
-            else if(list.get(1).equals(user))
+            if(list.get(1).equals(user))
                 myFriends.add(list.get(0));
         }
 
@@ -26,16 +26,18 @@ public class Problem7 {
     }
 
     public static Map<String, Integer> calculateFriendScore(String user, List<List<String>> friends, List<String> visitors){
-        Set<String> myFriends = new HashSet<>();
+        Set<String> myFriends;
         myFriends = findMyFriends(user, friends);
         Map<String, Integer> score = new HashMap<>();
 
         for(List<String> list : friends){
             if(list.get(0).equals(user) || list.get(1).equals(user))
                 continue;
-            else if((myFriends.contains(list.get(0))) && !myFriends.contains(list.get(1)))
+
+            if((myFriends.contains(list.get(0))) && !myFriends.contains(list.get(1)))
                 score.put(list.get(1), (score.getOrDefault(list.get(1), 0) + 10));
-            else if(myFriends.contains(list.get(1)) && !myFriends.contains(list.get(0)))
+
+            if(myFriends.contains(list.get(1)) && !myFriends.contains(list.get(0)))
                 score.put(list.get(0), (score.getOrDefault(list.get(0), 0) + 10));
         }
 
@@ -51,19 +53,16 @@ public class Problem7 {
 
     public static List<String> sortScore(Map<String, Integer> score){
         List<String> sortedScore = new ArrayList<>();
-        List<Map.Entry<String, Integer>> sort_list;
-        sort_list = new ArrayList<Map.Entry<String, Integer>>(score.entrySet());
-        Collections.sort(sort_list, new Comparator<Map.Entry<String, Integer>>() {
-            @Override
-            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
-                if(o1.getValue() == o2.getValue())
-                    return o1.getKey().compareTo(o2.getKey());
-                else
-                    return o2.getValue().compareTo(o1.getValue());
-            }
+        List<Map.Entry<String, Integer>> sortList;
+        sortList = new ArrayList<>(score.entrySet());
+        sortList.sort((o1, o2) -> {
+            if (o1.getValue() == o2.getValue())
+                return o1.getKey().compareTo(o2.getKey());
+
+            return o2.getValue().compareTo(o1.getValue());
         });
 
-        for(Map.Entry<String, Integer> entry : sort_list) {
+        for(Map.Entry<String, Integer> entry : sortList) {
             sortedScore.add(entry.getKey());
             if(sortedScore.size() == 5)
                 break;
