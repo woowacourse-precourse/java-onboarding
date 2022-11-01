@@ -33,6 +33,14 @@ public class Problem7 {
                 pointboard.put(nextperson, point+10);
             }
         }
+
+        for (String visit : visitors) {
+            int point = 0;
+            if(visit==user) continue;
+            if(userfriends.get(user).contains(visit)) continue;
+            if(pointboard.get(visit) != null) point = pointboard.get(visit);
+            pointboard.put(visit, point+1);
+        }
         return answer;
     }
 }
