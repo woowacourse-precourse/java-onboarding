@@ -29,12 +29,29 @@ public class Problem7 {
         }
         return userFriends;
     }
+    private static HashMap<String, Integer> findRelationWithUserFriends(String user, List<List<String>> friends, List<String> userFriends) {
+        List<String> knowUserFriends = new ArrayList<>();
+        HashMap<String, Integer> friendScore = new HashMap<>();
+
+        for(List<String> friend: friends) {
+            for(String userFriend: userFriends) {
+                if (friend.contains(userFriend) && !friend.contains(user)) {
+                    int index = friend.indexOf(userFriend);
+                    String friendWithUserFriend = friend.get(1-index);
+                    knowUserFriends.add(friendWithUserFriend);
+                    addRecommendScore(friendScore, friendWithUserFriend, 10);
+                }
+            }
+        }
+        return friendScore;
+    }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
 
         List<String> userFriends = findUserFriends(user, friends);
         HashMap<String, Integer> friendScore;
+        friendScore = findRelationWithUserFriends(user, friends, userFriends);
         return answer;
     }
 }
