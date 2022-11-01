@@ -7,11 +7,11 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> friendList = new ArrayList<>();
         Map<String,Integer> matchingScore = new HashMap<>();
-        matchingScore=fof(user,friendList,matchingScore,friends);
+        matchingScore=matching(user,friendList,matchingScore,friends);
         matchingScore=score(friendList,matchingScore,visitors);
         return scoreSort(matchingScore);
     }
-    private static Map<String,Integer> fof(String user,List<String> friendList,Map<String,Integer> matchingScore,List<List<String>> friends){
+    private static Map<String,Integer> matching(String user,List<String> friendList,Map<String,Integer> matchingScore,List<List<String>> friends){
         //fof == friend of friend
         for (List<String> list:  friends) {
             if(user==list.get(1)) friendList.add(list.get(0));
