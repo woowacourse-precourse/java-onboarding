@@ -49,13 +49,18 @@ public class Problem7 {
 
     //sns 사용자 아이디 모두가 알파벳 소문자로 구성되어 있는지 검증하는 기능
     public static boolean checkUserIdConsistOfLowercaseAlphabet(String user,
-        List<List<String>> friends) {
+        List<List<String>> friends, List<String> visitors) {
         if (!user.matches(LOWERCASE_ALPHABET)) {
             return false;
         }
         for (List<String> friend : friends) {
             if (!(friend.get(0).matches(LOWERCASE_ALPHABET) || friend.get(1)
                 .matches(LOWERCASE_ALPHABET))) {
+                return false;
+            }
+        }
+        for (String visitor : visitors) {
+            if (!visitor.matches(LOWERCASE_ALPHABET)) {
                 return false;
             }
         }
