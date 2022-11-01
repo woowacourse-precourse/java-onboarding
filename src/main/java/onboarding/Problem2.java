@@ -8,8 +8,6 @@ class Crypto {
   private String cryptogram;
 
   Crypto(String cryptogram) {
-    ValidityCheckerProb2 validitycheck = new ValidityCheckerProb2(cryptogram);
-    validitycheck = null;
     this.cryptogram = cryptogram;
   }
 
@@ -55,8 +53,13 @@ class ValidityCheckerProb2 {
 
   private static final int MINLIMIT = 1;
   private static final int MAXLIMIT = 1000;
+  private static String cryptogram = null;
 
   ValidityCheckerProb2(String cryptogram) {
+    this.cryptogram = cryptogram;
+  }
+
+  public void checkAllValidity() {
     lengthValidityCheck(cryptogram);
     allAlphaValidityCheck(cryptogram);
     lowercaseValidityCheck(cryptogram);
@@ -84,6 +87,8 @@ class ValidityCheckerProb2 {
 public class Problem2 {
 
   public static String solution(String cryptogram) {
+    ValidityCheckerProb2 validitycheck = new ValidityCheckerProb2(cryptogram);
+    validitycheck.checkAllValidity();
     Crypto cryptoClass = new Crypto(cryptogram);
     return cryptoClass.makeAnswer();
   }
