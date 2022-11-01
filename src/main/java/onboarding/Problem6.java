@@ -23,4 +23,9 @@ public class Problem6 {
         return emailLength >= 11 && emailLength < 20;
     }
 
+    private static boolean checkDomain(String emails) {
+        String str = "@email.com";
+        return emails.substring(emails.indexOf('@')).equals(str);
+    }
+
 }
