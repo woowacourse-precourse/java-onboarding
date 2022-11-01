@@ -21,14 +21,14 @@ public class Problem7 {
 		List<String> answer = new ArrayList<>(Collections.emptyList());
 		Map<String, Integer> map = new HashMap<>(); // [사람 이름, 추천 점수]를 담을 HashMap
 		Set<String> notYetFriendWithUser; // 추천 친구 대상 set (사용자와 아직 친구가 아닌 사람들)
-		Set<String> alreadyFriend = new HashSet<>(); // 사용자와 이미 친구인 사람들 set
+		Set<String> alreadyFriendWithUser = new HashSet<>(); // 사용자와 이미 친구인 사람들 set
 
 		if (checkRestrictions(user, friends, visitors) == EXCEPTION) {
 			return answer;
 		}
 
-		notYetFriendWithUser = initNotYetFriendWithUser(user, friends, visitors, alreadyFriend);
-		alreadyFriend.remove(user); // 사용자 본인은 제외
+		notYetFriendWithUser = initNotYetFriendWithUser(user, friends, visitors, alreadyFriendWithUser);
+		alreadyFriendWithUser.remove(user); // 사용자 본인은 제외
 
 		// HashMap 초기화
 		for (String friend : notYetFriendWithUser) {
@@ -36,7 +36,7 @@ public class Problem7 {
 		}
 
 		// 추천 점수 계산
-		calcScore(friends, visitors, map, notYetFriendWithUser, alreadyFriend);
+		calcScore(friends, visitors, map, notYetFriendWithUser, alreadyFriendWithUser);
 
 		// 추천 점수(value)가 0점인 사람(key)은 제외
 		Set<String> zeroPoints = new HashSet<>();
@@ -161,11 +161,11 @@ public class Problem7 {
 	 * @param visitors
 	 * @param map
 	 * @param notYetFriendWithUser
-	 * @param alreadyFriend
+	 * @param alreadyFriendWithUser
 	 */
 	private static void calcScore(List<List<String>> friends, List<String> visitors, Map<String, Integer> map,
-		Set<String> notYetFriendWithUser, Set<String> alreadyFriend) {
-		calcBothKnowScore(friends, map, notYetFriendWithUser, alreadyFriend);
+		Set<String> notYetFriendWithUser, Set<String> alreadyFriendWithUser) {
+		calcBothKnowScore(friends, map, notYetFriendWithUser, alreadyFriendWithUser);
 		calcVisitScore(visitors, map, notYetFriendWithUser);
 	}
 
@@ -189,14 +189,14 @@ public class Problem7 {
 	 * @param friends
 	 * @param map
 	 * @param notYetFriendWithUser
-	 * @param alreadyFriends
+	 * @param alreadyFriendWithUser
 	 */
 	private static void calcBothKnowScore(List<List<String>> friends, Map<String, Integer> map,
-		Set<String> notYetFriendWithUser, Set<String> alreadyFriends) {
+		Set<String> notYetFriendWithUser, Set<String> alreadyFriendWithUser) {
 		for (List<String> friend : friends) {
-			for (String alreadyFriendWithUser : alreadyFriends) {
+			for (String alreadyFriend : alreadyFriendWithUser) {
 				for (String person : friend) {
-					if (friend.contains(alreadyFriendWithUser) && notYetFriendWithUser.contains(
+					if (friend.contains(alreadyFriend) && notYetFriendWithUser.contains(
 						person)) { // 사용자와 함께 아는 친구가 있다면
 						map.put(person, map.get(person) + BOTH_KNOW_SCORE); // person 의 친구 점수 + 10
 					}
@@ -208,27 +208,27 @@ public class Problem7 {
 	/**
 	 * 친구 점수를 계산해야 하는 사람들로 notYetFriendWithUser 을 초기화하는 메서드
 	 * (사용자 본인이거나 이미 친구인 사람들은 친구 점수를 계산할 필요가 없다.)
-	 * (사용자 본인 혹은 이미 친구인 사람들은 alreadyFriend 에 담는다.)
+	 * (사용자 본인 혹은 이미 친구인 사람들은 alreadyFriendWithUser 에 담는다.)
 	 * @param user
 	 * @param friends
 	 * @param visitors
-	 * @param alreadyFriend
+	 * @param alreadyFriendWithUser
 	 */
 	private static Set<String> initNotYetFriendWithUser(String user, List<List<String>> friends, List<String> visitors,
-		Set<String> alreadyFriend) {
+		Set<String> alreadyFriendWithUser) {
 		Set<String> notYetFriendWithUser = new HashSet<>();
 
 		// friendSet 초기화
 		for (List<String> friend : friends) {
 			notYetFriendWithUser.addAll(friend);
 			if (friend.contains(user)) { // 사용자 본인 & 사용자와 이미 친구인 사람들
-				alreadyFriend.addAll(friend);
+				alreadyFriendWithUser.addAll(friend);
 			}
 		}
 		notYetFriendWithUser.addAll(visitors);
 
 		// 사용자 본인 & 사용자와 이미 친구인 사람들은 notYetFriendWithUser 에서 제외
-		for (String s : alreadyFriend) {
+		for (String s : alreadyFriendWithUser) {
 			notYetFriendWithUser.remove(s);
 		}
 		return notYetFriendWithUser;
