@@ -82,4 +82,15 @@ public class Problem2 {
     public static boolean stringLengthException(String cyptogram) {
         return cyptogram.length() < 1 || cyptogram.length() > 1000;
     }
+
+    public static boolean isIncludedNotLowerCase(String crytogram) {
+        checkNotLowerCase = false;
+        for (int i = 0; i < crytogram.length(); i++) {
+            if (crytogram.charAt(i) < 97 || crytogram.charAt(i) > 122) {
+                checkNotLowerCase = true;
+                break;
+            }
+        }
+        return checkNotLowerCase;
+    }
 }
