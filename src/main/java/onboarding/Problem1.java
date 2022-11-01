@@ -10,28 +10,28 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
-        //1.왼쪽 & 오른쪽 페이지 취득
-        int pLeftPage = pobi.get(0); //97
-        int pRightPage = pobi.get(1); //98
+        /*1.왼쪽 & 오른쪽 페이지 번호 취득*/
+        int pLeftPage = pobi.get(0);
+        int pRightPage = pobi.get(1);
 
-        int cLeftPage = crong.get(0); //197
-        int cRightPage = crong.get(1); //198
+        int cLeftPage = crong.get(0);
+        int cRightPage = crong.get(1);
 
-        //2.입력값 검증
+        /*2.입력값 검증*/
         if(pRightPage - pLeftPage != 1 || cRightPage - cLeftPage != 1)
             return -1;
 
         if(pRightPage > 400 || pLeftPage > 400 || cRightPage > 400 || cLeftPage > 400)
             return -1;
 
-        //3.각 페이지 자릿수의 합과 곱을 구한다.
+        /*3.각 페이지 자릿수의 합과 곱을 구한다.*/
         int pMax = Math.max(getSum(pRightPage), Math.max(getSum(pLeftPage),
                 Math.max(getMultiple(pRightPage), getMultiple(pLeftPage))));
 
         int cMax = Math.max(getSum(cRightPage), Math.max(getSum(cLeftPage),
                 Math.max(getMultiple(cRightPage), getMultiple(cLeftPage))));
 
-        //4.최댓값을 비교하고 게임 결과를 리턴한다.
+        /*4.최댓값을 비교하고 게임 결과를 리턴한다.*/
         if(pMax > cMax)
             answer = pobiWin;
 
