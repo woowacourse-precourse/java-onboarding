@@ -9,6 +9,7 @@ public class Problem7 {
         List<String> userFriends = makeFriendList(user, friends);
         ArrayList<SuggestFriend> suggestFriends = findFriendOfFriend(user,friends,userFriends);
         checkVisitor(suggestFriends, userFriends, visitors);
+        answer = sortSuggestFriendArrayAndMakeList(suggestFriends);
         return answer;
     }
     public static List<String> makeFriendList(String user, List<List<String>> friends){
@@ -68,7 +69,19 @@ public class Problem7 {
         }
         return false;
     }
-
+    public static List<String> sortSuggestFriendArrayAndMakeList(ArrayList<SuggestFriend> suggestFriends){
+        suggestFriends.sort(Comparator.comparing(SuggestFriend::getScore).reversed()
+                .thenComparing(SuggestFriend::getName)
+        );
+        List<String> answer = new ArrayList<>();
+        int cnt = 0;
+        for(SuggestFriend item : suggestFriends){
+            answer.add(item.name);
+            if(cnt++==5)
+                break;
+        }
+        return answer;
+    }
 }
 
 class SuggestFriend{
@@ -78,5 +91,11 @@ class SuggestFriend{
     SuggestFriend(String name, int score){
         this.name = name;
         this.score = score;
+    }
+    public String getName(){
+        return name;
+    }
+    public int getScore(){
+        return score;
     }
 }
