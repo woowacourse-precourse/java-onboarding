@@ -1,8 +1,7 @@
 package onboarding.problem2;
 
-import org.assertj.core.util.Strings;
-
-import static onboarding.problem2.LengthValue.*;
+import static onboarding.problem2.LengthValue.MAX;
+import static onboarding.problem2.LengthValue.MIN;
 
 // TODO 유효하지 않은 데이터면 예외를 던지는게 좋을 듯하다.
 //  클라이언트에서 예외 처리를 진행하면 좋을 거 같다.
@@ -10,19 +9,26 @@ public class ProblemTwoValidation {
 
     private String cryptogram;
 
-    public void settingCryptogram(String cryptogram) {
-        // 널이 들어 오면 공백으로 대체
+    // cryptogram은 길이가 1 이상 1000 이하인 문자열이다.
+    //cryptogram은 알파벳 소문자로만 이루어져 있다.
+
+
+    public ProblemTwoValidation(String cryptogram) {
         this.cryptogram = cryptogram;
-        if (Strings.isNullOrEmpty(cryptogram) || !isLength()) {
-            this.cryptogram = "";
+    }
+
+    public void checkedValid() {
+        if (!isLowCase()) {
+            throw new IllegalArgumentException("알파벳 소문자가 아닙니다.!!");
         }
 
-        if (!isLowCase(cryptogram)) {
-            this.cryptogram = this.cryptogram.toLowerCase();
+        if (!isLength()) {
+            throw new IllegalArgumentException("문자열의 범위가 유효하지 않습니다.");
         }
     }
 
-    private boolean isLowCase(String cryptogram) {
+    // 알파벳 소문자 검증
+    private boolean isLowCase() {
         for (int i = 0; i < cryptogram.length(); i++) {
             if (!Character.isLowerCase(cryptogram.charAt(i))) {
                 return false;
@@ -31,10 +37,7 @@ public class ProblemTwoValidation {
         return true;
     }
 
-    public String getValidString() {
-        return this.cryptogram;
-    }
-
+    // 문자열 길이 범위 검증
     public boolean isLength() {
         int length = this.cryptogram.length();
 
