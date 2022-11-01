@@ -66,4 +66,9 @@ public class Problem6 {
         }
         return false;
     }
+
+    public static void isDuplicateName(int num, int i) {
+        checkDuplication.set(num, true);
+        checkDuplication.set(i, true);
+    }
 }
