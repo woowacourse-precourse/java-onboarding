@@ -12,7 +12,20 @@ public class Problem6 {
         Collections.sort(answer);
         return answer;
     }
-
+//
+    private static boolean reOverlap(List<List<String>> forms, int originalStringIndex, List<String> stringUnit, boolean overlap) {
+        for(int j = 0; j< forms.size(); j++){
+            String otherNickName = forms.get(j).get(1);
+            if(originalStringIndex ==j){
+                continue;
+            }
+            overlap = checkOverlap(stringUnit, overlap, otherNickName);
+            if(overlap){
+                break;
+            }
+        }
+        return overlap;
+    }
     private static boolean checkOverlap(List<String> stringUnit, boolean overlap, String otherNickName) {
         for(int n = 0; n< stringUnit.size(); n++){
             if(otherNickName.contains(stringUnit.get(n))){
