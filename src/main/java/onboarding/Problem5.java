@@ -6,11 +6,17 @@ import java.util.List;
 public class Problem5 {
     public static List<Integer> solution(int money) {
         List<Integer> answer = new ArrayList<>();
-        /*
-        * 5만원권부터 1원 동전까지의 값이 들어있는 배열 생성
-        * money를 위의 배열을 통해 for문으로 나눈뒤 0이 아닌 값이 나왔을 경우 money에서 값을 감산
-        * money를 나눈 몫이 0인 경우 answer의 배열에 0을 추가하며 다음 루프로 이동
-        * */
+        int[] won = {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
+        for(int j = 0 ; j < 9; j ++){
+            if(money / won[j] >0){
+                answer.add(money/won[j]);
+                money -= (won[j] * (money/won[j]));
+            }
+            else if(money / won[j] ==0){
+                answer.add(0);
+            }
+        }
+
         return answer;
     }
 
