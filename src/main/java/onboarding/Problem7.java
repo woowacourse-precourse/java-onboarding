@@ -84,6 +84,7 @@ class Recommendation{
     final String THE_USER_NAME;
     final User THE_USER;
     final HashMap<String, User> USERS;
+    final int MAXIMUM_RECOMMENDATION=5;
     List<User> FriendScore=new ArrayList<>();
     Recommendation(String userName, User user, HashMap<String, User> users){
         THE_USER_NAME=userName;
@@ -158,6 +159,9 @@ class Recommendation{
         boolean wrongUser=isFriend(friend.getName());
         boolean underScore=isNonZero(friend);
         return alreadyFriend && wrongUser && underScore;
+    }
+    boolean exceedBounds(int numberOfRecommendation){
+        return numberOfRecommendation>MAXIMUM_RECOMMENDATION;
     }
 }
 public class Problem7 {
