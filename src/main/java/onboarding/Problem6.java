@@ -6,6 +6,10 @@ import java.util.stream.Collectors;
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
 
+        if(isNotInRangeCrew(forms.size())) {
+            return new ArrayList<>();
+        }
+
           List<Crew> crewList = forms.stream()
                 .map(Crew::toCrew)
                 .collect(Collectors.toList());
@@ -40,6 +44,14 @@ public class Problem6 {
                 .collect(Collectors.toList());
         return overlapCrew;
     }
+
+    private static boolean isNotInRangeCrew(int number) {
+        if (number >= 1 && number <= 10000) {
+            return false;
+        }
+        return true;
+    }
+
 }
 
 class Crew {
@@ -63,4 +75,5 @@ class Crew {
     public static Crew toCrew(List<String> form) {
         return new Crew(form.get(0), form.get(1));
     }
+
 }
