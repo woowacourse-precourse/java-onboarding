@@ -5,7 +5,7 @@ public class Problem4 {
         String answer = "";
         StringBuilder strb = new StringBuilder(word);
 
-        for (int i = 0; i < word.length(); i++) {
+        for (int i = 0, wordLen = word.length(); i < wordLen; i++) {
             int currChar = (char) word.charAt(i);
 
             if (currChar >= 'A' && currChar <= 'Z') {

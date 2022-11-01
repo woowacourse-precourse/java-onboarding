@@ -15,7 +15,7 @@ public class Problem6 {
         }
 
         for (String name : nameEmailInfo.keySet()) {
-            for (int i = 0; i + 1 < name.length(); i++) {
+            for (int i = 0, nameLen = name.length(); i + 1 < nameLen; i++) {
                 duplicateCheckMap.putIfAbsent(name.substring(i, i + 2), new HashSet<>());
                 duplicateCheckMap.get(name.substring(i, i + 2)).add(name);
             }
