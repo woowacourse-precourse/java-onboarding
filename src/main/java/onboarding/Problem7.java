@@ -57,17 +57,17 @@ public class Problem7 {
         return friendsLst;
     }
 
-//    public static Map makeFriendLst (List<String> friendLst, List<List<String>> friends) {
-//        Map<Integer, String> map = new HashMap<>();
-//
-//        for(int i=0; i<friendLst.size(); i++) {
-//            map.put(i, friendLst.get(i));
-//        }
-//
-//        System.out.println(map);
-//        return map;
-//    }
-//
+    public static Map makeFriendLst (List<String> friendLst, List<List<String>> friends) {
+        Map<Integer, String> map = new HashMap<>();
+
+        for(int i=0; i<friendLst.size(); i++) {
+            map.put(i, friendLst.get(i));
+        }
+
+        System.out.println(map);
+        return map;
+    }
+
 //    public static ArrayList<String>[] inputFriend(List<List<String>> friends, Map makeFriendLst, List<String> friendLst) {
 //        ArrayList<String>[] allFriendLst = new ArrayList[friendLst.size()];
 //
