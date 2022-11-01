@@ -13,6 +13,15 @@ public class Problem3 {
         return result;
     }
 
-    private static Integer getSingleClapNum(int i) {
+    private static Integer getSingleClapNum(int singleNum) {
+        Integer result = 0;
+        while (singleNum != 0) {
+            Integer remain = singleNum % 10;
+            if (remain == 3 || remain == 6 || remain == 9) {
+                result += 1;
+            }
+            singleNum /= 10;
+        }
+        return result;
     }
 }
