@@ -22,7 +22,6 @@ public class FriendsWithFriendsList {
                         friendsOfFriendsList.add(friends.get(1));
                     }
                 });
-        System.out.println(friendsOfFriendsList);
         return friendsOfFriendsList;
     }
 }
