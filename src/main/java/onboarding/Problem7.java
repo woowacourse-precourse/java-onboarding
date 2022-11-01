@@ -62,5 +62,19 @@ public class Problem7 {
             }
         }
     }
+    static List<String> getTopFiveScore() {
+        List<String> answer = new ArrayList<String>();
+        Map<String, Integer> sortedScoreMap = scoreMap.entrySet().stream()
+                .sorted(Collections.reverseOrder(Map.Entry.<String, Integer>comparingByValue())
+                        .thenComparing(Map.Entry.comparingByKey()))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue, (e1, e2) -> e2, LinkedHashMap::new));
+        for (Map.Entry<String, Integer> entry : sortedScoreMap.entrySet()) {
+            answer.add(entry.getKey());
+            System.out.println(entry.getKey() + " : " + entry.getValue());
+            if (answer.size() == 5) {
+                break;
+            }
+        }
+        return answer;
     }
 }
