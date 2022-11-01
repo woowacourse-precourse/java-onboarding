@@ -13,6 +13,7 @@ public class Problem7 {
     final static int visitTimeLineScore = 1; //사용자의 타임라인에 방문한 점수
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+        List<String> visitorsArr = new LinkedList<>(visitors); // visitors에서 이미 친구인 이름을 용이하게 제외하기 위해 LinkedList로 재생성
 
         List<String> friendsList = idSearch(user, friends); // 사용자의 친구 리스트 저장
         // 삽입을 용이하게 하기위해 LinkedList를 사용
@@ -21,6 +22,7 @@ public class Problem7 {
         for(String id : friendsList){
             userFriendsId.add(idSearch(id, friends)); // 사용자와 함게 아는 친구 검색
             userFriendsId.get(userFriendsId.size() - 1).remove(user); // user은 제외
+            visitorsArr.remove(id); // 사용자의 친구는 visitors에서 제외
         } // end for
 
         return answer;
