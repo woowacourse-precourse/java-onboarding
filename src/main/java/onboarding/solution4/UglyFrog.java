@@ -6,12 +6,15 @@ public class UglyFrog {
             return (char) ('z' - (c -'a'));
         }
         else if ('m' < c && c < 'z'){
-            return (char) ('z' - c);
+            return (char) ('z' - c + 'a');
         }
         else if ('A' < c && c < 'M'){
             return (char) ('Z' - (c - 'A'));
         }
-        return (char) ('Z' - c);
+        else if ('M' < c && c < 'Z'){
+            return (char) ('Z' - c + 'A');
+        }
+        return c;
     }
     public static String frogWord(String word){
         int length = word.length();
