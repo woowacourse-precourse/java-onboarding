@@ -3,19 +3,10 @@ package onboarding;
 public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
-        if(checkNumberRangeException(number)){
-            return 0;
-        }
         answer = countAllClap(number);
         return answer;
     }
 
-    private static boolean checkNumberRangeException(int number){
-        if(number >= 1 && number <= 10000){
-            return false;
-        }
-        return true;
-    }
     private static int countAllClap(int number) {
         int clapCnt = 0;
         for(int i=1; i<=number; i++){
