@@ -38,6 +38,13 @@ class Problem1 {
         int pobiMax = max;
 
         //크롱-페이지 계산 기능
+        for(int i=0;i<crongLeft.length;i++) {
+
+            temp2[0] += Integer.parseInt(crongLeft[i]);
+            temp2[1] += Integer.parseInt(crongRight[i]);
+            temp2[2] *= Integer.parseInt(crongLeft[i]);
+            temp2[3] *= Integer.parseInt(crongRight[i]);
+        }
 
         //크롱-최댓값 저장 기능
 
