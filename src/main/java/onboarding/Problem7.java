@@ -23,9 +23,9 @@ public class Problem7 {
             for (int j = 0; j < friends.get(i).size(); j++) { // 친구 리스트 순회
                 if (friends.get(i).get(j).equals(user)) { // 리스트에서 user가 발견되면
                     if (j == 0) { // user가 0번 인덱스에 있으면
-                        findFriendList.add(friends.get(i).get(1)); // 1번 인덱스를 set에 삽입
+                        findFriendList.add(friends.get(i).get(1)); // 1번 인덱스를 list에 삽입
                     } else { // 아니면 (user가 1번 인덱스에 있는 경우)
-                        findFriendList.add(friends.get(i).get(0)); // 0번 인덱스를 set에 삽입
+                        findFriendList.add(friends.get(i).get(0)); // 0번 인덱스를 list에 삽입
                     }
                 }
             }
@@ -51,6 +51,24 @@ public class Problem7 {
         }
         eachOtherList.removeAll(Collections.singleton(user)); // 리스트에 user가 들어가기 때문에 user 제외
         return eachOtherList;
+    }
+
+    public static List<String> excludeFriendInVisitors(List<String> visitors, List<String> findFriendList) {
+        List<String> excludeVisitors = new ArrayList<>();
+
+        for (String visitor : visitors) {
+            excludeVisitors.add(visitor);
+        }
+
+        for (int i = 0; i < findFriendList.size(); i++) {
+            for (int j = 0; j < excludeVisitors.size(); j++) {
+                if (findFriendList.get(i).equals(excludeVisitors.get(j))) {
+                    excludeVisitors.remove(j);
+                }
+            }
+        }
+
+        return excludeVisitors;
     }
 
     static class Recommend {
