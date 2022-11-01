@@ -6,6 +6,6 @@
 |--------------------------|-------------|------|
 | 내 친구목록 기능                | getFriendsList     | O    |
 | 함께 아는 친구에 따른 추천점수 더하기 기능 | getFriendPoint     | O    |
-| 방문에 따른 추천점수 더하기 기능       | getVisitPoint     | X    |
+| 방문에 따른 추천점수 더하기 기능       | plusVisitPoint     | O    |
 | 이미 친구인 경우 제외 기능          | isFriend     | O    |
 
