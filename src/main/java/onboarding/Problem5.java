@@ -8,12 +8,18 @@ import java.util.List;
 // 3. 거꾸로 만들어주는 메소드
 public class Problem5 {
     public static List<Integer> solution(int money) {
+
         List<Integer> moneyTemp = new ArrayList<>();
+        if(!constraints(money)) return moneyTemp;
         moneyTemp = intToList(money);
         moneyTemp = makemoneyList(moneyTemp);
 
         return inversemoneyList(moneyTemp);
 
+    }
+    public static boolean constraints(int money){ // 제한사항
+        if(money<1|| money>1000000){System.out.println("number가 1미만 혹은 1000000초과 입니다."); return false;}
+        return true;
     }
     public static List<Integer> intToList(int i){  // int money -> List로 떼어냄
         List<Integer> moneyList = new ArrayList<>();
