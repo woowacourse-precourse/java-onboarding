@@ -14,4 +14,12 @@ public class Problem4 {
         String answer = "";
         return answer;
     }
+
+    private static char changeSubWord(char subWord) {
+        char changedSubWord = 0;
+        if (Character.isUpperCase(subWord)) {
+            changedSubWord = (char) (155 - (int) subWord);
+        }
+        return changedSubWord;
+    }
 }
