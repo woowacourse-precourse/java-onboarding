@@ -28,9 +28,17 @@ class Problem1 {
     private static boolean isEven(Integer page) {
         return page%2 == 0;
     }
-    // TODO: 페이지 각 자리 숫자 더하기
+
     private static int addPage(int page) {
-        return -1;
+        int addResult = 0;
+        int digit = (int) (Math.log10(page)) + 1;
+        while(digit > 0) {
+            addResult += page/(Math.pow(10, digit-1));
+            page %= (Math.pow(10, digit-1));
+            digit --;
+        }
+        System.out.println("Add result:" + addResult);
+        return addResult;
     }
 
     // TODO: 페이지 각 자리 숫자 곱하기
