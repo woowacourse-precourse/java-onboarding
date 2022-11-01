@@ -11,35 +11,9 @@ public class Problem2 {
             return "";
         }
 
-
-        return orderedDeCryptogram(cryptogram);
-//        return deCryptogram(cryptogram);
+        // return orderedDeCryptogram(cryptogram);
+        return deCryptogram(cryptogram);
     }
-
-    // 절차적으로 코드를 지워나가기 위함
-    public static String orderedDeCryptogram(String str){
-        boolean deleted = false;
-        String previous = "";
-        StringBuilder sb = new StringBuilder();
-
-        for(String word : str.split("")){
-            if(previous.equals(word)){
-                deleted = true;
-                sb.deleteCharAt(sb.lastIndexOf(previous));
-                previous = "";
-                continue;
-            }
-            previous = word;
-            sb.append(word);
-        }
-
-        if(deleted) {
-            orderedDeCryptogram(sb.toString());
-        }
-
-        return sb.toString();
-    }
-
 
     // 스택을 이용한 경우
     public static String deCryptogram(String str){
@@ -62,6 +36,36 @@ public class Problem2 {
 
         return sb.reverse().toString();
     }
+
+    // 절차적으로 코드를 지워나가기 위함
+    public static String finalStr = "";
+    public static String orderedDeCryptogram(String str){
+        boolean deleted = false;
+        String previous = "";
+        StringBuilder sb = new StringBuilder();
+
+        for(String word : str.split("")){
+            if(previous.equals(word)){
+                deleted = true;
+                sb.deleteCharAt(sb.lastIndexOf(previous));
+                previous = "";
+                continue;
+            }
+            previous = word;
+            sb.append(word);
+        }
+
+        finalStr = sb.toString();
+
+        if(deleted && !finalStr.equals("")) {
+            orderedDeCryptogram(finalStr);
+        }
+
+        return finalStr;
+    }
+
+
+
     private static boolean validation(String cryptogram) {
         return cryptogram.length() < 1 || cryptogram.length() > 1000;
     }
