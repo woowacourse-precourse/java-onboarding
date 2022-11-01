@@ -21,11 +21,15 @@ public class Problem3 {
 
     private static int find369(int number) {
         int clapCount = NO_CLAP;
-        char[] digits = String.valueOf(number).toCharArray();
+        char[] digits = tearDownToDigits(number);
         for (char digit : digits) {
             clapCount += clapWhenContains369(digit);
         }
         return clapCount;
+    }
+
+    private static char[] tearDownToDigits(int number) {
+        return String.valueOf(number).toCharArray();
     }
 
     private static int clapWhenContains369(char digit) {
