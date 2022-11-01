@@ -8,8 +8,6 @@ public class Problem2 {
     public static final char FIRST_LETTER = 'a';
     public static final char LAST_LETTER = 'z';
 
-    public static final String EMPTY_STRING = "";
-
     private static Stack<Character> charStack;
 
     public static String solution(String cryptogram) {
@@ -17,7 +15,7 @@ public class Problem2 {
         try {
             validate(cryptogram);
         } catch (IllegalArgumentException e) {
-            return EMPTY_STRING;
+            e.printStackTrace();
         }
 
         deleteContinuousAndDuplicatedLetters(cryptogram);

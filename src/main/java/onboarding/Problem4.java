@@ -20,7 +20,7 @@ public class Problem4 {
         try {
             validateLength(word);
         } catch (IllegalArgumentException e) {
-            return e.toString();
+            e.printStackTrace();
         }
 
         initLetters();
