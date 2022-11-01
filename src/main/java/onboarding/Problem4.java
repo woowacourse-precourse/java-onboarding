@@ -21,5 +21,9 @@ public class Problem4 {
         replace = asciiNumber - originCharNumber;
         return replace;
     }
+    public static String addCharAtAnswer(String answer,int addChar){
+        answer+=Character.toString(addChar);
+        return answer;
+    }
 
 }
