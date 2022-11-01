@@ -7,7 +7,23 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
         List<String> userFriendList = findUserFriend(user,friends);
         Map<String,Integer> recommendFriend = knowingTogetherScore(userFriendList,friends,user);
+        recommendFriend = visitTimelineScore(recommendFriend,userFriendList,visitors);
         return answer;
+    }
+
+
+
+    //타임라인 방문 횟수별 가중치 계산 기능
+    public static Map<String,Integer> visitTimelineScore(Map<String,Integer> recommendFriend, List<String> userFriendList, List<String> visitors){
+        for(int i=0; i<visitors.size(); i++){
+            if (recommendFriend.containsKey(visitors.get(i)) && !userFriendList.contains(visitors.get(i))){
+                int userScore = recommendFriend.get(visitors.get(i));
+                recommendFriend.put(visitors.get(i),userScore+1);
+            }else if (!userFriendList.contains(visitors.get(i))){
+                recommendFriend.put(visitors.get(i),1);
+            }
+        }
+        return recommendFriend;
     }
 
     //friends 배열을 통해 함께 아는 친구 가중치 계산 기능
