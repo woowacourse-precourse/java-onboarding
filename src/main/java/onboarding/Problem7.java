@@ -39,7 +39,7 @@ public class Problem7 {
         return myfriend;
     }
 
-    public static List<String> findUserFreinds(String user, List<List<String>> friends){
+    public static List<String> findUserFrinds(String user, List<List<String>> friends){
         List<String> userfriends= new ArrayList<>();
         for (int i=0; i< friends.size(); i++) {
             String uesrfriend = findMyFriends(user, friends.get(i));
