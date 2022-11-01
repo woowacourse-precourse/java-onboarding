@@ -35,7 +35,6 @@ public class Problem7 {
                 userFriends.add(friend.get(0)==user?friend.get(1):friend.get(0));
             }
         }
-
         for(List<String> friend: friends){
             if(userFriends.contains(friend.get(0)) || userFriends.contains(friend.get(1))){
                 int i = userFriends.contains(friend.get(0)) ? 1 : 0;
@@ -43,7 +42,6 @@ public class Problem7 {
                     friendScore.put(friend.get(i),friendScore.getOrDefault(friend.get(i),10)+10);
             }
         }
-
         for(String visitor : visitors){
             friendScore.put(visitor,friendScore.getOrDefault(visitor,0)+1);
         }
