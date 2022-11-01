@@ -4,12 +4,10 @@ import java.util.*;
 
 public class Problem6 {
 
-    public static HashMap<String, String> subsetList;
-    public static HashSet<String> duplicateEmails;
+    public static HashMap<String, String> subsetList = new HashMap<>();
+    public static HashSet<String> duplicateEmails = new HashSet<>();;
 
     public static List<String> getDuplicateList(List<List<String>> forms) {
-        subsetList = new HashMap<>();
-        duplicateEmails = new HashSet<>();
 
         for (int i = 0; i < forms.size(); i++) {
             String email = forms.get(i).get(0);
