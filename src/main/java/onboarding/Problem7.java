@@ -70,7 +70,9 @@ public class Problem7 {
     }
 
     private static void addToRecommendScoreMap(String user, int score) {
-        RECOMMEND_SCORE.put(user, RECOMMEND_SCORE.containsKey(user) ? RECOMMEND_SCORE.get(user) + score : score);
+        RECOMMEND_SCORE.put(user, RECOMMEND_SCORE.containsKey(user)
+                ? RECOMMEND_SCORE.get(user) + score
+                : score);
     }
 
     private static List<String> getTotalRecommendUsers() {

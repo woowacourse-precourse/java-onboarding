@@ -39,6 +39,8 @@ public class Problem2 {
         while (!STACK.isEmpty()) {
             stringBuilder.append(STACK.pop());
         }
-        return stringBuilder.length() == 0 ? "" : stringBuilder.reverse().toString();
+        return stringBuilder.length() == 0
+                ? ""
+                : stringBuilder.reverse().toString();
     }
 }
