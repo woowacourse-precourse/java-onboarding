@@ -33,6 +33,13 @@ public class Problem2 {
     private static void deleteDuplicatedWords(Queue<Character> eachWords, StringBuilder answer) {
         while (!eachWords.isEmpty()) {
             char word = eachWords.poll();
+
+            addToAnswer(eachWords, answer, word);
+        }
+    }
+
+    private static void addToAnswer(Queue<Character> eachWords, StringBuilder answer, char word) {
+        if (!hasDuplicatedWords(eachWords, word)) {
             answer.append(word);
         }
     }
