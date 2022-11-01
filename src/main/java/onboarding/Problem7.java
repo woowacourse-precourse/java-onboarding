@@ -22,11 +22,16 @@ public class Problem7 {
     private static Map<String, Integer> calculateScore(String user, List<String> visitors) {
         Map<String, Integer> userList = new HashMap<>();
         Set<String> friendSet = new TreeSet<>();
+        if (friendGraph.get(user) != null) {
+            for (String friend : friendGraph.get(user)) {
+                friendSet.add(friend);
+            }
+        }
 
-        for (String friend : friendGraph.get(user)) {
-            friendSet.add(friend);
+        for (String friend : friendSet) {
             for (String friendfriend : friendGraph.get(friend)) {
-                if (friendfriend.equals(user)) continue;
+                if (friendfriend.equals(user) || friendSet.contains(friendfriend))
+                    continue;
 
                 int score = userList.getOrDefault(friendfriend, 0);
                 score += 10;
