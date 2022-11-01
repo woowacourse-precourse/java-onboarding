@@ -4,19 +4,19 @@ public class Problem4 {
     public static String solution(String word) {
         String answer = "";
 
-        char[] arr = word.toCharArray();
+        char[] wordArr = word.toCharArray();
 
-        for (int i = 0; i < arr.length; i++) {
-            int code = (int) arr[i];
-            if (code >= 65 && code <= 90) {
-                code = 155 - code;
-            } else if (code >= 96 && code <= 122) {
-                code = 219 - code;
+        for (int i = 0; i < wordArr.length; i++) {
+            int alphabet = (int) wordArr[i];
+            if (alphabet >= 65 && alphabet <= 90) {
+                alphabet = 155 - alphabet;
+            } else if (alphabet >= 96 && alphabet <= 122) {
+                alphabet = 219 - alphabet;
             }
-            arr[i] = (char) code;
+            wordArr[i] = (char) alphabet;
         }
 
-        word = new String(arr);
+        word = new String(wordArr);
 
         answer = word;
 
