@@ -20,8 +20,7 @@ public class Problem6 {
                 continue;
             }
         }
-
-
+        List<String> wordsDict = createWordsDictionary(answer);
 
         return answer;
     }
@@ -46,6 +45,18 @@ public class Problem6 {
 
     private static boolean checkNickLength(String nickname) {
         return nickname.length() >= 1 && nickname.length() < 20;
+    }
+
+    private static List<String> createWordsDictionary(List<List<String>> forms) {
+        List<String> wordsList = new ArrayList<>();
+
+        for (List<String> data : forms) {
+            String nickname = data.get(1);
+            for (int character = 0; character < nickname.length()-1 ; character++) {
+                wordsList.add(nickname.substring(character, character+2));
+            }
+        }
+        return wordsList;
     }
 
 }
