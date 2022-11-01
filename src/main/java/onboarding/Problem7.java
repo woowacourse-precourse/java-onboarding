@@ -19,7 +19,7 @@ public class Problem7 {
         pointInfo = givePointUsingFriendRelationship(user, userInfo, pointInfo);
         pointInfo = givePointUsingVisitorList(userInfo.get(user), visitors, pointInfo);
         pointInfo = deleteZero(pointInfo);
-        findFriendsList(pointInfo);
+        answer = findFriendsList(pointInfo);
 
         return answer;
     }
