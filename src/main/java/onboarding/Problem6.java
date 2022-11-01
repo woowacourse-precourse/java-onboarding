@@ -14,14 +14,18 @@ public class Problem6 {
     private static Map<String, Integer> indexMap = new HashMap<>();
     private static List<Integer>[] trieList;
     private static List<Pair> checkList = new ArrayList<>();
+    private static Map<String, Integer> emailList = new HashMap<>();
 
     private static boolean checkEmail(String email) {
         if (email == null)
+            return true;
+        else if (emailList.containsKey(email))
             return true;
         else if (email.length() < 11 || email.length() > 19)
             return true;
         else if (!email.endsWith(EMAIL_DOMAIN))
             return true;
+        emailList.put(email, 0);
         return false;
     }
 
@@ -131,6 +135,7 @@ public class Problem6 {
         int size = forms.size();
         if (size == 0 || size > 10000)
             return true;
+        emailList.clear();
         for (int i=0; i<size; i++) {
             String email = forms.get(i).get(0);
             String nickname = forms.get(i).get(1);
