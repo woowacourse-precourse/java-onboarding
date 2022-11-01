@@ -3,6 +3,21 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
+    static class Data{
+        String id;
+        int score;
+        public Data(String id, int score){
+            this.id = id;
+            this.score = score;
+        }
+    }
+
+    static class cmp implements Comparator<Data>{
+        public int compare(Data d1, Data d2){
+            if(d1.score == d2.score) return (d1.id).compareTo(d2.id);
+            return d2.score - d1.score;
+        }
+    }
     public static TreeMap<String, List<String>> graph = new TreeMap<>();
     //기능2
     public static List<String> getFriendsOfUser(String user){
@@ -57,21 +72,14 @@ public class Problem7 {
         }
         //기능 5
         Set<String> keys = score_table.keySet();
-        int[] counts = new int[10001];
-        String[][] arr = new String[10001][10001];
-        for(String key : keys) {
-            int idx = score_table.get(key);
-            arr[idx][counts[idx]++] = key;
+        List<Data> list = new ArrayList<>();
+        for(String key : keys){
+            list.add(new Data(key, score_table.get(key)));
         }
-
-        int count = 0;
-        for(int i=10000;i>=0;i--) {
-            for(int j=0;j<counts[i];j++) {
-                answer.add(arr[i][j]);
-                count += 1;
-                if(count == 5) break;
-            }
-            if(count == 5) break;
+        Collections.sort(list, new cmp());
+        int limit = Math.min(list.size(), 5);
+        for(int i=0;i<limit;i++){
+            answer.add(list.get(i).id);
         }
         return answer;
     }
