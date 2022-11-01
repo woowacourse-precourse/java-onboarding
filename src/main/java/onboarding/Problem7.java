@@ -19,6 +19,14 @@ public class Problem7 {
         return answer;
     }
 
+    //  회원 유효성 검사
+    private static void verifyUser(String user){
+        //  verify user length : 길이가 1이상 30이하 문자열
+        if(!verifyIdLength(user)) throw new RuntimeException("INVALID_ID_LENGTH");
+        //  verify user id type : 알파벳 소문자로만 구성
+        if(!verifyIdType(user)) throw new RuntimeException("INVALID_ID_TYPE");
+    }
+
     //  회원 유효성 검사 - 길이
     private static Boolean verifyIdLength(String id){
         int length = id.length();
