@@ -1,6 +1,5 @@
 package onboarding;
 
-import javax.xml.validation.Validator;
 import java.util.List;
 
 class Problem1 {
