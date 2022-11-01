@@ -46,4 +46,14 @@ class Problem1 {
             return 0;
         }
     }
+
+    private static int maxSum(List<Integer> num) {
+        int max = 0;
+
+        for (int i = 0; i < num.size(); i++) {
+            max = Math.max(plusSum(num.get(i)), multiSum(num.get(i)));
+        }
+
+        return max;
+    }
 }
