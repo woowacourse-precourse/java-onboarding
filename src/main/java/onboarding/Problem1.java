@@ -8,16 +8,16 @@ class Problem1 {
 
     private static final int DECIMAL = 10;
 
+    private static final int LAST_PAGE = 400;
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = INVALID;
         if (hasInvalidSize(pobi) || hasInvalidSize(crong)) {
-            return answer;
+            return INVALID;
         }
         if (hasInvalidPage(pobi) || hasInvalidPage(crong)) {
-            return answer;
+            return INVALID;
         }
-        answer = getWinner(calculateScore(pobi), calculateScore(crong));
-        return answer;
+        return getWinner(calculateScore(pobi), calculateScore(crong));
     }
 
     private static boolean hasInvalidSize(List<Integer> pageList) {
@@ -41,7 +41,7 @@ class Problem1 {
     }
 
     private static boolean isInvalidRange(Integer page) {
-        return page < 1 || page > 400;
+        return page < 1 || page > LAST_PAGE;
     }
 
     private static boolean isEven(Integer page) {
