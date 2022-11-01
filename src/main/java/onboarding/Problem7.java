@@ -83,6 +83,6 @@ public class Problem7 {
         for(String k: pointDict.keySet()){
             checkingList.add(new User(k,pointDict.get(k)));
         }
-        return checkingList.stream().sorted().map(user1 -> user1.name).collect(Collectors.toList());
+        return checkingList.stream().sorted().map(user1 -> user1.name).limit(5).collect(Collectors.toList());
         }
 }
