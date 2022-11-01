@@ -8,8 +8,9 @@ import java.util.*;
  * 기능 3: 사용자의 친구 목록을 사용하여 그 친구를 같이 아는 사람들에게 점수를 주는 함수 작성
  * 기능 4: 방문자에게 점수를 주는 함수 작성
  * 기능 5: 시용자와 이미 친구인 사람 삭제하는 함수 작성
- * 기능 6: 점수를 첫번째 기준으로, 이름을 두번째 기준으로 하여 내림차순으로 정렬하는 함수 작성
- * 기능 7: 이미 친구인 경우와 0점인 경우를 제외하는 함수 작성
+ * 기능 6-1: 점수를 첫번째 기준으로, 이름을 두번째 기준으로 하여 내림차순으로 정렬하는 기능 구현
+ * 기능 6-2: 0점인 경우를 제외하는 기능 구현
+ * 기능 6-3: 최대 5명까지 추천하는 기능 구현
  */
 public class Problem7 {
 
@@ -86,8 +87,20 @@ public class Problem7 {
         }
     }
 
+    public static List<String> sortMapToList(Map<String, Integer> friendScoreMap) {
+        List<String> sortedList = new ArrayList<>();
+
+        friendScoreMap.entrySet().stream()
+                .filter(target -> target.getValue() != 0)
+                .sorted(Map.Entry.<String, Integer>comparingByValue().reversed()
+                        .thenComparing(Map.Entry.comparingByKey()))
+                .forEachOrdered(x -> sortedList.add(x.getKey()));
+
+        return sortedList;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
 
         Map<String, Integer> friendScoreMap = initScoreMap(user, friends, visitors);
         List<String> userFriends = getUserFriends(friends, user);
@@ -95,7 +108,9 @@ public class Problem7 {
         addScoreByFriend(user, friends, userFriends, friendScoreMap);
         addVisitorScore(visitors, friendScoreMap);
         deleteExistFriend(userFriends, friendScoreMap);
+        answer = sortMapToList(friendScoreMap);
 
         return answer;
     }
+
 }
