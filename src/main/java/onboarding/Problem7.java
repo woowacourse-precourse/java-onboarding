@@ -5,7 +5,7 @@ import java.util.*;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         HashMap<String, Integer> result = new HashMap();
-        List<String> friednTofriend = new ArrayList<>();
+        List<String> friendTofriend = new ArrayList<>();
 
         for (String visitor : visitors) {
             addPersonOnePoint(visitor, result);
@@ -15,20 +15,20 @@ public class Problem7 {
             if (friend.get(0).equals(user)) {
                 if (result.containsKey(friend.get(1))) {
                     result.remove(friend.get(1));
-                    friednTofriend.add(friend.get(1));
+                    friendTofriend.add(friend.get(1));
                 }
             } else if (friend.get(1).equals(user)) {
                 if (result.containsKey(friend.get(0))) {
                     result.remove(friend.get(0));
-                    friednTofriend.add(friend.get(0));
+                    friendTofriend.add(friend.get(0));
                 }
             }
         }
         for (List<String> friend : friends) {
-            if (friednTofriend.contains(friend.get(1)) && !(friend.get(0).equals(user))) {
+            if (friendTofriend.contains(friend.get(1)) && !(friend.get(0).equals(user))) {
                 addPersonTenPoint(friend.get(0), result);
 
-            } else if (friednTofriend.contains(friend.get(0)) && !(friend.get(1).equals(user))) {
+            } else if (friendTofriend.contains(friend.get(0)) && !(friend.get(1).equals(user))) {
                 addPersonTenPoint(friend.get(1), result);
             }
         }
