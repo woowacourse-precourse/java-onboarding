@@ -20,8 +20,17 @@ public class Problem6 {
             char firstCharacter = nickname.charAt(i);
             char secondCharacter = nickname.charAt(i + 1);
             String wordOfNickname = String.valueOf(firstCharacter) + String.valueOf(secondCharacter);
-//            checkDuplicate(nicknameEmailMap, duplicateCrewEmailList, wordOfNickname, email);
+            checkDuplicate(nicknameEmailMap, duplicateCrewEmailList, wordOfNickname, email);
         }
+    }
+
+    private static void checkDuplicate(HashMap<String, String> nicknameEmailMap, HashSet<String> duplicateCrewEmailList, String wordOfNickname, String email){
+        if(!nicknameEmailMap.containsKey(wordOfNickname)){
+            nicknameEmailMap.put(wordOfNickname, email);
+            return;
+        }
+        duplicateCrewEmailList.add(nicknameEmailMap.get(wordOfNickname));
+        duplicateCrewEmailList.add(email);
     }
 
     public static List<String> solution(List<List<String>> forms) {
@@ -31,6 +40,10 @@ public class Problem6 {
         HashSet<String> duplicateCrewEmailList = new HashSet<>();
 
         selectCrew(forms, nicknameEmailMap, duplicateCrewEmailList);
+
+//        duplicateCrewEmailList.stream().sorted().forEach(email -> result.add(email));
+
+        answer = result;
 
         return answer;
     }
