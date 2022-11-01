@@ -63,7 +63,7 @@
 - (6) 암호 해독 기능
 
   ```java
-  public static StringBuilder decrypt(String cryptogram)
+  public static void decrypt(StringBuilder stringBuilderCryptogram)
   ```
 
   - (2), (3), (4) 기능을 이용해 암호 해독
