@@ -2,8 +2,10 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 
@@ -24,6 +26,16 @@ public class Problem7 {
 		existFriend(user, friends);
 		visitPoint(visitors);
 		friendPoint(user, friends);
+		
+		// 점수를 기반으로 오름차순 정렬
+		List<String> userName = new ArrayList<>(point.keySet());
+		userName.sort(new Comparator<String>() {
+			public int compare(String o1, String o2) {
+				return point.get(o2).compareTo(point.get(o1));
+			}
+		});
+		
+		suggestFriend(userName, answer);
 		
 		return answer;
 	}
@@ -72,5 +84,9 @@ public class Problem7 {
 				}
 			}
 		}
+	}
+	
+	public static void suggestFriend(List<String> userName, List<String> answer) {
+		
 	}
 }
