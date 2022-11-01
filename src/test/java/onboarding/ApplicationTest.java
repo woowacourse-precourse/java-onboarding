@@ -113,8 +113,10 @@ class ApplicationTest {
 
         @Test
         void case2() {
+
             String word = "Abcdefghijk lmnopqrstuvwxyz";
             String result = "Zyxwvutsrqp onmlkjihgfedcba";
+
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
     }
