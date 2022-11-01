@@ -29,12 +29,10 @@ class Problem1 {
         private final int rightPage;
         private static final int FIRST_PAGE_NUMBER = 1;
         private static final int LAST_PAGE_NUMBER = 400;
-        private final Calculator calculator;
 
         private Page(int leftPage, int rightPage) {
             this.leftPage = leftPage;
             this.rightPage = rightPage;
-            calculator = new Calculator();
         }
 
         public static Page create(int leftPage, int rightPage) {
@@ -64,40 +62,31 @@ class Problem1 {
         }
 
         private int getMaxFromOnePage(int page) {
-            return Math.max(calculator.getAddNum(page), calculator.getMulNum(page));
+            return Math.max(Calculator.add(page), Calculator.multiple(page));
+        }
+    }
+
+    public static class Calculator {
+        Calculator() {}
+
+        private static int add(int page) {
+            int addNum = 0;
+            while ( page > 0 ) {
+                int i = page % 10;
+                addNum += i;
+                page /= 10;
+            }
+            return addNum;
         }
 
-        private static class Calculator {
-            private int addNum = 0;
-            private int mulNum = 1;
-
-            Calculator() {}
-
-            public int getAddNum(int page) {
-                add(page);
-                return addNum;
+        private static int multiple(int page) {
+            int mulNum = 1;
+            while ( page > 0 ) {
+                int i = page % 10;
+                mulNum *= i;
+                page /= 10;
             }
-
-            public int getMulNum(int page) {
-                multiple(page);
-                return mulNum;
-            }
-
-            private void add(int page) {
-                while ( page > 0 ) {
-                    int i = page % 10;
-                    addNum += i;
-                    page /= 10;
-                }
-            }
-
-            private void multiple(int page) {
-                while ( page > 0 ) {
-                    int i = page % 10;
-                    mulNum *= i;
-                    page /= 10;
-                }
-            }
+            return mulNum;
         }
     }
 }
