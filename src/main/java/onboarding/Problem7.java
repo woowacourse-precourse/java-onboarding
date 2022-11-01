@@ -4,13 +4,12 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-
         HashMap<String, Integer> scoreKnownFriend = getScoreKnownFriend(user, friends);
         HashMap<String, Integer> scoreVisitFriend = getScoreVisitFriend(user, friends, visitors);
 
+        HashMap<String, Integer> scoreOfFriend = combineScoreOfFriends(scoreKnownFriend, scoreVisitFriend);
 
-        return answer;
+        return sortAndSlicingFriends(scoreOfFriend);
     }
 
     public static List<String> getFriendsOfUser(String user, List<List<String>> friends) {
