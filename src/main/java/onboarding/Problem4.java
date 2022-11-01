@@ -12,8 +12,8 @@ public class Problem4 {
         Map<Character, Character> characterMap = generator.createDictionary();
 
         CompareWords compareWords = new CompareWords();
-        String result = compareWords.compareSplit(characterMap, word);
+        String answer = compareWords.compareSplit(characterMap, word);
 
-        return result;
+        return answer;
     }
 }

@@ -7,14 +7,14 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> result = Collections.emptyList();
+        List<String> answer = Collections.emptyList();
 
         FriendListScoreCalculation friendListScoreCalculation = new FriendListScoreCalculation();
         HashMap<String, Integer> scores = friendListScoreCalculation.scoreCalculations(user, friends, visitors);
 
         TopFiveCompare topFiveCompare = new TopFiveCompare();
-        result = topFiveCompare.sortOrder(scores);
+        answer = topFiveCompare.sortOrder(scores);
 
-        return result;
+        return answer;
     }
 }

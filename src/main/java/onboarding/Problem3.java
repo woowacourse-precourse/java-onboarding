@@ -6,8 +6,8 @@ public class Problem3 {
     public static int solution(int number) {
 
         IterativeGenerator generator = new IterativeGenerator();
-        int result = generator.typeConversion(number);
+        int answer = generator.typeConversion(number);
 
-        return result;
+        return answer;
     }
 }
