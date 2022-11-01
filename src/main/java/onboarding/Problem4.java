@@ -9,6 +9,14 @@ public class Problem4 {
     }
     public static String solution(String word) {
         String answer = "";
+        for (char x : word.toCharArray()){
+            if(Character.isUpperCase(x))
+                answer +=changeUpper(x);
+            else if(Character.isLowerCase(x))
+                answer +=changeLower(x);
+            else
+                answer +=x;
+        }
         return answer;
     }
 }
