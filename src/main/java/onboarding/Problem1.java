@@ -49,5 +49,30 @@ class Problem1 {
         return hundredDigitComponent + tenDigitComponent + oneDigitComponent;
     }
 
+    public static int multiNumbers(List<Integer> List){
+        int leftPage=List.get(0);
+        int rightPage=List.get(1);
+
+        int multipliedLeftPage = multiply(leftPage);
+        int multipliedRightPage = multiply(rightPage);
+
+        return max(multipliedLeftPage,multipliedRightPage);
+    }
+
+    public static int multiply(int num){
+        int hundredDigitComponent = num / 100;
+        int tenDigitComponent = num/10 - (hundredDigitComponent *10);
+        int oneDigitComponent = num - (hundredDigitComponent *100 + tenDigitComponent*10);
+
+        if(num >= 100) return hundredDigitComponent * tenDigitComponent * oneDigitComponent;
+        else if (num <100 && num >= 10) return tenDigitComponent * oneDigitComponent;
+        else  return oneDigitComponent; // num < 10
+    }
+
+    public static int max(int a, int b){
+        if(a > b) return a;
+        else return b;
+    }
+
 
 }
