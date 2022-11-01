@@ -43,6 +43,13 @@ public class Problem7 {
         }
     }
 
+    public static void addVisitorPoint(List <String> visitors) {
+        for(int i=0; i<visitors.size(); i++) {
+            String visitor = visitors.get(i);
+            addPoint(visitor, 1);
+        }
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         for(int i=0; i<friends.size(); i++) {
             String friend1 = friends.get(i).get(0);
