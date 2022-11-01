@@ -14,10 +14,10 @@ class Cryptogram {
 
     private void validateCryptogram(String cryptogram) {
         if (cryptogram.length() < 1 || cryptogram.length() > 1000) {    // 길이 1이상 1000이하 문자
-            throw new IllegalArgumentException(String.format("A Length of cryptogram must be between 1 and 1000"));
+            throw new IllegalArgumentException("A Length of cryptogram must be between 1 and 1000");
         }
         if (!cryptogram.matches("^[a-z]*$")) {   // 소문자만 포함
-            throw new IllegalArgumentException(String.format("A cryptogram must be lower alphabets."));
+            throw new IllegalArgumentException("A cryptogram must be lower alphabets.");
         }
     }
 }
