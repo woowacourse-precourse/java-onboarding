@@ -33,4 +33,4 @@
 - [x] 조건에 따른 추천 점수 추가 기능(RecommendedScore)
 - [x] SocialService class 생성
 - [x] user 추가 기능
-- [ ] 추천 친구 리스트 조건에 맞게 정렬(SocialService)
+- [x] 추천 친구 리스트 조건에 맞게 정렬(SocialService)

@@ -1,9 +1,7 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.LinkedHashMap;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -28,6 +26,10 @@ public class Problem7 {
 		public void addScoreByVisit() {
 			score += VISITED_BONUS;
 		}
+
+		public int score() {
+			return score;
+		}
 	}
 
 	private static class User {
@@ -43,6 +45,10 @@ public class Problem7 {
 
 		public String name() {
 			return name;
+		}
+
+		public int recommendedScore() {
+			return recommendedScore.score();
 		}
 
 		public void addScoreByVisit() {
@@ -66,6 +72,14 @@ public class Problem7 {
 					.forEach(friendsOfFriends::add);
 			}
 			return friendsOfFriends;
+		}
+
+		public boolean isNotMyFriendAndMyself(User user) {
+			return !friendList.contains(user) && this != user;
+		}
+
+		public boolean hasEnoughScore() {
+			return recommendedScore() > 0;
 		}
 	}
 
@@ -106,5 +120,14 @@ public class Problem7 {
 			}
 		}
 
+		public List<String> recommendUserListForUser() {
+			return users.values().stream()
+				.filter(receivedUser::isNotMyFriendAndMyself)
+				.filter(User::hasEnoughScore)
+				.sorted(Comparator.comparing(User::name))
+				.sorted(Comparator.comparing(User::recommendedScore).reversed())
+				.map(User::name)
+				.collect(Collectors.toList());
+		}
 	}
 }
