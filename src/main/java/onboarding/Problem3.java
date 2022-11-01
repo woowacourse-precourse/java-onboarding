@@ -6,7 +6,7 @@ public class Problem3 {
         try {
             constraint3(number);
         }catch(Exception e) {
-            System.out.println("Problem1 exception : " + e.getMessage());
+            System.out.println("Problem3 exception : " + e.getMessage());
         }
 
         if (number < 3) {
