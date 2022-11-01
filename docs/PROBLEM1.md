@@ -23,3 +23,59 @@
 | [97, 98] | [197, 198] | 0 |
 | [131, 132] | [211, 212] | 1 |
 | [99, 102] | [211, 212] | -1 |
+
+
+---
+## 📄 기능 목록
+
+### 전체 동작 과정
+1. **isExcption()** : 예외상황 판별
+2. **findMaxNum()** : 각각의 max num 구함 (각자의 점수)
+3. **whoWin()** : 점수 비교 (승자 판별)
+
+### 함수별 입출력 및 동작 과정
+1. **isExcption()**
+    - 입력 : 왼쪽 페이지 번호, 오른쪽 페이지 번호 
+    - 예외상황 : 예외일 경우 true 출력
+      - 왼쪽페이지!=홀수
+      - 오른쪽페이지!=짝수
+      - 오른쪽페이지-왼쪽페이지!=1
+      - 페이지<1 (위의 조건때문에 해당될 수 없음)
+      - 페이지>400 (위의 조건때문에 left>400에만 해당되면 예외처리)
+    - 출력 : boolean result
+
+2. **findMaxNum()**
+    - 입력 : 페이지 번호 (int pageNum)
+    - (1) int를 String으로 변환
+    - (2) String.charAt으로 각 자리수에 있는 숫자들을 추출
+    - (3) sum에 각 자리수를 더함, multi에 각 자리수를 곱함
+    - (4) sum과 multi 중에 큰 수 출력
+    - 출력 : 가장 큰 수 (int max)
+   
+3. **whoWin()**
+   - 입력 : 포비의 점수 (int pobi), 크롱의 점수 (int crong)
+   - 출력 : 
+     - 포비 승 (return 1)
+     - 크롱 승 (return 2)
+     - 무승부 (return 0)
+ 
+---
+## 💡 기타 내용 정리
+
+###git commit convention
+``commit-type(fileName): content``
+- commit type
+  - feat: 새로운 기능 추가
+  - fix: 버그 수정
+  - docs: 문서 수정
+  - style: 코드 스타일 변경 (코드 포매팅, 세미콜론 누락 등)
+  - design: 사용자 UI 디자인 변경 (CSS 등)
+  - test: 테스트 코드, 리팩토링 (Test Code)
+  - refactor: 리팩토링 (Production Code)
+  - rename: 파일 혹은 폴더명을 수정만 한 경우
+  - remove: 파일을 삭제만 한 경우
+  
+- content
+  - docs: 내용 작성/수정
+  - feat: 기능 추가/수정/삭제
+

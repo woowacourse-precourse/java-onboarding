@@ -26,13 +26,13 @@ class Problem1 {
         }
 
         // 2. 각각의 max num 구함 (각자의 점수)
-        int pobiNum = 0;
-        int crongNum = 0;
-        pobiNum = Math.max(findMaxNum(pobi.get(0)), findMaxNum(pobi.get(1)));
-        crongNum = Math.max(findMaxNum(crong.get(0)), findMaxNum(crong.get(1)));
+        int pobiScore = 0;
+        int crongScore = 0;
+        pobiScore = Math.max(findMaxNum(pobi.get(0)), findMaxNum(pobi.get(1)));
+        crongScore = Math.max(findMaxNum(crong.get(0)), findMaxNum(crong.get(1)));
 
         // 3. 점수 비교 (승자 판별)
-        answer = whoWin(pobiNum, crongNum);
+        answer = whoWin(pobiScore, crongScore);
 
         return answer;
     }
@@ -61,13 +61,13 @@ class Problem1 {
     }
 
     // 2. max num 구함 (각자의 점수)
-    public static int findMaxNum(int num) {
+    public static int findMaxNum(int pageNum) {
         int max = 0;
 
         // 페이지 번호의 각 자리 숫자를 모두 더하거나, 모두 곱해 가장 큰 수를 구한다.
         int sum = 0;
         int multi = 1;
-        String strNum = Integer.toString(num);
+        String strNum = Integer.toString(pageNum);
         for (int i = 0; i < strNum.length(); i++) {
             sum += (strNum.charAt(i) - '0');
             multi *= (strNum.charAt(i) - '0');
