@@ -16,14 +16,15 @@ public class Problem5 {
     private static final int MIN_MONEY = 1;
     private static final int MAX_MONEY = 1000000;
     final static int[] AMOUNT = {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
+
     public static List<Integer> solution(int money) {
         List<Integer> count = new ArrayList<>();
         isProperMoney(money);
         return moneyCount(count, money);
     }
 
-    private static void isProperMoney(int money){
-        if (money<MIN_MONEY||money>MAX_MONEY)
+    private static void isProperMoney(int money) {
+        if (money < MIN_MONEY || money > MAX_MONEY)
             throw new IllegalArgumentException("money는 1이상 1000000이하인 자연수입니다.");
     }
 
