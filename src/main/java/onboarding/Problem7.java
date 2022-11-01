@@ -51,6 +51,12 @@ public class Problem7 {
         }
         return friendScore;
     }
+    private static HashMap<String, Integer> removeUserFriends(List<String> userFriends, HashMap<String, Integer> friendScore) {
+        for(String userFriend: userFriends) {
+            friendScore.remove(userFriend);
+        }
+        return friendScore;
+    }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
@@ -59,6 +65,7 @@ public class Problem7 {
         HashMap<String, Integer> friendScore;
         friendScore = findRelationWithUserFriends(user, friends, userFriends);
         friendScore = findVisitors(visitors, friendScore);
+        friendScore = removeUserFriends(userFriends, friendScore);
         return answer;
     }
 }
