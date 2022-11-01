@@ -1,7 +1,5 @@
 package onboarding;
 
-import java.util.stream.Collector;
-
 public class Problem4 {
     public static String solution(String word) {
         String chars = word.chars().parallel()
