@@ -58,5 +58,31 @@ public class Problem7 {
         }
     }
 
+    //user와 같은 친구를 가지고 있는 사용자에게 추천점수를 부여하는 기능 추가
+    public static void addSameFriendPoint(String user,
+        List<List<String>> friends, HashMap<String, Set<String>> friendList,
+        HashMap<String, Integer> pointList) {
+        List<String> userFriendsList = new ArrayList<>(friendList.get(user)); //user의 친구목록 리스트
+
+        //모든 사용자의 친구목록에 대해 검사하고 user와 같은 친구를 가진다면 10점을 부여한다.
+        for (String friend : friendList.keySet()) {
+            if (friend.equals(user)) { //user의 친구목록은 살펴보지않는다.
+                continue;
+            }
+            //user와 같은 친구를 가진다면 10점을 부여한다.
+            for (String userFriend : userFriendsList) {
+                if (friendList.get(friend).contains(userFriend)) {
+                    pointList.put(friend, pointList.get(friend) + 10);
+                }
+            }
+        }
+
+        //이미 user와 친구인 사용자들은 제거해준다.
+        for (String userFriend : userFriendsList) {
+            pointList.remove(userFriend);
+        }
+
+    }
+
 
 }
