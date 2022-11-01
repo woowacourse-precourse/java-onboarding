@@ -1,15 +1,30 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
+    private static Map<String, Integer> countMap = new HashMap<>();
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+        makeCountMap(user, friends, visitors);
         List<String> userFriendList = userFriends(user, friends);
         List<String> friendAndFriends = friendAndFriends(userFriendList, friends, user);
         return answer;
+    }
+
+    private static void makeCountMap(String user, List<List<String>> friends, List<String> visitors) {
+        for (List<String> i : friends) {
+            for (String s : i) {
+                if (s.equals(user)) {
+                    continue;
+                }
+                countMap.put(s, 0);
+            }
+        }
+
+        for (String s : visitors) {
+            countMap.put(s, 0);
+        }
     }
 
     private static List<String> friendAndFriends(List<String> userFriendList, List<List<String>> friends, String user) {
@@ -35,6 +50,8 @@ public class Problem7 {
                 userFriendList.add(friends.get(i).get(0));
             }
         }
+
         return userFriendList;
     }
+    
 }
