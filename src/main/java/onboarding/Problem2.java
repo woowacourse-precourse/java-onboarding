@@ -2,7 +2,9 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        char[] str = cryptogram.toCharArray();
+        char[] pattern = new char[cryptogram.length() + 1];
+        int index = 1;
+        
     }
 }
