@@ -2,11 +2,8 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        StringBuilder stringBuilder = new StringBuilder();
-        String resultCryptogram;
-
         while (cryptogram.length() > 1) {
-            resultCryptogram = removeConsecutiveDuplicateAlpha(cryptogram);
+            String resultCryptogram = removeConsecutiveDuplicateAlpha(cryptogram);
             if (cryptogram.length() == resultCryptogram.length()) {
                 break;
             }
@@ -18,22 +15,39 @@ public class Problem2 {
 
     private static String removeConsecutiveDuplicateAlpha(String cryptogram) {
         StringBuilder stringBuilder = new StringBuilder();
-        boolean duplicateFlag = false;
+        int idx = 0;
 
-        for (int idx = 0; idx < cryptogram.length() - 1; idx++) {
-            if (cryptogram.charAt(idx) == cryptogram.charAt(idx + 1)) {
-                duplicateFlag = true;
-            } else if (duplicateFlag) {
-                duplicateFlag = false;
-            } else {
+        while (idx < cryptogram.length()) {
+            int jumpedIdx = jumpConsecutiveDuplicateAlpha(cryptogram, idx);
+            if (jumpedIdx == idx) {
                 stringBuilder.append(cryptogram.charAt(idx));
+                jumpedIdx++;
             }
-        }
-
-        if (!duplicateFlag) {
-            stringBuilder.append(cryptogram.charAt(cryptogram.length() - 1));
+            idx = jumpedIdx;
         }
 
         return stringBuilder.toString();
+    }
+
+    private static int jumpConsecutiveDuplicateAlpha(String cryptogram, int targetIdx) {
+        if (targetIdx == cryptogram.length() - 1) {
+            return targetIdx;
+        }
+
+        char targetAlpha = cryptogram.charAt(targetIdx);
+
+        if (targetAlpha != cryptogram.charAt(targetIdx + 1)) {
+            return targetIdx;
+        }
+
+        int idx = targetIdx + 2;
+        while (idx < cryptogram.length()) {
+            if (targetAlpha != cryptogram.charAt(idx)) {
+                break;
+            }
+            idx++;
+        }
+
+        return idx;
     }
 }
