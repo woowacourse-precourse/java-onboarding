@@ -28,8 +28,8 @@ class ApplicationTest {
 
         @Test
         void case3() {
-            List<Integer> pobi = List.of(99, 102);
-            List<Integer> crong = List.of(211, 212);
+            List<Integer> pobi = List.of(99, 102); //81
+            List<Integer> crong = List.of(211, 212);// 4 5 2 2
             int result = -1;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
