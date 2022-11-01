@@ -95,7 +95,7 @@ class Problem5Test {
 
     @Test
     void getDenominationListTest() {
-        List<Integer> list = List.of(50000, 10000, 5000, 1000, 500, 100, 50, 10, 1, 0);
+        List<Integer> list = List.of(50000, 10000, 5000, 1000, 500, 100, 50, 10, 1);
         assertThat(problem5.getDenominationList()).isEqualTo(list);
     }
 
