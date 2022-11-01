@@ -5,4 +5,7 @@ public class Problem4 {
         String answer = "";
         return answer;
     }
+    private static boolean isAlphabet(char c) {
+        return ('A' <= c && c <= 'z') || ('a' <= c && c <= 'z');
+    }
 }
