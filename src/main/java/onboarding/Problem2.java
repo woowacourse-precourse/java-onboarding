@@ -7,6 +7,13 @@ import java.util.List;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
+        
+		answer = sameWordDelete(cryptogram);
+
+		while (answer.length() != sameWordDelete(answer).length()) {
+			answer = sameWordDelete(answer);
+		}
+        
         return answer;
     }
     
