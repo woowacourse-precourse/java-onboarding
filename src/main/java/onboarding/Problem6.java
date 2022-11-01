@@ -23,7 +23,7 @@ public class Problem6 {
         if (!canCrew(forms) && !canEmail(forms) && !canNickname(forms)) {
             throw new IllegalArgumentException("제한 사항을 위반하였습니다.");
         }
-        setupData(forms);
+        setFrequencyOfNickname(forms);
         setEmailsFromPartitionsOfNickname(forms);
         return answer;
     }
@@ -40,7 +40,7 @@ public class Problem6 {
         }
         Collections.sort(answer);
     }
-    public static void setupData(List<List<String>> forms) {
+    public static void setFrequencyOfNickname(List<List<String>> forms) {
         for (List<String> form : forms) {
             Set<String> partsOfNickname = getPartitionsOfNickname(form.get(FORM_NICKNAME));
             partitionsList.add(partsOfNickname);
