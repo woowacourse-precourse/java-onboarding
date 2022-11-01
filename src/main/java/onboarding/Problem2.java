@@ -2,59 +2,97 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String answer;
 
-        int initLength = cryptogram.length();
-        String newCryptogram = removeDuplication(cryptogram);
+        Cryptogram crypto = new Cryptogram(cryptogram);
 
-        while (initLength != newCryptogram.length()){
+        int initLength = crypto.getCryptogramLength();
+        crypto.removeDuplication();
 
-            System.out.println(newCryptogram);
-            initLength = newCryptogram.length();
-            newCryptogram = removeDuplication(newCryptogram);
+        while(initLength != crypto.getCryptogramLength()){
+
+            initLength = crypto.getCryptogramLength();
+            crypto.removeDuplication();
         }
 
-        answer = newCryptogram;
+        answer = crypto.getCryptogram();
         return answer;
     }
 
-    public static String removeDuplication(String cryptogram){
-        String result = "";
-        char prev = ' ';
+    static class Cryptogram{
+        private final static int MIN_CRYPTOGRAM_LENGTH = 1;
+        private final static int MAX_CRYPTOGRAM_LENGTH = 1000;
 
-        boolean check = false;
+        private String cryptogram;
 
-        int idx = 0;
-        while(idx < cryptogram.length()){
+        public String getCryptogram() {
+            return cryptogram;
+        }
 
-            if(prev != cryptogram.charAt(idx)){
-//                System.out.println("prev = " + prev + ", curr = " + cryptogram.charAt(idx));
-                result += String.valueOf(prev);
-                prev = cryptogram.charAt(idx);
+        public int getCryptogramLength() {
+            return cryptogramLength;
+        }
 
-            }else{
-//                System.out.println("prev = " + prev + ", curr = " + cryptogram.charAt(idx));
+        private int cryptogramLength;
 
-                idx++;
-                System.out.println(idx);
-                if(idx < cryptogram.length()) {
+        public Cryptogram(String cryptogram){
+            validateCryptogramLength(cryptogram);
+            validateCryptogramLowerCase(cryptogram);
 
-                    prev = cryptogram.charAt(idx);
-                }else{
+            this.cryptogram = cryptogram;
+            this.cryptogramLength = cryptogram.length();
+        }
 
-                    check = true;
+        public void validateCryptogramLength(String cryptogram){
+            int cryptogramLength = cryptogram.length();
+            if(cryptogramLength < MIN_CRYPTOGRAM_LENGTH ||
+                    cryptogramLength > MAX_CRYPTOGRAM_LENGTH){
+                throw new IllegalArgumentException("cryptogram은 길이가 1 이상 1000 이하인 문자열이어야 합니다.");
+            }
+        }
+
+        public void validateCryptogramLowerCase(String cryptogram){
+            for(int i = 0; i < cryptogram.length(); i++){
+                char c = cryptogram.charAt(i);
+                if(Character.isUpperCase(c)){
+                    throw new IllegalArgumentException("cryptogram은 알파벳 소문자로만 이루어져 있다.");
                 }
             }
-            idx++;
         }
 
-        if(!check) {
-            result += String.valueOf(prev);
+        public void removeDuplication(){
+            String newCryptogram = "";
+            char prev = ' ';
+
+            boolean check = false;
+
+            int idx = 0;
+            while(idx < this.cryptogramLength){
+
+                if(prev != this.cryptogram.charAt(idx)){
+                    newCryptogram += String.valueOf(prev);
+                    prev = this.cryptogram.charAt(idx);
+
+                }else{
+
+                    idx++;
+                    if(idx < this.cryptogramLength) {
+                        prev = this.cryptogram.charAt(idx);
+
+                    }else{
+                        check = true;
+                    }
+                }
+
+                idx++;
+            }
+
+            if(!check) {
+                newCryptogram += String.valueOf(prev);
+            }
+
+            this.cryptogram = newCryptogram.substring(1);
+            this.cryptogramLength = cryptogram.length();
         }
-        return result.substring(1);
-    }
-    public static void main(String[] args) {
-//        System.out.println(solution("browoanoommnaon"));
-        System.out.println(solution("zyelleyz"));
     }
 }
