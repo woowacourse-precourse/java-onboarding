@@ -1,26 +1,20 @@
 package onboarding;
 
+import org.junit.jupiter.api.Test;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
-class Problem1 {
-    public static int solution(List<Integer> pobi, List<Integer> crong) {
-        // 제약 조건
-        if (pobi.size()!=2 || crong.size()!=2 || pobi.get(0)!=pobi.get(1)-1 || crong.get(0)!=crong.get(1)-1) return -1;
+import static org.assertj.core.api.Assertions.assertThat;
 
-        // 본인의 점수 구하기
-        int pobiNum = maxNum(pobi);
-        int crongNum = maxNum(crong);
+class Problem1Test {
 
-        // 비교
-        if (pobiNum==crongNum) return 0;
-        if (pobiNum>crongNum) return 1;
-        if (pobiNum<crongNum) return 2;
-
-        return -1;
+    @Test
+    void 자리수() {
+        List<Integer> list = Arrays.asList(7,9);
+        assertThat(jarisoo(97)).isEqualTo(list);
     }
-
-    // 각 자리수 배열로 출력
     static List<Integer> jarisoo(int num) {
         List<Integer> numArr = new ArrayList<Integer>();
         while(num > 0){
@@ -30,20 +24,33 @@ class Problem1 {
         return numArr;
     }
 
-    // List<Integer> 요소 더한 값 출력
+    @Test
+    void 더하기() {
+        List<Integer> list = Arrays.asList(9,7);
+        assertThat(plus(list)).isEqualTo(16);
+    }
     static int plus(List<Integer> nums) {
-        int result = 0;
-        for(int i : nums) result += i;
-        return result;
+        int plus = 0;
+        for(int i : nums) plus += i;
+        return plus;
     }
 
-    // List<Integer> 요소 곱한 값 출력
+    @Test
+    void 곱하기() {
+        List<Integer> list = Arrays.asList(9,7);
+        assertThat(multiply(list)).isEqualTo(63);
+    }
     static int multiply(List<Integer> nums) {
         int result = 1;
         for(int i : nums) result *= i;
         return result;
     }
 
+    @Test
+    void 최대값_구하기() {
+        List<Integer> list = Arrays.asList(97,98);
+        assertThat(maxNum(list)).isEqualTo(72);
+    }
     static int maxNum(List<Integer> nums) {
         int maxNum = 0;
         for (int i : nums) {
