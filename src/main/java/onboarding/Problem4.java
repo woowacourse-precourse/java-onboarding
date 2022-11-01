@@ -9,8 +9,10 @@ public class Problem4 {
                 answer += (char)('Z' - ch + 'A');
             } else if (ch >= 'a' && ch <= 'z') {
                 answer += (char)('z' - ch + 'a');
-            } else if (ch == ' '){
+            } else if (ch == ' ') {
                 answer += " ";
+            } else {
+                answer += String.valueOf(ch);
             }
         }
 
