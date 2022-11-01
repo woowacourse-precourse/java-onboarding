@@ -8,4 +8,9 @@ public class Problem5 {
         List<Integer> answer = Collections.emptyList();
         return answer;
     }
+
+    private static int countMoney(int money, int won) {
+        return money / won;
+    }
+
 }
