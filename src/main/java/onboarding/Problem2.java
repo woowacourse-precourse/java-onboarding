@@ -47,6 +47,7 @@ public class Problem2 {
 
     private static boolean calculateIsDecoded(String cryptogram) {
         char previousCharacter = 0;
+        
         for (char character : convertStringToCharacterList(cryptogram)) {
             if (previousCharacter == character) {
                 return false;

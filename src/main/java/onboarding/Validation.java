@@ -43,6 +43,7 @@ public abstract class Validation {
     public static boolean validateEmailForm(List<List<String>> forms) {
         for (List<String> form : forms) {
             String email = form.get(0);
+
             if (!email.matches(EMAIL_FORM_REGEX)) {
                 return false;
             }
@@ -56,6 +57,7 @@ public abstract class Validation {
     public static boolean validateEmailDomain(List<List<String>> forms) {
         for (List<String> form : forms) {
             String email = form.get(0);
+
             if (!email.endsWith(EMAIL_DOMAIN)) {
                 return false;
             }
@@ -66,6 +68,7 @@ public abstract class Validation {
     public static boolean validateNicknameForm(List<List<String>> forms) {
         for (List<String> form : forms) {
             String nickname = form.get(1);
+
             if (!nickname.matches(NICKNAME_FORM_REGEX)) {
                 return false;
             }

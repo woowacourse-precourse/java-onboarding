@@ -3,7 +3,6 @@ package onboarding;
 import java.util.*;
 
 import static onboarding.Problem7.Problem7Validation.validate;
-import static onboarding.Util.convertSortedSetToMap;
 import static onboarding.Util.sortMapByValueThenKey;
 
 public class Problem7 {
@@ -23,6 +22,7 @@ public class Problem7 {
     private static List<String> calculateAnswer(String user, List<List<String>> friends, List<String> visitors) {
         Map<String, List<String>> friendsMap = calculateFriendsMap(friends);
         Map<String, Integer> friendsScoreMap = calculateFriendsScoreMap(user, friendsMap);
+
         calculateVisitorsScoreMap(visitors, friendsScoreMap);
         return calculateRecommendFriendsList(user, friendsScoreMap, friendsMap);
     }
@@ -41,6 +41,7 @@ public class Problem7 {
 
     private static List<String> calculateFriendFriendList(String firstFriend, String secondFriend, Map<String, List<String>> friendsMap) {
         List<String> newFriendList = friendsMap.getOrDefault(firstFriend, new ArrayList<>());
+
         newFriendList.add(secondFriend);
         return newFriendList;
     }
@@ -83,7 +84,6 @@ public class Problem7 {
     }
 
     static abstract class Problem7Validation extends Validation {
-
         private static final int MIN_USER_ID_LENGTH = 1;
         private static final int MAX_USER_ID_LENGTH = 30;
         private static final int MIN_FRIENDS_SIZE = 1;

@@ -40,7 +40,6 @@ public class Problem3 {
         return count;
     }
 
-
     static abstract class Problem3Validation extends Validation {
         private static final int MIN_VALUE = 1;
         private static final int MAX_VALUE = 10000;
@@ -48,7 +47,5 @@ public class Problem3 {
         public static boolean validate(int number) {
             return validateIntegerRange(number, MIN_VALUE, MAX_VALUE);
         }
-
-
     }
 }

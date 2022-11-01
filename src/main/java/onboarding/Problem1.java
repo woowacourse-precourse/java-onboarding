@@ -29,6 +29,7 @@ class Problem1 {
 
     private static int calculateFinalScore(List<Integer> pageNumberList) {
         List<Integer> scoreList = new ArrayList<>();
+
         for (Integer integer : pageNumberList) {
             scoreList.add(calculateSumOfPageNumber(integer));
             scoreList.add(calculateProductOfPageNumber(integer));
@@ -38,6 +39,7 @@ class Problem1 {
 
     private static int calculateSumOfPageNumber(int pageNumber) {
         int result = 0;
+
         for (Integer integer : convertIntegerToList(pageNumber)) {
             result += integer;
         }
@@ -46,6 +48,7 @@ class Problem1 {
 
     private static int calculateProductOfPageNumber(int pageNumber) {
         int result = 1;
+
         for (Integer integer : convertIntegerToList(pageNumber)) {
             result *= integer;
         }
