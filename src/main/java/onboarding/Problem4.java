@@ -4,11 +4,11 @@ public class Problem4 {
     public static String solution(String word) {
         String answer = "";
 
-        answer = converAlpha(word.toCharArray());
+        answer = convertAlpha(word.toCharArray());
         return answer;
     }
 
-    static String converAlpha(char[] arr) {
+    static String convertAlpha(char[] arr) {
 
         String answer = "";
         char temp;
