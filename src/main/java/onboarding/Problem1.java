@@ -12,7 +12,7 @@ class Problem1 {
     // 양쪽 페이지를 확인하여 더 큰 페이지를 반환하는 함수
     private static int comparePages(List<Integer> pages) {
         int result = Integer.MIN_VALUE;
-        //verifyPages(pages);
+        verifyPages(pages);
 
         for(int page: pages) {
             List<Integer> pageNumbers = splitInt(page);
@@ -21,6 +21,16 @@ class Problem1 {
                 result = nowScore;
         }
         return result;
+    }
+
+    // 입력된 페이지가 정상인지 확인하는 함수
+    private static void verifyPages(List<Integer> pages) {
+        // 좌측 페이지가 홀수가 아닌 경우
+        if(pages.get(0) % 2 == 0)
+            throw new IllegalArgumentException("시작페이지 값이 잘못되었습니다. (홀수여야 합니다.)");
+        // 입력된 페이지가 연속되지 않은 경우
+        if(pages.get(1) - pages.get(0) != 1)
+            throw new IllegalArgumentException("연속된 페이지가 아닙니다.");
     }
 
     // 숫자를 각 자릿수로 나눠서 배열로 반환하는 함수
