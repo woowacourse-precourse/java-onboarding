@@ -12,9 +12,8 @@ public class Problem6 {
     private static final String EMAIL_DOMAIN = "@email.com";
 
     public static List<String> solution(List<List<String>> forms) {
-        Map<String, List<String>> nicknames = createNicknameMap(forms);
+        Map<String, Set<String>> nicknames = createNicknameMap(forms);
         Set<String> duplicateEmails = getDuplicateEmails(nicknames);
-
         return sortAnswer(duplicateEmails);
     }
 
@@ -24,7 +23,7 @@ public class Problem6 {
                 .collect(Collectors.toList());
     }
 
-    private static Set<String> getDuplicateEmails(Map<String, List<String>> nicknameDict) {
+    private static Set<String> getDuplicateEmails(Map<String, Set<String>> nicknameDict) {
         Set<String> duplicatedEmails = new HashSet<>();
 
         nicknameDict.forEach((nickname, emails) -> {
@@ -36,8 +35,9 @@ public class Problem6 {
         return duplicatedEmails;
     }
 
-    private static Map<String, List<String>> createNicknameMap(List<List<String>> forms) {
-        Map<String, List<String>> nicknames = new HashMap<>();
+    private static Map<String, Set<String>> createNicknameMap(List<List<String>> forms) {
+        Map<String, Set<String>> nicknames = new HashMap<>();
+
         for (List<String> form : forms) {
             String email = form.get(0);
             String nickname = form.get(1);
@@ -48,6 +48,7 @@ public class Problem6 {
             List<String> twoLetterNicknames = splitTwoLetter(nickname);
             storeEmails(nicknames, email, twoLetterNicknames);
         }
+
         return nicknames;
     }
 
@@ -62,9 +63,9 @@ public class Problem6 {
         return twoLetterNicknames;
     }
 
-    private static void storeEmails(Map<String, List<String>> nicknames, String email, List<String> twoLetterNicknames) {
+    private static void storeEmails(Map<String, Set<String>> nicknames, String email, List<String> twoLetterNicknames) {
         for (String twoLetterNickname : twoLetterNicknames) {
-            List<String> emails = nicknames.getOrDefault(twoLetterNickname, new ArrayList<>());
+            Set<String> emails = nicknames.getOrDefault(twoLetterNickname, new HashSet<>());
             emails.add(email);
             nicknames.put(twoLetterNickname, emails);
         }
@@ -87,6 +88,7 @@ public class Problem6 {
 
     private static boolean isValidNickname(String nickname) {
         String nicknameExp = "^[ㄱ-ㅎ가-힣ㅏ-ㅣ]+$";
+
         if (nickname.length() < MIN_NICKNAME_SIZE || nickname.length() >= MAX_NICKNAME_SIZE) {
             return false;
         }
