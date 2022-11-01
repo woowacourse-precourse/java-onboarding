@@ -82,4 +82,22 @@ public class Problem7 {
 
         return score;
     }
+
+    //기능4. 정렬 후 최대 5명을 반환한다.
+    public static List<String> sortScore(HashMap<String, Integer> score){
+        List<String> sortScore = new ArrayList<>();
+
+        List<String> keySetList = new ArrayList<>(score.keySet());
+        Collections.sort(keySetList, (o1, o2) -> Integer.compare( score.get(o2), score.get(o1) ) );
+        int cnt = 0;
+        for(String str : keySetList){
+            if(cnt==5){
+                break;
+            }
+            sortScore.add(str);
+            cnt++;
+        }
+
+        return sortScore;
+    }
 }
