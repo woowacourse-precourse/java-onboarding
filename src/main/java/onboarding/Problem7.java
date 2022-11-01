@@ -15,6 +15,7 @@ public class Problem7 {
         List<Map.Entry<String,User>> mapEntry = createMapEntry(userRelationMap);
 
         sorting(userRelationMap,mapEntry);
+        recommendFriend(user,userRelationMap.get(user).getConnectedMap(),answer,mapEntry);
          return answer;
     }
 
@@ -63,6 +64,23 @@ public class Problem7 {
                 return o2Score - o1Score;
             }
         });
+    }
+
+    public static void recommendFriend(String user,Map<String,User> userConnectedMap,List<String> answer,List<Map.Entry<String,User>> mapEntry){
+        int answerCnt = 0;
+
+        for(Map.Entry<String,User> entry : mapEntry){
+
+            if(answerCnt == 5)
+                break;
+
+            if(entry.getValue().getScore() > 0) {
+                if(userConnectedMap.get(entry.getKey()) == null && !entry.getKey().equals(user)) {
+                    answer.add(entry.getKey());
+                    answerCnt += 1;
+                }
+            }
+        }
     }
     public static List<Map.Entry<String,User>> createMapEntry(Map<String,User> userRelationMap){
 
