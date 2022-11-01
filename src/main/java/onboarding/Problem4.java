@@ -16,9 +16,10 @@ public class Problem4 {
         char reversedChar = ' ';
         if ('a' <= indexChar && indexChar <= 'z') {
             reversedChar = (char)('a' + 'z' - indexChar);
-        }
-        if ('A' <= indexChar && indexChar <= 'Z') {
+        } else if ('A' <= indexChar && indexChar <= 'Z') {
             reversedChar = (char)('A' + 'Z' - indexChar);
+        } else {
+            return;
         }
         sb.replace(index, index + 1, String.valueOf(reversedChar));
         return;
