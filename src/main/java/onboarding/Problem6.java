@@ -38,11 +38,7 @@ public class Problem6 {
 
     private static void makeFragmentsMap(List<List<String>> forms,
         Map<String, List<String>> nickNameFragmentsMap) {
-        for (List<String> form : forms) {
-            String email = form.get(0);
-            String nickName = form.get(1);
-            splitNickNames(nickNameFragmentsMap, email, nickName);
-        }
+        forms.forEach(form -> splitNickNames(nickNameFragmentsMap, form.get(0), form.get(1)));
     }
 
     private static void splitNickNames(Map<String, List<String>> nickNameFragmentsMap, String email,
