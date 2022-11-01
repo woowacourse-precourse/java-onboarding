@@ -10,7 +10,7 @@ public class Problem7 {
         List<String> usersFriends = new ArrayList<>();
         List<String> friendOfFriend = new ArrayList<>();
         List<Friend> recommended = new ArrayList<>();
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
 
         for (List<String> relations : friends) {
             if (user.equals(relations.get(0))) {
@@ -63,6 +63,13 @@ public class Problem7 {
             }
         }
 
+        Collections.sort(recommended);
+        for (Friend info : recommended) {
+            if (answer.size() > 5) {
+                break;
+            }
+            answer.add(info.getName());
+        }
         return answer;
     }
 }
