@@ -24,7 +24,7 @@ class Problem1 {
         List<Integer> separatedNumbers = new ArrayList<>();
         final int NOTATION = 10;
 
-        while (num > NOTATION){
+        while (num >= NOTATION){
             separatedNumbers.add(num % NOTATION);
             num /= NOTATION;
         }
