@@ -1,5 +1,8 @@
 package onboarding;
 
+import onboarding.pkgProblem1.service.CalculateMaxService;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
@@ -10,6 +13,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 class ApplicationTest {
     @Nested
     class Problem1Test {
+        CalculateMaxService calculateMaxService;
+        @Test
+        @BeforeEach
+        public void initialize(){
+            calculateMaxService = new CalculateMaxService();
+        }
         @Test
         void case1() {
             List<Integer> pobi = List.of(97, 98);
@@ -17,7 +26,6 @@ class ApplicationTest {
             int result = 0;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
-
         @Test
         void case2() {
             List<Integer> pobi = List.of(131, 132);
@@ -33,6 +41,23 @@ class ApplicationTest {
             int result = -1;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
+        //region Problem1 Method Test
+        @Test
+        void SplitNumberTest() {
+            int[] rs1 = {9,7};
+            int[] rs2 = {9,8};
+//            assertThat(calculateMaxService.SplitNumber(97)).isEqualTo(rs1);
+//            assertThat(calculateMaxService.SplitNumber(98)).isEqualTo(rs2);
+        }
+        @Test
+        void CalculateSumTest(){
+//            assertThat(calculateMaxService.CalculateSum(new int[]{9,7})).isEqualTo(16);
+        }
+        @Test
+        void CalculateMulTest(){
+//            assertThat(calculateMaxService.CalculateMul(new int[]{9,7})).isEqualTo(63);
+        }
+        //endregion
     }
 
     @Nested
