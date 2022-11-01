@@ -13,8 +13,17 @@ public class Problem5 {
         List<Integer> answer = Collections.emptyList();
 
         splitMoneyByCurrencyUnits(money, answer);
+        fillZeroToEmptyElement(answer);
 
         return answer;
+    }
+
+    private static void fillZeroToEmptyElement(List<Integer> answer) {
+        if (answer.size() != CURRENCY_UNITS.size()) {
+            for (int i = answer.size(); i < CURRENCY_UNITS.size(); ++i) {
+                answer.add(0);
+            }
+        }
     }
 
     private static void splitMoneyByCurrencyUnits(int money, List<Integer> answer) {
