@@ -12,10 +12,15 @@ public class Problem6 {
 
     private static HashSet<String> resultset = new HashSet<>();
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
         List<String> names = checkName(forms);
+        List<String> tokens;
 
+        for(int i = 0 ; i < forms.size() ; i++){
+            tokens = getNameToken(names.get(i));
+            findDup(tokens, forms, i);
+        }
 
+        List<String> answer = new ArrayList<>(resultset);
         return answer;
     }
     static List<String> checkName(List<List<String>> forms) {
@@ -23,6 +28,7 @@ public class Problem6 {
         for (List<String> splitedlist : forms) {
             if (splitedlist.get(0).length() < 1 || splitedlist.get(0).length() > 20) {
                 resultset.add(splitedlist.get(1));
+                names.add(splitedlist.get(0));
             }
             else {
                 names.add(splitedlist.get(0));
@@ -31,13 +37,12 @@ public class Problem6 {
         return names;
     }
 
-    static List<String> getNameToken(List<String> names) {
+    static List<String> getNameToken(String name) {
         List<String> nameToken = new ArrayList<>();
-        for (String name : names) {
             for (int j = 2; j <= name.length(); j++) {
                 nameToken.add(name.substring(j - 2, j));
             }
-        }
+
         return nameToken;
     }
 
