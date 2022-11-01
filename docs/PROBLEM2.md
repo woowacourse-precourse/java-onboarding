@@ -21,3 +21,7 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+
+## 기능 목록
+- 반복해서 중복 문자열을 제거해주는 함수 -> removeDoubleString
