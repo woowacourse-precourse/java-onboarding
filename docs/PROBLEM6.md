@@ -23,23 +23,5 @@
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
 -------------
 ## 기능 목록
-forms의 크기만큼 반복해 아래 로직들 수행
-* 이름을 2글자씩 잘라 List에 저장
-~~~
-private static void sliceName(String name, ArrayList<String> slicedNameList)
-~~~
-
-* 자른 이름들의 수만큼 반복(제이, 이엠이면 2번 반복) 자른 이름으로 map의 value를 가져오고 아래 로직들 전부 실행
-~~~
-private static void checkDuplication(Set<String> answer, HashMap<String, String> duplicatedNameMap, String email, ArrayList<String> slicedNameList)
-~~~
-
-* map의 값(이메일)이 null이 아닐 때 중복이므로 Set에 이메일 저장
-~~~
-private static void isEmailNotNull(Set<String> answer, String email, String duplicatedEmail)
-~~~
-
-* map의 값(이메일)이 null일때 Map에 key = 이름, value = 이메일 저장
-~~~
-private static void isEmailNull(HashMap<String, String> duplicatedNameMap, String email, String duplicatedName, String duplicatedEmail)
-~~~
+1. 중복 체크를 위해 이름 2글자씩 저장 ex) 제이엠 -> 제이, 이엠 저장
+2. 자른 이름들로 크루들의 이름과 비교 중복이면 이메일 저장 후 반환
