@@ -10,12 +10,12 @@ public class User {
         this.name = name;
     }
 
-    public String getName(){
-        return name;
-    }
-
     public void addFriend(String friendName){
         friendList.add(friendName);
+    }
+
+    public boolean isFriend(String name){
+        return friendList.contains(name);
     }
 
     public ArrayList<String> getFriendList() {

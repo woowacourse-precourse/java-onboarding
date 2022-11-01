@@ -22,11 +22,33 @@ public class FriendRecommendation {
         this.targetUser = new User(targetUserName);
     }
 
+    public List<String> getRecommendUserList(){
+        updateRecommendUserList();
+        return getTopPointsUsers();
+    }
+
+    private void updateRecommendUserList(){
+        calculateFriendsOfFriendPoints();
+        updateVisitorPoints();
+    }
+
+    private void calculateFriendsOfFriendPoints(){
+        addAllFriendListUserToTable();
+        addAllFriendRelation();
+        updateFriendOfFriendPoints();
+    }
+
+
     private void addAllFriendListUserToTable(){
         for(List<String> friendRelation: friends){
             putUser(friendRelation.get(0));
             putUser(friendRelation.get(1));
         }
+        setTargetUser();
+    }
+
+    private void setTargetUser(){
+        this.targetUser = userTable.get(targetUserName);
     }
 
     private void addAllFriendRelation(){
@@ -76,7 +98,7 @@ public class FriendRecommendation {
     }
 
     private boolean isMyFriend(String name){
-        return targetUser.getFriendList().contains(name);
+        return targetUser.isFriend(name);
     }
 
     private boolean isMe(String name){
