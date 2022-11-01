@@ -52,7 +52,7 @@ public class Problem6 {
 
     public static void makeAnswer(String email, String nickname) {
         duplicateCount.forEach((token, count) -> {
-            if(nickname.contains(token)) {
+            if(nickname.contains(token) && !answer.contains(email)) {
                 answer.add(email);
             }
         });
