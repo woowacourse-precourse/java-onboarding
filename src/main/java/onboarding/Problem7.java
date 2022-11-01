@@ -123,6 +123,16 @@ class Recommendation{
         User newFriend = new User(visitor);
         USERS.put(visitor, newFriend);
     }
+    void addVisitScore(List<String> visitors) {
+        User user;
+        for (String visitor : visitors) {
+            if (isNewUser(visitor)) {
+                makeNewUser(visitor);
+            }
+            user=USERS.get(visitor);
+            user.updateVisitScore();
+        }
+    }
 }
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
