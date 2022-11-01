@@ -3,7 +3,7 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
-    public static Map<String, Set<String>> makeFriendRelation(List<List<String>> friends, List<String> visitors) {
+    public static Map<String, Set<String>> makeFriendRelation(List<List<String>> friends) {
         Map<String, Set<String>> relation = new HashMap<>();
         for (List<String> elem : friends) {
             String id1 = elem.get(0);
@@ -16,11 +16,6 @@ public class Problem7 {
             }
             relation.get(id1).add(id2);
             relation.get(id2).add(id1);
-        }
-        for(String visitor: visitors){
-            if(!relation.containsKey(visitor)){
-                relation.put(visitor, Collections.emptySet());
-            }
         }
         return relation;
     }
@@ -38,7 +33,7 @@ public class Problem7 {
         Map<String, Integer> score = new TreeMap<>(); //점수 계산용
 
         //1. 사용자와 함께 아는 친구
-        Map<String, Set<String>> relation = makeFriendRelation(friends, visitors);
+        Map<String, Set<String>> relation = makeFriendRelation(friends);
         //user와 교집합
         for (String key : relation.keySet()) {
             if(isException(relation,key,user)){
@@ -51,13 +46,10 @@ public class Problem7 {
         }
         //2. 사용자의 타임 라인에 방문한 횟수
         for(String visitor : visitors){
-            if(isException(relation,visitor,user)){
+            if(relation.containsKey(visitor) && isException(relation,visitor,user)){
                 continue;
             }
-            if(!score.containsKey(visitor)){
-                score.put(visitor,0);
-            }
-            score.put(visitor,score.get(visitor)+1);
+            score.put(visitor,score.getOrDefault(visitor,0)+1);
         }
 
         //3. 점수가 가장 높은 순으로 정렬하여 최대 5명 return, 0점은 추천x
