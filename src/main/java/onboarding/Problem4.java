@@ -20,5 +20,12 @@ public class Problem4 {
         return frogDictionary.charAt(index);
 
     }
+    // 소문자 변환
+    public static char translateLowerCase(char letter, String dictionary, String frogDictionary){
+        int index = -1;
+        index = dictionary.indexOf(letter);
+        return frogDictionary.charAt(index);
+    }
+
 
 }
