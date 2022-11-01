@@ -2,6 +2,8 @@ package onboarding;
 
 import java.util.*;
 
+import static java.sql.Types.NULL;
+
 class Problem1 {
     static int calculateMax(int page){
         int sum = 0;
@@ -27,20 +29,43 @@ class Problem1 {
             return right;
         }
     }
-
+    static boolean isError(List<Integer> pobi, List<Integer> crong){
+        boolean status = false;
+        if(pobi.get(0) == 1 || crong.get(0) == 1){
+            status = true;
+        }
+        if(pobi.get(1) == 400 || crong.get(0) == 400){
+            status = true;
+        }
+        if(pobi.get(0)%2 == 0 || crong.get(0)%2 == 0){
+            status = true;
+        }
+        if(pobi.get(1)%2 == 1 || crong.get(1)%2 == 1){
+            status = true;
+        }
+        if(pobi.get(1)-pobi.get(0) != 1 || crong.get(1)-crong.get(0) != 1){
+            status = true;
+        }
+        return status;
+    }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int pobiValue = myMax(pobi);
         int crongValue = myMax(crong);
-        int answer;
+        int answer = NULL;
+
         if (pobiValue > crongValue) {
             answer = 1;
-        } else if (pobiValue < crongValue) {
+        }
+        if (pobiValue < crongValue) {
             answer = 2;
-        } else if (pobiValue == crongValue) {
+        }
+        if (pobiValue == crongValue) {
             answer = 0;
-        } else {
+        }
+        if(isError(pobi, crong)){
             answer = -1;
         }
+
         return answer;
     }
 }
