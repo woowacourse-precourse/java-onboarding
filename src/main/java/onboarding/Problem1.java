@@ -45,4 +45,13 @@ class Problem1 {
             result *= n;
         return result;
     }
+
+    // 승패 결과 반환하는 함수
+    private static int leftIsWin(int leftScore, int rightScore) {
+        if(leftScore > rightScore)
+            return 1;
+        if(leftScore < rightScore)
+            return 2;
+        return 0;
+    }
 }
