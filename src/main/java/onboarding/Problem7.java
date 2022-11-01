@@ -3,6 +3,20 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
+    public static List<String> findUserFriends(String user, List<List<String>> friendRelation) {
+        List<String> userFriends = new ArrayList<>();
+
+        for (List<String> friends : friendRelation) {
+            for (String friend : friends) {
+                if (friends.contains(user) && !friend.equals(user)) {
+                    userFriends.add(friend);
+                }
+            }
+        }
+
+        return userFriends;
+    }
+
     public static Map<String, Integer> scoreVisitors(Map<String, Integer> candidates, List<String> visitors) {
         for (String visitor : visitors) {
             if (candidates.containsKey(visitor)) {
