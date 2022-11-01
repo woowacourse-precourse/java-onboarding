@@ -1,4 +1,4 @@
-package onboarding.problem7;
+package onboarding.problem7.infra;
 
 public class UserNameValidation {
 

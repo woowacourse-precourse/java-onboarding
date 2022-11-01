@@ -1,6 +1,6 @@
 package onboarding;
 
-import onboarding.problem7.UserNameValidation;
+import onboarding.problem7.infra.UserNameValidation;
 import onboarding.problem7.repository.UserRepositoryImpl;
 import onboarding.problem7.service.PointService;
 import onboarding.problem7.service.UserInfoServiceImpl;
