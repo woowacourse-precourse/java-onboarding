@@ -4,7 +4,10 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * 기능 사항 1. User Class 구현 2. answer를 저장하는 함수 3. 두 글자씩 map에 저장하는 함수
+ * 기능
+ * 1. User Class 구현
+ * 2. answer를 저장하는 함수
+ * 3. 두 글자씩 map에 저장하는 함수
  */
 public class Problem6 {
 

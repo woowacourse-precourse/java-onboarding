@@ -1,7 +1,8 @@
 package onboarding;
 
 /**
- * 기능 1. 해당 수의 3,6,9 개수 확인
+ * 기능
+ * 1. 해당 수의 3,6,9 개수 확인
  */
 public class Problem3 {
 

@@ -9,6 +9,14 @@ public class Problem4 {
     static String upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     static String lower = "abcdefghijklmnopqrstuvwxyz";
 
+    public static String solution(String word) {
+        StringBuilder sb = new StringBuilder();
+        for (char cur : word.toCharArray()) {
+            sb.append(translate(cur));
+        }
+        return sb.toString();
+    }
+
     /**
      * 1. 해당 문자를 반대로 변환하는 함수
      * @param x
@@ -25,11 +33,4 @@ public class Problem4 {
     }
 
 
-    public static String solution(String word) {
-        StringBuilder sb = new StringBuilder();
-        for (char cur : word.toCharArray()) {
-            sb.append(translate(cur));
-        }
-        return sb.toString();
-    }
 }

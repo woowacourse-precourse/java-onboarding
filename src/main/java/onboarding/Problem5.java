@@ -6,7 +6,8 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * 기능 1. 화폐 개수를 리턴하는 함수
+ * 기능
+ * 1. 화폐 개수를 리턴하는 함수
  */
 public class Problem5 {
 

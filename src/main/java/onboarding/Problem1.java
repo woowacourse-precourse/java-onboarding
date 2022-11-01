@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * 기능
+ * 1. 예외처리
+ * 2. 리스트로 만들 수 있는 최대값 반환
+ */
 class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
@@ -26,6 +31,11 @@ class Problem1 {
         return -1;
     }
 
+    /**
+     * 1. 예외처리
+     * @param list
+     * @return
+     */
     static boolean check(List<Integer> list) {
         //예외1 시작 or 마지막 면이 입력으로
         if (list.get(0) == 1 || list.get(1) == 400) {
@@ -42,6 +52,11 @@ class Problem1 {
         return true;
     }
 
+    /**
+     * 2. 리스트로 만들 수 있는 최대값 반환
+     * @param list
+     * @return
+     */
     static int calMax(List<Integer> list) {
         ArrayList<Integer> maxlist = new ArrayList<>();
         for (int num : list) {
