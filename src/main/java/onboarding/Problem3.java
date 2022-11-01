@@ -26,6 +26,7 @@ public class Problem3 {
             if (digit % 3 == 0 && digit != 0) {
                 count++;
             }
+
             number /= 10;
         }
 
