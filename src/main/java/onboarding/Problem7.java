@@ -2,7 +2,19 @@ package onboarding;
 
 import java.util.*;
 
+/**
+ * Problem 7
+ * @author Davin An
+ * @version 1.0
+ */
 public class Problem7 {
+    /**
+     * Goes through friend list and visitor list to calculate scores
+     * @param user User to recommend friends for
+     * @param friends List of pairs who are currently friends
+     * @param visitors List of ppl who have visited the user
+     * @return List of recommended friends for the user
+     */
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Map<String, Integer> users = new HashMap<>();
         List<String> friendList = findFriends(user, friends);
@@ -38,6 +50,12 @@ public class Problem7 {
         return recommendation(users);
     }
 
+    /**
+     * Finds out who are currently friends with the user
+     * @param user Subject user to find friends for
+     * @param friends List of pairs who are currently friends
+     * @return List of friends of current user
+     */
     public static List<String> findFriends(String user, List<List<String>> friends) {
         List<String> friendList = new ArrayList<>();
         for (List<String> l : friends) {
@@ -48,6 +66,12 @@ public class Problem7 {
         return friendList;
     }
 
+    /**
+     * Sorts Hashmap by value and returns the top 5 users with the highest scores
+     * Note, there is no user with score 0 in the Hashmap
+     * @param users List of users to recommend from
+     * @return List of friend recommendations
+     */
     public static List<String> recommendation(Map<String, Integer> users) {
         List<String> recommendation = new ArrayList<>();
         List<Map.Entry<String, Integer>> sortedList = new ArrayList<>(users.entrySet());
