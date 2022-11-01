@@ -33,7 +33,9 @@ public class Problem7 {
     }
 
     public static void addScoreFriendKnow(String user, Map<String, Integer> recommendScore, Map<String, List<String>> friendMap) {
-       for (String friend : friendMap.get(user)) {
+        if (friendMap.get(user) == null) return;
+
+        for (String friend : friendMap.get(user)) {
             recommendScore.put(friend, -1);
             for (String friendKnow : friendMap.get(friend)) {
                 if (friendKnow.equals(user)) continue;
@@ -52,7 +54,11 @@ public class Problem7 {
 
     public static List<String> recommendFriend(Map<String, Integer> recommendScore) {
         List<Map.Entry<String, Integer>> entryList = new LinkedList<>(recommendScore.entrySet());
-        entryList.sort(((o1, o2) -> recommendScore.get(o2.getKey()) - recommendScore.get(o1.getKey())));
+        entryList.sort(((o1, o2) -> {
+            if (Objects.equals(recommendScore.get(o2.getKey()), recommendScore.get(o1.getKey())))
+                return o1.getKey().compareTo(o2.getKey());
+            return o2.getValue() - o1.getValue();
+        }));
 
         int count = 0;
         List<String> recommendList = new ArrayList<>();
