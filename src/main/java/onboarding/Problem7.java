@@ -10,7 +10,7 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         initFriendshipByFriends(friends);
         calculateScores(user, visitors);
-        return getRecommendationsUp2Five(sortRecommendations());
+        return getRecommendationsForUser(user);
     }
 
     private static void initFriendshipByFriends(List<List<String>> friends) {
@@ -28,58 +28,49 @@ public class Problem7 {
     private static void calculateScores(String user, List<String> visitors) {
         idToScore = new HashMap<>();
         addScoresByFriendship(user);
-        addScoresByVisitors(user, visitors);
+        addScoresByVisitors(visitors);
     }
 
     private static Map<String, Integer> addScoresByFriendship(String user) {
         for (String id : friendship.keySet()) {
-            if (user.equals(id) || isFriend(user, id)) {
-                continue;
-            }
             idToScore.put(id, 10 * countSameFriend(user, id));
         }
         return idToScore;
     }
 
     private static int countSameFriend(String user, String otherUser) {
-        int sameFriendCnt = 0;
-        for (String friend : friendship.get(otherUser)) {
-            if (isFriend(user, friend)) {
-                sameFriendCnt++;
-            }
-        }
-        return sameFriendCnt;
-    }
-
-    private static void addScoresByVisitors(String user, List<String> visitors) {
-        for (String visitor : visitors) {
-            if (isFriend(user, visitor)) {
-                continue;
-            }
-            idToScore.put(visitor, idToScore.getOrDefault(visitor, 0) + 1);
-        }
+        return (int) friendship.get(otherUser).stream()
+                .filter(friend -> isFriend(user, friend))
+                .count();
     }
 
     private static boolean isFriend(String user, String otherUser) {
         return friendship.get(user).contains(otherUser);
     }
 
-    private static List<Map.Entry<String, Integer>> sortRecommendations() {
+    private static void addScoresByVisitors(List<String> visitors) {
+        for (String visitor : visitors) {
+            idToScore.put(visitor, idToScore.getOrDefault(visitor, 0) + 1);
+        }
+    }
+
+    private static List<String> getRecommendationsForUser(String user) {
         return idToScore.entrySet().stream()
-                .sorted((o1, o2) -> o1.getValue() == o2.getValue()
-                        ? o1.getKey().compareTo(o2.getKey())
-                        : o2.getValue().compareTo(o1.getValue()))
+                .filter(o -> !user.equals(o.getKey()) && !isFriend(user, o.getKey()))
+                .sorted((o1, o2) -> compareByRecommendationAlgorithm(o1, o2))
+                .limit(5)
+                .map(Map.Entry::getKey)
                 .collect(Collectors.toList());
     }
 
-    private static List<String> getRecommendationsUp2Five(List<Map.Entry<String, Integer>> recommendations) {
-        List<String> newRecommendations = new ArrayList<>();
-        for (Map.Entry<String, Integer> recommendation : recommendations) {
-            if (newRecommendations.size() == 5) {
-                return newRecommendations;
-            }
-            newRecommendations.add(recommendation.getKey());
+    private static int compareByRecommendationAlgorithm(Map.Entry<String, Integer> nameToScoreA, Map.Entry<String, Integer> nameToScoreB) {
+        Integer scoreA = nameToScoreA.getValue();
+        Integer scoreB = nameToScoreB.getValue();
+        if (scoreA.equals(scoreB)) {
+            String nameA = nameToScoreA.getKey();
+            String nameB = nameToScoreB.getKey();
+            return nameA.compareTo(nameB);
         }
-        return newRecommendations;
+        return scoreB.compareTo(scoreA);
     }
 }
