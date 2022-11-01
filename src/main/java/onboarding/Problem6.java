@@ -23,5 +23,18 @@ public class Problem6 {
         return partialName;
     }
 
+    static Set<String> getDuplicateName(List<String> partialName) {
+
+        Set<String> duplName = new HashSet<>();
+        for (String s : partialName) {
+            if (Collections.frequency(partialName, s) > 1) {
+                duplName.add(s);
+            }
+        }
+
+        return duplName;
+    }
+
+
 
 }
