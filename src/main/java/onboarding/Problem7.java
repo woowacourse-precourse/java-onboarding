@@ -12,6 +12,10 @@ public class Problem7 {
         List<String> visitUser = getVisitUser(visitors);
 
         Map<String, Integer> point = new HashMap<>();
+        // 겹친구의 Point 계산
+        for(String userName : userUnionFriends) {
+            point.put(userName, point.getOrDefault(userName, 0) + 10);
+        }
 
 
         return answer;
