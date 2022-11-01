@@ -13,7 +13,6 @@ class Problem1 {
     static private final int LAST_PAGE = 400;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = 0;
         int pobiLeft = pobi.get(0);
         int pobiRight = pobi.get(1);
         int crongLeft = crong.get(0);
@@ -25,8 +24,7 @@ class Problem1 {
 
         int pobiScore = getScore(pobiLeft, pobiRight);
         int crongScore = getScore(crongLeft, crongRight);
-
-        answer = getAnswer(pobiScore, crongScore);
+        int answer = getAnswer(pobiScore, crongScore);
         return answer;
     }
 
