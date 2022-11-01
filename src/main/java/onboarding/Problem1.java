@@ -14,11 +14,23 @@ class Problem1 {
     }
 
     // 합구하기
-    public static int subNum(int num) {
+    public static int addNum(int num) {
         int sum = 0;
 
         while(num!=0) {
             sum += num % 10;
+            num /= 10;
+        }
+
+        return sum;
+    }
+
+    // 곱구하기
+    public static int multiNum(int num) {
+        int sum = 1;
+
+        while(num!=0) {
+            sum *= num % 10;
             num /= 10;
         }
 
