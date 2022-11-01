@@ -1,6 +1,8 @@
 package onboarding;
 
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 class Problem1 {
 
@@ -21,6 +23,9 @@ class Problem1 {
         if (validatePlayerNotReady(crong)) {
             return ANSWER_EXCEPTION;
         }
+
+        int pobiPoint = findMaxPoint(pobi);
+        int crongPoint = findMaxPoint(crong);
 
         return findWinner(pobiPoint, crongPoint);
     }
@@ -50,6 +55,27 @@ class Problem1 {
     private static boolean validatePageNotExists(int page) {
         return MIN_PAGE > page || page > MAX_PAGE;
     }
+
+    private static int findMaxPoint(List<Integer> player) {
+        int leftPage = findPage(player, LEFT_PAGE_INDEX);
+        int rightPage = findPage(player, RIGHT_PAGE_INDEX);
+
+        List<Integer> leftPageCiphers = parsePageToCiphers(leftPage);
+        List<Integer> rightPageCiphers = parsePageToCiphers(rightPage);
+
+        return comparePoint(leftPageMaxPoint, rightPageMaxPoint);
+    }
+
+    private static int findPage(List<Integer> player, int pageSide) {
+        return player.get(pageSide);
+    }
+
+    private static List<Integer> parsePageToCiphers(int page) {
+        return Stream.of(String.valueOf(page).split(""))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+    }
+
 
     private static int findWinner(int pobi, int crong) {
         int compareResult = Integer.compare(pobi, crong);
