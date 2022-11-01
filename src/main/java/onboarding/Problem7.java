@@ -159,4 +159,49 @@ public class Problem7 {
 
         return false;
     }
+
+    public static class Member{
+        private String user;
+        private List<String> friends;
+        private int visit;
+        private int score;
+        public Member(String user, List<String> friends, int score){
+            this.user=user;
+            this.friends=friends;
+            this.visit=visit;
+            this.score=score;
+        }
+
+        public String getUser() {
+            return user;
+        }
+
+        public void setUser(String user) {
+            this.user = user;
+        }
+
+        public List<String> getFriends() {
+            return friends;
+        }
+
+        public void setFriends(List<String> friends) {
+            this.friends = friends;
+        }
+
+        public int getVisit() {
+            return visit;
+        }
+
+        public void setVisit(int visit) {
+            this.visit = visit;
+        }
+
+        public int getScore() {
+            return score;
+        }
+
+        public void setScore(int score) {
+            this.score = score;
+        }
+    }
 }
