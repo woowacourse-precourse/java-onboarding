@@ -15,6 +15,8 @@ public class Problem4 {
                 int parsed = (int) ch[i];
                 if(parsed < 97){
                     answer += (char)(parsed + (90-parsed) - (parsed-65));
+                } else {
+                    answer += (char)(parsed + (122-parsed) - (parsed-97));
                 }
             }
         }
