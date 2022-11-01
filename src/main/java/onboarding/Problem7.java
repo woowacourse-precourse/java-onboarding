@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 
 public class Problem7 {
+    private static final int FRIEND_SCORE=10;
+    private static final int VISITOR_SCORE=1;
 
     private static void appendMapValue(String key, String appendValue,
         HashMap<String, List<String>> map) {
@@ -37,6 +39,13 @@ public class Problem7 {
         List<String> visitors) {
 
         HashMap<String, List<String>> friendsGraph = createAdjListGraph(friends);
+
+        HashMap<String,Integer> userScore = new HashMap<>(); //user당 점수를 저장하는 해쉬 맵
+
+        //겹치는 친구에 대해서 점수 +10
+        friendsGraph.get(user).forEach(friend->updateMapAll(friendsGraph.get(friend),FRIEND_SCORE,userScore));
+        //방문자에 대해서 점수 +1
+        updateMapAll(visitors,VISITOR_SCORE,userScore);
 
         List<String> answer = Collections.emptyList();
         return answer;
