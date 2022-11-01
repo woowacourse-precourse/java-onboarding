@@ -58,6 +58,20 @@ public class Problem7 {
         return scoreMap;
     }
 
+    private static HashMap<String, Integer> removeUserAndFriend(HashMap<String, Integer> scoreMap, HashMap<String, List<String>> friendMap, String user) {
+        List<String> userFriendList = friendMap.get(user);
+
+        for (String userFriend : userFriendList) {
+            scoreMap.remove(userFriend);
+        }
+
+        if (scoreMap.containsKey(user)) {
+            scoreMap.remove(user);
+        }
+
+        return scoreMap;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
         HashMap<String, List<String>> friendMap;
@@ -68,6 +82,8 @@ public class Problem7 {
         scoreMap = scoreFriendsOfFriends(user, friendMap);
 
         scoreMap = scoreVisitors(scoreMap, visitors);
+
+        scoreMap = removeUserAndFriend(scoreMap, friendMap, user);
 
         return answer;
     }
