@@ -50,6 +50,23 @@ class ApplicationTest {
             String result = "";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
+
+        @Test
+        void 유효체크_검사() {
+            String cryptogram = "sblllac";
+            String expected = "sbac";
+
+            assertThat(Problem2.isValid(cryptogram)).isFalse();
+        }
+
+        @Test
+        void 중복_제거_검사() {
+            String cryptogram = "sblllac";
+            String expected = "sbac";
+
+            assertThat(Problem2.removeDuplicate(cryptogram)).isEqualTo(expected);
+        }
+
     }
 
     @Nested
@@ -66,6 +83,15 @@ class ApplicationTest {
             int number = 33;
             int result = 14;
             assertThat(Problem3.solution(number)).isEqualTo(result);
+        }
+
+        @Test
+        void 박수_체크_테스트() {
+            char num1 = '3';
+            assertThat(Problem3.isClap(num1)).isTrue();
+
+            char num2 = '4';
+            assertThat(Problem3.isClap(num2)).isFalse();
         }
     }
 
