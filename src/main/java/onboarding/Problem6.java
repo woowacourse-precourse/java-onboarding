@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-
+        List<String> wrong = new LinkedList<>();
         List<String> answer = List.of("answer");
 
         if(!isValidSize(forms)){
@@ -107,4 +107,5 @@ public class Problem6 {
         }
         return result;
     }
+
 }

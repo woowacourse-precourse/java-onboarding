@@ -21,3 +21,17 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+
+### 기능 구현
+
+1. input 유효성 검사
+- input이 null인지 확인
+- 크루 사이즈 확인
+- 이메일 유효성 확인(이메일 형식 확인 및 길이 확인)
+- 닉네임 유효성 확인(닉네임이 한글인지 확인 및 길이 확인)
+
+2. input 처리
+- 각 닉네임 바이그램으로 나누기
+- 중복된 바이그램 탐색하기
+- set으로 처리하여 중복 제거하기
