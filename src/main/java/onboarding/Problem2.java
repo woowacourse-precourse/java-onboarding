@@ -1,6 +1,7 @@
 package onboarding;
 
 public class Problem2 {
+
     //연속된 스펠링 제거
     public static String removeDuplicateSpelling(String cryptogram) {
         int pre, cur;
