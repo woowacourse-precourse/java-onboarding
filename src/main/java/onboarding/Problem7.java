@@ -95,4 +95,49 @@ public class Problem7 {
         List<Integer> friends = friendsNetwork.get(userIndex);
         return friends.stream().collect(Collectors.toSet());
     }
+    static private int[][] sort(int[][] intimacyArray, int totalNumberOfUsers, String[] userNameArray) {
+        //총 사용자 수만큼 자르기
+        intimacyArray = cutArray(intimacyArray, totalNumberOfUsers);
+        //친밀도 순으로 내림차순 정렬
+        Arrays.sort(intimacyArray, (o1, o2) -> o2[0] - o1[0]);
+
+        //순위 중복의 경우 처리하면서 필요한 만큼만 배열 자르기
+        intimacyArray = trimIntimacyArray(intimacyArray, totalNumberOfUsers);
+
+        //이름까지 포함해서 다시 정렬
+        Arrays.sort(intimacyArray, (o1, o2) -> o2[0] == o1[0] ? userNameArray[o1[1]].compareTo(userNameArray[o2[1]]) : o2[0] - o1[0]);
+        return intimacyArray;
+    }
+    private static int[][] cutArray(int[][] arr, int num) {
+        if(num < 5) num = 5;
+        int[][] newArr = new int[num][2];
+        for(int i = 0; i < num; i++) {
+            newArr[i][0] = arr[i][0];
+            newArr[i][1] = arr[i][1];
+        }
+        return newArr;
+    }
+
+    private static int[][] trimIntimacyArray(int[][] intimacyArray, int totalNumberOfUsers) {
+        int sameRankIndex = 6;
+        int[][] trimmedIntimacyArray;
+        //총 5명 초과의 유저가 있을 때
+        if(totalNumberOfUsers > 5) {
+            //5등과 6등의 점수가 같을 때
+            if(intimacyArray[4][0] != 0 && intimacyArray[4][0] == intimacyArray[5][0]) {
+                //몇 등까지 같은지 센다.
+                while(intimacyArray[sameRankIndex][0] == intimacyArray[sameRankIndex - 1][0]) {
+                    sameRankIndex++;
+                }
+            }
+            //sameRankIndex - 1의 인덱스까지 같다.
+        } else {
+            sameRankIndex = 5;
+        }
+
+
+        trimmedIntimacyArray = cutArray(intimacyArray, sameRankIndex);
+
+        return trimmedIntimacyArray;
+    }
 }
