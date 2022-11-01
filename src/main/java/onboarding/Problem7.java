@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * 1. 사용자 별 친구 리스트 생성
@@ -49,7 +50,7 @@ public class Problem7 {
         for(int i = 0; i < friendsList.size(); i++) {
             int count = 10;
             if (!friendsList.get(i).get(1).equals(user) && myFriend.contains(friendsList.get(i).get(0))) {
-                myFriendsFriend.put(friendsList.get(i).get(1), count * 10);
+                myFriendsFriend.put(friendsList.get(i).get(1), count += 10);
             }
         }
         myFriendsFriend = sortByValue(myFriendsFriend);
@@ -59,7 +60,7 @@ public class Problem7 {
     public static HashMap<String, Integer> findMyVisitors(String user, List<String> myFriend, List<String> visitors) {
         HashMap<String, Integer> notMyFriendVisitors = new HashMap<>();
         for(int i = 0; i < visitors.size(); i++) {
-            int count = 1;
+            int count = 0;
             for (String f : myFriend) {
                 if (!visitors.get(i).equals(f)) {
                     notMyFriendVisitors.put(visitors.get(i), count++);
@@ -69,14 +70,14 @@ public class Problem7 {
         return notMyFriendVisitors;
     }
 
-    public static HashMap<String, Integer> sortByValue(HashMap<String, Integer> hm){
+    public static HashMap<String, Integer> sortByValue(Map<String, Integer> hm){
         List<Map.Entry<String, Integer> > list =
                 new LinkedList<Map.Entry<String, Integer>>(hm.entrySet());
 
         Collections.sort(list, new Comparator<Map.Entry<String, Integer> >() {
             public int compare(Map.Entry<String, Integer> o1,
                                Map.Entry<String, Integer> o2){
-                return (o1.getValue()).compareTo(o2.getValue());
+                return (o2.getValue()).compareTo(o1.getValue());
             }
         });
 
