@@ -55,6 +55,18 @@
 
 <br/>
 
-#### 6. 추천 점수가 높은 아이디 최대 5개 구하기 ```solution```
+#### 6. 친구 추천 후보 목록 구하기 ```getCandidateList```
+```String user, List<List<String>> friends, List<String> visitors``` => ```List<Candidate>```
+1. ```user```와 친구가 아닌 id 목록을 구한다
+2. 1번 목록에서 추천 점수가 0 보다 큰 사용자를 ```candidateList```에 포함한다
+
+<br/>
+
+#### 7. 친구 추천 후보 목록 정렬하기 ```sortCandidateList```
+```List<Candidate> candidateList``` => ```void```
+
+<br/>
+
+#### 8. 추천 점수가 높은 아이디 최대 5개 구하기 ```solution```
 
 
