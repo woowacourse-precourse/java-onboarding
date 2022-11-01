@@ -24,7 +24,16 @@ public class Problem7 {
     private static final String ENGLISH_PATTERN = "^[a-z]*$";
     private static final int MAX_RECOMMENDATION_NUM = 5;
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        validateUser(user);
+        validateFriendsSize(friends);
+        validateFriendRelationshipListSize(friends);
+        validateFriendId(friends);
+
+        List<String> userFriends = makeUserFriendsList(user, friends);
+        Map<String, Integer> RecommendFriendsPoint = extractFriendPointList(user, friends, visitors, userFriends);
+        List<Entry<String, Integer>> sortedFriendsList = sortedFriendsList(RecommendFriendsPoint);
+        List<String> answer = addFinalRecommendation(sortedFriendsList);
+
         return answer;
     }
 
