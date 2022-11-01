@@ -170,9 +170,7 @@ public class Problem7 {
 
 		for (List<String> friend : friends) {
 			notYetFriendWithUser.addAll(friend);
-			if (friend.contains(user)) {
-				alreadyFriendWithUser.addAll(friend);
-			}
+			initAlreadyFriendWithUser(user, alreadyFriendWithUser, friend);
 		}
 		notYetFriendWithUser.addAll(visitors);
 
@@ -180,5 +178,11 @@ public class Problem7 {
 			notYetFriendWithUser.remove(s);
 		}
 		return notYetFriendWithUser;
+	}
+
+	private static void initAlreadyFriendWithUser(String user, Set<String> alreadyFriendWithUser, List<String> friend) {
+		if (friend.contains(user)) {
+			alreadyFriendWithUser.addAll(friend);
+		}
 	}
 }
