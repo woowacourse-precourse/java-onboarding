@@ -1,8 +1,6 @@
 package onboarding;
 
-import java.security.KeyStore;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Problem7 {
 
