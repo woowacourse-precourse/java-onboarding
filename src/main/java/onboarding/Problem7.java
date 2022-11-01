@@ -130,8 +130,8 @@ public class Problem7 {
         Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
             @Override
             public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
-                int comparision = (o1.getValue() - o2.getValue()) * -1;
-                return comparision == 0 ? o1.getKey().compareTo(o2.getKey()) : comparision;
+                int comparison = (o1.getValue() - o2.getValue()) * -1;
+                return comparison == 0 ? o1.getKey().compareTo(o2.getKey()) : comparison;
             }
         });
 
