@@ -46,4 +46,14 @@ public class Problem7 {
         }
     }
 
+    private static void calculateAcquaintanceScore(List<List<String>> friends) {
+        for (List<String> friend : friends) {
+            if (notFriends.contains(friend.get(0)) && alreadyFriends.contains(friend.get(1))) {
+                notFriends_Score.put(friend.get(0), notFriends_Score.get(friend.get(0)) + 10);
+            }
+            if (notFriends.contains(friend.get(1)) && alreadyFriends.contains(friend.get(0))) {
+                notFriends_Score.put(friend.get(1), notFriends_Score.get(friend.get(1)) + 10);
+            }
+        }
+    }
 }
