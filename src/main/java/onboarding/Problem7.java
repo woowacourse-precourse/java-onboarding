@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     static List<String> findFriends(String user, <List<List<String>> friends) {
@@ -44,6 +41,19 @@ public class Problem7 {
                         score.put(relationship.get(0), 10);
                     }
                 }
+            }
+        }
+        return score;
+    }
+
+    static HashMap<String, Integer> calcVisitScore(List<String> alreadyFriends, List<String> visitors, HashMap<String, Integer> score) {
+        for (String visitor : visitors) {
+            if (!alreadyFriends.contains(visitor)) {
+                if (score.containsKey(visitor)) {
+                    score.put(visitor, score.get(visitor) + 1);
+                    continue;
+                }
+                score.put(visitor, 1);
             }
         }
         return score;
