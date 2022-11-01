@@ -19,7 +19,7 @@ public class Problem6 {
 	public static List<String> solution(List<List<String>> forms) {
 		List<String> answer = new ArrayList<>();
 		Map<String, String> emailAndNicknames;
-		List<String> splitNicknames; // 각 크루의 닉네임을 두 글자씩 쪼개어 담을 리스트
+		List<String> splitNicknamesIntoTwoDigit; // 각 크루의 닉네임을 두 글자씩 쪼개어 담을 리스트
 		Set<String> duplicateNicknames; // 중복된 닉네임 set
 
 		if (checkRestrictions(forms) == EXCEPTION) {
@@ -27,8 +27,8 @@ public class Problem6 {
 		}
 
 		emailAndNicknames = initMapWithEmailAndNicknames(forms);
-		splitNicknames = initSplitNicknames(emailAndNicknames);
-		duplicateNicknames = initDuplicateNicknames(splitNicknames);
+		splitNicknamesIntoTwoDigit = initSplitNicknames(emailAndNicknames);
+		duplicateNicknames = initDuplicateNicknames(splitNicknamesIntoTwoDigit);
 		answer = getCrewUsingInvalidNickname(emailAndNicknames, duplicateNicknames);
 		Collections.sort(answer);
 
@@ -74,10 +74,11 @@ public class Problem6 {
 	 * splitNicknames 트에서 중복을 찾아 duplicateNicknames 에 추가하는 메서드
 	 * @param splitNicknames
 	 */
-	private static Set<String> initDuplicateNicknames(List<String> splitNicknames) {
+	private static Set<String> initDuplicateNicknames(List<String> splitNicknamesIntoTwoDigit) {
 		Set<String> duplicateNicknames = new HashSet<>();
-		for (String splitNickname : splitNicknames) {
-			if (splitNicknames.indexOf(splitNickname) != splitNicknames.lastIndexOf(splitNickname)) {
+		for (String splitNickname : splitNicknamesIntoTwoDigit) {
+			if (splitNicknamesIntoTwoDigit.indexOf(splitNickname) != splitNicknamesIntoTwoDigit.lastIndexOf(
+				splitNickname)) {
 				duplicateNicknames.add(splitNickname);
 			}
 		}
@@ -88,14 +89,14 @@ public class Problem6 {
 	 * 닉네임을 두 글자씩 쪼개어 splitNicknames 에 추가하는 메서드
 	 * @param emailAndNicknames
 	 */
-	private static List<String> initSplitNicknames(Map<String, String> emailAndNicknames) {
-		List<String> splitNicknames = new ArrayList<>();
+	private static List<String> initSplitNicknamesIntoTwoDigit(Map<String, String> emailAndNicknames) {
+		List<String> splitNicknamesIntoTwoDigit = new ArrayList<>();
 		for (String nickname : emailAndNicknames.values()) {
 			for (int i = 0; i < nickname.length() - 1; i++) {
-				splitNicknames.add(nickname.substring(i, i + SPLIT_UNIT));
+				splitNicknamesIntoTwoDigit.add(nickname.substring(i, i + SPLIT_UNIT));
 			}
 		}
-		return splitNicknames;
+		return splitNicknamesIntoTwoDigit;
 	}
 
 	/**
