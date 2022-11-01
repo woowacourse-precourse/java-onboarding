@@ -17,11 +17,30 @@ class Problem1 {
             return -1;
         }
 
+        //페이지 별 계산 점수가 더 큰 숫자를 저장하는 기능
+        for(int i = 0 ; i < 2 ; i++){
+            if( pobinum < pagecal(pobi.get(i)) ) pobinum = pagecal(pobi.get(i));
+            if( crongnum < pagecal(crong.get(i)) ) crongnum = pagecal(crong.get(i));
+        }
+
 
         //answer 선언
         int answer = 0;
 
         return answer;
+    }
+
+    //페이지 번호를 입력받아 점수를 계산하는 기능
+    public static int pagecal(int pagenum){
+        //페이지 덧셈 변수 초기화
+        int pagesum = 0;
+        //페이지 곱셈 변수 초기화
+        int pagemulti = 1;
+
+
+
+
+        return 0;
     }
 
 
