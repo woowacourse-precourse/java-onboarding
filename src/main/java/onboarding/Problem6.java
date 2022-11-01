@@ -1,11 +1,12 @@
 package onboarding;
 
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+
 
 
         int formsFirstRowLength = forms.toArray().length;
@@ -42,6 +43,10 @@ public class Problem6 {
 
 
         }
+
+
+        List<String> answer = List.of(hashMapCollectOverlapEmail.keySet().toArray(new String[hashMapCollectOverlapEmail.size()]));
+        answer.sort(Comparator.naturalOrder());
 
 
         return answer;
