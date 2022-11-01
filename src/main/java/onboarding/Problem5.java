@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -11,7 +12,10 @@ import java.util.List;
  */
 public class Problem5 {
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
+        List<Integer> answer = new ArrayList<Integer>();
+
+        // moneyUnit 배열 검사할 돈의 단위를 배열로 순서대로 담았다.
+        int[] moneyUnit = {50000,10000,5000,1000,500,100,50,10,1};
         return answer;
     }
 }
