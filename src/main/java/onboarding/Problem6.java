@@ -5,9 +5,9 @@ import java.util.Collections;
 
 public class Problem6 {
 
-    static List<String> answer = new ArrayList<String>();
     public static List<String> solution(List<List<String>> forms) {
 
+        List<String> answer = new ArrayList<String>();
         Set<Integer> printListSet = new HashSet<Integer>();
 
         for (int i = 0; i < forms.size() - 1; i++) {
@@ -20,7 +20,7 @@ public class Problem6 {
             }
         }
 
-        emailAddressInput(printListSet, forms);
+        answer = emailAddressInput(printListSet, forms);
 
         return answer;
     }
@@ -37,13 +37,16 @@ public class Problem6 {
         return check;
     }
 
-    public static void emailAddressInput(Set<Integer> printListNumberSet, List<List<String>> originForms) {
+    public static List<String> emailAddressInput(Set<Integer> printListNumberSet, List<List<String>> originForms) {
         Iterator<Integer> it = printListNumberSet.iterator();
+        List<String> answer = new ArrayList<String>();
 
         while (it.hasNext())
             answer.add(originForms.get((int)it.next()).get(0));
 
         Collections.sort(answer);
+
+        return answer;
     }
 
 
