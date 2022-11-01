@@ -12,7 +12,18 @@ public class Problem7 {
         scoreVisitors(user, network, visitors, idToScore);
 
         List<Map.Entry<String, Integer>> entries = new ArrayList<>(idToScore.entrySet());
-        entries.sort((a, b) -> b.getValue() - a.getValue());
+        entries.sort((a, b) -> {
+            int scoreOfA = a.getValue();
+            int scoreOfB = b.getValue();
+
+            if (scoreOfA == scoreOfB) {
+                String nameOfA = a.getKey();
+                String nameOfB = b.getKey();
+                return nameOfA.compareTo(nameOfB);
+            }
+
+            return scoreOfB - scoreOfA;
+        });
 
         List<String> answer = getCandidates(entries);
         return answer;
