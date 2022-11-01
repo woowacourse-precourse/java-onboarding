@@ -17,49 +17,38 @@ public class Problem3 {
 }
 
 class ClapGame {
-    private Set<Integer> clapNumbers = Set.of(3, 6, 9);
-    private final int clap = 1;
-    private final int doNotClap = 0;
-
-    public ClapGame() {
-    }
-
-    public ClapGame(Set<Integer> clapNumbers) {
-        setClapNumbers(clapNumbers);
-    }
-
-    public void setClapNumbers(Set<Integer> clapNumbers) {
-        this.clapNumbers = clapNumbers;
-    }
+    private final Set<Integer> clapNumbers = Set.of(3, 6, 9);
+    private final static int CLAP = 1;
+    private final static int DO_NOT_CLAP = 0;
 
     public int play(int maxNumber) {
         int totalClap = 0;
 
         for (int number = 0; number <= maxNumber; number++) {
-            totalClap += countClap(number);
+            totalClap += getClapCount(number);
         }
 
         return totalClap;
     }
 
-    private int countClap(int number) {
-        int clap = 0;
+    private int getClapCount(int number) {
+        int clapCount = 0;
 
         while (number > 0) {
             int placeNumber = number % 10;
-            clap += isClapNumber(placeNumber);
+            clapCount += isClapNumber(placeNumber);
 
             number /= 10;
         }
 
-        return clap;
+        return clapCount;
     }
 
     private int isClapNumber(int placeNumber) {
         if (clapNumbers.contains(placeNumber)) {
-            return clap;
+            return CLAP;
         }
 
-        return doNotClap;
+        return DO_NOT_CLAP;
     }
 }
