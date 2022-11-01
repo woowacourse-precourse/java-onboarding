@@ -12,6 +12,7 @@ import java.util.*;
  */
 public class Problem7 {
 
+    static Map<String, Integer> friendsMap = new HashMap<>();
     static List<String> friendsOfUser = new ArrayList<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -19,10 +20,24 @@ public class Problem7 {
 
         findFriendsOfUser(user, friends);
 
+        findFriendVisitedFeed(visitors);
 
         return answer;
     }
 
+    public static void findFriendVisitedFeed(List<String> visitors){
+        // 내 타임라인에 방문한 사람 찾고 map에 넣어주기
+        for (String friend : visitors) {
+
+            if (friendsMap.containsKey(friend)) {
+                int score = friendsMap.get(friend);
+                friendsMap.put(friend, score + 1);
+                continue;
+            }
+
+            friendsMap.put(friend, 1);
+        }
+    }
 
     public static void findFriendsOfUser(String user, List<List<String>> friends) {
         for (List<String> friend : friends) {
