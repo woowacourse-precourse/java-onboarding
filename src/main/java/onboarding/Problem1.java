@@ -47,6 +47,16 @@ class Problem1 {
         }
 
         //크롱-최댓값 저장 기능
+        System.out.println(temp2[0]+","+temp2[1]+","+temp2[2]+","+temp2[3]);
+        System.out.println(max);
+
+        max = 0;
+        for(int i=0;i<4;i++) {
+            if (max < temp2[i]) {
+                max = temp2[i];
+                System.out.println(max);
+            }
+        }
 
         //승자 출력 기능
 
