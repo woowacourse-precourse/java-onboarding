@@ -18,6 +18,10 @@ public class Problem4 {
 
         String answer = "";
 
+        for(char a : asc){
+            answer += a;
+            System.out.print(a);
+        }
         return answer;
     }
 
