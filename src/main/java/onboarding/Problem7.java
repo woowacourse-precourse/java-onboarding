@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Problem7 {
     private static List<String> getUserList(String user, List<List<String>> friends, List<String> visitors) {
-        Set<String> allUserSet = new TreeSet<>();
+        Set<String> allUserSet = new HashSet<>();
         allUserSet.add(user);
 
         for (int i = 0; i < friends.size(); i++) {
@@ -21,7 +21,7 @@ public class Problem7 {
         return allUserList;
     }
     private static Map<String, Integer> mappingNameToNumber(List<String> allUserList) {
-        Map<String, Integer> nameToNumber = new TreeMap<>();
+        Map<String, Integer> nameToNumber = new HashMap<>();
 
         for (int i = 0; i < allUserList.size(); i++) {
             nameToNumber.put(allUserList.get(i), i + 1);
@@ -94,7 +94,6 @@ public class Problem7 {
                 }
             }
         }
-
         return result;
     }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
