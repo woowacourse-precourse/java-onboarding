@@ -55,4 +55,37 @@ public class Problem7 {
 
         return result;
     }
+
+    public static List<List<String>> countVisit(List<String> visitors, List<String> mFriends) {
+        List<List<String>> result = new ArrayList<>();
+        int cnt = 0;
+        List<String> list = new ArrayList<>();
+
+        for (int i = 0; i < visitors.size(); i++) {
+            cnt = 0;
+            for (int j = 0; j < mFriends.size(); j++) {
+                if (visitors.get(i).equals(mFriends.get(j))) {
+                    cnt++;
+                }
+            }
+            if (cnt == 0) {
+                list.add(visitors.get(i));
+            }
+        }
+
+        for (int i = 0; i < list.size(); i++) {
+            cnt = 0;
+            for (int j = 0; j < list.size(); j++) {
+                if (list.get(i).equals(list.get(j))) {
+                    cnt++;
+                }
+            }
+            if (cnt > 0) {
+                if (!result.contains(List.of(list.get(i), String.valueOf(cnt))))
+                    result.add(List.of(list.get(i), String.valueOf(cnt)));
+            }
+        }
+
+        return result;
+    }
 }
