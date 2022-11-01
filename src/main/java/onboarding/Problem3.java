@@ -55,31 +55,30 @@ public class Problem3 {
 
             answer += ArrayOfCount.get(sizeOfNumber-1) * arrayEachDigitOfNumber.get(sizeOfNumber-1);
 
-            int quotientOfEachDigit = arrayEachDigitOfNumber.get(sizeOfNumber-1) / 3;
+            int quotientOfEachDigitDivedByThree = arrayEachDigitOfNumber.get(sizeOfNumber-1) / 3;
 
             if (arrayEachDigitOfNumber.get(sizeOfNumber-1)%3 == 0) { // 예외사항 각 자리수가 3의 배수일 때는 조금 다르게 풀림 그것에 관한 것
 
                 int tenSquaredToProduct = 1;
 
 
-                for (int i = 0; i < sizeOfNumber ; i++) { //몇의 자리 수 인지 확인 후 tenSquaredToProduct라는 변수에 저장
-                    answer += tenSquaredToProduct * arrayEachDigitOfNumber.get(i-1);
+                for (int i = 0; i < sizeOfNumber ; i++) {
+                    answer += tenSquaredToProduct * arrayEachDigitOfNumber.get(i-1); //얘들들어 number가 622라면 6이 3의 배수이므로, (백의 자리 박수 개수로 600~622까지 총 23번의 박수가 쳐지므로) 22를 정답에 더하는 과정 (나머지 1은 밑에 answer +=1를 추가해놓음)
+                    tenSquaredToProduct *= 10; //몇의 자리 수 인지 확인 후 tenSquaredToProduct라는 변수에 저장
+                }
+                answer += 1;
+
+                answer += (quotientOfEachDigitDivedByThree-1) * tenSquaredToProduct; // 예를 들어 number가 622이라면, 백의 자리 박수 개수로 600~622 총 23번은 위 for문으로 더해졌으니 300~399의 백의 자리 박수 개수만 더하면 되므로.
+
+            } else if (arrayEachDigitOfNumber.get(sizeOfNumber-1)%3 != 0) { // 예외사항이 아닌, 각 자리수가 3의 배수가 아닐 때는 일반적이게 풀림
+
+                int tenSquaredToProduct = 1;
+
+                for (int i = 0; i < sizeOfNumber ; i++) { //숫자가 몇의 자리 수에서 빼온 것인지 확인
                     tenSquaredToProduct *= 10;
                 }
 
-                answer += 1;
-
-                answer += (quotientOfEachDigit-1) * tenSquaredToProduct;
-
-            } else if (arrayEachDigitOfNumber.get(sizeOfNumber-1)%3 != 0) { // 예외사항이 아닌, 각 자리수가 3의 배수가 아닐 때는 일반적이게 풀림
-                int pow = 1;
-                int powValue = 1;
-                while (pow < sizeOfNumber) { //제곱 수 구해주기
-                    powValue *= 10;
-                    pow += 1;
-                }
-
-                answer += (quotientOfEachDigit) * powValue;
+                answer += (quotientOfEachDigitDivedByThree) * tenSquaredToProduct;
             }
             sizeOfNumber -= 1;
         }
