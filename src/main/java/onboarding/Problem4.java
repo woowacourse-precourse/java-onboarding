@@ -17,7 +17,7 @@ public class Problem4 {
         if (!checkWordLengthValid(word)) {
             throw new IllegalArgumentException("[error] 잘못된 word가 입력되었습니다.");
         }
-        String answer = chageWordLetterAlphabetReverse(word);
+        String answer = changeWordLetterAlphabetReverse(word);
         return answer;
     }
 
@@ -33,7 +33,7 @@ public class Problem4 {
         return UPPERCASE_A <= letter && letter <= UPPERCASE_Z;
     }
 
-    public static String chageWordLetterAlphabetReverse(String word) {
+    public static String changeWordLetterAlphabetReverse(String word) {
         String result = "";
         for (char letter : word.toCharArray()) {
             if (checkLowercaseAlphabet(letter)) {
