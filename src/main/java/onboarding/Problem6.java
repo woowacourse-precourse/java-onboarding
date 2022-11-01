@@ -38,6 +38,10 @@ public class Problem6 {
         return false;
     }
 
+    public static String findEmail(String[] form){
+        return form[0];
+    }
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
