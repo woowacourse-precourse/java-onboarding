@@ -19,3 +19,6 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+### 기능 목록
+1. replace 함수를 통해 한문자씩 변환해주기
