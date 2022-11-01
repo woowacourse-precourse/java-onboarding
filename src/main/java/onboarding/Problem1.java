@@ -27,7 +27,7 @@ class Problem1 {
     } // 두개의 수 중 더 큰것을 고르는 과정이 많아 함수로 구현
     //예외처리
     // 제한사항과 문제속 예외들에 대한 처리
-    static boolean except(List<Integer> a) {
+    static boolean exception(List<Integer> a) {
         if(a.get(0)%2 == 0 || a.get(1)%2 != 0) {
             return false;
         }
@@ -60,7 +60,7 @@ class Problem1 {
         if(answer1 == answer2) {
             answer = 0;
         };
-        if(!except(pobi) || !except(crong)) {
+        if(!exception(pobi) || !exception(crong)) {
             answer =-1;
         }
         return answer;
