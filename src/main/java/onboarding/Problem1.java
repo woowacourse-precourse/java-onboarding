@@ -10,6 +10,17 @@ class Problem1 {
         if(pobi.get(1) - pobi.get(0) != 1 || crong.get(1) - crong.get(0) != 1)
             return answer = -1;
 
+        // 승 패 무승부 처리
+        int pobiNum = compareNum(pobi.get(0), pobi.get(1));
+        int crongNum = compareNum(crong.get(0), crong.get(1));
+
+        if(pobiNum>crongNum)
+            answer = 1;
+        else if(pobiNum<crongNum)
+            answer = 2;
+        else
+            answer = 0;
+
         return answer;
     }
 
