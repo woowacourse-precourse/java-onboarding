@@ -11,6 +11,13 @@ public class Problem2 {
         return answer;
     }
 
+    private static String addNonDuplicateCharacter(int OverlappedCharacterSize, String answer,
+        char now) {
+        if (isNonDuplicate(OverlappedCharacterSize)) {
+            answer += now;
+        }
+        return answer;
+    }
     private static Boolean isNonDuplicate(int OverlappedCharacterSize) {
         if (OverlappedCharacterSize < 2) {
             return true;
