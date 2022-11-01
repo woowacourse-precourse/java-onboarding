@@ -59,9 +59,9 @@ public class Problem7{
     }
 
     //freind의 friend 찾아 list로 만들고 친구 리스트를 반환
-    public static List<String>  friendsKnowTogether(String user, List<List<String>> friends, List<Friend> allfriends){
+    public static List<String>  findFriendRecommend(String user, List<List<String>> friends, List<Friend> allfriends){
         Set<String> userFriendSet = new HashSet<>();
-        List<String> userFFList = new ArrayList<>();
+        List<String> RecommendFriends= new ArrayList<>();
 
         //user와 친구인 아이디 집합에 저장
         for(int i = 0; i<friends.size(); i++){
@@ -80,18 +80,18 @@ public class Problem7{
             for(int j = 0; j <userFriendList.size(); j++) {
                 if (!(friends.get(i).get(0)).equals(user) | !(friends.get(i).get(1)).equals(user)) {
                     if (friends.get(i).get(0).equals(userFriendList.get(j))) {
-                        userFFList.add(friends.get(i).get(1));
+                        RecommendFriends.add(friends.get(i).get(1));
                     } else if (friends.get(i).get(1).equals(userFriendList.get(j))) {
-                        userFFList.add(friends.get(i).get(0));
+                        RecommendFriends.add(friends.get(i).get(0));
                     }
                 }
             }
         }
 
 
-        for(int i = 0; i<userFFList.size(); i++){
+        for(int i = 0; i<RecommendFriends.size(); i++){
             for(int j = 0; j<allfriends.size(); j++){
-                if((userFFList.get(i)).equals((allfriends.get(j)).getName())){
+                if((RecommendFriends.get(i)).equals((allfriends.get(j)).getName())){
                     (allfriends.get(j)).plusTen();
                 }
             }
@@ -149,7 +149,7 @@ public class Problem7{
         List<String> answer = Collections.emptyList();
 
         List<Friend> allList = makeAllList(user, friends, visitors);
-        List<String> friendList = friendsKnowTogether(user, friends, allList);
+        List<String> friendList = findFriendRecommend(user, friends, allList);
         visitorsScore(visitors, allList);
         deleteFriends(friendList, allList);
         sortRecommendList(allList);
