@@ -18,6 +18,9 @@ public class Problem7 {
         // 3. 아는 친구 점수 반영
         friendsScoreList = scoreByKnownFriends(user, friends);
 
+        // 4. 방문 기록 점수 반영
+        friendsScoreList = scoreByVisitRecord(visitors);
+
         return answer;
     }
 
@@ -64,6 +67,15 @@ public class Problem7 {
         knownFriends.forEach((key, value)->{
             friendsScoreList.put(key, 10);
         });
+        return friendsScoreList;
+    }
+
+    // 4. 방문 기록 점수 반영
+    static Map<String, Integer> scoreByVisitRecord(List<String> visitorRecord){
+        for(String visitor : visitorRecord) {
+            if (directFriends.contains(visitor)) continue; // 직접 친구는 제외
+            friendsScoreList.put(visitor,friendsScoreList.get(visitor) +1);
+        }
         return friendsScoreList;
     }
 }
