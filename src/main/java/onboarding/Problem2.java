@@ -6,7 +6,7 @@ public class Problem2 {
     }
 
     private static String decipherCode(String code) {
-        while (!isNotDuplicate(code)) {
+        while (isDuplicate(code)) {
             code = decodingCode(code);
         }
         return code;
@@ -34,13 +34,19 @@ public class Problem2 {
     }
 
 
-    private static boolean isNotDuplicate(String str) {
+    private static boolean isDuplicate(String str) {
+        int duple = 0;
         for (int i = 0; i < str.length()-1; i++) {
-            if (str.charAt(i) == str.charAt(i+1)) {
-                return false;
-            }
+            duple += countDuple(str.charAt(i), str.charAt(i+1));
         }
-        return true;
+        return duple >= 1;
+    }
+
+    private static int countDuple(char c1, char c2) {
+        if (c1 == c2) {
+            return 1;
+        }
+        return 0;
     }
 
     private static int findDuplicateStart(String code) {
