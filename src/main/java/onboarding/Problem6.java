@@ -10,10 +10,10 @@ public class Problem6 {
         HashSet<String> emails = new HashSet<>();
         Map<String, String > hashMap = new HashMap<>();
 
-        for(int i = 0; i<forms.size(); i++) {
+        for(int i = 0; i<forms.size(); i++){
             String name = forms.get(i).get(1);
 
-            if (name.length() < 2 || name.length() > 19) {
+            if(name.length() <2 || name.length() >19){
                 break;
             }
 
@@ -30,7 +30,9 @@ public class Problem6 {
             }
         }
 
+
         List<String> answer = List.of("answer");
+        answer = new ArrayList<String>();
 
         for(String str : emails){
             answer.add(str);
@@ -39,5 +41,6 @@ public class Problem6 {
         return answer;
     }
 }
+
 
 
