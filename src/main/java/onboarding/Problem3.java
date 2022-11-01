@@ -6,8 +6,7 @@ public class Problem3 {
     private static final char NINE = '9';
     public static int solution(int number) {
         int answer = 0;
-        answer = intToStringAndCount(number, answer);
-        return answer;
+        return intToStringAndCount(number, answer);
     }
 
     private static int intToStringAndCount(int number, int answer) {
