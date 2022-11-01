@@ -23,7 +23,7 @@ public class Problem7 {
 	public static final String FRIENDS_ARE_TOO_SHORT_OR_LONG = "친구 목록이 너무 짧거나 깁니다.";
 	public static final String RELATIONSHIP_IS_NOT_RIGHT = "친구 관계가 맞지 않습니다.";
 	public static final String VISITORS_ARE_TOO_MANY = "방문자가 너무 많습니다.";
-	public static final int ZERO = 0;
+	public static final int NONE_POINT = 0;
 	public static final int VISITED_POINT = 1;
 	public static final int MUTUAL_POINT = 10;
 
@@ -40,7 +40,7 @@ public class Problem7 {
 		}
 
 		findMutualFriends(relations, recommends, user);
-		findVisitedFriends(user, visitors, relations, recommends);
+		findVisitedFriends(relations, recommends, visitors, user);
 
 		return findRecommendFriendLimitFive(recommends);
 	}
@@ -107,7 +107,7 @@ public class Problem7 {
 	}
 
 	private static Predicate<Entry<String, Integer>> havePoint() {
-		return recommend -> !recommend.getValue().equals(ZERO);
+		return recommend -> !recommend.getValue().equals(NONE_POINT);
 	}
 
 	private static Comparator<Entry<String, Integer>> pointDescAndNameAsc() {
@@ -120,7 +120,7 @@ public class Problem7 {
 		};
 	}
 
-	private static void findVisitedFriends(String user, List<String> visitors, Map<String, Set<String>> relations, Map<String, Integer> recommends) {
+	private static void findVisitedFriends(Map<String, Set<String>> relations, Map<String, Integer> recommends, List<String> visitors, String user) {
 		Set<String> mutualFriends = relations.get(user);
 		for (String visitor : visitors) {
 			addPointIfForeign(recommends, mutualFriends, visitor);
@@ -213,6 +213,6 @@ public class Problem7 {
 	}
 
 	private static void addRecommend(Map<String, Integer> recommend, String name) {
-		recommend.merge(name, ZERO, (saved, toSave) -> toSave);
+		recommend.merge(name, NONE_POINT, (saved, toSave) -> toSave);
 	}
 }
