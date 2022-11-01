@@ -8,11 +8,10 @@ public class Problem3 {
     }
     public static int checkClap(int number) {
         int clap = 0;
-        while (number != 0) {
+        for (; number != 0; number /= 10) {
             int value = number % 10;
             if (value == 3 || value == 6 || value == 9)
-                clap += 1;
-            number /= 10;
+                clap ++;
         }
         return clap;
     }
@@ -20,10 +19,8 @@ public class Problem3 {
         if (!invalidateInput(number))
             return -1;
         int answer = 0;
-        while (number > 0) {
+        for (; number > 0; number--)
             answer += checkClap(number);
-            number -= 1;
-        }
         return answer;
     }
 }
