@@ -17,6 +17,15 @@ public class Problem5 {
         }
     }
 
+    public static boolean validation(int money){
+        if (money < 1 || money > 1000000){
+            return false;
+        }
+        else{
+            return true;
+        }
+    }
+
     public static List<Integer> solution(int money) {
         List<Integer> answer = new ArrayList<>();
         for (int i = 0; i < 9; i++) {
