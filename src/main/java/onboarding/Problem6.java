@@ -26,7 +26,7 @@ public class Problem6 {
                 System.out.println("닉네임의 형식이 올바르지 않습니다"); return false;
             }
             if(forms.get(i).get(1).equals(forms.get(i).get(1).toUpperCase())){
-                System.out.println("영문이 포함된 닉네임입니다.");
+                System.out.println("영문이 포함된 닉네임입니다.");return false;
             }
 
         }
