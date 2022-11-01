@@ -3,7 +3,7 @@
 target_page = 197
 hundreds = target_page % 100
 til_tens = target_page-hundreds*100
-tens = execpt_hundreds % 10
+tens = til_tens % 10
 units = til_tens-tens*10
 ```
 #### 점수 구하기
