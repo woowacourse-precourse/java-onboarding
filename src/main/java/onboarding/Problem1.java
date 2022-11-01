@@ -45,17 +45,18 @@ class Problem1 {
     }
 
     public List<Integer> multiplyEachDigitOfPageNumber(List<Integer> list) {
-        int multiplication;
-        List<Integer> multiplicationList = new ArrayList<>();
-        for (Integer integer : list) {
-            multiplication = 1;
-            while (integer > 0){
-                multiplication *= integer % 10;
-                integer /= 10;
-            }
-            multiplicationList.add(multiplication);
-        }
-        return multiplicationList;
+        return calculateEachDigitOfPageNumberWithStrategy(list,
+                new CalculateStrategy() {
+                    @Override
+                    public int calculateEachDigitOfPageNumber(int pageNumber) {
+                        int multiplication = 1;
+                        while (pageNumber > 0) {
+                            multiplication *= pageNumber % 10;
+                            pageNumber /= 10;
+                        }
+                        return multiplication;
+                    }
+                });
     }
 
     public List<Integer> calculateEachDigitOfPageNumber(List<Integer> list) {
