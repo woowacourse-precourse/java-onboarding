@@ -5,35 +5,35 @@ import java.util.*;
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
 
-        List<String> answer = Collections.emptyList();
-
         if(forms.size() == 1)
-            return answer;
+            return Collections.emptyList();
 
         Map<String, Integer> existNicknameMap = new HashMap<>();
         Set<String> emailSet = new HashSet<>();
 
-        for(int i=0; i<forms.size(); i++) {
-            List<String> info = forms.get(i);
-            String nickname = info.get(1);
+        for(int i=0; i<forms.size(); i++)
+            checkIfNicknameIsValid(i, forms, existNicknameMap, emailSet);
 
-            for(int j=0; j<nickname.length()-1; j++) {
-                String twoWords = nickname.substring(j, j+2);
-                int index = getIndexOfExistNickname(existNicknameMap, twoWords);
+        return setToArrayList(emailSet);
+    }
 
-                if(validNickname(index))
-                    existNicknameMap.put(twoWords, i);
+    public static void checkIfNicknameIsValid(int now, List<List<String>> forms, Map<String, Integer> existNicknameMap, Set<String> emailSet) {
 
-                if(!validNickname(index)) {
-                    emailSet.add(getEmailByIndex(forms, i));
-                    emailSet.add(getEmailByIndex(forms, index));
-                }
+        List<String> info = forms.get(now);
+        String nickname = info.get(1);
+
+        for(int j=0; j<nickname.length()-1; j++) {
+            String twoWords = nickname.substring(j, j+2);
+            int index = getIndexOfExistNickname(existNicknameMap, twoWords);
+
+            if(validIndex(index))
+                existNicknameMap.put(twoWords, now);
+
+            if(!validIndex(index)) {
+                emailSet.add(getEmailByIndex(forms, now));
+                emailSet.add(getEmailByIndex(forms, index));
             }
         }
-
-        answer = setToArrayList(emailSet);
-
-        return answer;
     }
 
     public static int getIndexOfExistNickname(Map<String, Integer> existNicknameMap, String twoWords) {
@@ -44,7 +44,7 @@ public class Problem6 {
         return -1;
     }
 
-    public static boolean validNickname(int index) {
+    public static boolean validIndex(int index) {
         return index == -1;
     }
 
