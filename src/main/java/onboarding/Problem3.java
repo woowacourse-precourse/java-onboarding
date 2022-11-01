@@ -1,9 +1,16 @@
 package onboarding;
 
 public class Problem3 {
+
+    private static int clapCount;
     public static int solution(int number) {
-        int answer = 0;
-        return answer;
+        clapCount = 0;
+
+        for (int i = 1; i <= number; i++) {
+            game369(i);
+        }
+
+        return clapCount;
     }
 
     private static void game369(int number) {
@@ -11,8 +18,17 @@ public class Problem3 {
             return ;
         }
 
-        int seperatedNumber = number % 10;
+        if (is369(number % 10)) {
+            clapCount++;
+        }
 
         game369(number / 10);
+    }
+
+    private static boolean is369(int n) {
+        if (n == 0) {
+            return false;
+        }
+        return n % 3 == 0;
     }
 }
