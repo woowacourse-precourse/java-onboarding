@@ -13,7 +13,7 @@ public class Problem7 {
 
         bothFriends(user, my_friends, friends); // 사용자와 함께 아는 친구의 수 점수 계산
         visitFriends(my_friends, visitors); // 사용자의 타임 라인에 방문한 횟수 점수 계산
-//        sortScore(); // 추천점수 및 이름순 정렬
+        sortScore(); // 추천점수 및 이름순 정렬
 
 //        // 최대 5명 리턴
 //        int size = 0;
@@ -75,5 +75,14 @@ public class Problem7 {
                 score.put(v, cnt * 1); // 사용자의 타임 라인에 방문한 횟수 * 1점
             }
         }
+    }
+
+    /**
+     * 점수순 정렬 후 이름순 정렬 함수
+     */
+    public static void sortScore() {
+        entryList = new LinkedList<>(score.entrySet());
+        entryList.sort(Map.Entry.comparingByKey());
+        entryList.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
     }
 }
