@@ -9,10 +9,26 @@ public class Problem7 {
 
         List<String> usersFriends = getUsersFriends(friends, user);
         List<String> userUnionFriends = getUserUnionFriends(usersFriends, friends, user);
+        List<String> visitUser = getVisitUser(visitors);
 
+        Map<String, Integer> point = new HashMap<>();
 
 
         return answer;
+    }
+
+    /**
+     * User의 SNS의 방문한 사람
+     * @param visitors User의 SNS의 방문한 기록
+     * @return visistUser
+     */
+    private static List<String> getVisitUser(List<String> visitors) {
+        HashSet<String> visistUserSet = new HashSet<>();
+
+        for (String visistUserName : visitors) {
+            visistUserSet.add(visistUserName);
+        }
+        return visistUserSet.stream().collect(Collectors.toList());
     }
 
     /**
