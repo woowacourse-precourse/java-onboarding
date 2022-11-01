@@ -1,8 +1,6 @@
 package onboarding;
 
 import java.util.*;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -47,11 +45,29 @@ public class Problem6 {
     }
 
     private static HashMap<String, String> parseUserInfo(List<List<String>> forms) {
-        Map<String, String> result = forms.stream()
-                .collect(Collectors.toMap(
-                        form -> form.get(1),
-                        form -> form.get(0)
-                ));
+        HashMap<String, String> result = new HashMap<>();
+
+        for (int i = 0; i < forms.size(); i++) {
+            List<String> form = forms.get(i);
+
+            String email = form.get(0);
+            String name = form.get(1);
+
+            if (!validate(email)) continue;
+
+            if (!result.containsKey(name)) {
+                result.put(name, email);
+            }
+            else {
+                result.put(name + i, email);
+            }
+        }
+
         return new HashMap<>(result);
+    }
+
+    private static boolean validate(String email) {
+        if (!email.substring(email.length()-9).equals("email.com")) return false;
+        return true;
     }
 }
