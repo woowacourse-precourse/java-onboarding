@@ -1,9 +1,7 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
+
 public class Problem6 {
 
     private final static int EMAIL_INDEX = 0;
@@ -35,6 +33,13 @@ public class Problem6 {
                 resultEmail.add(form.get(EMAIL_INDEX));
         }
     }
-    return resultEmail;
+    return makeFormat(resultEmail);
+    }
+
+    private static List<String> makeFormat(List<String> resultEmail){
+        Collections.sort(resultEmail);
+        HashSet<String> duplicationEliminate = new HashSet<>(resultEmail);
+        List<String> emailFormat = new ArrayList<>(duplicationEliminate);
+        return emailFormat;
     }
 }
