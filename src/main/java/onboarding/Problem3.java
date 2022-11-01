@@ -20,7 +20,7 @@ public class Problem3 {
         return count;
     }
 
-    public static int computeTotalClap(int number) {
+    private static int computeTotalClap(int number) {
         int sum = 0;
         for (int i = 1; i <= number; i++) {
             sum += countClap(i);
