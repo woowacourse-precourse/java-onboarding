@@ -12,14 +12,14 @@ public class Problem7 {
 
         near.addAll(makeNearList(user, friends));
         makeFarList(user, friends, near, far);
-        result.putAll(PointToFarList(near, far));
-        PointToVisitors(visitors, near, result);
+        result.putAll(pointToFarList(near, far));
+        pointToVisitors(visitors, near, result);
 
         answer = sortedAnswer(answer, result);
         return answer;
     }
 
-    private static void PointToVisitors(List<String> visitors, Set<String> near, Map<String, Integer> result) {
+    private static void pointToVisitors(List<String> visitors, Set<String> near, Map<String, Integer> result) {
         for (String name : visitors) {
             if (near.contains(name)) continue;
             int point = 1;
@@ -30,7 +30,7 @@ public class Problem7 {
         }
     }
 
-    private static Map<String, Integer> PointToFarList(Set<String> near, List<String> far) {
+    private static Map<String, Integer> pointToFarList(Set<String> near, List<String> far) {
         Map<String, Integer> result = new HashMap<>();
         for (String name : far) {
             int point = 10;
