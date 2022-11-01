@@ -16,6 +16,7 @@ public class Problem6 {
             answer = List.of();
             return answer;
         }
+
         // 연속된 두 글자, email을 hashmap으로 담는다.
         HashMap<String, String> map = new HashMap<>();
         // 중복을 제거하기 위해 hashset 사용
