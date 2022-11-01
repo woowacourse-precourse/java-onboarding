@@ -2,11 +2,20 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
+        HashMap<String, Integer> nameAndPoint = new HashMap<>();
+
+        for (int i = 0; i < 2 ; i++){
+            for (int j = 0; j < friends.size() ; j++){
+                String name = friends.get(j).get(i);
+                nameAndPoint.put(name,0);
+            }
+        }
 
         List<String> friendsOfUser = new ArrayList<>();
 
