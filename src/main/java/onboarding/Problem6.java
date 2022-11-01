@@ -32,13 +32,7 @@ public class Problem6 {
 		}
 
 		initSplitNicknames(map, splitNicknames);
-
-		// 두 글자씩 쪼갠 리스트에서 중복을 찾아 duplicateNicknames 에 추가
-		for (String splitNickname : splitNicknames) {
-			if (splitNicknames.indexOf(splitNickname) != splitNicknames.lastIndexOf(splitNickname)) {
-				duplicateNicknames.add(splitNickname);
-			}
-		}
+		initDuplicateNicknames(splitNicknames, duplicateNicknames);
 
 		// 크루의 닉네임 안에 duplicateNicknames 의 요소가 포함되어 있으면 닉네임 사용 제한
 		for (Map.Entry<String, String> entry : map.entrySet()) {
@@ -51,6 +45,19 @@ public class Problem6 {
 		}
 
 		return answer;
+	}
+
+	/**
+	 * splitNicknames 트에서 중복을 찾아 duplicateNicknames 에 추가하는 메서드
+	 * @param splitNicknames
+	 * @param duplicateNicknames
+	 */
+	private static void initDuplicateNicknames(List<String> splitNicknames, Set<String> duplicateNicknames) {
+		for (String splitNickname : splitNicknames) {
+			if (splitNicknames.indexOf(splitNickname) != splitNicknames.lastIndexOf(splitNickname)) {
+				duplicateNicknames.add(splitNickname);
+			}
+		}
 	}
 
 	/**
