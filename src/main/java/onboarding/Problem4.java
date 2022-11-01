@@ -5,9 +5,9 @@ public class Problem4 {
         char[] reverseWord = new char[word.length()];
 
         for (int i = 0; i < word.length(); ++i) {
-            //alphabet: i번째 문자
+            // alphabet: i번째 문자
             char alphabet = word.charAt(i);
-            //dist: 'A' 또는 'a'로부터 alphabet까지의 거리
+            // dist: 'A' 또는 'a'로부터 alphabet까지의 거리
             int dist;
 
             if (alphabet >= 'A' && alphabet <= 'Z') {
