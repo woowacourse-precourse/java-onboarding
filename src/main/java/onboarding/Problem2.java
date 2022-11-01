@@ -42,12 +42,23 @@ public class Problem2 {
 		if (!isCryptogramSizeValid(cryptogram)) {
 			return -1;
 		}
+		if (!isCryptogramLowerCase(cryptogram)) {
+			return -1;
+		}
 		return 0;
 	}
 
 	// cryptogram 의 길이가 1 ~ 1000 이 아닌 경우 예외
 	private static boolean isCryptogramSizeValid(String cryptogram) {
 		if (cryptogram.length() < 1 || cryptogram.length() > 1000) {
+			return false;
+		}
+		return true;
+	}
+
+	// cryptogram 이 알파벳 소문자로만 이루어지지 않은 경우 예외
+	private static boolean isCryptogramLowerCase(String cryptogram) {
+		if (!cryptogram.equals(cryptogram.toLowerCase())) {
 			return false;
 		}
 		return true;
