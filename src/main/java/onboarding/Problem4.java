@@ -8,11 +8,14 @@ public class Problem4 {
     public static String solution(String word) {
         StringBuilder wordBuilder = new StringBuilder(word);
 
+        // string 별로 변경
         for (int i = 0; i < word.length(); i++) {
             Character target = word.charAt(i);
 
+            // 문자일 경우
             if (Character.isLetter(target)) {
                 Character change = charMap.get(target);
+                // 대문자일 경우
                 if (Character.isUpperCase(target)) {
                     Character.toUpperCase(change);
                 }
