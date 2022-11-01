@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /*
@@ -21,22 +22,69 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+
+        int pobiMax = 0;
+        boolean checkerP = validateNums(pobi);
         for(Integer i : pobi){
             List<Integer> pobiNums = splitNum(i);
+            pobiMax = Integer.max(pobiMax,addList(pobiNums));
+            pobiMax = Integer.max(pobiMax,multiplyList(pobiNums));
         }
+
+        int crongMax = 0;
+        boolean checkerC = validateNums(crong);
+        for(Integer i : crong){
+            List<Integer> crongNums = splitNum(i);
+            crongMax = Integer.max(crongMax,addList(crongNums));
+            crongMax = Integer.max(crongMax,multiplyList(crongNums));
+        }
+
+        if(checkerC||checkerP) {
+            answer = -1;
+            return answer;
+        }
+        if(pobiMax>crongMax) answer = 1;
+        if(pobiMax<crongMax) answer = 2;
+        if(pobiMax==crongMax) answer = 0;
 
         return answer;
     }
+
+    private static boolean validateNums(List<Integer> list) {
+        int a = list.get(0);
+        int b = list.get(1);
+        if(a>b) return true;
+        if(a+1 != b) return true;
+        if(a<1) return true;
+        if(a>400) return true;
+        if(a%2==0) return true;
+        if(b%2==1) return true;
+        return false;
+    }
+
     // 쪼개기 , 리스트에 넣기
     public static List<Integer> splitNum(Integer num){
-        List<Integer> temp =List.of();
-        int n = (int)(Math.log10(num)+1);
-        while(num!=0){
-            int x = num /(int) Math.pow(10,n-1);
-            temp.add(x);
-            num = num % (int)Math.pow(10,n-1);
+        List<Integer> temp = new ArrayList<>();
+        String s = Integer.toString(num);
+        String[] splits = s.split("");
+        for(String split:splits){
+            temp.add(Integer.parseInt(split));
         }
         return temp;
+    }
+
+    //리스트의 수 전부 더하기
+    public static int addList(List<Integer> list){
+        int res = list.stream().mapToInt(Integer::intValue).sum();
+        return res;
+    }
+
+    public static int multiplyList(List<Integer> list){
+        int res = 1;
+        for(int x : list){
+            res *= x;
+        }
+        return res;
     }
 
 }
