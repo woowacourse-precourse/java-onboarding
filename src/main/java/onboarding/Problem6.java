@@ -1,7 +1,5 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -34,7 +32,7 @@ public class Problem6 {
         return emails;
     }
 
-    private static HashSet<String> checkNameDuplication(String key, String email){
+    private static HashSet<String> checkNameDuplication(String key, String email) {
         if (nameAndEmail.containsKey(key)) {
             String duplicateEmail = nameAndEmail.get(key);
             emails.add(duplicateEmail);

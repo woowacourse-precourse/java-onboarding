@@ -62,10 +62,12 @@ class Problem1 {
     }
 
     private static int checkValidation(List<Integer> pageList) {
-        int lefPage = pageList.get(0);
+        int leftPage = pageList.get(0);
         int rightPage = pageList.get(1);
-
-        if (rightPage - lefPage > 2) {
+        if(leftPage == START_PAGE || rightPage == FINAl_PAGE || leftPage == rightPage){
+            return -1;
+        }
+        if (rightPage - leftPage > 2) {
             return -1;
         } else {
             return 0;

@@ -34,7 +34,6 @@ public class Problem7 {
         for(List<String> friend : friends){
             String leftFriend = friend.get(0);
             String rightFriend = friend.get(1);
-//            System.out.println(rightFriend);
             if (userFriends.contains(leftFriend) && rightFriend != user){
                 if(recommendList.containsKey(rightFriend)){
                     int score = recommendList.get(rightFriend) + 10;
@@ -67,7 +66,6 @@ public class Problem7 {
             }
 
         }
-        System.out.println(recommendList);
         return recommendList;
 
     }

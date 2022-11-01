@@ -33,7 +33,6 @@ public class Problem2 {
             if (i < 0) {
                 i = -1;
             }
-            System.out.println(str);
         }
 
         cryptogram = str.toString();
