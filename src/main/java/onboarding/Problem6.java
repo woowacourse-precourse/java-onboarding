@@ -57,6 +57,11 @@ public class Problem6 {
         for (String w : words) {
 
             for (int i=0; i < wordsList.size(); i++) {
+                if (duplicatedNickIdx[i] == 0) {
+                    continue;
+                }
+
+
                 if (wordsList.get(i).contains(w)) {
                     duplicatedNickIdx[i] = 0;
                     duplicatedNickIdx[wordsList.size()] = 0;
