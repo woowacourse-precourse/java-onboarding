@@ -21,6 +21,11 @@ public class Problem7 {
             allList.add(friends.get(i).get(0));
             allList.add(friends.get(i).get(1));
 
+            //주어진 friends의 전체 중 사용자의 친구들만 중복없이 추가하는 기능
+            if (friends.get(i).get(0).contains(user) || friends.get(i).get(1).contains(user)) {
+                friendsList.add(friends.get(i).get(0));
+                friendsList.add(friends.get(i).get(1));
+            }
         }
 
 
