@@ -12,7 +12,8 @@ public class Problem7 {
         makeUserFriendSet(user);
         add10PointsToKnowTogether(user);
         add1PointToVisitor(user, visitors);
-        List<String> answer = Collections.emptyList();
+
+        List<String> answer = getFirendRecommendations();
         return answer;
     }
 
@@ -72,5 +73,21 @@ public class Problem7 {
             }
             scores.put(visitor, scores.getOrDefault(visitor, 0) + 1);
         }
+    }
+
+    private static List<String> getFirendRecommendations() {
+        List<Map.Entry<String, Integer>> scoreEntries = new ArrayList<>(scores.entrySet());
+        Collections.sort(scoreEntries, (o1, o2) -> {
+            if (o1.getValue() == o2.getValue()) {
+                if (o1.getKey().compareTo(o2.getKey()) < 0) {
+                    return -1;
+                }
+            }
+            if (o1.getValue() < o2.getValue()) {
+                return -1;
+            }
+            return 1;
+        });
+        return new ArrayList<>(scores.keySet());
     }
 }
