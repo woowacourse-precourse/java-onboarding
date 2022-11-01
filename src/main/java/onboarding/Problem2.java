@@ -18,7 +18,7 @@ public class Problem2 {
             }
         }
         if (check) {
-            //generateString();
+            generateString();
             findWord(false);
         }
     }
@@ -35,5 +35,12 @@ public class Problem2 {
         for (int i = index ; i < index+length ;i++){
             answer[i] = '0';
         }
+    }
+    public static void generateString(){
+        StringBuilder sb = new StringBuilder();
+        for (char c : answer) {
+            if (c != '0') sb.append(c);
+        }
+        temp = sb.toString();
     }
 }
