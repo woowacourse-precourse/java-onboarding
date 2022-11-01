@@ -17,5 +17,11 @@ class Problem1 {
         }
         return compareMaxValue(pobi, crong);
     }
+    public static boolean isCorrectPage(List<Integer> name) {
+        if (name.get(LEFT_PAGE) % 2 == 1 && name.get(RIGHT_PAGE) - name.get(LEFT_PAGE) == 1) {
+            return true;
+        }
+        return false;
+    }
 }
 
