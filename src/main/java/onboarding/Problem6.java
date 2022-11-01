@@ -49,14 +49,6 @@ public class Problem6 {
         return deleteDuplicatedEmail(answerEmail);
     }
 
-
-    static boolean hasValidNickname(String nickname) {
-        int length = nickname.length();
-        boolean validLength = length >= MIN_NICKNAME_LENGTH && length < MAX_NICKNAME_LENGTH;
-        boolean onlyKorean = nickname.matches(KOREAN_REGEX);
-        return validLength && onlyKorean;
-    }
-
     /**
      * 시간 복잡도 : O(1 * L) L: 문자열 길이 in [1, 20)
      * 각 닉네임을 2글자씩 쪼개며 비슷한 닉네임이 있는지 검증
@@ -132,5 +124,12 @@ public class Problem6 {
 
     static boolean hasValidDomain(String email) {
         return email.contains("@" + EMAIL_DOMAIN);
+    }
+
+    static boolean hasValidNickname(String nickname) {
+        int length = nickname.length();
+        boolean validLength = length >= MIN_NICKNAME_LENGTH && length < MAX_NICKNAME_LENGTH;
+        boolean onlyKorean = nickname.matches(KOREAN_REGEX);
+        return validLength && onlyKorean;
     }
 }
