@@ -21,3 +21,7 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+### 구현 기능
+1. 반복되는 문자열 체크하고 삭제하기
+2. 반복하여 최종 결과 return 하기
