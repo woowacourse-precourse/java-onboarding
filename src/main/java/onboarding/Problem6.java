@@ -6,7 +6,7 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         HashMap<String, ArrayList<Integer>> formsMap = new HashMap<>();
         HashSet<Integer> answerSet = new HashSet<>();
-
+        ArrayList<String> answer = new ArrayList<>();
         //formsMap만들기
         for(int i=0;i<forms.size();i++){
             List<String> tmp = forms.get(i);
@@ -18,6 +18,13 @@ public class Problem6 {
             makeAnswerSet(key,formsMap,answerSet);
         }
 
+        // answer에 이메일 보낼 사람 추가
+        for(int idx : answerSet){
+            String email = forms.get(idx).get(0);
+            answer.add(email);
+        }
+
+        Collections.sort(answer);
         return answer;
     }
 
