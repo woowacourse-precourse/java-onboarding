@@ -14,23 +14,21 @@ public class Problem6 {
             emails.add(form.get(0));
             nicknames.add(form.get(1));
         }
-
-        List<String> checkList = createCheckList(nicknames);
-
         return answer;
     }
 
-    private static List<String> createCheckList(List<String> nicknames) {
-        List<String> checkList = new ArrayList<>();
-
-        for (String nickname : nicknames) {
-            for (int i = 0; i < nickname.length() - 1; i++) {
-                String checkStr = nickname.substring(i, i + 1);
-                if (!checkList.contains(checkStr)) {
-                    checkList.add(checkStr);
-                }
+    private static void checkNicknames(List<String> nicknames) {
+        for (int i = 0; i < nicknames.size()-1; i++) {
+            String nowChecking = nicknames.get(i);
+            List<String> others = new ArrayList<>(nicknames.subList(i+1,nicknames.size()));
+            for (String other : others) {
+                boolean doubleTF = isDouble(nowChecking, other);
             }
         }
-        return checkList;
+    }
+
+    private static boolean isDouble(String nowChecking, String otherNickname) {
+        boolean doubleTF = false;
+        return doubleTF;
     }
 }
