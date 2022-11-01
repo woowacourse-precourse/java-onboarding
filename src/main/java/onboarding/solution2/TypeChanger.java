@@ -12,7 +12,7 @@ public class TypeChanger {
         String res = "";
         int size = stack.size();
         for (int i = 0; i < size; i++){
-            res += stack.pop();
+            res += stack.get(i);
         }
         return res;
     }
