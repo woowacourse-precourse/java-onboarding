@@ -9,6 +9,14 @@ import java.util.List;
  */
 public class Problem6 {
 
+    public static String getEmail(List<String> userInfoList) {
+        return userInfoList.get(0);
+    }
+
+    public static String getName(List<String> userInfoList) {
+        return userInfoList.get(1);
+    }
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
