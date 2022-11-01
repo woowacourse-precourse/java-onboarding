@@ -17,17 +17,17 @@ public class Problem5 {
 
     public static List<Integer> solution(int money) {
         List<Integer> answer = new ArrayList<>();
-        for (int i=0; i<billUnit.length; i++){
-            int cnt = moneyToBill(money,billUnit[i]);
+        for (int i = 0; i < billUnit.length; i++) {
+            int cnt = moneyToBill(money, billUnit[i]);
             answer.add(cnt);
-            money -= (billUnit[i]*cnt);
+            money -= (billUnit[i] * cnt);
         }
         return answer;
     }
 
     // 남은 금액을 해당 단위의 화폐 몇 장으로 변환 가능한지를 판단하는 함수 moneyToBill()
-    private static int moneyToBill(int money, int bill){
-        int cnt = money/bill;
+    private static int moneyToBill(int money, int bill) {
+        int cnt = money / bill;
         return cnt;
     }
 }
