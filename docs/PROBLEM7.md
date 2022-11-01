@@ -24,3 +24,22 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+---
+
+### ****기능 목록****
+
+- 받은 List가 유효한지 검증하는 기능
+
+  ☑️ [예외처리] user, friends, visitor 아이디의 길이가 1 이상 30 이하가 아닐 경우
+  ☑️ [예외처리] 사용자 아이디가 소문자로만 이루어지지 않은 경우
+  ☑️ [예외처리] friends의 size가 1이상 10,000이하가 아닌 경우
+  ☑️ [예외처리] friends[0]의 size가 2가 아닌 경우
+  ☑️ [예외처리] 동일한 친구 관계가 중복된 경우
+  ☑️ [예외처리] visitors 길이가 0 이상 10,000 이하인 리스트/배열이 아닌 경우
+
+- 답을 구해오는 기능
+- 사용자의 친구들을 저장하는 기능
+- 사용자와 함께 아는 친구에게 10점을 부여하는 기능
+- 사용자의 타임 라인에 방문한 사람들의 횟수만큼 1점을 부여하는 기능
+- 결과값을 정렬하는 기능
