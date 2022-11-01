@@ -15,12 +15,11 @@ public class Problem7 {
                 List.of("Kim", "mrko"),
                 List.of("andole", "Kim")
         );
-        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan", "andole");
         solution(user, friends, visitors);
     }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Map<String, Integer> pointsMap = new HashMap<>();
-        int score = 0;
         Set<String> friendsSet = new HashSet<>();
 
         // friendsSet 해시set에 user의 친구 입력하기
@@ -30,8 +29,6 @@ public class Problem7 {
                 friendsSet.add(friendName);
             }
         }
-
-        System.out.println(friendsSet);
 
         // 친구의 친구를 구해서 HashMap에 점수와 함께 저장
         Iterator it = friendsSet.iterator();
@@ -48,17 +45,20 @@ public class Problem7 {
             }
         }
 
-        System.out.println(pointsMap);
+        // 방문자 점수 추가
+        List<String> friendsList = new ArrayList<>(friendsSet);
+        for (int i = 0; i < visitors.size(); i++) {
+            String visitor = visitors.get(i);
+            if (friendsList.contains(visitor)) {
+                continue;
+            }
+            int point = pointsMap.get(visitor) != null ? pointsMap.get(visitor) + 1 : 1;
+            pointsMap.put(visitor, point);
+        }
+
 
         List<String> answer = Collections.emptyList();
         return answer;
-    }
-
-    private static List<String> findFriendOfUser(String user, List<List<String>> friends) {
-        List<String> listFriendOfUser = new ArrayList<>();
-
-
-        return listFriendOfUser;
     }
 
     private static String IsLeftOrRight(List<String> friend, String user) {
