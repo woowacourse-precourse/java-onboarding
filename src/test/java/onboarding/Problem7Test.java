@@ -79,4 +79,13 @@ class Problem7Test {
     }
 
     static Map<String, Integer> userFriends;
+
+    void addPoint(String user, int point) {
+        // 추천 점수 추가
+        if(userFriends.containsKey(user)) {
+            userFriends.replace(user, userFriends.get(user)+point);
+        } else {
+            userFriends.put(user, point);
+        }
+    }
 }
