@@ -17,6 +17,7 @@ public class Problem6 {
         setUserForms(forms);
         search(stringBuilder);
         removeDuplication();
+        listSorting(answer);
 
         return answer;
     }
@@ -102,6 +103,9 @@ public class Problem6 {
             pt += Math.max(skip[txt.charAt(pt)], n - pp);
         }
         return -1; // while 문이 종료되면 검색 실패
+    }
+    public static void listSorting(List<String> answer){
+        Collections.sort(answer);
     }
 
 }
