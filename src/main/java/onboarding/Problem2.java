@@ -2,11 +2,12 @@ package onboarding;
 
 public class Problem2 {
 	public static String solution(String cryptogram) {
-		String answer = "";
+		// 모두 중복될 경우 빈 문자열 return
+		if (cryptogram.length() == 2 && cryptogram.charAt(0) == cryptogram.charAt(1)) {
+			return "";
+		}
 
-
-
-		return answer;
+		return "";
 	}
 
 //	public static void main(String args) {
