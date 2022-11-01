@@ -94,9 +94,6 @@ public class Problem7 {
         return count;
     }
 
-    /**
-     * 메소드 이름 수정 필요
-     */
     private static void makeFriendMapOfFriendsList(List<List<String>> friends) {
         for (List<String> twoFriends : friends) {
             putToFriendsMap(twoFriends.get(FIRST_ID), twoFriends.get(SECOND_ID));
