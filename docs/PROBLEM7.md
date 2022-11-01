@@ -24,3 +24,9 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능 목록
+1. 사용자와 친구인 목록 구하기
+2. 사용자의 친구와 친구인 이용자 점수 추가
+3. 방문자 점수 추가
+4. 최고 점수 최대 5인 선별해서 리턴
