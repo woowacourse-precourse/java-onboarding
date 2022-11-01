@@ -48,6 +48,18 @@ class Inspection{
         }
         return emails;
     }
+    List<String> getTotalEmails(TokenGroup tokenGroup){
+        HashMap<Integer, String> tokenGroupInformation;
+        HashSet<String> emails=new HashSet<>();
+        Set<String> tokenKeys;
+        tokenKeys = tokenGroup.getTokenKey();
+
+        for(String tokenKey:tokenKeys){
+            tokenGroupInformation = tokenGroup.getTokenGroup(tokenKey);
+            emails.addAll(getEmail(tokenGroupInformation));
+        }
+        return new ArrayList<>(emails);
+    }
 }
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
