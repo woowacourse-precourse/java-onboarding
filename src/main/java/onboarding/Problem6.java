@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Pattern;
 
@@ -16,6 +17,29 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
+    }
+
+    private static List<String> makeDuplicatedEmails(List<List<String>> forms) {
+        List<String> duplicatedEmail = new ArrayList<>();
+        for (int i = 0; i < forms.size() - 1; i++) {
+            for (int j = i + 1; j < forms.size(); j++) {
+                String nickname1 = forms.get(i).get(1);
+                String nickname2 = forms.get(j).get(1);
+                String email1 = forms.get(i).get(0);
+                String email2 = forms.get(j).get(0);
+                if (checkDuplication(nickname1, nickname2)) {
+                    addDuplicatedEmail(duplicatedEmail, email1);
+                    addDuplicatedEmail(duplicatedEmail, email2);
+                }
+            }
+        }
+        return duplicatedEmail;
+    }
+
+    private static void addDuplicatedEmail(List<String> duplicatedEmail, String email) {
+        if (!duplicatedEmail.contains(email)) {
+            duplicatedEmail.add(email);
+        }
     }
     private static boolean checkDuplication(String nickname1, String nickname2) {
         for (int i = 0; i < nickname1.length() - 1; i++) {
