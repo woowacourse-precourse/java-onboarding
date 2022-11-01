@@ -20,20 +20,25 @@ public class Problem6 {
         for (int i = 0; i < forms.size(); i++) {
             List<String> form = forms.get(i);
             String nickname = form.get(1);
-            for (int j = 0; j < nickname.length() - 1; j++) {
-                String subNickname = nickname.substring(j, j + 2);
-                for (int k = i + 1; k < forms.size(); k++) {
-                    if (forms.get(k).get(1).contains(subNickname)) {
-                        answer.add(forms.get(k).get(0)); //이메일 저장
-                        answer.add(form.get(0));
-                    }
-                }
-            }
+            addContainNickname(forms, answer, i, nickname);
         }
 
         answer = answer.stream().distinct().collect(Collectors.toList());
         Collections.sort(answer);
 
         return answer;
+    }
+
+    private static void addContainNickname(List<List<String>> forms, List<String> answer, int index, String nickname) {
+        for (int j = 0; j < nickname.length() - 1; j++) {
+            String subNickname = nickname.substring(j, j + 2);
+
+            for (int k = index + 1; k < forms.size(); k++) {
+                if (forms.get(k).get(1).contains(subNickname)) {
+                    answer.add(forms.get(k).get(0)); //이메일 저장
+                    answer.add(forms.get(index).get(0));
+                }
+            }
+        }
     }
 }
