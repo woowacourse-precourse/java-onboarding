@@ -82,6 +82,58 @@ class ValidatorPro7 {
   }
 }
 
+class RelationPro7 {
+
+  public final static int LEFT = 0;
+  public final static int RIGHT = 1;
+
+  private static Map<String, Set<String>> relation;
+
+  public RelationPro7(String user, List<List<String>> friends, List<String> visitors) {
+    relation = new HashMap<>();
+    findFriend(friends);
+    findVisitor(visitors);
+  }
+
+  public static Map<String, Set<String>> getRelation() {
+    return relation;
+  }
+
+  public static void findFriend(List<List<String>> friends) {
+    for (List<String> pair : friends) {
+      if (!relation.containsKey(pair.get(LEFT))) {
+        Set<String> my_friends = new HashSet<>();
+        relation.put(pair.get(LEFT), my_friends);
+      }
+      relation.get(pair.get(LEFT)).add(pair.get(RIGHT));
+    }
+    for (List<String> pair : friends) {
+      if (!relation.containsKey(pair.get(RIGHT))) {
+        Set<String> my_friends = new HashSet<>();
+        relation.put(pair.get(RIGHT), my_friends);
+      }
+      relation.get(pair.get(RIGHT)).add(pair.get(LEFT));
+    }
+  }
+
+  public static void findVisitor(List<String> visitors) {
+    for (String name : visitors) {
+      if (!relation.containsKey(name)) {
+        relation.put(name, null);
+      }
+    }
+  }
+
+  public static void removeMutual(String user, RelationPro7 relation,
+      ScorePro7 score) {
+    if (RelationPro7.getRelation().containsKey(user)) {
+      for (String name : RelationPro7.getRelation().get(user)) {
+        ScorePro7.getScoreList().remove(name);
+      }
+    }
+  }
+}
+
 
 public class Problem7 {
 
