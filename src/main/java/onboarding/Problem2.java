@@ -8,13 +8,18 @@ package onboarding;
 5. 문자열 길이가 1 ~ 1000자 이하인지 확인
  */
 public class Problem2 {
-    public static boolean isAlpha(String str){
-        return str != null && str.chars().allMatch(Character::isAlphabetic);
+    public static boolean isAlphaAndLowerCase(String s){
+        for(char c:s.toCharArray()){
+            if(!('a'<=c && c <='z')){
+                return false;
+            }
+        }
+        return true;
     }
     public static String solution(String cryptogram) {
         String answer = "wrong";
 
-        if(isAlpha(cryptogram)){
+        if(isAlphaAndLowerCase(cryptogram)){
             return answer;
         }
 
