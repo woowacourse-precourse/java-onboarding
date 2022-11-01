@@ -22,6 +22,18 @@ class Problem7 {
             }
         }
 
+        for (int i = 0; i < friends.size(); i++) {
+            for (int j = 0; j < userfriendList.size(); j++) {
+                if (friends.get(i).contains(userfriendList.get(j))) {
+                    if (friends.get(i).get(0) == userfriendList.get(j)) {
+                        withfriendList.add(friends.get(i).get(1));
+                    } else if (friends.get(i).get(1) == userfriendList.get(j)) {
+                        withfriendList.add(friends.get(i).get(0));
+                    }
+                }
+            }
+        }
+
         return answer;
     }
 }
