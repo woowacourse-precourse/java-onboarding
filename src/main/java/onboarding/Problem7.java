@@ -13,25 +13,27 @@ public class Problem7 {
 
     private static List<String> getRanking(String user, List<List<String>> friends, List<String> visitors){
         List<String> result= new ArrayList<>();
-        List<String> userList=getUser(friends);
+        List<String> userList = getUser(friends,visitors);
         ArrayList<String>[] freindList=new ArrayList[USER_NUM];
 
         for(int i=0;i<freindList.length;i++){
             freindList[i]=getFriendList(userList.get(i),friends);
         }
 
-        
 
         Collections.sort(result);
         return result;
     }
 
-    private static List<String> getUser(List<List<String>> friends){
+    private static List<String> getUser(List<List<String>> friends,List<String> visitors){
         List<String> result=new ArrayList<>();
         HashSet<String> userList=new HashSet<>();
         for(int i=0;i<friends.size();i++){
             userList.add(friends.get(i).get(0));
             userList.add(friends.get(i).get(1));
+        }
+        for(int i=0;i<visitors.size();i++){
+            userList.add(visitors.get(i));
         }
         Iterator<String> iter=userList.iterator();
         while(iter.hasNext()){
