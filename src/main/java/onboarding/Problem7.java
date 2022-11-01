@@ -69,7 +69,7 @@ public class Problem7 {
     }
 
     private static void addScore(String user, int index) {
-        List<String> userFriends = friends.get(numberOfFriends.get(user)).getMyFriends();
+        List<String> userFriends = getFriend(user).getMyFriends();
         Friend friend = friends.get(index);
         List<String> myFriends = friend.getMyFriends();
 
@@ -103,7 +103,7 @@ public class Problem7 {
                 initFriend(idx++, visitor);
             }
 
-            friends.get(numberOfFriends.get(visitor)).addScore(VISITANT_SCORE);
+            getFriend(visitor).addScore(VISITANT_SCORE);
         }
     }
 
@@ -117,7 +117,11 @@ public class Problem7 {
     }
 
     private static void addMyFriend(String friendA, String friendB) {
-        friends.get(numberOfFriends.get(friendA)).addMyFriend(friendB);
+        getFriend(friendA).addMyFriend(friendB);
+    }
+
+    private static Friend getFriend(String user) {
+        return friends.get(numberOfFriends.get(user));
     }
 
     private static List<String> getAnswer(String user) {
