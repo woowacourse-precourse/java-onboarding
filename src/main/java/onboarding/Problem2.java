@@ -2,7 +2,12 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        if(cryptogram.isEmpty()){
+            return cryptogram;
+        }
+        StringBuilder sb = new StringBuilder();
+        sb.append(cryptogram.charAt(0));
+
+        return solution(sb.toString());
     }
 }
