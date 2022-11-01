@@ -7,59 +7,65 @@ import java.util.HashSet;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+
+
 public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends,
         List<String> visitors) {
+
+        String[] alreadyFriends = CheckAlreadyFriend(user, friends); // 이미 친구인 유저들 목록
+        String[] candidates = AddCandidate(user, alreadyFriends, friends, visitors); // 친구 후보 목록
+
         List<String> answer = null;
-        HashSet<String> alreadyFriends = CheckAlreadyFriend(user, friends); // 이미 친구인 목>
-        ArrayList<String> nicknames = new ArrayList<>();
-
-
-        System.out.print(alreadyFriends);
-        //int[] scores = new int[nicknames.length];
-//
-//        for (String nickname : nicknames)
-//            System.out.println(nickname);
         return answer;
     }
 
-    public static HashSet<String> CheckAlreadyFriend(String user, List<List<String>> friends) {
-        HashSet<String> checker = new HashSet<>();
+    /**
+     * 이미 유저와 친구인 사람들은 점수계산과 결과목록에서 제외하기위해 따로 저장.
+     * @param user 유저 이름
+     * @param friends 친구 관계 정보
+     * @return 이미 유저와 친구인 사람들
+     */
+    public static String[] CheckAlreadyFriend(String user, List<List<String>> friends) {
+        HashSet<String> tempSet = new HashSet<>();
+
         for (List<String> i : friends) {
             if (user.equals(i.get(0))) {
-                checker.add(i.get(1));
+                tempSet.add(i.get(1));
             } else if (user.equals(i.get(1))) {
-                checker.add(i.get(0));
+                tempSet.add(i.get(0));
             }
         }
-        return checker;
+        String[] tempArray = tempSet.toArray(new String[0]);
+        return tempArray;
+    }
+
+    /**
+     * 친구 후보 목록을 문자열 배열로 저장.
+     * @param user 유저 이름
+     * @param alreadyFriends 이미 친구인 사람들
+     * @param friends 친구 관계 정보
+     * @return 친구 후보 목록
+     */
+    public static String[] AddCandidate(String user, String[] alreadyFriends, List<List<String>> friends, List<String> visitors){
+        LinkedHashSet<String> tempHashSet = new LinkedHashSet<>();
+        for(List<String> i : friends){
+            for(String j : i){
+                tempHashSet.add(j);
+            }
+        }
+        for(String i : visitors){
+            tempHashSet.add(i);
+        }
+
+        tempHashSet.remove(user);
+        for(String i : alreadyFriends){
+            tempHashSet.remove(i);
+        }
+
+        String[] tempArray = tempHashSet.toArray(new String[0]);
+        return tempArray;
     }
 }
-//    public static ArrayList<String> RecommendFriends(String user, List<List<String>> friends, List<String> visitors) {
-//        LinkedHashSet<String> nameList = new LinkedHashSet<>();
-//    }
-//    public static HashSet<String> CheckAlreadyFriend(String user, List<List<String>> friend){
-//        for(int i = 0; i < friends.size(); i ++ ){
-//
-//        }
-//    }
-//    public static String[] MakeNameBoard(String user, List<List<String>> friends, List<String> visitors, HashSet<String> alreadyFriends){
-//        LinkedHashSet<String> nameBoard = new LinkedHashSet<>();
-//        for(int i = 0; i < friends.size(); i ++ ){
-//            String name0 = friends.get(i).get(0);
-//            String name1 = friends.get(i).get(1);
-//            if(!(user.equals(name0)) && !(user.equals(name1))) {
-//                nameBoard.add(name0);
-//                nameBoard.add(name1);
-//            }
-//        }
-//
-//        for(int i = 0; i < visitors.size(); i ++ ){
-//            if(!(user.equals(visitors.get(i)))){
-//                nameBoard.add(visitors.get(i));
-//            }
-//        }
-//        return nameBoard.toArray(new String[0]);
-//    }
 
