@@ -28,4 +28,24 @@ public class Problem7 {
 
         return userFriends;
     }
+
+    //기능2. 사용자가 모르는 친구 목록
+    public static List<String> notFriends(String user, List<String> userFriends, List<List<String>> friends, List<String> visitors){
+        HashSet<String> notFri = new HashSet<>();
+
+        for(List<String> fri: friends){
+            notFri.add(fri.get(0));
+            notFri.add(fri.get(1));
+        }
+        for(String fri : visitors){
+            notFri.add(fri);
+        }
+        for(String fri : userFriends){
+            notFri.remove(fri);
+        }
+        notFri.remove(user);
+
+        List<String> notFriends = new ArrayList<>(notFri);
+        return notFriends;
+    }
 }
