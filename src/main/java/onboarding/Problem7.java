@@ -72,6 +72,17 @@ public class Problem7 {
         allUserList.addAll(visitors);
         return allUserList;
     }
+
+    // 우선순위 큐에 사용할 유저 클래스
+    static class User {
+        String userName;
+        int score;
+
+        public User(String userName, int score) {
+            this.userName = userName;
+            this.score = score;
+        }
+    }
 }
 
 
