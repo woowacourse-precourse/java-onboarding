@@ -19,6 +19,14 @@ public class Problem7 {
         return answer;
     }
 
+    //  회원 유효성 검사 - 길이
+    private static Boolean verifyIdLength(String id){
+        int length = id.length();
+        if(length < MIN_ID_LENGTH) return false;
+        if(length > MAX_ID_LENGTH) return false;
+        return true;
+    }
+
     //  회원 유효성 검사 - 소문자
     private static Boolean verifyIdType(String id){
         for(int i = 0; i < id.length(); i++){
