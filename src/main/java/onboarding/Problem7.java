@@ -34,6 +34,7 @@ public class Problem7 {
         return answer;
     }
 
+
     public static Map<String, List<String>> makeFriendMap(List<List<String>> friends){
 
         // 친구관계도 HashMap
@@ -67,6 +68,21 @@ public class Problem7 {
         }
 
         return friendMap;
+    }
+
+
+    // friendCount, visitorCount를 실행시켜 멤버별 점수를 합산하여 얻음
+    public static Map<String, Integer> calculateScore(String user,
+                                                      Map<String, List<String>> friendMap,
+                                                      List<String> visitors) {
+
+        List<String> userFriends = friendMap.get(user);
+
+        Map<String, Integer> friendCountResult = friendCount(user, friendMap);
+        Map<String, Integer> result = visitorCount(friendCountResult, userFriends, visitors);
+
+
+        return result;
     }
 
 

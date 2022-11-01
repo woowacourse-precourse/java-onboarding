@@ -98,8 +98,34 @@ public class Problem7Test {
         answer.put("bedi", 3);
 
         assertThat(resultCount).isEqualTo(answer);
+    }
 
+    @Test
+    @DisplayName("calculateScore 메소드 테스트")
+    void calculateTest(){
 
+        String user = "mrko";
+        List<List<String>> friends = List.of(
+                List.of("donut", "andole"),
+                List.of("donut", "jun"),
+                List.of("donut", "mrko"),
+                List.of("shakevan", "andole"),
+                List.of("shakevan", "jun"),
+                List.of("shakevan", "mrko")
+        );
+
+        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+
+        Map<String, List<String>> friendMap = Problem7.makeFriendMap(friends);
+
+        Map<String, Integer> result = Problem7.calculateScore(user, friendMap, visitors);
+
+        Map<String, Integer> answer = new HashMap<>();
+        answer.put("andole", 20);
+        answer.put("jun", 20);
+        answer.put("bedi", 3);
+
+        assertThat(result).isEqualTo(answer);
 
 
     }
