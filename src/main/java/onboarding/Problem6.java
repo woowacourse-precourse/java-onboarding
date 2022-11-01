@@ -5,9 +5,22 @@ import java.util.HashSet;
 import java.util.List;
 
 public class Problem6 {
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
+    }
+
+    private static boolean isLimitedNickName(
+        HashMap<String, Integer> subNickNameFrequencies,
+        String nickName
+    ) {
+        HashSet<String> subNickNames = getSubNickNames(nickName);
+        return subNickNames.stream()
+            .anyMatch(subNickName -> {
+                int frequency = subNickNameFrequencies.get(subNickName);
+                return frequency > 1;
+            });
     }
 
     private static HashMap<String, Integer> getSubNickNameFrequencies(List<List<String>> forms) {
