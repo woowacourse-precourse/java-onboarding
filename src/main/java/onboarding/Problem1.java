@@ -31,11 +31,16 @@ class Problem1 {
         }
         return sum > mul ? sum : val;
     }
-    
+    public static int GetMaxValue(int page1, int page2)
+    {
+        int p1 = GetMaxValue(page1);
+        int p2 = GetMaxValue(page2);
+        return p1 > p2 ? p1 : p2;
+    }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
         if (IsException(pobi, crong))
             return -1;
-        return answer;
+        int pobiScore = GetMaxValue(pobi.get(0), pobi.get(1));
+        int crongScore = GetMaxValue(crong.get(0), crong.get(1));
     }
 }
