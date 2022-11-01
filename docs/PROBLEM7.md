@@ -24,3 +24,10 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능 목록
+
+1. 사용자의 친구 목록을 만든다.
+2. 사용자가 모르는 친구 목록을 만든다.
+3. 점수를 계산한다.
+4. 정렬 후 최대 5명을 반환한다.
