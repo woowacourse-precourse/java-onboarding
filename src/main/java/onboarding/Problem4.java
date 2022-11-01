@@ -14,7 +14,11 @@ public class Problem4 {
                     ascii = 65;
                 else if (Character.isLowerCase(wordChar[i])) // 소문자일 경우, ascii 'a'의 코드번호
                     ascii = 97;
+
             }
+            else
+                result.append(wordChar[i]); // 알파벳이 아닐 경우, 그대로
         }
+        return result.toString();
     }
 }
