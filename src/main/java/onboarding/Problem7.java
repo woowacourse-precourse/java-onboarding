@@ -4,14 +4,11 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-
         HashMap<String, Integer> friendCandidateHashMap = new HashMap<>();
         setFriendScoreOfUser(friendCandidateHashMap, friends, user);
         setVisitorScoreOfUser(friendCandidateHashMap, friends, visitors, user);
 
-
-        return answer;
+        return getRecommendedFriendList(friendCandidateHashMap);
     }
 
     private static void setFriendScoreOfUser(HashMap<String, Integer> friendCandidateHashMap, List<List<String>> friends, String user) {
@@ -66,4 +63,19 @@ public class Problem7 {
         }
         return visitorExceptFriend;
     }
+
+    private static List<String> getRecommendedFriendList(HashMap<String, Integer> friendCandidateHashMap) {
+
+        List<String> recommendedFriendList = new ArrayList<>();
+
+        List<Map.Entry<String, Integer>> nameScoreList = new ArrayList<>(friendCandidateHashMap.entrySet());
+        nameScoreList.sort((((o1, o2) -> friendCandidateHashMap.get(o2.getKey()) - friendCandidateHashMap.get(o1.getKey()))));
+        for (Map.Entry<String, Integer> nameScoreEntry : nameScoreList) {
+            if (nameScoreEntry.getValue() != 0 && recommendedFriendList.size() < 6) {
+                recommendedFriendList.add(nameScoreEntry.getKey());
+            }
+        }
+        return recommendedFriendList;
+    }
+
 }
