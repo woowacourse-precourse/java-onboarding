@@ -7,7 +7,7 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
     	
     	ArrayList<String> clone = new ArrayList<String>();
-		ArrayList<String> answer = new ArrayList<String>();
+		List<String> answer = new ArrayList<String>();
 		
 		for (int i = 0; i < forms.size(); i++) {
 			String member = forms.get(i).get(1);
