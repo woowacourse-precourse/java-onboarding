@@ -25,7 +25,7 @@ public class Problem4 {
         return fword.toString();
     }
     public static boolean exceptionCheck(String word){
-        //number는 1이상 10,000 이하인 자연수이다.
+        //word는 길이가 1이상 1,000 이하인 자연수이다.
         if(word.length() < 0 || word.length() > 1000) return true;
         return false;
     }
