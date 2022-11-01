@@ -30,16 +30,14 @@ public class Problem7 {
         }
 
         // 추천 점수가 0점인 경우 추천하지 않으며
-        scoreResult = removeZeros(scoreResult);
+        removeZeros(scoreResult);
 
-        // 점수가 가장 높은 순으로 정렬하며,
+        // 점수가 가장 높은 순으로 정렬
         // 추천 점수가 같은 경우는 이름순으로 정렬한다.
         List<Map.Entry<String, Integer>> finalResult = sortResult(scoreResult);
 
         // 최대 5명
-        List<String> answer = maxFive(finalResult);
-
-        return answer;
+        return maxFive(finalResult);
     }
 
     /**
@@ -52,6 +50,7 @@ public class Problem7 {
         TreeSet<String> Set = new TreeSet<>();
 
         for (List<String> e : friends) {
+            // 사용자 이름이 있는지 찾는다.
             int indexOfMe = e.indexOf(user);
 
             // 사용자 친구의 이름을 집합에 넣는다.
@@ -156,11 +155,9 @@ public class Problem7 {
     /**
      * 추천 점수가 0점인 경우 추천하지 않는다.
      * @param scoreResult 본인과 친구를 제외한 사람의 이름과 추천 점수
-     * @return 추천 점수가 0점인 경우를 제외한 결과
      * */
-    private static HashMap<String, Integer> removeZeros(HashMap<String, Integer> scoreResult) {
+    private static void removeZeros(HashMap<String, Integer> scoreResult) {
         scoreResult.values().remove(0);
-        return scoreResult;
     }
 
     /**
