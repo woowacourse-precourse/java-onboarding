@@ -25,7 +25,21 @@ public class Problem7 {
                 }
             }
         }
-
+        value.add(data[0][0]);
+        value.add(data[0][1]);
+        for(int i=1;i<data.length;i++) {
+            if (!value.contains(data[i][0])){
+                value.add(data[i][0]);
+                value.add(data[i][1]);
+            }else{
+                for(int j=0;j<value.size()-1;j++){
+                    if(value.get(j).equals(data[i][0])){
+                        int va = Integer.parseInt(value.get(j+1)) +10;
+                        value.set(j+1,String.valueOf(va));
+                    }
+                }
+            }
+        }
 
         return answer;
     }
