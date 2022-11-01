@@ -6,6 +6,7 @@ import onboarding.problem7.wrapper.User;
 import onboarding.problem7.wrapper.UserAndScore;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class FriendAndScore {
 
@@ -64,5 +65,13 @@ public class FriendAndScore {
                 .reversed()
                 .thenComparing(UserAndScore::getUser));
         return newFriendAndScoreList;
+    }
+
+    public List<String> getRecommendationList(List<UserAndScore> newFriendAndScoreList) {
+        newFriendAndScoreList = sortListByScoreAndUserId(newFriendAndScoreList);
+        return newFriendAndScoreList.stream()
+                .map(UserAndScore::getUser)
+                .limit(5)
+                .collect(Collectors.toList());
     }
 }
