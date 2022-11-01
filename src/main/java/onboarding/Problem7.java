@@ -26,6 +26,17 @@ public class Problem7 {
                 }
             }
         }
+        // Iterates through visitor list
+        for (String s : visitors) {
+            if (!friendList.contains(s)) {
+                if (users.containsKey(s)) {
+                    users.put(s, users.get(s) + 1);
+                } else {
+                    users.put(s, 1);
+                }
+            }
+        }
+        return recommendation(users);
     }
 
     public static List<String> findFriends(String user, List<List<String>> friends) {
