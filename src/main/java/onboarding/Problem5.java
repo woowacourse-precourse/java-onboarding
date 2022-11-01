@@ -1,22 +1,33 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import onboarding.problem5.Asset;
+import onboarding.problem5.AssetService;
+import onboarding.problem5.config.AssetDependencyConfigurer;
+
 public class Problem5 {
 
+    private static final AssetDependencyConfigurer assetConfig = new AssetDependencyConfigurer();
+
+
     public static List<Integer> solution(int money) {
+        Asset asset = new Asset();
+        AssetService assetService = assetConfig.assetServiceImpl();
+        assetService.deposit(money, asset);
+
         List<Integer> answer = new ArrayList<>();
 
-        final int[] koreanMoneyUnits = new int[] {
-            50000, 10000, 5000, 1000, 500, 100, 50, 10, 1
-        };
+        Map<Integer, Integer> unitsMap = assetService.withdrawAllAsCash(asset);
 
         Map<Integer, Integer> moneyUnitMap = getMoneyUnitMap(koreanMoneyUnits);
-        int cursor = 0;
+
+        for (int moneyUnit : koreanMoneyUnits) {
+            exchangeToMoneyUnit(money, moneyUnit);
+        }
         while (cursor < koreanMoneyUnits.length
                 && money > 0) {
             int currentUnit = koreanMoneyUnits[cursor];
@@ -44,4 +55,9 @@ public class Problem5 {
 
         return moneyUnitMap;
     }
+
+    private static void exchangeToMoneyUnit(int money, int moneyUnit) {
+
+    }
 }
+
