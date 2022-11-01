@@ -111,6 +111,11 @@ class User {
             this.recommendedFriend.put(candidate, recommendPoint + extraPoint);
         }
     }
+
+    /** 타임라인을 방문한 유저의 추천 포인트 추가 */
+    void addVisitPoint(){
+        setRecommendPoint(visitors, UserManager.VISIT_POINT);
+    }
 }
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
