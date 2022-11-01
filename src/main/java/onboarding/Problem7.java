@@ -44,6 +44,14 @@ public class Problem7 {
         return true;
     }
 
+    //  친구 목록 유효성 검사 - ID
+    private static Boolean verifyFriendsId(List<String> friend){
+        for(String s : friend){
+            if(!verifyIdLength(s)) return false;
+        }
+        return true;
+    }
+
     //  친구 목록 유효성 검사 - 목록 길이
     private static Boolean verifyFriendsLength(List<List<String>> friends){
         int length = friends.size();
