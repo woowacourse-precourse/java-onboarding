@@ -13,9 +13,9 @@ public class Problem4 {
             //소문자
             }else if(ascii > 97 && ascii < 122){
                 ch = (char)(219 - ascii);
-            //공백
+            //그 외
             }else{
-                ch = (char)32;
+                ch = (char)ascii;
             }
             answer += (char)ch;
         }
