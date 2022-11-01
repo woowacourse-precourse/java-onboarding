@@ -6,6 +6,7 @@ public class Problem7 {
 
     private static final int MAX_NUMBER_OF_RECOMMENDED_FRIENDS = 5;
 
+    // 친구 추천 클래스
     static class UserScore {
         String name;
         int score;
@@ -18,11 +19,10 @@ public class Problem7 {
         public void addScore(int added) {
             this.score += added;
         }
-
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = new ArrayList<>();
+        List<String> answer = Collections.emptyList();
         Map<String, ArrayList<String>> friendsMap = new HashMap<>();    // 친구 관계 그래프
         List<UserScore> scoreMap = new ArrayList<>();                   // 친구 점수 맵
 
@@ -46,17 +46,23 @@ public class Problem7 {
 
         sortScoreMap(scoreMap); // score 기준 내림차순 정렬 (+name 기준 오름ㅊ차순 정렬)
 
-        // 이미 친구 관계인 친구들, 그리고 자기 자신은 점수 맵에서 제외하기
+        // 이미 친구 관계인 친구들, 그리고 자기 자신은 제외하여 scoreMap을 answer 리스트에 추가하기
         ArrayList<String> friendsOfUser = friendsMap.get(user);
         for (UserScore friend : scoreMap) {
-            if (!(friendsOfUser.contains(friend.name) || friend.name.equals(user))) {
-                answer.add(friend.name);
-            }
+            answer = addToRecommendedList(friendsOfUser, friend, user);
         }
-
+        
         if (answer.size() > MAX_NUMBER_OF_RECOMMENDED_FRIENDS) // 최대 5개
             return answer.subList(0, MAX_NUMBER_OF_RECOMMENDED_FRIENDS);
         return answer;
+    }
+
+    private static List<String> addToRecommendedList(List<String> friendsOfUser, UserScore friend, String userName){
+        List<String> recommendedList = new ArrayList<>();
+        if (!(friendsOfUser.contains(friend.name) || friend.name.equals(userName))) {
+            recommendedList.add(friend.name);
+        }
+        return recommendedList;
     }
 
     private static void sortScoreMap(List<UserScore> scoreMap) {
@@ -83,7 +89,6 @@ public class Problem7 {
         if(user.isEmpty()) {
             scoreMap.add(new UserScore(friend, 10));
         }else{
-            System.out.println(user.get().name + "를 찾습니다");
             user.get().addScore(10);
         }
     }
