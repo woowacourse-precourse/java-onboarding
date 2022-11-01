@@ -39,7 +39,6 @@ class Problem1 {
 
         for (int i = 0; i < pages.size(); i++) {
             if (pages.get(i) <= 2 && pages.get(i) >= 399) {return false;} // 나올 수 있는 페이지의 범위 수를 넘어서는 경우, false 반환.
-            if (pages.get(i) % 2 == i) {return false;} // 왼쪽 페이지 -> 짝수, 오른쪽 페이지 -> 홀수가 나온 경우, false 반환.
         }
 
         return true;
