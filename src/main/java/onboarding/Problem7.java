@@ -46,13 +46,21 @@ public class Problem7 {
 			scoreTable.put(id, 10 * countMutualFriend(user, friendsOfId));
 		}
 	}
+	private static void scoreVisitors(List<String> visitors) {
+		int score;
+
+		for (String visitor : visitors) {
+			score = scoreTable.getOrDefault(visitor, 0);
+			scoreTable.put(visitor, score + 1);
+		}
+	}
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 		scoreTable = new Hashtable<>();
 		friendTable = new Hashtable<>();
 
 		setFriendTable(friends);
 		scoreMutualFriends(user);
-//		scoreVisitors(visitors);
+		scoreVisitors(visitors);
 //		removeUserAndFriends(user);
 //		removeZeros();
 //		return (getSortedList());
