@@ -24,3 +24,9 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능 구현 목록
+1. 친구를 구하고 점수 계산
+2. 피드에 방문한 방문자를 구하고 점수 계산
+3. 점수가 같다면 이름을 오름차순으로 정렬
+4. 추천 친구를 5명으로 제한
