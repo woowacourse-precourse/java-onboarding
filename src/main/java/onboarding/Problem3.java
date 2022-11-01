@@ -7,8 +7,15 @@ import java.util.stream.Collectors;
 public class Problem3 {
 
     public static int solution(int number) {
-        int answer = 0;
-        return answer;
+        return getTotalClapNumber(number);
+    }
+
+    private static int getTotalClapNumber(int number) {
+        int totalClapNumber = 0;
+        for (int currentNumber = 1; currentNumber <= number; currentNumber++) {
+            totalClapNumber += getClapNumber(currentNumber);
+        }
+        return totalClapNumber;
     }
 
     private static int getClapNumber(int number) {
