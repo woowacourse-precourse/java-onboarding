@@ -5,7 +5,7 @@ import java.util.*;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
-
+        List<Map.Entry<String, Integer>> entries = Collections.emptyList();
         Map<String, List<String>> eachFriends = new HashMap<>();
         Map<String, Integer> scores = new HashMap<>();
 
@@ -15,7 +15,7 @@ public class Problem7 {
 
         countSameFriendsPoints(user, eachFriends, scores);
 
-        List<Map.Entry<String, Integer>> entries = sortByScoreAndName(scores);
+        entries = sortByScoreAndName(scores);
 
         answer = getTop5Exclude0Points(entries);
 
@@ -48,6 +48,7 @@ public class Problem7 {
     private static List<Map.Entry<String, Integer>> sortByScoreAndName(Map<String, Integer> scores) {
         // 정렬
         List<Map.Entry<String, Integer>> entries = new LinkedList<>(scores.entrySet());
+
         entries.sort(new Comparator<Map.Entry<String, Integer>>() {
             @Override
             public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
@@ -57,6 +58,7 @@ public class Problem7 {
                 return o1.getKey().compareTo(o2.getKey());
             }
         });
+
         return entries;
     }
 
