@@ -1,75 +1,50 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
-        List<Character> list = new ArrayList<>();
-        for(int i = 0; i<word.length();i++) {
-        	list.add(word.charAt(i));
-        }
-        for(int i = 0; i<list.size();i++) {
-        	if(list.get(i) >= 97 || list.get(i) <= 122) { //소문자 판별
-        		char A = (char)(list.get(i)+9);
-        		list.set(i,A);
+        char[] chars = word.toCharArray();
+        for(int i=0; i<word.length(); i++) {
+        	int A = chars[i]+0; //바꾸기 전 아스키
+        	int B = change(A);	//바꾼 후 아스키
+        	if(chars[i]+0 >= 65 && chars[i]+0 <= 90) { //대문자면 대문자로 리버스
+        		chars[i]=(char) B;
         	}
-        	if(list.get(i) >= 65 || list.get(i) <= 90) { //대문자 판별
-        		list.set(i,(char)change(i+'0'));
+        	if(chars[i]+0 >= 97 && chars[i]+0 <= 122) {
+        		chars[i]=(char) B;
         	}
         }
         StringBuilder sb = new StringBuilder();
-        for (Character ch: list) {
+        for (Character ch: chars) {
             sb.append(ch);
         } 
         String string = sb.toString();
         return answer = string;
     }
-    public static char change(char i) { //list.get i 에서 알파벳 들어오면 리버스 해주는 함수
-    	char A = i;
-    	if(A >= 97 || A <= 122) {
-    		A = A-219;
-    		if(A < 0) {
-    			A = A*-1;
-    		}
-    	}else if(A >= 65 || A <= 90) {
-    		A = A-155;
-    		if(A < 0) {
-    			A = A*-1;
-    		}
+    public static int change(int Alphabet) { //Alphabet에 A의 char 들어오면 Z의 char값 리턴
+    	int A = Alphabet;
+    	if(Alphabet >= 65 && Alphabet <= 90) {
+    		A = (Alphabet - 155)*-1;
     	}
-    	char value_char2 = (char)(A +'0');
-    	return value_char2;
+    	if(Alphabet >= 97 && Alphabet <= 122) {
+    		A = (Alphabet - 219)*-1;
+    	}
+    	return A;
     }
     public static void main(String[] args) {
-    	String word = "I love you";
-    	System.out.println(change('b'));
-    	/* List<Character> list = new ArrayList<>();
-    	 
-         for(int i = 0; i<word.length();i++) { //이상 무
-         	list.add(word.charAt(i));
-         }
-         for(int i = 0; i<list.size();i++) {
-        	 char A = (char)(list.get(i)+9);//I+9  R나옴
-        	 System.out.print(A); 
-         }
-         for(int i = 0; i<list.size();i++) {
-        	 if(list.get(i) >= 97 || list.get(i) <= 122) { //소문자 판별
-        		char A = (char)(list.get(i)+change(i));
-        		list.set(i,A);
-        	}
-        	 else if(list.get(i) >= 65 || list.get(i) <= 90) { //대문자 판별
-        		 char A = (char)(list.get(i)+change(i));
-         		list.set(i,A);
-        	}
-         }
-         StringBuilder sb = new StringBuilder();
-         
-         for (Character ch: list) {
-             sb.append(ch);
-         } 
-         String string = sb.toString();
-         System.out.println(string);*/
-         }
+    	String s = "I love you"; // R olev blf
+    	char[] chars = s.toCharArray();
+    	System.out.println(chars);
+    	chars[0]='R';
+    	System.out.println(chars);		
+    	System.out.println(chars[0]);	// R
+    	System.out.println(chars[0]+0);	// 82
+    	System.out.println(chars[0]+1); // 83
+    	char A = (char)(chars[0]+1);	// S
+    	System.out.println(A);
+    	int B = chars[0]+0;				//82
+    	System.out.println(B);			//82
+    	// 양수 변환 a * -1
+    	System.out.println(solution("I love you") + " solution");
+    }
 }
