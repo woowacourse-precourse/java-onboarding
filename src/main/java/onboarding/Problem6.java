@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = new ArrayList<>();
+        List<String> mailList = new ArrayList<>();
         int[][] beenHere = new int[forms.size()][forms.size()]; // 중복이 이미 확인됐는지 체크
 
         for(int i= 0; i<forms.size()-1; i++){
@@ -24,8 +24,8 @@ public class Problem6 {
                     String hisMail=forms.get(k).get(0);
 
                     if(toCompare.contains(sub_name)){
-                        answer.add(mail);// 중복발견 시, 메일 수집
-                        answer.add(hisMail);
+                        mailList.add(mail);// 중복발견 시, 메일 수집
+                        mailList.add(hisMail);
                         beenHere[i][k]=1;
                         beenHere[k][i]=1;
                     }
@@ -34,8 +34,8 @@ public class Problem6 {
         }
 
         HashSet<String> mailSet= new HashSet<>(); //해쉬셋으로 중복제거
-        for(String e: answer){
-            mailSet.add(e);
+        for(String mail: mailList){
+            mailSet.add(mail);
         }
         ArrayList<String> outcome= new ArrayList<>(mailSet); //리스트로 재변환 후 정렬
         outcome.sort(Comparator.naturalOrder());
@@ -43,14 +43,4 @@ public class Problem6 {
         return outcome;
     }
 
-  /*  public static void main(String[] args){
-        List<List<String>> forms = List.of(
-                List.of("jm@email.com", "제이엠"),
-                List.of("jason@email.com", "제이슨"),
-                List.of("woniee@email.com", "워니"),
-                List.of("mj@email.com", "엠제이"),
-                List.of("nowm@email.com", "이제엠")
-        );
-        System.out.println(solution(forms));
-    }*/
 }
