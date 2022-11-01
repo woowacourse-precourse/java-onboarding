@@ -17,7 +17,7 @@ public class Problem7 {
 
         return recommendation.entrySet()
                 .stream()
-                .sorted((o1, o2) -> o2.getValue() - o1.getValue())
+                .sorted(((Comparator<Map.Entry<String, Integer>>) (o1, o2) -> o2.getValue() - o1.getValue()).thenComparing(Map.Entry.comparingByKey()))
                 .map(Map.Entry::getKey)
                 .collect(Collectors.toList());
     }
