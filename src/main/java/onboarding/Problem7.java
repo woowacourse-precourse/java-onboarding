@@ -21,9 +21,14 @@ public class Problem7 {
     private static final List<String> FRIENDS_LIST = new ArrayList<>();
     private static final Map<String, Integer> UNKNOWN_USER_SCORE = new HashMap<>();
 
-    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+    public static List<String> solution(String user, List<List<String>> friends,
+        List<String> visitors) {
+        if (!checkInputValidation(user,friends,visitors)) {
+            throw new IllegalArgumentException("[error] 잘못된 입력값이 입력되었습니다.");
+        }
+        calcurateTotalRecommendationScore(user, friends, visitors);
+        List<String> answer = sortRecommendScore(deleteRecommendScoreZero(UNKNOWN_USER_SCORE));
+        return extractRecommendUserAllOrTop5(answer);
     }
 
     //user의 길이가 1이상 30이하인지 검증하는 기능
