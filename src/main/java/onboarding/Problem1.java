@@ -3,22 +3,22 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
-    static boolean seq(List<Integer> guys) {
-        return (guys.get(1) - guys.get(0) == 1);
+    static boolean seq(List<Integer> guy) {
+        return (guy.get(1) - guy.get(0) == 1);
     }
 
-    static boolean val(List<Integer> guys) {
-        return (guys.get(1) % 2 == 0) && (guys.get(0) % 2 == 1);
+    static boolean val(List<Integer> guy) {
+        return (guy.get(1) % 2 == 0) && (guy.get(0) % 2 == 1);
     }
 
-    static boolean fporlp(List<Integer> guys) {
-        return (guys.get(1) == 400) || (guys.get(0) == 1);
+    static boolean fporlp(List<Integer> guy) {
+        return (guy.get(1) == 400) || (guy.get(0) == 1);
     }
 
-    static int mulplu(List<Integer> guys) {
+    static int mulplu(List<Integer> guy) {
         int mx = 0, resmx = 0;
         int res1, res2;
-        for(int a : guys) {
+        for(int a : guy) {
             int tmp = a;
             res1 = 0; res2 = 1;
             while(tmp != 0) {
