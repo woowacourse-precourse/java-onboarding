@@ -78,5 +78,8 @@ public class Problem7 {
         removeExistFriendInScoreMap(user, friendMap, scoreMap);
     }
 
+    private static void removeUserInScoreMap(String user, HashMap<String, Integer> scoreMap) {
+        scoreMap.remove(user);
+    }
 }
 
