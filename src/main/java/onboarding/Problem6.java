@@ -51,4 +51,10 @@ public class Problem6 {
     public static String charToString(char ch) {
         return ch + "";
     }
+
+    public static void saveNameByTwoCharacters(String nickname) {
+        for (int i = 0; i < nickname.length() - 1; i++) {
+            str.add(charToString(nickname.charAt(i)) + charToString(nickname.charAt(i + 1)));
+        }
+    }
 }
