@@ -4,45 +4,26 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+
         List<String> answer = new ArrayList<>();
 
+        Map<String, Set<String>> friendsMap = makeFriendsMap(friends);
+
         Map<String, Integer> recommendedScoreMap = new HashMap<>();
-        Map<String, Set<String>> userFriendsMap = new HashMap<>();
-
-        for(List<String> friend : friends) {
-            String friendOne = friend.get(0);
-            String friendTwo = friend.get(1);
-
-            if(userFriendsMap.containsKey(friendOne))
-                userFriendsMap.get(friendOne).add(friendTwo);
-            else {
-                userFriendsMap.put(friendOne, new HashSet<>());
-                userFriendsMap.get(friendOne).add(friendTwo);
-            }
-
-            if(userFriendsMap.containsKey(friendTwo))
-                userFriendsMap.get(friendTwo).add(friendOne);
-            else {
-                userFriendsMap.put(friendTwo, new HashSet<>());
-                userFriendsMap.get(friendTwo).add(friendOne);
-            }
-
-        }
-
-        for(String friend : userFriendsMap.keySet()) {
+        for(String friend : friendsMap.keySet()) {
             recommendedScoreMap.put(friend, 0);
         }
 
-        String[] realFriends = userFriendsMap.get(user).toArray(new String[0]);
+        String[] realFriends = friendsMap.get(user).toArray(new String[0]);
         for(String friend : realFriends) {
-            for(String nearFriend : userFriendsMap.get(friend)) {
+            for(String nearFriend : friendsMap.get(friend)) {
                 if (nearFriend.equals(user))
                     recommendedScoreMap.put(nearFriend, recommendedScoreMap.get(nearFriend) + 10);
             }
         }
 
         for(String visitor : visitors) {
-            if(visitor.equals(user) || userFriendsMap.get(user).contains(visitor))
+            if(visitor.equals(user) || friendsMap.get(user).contains(visitor))
                 continue;
 
             if(recommendedScoreMap.containsKey(visitor))
@@ -64,5 +45,36 @@ public class Problem7 {
         }
 
         return answer;
+    }
+
+    public static HashMap<String, Set<String>> makeFriendsMap(List<List<String>> friends) {
+
+        HashMap<String, Set<String>> friendsMap = new HashMap<>();
+
+        for(List<String> friend : friends) {
+            String friendOne = friend.get(0);
+            String friendTwo = friend.get(1);
+
+            addFriendIntoFriendsMap(friendOne, friendTwo, friendsMap);
+            addFriendIntoFriendsMap(friendTwo, friendOne, friendsMap);
+        }
+
+        return friendsMap;
+    }
+
+    public static void addFriendIntoFriendsMap(String friendOne, String friendTwo, HashMap<String, Set<String>> friendsMap) {
+
+        if(friendsMap.containsKey(friendOne)) {
+            makeConnectionBetweenFriends(friendOne, friendTwo, friendsMap);
+            return;
+        }
+
+        friendsMap.put(friendOne, new HashSet<>());
+        makeConnectionBetweenFriends(friendOne, friendTwo, friendsMap);
+    }
+
+    public static void makeConnectionBetweenFriends(String friendOne, String friendTwo, HashMap<String, Set<String>> friendsMap) {
+        Set<String> friendsSet = friendsMap.get(friendOne);
+        friendsSet.add(friendTwo);
     }
 }
