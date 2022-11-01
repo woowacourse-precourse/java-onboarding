@@ -38,5 +38,18 @@ public class Problem7 {
             else
             	scoreBoard.put(id, scoreBoard.get(id) + 1);
         }
+        List <String> result = new LinkedList<>();
+        for(String key : scoreBoard.keySet())    result.add(key);
+        Collections.sort(result, (id1, id2) ->{
+            if(scoreBoard.get(id1) == scoreBoard.get(id2)){
+                return id1.compareTo(id2);
+            }
+            else{
+                return -(scoreBoard.get(id1) - scoreBoard.get(id2));
+            }
+        });
+
+        return result;
     }
 }
+
