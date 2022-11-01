@@ -68,6 +68,22 @@ public class Problem7 {
             }
         }
         
+        HashMap<Integer, List<String>> scoreFriend = new HashMap<>();
+
+
+
+        for(String person : score.keySet()){
+            if(!scoreFriend.containsKey(score.get(person))){
+                List<String> personList = new ArrayList<>();
+                personList.add(person);
+                scoreFriend.put(score.get(person), personList);
+            }
+            if(scoreFriend.containsKey(score.get(person))){
+                List<String> personList = scoreFriend.get(score.get(person));
+                personList.add(person);
+                scoreFriend.put(score.get(person), personList);
+            }
+        }
         
         
         List<String> answer = Collections.emptyList();
