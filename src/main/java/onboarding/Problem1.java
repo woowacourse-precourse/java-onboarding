@@ -8,8 +8,26 @@ class Problem1 {
     private static final int MAX_PAGE_NUM = 400;
     private static final int FIXED_SIZE = 2;
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        final int POBISIZE = pobi.size();
+        final int CRONGSIZE = crong.size();
+
+        if (validatePageNum(pobi) == false){
+            return -1;
+        }
+        if (validatePageNum(crong)==false){
+            return -1;
+        }
+
+        validateMemberSize(POBISIZE, CRONGSIZE);
+
+        if (validateWrongPageOrder(pobi, crong)) {
+            return -1;
+        }
+
+        int pobiScore = getMaxScore(getPlusNum(pobi), getMultiplyNum(pobi));
+        int crongScore = getMaxScore(getPlusNum(crong), getMultiplyNum(crong));
+
+        return getGameResult(pobiScore, crongScore);
     }
 
     private static int getGameResult(int pobiScore, int crongScore) {
