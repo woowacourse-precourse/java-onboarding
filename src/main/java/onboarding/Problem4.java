@@ -6,6 +6,13 @@ import java.util.Map;
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
+
+        char[] wordArray = word.toCharArray();
+        Map<Character, Character> dictionary = makeDictionary();
+
+        answer = encodeWord(wordArray, dictionary);
+
+
         return answer;
     }
 
@@ -28,6 +35,22 @@ public class Problem4 {
 
         }
         return dictionary;
+    }
+
+    public static String encodeWord(char[] wordArray, Map<Character, Character> dictionary){
+        char[] encodedArray = new char[wordArray.length];
+        int ascii_index = 0;
+
+        for(int i=0;i<wordArray.length;i++){
+            if(checkAlphabet(wordArray[i])!=1){
+                encodedArray[i] = wordArray[i];
+                continue;
+            }
+            encodedArray[i] = dictionary.get((Character)wordArray[i]);
+        }
+
+        String encoded = String.valueOf(encodedArray);
+        return encoded;
     }
 
     public static int checkAlphabet(char character){
