@@ -39,22 +39,38 @@ class Problem1 {
         return leftNumber > rightNumber ? leftNumber : rightNumber;
     }
 
+    static boolean isFirstOrLastPage(List<Integer> pages) {
+        return pages.get(0) == 1 || pages.get(1) == 400;
+    }
+
+    static boolean isConsecutive(List<Integer> pages) {
+        return pages.get(1) - pages.get(0) != 1;
+    }
+
+    static int getAnswer(List<Integer> pobi, List<Integer> crong) {
+        int pobiScore = getBiggerScore(pobi);
+        int crongScore = getBiggerScore(crong);
+        int answer;
+        if (pobiScore > crongScore) {
+            answer = 1;
+        } else if (pobiScore < crongScore) {
+            answer = 2;
+        } else {
+            answer = 0;
+        }
+        return answer;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
-        if (pobi.get(0) == 1 || pobi.get(1) == 400 || crong.get(0) == 1 || crong.get(1) == 400) {
+        // 시작 면이나 마지막 면을 펼칠 경우
+        if (isFirstOrLastPage(pobi) || isFirstOrLastPage(crong)) {
             answer = -1;
-        } else if (pobi.get(1) - pobi.get(0) != 1 || crong.get(1) - crong.get(0) != 1) {
+            // 왼쪽과 오른쪽 페이지의 차이가 한 페이지가 아닐 경우
+        } else if (isConsecutive(pobi) || isConsecutive(crong)) {
             answer = -1;
         } else {
-            int pobiScore = getBiggerScore(pobi);
-            int crongScore = getBiggerScore(crong);
-            if (pobiScore > crongScore) {
-                answer = 1;
-            } else if (pobiScore < crongScore) {
-                answer = 2;
-            } else {
-                answer = 0;
-            }
+            answer = getAnswer(pobi, crong);
         }
         return answer;
     }
