@@ -25,6 +25,7 @@ public class Problem7 {
         // 방문자 점수 매기기
         graph = addVisitPoint(graph, visitors,friendsList);
 
+
         // 점수를 기준으로 내림차순 정렬하기
 
         List<Map.Entry<String,Integer>> entryList = new LinkedList<>(graph.entrySet());
@@ -44,6 +45,11 @@ public class Problem7 {
 
         for (Map.Entry<String,Integer> entry : entryList){
             answer.add(entry.getKey());
+        }
+
+        //리스트 5개로 자르기
+        if (answer.size() > 5) {
+            answer = answer.subList(0, 5);
         }
 
 
