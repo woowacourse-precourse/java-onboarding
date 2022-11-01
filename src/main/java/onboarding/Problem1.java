@@ -3,52 +3,53 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+
+    static final int POBI_WON = 1;
+    static final int CRONG_WIN = 2;
+    static final int DRAW = 0;
+    static final int EXCEPTION = -1;
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer;
-
         if (checkArr(pobi) && checkArr(crong)) {
             int pobiMax = getBigNum(pobi);
             int crongMax = getBigNum(crong);
 
-            System.out.println(pobiMax);
-            System.out.println(crongMax);
             if (pobiMax > crongMax) {
-                answer = 1;
+                return POBI_WON;
             } else if (crongMax > pobiMax) {
-                answer = 2;
+                return CRONG_WIN;
             } else {
-                answer = 0;
+                return DRAW;
             }
         } else {
-            answer = -1;
+            return EXCEPTION;
         }
-        return answer;
     }
-    public static int getBigNum(List<Integer> p){
+
+    public static int getBigNum(List<Integer> p) {
         int leftPage = p.get(0);
         int rightPage = p.get(1);
         return Math.max(mathMax(leftPage), mathMax(rightPage));
     }
-    public static int mathMax(int pageNum){
+
+    public static int mathMax(int pageNum) {
         String[] pageArr = String.valueOf(pageNum).split("");
         int add = 0;
         int multi = 1;
-        for (String s : pageArr){
+        for (String s : pageArr) {
             add += Integer.parseInt(s);
             multi *= Integer.parseInt(s);
         }
         return Math.max(add, multi);
     }
+
     public static boolean checkArr(List<Integer> arr) {
         for (Integer a : arr) {
             if (a < 1 || a > 400 || a == 1 || a == 399) {
                 return false;
             }
         }
-        if (arr.get(1) - arr.get(0) > 1 || arr.get(1) - arr.get(0) < 1){
-            return false;
-        }
-        return true;
+        return arr.get(1) - arr.get(0) == 1;
     }
 }
 
