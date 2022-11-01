@@ -20,6 +20,13 @@ public class Problem6 {
                 while (idx + 2 < nick1.length()) {
                     String subNick1 = nick1.substring(idx, idx + 2); // 첫번째 크루의 닉네임의 부분 문자열, 길이 2
                     if (nick2.contains(subNick1)) { // 같은 글자가 연속적으로 포함될 경우
+                        // 중복 제거를 위해 이메일이 중복되어있는지의 여부를 확인 후 넣는 기능
+                        if (!answer.contains(email1)) { // 첫번째 크루의 이메일이 이미 존재하는 이메일이 아닐 경우
+                            answer.add(email1);
+                        }
+                        if (!answer.contains(email2)) { // 두번째 크루의 이메일이 이미 존재하는 이메일이 아닐 경우
+                            answer.add(email2);
+                        }
                         break;
                     } else { // 같은 글자가 연속적으로 포함되지 않을 경우
                         idx += 1;
