@@ -11,6 +11,7 @@ public class Problem7 {
         friendScore = new HashMap<>();
 
         countScoreByFriend(user, friends);
+        countScoreByVisit(visitors);
 
         return answer;
     }
@@ -25,5 +26,21 @@ public class Problem7 {
                 friendScore.put(candidate, friendScore.getOrDefault(candidate, 0) + 10);
             }
         }
+    }
+
+    public static void countScoreByVisit(List<String> visitors) {
+        for(String visitor : visitors) {
+            if(isNew(visitor) || isNotFriend(visitor)){
+                friendScore.put(visitor, friendScore.getOrDefault(visitor, 0) + 1);
+            }
+        }
+    }
+
+    public static boolean isNew(String id) {
+        return !friendScore.containsKey(id);
+    }
+
+    public static boolean isNotFriend(String id) {
+        return friendScore.get(id) != 0;
     }
 }
