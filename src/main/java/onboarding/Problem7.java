@@ -90,16 +90,24 @@ public class Problem7 {
         }
     }
     static List<String> finalSortedFriendList(ArrayList<String> alreadyCountedFriend){
-        List<String> keySetList = new ArrayList<>(scoreBoardOfSuggestedFriends.keySet());
-        keySetList.sort((o1, o2) -> scoreBoardOfSuggestedFriends.get(o2).compareTo(scoreBoardOfSuggestedFriends.get(o1)));
+        List<Map.Entry<String,Integer>> list = new LinkedList<>(scoreBoardOfSuggestedFriends.entrySet());
+        list.sort((o1, o2) -> {
+            int comparison = (o1.getValue() - o2.getValue()) * -1;
+            return comparison == 0 ? o1.getKey().compareTo(o2.getKey()) : comparison;
+        });
+
+        Map<String,Integer> sortedMap = new LinkedHashMap<>();
+        for (Map.Entry<String, Integer> entry : list) {
+            sortedMap.put(entry.getKey(), entry.getValue());
+        }
 
         List<String> answer = new ArrayList<>(Collections.emptyList());
 
-        for(String key : keySetList){
-            if(isValidNewFriend(alreadyCountedFriend,key,scoreBoardOfSuggestedFriends.get(key))){
-                answer.add(key);
+        sortedMap.forEach((person,value) -> {
+            if(isValidNewFriend(alreadyCountedFriend,person,value) && answer.size() < 5){
+                answer.add(person);
             }
-        }
+        });
 
         return answer;
     }
