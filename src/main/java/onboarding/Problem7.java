@@ -64,15 +64,21 @@ public class Problem7 {
 
         //2. 친구의 친구 점수 처리 findFriends()
         findFriends(0, personNum.get(user), people);
+
         //3. 방문자 점수 처리
         for (int i = 0; i < visitors.size(); i++) {
             //친구 관계가 아닐 경우 people에 저장
             if (!personNum.containsKey(visitors.get(i))) {
-
+                personNum.put(visitors.get(i), num);
+                Person per = new Person();
+                per.name = visitors.get(i);
+                people.add(per);
+                num++;
             }
 
             //방문했지만 친구관계가 아닌 방문자일 경우 1++
-
+            int perNum = personNum.get(visitors.get(i));
+            if (people.get(perNum).friendFlag == false) people.get(perNum).score += 1;
         }
 
         //4. people sort - 점수 높은순, 같으면 이름 오름차순
