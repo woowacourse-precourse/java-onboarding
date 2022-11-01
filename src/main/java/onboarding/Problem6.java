@@ -9,8 +9,32 @@ import java.util.stream.Collectors;
 public class Problem6 {
   public static List<String> solution(List<List<String>> forms) {
     Validator.validate(forms);
+    Set<String> emailHashSet = selectEmailFromDuplicatedUserNickname(forms);
 
-    return new ArrayList<>();
+    return emailHashSet.stream().sorted().collect(Collectors.toList());
+  }
+
+  private static Set<String> selectEmailFromDuplicatedUserNickname(List<List<String>> forms) {
+    List<Crew> crewArrayList = new ArrayList<>();
+    Set<String> emailHashSet = new HashSet<>();
+    for (List<String> form : forms) {
+      for (Crew crew : crewArrayList) {
+        if (isContinuousStringByTwo(getName(form), crew.name)) {
+          emailHashSet.add(getEmail(form));
+          emailHashSet.add(crew.email);
+        }
+      }
+      crewArrayList.add(new Crew(getName(form), getEmail(form)));
+    }
+    return emailHashSet;
+  }
+
+  private static String getEmail(List<String> form) {
+    return form.get(0);
+  }
+
+  private static String getName(List<String> form) {
+    return form.get(1);
   }
 
   private static boolean isContinuousStringByTwo(String base, String target) {
