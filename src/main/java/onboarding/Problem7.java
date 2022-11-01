@@ -113,21 +113,26 @@ public class Problem7 {
   private static void friendsChecker(List<List<String>> friends) {
     checkSize("friendRelation", friends.size(), FRIENDS_RELATION_MIN_SIZE,
         FRIENDS_RELATION_MAX_SIZE);
+    Set<String> overlapCheck = new HashSet<>();
+    checkOverlapFriendRelation(friends, overlapCheck);
     checkFriendRelation(friends);
     for (List<String> friendRelation : friends) {
       checkElements(friendRelation);
-      checkOverlapFriendRelation(friendRelation);
     }
   }
+  private static void checkOverlapFriendRelation(List<List<String>> friends, Set<String> overlapCheck) {
+    for (List<String> friendRelation : friends) {
+      String leftUser = friendRelation.get(0);
+      String rightUser = friendRelation.get(1);
 
-  private static void checkOverlapFriendRelation(List<String> friendRelation) {
-    String leftUser = friendRelation.get(0);
-    String rightUser = friendRelation.get(1);
-
-    if (Pattern.matches(leftUser, rightUser)) {
-      throw new IllegalArgumentException("동일한 친구 관계가 중복해서 주어지면 안됩니다");
+      String overlapList1 = leftUser + "|" + rightUser;
+      String overlapList2 = rightUser + "|" + leftUser;
+      if (overlapCheck.contains(overlapList1)) {
+        throw new IllegalArgumentException("동일한 친구 관계가 중복해서 주어지면 안됩니다");
+      }
+      overlapCheck.add(overlapList1);
+      overlapCheck.add(overlapList2);
     }
-
   }
 
   private static void checkSize(String type, int size, int minSize, int maxSize) {
@@ -158,7 +163,6 @@ public class Problem7 {
     for (String name : names) {
       checkConsistOfLowerCase(name);
     }
-
   }
 
   private static void checkElements(List<String> names, String user) {

@@ -39,7 +39,7 @@ public class Problem6 {
       if (nickName.length() < MIN_NICK_NAME_LENGTH || MAX_NICK_NAME_LENGTH < nickName.length()) {
         throw new IllegalArgumentException("올바른 길이가 아닙니다");
       }
-      if (!Pattern.matches("[가-힣]*$", nickName)) {
+      if (!Pattern.matches("[ㄱ-힣]*$", nickName)) {
 
         throw new IllegalArgumentException("닉네임이 한글로 구성되지 않았습니다.");
       }
