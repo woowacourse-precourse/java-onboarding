@@ -72,6 +72,10 @@ public class Problem7 {
 
         nameAndPoint.remove(user); //친구 추천을 위해 포함된 user 정보는 삭제
 
+        List<String> keySetList = new ArrayList<>(nameAndPoint.keySet());
+
+
+        Collections.sort(keySetList, (o1, o2) -> (nameAndPoint.get(o2).compareTo(nameAndPoint.get(o1))));
 
 
         List<String> answer = Collections.emptyList();

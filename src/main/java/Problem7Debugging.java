@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -81,7 +82,12 @@ public class Problem7Debugging {
 
         nameAndPoint.remove(user);
 
+        List<String> keySetList = new ArrayList<>(nameAndPoint.keySet());
 
+
+        Collections.sort(keySetList, (o1, o2) -> (nameAndPoint.get(o2).compareTo(nameAndPoint.get(o1))));
+
+        
 
 
 
