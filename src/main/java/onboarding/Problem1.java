@@ -35,13 +35,8 @@ class Problem1 {
 
     // 예외사항을 확인하기 위한 메서드
     public static boolean isCheck(List<Integer> pages) {
-        if (pages.get(0) + 1 != pages.get(1)) {return false;} // 페이지가 순서대로 들어있지 않은 경우, false 반환.
-
-        for (Integer page : pages) {
-            if (page <= 2 || page >= 399) {return false;}
-        }
-
-        return true;
+        // 페이지가 순서대로 들어있지 않은 경우, false 반환.
+        return pages.get(0) + 1 == pages.get(1);
     }
 
     // 점수를 구하는 메서드
