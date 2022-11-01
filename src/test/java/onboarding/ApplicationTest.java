@@ -101,11 +101,11 @@ class ApplicationTest {
         @Test
         void case1() {
             List<List<String>> forms = List.of(
-                    List.of("jm@email.com", "제이엠"),
-                    List.of("jason@email.com", "제이슨"),
-                    List.of("woniee@email.com", "워니"),
-                    List.of("mj@email.com", "엠제이"),
-                    List.of("nowm@email.com", "이제엠")
+                    List.of("jm@email.com", "�젣�씠�뿞"),
+                    List.of("jason@email.com", "�젣�씠�뒯"),
+                    List.of("woniee@email.com", "�썙�땲"),
+                    List.of("mj@email.com", "�뿞�젣�씠"),
+                    List.of("nowm@email.com", "�씠�젣�뿞")
             );
             List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com");
             assertThat(Problem6.solution(forms)).isEqualTo(result);
@@ -129,5 +129,23 @@ class ApplicationTest {
             List<String> result = List.of("andole", "jun", "bedi");
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
         }
+        
+        @Test
+        void case2() {
+            String user = "andole";
+            List<List<String>> friends = List.of(
+                    List.of("andole", "jun"),
+                    List.of("donut", "jun"),
+                    List.of("donut", "shakevan"),
+                    List.of("shakevan", "andole"),
+                    List.of("shakevan", "jun"),
+                    List.of("shakevan", "bedi"),
+                    List.of("anni", "jun")
+            );
+            List<String> visitors = List.of("donut", "mrko", "peter", "sam");
+            List<String> result = List.of("donut", "anni", "bedi", "mrko", "peter");
+            assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+        }
     }
+    
 }
