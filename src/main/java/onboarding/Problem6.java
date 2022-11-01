@@ -66,4 +66,14 @@ public class Problem6 {
         totalEmailWithPart.sort(Comparator.naturalOrder());
         return totalEmailWithPart;
     }
+
+    private static List<String> sortEmail(List<String> emails) {
+        List<String> sortedEmails = new ArrayList<>();
+        for (String email : emails) {
+            String[] id = email.split("@");
+            sortedEmails.add(id[0]);
+        }
+        sortedEmails.sort(Comparator.naturalOrder());
+        return sortedEmails;
+    }
 }
