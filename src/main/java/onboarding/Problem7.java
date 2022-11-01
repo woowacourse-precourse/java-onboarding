@@ -113,4 +113,9 @@ public class Problem7 {
         friendsList.clear();
         return m;
     }
+
+    public static List<String> reverseList(List<String> string){
+        List<String> data=List.of(string.get(1), string.get(0));
+        return data;
+    }
 }
