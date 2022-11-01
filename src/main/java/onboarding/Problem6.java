@@ -54,19 +54,19 @@ public class Problem6 {
 
 
     //2. 닉네임 {두글자:이메일} map만들기 + map에 이미 두글자 있으면, 중복 처리.
-    public static void checkDuplicated(List<String>form, Map<String,String>dupleMap,Set<String>answer){
+    public static void checkDuplicated(List<String>form, Map<String,String>twoCharMap,Set<String>answer){
         String email = form.get(0);
         String nickname = form.get(1);
 
         //닉네임 한번 순회.
         for(int i=0; i< nickname.length()-1 ;i++){
             String twoChars = nickname.substring(i,i+2);
-            if(dupleMap.containsKey(twoChars)){
-                answer.add(dupleMap.get(twoChars));
+            if(twoCharMap.containsKey(twoChars)){
+                answer.add(twoCharMap.get(twoChars));
                 answer.add(email);
                 continue;
             }
-            dupleMap.put(twoChars, email);
+            twoCharMap.put(twoChars, email);
         }
     }
 
