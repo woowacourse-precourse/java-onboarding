@@ -1,5 +1,8 @@
 package onboarding.problem6;
 
+import onboarding.exception.InputException;
+import onboarding.problem6.exception.Problem6ExceptionMessage;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -9,15 +12,25 @@ public class CrewNicknameManager {
     private Map<String, Crew> nicknameSubstringMap;
     private Set<Crew> nicknamePartiallyDuplicatedCrewSet;
 
+    private final int MIN_NUMBER_OF_CREW = 1;
+    private final int MAX_NUMBER_OF_CREW = 10000;
+
     public CrewNicknameManager(List<List<String>> forms){
         initializeMemberList(forms);
     }
 
     private void initializeMemberList(List<List<String>> forms){
+        if (!isAllowedNumberOfPeople(forms.size()))
+            throw new InputException(Problem6ExceptionMessage.NUMBER_OF_CREW_NOT_ALLOWED);
+
         crewSet = new HashSet<>();
         for (List<String> form : forms){
             crewSet.add(new Crew(form));
         }
+    }
+
+    private boolean isAllowedNumberOfPeople(int number){
+        return MIN_NUMBER_OF_CREW <= number && number <= MAX_NUMBER_OF_CREW;
     }
 
     public List<String> findEmailOfCrewsPartiallyDuplicateNickname(){
