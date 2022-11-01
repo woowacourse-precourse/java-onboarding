@@ -66,6 +66,7 @@ class Problem1 {
     public static boolean checkPageNumberRange(int pageNumber){
         return (pageNumber >= FIRST_PAGE && pageNumber <= LAST_PAGE);
     }
+
     public static boolean checkInterval(int leftPageNumber, int rightPageNumber){
         return (rightPageNumber - leftPageNumber == INTERVAL);
     }
@@ -78,23 +79,24 @@ class Problem1 {
         return (pageNumber % 2 == 0);
     }
 
+    public static int getWinner(List<Integer> pobi, List<Integer> crong){
+        int pobiTotalMax = getMax(pobi);
+        int crongTotalMax = getMax(crong);
+        if(pobiTotalMax > crongTotalMax){
+            return POBI_WIN;
+        }
+        if(pobiTotalMax < crongTotalMax){
+            return CRONG_WIN;
+        }
+        return TIE;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         boolean isValidInput = checkValidity(pobi) && checkValidity(crong);
         if(isValidInput){
-            int pobiTotalMax = getMax(pobi);
-            int crongTotalMax = getMax(crong);
-            if(pobiTotalMax > crongTotalMax){
-                answer = POBI_WIN;
-            }
-            if(pobiTotalMax < crongTotalMax){
-                answer = CRONG_WIN;
-            }
-            if(pobiTotalMax == crongTotalMax){
-                answer = TIE;
-            }
+            answer = getWinner(pobi, crong);
         }
-
         if(!isValidInput){
             answer = EXCEPTION;
         }
