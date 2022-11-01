@@ -1,3 +1,24 @@
+## 👀 생각할 점
+
+1. 두 가지의 Map을 생성한다.
+  + Map<String,List<String>> 친구관계 맵 => key값으로 id, value 값으로 친구 리스트 
+    + key 값은 friends.get(0) value 값은 List<String>.add(friends.get(1))
+    + 이떄 user와 user의 친구들은 key 값으로 추가하지 않는다.
+  + Map<String,Integer> 스코어 맵 => key 값으로 id, value 값으로 score
+    + key 값은 친구 추천 대상이 될수 있는 인물의 id 값, value 값은 로직에 따라 얻는 점수값
+
+2. user의 친구 리스트를 생성한다.
+   + freinds를 참조하여 user의 친구 리스트를 생성한다. 
+
+3. 점수를 얻는 방법
+  + 친구관계 맵을 통해서 user 의 친구리스트를 순회하면서 해당 친구의 친구리스트에 있는 인물들을 알아낸뒤 스코어 맵에 +10점을 준다.
+  + visitors 리스트를 순회하면서 등장한 인물들을 알아낸뒤 스코어 맵에 +1 점을 준다.
+
+4. 모든 과정을 마친 후 value를 기준으로 내림 차순정렬하고 상위 5명을 반환한다.
+  + 이때 value 값이 같다면 name을 기준으로 오름차순 정렬한다.
+  + 이때 value 값이 0 인 사람은 반환하지 않는다.
+
+
 ## 🚀 기능 요구 사항
 
 레벨 2의 팀 프로젝트 미션으로 SNS(Social Networking Service)를 만들고자 하는 팀이 있다. 팀에 속한 크루 중 평소 알고리즘에 관심이 많은 미스터코는 친구 추천 알고리즘을 구현하고자 아래와 같은 규칙을 세웠다.
