@@ -3,11 +3,31 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
-    public static List<String> sort(HashMap<String, Integer> sharedFriends) {
-        List<String> keySet = new ArrayList<>(sharedFriends.keySet());
-        keySet.sort((o1, o2) -> sharedFriends.get(o2).compareTo(sharedFriends.get(o1)));
-        System.out.println("keySet" + keySet);
-        return keySet;
+    public static ArrayList<String> sort(HashMap<String, Integer> sharedFriends) {
+        List<Map.Entry<String, Integer>> list = new LinkedList<>(sharedFriends.entrySet());
+
+        Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                if (o1.getValue() > o2.getValue()) {
+                    return -1;
+                }
+                else if (o1.getValue() < o2.getValue()) {
+                    return 1;
+                }
+
+                return o1.getKey().compareTo(o2.getKey());
+            }
+        });
+
+        Map<String, Integer> sortedMap2 = new LinkedHashMap<>();
+        ArrayList<String> sortedMap = new ArrayList<>();
+        for(Iterator<Map.Entry<String, Integer>> iter = list.iterator(); iter.hasNext();){
+            Map.Entry<String, Integer> entry = iter.next();
+            sortedMap.add(entry.getKey());
+        }
+        System.out.println(sortedMap);
+        return sortedMap;
     }
 
     public static HashMap<String, Integer> checkVisitors(List<String> visitors, HashMap<String, Integer> sharedFrineds, HashSet<String> userFriends) {
@@ -78,9 +98,9 @@ public class Problem7 {
     public static void main(String[] args) {
         String user = "mrko";
         List<List<String>> friends = List.of(
-                List.of("donut", "andole"),
                 List.of("donut", "jun"),
                 List.of("donut", "mrko"),
+                List.of("donut", "andole"),
                 List.of("shakevan", "andole"),
                 List.of("shakevan", "jun"),
                 List.of("shakevan", "mrko")
