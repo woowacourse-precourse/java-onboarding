@@ -5,7 +5,7 @@ public class Problem4 {
         String answer = changeAscii(word);
         return answer;
     }
-    public static String changeAscii(String word){ 
+    public static String changeAscii(String word){
         char[] charArray=charArrays(word);
         String result="";
         for (char text:
