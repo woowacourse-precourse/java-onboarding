@@ -28,6 +28,11 @@ public class Problem7 {
             }
         }
 
+        //모든 사람 리스트에 방문자 목록 추가
+        for (String visitor : visitors) {
+            allList.add(visitor);
+        }
+
 
         //5개이하만 출력하기 위한 정답List
         List<String> answer = new ArrayList<>();
