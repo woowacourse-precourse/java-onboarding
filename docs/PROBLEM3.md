@@ -1,8 +1,11 @@
 # 🎈 민주
 
 ## ✔ 기능 정의
-- [X] 숫자에 포함된 3 6 9의 개수를 반환 (getThreeSixNineCount)
-- [X] 이를 1부터 number까지 반복하며 3,6,9의 총 개수를 return (solution)
+- [X] 숫자에 포함된 3 6 9의 개수를 반환 __(getThreeSixNineCount)__
+
+- [X] 이를 1부터 number까지 반복하며 3,6,9의 총 개수를 return __(solution)__
+
+<br><br>
 
 
 # 🎈 본문

@@ -2,15 +2,17 @@
 
 ## ✔ 기능 정의
 ### Collection 
-- 중복된 문자열 인덱스를 저장하는 duplicatedIndexList
+- 중복된 문자열 인덱스를 저장하는 __duplicatedIndexList__
+
 ### 기능
-- [X] duplicatedIndexList 초기화 (initDuplicatedIndexList)
-  - [X] duplicatedIndexList에 문자열 내 중복문자열 인덱스 추가 (addDuplicatedIndex)
-    - [X] 새로 duplicatedIndexList 구하기 위해, duplicatedIndexList 비우기 (clearDuplicatedIndexList)
-- [X] duplicatedIndexList에 포함된 인덱스의 문자 제외한 새로운 cryptogram 만들기 (createNewCryptogram)
-  - [X] 기존 StringBuilder 비우기 (clearStringBuilder())
+- [X] duplicatedIndexList 초기화 __(initDuplicatedIndexList)__
+  - [X] duplicatedIndexList에 문자열 내 중복문자열 인덱스 추가 __(addDuplicatedIndex)__
+    - [X] 새로 duplicatedIndexList 구하기 위해, duplicatedIndexList 비우기 __(clearDuplicatedIndexList)__
 
+- [X] duplicatedIndexList에 포함된 인덱스의 문자 제외한 새로운 cryptogram 만들기 __(createNewCryptogram)__
+  - [X] 기존 StringBuilder 비우기 __(clearStringBuilder)__
 
+<br><br>
 
 # 🎈 본문
 ## 🚀 기능 요구 사항

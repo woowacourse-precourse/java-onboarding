@@ -2,25 +2,33 @@
 
 ## ✔ 기능 정의
 ### 컬렉션
-- {String key : List<String>} = user(key)가 알고있는 친구 리스트 userFriendsListMap
-- {String key : Integer} = user(key)의 점수 userScoreMap
+- {String key : List<String>} = user(key)가 알고 있는 친구 리스트 __userFriendsListMap__
+  
+- {String key : Integer} = user(key)의 점수 __userScoreMap__
 
 ### 기능
-- [X] userScoreMap 초기화 (initUserScoreMap)
-- [X] userFriendsListMap 초기화 (initUserFriendsListMap)
+- [X] userScoreMap 초기화 __(initUserScoreMap)__
+  
+- [X] userFriendsListMap 초기화 __(initUserFriendsListMap)__
   - 친구 관계 담긴 List<List<String>> friends 활용
-  - 각각 자신의 친구 리스트에 서로 추가하기 (putUserFriendsMap)
-- [X] 서로 아는 친구 명수만큼 점수 더해주기 (plusAcquaintanceScore)
-  - [X] 서로 아는 친구 리스트 반환 (getAcquaintanceList)
-  - [X] 해당 user의 점수를 업데이트 (plusUserScore)
-- [X] 방문한 만큼 점수 더해주기 (plusVisitorScore)
-- [X] 최대 다섯명의 친구 추천 리스트 반환 (getTopFiveScoreFriends)
-  - [X] userScoreMap을 활용하여 점수 순 정렬 + 같으면 이름 순 정렬한 Entry 반환 (getSortedScoreMapEntryList)
-  - [X] user가 친구가 없는 경우 판별 (isUserHasFriends)
+  - 각각 자신의 친구 리스트에 서로 추가하기 __(putUserFriendsMap)__
+  
+- [X] 서로 아는 친구 명수만큼 점수 더해주기__(plusAcquaintanceScore)__
+  - [X] 서로 아는 친구 리스트 반환 __(getAcquaintanceList)__
+  - [X] 해당 user의 점수를 업데이트 __(plusUserScore)__
+  
+- [X] 방문한 만큼 점수 더해주기 __(plusVisitorScore)__
+  
+- [X] 최대 다섯명의 친구 추천 리스트 반환 __(getTopFiveScoreFriends)__
+  - [X] userScoreMap을 활용하여 점수 순 정렬 + 같으면 이름 순 정렬한 Entry 반환 __(getSortedScoreMapEntryList)__
+  - [X] user가 친구가 없는 경우 판별 __(isUserHasFriends)__
     - user가 친구가 있으면, user와 친구가 아니면서 점수가 0이 아닌 최대 다섯명의 이름 반환
     - user가 친구가 없으면, 점수가 0이 아닌 최대 다섯명의 이름 반환
 
 
+  <br><br>
+  
+  
 # 🎈 본문
 ## 🚀 기능 요구 사항
 

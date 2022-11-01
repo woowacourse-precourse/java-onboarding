@@ -3,24 +3,34 @@
 ## ✔ 기능 정의
 ### 컬렉션
 - { index : userEmail}의 userEmailMap
+- 
 - { subString : 초기 index}인 subStrUserIndexMap 
+- 
   - 초기 index = 처음으로 해당 subString 값이 나온 닉네임에 해당하는 user의 index
 - 중복 닉네임 가진 user의 index 값 넣는 duplicatedIndexList 
 
+
 ### 기능
-- [X] forms를 활용하여, userEmailMap 초기화 (initUserEmailMap)
-- [X] subStrUserIndexMap 초기화 (initSubStrUserIndexMap)
-- [X] duplicatedIndexList 초기화 (initDuplicatedIndexList)
-- [X] 각 user의 nickname을 활용해 duplicatedIndexList 값 추가 (modifyDuplicatedIndexList)
+- [X] forms를 활용하여, userEmailMap 초기화 __(initUserEmailMap)__
+
+- [X] subStrUserIndexMap 초기화 __(initSubStrUserIndexMap)__
+
+- [X] duplicatedIndexList 초기화 __(initDuplicatedIndexList)__
+
+- [X] 각 user의 nickname을 활용해 duplicatedIndexList 값 추가 __(modifyDuplicatedIndexList)__
   - user의 nickname을 2자리씩 subString 처리
   - 해당 subStr을 키로 가지는 user가 이미 있으면
     - 그 user id값과, 해당 닉네임의 user id 값을 추가
   - 없으면
     - subStr에 해당 키로 값 초기화
-- [X] duplicatedIndexList에서 중복 제거한 list 반환 (getDistinctIndexList)
-- [X] indexList에 포함된 index를 가진 user의 email을 반환 (getSortedEmailListByIndex)
+    
+- [X] duplicatedIndexList에서 중복 제거한 list 반환 __(getDistinctIndexList)__
+
+- [X] indexList에 포함된 index를 가진 user의 email을 반환 __(getSortedEmailListByIndex)__
   - duplicatedIndexList에 있는 index의 user email을 저장 -> userEmailMap 활용
   - 해당 collection을 정렬
+
+<br><br>
 
 
 # 🎈 본문
