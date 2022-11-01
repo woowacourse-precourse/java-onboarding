@@ -27,10 +27,10 @@ class Problem1 {
         return answer;
     }
     static boolean isException(int LeftNum, int RightNum){
-        if(LeftNum+1 == RightNum) {
-            return false;
-        } else {
+        if(LeftNum+1 != RightNum || LeftNum % 2 != 1 || RightNum % 2 != 0 || LeftNum < 1 || RightNum > 400) {
             return true;
+        } else {
+            return false;
         }
     }
     static int getScoreBySum(int Num){
