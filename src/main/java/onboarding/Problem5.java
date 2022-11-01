@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -13,6 +14,10 @@ public class Problem5 {
         4. 빈 배열에 금액 별 count 값 전달
          */
         List<Integer> answer = Collections.emptyList();
+
+        //값을 저장할 빈 배열 생성
+        ArrayList<Integer> List = new ArrayList<Integer>();
+
         return answer;
     }
 }
