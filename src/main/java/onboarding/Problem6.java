@@ -4,12 +4,12 @@ import java.util.*;
 
 public class Problem6 {
 
-    public static HashMap<String, Set<Integer>> hashMap = new HashMap<>();
+    private static HashMap<String, Set<Integer>> hashMap = new HashMap<>();
 
     // 같은 글자 포함 닉네임을 담을 Set
-    public static Set<Integer> duplicateIdx = new HashSet<>();
+    private static Set<Integer> duplicateIdx = new HashSet<>();
 
-    public static void addDuplicateCrews(){
+    private static void addDuplicateCrews(){
         for (String s : hashMap.keySet()) {
             // Set이 2개 이상이라면, 같은 글자 포함.
             if (hashMap.get(s).size() >= 2){

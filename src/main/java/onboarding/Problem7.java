@@ -6,13 +6,13 @@ public class Problem7 {
 
     // 친구 관계를 저장한다.
     // A와 B가 아는 사이고, B와 C가 아는 사이라면 {A, (B)}, {B, (A,C)}, {C, (B)}
-    static Map<String, Set<String>> friendsList = new HashMap<>();
+    private static Map<String, Set<String>> friendsList = new HashMap<>();
 
     // 사용자들의 점수를 저장할 Map
-    static Map<String, Integer> scores = new HashMap<>();
+    private static Map<String, Integer> scores = new HashMap<>();
 
     // personA와 personB를 각자의 friendsList에 추가한다.
-    static void relateFriend(String personA, String personB){
+    private static void relateFriend(String personA, String personB){
         // a->b의 관계를 만든다.
         // Set이 없었다면, 새롭게 만든다.
         friendsList.computeIfAbsent(personA, s -> new HashSet<>());

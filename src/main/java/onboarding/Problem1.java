@@ -5,7 +5,7 @@ import java.util.List;
 class Problem1 {
 
     // 페이지 번호를 받아서, 각 자리를 더한 값 반환
-    static int getDigitSum(Integer page){
+    private static int getDigitSum(Integer page){
         int result = 0;
         while (page != 0){
             result += (page % 10);
@@ -15,7 +15,7 @@ class Problem1 {
     }
 
     // 페이지 번호를 받아서, 각 자리를 곱한 값 반환
-    static int getDigitMul(Integer page){
+    private static int getDigitMul(Integer page){
         int result = 1;
         while (page != 0){
             result *= (page % 10);

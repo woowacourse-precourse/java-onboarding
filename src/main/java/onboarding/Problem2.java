@@ -4,7 +4,7 @@ import java.util.Stack;
 
 public class Problem2 {
 
-    static String eraseDuplicate(String cryptogram){
+    private static String eraseDuplicate(String cryptogram){
         Stack<Character> S = new Stack<>();
 
         // 뒤에서부터 훑는다.
