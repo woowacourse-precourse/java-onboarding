@@ -20,6 +20,7 @@ public class Problem7 {
 
         User target = new User(user, friends, visitors);
         target.setUserFriends();
+        target.setRecommandHashMapByFriends();
 
         if (answer.size() > 5) {
             answer = answer.subList(0, 5);
@@ -78,6 +79,7 @@ public class Problem7 {
         List<List<String>> friends;
         List<String> visitors;
         List<String> userFriends;
+        HashMap<String, Integer> recommendHashMap;
 
         User(String user, List<List<String>> friends, List<String> visitors) {
             this.user = user;
@@ -101,37 +103,30 @@ public class Problem7 {
                 }
             }
         }
-    }
 
-    public static List<Integer> matchFriendList(int[][] matrix, List<Integer> friendIndexes) {
-        List<Integer> matchFriedIndexes = new ArrayList<>();
+        private void setRecommandHashMapByFriends() {
+            recommendHashMap = new HashMap<>();
 
-        for (Integer friendIndex : friendIndexes) {
-            for (int i = 0; i < matrix.length; i++) {
-                if (matrix[i][friendIndex] == 1) {
-                    matchFriedIndexes.add(i);
+            for (List<String> friend : friends) {
+                String firstFriend = friend.get(FIRST_FRIEND);
+                String secondFriend = friend.get(SECOND_FRIEND);
+
+                if (firstFriend.equals(user) || secondFriend.equals(user)) {
+                    continue;
+                }
+
+                if (userFriends.contains(firstFriend)) {
+                    giveTenPoint(secondFriend);
+                }
+                if (userFriends.contains(secondFriend)) {
+                    giveTenPoint(firstFriend);
                 }
             }
         }
 
-        return matchFriedIndexes;
-    }
-
-    public static List<String> changeIndexesToName(List<Integer> indexes, List<String> nameList) {
-        List<String> names = new ArrayList<>();
-
-        for (Integer index : indexes) {
-            names.add(nameList.get(index));
+        private void giveTenPoint(String target) {
+            recommendHashMap.put(target, recommendHashMap.getOrDefault(target, 0) + 10);
         }
-
-        return names;
-    }
-
-    public static HashMap<String, Integer> giveTenPoint(List<String> nameList, HashMap<String, Integer> friendMap) {
-        for (String name : nameList) {
-            friendMap.put(name, friendMap.getOrDefault(name, 0) + 10);
-        }
-        return friendMap;
     }
 
     public static HashMap<String, Integer> giveOnePoint(List<String> visitors, HashMap<String, Integer> friendMap) {
