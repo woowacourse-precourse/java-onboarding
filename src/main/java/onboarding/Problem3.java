@@ -1,7 +1,5 @@
 package onboarding;
 
-import java.util.Collections;
-
 public class
 Problem3 {
     public static int solution(int number) {
