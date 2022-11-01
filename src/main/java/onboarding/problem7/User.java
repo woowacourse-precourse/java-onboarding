@@ -54,6 +54,22 @@ public class User {
         return this.name.equals(friend.get(1));
     }
 
+    public List<String> getFriendsOfMyFriends(List<List<String>> friends) {
+        List<String> myFriends = getMyFriends(friends);
+        for (String myFriend : myFriends) {
+            findFriendsOfMyFriends(friends, myFriend);
+        }
+        return friendsOfMyFriends;
+    }
+
+    private void findFriendsOfMyFriends(List<List<String>> friends, String myFriendName) {
+        for (List<String> friend: friends) {
+            if(myFriendName.equals(friend.get(0)) && !this.name.equals(friend.get(1))){
+                friendsOfMyFriends.add(friend.get(1));
+            }
+        }
+    }
+
     public String getName() {
         return name;
     }
