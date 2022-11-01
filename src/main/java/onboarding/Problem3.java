@@ -11,6 +11,11 @@ public class Problem3 {
         return answer;
     }
 
+    private static int getClapNumber(int number) {
+        List<Integer> placeValues = getPlaceValues(number);
+        return getClapPlaceValues(placeValues).size();
+    }
+
     private static List<Integer> getClapPlaceValues(List<Integer> placeValues) {
         return placeValues.stream()
             .filter(Problem3::isClap)
