@@ -9,4 +9,14 @@ public class BookGame {
         this.user1 = new User(page1);
         this.user2 = new User(page2);
     }
+
+    private boolean checkValidation(){
+        try{
+            user1.checkPageValidation();
+            user2.checkPageValidation();
+            return true;
+        } catch (PageException e) {
+            return false;
+        }
+    }
 }
