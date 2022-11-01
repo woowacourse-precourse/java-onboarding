@@ -3,7 +3,7 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
-    static List<String> findFriends(String user, <List<List<String>> friends) {
+    static List<String> findFriends(String user, List<List<String>> friends) {
         List<String> alreadyFriends = new ArrayList<>();
         for (List<String> relationship : friends) {
             if (!relationship.get(0).equals(user) && !relationship.get(1).equals(user))
@@ -19,7 +19,7 @@ public class Problem7 {
         return alreadyFriends;
     }
 
-    static HashMap<String, Integer> calcFriendsScore(String user, List<String> alreadyFriends, <List<List<String>> friends) {
+    static HashMap<String, Integer> calcFriendsScore(String user, List<String> alreadyFriends, List<List<String>> friends) {
         HashMap<String, Integer> score = new HashMap<>();
         for (List<String> relationship : friends) {
             for (String alreadyFriend : alreadyFriends) {
