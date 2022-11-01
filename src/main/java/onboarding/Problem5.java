@@ -9,12 +9,19 @@ import java.util.List;
 public class Problem5 {
     public static List<Integer> solution(int money) {
 
-        List<Integer> moneyTemp = new ArrayList<>();
-        if(!constraints(money)) return moneyTemp;
-        moneyTemp = intToList(money);
-        moneyTemp = makemoneyList(moneyTemp);
+        List<Integer> result = new ArrayList<>();
+        if(!constraints(money)) return result;
+        result = intToList(money);
+        result = makemoneyList(result);
+        print(money,result);
+        return inversemoneyList(result);
 
-        return inversemoneyList(moneyTemp);
+    }
+    public static  void print(int money, List<Integer> result) {
+        System.out.println("| money | result |");
+        System.out.println("| --- | --- |");
+        System.out.println("| "+money+" | "+result+" | ");
+
 
     }
     public static boolean constraints(int money){ // 제한사항
