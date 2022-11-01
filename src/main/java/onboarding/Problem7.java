@@ -22,8 +22,7 @@ public class Problem7 {
 
     public static Map<String, Integer> visitorsCount(List<String> visitors) {
         HashMap<String, Integer> map = new HashMap<String, Integer>();
-        for (int i = 0; i < visitors.size(); i++) {
-            String visitor = visitors.get(i);
+        for (String visitor : visitors) {
             if (map.get(visitor) == null) {
                 map.put(visitor, 1);
                 continue;
@@ -36,9 +35,9 @@ public class Problem7 {
     public static List<String> followedFriends(String user, List<List<String>> friends) {
         List<String> friendList = new ArrayList<>();
 
-        for (int i = 0; i < friends.size(); i++) {
-            String idA = new String(friends.get(i).get(0));
-            String idB = new String(friends.get(i).get(1));
+        for (List<String> friend : friends) {
+            String idA = new String(friend.get(0));
+            String idB = new String(friend.get(1));
 
             //자신과 자신은 친구일까
             if (user.equals(idA)) {
@@ -52,9 +51,9 @@ public class Problem7 {
     }
 
     public static Map<String, Integer> newFriend(List<List<String>> friends, List<String> friendList, Map<String, Integer> map) {
-        for (int i = 0; i < friends.size(); i++) {
-            String idA = new String(friends.get(i).get(0));
-            String idB = new String(friends.get(i).get(1));
+        for (List<String> friend : friends) {
+            String idA = new String(friend.get(0));
+            String idB = new String(friend.get(1));
             //A는 유저와 친구, B는 친구가 아니라면
             if (friendList.contains(idA) && !friendList.contains(idB)) {
                 map = plusTenPoints(idB, map);
@@ -86,13 +85,12 @@ public class Problem7 {
     public static List<String> commendList(String user, List<String> sortedList, List<String> friendList) {
         List<String> result = new ArrayList<>();
         int friendsNumber = 0;
-        for(int i=0; i<sortedList.size(); i++) {
-            String friend = sortedList.get(i);
-            if(! friendList.contains(friend) && ! user.equals(friend)) {
+        for (String friend : sortedList) {
+            if (!friendList.contains(friend) && !user.equals(friend)) {
                 result.add(friend);
                 friendsNumber += 1;
             }
-            if(friendsNumber==5) {
+            if (friendsNumber == 5) {
                 return result;
             }
         }
