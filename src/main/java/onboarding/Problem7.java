@@ -37,6 +37,11 @@ public class Problem7 {
         for(String friend: friendList.get(user)){
             for(String stranger:friendList.get(friend)){
 
+                if(friendList.get(user).contains(stranger))
+                    continue;
+                if(stranger.equals(user))
+                    continue;
+
                 scoreCard.putIfAbsent(stranger, 0);
                 scoreCard.put(stranger,scoreCard.get(stranger)+10);
             }
