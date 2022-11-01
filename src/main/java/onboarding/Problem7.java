@@ -24,7 +24,7 @@ public class Problem7 {
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        makeListOfFriends(friends);
+        makeFriendMapOfFriendsList(friends);
         makeScoreMapOfFriendsList(user, visitors);
         removeFriendsAlreadyKnow(friendsMap.get(user));
         scoreMap.remove(user);
@@ -97,7 +97,7 @@ public class Problem7 {
     /**
      * 메소드 이름 수정 필요
      */
-    private static void makeListOfFriends(List<List<String>> friends) {
+    private static void makeFriendMapOfFriendsList(List<List<String>> friends) {
         for (List<String> twoFriends : friends) {
             putToFriendsMap(twoFriends.get(FIRST_ID), twoFriends.get(SECOND_ID));
             putToFriendsMap(twoFriends.get(SECOND_ID), twoFriends.get(FIRST_ID));
