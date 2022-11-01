@@ -4,7 +4,7 @@ import java.util.Stack;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String copyCryptogram = new String(cryptogram);
+        String copyCryptogram = cryptogram;
 
         while(isOverlap(copyCryptogram)) {
             copyCryptogram = translate(copyCryptogram);
@@ -15,16 +15,14 @@ public class Problem2 {
 
     private static boolean isOverlap(String cryptogram) {
         char[] chars = cryptogram.toCharArray();
-        boolean status = false;
 
         for(int i=0; i<chars.length - 1; i++) {
             if(chars[i] == chars[i+1]) {
-                status = true;
-                break;
+                return true;
             }
         }
 
-        return status;
+        return false;
     }
 
     private static String translate(String cryptogram) {
