@@ -6,18 +6,22 @@ public class Problem4 {
         int strLen = word.length();
 
         for (int i = 0; i < strLen; i++) {
-            Character c = word.charAt(i);
-
-            if ((int) c >= 65 && (int) c <= 90) {
-                sb.append(upperToLower(c));
-            } else if ((int) c >= 97 && (int) c <= 122) {
-                sb.append(lowerToUpper(c));
-            } else {
-                sb.append(c);
-            }
+            verifyChar(word, sb, i);
         }
 
         return sb.toString();
+    }
+
+    private static void verifyChar(String word, StringBuilder sb, int i) {
+        Character c = word.charAt(i);
+
+        if (isUpper(c)) {
+            sb.append(upperToLower(c));
+        } else if (isLower(c)) {
+            sb.append(lowerToUpper(c));
+        } else {
+            sb.append(c);
+        }
     }
 
     private static boolean isUpper(char word) {
