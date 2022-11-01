@@ -66,6 +66,17 @@ public class Problem7 {
         return friendSet;
     }
 
+//  2. addRecommScore(HashMap<String,Integer> recommScore,int addNum, String name)
+//     - recommScore 에 name 에 해당하는 사람을 addNum 만큼 더한다.
+    private static void addRecommScore(HashMap<String,Integer> recommScore,int addNum, String name){
+        if (recommScore.containsKey(name)) {
+            int oldVal = recommScore.get(name);
+            recommScore.replace(name, oldVal + addNum);
+        } else {
+            recommScore.put(name, addNum);
+        }
+    }
+
         return answer;
     }
 }
