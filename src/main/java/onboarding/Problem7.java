@@ -16,6 +16,12 @@ public class Problem7 {
         return answer;
     }
 
+    static void calculateAcquaintanceScore(String friend, String target, int index) {
+        if (friendsList.get(target).get(index).equals(friend)) {
+            scores.put(target, scores.get(target) + 10);
+        }
+    }
+
     static void calculateVisitScore(List<String> visitors, String user) {
         for (String visitor : visitors) {
             CalculateVisitScoreException(user, visitor);
