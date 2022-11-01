@@ -11,8 +11,8 @@ public class Problem6 {
                 emails.addAll(getCrewsEmails(forms.get(i),forms.get(j)));
             }
         }
-        Set<String> test = removeDuplicatedEmails(emails);
-        return emails;
+        Set<String> emailSet = removeDuplicatedEmails(emails);
+        return emailSet.stream().sorted().collect(Collectors.toList());
     }
 
     private static Set<String> removeDuplicatedEmails(List<String> emails) {
