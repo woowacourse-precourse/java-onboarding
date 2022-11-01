@@ -78,15 +78,21 @@ public class Problem7 {
     }
 
     private static List<String> getFinalRecommendation(HashMap<String, Integer> recommendedFriendScore) {
-        HashMap<String, Integer> sortedRecommendation = recommendedFriendScore.entrySet()
-                .stream().sorted((x, y) -> y.getValue().compareTo(x.getValue()))
-                .collect(Collectors.toMap(
-                        Map.Entry::getKey,
-                        Map.Entry::getValue, (a, b) -> a, LinkedHashMap::new));;
+        HashMap<String, Integer> sortedRecommendation = sortRecommendation(recommendedFriendScore);
 
         List<String> finalRecommendation = new ArrayList<>();
         for (String recommendation : sortedRecommendation.keySet())
             finalRecommendation.add(recommendation);
         return finalRecommendation;
+    }
+
+    private static HashMap<String, Integer> sortRecommendation(HashMap<String, Integer> recommendationScore) {
+        HashMap<String, Integer> sortedRecommendation = recommendationScore.entrySet()
+                .stream().sorted((x, y) -> y.getValue().compareTo(x.getValue()))
+                .collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        Map.Entry::getValue, (a, b) -> a, LinkedHashMap::new));;
+
+        return sortedRecommendation;
     }
 }
