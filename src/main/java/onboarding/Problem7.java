@@ -64,7 +64,12 @@ public class Problem7 {
         Collections.sort(keySetList, new Comparator<String>() {
             @Override
             public int compare(String o1, String o2) {
-                return scoreMap.get(o2) - scoreMap.get(o1);
+                if(scoreMap.get(o2) == scoreMap.get(o1)) {
+                    return o1.compareTo(o2);
+                }  else {
+                    return scoreMap.get(o2) - scoreMap.get(o1);
+                }
+
             }
         });
         for(int i = 0; i < keySetList.size() ; i++) {
