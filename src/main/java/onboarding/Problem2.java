@@ -18,9 +18,7 @@ public class Problem2 {
 
 		validateCryptogram(cryptogram);
 
-		cryptogram = removeDuplicateWord(cryptogram);
-
-		return cryptogram;
+		return removeDuplicateWord(cryptogram);
 	}
 
 	private static String removeDuplicateWord(String cryptogram) {
