@@ -3,14 +3,14 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
-    public static int IS_NOT_VALID = -1;
-    public static int FIRST_PLAYER_WIN = 1;
-    public static int SECOND_PLAYER_WIN = 2;
-    public static int GAME_IN_A_TIE = 0;
-    public static int FIRST_PAGE = 1;
-    public static int LAST_PAGE = 400;
-    public static int LEFT_PAGE_INDEX = 0;
-    public static int RIGHT_PAGE_INDEX = 1;
+    public static final int IS_NOT_VALID = -1;
+    public static final int FIRST_PLAYER_WIN = 1;
+    public static final int SECOND_PLAYER_WIN = 2;
+    public static final int GAME_IN_A_TIE = 0;
+    public static final int FIRST_PAGE = 1;
+    public static final int LAST_PAGE = 400;
+    public static final int LEFT_PAGE_INDEX = 0;
+    public static final int RIGHT_PAGE_INDEX = 1;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if (!isValidInputSet(pobi, crong)) {

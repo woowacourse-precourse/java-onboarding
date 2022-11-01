@@ -1,8 +1,8 @@
 package onboarding;
 
 public class Problem4 {
-    public static int DIFFERENCE_OF_UPPER_LOWER = 32;
-    public static int CHANGE_REFERENCE_VALUE = 155;
+    public static final int DIFFERENCE_OF_UPPER_LOWER = 32;
+    public static final int CHANGE_REFERENCE_VALUE = 155;
 
     public static String solution(String word) {
         StringBuilder sb = new StringBuilder();

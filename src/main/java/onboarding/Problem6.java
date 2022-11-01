@@ -7,8 +7,8 @@ public class Problem6 {
     public static Map<Integer, String> userEmailMap;
     public static Map<String, Integer> subStrUserIndexMap;
     public static List<Integer> duplicatedIndexList;
-    public static int EMAIL_INDEX = 0;
-    public static int NICK_NAME_INDEX = 1;
+    public static final int EMAIL_INDEX = 0;
+    public static final int NICK_NAME_INDEX = 1;
 
 
     public static List<String> solution(List<List<String>> forms) {

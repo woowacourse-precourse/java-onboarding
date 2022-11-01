@@ -7,11 +7,11 @@ import java.util.stream.Collectors;
 public class Problem7 {
     public static Map<String, List<String>> userFriendsListMap;
     public static Map<String, Integer> userScoreMap;
-    public static int FIRST_FRIEND_INDEX = 0;
-    public static int SECOND_FRIEND_INDEX  = 1;
-    public static int INIT_SCORE = 0;
-    public static int ACQUAINTANCE_SCORE = 10;
-    public static int VISITOR_SCORE = 1;
+    public static final int FIRST_FRIEND_INDEX = 0;
+    public static final int SECOND_FRIEND_INDEX  = 1;
+    public static final int INIT_SCORE = 0;
+    public static final int ACQUAINTANCE_SCORE = 10;
+    public static final int VISITOR_SCORE = 1;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         initUserScoreMap();
