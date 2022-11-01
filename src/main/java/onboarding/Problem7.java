@@ -1,6 +1,6 @@
 package onboarding;
 
-import java.util.List;
+import java.util.*;
 
 // <기능 목록>
 // 0. class person (String name, int score)
@@ -17,6 +17,9 @@ public class Problem7 {
 
         // 1. 추천 목록 만들기
         Person[] recommendList = makeRecommendList(user, friends, visitors);
+
+        // 2. 추천 목록 정렬하기
+        answer = sortRecommendList(recommendList);
 
         return answer;
     }
@@ -119,6 +122,22 @@ public class Problem7 {
             i++;
         }
         return persons;
+    }
+
+    // 2. 추천 목록 정렬하기
+    public static List<String> sortRecommendList(Person[] persons) {
+        TreeSet<Person> recommendTSet = new TreeSet<>();
+        for (int i = 0; i < persons.length; i++) {
+            recommendTSet.add(persons[i]);
+        }
+
+        List<String> recommendList = new ArrayList<>();
+        Iterator<Person> iter = recommendTSet.iterator();
+        for (int i = 0; i < recommendTSet.size(); i++) {
+            recommendList.add(iter.next().name);
+        }
+
+        return recommendList;
     }
 
     // 0. class Person (String name, int score)
