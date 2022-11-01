@@ -99,8 +99,8 @@ public class Problem7 {
             else
                 return o1[1].compareTo(o2[1]);
         });
-        for (int i = 0; i < scoreList.length; i++) {
-            ranker.add(scoreList[i][0]);
+        for (String[] nameAndScore : scoreList) {
+            ranker.add(nameAndScore[0]);
         }
         return ranker;
     }
