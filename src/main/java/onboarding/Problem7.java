@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     private static HashMap<String, Integer> personScore = new HashMap<>();
@@ -15,12 +16,17 @@ public class Problem7 {
         }
     }
 
-    private static HashSet<String> getUserFriends(List<List<String>> friends) {
-        return new HashSet<>();
+    private static Set<String> getUserFriends(String user, List<List<String>> friends) {
+        return friends.stream()
+                .filter(friend -> friend.get(0).equals(user) || friend.get(1).equals(user))
+                .map(friend -> {
+                    if(friend.get(0).equals(user)) return friend.get(1);
+                    else return friend.get(0);
+                }).collect(Collectors.toSet());
     }
 
-    private static void scoreFriendsKnowWithUser(List<List<String>> friends) {
-        HashSet<String> userFriends = getUserFriends(friends);
+    private static void scoreFriendsKnowWithUser(String user, List<List<String>> friends) {
+        Set<String> userFriends = getUserFriends(user, friends);
     }
 
     private static void scoreVisitor(List<String> visitors) {
@@ -33,7 +39,7 @@ public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         makeMapOfPersonScore(friends, visitors);
-        scoreFriendsKnowWithUser(friends);
+        scoreFriendsKnowWithUser(user, friends);
         scoreVisitor(visitors);
         return getMaxScoredPerson();
     }
