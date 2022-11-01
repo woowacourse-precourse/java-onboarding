@@ -46,4 +46,23 @@ public class Problem7 {
         friendsNetwork.add(new ArrayList<Integer>());
         return 1;
     }
+
+    private static void calculateIntimacyByCommonFriends(int user, List<List<Integer>> friendsNetwork, int[][] intimacyArray) {
+        //나의 친구의 친구들에게 10점씩 추가
+
+        //나의 친구들
+        List<Integer> friendsOfUser = friendsNetwork.get(user);
+        for(Integer friend : friendsOfUser) {
+            if(friend == user) continue;
+            //나의 친구의 친구들
+            List<Integer> friendsOfFriend = friendsNetwork.get(friend);
+            for(int friendOfFriend : friendsOfFriend) {
+                //이미 친구이면 패스
+                if(friendsOfUser.contains(friendOfFriend)) continue;
+                //본인이면 패스
+                if(friendOfFriend == user) continue;
+                intimacyArray[friendOfFriend][0] += 10;
+            }
+        }
+    }
 }
