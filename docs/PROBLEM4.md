@@ -19,3 +19,11 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+## 📗 기능 목록
+
+### 📌 `Character convertToFrogChar(Character target)`
+* `target`을 청개구리 언어로 변환한 문자를 반환
+
+### 📌 `String getFrogWord(String word)`
+* `word`를 청개구리식으로 변환한 문자열을 반환
