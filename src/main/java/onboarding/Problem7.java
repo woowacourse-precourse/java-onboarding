@@ -1,11 +1,17 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
-    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+
+    private static HashMap<String, Integer> recommends = new HashMap<>();
+
+    private static String findFriendInPairs(String user, List<String> pairs) {
+
+        return pairs.get(0).equals(user) ?
+               pairs.get(1) :
+               pairs.get(0);
     }
+
 }
