@@ -1,12 +1,64 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
 
+        ArrayList<String> answer2 = new ArrayList<>();;
 
+        int count = 0;
+
+        int size = forms.size();
+        String strName;
+        String strName2;
+        String strEmail2;
+
+        for (int i = 0; i < size; i++) {
+
+            strName = forms.get(i).get(1).toString();
+            for (int j = 1; j < size; j++) {
+                strName2 = forms.get(j).get(1).toString();
+                strEmail2 = forms.get(j).get(0).toString();
+
+                char[] sss = strName.toCharArray();
+                char[] sss2 = strName2.toCharArray();
+
+                for (int a = 0; a < sss.length; a++) {
+
+                    for (int b = 0; b < sss2.length; b++) {
+                        if (count == 1) {
+                            a = a + 1;
+                        }
+                        if (a == sss.length || b == sss2.length) {
+                            break;
+                        }
+                        if (sss[a] == sss2[b] && count == 2) {
+                            break;
+                        }
+                        if (sss[a] == sss2[b]) {
+                            count++;
+                            if(count ==2) {
+                                answer2.add(strEmail2);
+                                break;
+                            }
+                        }
+                        if (sss[a] != sss2[b]) {
+                            count--;
+                            if(count<0) {
+                                count++;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        ArrayList<String> answer = new ArrayList<>();
+        for(String data : answer2) {
+            if(!answer.contains(data))
+                answer.add(data);
+        }
         return answer;
     }
 }
