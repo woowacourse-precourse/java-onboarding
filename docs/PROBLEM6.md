@@ -29,7 +29,7 @@
 - (1) 2차원 리스트를 HashMap자료형으로 변환하는 기능
   
   ```java
-  public static Map<String, List<String>> toHashMap(List<List<String>> forms)
+  private static Map<String, List<String>> toHashMap(List<List<String>> forms)
   ```
   
   - key : email
@@ -45,7 +45,7 @@
 - (3) HashMap자료형 value값들을 2차원 리스트 형태로 저장하는 기능
 
   ```java
-  public static List<List<String>> separateNicknameList(Map<String, List<String>> mapForms)
+  public static List<List<String>> getSeparateNicknameList(Map<String, List<String>> mapForms)
   ```
 
 - (4) 2글자씩 분리된 닉네임 중 중복된 닉네임을 찾는 기능
