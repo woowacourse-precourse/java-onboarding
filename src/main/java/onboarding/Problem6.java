@@ -1,22 +1,18 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
 
-        List<Crew> crewList = forms.stream()
+          List<Crew> crewList = forms.stream()
                 .map(Crew::toCrew)
                 .collect(Collectors.toList());
 
         Map<String, List<Crew>> crewMap = makeNicknameMap(crewList);
 
-        return answer;
+        return getOverlapCrew(crewMap);
     }
 
     private static Map<String, List<Crew>> makeNicknameMap(List<Crew> crews) {
@@ -32,6 +28,17 @@ public class Problem6 {
             }
         }
         return crewMap;
+    }
+
+    private static List<String> getOverlapCrew(Map<String, List<Crew>> crewMap) {
+        List<String> overlapCrew = crewMap.values().stream()
+                .filter(value -> value.size() > 1)
+                .flatMap(Collection::stream)
+                .map(Crew::getEmail)
+                .sorted()
+                .distinct()
+                .collect(Collectors.toList());
+        return overlapCrew;
     }
 }
 
