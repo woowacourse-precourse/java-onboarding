@@ -18,7 +18,7 @@ public class Problem6 {
         }
     }
 
-    static List<String> getNickNameList(List<List<String>> forms) {
+    public static List<String> getNickNameList(List<List<String>> forms) {
         List<String> nicknames = new ArrayList<>();
         List<String> form;
 
