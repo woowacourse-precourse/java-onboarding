@@ -3,9 +3,31 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+
+    private final int LEFT_IDX = 0;
+    private final int RIGHT_IDX = 1;
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
+    }
+
+    private Integer calculateScore(List<Integer> bothPageNums) throws Exception {
+
+        Integer leftPageNum = bothPageNums.get(LEFT_IDX);
+        Integer rightPageNum = bothPageNums.get(RIGHT_IDX);
+
+        validatePageOddIfLeftElseEven(leftPageNum,rightPageNum);
+        validatePageNumScope(leftPageNum);
+        validatePageNumScope(rightPageNum);
+        validateIsContinuousPage(leftPageNum,rightPageNum);
+
+        Integer  leftScore = Math.max(calculateSumOfPlaceValue(leftPageNum),
+                calculateProductOfPlaceValue(leftPageNum));
+
+        Integer rightScore = Math.max(calculateSumOfPlaceValue(rightPageNum),
+                calculateProductOfPlaceValue(rightPageNum));
+
+        return Math.max(leftScore,rightScore);
     }
 
     private  Integer calculateProductOfPlaceValue(Integer num){
