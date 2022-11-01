@@ -10,6 +10,18 @@ public class Problem4 {
         }else charIndex = 219-charIndex;
         return charIndex;
     }
+
+    public static String check(String word){
+        ArrayList<Character> cArr = new ArrayList<>();
+        for(int i = 0; i < word.length(); i++){
+            int index = word.charAt(i);
+            if(index >= 65 && index <= 122){
+                cArr.add((char)change(index));
+            } else cArr.add((char)index);
+        }
+        return charToString(cArr);
+    }
+
     public static String charToString(ArrayList cArr){
         String result = "";
         for(int i = 0; i < cArr.size(); i++){
@@ -19,7 +31,7 @@ public class Problem4 {
     }
 
     public static String solution(String word) {
-        String answer = "";
+        String answer = check(word);
         return answer;
     }
 }
