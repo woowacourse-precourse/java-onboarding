@@ -21,3 +21,7 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+#기능 목록
+1. 신청한 닉네임을 두 글자씩 잘라주는 cutTwoLettersEach() 함수 Ex) 제이엠 =>  제이 , 이엠
+2. 잘린 글자를 포함(닉네임이 중복)하고 있는 닉네임을 신청한 사람의 이메일을 찾아주는 findEmailBySimilarNicname() 함수
