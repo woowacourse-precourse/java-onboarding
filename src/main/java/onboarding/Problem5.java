@@ -40,4 +40,8 @@ public class Problem5 {
     public static Integer find100(Integer money) {
         return money / 100;
     }
+
+    public static Integer find50(Integer money) {
+        return money / 50;
+    }
 }
