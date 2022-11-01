@@ -8,7 +8,7 @@ public class Problem2 {
     }
 
     private static String getDecodingCryptogram(String cryptogram){
-        StringBuffer decodedCrypto = new StringBuffer(cryptogram);
+        StringBuilder decodedCrypto = new StringBuilder(cryptogram);
         if(!checkValidation(cryptogram)){
             return null;
         }
@@ -31,7 +31,7 @@ public class Problem2 {
         return true;
     }
 
-    private static boolean checkDecodingEnded(StringBuffer crypto){
+    private static boolean checkDecodingEnded(StringBuilder crypto){
         for(int i = 0; i<crypto.length()-1; i++){
             if(crypto.charAt(i)==crypto.charAt(i+1)){
                 return false;
@@ -40,7 +40,7 @@ public class Problem2 {
         return true;
     }
 
-    private static void decodingCurrentString(StringBuffer cryptogram){
+    private static void decodingCurrentString(StringBuilder cryptogram){
         int checkPoint = 0;
         while(checkPoint<cryptogram.length()-1){
             if(cryptogram.charAt(checkPoint)==cryptogram.charAt(checkPoint+1)){
@@ -50,7 +50,7 @@ public class Problem2 {
         }
     }
 
-    private static void removeDuplication(StringBuffer string, int startPoint){
+    private static void removeDuplication(StringBuilder string, int startPoint){
         int lastPoint=0;
         char target = string.charAt(startPoint);
         for(int i = startPoint; i<string.length(); i++){
