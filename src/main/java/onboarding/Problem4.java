@@ -9,7 +9,15 @@ public class Problem4 {
 
   public static String solution(String word) {
     String answer = "";
-
+    StringBuilder stringBuilder = new StringBuilder();
+    for (Character currentAlphabet : word.toCharArray()) {
+      if (!isAlphabetic(currentAlphabet)) {
+        stringBuilder.append(currentAlphabet);
+        continue;
+      }
+      stringBuilder.append(convertByFrog(currentAlphabet));
+    }
+    answer = stringBuilder.toString();
     return answer;
   }
 
