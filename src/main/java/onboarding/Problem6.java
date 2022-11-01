@@ -62,17 +62,17 @@ public class Problem6 {
 
 
             for (int i = 0; i < nickNameLength - 1; i++){
-                String twoWords = nickName.substring(i, i+2);
+                String twoWords = nickName.substring(i, i+2); //2단어씩 자르기
 
-                if (hashMapCheckOverlap.containsKey(twoWords)){
+                if (hashMapCheckOverlap.containsKey(twoWords)){ //자른 2단어가 hash맵에 저장되어 있는지 확인
 
-                    hashMapCollectOverlapEmail.put(emailAddress,"");
-                    hashMapCollectOverlapEmail.put(hashMapCheckOverlap.get(twoWords),"");
+                    hashMapCollectOverlapEmail.put(emailAddress,""); // hash맵에 저장되어 있다면, 해당 닉네임의 이메일을 이메일 전용 Hash맵에 저장
+                    hashMapCollectOverlapEmail.put(hashMapCheckOverlap.get(twoWords),""); //또한 기존에 저장된 이메일도 이메일 전용 Hash맵에 저장
                     continue;
 
                 }
 
-                hashMapCheckOverlap.put(twoWords,emailAddress);
+                hashMapCheckOverlap.put(twoWords,emailAddress); //자른 2단어와 email 주소를 중복 체크 hash맵에 저장
 
             }
             formsFirstRowLength -=1;
@@ -81,8 +81,8 @@ public class Problem6 {
         }
 
 
-        List<String> answer = new ArrayList(List.of(hashMapCollectOverlapEmail.keySet().toArray(new String[hashMapCollectOverlapEmail.size()])));
-        answer.sort(Comparator.naturalOrder());
+        List<String> answer = new ArrayList(List.of(hashMapCollectOverlapEmail.keySet().toArray(new String[hashMapCollectOverlapEmail.size()]))); //중복된 email의 주소들을 hash맵에서 배열로 만들어준다.
+        answer.sort(Comparator.naturalOrder()); //오름차순으로 정렬해준다.
 
 
 
