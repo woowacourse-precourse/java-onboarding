@@ -8,29 +8,8 @@ public class Problem2 {
 
     public static String solution(String cryptogram) {
         isValidate(cryptogram);
-        cryptogram=cryptogram+'*';
-        while(true){
-            if (isDuplicateString(cryptogram)){
-                cryptogram=removeDuplicate(cryptogram);
-            }else{
-                break;
-            }
-        }
-        return cryptogram.substring(0, cryptogram.length()-1);
-    }
-
-
-
-    private static boolean isDuplicate(char target, char nextTarget){
-        return target==nextTarget;
-    }
-
-    private static boolean isDuplicateLastChar(){
-        if(flag==1){
-            return true;
-        }else{
-            return false;
-        }
+        String answer=getDuplicateRemoved(cryptogram);
+        return answer;
     }
 
     private static String removeDuplicate(String cryptogram){
@@ -50,6 +29,18 @@ public class Problem2 {
         return result+'*';
     }
 
+    private static boolean isDuplicate(char target, char nextTarget){
+        return target==nextTarget;
+    }
+
+    private static boolean isDuplicateLastChar(){
+        if(flag==1){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     private static boolean isDuplicateString(String cryptogram){
         for(int i=0;i<cryptogram.length()-1;i++){
             if(isDuplicate(cryptogram.charAt(i),cryptogram.charAt(i+1))){
@@ -57,6 +48,18 @@ public class Problem2 {
             }
         }
         return false;
+    }
+
+    private static String getDuplicateRemoved(String cryptogram){
+        String result = cryptogram+'*';
+        while(true){
+            if (isDuplicateString(result)){
+                result=removeDuplicate(result);
+            }else{
+                break;
+            }
+        }
+        return result.substring(0, result.length()-1);
     }
 
     private static void isValidate(String cryptogram) {
