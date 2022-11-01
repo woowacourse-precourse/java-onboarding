@@ -24,3 +24,13 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+## 기능 목록
+
+- 모든 사람의 목록을 구하는 기능
+- 특정 사람의 친구 목록을 구하는 기능
+- 친구 관계가 있는 사람들의 각 친구 목록
+- 사용자와 함께 아는 친구의 숫자를 구하는 기능
+- 사용자의 타임 라인에 방문한 횟수를 구하는 기능
+- 모든 사람들의 목록과 그 점수 리스트를 구하는 기능
+- 사람들과 점수의 리스트를 점수 순으로 정렬하여 추천 가능 최대 인원까지만 저장하는 기능
