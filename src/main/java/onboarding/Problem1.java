@@ -1,20 +1,26 @@
 package onboarding;
 
-import java.util.ArrayList;
+
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
+
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if (hasException(pobi, crong) == true)
-            return -1;
-        int pobiMaxNum = getMaxNum(getNumByPage(pobi, "left"), getNumByPage(pobi, "right"));
-        int crongMaxNum = getMaxNum(getNumByPage(crong, "left"), getNumByPage(crong, "right"));
-        return getWinner(pobiMaxNum, crongMaxNum);
+        Problem1 solve = new Problem1();
+        solve.procException(solve.hasException(pobi, crong));
+        int pobiMaxNum = solve.getMaxNum(solve.getNumByPage(pobi, "left"), solve.getNumByPage(pobi, "right"));
+        int crongMaxNum = solve.getMaxNum(solve.getNumByPage(crong, "left"), solve.getNumByPage(crong, "right"));
+        return solve.getWinner(pobiMaxNum, crongMaxNum);
     }
 
-    public static int getNumByPage(List<Integer> user, String page) {
+    private void procException(Boolean isException) {
+        if (isException) {
+            throw new RuntimeException("Error Occur");
+        }
+    }
+
+    private int getNumByPage(List<Integer> user, String page) {
         int index = (page=="left")?0:1;
         int resultAdd = Arrays.stream(user.get(index).toString().split(""))
                 .map(Integer::parseInt)
@@ -25,12 +31,7 @@ class Problem1 {
         return (resultAdd>resultMul)?resultAdd:resultMul;
     }
 
-
-    public static int getMaxNum(int leftMaxNum, int rightMaxNum) {
-        return (leftMaxNum >= rightMaxNum) ? leftMaxNum : rightMaxNum;
-    }
-
-    public static int getWinner(int pobiMaxNum, int crongMaxNum) {
+    private int getWinner(int pobiMaxNum, int crongMaxNum) {
         if (pobiMaxNum > crongMaxNum)
             return 1;
         else if (pobiMaxNum < crongMaxNum)
@@ -38,7 +39,12 @@ class Problem1 {
         return 0;
     }
 
-    private static boolean hasException(List<Integer> pobi, List<Integer> crong) {
+    private int getMaxNum(int leftMaxNum, int rightMaxNum) {
+        return (leftMaxNum >= rightMaxNum) ? leftMaxNum : rightMaxNum;
+    }
+
+
+    private boolean hasException(List<Integer> pobi, List<Integer> crong) {
         if (pobi.size() != 2 || crong.size() != 2)
             return true;
         else if (pobi.get(0) % 2 != 1 || (pobi.get(0) + 1) != pobi.get(1))
