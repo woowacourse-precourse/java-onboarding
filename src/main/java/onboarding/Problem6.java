@@ -60,4 +60,17 @@ public class Problem6 {
             }
         }
     }
+
+    private void putEmailInAlerterEmailListWhenTwoOrMoreNamesConnectedToFoundSubstring(){
+        Set<String> substrings = namesMappedToEachSubstringInfo.keySet();
+        for(String substring : substrings){
+            ArrayList<String> namesMappedToThisSubstring = namesMappedToEachSubstringInfo.get(substring);
+
+            if(namesMappedToThisSubstring.size()>1){
+                for(String s : namesMappedToThisSubstring){
+                    AlerterEmails.add(s);
+                }
+            }
+        }
+    }
 }
