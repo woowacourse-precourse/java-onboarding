@@ -164,4 +164,15 @@ public class Problem7 {
         });
         return sortScoreList;
     }
+
+    //추천 사용자를 추출하는 기능
+    public static List<String> extractRecommendUserAllOrTop5 (List<String> list) {
+        if(list.size() >= 5) {
+            return list.stream()
+                .limit(5)
+                .collect(Collectors.toList());
+        }
+        return list.stream()
+            .collect(Collectors.toList());
+    }
 }
