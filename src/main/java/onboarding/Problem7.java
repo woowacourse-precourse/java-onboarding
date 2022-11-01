@@ -95,12 +95,12 @@ public class Problem7 {
         int score;
 
         for (String visitor : visitors) {
-            if (userFriends.contains(visitor)) {
+            if ((userFriends != null) && (userFriends.contains(visitor))) {
                 continue;
             }
             if (scores.containsKey(visitor)) {
                 score = scores.get(visitor);
-                scores.put(visitor, score++);
+                scores.put(visitor, score + 1);
                 continue;
             }
             scores.put(visitor, 1);
