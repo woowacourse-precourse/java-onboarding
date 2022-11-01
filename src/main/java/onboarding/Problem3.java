@@ -10,6 +10,7 @@ public class Problem3 {
 		}
 		
 		return result;
+	
     }
     
     //입력받은 숫자에 포함된 3,6,9의 개수를 파악하고 그 개수를 반환하는 함수
