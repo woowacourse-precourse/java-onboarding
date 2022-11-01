@@ -1,12 +1,10 @@
 package onboarding;
 
+import static onboarding.Problem7.Score.*;
+
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedHashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -33,14 +31,27 @@ public class Problem7 {
         validate(user, friends, visitors);
         RelationShip relationShip = new RelationShip(friends);
 
-        UserScore userScore = new UserScore(user, visitors, relationShip);
-
-        Result result = new Result();
-        List<String> answer = result.calculateResult(userScore, relationShip, user);
+        Result result = new Result(new UserScore(user, visitors, relationShip), relationShip, user);
+        List<String> answer = result.getResult();
         return answer;
     }
     private static void validate(final String user, final List<List<String>> friends, final List<String> visitors) {
         Advice.validate(user, friends, visitors);
+    }
+
+    enum Score{
+        VISITANT(1),
+        FRIEND_OF_FRIEND(10);
+
+        private final int key;
+
+        Score(int key) {
+            this.key = key;
+        }
+
+        public int getKey() {
+            return key;
+        }
     }
 
     static class Result{
@@ -50,11 +61,11 @@ public class Problem7 {
             this.result = new ArrayList<>();
         }
 
-        public List<String> calculateResult(final UserScore userScore, final RelationShip relationShip,
-            final String user) {
-            List<String> userOfFriendFromRelation = getUserOfFriendFromRelation(relationShip, user);
-            Map<String, Integer> sortedMap = sortUserScore(userScore);
-            this.result = calculateRank(userOfFriendFromRelation, sortedMap, user);
+        public Result(final UserScore userScore, final RelationShip relationShip, final String user) {
+            this.result = calculateRank(getUserOfFriendFromRelation(relationShip, user), sortUserScore(userScore), user);
+        }
+
+        public List<String> getResult() {
             return result;
         }
 
@@ -89,7 +100,6 @@ public class Problem7 {
     }
 
     static class UserScore{
-        private static final int VISITANT = 1;
         private final Map<String, Integer> userScoreMap;
 
         public UserScore(Map<String, Integer> userScoreMap) {
@@ -108,28 +118,22 @@ public class Problem7 {
             if (visitors.size() == 0) return;
 
             for (String visitor : visitors) {
-                if (!this.userScoreMap.containsKey(visitor)){
-                    this.userScoreMap.put(visitor, 0);
-                }
-                this.userScoreMap.put(visitor, this.userScoreMap.get(visitor) + VISITANT);
+                calculateScoreForVisitor(visitor);
             }
         }
 
-        private Map<String, Integer> sortUserScoreMap(){
-            List<Map.Entry<String, Integer>> list = new LinkedList<>(userScoreMap.entrySet());
-            Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
-                @Override
-                public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
-                    int comparison = (o1.getValue() - o2.getValue()) * -1;
-                    return comparison == 0 ? o1.getKey().compareTo(o2.getKey()) : comparison;
-                }
-            });
-            Map<String, Integer> sortedMap = new LinkedHashMap<>();
-            for(Iterator<Map.Entry<String, Integer>> iter = list.iterator(); iter.hasNext();){
-                Map.Entry<String, Integer> entry = iter.next();
-                sortedMap.put(entry.getKey(), entry.getValue());
+        private void calculateScoreForVisitor(String visitor) {
+            if (!this.userScoreMap.containsKey(visitor)){
+                this.userScoreMap.put(visitor, 0);
             }
-            return sortedMap;
+            this.userScoreMap.put(visitor, this.userScoreMap.get(visitor) + Score.VISITANT.getKey());
+        }
+
+        private Map<String, Integer> sortUserScoreMap(){
+            return userScoreMap.entrySet().stream()
+                .sorted(Map.Entry.<String, Integer>comparingByValue().reversed().thenComparing(Map.Entry.comparingByKey()))
+                .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue,
+                    (e1, e2) -> e1, LinkedHashMap::new));
         }
 
         @Override
@@ -156,14 +160,13 @@ public class Problem7 {
     }
 
     static class RelationShip {
-        private static final int FRIEND_OF_FRIEND = 10;
         private Map<String, List<String>> relationShipMap;
 
         public RelationShip(){
-            this.relationShipMap = new HashMap<>();
+            this(new HashMap<>());
         }
 
-        public RelationShip(Map<String, List<String>> relationShipMap) {
+        public RelationShip(final Map<String, List<String>> relationShipMap) {
             this.relationShipMap = relationShipMap;
         }
 
@@ -193,7 +196,7 @@ public class Problem7 {
         private void putUserScoreByFriend(Map<String, Integer> userScoreMap, final String userOfFriend) {
             List<String> strings = this.relationShipMap.get(userOfFriend);
             for (String string : strings) {
-                userScoreMap.put(string, userScoreMap.get(string) + FRIEND_OF_FRIEND);
+                userScoreMap.put(string, userScoreMap.get(string) + FRIEND_OF_FRIEND.getKey());
             }
         }
 
@@ -214,7 +217,7 @@ public class Problem7 {
             relationShipMap.put(user1, relation);
         }
 
-        public List<String> getUserOfFriend(String user) {
+        public List<String> getUserOfFriend(final String user) {
             if (this.relationShipMap.get(user) == null) {
                 return new ArrayList<>();
             }
