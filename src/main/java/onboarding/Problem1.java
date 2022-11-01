@@ -42,10 +42,9 @@ class Problem1 {
     private static List<Integer> getEachDigit(Integer page) {
         List<Integer> digits = new ArrayList<>();
         String pageString = page.toString();
-        char[] pageChars = pageString.toCharArray();
 
-        for (int i = 0; i < pageString.length(); i++) {
-            digits.add(pageChars[i] - ZERO);
+        for (char digit : pageString.toCharArray()) {
+            digits.add(digit - ZERO);
         }
 
         return digits;
