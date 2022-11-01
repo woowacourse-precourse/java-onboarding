@@ -19,4 +19,12 @@ public class Problem6 {
 
         return nicknames;
     }
+
+    public static boolean hasSimilarNickName(String nickname, String part) {
+        if (nickname.contains(part)) {
+            return true;
+        }
+        return false;
+    }
+
 }
