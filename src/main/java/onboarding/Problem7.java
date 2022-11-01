@@ -16,6 +16,14 @@ public class Problem7 {
         return answer;
     }
 
+    static void searchTarget(String user, int index) {
+        String friend = friendsList.get(user).get(index);
+
+        for (String target : friendsList.keySet()) {
+            searchFriendsException(user, friend, target);
+        }
+    }
+
     static void searchFriendsException(String user, String friend, String target) {
         if (target.equals(user)) {
             return;
