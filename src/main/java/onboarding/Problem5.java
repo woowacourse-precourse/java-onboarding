@@ -1,20 +1,24 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Problem5 {
 
-    public static int[] curruncyList = new int[]{50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
+    //화폐 종류 변동시 대소관계에 상관 없이 currencyList에 추가한다.
+    public static Integer[] currencyList = new Integer[]{50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
 
     public static List<Integer> solution(int money) {
+        init();
         List<Integer> answer = new ArrayList<>();
-        for(int curruncy : curruncyList){
-            answer.add(money/curruncy);
-            money%=curruncy;
+        for(int currency : currencyList){
+            answer.add(money/currency);
+            money%=currency;
         }
         return answer;
+    }
+
+    public static void init(){
+        Arrays.sort(currencyList, Collections.reverseOrder());
     }
 
 }
