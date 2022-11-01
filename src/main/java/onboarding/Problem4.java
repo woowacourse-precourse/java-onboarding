@@ -12,6 +12,14 @@ public class Problem4 {
         return answer;
     }
 
+    private static String convertReverseAlphabet(String str, int index) {
+        if (LOWER_ORDER.contains(str)) {
+            return LOWER_UNORDER.substring(index, index + 1);
+        } else {
+            return UPPER_UNORDER.substring(index, index + 1);
+        }
+    }
+
     private static String checkEachCharacter(String word, String answer) {
         for (int i = 0; i < word.length(); ++i) {
             // 각 문자 추출
