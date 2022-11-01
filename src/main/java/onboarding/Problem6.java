@@ -43,6 +43,7 @@ public class Problem6 {
     }
 
     private static boolean validateNickname(String nickname) {
+        return nickname.length() > 1 && nickname.length() < 20;
     }
 
     private static boolean validateEmail(String email) {
