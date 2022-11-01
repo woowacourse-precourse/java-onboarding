@@ -1,8 +1,9 @@
 package onboarding;
 
+import onboarding.problem4.Convertor;
+
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
-        return answer;
+        return Convertor.convertString(word);
     }
 }
