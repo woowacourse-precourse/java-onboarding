@@ -3,66 +3,66 @@ package onboarding;
 import java.util.*;
 import java.util.Map.Entry;
 public class Problem7 {
-    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        answer = new ArrayList<>();
-        Map<String, List<String>> frdList = new HashMap<>();
+    public static Map<String, List<String>> getFriends(List<List<String>> friends){
+        Map<String, List<String>> map = new HashMap<>();
 
         for (int i = 0; i < friends.size(); i++) {
             String first = friends.get(i).get(0);
             String second = friends.get(i).get(1);
 
-            if (frdList.containsKey(first)) {
-                List<String> temp = frdList.get(first);
+            if (map.containsKey(first)) {
+                List<String> temp = map.get(first);
                 temp.add(second);
-                frdList.put(first, temp);
+                map.put(first, temp);
             } else {
                 List<String> temp = new ArrayList<>();
                 temp.add(second);
-                frdList.put(first, temp);
+                map.put(first, temp);
             }
 
-            if (frdList.containsKey(second)) {
-                List<String> temp = frdList.get(second);
+            if (map.containsKey(second)) {
+                List<String> temp = map.get(second);
                 temp.add(first);
-                frdList.put(second, temp);
+                map.put(second, temp);
             } else {
                 List<String> temp = new ArrayList<>();
                 temp.add(first);
-                frdList.put(second, temp);
+                map.put(second, temp);
             }
         }
-
-        Map<String, Integer> scoreMap = new HashMap<>();
-
-        List<String> userFriends = new ArrayList<>();
-        Map<String, List<String>> notFriends = new HashMap<>();
-
-        userFriends = frdList.get(user);
+        return map;
+    }
+    public static Map<String, List<String>> getNotFriends(String user, Map<String, List<String>> frdList, List<String> userFriends){
+        Map<String, List<String>> notFMap = new HashMap<>();
 
         Iterator<String> iter = frdList.keySet().iterator();
         while (iter.hasNext()) {
             String key = iter.next();
             if (!userFriends.contains(key) && (key != user)) {
-                notFriends.put(key, frdList.get(key));
+                notFMap.put(key, frdList.get(key));
             }
         }
+        return notFMap;
+    }
 
-        Iterator<String> iter2 = notFriends.keySet().iterator();
-        while (iter2.hasNext()) {
-            String key = iter2.next();
-            int fscore = 0;
+    public static Map<String, Integer> togetherFriendScore(Map<String, List<String>> notFriends, List<String> userFriends ){
+        Map<String, Integer> map = new HashMap<>();
+        Iterator<String> iter = notFriends.keySet().iterator();
+        while (iter.hasNext()) {
+            String key = iter.next();
+            int fScore = 0;
 
             for (String userFriend : userFriends) {
                 if (notFriends.get(key).contains(userFriend)) {
-                    fscore += 10;
+                    fScore += 10;
                 }
-                scoreMap.put(key, fscore);
+                map.put(key, fScore);
             }
         }
+        return map;
+    }
 
-        Iterator<String> iter3 = scoreMap.keySet().iterator();
-
+    public static Map<String, Integer> visitorScore(Map<String, Integer> scoreMap, List<String> visitors, List<String> userFriends){
         for (String visitor : visitors) {
             if (!userFriends.contains(visitor)) {
                 if (scoreMap.containsKey(visitor)) {
@@ -74,6 +74,10 @@ public class Problem7 {
                 }
             }
         }
+        return scoreMap;
+    }
+
+    public static List<Entry<String, Integer>> sortingScore(Map<String, Integer> scoreMap) {
         List<Entry<String, Integer>> sortScoreMap = new ArrayList<Entry<String, Integer>>(scoreMap.entrySet());
         Collections.sort(sortScoreMap, new Comparator<Entry<String, Integer>>() {
             public int compare(Entry<String, Integer> obj1, Entry<String, Integer> obj2) {
@@ -83,18 +87,32 @@ public class Problem7 {
                 return obj1.getValue().compareTo(obj1.getValue());
             }
         });
+        return sortScoreMap;
+    }
 
-//        Iterator<String> iter4 = sortScoreMap.keySet().iterator();
-
-
+    public static List<String> getFiveAns (List<Entry<String, Integer>> sortScoreMap){
+        List<String> temp = new ArrayList<>();
         for (Entry<String, Integer> entry : sortScoreMap) {
-            if (answer.size() == 5) {
+            if (temp.size() == 5) {
                 break;
             }
-            answer.add(entry.getKey());
+            temp.add(entry.getKey());
         }
+        return temp;
+    }
+    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        List<String> answer = Collections.emptyList();
+        Map<String, List<String>> frdList = new HashMap<>(getFriends(friends));
 
+        List<String> userFriends = new ArrayList<>(frdList.get(user));
+        Map<String, List<String>> notFriends = new HashMap<>(getNotFriends(user, frdList, userFriends));
 
+        Map<String, Integer> scoreMap = new HashMap<>(togetherFriendScore(notFriends, userFriends));
+        scoreMap = visitorScore(scoreMap, visitors, userFriends);
+
+        List<Entry<String, Integer>> sortScoreMap = new ArrayList<Entry<String, Integer>>(sortingScore(scoreMap));
+
+        answer = getFiveAns(sortScoreMap);
 
         return answer;
     }
