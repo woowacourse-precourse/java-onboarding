@@ -28,4 +28,12 @@ public class GameBoard {
         gamePlayerList.add(pageValidator.getPlayer(page1));
         gamePlayerList.add(pageValidator.getPlayer(page2));
     }
+
+    private void calculateScore() {
+        final int FIRST_PLAYER = 0;
+        final int LAST_PLAYER = 1;
+        int gamePlayer1Score = scoreCalculator.getGameScore(gamePlayerList.get(FIRST_PLAYER));
+        int gamePlayer2Score = scoreCalculator.getGameScore(gamePlayerList.get(LAST_PLAYER));
+        getWinner(gamePlayer1Score, gamePlayer2Score);
+    }
 }
