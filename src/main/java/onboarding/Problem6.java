@@ -4,11 +4,11 @@ import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        Map<String, Integer> duplicatedNamesMap = generateDuplicatedNamesMap(forms);
+        Map<String, Integer> duplicatedStringCountMap = generateDuplicatedNamesMap(forms);
 
-        List<String> compareNames = generateCompareNames(duplicatedNamesMap);
+        List<String> duplicatedStrings = generateCompareNames(duplicatedStringCountMap);
 
-        List<String> results = generateResults(forms, compareNames);
+        List<String> results = generateResults(forms, duplicatedStrings);
         Collections.sort(results);
 
         return results;
