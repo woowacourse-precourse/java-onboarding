@@ -36,7 +36,7 @@ public class Problem6 {
 			throw new IllegalStateException("크루원의 이메일 도메인이 올바르지 않습니다.");
 		if (forms.stream().anyMatch(form -> isNicknameContainsEnglish(form.get(1))))
 			throw new IllegalStateException("크루원의 닉네임에 영어가 포함되어있습니다.");
-		if (forms.stream().allMatch(form -> isValidNicknameLength(form.get(1))))
+		if (!forms.stream().allMatch(form -> isValidNicknameLength(form.get(1))))
 			throw new IllegalStateException("크루원의 닉네임의 길이가 올바르지 않습니다.");
 	}
 
@@ -53,7 +53,7 @@ public class Problem6 {
 	}
 
 	public static boolean isNicknameContainsEnglish(String nickname) {
-		if (nickname.chars().anyMatch(Character::isAlphabetic))
+		if (nickname.chars().anyMatch(c -> (c >= 65 && c <= 90) || (c >= 97 && c <= 122)))
 			return true;
 		return false;
 	}
