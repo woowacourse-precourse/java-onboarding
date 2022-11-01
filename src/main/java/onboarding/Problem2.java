@@ -7,8 +7,16 @@ public class Problem2 {
   public static String solution(String cryptogram) {
     Deque<Character> cryptogramStack = convertStringToStack(cryptogram);
     Deque<Character> resultStack = eliminateDuplicatedChar(cryptogramStack);
+    return convertStackToString(resultStack);
+  }
 
-    return "";
+  public static String convertStackToString(Deque<Character> stack) {
+    StringBuilder stringBuilder = new StringBuilder();
+    while (!stack.isEmpty()) {
+      stringBuilder.append(stack.peekLast());
+      stack.removeLast();
+    }
+    return stringBuilder.toString();
   }
 
   public static Deque<Character> eliminateDuplicatedChar(Deque<Character> originalStack) {
