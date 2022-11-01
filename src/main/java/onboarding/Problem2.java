@@ -56,6 +56,12 @@ public class Problem2 {
             word = sb.toString();
         }
 
+        //처음 글자수와 sb에 추가한 횟수가 같으면 (=변화한 단어가 없다는 말)
+        if(initSize == count){
+            //최종 word 리턴
+            return word;
+        }
         return word;
     }
+
 }
