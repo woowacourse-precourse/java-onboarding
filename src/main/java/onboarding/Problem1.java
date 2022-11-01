@@ -42,4 +42,15 @@ class Problem1 {
 
         return sum;
     }
+
+    public static int getMultiplyOfEachDigit(int number) {
+        int multiply = 1;
+
+        while (number != 0) {
+            multiply *= number % 10;
+            number /= 10;
+        }
+
+        return multiply;
+    }
 }
