@@ -8,6 +8,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 class ApplicationTest {
+
     @Nested
     class Problem1Test {
         @Test
@@ -35,6 +36,7 @@ class ApplicationTest {
         }
     }
 
+
     @Nested
     class Problem2Test {
         @Test
@@ -51,6 +53,7 @@ class ApplicationTest {
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
     }
+
 
     @Nested
     class Problem3Test {
@@ -69,6 +72,9 @@ class ApplicationTest {
         }
     }
 
+
+
+
     @Nested
     class Problem4Test {
         @Test
@@ -78,6 +84,8 @@ class ApplicationTest {
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
     }
+
+
 
     @Nested
     class Problem5Test {
@@ -94,6 +102,13 @@ class ApplicationTest {
             List<Integer> result = List.of(0, 1, 1, 0, 0, 0, 0, 0, 0);
             assertThat(Problem5.solution(money)).isEqualTo(result);
         }
+
+        @Test
+        void case3() {
+            int money = 254;
+            List<Integer> result = List.of(0, 0, 0, 0, 0, 2, 1, 0, 4);
+            assertThat(Problem5.solution(money)).isEqualTo(result);
+        }
     }
 
     @Nested
@@ -101,13 +116,15 @@ class ApplicationTest {
         @Test
         void case1() {
             List<List<String>> forms = List.of(
+                    List.of("jay@email.com", "제이"),
                     List.of("jm@email.com", "제이엠"),
                     List.of("jason@email.com", "제이슨"),
                     List.of("woniee@email.com", "워니"),
                     List.of("mj@email.com", "엠제이"),
-                    List.of("nowm@email.com", "이제엠")
+                    List.of("nowm@email.com", "이제엠"),
+                    List.of("jaem@email.com", "이슨")
             );
-            List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com");
+            List<String> result = List.of("jaem@email.com","jason@email.com","jay@email.com", "jm@email.com", "mj@email.com");
             assertThat(Problem6.solution(forms)).isEqualTo(result);
         }
     }
@@ -130,4 +147,5 @@ class ApplicationTest {
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
         }
     }
+
 }
