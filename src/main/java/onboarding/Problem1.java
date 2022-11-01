@@ -3,9 +3,28 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+    private static final Integer EXCEPTION = -1;
+    private static final Integer POBI_WIN = 1;
+    private static final Integer CRONG_WIN = 2;
+    private static final Integer TIE = 0;
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        try {
+            validatePages(pobi);
+            validatePages(crong);
+        } catch (IllegalArgumentException e) {
+            return EXCEPTION;
+        }
+
+        int pobiScore = Math.max(findMaxScore(pobi.get(0)), findMaxScore(pobi.get(1)));
+        int crongScore = Math.max(findMaxScore(crong.get(0)), findMaxScore(crong.get(1)));
+
+        if (pobiScore == crongScore) {
+            return TIE;
+        }
+        if (pobiScore > crongScore) {
+            return POBI_WIN;
+        }
+        return CRONG_WIN;
     }
 
     public static void validatePages(List<Integer> pages) {
