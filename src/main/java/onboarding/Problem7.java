@@ -35,6 +35,18 @@ public class Problem7 {
         }
 
         List<String> answer = new ArrayList<>(candidateMap.keySet());
+        Collections.sort(answer, (s1, s2) -> {
+            int score1 = candidateMap.get(s1);
+            int score2 = candidateMap.get(s2);
+
+            if (score1 == score2)
+                return s1.compareTo(s2);
+            return Integer.compare(score2, score1);
+        });
+
+        if (answer.size() > 5) {
+            answer = new ArrayList<>(answer.subList(0, 5));
+        }
 
         return answer;
     }
