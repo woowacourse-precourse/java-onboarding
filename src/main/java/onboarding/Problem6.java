@@ -77,4 +77,8 @@ public class Problem6 {
         }
         return true;
     }
+
+    public static boolean OnlyKoreanNickName(List<List<String>> forms) {
+        return forms.stream().allMatch(form -> form.get(1).matches(NAME_REG));
+    }
 }
