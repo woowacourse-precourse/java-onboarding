@@ -3,6 +3,12 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
+    private static void addScore(HashMap<String,Integer> score, String name, int point){
+        int currentScore = score.get(name);
+        currentScore += point;
+        score.replace(name,currentScore);
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
         HashSet<String> notFriend = new HashSet<>();
