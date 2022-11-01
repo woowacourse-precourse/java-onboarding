@@ -58,4 +58,11 @@ public class FriendAndScore {
         Map<User, Integer> newFriendAndScoreMap = mapNewFriendAndScore(friendsOfUserFriends, visitorsOfNotFriendOfUser);
         return transformMapIntoList(newFriendAndScoreMap);
     }
+
+    public List<UserAndScore> sortListByScoreAndUserId(List<UserAndScore> newFriendAndScoreList) {
+        newFriendAndScoreList.sort(Comparator.comparing(UserAndScore::getScore)
+                .reversed()
+                .thenComparing(UserAndScore::getUser));
+        return newFriendAndScoreList;
+    }
 }
