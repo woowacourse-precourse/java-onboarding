@@ -21,3 +21,10 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+<br>
+
+## 📋 기능 목록
+
+- [ ] 연속 중복이 끝나는 지점을 구한다. → `findDuplicateEndIndex()`
+- [ ] 문자열에서 연속하는 중복 문자를 제거한다. → `removeDuplicates()`
