@@ -31,6 +31,21 @@ class FormManager {
         }
         return -1;
     }
+
+    /**
+     * form에 있는 nickname들이 중복인지 아닌지를 체크
+     */
+    void checkOverlap(){
+        for(int i = 0; i<forms.size(); i++){
+            List<String> form = forms.get(i);
+            String nickname = form.get(1);
+            int overlapIndex = checkOverlapOfWord(nickname,i);
+            if(overlapIndex != -1){
+                isOverlap[overlapIndex] = true;
+                isOverlap[i] = true;
+            }
+        }
+    }
 }
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
