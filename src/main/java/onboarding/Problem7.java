@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -11,8 +12,26 @@ import java.util.List;
  * 기능 4-2: 이미 친구인 경우와 0점인 경우를 제외하는 함수 작성
  */
 public class Problem7 {
+
+    public static List<String> getUserFriends(List<List<String>> friends, String user) {
+
+        List<String> userFriends = new ArrayList<>();
+
+        // pivot을 1로 두고 user의 이름의 위치를 index로 저장하여 차이의 절대값을 구해서 user의 친구를 리스트에 담음
+        final int PIVOT = 1;
+        for (List<String> friendList : friends) {
+            int friendIndex = friendList.indexOf(user);
+
+            if (friendIndex != -1) {
+                userFriends.add(friendList.get(Math.abs(PIVOT - friendIndex)));
+            }
+        }
+        return userFriends;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
     }
+
 }
