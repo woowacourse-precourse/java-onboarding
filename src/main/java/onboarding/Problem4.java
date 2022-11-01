@@ -11,24 +11,24 @@ public class Problem4 {
     }
 
     private static String changeWord(String word){
-        String reverse_Word = "";
+        String reverseWord = "";
         for(char Alphabet : word.toCharArray()) {
             if(Character.isUpperCase(Alphabet))
-                reverse_Word += changeUppercase(Alphabet);
+                reverseWord += changeUppercase(Alphabet);
             else if (Character.isLowerCase(Alphabet))
-                reverse_Word += changeLowercase(Alphabet);
+                reverseWord += changeLowercase(Alphabet);
             else
-                reverse_Word += " ";
+                reverseWord += " ";
         }
-        return reverse_Word;
+        return reverseWord;
     }
     private static char changeUppercase(int original_Alphabet){
-        char reverse_Alphabet = (char)(UPPER_CASE_SUM - original_Alphabet);
-        return reverse_Alphabet;
+        char reverseAlphabet = (char)(UPPER_CASE_SUM - original_Alphabet);
+        return reverseAlphabet;
     }
 
     private static char changeLowercase(int original_Alphabet){
-        char reverse_Alphabet = (char)(LOWER_CASE_SUM - original_Alphabet);
-        return reverse_Alphabet;
+        char reverseAlphabet = (char)(LOWER_CASE_SUM - original_Alphabet);
+        return reverseAlphabet;
     }
 }
