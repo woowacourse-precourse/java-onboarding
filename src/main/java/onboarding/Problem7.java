@@ -17,4 +17,15 @@ public class Problem7 {
         set.addAll(visitors);
         return set;
     }
+    public static Set<String> getFriendSet(List<List<String>> friends, String name) {
+        Set<String> friendSet = new HashSet<>();
+        for(List<String> l : friends) {
+            if(l.contains(name)) {
+                friendSet.add(l.get(0));
+                friendSet.add(l.get(1));
+            }
+        }
+        friendSet.remove(name);
+        return friendSet;
+    }
 }
