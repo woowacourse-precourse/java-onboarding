@@ -28,6 +28,15 @@ public class Problem2 {
             }
             cryptoStack.push(ch);
         }
-        return cryptoStack.toString();
+        return convertStackToString(cryptoStack);
+    }
+
+    private static String convertStackToString(Stack<Character> stack) {
+        Iterator<Character> itr = stack.iterator();
+        StringBuilder result = new StringBuilder();
+        while (itr.hasNext()) {
+            result.append(itr.next().toString());
+        }
+        return result.toString();
     }
 }
