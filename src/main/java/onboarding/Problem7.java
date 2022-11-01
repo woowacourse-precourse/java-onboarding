@@ -16,6 +16,11 @@ import java.util.*;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
+/*
+*   구현 기능
+*   1. user의 친구 리스트 만드는 기능
+*   2. 친구의 친구 찾는 기능
+ */
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
@@ -32,6 +37,17 @@ public class Problem7 {
             }
         }
         return myfriend;
+    }
+
+    public static List<String> findUserFreinds(String user, List<List<String>> friends){
+        List<String> userfriends= new ArrayList<>();
+        for (int i=0; i< friends.size(); i++) {
+            String uesrfriend = findMyFriends(user, friends.get(i));
+            if (!uesrfriend.isEmpty()) {
+                userfriends.add(findMyFriends(user, friends.get(i)));
+            }
+        }
+        return userfriends;
     }
 
 }
