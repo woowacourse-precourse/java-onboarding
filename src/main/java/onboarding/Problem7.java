@@ -12,15 +12,32 @@ public class Problem7 {
 
         for(int i=0;i< friends.size();i++)
         {
-            for(int j=0;j<friends.get(i).size();j++)
-            {
-                map.put(friends.get(i).get(j),0);
-                if(friends.get(i).get(j)==user)
+            for(int j=0;j<friends.get(i).size();j++) {
+                for(int k=0;k<str.size();k++)
                 {
-                    if(j==0)
-                        str.add(friends.get(i).get(1));
-                    else
-                        str.add(friends.get(i).get(0));
+                    if(friends.get(i).get(j)==str.get(k))
+                    {
+                        if(j==0)
+                            map.put(friends.get(i).get(1),map.get(friends.get(i).get(1))+10);
+                        else
+                            map.put(friends.get(i).get(0),map.get(friends.get(i).get(0))+10);
+                    }
+                }
+            }
+        }
+
+        for(int i=0;i< friends.size();i++)
+        {
+            for(int j=0;j<friends.get(i).size();j++) {
+                for(int k=0;k<str.size();k++)
+                {
+                    if(friends.get(i).get(j)==str.get(k))
+                    {
+                        if(j==0)
+                            map.put(friends.get(i).get(1),map.get(friends.get(i).get(1))+10);
+                        else
+                            map.put(friends.get(i).get(0),map.get(friends.get(i).get(0))+10);
+                    }
                 }
             }
         }
