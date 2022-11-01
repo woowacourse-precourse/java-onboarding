@@ -12,7 +12,6 @@ public class Problem7 {
             if(name1.equals(user)) u_finding.add(name2);
             else if(name2.equals(user)) u_finding.add(name1);
         }
-//        System.out.println(u_finding.toString());
         return u_finding;
     }
 
@@ -27,7 +26,6 @@ public class Problem7 {
                 else if(str.equals(name2)) recommend.put(name1, recommend.getOrDefault(name1, 0)+10);
             }
         }
-//        System.out.println(recommend.toString());
         return recommend;
     }
 
@@ -37,7 +35,6 @@ public class Problem7 {
             if(user_friend.contains(visitor_name)) continue;
             recommend.put(visitor_name, recommend.getOrDefault(visitor_name,0)+1);
         }
-        System.out.println(recommend.toString());
     }
 
     public static void sorted(Map<String, Integer> map){ //맵을 value값에 의해 정렬하는 기능
