@@ -29,6 +29,8 @@ public class Problem7 {
             for (int j = 0; j < friends.size(); j++) {
                 List<String> friendsPair = friends.get(j);
                 String acquaintance = friendsPair.get(0) != userFriend ? friendsPair.get(0) : friendsPair.get(1);
+                if (userFriendsList.contains(acquaintance))
+                    continue;
                 if (friendsPair.contains(userFriend)) {
                     friendsList.put(acquaintance, friendsList.get(acquaintance) + 10);
                 }
@@ -47,12 +49,11 @@ public class Problem7 {
     public static void getAnswer(String user, TreeMap<String, Integer> friendsList, List<String> answer) {
         friendsList.remove(user);
         HashMap<String, Integer> hashMap = new HashMap<String, Integer>();
-        for(String friend : friendsList.keySet()){ //저장된 key값 확인
+        for(String friend : friendsList.keySet()){
             hashMap.put(friend, friendsList.get(friend));
         }
         List<String> sortedByPointsList = new ArrayList<>(hashMap.keySet());
         Collections.sort(sortedByPointsList, (value1, value2) -> (hashMap.get(value2).compareTo(hashMap.get(value1))));
-
         int count = 0;
         for(String key : sortedByPointsList) {
             if (hashMap.get(key) == 0)
