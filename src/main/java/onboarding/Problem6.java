@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,7 +12,16 @@ import java.util.List;
  */
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer = new ArrayList<>();
+
+        // 1. for loop 두개로 모든 서로 다른 두개의 이름을 비교한다.
+        for(int i=0;i<forms.size();i++){
+            for(int j=i+1;j< forms.size(); j++){
+                String nName1 = forms.get(i).get(1);
+                String nName2 = forms.get(j).get(1);
+
+            }
+        }
         return answer;
     }
 }
