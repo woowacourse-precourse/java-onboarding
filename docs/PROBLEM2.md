@@ -21,3 +21,7 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+### 기능 목록
+- cryptogram 길이, 알파벳 소문자 검증
+- 연속하는 문자 제거
