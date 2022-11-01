@@ -19,6 +19,15 @@ public class Problem2 {
         return false;
     }
 
+    private static boolean isDuplicateFullRange(StringBuilder cryptogram) {
+        for (int i = 0; i < cryptogram.length() - 1; i++) {
+            if (isDuplicate(cryptogram, i)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public static int getDuplicateRange(StringBuilder cryptogram, int start) {
         int range = 1;
         for (int i = start; i < cryptogram.length() - 1; i++) {
