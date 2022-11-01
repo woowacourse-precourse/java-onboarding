@@ -1,7 +1,9 @@
 package onboarding;
 
+import java.lang.reflect.Array;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Collections;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
@@ -14,6 +16,10 @@ class Problem1 {
         */
         int answer = Integer.MAX_VALUE;
 
+        //maxValue를 담을 배열 생성
+        ArrayList<Integer>pobiMaxArray = new ArrayList<Integer>();
+        ArrayList<Integer>crongMaxArray = new ArrayList<Integer>();
+
         //CASE pobi
         for(int j=0; j<pobi.size(); j++) {
             //각 페이지 번호를 담을 배열 생성
@@ -24,6 +30,22 @@ class Problem1 {
             for(int i=0; i<tempStr.length(); i++) {
                 tempList.add((tempStr.charAt(i) - '0'));
             }
+
+            int max_mul = 1;
+            int max_add = 0;
+
+            //곱셈 및 덧셈 계산
+            for(int k=0; k<tempList.size(); k++) {
+                max_mul *= tempList.get(k);
+                max_add += tempList.get(k);
+            }
+
+            //각 계산 결과를 Max List에 저장
+            pobiMaxArray.add(max_mul);
+            pobiMaxArray.add(max_add);
+
+            //tempList 초기화
+            tempList.clear();
         }
 
         //CASE crong
@@ -36,7 +58,28 @@ class Problem1 {
             for(int i=0; i<tempStr.length(); i++) {
                 tempList.add((tempStr.charAt(i) - '0'));
             }
+
+            int max_mul = 1;
+            int max_add = 0;
+
+            //곱셈 및 덧셈 계산
+            for(int k=0; k<tempList.size(); k++) {
+                max_mul *= tempList.get(k);
+                max_add += tempList.get(k);
+            }
+
+            //각 계산 결과를 Max List에 저장
+            crongMaxArray.add(max_mul);
+            crongMaxArray.add(max_add);
+
+            //tempList 초기화
+            tempList.clear();
         }
+
+        //최대 값 저장
+        int pobiMaxNum = Collections.max(pobiMaxArray);
+        int crongMaxNum = Collections.max(crongMaxArray);
+
         return answer;
     }
 }
