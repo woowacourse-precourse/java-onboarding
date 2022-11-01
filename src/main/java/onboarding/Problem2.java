@@ -1,38 +1,38 @@
 package onboarding;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
         Problem2 pb2 = new Problem2();
-        Stack<Character> cryptogramStack = pb2.removeDuplication(cryptogram);
-        return pb2.getStringByStack(cryptogramStack);
+        List<Character> cryptogramWithoutDuplication = pb2.removeDuplication(cryptogram);
+        return pb2.getStringByStack(cryptogramWithoutDuplication);
     }
 
-    public Stack<Character> removeDuplication(String cryptogram) {
-        Stack<Character> cryptoStack = new Stack<>();
-        cryptoStack.push(cryptogram.charAt(0));
-
-        for (int idx = 1; idx < cryptogram.length(); idx++) {
-            char topChar = cryptoStack.peek();
-            char character = cryptogram.charAt(idx);
-            // 단어가 중복되지 않을 때
-            if (topChar != character) {
-                cryptoStack.push(character);
+    public List<Character> removeDuplication(String cryptogram) {
+        int lt = 0;
+        int rt = 1;
+        List<Character> cryptogramWithoutDuplication = new ArrayList<>();
+        while(lt < rt && rt < cryptogram.length()) {
+            char character1 = cryptogram.charAt(lt);
+            char character2 = cryptogram.charAt(rt);
+            if(character1 != character2) {
+                // 단어가 중복되지 않을 때
+                cryptogramWithoutDuplication.add(character1);
+                lt++;
+                rt++;
                 continue;
             }
 
-            // 단어가 중복될 때
-            while(idx < cryptogram.length() && topChar == cryptogram.charAt(idx)) {
-                idx++;
+            while (character1 == cryptogram.charAt(rt)) {
+                rt++;
             }
-            cryptoStack.pop();
-            if(cryptoStack.isEmpty() && idx < cryptogram.length()) {
-                cryptoStack.push(cryptogram.charAt(idx));
-                continue;
-            }
-            idx--;
+
+            lt = rt;
+            rt++;
         }
-        return cryptoStack;
+        return cryptogramWithoutDuplication;
     }
 
     public String getStringByStack (Stack<Character> cryptoStack) {
