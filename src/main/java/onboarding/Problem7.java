@@ -14,6 +14,7 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Map<String, Set<String>> userToFriends = getUserToFriendMap(friends);
 
+
         return null;
     }
 
@@ -39,5 +40,29 @@ public class Problem7 {
 
     }
 
+    public static Map<String, Integer> getFriendsInCommon(Map<String, Set<String>> userToFriends, String user) {
+        Map<String, Integer> friendsInCommon = new HashMap<>();
+
+        for (String id : userToFriends.keySet()) {
+            friendsInCommon.put(id, getNumberOfFriendsInCommon(userToFriends, user, id));
+        }
+        return friendsInCommon;
+    }
+
+    public static int getNumberOfFriendsInCommon(Map<String, Set<String>> userToFriends, String user, String other) {
+        if (user.equals(other)) {
+            return 0;
+        }
+
+        int count = 0;
+
+        for (String id : userToFriends.keySet()) {
+
+            if (userToFriends.getOrDefault(user, Set.of()).contains(id) && userToFriends.getOrDefault(other, Set.of()).contains(id)) {
+                count += 1;
+            }
+        }
+        return count;
+    }
 
 }
