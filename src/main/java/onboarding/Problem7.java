@@ -15,6 +15,26 @@ public class Problem7 {
         return answer;
     }
 
+    // 탑5 스코어 가져오기, 5개 이하면 그 만큼만
+    public static List<String> get_top_5_scores_from(List<Map.Entry<String, Integer>> sorted_scores){
+        List<String> answer = new ArrayList<>();
+
+        // 가장 높은 점수부터 탑 5 계산
+        for (Map.Entry<String, Integer> sorted_score : sorted_scores) {
+            // 5개 됐으면 멈춤
+            if (answer.size() == 5) {
+                break;
+            }
+            // 점수가 0이면 포함 안 함
+            if (sorted_score.getValue() == 0) {
+                continue;
+            }
+
+            answer.add(sorted_score.getKey());
+        }
+
+        return answer;
+    }
 
     // 점수 기준 내림차순, 점수가 같으면 이름 기준 오름차순으로 정렬
     public static List<Map.Entry<String, Integer>> sort_scores(HashMap<String, Integer> scores){
