@@ -25,7 +25,6 @@ public class Problem1 {
         crong.add(crongLPage);
         crong.add(crongRPage);
 
-        for(int i = 0; i<)
 
 
 
