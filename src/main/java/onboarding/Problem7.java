@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,7 +22,7 @@ public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends,
         List<String> visitors) {
-        if (!checkInputValidation(user,friends,visitors)) {
+        if (!checkInputValidation(user, friends, visitors)) {
             throw new IllegalArgumentException("[error] 잘못된 입력값이 입력되었습니다.");
         }
         assignImplement();
