@@ -1,9 +1,7 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
+import java.util.Map.Entry;
 
 public class Problem7 {
     static HashMap<String,Integer> friendScoreMap;
@@ -16,6 +14,10 @@ public class Problem7 {
         findFriendsByUser(user, friends);
         scoreByFriends(user, friends);
         scoreByVisitors(user, visitors);
+
+        List<Entry<String,Integer>> list_entries = new ArrayList<>(friendScoreMap.entrySet());
+        list_entries = sortByScore(list_entries);
+
 
         return answer;
     }
@@ -44,5 +46,15 @@ public class Problem7 {
             if(!userFriends.contains(visitor))
                 friendScoreMap.put(visitor, friendScoreMap.getOrDefault(visitor,0)+1);
         }
+    }
+
+    public static List<Entry<String,Integer>> sortByScore(List<Entry<String,Integer>> list_entries){
+        Collections.sort(list_entries, (o1, o2) -> {
+            if(o1.getValue()==o2.getValue()){
+                return o1.getKey().compareTo(o2.getKey());
+            }
+            return o2.getValue().compareTo(o1.getValue());
+        });
+        return list_entries;
     }
 }
