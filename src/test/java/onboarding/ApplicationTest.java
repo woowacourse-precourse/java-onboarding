@@ -109,7 +109,7 @@ class ApplicationTest {
             );
             List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com");
             assertThat(Problem6.solution(forms)).isEqualTo(result);
-        }
+        }z
     }
 
     @Nested
