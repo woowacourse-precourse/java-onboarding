@@ -19,6 +19,15 @@ public class Problem2 {
                 isReduplication[i-1] = true;
             }
         }
+
+        // isReduplication을 참고하여 중복하지 않은 문자열만 answer에 추가
+        for (int i = 0; i < isReduplication.length; i++) {
+            if (isReduplication[i]) {
+                reduplicationCount += 1;
+                continue;
+            }
+            answer.append(splitCryptogram[i]);
+        }
         return "";
     }
 }
