@@ -67,4 +67,33 @@ public class Problem7 {
             }
         }
     }
+
+    private static List<String> sortMapByValue(HashMap<String, Integer> map) {
+        List<String> answer = new ArrayList<>();
+
+        List<String> keySet = new ArrayList<>(map.keySet());
+        keySet.sort(new Comparator<String>() {
+            public int compare(String o1, String o2) {
+                if (map.get(o1).equals(map.get(o2))) {
+                    return o1.compareTo(o2);
+                }
+                return map.get(o2).compareTo(map.get(o1));
+            }
+        });
+
+        for (int i = 0; i < keySet.size(); i++) {
+            String key = keySet.get(i);
+            int value = map.get(key);
+            if (value > 0) {
+                answer.add(key);
+            } else {
+                break;
+            }
+            if (i == 4) {
+                break;
+            }
+        }
+
+        return answer;
+    }
 }
