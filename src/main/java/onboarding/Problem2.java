@@ -2,7 +2,7 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        if (!validation(cryptogram)) return "ERROR";
+        if (violation(cryptogram)) return "ERROR";
         String curr = cryptogram;
         while (true) {
             String next = delete(curr);
@@ -12,13 +12,13 @@ public class Problem2 {
         return curr;
     }
 
-    static boolean validation(String cryptogram) {
+    static boolean violation(String cryptogram) {
         int length = cryptogram.length();
-        if (length == 0 || length > 1000) return false;
+        if (length == 0 || length > 1000) return true;
         for (char c : cryptogram.toCharArray()) {
-            if (!Character.isLowerCase(c)) return false;
+            if (!Character.isLowerCase(c)) return true;
         }
-        return true;
+        return false;
     }
 
     static String delete(String curr) {
