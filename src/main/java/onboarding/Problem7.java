@@ -12,12 +12,18 @@ public class Problem7 {
 
         makeFriendship(friends);
         userFriends = friendship.get(user);
+
+        if (userFriends != null) {
+            userFriends = removeSameFriends(userFriends);
+        }
+
         for (String crew : friendship.keySet()) {
             if (crew.equals(user)) {
                 continue;
             }
             makeScoresWithFriendship(userFriends, crew);
         }
+
         updateScoresWithVisitors(userFriends, visitors);
         System.out.println("scores = " + scores);
         makeAnswer(answer);
@@ -25,6 +31,17 @@ public class Problem7 {
         return answer;
     }
 
+    public static List<String> removeSameFriends(List<String> userFriends) {
+        List<String> removed = new ArrayList<>();
+
+        for(String strValue : userFriends) {
+            // 중복 요소가 없는 경우 요소를 추가
+            if(!removed.contains(strValue)) {
+                removed.add(strValue);
+            }
+        }
+        return removed;
+    }
     public static void makeAnswer(List<String> answer) {
         List<Map.Entry<String, Integer>> sortedScores = sortScores();
         int count = 0;
