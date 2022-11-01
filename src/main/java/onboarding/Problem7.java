@@ -81,5 +81,14 @@ public class Problem7 {
     private static void removeUserInScoreMap(String user, HashMap<String, Integer> scoreMap) {
         scoreMap.remove(user);
     }
+
+    private static void removeExistFriendInScoreMap(String user,
+                HashMap<String, HashSet<String>> friendMap,
+                HashMap<String, Integer> scoreMap) {
+        HashSet<String> existFriends = friendMap.get(user);
+        for (String friend : existFriends) {
+            scoreMap.remove(friend);
+        }
+    }
 }
 
