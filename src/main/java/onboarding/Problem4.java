@@ -16,6 +16,12 @@ public class Problem4 {
         return answer;
     }
 
+    private static String convertLetter(Character letter, Map<Character, Character> cachedAlphabet) {
+        if (isAlphabet(letter, cachedAlphabet)) {
+            return String.valueOf(cachedAlphabet.get(letter));
+        }
+        return String.valueOf(letter);
+    }
     private static boolean isAlphabet(Character letter, Map<Character, Character> cachedAlphabet) {
         return cachedAlphabet.containsKey(letter);
     }
