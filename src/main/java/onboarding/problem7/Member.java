@@ -17,6 +17,12 @@ public class Member {
         }
     }
 
+    private void getVisitorPoint(List<String> userAndUserFriends) {
+        if (userAndUserFriends.contains(this)) {
+            this.point += 1;
+        }
+    }
+
     public String getName() {
         return name;
     }

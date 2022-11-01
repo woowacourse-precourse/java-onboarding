@@ -93,11 +93,4 @@ public class Problem7 {
         }
         return points;
     }
-
-    private static int getVisitorPoint(String visitor, List<String> userAndUserFriends) {
-        if (userAndUserFriends.contains(visitor)) {
-            return 0;
-        }
-        return 1;
-    }
 }
