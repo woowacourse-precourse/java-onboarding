@@ -6,6 +6,12 @@ public class Problem2 {
         return answer;
     }
 
+    // 6. String 길이가 남았는지 체크하기
+    public static Boolean checkIfStringRemain(String s)
+    {
+        return (s.length() != 0) ? Boolean.TRUE: Boolean.FALSE;
+    }
+
     // 7. 두 문자가 같은 지 체크하기
     public static Boolean checkIfNotDuplicatedAlphabet(char a, char b)
     {
