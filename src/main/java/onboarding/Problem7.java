@@ -61,7 +61,14 @@ public class Problem7 {
 
     public static void friendVisitCheck(List<String> visitors){
         for(int i=0;i<visitors.size();i++){
-            
+
+        }
+    }
+
+    public static void friendVisitException(String name){
+        if(user_friend.containsKey(name)==true)return;
+        else{
+            friend_friend.put(name,friend_friend.get(name)+1);
         }
     }
 
