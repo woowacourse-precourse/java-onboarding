@@ -15,10 +15,9 @@ class Problem1 {
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-
-        Integer exception = checkException(pobi, crong);
-        if (exception != null) return Constant.EXCEPTION;
-
+        if (checkException(pobi, crong) != null) {
+            return Constant.EXCEPTION;
+        }
         int maxPointOfPobi = getMaxPoint(pobi);
         int maxPointOfCrong = getMaxPoint(crong);
 
