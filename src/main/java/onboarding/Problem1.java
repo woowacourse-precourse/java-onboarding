@@ -13,6 +13,21 @@ class Problem1 {
         return answer;
     }
 
+    private static int calculateScores(List<Integer> pages) {
+        int[] scores = new int[4];
+        int index = 0;
+
+        for (int page : pages) {
+            scores[index++] = sumOfDigits(page);
+        }
+
+        for (int page : pages) {
+            scores[index++] = productOfDigits(page);
+        }
+
+        return calculateFinalScore(scores);
+    }
+
     private static int calculateFinalScore(int[] scores) {
         int LeftScore = Math.max(scores[0], scores[1]);
         int rightScore = Math.max(scores[2], scores[3]);
