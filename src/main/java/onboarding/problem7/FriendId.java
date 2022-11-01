@@ -5,11 +5,11 @@ import onboarding.problem7.exception.FriendsException;
 import java.util.List;
 import java.util.Objects;
 
-public class Friend {
+public class FriendId {
     private static final int MAX = 2;
     private final List<SnsId> friend;
 
-    public Friend(List<SnsId> snsIds) {
+    public FriendId(List<SnsId> snsIds) {
         checkMAX(snsIds);
         this.friend = snsIds;
     }
@@ -24,7 +24,7 @@ public class Friend {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Friend friend1 = (Friend) o;
+        FriendId friend1 = (FriendId) o;
         return Objects.equals(friend, friend1.friend);
     }
 

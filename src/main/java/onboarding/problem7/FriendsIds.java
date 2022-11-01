@@ -6,19 +6,19 @@ import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Friends {
+public class FriendsIds {
     private static final int MAX = 10_000;
-    private final List<Friend> friends;
+    private final List<FriendId> friends;
 
-    public Friends(List<List<String>> friends) {
+    public FriendsIds(List<List<String>> friends) {
         checkFriends(friends);
         this.friends = convertFriendsId(friends);
     }
 
-    private static List<Friend> convertFriendsId(List<List<String>> friends) {
+    private static List<FriendId> convertFriendsId(List<List<String>> friends) {
         return friends.stream()
-                .map(Friends::convertSnsIds)
-                .map(Friend::new)
+                .map(FriendsIds::convertSnsIds)
+                .map(FriendId::new)
                 .collect(Collectors.toList());
     }
 
@@ -50,10 +50,10 @@ public class Friends {
         return acquaintance;
     }
 
-    private List<SnsId> findFriend(SnsId user) {
+    public List<SnsId> findFriend(SnsId user) {
 
         return friends.stream()
-                .map(Friend::getFriend)
+                .map(FriendId::getFriend)
                 .filter(friend -> friend.contains(user))
                 .flatMap(Collection::stream)
                 .filter(fr -> !fr.equals(user))
@@ -62,7 +62,7 @@ public class Friends {
 
     private List<SnsId> removeUser(SnsId user) {
         return friends.stream()
-                .map(Friend::getFriend)
+                .map(FriendId::getFriend)
                 .filter(friend -> !friend.contains(user))
                 .flatMap(Collection::stream)
                 .distinct()

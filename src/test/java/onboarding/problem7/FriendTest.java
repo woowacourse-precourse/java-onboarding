@@ -13,7 +13,7 @@ public class FriendTest {
     void getFriend() {
         List<SnsId> snsIds = List.of(new SnsId("hobbang"),
                 new SnsId("hodduck"));
-        Friend friend = new Friend(snsIds);
+        FriendId friend = new FriendId(snsIds);
 
         assertThat(friend.getFriend()).isEqualTo(snsIds);
     }
@@ -24,6 +24,6 @@ public class FriendTest {
                 new SnsId("hodduck"),
                 new SnsId("jjinppang"));
 
-        assertThrows(FriendsException.class, () -> new Friend(snsIds));
+        assertThrows(FriendsException.class, () -> new FriendId(snsIds));
     }
 }

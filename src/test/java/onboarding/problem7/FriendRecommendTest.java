@@ -36,7 +36,7 @@ public class FriendRecommendTest {
         SnsId cheese = new SnsId("cheese");
         SnsId bedi = new SnsId("bedi");
 
-        List<SnsId> friends = List.of(aizza,cheese,bepperoni);
+        List<SnsId> friends = List.of(donut, shakevan);
         List<SnsId> visitors = List.of(bedi, bedi, donut, bedi, shakevan, aizza, cheese, bepperoni);
         Map<String, Integer> result = new HashMap<>();
         result.put("bedi", 3);

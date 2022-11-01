@@ -5,7 +5,6 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class FriendsTest {
 
@@ -24,7 +23,7 @@ class FriendsTest {
         );
 
         List<SnsId> result = List.of(andole, jun);
-        Friends friends1 = new Friends(friends);
+        FriendsIds friends1 = new FriendsIds(friends);
 
         assertThat(friends1.findAcquaintance(user)).isEqualTo(result);
     }

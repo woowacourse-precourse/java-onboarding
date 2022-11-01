@@ -24,9 +24,8 @@ class RecommendationResultTest {
         visitResult.put("bepperoni", 1);
 
 
-        RecommendationResult recommendationResult = new RecommendationResult();
         List<String> result = List.of("jun", "andole", "bedi", "aizza", "bepperoni");
-        assertThat(recommendationResult.getRecommendResult(acqResult,visitResult)).isEqualTo(result);
+        assertThat(RecommendationResult.getRecommendResult(acqResult,visitResult)).isEqualTo(result);
     }
 
     @Test
@@ -42,8 +41,7 @@ class RecommendationResultTest {
         visitResult.put("bepperoni", 0);
 
 
-        RecommendationResult recommendationResult = new RecommendationResult();
         List<String> result = List.of("jun", "andole", "bedi");
-        assertThat(recommendationResult.getRecommendResult(acqResult,visitResult)).isEqualTo(result);
+        assertThat(RecommendationResult.getRecommendResult(acqResult,visitResult)).isEqualTo(result);
     }
 }

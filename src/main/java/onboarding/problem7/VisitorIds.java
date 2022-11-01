@@ -6,12 +6,12 @@ import java.util.List;
 import java.util.Objects;
 import java.util.stream.Collectors;
 
-public class Visitors {
+public class VisitorIds {
 
     private static final int MAX = 10_000;
     private final List<SnsId> visitors;
 
-    public Visitors(List<String> visitors) {
+    public VisitorIds(List<String> visitors) {
         checkMaxVisit(visitors);
         this.visitors = convertVisitorIds(visitors);
     }
@@ -30,7 +30,7 @@ public class Visitors {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Visitors visitors1 = (Visitors) o;
+        VisitorIds visitors1 = (VisitorIds) o;
         return Objects.equals(visitors, visitors1.visitors);
     }
 

@@ -1,12 +1,10 @@
 package onboarding.problem7;
 
-import onboarding.problem7.exception.FriendsException;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class VisitorsTest {
     @Test
@@ -16,7 +14,7 @@ class VisitorsTest {
         SnsId donut = new SnsId("donut");
         SnsId shakaven = new SnsId("shakevan");
 
-        Visitors visitors1 = new Visitors(visitors);
+        VisitorIds visitors1 = new VisitorIds(visitors);
 
         assertThat(visitors1.getVisitors()).isEqualTo(List.of(bedi, bedi, donut, bedi, shakaven));
     }
