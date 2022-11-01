@@ -13,14 +13,16 @@ public class Problem2 {
         }
         return curr;
     }
-
+    
+    // 길이 및 소문자로만 이루어져있는지 검증
     static boolean violation(String cryptogram) {
         int length = cryptogram.length();
         if (length == 0 || length > 1000) return true;
         String regex = "^[a-z]*$";
         return !Pattern.matches(regex, cryptogram);
     }
-
+    
+    // 한차례 순회하면서 중복 문자 제거
     static String delete(String curr) {
         boolean[] delete = new boolean[curr.length()];
         for (int i = 0; i < curr.length() - 1; i++) {
