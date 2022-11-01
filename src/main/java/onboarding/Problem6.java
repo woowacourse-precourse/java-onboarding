@@ -101,4 +101,12 @@ public class Problem6 {
         }
         return false;
     }
+
+    public static boolean isValidNicknameRegex(List<List<String>> forms) {
+        if (!forms.stream().allMatch(form -> form.get(1).matches(NAME_REG))) {
+            System.out.println("올바른 닉네임형식이 아닙니다. 한글만 사용하여 닉네임을 작성헤주세요");
+            return true;
+        }
+        return false;
+    }
 }
