@@ -2,67 +2,44 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "";
-        String temp = cryptogram;
-        int i, k;
-        int prev = cryptogram.charAt(0);
-        boolean check = false;
+        String answer = "answer";
+        String str = "";
+        int start = 0;
+        int i = 1;
 
-        System.out.println(temp.length());
+        while(i < cryptogram.length()) {
+            if(start >= i)
+                break;
 
-        while(!check) {
-            check = true;
-            i = 1;
-            k = 0;
+            if(cryptogram.charAt(start) != cryptogram.charAt(i)) {
+                if(str.equals("")) {
+                    start = i;
 
-            while (i < temp.length() - 1) {
-                if (prev != temp.charAt(i)) {
-                    if (k != 0) {
-                        prev = temp.charAt(i);
-
-                        k = 0;
-
-                        i++;
-
-                        continue;
-                    }
-                    else
-                    {
-                        System.out.println(i);
-                        answer += (char) prev;
-                        k = 0;
-                    }
+                    i += 1;
                 }
                 else
                 {
-                    check = false;
+                    cryptogram = cryptogram.replace(str, "");
 
-                    k = i + 1;
+                    start = 0;
+
+                    i = 1;
+
+                    str = "";
                 }
+            }
+            else
+            {
+                str = cryptogram.substring(start, i + 1);
 
-                System.out.println("i: " + i + " prev: " + prev + " i: " + i);
-                prev = cryptogram.charAt(i);
+                if(cryptogram.equals(str))
+                    cryptogram = "";
 
-                i++;
-                System.out.println("i: " + i + " prev: " + prev + " i: " + i);
+                i += 1;
             }
 
-            System.out.println(i);
-
-            if(k != 0) {
-                answer += (char)prev;
-            }
-
-            temp = answer;
-
-            System.out.println(temp);
-
-            break;
+            answer = cryptogram;
         }
         return answer;
-    }
-
-    public static void main(String[] args) {
-        System.out.println(solution("browoanoommnaon"));
     }
 }
