@@ -21,6 +21,9 @@ public class Problem7 {
         // 4. 방문 기록 점수 반영
         friendsScoreList = scoreByVisitRecord(visitors);
 
+        // 5. 추천 친구 정렬
+        friendsScoreList = sortByScore(friendsScoreList);
+
         return answer;
     }
 
@@ -76,6 +79,19 @@ public class Problem7 {
             if (directFriends.contains(visitor)) continue; // 직접 친구는 제외
             friendsScoreList.put(visitor,friendsScoreList.get(visitor) +1);
         }
+        return friendsScoreList;
+    }
+
+    // 5. 추천 친구 정렬
+    static Map<String, Integer> sortByScore(Map<String, Integer> friendsScoreList){
+        // 이름순 정렬
+        List<String> keySet = new ArrayList<>(friendsScoreList.keySet());
+        Collections.sort(keySet);
+
+        // 점수순 정렬
+        List<String> keySetList = new ArrayList<>(friendsScoreList.keySet());
+        Collections.sort(keySetList, (x, y) -> (friendsScoreList.get(y).compareTo(friendsScoreList.get(x))));
+
         return friendsScoreList;
     }
 }
