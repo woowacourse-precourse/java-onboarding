@@ -22,8 +22,7 @@ public class Problem6 {
         }
         List<String> wordsDict = createWordsDictionary(answer);
         Set<String> duplicatedComponents = checkDuplicatedComponents(forms, wordsDict);
-
-        return answer;
+        return descendingSet(duplicatedComponents);
     }
 
     private static boolean isValidCrewSize(int size) {
@@ -83,6 +82,12 @@ public class Problem6 {
             break;
         }
         return duplicatedNickname;
+    }
+
+    private static List<String> descendingSet(Set<String> duplicatedNickName){
+        List<String> answer = new ArrayList<>(duplicatedNickName);
+        Collections.sort(answer);
+        return answer;
     }
 
 }
