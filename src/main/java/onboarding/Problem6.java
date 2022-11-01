@@ -16,31 +16,28 @@ public class Problem6 {
                 List<String> crew2 = forms.get(j);
                 String crew2Name = crew2.get(1);
 
-                if (sameName(crew1Name, crew2Name)){
+                if (sameName(crew1Name, crew2Name)){    // 비슷한 이름을 가진 사람의 이메일 담음
                     mail.add(crew1.get(0));
                     mail.add(crew2.get(0));
                 }
             }
 
         }
-        Collections.sort(mail);
+        Collections.sort(mail); // 이메일 오름차순
 
-        Set<String> set = new HashSet<String>(mail);
+        Set<String> set = new HashSet<String>(mail);    // 이메일 중복 제거
         mail =new ArrayList<String>(set);
 
         answer = mail;
         return answer;
     }
 
-    public static boolean sameName(String name1, String name2){
+    public static boolean sameName(String name1, String name2){ // 같은 글자가 연속적으로 포함된 닉네임 찾음
         boolean result = false;
-
-
 
         for (int i = 0; i < name1.length()-1; i++){
             String name1Str1 = name1.substring(i, i+1);
             String name1Str2 = name1.substring(i+1, i+2);
-
 
             for (int j = 0; j < name2.length()-1; j++){
                 String name2Str1 = name2.substring(j, j+1);
