@@ -29,6 +29,17 @@ public class Problem6 {
             splited_forms.add(p6.split_name(forms.get(i).get(1))); // 닉네임만 가져와서 splited_forms List에 추가
         }
 
+        for (int i = 0; i < forms.size() - 1; i++) {
+            for (int j = i+1; j < forms.size(); j++) {  // 2개의 HashSet의 교집합을 통해서 겹치는게 있는지 확인
+                HashSet<String> common = new HashSet<>(splited_forms.get(i)); // 교집합 사용하기위해 세팅
+                common.retainAll(p6.split_name(forms.get(j).get(1)));   // 두 개의 HashSet의 교집합
+                if (!common.isEmpty()) {    // 중복 조건이 성립되는 경우(두 개의 HashSet의 교집합이 존재한 경우)
+                    answer.add(forms.get(i).get(0));
+                    answer.add(forms.get(j).get(0));
+                }
+            }
+        }
+
         return answer;
     }
 }
