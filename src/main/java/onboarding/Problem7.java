@@ -45,5 +45,16 @@ public class Problem7 {
 
         }
     }
+    private static void getVisitorsScore(List<String> userFriends, List<String> visitors) {
+
+        for(String visitor : visitors) {
+            if(recommends.containsKey(visitor)) {
+                recommends.put(visitor, recommends.get(visitor) + 1);
+
+            } else if(!userFriends.contains(visitor)){
+                recommends.put(visitor, 1);
+            }
+        }
+    }
 
 }
