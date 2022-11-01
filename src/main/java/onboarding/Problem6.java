@@ -32,7 +32,13 @@ public class Problem6 {
             List<String> tokens = tokenizer(nickname);
             tokens.forEach(token -> appendMapValue(token, email, userMap));
         }
-        List<String> answer = List.of("answer");
-        return answer;
+
+        List<String> entries = userMap.entrySet().stream()
+            .filter(item -> item.getValue().size() > 1) //token에 이메일이 2개 이상이면 추출
+            .flatMap(item -> item.getValue().stream())//value값인 email만
+            .sorted()//정렬하기
+            .collect(Collectors.toList());    //stream to list
+
+        return entries.subList(0, Math.min(entries.size(), 5)); // 5개씩 자르기
     }
 }
