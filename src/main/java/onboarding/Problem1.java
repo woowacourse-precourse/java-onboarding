@@ -50,7 +50,7 @@ class Problem1 {
         return digitList.stream()
                 .mapToInt(Integer::intValue)
                 .reduce((a, b) -> a * b)
-                .getAsInt();
+                .orElse(0);
     }
 
     private static int getPageSum(List<Integer> digitList) {
