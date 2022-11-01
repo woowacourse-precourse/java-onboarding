@@ -10,6 +10,12 @@ public class Problem2 {
         String answer = "answer";
         return answer;
     }
+    private static String extractPlainText(String cryptogram) {
+        while (checkThisStringisDuplicate(cryptogram)) {
+            cryptogram = removeDuplicateCharacter(cryptogram);
+        }
+        return cryptogram;
+    }
 
     private static Boolean checkThisStringisDuplicate(String answer) {
         for (int i = 1; i < answer.length(); i++) {
