@@ -15,6 +15,28 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+
+        if (exception(pobi) || exception(crong)) {
+            return -1;
+        }
         return answer;
+    }
+
+    /**
+     * 기능목록 1
+     * @param check
+     * @return 예외에 속하면 true, 속하지 않으면 false
+     */
+    private static boolean exception(List<Integer> check) {
+        if (check.get(0) <= 1 || check.get(0) > 400 || check.get(1) < 1 || check.get(1) >= 400) {
+            return true;
+        }
+        if (check.get(0) % 2 == 0 || check.get(1) % 2 != 0) {
+            return true;
+        }
+        if (check.get(1) - check.get(0) != 1) {
+            return true;
+        }
+        return false;
     }
 }
