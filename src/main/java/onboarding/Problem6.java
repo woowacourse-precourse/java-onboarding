@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 // <기능 목록>
@@ -19,10 +20,13 @@ public class Problem6 {
     static TreeSet<twoLetter> twoLetterTreeSet = new TreeSet<twoLetter>();
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer = new ArrayList<>();
 
         // 1. 닉네임 두글자씩 잘라서 Treeset에 저장
         addAllTwoLettersInTreeSet(forms);
+
+        // 2. 중복 닉네임을 가진 이메일 찾기
+        answer = findOverlapNickname(forms);
 
         return answer;
     }
@@ -77,6 +81,32 @@ public class Problem6 {
             }
         }
         System.out.println("end");
+    }
+
+    // 2. 중복 닉네임을 가진 이메일 찾기
+    public static List<String> findOverlapNickname(List<List<String>> forms) {
+        List<String> email = new LinkedList<>();
+        for (int i = 0; i < forms.size(); i++) {
+            // 2-a. 닉네임 두글자씩 자름 String[] cutNickname
+            String[] cutNickname = cutNicknameByTwoLetters(forms.get(i).get(1)); // nickname
+
+            // 2-b. cutNickname의 overlap이 true인지 확인
+            if (isOverlapNickname(cutNickname)) {
+                email.add(forms.get(i).get(0)); // email
+            }
+        }
+        return email;
+    }
+
+    // 2-b. cutNickname의 overlap이 true인지 확인
+    public static boolean isOverlapNickname(String[] cutNickname) {
+        for (int i = 0; i < cutNickname.length; i++) {
+            twoLetter tmp = twoLetterTreeSet.ceiling(new twoLetter(cutNickname[i], true));
+            if (tmp.overlap) {
+                return true;
+            }
+        }
+        return false;
     }
 
     // 0. class twoLetter(string letter, boolean overlap)
