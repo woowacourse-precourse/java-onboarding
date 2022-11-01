@@ -5,7 +5,6 @@ import java.util.Deque;
 
 public class Problem2 {
 
-
     public static String solution(String cryptogram) {
         String cleaned_cryptogram = "";
 
@@ -24,6 +23,10 @@ public class Problem2 {
 
     public static String remove_duplication_from(String cryptogram) {
         int length = cryptogram.length();
+
+        if (length == 0){
+            return "";
+        }
 
         Deque<Character> dq = new ArrayDeque<>();
         dq.addLast(cryptogram.charAt(0));
