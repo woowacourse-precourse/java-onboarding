@@ -42,6 +42,9 @@ public class Problem6 {
             }
         }
 
+        //이메일 정렬
+        Collections.sort(sortEmail);
+
         List<String> answer = sortEmail;
         return answer;
     }
