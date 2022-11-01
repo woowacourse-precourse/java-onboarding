@@ -23,5 +23,4 @@
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
 
 ## 기능 목록
-1. 문자열 중복을 체크해주는 함수 -> checkNickname
-2. 이메일이 email.com 도메인인지 체크해주는 함수 -> checkDomain
+- 문자열 중복을 체크해주는 함수 -> checkNickname
