@@ -65,11 +65,16 @@ public class Problem6 {
             Set<String> allPattern = new HashSet<>();
             Set<String> overlapPattern = new HashSet<>();
             for (List<String> form : forms) {
-                if (form.get(1).length() == 1) {
-                    continue;
-                }
-                overlapPattern = findPatternByWord(allPattern, overlapPattern, form.get(1));
+                overlapPattern = findPattern(allPattern, overlapPattern, form);
             }
+            return overlapPattern;
+        }
+
+        private Set<String> findPattern(Set<String> allPattern, Set<String> overlapPattern, List<String> form) {
+            if (form.get(1).length() == 1) {
+                return overlapPattern;
+            }
+            overlapPattern = findPatternByWord(allPattern, overlapPattern, form.get(1));
             return overlapPattern;
         }
 
@@ -79,17 +84,21 @@ public class Problem6 {
                 String subWord = word.substring(j, j + 2);
                 wordPatterns.add(subWord);
             }
-            return addPatternToHashSet(allPattern, overlapPattern, wordPatterns);
+            return addPatternFromHashSet(allPattern, overlapPattern, wordPatterns);
         }
 
-        private Set<String> addPatternToHashSet(Set<String> allPattern,Set<String> overlapPattern, Set<String> wordPatterns) {
+        private Set<String> addPatternFromHashSet(Set<String> allPattern,Set<String> overlapPattern, Set<String> wordPatterns) {
             for (String wordPattern : wordPatterns) {
-                if (allPattern.contains(wordPattern)) {
-                    overlapPattern.add(wordPattern);
-                }
-                allPattern.add(wordPattern);
+                checkIfOverlapPattern(allPattern, overlapPattern, wordPattern);
             }
             return overlapPattern;
+        }
+
+        private static void checkIfOverlapPattern(Set<String> allPattern, Set<String> overlapPattern, String wordPattern) {
+            if (allPattern.contains(wordPattern)) {
+                overlapPattern.add(wordPattern);
+            }
+            allPattern.add(wordPattern);
         }
 
         public Set<String> getOverlapEmails(List<List<String>> forms) {
