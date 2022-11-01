@@ -19,6 +19,17 @@ public class Problem7 {
         }
 
 
+        for (int i = 0 ; i < friendsOfUser.size() ; i ++){
+            for (int j =0 ; j < friends.size() ; j++) {
+                int friendsIndex = friends.get(j).indexOf(friendsOfUser.get(i));
+
+                int friendOfFriendIndex = 1-friendsIndex;
+
+                String friendNameOfFriendOfUser = friends.get(i).get(friendOfFriendIndex);
+
+            }
+        }
+
 
         List<String> answer = Collections.emptyList();
         return answer;

@@ -20,6 +20,7 @@ public class Problem7Debugging {
         List<String> friendsOfUser = new ArrayList<>();
 
 
+
         for (int i =0 ; i < friends.size() ; i++) {
             int userIndex = friends.get(i).indexOf(user);
 
@@ -28,6 +29,20 @@ public class Problem7Debugging {
             friendsOfUser.add(friends.get(i).get(friendIndex));
 
         }
+        for (int i = 0 ; i < friendsOfUser.size() ; i ++){
+            for (int j =0 ; j < friends.size() ; j++) {
+                int friendsIndex = friends.get(j).indexOf(friendsOfUser.get(i));
+
+                int friendOfFriendIndex = 1-friendsIndex;
+
+                String friendNameOfFriendOfUser = friends.get(i).get(friendOfFriendIndex);
+
+            }
+        }
+
+
+
+
 
     }
 }
