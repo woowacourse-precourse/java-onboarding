@@ -25,6 +25,10 @@ public class Friend {
     return new Friend(friendNames);
   }
 
+  public List<Name> currentFriend() {
+    return friend;
+  }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {

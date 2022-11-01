@@ -21,6 +21,10 @@ public class Name {
     return new Name(name);
   }
 
+  public String currentName() {
+    return name;
+  }
+
   private boolean checkNameUpperCase(String name) {
     char[] chars = name.toCharArray();
     for (char aChar : chars) {
