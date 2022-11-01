@@ -22,11 +22,11 @@ public class Problem3 {
             answer += (number/10) * 3 + (number%10)/3; //일의자리
 
             if((number/10)%3 == 0){
-                answer += ((number/10)/3 -1) *10 + (number % 10 +1);
+                answer += ((number/100)*3) *10 + (number % 10 +1);
 
             }
             else{
-                answer += ((number/10)/3)*10;
+                answer += ((number/100)*3)*10;
             }
 
             if((number/100)%3 == 0){
