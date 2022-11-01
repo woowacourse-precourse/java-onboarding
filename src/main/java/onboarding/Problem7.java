@@ -7,8 +7,8 @@ public class Problem7 {
 
         Map<String, List<String>> relation = makeFriendsRelation(user, friends, visitors);
 
-        List<String> answer = Collections.emptyList();
-        return answer;
+        getRelationScore(relation, userFriends);
+
     }
 
     private static Map makeFriendsRelation(String user, List<List<String>> friends, List<String> visitors) {
@@ -43,5 +43,14 @@ public class Problem7 {
             }
         }
         return temp;
+    }
+    private static void getRelationScore(Map<String, List<String>> relation, List<String> userFriends) {
+        for (String name : userFriends) {
+            for (String person : relation.keySet()) {
+                if (relation.get(person).contains(name)) {
+                    relation.get(person).set(0, String.valueOf(Integer.parseInt(relation.get(person).get(0)) + 10));
+                }
+            }
+        }
     }
 }
