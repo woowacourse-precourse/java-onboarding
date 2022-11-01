@@ -5,38 +5,38 @@ import java.util.HashMap;
 public class Dictinary {
 
     // 청개구리 사전 저장소
-    public static HashMap<String, String> setDictionary(HashMap<String, String>){
+    public static final HashMap<String, String> setDictionary(HashMap<String, String> map){
 
-        final HashMap<String, String> hashMap = new HashMap<String, String>(26){{
-            put("a", "z");
-            put("b", "y");
-            put("c", "x");
-            put("d", "w");
-            put("e", "v");
-            put("f", "u");
-            put("g", "t");
-            put("h", "s");
-            put("i", "r");
-            put("j", "q");
-            put("k", "p");
-            put("l", "o");
-            put("m", "n");
-            put("n", "m");
-            put("o", "l");
-            put("p", "k");
-            put("q", "j");
-            put("r", "i");
-            put("s", "h");
-            put("t", "g");
-            put("u", "f");
-            put("v", "d");
-            put("w", "d");
-            put("x", "c");
-            put("y", "b");
-            put("z", "a");
-        }};
+        final HashMap<String, String> dictionary = map;
 
-        return hashMap;
+        dictionary.put("a", "z");
+        dictionary.put("b", "y");
+        dictionary.put("c", "x");
+        dictionary.put("d", "w");
+        dictionary.put("e", "v");
+        dictionary.put("f", "u");
+        dictionary.put("g", "t");
+        dictionary.put("h", "s");
+        dictionary.put("i", "r");
+        dictionary.put("j", "q");
+        dictionary.put("k", "p");
+        dictionary.put("l", "o");
+        dictionary.put("m", "n");
+        dictionary.put("n", "m");
+        dictionary.put("o", "l");
+        dictionary.put("p", "k");
+        dictionary.put("q", "j");
+        dictionary.put("r", "i");
+        dictionary.put("s", "h");
+        dictionary.put("t", "g");
+        dictionary.put("u", "f");
+        dictionary.put("v", "d");
+        dictionary.put("w", "d");
+        dictionary.put("x", "c");
+        dictionary.put("y", "b");
+        dictionary.put("z", "a");
+
+        return dictionary;
     }
 
 }
