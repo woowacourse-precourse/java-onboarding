@@ -1,15 +1,31 @@
 package onboarding;
 
-import java.util.List;
+import java.util.*;
 
 public class Problem6 {
-    public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        for (int i = 0; i < forms.size(); i++) {
-            for (int j = 0; j < forms.get(i).size(); j++) {
-                System.out.println(forms.get(i).get(j));
+    private static boolean[] makeConsecutiveCheckArray(List<List<String>> forms) {
+        boolean[] isConsecutive = new boolean[forms.size()];
+        List<List<String>> sliceList = makeSliceByTwo(forms);
+        Set<String> sliceSet = makeSliceSet(sliceList);
+
+        for (int i = 0; i < sliceList.size(); i++) {
+            List<String> slices = sliceList.get(i);
+            for (int j = 0; j < slices.size(); j++) {
+                String slice = slices.get(j);
+                if (sliceSet.contains(slice)) {
+                    isConsecutive[i] = true;
+                    break;
+                }
             }
         }
-        return answer;
+
+        return isConsecutive;
+    }
+
+    public static List<String> solution(List<List<String>> forms) {
+        List<String> result = new ArrayList<>();
+        boolean[] isConsecutive = makeConsecutiveCheckArray(forms);
+
+        return result;
     }
 }
