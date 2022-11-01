@@ -69,10 +69,10 @@ class Problem6Test {
 	void countingAllTokensTest() {
 		// given : form list 가 주어졌을 때
 		List<List<String>> forms = new ArrayList<>(List.of(
-			new ArrayList<>(List.of("temp1@email.com", "김재준재준")),
-			new ArrayList<>(List.of("temp2@email.com", "우테코재준")),
-			new ArrayList<>(List.of("temp3@email.com", "최고야재준")),
-			new ArrayList<>(List.of("temp4@email.com", "제발우테코"))
+				new ArrayList<>(List.of("temp1@email.com", "김재준재준")),
+				new ArrayList<>(List.of("temp2@email.com", "우테코재준")),
+				new ArrayList<>(List.of("temp3@email.com", "최고야재준")),
+				new ArrayList<>(List.of("temp4@email.com", "제발우테코"))
 		));
 
 		// when : 모든 forms 의 nickname 들에 대해 토큰의 개수를 카운팅
@@ -81,9 +81,16 @@ class Problem6Test {
 		// then :
 		Map<String, Integer> result = Problem6.tokenCounter;
 		final Map<String, Integer> expected = new HashMap<>() {{
-			put("고야", 1); put("김재", 1); put("준재", 1); put("발우", 1);
-			put("제발", 1); put("최고", 1); put("코재", 1); put("야재", 1);
-			put("우테", 2); put("테코", 2);
+			put("고야", 1);
+			put("김재", 1);
+			put("준재", 1);
+			put("발우", 1);
+			put("제발", 1);
+			put("최고", 1);
+			put("코재", 1);
+			put("야재", 1);
+			put("우테", 2);
+			put("테코", 2);
 			put("재준", 3);
 		}};
 
@@ -130,5 +137,49 @@ class Problem6Test {
 
 		// then : 중복이 된 nickname 이기에 true 반환
 		assertThat(result).isTrue();
+	}
+
+	@ParameterizedTest(name = "MAIN TEST : {0} 에서 중복되는 이메일 리스트 => {1}")
+	@MethodSource("generateFormList")
+	void solutionTest(List<List<String>> forms, List<String> expected) {
+		// when : solution(main) 을 실행했을 때
+		List<String> result = Problem6.solution(forms);
+
+		// then : 중복되는 nickname 을 가진 모든 email 리스트가 중복없이 정렬되어 나와야 함
+		assertThat(result).isEqualTo(expected);
+	}
+
+	private static Stream<Arguments> generateFormList() {
+		return Stream.of(
+				Arguments.of(List.of(
+						List.of("rlawowns97@email.com", "재준이가짱"),
+						List.of("ghdtjrwn@email.com", "홍석주가짱"),
+						List.of("wooteco@email.com", "우아한테크코스"),
+						List.of("iphonemaster@email.com", "아이폰아이좋아"),
+						List.of("galaxymaster@email.com", "삼성이미래다"),
+						List.of("woowahan@email.com", "우아한형제들")
+				), List.of("ghdtjrwn@email.com", "rlawowns97@email.com", "wooteco@email.com", "woowahan@email.com")),
+				Arguments.of(List.of(
+						List.of("tomato@email.com", "토마토마토마토마토"),
+						List.of("whoisthebest@email.com", "내가짱"),
+						List.of("applespy@email.com", "갤럭시짱"),
+						List.of("galaxyspy@email.com", "애플이미래다"),
+						List.of("light@email.com", "빛을쏟는스카이"),
+						List.of("next@email.com", "다음은당신")
+				), List.of()),
+				Arguments.of(List.of(
+						List.of("az@email.com", "토마토마토마토마토"),
+						List.of("zb@email.com", "내가짱짱"),
+						List.of("ca@email.com", "갤럭시짱짱"),
+						List.of("cq@email.com", "애플이짱짱"),
+						List.of("ef@email.com", "빛을쏟는짱짱"),
+						List.of("ee@email.com", "토마도가좋아")
+				), List.of("az@email.com",
+						"ca@email.com",
+						"cq@email.com",
+						"ee@email.com",
+						"ef@email.com",
+						"zb@email.com"))
+		);
 	}
 }
