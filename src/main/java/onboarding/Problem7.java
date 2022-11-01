@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     public static final int MAX_NUMBER_OF_PEOPLE_CAN_RECOMMEND = 5;
@@ -11,6 +12,8 @@ public class Problem7 {
 
         initAllFriendList(friends);
         initAllRecommendScore(user);
+
+        calculateRecommendScore(visitors);
 
         return answer;
     }
@@ -54,5 +57,24 @@ public class Problem7 {
         return (int) targetUserFriends.stream()
                 .filter(userFriends::contains)
                 .count();
+    }
+
+    private static void calculateRecommendScore(List<String> visitors) {
+        addScoreOfVisitors(visitors);
+    }
+
+    private static void addScoreOfVisitors(List<String> visitors) {
+        for (String visitor : visitors) {
+            addScoreOfVisitor(visitor);
+        }
+    }
+
+    private static void addScoreOfVisitor(String visitor) {
+        if (recommendScore.containsKey(visitor)) {
+            recommendScore.put(visitor, recommendScore.get(visitor) + 1);
+            return;
+        }
+
+        recommendScore.put(visitor, 1);
     }
 }
