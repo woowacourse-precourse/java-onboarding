@@ -46,4 +46,15 @@ class Problem1 {
 
         return ret;
     }
+
+    private static int multiply(Integer integer) {
+        int ret = 1;
+
+        while (integer > 0) {
+            ret *= integer % 10;
+            integer=integer/10;
+        }
+
+        return ret;
+    }
 }
