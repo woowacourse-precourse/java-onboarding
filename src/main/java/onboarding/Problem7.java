@@ -188,21 +188,15 @@ public class Problem7 {
 	 * @param friends
 	 * @param map
 	 * @param notYetFriend
-	 * @param alreadyFriend
+	 * @param alreadyFriends
 	 */
 	private static void calcBothKnowScore(List<List<String>> friends, Map<String, Integer> map,
-		Set<String> notYetFriend,
-		Set<String> alreadyFriend) {
-		for (List<String> friendList : friends) {
-			for (String friend : alreadyFriend) {
-				if (friendList.contains(friend)) { // 사용자와 함께 아는 친구가 있다면
-					String friend1 = friendList.get(0); // friend 리스트의 첫 번째 요소
-					String friend2 = friendList.get(1); // friend 리스트의 두 번째 요소
-					if (notYetFriend.contains(friend1)) {
-						map.put(friend1, map.get(friend1) + BOTH_KNOW_SCORE); // friend1 의 친구 점수 + 10
-					}
-					if (notYetFriend.contains(friend2)) { // user 일 수도 있기 때문에 if~else 가 아닌 if 문을 두 번 사용해야 한다.
-						map.put(friend2, map.get(friend2) + BOTH_KNOW_SCORE); // friend2 의 친구 점수 + 10
+		Set<String> notYetFriend, Set<String> alreadyFriends) {
+		for (List<String> friend : friends) {
+			for (String alreadyFriend : alreadyFriends) {
+				for (String person : friend) {
+					if (friend.contains(alreadyFriend) && notYetFriend.contains(person)) { // 사용자와 함께 아는 친구가 있다면
+						map.put(person, map.get(person) + BOTH_KNOW_SCORE); // person 의 친구 점수 + 10
 					}
 				}
 			}
