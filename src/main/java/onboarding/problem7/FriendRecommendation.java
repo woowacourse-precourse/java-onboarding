@@ -9,6 +9,7 @@ public class FriendRecommendation {
     private Map<String, List<String>> friendMap = new HashMap<>();
     private List<String> usersFriendList;
     private Map<String, Integer> friendScore = new HashMap<>();
+    private Map<String, Integer> visitorScore = new HashMap<>();
 
     public FriendRecommendation(String user, List<List<String>> friends, List<String> visitors){
         this.user = user;
@@ -52,5 +53,13 @@ public class FriendRecommendation {
             }
         }
         friendScore.replaceAll((u, v) -> friendScore.get(u) * 10);
+    }
+
+    private void countVisit(){
+        for (String visitor : visitors){
+            if (usersFriendList.contains(visitor))
+                continue;
+            visitorScore.put(visitor, visitorScore.containsKey(visitor) ? visitorScore.get(visitor) + 1 : 1);
+        }
     }
 }
