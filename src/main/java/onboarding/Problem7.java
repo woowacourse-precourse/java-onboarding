@@ -31,11 +31,18 @@ public class Problem7 {
         entryList = new ArrayList<>(scores.entrySet());
         entryList.sort(Map.Entry.comparingByValue(Collections.reverseOrder()));
 
+        makeRecommendFriends(myFriends, entryList, result);
+
+        return result;
+    }
+
+    /**
+     * 추천 친구 리스트 메소드
+     */
+    private static void makeRecommendFriends(Set<String> myFriends, List<Map.Entry<String, Integer>> entryList, List<String> result) {
         for (Map.Entry<String, Integer> entry : entryList) {
             if (isFriendLimit(myFriends, result, entry)) break;
         }
-
-        return result;
     }
 
     /**
