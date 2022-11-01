@@ -1,7 +1,9 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -30,6 +32,8 @@ public class Problem6 {
         
         answer = addNickNamesInAnswer(answer,duplicatedNickIdx,forms);
 
+        //중복 제거 및 정렬
+        answer = sortAndRemoveDuplication(answer);
 
 
 
@@ -83,11 +87,19 @@ public class Problem6 {
         return  answer;
     }
 
+    public static List<String> sortAndRemoveDuplication(List<String> answer){
+        List<String> newAnswer = answer.stream().distinct().collect(Collectors.toList());
+        Collections.sort(newAnswer);
+
+        return newAnswer;
+    }
+
     public static void main(String[] args) {
         List<List<String>> forms = List.of(
                 List.of("jm@email.com", "제이엠"),
                 List.of("jason@email.com", "제이슨"),
                 List.of("woniee@email.com", "워니"),
+                List.of("mj@email.com", "엠제이"),
                 List.of("mj@email.com", "엠제이"),
                 List.of("nowm@email.com", "이제엠")
         );
