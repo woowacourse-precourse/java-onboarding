@@ -18,4 +18,17 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
         return answer;
     }
+
+    static void add_relationship(String user1, String user2){
+
+        if(friend_map.containsKey(user1)) {
+            friend_map.get(user1).add(user2);
+        }
+        else {
+            friend_map.put(user1, new ArrayList<String>());
+            friend_map.get(user1).add(user2);
+        }
+
+    }
+
 }
