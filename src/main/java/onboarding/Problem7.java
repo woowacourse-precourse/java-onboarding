@@ -2,6 +2,13 @@ package onboarding;
 
 import java.util.*;
 
+/**
+ * 1. 사용자 별 친구 리스트 생성
+ * 2. user의 친구의 친구 점수 계산하는 Map
+ * 3. 방문자 점수 계산하는 Map 생성
+ * 4. 추천 친구가 될 수 있는 Map 합치기
+ * 5. 정렬 조건에 맞게 정렬 후 최대 5개 반환
+ */
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
