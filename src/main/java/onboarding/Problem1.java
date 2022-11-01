@@ -42,10 +42,7 @@ class Problem1 {
                 sum += Integer.parseInt(digits[j]);
                 mul *= Integer.parseInt(digits[j]);
             }
-            int biggerValue = findBiggerValue(sum, mul);
-            if (max < biggerValue) {
-                max = biggerValue;
-            }
+            max = findBiggerValue(sum, mul);
         }
         return max;
     }
