@@ -74,13 +74,25 @@ public class Problem7 {
     }
 
     // 우선순위 큐에 사용할 유저 클래스
-    static class User {
+    static class User implements Comparable<Problem7.User> {
         String userName;
         int score;
 
         public User(String userName, int score) {
             this.userName = userName;
             this.score = score;
+        }
+
+        // 유저 객체끼리 비교할 compareTo 메서드
+        @Override
+        public int compareTo(Problem7.User o) {
+            if (this.score > o.score) {
+                return -1;
+            }
+            else if (this.score < o.score) {
+                return 1;
+            }
+            return this.userName.compareTo(o.userName);
         }
     }
 }
