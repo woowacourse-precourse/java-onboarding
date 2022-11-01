@@ -4,7 +4,22 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        //유효성 검사
+        if(!isValid(pobi) || !isValid(crong)) {
+            return -1;
+        }
+        //최대값 구하기
+        int maxOfPobi = calculateMax(pobi);
+        int maxOfCrong = calculateMax(crong);
+        int answer;
+
+        if(maxOfPobi > maxOfCrong) {
+            answer = 1;
+        } else if(maxOfPobi < maxOfCrong) {
+            answer = 2;
+        } else {
+            answer = 0;
+        }
         return answer;
     }
     //최대값 구하는 메서드
