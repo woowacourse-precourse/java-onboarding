@@ -19,18 +19,20 @@ public class Page {
 
     public int getSumOfPageDigits() {
         int result = 0;
-        while (pageNumber > 0) {
-            result += Math.floorMod(pageNumber, 10);
-            pageNumber = Math.floorDiv(pageNumber, 10);
+        int number = this.pageNumber;
+        while (number > 0) {
+            result += Math.floorMod(number, 10);
+            number = Math.floorDiv(number, 10);
         }
         return result;
     }
 
     public int getProductOfPageDigits() {
         int result = 1;
-        while (pageNumber > 0) {
-            result *= Math.floorMod(pageNumber, 10);
-            pageNumber = Math.floorDiv(pageNumber, 10);
+        int number = this.pageNumber;
+        while (number > 0) {
+            result *= Math.floorMod(number, 10);
+            number = Math.floorDiv(number, 10);
         }
         return result;
     }
