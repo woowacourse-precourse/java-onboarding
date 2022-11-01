@@ -16,6 +16,17 @@ public class Problem7 {
     }
 
 
+    // 점수 기준 내림차순, 점수가 같으면 이름 기준 오름차순으로 정렬
+    public static List<Map.Entry<String, Integer>> sort_scores(HashMap<String, Integer> scores){
+        List<Map.Entry<String, Integer>> sorted_scores  = new ArrayList<>(scores.entrySet());
+        sorted_scores.sort((o1, o2) -> (
+                Objects.equals(o1.getValue(), o2.getValue()) ?
+                        o1.getKey().compareTo(o2.getKey()) :
+                        o2.getValue().compareTo(o1.getValue()))
+        );
+
+        return sorted_scores;
+    }
 
 
     // 방문 점수 집계
