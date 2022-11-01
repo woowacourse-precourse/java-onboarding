@@ -19,6 +19,17 @@ public class Problem2 {
         String answer = sb.toString();
         return answer;
     }
+
+    private static int maxSameCharacter(StringBuilder sb, int start) {
+        int n = 1;
+        for(int i = start; i < sb.length()-1; i++) {
+            if(!isConsecutiveSameCharacter(sb, i)) {
+                return n;
+            }
+            n++;
+        }
+        return n;
+    }
     private static StringBuilder removeConsecutiveSameCharacter(StringBuilder sb, int i, int n) {
         return sb.delete(i, i+n);
     }
