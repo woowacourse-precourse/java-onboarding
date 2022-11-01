@@ -22,7 +22,7 @@ public class Problem7 {
         }
         return true;
     }
-    public static List<String> makeresult(String[] scoreperson, String[][] newfri, String[] newvisit){
+    public static List<String> makeresult(String[] scoreperson, String[][] newfri, String[] newvisit, String[] person){
         HashMap<String, Integer> score = new HashMap<String, Integer>();
         List<String> answer = new ArrayList<String>();
 
@@ -32,8 +32,19 @@ public class Problem7 {
         for (int i = 0; i < newfri.length; i++){
             for (int j = 0; j < newfri[i].length; j++){
                 for (int k = 0; k < scoreperson.length; k++){
-                    if (newfri[i][j].equals(scoreperson[k]) == true)
-                        score.put(scoreperson[k], score.get(scoreperson[k]) + 10);
+                    if (newfri[i][j].equals(scoreperson[k]) == true) {
+                        if (j == 0) {
+                            for (int a = 0; a < person.length; a++) {
+                                if (newfri[i][1].equals(person[a]) == true)
+                                    score.put(scoreperson[k], score.get(scoreperson[k]) + 10);
+                            }
+                        } else {
+                            for (int b = 0; b < person.length; b++) {
+                                if (newfri[i][0].equals(person[b]) == true)
+                                    score.put(scoreperson[k], score.get(scoreperson[k]) + 10);
+                            }
+                        }
+                    }
                 }
             }
         }
@@ -145,7 +156,7 @@ public class Problem7 {
             return null;
         String[] person = kindfrined(newfri, user);
         scoreperson = makescore(person, user, newfri, newvisit);
-        answer = makeresult(scoreperson, newfri, newvisit);
+        answer = makeresult(scoreperson, newfri, newvisit, person);
         return answer;
     }
 }
