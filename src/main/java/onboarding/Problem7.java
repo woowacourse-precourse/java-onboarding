@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -28,6 +25,18 @@ public class Problem7 {
                 recomendTable.put(name, recomendTable.get(name) + 10);
             }
         }
+
+        // 정렬 진행 (점수 DESC, 이름 ASC)
+        List<Map.Entry<String, Integer>> list_entries = new ArrayList<>(recomendTable.entrySet());  // Map.Entry 리스트 작성
+
+        list_entries.sort((obj1, obj2) -> {
+            // 내림 차순으로 정렬
+            int result = obj2.getValue().compareTo(obj1.getValue());
+            if (result == 0 && obj1.getKey().compareTo(obj2.getKey()) < 0) { // 점수가 같은 경우 이름이 빠른순으로 적용
+                result = -1;
+            }
+            return result;
+        });
 
         return answer;
     }
