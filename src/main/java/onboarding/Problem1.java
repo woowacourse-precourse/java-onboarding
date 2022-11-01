@@ -37,10 +37,17 @@ class Problem1 {
         return Math.max(maxDigitMul, maxDigitSum);
     }
 
-    private static int sumDigit(Integer integer) {
+    private static int sumDigit(Integer num) {
+        Integer result = 0;
+        while (num != 0) {
+            result += num % 10;
+            num /= 10;
+        }
+        return result;
     }
 
     private static int mulDigit(Integer integer) {
+
     }
 
 
