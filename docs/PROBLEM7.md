@@ -1,3 +1,10 @@
+## 🚀 기능 목록
+1. - [ ] 첫 파라미터의 친구들을 리턴하는 getFriendsFrom 메서드
+2. - [ ] user와 user의 친구는 제외하는 excludeUserAndFriendsOfUser 메서드
+3. - [ ] 사용자들의 이름을 Key, 각각의 score를 Value로 한 nameAndScoreMap을 업데이트하는 updateScore 메서드
+4. - [ ] score를 내림차순으로 정렬하여 리턴하는 getSortedScores 메서드
+5. - [ ] 해당 score에 맞는 name을 반환하는 getNamesByScore 메서드
+
 ## 🚀 기능 요구 사항
 
 레벨 2의 팀 프로젝트 미션으로 SNS(Social Networking Service)를 만들고자 하는 팀이 있다. 팀에 속한 크루 중 평소 알고리즘에 관심이 많은 미스터코는 친구 추천 알고리즘을 구현하고자 아래와 같은 규칙을 세웠다.
