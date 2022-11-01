@@ -78,7 +78,7 @@ public class Problem7 {
         }
         for (int i = 0; i < user.length(); i++) {
             int num = Integer.valueOf(user.charAt(i));
-            if (num > 64 && num < 91) { // 대문자 아스키 코드 A ~Z : 65~91
+            if (num > 64 && num < 92) { // 대문자 아스키 코드 A ~Z : 65~91
                 System.out.println("대문자가 포함되어있습니다");
                 return false;
             }
