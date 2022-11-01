@@ -17,9 +17,23 @@ import java.util.List;
 //2.현재 주목하는 사람인 user의 친구목록을 순회하며 친구의 친구들을 찾아 점수를 추가해줌
 //2-1.친구관계 map에는 user를 비롯해 이미 친구인 사람들도 겹칠 수 있다.
 //3.visitors 를 순회하며 점수에 추가해준다.
+//4.2-1해결
+//5.5명이하 추려서 정렬후 제출
 
 
 public class Problem7 {
+	
+	public static HashMap<String, Integer> trim(String user, HashMap<String, List<String>> friends_info, HashMap<String, Integer> points) {
+		// user 자기자신과 이미 친구인 id를 points에서 제거
+		HashMap<String, Integer> trimed_points = points;
+		List<String> temp = friends_info.get(user);
+		temp.add(user);
+		for (String f: temp) {
+        	trimed_points.remove(f);
+        }
+		return trimed_points;
+	}
+	
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 //        List<String> answer = Collections.emptyList();
         
@@ -66,6 +80,8 @@ public class Problem7 {
         
         // 위에서 나온 points에는 user 자기자신, 이미 친구인 사람까지 포함되기에 이를 제거.
         // 친구의 친구를 확인하는 과정에서 매번 걸러내는 것보다 밖에서 하는게 더 나을 것 같다.
+        
+        points = trim(user, friends_info, points);
         
 //        return answer;
     }
