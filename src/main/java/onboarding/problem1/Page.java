@@ -1,4 +1,4 @@
-package onboarding;
+package onboarding.problem1;
 
 public class Page {
     private Integer leftPage;

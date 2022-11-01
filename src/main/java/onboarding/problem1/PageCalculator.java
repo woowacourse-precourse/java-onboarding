@@ -1,4 +1,4 @@
-package onboarding;
+package onboarding.problem1;
 
 public interface PageCalculator {
     default int reduce(Integer page){
