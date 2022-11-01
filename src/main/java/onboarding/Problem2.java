@@ -29,6 +29,10 @@ public class Problem2 {
 					before = i;
 					continue;
 				}
+
+				if (chars[before] != chars[i]) {
+					before = i;
+				}
 			}
 		} while (isChanged);
 
