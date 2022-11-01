@@ -6,7 +6,10 @@ public class Problem4 {
         // 예외 처리
         if (word.length() < 1 || word.length() > 10000) {
             return "제한사항 위반";
+        } else if (word.matches("^[a-zA-Z]*$")) {
+            return "제한사항 위반";
         }
+
 
         String answer = "";
 
