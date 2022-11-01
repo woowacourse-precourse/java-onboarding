@@ -1,5 +1,7 @@
 package onboarding;
 
+import java.util.ArrayList;
+
 public class Problem2 {
     public static String solution(String cryptogram) {
         /*
@@ -10,6 +12,16 @@ public class Problem2 {
         4. 2번 케이스 미 발생 시 탐색 종료, 문자 출력
         */
         String answer = "answer";
+
+        //문자 별 배열에 저장
+        ArrayList<Character> charList = new ArrayList<Character>();
+        for (int i=0; i<cryptogram.length(); i++) {
+            Character temp = cryptogram.charAt(i);
+            charList.add(temp);
+        }
+
+        System.out.print(charList);
+
         return answer;
     }
 }
