@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
 
@@ -66,4 +67,14 @@ public class Problem7 {
             scoreMap.remove(userFriend);
         }
     }
+
+    private static List<String> getRecommandFriends() {
+        //score.keySet();
+        return scoreMap.entrySet().stream()
+                .filter(sc -> sc.getValue() >0)
+                .sorted(Comparator.comparing(Map.Entry<String, Integer>::getKey).reversed())
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
+    }
+
 }
