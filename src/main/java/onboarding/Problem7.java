@@ -34,15 +34,33 @@ public class Problem7 {
         return answer;
     }
 
-    public void addCandidateFriends(List<List<String>> friends) {
-        for (List<String> friend : friends) {
-            addCandidateIterList(friend, 10);
+    public void addCandidateFriends(String user, List<List<String>> friends) throws Exception {
+        List<String> userFriends = findUserFriends(user, friends);
+        for (String userFriend : userFriends) {
+            List<String> list = findUserFriends(userFriend, friends);
+            addCandidateIterList(list, 10);
         }
     }
 
-    private List<String> findFriends(String user, List<String> list) {
-        List<String> friend = new ArrayList<>();
 
+
+    private List<String> findUserFriends(String user, List<List<String>> list) throws Exception {
+        List<String> friends = new ArrayList<>();
+        for (List<String> friendList : list) {
+            if (checkUserFriend(user, friendList)) {
+                friends.add(getUserFriend(user, friendList));
+            }
+        }
+        return friends;
+    }
+
+    private String getUserFriend(String user, List<String> list) throws Exception {
+        for (String name : list) {
+            if (!(user.equals(name))) {
+                return name;
+            }
+        }
+        throw new Exception("친구목록을 확인해주세요.");
     }
 
     private boolean checkUserFriend(String user, List<String> list) {
@@ -54,8 +72,18 @@ public class Problem7 {
         return Boolean.FALSE;
     }
 
+    private boolean checkMapIfExist(String name) {
+        if (algorithmCandidate.containsKey(name)) {
+            return Boolean.FALSE;
+        }
+        return Boolean.TRUE;
+    }
+
     private void addCandidateIterList(List<String> list, int score) {
         for (String s : list) {
+            if (checkMapIfExist(s)) {
+                algorithmCandidate.replace(s, algorithmCandidate.get(s), algorithmCandidate.get(s) + score);
+            }
             algorithmCandidate.put(s, score);
         }
     }
