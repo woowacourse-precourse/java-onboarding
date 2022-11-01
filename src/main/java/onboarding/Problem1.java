@@ -7,6 +7,11 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
+        // 예외처리 사항
+        if (checkInvalid(pobi, crong)) {
+            return -1;
+        }
+
         // Step1: 포비가 펼친 페이지 번호
         List<Integer> p1 = eachNum(pobi.get(0));
         List<Integer> p2 = eachNum(pobi.get(1));
@@ -14,11 +19,6 @@ class Problem1 {
         // Step1: 크롱이 펼친 페이지 번호
         List<Integer> c1 = eachNum(crong.get(0));
         List<Integer> c2 = eachNum(crong.get(1));
-
-        // 예외처리 사항
-        if (checkInvalid(pobi, crong, pobi.get(0), pobi.get(1), crong.get(0), crong.get(1))) {
-            return -1;
-        }
 
         // Step 2~4: 포비의 점수
         int pobiMaxLeft = maxNum(addNum(p1), mulNum(p1));
@@ -42,21 +42,27 @@ class Problem1 {
         return answer;
     }
 
-    private static boolean checkInvalid(List<Integer> p, List<Integer> c, Integer n1, Integer n2, Integer n3, Integer n4) {
+    private static boolean checkInvalid(List<Integer> p, List<Integer> c) {
         // pobi와 crong의 길이는 2이다
         if (p.size() != 2 || c.size() != 2) {
             return true;
         }
+
+        Integer n1 = p.get(0);
+        Integer n2 = p.get(1);
+        Integer c1 = c.get(0);
+        Integer c2 = c.get(1);
+
         // 시작 면이나 마지막 면이 나오도록 책을 펼치지 않는다
-        if (n1 == 1 || n2 == 400 || n3 == 1 || n4 == 400) {
+        if (n1 <= 1 || n2 >= 400 || c1 <= 1 || c2 >= 400) {
             return true;
         }
         // 왼쪽 페이지는 홀수, 오른쪽 페이지는 짝수이다
-        if (n1 % 2 == 0 || n2 % 2 == 1 || n3 % 2 == 0 || n4 % 2 == 1) {
+        if (n1 % 2 == 0 || n2 % 2 == 1 || c1 % 2 == 0 || c2 % 2 == 1) {
             return true;
         }
         // 임의로 책을 펼쳤을 때 순서대로 연속된 숫자가 나온다
-        if (n2 - n1 != 1 || n4 - n3 != 1) {
+        if (n2 - n1 != 1 || c2 - c1 != 1) {
             return true;
         }
         return false;
