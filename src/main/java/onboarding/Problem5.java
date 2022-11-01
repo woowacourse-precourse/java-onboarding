@@ -2,7 +2,6 @@ package onboarding;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Arrays;
 import java.util.ArrayList;
 
 public class Problem5 {
