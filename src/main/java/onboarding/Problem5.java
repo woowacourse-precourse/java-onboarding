@@ -28,12 +28,12 @@ public class Problem5 {
 
         return answer;
     }
-    public static void main (String [] args) {
-
-        int money = 237;
-
-        Problem5 prob = new Problem5();
-        System.out.println(prob.solution(money));
-    }
+//    public static void main (String [] args) {
+//
+//        int money = 237;
+//
+//        Problem5 prob = new Problem5();
+//        System.out.println(prob.solution(money));
+//    }
 
 }

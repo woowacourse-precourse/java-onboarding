@@ -17,12 +17,12 @@ public class Problem4 {
         return answer;
     }
 
-    public static void main (String [] args) {
-
-        String word = "I love you";
-
-        Problem4 prob = new Problem4();
-        System.out.println(prob.solution(word));
-    }
+//    public static void main (String [] args) {
+//
+//        String word = "I love you";
+//
+//        Problem4 prob = new Problem4();
+//        System.out.println(prob.solution(word));
+//    }
 
 }

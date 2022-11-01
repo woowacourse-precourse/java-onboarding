@@ -32,12 +32,12 @@ public class Problem2 {
         return answer;
     }
 
-    public static void main (String [] args) {
-
-        String cryptogram = "browoanoommnaon";
-
-        Problem2 prob = new Problem2();
-        System.out.println(prob.solution(cryptogram));
-    }
+//    public static void main (String [] args) {
+//
+//        String cryptogram = "browoanoommnaon";
+//
+//        Problem2 prob = new Problem2();
+//        System.out.println(prob.solution(cryptogram));
+//    }
 
 }

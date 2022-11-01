@@ -21,12 +21,12 @@ public class Problem3 {
         return answer;
     }
 
-    public static void main (String [] args) {
-
-        int number = 33;
-
-        Problem3 prob = new Problem3();
-        System.out.println(prob.solution(number));
-    }
+//    public static void main (String [] args) {
+//
+//        int number = 33;
+//
+//        Problem3 prob = new Problem3();
+//        System.out.println(prob.solution(number));
+//    }
 
 }

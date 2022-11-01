@@ -50,12 +50,12 @@ class Problem1 {
         return answer;
     }
     
-    public static void main (String [] args) {
-
-        List<Integer> pobi = List.of(131, 132);
-        List<Integer> crong = List.of(211, 212);
-
-        Problem1 prob = new Problem1();
-    	System.out.println(prob.solution(pobi, crong));
-    }
+//    public static void main (String [] args) {
+//
+//        List<Integer> pobi = List.of(131, 132);
+//        List<Integer> crong = List.of(211, 212);
+//
+//        Problem1 prob = new Problem1();
+//    	System.out.println(prob.solution(pobi, crong));
+//    }
 }
