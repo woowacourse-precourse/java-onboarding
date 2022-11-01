@@ -56,6 +56,10 @@ public class Problem7 {
     // user1과 user2 사이의 공통 친구 수를 알아내는 함수 countCommonFriend()
     private static int countCommonFriend(String user1, String user2) {
         int cnt = 0;
+        if(!hasFriend(user1) || !hasFriend(user2)) {
+            return cnt;
+        }
+
         List<String> user1FriendList = friendList.get(user1);
         List<String> user2FriendList = friendList.get(user2);
 
@@ -71,7 +75,7 @@ public class Problem7 {
     private static void updateVisitorScore(String user, List<String> visitors) {
         for (int i = 0; i < visitors.size(); i++) {
             String visitor = visitors.get(i);
-            if (!friendList.get(user).contains(visitor)) {
+            if (hasFriend(user) && !friendList.get(user).contains(visitor)) {
                 addScore(visitor, 1);
             }
         }
@@ -118,5 +122,12 @@ public class Problem7 {
         });
 
         return users;
+    }
+
+    private static boolean hasFriend(String user){
+        if(friendList.get(user)==null) {
+            return false;
+        }
+        return true;
     }
 }
