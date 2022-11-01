@@ -79,7 +79,11 @@ public class Problem7 {
             }
 
             for (int j = 0; j < recomScore.size()-1; j++) {
-                if (recomScore.get(j) >= recomScore.get(j+1)) flag = false;
+                flag = false;
+                if (recomScore.get(j) < recomScore.get(j+1)) {
+                    flag = true;
+                    break;
+                }
             }
         }
 
