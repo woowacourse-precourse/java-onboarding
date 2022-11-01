@@ -12,6 +12,7 @@ public class Problem3 {
 		private final static int UNIT_CONVERT_CRITERIA = 10;
 		private final static int COMMON_CLAP_CYCLE = 3;
 		private final static int COUNT_FROM_ZERO = 1;
+		private final static int MAX_NUMBER = 9;
 		private int currentDigitUnit;
 		private int previousUnitMaxClap;
 
@@ -28,7 +29,7 @@ public class Problem3 {
 			while (number > 0) {
 				currentDigit = number % 10;
 				totalClaps += getNumberOfClap(currentDigit, previousNumberSum);
-				previousUnitMaxClap += getCurrentTotal(9, currentDigitUnit, previousUnitMaxClap, currentDigitUnit - 1);
+				updatePreviousUnitMaxClap();
 				previousNumberSum += currentDigit * currentDigitUnit;
 				number /= UNIT_CONVERT_CRITERIA;
 				currentDigitUnit *= UNIT_CONVERT_CRITERIA;
@@ -55,6 +56,11 @@ public class Problem3 {
 				clapping += previousNumberSum + COUNT_FROM_ZERO;
 			}
 			return clapping;
+		}
+
+		private void updatePreviousUnitMaxClap() {
+			int previousUnitMaxValue = currentDigitUnit - 1;
+			previousUnitMaxClap += getNumberOfClap(MAX_NUMBER, previousUnitMaxValue);
 		}
 	}
 }
