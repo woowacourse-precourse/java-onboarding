@@ -26,8 +26,14 @@
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
 
 ### <기능 목록>
-- recommend: 추천 친구를 key로, 점수를 value로 가지는 HashMap
+- recommend: 닉네임을 key로, 점수를 value로 가지는 HashMap
 
 1. 함께 아는 친구의 수 점수계산
+   - user의 친구 목록 생성
+   - user의 친구이면서 user가 아닌 닉네임, 점수+10을 recommend에 추가 
 2. 방문한 횟수 점수계산
+   - 방문자가 user의 친구가 아니라면 닉네임, 점수+1을 recommend에 닉네임 추가
 3. sorting 기능
+   - 점수기준으로 sorting 후
+   - 점수가 같다면 이름 순으로 정렬
+   - 추천친구를 5명까지만 추천
