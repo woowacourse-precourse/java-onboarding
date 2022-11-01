@@ -24,7 +24,6 @@ public class Problem2 {
                     curr = cryptogram.charAt(i);
                     currint = i;
                     check = 1;
-
                 }
 
             }
