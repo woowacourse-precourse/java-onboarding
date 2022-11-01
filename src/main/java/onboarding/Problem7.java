@@ -9,6 +9,19 @@ public class Problem7 {
 
     static HashMap<String, Integer> recommend = new HashMap<String, Integer>();
 
+    public static List visitorsScore(List<List<String>> friends, List<String> visitors){
+        ArrayList<String> friendList = new ArrayList<>();
+
+        for(List<String> friend : friends)
+            friendList.add(friend.get(0));
+
+        for(String visitor : visitors){
+            if(!friendList.contains(visitor))
+                recommend.put(visitor, recommend.containsKey(visitor) ? recommend.get(visitor)+1 : 1);
+        }
+        return sorting();
+    }
+
     public static List sorting(){
         List<String> recommendFriends = new ArrayList<>();
         List<String> listOfName = new ArrayList<>(recommend.keySet());
