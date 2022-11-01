@@ -16,7 +16,6 @@ public class Problem6 {
             String email = members.get(0);
             String nickName = members.get(1);
 
-
             for (int j = 0; j <nickName.length()-1 ; j++) {
                 String minDuplicatePart = nickName.charAt(j)+""+nickName.charAt(j+1);
 
