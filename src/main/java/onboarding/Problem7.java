@@ -68,12 +68,7 @@ public class Problem7 {
 
     private static List<String> getTop5(HashMap<String,Integer> score){
         List<String> recommend = new ArrayList<>();
-        // Map을 List로 변환
-        String[][] scoreList = score.entrySet()
-                .stream()
-                .map(e -> new String[]{e.getKey(), e.getValue().toString()})
-                .toArray(String[][]::new);
-
+        String[][] scoreList = mapToList(score);
         List<String> ranking = sortRanking(scoreList);
         for(int i = 0;i<ranking.size();i++){
             if(i < MAX_RECOMMEND_VALUE){
@@ -83,6 +78,14 @@ public class Problem7 {
             break;
         }
         return recommend;
+    }
+
+    private static String[][] mapToList(HashMap<String, Integer> score) {
+        String[][] scoreList = score.entrySet()
+                .stream()
+                .map(e -> new String[]{e.getKey(), e.getValue().toString()})
+                .toArray(String[][]::new);
+        return scoreList;
     }
 
     private static List<String> sortRanking(String[][] scoreList){
