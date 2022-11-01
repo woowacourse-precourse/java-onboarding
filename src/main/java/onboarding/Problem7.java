@@ -8,11 +8,12 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
         List<String> userFriends = makeFriendList(user, friends);
         ArrayList<SuggestFriend> suggestFriends = findFriendOfFriend(user,friends,userFriends);
+        checkVisitor(suggestFriends, userFriends, visitors);
         return answer;
     }
-    public static List<String> makeFriendList(String user, List<List<String>> freinds){
+    public static List<String> makeFriendList(String user, List<List<String>> friends){
         List<String> userFriends = new ArrayList<>();
-        for (List<String> item : freinds){
+        for (List<String> item : friends){
             if(item.get(0).equals(user)){
                 userFriends.add(item.get(1));
             }
@@ -46,6 +47,24 @@ public class Problem7 {
         for(SuggestFriend item : suggestFriends){
             if(item.name.equals(name))
                 return true;
+        }
+        return false;
+    }
+    public static void checkVisitor(ArrayList<SuggestFriend> suggestFriends, List<String> userFriends, List<String> visitors){
+        for(String item : visitors){
+            if(!findAndAddScore(suggestFriends,item)){
+                if(!userFriends.contains(item)){
+                    suggestFriends.add(new SuggestFriend(item,1));
+                }
+            }
+        }
+    }
+    public static boolean findAndAddScore(ArrayList<SuggestFriend> suggestFriends, String name){
+        for(SuggestFriend item : suggestFriends){
+            if(item.name.equals(name)) {
+                item.score+=1;
+                return true;
+            }
         }
         return false;
     }
