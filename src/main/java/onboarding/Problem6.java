@@ -8,6 +8,24 @@ public class Problem6 {
         return answer;
     }
 
+    // 1. 모든 두 글자 배열 만들기
+    public static List<String> findAllTwoWords(List<String> nicknameList){
+        List<String> result = new ArrayList<>();
+        for (String nickname : nicknameList) {
+            result.addAll(findTwoWord(nickname));
+        }
+        return result;
+    }
+
+    // 2. 한 단어에서 두 문자들로 쪼개기
+    public static List<String> findTwoWord(String word){
+        List<String> twoWord = new ArrayList<>();
+        for (int i = 0; i < word.length() - 1; i++){
+            twoWord.add(word.substring(i, i+2));
+        }
+        return twoWord;
+    }
+
     // 3. 중복되는 두글자 리스트만 뽑기
     public static List<String> findDuplicateWords(List<String> words) {
         Set<String> wordSet = new HashSet<>(words);
