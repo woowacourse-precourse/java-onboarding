@@ -13,7 +13,7 @@ public class Problem2 {
         for (int i = 0 ; i < answer.length-1 ; i++){
             char ch = answer[i];
             if (ch==answer[i+1] && ch!='0'){
-                //convert(i,findLength(i));
+                convert(i,findLength(i));
                 check =true;
             }
         }
@@ -30,5 +30,10 @@ public class Problem2 {
             else if (ch!=answer[i]) break;
         }
         return count;
+    }
+    public static void convert(int index, int length){
+        for (int i = index ; i < index+length ;i++){
+            answer[i] = '0';
+        }
     }
 }
