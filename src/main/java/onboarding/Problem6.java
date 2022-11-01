@@ -34,8 +34,8 @@ public class Problem6 {
         for (int i = 0; i < crews.size()-1; i++) {
             for (int j = i; j < crews.size(); j++) {
                 if(containsWord(crews.get(i).nickname, crews.get(j).nickname)){
-                    duplicateEmail.add(crews.get(i).email);
-                    duplicateEmail.add(crews.get(j).email);
+                    duplicateEmail.add(crews.get(i).nickname);
+                    duplicateEmail.add(crews.get(j).nickname);
                 }
             }
         }
