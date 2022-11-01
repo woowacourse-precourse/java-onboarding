@@ -5,11 +5,15 @@ public class Problem2 {
         StringBuilder result = new StringBuilder();
         boolean[] isRedundant = findRedundantPosition(target);
         for(int i = 0; i < target.length(); i++){
-            if(!isRedundant[i]){ //todo refactor
-                result.append(target.charAt(i));
-            }
+            appendNotRedundantCharacter(result, isRedundant[i], target.charAt(i));
         }
         return result.toString();
+    }
+
+    public static void appendNotRedundantCharacter(StringBuilder result, boolean isRedundant, char character){
+        if(!isRedundant){
+            result.append(character);
+        }
     }
 
     public static boolean[] findRedundantPosition(String target){
