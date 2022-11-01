@@ -11,4 +11,13 @@ public class PageValidator {
         return new GamePlayer(pages);
     }
 
+    public void validate(List<Integer> pages) {
+        List<Integer> validatedPages = validatePageSize(pages);
+        Integer firstPage = validatedPages.get(0);
+        Integer lastPage = validatedPages.get(1);
+
+        validateContinuousPage(firstPage, lastPage);
+        validateIfFirstOrLastPage(firstPage, lastPage);
+    }
+
 }
