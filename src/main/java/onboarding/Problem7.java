@@ -131,7 +131,7 @@ public class Problem7 {
 	}
 
 	public static int getFriendScore(Set<String> myFriends, Set<String> friendList) {
-		long cnt = myFriends.stream().filter(myFriend -> friendList.contains(myFriend)).count();
+		long cnt = myFriends.stream().filter(friendList::contains).count();
 		return (int)(cnt * 10);
 		//return (int)(myFriends.stream().filter(friendList::contains).count() * 10);
 	}
@@ -147,10 +147,10 @@ public class Problem7 {
 	}
 
 	public static void getVisitorRecomScore(Map<String, Integer> recomScoreMap, List<String> visitors) {
-		visitors.forEach(vistor -> {
-			if (!recomScoreMap.containsKey(vistor))
-				recomScoreMap.put(vistor, 0);
-			recomScoreMap.put(vistor, recomScoreMap.get(vistor) + 1);
+		visitors.forEach(visitor -> {
+			if (!recomScoreMap.containsKey(visitor))
+				recomScoreMap.put(visitor, 0);
+			recomScoreMap.put(visitor, recomScoreMap.get(visitor) + 1);
 		});
 	}
 
