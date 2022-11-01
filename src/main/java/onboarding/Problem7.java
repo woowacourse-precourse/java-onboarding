@@ -14,6 +14,48 @@ public class Problem7 {
         Map<String, Integer> map = new HashMap<>(); // [이름, 점수]
         Set<String> not_yet_friend = new HashSet<>(); // 사용자와 친구가 아닌 유저들
         Set<String> already_friend = new HashSet<>(); // 사용자와 이미 친구인 유저들
+
+        /*
+         * 기능 요구 사항
+         * 5. 추천 점수가 0점인 사람은 추천 대상에서 제외하고,
+         * 추천 점수가 가장 높은 순으로 정렬해서 반환,
+         * 추천 점수가 같은 경우에는 이름순으로 정렬
+         * 최대 5명 추천
+         * */
+
+        if (check_compliance(user, friends, visitors) == EXCEPTION) {
+            return answer;
+        }
+
+        init_not_yet_friend(user, friends, visitors, not_yet_friend, already_friend);
+
+        already_friend.remove(user); // 사용자 유저는 제외
+
+        // HashMap 초기화
+        for (String friend : not_yet_friend) {
+            map.put(friend, 0);
+        }
+
+        // 점수 계산
+        recommend_score(friends, visitors, map, not_yet_friend, already_friend);
+
+        // 문제조건을 고려하여 점수(value)가 0점인 사람은 추천 대상(key)에서 제외
+        Set<String> no_point = new HashSet<>();
+        for (Map.Entry<String, Integer> entry : map.entrySet()) {
+            if (entry.getValue() == 0) {
+                no_point.add(entry.getKey());
+            }
+        }
+
+        no_point.forEach(u -> map.remove(u));
+
+        // 정렬하기
+        List<Map.Entry<String, Integer>> sorted_friends = sort_firends(map);
+
+        // 추천 친구 이름을 리스트에 담아서 반환
+        for (Map.Entry<String, Integer> string_integer_entry : sorted_friends) {
+            answer.add(string_integer_entry.getKey());
+        }
         return answer;
     }
 
