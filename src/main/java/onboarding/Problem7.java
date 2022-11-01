@@ -113,19 +113,4 @@ public class Problem7 {
     public static boolean checkFriendsWeKnow(List<String> userFriends, String user, String friendA, String friendB) {
         return userFriends.contains(friendA) && friendB.equals(user) == false && userFriends.contains(friendB) == false;
     }
-
-    public static void main(String[] args) {
-        String user = "mrko";
-        List<List<String>> friends = List.of(
-                List.of("donut", "andole"),
-                List.of("mrko", "jun"),
-                List.of("donut", "mrko"),
-                List.of("shakevan", "andole"),
-                List.of("shakevan", "jun"),
-                List.of("shakevan", "mrko")
-        );
-        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan", "ㅌ", "ㅋ");
-
-        System.out.println(solution(user, friends, visitors));
-    }
 }
