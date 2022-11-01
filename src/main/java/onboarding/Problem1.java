@@ -60,6 +60,18 @@ class Problem1 {
         }
     }
 
+    static public boolean validation(List<Integer> pobi,List<Integer> crong){
+        boolean result = true;
+
+        if(1 != Math.abs(pobi.get(0) - pobi.get(1))){
+            return false;
+        } else if(1 != Math.abs(crong.get(0) - crong.get(1))){
+            return false;
+        }else{
+            return result;
+        }
+    }
+
 }
 
 
