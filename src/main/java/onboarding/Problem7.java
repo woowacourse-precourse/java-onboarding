@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 public class Problem7 {
 
+    // 사용자를 제외한 모든 친구들을 값 0인채로 HashMap에 추가하는 메서드
     public static HashMap<String, Integer> inputHash (List<List<String>> friends) {
         HashSet<String> overlapFriendKeys = new HashSet<>();
         for (int i = 0; i < friends.size(); i++) {
@@ -25,6 +26,7 @@ public class Problem7 {
         return friendsRelation;
     }
 
+    // 방문한 친구의 점수를 올려주는 메서드
     public static HashMap<String, Integer> scoreVisitFriend (HashMap<String, Integer> friendsRelation, List<String> visitors) {
         for (String visitor : visitors) {
             if (!friendsRelation.containsKey(visitor)){
@@ -36,6 +38,7 @@ public class Problem7 {
         return friendsRelation;
     }
 
+    // 친구들을 점수 기준으로 정렬 후 이미 친구인 사람, 점수가 0인 사람을 제외하는 메서드
     public static List<String> sortScore (HashMap<String, Integer> friendsRelation, List<String> yesFriends, String user) {
         List<String> keySetList = new ArrayList<>(friendsRelation.keySet());
         Collections.sort(keySetList);
@@ -61,6 +64,7 @@ public class Problem7 {
         List<String> yesFriends = new ArrayList<>();
         List<List<String>> noFriends = new ArrayList<>();
 
+        // 친구와 친구가 아닌 사람을 구분하여 리스트에 추가
         for (List<String> twoFriends : friends) {
             if (twoFriends.get(0).equals(user)) {
                 yesFriends.add(twoFriends.get(1));
@@ -71,6 +75,7 @@ public class Problem7 {
             }
         }
 
+        // 친구가 겹치는 사람의 점수를 올려줌
         for (List<String> twoNoFriends : noFriends) {
             if (yesFriends.contains(twoNoFriends.get(0))) {
                 friendsScore.put(twoNoFriends.get(1), friendsScore.get(twoNoFriends.get(1))+10);
