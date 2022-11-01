@@ -12,7 +12,6 @@ public class Problem5 {
             answer.add(money / coin);
             money %= coin;
         }
-
         return answer;
     }
 }

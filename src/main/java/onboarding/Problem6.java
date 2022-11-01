@@ -11,6 +11,7 @@ public class Problem6 {
 
     public static List<String> fillerEmail(List<List<String>> forms) {
         Set<String> result = new HashSet<>();
+
         for (int i = 0; i < forms.size() - 1; i++) {
             if (forms.get(i).get(1).length() == 1)
                 continue;

@@ -7,6 +7,7 @@ public class Problem4 {
 
     public static String solution(String word) {
         String answer = "";
+
         for (char c : word.toCharArray()) {
             if (isAlphabet(c) == NONE)
                 answer += String.valueOf(c);
