@@ -21,3 +21,12 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 구현 설명
+ - 중복된 닉네임이 있고, 해당 닉네임이 무엇인지 체크하기 위해 HashMap을 사용
+ - 주어진 닉네임을 2글자 단위로 나누어 저장
+ - 이미 중복된 닉네임을 가지고 있는 이메일이라는 것을 체크하기 위해 flag 배열 선언
+ - 정답을 답을 리스트 선언
+ - map의 크기만큼 반복하되, map.get(key)의 값이 1보다 큰 중복된 문자만 체크
+ - 주어진 닉네임 forms의 크기만큼 반복하되, 이미 중복된 문자로 인식한 경우 continue, 아닌 경우 중 해당 닉네임을 포함하고 있는 경우 정답으로 체크 후, flag배열 true
+ - 정답 리스트를 정렬 후 반환
