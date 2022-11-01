@@ -72,4 +72,13 @@ public class Problem7 {
 
         return scoreMap;
     }
+
+    private static Map<String, Integer> getScoreMapWithoutMyFriends(Map<String, Integer> scoreMap,
+                                                                    List<String> userFriends
+    ) {
+        for (String friend : userFriends) {
+            if(scoreMap.get(friend) != null) scoreMap.put(friend, 0);
+        }
+        return scoreMap;
+    }
 }
