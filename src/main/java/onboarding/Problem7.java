@@ -5,6 +5,8 @@ import java.util.regex.Pattern;
 
 public class Problem7 {
     private final static int MAX_RECOMMEND_FRIENDS = 5;
+    private final static int FRIEND_OF_FRIEND_POINT = 10;
+    private final static int TIMELINE_VISITOR_POINT = 1;
     private static Map<String, Integer> preFriends;
     private static List<String> realFriends;
     private static String me;
@@ -88,7 +90,7 @@ public class Problem7 {
         for (List<String> friend: friends) {
             for (String user : friend) {
                 if (existRealFriend(user) && !user.equals(me)) {
-                    addPreFriendPoint(friend.get(friend.indexOf(user) ^ 1), 10);
+                    addPreFriendPoint(friend.get(friend.indexOf(user) ^ 1), FRIEND_OF_FRIEND_POINT);
                     break;
                 }
             }
@@ -104,7 +106,7 @@ public class Problem7 {
 
         for (String user : visitors) {
             if (!existRealFriend(user) && !user.equals(me)) {
-                addPreFriendPoint(user, 1);
+                addPreFriendPoint(user, TIMELINE_VISITOR_POINT);
             }
         }
     }
