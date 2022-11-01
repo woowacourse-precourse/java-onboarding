@@ -15,7 +15,8 @@ public class P6ExceptionValidation {
 
         return isEmailFormat(email)
                 && isEmailLengthBetween11and20(email)
-                && isUserNameLengthBetween1and20(userName);
+                && isUserNameLengthBetween1and20(userName)
+                && UserNameValidation(userName);
     }
 
 
@@ -35,6 +36,12 @@ public class P6ExceptionValidation {
             return false;
         }
         return true;
+    }
+
+    private static boolean UserNameValidation(String userName) {
+        return userName.chars()
+                .filter(c -> Character.getType(c) == Character.OTHER_LETTER)
+                .count() == userName.length();
     }
 
 }
