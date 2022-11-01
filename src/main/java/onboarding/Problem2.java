@@ -1,5 +1,7 @@
 package onboarding;
 
+import java.util.regex.Pattern;
+
 public class Problem2 {
     public static String solution(String cryptogram) {
         if (violation(cryptogram)) return "ERROR";
@@ -15,10 +17,8 @@ public class Problem2 {
     static boolean violation(String cryptogram) {
         int length = cryptogram.length();
         if (length == 0 || length > 1000) return true;
-        for (char c : cryptogram.toCharArray()) {
-            if (!Character.isLowerCase(c)) return true;
-        }
-        return false;
+        String regex = "^[a-z]*$";
+        return !Pattern.matches(regex, cryptogram);
     }
 
     static String delete(String curr) {
