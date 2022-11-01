@@ -76,18 +76,59 @@ public class Problem6 {
             // System.out.print(Arrays.toString(NikeNameList)); // 닉네임 리스트 출력값
         }
         
-        // for(int i = 0; i < forms.size();i++){ // 닉네임 길이 (1 ~ 19)
+
+        // name length check (11 ~ 19)
+
+        // for(int i = 0; i < forms.size();i++){
         //     int len = forms.get(i).get(1).length();
         //     if((1 <= len) && (len < 20)){
         //         System.out.println(true);
         //     }
         // }
-        // for(int i = 0; i < forms.size();i++){ // 닉네임 한글 체크
+
+        //korean language check
+
+        // for(int i = 0; i < forms.size();i++){
         //     String name = forms.get(i).get(1);
         //     if(Pattern.matches("^[가-힣]*$", name) == true){
         //         System.out.println("참");            
         //     }
         // }
+
+        // email format check(email.com) 
+
+        // for(int i = 0; i < forms.size();i++){ 
+        //     String email = forms.get(i).get(0);
+        //     if(email.contains("@email.com") == true){
+        //         System.out.println("참");
+        //     }
+        // }
+        
+        // email total length check 11 ~ 19
+
+        //  for(int i = 0; i < forms.size();i++){
+        //     int email_len = forms.get(i).get(0).length();
+        //     if(11 <= (email_len) && (email_len < 20)){
+        //         System.out.println("참");
+        //     }
+        // }
+
+        // crew range check
+
+        // int crewLen = forms.size();
+        // if ((1 <= crewLen) && (crewLen <= 10000)){
+        //     System.out.println("true");
+        // }
+
+        // same letter check
+        // 제 이 엠
+        // 제 이 슨
+        // check_lsit = [0 1]
+        // 이중 for문을 사용해서 아스키 코드의 차이의 값이 값으면
+        // 해당 인덱스의 위치를 check에 추가 후
+        // check를 i , i + 1씩 돌려서 체크 해 해준다.
+
+
 
     }
 }
