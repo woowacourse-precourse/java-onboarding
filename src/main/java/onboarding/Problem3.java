@@ -17,7 +17,9 @@ public class Problem3 {
         int clap = 0;
 
         for (int i=0; i<temp_string.length(); i++){
-            if (temp_string.substring(i,i+1) == "3") clap += 1;
+            if (temp_string.substring(i,i+1).contains("3")) clap += 1;
+            if (temp_string.substring(i,i+1).contains("6")) clap += 1;
+            if (temp_string.substring(i,i+1).contains("9")) clap += 1;
         }
         return clap;
     }
