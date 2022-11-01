@@ -6,10 +6,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class Problem6 {
+public class prob6 {
 
-    // TODO Auto-generated method stub
-    public static String[] solution(String[][] forms){
+	// TODO Auto-generated method stub
+	public static String[] solution(String[][] forms){
 
         String[] answer = new String[forms.length];
 
@@ -42,21 +42,21 @@ public class Problem6 {
         final List<String> collect = emails.stream()
                 .sorted()
                 .collect(Collectors.toList());
-        //List sizeê°€ ì¸ìë¡œ ë„˜ì–´ê°€ëŠ” ë°°ì—´ ê°ì²´ì˜ size ë³´ë‹¤ í´ë•Œ, í•´ë‹¹ Listì˜ sizeë¡œ ë°°ì—´ì´ ë§Œë“¤ì–´ì§‘ë‹ˆë‹¤.
-        //ë°˜ëŒ€ë¡œ í•´ë‹¹ List sizeê°€ ì¸ìë¡œ ë„˜ì–´ê°€ëŠ” ë°°ì—´ê°ì²´ì˜ size ë³´ë‹¤ ì‘ì„ë•ŒëŠ”, ì¸ìë¡œ ë„˜ì–´ê°€ëŠ” ë°°ì—´ê°ì²´ì˜ sizeë¡œ ë°°ì—´ì´ ë§Œë“¤ì–´ì§‘ë‹ˆë‹¤.
+                   //List size°¡ ÀÎÀÚ·Î ³Ñ¾î°¡´Â ¹è¿­ °´Ã¼ÀÇ size º¸´Ù Å¬¶§, ÇØ´ç ListÀÇ size·Î ¹è¿­ÀÌ ¸¸µé¾îÁı´Ï´Ù.
+            //¹İ´ë·Î ÇØ´ç List size°¡ ÀÎÀÚ·Î ³Ñ¾î°¡´Â ¹è¿­°´Ã¼ÀÇ size º¸´Ù ÀÛÀ»¶§´Â, ÀÎÀÚ·Î ³Ñ¾î°¡´Â ¹è¿­°´Ã¼ÀÇ size·Î ¹è¿­ÀÌ ¸¸µé¾îÁı´Ï´Ù.
         final String[] results = collect.toArray(new String[0]);
 
         return results;
     }
-    public static void main(String[] args) {
-        // TODO Auto-generated method stub
-        String[][] forms ={{"jm@email.com", "ì œì´ì— "},{"jason@email.com","ì œì´ìŠ¨"},{"woniee@email.com","ì›Œë‹ˆ"},{"mj@email.com","ì— ì œì´"},{"nowm@email.com","ì´ì œì— "}};
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String[][] forms ={{"jm@email.com", "Á¦ÀÌ¿¥"},{"jason@email.com","Á¦ÀÌ½¼"},{"woniee@email.com","¿ö´Ï"},{"mj@email.com","¿¥Á¦ÀÌ"},{"nowm@email.com","ÀÌÁ¦¿¥"}};
 
 
         String[] result = solution(forms);
 
         for (String value : result)
             System.out.println(value);
-    }
-}
+	}
 
+}
