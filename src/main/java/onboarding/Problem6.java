@@ -53,16 +53,10 @@ public class Problem6 {
         return !email1.equals(email2);
     }
 
-    public static void moveFromSetToList(List<String> answer){
-        for(String email : ANSWER_EMAIL_SET){ //todo: should I use addall() and remove this method?
-            answer.add(email);
-        }
-    }
-
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = new LinkedList<>();
+        List<String> answer;
         processForms(forms);
-        moveFromSetToList(answer);
+        answer = new LinkedList<>(ANSWER_EMAIL_SET);
         Collections.sort(answer);
         return answer;
     }
