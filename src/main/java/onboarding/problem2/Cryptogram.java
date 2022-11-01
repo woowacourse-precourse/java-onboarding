@@ -29,9 +29,7 @@ public class Cryptogram {
 
     private boolean isLowerCase(String cryptogram) {
         return cryptogram.chars()
-                .filter(Character::isUpperCase)
-                .findAny()
-                .isEmpty();
+                .allMatch(Character::isLowerCase);
     }
 
     private String removeDuplicateCharacter() {

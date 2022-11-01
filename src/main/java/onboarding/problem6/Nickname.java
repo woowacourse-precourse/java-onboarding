@@ -30,9 +30,7 @@ public class Nickname {
         return nickname.codePoints()
                 .map(i -> (char) i)
                 .map(Character::getType)
-                .filter(t -> t != KOREAN_TYPE)
-                .findAny()
-                .isEmpty();
+                .allMatch(t -> t == KOREAN_TYPE);
     }
 
     public List<String> getPartOfNickname() {

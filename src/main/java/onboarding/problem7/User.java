@@ -29,9 +29,7 @@ public class User {
 
     private boolean isLowerCase(String id) {
         return id.chars()
-                .filter(Character::isUpperCase)
-                .findAny()
-                .isEmpty();
+                .allMatch(Character::isLowerCase);
     }
 
     public boolean isSame(String id) {
