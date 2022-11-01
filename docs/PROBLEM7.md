@@ -37,6 +37,10 @@
 | ...      | [...   ]             |
 
 ### 2. user와 uesr의 친구들을 제외한 사용자들의 점수테이블 생성
+    +) HashMap에 value(list)에 요소 추가 함수 
+      HashMap에 value를 추가할 key가 있다면 value(list)에 값 추가
+      HashMap에 value룰 추가할 key가 없다면 키와 새로운 list인 value 추가
+
   HashMap 사용 : Map<String, int> score
 
 ### 3. user의 친구와 친구인 사용자의 점수 계산
