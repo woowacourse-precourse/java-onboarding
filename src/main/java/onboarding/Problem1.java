@@ -41,9 +41,16 @@ class Problem1 {
         return addResult;
     }
 
-    // TODO: 페이지 각 자리 숫자 곱하기
     private static int multiplePage(int page) {
-        return -1;
+        int multipleResult = 1;
+        int digit = (int) (Math.log10(page)) + 1;
+        while(digit > 0) {
+            multipleResult *= page/(Math.pow(10, digit-1));
+            page %= (Math.pow(10, digit-1));
+            digit --;
+        }
+        System.out.println("Multiple result:" + multipleResult);
+        return multipleResult;
     }
 
     // TODO: max 값 구하기
