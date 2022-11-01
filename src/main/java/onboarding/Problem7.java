@@ -25,10 +25,22 @@ public class Problem7 {
         List<RecommendedScoreByUser> recommendedScoreByUsers = makeRecommendedScoreByUserListFromFriends(users);
 
         increaseScoreByFriends(recommendedScoreByUsers, friends, myFriends);
+        increaseScoreByVisitors(recommendedScoreByUsers, friends, visitors);
 
         System.out.println("recommendedScoreByUsers = " + recommendedScoreByUsers);
 
         return answer;
+    }
+
+    /**
+     * 5. 사용자의 SNS에 방문한 유저들의 추천 점수 1점씩 증가
+     */
+    private static void increaseScoreByVisitors(List<RecommendedScoreByUser> recommendedScoreByUsers, List<List<String>> friends, List<String> visitors) {
+        visitors.forEach(visitor -> {
+            recommendedScoreByUsers.stream()
+                    .filter(recommendedScoreByUser -> recommendedScoreByUser.getUser().equals(visitor))
+                    .forEach(recommendedScoreByUser -> recommendedScoreByUser.increaseScoreByVisitors());
+        });
     }
 
     /**
@@ -39,11 +51,9 @@ public class Problem7 {
             List<String> friendsWithMyFriend = getFriendsWithUser(myFriend, friends);
 
             for (String friendWithMyFriend : friendsWithMyFriend) {
-                for (RecommendedScoreByUser recommendedScoreByUser : recommendedScoreByUsers) {
-                    if (recommendedScoreByUser.getUser().equals(friendWithMyFriend)) {
-                        recommendedScoreByUser.increaseScoreByFriends();
-                    }
-                }
+                recommendedScoreByUsers.stream()
+                        .filter(recommendedScoreByUser -> recommendedScoreByUser.getUser().equals(friendWithMyFriend))
+                        .forEach(recommendedScoreByUser -> recommendedScoreByUser.increaseScoreByFriends());
             }
         }
     }
