@@ -81,6 +81,7 @@ class Problem1 {
         return Math.max(maxSum, maxMul);
     }
 
+    // 포장필요?
     private static List<Integer> getDigits(int num) {
         List<Integer> digits = new ArrayList<>();
         while (num > 0) {
