@@ -12,6 +12,19 @@ public class Problem4 {
         }
     }
 
+    //현재 문자열에서 끝에 특정 문자를 붙인 문자열을 재구성해서 반환한다.
+    public static String concatString(String cur, int index, char type){
+        if('A'<=type && type<='Z'){
+            return cur.concat(String.valueOf(upper[(int)(type-'A')]));
+        }
+        else if('a'<=type && type<='z'){
+            return cur.concat(String.valueOf(lower[(int)(type-'a')]));
+        }
+        else{
+            return cur.concat(String.valueOf(type));
+        }
+    }
+
     public static String solution(String word) {
         saveReverse();
         String result = "";
