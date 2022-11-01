@@ -16,6 +16,12 @@ public class Problem7 {
         return answer;
     }
 
+    static void searchUsersFriends(String user) {
+        for (int index = 0; index < friendsList.get(user).size(); index++) {
+            searchTarget(user, index);
+        }
+    }
+
     static void searchTarget(String user, int index) {
         String friend = friendsList.get(user).get(index);
 
