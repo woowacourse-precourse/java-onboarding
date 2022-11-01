@@ -34,6 +34,15 @@ class Problem1 {
         return result;
     }
 
+    // 기능 목록 2-1 : 페이지 번호의 각 자리수를 모두 곱하는 함수
+    public static int multiple(int[] num) {
+        int result = 1;
+        for (Integer i : num) {
+            result *= i;
+        }
+        return result;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
