@@ -11,21 +11,21 @@ public class Problem7 {
         return answer;
     }
     public static HashMap<String,Integer> FriendScore(String user,List<List<String>> friends,List<String> visitors){
-        HashMap<String, Integer> FriendList = new HashMap<>();
+        HashMap<String, Integer> FriendScore = new HashMap<>();//친구 점수를 기록하는 HashMap 생성
         for(int i=0;i< friends.size();i++){
-            FriendList.put(friends.get(i).get(0),0);
-            FriendList.put(friends.get(i).get(1),0);
+            FriendScore.put(friends.get(i).get(0),0);
+            FriendScore.put(friends.get(i).get(1),0);
         }
         for(int i=0;i< visitors.size();i++){
-            FriendList.put(visitors.get(i),0);
+            FriendScore.put(visitors.get(i),0);
         }
-        FriendList.remove(user);
-        return FriendList;
+        FriendScore.remove(user);
+        return FriendScore;
 
     }
     public static void PlusFriendscore(String user,HashMap<String,Integer> FriendScore,List<List<String>> friends,List<String> visitors){
-        ArrayList<String> recommandlist = new ArrayList<>();
-        ArrayList<String> Friendlist = new ArrayList<>();
+        ArrayList<String> recommandlist = new ArrayList<>();//친구의 친구리스트
+        ArrayList<String> Friendlist = new ArrayList<>();//친구리스트
         listupdate(user, friends, Friendlist);
         for(int index=0;index<Friendlist.size();index++){
             listupdate2(Friendlist.get(index),friends,recommandlist);
@@ -86,9 +86,7 @@ public class Problem7 {
                 break;
             }
             answer.add(name);
-
         }
-
         return answer;
     }
 }
