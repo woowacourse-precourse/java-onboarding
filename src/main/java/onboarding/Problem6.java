@@ -20,7 +20,6 @@ public class Problem6 {
                 duplicateNicknames.add(findDuplicate(nicknames, twoLetters.get(j), i));
             }
         }
-
         return emails;
     }
     public static List<String> splitToTwoLetters(String nickname){
@@ -40,4 +39,12 @@ public class Problem6 {
         }
         return duplicateNicknames;
     }
+    public static List<String> flattenList(List<List<String>> lists){
+        List<String> result = new ArrayList<>();
+        for (List<String> list : lists){
+            result.addAll(list);
+        }
+        return result;
+    }
+
 }
