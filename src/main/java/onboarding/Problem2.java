@@ -2,12 +2,12 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        return decrypt(cryptogram, "");
     }
 
     /**
      * 암호화된 문자열을 받아 복호화된 문자열을 반환한다.
+     * 
      * @param cryptogram
      * @param removedCryptogram
      * @return 복호화된 문자열
@@ -24,6 +24,7 @@ public class Problem2 {
 
     /**
      * 문자열을 입력받아 중복되게 나열된 문자를 삭제한다.
+     * 
      * @param cryptogram
      * @return 중복 문자를 지운 문자열
      */
@@ -43,6 +44,7 @@ public class Problem2 {
 
     /**
      * 중복된 문자의 나열을 * 로 치환한다.
+     * 
      * @param cryptogramArr
      * @param index
      * @return 치환된 문자열
