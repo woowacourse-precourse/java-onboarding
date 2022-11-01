@@ -2,6 +2,7 @@ package onboarding.problem7;
 
 import static org.assertj.core.api.Assertions.*;
 
+import java.util.Collections;
 import java.util.List;
 
 import org.junit.jupiter.api.DisplayName;
@@ -31,5 +32,19 @@ public class NetworkTest {
 
 		assertThat(network.recommendFriendsFor("mrko")).hasSizeLessThanOrEqualTo(5);
 		assertThat(network.recommendFriendsFor("mrko")).contains("aaa", "andole", "bbb", "ccc", "jun");
+	}
+
+	@Test
+	@DisplayName("이미 친구라면 추천받지 않는다")
+	void dont_recommend_friends_with_relationships() {
+		List<List<String>> relationships = List.of(
+			List.of("a", "b"),
+			List.of("a", "c"),
+			List.of("b", "c"),
+			List.of("a", "d")
+		);
+		Network network = new Network(relationships, Collections.emptyList());
+
+		assertThat(network.recommendFriendsFor("d")).doesNotContain("a");
 	}
 }
