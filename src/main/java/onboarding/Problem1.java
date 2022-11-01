@@ -17,6 +17,16 @@ class Problem1 {
         return answer;
     }
 
+    private static int getBigNumberInPages(int leftPage, int rightPage) {
+        int maxLeftSum = getBigNumberInPage(leftPage);
+        int maxRigntSum = getBigNumberInPage(rightPage);
+        if (maxLeftSum >= maxRigntSum) {
+            return maxLeftSum;
+        } else {
+            return maxRigntSum;
+        }
+    }
+
     private static int getBigNumberInPage(int page) {
         int plusSum = 0;
         int multiSum = 1;
