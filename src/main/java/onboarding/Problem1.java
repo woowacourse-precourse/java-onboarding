@@ -41,5 +41,14 @@ class Problem1 {
         }
         return DRAW;
     }
+    public static int addPageNumber(Integer page) {
+        int pageNumber = page;
+        int sum = 0;
+        while (pageNumber != 0) {
+            sum += pageNumber % 10;
+            pageNumber /= 10;
+        }
+        return sum;
+    }
 }
 
