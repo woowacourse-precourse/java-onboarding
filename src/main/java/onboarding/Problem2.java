@@ -1,6 +1,18 @@
 package onboarding;
 
+
+/**
+ * Problem 2
+ * @author Davin An
+ * @version 1.0
+ */
 public class Problem2 {
+
+    /**
+     * Looks for pairs within a string and eliminates them
+     * @param cryptogram Original string to be decrypted
+     * @return String after all pairs are eliminated
+     */
     public static String solution(String cryptogram) {
         char[] str = cryptogram.toCharArray();
         char[] pattern = new char[cryptogram.length() + 1];
