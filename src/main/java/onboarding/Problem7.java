@@ -82,7 +82,13 @@ public class Problem7 {
         return res;
     }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> allName = getAll(friends, visitors);
+        List<Integer> allScore = setScore(allName);
+        List<String> userFriends = getFriend(user, friends);
+        allScore = knowWithFriendScore(user, allName, allScore, friends, userFriends);
+        allScore = VisitorScore(visitors, allName, allScore);
+        List<String> answer = recommendFriend(allName, allScore, userFriends);
+
         return answer;
     }
 }
