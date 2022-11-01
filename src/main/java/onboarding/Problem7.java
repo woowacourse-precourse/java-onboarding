@@ -25,9 +25,10 @@ public class Problem7 {
         }
 
         updateScoresWithVisitors(userFriends, visitors);
-        System.out.println("scores = " + scores);
         makeAnswer(answer);
-        //TODO: 가장 큰 5개 뽑는 것과 정렬 만들기
+        friendship.clear();
+        scores.clear();
+
         return answer;
     }
 
