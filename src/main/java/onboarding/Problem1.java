@@ -16,6 +16,10 @@ class Problem1 {
         //각자 점수 정하기
         int pobiScore = determineScore(pobi);
         int crongScore = determineScore(crong);
+        //승자 확인
+        if (pobiScore > crongScore) answer = 1;
+        else if (pobiScore < crongScore) answer = 2;
+        else answer = 0;
 
         return answer;
     }
