@@ -20,6 +20,14 @@ public class Problem4 {
         return sb.toString();
     }
 
+    private static boolean isUpper(char word) {
+        if ((int) word >= 65 && (int) word <= 90) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     private static char upperToLower(char word) {
         return (char)(90 - ((int) word - 65));
     }
