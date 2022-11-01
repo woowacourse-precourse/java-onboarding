@@ -7,9 +7,6 @@ class ConsecutiveFinder {
         this.target = target;
     }
 
-    public boolean isRemained(int index) {
-        return target.length() > index;
-    }
 
     public int findConsequence(int last) {
         int sameStart = last;
