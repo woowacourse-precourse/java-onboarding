@@ -19,7 +19,7 @@ public class Problem2 {
         return false;
     }
 
-    private static boolean isDuplicateFullRange(StringBuilder cryptogram) {
+    public static boolean isDuplicateFullRange(StringBuilder cryptogram) {
         for (int i = 0; i < cryptogram.length() - 1; i++) {
             if (isDuplicate(cryptogram, i)) {
                 return true;
@@ -45,7 +45,7 @@ public class Problem2 {
         return crpytogram.delete(start, start + range);
     }
 
-    private static void decrypt(StringBuilder stringBuilderCryptogram) {
+    public static void decrypt(StringBuilder stringBuilderCryptogram) {
         for (int i = 0; i < stringBuilderCryptogram.length() - 1; i++) {
             if (isDuplicate(stringBuilderCryptogram, i)) {
                 int range = getDuplicateRange(stringBuilderCryptogram, i);
@@ -54,12 +54,11 @@ public class Problem2 {
         }
     }
 
-    private static StringBuilder getPlainText(String cryptogram) {
+    public static StringBuilder getPlainText(String cryptogram) {
         StringBuilder plainText = toStringBuilder(cryptogram);
         do {
             decrypt(plainText);
         } while (isDuplicateFullRange(plainText));
-
         return plainText;
     }
 
