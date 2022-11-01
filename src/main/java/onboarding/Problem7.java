@@ -35,9 +35,27 @@ public class Problem7 {
         }
         return friendsRelation;
     }
-    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
 
+    public static List<String> sortScore (HashMap<String, Integer> friendsRelation, List<String> yesFriends, String user) {
+        List<String> keySetList = new ArrayList<>(friendsRelation.keySet());
+        Collections.sort(keySetList);
+        Collections.sort(keySetList, ((o1, o2) -> friendsRelation.get(o2).compareTo(friendsRelation.get(o1))));
+
+        List<String> answerList = new ArrayList<>();
+        for (String key: keySetList) {
+            if (friendsRelation.get(key) == 0) {
+                break;
+            }else if (yesFriends.contains(key) || key.equals(user)) {
+                continue;
+            }else {
+                answerList.add(key);
+            }
+        }
+
+        return answerList;
+    }
+
+    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         HashMap<String, Integer> friendsRelation = inputHash(friends);
         HashMap<String, Integer> friendsScore = scoreVisitFriend(friendsRelation, visitors);
         List<String> yesFriends = new ArrayList<>();
@@ -61,6 +79,7 @@ public class Problem7 {
             }
         }
 
-        return answer;
+        List<String> answerList = sortScore(friendsScore, yesFriends, user);
+        return answerList;
     }
 }
