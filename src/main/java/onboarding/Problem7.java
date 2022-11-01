@@ -92,13 +92,20 @@ public class Problem7 {
             }
             for (int j = 0; j < recommendPointList.size(); j++) {
                 if (recommendPointList.get(j) == maxPoint) {
-                    String friendIndex = friendList.get(j);
-                    recommendFriends.add(friendIndex);
+                    String friend = friendList.get(j);
+                    recommendFriends.add(friend);
                     recommendPointList.set(j, 0);
                     if (j == recommendPointList.size()) {
-                        Collections.sort(recommendList(user, friends, visitors), Collections.reverseOrder());
+                        Collections.sort(recommendFriends, Collections.reverseOrder());
                     }
                 }
+            }
+        }
+        int listSize = recommendFriends.size();
+        if (listSize > 5) {
+            for (int i = 0; i < listSize - 5; i++) {
+                int lastIndex = listSize - 1;
+                recommendFriends.remove(lastIndex);
             }
         }
         return recommendFriends;
