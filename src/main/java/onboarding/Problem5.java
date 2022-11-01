@@ -14,7 +14,7 @@ public class Problem5 {
         if (!checkMoneyValueValid(money)) {
             throw new IllegalArgumentException("[error] 잘못된 money가 입력되었습니다.");
         }
-        List<Integer> answer = chageMoneyToMoneyTypeCountList(money);
+        List<Integer> answer = changeMoneyToMoneyTypeCountList(money);
         return answer;
     }
 
@@ -22,7 +22,7 @@ public class Problem5 {
         return MONEY_MIN <= money && money <= MONEY_MAX;
     }
 
-    public static List<Integer> chageMoneyToMoneyTypeCountList(int money) {
+    public static List<Integer> changeMoneyToMoneyTypeCountList(int money) {
         List<Integer> moneyTypeCountList = new ArrayList<>();
         for (int moneyType : MONEY_TYPE_LIST) {
             moneyTypeCountList.add(money / moneyType);
