@@ -25,6 +25,20 @@ class Problem1 {
 
         return check;
     }
+
+    // 해당 페이지의 각 자리 숫자를 모두 더하거나, 모두 곱해 가장 큰 수를 반환한다.
+    public static int maximumValue(int page){
+        String spage = Integer.toString(page);
+        int sum=0;
+        int mul=1;
+        for (int i = 0; i < spage.length(); i++) {
+            System.out.println((int)spage.charAt(i)-'0');
+            sum = sum + ((int)spage.charAt(i)-'0');
+            mul = mul * ((int)spage.charAt(i)-'0');
+        }
+        return Math.max(sum, mul);
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
         // pobi와 crong의 페이지 수 변수에 저장
