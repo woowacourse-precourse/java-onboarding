@@ -1,5 +1,7 @@
 package onboarding;
 
+import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 
 class Problem1 {
@@ -40,6 +42,16 @@ class Problem1 {
             product *= digit;
         }
         return product;
+    }
+    private static int calculatePoint(List<Integer> pages) {
+        int leftPage = pages.get(0);
+        int rightPage = pages.get(1);
+        List<Integer> points = new LinkedList<>();
+        points.add(sumOfDigit(leftPage));
+        points.add(productOfDigit(leftPage));
+        points.add(sumOfDigit(rightPage));
+        points.add(productOfDigit(rightPage));
+        return Collections.max(points);
     }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
