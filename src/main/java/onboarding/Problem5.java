@@ -7,7 +7,7 @@ import java.util.List;
 class Money {
 
   private int money;
-  private int[] moneyList;
+  private final int[] moneyList;
   private List<Integer> answer = new ArrayList<>();
 
   Money(int money, int[] moneylist) {
@@ -23,9 +23,9 @@ class Money {
   }
 
   List<Integer> getAnswer() {
-    for (int i = 0; i < moneyList.length; i++) {
-      answer.add(money / moneyList[i]);
-      money %= moneyList[i];
+    for (int j : moneyList) {
+      answer.add(money / j);
+      money %= j;
     }
     return answer;
   }
