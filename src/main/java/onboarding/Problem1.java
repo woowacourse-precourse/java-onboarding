@@ -32,13 +32,9 @@ class Problem1 {
 
     public static int makeNum(int page) {
         ArrayList<Integer> pageNums = dividePages(page);
-        int multipleNums = multiplyPages(pageNums);
-        int addNums = 0;
 
-        // 페이지를 모두 더하거나 곱한 값을 계산
-        for (int num : pageNums) {
-            addNums += num;
-        }
+        int multipleNums = multiplyPages(pageNums);
+        int addNums = addPages(pageNums);
 
         // 더 큰 수를 return
         return returnMaxNum(multipleNums, addNums);
@@ -69,6 +65,17 @@ class Problem1 {
         }
 
         return multipleNums;
+    }
+
+    // 각 페이지 숫자를 더한 값을 반환
+    public static int addPages(ArrayList<Integer> pageNums) {
+        int addNums = 0;
+
+        for (int num : pageNums) {
+            addNums += num;
+        }
+
+        return addNums;
     }
 
     public static int returnMaxNum(int num1, int num2) {
