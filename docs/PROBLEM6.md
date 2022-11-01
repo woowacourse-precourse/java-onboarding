@@ -21,3 +21,10 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+
+### 기능 목록
+1. 닉네임을 두 글자씩 나누는 함수
+2. 두 글자로 나눠진 닉네임이 포함된 이메일을 구하는 함수
+3. 같은 글자가 연속적으로 포함되는 닉네임을 작성한 지원자의 이메일 목록을 구하는 함수
+4. 메인 함수
