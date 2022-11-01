@@ -13,19 +13,19 @@ public class Problem2 {
     private static String decryptString(String cryptogram) {
         StringBuilder decryption = new StringBuilder(cryptogram);
 
-        boolean[] eraser = new boolean[1010];
-        boolean flag = true;
+        boolean[] toErase = new boolean[1010];
+        boolean isDuplicate = true;
         int stringSize;
 
-        while(flag){
-            decryption = eraseDuplicateString(decryption, eraser);
-            eraser = checkDuplicate(decryption.toString());
+        while(isDuplicate){
+            decryption = eraseDuplicateString(decryption, toErase);
+            toErase = checkDuplicate(decryption.toString());
 
-            flag = false;
+            isDuplicate = false;
             stringSize = decryption.length();
             for (int i = 0; i < stringSize; ++i) {
-                if (eraser[i]) {
-                    flag = true;
+                if (toErase[i]) {
+                    isDuplicate = true;
                 }
             }
         }
