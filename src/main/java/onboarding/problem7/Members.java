@@ -31,6 +31,18 @@ public class Members {
                 .collect(Collectors.toList());
     }
 
+    public void upAcquaintancesPoint(List<Member> acquaintances, List<Member> userAndUserFriends) {
+        for (Member acquaintance : acquaintances) {
+            acquaintance.getAcquaintancePoint(userAndUserFriends);
+        }
+    }
+
+    public void upVisitorsPoint(List<Member> visitors, List<Member> userAndUserFriends) {
+        for (Member visitor : visitors) {
+            visitor.getVisitorPoint(userAndUserFriends);
+        }
+    }
+
     private boolean isNotUserAndUserFriend(Member user, List<Member> userFriends, Member acquaintance) {
         if (user.equals(acquaintance) || userFriends.contains(acquaintance)) {
             return false;

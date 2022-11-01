@@ -74,23 +74,4 @@ public class Problem7 {
                         member -> new ArrayList<Member>()
                 ));
     }
-
-
-
-
-
-    private static boolean isUserOrUserFriend(List<String> userFriends, String user, String userFriend) {
-        if (userFriend.equals(user) || userFriends.contains(userFriend)) {
-            return false;
-        }
-        return true;
-    }
-
-    public static Map<String, Integer> getVisitorsPoint(List<String> visitors, List<String> userAndUserFriends) {
-        Map<String, Integer> points = new HashMap<>();
-        for (String visitor : visitors) {
-            points.put(visitor, points.getOrDefault(visitor, 0) + getVisitorPoint(visitor, userAndUserFriends));
-        }
-        return points;
-    }
 }
