@@ -17,7 +17,7 @@ class Problem1 {
         return answer;
     }
 
-    public static boolean checkException(int leftPage, int rightPage) {
+    private static boolean checkException(int leftPage, int rightPage) {
         if (leftPage > 400 || leftPage < 1 || rightPage > 400 || rightPage < 1 || (rightPage - leftPage != 1)) {
             return false;
         }
@@ -25,17 +25,15 @@ class Problem1 {
 
     }
 
-    public static int winner(List<Integer> pobi, List<Integer> crong) {
+    private static int winner(List<Integer> pobi, List<Integer> crong) {
         int p = Math.max(mulPage(pobi.get(0)), addPage(pobi.get(1)));
         int c = Math.max(mulPage(crong.get(0)), addPage(crong.get(1)));
 
         if (p < c) {
             return 2;
-        }
-        else if (p > c) {
+        } else if (p > c) {
             return 1;
-        }
-        else        {
+        } else {
             return 0;
         }
 
