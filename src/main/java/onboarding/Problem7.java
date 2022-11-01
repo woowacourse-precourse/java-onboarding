@@ -12,6 +12,15 @@ public class Problem7 {
         return answer;
     }
 
+    //list 출력 길이 자르기
+    public static List<String> subString (List<String> answer){
+        if (answer.size() >5){
+            return answer.subList(0,5);
+        }else{
+            return answer;
+        }
+    }
+
     //hashmap 정렬
     public static List<String> sortingRecommendList(Map<String,Integer> recommendFriend){
         List<String> answer = new ArrayList<>();
