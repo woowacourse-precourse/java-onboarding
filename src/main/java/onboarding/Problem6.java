@@ -85,7 +85,7 @@ public class Problem6 {
         if (!domain[1].equals("email.com")) {
             return true;
         }
-        if (!nickname.matches(".*[ㄱ-ㅎㅏ-ㅣ가-힣]+.*")) {
+        if (!nickname.matches("[ㄱ-ㅎㅏ-ㅣ가-힣]+")) {
             // 한글 이외의 닉네임
             return true;
         }
