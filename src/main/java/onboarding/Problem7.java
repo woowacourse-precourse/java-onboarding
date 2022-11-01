@@ -8,8 +8,12 @@ public class Problem7 {
     private static final int visitScore = 1;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        Map<String, List<String>> friendMap = getFriendList(friends);
+        Map<String, Integer> bothKnownCount = getBothKnownCount(user, friendMap);
+        Map<String, Integer> visitCount = getVisitCount(visitors, user, friendMap);
+        Map<String, Integer> totalScore = getTotalScore(bothKnownCount, visitCount);
+
+        return getResult(totalScore);
     }
 
     private static Map<String, List<String>> getFriendList(List<List<String>> friends) {
@@ -76,6 +80,7 @@ public class Problem7 {
 
         return visitCount;
     }
+
     private static Map<String, Integer> getTotalScore(Map<String, Integer> bothKnownCount, Map<String, Integer> visitCount) {
         Map<String, Integer> totalCount = new HashMap<>();
 
