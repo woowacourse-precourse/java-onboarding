@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.List;
 
 public class Problem6 {
+    static List<Integer> answerIndexes = new ArrayList<>();
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
         List<Integer> answerIndexes = new ArrayList<>();
@@ -16,25 +18,31 @@ public class Problem6 {
             current = nicknames.get(i);
             for (int j = 0; j < current.length() - 1; j++) {
                 part = current.substring(j, j + 2);
-                for (int k = 0; k < nicknames.size(); k++) {
-                    if (k != i) {
-                        if (hasSimilarNickName(nicknames.get(k), part)) {
-                            if (!isAlreadyAnswerIndexes(answerIndexes, i)) {
-                                answerIndexes.add(i);
-                            }
-                            if (!isAlreadyAnswerIndexes(answerIndexes, k)) {
-                                answerIndexes.add(k);
-                            }
-                        }
+                getAnswerWithPart(nicknames, part, i);
+            }
+        }
+
+        makeAnswer(forms, answer);
+        Collections.sort(answer);
+        return answer;
+    }
+
+    private static void getAnswerWithPart(List<String> nicknames, String part, int i) {
+        for (int k = 0; k < nicknames.size(); k++) {
+            if (k != i) {
+                if (hasSimilarNickName(nicknames.get(k), part)) {
+                    if (!isAlreadyAnswerIndexes(i)) {
+                        answerIndexes.add(i);
+                    }
+                    if (!isAlreadyAnswerIndexes(k)) {
+                        answerIndexes.add(k);
                     }
                 }
             }
         }
-        makeAnswer(forms, answer, answerIndexes);
-        Collections.sort(answer);
-        return answer;
     }
-    public static void makeAnswer(List<List<String>> forms, List<String> answer, List<Integer> answerIndexes) {
+
+    public static void makeAnswer(List<List<String>> forms, List<String> answer) {
         List<String> form;
         String email;
 
@@ -64,7 +72,7 @@ public class Problem6 {
         return false;
     }
 
-    public static boolean isAlreadyAnswerIndexes(List<Integer> answerIndexes, int index) {
+    public static boolean isAlreadyAnswerIndexes(int index) {
         if (answerIndexes.contains(index)) {
             return true;
         }
