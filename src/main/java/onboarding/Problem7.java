@@ -15,14 +15,31 @@ public class Problem7 {
         Map<String, Integer> point = setUserMap(visitUser, userUnionFriends);
         
         // Point 값에 따라 정렬하기
-        List<String> keySet = new ArrayList<>(point.keySet());
-        Collections.sort(keySet);
-        keySet.sort((o1, o2) -> point.get(o2).compareTo(point.get(o1)));
-        
+        List<String> keySet = setOrderByPointAndName(point);
+
         // 상위 5개를 추려서 추천 친구리스트에 담기
         for(int i = 0; i < keySet.size() && i < 5; i++) answer.add(keySet.get(i));
 
         return answer;
+    }
+
+    /**
+     * point 점수와 이름에 따라서 정렬한는 메소드
+     * @param point 추천 유저의 정보를 담은 Map
+     * @return
+     */
+    private static List<String> setOrderByPointAndName(Map<String, Integer> point) {
+        List<String> keySet = new ArrayList<>(point.keySet());
+        Collections.sort(keySet, new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                if(point.get(o1) == point.get(o2)) {
+                    return o1.compareTo(o2);
+                } else return point.get(o1).compareTo(point.get(o2));
+            }
+        });
+
+        return keySet;
     }
 
     /**
@@ -104,3 +121,4 @@ public class Problem7 {
 
 
 }
+
