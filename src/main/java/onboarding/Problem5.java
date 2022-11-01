@@ -14,17 +14,17 @@ public class Problem5 {
         return exchangeChange(money, unitChange);
     }
 
+    private static boolean verifyException(int money) {
+        return (money >= 1 && money <=  1_000_000);
+    }
+
     private static List<Integer> exchangeChange(int money, int[] unitChange) {
-        List<Integer> answer = new ArrayList<Integer>();
+        List<Integer> answer = new ArrayList<>();
 
         for (int unit : unitChange){
             answer.add(money / unit);
             money %= unit;
         }
         return answer;
-    }
-
-    private static boolean verifyException(int money) {
-        return (money >= 1 && money <=  1_000_000);
     }
 }
