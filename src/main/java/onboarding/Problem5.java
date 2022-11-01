@@ -1,7 +1,9 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
 public class Problem5 {
@@ -10,7 +12,7 @@ public class Problem5 {
         500, 100, 50, 10, 1);
 
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
+        List<Integer> answer = new ArrayList<>(Collections.emptyList());
 
         splitMoneyByCurrencyUnits(money, answer);
         fillZeroToEmptyElement(answer);
