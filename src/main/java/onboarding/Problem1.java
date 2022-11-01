@@ -23,9 +23,9 @@ class Problem1 {
         int left = list.get(0);
         int right = list.get(1);
 
-        //페이지 번호가 1~400인지 확인
-        if(left < 1 || left > 400) return true;
-        if(right < 1 || right > 400) return true;
+        //페이지 번호가 1~400인지 확인, 시작면,마지막면 이면 false 반환
+        if(left < 2 || left > 399) return true;
+        if(right < 2 || right > 399) return true;
 
         //왼쪽 페이지 번호가 홀수 인지 확인
         if (left % 2 == 0) return true;
