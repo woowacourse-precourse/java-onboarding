@@ -53,6 +53,29 @@ public class Problem6 {
         return list;
     }
 
+    public static List<String> parsingOverlappedNickname(List<List<String>> forms){
+        String[][] formsArray = listToArray(forms);
+        int len = formsArray.length;
+        HashSet<String> set = new HashSet<>();
+
+        for(int i = 0;i < len;i++){
+            List<String> keyword = makeKeyword(formsArray[i][1]);
+            String[] arrayKeyword = keyword.toArray(String[]::new);
+
+            int keyLen = arrayKeyword.length;
+
+            for(int j = 0;j < len;j++){
+                if(i == j) continue;
+
+                if(checkKeywordInNickname(formsArray[j][1], arrayKeyword))
+                    set.add(findEmail(formsArray[j]));
+            }
+            keyword.clear();
+        }
+        List<String> ret = setToList(set);
+        return sortList(ret);
+    }
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
