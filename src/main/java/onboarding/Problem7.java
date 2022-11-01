@@ -35,9 +35,11 @@ public class Problem7 {
     // 1. 직접 친구(아는 친구X) 리스트 초기화
     static HashSet<String> getDirectFriends(List<List<String>> friends){
         HashSet<String> directFriends = new HashSet<>();
-        for (List<String> friend : friends) {
-            if (friend.get(0).equals(nowUser))  directFriends.add(friend.get(1));
-            if (friend.get(1).equals(nowUser))  directFriends.add(friend.get(0));
+        for (List<String> friendRelation : friends) {
+            String friend1 = friendRelation.get(0);
+            String friend2 = friendRelation.get(1);
+            if (friend1.equals(nowUser))  directFriends.add(friend2);
+            if (friend2.equals(nowUser))  directFriends.add(friend1);
         }
 
         return directFriends;
@@ -67,8 +69,10 @@ public class Problem7 {
         // 아는 친구들
         for (List<String> friendRelation : friends) {
             if (friendRelation.contains(nowUser)) continue;
-            if (directFriends.contains(friendRelation.get(1))) knownFriends.put(friendRelation.get(0), 1);
-            if (directFriends.contains(friendRelation.get(0))) knownFriends.put(friendRelation.get(1), 1);
+            String friend1 = friendRelation.get(0);
+            String friend2 = friendRelation.get(1);
+            if (directFriends.contains(friend1)) knownFriends.put(friend2, 1);
+            if (directFriends.contains(friend2)) knownFriends.put(friend1, 1);
         }
 
         // 아는 친구면 10점 추가
