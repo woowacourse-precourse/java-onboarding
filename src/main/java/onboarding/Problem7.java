@@ -20,10 +20,38 @@ public class Problem7 {
     VisitorValidator.validate(visitors);
 
     List<String> userFriends = saveUserFriendList(user, friends);
+    addScoreOverlappedFriendIfNotFriend(user, friends, userFriends);
 
     return new ArrayList<>();
   }
-
+  private static void addScoreOverlappedFriendIfNotFriend(
+          String user, List<List<String>> friends, List<String> userFriends) {
+    for (List<String> friendRelationList : friends) {
+      String userA = getUserA(friendRelationList);
+      String userB = getUserB(friendRelationList);
+      if (isUserEqualUserAOrUserB(user, userA, userB)) {
+        return;
+      }
+      updateScoreOverlappedFriend(userFriends, userA, userB);
+    }
+  }
+  private static void updateScoreOverlappedFriend(
+          List<String> userFriends, String userA, String userB) {
+    if (userFriends.contains(userA) && !userFriends.contains(userB)) {
+      updateUserScore(userB, OVERLAPPED_FRIEND_SCORE);
+    } else if (userFriends.contains(userB) && !userFriends.contains(userA)) {
+      updateUserScore(userA, OVERLAPPED_FRIEND_SCORE);
+    }
+  }
+  private static boolean isUserEqualUserAOrUserB(String user, String userA, String userB) {
+    return userA.equals(user) || userB.equals(user);
+  }
+  private static void updateUserScore(String name, int score) {
+    if (friendScoreHashMap.containsKey(name)) {
+      score += friendScoreHashMap.get(name);
+    }
+    friendScoreHashMap.put(name, score);
+  }
   private static List<String> saveUserFriendList(String user, List<List<String>> friends) {
     List<String> userFriends = new ArrayList<>();
     for (List<String> friendRelationList : friends) {
