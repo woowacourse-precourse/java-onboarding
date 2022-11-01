@@ -9,7 +9,15 @@ import java.util.stream.Collectors;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        if (!(isValidPage(pobi) && isValidPage(crong))){
+            answer = -1;
+            return answer;
+        }
+        int pobiScore = getScore(pobi);
+        int crongScore = getScore(crong);
+        answer = getWinner(pobiScore, crongScore);
         return answer;
+    }
 
     // 자리수별로 숫자 분리
     private static List<Integer> separateNumber(int num){
