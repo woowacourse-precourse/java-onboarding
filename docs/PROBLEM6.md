@@ -21,3 +21,43 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+---
+
+## 구현 기능 목록
+
+- (1) 2차원 리스트를 HashMap자료형으로 변환하는 기능
+  
+  ```java
+  private static Map<String, List<String>> toHashMap(List<List<String>> forms)
+  ```
+  
+  - key : email
+  - value : 2글자씩 분리된 닉네임
+  - (2) 기능 이용
+  
+- (2) 닉네임을 2글자씩 분리하는 기능
+
+  ```java
+  public static List<String> separateNickname(String nickname)
+  ```
+
+- (3) HashMap자료형 value값들을 2차원 리스트 형태로 저장하는 기능
+
+  ```java
+  public static List<List<String>> getSeparateNicknameList(Map<String, List<String>> mapForms)
+  ```
+
+- (4) 2글자씩 분리된 닉네임 중 중복된 닉네임을 찾는 기능
+
+  ```java
+  public static List<String> getDuplicationNicknameList(List<List<String>> separateNicknameList)
+  ```
+
+- (5) 중복된 닉네임을 사용하는 email들을 찾는 기능
+
+  ```java
+  public static List<String> getDuplicateEmailList(Map<String, List<String>> mapForms, List<String> duplicateNicknameList)
+  ```
+
+  - 오름차순으로 정렬해 반환
