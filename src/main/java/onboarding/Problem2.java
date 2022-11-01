@@ -6,13 +6,14 @@ public class Problem2 {
 
 	public static String solution(String cryptogram) {
 		String answer = "answer";
+
 		while (checkDuplication(cryptogram)) {
 			cryptogram = removeDuplication(cryptogram);
 
 		}
+
 		answer = cryptogram;
 		return answer;
-
 	}
 
 	private static boolean checkDuplication(String str) {

@@ -111,8 +111,9 @@ public class Problem7 {
 	private static List<String> extractList(List<Map.Entry<String, Integer>> list) {
 		List<String> result = new ArrayList<>();
 		for (int i = 0; i < list.size(); i++) {
-			if (i == 5)
+			if (i == 5) {
 				break;
+			}
 			result.add(list.get(i).getKey());
 		}
 		return result;

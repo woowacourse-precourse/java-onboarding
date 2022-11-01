@@ -10,6 +10,7 @@ public class Problem4 {
 		for (char c : word.toCharArray()) {
 			answer += convertAlphabet(c);
 		}
+
 		return answer;
 	}
 
@@ -18,11 +19,13 @@ public class Problem4 {
 	}
 
 	private static char convertAlphabet(char c) {
-		if (!isAlphabet(c))
+		if (!isAlphabet(c)) {
 			return c;
+		}
 
-		if (Character.isUpperCase(c))
+		if (Character.isUpperCase(c)) {
 			return (char)(ASCII_UPPERCASE - (int)c);
+		}
 
 		return (char)(ASCII_LOWERCASE - (int)c);
 	}

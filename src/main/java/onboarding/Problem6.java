@@ -20,6 +20,7 @@ public class Problem6 {
 			}
 			nicknames.add(nickname);
 		}
+		
 		answer = processData(answer);
 		return answer;
 	}

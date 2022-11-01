@@ -12,8 +12,9 @@ public class Problem3 {
 			int temp = i;
 
 			while (temp != 0) {
-				if (temp % 10 == 3 || temp % 10 == 6 || temp % 10 == 9)
+				if (temp % 10 == 3 || temp % 10 == 6 || temp % 10 == 9) {
 					cnt++;
+				}
 				temp /= 10;
 			}
 		}

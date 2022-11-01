@@ -14,8 +14,9 @@ class Problem1 {
 	public static int solution(List<Integer> pobi, List<Integer> crong) {
 		int answer = Integer.MAX_VALUE;
 
-		if (validateNum(pobi) || validateNum(crong))
+		if (validateNum(pobi) || validateNum(crong)) {
 			return EXCEPTION_CASE;
+		}
 
 		int pobiScore = getScore(pobi);
 		int crongScore = getScore(crong);
@@ -30,8 +31,9 @@ class Problem1 {
 		int rightPage = lst.get(1);
 
 		if (leftPage <= FIRST_PAGE || rightPage >= LAST_PAGE || leftPage % 2 == 0 || rightPage % 2 == 1
-				|| leftPage + 1 != rightPage)
+				|| leftPage + 1 != rightPage) {
 			return true;
+		}
 
 		return false;
 	}
@@ -79,10 +81,11 @@ class Problem1 {
 	}
 
 	private static int getWinner(int num1, int num2) {
-		if (num1 > num2)
+		if (num1 > num2) {
 			return POBI_CASE;
-		if (num1 < num2)
+		} else if (num1 < num2) {
 			return CRONG_CASE;
+		}
 
 		return DRAW_CASE;
 	}
