@@ -13,4 +13,12 @@ public class Problem4 {
 
     }
 
+    // 대문자 변환
+    public static char translateUpperCase(char letter, String dictionary, String frogDictionary){
+        int index = -1;
+        index = dictionary.indexOf(letter);
+        return frogDictionary.charAt(index);
+
+    }
+
 }
