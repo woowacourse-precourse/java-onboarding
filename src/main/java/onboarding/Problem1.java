@@ -22,6 +22,7 @@ class Problem1 {
                 max=num;
             }
         }
+
         return max;
     }
     public static List<Integer> get_digitList(int num){
