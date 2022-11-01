@@ -44,4 +44,13 @@ class Recommendation {
             users.put(visitors.get(i), 0);
         }
     }
+
+    void visitScore() {
+        int value;
+
+        for(int i = 0; i < visitors.size(); i++) {
+            value = users.get(visitors.get(i));
+            users.put(visitors.get(i), value + 1);
+        }
+    }
 }
