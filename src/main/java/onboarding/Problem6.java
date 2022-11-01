@@ -32,7 +32,7 @@ public class Problem6 {
     }
 
     private static boolean isDouble(String nowChecking, String otherNickname) {
-        boolean doubleTF = false;
+        boolean doubleTF = otherNickname.contains(nowChecking);
         return doubleTF;
     }
 
