@@ -16,8 +16,11 @@ class Problem1 {
             return -1;
         }
 
+        //포비가 이기면 1, 크롱이 이기면 2, 무승부이면 0
         if (getMaxValue(pl, pr) > getMaxValue(cl, cr)){
             return 1;
+        } else if (getMaxValue(pl, pr) < getMaxValue(cl, cr)) {
+            return 2;
         } else {
             return 0;
         }
