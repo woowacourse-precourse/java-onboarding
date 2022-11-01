@@ -8,15 +8,22 @@ public class Problem2 {
 	public static final int EXCEPTION = -1;
 
 	public static String solution(String cryptogram) {
-		Stack<Character> stack = new Stack<Character>();
-		char duplicated = ' '; // 중복되는 문자 -> 삭제할 문자
-		char top = ' '; // 스택의 top
-		char cur = ' '; // cur 은 cryptogram 을 순회할 문자
+		Stack<Character> decodedCryptogram;
 
 		if (checkRestrictions(cryptogram) == EXCEPTION) {
 			return ERROR_MESSAGE;
 		}
 
+		decodedCryptogram = removeDuplicateCharacters(cryptogram);
+
+		return stackToString(decodedCryptogram);
+	}
+
+	private static Stack<Character> removeDuplicateCharacters(String cryptogram) {
+		Stack<Character> stack = new Stack<Character>();
+		char duplicated = ' '; // 중복되는 문자 -> 삭제할 문자
+		char top = ' '; // 스택의 top
+		char cur = ' '; // cur 은 cryptogram 을 순회할 문자
 		for (int i = 0; i < cryptogram.length(); i++) {
 			cur = cryptogram.charAt(i);
 
@@ -34,8 +41,7 @@ public class Problem2 {
 				}
 			}
 		}
-
-		return stackToString(stack);
+		return stack;
 	}
 
 	/**
