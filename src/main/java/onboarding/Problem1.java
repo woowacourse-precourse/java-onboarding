@@ -111,7 +111,7 @@ class Problem1 {
     private static boolean isValid(List<Integer> pages) {
         int leftPage = pages.get(0);
         int rightPage = pages.get(1);
-            // 왼쪽 페이지가 홀수이고, 오른페이지가 짝수이고, 페이지 수가 2이고, 첫 장(1, 2)이나 마지막 장(399, 400)이 아니면 true
-        return leftPage % 2 == 1 && rightPage % 2 == 0 && pages.size() == 2 && leftPage != 1 && rightPage != 400 && leftPage - rightPage != 1;
+            // 왼쪽 페이지가 홀수이고, 오른페이지가 짝수이고, 페이지 수가 2이고, 첫 장(1, 2)이나 마지막 장(399, 400)이 아니고, 오른페이지가 왼페이보다 1이 크면 true
+        return leftPage % 2 == 1 && rightPage % 2 == 0 && pages.size() == 2 && leftPage != 1 && rightPage != 400 && rightPage - leftPage == 1;
     }
 }
