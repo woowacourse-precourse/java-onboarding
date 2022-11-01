@@ -21,3 +21,9 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+### 기능 목록
+| 메서드 | 기능 정의 |
+| --- | --- |
+| solution | StringBuilder에 cryptogram을 담고, boolean타입 변수인 flag를 true로 설정하여 remover를 호출함 |
+| remover | flag가 true인 동안 while문이 돌면서 연속된 중복 문자를 발견하면 삭제함. 더 이상 연속된 중복 문자가 없으면 while문을 벗어나게 됨 |
