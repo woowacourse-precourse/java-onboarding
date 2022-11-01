@@ -14,7 +14,16 @@ public class Problem6 {
             mapFroms.put(forms.get(i).get(0), forms.get(i).get(1));
         }
         List<String> answer = duplicateCheck(mapFroms);
-        return findduplicateWord(mapFroms, answer);
+        List<String> result = findduplicateWord(mapFroms, answer);
+        print(forms,result);
+        return result;
+    }
+    public static  void print(List<List<String>> forms, List<String> result) {
+        System.out.println("| forms | result |");
+        System.out.println("| --- | --- |");
+        System.out.println("| "+forms+" | "+result+" | ");
+
+
     }
     public static boolean constraints(List<List<String>> forms){ // 제한사항
         if(forms.size()<1 || forms.size() >10000) {System.out.println("크루가 1미만 혹은 10000초과 입니다."); return false;}
