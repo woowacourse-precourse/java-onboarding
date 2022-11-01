@@ -24,32 +24,13 @@ public class Problem7 {
         List<String> check = new ArrayList<>();//크루가 team에 들어있는지 확인하기 위한 list
         team.put(user, new Crew(user)); //team의 0번은 user이다.
 
-        // 친구 관계 맺기
-        for (List<String> friend : friends) {
-            for (String member : friend) {
-                addCrew(team, check, member);
-            }
 
-            team.get(friend.get(0)).getFriends().add(friend.get(1));
-            team.get(friend.get(1)).getFriends().add(friend.get(0));
+        makeFreinds(friends, team, check);
 
-        }
+        friendTogetherKnow(user, team);
 
-        // 함께 아는 친구일 경우, 10점을 부여하는 기능
-        for (String member : team.keySet()) {
-            Crew crew = team.get(member);
-            for (String friend : crew.getFriends()) {
-                if (team.get(user).getFriends().contains(friend)) {
-                    crew.plusScoreTen();
-                }
-            }
-        }
 
-        // 타임라인에 방문한 경우, 1점을 부여하는 기능
-        for (String visitor : visitors) {
-            addCrew(team, check, visitor);
-            team.get(visitor).plusScoreOne();
-        }
+        visitTimeline(visitors, team, check);
 
         // 점수 기준으로 오름 차순 정렬
         List<Crew> crews = new ArrayList<>(team.values());
@@ -66,6 +47,40 @@ public class Problem7 {
         }
 
         return answer;
+    }
+    
+    // 타임라인에 방문한 경우, 1점을 부여하는 기능
+    private static void visitTimeline(List<String> visitors, Map<String, Crew> team, List<String> check) {
+        for (String visitor : visitors) {
+            addCrew(team, check, visitor);
+            team.get(visitor).plusScoreOne();
+        }
+    }
+
+    // 함께 아는 친구일 경우, 10점을 부여하는 기능
+    private static void friendTogetherKnow(String user, Map<String, Crew> team) {
+        
+        for (String member : team.keySet()) {
+            Crew crew = team.get(member);
+            for (String friend : crew.getFriends()) {
+                if (team.get(user).getFriends().contains(friend)) {
+                    crew.plusScoreTen();
+                }
+            }
+        }
+    }
+
+    // 친구 관계 맺기
+    private static void makeFreinds(List<List<String>> friends, Map<String, Crew> team, List<String> check) {
+        for (List<String> friend : friends) {
+            for (String member : friend) {
+                addCrew(team, check, member);
+            }
+
+            team.get(friend.get(0)).getFriends().add(friend.get(1));
+            team.get(friend.get(1)).getFriends().add(friend.get(0));
+
+        }
     }
 
     private static void addCrew(Map<String, Crew> team, List<String> check, String member) {
