@@ -14,6 +14,7 @@ public class Problem7 {
         initAllRecommendScore(user);
 
         calculateRecommendScore(visitors);
+        removeFriendWithUser(user);
 
         return answer;
     }
@@ -76,5 +77,9 @@ public class Problem7 {
         }
 
         recommendScore.put(visitor, 1);
+    }
+
+    private static void removeFriendWithUser(String user) {
+        recommendScore.keySet().removeIf(key -> key.equals(user) || friendList.get(user).contains(key));
     }
 }
