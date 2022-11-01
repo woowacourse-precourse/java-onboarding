@@ -24,3 +24,8 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능 목록
+- createFriendship(List<List<String>> friends): 친구 관계를 생성한다.
+- increaseFriendNeighbor(String user, HashMap<String, ArrayList<String>> hs): 친구의 친구의 점수를 증가시켜준다.
+- increaseVisitor(HashMap<String, Integer> ans, String user, HashMap<String, ArrayList<String>> hs, List<String> visitors): 방문자의 점수를 증가시켜준다.
