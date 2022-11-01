@@ -12,6 +12,14 @@ public class Problem4 {
             //글자를 아스키코드 int형으로 변환
             int num = (int)arr[i];
 
+            //대소문자를 비교하여 각자 다른 메서드를 불러오는 기능
+            if (num >= 65 && num <= 90) { //대문자일 경우
+                sb.append(upperCase(num));
+            } else if (num >= 97 && num <= 122) { //소문자일 경우
+                sb.append(lowerCase(num));
+            } else { //알파벳이 아닐경우(빈문자 등) 그대로 추가
+                sb.append(arr[i]);
+            }
         }
 
         String answer = sb.toString();
