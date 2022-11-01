@@ -4,6 +4,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Problem6 {
+    public static List<String> findEmails(List<List<String>> forms) {
+        List<String> slicedNicknames = new ArrayList<>();
+        List<String> emails = new ArrayList<>();
+        String email = "";
+        String nickname = "";
+
+        for (List<String> userInfo : forms) {
+            email = userInfo.get(0);
+            nickname = userInfo.get(1);
+            for (String slicedNickname : slicedNicknames){
+                if (nickname.contains(slicedNickname)) {
+                    emails.add(email);
+                    break;
+                }
+            }
+        }
+
+        return emails;
+    }
+
     public static List<String> getSlicedNicknames(List<List<String>> forms) {
         List<String> slicedNicknames = new ArrayList<>();
         String nickName = "";
