@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.List;
+import java.util.ArrayList;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
@@ -18,5 +19,19 @@ class Problem1 {
         }
 
         return checkNum;
+    }
+
+    public static List<Integer> separateNumber(int inputNumber) {
+        List<Integer> separateList = new ArrayList<Integer>();
+
+        int lengthNumber = (Integer.toString(inputNumber)).length();
+
+        for (int i = lengthNumber - 1; i >= 0; i--) {
+            int separateNumberTemp = (int) (inputNumber / Math.pow(10, i));
+            separateList.add(separateNumberTemp);
+            inputNumber -= separateNumberTemp * Math.pow(10, i);
+        }
+
+        return separateList;
     }
 }
