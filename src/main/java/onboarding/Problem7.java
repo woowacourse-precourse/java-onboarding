@@ -53,6 +53,14 @@ public class Problem7 {
         }
         return map;
     }
+    public static HashMap<String, Integer> resetRealFriendScore(HashMap<String, Integer> map, String[] friends){
+        int len = friends.length;
+
+        for(int i = 0;i < len;i++){
+            map.put(friends[i], 0);
+        }
+        return map;
+    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
