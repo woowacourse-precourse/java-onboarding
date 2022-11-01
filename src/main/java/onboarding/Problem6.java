@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -27,6 +24,7 @@ public class Problem6 {
         }//for1
         Set<String> answer_set = new HashSet<>(answer1);
         answer = new ArrayList<>(answer_set);
+        Collections.sort(answer);
         return answer;
     }
 }
