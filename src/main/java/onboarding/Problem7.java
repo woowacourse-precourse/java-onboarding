@@ -62,6 +62,7 @@ class User implements Comparable<User>{
 }
 class RelationShip {
     List<String> uniqueFriends = new ArrayList<>();
+    HashMap<String, User> users= new HashMap<>();
 
     void getUniqueFriends(List<List<String>> friends) {
         for (List<String> friend : friends) {
@@ -69,6 +70,14 @@ class RelationShip {
         }
         HashSet<String> uniqueFriend = new HashSet<>(uniqueFriends);
         uniqueFriends = new ArrayList<>(uniqueFriend);
+    }
+    HashMap<String, User> makeRelation(List<List<String>> friends){
+        for (String s : uniqueFriends) {
+            User userSNS = new User(s);
+            userSNS.findFriends(friends);
+            users.put(s, userSNS);
+        }
+        return users;
     }
 }
 public class Problem7 {
