@@ -81,7 +81,11 @@ public class Problem7 {
             keySetList.remove(friendsOfUser.get(i));
         }
 
-        List<String> answer = Collections.emptyList();
+        List<String> answer = keySetList;
+
+
+
+
         return answer;
     }
 }
