@@ -129,4 +129,29 @@ class Problem7Test {
 
 		assertThat(result).isEqualTo(expected);
 	}
+
+	@DisplayName("user 의 직접적인 친구 목록 Set 구하는 기능 테스트")
+	@Test
+	void getDirectFriendsOfUserTest() {
+		// given : 친구관계 그래프와 user 이름이 주어졌을 때
+		List<List<String>> friends = List.of(
+				List.of("a", "b"),
+				List.of("b", "c"),
+				List.of("heap", "c"),
+				List.of("heap", "fork"),
+				List.of("heap", "a"),
+				List.of("f", "fork")
+		);
+		Problem7.makeFriendRelationGraph(friends); // 친구관계 그래프 생성
+		final String user = "c";
+
+		// when : user 와 친구인 사람들 이름 Set 구한다
+		Problem7.getDirectFriendsOfUser(user);
+
+		// then : user 와 직접적인 친구는 'b'와 'heap' 이 존재한다.
+		Set<String> result = Problem7.directFriendsOfUserSet;
+		final Set<String> expected = new HashSet<>(List.of("b", "heap"));
+
+		assertThat(result).isEqualTo(expected);
+	}
 }
