@@ -70,12 +70,6 @@ public class Problem7 {
             result.put(me.getKey(), me.getValue());
         }
         
-        System.out.println(friendList);
-        
-        System.out.println(scoreList);
-    
-        System.out.println(result);
-        
         List<String> answer = new ArrayList<>();
         
         for(Map.Entry<String, Integer> m : result.entrySet()){
