@@ -7,6 +7,7 @@ import java.util.List;
 public class Problem7 {
 
     public static HashMap<String, HashSet<String>> friendList = new HashMap<>();
+    public static HashMap<String, Integer> vistorList;
     public static HashMap<String, Integer> scoreboard = new HashMap<>();
 
     private static List<String> getRecommendedFriends(String user) {
@@ -26,12 +27,17 @@ public class Problem7 {
         }
     }
 
-    private static void setVistors(String user, List<String> visitors) {
+    private static void setVistorList(List<String> visitors) {
+        for (int i = 0; i < visitors.size(); i++) {
+            String name = visitors.get(i);
+            int count = vistorList.get(name);
+            vistorList.put(name, ++count);
+        }
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         setFriendList(friends);
-        setVistors(user, visitors);
+        setVistorList(visitors);
         List<String> answer = getRecommendedFriends(user);
         return answer;
     }
