@@ -1,9 +1,9 @@
-package onboarding;
-
 import java.util.ArrayList;
 
-public class Problem3 {
-    public static int solution(int number) {
+public class Problem3Debugging {
+
+    public static void main(String[] args) {
+        int number = 13;
 
         int answer = 0;
 
@@ -53,9 +53,7 @@ public class Problem3 {
 
         while (sizeOfNumber > 0) {
 
-            answer += ArrayOfCount.get(sizeOfNumber-1) * arrayEachDigitOfNumber.get(sizeOfNumber-1); //각 자리 수 * count1To~~~를 해주기 위함.
-
-            //이 밑에서 부터는 각 자리 수를 3으로 나눠서 아까 예에서 보여준 것처럼 1(=4/3) * 1000, 1(=5/3) * 100 등과 같이 더해지게 만드는 작업
+            answer += ArrayOfCount.get(sizeOfNumber-1) * arrayEachDigitOfNumber.get(sizeOfNumber-1);
 
             int quotientOfEachDigitDivedByThree = arrayEachDigitOfNumber.get(sizeOfNumber-1) / 3;
 
@@ -88,6 +86,11 @@ public class Problem3 {
 
 
 
-        return answer;
+
     }
-}
+
+
+
+
+    }
+
