@@ -29,4 +29,8 @@ public class Problem3 {
     public static int generalTensDigit() {
         return 3;    // 3,6,9
     }
+
+    public static int specificTensDiigt() {
+        return generalTensDigit() + 10;
+    }
 }
