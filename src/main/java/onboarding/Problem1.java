@@ -3,6 +3,7 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+
     //예외 사항 처리
     public static boolean isValidPageNum(List<Integer> pages) {
         int leftPage = pages.get(0);
