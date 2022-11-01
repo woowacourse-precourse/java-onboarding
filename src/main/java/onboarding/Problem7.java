@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -26,6 +28,25 @@ public class Problem7 {
         return answer;
     }
 
+    private static List<String> addFinalRecommendation(List<Entry<String, Integer>> sortedUserList) {
+        List<String> answer = new ArrayList<>();
+        Map<String, Integer> sortedUserMap = new LinkedHashMap<>();
+        for (Iterator<Entry<String, Integer>> iter = sortedUserList.iterator(); iter.hasNext(); ) {
+            Entry<String, Integer> name = iter.next();
+            sortedUserMap.put(name.getKey(), name.getValue());
+        }
+
+        sortedUserMap.forEach(
+            (key, value) -> {
+                if (answer.size() < MAX_RECOMMENDATION_NUM) {
+                    if (value > 0) {
+                        answer.add(key);
+                    }
+                }
+            }
+        );
+        return answer;
+    }
     private static List<Entry<String, Integer>> sortedFriendsList(Map<String, Integer> RecommendFriendsPoint) {
         List<Entry<String, Integer>> sortedUserList = new LinkedList<>(RecommendFriendsPoint.entrySet());
         Collections.sort(sortedUserList, new Comparator<Entry<String, Integer>>() {
