@@ -10,6 +10,10 @@ public class Problem3 {
 
             for (int j = 0; j < num.length(); j++) { // for 문을 통해 각 자릿수에 접근한다
                 char digit = num.charAt(j); // 각 자릿수
+                // 각 자릿수가 3, 6, 9인지 판별하는 기능
+                if (digit == '3' || digit == '6' || digit == '9') { // 자릿수가 3 또는 6 또는 9일 경우
+                    answer += 1;
+                }
             }
         }
         return answer;
