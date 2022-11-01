@@ -17,6 +17,24 @@ public class Problem7 {
                 friendArr.add(friend.get(0));
             }
         }
+
+        // 2. user의 친구의 친구인 경우, 10점을 추가.
+        for (int i=0; i < friends.size(); i++) {
+            for (String userFriend : friendArr) {
+                if (friends.get(i).contains(userFriend)) {
+                    userfriend = friends.get(i).get(1);
+                    if (userfriend.equals(user))
+                        continue;
+                    if (refArr.containsKey(userfriend)) {
+                        score = refArr.get(userfriend);
+                        score += 10;
+                        refArr.put(userfriend, score);
+                    } else {
+                        refArr.put(userfriend, 10);
+                    }
+                }
+            }
+        }
         return answer;
     }
 }
