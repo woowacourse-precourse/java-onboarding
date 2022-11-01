@@ -23,7 +23,7 @@ class Problem1 {
             List<Page> crongPages = crong.stream()
                     .map(crongPage -> new Page(crongPage))
                     .collect(Collectors.toList());
-            
+
             Integer pobiScore = pobiPages.stream()
                     .map(page -> getMaxNumber(page.getSumOfPageDigits(), page.getProductOfPageDigits()))
                     .max(Comparator.comparing(Integer::intValue))
