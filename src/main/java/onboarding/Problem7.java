@@ -246,10 +246,10 @@ public class Problem7 {
   public static List<String> solution(String user, List<List<String>> friends,
       List<String> visitors) {
     UserSelectedForPro7 userSelected = new UserSelectedForPro7(user, friends, visitors);
-    return sortKeys(userSelected.theLastScoreMap());
+    return sortKeysWithName(sorKeysWithScore(userSelected.theLastScoreMap()));
   }
 
-  public static List<String> sortKeys(Map<String, Integer> scoreMap) {
+  public static List<String> sorKeysWithScore(Map<String, Integer> scoreMap) {
     List<String> keyList = new ArrayList<>(scoreMap.keySet());
     keyList.sort(((o1, o2) -> {
       int result = scoreMap.get(o2) - scoreMap.get(o1);
@@ -258,6 +258,9 @@ public class Problem7 {
       }
       return result;
     }));
+    return keyList;
+  }
+  public static List<String> sortKeysWithName(List<String> keyList) {
     List<String> ansList = new ArrayList<>();
     int i = 0;
     for (String element : keyList) {
