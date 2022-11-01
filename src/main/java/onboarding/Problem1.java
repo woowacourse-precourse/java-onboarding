@@ -9,7 +9,7 @@ class Problem1 {
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         // 예외처리
-        if (pobi.get(LEFT_PAGE) != pobi.get(RIGHT_PAGE) - 1 || crong.get(LEFT_PAGE) != crong.get(RIGHT_PAGE) - 1) {
+        if (!validate(pobi, crong)) {
             return -1;
         }
         if (getBigScore(pobi) > getBigScore(crong)) {
@@ -19,6 +19,10 @@ class Problem1 {
             return 2;
         }
         return 0;
+    }
+
+    static boolean validate(List<Integer> pobi, List<Integer> crong) {
+        return pobi.get(LEFT_PAGE) == pobi.get(RIGHT_PAGE) - 1 && crong.get(LEFT_PAGE) == crong.get(RIGHT_PAGE) - 1;
     }
 
     static int getBigScore(List<Integer> pages) {
