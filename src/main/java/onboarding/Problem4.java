@@ -20,7 +20,7 @@ public class Problem4 {
     }
 
     public static boolean canWord(String word) {
-        if (word.length() >= 1 && word.length() <= 1000) return true;
+        if (word.length() >= MIN && word.length() <= MAX) return true;
         return false;
     }
 }
