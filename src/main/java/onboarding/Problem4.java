@@ -2,7 +2,7 @@ package onboarding;
 
 public class Problem4 {
     public static int DIFFERENCE_OF_UPPER_LOWER = 32;
-    public static int CHANGE_REFERNECE_VALUE = 155;
+    public static int CHANGE_REFERENCE_VALUE = 155;
 
     public static String solution(String word) {
         StringBuilder sb = new StringBuilder();
@@ -25,7 +25,7 @@ public class Problem4 {
     }
 
     public static char changeCharacter(char c) {
-        return (char) (CHANGE_REFERNECE_VALUE - c);
+        return (char) (CHANGE_REFERENCE_VALUE - c);
     }
 
     public static char changeUpperCase(char c) {
