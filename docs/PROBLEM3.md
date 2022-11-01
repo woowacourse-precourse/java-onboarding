@@ -27,17 +27,17 @@
 - (2) 3, 6, 9 가 존재하면 손뼉을 한번 치는 기능
 
   ```java
-  private static int hasThreeSixNine(String number, int length)
+  public static int hasThreeSixNine(String number, int length)
   ```
 - (3) 문자열 길이 계산 기능
 
   ```java
-  private static int getStringLength(String number)
+  public static int getStringLength(String number)
   ```
 - (4) 369게임 시작 기능
 
   ```java
-  private static int runGame(int number)
+  public static int runGame(int number)
   ```
 
   - (1), (2), (3) 기능을 이용해 369게임 시작
