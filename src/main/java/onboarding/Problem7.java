@@ -4,7 +4,12 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+
+        List<String> userFriends = userFriends(user, friends);
+        List<String> notFriends = notFriends(user, userFriends, friends, visitors);
+        HashMap<String, Integer> score = score(notFriends, friends, visitors);
+        List<String> answer = sortScore(score);
+
         return answer;
     }
 
@@ -56,7 +61,7 @@ public class Problem7 {
 
         for(String fri : visitors){
             if(score.containsKey(fri)){
-                score.put(fri, score.get(fri));
+                score.put(fri, score.get(fri)+1);
             }
         }
         for(List<String> fri : friends){
