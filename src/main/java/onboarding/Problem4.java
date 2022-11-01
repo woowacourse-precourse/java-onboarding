@@ -29,4 +29,12 @@ public class Problem4 {
         }
         return String.valueOf(sb);
     }
+
+    public static boolean wordLengthOutOfRangeException(String word) {
+        if (word.length() < 1 || word.length() > 1000) {
+            System.out.println("문자열의 길이는 1 ~ 1000자리까지 가능합니다.");
+            return true;
+        }
+        return false;
+    }
 }
