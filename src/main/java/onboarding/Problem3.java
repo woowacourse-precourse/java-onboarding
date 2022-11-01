@@ -36,7 +36,8 @@ public class Problem3 {
         }
 
 //      100의 자리
-
+//        321의 경우, 300~321까지 22개의 손뼉을 더 쳤어야 하는 것을 감안
+//        623의 경우, 300~399, 600~623까지 손뼉을 더 쳤어야 하는 것을 감안
         answer100 += answer10 + ((restTho-restHun) / 100) * 60;
 
         if((restTho-restHun) / 100 >= 3 && (restTho-restHun) / 100 < 6){
@@ -50,6 +51,7 @@ public class Problem3 {
         }
 
 //      1000의 자리
+//      100의 자리와 비슷한 원리 적용
         if(number >=1000) {
             if(shareTho >= 3 && shareTho< 6){
                 answer += restTho+1;
@@ -66,12 +68,5 @@ public class Problem3 {
         }
 
         return answer;
-//        0010010010 -> 1~10까지
-
-    }
-
-    public static void main(String[] args) {
-        int number = 999;
-        System.out.println(solution(number));
     }
 }

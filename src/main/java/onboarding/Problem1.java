@@ -10,10 +10,13 @@ class Problem1 {
         int pobiMax = 0;
         int num1 = pobi.get(0);
         int num2 = pobi.get(1);
+
         int sum1 = 0;
         int sum2 = 0;
+
         int multi1 = 1;
         int multi2 = 1;
+
         for ( int i = 1 ; i <= 3 ; i++){
             int ten = (int) Math.pow(10, i);
             sum1 += (num1% ten)/(int)Math.pow(10,i-1);
@@ -53,7 +56,6 @@ class Problem1 {
         else if (multi2 >= sum1 && multi2 >= sum2 && multi2 >= multi1){
             pobiMax = multi2;
         }
-
 
         int crongMax = 0;
         int num3 = crong.get(0);
@@ -116,14 +118,5 @@ class Problem1 {
 //            return 2;
 //        }
         return 2;
-    }
-
-
-    public static void main(String[] args) {
-        List<Integer> pobi = List.of(97, 98);
-        List<Integer> crong = List.of(197, 198);
-
-        System.out.println(solution(pobi,crong));
-
     }
 }

@@ -10,6 +10,7 @@ public class Problem5 {
         for(int j = 0 ; j < 9; j ++){
             if(money / won[j] >0){
                 answer.add(money/won[j]);
+                //계산되어 answer에 값이 추가된 경우 그만큼 money에서 차감하는 기능
                 money -= (won[j] * (money/won[j]));
             }
             else if(money / won[j] ==0){
@@ -18,10 +19,5 @@ public class Problem5 {
         }
 
         return answer;
-    }
-
-    public static void main(String[] args) {
-        int money = 15_000;
-        System.out.println(solution(money));
     }
 }
