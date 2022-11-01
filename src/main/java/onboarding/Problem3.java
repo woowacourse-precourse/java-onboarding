@@ -2,7 +2,7 @@ package onboarding;
 
 public class Problem3 {
     public static int solution(int number) {
-        int answer = 0;
+        int answer = computeTotalClap(number);
         return answer;
     }
 
@@ -18,5 +18,14 @@ public class Problem3 {
         }
 
         return count;
+    }
+
+    public static int computeTotalClap(int number) {
+        int sum = 0;
+        for (int i = 1; i <= number; i++) {
+            sum += countClap(i);
+        }
+
+        return sum;
     }
 }
