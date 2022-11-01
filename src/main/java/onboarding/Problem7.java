@@ -58,9 +58,18 @@ public class Problem7 {
             score.put(visit_friend, score.get(visit_friend) + 1);   // 사용자의 타임라인에 방문한 횟수 = 1점 규칙에 의해 1점씩 추가
         }
         score.remove(user); // Score 객체에서 user정보를 제거
-        System.out.println(score);
+//        System.out.println(score);
 
+        List<String> score_sorted =
+                score.entrySet().stream()
+                        .filter(a -> a.getValue() != 0) // 추천점수가 0점이면 추천하지 않는다
+                        .sorted(Map.Entry.<String, Integer>comparingByValue().reversed()    // 점수(Value)가 내림차순으로 정렬
+                                .thenComparing(Map.Entry.comparingByKey())).map(Map.Entry::getKey) // 점수(Value)가 같을 경우 이름(Key)순으로 정렬
+                        .limit(5)   // 최대 5개까지 제한
+                        .collect(Collectors.toList());
+        System.out.println(score_sorted);
 
+        answer = score_sorted;
 
         return answer;
     }
