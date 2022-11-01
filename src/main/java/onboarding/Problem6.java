@@ -57,4 +57,13 @@ public class Problem6 {
             str.add(charToString(nickname.charAt(i)) + charToString(nickname.charAt(i + 1)));
         }
     }
+
+    public static Boolean checkNameDuplication(List<String> str, int num, List<List<String>> forms) {
+        for (String s : str) {
+            if (forms.get(num).get(1).contains(s)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
