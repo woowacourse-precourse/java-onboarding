@@ -130,4 +130,5 @@ class ApplicationTest {
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
         }
     }
+    void a(){}
 }
