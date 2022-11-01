@@ -28,4 +28,13 @@ public class Problem6 {
             checkDuplication.add(false);
         }
     }
+
+    public static void nameDeduplicationMethod(List<List<String>> forms) {
+        for (int i = 0; i < forms.size(); i++) {
+            duplicateNameDetectionMethod(forms, i);
+            if ((checkDuplication.get(i))) {
+                saveEmailForDuplicatedName.add(forms.get(i).get(0));
+            }
+        }
+    }
 }
