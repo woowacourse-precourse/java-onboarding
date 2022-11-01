@@ -15,8 +15,6 @@ public class Problem6 {
         for (int i = 0; i < forms.size(); i ++) {
             map.put(forms.get(i).get(0), forms.get(i).get(1));
         }
-
-        System.out.println(map.get("jm@email.com"));
         return answer;
     }
     }
