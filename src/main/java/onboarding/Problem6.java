@@ -1,9 +1,7 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
+
 class TokenGroup{
     HashMap<String, HashMap<Integer, String>> tokenGroup=new HashMap<>();
     List<String> divideToken(String nickName){
@@ -24,6 +22,9 @@ class TokenGroup{
             HashMap<Integer, String> crewInformation = new HashMap<>();
             tokenGroup.put(token, crewInformation);
         }
+    }
+    Set<String> getTokenKey(){
+        return tokenGroup.keySet();
     }
 }
 public class Problem6 {
