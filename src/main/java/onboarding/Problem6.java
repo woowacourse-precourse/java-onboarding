@@ -23,6 +23,8 @@ public class Problem6 {
 
         makeAnswer(forms, answer);
         Collections.sort(answer);
+        answerIndexes.clear();
+
         return answer;
     }
 
