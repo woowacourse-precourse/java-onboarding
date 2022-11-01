@@ -28,6 +28,10 @@ class Member {
     }
 
 }
+/**
+ * Programs should be written for people to read, and only incidentally for machine to execute
+ */
+
 public class Problem6 {
 
     private static ArrayList<Member> members = new ArrayList<>(); // 입력받는 전체 멤버들 저장

@@ -28,11 +28,16 @@ class User {
         this.friends = new HashSet<>();
     }
 }
+/**
+ * Programs should be written for people to read, and only incidentally for machine to execute
+ */
 
 public class Problem7 {
-
+    // 추천 친구 목록
     private static Map<String, Integer> recommendedFriend = new HashMap<>();
+    // 사용자를 정의함
     private static User member;
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         // 사용자의 id
         member = new User(user);
@@ -76,32 +81,47 @@ public class Problem7 {
     }
 
     /**
-     * 사용자 친구의 친구들의 점수를 매긴다.
+     * 사용자가 포함되어 있지않은 친구관계중 사용자와 이미 친구인 상대를 제외한 친구의 친구의 점수를 계산한다.
      */
 
-    private static void scoredFriendOfFriends(List<List<String>> friends){
-        for(List<String> friend : friends){
+    private static void scoredFriendOfFriends(List<List<String>> notUserFriends){
+        for(List<String> friends : notUserFriends){
             List<String> friendOfFriend =
-                    friend.stream()
+                    friends.stream()
+                            // filter를 이용해 사용자와 친구 관계인 상대를 제외한 나머지 한명을 collect한다.
                             .filter( s -> !member.getFriends().contains(s))
                             .collect(Collectors.toList());
-            calculateScore(friendOfFriend.get(0), 10);
+            calculateScore(friendOfFriend.get(0), 10); //기능 요구사항에 맞게 친구의 친구에게 10점 부여.
         }
     }
 
+    /**
+     * 사용자와 함께 아는 친구의 수 = 10점
+     * 사용자의 타임 라인에 방문한 횟수 = 1점
+     * 사용자(User)에게 위의 조건에 맞추어 점수(Point)를 부여한다.
+     */
+
     private static void calculateScore(String user, int point){
-        if(isExist(user)){
+        if(isExist(user)){ // 이미 친구추천 목록에 있던 친구
             int value = recommendedFriend.get(user);
             recommendedFriend.replace(user, value + point);
         }
-        else{
+        else{ // 친구추천 목록에 새로 갱신되는 친구
             recommendedFriend.put(user, point);
         }
     }
 
+    /**
+     * 해당 친구(user)가 이미 친구추천 목록에 있는지 확인한다.
+     */
+
     private static boolean isExist(String user){
         return recommendedFriend.containsKey(user);
     }
+
+    /**
+     * 방문자 중에 사용자와 이미 친구이것을 filter 그리고 점수 부여
+     */
 
     private static void scoredVisitors(List<String> visitors){
         List<String> filterFriend = visitors.stream()
