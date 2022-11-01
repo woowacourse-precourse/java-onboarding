@@ -35,10 +35,7 @@ public class Problem3 {
         }
 
         private boolean isThreeSixNine(char c) {
-            if(c =='3'|| c =='6'|| c =='9'){
-                return true;
-            }
-            return false;
+            return c == '3' || c == '6' || c == '9';
         }
 
     }
