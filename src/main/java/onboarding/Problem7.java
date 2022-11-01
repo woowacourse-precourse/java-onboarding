@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 
 public class Problem7 {
@@ -10,12 +11,13 @@ public class Problem7 {
     3. 방문자 점수 갱신
     3. 점수-이름 순 정렬
      */
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
     }
 
-    // user1의 친구 목록에 user2를 추가하는 함수 addFriend()
+    // user1과 user2를 서로 친구 추가하는 함수 addFriend()
 
     // user1과 user2 사이의 공통 친구 수를 알아내는 함수 countCommonFriend()
 
