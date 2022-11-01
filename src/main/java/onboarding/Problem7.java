@@ -22,9 +22,9 @@ public class Problem7 {
     private static void addFriendshipScore(String user, List<List<String>> friends, List<String> friendship, Map<String, Long> recommendScore) {
         for (List<String> friend : friends) {
             if (!friend.contains(user)) {
-                if (hasId(friend.get(0), friendship)) {
+                if (hasIdByFriendship(friend.get(0), friendship)) {
                     addRecommendScore(recommendScore, friend.get(1), 10L);
-                } else if (hasId(friend.get(1), friendship)) {
+                } else if (hasIdByFriendship(friend.get(1), friendship)) {
                     addRecommendScore(recommendScore, friend.get(0), 10L);
                 }
             }
@@ -51,7 +51,7 @@ public class Problem7 {
      */
     private static void addVisitorScore(List<String> visitors, List<String> friendship, Map<String, Long> recommendScore) {
         for (String visitor : visitors) {
-            if (!hasId(visitor, friendship)) {
+            if (!hasIdByFriendship(visitor, friendship)) {
                 addRecommendScore(recommendScore, visitor, 1L);
             }
         }
@@ -64,7 +64,7 @@ public class Problem7 {
      * @param ids 아이디 리스트
      * @return 해당 id 를 가지고 있으면 true
      */
-    private static boolean hasId(String id, List<String> ids) {
+    private static boolean hasIdByFriendship(String id, List<String> ids) {
         return ids.contains(id);
     }
 
