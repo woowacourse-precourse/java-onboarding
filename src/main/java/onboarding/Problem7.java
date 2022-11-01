@@ -16,6 +16,7 @@ public class Problem7 {
         increaseVisitorScore(user, friendRelationshipMap, scoreMap, visitors);
 
         getRecommendedFriends(scoreMap, answer);
+        sortRecommendedFriends(scoreMap, answer);
         return answer;
     }
 
@@ -96,5 +97,27 @@ public class Problem7 {
                 answer.add(id);
             }
         }
+    }
+
+    private static void sortRecommendedFriends(HashMap<String, Integer> scoreMap, List<String> answer) {
+        for (int leftIdx = 0; leftIdx <= answer.size() - 2; leftIdx++) {
+            for (int rightIdx = leftIdx + 1; rightIdx <= answer.size() - 1; rightIdx++) {
+                String left = answer.get(leftIdx);
+                String right = answer.get(rightIdx);
+
+                if (scoreMap.get(left) < scoreMap.get(right)) {
+                    String tmp = left;
+                    answer.set(leftIdx, right);
+                    answer.set(rightIdx, tmp);
+                } else if (scoreMap.get(left) == scoreMap.get(right)) {
+                    if (right.compareTo(left) < 0) {
+                        String tmp = left;
+                        answer.set(leftIdx, right);
+                        answer.set(rightIdx, tmp);
+                    }
+                }
+            }
+        }
+
     }
 }
