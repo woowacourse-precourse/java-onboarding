@@ -21,4 +21,5 @@ public class Problem5 {
     public static int calculate_number(int money, int currency){
         return money/currency;
     }
+
 }
