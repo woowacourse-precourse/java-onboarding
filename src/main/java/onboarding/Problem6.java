@@ -16,39 +16,8 @@ public class Problem6 {
             return List.of("Error");
         }
 
-        HashSet<String> hashSet = new HashSet<String>(); // 중복 제거를 위해 HashSet 사용
-        for (List<String> form : forms) {
-            String name = form.get(NICKNAME);
-            for (int i = 0; i < name.length(); i++) {
-                if (i + 1 < name.length()) {
-                    String pickChars = name.substring(i, i + 2);
-                    String otherEmail = null;
-                    if ((otherEmail = isDuplicate(forms, forms.indexOf(form) + 1, pickChars)) != null) {
-                        hashSet.add(form.get(EMAIL));
-                        hashSet.add(otherEmail);
-                    }
-                }
-            }
-        }
-
-        return hashToList(hashSet);
-    }
-
-    private static String isDuplicate(List<List<String>> forms, int index, String pickChars) {
-        for (int i = index; i < forms.size(); i++) {
-            String name = forms.get(i).get(NICKNAME);
-            if (name.contains(pickChars)) {
-                return forms.get(i).get(EMAIL);
-            }
-        }
-        return null;
-    }
-
-    private static List<String> hashToList(HashSet<String> hashSet) {
-        List<String> answer = new ArrayList<String>(hashSet);
-
-        Collections.sort(answer);
-        return answer;
+        HashSet<String> duplicatedCrew = findDuplicate(forms);
+        return hashToList(duplicatedCrew);
     }
 
     private static boolean verifyException(List<List<String>> forms) {
@@ -56,7 +25,7 @@ public class Problem6 {
             if (!checkSizeCrew(form)) {
                 return false;
             }
-            if (!checkEmail(form.get(EMAIL)) || !checkNickname(form.get(NICKNAME))) {
+            if (!checkEmail(form.get(EMAIL)) && !checkNickname(form.get(NICKNAME))) {
                 return false;
             }
         }
@@ -81,6 +50,39 @@ public class Problem6 {
 
     private static boolean checkNickname(String nickname) {
         return (Pattern.matches(KOREAN_ALPHABET, nickname));
+
+    }
+    private static HashSet<String> findDuplicate(List<List<String>> forms) {
+        HashSet<String> duplicatedCrew = new HashSet<>();
+
+        for (List<String> form : forms) {
+            String name = form.get(NICKNAME);
+            for (int i = 0; i < name.length() - 1; i++) {
+                String pickChars = name.substring(i, i + 2);
+                String crewEmail = null;
+
+                if ((crewEmail = isDuplicate(forms, forms.indexOf(form) + 1, pickChars)) != null) {
+                    duplicatedCrew.add(form.get(EMAIL));
+                    duplicatedCrew.add(crewEmail);
+                }
+            }
+        }
+        return duplicatedCrew;
     }
 
+    private static String isDuplicate(List<List<String>> forms, int index, String pickChars) {
+        for (int i = index; i < forms.size(); i++) {
+            String name = forms.get(i).get(NICKNAME);
+            if (name.contains(pickChars)) {
+                return forms.get(i).get(EMAIL);
+            }
+        }
+        return null;
+    }
+    private static List<String> hashToList(HashSet<String> hashSet) {
+        List<String> answer = new ArrayList<>(hashSet);
+
+        Collections.sort(answer);
+        return answer;
+    }
 }
