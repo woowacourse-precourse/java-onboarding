@@ -6,11 +6,12 @@ import java.util.List;
 
 class Problem1 {
     public static int getSingleScore(int targetPage){
-        int hundreds = targetPage % 100;
-        int til_tens = targetPage-hundreds*100;
-        int tens = til_tens % 10;
-        int units = til_tens-tens*10;
-        return Math.max(hundreds+tens+units,hundreds*tens*units);
+        int hundreds = targetPage / 100;
+        int til_tens = targetPage % 100;
+        int tens = til_tens / 10;
+        int units = til_tens % 10;
+
+        return Math.max(hundreds+tens+units,(hundreds==0?1:hundreds)*tens*units);
 
     }
     public static int getMyMax(List<Integer> pages){
@@ -30,11 +31,15 @@ class Problem1 {
         }
     }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+
         int answer = Integer.MAX_VALUE;
+        int pobiScore = getMyMax(pobi);
+        int crongScore = getMyMax(crong);
+
         if (checkValidation(pobi) && checkValidation(crong)){
-            if(getMyMax(pobi)>getMyMax(crong)){
+            if(pobiScore>crongScore){
                 answer = 1;
-            }else if(getMyMax(pobi)<getMyMax(crong)){
+            }else if(pobiScore<crongScore){
                 answer = 2;
             }else{
                 answer =0;
