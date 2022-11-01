@@ -31,7 +31,6 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         TreeSet<String> answerSet = new TreeSet<>();
         String nickname;
-        boolean result;
         boolean nicknameValid;
 
         for (int i = 0; i < forms.size(); i++) {
@@ -65,21 +64,29 @@ public class Problem6 {
 
         StringBuilder compare1 = new StringBuilder(2);
         StringBuilder compare2 = new StringBuilder(2);
+        boolean duplicateResult = false;
 
         for (int i = 0; i < nickname1.length() - 1; i++) {
             compare1.delete(0, 2);
             compare1.append(nickname1.charAt(i));
             compare1.append(nickname1.charAt(i + 1));
-            for (int j = 0; j < nickname2.length() - 1; j++) {
-                compare2.delete(0, 2);
-                compare2.append(nickname2.charAt(j));
-                compare2.append(nickname2.charAt(j + 1));
-                if (compare1.toString().equals(compare2.toString())) {
-                    return true;
-                }
+            if (duplicateResult = spellingComparsion(nickname2, compare1, compare2) == true) {
+                return duplicateResult;
             }
         }
 
+        return duplicateResult;
+    }
+
+    private static boolean spellingComparsion(String nickname2, StringBuilder compare1, StringBuilder compare2) {
+        for (int j = 0; j < nickname2.length() - 1; j++) {
+            compare2.delete(0, 2);
+            compare2.append(nickname2.charAt(j));
+            compare2.append(nickname2.charAt(j + 1));
+            if (compare1.toString().equals(compare2.toString())) {
+                return true;
+            }
+        }
         return false;
     }
 
