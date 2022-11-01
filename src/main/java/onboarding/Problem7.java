@@ -27,8 +27,8 @@ public class Problem7 {
             return id;
         }
 
-        public void setScore(int score) {
-            this.score = score;
+        public void incrementScore(int score) {
+            this.score += score;
         }
 
         public int getScore() {
@@ -86,7 +86,7 @@ public class Problem7 {
 
         for (String friendId : friendIds) {
             User user = users.get(friendId);
-            user.setScore(user.getScore() + FRIEND_SCORE);
+            user.incrementScore(FRIEND_SCORE);
         }
     }
 
@@ -98,7 +98,7 @@ public class Problem7 {
     private static void setVisitScore(Map<String, User> users, List<String> visitors) {
         for (String visitorId : visitors) {
             User user = users.getOrDefault(visitorId, new User(visitorId));
-            user.setScore(user.getScore() + VISIT_SCORE);
+            user.incrementScore(VISIT_SCORE);
             users.put(visitorId, user);
         }
     }
