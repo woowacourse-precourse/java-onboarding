@@ -3,7 +3,13 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-
+        if (!is_valid(pobi) || !is_valid(crong))
+            return -1;
+        int pobi_num = getbignumber(pobi);
+        int crong_num = getbignumber(crong);
+        if (pobi_num == crong_num)
+            return 0;
+        return (pobi_num > crong_num)? 1:2;
     }
     public static int getbignumber(List<Integer> list){
         int leftpage = Math.max(addnumber(list.get(0)), multi_number((list.get(0))));
