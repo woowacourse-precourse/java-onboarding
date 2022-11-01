@@ -18,6 +18,11 @@ public class Problem7 {
     private static final Integer friendScore = 10;
     private static final Integer visitScore = 1;
 
+    private static final Comparator<Map.Entry<String, Integer>> valueComparator =
+            Map.Entry.comparingByValue(Comparator.reverseOrder());
+    private static final Comparator<Map.Entry<String, Integer>> keyComparator =
+            Map.Entry.comparingByKey();
+
     public static List<String> solution(String user, List<List<String>> friends,
             List<String> visitors) {
 
@@ -29,8 +34,12 @@ public class Problem7 {
         /* [요구] 사용자의 타임 라인에 방문한 횟수 점수 계산 */
         calculateVisitScore(visitors);
 
-        List<String> answer = Collections.emptyList();
-        return answer;
+        /* [요구] 점수가 가장 높은 순으로 정렬하여 최대 5명 리턴 */
+        return userToScoreMap.entrySet().stream()
+                .sorted(valueComparator.thenComparing(keyComparator))
+                .limit(5)
+                .map(Entry::getKey)
+                .collect(Collectors.toList());
     }
 
     public static void makeUserToFriendsMap(List<List<String>> friends) {
