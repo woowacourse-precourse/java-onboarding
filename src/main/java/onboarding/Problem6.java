@@ -46,16 +46,20 @@ public class Problem6 {
         for (int k = i +1; k < nicknameArrays.size(); k++) {
             String[] comparedMember = nicknameArrays.get(k);
 
-            for (int l = 0; l < comparedMember.length - 1; l++) {
-                String comparedMemberString = comparedMember[l] + comparedMember[l+1];
+            chooseTwoCharFromMemberExceptStandardMember(duplicatedNames, standardMember, standardMemberString, comparedMember);
 
-                if (standardMemberString.equals(comparedMemberString)) {
-                    duplicatedNames.add(String.join("", standardMember));
-                    duplicatedNames.add(String.join("", comparedMember));
-                    break;
-                }
+        }
+    }
+
+    private static void chooseTwoCharFromMemberExceptStandardMember(Set<String> duplicatedNames, String[] standardMember, String standardMemberString, String[] comparedMember) {
+        for (int l = 0; l < comparedMember.length - 1; l++) {
+            String comparedMemberString = comparedMember[l] + comparedMember[l+1];
+
+            if (standardMemberString.equals(comparedMemberString)) {
+                duplicatedNames.add(String.join("", standardMember));
+                duplicatedNames.add(String.join("", comparedMember));
+                break;
             }
-
         }
     }
 
