@@ -21,6 +21,7 @@ public class Problem7 {
         User target = new User(user, friends, visitors);
         target.setUserFriends();
         target.setRecommandHashMapByFriends();
+        target.setRecommendHashMapByVisitors();
 
         if (answer.size() > 5) {
             answer = answer.subList(0, 5);
@@ -127,13 +128,18 @@ public class Problem7 {
         private void giveTenPoint(String target) {
             recommendHashMap.put(target, recommendHashMap.getOrDefault(target, 0) + 10);
         }
-    }
 
-    public static HashMap<String, Integer> giveOnePoint(List<String> visitors, HashMap<String, Integer> friendMap) {
-        for (String visitor : visitors) {
-            friendMap.put(visitor, friendMap.getOrDefault(visitor, 0) + 1);
+        private void setRecommendHashMapByVisitors() {
+            for (String visitor : visitors) {
+                if (!userFriends.contains(visitor)) {
+                    giveOnePoint(visitor);
+                }
+            }
         }
-        return friendMap;
+
+        private void giveOnePoint(String target) {
+            recommendHashMap.put(target, recommendHashMap.getOrDefault(target, 0) + 1);
+        }
     }
 
     public static HashMap<String, Integer> deleteUserAndUserFriend(HashMap<String, Integer> friendMap,
@@ -179,3 +185,4 @@ public class Problem7 {
         return nameList;
     }
 }
+
