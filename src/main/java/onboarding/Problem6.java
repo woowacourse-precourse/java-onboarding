@@ -13,11 +13,11 @@ public class Problem6 {
         for(int i=0 ; i<nicknameA.length()-1 ; i++) {
             for(int j=0 ; j<nicknameB.length()-1 ; j++) {
                 if(nicknameA.charAt(i) == nicknameB.charAt(j)) {
-                    if(!checkHangeul(nicknameA.charAt(i))) {
+                    if(!isHangeul(nicknameA.charAt(i))) {
                         return false;
                     }
 
-                    if(!checkHangeul(nicknameB.charAt(i))) {
+                    if(!isHangeul(nicknameB.charAt(i))) {
                         return false;
                     }
 
@@ -31,7 +31,7 @@ public class Problem6 {
         return false;
     }
 
-    public static boolean checkHangeul(char word) {
+    public static boolean isHangeul(char word) {
         if(String.valueOf(word).matches(".*[ㄱ-ㅎㅏ-ㅣ가-힣]+.*")) {
             return true;
         }

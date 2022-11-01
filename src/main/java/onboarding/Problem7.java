@@ -129,7 +129,6 @@ public class Problem7 {
             if(i >= 5) break;
             answer.add(sortList.get(i).getKey());
         }
-        return;
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
