@@ -239,7 +239,6 @@ class ApplicationTest {
                 forms.add(form);
             }
             List<String> result = Problem6.solution(forms);
-            assertThat(Problem6.solution(forms)).isEqualTo(result);
         }
     }
 
