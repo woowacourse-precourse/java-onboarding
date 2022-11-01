@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
@@ -7,6 +8,17 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
+    }
+
+    private static HashMap<String, Integer> getSubNickNameFrequencies(List<List<String>> forms) {
+        HashMap<String, Integer> subNickNameFrequencies = new HashMap<>();
+        forms.forEach(form -> {
+            String nickName = form.get(Form.NICKNAME.index);
+            getSubNickNames(nickName).forEach(
+                subNickName -> subNickNameFrequencies.merge(subNickName, 1, Integer::sum)
+            );
+        });
+        return subNickNameFrequencies;
     }
 
     private static HashSet<String> getSubNickNames(String nickName) {
