@@ -10,9 +10,10 @@ public class Problem3 {
 		private final static int DEFAULT_DIGIT_UNIT = 1;
 		private final static int DEFAULT_MAXIMUM_CLAPPING = 0;
 		private final static int UNIT_CONVERT_CRITERIA = 10;
+		private final static int COMMON_CLAP_CYCLE = 3;
 		private int currentDigitUnit;
 		private int previousUnitMaxClap;
-		
+
 		ThreeSixNineGame() {
 			this.currentDigitUnit = DEFAULT_DIGIT_UNIT;
 			this.previousUnitMaxClap = DEFAULT_MAXIMUM_CLAPPING;
@@ -33,6 +34,10 @@ public class Problem3 {
 			}
 
 			return totalClaps;
+		}
+
+		private int getFilledCaseClapping(int number) {
+			return (number * previousUnitMaxClap) + ((number - 1) / COMMON_CLAP_CYCLE) * currentDigitUnit;
 		}
 
 		public static int getCurrentTotal(int currentNumber,int currentUnit, int beforeUnitTotal, int preDigit) {
