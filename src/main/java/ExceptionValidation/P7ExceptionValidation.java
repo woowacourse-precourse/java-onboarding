@@ -17,7 +17,8 @@ public class P7ExceptionValidation {
         return userNameBetween1and30(user)
                 && friendsLowerAlphabet(friends)
                 && friendsBetween1and10000(friends)
-                && elementIsTwo(friends);
+                && elementIsTwo(friends)
+                && visitorsBetween1and10000(visitors);
     }
 
 
@@ -55,5 +56,14 @@ public class P7ExceptionValidation {
         }
         return false;
     }
+
+    private static boolean visitorsBetween1and10000(List<String> visitors) {
+        if (visitors.size() < 1 || visitors.size() > 10000) {
+            return false;
+        }
+        return true;
+    }
+
+
 }
 
