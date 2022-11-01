@@ -13,7 +13,7 @@ public class Problem2 {
      * 1. 바꿀 값이 있는지 확인
      *
      * @param str
-     * @return 바꿀 값이 있는 위치ㅎ의 시작 인덱스를 반환함
+     * @return 바꿀 값이 있는 위치의 시작 인덱스를 반환함
      */
     static int checkChange(String str) {
         for (int i = 0; i < str.length() - 1; i++) {
@@ -35,9 +35,14 @@ public class Problem2 {
             int idx = checkChange(cryptogram);
             if (idx == -1) {
                 return cryptogram;
-            } else {
-                cryptogram.substring(idx, idx + 1);
             }
+            int end = idx;
+            for(;end<cryptogram.length();end++){
+                if(cryptogram.charAt(idx)==cryptogram.charAt(end)) continue;
+                break;
+            }
+            cryptogram=cryptogram.substring(0,idx)+cryptogram.substring(end);
+            return calc(cryptogram);
         }
     }
 
