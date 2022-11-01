@@ -1,58 +1,32 @@
 package onboarding.feature6;
 
+import static onboarding.feature6.Constants.*;
+
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 public class ResultView {
-    private List<String> emailsToBeSorted;
-    private List<String> sortedIdsOfEmails;
-    private List<String> sortedEmails;
-    private Map<String, Set<String>> results;
+    private List<String> results;
 
-    public ResultView(DuplicateLettersFinder duplicateLettersFinder) {
-        results = duplicateLettersFinder.findDuplicateLetters();
-    }
-
-    public Map<String, List<String>> getSortedResults() {
-        Map<String, List<String>> sortedResults = new HashMap<>();
-        for (String key : results.keySet()) {
-            Set<String> emailValues = results.get(key);
-            emailsToBeSorted = new ArrayList<>(emailValues);
-            sortedIdsOfEmails = separateEmails(emailsToBeSorted);
-            sortedEmails = new ArrayList<>();
-
-            for (String sortedId : sortedIdsOfEmails) {
-                sortEmailsById(sortedId);
-            }
-            sortedResults.put(key, sortedEmails);
-        }
-        return sortedResults;
-    }
-
-    public List<String> separateEmails(List<String> emails) {
-        List<String> ids = new ArrayList<>();
-        for (String email : emails) {
-            String id = getIdFromEmail(email);
-            ids.add(id);
-        }
-        Collections.sort(ids);
-        return ids;
-    }
-
-    public String getIdFromEmail(String email) {
-        return email.split("@")[0];
-    }
-
-    public void sortEmailsById(String sortedId) {
-        for (String email : emailsToBeSorted) {
-            if (getIdFromEmail(email).equals(sortedId)) {
-                int index = emailsToBeSorted.indexOf(email);
-                sortedEmails.add(emailsToBeSorted.get(index));
+    public ResultView(Set<String> nicknamesWithDuplicateLetters, List<List<String>> forms) {
+        results = new ArrayList<>();
+        for (String nickname : nicknamesWithDuplicateLetters) {
+            for (List<String> userInfo : forms) {
+                updateResults(userInfo, nickname);
             }
         }
+    }
+
+    public void updateResults(List<String> userInfo, String nickname) {
+        if (userInfo.contains(nickname)) {
+            results.add(userInfo.get(EMAIL_INDEX));
+        }
+    }
+
+    public List<String> getResults() {
+        Collections.sort(results);
+        return results;
     }
 }
