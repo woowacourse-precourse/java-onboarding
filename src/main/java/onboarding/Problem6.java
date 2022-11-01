@@ -21,6 +21,13 @@ public class Problem6 {
         return answer;
     }
 
+    private static void getAnswerList(List<List<String>> forms, List<String> answer) {
+        for (int i = 0; i < flag_same.length; i++) {
+            if (flag_same[i])
+                answer.add((forms.get(i)).get(0));
+        }
+        answer.sort(Comparator.naturalOrder());
+    }
 
     private static void haveSameId(List<List<String>> forms) {
         int size = forms.size();
