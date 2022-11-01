@@ -79,4 +79,9 @@ public class Problem6 {
                 emailDomainOutOfRulesException(forms) ||
                 emailLengthOutOfRangeException(forms));
     }
+
+    public static void checkEmailRegex() {
+        saveEmailCheckedByEmailRegex = checkEmailDuplication(saveEmailForDuplicatedName);
+        emailSort(saveEmailCheckedByEmailRegex);
+    }
 }
