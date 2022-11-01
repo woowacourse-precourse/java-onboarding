@@ -7,4 +7,14 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
+
+    public static int sum(int page){
+        int total_sum = 0;
+
+        while(page > 0){
+            total_sum += page % 10;
+            page /= 10;
+        }
+        return total_sum;
+    }
 }
