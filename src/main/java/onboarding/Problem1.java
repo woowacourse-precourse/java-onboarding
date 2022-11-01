@@ -6,18 +6,8 @@ import java.util.List;
 class Problem1 {
 
     private static final int MOD_NUMBER = 10;
-    public static void main(String[] args) {
-        List<Integer> pobi = new ArrayList<>();
-        List<Integer> crong = new ArrayList<>();
-        pobi.add(99);
-        pobi.add(132);
-
-        crong.add(211);
-        crong.add(212);
-
-        System.out.println(solution(pobi, crong));
-
-    }
+    private static final String OPER_PLUS = "plus";
+    private static final String OPER_MULTIPLY = "multiply";
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if (isNotAvailable(pobi) || isNotAvailable(crong)) { //둘 중 하나라도 NotAvailable 하다면 return -1
@@ -45,12 +35,12 @@ class Problem1 {
     private static int getMax(List<Integer> pageList) {
         int max = Integer.MIN_VALUE;
         for (Integer pageNumber : pageList) {
-            int sum = sum_page(pageNumber);
+            int sum = operatePage(pageNumber, OPER_PLUS);
             if (sum > max) {
                 max = sum;
             }
 
-            int multiple = multiple_page(pageNumber);
+            int multiple = operatePage(pageNumber, OPER_MULTIPLY);
             if (multiple > max) {
                 max = multiple;
             }
@@ -58,36 +48,32 @@ class Problem1 {
         return max;
     }
 
-    /**
-     * sum_page, multiple_page 의 중복된 부분을 리팩토링 할 수 있을까?
-     */
-    private static int sum_page(int pageNumber) {
-        int sum = 0;
+    private static int operatePage(int pageNumber, String operator) {
+        int result = initNumber(operator);
+
         while(pageNumber / MOD_NUMBER != 0) {
             int rest = pageNumber % MOD_NUMBER;
             pageNumber /= MOD_NUMBER;
 
-            sum += rest;
+            result = calculation(result, rest, operator);
         }
-        sum += pageNumber;
-
-        return sum;
-    }
-
-    private static int multiple_page(int pageNumber) {
-        int result = 1;
-        while(pageNumber / MOD_NUMBER != 0) {
-            int rest = pageNumber % MOD_NUMBER;
-            pageNumber /= MOD_NUMBER;
-
-            result *= rest;
-        }
-        result *= pageNumber;
+        result = calculation(result, pageNumber, operator);
 
         return result;
     }
 
-
+    private static int initNumber(String cal) {
+        if (cal == OPER_MULTIPLY) {
+            return 1;
+        }
+        return 0; //OPER_PLUS
+    }
+    private static int calculation(int result, int rest, String cal) {
+        if (cal == OPER_MULTIPLY) {
+            return result * rest;
+        }
+        return result + rest;//OPER_PLUS
+    }
 
     //Available하고 NotAvailable을 두 개 만든건, !isAvailable 보다 isNotAvailable이 더 명확할 것 같아서쓴다.
     private static boolean isNotAvailable(List<Integer> list) {
@@ -98,14 +84,18 @@ class Problem1 {
         if (list.size() != 2) { //리스트의 사이즈가 2가 아니라면, false
             return false;
         }
-        if (list.get(0) % 2 != 1) { //0번 인덱스가 홀수가 아니라면, false
+        if (list.get(0) % 2 != 1) { //0번 인덱스(왼쪽페이지)가 홀수가 아니라면, false
             return false;
         }
-        if (list.get(1) % 2 != 0) { //1번 인덱스가 짝수가 아니라면, false
+        if (list.get(1) % 2 != 0) { //1번 인덱스(오른쪽페이지)가 짝수가 아니라면, false
             return false;
         }
-
-
+        if (list.get(0) == 1) { //시작 면은 나와서는 안된다.
+            return false;
+        }
+        if (list.get(1) == 400) { //마지막 면이 나와서는 안된다.
+            return false;
+        }
         if (list.get(1) - list.get(0) != 1) { //홀수 짝수의 연속된 페이지가 아니라면
             return false;
         }

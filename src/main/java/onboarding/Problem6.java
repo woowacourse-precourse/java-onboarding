@@ -1,10 +1,75 @@
 package onboarding;
 
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem6 {
+
+    public static void main(String[] args) {
+        List<List<String>> forms = List.of(
+                List.of("jm@email.com", "제이엠"),
+                List.of("jason@email.com", "제이슨"),
+                List.of("woniee@email.com", "워니"),
+                List.of("mj@email.com", "엠제이"),
+                List.of("nowm@email.com", "이제엠")
+        );
+
+        System.out.println(solution(forms));
+    }
+
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+        Map<String, Integer> checkMap = createCheckMap(forms);
+        List<String> duplicatedTable = createDuplicatedTable(checkMap);
+        List<String> duplicatedNicknameList = findDuplicatedNickname(forms, duplicatedTable);
+
+        return duplicatedNicknameList;
+    }
+
+    private static List<String> findDuplicatedNickname(List<List<String>> forms, List<String> duplicatedTable) {
+        List<String> list = new ArrayList<>();
+
+        for (List<String> form : forms) {
+            checkingNickname(form, duplicatedTable, list);
+        }
+        return list.stream()
+                .sorted()
+                .distinct()
+                .collect(Collectors.toList());
+    }
+
+    private static void checkingNickname(List<String> form, List<String> duplicatedTable, List<String> list) {
+        for (String duplicatedWord : duplicatedTable) {
+            if (form.get(1).contains(duplicatedWord)) {
+                list.add(form.get(0));
+            }
+        }
+    }
+
+    private static List<String> createDuplicatedTable(Map<String, Integer> checkMap) {
+        List<String> duplicateList = new ArrayList<>();
+        for (String twoWord : checkMap.keySet()) {
+            if (checkMap.get(twoWord) >= 2) {
+                duplicateList.add(twoWord);
+            }
+        }
+        return duplicateList;
+    }
+
+    private static Map<String, Integer> createCheckMap(List<List<String>> forms) {
+        Map<String, Integer> checkMap = new HashMap<>();
+
+        for (List<String> form : forms) {
+            String nickName = form.get(1);
+            countingWords(nickName, checkMap);
+        }
+
+        return checkMap;
+    }
+
+    private static void countingWords(String nickName, Map<String, Integer> checkMap) {
+        for (int i = 0; i < nickName.length() - 1; i++) {
+            String twoWord = nickName.charAt(i) + "" + nickName.charAt(i + 1);
+            checkMap.put(twoWord, checkMap.getOrDefault(twoWord, 0) + 1);
+        }
     }
 }

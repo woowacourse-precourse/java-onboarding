@@ -22,6 +22,8 @@ public class Problem7 {
 
     }
 
+    // List<List<String>> 이 나을까? 아니면 List<Person> 이 나을까 고민하다가,
+    // 눈으로 더 정확하게 보이는 것은 List<Person> 이라고 생각해 Person 클래스 추가.
     static class Person {
 
         private String name;

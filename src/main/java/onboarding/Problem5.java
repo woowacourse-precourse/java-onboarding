@@ -23,35 +23,40 @@ public class Problem5 {
     }
 
     public static List<Integer> solution(int money) {
-        int[] money_values = {MONEY_50000, MONEY_10000, MONEY_5000, MONEY_1000, MONEY_500, MONEY_100, MONEY_50, MONEY_10, MONEY_1};
-        List<Integer> resultList = new ArrayList<>();
 
 
-        for (int i = 0; i < money_values.length; i++) {
-            if (canChange(money, money_values[i])) {
-                int change = getChange(money, money_values[i]);
-                resultList.add(change);
-                money = getRest(money, money_values[i]);
-            }
-            else {
-                resultList.add(0);
+        List<Integer> moneyValues = List.of(MONEY_50000, MONEY_10000, MONEY_5000,
+                                            MONEY_1000, MONEY_500, MONEY_100,
+                                            MONEY_50, MONEY_10, MONEY_1);
+        int[] resultArr = new int[moneyValues.size()];
+        
+        for (int i = 0; i < resultArr.length; i++) {
+            if (canChange(money, moneyValues.get(i))) {
+                int change = getChange(money, moneyValues.get(i));
+                resultArr[i] = change;
+
+                money = getRest(money, moneyValues.get(i));
             }
         }
+
+        List<Integer> resultList = Arrays.stream(resultArr)
+                .boxed()
+                .collect(Collectors.toList());
 
         return resultList;
     }
 
-    private static boolean canChange(int money, int money_value) {
-        if (money / money_value == 0) { //money_value가 money보다 크면
+    private static boolean canChange(int money, int moneyValue) {
+        if (money / moneyValue == 0) { //money_value가 money보다 크면
             return false;
         }
         return true;
     }
 
-    private static int getChange(int money, int money_value) { //반환되는 돈
-        return money / money_value;
+    private static int getChange(int money, int moneyValue) { //반환되는 돈
+        return money / moneyValue;
     }
-    private static int getRest(int money, int money_value) { //나머지 돈
-        return money % money_value;
+    private static int getRest(int money, int moneyValue) { //나머지 돈
+        return money % moneyValue;
     }
 }
