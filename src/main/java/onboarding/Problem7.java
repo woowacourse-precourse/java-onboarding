@@ -74,6 +74,23 @@ class Problem7 {
             sortedMap.put(entry.getKey(), entry.getValue());
         }
 
+        List<String> keyfinlist = new ArrayList<>(sortedMap.keySet()); // Key값을 List로 변환
+        List<Integer> valuefinlist = new ArrayList<>(sortedMap.values()); // value값을 List로 변환,Interger가 문제였음
+
+//        System . out . println ( keyfinlist );
+//        System . out . println ( valuefinlist );
+        if (keyfinlist.size() < 6) {
+            for (int i = 0; i < keyfinlist.size(); i++) {
+                answer.add(keyfinlist.get(i));
+            }
+        } else if (keyfinlist.size() >= 6) {
+            for (int i = 0; i < 5; i++) {
+                answer.add(keyfinlist.get(i));
+            }
+        }
+
+
+
 
         return answer;
     }
