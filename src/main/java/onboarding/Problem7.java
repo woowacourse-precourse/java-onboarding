@@ -17,6 +17,7 @@ public class Problem7 {
         Map<String, Integer> score = new HashMap<>();
 
         addVisitorScore(score, visitors);
+        addFriendScore(score, user, friendsInfo);
 
         return answer;
     }
@@ -43,4 +44,18 @@ public class Problem7 {
             score.put(visitor, score.getOrDefault(visitor, 0) + VISIT_SCORE);
         }
     }
+
+    private static void addFriendScore(Map<String, Integer> score, String user, Map<String, List<String>> friendsInfo) {
+
+        for (String userFriend : friendsInfo.get(user)) {
+            for (String maybeFriend : friendsInfo.get(userFriend)) {
+
+                if (!maybeFriend.equals(user)) {
+                    score.put(maybeFriend, score.getOrDefault(maybeFriend, 0) + FRIEND_SCORE);
+                }
+            }
+        }
+
+    }
+
 }
