@@ -10,7 +10,6 @@ public class Problem6 {
         return checkDuplicate(forms, answer);
     }
 
-    // 두 글자 이상의 문자가 중복된 닉네임이 존재하는지 검사하는 기능
     public static List<String> checkDuplicate (List<List<String>> forms, List<String> answer) {
         String otherNicknames = "";
         List<String> nicknames = new ArrayList<>();
@@ -32,7 +31,6 @@ public class Problem6 {
         return answer;
     }
 
-    // 닉네임을 2문자 단위로 쪼개는 기능
     public static List<String> twoUnits (String nickname) {
         List<String> twoUnitList = new ArrayList<>();
 
@@ -43,7 +41,6 @@ public class Problem6 {
         return twoUnitList;
     }
 
-    // 자기 자신 빼고의 닉네임들을 문자열로 만드는 기능
     public static String nicknamesToString (List<String> names, int i) {
         StringBuilder sb = new StringBuilder();
         for (int j = 0; j < names.size(); j++) {
