@@ -9,6 +9,8 @@ public class Problem3 {
 	public static final char THREE = '3';
 	public static final char SIX = '6';
 	public static final char NINE = '9';
+	public static final int CLAP = 1;
+	public static final int SKIP = 0;
 
 	public static int solution(int number) {
 		validateNumber(number);
@@ -32,7 +34,7 @@ public class Problem3 {
 	}
 
 	private static int getClap(String currentNum) {
-		int clap = 0;
+		int clap = INITIAL_CLAP;
 		for (int j = 0; j < currentNum.length(); j++) {
 			char digit = currentNum.charAt(j);
 			clap += increaseClapCount(digit);
@@ -43,8 +45,8 @@ public class Problem3 {
 
 	private static int increaseClapCount(char digit) {
 		if (digit == THREE || digit == SIX || digit == NINE) {
-			return 1;
+			return CLAP;
 		}
-		return 0;
+		return SKIP;
 	}
 }
