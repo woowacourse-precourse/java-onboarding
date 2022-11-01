@@ -11,7 +11,7 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+//        List<String> answer = Collections.emptyList();
 
         HashMap<String,Integer> map = new HashMap<>();
 
@@ -51,8 +51,21 @@ public class Problem7 {
             map.remove(d.get(i)); //유저의 친구들 삭제
         }
 
+//  맵에 마지막에 end 0 을 추가
+//  먼저 값이 높은순으로 맵을 정렬
+//  높은순으로 리스트에 넣음.
+//  다음에 넣을 값도 현재 넣는 값이랑 동일하면 현재의 값의 키를 모두 다른 리스트로 뺌. -> 리스트를 정렬 -> 정답리스트에 붙여줌
+//  end가 나오면 넣지말고 종료.
+//  반환
+//   끝.
+
+
+        List<String> answer = new ArrayList<>(map.keySet());
+
+
         System.out.println(map);
         System.out.println(d);
+        System.out.println(answer);
 
         return answer;
     }
