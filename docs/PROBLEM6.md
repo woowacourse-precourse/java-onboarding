@@ -21,3 +21,11 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+
+## 기능 목록
+- [ ] 이메일과 닉네임의 형식(인덱스)를 나타내는 Form enum
+- [ ] 서브 닉네임(2글자)의 집합을 구하는 기능
+- [ ] 서브 닉네임들의 빈도수를 구하는 기능
+- [ ] 서브 닉네임들의 빈도수를 이용해 제한된 닉네임인지 판별하는 기능
+- [ ] 제한된 닉네임을 사용하는 유저의 이메일 목록을 구하는 기능
