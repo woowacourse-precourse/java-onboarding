@@ -27,7 +27,19 @@ public class Problem2 {
             if(s.size()==0 || k==0){
                 break;
             }
-
+            for(int i=0;i<k;i++){
+                arr[k+i] = arr[i]-1;
+                s.add(s.get(i)-1);
+            }
+            Collections.sort(s);
+            if(s.size()>0){
+                for(int i=s.size()-1;i>=0;i--){
+                    sb.deleteCharAt(s.get(i));
+                }
+            }else{
+                break;
+            }
+            answer = String.valueOf(sb);
         }
         return answer;
     }
