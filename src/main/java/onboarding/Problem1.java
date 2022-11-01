@@ -4,7 +4,7 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        int answer;
 
         int pobiLeftNum = pobi.get(0); //포비 왼쪽 페이지
         int pobiRightNum = pobi.get(1); //포비 오른쪽 페이지
@@ -19,13 +19,13 @@ class Problem1 {
 
     public static int pageCheck(int pobiLeftNum,int pobiRightNum
                                 ,int crongLeftNum,int crongRightNum){
-        int result = 0;
-        int pLeftWinNum = 0;
-        int pRightWinNum = 0;
-        int cLeftWinNum = 0;
-        int cRightWinNum = 0;
-        int pobiNum = 0;
-        int crongNum = 0;
+        int result;
+        int pLeftWinNum;
+        int pRightWinNum;
+        int cLeftWinNum;
+        int cRightWinNum;
+        int pobiNum;
+        int crongNum;
 
         if (pobiLeftNum == pobiRightNum - 1
             && crongLeftNum == crongRightNum - 1
@@ -55,10 +55,10 @@ class Problem1 {
     }// public static int pageCheck
 
     public static int pageSum(int page){
-        int page1 = 0;
-        int page2 = 0;
-        int page3 = 0;
-        int sum = 0;
+        int page1;
+        int page2;
+        int page3;
+        int sum;
 
         if(page>=10){
             page1 = page / 100;
@@ -72,10 +72,10 @@ class Problem1 {
     }//public static int sum
 
     public static int pageMul(int page){
-        int page1 = 0;
-        int page2 = 0;
-        int page3 = 0;
-        int mul = 0;
+        int page1;
+        int page2;
+        int page3;
+        int mul;
 
         page1 = page / 100;
         page2 = (page % 100) / 10;
@@ -94,7 +94,7 @@ class Problem1 {
     }//public static int mul
 
     public static int pageCompare(int num1,int num2){
-        int winNum = 0;
+        int winNum;
 
         if(num1 > num2){
             winNum = num1;
