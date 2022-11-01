@@ -53,6 +53,14 @@ public class Problem7 {
 
 		SocialService(String user, List<List<String>> friends, List<String> visitors) {
 			receivedUser = new User(user);
+			users.put(user, receivedUser);
+
+			for (List<String> friend : friends) {
+				User firstUser = addUser(friend.get(0));
+				User secondUser = addUser(friend.get(1));
+				User.addFriendRelation(firstUser, secondUser);
+			}
+
 		}
 
 		private User addUser(String name) {
