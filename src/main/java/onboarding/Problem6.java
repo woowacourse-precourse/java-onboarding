@@ -1,13 +1,13 @@
 package onboarding;
 
-import problem6.User;
+import problem6.Crew;
 
 import java.util.List;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        User user = new User(forms);
-        List<String> answer = user.findDuplicateUser();
+        Crew crew = new Crew(forms);
+        List<String> answer = crew.findDuplicateUser();
         return answer;
     }
 }
