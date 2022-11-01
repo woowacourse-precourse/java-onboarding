@@ -15,7 +15,7 @@ public class Problem7 {
         friendCnt = friendCntList(friends, friend, user);   // friendCnt에 친구의 친구 저장
         visitorCnt = visitorCntList(friend, visitors);  // visitorCnt에 방문자 저장
 
-        
+
         // 점수 합산
         Map<String, Integer> map = new HashMap<String, Integer>();
         for (String str : friendCnt) {  // 친구의 친구 점수
