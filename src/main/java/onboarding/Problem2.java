@@ -7,7 +7,7 @@ public class Problem2 {
 
     public static String solution(String cryptogram) {
         Deque<Character> deque = new ArrayDeque<>();
-        return removeDuplicate(cryptogram,deque);
+        return removeDuplicate(cryptogram, deque);
 
     }
 
