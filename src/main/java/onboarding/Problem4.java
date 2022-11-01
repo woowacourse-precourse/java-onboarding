@@ -36,9 +36,18 @@ public class Problem4 {
             arrayWord[w] = (word.charAt((w)));
 
             if(upperCase.contains(arrayWord[w])) {
-
+                //wIndex : 원래 문자의 A-Z 배열 내 Index
+                int wIndex = upperCase.indexOf(arrayWord[w]);
+                //newIndex : A-Z 배열내 반대 Index
+                int newIndex = 25-wIndex;
+                Character newWord = upperCase.get(newIndex);
+                answer += newWord;
             } else if(lowerCase.contains(arrayWord[w])) {
-
+                //wIndex : 원래 문자의 a-z 배열 내 Index
+                int wIndex = lowerCase.indexOf(arrayWord[w]);
+                int newIndex = 25-wIndex;
+                Character newWord = lowerCase.get(newIndex);
+                answer += newWord;
             }
         }
         return answer;
