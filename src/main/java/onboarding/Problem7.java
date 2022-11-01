@@ -70,6 +70,14 @@ public class Problem7 {
             }
         }
 
+        // 점수가 가장 높은 순으로 정렬, 추천 점수가 같은 경우는 이름순으로 정렬하는 기능
+        List<String> keySet = new ArrayList<>((score.keySet()));
+
+        keySet.sort(((o1, o2) -> score.get(o2) - score.get(o1)));
+        for (String key : keySet) {
+            answer.add(key);
+        }
+
         return answer;
     }
 }
