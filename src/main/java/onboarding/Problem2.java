@@ -44,4 +44,12 @@ public class Problem2 {
         return false;
     }
 
+    public static boolean isStringLowerCase(String cryptogram) {
+        char[] cryptogramArray = cryptogram.toCharArray();
+        for (int i = 0; i < cryptogramArray.length; i++) {
+            if (Character.isUpperCase(cryptogram.charAt(i))) return false;
+        }
+        return true;
+    }
+
 }
