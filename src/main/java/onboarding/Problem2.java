@@ -13,7 +13,7 @@ public class Problem2 {
         stack.push(cryptogram.charAt(0));
 
         for (int i = 1; i < cryptogram.length(); i++) {
-            if (stack.peek() == cryptogram.charAt(i)) {
+            if (!stack.isEmpty() && stack.peek() == cryptogram.charAt(i)) {
                 stack.pop();
                 continue;
             }
