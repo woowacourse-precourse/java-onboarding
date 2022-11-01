@@ -6,6 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -52,6 +53,32 @@ class Problem6Test {
 			put("김재", 1);
 			put("재준", 1);
 			put("준재", 1);
+		}};
+
+		assertThat(result).isEqualTo(expected);
+	}
+
+	@DisplayName("모든 forms 에 대해 token 카운팅 테스트")
+	@Test
+	void countingAllTokensTest() {
+		// given : form list 가 주어졌을 때
+		List<List<String>> forms = new ArrayList<>(List.of(
+			new ArrayList<>(List.of("temp1@email.com", "김재준재준")),
+			new ArrayList<>(List.of("temp2@email.com", "우테코재준")),
+			new ArrayList<>(List.of("temp3@email.com", "최고야재준")),
+			new ArrayList<>(List.of("temp4@email.com", "제발우테코"))
+		));
+
+		// when : 모든 forms 의 nickname 들에 대해 토큰의 개수를 카운팅
+		Problem6.countAllTokensFromForms(forms);
+
+		// then :
+		Map<String, Integer> result = Problem6.tokenCounter;
+		final Map<String, Integer> expected = new HashMap<>() {{
+			put("고야", 1); put("김재", 1); put("준재", 1); put("발우", 1);
+			put("제발", 1); put("최고", 1); put("코재", 1); put("야재", 1);
+			put("우테", 2); put("테코", 2);
+			put("재준", 3);
 		}};
 
 		assertThat(result).isEqualTo(expected);
