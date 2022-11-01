@@ -12,19 +12,19 @@ public class Problem7 {
 
         for(int i=0;i< friends.size();i++)
         {
-            for(int j=0;j<friends.get(i).size();j++) {
-                for(int k=0;k<str.size();k++)
+            for(int j=0;j<friends.get(i).size();j++)
+            {
+                map.put(friends.get(i).get(j),0);
+                if(friends.get(i).get(j)==user)
                 {
-                    if(friends.get(i).get(j)==str.get(k))
-                    {
-                        if(j==0)
-                            map.put(friends.get(i).get(1),map.get(friends.get(i).get(1))+10);
-                        else
-                            map.put(friends.get(i).get(0),map.get(friends.get(i).get(0))+10);
-                    }
+                    if(j==0)
+                        str.add(friends.get(i).get(1));
+                    else
+                        str.add(friends.get(i).get(0));
                 }
             }
         }
+
 
         for(int i=0;i< friends.size();i++)
         {
@@ -60,8 +60,27 @@ public class Problem7 {
                 return o2.getValue() - o1.getValue();
             }
         });
+        for(Map.Entry<String, Integer> entry : entryList){
+            String tmp=entry.getKey();
+            boolean pp=true;
+            boolean qq=true;
+            for(int i=0;i<str.size();i++)
+            {
+                if(tmp==str.get(i))
+                {
+                    pp=false;
+                    break;
+                }
+            }
+            if(pp==qq)
+                answer.add(tmp);
+            if(answer.size()>=5)
+                break;
+        }
+
 
 
         return answer;
+
     }
 }
