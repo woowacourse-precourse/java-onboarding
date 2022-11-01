@@ -15,4 +15,9 @@ public class Problem3 {
             check369(number.charAt(i));
         }
     }
+
+    private static void check369(char num) {
+        if (num == '3' || num == '6' || num == '9')
+            count++;
+    }
 }
