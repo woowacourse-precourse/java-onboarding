@@ -13,13 +13,13 @@ public class Problem2 {
         //Pattern과 Matcher를 이용하여 연속된 문자를 제거하는 메서드를 만들고 호출
         for (int i = 0; i < cryptogram.length(); i++) {
             String regex = cryptogramList.get(i);
-            answer = extracted(answer,regex);
+            answer = removeRegexPattern(answer,regex);
         }
         return answer;
     }
 
     //연속된 문자를 제거하는 메서드
-    private static String extracted(String cryptogram,String regexPattern) {
+    private static String removeRegexPattern(String cryptogram,String regexPattern) {
         String regex = regexPattern+"{2,}";
         String word = cryptogram;
         Pattern pattern = Pattern.compile(regex);
@@ -27,7 +27,6 @@ public class Problem2 {
         if (matcher.find()) {
             word = word.replaceAll(regex, "").trim();
         }
-        System.out.println("확인용 " + word);
         return word;
     }
 }
