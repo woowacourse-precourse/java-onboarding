@@ -60,13 +60,8 @@ public class Problem6 {
      * @return 같으면 true 리턴
      */
     public static boolean is_dup(String crew1, String crew2) {
-        String substr1, substr2;
         for(int i = 0; i < crew1.length()-1; i++) {
-            substr1 = crew1.substring(i, i + 2);
-            for (int j = 0; j < crew2.length() - 1; j++) {
-                substr2 = crew2.substring(j, j + 2);
-                if(substr1.equals(substr2)) return true;
-            }
+            if (crew2.contains(crew1.substring(i, i + 2))) return true;
         }
         return false;
     }
