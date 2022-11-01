@@ -1,14 +1,30 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
+    }
+
+    // 친구별 함께 아는 친구의 수 -> 점수 반환 (1 이상인 친구만)
+    private static Map<String, Integer> getFOFScore(String user, List<List<String>> friends, Set<String> neighbor) {
+        Map<String, Integer> fof = new HashMap<>();
+
+        int index;
+        for (List<String> relation : friends) {
+            if ((index = getIndexOfFOF(user, relation, neighbor)) != -1) {
+                String f = relation.get(index);
+
+                if (fof.containsKey(f))
+                    fof.put(f, fof.get(f) + 10);
+                else
+                    fof.put(f, 10);
+            }
+        }
+
+        return fof;
     }
 
     // 해당 릴레이션이 친구의 친구인지 판단 및 릴레이션에서의 위치 반환 (false -> -1)
