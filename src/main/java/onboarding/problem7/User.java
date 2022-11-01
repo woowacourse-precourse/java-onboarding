@@ -19,9 +19,18 @@ public class User {
 
     private void validateId(String id) {
         if (isOutOfBounds(id)) throw new IllegalArgumentException("user id is out of bounds");
+
+        if (!isLowerCase(id)) throw new IllegalArgumentException("user id is not lowercase");
     }
 
     private boolean isOutOfBounds(String id) {
         return id.length() < MIN_ID_LENGTH || id.length() > MAX_ID_LENGTH;
+    }
+
+    private boolean isLowerCase(String id) {
+        return id.chars()
+                .filter(Character::isUpperCase)
+                .findAny()
+                .isEmpty();
     }
 }
