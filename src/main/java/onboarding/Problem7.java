@@ -9,8 +9,20 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> usersFriends = getUsersFriends(user, friends);
         HashMap<String, Integer> recommendMap = getFriendssFriends(user, friends, usersFriends);
+        List<String> visitorExceptFriend = getVisitorExceptFriend(visitors, usersFriends);
 
         return answer;
+    }
+
+    private static List<String> getVisitorExceptFriend(List<String> visitors, List<String> usersFriends) {
+        List<String> newVisitorsList = new ArrayList<>();
+
+        for (String visitor : visitors) {
+            if (!usersFriends.contains(visitor)) {
+                newVisitorsList.add(visitor);
+            }
+        }
+        return newVisitorsList;
     }
 
     private static HashMap<String, Integer> getFriendssFriends(String user, List<List<String>> friends, List<String> usersFriends) {
