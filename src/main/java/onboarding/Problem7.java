@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -18,5 +15,16 @@ public class Problem7 {
         } else {
             scoreMap.put(name, scoreMap.get(name)+score);
         }
+    }
+    public static Set<String> getFriendsOfUser(String user, List<List<String>> friends) {
+        Set<String> setFriendsOfUser = new HashSet<String>();
+        for(int i=0; i<=friends.size()-1; i++) {
+            if(friends.get(i).get(0).equals(user)) {
+                setFriendsOfUser.add(friends.get(i).get(1));
+            } else if(friends.get(i).get(1).equals(user)) {
+                setFriendsOfUser.add(friends.get(i).get(0));
+            }
+        }
+        return setFriendsOfUser;
     }
 }
