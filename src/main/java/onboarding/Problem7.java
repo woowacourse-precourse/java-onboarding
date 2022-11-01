@@ -9,6 +9,14 @@ public class Problem7 {
 
     static HashMap<String, Integer> recommend = new HashMap<String, Integer>();
 
+    public static List friendsScore(String user, List<List<String>> friends, List<String> visitors){
+        for(List<String> friend : friends){
+            if(!friend.get(1).equals(user)){
+                recommend.put(friend.get(1), recommend.containsKey(friend.get(1)) ? recommend.get(friend.get(1))+10 : 10);
+            }
+        }return visitorsScore(friends, visitors);
+
+    }
     public static List visitorsScore(List<List<String>> friends, List<String> visitors){
         ArrayList<String> friendList = new ArrayList<>();
 
