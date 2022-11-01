@@ -50,17 +50,6 @@ public class Problem7 {
         for ( int i = 0 ; i < visitors.size() ; i ++ )
             if (! directFriends.contains(visitors.get(i)))
                 rank.put(visitors.get(i), rank.getOrDefault(visitors.get(i), 0) + 1);
-
-        // for ( int i = 0 ; i < friends.size() ; i ++ ) {
-        //     String friendA = friends.get(i).get(0);
-        //     String friendB = friends.get(i).get(1);
-        //     for ( int j = 0 ; j < directFriends.size() ; j ++ ){
-        //         if ( directFriends.get(j).equals(friendA) && ! friendB.equals(user)) 
-        //             rank.put(friendB, rank.getOrDefault(friendB, 0) + CONNECTED_SCORE );
-        //         if ( directFriends.get(j).equals(friendB) && ! friendA.equals(user) ) 
-        //             rank.put(friendA, rank.getOrDefault(friendA, 0) + CONNECTED_SCORE );
-        //     }
-        // }
     }
     static List<String> getTop5List() {
         return rank.entrySet().stream()
