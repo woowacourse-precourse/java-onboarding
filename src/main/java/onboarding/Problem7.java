@@ -9,7 +9,22 @@ public class Problem7 {
         List<String> userFriends = makeUserFriends(user, friends);
         Map<String, Integer> recommendedFriendScore = calculateRecommendedFriendScore(userFriends, user, friends, visitors);
 
-        List<String> answer = Collections.emptyList();
+        List<String> recommendList = new ArrayList<>(recommendedFriendScore.keySet());
+
+        // 점수가 높은 순으로 정렬하고, 점수가 같으면 이름순으로 정렬
+        recommendList.sort((o1, o2) -> {
+            if (recommendedFriendScore.get(o1) > recommendedFriendScore.get(o2)) {
+                return -1;
+            } else if (recommendedFriendScore.get(o1) < recommendedFriendScore.get(o2)) {
+                return 1;
+            } else { // o1과 o2의 점수가 같으면 이름순
+                return o1.compareTo(o2);
+            }
+        });
+
+        // 최대 5명만 추천
+        List<String> answer = recommendList.stream().limit(5).collect(Collectors.toList());
+
         return answer;
     }
 
