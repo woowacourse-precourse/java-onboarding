@@ -13,13 +13,18 @@ class Problem1 {
     }
 
     static boolean checkException(List<Integer> pages){
-        if(isPageSizeTwo(pages)) return true;
+        if(!isPageSizeTwo(pages)) return true;
 
+        if(!isPageContinuous(pages)) return true;
         return false;
     }
 
     static boolean isPageSizeTwo(List<Integer> pages){
         return pages.size() == 2;
+    }
+
+    static boolean isPageContinuous(List<Integer> pages){
+        return (pages.get(1) -pages.get(0)) == 1;
     }
 
 }
