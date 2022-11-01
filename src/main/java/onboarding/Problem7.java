@@ -6,6 +6,22 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
         List<String> answer = new ArrayList<>();
+        Map<String, ArrayList<String>> friendOfFriend = overOneBridge(friends);
+        Map<String, Integer> recommendScore = recommendFriend(friendOfFriend, visitors, user);
+        recommendScore = sortMap(recommendScore);
+
+        if(recommendScore.size() > 5) {
+
+            List<String> names = new ArrayList<>(recommendScore.keySet());
+
+            for(int i = 0;i < 5;i++) {
+                answer.add(names.get(i));
+            }
+        }
+        else {
+
+            answer.addAll(recommendScore.keySet());
+        }
 
         return answer;
     }
