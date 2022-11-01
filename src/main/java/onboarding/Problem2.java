@@ -1,8 +1,12 @@
 package onboarding;
 
+import java.util.Stack;
+
 public class Problem2 {
-    public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
-    }
+    private static final int MAX = 1000;
+    private static final int MIN = 1;
+    private static Character SameBeforeCharacter;
+
+
+
 }
