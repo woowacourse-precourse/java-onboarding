@@ -3,7 +3,7 @@ package onboarding;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
-        answer = toString(decrypt(cryptogram));
+        answer = toString(getPlainText(cryptogram));
         return answer;
     }
 
