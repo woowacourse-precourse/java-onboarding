@@ -1,6 +1,9 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 기능 1: 이메일, 이름을 가져와 주는 함수 작성
@@ -17,8 +20,30 @@ public class Problem6 {
         return userInfoList.get(1);
     }
 
+    public static void checkDuplicateName(List<String> answer, Map<String, String> keyWithEmailMap, List<String> userInfoList) {
+        String name = getName(userInfoList);
+        for (int j = 0; j < name.length() - 1; j++) {
+            String word = name.substring(j, j + 2);
+            if (keyWithEmailMap.containsKey(word)) {
+                String email = keyWithEmailMap.get(word);
+                if (!answer.contains(getEmail(userInfoList))) {
+                    answer.add(email);
+                    answer.add(getEmail(userInfoList));
+                }
+            }
+            keyWithEmailMap.put(word, getEmail(userInfoList));
+        }
+    }
+
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer = new ArrayList<>();
+
+        Map<String, String> keyWithEmailMap = new HashMap<>();
+
+        for (int i = 0; i < forms.size(); i++) {
+            checkDuplicateName(answer, keyWithEmailMap, forms.get(i));
+        }
+
         return answer;
     }
 }
