@@ -25,9 +25,6 @@ public class Problem6 {
         }
         List<String> collect = emailList.stream().sorted().collect(Collectors.toList());
         answer = collect;
-        for(int k=0;k< collect.size();k++){
-            System.out.println(collect.get(k));
-        }
         return answer;
     }
 }
