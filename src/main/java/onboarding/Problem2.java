@@ -2,6 +2,9 @@ package onboarding;
 
 import onboarding.newExceptions.InvalidStringException;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Problem2 {
     public static String solution(String cryptogram) throws InvalidStringException {
         Problem2 problem = new Problem2();
@@ -12,21 +15,25 @@ public class Problem2 {
         StringBuilder builder = new StringBuilder(cryptogram);
 
         while(true){
-            int index = duplicateCharacterIndex(builder);
-            if(index == -1){
+            ArrayList<Integer> indexList = duplicateCharacterIndex(builder);
+            if(indexList == null){
                 return builder.toString();
             }else{
-                builder.delete(index-1,index+1);
+                deleteDuplicateCharacter(builder,indexList);
             }
         }
     }
-    static int duplicateCharacterIndex(StringBuilder str){
+    static ArrayList<Integer> duplicateCharacterIndex(StringBuilder str){
+        ArrayList<Integer> list = new ArrayList<>();
         for(int i = 1; i < str.length(); i++){
             if(str.charAt(i-1) == str.charAt(i)){
-                return i;
+                list.add(i);
             }
         }
-        return -1;
+        return list.isEmpty() ? null : list;
+    }
+    static void deleteDuplicateCharacter(StringBuilder builder, ArrayList<Integer> indexList ){
+
     }
     boolean isViolatedRestrictions(String input){
         boolean isValidStringLength = (1 <= input.length()) && (input.length() <= 1000);
