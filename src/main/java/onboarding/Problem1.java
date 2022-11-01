@@ -1,5 +1,7 @@
 package onboarding;
 
+import onboarding.problem1.CalculateStrategy;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -18,18 +20,28 @@ class Problem1 {
         return checkOutOfRangeException(list) && checkPageNumberValidityException(list);
     }
 
-    public List<Integer> addEachDigitOfPageNumber(List<Integer> list) {
-        int summation;
-        List<Integer> summationList = new ArrayList<>();
+    public List<Integer> calculateEachDigitOfPageNumberWithStrategy(List<Integer> list, CalculateStrategy calculateStrategy) {
+        List<Integer> resultList = new ArrayList<>();
         for (Integer integer : list) {
-            summation = 0;
-            while (integer > 0) {
-                summation += integer % 10;
-                integer /= 10;
-            }
-            summationList.add(summation);
+            int result = calculateStrategy.calculateEachDigitOfPageNumber(integer);
+            resultList.add(result);
         }
-        return summationList;
+        return resultList;
+    }
+
+    public List<Integer> addEachDigitOfPageNumber(List<Integer> list) {
+        return calculateEachDigitOfPageNumberWithStrategy(list,
+                new CalculateStrategy() {
+                    @Override
+                    public int calculateEachDigitOfPageNumber(int pageNumber) {
+                        int summation = 0;
+                        while (pageNumber > 0) {
+                            summation += pageNumber % 10;
+                            pageNumber /= 10;
+                        }
+                        return summation;
+                    }
+                });
     }
 
     public List<Integer> multiplyEachDigitOfPageNumber(List<Integer> list) {
