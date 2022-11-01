@@ -3,6 +3,12 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+    static final int LEFT = 0;
+    static final int RIGHT = 1;
+
+    private static int compare_left_right(List<Integer> pages){
+        return Math.max(getMaxScores(pages.get(LEFT)),getMaxScores(pages.get(RIGHT)));
+    }
     private static int getMaxScores(int n){
         int tmp_add=0;
         int tmp_mul=1;
