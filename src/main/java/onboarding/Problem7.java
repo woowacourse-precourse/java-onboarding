@@ -59,4 +59,18 @@ public class Problem7 {
         }
         return true;
     }
+
+    public static Map<String, Integer> getVisitorsPoint(List<String> visitors, List<String> userAndUserFriends) {
+        Map<String, Integer> points = new HashMap<>();
+        for (String visitor : visitors) {
+            points.put(visitor, points.getOrDefault(visitor, 0) + getVisitorPoint(visitor, userAndUserFriends));
+        }
+    }
+
+    private static int getVisitorPoint(String visitor, List<String> userAndUserFriends) {
+        if (userAndUserFriends.contains(visitor)) {
+            return 0;
+        }
+        return 1;
+    }
 }
