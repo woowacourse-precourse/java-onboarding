@@ -48,4 +48,15 @@ public class Problem7 {
             }
         }
     }
+
+    private static void scoringVisits(List<String> visitors) {
+        for (String visitor : visitors) {
+            //없으면 추가
+            if (!scoreMap.containsKey(visitor)) {
+                scoreMap.put(visitor, 0);
+            }
+            scoreMap.put(visitor , scoreMap.get(visitor) + 1);
+        }
+    }
+
 }
