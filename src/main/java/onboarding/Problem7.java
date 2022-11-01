@@ -55,7 +55,6 @@ public class Problem7 {
      * 위에서도 없다면 방문자 목록에 있는 사람들은 1점 * n
      */
     public static List<String> calcScore(String userName, List<String> visitors) {
-        //TODO : 점수를 계산하기 위해서는 유저 이름과 스코어를 저장할 수 있는 자료구조가 필요하다.
         List<UserForScore> ufsList = initUFSList();
         User user = userMap.get(userName);
         for(int i = 0;  i< ufsList.size(); i++) {
