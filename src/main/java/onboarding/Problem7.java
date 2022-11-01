@@ -34,6 +34,10 @@ public class Problem7 {
         return answer;
     }
 
+    public void addCandidateVisitors(List<String> visitors) {
+        addCandidateIterList(visitors, 1);
+    }
+
     public void addCandidateFriends(String user, List<List<String>> friends) throws Exception {
         List<String> userFriends = findUserFriends(user, friends);
         for (String userFriend : userFriends) {
