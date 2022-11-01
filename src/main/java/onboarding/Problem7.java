@@ -122,4 +122,22 @@ public class Problem7 {
 
         return result;
     }
+
+    public static List<List<String>> sortByScore(List<List<String>> scores) {
+        List<List<String>> result = new ArrayList<>();
+
+        result.addAll(scores);
+
+        for (int i = 0; i < result.size(); i++) {
+            for (int j = 0; j < result.size() - i - 1; j++) {
+                if (Integer.parseInt(result.get(j).get(1)) < Integer.parseInt(result.get(j + 1).get(1))) {
+                    List<String> tmp = result.get(j);
+                    result.set(j, result.get(j + 1));
+                    result.set(j + 1, tmp);
+                }
+            }
+        }
+
+        return result;
+    }
 }
