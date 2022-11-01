@@ -20,7 +20,6 @@ public class Problem6 {
         }
         List<String> emailList = new ArrayList<>();
         String[] returnedNickNames = duplicatedNickNames.toArray(new String[0]);
-        System.out.println(Arrays.toString(returnedNickNames));
 
         for (int i = 0; i < returnedNickNames.length; i++) {
             emailList.add(getKey(formsMap, returnedNickNames[i]));
