@@ -27,4 +27,8 @@ public class Problem5 {
             index += 1;
         }
     }
+
+    private static int splitMoneyByCurrencyUnit(int money, int index) {
+        return (money / CURRENCY_UNITS.get(index));
+    }
 }
