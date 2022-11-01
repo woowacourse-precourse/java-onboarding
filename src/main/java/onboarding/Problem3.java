@@ -11,7 +11,4 @@ public class Problem3 {
         }
         return answer;
     }
-    public static void main(String[] args) {
-        System.out.println(solution(33));
-    }
 }
