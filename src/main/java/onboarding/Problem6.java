@@ -24,12 +24,12 @@ public class Problem6 {
         return dupNameLists;
     }
 
-    private static void checkDupCount(Map<String, Integer> nameTokenMap, List<String> dupNameLists,List<String> form) {
+    private static void checkDupCount(Map<String, Integer> nameTokenMap, List<String> dupNameLists, List<String> form) {
         String name = form.get(NAME_INDEX);
         String email = form.get(EMAIL_INDEX);
 
-        for (int i = 0; i< name.length()-1; i++){
-            String nameToken = getNameToken(name, i, i + 1);
+        Set<String> nameTokens = getNameTokenWithSet(name);
+        for (String nameToken : nameTokens) {
             if (isNameDuplicate(nameTokenMap, nameToken)){
                 addDupNameList(dupNameLists, email);
             }
@@ -56,8 +56,10 @@ public class Problem6 {
     }
 
     private static void setNameTokens(Map<String, Integer> nameTokenMap, String name) {
-        for (int i = 0; i< name.length()-1; i++){
-            updateNameTokenCount(nameTokenMap, getNameToken(name, i, i + 1));
+        Set<String> nameTokens = getNameTokenWithSet(name);
+
+        for (String nameToken : nameTokens) {
+            updateNameTokenCount(nameTokenMap, nameToken);
         }
     }
 
@@ -71,8 +73,13 @@ public class Problem6 {
         }
     }
 
-    private static String getNameToken(String name, int idx1, int idx2){
-        return name.charAt(idx1) + String.valueOf(name.charAt(idx2));
+    private static Set<String> getNameTokenWithSet(String name){
+        Set<String> nameTokens = new HashSet<>();
+        for (int i = 0; i< name.length()-1; i++){
+            nameTokens.add(name.charAt(i) + String.valueOf(name.charAt(i+1)));
+        }
+
+        return nameTokens;
     }
 
     private static void checkForm(List<List<String>> forms){
