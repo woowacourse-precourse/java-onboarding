@@ -92,4 +92,37 @@ class Problem7Test {
 		final Set<String> expected = new HashSet<>(List.of("b", "heap"));
 		assertThat(friendsOfUser).isEqualTo(expected);
 	}
+
+	@DisplayName("user 의 친구들의 친구들에게 점수 10점을 부과하는 테스트")
+	@Test
+	void give10ScoreToFriendsKnowWithUserTest() {
+		// given : 친구관계 그래프 생성, 추천친구 점수 초기화, user 이름이 주어졌을 때
+		List<List<String>> friends = List.of(
+				List.of("a", "b"),
+				List.of("b", "c"),
+				List.of("heap", "c"),
+				List.of("heap", "fork"),
+				List.of("heap", "a"),
+				List.of("f", "fork")
+		);
+		Problem7.makeFriendRelationGraph(friends); // 친구관계 그래프 생성
+		Problem7.initRecommendationScores(); // 추천친구 점수 초기화
+		final String user = "c"; // user 이름
+
+		// when : user 친구들의 친구들에게 10점 부과
+		Problem7.giveScoresToFriendsKnowWithUser(user);
+
+		// then : 점수가 제대로 부과됐는지 확인
+		Map<String, Integer> result = Problem7.recommendationScores;
+		final Map<String, Integer> expected = new HashMap<>() {{
+			put("a", 20);
+			put("b", 0);
+			put("c", 0);
+			put("fork", 10);
+			put("f", 0);
+			put("heap", 0);
+		}};
+
+		assertThat(result).isEqualTo(expected);
+	}
 }
