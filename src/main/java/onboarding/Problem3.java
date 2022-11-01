@@ -5,6 +5,7 @@ import java.util.stream.IntStream;
 public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
+        answer = getCountOfClap(number);
         return answer;
     }
 
@@ -18,5 +19,16 @@ public class Problem3 {
         IntStream filteredStream = intStream.filter(digit -> digit == '3' || digit == '6' || digit == '9');
         int numberOfClap = (int) filteredStream.count();
         return numberOfClap;
+    }
+
+    /**
+     * 1부터 number까지 쳐야하는 손뼉의 개수를 반환
+     */
+    public static int getCountOfClap(int number){
+        int countOfClap = 0;
+        for(int i = 1; i<= number; i++){
+            countOfClap += getNumberOfClap(String.valueOf(i));
+        }
+        return countOfClap;
     }
 }
