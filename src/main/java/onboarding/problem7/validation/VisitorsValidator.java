@@ -21,5 +21,6 @@ public class VisitorsValidator extends AbstractValidator {
      */
     public static void validate(List<String> target) {
         isSizeOfListInValidRange(VISITORS, target, MIN_VISITORS_SIZE, MAX_VISITORS_SIZE);
+        target.forEach(visitor ->  MemberValidator.validate(visitor));
     }
 }

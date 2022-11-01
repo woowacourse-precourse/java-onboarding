@@ -738,6 +738,28 @@ class ApplicationTest {
                                             MemberValidator.MAX_ID_LENGTH_RANGE
                                     ));
                 }
+
+                @Test
+                @DisplayName("사용자 아이디가 알파벳 소문자가 아니면 예외 발생")
+                void test4() {
+                    String user = "Mkdr";
+                    List<List<String>> friends = List.of(
+                            List.of("donut", "andole"),
+                            List.of("donut", "jun"),
+                            List.of("donut", "mrko"),
+                            List.of("shakevan", "andole"),
+                            List.of("shakevan", "jun"),
+                            List.of("shakevan", "mrko")
+                    );
+                    List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+                    assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
+                            .isInstanceOf(IllegalArgumentException.class)
+                            .hasMessage(String.format(
+                                    MemberValidator.STRING_DISMATCH_TO_REGEX_MESSAGE_FORMAT,
+                                    MemberValidator.USER_ID,
+                                    MemberValidator.ALPHABET_LOWERCASE_ONLY_DESCRIPTION
+                            ));
+                }
             }
 
             @Nested
@@ -745,7 +767,7 @@ class ApplicationTest {
             class Problem7RelationsFailureTest {
                 @Test
                 @DisplayName("relations 배열이 null이면 예외 발생")
-                void test4() {
+                void test1() {
                     String user = "mrko";
                     List<List<String>> friends = null;
                     List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
@@ -761,7 +783,7 @@ class ApplicationTest {
 
                 @Test
                 @DisplayName("relations 배열이 비어 있으면 예외 발생")
-                void test5() {
+                void test2() {
                     String user = "mrko";
                     List<List<String>> friends = List.of();
                     List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
@@ -777,7 +799,7 @@ class ApplicationTest {
 
                 @Test
                 @DisplayName("relations 배열이 10,000을 넘어가면 예외 발생")
-                void test6() {
+                void test3() {
                     String user = "mrko";
                     List<List<String>> friends = new ArrayList<>();
                     for (int i = 0; i < 10_001; i++) {
@@ -796,7 +818,7 @@ class ApplicationTest {
 
                 @Test
                 @DisplayName("relations 각 원소의 길이가 2가 아닌 경우 예외 발생")
-                void test7() {
+                void test4() {
                     String user = "mrko";
                     List<List<String>> friends = List.of(
                             List.of("donut", "mrko"),
@@ -817,8 +839,8 @@ class ApplicationTest {
                 }
 
                 @Test
-                @DisplayName("사용자 아이디가 알파벳 소문자가 아니면 예외 발생")
-                void test8() {
+                @DisplayName("Relation 의 각 사용자 아이디가 알파벳 소문자가 아니면 예외 발생")
+                void test5() {
                     String user = "mkdr";
                     List<List<String>> friends = List.of(
                             List.of("donut", "andole"),
@@ -836,6 +858,54 @@ class ApplicationTest {
                                     MemberValidator.USER_ID,
                                     MemberValidator.ALPHABET_LOWERCASE_ONLY_DESCRIPTION
                             ));
+                }
+
+                @Test
+                @DisplayName("Relation 의 각 사용자 아이디의 길이가 1 미만이면 예외 발생")
+                void test6() {
+                    String user = "mkdr";
+                    List<List<String>> friends = List.of(
+                            List.of("donut", "andole"),
+                            List.of("", "jun"),
+                            List.of("donut", "mrko"),
+                            List.of("shakevan", "andole"),
+                            List.of("shakevan", "jun"),
+                            List.of("shakevan", "mrko")
+                    );
+                    List<String> visitors = List.of("c", "b", "e");
+                    assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
+                            .isInstanceOf(IllegalArgumentException.class)
+                            .hasMessage(
+                                    String.format(
+                                            MemberValidator.INVALID_STRING_LENGTH_RANGE_MESSAGE_FORMAT,
+                                            MemberValidator.USER_ID,
+                                            MemberValidator.MIN_ID_LENGTH_RANGE,
+                                            MemberValidator.MAX_ID_LENGTH_RANGE
+                                    ));
+                }
+
+                @Test
+                @DisplayName("Relation 의 각 사용자 아이디의 길이가 30을 초과하면 예외 발생")
+                void test7() {
+                    String user = "mkdr";
+                    List<List<String>> friends = List.of(
+                            List.of("donut", "andole"),
+                            List.of("donutdonutdonutdonutdonutdonutd", "jun"),
+                            List.of("donut", "mrko"),
+                            List.of("shakevan", "andole"),
+                            List.of("shakevan", "jun"),
+                            List.of("shakevan", "mrko")
+                    );
+                    List<String> visitors = List.of("c", "b", "e");
+                    assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
+                            .isInstanceOf(IllegalArgumentException.class)
+                            .hasMessage(
+                                    String.format(
+                                            MemberValidator.INVALID_STRING_LENGTH_RANGE_MESSAGE_FORMAT,
+                                            MemberValidator.USER_ID,
+                                            MemberValidator.MIN_ID_LENGTH_RANGE,
+                                            MemberValidator.MAX_ID_LENGTH_RANGE
+                                    ));
                 }
             }
 
@@ -891,28 +961,6 @@ class ApplicationTest {
                 }
 
                 @Test
-                @DisplayName("사용자 아이디가 알파벳 소문자가 아니면 예외 발생")
-                void test10() {
-                    String user = "Mkdr";
-                    List<List<String>> friends = List.of(
-                            List.of("donut", "andole"),
-                            List.of("donut", "jun"),
-                            List.of("donut", "mrko"),
-                            List.of("shakevan", "andole"),
-                            List.of("shakevan", "jun"),
-                            List.of("shakevan", "mrko")
-                    );
-                    List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
-                    assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
-                            .isInstanceOf(IllegalArgumentException.class)
-                            .hasMessage(String.format(
-                                    MemberValidator.STRING_DISMATCH_TO_REGEX_MESSAGE_FORMAT,
-                                    MemberValidator.USER_ID,
-                                    MemberValidator.ALPHABET_LOWERCASE_ONLY_DESCRIPTION
-                            ));
-                }
-
-                @Test
                 @DisplayName("동일한 친구 관계가 중복해서 주어지면 예외 발생")
                 void test11() {
                     String user = "mkdr";
@@ -928,6 +976,76 @@ class ApplicationTest {
                     assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
                             .isInstanceOf(IllegalArgumentException.class)
                             .hasMessage(RelationsValidator.DUPLICATING_RELATION_MESSAGE);
+                }
+
+                @Test
+                @DisplayName("Relation 의 각 사용자 아이디가 알파벳 소문자가 아니면 예외 발생")
+                void test5() {
+                    String user = "mkdr";
+                    List<List<String>> friends = List.of(
+                            List.of("donut", "andole"),
+                            List.of("donut", "jun"),
+                            List.of("donut", "mrko"),
+                            List.of("shakevan", "andole"),
+                            List.of("shakevan", "jun"),
+                            List.of("shakevan", "mrko")
+                    );
+                    List<String> visitors = List.of("bedi", "BEDI", "donut", "bedi", "shakevan");
+                    assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
+                            .isInstanceOf(IllegalArgumentException.class)
+                            .hasMessage(String.format(
+                                    MemberValidator.STRING_DISMATCH_TO_REGEX_MESSAGE_FORMAT,
+                                    MemberValidator.USER_ID,
+                                    MemberValidator.ALPHABET_LOWERCASE_ONLY_DESCRIPTION
+                            ));
+                }
+
+                @Test
+                @DisplayName("Relation 의 각 사용자 아이디의 길이가 1 미만이면 예외 발생")
+                void test6() {
+                    String user = "mkdr";
+                    List<List<String>> friends = List.of(
+                            List.of("donut", "andole"),
+                            List.of("donut", "jun"),
+                            List.of("donut", "mrko"),
+                            List.of("shakevan", "andole"),
+                            List.of("shakevan", "jun"),
+                            List.of("shakevan", "mrko")
+                    );
+                    List<String> visitors = List.of("c", "", "e");
+                    assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
+                            .isInstanceOf(IllegalArgumentException.class)
+                            .hasMessage(
+                                    String.format(
+                                            MemberValidator.INVALID_STRING_LENGTH_RANGE_MESSAGE_FORMAT,
+                                            MemberValidator.USER_ID,
+                                            MemberValidator.MIN_ID_LENGTH_RANGE,
+                                            MemberValidator.MAX_ID_LENGTH_RANGE
+                                    ));
+                }
+
+                @Test
+                @DisplayName("visitor 의 각 사용자 아이디의 길이가 30을 초과하면 예외 발생")
+                void test7() {
+                    String user = "mkdr";
+                    List<List<String>> friends = List.of(
+                            List.of("donut", "andole"),
+                            List.of("donut", "jun"),
+                            List.of("donut", "mrko"),
+                            List.of("shakevan", "andole"),
+                            List.of("shakevan", "jun"),
+                            List.of("shakevan", "mrko")
+                    );
+                    List<String> visitors = List.of("c", "donutdonutdonutdonutdonutdonutd", "e");
+                    assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
+                            .isInstanceOf(IllegalArgumentException.class)
+                            .hasMessage(
+                                    String.format(
+                                            MemberValidator.INVALID_STRING_LENGTH_RANGE_MESSAGE_FORMAT,
+                                            MemberValidator.USER_ID,
+                                            MemberValidator.MIN_ID_LENGTH_RANGE,
+                                            MemberValidator.MAX_ID_LENGTH_RANGE
+                                    ));
                 }
             }
         }

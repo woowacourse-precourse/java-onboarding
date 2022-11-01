@@ -14,8 +14,6 @@ import java.util.stream.Collectors;
 public class RelationsValidator extends AbstractValidator {
     public static final String DUPLICATING_RELATION_MESSAGE = "동일한 친구 관계를 중복해서 제공할 수 없습니다.";
 
-    public static final String USER_ID = "user id";
-
     public static final String RELATIONS = "Relations";
     public static final int MIN_RELATIONS_SIZE = 1;
     public static final int MAX_RELATIONS_SIZE = 10_000;
@@ -35,7 +33,7 @@ public class RelationsValidator extends AbstractValidator {
 
         target.forEach(relation -> {
             isSizeOfListInValidRange(RELATION, relation, RELATION_SIZE, RELATION_SIZE);
-            relation.forEach(member -> isStringMatchingToRegex(USER_ID, member, ALPHABET_LOWERCASE_ONLY_REGEX, ALPHABET_LOWERCASE_ONLY_DESCRIPTION));
+            relation.forEach(member -> MemberValidator.validate(member));
         });
 
         List<Relation> relationList = target.stream().map(Relation::of).collect(Collectors.toList());
