@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -28,6 +29,7 @@ public class Problem6 {
 		initSplitNicknames(map, splitNicknames);
 		initDuplicateNicknames(splitNicknames, duplicateNicknames);
 		answer = getCrewUsingInvalidNickname(map, duplicateNicknames);
+		Collections.sort(answer);
 
 		return answer;
 	}
