@@ -14,7 +14,7 @@ public class Problem7 {
         getFriends(user, friends);
         countVisited(visitors, user);
         countFriendOfFriend(friends, user);
-        answer = recommendInOrder();
+        answer = recommendInOrder(user);
 
         return answer;
     }
@@ -86,6 +86,7 @@ public class Problem7 {
                     score = recommendList.get(friendsArray.get(0));
                     score += 10;
                     recommendList.put(friendsArray.get(0), score);
+                    continue;
                 }
 
                 recommendList.put(friendsArray.get(0), 10);
@@ -94,7 +95,7 @@ public class Problem7 {
 
     }
 
-    public static ArrayList<String> recommendInOrder() {
+    public static ArrayList<String> recommendInOrder(String user) {
         List<Entry<String, Integer>> listEntry = new ArrayList<>(recommendList.entrySet());
         ArrayList<String> orderList = new ArrayList<>();
 
@@ -110,10 +111,12 @@ public class Problem7 {
             if (orderList.size() == 5) {
                 return orderList;
             }
+            if(userFriend.contains(entry.getKey())) {
+                continue;
+            }
             orderList.add(entry.getKey());
         }
 
         return orderList;
     }
-
 }
