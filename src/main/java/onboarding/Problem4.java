@@ -15,6 +15,12 @@ public class Problem4 {
     }
     public static String solution(String word) {
         String answer = "";
+
+        // 주어진 문자열을 변환시키는 반복문
+        for(int i=0;i<word.length();i++){
+            answer += transformReverse(word.charAt(i));
+        }
+
         return answer;
     }
 }
