@@ -106,5 +106,5 @@
   - ✅ userFriendStatus 변수명을 isUserFriend로 수정
   - ✅ setUserFriendStatus 메소드명을 makeUserFriend로 수정
   - ✅ getUserFriendStatus 메소드명을 isUserFriend로 수정
-- ⬜ makeUserFriend 메소드 코드 수정
-  - ⬜ 매개 변수를 제거하고 isUserFriend 속성 변수를 바로 변경하도록 수정
+- ✅ makeUserFriend 메소드 코드 수정
+  - ✅ 매개 변수를 제거하고 isUserFriend 속성 변수를 바로 변경하도록 수정

@@ -16,8 +16,8 @@ class People implements Comparable<People>{
         return this.score == 0;
     }
 
-    public void makeUserFriend(boolean userFriendStatus){
-        this.isUserFriend=userFriendStatus;
+    public void makeUserFriend(){
+        this.isUserFriend=true;
     }
 
     public boolean isUserFriend(){
@@ -50,7 +50,7 @@ public class Problem7 {
     public void addFriendToPeople(String user, People people, String friendName){
         people.addToFriendList(friendName);
         if(friendName.equals(user)){
-            people.makeUserFriend(true);
+            people.makeUserFriend();
         }
     }
 
