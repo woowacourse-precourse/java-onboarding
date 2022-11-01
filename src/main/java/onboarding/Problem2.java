@@ -18,7 +18,7 @@ public class Problem2 {
         for(int i = 1; i < cryptogram.length(); i++){
             recentChar = cryptogram.charAt(i);
 
-            if(i == 1 && recentChar == cryptogram.charAt(i-1)){
+            if(i == 1 && recentChar == cryptogram.charAt(0)){
                 if(cryptogram.length() == 2) {
                     cryptogram = "";
                     break;
