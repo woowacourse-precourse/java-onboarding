@@ -43,10 +43,23 @@ public class Problem7 {
                 // user(사용자)&원래 사용자와 친구인 경우는 무시
                 if(!(key.equals(user) || userFriends.containsKey(key))){
                     if (score.containsKey(key)){
-                        value = score.get(key) + 10;
+                        value += score.get(key);
                     }
                     score.put(key, value);
                 }
+            }
+        }
+        // 3. 사용자의 타임 라인에 방문한 횟수에 따라 점수 부여하기 +1
+        int M = visitors.size();
+        for (int i = 0; i < M; i++){
+            String key = visitors.get(i);
+            int value = 1;
+            // 사용자와 친구가 아닐 때
+            if (!userFriends.containsKey(key)){
+                if (score.containsKey(key)){
+                    value += score.get(key);
+                }
+                score.put(key, value);
             }
         }
 
