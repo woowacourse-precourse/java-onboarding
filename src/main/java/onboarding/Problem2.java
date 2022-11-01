@@ -6,9 +6,7 @@ public class Problem2 {
         word_array = cryptogram.split("");
         boolean flag = true;
         String answer = "";
-        while (flag) {
 
-        }
 
         return answer;
     }
