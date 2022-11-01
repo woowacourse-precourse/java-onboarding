@@ -11,6 +11,16 @@ public class Problem7 {
     }
 
 
+    // 추천 친구 목록에서 인자로 넘겨준 String의 FriendCount 인스턴스 넘겨줌. 없으면 null
+    private static FriendCount findFromRecommendList(String friendFriendName, List<FriendCount> friendRecommendList) {
+        for (FriendCount friendCount : friendRecommendList) {
+            if (friendFriendName.equals(friendCount.name)) {
+                return friendCount;
+            }
+        }
+        return null;
+    }
+
     // user의 친구 목록에 String으로 넘겨준 값의 존재 여부 확인
     private static boolean isExistFriend(String friendFriendName, List<String> userFriends) {
         for (String userFriend : userFriends) {
