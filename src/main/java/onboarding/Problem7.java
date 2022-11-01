@@ -45,4 +45,9 @@ public class Problem7 {
         if (!isValidVisitorsLength(visitors))
             throw new IllegalArgumentException("visitors의 길이는 0~10000 입니다.");
     }
+
+    private static boolean isValidUserLength(String user) {
+        int length = user.length();
+        return length >= MIN_USER_LENGTH && length <= MAX_USER_LENGTH;
+    }
 }
