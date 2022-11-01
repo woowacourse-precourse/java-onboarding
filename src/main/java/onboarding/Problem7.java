@@ -36,16 +36,16 @@ public class Problem7 {
             }
             idx++;
         }
-//        for (String visitor: visitors){
-//            if (!nominatePoint.containsKey(visitor)){
-//                nominate.add(visitor);
-//                nominatePoint.put(visitor, 1);
-//            }
-//            else{
-//                nominatePoint.put(visitor, nominatePoint.get(visitor) + 1);
-//            }
-//        }
-//
+        for (String visitor: visitors){
+            if (!nominatePoint.containsKey(visitor)){
+                nominate.add(visitor);
+                nominatePoint.put(visitor, 1);
+            }
+            else{
+                nominatePoint.put(visitor, nominatePoint.get(visitor) + 1);
+            }
+        }
+
 //        for (String userFriend: userFriends){
 //            nominate.remove(userFriend);
 //            nominatePoint.remove(userFriend);
