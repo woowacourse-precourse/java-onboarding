@@ -3,7 +3,7 @@ package onboarding.problem7;
 import java.util.List;
 
 public class SnsNetwork {
-    private SnsMap snsMap;
+    private final SnsMap snsMap;
 
     public SnsNetwork(FriendRelation friendRelation) {
         this.snsMap = new SnsMap();
