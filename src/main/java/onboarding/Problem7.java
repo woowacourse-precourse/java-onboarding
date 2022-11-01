@@ -37,12 +37,12 @@ public class Problem7 {
         }
     }
 
-    public enum EACH {
+    public enum Each {
         EACH_1(0), EACH_2(1);
 
         private int info;
 
-        EACH(int info) {
+        Each(int info) {
             this.info = info;
         }
 
@@ -105,8 +105,8 @@ public class Problem7 {
          * */
         private void makeConnection(){
             for (List<String> friend : this.friends) {
-                String f1 = friend.get(EACH.EACH_1.getInfo());
-                String f2 = friend.get(EACH.EACH_2.getInfo());
+                String f1 = friend.get(Each.EACH_1.getInfo());
+                String f2 = friend.get(Each.EACH_2.getInfo());
 
                 List<String> con = connectMap.getOrDefault(f1, new ArrayList<>());
                 con.add(f2);
