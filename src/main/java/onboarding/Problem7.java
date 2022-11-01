@@ -9,20 +9,17 @@ import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        Map<String, List<String>> allFriends = getAllFriends(friends);
-        List<String> userFriends = allFriends.get(user);
-
+        Map<String, List<String>> friendRelationship = getFriendRelationship(friends);
+        List<String> userFriends = friendRelationship.get(user);
         Map<String, Integer> scoreMap = new HashMap<>();
+        List<String> friendsOfFriends = new LinkedList<>();
 
-        List<String> friendOfFriends = new LinkedList<>();
         for (String userFriend : userFriends) {
-            List<String> recommendedFriends = allFriends.get(userFriend);
-            friendOfFriends.addAll(recommendedFriends);
+            friendsOfFriends.addAll(friendRelationship.get(userFriend));
         }
 
-        addScoreToFriendOfFriends(scoreMap, friendOfFriends);
+        addScoreToFriendOfFriends(scoreMap, friendsOfFriends);
         addScoreToVisitors(scoreMap, visitors);
-
         excludeFromScoreMap(scoreMap, user, userFriends);
 
         List<String> answer = sortByValue(scoreMap);
@@ -30,7 +27,7 @@ public class Problem7 {
         return answer;
     }
 
-    private static Map<String, List<String>> getAllFriends(List<List<String>> friends) {
+    private static Map<String, List<String>> getFriendRelationship(List<List<String>> friends) {
         Map<String, List<String>> members = new HashMap<>();
         for (List<String> relation : friends) {
             members.put(relation.get(0), members.getOrDefault(relation.get(0), new LinkedList<>()));
