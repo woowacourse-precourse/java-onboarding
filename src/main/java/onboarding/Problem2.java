@@ -28,6 +28,11 @@ public class Problem2 {
             }
             answer.append(splitCryptogram[i]);
         }
-        return "";
+
+        // 중복된 문자가 있다면 암호해독 메서드 재귀호출
+        if (reduplicationCount > 0) {
+            return decryption(answer.toString());
+        }
+        return answer.toString();
     }
 }
