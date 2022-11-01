@@ -2,6 +2,7 @@ package onboarding.problem1;
 
 public enum ConditionValue {
 
+    // TODO 열거타입이 무엇을 위한 열거타입 인지? 결과를 반환하는 열거 타입인지? 페이지를 검증하는 열거 타입인지?
     FIXED_LIST_SIZE(2),
     LEFT_INDEX(0),
     RIGHT_INDEX(1),
