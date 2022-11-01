@@ -24,7 +24,9 @@ public class Problem2 {
             nextLength = beforeRemoval.length();
         }
 
-        return beforeRemoval.toString();
+        String answer = beforeRemoval.toString();
+
+        return answer.trim();
     }
 
     static StringBuilder checkOverlap() {
