@@ -25,7 +25,7 @@ public class Problem7 {
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         makeFriendMapOfFriendsList(friends);
-        makeScoreMapOfFriendsList(user, visitors);
+        makeScoreMapOfAllId(user, visitors);
         removeFriendsAlreadyKnow(friendsMap.get(user));
         scoreMap.remove(user);
         makeRecommendFriendList();
@@ -66,7 +66,7 @@ public class Problem7 {
         userFriendList.forEach(userFriend -> scoreMap.remove(userFriend));
     }
 
-    private static void makeScoreMapOfFriendsList(String user, List<String> visitors) {
+    private static void makeScoreMapOfAllId(String user, List<String> visitors) {
         List<String> userFriendList = friendsMap.get(user);
         friendsMap.keySet()
                 .forEach(key -> scoreMap.put(key, scoreMap.getOrDefault(key, ZERO_SCORE) + calcSameFriendsScore(userFriendList, key)));
