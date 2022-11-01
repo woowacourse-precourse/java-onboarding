@@ -133,17 +133,17 @@ public class Problem7 {
         }
 
         // check arrays
-        System.out.println("user nickname list");
-        System.out.println(user_nickname);
-
-        System.out.println("user score list");
-        System.out.println(user_score);
-
-        System.out.println("user friends");
-        System.out.println(friend_graph);
-
-        System.out.println("user idx");
-        System.out.println(user_idx);
+//        System.out.println("user nickname list");
+//        System.out.println(user_nickname);
+//
+//        System.out.println("user score list");
+//        System.out.println(user_score);
+//
+//        System.out.println("user friends");
+//        System.out.println(friend_graph);
+//
+//        System.out.println("user idx");
+//        System.out.println(user_idx);
 
         return answer;
     }
