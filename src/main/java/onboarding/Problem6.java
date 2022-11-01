@@ -29,6 +29,7 @@ public class Problem6 {
         List<String> duplicate = emails.stream().sorted().collect(Collectors.toList()); // 중복 email 제거, 오름차순 정렬
         List<String> answer = List.of(duplicate.toArray(new String[0]));
 
+
         return answer;
     }
 }
