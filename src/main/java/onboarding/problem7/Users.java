@@ -21,7 +21,7 @@ public class Users {
                 .findAny();
     }
 
-    public User getUserById(String id) {
+    public User getOrCreateUserById(String id) {
         Optional<User> user = findUserById(id);
 
         if (user.isPresent()) return user.get();
@@ -34,7 +34,7 @@ public class Users {
 
     public List<String> recommendFriends(String id, List<String> visitors) {
 
-        User user = getUserById(id);
+        User user = getOrCreateUserById(id);
 
         return getScore(user, visitors).entrySet().stream()
                 .filter(e -> e.getValue() != 0)
@@ -70,7 +70,7 @@ public class Users {
 
     private void getVisitorScore(List<String> visitors, Map<User, Integer> scoreMap) {
         for (String visitorId : visitors) {
-            User visitor = getUserById(visitorId);
+            User visitor = getOrCreateUserById(visitorId);
             scoreMap.put(visitor, scoreMap.getOrDefault(visitor, 0) + VISITOR_SCORE);
         }
     }

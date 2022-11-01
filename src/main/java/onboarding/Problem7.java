@@ -14,8 +14,8 @@ public class Problem7 {
             String id1 = ids.get(0);
             String id2 = ids.get(1);
 
-            User user1 = users.getUserById(id1);
-            User user2 = users.getUserById(id2);
+            User user1 = users.getOrCreateUserById(id1);
+            User user2 = users.getOrCreateUserById(id2);
 
             user1.addFriend(user2);
             user2.addFriend(user1);
