@@ -17,7 +17,7 @@ public class Problem4 {
 }
 
 class TreeFrog {
-    private Map<Character, Character> wordSwitchRule = new HashMap<>();
+    private final Map<Character, Character> wordSwitchRule = new HashMap<>();
 
     public TreeFrog() {
 
@@ -25,14 +25,6 @@ class TreeFrog {
             wordSwitchRule.put((char)('a' + i), (char)('z' - i));
             wordSwitchRule.put((char)('A' + i), (char)('Z' - i));
         }
-    }
-
-    public TreeFrog(Map<Character, Character> wordSwitchRule) {
-        setWordSwitchRule(wordSwitchRule);
-    }
-
-    public void setWordSwitchRule(Map<Character, Character> wordSwitchRule) {
-        this.wordSwitchRule = wordSwitchRule;
     }
 
     public String say(String word) {
