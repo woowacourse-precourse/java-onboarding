@@ -58,6 +58,15 @@ public class Problem7 {
         return recommend;
     }
 
+    private static List<String> sortRecommend(HashMap<String, Integer> recommend){
+        //점수의 역정렬 및 키값에 의한 정렬 후 키값으로 매핑 후 list로 변환, 최대 5개만 반환
+        Stream<Map.Entry<String,Integer>> sortedRecommend = recommend.entrySet().stream();
+        sortedRecommend = sortedRecommend.sorted(Map.Entry.<String, Integer>comparingByValue().reversed().thenComparing(Map.Entry::getKey));
+        Stream<String> keyRecommend = sortedRecommend.map(Map.Entry::getKey);
+        List<String> answer = keyRecommend.collect(Collectors.toList());
+        return answer.size() <= 5 ? answer : answer.subList(0, 5);
+    }
+
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         HashMap<String, HashSet<String>> graph = getGraphOf(friends);
@@ -68,6 +77,6 @@ public class Problem7 {
         deleteAlreadyFriend(recommend, graph, user);
         addPointByFriends(recommend, graph, user);
 
-        return null;
+        return sortRecommend(recommend);
     }
 }
