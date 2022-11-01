@@ -9,26 +9,26 @@ public class Problem2 {
 
     public static String solution(String cryptogram) {
         sb = new StringBuilder();
-        duplicatedIndexList = new ArrayList<>();
-
         initDuplicatedIndexList(cryptogram);
+        return getCryptogram(cryptogram);
+    }
 
-        while(duplicatedIndexList.size() > 0){
+    public static String getCryptogram(String cryptogram) {
+        while (duplicatedIndexList.size() > 0) {
             cryptogram = createNewCryptogram(cryptogram);
             addDuplicatedIndex(cryptogram);
         }
-
         return cryptogram;
     }
 
-    public static void initDuplicatedIndexList(String cryptogram){
+    public static void initDuplicatedIndexList(String cryptogram) {
+        duplicatedIndexList = new ArrayList<>();
         addDuplicatedIndex(cryptogram);
     }
 
     public static void addDuplicatedIndex(String cryptogram) {
-        char first = ' ', second = ' ';
         clearDuplicatedIndexList();
-
+        char first, second;
         for (int index = 0; index < cryptogram.length() - 1; index++) {
             first = cryptogram.charAt(index);
             second = cryptogram.charAt(index + 1);
@@ -39,11 +39,11 @@ public class Problem2 {
         }
     }
 
-    public static String createNewCryptogram(String cryptogram){
+    public static String createNewCryptogram(String cryptogram) {
         clearStringBuilder();
 
-        for(int index = 0; index < cryptogram.length(); index++){
-            if(duplicatedIndexList.contains(index)){
+        for (int index = 0; index < cryptogram.length(); index++) {
+            if (duplicatedIndexList.contains(index)) {
                 continue;
             }
             sb.append(cryptogram.charAt(index));
@@ -51,11 +51,11 @@ public class Problem2 {
         return sb.toString();
     }
 
-    public static void clearStringBuilder(){
+    public static void clearStringBuilder() {
         sb.setLength(0);
     }
 
-    public static void clearDuplicatedIndexList(){
+    public static void clearDuplicatedIndexList() {
         duplicatedIndexList.clear();
     }
 }
