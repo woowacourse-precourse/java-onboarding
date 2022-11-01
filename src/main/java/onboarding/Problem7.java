@@ -40,7 +40,10 @@ public class Problem7 {
                         }
                     }
                 }
-
+                //방문자가 사용자의 친구의 친구라면
+                else if (check(friendMap,visitors.get(i),user)==1){
+                    score.put(visitors.get(i), score.get(visitors.get(i)) + 10);
+                }
                 //아무런 관계가 아닌 사람
                 else {
                     score.put(visitors.get(i), score.get(visitors.get(i)) + 1);
@@ -67,5 +70,22 @@ public class Problem7 {
         }
         return answer;
     }
-
+    public static  int check(Map<String,List<String>> map,String visitor,String user){//친구의 친구인지 확인하는 함수
+       int mapsize = 0;
+        if (map.containsKey(visitor)){
+            mapsize = map.get(visitor).size();
+        }
+        else {
+            return  0;
+        }
+      for (int idx =0 ; idx<mapsize;idx++) {
+         String tmp = map.get(visitor).get(idx);
+         for (int i =0; i<map.get(tmp).size();i++){
+             if (map.get(tmp).get(i).contains(user)){
+                 return 1;
+             }
+         }
+      }
+        return 0;
+    }
 }
