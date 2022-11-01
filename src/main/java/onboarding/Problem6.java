@@ -36,6 +36,13 @@ class TokenGroup{
             crewInformation.put(crewInformationKey, crewInformationValue);
         }
     }
+    void makeTokenGroup(List<List<String>> forms){
+        List<String> token;
+        for(List<String> form: forms){
+            token=divideToken(form.get(NICK_NAME));
+            addDuplicatedNickName(token, form);
+        }
+    }
     Set<String> getTokenKey(){
         return tokenGroup.keySet();
     }
