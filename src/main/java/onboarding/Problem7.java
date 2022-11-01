@@ -1,7 +1,11 @@
 package onboarding;
 
-import java.util.*;
+import java.util.List;
+import java.util.HashSet;
+import java.util.HashMap;
 import java.util.Map.Entry;
+import java.util.ArrayList;
+import java.util.Comparator;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -31,7 +35,7 @@ public class Problem7 {
     }
 
     private static void mapScoreByCommonFriend(String user, HashMap<String, HashSet<String>> friendSetMap,
-                                              HashMap<String, Integer> scoreMap) {
+                                               HashMap<String, Integer> scoreMap) {
 
         if (!friendSetMap.containsKey(user)) {
             return;
