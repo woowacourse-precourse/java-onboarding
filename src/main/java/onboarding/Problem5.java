@@ -7,8 +7,16 @@ public class Problem5 {
 
     public static List<Integer> solution(int money) {
         //List<Integer> answer = Collections.emptyList();
+        ArrayList<Integer> answer=new ArrayList<Integer>();
 
+        for(int i=0;i<arr.length;i++)
+        {
+            answer.add(money/arr[i]);
+            money%=arr[i];
+        }
 
         return answer;
     }
 }
+
+
