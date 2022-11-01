@@ -11,12 +11,16 @@ public class ClapCounter {
 
     public int getClapCount() {
         List<Integer> parsedList = new IntegerSplitter(now).getSplitList();
-        return parsedList.stream().reduce(0, (total, number) -> {
-            if (isClap(number)) {
-                total++;
-            }
-            return total;
-        });
+        int totalCount = 0;
+
+        return parsedList.stream().reduce(totalCount, this::getClapCountWithOne);
+    }
+
+    private int getClapCountWithOne(int total, int number) {
+        if (isClap(number)) {
+            return total + 1;
+        }
+        return total;
     }
 
     private boolean isClap(int number) {

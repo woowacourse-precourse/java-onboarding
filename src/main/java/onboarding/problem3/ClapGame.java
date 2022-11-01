@@ -8,10 +8,10 @@ public class ClapGame {
     }
 
     public int getClapCount() {
-        return gameNumber.getRange().reduce(0, (total, number) -> total + getClapCountWithNumber(number));
+        return gameNumber.getRange().reduce(0, this::getClapCountWithNumber);
     }
 
-    private int getClapCountWithNumber(int currentNumber) {
-        return new ClapCounter(currentNumber).getClapCount();
+    private int getClapCountWithNumber(int total, int number) {
+        return total + new ClapCounter(number).getClapCount();
     }
 }
