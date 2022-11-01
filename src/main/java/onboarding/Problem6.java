@@ -24,6 +24,15 @@ public class Problem6 {
         }
     }
 
+    public static List<String> makeAnsList(){
+        List <String> ans = new ArrayList<>();
+        Iterator<String> iterator = result.iterator();
+        while (iterator.hasNext()) {
+            ans.add(iterator.next());
+        }
+        return ans;
+    }
+
     public static List<String> solution(List<List<String>> forms) {
         for(int i=0; i<forms.size(); i++) {
             List<String> form = forms.get(i);
