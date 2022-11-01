@@ -44,17 +44,20 @@ public class Problem7 {
         friendMap.put(user1, friendList);
     }
 
-    private static void addFriendScore(Map<String, Integer> recommendScore, Map<String, ArrayList<String>> friendMap, List<String> friendsOfUser, List<String> exceptionUsers) {
+    private static void addFriendScore(Map<String, Integer> recommendScore, Map<String, ArrayList<String>> friendMap,
+                                       List<String> friendsOfUser, List<String> exceptionUsers) {
         for (String friend : friendsOfUser) {
-            addRecommendScore(recommendScore, friendMap.get(friend), FRIEND_SCORE, exceptionUsers);
+            addRecommendScore(recommendScore, friendMap.get(friend), exceptionUsers, FRIEND_SCORE);
         }
     }
 
-    private static void addVisitorScore(Map<String, Integer> recommendScore, List<String> visitors, List<String> exceptionUsers) {
-        addRecommendScore(recommendScore, visitors, VISITOR_SCORE, exceptionUsers);
+    private static void addVisitorScore(Map<String, Integer> recommendScore, List<String> visitors,
+                                        List<String> exceptionUsers) {
+        addRecommendScore(recommendScore, visitors, exceptionUsers, VISITOR_SCORE);
     }
 
-    private static void addRecommendScore(Map<String, Integer> recommendScore, List<String> candidateFriends, int score, List<String> exceptionUsers) {
+    private static void addRecommendScore(Map<String, Integer> recommendScore, List<String> candidateFriends,
+                                          List<String> exceptionUsers, int score) {
         for (String friend : candidateFriends) {
             if (isException(exceptionUsers, friend)) {
                 continue;
