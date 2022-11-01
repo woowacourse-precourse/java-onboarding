@@ -59,4 +59,22 @@ public class Problem6 {
         }
     }
 
+    private static class Email {
+        private final String crewEmail;
+
+        public Email(String email) {
+            this.crewEmail = email;
+        }
+
+        public boolean isValidDomain() {
+            String regex_email = ".*[a-zA-Z0-9]+@email.com"; // id는 영어와 숫자만, 도메인은 email.com만 허용
+            return crewEmail.matches(regex_email);
+        }
+
+        public boolean isValidLength() { // 이메일이 유효한 길이인지 확인
+            int email_length = crewEmail.length();
+            return email_length >= 11 && email_length < 20;
+        }
+    }
+
 }
