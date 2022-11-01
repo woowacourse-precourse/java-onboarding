@@ -12,7 +12,7 @@ import java.util.List;
  */
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        DuplicationNotificator notificator = new DuplicationNotificator(forms);
-        return notificator.notifyEmails();
+        DuplicationNotificator notificator = new DuplicationNotificator();
+        return notificator.notifyEmails(forms);
     }
 }

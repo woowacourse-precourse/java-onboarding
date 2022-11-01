@@ -7,11 +7,8 @@ public class DuplicationNotificator {
 
     private final Map<String, List<String>> parts = new HashMap<>();
 
-    public DuplicationNotificator(List<List<String>> forms) {
+    public List<String> notifyEmails(List<List<String>> forms) {
         checkDuplication(forms);
-    }
-
-    public List<String> notifyEmails() {
         List<String> emails = new ArrayList<>();
         for (String key : parts.keySet()) {
             List<String> emailsOfParts = parts.get(key);
