@@ -13,7 +13,7 @@ class Problem1 {
         return game.play();
     }
 
-    static private class ExceptionChecker{
+    private static class ExceptionChecker{
         int pobiLeftPage;
         int pobiRightPage;
         int crongLeftPage;
@@ -87,7 +87,7 @@ class Problem1 {
         }
     }
 
-    static private class Game {
+    private static class Game {
         int pobiLeftPage;
         int pobiRightPage;
         int crongLeftPage;
