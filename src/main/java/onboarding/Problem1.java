@@ -4,7 +4,10 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        if (exceptionCase(pobi) || exceptionCase(crong)) {
+            return -1;
+        }
+
+        return compareNum(maxSum(pobi), maxSum(crong));
     }
 }
