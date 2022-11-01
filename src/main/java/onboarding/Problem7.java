@@ -29,6 +29,16 @@ public class Problem7 {
         }
         return allScore;
     }
+    public static List<String> getFriend(String user, List<List<String>> friends) {
+        List<String> userFriends = new ArrayList<>();
+        for(int i=0;i<friends.size();i++) {
+            if(friends.get(i).contains(user)) {
+                if(friends.get(i).get(0).equals(user)) { userFriends.add(friends.get(i).get(1));}
+                else {userFriends.add(friends.get(i).get(0));}
+            }
+        }
+        return userFriends;
+    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
