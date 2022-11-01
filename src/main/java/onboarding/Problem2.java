@@ -5,7 +5,7 @@ import java.util.Stack;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        if (!cryptogram.equals(cryptogram.toLowerCase())) {
+        if (!cryptogram.matches("^[a-z]*$")) {
             return "false";
         }
         if (cryptogram.length() < 1 || cryptogram.length() > 1000) {
