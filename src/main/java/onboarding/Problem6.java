@@ -49,6 +49,38 @@ public class Problem6 {
         }
 
 
+        Set<String> result_set = new HashSet<String>(); // 중복을 제거하기 위해서 Set 선언
+
+        // 같은 글자가 연속으로 포함되는 크루들을 찾아내기
+        for (int i = 0; i < forms.size() - 1; i++){
+            for (int j = i; j < forms.size(); j++){
+                if ((i != j) && ((forms.get(i)).get(1).length() > 1)){ // 같은 원소가 아니고, 닉네임이 1글자 이상일 때
+                    String source = forms.get(i).get(1); // 닉네임
+                    String target = forms.get(j).get(1); // 비교할 닉네임
+                    for (int a = 0; a < source.length()- 1; a++){
+                        int check = 0; // 반복문 빠져나가기 위한 변수
+                        for (int b = 0; b < target.length() -1; b++){
+                            if (source.charAt(a) == target.charAt(b)){ // 문자가 같다면
+                                if (source.charAt(a + 1) == target.charAt(b + 1)){ // 그다음 문자도 같다면 같은 글자가 연속적으로 포함된 것
+                                    result_set.add(forms.get(i).get(0)); // 해당 크루의 이메일주소를 결과 set에 추가
+                                    result_set.add(forms.get(j).get(0)); // 해당 크루의 이메일주소를 결과 set에 추가
+                                    check += 1;
+                                    break;
+                                }
+                            }
+                        }
+                        if (check != 0){
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+
+
+        // 결과 반환
+        List<String> result = new ArrayList<String>(result_set); // List로 변환
+        Collections.sort(result); // 결과 List를 오름차순으로 정렬
         return result;
     }
 }
