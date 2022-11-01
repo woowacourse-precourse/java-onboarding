@@ -45,6 +45,12 @@ public class Problem7 {
         }
         return friendScore;
     }
+    private static HashMap<String, Integer> findVisitors(List<String> visitors, HashMap<String, Integer> friendScore) {
+        for(String visitor: visitors) {
+            friendScore = addRecommendScore(friendScore, visitor, 1);
+        }
+        return friendScore;
+    }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
@@ -52,6 +58,7 @@ public class Problem7 {
         List<String> userFriends = findUserFriends(user, friends);
         HashMap<String, Integer> friendScore;
         friendScore = findRelationWithUserFriends(user, friends, userFriends);
+        friendScore = findVisitors(visitors, friendScore);
         return answer;
     }
 }
