@@ -79,5 +79,19 @@ public class Problem7 {
 
     }
 
+    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        List<String> userFriends = getfriendListOfUser(user, friends);
+        System.out.println(userFriends);
 
+
+        getFriendsScore(user, friends);
+        getVisitorsScore(userFriends, visitors);
+        List<Map.Entry<String, Integer>> entries = sort(recommends);
+        List<String> recommendResult = convertEntriesToList(entries);
+
+        return recommendResult.size() == 0 ?
+                Collections.emptyList() :
+                recommendResult.stream().limit(5).collect(Collectors.toList());
+
+    }
 }
