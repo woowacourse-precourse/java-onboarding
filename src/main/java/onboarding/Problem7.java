@@ -43,7 +43,9 @@ public class Problem7 {
             List<String> userFriendFriend = map.get(uf);
             //사용자와 함께 아는친구들의 반복문, result에 점수 더하기
             for (String uff : userFriendFriend) {
-                if(result.containsKey(uff)){
+                if(userFriend.contains(uff)){
+                    continue;
+                }else if(result.containsKey(uff)){
                     result.put(uff, result.get(uff)+10);
                 }else{
                     result.put(uff,10);
