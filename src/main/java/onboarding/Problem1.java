@@ -20,9 +20,13 @@ class Problem1 {
         int pobiMaxScore = getPlayerMaxScore(pobi);
         int crongMaxScore = getPlayerMaxScore(crong);
 
-        if (pobiMaxScore > crongMaxScore) {
+        return getGameResult(pobiMaxScore, crongMaxScore);
+    }
+
+    public static int getGameResult(int firstPlayScore, int secondPlayerScore) {
+        if (firstPlayScore > secondPlayerScore) {
             return FIRST_PLAYER_WIN;
-        } else if (crongMaxScore > pobiMaxScore) {
+        } else if (secondPlayerScore > firstPlayScore) {
             return SECOND_PLAYER_WIN;
         } else {
             return GAME_IN_A_TIE;
