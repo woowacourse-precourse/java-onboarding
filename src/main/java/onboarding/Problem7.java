@@ -88,6 +88,14 @@ public class Problem7 {
             calculateVisitorPoint(myFriends, visitor, users);
         }
     }
+    private static void sort(List<User> users) {
+        users.sort((user1, user2) -> {
+           if (user1.point == user2.point) {
+               return user1.name.compareTo(user2.name);
+           }
+           return user2.point - user1.point;
+        });
+    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
