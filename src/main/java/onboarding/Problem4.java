@@ -22,4 +22,13 @@ public class Problem4 {
             initial.put(i, j);
         }
     }
+
+    private static String replaceWord(String word) {
+        StringBuffer sb = new StringBuffer();
+        for (char c : word.toCharArray()) {
+            sb.append(initial.getOrDefault(c, c));
+        }
+
+        return String.valueOf(sb);
+    }
 }
