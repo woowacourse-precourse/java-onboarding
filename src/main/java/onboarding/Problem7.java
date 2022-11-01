@@ -45,5 +45,13 @@ public class Problem7 {
         return friends.contains(user);
     }
 
+    public static void excludeUserFriends() {
+        for (String friend : userFriends) {
+            scoreForUser.remove(friend);
+        }
+
+    }
+
+
 
 }
