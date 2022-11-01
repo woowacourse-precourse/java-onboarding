@@ -3,12 +3,12 @@ package onboarding;
 import java.util.*;
 
 public class Problem6 {
-    static final int EMAIL = 0;
-    static final int NICKNAME = 1;
-    static final int LIMIT_DUPLICATED = 2;
-    static final int SEPARATE_COUNT = 2;
+    private static final int EMAIL = 0;
+    private static final int NICKNAME = 1;
+    private static final int LIMIT_DUPLICATED = 2;
+    private static final int SEPARATE_COUNT = 2;
 
-    static HashMap<String, Integer> twoLetterCountMap = new HashMap<>();
+    private static HashMap<String, Integer> twoLetterCountMap = new HashMap<>();
 
     public static List<String> solution(List<List<String>> forms) {
         List<List<String>> separatedAllCrewNicknameList = getSeparatedAllCrewNicknameList(forms);

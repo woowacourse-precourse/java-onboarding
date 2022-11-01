@@ -1,10 +1,10 @@
 package onboarding;
 
 public class Problem3 {
-    static final int THREE = 3;
-    static final int SIX = 6;
-    static final int NINE = 9;
-    static final int TEN = 10;
+    private static final int THREE = 3;
+    private static final int SIX = 6;
+    private static final int NINE = 9;
+    private static final int TEN = 10;
 
     public static int solution(int number) {
         int answer = 0;
