@@ -2,11 +2,13 @@ package onboarding;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> emails = new ArrayList<>();
+        Set<String> emails = new HashSet<>();
 
         for (int i = 0; i < forms.size(); i++) {
             for(int j = 0; j < forms.size(); j++) {
@@ -21,9 +23,11 @@ public class Problem6 {
             }
         }
 
-        Collections.sort(emails);
+        List<String> answer = new ArrayList<>(emails);
 
-        return emails;
+        Collections.sort(answer);
+
+        return answer;
     }
 
     private static boolean isDuplicated(String email1, String email2) {
