@@ -41,11 +41,15 @@ public class Problem7 {
 
             for (List<String> friend : friends) {
 
+                if (friend.get(0).equals(user) || friend.get(1).equals(user)) {
+                    continue;
+                }
+
                 for (String aqt : acquaintance) {
 
-                    if (friend.get(0).equals(aqt) && !friend.get(1).equals(user)) {
+                    if (friend.get(0).equals(aqt)) {
                         result.put(friend.get(1), getValue(result, friend.get(1)) + 10);
-                    } else if (friend.get(1).equals(aqt) && !friend.get(0).equals(user)) {
+                    } else if (friend.get(1).equals(aqt)) {
                         result.put(friend.get(0), getValue(result, friend.get(0)) + 10);
                     }
                 }
@@ -110,9 +114,9 @@ public class Problem7 {
             return acquaintance;
         }
 
-        private int getValue(Map<String, Integer> result, String friend) {
-            Integer integer = result.get(friend);
-            return integer == null ? 0 : integer;
+        private int getValue(Map<String, Integer> result, String name) {
+            Integer score = result.get(name);
+            return score == null ? 0 : score;
         }
     }
 }
