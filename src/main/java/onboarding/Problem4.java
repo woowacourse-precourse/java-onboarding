@@ -1,7 +1,13 @@
 package onboarding;
 
 public class Problem4 {
+
+    private static int MIN_WORD_LENGTH = 1;
+    private static int MAX_WORD_LENGTH = 1000;
+
     public static String solution(String word) {
+        if (isOutOfRange(word)) return "";
+        
         return convertWord(word);
     }
 
@@ -19,5 +25,9 @@ public class Problem4 {
         }
 
         return answer.toString();
+    }
+
+    private static boolean isOutOfRange(String word) {
+        return word.length() < MIN_WORD_LENGTH || word.length() > MAX_WORD_LENGTH;
     }
 }
