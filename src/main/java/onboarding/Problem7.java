@@ -20,7 +20,9 @@ import java.util.stream.Stream;
 *   구현 기능
 *   1. user의 친구 리스트 만드는 기능
 *   2. 친구의 친구 찾는 기능
- */
+*   3. 관계를 기반으로 점수 부여하는 기능
+*   4. 방문 여부를 기반으로 점수를 부여하는 기능
+*/
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
@@ -63,6 +65,20 @@ public class Problem7 {
             }
         }
         return freindoffriend;
+    }
+
+    public static Map<String,Integer> scoreByRelation(Map<String,Integer> nameMap, List<String>fof){
+        Map<String,Integer> result = nameMap;
+        for(int i=0; i<fof.size(); i++){
+            if(!nameMap.containsKey(fof.get(i))){
+                nameMap.put(fof.get(i), 10);
+            }
+            else if(nameMap.containsKey(fof.get(i))){
+                int score = nameMap.get(fof.get(i));
+                nameMap.put(fof.get(i), score +10);
+            }
+        }
+        return result;
     }
 
 }
