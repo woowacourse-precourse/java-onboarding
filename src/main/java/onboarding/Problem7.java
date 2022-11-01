@@ -18,19 +18,8 @@ public class Problem7 {
 
             isMyFriend(user, myFriends, name1, name2);
 
-            if (!relations.containsKey(name1)) {
-                relations.put(name1, new ArrayList<>());
-            }
-            List<String> friendList1 = relations.get(name1);
-            friendList1.add(name2);
-            relations.put(name1, friendList1);
-
-            if (!relations.containsKey(name2)) {
-                relations.put(name2, new ArrayList<>());
-            }
-            List<String> friendList2 = relations.get(name2);
-            friendList2.add(name1);
-            relations.put(name2, friendList2);
+            addFriendList(relations, name1, name2);
+            addFriendList(relations, name2, name1);
         }
 
         for (String myFriend : myFriends) {
@@ -59,6 +48,15 @@ public class Problem7 {
         }
 
         return result;
+    }
+
+    private static void addFriendList(Map<String, List<String>> relations, String name1, String name2) {
+        if (!relations.containsKey(name1)) {
+            relations.put(name1, new ArrayList<>());
+        }
+        List<String> friendList = relations.get(name1);
+        friendList.add(name2);
+        relations.put(name1, friendList);
     }
 
     private static void isMyFriend(String user, Set<String> myFriends, String name1, String name2) {
