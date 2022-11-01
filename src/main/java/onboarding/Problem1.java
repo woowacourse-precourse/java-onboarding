@@ -45,6 +45,9 @@ class Problem1 {
                 }
                 crongMax = Math.max(crongMax, Math.max(crongPlus, crongMulti));
             }
+            if(pobiMax > crongMax) answer = 1;
+            else if(pobiMax < crongMax) answer = 2;
+            else answer = 0;
         }
 
         return answer;
