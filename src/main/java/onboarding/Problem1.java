@@ -37,6 +37,17 @@ class Problem1 {
             }
         }
 
+        if(crong_max > pobi_max) {
+            answer = 2;
+        } else if (crong_max < pobi_max) {
+            answer = 1;
+        } else {
+            answer = 0;
+        }
+
+        if(crong_right - crong_left != 1 || pobi_right - pobi_left != 1)
+            answer = -1;
+
         return answer;
     }
 
