@@ -18,7 +18,7 @@ public class Problem7 {
 
     private static Boolean isUserException(String user) {
         for (int i = 0; i < user.length(); i++) {
-            if (user.charAt(i) < 'A' || user.charAt(1) > 'Z') return true;
+            if (user.charAt(i) < 'a' || user.charAt(1) > 'z') return true;
         }
         return user.length() < 1 || user.length() > 30;
     }
