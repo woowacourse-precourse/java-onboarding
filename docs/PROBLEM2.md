@@ -1,10 +1,11 @@
 ## 기능 목록
 
-| Date  | Feature     | Method Name       | Parameter Type | Return Type | Progress         |
-|-------|-------------|-------------------|----------------|-------------|------------------|
-| 10.27 | 중복 문자 제거    | removeRedundant() | string         | string      | committed        |
-| 10.27 | 중복 문자 위치 탐색 | findRedundantPosition() | string         | boolean[]   | committed |
-| 10.27 | 중복 문자 존재 확인 | existsRedundant() | string         | boolean     | committed  |
+| Date  | Feature         | Method Name               | Parameter Type         | Return Type | Progress         |
+|-------|-----------------|---------------------------|------------------------|-------------|------------------|
+| 10.27 | 중복 문자 제거        | removeRedundant()         | String                 | String      | committed        |
+| 10.27 | 중복 문자 위치 탐색     | findRedundantPosition()   | String                 | boolean[]   | committed |
+| 11.01 | 중복 문자 위치 배열에 표시 | markRedundantCharacters() | String, boolean[], int | void        | committed |
+| 10.27 | 중복 문자 존재 확인     | existsRedundant()         | String                 | boolean     | committed  |
 
 ### TODO
 
