@@ -15,10 +15,12 @@ public class Problem7 {
         List<String> userFriendList = getUserList(user, friends);
         List<String> userList = getUserList(friends, visitors);
         Map<String, Integer> userObject = getUserObject(userList);
-        Map<String, Integer> userFriendSocreObject = countScore(user, userFriendList, friends, userObject);
+        Map<String, Integer> userSocreObject = countScore(user, userFriendList, friends, userObject,
+            visitors);
 
         return answer;
     }
+
 
     public static Map<String, Integer> getUserObject(List<String> userList) {
         Map<String, Integer> userObject = new HashMap<>();
@@ -31,7 +33,7 @@ public class Problem7 {
     }
 
     public static Map<String, Integer> countScore(String user, List<String> userFriendList,
-        List<List<String>> friends, Map<String, Integer> userObject) {
+        List<List<String>> friends, Map<String, Integer> userObject, List<String> visitors) {
         List<String> friendsFirendList = new ArrayList<>();
 
         for (String userFriend : userFriendList) {
@@ -44,10 +46,23 @@ public class Problem7 {
                 }
             }
         }
-        return countFriendScore(userObject, friendsFirendList);
+        Map<String, Integer> userFriendScore = countFriendScore(userObject, friendsFirendList);
+
+        return countVisitScore(userFriendScore, visitors);
     }
 
-    public static Map<String, Integer> countFriendScore(Map<String, Integer> userObject, List<String> friendsFriendList) {
+    private static Map<String, Integer> countVisitScore(Map<String, Integer> userFriendScore,
+        List<String> visitors) {
+        for (String visitor : visitors) {
+            if (userFriendScore.containsKey(visitor)) {
+                userFriendScore.put(visitor, userFriendScore.get(visitor) + 1);
+            }
+        }
+        return userFriendScore;
+    }
+
+    public static Map<String, Integer> countFriendScore(Map<String, Integer> userObject,
+        List<String> friendsFriendList) {
         for (String friendsFriend : friendsFriendList) {
             if (userObject.containsKey(friendsFriend)) {
                 userObject.put(friendsFriend, userObject.get(friendsFriend) + 10);
