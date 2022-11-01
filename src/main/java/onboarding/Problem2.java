@@ -11,38 +11,54 @@ package onboarding;
 */
 
 public class Problem2 {
+    public static String solution(String cryptogram) {
 
-    public static String removeDuplicate(String str) {
-        // 문자열이 비었다면 빈 문자열 그대로를 반환한다.
-        if (str.isEmpty()) {return str;}
+        int pivot = 0;
+        int left = 0;
+        int right = 1;
+        String duplicate_str = "";
 
-        for (int i = 0; i < str.length(); i++) {
-            // 연속되는 중복 문자를 발견하면, 중복되는 부분을 제외하고 앞 부분의 문자열과 뒷 부분의 문자열을 concat해준다.
-            if (i < str.length() - 1 && str.charAt(i) == str.charAt(i + 1)) {
-                String front_str = str.substring(0, i);
-                // 중복된 부분이 문자열 제일 뒷부분일 수도 있으므로, 뒷 문자열을 빈 문자열로 일단 초기화해준다.
-                String back_str = "";
-
-                if (i + 2 < str.length()) {
-                    back_str = str.substring(i + 2);
-                }
-
-                str = front_str.concat(back_str);
-
-                break;
+        while (right < cryptogram.length()) {
+            if (duplicate_str.length() < 1) {
+                duplicate_str = duplicate_str.concat(cryptogram.substring(left, left + 1));
             }
-            // 문자열 끝까지 순회했음에도 중복된 문자를 발견하지 못하면, 그 문자열을 반환해준다.
-            else if (i == str.length() - 1) {
-                return str;
+
+            if (cryptogram.charAt(left) == cryptogram.charAt(right)) {
+                duplicate_str = duplicate_str.concat(cryptogram.substring(right, right + 1));
+                right += 1;
+            }
+            else {
+                if (duplicate_str.length() > 1) {
+                    if (right + 1 < cryptogram.length() && cryptogram.charAt(right) == cryptogram.charAt(right + 1)) {
+                        left = right;
+                        right += 1;
+                        duplicate_str = duplicate_str.concat(cryptogram.substring(left, left + 1));
+                    }
+                    else {
+                        cryptogram = cryptogram.replace(duplicate_str, "");
+
+                        if (pivot != 0) {
+                            pivot -= 1;
+
+                        }
+                        left = pivot;
+                        right = left + 1;
+                        duplicate_str = cryptogram.substring(left, left + 1);
+                    }
+
+                }
+                else {
+                    pivot += 1;
+                    left = pivot;
+                    right = left + 1;
+                    duplicate_str = cryptogram.substring(left, left + 1);
+                }
             }
         }
 
-        // 연속되는 중복 문자를 다 제거할 때까지, 재귀적으로 찾아준다.
-        return removeDuplicate(str);
-    }
-
-    public static String solution(String cryptogram) {
-        cryptogram = removeDuplicate(cryptogram);
+        if (duplicate_str.length() > 1) {
+            cryptogram = cryptogram.replace(duplicate_str, "");
+        }
 
         return cryptogram;
     }
