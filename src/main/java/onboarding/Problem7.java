@@ -5,7 +5,25 @@ import java.util.stream.Collectors;
 
 public class Problem7 {
     public static Map<String,Integer> friendsAdd_score(Map<String,Integer> FriendsAndScore_map,List<List<String>> friends,List<String> user_fri){
-
+        for(int i=0; i<friends.size(); i++) {
+            for(int j=0; j<user_fri.size(); j++) {
+                if (user_fri.get(j) == friends.get(i).get(0)) {
+                    for (Map.Entry<String, Integer> element : FriendsAndScore_map.entrySet()) {
+                        if(friends.get(i).get(1)==element.getKey()){
+                            element.setValue(element.getValue()+10);
+                        }
+                    }
+                }
+                if (user_fri.get(j) == friends.get(i).get(1)) {
+                    for (Map.Entry<String, Integer> element : FriendsAndScore_map.entrySet()) {
+                        if(friends.get(i).get(0)==element.getKey()){
+                            element.setValue(element.getValue()+10);
+                        }
+                    }
+                }
+            }
+        }
+        return FriendsAndScore_map;
     }
     public static Map<String,Integer> visitorsAdd_score(Map<String,Integer> s,List<String> visitors,List<List<String>> friends,List<String> user_friends) {
 
@@ -26,6 +44,7 @@ public class Problem7 {
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-
+        List<String> answer = Collections.emptyList();
+        return answer;
     }
 }
