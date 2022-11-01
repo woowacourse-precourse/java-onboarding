@@ -8,10 +8,10 @@ public class Problem4 {
             int ascii = (int)word.charAt(i);
             char ch;
             //대문자
-            if(ascii > 65 && ascii < 90){
+            if(ascii >= 65 && ascii <= 90){
                 ch = (char)(155 - ascii);
             //소문자
-            }else if(ascii > 97 && ascii < 122){
+            }else if(ascii >= 97 && ascii <= 122){
                 ch = (char)(219 - ascii);
             //그 외
             }else{
