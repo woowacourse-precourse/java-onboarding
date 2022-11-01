@@ -7,7 +7,9 @@ public class CryptogramDecoder {
 
     private static final int NOT_DUPLICATED = -1;
 
-    public static List<Character> decode(List<Character> cryptogramCharList){
+    public static String decode(String cryptogram){
+        List<Character> cryptogramCharList = TypeConverter.stringToCharacterList(cryptogram);
+
         List<Character> currentCharList = new ArrayList<>();
         currentCharList.addAll(cryptogramCharList);
 
@@ -16,7 +18,7 @@ public class CryptogramDecoder {
             if (duplicatedLetterIndex == NOT_DUPLICATED) break;
             removeDuplicatedLetterByIndex(currentCharList, duplicatedLetterIndex);
         }
-        return currentCharList;
+        return TypeConverter.characterListToString(currentCharList);
     }
 
     private static int findDuplicatedLetterIndex(List<Character> characterList){
