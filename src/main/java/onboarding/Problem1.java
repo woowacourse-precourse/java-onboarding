@@ -36,6 +36,10 @@ class Problem1 {
             return -1;
         }
 
+        // 3. 두 사람 각각의 왼쪽페이지와 오른쪽페이지 비교 : int max(left, rihgt)
+        maxPo = max(leftPo, rightPo);
+        maxCr = max(leftCr, rightCr);
+
         return answer;
     }
 
@@ -44,4 +48,34 @@ class Problem1 {
         else return false;
     }
 
+    public static int max(int left, int right){
+        int ret = 0;
+        left = Math.max(positionSum(left), positionMultiple(left));
+
+        right = Math.max(positionSum(right), positionMultiple(right));
+
+        ret = Math.max(left, right);
+
+        return ret;
+    }
+
+    public static int positionSum(int input){
+        String x = "" + input;
+        int ret=0;
+
+        for(int i=0; i< x.length();i++){
+            ret += Character.getNumericValue(x.charAt(i));
+        }
+        return ret;
+    }
+
+    public static int positionMultiple(int input){
+        String x = "" + input;
+        int ret=1;
+
+        for(int i=0; i< x.length();i++){
+            ret *= Character.getNumericValue(x.charAt(i));
+        }
+        return ret;
+    }
 }
