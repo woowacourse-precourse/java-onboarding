@@ -50,5 +50,14 @@ class Problem1 {
         }
         return sum;
     }
+    public static int multiplyPageNumber(Integer page) {
+        int pageNumber = page;
+        int value = 1;
+        while (pageNumber != 0) {
+            value *= pageNumber % 10;
+            pageNumber /= 10;
+        }
+        return value;
+    }
 }
 
