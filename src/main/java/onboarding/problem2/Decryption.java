@@ -7,7 +7,12 @@ public class Decryption {
   private final Stack<Character> message = new Stack<>();
   private Character duplicateCode;
 
-  public void decrypt(Character code) {
+  public void decryptCryptogram(String cryptogram) {
+    cryptogram.chars()
+            .mapToObj(code -> (char) code)
+            .forEach(this::decrypt);
+  }
+  private void decrypt(Character code) {
     if (isDuplicateCode(code)) {
       message.pop();
       saveDuplicateCode(code);
