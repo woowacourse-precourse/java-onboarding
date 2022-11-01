@@ -33,6 +33,8 @@ public class Problem7 {
             checkMemberSet(memberSet, user, friendsMap, scoreMap);
         }
 
+        addVisitorsScoreIntoScoreMap(userDirectFriendsSet, scoreMap, visitors);
+
         return answer;
     }
 
@@ -78,6 +80,19 @@ public class Problem7 {
             scoreMap.put(member, scoreMap.get(member) + 10);
         } else {
             scoreMap.put(member, 10);
+        }
+    }
+
+    private static void addVisitorsScoreIntoScoreMap(HashSet<String> userDirectFriendsSet, HashMap<String, Integer> scoreMap, List<String> visitors) {
+        for (int i = 0; i < visitors.size(); i++) {
+            String visitor = visitors.get(i);
+            if (!userDirectFriendsSet.contains(visitor)) {
+                if (scoreMap.containsKey(visitor)) {
+                    scoreMap.put(visitor, scoreMap.get(visitor) + 1);
+                } else {
+                    scoreMap.put(visitor, 1);
+                }
+            }
         }
     }
 }
