@@ -9,6 +9,7 @@ import java.util.List;
 public class Problem2 {
     public static String solution(String cryptogram) {
         // 3. 중복 없어진 리스트를 String으로 변경해서 출력한다.
+        if(!constraints(cryptogram)){ return cryptogram;} // 제한사항에 걸린다면 원래값 리턴
         String text = "";
         List<String> cryptoList = cryptoSplit(cryptogram); // browoanoommnaon
         while (true) {
@@ -21,12 +22,25 @@ public class Problem2 {
         return text;
 
     }
+    public static boolean constraints(String s){ // 제한사항
+        if(s.length()<0 || s.length()>1000) {System.out.println("cryptogram 길이가 올바르지 않습니다."); return false;}
+        for (int i =0; i<s.length();i++) {
+            int num = Integer.valueOf(s.charAt(i));
+            if (num > 64 && num < 91) { // 대문자 아스키 코드 A ~Z : 65~91
+                System.out.println("대문자가 포함되어있습니다");
+                return false;
+            }
+        }
+        return true;
+
+    }
     public static List<String> cryptoSplit(String s){ //문자열 분리 메소드
-        String[] arr = s.split("");
         List<String> list = new ArrayList<>();
+        String[] arr = s.split("");
         for(String s1 : arr) list.add(s1);
         return list;
     }
+
 
     public static List<String> cryptoDedupli(List<String> list){ // 중복된 글자를 없애는 매소드
         List<String> lastList = list;
