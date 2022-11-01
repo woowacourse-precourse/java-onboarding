@@ -3,6 +3,7 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+    //예외처리 함수
     private static boolean checkCorrectOf(List<Integer> player){
         if(player.get(1) - player.get(0) != 1) return false;
         else if(player.get(0)==null || player.get(1) ==null) return false;
@@ -10,6 +11,7 @@ class Problem1 {
         else if(player.get(0) < 1 || player.get(1) < 1) return false;
         return true;
     }
+    //Player의 점수를 계산
     private static int getScoreOf(List<Integer> player){
         int score = 0;
         for (int num : player) {
@@ -27,6 +29,7 @@ class Problem1 {
         }
         return score;
     }
+    //2명의 Player중 승자를 반환
     private static int winnerBetween(int scoreOfPlayer1, int scoreOfPlayer2){
         if(scoreOfPlayer1 > scoreOfPlayer2) return 1;
         else if(scoreOfPlayer1 < scoreOfPlayer2) return 2;
