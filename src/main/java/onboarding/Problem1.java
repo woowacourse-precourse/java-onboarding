@@ -3,13 +3,13 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
-
+	
 	public static int solution(List<Integer> pobi, List<Integer> crong) {
 
 		// ㅜ 초기 값 세팅을 위해 사용한 건가...
 		int answer = Integer.MAX_VALUE;
 
-		boolean isException = pobi.get(1) - crong.get(0) == 1 && crong.get(1) - crong.get(0) == 1;
+		boolean isException = pobi.get(1) - pobi.get(0) == 1 && crong.get(1) - crong.get(0) == 1;
 		if (!isException) {
 
 			answer = -1;
