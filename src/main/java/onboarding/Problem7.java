@@ -3,139 +3,107 @@ package onboarding;
 import java.util.*;
 import java.util.stream.Collectors;
 
-class UsersInfo {
-    private String user;
-    private List<List<String>> friends;
-    private List<String> usersFriends;
-    private List<String> visitors;
-    private  List<String> recomendFriends;
-
-    public void setUser(String name) {
-        user = name;
-    }
-
-    public void setFriends(List<List<String>> list) {
-        friends = list;
-    }
-
-    public void setVisitors(List<String> list) {
-        visitors = list;
-    }
-
-    public String getUser() {
-        return user;
-    }
-
-    public List<List<String>> getFriends() {
-        return friends;
-    }
-
-    public List<String> getUsersFriends() {
-        return usersFriends;
-    }
-
-    public List<String> getVisitors() {
-        return visitors;
-    }
-
-    public List<String> getRecomendFriends() {
-        return recomendFriends;
-    }
-}
-
-class Friends extends UsersInfo {
-    private List<String> friendsFriend = new ArrayList<>();
-
-    public void findUsersFriends(){
-        List<String> usersFriends = getFriends().stream()
-                .filter(friendList -> friendList.contains(getUser()))
-                .map(friendList -> friendList.get(findFriendsIndex(getUser(),friendList)))
-                .collect(Collectors.toList());
-
-    }
-
-    public void findFriendsFriend() {
-        Iterator<String> iterator = getUsersFriends().iterator();
-        while (iterator.hasNext()) {
-            String friend = iterator.next();
-            List<String> list = getFriends().stream()
-                    .filter(friends -> friends.contains(friend))
-                    .map(friends -> friends.get(findFriendsIndex(friend, friends)))
-                    .distinct()
-                    .collect(Collectors.toList());
-            friendsFriend = list;
-        }
-    }
-    public int findFriendsIndex(String user, List<String> friendList) {
-        return friendList.get(0).equals(user) ? 1 : 0;
-    }
-
-    public List<String> getFriendsFriend() {
-        return friendsFriend;
-    }
-
-    public static boolean isIncludeUserOrFriends(String name) {
-        return (getUsersFriends.contains(name) || getUser().equals(name)) ? true : false;
-    }
-}
-
-class Score extends Friends {
-    static final int friendsFriendScore = 10;
-    static final int visitorScore = 1;
-    static Map<String, Integer> recommendFriends = new HashMap<String, Integer>();
-
-    public static List<String> limitList(List<String> recommendedList) {
-        List<String> list = recommendedList.stream().limit(5).collect(Collectors.toList());
-        return list;
-    }
-
-    public static List<String> orderRecommendedList() {
-        List<Map.Entry<String, Integer>> entries = recommendFriends.entrySet()
-                .stream()
-                .sorted(Map.Entry.<String, Integer>comparingByValue().reversed())
-                .collect(Collectors.toList());
-        List<String> orderedRecommendedList = entries.stream().map(i -> i.getKey()).collect(Collectors.toList());
-        System.out.println(entries);
-        return orderedRecommendedList;
-    }
-
-    public static void forCaseFriendsFriend() {
-        Iterator<String> iterator = getFriendsFriend().iterator();
-        while (iterator.hasNext()) {
-            String recommendedFriend = iterator.next();
-            if (isIncludeUserOrFriends(recommendedFriend)) {
-                continue;
-            }
-            if (recommendedFriends.containsKey(recommendedFriend)) {
-                recommendedFriends.put(recommendedFriend,
-                        recommendedFriends.get(recommendedFriend) + friendsFriendScore);
-                continue;
-            }
-            recommendedFriends.put(recommendedFriend, friendsFriendScore);
-        }
-    }
-
-    public static void forCaseVisitors() {
-        //removeFriends(visitors);
-        Iterator<String> iterator = getVisitors().iterator();
-        while (iterator.hasNext()) {
-            String recommendedFriend = iterator.next();
-            if (isIncludeUserOrFriends(recommendedFriend)) {
-                continue;
-            }
-            if (recommendedFriends.containsKey(recommendedFriend)) {
-                recommendedFriends.put(recommendedFriend, recommendedFriends.get(recommendedFriend) + visitorScore);
-                continue;
-            }
-            recommendedFriends.put(recommendedFriend, visitorScore);
-        }
-    }
-}
-
-
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        Map<String, Set<String>> friendsMap = new HashMap<>();
+        for (List<String> friend : friends) {
+            saveFriend(friendsMap, friend);
+        }
+        removeUserSelf(user, friendsMap);
+
+        Map<String, Integer> pointMap = new HashMap<>();
+        Set<String> userFriends = friendsMap.get(user);
+
+        for (String userFriend : userFriends) {
+            Set<String> sharingFriends = friendsMap.get(userFriend);
+            giveSharingFriendPoint(pointMap, userFriends, sharingFriends);
+        }
+
+        for (String visitor : visitors) {
+            if (isFriend(visitor, userFriends)) {
+                continue;
+            }
+            giveVisitPoint(visitor, pointMap);
+        }
+
+        return sortByPoint(pointMap);
+    }
+
+    private static void saveFriend(Map<String, Set<String>> friendsMap, List<String> friends) {
+        String user1 = friends.get(0);
+        String user2 = friends.get(1);
+        Set<String> user1Friends = getFriends(user1, friendsMap);
+        Set<String> user2Friends = getFriends(user2, friendsMap);
+
+        user1Friends.add(user2);
+        user2Friends.add(user1);
+    }
+
+    private static Set<String> getFriends(String user, Map<String, Set<String>> friendsMap) {
+        Set<String> users = friendsMap.keySet();
+        if (users.contains(user)) {
+            return friendsMap.get(user);
+        }
+        Set<String> userFriends = new HashSet<>();
+        friendsMap.put(user, userFriends);
+        return userFriends;
+    }
+
+    private static void removeUserSelf(String user, Map<String, Set<String>> friendsMap) {
+        friendsMap.values()
+                .forEach(friends -> friends.remove(user));
+    }
+
+    private static void giveSharingFriendPoint(Map<String, Integer> pointMap,
+                                               Set<String> userFriends, Set<String> friendsWithUserFriend) {
+        for (String sharingFriend : friendsWithUserFriend) {
+            if (isFriend(sharingFriend, userFriends)) {
+                continue;
+            }
+            giveSharingFriendPoint(pointMap, friendsWithUserFriend);
+        }
+    }
+
+    private static void giveSharingFriendPoint(Map<String, Integer> pointMap, Set<String> friendsWithUserFriend) {
+        for (String sharingFriend : friendsWithUserFriend) {
+            saveSharingFriendPoint(sharingFriend, pointMap);
+        }
+    }
+
+    private static void saveSharingFriendPoint(String friend, Map<String, Integer> pointMap) {
+        int pointBySharingFriend = 10;
+        int pointByUser = getPointByUser(friend, pointMap);
+
+        pointMap.replace(friend, pointByUser + pointBySharingFriend);
+    }
+
+    private static int getPointByUser(String friend, Map<String, Integer> pointMap) {
+        Set<String> users = pointMap.keySet();
+        if (users.contains(friend)) {
+            return pointMap.get(friend);
+        }
+        pointMap.put(friend, 0);
+        return 0;
+    }
+
+    private static boolean isFriend(String user, Set<String> friends) {
+        return friends.stream()
+                .anyMatch(friend -> friend.equals(user));
+    }
+
+    private static void giveVisitPoint(String visitor, Map<String, Integer> pointMap) {
+        int pointByVisitor = 2;
+        int pointByUser = getPointByUser(visitor, pointMap);
+
+        pointMap.replace(visitor, pointByUser + pointByVisitor);
+    }
+
+    private static List<String> sortByPoint(Map<String, Integer> pointMap) {
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(pointMap.entrySet());
+        entryList.sort((o1, o2) -> o2.getValue() - o1.getValue());
+
+        return entryList.stream()
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
     }
 }
