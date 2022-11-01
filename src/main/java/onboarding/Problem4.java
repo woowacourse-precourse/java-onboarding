@@ -2,11 +2,9 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-//        String answer = "";
-//        return answer;
-        Word word1=new Word(word);
-        Result result = new Result(word1.toArray());
-        return result.reverse();
+        String answer = word;
+        Game4 game4 = new Game4();
+        return game4.getResult(word);
     }
 }
 
@@ -40,8 +38,8 @@ class Word {
 class Result {
     private char[] wordArray;
     private StringBuilder sb;
-    private static final int FIND_UPPER_CASE_REPLACE=155;
-    private static final int FIND_LOWER_CASE_REPLACE=219;
+    private static final int FIND_UPPER_CASE_REPLACE = 155;
+    private static final int FIND_LOWER_CASE_REPLACE = 219;
 
     public Result(char[] wordArray) {
         this.wordArray = wordArray;
@@ -60,8 +58,8 @@ class Result {
         return replaceChar;
     }
 
-    public String reverse(){
-        for (char wordChar:wordArray){
+    public String reverse() {
+        for (char wordChar : wordArray) {
             sb.append(changeWordByRule(wordChar));
         }
         return sb.toString();
@@ -72,6 +70,17 @@ class Result {
             return true;
         }
         return false;
+    }
+}
+
+class Game4 {
+    private Word wordObject;
+    private Result result;
+
+    public String getResult(String word) {
+        wordObject = new Word(word);
+        result = new Result(wordObject.toArray());
+        return result.reverse();
     }
 }
 
