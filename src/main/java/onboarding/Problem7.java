@@ -73,4 +73,20 @@ public class Problem7 {
         return recommendScore;
     }
 
+    public static Map<String, Integer> sortMap(Map<String, Integer> recommendScore) {
+
+        List<Map.Entry<String, Integer>> entryList = new ArrayList<>(recommendScore.entrySet());
+        Map<String, Integer> sorted = new LinkedHashMap<>();
+
+        entryList.sort(Map.Entry.comparingByKey());
+        entryList.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
+
+        for(Map.Entry<String, Integer> entry : entryList) {
+
+            sorted.put(entry.getKey(), entry.getValue());
+        }
+
+        return sorted;
+    }
+
 }
