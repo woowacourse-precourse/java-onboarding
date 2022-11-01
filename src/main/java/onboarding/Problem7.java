@@ -16,6 +16,37 @@ public class Problem7 {
             }
         }
 
+        // key: 아이디 / value: 점수
+        Map<String, Integer> scoreMap = new HashMap<>();
+
+        // user의 친구의 친구 : 10점
+        for(String userFriend : userFriendsList) {
+            for(int i=0; i<friends.size(); i++) {
+                String nameA = friends.get(i).get(0);
+                String nameB = friends.get(i).get(1);
+
+                if(nameA.equals(user) || nameB.equals(user)) break;
+
+                if(nameA.equals(userFriend)) {
+                    if(!scoreMap.containsKey(nameB)) { // map에 이름이 없을 경우
+                        scoreMap.put(nameB, 10);
+                    } else { // map에 이름이 존재할 경우
+                        int val = scoreMap.get(nameB);
+                        val += 10;
+                        scoreMap.put(nameB, val);
+                    }
+                } else if(nameB.equals(userFriend)) {
+                    if(!scoreMap.containsKey(nameA)) { // map에 이름이 없을 경우
+                        scoreMap.put(nameA, 10);
+                    } else { // map에 이름이 존재할 경우
+                        int val = scoreMap.get(nameA);
+                        val += 10;
+                        scoreMap.put(nameA, val);
+                    }
+                }
+            }
+        }
+
         return answer;
     }
 }
