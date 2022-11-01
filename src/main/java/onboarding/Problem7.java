@@ -109,8 +109,6 @@ public class Problem7 {
            resultScoreRecommendFriend.putIfAbsent(visitor, 0);
            resultScoreRecommendFriend.put(visitor, resultScoreRecommendFriend.get(visitor) + 1);
         });
-        System.out.println(friendOfFriend);
-        System.out.println(resultScoreRecommendFriend);
 
         return resultScoreRecommendFriend;
     }
