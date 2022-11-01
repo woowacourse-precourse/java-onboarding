@@ -23,8 +23,22 @@ public class Problem3 {
         int clapNumber = 0;
 
         for (int i = 1; i <= number; i++) {
-//            clapNumber += countClap(i);
+            clapNumber += countClap(i);
         }
         return clapNumber;
+    }
+    private static int countClap(int number) {
+        int clapNumber = 0;
+
+        while (number != 0) {
+            if (isClapNumber(number % 10)) {
+                ++clapNumber;
+            }
+            number /= 10;
+        }
+        return clapNumber;
+    }
+    private static boolean isClapNumber(int number) {
+        return number == NUMBER_THREE || number == NUMBER_SIX || number == NUMBER_NINE;
     }
 }
