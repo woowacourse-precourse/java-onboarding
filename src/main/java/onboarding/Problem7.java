@@ -87,6 +87,14 @@ public class Problem7 {
             }
         }
 
+        // 4. 방문자들 정보로부터 추천친구 정보 추가
+        for (int i = 0; i < visitors.size(); i++){
+            // 해당 사람이 user가 아니고 user의 친구가 아니고 이미 친추 추천 목록에 존재하지 않는다면
+            if (!(visitors.get(i).equals(user)) && !(user_freinds.contains(visitors.get(i))) && !(score_recomends.containsKey(visitors.get(i)))){
+                score_recomends.put(visitors.get(i), 0); // 해당 사람의 정보를 추가
+            }
+        }
+
 
         return result;
     }
