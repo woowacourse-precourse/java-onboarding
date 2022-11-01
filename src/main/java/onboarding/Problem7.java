@@ -6,25 +6,20 @@ import java.util.stream.Collectors;
 
 public class Problem7 {
     public static Map<String, List<String>> userFriendsListMap;
-    public static Map<String, Integer> userScoreMap;
-    public static final int FIRST_FRIEND_INDEX = 0;
-    public static final int SECOND_FRIEND_INDEX  = 1;
-    public static final int INIT_SCORE = 0;
-    public static final int ACQUAINTANCE_SCORE = 10;
-    public static final int VISITOR_SCORE = 1;
+    public static Map<String, Integer> userScoreMap = new HashMap<>();
+    private static final int FIRST_FRIEND_INDEX = 0;
+    private static final int SECOND_FRIEND_INDEX  = 1;
+    private static final int INIT_SCORE = 0;
+    private static final int ACQUAINTANCE_SCORE = 10;
+    private static final int VISITOR_SCORE = 1;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        initUserScoreMap();
         initUserFriendsListMap(friends);
 
         plusAcquaintanceScore(user);
         plusVisitorScore(visitors);
 
         return getTopFiveScoreFriends(user);
-    }
-
-    public static void initUserScoreMap() {
-        userScoreMap = new HashMap<>();
     }
 
     public static void initUserFriendsListMap(List<List<String>> friends) {
@@ -68,7 +63,8 @@ public class Problem7 {
 
     public static List<String> getAcquaintanceList(String user, String userFriend) {
         return userFriendsListMap.get(userFriend).stream().
-                filter(acquaintance -> !acquaintance.equals(user)).collect(Collectors.toList());
+                filter(acquaintance -> !acquaintance.equals(user))
+                .collect(Collectors.toList());
     }
 
     public static void plusVisitorScore(List<String> visitors) {
@@ -78,7 +74,9 @@ public class Problem7 {
     public static List<Entry<String, Integer>> getSortedScoreMapEntryList() {
         List<Entry<String, Integer>> entryList = new ArrayList<>(userScoreMap.entrySet());
         entryList.sort((o1, o2) -> {
-            if (o1.getValue().equals(o2.getValue())) return o1.getKey().compareTo(o2.getKey());
+            if (o1.getValue().equals(o2.getValue())) {
+                return o1.getKey().compareTo(o2.getKey());
+            }
             return o2.getValue().compareTo(o1.getValue());
         });
         return entryList;
@@ -88,12 +86,18 @@ public class Problem7 {
         List<Entry<String, Integer>> sortScoreMapEntryList = getSortedScoreMapEntryList();
         if(isUserHasFriends(user)){
             List<String> userFriendsList = userFriendsListMap.get(user);
-            return sortScoreMapEntryList.stream().filter(userScoreEntry -> userScoreEntry.getValue() > 0)
+            return sortScoreMapEntryList.stream()
+                    .filter(userScoreEntry -> userScoreEntry.getValue() > 0)
                     .filter(userScoreEntry -> !userFriendsList.contains(userScoreEntry.getKey()))
-                    .limit(5).map(Entry::getKey).collect(Collectors.toList());
+                    .limit(5)
+                    .map(Entry::getKey)
+                    .collect(Collectors.toList());
         }
-        return sortScoreMapEntryList.stream().filter(userScoreEntry -> userScoreEntry.getValue() > 0)
-                .limit(5).map(Entry::getKey).collect(Collectors.toList());
+        return sortScoreMapEntryList.stream()
+                .filter(userScoreEntry -> userScoreEntry.getValue() > 0)
+                .limit(5)
+                .map(Entry::getKey)
+                .collect(Collectors.toList());
     }
 
     public static boolean isUserHasFriends(String user){
