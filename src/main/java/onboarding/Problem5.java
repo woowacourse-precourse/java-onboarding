@@ -15,6 +15,9 @@ public class Problem5 {
             // 현재 화페로 받을 수 있는 최대 개수를 구하는 기능
             int cashCount = money / cash;
             answer.add(cashCount);
+
+            // 현재 화폐를 받고 남은 거스름돈을 구하는 기능
+            money %= cash;
         }
         return answer;
     }
