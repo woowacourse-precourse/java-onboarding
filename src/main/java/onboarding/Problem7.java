@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     public static Map<String, Set<String>> makeFriendRelation(List<List<String>> friends) {
@@ -19,13 +20,13 @@ public class Problem7 {
         }
         return relation;
     }
+
     //예외처리
     //- user와 이미 친구인 경우 제외
     //- user 제외
-    public static boolean isException(Map<String, Set<String>> relation, String key, String user){
+    public static boolean isException(Map<String, Set<String>> relation, String key, String user) {
         return relation.get(key).contains(user) || key.equals(user);
     }
-
 
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -34,22 +35,32 @@ public class Problem7 {
 
         //1. 사용자와 함께 아는 친구
         Map<String, Set<String>> relation = makeFriendRelation(friends);
-        //user와 교집합
-        for (String key : relation.keySet()) {
-            if(isException(relation,key,user)){
-                continue;
+
+
+        Set<String> userfriends = relation.getOrDefault(user, Collections.EMPTY_SET);
+        if (!userfriends.isEmpty()) {
+            for (String key : relation.keySet()) {
+                if (isException(relation, key, user)) {
+                    continue;
+                }
+                Set<String> target = relation.get(key);
+                int count = 0;
+                //user의 친구와 겹치는지 확인
+                for (String userfriend : userfriends) {
+                    if (target.contains(userfriend)) {
+                        count++;
+                    }
+                }
+                score.put(key, count * 10);
             }
-            Set<String> userfriends = relation.get(user);
-            Set<String> target = relation.get(key);
-            userfriends.retainAll(target);
-            score.put(key, userfriends.size() * 10);
         }
+
         //2. 사용자의 타임 라인에 방문한 횟수
-        for(String visitor : visitors){
-            if(relation.containsKey(visitor) && isException(relation,visitor,user)){
+        for (String visitor : visitors) {
+            if (relation.containsKey(visitor) && isException(relation, visitor, user)) {
                 continue;
             }
-            score.put(visitor,score.getOrDefault(visitor,0)+1);
+            score.put(visitor, score.getOrDefault(visitor, 0) + 1);
         }
 
         //3. 점수가 가장 높은 순으로 정렬하여 최대 5명 return, 0점은 추천x
@@ -60,9 +71,9 @@ public class Problem7 {
 
         //최대 5명만 추출, 0점인 경우 제외
         int answerLength = Math.min(keySet.size(), 5);
-        for(int i = 0; answer.size() < answerLength; i++){
+        for (int i = 0; answer.size() < answerLength; i++) {
             String key = keySet.get(i);
-            if( score.get(key)!=0){
+            if (score.get(key) != 0) {
                 answer.add(key);
             }
         }
@@ -70,5 +81,4 @@ public class Problem7 {
 
 
     }
-
 }
