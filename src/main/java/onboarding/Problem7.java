@@ -12,8 +12,30 @@ import java.util.*;
  */
 public class Problem7 {
 
+    static List<String> friendsOfUser = new ArrayList<>();
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
+
+        findFriendsOfUser(user, friends);
+
+
         return answer;
     }
+
+
+    public static void findFriendsOfUser(String user, List<List<String>> friends) {
+        for (List<String> friend : friends) {
+            String firstFriend = friend.get(0);
+            String secondFriend = friend.get(1);
+
+            if (firstFriend.equals(user)) {
+                friendsOfUser.add(secondFriend);
+            }
+            if (secondFriend.equals(user)) {
+                friendsOfUser.add(firstFriend);
+            }
+        }
+    }
+
 }
