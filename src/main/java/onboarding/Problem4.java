@@ -8,14 +8,35 @@ package onboarding;
 
 public class Problem4 {
 
+    private static int[] dic = new int[26];
 
     public static String solution(String word) {
-        int dic[] = new int[26];
+
+        String answer = "";
+
+        initDic();
+        answer = changeChar(word);
+
+        return answer;
+    }
+
+    private static void initDic() {
         for (int i = 0; i < 26; i++) {
             dic[i] = 'Z' - i;
         }
+    }
 
-        String answer = "";
-        return answer;
+    private static String changeChar(String word) {
+        int len = word.length();
+        char translation [] = new char[len];
+
+        for (int i = 0; i < len; i++) {
+            if (isLower(word.charAt(i))) {
+                translation[i] = (char)(dic[word.charAt(i) - 32 - 48] + 32);
+            } else {
+                translation[i] = (char) dic[word.charAt(i) - 48];
+            }
+        }
+        return new String(translation);
     }
 }
