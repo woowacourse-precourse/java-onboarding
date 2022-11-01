@@ -87,8 +87,14 @@ public class Problem7 {
     private static List<String> getTop5Ranker() {
         List<String> finalScoreBoard = sortScoreBoard();
         List<String> rankers = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
-            rankers.add(finalScoreBoard.get(i));
+        for (int i = 0; i < finalScoreBoard.size(); i++) {
+            if(rankers.size()==5) {
+                return rankers;
+            }
+            String user = finalScoreBoard.get(i);
+            if(scoreBoard.get(user)>0){
+                rankers.add(user);
+            }
         }
         return rankers;
     }
