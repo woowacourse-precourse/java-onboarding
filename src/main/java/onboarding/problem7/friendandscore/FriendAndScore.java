@@ -53,4 +53,9 @@ public class FriendAndScore {
         }
         return newFriendAndScoreList;
     }
+
+    public List<UserAndScore> getNewFriendAndScoreListByFriendsOfFriendAndVisitors(List<User> friendsOfUserFriends, List<User> visitorsOfNotFriendOfUser) {
+        Map<User, Integer> newFriendAndScoreMap = mapNewFriendAndScore(friendsOfUserFriends, visitorsOfNotFriendOfUser);
+        return transformMapIntoList(newFriendAndScoreMap);
+    }
 }
