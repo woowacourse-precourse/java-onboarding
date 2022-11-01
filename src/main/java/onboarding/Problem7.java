@@ -34,7 +34,7 @@ public class Problem7 {
                 excludes,
                 VISITOR_SCORE);
 
-        List<String> answer = Collections.emptyList();
+        List<String> answer = getAnswer(nameAndScoreMap);
 
         return answer;
     }
@@ -72,6 +72,24 @@ public class Problem7 {
             int score = nameAndScoreMap.getOrDefault(name, 0);
             nameAndScoreMap.put(name, score + fixedScore);
         }
+    }
+
+    private static List<String> getAnswer(Map<String, Integer> nameAndScoreMap) {
+        List<Integer> sortedScores = getSortedScores(nameAndScoreMap);
+
+        List<String> answer = new ArrayList<>();
+        for (int score : sortedScores) {
+            List<String> names = getNamesByScore(nameAndScoreMap, score);
+            Collections.sort(names);
+
+            answer.addAll(names);
+        }
+
+        if (answer.size() >= MAX_SUGGESTION) {
+            answer = answer.subList(0, MAX_SUGGESTION);
+        }
+
+        return answer;
     }
 
     private static List<Integer> getSortedScores(Map<String, Integer> nameAndScoreMap) {
