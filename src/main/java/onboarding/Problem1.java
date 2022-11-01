@@ -45,4 +45,16 @@ class Problem1 {
         }
         return max;
     }
+    public static int win(int pobiScore, int CrongScore) {
+        int scoreGap = pobiScore - CrongScore;
+
+        if (scoreGap > 0) {
+            return 1;
+        }else if (scoreGap < 0) {
+            return 2;
+        }else {
+            return 0;
+        }
+    }
+
 }
