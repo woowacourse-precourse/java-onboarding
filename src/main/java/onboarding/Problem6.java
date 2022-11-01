@@ -23,6 +23,7 @@ public class Problem6 {
         CheckDuplicatedNames();
 
         // implement 3 : 중복 닉네임 가진 결과 이메일 배열을 정렬
+        Collections.sort(answer);
 
         return answer;
     }
