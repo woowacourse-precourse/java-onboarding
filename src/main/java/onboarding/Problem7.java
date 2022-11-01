@@ -25,6 +25,14 @@ public class Problem7 {
         }
     }
 
+    private static void calWithVisitors(List<String> visitors, List<String> alreadyFriend, Map<String, Integer> newFriend) {
+        for (String visitor : visitors) {
+            if (isAlreadyFriend(visitor, alreadyFriend))
+                continue;
+            calculate(newFriend, visitor, 1);
+        }
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> alreadyFriend = new ArrayList<>();
         List<List<String>> candidate = new ArrayList<>();
