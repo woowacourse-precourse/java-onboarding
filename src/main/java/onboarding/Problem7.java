@@ -12,7 +12,7 @@ import java.util.*;
  *      2. 크루 객체를 생성해서 team에 넣는 기능
  * 3. 함께 아는 친구일 경우, 10점을 부여하는 기능
  * 4. 타임라인에 방문한 경우, 1점을 부여하는 기능
- * 5. 점수가 가장 높은 기준으로 정렬하는 기능
+ * 5. 점수가 가장 높은 기준으로 정렬하되 점수가 같은 경우는 이름순으로 정렬하는 기능
  * 6. user이거나, 이미 친구이거나, 점수가 0점인 경우를 제외한 친구를 5명까지 answer에 추가하는 기능
  */
 
@@ -23,7 +23,7 @@ public class Problem7 {
         Map<String, Crew> team = new HashMap<>();//crew들을 모아놓는 list
         team.put(user, new Crew(user)); //team의 0번은 user이다.
 
-        makeFreinds(friends, team);
+        makeFriends(friends, team);
 
         friendTogetherKnow(user, team);
 
@@ -67,7 +67,7 @@ public class Problem7 {
     }
 
     // 친구 관계 맺기
-    private static void makeFreinds(List<List<String>> friends, Map<String, Crew> team) {
+    private static void makeFriends(List<List<String>> friends, Map<String, Crew> team) {
         for (List<String> friend : friends) {
             for (String member : friend) {
                 addCrew(team, member);
