@@ -19,6 +19,11 @@ public class Problem7 {
         }
 
         //4. visitor 리스트를 조사하여, 방문한 사용자에게 1점씩 부여한다.
+        for(String visitor : visitors){
+            int visitorIdx = users.indexOf(visitor);
+            score[visitorIdx]++;
+        }
+
         //5. 모든 점수를 부여했다면 점수가 높은 5명을 추린다.
 
         return answer;
