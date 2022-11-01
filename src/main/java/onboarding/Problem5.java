@@ -24,6 +24,6 @@ public class Problem5 {
         int byu = (money - simsaimdang * 50_000 - sejong * 10_000 - ehwang * 5_000 - ee * 1_000 - hak * 500 - sunsin * 100 - dabo * 50) / 10;
         int mugung = (money - simsaimdang * 50_000 - sejong * 10_000 - ehwang * 5_000 - ee * 1_000 - hak * 500 - sunsin * 100 - dabo * 50 - byu * 10);
 
-        return new ArrayList<>(Arrays.asList(simsaimdang, sejong, ehwang, ee, hak, sunsin, dabo, byu, mugung));
+        return Arrays.asList(simsaimdang, sejong, ehwang, ee, hak, sunsin, dabo, byu, mugung);
     }
 }
