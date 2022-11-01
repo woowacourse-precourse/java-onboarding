@@ -86,4 +86,5 @@ public class Problem7 {
         }
         return result.subList(0, maxSize);
     }
+
 }
