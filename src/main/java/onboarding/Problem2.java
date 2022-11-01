@@ -3,14 +3,14 @@ package onboarding;
 public class Problem2 {
 
     public static String removeRedundant(String target){
-        String result = new String();
+        StringBuilder result = new StringBuilder();
         boolean[] isRedundant = findRedundantPosition(target);
         for(int i = 0; i < target.length(); i++){
             if(!isRedundant[i]){
-                result = result + target.charAt(i);
+                result.append(target.charAt(i));
             }
         }
-        return result;
+        return result.toString();
     }
 
     public static boolean[] findRedundantPosition(String target){
