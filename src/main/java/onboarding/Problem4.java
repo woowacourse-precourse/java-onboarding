@@ -13,4 +13,8 @@ public class Problem4 {
     public static char upperCaseConversion(char character) {
         return (char) (155 - character);
     }
+
+    public static char lowerCaseConversion(char character) {
+        return (char) (219 - character);
+    }
 }
