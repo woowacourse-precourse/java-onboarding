@@ -27,7 +27,7 @@ public class Problem6 {
 		}
 
 		emailAndNicknames = initMapWithEmailAndNicknames(forms);
-		splitNicknamesIntoTwoDigit = initSplitNicknames(emailAndNicknames);
+		splitNicknamesIntoTwoDigit = initSplitNicknamesIntoTwoDigit(emailAndNicknames);
 		duplicateNicknames = initDuplicateNicknames(splitNicknamesIntoTwoDigit);
 		answer = getCrewUsingInvalidNickname(emailAndNicknames, duplicateNicknames);
 		Collections.sort(answer);
