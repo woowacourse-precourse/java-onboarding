@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Problem5 {
 
@@ -12,6 +13,8 @@ public class Problem5 {
         initWallet();
 
         convertToMoneyFrom(money);
+        List<Integer> convertedMoney = getConvertedMoney();
+        return convertedMoney;
     }
 
     private static void convertToMoneyFrom(int money) {
@@ -44,6 +47,12 @@ public class Problem5 {
             currentCashIndex++;
         }
         return currentCashIndex;
+    }
+
+    private static List<Integer> getConvertedMoney() {
+        return Arrays.stream(wallet)
+                .boxed()
+                .collect(Collectors.toList());
     }
 
     private static void initWallet() {
