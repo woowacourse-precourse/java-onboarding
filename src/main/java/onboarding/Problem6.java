@@ -35,6 +35,10 @@ public class Problem6 {
     private static List<String> getForm(List<List<String>> forms, int index) {
         return forms.get(index);
     }
+    private static String getEmail(List<List<String>> forms, int index) {
+        List<String> form = getForm(forms, index);
+        return form.get(0);
+    }
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
