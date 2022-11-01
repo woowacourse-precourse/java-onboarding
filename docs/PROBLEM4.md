@@ -21,16 +21,6 @@
 | "I love you" | "R olev blf" |
 -------------
 ## 기능 목록
-반복문을 돌며 문자 하니씩 아래 로직에 넣어 결과를 추출
-* 빈칸일 경우 StringBuilder를 이용해 추가
-~~~
-private static void isBlank(StringBuilder sb, char alphabet)
-~~~
-* 소문자일 경우 StringBuilder를 이용해 요구사항에 맞는 알파벳 추가
-~~~
-private static void isLowerCase(StringBuilder sb, char alphabet)
-~~~
-* 대문자일 경우 StringBuilder를 이용해 요구사항에 맞는 알파벳 추가
-~~~
-private static void isUpperCase(StringBuilder sb, char alphabet)
-~~~
+1. 소문자일 경우 요구사항에 맞는 알파벳으로 변환
+2. 대문자일 경우 요구사항에 맞는 알파벳으로 변환
+3. 빈칸일 경우 변화 x
