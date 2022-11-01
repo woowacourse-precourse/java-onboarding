@@ -27,17 +27,20 @@ public class Problem7 {
     }
 
     public static Map<String, Member> getMemberObjectMep(List<List<String>> friends, List<String> visitors) {
+        return getMemberSet(friends, visitors).stream()
+                .collect(Collectors.toMap(
+                        member -> member,
+                        member -> new Member(member, 0)
+                ));
+    }
+
+    private static Set<String> getMemberSet(List<List<String>> friends, List<String> visitors) {
         Set<String> memberSet = friends.stream()
                 .flatMap(friend -> Arrays.stream(friend.toArray()))
                 .map(Object::toString)
                 .collect(Collectors.toSet());
         memberSet.addAll(visitors);
-
-        return memberSet.stream()
-                .collect(Collectors.toMap(
-                        member -> member,
-                        member -> new Member(member, 0)
-                ));
+        return memberSet;
     }
 
     public static Map<String, List<String>> getFriendMap(List<List<String>> friends) {
