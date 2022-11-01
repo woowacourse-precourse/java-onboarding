@@ -18,5 +18,9 @@ public class Problem7 {
 			this.name = name;
 		}
 
+		public static void addFriendRelation(User firstUser, User secondUser) {
+			firstUser.friendList.add(secondUser);
+			secondUser.friendList.add(firstUser);
+		}
 	}
 }
