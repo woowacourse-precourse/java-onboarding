@@ -18,7 +18,7 @@ public class Problem5 {
             int leftMoney = calculateRemainder(money, bill);
             answer.add(numberOfBill);
             money = leftMoney;
-        }ㄴ으
+        }
         return answer;
     }
 }
