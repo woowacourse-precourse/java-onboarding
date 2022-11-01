@@ -7,7 +7,7 @@ public class Validator {
         }
         return true;
     }
-    public static boolean isInRange(int number){
+    private static boolean isInRange(int number){
         return (number >=1) && (number <= 10000);
     }
 }
