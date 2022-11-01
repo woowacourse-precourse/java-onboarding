@@ -6,7 +6,10 @@ public class Problem6 {
     public static String parseNicknameWithIndex(
             String nickname, int startIndex, int endIndex, int destinationIndex
     ) {
+        char[] sequentialNickname = new char[endIndex - startIndex + 1];
+        nickname.getChars(startIndex, endIndex, sequentialNickname, destinationIndex);
 
+        return String.valueOf(sequentialNickname);
     }
 
     public static boolean isDuplicated(String nickname, String targetNickname) {
@@ -15,7 +18,6 @@ public class Problem6 {
 
 
     public static List<String> getDuplicatedMemberEmails(List<List<String>> forms) {
-        HashSet<String> emails = new HashSet<>();
 
     }
 
