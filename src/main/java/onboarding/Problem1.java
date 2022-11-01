@@ -4,11 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
+  private static final int ERROR = -1;
+  private static final int POBIWIN = 1;
+  private static final int CRONGWIN = 2;
+  private static final int DRAW = 0;
+  private static final int MINPAGE = 1;
+  private static final int MAXPAGE = 400;
 
   public static int solution(List<Integer> pobi, List<Integer> crong) {
     int answer = Integer.MAX_VALUE;
-    if (pageException(pobi, crong) == -1) {
-      return -1;
+    if (pageException(pobi, crong) == ERROR) {
+      return ERROR;
     }
     User Pobi = new User(pobi);
     User Crong = new User(crong);
@@ -18,41 +24,41 @@ class Problem1 {
 
   public static int pageException(List<Integer> usr1, List<Integer> usr2) {
     if (usr1.size() != 2 || usr2.size() != 2) {
-      return -1;
+      return ERROR;
     }
     if (pageInRange(usr1, usr2) == -1) {
-      return -1;
+      return ERROR;
     }
     if (evenOddCheck(usr1, usr2) == -1) {
-      return -1;
+      return ERROR;
     }
     if (pagesInPair(usr1, usr2) == -1) {
-      return -1;
+      return ERROR;
     }
-    return 1;
+    return DRAW;
   }
 
   public static int numCompare(int usr1Max, int usr2Max) {
     if (usr1Max == usr2Max) {
-      return 0;
+      return DRAW;
     }
     if (usr1Max > usr2Max) {
-      return 1;
+      return POBIWIN;
     } else {
-      return 2;
+      return CRONGWIN;
     }
   }
 
   public static int pageInRange(List<Integer> usr1, List<Integer> usr2) {
 
     for (int i = 0; i < 2; i++) {
-      if (usr1.get(i) <= 1 || usr1.get(i) >= 400) {
-        return -1;
+      if (usr1.get(i) <= MINPAGE || usr1.get(i) >= MAXPAGE) {
+        return ERROR;
       }
     }
     for (int i = 0; i < 2; i++) {
-      if (usr2.get(i) <= 1 || usr2.get(i) >= 400) {
-        return -1;
+      if (usr2.get(i) <= MINPAGE || usr2.get(i) >= MAXPAGE) {
+        return ERROR;
       }
     }
     return 1;
@@ -60,17 +66,17 @@ class Problem1 {
 
   public static int evenOddCheck(List<Integer> usr1, List<Integer> usr2) {
     if (usr1.get(0) % 2 != 1 || usr1.get(1) % 2 != 0) {
-      return -1;
+      return ERROR;
     }
     if (usr2.get(0) % 2 != 1 || usr2.get(1) % 2 != 0) {
-      return -1;
+      return ERROR;
     }
     return 1;
   }
 
   public static int pagesInPair(List<Integer> usr1, List<Integer> usr2) {
     if (usr1.get(1) != usr1.get(0) + 1 || usr2.get(1) != usr2.get(0) + 1) {
-      return -1;
+      return ERROR;
     }
     return 1;
   }
