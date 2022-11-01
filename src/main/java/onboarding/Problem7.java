@@ -63,7 +63,26 @@ public class Problem7 {
         System.out.println(totalScore);
         return totalScore;
     }
-    
+
+    // 결과 값을 점수가 가장 높은 순으로 정렬하여 최대 5명만 반환하는 함수
+    static List<String> highScoreFriends(HashMap<String, Integer> Friends){
+        
+    }
+    public static class Person{
+        private String name;
+        private int score;
+        public Person() {}
+        public Person(String name, int score){
+            this.name = name;
+            this.score = score;
+        }
+        public String getName(){
+            return name;
+        }
+        public int getScore(){
+            return score;
+        }
+    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         friendRelation(friends);
