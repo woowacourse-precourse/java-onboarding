@@ -76,4 +76,18 @@ class Problem1 {
             return resultRight;
         }
     }
+
+    public static int maxNumber(int left, int right) {
+        int addNum = 0, mulNum = 0;
+
+        addNum = addNumber(left, right);
+
+        mulNum = mulNumber(left, right);
+
+        if (addNum > mulNum) {
+            return addNum;
+        } else {
+            return mulNum;
+        }
+    }
 }
