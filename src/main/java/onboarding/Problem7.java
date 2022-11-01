@@ -82,4 +82,35 @@ public class Problem7 {
         }
         return friendsList;
     }
+
+    public static Member makeMemberInfo(String user, List<List<String>> friends, List<String> visitors, int number){
+        member =orgainze(user, friends, visitors).get(number);
+        memberScore =0;
+        for(int i=0; i<friends.size(); i++){
+            if(member == friends.get(i).get(0)){
+                friendsList.add(friends.get(i).get(1));
+            }
+            else if(member == friends.get(i).get(1)) {
+                friendsList.add(friends.get(i).get(0));
+            }
+        }
+        Set<String> set = new HashSet<String>(friendsList);
+        List<String> newfriends = new ArrayList<String>(set);
+        memberScore +=newfriends.size()*10;
+
+        for(int i=0; i<visitors.size(); i++){
+            if(member ==visitors.get(i)){
+                memberScore++;
+            }
+        }
+
+        for(int i = 0; i< friendsList.size(); i++){
+            if(friendsList.get(i)==user){
+                memberScore =0;
+            }
+        }
+        Member m=new Member(member, friendsList, memberScore);
+        friendsList.clear();
+        return m;
+    }
 }
