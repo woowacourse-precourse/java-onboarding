@@ -55,11 +55,15 @@ class Problem1 {
         int pobiScore = 0;
         int crongScore = 0;
 
+        for (Integer integer : pobi) {
+            pobiScore = getMax(getSum(integer), getMul(integer));
+        }
 
+        for (Integer integer : crong) {
+            crongScore = getMax(getSum(integer), getMul(integer));
+        }
 
-
-
-        int answer = Integer.MAX_VALUE;
+        int answer = compare(pobiScore, crongScore);
         return answer;
     }
 }
