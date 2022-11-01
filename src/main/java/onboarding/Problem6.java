@@ -27,6 +27,18 @@ public class Problem6 {
 
             }
         }
-        return email;
+
+        for (int i = 0; i < emailnumber.size(); i++) {
+            email.add(forms.get(emailnumber.get(i)).get(0));
+        }
+
+        Set<String> set = new HashSet<String>(email);
+        // Set을 List로 변경
+        List<String> newemail =new ArrayList<String>(set);
+
+
+        Collections.sort(newemail);
+
+        return newemail;
     }
 }
