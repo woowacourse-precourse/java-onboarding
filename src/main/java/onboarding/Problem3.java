@@ -3,24 +3,25 @@ package onboarding;
 public class Problem3 {
     private static final int[] TARGET_NUMBERS = {3, 6, 9};
     private static final int MAX_DIGITS = 5;
-    public static boolean isTargetNumber(int number){
-        for(int i = 0; i < TARGET_NUMBERS.length; i++){
-            if(number == TARGET_NUMBERS[i]){
-                return true;
-            }
-        }
-        return false;
-    }
 
     public static int countNumberOfClaps(int number){
         int count = 0;
         int[] digits = getDigits(number);
-        for(int i = 0; i < digits.length; i++){
-            if(isTargetNumber(digits[i])){
+        for(int digit : digits){
+            if(isTargetNumber(digit)){
                 count++;
             }
         }
         return count;
+    }
+
+    public static boolean isTargetNumber(int number){
+        for(int targetNumber : TARGET_NUMBERS){
+            if(number == targetNumber){
+                return true;
+            }
+        }
+        return false;
     }
 
     public static int[] getDigits(int number){
