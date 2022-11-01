@@ -1,19 +1,27 @@
 # 🎈 민주
 
 ## ✔ 기능 정의 
-- [X] inputSet 예외처리 (isValidInputSet)
-  - 각 player의 input 예외처리(isValidInput)
-- [X] 각 player의 Max Score 가져오기 (getPlayerMaxScore)
-  - [X] 한 숫자(페이지) 각 자리 곱, 각 자리 합 중 Max 값 가졍기(getMaxScoreOfMultiAndSum)
-    - [X] 각 배열 내 두 개의 숫자 각 자리 곱 구하기 (getMultiplyDigit)
-    - [X] 각 배열 내 두 개의 숫자 각 자리 합 구하기 (getSumDigit)
-- [X] 각 player의 max score를 가지고 승부 출력하기 (getGameResult)
+### 기능
+- [X] inputSet 예외처리 __(isValidInputSet)__
+  - 각 player의 input 예외처리__(isValidInput)__
 
-## ✔ 예외 
-- [X] 모든 페이지에는 번호가 적혀 있어야 한다. (isValidNumber)
-- [X] 왼쪽 페이지와 오른쪽 페이지는 연속되어야 한다. (isContinuous)
-- [X] 왼쪽 페이지는 홀수, 오른쪽 페이지는 짝수여야한다.(isOddNumber, isEvenNumber)
-- [X] 1~400 페이지 사이의 값을 가져야한다. (isValidRange)
+- [X] 각 player의 Max Score 가져오기 __(getPlayerMaxScore)__
+  - [X] 한 숫자(페이지) 각 자리 곱, 각 자리 합 중 Max 값 가져오기__(getMaxScoreOfMultiAndSum)__
+    - [X] 각 배열 내 두 개의 숫자 각 자리 곱 구하기 __(getMultiplyDigit)__
+    - [X] 각 배열 내 두 개의 숫자 각 자리 합 구하기 __(getSumDigit)__
+
+- [X] 각 player의 max score를 가지고 승부 출력하기 __(getGameResult)__
+
+### 예외 
+- [X] 모든 페이지에는 번호가 적혀 있어야 한다. __(isValidNumber)__
+
+- [X] 왼쪽 페이지와 오른쪽 페이지는 연속되어야 한다. __(isContinuous)__
+
+- [X] 왼쪽 페이지는 홀수, 오른쪽 페이지는 짝수여야한다.__(isOddNumber, isEvenNumber)__
+
+- [X] 1~400 페이지 사이의 값을 가져야한다. __(isValidRange)__
+
+<br><br>
 
 # 🎈 본문
 ## 🚀 기능 요구 사항
