@@ -41,6 +41,7 @@ class ApplicationTest {
         void case1() {
             String cryptogram = "browoanoommnaon";
             String result = "brown";
+
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
 
@@ -85,6 +86,7 @@ class ApplicationTest {
         void case1() {
             int money = 50_237;
             List<Integer> result = List.of(1, 0, 0, 0, 0, 2, 0, 3, 7);
+
             assertThat(Problem5.solution(money)).isEqualTo(result);
         }
 
@@ -127,6 +129,7 @@ class ApplicationTest {
             );
             List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
             List<String> result = List.of("andole", "jun", "bedi");
+
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
         }
     }
