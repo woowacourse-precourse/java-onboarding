@@ -11,6 +11,7 @@ public class Problem7 {
 
     private static Map<String, List<String>> friendsMap = new TreeMap<>();
     private static Map<String, Integer> scoreMap = new TreeMap<>();
+    private static List<RecommendFriend> recommendFriendList = new ArrayList<>();
 
     static class RecommendFriend {
         private String id;
@@ -27,7 +28,25 @@ public class Problem7 {
         makeScoreMapOfFriendsList(user, visitors);
         removeFriendsAlreadyKnow(friendsMap.get(user));
         scoreMap.remove(user);
+        makeRecommendFriendList();
+        sortRecommendFriendList();
         return new ArrayList<>();
+    }
+
+    private static void sortRecommendFriendList() {
+        recommendFriendList.sort((o1, o2) -> {
+            if (o1.score == o2.score) {
+                return o1.id.compareTo(o2.id);
+            } else {
+                return o2.score - o1.score;
+            }
+        });
+    }
+
+    private static void makeRecommendFriendList() {
+        for (String key : scoreMap.keySet()) {
+            recommendFriendList.add(new RecommendFriend(key, scoreMap.get(key)));
+        }
     }
 
     private static void removeFriendsAlreadyKnow(List<String> userFriendList) {
