@@ -37,13 +37,18 @@ public class Problem4 {
       StringBuilder translateResult = new StringBuilder();
       for (int i = 0; i < word.length(); i++) {
         char currentChar = word.charAt(i);
-        if (Character.isAlphabetic(currentChar)) {
+        if (isAlphabet(currentChar)) {
           translateResult.append(dictionary.get(currentChar));
         } else {
           translateResult.append(currentChar);
         }
       }
       return translateResult.toString();
+    }
+
+    private boolean isAlphabet(char currentChar) {
+      return 'a' <= currentChar && currentChar <= 'z' ||
+          'A' <= currentChar && currentChar <= 'Z';
     }
   }
 }
