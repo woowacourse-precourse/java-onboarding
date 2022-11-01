@@ -8,7 +8,6 @@ public class Problem7 {
 
         HashMap<String, Integer> recommendList = new HashMap<>();
 
-        //나와 친구인 유저의 아이디 set 만들기
         Set<String> friendSet = new HashSet<>();
         for (List<String> list: friends) {
             if(list.contains(user)) {
@@ -18,20 +17,16 @@ public class Problem7 {
         }
         friendSet.remove(user);
 
-        //나와 친구인 사람과 친구인 사람 list 만들기
         for (List<String> list: friends) {
             for (String friend: friendSet) {
-                //list 안에 친구가 있는지 확인
                 isAlreadyFriend(list, friend, friendSet, user, recommendList);
             }
         }
 
-        //방문자 횟수만큼 나와 친구가 아닌 방문자 점수 부여
         for (String visitor:visitors) {
             setScore(friendSet, visitor, user, recommendList, 1);
         }
 
-        //점수 내림차순 정렬하기
         List<Map.Entry<String, Integer>> entryList = new LinkedList<>(recommendList.entrySet());
         entryList.sort(new Comparator<Map.Entry<String, Integer>>() {
             @Override
@@ -40,7 +35,6 @@ public class Problem7 {
             }
         });
 
-        //추천 유저 상위 5명만 최종 리턴
         for(Map.Entry<String, Integer> entry : entryList){
             if (answer.size()<=5) {
                 answer.add(entry.getKey());
