@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import onboarding.problem7.dto.FriendRelationDto;
+import onboarding.problem7.user.User;
+import onboarding.problem7.user.UserRepository;
 
 public class FriendService {
 	private final UserRepository userRepository = new UserRepository();

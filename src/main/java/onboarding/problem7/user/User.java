@@ -1,6 +1,5 @@
-package onboarding.problem7;
+package onboarding.problem7.user;
 
-import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Set;
 
