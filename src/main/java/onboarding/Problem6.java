@@ -4,9 +4,9 @@ import java.util.*;
 
 
 /*
-* 약어
-* sn : Substring Name(이름의 부분 문자열)
-* */
+ * 약어
+ * sn : Substring Name(이름의 부분 문자열)
+ * */
 public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
@@ -18,7 +18,7 @@ public class Problem6 {
         return crewCalculator.calculation();
     }
 
-    public enum Crew{
+    public enum Crew {
         EMAIL(0), NAME(1);
 
         private int info;
@@ -32,7 +32,7 @@ public class Problem6 {
         }
     }
 
-    public static class CrewCalculator implements Calculator<List<List<String>>, List<String>>{
+    public static class CrewCalculator implements Calculator<List<List<String>>, List<String>> {
         private List<List<String>> forms;
         private static final int REPEAT = 2;
         private static List<List<String>> snList = new ArrayList<>();
@@ -43,7 +43,7 @@ public class Problem6 {
         }
 
         @Override
-        public List<String> calculation(){
+        public List<String> calculation() {
             List<String> answer = new ArrayList<>();
             Map<String, Integer> snAndCountMap = new HashMap<>();
             snList = new ArrayList<>();
@@ -57,7 +57,7 @@ public class Problem6 {
             return answer;
         }
 
-        private static String getInfo(List<String> form, Crew crew){
+        private static String getInfo(List<String> form, Crew crew) {
             return form.get(crew.getInfo());
         }
 
@@ -67,27 +67,16 @@ public class Problem6 {
         private static List<String> subName(String name) {
             List<String> sub = new ArrayList<>();
             int n = name.length();
-            for (int i = REPEAT; i <= n; i++) { // 크기
-                for (int j = 0; i + j <= n; j++) { // 위치
-                    isSizeTwoOrMore(name, i, j, sub);
-                }
+            for (int j = 0; REPEAT + j <= n; j++) {
+                sub.add(name.substring(j, REPEAT + j));// 위치
             }
             return sub;
         }
 
         /*
-        * 크기가 REPEAT보다 큰 부분 문자열을 추가한다.
-        * */
-        private static void isSizeTwoOrMore(String name, int i, int j, List<String> sub){
-            if(name.length()-j >= REPEAT){
-                sub.add(name.substring(j, i + j));
-            }
-        }
-
-        /*
          * 각 이름에서 부분 문자열을 구한다.
          * */
-        private static void makeSnList(List<List<String>> forms){
+        private static void makeSnList(List<List<String>> forms) {
             for (List<String> form : forms) {
                 String name = getInfo(form, Crew.NAME);
                 snList.add(subName(name));
@@ -97,17 +86,17 @@ public class Problem6 {
         /*
          * 구해진 부분 문자열로 개수를 센다.
          * */
-        private static void makeCount(Map<String, Integer> snAndCountMap){
+        private static void makeCount(Map<String, Integer> snAndCountMap) {
             for (List<String> strings : snList) {
                 partition(strings, snAndCountMap);
             }
         }
 
         /*
-        * 부분 문자열의 개수를 Map에 저장한다.
-        * */
+         * 부분 문자열의 개수를 Map에 저장한다.
+         * */
         private static void partition(List<String> strings,
-                                      Map<String, Integer> snAndCountMap){
+                                      Map<String, Integer> snAndCountMap) {
             for (String par : strings) {
                 snAndCountMap.put(par, snAndCountMap.getOrDefault(par, 0) + 1);
             }
@@ -118,7 +107,7 @@ public class Problem6 {
          * */
         private static void makeAnswer(List<List<String>> forms,
                                        Map<String, Integer> snAndCountMap,
-                                       List<String> answer){
+                                       List<String> answer) {
 
             Person : for (int i = 0; i < snList.size(); i++) {
                 for (int j = 0; j < snList.get(i).size(); j++) {

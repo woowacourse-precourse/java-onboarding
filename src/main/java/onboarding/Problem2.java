@@ -14,7 +14,7 @@ public class Problem2 {
     }
 
     private static String decryption(String str) {
-        String regex = "(([a-zA-Z0-9])\\2{1,})";
+        String regex = "(([a-z])\\2{1,})";
         return str.replaceAll(regex, "");
     }
 }

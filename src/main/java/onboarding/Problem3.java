@@ -25,7 +25,7 @@ public class Problem3 {
     }
 
     public static class ThreeSixNineCalculator implements Calculator<Integer, Integer>{
-        int number;
+        private int number;
 
         @Override
         public void setVariable(Integer number) {

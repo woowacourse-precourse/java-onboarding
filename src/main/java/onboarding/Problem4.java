@@ -49,11 +49,6 @@ public class Problem4 {
         }
 
         private static char convertChar(char chr){
-            /* ' ' */
-            if(chr == Alphabet.BLACK.getAlphabet()){
-                return Alphabet.BLACK.getAlphabet();
-            }
-
             /* 'A'~'Z' */
             if(chr>=Alphabet.UPPER_A.getAlphabet() &&
                     chr<=Alphabet.UPPER_Z.getAlphabet()){
@@ -62,8 +57,12 @@ public class Problem4 {
             }
 
             /* 'a'~'z' */
-            return (char)(Alphabet.LOWER_A.getAlphabet()+
-                    (Alphabet.LOWER_Z.getAlphabet()-chr));
+            if(chr>=Alphabet.LOWER_A.getAlphabet() &&
+                    chr<=Alphabet.LOWER_Z.getAlphabet()){
+                return (char)(Alphabet.LOWER_A.getAlphabet()+
+                       (Alphabet.LOWER_Z.getAlphabet()-chr));
+            }
+            return chr;
         }
     }
 }

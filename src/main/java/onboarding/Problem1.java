@@ -65,7 +65,26 @@ class Problem1 {
         }
 
         public boolean isValid(){
+            if (!isRange()) return false;
+            if(!isOdd()) return false;
+            if(!isEven()) return false;
+            return isNext();
+        }
+
+        public boolean isRange(){
+            return ((left >= 1 && left <= 400) && (right >= 1 && right <= 400));
+        }
+
+        public boolean isNext(){
             return (right - left) == 1;
+        }
+
+        public boolean isOdd(){
+            return left%2==1;
+        }
+
+        public boolean isEven(){
+            return right%2==0;
         }
 
         public int getLeft() {
