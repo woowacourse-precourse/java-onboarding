@@ -25,6 +25,12 @@ public class Problem4 {
     }
 
     private static boolean isValidChar(char chr) {
+        if ('a' < chr && chr < 'z') {
+            return true;
+        }
+        if ('A' < chr && chr < 'Z') {
+            return true;
+        }
         return false;
     }
 }
