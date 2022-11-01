@@ -4,6 +4,7 @@ import java.util.List;
 import java.lang.Math;
 
 
+
 class Problem1 {
     public static boolean isInRange(List<Integer> pageList) {
         int leftPage = pageList.get(0);
@@ -14,6 +15,7 @@ class Problem1 {
         }
         return true;
     }
+
     public static boolean isValid(List<Integer> pageList) {
         int leftPage = pageList.get(0);
         int rightPage = pageList.get(1);
@@ -28,6 +30,7 @@ class Problem1 {
 
         return true;
     }
+
     public static int getMul(int page) {
         int result = 1;
 
@@ -38,6 +41,7 @@ class Problem1 {
 
         return result;
     }
+
     public static int getSum(int page) {
         int result = 0;
 
@@ -48,12 +52,14 @@ class Problem1 {
 
         return result;
     }
+
     public static int getPageMax(int page) {
         int sum = getSum(page);
         int mul = getMul(page);
 
         return Math.max(sum, mul);
     }
+
     public static int getPageResult(List<Integer> pageList) {
         int leftPage = pageList.get(0);
         int rightPage = pageList.get(1);
@@ -63,6 +69,7 @@ class Problem1 {
 
         return Math.max(leftRes, rightRes);
     }
+
     public static int getWinner(List<Integer> pobi, List<Integer> crong) {
         int draw = 0;
         int pobiWin = 1;
@@ -73,13 +80,11 @@ class Problem1 {
 
         // 승자 처리
         if (pobiScore > crongScore) {
-            return pobiWin;
-        }
-        else if (pobiScore < crongScore) {
-            return crongWin;
-        }
-        else {
-            return draw;
+            return POBI_WIN;
+        } else if (pobiScore < crongScore) {
+            return CRONG_WIN;
+        } else {
+            return DRAW;
         }
     }
 
