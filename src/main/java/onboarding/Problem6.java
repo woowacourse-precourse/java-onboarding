@@ -11,7 +11,9 @@ public class Problem6 {
 
         List<String> duplicatedIdList = getDuplicatedIds(substringToId);
 
-        return getEmailsFromIdsOrderByEmail(duplicatedIdList);
+        List<String> duplicatedEmailList = getEmailsFromIds(duplicatedIdList);
+
+        return orderbyEmail(duplicatedEmailList);
     }
 
     public static Map<String, Set<String>> getSubstringToIdMap(List<List<String>> forms) {
@@ -56,10 +58,15 @@ public class Problem6 {
         return new ArrayList<>(duplicatedIds);
     }
 
-    public static List<String> getEmailsFromIdsOrderByEmail(List<String> ids) {
-        return ids
-                .stream()
+    public static List<String> getEmailsFromIds(List<String> ids){
+        return ids.
+                stream()
                 .map(id -> id + DOMAIN)
+                .collect(Collectors.toList());
+    }
+    public static List<String> orderbyEmail(List<String> emails) {
+        return emails
+                .stream()
                 .sorted()
                 .collect(Collectors.toList());
 
