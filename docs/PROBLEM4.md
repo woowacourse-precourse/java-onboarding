@@ -19,3 +19,9 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+### 기능 목록
+1. 예외 처리
+- String 길이 제한
+
+2. 알파벳 변환
