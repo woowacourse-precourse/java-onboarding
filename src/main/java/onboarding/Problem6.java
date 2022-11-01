@@ -40,4 +40,13 @@ public class Problem6 {
         }
         return duplicatedList;
     }
+
+    private static ArrayList<String> getDuplicatedNickname(List<List<String>> forms, String item) {
+        ArrayList<String> list = new ArrayList<>();
+        for (List<String> items : forms) {
+            if (items.get(1).contains(item))
+                list.add(items.get(0));
+        }
+        return list;
+    }
 }
