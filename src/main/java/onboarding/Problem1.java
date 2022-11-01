@@ -14,6 +14,7 @@ class Problem1 {
         return num1 > num2 ? num1 : num2;
     }
     public static int compare_max(List<Integer> digit_ls) {
+
         int num=0,max=0;
         for(int i=0; i<2; i++){
             num=get_max(get_sum(digit_ls.get(i)),get_prod(digit_ls.get(i)));
