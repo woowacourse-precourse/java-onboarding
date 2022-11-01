@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
 
@@ -42,5 +43,14 @@ public class Problem7 {
                 first.ifPresent(s -> pointUser.put(s, pointUser.getOrDefault(s, 0) + 10));
             }
         }
+
+        Set<String> visitorSet = visitors.stream()
+                .filter(x -> !friendsOfUser.contains(x) && !x.equals(user))
+                .collect(Collectors.toSet());
+
+        for (String member : visitorSet) {
+            pointUser.put(member, pointUser.getOrDefault(member, 0) + 1);
+        }
+
     }
 }
