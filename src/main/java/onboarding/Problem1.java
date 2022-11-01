@@ -4,9 +4,9 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        answer = 0;
-        if (isPageOutOfRange(pobi) || isPageOutOfRange((crong)) || isPageSubDiff((pobi)) || isPageSubDiff((crong))) {
+        int answer = 0;
+        if (isPageOutOfRange(pobi) || isPageOutOfRange((crong)) || isPageSubDiff((pobi)) || isPageSubDiff((crong))
+        || isPageOddEven(pobi) || isPageOddEven(crong)) {
             return -1;
         }
         if(calPageMaxSumMul(pobi) > calPageMaxSumMul(crong)) answer = 1;
@@ -55,6 +55,13 @@ class Problem1 {
     }
     private static boolean isPageSubDiff(List<Integer> arr) {
         if (arr.get(1) - arr.get(0) != 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    private static boolean isPageOddEven(List<Integer> arr) {
+        if (arr.get(1) % 2 != 0 || arr.get(0) % 2 != 1) {
             return true;
         } else {
             return false;
