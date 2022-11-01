@@ -6,7 +6,7 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Map<String, Integer> pointboard = new HashMap<>();
         Map<String, List<String>> userfriends = new HashMap<>();
-        List<String> answer = new ArrayList<>();
+
         for (List<String> friend : friends) {
             String leftfriend = friend.get(0);
             String rightfriend = friend.get(1);
@@ -41,6 +41,14 @@ public class Problem7 {
             if(pointboard.get(visit) != null) point = pointboard.get(visit);
             pointboard.put(visit, point+1);
         }
+        List<String> answer = new ArrayList<>(pointboard.keySet());
+        answer.sort((left, right) ->  {
+            if(pointboard.get(left).equals(pointboard.get(right))){
+                return left.compareTo(right);
+            } else {
+                return pointboard.get(right) - pointboard.get(left);
+            }
+        });
         return answer;
     }
 }
