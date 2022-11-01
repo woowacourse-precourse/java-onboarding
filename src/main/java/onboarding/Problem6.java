@@ -14,7 +14,10 @@ public class Problem6 {
                 String temp = s.substring(i,i+2);
                 for (List<String> checkForm : forms){
                     if (form.get(0)!=checkForm.get(0) && checkForm.get(1).contains(temp)){
-
+                        if (!result.contains(checkForm.get(0)))
+                            result.add(checkForm.get(0));
+                        if (!result.contains(form.get(0)))
+                            result.add(form.get(0));
                     }
                 }
             }
