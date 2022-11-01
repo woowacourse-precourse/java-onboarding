@@ -51,7 +51,7 @@ public class Problem7 {
         List<String> result = Collections.emptyList();
         ArrayList<String> friendList = findUserFriend(user, friends);
         ArrayList<FriendInfo> PersonInfo = findPersonKnowWith(user,friends, friendList);
-        PersonInfo = findVisitor(PersonInfo, visitors);
+        PersonInfo = findVisitor(PersonInfo, visitors, friendList);
         result = findTop5(PersonInfo);
         return result;
         /*for (int i = 0; i < friends.size(); i++) {
@@ -113,21 +113,22 @@ public class Problem7 {
         return PersonInfo;
     }
 
-    public static ArrayList<FriendInfo> findVisitor(ArrayList<FriendInfo> PersonInfo, List<String> visitors)
+    public static ArrayList<FriendInfo> findVisitor(ArrayList<FriendInfo> PersonInfo, List<String> visitors, ArrayList<String> userFriend)
     {
         ArrayList<FriendInfo> temp = PersonInfo;
         for(int i=0; i< visitors.size(); i++)
         {
             for(int j=0; j<temp.size(); j++)
             {
-                if(!PersonInfo.get(j).comparePerson(visitors.get(i)))
+                int idx = overlapCheck(temp, visitors.get(i));
+                if(idx==-1 && !userFriend.contains(visitors.get(i)))
                 {
-                    FriendInfo friend =new FriendInfo(visitors.get(0));
-                    PersonInfo.add(friend);
+                    FriendInfo friend =new FriendInfo(visitors.get(i));
+                    temp.add(friend);
                     friend.visited();
                 }
-                else{
-                    PersonInfo.get(j).visited();
+                else if (idx!=-1 && !userFriend.contains(visitors.get(i))){
+                    temp.get(idx).visited();
                 }
             }
         }
