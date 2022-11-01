@@ -27,6 +27,8 @@ public class Problem7 {
     public static List<String> findAllScore(String user,
                                             List<List<String>> friends,
                                             List<String> visitors) {
+        Map<String, List<String>> allUserFriendsList = new HashMap<>();
+        Map<String, Integer> scoreBoard = new HashMap<>();
         return new ArrayList<>();
     }
 
@@ -39,6 +41,16 @@ public class Problem7 {
      */
     public static void findFriends(List<List<String>> friends,
                                    Map<String,List<String>> allUserFriendsList) {
+        for (List<String> friend : friends) {
+            int check = -1;
+            for (int i = 0 ; i < 2 ; i++) {
+                if (!allUserFriendsList.containsKey(friend.get(i))) {
+                    allUserFriendsList.put(friend.get(i), new ArrayList<>());
+                }
+                check *= -1;
+                allUserFriendsList.get(friend.get(i)).add(friend.get(i + check));
+            }
+        }
     }
 
     /**
