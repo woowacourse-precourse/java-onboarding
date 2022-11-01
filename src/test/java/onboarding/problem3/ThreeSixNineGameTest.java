@@ -28,4 +28,14 @@ public class ThreeSixNineGameTest {
 		assertThatThrownBy(() -> new ThreeSixNineGame(10001))
 			.isInstanceOf(IllegalArgumentException.class);
 	}
+
+	@Test
+	public void 결과값_확인_테스트() {
+	    //given
+		ThreeSixNineGame threeSixNineGame = new ThreeSixNineGame(13);
+		ThreeSixNineGame threeSixNineGame2 = new ThreeSixNineGame(33);
+	    //then
+		assertThat(4).isEqualTo(threeSixNineGame.getResult());
+		assertThat(14).isEqualTo(threeSixNineGame2.getResult());
+	}
 }

@@ -17,6 +17,14 @@ public class ThreeSixNineGame {
 		}
 	}
 
+	public int getResult() {
+		int result = 0;
+		for (int i = MIN_NUMBER; i <= inputNumber; i++) {
+			result += getClapCount(i);
+		}
+		return result;
+	}
+
 	int getClapCount(int num) {
 		return getClapCount(num, 0);
 	}
