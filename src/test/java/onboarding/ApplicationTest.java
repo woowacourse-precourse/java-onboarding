@@ -33,6 +33,14 @@ class ApplicationTest {
             int result = -1;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
+
+        @Test
+        void case4() {
+            List<Integer> pobi = List.of(100, 101);
+            List<Integer> crong = List.of(211, 212);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
     }
 
     @Nested
@@ -58,6 +66,7 @@ class ApplicationTest {
         void case1() {
             int number = 13;
             int result = 4;
+            System.out.println("Problem3.solution(number) = " + Problem3.solution(number));
             assertThat(Problem3.solution(number)).isEqualTo(result);
         }
 
@@ -75,6 +84,13 @@ class ApplicationTest {
         void case1() {
             String word = "I love you";
             String result = "R olev blf";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+
+        @Test
+        void case2() {
+            String word = "I love yyyR";
+            String result = "R olev bbbI";
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
     }
@@ -123,10 +139,14 @@ class ApplicationTest {
                     List.of("donut", "mrko"),
                     List.of("shakevan", "andole"),
                     List.of("shakevan", "jun"),
+                    List.of("shakevan", "aab"),
+                    List.of("shakevan", "aaa"),
+                    List.of("shakevan", "bbb"),
                     List.of("shakevan", "mrko")
             );
-            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
-            List<String> result = List.of("andole", "jun", "bedi");
+            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan", "bbb");
+            List<String> result = List.of("andole", "jun", "bbb", "aaa", "aab");
+            System.out.println("Problem7.solution(user,friends,visitors) = " + Problem7.solution(user,friends,visitors));
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
         }
     }

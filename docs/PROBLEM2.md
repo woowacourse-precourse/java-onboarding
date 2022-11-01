@@ -21,3 +21,25 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+
+## 기능 목록
+### 입력으로 주어진 문자열을 압축하는 기능
+- 현재 문자열을 대상으로, 연속으로 등장하는 부분 문자열을 삭제하는 기능
+  - 현재 문자의 앞 뒤에 동일한 문자가 있는지 판단하는 기능
+
+## 도메인 목록
+### StringZipper
+- 주어진 문자열의 압축 기능을 수행하는 메서드를 구현하는 클래스
+
+    
+    boolean checkContinuity(String string, int index)
+- 주어진 문자열의 index 위치의 문자가 이전 / 이후 문자와 같은지의 여부를 반환하는 메서드
+
+    
+    String zipStringOneTime(String string)
+- 주어진 문자열에서 동일한 문자가 연속되는 부분 문자열을 제거하고 반환하는 메서드
+
+
+    String zipString(String string)
+- 주어진 문자열에 더이상 삭제할 부분이 없어질 때까지 삭제를 반복하는 메서드

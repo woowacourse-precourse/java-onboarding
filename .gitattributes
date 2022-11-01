@@ -1,0 +1,11 @@
+# Unix 형식에 따른 LF 사용
+*.c text eol=lf
+*.cpp text eol=lf
+*.h text eol=lf
+
+# exception for visual studio project configuration
+*.sln text eol=crlf
+*.vs text eol=crlf
+*.csproj eol=crlf
+*.props eol=crlf
+*.filters eol=crlf

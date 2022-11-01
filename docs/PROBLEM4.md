@@ -19,3 +19,18 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+## 도메인 목록
+
+### StringConvertor
+- 문자열 뒤집기에 필요한 메서드를 구현한 클래스
+
+
+    String convertEachCharacterOfString(String string)
+- 주어진 문자열의 각 문자를 조건에 따라 뒤집어주는 메서드
+
+
+    char convertCharacter(char character)
+- 주어진 문자를 변환해 반환해주는 메서드
+
+
