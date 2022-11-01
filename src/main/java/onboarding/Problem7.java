@@ -15,7 +15,7 @@ public class Problem7 {
             String friendName2 = relation.get(1);
             putRelationByFriends(relations, friendName1, friendName2);
         }
-        for (String friendName: visitors) {
+        for (String friendName : visitors) {
             if (!relations.containsKey(friendName)) {
                 relations.put(friendName, new ArrayList<>(Collections.emptyList()));
             }

@@ -10,13 +10,8 @@ public class Problem6 {
         putChunkDict(chunk_dict, forms);
 
         List<String> keys = new ArrayList<>(chunk_dict.keySet());
-        for (String key : keys) {
-            if (chunk_dict.get(key).size() > 1) {
-                for (int index : chunk_dict.get(key)) {
-                    answer.add(forms.get(index).get(0));
-                }
-            }
-        }
+
+        addEmailToAnswer(keys, chunk_dict, answer, forms);
 
         Set<String> emailSet = new HashSet<>(answer);
         answer = new ArrayList<>(emailSet);
@@ -32,6 +27,16 @@ public class Problem6 {
                     chunk_dict.get(chunk).add(ind);
                 } else {
                     chunk_dict.put(chunk, new ArrayList<>(Arrays.asList(ind)));
+                }
+            }
+        }
+    }
+
+    public static void addEmailToAnswer(List<String> keys, HashMap<String, List<Integer>> chunk_dict, List<String> answer, List<List<String>> forms) {
+        for (String key : keys) {
+            if (chunk_dict.get(key).size() > 1) {
+                for (int index : chunk_dict.get(key)) {
+                    answer.add(forms.get(index).get(0));
                 }
             }
         }
