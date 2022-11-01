@@ -37,8 +37,15 @@ class Problem1 {
         //페이지 곱셈 변수 초기화
         int pagemulti = 1;
 
-
-
+        //페이지 자릿수에 따른 계산 반복문을 통해 점수를 저장하는 기능
+        while(pagenum > 0){
+            //자릿수 덧셈 저장
+            pagesum += pagenum % 10;
+            //자릿수 곱셈 저장
+            pagemulti *= pagenum % 10;
+            //10으로 나눈 몫
+            pagenum /= 10;
+        }
 
         return 0;
     }
