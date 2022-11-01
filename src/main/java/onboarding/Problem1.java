@@ -38,4 +38,20 @@ class Problem1 {
         }
         return sum;
     }
+
+    private static int muliplyDigit(int num) {
+        int sum = 1;
+
+        String[] arr = String.valueOf(num).split("");
+        int[] numbers = new int[arr.length];
+
+        for (int i = 0; i < numbers.length; i++) {
+            numbers[i] = Integer.parseInt(arr[i]);
+        }
+
+        for (int k = 0; k < numbers.length; k++) {
+            sum *= numbers[k];
+        }
+        return sum;
+    }
 }
