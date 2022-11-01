@@ -1,41 +1,25 @@
 package onboarding;
 
 public class Problem2 {
-    static int getIdx(String str) {
-        char first = str.charAt(0);
+    public static String solution(String cryptogram) {
+        String answer;
 
-        for (int i = 1; i < str.length(); i++) {
-            if (str.charAt(i) == first) {
-                return i;
-            }
-        }
-        return 0;
-    }
-    static String deleteChar(String crypt){
-        String result = "";
-        int last = crypt.length() - 1;
+        answer = decode(cryptogram);
 
-        for (int i = 0; i < last + 1; i++){
-            if ( i != last && crypt.charAt(i) == crypt.charAt(i+1)) {
-                i += getIdx(crypt.substring(i));
-                continue;
-            }
-            result += crypt.charAt(i);
-        }
-        return result;
-    }
-    static String solution(String cryptogram) {
-        String answer = cryptogram;
-        String deleteStr = "";
-
-        while (true) {
-            deleteStr = deleteChar(answer);
-            if (!deleteStr.equals(answer)){
-                answer = deleteStr;
-                continue;
-            }
-            break;
-        }
         return answer;
+    }
+    static String decode(String crypt) {
+        StringBuilder sb = new StringBuilder(crypt);
+        int i = 0;
+
+        while (i < sb.length() - 1) {
+            if (sb.charAt(i) == sb.charAt(i + 1)) {
+                sb.delete(i, i + 2);
+                i = 0;
+                continue;
+            }
+            i++;
+        }
+        return sb.toString();
     }
 }
