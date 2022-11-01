@@ -1,5 +1,9 @@
 package onboarding;
 
+import onboarding.problem3.ClapNumber;
+
+import java.util.Arrays;
+
 public class Problem3 {
     public static int solution(int number) {
         return get369CountFromOneToNumber(number);
@@ -19,14 +23,16 @@ public class Problem3 {
 
     private static long get369Count(int number) {
         return intToString(number).chars()
-                .filter(Problem3::is369DigitChar)
+                .filter(digit -> is369DigitChar(intToChar(digit)))
                 .count();
     }
 
-    private static boolean is369DigitChar(int digit) {
-        if (digit == '3' || digit == '6' || digit == '9') {
-            return true;
-        }
-        return false;
+    private static boolean is369DigitChar(char digit) {
+        return Arrays.stream(ClapNumber.values())
+                .anyMatch(clapNumber -> clapNumber.isEqual(digit));
+    }
+
+    private static char intToChar(int number) {
+        return (char) number;
     }
 }
