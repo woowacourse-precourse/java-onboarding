@@ -1,4 +1,4 @@
-package onboarding;
+package onboarding.problem4;
 
 import onboarding.problem4.AlphabetConverter;
 import onboarding.problem4.FrogConverter;
