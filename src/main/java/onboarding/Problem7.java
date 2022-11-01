@@ -77,4 +77,38 @@ public class Problem7 {
         }
         return friendMap;
     }
+
+    /**
+     * 추천도가 높은 순으로 정렬
+     * - 추천점수가 높을 수록 우선순위를 가지며, 점수가 같은 경우에는 이름순으로 정렬
+     * @param list
+     * @param friendMap
+     * @return
+     */
+    private static List<HashMap<String, Object>> sorted(List<HashMap<String, Object>> list, Map<String, Integer> friendMap) {
+
+        for(Map.Entry<String, Integer> friend : friendMap.entrySet()) {
+            HashMap<String, Object> map1 = new HashMap<>();
+            map1.put("name",friend.getKey());
+            map1.put("point",friend.getValue());
+            list.add(map1);
+        }
+        Collections.sort(list, new Comparator<HashMap<String, Object>>() {
+            @Override
+            public int compare(HashMap<String, Object> o1, HashMap<String, Object> o2) {
+                Integer point1 = (Integer) o1.get("point");
+                Integer point2 = (Integer) o2.get("point");
+
+                if(point1 == point2) {
+                    // 점수가 같은 경우 이름 오름차순
+                    String name1 = (String) o1.get("name");
+                    String name2 = (String) o2.get("name");
+                    return name1.compareTo(name2);
+                }
+                // 점수 내림차순
+                return point2.compareTo(point1);
+            }
+        });
+        return list;
+    }
 }
