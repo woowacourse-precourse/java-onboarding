@@ -62,17 +62,14 @@ public class Problem7 {
         scoreMap.put(visitor, score + 1);
     }
     private static ArrayList<String> selectTop5(HashMap<String, Integer> scoreMap) {
-        PriorityQueue<Map.Entry<String, Integer>> priorityQueue = new PriorityQueue<>(new Comparator<Map.Entry<String, Integer>>() {
-            @Override
-            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
-                if (o1.getValue() > o2.getValue())
-                    return 1;
+        PriorityQueue<Map.Entry<String, Integer>> priorityQueue = new PriorityQueue<>((o1, o2) -> {
+            if (o1.getValue() > o2.getValue())
+                return 1;
 
-                if (o1.getValue() < o2.getValue())
-                    return -1;
+            if (o1.getValue() < o2.getValue())
+                return -1;
 
-                return o2.getKey().compareTo(o1.getKey());
-            }
+            return o2.getKey().compareTo(o1.getKey());
         });
 
         for (Map.Entry<String, Integer> entry: scoreMap.entrySet()) {
