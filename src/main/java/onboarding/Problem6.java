@@ -21,11 +21,7 @@ public class Problem6 {
             nameCut(forms.get(i).get(1), nameCut);
             for (int j = 0; j < forms.size(); j++) {
                 if (i != j) {
-                    for (int k = num; k < nameCut.size(); k++) {
-                        if (forms.get(j).get(1).contains(nameCut.get(k))) {
-                            email.add(forms.get(j).get(0));
-                        }
-                    }
+                    duplicateName(forms.get(j), nameCut, email, num);
                 }
             }
         }
@@ -39,6 +35,14 @@ public class Problem6 {
     public static void nameCut(String name, List<String> cutname) {
         for (int i = 0; i < name.length() - 1; i++) {
             cutname.add(name.substring(i, (i + 2)));
+        }
+    }
+
+    public static void duplicateName(List<String> name, List<String> cutname, List<String> email, int num) {
+        for (int k = num; k < cutname.size(); k++) {
+            if (name.get(1).contains(cutname.get(k))) {
+                email.add(name.get(0));
+            }
         }
     }
 }
