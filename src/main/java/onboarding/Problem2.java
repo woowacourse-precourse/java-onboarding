@@ -23,6 +23,6 @@ public class Problem2 {
         return sb.delete(i-1, i+1);
     }
     private static boolean isConsecutiveSameCharacter(StringBuilder str, int i) {
-        return str.charAt(i) == str.charAt(i-1);
+        return str.charAt(i) == str.charAt(i+1);
     }
 }
