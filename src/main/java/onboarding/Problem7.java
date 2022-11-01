@@ -19,7 +19,7 @@ public class Problem7 {
 
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 		List<String> answer = new ArrayList<>(Collections.emptyList());
-		Map<String, Integer> map = new HashMap<>(); // [사람 이름, 추천 점수]를 담을 HashMap
+		Map<String, Integer> nameAndScores = new HashMap<>(); // [사람 이름, 추천 점수]를 담을 HashMap
 		Set<String> notYetFriendWithUser; // 추천 친구 대상 set (사용자와 아직 친구가 아닌 사람들)
 		Set<String> alreadyFriendWithUser = new HashSet<>(); // 사용자와 이미 친구인 사람들 set
 
@@ -32,23 +32,23 @@ public class Problem7 {
 
 		// HashMap 초기화
 		for (String friend : notYetFriendWithUser) {
-			map.put(friend, 0);
+			nameAndScores.put(friend, 0);
 		}
 
 		// 추천 점수 계산
-		calcScore(friends, visitors, map, notYetFriendWithUser, alreadyFriendWithUser);
+		calcScore(friends, visitors, nameAndScores, notYetFriendWithUser, alreadyFriendWithUser);
 
 		// 추천 점수(value)가 0점인 사람(key)은 제외
 		Set<String> zeroPoints = new HashSet<>();
-		for (Map.Entry<String, Integer> entry : map.entrySet()) {
+		for (Map.Entry<String, Integer> entry : nameAndScores.entrySet()) {
 			if (entry.getValue() == 0) {
 				zeroPoints.add(entry.getKey());
 			}
 		}
-		zeroPoints.forEach(k -> map.remove(k));
+		zeroPoints.forEach(k -> nameAndScores.remove(k));
 
 		// 정렬
-		List<Map.Entry<String, Integer>> sortedFriends = sortFriends(map);
+		List<Map.Entry<String, Integer>> sortedFriends = sortFriends(nameAndScores);
 
 		// 추천 친구 이름을 리스트에 담아 반환
 		for (Map.Entry<String, Integer> stringIntegerEntry : sortedFriends) {
@@ -135,12 +135,12 @@ public class Problem7 {
 	/**
 	 * 추천 점수 순으로 정렬하고, 추천 점수가 같은 경우는 이름순으로 정렬하는 메서드
 	 * 최대 5명만 리턴한다.
-	 * @param map
+	 * @param nameAndScores
 	 * @return
 	 */
-	private static List<Map.Entry<String, Integer>> sortFriends(Map<String, Integer> map) {
+	private static List<Map.Entry<String, Integer>> sortFriends(Map<String, Integer> nameAndScores) {
 
-		List<Map.Entry<String, Integer>> friends = new LinkedList<>(map.entrySet());
+		List<Map.Entry<String, Integer>> friends = new LinkedList<>(nameAndScores.entrySet());
 		friends.sort((o1, o2) -> {
 			// value 값 내림차순 정렬
 			int comparison = (o1.getValue() - o2.getValue()) * -1;
@@ -159,27 +159,27 @@ public class Problem7 {
 	 * 추천 점수를 계산하는 메서드
 	 * @param friends
 	 * @param visitors
-	 * @param map
+	 * @param nameAndScores
 	 * @param notYetFriendWithUser
 	 * @param alreadyFriendWithUser
 	 */
-	private static void calcScore(List<List<String>> friends, List<String> visitors, Map<String, Integer> map,
+	private static void calcScore(List<List<String>> friends, List<String> visitors, Map<String, Integer> nameAndScores,
 		Set<String> notYetFriendWithUser, Set<String> alreadyFriendWithUser) {
-		calcBothKnowScore(friends, map, notYetFriendWithUser, alreadyFriendWithUser);
-		calcVisitScore(visitors, map, notYetFriendWithUser);
+		calcBothKnowScore(friends, nameAndScores, notYetFriendWithUser, alreadyFriendWithUser);
+		calcVisitScore(visitors, nameAndScores, notYetFriendWithUser);
 	}
 
 	/**
 	 * (사용자의 타임 라인에 방문한 횟수 * 1점) 을 계산하는 메서드
 	 * @param visitors
-	 * @param map
+	 * @param nameAndScores
 	 * @param notYetFriendWithUser
 	 */
-	private static void calcVisitScore(List<String> visitors, Map<String, Integer> map,
+	private static void calcVisitScore(List<String> visitors, Map<String, Integer> nameAndScores,
 		Set<String> notYetFriendWithUser) {
 		for (String visitor : visitors) {
 			if (notYetFriendWithUser.contains(visitor)) {
-				map.put(visitor, map.get(visitor) + TIMELINE_VISIT_SCORE); // visitor 의 친구 점수 + 1
+				nameAndScores.put(visitor, nameAndScores.get(visitor) + TIMELINE_VISIT_SCORE); // visitor 의 친구 점수 + 1
 			}
 		}
 	}
@@ -187,18 +187,18 @@ public class Problem7 {
 	/**
 	 * (사용자와 함께 아는 친구 수 * 10점) 을 계산하는 메서드
 	 * @param friends
-	 * @param map
+	 * @param nameAndScores
 	 * @param notYetFriendWithUser
 	 * @param alreadyFriendWithUser
 	 */
-	private static void calcBothKnowScore(List<List<String>> friends, Map<String, Integer> map,
+	private static void calcBothKnowScore(List<List<String>> friends, Map<String, Integer> nameAndScores,
 		Set<String> notYetFriendWithUser, Set<String> alreadyFriendWithUser) {
 		for (List<String> friend : friends) {
 			for (String alreadyFriend : alreadyFriendWithUser) {
 				for (String person : friend) {
 					if (friend.contains(alreadyFriend) && notYetFriendWithUser.contains(
 						person)) { // 사용자와 함께 아는 친구가 있다면
-						map.put(person, map.get(person) + BOTH_KNOW_SCORE); // person 의 친구 점수 + 10
+						nameAndScores.put(person, nameAndScores.get(person) + BOTH_KNOW_SCORE); // person 의 친구 점수 + 10
 					}
 				}
 			}
