@@ -35,6 +35,8 @@ class Problem1 {
             return false;
         } else if (firstIndex + 1 != secondIndex) {
             return false;
+        } else if (firstIndex < 1 || secondIndex > 400) {
+            return false;
         }
         return firstIndex % 2 != 0 && secondIndex % 2 == 0;
     }
