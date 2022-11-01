@@ -11,8 +11,8 @@ public class Problem6 {
 
         final Map<String, String> hashMap = new HashMap<>();
 
-        for (int i = 0; i < forms.get(1).size(); i++) {
-            final String name = forms.get(1).get(i).toString();
+        for (int i = 0; i < forms.size(); i++) {
+            final String name = forms.get(i).get(1);
 
             if (name.length() < 2) {
                 break;
@@ -22,12 +22,12 @@ public class Problem6 {
                 final String key = name.substring(j, j + 2);
                 if (hashMap.containsKey(key)) {
                     final String email = hashMap.get(key);
-                    if (!email.equals(forms.get(0).get(i))) {
+                    if (!email.equals(forms.get(i).get(0))) {
                         emails.add(email);
-                        emails.add(forms.get(0).get(i));
+                        emails.add(forms.get(i).get(0));
                     }
                 }
-                hashMap.put(key, forms.get(0).get(i));
+                hashMap.put(key, forms.get(i).get(0));
             }
         }
         List<String> answer = emails.stream().sorted().collect(Collectors.toList());
@@ -36,25 +36,13 @@ public class Problem6 {
     // 중복 글자 찾는 함수
 
     public static void main(String[] args) {
-        List<List<String>> str = new ArrayList<>();
-
-        ArrayList<String> data1 = new ArrayList<>();
-        data1.add("jm@email.com");
-        data1.add("jason@email.com");
-        data1.add("woniee@email.com");
-        data1.add("mj@email.com");
-        data1.add("nowm@email.com");
-
-        ArrayList<String> data2 = new ArrayList<>();
-        data2.add("제이엠");
-        data2.add("제이슨");
-        data2.add("워니");
-        data2.add("엠제이");
-        data2.add("이제엠");
-
-        str.add(data1);
-        str.add(data2);
-
-        System.out.println(solution(str));
+        List<List<String>> forms = List.of(
+                List.of("jm@email.com", "제이엠"),
+                List.of("jason@email.com", "제이슨"),
+                List.of("woniee@email.com", "워니"),
+                List.of("mj@email.com", "엠제이"),
+                List.of("nowm@email.com", "이제엠")
+        );
+        System.out.println(solution(forms));
     }
 }
