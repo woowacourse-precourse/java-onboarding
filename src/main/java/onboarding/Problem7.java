@@ -57,6 +57,19 @@ public class Problem7 {
         }
     }
 
+    public static List<Map.Entry<String, Integer>> sortByKeyAndValue(){
+        List<Map.Entry<String, Integer>> list_entries = new ArrayList<Map.Entry<String, Integer>>(point.entrySet());
+        Collections.sort(list_entries, new Comparator<Map.Entry<String, Integer>>() {
+            public int compare(Map.Entry<String, Integer> obj1, Map.Entry<String, Integer> obj2) {
+                if(obj1.getValue()==obj2.getValue()) {
+                    return obj2.getKey().compareTo(obj1.getKey());
+                }
+                return obj1.getValue().compareTo(obj2.getValue());
+            }
+        });
+        return list_entries;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         for(int i=0; i<friends.size(); i++) {
             String friend1 = friends.get(i).get(0);
