@@ -54,5 +54,15 @@ public class Problem7 {
 		SocialService(String user, List<List<String>> friends, List<String> visitors) {
 			receivedUser = new User(user);
 		}
+
+		private User addUser(String name) {
+			if (users.containsKey(name)) {
+				return users.get(name);
+			}
+			User newUser = new User(name);
+			users.put(name, newUser);
+			return newUser;
+		}
+
 	}
 }
