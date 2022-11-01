@@ -1,5 +1,6 @@
 package onboarding;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -17,6 +18,11 @@ import java.util.stream.Stream;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class Problem6Test {
+	@BeforeEach
+	void resetTokenCounter() {
+		Problem6.tokenCounter.clear();
+	}
+
 	@ParameterizedTest(name = "''''{0}'''' 에서 나온 토큰 : {1}")
 	@MethodSource("generateNicknames")
 	void 한_닉네임에서_중복없이_토큰_추출_테스트(String nickname, Set<String> expected) {
@@ -82,5 +88,47 @@ class Problem6Test {
 		}};
 
 		assertThat(result).isEqualTo(expected);
+	}
+
+	@DisplayName("어떤 nickname 이 중복이 안될 때 테스트")
+	@Test
+	void checkNotDuplicatedNicknameTest() {
+		// given : tokenCounter 와 중복인지 판단해야할 nickname 이 주어졌을 때
+		final String nickname = "배달의민족화이팅";
+		List<List<String>> forms = new ArrayList<>(List.of(
+				new ArrayList<>(List.of("temp1@email.com", "김재준재준")),
+				new ArrayList<>(List.of("temp2@email.com", "우테코재준")),
+				new ArrayList<>(List.of("temp3@email.com", "최고야재준")),
+				new ArrayList<>(List.of("temp4@email.com", "제발우테코")),
+				new ArrayList<>(List.of("temp5@email.com", nickname))
+		));
+		Problem6.countAllTokensFromForms(forms);
+
+		// when : 해당 nickname 이 forms 에 대해 중복이 안됐는지 테스트
+		boolean result = Problem6.isDuplicated(nickname);
+
+		// then : 중복이 안된 nickname 이기에 false 반환
+		assertThat(result).isFalse();
+	}
+
+	@DisplayName("어떤 nickname 이 중복이 될 때 테스트")
+	@Test
+	void checkDuplicatedNicknameTest() {
+		// given : tokenCounter 와 중복인지 판단해야할 nickname 이 주어졌을 때
+		final String nickname = "발우준우재";
+		List<List<String>> forms = new ArrayList<>(List.of(
+				new ArrayList<>(List.of("temp1@email.com", "김재준재준")),
+				new ArrayList<>(List.of("temp2@email.com", "우테코재준")),
+				new ArrayList<>(List.of("temp3@email.com", "최고야재준")),
+				new ArrayList<>(List.of("temp4@email.com", "제발우테코")),
+				new ArrayList<>(List.of("temp5@email.com", nickname))
+		));
+		Problem6.countAllTokensFromForms(forms);
+
+		// when : 해당 nickname 이 forms 에 대해 중복이 됐는지 테스트
+		boolean result = Problem6.isDuplicated(nickname);
+
+		// then : 중복이 된 nickname 이기에 true 반환
+		assertThat(result).isTrue();
 	}
 }
