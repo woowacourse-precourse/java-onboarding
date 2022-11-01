@@ -9,7 +9,6 @@ public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
-        List<Integer> answerIndexes = new ArrayList<>();
         List<String> nicknames = getNickNameList(forms);
         String current;
         String part;
@@ -57,8 +56,8 @@ public class Problem6 {
         List<String> nicknames = new ArrayList<>();
         List<String> form;
 
-        for (int i = 0; i < forms.size(); i++) {
-            form = forms.get(i);
+        for (List<String> strings : forms) {
+            form = strings;
             nicknames.add(form.get(1));
         }
 
