@@ -5,6 +5,7 @@ import java.util.*;
 public class Problem6 {
     static Map<String, String> crews = new HashMap<>();
     public static List<String> solution(List<List<String>> forms) {
+        crews.clear();
         initialCrews(forms);
         List<String> answer = deleteEmailDuplicate(checkDuplicate());
         Collections.sort(answer);
