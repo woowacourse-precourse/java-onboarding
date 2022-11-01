@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Problem1 {
-
     /**
      * 예외사항 확인 메서드
      *
@@ -14,20 +13,15 @@ class Problem1 {
     static boolean isException(List<Integer> name) {
         if ((name.get(0) < 1) || name.get(1) > 400) {
             return true;
-        }
-        else if ((name.get(0) == null) || (name.get(1) == null)) {
+        } else if ((name.get(0) == null) || (name.get(1) == null)) {
             return true;
-        }
-        else if (name.get(0) % 2 != 1) {
+        } else if (name.get(0) % 2 != 1) {
             return true;
-        }
-        else if (name.get(1) % 2 != 0) {
+        } else if (name.get(1) % 2 != 0) {
             return true;
-        }
-        else if ((name.get(1) - name.get(0)) != 1) {
+        } else if ((name.get(1) - name.get(0)) != 1) {
             return true;
-        }
-        else if ((name.get(0) == 1 || name.get(0) == 399 || name.get(1) == 2 || name.get(1) == 400)) {
+        } else if ((name.get(0) == 1 || name.get(0) == 399 || name.get(1) == 2 || name.get(1) == 400)) {
             return true;
         }
 
@@ -77,10 +71,11 @@ class Problem1 {
      * @return 입력받은 페이지의 가장 큰 계산점수
      */
     static int calcLargerScore(int leftScore, int rightScore) {
-        if (leftScore > rightScore)
+        if (leftScore > rightScore) {
             return leftScore;
-        else
+        } else {
             return rightScore;
+        }
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
@@ -99,11 +94,9 @@ class Problem1 {
 
         if (pobiScore > crongScore) {
             answer = 1;
-        }
-        else if (pobiScore < crongScore) {
+        } else if (pobiScore < crongScore) {
             answer = 2;
-        }
-        else {
+        } else {
             answer = 0;
         }
 
