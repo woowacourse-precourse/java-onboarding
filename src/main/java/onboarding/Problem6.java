@@ -14,6 +14,7 @@ public class Problem6 {
 
         makeNickNameList(forms,nicknameList);
         savePatternAtMap(nicknameList,nicknamePatternMap);
+        checkDuplication(nicknameList,nicknamePatternMap);
 
         return answer;
     }
@@ -30,6 +31,22 @@ public class Problem6 {
             for(int j = 0 ; j < nickname.get(i).length()-1; j++){
                 key = nickname.get(i).substring(j,j+2);
                 nicknamePattern.put(key, 0);
+            }
+        }
+    }
+
+    //중복되는 패턴발견시 관련 value 증가
+    public static void checkDuplication(List <String> nickname,HashMap <String,Integer> nicknamePattern){
+        String key ="";
+        int value = 0;
+
+        for(int i = 0 ; i < nickname.size(); i++){
+            for(int j = 0 ; j < nickname.get(i).length()-1; j++){
+                key = nickname.get(i).substring(j,j+2);
+                value = nicknamePattern.get(key);
+                if(nicknamePattern.containsKey(key)){
+                    nicknamePattern.put(key,value+1);
+                }
             }
         }
     }
