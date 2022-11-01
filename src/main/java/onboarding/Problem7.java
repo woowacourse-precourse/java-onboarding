@@ -48,4 +48,33 @@ public class Problem7 {
         }
         return friendMap;
     }
+
+    /**
+     * 추천 점수 계산
+     * - 함께하는 친구 수 당 10점 부여
+     * - 타임라인에 방문한 횟수 당 1점 부여
+     * @param friends
+     * @param visitors
+     * @param friendMap
+     * @return
+     */
+    private static Map<String, Integer> setPoint(List<List<String>> friends, List<String> visitors, Map<String, Integer> friendMap) {
+        for(Map.Entry<String, Integer> friend : friendMap.entrySet()) {
+            int point = 0;
+            // 함께아는 친구
+            for (List<String> fs : friends) {
+                if(fs.contains(friend.getKey())){
+                    point += 10;
+                }
+            }
+            // 타임라인 방문
+            for (String visitor : visitors) {
+                if(visitor.equals(friend.getKey())) {
+                    point++;
+                }
+            }
+            friend.setValue(point);
+        }
+        return friendMap;
+    }
 }
