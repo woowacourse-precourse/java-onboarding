@@ -125,14 +125,9 @@ public class Problem6 {
                          sameValueList.add(compareKey);
                      }
                  }
-
-
             }
-
         }
 
         return sameValueList;
     }
-
-
 }
