@@ -1,12 +1,17 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
 
         getRepeatedNicknamesInForms(forms, answer);
+        List<String> idList = removeEmailDotCom(new HashSet<>(answer));
 
         return answer;
     }
@@ -43,5 +48,16 @@ public class Problem6 {
         if (count == 1) {
             answer.remove(answer.size() - 1);
         }
+    }
+
+    private static List<String> removeEmailDotCom(Set<String> set) {
+        List<String> idList = new ArrayList<>();
+        for (String email : set) {
+            int startIndex = email.indexOf("@");
+            String id = email.substring(0, startIndex);
+            idList.add(id);
+        }
+        Collections.sort(idList);
+        return idList;
     }
 }
