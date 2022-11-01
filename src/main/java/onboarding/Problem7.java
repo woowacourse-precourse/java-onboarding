@@ -73,6 +73,11 @@ public class Problem7 {
         return allUserList;
     }
 
+    // 해당 사용자의 추천 점수가 0인지 판별
+    private static boolean isScoreZero(Problem7.User user) {
+        return user.score == 0;
+    }
+
     // 우선순위 큐에 사용할 유저 클래스
     static class User implements Comparable<Problem7.User> {
         String userName;
