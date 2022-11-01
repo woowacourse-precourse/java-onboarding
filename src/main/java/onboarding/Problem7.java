@@ -80,6 +80,16 @@ public class Problem7 {
             friend_graph.get(idx_second).add(idx_first );
         }
 
+
+        // set user's friend score -1, user's friend's friend score 10
+        // when score == 0
+        for(int i : friend_graph.get(user_idx)){
+            if (user_score.get(i) == 0) user_score.set(i, -1);
+            for(int j : friend_graph.get(i)){
+                if (user_score.get(j) == 0) user_score.set(j, 10);
+            }
+        }
+
         // check arrays
         System.out.println("user nickname list");
         System.out.println(user_nickname);
