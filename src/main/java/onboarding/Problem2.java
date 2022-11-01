@@ -41,7 +41,7 @@ public class Problem2 {
         Stack<String> stk = new Stack<>();
         stk.push(String.valueOf(cryptogram.charAt(0)));                     /*초기화*/
 
-        boolean flag = false; /*찌꺼기 확인용 변수*/
+        boolean flag = false;                                               /*찌꺼기 확인용 변수*/
         for (int i = 1; i < cryptogram.length(); i++) {
             if (!isEqualsToPrev(cryptogram, stk, i)) {
                 if (flag) {                                                  /*찌꺼기가 있다면*/
@@ -53,7 +53,7 @@ public class Problem2 {
                 flag = true;
             }
         }
-        if (flag) stk.clear();
+        if (flag) stk.pop();                                                /*쥐어짜기*/
         return nxtCrypto(stk);                                              /*일순한 문자열을 다음 다시 재전달*/
     }
 

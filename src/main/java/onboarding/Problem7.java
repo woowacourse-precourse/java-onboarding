@@ -1,10 +1,11 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = new ArrayList<>();
+        List<String> answer = new ArrayList<>(Collections.emptyList());
         HashMap<String, Integer> score = new HashMap<>();
         chk_user_friend(user, friends, score);
 
@@ -33,14 +34,23 @@ public class Problem7 {
             score.remove(s);
         }
         /*정답행렬에 복사하기*/
-        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(score.entrySet());
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(score.entrySet().stream().sorted(new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                if (Objects.equals(o1.getValue(), o2.getValue())) {
+                    return o1.getKey().compareTo(o2.getKey());
+                }
+                return o2.getValue().compareTo(o1.getValue());
+            }
+        }).collect(Collectors.toList()));
+
         entryList.sort(Map.Entry.comparingByValue(Comparator.reverseOrder())); // 이름순 정렬 구현은?
         for (Map.Entry<String, Integer> stringIntegerEntry : entryList) {
             answer.add(stringIntegerEntry.getKey());
         }
         /*제한조건 체크*/
         if (answer.size() > 5) {
-            return answer.subList(0, 6);
+            return answer.subList(0, 5);
         } else return answer;
     }
 
