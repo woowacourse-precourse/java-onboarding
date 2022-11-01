@@ -16,6 +16,7 @@ public class Problem7 {
 
         HashMap<String, Integer> recommendScore = new HashMap<>();
         recommendScore = getScoreByKnowEachOther(user, friends, friendsOfUser, recommendScore);
+        recommendScore = getScoreByVisit(visitors, recommendScore);
 
         System.out.println(recommendScore);
         return friendsOfUser;
@@ -50,6 +51,18 @@ public class Problem7 {
                 recommendScore.put(friendA, 10);
             if (friendsOfUser.contains(friendB) && recommendScore.containsKey(friendA))
                 recommendScore.put(friendA, recommendScore.get(friendA) + 10);
+        }
+
+        return recommendScore;
+    }
+
+    public static HashMap<String, Integer> getScoreByVisit(List<String> visitors, HashMap<String, Integer> recommendScore) {
+        for (String visitor : visitors) {
+            if (!recommendScore.containsKey(visitor)) {
+                recommendScore.put(visitor, 1);
+                continue;
+            }
+            recommendScore.put(visitor, recommendScore.get(visitor) + 1);
         }
 
         return recommendScore;
