@@ -8,6 +8,7 @@ public class Problem7 {
     final static int RIGHT_FRIEND = 1;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        boolean isBoolean = true;
         List<String> answer = new ArrayList<>();
         Map<String, Integer> priorityPersonMap = new HashMap<>();
         List<String> userFriendList = new ArrayList<>();
@@ -22,43 +23,59 @@ public class Problem7 {
             }
         }
 
+        int numFriendPriority = 10;
         for (String myFriend : userFriendList) {
             for (List<String> friendPair : friendExcetionUserList) {
-                if (isContainerNameAtList(friendPair, myFriend)) {
-                    String nameAnotherPair = getAnotherPairName(friendPair, myFriend);
-                    addMapPriority(nameAnotherPair, 10, priorityPersonMap);
-                }
+                addAnotherPriority2Map(priorityPersonMap, numFriendPriority, myFriend, friendPair);
             }
         }
 
 //        visitors
         // 친구들 리스트에 포함이 안되면
+        int numVisitorPriority = 1;
         for (String nameVisitor : visitors) {
-            if (!isContainerNameAtList(userFriendList, nameVisitor)) {
-                addMapPriority(nameVisitor, 1, priorityPersonMap);
-            }
+            isBoolean = !isContainerNameAtList(userFriendList, nameVisitor);
+            addVisitorPriority2Map(priorityPersonMap, nameVisitor, numVisitorPriority, isBoolean);
         }
 
         // 우선순위로 정렬
-        List<String> keySet = new ArrayList<>(priorityPersonMap.keySet());
+        List<String> priorityPersonList = getSortListToKeyOfMap(priorityPersonMap);
+        answer.addAll(priorityPersonList);
+        System.out.println("answer = " + answer);
+        return answer;
+    }
+
+    private static void addAnotherPriority2Map(Map<String, Integer> targetMap, int priority, String myFriend, List<String> compairList) {
+        if (isContainerNameAtList(compairList, myFriend)) {
+            String nameAnotherPair = getAnotherPairName(compairList, myFriend);
+            addMapPriority(nameAnotherPair, priority, targetMap);
+        }
+    }
+
+    private static void addVisitorPriority2Map(Map<String, Integer> targetMap, String nameVisitor, int priority, boolean booleanWant) {
+        if (booleanWant) {
+            addMapPriority(nameVisitor, priority, targetMap);
+        }
+    }
+
+    private static List<String> getSortListToKeyOfMap(Map<String, Integer> map) {
+        List<String> keySet = new ArrayList<>(map.keySet());
         keySet.sort(new Comparator<String>() {
             @Override
             // 우선순위로 비교하는 것
             public int compare(String str_1, String str_2) {
                 // 1. 우선순위 가 같으면 이름으로 정렬
                 // 과연 문자열 비교는 주소로 비교를 하는 것이 맞는가?
-                if (isEqualsMapValue(str_1, str_2, priorityPersonMap)) {
+                if (isEqualsMapValue(str_1, str_2, map)) {
                     return (str_1.compareTo(str_2));
                 }
                 // 2. 우선 순위  값으로 내림차순 정렬
                 else {
-                    return (priorityPersonMap.get(str_2) - priorityPersonMap.get(str_1));
+                    return (map.get(str_2) - map.get(str_1));
                 }
             }
         });
-        answer.addAll(keySet);
-        System.out.println("answer = " + answer);
-        return answer;
+        return keySet;
     }
 
     private static boolean isEqualsMapValue(String str_1, String str_2, Map<String, Integer> map) {
