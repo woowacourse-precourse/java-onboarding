@@ -11,28 +11,16 @@ public class Problem7 {
         List<String> CurrentFriends = CurrentFriends(user, friends);
         HashMap<String, Integer> PossibleFriends = PossibleFriend(user, friends, CurrentFriends);
         CountOverlappingFriend(PossibleFriends, CurrentFriends, friends);
-
+        CountVisitors(PossibleFriends, CurrentFriends, visitors);
 
         return answer;
     }
 
-    private static void CountOverlappingFriend(HashMap<String, Integer> PossibleFriend, List<String> CurrentFriend, List<List<String>> friends){
-        for (int i = 0; i < friends.size(); i++){
-            if (CurrentFriend.contains(friends.get(i).get(0)) && PossibleFriend.containsKey(friends.get(i).get(1))) {
-                int value = PossibleFriend.get(friends.get(i).get(1));
-                PossibleFriend.replace(friends.get(i).get(1), value + 10);
-            }
-            else if (CurrentFriend.contains(friends.get(i).get(1)) && PossibleFriend.containsKey(friends.get(i).get(0))) {
-                int value = PossibleFriend.get(friends.get(i).get(0));
-                PossibleFriend.replace(friends.get(i).get(0), value + 10);
-        }
-    }
-
-    private static HashMap<String, Integer> PossibleFriend(String usr, List<List<String>> friends, List<String> CurrentFriends){
+    private static HashMap<String, Integer> PossibleFriend(String usr, List<List<String>> friends, List<String> CurrentFriends) {
         HashMap<String, Integer> PossibleFriends = new HashMap<>();
-        for (int i = 0; i < friends.size(); i++){
-            for (int j = 0; j < 2; j++){
-                if (!CurrentFriends.contains(friends.get(i).get(j)) && friends.get(i).get(j) != usr){
+        for (int i = 0; i < friends.size(); i++) {
+            for (int j = 0; j < 2; j++) {
+                if (!CurrentFriends.contains(friends.get(i).get(j)) && friends.get(i).get(j) != usr) {
                     PossibleFriends.put(friends.get(i).get(j), 0);
                 }
             }
@@ -40,15 +28,39 @@ public class Problem7 {
         return PossibleFriends;
     }
 
-    private static List<String> CurrentFriends(String usr, List<List<String>> friends){
+    private static List<String> CurrentFriends(String usr, List<List<String>> friends) {
         List<String> list = new ArrayList<>();
-        for (int i = 0; i < friends.size(); i++){
-            if (friends.get(i).contains(usr)){
+        for (int i = 0; i < friends.size(); i++) {
+            if (friends.get(i).contains(usr)) {
                 list.add(friends.get(i).get(0));
                 list.add(friends.get(i).get(1));
             }
         }
         list.remove(usr);
         return list;
+    }
+
+    private static void CountOverlappingFriend(HashMap<String, Integer> PossibleFriend, List<String> CurrentFriend, List<List<String>> friends) {
+        for (int i = 0; i < friends.size(); i++) {
+            if (CurrentFriend.contains(friends.get(i).get(0)) && PossibleFriend.containsKey(friends.get(i).get(1))) {
+                int value = PossibleFriend.get(friends.get(i).get(1));
+                PossibleFriend.replace(friends.get(i).get(1), value + 10);
+            } else if (CurrentFriend.contains(friends.get(i).get(1)) && PossibleFriend.containsKey(friends.get(i).get(0))) {
+                int value = PossibleFriend.get(friends.get(i).get(0));
+                PossibleFriend.replace(friends.get(i).get(0), value + 10);
+            }
+        }
+    }
+
+    private static void CountVisitors(HashMap < String, Integer > PossibleFriend, List < String > CurrentFriend, List < String > visitors){
+        for (int i = 0; i < visitors.size(); i++) {
+            if (PossibleFriend.containsKey(visitors.get(i))) {
+                int value = PossibleFriend.get(visitors.get(i));
+                PossibleFriend.replace(visitors.get(i), value + 1);
+            }
+            else if (!CurrentFriend.contains(visitors.get(i))){
+                PossibleFriend.put(visitors.get(i), 0);
+            }
+        }
     }
 }
