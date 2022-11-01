@@ -32,17 +32,16 @@ public class Problem6 {
             if(nickname.length() == 1) continue;
             if(!isValidInput(email, nickname)) continue;
             int count = 0;
-            for(int j=2;j<=nickname.length();j++){
-                List<String> target = getSubString(nickname, j);
-                for(int k=i+1;k<forms.size();k++){
-                    String mail = forms.get(k).get(0);
-                    String nick = forms.get(k).get(1);
-                    if(!isValidInput(mail, nick)) continue;
-                    for(String sub : target) {
-                        if(nick.contains(sub)) {
-                            result.add(mail);
-                            count += 1;
-                        }
+            List<String> target = getSubString(nickname, 2);
+            for(int j=i+1;j<forms.size();j++){
+                String mail = forms.get(j).get(0);
+                String nick = forms.get(j).get(1);
+                if(!isValidInput(mail, nick)) continue;
+                for(String sub : target) {
+                    if(nick.contains(sub)) {
+                        result.add(mail);
+                        count += 1;
+                        break;
                     }
                 }
             }
