@@ -54,4 +54,22 @@ public class Problem7 {
 
         return bothKnownCount;
     }
+
+    private static Map<String, Integer> getVisitCount(List<String> visitors, String user, Map<String, List<String>> friendMap) {
+        List<String> userFriends = friendMap.getOrDefault(user, new ArrayList<>());
+        Integer count;
+
+        Map<String, Integer> visitCount = new HashMap<>();
+
+        for (String visitor : visitors) {
+            if (visitor.equals(user) || userFriends.contains(visitor)) {
+                continue;
+            }
+
+            count = visitCount.getOrDefault(visitor, 0);
+            visitCount.put(visitor, count + 1);
+        }
+
+        return visitCount;
+    }
 }
