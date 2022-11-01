@@ -1,13 +1,13 @@
 package onboarding.problem4;
 
+import java.util.stream.IntStream;
+
 class CapitalTransformer implements Transformer {
     private final StringBuilder capitalBuilder;
 
     public CapitalTransformer(String target) {
         this.capitalBuilder = new StringBuilder(target);
-        for (int i = 0; i < capitalBuilder.length(); i++) {
-            transform(i);
-        }
+        IntStream.range(0, capitalBuilder.length()).forEach(this::transform);
     }
 
     public String getTransformed() {

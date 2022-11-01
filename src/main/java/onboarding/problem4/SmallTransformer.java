@@ -1,13 +1,13 @@
 package onboarding.problem4;
 
+import java.util.stream.IntStream;
+
 class SmallTransformer implements Transformer {
     private final StringBuilder smallBuilder;
 
     public SmallTransformer(String target) {
         this.smallBuilder = new StringBuilder(target);
-        for (int i = 0; i < smallBuilder.length(); i++) {
-            transform(i);
-        }
+        IntStream.range(0, smallBuilder.length()).forEach(this::transform);
     }
 
     public String getTransformed() {

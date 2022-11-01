@@ -2,6 +2,7 @@ package onboarding.problem6;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.IntStream;
 
 public class TokenGenerator {
     private final List<String> tokens;
@@ -12,9 +13,7 @@ public class TokenGenerator {
 
     private List<String> splitToken(String nickname) {
         List<String> tokens = new ArrayList<>();
-        for (int i = 0; i < nickname.length() - 1; i++) {
-            tokens.add(nickname.substring(i, i + 2));
-        }
+        IntStream.range(0, nickname.length() - 1).forEach(i -> tokens.add(nickname.substring(i, i + 2)));
         return tokens;
     }
 
