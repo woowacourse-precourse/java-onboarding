@@ -101,6 +101,7 @@ public class Problem7 {
 
     /**
      * 특정 user를 중심으로 문제의 알고리즘에 따라 추천점수를 계산하는 기능.
+     * 친구의 친구들일때 인당 +10점, 내가 방문한 사람일떄 + 1점
      *
      * @param user     중심이 될 user
      * @param visitors user가 방문한 사람들의 정보가 담긴 List

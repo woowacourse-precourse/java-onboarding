@@ -35,12 +35,13 @@ public class Problem2 {
 
     /**
      * 입력받은 문자열을 해독된 문자열로 만들어 return한다.
+     *
      * @param str 해독할 문자열
      * @return 해독이 완료된 문자열 return
      */
-    public static String decode(String str){
+    public static String decode(String str) {
         String result = str;
-        while (checkDuplicates(result)){
+        while (checkDuplicates(result)) {
             result = deduplicate(result);
         }
         return result;
@@ -48,6 +49,7 @@ public class Problem2 {
 
     /**
      * 문자 내 중복이 존재하는지 확인하는 기능
+     *
      * @param str 중복을 확인할 문자열
      * @return 중복이 있을시 true, 없을시 false
      */
@@ -62,11 +64,12 @@ public class Problem2 {
 
     /**
      * 문자열을 입력받고 처음으로 중복발생하는 부분을 제거하고 남은 subString에 재귀적으로 수행
+     *
      * @param str 중복제거를 수행할 문자열
      * @return
      */
     public static String deduplicate(String str) {
-        if(str.length() == 0){
+        if (str.length() == 0) {
             return "";
         }
         StringBuilder builder = new StringBuilder(str);
@@ -75,11 +78,11 @@ public class Problem2 {
         int end = 0;
         start = findDuplicateStartIndex(builder);
         end = findDuplicateEndIndex(builder, start);
-        if(end == start){
+        if (end == start) {
             return str;
         }
         result.append(builder.substring(0, start));
-        result.append(deduplicate(builder.substring(end+1, builder.length())));
+        result.append(deduplicate(builder.substring(end + 1, builder.length())));
         builder.delete(start, end + 1);
         return result.toString();
     }
