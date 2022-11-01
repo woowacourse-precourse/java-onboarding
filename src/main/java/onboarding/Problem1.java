@@ -36,4 +36,14 @@ class Problem1 {
 
         return false;
     }
+
+    private static int compareNum(Integer pobi, Integer crong) {
+        if (pobi > crong) {
+            return 1;
+        } else if (pobi < crong) {
+            return 2;
+        } else {
+            return 0;
+        }
+    }
 }
