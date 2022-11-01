@@ -24,3 +24,27 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+
+## 기능 구현
+
+- checkException()
+  -  제한사항에 대해 체크하는 메서드
+- isValidUserLength()
+  - 유저 이름 길이 예외처리
+- isValidFriendsLength()
+  - friends의 길이 예외처리
+- isValidIdLengthAndIdSmallCaseRegex()
+  - 아이디에 대한 예외처리
+- isValidVisitorsLength()
+  - visitor에 대한 예외처리
+- removeUserFriendsAndZeroScore()
+  - 유저와 친구인 사람과 점수가 0점인 사람을 추천 친구 목록에서 제거해주는 메서드
+- updateScore()
+  - 친구의 친구와, 방문자의 추천 점수를 올려주는 메서드
+- updateRecommendScore()
+  - 점수를 욜려주는 메서드
+- friendsSetup()
+  - 유저의 친구 관계를 구해주는 메서드
+- isFriendsContainUser()
+  - 유저와 친구 관계인지 확인을 해주는 메서드
