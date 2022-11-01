@@ -34,7 +34,7 @@ public class Problem2 {
                 if (flag == 1)
                     answer += strtmp[i];
             }
-        /* 중복 알파벳 제외 */
+        /* 중복된 알파벳 제외 */
         }
         return answer;
     }
