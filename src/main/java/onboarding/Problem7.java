@@ -13,7 +13,7 @@ import java.util.*;
     동일한 친구 관계가 중복해서 주어지지 않는다. (A ,B) , (B, A) => X
     추천할 친구가 없는 경우는 없다
 
-    프로그램 구현
+    기능 구현 목록
     Map 자료구조를 사용하여 해당 이름에 대한 점수 부여할것
     Step1. Map 자료구조 만들기
     Step2. user의 친구 목록 만들기
@@ -25,21 +25,15 @@ import java.util.*;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
-
-        //Step1. Map 자료구조 만들기
         Map<String, Integer> recommendPoint = new HashMap<>();
 
-        //Step2. user의 친구 목록 만들기
         List<String> friendList = makeFriendList(friends, user);
-        //Step2. friends를 탐색하며 user가 들어가있는 경우 친구 이름을 Map 넣고 점수 10점 부여
         for (List<String> friend : friends) {
             scoreFriendPoint(recommendPoint, friend, friendList, user);
         }
-        //Step3. visitors 를 탐색하며 해당 친구이름을 Map 에 넣고 1점부여
         for (String visitor : visitors) {
             scoreVisitorPoint(recommendPoint, visitor, friendList);
         }
-        //Step4. Map을 value 기준 오름차순 정렬 -> 점수가 같은 경우 이름순으로 정렬
         List<Map.Entry<String, Integer>> recommendPointRank = new LinkedList<>(recommendPoint.entrySet());
         recommendPointRank.sort(new Comparator<Map.Entry<String, Integer>>() {
             @Override
@@ -51,7 +45,6 @@ public class Problem7 {
                 }
             }
         });
-        //Step5. 위에서 부터 하나씩 answer에 넣되 점수가 0인 경우에는 넣지 않고, answer 리턴
         int count = 0;
         for (Map.Entry<String, Integer> friend : recommendPointRank) {
             if (friend.getValue() == 0 || count > 4) {
