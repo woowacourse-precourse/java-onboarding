@@ -12,6 +12,8 @@ public class Problem5 {
         for (int i=0; i< 8; i++){
             if(i%2==0 && i!=0) startDiv = divideBy2(startDiv);
             else if(i%2==1) startDiv = divideBy5(startDiv);
+            answer.add(tempMoney / startDiv);
+            tempMoney = tempMoney % startDiv;
         }
         return answer;
     }
