@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.List;
 import java.util.Stack;
-import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
@@ -13,14 +10,15 @@ public class Problem2 {
 
     }
 
-
-    private static Stack<Character> decrypt(String text) {
+    // 암호 해독하여 스택에 저장
+    private static Stack<Character> decrypt(String cryptogram) {
         Stack<Character> decryptionStack = new Stack<>();
+        decryptionStack.push(cryptogram.charAt(0));
         Character beforeChar, nowChar, beforeRemovedChar = null;
-        decryptionStack.push(text.charAt(0));
-        for (int i = 1; i < text.length(); i++) {
+
+        for (int i = 1; i < cryptogram.length(); i++) {
             beforeChar = decryptionStack.peek();
-            nowChar = text.charAt(i);
+            nowChar = cryptogram.charAt(i);
             if (beforeRemovedChar != null && nowChar.equals(beforeRemovedChar)) {
                 continue;
             }
@@ -33,6 +31,7 @@ public class Problem2 {
         return decryptionStack;
     }
 
+    // 스택에서 해독문 추출
     private static String stackToString(Stack<Character> stack) {
         String str = "";
         for (Character c : stack) {
