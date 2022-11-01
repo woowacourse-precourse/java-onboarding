@@ -25,10 +25,10 @@ class Problem7Test {
         List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
 
         //when
-        Map<String, Member> store = Problem7.setMemberStore(friends, visitors);
+        Map<String, Member> map = Problem7.setMemberMap(friends, visitors);
 
         //then
-        Assertions.assertThat(store.size()).isEqualTo(6);
+        Assertions.assertThat(map.size()).isEqualTo(6);
     }
     @Test
     public void 멤버친구등록테스트() throws Exception {
@@ -44,13 +44,13 @@ class Problem7Test {
         List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
 
         //when
-        Map<String,Member> store = Problem7.setMemberStore(friends, visitors);
-        List<Member> findFriends = store.get("donut").getFriends();
+        Map<String,Member> map = Problem7.setMemberMap(friends, visitors);
+        List<Member> findFriends = map.get("donut").getFriends();
 
         //then
-        Assertions.assertThat(findFriends.get(0)).isEqualTo(store.get("andole"));
-        Assertions.assertThat(findFriends.get(1)).isEqualTo(store.get("jun"));
-        Assertions.assertThat(findFriends.get(2)).isEqualTo(store.get("mrko"));
+        Assertions.assertThat(findFriends.get(0)).isEqualTo(map.get("andole"));
+        Assertions.assertThat(findFriends.get(1)).isEqualTo(map.get("jun"));
+        Assertions.assertThat(findFriends.get(2)).isEqualTo(map.get("mrko"));
     }
 
     @Test

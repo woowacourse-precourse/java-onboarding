@@ -5,10 +5,10 @@ import java.util.Map;
 
 public abstract class FriendRecommender {
 
-    protected final Map<String,Member> memberStore;
+    protected final Map<String,Member> memberMap;
 
-    public FriendRecommender(Map<String, Member> memberStore) {
-        this.memberStore = memberStore;
+    public FriendRecommender(Map<String, Member> memberMap) {
+        this.memberMap = memberMap;
     }
 
     /**
@@ -16,8 +16,8 @@ public abstract class FriendRecommender {
      * 두 멤버가 친구사이인지 판별
      */
     public boolean isFriend(String userName, String memberName) {
-        Member user = memberStore.get(userName);
-        Member member = memberStore.get(memberName);
+        Member user = memberMap.get(userName);
+        Member member = memberMap.get(memberName);
 
         return user.isFriendOf(member);
     }
@@ -27,8 +27,8 @@ public abstract class FriendRecommender {
      * 두 멤버가 같은 친구 coFriend를 맺고 있는지 판별
      */
     public boolean hasCoFriend(String userName, String memberName) {
-        List<Member> userFriends = memberStore.get(userName).getFriends();
-        List<Member> memberFriends = memberStore.get(memberName).getFriends();
+        List<Member> userFriends = memberMap.get(userName).getFriends();
+        List<Member> memberFriends = memberMap.get(memberName).getFriends();
 
         if (hasDuplicate(userFriends,memberFriends))
             return true;

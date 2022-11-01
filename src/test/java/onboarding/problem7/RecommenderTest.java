@@ -9,7 +9,7 @@ import java.util.Map;
 
 class RecommenderTest {
 
-    Map<String, Member> store;
+    Map<String, Member> memberMap;
     MrKoRecommender recommender;
 
     public RecommenderTest() {
@@ -24,9 +24,9 @@ class RecommenderTest {
 
         List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
 
-        store = Problem7.setMemberStore(friends, visitors);
+        memberMap = Problem7.setMemberMap(friends, visitors);
         Problem7.setUserVisitors("mrko", visitors);
-        recommender = new MrKoRecommender(store);
+        recommender = new MrKoRecommender(memberMap);
     }
 
     @Test
@@ -73,12 +73,28 @@ class RecommenderTest {
     public void 추천점수테스트() throws Exception {
         //given
         String user = "mrko";
-        String[] memberNames = store.keySet().toArray(new String[0]);
+        String[] memberNames = memberMap.keySet().toArray(new String[0]);
 
         //when
-        int[] scores = recommender.calculateScores(user, memberNames, new int[store.size()]);
+        int[] scores = recommender.calculateScores(user, memberNames, new int[memberMap.size()]);
 
         //then
         Assertions.assertThat(scores).isEqualTo(new int[]{10, 10, 0, 3, 0, 0});
+    }
+
+    @Test
+    public void 추천리스트저장테스트() throws Exception {
+        //given
+        String user = "mrko";
+
+        Member andole = memberMap.get("andole");
+        Member jun = memberMap.get("jun");
+        Member bedi = memberMap.get("bedi");
+
+        //when
+        recommender.recommendFor(user);
+
+        //then
+        Assertions.assertThat(memberMap.get(user).getRecommendedFriends()).isEqualTo(List.of(andole, jun, bedi));
     }
 }
