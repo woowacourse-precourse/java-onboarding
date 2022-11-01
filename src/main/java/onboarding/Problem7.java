@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.net.Inet4Address;
 import java.util.*;
 
 public class Problem7 {
@@ -57,7 +58,13 @@ public class Problem7 {
         }
         return allScore;
     }
-
+    public static List<Integer> VisitorScore(List<String> visitors, List<String> allName, List<Integer> allScore) {
+        for(String visitor: visitors) {
+            int score = allScore.get(allName.indexOf(visitor)) + 1;
+            allScore.set(allName.indexOf(visitor),score);
+        }
+        return allScore;
+    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
