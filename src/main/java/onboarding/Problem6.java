@@ -40,12 +40,15 @@ public class Problem6 {
             if (isDuplicateName) {
                 flag = true;
                 String email = forms.get(k).get(0);
-                boolean isNotRegistered = !dupEmails.contains(email);
 
-                if (isNotRegistered) dupEmails.add(email);
+                if (isNotRegistered(email)) dupEmails.add(email);
             }
         }
 
         return flag;
+    }
+
+    private static boolean isNotRegistered(String email) {
+        return !dupEmails.contains(email);
     }
 }
