@@ -8,9 +8,7 @@
  */
 package onboarding;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Problem6 {
     static final int EMAIL = 0;
@@ -49,5 +47,21 @@ public class Problem6 {
         }
         emailList.add(email);
         return emailList;
+    }
+
+    public static Set<String> overlapNicknameWho(Map<String, List<String>> nicknameSection) {
+        Set<String> emailSet = new HashSet<>();
+        for (List<String> emailList : nicknameSection.values()) {
+            if (emailList.size() > 1) {
+                setAnswerEmailList(emailSet, emailList);
+            }
+        }
+        return emailSet;
+    }
+
+    public static void setAnswerEmailList(Set<String> emailSet, List<String> emailList) {
+        for (String email : emailList) {
+            emailSet.add(email);
+        }
     }
 }
