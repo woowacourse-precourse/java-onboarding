@@ -5,10 +5,26 @@ import org.assertj.core.error.uri.ShouldHaveHost;
 import java.util.*;
 
 public class Problem7 {
+
+    //실험중---------------
+    public static void main(String[] args){
+        String user = "mrko";
+        List<List<String>> friends = List.of(
+                List.of("donut", "andole"),
+                List.of("donut", "jun"),
+                List.of("donut", "mrko"),
+                List.of("shakevan", "andole"),
+                List.of("shakevan", "jun"),
+                List.of("shakevan", "mrko")
+        );
+        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+
+        System.out.println(solution(user,friends,visitors));
+    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         HashMap<String,Integer> recommandList = new HashMap<>();
         List<String> userFriends = getFriends(user, friends);
-        List<String> friendsOfFriendList = getFriendsofFriends(userFriends,friends);
+        List<String> friendsOfFriendList = getFriendsofFriends(userFriends,friends, user);
         for(String fOfF : friendsOfFriendList){
             if(isContained(fOfF,recommandList)){
                 increaseScore(fOfF,10,recommandList);
@@ -52,18 +68,19 @@ public class Problem7 {
                 userFriend.add(friend.get(0));
             }
         }
-
         return userFriend;
     }
 
     //친구의 친구 리스트 반환하는 함수
-    public static List<String> getFriendsofFriends(List<String> userFriends,List<List<String>> friends ){
+    public static List<String> getFriendsofFriends(List<String> userFriends,List<List<String>> friends, String user){
         List<String> friendsOfFriends = new ArrayList<>();
         for(String friend : userFriends){
             List<String> friendOfFriend = getFriends(friend,friends);
-            friendsOfFriends.addAll(friendOfFriend);
+            for(String fOfF : friendOfFriend) {
+                if(fOfF.equals(user)) continue;
+                friendsOfFriends.add(fOfF);
+            }
         }
-
         return friendsOfFriends;
     }
 
