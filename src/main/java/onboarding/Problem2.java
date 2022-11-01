@@ -7,22 +7,24 @@ public class Problem2 {
     }
 
     public static String deduplicate(String cryptogram) {
-        StringBuilder sb = new StringBuilder(cryptogram);
+        StringBuilder cryptogramSB = new StringBuilder(cryptogram);
         int i = 0;
         while (true) {
-            if (sb.length() - 2 == i) {
-                if (sb.charAt(i) == sb.charAt(i + 1)) {
-                    sb.delete(i, i + 2);
+            if (cryptogramSB.length() == 1) {
+                break;
+            }
+            if (cryptogramSB.length() - 2 == i) {
+                if (cryptogramSB.charAt(i) == cryptogramSB.charAt(i + 1)) {
+                    cryptogramSB.delete(i, i + 2);
                 }
                 break;
             }
-            if (sb.charAt(i) == sb.charAt(i + 1)) {
-                sb.delete(i, i + 2);
+            if (cryptogramSB.charAt(i) == cryptogramSB.charAt(i + 1)) {
+                cryptogramSB.delete(i, i + 2);
                 i = -1;
             }
-            System.out.println(sb);
             i++;
         }
-        return sb.toString();
+        return cryptogramSB.toString();
     }
 }
