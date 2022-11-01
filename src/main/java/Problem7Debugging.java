@@ -25,8 +25,7 @@ public class Problem7Debugging {
 
             int friendIndex = 1-userIndex;
 
-
-
+            friendsOfUser.add(friends.get(i).get(friendIndex));
 
         }
 
