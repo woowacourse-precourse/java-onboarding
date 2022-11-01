@@ -46,10 +46,26 @@ class Decryption{
         }
         return isDelete;
     }
+
+    /**
+     * 암호문을 해독
+     * @return 해독이 완료된 암호문
+     */
+    String decrypt(){
+        Boolean isDelete;
+        do{
+            isDelete = deleteOverlap();
+        }while (isDelete.equals(true));
+        return cypherText.toString();
+    }
+
 }
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String answer = "";
+        Decryption decryption = new Decryption(cryptogram);
+        answer = decryption.decrypt();
+
         return answer;
     }
 }
