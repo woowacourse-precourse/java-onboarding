@@ -19,3 +19,11 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+### 기능목록
+- 입력된 문자열을 한글자씩 확인한다.
+- 입력된 문자가 무엇인지 판단
+- 청개구리 문자로 변경
+
+### 참고자료
+- 자바 String index 접근 : https://coding-factory.tistory.com/73

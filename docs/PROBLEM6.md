@@ -21,3 +21,17 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+
+### 기능목록
+- 각 닉네임에 i, i+1 번째 단어를 확인하는 함수
+    - 신규로 확인된 단어라면 MAP에 기록
+    - 중복으로 판단되는 단어는 result에 추가 (중복으로 판단되는 이메일 2개 모두)
+- 생성될 수 있는 2글자를 모두 기억해두는 MAP (2글자단어, 이메일)
+    - result에 이메일을 추가하는 함수
+        - 이 때 이미 등록된 이메일은 추가하지 않음
+    - 결과값을 정렬하여 출력하는 함수
+
+### 참고자료
+- String Index 접근 : https://jamesdreaming.tistory.com/81
+- List 정렬 : https://hianna.tistory.com/569

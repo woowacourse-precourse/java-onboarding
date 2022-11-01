@@ -24,3 +24,24 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+
+### 기능목록
+- User 객체
+  - 해당 유저의 이름 
+  - 친구 목록 (친구들을 기록하는 변수 및 함수)
+  - 어떤 사람과 친구인지 확인하는 함수
+- 이름별 점수를 저장하는 MAP (이름, 점수)
+  - visit + 1점
+  - 함께아는친구 +10점
+- 함께아는 친구들을 확인하는 로직
+- 최종적으로 추천목록을 반환하는 로직
+  - 이미 친구인 사람들은 추천하지 않음
+  - 점수 DESC, 이름 ASC 로 정렬
+  - 5명까지만 추천함
+
+### 참고자료
+- Map 인자 대입 : https://blog.advenoh.pe.kr/java/%EC%9E%90%EB%B0%948-HashMap-%EB%B3%B4%EB%8B%A4-%EA%B0%84%EA%B2%B0%ED%95%98%EA%B3%A0-%ED%9A%A8%EA%B3%BC%EC%A0%81%EC%9C%BC%EB%A1%9C-%EC%9E%91%EC%84%B1%ED%95%98%EA%B8%B0/
+- HashMap 값(value) 변경 : https://developer-talk.tistory.com/745
+- https://m.blog.naver.com/occidere/220918234464
+- https://elevate-myself.tistory.com/75
