@@ -6,6 +6,17 @@ public class Problem2 {
         return answer;
     }
 
+    // 4. 중복일때 끝 인덱스 구하기
+    public static int getDuplicateIndexOfEnd(String s, int begin) {
+        int end;
+        for ( end = begin + 1 ; end < s.length(); end ++ ){
+
+            // 중복 아니면 break
+            if (checkIfNotDuplicatedAlphabet(s.charAt(begin), s.charAt(end))) break;
+        }
+        return end;
+    }
+
     // 5. 중복 문자열 남아있는 지 체크하기
     public static Boolean checkIfDuplicatesRemain(String s)
     {
