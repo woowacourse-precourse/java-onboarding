@@ -27,9 +27,8 @@ public class Problem3 {
             }
 
         }
-
         int answer = 0;
-
+        answer = count;
         return answer;
     }
 }
