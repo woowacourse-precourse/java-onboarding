@@ -1,60 +1,60 @@
 package onboarding;
 
 import java.util.List;
+import onboarding.problem1.Page;
 
 class Problem1 {
+    private static final Integer POBI_WIN_NUMBER = 1;
+    private static final Integer CRONG_WIN_NUMBER = 2;
+    private static final Integer DROW_NUMBER = 0;
+    private static final Integer EXCEPTION_NUMBER = -1;
 
-    private static int sumOfDigit(int num) {
-        int sum = 0;
-        while (num > 0) {
-            sum += num % 10;
-            num /= 10;
-        }
-        return sum;
-    }
-
-    private static int multiplyOfDigit(int num) {
-        int multiply = 1;
-        while (num > 0) {
-            multiply *= num % 10;
-            num /= 10;
-        }
-        return multiply;
-    }
-
+    /*
+    * 펼친 페이지 가운데 가장 큰 스코어 반환
+    */
     private static int getMaxScore(List<Integer> pages) {
         int maxScore = 0;
         for (int page : pages) {
-            if (sumOfDigit(page) == 0 || multiplyOfDigit(page) == 0) {
-                return -1;
+            Page pageNumber = new Page(page);
+
+            if (pageNumber.sumOfDigit() == 0 || pageNumber.multiplyOfDigit() == 0) {
+                throw new Error("점수가 유효하지 않습니다.");
             }
 
-            int newScore = Math.max(sumOfDigit(page), multiplyOfDigit(page));
+            int newScore = Math.max(pageNumber.sumOfDigit(), pageNumber.multiplyOfDigit());
             maxScore = Math.max(newScore, maxScore);
         }
 
         return maxScore;
     }
 
+    /*
+     * 페이지 번호 게임의 결과 반환
+     */
     private static int getPageNumberGameResult(int pobiScore, int crongScore) {
-        if (pobiScore == -1 || crongScore == -1) {
-            return -1;
-        }
+
         if (pobiScore > crongScore) {
-            return 1;
+            return POBI_WIN_NUMBER;
+
         } else if (pobiScore < crongScore) {
-            return 2;
+            return CRONG_WIN_NUMBER;
+
         } else {
-            return 0;
+            return DROW_NUMBER;
         }
     }
 
-    public static int solution(List<Integer> pobi,
-            List<Integer> crong) {
+    public static int solution(List<Integer> pobi, List<Integer> crong) {
 
-        int pobiMaxScore = getMaxScore(pobi);
-        int crongMaxScore = getMaxScore(crong);
+        try {
 
-        return getPageNumberGameResult(pobiMaxScore, crongMaxScore);
+            int pobiMaxScore = getMaxScore(pobi);
+            int crongMaxScore = getMaxScore(crong);
+
+            return getPageNumberGameResult(pobiMaxScore, crongMaxScore);
+
+        } catch (Error e) {
+            return -1;
+        }
     }
 }
