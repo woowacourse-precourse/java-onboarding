@@ -2,7 +2,7 @@ package onboarding.problem2;
 
 import java.util.Deque;
 import java.util.LinkedList;
-import onboarding.StringPatterUtils;
+import onboarding.StringPatternUtils;
 
 public class Decryption {
 	private static final int MAX_INPUT_LENGTH = 1000;
@@ -27,7 +27,7 @@ public class Decryption {
 	}
 
 	private void validateLowerCase(String cryptogram) {
-		if (!StringPatterUtils.isFormedLowerCase(cryptogram)) {
+		if (!StringPatternUtils.isFormedLowerCase(cryptogram)) {
 			throw new IllegalArgumentException("암호문은 알파벳 소문자로만 이루어져야 합니다.");
 		}
 	}
