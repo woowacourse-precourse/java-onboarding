@@ -19,11 +19,11 @@ public class Problem5 {
         return answer;
     }
 
-    public static int countBill(int money, int bill) {
+    private static int countBill(int money, int bill) {
         return money / bill;
     }
 
-    public static int exchangeBill(int money, int billCount, int bill) {
+    private static int exchangeBill(int money, int billCount, int bill) {
         return money - billCount * bill;
     }
 }
