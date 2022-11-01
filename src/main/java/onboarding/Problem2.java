@@ -30,4 +30,17 @@ public class Problem2 {
         return word;
     }
 
+
+    private static int findEndPoint(String word, int start) {
+        int idx = start;
+        char startChar = word.charAt(start);
+
+        while (startChar == word.charAt(idx)) {
+            if (++idx == word.length()) {
+                break;
+            }
+        }
+
+        return idx;
+    }
 }
