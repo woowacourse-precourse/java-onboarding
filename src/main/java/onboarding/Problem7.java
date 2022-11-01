@@ -4,9 +4,10 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer;
         Map<String, Set<String>> friendsMap;
         Map<String, Integer> score = new HashMap<>();
+
         /*
         1. friendsMap 만들기
         - friendsMap: 사람들 각각의 친구 목록을 담는 변수
@@ -29,6 +30,8 @@ public class Problem7 {
         4. score를 정렬한 후 3명 리턴
         - value 기준 내림차순 정렬, 값이 같으면 key 기준 오름차순 정렬
          */
+        List<Map.Entry<String, Integer>> listScore = new ArrayList<>(score.entrySet());
+        answer = sortListScoreAndGetAnswer(listScore);
 
         return answer;
     }
@@ -79,5 +82,20 @@ public class Problem7 {
                 score.put(visitor, score.get(visitor) + 1);
             else score.put(visitor, 1);
         }
+    }
+
+    private static List<String> sortListScoreAndGetAnswer(List<Map.Entry<String, Integer>> listScore) {
+        List<String> answer = new ArrayList<>();
+
+        listScore.sort((obj1, obj2) -> {
+            if (!obj2.getValue().equals(obj1.getValue()))
+                return obj2.getValue().compareTo(obj1.getValue());
+            else return obj1.getKey().compareTo(obj2.getKey());
+        });
+
+        for(int i = 0; i < listScore.size() && i < 3; i++)
+            answer.add(listScore.get(i).getKey());
+
+        return answer;
     }
 }
