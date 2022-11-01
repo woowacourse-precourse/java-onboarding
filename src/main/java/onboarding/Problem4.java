@@ -12,7 +12,11 @@ public class Problem4 {
             Character target = word.charAt(i);
 
             if (Character.isLetter(target)) {
-                wordBuilder.setCharAt(i, charMap.get(target));
+                Character change = charMap.get(target);
+                if (Character.isUpperCase(target)) {
+                    Character.toUpperCase(change);
+                }
+                wordBuilder.setCharAt(i, change);
             }
         }
 
@@ -20,31 +24,6 @@ public class Problem4 {
     }
 
     static HashMap<Character, Character> charMap = new HashMap<Character, Character>(){{
-        put('A', 'Z');
-        put('B', 'Y');
-        put('C', 'X');
-        put('D', 'W');
-        put('E', 'V');
-        put('F', 'U');
-        put('G', 'T');
-        put('H', 'S');
-        put('I', 'R');
-        put('J', 'Q');
-        put('K', 'P');
-        put('L', 'O');
-        put('M', 'N');
-        put('N', 'M');
-        put('O', 'L');
-        put('P', 'K');
-        put('Q', 'J');
-        put('R', 'I');
-        put('S', 'H');
-        put('T', 'G');
-        put('U', 'F');
-        put('V', 'E');
-        put('W', 'D');
-        put('X', 'C');
-        put('Y', 'B');
         put('a', 'z');
         put('b', 'y');
         put('c', 'x');
