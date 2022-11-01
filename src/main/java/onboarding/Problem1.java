@@ -1,36 +1,20 @@
 package onboarding;
 
 import java.util.List;
+import onboarding.problem1.Page;
 
 class Problem1 {
-
-    private static int sumOfDigit(int num) {
-        int sum = 0;
-        while (num > 0) {
-            sum += num % 10;
-            num /= 10;
-        }
-        return sum;
-    }
-
-    private static int multiplyOfDigit(int num) {
-        int multiply = 1;
-        while (num > 0) {
-            multiply *= num % 10;
-            num /= 10;
-        }
-        return multiply;
-    }
 
     private static int getMaxScore(List<Integer> pages) {
         int maxScore = 0;
         for (int page : pages) {
+            Page pageNumber = new Page(page);
 
-            if (sumOfDigit(page) == 0 || multiplyOfDigit(page) == 0) {
+            if (pageNumber.sumOfDigit() == 0 || pageNumber.multiplyOfDigit() == 0) {
                 throw new Error("점수가 유효하지 않습니다.");
             }
 
-            int newScore = Math.max(sumOfDigit(page), multiplyOfDigit(page));
+            int newScore = Math.max(pageNumber.sumOfDigit(), pageNumber.multiplyOfDigit());
             maxScore = Math.max(newScore, maxScore);
         }
 
