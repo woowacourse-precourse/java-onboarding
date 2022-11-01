@@ -1,5 +1,6 @@
 package onboarding;
 
+import onboarding.problem2.Decoder;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -7,12 +8,12 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 class Problem2Test {
 
-    private Problem2 problem2;
+    private Decoder decoder;
     private String RegularExpressionOfConsecutiveDuplicateCharacters;
 
     @BeforeEach
     public void setUp(){
-        problem2 = new Problem2();
+        decoder = new Decoder();
     }
 
     @Test
@@ -20,22 +21,22 @@ class Problem2Test {
     void isStringContainingRegularExpressionTest() {
         RegularExpressionOfConsecutiveDuplicateCharacters = "(.*)(\\w)\\2{1,}(.*)";
         String falseCase1 = "brown";
-        assertThat(problem2.isStringContainingRegularExpression(falseCase1, RegularExpressionOfConsecutiveDuplicateCharacters)).isEqualTo(false);
+        assertThat(decoder.isStringContainingRegularExpression(falseCase1, RegularExpressionOfConsecutiveDuplicateCharacters)).isEqualTo(false);
 
         String falseCase2 = "";
-        assertThat(problem2.isStringContainingRegularExpression(falseCase2, RegularExpressionOfConsecutiveDuplicateCharacters)).isEqualTo(false);
+        assertThat(decoder.isStringContainingRegularExpression(falseCase2, RegularExpressionOfConsecutiveDuplicateCharacters)).isEqualTo(false);
 
         String falseCase3 = "ab";
-        assertThat(problem2.isStringContainingRegularExpression(falseCase3, RegularExpressionOfConsecutiveDuplicateCharacters)).isEqualTo(false);
+        assertThat(decoder.isStringContainingRegularExpression(falseCase3, RegularExpressionOfConsecutiveDuplicateCharacters)).isEqualTo(false);
 
         String trueCase1 = "browoanoommnaon";
-        assertThat(problem2.isStringContainingRegularExpression(trueCase1, RegularExpressionOfConsecutiveDuplicateCharacters)).isEqualTo(true);
+        assertThat(decoder.isStringContainingRegularExpression(trueCase1, RegularExpressionOfConsecutiveDuplicateCharacters)).isEqualTo(true);
 
         String trueCase2 = "ababb";
-        assertThat(problem2.isStringContainingRegularExpression(trueCase2, RegularExpressionOfConsecutiveDuplicateCharacters)).isEqualTo(true);
+        assertThat(decoder.isStringContainingRegularExpression(trueCase2, RegularExpressionOfConsecutiveDuplicateCharacters)).isEqualTo(true);
 
         String trueCase3 = "bbabbbbaooo";
-        assertThat(problem2.isStringContainingRegularExpression(trueCase3, RegularExpressionOfConsecutiveDuplicateCharacters)).isEqualTo(true);
+        assertThat(decoder.isStringContainingRegularExpression(trueCase3, RegularExpressionOfConsecutiveDuplicateCharacters)).isEqualTo(true);
     }
 
     @Test
@@ -44,14 +45,23 @@ class Problem2Test {
         RegularExpressionOfConsecutiveDuplicateCharacters = "(\\w)\\1{1,}";
         String case1 = "browoanoommnaon";
         String result1 = "browoannaon";
-        assertThat(problem2.deleteStringByRegularExpression(case1, RegularExpressionOfConsecutiveDuplicateCharacters)).isEqualTo(result1);
+        assertThat(decoder.deleteStringByRegularExpression(case1, RegularExpressionOfConsecutiveDuplicateCharacters)).isEqualTo(result1);
 
         String case2 = "aabbb";
         String result2 = "";
-        assertThat(problem2.deleteStringByRegularExpression(case2, RegularExpressionOfConsecutiveDuplicateCharacters)).isEqualTo(result2);
+        assertThat(decoder.deleteStringByRegularExpression(case2, RegularExpressionOfConsecutiveDuplicateCharacters)).isEqualTo(result2);
 
         String case3 = "brown";
         String result3 = "brown";
-        assertThat(problem2.deleteStringByRegularExpression(case3, RegularExpressionOfConsecutiveDuplicateCharacters)).isEqualTo(result3);
+        assertThat(decoder.deleteStringByRegularExpression(case3, RegularExpressionOfConsecutiveDuplicateCharacters)).isEqualTo(result3);
+    }
+
+    @Test
+    @DisplayName("암호를 잘 해독하는지")
+    void decodeCryptogramTest() {
+        String cryptogram = "browoanoommnaon";
+        String result = "brown";
+
+        assertThat(decoder.decodeCryptogram(cryptogram)).isEqualTo(result);
     }
 }
