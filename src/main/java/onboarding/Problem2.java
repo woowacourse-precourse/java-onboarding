@@ -22,6 +22,14 @@ public class Problem2 {
         }
         if(isSame == true) st.pop();
 
+        answer = removeSpecialChar(st);
+        return answer;
+    }
+
+    private static String removeSpecialChar(Stack<Character> st) {
+        String answer;
+        answer = st.toString();
+        answer = answer.replaceAll("[^a-z]","");
         return answer;
     }
 }
