@@ -6,7 +6,7 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         Map<String, Set<String>> friendsMap;
-
+        Map<String, Integer> score = new HashMap<>();
         /*
         1. friendsMap 만들기
         - friendsMap: 사람들 각각의 친구 목록을 담는 변수
@@ -17,6 +17,7 @@ public class Problem7 {
         2. user와 함께 아는 친구 점수
         - user를 제외한 사람들 각각에 대해 user와 함께 아는 친구 점수를 구함
          */
+        addAcquaintanceScore(friendsMap, score, user);
 
         /*
         3. 타임 라인 방문 점수
@@ -53,5 +54,21 @@ public class Problem7 {
         friendsMap.get(personA).add(friendOfPersonA);
     }
 
+    private static void addAcquaintanceScore(Map<String, Set<String>> friendsMap,
+                                             Map<String, Integer> score,
+                                             String user) {
+        Set<String> friendsOfUser = friendsMap.get(user);
 
+        for(String personA : friendsMap.keySet()) {
+            Set<String> friendsOfPersonA = friendsMap.get(personA);
+
+            if(personA.equals(user))
+                continue;
+            if(friendsOfPersonA.contains(user))
+                continue;
+
+            friendsOfPersonA.retainAll(friendsOfUser);
+            score.put(personA, friendsOfPersonA.size() * 10);
+        }
+    }
 }
