@@ -20,13 +20,11 @@ public class Problem7 {
             }
         });
 
-        Map<String, Integer> sortedMap2 = new LinkedHashMap<>();
         ArrayList<String> sortedMap = new ArrayList<>();
         for(Iterator<Map.Entry<String, Integer>> iter = list.iterator(); iter.hasNext();){
             Map.Entry<String, Integer> entry = iter.next();
             sortedMap.add(entry.getKey());
         }
-        System.out.println(sortedMap);
         return sortedMap;
     }
 
@@ -41,7 +39,6 @@ public class Problem7 {
                 sharedFrineds.put(visitor, 1);
             }
         }
-        System.out.println(sharedFrineds);
         return sharedFrineds;
     }
 
@@ -49,24 +46,16 @@ public class Problem7 {
         HashMap<String, Integer> sharedFriends = new HashMap<String, Integer>();
         for(String userFriend : userFriends) {
             for(List<String> friend : friends) {
-                if(friend.get(0) == user || friend.get(1) == user) {
+                String firstName = friend.get(0);
+                String secondName = friend.get(1);
+                if(firstName == user || secondName == user) {
                     continue;
-                } else{
-                    String key = null;
-                    if(friend.get(0) == userFriend){
-                        key = friend.get(1);
-                        if(sharedFriends.containsKey(key)) {
-                            sharedFriends.replace(key, sharedFriends.get(key), sharedFriends.get(key) + 10);
-                        } else {
-                            sharedFriends.put(key, 10);
-                        }
-                    } else if(friend.get(1) == userFriend) {
-                        key = friend.get(0);
-                        if(sharedFriends.containsKey(key)) {
-                            sharedFriends.replace(key, sharedFriends.get(key), sharedFriends.get(key) + 10);
-                        } else {
-                            sharedFriends.put(key, 10);
-                        }
+                } else if(firstName == userFriend || secondName == userFriend) {
+                    String key = (firstName == userFriend) ? secondName : firstName;
+                    if(sharedFriends.containsKey(key)) {
+                        sharedFriends.replace(key, sharedFriends.get(key), sharedFriends.get(key) + 10);
+                    } else {
+                        sharedFriends.put(key, 10);
                     }
                 }
             }
@@ -92,6 +81,7 @@ public class Problem7 {
         HashMap<String, Integer> sharedFriendsMap = createSharedFriendsHashmap(friends, userFriends, user);
         checkVisitors(visitors, sharedFriendsMap, userFriends);
         answer = sort(sharedFriendsMap);
+        System.out.println(answer);
         return answer;
     }
 
