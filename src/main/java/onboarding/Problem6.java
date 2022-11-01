@@ -8,11 +8,21 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
 
         List<String> answer = new ArrayList<>();
-        \
+        answer = reAnswer(forms, answer);
         Collections.sort(answer);
         return answer;
     }
-
+        private static List<String> reAnswer(List<List<String>> forms, List<String> answer) {
+        for(int i = 0; i< forms.size(); i++){
+            List<String> stringUnit = new ArrayList<>();
+            int nickNameLength = forms.get(i).get(1).length();
+            String email = forms.get(i).get(0);
+            String nickName = forms.get(i).get(1);
+            stringUnit = getOriginalStringUnit(stringUnit, nickNameLength, nickName);
+            checkOtherString(forms, answer, i, stringUnit, email);
+        }
+        return answer;
+    }
     private static List<String> getOriginalStringUnit(List<String> stringUnit, int nickNameLength, String nickName) {
         for(int n = 0; n< nickNameLength -1; n++){
             for(int m = n; m< nickNameLength; m++){
