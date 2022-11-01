@@ -3,6 +3,13 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
+    public static List<String> sort(HashMap<String, Integer> sharedFriends) {
+        List<String> keySet = new ArrayList<>(sharedFriends.keySet());
+        keySet.sort((o1, o2) -> sharedFriends.get(o2).compareTo(sharedFriends.get(o1)));
+        System.out.println("keySet" + keySet);
+        return keySet;
+    }
+
     public static HashMap<String, Integer> checkVisitors(List<String> visitors, HashMap<String, Integer> sharedFrineds, HashSet<String> userFriends) {
         for(String visitor : visitors) {
             if(userFriends.contains(visitor)) {
@@ -64,6 +71,7 @@ public class Problem7 {
         HashSet<String> userFriends = findUserFriends(user, friends);
         HashMap<String, Integer> sharedFriendsMap = createSharedFriendsHashmap(friends, userFriends, user);
         checkVisitors(visitors, sharedFriendsMap, userFriends);
+        answer = sort(sharedFriendsMap);
         return answer;
     }
 
