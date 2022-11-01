@@ -12,6 +12,12 @@ public class Problem6 {
         Set<String> result = new TreeSet<String>();
         Set<String> duplicatedWords = new HashSet<String>();
         for (int i = 0; i < forms.size(); i++) {
+            String name = forms.get(i).get(1);
+            for (String word : duplicatedWords) {
+                if (name.contains(word)) {
+                    result.add(forms.get(i).get(0));
+                }
+            }
         }
         return result.stream().collect(Collectors.toList());
     }
