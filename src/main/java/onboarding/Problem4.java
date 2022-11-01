@@ -24,10 +24,7 @@ public class Problem4 {
         }
 
         private boolean isAlphabet(char c) {
-            if(!(('a'<=c && c<='z') || ('A'<=c && c<='Z'))) {
-                return false;
-            }
-            return true;
+            return ('a' <= c && c <= 'z') || ('A' <= c && c <= 'Z');
         }
     }
 
