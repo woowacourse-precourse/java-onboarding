@@ -21,3 +21,9 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+## 기능 목록
+1. 모든 닉네임의 두글자 조합 경우의 수 구하는 기능
+2. 두번 이상 사용된 두글자 조합 찾는 기능
+3. 두번 이상 사용된 두글자 조합을 사용하는 닉네임을 가진 크루 구하는 기능
+4. 이름순으로 오름차순으로 정렬하는 기능
