@@ -4,8 +4,19 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        try {
+            int pobiScore = getScore(pobi);
+            int crongScore = getScore(crong);
+
+            if (pobiScore < crongScore)
+                return 2;
+            else if (pobiScore == crongScore)
+                return 0;
+            else
+                return 1;
+        } catch (PageNumException e) {
+            return -1;
+        }
     }
 
     // 펼친 왼쪽(홀수) / 오른쪽(짝수) 페이지를 이용해 점수를 반환
