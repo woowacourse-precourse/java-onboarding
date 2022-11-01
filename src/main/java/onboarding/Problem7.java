@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 
@@ -42,6 +43,15 @@ public class Problem7 {
             set.add(visitorsArray[i]);
         }
         return set.toArray(new String[0]);
+    }
+    public static HashMap<String, Integer> initializationFirstScore(String[] users){
+        HashMap<String, Integer> map = new HashMap<>();
+        int len = users.length;
+
+        for(int i = 0;i < len;i++){
+            map.put(users[i], 0);
+        }
+        return map;
     }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
