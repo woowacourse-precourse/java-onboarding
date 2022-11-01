@@ -12,26 +12,35 @@ class ApplicationTest {
     class Problem1Test {
         @Test
         void case1() {
-            List<Integer> pobi = List.of(97, 98);
-            List<Integer> crong = List.of(197, 198);
-            int result = 0;
-            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+            final List<Integer> pobi = List.of(97, 98);
+            final List<Integer> crong = List.of(197, 198);
+            final int expected = 0;
+
+            final int result = Problem1.solution(pobi, crong);
+
+            assertThat(result).isEqualTo(expected);
         }
 
         @Test
         void case2() {
-            List<Integer> pobi = List.of(131, 132);
-            List<Integer> crong = List.of(211, 212);
-            int result = 1;
-            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+            final List<Integer> pobi = List.of(131, 132);
+            final List<Integer> crong = List.of(211, 212);
+            final int expected = 1;
+
+            final int result = Problem1.solution(pobi, crong);
+
+            assertThat(result).isEqualTo(expected);
         }
 
         @Test
         void case3() {
-            List<Integer> pobi = List.of(99, 102);
-            List<Integer> crong = List.of(211, 212);
-            int result = -1;
-            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+            final List<Integer> pobi = List.of(99, 102);
+            final List<Integer> crong = List.of(211, 212);
+            final int expected = -1;
+            
+            final int result = Problem1.solution(pobi, crong);
+
+            assertThat(result).isEqualTo(expected);
         }
     }
 
@@ -39,16 +48,22 @@ class ApplicationTest {
     class Problem2Test {
         @Test
         void case1() {
-            String cryptogram = "browoanoommnaon";
-            String result = "brown";
-            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+            final String cryptogram = "browoanoommnaon";
+            final String expected = "brown";
+            
+            final String result = Problem2.solution(cryptogram);
+
+            assertThat(result).isEqualTo(expected);
         }
 
         @Test
         void case2() {
-            String cryptogram = "zyelleyz";
-            String result = "";
-            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+            final String cryptogram = "zyelleyz";
+            final String expected = "";
+
+            final String result = Problem2.solution(cryptogram);
+
+            assertThat(result).isEqualTo(expected);
         }
     }
 
@@ -56,16 +71,22 @@ class ApplicationTest {
     class Problem3Test {
         @Test
         void case1() {
-            int number = 13;
-            int result = 4;
-            assertThat(Problem3.solution(number)).isEqualTo(result);
+            final int number = 13;
+            final int expected = 4;
+
+            final int result = Problem3.solution(number);
+
+            assertThat(result).isEqualTo(expected);
         }
 
         @Test
         void case2() {
-            int number = 33;
-            int result = 14;
-            assertThat(Problem3.solution(number)).isEqualTo(result);
+            final int number = 33;
+            final int expected = 14;
+
+            final int result = Problem3.solution(number);
+            
+            assertThat(result).isEqualTo(expected);
         }
     }
 
@@ -73,9 +94,11 @@ class ApplicationTest {
     class Problem4Test {
         @Test
         void case1() {
-            String word = "I love you";
-            String result = "R olev blf";
-            assertThat(Problem4.solution(word)).isEqualTo(result);
+            final String word = "I love you";
+            final String expected = "R olev blf";
+
+            final String result = Problem4.solution(word);
+            assertThat(result).isEqualTo(expected);
         }
     }
 
@@ -83,16 +106,22 @@ class ApplicationTest {
     class Problem5Test {
         @Test
         void case1() {
-            int money = 50_237;
-            List<Integer> result = List.of(1, 0, 0, 0, 0, 2, 0, 3, 7);
-            assertThat(Problem5.solution(money)).isEqualTo(result);
+            final int money = 50_237;
+            final List<Integer> expected = List.of(1, 0, 0, 0, 0, 2, 0, 3, 7);
+            
+            final List<Integer> result = Problem5.solution(money);
+            
+            assertThat(result).isEqualTo(expected);
         }
 
         @Test
         void case2() {
-            int money = 15_000;
-            List<Integer> result = List.of(0, 1, 1, 0, 0, 0, 0, 0, 0);
-            assertThat(Problem5.solution(money)).isEqualTo(result);
+            final int money = 15_000;
+            final List<Integer> expected = List.of(0, 1, 1, 0, 0, 0, 0, 0, 0);
+            
+            final List<Integer> result = Problem5.solution(money);
+            
+            assertThat(result).isEqualTo(expected);
         }
     }
 
@@ -100,15 +129,18 @@ class ApplicationTest {
     class Problem6Test {
         @Test
         void case1() {
-            List<List<String>> forms = List.of(
+            final List<List<String>> forms = List.of(
                     List.of("jm@email.com", "제이엠"),
                     List.of("jason@email.com", "제이슨"),
                     List.of("woniee@email.com", "워니"),
                     List.of("mj@email.com", "엠제이"),
                     List.of("nowm@email.com", "이제엠")
             );
-            List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com");
-            assertThat(Problem6.solution(forms)).isEqualTo(result);
+            final List<String> expected = List.of("jason@email.com", "jm@email.com", "mj@email.com");
+
+            final List<String> result = Problem6.solution(forms);
+
+            assertThat(result).isEqualTo(expected);
         }
     }
 
@@ -116,8 +148,8 @@ class ApplicationTest {
     class Problem7Test {
         @Test
         void case1() {
-            String user = "mrko";
-            List<List<String>> friends = List.of(
+            final String user = "mrko";
+            final List<List<String>> friends = List.of(
                     List.of("donut", "andole"),
                     List.of("donut", "jun"),
                     List.of("donut", "mrko"),
@@ -125,9 +157,12 @@ class ApplicationTest {
                     List.of("shakevan", "jun"),
                     List.of("shakevan", "mrko")
             );
-            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
-            List<String> result = List.of("andole", "jun", "bedi");
-            assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+            final List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+            final List<String> expected = List.of("andole", "jun", "bedi");
+
+            final List<String> result = Problem7.solution(user, friends, visitors);
+
+            assertThat(result).isEqualTo(expected);
         }
     }
 }
