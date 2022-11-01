@@ -87,12 +87,12 @@
 + 사용자 아이디 user와 친구 관계 정보 friends, 사용자 타임 라인 방문 기록 visitors가 매개변수로 주어질 때, 미스터코의 친구 추천 규칙에 따라 점수가 가장 높은 순으로 정렬하여 최대 5명을 return 하도록 solution 메서드를 완성하라. 이때 추천 점수가 0점인 경우 추천하지 않으며, 추천 점수가 같은 경우는 이름순으로 정렬한다.
 
 - 특정상황이 발생했을 때  Map에 점수 더하기 (addScore)
-- [ ] Map으로 친구추천점수 관리
-- [ ] friends 에서 유저가 아는 친구 구하기(friendsOfUser)
-- [ ] friendOfUser 이용하여 friendsOfFriends 구하기: 그의 친구 +10점
-- [ ] visitors 에 있는 이름 +1점
-- [ ] score가 담긴 맵에서 user자신, 이미 친구인 friendsOfUser 삭제
-- [ ] 점수가 높은 순으로 최대 5명 리턴 (점수가 같으면 이름순으로 정렬, 점수가 0점이면 담지않음)
+- [x] Map으로 친구추천점수 관리
+- [x] friends 에서 유저가 아는 친구 구하기(friendsOfUser)
+- [x] friendOfUser 이용하여 friendsOfFriends 구하기: 그의 친구 +10점
+- [x] visitors 에 있는 이름 +1점
+- [x] score가 담긴 맵에서 user자신, 이미 친구인 friendsOfUser 삭제
+- [x] 점수가 높은 순으로 최대 5명 리턴 (점수가 같으면 이름순으로 정렬, 점수가 0점이면 담지않음)
 
 ***
 
