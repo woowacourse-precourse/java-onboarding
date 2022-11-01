@@ -105,6 +105,9 @@ class Recommendation{
     boolean isFriend(String friend) {
         return !friend.equals(THE_USER_NAME);
     }
+    Set<String> getFriends(){
+        return USERS.keySet();
+    }
 }
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
