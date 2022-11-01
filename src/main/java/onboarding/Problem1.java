@@ -38,7 +38,7 @@ class Problem1 {
         int Rightmul = 1;
 
         char[] numLeftPageChar = splitPageNum(leftPage);
-        char[] numRightPageChar = splitPageNum(leftPage);
+        char[] numRightPageChar = splitPageNum(rightPage);
 
         for (char x : numLeftPageChar) {
             Leftmul *= x - '0';
