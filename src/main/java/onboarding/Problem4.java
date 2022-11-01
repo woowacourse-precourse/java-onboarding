@@ -10,7 +10,7 @@ public class Problem4 {
 	public static final int EXCEPTION = -1;
 
 	public static String solution(String word) {
-		char[] charArr = new char[word.length()];
+		char[] letters = new char[word.length()];
 		int askiiSequence = 0; // 아스키코드 표 기준 앞에서부터 몇 번째 캐릭터인지
 		char letter = ' ';
 
@@ -22,16 +22,16 @@ public class Problem4 {
 			letter = word.charAt(i);
 			if (letter > 'a' && letter < 'z') {
 				askiiSequence = letter - PRE_a_IN_ASCII_TABLE;
-				charArr[i] = (char)(NEXT_z_IN_ASCII_TABLE - askiiSequence); // 뒤에서부터 tmp 번째 캐릭터를 대입
+				letters[i] = (char)(NEXT_z_IN_ASCII_TABLE - askiiSequence); // 뒤에서부터 tmp 번째 캐릭터를 대입
 			} else if (letter > 'A' && letter < 'Z') {
 				askiiSequence = letter - PRE_A_IN_ASCII_TABLE;
-				charArr[i] = (char)(NEXT_Z_IN_ASCII_TABLE - askiiSequence);
+				letters[i] = (char)(NEXT_Z_IN_ASCII_TABLE - askiiSequence);
 			} else {
-				charArr[i] = letter;
+				letters[i] = letter;
 			}
 		}
 
-		return new String(charArr);
+		return new String(letters);
 	}
 
 	/**
