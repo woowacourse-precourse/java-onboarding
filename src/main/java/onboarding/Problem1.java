@@ -13,13 +13,16 @@ class Problem1 {
         if (!checkPobiException || !checkCrongException) {
             return -1;
         } else {
-            List<Integer> pobiPageScores = pobi.stream().map(problem::getScore).collect(Collectors.toList());
-            List<Integer> crongPageScores = crong.stream().map(problem::getScore).collect(Collectors.toList());
-            int pobiScore = Collections.max(pobiPageScores);
-            int crongScore = Collections.max(crongPageScores);
+            int pobiScore = problem.getScore(pobi);
+            int crongScore = problem.getScore(crong);
 
             return problem.compareScore(pobiScore, crongScore);
         }
+    }
+
+    public int getScore(List<Integer> pages) {
+        List<Integer> pageScores = pages.stream().map(this::getEachPageScore).collect(Collectors.toList());
+        return Collections.max(pageScores);
     }
 
     public int compareScore(int score1, int score2) {
@@ -40,7 +43,7 @@ class Problem1 {
         }
     }
 
-    public int getScore(int num) {
+    public int getEachPageScore(int num) {
         List<Integer> digits = new ArrayList<Integer>();
         while(num > 0) {
             digits.add(num % 10);
