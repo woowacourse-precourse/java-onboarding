@@ -17,4 +17,16 @@ public class Problem4 {
             return -1;
         }
     }
+
+    private static char reverseAlphabetChar(char alphabetChar, int capOption){//알파벳 문자 반대로 변환
+        if(capOption==1){//소문자인경우
+            return (char)('z'-alphabetChar+'a');
+        }
+        else if(capOption==2){// 대문자인경우
+            return (char)('Z'-alphabetChar+'A');
+        }
+        else{
+            return alphabetChar;
+        }
+    }
 }
