@@ -8,7 +8,9 @@ import java.util.List;
  */
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
+        if(checkException(pobi)) return -1;
+        if(checkException(crong)) return -1;
+
         return answer;
     }
 
