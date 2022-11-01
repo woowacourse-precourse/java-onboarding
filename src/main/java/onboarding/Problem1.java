@@ -5,6 +5,38 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+
+        if (check(pobi) == false || check(crong) == false) {
+            answer = -1;
+        } else {
+            List<Integer> pobiScore = List.of(
+                    add(pobi.get(0)),
+                    add(pobi.get(1)),
+                    mul(pobi.get(0)),
+                    mul(pobi.get(1))
+            );
+
+            List<Integer> crongScore = List.of(
+                    add(crong.get(0)),
+                    add(crong.get(1)),
+                    mul(crong.get(0)),
+                    mul(crong.get(1))
+            );
+
+            int maxPobi = 0;
+            int maxCrong = 0;
+            for (int i : pobiScore) {
+                maxPobi = Math.max(i, maxPobi);
+            }
+            for (int i : crongScore) {
+                maxCrong = Math.max(i, maxCrong);
+            }
+
+            if (maxPobi > maxCrong) answer = 1;
+            else if (maxCrong > maxPobi) answer = 2;
+            else answer = 0;
+        }
+
         return answer;
     }
 
