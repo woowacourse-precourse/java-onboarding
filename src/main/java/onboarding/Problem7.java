@@ -78,14 +78,24 @@ public class Problem7 {
         }
     }
 
+    public static void deleteExistFriend(List<String> userFriends, Map<String, Integer> friendScoreMap) {
+        for (String friendName : userFriends) {
+            if (friendScoreMap.containsKey(friendName)) {
+                friendScoreMap.remove(friendName);
+            }
+        }
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
 
         Map<String, Integer> friendScoreMap = initScoreMap(user, friends, visitors);
         List<String> userFriends = getUserFriends(friends, user);
+
         addScoreByFriend(user, friends, userFriends, friendScoreMap);
         addVisitorScore(visitors, friendScoreMap);
+        deleteExistFriend(userFriends, friendScoreMap);
+
         return answer;
     }
-
 }
