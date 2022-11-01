@@ -24,3 +24,14 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능 목록
+1. 유형 별 친구 추천 점수 SCORE_OF_COMMON_FRIEND, SCORE_OF_TIMELINE_VISIT와 최대 추천 친구수 제한 MAX_LIST_SIZE 
+2. <사용자 아이디, 사용자의 친구 목록> 구조의 friend_map, <사용자 아이디, 추천 점수> 구조의 score_map
+3. 친구 관계를 friend_map에 적용하는 함수 add_relationship
+4. friend_map을 생성하는 함수 get_friend_map
+5. 친구의 친구를 살피며 추천 점수를 주는 함수 consider_friend_of_friend
+6. 방문한 타임라인을 살피며 추천 점수를 주는 함수 consider_visitor
+7. score_map을 생성하는 함수 get_score_map
+8. score_map을 바탕으로 최대 5명의 정렬된 추천 친구 아이디 리스트를 반환하는 함수 get_recommended_friend_list
+9. 추천 친구 아이디 리스트를 리턴하는 함수 solution
