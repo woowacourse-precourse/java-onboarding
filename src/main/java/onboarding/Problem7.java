@@ -55,6 +55,8 @@ class Problem7 {
             map1.put(tmpvisitlist.get(i), Collections.frequency(visitcount, tmpvisitlist.get(i)) * 1);
         }
 
+        while(map1.values().remove(0)){}
+
         return answer;
     }
 }
