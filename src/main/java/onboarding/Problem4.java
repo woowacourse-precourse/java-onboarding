@@ -18,4 +18,11 @@ public class Problem4 {
         }
         return alphabet;
     }
+
+    public static char isUpperCaseLowerCase(char alphabet) {
+        if (Character.isUpperCase(alphabet)) {
+            return changeUpperAlphabet(alphabet);
+        }
+        return changeLowerAlphabet(alphabet);
+    }
 }
