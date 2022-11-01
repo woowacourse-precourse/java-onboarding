@@ -12,6 +12,11 @@ class Problem1 {
         if (pobi.get(1) >= 400) return -1;
         if (crong.get(1) >= 400) return -1;
 
+        // 정상적인 페이지가 맞는지 확인한다. (찢어지지 않았는지 확인)
+        if (pobi.get(1) - pobi.get(0) != 1) return -1;
+        if (crong.get(1) - crong.get(0) != 1) return -1;
+
+
         // 2~4. 각자 펼쳐본 왼쪽 페이지, 오른쪽 페이지 번호에서 각 자리 숫자를 더하거나 곱해 가장 큰 수를 구한다.
         int pobiMaxNumber = calcMaxPageNumber(pobi);
         int crongMaxNumber = calcMaxPageNumber(crong);
