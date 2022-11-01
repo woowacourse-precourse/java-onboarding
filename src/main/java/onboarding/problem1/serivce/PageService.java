@@ -12,7 +12,11 @@ public class PageService {
     /**
      * @param woowahanTeachers
      * @param validation
-     *
+     *  1. 파라미터 들어온 인자를 순회하여
+     *  2. 왼쪽 오른쪽 페이지 번호로 각 자리 숫자의 합 중 큰 값을 구한다.
+     *  3. 왼쪽 오른쪽 페이지 번호로 각 자리 숫자의 곱 중 큰 값을 구한다.
+     *  4. 2번 3번의 값을 비교하여 큰 값을 return 한다.
+     *  @return Math.max(2번, 3번)
      * @throws IllegalArgumentException
      * */
     public int findMaxValue(List<Integer> woowahanTeachers, PageNumberAndSizeValidation validation) throws IllegalArgumentException {
