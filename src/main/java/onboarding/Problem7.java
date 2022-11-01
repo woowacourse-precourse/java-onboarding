@@ -1,20 +1,19 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 public class Problem7 {
 
-    private static Map<String, List<String>> userToFriendsMap;
-    private static Map<String, Integer> userToScoreMap;
-    private static List<String> friendList;
+    private static Map<String, List<String>> friendToFriendsMap;
+    private static Map<String, Integer> friendToScoreMap;
+    private static Boolean isExistUserFriend;
+
     private static final Integer friendScore = 10;
     private static final Integer visitScore = 1;
 
@@ -26,24 +25,29 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends,
             List<String> visitors) {
 
-        /* [요구] 사용자와 함께 아는 친구의 수 점수 계산 */
+        friendToFriendsMap = new HashMap<>();
+        friendToScoreMap = new HashMap<>();
+
         makeUserToFriendsMap(friends);
-        friendList = userToFriendsMap.get(user);
-        calculateFriendScore(user);
+        isExistUserFriend = friendToFriendsMap.containsKey(user) ? Boolean.TRUE : Boolean.FALSE;
+
+        /* [요구] 사용자와 함께 아는 친구의 수 점수 계산 */
+        if (isExistUserFriend)
+            calculateFriendScore(user);
 
         /* [요구] 사용자의 타임 라인에 방문한 횟수 점수 계산 */
-        calculateVisitScore(visitors);
+        calculateVisitScore(user, visitors);
 
         /* [요구] 점수가 가장 높은 순으로 정렬하여 최대 5명 리턴 */
-        return userToScoreMap.entrySet().stream()
+        return friendToScoreMap.entrySet().stream()
                 .sorted(valueComparator.thenComparing(keyComparator))
                 .limit(5)
                 .map(Entry::getKey)
                 .collect(Collectors.toList());
     }
 
+    // 사용자 사이의 친구 관계 초기화
     public static void makeUserToFriendsMap(List<List<String>> friends) {
-        userToFriendsMap = new HashMap<>();
         for (List<String> friend : friends) {
             String friendA = friend.get(0);
             String friendB = friend.get(1);
@@ -53,40 +57,43 @@ public class Problem7 {
     }
 
     public static void putFriend(String friendA, String friendB) {
-        if (userToFriendsMap.containsKey(friendA)) {
-            userToFriendsMap.get(friendA).add(friendB);
+        if (friendToFriendsMap.containsKey(friendA)) {
+            friendToFriendsMap.get(friendA).add(friendB);
         } else {
             List<String> newList = new ArrayList<>();
             newList.add(friendB);
-            userToFriendsMap.put(friendA, newList);
+            friendToFriendsMap.put(friendA, newList);
         }
     }
 
+    // 사용자와 함께 아는 친구의 수 점수 계산하는 메서드
     public static void calculateFriendScore(String user) {
-        userToScoreMap = new HashMap<>();
-        userToFriendsMap.forEach((s, friends) -> {
-            int cnt = 0;
-            if (friendList.contains(s) || s.equals(user)) {
+        friendToFriendsMap.forEach((otherUser, friends) -> {
+            if (otherUser.equals(user)) // 사용자인 경우 제외
                 return;
-            }
+            if (friendToFriendsMap.get(user).contains(otherUser)) // 사용자와 이미 친구인 경우 제외
+                return;
+
+            int friendCount = 0; // 사용자와 함께 아는 친구의 수
             for (String friend : friends) {
-                if (friendList.contains(friend)) {
-                    cnt++;
-                }
+                if (friendToFriendsMap.get(user).contains(friend))
+                    friendCount++;
             }
-            userToScoreMap.put(s, cnt * friendScore);
+            friendToScoreMap.put(otherUser, friendCount * friendScore);
         });
     }
 
-    public static void calculateVisitScore(List<String> visitors) {
+    // 사용자의 타임 라인에 방문한 횟수 점수 계산하는 메서드
+    public static void calculateVisitScore(String user, List<String> visitors) {
         for (String visitor : visitors) {
-            if (friendList.contains(visitor)) { // 사용자와 친구인 유저 제외
-                continue;
-            }
-            if (userToScoreMap.containsKey(visitor)) {
-                userToScoreMap.put(visitor, userToScoreMap.get(visitor) + visitScore);
+            if (isExistUserFriend)
+                if (friendToFriendsMap.get(user).contains(visitor)) // 사용자와 이미 친구인 경우 제외
+                    continue;
+
+            if (friendToScoreMap.containsKey(visitor)) {
+                friendToScoreMap.put(visitor, friendToScoreMap.get(visitor) + visitScore);
             } else {
-                userToScoreMap.put(visitor, visitScore);
+                friendToScoreMap.put(visitor, visitScore);
             }
         }
     }
