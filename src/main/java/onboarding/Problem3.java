@@ -9,6 +9,15 @@ public class Problem3 {
         return answer;
     }
 
+    private static int getAnswer(int number, String[] clapnums) {
+        int answer = 0;
+        for (int i = 1; i <= number; i++) {
+            String now = Integer.toString(i);
+            answer = getClappingNum(clapnums, answer, now);
+        }
+        return answer;
+    }
+
     private static int getClappingNum(String[] clapnums, int answer, String now) {
         for (String clapnum : clapnums) {
             answer += now.chars().filter(it -> it == clapnum.charAt(0)).count();
