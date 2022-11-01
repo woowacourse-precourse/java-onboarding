@@ -13,14 +13,14 @@ public class Problem3 {
         for(int i =1; i<=number; i++){
             String cal = String.valueOf(i);
             String[] list = cal.split("");
-            for(int j=0; j<list.length; j++){
-                if(Objects.equals(list[j], "3")){
+            for (String s : list) {
+                if (Objects.equals(s, "3")) {
                     answer++;
                 }
-                if(Objects.equals(list[j], "6")){
+                if (Objects.equals(s, "6")) {
                     answer++;
                 }
-                if(Objects.equals(list[j], "9")){
+                if (Objects.equals(s, "9")) {
                     answer++;
                 }
             }
