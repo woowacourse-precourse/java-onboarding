@@ -21,3 +21,13 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 🧸기능 목록
+
+##### 1. 크루들의 닉네임 중 같은 글자가 연속적으로 포함되는 닉네임 찾기
+
+-  닉네임의 연속된 두글자를 key, 이메일을 value로 설정
+-  중복 된다면 이메일 오름차순으로 정렬 후 return
+##### 2.예외 처리 (refectoring)
+- email.com 도메인(11자 이상 20자 미만)
+- 닉네임은 한글만 가능(1자 이상 20자 미만)
