@@ -23,7 +23,6 @@ public class Problem7 {
 
 	public static void giveScoresToFriendsWhoVisitUserTimeline(List<String> visitors) {
 		for (String visitor : visitors) {
-			recommendationScores.putIfAbsent(visitor, DEFAULT_SCORE);
 			int score = recommendationScores.getOrDefault(visitor, DEFAULT_SCORE);
 			recommendationScores.put(visitor, score + SCORE_VISIT_USER_TIMELINE);
 		}
@@ -31,16 +30,13 @@ public class Problem7 {
 
 	public static void giveScoresToFriendsKnowWithUser(String user) {
 		Set<String> friendsOfUser = findFriendsOfUser(user);
-		friendsOfUser.add(user);
 
 		for (String friendOfUser : friendsOfUser) {
 			Set<String> friendsKnowWithUser = findFriendsOfUser(friendOfUser);
 
 			for (String friendKnowWithUser : friendsKnowWithUser) {
-				if (!friendsOfUser.contains(friendKnowWithUser)) {
-					int previousScore = recommendationScores.get(friendKnowWithUser);
-					recommendationScores.put(friendKnowWithUser, previousScore + SCORE_FRIENDS_KNOW_WITH_USER);
-				}
+				int score = recommendationScores.getOrDefault(friendKnowWithUser, DEFAULT_SCORE);
+				recommendationScores.put(friendKnowWithUser, score + SCORE_FRIENDS_KNOW_WITH_USER);
 			}
 		}
 	}
@@ -48,12 +44,6 @@ public class Problem7 {
 	public static Set<String> findFriendsOfUser(String user) {
 		List<String> friendsOfUser = friendRelationGraph.get(user);
 		return new HashSet<>(friendsOfUser);
-	}
-
-	public static void initRecommendationScores() {
-		friendRelationGraph.keySet()
-				.stream()
-				.forEach(key -> recommendationScores.putIfAbsent(key, 0));
 	}
 
 	public static void makeFriendRelationGraph(List<List<String>> friends) {

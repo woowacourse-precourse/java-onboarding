@@ -47,31 +47,6 @@ class Problem7Test {
 		assertThat(result).isEqualTo(expected);
 	}
 
-	@DisplayName("모든 친구 이름에 대해 '추천친구 점수' 0으로 초기화")
-	@Test
-	void initializeRecommendationScoresTest() {
-		// given : 친구관계 그래프가 주어졌을 때
-		List<List<String>> friends = List.of(
-				List.of("a", "b"),
-				List.of("b", "c"),
-				List.of("heap", "c"),
-				List.of("pork", "fork")
-		);
-		Problem7.makeFriendRelationGraph(friends);
-
-		// when : 모든 친구에 대해 추천점수를 0점으로 초기화
-		Problem7.initRecommendationScores();
-
-		// then : 모든 value 값이 0 인지 확인하고 map size 가 친구관계 그래프 size 와 같은지 확인
-		Map<String, Integer> result = Problem7.recommendationScores;
-		final int expectedSize = Problem7.friendRelationGraph.size();
-		final int expectedValue = 0;
-
-		assertThat(result.size()).isEqualTo(expectedSize);
-		result.values()
-				.forEach(score -> assertThat(score).isEqualTo(expectedValue));
-	}
-
 	@DisplayName("user 의 친구목록을 구하는 테스트")
 	@Test
 	void findFriendsOfUserTest() {
@@ -96,7 +71,7 @@ class Problem7Test {
 	@DisplayName("user 의 친구들의 친구들에게 점수 10점을 부과하는 테스트")
 	@Test
 	void give10ScoreToFriendsKnowWithUserTest() {
-		// given : 친구관계 그래프 생성, 추천친구 점수 초기화, user 이름이 주어졌을 때
+		// given : 친구관계 그래프 생성, user 이름이 주어졌을 때
 		List<List<String>> friends = List.of(
 				List.of("a", "b"),
 				List.of("b", "c"),
@@ -106,21 +81,18 @@ class Problem7Test {
 				List.of("f", "fork")
 		);
 		Problem7.makeFriendRelationGraph(friends); // 친구관계 그래프 생성
-		Problem7.initRecommendationScores(); // 추천친구 점수 초기화
 		final String user = "c"; // user 이름
 
 		// when : user 친구들의 친구들에게 10점 부과
 		Problem7.giveScoresToFriendsKnowWithUser(user);
 
 		// then : 점수가 제대로 부과됐는지 확인
+		// 친구관계 그래프 기준으로 user 의 친구들의 친구들에게 10점이 부여된다.
 		Map<String, Integer> result = Problem7.recommendationScores;
 		final Map<String, Integer> expected = new HashMap<>() {{
 			put("a", 20);
-			put("b", 0);
-			put("c", 0);
+			put("c", 20);
 			put("fork", 10);
-			put("f", 0);
-			put("heap", 0);
 		}};
 
 		assertThat(result).isEqualTo(expected);
@@ -129,7 +101,7 @@ class Problem7Test {
 	@DisplayName("user 의 timeline 에 방문한 모든 사람들에게 1점 부여하는 기능 테스트")
 	@Test
 	void give1ScoreToVisitingUserTimeline() {
-		// given : 친구관계 그래프 생성, 추천친구 점수 초기화, 방문한 이름 목록 이 주어졌을 때
+		// given : 친구관계 그래프 생성, 방문한 이름 목록 이 주어졌을 때
 		List<List<String>> friends = List.of(
 				List.of("a", "b"),
 				List.of("b", "c"),
@@ -139,7 +111,6 @@ class Problem7Test {
 				List.of("f", "fork")
 		);
 		Problem7.makeFriendRelationGraph(friends); // 친구관계 그래프 생성
-		Problem7.initRecommendationScores(); // 추천친구 점수 초기화
 		final List<String> visitors = List.of("new", "spy", "a", "a", "f", "heap", "heap", "c");
 
 		// when : user timeline 에 방문한 친구들에게 1점 부과
@@ -149,10 +120,8 @@ class Problem7Test {
 		Map<String, Integer> result = Problem7.recommendationScores;
 		final Map<String, Integer> expected = new HashMap<>() {{
 			put("a", 2);
-			put("b", 0);
 			put("c", 1); // 일단 1점씩 모두 부여한다.
 			put("f", 1);
-			put("fork", 0);
 			put("heap", 2);
 			put("new", 1);
 			put("spy", 1);
