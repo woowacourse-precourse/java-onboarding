@@ -17,7 +17,7 @@ class ApplicationTest {
             int result = 0;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
-        
+
         @Test
         void case2() {
             List<Integer> pobi = List.of(131, 132);
@@ -25,7 +25,7 @@ class ApplicationTest {
             int result = 1;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
-        
+
         @Test
         void case3() {
             List<Integer> pobi = List.of(99, 102);
@@ -34,7 +34,7 @@ class ApplicationTest {
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
     }
-    
+
     @Nested
     class Problem2Test {
         @Test
@@ -43,7 +43,7 @@ class ApplicationTest {
             String result = "brown";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
-        
+
         @Test
         void case2() {
             String cryptogram = "zyelleyz";
@@ -51,7 +51,7 @@ class ApplicationTest {
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
     }
-    
+
     @Nested
     class Problem3Test {
         @Test
@@ -60,7 +60,7 @@ class ApplicationTest {
             int result = 4;
             assertThat(Problem3.solution(number)).isEqualTo(result);
         }
-        
+
         @Test
         void case2() {
             int number = 33;
@@ -68,7 +68,7 @@ class ApplicationTest {
             assertThat(Problem3.solution(number)).isEqualTo(result);
         }
     }
-    
+
     @Nested
     class Problem4Test {
         @Test
@@ -78,7 +78,7 @@ class ApplicationTest {
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
     }
-    
+
     @Nested
     class Problem5Test {
         @Test
@@ -87,7 +87,7 @@ class ApplicationTest {
             List<Integer> result = List.of(1, 0, 0, 0, 0, 2, 0, 3, 7);
             assertThat(Problem5.solution(money)).isEqualTo(result);
         }
-        
+
         @Test
         void case2() {
             int money = 15_000;
@@ -95,7 +95,7 @@ class ApplicationTest {
             assertThat(Problem5.solution(money)).isEqualTo(result);
         }
     }
-    
+
     @Nested
     class Problem6Test {
         @Test
@@ -111,7 +111,7 @@ class ApplicationTest {
             assertThat(Problem6.solution(forms)).isEqualTo(result);
         }
     }
-    
+
     @Nested
     class Problem7Test {
         @Test
