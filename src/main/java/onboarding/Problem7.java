@@ -18,6 +18,7 @@ public class Problem7 {
         HashMap<String, Integer> candidateAndScore = makeCandidates(friends, notUserFriends, userFriends, visitors);
 
         List<String> result = new ArrayList<>(candidateAndScore.keySet());
+        Collections.sort(result);
         result.sort((o1, o2) -> candidateAndScore.get(o2).compareTo(candidateAndScore.get(o1)));
         List<String> answerResult = new ArrayList<>();
         for (int i = 0; i < result.size(); i++) {
