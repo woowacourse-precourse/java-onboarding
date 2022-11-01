@@ -68,7 +68,9 @@ public class Problem7Debugging {
                 }
                 int friendOfFriendIndex = 1-friendsIndex;
 
-                String friendNameOfFriendOfUser = friends.get(i).get(friendOfFriendIndex);
+                String friendNameOfFriendOfUser = friends.get(j).get(friendOfFriendIndex);
+
+
 
                 int presentPoint = nameAndPoint.get(friendNameOfFriendOfUser);
 
@@ -87,7 +89,7 @@ public class Problem7Debugging {
 
         Collections.sort(keySetList, (o1, o2) -> (nameAndPoint.get(o2).compareTo(nameAndPoint.get(o1))));
 
-        
+
 
 
 

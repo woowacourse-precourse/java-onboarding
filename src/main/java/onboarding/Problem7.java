@@ -60,7 +60,7 @@ public class Problem7 {
 
                 int friendOfFriendIndex = 1-friendsIndex;
 
-                String friendNameOfFriendOfUser = friends.get(i).get(friendOfFriendIndex);
+                String friendNameOfFriendOfUser = friends.get(j).get(friendOfFriendIndex);
 
                 int presentPoint = nameAndPoint.get(friendNameOfFriendOfUser);
 
