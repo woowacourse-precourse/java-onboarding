@@ -28,8 +28,7 @@ public class Problem2 {
 
         if (cryptogram.length() == result.length()) {
             return result;
-        }
-        else {
+        } else {
             return decrypt(result);
         }
 
