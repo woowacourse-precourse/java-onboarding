@@ -1,6 +1,14 @@
 package onboarding;
 
 public class Problem3 {
+    public static int findCount(int number) {
+        int count = 0;
+        for (int index = 1; index <= number; index++) {
+            count += find369(index);
+        }
+
+        return count;
+    }
 
     public static int find369(int number) {
         String numberString = Integer.toString(number);
@@ -17,6 +25,8 @@ public class Problem3 {
 
     public static int solution(int number) {
         int answer = 0;
+        answer = findCount(number);
+
         return answer;
     }
 }
