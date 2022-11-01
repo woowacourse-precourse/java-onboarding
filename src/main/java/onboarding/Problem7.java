@@ -11,10 +11,12 @@ class Recommend {
         this.name = name;
         this.score = score;
     }
+
     // Getter
     public String getName() {
         return this.name;
     }
+
     public Integer getScore() {
         return this.score;
     }
@@ -27,10 +29,11 @@ class Recommend {
 public class Problem7 {
     // hashFriendshipScores 생성
     Hashtable<String, Recommend> hashPersonToRecommend = new Hashtable<>();
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Problem7 problem = new Problem7();
         /* personToRecommend: 추천 목록 생성  */
-        List<String> personToRecommend  = flatten2DimStringList(friends);   // friends 배열 평탄화
+        List<String> personToRecommend = flatten2DimStringList(friends);   // friends 배열 평탄화
         personToRecommend.addAll(visitors); // 방문자 추가
         personToRecommend = dropDuplicate(personToRecommend);   // 중복 제거
         personToRecommend.remove(user); // 친구 목록에서 user 제거
@@ -69,18 +72,18 @@ public class Problem7 {
 
         // score 가 0인 사람 제외하고 friend name만 추출
         List<String> answer = topScoreRecommend.stream()
-                                                .filter(r -> r.getScore()!=0)
-                                                .map(r -> r.getName())
-                                                .collect(Collectors.toList());
+                .filter(r -> r.getScore() != 0)
+                .map(r -> r.getName())
+                .collect(Collectors.toList());
         return answer;
     }
 
     static List<String> flatten2DimStringList(List<List<String>> string2DimList) {
         List<String> flattenList = string2DimList.stream()
-                                                .reduce(new ArrayList<>(), (x, y) -> {
-                                                    x.addAll(y);
-                                                    return x;
-                                                });
+                .reduce(new ArrayList<>(), (x, y) -> {
+                    x.addAll(y);
+                    return x;
+                });
         return flattenList;
     }
 
@@ -97,9 +100,9 @@ public class Problem7 {
 
     static List<String> getDirectFriends(String user, List<List<String>> friends) {
         List<String> directFriends = friends.stream()
-                                    .filter(f -> f.contains(user))
-                                    .map(f -> f.get(0).equals(user) ? f.get(1) : f.get(0))
-                                    .collect(Collectors.toList());
+                .filter(f -> f.contains(user))
+                .map(f -> f.get(0).equals(user) ? f.get(1) : f.get(0))
+                .collect(Collectors.toList());
         return dropDuplicate(directFriends);    // 중복 제거
     }
 
