@@ -23,7 +23,22 @@ public class Problem2 {
             }
         }
 
+        while (!stack.empty()) {
+            ss+=cryptogram.charAt(stack.peek());
+            stack.pop();
+        }
+
+
+        StringBuffer sb = new StringBuffer(ss);
+        String reversedStr = sb.reverse().toString();
+
+        answer=reversedStr;
 
         return answer;
     }
 }
+
+
+
+
+
