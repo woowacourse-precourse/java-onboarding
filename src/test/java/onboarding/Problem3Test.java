@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Nested
+@DisplayName("문제3번: 369손뼉 총 횟수")
 public class Problem3Test {
     @Test
     @DisplayName("1~13의 369횟수를 맞췄다.")
