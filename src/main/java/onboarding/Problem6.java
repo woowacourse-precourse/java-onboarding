@@ -12,12 +12,10 @@ public class Problem6 {
         int crewNumber = forms.size();
         for(int i = 0; i < crewNumber; i++){
             for(int j = i; j < crewNumber; j++){
-                if(i==j){
+                if(i == j){
                     continue;
                 }
-                String firstNickame = forms.get(j).get(1);
-                String secondNickname = forms.get(i).get(1);
-                if(isOverlaps(firstNickame,secondNickname)) {
+                if(isOverlaps(forms.get(j).get(1),forms.get(i).get(1))) {
                     emailSet.add(forms.get(j).get(0));
                     emailSet.add(forms.get(i).get(0));
                 }
@@ -28,16 +26,13 @@ public class Problem6 {
         return answer;
     }
     public static boolean isOverlaps(String firstString, String secondString){
-        boolean ret = false;
         for(int i = 0; i < firstString.length()-1; i++){
             String comparedString = firstString.substring(i,i+2);
             if(secondString.contains(comparedString)){
-                ret = true;
-                break;
+                return true;
             }
         }
-
-        return ret;
+        return false;
     }
 }
 
