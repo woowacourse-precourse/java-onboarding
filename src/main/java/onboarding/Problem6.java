@@ -19,9 +19,10 @@ public class Problem6 {
     }
 
     public static String getMail(String mail) {
-        if(!isValidDomain(mail)) {
+        if (!isValidDomain(mail)) {
             return null;
         }
+
         int atIdx = mail.indexOf('@');
         String mailId = mail.substring(0, atIdx);
 
@@ -34,17 +35,17 @@ public class Problem6 {
         String otherMail = otherForm.get(0);
         String otherNickname = otherForm.get(1);
 
-        if(userMail == null || otherMail == null) { // 유효하지 않은 도메인은 체크하지 않음
+        if (userMail == null || otherMail == null) { // 유효하지 않은 도메인은 체크하지 않음
             return false;
         }
 
-        if(otherMail.equals(userMail)) {
+        if (otherMail.equals(userMail)) {
             return false;
         }
 
-        for(int i = 0; i < userNickname.length() - 1; i++) {
+        for (int i = 0; i < userNickname.length() - 1; i++) {
             String subNickname = getSubNickname(userNickname, i);
-            if(otherNickname.contains(subNickname)) {
+            if (otherNickname.contains(subNickname)) {
                 return true;
             }
         }
@@ -54,8 +55,8 @@ public class Problem6 {
     public static HashSet<String> getDupUserMail(List<String> userForm, List<List<String>> forms) {
         HashSet<String> dupUserMailSet = new HashSet<>();
 
-        for(List<String> form: forms) {
-            if(isDuplicate(userForm, form)) {
+        for (List<String> form: forms) {
+            if (isDuplicate(userForm, form)) {
                 String dupUserMail = form.get(0);
 
                 dupUserMailSet.add(dupUserMail);
@@ -79,7 +80,7 @@ public class Problem6 {
     public static List<String> getDupResult(List<List<String>> forms) {
         HashSet<String> dupResult = new HashSet<>();
 
-        for(List<String> form: forms) {
+        for (List<String> form: forms) {
             HashSet<String> dupUserMailSet = getDupUserMail(form, forms);
 
             dupResult.addAll(dupUserMailSet);
