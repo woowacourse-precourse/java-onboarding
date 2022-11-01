@@ -114,7 +114,15 @@ public class Problem7 {
             while (keys.hasNext()) {
                 String key = keys.next();
 
+                // key가 나일 때 continue
+                if (key == user) {
+                    continue;
+                }
 
+                // key가 이미 내 친구일 때
+                if (myFriends.contains(key)) {
+                    continue;
+                }
 
                 if (scoreMap.get(key)>maxValue) {
                     maxValue = scoreMap.get(key);
