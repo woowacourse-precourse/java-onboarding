@@ -2,6 +2,10 @@ package onboarding;
 
 import java.util.*;
 
+/**
+ * 문제 풀이 방식 & 기능 목록서는
+ * docs/PROBLEM6.md 의 하단에 기술되어 있습니다
+ */
 public class Problem6 {
     static List<String> nameList;
     public static List<String> solution(List<List<String>> forms) {
