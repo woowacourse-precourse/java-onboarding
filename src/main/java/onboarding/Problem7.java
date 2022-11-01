@@ -37,7 +37,9 @@ public class Problem7 {
      */
     private static void findVisitedFriendAndScore(List<String> visitors) {
         for (String visitor : visitors) {
-            if (friendScore.getOrDefault(visitor,0) != -1) {
+            if (friendScore.containsKey(visitor) && friendScore.get(visitor)!= -1) {
+                friendScore.put(visitor, friendScore.getOrDefault(visitor, 0) + 1);
+            }else if (!friendScore.containsKey(visitor)){
                 friendScore.put(visitor, friendScore.getOrDefault(visitor, 0) + 1);
             }
         }
