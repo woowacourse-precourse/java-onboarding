@@ -4,7 +4,7 @@ import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer = new ArrayList<>();
         Map<String, Set<String>> words;
         Set<String> answerSet; // 알림이 필요한 크루들의 이메일을 저장
 
@@ -25,6 +25,8 @@ public class Problem6 {
         /*
         3. answer에 담아 오름차순 정렬
          */
+        answer.addAll(answerSet);
+        Collections.sort(answer);
 
         return answer;
     }
