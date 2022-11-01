@@ -129,4 +129,14 @@ public class Problem6 {
         }
         return false;
     }
+
+    public static boolean emailLengthOutOfRangeException(List<List<String>> forms) {
+        for (List<String> form : forms) {
+            if (form.get(0).length() < 11 || form.get(0).length() > 19) {
+                System.out.println("이메일의 길이는 11자 부터 20자 미만까지 입니다.");
+                return true;
+            }
+        }
+        return false;
+    }
 }
