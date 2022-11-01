@@ -52,33 +52,13 @@ public class Problem6 {
             if (checklist[i] == 0) temp_email.add(forms.get(i).get(0));
         }
 
-        return temp_email
+        return temp_email;
     }
 
 
-    int[] checkRedupl(String cryptogram) {
-        int[] temp_array = new int[cryptogram.length()];
-
-        for (int i = 0; i < cryptogram.length() - 1; i++) {
-            if (cryptogram.charAt(i) == cryptogram.charAt(i + 1)) {
-                temp_array[i] = 1;
-                temp_array[i+1] = 1;
-            }
-        }
-
-        return temp_array;
-    }
-
-    String reduceRedupl(String cryptogram, int[] index){
-        int temp_length = cryptogram.length();
-        String temp_string = "";
-        for (int i=0; i<temp_length; i++){
-            if (index[i]==0) temp_string += cryptogram.substring(i,i+1);
-        }
-        return temp_string;
-    }
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        Problem6 agent = new Problem6();
+        List<String> answer = agent.makeEmailList(forms, agent.makeIndexList(forms));
         return answer;
     }
 }
