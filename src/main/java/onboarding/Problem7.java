@@ -40,6 +40,15 @@ public class Problem7 {
         for (String s : all_friend) {
             score.put(s, 0);
         }
+//        System.out.println(score);
+
+        List<String> user_around = proximity_node.get(user);    // user_around = 인물간의 관계에서 유저와 관계를 갖고있는 인물들의 리스트
+        for (String user_friend : user_around) {    // user_friend = 유저의 아는 친구
+            for (String target : proximity_node.get(user_friend)) { // target = 유저의 친구의 친구
+//                System.out.println(user_friend + "  " + target);
+                score.put(target, score.get(target) + 10);
+            }
+        }
         System.out.println(score);
 
         return answer;
