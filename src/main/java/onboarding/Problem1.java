@@ -41,24 +41,24 @@ class Problem1 {
             return -1;
 
         //포비의 페이지 값
-        int pobi_left=compare(add(pobi.get(0)),mul(pobi.get(0)));
-        int pobi_right=compare(add(pobi.get(1)),mul(pobi.get(1)));
+        int pobiLeft=compare(add(pobi.get(0)),mul(pobi.get(0)));
+        int pobiRight=compare(add(pobi.get(1)),mul(pobi.get(1)));
         //포비 점수
-        int pobi_score=compare(pobi_left,pobi_right);
+        int pobiScore=compare(pobiLeft,pobiRight);
         // 크롱의 페이지 값
-        int crong_left=compare(add(crong.get(0)),mul(crong.get(0)));
-        int crong_right=compare(add(crong.get(1)),mul(crong.get(1)));
+        int crongLeft=compare(add(crong.get(0)),mul(crong.get(0)));
+        int crongRight=compare(add(crong.get(1)),mul(crong.get(1)));
         // 크롱 점수
-        int crong_score=compare(crong_left,crong_right);
+        int crongScore=compare(crongLeft,crongRight);
         // 승리자의 점수
-        int winner=compare(pobi_score,crong_score);
+        int winner=compare(pobiScore,crongScore);
 
         // result 값 반환
-        if (winner == pobi_score && winner !=crong_score)
+        if (winner == pobiScore && winner !=crongScore)
             return 1;
-        else if (winner == crong_score && winner !=pobi_score)
+        else if (winner == crongScore && winner !=pobiScore)
             return 2;
-        else if (winner == pobi_score && winner ==crong_score)
+        else if (winner == pobiScore && winner ==crongScore)
             return 0;
         else
             return -1;
