@@ -25,36 +25,6 @@ import java.util.List;
  * */
 
 public class Problem6 {
-
-    static void checkException(List<List<String>> forms){
-        for (int i = forms.size() - 1; i >= 0; i--) {
-            String regExp = "^[가-힣]*$";
-            // verify that the email is 11 to less than 20 and the email format is equal to "email.com"
-            if (11 > (forms.get(i).get(0).length()) || (forms.get(i).get(0).length()) >= 20
-                    ||!(Arrays.asList(forms.get(i).get(0).split("@")).get(1).equals("email.com"))) {
-                //System.out.println(forms.get(i) + " : 이메일은 11자 이상 20자 미만이며, \"email.com\"형식만 가능합니다.");
-                forms.remove(i);
-            }
-            // verify that the nickname is 1 to less than 20 and only available in Korean
-            else if (1 > (forms.get(i).get(1).length()) || (forms.get(i).get(1).length()) >= 20
-                    || !(forms.get(i).get(1).matches(regExp))){
-                //System.out.println(forms.get(i) + " : 닉네임은 1자 이상 20자 미만이며, 한글만 가능합니다.");
-                forms.remove(i);
-            }
-        }
-    }
-
-    static boolean checkNickname(List<String> experimentalList, List<String> controlList){
-        String experimentalNickname = experimentalList.get(1);
-        String controlNickname = controlList.get(1);
-        for (int i = 0; i < experimentalNickname.length() - 1; i++ ){
-            if (controlNickname.contains(experimentalNickname.substring(i, i + 2))) {
-                return true;
-            }
-        }
-        return false;
-    }
-
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         List<List<String>> crewList = new ArrayList<>(forms);
@@ -77,4 +47,34 @@ public class Problem6 {
         answer = doubleNickname;
         return answer;
     }
+
+    private static void checkException(List<List<String>> forms){
+        for (int i = forms.size() - 1; i >= 0; i--) {
+            String regExp = "^[가-힣]*$";
+            // verify that the email is 11 to less than 20 and the email format is equal to "email.com"
+            if (11 > (forms.get(i).get(0).length()) || (forms.get(i).get(0).length()) >= 20
+                    ||!(Arrays.asList(forms.get(i).get(0).split("@")).get(1).equals("email.com"))) {
+                //System.out.println(forms.get(i) + " : 이메일은 11자 이상 20자 미만이며, \"email.com\"형식만 가능합니다.");
+                forms.remove(i);
+            }
+            // verify that the nickname is 1 to less than 20 and only available in Korean
+            else if (1 > (forms.get(i).get(1).length()) || (forms.get(i).get(1).length()) >= 20
+                    || !(forms.get(i).get(1).matches(regExp))){
+                //System.out.println(forms.get(i) + " : 닉네임은 1자 이상 20자 미만이며, 한글만 가능합니다.");
+                forms.remove(i);
+            }
+        }
+    }
+
+    private static boolean checkNickname(List<String> experimentalList, List<String> controlList){
+        String experimentalNickname = experimentalList.get(1);
+        String controlNickname = controlList.get(1);
+        for (int i = 0; i < experimentalNickname.length() - 1; i++ ){
+            if (controlNickname.contains(experimentalNickname.substring(i, i + 2))) {
+                return true;
+            }
+        }
+        return false;
+    }
+
 }

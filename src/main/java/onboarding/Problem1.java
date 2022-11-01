@@ -29,56 +29,6 @@ import java.util.List;
  * */
 
 class Problem1 {
-
-    public static class Card {
-        List<Integer> getMax = new ArrayList<>();
-        Integer selectCard(List<Integer> player) {
-            // to check an exception to a page that is invalid or cannot be opened.
-            if ((player.get(0) % 2) == 0 || (player.get(1) % 2) != 0 || (player.get(1) - player.get(0)) > 1
-                    || player.get(0) == 1 || player.get(1) == 400){
-                return -1;
-            }
-
-            else {
-                // to get player's left and right pages
-                for (int i = 0; i < 2; i++) {
-                    // divide the number by each digit
-                    List<Integer> digits = new ArrayList<>();
-                    Integer getPage = player.get(i);
-                    while (getPage > 0) {
-                        digits.add(getPage % 10);
-                        getPage = getPage / 10;
-                    }
-                    // sum each number and add put it in the max list
-                    getMax.add(sumDigits(digits));
-                    // multiply each number and put it in the max list
-                    getMax.add(multiplicationDigits(digits));
-                    digits.clear();
-                }
-                return getMax.stream().max(Integer::compare).orElse(-1);
-            }
-        }
-
-        // function to find the sum of each number
-        Integer sumDigits(List<Integer> card) {
-            Integer sum = 0;
-            for (int i = 0; i < card.size(); i++) {
-                sum += card.get(i);
-            }
-            return sum;
-        }
-
-        // function to find the multiplication of each number
-        Integer multiplicationDigits(List<Integer> card) {
-            Integer multiplication = 1;
-            for (int i = 0; i < card.size(); i++) {
-                multiplication *= card.get(i);
-            }
-            return multiplication;
-        }
-
-    }
-
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         // pobi's card
@@ -105,4 +55,54 @@ class Problem1 {
 
         return answer;
     }
+}
+
+// make card class
+class Card {
+    List<Integer> getMax = new ArrayList<>();
+    Integer selectCard(List<Integer> player) {
+        // to check an exception to a page that is invalid or cannot be opened.
+        if ((player.get(0) % 2) == 0 || (player.get(1) % 2) != 0 || (player.get(1) - player.get(0)) > 1
+                || player.get(0) == 1 || player.get(1) == 400){
+            return -1;
+        }
+
+        else {
+            // to get player's left and right pages
+            for (int i = 0; i < 2; i++) {
+                // divide the number by each digit
+                List<Integer> digits = new ArrayList<>();
+                Integer getPage = player.get(i);
+                while (getPage > 0) {
+                    digits.add(getPage % 10);
+                    getPage = getPage / 10;
+                }
+                // sum each number and add put it in the max list
+                getMax.add(sumDigits(digits));
+                // multiply each number and put it in the max list
+                getMax.add(multiplicationDigits(digits));
+                digits.clear();
+            }
+            return getMax.stream().max(Integer::compare).orElse(-1);
+        }
+    }
+
+    // function to find the sum of each number
+    Integer sumDigits(List<Integer> card) {
+        Integer sum = 0;
+        for (int i = 0; i < card.size(); i++) {
+            sum += card.get(i);
+        }
+        return sum;
+    }
+
+    // function to find the multiplication of each number
+    Integer multiplicationDigits(List<Integer> card) {
+        Integer multiplication = 1;
+        for (int i = 0; i < card.size(); i++) {
+            multiplication *= card.get(i);
+        }
+        return multiplication;
+    }
+
 }

@@ -25,27 +25,6 @@ import java.util.Objects;
  * */
 
 public class Problem2 {
-
-    static List<Integer> findDuplication(List<String> cryptoList) {
-        List<Integer> duplicationList = new ArrayList<>();
-        for (int i = 1; i < cryptoList.size(); i++) {
-            if (Objects.equals(cryptoList.get(i - 1), cryptoList.get(i))) {
-                if (!duplicationList.contains(i - 1)){duplicationList.add(i - 1);}
-                if (!duplicationList.contains(i)){duplicationList.add(i);}
-            }
-        }
-        return duplicationList;
-    }
-
-    static List<String> removeDuplicationWords(List<Integer> duplicationIndex, List<String> cryptoList) {
-        for (int i = duplicationIndex.size()-1; i >= 0; i--) {
-            int removeIndex = duplicationIndex.get(i);
-            cryptoList.remove(removeIndex);
-        }
-        return cryptoList;
-    }
-
-
     public static String solution(String cryptogram) {
         StringBuilder answer = new StringBuilder("answer");
         String crypto = cryptogram;
@@ -71,5 +50,24 @@ public class Problem2 {
         }
 
         return answer.toString();
+    }
+
+    private static List<Integer> findDuplication(List<String> cryptoList) {
+        List<Integer> duplicationList = new ArrayList<>();
+        for (int i = 1; i < cryptoList.size(); i++) {
+            if (Objects.equals(cryptoList.get(i - 1), cryptoList.get(i))) {
+                if (!duplicationList.contains(i - 1)){duplicationList.add(i - 1);}
+                if (!duplicationList.contains(i)){duplicationList.add(i);}
+            }
+        }
+        return duplicationList;
+    }
+
+    private static List<String> removeDuplicationWords(List<Integer> duplicationIndex, List<String> cryptoList) {
+        for (int i = duplicationIndex.size()-1; i >= 0; i--) {
+            int removeIndex = duplicationIndex.get(i);
+            cryptoList.remove(removeIndex);
+        }
+        return cryptoList;
     }
 }
