@@ -20,29 +20,34 @@
 ([문제 요구사항](https://github.com/areyouhun/java-onboarding/blob/areyouhun/docs/PROBLEM1.md))
 
 ### 기능 목록
-- 포비와 크롱이가 선택한 페이지를 각각 List<Integer>에 담는다.
-- List의 요소 (페이지)를 검사한다.
-    - 연속된 두 수인가?
-    - 첫 번째 요소가 1 또는 399인가?
-    - 검사를 통과하지 못하면 예외를 발생시킨다.
-- 검사를 통과했을 경우 요소를 자릿수로 분리한 뒤 각각의 곱과 합을 구한다. 그리고 구한 값들 중 가장 큰 값을 반환한다.
-- 위의 과정으로 구한 포비의 최댓값과 크롱이의 최댓값을 두고 대소관계를 확인한다.
+- 포비의 페이지가 담긴 List 변수 <i>**pobi**</i>와 크롱의 페이지가 담긴 List 변수 <i>**crong**</i>이 매개변수로 주어진다.
+- <i>**pobi**</i>와 <i>**crong**</i>을 각각 클래스 `Pages`로 전달한다. 해당 클래스에서 플레이어가 고른 페이지들을 왼쪽 페이지와 오른쪽 페이지로 나눈 뒤 각각 필드 변수 <i>**leftPage**</i>와 <i>**rightPage**</i>에 할당한다.
+- 클래스 `PageValidator`로 포비와 크롱이 고른 페이지들이 유효한지 검사한다.
+    - 검사를 통과하지 못하면 **예외를 의미하는 숫자 -1**을 반환한다.
+- 검사를 통과했다면 클래스 `MaximumCalculator`로 플레이어의 최댓값을 구한다. 과정은 아래와 같다.
+    - `getMaximum` 메소드로 플레이어의 <i>**leftPage**</i>와 <i>**rightPage**</i>를 받는다.
+        - `getDigts` 메소드로 페이지를 자릿수로 분리한다. <i>(97 => 9와 7)</i>
+        - `compareCalculations` 메소드로 페이지의 곱과 합을 구한 뒤 더 큰 수를 반환한다. <i>(곱: 9X7 = 63, 합: 9+7=16이므로 해당 페이지는 곱이 최댓값)</i>
+    - 왼쪽 페이지의 최댓값과 오른쪽 페이지의 최댓값을 비교해 최종 최댓값을 구한다.
+- 포비와 크롱이의 최댓값을 구했다면 클래스 `CompareMaximums`로 둘을 비교한다.
+    - **포비의 최댓값이 더 클 경우 숫자 1**을 반환
+    - **크롱이의 최댓값이 더 클 경우 숫자 2**를 반환
+    - **같을 경우 숫자 0**을 반환
 
 ## 📌문제2
 ([문제 보기](https://github.com/areyouhun/java-onboarding/blob/areyouhun/docs/PROBLEM2.md))
 
 ### 기능 목록
-- 문자열 `cryptogram`의 길이가 2 미만이면 해당 문자열을 바로 반환한다.
-- 2 이상인 경우, `cryptogram`을 잘게 잘게 잘게 쪼개서 char 타입 배열 `previousString`에 넣는다.
-- List<character> `laterString`을 새로 선언한다. 이곳엔 연속하는 중복 문자가 **아닌!!** 문자들만 들어갈 예정이다.
-- for문을 돌려 `previousString`의 요소들을 검사한다. (**두 번째 요소부터 검사**)
-    - 현재 요소가 이전 요소와 일치하지 않으면 `laterString`에 이전 요소를 추가한다.
-    - 일치한다면 while문을 돌려서 일치하지 않는 요소가 등장할 때까지 인덱스를 건너 뛴다.
-- for문이 끝나면 `previousString`의 마지막 요소를 검사한다. (**마지막 요소를 검사하지 못하고 for문이 끝남**)
-- `laterString`을 매개값으로 새로운 문자열 `newCryptogram`을 생성한다.
-- `cryptogram`과 `newCryptogram`이 같은지 확인한다.
-    - 같지 않으면 `newCryptogram`을 함수 <code><b>solution</b></code>에 넣고 재호출한다.
-    - 같으면 `newCryptogram`을 반환한다.
+- 암호가 담긴 문자열 매개변수 <i>**cryptogram**</i>을 클래스 `CryptogramSolver`에 전달한다.
+    - <i>**cryptogram**</i>의 길이가 2 미만이면 그대로 반환한다.
+    - 길이가 2 이상인 경우, <i>**cryptogram**</i>을 글자들로 잘게 잘게 잘게 쪼갠 뒤 char 배열 변수 <i>**previousCharsOfCryptogram**</i>에 담는다. 또한 분석된 암호를 담을 List 변수 <i>**laterCharsOfCryptogram**</i>을 생성한다.
+    - `compareChars` 메소드로 <i>**previousCharsOfCryptogram**</i>의 요소 (글자)들을 각각 비교한다.
+        - for문 안 에서 이전 요소가 다음 요소와 다르면 이전 요소를 <i>**laterCharsOfCryptogram**</i>에 담는다.
+        - 두 요소가 서로 같다면 while문을 돌려서 같지 않은 요소가 등장할 때까지 인덱스를 증가시킨다.
+    - 요소 비교가 끝나면 <i>**previousCharsOfCryptogram**</i>의 마지막 요소 (글자)를 이전 요소와 비교한다. (원래라면 마지막 요소는 마지막 다음 요소와 비교해야 하지만 마지막 다음 요소라는 건 존재하지 않는다.)
+    - `charsToString` 메소드로 <i>**laterCharsOfCryptogram**</i>을 문자열로 만든 뒤 변수 <i>**newCryptogram**</i>에 할당한다.
+    - 처음에 주어졌던 문자열 변수 <i>**cryptogram**</i>과 <i>**newCryptogram**</i>의 값이 같은지 비교한다. 같으면 <i>**newCryptogram**</i>을 반환하고 다르면 <i>**newCryptogram**</i>을 매개변수로 위의 전 과정을 반복한다.
+- 반환된 값을 문자열 변수 <i>**answer**</i>에 담으면 완성!
 
 ## 📌문제3
 ([문제 보기](https://github.com/areyouhun/java-onboarding/blob/areyouhun/docs/PROBLEM3.md))
@@ -84,15 +89,17 @@
 ([문제 보기](https://github.com/areyouhun/java-onboarding/blob/areyouhun/docs/PROBLEM6.md))
 
 ### 기능 목록
-- 클래스 `UserInfo`를 이용해 이중 list인 매개변수 `forms`를 이메일 리스트와 닉네임 리스트로 분리한다.
-    - 클래스 `InputValidator`의 조건을 지킨 이메일과 닉네임만 통과된다.
-- 클래스 `DuplicateLettersFinder`로 주어진 닉네임들 중 **겹치는 글자**와 해당 닉네임의 **이메일**들을 추출한다.
-    - 겹치는 글자를 가진 닉네임과 이메일은 map 타입 필드인 `result`에 추가된다. `result`의 key에는 string 타입으로 **겹치는 글자**가, value에는 set 타입으로 **해당 이메일**들이 들어간다.
-    - for문을 통해 현재 닉네임이 다음 닉네임을 차례대로 검사한다.
-    - `chooseNicknames` 메소드로 검사할 두 닉네임을 고른 뒤 `compareLetters` 메소드로 **두 글자씩 비교**한다.
-    - 겹치는 글자를 발견하면 `result`에 새로 등록한다. 이때 해당 글자가 이미 key값으로 존재한다면 이메일들만 해당 key의 value에 추가한다. (value는 set 타입이라 중복은 알아서 걸러짐)
-    - 열심히 for문을 돌린다.
-- 클래스 `ResultView`를 이용해 `result`에서 이메일들만 오름차순으로 뽑아낸다. `result`는 map 타입이기 때문에 **겹치는 글자와 해당 이메일에 대해 여러 케이스가 존재할 수 있지만 주어진 문제는 한 케이스 ('제이')에 대한 이메일 명단을 요구하기 때문에 한 번 더 필터링할 필요가 있다.**
+- 이메일과 닉네임이 담긴 이중 List 변수 <i>**forms**</i>를 매개변수로 클래스 `UserInfo`에 전달한다.
+    - 매개변수 <i>**forms**</i>는 필드 변수 <i>**forms**</i>에 담긴다. 또한 <i>**forms**</i>에서 닉네임만 뽑아내 필드 변수 <i>**nicknames**</i>에 담는다.
+- 클래스 `UserInfo`를 매개변수로 클래스 `DuplicateFinder`에 전달한다.
+    - 겹치는 문자를 가진 닉네임들을 담을 Set 변수 <i>**nicknamesWithDuplicateLetters**</i>가 있다.
+    - `getNicknamesWithDuplicateLetters` 메소드로 클래스 `UserInfo`의 <i>**nicknames**</i>를 검사한다.
+        - for문을 돌려 현재 닉네임을 나타내는 문자열 변수 <i>**currentNickname**</i>와 다음 닉네임인 <i>**nextNickname**</i>을 비교한다.
+        - <i>**currentNickname**</i>을 두 글자씩 나눠서 해당 두 글자가 <i>**nextNickname**</i>에 들어있는지 확인한다. <i>(제이엠슨 => 제이, 이엠, 엠슨)</i>
+        - 들어있다면 <i>**nicknamesWithDuplicateLetters**</i>에 추가한다.
+- 모든 검사가 끝나면 클래스 `UserInfo`와 클래스 `DuplicateFinder`를 매개변수로 클래스 `ResultView`에 전달한다. 여기서 클래스 `DuplicateFinder`의 <i>**nicknamesWithDuplicateLetters**</i>을 참고해 클래스 `UserInfo`의 <i>**forms**</i>에서 겹치는 닉네임을 가진 이메일만 추출한다.   
+    - `updateResults`메소드로 해당 이메일들을 오름차순으로 정렬한다. (**문제에서 아이디와 도메인을 구분짓지 않았기에 이메일 전체를 정렬 기준으로 잡음**) 
+    - 정렬된 이메일을 `getResults` 메소드로 반환한다.
 
 ## 📌문제7
 ([문제 보기](https://github.com/areyouhun/java-onboarding/blob/areyouhun/docs/PROBLEM7.md))
