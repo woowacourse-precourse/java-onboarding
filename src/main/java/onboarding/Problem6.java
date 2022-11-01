@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
+import java.util.regex.Pattern;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -43,11 +44,11 @@ public class Problem6 {
     }
 
     private static boolean validateNickname(String nickname) {
-        return nickname.length() > 1 && nickname.length() < 20;
+        return nickname.length() > 1 && nickname.length() < 20 && Pattern.matches("^[가-힣]*$", nickname);
     }
 
     private static boolean validateEmail(String email) {
-        return email.length() > 10 && email.length() < 20;
+        return email.length() > 10 && email.length() < 20 && Pattern.matches("(.*)@email.com", email);
     }
 
     private static List<String> getEmailOfDuplicatedNicknameTrainee(List<Trainee> validTrainees) {
