@@ -97,6 +97,8 @@ public class Problem7 {
                 temp.add(recomList.get(i));
             }
 
+            Collections.sort(temp);
+
         }
 
 
