@@ -13,10 +13,18 @@ public class Problem5 {
     private static List<Integer> convertMoneyIntoCurrencies(int money) {
         List<Integer> convertedCurrencies = new ArrayList<>();
         for (int moneytaryUnit : MONEYTARY_UNITS) {
-            int convertedCount = money / moneytaryUnit;
-            money = money - convertedCount * moneytaryUnit;
+            int convertedCount = getConvertedCount(money, moneytaryUnit);
+            money -= getConvertedTotal(moneytaryUnit, convertedCount);
             convertedCurrencies.add(convertedCount);
         }
         return convertedCurrencies;
+    }
+
+    private static int getConvertedTotal(int moneytaryUnit, int convertedCount) {
+        return convertedCount * moneytaryUnit;
+    }
+
+    private static int getConvertedCount(int money, int moneytaryUnit) {
+        return money / moneytaryUnit;
     }
 }
