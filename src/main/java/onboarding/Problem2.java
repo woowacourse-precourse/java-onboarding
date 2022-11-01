@@ -34,4 +34,17 @@ public class Problem2 {
         lastValue(cryptogram);
         return String.valueOf(sb);
     }
+    public static String shortTextDuplication(String cryptogram) {
+        sb.setLength(0);
+        checkCurrent = false;
+        checkModifyText = false;
+        if (cryptogram.length() == 2) {
+            checkCurrent = checkDuplicate(cryptogram.charAt(0), cryptogram.charAt(1));
+            if (!checkCurrent) {
+                sb.append(cryptogram.charAt(0)).append(cryptogram.charAt(1));
+            }
+            return String.valueOf(sb);
+        }
+        return cryptogram;
+    }
 }
