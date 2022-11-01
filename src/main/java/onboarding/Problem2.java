@@ -19,14 +19,13 @@ public class Problem2 {
         StringBuffer sb = new StringBuffer();
         sb.append(cryptogram);
 
-        boolean a = true;
-
-        while (a) {
-            a = false;
+        boolean stop = true;
+        while (stop) {
+            stop = false;
             for (int i = 0; i < sb.length() - 1; i++) {
                 if (sb.charAt(i) == sb.charAt(i + 1)) {
                     sb.replace(i, i + 2, "");
-                    a = true;
+                    stop = true;
                 }
             }
         }
