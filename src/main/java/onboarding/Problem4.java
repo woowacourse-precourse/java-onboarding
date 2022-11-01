@@ -9,4 +9,9 @@ public class Problem4 {
         if (alpha >= 'a' && alpha <= 'z') return (char) ('a' + 'z' - alpha);
         return (char) (alpha);
     }
+
+    public static boolean canWord(String word) {
+        if (word.length() >= 1 && word.length() <= 1000) return true;
+        return false;
+    }
 }
