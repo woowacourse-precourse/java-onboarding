@@ -43,20 +43,20 @@ public class Problem7 {
     }
 
 
-//    public static List<String> friendsLst (List<List<String>> friends) {
-//        ArrayList<String> friendsLst = new ArrayList<>();
-//
-//        for(int i=0; i<friends.size(); i++) {
-//            if(!friendsLst.contains(friends.get(i).get(0))) {
-//                friendsLst.add(friends.get(i).get(0));
-//            }
-//            if (!friendsLst.contains(friends.get(i).get(1))) {
-//                friendsLst.add(friends.get(i).get(1));
-//            }
-//        }
-//        return friendsLst;
-//    }
-//
+    public static List<String> friendsLst (List<List<String>> friends) {
+        ArrayList<String> friendsLst = new ArrayList<>();
+
+        for(int i=0; i<friends.size(); i++) {
+            if(!friendsLst.contains(friends.get(i).get(0))) {
+                friendsLst.add(friends.get(i).get(0));
+            }
+            if (!friendsLst.contains(friends.get(i).get(1))) {
+                friendsLst.add(friends.get(i).get(1));
+            }
+        }
+        return friendsLst;
+    }
+
 //    public static Map makeFriendLst (List<String> friendLst, List<List<String>> friends) {
 //        Map<Integer, String> map = new HashMap<>();
 //
