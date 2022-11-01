@@ -10,20 +10,20 @@ public class Problem2 {
     }
 
     public String removeDuplication(String cryptogram) {
-        int cryptoLength = cryptogram.length();
-        if(cryptoLength <= 1) return cryptogram;
+        int lastIdx = cryptogram.length() - 1;
+        if(lastIdx < 1) return cryptogram;
 
         int lt = 0;
         int rt = 1;
         List<Character> cryptogramWithoutDuplication = new ArrayList<>();
 
-        while(rt < cryptoLength) {
+        while(rt <= lastIdx) {
             char prevChar = cryptogram.charAt(lt);
             char nextChar = cryptogram.charAt(rt);
             // 단어가 중복되지 않을 때
             if(prevChar != nextChar) {
                 cryptogramWithoutDuplication.add(prevChar);
-                if(rt == cryptoLength - 1) {
+                if(rt == lastIdx) {
                     // rt가 마지막 인덱스를 가리키는 경우 바로 추가한다.
                     cryptogramWithoutDuplication.add(nextChar);
                     break;
@@ -34,10 +34,10 @@ public class Problem2 {
             }
 
             // 단어가 중복될 때
-            while (rt < cryptoLength && prevChar == cryptogram.charAt(rt) ) {
+            while (rt <= lastIdx && prevChar == cryptogram.charAt(rt) ) {
                 rt++;
             }
-            if(rt == cryptoLength - 1) {
+            if(rt == lastIdx) {
                 // rt가 마지막 인덱스이고, 이 전의 문자와 같지 않는 경우 바로 추가한다.
                 cryptogramWithoutDuplication.add(cryptogram.charAt(rt));
                 break;
