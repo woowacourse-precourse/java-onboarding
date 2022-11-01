@@ -19,6 +19,7 @@ class Problem1 {
         User crongInfo = new User(CRONG, crong);
 
         if(pobiInfo.getMaxScore() == crongInfo.getMaxScore()) return 0;
+        if(pobiInfo.getMaxScore() == -1 || crongInfo.getMaxScore() == -1) return -1;
 
         return pobiInfo.getMaxScore() > crongInfo.getMaxScore() ?
                 pobiInfo.getReturnNumberIfWin() : crongInfo.getReturnNumberIfWin();

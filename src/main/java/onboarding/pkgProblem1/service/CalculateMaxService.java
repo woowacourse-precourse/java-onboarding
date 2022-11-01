@@ -18,10 +18,16 @@ public class CalculateMaxService {
      */
     public int ReturnMaxScore(List<Integer> userPageList) {
         List<Integer> userPage = userPageList;
+
+        if(Math.abs(userPage.get(0)-userPage.get(1))!=1)  return -1;
+        if(userPage.get(0)<=0 || userPage.get(1)>400) return -1;
+
         int[] leftArray, rightArray;
 
         leftArray = SplitNumber(userPage.get(0));
         rightArray = SplitNumber(userPage.get(1));
+
+
 
         return CalculateMax(leftArray, rightArray);
     }
