@@ -1,8 +1,8 @@
 package onboarding;
 
 public class Problem4 {
-    public static final int DIFFERENCE_OF_UPPER_LOWER = 32;
-    public static final int CHANGE_REFERENCE_VALUE = 155;
+    private static final int DIFFERENCE_OF_UPPER_LOWER = 32;
+    private static final int CHANGE_REFERENCE_VALUE = 155;
 
     public static String solution(String word) {
         StringBuilder sb = new StringBuilder();
@@ -13,15 +13,14 @@ public class Problem4 {
     }
 
     public static char getFinalChangeCharacter(char c) {
-        if (c >= 'A' && c <= 'Z') {
+        if (Character.isUpperCase(c)) {
             return getChangeCharacter(c);
-        } else if (c >= 'a' && c <= 'z') {
+        } else if (Character.isLowerCase(c)) {
             c = toUpperCase(c);
-            char tmp = getChangeCharacter(c);
-            return toLowerCase(tmp);
-        } else {
-            return c;
+            char changeChar = getChangeCharacter(c);
+            return toLowerCase(changeChar);
         }
+        return c;
     }
 
     public static char getChangeCharacter(char c) {
