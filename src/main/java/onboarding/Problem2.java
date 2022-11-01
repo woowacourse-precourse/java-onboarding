@@ -17,7 +17,7 @@ public class Problem2 {
     }
 
     public static String getRemovedDuplicatedString(String cryptogram) {
-        cryptogram += " ";
+        cryptogram = addBlankAtLastIndex(cryptogram);
         boolean prevDuplicated = false;
         boolean curDuplicated;
         String result = "";
@@ -30,6 +30,10 @@ public class Problem2 {
             prevDuplicated = curDuplicated;
         }
         return result;
+    }
+
+    private static String addBlankAtLastIndex(String cryptogram) {
+        return cryptogram + " ";
     }
 
     private static String getNotDuplicatedChar(Boolean curDuplication, Boolean prevDuplication, char previous) {
