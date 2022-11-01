@@ -1,10 +1,10 @@
 package onboarding;
 
 public class Problem4 {
-	public static final int PRE_a_IN_ASCII_TABLE = 96;
-	public static final int NEXT_z_IN_ASCII_TABLE = 123;
-	public static final int PRE_A_IN_ASCII_TABLE = 64;
-	public static final int NEXT_Z_IN_ASCII_TABLE = 91;
+	public static final char LOWER_SRC = 'a';
+	public static final char LOWER_DEST = 'z';
+	public static final char UPPER_SRC = 'A';
+	public static final char UPPER_DEST = 'Z';
 
 	public static final String ERROR_MESSAGE = "제한 사항을 위배했습니다.";
 	public static final int EXCEPTION = -1;
@@ -20,12 +20,12 @@ public class Problem4 {
 
 		for (int i = 0; i < word.length(); i++) {
 			letter = word.charAt(i);
-			if (letter > 'a' && letter < 'z') {
-				askiiSequence = letter - PRE_a_IN_ASCII_TABLE;
-				letters[i] = (char)(NEXT_z_IN_ASCII_TABLE - askiiSequence); // 뒤에서부터 tmp 번째 캐릭터를 대입
-			} else if (letter > 'A' && letter < 'Z') {
-				askiiSequence = letter - PRE_A_IN_ASCII_TABLE;
-				letters[i] = (char)(NEXT_Z_IN_ASCII_TABLE - askiiSequence);
+			if (letter > LOWER_SRC && letter < LOWER_DEST) {
+				askiiSequence = letter - 'a';
+				letters[i] = (char)('z' - askiiSequence); // 뒤에서부터 tmp 번째 캐릭터를 대입
+			} else if (letter > UPPER_SRC && letter < UPPER_DEST) {
+				askiiSequence = letter - 'A';
+				letters[i] = (char)('Z' - askiiSequence);
 			} else {
 				letters[i] = letter;
 			}
