@@ -24,4 +24,13 @@ class Problem1 {
         Biggest=Math.max(paper_left, paper_right);
         return Biggest;
     }
+
+    private static int add(int page){
+        sum=0;
+        while(page!=0){
+            sum+=page%10;
+            page/=10;
+        }
+        return sum;
+    }
 }
