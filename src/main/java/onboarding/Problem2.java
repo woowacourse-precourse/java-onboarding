@@ -6,7 +6,7 @@ public class Problem2 {
 
         for (int i = 1; i < str.length(); i++) {
             if (str.charAt(i) == first) {
-                return (i);
+                return i;
             }
         }
         return 0;
@@ -16,7 +16,7 @@ public class Problem2 {
         int last = crypt.length() - 1;
 
         for (int i = 0; i < last + 1; i++){
-            if ((i != last) && (crypt.charAt(i) == crypt.charAt(i+1))) {
+            if ( i != last && crypt.charAt(i) == crypt.charAt(i+1)) {
                 i += getIdx(crypt.substring(i));
                 continue;
             }
