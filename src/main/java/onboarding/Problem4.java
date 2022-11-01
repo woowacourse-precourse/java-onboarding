@@ -10,10 +10,10 @@ public class Problem4 {
         for (int i =0; i<word.length(); i++){
             int num = Integer.valueOf(word.charAt(i));
             if(word.charAt(i)==' ') result +=" ";
-            if(num >64 && num <91) { // 대문자 아스키 코드 A ~Z : 65~91
+            if(num >64 && num <92) { // 대문자 아스키 코드 A ~Z : 65~91
                 a = (char) Math.abs(155-num);
                 result += String.valueOf(a);}
-            if(num >97 && num <122) { // 소문자 아스키 코드 a ~z : 98 ~122
+            if(num >97 && num <123) { // 소문자 아스키 코드 a ~z : 98 ~122
                 a = (char) Math.abs(219-num);
                 result += String.valueOf(a);}
         }
