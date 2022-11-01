@@ -18,4 +18,30 @@ public class Problem6 {
         Collections.sort(answer);
         return answer;
     }
+
+    //같은 글자가 연속된 닉네임을 지은 경우, 이메일 목록에 추가
+    private static void checkDuplication(String email, String nickName){
+        String chunk;
+        //닉네임 길이가 1일 때 중복 확인
+        if (nickName.length()==1) {
+            chunk = nickName;
+            if (chunk_Email.containsKey(chunk)) {
+                emails.add(email);
+                emails.add(chunk_Email.get(chunk));
+            } else {
+                chunk_Email.put(chunk, email);
+            }
+        //닉네임 길이가 2이상 일 때 중복 확인
+        } else {
+            for (int i=0; i<nickName.length()-1; i++){
+                chunk = nickName.substring(i, i+2);
+                if (chunk_Email.containsKey(chunk)) {
+                    emails.add(email);
+                    emails.add(chunk_Email.get(chunk));
+                } else {
+                    chunk_Email.put(chunk, email);
+                }
+            }
+        }
+    }
 }
