@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 public class Problem7 {
     private static Map<String,Integer> recommendedFriendScores =new HashMap<>();
     private static List<String> userFriendList =new ArrayList<>();
+    private static final int LIMIT_SIZE = 5;
 
     private static class Friendship implements Comparable<Friendship> {
         private String id;
@@ -34,7 +35,7 @@ public class Problem7 {
 
         return friendships.stream()
                 .map(friend->friend.id)
-                .limit(5)
+                .limit(LIMIT_SIZE)
                 .collect(Collectors.toList());
     }
 
