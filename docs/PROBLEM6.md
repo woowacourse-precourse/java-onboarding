@@ -21,3 +21,13 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 체크리스트
+- 예외사항
+  - 따로 없을 것 같다.
+- 기능 요구사항
+  - [x] 같은 글자가 연속적으로 포함된 닉네임을 신청한 크루들의 이메일 목록을 return 한다.
+  - [x] 이메일은 오름차순으로 정렬하고 중복은 제거한다.
+    - 중복 제거와 정렬 방식에는
+      - TreeSet을 이용하거나
+      - stream의 distinct와 sorted를 이용하거나
