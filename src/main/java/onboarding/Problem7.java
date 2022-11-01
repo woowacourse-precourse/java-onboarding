@@ -23,6 +23,7 @@ public class Problem7 {
             currentright.add(leftfriend);
             userfriends.put(rightfriend, currentright);
         }
+
         for (String name : userfriends.get(user)) {
             for (String nextperson : userfriends.get(name)) {
                 int point = 0;
@@ -41,13 +42,11 @@ public class Problem7 {
             if(pointboard.get(visit) != null) point = pointboard.get(visit);
             pointboard.put(visit, point+1);
         }
+
         List<String> answer = new ArrayList<>(pointboard.keySet());
         answer.sort((left, right) ->  {
-            if(pointboard.get(left).equals(pointboard.get(right))){
-                return left.compareTo(right);
-            } else {
-                return pointboard.get(right) - pointboard.get(left);
-            }
+            if(pointboard.get(left).equals(pointboard.get(right))) return left.compareTo(right);
+            else return pointboard.get(right) - pointboard.get(left);
         });
         return answer;
     }
