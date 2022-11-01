@@ -1,8 +1,9 @@
 package onboarding;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -10,6 +11,7 @@ public class Problem6 {
         return answer;
     }
 }
+
 
 class Email {
     private static final String DOMAIN = "@email.com";
@@ -34,14 +36,19 @@ class NickName {
     public NickName(String nickName) {
         this.nickName = nickName;
     }
+
     public Set<String> duplicatedCases() {
         Set<String> duplicatedCasesSet = new HashSet<>();
 
-        for(int i=0;i<nickName.length()-2;i++){
-            String nickNameSubString= nickName.substring(i,i+2);
+        for (int i = 0; i < nickName.length() - 2; i++) {
+            String nickNameSubString = nickName.substring(i, i + 2);
             duplicatedCasesSet.add(nickNameSubString);
         }
         return duplicatedCasesSet;
+    }
+
+    public String getNickName() {
+        return nickName;
     }
 }
 
@@ -53,8 +60,36 @@ class Crew {
         this.email = email;
         this.nickName = nickName;
     }
+
+    public NickName getNickName() {
+        return nickName;
+    }
+
+    public Email getEmail(){
+        return email;
+    }
 }
 
 class NickNameDuplicate {
+    public Set<Crew> findCrewWithDuplicatedNickName(List<Crew> crews) {
 
+        Set<Crew> crewsByDuplicatedNickName = new HashSet<>();
+        HashMap<String, Crew> nickNameAndEmail = new HashMap<>();
+
+        for (Crew crew : crews) {
+            NickName nickName = crew.getNickName();
+            Set<String> allCases = nickName.duplicatedCases();
+
+            for (String subString : allCases) {
+                if (!nickNameAndEmail.containsKey(subString)) {
+                    nickNameAndEmail.put(subString, crew);
+                    continue;
+                }
+
+                crewsByDuplicatedNickName.add(nickNameAndEmail.get(subString));
+                crewsByDuplicatedNickName.add(crew);
+            }
+        }
+        return crewsByDuplicatedNickName;
+    }
 }
