@@ -10,8 +10,18 @@ public class Problem4 {
         }
         return alpha;
     }
+
+    private static String convertSentence (String sentence) {
+        StringBuilder tmp = new StringBuilder();
+        for (int i = 0; i < sentence.length(); i++) {
+            tmp.append(convertLetter(sentence.charAt(i)));
+        }
+        return tmp.toString();
+    }
+
     public static String solution(String word) {
         String answer = "";
+        answer = convertSentence(word);
         return answer;
     }
 }
