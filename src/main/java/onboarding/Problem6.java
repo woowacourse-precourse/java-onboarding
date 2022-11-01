@@ -10,7 +10,7 @@ public class Problem6 {
         List<List<String>> constrainedEmailList = new ArrayList<>();
 
         List<Crew> crews = getCrewList(forms);
-        List<List<Crew>> combinations = getCombination(crews);
+        List<List<Crew>> combinations = getCrewCombination(crews);
 
         for (List<Crew> crewPair : combinations) {
             List<String> newConstrainedEmails = getConstrainedEmailList(crewPair);
@@ -38,7 +38,7 @@ public class Problem6 {
         Crew crew1 = crewPair.get(0);
         Crew crew2 = crewPair.get(1);
 
-        if (isSimilar(crew1, crew2)){
+        if (isNameSimilar(crew1, crew2)){
             emailList.add(crew1.getEmail());
             emailList.add(crew2.getEmail());
         }
@@ -46,9 +46,9 @@ public class Problem6 {
         return emailList;
     }
 
-    static boolean isSimilar(Crew crew1, Crew crew2){
+    static boolean isNameSimilar(Crew crew1, Crew crew2){
 
-        Stream<String> tokenStream = getTokens(crew1).stream();
+        Stream<String> tokenStream = getNameTokens(crew1).stream();
         String name2 = crew2.getName();
         Stream<String> containedTokens =  tokenStream.filter(token -> name2.contains(token));
 
@@ -56,7 +56,7 @@ public class Problem6 {
 
     }
 
-    static List<String> getTokens(Crew crew) {
+    static List<String> getNameTokens(Crew crew) {
         List<String> result = new ArrayList<String>();
 
         String name = crew.getName();
@@ -68,7 +68,7 @@ public class Problem6 {
         return result;
     }
 
-    static List<List<Crew>> getCombination(List<Crew> crews){
+    static List<List<Crew>> getCrewCombination(List<Crew> crews){
         List<List<Crew>> result = new ArrayList<>();
         int keyCnt = crews.size();
 
