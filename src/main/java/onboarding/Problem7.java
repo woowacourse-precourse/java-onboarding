@@ -4,7 +4,7 @@ package onboarding;
 import onboarding.problem7.FriendsException;
 import onboarding.problem7.RecommendFriendFinder;
 import onboarding.problem7.RecommendationResult;
-import onboarding.problem7.SNSId;
+import onboarding.problem7.SnsId;
 
 import java.util.List;
 import java.util.Map;
@@ -14,21 +14,21 @@ public class Problem7 {
     private static final int MAX = 10_000;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        SNSId userId = new SNSId(user);
+        SnsId userId = new SnsId(user);
 
         checkFriends(friends);
         checkMaxVisit(visitors);
 
         RecommendFriendFinder recommendFriendFinder = new RecommendFriendFinder();
-        List<List<SNSId>> friendsIds = convertFriendsId(friends);
+        List<List<SnsId>> friendsIds = convertFriendsId(friends);
         Map<String, Integer> acquaintanceResult = recommendFriendFinder.getAcquaintanceResult(userId, friendsIds);
         Map<String, Integer> visitResult = recommendFriendFinder.getVisitResult(userId, friendsIds, convertVisitorIds(visitors));
 
         return RecommendationResult.getRecommendResult(acquaintanceResult,visitResult);
     }
 
-    private static List<SNSId> convertVisitorIds(List<String> visitors) {
-        return visitors.stream().map(SNSId::new).collect(Collectors.toList());
+    private static List<SnsId> convertVisitorIds(List<String> visitors) {
+        return visitors.stream().map(SnsId::new).collect(Collectors.toList());
     }
 
     private static void checkMaxVisit(List<String> visitors) {
@@ -42,9 +42,9 @@ public class Problem7 {
         checkMAX(friends);
     }
 
-    private static List<List<SNSId>> convertFriendsId(List<List<String>> friends) {
+    private static List<List<SnsId>> convertFriendsId(List<List<String>> friends) {
         return friends.stream()
-                .map(friend -> friend.stream().map(SNSId::new)
+                .map(friend -> friend.stream().map(SnsId::new)
                         .collect(Collectors.toList()))
                 .collect(Collectors.toList());
     }

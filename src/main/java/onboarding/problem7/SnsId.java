@@ -3,11 +3,11 @@ package onboarding.problem7;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
-public class SNSId {
+public class SnsId {
     private static final Pattern ID_RANGE = Pattern.compile("^[a-z]{1,30}$");
     private final String user;
 
-    public SNSId(String user) {
+    public SnsId(String user) {
         checkInput(user);
         this.user = user;
     }
@@ -21,7 +21,7 @@ public class SNSId {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        SNSId snsId = (SNSId) o;
+        SnsId snsId = (SnsId) o;
         return Objects.equals(user, snsId.user);
     }
 

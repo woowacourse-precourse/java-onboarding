@@ -8,8 +8,8 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 public class SnsIdTest {
     @Test
     void if_wrong_input() {
-        assertAll(() -> assertThrows(UserInputException.class, () -> new SNSId("fxemhfaduuajgtbpxlzznixnqtslnpm")),
-                () -> assertThrows(UserInputException.class, () -> new SNSId("")),
-                () -> assertThrows(UserInputException.class, () -> new SNSId("AZ")));
+        assertAll(() -> assertThrows(UserInputException.class, () -> new SnsId("fxemhfaduuajgtbpxlzznixnqtslnpm")),
+                () -> assertThrows(UserInputException.class, () -> new SnsId("")),
+                () -> assertThrows(UserInputException.class, () -> new SnsId("AZ")));
     }
 }

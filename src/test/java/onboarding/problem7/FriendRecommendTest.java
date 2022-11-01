@@ -13,12 +13,12 @@ public class FriendRecommendTest {
 
     @Test
     void recommend_by_acquaintances_among_visitors_() {
-        SNSId user = new SNSId("mrko");
-        SNSId donut = new SNSId("donut");
-        SNSId andole = new SNSId("andole");
-        SNSId shakevan = new SNSId("shakevan");
-        SNSId jun = new SNSId("jun");
-        List<List<SNSId>> friends = List.of(
+        SnsId user = new SnsId("mrko");
+        SnsId donut = new SnsId("donut");
+        SnsId andole = new SnsId("andole");
+        SnsId shakevan = new SnsId("shakevan");
+        SnsId jun = new SnsId("jun");
+        List<List<SnsId>> friends = List.of(
                 List.of(donut, andole),
                 List.of(donut, jun),
                 List.of(donut, user),
@@ -38,17 +38,17 @@ public class FriendRecommendTest {
 
     @Test
     void getVisitResult() {
-        SNSId user = new SNSId("mrko");
-        SNSId donut = new SNSId("donut");
-        SNSId andole = new SNSId("andole");
-        SNSId shakevan = new SNSId("shakevan");
-        SNSId jun = new SNSId("jun");
-        SNSId aizza = new SNSId("aizza");
-        SNSId bepperoni = new SNSId("bepperoni");
-        SNSId cheese = new SNSId("cheese");
-        SNSId bedi = new SNSId("bedi");
+        SnsId user = new SnsId("mrko");
+        SnsId donut = new SnsId("donut");
+        SnsId andole = new SnsId("andole");
+        SnsId shakevan = new SnsId("shakevan");
+        SnsId jun = new SnsId("jun");
+        SnsId aizza = new SnsId("aizza");
+        SnsId bepperoni = new SnsId("bepperoni");
+        SnsId cheese = new SnsId("cheese");
+        SnsId bedi = new SnsId("bedi");
 
-        List<List<SNSId>> friends = List.of(
+        List<List<SnsId>> friends = List.of(
                 List.of(donut, andole),
                 List.of(donut, jun),
                 List.of(donut, user),
@@ -59,7 +59,7 @@ public class FriendRecommendTest {
                 List.of(shakevan, user),
                 List.of(shakevan, cheese)
         );
-        List<SNSId> visitors = List.of(bedi, bedi,donut, bedi, shakevan, aizza, cheese, bepperoni);
+        List<SnsId> visitors = List.of(bedi, bedi,donut, bedi, shakevan, aizza, cheese, bepperoni);
         Map<String, Integer> result = new HashMap<>();
         result.put("bedi", 3);
         result.put("aizza", 1);
