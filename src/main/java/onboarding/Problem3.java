@@ -1,6 +1,14 @@
 package onboarding;
 
+import java.util.Arrays;
+
 public class Problem3 {
+    private static int[] numbers = {3, 6, 9};
+
+    public static boolean hasThreeSixNine(int target) {
+        return Arrays.stream(numbers).anyMatch(number -> number == target);
+    }
+
     public static int countTargetNumber(int targetNumber) {
         int cumulativeCount = 0;
         int exponent = (Integer.toString(targetNumber).length() - 1);
@@ -8,7 +16,7 @@ public class Problem3 {
         while (exponent >= 0) {
             int digit = (int) Math.pow(10, exponent);
             int target = targetNumber / digit;
-            if (target == 3 || target == 6 || target == 9) {
+            if (hasThreeSixNine(target)) {
                 cumulativeCount++;
             }
 
