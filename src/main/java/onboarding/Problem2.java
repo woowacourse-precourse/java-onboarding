@@ -55,7 +55,7 @@ public class Problem2 {
         String answer;
         List<Character> charArr = new ArrayList<>();
 
-        if (validation(cryptogram)){
+        if (!validation(cryptogram)){
             return "입력 오류";
         }
 

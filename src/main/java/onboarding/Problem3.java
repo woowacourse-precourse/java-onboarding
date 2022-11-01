@@ -25,7 +25,7 @@ public class Problem3 {
     public static int solution(int number) {
         int sum = 0;
 
-        if (validation(number)) {
+        if (!validation(number)) {
             return -1;
         }
 
