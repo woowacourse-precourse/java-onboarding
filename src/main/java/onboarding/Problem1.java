@@ -76,10 +76,10 @@ class Player {
     }
 }
 class PageGame {
-    private final int WRONG_INPUT = -1;
-    private final int POBI_WIN = 1;
-    private final int CRONG_WIN = 2;
-    private final int DRAW = 0;
+    private static final int WRONG_INPUT = -1;
+    private static final int PLAYER1_WIN = 1;
+    private static final int PLAYER2_WIN = 2;
+    private static final int DRAW = 0;
 
     public int play(Player player1, Player player2) {
 
@@ -137,11 +137,11 @@ class PageGame {
     private int getGameResult(int player1Score, int player2Score) {
 
         if (player1Score > player2Score) {
-            return POBI_WIN;
+            return PLAYER1_WIN;
         }
 
         if (player1Score < player2Score) {
-            return CRONG_WIN;
+            return PLAYER2_WIN;
         }
 
         return DRAW;
