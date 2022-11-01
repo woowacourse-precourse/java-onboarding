@@ -5,17 +5,14 @@ import java.util.stream.Collectors;
 
 public class Problem6 {
     public static Map<Integer, String> userEmailMap;
-    public static Map<String, Integer> subStrUserIndexMap;
-    public static List<Integer> duplicatedIndexList;
-    public static final int EMAIL_INDEX = 0;
-    public static final int NICK_NAME_INDEX = 1;
+    public static Map<String, Integer> subStrUserIndexMap = new HashMap<>();
+    public static List<Integer> duplicatedIndexList = new ArrayList<>();
+    private static final int EMAIL_INDEX = 0;
+    private static final int NICK_NAME_INDEX = 1;
 
 
     public static List<String> solution(List<List<String>> forms) {
         initUserEmailMap(forms);
-        initSubStrUserIndexMap();
-        initDuplicatedIndexList();
-
         List<String> userInfo;
         for (int userIndex = 0; userIndex < forms.size(); userIndex++) {
             userInfo = forms.get(userIndex);
@@ -24,14 +21,6 @@ public class Problem6 {
 
         List<Integer> indexList = getDistinctIndexList();
         return getSortedEmailListByIndex(indexList);
-    }
-
-    public static void initSubStrUserIndexMap() {
-        subStrUserIndexMap = new HashMap<>();
-    }
-
-    public static void initDuplicatedIndexList() {
-        duplicatedIndexList = new ArrayList<>();
     }
 
     public static void initUserEmailMap(List<List<String>> forms) {
@@ -58,12 +47,16 @@ public class Problem6 {
     }
 
     public static List<Integer> getDistinctIndexList() {
-        return duplicatedIndexList.stream().distinct().collect(Collectors.toList());
+        return duplicatedIndexList.stream()
+                .distinct()
+                .collect(Collectors.toList());
     }
 
     public static List<String> getSortedEmailListByIndex(List<Integer> indexList) {
         List<String> emailsList = new ArrayList<>();
-        indexList.forEach(userIndex -> emailsList.add(userEmailMap.get(userIndex)));
+        for (Integer userIndex : indexList) {
+            emailsList.add(userEmailMap.get(userIndex));
+        }
         Collections.sort(emailsList);
         return emailsList;
     }
