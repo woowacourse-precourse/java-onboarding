@@ -22,6 +22,10 @@ public class Problem6 {
             checkDuplicate(nickname, nickString, member, duplicateNick);
         }
 
+        //이메일 문자열 중복 제거 및 오름차순 정렬
+        answer=removeDuplication(duplicateNick);
+        answer.sort(Comparator.naturalOrder());
+
         return answer;
     }
 
@@ -35,6 +39,14 @@ public class Problem6 {
                 }
             }
         }
+    }
+
+    //리스트 중복 제거
+    static List<String> removeDuplication(List<String> list) {
+        Set<String> set = new HashSet<String>(list);
+        List<String> newList = new ArrayList<String>(set);
+
+        return newList;
     }
 
 }
