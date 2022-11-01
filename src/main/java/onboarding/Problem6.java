@@ -6,22 +6,6 @@ import java.util.Collections;
 
 public class Problem6 {
 
-    static String getEmail(List<List<String>> forms, int i) {
-
-        List<String> formOne = forms.get(i);
-        String email = formOne.get(0);
-
-        return email;
-    }
-
-    static String getNick(List<List<String>> forms, int i) {
-
-        List<String> formOne = forms.get(i);
-        String nick = formOne.get(1);
-
-        return nick;
-    }
-
     static ArrayList<String> splitNick(String nick) {
         ArrayList<String> splitedNick = new ArrayList<>();
         for (int i = 0; i < nick.length() - 1; i++) {
@@ -39,8 +23,6 @@ public class Problem6 {
                 if (nick.get(idx) == nicks) {
                     break;
                 } else if (nicks.contains(splitedNicks)) {
-                    System.out.println("nicks: " + nicks);
-                    System.out.println("splitedNicks: " + splitedNicks);
                     isDup = true;
                     return isDup;
                 }
@@ -57,8 +39,8 @@ public class Problem6 {
         ArrayList<String> nick = new ArrayList<>();
 
         for (List<String> form : forms) {
-            email.add(getEmail(form));
-            nick.add(getNick(form));
+            email.add(form.get(0));
+            nick.add(form.get(1));
         }
 
         for (int i = 0; i < nick.size(); i++) {
