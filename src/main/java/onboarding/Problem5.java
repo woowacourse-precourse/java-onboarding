@@ -15,6 +15,7 @@ public class Problem5 {
             answer.add(tempMoney / startDiv);
             tempMoney = tempMoney % startDiv;
         }
+        answer.add(tempMoney / 1);
         return answer;
     }
     public static int divideBy5(int div){
