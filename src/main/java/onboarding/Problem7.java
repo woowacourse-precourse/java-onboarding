@@ -13,10 +13,24 @@ import java.util.List;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
-
+        HashMap<String, SNSUser> friendList = new HashMap<>();
+        for (List<String> friend:
+             friends) {
+            String firstFriend = friend.get(0);
+            String secondFriend = friend.get(1);
+            addFriend(friendList, firstFriend, secondFriend);
+            addFriend(friendList, secondFriend, firstFriend);
+        }
 
 
         return answer;
+    }
+
+    public static HashMap<String, SNSUser> addFriend(HashMap<String, SNSUser> friendList, String me, String myFriend){
+        SNSUser mySNS = friendList.getOrDefault(me, new SNSUser());
+        mySNS.friendList.add(myFriend);
+        friendList.put(me, mySNS);
+        return friendList;
     }
 
 
