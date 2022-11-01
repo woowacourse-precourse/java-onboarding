@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 public class Problem2 {
     public static String solution(String cryptogram) {
         Decoder decoder = new Decoder(cryptogram);
-        return decoder.decode();
+        return decoder.getDecodedCryptogram();
     }
 }
 
@@ -21,7 +21,7 @@ class Decoder {
                 .collect(Collectors.toList());
     }
 
-    String decode() {
+    String getDecodedCryptogram() {
         while (deleteOverlappingChar()) {
             continue;
         }

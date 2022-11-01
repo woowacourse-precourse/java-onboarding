@@ -1,13 +1,12 @@
 package onboarding;
 
-import java.util.*;
 
 public class Problem4 {
     public static String solution(String word) {
-        return getDictWord(word);
+        return toDictWord(word);
     }
 
-    private static String getDictWord(String word) {
+    private static String toDictWord(String word) {
 
         char[] chars = word.toCharArray();
         char[] result = new char[word.length()];
