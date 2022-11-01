@@ -22,8 +22,7 @@ public class Problem7 {
     static Map<String, Integer> scoreList;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-
+        List<String> answer;
         userFriend = new ArrayList<>();
         acrossFriends = new ArrayList<>();
         scoreList = new TreeMap<>();
@@ -31,6 +30,8 @@ public class Problem7 {
         isFriend(user, friends);
         isAcrossFriend(user, friends);
         checkVisitor(user, visitors);
+
+        answer = recommendFriends(scoreList);
 
         return answer;
     }
@@ -46,6 +47,11 @@ public class Problem7 {
         }
     }
 
+    /** 점수 부여 **/
+    private static void getScore(String person, int score) {
+        scoreList.put(person, scoreList.getOrDefault(person, 0) + score);
+    }
+
     /** user의 친구의 친구(user와 함께 아는 친구) **/
     private static void isAcrossFriend(String user, List<List<String>> friends) {
         for (List<String> friend : friends) {
@@ -58,7 +64,7 @@ public class Problem7 {
                 continue;
             }
 
-            /* 위 예외사항 제외하고 user친구 목록에 포함되는 사람이 있다면, 다른 한 명을 함께아는 친구목록(acrossFriends)에 추가 */
+            /* 위 예외사항 제외하고 user친구 목록에 포함되는 사람이 있다면, 다른 한 명을 함께아는 친구목록(acrossFriends)에 추가 + 10점 부여 */
             if (userFriend.contains(friend.get(0))) {
                 acrossFriends.add(friend.get(1));
                 getScore(friend.get(1), 10);
@@ -67,11 +73,6 @@ public class Problem7 {
                 getScore(friend.get(0), 10);
             }
         }
-    }
-
-    /** 점수 부여 **/
-    private static void getScore(String person, int score) {
-        scoreList.put(person, scoreList.getOrDefault(person, 0) + score);
     }
 
     /** 방문자 확인 **/
@@ -84,4 +85,27 @@ public class Problem7 {
         }
     }
 
+    /** 친구 추천 **/
+    private static List<String> recommendFriends(Map<String, Integer> scoreList) {
+        List<String> answer = new ArrayList<>();
+        LinkedList<Map.Entry<String, Integer>> entryList = new LinkedList<>(scoreList.entrySet());
+
+        entryList.sort((s1, s2) -> s1.getValue() == s2.getValue() ?
+                s1.getKey().compareTo(s2.getKey()) : s2.getValue() - s1.getValue());
+
+        /* 최대 5명 return */
+        int cnt = 0;
+        for (Map.Entry<String, Integer> entry : entryList) {
+            if (cnt == 5) {
+                break;
+            }
+            //추천점수가 0이 아닌 경우
+            if (entry.getValue() != 0) {
+                answer.add(entry.getKey());
+                cnt++;
+            }
+        }
+
+        return answer;
+    }
 }
