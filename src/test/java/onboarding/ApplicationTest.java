@@ -1,11 +1,5 @@
 package onboarding;
 
-import onboarding.problem1.Problem1;
-import onboarding.problem2.Problem2;
-import onboarding.problem3.Problem3;
-import onboarding.problem4.Problem4;
-import onboarding.problem5.Problem5;
-import onboarding.problem6.Problem6;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 

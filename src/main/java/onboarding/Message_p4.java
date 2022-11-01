@@ -1,12 +1,9 @@
-package onboarding.problem4;
+package onboarding;
 
-import java.util.AbstractMap;
-import java.util.Map;
-
-public class Message {
+public class Message_p4 {
     private String message;
 
-    public Message(String message) {
+    public Message_p4(String message) {
         this.message = message;
     }
 

@@ -1,7 +1,7 @@
-package onboarding.problem1;
+package onboarding;
 
-import static onboarding.problem1.Problem1.END;
-import static onboarding.problem1.Problem1.START;
+import static onboarding.Problem1.END;
+import static onboarding.Problem1.START;
 
 public class Page {
     private int left;

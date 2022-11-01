@@ -1,6 +1,5 @@
-package onboarding.problem5;
+package onboarding;
 
-import java.util.Collections;
 import java.util.List;
 
 public class Problem5 {

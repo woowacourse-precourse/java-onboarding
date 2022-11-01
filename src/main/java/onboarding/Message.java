@@ -1,4 +1,4 @@
-package onboarding.problem2;
+package onboarding;
 
 public class Message {
     private String message;
