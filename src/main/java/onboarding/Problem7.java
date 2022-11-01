@@ -12,7 +12,7 @@ public class Problem7 {
         myFriends(my_friends, user, friends); // 내 친구 목록 추출
 
         bothFriends(user, my_friends, friends); // 사용자와 함께 아는 친구의 수 점수 계산
-//        visitFriends(my_friends, visitors); // 사용자의 타임 라인에 방문한 횟수 점수 계산
+        visitFriends(my_friends, visitors); // 사용자의 타임 라인에 방문한 횟수 점수 계산
 //        sortScore(); // 추천점수 및 이름순 정렬
 
 //        // 최대 5명 리턴
@@ -58,6 +58,21 @@ public class Problem7 {
                     if(!score.containsKey(relationship.get(0))) score.put(relationship.get(0), 10);
                     else score.put(relationship.get(0), score.get(relationship.get(0)) + 10);
                 }
+            }
+        }
+    }
+
+    /**
+     * 사용자의 타임 라인에 방문한 친구 점수 계산 함수
+     * @param my_friends
+     * @param visitors
+     */
+    public static void visitFriends(List<String> my_friends, List<String> visitors) {
+        int cnt = 0;
+        for(String v : visitors) {
+            if(!my_friends.contains(v)) { // 이미 아는 친구가 아닐 경우
+                cnt = Collections.frequency(visitors, v);
+                score.put(v, cnt * 1); // 사용자의 타임 라인에 방문한 횟수 * 1점
             }
         }
     }
