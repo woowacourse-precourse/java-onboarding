@@ -56,4 +56,15 @@ public class Problem7 {
             }
         }
     }
+
+    private static void calculateVisitScore(List<String> visitors) {
+        for (String visitor : visitors) {
+            if (notFriends.contains(visitor)) {
+                notFriends_Score.put(visitor, notFriends_Score.get(visitor) + 1);
+            } else if (!alreadyFriends.contains(visitor)) {
+                notFriends_Score.put(visitor, 1);
+                notFriends.add(visitor);
+            }
+        }
+    }
 }
