@@ -3,23 +3,23 @@ package onboarding;
 public class Problem4 {
 
     static char changeUpperElement (char element) {
-        int elementascii = element;
-        if (elementascii >= 65 && elementascii <= 77) {
-            elementascii = 78 + (77 - elementascii);
-        }else if (elementascii > 77 && elementascii <= 90) {
-            elementascii = 77 - (elementascii - 78);
+        int elementAscii = element;
+        if (elementAscii >= 65 && elementAscii <= 77) {
+            elementAscii = 78 + (77 - elementAscii);
+        }else if (elementAscii > 77 && elementAscii <= 90) {
+            elementAscii = 77 - (elementAscii - 78);
         }
-        return (char)elementascii;
+        return (char)elementAscii;
     }
 
     static char changeLowerElement (char element) {
-        int elementascii = element;
-        if (elementascii >= 97 && elementascii <= 109) {
-            elementascii = 110 + (109 - elementascii);
-        }else if (elementascii <= 122 && elementascii > 109) {
-            elementascii = 109 - (elementascii - 110);
+        int elementAscii = element;
+        if (elementAscii >= 97 && elementAscii <= 109) {
+            elementAscii = 110 + (109 - elementAscii);
+        }else if (elementAscii <= 122 && elementAscii > 109) {
+            elementAscii = 109 - (elementAscii - 110);
         }
-        return (char)elementascii;
+        return (char)elementAscii;
     }
 
     public static String solution(String word) {
