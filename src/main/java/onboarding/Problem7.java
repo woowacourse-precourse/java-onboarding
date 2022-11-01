@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     private static Map <String,Set <String>> friendsRelationMap;
@@ -11,7 +12,14 @@ public class Problem7 {
         relationScore(user);
         visitedScore(user, visitors);
 
-        return null;
+        return recommendScoreMap.entrySet()
+                .stream()
+                .sorted(Collections.reverseOrder(Map.Entry.<String,Integer>comparingByValue())
+                        .thenComparing(Map.Entry.comparingByKey()))
+                .limit(5)
+                .filter(recommendFriend -> recommendFriend.getValue() != 0)
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
     }
 
     private static void relationScore(String user) {
