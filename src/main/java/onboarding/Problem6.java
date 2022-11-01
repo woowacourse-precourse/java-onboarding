@@ -23,6 +23,11 @@ public class Problem6 {
                 hashList.put(key, forms.get(i).get(0));
             }
         }
+        List<String> collect = emailList.stream().sorted().collect(Collectors.toList());
+        answer = collect;
+        for(int k=0;k< collect.size();k++){
+            System.out.println(collect.get(k));
+        }
         return answer;
     }
 }
