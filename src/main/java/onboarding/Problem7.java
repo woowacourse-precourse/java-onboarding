@@ -10,6 +10,21 @@ public class Problem7 {
         return newFriend;
     }
 
+    private static void calWithAlreadyFriend(List<String> alreadyFriend, List<List<String>> exceptUserList, Map<String, Integer> newFriend) {
+        for (List<String> friend : exceptUserList) {
+            if (isAlreadyFriend(friend.get(0), alreadyFriend) && !isAlreadyFriend(friend.get(1), alreadyFriend)) {
+                calculate(newFriend, friend.get(1), 10);
+            }
+            if (!isAlreadyFriend(friend.get(0), alreadyFriend) && isAlreadyFriend(friend.get(1), alreadyFriend)) {
+                calculate(newFriend, friend.get(0), 10);
+            }
+            if (!isAlreadyFriend(friend.get(0), alreadyFriend) && !isAlreadyFriend(friend.get(1), alreadyFriend)) {
+                calculate(newFriend, friend.get(1), 10);
+                calculate(newFriend, friend.get(0), 10);
+            }
+        }
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> alreadyFriend = new ArrayList<>();
         List<List<String>> candidate = new ArrayList<>();
