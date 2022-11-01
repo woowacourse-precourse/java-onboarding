@@ -1,30 +1,29 @@
 package onboarding;
 
 public class Problem3 {
+    private final static int MIN_NUMBER = 1;
+    private final static int MAX_NUMBER = 10000;
+
     public static int solution(int number) {
+        int answer = 0;
         int digit = 10000;
 
-        int answer = 0;
-
+        validateNumberRange(number);
         int num = number;
+
         while(digit >= 10){
             int quotient = num / digit;
-            for(int i = 0; i <= quotient; i++){
-                System.out.println("i = " + i + ", num / digit = " + num + " / " + digit);
 
+            for(int i = 0; i <= quotient; i++){
                 int rest = num - (i * digit);
 
                 if(rest < 10){
-                    System.out.println(num + " - (" + i + " * " + digit + ") == " + (num - (i * digit)));
-                    // 마지막
                     if(i % 3 == 0 && i > 0){
 
                         answer += (rest + 1);
-                        System.out.println(rest + 1 + ", " + answer);
                     }
 
                     answer += rest / 3;
-                    System.out.println(rest / 3  +" , " + answer);
                     return answer;
 
                 }else{
@@ -36,10 +35,7 @@ public class Problem3 {
                         }
                     }
                 }
-
-                System.out.println("answer = " + answer);
             }
-
             num %= digit;
             digit /= 10;
         }
@@ -47,12 +43,10 @@ public class Problem3 {
         return answer;
     }
 
-
-    public static void main(String[] args) {
-        int a = solution(33);
-//        int b = solution(9);
-
-        System.out.println(a);
-//        System.out.println(b);
+    public static void validateNumberRange(int number){
+        if(number < MIN_NUMBER || number > MAX_NUMBER){
+            throw new IllegalArgumentException("number 는 " + MIN_NUMBER + " 이상, " +
+                    + MAX_NUMBER + "이하인 자연수이어야 한다.");
+        }
     }
 }
