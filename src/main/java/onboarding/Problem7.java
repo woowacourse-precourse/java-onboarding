@@ -13,27 +13,32 @@ import java.util.*;
 public class Problem7 {
     static final int VISIT = 1;
     static final int TOGETHER_HAVE_FRIEND = 10;
+    static final int MAX_RETURN_SIZE = 5;
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> userFriendList = GetFriendShipFromName(friends, user);
         Map<String, Integer> friendshipScore = new HashMap<>();
+
+        List<String> userFriendList = GetFriendShipFromName(friends, user);
         friend(friendshipScore, userFriendList, friends);
         visitCheck(friendshipScore, visitors);
         alreadyFriendCheck(friendshipScore, userFriendList);
+
         return resultSort(friendshipScore);
     }
 
     public static List<String> GetFriendShipFromName(List<List<String>> friendRelations, String user) {
-        List<String> userfriendList = new LinkedList<>();
-        userfriendList.add(user);
+        List<String> userFriendList = new LinkedList<>();
+        userFriendList.add(user);
         for (List<String> friendRelation : friendRelations) {
             if (friendRelation.contains(user)) {
-                friendRelationAddUser(userfriendList, friendRelation, user);
+                friendRelationAddUser(userFriendList, friendRelation, user);
             }
         }
-        return userfriendList;
+        return userFriendList;
     }
 
-    public static void friendRelationAddUser(List<String> userFriendList, List<String> friendRelation, String user) {
+    public static void friendRelationAddUser(List<String> userFriendList,
+                                             List<String> friendRelation,
+                                             String user) {
         for (String friendName : friendRelation) {
             if (!friendName.equals(user)) {
                 userFriendList.add(friendName);
@@ -41,20 +46,24 @@ public class Problem7 {
         }
     }
 
-    public static void friend(Map<String, Integer> friendshipScore, List<String> userFriend, List<List<String>> friends) {
+    public static void friend(Map<String, Integer> friendshipScore,
+                              List<String> userFriend,
+                              List<List<String>> friends) {
         for (String name : userFriend) {
             List<String> nameFriendList = GetFriendShipFromName(friends, name);
             friendListCheck(friendshipScore, nameFriendList, TOGETHER_HAVE_FRIEND);
         }
     }
 
-    public static void friendListCheck(Map<String, Integer> friendshipScore, List<String> list, int score) {
+    public static void friendListCheck(Map<String, Integer> friendshipScore,
+                                       List<String> list, int score) {
         for (String name : list) {
             friendScoreCalculate(friendshipScore, name, score);
         }
     }
 
-    public static void friendScoreCalculate(Map<String, Integer> friendshipScore, String name, int score) {
+    public static void friendScoreCalculate(Map<String, Integer> friendshipScore,
+                                            String name, int score) {
         if (friendshipScore.containsKey(name)) {
             friendshipScore.replace(name, friendshipScore.get(name) + score);
         } else {
@@ -66,7 +75,8 @@ public class Problem7 {
         friendListCheck(friendshipScore, visitors, VISIT);
     }
 
-    public static void alreadyFriendCheck(Map<String, Integer> friendshipScore, List<String> userFriend) {
+    public static void alreadyFriendCheck(Map<String, Integer> friendshipScore,
+                                          List<String> userFriend) {
         for (String name : userFriend) {
             friendshipScore.remove(name);
         }
@@ -82,7 +92,7 @@ public class Problem7 {
             return o2.getValue().compareTo(o1.getValue());
         });
 
-        for (int i = 0; i < 5 && i < entries.size(); i++) {
+        for (int i = 0; i < MAX_RETURN_SIZE && i < entries.size(); i++) {
             Map.Entry<String, Integer> entry = entries.get(i);
             System.out.println(entry.getKey());
             answer.add(entry.getKey());
