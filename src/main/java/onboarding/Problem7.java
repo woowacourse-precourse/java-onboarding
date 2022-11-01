@@ -21,15 +21,13 @@ public class Problem7 {
         for (String userFriend : userFriends) {
             for (List<String> strings : friends) {
                 if (!(strings.get(0).equals(user) || strings.get(1).equals(user))) {
-                    final String friend;
-                    final int score;
                     if (strings.get(0).equals(userFriend)) {
-                        friend = strings.get(1);
-                        score = friendScore.get(friend) + 10;
+                        String friend = strings.get(1);
+                        int score = friendScore.get(friend) + 10;
                         friendScore.put(friend, score);
                     } else if (strings.get(1).equals(userFriend)) {
-                        friend = strings.get(0);
-                        score = friendScore.get(friend) + 10;
+                        String friend = strings.get(0);
+                        int score = friendScore.get(friend) + 10;
                         friendScore.put(friend, score);
                     }
                 }
@@ -38,7 +36,7 @@ public class Problem7 {
         }
 
         for (String visitor : visitorPeople) {
-            final int score = friendScore.get(visitor) + 1;
+            int score = friendScore.get(visitor) + 1;
             friendScore.put(visitor, score);
         }
 
@@ -46,8 +44,8 @@ public class Problem7 {
 
         List<String> friendScoreKeySet = new ArrayList<>(friendScore.keySet());
         friendScoreKeySet.sort((key1, key2) -> {
-            final Integer key1Value = friendScore.get(key1);
-            final Integer key2Value = friendScore.get(key2);
+            Integer key1Value = friendScore.get(key1);
+            Integer key2Value = friendScore.get(key2);
             if (Objects.equals(key1Value, key2Value)) return key1.compareTo(key2);
             return key2Value.compareTo(key1Value);
         });

@@ -9,8 +9,8 @@ class Problem1 {
             return -1;
         }
 
-        final int finalPobiNum = bigOne(addNum(pobi.get(0)), muxNum(pobi.get(0)), addNum(pobi.get(1)), muxNum(pobi.get(1)));
-        final int finalCrongNum = bigOne(addNum(crong.get(0)), muxNum(crong.get(0)), addNum(crong.get(1)), muxNum(crong.get(1)));
+        int finalPobiNum = bigOne(addNum(pobi.get(0)), muxNum(pobi.get(0)), addNum(pobi.get(1)), muxNum(pobi.get(1)));
+        int finalCrongNum = bigOne(addNum(crong.get(0)), muxNum(crong.get(0)), addNum(crong.get(1)), muxNum(crong.get(1)));
 
         if (finalPobiNum > finalCrongNum) return 1;
         else if (finalPobiNum < finalCrongNum) return 2;
