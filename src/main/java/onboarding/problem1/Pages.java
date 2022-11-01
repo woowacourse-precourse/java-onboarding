@@ -1,6 +1,6 @@
 package onboarding.problem1;
 
-import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Pages {
@@ -22,5 +22,23 @@ public class Pages {
         if (pageList.get(0).getPageNumber() % 2 == 0) {
             throw new IllegalArgumentException();
         }
+    }
+
+    public int getMaxScore() {
+        return Math.max(getMaxScoreBySum(), getMaxScoreByProduct());
+    }
+
+    public int getMaxScoreBySum() {
+        return pageList.stream()
+                .map(page -> page.getSumOfPageDigits())
+                .max(Comparator.comparing(Integer::intValue))
+                .get();
+    }
+
+    public int getMaxScoreByProduct() {
+        return pageList.stream()
+                .map(page -> page.getProductOfPageDigits())
+                .max(Comparator.comparing(Integer::intValue))
+                .get();
     }
 }
