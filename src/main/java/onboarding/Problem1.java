@@ -26,15 +26,19 @@ class Problem1 {
     }
 
     public static int getPossibleMax(int num) {
-        int sum = Stream.of(String.valueOf(num).split(""))
+        return Math.max(getSum(num), getProduct(num));
+    }
+
+    public static int getSum(int num) {
+        return Stream.of(String.valueOf(num).split(""))
                 .mapToInt(Integer::parseInt)
                 .sum();
+    }
 
-        int product = Stream.of(String.valueOf(num).split(""))
+    public static int getProduct(int num) {
+        return Stream.of(String.valueOf(num).split(""))
                 .mapToInt(Integer::parseInt)
                 .reduce(1, (a,b) -> a * b);
-
-        return Math.max(sum, product);
     }
 
     public static boolean isException(List<Integer> pages) {
