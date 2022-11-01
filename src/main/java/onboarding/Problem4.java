@@ -6,6 +6,29 @@ public class Problem4 {
     public static String solution(String word) {
         String answer = "";
 
+        ArrayList<String> upperList = getAlphabetList(true);
+        ArrayList<String> lowerList = getAlphabetList(false);
+
+        char[] wordArr = word.toCharArray();
+
+        for (char c : wordArr) {
+            int num = (int) c;
+
+            // 공백
+            if (num == 32) {
+                answer += " ";
+            }
+            // 대문자
+            else if (num < 91) {
+                answer += upperList.get(num - 65);
+            }
+            // 소문자
+            else if (num > 96) {
+                answer += lowerList.get(num - 97);
+            }
+
+        }
+        
         return answer;
     }
 
