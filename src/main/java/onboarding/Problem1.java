@@ -53,6 +53,15 @@ class Problem1 {
         points.add(productOfDigit(rightPage));
         return Collections.max(points);
     }
+    private static int comparePoint(int pobiPoint, int crongPoint) {
+        if (pobiPoint > crongPoint) {
+            return 1;
+        }
+        if (pobiPoint < crongPoint) {
+            return 2;
+        }
+        return 0;
+    }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
