@@ -13,6 +13,7 @@ class Problem1 {
         int pobiScore = getScore(pobi);
         int crongScore = getScore(crong);
 
+        answer = getWinner(pobiScore, crongScore);
         return answer;
     }
     // 페이지가 맞으면 1, 아니면 -1
@@ -65,5 +66,13 @@ class Problem1 {
             sum *= numbers[k];
         }
         return sum;
+    }
+
+    private static int getWinner(int num1, int num2) {
+        if (num1 > num2)  // 포비 win
+            return  1;
+        if (num1 < num2)  // 크롱 win
+            return 2;
+        return 0;         // 무승부
     }
 }
