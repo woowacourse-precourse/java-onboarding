@@ -22,11 +22,11 @@ public class Problem7 {
 		answer = recommend(user);
 		return answer;
 	}
-	public static void makeFriendRelation(List<String> friend) {
+	private static void makeFriendRelation(List<String> friend) {
 		addFriendRelation(friend.get(0), friend.get(1));
 		addFriendRelation(friend.get(1), friend.get(0));
 	}
-	public static void addFriendRelation(String friend1, String friend2) {
+	private static void addFriendRelation(String friend1, String friend2) {
 		List<String> newFriend = new ArrayList<>();
 		if (friendRelation.containsKey(friend1)) {
 			newFriend = friendRelation.get(friend1);
@@ -34,7 +34,7 @@ public class Problem7 {
 		newFriend.add(friend2);
 		friendRelation.put(friend1, newFriend);
 	}
-	public static void plusScoreByFriend(String user) {
+	private static void plusScoreByFriend(String user) {
 		if(!friendRelation.containsKey(user)){
 			return;
 		}
@@ -43,23 +43,23 @@ public class Problem7 {
 			plusFriendScore(userFriend);
 		}
 	}
-	public static void plusFriendScore(String userFriend) {
+	private static void plusFriendScore(String userFriend) {
 		final int friendScore = 10;
 		List<String> userFriendOfFriends = friendRelation.get(userFriend);
 		for (String userFriendOfFriend : userFriendOfFriends) {
 			plusScore(userFriendOfFriend, friendScore);
 		}
 	}
-	public static void plusScoreByVisitor(List<String> visitors) {
+	private static void plusScoreByVisitor(List<String> visitors) {
 		for (String visitor : visitors) {
 			plusVisitorScore(visitor);
 		}
 	}
-	public static void plusVisitorScore(String visitor) {
+	private static void plusVisitorScore(String visitor) {
 		final int visitorScore = 1;
 		plusScore(visitor, visitorScore);
 	}
-	public static void plusScore(String name, int score) {
+	private static void plusScore(String name, int score) {
 		int newScore = score;
 		if (Score.containsKey(name)) {
 			newScore += Score.get(name);

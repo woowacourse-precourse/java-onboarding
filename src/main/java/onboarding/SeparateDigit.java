@@ -25,19 +25,19 @@ public class SeparateDigit {
 				|| firstPage % 2 == 0
 				|| firstPage - bookPage.get(1) != -1);
 	}
-	public int score() {
+	private int score() {
 		int sum = sumSeparatedNumber();
 		int mul = multiplySeparatedNumber();
 		return Math.max(sum, mul);
 	}
-	public int sumSeparatedNumber() {
+	private int sumSeparatedNumber() {
 		int sum = 0;
 		for (int i = 0; i < size; i++) {
 			sum += separatedNumber[i];
 		}
 		return sum;
 	}
-	public int multiplySeparatedNumber() {
+	private int multiplySeparatedNumber() {
 		int mul = 1;
 		for (int i = 0; i < size; i++) {
 			mul *= separatedNumber[i];

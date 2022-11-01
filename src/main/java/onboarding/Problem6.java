@@ -19,7 +19,7 @@ public class Problem6 {
 		answer = new ArrayList<>(emailToBeSent);
 		return answer;
 	}
-	public static void checkNickName(List<String> form) {
+	private static void checkNickName(List<String> form) {
 		HashMap<String, String> myUsedNickNamePart = new HashMap<>();
 		String myEmail = form.get(0);
 		String myNickName = form.get(1);
@@ -30,7 +30,7 @@ public class Problem6 {
 		}
 		usedNickNamePart.putAll(myUsedNickNamePart);
 	}
-	public static void checkNickNamePart(String myNickNamePart, String myEmail) {
+	private static void checkNickNamePart(String myNickNamePart, String myEmail) {
 		if (usedNickNamePart.containsKey(myNickNamePart)) {
 			emailToBeSent.add(usedNickNamePart.get(myNickNamePart));
 			emailToBeSent.add(myEmail);

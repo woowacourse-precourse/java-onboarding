@@ -8,7 +8,7 @@ public class Problem3 {
 		}
 		return answer;
 	}
-	public static int countingClaps(int n) {
+	private static int countingClaps(int n) {
 		int count = 0;
 		int number = n;
 		while (number > 0) {
