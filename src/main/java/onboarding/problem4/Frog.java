@@ -45,10 +45,10 @@ public class Frog {
 	}
 
 	private boolean isLowerAlphabet(char c) {
-		return Character.isAlphabetic(c) && Character.isLowerCase(c);
+		return (c >= 97) && (c <= 122);
 	}
 
 	private boolean isHigherAlphabet(char c) {
-		return Character.isAlphabetic(c) && (!Character.isLowerCase(c));
+		return (c >= 65) && (c <= 90);
 	}
 }
