@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.TreeMap;
+import java.util.Map.Entry;
+import java.util.Comparator;
 
 public class Problem7 {
 
@@ -42,6 +44,27 @@ public class Problem7 {
         consider_friend_of_friend(user);
         consider_visitor(user, visitors);
 
+    }
+
+    static List<String> get_recommended_friend_list(){
+
+        List<Entry<String, Integer>> list_entries = new ArrayList<Entry<String, Integer>>(score_map.entrySet());
+
+        Collections.sort(list_entries, new Comparator<Entry<String, Integer>>() {
+            public int compare(Entry<String, Integer> obj1, Entry<String, Integer> obj2)
+            {
+                return obj2.getValue().compareTo(obj1.getValue());
+            }
+        });
+
+        List<String> recommended_friend_list = new ArrayList<String>();
+
+        for(Entry<String, Integer> entry : list_entries) {
+            if(recommended_friend_list.size() > MAX_LIST_SIZE) break;
+            recommended_friend_list.add(entry.getKey());
+        }
+
+        return recommended_friend_list;
     }
 
     static void add_relationship(String user1, String user2){
