@@ -17,7 +17,6 @@ public class Problem7 {
     private static final int MIN_FRIEND_RELATIONSHIP_SIZE = 1;
     private static final int MAX_FRIEND_RELATIONSHIP_SIZE = 10000;
     private static final int USER_IDS_SIZE = 2;
-    private static final int MIN_VISITORS_SIZE = 0;
     private static final int MAX_VISITORS_SIZE = 10000;
     private static final String USER_ID_REGEX = "^[a-z]+$";
     private static final String EXCEPTION_MESSAGE_PREFIX = "[ERROR] : ";
