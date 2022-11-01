@@ -12,6 +12,7 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         List<String> userFriends = getUserFriends(user, friends);
+        Map<String, Integer> scoreMap = getScoreMap(friends, userFriends, visitors);
         
         return answer;
     }
@@ -28,6 +29,10 @@ public class Problem7 {
     	}
     	
     	return userFriends;
+    }
+    
+    private static Map<String, Integer> getScoreMap(List<List<String>> friends, List<String> userFriends, List<String> visitors){
+    	return calculateScoreVisitors(visitors, calculateScoreFriendOfFriend(friends, userFriends));
     }
     
     private static Map<String, Integer> calculateScoreFriendOfFriend(List<List<String>> friends, List<String> userFriends){
