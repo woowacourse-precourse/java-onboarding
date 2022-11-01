@@ -13,7 +13,7 @@ public class Problem2 {
         Character prevChar = ' ';
         boolean isRemoved = false;
         for(int idx = 1; idx < modifyCrypto.length(); idx++){
-            if(modifyCrypto.charAt(idx - 1) == modifyCrypto.charAt(idx) && isRemoved != true){
+            if(modifyCrypto.charAt(idx - 1) == modifyCrypto.charAt(idx) && !isRemoved){
                 prevChar = modifyCrypto.charAt(idx);
                 modifyCrypto = modifyCrypto.substring(0,idx - 1) + modifyCrypto.substring(idx + 1);
                 idx -= 2;
@@ -22,7 +22,7 @@ public class Problem2 {
                 isRemoved = true;
                 continue;
             }
-            if(prevChar == modifyCrypto.charAt(idx) && isRemoved == true){
+            if(prevChar == modifyCrypto.charAt(idx) && isRemoved){
                 prevChar = modifyCrypto.charAt(idx);
                 modifyCrypto = modifyCrypto.substring(0,idx) + modifyCrypto.substring(idx + 1);
                 idx -=1;
@@ -48,8 +48,7 @@ public class Problem2 {
 
     
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        answer = completelyRemove(cryptogram);
+        String answer = completelyRemove(cryptogram);
         isFinished = false;
         return answer;
     }
