@@ -17,7 +17,24 @@ public class Problem7 {
         List<String> friends_part = friends.stream().flatMap(Collection::stream).collect(Collectors.toList());  // friends를 1d list로 만듬
         friends_part.addAll(visitors);  // 1차원이 된 friends와 visitors를 합침
         Set<String> all_friend = new HashSet<>(friends_part);   // 주어진 전체 인물들의 이름이 담긴 Set 객체 세팅 완료
-        System.out.println(all_friend);
+//        System.out.println(all_friend);
+
+        Map<String, List<String>> proximity_node = new HashMap<>();
+        for (List<String> a : friends) {
+            for (int i = 0; i < 2; i++) {
+                int res_idx = (i + 1) % 2;  // 다른 한쪽 index
+                String now_node = a.get(i); // 선택된 노드
+                String remain_node = a.get(res_idx);    // 다른 노드
+                if (proximity_node.containsKey(now_node)) { // Map 객체에 해당 노드가 있을 경우
+                    List<String> temp = proximity_node.get(now_node);   // 해당 노드의 관계리스트
+                    temp.add(remain_node);  // 해당 노드의 관계리스트에 다른 친구 추가
+                    proximity_node.replace(now_node, temp); // 해당 노드로 교체
+                } else {    // Map 객체에 해당 노드가 없을 경우(처음 넣을 때)
+                    proximity_node.put(now_node, new ArrayList<>(Arrays.asList(remain_node)));  // 노드 세팅
+                }
+            }
+        }
+        System.out.println(proximity_node);
 
         return answer;
     }
