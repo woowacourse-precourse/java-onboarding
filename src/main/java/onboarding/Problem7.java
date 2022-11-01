@@ -28,6 +28,21 @@ public class Problem7 {
         }
     }
 
+    public static void addFriendPoint(String user) {
+        List <String> list = map.get(user);
+        for(int i=0; i<list.size(); i++) {
+            String friend = list.get(i);
+            System.out.println("friend "+friend);
+            List <String> friendList = map.get(friend);
+            for(int j=0; j<friendList.size(); j++) {
+                String curFriend = friendList.get(j);
+                if(curFriend==user) continue;
+                System.out.println("curFriend "+curFriend);
+                addPoint(curFriend, 10);
+            }
+        }
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         for(int i=0; i<friends.size(); i++) {
             String friend1 = friends.get(i).get(0);
