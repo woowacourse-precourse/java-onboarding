@@ -5,11 +5,13 @@ import java.util.*;
 public class Problem7 {
     private static final int FRIEND_POINT = 10;
     private static final int VISITOR_POINT = 1;
+    private static final int MAX_PEOPLE = 5;
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         Set<String> peopleSet = getPeopleSet(friends, visitors);
         Map<String, Set<String>> relationMap = getRelationMap(friends, peopleSet);
         Map<String, Integer> pointMap = getPointMap(relationMap, peopleSet, user, visitors);
+        answer = getRank(pointMap);
         return answer;
     }
 
@@ -72,5 +74,20 @@ public class Problem7 {
         }
         pointMap.remove(user);
         return pointMap;
+    }
+    public static List<String> getRank(Map<String, Integer> pointMap) {
+        List<String> rank = new ArrayList<>();
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(pointMap.entrySet());
+
+        entryList.sort((Map.Entry<String, Integer> s1, Map.Entry<String, Integer> s2)
+                -> s2.getValue() - s1.getValue());
+
+        for(Map.Entry<String, Integer> entry : entryList) {
+            if(rank.size() == MAX_PEOPLE) {
+                break;
+            }
+            rank.add(entry.getKey());
+        }
+        return rank;
     }
 }
