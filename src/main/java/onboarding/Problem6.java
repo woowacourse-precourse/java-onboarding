@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer = new ArrayList<>();
         List<List<String>> wordsList = new ArrayList<>();
 
         //중복이 안된 닉네임은 1, 중복이 있는 닉네임은 0
@@ -16,6 +16,7 @@ public class Problem6 {
             duplicatedNickIdx[i] = 1;
         }
 
+        
         for (List<String> crew : forms) {
             List<String> words = findWords(crew.get(1));
             System.out.println("words = " + words);
@@ -25,8 +26,9 @@ public class Problem6 {
             wordsList.add(words);
 
         }
-
-
+        
+        
+        answer = addNickNamesInAnswer(answer,duplicatedNickIdx,forms);
 
 
 
@@ -57,9 +59,6 @@ public class Problem6 {
         for (String w : words) {
 
             for (int i=0; i < wordsList.size(); i++) {
-                if (duplicatedNickIdx[i] == 0) {
-                    continue;
-                }
 
 
                 if (wordsList.get(i).contains(w)) {
@@ -70,6 +69,18 @@ public class Problem6 {
         }
         
         return duplicatedNickIdx;
+    }
+
+
+    public static List<String> addNickNamesInAnswer (List<String> answer, int[] duplicatedNickIdx, List<List<String>> forms) {
+        
+        for (int i =0; i < duplicatedNickIdx.length; i++){
+            if (duplicatedNickIdx[i]==0){
+                answer.add(forms.get(i).get(0));
+            }
+        }
+        
+        return  answer;
     }
 
     public static void main(String[] args) {
