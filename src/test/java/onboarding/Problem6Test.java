@@ -4,8 +4,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.*;
 
-import static org.assertj.core.api.Assertions.assertThat;
-
 class Problem6Test {
 
     static List<List<String>> forms = List.of(
