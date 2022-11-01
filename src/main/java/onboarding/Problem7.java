@@ -50,14 +50,11 @@ public class Problem7 {
 
         // 4. 점수, 이름 순으로 정렬
         List<Map.Entry<String, Integer>> scoresList = scores.entrySet()
-                .stream().sorted(new Comparator<Map.Entry<String, Integer>>() {
-                    @Override
-                    public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
-                        if (o1.getValue().equals(o2.getValue()))
-                            return o1.getKey().compareTo(o2.getKey());
-                        else
-                            return -o1.getValue().compareTo(o2.getValue());
-                    }
+                .stream().sorted((o1, o2) -> {
+                    if (o1.getValue().equals(o2.getValue()))
+                        return o1.getKey().compareTo(o2.getKey());
+                    else
+                        return -o1.getValue().compareTo(o2.getValue());
                 })
                 .collect(Collectors.toList());
 
