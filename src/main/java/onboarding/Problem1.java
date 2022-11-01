@@ -4,22 +4,24 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
         if(!(ExceptionHandling(pobi) && ExceptionHandling(crong))) return -1;
 
+        return getAnswer(pobi, crong);
+    }
+
+    public static int getAnswer(List<Integer> pobi, List<Integer> crong){
         int prst = getMax(pobi);
         int crst = getMax(crong);
 
         if(prst > crst){
-            answer = 1;
+            return 1;
         }
         else if (prst < crst) {
-            answer = 2;
+            return 2;
         }
         else {
-            answer = 0;
+            return 0;
         }
-        return answer;
     }
 
     public static int getMax(List<Integer> pageList){

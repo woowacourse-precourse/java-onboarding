@@ -2,12 +2,20 @@ package onboarding;
 
 public class Problem3 {
     public static int solution(int number) {
+
+        String numStr = convertNumToStr(number);
+
+
+        return calculateClap(numStr);
+    }
+
+    public static String convertNumToStr(int number){
+        return String.valueOf(number);
+    }
+
+    public static int calculateClap(String numStr){
         int answer = 0;
-
-        String numStr = String.valueOf(number);
         int len = numStr.length();
-
-
         for(int i=0; i<len; i++){
             int prevhead = (i == 0) ? 0 : Integer.parseInt(numStr.substring(0,i));
 
@@ -20,13 +28,11 @@ public class Problem3 {
 
             int power = len - 1 -i;
 
-            if(head > 0) answer += (head - 1)/3 * Math.pow(10, power); // 자릿수는 같지만 number보다 작은 수들의 박수 수
+            if(head > 0) answer += (head - 1)/3 * Math.pow(10, power); // 자릿수는 같지만 number 보다 작은 수들의 박수 수
 
             answer += 3*Math.pow(10, power)*prevhead; // 상위 자릿수에서 발생하는 현재 자릿수의 박수 수
-        } // 각 자릿수 마다 반복
+        } // 각 자릿수 마다 반복수로 인해 발생하는 박수 수
 
         return answer;
     }
-
-
 }

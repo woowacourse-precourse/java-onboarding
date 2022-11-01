@@ -2,24 +2,41 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = new String(word);
 
-        int len = answer.length();
-        for(int i=0; i<len; i++){
-            char now = answer.charAt(i);
+        return switchStr(word);
+    }
 
-            if(now >= 'A' && now <= 'Z'){
-                now = (char)('Z' - (now - 'A'));
+
+    public static String switchStr(String word){
+        char update;
+        int len = word.length();
+
+        for(int i=0; i<len;i++){
+
+            update = word.charAt(i);
+
+            if(update >= 'A' && update <= 'Z'){
+                update = switchUpperCase(update);
             }
-            else if(now >= 'a' && now <='z'){
-                now = (char)('z' - (now - 'a'));
+            if(update >= 'a' && update <='z'){
+                update = switchLowerCase(update);
             }
 
-
-            answer = answer.substring(0, i)+now +answer.substring(i+1);
-
-
+            word = updateStr(update, word, i);
         }
-        return answer;
+
+        return word;
+    }
+
+    public static String updateStr(char update, String word, int idx){
+        return word.substring(0, idx)+update +word.substring(idx+1);
+    }
+
+    public static char switchUpperCase(char now){
+        return (char)('Z' - (now - 'A'));
+    }
+
+    public static char switchLowerCase(char now){
+        return (char)('z' - (now - 'a'));
     }
 }

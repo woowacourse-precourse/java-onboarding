@@ -6,8 +6,13 @@ import java.util.List;
 
 public class Problem5 {
     public static List<Integer> solution(int money) {
+
+        return exchangeToCash(money);
+    }
+
+    public static List<Integer> exchangeToCash(int money){
+        List<Integer> cash = buildCash();
         List<Integer> answer = new ArrayList<Integer>();
-        List<Integer> cash = List.of(50000,10000,5000,1000,500,100,50,10,1);
 
         for(int c : cash){
             int num = money / c;
@@ -16,5 +21,9 @@ public class Problem5 {
         }
 
         return answer;
+    }
+
+    public static List<Integer> buildCash(){
+        return List.of(50000,10000,5000,1000,500,100,50,10,1);
     }
 }
