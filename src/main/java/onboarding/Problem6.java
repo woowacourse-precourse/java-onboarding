@@ -3,7 +3,9 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
+import java.util.TreeMap;
 import java.util.TreeSet;
 
 public class Problem6 {
@@ -13,28 +15,25 @@ public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
         Set<String> answer = new TreeSet<>(Comparator.comparing(s -> s.substring(0, s.length() - EMAIL_LENGTH)));
+        Map<String, List<String>> nicknameMap = new TreeMap<>();
         for (List<String> form : forms) {
-            findDuplicatedNickname(forms, answer, form);
+            String email = form.get(0);
+            String nickname = form.get(1);
+            getDuplicatedNickname(answer, nicknameMap, email, nickname);
         }
-        return toList(answer);
-    }
-
-    private static void findDuplicatedNickname(List<List<String>> forms, Set<String> answer, List<String> form) {
-        String nickname = form.get(1);
-        for (int index = 0; index < nickname.length() - 1; index++) {
-            if (isDuplicated(forms, form, nickname, index)) {
-                answer.add(form.get(0));
-            }
-        }
-    }
-
-    private static boolean isDuplicated(List<List<String>> forms, List<String> form, String nickname, int index) {
-        return forms.stream()
-            .anyMatch(anotherForm -> anotherForm.get(1).contains(nickname.substring(index, index + MINIMAL_SIZE)) && !form.equals(
-                anotherForm));
-    }
-
-    private static ArrayList<String> toList(Set<String> answer) {
         return new ArrayList<>(answer);
+    }
+
+    private static void getDuplicatedNickname(Set<String> answer, Map<String, List<String>> nicknameMap, String email,
+        String nickname) {
+        for (int i = 0; i < nickname.length() - 1; i++) {
+            String key = nickname.substring(i, i + MINIMAL_SIZE);
+            if (nicknameMap.containsKey(key)) {
+                answer.add(email);
+                answer.addAll(nicknameMap.get(key));
+                continue;
+            }
+            nicknameMap.put(key, new ArrayList<>(List.of(email)));
+        }
     }
 }
