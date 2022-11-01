@@ -21,3 +21,6 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+### 기능 목록
+1. 입력된 문자열에서 연속된 중복된 character를 제거하는 매소드
+2. 연속된 중복된 character를 제거하는 매소드를 한 번 더 사용할 필요가 있는지 확인하는 flag

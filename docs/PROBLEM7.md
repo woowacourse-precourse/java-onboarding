@@ -24,3 +24,8 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+### 기능 목록
+1. HashMap<String, List<String>> 으로 구성된 친구관계 목록을 생성하는 매소드 - key는 사람의 이름이고, value는 그 사람의 친구list이다.
+2. visitor 목록에서 user의 친구가 아닌 사람들의 점수만 1점씩 추가하는 매소드 생성 - HashMap<String, Integer>의 형태를 반환: key는 사람의 이름이고, vlaue는 그 사람의 점수이다.
+3. user의 친구들 중 user의 친구가 아닌 사람들만 recommendListMap에 추가하고 10점을 추가하는 매소드 생성
+4. 점수를 기준으로 recommendListMap을 sorting하고 상위 5명의 이름의 list를 반환하는 매소드 생성 - 5명이하라면 점수가 1점 이상인 사람의 이름을 모두 내림차순으로 반환

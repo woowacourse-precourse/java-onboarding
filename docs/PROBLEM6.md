@@ -21,3 +21,7 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+### 기능 목록
+1. 이름으로만 구성된 String list를 반환하는 매소드
+2. 모든 이름에서 2글자씩 추출해서 모든 패턴의 경우의 수로 구성된 String List를 반환하는 매소드
+3. 모든 패턴들을 name_list와 비교해서 패턴이 포함 되는 닉네임을 가진 지원자들의 이메일 목록을 반환하는 매소드
