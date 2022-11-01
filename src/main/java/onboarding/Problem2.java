@@ -9,7 +9,7 @@ public class Problem2 {
     }
 
     private static String decode(String cryptogram) {
-        String answer = cryptogram.replaceAll("([a-z])\\1","");
+        String answer = cryptogram.replaceAll("([a-z])\\1+","");
         return answer.matches("^[a-z]*([a-z])\\1[a-z]*$")
                 ? decode(answer)
                 : answer;
