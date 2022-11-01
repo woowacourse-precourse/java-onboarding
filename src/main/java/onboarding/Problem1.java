@@ -28,7 +28,7 @@ class Problem1 {
 		int left = pages.get(0);
 		int right = pages.get(1);
 
-		return left == 1 || right == 400 || right - left != 1;
+		return left < 2 || left > 399 || right < 2 || right > 399 || right - left != 1;
 	}
 
 	private static int getScore(List<Integer> pages) {
