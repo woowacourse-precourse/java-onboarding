@@ -20,7 +20,7 @@ public class Problem6 {
     private static List<String> formCheck(List<List<String>> forms) {
         ArrayList<String> duplicatedMembers = new ArrayList<>();
 
-        for (int i = 0; i < forms.size() - 1; i++) {
+        for (int i = 0; i < forms.size(); i++) {
             String email1 = forms.get(i).get(0);
             String nickName1 = forms.get(i).get(1);
 
@@ -53,8 +53,8 @@ public class Problem6 {
 
     private static boolean duplicatedLetter(String nickName1, String nickName2) {
         for (int i = 0; i < nickName1.length() - 1; i++) {
-            String tmp = nickName1.substring(i, i + 2);
-            if(nickName2.contains(tmp))
+            String twoCharacter = nickName1.substring(i, i + 2);
+            if(nickName2.contains(twoCharacter))
                 return true;
         }
         return false;
