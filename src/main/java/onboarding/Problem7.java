@@ -90,6 +90,25 @@ public class Problem7 {
         List<String> keySet = new ArrayList<>(map.keySet());
         keySet.sort((o1, o2) -> map.get(o2).compareTo(map.get(o1)));
 
+        // 인원수
+        int cnt = 0;
+
+        // 정답 저장할 리스트
+        List<String> result = new ArrayList<>();
+
+        for (String key : keySet) {
+            result.add(cnt, key);
+            cnt++;
+
+            // 최대 5명까지만 나오도록
+            if(cnt == 5){
+                break;
+            }
+        }
+
+        // 정답
+        answer = result;
+
         return answer;
     }
 }
