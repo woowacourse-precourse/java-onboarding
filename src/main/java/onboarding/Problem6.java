@@ -70,6 +70,18 @@ public class Problem6 {
         }
     }
     private static boolean isDuplicatedByTwoCharacter(Trainee trainee1, Trainee trainee2) {
+        String nickname1 = trainee1.getNickname();
+        String nickname2 = trainee2.getNickname();
 
+        for (int i = 0; i < nickname1.length() - 1; i++) {
+            for (int j = i+1; j < nickname1.length(); j++) {
+                if (isContainsSameWord(nickname1, nickname2, i, j)) return true;
+            }
+        }
+        return false;
     }
+
+    private static boolean isContainsSameWord(String nickname1, String nickname2, int i, int j) {
+    }
+
 }
