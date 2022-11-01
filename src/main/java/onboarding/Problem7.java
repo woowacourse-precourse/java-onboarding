@@ -12,16 +12,8 @@ class User {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public Set<String> getFriends() {
         return friends;
-    }
-
-    public void setFriends(Set<String> friends) {
-        this.friends = friends;
     }
 
     public void addFriend(String friend){
