@@ -7,7 +7,7 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
         return answer;
     }
-    
+
     private  Integer calculateProductOfPlaceValue(Integer num){
         String[] placeValuesOfNum = String.valueOf(num).split("");
         Integer product = 1;
@@ -17,5 +17,16 @@ class Problem1 {
         }
 
         return product;
+    }
+
+    private  Integer calculateSumOfPlaceValue(Integer num){
+        String[] placeValuesOfNum = String.valueOf(num).split("");
+        Integer sum = 0;
+
+        for(String placeValue : placeValuesOfNum){
+            sum+=Integer.parseInt(placeValue);
+        }
+
+        return sum;
     }
 }
