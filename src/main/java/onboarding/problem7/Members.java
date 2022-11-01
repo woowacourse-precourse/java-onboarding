@@ -27,11 +27,11 @@ public class Members {
         return userFriends.stream()
                 .flatMap(userFriend -> Arrays.stream(memberListMap.get(userFriend).toArray()))
                 .map(acquaintance -> (Member) acquaintance)
-                .filter(acquaintance -> isNotUserOrUserFriend(user, userFriends, acquaintance))
+                .filter(acquaintance -> isNotUserAndUserFriend(user, userFriends, acquaintance))
                 .collect(Collectors.toList());
     }
 
-    private boolean isNotUserOrUserFriend(Member user, List<Member> userFriends, Member acquaintance) {
+    private boolean isNotUserAndUserFriend(Member user, List<Member> userFriends, Member acquaintance) {
         if (user.equals(acquaintance) || userFriends.contains(acquaintance)) {
             return false;
         }
