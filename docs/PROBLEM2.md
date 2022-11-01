@@ -21,3 +21,12 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+---
+
+## 기능 구현 목록
+
+- isProperCryptogram(String cryptogram)
+    - 문자열의 길이가 올바른지 소문자로만 이루어졌는지 확인
+- decodingCryptogram(String cryptogram)
+    - 들어온 문자열에서 중복 문자를 제거한 값을 반환
