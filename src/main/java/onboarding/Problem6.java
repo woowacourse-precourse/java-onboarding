@@ -3,12 +3,24 @@ package onboarding;
 import java.util.*;
 import java.util.stream.Collectors;
 
-import static org.assertj.core.api.Assertions.assertThat;
+import static java.util.Comparator.naturalOrder;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
-        return answer;
+        List<Crew> crews = new ArrayList<>();
+
+        for (List<String> form : forms) {
+            Email email = new Email(form.get(0));
+            NickName nickName = new NickName(form.get(1));
+            crews.add(new Crew(email, nickName));
+        }
+
+        NickNameDuplicate nickNameDuplicate = new NickNameDuplicate();
+        Set<Crew> crewWithDuplicatedNickName = nickNameDuplicate.findCrewWithDuplicatedNickName(crews);
+        return crewWithDuplicatedNickName.stream()
+                .map(Crew::getEmail)
+                .sorted()
+                .collect(Collectors.toList());
     }
 }
 
@@ -28,6 +40,10 @@ class Email {
             throw new IllegalStateException(DOMAIN_FORM_ERROR);
         }
     }
+
+    public String getEmail(){
+        return email;
+    }
 }
 
 class NickName {
@@ -46,10 +62,6 @@ class NickName {
         }
         return duplicatedCasesSet;
     }
-
-    public String getNickName() {
-        return nickName;
-    }
 }
 
 class Crew {
@@ -65,8 +77,8 @@ class Crew {
         return nickName;
     }
 
-    public Email getEmail(){
-        return email;
+    public String getEmail() {
+        return email.getEmail();
     }
 }
 
