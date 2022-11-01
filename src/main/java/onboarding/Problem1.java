@@ -32,6 +32,15 @@ class Problem1 {
         }
         return sum;
     }
+    private static int productOfDigit(int page) {
+        String pageToString = Integer.toString(page);
+        int product = 1;
+        for (int i = 0; i < pageToString.length(); i++) {
+            int digit = pageToString.charAt(i) - '0';
+            product *= digit;
+        }
+        return product;
+    }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
