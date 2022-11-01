@@ -8,6 +8,9 @@ public class Problem6 {
         if(forms.size() < 1 || forms.size() > 10000){
             return list;
         }
+        if(nameException(forms)){
+            return list;
+        }
         for(int i = 0; i < forms.size(); i++){
             String nickname1 = forms.get(i).get(1);
             for(int j = i+1; j < forms.size(); j++){
@@ -20,6 +23,17 @@ public class Problem6 {
         }
         List<String> answer = printEmail(list);
         return answer;
+    }
+
+    public static boolean nameException(List<List<String>> forms){
+        String regExp = "^[가-힣]*$";
+        for(int i = 0; i < forms.size(); i++) {
+            String name = forms.get(i).get(0);
+            if(!name.matches(regExp) || name.length() < 1 || name.length() >= 20){
+                return true;
+            }
+        }
+        return false;
     }
 
     public static List<String> printEmail(List<String> list) {

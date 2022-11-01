@@ -19,4 +19,27 @@ public class Problem6Test {
         List<String> result2 = List.of("a", "b", "c");
         assertThat(problem.printEmail(list2)).isEqualTo(result2);
     }
+
+    @Test
+    @DisplayName("NickName Test")
+    void nameTest() {
+        List<List<String>> forms1 = List.of(
+                List.of("jm@email.com", "제이엠"),
+                List.of("jason@email.com", "제이슨"),
+                List.of("woniee@email.com", "워니"),
+                List.of("mj@email.com", "엠제이"),
+                List.of("nowm@email.com", "nown")
+        );
+        boolean result1 = true;
+        assertThat(Problem6.nameException(forms1)).isEqualTo(result1);
+        List<List<String>> forms2 = List.of(
+                List.of("jm@email.com", "제이엠제이엠제이엠제이엠제이엠제이엠제이엠제이엠제이엠"),
+                List.of("jason@email.com", "제이슨"),
+                List.of("woniee@email.com", "워니"),
+                List.of("mj@email.com", "엠제이"),
+                List.of("nowm@email.com", "nown")
+        );
+        boolean result2 = true;
+        assertThat(Problem6.nameException(forms2)).isEqualTo(result2);
+    }
 }
