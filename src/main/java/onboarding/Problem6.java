@@ -54,4 +54,15 @@ public class Problem6 {
         }
         return Member;
     }
+
+    public static boolean checkequals(String NickName1, String NickName2){
+        for(int i=0; i<NickName1.length()-1; i++){
+            stringBuilder.setLength(0);
+            stringBuilder.append(NickName1.charAt(i)).append(NickName1.charAt(i+1));
+            if(NickName2.contains(stringBuilder.toString())) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
