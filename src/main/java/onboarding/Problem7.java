@@ -25,6 +25,9 @@ public class Problem7 {
 
             addFriends(friend1, friend2);
         }
+
+        // 방문 점수 처리
+        countVisitScore(visitors);
         return Collections.emptyList();
     }
 
@@ -50,5 +53,13 @@ public class Problem7 {
     static void addFriends (String friend1, String friend2) {
         friendsForOne.get(index.get(friend1)).add(friend2);
         friendsForOne.get(index.get(friend2)).add(friend1);
+    }
+
+    // 방문 점수 처리
+    static void countVisitScore (List<String> visitors) {
+        for (String s : visitors) {
+            score.putIfAbsent(s, 0);
+            score.put(s, score.get(s) + 1);
+        }
     }
 }
