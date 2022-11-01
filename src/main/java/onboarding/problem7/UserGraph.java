@@ -22,15 +22,15 @@ public class UserGraph {
         }
     }
 
-    public void setCompleteEdge(String vertex1, String vertex2) {
-        adjLists.putIfAbsent(vertex1, new HashSet<>());
-        adjLists.putIfAbsent(vertex2, new HashSet<>());
+    public void setCompleteEdge(String id1, String id2) {
+        adjLists.putIfAbsent(id1, new HashSet<>());
+        adjLists.putIfAbsent(id2, new HashSet<>());
 
-        adjLists.get(vertex1)
-                .add(vertex2);
+        adjLists.get(id1)
+                .add(id2);
 
-        adjLists.get(vertex2)
-                .add(vertex1);
+        adjLists.get(id2)
+                .add(id1);
     }
 
     public Set<String> getFriends(String id) {
