@@ -3,6 +3,9 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
+    private static final int bothKnownScore = 10;
+    private static final int visitScore = 1;
+    
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
@@ -71,5 +74,18 @@ public class Problem7 {
         }
 
         return visitCount;
+    }
+    private static Map<String, Integer> getTotalScore(Map<String, Integer> bothKnownCount, Map<String, Integer> visitCount) {
+        Map<String, Integer> totalCount = new HashMap<>();
+
+        for (String bothKnown : bothKnownCount.keySet()) {
+            totalCount.put(bothKnown, bothKnownCount.get(bothKnown) * bothKnownScore);
+        }
+
+        for (String visit : visitCount.keySet()) {
+            totalCount.put(visit, totalCount.getOrDefault(visit, 0) + visitCount.get(visit) * visitScore);
+        }
+
+        return totalCount;
     }
 }
