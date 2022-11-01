@@ -26,10 +26,6 @@ class Problem1 {
             return -1;
         }
 
-        // pobi와 crong 페이지의 각 자리수들을 저장해줄 List 정의
-        ArrayList<Integer> arrayPobiDigit = new ArrayList<>();
-        ArrayList<Integer> arrayCrongDigit = new ArrayList<>();
-
         // pobi와 crong 페이지의 각 자리수들의 곱 혹은 합의 최대값 변수 정의
 
         int pobiMax = 0;
@@ -38,36 +34,28 @@ class Problem1 {
 
         if (pobiRightPageNumber%10 == 0) { //십의 자리수 혹은 백의 자리수가 바뀔 때는 '왼쪽 페이지의 자릿수 곱 혹은 덧셈'이 항상 더 큰 것을 활용
 
-            while ( pobiLeftPageNumber > 0 ) { //각 자리수들을 하나씩 분리(일의 자리로 만듦)시킨 후 배열에 저장
-                arrayPobiDigit.add(pobiLeftPageNumber%10);
-                pobiLeftPageNumber /= 10;
-            }
-            int lenghtPL = arrayPobiDigit.size(); //PL은 pobi Left
-            int sumPL = 0;
+            int sumPL = 0;  //PL은 pobi Left
             int productPL = 1;
 
-            while ( lenghtPL > 0 ) { //각 자리수들의 합과 곱을 구함
-                sumPL += arrayPobiDigit.get(lenghtPL - 1);
-                productPL *= arrayPobiDigit.get(lenghtPL - 1);
-                lenghtPL -= 1;
+            while ( pobiLeftPageNumber > 0 ) { //각 자리수들을 하나씩 분리(일의 자리로 만듦)시킨 후 각 자리수의 합과 곱 구함
+                int pobiEachDigitNumber = pobiLeftPageNumber%10;
+                sumPL += pobiEachDigitNumber;
+                productPL *= pobiEachDigitNumber;
+                pobiLeftPageNumber /= 10;
             }
 
             pobiMax = Math.max(sumPL, productPL); //각 자리수들의 합과 곱을 비교해서 최대 값 찾기
 
         } else if (pobiRightPageNumber%10 != 0) { //십의 자리수 혹은 백의 자리수가 바뀌지 않을 때는 '오른쪽 페이지의 자릿수 곱 혹은 덧셈'이 항상 더 큰 것을 활용
 
-            while ( pobiRightPageNumber > 0 ) { //각 자리수들을 하나씩 분리(일의 자리로 만듦)시킨 후 배열에 저장
-                arrayPobiDigit.add(pobiRightPageNumber%10);
-                pobiRightPageNumber /= 10;
-            }
-            int lenghtPR = arrayPobiDigit.size(); //PR은 pobi Right
-            int sumPR = 0;
+            int sumPR = 0;  //PR은 pobi Right
             int productPR = 1;
 
-            while ( lenghtPR > 0 ) { //각 자리수들의 합과 곱을 구함
-                sumPR += arrayPobiDigit.get(lenghtPR - 1);
-                productPR *= arrayPobiDigit.get(lenghtPR - 1);
-                lenghtPR -= 1;
+            while ( pobiRightPageNumber > 0 ) { //각 자리수들을 하나씩 분리(일의 자리로 만듦)시킨 후 배열에 저장
+                int pobiEachDigitNumber = pobiRightPageNumber%10;
+                sumPR += pobiEachDigitNumber;
+                productPR *= pobiEachDigitNumber;
+                pobiRightPageNumber /= 10;
             }
 
             pobiMax = Math.max(sumPR, productPR); //각 자리수들의 합과 곱을 비교해서 최대 값 찾기
@@ -75,18 +63,15 @@ class Problem1 {
         }
 
         if (crongRightPageNumber%10 == 0) {
-            while ( crongLeftPageNumber > 0 ) { //각 자리수들을 하나씩 분리(일의 자리로 만듦)시킨 후 배열에 저장
-                arrayCrongDigit.add(crongLeftPageNumber%10);
-                crongLeftPageNumber /= 10;
-            }
-            int lenghtCL = arrayCrongDigit.size(); //CL은 Crong Left
-            int sumCL = 0;
+
+            int sumCL = 0; //CL은 Crong Left
             int productCL = 1;
 
-            while ( lenghtCL > 0 ) { //각 자리수들의 합과 곱을 구함
-                sumCL += arrayCrongDigit.get(lenghtCL - 1);
-                productCL *= arrayCrongDigit.get(lenghtCL - 1);
-                lenghtCL -= 1;
+            while ( crongLeftPageNumber > 0 ) { //각 자리수들을 하나씩 분리(일의 자리로 만듦)시킨 후 배열에 저장
+                int crongEachDigitNumber = crongLeftPageNumber%10;
+                sumCL += crongEachDigitNumber;
+                productCL *= crongEachDigitNumber;
+                crongLeftPageNumber /= 10;
             }
 
             crongMax = Math.max(sumCL, productCL); //각 자리수들의 합과 곱을 비교해서 최대 값 찾기
@@ -94,19 +79,16 @@ class Problem1 {
 
         } else if (crongRightPageNumber%10 != 0) {
 
-            while ( crongRightPageNumber > 0 ) { //각 자리수들을 하나씩 분리(일의 자리로 만듦)시킨 후 배열에 저장
-                arrayCrongDigit.add(crongRightPageNumber%10);
-                crongRightPageNumber /= 10;
-            }
-            int lenghtCR = arrayCrongDigit.size(); //CR은 Crong Right
-            int sumCR = 0;
+            int sumCR = 0;//CR은 Crong Right
             int productCR = 1;
 
-            while ( lenghtCR > 0 ) { //각 자리수들의 합과 곱을 구함
-                sumCR += arrayCrongDigit.get(lenghtCR - 1);
-                productCR *= arrayCrongDigit.get(lenghtCR - 1);
-                lenghtCR -= 1;
+            while ( crongRightPageNumber > 0 ) { //각 자리수들을 하나씩 분리(일의 자리로 만듦)시킨 후 배열에 저장
+                int crongEachDigitNumber = crongRightPageNumber%10;
+                sumCR += crongEachDigitNumber;
+                productCR *= crongEachDigitNumber;
+                crongRightPageNumber /= 10;
             }
+
             crongMax = Math.max(sumCR, productCR); //각 자리수들의 합과 곱을 비교해서 최대 값 찾기
         }
 
