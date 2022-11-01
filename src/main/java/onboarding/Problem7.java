@@ -35,7 +35,7 @@ public class Problem7 {
         List<String> friendsOfUserFriends = getFriendsOfUserFriends(userId, friendRelationships, userFriends);
         friendsOfUserFriendsAddScore(friendsOfUserFriends);
         userTimelineVisitorsAddScore(userTimelineVisitors);
-        return getTopFiveScoreUser(friendRecommendScoreMap, userFriends);
+        return getTopFiveScoreUser(userFriends);
     }
 
     private static Set<String> getUserIds(List<List<String>> friends) {
@@ -99,7 +99,7 @@ public class Problem7 {
         });
     }
 
-    private static List<String> getTopFiveScoreUser(Map<String, Integer> friendRecommendScoreMap, Set<String> userFriends) {
+    private static List<String> getTopFiveScoreUser(Set<String> userFriends) {
         return friendRecommendScoreMap.entrySet().stream()
                 .filter(friendRecommendScoreMapEntry ->
                         (friendRecommendScoreMapEntry.getValue() != 0) &&
