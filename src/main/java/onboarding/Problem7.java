@@ -66,6 +66,16 @@ public class Problem7 {
         friendScore = findRelationWithUserFriends(user, friends, userFriends);
         friendScore = findVisitors(visitors, friendScore);
         friendScore = removeUserFriends(userFriends, friendScore);
+
+        List<String> keyList = new ArrayList<>(friendScore.keySet());
+        Collections.sort(keyList);
+        keyList.sort(Comparator.comparing(friendScore::get).reversed());
+
+        for(String key: keyList) {
+            System.out.printf("key: %s, value: %d\n", key, friendScore.get(key));
+            answer.add(key);
+            if(answer.size() == 5) break;
+        }
         return answer;
     }
 }
