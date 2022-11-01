@@ -5,11 +5,16 @@ public class FrogSpeaker {
     private static final char UPPER_CASE_END_CHER = 'Z';
     private static final char LOWER_CASE_START_CHAR = 'a';
     private static final char LOWER_CASE_END_CHAR = 'z';
+    private static final char NON_BREAKING_SPACE = ' ';
+
+    private final MessageValidator messageValidator = new MessageValidator();
     public String speak(String message) {
+        messageValidator.validate(message);
+
         StringBuilder stringBuilder = new StringBuilder();
         for (int i = 0; i < message.length(); i++) {
             char messageChar = message.charAt(i);
-            if (message.charAt(i) != ' ') {
+            if (message.charAt(i) != NON_BREAKING_SPACE) {
                 messageChar = getReverseChar(messageChar);
             }
 
