@@ -2,26 +2,28 @@ package onboarding.problem1;
 
 import java.util.List;
 
-public class Operator {
+public class Calculator {
 
-    public static int add(int number) {
+    private static int add(int number) {
         return number / 100 + (number % 100) / 10 + number % 10;
     }
 
-    public static int multiply(int number) {
-        if (number < 10){
-            return number;
-        } else if (number < 100){
-            return (number / 10) * (number % 10);
+    private static int multiply(int number) {
+        int result = 1;
+        while(number>0) {
+            int temp = number % 10;
+            result *= temp;
+            number = number / 10;
         }
-        return (number / 100) * ((number % 100) / 10) * (number % 10);
+
+        return result;
     }
 
-    public static int max(int num1, int num2) {
+    private static int max(int num1, int num2) {
         return Math.max(num1, num2);
     }
 
-    public static int compare(List<Integer> pages){
+    public static int getScore(List<Integer> pages){
         int leftPage = pages.get(0);
         int rightPage = pages.get(1);
 
