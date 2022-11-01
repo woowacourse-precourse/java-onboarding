@@ -24,3 +24,46 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+---
+
+## Recommend Friend
+
+
+### 설명 요약
+
+    - 친구 추천 알고리즘 구현
+<br/>
+
+### 기능 설계
+
+    - solution
+        모든 유저를 구하기 
+        이미 친구인 리스트를 구하기
+        모든 유저 중 자기 자신과 이미 친구인 사람 제외한 해쉬맵 구하기
+        
+        친구의 친구인사람에게 +10점
+        타임라인 방문한 사람에게 방문 수만큼 +1점
+
+        정렬하여 점수 높은 5명 반환하기
+
+    - getAllUsers
+        friends 와 visitors 에서 확인되는 모든 유저 리스트 형태로 반환 
+
+    - getMyFriends
+        friends 배열에서 users 값이 속한 이미 친구인 관계 리스트 형태로 반환
+        
+    - inItFriendScores
+        자기 자신과 이미 친구인 사람을 제외한
+        나머지 인물들을 해쉬맵형태로 반환 
+
+    - toKnowTogether
+        friends 를 통하여 이미 친구인 사람들의
+        친구인 사람에게 +10 하여 해쉬맵 갱신
+
+    - toVisit
+        해쉬맵에 있는 인물 중 
+        타임라인에 방문한 사람 방문한 횟수만큼 +1 해서 갱신   
+
+    - sortMap
+        점수가 높은 순으로 정렬하여 해쉬맵 갱신
