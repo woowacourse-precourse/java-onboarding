@@ -23,6 +23,18 @@ public class Problem3 {
     }
 
 
+    int getClaps(int number){
+
+        int claps = 0;
+
+        for (int i=1; i <= number; i++){
+            claps += checkClapNum(i);
+        }
+
+        return claps;
+    }
+
+
     public static int solution(int number) {
         int answer = 0;
         return answer;
