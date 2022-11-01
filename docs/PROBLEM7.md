@@ -24,3 +24,11 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### [아리] 기능 목록
+
+- 추천 가능 친구 목록 필요
+- 이름과 추천 점수 함께 저장
+- 같이 아는 친구에 따라 10점 추가
+- 방문 횟수에 따라 1점 추가
+- 결과 answer값 Value값 기준으로 정렬
