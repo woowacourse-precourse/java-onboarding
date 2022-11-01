@@ -21,7 +21,7 @@ public class Problem7 {
         Map<String, Integer> knowTogetherScoreMap = getKnowTogetherScoreMap(knowTogetherList);
         Map<String, Integer> visitScoreMap = getVisitScoreMap(visitors, friendList);
         Map<String, Integer> totalScoreMap = calculateTotalScoreMap(knowTogetherScoreMap, visitScoreMap);
-        answer = getRecommendFriendList(totalScoreMap);
+        answer = makeRecommendFriendList(totalScoreMap);
         return answer;
     }
 
@@ -85,7 +85,7 @@ public class Problem7 {
         return totalScoreMap;
     }
 
-    public static List<String> getRecommendFriendList(Map<String, Integer> totalScoreMap) {
+    public static List<String> makeRecommendFriendList(Map<String, Integer> totalScoreMap) {
         List<String> recommendFriendList = new ArrayList<>();
         List<Map.Entry<String, Integer>> entryList = new LinkedList<>(totalScoreMap.entrySet());
         Collections.sort(entryList, new Comparator<Map.Entry<String, Integer>>() {
