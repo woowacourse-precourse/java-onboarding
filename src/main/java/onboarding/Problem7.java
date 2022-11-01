@@ -5,14 +5,9 @@ import java.util.*;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
-        List<String> answer = new ArrayList<>();
-
         Map<String, Set<String>> friendsMap = makeFriendsMap(friends);
 
-        Map<String, Integer> recommendedScoreMap = new HashMap<>();
-        for(String friend : friendsMap.keySet()) {
-            recommendedScoreMap.put(friend, 0);
-        }
+        Map<String, Integer> recommendedScoreMap = makeRecommendedScoreMap(friendsMap);
 
         String[] realFriends = friendsMap.get(user).toArray(new String[0]);
         for(String friend : realFriends) {
@@ -36,6 +31,9 @@ public class Problem7 {
 
         List<Map.Entry<String, Integer>> recommendList = new LinkedList<>(recommendedScoreMap.entrySet());
         recommendList.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
+
+
+        List<String> answer = new ArrayList<>();
 
         for(int i=0; i<recommendList.size(); i++) {
             if(i == 5) break;
@@ -76,5 +74,16 @@ public class Problem7 {
     public static void makeConnectionBetweenFriends(String friendOne, String friendTwo, HashMap<String, Set<String>> friendsMap) {
         Set<String> friendsSet = friendsMap.get(friendOne);
         friendsSet.add(friendTwo);
+    }
+
+    public static Map<String, Integer> makeRecommendedScoreMap(Map<String, Set<String>> friendsMap) {
+
+        Map<String, Integer> recommendedScoreMap = new HashMap<>();
+
+        for(String friend : friendsMap.keySet()) {
+            recommendedScoreMap.put(friend, 0);
+        }
+
+        return recommendedScoreMap;
     }
 }
