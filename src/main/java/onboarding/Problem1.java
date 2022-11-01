@@ -37,7 +37,7 @@ class Problem1 {
         return true;
     }
 
-    public static List<Integer> convertString(final String input) {
+    public static List<Integer> splitDigits(final String input) {
         List<Integer> output = new ArrayList<>();
         for (Character c : input.toCharArray()) {
             output.add(Character.getNumericValue(c));
@@ -46,9 +46,9 @@ class Problem1 {
     }
 
     public static Integer calculatePage(List<Integer> Pages) {
-        var digits = convertString(String.valueOf(Pages));
-        int sum = digits.stream().reduce(0, (x, y) -> x + y);
-        int mul = digits.stream().reduce(1, (x, y) -> x * y);
+        var digit = splitDigits(String.valueOf(Pages));
+        int sum = digit.stream().reduce(0, (x, y) -> x + y);
+        int mul = digit.stream().reduce(1, (x, y) -> x * y);
         return Math.max(sum, mul);
     }
 }
