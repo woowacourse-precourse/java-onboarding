@@ -83,6 +83,24 @@ public class Problem7 {
         }
     }
 
+    
+    private static class ValueThenKeyComparator<K extends Comparable<? super K>,
+            V extends Comparable<? super V>>
+            implements Comparator<Map.Entry<K, V>> {
+
+
+
+        public int compare(Map.Entry<K, V> a, Map.Entry<K, V> b) {
+            int cmp1 = -a.getValue().compareTo(b.getValue());
+            if (cmp1 != 0) {
+                return cmp1;
+            } else {
+                return a.getKey().compareTo(b.getKey());
+            }
+        }
+
+    }
+
 
     private static List<String> sortRecommendationScore(HashMap<String, Integer> recommendationScore) {
         List<Map.Entry<String, Integer>> recommendationList = new ArrayList<>(recommendationScore.entrySet());
