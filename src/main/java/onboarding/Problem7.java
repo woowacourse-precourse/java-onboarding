@@ -77,18 +77,25 @@ public class Problem7 {
         List<String> visitors, List<String> userFriends) {
         Map<String, Integer> userPoint = new HashMap<>();
         for (List<String> friend : friends) {
-            for (String userFriend : userFriends){
-                if (friend.contains(userFriend)){
-                    for (String name : friend){
-                        if (!name.equals(user) && !userFriend.contains(name)){
-                            if (!userPoint.containsKey(name)){
-                                userPoint.put(name,10);
-                            }else{
-                                userPoint.put(name,userPoint.get(name)+10);
-                            }
-                        }
-                    }
+            if (friend.contains(user)){
+                continue;
+            }
+            if (userFriends.contains(friend.get(0))&&userFriends.contains(friend.get(1))){
+                continue;
+            }
+            if (userFriends.contains(friend.get(0))&&!userFriends.contains(friend.get(1))){
+                if (userPoint.containsKey(friend.get(1))){
+                    userPoint.put(friend.get(1), userPoint.get(friend.get(1))+10);
+                    continue;
                 }
+                userPoint.put(friend.get(1), 10);
+            }
+            if (userFriends.contains(friend.get(1))&&!userFriends.contains(friend.get(0))){
+                if (userPoint.containsKey(friend.get(0))){
+                    userPoint.put(friend.get(0), userPoint.get(friend.get(0))+10);
+                    continue;
+                }
+                userPoint.put(friend.get(0), 10);
             }
         }
         for (String visitor : visitors) {
@@ -105,12 +112,11 @@ public class Problem7 {
     private static List<String> makeUserFriendsList(String user, List<List<String>> friends) {
         List<String> userFriends = new ArrayList<>();
         for (List<String> friend : friends) {
-            for (String name : friend) {
-                if (friend.contains(user)) {
-                    if (!name.equals(user)) {
-                        userFriends.add(name);
-                    }
-                }
+            if (friend.get(0).equals(user)){
+                userFriends.add(friend.get(1));
+            }
+            if (friend.get(1).equals(user)){
+                userFriends.add(friend.get(0));
             }
         }
         return userFriends;
