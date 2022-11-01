@@ -3,6 +3,7 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
+    public static final int INITIAL_SCORE = 0;
     public static final int ACQUAINTANCE_SCORE = 10;
     public static final int VISITOR_SCORE = 1;
 
@@ -48,11 +49,11 @@ public class Problem7 {
 
     private static void initializeScoreMap(String user, HashMap<String, Integer> scoreMap, String userA, String userB) {
         if (userA.equals(user) == false) {
-            scoreMap.put(userA, 0);
+            scoreMap.put(userA, INITIAL_SCORE);
         }
 
         if (userB.equals(user) == false) {
-            scoreMap.put(userB, 0);
+            scoreMap.put(userB, INITIAL_SCORE);
         }
     }
 
