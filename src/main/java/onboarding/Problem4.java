@@ -18,7 +18,7 @@ public class Problem4 {
         String lowercase = "zyxwvutsrqponmlkjihgfedcba";
 
         // 문자 변환하기 편하게 chararray로 변환해줌
-        char[] cWord = word.toCharArray();
+        char[] cWord = word.toCharArr표ay();
 
         // 1-a. 알파벳 외의 문자는 변환하지 않음
         // 1-b. 대문자와 소문자 구분
