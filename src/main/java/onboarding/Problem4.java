@@ -25,6 +25,13 @@ public class Problem4 {
         return false;
     }
 
+    //  입력값에 따라 a,A의 아스키 코드 리턴 메소드
+    private static int getBase(char input) {
+        if(checkLowerCase(input))
+            return ASCII_CODE_a;
+        return ASCII_CODE_A;
+    }
+
     //  입력값에 대한 유효성 검사
     private static Boolean verifyChar(char input){
         if(!Character.isAlphabetic(input)) return false;
