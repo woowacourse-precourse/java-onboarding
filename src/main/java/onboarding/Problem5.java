@@ -33,11 +33,10 @@ public class Problem5 {
     private static List<Integer> getLeastBills(int money, List<Integer> moneyList){
         Map<Integer,Integer> billStorage = new HashMap<>();
         moneyList.iterator().forEachRemaining(a -> billStorage.put(a,0));
-        calculateLeastBill(money,billStorage);
-        return billStorage.keySet().stream()
-                .sorted(Comparator.reverseOrder())
-                .map(a->billStorage.get(a))
-                .collect(Collectors.toList());
+        calculateLeastBill(money,billStorage);;
+        return billStorage.entrySet().stream()
+                .sorted((o1, o2) -> o2.getKey().compareTo(o1.getKey()))
+                .map(a->a.getValue()).collect(Collectors.toList());
     }
 
     private static void calculateLeastBill(int money, Map moneyStorage){
