@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -64,5 +65,34 @@ public class Problem7 {
                 intimacyArray[friendOfFriend][0] += 10;
             }
         }
+    }
+    private static int calculateIntimacyByTimeLineVisits(List<String> visitors, Map<String, Integer> userNameMap,
+                                                         String[] userNameArray, int[][] intimacyArray, int index,
+                                                         Set<Integer> myFriendsSet) {
+        for(String visitor : visitors) {
+            int indexOfVisitor;
+
+            if(!userNameMap.containsKey(visitor)) {
+                userNameArray[index] = visitor;
+                userNameMap.put(visitor, index);
+                indexOfVisitor = index;
+                index++;
+                //이미 친구라면 패스
+            } else if(myFriendsSet.contains(userNameMap.get(visitor))){
+                continue;
+            } else {
+                indexOfVisitor = userNameMap.get(visitor);
+            }
+            intimacyArray[indexOfVisitor][0]++;
+        }
+        return index;
+    }
+    private static Set<Integer> makeMyFriendsSet(Integer userIndex, List<List<Integer>> friendsNetwork) {
+        if(userIndex == null) {
+            return new HashSet<>();
+        }
+        //내 친구들
+        List<Integer> friends = friendsNetwork.get(userIndex);
+        return friends.stream().collect(Collectors.toSet());
     }
 }
