@@ -38,6 +38,19 @@ public class Problem6 {
             }
         }
 
+        for(int i = 0 ; i < forms.size() ; i++) {
+            String email = forms.get(i).get(0);
+            String nickname = forms.get(i).get(1);
+            String[] nicknameArray = nickname.split("");
+            for(int j = 0 ; j  < nickname.length() - 1 ; j++){
+                String unit = nicknameArray[j]+nicknameArray[j+1];
+                if(nicknameMap.get(unit) >= 2) {
+                    answer.add(email);
+                    break;
+                }
+            }
+        }
+
         return answer;
     }
 }
