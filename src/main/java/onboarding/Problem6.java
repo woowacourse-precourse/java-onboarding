@@ -1,13 +1,14 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class Problem6 {
     static List<List<String>> divTwoChar = new ArrayList<>();
-    static HashMap<String, List<Integer>> twoCharMap = new HashMap<>();
+    static HashMap<String, Integer> twoCharMap = new HashMap<>();
     static int numOfPeople = 0;
 
     public static void makeDivTwoCharList(List<String> names) {
@@ -21,7 +22,16 @@ public class Problem6 {
     }
 
     public static void makeTwoCharMap() {
-
+        for(int i=0; i<numOfPeople; i++) {
+            for(String twoChar: divTwoChar.get(i)) {
+                if(twoCharMap.containsKey(twoChar)) {
+                    int prevNum = twoCharMap.get(twoChar);
+                    twoCharMap.put(twoChar, prevNum+i);
+                } else {
+                    twoCharMap.put(twoChar, i);
+                }
+            }
+        }
     }
 
     public static List<String> getOverlapPersonEmail() {
@@ -33,6 +43,7 @@ public class Problem6 {
         makeDivTwoCharList(forms.stream()
                 .map(form -> form.get(1))
                 .collect(Collectors.toList()));
+        makeTwoCharMap();
         return getOverlapPersonEmail();
     }
 }
