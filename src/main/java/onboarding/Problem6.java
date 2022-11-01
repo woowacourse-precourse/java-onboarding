@@ -29,8 +29,8 @@ public class Problem6 {
         }
         for(int i = 0; i < temp.length; i++){
             for(int j = i+1; j< temp.length; j++){
-                int check = compareWord(temp[i],temp[j]); // 1이면 서로 중복되는 단어가 있음.
-                if( check == 1){
+                boolean check = temp[i].equals(temp[j]); // 트루면 중복되는 단어가 있음
+                if( check){
                     if( resultIndex[i] == -1 ) {
                         resultIndex[i] = i;
                     }
@@ -105,7 +105,7 @@ public class Problem6 {
             return false;
         }
 
-        if(emailForm[1].compareTo("email.com") != 0 ){
+        if(!emailForm[1].equals("email.com")){
             return false;
         }
         return true;
