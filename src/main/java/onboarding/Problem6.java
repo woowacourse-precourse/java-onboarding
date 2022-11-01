@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -7,6 +8,27 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
+    }
+
+    private static void checkDuplicate(String nickname, int emailIndex, Map<String, Integer> pieceStorage,
+                                       boolean[] emailsDuplicateCheck, List<String> duplicatedEmails,
+                                       String[] emails) {
+        List<String> currentPieces = new ArrayList<>();
+
+        for(int i = 1; i < nickname.length(); i++) {
+            String piece = nickname.substring(i -1, i + 1);
+            //만약 중복한다면,
+            if(pieceStorage.containsKey(piece)) {
+                saveDuplicatedEmail(emailIndex, piece, duplicatedEmails, emails, emailsDuplicateCheck, pieceStorage);
+                //중복되면 검사 끝
+                return;
+                //중복하지 않다면, 리스트에 추가
+            } else {
+                currentPieces.add(piece);
+            }
+        }
+        //이 이메일이 중복이 아님이 확인되면, pieceStorage 에 저장해둔 piece 추가
+        savePiece(emailIndex, currentPieces, pieceStorage);
     }
 
     public static void savePiece(int emailIndex, List<String> currentPieces, Map<String, Integer> pieceStorage) {
