@@ -66,6 +66,15 @@ public class Problem6 {
     private static boolean checkDeleteControlIndex(boolean deleteControlIndex, int result) {
         return deleteControlIndex || result == 0;
     }
+    private static boolean compareLoop(List<List<String>> forms, List<String> answer, int controlIndex, int compareIndex) {
+        boolean deleteControlIndex = false;
+        while (compareIndex < forms.size()) {
+            int result = compareProcess(forms, answer, controlIndex, compareIndex);
+            deleteControlIndex = checkDeleteControlIndex(deleteControlIndex, result);
+            compareIndex += result;
+        }
+        return deleteControlIndex;
+    }
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
