@@ -10,7 +10,8 @@ public class Problem4 {
         {
             if (Character.isUpperCase(wordChar[i]) || Character.isLowerCase(wordChar[i])) // 알파벳일 경우만
             {
-
+                if (Character.isUpperCase(wordChar[i])) // 대문자일 경우, ascii 'A'의 코드
+                    ascii = 65;
             }
         }
     }
