@@ -22,6 +22,14 @@ public class Problem2 {
             subCryptograms.add(cryptogram.substring(i, i + 1));
         }
 
+        while (!isDecoded(subCryptograms)) {
+            removeSameLetter(subCryptograms);
+        }
+
+        for (String subCryptogram : subCryptograms) {
+            answer += subCryptogram;
+        }
+        
         return answer;
     }
 
@@ -50,7 +58,7 @@ public class Problem2 {
 
     // 중복된 문자를 삭제하는 기능
     private static void removeSameLetter(List<String> subCryptograms) {
-        
+
         for (int i = 0; i < subCryptograms.size() - 1; i++) {
             String s = subCryptograms.get(i);
             if (s.equals(subCryptograms.get(i + 1))) {
