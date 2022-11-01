@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 
 public class Problem5 {
     public static List<Integer> solution(int money) {
-        List<Integer> answer = Collections.emptyList();
+        List<Integer> answer = convertToList(makeChange(money));
         return answer;
     }
 
@@ -27,6 +27,14 @@ public class Problem5 {
         }
 
         return changeArray;
+    }
+
+    public static List<Integer> convertToList(int[] array){
+        List<Integer> list
+                = Arrays.stream(array)
+                .boxed()
+                .collect(Collectors.toList());
+        return list;
     }
 
 }
