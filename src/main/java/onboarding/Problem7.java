@@ -12,14 +12,18 @@ import java.util.stream.Collectors;
  * 3. friends를 통해 유저별 추천 점수 객체를 생성한다.
  * 4. 사용자의 친구와 친구인 유저들의 추천 점수 10점씩 증가
  * 5. 사용자의 SNS에 방문한 유저들의 추천 점수 1점씩 증가
- *    - 이때, 생성 안 된 유저일 경우 새로 생성한다.
  * 6. 점수가 가장 높은 순으로 정렬하여 최대 5명을 return(단, 0점과 본인 및 친구는 제외)
  */
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
 
-        System.out.println(getMyFriends(user, friends));
+        List<String> myFriends = getMyFriends(user, friends);
+        Set<String> users = friends.stream().flatMap(List::stream).collect(Collectors.toSet());
+        users.addAll(visitors);
+
+        System.out.println(makeRecommendedScoreByUserListFromFriends(users));
+
 
         return answer;
     }
@@ -32,25 +36,23 @@ public class Problem7 {
                 .collect(Collectors.toList());
     }
 
-//    private List<RecommendedScoreByUser> makeRecommendedScoreByUserListFromFriends(List<List<String>> friends) {
-//        List<RecommendedScoreByUser> recommendedScoreByUserList = new java.util.ArrayList<>();
-//
-//        friends.stream().collect(Collectors.toSet()).forEach(friend -> {
-//            recommendedScoreByUserList.add(new RecommendedScoreByUser(friend.get(0));
-//        });
-//
-//        return recommendedScoreByUserList;
-//    }
+    private static List<RecommendedScoreByUser> makeRecommendedScoreByUserListFromFriends(Set<String> users) {
+        List<RecommendedScoreByUser> recommendedScoreByUserList = new java.util.ArrayList<>();
 
-    private class RecommendedScoreByUser {
+        for (String user : users) {
+            recommendedScoreByUserList.add(new RecommendedScoreByUser(user));
+        }
+
+        return recommendedScoreByUserList;
+    }
+
+    private static class RecommendedScoreByUser {
         private String user;
         private int score;
-        boolean isExcluded;
 
-        public void RecommendedScore(String user) {
+        public RecommendedScoreByUser(String user) {
             this.user = user;
             this.score = 0;
-            this.isExcluded = false;
         }
 
         public void addScoreByFriends(int count) {
@@ -69,8 +71,12 @@ public class Problem7 {
             return score;
         }
 
-        public boolean isExcluded() {
-            return isExcluded;
+        @Override
+        public String toString() {
+            return "RecommendedScoreByUser{" +
+                    "user='" + user + '\'' +
+                    ", score=" + score +
+                    '}';
         }
     }
 }
