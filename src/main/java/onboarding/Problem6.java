@@ -2,6 +2,8 @@ package onboarding;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
 
 public class Problem6 {
 
@@ -23,8 +25,8 @@ public class Problem6 {
         return false;
     }
 
-    public static List<String> addEmail(List<List<String>> forms) {
-        List<String> correctEmail = new ArrayList<>();
+    public static HashSet<String> addEmail(List<List<String>> forms) {
+        HashSet<String> correctEmail = new HashSet<>();
         for (int j = 0; j < forms.size()-1; j++) {
             int prevention = 0;
             for (int k = j + 1; k < forms.size(); k++) {
@@ -38,6 +40,12 @@ public class Problem6 {
             }
         }
         return correctEmail;
+    }
+
+    public static List<String> removeDuplicate (HashSet<String> correctEmail) {
+        List<String> answerEmail = new ArrayList<>(correctEmail);
+        Collections.sort(answerEmail);
+        return answerEmail;
     }
 
     public static List<String> solution(List<List<String>> forms) {
