@@ -20,6 +20,9 @@ public class Problem7 {
             array[i] = list.get(i).stream().toArray(String[]::new);
         return array;
     }
+    public static String[] listToArray(List<String> list){
+        return list.toArray(new String[list.size()]);
+    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
