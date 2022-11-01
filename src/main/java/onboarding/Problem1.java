@@ -31,5 +31,12 @@ class Problem1 {
         return false;
     }
 
+    private static boolean isInRange(int num){
+        final int MAX_VALUE = 400;
+        final int MIN_VALUE = 0;
+
+        if (num >= MIN_VALUE && num <= MAX_VALUE) return true;
+        return false;
+    }
     }
 }
