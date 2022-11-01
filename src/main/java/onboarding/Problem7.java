@@ -64,7 +64,14 @@ public class Problem7 {
         return map;
     }
     public static List<String> get_result(Map<String,Integer> FriendsAndscore_map){
-
+        List<String> answer= new ArrayList<>();
+        UpperSort(FriendsAndscore_map);
+        for(Map.Entry<String,Integer> element:FriendsAndscore_map.entrySet()) {
+            if (element.getValue() != 0) {
+                answer.add(element.getKey());
+            }
+        }
+        return answer;
     }
     public static Map<String,Integer> UpperSort(Map<String,Integer> FriendsAndscore_map){
 
