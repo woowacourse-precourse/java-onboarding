@@ -19,8 +19,23 @@ class Problem1 {
             return true;
         return false;
     }
+
+    public static int GetMaxValue(int val)
+    {
+        int sum = 0, mul = 1;
+        while (val != 0)
+        {
+            sum += val % 10;
+            mul *= val % 10;
+            val /= 10;
+        }
+        return sum > mul ? sum : val;
+    }
+    
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        if (IsException(pobi, crong))
+            return -1;
         return answer;
     }
 }
