@@ -15,10 +15,13 @@ public class Problem4 {
         return answer;
     }
 
+    // 문자를 변환하는 기능
     private static char changeSubWord(char subWord) {
         char changedSubWord = 0;
         if (Character.isUpperCase(subWord)) {
             changedSubWord = (char) (155 - (int) subWord);
+        } else if (Character.isLowerCase(subWord)) {
+            changedSubWord = (char) (219 - (int) subWord);
         }
         return changedSubWord;
     }
