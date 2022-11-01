@@ -12,19 +12,19 @@ public class Problem3 {
                 if(num.charAt(j) == '6') result++;
                 if(num.charAt(j) == '9') result++;
             }
-        print(number,result);
+       // print(number,result);
 
 
         return result;
 
     }
-    public static  void print(int number, int result) {
-        System.out.println("| number | result |");
-        System.out.println("| --- | --- |");
-        System.out.println("| "+number+" | "+result+" | ");
-
-
-    }
+//    public static  void print(int number, int result) {
+//        System.out.println("| number | result |");
+//        System.out.println("| --- | --- |");
+//        System.out.println("| "+number+" | "+result+" | ");
+//
+//
+//    }
     public static boolean constraints(int number){ // 제한사항
         if(number<1|| number>1000){System.out.println("number가 1미만 혹은 1000초과 입니다."); return false;}
         return true;
