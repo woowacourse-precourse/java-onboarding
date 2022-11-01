@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class Problem5 {
+    // 오만 원부터 시작하여 작은 단위 순서대로 리스트에 개수 입력
     static List<Integer> moneyCounter(int money){
         int moneyRemainder = money;
         List<Integer> countMoney = new ArrayList<>();
