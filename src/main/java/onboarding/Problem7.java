@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -22,5 +19,25 @@ public class Problem7 {
             }
         }
         return userFriendsList;
+    }
+
+    private static HashMap<String, Integer> getFriendsCount(List<List<String>> friends, List<String> userFriendsList, String user, HashMap<String, Integer> map) {
+        for (List<String> friend : friends) {
+            if (userFriendsList.contains(friend.get(0)) && !userFriendsList.contains(friend.get(1)) && !Objects.equals(friend.get(1), user)) {
+                if (map.containsKey(friend.get(1))) {
+                    map.put(friend.get(1), map.get(friend.get(1)) + 10);
+                } else {
+                    map.put(friend.get(1), 10);
+                }
+            }
+            if (userFriendsList.contains(friend.get(1)) && !userFriendsList.contains(friend.get(0)) && !Objects.equals(friend.get(0), user)) {
+                if (map.containsKey(friend.get(0))) {
+                    map.put(friend.get(0), map.get(friend.get(0)) + 10);
+                } else {
+                    map.put(friend.get(0), 10);
+                }
+            }
+        }
+        return map;
     }
 }
