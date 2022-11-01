@@ -23,6 +23,16 @@ public class Problem6 {
         List<Student> students = initStudents(forms);
         Set<String> overlapNickNames = new HashSet<>();
 
+        for (int current = 0; current < students.size() - 1; current++) {
+            Student currStudent = students.get(current);
+            String currNickName = currStudent.NickName;
+
+            for (int target = current + 1; target < students.size(); target++) {
+                Student targetStudent = students.get(target);
+                String targetNickName = targetStudent.NickName;
+            }
+        }
+
         return sortAnswer(overlapNickNames);
     }
 
