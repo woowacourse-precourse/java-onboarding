@@ -10,22 +10,24 @@ class Problem1 {
         return true;
     }
 
+    public static int getScore(Integer page) {
+        int result = 0;
+        String tmp = Integer.toString(page);
+        int _sum = 0, _mul = 1;
+        for (int k=0; k<tmp.length(); k++) _sum+=(tmp.charAt(k)-'0');
+        for (int k=0; k<tmp.length(); k++) _mul*=(tmp.charAt(k)-'0');
+        return Math.max(_sum,_mul);    //pobi의 현재 페이지 최대값 저장
+    }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int pobi_result = 0, crong_result = 0;
 
         if (checkException(pobi,crong)) return -1;
 
         for (int i=0; i<2; i++) {            //왼쪽과 오른쪽 페이지를 순서대로 읽어온다.
-            String pobi_tmp = Integer.toString(pobi.get(i));
-            String crong_tmp = Integer.toString(crong.get(i));
-            int pobi_sum = 0, pobi_mul = 1, crong_sum = 0, crong_mul = 1;
-            for (int k=0; k<pobi_tmp.length(); k++) pobi_sum+=(pobi_tmp.charAt(k)-'0');
-            for (int k=0; k<crong_tmp.length(); k++) crong_sum+=(crong_tmp.charAt(k)-'0');
-            for (int k=0; k<pobi_tmp.length(); k++) pobi_mul*=(pobi_tmp.charAt(k)-'0');
-            for (int k=0; k<crong_tmp.length(); k++) crong_mul*=(crong_tmp.charAt(k)-'0');
-            pobi_result=Math.max(pobi_sum,pobi_mul);    //pobi의 현재 페이지 최대값 저장
-            crong_result=Math.max(crong_sum,crong_mul); //crong의 현재 페이지 최대값 저장
+            pobi_result=Math.max(pobi_result,getScore(pobi.get(i)));    //pobi의 현재 페이지 최대값 저장
+            crong_result=Math.max(crong_result,getScore(crong.get(i))); //crong의 현재 페이지 최대값 저장
         }
+
         if (pobi_result > crong_result) return 1;  //pobi 승리
         if (pobi_result < crong_result) return 2;  //crong 승리
         return 0;  //무승부
