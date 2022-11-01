@@ -14,32 +14,32 @@ public class Problem6 {
     }
 }
 
-class Solver6 {
+final class Solver6 {
 
     /**
      * 크루는 1명 이상 10,000명 이하이다.
      */
-    private List<List<String>> forms;
+    private final List<List<String>> forms;
 
     /**
      * 중복 사용자의 이메일
      */
-    private List<String> duplicateUsersEmails = new ArrayList<>();
+    private final List<String> duplicateUsersEmails = new ArrayList<>();
 
     /**
      * 두 글자에 해당하는 이름을 저장한다.
      */
-    private Set<String> earlyNicknameParts = new HashSet<>();
-    private Set<String> lateNicknameParts = new HashSet<>();
+    private final Set<String> earlyNicknameParts = new HashSet<>();
+    private final Set<String> lateNicknameParts = new HashSet<>();
 
-    private FormValidator validator = new FormValidator();
+    private final FormValidator validator = new FormValidator();
 
     /*
         생성자에서 Validation을 수행한다.
         - 신청할 수 있는 이메일은 `email.com` 도메인으로만 제한한다.
         - 닉네임은 한글만 가능하고 전체 길이는 1자 이상 20자 미만이다.
      */
-    public Solver6(List<List<String>> forms) {
+    public Solver6(final List<List<String>> forms) {
         this.forms =
             forms
                 .stream()
@@ -51,7 +51,7 @@ class Solver6 {
                 .collect(Collectors.toList());
     }
 
-    private boolean valid(String email, String nickname) {
+    private boolean valid(final String email, final String nickname) {
         return validator.validEmailFormat(email) && validator.validEmailHost(email) && validator.validNickname(nickname);
     }
 
@@ -121,7 +121,7 @@ class Solver6 {
             });
     }
 
-    private List<String> twoCharSegmentsOf(String nickname) {
+    private List<String> twoCharSegmentsOf(final String nickname) {
         List<String> segments = new ArrayList<>();
         for (int i = 0; i < nickname.length() - 1; i++) {
             String twoCharSegment = nickname.substring(i, i + 2);
@@ -148,26 +148,26 @@ class Solver6 {
 /**
  * 유효성 검증 논리 분리
  */
-class FormValidator {
+final class FormValidator {
 
     /**
      * 이메일은 이메일 형식에 부합하며, 전체 길이는 11자 이상 20자 미만이다.
      */
-    public boolean validEmailFormat(String email) {
+    public boolean validEmailFormat(final String email) {
         return email.contains("@") && email.length() >= 11 && email.length() < 20;
     }
 
     /**
      * 신청할 수 있는 이메일은 `email.com` 도메인으로만 제한한다.
      */
-    public boolean validEmailHost(String email) {
+    public boolean validEmailHost(final String email) {
         return email.split("@")[1].equals("email.com");
     }
 
     /**
      * 닉네임은 한글만 가능하고 전체 길이는 1자 이상 20자 미만이다.
      */
-    public boolean validNickname(String nickname) {
+    public boolean validNickname(final String nickname) {
         if (nickname.length() < 1 || nickname.length() >= 20) {
             return false;
         }
@@ -179,7 +179,7 @@ class FormValidator {
         return true;
     }
 
-    public boolean koreanCodePoint(int codePoint) {
+    public boolean koreanCodePoint(final int codePoint) {
         return codePoint >= "가".codePointAt(0) && codePoint <= "힣".codePointAt(0);
     }
 }

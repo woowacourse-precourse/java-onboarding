@@ -17,7 +17,7 @@ public class Problem5 {
  * 각 몇 개로 변환되는지 금액이 큰 순서대로 리스트/배열
  * 1 <= money <= 1,000,000
  */
-class Solver5 {
+final class Solver5 {
 
     private static final int[] MONEY_UNITS = { 50000, 10000, 5000, 1000, 500, 100, 50, 10, 1 };
 

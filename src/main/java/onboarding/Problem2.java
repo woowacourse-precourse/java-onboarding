@@ -10,9 +10,10 @@ public class Problem2 {
 /**
  * 매번 새 String을 생성하기보다 Blank 문자로 치환하여 속도를 높인 구현
  */
-class Solver2 {
+final class Solver2 {
 
     static final char BLANK_MARKER = '-';
+
     private final String cryptogram;
     private int numberOfRemovedChars = 0;
     private int curIdx = 0;

@@ -9,7 +9,7 @@ public class Problem3 {
     }
 }
 
-class Solver3 {
+final class Solver3 {
 
     private final int limitNumber;
     private int totalClaps = 0;

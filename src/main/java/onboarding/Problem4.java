@@ -7,7 +7,7 @@ public class Problem4 {
     }
 }
 
-class Solver4 {
+final class Solver4 {
 
     private final String word;
     private int curIdx;
