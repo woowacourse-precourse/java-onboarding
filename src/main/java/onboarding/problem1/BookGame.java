@@ -21,7 +21,7 @@ public class BookGame {
 
         return result;
     }
-    
+
     private boolean checkValidation(){
         try{
             user1.checkPageValidation();
