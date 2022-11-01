@@ -21,10 +21,20 @@ public class Problem7 {
             //user의 친구의 친구
             List<String> friendsOfFriendsOfUser = getFriendsFrom(friendOfUser, friends);
 
-
+            // 1) 함께 아는 친구 스코어 +10, (user, user의 친구는 제외)
+            updateScore(nameAndScoreMap,
+                    friendsOfFriendsOfUser,
+                    excludes,
+                    DUPLICATED_FRIENDS_SCORE);
         }
 
-        List<String> answer = Collections.emptyList();;
+        // 2) 타임 라인 방문한 visitors 스코어 +1, (user, user의 친구는 제외)
+        updateScore(nameAndScoreMap,
+                visitors,
+                excludes,
+                VISITOR_SCORE);
+
+        List<String> answer = Collections.emptyList();
 
         return answer;
     }
@@ -51,6 +61,17 @@ public class Problem7 {
         }
 
         return userFriends;
+    }
+
+    private static void updateScore(Map<String, Integer> nameAndScoreMap, List<String> includes, List<String> excludes, int fixedScore) {
+        for (String name : includes) {
+            if (excludes.contains(name)) {
+                continue;
+            }
+
+            int score = nameAndScoreMap.getOrDefault(name, 0);
+            nameAndScoreMap.put(name, score + fixedScore);
+        }
     }
 
 }
