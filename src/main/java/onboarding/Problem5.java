@@ -13,7 +13,7 @@ public class Problem5 {
         List<Integer> answer = new ArrayList<>();
 
         Integer[] moneyList = {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
-        if (money >= 1 && money < 1000000) {
+        if (checkRange(money)) {
             for (Integer integer : moneyList) {
                 int c = money / integer;
                 if (c > 0) {
@@ -25,5 +25,8 @@ public class Problem5 {
             }
         }
         return answer;
+    }
+    public static boolean checkRange(int money){
+        return money >= 1 && money < 1000000;
     }
 }
