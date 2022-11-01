@@ -26,8 +26,6 @@ public class Problem2 {
     }
 
 
-    List
-
     String reduceRedupl(String cryptogram, int[] index){
         int temp_length = cryptogram.length();
         String temp_string = "";
