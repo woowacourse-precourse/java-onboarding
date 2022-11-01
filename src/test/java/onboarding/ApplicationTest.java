@@ -50,34 +50,6 @@ class ApplicationTest {
             String result = "";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
-
-        @Test
-        void customCase1() {
-            String cryptogram = "abbc";
-            String result = "ac";
-            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
-        }
-
-        @Test
-        void customCase2() {
-            String cryptogram = "a";
-            String result = "a";
-            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
-        }
-
-        @Test
-        void customCase3() {
-            String cryptogram = "aaaaa";
-            String result = "";
-            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
-        }
-
-        @Test
-        void customCase4() {
-            String cryptogram = "aaaaabbaz";
-            String result = "az";
-            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
-        }
     }
 
     @Nested
@@ -95,20 +67,6 @@ class ApplicationTest {
             int result = 14;
             assertThat(Problem3.solution(number)).isEqualTo(result);
         }
-
-        @Test
-        void customCase1() {
-            int number = 1;
-            int result = 0;
-            assertThat(Problem3.solution(number)).isEqualTo(result);
-        }
-
-        @Test
-        void customCase2() {
-            int number = 36;
-            int result = 18;
-            assertThat(Problem3.solution(number)).isEqualTo(result);
-        }
     }
 
     @Nested
@@ -117,13 +75,6 @@ class ApplicationTest {
         void case1() {
             String word = "I love you";
             String result = "R olev blf";
-            assertThat(Problem4.solution(word)).isEqualTo(result);
-        }
-
-        @Test
-        void customCase1() {
-            String word = "7";
-            String result = "7";
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
     }
@@ -141,20 +92,6 @@ class ApplicationTest {
         void case2() {
             int money = 15_000;
             List<Integer> result = List.of(0, 1, 1, 0, 0, 0, 0, 0, 0);
-            assertThat(Problem5.solution(money)).isEqualTo(result);
-        }
-
-        @Test
-        void customCase1() {
-            int money = 1;
-            List<Integer> result = List.of(0, 0, 0, 0, 0, 0, 0, 0, 1);
-            assertThat(Problem5.solution(money)).isEqualTo(result);
-        }
-
-        @Test
-        void customCase2() {
-            int money = 1_000_000;
-            List<Integer> result = List.of(20, 0, 0, 0, 0, 0, 0, 0, 0);
             assertThat(Problem5.solution(money)).isEqualTo(result);
         }
     }
@@ -190,25 +127,6 @@ class ApplicationTest {
             );
             List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
             List<String> result = List.of("andole", "jun", "bedi");
-            assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
-        }
-
-        @Test
-        void customCase1() {
-            String user = "mrko";
-            List<List<String>> friends = List.of(
-                    List.of("donut", "jun"),
-                    List.of("ttochi", "shakevan"),
-                    List.of("donut", "andole"),
-                    List.of("donut", "mrko"),
-                    List.of("shakevan", "andole"),
-                    List.of("shakevan", "jun"),
-                    List.of("shakevan", "mrko"),
-                    List.of("shakevan", "doolli"),
-                    List.of("shakevan", "gildong")
-            );
-            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan", "jun");
-            List<String> result = List.of("jun", "andole", "doolli", "gildong", "ttochi");
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
         }
     }
