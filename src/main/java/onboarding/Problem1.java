@@ -1,7 +1,10 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
+
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
@@ -19,6 +22,17 @@ class Problem1 {
         }
         separatedNumbers.add(num % NOTATION);
         return separatedNumbers;
+    }
+
+    private static int getScore(List<Integer> pages){
+        List<List<Integer>> separatedNumbers = pages.stream().map(x->separateNumber(x)).collect(Collectors.toList());
+        List<Integer> scoreCandidates = new ArrayList<>();
+        for (List<Integer> item:separatedNumbers
+        ) {
+            scoreCandidates.add(getSum(item));
+            scoreCandidates.add(getMultiply(item));
+        }
+        return Collections.max(scoreCandidates);
     }
 
     private static int getSum(List<Integer> numbers){
