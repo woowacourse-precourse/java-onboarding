@@ -15,7 +15,7 @@ public class Problem7 {
 
         List<Map.Entry<String, Integer>> recommendLists = makeSortedRecommendList(recommendedScoreMap);
 
-        int maxRecommendSize = (recommendLists.size() > 5)? 5 : recommendLists.size();
+        int maxRecommendSize = Math.min(recommendLists.size(), 5);
 
         for(int i=0; i<maxRecommendSize; i++) {
 
