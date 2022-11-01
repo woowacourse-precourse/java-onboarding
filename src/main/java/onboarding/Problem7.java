@@ -4,7 +4,13 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        Map<String, List<String>> friendRelInfo = generateFriendRelInfo(friends);
+        List<String> userFrineds = friendRelInfo.get(user);
+
+        Map<String, Integer> userScoreInfo = calScoreOfFriendRelWithUser(user, friendRelInfo);
+        calNumOfVisitToTimeline(userScoreInfo, visitors);
+
+        List<String> answer = calTopFiveOfScoreInfo(userScoreInfo, userFrineds);
         return answer;
     }
 
