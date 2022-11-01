@@ -17,6 +17,16 @@ public class Problem7 {
         return answer;
     }
 
+    //  MAP에 유저 정보와 점수를 입력하는 메소드
+    private static void putPointAndUser(String id, int point){
+        if(!recommend.containsKey(id)) {
+            recommend.put(id, point);
+        } else {
+            int increasePoint = recommend.get(id) + point;
+            recommend.put(id, increasePoint);
+        }
+    }
+
     //  입력받은 유저의 친구 목록을 추출하는 메소드
     private static List<String> findFriendsWithUser(String id, List<List<String>> friends){
         List<String> friendsWithUser = new ArrayList<>();
