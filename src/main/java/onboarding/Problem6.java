@@ -27,6 +27,11 @@ public class Problem6 {
         }
         return overlap;
     }
+    private static void insertAnswer(List<String> answer, String email) {
+        if (!answer.contains(email)) {
+            answer.add(email);
+        }
+    }
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
