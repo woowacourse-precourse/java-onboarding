@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
@@ -9,10 +10,31 @@ public class Problem6 {
         List<String> nameList = makeNameList(forms);
         List<String> allCaseName = getAllCaseName(nameList);
         List<List<Integer>> caseIndexList = checkSame(nameList, allCaseName);
-
-
-        List<String> answer = List.of("answer");
+        List<Integer> sameIndexList = getSameNameIndexList(caseIndexList);
+        List<String> answer = getEmailList(forms, sameIndexList);
+        Collections.sort(answer);
         return answer;
+    }
+
+    private static List<String> getEmailList(List<List<String>> forms, List<Integer> sameIndexList) {
+        List<String> emailList = new ArrayList<>();
+
+        for (int index : sameIndexList) {
+            emailList.add(forms.get(index).get(0));
+        }
+        return emailList;
+    }
+
+    private static List<Integer> getSameNameIndexList(List<List<Integer>> caseIndexList) {
+        HashSet<Integer> nameIndexSet = new HashSet<>();
+
+        for (List<Integer> caseIndex : caseIndexList) {
+
+            if (caseIndex.size() > 1) {
+                nameIndexSet.addAll(caseIndex);
+            }
+        }
+        return new ArrayList<>(nameIndexSet);
     }
 
     private static List<List<Integer>> checkSame(List<String> nameList, List<String> nameCaseList) {
