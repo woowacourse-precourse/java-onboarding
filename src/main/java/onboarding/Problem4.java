@@ -16,6 +16,14 @@ public class Problem4 {
         return answer;
     }
 
+    private static String makeSentence(String word, Map<Character, Character> cachedAlphabet) {
+        String answer = "";
+        for (int i = 0; i < word.length(); i++) {
+            answer += convertLetter(word.charAt(i), cachedAlphabet);
+        }
+        return answer;
+    }
+
     private static String convertLetter(Character letter, Map<Character, Character> cachedAlphabet) {
         if (isAlphabet(letter, cachedAlphabet)) {
             return String.valueOf(cachedAlphabet.get(letter));
