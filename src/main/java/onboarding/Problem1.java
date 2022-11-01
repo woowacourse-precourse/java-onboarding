@@ -6,10 +6,14 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
-        boolean page = exception_check(pobi, crong);
-        if(!page) {
-            return -1;
+        int answer = -1;
+        boolean exception_pobi = validation(pobi);
+        boolean exception_crong = validation(crong);
+
+        if(!exception_pobi || !exception_crong) {
+            return answer;
         }
+
 
         int pobi_sum_score = sum(pobi);
         int pobi_mul_score = mul(pobi);
@@ -43,8 +47,8 @@ class Problem1 {
         return  maxScore(val_1, val_2);
     }
     static private int mul(List<Integer> value) {
-        int val_1 = 0;
-        int val_2 = 0;
+        int val_1 = 1;
+        int val_2 = 1;
 
         String[] array1 = String.valueOf(value.get(0)).split("");
         for (String val : array1) {
@@ -62,14 +66,22 @@ class Problem1 {
         }else return b;
     }
 
-    static private boolean exception_check(List<Integer> pobi, List<Integer> crong){
-        boolean result = true;
+    static private boolean validation(List<Integer> list) {
 
-        if (1 != Math.abs(pobi.get(0) - pobi.get(1))){
+        boolean result = true;
+        for (int page : list) {
+            if (page == 0 || page == 401) {
+                return false;
+            }
+        }
+
+        if (1 != (list.get(1) - list.get(0))) {
             return false;
-        } else if (1 != Math.abs(crong.get(0) - crong.get(1))) {
+        } else if (list.get(0) % 2 != 1) {
             return false;
-        } else return result;
+        } else {
+            return result;
+        }
     }
 
 }
