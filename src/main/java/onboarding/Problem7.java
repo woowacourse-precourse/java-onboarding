@@ -70,12 +70,23 @@ public class Problem7 {
 		if (!isUserRangeValid(user)) {
 			return EXCEPTION;
 		}
+		if (!isFriendsRangeValid(friends)) {
+			return EXCEPTION;
+		}
 		return 0;
 	}
 
 	// user 의 길이가 1 이상 30 이하가 아닌 경우 예외
 	private static boolean isUserRangeValid(String user) {
 		if (user.length() < 1 || user.length() > 30) {
+			return false;
+		}
+		return true;
+	}
+
+	// friends 의 길이 1 이상 10,000 이하가 아닌 경우 예외
+	private static boolean isFriendsRangeValid(List<List<String>> friends) {
+		if (friends.size() < 1 || friends.size() > 10000) {
 			return false;
 		}
 		return true;
