@@ -23,4 +23,13 @@ class Problem1 {
         }
         return ans;
     }
+
+    boolean valid(List<Integer> scores) {
+        int first = scores.get(0);
+        int second = scores.get(1);
+        //페이지가 어긋나거나, 첫 페이지 또는 마지막 페이지를 펼친 경우
+        if (first+ 1 != second || first == 1 || second == 400) return false;
+        else return false;
+
+    }
 }
