@@ -51,19 +51,19 @@ public class Problem6 {
 	 */
 	private static List<String> getCrewUsingInvalidNickname(Map<String, String> map,
 		Set<String> duplicateNicknames) {
-		List<String> answer = new ArrayList<>();
+		Set<String> answer = new HashSet<>();
 		String nickname;
 		String email;
 		for (Map.Entry<String, String> entry : map.entrySet()) {
+			nickname = entry.getValue();
 			for (String duplicateNickname : duplicateNicknames) {
-				nickname = entry.getValue();
 				if (nickname.contains(duplicateNickname)) {
 					email = entry.getKey();
 					answer.add(email);
 				}
 			}
 		}
-		return answer;
+		return new ArrayList<>(answer);
 	}
 
 	/**
