@@ -19,8 +19,8 @@ public class Problem6 {
 	public static List<String> solution(List<List<String>> forms) {
 		List<String> answer = new ArrayList<>();
 		Map<String, String> emailAndNicknames;
-		List<String> splitNicknamesIntoTwoDigit; // 각 크루의 닉네임을 두 글자씩 쪼개어 담을 리스트
-		Set<String> duplicateNicknames; // 중복된 닉네임 set
+		List<String> splitNicknamesIntoTwoDigit;
+		Set<String> duplicateNicknames;
 
 		if (checkRestrictions(forms) == EXCEPTION) {
 			return answer;
