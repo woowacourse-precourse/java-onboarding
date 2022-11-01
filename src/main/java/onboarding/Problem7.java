@@ -1,12 +1,8 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.TreeMap;
+import java.util.*;
 
 public class Problem7 {
-
     static TreeMap<String, Integer> treemap = new TreeMap<>();
     static ArrayList<String> friend_lis = new ArrayList<>();
 
@@ -24,6 +20,7 @@ public class Problem7 {
 
 
     }
+
     public static ArrayList<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 //        List<String> answer = Collections.emptyList();
 //        return answer;
@@ -60,5 +57,23 @@ public class Problem7 {
                 }
             }
         }
+//        여기까지 친구 추천 트리맵을 만들었음!!!!!!
+
+
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(treemap.entrySet());
+        Collections.sort(entryList, new Comparator<Map.Entry<String, Integer>>() {
+            public int compare(Map.Entry<String, Integer> obj1, Map.Entry<String, Integer> obj2){
+                return obj2.getValue().compareTo(obj1.getValue());
+            }
+        });
+
+        ArrayList<String> recommend_friend_lis = new ArrayList<>();
+
+        for(Map.Entry<String, Integer> entry:entryList){
+            String recommend_friend = entry.getKey();
+            recommend_friend_lis.add(recommend_friend);
+
+        }
+        return recommend_friend_lis;
     }
 }
