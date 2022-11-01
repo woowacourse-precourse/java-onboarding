@@ -12,6 +12,11 @@ public class Problem4 {
         return answer;
     }
 
+    private static String appendCharacter(String answer, String appendingStr) {
+        answer += appendingStr;
+        return answer;
+    }
+
     private static String convertReverseAlphabet(String str, int index) {
         if (LOWER_ORDER.contains(str)) {
             return LOWER_UNORDER.substring(index, index + 1);
