@@ -6,6 +6,7 @@ import java.util.*;
 public class Problem7 {
 
     private final static int SCORE_OF_FRIENDS_WITH_USER = 10;
+    private final static int SCORE_OF_TIMELINE_VISIT = 1;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Set<String> allNames = getAllNames(friends, visitors, user);
@@ -27,6 +28,8 @@ public class Problem7 {
             userFriends.add(idToNameMap.get(numberOfUserFriend));
             scoreTogetherWithFriendCalculate(scores, friendship[numberOfUserFriend]);
         }
+
+        visitScoreCalculate(visitors, scores, nameToIdMap);
 
         List<String> answer = Collections.emptyList();
         return answer;
@@ -80,6 +83,13 @@ public class Problem7 {
         for (int j = 0; j < friendship.size(); j++) {
             int myFriendOfFriend = friendship.get(j);
             scores[myFriendOfFriend] += SCORE_OF_FRIENDS_WITH_USER;
+        }
+    }
+
+    private static void visitScoreCalculate(List<String> visitors, int[] scores, Map<String, Integer> nameToIdMap) {
+        for (int i = 0; i < visitors.size(); i++) {
+            int visitorNumber = nameToIdMap.get(visitors.get(i));
+            scores[visitorNumber] += SCORE_OF_TIMELINE_VISIT;
         }
     }
 }
