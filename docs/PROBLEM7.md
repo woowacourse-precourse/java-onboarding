@@ -24,3 +24,10 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### <기능 목록>
+- recommend: 추천 친구를 key로, 점수를 value로 가지는 HashMap
+
+1. 함께 아는 친구의 수 점수계산
+   
+2. 방문한 횟수 점수계산
