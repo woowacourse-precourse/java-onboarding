@@ -21,3 +21,8 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+### 기능 목록
+1. 연속된 중복 문자 존재 여부 판별 기능 (checkRepetition)
+2. 연속된 중복 문자가 존재할 경우, 삭제한 결과를 리턴하는 기능(removeRepetition)
+
