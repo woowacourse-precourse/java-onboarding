@@ -21,3 +21,8 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+- - -
+# 기능 목록
+- String 객체의 subString: 문자열에서 특정 문자열을 제거한다.
+- 중복되는 문자열의 시작 지점 및 끝 지점 찾기
+- 문자열 재조합

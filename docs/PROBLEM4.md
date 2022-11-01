@@ -19,3 +19,11 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+- - -
+# 기능 목록
+- Character 객체의 upperCase: 대문자인지 확인
+- Character 객체의 lowerCase: 소문자인지 확인
+- String 객체의 charAt: 문자열에서 특정 인덱스에서의 문자를 찾아준다.
+- String 객체의 indexOf: 문자열에서 특정 문자의 인덱스를 찾아준다.
+- StringBuilder의 append: StringBuilder 인스턴스에 자신이 원하는 특정 문자열을 또는 문자를 이어 붙여준다.
+- StringBuilder의 toString: StringBuilder 인스턴스를 문자열로 변형해준다.
