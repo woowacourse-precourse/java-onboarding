@@ -11,6 +11,18 @@ public class Problem7 {
         return answer;
     }
 
+    // 해당 릴레이션이 친구의 친구인지 판단 및 릴레이션에서의 위치 반환 (false -> -1)
+    private static int getIndexOfFOF(String user, List<String> relation, Set<String> neighbor) {
+        String u1 = relation.get(0);
+        String u2 = relation.get(1);
+
+        if (neighbor.contains(u1) && !user.equals(u2))
+            return 1;
+        else if (neighbor.contains(u2) && !user.equals(u1))
+            return 0;
+        return -1;
+    }
+
     // 사용자와 직접 친구인 neighbor 찾기
     private static Set<String> getNeighbor(String user, List<List<String>> friends) {
         Set<String> neighbor = new HashSet<>();
