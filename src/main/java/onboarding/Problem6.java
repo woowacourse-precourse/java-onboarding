@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -34,6 +35,8 @@ public class Problem6 {
                 }
             }
         }
+        // 이메일을 오름차순으로 정렬하는 기능
+        answer.sort(Comparator.naturalOrder());
         return answer;
     }
 }
