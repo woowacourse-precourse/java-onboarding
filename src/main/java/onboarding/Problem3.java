@@ -4,10 +4,10 @@ public class Problem3 {
     /* 기능 단위
      * 1. 자릿수와 자릿수에 따른 10의 거듭제곱 구하기 (getDigit, getPowerByDigit)
      *   a. ex) 234 -> 자릿수: 3, 자릿수에 따른 10의 거듭제곱: 100
-     * 2. 자릿수에 따른 손뼉 수 구하기 (clapByDigit)
+     * 2. 자릿수에 따른 손뼉 수 구하기 (getClapByDigit)
      *   a. 아래 알고리즘을 따름
      *   b. clap[i] = clap[i-1] + clap[i-1]*9 + (int) Math.pow(10, i)*3
-     * 3. 1부터 number까지 손뼉 수 구하기 (clapByNumber)
+     * 3. 1부터 number까지 손뼉 수 구하기 (getClapByNumber)
      * */
 
     private static int getDigit(int number) {
@@ -16,6 +16,17 @@ public class Problem3 {
 
     private static int getPowerByDigit(int digit) {
         return ((int) Math.pow(10, digit-1));
+    }
+
+    private static int[] getClapByDigit(int digit) {
+        int[] clap = new int[digit];
+        int i = 0;
+        while (i < digit) {
+            if(i == 0) clap[i] = 3;
+            else clap[i] = clap[i-1] + clap[i-1]*9 + (int) Math.pow(10, i)*3;
+            i ++;
+        }
+        return clap;
     }
 
     public static int solution(int number) {
