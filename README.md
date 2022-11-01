@@ -1,5 +1,91 @@
 # 미션 - 온보딩
 
+## ✏️ 미션을 통해 새로 배운 내용
+
+- 각 문제 별 자세한 내용은 'PROBLEM?.md' 에 정리되어 있습니다.
+- 문제를 차례대로 해결하며 앞 문제에서 배웠던 내용을 적용해 보려 노력하였습니다.
+
+<details>
+  <summary><strong>< PROBLEM 1 ></strong></summary>
+  <div markdown="1">
+    - 기능 별로 함수 작게 나누기 <br> 
+    - 테스트 코드 연습 <br>
+    - 예외처리 연습 <br>
+  </div>
+</details>
+
+<details>
+  <summary><strong>< PROBLEM 2 ></strong></summary>
+  <div markdown="1">
+    - String < = > List 변환 <br>
+    - Primitive type, Reference type <br>
+    - 값 비교 <br>
+  </div>
+</details>
+
+<details>
+  <summary><strong>< PROBLEM 4 ></strong></summary>
+  <div markdown="1">
+    - static, final, static final <br>
+    - enum <br>
+    - 기능 별 클래스 생성 <br>
+    - 사용자 정의 예외 클래스 <br>
+  </div>
+</details>
+
+<details>
+  <summary><strong>< PROBLEM 5 ></strong></summary>
+  <div markdown="1">
+    - enum 활용 <br>
+    - private 메소드 테스트 <br>
+  </div>
+</details>
+
+<details>
+  <summary><strong>< PROBLEM 6 ></strong></summary>
+  <div markdown="1">
+    - Set <br>
+  </div>
+</details>
+
+<details>
+  <summary><strong>< PROBLEM 7 ></strong></summary>
+  <div markdown="1">
+    - Map <br>
+    - Comparable, Comparator <br>
+    - Stream <br>
+  </div>
+</details>
+
+
+
+## 📄 미션 요구 사항 확인
+
+##### <기능 요구 사항 및 테스트>
+
+- [x] 문제 1~7 구현 완료
+
+- [x] 기능 목록 먼저 생성 후 구현
+
+- [x] 기능 단위 커밋
+
+- [x] 모든 테스트 통과
+
+
+##### <프로그래밍 요구 사항>
+
+- [x] JDK 11 확인
+- [x] build.gradle 변경 및 외부 라이브러리 사용 금지
+- [x] System.exit() 호출 금지
+- [x] ApplicationTest 모든 테스트 성공
+- [x] 파일, 패키지 이름 수정 및 이동 금지
+
+##### <과제 진행 요구 사항>
+
+- [x] [java-onboarding](https://github.com/woowacourse-precourse/java-onboarding) 저장소 Fork & Clone 후 시작
+
+---
+
 ## 🔍 진행 방식
 
 - 미션은 **기능 요구 사항, 프로그래밍 요구 사항, 과제 진행 요구 사항** 세 가지로 구성되어 있다.
