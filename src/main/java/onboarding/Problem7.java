@@ -35,7 +35,8 @@ public class Problem7 {
         // 사용자 본인인 경우와 친구인 경우 제외
         exceptScore(user);
 
-        return Collections.emptyList();
+        // 정렬 기준으로 정렬 후 결과 리스트 반환
+        return sortFriends();
     }
 
     static int initFriendsInfo (int indexNum, String friend1, String friend2) {
@@ -84,4 +85,39 @@ public class Problem7 {
         for (String s1 : friendsForOne.get(index.get(user)))
             score.put(s1, 0);
     }
+
+    // 정렬 기준으로 정렬 후 결과 리스트 반환
+    static List<String> sortFriends () {
+        List<Map.Entry<String, Integer>> scoreList = new ArrayList<>(score.entrySet());
+
+
+        // 친구 점수의 오름차순으로 정렬하며 친구 점수가 같으면, 이름순으로 정렬
+        scoreList.sort((o1, o2) -> {
+            if (isScoreEqual (o1.getValue(), o2.getValue())) {
+                return o1.getKey().compareTo(o2.getKey());
+            }
+            if (o1_isSmallerThan_o2 (o1.getValue(), o2.getValue()))
+                return 1;
+            return -1;
+        });
+
+        return extractFrinedsMax5(scoreList);
+    }
+
+    static boolean isScoreEqual (int n, int m) { return n == m; }
+    static boolean o1_isSmallerThan_o2 (int n, int m) { return n < m; }
+
+    // 최대 다섯명까지, 우선 순위 기준에 따른 추천 친구 배열 반환
+    static List<String> extractFrinedsMax5 (List<Map.Entry<String, Integer>> scoreList) {
+        List<String> sortedFriends = new ArrayList<>();
+        int cnt = 5;
+        for (Map.Entry<String, Integer> entry : scoreList) {
+            if (scoreIsZero(entry.getValue()) || isCountOver(cnt)) break;
+            sortedFriends.add(entry.getKey());
+            cnt--;
+        }
+        return sortedFriends;
+    }
+    static boolean scoreIsZero (int n) { return n == 0; }
+    static boolean isCountOver (int n) { return n == 0; }
 }
