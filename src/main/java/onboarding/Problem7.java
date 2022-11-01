@@ -10,6 +10,7 @@ public class Problem7 {
             Map<String, Integer> Friends = new HashMap<>();
 
             List<String> userFriends = MakeFriendsList(user,friends);
+            CountScore(Friends,visitors,friends,userFriends,user);
         }throw new IllegalArgumentException("잘못된 입력값");
     }
 
@@ -66,5 +67,12 @@ public class Problem7 {
             Friends.remove(userFriends.get(i));
         }
         Friends.remove(user);
+    }
+
+    /* 기능6 : 총 점수 count */
+    private static void CountScore(Map<String, Integer> Friends, List<String> visitors,List<List<String>> friends, List<String> userFriends,String user){
+        FriendOfAFriendCount(friends,userFriends,Friends);
+        VisitCount(Friends,visitors);
+        Exclusion(userFriends,Friends,user);
     }
 }
