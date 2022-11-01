@@ -19,4 +19,8 @@ public class NickName {
 		Matcher matcher = compile.matcher(inputNickName);
 		return matcher.matches();
 	}
+
+	public String getNickName() {
+		return nickName;
+	}
 }
