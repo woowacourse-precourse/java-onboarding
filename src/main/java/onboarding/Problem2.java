@@ -8,6 +8,14 @@ public class Problem2 {
         return answer;
     }
 
+    public static String convertStackIntoString(Stack<Character> stack) {
+        StringBuilder sb = new StringBuilder();
+        while(!stack.isEmpty()) {
+            sb.append(stack.pop());
+        }
+        return sb.reverse().toString();
+    }
+
     public static Stack<Character> deleteDuplicateUsingStack(String str) {
         final int LEN = str.length();
         Stack<Character> stack = new Stack<>();
