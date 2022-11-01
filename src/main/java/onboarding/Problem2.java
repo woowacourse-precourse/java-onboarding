@@ -38,6 +38,12 @@ public class Problem2 {
         return result;
     }
 
+    // 문자열에 특정 부분을 제거하는 함수
+    private static String deleteString(String cryptogram, IndexData indexData) {
+        cryptogram = cryptogram.substring(0, indexData.getStart()) + cryptogram.substring(indexData.getEnd() + 1);
+        return cryptogram;
+    }
+
     // 문자열의 시작과 끝 인덱스를 저장하기 위한 데이터 클래스
     public static class IndexData {
         private int start;
