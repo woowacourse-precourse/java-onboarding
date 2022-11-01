@@ -3,10 +3,6 @@ package onboarding;
 import java.util.ArrayList;
 
 public class Problem3 {
-    static ArrayList<Integer> CLAP = new ArrayList<>();
-    CLAP.add(3);
-    CLAP.add(6);
-    CLAP.add(9);
 
     public static int solution(int number) {
         int answer = 0;
@@ -34,6 +30,10 @@ public class Problem3 {
     }
 
     private static Integer isClap(Integer num) {
+        ArrayList<Integer> CLAP = new ArrayList<>();
+        CLAP.add(3);
+        CLAP.add(6);
+        CLAP.add(9);
         if (CLAP.contains(num)) {
             return 1;
         }
