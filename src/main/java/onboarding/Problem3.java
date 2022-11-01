@@ -12,8 +12,21 @@ public class Problem3 {
         for (int i = 1; i <= number; i++) {
             char[] numbers = String.valueOf(i).toCharArray();
 
+            answer += count369(numbers);
         }
 
         return answer;
+    }
+
+    public static int count369(char[] numbers) {
+        int count = 0;
+
+        for (char number : numbers) {
+            if (number == '3' || number == '6' || number == '9') {
+                count++;
+            }
+        }
+
+        return count;
     }
 }
