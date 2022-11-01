@@ -3,7 +3,27 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
-	private static int allAdd(int n) {
+    public static int solution(List<Integer> pobi, List<Integer> crong) {
+    	if(!isCorrect(pobi) || !isCorrect(crong)) {
+    		return -1;
+    	}
+    	
+        int answer = Integer.MAX_VALUE;
+        int pobiScore = getBiggerScore(pobi);
+        int crongScore = getBiggerScore(crong);
+        
+        if(pobiScore > crongScore) {
+        	answer = 1;
+        } else if(pobiScore < crongScore) {
+        	answer = 2;
+        } else {
+        	answer = 0;
+        }
+        
+        return answer;
+    }
+    
+    private static int allAdd(int n) {
 		int res = 0;
 		
 		while(n != 0) {
@@ -23,43 +43,27 @@ class Problem1 {
 		return res;
 	}
 	
-	private static int selectBigger(int n1, int n2) {
-		return Math.max(n1, n2);
-	}
-	
 	private static boolean isCorrect(List<Integer> list) {
 		if(list.get(0) + 1 != list.get(1)) {
 			return false;
 		}
 		return true;
 	}
-	
-    public static int solution(List<Integer> pobi, List<Integer> crong) {
-    	if(!isCorrect(pobi) || !isCorrect(crong)) {
-    		return -1;
-    	}
+    
+    private static int getBiggerScore(List<Integer> list) {
+    	int score = 0;
     	
-        int answer = Integer.MAX_VALUE;
-        int pobiAddLeftPage = allAdd(pobi.get(0));
-        int pobiAddRightPage = allAdd(pobi.get(1));
-        int crongAddLeftPage = allAdd(crong.get(0));
-        int crongAddRightPage = allAdd(crong.get(1));
-        int pobiMulLeftPage = allMul(pobi.get(0));
-        int pobiMulRightPage = allMul(pobi.get(1));
-        int crongMulLeftPage = allMul(crong.get(0));
-        int crongMulRightPage = allMul(crong.get(1));
-        
-        int pobiScore = selectBigger(Math.max(pobiAddLeftPage, pobiAddRightPage), Math.max(pobiMulLeftPage, pobiMulRightPage));
-        int crongScore = selectBigger(Math.max(crongAddLeftPage, crongAddRightPage), Math.max(crongMulLeftPage, crongMulRightPage));
-        
-        if(pobiScore > crongScore) {
-        	answer = 1;
-        } else if(pobiScore < crongScore) {
-        	answer = 2;
-        } else {
-        	answer = 0;
-        }
-        
-        return answer;
+    	for(int i = 0; i < 2; i++) {
+    		if(hasZero(list.get(i))) {
+    			score = Math.max(score, Math.max(allAdd(list.get(1 - i)), allMul(list.get(1 - i))));
+    		}
+    	}
+    	score = Math.max(score,  Math.max(allAdd(list.get(1)), allMul(list.get(1))));
+    	
+    	return score;
+    }
+    
+    private static boolean hasZero(int n) {
+    	return Integer.toString(n).contains("0");
     }
 }
