@@ -4,6 +4,7 @@ import java.util.Arrays;
 
 public class Problem4 {
     public static String solution(String word) {
+        check1(word);
         String answer = "";
         int[] result = new int[word.length()];
         int[] result1 = new int[word.length()];
@@ -26,5 +27,13 @@ public class Problem4 {
         return answer;
 
     }
+    public static void check1(String word) throws IllegalArgumentException{
+        if (word.length() < 1 || word.length() > 1000) {
+            throw new IllegalArgumentException("word의 길이가 0이거나 1000을 초과하였습니다.");
+        }
+
+    }
+
+
 
 }
