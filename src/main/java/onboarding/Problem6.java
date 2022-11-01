@@ -1,15 +1,28 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> nameList = makeNameList(forms);
+        List<String> allCaseName = getAllCaseName(nameList);
 
 
         List<String> answer = List.of("answer");
         return answer;
+    }
+
+    private static List<String> getAllCaseName(List<String> nameList) {
+        HashSet<String> allCaseSet = new HashSet<>();
+
+        for (String name : nameList) {
+            for (int j = 0; j <= name.length() - 2; j++) {
+                allCaseSet.add(name.substring(j, j + 2));
+            }
+        }
+        return new ArrayList<>(allCaseSet);
     }
 
     static List<String> makeNameList(List<List<String>> forms) {
