@@ -60,3 +60,10 @@ BUILD SUCCESSFUL in 0s
 
 - 미션은 [java-onboarding](https://github.com/woowacourse-precourse/java-onboarding) 저장소를 Fork & Clone해 시작한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+## 📜기능 체크리스트
+### 문제1
+- [x] 주어진 리스트가 예외사항에 해당하는지 확인하고, 예외사항이면 -1을 반환한다.
+- [x] 두 사람의 점수를 계산한다.
+- [x] 게임 결과를 판단하고, 상황에 맞는 결과 값을 출력한다.
+
