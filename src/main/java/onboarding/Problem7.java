@@ -11,24 +11,14 @@ public class Problem7 {
         for (List<String> friend : friends) {
             String userA = friend.get(0);
             String userB = friend.get(1);
-            friendsList.add(userA);
 
-            if (!Objects.equals(userB, user)) {
-                if (!pointOfUsers.containsKey(userB)) {
-                    pointOfUsers.put(userB, 10);
-                } else {
-                    pointOfUsers.put(userB, pointOfUsers.get(userB) + 10);
-                }
-            }
+            friendsList.add(userA);
+            calculateFriendScore(user, pointOfUsers, userB);
         }
 
         for (String visitor : visitors) {
             if (!friendsList.contains(visitor)) {
-                if (!pointOfUsers.containsKey(visitor)) {
-                    pointOfUsers.put(visitor, 1);
-                } else {
-                    pointOfUsers.put(visitor, pointOfUsers.get(visitor) + 1);
-                }
+                calculateVisitorScore(pointOfUsers, visitor);
             }
         }
 
@@ -46,5 +36,23 @@ public class Problem7 {
         }
 
         return answer;
+    }
+
+    private static void calculateFriendScore(String user, Map<String, Integer> pointOfUsers, String userB) {
+        if (!Objects.equals(userB, user)) {
+            if (!pointOfUsers.containsKey(userB)) {
+                pointOfUsers.put(userB, 10);
+            } else {
+                pointOfUsers.put(userB, pointOfUsers.get(userB) + 10);
+            }
+        }
+    }
+
+    private static void calculateVisitorScore(Map<String, Integer> pointOfUsers, String visitor) {
+        if (!pointOfUsers.containsKey(visitor)) {
+            pointOfUsers.put(visitor, 1);
+        } else {
+            pointOfUsers.put(visitor, pointOfUsers.get(visitor) + 1);
+        }
     }
 }
