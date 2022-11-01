@@ -19,6 +19,7 @@ public class Problem6 {
     private static List<Set<String>> partitionsList = new ArrayList<>();
     private static Map<String, Integer> nicknameAndCount = new HashMap<>();
 
+
     public static void setEmailsFromPartitionsOfNickname(List<List<String>> forms) {
         for (int i = 0; i < partitionsList.size(); i++) {
 
@@ -50,7 +51,10 @@ public class Problem6 {
         return partitions;
     }
 
-
+    public static boolean canCrew(List<List<String>> forms) {
+        if (forms.size() >= MIN_CREW && forms.size() <= MAX_CREW) return true;
+        return false;
+    }
 
 
 
