@@ -5,21 +5,17 @@ public class Problem3 {
         int answer = 0;
         Problem3 p3 = new Problem3();
         for (int i = 1; i <= number; i++) {
-            answer += p3.getClapPerEachNum(i);
+            if (p3.is369(i)) {
+                answer += p3.getClapPerEachNum(i);
+            }
         }
         return answer;
     }
 
 
-    private boolean is369(int number) {  //TODO: 필요성 검토
-        while (number > 0) {
-            int temp = number % 10;
-            if (temp == 3 || temp == 6 || temp == 9) {
-                return true;
-            }
-            number /= 10;
-        }
-        return false;
+    private boolean is369(int number) {
+        String num = String.valueOf(number);
+        return num.contains("3") || num.contains("6") || num.contains("9");
     }
 
     private int getClapPerEachNum(int number) {
