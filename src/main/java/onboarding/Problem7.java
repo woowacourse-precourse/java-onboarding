@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Problem7 {
+    //친구관계를 graph로 반환
     private static HashMap<String, HashSet<String>> getGraphOf(List<List<String>> friends){
         HashMap<String, HashSet<String>> graph = new HashMap<>();
         for(List<String> friend:friends){
@@ -23,6 +24,7 @@ public class Problem7 {
         }
         return graph;
     }
+    //방문자에 따라 추천할 사람과 1포인트를 추가
     private static HashMap<String, Integer> addPointByVisitor(HashMap<String, Integer> recommend, List<String> visitors){
         //방문자에 대한 1점 추가
         for(String visitor : visitors){
@@ -34,6 +36,7 @@ public class Problem7 {
         return recommend;
 
     }
+    //graph에 따라 이미 유저의 친구인 사람들을 추천할 친구에서 삭제
 
     private static HashMap<String, Integer> deleteAlreadyFriend(HashMap<String, Integer> recommend, HashMap<String, HashSet<String>> graph, String user){
         HashSet<String> userFriends = graph.get(user);
@@ -42,7 +45,7 @@ public class Problem7 {
         return recommend;
     }
 
-
+    //graph에 따라 친구의 친구는 10점을 추가해서 반환
     private static HashMap<String, Integer> addPointByFriends(HashMap<String, Integer> recommend, HashMap<String, HashSet<String>> graph, String user){
         HashSet<String> userFriends = graph.get(user);
         for(String friend:userFriends){ //유저의 친구들
@@ -58,6 +61,7 @@ public class Problem7 {
         return recommend;
     }
 
+    //추천할 친구를 점수에 대해 역정렬, 이메일에 정렬 후 리스트로 변환 최대 5개만 반환하는 함수
     private static List<String> sortRecommend(HashMap<String, Integer> recommend){
         //점수의 역정렬 및 키값에 의한 정렬 후 키값으로 매핑 후 list로 변환, 최대 5개만 반환
         Stream<Map.Entry<String,Integer>> sortedRecommend = recommend.entrySet().stream();
