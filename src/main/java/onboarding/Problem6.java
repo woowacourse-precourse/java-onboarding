@@ -28,7 +28,7 @@ public class Problem6 {
     public static boolean nameException(List<List<String>> forms){
         String regExp = "^[가-힣]*$";
         for(int i = 0; i < forms.size(); i++) {
-            String name = forms.get(i).get(0);
+            String name = forms.get(i).get(1);
             if(!name.matches(regExp) || name.length() < 1 || name.length() >= 20){
                 return true;
             }
