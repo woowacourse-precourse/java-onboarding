@@ -1,14 +1,16 @@
 package onboarding;
 
 import java.util.*;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
-        Map<String, Integer> checkMap = createCheckMap(forms);
+        List<List<String>> availableForms = getAvailableForm(forms);
+        Map<String, Integer> checkMap = createCheckMap(availableForms);
         List<String> duplicatedTable = createDuplicatedTable(checkMap);
-        List<String> duplicatedNicknameList = findDuplicatedNickname(forms, duplicatedTable);
+        List<String> duplicatedNicknameList = findDuplicatedNickname(availableForms, duplicatedTable);
 
         return duplicatedNicknameList;
     }
@@ -59,5 +61,51 @@ public class Problem6 {
             String twoWord = nickName.charAt(i) + "" + nickName.charAt(i + 1);
             checkMap.put(twoWord, checkMap.getOrDefault(twoWord, 0) + 1);
         }
+    }
+
+    private static List<List<String>> getAvailableForm(List<List<String>> forms) {
+        List<List<String>> list = new ArrayList<>();
+        for (List<String> form : forms) {
+            String email = form.get(0);
+            String nickname = form.get(1);
+
+            if (isAvailableEmail(email) && isAvailableNickname(nickname)) {
+                list.add(form);
+            }
+        }
+
+        return list;
+    }
+
+
+    private static boolean isAvailableNickname(String nickname) {
+        return isKorean(nickname) && isAvailableNickSize(nickname);
+    }
+    private static boolean isKorean(String nickname) {
+        return Pattern.matches("^[가-힣]*$", nickname); //닉네임이 한글인지 확인
+    }
+
+    private static boolean isAvailableNickSize(String nickname) {
+        if (1 <= nickname.length() && nickname.length() < 20) {
+            return true;
+        }
+        return false;
+    }
+
+    private static boolean isAvailableEmail(String email) {
+        return isEmailForm(email) && hasRightDomain(email);
+    }
+    private static boolean hasRightDomain(String email) {
+        String domain = email.split("@")[1];
+        if (domain.equals("email.com")) {
+            return true;
+        }
+        return false;
+    }
+    private static boolean isEmailForm(String email) {
+        if (email.contains("@")) {
+            return true;
+        }
+        return false;
     }
 }
