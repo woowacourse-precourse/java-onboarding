@@ -95,6 +95,16 @@ public class Problem7 {
         return userScore;
     }
 
+    public static List<Integer> removeZeroNumber(List<Integer> userScore) {
+        List<Integer> realUserScore =  new ArrayList<>();
+        for(int i = 0; i < userScore.size(); i++) {
+            if(userScore.get(i) != 0) {
+                realUserScore.add(userScore.get(i));
+            }
+        }
+        return realUserScore;
+    }
+
     public static void quickSort(List<String> allId, List<Integer> userScore, int start, int end) {
         if(start < end) {
             int pivot = start;
@@ -150,7 +160,8 @@ public class Problem7 {
         List<String> allId = getFriend(friends, user, visitors, userFriend); //사용자 이외의 사용자들 아이디 리스트
         List<List<String>> friendsList = getNewFriend(allId, friends); //사용자이외 친구들의 친구 리스트
         List<Integer> userScore = findFriendNumber(friendsList, userFriend, allId, visitors);
-        List<String> recommendList = setRecommendList(allId, userScore);
+        List<Integer> realUserScore = removeZeroNumber(userScore);
+        List<String> recommendList = setRecommendList(allId, realUserScore);
 
         return recommendList.size() <= 5 ? recommendList : removeOverLength(recommendList);
     }
