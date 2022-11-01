@@ -2,7 +2,9 @@ package onboarding;
 
 public class Problem3 {
     public static int solution(int number) {
-        Validator.isValidate(number);
+        if (!Validator.isValidate(number)) {
+            return -1;
+        }
         return getTotalClap(number);
     }
 
@@ -39,10 +41,10 @@ public class Problem3 {
         public static boolean isValidate(int num){
             try {
                 isCorrectRange(num);
+                return true;
             } catch (Exception error) {
                 return false;
             }
-            return true;
         }
 
         private static void isCorrectRange(int num){

@@ -2,7 +2,9 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        Validator.isValidate(word);
+        if (!Validator.isValidate(word)){
+            return null;
+        }
         return convertWord(word);
     }
 

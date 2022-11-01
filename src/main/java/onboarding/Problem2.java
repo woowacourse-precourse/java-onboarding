@@ -1,10 +1,5 @@
 package onboarding;
 
-import java.util.Arrays;
-import java.util.Locale;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-
 public class Problem2 {
     public static String solution(String cryptogram) {
         Cryptogram crypto = new Cryptogram(cryptogram);

@@ -11,7 +11,9 @@ public class Problem5 {
     public static List<Integer> solution(int money) {
         myMoney = money;
         answer = new ArrayList<>();
-        Validator.isValidate(myMoney);
+        if (!Validator.isValidate(myMoney)){
+            return null;
+        }
         convertToUnit();
         return answer;
     }
