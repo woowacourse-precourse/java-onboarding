@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -12,8 +13,46 @@ public class Problem7 {
     static Map<String, Integer> scores = new HashMap<>();
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        friendsList = searchFriends(friends);
+
+        initScoresByOtherUser();
+        initScoresByVisitors(visitors);
+
+        searchUsersFriends(user);
+        calculateVisitScore(visitors, user);
+
+        List<Map.Entry<String, Integer>> entries = new ArrayList<>(scores.entrySet());
+        sortList(entries);
+
+        List<String> answer = new ArrayList<>();
+        recommendFriend(entries, answer);
+
         return answer;
+    }
+
+    static Map<String, List<String>> searchFriends(List<List<String>> friends) {
+        Map<String, List<String>> map = new HashMap<>();
+
+        for (int i = 0; i < friends.size(); i++) {
+            String from = friends.get(i).get(0);
+            String to = friends.get(i).get(1);
+
+            searchFriendsException(map, from);
+            searchFriendsException(map, to);
+
+            map.get(from).add(to);
+            map.get(to).add(from);
+        }
+
+        return map;
+    }
+
+    static void searchFriendsException(Map<String, List<String>> map, String target) {
+        if (map.containsKey(target)) {
+            return;
+        }
+
+        map.put(target, new ArrayList<>());
     }
 
     static void initScoresByOtherUser() {
