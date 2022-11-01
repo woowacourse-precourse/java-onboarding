@@ -116,11 +116,9 @@ public class Problem7 {
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-
         List<String> answer= new ArrayList<String>();
         int[] visited = new int[friends.size()];
         List<String> alreadyFriends = new ArrayList<>(friends.size());
-
         for (int i=0; i<friends.size(); i++) {
             if (friends.get(i).contains(user)) {
                 alreadyFriends.add(nextUser(friends.get(i),user));

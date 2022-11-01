@@ -42,7 +42,7 @@ class Problem1 {
         if (pobi.get(0)+1!=pobi.get(1)||crong.get(0)+1!=crong.get(1)) {
             error=true;
         }
-        if (pobi.get(0)<1||pobi.get(0)>400||pobi.get(1)<0||pobi.get(1)>400||crong.get(0)<1||crong.get(0)>400||crong.get(1)<1||crong.get(1)>400) {
+        if (pobi.get(0)<=1||pobi.get(0)>=399||pobi.get(1)<=2||pobi.get(1)>=400||crong.get(0)<=1||crong.get(0)>=399||crong.get(1)<=2||crong.get(1)>=400) {
             error = true;
         }
 
