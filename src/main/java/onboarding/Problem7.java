@@ -59,6 +59,19 @@ public class Problem7 {
         User user = users.get(index);
         user.point += n;
     }
+    private static void calculateFriendPoint(List<String> myFriends, List<String> relation, List<User> users) {
+        String user1 = relation.get(0);
+        String user2 = relation.get(1);
+        if (myFriends.contains(user1) && myFriends.contains(user2)) {
+            return;
+        }
+        if (myFriends.contains(user1)) {
+            pointUp(users, user2, 10);
+        }
+        if (myFriends.contains(user2)) {
+            pointUp(users, user1, 10);
+        }
+    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
