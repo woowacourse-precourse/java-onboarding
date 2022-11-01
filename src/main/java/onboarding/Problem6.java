@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 public class Problem6 {
 
-	private static final String VALID_DOMAIN = "@email.com";
+	private static final String DOMAIN_REGEX = ".*@email.com$";
 
 	public static List<String> solution(List<List<String>> forms) {
 
@@ -47,7 +47,7 @@ public class Problem6 {
 	}
 
 	public static boolean isValidEmailDomain(String email) {
-		if (email.contains(VALID_DOMAIN))
+		if (email.matches(DOMAIN_REGEX))
 			return true;
 		return false;
 	}
