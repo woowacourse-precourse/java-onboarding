@@ -21,3 +21,12 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+### 기능 목록
+1. deleteDuplicate : Stack을 이용해 연속하는 중복 문자 제거 
+    1. Stack 비어있으면 문자 저장
+    2. Stack이 비어있지 않고 Stack 가장 위의 글자와 현재 글자가 일치하는 경우
+        1. Stack에서 해당 글자 제거
+    4. Stack이 비어있지 않고 Stack 가장 위의 갈자와 현재 글자가 일치하지 않는 경우
+        1. Stack에 해당 글자 저장
+2. stackToString : Stack에 남은 글자 합쳐서 문자열로 변환

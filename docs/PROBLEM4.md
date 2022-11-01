@@ -19,3 +19,8 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+### 기능 목록
+1. isAlphabet : 해당 문자가 알파벳인지 확인
+2. toReverseUpper : 알파벳 대문자를 청개구리 사전을 참고해 반대로 변환
+3. toReverseLower : 알파벳 소문자를 청개구리 사전을 참고해 반대로 변환
