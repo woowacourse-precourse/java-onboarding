@@ -3,6 +3,27 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+    //get max value between adding all and multiple all digits
+    private static int getMax(List<Integer> member){
+        int max = 0;
+        for(int number : member){
+            int digitSum = 0;
+            int digitMult = 1;
+            while(number > 0) {
+                int remainder = number % 10;
+                digitSum += remainder;
+                digitMult *= remainder;
+                number = number / 10;
+            }
+            int maxMethod = Math.max(digitSum, digitMult);
+            if(maxMethod > max){
+                max = maxMethod;
+            }
+        }
+
+        return max;
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = 0;
         //if left page is bigger than or same as left
@@ -28,6 +49,11 @@ class Problem1 {
         } else if((((crong.get(0) % 2) == 0) || ((crong.get(1) % 2) != 0))) {
             answer = -1;
         }
+
+        //calculate max
+        int MAX_POBI = getMax(pobi);
+        int MAX_CRONG = getMax(crong);
+
         return answer;
     }
 }
