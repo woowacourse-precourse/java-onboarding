@@ -4,9 +4,10 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if(!isValidInput(pobi) || !isValidInput(crong)){
+        if(isValidInputSet(pobi, crong)){
             return -1;
         }
+
         int pobiMaxScore  = getPlayerMaxScore(pobi);
         int crongMaxScore = getPlayerMaxScore(crong);
 
@@ -19,6 +20,10 @@ class Problem1 {
         else{
             return 0;
         }
+    }
+
+    public static boolean isValidInputSet(List<Integer> firstPlayer, List<Integer> secondPlayer){
+        return isValidInput(firstPlayer) && isValidInput(secondPlayer);
     }
 
     public static boolean isValidInput(List<Integer> pages){
