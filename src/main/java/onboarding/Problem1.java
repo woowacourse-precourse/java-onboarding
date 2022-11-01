@@ -20,6 +20,8 @@ class Problem1 {
         if (pobiScore > crongScore) answer = 1;
         else if (pobiScore < crongScore) answer = 2;
         else answer = 0;
+        //예외사항 체크
+        if (checkException(pobi) || checkException(crong)) answer = -1;
 
         return answer;
     }
@@ -61,5 +63,10 @@ class Problem1 {
         if (leftScore > rightScore) score = leftScore;
         else score = rightScore;
         return score;
+    }
+
+    static boolean checkException(List<Integer> pages) {
+        if(pages.get(1) - pages.get(0) != 1) return true;
+        else return false;
     }
 }
