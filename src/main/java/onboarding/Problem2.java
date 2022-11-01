@@ -4,6 +4,10 @@ import java.util.Stack;
 import java.util.stream.Collectors;
 
 public class Problem2 {
+
+    private static final int MIN_CRYPTO_LENGTH = 1;
+    private static final int MAX_CRYPTO_LENGTH = 1000;
+
     public static String solution(String cryptogram) {
         if (validateCryptoSize(cryptogram)) {
             return "";
@@ -36,6 +40,6 @@ public class Problem2 {
     }
 
     private static boolean validateCryptoSize(String cryptogram) {
-        return cryptogram.length() < 1 || cryptogram.length() > 1000;
+        return cryptogram.length() < MIN_CRYPTO_LENGTH || cryptogram.length() > MAX_CRYPTO_LENGTH;
     }
 }
