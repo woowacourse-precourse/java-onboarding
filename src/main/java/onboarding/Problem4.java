@@ -48,18 +48,15 @@ public class Problem4 {
 
         if ('a' <= ch && 'z' >= ch) {
             chType = 1;
-        }
-        else if ('A' <= ch && 'Z' >= ch) {
+        } else if ('A' <= ch && 'Z' >= ch) {
             chType = 2;
-        }
-        else {
+        } else {
             chType = 0;
         }
 
         if (chType == 1) {
             ch = (char)((25 - (ch - 'a')) + 'a');
-        }
-        else if (chType == 2) {
+        } else if (chType == 2) {
             ch = (char)((25 - (ch - 'A')) + 'A');
         }
 
