@@ -30,7 +30,18 @@ class Problem1 {
         return 0;
     }
 
-    private static Integer getPageScore(List<Integer> pobi) {
+    private static Integer getPageScore(List<Integer> player) {
+        Integer maxDigitSum = Math.max(sumDigit(player.get(0)), sumDigit(player.get(1)));
+        Integer maxDigitMul = Math.max(mulDigit(player.get(0)), mulDigit(player.get(1)));
+
+        return Math.max(maxDigitMul, maxDigitSum);
     }
+
+    private static int sumDigit(Integer integer) {
+    }
+
+    private static int mulDigit(Integer integer) {
+    }
+
 
 }
