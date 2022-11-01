@@ -10,6 +10,7 @@ public class Problem2 {
                 break;
             }
 
+
             if(cryptogram.charAt(index) == cryptogram.charAt(index+1)){
                 cryptogram = cryptogram.replace(cryptogram.substring(index, index+2),"");
                 index = 0;
