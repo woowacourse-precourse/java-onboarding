@@ -6,7 +6,7 @@ import java.util.Set;
 
 public class Visitors {
 
-	private List<String> visitors;
+	private final List<String> visitors;
 
 	public Visitors(List<String> visitors) {
 		this.visitors = visitors;
