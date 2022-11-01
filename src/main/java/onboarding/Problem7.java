@@ -8,4 +8,14 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
         return answer;
     }
+
+    public static List<String> findFriends(String user, List<List<String>> friends) {
+        List<String> friendList = new ArrayList<>();
+        for (List<String> l : friends) {
+            if (l.contains(user)) {
+                friendList.add(l.get(0).equals(user) ? l.get(1) : l.get(0));
+            }
+        }
+        return friendList;
+    }
 }
