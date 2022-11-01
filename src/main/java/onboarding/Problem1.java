@@ -3,7 +3,7 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
-    public static Boolean validate(List<Integer> pageNumbers) {
+    public static Boolean isValid(List<Integer> pageNumbers) {
         if (pageNumbers.get(0) < 1 || pageNumbers.get(1) > 400) {
             return false;
         }
@@ -43,7 +43,7 @@ class Problem1 {
         int maxValueOfPobi = Integer.MIN_VALUE;
         int maxValueOfCrong = Integer.MIN_VALUE;
 
-        if (!validate(pobi) || !validate((crong))) {
+        if (!isValid(pobi) || !isValid((crong))) {
             return -1;
         }
         for (Integer pageNumber : pobi) {
