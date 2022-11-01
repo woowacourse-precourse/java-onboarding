@@ -6,14 +6,13 @@ import java.util.*;
 class Problem1 {
     public static int get_sum(int num){
         return get_digitList(num).stream().mapToInt(Integer::intValue).sum();
-    } //리스트의 모든원소들의 합을 반환하는 메서드
+    }
     public static int get_prod(int num) {
         return get_digitList(num).stream().reduce(1,(a,b) -> a*b);
-
-    }//리스트의 모든원소들의 곱을 반환하는 메서드
+    }
     public static int get_max(int num1, int num2) {
         return num1 > num2 ? num1 : num2;
-    }//두 개의 정수 원소를 받아 둘 중 큰값을 반환하는 메서드
+    }
     public static int compare_max(List<Integer> digit_ls) {
         int num=0,max=0;
         for(int i=0; i<2; i++){
@@ -23,7 +22,7 @@ class Problem1 {
             }
         }
         return max;
-    }//각 자릿수가 담긴 리스트의 원소들의 합과 곱을 비교하여 큰 것을 반환하는 메서드
+    }
     public static List<Integer> get_digitList(int num){
         List<Integer> digitList=new ArrayList<>();
         int hund_d=0;
@@ -37,7 +36,7 @@ class Problem1 {
         digitList=Arrays.asList(hund_d,ten_d,one_d);
 
         return digitList;
-    }//각 자릿수들을 구하여 리스트에 담는 메서드.
+    }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int Max_p=0,Max_c = 0;// hund_d= 백의자리, ten_d 십의자리, units 일의 자리
