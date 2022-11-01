@@ -38,6 +38,18 @@ class Problem1 {
         }
     }
 
+    static int compare(int a, int b) {
+        if (a > b) {
+            return 1;
+        }
+        else if (a < b) {
+            return 2;
+        }
+        else {
+            return 0;
+        }
+    }
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
         int pobiScore = 0;
