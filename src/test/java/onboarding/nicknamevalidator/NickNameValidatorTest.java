@@ -20,25 +20,6 @@ public class NickNameValidatorTest {
 
 	static NickNameValidator validator
 		= new NickNameValidator(forms);
-	//
-	// @DisplayName("닉네임 문자 순열 생성 테스트")
-	// @Test
-	// void 닉네임_문자_순열_생성() {
-	// 	assertThat(NickNameValidator.getPermutationOf("제이엠"))
-	// 		.containsAll(List.of("제이", "이엠"));
-	//
-	// 	assertThat(NickNameValidator.getPermutationOf("워니"))
-	// 		.containsAll(List.of("워니"));
-	//
-	// 	assertThat(NickNameValidator.getPermutationOf("엠제이"))
-	// 		.containsAll(List.of("엠제", "제이"));
-	//
-	// 	assertThat(NickNameValidator.getPermutationOf("제이엠"))
-	// 		.containsAll(List.of("제이", "이엠"));
-	//
-	// 	assertThat(NickNameValidator.getPermutationOf("제이엠군고"))
-	// 		.containsAll(List.of("제이", "이엠", "엠군", "군고", "이엠", "엠군", "군고"));
-	// }
 
 	@DisplayName("포함된 단어 횟수 반환 테스트")
 	@Test
