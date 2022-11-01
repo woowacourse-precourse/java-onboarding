@@ -10,8 +10,7 @@ public class Problem7 {
         HashMap<String, Integer> notUserFriends = new HashMap<>();
         notUserFriends = findNotFriendInFriends(user, friends, userFriends, notUserFriends);
         notUserFriends = findNotFriendInVisitors(userFriends, visitors, notUserFriends);
-        List<String> answer = decideRecommends(notUserFriends);
-        return answer;
+        return decideRecommends(notUserFriends);
     }
     public static List<String> findUserFriend(String user, List<List<String>> friends){
         List<String> userFriends = new ArrayList<>();
