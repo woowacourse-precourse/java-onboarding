@@ -65,12 +65,9 @@ public class Problem7 {
 
     private static List<String> sorting() {
         List<Map.Entry<String, Integer>> list = new ArrayList<>(recommendScore.entrySet());
-        Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
-            @Override
-            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
-                int compare = (o1.getValue() - o2.getValue()) * -1;
-                return compare == 0 ? o1.getKey().compareTo(o2.getKey()) : compare;
-            }
+        list.sort((o1, o2) -> {
+            int compare = (o1.getValue() - o2.getValue()) * -1;
+            return compare == 0 ? o1.getKey().compareTo(o2.getKey()) : compare;
         });
         List<String> sortedList = new ArrayList<>();
         for (Map.Entry<String, Integer> entry : list) {
@@ -82,7 +79,6 @@ public class Problem7 {
 
     private static List<String> highestScoreOf5() {
         List<String> sortedList = sorting();
-
         List<String> result = new ArrayList<>();
         if (recommendScore.size() <= 5) {
             for (int i = 0; i < recommendScore.size(); i++) {
@@ -93,8 +89,6 @@ public class Problem7 {
                 result.add(sortedList.get(i));
             }
         }
-
-
         return result;
     }
 
