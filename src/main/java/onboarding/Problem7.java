@@ -10,6 +10,7 @@ public class Problem7 {
 
         setUserRelation(userRelationMap,friends);
         findFriendsOfFiends(user,userRelationMap);
+        findVisitor(visitors,userRelationMap);
          return answer;
     }
 
@@ -24,6 +25,13 @@ public class Problem7 {
             }
         }
     }
+    public static void findVisitor(List<String> visitors,Map<String,User> userRelationMap){
+        for(String visitor : visitors){
+            User visitorUser = userRelationMap.computeIfAbsent(visitor,key -> new User());
+            visitorUser.addVisitorScore();
+        }
+    }
+
     //유저 관계 정보를 저장한다.
     public static void setUserRelation(Map<String, User> userRelationMap, List<List<String>> friends){
 
