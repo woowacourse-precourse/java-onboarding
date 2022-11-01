@@ -15,6 +15,9 @@ public class Problem5 {
         List<Integer> answer = Collections.emptyList();
         return answer;
     }
+    private static int getShare(int numerator, int denominator) {
+        return numerator / denominator;
+    }
     private static int getRemainder(int numerator, int denominator) {
         return numerator % denominator;
     }
