@@ -18,12 +18,15 @@ public class Problem2 {
         }
 
         int duplicateCount = 0;
+        StringBuilder endDecryptogram = new StringBuilder();
 
         for (int i = 0; i < cryptogram.length(); i++) {
             if (isConsecutive[i]) {
                 duplicateCount++;
                 continue;
             }
+
+            endDecryptogram.append(cryptogramChars[i]);
         }
 
         return cryptogram;
