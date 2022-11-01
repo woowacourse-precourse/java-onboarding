@@ -24,3 +24,10 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+## 풀이
+
+1. Map<String, Set>에 각 각의 친구를 저장
+2. 입력받은 user의 친구 Set 생성
+3. 2를 통해 아는 친구 점수 산출
+4. 점수에 방문 횟수를 더해서 반환

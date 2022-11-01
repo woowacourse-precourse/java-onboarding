@@ -21,3 +21,10 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+
+## 풀이
+
+1. 크루 닉네임을 두글자로 분해해서 Map<두글자, 횟수>에 넣음
+2. 2회 이상 사용된 두글자 추출
+3. 추출된 두글자를 포함하는 크루의 이메일 반환
