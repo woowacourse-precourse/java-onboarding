@@ -4,7 +4,14 @@ import java.util.List;
 import onboarding.problem1.Page;
 
 class Problem1 {
+    private static final Integer POBI_WIN_NUMBER = 1;
+    private static final Integer CRONG_WIN_NUMBER = 2;
+    private static final Integer DROW_NUMBER = 0;
+    private static final Integer EXCEPTION_NUMBER = -1;
 
+    /*
+    * 펼친 페이지 가운데 가장 큰 스코어 반환
+    */
     private static int getMaxScore(List<Integer> pages) {
         int maxScore = 0;
         for (int page : pages) {
@@ -21,14 +28,19 @@ class Problem1 {
         return maxScore;
     }
 
+    /*
+     * 페이지 번호 게임의 결과 반환
+     */
     private static int getPageNumberGameResult(int pobiScore, int crongScore) {
 
         if (pobiScore > crongScore) {
-            return 1;
+            return POBI_WIN_NUMBER;
+
         } else if (pobiScore < crongScore) {
-            return 2;
+            return CRONG_WIN_NUMBER;
+
         } else {
-            return 0;
+            return DROW_NUMBER;
         }
     }
 
