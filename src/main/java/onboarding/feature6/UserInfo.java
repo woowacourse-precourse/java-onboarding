@@ -15,10 +15,14 @@ public class UserInfo {
         for (List<String> userInfo : forms) {
             String email = userInfo.get(EMAIL_INDEX);
             String nickname = userInfo.get(NICKNAME_INDEX);
-            if (InputValidator.emailChecker(email) && InputValidator.nicknameChecker(nickname)) {
-                emails.add(email);
-                nicknames.add(nickname);
-            }
+            checkEmailAndNickname(email, nickname);
+        }
+    }
+
+    public void checkEmailAndNickname(String email, String nickname) {
+        if (InputValidator.isValidEmailAddress(email) && InputValidator.isValidNickname(nickname)) {
+            emails.add(email);
+            nicknames.add(nickname);
         }
     }
 
