@@ -71,4 +71,12 @@ public class Problem6 {
         checkDuplication.set(num, true);
         checkDuplication.set(i, true);
     }
+
+    public static boolean checkExceptionList(List<List<String>> forms) {
+        return (crewMembersOutOfRangeException(forms) ||
+                NicknameOutOfRangeException(forms) ||
+                isValidNicknameRegex(forms) ||
+                emailDomainOutOfRulesException(forms) ||
+                emailLengthOutOfRangeException(forms));
+    }
 }
