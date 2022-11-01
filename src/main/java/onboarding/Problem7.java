@@ -15,13 +15,37 @@ public class Problem7 {
         List<String> result= new ArrayList<>();
         List<String> userList = getUser(friends,visitors);
         ArrayList<String>[] freindList=new ArrayList[USER_NUM];
+        ArrayList<Integer> userScore;
 
         for(int i=0;i<freindList.length;i++){
             freindList[i]=getFriendList(userList.get(i),friends);
         }
+        userScore=getScore(user,userList,freindList,visitors);
 
 
         Collections.sort(result);
+        return result;
+    }
+
+    private static ArrayList<Integer> getScore(String user,List<String> userList,ArrayList<String>[] freindList,List<String> visitors){
+        ArrayList result= new ArrayList<>();
+        for(int i=0;i<userList.size();i++){
+            boolean check=false;
+            int score=0;
+            if(user.equals(userList.get(i))) {
+                result.add(0);
+                continue;
+            }
+            for(int j=0;j<freindList[i].size();j++){
+                if(freindList.equals(user)){
+                    result.add(0);
+                    check=true;
+                    break;
+                }
+            }
+            if (check) continue;
+
+        }
         return result;
     }
 
