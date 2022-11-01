@@ -1,12 +1,18 @@
 package onboarding;
 
 import java.util.HashSet;
+import java.util.regex.Pattern;
 
 public class Problem2 {
 
     public static String solution(String cryptogram) {
         String answer = "answer";
         return answer;
+    }
+
+    private static Pattern createConsecutiveDuplicatePattern(String cryptogram) {
+        String createConsecutiveDuplicateRegex = createConsecutiveDuplicateRegex(cryptogram);
+        return Pattern.compile(createConsecutiveDuplicateRegex);
     }
 
     private static String createConsecutiveDuplicateRegex(String cryptogram) {
