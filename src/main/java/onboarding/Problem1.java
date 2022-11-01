@@ -3,7 +3,7 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
-    public static boolean isInvalid(List<Integer> input) {
+    public static boolean isValid(List<Integer> input) {
         int left = input.get(0);
         int right = input.get(1);
 
@@ -45,7 +45,7 @@ class Problem1 {
     }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if (isInvalid(pobi) || isInvalid(crong)) {
+        if (!isValid(pobi) || !isValid(crong)) {
             return -1;
         }
         int pobiScore = Math.max(calMaxNum(pobi.get(0)), calMaxNum(pobi.get(1)));
