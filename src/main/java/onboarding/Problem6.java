@@ -34,5 +34,22 @@ public class Problem6 {
         return answer;
     }
 
+    /*
+        public static void main(String[] args) { // TEST
+           // List<List<String>> forms = new ArrayList<>();
+
+            List<List<String>> forms = List.of(List.of("jm@email.com", "제이엠"),
+                    List.of("jason@email.com", "제이슨"),
+                    List.of("wonie@email.com", "워니"),
+                    List.of("mj@email.com", "엠제이"),
+                    List.of("nowm@email.com", "이제엠"));
+
+
+            System.out.println(solution(forms));
+
+
+        }
+
+     */
 
 }
