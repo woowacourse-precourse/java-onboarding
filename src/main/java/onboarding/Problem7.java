@@ -33,7 +33,6 @@ public class Problem7 {
 
         // visitors들을 pointsMap에 추가, 점수 부여
         for (int i = 0; i < visitors.size(); i++){
-            System.out.println(visitors.get(i));
             if (pointsMap.containsKey(visitors.get(i))){
                 pointsMap.put(visitors.get(i), pointsMap.get(visitors.get(i)) + 1);
             }
@@ -59,7 +58,19 @@ public class Problem7 {
         }
         System.out.println(friendsMap);
 
+        // user와 친구인 사람들의 친구들에게 점수 +10
+        for (int i = 0; i < friendsMap.get(user).size(); i++){
+            String userFriend = friendsMap.get(user).get(i);
+            List<String> targetFriends = friendsMap.get(userFriend);
+            for (int j = 0; j < targetFriends.size(); j++){
+                if (targetFriends.get(j).equals(user))
+                    continue;
+                pointsMap.put(targetFriends.get(j), pointsMap.get(targetFriends.get(j)) + 10);
+            }
+        }
 
+        System.out.println(pointsMap);
+        
 
         return answer;
     }
