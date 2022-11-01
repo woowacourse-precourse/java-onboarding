@@ -56,11 +56,11 @@ public class Problem7 {
             String idB = new String(friend.get(1));
             //A는 유저와 친구, B는 친구가 아니라면
             if (friendList.contains(idA) && !friendList.contains(idB)) {
-                map = plusTenPoints(idB, map);
+                plusTenPoints(idB, map);
             }
             //B는 유저와 친구, A는 친구가 아니라면
             if (friendList.contains(idB) && !friendList.contains(idA)) {
-                map = plusTenPoints(idA, map);
+                plusTenPoints(idA, map);
             }
         }
         return map;
