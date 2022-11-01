@@ -26,9 +26,13 @@ public class Problem2 {
 
 		c[k++] = c[i - 1]; // 마지막 문자는 따로 추가
 
+		String s = new String(c).substring(0, k);
 
+		if (k != c.length) { // 중복 제거 후 재귀
+			return solution(s);
+		}
 
-		return "";
+		return s;
 
 	}
 
