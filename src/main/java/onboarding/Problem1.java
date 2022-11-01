@@ -14,6 +14,9 @@ class Problem1 {
         if (isNotValidPage(pobi) || isNotValidPage(crong)) {
             return EXCEPTION;
         }
+        int pobiMaxNumber = getBiggestNum(pobi);
+        int crongMaxNumber = getBiggestNum(crong);
+
         int answer = Integer.MAX_VALUE;
         return answer;
     }
@@ -61,5 +64,40 @@ class Problem1 {
         int rightPage = pages.get(1);
 
         return rightPage - leftPage == 1;
+    }
+
+    private static int getBiggestNum(List<Integer> pages) {
+        int BiggestNum = 0;
+
+        for (int page : pages) {
+            BiggestNum = Math.max(BiggestNum, getBiggerNum(page));
+        }
+        return BiggestNum;
+    }
+
+    private static int getBiggerNum(int page) {
+        int biggerNum = Math.max(sumNum(page), mulNum(page));
+
+        return biggerNum;
+    }
+
+    private static int sumNum(int page) {
+        int resNum = 0;
+        String pageNum = Integer.toString(page);
+
+        for (int i = 0; i < pageNum.length(); i++) {
+            resNum += pageNum.charAt(i) - '0';
+        }
+        return resNum;
+    }
+
+    private static int mulNum(int page) {
+        int resNum = 1;
+        String pageNum = Integer.toString(page);
+
+        for (int i = 0; i < pageNum.length(); i++) {
+            resNum *= pageNum.charAt(i) - '0';
+        }
+        return resNum;
     }
 }
