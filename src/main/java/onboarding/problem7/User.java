@@ -33,4 +33,17 @@ public class User {
                 .findAny()
                 .isEmpty();
     }
+
+    public int countCoFriends(User user) {
+        int count = 0;
+
+        for (User friend : friends) {
+            for (User userFriend : user.friends) {
+                if (friend.equals(userFriend)) count++;
+            }
+        }
+
+        return count;
+    }
+
 }
