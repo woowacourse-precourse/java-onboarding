@@ -24,3 +24,11 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능 목록
+1. findUserFriend : user와 친구인 사람 list 생성
+2. findNotFriendInFriends : 함께 아는 친구 중 user와 친구 아닌 사람을 탐색해 아이디를 key, 점수를 value로 hashmap에 추가
+   1. 함께 아는 친구가 여러 명일 경우 점수 추가
+3. findNotFriendInVisitors : visitors 중 user와 친구 아닌 사람 탐색해 아이디를 key, 점수를 value로 hashmap에 추가
+   1. 여러 번 방문한 경우 점수 추가
+4. decideRecommends : 점수가 가장 높은 순으로 정렬해 최대 5명 return
