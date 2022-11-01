@@ -12,9 +12,9 @@ class ApplicationTest {
     class Problem1Test {
         @Test
         void case1() {
-            List<Integer> pobi = List.of(97, 98);
-            List<Integer> crong = List.of(197, 198);
-            int result = 0;
+            List<Integer> pobi = List.of(99, 102);
+            List<Integer> crong = List.of(211, 212);
+            int result = -1;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
 
@@ -73,8 +73,8 @@ class ApplicationTest {
     class Problem4Test {
         @Test
         void case1() {
-            String word = "I love you";
-            String result = "R olev blf";
+            String word = "I love you ang}";
+            String result = "R olev blf zmt}";
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
     }
