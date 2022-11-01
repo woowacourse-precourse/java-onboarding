@@ -15,11 +15,28 @@ public class Problem7 {
 		for (List<String> friend : friends) {
 			String idA = friend.get(0);
 			String idB = friend.get(1);
-			userFriends.add(idA);
-			if (idB.equals(user)) {
+			if (idA.equals(user)) {
+				userFriends.add(idB);
+			} else if (idB.equals(user)) {
+				userFriends.add(idA);
+			}
+		}
+
+		for (List<String> friend : friends) {
+			String idA = friend.get(0);
+			String idB = friend.get(1);
+
+			if (idA.equals(user) || idB.equals(user)) {
 				continue;
 			}
-			addRecommendFriendScore(recommendFriends, idB);
+
+			for (String userFriend : userFriends) {
+				if (userFriend.equals(idA)) {
+					addRecommendFriendScore(recommendFriends, idB);
+				} else if (userFriend.equals(idB)) {
+					addRecommendFriendScore(recommendFriends, idA);
+				}
+			}
 		}
 
 		for (String visitor : visitors) {
