@@ -15,7 +15,18 @@ public class Problem7 {
     private static final Map<String, Integer> scoreForUser = new HashMap<>();
     private static final Set<String> userFriends = new HashSet<>();
 
+    public static void updateFinalScore(List<List<String>> friends, List<String> visitors) {
+        for (List<String> friend : friends) {
+            if (userFriends.contains(friend.get(0)) || userFriends.contains(friend.get(1))) {
+                updateAccumulatedScore(friend.get(0), 10);
+                updateAccumulatedScore(friend.get(1), 10);
+            }
+        }
 
+        for (String visitor : visitors) {
+            updateAccumulatedScore(visitor, 1);
+        }
+    }
 
     public static void setFriendsOfUserFriends(List<List<String>> friends, String user) {
         for (List<String> friend : friends) {
