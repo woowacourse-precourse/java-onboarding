@@ -6,7 +6,7 @@ public class Problem7 {
     private static Map<String, Integer> recommendScore = new HashMap<>();
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         scoreInitial(user, friends, visitors);
-        List<String> answer = Collections.emptyList();
+        List<String> answer = highestScoreOf5();
         return answer;
     }
 
@@ -27,15 +27,16 @@ public class Problem7 {
     }
 
     private static void scoreInitial(String user, List<List<String>> friends, List<String> visitors) {
+        recommendScore.clear();
         List<String> initialList = new ArrayList<>();
         List<String> friendsList = usersFriendsList(user, friends);
         for (String friend : friendsList) {
             for (List<String> names : friends) {
                 if (names.contains(friend)) {
                     int index = names.indexOf(friend);
-                    if (index == 0 && !friendsList.contains(names.get(1))) {
+                    if (index == 0 && !friendsList.contains(names.get(1)) && !names.get(1).equals(user)) {
                         initialList.add(names.get(1));
-                    } else if (!friendsList.contains(names.get(0))) {
+                    } else if (!friendsList.contains(names.get(0)) && !names.get(0).equals(user)) {
                         initialList.add(names.get(0));
                     }
                 }
@@ -51,25 +52,42 @@ public class Problem7 {
         }
 
         for (String visitor : visitors) {
-            if (recommendScore.containsKey(visitor)) {
+            if (recommendScore.containsKey(visitor) && !friendsList.contains(visitor)) {
                 recommendScore.put(visitor, recommendScore.get(visitor) + 1);
                 continue;
             }
-            recommendScore.put(visitor, 1);
+            if (!friendsList.contains(visitor)) {
+                recommendScore.put(visitor, 1);
+            }
         }
 
     }
 
     private static List<String> highestScoreOf5() {
-        List<String> keys = new ArrayList<>(recommendScore.keySet());
-        keys.sort((o1, o2) -> recommendScore.get(o2).compareTo(recommendScore.get(o1)));
-        List<String> result = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            if (recommendScore.get(keys.get(i)) == 0) {
-                break;
+        List<Map.Entry<String, Integer>> list = new ArrayList<>(recommendScore.entrySet());
+        Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                int compare = (o1.getValue() - o2.getValue()) * -1;
+                return compare == 0 ? o1.getKey().compareTo(o2.getKey()) : compare;
             }
-            result.add(keys.get(i));
+        });
+        List<String> temp = new ArrayList<>();
+        for (Map.Entry<String, Integer> entry : list) {
+            temp.add(entry.getKey());
         }
+
+        List<String> result = new ArrayList<>();
+        if (recommendScore.size() <= 5) {
+            for (int i = 0; i < recommendScore.size(); i++) {
+                result.add(temp.get(i));
+            }
+        } else {
+            for (int i = 0; i < 5; i++) {
+                result.add(temp.get(i));
+            }
+        }
+
 
         return result;
     }
