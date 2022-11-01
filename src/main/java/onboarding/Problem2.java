@@ -47,7 +47,7 @@ public class Problem2 {
     static String reduceDupChars(String cryptogram) {
         Pattern ptrn = Pattern.compile(REGEX_FIND);
         while (hasDupChars(cryptogram)) {
-            StringBuffer sb = new StringBuffer();
+            StringBuilder sb = new StringBuilder();
             Matcher matcher = ptrn.matcher(cryptogram);
             while (matcher.find()) {
                 matcher.appendReplacement(sb, "");
