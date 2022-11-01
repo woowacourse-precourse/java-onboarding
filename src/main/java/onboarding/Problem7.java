@@ -35,6 +35,19 @@ public class Problem7 {
                 }
             }
         }
+
+        // 3. user의 방문자는 1점 추가.
+        for (String visitor : visitors) {
+            if (!friendArr.contains(visitor)) {
+                if (refArr.containsKey(visitor)) {
+                    score = refArr.get(visitor);
+                    score += 1;
+                    refArr.put(visitor, score);
+                } else {
+                    refArr.put(visitor, 1);
+                }
+            }
+        }
         return answer;
     }
 }
