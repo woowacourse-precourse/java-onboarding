@@ -28,10 +28,10 @@ public class Problem6 {
         }
     }
 
-    private static void pushWord(List<String> form,int index) {
+    private static void pushWord(List<String> form,int i) {
         for (int j = 0; j < form.get(1).length()-1 ; j++){
             String temp = form.get(1).substring(j,j+2);
-            compare(temp, index);
+            compare(temp, i);
         }
     }
 
@@ -39,8 +39,8 @@ public class Problem6 {
     넘겨받은 문자 2개가 다른 이름에 포함이 된다면
     넘겨준 이름과 비교된 이름이 해당되어 true처리합니다.
      */
-    private static void compare(String temp, int j) {
-        for (int i = j + 1; i < formsT.size() ; i++){
+    private static void compare(String temp, int i) {
+        for (int j = i + 1; j < formsT.size() ; j++){
             if(processVisit(temp ,formsT.get(i))){
                 DuplicateName[i] = true;
                 DuplicateName[j] = true;
