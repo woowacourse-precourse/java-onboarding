@@ -10,6 +10,7 @@ public class Problem7 {
         makeUserFriends(user, friends);
         checkFriends(user, friends);
         checkVisitors(visitors);
+        List<Map.Entry<String, Integer>> entryList = sortScoreDict();
         return answer;
     }
     private static void makeUserFriends(String user, List<List<String>> friends) {
@@ -48,5 +49,11 @@ public class Problem7 {
             if(userFriends.contains(visitor)) continue;
             scorePerson(visitor, 1);
         }
+    }
+    private static List<Map.Entry<String, Integer>> sortScoreDict() {
+        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(scoreDict.entrySet());
+        entryList.sort(Map.Entry.comparingByKey());
+        entryList.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
+        return entryList;
     }
 }
