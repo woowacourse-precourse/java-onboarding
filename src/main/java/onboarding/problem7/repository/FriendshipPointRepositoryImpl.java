@@ -24,6 +24,7 @@ public class FriendshipPointRepositoryImpl implements PointRepository {
     public List<String> friendshipOrderByPointAndLimitFive(String userName) {
         return friendPoints.entrySet().stream()
                 .sorted(((o1, o2) -> o2.getValue().compareTo(o1.getValue())))
+                .filter(entry -> entry.getValue() > 0)
                 .map(Map.Entry::getKey)
                 .filter(s -> !userRepository.findFriends(userName).contains(s))
                 .limit(5)
