@@ -54,5 +54,13 @@ class Problem1 {
         return total;
     }
 
+    private static int getMaxNumber(List<Integer> member) {
+        int max = 0;
+        for (Integer page : member) {
+            max = Math.max(sumDigits(page), multipleDigits(page));
+        }
+        return max;
+    }
+
 
 }
