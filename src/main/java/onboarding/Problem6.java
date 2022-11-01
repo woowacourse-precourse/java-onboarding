@@ -30,4 +30,18 @@ public class Problem6 {
             }
         }
     }
+
+    private static void getReapeatedMatchedNicknameInForms(List<String> answer, List<List<String>> forms,
+        String subNickname) {
+        int count = 0;
+        for (List<String> form2 : forms) {
+            if (form2.get(1).indexOf(subNickname) != -1) {
+                answer.add(form2.get(0));
+                count++;
+            }
+        }
+        if (count == 1) {
+            answer.remove(answer.size() - 1);
+        }
+    }
 }
