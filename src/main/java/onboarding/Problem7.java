@@ -52,6 +52,27 @@ public class Problem7 {
         }
 
 
+        //2. user의 친구찾기
+        Set<String> user_freinds = new HashSet<String>(); // user의 친구를 저장할 자료구조 (중복되는 친구 관계 방지)
+        Map<String, Integer> score_recomends = new HashMap<String, Integer>(); // 추천 친구들을 저장하고 그 추천친구들의 점수를 저장할 HashMap 선언
+
+        for (int i = 0; i < friends.size(); i++){
+            int userIndex = friends.get(i).indexOf(user); // friends의 원소들 중 user가 포함 되어 있는 리스트의 인덱스, 없다면 -1 return
+            if (userIndex != -1){ // 리스트 안에 포함여부를 확인할지 아니면 for문 하나 더 원소 내부까지 찾아볼지
+                if (userIndex == 0) {
+                    user_freinds.add(friends.get(i).get(1)); // user가 아닌 user의 친구를 user의 친구를 저장할 자료구조에 저장
+                }
+                else if (userIndex == 1) {
+                    user_freinds.add(friends.get(i).get(0)); // user가 아닌 user의 친구를 user의 친구를 저장할 자료구조에 저장
+                }
+            }
+        }
+
+        //System.out.println(friends.get(5).indexOf(user));
+        //System.out.println(user_freinds); 친구 저장 성공
+
+        //사용자와 함께아는 친구 점수 구하기
+
 
         return result;
     }
