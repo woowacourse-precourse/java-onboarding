@@ -10,9 +10,7 @@ public class Problem4 {
 
         StringBuilder sb = new StringBuilder();
 
-        for (int i = 0; i < word.length(); i++) {
-            char c = word.charAt(i);
-
+        for (char c : word.toCharArray()) {
             sb.append(reverseAlphabet(c));
         }
 
@@ -25,7 +23,6 @@ public class Problem4 {
             return c;
         }
 
-        char base = Character.isLowerCase(c) ? 'a' : 'A';
-        return (char) (base + (25 - (c - base)));
+        return (char) ((c & ~31) + 27 - (c & 31));
     }
 }

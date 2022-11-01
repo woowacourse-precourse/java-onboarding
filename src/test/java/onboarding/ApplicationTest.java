@@ -262,6 +262,13 @@ class ApplicationTest {
         }
 
         @Test
+        void maxLengthWord() {
+            String word = "a".repeat(1000);
+            String result = "z".repeat(1000);
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+
+        @Test
         void includeNotAlphabet() {
             String word = "zZ !@#$%^&*()-=_+[]{}:<>,./? 1234567890 aA";
             String result = "aA !@#$%^&*()-=_+[]{}:<>,./? 1234567890 zZ";
