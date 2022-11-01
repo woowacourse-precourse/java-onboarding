@@ -26,7 +26,7 @@ public class Problem2 {
         return stackToString(decodeStack);
     }
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String answer = decodeCryptogram(cryptogram);
         return answer;
     }
 }
