@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class Problem6 {
@@ -22,16 +23,16 @@ public class Problem6 {
 
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        HashSet<String> setEmails = new HashSet<>();
         for (int i = 0; i < forms.size(); i++) {
             for (int j = i + 1; j < forms.size(); j++) {
                 List<String> info1 = forms.get(i);
                 List<String> info2 = forms.get(j);
                 if (isOverlap(info1.get(1), info2.get(1))) {
-
+                    setEmails.add(info1.get(0));
+                    setEmails.add(info2.get(0));
                 }
             }
         }
-        return answer;
     }
 }
