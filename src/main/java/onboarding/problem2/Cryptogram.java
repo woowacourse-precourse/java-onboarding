@@ -6,10 +6,12 @@ public class Cryptogram {
     private final int MAX_LENGTH = 1000;
 
     private String cryptogram;
+    private String decrypted;
 
     public Cryptogram(String cryptogram) {
         validateCryptogram(cryptogram);
         this.cryptogram = cryptogram;
+        this.decrypted = cryptogram;
     }
 
     private void validateCryptogram(String cryptogram) {
@@ -32,4 +34,8 @@ public class Cryptogram {
                 .isEmpty();
     }
 
+    private String removeDuplicateCharacter() {
+        String regex = "(([a-z])\\2+)";
+        return this.decrypted.replaceAll(regex, "");
+    }
 }
