@@ -1,11 +1,13 @@
 package onboarding;
 
-import java.util.Collections;
+import onboarding.p7.BasicRecommendAlgorithm;
+import onboarding.p7.RecommendAlgorithm;
+
 import java.util.List;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        RecommendAlgorithm ra = new BasicRecommendAlgorithm(user);
+        return ra.getRecommendUser(friends, visitors);
     }
 }
