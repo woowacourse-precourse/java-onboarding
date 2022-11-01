@@ -3,6 +3,7 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Problem6 {
     /*
@@ -21,7 +22,7 @@ public class Problem6 {
     }
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer = new ArrayList<>();
 
         Problem6 p6 = new Problem6();
         List<HashSet> splited_forms = new ArrayList<>();
@@ -40,6 +41,7 @@ public class Problem6 {
             }
         }
 
-        return answer;
+        // 저장된 이메일 List의 문자열 원소들을 오름차순으로 정렬하고 중복 제거
+        return answer.stream().distinct().sorted().collect(Collectors.toList());
     }
 }
