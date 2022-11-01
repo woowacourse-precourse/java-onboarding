@@ -9,7 +9,25 @@ public class Problem6 {
 
 		// 이메일들을 모아놓을 set 과 중복체크를 위한 hashMap 설정
 		HashSet<String> emails = new HashSet<>();
-		HashMap<String, String> hashMap = new HashMap<>();
+		HashMap<String, String> hm = new HashMap<>();
+
+		// 닉네임 뽑기 작업
+		for (List<String> strings : forms) {
+			List<String> form = new ArrayList<>(strings);
+			String nick = form.get(1);
+
+			for (int j = 0; j < nick.length() - 1; j++) {
+				String key = nick.substring(j, j + 2); // 뽑은 닉네임을 키로 설정
+				if (hm.containsKey(key)) {
+					String email = hm.get(key);
+					if (!email.equals(strings.get(0))) { // 해당 닉네임 문자열이 중복일 경우 result 에 넣을 이메일 추가
+						emails.add(email);
+						emails.add(strings.get(0));
+					}
+				}
+				hm.put(key, strings.get(0)); // 두 개의 문자열을 키로 갖는 해쉬맵 작성
+			}
+		}
 
 
 
