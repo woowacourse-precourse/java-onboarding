@@ -7,6 +7,8 @@ public class Problem4 {
         for(int i = 0; i < wordToStr.length; i++){
             if(wordToStr[i] >= 'a' && wordToStr[i] <= 'z')
                 wordToStr[i] += (25 - 2*Math.abs(wordToStr[i] - 97));
+            else if(wordToStr[i] >= 'A' && wordToStr[i] <= 'M')
+                wordToStr[i] += (25 - 2*Math.abs(wordToStr[i] - 65));
         }
         return new String(wordToStr);
     }
