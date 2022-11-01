@@ -23,6 +23,14 @@ class Problem1 {
         } else { // 예외사항이 없을 경우
             int pobiScore = Math.max(Math.max(getPageSum(pobiLeftPage), getPageMul(pobiLeftPage)), Math.max(getPageSum(pobiRightPage), getPageMul(pobiRightPage))); // 포비의 점수
             int crongScore = Math.max(Math.max(getPageSum(crongLeftPage), getPageMul(crongLeftPage)), Math.max(getPageSum(crongRightPage), getPageMul(crongRightPage))); // 크롱의 점수
+
+            if (crongScore > pobiScore) { // 크롱이 이길 경우
+                answer = 2;
+            } else if (crongScore < pobiScore) { // 포비가 이길 경우
+                answer = 1;
+            } else { // 무승부일 경우
+                answer = 0;
+            }
         }
         return answer;
     }
