@@ -75,7 +75,8 @@ public class Problem7 {
         List<String> userFriends = new ArrayList<>();
         getUserFriends(user, friends, userFriends);
         List<Person> answerList = getTenPointName(user, friends, userFriends);
-
+        getOnePointName(answerList, visitors, userFriends);
+        
         List<String> answer = Collections.emptyList();
         return answer;
     }
@@ -196,5 +197,38 @@ public class Problem7 {
             }
         }
         return false;
+    }
+    private static boolean isContainedName(List<Person> members, String name) {
+        for (Person member : members) {
+            if (name.equals(member.name)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    private static void getOnePointName(List<Person> answerList, List<String> visitors, List<String> userFriends) {
+        for (String visitor : visitors) {
+            if (isContainedName(answerList, visitor) && !isAlreadyFriend(userFriends, visitor)) {
+                setOnePointName(answerList, visitor);
+            } else if (!isContainedName(answerList, visitor) && !isAlreadyFriend(userFriends, visitor)){
+                answerList.add(new Person(visitor, 1));
+            }
+        }
+    }
+    private static boolean isAlreadyFriend(List<String> userFriends, String visitor) {
+        for (String userFriend : userFriends) {
+            if (userFriend.equals(visitor)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    private static void setOnePointName(List<Person> answerList, String visitor) {
+        for (Person member : answerList) {
+            if (visitor.equals(member.name)) {
+                member.addOnePoint();
+                break;
+            }
+        }
     }
 }
