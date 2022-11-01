@@ -19,4 +19,15 @@ public class Problem6 {
             }
         }
     }
+
+    private static void getRepeatedSubnicknamesInNickname(List<List<String>> forms, String nickName,
+        List<String> answer) {
+        for (int elementLength = 2; elementLength <= nickName.length(); ++elementLength) {
+            for (int index = 0; index < nickName.length() - (elementLength - 1); index++) {
+                String subNickName = "";
+                subNickName = nickName.substring(index, index + elementLength);
+                getReapeatedMatchedNicknameInForms(answer, forms, subNickName);
+            }
+        }
+    }
 }
