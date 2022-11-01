@@ -83,13 +83,7 @@ public class UserService {
         scoreVisitors(visitors, commendFriend, user);
         scoreCommonFriend(commendFriend, user);
 
-        Set<Entry<String, Integer>> entries = commendFriend.entrySet();
-        return entries.stream()
-                .sorted(Entry.<String, Integer>comparingByValue().reversed().thenComparing(comparingByKey()))
-                .limit(RESPONSE_MAX_SIZE)
-                .filter(e -> e.getValue() > MINIMUM_LIMIT_SCORE)
-                .map(entry -> new FriendCommendResponseDto(entry.getKey(), entry.getValue()))
-                .collect(Collectors.toList());
+        return createFriendCommendResult(commendFriend.entrySet());
     }
 
     private void scoreVisitors(List<String> visitors, Map<String, Integer> commendFriend, User user) {
@@ -105,6 +99,15 @@ public class UserService {
                 commendFriend.put(commendId, (commendFriend.get(commendId) + (COMMON_FRIEND_SCORE * count)));
             });
         }
+    }
+
+    private List<FriendCommendResponseDto> createFriendCommendResult(Set<Entry<String, Integer>> entries) {
+        return entries.stream()
+                .sorted(Entry.<String, Integer>comparingByValue().reversed().thenComparing(comparingByKey()))
+                .limit(RESPONSE_MAX_SIZE)
+                .filter(e -> e.getValue() > MINIMUM_LIMIT_SCORE)
+                .map(entry -> new FriendCommendResponseDto(entry.getKey(), entry.getValue()))
+                .collect(Collectors.toList());
     }
 
 }
