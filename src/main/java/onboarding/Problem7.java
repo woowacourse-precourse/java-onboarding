@@ -5,7 +5,6 @@ import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> recommendedFriendList = new ArrayList<>();
         HashSet<String> socialNetwork = new HashSet<>(); // 전체 사용자들
         HashMap<String, HashSet<String>> friendsOfFriendOfUserMap = new HashMap<>(); // 친구의 친구들 저장
         HashMap<String, Integer> scoreInfo = new HashMap<>(); // 사용자들의 추천 점수 저장
@@ -18,6 +17,9 @@ public class Problem7 {
 
         // 사용자의 타임 라인에 방문한 횟수만큼 1점을 반복해서 더해줌
         setVisitorScore(user, friendsOfFriendOfUserMap, scoreInfo, visitors);
+
+        // 친구 추천 규칙에 따라 점수가 가장 높은 순으로 정렬
+        List<String> recommendedFriendList = getRecommendedFriendList(scoreInfo);
 
         return recommendedFriendList;
     }
@@ -72,5 +74,21 @@ public class Problem7 {
             }
             scoreInfo.replace(visitor, scoreInfo.get(visitor) + 1);
         }
+    }
+
+    public static List<String> getRecommendedFriendList(HashMap<String, Integer> scoreInfo) {
+        List<String> recommendedFriendList = new ArrayList<>(scoreInfo.keySet()).stream()
+                .sorted((name1, name2) -> {
+                    if (!Objects.equals(scoreInfo.get(name1), scoreInfo.get(name2))) {
+                        return scoreInfo.get(name2) - scoreInfo.get(name1);
+                    }
+                    return name1.compareTo(name2);
+                })
+                .collect(Collectors.toList());
+
+        if (recommendedFriendList.size() > 5) {
+            return recommendedFriendList.subList(0, 5);
+        }
+        return recommendedFriendList;
     }
 }
