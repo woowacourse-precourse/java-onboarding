@@ -36,7 +36,11 @@ public class Problem2 {
     }
 
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String answer = "";
+
+        // 중복 문자 제거
+        answer = removeDuplicate(cryptogram);
+
         return answer;
     }
 }
