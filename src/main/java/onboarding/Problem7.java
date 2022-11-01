@@ -28,9 +28,21 @@ public class Problem7 {
         }
 
         friend_of_friend(user);
+        visitorPoint(user, visitors);
+
 
         List<String> answer = List.of();
         return answer;
+    }
+
+    private static void visitorPoint(String user, List<String> visitors) {
+        for(String visitor: visitors){
+            if(friendList.get(user).contains(visitor))
+                continue;
+            if(scoreCard.get(visitor)==null)
+                scoreCard.put(visitor,0);
+            scoreCard.put(visitor,scoreCard.get(visitor)+1);
+        }
     }
 
     private static void friend_of_friend(String user) {
