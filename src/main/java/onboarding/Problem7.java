@@ -42,6 +42,19 @@ public class Problem7 {
         }
         return usersPoint;
     }
+    //점수와 이름의 순서대로 정렬하는 함수
+    public static List<String>  sortValueMap(String user, Map<String, Integer> allUsersPoints){
+        List<List<String>> sortingList = new ArrayList<>();
+
+        Set<String> keySet = allUsersPoints.keySet();
+        for (String key : keySet) {
+            if (allUsersPoints.get(key) == 0) continue;
+            if (key.equals(user)) continue;
+            List<String> temp = new ArrayList<>();
+            temp.add(key);
+            temp.add(String.valueOf(allUsersPoints.get(key)));
+            sortingList.add(temp);
+        }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
