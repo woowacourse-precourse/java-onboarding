@@ -16,8 +16,27 @@ import java.util.List;
 // 3. 오름차순으로 이메일 정렬 & 중복 제거
 
 public class Problem6 {
+    static TreeSet<twoLetter> twoLetterTreeSet = new TreeSet<twoLetter>();
+
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
     }
+
+    // 0. class twoLetter(string letter, boolean overlap)
+    // : letter가 중복이면 overlap은 true
+    public static class twoLetter implements Comparable<twoLetter> {
+        String letter;
+        boolean overlap;
+
+        twoLetter(String letter, boolean overlap) {
+            this.letter = letter;
+            this.overlap = overlap;
+        }
+
+        public int compareTo(twoLetter o) {
+            return (this.letter).compareTo(o.letter);
+        }
+    }
+
 }
