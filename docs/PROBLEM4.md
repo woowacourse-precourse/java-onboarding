@@ -19,3 +19,15 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+
+### 기능 목록
+
+- 예외사항
+  - word가 1 ~ 1,000 범위 길이의 문자열이 아닌 경우
+  - 알파벳이 아닌 경우
+
+- word 변환
+  - word 문자열을 char 배열로 변환한다.
+  - 각각의 문자를 사전을 바탕으로 변환하고 StringBuilder를 이용하여 문자열에 추가한다.
+  - 변환을 마친 StringBuilder를 String으로 변환하여 리턴한다.
