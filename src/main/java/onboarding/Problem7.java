@@ -24,6 +24,29 @@ public class Problem7 {
     }
 
     /**
+     * 친구의 친구 찾기
+     * @param userFriends
+     * @param friends
+     * @param user
+     * @return List<String>
+     */
+    private static List<String> findFriendsFriends(List<String> userFriends, List<List<String>> friends, String user) {
+        List<String> friendsFriends = new ArrayList<>();
+        for (int i = 0; i < friends.size(); i++) {
+            for (int j = 0; j < userFriends.size(); j++) {
+                if (friends.get(i).contains(userFriends.get(j))) {
+                    for (int k = 0; k < friends.get(i).size(); k++) {
+                        if (!friends.get(i).get(k).equals(userFriends.get(j)) && !friends.get(i).get(k).equals(user)) {
+                            friendsFriends.add(friends.get(i).get(k));
+                        }
+                    }
+                }
+            }
+        }
+        return friendsFriends;
+    }
+
+    /**
      * 사용자의 친구 찾기
      * @param user
      * @param friends
