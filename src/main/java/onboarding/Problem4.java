@@ -20,6 +20,24 @@ public class Problem4 {
 
         array_word = word.split("");
 
+        answer = getAnswer(answer, array_word, settings);
+
+        return answer;
+    }
+
+    public static String getAnswer(String answer, String[] array_word, Map<String, String> settings) {
+        for (String c_word : array_word) {
+            boolean is_upp = Character.isUpperCase(c_word.charAt(0));
+
+            String temp_result = settings.get(c_word.toUpperCase());
+            if (temp_result == null) {
+                temp_result = " ";
+            } else if (!is_upp) {
+                temp_result = temp_result.toLowerCase();
+            }
+
+            answer = answer.concat(temp_result);
+        }
         return answer;
     }
 }
