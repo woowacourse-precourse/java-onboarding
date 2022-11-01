@@ -46,6 +46,8 @@ BUILD SUCCESSFUL in 0s
 
 ---
 
+
+
 ## 🎯 프로그래밍 요구 사항
 
 - JDK 11 버전에서 실행 가능해야 한다. **JDK 11에서 정상적으로 동작하지 않을 경우 0점 처리한다.**
@@ -60,3 +62,6 @@ BUILD SUCCESSFUL in 0s
 
 - 미션은 [java-onboarding](https://github.com/woowacourse-precourse/java-onboarding) 저장소를 Fork & Clone해 시작한다.
 - 과제 진행 및 제출 방법은 [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서를 참고한다.
+
+## 회고
+[1주차 회고](https://blog.naver.com/ds4ouj/222915805307)
