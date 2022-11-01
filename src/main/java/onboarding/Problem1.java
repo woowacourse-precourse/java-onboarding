@@ -106,8 +106,8 @@ class User {
   int getMulti(int page) {
     List<Integer> pageDigits = getDigit(page);
     int multi = 1;
-    for (int i = 0; i < pageDigits.size(); i++) {
-      multi *= pageDigits.get(i);
+    for (Integer pageDigit : pageDigits) {
+      multi *= pageDigit;
     }
     return multi;
   }
@@ -122,15 +122,10 @@ class User {
   }
 
   int getMax(int bookPage) {
-    int midMax = compare2(getSum(bookPage), getMulti(bookPage));
-    return midMax;
+    return compare2(getSum(bookPage), getMulti(bookPage));
   }
 
   int compare2(int a, int b) {
-    if (a > b) {
-      return a;
-    } else {
-      return b;
-    }
+    return Math.max(a, b);
   }
 }
