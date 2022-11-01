@@ -27,7 +27,7 @@
 
 ## 🎯기능 구현 목록
 - [x] makeFriendList() : 사용자의 친구리스트를 만든다.
-- [ ] addFriends() : 친구리스트에 친구를 넣는다.
+- [x] addFriends() : 친구리스트에 친구를 넣는다.
 - [ ] findCommonUser() : 사용자의 친구리스트에서 공통된 사용자를 찾는다.
 - [ ] giveFriendPoint() : 서로 아는 친구에게 20점을 부여한다.
 - [ ] giveVisitorPoint() : 방문자에게 1점을 부여한다.
