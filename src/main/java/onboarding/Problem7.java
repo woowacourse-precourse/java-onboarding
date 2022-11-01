@@ -19,13 +19,13 @@ public class Problem7 {
         for (List<String> friend : friends) {
             String friendA = friend.get(0);
             String friendB = friend.get(1);
-            friendsMap = addFriends(friendsMap, friendA, friendB);
-            friendsMap = addFriends(friendsMap, friendB, friendA)
+            friendsMap = addFriend(friendsMap, friendA, friendB);
+            friendsMap = addFriend(friendsMap, friendB, friendA);
         }
         return friendsMap;
     }
 
-    static Map<String, List<String>> addFriends(Map<String, List<String>> friendsMap, String A, String B) {
+    static Map<String, List<String>> addFriend(Map<String, List<String>> friendsMap, String A, String B) {
         if (friendsMap.containsKey(A)) {
             friendsMap.get(A).add(B);
         } else {
