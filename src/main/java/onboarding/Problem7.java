@@ -9,3 +9,12 @@ public class Problem7 {
         return answer;
     }
 }
+
+class User {
+    String name;
+    int point;
+    public User(String name, int point) {
+        this.name = name;
+        this.point = point;
+    }
+}
