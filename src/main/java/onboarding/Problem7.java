@@ -83,29 +83,37 @@ public class Problem7 {
         ArrayList<FriendInfo> PersonInfo = new ArrayList<>();
         for(List<String> relationship : friends)
         {
-            if(userFriend.contains(relationship.get(0)) && !userFriend.contains(relationship.get(1)))
+            if(userFriend.contains(relationship.get(0)) && !userFriend.contains(relationship.get(1))&&!relationship.get(1).equals(user))
             {
-                if(!relationship.get(1).equals(user))
+                int idx =overlapCheck(PersonInfo, relationship.get(1));
+                if(idx ==-1)
                 {
                     FriendInfo friend =new FriendInfo(relationship.get(1));
                     PersonInfo.add(friend);
                     friend.friendWith();
                 }
+                else{
+                    PersonInfo.get(idx).friendWith();
+                }
             }
             else if(!userFriend.contains(relationship.get(0)) && userFriend.contains(relationship.get(1)))
             {
-                if(!relationship.get(0).equals(user))
+                int idx =overlapCheck(PersonInfo, relationship.get(0));
+                if(idx ==-1)
                 {
                     FriendInfo friend =new FriendInfo(relationship.get(0));
                     PersonInfo.add(friend);
                     friend.friendWith();
+                }
+                else{
+                    PersonInfo.get(idx).friendWith();
                 }
             }
         }
         return PersonInfo;
     }
 
-    public static ArrayList<FriendInfo> findVisitor(ArrayList<FriendInfo> PersonInfo,List<String> visitors)
+    public static ArrayList<FriendInfo> findVisitor(ArrayList<FriendInfo> PersonInfo, List<String> visitors)
     {
         ArrayList<FriendInfo> temp = PersonInfo;
         for(int i=0; i< visitors.size(); i++)
@@ -172,15 +180,15 @@ public class Problem7 {
             }
         }
     }
-
-    public static boolean overlapCheck(ArrayList<FriendInfo> PersonInfos, String name) //성능 문제 생각 //오버랩 되면 true 반환
+ */
+    public static int overlapCheck(ArrayList<FriendInfo> PersonInfos, String name) //성능 문제 생각 //오버랩 되면 true 반환
     {
         for(int i=0; i< PersonInfos.size(); i++)
         {
             if(PersonInfos.get(i).comparePerson(name))
-                return true;
+                return i;
         }
-        return false;
+        return -1;
     }
-     */
+
 }
