@@ -21,7 +21,7 @@ public class Problem7 {
     }
 
     public static Map<String, Integer> visitorsCount(List<String> visitors) {
-        HashMap<String, Integer> map = new HashMap<String, Integer>();
+        HashMap<String, Integer> map = new HashMap<>();
         for (String visitor : visitors) {
             plusPoints(visitor, map, 1);
         }
@@ -73,7 +73,7 @@ public class Problem7 {
     public static List<String> sortByValues(Map<String, Integer> map) {
         List<String> sortedList = new ArrayList<>(map.keySet());
         Collections.sort(sortedList);
-        Collections.sort(sortedList, (value1, value2) -> (map.get(value2).compareTo(map.get(value1))));
+        sortedList.sort((value1, value2) -> (map.get(value2).compareTo(map.get(value1))));
         return sortedList;
     }
 
