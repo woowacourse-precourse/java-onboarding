@@ -83,8 +83,11 @@ public class User implements Comparable<User> {
      * @param user
      * @return
      */
-    public boolean isNotMeAndFriend(User user) {
+    public boolean isNotMeAndFriendZeroScore(User user) {
         if (this == user) {
+            return false;
+        }
+        if(user.isZeroScore()){
             return false;
         }
         return !this.isFriend(user);

@@ -15,7 +15,7 @@ public class UserService {
         var user = userRepository.findByName(username);
         return userRepository.findAll()
                              .stream()
-                             .filter(user::isNotMeAndFriend)
+                             .filter(user::isNotMeAndFriendZeroScore)
                              .sorted(Comparator.reverseOrder())
                              .limit(limit)
                              .map(User::name)
