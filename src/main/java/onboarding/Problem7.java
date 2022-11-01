@@ -53,7 +53,7 @@ public class Problem7 {
                 .stream().sorted(new Comparator<Map.Entry<String, Integer>>() {
                     @Override
                     public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
-                        if (o1.getValue() == o2.getValue())
+                        if (o1.getValue().equals(o2.getValue()))
                             return o1.getKey().compareTo(o2.getKey());
                         else
                             return -o1.getValue().compareTo(o2.getValue());
@@ -65,7 +65,7 @@ public class Problem7 {
         List<String> answer = new ArrayList<>();
         for(Map.Entry<String, Integer> recommended : scoresList) {
             if(answer.size() >= 5) break;
-            if(recommended.getKey() != user // 본인 x
+            if(!recommended.getKey().equals(user) // 본인 x
                     && !connectMap.get(user).contains(recommended.getKey()) // 현재 친구 x
                     && recommended.getValue() > 0) // 0점 x
                 answer.add(recommended.getKey());
