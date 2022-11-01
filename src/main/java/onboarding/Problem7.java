@@ -37,6 +37,19 @@ public class Problem7 {
             friendGraph[toNumber].add(fromNumber);
         }
 
+        // 사용자와 함께 아는 친구의 수 만큼 10점 주기
+        // - 사용자의 친구의 친구가 해당. 루트가 사용자인 그래프를 깊이 2로 DFS 탐색
+        for (int i = 0; i < friendGraph[idToNumber.get(user)].size(); i++) {
+            int myFriendNumber = friendGraph[idToNumber.get(user)].get(i);
+            // 내 친구목록 생성 - 결과값에 제외할 목록들
+            myFriendList.add(numberToId.get(myFriendNumber));
+
+            for (int j = 0; j < friendGraph[myFriendNumber].size(); j++) {
+                int myFriendOfFriend = friendGraph[myFriendNumber].get(j);
+                score[myFriendOfFriend] += 10;
+            }
+        }
+
         return answer;
     }
 
