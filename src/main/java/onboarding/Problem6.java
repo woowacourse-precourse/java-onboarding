@@ -1,116 +1,63 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.PriorityQueue;
+import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class Problem6 {
-    static PriorityQueue<String> overlapNamesQueue;
-    static boolean[] check;
+    static Set<String> emailsSet;
+    static Map<String, String> consecutiveWordsMap;
 
-    public static List<String> solution(List<List<String>> forms) {
-        PriorityQueue<String> overlapNamesQueue = getOverlapNamesQueue(forms);
+    static List<String> solution(List<List<String>> forms) {
+        Set<String> resultEmailSet = getEmailsSet(forms);
+        List<String> sortedEmailList = getSortedEmailList(resultEmailSet);
 
-        return priorityQueueToList(overlapNamesQueue);
+        return sortedEmailList;
     }
 
-    static PriorityQueue<String> getOverlapNamesQueue(List<List<String>> forms) {
-        int size = forms.size();
-        overlapNamesQueue = new PriorityQueue<>();
-        check = new boolean[size];
+    static Set<String> getEmailsSet(List<List<String>> forms) {
+        emailsSet = new HashSet<>();
+        consecutiveWordsMap = new HashMap<>();
 
-        for (int i = 0; i < size; i++) {
-            if (!check[i]) {
-                setOverlapNamesQueue(forms, i);
+        for (int i = 0; i < forms.size(); i++) {
+            String currentEmail = forms.get(i).get(0);
+            String currentName = forms.get(i).get(1);
+
+            if(currentName.length() > 1) {
+                validateConsecutiveWord(currentName, currentEmail);
             }
         }
 
-        return overlapNamesQueue;
+        return emailsSet;
     }
 
-    static void setOverlapNamesQueue(List<List<String>> forms, int i) {
-        String formName = forms.get(i).get(1);
+    static void validateConsecutiveWord(String currentName, String currentEmail) {
+        for (int j = 0; j < currentName.length() - 1; j++) {
+            String consecutiveWord = currentName.substring(j, j+2);
 
-        for (int j = 0; j < formName.length() -1; j++) {
-            String subStr = formName.substring(j, j+2);
-            findOverlapNames(subStr, forms, i);
+            inputConsecutiveWordsMap(consecutiveWord, currentName, currentEmail);
+            consecutiveWordsMap.put(consecutiveWord, currentEmail);
         }
     }
 
-    static void findOverlapNames(String subStr, List<List<String>> forms, int i) {
-        for (int k = 0; k < forms.size(); k++) {
-            findOverlapName(forms, subStr, i, k);
+    static void inputConsecutiveWordsMap(String consecutiveWord, String currentName, String currentEmail) {
+        if (consecutiveWordsMap.containsKey(consecutiveWord)) {
+            String consecutiveEmail = consecutiveWordsMap.get(consecutiveWord);
+
+            inputEmails(consecutiveEmail, currentEmail);
         }
     }
 
-    static void findOverlapName(List<List<String>> forms, String subStr, int i, int k) {
-        String currentEmail = forms.get(i).get(0);
-        String targetName = forms.get(k).get(1);
-        String targetEmail = forms.get(k).get(0);
-
-        if(!isException(forms, i, k) && targetName.contains(subStr)) {
-            inputOverlapName(currentEmail, targetEmail, k);
+    static void inputEmails(String consecutiveEmail, String currentEmail) {
+        if(!consecutiveEmail.equals(currentEmail)) {
+            emailsSet.add(consecutiveEmail);
+            emailsSet.add(currentEmail);
         }
     }
 
-    static void inputOverlapName(String currentEmail, String targetEmail, int k) {
-        check[k] = true;
-
-        inputOverlapNameEmail(currentEmail, targetEmail);
-    }
-
-    static void inputOverlapNameEmail(String currentEmail, String targetEmail) {
-        if (validateOverlapEmail(currentEmail)) {
-            overlapNamesQueue.add(currentEmail);
-        }
-        if (validateOverlapEmail(targetEmail)) {
-            overlapNamesQueue.add(targetEmail);
-        }
-    }
-
-    static boolean validateOverlapEmail(String email) {
-        if (!overlapNamesQueue.contains(email)) {
-            return true;
-        }
-
-        return false;
-    }
-
-    static boolean isException(List<List<String>> forms, int i, int j) {
-        if (isSameIdx(i, j) || !isOverOneLetter(forms, i, j)) {
-            return true;
-        }
-
-        return false;
-    }
-
-    static boolean isSameIdx(int i, int j) {
-        if (i == j) {
-            return true;
-        }
-
-        return false;
-    }
-
-    static boolean isOverOneLetter(List<List<String>> forms, int i, int j) {
-        String currentName = forms.get(i).get(1);
-        String targetName = forms.get(j).get(1);
-
-        if(currentName.length() <= 1 || targetName.length() <= 1) {
-            return false;
-        }
-
-        return true;
-    }
-
-    static List<String> priorityQueueToList(PriorityQueue<String> queue) {
-        List<String> result = new ArrayList<>();
-
-        Stream.generate(queue::poll)
-                .limit(queue.size())
-                .forEach(value -> result.add(value));
-
-        return result;
+    static List<String> getSortedEmailList (Set<String> emails) {
+        return emails.stream()
+                .sorted()
+                .collect(Collectors.toList());
     }
 }
