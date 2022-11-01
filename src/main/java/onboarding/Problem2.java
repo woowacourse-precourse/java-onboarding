@@ -1,31 +1,32 @@
 package onboarding;
 
-public class Problem2 {
-    private static String answer;
+import java.util.Stack;
 
+public class Problem2 {
     public static String solution(String cryptogram) {
-        char nowChar;
-        char nextChar;
-        StringBuilder answer = new StringBuilder();
-        boolean duplicate = false;
-        for(int i=0; i<cryptogram.length();i++){
-            nowChar = cryptogram.charAt(i);
-            if(i == cryptogram.length() -1 ) nextChar = '\0';
-            else                             nextChar = cryptogram.charAt(i+1);
-            if(nowChar != nextChar){
-                if(!duplicate){
-                    answer.append(nowChar);
-                }
-                else{
-                    duplicate = false;
-                }
+        String answer = "";
+        Stack<Character> decode = new Stack<Character>(); // 해독된 문자가 쌓일 스택
+        int len = cryptogram.length();
+
+
+        for(int i=0; i<len; i++){
+            char nowChar = cryptogram.charAt(i);
+            if(decode.empty()){
+                decode.push(nowChar);
+            }
+            else if(decode.peek() == nowChar){
+                decode.pop();
             }
             else{
-                duplicate = true;
+                decode.push(nowChar);
             }
-        }
-        if(answer.toString().equals(cryptogram)) return answer.toString();
-        else                          return solution(answer.toString());
+        } // 스택(이전까지 해독된 문자열)의 마지막 글자와 새로운 글자를 대조 후 해독
+
+        while(!decode.empty()){
+            answer = decode.pop() + answer;
+        } // 스택을 문자열로 변환
+
+        return answer;
     }
     
 }

@@ -3,13 +3,6 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
-    public static int main(){
-        List<Integer> pobi = List.of(97, 98);
-        List<Integer> crong = List.of(197, 198);
-        solution(pobi, crong);
-
-        return 0;
-    }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         if(!(ExceptionHandling(pobi) && ExceptionHandling(crong))) return -1;
@@ -30,21 +23,23 @@ class Problem1 {
     }
 
     public static int getMax(List<Integer> pageList){
-        int prev = 0;
         int result = 0;
+        int sum = 0;
+        int mul = 1;
+        int len;
+
         for(int page : pageList){
-            if(prev == 0) prev=page;
             String pageStr = String.valueOf(page);
-            int len = pageStr.length();
-            int sum = 0;
-            int mul = 1;
+            len = pageStr.length();
+            sum = 0;
+            mul = 1;
             for(int i=0; i<len; i++){
                 int num = pageStr.charAt(i) - '0';
                 sum += num;
                 mul *= num;
             }
             result = Math.max(Math.max(sum, mul), result);
-        }
+        } // 왼쪽, 오른쪽 페이지의 자릿수를 더하고 곱해 최댓값 산출
 
         return result;
     }
@@ -60,5 +55,5 @@ class Problem1 {
         if(right != left+1) return false;
 
         return true;
-    }
+    } // 예외처리
 }

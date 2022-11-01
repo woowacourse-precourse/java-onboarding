@@ -22,20 +22,20 @@ public class Problem6 {
                 update.add(email);
                 dupMap.put(name.substring(i, i+2), update);
             }
-        }
+        } // 이름 내 연속된 두 문자를 key, 해당 문자들을 포함하는 user들의 email list를 value 로 삼는 HashTable 생성
 
         List<String> key = new ArrayList<String>(dupMap.keySet());
 
         for(String keyStr : key){
             List<String> email = dupMap.get(keyStr);
-            if(dupMap.get(keyStr).size()>2){
+            if(dupMap.get(keyStr).size() > 1){
                 emailSet.addAll(email);
             }
-        }
+        } // 겹치는 이름이 하나 이상인 email을 모은 Set 생성
 
         answer = new ArrayList<String>(emailSet);
 
-        answer.sort(Comparator.naturalOrder());
+        answer.sort(Comparator.naturalOrder()); // set을 list로 전환 후 알파벳 순으로 정렬
 
 
         return answer;

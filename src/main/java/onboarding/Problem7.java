@@ -4,6 +4,7 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        int end;
         List<String> answer;
         List<String> key;
         List<String> friendsOfUser = new ArrayList<String>();
@@ -14,7 +15,7 @@ public class Problem7 {
             if(userIdx != -1){
                 friendsOfUser.add(frd.get(1 - userIdx));
             }
-        }
+        } // user의 친구 탐색
 
         for(List<String> frd: friends){
             if(frd.contains(user)) continue;
@@ -33,9 +34,7 @@ public class Problem7 {
                     recommend.put(nearby,prev+10);
                 }
             }
-        }
-
-
+        } // user와 함께 아는 친구
 
         for(String visitor: visitors){
             if(friendsOfUser.contains(visitor) || user.equals(visitor)) continue;
@@ -45,7 +44,7 @@ public class Problem7 {
                 prev = 0;
             }
             recommend.put(visitor, prev+1);
-        }
+        } // 타임 라인 방문
 
         key = new ArrayList<String>(recommend.keySet());
 
@@ -59,14 +58,12 @@ public class Problem7 {
                 }
                 return result;
             }
-        });
+        }); // 추천 점수가 높은 순으로 아이디 정렬
 
-        if(key.size() > 5){
-            answer = new ArrayList<String>(key.subList(0, 5));
-        }
-        else{
-            answer = new ArrayList<String>(key);
-        }
+
+        end = Math.min(key.size(), 5); // 추천 친구를 최대 5명으로 설정
+
+        answer = new ArrayList<String>(key.subList(0, end));
 
         return answer;
     }
