@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -11,14 +12,7 @@ public class Problem6 {
 
         final Map<String, List<Crew>> crewMap = new HashMap<>();
 
-        crews.forEach(crew -> {
-            final String nickname = crew.getNickname();
-            for (int i = 0; i < nickname.length() - 1; i++) {
-                String key = nickname.substring(i, i + 2);
-                crewMap.putIfAbsent(key, new ArrayList<>());
-                crewMap.get(key).add(crew);
-            }
-        });
+        addMapBySubstringInNickname(crewMap, crews);
 
         return crewMap.values().stream()
                 .filter(value -> value.size() > 1)
@@ -26,6 +20,18 @@ public class Problem6 {
                 .map(Crew::getEmail)
                 .sorted()
                 .collect(Collectors.toList());
+    }
+
+    private static void addMapBySubstringInNickname(Map<String, List<Crew>> crewMap, List<Crew> crews) {
+        crews.forEach(crew -> {
+            final String nickname = crew.getNickname();
+            IntStream.range(0, nickname.length() - 1)
+                    .mapToObj(i -> nickname.substring(i, i + 2))
+                    .forEach(key -> {
+                        crewMap.putIfAbsent(key, new ArrayList<>());
+                        crewMap.get(key).add(crew);
+                    });
+        });
     }
 
     public static class Crew {
