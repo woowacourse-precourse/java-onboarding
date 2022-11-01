@@ -3,7 +3,6 @@ package onboarding;
 public class Problem2 {
 
     static private final String BLANK = "";
-
     static private final String SAMPLE_REGEX = "{2,}";
     static private String answer = "";
 
