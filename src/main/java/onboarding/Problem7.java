@@ -40,11 +40,19 @@ public class Problem7 {
         userMap.remove(user);
 
         List<Map.Entry<String, Integer>> entry = new LinkedList<>(userMap.entrySet());
-        entry.sort(((o1, o2) -> userMap.get(o2.getKey()) - userMap.get(o1.getKey())));
+        entry.sort(new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                if(o2.getValue() == o1.getValue())
+                    return o1.getKey().compareTo(o2.getKey());
+                return o2.getValue() - o1.getValue();
+            }
+        });
 
         int userIdx = users.indexOf(user);
         List<String> result = new ArrayList<>();
-        for(Map.Entry<String, Integer> e : entry){
+        for(int i = 0; i < 5; i++){
+            Map.Entry<String, Integer> e = entry.get(i);
             String name = e.getKey();
             if(!graph[userIdx].contains(users.indexOf(name))) {
                 result.add(e.getKey());
