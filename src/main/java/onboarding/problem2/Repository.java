@@ -1,10 +1,14 @@
 package onboarding.problem2;
 
 
+
+import onboarding.Problem2;
+
 import java.util.LinkedList;
 import java.util.List;
 
 import static java.lang.String.valueOf;
+
 
 
 public class Repository {
@@ -13,19 +17,29 @@ public class Repository {
 
         LinkedList<String> repository = new LinkedList<>();
 
-        for (int i = 0; i <= encode.length(); i++) {
+        char startIndex = encode.charAt(0);
+//        int lastIndex = encode.length();
 
-            String cryptogram;
+// browoanoommnaon -> oo mm nn aa oo
+        repository.add(valueOf(startIndex));
 
-            // char 배열의 범위를 벗어난 인덱스 지정이 문제? 인덱스 지정 형식이 문제?
+        // StringIndexOutOfBoundsException 처리
+        for (int i=1; i<encode.length()-1; i++) {
 
-            char collector = encode.charAt(i);
-            char verifier = encode.charAt(i+1);
 
-            // 검사 기능(중복 피해가기)
-                if (collector != verifier) { repository.add(valueOf(collector)); }
+            char collect = encode.charAt(i);
+            char next = encode.charAt(i+1);
+            char before = encode.charAt(i-1);
+
+             // 중복 피해가기
+            if(collect != next & collect != before){ repository.add(valueOf(collect)); }
 
         }
+        repository.add(valueOf(encode.
+                charAt(encode.length()-1)));
+
+
+
         return repository;
     }
 }

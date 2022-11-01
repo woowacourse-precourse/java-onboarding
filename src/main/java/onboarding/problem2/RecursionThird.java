@@ -7,11 +7,11 @@ public class RecursionThird {
     public static LinkedList<String> recursiveThird(LinkedList<String> repository) {
 
         int k = 0;
-        while (k < repository.size()-1) {
+        while (k < repository.size() - 1) {
 
             String collect = repository.get(k);
             String next = repository.get(k + 1);
-// browoanoommnaon
+
             if (collect.equals(next)) {
                 repository.remove(k);
                 repository.remove(k);
@@ -20,4 +20,5 @@ public class RecursionThird {
         }
 
         return repository;
+    }
 }
