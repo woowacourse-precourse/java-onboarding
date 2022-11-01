@@ -56,4 +56,20 @@ public class Problem7 {
 
         return friendsMap;
     }
+
+    private static Map<String, Integer> getScoreMap(Map<String, List<String>> friendsMap,
+                                                    List<String> userFriends
+    ) {
+        Map<String, Integer> scoreMap = new HashMap<>();
+
+        for (String userFriend : userFriends) {
+            List<String> friends = friendsMap.get(userFriend);
+            for (String friend : friends) {
+                scoreMap.computeIfAbsent(friend, k -> 0);
+                scoreMap.put(friend, scoreMap.get(friend) + 10);
+            }
+        }
+
+        return scoreMap;
+    }
 }
