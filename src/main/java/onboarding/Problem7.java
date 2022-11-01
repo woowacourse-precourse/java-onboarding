@@ -25,6 +25,29 @@ public class Problem7 {
     public static HashMap<String, HashSet<String>> createFriendList(List<List<String>> friends) {
         HashMap<String, HashSet<String>> friendListByUser = new HashMap<>();
 
+        for (List<String> users: friends) {
+            String user = users.get(0);
+            String friend = users.get(1);
+
+            if (friendListByUser.containsKey(user)) {
+                friendListByUser.get(user).add(friend);
+            } else {
+                HashSet<String> friendList = new HashSet<>();
+                friendList.add(friend);
+                friendListByUser.put(user, friendList);
+            }
+
+            if (friendListByUser.containsKey(friend)) {
+                friendListByUser.get(friend).add(user);
+            } else {
+                HashSet<String> friendList = new HashSet<>();
+                friendList.add(user);
+                friendListByUser.put(friend, friendList);
+            }
+
+        }
+
+        return friendListByUser;
     }
 
     public static HashMap<String, Integer> findRecommendedFriend(
@@ -36,7 +59,7 @@ public class Problem7 {
     }
 
     public static List<String> getRecommendedUsers(HashMap<String, Integer> recommendedFriends, int number) {
-        
+
     }
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
