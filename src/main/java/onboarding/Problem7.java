@@ -3,8 +3,23 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
+    class Pair implements Comparable<Pair>{
+        int first;
+        String second;
 
-
+        public Pair(int first, String second) {
+            super();
+            this.first = first;
+            this.second = second;
+        }
+        @Override
+        public int compareTo(Pair p) {
+            if(this.first == p.first)
+                return this.second.compareTo(p.second);
+            else
+                return Integer.compare(this.first, p.first);
+        }
+    }
     public static void SetFriendList(List<List<String>> friends, HashSet<String> friendList, String user)
     {
         for (int i = 0; i < friends.size(); i++)
