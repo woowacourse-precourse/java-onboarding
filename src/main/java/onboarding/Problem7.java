@@ -74,12 +74,12 @@ public class Problem7 {
     }
 
     private static List<String> getRecommandFriends() {
-        scoreMap.keySet();
         return scoreMap.entrySet().stream()
                 .filter(sc -> sc.getValue() >0)
-                .sorted(Comparator.comparing(Map.Entry<String, Integer>::getValue).reversed())
+                .limit(5)
+                .sorted(Comparator.comparing(Map.Entry<String, Integer>::getKey)
+                        .thenComparing(Comparator.comparing(Map.Entry<String, Integer>::getValue)).reversed())
                 .map(Map.Entry::getKey)
                 .collect(Collectors.toList());
     }
-
 }
