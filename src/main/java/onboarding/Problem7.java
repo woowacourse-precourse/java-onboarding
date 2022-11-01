@@ -17,6 +17,13 @@ public class Problem7 {
         return answer;
     }
 
+    //  점수 증가 대상인 사람 목록과 증가시킬 점수를 입력받아 점수증가
+    private static void increasePoint(List<String> list, int point){
+        for(String s : list){
+            putPointAndUser(s,point);
+        }
+    }
+
     //  MAP에 유저 정보와 점수를 입력하는 메소드
     private static void putPointAndUser(String id, int point){
         if(!recommend.containsKey(id)) {
