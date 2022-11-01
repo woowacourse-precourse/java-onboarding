@@ -17,10 +17,14 @@ public class Problem6 {
         return answer;
     }
 
-    private void putUsersInfoInMap(List<List<String>> forms){
+    private void putUsersInfoInMapExceptForIsName1LengthCase(List<List<String>> forms){
         for(List<String> form : forms){
             String UserName = form.get(NAME_IDX);
+
+            if(UserName.length()==1) continue;
+
             String UserEmail = form.get(EMAIL_IDX);
+
             usersInfo.put(UserName, UserEmail);
         }
     }
