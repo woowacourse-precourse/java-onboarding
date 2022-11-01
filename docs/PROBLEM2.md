@@ -21,3 +21,9 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+### 기능 목록
+- 연속하는 중복 문자 세기
+- 연속하는 중복 문자 제거
+- 중복 문자 존재 판별
+- validation
