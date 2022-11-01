@@ -5,6 +5,8 @@ public class Word {
     private String word;
 
     public Word(String word) {
+        isValidWord(word);
+        
         this.word = word;
     }
 
@@ -39,6 +41,11 @@ public class Word {
             return true;
 
         return false;
+    }
+
+    private void isValidWord(String word) {
+        if (word.length() < 1 || word.length() > 1000)
+            throw new IllegalArgumentException("문자의 길이는 1 이상 1000 이하여야 합니다.");
     }
 
 }
