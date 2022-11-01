@@ -3,8 +3,20 @@ package onboarding;
 import java.util.List;
 
 class Problem1 {
+
+    private static final int LEFT_PAGE_INDEX = 0;
+    private static final int RIGHT_PAGE_INDEX = 1;
+    private static final int MIN_PAGE = 1;
+    private static final int MAX_PAGE = 400;
+
+    private static final int CRONG_WIN = 2;
+    private static final int POBI_WIN = 1;
+    private static final int DRAW = 0;
+
+    private static final int EXCEPTION = -1;
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if (!validate(pobi, crong)) return -1;
+        if (!validate(pobi, crong)) return EXCEPTION;
 
         return playGame(pobi, crong);
     }
@@ -23,15 +35,15 @@ class Problem1 {
     }
 
     private static boolean validateCorrectPageRange(List<Integer> pages) {
-        return pages.get(0) >= 1 && pages.get(1) <= 400;
+        return pages.get(LEFT_PAGE_INDEX) >= MIN_PAGE && pages.get(RIGHT_PAGE_INDEX) <= MAX_PAGE;
     }
 
     private static boolean validateCorrectPageOrder(List<Integer> pages) {
-        return pages.get(0) % 2 == 1 && pages.get(1) % 2 == 0;
+        return pages.get(LEFT_PAGE_INDEX) % 2 == 1 && pages.get(RIGHT_PAGE_INDEX) % 2 == 0;
     }
 
     private static boolean validateConnectPage(List<Integer> pages) {
-        return pages.get(0) == pages.get(1) - 1;
+        return pages.get(LEFT_PAGE_INDEX) == pages.get(RIGHT_PAGE_INDEX) - 1;
     }
 
     private static int getMSum(int page) {
@@ -62,6 +74,6 @@ class Problem1 {
         int pobiScore = getMAxScore(pobi);
         int crongScore = getMAxScore(crong);
 
-        return pobiScore > crongScore ? 1 : pobiScore < crongScore ? 2 : 0;
+        return pobiScore > crongScore ? POBI_WIN : pobiScore < crongScore ? CRONG_WIN : DRAW;
     }
 }
