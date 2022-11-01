@@ -25,6 +25,22 @@ public class Problem6 {
 
         // 2. 쪼갠 2글자 중복 제거
         nicknameArr = nicknameArr.stream().distinct().collect(Collectors.toList());
+        // 3. 쪼갠 2글자를 포함한 닉네임이 2개이상일 때 해당 닉네임 사용을 제한.
+        for (String gram : nicknameArr) {
+            emailArr = new ArrayList<>();
+            for (int j=0; j < forms.size(); j++) {
+                nickname = forms.get(j).get(1);
+
+                if (nickname.contains(gram)) {
+                    emailArr.add(forms.get(j).get(0));
+                }
+            }
+            if (emailArr.size() >= 2) {
+                for (String email : emailArr) {
+                    answer.add(email);
+                }
+            }
+        }
         return answer;
     }
 }
