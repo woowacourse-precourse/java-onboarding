@@ -2,18 +2,13 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        StringBuilder sb = new StringBuilder(cryptogram);
-        int i = 0;
-        while(i < sb.length() && sb.length() > 1) {
-            int maxSameLength = maxSameCharacter(sb, i);
-            if(maxSameLength == 1) {
-                i++;
-                continue;
-            }
-            removeConsecutiveSameCharacter(sb, i, maxSameLength);
+        String before = cryptogram;
+        String after = removeConsecutiveCharacter(before);
+        while(!before.equals(after)) {
+            before = after;
+            after = removeConsecutiveCharacter(before);
         }
-        String answer = sb.toString();
-        return answer;
+        return after;
     }
 
     private static String removeConsecutiveCharacter(String before) {
