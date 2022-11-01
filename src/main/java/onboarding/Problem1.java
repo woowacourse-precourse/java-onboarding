@@ -5,39 +5,30 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
-
-        // 예외 상황 발생 시 -1 반환
-        if(isException(pobi) || isException(crong)){
-            answer = -1;
-        // 최댓값 찾기
-        } else {
-            int pobiMax = -1;
-            int crongMax = -1;
-
-            pobiMax = Math.max(findMax(pobi.get(0)), findMax(pobi.get(1)));
-            crongMax = Math.max(findMax(crong.get(0)), findMax(crong.get(1)));
-
-            // 결과 판단
-            answer = findWinner(pobiMax, crongMax);
+        if (isException(pobi) || isException(crong)) {
+            return -1;
         }
 
+        int pobiMax = -1;
+        int crongMax = -1;
+        pobiMax = Math.max(findMax(pobi.get(0)), findMax(pobi.get(1)));
+        crongMax = Math.max(findMax(crong.get(0)), findMax(crong.get(1)));
+        answer = findWinner(pobiMax, crongMax);
         return answer;
-    }
+}
 
     // 예외 경우인지를 판단하는 함수 isException()
     private static boolean isException(List<Integer> pages) {
-        // 1. 왼쪽 페이지가 홀수이고, 오른쪽 페이지가 짝수인지 확인
-        if (pages.get(0)%2==0 || pages.get(1)%2==1) {
+        if (pages.get(0) % 2 == 0 || pages.get(1) % 2 == 1) {
             return true;
-        // 2. 두 페이지가 붙어있는지 확인
-        } else if (pages.get(0)+1 != pages.get(1)) {
-            return true;
-        // 3. 시작 면이나 마지막 면이 포함되었는지 확인
-        } else if (pages.get(0)==1 || pages.get(1) == 400) {
-            return true;
-        } else {
-            return false;
         }
+        if (pages.get(0) + 1 != pages.get(1)) {
+            return true;
+        }
+        if (pages.get(0) == 1 || pages.get(1) == 400) {
+            return true;
+        }
+        return false;
     }
 
 
@@ -47,8 +38,8 @@ class Problem1 {
         char[] numberChar = numberString.toCharArray();
         int[] numbers = new int[numberChar.length];
 
-        for (int i=0; i<numberChar.length; i++){
-            numbers[i] = numberChar[i]-'0';
+        for (int i = 0; i < numberChar.length; i++) {
+            numbers[i] = numberChar[i] - '0';
         }
 
         return numbers;
@@ -60,17 +51,17 @@ class Problem1 {
 
         int add = 0;
         int mul = 1;
-        for (int i=0; i<numbers.length; i++){
-            add+=numbers[i];
-            mul*=numbers[i];
+        for (int i = 0; i < numbers.length; i++) {
+            add += numbers[i];
+            mul *= numbers[i];
         }
 
-        return Math.max(add,mul);
+        return Math.max(add, mul);
     }
 
     // 결과를 판단하는 함수 findWinner()
     private static int findWinner(int pobi, int crong) {
-        if(pobi > crong) {
+        if (pobi > crong) {
             return 1;
         } else if (pobi < crong) {
             return 2;
