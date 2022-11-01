@@ -24,13 +24,13 @@ public class DuplicationNotificator {
             String email = form.get(0);
             String nick = form.get(1);
             for (int i = 0; i < nick.length() - 1; i++) {
-                String part = nick.substring(i, i + 2);
-                if (parts.containsKey(part)) {
-                    List<String> emails = parts.get(part);
+                String partOfNickname = nick.substring(i, i + 2);
+                if (parts.containsKey(partOfNickname)) {
+                    List<String> emails = parts.get(partOfNickname);
                     if (!emails.contains(email))
                         emails.add(email);
                 } else {
-                    parts.put(part, new ArrayList<>(Collections.singletonList(email)));
+                    parts.put(partOfNickname, new ArrayList<>(Collections.singletonList(email)));
                 }
             }
         }
