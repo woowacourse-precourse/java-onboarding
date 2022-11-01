@@ -21,13 +21,13 @@ public class Problem6 {
         publicForms= forms;
 
         for(int standardIndex = 0; standardIndex <forms.size(); standardIndex++){
-            makeCompareStringAndAddEmail(standardIndex);
+            Main(standardIndex);
         }
         return deleteOverlapAndSort(emailList);
     }
 
 
-    static void makeCompareStringAndAddEmail(int standardIndex){
+    static void Main(int standardIndex){
         String standardName= getNickname(standardIndex);
 
         for(int nameIndex = 0; nameIndex <standardName.length()-1; nameIndex++){
@@ -36,12 +36,12 @@ public class Problem6 {
     }
 
     static void addOverlapedEmailList(String compareString, int standardIndex){
-        for(int currnetIndex = standardIndex+1; currnetIndex < publicForms.size(); currnetIndex++){
-            String compareName= getNickname(currnetIndex);
+        for(int compareIndex = standardIndex+1; compareIndex < publicForms.size(); compareIndex++){
+            String compareName= getNickname(compareIndex);
 
-            if(Overlaped(compareName,compareString)){
+            if(isOverlaped(compareName,compareString)){
                 emailList.add(getEmail(standardIndex));
-                emailList.add(getEmail(currnetIndex));
+                emailList.add(getEmail(compareIndex));
             }
         }
     }
@@ -62,7 +62,7 @@ public class Problem6 {
         return compareStr.get(nameIndex);
     }
 
-    static boolean Overlaped( String name, String checkStr){
+    static boolean isOverlaped( String name, String checkStr){
         return name.contains(checkStr);
     }
 

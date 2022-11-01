@@ -24,3 +24,13 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+
+## 기능 목록
+
+1. 유저의 친구를 친구 배열에서 찾는다.(_searchFriendsOfUser()_)
+2. 유저의 각 친구의 친구를 hashmap 형식으로 저장한다.(_searchFriendsOfUser()_)
+3. 유저의 각 친구의 친구들끼리 비교하여, 겹칠때마다 배열에 저장한다.(_getOverlapedAnotherFriend()_)
+4. 겹치는 친구들을 10점씩 FriendScore HashMap에 저장한다.(_plusTen()_)
+5. 방문자중 유저의 친구들을 제외한 사람들에게 1점을 추가한다.(_plusOne()_)
+6. 정렬한 후, 앞 5명을 새로운 배열에 담아 반환한다.(_getRecommendedFiveFriends()_)

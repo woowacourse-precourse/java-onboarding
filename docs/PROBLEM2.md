@@ -21,3 +21,8 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+
+##기능 목록
+1. 연속되는 겹치는 문자가 있는지 검증(checkOverlap, isCharContinuosOverlaped 함수)
+2. 겹치는 문자 제거(removeOverlap 함수)

@@ -19,3 +19,9 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+
+##기능목록
+1. 문자열을 아스키코드 배열로 변환(changeStringToAsciiArray 함수)
+2. 아스키코드의 특성을 이용하여 배열을 변환(capitalReverted, revertCapitalUsingAscii 함수)
+3. 아스키코드 배열을 문자열로 변환(revertArrayToString 함수)

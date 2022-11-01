@@ -1,7 +1,7 @@
 /*
  * Problem7
  *
- * v1.2
+ * v1.4
  *
  * 2022.11.01
  *
@@ -66,8 +66,7 @@ public class Problem7 {
         }
     }
 
-    static void addAnotherFriend(List<String> friendArray,
-                                 String friendOfUser){
+    static void addAnotherFriend(List<String> friendArray, String friendOfUser){
         for (int index = 0; index < 2; index++) {
             int anotherFriendIndex= (1 - index);
 
@@ -79,8 +78,6 @@ public class Problem7 {
     static boolean isAnotherFriend(List<String> friendArray, String friendOfUser, int index ){
         return (friendArray.get(index).equals(friendOfUser) && !friendArray.get(1-index).equals(User));
     }
-
-
 
     static void getOverlapedAnotherFriend(HashMap<String, ArrayList<String>> anotherFriends){
 
@@ -112,14 +109,14 @@ public class Problem7 {
 
     static void plusOne(List<String> friendOfUsers, List<String> visitors){
         for(String visitor: visitors){
-            if(isValidVisitor(visitor, friendOfUsers)){
+            if(isNotFriendVisitor(visitor, friendOfUsers)){
                 FriendScore.put(visitor, FriendScore.get(visitor)+1);
             }else if(isPureVisitor(visitor,friendOfUsers)){
                 FriendScore.put(visitor, 1);
             }
         }
     }
-    static boolean isValidVisitor(String visitor, List<String> friendOfUsers) {
+    static boolean isNotFriendVisitor(String visitor, List<String> friendOfUsers) {
         return (FriendScore.containsKey(visitor) && !friendOfUsers.contains(visitor));
     }
     static boolean isPureVisitor(String visitor, List<String> friendOfUsers){
