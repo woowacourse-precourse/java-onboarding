@@ -14,19 +14,23 @@ public class Problem7 {
 
             List<String> friend = friends.get(i);
             // 친구 관계 정리
-            connectfriend(friend, relation);
+            connectFriend(friend, relation);
 
             // 사람 별로 점수 정리 Map 생성
-            makescoremap(friend, scoreMap);
+            makeScoreMap(friend, scoreMap);
 
         }
+
+        // 함께 아는 친구 수 찾기
+        knowmyfriend
+
 
         List<String> answer = Collections.emptyList();
         return answer;
     }
 
     // 친구 관계 정리
-    public static void connectfriend(List<String> friend, HashMap<String, List<String>> relation) {
+    public static void connectFriend(List<String> friend, HashMap<String, List<String>> relation) {
         String friend1 = friend.get(0);
         String friend2 = friend.get(1);
 
@@ -46,7 +50,7 @@ public class Problem7 {
     }
 
     // 사람 별로 점수 정리해줄 hashMap 생성
-    public static void makescoremap(List<String> friend, HashMap<String, Integer> scoreMap) {
+    public static void makeScoreMap(List<String> friend, HashMap<String, Integer> scoreMap) {
         String friend1 = friend.get(0);
         String friend2 = friend.get(1);
 
