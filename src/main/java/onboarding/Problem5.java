@@ -6,7 +6,7 @@ import java.util.List;
 
 public class Problem5 {
     public static List<Integer> solution(int money) {
-        List<Integer> answer = new ArrayList<>();
+        List<Integer> answer = new ArrayList<>();       // 단순 연산
         if(money >= 50000) {
             answer.add(money/50000);
             money -= (50000*answer.get(0));

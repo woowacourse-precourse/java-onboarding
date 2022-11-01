@@ -6,7 +6,7 @@ public class Problem3 {
         for(int i = 1; i < number+1; i++) {
             String s = Integer.toString(i);
             for(int j = 0; j < s.length(); j++) {
-                if(s.charAt(j) == '3' || s.charAt(j) == '6' || s.charAt(j) == '9')
+                if(s.charAt(j) == '3' || s.charAt(j) == '6' || s.charAt(j) == '9')      // 3 6 9 나오면 ++
                     answer++;
             }
         }

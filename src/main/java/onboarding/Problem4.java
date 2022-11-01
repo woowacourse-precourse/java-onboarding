@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class Problem4 {
     public static String solution(String word) {
-        HashMap<Character, Character> map = new HashMap<>();
+        HashMap<Character, Character> map = new HashMap<>();        // a~z A~Z를 아스키코드값을 이용해 해쉬맵에 키값으로 청개구리 값 넣어놓는다.
         char a = 65;
         char b = 90;
         char c = 97;
