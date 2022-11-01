@@ -11,8 +11,8 @@ public class Problem6 {
         for (List<String> form : forms) {
             String nickname = form.get(1);
             List<String> neighborNickname = new ArrayList<>();
-            for (int i = 0; i < nickname.length() - 1; i++) {
-                String nickNameSubset = nickname.substring(i, i + 1);
+            for (int i = 0; i < nickname.length()-1; i++) {
+                String nickNameSubset = nickname.substring(i, i + 2);
                 neighborNickname.add(nickNameSubset);
             }
             neighborNicknameString.add(neighborNickname);
@@ -32,15 +32,17 @@ public class Problem6 {
                 }
             }
         }
-        System.out.println("indexList = " + indexList);
+
         System.out.println("neighborNicknameString = " + neighborNicknameString);
         indexList = indexList.stream().distinct().collect(Collectors.toList());
-
         for (int index : indexList) {
             answer.add(forms.get(index).get(0));
         }
+        answer.sort(String::compareTo);
         return answer;
     }
+
+    /* test method */
 
     public static void main(String[] args) {
 
@@ -53,5 +55,7 @@ public class Problem6 {
 
         System.out.println(solution(forms));
     }
+
+
 }
 
