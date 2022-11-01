@@ -33,7 +33,7 @@ public class Problem7 {
         HashMap<String, Integer> scoreMap = new HashMap<>();
 
         scoreMap = friendsListMap(user, friends, visitors);
-        System.out.println(scoreMap);
+        answer = sortValue(5, scoreMap);
 
         return answer;
     }
@@ -49,7 +49,7 @@ public class Problem7 {
 
             if (friendName == user)  // 본인일 때
                 continue;
-            else if (scoreMap.containsKey(friendName)) { // map에 이미 존재
+            if (scoreMap.containsKey(friendName)) { // map에 이미 존재
                 scoreMap.put(friendName, scoreMap.get(friendName)+10); // +10점
                 continue;
             }
@@ -62,12 +62,27 @@ public class Problem7 {
                 continue;
             }
             if (scoreMap.containsKey(friendName)) { // map에 이미 친구가 있을 떄
-                scoreMap.put(friendName, scoreMap.get(friendName) + 1);
+                scoreMap.put(friendName, scoreMap.get(friendName) + 1); // +1점
                 continue;
             }
             scoreMap.put(friendName, 1);
         }
 
         return scoreMap;
+    }
+
+    public static List<String> sortValue(int n, HashMap<String, Integer> scoreMap) {
+        List<String> recommendedFriend = new ArrayList<>(); // 추천 점수가 높은 순으로 저장 될 리스트
+
+        List<String > keySetList = new ArrayList<>(scoreMap.keySet()); // value 값을 기준으로 내림차순하여 순서대로 key 를 저장
+        Collections.sort(keySetList, ((o1, o2) -> (scoreMap.get(o2).compareTo(scoreMap.get(o1))))); // value 값을 기준으로 key를 내림차순 정렬
+
+        for (int i=0; i<keySetList.size(); i++) {
+            if (recommendedFriend.size()==n)  // 추천 친구를 최대 n만큼 추천
+                break;
+            recommendedFriend.add(keySetList.get(i));
+        }
+
+        return recommendedFriend;
     }
 }
