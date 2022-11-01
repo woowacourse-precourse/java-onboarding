@@ -24,3 +24,13 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+- user가 아는 친구목록 만들기
+- user가 아는 친구의 친구 목록 만들기
+- user가 아는 친구의 친구 목록에서 친구추천 제외 대상 솎아내기
+- user가 아는 친구의 친구 목록을 점수를 부여하여 맵에 저장
+- 방문 기록에서 친구 추천 제외 대상 등 솎아내기
+- 방문 기록에 저장된 친구 목록과 점수를 부여하여 맵에 저장
+- 추천 점수가 0인 경우 추천하지 않음
+- value 내림차순 정렬 및 같을 경우 key값 오름차순
+- 최대 5명인 경우와 그렇지 않은 경우를 나누어 결과 출력
