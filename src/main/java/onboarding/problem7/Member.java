@@ -12,13 +12,13 @@ public class Member {
     }
 
     public void upAcquaintancePoint(List<Member> userAndUserFriends) {
-        if (userAndUserFriends.contains(this)) {
+        if (!userAndUserFriends.contains(this)) {
             this.point += 10;
         }
     }
 
     public void upVisitorPoint(List<Member> userAndUserFriends) {
-        if (userAndUserFriends.contains(this)) {
+        if (!userAndUserFriends.contains(this)) {
             this.point += 1;
         }
     }
