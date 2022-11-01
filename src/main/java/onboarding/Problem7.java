@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -24,6 +25,15 @@ public class Problem7 {
     }
 
     private static List<String> getFriendOfUser(List<List<String>> friends, String user) {
+        List<String> friendOfUser = new ArrayList<>();
+        for (List<String> friend : friends) {
+            if (friend.get(0).equals(user)) {
+                friendOfUser.add(friend.get(1));
+            } else if (friend.get(1).equals(user)) {
+                friendOfUser.add(friend.get(0));
+            }
+        }
+        return friendOfUser;
     }
 
     private static List<String> getFriendOfFriendOfUser(List<String> friendsOfUser, List<List<String>> friends, String user) {
