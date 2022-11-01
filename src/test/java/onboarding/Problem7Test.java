@@ -2,13 +2,18 @@ package onboarding;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
+import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Stream;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -153,5 +158,51 @@ class Problem7Test {
 		final Set<String> expected = new HashSet<>(List.of("b", "heap"));
 
 		assertThat(result).isEqualTo(expected);
+	}
+
+	@ParameterizedTest(name = "solution test")
+	@MethodSource("generateInput")
+	void solutionTest(String user, List<List<String>> friends, List<String> visitors, List<String> expected) {
+		List<String> result = Problem7.solution(user, friends, visitors);
+
+		assertThat(result).isEqualTo(expected);
+	}
+
+	private static Stream<Arguments> generateInput() {
+		return Stream.of(
+				Arguments.of("jaejun", List.of(
+								List.of("jaejun", "seokjoo"),
+								List.of("hangeul", "seokjoo"),
+								List.of("wooteco", "pobi"),
+								List.of("pobi", "sanae"),
+								List.of("crong", "jaejun"),
+								List.of("crong", "safari"),
+								List.of("master", "safari")
+						), List.of("ppororo", "crong", "instar", "apple", "galaxy"),
+						List.of("hangeul", "safari", "apple", "galaxy", "instar")
+				),
+				Arguments.of("jaejun", List.of(
+								List.of("jaejun", "seokjoo"),
+								List.of("hangeul", "seokjoo"),
+								List.of("wooteco", "pobi"),
+								List.of("pobi", "sanae"),
+								List.of("crong", "jaejun"),
+								List.of("crong", "safari"),
+								List.of("master", "safari")
+						), List.of("ppororo", "safari", "jaejun", "apple", "galaxy"),
+						List.of("safari", "hangeul", "apple", "galaxy", "ppororo")
+				),
+				Arguments.of("aaa", List.of(
+								List.of("aaa", "bbb"),
+								List.of("ccc", "bbb"),
+								List.of("ddd", "fff"),
+								List.of("fff", "aaa"),
+								List.of("ccc", "aaa"),
+								List.of("ddd", "qqq"),
+								List.of("bbb", "ooo")
+						), List.of("ppororo", "safari", "jaejun", "apple", "galaxy"),
+						List.of("ddd", "ooo", "apple", "galaxy", "jaejun")
+				)
+		);
 	}
 }
