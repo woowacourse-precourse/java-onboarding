@@ -29,7 +29,9 @@ public class Problem2 {
 
 			if (decodedCryptogram.isEmpty()) { // 스택이 비어있을 때는 무조건 push
 				decodedCryptogram.push(cur);
-			} else {
+				continue;
+			}
+			if (!decodedCryptogram.isEmpty()) {
 				top = decodedCryptogram.peek();
 				if (cur != top && cur != duplicated) { // push 할 문자가 스택의 top 과 같지 않으면서 중복 문자도 아닐 때
 					decodedCryptogram.push(cur);
