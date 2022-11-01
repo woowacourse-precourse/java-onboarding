@@ -31,17 +31,13 @@ public class Problem2 {
     }
 
     public static boolean hasReduplication(String str, int index) {
-        if (str.charAt(index) == str.charAt(index + 1)) {
-            return true;
-        }
+        if (str.charAt(index) == str.charAt(index + 1)) return true;
         return false;
     }
 
     public static boolean hasReduplication(String str) {
         for (int index = 0; index < str.length() - 1; index++) {
-            if (str.charAt(index) == str.charAt(index + 1)) {
-                return true;
-            }
+            if (str.charAt(index) == str.charAt(index + 1)) return true;
         }
         return false;
     }
