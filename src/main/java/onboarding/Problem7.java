@@ -1,12 +1,12 @@
 package onboarding;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Problem7 {
     static class RecommendAlgorithm {
         List<String> userKnownMembers = new ArrayList<>();
         List<List<String>> userUnknownMembers = new ArrayList<>();
+        Map<String, Integer> membersScore = new HashMap<>();
         String user;
 
         public void setUser(String user) {
@@ -52,11 +52,34 @@ public class Problem7 {
             }
         }
 
+        // 2번 visitor
+        public void checkVisitors (List<String> visitors) {
+            visitors.stream()
+                    .filter(x -> !userKnownMembers.contains(x))
+                    .forEach(x -> setScore(x, "visitors"));
+        }
 
+        public List<String> memberSort (Map<String, Integer> score) {
+            List<String> result = new ArrayList<>(score.keySet());
+
+            Collections.sort(result, new Comparator<String>() {
+                @Override
+                public int compare(String o1, String o2) {
+                    return score.get(o2).compareTo(score.get(o1));
+                }
+            });
+
+            return result;
+        }
     }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        RecommendAlgorithm recommendAlgorithm = new RecommendAlgorithm();
+        recommendAlgorithm.setUser(user);
 
-        List<String> answer = Collections.emptyList();
+        recommendAlgorithm.checkUserFriends(friends);
+        recommendAlgorithm.checkVisitors(visitors);
+
+        List<String> answer = recommendAlgorithm.memberSort(recommendAlgorithm.membersScore);
 
         return answer;
     }
