@@ -27,6 +27,15 @@ class Problem1 {
         }
 
         //포비-최댓값 저장 기능
+        System.out.println(temp1[0]+","+temp1[1]+","+temp1[2]+","+temp1[3]);
+        System.out.println(max);
+        for(int i=0;i<4;i++) {
+            if (max < temp1[i]) {
+                max = temp1[i];
+                System.out.println(max);
+            }
+        }
+        int pobiMax = max;
 
         //크롱-페이지 계산 기능
 
