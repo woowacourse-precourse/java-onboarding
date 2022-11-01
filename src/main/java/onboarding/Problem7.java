@@ -32,8 +32,8 @@ public class Problem7 {
         List<String> friendList = new ArrayList<>();
 
         for (List<String> friend : friends) {
-            String idA = new String(friend.get(0));
-            String idB = new String(friend.get(1));
+            String idA = friend.get(0);
+            String idB = friend.get(1);
 
             //자신과 자신은 친구일까
             if (user.equals(idA)) {
@@ -48,8 +48,8 @@ public class Problem7 {
 
     public static Map<String, Integer> newFriend(List<List<String>> friends, List<String> friendList, Map<String, Integer> map) {
         for (List<String> friend : friends) {
-            String idA = new String(friend.get(0));
-            String idB = new String(friend.get(1));
+            String idA = friend.get(0);
+            String idB = friend.get(1);
             //A는 유저와 친구, B는 친구가 아니라면
             if (friendList.contains(idA) && !friendList.contains(idB)) {
                 plusPoints(idB, map, 10);
