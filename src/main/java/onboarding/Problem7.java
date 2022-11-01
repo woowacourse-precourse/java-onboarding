@@ -3,6 +3,16 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
+    public static Map<String, Integer> scoreVisitors(Map<String, Integer> candidates, List<String> visitors) {
+        for (String visitor : visitors) {
+            if (candidates.containsKey(visitor)) {
+                candidates.put(visitor, candidates.get(visitor) + 1);
+            }
+        }
+
+        return candidates;
+    }
+
     public static Map<String, Integer> findCandidates(String user, List<List<String>> friendRelation, List<String> visitors) {
         Map<String, Integer> candidates = new HashMap<>();
 
