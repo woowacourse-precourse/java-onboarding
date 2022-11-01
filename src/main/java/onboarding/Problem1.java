@@ -26,5 +26,24 @@ class Problem1 {
 
         return 0;
     }
+    public static int getMaxBetweenSumAndMultiply(String str){
+        int sum = 0, mul = 1;
+        int [] arry = new int[str.length()];
+
+        //한자리씩 int형으로 분해
+        for(int i = 0; i < str.length(); i++){
+            arry[i] = Integer.parseInt(str.substring(i,i+1));
+        }
+
+        for(int j = 0 ; j < str.length(); j++){
+            sum += arry[j];
+            mul *= arry[j];
+        }
+
+        if(sum > mul)
+            return sum;
+        else
+            return mul;
+    }
 }
 
