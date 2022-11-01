@@ -1,7 +1,6 @@
 package onboarding;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class Problem5 {
@@ -15,18 +14,10 @@ public class Problem5 {
             answer.add(count);
             money -= cash[i] * count;
 
-            if (money == 0){
-                break;
-            }
         }
 
         return answer;
     }
 
 
-    public static void main(String[] args) {
-//        int money = 50237;
-        int money = 15000;
-        System.out.println(solution(money));
-    }
 }

@@ -31,10 +31,5 @@ public class Problem4 {
     }
 
 
-    public static void main(String[] args) {
 
-        String word = "I love you";
-
-        System.out.println(solution(word));
-    }
 }

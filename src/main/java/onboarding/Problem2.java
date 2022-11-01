@@ -75,12 +75,4 @@ public class Problem2 {
     }
 
 
-    public static void main (String[] args) {
-
-        String cryptogram = "browoanoommnaon";
-        //String cryptogram = "zyelleyz";
-//        String cryptogram = "ddogga";
-
-        System.out.println("answer=" + solution(cryptogram));
-    }
 }

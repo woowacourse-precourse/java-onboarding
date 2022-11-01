@@ -21,7 +21,6 @@ public class Problem6 {
         
         for (List<String> crew : forms) {
             List<String> words = findWords(crew.get(1));
-            System.out.println("words = " + words);
             
             duplicatedNickIdx = isContainWord(wordsList,words,duplicatedNickIdx);
 
@@ -94,15 +93,5 @@ public class Problem6 {
         return newAnswer;
     }
 
-    public static void main(String[] args) {
-        List<List<String>> forms = List.of(
-                List.of("jm@email.com", "제이엠"),
-                List.of("jason@email.com", "제이슨"),
-                List.of("woniee@email.com", "워니"),
-                List.of("mj@email.com", "엠제이"),
-                List.of("nowm@email.com", "이제엠")
-        );
 
-        System.out.println(solution(forms));
-    }
 }

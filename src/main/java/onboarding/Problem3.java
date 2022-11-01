@@ -130,10 +130,5 @@ public class Problem3 {
 
 
 
-    public static void main(String[] args) {
-        int number = 10000;
-
-        System.out.println(solution(number));
-    }
 
 }
