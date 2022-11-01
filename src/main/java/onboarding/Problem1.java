@@ -51,7 +51,7 @@ class Problem1 {
             int sumPR = 0;  //PR은 pobi Right
             int productPR = 1;
 
-            while ( pobiRightPageNumber > 0 ) { //각 자리수들을 하나씩 분리(일의 자리로 만듦)시킨 후 배열에 저장
+            while ( pobiRightPageNumber > 0 ) { //각 자리수들을 하나씩 분리(일의 자리로 만듦)시킨 후 각 자리수의 합과 곱 구함
                 int pobiEachDigitNumber = pobiRightPageNumber%10;
                 sumPR += pobiEachDigitNumber;
                 productPR *= pobiEachDigitNumber;
@@ -67,7 +67,7 @@ class Problem1 {
             int sumCL = 0; //CL은 Crong Left
             int productCL = 1;
 
-            while ( crongLeftPageNumber > 0 ) { //각 자리수들을 하나씩 분리(일의 자리로 만듦)시킨 후 배열에 저장
+            while ( crongLeftPageNumber > 0 ) { //각 자리수들을 하나씩 분리(일의 자리로 만듦)시킨 후 각 자리수의 합과 곱 구함
                 int crongEachDigitNumber = crongLeftPageNumber%10;
                 sumCL += crongEachDigitNumber;
                 productCL *= crongEachDigitNumber;
@@ -82,7 +82,7 @@ class Problem1 {
             int sumCR = 0;//CR은 Crong Right
             int productCR = 1;
 
-            while ( crongRightPageNumber > 0 ) { //각 자리수들을 하나씩 분리(일의 자리로 만듦)시킨 후 배열에 저장
+            while ( crongRightPageNumber > 0 ) { //각 자리수들을 하나씩 분리(일의 자리로 만듦)시킨 후 각 자리수의 합과 곱 구함
                 int crongEachDigitNumber = crongRightPageNumber%10;
                 sumCR += crongEachDigitNumber;
                 productCR *= crongEachDigitNumber;
