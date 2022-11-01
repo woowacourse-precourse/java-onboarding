@@ -11,6 +11,17 @@ public class Problem4 {
         return answer;
     }
 
+    //  입력된 문자를 변환하는 메소드
+    private static Character convertChar(char input){
+        // Edge-Case
+        if(!verifyChar(input)) return input;
+
+        int index = Math.abs(ASCII_CODE_ZtoA - findCharIndex(input));
+        int base = getBase(input);
+
+        return (char) (base + index);
+    }
+
     //  입력값의 대소문자 형변환 메소드
     private static Character reverseCase(char input){
         if (checkLowerCase(input))
