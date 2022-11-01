@@ -8,6 +8,9 @@ package onboarding;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
+        while (!(answer = reduce(cryptogram)).equals(cryptogram)) {
+            cryptogram = answer;
+        }
         return answer;
     }
 
