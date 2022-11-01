@@ -1,6 +1,9 @@
 package onboarding;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -19,19 +22,19 @@ public class Problem6 {
     }
     public static List<String> getName(List<List<String>> forms) {
         List<String> list = new ArrayList<>();
-        for (int i = 0; i < forms.size(); i++) {
-            if(forms.get(i).get(1).length() > 1) {
-                list.add(forms.get(i).get(1));
+        for (List<String> form : forms) {
+            if (form.get(1).length() > 1) {
+                list.add(form.get(1));
             }
         }
         return list;
     }
     public static List<List<String>> checkNameDup(List<String> nameList) {
         List<List<String>> getNameChar = new ArrayList<>();
-        for (int i = 0; i < nameList.size(); i++) {
+        for (String s : nameList) {
             List<String> temp = new ArrayList<>();
-            for (int j = 2; j <= nameList.get(i).length(); j++) {
-                temp.add(nameList.get(i).substring(j - 2, j)); // endIndex 불포함
+            for (int j = 2; j <= s.length(); j++) {
+                temp.add(s.substring(j - 2, j)); // endIndex 불포함
             }
             getNameChar.add(temp);
         }
@@ -43,27 +46,14 @@ public class Problem6 {
 
         for (int i = 0; i < nameList.size(); i++) {
                 String nick = nameList.get(i);
-//                System.out.println("지금 이 nick 찾기 : " + nick);
                 for (int k = 0; k < dubPossibilityName.size(); k++) {
-                    for (String n : dubPossibilityName.get(k)){
+                    for (String n : dubPossibilityName.get(k)) {
                         if (nick.contains(n) && i != k) {
-//                            System.out.println("n" + n);
                             set.add(i);
                         }
                     }
             }
         }
         return set;
-    }
-
-    public static void main(String[] args) {
-
-        System.out.println(solution(List.of(
-                List.of("jm@email.com", "제이엠"),
-                List.of("jason@email.com", "제이슨"),
-                List.of("woniee@email.com", "워니"),
-                List.of("mj@email.com", "엠제이"),
-                List.of("nowm@email.com", "이제엠")
-        )));
     }
 }
