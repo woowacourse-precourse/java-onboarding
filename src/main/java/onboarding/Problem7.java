@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.Collections;
+import java.util.Hashtable;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -22,6 +23,20 @@ public class Problem7 {
             }else if(friendList.contains(list.get(1)) && !list.get(0).equals(user)) {
             	friendPoint.add(list.get(0));
             }
+        }
+        Hashtable <String, Integer> scoreBoard = new Hashtable<>();
+        for(String id : friendPoint){
+            if(!scoreBoard.keySet().contains(id)) {
+            	scoreBoard.put(id, 10);
+            }else {
+            	scoreBoard.put(id, scoreBoard.get(id) + 10);
+            }
+        }
+        for(String id : visitors){
+            if(friendList.contains(id))  continue;
+            if(!scoreBoard.keySet().contains(id)) scoreBoard.put(id, 1);
+            else
+            	scoreBoard.put(id, scoreBoard.get(id) + 1);
         }
     }
 }
