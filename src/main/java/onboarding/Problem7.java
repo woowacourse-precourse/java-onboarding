@@ -21,7 +21,13 @@ public class Problem7 {
 
         // user의 친구 중, score를 구하고자 하는 회원이 있으면 10점을 추가
         for (String friend : userFriend) {
-            calScore(friend);
+            calScore1(friend);
+        }
+        // user와 친구가 아닌 visitor 들만 1점 추가
+        for (String visitor : visitors) {
+            if (!userFriend.contains(visitor)) {
+                calScoreVisitors(visitor);
+            }
         }
 
         return answer;
@@ -58,7 +64,7 @@ public class Problem7 {
         fList.put(relation.get(1), temp2);
     }
 
-    private static void calScore(String person) {
+    private static void calScore1(String person) {
         List<String> temp = fList.get(person);
 
         for (String f : temp) {
@@ -67,5 +73,14 @@ public class Problem7 {
                 sList.put(f, score + 10);
             }
         }
+    }
+
+    private static void calScoreVisitors(String person) {
+        Integer score = sList.get(person);
+        if (score == null) {
+            score = 0;
+        }
+        score++;
+        sList.put(person, score);
     }
 }
