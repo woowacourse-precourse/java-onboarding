@@ -129,14 +129,14 @@ class Problem1Test {
     void findWinnerTest() {
         List<Integer> pobiWinCase = List.of(7, 1);
         int pobiWin = 1;
-        assertThat(problem1.findWinner(pobiWinCase)).isEqualTo(pobiWin);
+        assertThat(problem1.findWinner(pobiWinCase.get(0), pobiWinCase.get(1))).isEqualTo(pobiWin);
 
         List<Integer> crongWinCase = List.of(5, 6);
         int crongWin = 2;
-        assertThat(problem1.findWinner(crongWinCase)).isEqualTo(crongWin);
+        assertThat(problem1.findWinner(crongWinCase.get(0), crongWinCase.get(1))).isEqualTo(crongWin);
 
         List<Integer> noWinnerCase = List.of(3, 3);
         int noWinner = 0;
-        assertThat(problem1.findWinner(noWinnerCase)).isEqualTo(noWinner);
+        assertThat(problem1.findWinner(noWinnerCase.get(0), noWinnerCase.get(1))).isEqualTo(noWinner);
     }
 }
