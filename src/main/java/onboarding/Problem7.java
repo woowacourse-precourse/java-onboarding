@@ -5,34 +5,22 @@ import java.util.*;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
 
-        Map<String, Set<String>> friendsMap = makeFriendsMap(friends);
+        List<String> answer = new ArrayList<>();
 
+        Map<String, Set<String>> friendsMap = makeFriendsMap(friends);
         Map<String, Integer> recommendedScoreMap = makeRecommendedScoreMap(friendsMap);
 
         giveTenPointsToNearFriends(user, friendsMap, recommendedScoreMap);
+        giveOnePointToVisitors(user, visitors, friendsMap, recommendedScoreMap);
 
-        for(String visitor : visitors) {
-            if(visitor.equals(user) || friendsMap.get(user).contains(visitor))
-                continue;
+        List<Map.Entry<String, Integer>> recommendLists = makeSortedRecommendList(recommendedScoreMap);
 
-            if(recommendedScoreMap.containsKey(visitor))
-                recommendedScoreMap.put(visitor, recommendedScoreMap.get(visitor) + 1);
-            else {
-                recommendedScoreMap.put(visitor, 1);
+        int maxRecommendSize = (recommendLists.size() > 5)? 5 : recommendLists.size();
 
-            }
-        }
+        for(int i=0; i<maxRecommendSize; i++) {
 
-        List<Map.Entry<String, Integer>> recommendList = new LinkedList<>(recommendedScoreMap.entrySet());
-        recommendList.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
-
-
-        List<String> answer = new ArrayList<>();
-
-        for(int i=0; i<recommendList.size(); i++) {
-            if(i == 5) break;
-            String recommendedFriend = recommendList.get(i).getKey();
-            if(recommendList.get(i).getValue() == 0) break;
+            Map.Entry<String, Integer> recommended = recommendLists.get(i);
+            String recommendedFriend = recommended.getKey();
             answer.add(recommendedFriend);
         }
 
@@ -106,5 +94,52 @@ public class Problem7 {
 
             recommendedScoreMap.put(nearFriend, recommendedScore + 10);
         }
+    }
+
+    public static void giveOnePointToVisitors(String user, List<String> visitors, Map<String, Set<String>> friendsMap, Map<String, Integer> recommendedScoreMap) {
+
+        for(String visitor : visitors) {
+            updateRecommendScoreOfVisitor(user, visitor, friendsMap, recommendedScoreMap);
+        }
+    }
+
+    public static void updateRecommendScoreOfVisitor(String user, String visitor, Map<String, Set<String>> friendsMap, Map<String, Integer> recommendedScoreMap) {
+
+
+        if(!validVisitor(visitor, user, friendsMap)) return;
+
+        if(recommendedScoreMap.containsKey(visitor)) {
+            int recommendedScore = recommendedScoreMap.get(visitor);
+
+            recommendedScoreMap.put(visitor, recommendedScore + 1);
+            return;
+        }
+
+        recommendedScoreMap.put(visitor, 1);
+    }
+
+    public static boolean validVisitor(String visitor, String user, Map<String, Set<String>> friendsMap) {
+
+        Set<String> realFriendSet = friendsMap.get(user);
+        if(realFriendSet.contains(visitor))
+            return false;
+
+        if(visitor.equals(user))
+            return false;
+
+        return true;
+    }
+
+    public static List<Map.Entry<String, Integer>> makeSortedRecommendList(Map<String, Integer> recommendedScoreMap) {
+
+        List<Map.Entry<String, Integer>> recommendList = new LinkedList<>();
+
+        for(Map.Entry<String, Integer> recommended : recommendedScoreMap.entrySet()) {
+            if(recommended.getValue() > 0)
+                recommendList.add(recommended);
+        }
+        recommendList.sort(Map.Entry.comparingByValue(Comparator.reverseOrder()));
+
+        return recommendList;
     }
 }
