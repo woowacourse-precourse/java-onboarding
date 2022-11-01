@@ -15,4 +15,18 @@ class Problem1 {
             throw new IllegalArgumentException("입력값이 유효하지 않습니다.");
         }
     }
+
+    public static int findMaxScore(int page) {
+        int sumOfPageDigit = 0;
+        int multiplicationOfPageDigit = 1;
+
+        String pageNumber = String.valueOf(page);
+        for (int i = 0; i < pageNumber.length(); i++) {
+            int digit = pageNumber.charAt(i) - '0';
+            sumOfPageDigit += digit;
+            multiplicationOfPageDigit *= digit;
+        }
+
+        return Math.max(sumOfPageDigit, multiplicationOfPageDigit);
+    }
 }
