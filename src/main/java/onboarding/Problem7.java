@@ -4,6 +4,12 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        Map<String, List<String>> friendRelInfo = generateFriendRelInfo(friends);
+        Map<String, Integer> userScoreInfo = calScoreOfFriendRelWithUser(user, friendRelInfo);
+
+        System.out.println(friendRelInfo);
+        System.out.println(userScoreInfo);
+
         List<String> answer = Collections.emptyList();
         return answer;
     }
@@ -44,9 +50,29 @@ public class Problem7 {
      * 친구 추천 규칙 중, 사용자와 함께 아는 친구의 경우를 계산한 Map 반환
      */
     public static Map<String, Integer> calScoreOfFriendRelWithUser(
-            String user, List<List<String>> friends) {
+            String user, Map<String, List<String>> friendRelInfo) {
+        Map<String, Integer> userScoreInfo = new HashMap<>();
+        List<String> userFriends = friendRelInfo.remove(user);
 
-        return Collections.emptyMap();
+        for (String allUser : friendRelInfo.keySet()) {
+            userScoreInfo.put(allUser, 0);
+        }
+
+        for (String userFriend : userFriends) {
+            if (friendRelInfo.containsKey(userFriend)) {
+                List<String> friendRel = friendRelInfo.get(userFriend);
+
+                for (String f : friendRel) {
+                    if (f.equals(user)) {
+                        continue;
+                    }
+                    Integer userScore = userScoreInfo.get(f);
+                    userScoreInfo.put(f, userScore + 10);
+                }
+            }
+        }
+
+        return userScoreInfo;
     }
 
     /*
