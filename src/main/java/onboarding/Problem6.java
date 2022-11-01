@@ -8,6 +8,9 @@ import java.util.Map;
 import java.util.Set;
 
 public class Problem6 {
+
+	public static final int EXCEPTION = -1;
+
 	public static List<String> solution(List<List<String>> forms) {
 		List<String> answer = new ArrayList<>();
 		Map<String, String> map = new HashMap<>();
@@ -15,6 +18,10 @@ public class Problem6 {
 		Set<String> duplicateNicknames = new HashSet<>(); // 중복된 닉네임 set
 		char[] nicknameArr;
 		String email;
+
+		if (checkRestrictions(forms) == EXCEPTION) {
+			return answer;
+		}
 
 		// HashMap 초기화
 		for (List<String> form : forms) {
@@ -47,5 +54,25 @@ public class Problem6 {
 		}
 
 		return answer;
+	}
+
+	/**
+	 * 제한사항을 위배했는지 체크하는 메서드
+	 * @param forms
+	 * @return
+	 */
+	private static Integer checkRestrictions(List<List<String>> forms) {
+		if (!isCrewRangeValid(forms)) {
+			return EXCEPTION;
+		}
+		return 0;
+	}
+
+	// 크루의 수가 1명 이상 10,000명 이하가 아닌 경우 예외
+	private static boolean isCrewRangeValid(List<List<String>> forms) {
+		if (forms.size() < 1 || forms.size() > 10000) {
+			return false;
+		}
+		return true;
 	}
 }
