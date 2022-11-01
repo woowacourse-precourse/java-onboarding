@@ -10,6 +10,8 @@ import static java.lang.String.*;
 public class Problem6 {
 
     private static final String EMAIL_DOMAIN = "@email.com";
+    private static final String HANGUL_REGEX = ".*[ㄱ-ㅎㅏ-ㅣ가-힣]+.*";
+
     public static List<String> solution(List<List<String>> forms) {
         Map<String, ArrayList<String>> consecutiveLettersMap = new HashMap<>();
         List<String> crewEmailList = new ArrayList<>(); // answer
@@ -85,9 +87,7 @@ public class Problem6 {
 
     private static boolean isHangulNickname(String nickname){
         for(char letter : nickname.toCharArray()){
-            if(!valueOf(letter).matches(".*[ㄱ-ㅎㅏ-ㅣ가-힣]+.*")){
-                return false;
-            }
+            if(!valueOf(letter).matches(HANGUL_REGEX)) return false;
         }
         return true;
     }
