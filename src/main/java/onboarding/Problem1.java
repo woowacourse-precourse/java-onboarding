@@ -74,7 +74,7 @@ class Problem1 {
             if(exception1(pageNumber)){
                 return true;
             }
-        } 
+        }
         return false;
     }
 

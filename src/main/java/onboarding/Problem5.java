@@ -9,6 +9,7 @@ package onboarding;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.ArrayList;
 
 
 public class Problem5 {
@@ -18,6 +19,7 @@ public class Problem5 {
     }
     public static void main(String[] args){
         int answer = 15000;
+        List<Integer> list = new ArrayList<>();
         int[] money = {50000,10000,5000,1000,500,100,50,10,1};
         int[] result = new int[10];
 

@@ -4,12 +4,12 @@
 
 예외사항
 1, 입력값에 대한 예외처리
-2, 
+2,
  */
 package onboarding;
 
 public class Problem3 {
-  public static int solution(int number) {
+  public static int solution(int number){
         int answer = 0;
         int count = 0;
 
