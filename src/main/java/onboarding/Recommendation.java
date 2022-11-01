@@ -53,4 +53,22 @@ class Recommendation {
             users.put(visitors.get(i), value + 1);
         }
     }
+
+    void acquainScore() {
+        List<String> userFriend = userFriend();
+    }
+
+    List<String> userFriend() {
+        List<String> userFriend = new ArrayList<>();
+
+        for(int i = 0; i < friends.size(); i++) {
+            if(friends.get(i).get(0).equals(user)) {
+                userFriend.add(friends.get(i).get(1));
+            } else if(friends.get(i).get(1).equals(user)) {
+                userFriend.add(friends.get(i).get(0));
+            }
+        }
+
+        return userFriend;
+    }
 }
