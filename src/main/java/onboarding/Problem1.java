@@ -33,6 +33,19 @@ class Problem1 {
         return pageNum != firstPageNum && pageNum != lastPageNum;
     }
 
+    /**
+     * 페이지 번호의 각 자리 숫자를 모두 더한다.
+     * @param i 페이지 번호
+     * @return 페이지 번호 각 자리 숫자 합.
+     */
+    private int getSumByIndex(int i){
+        int sum = 0;
+        while(i != 0){
+            sum += i % 10;
+            i /= 10;
+        }
+        return sum;
+    }
 
 
 }
