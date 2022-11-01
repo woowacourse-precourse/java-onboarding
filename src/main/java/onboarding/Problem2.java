@@ -19,8 +19,8 @@ public class Problem2 {
         String answer = sb.toString();
         return answer;
     }
-    private static StringBuilder removeConsecutiveSameCharacter(StringBuilder sb, int i) {
-        return sb.delete(i-1, i+1);
+    private static StringBuilder removeConsecutiveSameCharacter(StringBuilder sb, int i, int n) {
+        return sb.delete(i, i+n);
     }
     private static boolean isConsecutiveSameCharacter(StringBuilder str, int i) {
         return str.charAt(i) == str.charAt(i+1);
