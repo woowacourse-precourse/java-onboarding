@@ -7,6 +7,9 @@ public class Problem7 {
         UserFriends userFriends = new UserFriends(user);
         FriendScores friendScores;
 
+        validFriends(friends);
+        validVisitors(visitors);
+
         for (int i = 0; i < friends.size(); i++) {
             userFriends.addUserFriend(user, friends.get(i));
         }
@@ -22,5 +25,15 @@ public class Problem7 {
         }
 
         return friendScores.getRecommend();
+    }
+
+    public static void validFriends(List<List<String>> friends) {
+        if (friends.size() < 1 || friends.size() > 10000)
+            throw new IllegalArgumentException("친구 목록의 크기는 1 이상 10,000 이하여야 합니다.");
+    }
+
+    public static void validVisitors(List<String> visitors) {
+        if (visitors.size() < 0 || visitors.size() > 10000)
+            throw new IllegalArgumentException("방문자 목록의 크기는 0 이상 10,000 이하여야 합니다.");
     }
 }

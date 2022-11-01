@@ -10,6 +10,9 @@ public class UserFriends {
     }
 
     public void addUserFriend(String user, List<String> friends) {
+        if(friends.size() != 2)
+            throw new IllegalArgumentException("friends의 원소의 개수는 2개여야 합니다.");
+
         int index = friends.indexOf(user);
 
         if (index >= 0) {
