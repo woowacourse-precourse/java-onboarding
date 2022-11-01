@@ -12,35 +12,49 @@ public class Problem7 {
 
         initVisitor(user, memberMap, visitors);
 
-        return getUserIdsByFriendProposalScoreLimit5(memberMap, user);
+        return getUsersByFriendProposalScoreLimit5(user, memberMap);
     }
 
     private static void initFriendShip(Map<String, Member> memberMap, List<List<String>> friends) {
         friends.forEach(friend -> {
-            Member member1 = getMember(memberMap, friend.get(0));
-            Member member2 = getMember(memberMap, friend.get(1));
+            Member member1 = getMember(friend.get(0), memberMap);
+            Member member2 = getMember(friend.get(1), memberMap);
             member1.friend(member2);
         });
     }
 
     private static void initVisitor(String user, Map<String, Member> memberMap, List<String> visitors) {
-        Member member = getMember(memberMap, user);
+        Member member = getMember(user, memberMap);
 
         visitors.forEach(userId -> {
-            Member visitor = getMember(memberMap, userId);
+            Member visitor = getMember(userId, memberMap);
             visitor.visit(member);
         });
     }
 
-    private static Member getMember(Map<String, Member> members, String userId) {
-        if (!members.containsKey(userId)) {
-            members.put(userId, Member.of(userId));
+    private static Member getMember(String user, Map<String, Member> members) {
+        if (!members.containsKey(user)) {
+            members.put(user, Member.of(user));
         }
-        return members.get(userId);
+        return members.get(user);
     }
 
-    private static List<String> getUserIdsByFriendProposalScoreLimit5(Map<String, Member> members, String userId) {
-        Member member = getMember(members, userId);
+    private static List<String> getUsersByFriendProposalScoreLimit5(String user, Map<String, Member> members) {
+        Member member = getMember(user, members);
+
+        calculateAcquaintances(member, members);
+
+        calculateVisitor(member, members);
+
+        return members.values().stream()
+                .filter(_member -> _member.getFriendProposalScore() != 0)
+                .sorted(Comparator.comparing(Member::getFriendProposalScore).reversed().thenComparing(Member::getUserId))
+                .limit(5)
+                .map(Member::getUserId)
+                .collect(Collectors.toList());
+    }
+
+    private static void calculateAcquaintances(Member member, Map<String, Member> members) {
 
         Set<Member> friends = member.getFriends();
 
@@ -50,19 +64,15 @@ public class Problem7 {
                         .filter(friends::contains)
                         .forEach(add -> _member.addFriendProposalScore(10))
                 );
+    }
 
+    private static void calculateVisitor(Member member, Map<String, Member> members) {
+        Set<Member> friends = member.getFriends();
         Map<Member, Integer> visitors = member.getVisitors();
 
         visitors.keySet().stream()
                 .filter(visitor -> !friends.contains(visitor))
                 .forEach(visitor -> visitor.addFriendProposalScore(visitors.get(visitor)));
-
-        return members.values().stream()
-                .filter(_member -> _member.getFriendProposalScore() != 0)
-                .sorted(Comparator.comparing(Member::getFriendProposalScore).reversed().thenComparing(Member::getUserId))
-                .limit(5)
-                .map(Member::getUserId)
-                .collect(Collectors.toList());
     }
 
     public static class Member {
