@@ -60,15 +60,18 @@ class Problem1 {
     }
 
     public static int fight(int pobiScore, int crongScore) {
+        int answer;
+
         if (crongScore > pobiScore) {
-            return 2;
+            answer = 2;
+            return answer;
         }
-        else if (pobiScore > crongScore) {
-            return 1;
+        if (pobiScore > crongScore) {
+            answer = 1;
+            return answer;
         }
-        else {
-            return 0;
-        }
+        answer = 0;
+        return answer;
     }
 
     public static boolean isValid(List<Integer> pages) {
@@ -78,16 +81,13 @@ class Problem1 {
         if ((pages.get(0) + 1) != pages.get(1)) {
             return false;
         }
-        return true;
+        return pages.get(0) % 2 != 1;
     }
 
     public static boolean isInRange(List<Integer> pages) {
         if (pages.get(0) <= 2 || pages.get(1) <= 2) {
             return false;
         }
-        if (pages.get(0) >= 399 || pages.get(1) >= 399) {
-            return false;
-        }
-        return true;
+        return pages.get(0) < 399 && pages.get(1) < 399;
     }
 }
