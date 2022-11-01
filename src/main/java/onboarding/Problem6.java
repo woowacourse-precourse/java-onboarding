@@ -41,6 +41,9 @@ public class Problem6 {
                 }
             }
         }
+
+        // 4. 제한될 닉네임 리스트를 오름차순으로 정렬.
+        Collections.sort(answer);
         return answer;
     }
 }
