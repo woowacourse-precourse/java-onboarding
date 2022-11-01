@@ -7,6 +7,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Problem6 {
+
     //email 유효성 검사
     public static boolean isValidEmail(String email) {
         String regex = "^[_a-z0-9-]+(.[_a-z0-9-]+)*@email.com";
