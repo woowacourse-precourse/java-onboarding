@@ -61,6 +61,12 @@ public class Problem2 {
         return isDeleted;
     }
 
+    /**
+     * 암호에서 연속으로 중복된 문자 제거 결과 반환 메서드
+     *
+     * @param cryptogram 암호
+     * @return 최종결과
+     */
     public static String solution(String cryptogram) {
         String answer = cryptogram;
         List<Character> cryptogramList;

@@ -36,6 +36,12 @@ public class Problem3 {
         return count;
     }
 
+    /**
+     * 369 게임의 결과 반환 메서드
+     *
+     * @param number 박수를 셀 숫자
+     * @return 최종결과
+     */
     public static int solution(int number) {
         int answer = 0;
 

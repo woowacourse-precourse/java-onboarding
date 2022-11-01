@@ -78,6 +78,13 @@ class Problem1 {
         }
     }
 
+    /**
+     * 페이지 번호 게임의 결과 반환 메서드
+     *
+     * @param pobi 게임 참가인원1
+     * @param crong 게임 참가인원2
+     * @return 최종결과
+     */
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         int pobiScore;

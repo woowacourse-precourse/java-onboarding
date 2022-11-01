@@ -32,6 +32,12 @@ public class Problem5 {
         return list;
     }
 
+    /**
+     * 최소 개수의 거스름돈을 구하는 결과 반환 메서드
+     *
+     * @param money 거스름돈으로 바꿀 돈
+     * @return 최종결과
+     */
     public static List<Integer> solution(int money) {
         List<Integer> answer = calcChange(money);
         return answer;

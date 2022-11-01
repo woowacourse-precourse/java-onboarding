@@ -84,6 +84,14 @@ public class Problem7 {
         return keySet;
     }
 
+    /**
+     * 친구추천하는 프로그램 결과 반환 메서드
+     *
+     * @param user 사용자
+     * @param friends 친구관계 List
+     * @param visitors 사용자 타임라인 방문 List
+     * @return 최종결과
+     */
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
         friendScoreMap = new TreeMap<>();

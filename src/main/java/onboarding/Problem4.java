@@ -63,6 +63,12 @@ public class Problem4 {
         return ch;
     }
 
+    /**
+     * 청개구리 사전을 바탕으로 바꾼 결과 반환 메서드
+     *
+     * @param word 사전을 바탕으로 바꿀 문자열
+     * @return 최종결과
+     */
     public static String solution(String word) {
         String answer = word;
         List<Character> charcterList = transStringToList(answer);

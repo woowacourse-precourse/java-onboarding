@@ -51,6 +51,12 @@ public class Problem6 {
         }
     }
 
+    /**
+     * 비슷한 닉네임을 사용하지 않게하는 프로그램 결과 반환 메서드
+     *
+     * @param forms 이메일과 닉네임 List
+     * @return 최종결과
+     */
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer;
 
