@@ -14,7 +14,7 @@ public class Problem7 {
             nonFriendScore.put(nonFriend, 0);
         }
 
-        Map<String, Integer> calcResult = calcScore(nonFriendScore, friends, friendList);
+        Map<String, Integer> calcResult = calcScore(nonFriendScore, friends, friendList, visitors);
 
         return answer;
     }
@@ -45,7 +45,7 @@ public class Problem7 {
         return List.of(friendList, nonFriendList);
     }
 
-    private static Map<String, Integer> calcScore(Map<String, Integer> nonFriendScore, List<List<String>> friendRelations, List<String> friendList) {
+    private static Map<String, Integer> calcScore(Map<String, Integer> nonFriendScore, List<List<String>> friendRelations, List<String> friendList, List<String> visitors) {
         for (List<String> relation : friendRelations) {
             for (String friend : friendList) {
                 if (relation.contains(friend)) {
@@ -54,6 +54,13 @@ public class Problem7 {
                 }
             }
         }
+
+        for (String visitor : visitors) {
+            if (nonFriendScore.containsKey(visitor)){
+                nonFriendScore.put(visitor, nonFriendScore.get(visitor)+1);
+            }
+        }
+
         return nonFriendScore;
     }
 }
