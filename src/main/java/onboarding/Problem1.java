@@ -9,8 +9,8 @@ class Problem1 {
         if(check(pobi)||check(crong))
         	return -1;
         
-        int a = Math.max(Math.max(cal(pobi.get(0),0),cal(pobi.get(0),1)),Math.max(cal(pobi.get(1),0),cal(pobi.get(1),1)));
-        int b = Math.max(Math.max(cal(crong.get(0),0),cal(crong.get(0),1)),Math.max(cal(crong.get(1),0),cal(crong.get(1),1)));
+        int a = max(pobi);
+        int b = max(crong);
         
         if(a>b)
         	answer = 1;
@@ -21,6 +21,10 @@ class Problem1 {
         
         return answer;
     }
+    public static int max(List<Integer> user) {
+    	return Math.max(Math.max(cal(user.get(0),0),cal(user.get(0),1)),Math.max(cal(user.get(1),0),cal(user.get(1),1)));
+    }
+    
     public static boolean check(List<Integer> list) {
     	if(list.get(0)+1 == list.get(1) && list.get(0)%2 == 1 && 1<=list.get(0) && list.get(0)<400)
     		return false;
