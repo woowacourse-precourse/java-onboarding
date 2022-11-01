@@ -72,4 +72,11 @@ public class Problem2 {
             checkModifyText = true;
         }
     }
+    public static boolean exceptionMethod(String cyptogram) {
+        if (isIncludedNotLowerCase(cyptogram) || stringLengthException(cyptogram)) {
+            System.out.println("잘못된 입력입니다.");
+            return true;
+        }
+        return false;
+    }
 }
