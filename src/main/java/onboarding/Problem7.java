@@ -1,12 +1,29 @@
 package onboarding;
 
+import onboarding.problem7.Crew;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
-        return answer;
+        Map<String, List<String>> friendMap = getFriendMap(friends);
+
+        List<String> userFriends = getUserFriends(friendMap, user);
+        List<String> userAndUserFriends = getUserAndUserFriends(userFriends, user);
+        List<String> acquaintances = getAcquaintances(friendMap, userFriends, user);
+        Map<String, Integer> acquaintancesPoint = getAcquaintancesPoint(acquaintances, userAndUserFriends);
+        Map<String, Integer> visitorsPoint = getVisitorsPoint(visitors, userAndUserFriends);
+
+        visitorsPoint
+                .forEach((key, value) -> acquaintancesPoint.merge(key, value, (value1, value2) -> value1 + value2));
+
+        return acquaintancesPoint.entrySet().stream()
+                .filter(entry -> entry.getValue() > 0)
+                .map(entry -> new Crew(entry.getKey(), entry.getValue()))
+                .sorted(Comparator.comparing(Crew::getPoint).reversed().thenComparing(Crew::getName))
+                .map(Crew::getName)
+                .collect(Collectors.toList());
     }
 
     public static Map<String, List<String>> getFriendMap(List<List<String>> friends) {
