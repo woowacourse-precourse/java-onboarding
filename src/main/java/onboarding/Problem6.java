@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -30,4 +31,13 @@ public class Problem6 {
         return nicknameAndCountHashMap;
     }
 
+    private static List<String> getDuplicatedList(HashMap<String, Integer> map) {
+        List<String> duplicatedList = new ArrayList<>();
+        for (String key : map.keySet()) {
+            if (map.get(key) > 1) {
+                duplicatedList.add(key);
+            }
+        }
+        return duplicatedList;
+    }
 }
