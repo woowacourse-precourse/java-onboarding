@@ -37,6 +37,11 @@ class Problem1 {
         return max;
     }
 
+    public static int compareValue(List<Integer> com){
+        int answer = Math.max(add(com),multiple(com));
+        return answer;
+
+    }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
