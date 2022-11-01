@@ -58,6 +58,12 @@ public class Problem7 {
     }
 
     private static HashSet<String> getVisitorsExceptFriend(List<String> visitors, List<String> friendsOfUser) {
-
+        HashSet<String> visitorExceptFriend = new HashSet<>();
+        for (String visitor : visitors) {
+            if (!friendsOfUser.contains(visitor)) {
+                visitorExceptFriend.add(visitor);
+            }
+        }
+        return visitorExceptFriend;
     }
 }
