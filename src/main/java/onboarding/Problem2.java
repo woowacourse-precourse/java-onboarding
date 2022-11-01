@@ -53,4 +53,11 @@ public class Problem2 {
     public static Boolean checkDuplicate(char pre, char current) {
         return pre == current;
     }
+
+    public static void initailValue(String cryptogram) {
+        checkCurrent = checkDuplicate(cryptogram.charAt(0), cryptogram.charAt(1));
+        if (!checkCurrent) {
+            sb.append(cryptogram.charAt(0));
+        }
+    }
 }
