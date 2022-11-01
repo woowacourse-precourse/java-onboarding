@@ -28,9 +28,10 @@ public class Problem2 {
             if (Objects.equals(arr[i], arr[i - 1])) {
                 stringList.remove(i - 1);
                 stringList.remove(i - 1);
-                String[] array = stringList.toArray(new String[stringList.size()]);
+                String[] array = stringList.toArray(new String[0]);
                 result = String.join("", stringList);
                 comp(array);
+                System.out.println(result);
                 return result;
             }
 
