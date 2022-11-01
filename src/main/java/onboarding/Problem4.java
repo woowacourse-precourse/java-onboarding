@@ -8,7 +8,6 @@ class Word {
   private String word;
 
   Word(String word) {
-    ValidityCheckerProb4 vc = new ValidityCheckerProb4(word);
     this.word = word;
   }
 
@@ -22,8 +21,13 @@ class ValidityCheckerProb4 {
 
   private static final int MINLIMIT = 1;
   private static final int MAXLIMIT = 1000;
+  private String word;
 
   ValidityCheckerProb4(String word) {
+    this.word = word;
+  }
+
+  void checkValidity(String word) {
     lengthValidityCheck(word);
   }
 
@@ -36,7 +40,6 @@ class ValidityCheckerProb4 {
 
 class Classifier {
 
-  private StringBuffer answer;
   private static final int UPPERSUM = 'A' + 'Z';
   private static final int LOWERSUM = 'a' + 'z';
   private static final int ISUPPERCASE = 0;
@@ -87,6 +90,8 @@ public class Problem4 {
 
   public static String solution(String word) {
     Word inputWord = new Word(word);
+    ValidityCheckerProb4 vc = new ValidityCheckerProb4(word);
+    vc.checkValidity(word);
     return (inputWord.getAnswer());
   }
 }
