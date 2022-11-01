@@ -65,4 +65,16 @@ public class Problem6 {
         }
         return false;
     }
+
+    public static boolean error(List<List<String>> forms){
+        for(int i=0; i<forms.size(); i++) {
+            if (forms.size() > 0 && forms.size() <= 10000 &&
+                    forms.get(i).get(0).contains("@email.com")&&forms.get(i).get(0).length()>10&&forms.get(i).get(0).length()<20 &&
+                    forms.get(i).get(1).length()>0&&forms.get(i).get(1).length()<20&&
+                    OnlyKoreanNickName(forms)){
+                return false;
+            }
+        }
+        return true;
+    }
 }
