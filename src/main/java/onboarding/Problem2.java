@@ -22,6 +22,14 @@ public class Problem2 {
         // 3. cryptogram 으로 matcher 변수 생성
         Matcher matcher = pattern.matcher(cryptogram);
 
+        // 4. 정규식과 matches 되는 동안 연속된 문자열 삭제
+        while(matcher.matches()){
+            cryptogram = cryptogram.replaceAll("(\\w)\\1","");
+            matcher = pattern.matcher(cryptogram);
+        }
+
+        answer = cryptogram;
+
         return answer;
     }
 }
