@@ -1,5 +1,7 @@
 package onboarding;
 
+import java.util.Map;
+
 public class Problem4 {
     private static final int MIN_WORD_SIZE = 1;
     private static final int MAX_WORD_SIZE = 1000;
@@ -12,6 +14,22 @@ public class Problem4 {
     public static String solution(String word) {
         String answer = "";
         return answer;
+    }
+
+    private static void putLowerCaseKeyAndValue(Map<Character, Character> cachedAlphabet) {
+        int lowercaseASCIIValue = 122;
+        for (int i = LOWERCASE_ASCII_START; i <= LOWERCASE_ASCII_END; i++) {
+            cachedAlphabet.put((char) i, (char) lowercaseASCIIValue);
+            lowercaseASCIIValue -= 1;
+        }
+    }
+
+    private static void putUpperCaseKeyAndValue(Map<Character, Character> cachedAlphabet) {
+        int uppercaseASCIIValue = 90;
+        for (int i = UPPERCASE_ASCII_START; i <= UPPERCASE_ASCII_END; i++) {
+            cachedAlphabet.put((char) i, (char) uppercaseASCIIValue);
+            uppercaseASCIIValue -= 1;
+        }
     }
     private static void wordRangeValidation(String word) {
         if (word.length() < MIN_WORD_SIZE || word.length() > MAX_WORD_SIZE) {
