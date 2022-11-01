@@ -1,8 +1,10 @@
 package onboarding;
 
+
+
 public class Problem2 {
     public static boolean isDuplicate(String cryptogram, int sIdx, int eIdx) {
-        if(cryptogram.charAt(sIdx) == cryptogram.charAt(eIdx)) {
+        if (cryptogram.charAt(sIdx) == cryptogram.charAt(eIdx)) {
             return true;
         }
         return false;
@@ -10,7 +12,7 @@ public class Problem2 {
 
     public static int getDupIdx(String crpytogram, int sIdx) {
         int eIdx = sIdx + 1;
-        while(eIdx < crpytogram.length() && isDuplicate(crpytogram, sIdx, eIdx)) {
+        while (eIdx < crpytogram.length() && isDuplicate(crpytogram, sIdx, eIdx)) {
             eIdx ++;
         }
 
@@ -24,13 +26,12 @@ public class Problem2 {
         int eIdx = 0;
 
         while (sIdx < len - 1) {
-            if(isDuplicate(decrpyto, sIdx, sIdx + 1)) {
+            if (isDuplicate(decrpyto, sIdx, sIdx + 1)) {
                 eIdx = getDupIdx(decrpyto, sIdx);
                 decrpyto = decrpyto.substring(0, sIdx) + decrpyto.substring(eIdx);
 
                 len = decrpyto.length();
-            }
-            else {  // 아닐 경우 계속 진행
+            } else {  // 아닐 경우 계속 진행
                 sIdx ++;
             }
         }
@@ -41,12 +42,14 @@ public class Problem2 {
     public static String solveCrypto(String cryptogram) {
         String decryptogram = decrypt(cryptogram);
 
-        while(!decryptogram.equals(cryptogram)) {
+        while (!decryptogram.equals(cryptogram)) {
             cryptogram = decryptogram;
             decryptogram = decrypt(cryptogram);
         }
+
         return decryptogram;
     }
+
 
     public static String solution(String cryptogram) {
         String answer = "answer";
