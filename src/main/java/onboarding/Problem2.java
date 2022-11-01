@@ -19,8 +19,7 @@ public class Problem2 {
      * @return 참 거짓
      */
     private static Boolean isThereMatch(String string) {
-        Boolean result = string.matches(".*([a-zA-Z])\\1+.*");
-        return result;
+        return string.matches(".*([a-zA-Z])\\1+.*");
     }
 
     /**
@@ -29,7 +28,6 @@ public class Problem2 {
      * @return 제거한 문자열
      */
     private static String replaceMethod(String string) {
-        String result = string.replaceAll("([a-zA-Z])\\1+", "");
-        return result;
+        return string.replaceAll("([a-zA-Z])\\1+", "");
     }
 }
