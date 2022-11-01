@@ -13,17 +13,11 @@ public class Problem5 {
         if(!constraints(money)) return result;
         result = intToList(money);
         result = makemoneyList(result);
-        //print(money,result);
+
         return inversemoneyList(result);
 
     }
-//    public static  void print(int money, List<Integer> result) {
-//        System.out.println("| money | result |");
-//        System.out.println("| --- | --- |");
-//        System.out.println("| "+money+" | "+result+" | ");
-//
-//
-//    }
+
     public static boolean constraints(int money){ // 제한사항
         if(money<1|| money>1000000){System.out.println("number가 1미만 혹은 1000000초과 입니다."); return false;}
         return true;

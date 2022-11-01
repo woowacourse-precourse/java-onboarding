@@ -17,16 +17,10 @@ public class Problem4 {
                 a = (char) Math.abs(219-num);
                 result += String.valueOf(a);}
         }
-        //print(word,result);
+
         return result;
     }
-//    public static  void print(String word, String result) {
-//        System.out.println("| word | result |");
-//        System.out.println("| --- | --- |");
-//        System.out.println("| "+word+" | "+result+" | ");
-//
-//
-//    }
+
     public static boolean constraints(String word){ // 제한사항
         if(word.length()<1|| word.length()>1000){System.out.println("word의 길이가 1미만 혹은 1000초과 입니다."); return false;}
         return true;

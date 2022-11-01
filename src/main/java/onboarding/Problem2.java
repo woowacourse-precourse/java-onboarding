@@ -22,17 +22,11 @@ public class Problem2 {
             cryptoList = newList;
         }
         for(String txt : cryptoList) result +=txt+"";
-       // print(cryptogram,result);
+
         return result;
 
     }
-//    public static  void print(String cryptogram, String result) {
-//        System.out.println("| cryptogram | result |");
-//        System.out.println("| --- | --- |");
-//        System.out.println("| "+cryptogram+" | "+result+" | ");
-//
-//
-//    }
+
     public static boolean constraints(String s){ // 제한사항
         if(s.length()<1 || s.length()>1000) {System.out.println("cryptogram 길이가 올바르지 않습니다."); return false;}
         for (int i =0; i<s.length();i++) {

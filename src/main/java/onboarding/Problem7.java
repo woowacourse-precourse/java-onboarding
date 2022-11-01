@@ -31,15 +31,11 @@ public class Problem7 {
                 answer.remove(i);
             }
         }
-       // print(user,friends,visitors,answer);
+
 
         return answer;
     }
-//    public static  void print(String user, List<List<String>> friends, List<String> visitors, List<String> result) {
-//        System.out.println("| user | friends | visitors | result |");
-//        System.out.println("| --- | --- | --- | --- |");
-//        System.out.println("| "+user+" | "+friends+" | "+" | "+visitors+" | "+result+" |");
-//    }
+
 
 
 
