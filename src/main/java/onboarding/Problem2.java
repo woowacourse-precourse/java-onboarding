@@ -6,7 +6,21 @@ import java.util.List;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
-        return answer;
+        List<IndexData> result;
+
+        while(true) {
+            result = findDuplicates(cryptogram);
+            // 더 이상 중복 문자가 없을 때 까지 반복한다.
+            if(result.isEmpty())
+                break;
+
+            while (!result.isEmpty()) {
+                IndexData indexData = result.remove(result.size() - 1);  // 뒤쪽 인덱스부터 제거해야 index범위가 뒤틀리지 않음
+                cryptogram = deleteString(cryptogram, indexData);
+            }
+        }
+
+        return cryptogram;
     }
 
     // 문자열에서 연속하는 중복 문자들을 발견하는 함수
