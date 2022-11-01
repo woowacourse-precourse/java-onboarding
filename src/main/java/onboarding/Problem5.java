@@ -6,6 +6,9 @@ import java.util.List;
 
 public class Problem5 {
     public static List<Integer> solution(int money) {
+
+        Money input = new Money(money);
+
         List<Integer> answer = new ArrayList<>();
         //제일 큰 단위부터 체크해야 조건에 맞음
         int[] unit = {50000, 10000, 5000, 1000, 500, 100, 50, 10, 1};
@@ -21,3 +24,27 @@ public class Problem5 {
         return answer;
     }
 }
+
+class Money {
+
+    private int money;
+
+    public Money(int money){
+        validateSize(money);
+        this.money = money;
+    }
+
+    private void validateSize(int money) {
+        if (money < 1) {
+            throw new IllegalArgumentException("0원 이하는 입력할 수 없습니다.");
+        }
+        If (money > 1000000) {
+            throw new IllegalArgumentException("1000000원 이하로 입력해주세요.");
+        }
+    }
+
+    public int getMoney() {
+        return this.money;
+    }
+}
+
