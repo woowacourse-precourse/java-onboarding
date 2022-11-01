@@ -31,15 +31,29 @@ public class Problem7 {
             String fd2 = friends.get(i).get(1);
             // 새로운 친구일 경우 객체에 넣어서 추가
             if (!personNum.containsKey(fd1)) {
-
+                personNum.put(fd1, num);
+                Person per = new Person();
+                per.name = fd1;
+                if (fd1.equals(user)) per.userself = true;
+                people.add(per);
+                num++;
             }
             if (!personNum.containsKey(fd2)) {
-
+                personNum.put(fd2, num);
+                Person per = new Person();
+                per.name = fd2;
+                if (fd2.equals(user)) per.userself = true;
+                people.add(per);
+                num++;
             }
-
+            int num1 = personNum.get(fd1);
+            int num2 = personNum.get(fd2);
+            people.get(num1).friendList.add(num2);
+            people.get(num2).friendList.add(num1);
 
             // 이미 친구인 사람 체크
-
+            if (fd1.equals(user)) people.get(num2).friendFlag = true;
+            if (fd2.equals(user)) people.get(num1).friendFlag = true;
         }
 
         //2. 친구의 친구 점수 처리 findFriends()
