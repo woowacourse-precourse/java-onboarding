@@ -11,6 +11,18 @@ class Problem1 {
     private static final int EXCEPTION = -1;
     private static final int INTERVAL = 1;
 
+    public static int getMax(List<Integer> player){
+        int leftSum = addDigits(player.get(0));
+        int rightSum = addDigits(player.get(1));
+        int leftProduct = multiplyDigits(player.get(0));
+        int rightProduct = multiplyDigits(player.get(1));
+
+        int leftMax = Math.max(leftSum, leftProduct);
+        int rightMax = Math.max(rightSum, rightProduct);
+
+        return Math.max(leftMax, rightMax);
+    }
+
     public static int addDigits(int pageNumber){
         int sum = 0;
         while(pageNumber > 0){
@@ -29,18 +41,6 @@ class Problem1 {
             pageNumber /= 10;
         }
         return product;
-    }
-
-    public static int getMax(List<Integer> player){
-        int leftSum = addDigits(player.get(0));
-        int rightSum = addDigits(player.get(1));
-        int leftProduct = multiplyDigits(player.get(0));
-        int rightProduct = multiplyDigits(player.get(1));
-
-        int leftMax = Math.max(leftSum, leftProduct);
-        int rightMax = Math.max(rightSum, rightProduct);
-
-        return Math.max(leftMax, rightMax);
     }
 
     public static boolean checkValidity(List<Integer> player){
