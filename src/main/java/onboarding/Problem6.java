@@ -9,6 +9,14 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
 
+        for(int i=0; i<forms.size(); i++){
+            String nickname = forms.get(i).get(1);
+            List<String> letters = cutTwoLettersEach(nickname);
+            answer = findEmailBySimilarNicname(i, forms, letters , answer);
+        }
+
+        answer = answer.stream().distinct().sorted().collect(Collectors.toList());
+
         return answer;
     }
 
