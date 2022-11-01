@@ -23,6 +23,7 @@ public class Problem6 {
             }
         }
         List<String> answer = new ArrayList<>(answerSet);
+        Collections.sort(answer);
         return answer;
     }
 }
