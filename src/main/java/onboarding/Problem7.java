@@ -12,6 +12,9 @@ public class Problem7 {
         // 1. 직접 친구(아는 친구X) 리스트 초기화
         directFriends = getDirectFriends(user, friends);
 
+        // 2. 모든 친구/ 점수 리스트 초기화 (모든 친구 = 직접 친구 + 아는 친구)
+        friendsScoreList = getFriendsScoreList(user, friends, visitors);
+
         return answer;
     }
 
@@ -24,5 +27,21 @@ public class Problem7 {
         }
 
         return directFriends;
+    }
+
+    // 2. 모든 친구/ 점수 리스트 초기화 (모든 친구 = 직접 친구 + 아는 친구)
+    static Map<String, Integer> getFriendsScoreList(String user, List<List<String>> friends, List<String> visitors){
+        for (List<String> friend : friends) {
+            if (friend.contains(user)) continue;
+
+            for (String node : friend) {
+                friendsScoreList.put(node, 0);
+            }
+        }
+
+        for (String visitor : visitors) {
+            if (!friendsScoreList.containsKey(visitors))friendsScoreList.put(visitor, 0);
+        }
+        return friendsScoreList;
     }
 }
