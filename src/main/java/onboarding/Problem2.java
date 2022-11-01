@@ -8,9 +8,17 @@ public class Problem2 {
 
     private static String decodeCryptogram(String cryptogram) {
         StringBuilder cryptogramBuilder = new StringBuilder(cryptogram);
-        int cryptogramLength = decodeCharacters(cryptogramBuilder);
+        int cryptogramLength = 0;
+        while (checkDecodeNotFinished(cryptogramBuilder, cryptogramLength)) {
+            cryptogramLength = decodeCharacters(cryptogramBuilder);
+        }
 
         return cryptogramBuilder.toString();
+    }
+
+    private static boolean checkDecodeNotFinished(StringBuilder cryptogramBuilder, int cryptogramLength) {
+
+        return cryptogramLength != cryptogramBuilder.length();
     }
 
     private static int decodeCharacters(StringBuilder cryptogramBuilder) {
