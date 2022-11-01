@@ -26,7 +26,7 @@ public class Problem2 {
         List<String> list = Arrays.asList(array);
 
 
-        // 기능1. 연속하는 중복 문자 삭제 기능
+        // 1. 연속하는 중복 문자 삭제 기능
         while (check) {
             check = false;
             List<String> current = new ArrayList<>();
@@ -50,7 +50,7 @@ public class Problem2 {
 
         }
 
-        // 기능2. 결과 출력 기능
+        // 2. 결과 출력 기능
         // StringBuilder 선언
         StringBuilder sb = new StringBuilder();
         // 초기화
