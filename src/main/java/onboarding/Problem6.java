@@ -12,6 +12,7 @@ public class Problem6 {
 
 	public static final int EMAIL = 0;
 	public static final int NICKNAME = 1;
+	public static final int SPLIT_UNIT = 2;
 
 	public static final int EXCEPTION = -1;
 
@@ -87,11 +88,9 @@ public class Problem6 {
 	 * @param splitNicknames
 	 */
 	private static void initSplitNicknames(Map<String, String> map, List<String> splitNicknames) {
-		char[] nicknameArr;
 		for (String nickname : map.values()) {
-			nicknameArr = nickname.toCharArray();
-			for (int i = 0; i < nicknameArr.length - 1; i++) {
-				splitNicknames.add(Character.toString(nicknameArr[i]) + nicknameArr[i + 1]);
+			for (int i = 0; i < nickname.length() - 1; i++) {
+				splitNicknames.add(nickname.substring(i, i + SPLIT_UNIT));
 			}
 		}
 	}
