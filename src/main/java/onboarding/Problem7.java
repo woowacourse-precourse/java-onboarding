@@ -134,6 +134,50 @@ class RelationPro7 {
   }
 }
 
+class ScorePro7 {
+
+  public final static int SCORE_ZERO = 0;
+  public final static int SCORE_ONE = 1;
+  public final static int SCORE_TEN = 10;
+
+  private static Map<String, Integer> scoreList;
+
+  public static Map<String, Integer> getScoreList() {
+    return scoreList;
+  }
+
+  public ScorePro7(String user, RelationPro7 relation, List<String> visitors) {
+    scoreList = new HashMap<>();
+    scoreAddTen(user, relation);
+    scoreAddOne(visitors);
+  }
+
+  public static void scoreAddTen(String user, RelationPro7 relation) {
+    if (RelationPro7.getRelation().containsKey(user)) {
+      for (String mutual : RelationPro7.getRelation().get(user)) {
+        for (String unknown : RelationPro7.getRelation().get(mutual)) {
+          if (!unknown.equals(user)) {
+            if (!scoreList.containsKey(unknown)) {
+              scoreList.put(unknown, SCORE_ZERO);
+            }
+            int score = scoreList.get(unknown);
+            scoreList.put(unknown, score + SCORE_TEN);
+          }
+        }
+      }
+    }
+  }
+
+  public static void scoreAddOne(List<String> visitors) {
+    for (String visitor : visitors) {
+      if (!scoreList.containsKey(visitor)) {
+        scoreList.put(visitor, SCORE_ZERO);
+      }
+      int score = scoreList.get(visitor);
+      scoreList.put(visitor, score + SCORE_ONE);
+    }
+  }
+}
 
 public class Problem7 {
 
