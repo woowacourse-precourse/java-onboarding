@@ -1,5 +1,9 @@
 package onboarding;
 
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
@@ -48,5 +52,9 @@ public class Problem4 {
             }
         }
         return answer;
+    }
+
+    private static boolean isStringUpperCase(String str) {
+        return str.equals(str.toUpperCase());
     }
 }
