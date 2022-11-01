@@ -30,5 +30,16 @@ class Problem1 {
     public static int findMaxPage(List<Integer> name) {
         return Math.max(findMaxValue(name.get(LEFT_PAGE)), findMaxValue(name.get(RIGHT_PAGE)));
     }
+    public static int compareMaxValue(List<Integer> pobi, List<Integer> crong) {
+        int pobiMaxValue = findMaxPage(pobi);
+        int crongMaxValue = findMaxPage(crong);
+        if (pobiMaxValue > crongMaxValue) {
+            return POBI_WIN;
+        }
+        if (pobiMaxValue < crongMaxValue) {
+            return CRONG_WIN;
+        }
+        return DRAW;
+    }
 }
 
