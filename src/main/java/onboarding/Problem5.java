@@ -23,4 +23,11 @@ public class Problem5 {
         }
         return result;
     }
+
+    public static boolean error(int money){
+        if(money>=1&& money<1000000){
+            return false;
+        }
+        return true;
+    }
 }
