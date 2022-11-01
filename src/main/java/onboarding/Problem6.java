@@ -15,6 +15,23 @@ import java.util.*;
  * result는 이메일에 해당하는 부분의 문자열을 오름차순으로 정렬하고 중복은 제거한다.<p>
  */
 public class Problem6 {
+    /**
+     * String, HashMap -> ArrayList
+     * 문자열, 해시맵을 받아 리스트를 반환하는데,
+     * 해시맵의 값 == 문자열 이라면
+     * 해당 값을 리스트에 담아 반환한다.
+     * */
+    public static List<String> getRawAnswer(String str, Map<String, String> map){
+        List<String> rawAnswer = new ArrayList<>();
+        for (String key : map.keySet()) {
+            String value = map.get(key);
+            if (value.contains(str)) {
+                rawAnswer.add(key);
+            }
+        }
+        return rawAnswer;
+    }
+
 
     /**
      * List<String> 형태의 리스트를 중복 제거하고, 문자열 정렬해주는 메소드
@@ -78,7 +95,6 @@ public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
         Map<String, String> mappedForms = toMappedForms(forms);
-        List<String> answer = new ArrayList<>();
         List<String> dividedNameList = new ArrayList<>();
         List<String> overlappedNameList = new ArrayList<>();
 
@@ -90,19 +106,17 @@ public class Problem6 {
         // 리스트에 있는 나누어진 이름들 중, 중복되는 것들을 찾아 그것을 담는다.
         overlappedNameList = getOverlappedNameList(dividedNameList);
 
+        // 정제되지 않은 상태의 답을 얻는다.
+        List<String> rawAnswer = new ArrayList<>();
+
         // 중복된 것들이 담겨 있는 리스트에 대해서,
         for (String overlappedName : overlappedNameList) {
-            // 입력받은 폼 데이터에서 그 중복된 것이 담겨있다면 답에다 넣는다.
-            for (String email : mappedForms.keySet()) {
-                String name = mappedForms.get(email);
-                if (name.contains(overlappedName)) {
-                    answer.add(email);
-                }
-            }
+            // 입력받은 폼 데이터에서 그 중복된 것이 담겨있다면 이메일 값을 답에다 넣는다.
+            rawAnswer = getRawAnswer(overlappedName, mappedForms);
         }
 
         // 중복이 제거되고, 정렬된 데이터를 최종 답으로 정제한다.
-        answer = getRefinedAnswer(answer);
+        List<String> answer = rawAnswer;
 
         return answer;
     }
