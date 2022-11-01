@@ -5,35 +5,50 @@ import java.util.Collections;
 import java.util.List;
 
 public class Problem5 {
+    private static Integer calculateAmount(int iterator, int oldAmount) {
+        int newAmount;
+        //금액: 1
+        if (iterator == 8) {
+            newAmount = 1;
+        }
+        //금액: 50000,5000,500,50
+        else if (iterator % 2 == 0) {
+            newAmount = oldAmount / 2;
+        }
+        //금액: 10000,1000,100,10
+        else {
+            newAmount = oldAmount / 5;
+        }
+        return newAmount;
+    }
+
+    private static List<Integer> conversion(int amount, int money) {
+        int result;
+        //해당 금액으로 변환될 수 있다면 answer에 갯수 추가, or 0추가
+        if (money >= amount) {
+            result = money / amount;
+            money = money % amount;
+        } else {
+            result = 0;
+        }
+        return List.of(money, result);
+    }
+
     public static List<Integer> solution(int money) {
         List<Integer> answer = new ArrayList<>();
-        int divided_result;
-        int money_result = money;
-        int divisor = 100000;
+        int amount = 100000;
         for (int i = 0; i < 9; i++) {
-            //금액: 1
-            if (i == 8)
-                divisor = 1;
-                //금액: 50000,5000,500,50
-            else if (i % 2 == 0)
-                divisor = divisor / 2;
-                //금액: 10000,1000,100,10
-            else
-                divisor = divisor / 5;
-
-            //해당 금액으로 변환될 수 있다면 answer에 갯수 추가, or 0추가
-            if (money_result >= divisor) {
-                divided_result = money_result / divisor;
-                money_result = money_result % divisor;
-                answer.add(divided_result);
-            } else {
-                answer.add(0);
-            }
-
+            amount = calculateAmount(i, amount);
+            List<Integer> result = conversion(amount, money);
+            money = result.get(0);
+            answer.add(result.get(1));
         }
-        // 50000/10000/5000/1000/500/100/50/10/1
         return answer;
     }
 
+    public static void main(String args[]) {
+        int money = 50237;
+        System.out.println(solution(money));
+    }
 
 }
