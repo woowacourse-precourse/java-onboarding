@@ -22,5 +22,19 @@ class Problem1 {
         }
         return true;
     }
+
+    public static int maxNumForAPage(int page) {
+        int sum = 0;
+        int multiply = 1;
+
+        while (page != 0) {
+            int number = page % 10;
+            page /=10;
+            sum += number;
+            multiply *= number;
+        }
+
+        return Math.max(sum, multiply);
+    }
 }
 
