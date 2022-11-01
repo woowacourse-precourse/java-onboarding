@@ -10,12 +10,24 @@ public class Problem7 {
         return answer;
     }
 
+	private static class RecommendedScore {
+		private final static int DEFAULT_SCORE = 0;
+		private int score;
+
+		RecommendedScore() {
+			this.score = DEFAULT_SCORE;
+		}
+	}
+
 	private static class User {
 		private final String name;
-		private final List<User> friendList = new ArrayList<>();
+		private final RecommendedScore recommendedScore;
+		private final List<User> friendList;
 
 		public User(String name) {
 			this.name = name;
+			this.recommendedScore = new RecommendedScore();
+			this.friendList = new ArrayList<>();
 		}
 
 		public static void addFriendRelation(User firstUser, User secondUser) {
