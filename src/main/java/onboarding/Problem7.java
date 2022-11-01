@@ -65,7 +65,7 @@ public class Problem7 {
             if(userKnowFriends.contains(friend)){
                 int recommendationFriendIndex = notOperator(i);
                 recommendationFriend = friendship.get(recommendationFriendIndex);
-                if(recommendationFriend.equals(user)){
+                if(recommendationFriend.equals(user) || userKnowFriends.contains(recommendationFriend)){
                     recommendationFriend = null;
                 }
             }
