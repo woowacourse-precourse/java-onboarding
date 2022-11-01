@@ -7,6 +7,12 @@
 
 사용자 아이디 user와 친구 관계 정보 friends, 사용자 타임 라인 방문 기록 visitors가 매개변수로 주어질 때, 미스터코의 친구 추천 규칙에 따라 점수가 가장 높은 순으로 정렬하여 최대 5명을 return 하도록 solution 메서드를 완성하라. 이때 추천 점수가 0점인 경우 추천하지 않으며, 추천 점수가 같은 경우는 이름순으로 정렬한다.
 
+
+1. User 객체를 생성한다.
+2. 주어진 친구 관계정보 friends를 바탕으로 User의 친구들을 객체에 담는다.
+3. User의 friends를 바탕으로 User의 친구의 친구들을 구하여 친구 추천 점수를 User의 friendRecommendScore에 담는다.
+4. 매개변수 visitors를 바탕으로 User의 방문자들을 User의 friendRecommendScore에 담는다.
+5. 친구 추천 점수, 동일시 알파뱃 순으로 정렬하여 최대 5명을 반환한다.
 ### 제한사항
 
 - user는 길이가 1 이상 30 이하인 문자열이다.
