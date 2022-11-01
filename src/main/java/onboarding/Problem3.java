@@ -36,7 +36,10 @@ public class Problem3 {
 
 
     public static int solution(int number) {
-        int answer = 0;
+
+        Problem3 agent = new Problem3();
+
+        int answer = agent.getClaps(number);
         return answer;
     }
 }
