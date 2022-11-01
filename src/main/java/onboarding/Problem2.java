@@ -7,7 +7,7 @@ public class Problem2 {
             boolean check=false;
             boolean check1=false;
             for(int i=0;i<sb.length()-1;i++){
-                while(sb.charAt(i)==sb.charAt(i+1)) {
+                while(sb.charAt(i)==sb.charAt(i+1)){
                     sb = sb.deleteCharAt(i + 1);
                     check = true;
                     check1 = true;
