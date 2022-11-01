@@ -26,5 +26,9 @@ public class Problem6 {
                 hashMap.put(key, form.get(0)); // 위의 if문으로 판별 후 중복 조건에 걸릴 시 HashSet으로 생성된 emails에 저장
             }
         }
+        List<String> duplicate = emails.stream().sorted().collect(Collectors.toList()); // 중복된 닉네임들의 email을 추리고, 오름차순 정렬
+        List<String> answer = List.of(duplicate.toArray(new String[0]));
+
+        return answer;
     }
 }
