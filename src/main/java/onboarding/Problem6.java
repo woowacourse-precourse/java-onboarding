@@ -38,4 +38,14 @@ public class Problem6 {
         sortedWord.add(word2);
         return sortedWord;
     }
+
+    public static boolean isRepeated(String word1, String word2) {
+        List<String> sortedWord = sortedByWordLength(word1, word2);
+
+        if (checkRepeated(sortedWord.get(0), sortedWord.get(1))) {
+            return true;
+        }
+
+        return false;
+    }
 }
