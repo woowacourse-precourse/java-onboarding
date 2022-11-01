@@ -7,6 +7,9 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        if (!error(pobi)||!error(crong)){
+            return -1;
+        }
         List<Integer> pobiLeftSlice = slice(pobi.get(0));
         List<Integer> pobiRightSlice = slice(pobi.get(1));
         List<Integer> crongLeftSlice = slice(crong.get(0));
@@ -65,5 +68,16 @@ class Problem1 {
             }
         }
         return max;
+    }
+    
+    public static boolean error(List<Integer> list){
+        if(list.get(0)+1 != list.get(1)){ //연속된 페이지인지 판별하는 기능
+            return false;
+        } else if (list.get(0)==1 || list.get(1)==400) { //시작 면/마지막 면을 판별하는 기능
+            return false;
+        }else if (list.get(0)%2 == 0 || list.get(1)%2==1){ //왼쪽-홀수/오른쪽-짝수 임을 판별하는 기능
+            return false;
+        }
+        return true;
     }
 }
