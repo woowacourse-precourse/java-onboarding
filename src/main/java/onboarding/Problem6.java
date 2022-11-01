@@ -32,4 +32,18 @@ public class Problem6 {
     private static List<String> removeOverlap(List<String> list){
     	return list.stream().distinct().collect(Collectors.toList());
     }
+    
+    private static List<String> getListMaximumSizeOnMap(Map<String, List<String>> map){
+    	int maxSize = 0;
+    	List<String> list = List.of();
+    	
+    	for(String s : map.keySet()) {
+    		if(maxSize < map.get(s).size()) {
+    			maxSize = map.get(s).size();
+    			list = map.get(s);
+    		}
+    	}
+    	
+    	return list;
+    }
 }
