@@ -18,7 +18,7 @@ public class Problem6 {
         Problem6 p6 = new Problem6();
         HashMap<String, String> nameMap = p6.initNameMap(forms);
         HashMap<String, Boolean> answerMap = p6.initAnswerMap(forms);
-        HashMap<String, Integer> duplicateCandidate = p6.getDuplicateCandidate(nameMap);
+        List<String> duplicateCandidate = p6.getDuplicateCandidate(nameMap);
 
         HashMap<String, Boolean> map = p6.getAnswerMap(answerMap, nameMap, duplicateCandidate);
 
@@ -45,17 +45,9 @@ public class Problem6 {
         return answerMap;
     }
 
-    private List<String> removeOwnCandidate(String value, List duplicateCandidate) {
-        ArrayList<String> ownCandidate = new ArrayList<>();
-        for (String own : getDivide2WordList(ownCandidate, value)) {
-            duplicateCandidate.remove(own);
-        }
-        return duplicateCandidate;
-    }
-
     private Boolean compare(String value,List<String> duplicateCandidate) {
         for (String compareWord : duplicateCandidate) {
-            if (compareEachAlphabet(s, compareWord)) {
+            if (compareEachAlphabet(value, compareWord)) {
                 return Boolean.TRUE;
             }
         }
@@ -92,12 +84,22 @@ public class Problem6 {
         return Boolean.FALSE;
     }
 
-    public List<String> getDuplicateCandidate(HashMap<String, String> nameMap) {
-        HashMap<String, Integer> candidates = new HashMap<>();
-        for (String name : nameMap.values()) {
-            candidates = getDivide2WordList(candidates, name);
+    private List<String> getCandidateList(HashMap<String, Integer> candidateMap) {
+        ArrayList<String> candidates = new ArrayList<>();
+        for (String key : candidateMap.keySet()) {
+            if (candidateMap.get(key) > 1) {
+                candidates.add(key);
+            }
         }
         return candidates;
+    }
+
+    public List<String> getDuplicateCandidate(HashMap<String, String> nameMap) {
+        HashMap<String, Integer> candidateMap = new HashMap<>();
+        for (String name : nameMap.values()) {
+            candidateMap = getDivide2WordList(candidateMap, name);
+        }
+        return getCandidateList(candidateMap);
     }
 
     public HashMap<String, Boolean> initAnswerMap(List<List<String>> forms) {
