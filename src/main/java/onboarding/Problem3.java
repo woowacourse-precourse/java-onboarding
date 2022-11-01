@@ -5,8 +5,8 @@ public class Problem3 {
     private static final int MAX_LENGTH = 10000;
     private static final String[] CLAPNUMS = {"3", "6", "9"};
     public static int solution(int number) {
-        int answer = 0;
-        return answer;
+        numberRangeValidation(number);
+        return getAnswer(number, CLAPNUMS);
     }
 
     private static int getAnswer(int number, String[] clapnums) {
