@@ -109,7 +109,6 @@ public class Problem7 {
         Friends_score = friendslist_set(ls, userfriends_set(friends, user));
 
         answer = get_result(visitorsAdd_score(Friends_score, visitors, friends, userfriends_set(friends, user)));
-
         return answer;
     }
 }
