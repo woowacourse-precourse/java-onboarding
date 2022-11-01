@@ -14,7 +14,7 @@ public class Cryptogram {
     }
 
     private void isValidCryptogram(String value) {
-        if (!value.equals(value.toLowerCase()))
+        if (!value.matches("^[a-z]*$"))
             throw new IllegalArgumentException("cryptogram은 알파벳 소문자로만 이루어져 있어야 합니다.");
 
         if (value.length() < 1 || value.length() > 1000)
