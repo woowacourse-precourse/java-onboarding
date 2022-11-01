@@ -60,8 +60,9 @@ public class Problem2 {
         if(initSize == count){
             //최종 word 리턴
             return word;
+        } else { //변화가 있으면 재귀반복을 통해 다시 검사해서 줄여나간다.
+            return removeString(word);
         }
-        return word;
     }
 
 }
