@@ -3,6 +3,7 @@ package onboarding;
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
+        answer = getFrogWord(word);
         return answer;
     }
 
@@ -23,5 +24,17 @@ public class Problem4 {
             frogChar = (char)('z' - target + 'a');
         }
         return frogChar;
+    }
+
+    /**
+     * word를 청개구리식으로 변환된 문자열로 변환
+     */
+    public static String getFrogWord(String word){
+        StringBuilder stringBuilder = new StringBuilder();
+        for(int i = 0; i<word.length(); i++){
+            Character frogChar = convertToFrogChar(word.charAt(i));
+            stringBuilder.append(frogChar);
+        }
+        return stringBuilder.toString();
     }
 }
