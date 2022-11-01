@@ -21,3 +21,37 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+# 개발 기록
+
+## 기능 목록
+
+개요
+1. 문자열이 특정한 문자열을 갖고 있는지 확인하는 메소드
+   - 정규식을 활용하자
+   - boolean 값을 반환하자
+2. 문자열에서 특정한 문자열을 삭제하는 메소드
+   - replaceAll() 메소드와 정규식을 활용하자
+   - String 값을 반환하자
+
+### 1. public boolean isStringContainingRegularExpression(String string, String regex)
+- 문자열이 정규식 표현을 포함하는지 확인하는 메소드
+- 기능 : 정규식 표현을 포함하면 `true`, 포함하지 않으면 `false`를 반환
+
+### 2. public String deleteStringByRegularExpression(String string, String regex)
+- 문자열에서 정규식 표현에 해당하는 문자열을 삭제하는 메소드
+- 기능 : 문자열에서 정규식 표현에 해당하는 문자열을 모두 ""으로 바꾸고 반환한다.
+
+## Test Code
+### 1. void isStringContainingRegularExpressionTest()
+- regex = "(.*)(\w)\2{1,}(.*)"
+- 거짓 테스트 입력 시 `false` 반환 확인
+  - 테스트 : "brown", "", "ab"
+- 참 테스트 입력 시 `true` 반환 확인
+  - 테스트 : "browoanoommnaon", "ababb", ""
+   
+### 2. void deleteStringByRegularExpressionTest()
+- regex = "(\w)\1{1,}"
+- 테스트 입력 시 연속되는 중복 문자 제거 확인
+  - 테스트 : "browoanoommnaon", "aabbb", "brown"
+  - 정답 : "browoannaon", "", "brown"
