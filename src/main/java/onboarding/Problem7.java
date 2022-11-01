@@ -84,6 +84,7 @@ class Recommendation{
     final String THE_USER_NAME;
     final User THE_USER;
     final HashMap<String, User> USERS;
+    List<User> FriendScore=new ArrayList<>();
     Recommendation(String userName, User user, HashMap<String, User> users){
         THE_USER_NAME=userName;
         THE_USER=user;
@@ -131,6 +132,13 @@ class Recommendation{
             }
             user=USERS.get(visitor);
             user.updateVisitScore();
+        }
+    }
+    void makeFriendScore(){
+        List<String> friends=new ArrayList<>(getFriends());
+        for (String friend:friends){
+            User user=USERS.get(friend);
+            FriendScore.add(user);
         }
     }
 }
