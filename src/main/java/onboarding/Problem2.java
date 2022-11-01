@@ -3,6 +3,7 @@ package onboarding;
 import java.util.Stack;
 
 public class Problem2 {
+    //Stack을 활용하여 cryptogram의 연속된 문자를 제거
     private static Stack<Character> reduceStringByStack(String cryptogram){
         Stack<Character> stack = new Stack<>();
         for(int i = 0; i < cryptogram.length(); i++){
@@ -14,6 +15,7 @@ public class Problem2 {
         return stack;
     }
 
+    //stack을 String으로 변환
     private static String stackToString(Stack<Character> stack){
         StringBuilder answer = new StringBuilder();
         for (Character character : stack) answer.append(character.toString());
