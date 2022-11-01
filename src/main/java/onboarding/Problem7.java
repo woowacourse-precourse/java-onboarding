@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /* 기능 목록
 1. 친구관계 그래프 Map 생성
@@ -47,6 +48,19 @@ public class Problem7 {
         for(String visitor : visitors) {
             scores.put(visitor, scores.containsKey(visitor) ? scores.get(visitor) + 1 : 1);
         }
+
+        // 4. 점수, 이름 순으로 정렬
+        List<Map.Entry<String, Integer>> scoresList = scores.entrySet()
+                .stream().sorted(new Comparator<Map.Entry<String, Integer>>() {
+                    @Override
+                    public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                        if (o1.getValue() == o2.getValue())
+                            return o1.getKey().compareTo(o2.getKey());
+                        else
+                            return -o1.getValue().compareTo(o2.getValue());
+                    }
+                })
+                .collect(Collectors.toList());
 
         return answer;
     }
