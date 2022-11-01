@@ -6,7 +6,6 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
         List<String> answerResult = result(user, friends, visitors);
-        // result 점수 순으로 정렬하는 함수 추가해야 함.
         for (int i = 0; i < 5 && i < answerResult.size(); i++) {
             answer.add(answerResult.get(i));
         }
@@ -15,7 +14,7 @@ public class Problem7 {
 
     public static List<String> result(String user, List<List<String>> friends, List<String> visitors) {
         List<String> userFriends = userFriends(user, friends);
-        List<String> notUserFriends = notUserFriends(user, userFriends, friends);
+        List<String> notUserFriends = notUserFriends(user, userFriends, friends, visitors);
         HashMap<String, Integer> candidateAndScore = makeCandidates(friends, notUserFriends, userFriends, visitors);
 
         List<String> result = new ArrayList<>(candidateAndScore.keySet());
@@ -39,16 +38,21 @@ public class Problem7 {
         }
         return userFriends;
     }
-    public static List<String> notUserFriends(String user, List<String> userFriends, List<List<String>> friends) {
-        List<String> notUserFriends = new ArrayList<>();
+    public static List<String> notUserFriends(String user, List<String> userFriends, List<List<String>> friends, List<String> visitors) {
+        Set<String> notUserFriends = new HashSet<>();
         for (int i = 0; i < friends.size(); i++) {
             for (int j = 0; j < 2; j++) {
-                if(friends.get(i).get(j).equals(user) || friends.get(i).get(j).equals(userFriends))
+                if(friends.get(i).get(j).equals(user) || userFriends.contains(friends.get(i).get(j)))
                     continue;
                 notUserFriends.add(friends.get(i).get(j));
             }
         }
-        return notUserFriends;
+        for (int i = 0; i < visitors.size(); i++) {
+            if (userFriends.contains(visitors.get(i)))
+                continue;
+            notUserFriends.add(visitors.get(i));
+        }
+        return new ArrayList<>(notUserFriends);
     }
 
     private static HashMap<String, Integer> makeCandidates(List<List<String>> friends, List<String> notUserFriends, List<String> userFriends, List<String> visitors) {
@@ -84,18 +88,5 @@ public class Problem7 {
                 count++;
         }
         return count;
-    }
-
-    public static void main(String[] args) {
-        List<List<String>> friends = List.of(
-                List.of("donut", "andole"),
-                List.of("donut", "jun"),
-                List.of("donut", "mrko"),
-                List.of("shakevan", "andole"),
-                List.of("shakevan", "jun"),
-                List.of("shakevan", "mrko")
-        );
-        List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
-        System.out.println(solution("mrko", friends, visitors));
     }
 }
