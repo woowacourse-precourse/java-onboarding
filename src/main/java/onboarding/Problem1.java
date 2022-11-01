@@ -1,5 +1,7 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 class Problem1 {
@@ -10,6 +12,9 @@ class Problem1 {
             answer = -1;
             return answer;
         }
+
+        int pobiFinalScore = getFinalScore(pobi);
+        int crongFinalScore = getFinalScore(crong);
 
         return answer;
     }
@@ -52,5 +57,51 @@ class Problem1 {
         }
 
         return true;
+    }
+
+    private static int getFinalScore(List<Integer> player) {
+        List<Integer> scoreList = new ArrayList<Integer>(Arrays.asList(0, 0));
+
+        int maxNum = getMaxNum(player.get(0));
+        scoreList.set(0, maxNum);
+
+        maxNum = getMaxNum(player.get(1));
+        scoreList.set(1, maxNum);
+
+        int finalScore = Math.max(scoreList.get(0), scoreList.get(1));
+
+        return finalScore;
+    }
+
+    private static int getMaxNum(int num) {
+        int plus = plusAllDigit(num);
+        int multiply = multiplyAllDigit(num);
+
+        int ret = Math.max(plus, multiply);
+        return ret;
+    }
+
+    private static int plusAllDigit(int num) {
+        int sum = 0;
+
+        while (num > 0) {
+            sum += (num % 10);
+
+            num = num / 10;
+        }
+
+        return sum;
+    }
+
+    private static int multiplyAllDigit(int num) {
+        int multiplyResult = 1;
+
+        while (num > 0) {
+            multiplyResult *= (num % 10);
+
+            num = num / 10;
+        }
+
+        return multiplyResult;
     }
 }
