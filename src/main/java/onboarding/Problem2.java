@@ -3,17 +3,18 @@ package onboarding;
 public class Problem2 {
 
     public static String solution(String cryptogram) {
-        int dupIdx;
+        int dupStartIdx;
 
         while (true) {
-            dupIdx = dupIndex(cryptogram);
-            if (dupIdx == -1)
+            dupStartIdx = findDupStartIdx(cryptogram);
+            if (dupStartIdx == -1)
                 break;
-            cryptogram = deleteDup(cryptogram, dupIdx);
+            cryptogram = deleteDup(cryptogram, dupStartIdx);
         }
         return cryptogram;
     }
-    private static int dupIndex(String str) {
+
+    private static int findDupStartIdx(String str) {
         for(int i = 0; i < str.length() - 1; i++) {
             if (str.charAt(i) == str.charAt(i+1))
                 return i;
@@ -21,8 +22,19 @@ public class Problem2 {
         return -1;
     }
 
-    private static String deleteDup(String str, int dupIdx) {
-        return str.substring(0,dupIdx) + str.substring(dupIdx+2);
+    private static int findDupEndIdx(String str, int dupStartIdx) {
+        int i = dupStartIdx;
+
+        while (str.charAt(i) == str.charAt(dupStartIdx)) {
+            i++;
+        }
+        return i;
+    }
+
+    private static String deleteDup(String str, int dupStartIdx) {
+        int dupEndIndex = findDupEndIdx(str, dupStartIdx);
+
+        return str.substring(0,dupStartIdx) + str.substring(dupEndIndex);
     }
 
 }
