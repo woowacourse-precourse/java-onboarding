@@ -3,6 +3,7 @@ package onboarding;
 public class Problem3 {
     public static int findCount(int number) {
         int count = 0;
+
         for (int index = 1; index <= number; index++) {
             count += find369(index);
         }
