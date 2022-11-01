@@ -23,6 +23,13 @@ public class Problem3 {
             }
         }
 
+        //3, 6, 9 등장 횟수 count
+        for(int j=0; j<include369.length(); j++) {
+            if (include369.charAt(j) == '3' || include369.charAt(j) == '6' || include369.charAt(j) == '9') {
+                answer += 1;
+            }
+        }
+
         return answer;
     }
 }
