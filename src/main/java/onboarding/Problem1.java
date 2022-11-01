@@ -1,6 +1,8 @@
 
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 class Problem1 {
@@ -29,5 +31,25 @@ class Problem1 {
 			even *= evenArray[i];
 		}
 		return even;
+	}
+	
+	public static int calculationMax(List<Integer> page) {
+		int calculationMax = 0;
+		int left = page.get(0);
+		int right = page.get(1);
+
+		if ((left + 1) != right)
+			calculationMax = -1;
+		
+		List<Integer> score = new ArrayList<>();
+		score.add(pageOdd(right));
+		score.add(pageEven(right));
+		score.add(pageOdd(left));
+		score.add(pageEven(left));
+
+		Collections.sort(score);
+		calculationMax = score.get(3);
+		
+		return calculationMax;
 	}
 }
