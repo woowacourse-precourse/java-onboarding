@@ -1,6 +1,7 @@
 package onboarding.problem3;
 
 import java.util.Arrays;
+import java.util.stream.IntStream;
 
 public class Number {
 
@@ -30,5 +31,19 @@ public class Number {
 
     private static boolean isClap(int n) {
         return n == 3 || n == 6 || n == 9;
+    }
+
+    private static long countClap(int[] digits) {
+        return Arrays.stream(digits)
+                .filter(Number::isClap)
+                .count();
+    }
+
+    public long getClap() {
+        return IntStream.range(1, number + 1)
+                .mapToObj(String::valueOf)
+                .map(Number::toDigits)
+                .mapToLong(Number::countClap)
+                .sum();
     }
 }
