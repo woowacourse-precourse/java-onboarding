@@ -21,3 +21,12 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능 목록
+- 주어진 사용자 정보 리스트를 HashMap으로 변환한다.
+- 닉네임을 한 문자씩 쪼개서 배열 리스트를 생성한다.
+- 닉네임 배열 리스트의 처음부터 마지막 전까지 순회한다.
+- 순회하면서 다른 닉네임과 비교하여 중복된 문자 유무 판별한다.
+- 중복된 닉네임을 Set에 저장한다.
+- Set에 저장된 닉네임을 Key값으로 하여 처음의 HashMap의 value를 찾는다.
+- value로 나온 이메일을 정렬 후 반환한다.

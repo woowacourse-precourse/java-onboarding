@@ -24,3 +24,10 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능 목록
+- 친구 관계 정보에서 user의 친구를 찾아 리스트를 만든다.
+- 친구 관계 정보에서 user의 친구와 친구인 사용자를 찾고, 그 수만큼 점수에 반영한다.
+- 친구를 제외한 방문자 목록에서 방문 횟수만큼 점수에 반영한다.
+- 점수 순으로 정렬하고, 점수가 같은 사용자는 이름 순으로 정렬한다.
+- 점수 순으로 최대 5명까지를 리스트에 담아 출력한다.
