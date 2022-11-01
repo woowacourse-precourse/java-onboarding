@@ -7,6 +7,24 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+        List<Integer> pobiLeftSlice = slice(pobi.get(0));
+        List<Integer> pobiRightSlice = slice(pobi.get(1));
+        List<Integer> crongLeftSlice = slice(crong.get(0));
+        List<Integer> crongRightSlice = slice(crong.get(1));
+
+        int [] pobiNumArray = {sum(pobiLeftSlice),sum(pobiRightSlice),multiply(pobiLeftSlice),multiply(pobiRightSlice)};
+        int pobiNum = compare(pobiNumArray);
+        int [] crongNumArray = {sum(crongLeftSlice),sum(crongRightSlice),multiply(crongLeftSlice),multiply(crongRightSlice)};
+        int crongNum = compare(crongNumArray);
+
+        int maxResult = compare(new int[]{pobiNum, crongNum});
+        if (maxResult == pobiNum && maxResult == crongNum){
+            answer = 0;
+        } else if (maxResult == pobiNum) {
+            answer = 1;
+        }else {
+            answer = 2;
+        }
         return answer;
     }
 
