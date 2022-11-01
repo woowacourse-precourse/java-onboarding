@@ -21,3 +21,9 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+### 기능 구현 목록
+
+[ v ] 입력한 문자열을 Character 배열에 입력  
+[ v ] 마지막 인덱스 부터 순회해 같은 문자열을 삭제  
+[ v ] character 배열의 결과를 String으로 return
