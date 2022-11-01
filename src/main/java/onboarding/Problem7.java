@@ -35,6 +35,20 @@ public class Problem7 {
 
         deleteUserAndUserFriends(user);
 
+        List<FriendInfomation> friendInfomations = new ArrayList<>();
+
+        for (String key : friendsMap.keySet()) {
+            int value = friendsMap.get(key);
+            friendInfomations.add(new FriendInfomation(key, value));
+        }
+
+        for (FriendInfomation friendInfomation : friendInfomations){
+            if(friendInfomation.score != 0 && answer.size() <= 5){
+                answer.add(friendInfomation.name);
+
+            }
+        }
+
         return answer;
     }
 
@@ -91,6 +105,25 @@ public class Problem7 {
             if (secondFriend.equals(user)) {
                 friendsOfUser.add(firstFriend);
             }
+        }
+    }
+
+    static class FriendInfomation implements Comparable<FriendInfomation>{
+        String name;
+        int score;
+
+        FriendInfomation(String name, int score){
+            this.name = name;
+            this.score = score;
+        }
+
+        @Override
+        public int compareTo(FriendInfomation o) {
+            if(this.score != o.score){
+                return this.score - o.score;
+            }
+
+            return this.name.compareTo(o.name);
         }
     }
 }
