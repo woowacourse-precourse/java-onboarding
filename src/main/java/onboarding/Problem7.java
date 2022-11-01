@@ -5,6 +5,11 @@ import java.util.*;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+
+        HashMap<String, Integer> scoreKnownFriend = getScoreKnownFriend(user, friends);
+        HashMap<String, Integer> scoreVisitFriend = getScoreVisitFriend(user, friends, visitors);
+
+
         return answer;
     }
 
@@ -90,6 +95,15 @@ public class Problem7 {
             }
         }
 
+        return scoreVisitFriend;
+    }
+
+    public static HashMap<String, Integer> combineScoreOfFriends(
+            HashMap<String, Integer> scoreKnownFriend,
+            HashMap<String, Integer> scoreVisitFriend
+    ) {
+        scoreKnownFriend.forEach((k, v) ->
+                scoreVisitFriend.merge(k, v, Integer::sum));
         return scoreVisitFriend;
     }
 
