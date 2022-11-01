@@ -81,7 +81,7 @@ class Problem1 {
             }
         }// crongmax
 
-        if (pobi.get(1) - pobi.get(0) ==1 && crong.get(1) - crong.get(0) == 1){
+        if (pobi.get(1) - pobi.get(0) == 1 && crong.get(1) - crong.get(0) == 1 && pobi.get(0) != 1 && pobi.get(1) != 400 && crong.get(0) != 1 && crong.get(1) != 400){
             if (pobimax > crongmax){
                 answer = 1;
             } else if (pobimax < crongmax){
