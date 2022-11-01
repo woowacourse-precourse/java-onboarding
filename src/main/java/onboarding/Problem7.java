@@ -37,6 +37,21 @@ public class Problem7 {
     }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+
+        HashMap<String, Integer> friendsRelation = inputHash(friends);
+        HashMap<String, Integer> friendsScore = scoreVisitFriend(friendsRelation, visitors);
+        List<String> yesFriends = new ArrayList<>();
+        List<List<String>> noFriends = new ArrayList<>();
+
+        for (List<String> twoFriends : friends) {
+            if (twoFriends.get(0).equals(user)) {
+                yesFriends.add(twoFriends.get(1));
+            } else if (twoFriends.get(1).equals(user)) {
+                yesFriends.add(twoFriends.get(0));
+            } else {
+                noFriends.add(twoFriends);
+            }
+        }
         return answer;
     }
 }
