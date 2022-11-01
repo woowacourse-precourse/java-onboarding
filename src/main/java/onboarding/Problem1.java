@@ -23,5 +23,9 @@ class Problem1 {
         }
         return false;
     }
+
+    public static int findMaxValue(Integer page) {
+        return Math.max(addPageNumber(page), multiplyPageNumber(page));
+    }
 }
 
