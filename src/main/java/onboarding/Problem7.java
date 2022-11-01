@@ -11,26 +11,26 @@ public class Problem7 {
         if (violateFriends(friends)) return ERROR;
         if (violateVisitors(visitors)) return ERROR;
 
-        return recommendList(score(user, friends, visitors));
+        return recommendList(scores(user, friends, visitors));
     }
 
-    static Map<String, Integer> score(String user, List<List<String>> friends, List<String> visitors) {
-        Map<String, Integer> score = new HashMap<>();
+    static Map<String, Integer> scores(String user, List<List<String>> friends, List<String> visitors) {
+        Map<String, Integer> scores = new HashMap<>();
         Map<String, Set<String>> friendMap = setFriendMap(friends);
         Set<String> myFriends = friendMap.getOrDefault(user, new HashSet<>());
         for (String other : friendMap.keySet()) {
             if (other.equals(user)) continue;
             if (myFriends.contains(other)) continue;
             friendMap.get(other).retainAll(myFriends);
-            score.put(other, friendMap.get(other).size() * 10);
+            scores.put(other, friendMap.get(other).size() * 10);
         }
 
         for (String visitor : visitors) {
             if (visitor.equals(user)) continue;
             if (myFriends.contains(visitor)) continue;
-            score.put(visitor, score.getOrDefault(visitor, 0) + 1);
+            scores.put(visitor, scores.getOrDefault(visitor, 0) + 1);
         }
-        return score;
+        return scores;
     }
 
     static List<String> recommendList(Map<String, Integer> score) {
