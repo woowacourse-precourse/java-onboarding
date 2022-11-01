@@ -19,3 +19,6 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+### 기능 목록
+1. 입력된 char가 알파벳인 경우 뒤집어서 반환하는 기능(reverseWord) 
