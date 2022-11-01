@@ -33,6 +33,61 @@ class ApplicationTest {
             int result = -1;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
+
+        /*
+        * Validation Test
+        * */
+        @Test
+        void case4(){
+            //given
+            List<Integer> pobi = List.of(399, 400);
+            List<Integer> crong = List.of(211, 212);
+
+            //when
+            int result = -1;
+
+            //then
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
+        @Test
+        void case5(){
+            //given
+            List<Integer> pobi = List.of(1,2);
+            List<Integer> crong = List.of(211, 212);
+
+            //when
+            int result = -1;
+
+            //then
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
+        @Test
+        void case6(){
+            //given
+            List<Integer> pobi = List.of(300, 303);
+            List<Integer> crong = List.of(211, 212);
+
+            //when
+            int result = -1;
+
+            //then
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
+        @Test
+        void case7(){
+            //given
+            List<Integer> pobi = List.of(302, 303);
+            List<Integer> crong = List.of(211, 212);
+
+            //when
+            int result = -1;
+
+            //then
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
     }
 
     @Nested
@@ -48,6 +103,13 @@ class ApplicationTest {
         void case2() {
             String cryptogram = "zyelleyz";
             String result = "";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+        @Test
+        void case3() {
+            String cryptogram = "abbaa";
+            String result = "a";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
     }
@@ -75,6 +137,13 @@ class ApplicationTest {
         void case1() {
             String word = "I love you";
             String result = "R olev blf";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+
+        @Test
+        void case2() {
+            String word = "you love I";
+            String result = "blf olev R";
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
     }
@@ -109,6 +178,7 @@ class ApplicationTest {
             );
             List<String> result = List.of("jason@email.com", "jm@email.com", "mj@email.com");
             assertThat(Problem6.solution(forms)).isEqualTo(result);
+
         }
     }
 
