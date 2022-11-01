@@ -4,8 +4,20 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+
+        if (checkValue(pobi) || checkValue(crong)) {
+            return -1;
+        }
+
+        int pobiMax = Math.max(calcMax(pobi.get(0)), calcMax(pobi.get(1)));
+        int crongMax = Math.max(calcMax(crong.get(0)), calcMax(crong.get(1)));
+
+        if (crongMax < pobiMax) {
+            return 1;
+        } else if (pobiMax < crongMax) {
+            return 2;
+        }
+        return 0;
     }
 
     public static boolean checkValue(List<Integer> list) {
