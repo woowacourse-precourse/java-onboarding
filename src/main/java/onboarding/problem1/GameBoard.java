@@ -23,4 +23,9 @@ public class GameBoard {
             this.gameResult = ILLEGAL_PAGE.gameResult();
         }
     }
+
+    private void createGamePlayerList(List<Integer> page1, List<Integer> page2) {
+        gamePlayerList.add(pageValidator.getPlayer(page1));
+        gamePlayerList.add(pageValidator.getPlayer(page2));
+    }
 }
