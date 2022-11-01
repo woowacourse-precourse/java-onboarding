@@ -33,4 +33,8 @@ public class Problem3 {
     public static int specificTensDiigt() {
         return generalTensDigit() + 10;
     }
+
+    public static int generalHundreds() {
+        return 7 * generalTensDigit() + 3 * specificTensDiigt();
+    }
 }
