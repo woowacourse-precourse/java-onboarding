@@ -15,7 +15,7 @@ public class Problem6 {
         String emailAddress ="";
 
         HashMap<String, String> hashMapCheckOverlap = new HashMap<String, String>();
-
+        HashMap<String, String> hashMapCollectOverlapEmail = new HashMap<String, String>();
 
 
 
@@ -26,6 +26,14 @@ public class Problem6 {
 
             for (int i = 0; i < nickNameLength - 1; i++){
                 String twoWords = nickName.substring(i, i+2);
+
+                if (hashMapCheckOverlap.containsKey(twoWords)){
+
+                    hashMapCollectOverlapEmail.put(emailAddress,"");
+                    hashMapCollectOverlapEmail.put(hashMapCheckOverlap.get(twoWords),"");
+                    continue;
+
+                }
 
                 hashMapCheckOverlap.put(twoWords,emailAddress);
 

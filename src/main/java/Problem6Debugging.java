@@ -31,6 +31,13 @@ public class Problem6Debugging {
                 for (int i = 0; i < nickNameLength - 1; i++){
                     String twoWords = nickName.substring(i, i+2);
 
+                    if (hashMapCheckOverlap.containsKey(twoWords)){
+
+                        hashMapCollectOverlapEmail.put(emailAddress,"");
+                        hashMapCollectOverlapEmail.put(hashMapCheckOverlap.get(twoWords),"");
+                        continue;
+
+                    }
 
 
                     hashMapCheckOverlap.put(twoWords,emailAddress);
