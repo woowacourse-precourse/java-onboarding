@@ -1,10 +1,65 @@
 package onboarding;
 
-import java.util.List;
+import java.util.*;
 
+class CrewInfo {
+    String email;
+    String nickname;
+
+    public CrewInfo(String email, String nickname) {
+        this.email = email;
+        this.nickname = nickname;
+    }
+}
 public class Problem6 {
+    public static List<String> searchNickname(List<String> answer, List<List<String>> forms) {
+        List<CrewInfo> crews = new ArrayList<>();
+        for (List<String> data:forms) {
+            crews.add(new CrewInfo(data.get(0), data.get(1)));
+        }
+
+        HashSet<String> duplicatedEmail = findDuplicateNickname(crews);
+        for (int i = 0; i < crews.size(); i++) {
+            if(duplicatedEmail.contains(crews.get(i).nickname)) {
+                answer.add(crews.get(i).email);
+            }
+        }
+
+        Collections.sort(answer);
+        return answer;
+    }
+
+    public static HashSet<String> findDuplicateNickname(List<CrewInfo> crews) {
+        HashSet<String> duplicateEmail = new HashSet<>();
+        for (int i = 0; i < crews.size()-1; i++) {
+            for (int j = i; j < crews.size(); j++) {
+                if(containsWord(crews.get(i).nickname, crews.get(j).nickname)){
+                    duplicateEmail.add(crews.get(i).nickname);
+                    duplicateEmail.add(crews.get(j).nickname);
+                }
+            }
+        }
+
+        return duplicateEmail;
+    }
+
+    public static boolean containsWord(String nickname1, String nickname2) {
+        for (int i = 2; i < nickname1.length(); i++) {
+            String word = nickname1.substring(0, i);
+            if(nickname2.contains(word)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        Problem6 problem6 = new Problem6();
+        List<String> answer = new ArrayList<>();
+
+        answer = searchNickname(answer, forms);
+
         return answer;
     }
 }
