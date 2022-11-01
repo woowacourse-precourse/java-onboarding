@@ -20,19 +20,19 @@ class PageList {
     public void validatePages(List<Integer> integerList) {
         /* pageList의 길이 = 2 */
         if (integerList.size() != 2) {
-            throw new IllegalArgumentException(String.format("A Size of pages should be 2"));
+            throw new IllegalArgumentException("A Size of pages should be 2");
         }
         /* left는 홀수, right는 짝수 */
         if (integerList.get(0) % 2 != 1 | integerList.get(1) % 2 != 0) {
-            throw new IllegalArgumentException(String.format("A pages should be in order of odd and even page number"));
+            throw new IllegalArgumentException("A pages should be in order of odd and even page number");
         }
         /* 페이지는 연속된 값 */
         if (integerList.get(1) - integerList.get(0) != 1) {
-            throw new IllegalArgumentException(String.format("A pages should be composed of sequential page"));
+            throw new IllegalArgumentException("A pages should be composed of sequential page");
         }
         /* 1 <= left page <= 399 and 2 <= right page <= 400 */
         if (integerList.get(0) < 1 | integerList.get(0) > 399 | integerList.get(1) < 2 | integerList.get(1) > 400) {
-            throw new IllegalArgumentException(String.format("The number of pages must be between 1 and 400"));
+            throw new IllegalArgumentException("The number of pages must be between 1 and 400");
         }
     }
 }
