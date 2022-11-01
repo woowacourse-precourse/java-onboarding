@@ -1,8 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
@@ -23,7 +21,7 @@ public class Problem2 {
     }
 
     private static List<Integer> getNearByDuplication(StringBuilder stringBuilder) {
-        List<Integer> ret = new ArrayList<>();
+        Set<Integer> ret = new HashSet<>();
 
         for (int i = 0; i < stringBuilder.length() - 1; ++i) {
             if (stringBuilder.charAt(i) == stringBuilder.charAt(i + 1)) {
@@ -31,6 +29,6 @@ public class Problem2 {
                 ret.add(i + 1);
             }
         }
-        return ret;
+        return new ArrayList<>(ret);
     }
 }
