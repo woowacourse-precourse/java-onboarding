@@ -11,4 +11,11 @@ public class Problem4 {
         String answer = "";
         return answer;
     }
+
+    public static char isAlphabet(char alphabet) {
+        if (Character.isAlphabetic(alphabet)) {
+            return isUpperCaseLowerCase(alphabet);
+        }
+        return alphabet;
+    }
 }
