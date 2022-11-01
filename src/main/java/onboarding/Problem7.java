@@ -30,12 +30,16 @@ public class Problem7 {
         for (String key : friendList.keySet()) {
             users.put(key, 0);
         }
-        for (String s : friendList.get(user)) {
-            for (String s1 : friendList.get(s)) {
-                if (s1.equals(user)) continue;
-                users.put(s1, users.get(s1) + 10);
+
+        if (friendList.get(user) != null){
+            for (String s : friendList.get(user)) {
+                for (String s1 : friendList.get(s)) {
+                    if (s1.equals(user)) continue;
+                    users.put(s1, users.get(s1) + 10);
+                }
             }
         }
+
 
         for (String visitor : visitors) {
             if (!users.containsKey(visitor)){
@@ -58,7 +62,9 @@ public class Problem7 {
 
         for (Map.Entry<String, Integer> entry : entryList) {
             if (answer.size() == 5) break;
-            if (friendList.get(user).contains(entry.getKey()) || entry.getValue() == 0 || entry.getKey().equals(user)) continue;
+            if (friendList.get(user) != null)
+                if (friendList.get(user).contains(entry.getKey())) continue;
+            if (entry.getValue() == 0 || entry.getKey().equals(user)) continue;
             answer.add(entry.getKey());
         }
     }
