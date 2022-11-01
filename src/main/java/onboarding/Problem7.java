@@ -29,7 +29,33 @@ public class Problem7 {
                 }
             }
         }
+
+        for(int k=0;k<visitors.size();k++){
+            for(int p=0;p<myFriend.size();p++){
+                if(!visitors.get(k).equals(myFriend.get(p))){ //visitor에 myfriend가 없어야함
+                    if(!nonFriend.contains(visitors.get(k)) && !myFriend.contains(visitors.get(k))) {
+                        nonFriend.add(visitors.get(k));
+                        scoreMap.put(visitors.get(k), score + 1);
+                    }
+                }
+            }
+            if(nonFriend.contains(visitors.get(k)) && k < visitors.size()-2){
+                scoreMap.replace(visitors.get(k),scoreMap.get(visitors.get(k))+1);
+            }
+        }
+        nonFriend.clear();
+        List<Map.Entry<String,Integer>> list_entries = new ArrayList<Map.Entry<String,Integer>>(scoreMap.entrySet());
+        Collections.sort(list_entries, new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                return o2.getValue().compareTo(o1.getValue());
+            }
+        });
+        for(Map.Entry<String,Integer> entry : list_entries){
+            nonFriend.add(entry.getKey());
+        }
     }
+
     public static void makeFriendList(String user,List<List<String>> friends,List<String> myFriend){
 
         for(int i=0;i<friends.size();i++){
@@ -49,6 +75,8 @@ public class Problem7 {
 
         makeFriendList(user,friends,myFriend);
         makeNonFriendList(user,friends,myFriend,nonFriend,visitors);
+
+        answer = nonFriend;
         return answer;
     }
 }
