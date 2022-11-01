@@ -44,6 +44,20 @@ public class Problem7 {
             }
         }
 
+        //점수별로 정렬하고 점수가 같을 시 이름순으로 정렬
+        List<Map.Entry<String, Integer>> recommendationEntryList = new ArrayList<>(recommendationScore.entrySet());
+        recommendationEntryList.sort(new Comparator<Map.Entry<String, Integer>>() {
+            @Override
+            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
+                if (o2.getValue() == o1.getValue()) {
+                    return o1.getKey().compareTo(o2.getKey());
+                } else {
+                    return o2.getValue() - o1.getValue();
+                }
+
+            }
+        });
+
         return answer;
     }
 }
