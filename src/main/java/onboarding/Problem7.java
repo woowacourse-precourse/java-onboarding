@@ -1,8 +1,8 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -12,7 +12,7 @@ public class Problem7 {
         Map<String, List<String>> friendRelationship = getFriendRelationship(friends);
         List<String> userFriends = friendRelationship.get(user);
         Map<String, Integer> scoreMap = new HashMap<>();
-        List<String> friendsOfFriends = new LinkedList<>();
+        List<String> friendsOfFriends = new ArrayList<>();
 
         for (String userFriend : userFriends) {
             friendsOfFriends.addAll(friendRelationship.get(userFriend));
@@ -30,9 +30,9 @@ public class Problem7 {
     private static Map<String, List<String>> getFriendRelationship(List<List<String>> friends) {
         Map<String, List<String>> members = new HashMap<>();
         for (List<String> relation : friends) {
-            members.put(relation.get(0), members.getOrDefault(relation.get(0), new LinkedList<>()));
+            members.put(relation.get(0), members.getOrDefault(relation.get(0), new ArrayList<>()));
             members.get(relation.get(0)).add(relation.get(1));
-            members.put(relation.get(1), members.getOrDefault(relation.get(1), new LinkedList<>()));
+            members.put(relation.get(1), members.getOrDefault(relation.get(1), new ArrayList<>()));
             members.get(relation.get(1)).add(relation.get(0));
         }
 
