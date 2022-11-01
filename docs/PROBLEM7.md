@@ -24,3 +24,23 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+## 기능 요구 사항 분석
+- 구현 기능 : 친구 추천 알고리즘
+- 조건
+  - user의 친구의 친구는 +10
+  - user의 타임 라인 방문 횟수당 +1
+
+### 세부 사항
+- UserGraph : 사용자간의 관계를 표현하는 클래스
+  - [X] 친구 관계를 연결하기 위한 메서드
+  - [X] 특정 아이디의 모든 친구를 반환하는 메서드
+- UserScore : 특정 유저를 기준으로 점수를 계산하는 클래스
+  - [X] UserGraph를 포함
+  - [X] targetUser, visitors를 포함
+  - [X] 유저별 점수를 저장하는 userToScore를 이용하여 친구 추천 알고리즘 구현
+  - [X] targetUser를 기준으로 친구의 친구 점수 계산
+  - [X] targetUser의 타임 라인을 방문한 사람의 점수 계산
+  - [X] targetUser 또는 이미 targetUser와 친구인 사람 제외
+  - [X] 점수에 대해 내림차순 정렬
+  - [X] 같은 점수인 경우 이름에 대해 오름차순으로 정렬
