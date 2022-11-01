@@ -12,6 +12,7 @@ public class User {
 			throw new IllegalArgumentException("사용자 아이디는 알파벳 소문자로 구성된 1 이상 30 이하인 문자열입니다.");
 		}
 		this.userId = userId;
+		UserRepository.join(this);
 	}
 
 	private boolean validateUserId(String userId) {
@@ -20,4 +21,7 @@ public class User {
 		return matcher.matches();
 	}
 
+	public String getUserId() {
+		return userId;
+	}
 }
