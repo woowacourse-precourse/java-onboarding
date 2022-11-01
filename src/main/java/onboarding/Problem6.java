@@ -1,53 +1,87 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 public class Problem6 {
 
-    private static List<String> answer = new ArrayList<>();
-    private static List<List<String>> list;
-
     public static List<String> solution(List<List<String>> forms) {
 
-        list = forms;
+        Forms input = new Forms(forms);
 
-        String curr;
-        for (int i = 0; i < forms.size(); i++) {
-            curr = forms.get(i).get(1);
-            check(i, curr);
-        }
-
-        Collections.sort(answer);
-        return answer;
-
-    }
-
-    // 현재 글자를 2글짜씩 잘라서 전체 리스트에 있는지 체크해보는 메소드
-    private static void check(int idx, String curr) {
-        String temp;
-        int count = 0;
-        for (int j = 0; j < curr.length()-1; j++) {
-            //2글자씩 자르고 일치하는게 있는지 탐색해보기
-            temp = curr.substring(j, j+2);
-            for (int k = 0; k < list.size(); k++) {
-                if(k != idx && search(k, temp)){
-                    count++;
-                    break;
+        for (int i = 0; i < input.getSize() - 1; i++) {
+            Nickname nickname1 = input.findNickname(i);
+            for (int j = i + 1; j < input.getSize(); j++) {
+                Nickname nickname2 = input.findNickname(j);
+                if (nickname1.compare(nickname2)) {
+                    input.updateDuplications(i);
+                    input.updateDuplications(j);
                 }
             }
         }
-        if (count > 0) answer.add(list.get(idx).get(0));
-    }
 
-    // 2글자를 통해 검색하는 메소드
-    private static boolean search(int idx, String keyword) {
-        return list.get(idx).get(1).matches(".*" + keyword+".*");
+        return input.getMailList();
+
     }
 
 }
 
+
+class Forms {
+    private final HashMap<Nickname, Email> forms = new HashMap<>();
+    private final ArrayList<Nickname> nicknames;
+    private final ArrayList<Boolean> duplications = new ArrayList<>();
+
+    public Forms (List<List<String>> input){
+        validateSize(input);
+        for (List<String> form : input) {
+            Nickname nickname = new Nickname(form.get(1));
+            Email email = new Email(form.get(0));
+            this.forms.put(nickname, email);
+            this.duplications.add(false);
+        }
+        this.nicknames = new ArrayList<>(this.forms.keySet());
+    }
+
+    private void validateSize(List<List<String>> input) {
+        if (input.size() < 1) {
+            throw new IllegalArgumentException("크루원은 최소 1명은 있어야합니다.");
+        }
+        if (input.size() > 10000) {
+            throw new IllegalArgumentException("크루원은 10000명일 수 없습니다.");
+        }
+    }
+
+    public Nickname findNickname (int idx) {
+        return this.nicknames.get(idx);
+    }
+
+    public Map<Nickname, Email> getForms() {
+        return this.forms;
+    }
+
+    public int getSize() {
+        return this.forms.size();
+    }
+
+    public void updateDuplications(int idx) {
+        duplications.set(idx, true);
+    }
+
+    public List<String> getMailList() {
+        Set<String> set = new HashSet<>();
+        for (int i = 0; i < nicknames.size(); i++) {
+            if (duplications.get(i)) {
+                String emailString = forms
+                        .get(nicknames.get(i))
+                        .getEmail();
+                set.add(emailString);
+            }
+        }
+        List<String> list = new ArrayList<>(set);
+        Collections.sort(list);
+        return list;
+    }
+}
 
 class Nickname {
 
@@ -85,7 +119,21 @@ class Nickname {
     public List<String> getPartNickName() {
         return this.partNickName;
     }
+
+    public boolean compare(Nickname target) {
+        boolean flag =  false;
+        String targetString = target.getNickname();
+        for (String twoChar : partNickName) {
+            if (targetString.contains(twoChar)) {
+                flag = true;
+                break;
+            }
+        }
+        return flag;
+    }
 }
+
+
 
 class Email {
 
