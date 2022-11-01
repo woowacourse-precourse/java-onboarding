@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -11,7 +8,7 @@ public class Problem7 {
         return answer;
     }
 
-    
+
     private static HashMap<String, ArrayList<String>> createRelation(List<List<String>> friends) {
         HashMap<String, ArrayList<String>> relationMap = new HashMap<>();
 
@@ -78,5 +75,19 @@ public class Problem7 {
                 recommendationScore.put(visitor, score);
             }
         }
+    }
+
+    
+    private static List<String> sortRecommendationScore(HashMap<String, Integer> recommendationScore) {
+        List<Map.Entry<String, Integer>> recommendationList = new ArrayList<>(recommendationScore.entrySet());
+        List<String> sortedRecommendationList = new ArrayList<>();
+
+        Collections.sort(recommendationList, new ValueThenKeyComparator<>());
+
+        for (Map.Entry<String, Integer> stringIntegerEntry : recommendationList) {
+            sortedRecommendationList.add(stringIntegerEntry.getKey());
+        }
+
+        return sortedRecommendationList;
     }
 }
