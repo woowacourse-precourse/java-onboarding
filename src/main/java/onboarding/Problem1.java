@@ -5,7 +5,7 @@ import java.util.*;
 
 class Problem1 {
     public static int get_sum(int num){
-
+        return get_digitList(num).stream().mapToInt(Integer::intValue).sum();
     }
     public static int get_prod(int num) {
 
@@ -23,7 +23,6 @@ class Problem1 {
 
 
     }
-
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
         return answer;
