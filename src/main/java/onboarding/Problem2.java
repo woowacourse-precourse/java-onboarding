@@ -7,6 +7,12 @@ public class Problem2 {
     private static final int MIN = 1;
     private static Character SameBeforeCharacter;
 
+    public static String solution(String cryptogram) {
+        if (!canCryptogram(cryptogram) && !isStringLowerCase(cryptogram))
+            throw new IllegalArgumentException("제한 사항을 위반하였습니다.");
+        return deleteOverlapCharacter(cryptogram);
+    }
+
     public static String deleteOverlapCharacter(String cryptogram) {
         Stack<Character> s = new Stack<>();
         for (int i = 0; i < cryptogram.length(); i++) {
