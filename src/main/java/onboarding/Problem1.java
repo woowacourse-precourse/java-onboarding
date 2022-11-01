@@ -23,6 +23,15 @@ class Problem1 {
         }
         return isPair(leftPage, rightPage);
     }
+    private static int sumOfDigit(int page) {
+        String pageToString = Integer.toString(page);
+        int sum = 0;
+        for (int i = 0; i < pageToString.length(); i++) {
+            int digit = pageToString.charAt(i) - '0';
+            sum += digit;
+        }
+        return sum;
+    }
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
         return answer;
