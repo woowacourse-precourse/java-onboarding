@@ -10,6 +10,8 @@ public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
         countToken(forms);
+        removeNotDuplicateTokens();
+
 
         return answer;
     }
@@ -31,6 +33,14 @@ public class Problem6 {
                 duplicateCount.put(token, 1);
             }
         }
+    }
+
+    public static void removeNotDuplicateTokens() {
+        duplicateCount.forEach((token, count) -> {
+            if (count == 1) {
+                duplicateCount.remove(token);
+            }
+        });
     }
 }
 
