@@ -47,7 +47,8 @@ class Problem1 {
             pagenum /= 10;
         }
 
-        return 0;
+        //덧셈과 곱셈 중 더 큰 수를 리턴하는 기능
+        return Math.max(pagesum, pagemulti);
     }
 
 
