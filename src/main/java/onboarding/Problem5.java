@@ -8,4 +8,12 @@ public class Problem5 {
         List<Integer> answer = Collections.emptyList();
         return answer;
     }
+
+
+    private static void calcMoneyNum(int money, List<Integer> output, int[] arr) {
+        for (int j : arr) {
+            output.add(money / j);
+            money %= j;
+        }
+    }
 }
