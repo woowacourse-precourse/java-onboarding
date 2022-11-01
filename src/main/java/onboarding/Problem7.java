@@ -22,13 +22,18 @@ public class Problem7 {
         int visitscore = 0;
         for (String visitor : visitors) {
             if(relation.get(user).contains(visitor)) continue;
-            visitscore = friendscore.getOrDefault(friendscore.get(visitor), 0);
-            visitscore++;
+            visitscore = 0;
+            if(friendscore.containsKey(visitor)) visitscore = friendscore.get(visitor);
+            visitscore += 1;
             friendscore.put(visitor, visitscore);
         }
-        List<Map.Entry<String, Integer>> scorelist = new LinkedList<>(friendscore.entrySet());
-        scorelist.sort(((o1, o2) -> friendscore.get(o2.getKey()) - friendscore.get(o1.getKey())));
-        return scorelist.stream().limit(5).map(Map.Entry::getKey).collect(Collectors.toList());
+
+        return friendscore.entrySet().stream().
+                sorted(Collections
+                        .reverseOrder(Map.Entry.<String, Integer>comparingByValue())
+                        .thenComparing(Map.Entry.comparingByKey())).
+                limit(5).map(Map.Entry::getKey)
+                .collect(Collectors.toList());
     }
     public static void findRelationship(HashMap<String, HashSet<String>> relation, List<String> friends) {
         String friend1 = friends.get(0);
