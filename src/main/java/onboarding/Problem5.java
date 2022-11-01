@@ -18,27 +18,9 @@ public class Problem5 {
         Asset asset = new Asset();
         AssetService assetService = assetConfig.assetServiceImpl();
         assetService.deposit(money, asset);
-
         List<Integer> answer = new ArrayList<>();
 
-        Map<Integer, Integer> unitsMap = assetService.withdrawAllAsCash(asset);
-
-        Map<Integer, Integer> moneyUnitMap = getMoneyUnitMap(koreanMoneyUnits);
-
-        for (int moneyUnit : koreanMoneyUnits) {
-            exchangeToMoneyUnit(money, moneyUnit);
-        }
-        while (cursor < koreanMoneyUnits.length
-                && money > 0) {
-            int currentUnit = koreanMoneyUnits[cursor];
-            if (money < currentUnit) {
-                cursor += 1;
-                continue;
-            }
-
-            money -= currentUnit;
-            moneyUnitMap.put(currentUnit, moneyUnitMap.get(currentUnit) + 1);
-        }
+        Map<Integer, Integer> moneyUnitMap = assetService.withdrawAllAsCash(asset);
 
         for (Integer value : moneyUnitMap.values()) {
             answer.add(value);
