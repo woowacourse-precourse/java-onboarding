@@ -3,6 +3,7 @@ package onboarding;
 import java.util.List;
 
 public class Problem4 {
+
     //청개구리 사전으로 문자 변환하기
     public static char returnReverseChar(char character) {
         List<Integer> reverseAddDic = List.of( //청개구리 사전 : 청개구리 문자로 변환되기 위해 더할 값만 정의해놓은 리스트
