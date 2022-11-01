@@ -33,7 +33,7 @@ public class Problem6 {
             if(forms.get(i).get(1).length() <1 || forms.get(i).get(1).length()>20){
                 System.out.println("닉네임의 형식이 올바르지 않습니다"); return false;
             }
-            if(forms.get(i).get(1).equals(forms.get(i).get(1).toUpperCase())){
+            if(!forms.get(i).get(1).equals(forms.get(i).get(1).toUpperCase())){
                 System.out.println("영문이 포함된 닉네임입니다.");return false;
             }
 
