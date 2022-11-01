@@ -19,3 +19,6 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+### 기능 목록
+1. 청개구리 메서드 구현
