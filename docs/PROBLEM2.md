@@ -23,4 +23,4 @@
 | "zyelleyz" | "" |
 
 ### 기능 목록
-- createNewCryptogram(String cryptogram): 연속되는 문자열을 제거한, 새로운 문자열을 반환한다.
+- createNewCryptogram(String cryptogram): 연속된 문자열을 제거한, 새로운 문자열을 반환한다.
