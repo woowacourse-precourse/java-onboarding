@@ -34,21 +34,10 @@ public class Problem3 {
 	 * @return
 	 */
 	private static Integer checkRestrictions(int number) {
-		if (!isNaturalNumber(number)) {
-			return EXCEPTION;
-		}
 		if (!isNumberRangeValid(number)) {
 			return EXCEPTION;
 		}
 		return 0;
-	}
-
-	// number 가 자연수가 아닌 경우 예외
-	private static boolean isNaturalNumber(int number) {
-		if (number < 1) {
-			return false;
-		}
-		return true;
 	}
 
 	// number 의 범위가 1 ~ 10000 이 아닌 경우 예외
