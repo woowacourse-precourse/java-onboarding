@@ -1,5 +1,8 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * 기능 목록
  * 1. cryptogram을 하나씩 잘라 List로 변환하는 기능
@@ -11,7 +14,13 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String answer = "";
+
+        List<String> subCryptograms = new ArrayList<>();
+        for (int i = 0; i < cryptogram.length(); i++) {
+            subCryptograms.add(cryptogram.substring(i, i + 1));
+        }
+
         return answer;
     }
 }
