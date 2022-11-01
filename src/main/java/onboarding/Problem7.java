@@ -23,11 +23,7 @@ public class Problem7 {
     public static Map<String, Integer> visitorsCount(List<String> visitors) {
         HashMap<String, Integer> map = new HashMap<String, Integer>();
         for (String visitor : visitors) {
-            if (map.get(visitor) == null) {
-                map.put(visitor, 1);
-                continue;
-            }
-            map.put(visitor, map.get(visitor) + 1);
+            plusPoints(visitor, map, 1);
         }
         return map;
     }
@@ -56,21 +52,21 @@ public class Problem7 {
             String idB = new String(friend.get(1));
             //A는 유저와 친구, B는 친구가 아니라면
             if (friendList.contains(idA) && !friendList.contains(idB)) {
-                plusTenPoints(idB, map);
+                plusPoints(idB, map, 10);
             }
             //B는 유저와 친구, A는 친구가 아니라면
             if (friendList.contains(idB) && !friendList.contains(idA)) {
-                plusTenPoints(idA, map);
+                plusPoints(idA, map, 10);
             }
         }
         return map;
     }
 
-    public static void plusTenPoints(String id, Map<String, Integer> map) {
+    public static void plusPoints(String id, Map<String, Integer> map, int point) {
         if (map.containsKey(id)) {
-            map.put(id, map.get(id) + 10);
+            map.put(id, map.get(id) + point);
         } else {
-            map.put(id, 10);
+            map.put(id, point);
         }
     }
 
