@@ -40,6 +40,20 @@ public class User {
         return visitStatistics;
     }
 
+    public List<String> getMyFriends(List<List<String>> friends) {
+        List<String> myFriends = new ArrayList<>();
+        for (List<String> friend : friends ) {
+            if(isMyFriend(friend)){
+                myFriends.add((friend.get(0)));
+            }
+        }
+        return myFriends;
+    }
+
+    private boolean isMyFriend(List<String> friend) {
+        return this.name.equals(friend.get(1));
+    }
+
     public String getName() {
         return name;
     }
