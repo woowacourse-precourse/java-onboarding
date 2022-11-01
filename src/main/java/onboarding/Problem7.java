@@ -4,13 +4,6 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        Map<String, List<String>> friendRelInfo = generateFriendRelInfo(friends);
-        Map<String, Integer> userScoreInfo = calScoreOfFriendRelWithUser(user, friendRelInfo);
-        calNumOfVisitToTimeline(userScoreInfo, visitors);
-
-        System.out.println(friendRelInfo);
-        System.out.println(userScoreInfo);
-
         List<String> answer = Collections.emptyList();
         return answer;
     }
@@ -92,13 +85,57 @@ public class Problem7 {
     }
 
     /*
-     * 친구 추천 규칙에 따라 만들어진 점수 중, 가장 높은 순으로 정렬한 5명을 반환
+     * 친구 추천 규칙에 따라 만들어진 점수 중, 가장 높은 순으로 점수를 가진 5명을 반환
      */
     public static List<String> calTopFiveOfScoreInfo(
-            Map<String, Integer> scoreInfo) {
+            Map<String, Integer> scoreInfo, List<String> userFriends) {
+        for (String friend : userFriends){
+            if (scoreInfo.containsKey(friend)) {
+                scoreInfo.remove(friend);
+            }
+        }
 
-        return Collections.emptyList();
+        List sortedScoreInfo = sortByValue(scoreInfo);
+        System.out.println(scoreInfo);
+        List<String> nickNameTopFive = new ArrayList<>();       // top 5 nickname을 저장하는 list
+
+        for (int i = 0; i < sortedScoreInfo.size(); i++) {
+            if (nickNameTopFive.size() <= 5) {
+                nickNameTopFive.add( (String) sortedScoreInfo.get(i));
+            } else if (nickNameTopFive.size() > 5) {
+                break;
+            }
+        }
+
+        return nickNameTopFive;
     }
 
+    /*
+     * Map의 value를 기준으로 정렬하는 함수
+     */
+    public static List sortByValue(final Map map) {
+        List<String> list = new ArrayList();
+        list.addAll(map.keySet());
+
+        Collections.sort(list, new Comparator() {
+
+            public int compare(Object o1, Object o2) {
+                Object v1 = map.get(o1);
+                Object v2 = map.get(o2);
+
+                int result = ((Comparable) v1).compareTo(v2);
+
+                if (result == 0){
+                    result = (((Comparable) o1).compareTo(o2));
+                    return -result;
+                }
+
+                return result;
+            }
+
+        });
+        Collections.reverse(list);
+        return list;
+    }
 
 }
