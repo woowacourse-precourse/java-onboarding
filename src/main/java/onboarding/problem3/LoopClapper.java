@@ -21,4 +21,10 @@ public class LoopClapper implements Clapper{
         }
         return count;
     }
+    private int multipleOfThree(char c) {
+        if(c == '3' || c =='6' || c == '9') {
+            return 1;
+        }
+        return 0;
+    }
 }
