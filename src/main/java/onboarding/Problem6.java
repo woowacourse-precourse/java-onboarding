@@ -25,7 +25,7 @@ public class Problem6 {
         return nicknameParts;
     }
 
-    private static HashMap<String, List<String>> matchEmailAndNicknameParts(List<List<String>> forms) {
+    private static HashMap<String, List<String>> createHashMap(List<List<String>> forms) {
         HashMap<String, List<String>> emailAndNicknameParts = new HashMap<>();
         for (int i=0; i < forms.size(); i++) {
             List<String> nicknameParts = splitNickname(forms.get(i).get(1));
@@ -34,7 +34,7 @@ public class Problem6 {
         return emailAndNicknameParts;
     }
 
-    private static List<String> findNicknameParts(HashMap<String, List<String>> emailAndNicknameParts) {
+    private static List<String> createNicknamePartList(HashMap<String, List<String>> emailAndNicknameParts) {
         List<String> nicknameParts = new ArrayList<>();
         for (List<String> nicknamePart : emailAndNicknameParts.values()) {
             nicknameParts.removeAll(nicknamePart);
@@ -53,8 +53,8 @@ public class Problem6 {
     }
 
     private static List<String> findTotalEmailWithPart(List<List<String>> forms) {
-        HashMap<String, List<String>> emailAndNicknameParts = matchEmailAndNicknameParts(forms);
-        List<String> nicknameParts = findNicknameParts(emailAndNicknameParts);
+        HashMap<String, List<String>> emailAndNicknameParts = createHashMap(forms);
+        List<String> nicknameParts = createNicknamePartList(emailAndNicknameParts);
         List<String> totalEmailWithPart = new ArrayList<>();
         for (String nicknamePart : nicknameParts) {
             List<String> emailWithPart = findEmailWithPart(nicknamePart, emailAndNicknameParts);
