@@ -2,6 +2,7 @@ package onboarding;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -40,6 +41,8 @@ public class Problem6 {
                 answer.add(compare);
             }
         }
+
+        Collections.sort(answer);
 
         return answer;
     }
