@@ -26,37 +26,47 @@ public class Problem7 {
                 friendsMap.get(idB).add(idA);
             }
         }
-        for(int i = 0; i < friendsMap.get(user).size(); i++) {
-            String usersFriend = friendsMap.get(user).get(i);
-            for(int j = 0; j < friendsMap.get(usersFriend).size(); j++) {
-                String id = friendsMap.get(usersFriend).get(j);
-                if(id == user) {
-                    continue;
-                } else {
-                    if(friendsMap.get(user).contains(id)) {
+        if(friendsMap.get(user) != null) {
+            for(int i = 0; i < friendsMap.get(user).size(); i++) {
+                String usersFriend = friendsMap.get(user).get(i);
+                for(int j = 0; j < friendsMap.get(usersFriend).size(); j++) {
+                    String id = friendsMap.get(usersFriend).get(j);
+                    if(id == user) {
                         continue;
                     } else {
-                        if(scoreMap.get(id) == null) {
-                            scoreMap.put(id, 10);
+                        if(friendsMap.get(user).contains(id)) {
+                            continue;
                         } else {
-                            int curScore = scoreMap.get(id);
-                            scoreMap.replace(id,curScore + 10);
+                            if(scoreMap.get(id) == null) {
+                                scoreMap.put(id, 10);
+                            } else {
+                                int curScore = scoreMap.get(id);
+                                scoreMap.replace(id,curScore + 10);
+                            }
                         }
                     }
                 }
             }
         }
-
         for(int i = 0; i < visitors.size(); i++) {
             String visitor = visitors.get(i);
-            if(friendsMap.get(user).contains(visitor)) {
-                continue;
-            } else {
+            if(friendsMap.get(user) == null) {
                 if(scoreMap.get(visitor) == null) {
                     scoreMap.put(visitor, 1);
                 } else {
                     int curScore = scoreMap.get(visitor);
                     scoreMap.replace(visitor, curScore + 1);
+                }
+            } else {
+                if(friendsMap.get(user).contains(visitor)) {
+                    continue;
+                } else {
+                    if(scoreMap.get(visitor) == null) {
+                        scoreMap.put(visitor, 1);
+                    } else {
+                        int curScore = scoreMap.get(visitor);
+                        scoreMap.replace(visitor, curScore + 1);
+                    }
                 }
             }
         }
