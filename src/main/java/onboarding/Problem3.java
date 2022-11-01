@@ -9,17 +9,14 @@ public class Problem3 {
             int num = i;
 
             while (num > 0) {
-                int mod = num%10;
-                if (mod != 0 && mod%3==0) {
+                int mod = num % 10;
+                if (mod != 0 && mod % 3 == 0) {
                     samYookGoo[i] += 1;
-                    break;
                 }
                 num /= 10;
             }
         }
 
-        int answer = samYookGoo[number];
-
-        return answer;
+        return samYookGoo[number];
     }
 }
