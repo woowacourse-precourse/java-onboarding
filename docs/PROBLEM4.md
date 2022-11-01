@@ -19,3 +19,12 @@
 | word | result |
 | --- | --- |
 | "I love you" | "R olev blf" |
+
+
+### 기능 목록
+- `makeTreeFrogDictionary()` : HashMap을 이용하여 청개구리 사전을 만든다.
+- `convert(String word, int idx, HashMap<Character, Character> treeFrogDictionary)` : word 문자열의 각 문자들을 변환한다.
+  - 문자가 소문자이면 -> 대문자로 변환하여 청개구리 사전을 참고한 뒤 다시 소문자로 변환시킨다.
+  - 청개구리 사전에 없는 문자면 -> 그대로 결과 문자열에 삽입한다.
+  - 문자가 대문자이면 -> 청개구리 사전을 참고한 뒤 변환시킨다.
+  - 모든 문자들을 변환한 뒤 결과 값을 리턴한다.

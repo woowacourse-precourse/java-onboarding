@@ -23,3 +23,18 @@
 | [97, 98] | [197, 198] | 0 |
 | [131, 132] | [211, 212] | 1 |
 | [99, 102] | [211, 212] | -1 |
+
+
+### 기능 목록
+- `exceptionCheck(List<Integer> pobi, List<Integer> crong)` :  예외사항을 체크한다.
+  - 제공된 pobi, crong 리스트 요소 중 하나라도 null이면 예외
+  - 왼쪽 페이지 >= 오른쪽 페이지이면 예외
+  - 두 페이지 차이가 1이 아니면 예외
+  - 두 페이지가 시작면(1)이나 마지막면(400)이면 예외
+  - 시작과 끝 페이지가 1 ~ 400 페이지 범위를 벗어나면 예외
+  - 왼쪽 페이지가 짝수이거나 오른쪽 페이지가 홀수면 예외
+- `getFinalScore(List<Integer> player)` : pobi와 crong의 최종 점수를 구한다.
+- `getMaxNum(int num)` : 모든 자릿수를 더하거나 곱한 것 중 큰 점수를 구하여 리턴한다.
+- `plusAllDigit(int num)` : 모든 자릿수를 더한다.
+- `multiplyAllDigit(int num)` : 모든 자릿수를 곱한다.
+- pobi의 최종 점수와 crong의 최종 점수를 비교하여 결과를 리턴한다.

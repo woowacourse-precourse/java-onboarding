@@ -21,3 +21,16 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+
+### 기능 목록
+- `findDuplicateNickname(String nickname, List<List<String>> forms, HashMap<String, ArrayList<String>> map)` : forms의 닉네임 중 검사할 닉네임을 정한다.
+- `getPartialNicknameToValidate(int idx, String nickname)` : 특정 닉네임을 두 글자로 분리한다.
+- `isAlreadyChecked(HashMap<String, ArrayList<String>> map, String partialNickname)` : 닉네임에서 분리한 문자열이 이미 중복 검사를 한 문자열인지 체크한다.
+- `duplicateCheck(List<List<String>> forms, String partialNickname, HashMap<String, ArrayList<String>> map)` : forms의 모든 닉네임 중에 검사할 문자열과 중복되는 닉네임이 있는지 검사한다.
+- `addNicknameAndEmailIntoMap(HashMap<String, ArrayList<String>> map, ArrayList<String> list, String partialNickname, String email)` : 검사한 닉네임과 이메일을 map에 추가한다.
+- `removeNoDuplicateNicknameFromMap(HashMap<String, ArrayList<String>> map, String partialNickname)` : map에서 중복되지 않는 닉네임을 제거한다.
+- `makeResultList(HashMap<String, ArrayList<String>> map, List<String> answer)` : map에 남은 요소들을 꺼내어 리턴한다.
+  - 중복을 제거하기 위해 HashSet을 생성하여 이메일을 추가한다.
+  - HashSet에서 이메일을 꺼내어 answer 리스트에 추가한다.
+  - answer의 요소들을 오름차순으로 정렬하고 리턴한다.
