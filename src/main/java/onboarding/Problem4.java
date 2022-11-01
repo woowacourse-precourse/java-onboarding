@@ -28,11 +28,7 @@ public class Problem4 {
             String word = String.valueOf(str.charAt(i));
             if(word.equals(" ")){
                 answer.append(" ");
-            }else if(!alpMap.containsKey(word)) {
-                answer.append(str.charAt(i));
-            }else {
-                answer.append(alpMap.get(word));
-            }
+            }else answer.append(alpMap.getOrDefault(word, word));
         }
         return answer.toString();
     }
