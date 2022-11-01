@@ -7,10 +7,12 @@ import java.util.TreeSet;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        return new ArrayList<>(compareCrew(forms));
+        Problem6 p6 = new Problem6();
+        return new ArrayList<>(p6.compareCrew(forms));
     }
 
-    public static Set<String> compareCrew(List<List<String>> forms){
+    public Set<String> compareCrew(List<List<String>> forms){
+        Problem6 p6 = new Problem6();
         int len = forms.size();
         Set<String> overlaped= new TreeSet<>();
 
@@ -19,7 +21,7 @@ public class Problem6 {
             for(int j=1; j<len; j++) {
                 List<String> secondCrew = forms.get(j);
                 if(i==j){break;}
-                else if( compareString(firstCrew.get(1), secondCrew.get(1)) ){
+                else if( p6.compareString(firstCrew.get(1), secondCrew.get(1)) ){
                     overlaped.add(firstCrew.get(0));
                     overlaped.add(secondCrew.get(0));
                 }
@@ -28,7 +30,7 @@ public class Problem6 {
 
         return overlaped;
     }
-    public static boolean compareString(String s1, String s2) {
+    public boolean compareString(String s1, String s2) {
         char[] c1Arr = s1.toCharArray();
         char[] c2Arr = s2.toCharArray();
 
