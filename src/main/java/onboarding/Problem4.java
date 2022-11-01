@@ -11,7 +11,6 @@ public class Problem4 {
             } else {
                 if (Character.isUpperCase(c)) {
                     answer += (char) (155 - (int) c);
-                    System.out.println((int)c);
                 } else {
                     answer += (char) (219 - (int) c);
                 }

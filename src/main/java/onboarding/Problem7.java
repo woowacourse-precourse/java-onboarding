@@ -37,14 +37,17 @@ public class Problem7 {
         if (myFriendsList.size() != 0) {
             for (int i = 0; i < friends.size(); i++) {
                 for (int j = 0; j < friends.get(i).size(); j++) {
-                    if (!friends.get(i).contains(user) &&
-                            !myFriendsList.contains(friends.get(i).get(j))) {
-                        recommendFriend.add(friends.get(i).get(j));
+                    if (myFriendsList.contains(friends.get(i).get(0)) ||
+                        myFriendsList.contains(friends.get(i).get(1))) {
+                        if (!friends.get(i).contains(user) &&
+                                !myFriendsList.contains(friends.get(i).get(j))) {
+                            recommendFriend.add(friends.get(i).get(j));
+                        }
                     }
                 }
             }
-            Collections.sort(recommendFriend);
         }
+        Collections.sort(recommendFriend);
 
         /* 3. 추천 친구들의 점수를 명당 10점씩 */
         for (int i = 0; i < recommendFriend.size(); i++) {
