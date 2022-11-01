@@ -31,7 +31,6 @@ public class Problem7 {
                 String[] strings = {friend.get(0)};
                 friendList.put(friend.get(1),Arrays.asList(strings));
             }
-
         }
         //점수 정렬
         for (String key : friendList.keySet()) {
