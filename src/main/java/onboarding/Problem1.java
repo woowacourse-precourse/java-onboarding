@@ -21,7 +21,8 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
 
-         if(((pobi.get(1) - pobi.get(0)) != 1) || ((crong.get(1) - crong.get(0)) != 1)){ // 예외사항
+        // 3. 예외처리
+         if(((pobi.get(1) - pobi.get(0)) != 1) || ((crong.get(1) - crong.get(0)) != 1)){
              System.out.println("answer: " + -1);
              return -1;
          }else{
@@ -33,7 +34,7 @@ class Problem1 {
              int p = pobi_result.get(0);
              int c = crong_result.get(0);
 
-             // 조건 처리
+             // 2. 게임 결과 출력 기능
              if(p >= c){
                  if(p == c) answer = 0; // 무승부
                  else answer = 1; // 포비 승
@@ -44,6 +45,7 @@ class Problem1 {
 
     }
 
+    // 1. 점수 구하는 기능
     public static List calculation(List<Integer> people) { // 왼쪽 및 오른쪽 페이지 번호로 연산(+,*)한 결과
 
         List<Integer> result = new ArrayList<>();
