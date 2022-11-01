@@ -15,8 +15,7 @@ public class Problem6 {
     }
     
     //2) 연속적으로 포함되어 있다면, 이메일 값 추가
-    public static void   nickNameCheck(List<String> form1,List<String> form2)
-    {
+    public static void   nickNameCheck(List<String> form1,List<String> form2) {
         String nickName1 = form1.get(1);
         String email1 = form1.get(0);
         String nickName2 = form2.get(1);
@@ -31,6 +30,20 @@ public class Problem6 {
             if (!answer.contains(email2))
                 answer.add(email2);
         }
+    }
+    
+    public static List<String> solution(List<List<String>> forms) {
+        answer = new ArrayList<>();
+
+        //3) form 길이만큼 반복하여 체크
+        for (int i = 0 ; i < forms.size(); i++)
+        {
+            for (int j = i + 1 ; j< forms.size(); j++)
+            {
+                nickNameCheck(forms.get(i), forms.get(j));
+            }
+        }
+
     }
     
 }
