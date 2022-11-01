@@ -10,8 +10,8 @@ import org.junit.jupiter.api.Test;
 public class NetworkTest {
 
 	@Test
-	@DisplayName("친구를 점수 순으로 최대 5명 추천한다")
-	void recommend_friends() {
+	@DisplayName("친구를 점수순으로 최대 5명 추천한다")
+	void recommend_friends_maximum_five_score_ordered() {
 		List<List<String>> relationships = List.of(
 			List.of("donut", "andole"),
 			List.of("donut", "jun"),
@@ -29,6 +29,7 @@ public class NetworkTest {
 		List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
 		Network network = new Network(relationships, visitors);
 
-		assertThat(network.recommendFriendsFor("mrko")).containsExactly("andole", "jun", "bedi");
+		assertThat(network.recommendFriendsFor("mrko")).hasSizeLessThanOrEqualTo(5);
+		assertThat(network.recommendFriendsFor("mrko")).contains("aaa", "andole", "bbb", "ccc", "jun");
 	}
 }

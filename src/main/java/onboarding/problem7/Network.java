@@ -1,11 +1,12 @@
 package onboarding.problem7;
 
 import java.util.Collection;
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
-import java.util.TreeMap;
+import java.util.TreeSet;
+import java.util.stream.Collectors;
 
 public class Network {
 
@@ -18,14 +19,18 @@ public class Network {
 	}
 
 	public Collection<String> recommendFriendsFor(String user) {
-		Map<String, Integer> scores = new TreeMap<>();
+		Set<RecommendedFriend> recommendedFriends = new TreeSet<>(Comparator.reverseOrder());
 		for (String friend : getKnownUsers()) {
 			if (relationships.isTwoFriends(user, friend)) {
 				continue;
 			}
-			scores.put(friend, calculateScoreOf(user, friend));
+			recommendedFriends.add(new RecommendedFriend(friend, calculateScoreOf(user, friend)));
 		}
-		return scores.keySet();
+		return recommendedFriends
+			.stream()
+			.map(RecommendedFriend::getName)
+			.limit(5)
+			.collect(Collectors.toUnmodifiableList());
 	}
 
 	private int calculateScoreOf(String user, String friend) {
