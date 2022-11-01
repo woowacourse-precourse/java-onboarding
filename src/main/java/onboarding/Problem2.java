@@ -8,8 +8,27 @@ import java.util.stream.Stream;
 public class Problem2 {
     public static String solution(String cryptogram) {
         String answer = "answer";
-        Stack<Character> charStack = StringToCharStack(cryptogram);
         return answer;
+    }
+
+
+    private static Stack<Character> decrypt(String text) {
+        Stack<Character> decryptionStack = new Stack<>();
+        Character beforeChar, nowChar, beforeRemovedChar = null;
+        decryptionStack.push(text.charAt(0));
+        for (int i = 1; i < text.length(); i++) {
+            beforeChar = decryptionStack.peek();
+            nowChar = text.charAt(i);
+            if (beforeRemovedChar != null && nowChar.equals(beforeRemovedChar)) {
+                continue;
+            }
+            if (!beforeChar.equals(nowChar)) {
+                decryptionStack.push(nowChar);
+            } else if (beforeChar.equals(nowChar)) {
+                beforeRemovedChar = decryptionStack.pop();
+            }
+        }
+        return decryptionStack;
     }
 
     protected static Stack<Character> StringToCharStack(String text) {
