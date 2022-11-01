@@ -13,6 +13,9 @@ public class Problem7 {
         List<Map.Entry<String, Integer>> sortedFriendsList = sorted(totalPointMap);
 
         for(Map.Entry<String, Integer> point : sortedFriendsList){
+            if(answer.size() > 5) {
+                break;
+            }
             answer.add(point.getKey());
         }
 
