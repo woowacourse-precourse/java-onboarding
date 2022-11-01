@@ -22,7 +22,39 @@ public class Problem7 {
 
         findFriendVisitedFeed(visitors);
 
+        for (List<String> friend : friends) {
+            String firstFriend = friend.get(0);
+            String secondFriend = friend.get(1);
+
+            if (firstFriend.equals(user) || secondFriend.equals(user)) {
+                continue;
+            }
+
+            findFriendOfUserFriends(firstFriend, secondFriend);
+        }
+
         return answer;
+    }
+
+    public static void findFriendOfUserFriends(String firstFriend, String secondFriend){
+        for (String friendOfUser : friendsOfUser) {
+            int score = 0;
+
+            if (firstFriend.equals(friendOfUser)) {
+                if (friendsMap.containsKey(secondFriend)) {
+                    score = friendsMap.get(secondFriend);
+                }
+                friendsMap.put(secondFriend, score + 10);
+            }
+
+            if (secondFriend.equals(friendOfUser)) {
+                if (friendsMap.containsKey(firstFriend)) {
+                    score = friendsMap.get(firstFriend);
+                }
+
+                friendsMap.put(firstFriend, score + 10);
+            }
+        }
     }
 
     public static void findFriendVisitedFeed(List<String> visitors){
