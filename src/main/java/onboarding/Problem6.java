@@ -15,7 +15,6 @@ public class Problem6 {
 
     private static final String NAME = ".*[ㄱ-ㅎㅏ-ㅣ가-힣]+.";
 
-
     private static List<String> answer = new ArrayList<>();
     private static List<Set<String>> partitionsList = new ArrayList<>();
     private static Map<String, Integer> nicknameAndCount = new HashMap<>();
