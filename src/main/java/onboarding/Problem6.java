@@ -5,22 +5,21 @@ import java.util.*;
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
 
-        Map<String, Integer> twoLetters = makeTwoLetters(forms);
+        Set<String> twoLetters = makeTwoLetters(forms);
 
 
-        return getResult(forms, twoLetters.keySet());
+        return getResult(forms, twoLetters);
     }
 
-    static Map<String, Integer> makeTwoLetters(List<List<String>> forms){
+    static Set makeTwoLetters(List<List<String>> forms){
         Map<String, Integer> map = new HashMap<>();
 
         for(List list : forms){
             String str = (String)list.get(1);
             putDevidedIntoMap(str, map);
         }
-        deleteNoneDuplicates(map);
 
-        return map;
+        return deleteNoneDuplicates(map);
     }
 
     static void putDevidedIntoMap(String str, Map<String, Integer> map){
@@ -30,17 +29,12 @@ public class Problem6 {
         }
     }
 
-    static void deleteNoneDuplicates(Map<String, Integer> map){
+    static Set deleteNoneDuplicates(Map<String, Integer> map){
+        Set set = new HashSet();
 
-        Set<String> deleteKeys = new HashSet<>();
+        map.entrySet().stream().filter(s -> s.getValue() >= 2).forEach(j -> set.add(j.getKey()));
 
-        for ( Map.Entry<String, Integer> entry : map.entrySet()){
-            if (entry.getValue() < 2){
-                deleteKeys.add(entry.getKey());
-            }
-        }
-
-        deleteKeys.stream().forEach( s -> map.remove(s));
+        return set;
     }
 
     static List<String> getResult(List<List<String>> forms, Set<String> set){
