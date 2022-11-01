@@ -24,3 +24,15 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능 목록
+
+- 매개변수로 제공되는 등장하는 모든 이름 수집 기능
+- user와 함께아는 친구의 수만큼 점수를 주기위한 인접 배열 리스트 선언과 초기화
+- 이름별 구분번호와 그 역을 부여하는 기능
+- 매개변수인 친구관계 연결하는 기능
+- user의 친구들을 찾는 기능
+- 함께아는 친구 점수 계산
+- 방문 수 점수 계산
+- 추천규칙에 따라 정렬
+- 랭크에서 0점 삭제
