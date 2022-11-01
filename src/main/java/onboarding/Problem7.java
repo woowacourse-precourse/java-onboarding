@@ -1,9 +1,7 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 class User {
     String name;
@@ -20,35 +18,21 @@ class User {
     private boolean isFriend(String user) {
         return this.friends.getNameList().contains(user);
     }
-    private void addVisitor(List<String> visitors) {
+
+    public void calculateVisitorsScore(List<String> visitors) {
         for (String s : visitors) {
             if (!isFriend(s)) {
-                recommendedUsers.putIfAbsent(s, 0);
+                Integer prevScore = recommendedUsers.getOrDefault(s, 0);
+                recommendedUsers.put(s, prevScore + 1);
             }
         }
     }
 
-    private void addAcquaintances() {
-        for (Friend f : friends.getFriends()) {
-            for (String s : f.friends.getNameList())
-                this.recommendedUsers.putIfAbsent(s, 0);
-        }
-    }
-
-    public void putVisitorsScore(List<String> visitors) {
-        addVisitor(visitors);
-        for (String s : visitors) {
-            if (!isFriend(s)) {
-                recommendedUsers.put(s, recommendedUsers.get(s) + 1);
-            }
-        }
-    }
-
-    public void putAcquaintancesScore() {
-        addAcquaintances();
+    public void calculateRecommendScore() {
         for (Friend f : friends.getFriends()) {
             for (String s : f.friends.getNameList()) {
-                recommendedUsers.put(s, recommendedUsers.get(s)+10);
+                Integer prevScore = recommendedUsers.getOrDefault(s, 0);
+                recommendedUsers.put(s, prevScore + 10);
             }
         }
     }
@@ -62,10 +46,22 @@ class User {
         throw new IllegalArgumentException("해당 친구는 없습니다.");
     }
 
-    public List<String> printRecommendedFriends() {
-        List<String> keySetList = new ArrayList<>(recommendedUsers.keySet());
-        Collections.sort(keySetList, (o1, o2) -> (recommendedUsers.get(o2).compareTo(recommendedUsers.get(o1))));
-        return new ArrayList<>(recommendedUsers.keySet());
+    public List<String> findRecommendedFriends() {
+        List<Map.Entry<String, Integer>> recommendedFriends = recommendedUsers.entrySet().stream().collect(Collectors.toList());
+
+        List<String> recommendedFriendsList = recommendedFriends.stream().sorted((f1, f2) -> {
+            if (f1.getValue() == f2.getValue()) {
+                return f1.getKey().compareTo(f2.getKey());
+            } else {
+                return f2.getValue() - f1.getValue();
+            }
+        }).map(e -> e.getKey())
+        .collect(Collectors.toList());
+
+        if (recommendedFriendsList.size() > 5) {
+            return recommendedFriendsList.subList(0, 5);
+        }
+        return recommendedFriendsList;
     }
 }
 
@@ -78,14 +74,6 @@ class Friend {
 
     public void generateFriends(Friends friends) {
         this.friends = friends;
-    }
-
-    public List<String> getFriends() {
-        List<String> nameList = new ArrayList<>();
-        for (String s : this.friends.getNameList()) {
-            nameList.add(s);
-        }
-        return nameList;
     }
 
     public String getName() {
@@ -115,31 +103,30 @@ class Friends {
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        ArrayList<Friend> friendsArray = new ArrayList<>();
+        ArrayList<Friend> friendsOfUser = new ArrayList<>();
         User targetUser = new User(user);
 
-        for (List<String> l : friends) {
-            if (l.contains(user)) {
-                friendsArray.add(new Friend(l.get(0)));
+        for (List<String> relationship : friends) {
+            if (relationship.indexOf(user) >= 0) {
+                friendsOfUser.add(new Friend(relationship.get(1 - relationship.indexOf(user))));
             }
         }
-        targetUser.generateFriends(new Friends(friendsArray));
+        targetUser.generateFriends(new Friends(friendsOfUser));
 
         for (Friend f : targetUser.friends.getFriends()) {
             ArrayList<Friend> acquaintancesList = new ArrayList<>();
-            for (List<String> l : friends) {
-                if (l.get(0).contains(f.name) && l.get(1) != targetUser.name) {
-                    acquaintancesList.add(new Friend(l.get(1)));
+            for (List<String> relationship : friends) {
+                if (relationship.indexOf(f.name) != -1 && relationship.indexOf(targetUser.name) == -1 ) {
+                    acquaintancesList.add(new Friend(relationship.get(1 - relationship.indexOf(f.name))));
                 }
             }
             targetUser.getFriend(f.getName()).generateFriends(new Friends(acquaintancesList));
         }
 
-        targetUser.putAcquaintancesScore();
-        targetUser.putVisitorsScore(visitors);
+        targetUser.calculateRecommendScore();
+        targetUser.calculateVisitorsScore(visitors);
 
-        List<String> recommendedUsers = targetUser.printRecommendedFriends();
-        System.out.println(targetUser.recommendedUsers);
+        List<String> recommendedUsers = targetUser.findRecommendedFriends();
         return recommendedUsers;
     }
 }
