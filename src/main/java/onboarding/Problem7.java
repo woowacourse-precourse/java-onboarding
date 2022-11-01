@@ -59,6 +59,17 @@ public class Problem7 {
         //5개이하만 출력하기 위한 정답List
         List<String> answer = new ArrayList<>();
 
+        //추천 목록이 5개 초과이면 5개만 추출
+        if(recommendKeySet.size() > 5) {
+            for(int i = 0 ; i < 5; i++) {
+                answer.add(recommendKeySet.get(i));
+            }
+        }else{ //추천목록이 5개 이하면 가지고 있는 목록만 추출
+            for(int i = 0 ; i < recommendKeySet.size(); i++) {
+                answer.add(recommendKeySet.get(i));
+            }
+        }
+
         return answer;
     }
 
