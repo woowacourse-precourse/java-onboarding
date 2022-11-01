@@ -4,10 +4,27 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+        if(!isValidateBookNum(pobi) || !isValidateBookNum(crong))
+            return -1;
+
         int pobiScore = getPersonalHighestValue(pobi);
         int crongScore = getPersonalHighestValue(crong);
 
         return getResultCode(pobiScore, crongScore);
+    }
+
+    private static boolean isValidateBookNum(List<Integer> person){
+        int leftPageNumber = person.get(0);
+        int rightPageNumber = person.get(1);
+
+        if((leftPageNumber % 2 != 1) || (rightPageNumber % 2 != 0))
+            return false;
+        if(rightPageNumber - leftPageNumber != 1)
+            return false;
+        if((leftPageNumber == 1) || (rightPageNumber == 400))
+            return false;
+
+        return true;
     }
 
     private static int getPlusValue(Integer pageNum){
