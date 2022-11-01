@@ -24,6 +24,39 @@ public class Problem7 {
     }
 
     /**
+     * 점수가 높은 순으로 친구 추천 리스트 정렬
+     * @param scoreList
+     * @return List<String>
+     */
+    private static List<String> sortRecommend(List<FriendsFriends> scoreList) {
+        Collections.sort(scoreList, new Comparator<FriendsFriends>() {
+            int ret = 0;
+            @Override
+            public int compare(FriendsFriends o1, FriendsFriends o2) {
+                if(o1.score < o2.score) {
+                    ret = 1;
+                }else if(o1.score > o2.score) {
+                    ret = -1;
+                }else {
+                    ret = o1.friendsFriends.compareTo(o2.friendsFriends);
+                }
+                return ret;
+            }
+        });
+        List<String> sortedRecommend = new ArrayList<>();
+        if (scoreList.size() > 5) {
+            for (int i = 0; i < 5; i++) {
+                sortedRecommend.add(scoreList.get(i).friendsFriends);
+            }
+        }else {
+            for (int i = 0; i < scoreList.size(); i++) {
+                sortedRecommend.add(scoreList.get(i).friendsFriends);
+            }
+        }
+        return sortedRecommend;
+    }
+
+    /**
      * 친구가 아닌 방문자의 추천 점수 구하기
      * @param scoreList
      * @param visitorsNotFriends
