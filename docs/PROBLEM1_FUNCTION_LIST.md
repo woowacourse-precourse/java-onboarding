@@ -18,3 +18,7 @@
 
 * 인접한 페이지 검증 (validateAdjacentPage)
   * ex) pobi = [99, 102] -> 예외처리
+
+
+* 왼쪽 페이지 홀수, 오른쪽 페이지 짝수 검증 (validateLeftPageOddAndRightPageEven) 
+  * ex) pobi = [100, 101] -> 예외처리
