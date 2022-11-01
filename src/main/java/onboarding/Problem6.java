@@ -6,21 +6,23 @@ class Crew {
     private String email;
     private String nickname;
     private boolean isDuplicate;
-    private Set<String> tokens = new HashSet(); // 크루 개인의 중복 토큰
+    private Set<String> tokens;     // 크루 개인의 중복 토큰
 
     public Crew(String email, String nickname) {
         this.email = email;
         this.nickname = nickname;
         isDuplicate = false;
-        makeTokens(this.nickname);
+        this.tokens = makeTokens(this.nickname);
     }
 
-    // 크루의 닉네임으로 중복 token 생성
-    private void makeTokens(String nickname) {
+    private Set<String> makeTokens(String nickname) {
+        Set<String> tokens = new HashSet<>();
+
         for (int i = 0; i < nickname.length() - 1; i++) {
             String token = nickname.substring(i, i+2);
-            this.tokens.add(token);
+            tokens.add(token);
         }
+        return tokens;
     }
 
     public String getEmail() {
@@ -58,20 +60,19 @@ public class Problem6 {
 
     public static List<String> solution(List<List<String>> forms) {
         initCrews(forms);
+
         putTokens();
         checkDuplicate();
-
         Collections.sort(answer);
+
         return answer;
     }
 
-    // 모든 크루 초기화하여 List에 저장
     public static void initCrews(List<List<String>> forms) {
         for (List<String> form : forms)
             crews.add(new Crew(form.get(0), form.get(1)));
     }
 
-    // `크루의 닉네임`과 `해당 크루의 토큰`을 HashMap에 저장
     public static void putTokens() {
         for (Crew crew : crews)
             totalTokens.put(crew.getNickname(), crew.getTokens());
