@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.ArrayList;
 
 class Problem1 {
+
+    // 각 자릿 수 더하기
     public static int plusPage(ArrayList<Integer> pagelist) {
         int sum = 0;
         for (int element : pagelist) {
@@ -12,44 +14,49 @@ class Problem1 {
         return sum;
     }
 
-    public static int multiplyPage(ArrayList<Integer> pagelist) {
+    // 각 자릿 수 곱하기
+    public static int multiplyPage(ArrayList<Integer> pageList) {
         int sum = 1;
-        for (int element : pagelist) {
+        for (int element : pageList) {
             sum *= element;
         }
         return sum;
     }
 
+    // 페이지 각 자릿 수 떼어내기
     public static ArrayList<Integer> convertPage(int page) {
-        String convertedpage = Integer.toString(page);
-        ArrayList<Integer> pagelist = new ArrayList<>();
-        for (int i = 0; i < convertedpage.length(); i++) {
-            pagelist.add(Integer.parseInt(String.valueOf(convertedpage.charAt(i))));
+        String convertedPage = Integer.toString(page);
+        ArrayList<Integer> pageList = new ArrayList<>();
+        for (int i = 0; i < convertedPage.length(); i++) {
+            pageList.add(Integer.parseInt(String.valueOf(convertedPage.charAt(i))));
         }
-        return pagelist;
+        return pageList;
 
     }
 
-    public static int comparePlusAndMulti(int plusedpage, int multipliedpage) {
-        if (plusedpage < multipliedpage) {
-            return multipliedpage;
-        }else if (plusedpage > multipliedpage) {
-            return plusedpage;
+    // 곱한 수와 더한 수 비교해서 더 높은 수 찾기
+    public static int comparePlusAndMulti(int plusedPage, int multipliedPage) {
+        if (plusedPage < multipliedPage) {
+            return multipliedPage;
+        }else if (plusedPage > multipliedPage) {
+            return plusedPage;
         }else {
-            return plusedpage;
+            return plusedPage;
         }
     }
 
-    public static int compareFirstAndSecond(int firstpage, int secondpage) {
-        if (firstpage < secondpage) {
-            return secondpage;
-        }else if (firstpage > secondpage) {
-            return firstpage;
+    // 첫 번째 페이지와 두 번째 페이지 중 더 높은 페이지 찾기
+    public static int compareFirstAndSecond(int firstPage, int secondPage) {
+        if (firstPage < secondPage) {
+            return secondPage;
+        }else if (firstPage > secondPage) {
+            return firstPage;
         }else {
-            return firstpage;
+            return firstPage;
         }
     }
 
+    // 포비와 크롱의 최종 페이지 수 비교하여 높은 수 찾기
     public static int comparePobiAndCrong(int pobi, int crong) {
         if (pobi < crong) {
             return 2;
@@ -60,6 +67,7 @@ class Problem1 {
         }
     }
 
+    // 예외 처리
     public static boolean exceptionAll (List<Integer> pobi, List<Integer> crong) {
         if (pobi.size() != 2 || crong.size() != 2) {
             return true;
@@ -82,54 +90,54 @@ class Problem1 {
             return -1;
         }
 
-        ArrayList<ArrayList<Integer>> pobipagelistlist = new ArrayList<>();
-        pobipagelistlist.add(convertPage(pobi.get(0)));
-        pobipagelistlist.add(convertPage(pobi.get(1)));
+        ArrayList<ArrayList<Integer>> pobiPageListList = new ArrayList<>();
+        pobiPageListList.add(convertPage(pobi.get(0)));
+        pobiPageListList.add(convertPage(pobi.get(1)));
 
-        ArrayList<ArrayList<Integer>> crongpagelistlist = new ArrayList<>();
-        crongpagelistlist.add(convertPage(crong.get(0)));
-        crongpagelistlist.add(convertPage(crong.get(1)));
+        ArrayList<ArrayList<Integer>> crongPageListList = new ArrayList<>();
+        crongPageListList.add(convertPage(crong.get(0)));
+        crongPageListList.add(convertPage(crong.get(1)));
 
-        int pobifirstpage;
-        int pobifirstpageplus;
-        int pobifirstpagemultiply;
+        int pobiFirstPage;
+        int pobiFirstPagePlus;
+        int pobiFirstPageMultiply;
 
-        int pobisecondpage;
-        int pobisecondpageplus;
-        int pobisecondpagemultiply;
+        int pobiSecondPage;
+        int pobiSecondPagePlus;
+        int pobiSecondPageMultiply;
 
-        int realpobipage;
+        int realPobiPage;
 
-        pobifirstpageplus = plusPage(pobipagelistlist.get(0));
-        pobifirstpagemultiply = multiplyPage(pobipagelistlist.get(0));
-        pobifirstpage = comparePlusAndMulti(pobifirstpageplus, pobifirstpagemultiply);
+        pobiFirstPagePlus = plusPage(pobiPageListList.get(0));
+        pobiFirstPageMultiply = multiplyPage(pobiPageListList.get(0));
+        pobiFirstPage = comparePlusAndMulti(pobiFirstPagePlus, pobiFirstPageMultiply);
 
-        pobisecondpageplus = plusPage(pobipagelistlist.get(1));
-        pobisecondpagemultiply = multiplyPage(pobipagelistlist.get(1));
-        pobisecondpage = comparePlusAndMulti(pobisecondpageplus, pobisecondpagemultiply);
+        pobiSecondPagePlus = plusPage(pobiPageListList.get(1));
+        pobiSecondPageMultiply = multiplyPage(pobiPageListList.get(1));
+        pobiSecondPage = comparePlusAndMulti(pobiSecondPagePlus, pobiSecondPageMultiply);
 
-        realpobipage = compareFirstAndSecond(pobifirstpage, pobisecondpage);
+        realPobiPage = compareFirstAndSecond(pobiFirstPage, pobiSecondPage);
 
-        int crongfirstpage;
-        int crongfirstpageplus;
-        int crongfirstpagemultiply;
+        int crongFirstPage;
+        int crongFirstPagePlus;
+        int crongFirstPageMultiply;
 
-        int crongsecondpage;
-        int crongsecondpageplus;
-        int crongsecondpagemultiply;
+        int crongSecondPage;
+        int crongSecondPagePlus;
+        int crongSecondPageMultiply;
 
-        int realcrongpage;
-        crongfirstpageplus = plusPage(crongpagelistlist.get(0));
-        crongfirstpagemultiply = multiplyPage(crongpagelistlist.get(0));
-        crongfirstpage = comparePlusAndMulti(crongfirstpageplus, crongfirstpagemultiply);
+        int realCrongPage;
+        crongFirstPagePlus = plusPage(crongPageListList.get(0));
+        crongFirstPageMultiply = multiplyPage(crongPageListList.get(0));
+        crongFirstPage = comparePlusAndMulti(crongFirstPagePlus, crongFirstPageMultiply);
 
-        crongsecondpageplus = plusPage(crongpagelistlist.get(1));
-        crongsecondpagemultiply = multiplyPage(crongpagelistlist.get(1));
-        crongsecondpage = comparePlusAndMulti(crongsecondpageplus, crongsecondpagemultiply);
+        crongSecondPagePlus = plusPage(crongPageListList.get(1));
+        crongSecondPageMultiply = multiplyPage(crongPageListList.get(1));
+        crongSecondPage = comparePlusAndMulti(crongSecondPagePlus, crongSecondPageMultiply);
 
-        realcrongpage = compareFirstAndSecond(crongfirstpage, crongsecondpage);
+        realCrongPage = compareFirstAndSecond(crongFirstPage, crongSecondPage);
 
-        return comparePobiAndCrong(realpobipage, realcrongpage);
+        return comparePobiAndCrong(realPobiPage, realCrongPage);
 
     }
 }
