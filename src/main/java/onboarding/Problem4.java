@@ -22,9 +22,9 @@ public class Problem4 {
     public static char frog(char letter){
         int charInt = letter;
         if(letter >= 65 & letter <= 90){
-            charInt += 155 - letter;
+            charInt = 155 - letter;
         } else if(letter >= 97 & letter <= 122){
-            charInt += 219 - letter;
+            charInt = 219 - letter;
         }
         return (char)charInt;
     }
