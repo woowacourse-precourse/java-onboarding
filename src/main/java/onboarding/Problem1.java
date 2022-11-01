@@ -37,4 +37,8 @@ class Problem1 {
     private  void validatePageNumScope(Integer pageNum) throws Exception {
         if(pageNum<1||pageNum>400) throw new Exception();
     }
+
+    private void validatePageOddIfLeftElseEven(Integer leftPageNum, Integer rightPageNum) throws Exception{
+        if((leftPageNum%2)==0||(rightPageNum%2)!=0) throw new Exception();
+    }
 }
