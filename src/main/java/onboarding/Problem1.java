@@ -77,9 +77,6 @@ class IsValidPage {
         if(rightPage2 - leftPage2 != 1) {
             return false;
         }
-        if(player1.size() != 2 || player2.size() != 2) {
-            return false;
-        }
-        return true;
+        return player1.size() == 2 && player2.size() == 2;
     }
 }
