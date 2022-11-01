@@ -15,9 +15,12 @@ public class Problem6 {
         for (List<String> list : forms) {
             String email = list.get(0);
             String id = list.get(1);
+            for (int i = 0; i < id.length() - 1; i++) {
+                String key = id.substring(i, i + 2);
 
 
-        }
+
+            }
 
         return answer;
     }
