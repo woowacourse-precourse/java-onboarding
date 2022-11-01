@@ -24,8 +24,8 @@ public class Problem5 {
 }
 
 class Bank {
-    HashSet<Integer> cashList;
-    List<Integer> sortedCashList;
+    private HashSet<Integer> cashList;
+    private List<Integer> sortedCashList;
 
     public Bank(List<Integer> cashList) {
         this.cashList = new HashSet<>(cashList);
