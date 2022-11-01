@@ -3,6 +3,51 @@ package onboarding;
 import java.util.List;
 class Problem1 {
 
+    public static int each_sum(int a,int b)
+    {
+        int sum1,sum2;
+        sum1=sum2=0;
+
+        while(a>0)
+        {
+            sum1+=a%10;
+            a/=10;
+        }
+
+        while(b>0)
+        {
+            sum2+=b%10;
+            b/=10;
+        }
+        if(sum1>sum2)
+            return sum1;
+        else
+            return sum2;
+    }
+
+    public static int each_mul(int a,int b)
+    {
+        int sum1,sum2;
+        sum1=sum2=1;
+
+        while(a>0)
+        {
+            sum1*=a%10;
+            a/=10;
+        }
+
+        while(b>0)
+        {
+            sum2*=b%10;
+            b/=10;
+        }
+
+        if(sum1>sum2)
+            return sum1;
+        else
+            return sum2;
+
+    }
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
