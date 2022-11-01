@@ -21,4 +21,11 @@ public class Problem6 {
         checkEmailRegex();
         return saveEmailCheckedByEmailRegex;
     }
+
+    public static void initializeDuplication(List<List<String>> forms) {
+        checkDuplication = new ArrayList<>(forms.size());
+        for (int i = 0; i < forms.size(); i++) {
+            checkDuplication.add(false);
+        }
+    }
 }
