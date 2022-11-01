@@ -43,6 +43,15 @@ public class Problem6 {
         List<String> form = getForm(forms, index);
         return form.get(1);
     }
+    private static int controlProcess(List<List<String>> forms, List<String> answer, int controlIndex, boolean deleteControlIndex) {
+        if (deleteControlIndex) {
+            String controlEmail = getEmail(forms, controlIndex);
+            insertAnswer(answer, controlEmail);
+            forms.remove(controlIndex);
+            return 0;
+        }
+        return 1;
+    }
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
