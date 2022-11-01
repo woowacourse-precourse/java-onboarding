@@ -15,4 +15,12 @@ class Problem1 {
         }
         return mul;
     }
+
+    private static int getSum(int n, int sum) {
+        while(n / 10 != 0 || n % 10 != 0) {
+            sum += n % 10;
+            n /= 10;
+        }
+        return sum;
+    }
 }
