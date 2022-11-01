@@ -24,3 +24,12 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능목록!
+1. 전체 문자열을 돌면서 user 와 친구 관계인 아이디를 찾는다.
+2. 다시 전체 문자열을 돌면서 user와 친구의 친구 관계이면서 user와는 친구 관계가 아닌 아이디를 찾는다.
+3. 찾은 아이디가 중복이 된다면 점수를 10점씨 증가 시킨다.
+4. 타임라인에 방문한 아이디에 점수를 준다.
+5. 타임라인 방문 아이디중 user와 친구인 경우를 제외한다.
+6. map 형식에 값을 삽입했기 때문에 익명 함수를 사용하여 values 의 값으로 전체를 sorting한다.
+7. 정렬된 key의 값을 출력한다.
