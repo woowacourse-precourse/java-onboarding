@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -31,5 +32,34 @@ public class Problem6 {
             this.duplicateEmailList = duplicateEmailList;
         }
 
+        // 단어목록에 단어를 추가하는 함수, 중복인 경우 추가하지 않는다.
+        public void insertWord(String email, String word) {
+            if(!checkDuplicate(email, word)) {
+                words.put(word, email);
+            }
+        }
+
+        // 이미 등록되어있는 단어인지 확인
+        private boolean checkDuplicate(String email, String word) {
+            String mapEmail = words.get(word);
+            if(mapEmail != null) {
+                appendEmailList(mapEmail);
+                appendEmailList(email);
+                return true;
+            }
+            return false;
+        }
+
+        // 중복이 발생한 회원들을 추가하는 함수
+        private void appendEmailList(String email) {
+            if(!duplicateEmailList.contains(email))  // 등록되지 않는 이메일만 추가한다.
+                duplicateEmailList.add(email);
+        }
+
+        // 중복이 발생한 회원들을 반환하는 함수
+        public List<String> getDuplicateEmailList() {
+            Collections.sort(duplicateEmailList);
+            return duplicateEmailList;
+        }
     }
 }
