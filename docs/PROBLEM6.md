@@ -2,7 +2,8 @@
 1. - [ ] 입력 된 forms에서 이메일, 닉네임을 추출하는 메서드(getEmailFromCrew, getNicknameFromCrew)
 2. - [ ] 입력 된 닉네임을 두 글자씩 토큰화하여 Set으로 리턴하는 nicknameToTokens 메서드 (중복 제거)
 3. - [ ] 해당 토큰을 Key, 나오는 개수를 Value로 한 tokenAndCountMap에 추가하는 addTokenAndCountToMap 메서드
-4. - [ ] tokenAndCountMap에서 특정 token이 여러개 중복되어있는지 판별하는 isDuplicatedToken 메서드
+4. - [ ] tokenAndCountMap, allTokens 를 초기화하는 setTokenAndCountMap 메서드
+5. - [ ] tokenAndCountMap에서 특정 token이 여러개 중복되어있는지 판별하는 isDuplicatedToken 메서드
 
 ## 🚀 기능 요구 사항
 

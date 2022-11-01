@@ -24,6 +24,20 @@ public class Problem6 {
         return answer;
     }
 
+    private static void setTokenAndCountMap(List<List<String>> forms,
+                                            Map<String, Integer> tokenAndCountMap,
+                                            List<Set<String>> allTokens) {
+
+        for (List<String> eachCrew : forms) {
+            String nickname = getNicknameFromCrew(eachCrew);
+            Set<String> tokens = nicknameToTokens(nickname);
+
+            addTokenAndCountToMap(tokenAndCountMap, tokens);
+
+            allTokens.add(tokens); // Set<String> -> List<Set<String>>
+        }
+    }
+
     private static String getEmailFromCrew(List<String> eachCrew) {
         return eachCrew.get(0);
     }
