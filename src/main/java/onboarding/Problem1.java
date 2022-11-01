@@ -78,8 +78,11 @@ class Problem1 {
             answer =  -1;
         else if(!(verifyConditions(crong)))
             answer = -1;
-        else
-            answer = winner(makeScore(pobi), makeScore(crong));
+        else{
+            int scorePobi = makeScore(pobi);
+            int scoreCrong = makeScore(crong);
+            answer = winner(scorePobi, scoreCrong);
+        }
 
         return answer;
     }
