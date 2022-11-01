@@ -2,7 +2,8 @@ package onboarding;
 
 public class Problem4 {
     public static String solution(String word) {
-        String answer = "";
+        String answer = convertWord(word);
+
         return answer;
     }
 
@@ -28,5 +29,23 @@ public class Problem4 {
         int i = c - 'A';
 
         return (char) ('Z' - i);
+    }
+
+    private static String convertWord(String word) {
+        char[] arr = word.toCharArray();
+
+        for (int i = 0; i < arr.length; i++) {
+            int d = divideChar(arr[i]);
+
+            if (d == 1) {
+                arr[i] = convertLowerCase(arr[i]);
+            }
+
+            if (d == 2) {
+                arr[i] = convertUpperCase(arr[i]);
+            }
+        }
+
+        return new String(arr);
     }
 }
