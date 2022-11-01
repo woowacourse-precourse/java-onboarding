@@ -36,16 +36,21 @@ public class Problem2 {
             if(isDuplicate) {
                 if(current == top) {
                     index++;
+                    if(index == LEN) stack.pop();
                 } else {
                     stack.pop();
-                    top = stack.peek();
+                    if(stack.isEmpty()) {
+                        top = 'Z';
+                    } else {
+                        top = stack.peek();
+                    }
                     isDuplicate = false;
                 }
             } else {
                 if(current == top) {
                     isDuplicate = true;
                     index++;
-                    continue;
+                    if(index >= LEN) stack.pop();
                 } else {
                     stack.push(current);
                     top = current;
