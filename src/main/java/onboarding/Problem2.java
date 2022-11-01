@@ -8,6 +8,16 @@ public class Problem2 {
         return answer;
     }
 
+    private boolean isHappenedDecryption(){
+
+        if(findDecodedSection()){
+            deleteFoundSection();
+            return true;
+        }else{
+            return false;
+        }
+    }
+
     private  boolean findDecodedSection(){
         int cryptogramLength = cryptograph.length();
         boolean existence = false;
