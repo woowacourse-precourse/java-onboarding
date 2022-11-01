@@ -19,6 +19,8 @@ public class Problem7 {
 
         HashMap<String, Integer> dist = dijkstra(user, graph);
 
+        HashMap<String, Integer> scoreBoard = calculateScore(visitors, dist, graph, user);
+
     }
 
     private static class Node {
@@ -103,6 +105,34 @@ public class Problem7 {
         }
 
         return dist;
+    }
+
+    public static HashMap<String, Integer> calculateScore(List<String> visitors, HashMap<String, Integer> dist, HashMap<String, ArrayList<Node>> graph, String user) {
+        HashMap<String, Integer> score = new HashMap<>();
+
+
+        for (String userName : dist.keySet()) {
+            int mutualFriendCnt = 0;
+
+            if (dist.get(userName) == 2) {
+                for (Node friend : graph.get(user))
+                    for (Node AdjacentFriend : graph.get(userName))
+                        if (friend.v.equals(AdjacentFriend.v)) {
+                            mutualFriendCnt += 1;
+                        }
+                score.put(userName, mutualFriendCnt * 10);
+            }
+        }
+
+        for (String visitor : visitors) {
+            if (score.containsKey(visitor)) {
+                score.put(visitor, score.get(visitor) + 1);
+            } else {
+                score.put(visitor, 1);
+            }
+        }
+
+        return score;
     }
 
 
