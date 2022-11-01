@@ -8,6 +8,10 @@ public class Problem3 {
         return countClap(number);
     }
 
+    private static boolean verifyException(int number) {
+        return (number >= 1 && number <= 10000);
+    }
+
     private static int countClap(int number) {
         int answer = 0;
 
@@ -28,7 +32,4 @@ public class Problem3 {
         return (splitNumber[j].contains("3") || splitNumber[j].contains("6") || splitNumber[j].contains("9"));
     }
 
-    private static boolean verifyException(int number) {
-        return (number >= 1 && number <= 10000);
-    }
 }
