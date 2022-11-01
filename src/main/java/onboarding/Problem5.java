@@ -28,6 +28,9 @@ public class Problem5 {
 
     public static List<Integer> solution(int money) {
         List<Integer> answer = new ArrayList<>();
+        if (!validation(money)){
+            return null;
+        }
         for (int i = 0; i < 9; i++) {
             answer.add(0);
         }
