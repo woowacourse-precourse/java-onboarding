@@ -40,10 +40,14 @@ public class Problem2 {
     }
 
     private static String checkDuplicatesOfLastLetter(String cryptogram, char[] cryptogramChars) {
-        if (cryptogramChars[cryptogram.length() - 1] != cryptogramChars[cryptogram.length() - 2]) {
+        if (isLastTwoLettersDifferent(cryptogram, cryptogramChars)) {
             return Character.toString(cryptogramChars[cryptogram.length() - 1]);
         }
         return EMPTY_STRING;
+    }
+
+    private static boolean isLastTwoLettersDifferent(String cryptogram, char[] cryptogramChars) {
+        return cryptogramChars[cryptogram.length() - 1] != cryptogramChars[cryptogram.length() - 2];
     }
 
     private static String removeDuplicatesOfMiddleLetters(String cryptogram, String refinedCryptogram, char[] cryptogramChars) {
@@ -54,17 +58,29 @@ public class Problem2 {
     }
 
     private static String checkDuplicatesOfMiddleLetters(char[] cryptogramChars, int i) {
-        if (cryptogramChars[i] != cryptogramChars[i + 1] && cryptogramChars[i] != cryptogramChars[i - 1]) {
+        if (isDifferentFromFollowingLetter(cryptogramChars, i) && isDifferentFromPreviousLetter(cryptogramChars, i)) {
             return Character.toString(cryptogramChars[i]);
         }
         return EMPTY_STRING;
     }
 
+    private static boolean isDifferentFromPreviousLetter(char[] cryptogramChars, int i) {
+        return cryptogramChars[i] != cryptogramChars[i - 1];
+    }
+
+    private static boolean isDifferentFromFollowingLetter(char[] cryptogramChars, int i) {
+        return cryptogramChars[i] != cryptogramChars[i + 1];
+    }
+
     private static String checkDuplicatesOfFirstLetter(char[] cryptogramChars) {
-        if (cryptogramChars[0] != cryptogramChars[1]) {
+        if (isFirstTwoLettersDifferent(cryptogramChars)) {
             return Character.toString(cryptogramChars[0]);
         }
         return EMPTY_STRING;
+    }
+
+    private static boolean isFirstTwoLettersDifferent(char[] cryptogramChars) {
+        return cryptogramChars[0] != cryptogramChars[1];
     }
 
     private static boolean isMoreThanTwoLetter(String cryptogram) {
