@@ -5,6 +5,24 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         int answer = Integer.MAX_VALUE;
+
+        int p = -1, c = -1;
+
+        if (pobi.get(1) - pobi.get(0) != 1 || crong.get(1) - crong.get(0) != 1) {
+            answer = -1;
+            return answer;
+        }
+
+        p = getMax(pobi);
+        c = getMax(crong);
+
+        if(p != -1 && c != -1 && p > c)
+            answer = 1;
+        else if(p == c)
+            answer = 0;
+        else
+            answer = 2;
+
         return answer;
     }
 
