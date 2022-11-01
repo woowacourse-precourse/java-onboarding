@@ -4,7 +4,6 @@ import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-
         HashSet<String> AnswerEmails = findAnswerEmailSet(forms);
         List<String> answer = new ArrayList<>(AnswerEmails);
         Collections.sort(answer);
@@ -35,6 +34,12 @@ public class Problem6 {
                 addEmailsToAnswerSet(answerEmails,email,newlyAddedEmail);
             }
             allPartialNicknameWithEmail.put(partialNickname,email);
+        }
+    }
+    public static void addEmailsToAnswerSet(HashSet<String> answerEmails, String email, String newlyAddedEmail) {
+        if (email != newlyAddedEmail) {
+            answerEmails.add(email);
+            answerEmails.add(newlyAddedEmail);
         }
     }
 }
