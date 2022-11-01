@@ -25,6 +25,10 @@ public class Problem7 {
         return "";
     }
 
+    private static void addFriendScore(List<String> friend){
+        friend.stream()
+                .forEach(friendId -> recommendedFriendScores.put(friendId, recommendedFriendScores.getOrDefault(friendId,0)+10));
+    }
 
 
 }
