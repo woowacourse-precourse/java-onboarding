@@ -39,6 +39,33 @@ class Problem1 {
         return Math.max(sum, mul);
     }
 
+    // 왼쪽 페이지와 오른쪽 페이지를 비교해 최종 점수를 반환한다.
+    public static int comparePage(int leftpage, int rightpage){
+        return Math.max(leftpage, rightpage);
+    }
+
+    // 우승자를 반환한다.
+    public static int returnAns(int pobiscore, int crongscore){
+        int answer = -1;
+
+        //pobi가 우승할 경우
+        if(pobiscore > crongscore){
+            answer = 1;
+        }
+
+        //crong이 우승할 경우
+        else if(pobiscore < crongscore){
+            answer = 2;
+        }
+
+        //무승부일 경우
+        else{
+            answer = 0;
+        }
+        return answer;
+    }
+
+
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
         // pobi와 crong의 페이지 수 변수에 저장
