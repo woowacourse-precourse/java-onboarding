@@ -36,4 +36,9 @@ public class GameBoard {
         int gamePlayer2Score = scoreCalculator.getGameScore(gamePlayerList.get(LAST_PLAYER));
         getWinner(gamePlayer1Score, gamePlayer2Score);
     }
+
+    private void getWinner(int gamePlayer1Score, int gamePlayer2Score) {
+        this.gameResult = (gamePlayer1Score > gamePlayer2Score) ? FIRST_PLAYER_WIN.gameResult() : LAST_PLAYER_WIN.gameResult();
+        if (gamePlayer1Score == gamePlayer2Score) this.gameResult = DRAW.gameResult();
+    }
 }
