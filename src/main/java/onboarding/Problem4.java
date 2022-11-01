@@ -9,9 +9,9 @@ public class Problem4 {
             Character c = word.charAt(i);
 
             if ((int) c >= 65 && (int) c <= 90) {
-                sb.append((char)(90 - ((int) c - 65)));
+                sb.append(upperToLower(c));
             } else if ((int) c >= 97 && (int) c <= 122) {
-                sb.append((char) (122 - ((int) c - 97)));
+                sb.append(lowerToUpper(c));
             } else {
                 sb.append(c);
             }
@@ -20,11 +20,11 @@ public class Problem4 {
         return sb.toString();
     }
 
-    private static int upperToLower(int word) {
-        return 90 - ((int) word - 65);
+    private static char upperToLower(char word) {
+        return (char)(90 - ((int) word - 65));
     }
 
-    private static int lowerToUpper(int word) {
-        return 122 - ((int) word - 97);
+    private static char lowerToUpper(char word) {
+        return (char)(122 - ((int) word - 97));
     }
 }
