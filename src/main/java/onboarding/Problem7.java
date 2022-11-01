@@ -17,7 +17,7 @@ public class Problem7 {
         Problem7RepositoryFactory problem7RepositoryFactory = new Problem7RepositoryFactory();
         repo=(Problem7SnsRepository) problem7RepositoryFactory.makeRepository();
         problem7Service=new Problem7Service(problem7RepositoryFactory);
-        
+
         repo.removeAll();
         problem7Service.save(user);
         for(int i=0;i<friends.size();i++){
