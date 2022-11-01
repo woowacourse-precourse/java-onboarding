@@ -5,7 +5,7 @@ import java.util.stream.Stream;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        if (Stream.of(pobi, crong).map(Problem1::valid).anyMatch(e -> e == false))
+        if (!(validCheck(pobi) && validCheck(crong)))
             return GameResult.EXCEPTION;
 
         int pobiMaxScore = getMaxScore(pobi);
@@ -13,11 +13,11 @@ class Problem1 {
         return getGameResult(pobiMaxScore, crongMaxScore);
     }
 
-    private static boolean valid(List<Integer> list) {
-        return inputValid(list) && !containBeginPageOrEndPage(list);
+    private static boolean validCheck(List<Integer> list) {
+        return inputValidCheck(list) && !containBeginPageOrEndPage(list);
     }
 
-    private static boolean inputValid(List<Integer> list) {
+    private static boolean inputValidCheck(List<Integer> list) {
         int leftPage = list.get(0);
         int rightPage = list.get(1);
 
@@ -63,7 +63,7 @@ class Problem1 {
         return GameResult.DRAW;
     }
 
-    interface GameResult{
+    interface GameResult {
         int POBIWIN = 1;
         int CRONGWIN = 2;
         int DRAW = 0;
