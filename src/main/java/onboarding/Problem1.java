@@ -21,6 +21,10 @@ class Problem1 {
         int crongLeftPage = MaxBetweenSumandMultiple(crong.get(LEFT));
         int crongRightPage = MaxBetweenSumandMultiple(crong.get(RIGHT));
 
+        int pobiScore = Math.max(pobiLeftPage, pobiRightPage);
+        int crongScore = Math.max(crongLeftPage, crongRightPage);
+
+        return pobiScore > crongScore ? 1 : (pobiScore == crongScore ? 0 : 2);
     }
 
     public static int MaxBetweenSumandMultiple(int number) {
