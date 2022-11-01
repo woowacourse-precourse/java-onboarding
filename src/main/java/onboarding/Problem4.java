@@ -11,17 +11,37 @@ import java.util.Map;
 public class Problem4 {
 
     public static String solution(String word) {
-        Map<Character, Character> dict = new HashMap<>();
-        for (int i = 0; i <= 'Z' - 'A'; ++i) {
-            dict.put((char) ('A' + i), (char) ('Z' - i));
-            dict.put((char) ('a' + i), (char) ('z' - i));
-        }
-        dict.put(' ', ' ');
+        validateWord(word);
+        DictionaryTable table = new DictionaryTable();
 
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < word.length(); ++i) {
-            sb.append(dict.get(word.charAt(i)));
+            sb.append(table.get(word.charAt(i)));
         }
         return sb.toString();
+    }
+
+    private static void validateWord(String word) {
+        if (1 <= word.length() && word.length() <= 1000) {
+            return;
+        }
+        throw new RuntimeException("word는 1자 이상 1000자 이하만 가능합니다");
+    }
+
+    static class DictionaryTable {
+
+        Map<Character, Character> dict = new HashMap<>();
+
+        public DictionaryTable() {
+            for (int i = 0; i <= 'Z' - 'A'; ++i) {
+                dict.put((char) ('A' + i), (char) ('Z' - i));
+                dict.put((char) ('a' + i), (char) ('z' - i));
+            }
+            dict.put(' ', ' ');
+        }
+
+        public char get(char ch) {
+            return dict.get(ch);
+        }
     }
 }
