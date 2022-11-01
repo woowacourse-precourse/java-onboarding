@@ -1,8 +1,3 @@
-//1. user랑 친구인 사람 목록 리스트를 만들어
-//2. friends에 있는 유저 목록 해시맵 만들어(key:사람이름, value: 사람이랑 친구인 애들 목록)
-//3. 해시맵 돌면서 user랑 친구인 사람 목록이랑 value랑 교집합 수를 구해
-//4. 유저 목록 해시맵 하나 더 만들어서 스코어 저장해
-
 package onboarding;
 
 import java.util.*;
