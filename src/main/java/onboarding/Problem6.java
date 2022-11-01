@@ -8,9 +8,46 @@ iv) solution -> iii)을 이용하여 정답을 반환한다.
 
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Problem6 {
+
+
+    boolean checkRedupli(String name1, String name2){
+
+        boolean temp_result = false;
+
+        for (int i = 0; i < name1.length() - 1; i++){
+            for (int j = 0; i < name1.length() - 1; i++) {
+                if (name1.substring(i, i+2).equals(name2.substring(j,j+2))) temp_result = true;
+            }
+        }
+
+        return temp_result;
+    }
+
+    int[] checkRedupl(String cryptogram) {
+        int[] temp_array = new int[cryptogram.length()];
+
+        for (int i = 0; i < cryptogram.length() - 1; i++) {
+            if (cryptogram.charAt(i) == cryptogram.charAt(i + 1)) {
+                temp_array[i] = 1;
+                temp_array[i+1] = 1;
+            }
+        }
+
+        return temp_array;
+    }
+
+    String reduceRedupl(String cryptogram, int[] index){
+        int temp_length = cryptogram.length();
+        String temp_string = "";
+        for (int i=0; i<temp_length; i++){
+            if (index[i]==0) temp_string += cryptogram.substring(i,i+1);
+        }
+        return temp_string;
+    }
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
         return answer;
