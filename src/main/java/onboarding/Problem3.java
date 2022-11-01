@@ -6,7 +6,9 @@ public class Problem3 {
     private static final int MAX_NUMBER = 10000;
 
     public static int solution(int number) {
-        if (isOutOfRange(number)) return -1;
+        if (isOutOfRange(number)) {
+            throw new IllegalArgumentException("유효한 숫자의 범위가 아닙니다. (1 ~ 10000)");
+        }
 
         return play369Game(number);
     }
