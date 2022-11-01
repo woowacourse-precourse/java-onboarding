@@ -10,7 +10,17 @@ public class Problem3 {
     }
 
     private static int countClap(int number) {
+        int clap = 0;
+        String numberString = String.valueOf(number);
+
+        for(int i=0; i<numberString.length(); i++){
+            if(numberString.charAt(i) == '3' || numberString.charAt(i) == '6' || numberString.charAt(i) == '9'){
+                clap++;
+            }
+        }
+        return clap;
     }
+
 
 
 }
