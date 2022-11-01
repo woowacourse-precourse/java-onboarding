@@ -4,25 +4,26 @@ import java.util.ArrayList;
 import java.util.Stack;
 
 public class Problem2 {
-    public static Stack<String> cryptogramStack;
+    public static Stack<Character> cryptogramStack;
 
     public static String solution(String cryptogram) {
+        cryptogramStack = new Stack<>();
         StringBuilder sb = new StringBuilder();
-        stringToDecode(cryptogram);
 
+        stringToDecode(cryptogram);
         cryptogramStack.stream().forEach(sb::append);
 
         return sb.toString();
     }
+
     private static void stringToDecode(String cryptogram) {
-        cryptogramStack = new Stack<>();
-        for (String s : cryptogram.split("")) {
+        for (char s : cryptogram.toCharArray()) {
             decode(s);
         }
     }
-    private static void decode(String s) {
-        String top = cryptogramStack.peek();
 
+    private static void decode(char s) {
+        Character top = cryptogramStack.peek();
         if (cryptogramStack.empty()) {
             cryptogramStack.push(s);
             return;
