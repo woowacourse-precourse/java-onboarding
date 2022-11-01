@@ -1,17 +1,16 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
         List<String> userFriends = findUserFriend(user, friends);
         HashMap<String, Integer> notUserFriends = new HashMap<>();
         notUserFriends = findNotFriendInFriends(user, friends, userFriends, notUserFriends);
         notUserFriends = findNotFriendInVisitors(userFriends, visitors, notUserFriends);
+        List<String> answer = decideRecommends(notUserFriends);
         return answer;
     }
     public static List<String> findUserFriend(String user, List<List<String>> friends){
@@ -66,5 +65,15 @@ public class Problem7 {
         }
         return notUserFriends;
     }
-
+    static public List<String> decideRecommends(HashMap<String, Integer> notUserFriends){
+        List<Map.Entry<String, Integer>> sortNotUserFriends = notUserFriends.entrySet().stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+                .collect(Collectors.toList());
+        List<String> recommendFriends = new ArrayList<>();
+        int length = Math.min(sortNotUserFriends.size(), 5);
+        for (int i = 0; i < length; i++) {
+            recommendFriends.add(sortNotUserFriends.get(i).getKey());
+        }
+        return recommendFriends;
+    }
 }
