@@ -9,6 +9,7 @@ public class Problem7 {
         List<String> answer = Collections.emptyList();
         makeUserFriends(user, friends);
         checkFriends(user, friends);
+        checkVisitors(visitors);
         return answer;
     }
     private static void makeUserFriends(String user, List<List<String>> friends) {
@@ -41,5 +42,11 @@ public class Problem7 {
         if(scoreDict.containsKey(name))
             score += scoreDict.get(name);
         scoreDict.put(name, score);
+    }
+    private static void checkVisitors(List<String> visitors) {
+        for (String visitor : visitors) {
+            if(userFriends.contains(visitor)) continue;
+            scorePerson(visitor, 1);
+        }
     }
 }
