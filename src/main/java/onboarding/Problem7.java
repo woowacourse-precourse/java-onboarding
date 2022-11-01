@@ -17,6 +17,12 @@ public class Problem7 {
         return answer;
     }
 
+    //  추천 목록에서 본인과 이미 친구인 유저들을 제외하는 메소드
+    private static void deleteUserAndFriend(String user, List<List<String>> friends){
+        recommend.remove(user);
+        for(String s : findFriendsWithUser(user,friends)) recommend.remove(s);
+    }
+
     //  점수 증가 대상인 사람 목록과 증가시킬 점수를 입력받아 점수증가
     private static void increasePoint(List<String> list, int point){
         for(String s : list){
