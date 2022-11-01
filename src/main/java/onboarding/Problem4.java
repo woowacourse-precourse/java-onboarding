@@ -1,26 +1,25 @@
 package onboarding;
 
 public class Problem4 {
+    private final static int UPPER_VALUE = 155;
+    private final static int LOWER_VALUE = 219;
+    private final static int SPACE_VALUE = 32;
     public static String solution(String word) {
         return convertWord(word);
     }
 
     public static int getAscii(int c){
-        final int upperVal = 155;
-        final int lowerVal = 219;
-        final int spaceVal = 32;
-
         if (65 <= c && c <= 90){
-            return upperVal - c;
+            return UPPER_VALUE - c;
         }
 
         if (97 <= c && c <=122){
-            return lowerVal - c;
+            return LOWER_VALUE - c;
         }
-        if (c == spaceVal){
-            return spaceVal;
+        if (c == SPACE_VALUE){
+            return SPACE_VALUE;
         }
-        return -1;
+        return c;
     }
     public static String convertWord(String word){
         return word.chars()
