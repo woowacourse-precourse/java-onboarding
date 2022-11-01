@@ -24,3 +24,10 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능 목록
+
+1. 전체 사용자들을 나타내는 social network와 친구의 친구 정보를 설정하는 기능
+2. 사용자와 함께 아는 친구의 수만큼 대상에게 10점을 반복해서 더하는 기능
+3. 사용자의 타임 라인에 방문한 횟수만큼 대상에게 1점을 반복해서 더하는 기능
+4. 친구 추천 규칙에 따라 점수가 가장 높은 순으로 정렬하는 기능
