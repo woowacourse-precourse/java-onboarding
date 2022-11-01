@@ -25,4 +25,22 @@ public class Problem2 {
         }
         return Deduplicate(cryptogram);
     }
+
+    public static String Deduplicate(String cryptogram){
+        decryption="";
+        sb=(cryptogram.charAt(0)!=cryptogram.charAt(1)) ? sb.append(cryptogram.charAt(0)) : sb.append("");
+
+        for(int i=1; i<cryptogram.length()-1; i++){
+            if(cryptogram.charAt(i)==cryptogram.charAt(i+1)||cryptogram.charAt(i-1)==cryptogram.charAt(i)) {
+                continue;
+            }
+            sb.append(cryptogram.charAt(i));
+        }
+
+        sb=(cryptogram.charAt(cryptogram.length()-2)!=cryptogram.charAt(cryptogram.length()-1))? sb.append(cryptogram.charAt(cryptogram.length()-1)) : sb.append("");
+
+        decryption=sb.toString();
+        sb.setLength(0);
+        return decryption;
+    }
 }
