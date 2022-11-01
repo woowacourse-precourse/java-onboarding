@@ -53,6 +53,12 @@ public class Problem7 {
         // 내 친구목록 생성에 본인도 추가 - 결과값에 제외할 목록들
         myFriendList.add(user);
 
+        // 방문 수 만큼 점수 1점 주기
+        for (int i = 0; i < visitors.size(); i++) {
+            int visitorNumber = idToNumber.get(visitors.get(i));
+            score[visitorNumber] += 1;
+        }
+
         return answer;
     }
 
