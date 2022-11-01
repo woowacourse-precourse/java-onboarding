@@ -13,8 +13,9 @@ import static org.assertj.core.api.Assertions.assertThat;
  * 5. score 순서대로 정렬. 점수가 같다면 이름순으로 정렬
  */
 public class Problem7 {
-    static List<String> userFriends;
-    static HashMap<String, Integer> nonFriends;
+    static List<String> userFriends = new ArrayList<>();
+    static HashMap<String, Integer> nonFriends = new HashMap<>();
+    static List<Map.Entry<String, Integer>> entryList;
 
     private static void isNewFriend(List<String> friends, String userFriend){
         if (friends.get(0).equals(userFriend)){
@@ -37,20 +38,7 @@ public class Problem7 {
             }
         }
     }
-    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = new ArrayList<>();
-        userFriends = new ArrayList<>();
-        nonFriends = new HashMap<>();
-        // user의 친구 목록 추가
-        for (List<String> friend : friends){
-            if (friend.get(0).equals(user)){
-                userFriends.add(friend.get(1));
-            } else if (friend.get(1).equals(user)){
-                userFriends.add(friend.get(0));
-            }
-        }
-
-        // 친구의 친구 목록 추가, score 합산
+    private static void AddFrinedsScore(List<List<String>> friends, String user){
         for (List<String> friend : friends){
             for (int j = 0; j < userFriends.size(); j++) {
                 if (friend.contains(user)) {
@@ -63,7 +51,8 @@ public class Problem7 {
                 isNewFriend(friend, userFriends.get(j));
             }
         }
-
+    }
+    private static void AddVisitorScore(List<String> visitors){
         for (String visitor : visitors){
             if (userFriends.contains(visitor)){
                 continue;
@@ -77,8 +66,9 @@ public class Problem7 {
                 nonFriends.put(visitor, 1);
             }
         }
-
-        List<Map.Entry<String, Integer>> entryList = new LinkedList<>(nonFriends.entrySet());
+    }
+    private static void SortByScore(){
+        entryList = new LinkedList<>(nonFriends.entrySet());
         entryList.sort(new Comparator<Map.Entry<String, Integer>>() {
             @Override
             public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
@@ -89,6 +79,22 @@ public class Problem7 {
                 }
             }
         });
+    }
+    public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        List<String> answer = new ArrayList<>();
+
+        // user의 친구 목록 추가
+        for (List<String> friend : friends){
+            if (friend.get(0).equals(user)){
+                userFriends.add(friend.get(1));
+            } else if (friend.get(1).equals(user)){
+                userFriends.add(friend.get(0));
+            }
+        }
+
+        AddFrinedsScore(friends, user);
+        AddVisitorScore(visitors);
+        SortByScore();
 
         int count = 0;
         for (Map.Entry<String, Integer> ans : entryList){
