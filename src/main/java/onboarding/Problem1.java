@@ -22,6 +22,21 @@ class Problem1 {
         crong_scores[2] = multiple(crong_left);
         crong_scores[3] = multiple(crong_right);
 
+        int crong_max = crong_scores[0];
+        int pobi_max = pobi_scores[0];
+
+        for(int i = 1; i <= 3; i++){
+            if(crong_max < crong_scores[i]){
+                crong_max = crong_scores[i];
+            }
+        }
+
+        for(int i = 1; i <= 3; i++){
+            if(pobi_max < pobi_scores[i]){
+                pobi_max = pobi_scores[i];
+            }
+        }
+
         return answer;
     }
 
