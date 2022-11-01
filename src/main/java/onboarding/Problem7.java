@@ -8,6 +8,7 @@ public class Problem7 {
         Map<String ,Integer> friendRecommendMap = new HashMap<>();
         List<String> userFriendList = getUserFriendList(user, friends);
         addFriendWeKnowScore(user, friends, friendRecommendMap, userFriendList);
+        addVisitorScore(visitors, friendRecommendMap);
         List<List<String>> friendRecommendList = mapToLists(friendRecommendMap, userFriendList);
         listBubbleSort(friendRecommendList);
         addToAnswerList(answer, friendRecommendList);
@@ -56,6 +57,16 @@ public class Problem7 {
         }
     }
 
+    private static void addVisitorScore(List<String> visitors, Map<String, Integer> friendRecommendMap) {
+        for(int i = 0; i< visitors.size(); i++){
+            if(!friendRecommendMap.containsKey(visitors.get(i))){
+                friendRecommendMap.put(visitors.get(i),1);
+            }
+            else{
+                friendRecommendMap.put(visitors.get(i), friendRecommendMap.get(visitors.get(i))+1);
+            }
+        }
+    }
 
     private static List<List<String>> mapToLists(Map<String, Integer> friendRecommendMap, List<String> userFriendList) {
         List<List<String> > friendRecommendList = new ArrayList<>();
