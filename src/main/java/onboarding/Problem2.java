@@ -3,17 +3,14 @@ package onboarding;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        String[] charList = answer.split("");
+        String answer;
+        String[] charList = cryptogram.split("");
         List<String> charArrayList = new ArrayList<>(Arrays.asList(charList));
-        if (!cryptogram.equals(cryptogram.toLowerCase())) {
-            throw new IllegalStateException("문자열은 소문자로만 이루어져 있어야 합니다.");
-        } else if (cryptogram.length() < 1 || cryptogram.length() > 1000) {
-            throw new IllegalStateException("문자열의 길이는 1 이상, 1000 이하여야 합니다.");
-        } else {
+        checkStr(cryptogram);
             List<Integer> indexList = new ArrayList<>();
             do {
                 indexList.clear();
@@ -25,6 +22,7 @@ public class Problem2 {
                         }
                     }
                 }
+                indexList = indexList.stream().distinct().sorted().collect(Collectors.toList());
                 for (int i = indexList.size() - 1; i >= 0; i--) {
                     charArrayList.remove(Integer.parseInt(indexList.get(i).toString()));
                 }
@@ -32,10 +30,16 @@ public class Problem2 {
 
             answer = String.join("", charArrayList);
 
-            System.out.println("     cryptogram          result     ");
-            System.out.println("\"" + cryptogram + "\"" + "    " + "\"" + answer + "\"");
-        }
-
         return answer;
     }
+
+    public static void checkStr(String cryptogram) {
+        if (!cryptogram.equals(cryptogram.toLowerCase())) {
+            throw new IllegalStateException("문자열은 소문자로만 이루어져 있어야 합니다.");
+        } else if (cryptogram.length() < 1 || cryptogram.length() > 1000) {
+            throw new IllegalStateException("문자열의 길이는 1 이상, 1000 이하여야 합니다.");
+        }
+    }
+
+
 }
