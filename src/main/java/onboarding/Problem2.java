@@ -1,6 +1,6 @@
 package onboarding;
 
-import java.util.Stack;
+import java.util.*;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
@@ -8,27 +8,28 @@ public class Problem2 {
     }
 
     private static String checkDuplicateWord(String cryptogram) {
-        Stack<Integer> indexStack = new Stack<>();
+        List<Integer> indexList = new ArrayList<>();
         while (true) {
             for (int i = 0; i < cryptogram.length() - 1; i++) {
                 if (cryptogram.charAt(i) == cryptogram.charAt(i + 1)) {
-                    indexStack.push(i);
-                    indexStack.push(i + 1);
-                    i++;
+                    indexList.add(i);
+                    indexList.add(i + 1);
                 }
             }
-            if (indexStack.size() == 0) {
+            if (indexList.size() == 0) {
                 break;
             }
-            cryptogram = removeDuplicateWord(cryptogram, indexStack);
+            cryptogram = removeDuplicateWord(cryptogram, indexList);
+            indexList = new ArrayList<>();
         }
         return cryptogram;
     }
-    private static String removeDuplicateWord(String cryptogram, Stack<Integer> indexStack) {
-        int index;
+    private static String removeDuplicateWord(String cryptogram, List<Integer> indexList) {
+        Set<Integer> set = new HashSet<Integer>(indexList);
+        List<Integer> fixedIndexList = new ArrayList<Integer>(set);
+        Collections.reverse(fixedIndexList);
         StringBuffer stringBuffer = new StringBuffer(cryptogram);
-        while (!indexStack.empty()) {
-            index = indexStack.pop();
+        for (int index : fixedIndexList) {
             stringBuffer.deleteCharAt(index);
         }
         return stringBuffer.toString();
