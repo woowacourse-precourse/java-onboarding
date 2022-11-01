@@ -13,10 +13,10 @@ public class Problem3 {
         return cnt;
     }
     public static int countClap(int number){
-        String strnumber = Integer.toString(number);
+        String strNumber = Integer.toString(number);
         int cnt = 0;
-        for(int i=0;i<strnumber.length();i++){
-            int curnumber = Integer.parseInt(String.valueOf(strnumber.charAt(i)));
+        for(int i=0;i<strNumber.length();i++){
+            int curnumber = Integer.parseInt(String.valueOf(strNumber.charAt(i)));
             if(curnumber%3 == 0 && curnumber != 0){
                 cnt+=1;
             }
