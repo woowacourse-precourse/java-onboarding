@@ -22,9 +22,9 @@ public class DuplicationNotificator {
     private void checkDuplication(List<List<String>> forms) {
         for (List<String> form : forms) {
             String email = form.get(0);
-            String nick = form.get(1);
-            for (int i = 0; i < nick.length() - 1; i++) {
-                String partOfNickname = nick.substring(i, i + 2);
+            String nickname = form.get(1);
+            for (int i = 0; i < nickname.length() - 1; i++) {
+                String partOfNickname = nickname.substring(i, i + 2);
                 if (parts.containsKey(partOfNickname)) {
                     List<String> emails = parts.get(partOfNickname);
                     if (!emails.contains(email))
