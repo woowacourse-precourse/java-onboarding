@@ -2,10 +2,21 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        return loopRemoveDuplicatedString(cryptogram);
+        return getAllRemovedDuplicatedString(cryptogram);
     }
 
-    public static String removeDuplicatedString(String cryptogram) {
+    public static String getAllRemovedDuplicatedString(String cryptogram) {
+        while (cryptogram != "") {
+            String removedDuplicatedString = getRemovedDuplicatedString(cryptogram);
+            if (removedDuplicatedString.equals(cryptogram)) {
+                return removedDuplicatedString;
+            }
+            cryptogram = removedDuplicatedString;
+        }
+        return cryptogram;
+    }
+
+    public static String getRemovedDuplicatedString(String cryptogram) {
         cryptogram += " ";
         boolean prevDuplicated = false;
         boolean curDuplicated;
@@ -33,16 +44,5 @@ public class Problem2 {
             return true;
         }
         return false;
-    }
-
-    public static String loopRemoveDuplicatedString(String cryptogram) {
-        while (cryptogram != "") {
-            String removedDuplicatedString = removeDuplicatedString(cryptogram);
-            if (removedDuplicatedString.equals(cryptogram)) {
-                return removedDuplicatedString;
-            }
-            cryptogram = removedDuplicatedString;
-        }
-        return cryptogram;
     }
 }
