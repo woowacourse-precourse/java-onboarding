@@ -1,18 +1,12 @@
 package onboarding.pagenumbergame;
 
-public enum GameResult {
-	EXCEPTION(-1),
-	DRAW(0),
-	WIN(1),
-	LOSE(2);
+public final class GameResult {
 
-	private final int status;
+	public static final int EXCEPTION = -1;
 
-	GameResult(int status) {
-		this.status = status;
-	}
+	public static final int DRAW = 0;
 
-	public int getStatus() {
-		return status;
-	}
+	public static final int WIN = 1;
+
+	public static final int LOSE = 2;
 }
