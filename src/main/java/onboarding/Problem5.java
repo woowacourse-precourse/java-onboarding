@@ -13,23 +13,17 @@ public class Problem5 {
         int price = 50000;
 
         for(int i = 0; i<9; i++){
-            if(i==0){
-                answer.add(copyMoney/price);
-                copyMoney = copyMoney % price;
-            } else if (i%2==0) {
+            if (i != 0 && i%2==0) {
                 if(price !=10){
                     price= price/2;
                 }else{
                     price=price/10;
                 }
-                answer.add(copyMoney/price);
-                copyMoney = copyMoney % price;
-            }else{
+            }else if(i % 2 == 1){
                 price= price/5;
-
-                answer.add(copyMoney/price);
-                copyMoney = copyMoney % price;
             }
+            answer.add(copyMoney/price);
+            copyMoney = copyMoney % price;
 
         }
 
