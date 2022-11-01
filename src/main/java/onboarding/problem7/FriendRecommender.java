@@ -1,11 +1,14 @@
 package onboarding.problem7;
 
+import onboarding.problem7.exception.UserNameLengthNotSatisfiedException;
+
 import java.util.List;
 
 public class FriendRecommender {
-
+    private static final int MIN_USERNAME_LENGTH = 1;
+    private static final int MAX_USERNAME_LENGTH = 30;
     public List<String> recommendFriends(String user, List<List<String>> friends, List<String> visitor) {
-
+        validateUserName(user);
         FriendGraph friendGraph = new FriendGraph(friends);
         ScoreBoard scoreBoard = new ScoreBoard();
         Visitors visitors = new Visitors(visitor);
@@ -14,6 +17,11 @@ public class FriendRecommender {
         addVisitorPoint(scoreBoard, visitors);
 
         return getTopScoreUserName(scoreBoard, friendGraph, user);
+    }
+    private void validateUserName(String user) {
+        if(user.length() < MIN_USERNAME_LENGTH || user.length() > MAX_USERNAME_LENGTH) {
+            throw new UserNameLengthNotSatisfiedException();
+        }
     }
 
     private List<String> getTopScoreUserName(ScoreBoard scoreboard, FriendGraph graph, String user) {
