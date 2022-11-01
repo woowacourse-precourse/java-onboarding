@@ -18,37 +18,37 @@ public class Problem7 {
     }
 
     private static Map makeFriendsRelation(String user, List<List<String>> friends, List<String> visitors) {
-        Map<String, List<String>> temp = new HashMap<>();
-        temp.put(user, new ArrayList<>());
+        Map<String, List<String>> friendsRelationMap = new HashMap<>();
+        friendsRelationMap.put(user, new ArrayList<>());
 
         for (List<String> info : friends) {
             for (String person : info) {
-                if (!temp.containsKey(person)) {
+                if (!friendsRelationMap.containsKey(person)) {
                     List<String> defaultScore = new ArrayList<>();
                     defaultScore.add("0");
-                    temp.put(person, defaultScore);
+                    friendsRelationMap.put(person, defaultScore);
                 }
             }
 
-            if (temp.containsKey(info.get(0))) {
-                List<String> friendsList = temp.get(info.get(0));
+            if (friendsRelationMap.containsKey(info.get(0))) {
+                List<String> friendsList = friendsRelationMap.get(info.get(0));
                 friendsList.add(info.get(1));
             }
 
-            if (temp.containsKey(info.get(1))) {
-                List<String> friendsList = temp.get(info.get(1));
+            if (friendsRelationMap.containsKey(info.get(1))) {
+                List<String> friendsList = friendsRelationMap.get(info.get(1));
                 friendsList.add(info.get(0));
             }
 
             for (String visitor : visitors) {
-                if (!temp.containsKey(visitor)) {
+                if (!friendsRelationMap.containsKey(visitor)) {
                     List<String> defaultScore = new ArrayList<>();
                     defaultScore.add("0");
-                    temp.put(visitor, defaultScore);
+                    friendsRelationMap.put(visitor, defaultScore);
                 }
             }
         }
-        return temp;
+        return friendsRelationMap;
     }
     private static void getRelationScore(Map<String, List<String>> relation, List<String> userFriends) {
         for (String name : userFriends) {
