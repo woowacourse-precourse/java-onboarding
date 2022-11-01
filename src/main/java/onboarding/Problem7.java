@@ -14,6 +14,7 @@ public class Problem7 {
 
         for (List<String> relation : friends) {
             makeSList(relation, user);
+            addFriend(relation);
         }
         return answer;
     }
@@ -29,5 +30,23 @@ public class Problem7 {
         } else {
             sList.remove(relation.get(0));
         }
+    }
+
+    private static void addFriend(List<String> relation) {
+        List<String> temp = fList.get(relation.get(0));
+        List<String> temp2 = fList.get(relation.get(1));
+
+        if (temp == null) {
+            temp = new ArrayList<>();
+        }
+        if (temp2 == null) {
+            temp2 = new ArrayList<>();
+        }
+
+        temp.add(relation.get(1));
+        temp2.add(relation.get(0));
+
+        fList.put(relation.get(0), temp);
+        fList.put(relation.get(1), temp2);
     }
 }
