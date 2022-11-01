@@ -6,7 +6,14 @@ import static java.lang.Math.max;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
+        if(!isValid(pobi) || !isValid(crong)){
+            return -1;
+        }
         int answer = Integer.MAX_VALUE;
+        int pobiNum = getMaxNumber(pobi);
+        int crongNum = getMaxNumber(crong);
+        answer = getWinner(pobiNum, crongNum);
+
         return answer;
     }
 
@@ -62,6 +69,32 @@ class Problem1 {
             return 2;
         }
         return 0;
+    }
+
+    /**
+     * 왼쪽 페이지 숫자와 오른쪽 페이지 숫자가 유효한지 검사
+     * @param pages 오른쪽 페이지와 왼쪽 페이지가 담긴 리스트
+     * @return 유효하면 true를 반환, 유효하지 않으면 false를 반환
+     */
+    public static boolean isValid(List<Integer> pages){
+        Integer leftPage = pages.get(0);
+        Integer rightPage = pages.get(1);
+        if(rightPage - leftPage != 1){
+            return false;
+        }
+        if(pages.get(0)%2 == 0){
+            return false;
+        }
+        if(pages.get(1)%2 != 0){
+            return false;
+        }
+        if(leftPage < 2){
+            return false;
+        }
+        if(rightPage > 399){
+            return false;
+        }
+        return true;
     }
 
 }
