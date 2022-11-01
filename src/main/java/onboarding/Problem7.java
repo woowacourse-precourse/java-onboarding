@@ -46,11 +46,37 @@ public class Problem7 {
         return friendScoreMap;
     }
 
+    public static void addScoreByFriend(String user, List<List<String>> friends,
+                                        List<String> userFriends, Map<String, Integer> friendScoreMap) {
+
+        final int PIVOT = 1;
+        for (List<String> friendList : friends) {
+            for (String friendName : userFriends) {
+                int friendIndex = friendList.indexOf(friendName);
+
+                if (friendName == user) {
+                    break;
+                }
+
+                if (friendIndex == -1) {
+                    continue;
+                }
+
+                String targetUser = friendList.get(Math.abs(PIVOT - friendIndex));
+
+                if (targetUser != user) {
+                    friendScoreMap.put(targetUser, friendScoreMap.get(targetUser) + 10);
+                }
+            }
+        }
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
 
         Map<String, Integer> friendScoreMap = initScoreMap(user, friends, visitors);
-
+        List<String> userFriends = getUserFriends(friends, user);
+        addScoreByFriend(user, friends, userFriends, friendScoreMap);
         return answer;
     }
 
