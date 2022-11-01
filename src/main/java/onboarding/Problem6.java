@@ -23,7 +23,7 @@ public class Problem6 {
         3,4개는 비교하지 않고 있습니다.
      */
     private static void findDuplicate() {
-        for (int i = 0; i < formsT.size() - 1 ; i++){
+        for (int i = 0; i < formsT.size() ; i++){
             pushWord(formsT.get(i),i);
         }
     }
@@ -41,15 +41,18 @@ public class Problem6 {
      */
     private static void compare(String temp, int i) {
         for (int j = i + 1; j < formsT.size() ; j++){
-            if(processVisit(temp ,formsT.get(i))){
+            if(processVisit(temp ,formsT.get(j)) && correctLength(formsT.get(j))){
                 DuplicateName[i] = true;
                 DuplicateName[j] = true;
             }
         }
     }
+    private static boolean correctLength(List<String> form){
+        return form.get(0).length()>=11 && form.get(0).length() <20;
+    }
 
     private static boolean processVisit(String temp, List<String> form) {
-        return form.get(1).contains(temp);
+        return form.get(1).contains(temp) && form.get(0).contains("email.com");
     }
 
     /*
@@ -57,13 +60,15 @@ public class Problem6 {
      */
     private static void AddEmail(List<String> answer) {
         for (int i = 0; i < DuplicateName.length ; i++){
-            AddVisitEmail(answer, i);
+            AddVisitEmail(answer, i, formsT.get(i));
         }
     }
 
-    private static void AddVisitEmail(List<String> answer, int i) {
+    private static void AddVisitEmail(List<String> answer, int i, List<String> form) {
         if (DuplicateName[i]){
-            answer.add(formsT.get(i).get(0));
+            if (form.get(1).length() >= 1 && form.get(1).length() < 20) {
+                answer.add(form.get(0));
+            }
         }
     }
 }
