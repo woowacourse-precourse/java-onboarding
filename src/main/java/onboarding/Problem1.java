@@ -12,6 +12,45 @@ class Problem1 {
         return answer;
     }
 
+    private static int getPlusNum(List<Integer> member) {
+        int PlusNum = 0;
+        for (int i = 0; i < 2; i++) {
+            int now = member.get(i).intValue();
+            int divAs100 = now / 100;
+            PlusNum += divAs100;
+            now %= 100;
+
+            int divAs10 = now / 10;
+            int mod = now % 10;
+            PlusNum += divAs10;
+            PlusNum += mod;
+        }
+        return PlusNum;
+    }
+
+    private static int getMultiplyNum(List<Integer> member) {
+
+        int MultiplyNum = 1;
+
+        for (int i = 0; i < 2; i++) {
+            int now = member.get(i).intValue();
+            int divAs100 = now / 100;
+
+            now %= 100;
+
+            if (divAs100 != 0) {
+                MultiplyNum *= divAs100;
+            }
+
+            int divAs10 = now / 10;
+            int mod = now % 10;
+
+            MultiplyNum *= divAs10;
+            MultiplyNum *= mod;
+        }
+        return MultiplyNum;
+    }
+
     private static boolean validateWrongPageOrder(List<Integer> pobi, List<Integer> crong) {
         return pobi.get(0).intValue() + 1 != pobi.get(1).intValue()
             || crong.get(0).intValue() + 1 != crong.get(1).intValue();
