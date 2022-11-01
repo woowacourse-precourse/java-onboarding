@@ -32,12 +32,9 @@ public class Problem7 {
     private static void updateVisitorsScore(Map<String, Integer> scoreMap,
         List<String> visitorsList, Set<String> removeFriendsSet) {
 
-        for (String visitor : visitorsList) {
-            if (!removeFriendsSet.contains(visitor)) {
-                putValueScore(scoreMap, visitor, 1);
-            }
-        }
-        System.out.println("scoreMap = " + scoreMap);
+        visitorsList.stream().
+            filter(visitor -> !removeFriendsSet.contains(visitor)).
+            forEach(visitor -> putValueScore(scoreMap,visitor,1));
     }
 
     private static void updateFriendsScore(Map<String, Integer> scoreMap,
@@ -52,8 +49,6 @@ public class Problem7 {
                 putValueScore(scoreMap, friend, 10);
             }
         }
-
-        System.out.println("scoreMap = " + scoreMap);
     }
 
     private static Set<String> makeRemoveFriendsSet(String user, Map<String, Set<String>> friendsMap) {
