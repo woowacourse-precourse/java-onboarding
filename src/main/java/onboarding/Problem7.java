@@ -8,6 +8,7 @@ public class Problem7 {
         Map<String, List<String>> relation = makeFriendsRelation(user, friends, visitors);
 
         getRelationScore(relation, userFriends);
+        getVisitorScore(relation, visitors);
 
     }
 
@@ -51,6 +52,11 @@ public class Problem7 {
                     relation.get(person).set(0, String.valueOf(Integer.parseInt(relation.get(person).get(0)) + 10));
                 }
             }
+        }
+    }
+    private static void getVisitorScore(Map<String, List<String>> relation, List<String> visitors) {
+        for (String visitor : visitors) {
+            relation.get(visitor).set(0, String.valueOf(Integer.parseInt(relation.get(visitor).get(0)) + 1));
         }
     }
 }
