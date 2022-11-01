@@ -13,6 +13,7 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         data = forms;
         data = validateEmail();
+        data = validateNickname();
         data = validateLength();
         HashSet<String> letters = makeLetterSet(data);
         TreeSet<String> emails = getDuplicateSet(letters, data);
@@ -22,6 +23,13 @@ public class Problem6 {
     public static List<List<String>> validateEmail(){ // @email.com을 포함하는 체크
         return data.stream()
                 .filter(object->object.get(0).contains("@email.com"))
+                .collect(Collectors.toList());
+    }
+
+    public static List<List<String>> validateNickname(){
+        String template = "^[가-힣\\s]*$";
+        return data.stream()
+                .filter(object->object.get(1).matches(template))
                 .collect(Collectors.toList());
     }
 
