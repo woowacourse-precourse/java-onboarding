@@ -7,7 +7,8 @@ public class P1ExceptionValidation {
     public static boolean p1ExceptionValidation(List<Integer> list){
 
         return inputBetweenZeroandTwo(list)
-                && pageBetween1and400(list);
+                && pageBetween1and400(list)
+                && pageNumberContinuous(list);
 
     }
 
@@ -27,6 +28,16 @@ public class P1ExceptionValidation {
             return false;
         }
         return true;
+    }
+
+    private static boolean pageNumberContinuous(List<Integer> userInput) {
+        Integer leftPage = userInput.get(0);
+        Integer rightPage = userInput.get(1);
+
+        if(leftPage + 1== rightPage){
+            return true;
+        }
+        return false;
     }
 
 
