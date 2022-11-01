@@ -29,7 +29,9 @@ public class Problem6 {
 			}
 		}
 
-
+		// 정렬작업
+		List<String> result = emails.stream().sorted().collect(Collectors.toList());
+		answer = List.of(result.toArray(new String[0]));
 
 		return answer;
 	}
