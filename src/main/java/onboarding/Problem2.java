@@ -4,7 +4,17 @@ import java.util.ArrayList;
 import java.util.List;
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
+        String answer = cryptogram;
+
+        while (overlapNum(answer).size() != 0) {
+            char[] chars = answer.toCharArray();
+            for (int j = 0; j < overlapNum(answer).size(); j++) {
+                chars[overlapNum(answer).get(j)] = ' ';
+                chars[overlapNum(answer).get(j) + 1] = ' ';
+            }
+            answer = String.valueOf(chars).replaceAll(" ", "");
+        }
+
         return answer;
     }
 
