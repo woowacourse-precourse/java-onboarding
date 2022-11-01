@@ -1,8 +1,8 @@
-package onboarding.problem6.twoletterword;
+package onboarding.problem6.util.duplication.model;
 
 import java.util.Objects;
 
-import onboarding.problem6.Duplicative;
+import onboarding.problem6.util.duplication.Duplicative;
 
 public class InNickName implements Duplicative {
 	private String word;
