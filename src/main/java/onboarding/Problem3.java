@@ -15,7 +15,13 @@ public class Problem3 {
         // 결과를 저장할 변수 선언 및 초기화
         int result = 0;
 
-
+        // 손뼉치는 횟수 구하기
+        for (int i = 1; i <= number; i++){
+            String temp_number = Integer.toString(i); // 해당 차례의 숫자에서 3,6,9 개수를 세기 위해 String 타입으로 변환
+            result += countParticularchar(temp_number,'3'); // 해당 숫자에서 3의 개수 구하기
+            result += countParticularchar(temp_number,'6'); // 해당 숫자에서 6의 개수 구하기
+            result += countParticularchar(temp_number,'9'); // 해당 숫자에서 9의 개수 구하기
+        }
 
         // 결과 리턴
         int answer = result;
