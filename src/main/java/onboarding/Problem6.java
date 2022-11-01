@@ -42,5 +42,23 @@ public class Problem6 {
         }
     }
 
+    private static boolean isSameIdChar(String s, String s1) {
+        int s_len = s.length();
+        int s1_len = s1.length();
+
+        for (int i = 0; i < s_len - 1; i++) {
+            for (int j = 0; j < s1_len - 1; j++) {
+                if (s.charAt(i) != s1.charAt(j))
+                    continue;
+                else {
+                    if (s.charAt(i + 1) == s1.charAt(j + 1))
+                        return true;
+                    else
+                        continue;
+                }
+            }
+        }
+        return false;
+    }
 }
 
