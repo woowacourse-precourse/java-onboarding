@@ -4,9 +4,12 @@ import java.util.List;
 
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        // 포비와 크롱의 최대값 저장 변수
-        int pobimax = 0, crongmax = 0;
+        int answer = Integer.MAX_VALUE;
 
+        System.out.println(pobi.get(0));
+        System.out.println(pobi.get(1));
+        System.out.println(crong.get(0));
+        System.out.println(crong.get(1));
         // 포비와 크롱의 페이지가 잘못되었을 경우 -1리턴
         if (pobi.get(0) + 1 != pobi.get(1) || pobi.get(0) % 2 == 0) {
             System.out.println(-1);
@@ -17,7 +20,9 @@ class Problem1 {
             return -1;
         }
 
+        int pobimax = 0, crongmax = 0;
         int tmp;
+
         // 포비 페이지 번호의 각 자리 수를 모두 더하기
         tmp = 0;
         for (int num = pobi.get(0); num > 0; num /= 10) {
@@ -79,13 +84,14 @@ class Problem1 {
         if (crongmax < tmp) {
             crongmax = tmp;
         }
-
-        // 결과값에 따른 출력
         if (pobimax > crongmax) {
+            System.out.println(1);
             return 1;
         } else if (pobimax < crongmax) {
+            System.out.println(2);
             return 2;
         } else {
+            System.out.println(0);
             return 0;
         }
     }
