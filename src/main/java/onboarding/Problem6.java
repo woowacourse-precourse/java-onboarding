@@ -6,25 +6,38 @@ public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = new ArrayList<>();
         for (List<String> e : forms) {
+            System.out.println("*"+e.get(1)+"*");
+            String targetName = e.get(1);
             ArrayList<String> cutNameList = cutNickname(e.get(1));
             for (String cutName : cutNameList) {
-                Boolean matchResult = isThereMatch(cutName);
+                System.out.println(cutName);
+                Boolean matchResult = isThereMatch(forms, cutName, targetName);
+                System.out.println(matchResult);
+                System.out.println("ㅡㅡㅡㅡㅡ");
                 if (matchResult) {
-                    answer.add(e.get(0));
+                    String email = e.get(0);
+                    if(!answer.contains(email)){
+                        answer.add(e.get(0));
+                    }
+                    break;
                 }
             }
         }
+        System.out.println("ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ");
         return answer;
     }
 
-    private static Boolean isThereMatch(String cutName) {
-        String regex = ".*("+cutName+")+.*";
+    private static Boolean isThereMatch(List<List<String>> forms, String cutName, String targetName) {
+        String regex = "(.*)"+cutName+"(.*)";
         for (List<String> e : forms) {
-            System.out.println(e);
             String nickname = e.get(1);
-            Boolean result = nickname.matches(regex);
-            if (result) {
-                return true;
+            if (!nickname.equals(targetName)) {
+                System.out.println("in");
+                System.out.println(nickname);
+                Boolean result = nickname.matches(regex);
+                if (result) {
+                    return true;
+                }
             }
         }
         return false;
