@@ -1,6 +1,5 @@
 package onboarding;
 
-import java.util.Optional;
 import java.util.stream.Stream;
 
 public class Problem3 {
