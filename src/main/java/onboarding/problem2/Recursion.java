@@ -9,12 +9,12 @@ public class Recursion {
 
     public static LinkedList<String> recursive(LinkedList<String> repository) {
 
+
         int i = 0;
         while (i < repository.size()-1) {
 
             String collect = repository.get(i);
             String next = repository.get(i + 1);
-// browoanoommnaon
             if (collect.equals(next)) {
                 repository.remove(i);
                 repository.remove(i);
@@ -22,5 +22,9 @@ public class Recursion {
             i++;
         }
         return repository;
+
+
+        // Comment : StackOverflowError 피하는 재귀 메서드로 통합해보기
+        // recursive(repository);
     }
 }

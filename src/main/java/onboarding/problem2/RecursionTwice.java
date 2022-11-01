@@ -11,7 +11,7 @@ public class RecursionTwice {
 
             String collect = repository.get(j);
             String next = repository.get(j + 1);
-// browoanoommnaon
+
             if (collect.equals(next)) {
                 repository.remove(j);
                 repository.remove(j);
