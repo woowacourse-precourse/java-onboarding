@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Problem2 {
@@ -8,8 +9,13 @@ public class Problem2 {
 
         String lastVersionCryptogram = cryptogram;
         String recentVersionCryptogram = decrypt(cryptogram);
-        String answer = "answer";
-        return answer;
+
+        while (!lastVersionCryptogram.equals(recentVersionCryptogram)) {
+            lastVersionCryptogram = recentVersionCryptogram;
+            recentVersionCryptogram = decrypt(lastVersionCryptogram);
+        }
+
+        return lastVersionCryptogram;
     }
 
     private static String decrypt(String cryptogram) {
@@ -45,6 +51,15 @@ public class Problem2 {
     }
 
     private static String eraseCharByIndex(List<Integer> continuousCharIndices, String cryptogram) {
+        StringBuffer sb = new StringBuffer();
+        sb.append(cryptogram);
+
+        Collections.reverse(continuousCharIndices);
+        for (Integer index : continuousCharIndices) {
+            sb.deleteCharAt(index);
+        }
+        return sb.toString();
     }
 
 }
+
