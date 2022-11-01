@@ -55,12 +55,18 @@ public class Problem6 {
         for (int l = 0; l < comparedMember.length - 1; l++) {
             String comparedMemberString = comparedMember[l] + comparedMember[l+1];
 
-            if (standardMemberString.equals(comparedMemberString)) {
-                duplicatedNames.add(String.join("", standardMember));
-                duplicatedNames.add(String.join("", comparedMember));
+            if (compareStandardMemberToComparedMember(duplicatedNames, standardMember, standardMemberString, comparedMember, comparedMemberString))
                 break;
-            }
         }
+    }
+
+    private static boolean compareStandardMemberToComparedMember(Set<String> duplicatedNames, String[] standardMember, String standardMemberString, String[] comparedMember, String comparedMemberString) {
+        if (standardMemberString.equals(comparedMemberString)) {
+            duplicatedNames.add(String.join("", standardMember));
+            duplicatedNames.add(String.join("", comparedMember));
+            return true;
+        }
+        return false;
     }
 
     private static List<String[]> changeNicknameStringToArray(Map<String, String> memberMap) {
