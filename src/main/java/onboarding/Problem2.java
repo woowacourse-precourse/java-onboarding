@@ -23,6 +23,9 @@ public class Problem2 {
             return answer;
         }
 
+        if(cryptogram.length()>1000){
+            return answer;
+        }
         return cryptogram;
     }
 }
