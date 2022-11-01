@@ -153,5 +153,20 @@ public class Problem7 {
      * 최대 5명만 리턴할 것.
      * */
 
+    private static List<Map.Entry<String, Integer>> sort_firends(Map<String, Integer> map) {
+        List<Map.Entry<String, Integer>> friends = new LinkedList<>(map.entrySet());
+        friends.sort((o_a, o_b) -> {
+            // value 값 기준으로 내림차순 정렬
+            int comparison = (o_a.getValue() - o_b.getValue()) * -1;
+            // value 값이 같으면 key 값 기준으로 오름차순 정렬
+            return comparison == 0 ? o_a.getKey().compareTo(o_b.getKey()) : comparison;
+        });
+
+        // 정렬 완료 후, 값이 5개 초과했으면, 5명까지만 반환
+        while (friends.size() > MAX_RETURN_SIZE) {
+            friends.remove(friends.size() - 1);
+        }
+        return friends;
+    }
 
 }
