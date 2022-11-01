@@ -3,12 +3,15 @@ package onboarding;
 public class Problem4 {
 
     static class Transformer {
-        private Problem4.AbnormalDictionary dictionary = new Problem4.AbnormalDictionary();
+        private final int MAX_SENTENCE_LENGTH = 1000;
+        private final int MIN_SENTENCE_LENGTH = 1;
+
+        private AbnormalDictionary dictionary = new AbnormalDictionary();
         private String sentence;
         private String result = "";
 
         public Transformer(String sentence) {
-            if(sentence.length()<1 || sentence.length()>1000) {
+            if(sentence.length()<MIN_SENTENCE_LENGTH || sentence.length()>MAX_SENTENCE_LENGTH) {
                 throw new RuntimeException("word의 길이가 올바르지 않습니다");
             }
             this.sentence = sentence;
