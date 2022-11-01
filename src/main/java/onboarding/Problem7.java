@@ -7,6 +7,7 @@ import java.util.List;
 
 public class Problem7 {
     public static final int ACQUAINTANCE_SCORE = 10;
+    public static final int VISITOR_SCORE = 1;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
@@ -15,6 +16,7 @@ public class Problem7 {
 
         getFriendRelationshipMap(user, friends, friendRelationshipMap, scoreMap);
         increaseAcquaintanceScore(user, friendRelationshipMap, scoreMap);
+        increaseVisitorScore(user, friendRelationshipMap, scoreMap, visitors);
 
         return answer;
     }
@@ -65,6 +67,23 @@ public class Problem7 {
 
                 int currentScore = scoreMap.get(ac);
                 scoreMap.put(ac, currentScore + ACQUAINTANCE_SCORE);
+            }
+        }
+    }
+
+    private static void increaseVisitorScore(String user, HashMap<String, List<String>> friendRelationshipMap, HashMap<String, Integer> scoreMap, List<String> visitors) {
+        List<String> userFriends = friendRelationshipMap.get(user);
+
+        for (String visitor : visitors) {
+            if (userFriends.contains(visitor)) {
+                continue;
+            }
+
+            if (scoreMap.containsKey(visitor)) {
+                int currentScore = scoreMap.get(visitor);
+                scoreMap.put(visitor, currentScore + VISITOR_SCORE);
+            } else {
+                scoreMap.put(visitor, VISITOR_SCORE);
             }
         }
     }
