@@ -12,10 +12,11 @@ public class Problem6 {
         List<String> answer = List.of("answer");
         HashMap<String, Integer> subNameCount = new HashMap<>();
         subNameCount = getSubNameCount(forms);
-        answer = getEmailList(forms,subNameCount);
+        answer = getEmailList(forms, subNameCount);
 
         return answer;
     }
+
     public static HashMap<String, Integer> getSubNameCount(List<List<String>> forms) {
         HashMap<String, Integer> subNameCount = new HashMap<>();
         for (int i = 0; i < forms.size(); i++) {
@@ -27,6 +28,20 @@ public class Problem6 {
         }
         return subNameCount;
     }
+
     public static List<String> getEmailList(List<List<String>> forms, HashMap<String, Integer> subNameCount) {
+        List<String> result = new ArrayList<>();
+        for (int i = 0; i < forms.size(); i++) {
+            String name = forms.get(i).get(1);
+            for (int j = 0; j + 1 < name.length(); j++) {
+                String subName = name.substring(j, j + 2);
+                if (subNameCount.get(subName) > 1) {
+                    result.add(forms.get(i).get(0));
+                    break;
+                }
+            }
+        }
+        Collections.sort(result);
+        return result;
     }
 }
