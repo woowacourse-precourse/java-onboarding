@@ -12,6 +12,22 @@ public class Problem7 {
         // 이름과 점수를 함께 저장
         Map<String, Integer> map = new TreeMap<>();
 
+        // user 와 친구인 사람들 확인
+        for(int i = 0; i < friends.size(); i++){
+
+            List<String> temp = friends.get(i);
+
+            String A = temp.get(0);
+            String B = temp.get(1);
+
+            if(A.equals(user)){
+                user_friend_list.add(B);
+            }
+            else if(B.equals(user)){
+                user_friend_list.add(A);
+            }
+        }
+
         return answer;
     }
 }
