@@ -12,12 +12,8 @@ public class Problem5 {
     public static List<Integer> solution(int money) {
         List<Integer> answer = new ArrayList<>();
         for (int coin : coins) {
-            if (1 <= money / coin) {
-                answer.add(money / coin);
-                money -= (money / coin) * coin;
-                continue;
-            }
-            answer.add(0);
+            answer.add(money / coin);
+            money -= (money / coin) * coin;
         }
         return answer;
     }
