@@ -7,9 +7,14 @@ public class Problem7 {
 
         Map<String, List<String>> relation = makeFriendsRelation(user, friends, visitors);
 
+        List<String> userFriends = relation.get(user);
+        relation.remove(user);
+
         getRelationScore(relation, userFriends);
         getVisitorScore(relation, visitors);
 
+        List<String> result = processData(relation, userFriends);
+        return result;
     }
 
     private static Map makeFriendsRelation(String user, List<List<String>> friends, List<String> visitors) {
@@ -68,10 +73,10 @@ public class Problem7 {
         removeAlreadyFriends(data, userFriends);
         removeZeroScore(data);
         List<Map.Entry<String, Integer>> recommendedFriendsList = getSortedList(data);
-        return "";
+        return extractList(recommendedFriendsList);
     }
 
-        // 이미 친구면 제외
+    // 이미 친구면 제외
     private static void removeAlreadyFriends(Map<String, Integer> user, List<String> userFriends) {
         for (String name : userFriends) {
             if (user.containsKey(name)) {
@@ -99,5 +104,16 @@ public class Problem7 {
             return first.getKey().compareTo(second.getKey());
         });
         return list;
+    }
+
+    // 5명 이내 추천 친구 리스트 만들기
+    private static List<String> extractList(List<Map.Entry<String, Integer>> list) {
+        List<String> result = new ArrayList<>();
+        for (int i = 0; i < list.size(); i++) {
+            if (i == 5)
+                break;
+            result.add(list.get(i).getKey());
+        }
+        return result;
     }
 }
