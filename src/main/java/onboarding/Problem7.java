@@ -53,8 +53,28 @@ public class Problem7 {
         List<Priority_content> Recommend_List = new ArrayList<Priority_content>(); // container to save and to sort
         // initialize the user_friend
         // find the friend of the user
+        int search_limit = friends.size();
+        for(int i = 0; i < search_limit; i++){
+            List<String> pair = friends.get(i); //
+            if(pair.get(0) == User){
+                user_friend.add(pair.get(1));
+                // erase the pair from friends and move index back
+                friends.remove(i); // erase the pair
+                search_limit--;
+                i--;
+            }
+            else if(pair.get(1) == user){
+                user_friend.add(pair.get(0));
+                // erase the pair from friends and move index back
+                friends.remove(i); // erase the pair
+                search_limit--;
+                i--;
+            }
+            else{ // not a friend of the user
+                continue;
+            }
+        }
 
-        // remove user's friend from friends
 
         // initialize Recommend_List
         // find the people with the mutual friend with the user's timeline
