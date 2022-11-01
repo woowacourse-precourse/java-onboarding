@@ -19,7 +19,7 @@ public class Problem7 {
         friendGraph = makeGraph(friends);
         countVisitors(visitors);
         countFriends(user, friendGraph);
-
+        System.out.println(peopleMap);
         findAnswer();
         return answer;
     }
@@ -95,6 +95,8 @@ public class Problem7 {
                 tempList.add(secondFriend);
             }
             graph.put(firstFriend, tempList);
+
+            tempList = new ArrayList<>();
 
             if (graph.containsKey(secondFriend)){
                 tempList = graph.get(secondFriend);
