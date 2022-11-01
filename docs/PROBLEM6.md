@@ -21,3 +21,7 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능목록
+1. 같은 글자가 연속적으로 포함된 이메일을 구한다.
+2. 1번에서 구한 여러 개의 이메일을 중복 제거하고 오름차순으로 정렬한다.
