@@ -53,4 +53,11 @@ public class Problem7 {
         }
         return map;
     }
+
+    private static HashMap<String, Integer> getScore(List<List<String>> friends, List<String> visitors, List<String> userFriendsList, String user) {
+        HashMap<String, Integer> score = new HashMap<>();
+        getFriendsCount(friends, userFriendsList, user, score).forEach((key, value) -> score.merge(key, value, Integer::sum));
+        getVisitedCount(visitors, userFriendsList, score).forEach((key, value) -> score.merge(key, value, Integer::sum));
+        return score;
+    }
 }
