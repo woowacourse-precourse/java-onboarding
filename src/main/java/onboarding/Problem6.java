@@ -35,4 +35,18 @@ public class Problem6 {
 
         return result;
     }
+
+    public static List<List<String>> sortByEmail(List<List<String>> dupList) {
+
+        for (int i = 0; i < dupList.size(); i++) {
+            for (int j = 0; j < dupList.size() - i - 1; j++) {
+                if (dupList.get(j).get(0).compareTo(dupList.get(j + 1).get(0)) > 0) {
+                    List<String> tmp = dupList.get(j);
+                    dupList.set(j, dupList.get(j + 1));
+                    dupList.set(j + 1, tmp);
+                }
+            }
+        }
+        return dupList;
+    }
 }
