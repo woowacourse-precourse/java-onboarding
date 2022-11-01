@@ -3,6 +3,7 @@ package onboarding;
 public class Problem4 {
     public static String solution(String word) {
         String answer = "";
+
         for (int i = 0; i < word.length(); ++i) {
             if (isAlpha(word.charAt(i))) {
                 answer += ConvRascalChar(word.charAt(i));
@@ -23,6 +24,7 @@ public class Problem4 {
 
     private static char toUpper(char c) {
         char ret = c;
+
         if (c >= 'a' && c <= 'z') {
             ret -= 'a' - 'A';
         }
