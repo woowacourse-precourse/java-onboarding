@@ -34,6 +34,10 @@ public class User {
                 .isEmpty();
     }
 
+    public boolean isSame(String id) {
+        return id.equals(this.id);
+    }
+
     public int countCoFriends(User user) {
         int count = 0;
 
@@ -46,4 +50,16 @@ public class User {
         return count;
     }
 
+    public boolean addFriend(User user) {
+        friends.add(user);
+        return true;
+    }
+
+    public int compareTo(User user) {
+        return this.id.compareTo(user.id);
+    }
+
+    public String getId() {
+        return this.id;
+    }
 }
