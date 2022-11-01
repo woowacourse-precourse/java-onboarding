@@ -25,23 +25,13 @@ class Problem1 {
     			List<Integer> userPages = userPagesList.get(index);
     			
     			for(Integer page : userPages) {
-					int tempPage = page;
-					int tempResult = 0;
-					while(tempPage!=0) {
-						tempResult += tempPage%10;
-						tempPage /= 10;
+    				int sumByDigit = getSumByDigit(page);
+					if(sumByDigit > userMaxList.get(index)) {
+						userMaxList.set(index,sumByDigit);
 					}
-					if(tempResult > userMaxList.get(index)) {
-						userMaxList.set(index,tempResult);
-					}
-					tempPage = page;
-					tempResult = 1;
-					while(tempPage!=0) {
-						tempResult *= tempPage%10;
-						tempPage /= 10;
-					}
-					if(tempResult > userMaxList.get(index)) {
-						userMaxList.set(index,tempResult);
+					int productByDigit = getProductByDigit(page);
+					if(productByDigit > userMaxList.get(index)) {
+						userMaxList.set(index,productByDigit);
 					}
 				}
     		}
@@ -56,5 +46,23 @@ class Problem1 {
 		} catch (IllegalArgumentException e) {
 			return -1;
 		}
+	}
+	
+	public static int getSumByDigit(int number) {
+		int result = 0;
+		while(number!=0) {
+			result += number%10;
+			number /= 10;
+		}
+		return result;
+	}
+	
+	public static int getProductByDigit(int number) {
+		int result = 1;
+		while(number!=0) {
+			result *= number%10;
+			number /= 10;
+		}
+		return result;
 	}
 }
