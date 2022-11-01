@@ -41,14 +41,12 @@ class Problem1 {
     private static final int CRONG_WIN = 2;
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
         Score pobi_score = new Score(pobi);
-        Score crong_score = new Score(crong);gi
+        Score crong_score = new Score(crong);
 
         if (handlingExceptions(pobi) || handlingExceptions(crong))
             return EXCEPTION;
-
-        return answer;
+        return findWinner(pobi_score, crong_score);
     }
 
     private static boolean handlingExceptions(List<Integer> player) {
@@ -61,6 +59,14 @@ class Problem1 {
         if (player.get(0) < 2 || 399 < player.get(1))
             return true;
         return false;
+    }
+
+    private static int findWinner(Score pobi, Score crong) {
+        if (pobi.score < crong.score)
+            return CRONG_WIN;
+        else if (crong.score < pobi.score)
+            return POBI_WIN;
+        return DRAW;
     }
 }
 
