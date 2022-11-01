@@ -34,6 +34,7 @@ BUILD SUCCESSFUL in 0s
 ---
 
 ## 🚀 기능 요구 사항
+
 아래의 7가지 기능 요구 사항을 모두 해결해야 한다.
 
 1. [문제 1](./docs/PROBLEM1.md)
