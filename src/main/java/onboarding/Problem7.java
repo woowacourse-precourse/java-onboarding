@@ -7,7 +7,8 @@ public class Problem7 {
         List<String> answer = new ArrayList<>();
 
         if (CheckInput(user,friends,visitors)){
-
+            Map<String, Integer> Friends = new HashMap<>();
+            List<String> userFriends = MakeFriendsList(user,friends);
         }throw new IllegalArgumentException("잘못된 입력값");
     }
 
@@ -29,9 +30,15 @@ public class Problem7 {
         return false;
     }
 
-    
-
-
-
-
+    /* 기능2 : 사용자의 친구 list 생성 */
+    private static List<String> MakeFriendsList(String user, List<List<String>> friends){
+        List<String> userFriends = new ArrayList<>();
+        for(int i=0;i<friends.size();i++){
+            String a = friends.get(i).get(0);
+            String b = friends.get(i).get(1);
+            if(a == user)userFriends.add(b);
+            if(b == user)userFriends.add(a);
+        }
+        return userFriends;
+    }
 }
