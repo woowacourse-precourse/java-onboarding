@@ -12,29 +12,23 @@ public class Problem6 {
 
     private static HashSet<String> resultset = new HashSet<>();
     public static List<String> solution(List<List<String>> forms) {
-        List<String> names = checkName(forms);
+        checkName(forms);
         List<String> tokens;
 
         for(int i = 0 ; i < forms.size() ; i++){
-            tokens = getNameToken(names.get(i));
+            tokens = getNameToken(forms.get(i).get(1));
             findDup(tokens, forms, i);
         }
 
         List<String> answer = new ArrayList<>(resultset);
         return answer;
     }
-    static List<String> checkName(List<List<String>> forms) {
-        ArrayList<String> names = new ArrayList<>();
+    static void checkName(List<List<String>> forms) {
         for (List<String> splitedlist : forms) {
-            if (splitedlist.get(0).length() < 1 || splitedlist.get(0).length() > 20) {
-                resultset.add(splitedlist.get(1));
-                names.add(splitedlist.get(0));
-            }
-            else {
-                names.add(splitedlist.get(0));
+            if (splitedlist.get(1).length() < 1 || splitedlist.get(1).length() > 20) {
+                resultset.add(splitedlist.get(0));
             }
         }
-        return names;
     }
 
     static List<String> getNameToken(String name) {
@@ -50,8 +44,8 @@ public class Problem6 {
         for(int i = 0 ; i < forms.size() ; i++) {
             if(i != idx) {
                 for (String token : tokens) {
-                    if (forms.get(i).get(0).contains(token)) {
-                        resultset.add(forms.get(i).get(1));
+                    if (forms.get(i).get(1).contains(token)) {
+                        resultset.add(forms.get(i).get(0));
                     }
                 }
             }
