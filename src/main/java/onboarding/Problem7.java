@@ -95,15 +95,17 @@ public class Problem7 {
     private static Map<String, Integer> friendsToScore(String user ,List<List<String>> friends, List<String> userFriend) {
         Map<String, Integer> friendsScore = new HashMap<>();
         for (List<String> friend : friends) {
+            String friendA = friend.get(0);
+            String friendB = friend.get(1);
             for (String userFriendTmp : userFriend) {
-                if (friend.get(0).equals(userFriendTmp) && !friendsScore.containsKey(friend.get(1)) && !friend.get(1).equals(user))
-                    friendsScore.put(friend.get(1), 10);
-                else if (friend.get(0).equals(userFriendTmp) && friendsScore.containsKey(friend.get(1)) && !friend.get(1).equals(user))
-                    friendsScore.put(friend.get(1), friendsScore.get(friend.get(1)) + 10);
-                if (friend.get(1).equals(userFriendTmp) && !friendsScore.containsKey(friend.get(0)) && !friend.get(0).equals(user))
-                    friendsScore.put(friend.get(0), 10);
-                else if (friend.get(1).equals(userFriendTmp) && friendsScore.containsKey(friend.get(0)) && !friend.get(0).equals(user))
-                    friendsScore.put(friend.get(0), friendsScore.get(friend.get(0)) + 10);
+                if (friendA.equals(userFriendTmp) && !friendsScore.containsKey(friendB) && !friendB.equals(user))
+                    friendsScore.put(friendB, 10);
+                else if (friendA.equals(userFriendTmp) && friendsScore.containsKey(friendB) && !friendB.equals(user))
+                    friendsScore.put(friendB, friendsScore.get(friendB) + 10);
+                if (friendB.equals(userFriendTmp) && !friendsScore.containsKey(friendA) && !friendA.equals(user))
+                    friendsScore.put(friendA, 10);
+                else if (friendB.equals(userFriendTmp) && friendsScore.containsKey(friendA) && !friendA.equals(user))
+                    friendsScore.put(friendA, friendsScore.get(friendA) + 10);
             }
         }
         return friendsScore;
