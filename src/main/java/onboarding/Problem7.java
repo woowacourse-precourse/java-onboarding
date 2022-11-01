@@ -71,9 +71,7 @@ public class Problem7 {
 				addScore(visitors.get(i), 1, scores);
 			}
 		}
-		System.out.println(scores);
 		List<String> answer = getAnswer(scores);
-		System.out.println(answer);
 		return answer;
 	}
 }
