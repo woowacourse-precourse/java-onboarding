@@ -74,4 +74,15 @@ class Problem1 {
         int[] crongValues = {cfirst, csecond, cthird, cforth};
         return crongValues;
     }
+
+    public static int maxValue(int[] values) {
+        int max = values[0];
+
+        for (int i = 0; i < values.length; i++) {
+            if (max < values[i])
+                max = values[i];
+        }
+
+        return max;
+    }
 }
