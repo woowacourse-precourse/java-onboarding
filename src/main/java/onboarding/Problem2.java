@@ -2,8 +2,13 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        return answer;
+        StringBuilder input = new StringBuilder(cryptogram);
+        boolean chk = true;
+        while(chk) {
+            chk = checkDuplicatedAndDelete(input);
+        }
+        cryptogram = input.toString();
+        return cryptogram;
     }
 
     private static boolean checkDuplicatedAndDelete(StringBuilder input) {
