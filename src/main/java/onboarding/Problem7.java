@@ -93,6 +93,7 @@ public class Problem7 {
             throw new IllegalArgumentException("user의 길이는 1이상 30이하인 문자열입니다.");
         if (!user.matches(LOWERCASE_ID)) throw new IllegalArgumentException("아이디는 소문자로만 이루어져 있어야합니다.");
     }
+
     private static void checkFriendsException(List<List<String>> friends) {
         if (friends.size() < MIN_FRIENDS_LENGTH || friends.size() > MAX_FRIENDS_LENGTH)
             throw new IllegalArgumentException("friends는 1이상 10000이하인 리스트/배열입니다.");
@@ -105,6 +106,7 @@ public class Problem7 {
             }
         }
     }
+
     private static void checkVisitorException(List<String> visitors) {
         if (visitors.size() < MIN_VISITOR_LENGTH || visitors.size() > MAX_VISITOR_LENGTH)
             throw new IllegalArgumentException("visior는 길이가 0이상 10000이하인 리스트/배열입니다.");
