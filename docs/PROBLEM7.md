@@ -24,3 +24,12 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+---
+
+### 기능목록
+
+- user와 친구인 친구리스트를 만든다.
+- user와 친구가 아닌 리스트를 만든다.
+- user와 친구이지만, user와는 친구가 아닌 친구는 추천점수 10점을 부여한다.
+- visitors중에서 user와 친구가 아닌 친구는 추천점수를 1점 부여한다.
