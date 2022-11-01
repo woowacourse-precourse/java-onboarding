@@ -42,4 +42,16 @@ public class Problem6 {
         }
         return Member;
     }
+
+    public static List<String> MemberCheck(List<List<String>> forms, int index){
+        Member.clear();
+        for(int i=0; i<forms.size()&index!=i; i++){
+            if(checkequals(forms.get(index).get(1), forms.get(i).get(1))) {
+                Member.add(forms.get(index).get(0));
+                Member.add(forms.get(i).get(0));
+                break;
+            }
+        }
+        return Member;
+    }
 }
