@@ -6,6 +6,8 @@ public class Problem3 {
 
         //1부터 number까지 전체탐색
         for (int i = 1 ; i <= number ; i++){
+            //number는 변하면 안되기 때문에 copy생성
+            int copy = i;
 
         }
 
