@@ -40,9 +40,9 @@ public class Problem3 {
 		return 0;
 	}
 
-	// number 의 범위가 1 ~ 10000 이 아닌 경우 예외
+	// number 의 범위가 1 이상 10,000 이하가 아닌 경우 예외
 	private static boolean isNumberRangeValid(int number) {
-		if (number >= 1 && number <= 10000) {
+		if (number < 1 || number > 10000) {
 			return false;
 		}
 		return true;
