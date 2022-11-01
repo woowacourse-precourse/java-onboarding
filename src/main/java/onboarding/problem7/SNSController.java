@@ -123,12 +123,6 @@ public class SNSController {
         users.put(user.getName(), user);
     }
 
-    public void addVisitor(String userName, String visitedUserName){
-        User user = users.get(userName);
-        user.addVisitedUser(visitedUserName);
-        users.put(userName, user);
-    }
-
     public void addVisitors(String userName, List<String> visitedUserNames){
         if(!users.containsKey(userName)){
             addUser(userName);
