@@ -19,4 +19,14 @@ public class Problem3 {
         return separatedNumbers;
     }
 
+    private static int countClap(List<Integer> numbers){
+        int clapCount = 0;
+        System.out.println(numbers.toString());
+        for (int i: numbers) {
+            // 3, 6, 9인지 확인
+            if(i !=0 && i%3==0) clapCount++;
+            System.out.println(i);
+        }
+        return clapCount;
+    }
 }
