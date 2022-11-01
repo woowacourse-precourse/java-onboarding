@@ -24,7 +24,8 @@ public class Problem4 {
 
     public static String solution(String word) {
         stringtochar=word.toCharArray();
-        String answer = "";
+        splitWord();
+        String answer = String.valueOf(stringtochar);
         return answer;
     }
 }
