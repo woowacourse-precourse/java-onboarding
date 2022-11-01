@@ -3,10 +3,13 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
+    private static final int FRIEND_POINT = 10;
+    private static final int VISITOR_POINT = 1;
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         Set<String> peopleSet = getPeopleSet(friends, visitors);
         Map<String, Set<String>> relationMap = getRelationMap(friends, peopleSet);
+        Map<String, Integer> pointMap = getPointMap(relationMap, peopleSet, user, visitors);
         return answer;
     }
 
@@ -58,5 +61,16 @@ public class Problem7 {
             }
         }
         return number;
+    }
+    public static Map<String, Integer> getPointMap(Map<String, Set<String>> relationMap, Set<String> peopleSet,String user, List<String> visitors) {
+        Map<String, Integer> pointMap = new HashMap<>();
+        Set<String> usersf = relationMap.get(user);
+        for(String p : peopleSet) {
+            if(!usersf.contains(p)) {
+                pointMap.put(p, FRIEND_POINT * getFriendNumber(relationMap, p, user) + VISITOR_POINT * getVisitorNumber(p, visitors));
+            }
+        }
+        pointMap.remove(user);
+        return pointMap;
     }
 }
