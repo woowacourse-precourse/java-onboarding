@@ -3,14 +3,18 @@ package onboarding;
 import java.util.Stack;
 
 public class Problem2 {
+
+	public static final String ERROR_MESSAGE = "제한 사항을 위배했습니다.";
+	public static final int EXCEPTION = -1;
+
 	public static String solution(String cryptogram) {
 		Stack<Character> stack = new Stack<Character>();
 		char duplicated = ' '; // 중복되는 문자 -> 삭제할 문자
 		char top = ' '; // 스택의 top
 		char cur = ' '; // cur 은 cryptogram 을 순회할 문자
 
-		if (checkRestrictions(cryptogram) == -1) {
-			return "제한 사항을 위배했습니다.";
+		if (checkRestrictions(cryptogram) == EXCEPTION) {
+			return ERROR_MESSAGE;
 		}
 
 		for (int i = 0; i < cryptogram.length(); i++) {
@@ -40,10 +44,10 @@ public class Problem2 {
 	 */
 	private static Integer checkRestrictions(String cryptogram) {
 		if (!isCryptogramSizeValid(cryptogram)) {
-			return -1;
+			return EXCEPTION;
 		}
 		if (!isCryptogramLowerCase(cryptogram)) {
-			return -1;
+			return EXCEPTION;
 		}
 		return 0;
 	}
