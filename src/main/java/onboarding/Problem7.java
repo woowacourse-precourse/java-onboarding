@@ -4,7 +4,10 @@ import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        Map<String, List<String>> friendsList = getFriendsList(friends);
+        Map<String, Integer> score = scoreByAcquaintance(user, friendsList);
+        score = scoreByVisitor(user, score, friendsList, visitors);
+        List<String> answer = getRecommendFriends(score);
         return answer;
     }
     public static Map<String, List<String>> getFriendsList(List<List<String>> friends) {
