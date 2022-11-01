@@ -90,4 +90,19 @@ public class Problem7 {
         return sortedScores;
     }
 
+    private static List<String> getNamesByScore(Map<String, Integer> nameAndScoreMap, int score) {
+        List<String> names = new ArrayList<>();
+
+        for (String name : nameAndScoreMap.keySet()) {
+            int scoreByName = nameAndScoreMap.get(name);
+
+            if (score != scoreByName) {
+                continue;
+            }
+
+            names.add(name);
+        }
+
+        return names;
+    }
 }
