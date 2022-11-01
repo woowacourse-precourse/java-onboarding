@@ -24,6 +24,21 @@ public class Problem6 {
             }
         }
 
+        // 중복된 문자 체크 set 사용
+        Set<String> seen = new HashSet<>();
+        String duplicates = "";
+
+        for (String x : checkList) {
+            if (!seen.add(x)) {
+                duplicates = x;
+            }
+        }
+
+        for (int i = 0; i < forms.size(); i++) {
+            if (forms.get(i).get(1).contains(duplicates)) {
+                answer.add(forms.get(i).get(0));
+            }
+        }
 
         // result로 오름차순 정렬되게 stream 구현
         return answer.stream()
