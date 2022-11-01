@@ -31,4 +31,14 @@ class Problem1 {
 
         return result;
     }
+
+
+    private static int findMaxResult(List<Integer> pages) {
+        List<Integer> results = List.of(pageAddition(pages.get(0)),
+                pageMultiply(pages.get(0)),
+                pageAddition(pages.get(1)),
+                pageMultiply(pages.get(1)));
+
+        return results.stream().max(Integer::compare).orElse(-1);
+    }
 }
