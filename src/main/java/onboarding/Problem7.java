@@ -39,6 +39,25 @@ public class Problem7 {
         }
         return userFriends;
     }
+    public static List<Integer> knowWithFriendScore(String user, List<String> allName, List<Integer> allScore, List<List<String>> friends, List<String> userFriends) {
+        for(int i=0;i<friends.size();i++) {
+            for(int j=0;j<userFriends.size();j++) {
+                String user_friends_name = userFriends.get(j);
+                if(friends.get(i).contains(user_friends_name)) {
+                    if(friends.get(i).get(0).equals(user_friends_name) && !(friends.get(i).get(1).equals(user))) {
+                        int score = allScore.get(allName.indexOf(friends.get(i).get(1))) + 10;
+                        allScore.set(allName.indexOf(friends.get(i).get(1)),score);
+                    }
+                    else if (friends.get(i).get(1).equals(user_friends_name) && !(friends.get(i).get(0).equals(user))){
+                        int score = allScore.get(allName.indexOf(friends.get(i).get(0))) + 10;
+                        allScore.set(allName.indexOf(friends.get(i).get(0)),score);
+                    }
+                }
+            }
+        }
+        return allScore;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
