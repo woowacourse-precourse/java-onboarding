@@ -17,8 +17,7 @@ class Problem1 {
         int pobiMaxNumber = getBiggestNum(pobi);
         int crongMaxNumber = getBiggestNum(crong);
 
-        int answer = Integer.MAX_VALUE;
-        return answer;
+        return getWinner(pobiMaxNumber, crongMaxNumber);
     }
     private static boolean isNotValidPage(List<Integer> pages) {
         if (!isValidSize(pages) || !isValidRange(pages)) {
@@ -99,5 +98,14 @@ class Problem1 {
             resNum *= pageNum.charAt(i) - '0';
         }
         return resNum;
+    }
+
+    private static int getWinner(int pobiNum, int crongNum) {
+        if (pobiNum > crongNum) {
+            return (POBI_WIN);
+        } else if (pobiNum < crongNum) {
+            return (CRONG_WIN);
+        }
+        return (DRAW);
     }
 }
