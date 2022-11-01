@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -10,6 +11,9 @@ public class Problem6 {
     public static HashSet<String> duplicateEmails;
 
     public static List<String> getDuplicateList(List<List<String>> forms) {
+        subsetList = new HashMap<>();
+        duplicateEmails = new HashSet<>();
+
         for (int i = 0; i < forms.size(); i++) {
             String email = forms.get(i).get(0);
             String name = forms.get(i).get(1);
@@ -19,6 +23,8 @@ public class Problem6 {
     }
 
     private static List<String> getDuplicateEmails() {
+        List<String> emails = new ArrayList<>(duplicateEmails);
+        return emails;
     }
 
     private static void checkSubsetList(String name, String email) {
