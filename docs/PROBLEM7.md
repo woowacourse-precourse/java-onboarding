@@ -24,3 +24,12 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능 목록
+
+- friends를 이용해 그래프 구성
+  - \[아이디 A, 아이디 B\]로부터 양방향 간선 추가
+- 점수 관리
+  - user의 친구가 아닌 사람 중 (함께 아는 친구의 수 * 10)점 부여
+  - user의 친구가 아닌 사람 중 (타임 라인에 방문한 횟수 * 1)점 부여
+- 기록된 점수를 바탕으로 상위 5명 선별
