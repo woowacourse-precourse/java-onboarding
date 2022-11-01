@@ -1,36 +1,40 @@
 /*
  * Problem7
  *
- * v1.1
+ * v1.2
  *
  * 2022.11.01
  *
  * 저작권 주의
  */
-
 package onboarding;
 import java.util.*;
 
 public class Problem7 {
+    public static String User;
+    public static List<String> Visitors;
+    public static HashMap<String, Integer> FriendScore;
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> friendOfUsers= searchFriendsOfUser(user, friends);
-        HashMap<String, ArrayList<String>> anotherFriends = getAnotherFriend(user,friendOfUsers, friends);
+        User=user;
+        Visitors=visitors;
+
+        List<String> friendOfUsers= searchFriendsOfUser(friends);
+        HashMap<String, ArrayList<String>> anotherFriends = getAnotherFriend(friendOfUsers, friends);
         ArrayList<String> overlapedFriend = getOverlapedFriend(anotherFriends);
 
-        HashMap<String, Integer> friendScore = plusTen(overlapedFriend);
-        friendScore = plusOne(friendScore, visitors, friendOfUsers);
-
-        return getRecommendedFiveFriends(friendScore);
+        FriendScore = plusTen(overlapedFriend);
+        plusOne(friendOfUsers);
+        return getRecommendedFiveFriends(FriendScore);
     }
 
-    static List<String> searchFriendsOfUser(String user, List<List<String>> friends){
+    static List<String> searchFriendsOfUser(List<List<String>> friends){
         List<String> friendOfUser = new ArrayList<>();
 
         for (List<String> friendArray : friends) {
             for (int friendIndex = 0; friendIndex < 2; friendIndex++) {
                 int friendOfUserIndex=(1 - friendIndex);
 
-                if (friendArray.get(friendIndex).equals(user)) {
+                if (friendArray.get(friendIndex).equals(User)) {
                     friendOfUser.add(friendArray.get(friendOfUserIndex));
                 }
             }
@@ -38,9 +42,8 @@ public class Problem7 {
         return friendOfUser;
     }
 
-    static HashMap<String, ArrayList<String>> getAnotherFriend(String User,
-                                                                           List<String> friendsOfUser,
-                                                                           List<List<String>> friends){
+    static HashMap<String, ArrayList<String>> getAnotherFriend(List<String> friendsOfUser,
+                                                               List<List<String>> friends){
         HashMap<String, ArrayList<String>> AnotherFriendList=new HashMap<String, ArrayList<String>>();
 
         for (String friendOfUser : friendsOfUser) {
@@ -97,19 +100,16 @@ public class Problem7 {
         return friendScore;
     }
 
-    static HashMap<String, Integer> plusOne(HashMap<String, Integer> friendScore,
-                                            List<String> visitors,
-                                            List<String> friendOfUsers){
+    static void plusOne(List<String> friendOfUsers){
 
-        for(String visitor: visitors){
-            if(friendScore.containsKey(visitor) && !friendOfUsers.contains(visitor)){
-                friendScore.put(visitor, friendScore.get(visitor)+1);
+        for(String visitor: Visitors){
+            if(FriendScore.containsKey(visitor) && !friendOfUsers.contains(visitor)){
+                FriendScore.put(visitor, FriendScore.get(visitor)+1);
             }else if(!friendOfUsers.contains(visitor)){
-                friendScore.put(visitor, 1);
+                FriendScore.put(visitor, 1);
             }
         }
 
-        return friendScore;
     }
     static ArrayList<String> getRecommendedFiveFriends(HashMap<String, Integer> friendScore){
         ArrayList<String> recommendedFriends = new ArrayList<>(friendScore.keySet());
