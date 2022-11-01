@@ -21,3 +21,10 @@
 | --- | --- |
 | "browoanoommnaon" | "brown" |
 | "zyelleyz" | "" |
+
+
+### 기능 목록
+- `decode(String cryptogram)` : 중복 문자들을 검증하는 부분과 검증이 끝난 뒤 결과를 String으로 변환하는 기능으로 나눈다.
+- `checkDuplicateCharacter(String cryptogram)` : 스택을 생성하고, cryptogram 문자열의 각 글자들을 검증한다.
+- `removeDuplicateCharacter(Stack<Character> stack, String cryptogram, int idx)` : 중복되는 글자들을 스택에서 제거하고, 중복되지 않은 글자는 스택에 삽입한다.
+- `getDecodingResult(Stack<Character> stack)` : 중복 문자 검증이 끝난 뒤 스택에 남아있는 문자들을 꺼내어 String으로 변환한다.
