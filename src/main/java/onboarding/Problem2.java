@@ -28,5 +28,4 @@ public class Problem2 {
 	private static String removeDuplication(String str) {
 		return str.replaceAll(DUPLICATION_REGEX, "");
 	}
-
 }
