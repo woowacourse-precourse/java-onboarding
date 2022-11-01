@@ -16,7 +16,15 @@ public class Problem2 {
                 while (cur < cryptogram.length() - 1 && removeFlag[cur] == 1) cur++;
             }
         }
+        StringBuilder sb = new StringBuilder();
 
+        for (int i = 0; i < cryptogram.length(); i++) {
+            if (removeFlag[i] == 0) { // 지워지지 않았다면 sb에 append
+                sb.append(cryptogram.charAt(i));
+            }
+        }
+        answer = sb.toString();
+        return answer;
     }
 }
 
