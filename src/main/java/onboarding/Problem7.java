@@ -3,28 +3,29 @@ package onboarding;
 import java.util.*;
 
 public class Problem7 {
-    private static final int POINT_KNOW_SAME_FRIEND = 10;
 
-    private static final int POINT_VISIT = 1;
+    public static final int MIN_USER_LENGTH = 1;
+    public static final int MAX_USER_LENGTH = 30;
+
+    public static final int MIN_FRIENDS_SIZE = 1;
+    public static final int MAX_FRIENDS_SIZE = 10000;
+
+    public static final int MAX_VISITORS_SIZE = 10000;
+
+    public static final int RESULT_SIZE = 5;
+
+
+    public static final int POINT_KNOW_SAME_FRIEND = 10;
+    public static final int POINT_VISIT = 1;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-
-//        user는 길이가 1 이상 30 이하인 문자열이다.
-//        friends는 길이가 1 이상 10,000 이하인 리스트/배열이다.
-//        friends의 각 원소는 길이가 2인 리스트/배열로 [아이디 A, 아이디 B] 순으로 들어있다.
-//          A와 B는 친구라는 의미이다.
-//          아이디는 길이가 1 이상 30 이하인 문자열이다.
-//        visitors는 길이가 0 이상 10,000 이하인 리스트/배열이다.
-//        사용자 아이디는 알파벳 소문자로만 이루어져 있다.
-//        동일한 친구 관계가 중복해서 주어지지 않는다.
-//        추천할 친구가 없는 경우는 주어지지 않는다.
 
         if (isNotValidateUser(user) || isNotValidateFriends(friends) || isNotValidateVisitors(visitors)) {
             throw new IllegalArgumentException();
         }
 
         Set<String> userFriends = getUserFriends(user, friends);
-        userFriends.add(user);
+
 
         Map<String, Integer> recommendationScore = new HashMap<>();
 
@@ -44,11 +45,13 @@ public class Problem7 {
             }
         }
 
+
         for (String visitor : visitors) {
             if (!userFriends.contains(visitor)) {
                 raiseScore(recommendationScore, visitor, POINT_VISIT);
             }
         }
+
 
         List<ScoreAndId> scoreAndIdList = new ArrayList<>();
         recommendationScore.forEach((id, score) ->
@@ -58,12 +61,12 @@ public class Problem7 {
         Collections.sort(scoreAndIdList);
 
 
-        List<String> answer = new ArrayList<>();
-        for (int i = 0; i < 5 && i < scoreAndIdList.size(); i++) {
-            answer.add(scoreAndIdList.get(i).id);
+        List<String> result = new ArrayList<>();
+        for (int i = 0; i < RESULT_SIZE && i < scoreAndIdList.size(); i++) {
+            result.add(scoreAndIdList.get(i).id);
         }
 
-        return answer;
+        return result;
     }
 
     private static Set<String> getUserFriends(String user, List<List<String>> friends) {
@@ -81,6 +84,8 @@ public class Problem7 {
             }
         }
 
+        // 자기 자신도 친구에 포함
+        result.add(user);
         return result;
     }
 
@@ -92,13 +97,14 @@ public class Problem7 {
     private static boolean isNotValidateUser(String user) {
         // 사용자 아이디는 알파벳 소문자로만 이루어져 있다.
         // 사용자 아이디는 길이가 1 이상 30 이하인 문자열이다.
-        return !(0 < user.length() && user.length() < 31) || !(user.matches("^[a-z]*$"));
+        return !(MIN_USER_LENGTH <= user.length() && user.length() <= MAX_USER_LENGTH)
+                || !(user.matches("^[a-z]*$"));
     }
 
     private static boolean isNotValidateFriends(List<List<String>> friends) {
 
         // friends는 길이가 1 이상 10,000 이하인 리스트/배열이다.
-        if (!( 0 < friends.size() && friends.size() < 10001)) {
+        if (!(MIN_FRIENDS_SIZE <= friends.size() && friends.size() <= MAX_FRIENDS_SIZE)) {
             return true;
         }
 
@@ -132,7 +138,8 @@ public class Problem7 {
     private static boolean isNotValidateVisitors(List<String> visitors) {
         // visitors는 길이가 0 이상 10,000 이하인 리스트/배열이다.
         // 사용자 아이디는 알파벳 소문자로만 이루어져 있다.
-        return visitors.size() > 10000 || visitors.stream().anyMatch(Problem7::isNotValidateUser);
+        return visitors.size() > MAX_VISITORS_SIZE
+                || visitors.stream().anyMatch(Problem7::isNotValidateUser);
     }
 
     private static class ScoreAndId implements Comparable<ScoreAndId> {

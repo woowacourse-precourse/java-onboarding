@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.stream.IntStream;
 
 import static onboarding.Problem6.EMAIL_DOMAIN;
 import static onboarding.Problem6.MAX_NUM_OF_CREWS;
@@ -379,6 +380,75 @@ class ApplicationTest {
             List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
             List<String> result = List.of("andole", "jun", "bedi");
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
+        }
+
+        @Test
+        void duplicatedFriendsRelation() {
+            String user = "mrko";
+            List<List<String>> friends = List.of(
+                    List.of("donut", "andole"),
+                    List.of("donut", "andole")
+            );
+            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+            assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        void noFriendsRelation() {
+            String user = "mrko";
+            List<List<String>> friends = List.of();
+            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+            assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        void invalidFriendsRelation() {
+            String user = "mrko";
+            List<List<String>> friends = List.of(
+                    List.of("donut", "andole", "bedi")
+            );
+            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+            assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        void selfFriends() {
+            String user = "mrko";
+            List<List<String>> friends = List.of(
+                    List.of("mrko", "mrko")
+            );
+            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+            assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        void invalidUser() {
+            String user = "ab123";
+            List<List<String>> friends = List.of(
+                    List.of("ab123", "bedi")
+            );
+            List<String> visitors = List.of("bedi", "bedi", "donut", "bedi", "shakevan");
+            assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
+                    .isInstanceOf(IllegalArgumentException.class);
+        }
+
+        @Test
+        void tooManyVisitors() {
+            String user = "mrko";
+            List<List<String>> friends = List.of(
+                    List.of("mrko", "bedi")
+            );
+            List<String> visitors = new ArrayList<>();
+            for (int i = 0; i < Problem7.MAX_VISITORS_SIZE + 1; i++) {
+                visitors.add("bedi");
+            }
+
+            assertThatThrownBy(() -> Problem7.solution(user, friends, visitors))
+                    .isInstanceOf(IllegalArgumentException.class);
         }
     }
 }
