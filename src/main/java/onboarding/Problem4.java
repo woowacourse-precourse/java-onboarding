@@ -11,6 +11,23 @@ public class Problem4 {
     public static String solution(String word) {
     }
 
+    private static String parseLetter(String letter) {
+        char checkableLetter = convertToCheckableLetter(letter);
+        char parsedLetter = parseCheckableLetter(checkableLetter);
+        return parseToWord(parsedLetter);
+    }
+
+    private static char parseCheckableLetter(char letter) {
+        if (checkNotAlphabetic(letter)) {
+            return letter;
+        }
+        return reverseLetter(letter);
+    }
+
+    private static String parseToWord(char parsedLetter) {
+        return String.valueOf(parsedLetter);
+    }
+
     private static char reverseLetter(char letter) {
         char reversedLetter = NOTHING;
         if (checkUpperCase(letter)) {
