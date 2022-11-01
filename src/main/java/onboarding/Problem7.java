@@ -1,6 +1,7 @@
 package onboarding;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -21,7 +22,6 @@ public class Problem7 {
         return friendMap;
     }
 
-
     public static Map<String, Integer> getKnowTogetherMembersPoint(List<String> knowTogetherMembers, List<String> userAndUserFriends) {
         Map<String, Integer> points = new HashMap<>();
         for (String knowTogetherMember : knowTogetherMembers) {
@@ -36,4 +36,14 @@ public class Problem7 {
         }
         return 10;
     }
+
+    public static List<String> getUserFriends(Map<String, List<String>> friendMap, String user) {
+        return friendMap.get(user);
+    }
+
+    public static List<String> getUserAndUserFriends(List<String> userFriends, String user) {
+        userFriends.add(user);
+        return userFriends;
+    }
+
 }
