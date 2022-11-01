@@ -4,7 +4,17 @@ import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
-        List<String> answer = List.of("answer");
+        List<String> answer = new ArrayList<>();
+
+        HashMap<String, ArrayList<Integer>> arrayListHashMap;
+        arrayListHashMap = makeNicknameHashMap(forms);
+
+        for (Map.Entry<String, ArrayList<Integer>> entry : arrayListHashMap.entrySet()) {
+            hasDuplicateNickname(forms, answer, entry);
+        }
+
+        answer = sortAnswer(answer);
+
         return answer;
     }
 
@@ -78,7 +88,7 @@ public class Problem6 {
         }
     }
 
-    
+
     private static List<String> sortAnswer(List<String> answer) {
         Set<String> set = new HashSet<>(answer);
         List<String> sortedList = new ArrayList<>(set);
