@@ -8,6 +8,7 @@ import java.util.Map;
 public class Problem7 {
 
     private static final int USER_RELATED_POINT = 10;
+    private static final int USER_VISITED_POINT = 1;
     private static final int FRIEND_A = 0;
     private static final int FRIEND_B = 1;
 
@@ -21,6 +22,7 @@ public class Problem7 {
 
         reflectAlreadyUserFriends(user, friends);
         reflectFriendsRelated(friends, user);
+        reflectVisited(visitors);
     }
 
     private static void reflectAlreadyUserFriends(String user, List<List<String>> friends) {
@@ -57,6 +59,14 @@ public class Problem7 {
         }
     }
 
+    private static void reflectVisited(List<String> visitors) {
+        for (String visitor : visitors) {
+            User visitedUser = relationShips.getOrDefault(visitor, new User(visitor));
+            relationShips.put(visitor, visitedUser);
+            visitedUser.increaseVisitedFriendPoint();
+        }
+    }
+
     static class User implements Comparable<User> {
 
         private final String name;
@@ -76,6 +86,10 @@ public class Problem7 {
 
         public void increaseRelatedFriendPoint() {
             this.recommendPoint += USER_RELATED_POINT;
+        }
+
+        public void increaseVisitedFriendPoint() {
+            this.recommendPoint += USER_VISITED_POINT;
         }
 
         @Override
