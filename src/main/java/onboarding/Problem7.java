@@ -1,7 +1,6 @@
 package onboarding;
 
-import java.util.Collections;
-import java.util.List;
+import java.util.*;
 
 /**
  * 기능 목록
@@ -12,8 +11,29 @@ import java.util.List;
  * 5. 친구 이름과 추천 점수를 정렬하기 위해 class 구현 후 정렬하는 기능
  */
 public class Problem7 {
+
+    static Map<String, Integer> friendsMap = new HashMap<>();
+    static List<String> friendsOfUser = new ArrayList<>();
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
+        List<String> answer = new ArrayList<>();
+
+        findFriendsOfUser(user, friends);
+
         return answer;
+    }
+
+    public static void findFriendsOfUser(String user, List<List<String>> friends) {
+        for (List<String> friend : friends) {
+            String firstFriend = friend.get(0);
+            String secondFriend = friend.get(1);
+
+            if (firstFriend.equals(user)) {
+                friendsOfUser.add(secondFriend);
+            }
+            if (secondFriend.equals(user)) {
+                friendsOfUser.add(firstFriend);
+            }
+        }
     }
 }
