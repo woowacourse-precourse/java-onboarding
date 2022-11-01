@@ -8,6 +8,8 @@ public class Problem7 {
     public static final int VISITOR_SCORE = 1;
 
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
+        validateUserLength(user);
+
         List<String> answer = new ArrayList<>();
         HashMap<String, List<String>> friendRelationshipMap = new HashMap<>();
         HashMap<String, Integer> scoreMap = new HashMap<>();
@@ -125,5 +127,11 @@ public class Problem7 {
             }
         }
 
+    }
+
+    private static void validateUserLength(String user) {
+        if (user.length() == 0 || user.length() > 30) {
+            throw new IllegalArgumentException("user의 길이는 1이상 30이하여야 합니다.");
+        }
     }
 }
