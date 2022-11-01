@@ -21,3 +21,29 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+## 기능 요구 사항 분석
+### 핵심 관심사
+- 같은 글자가 연속적으로 포함되는 form을 탐색
+- 탐색한 form의 email을 반환할 때, 오름차순으로 정렬하고, 중복은 제거
+
+### 주변 관심사
+- 이메일 유효성 검사
+  - 이메일 길이는 11 이상 20 미만
+  - 이메일 도메인 형식은 email.com으로 제한
+- 닉네임 유효성 검사
+  - 한글만 가능
+  - 닉네임 길이는 1 이상 20 미만
+
+### 세부 사항
+- Member : form을 저장하는 클래스
+  - [X] field : email, name
+- Crew : member를 저장하는 클래스
+  - [X] field : members
+- Selector : Crew의 Member 중 유효하지 않은 Member를 탐색하는 클래스
+  - [X] field : crew
+  - [X] 같은 글자가 연속적으로 포함되는 Member를 탐색
+  - [X] 탐색된 Member에 대해서 정렬된 email 반환
+- Validator : 닉네임과 이메일의 유효성을 검사하는 클래스
+  - [X] 닉네임 유효성 검사
+  - [X] 이메일 유효성 검사
