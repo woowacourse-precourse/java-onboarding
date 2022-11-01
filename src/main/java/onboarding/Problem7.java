@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
@@ -11,6 +8,7 @@ public class Problem7 {
 
         HashMap<String, Integer> friendCandidateHashMap = new HashMap<>();
         setFriendScoreOfUser(friendCandidateHashMap, friends, user);
+        setVisitorScoreOfUser(friendCandidateHashMap, friends, visitors, user);
 
 
         return answer;
@@ -49,5 +47,17 @@ public class Problem7 {
             }
         }
         return friendsOfFriendOfUser;
+    }
+
+    private static void setVisitorScoreOfUser(HashMap<String, Integer> friendCandidateHashMap, List<List<String>> friends, List<String> visitors, String user) {
+        List<String> friendsOfUser = getFriendOfUser(friends, user);
+        HashSet<String> visitorsExceptFriend = getVisitorsExceptFriend(visitors, friendsOfUser);
+        for (String visitorExceptFriend : visitorsExceptFriend) {
+            friendCandidateHashMap.put(visitorExceptFriend, friendCandidateHashMap.containsKey(visitorExceptFriend) ? friendCandidateHashMap.get(visitorExceptFriend) + 1 : 1);
+        }
+    }
+
+    private static HashSet<String> getVisitorsExceptFriend(List<String> visitors, List<String> friendsOfUser) {
+
     }
 }
