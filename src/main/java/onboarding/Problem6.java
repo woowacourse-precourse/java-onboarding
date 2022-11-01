@@ -7,4 +7,19 @@ public class Problem6 {
         List<String> answer = List.of("answer");
         return answer;
     }
+    private static List<String> separateNickname(String nickname){
+        final int length = nickname.length();
+        List<String> separatedNicknames = new ArrayList<>();
+        if (length < 2) return separatedNicknames;
+        if (length == 2){
+            separatedNicknames.add(nickname);
+            return separatedNicknames;
+        }
+        for (int i = 0; i < length-1; i++) {
+            for (int j = i+1; j < length; j++){
+                separatedNicknames.add(nickname.substring(i,j+1));
+            }
+        }
+        return separatedNicknames;
+    }
 }
