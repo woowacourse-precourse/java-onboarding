@@ -57,8 +57,8 @@ public class Problem7 {
         for (List<String> friendShip : friends) {
             if (friendShip.contains(user)) {
                 userFriends.add(friendShip.get(0).equals(user)
-                        ? friendShip.get(0)
-                        : friendShip.get(1));
+                        ? friendShip.get(1)
+                        : friendShip.get(0));
                 continue;
             }
             //아직 등록하지 않은 친구는 등록 후 저장
@@ -92,7 +92,7 @@ public class Problem7 {
                                                                     List<String> userFriends
     ) {
         for (String friend : userFriends) {
-            if(scoreMap.get(friend) != null) scoreMap.put(friend, 0);
+            if (scoreMap.get(friend) != null) scoreMap.put(friend, 0);
         }
         return scoreMap;
     }
