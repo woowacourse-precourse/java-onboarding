@@ -3,7 +3,15 @@ package onboarding;
 public class Problem3 {
     public static int solution(int number) {
         int answer = 0;
+        if (exception(number)){
+            for (int i = 1; i <= number; i++) {
+                answer += clap_count(i);
+            }
+            return answer;
+
+        }
         return answer;
+
     }
     private static boolean exception(int number) {
         if(number < 1 || number > 1000){
