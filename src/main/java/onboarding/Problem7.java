@@ -13,7 +13,6 @@ import java.util.stream.Collectors;
 
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-        List<String> answer = Collections.emptyList();
 
         // 1. 친구관계 그래프 Map 생성
         Map<String, List<String>> connectMap = new HashMap<>();
@@ -61,6 +60,16 @@ public class Problem7 {
                     }
                 })
                 .collect(Collectors.toList());
+
+        // 5. 최대 5인 추천 친구 선정
+        List<String> answer = new ArrayList<>();
+        for(Map.Entry<String, Integer> recommended : scoresList) {
+            if(answer.size() >= 5) break;
+            if(recommended.getKey() != user // 본인 x
+                    && !connectMap.get(user).contains(recommended.getKey()) // 현재 친구 x
+                    && recommended.getValue() > 0) // 0점 x
+                answer.add(recommended.getKey());
+        }
 
         return answer;
     }
