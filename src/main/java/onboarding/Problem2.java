@@ -4,9 +4,10 @@ public class Problem2 {
 
     public static String solution(String cryptogram) {
         String copy = cryptogram;
-        for (int i = 0; i < cryptogram.length() - 1; i++) {
-            if (isCharsDuplicatedInGivenIdx(cryptogram, i)) {
-                cryptogram = deleteTwoCharsFromIdx(cryptogram, i);
+        for (int src = 0; src < cryptogram.length() - 1; src++) {
+            int dst = getDuplicatedIdxFromSrc(cryptogram, src);
+            if (src != dst) {
+                cryptogram = deleteCharsBtwIdx(cryptogram, src, dst);
             }
         }
         if (cryptogram.equals(copy)) {
@@ -15,16 +16,21 @@ public class Problem2 {
         return solution(cryptogram);
     }
 
-    public static boolean isCharsDuplicatedInGivenIdx(String string, int idx) {
-        if (string.charAt(idx) == string.charAt(idx + 1)) {
-            return true;
+    public static int getDuplicatedIdxFromSrc(String string, int src) {
+        int dst = src;
+        char c = string.charAt(src);
+        for (int i = src + 1; i < string.length(); i++) {
+            if (c != string.charAt(i)) {
+                break;
+            }
+            dst++;
         }
-        return false;
+        return dst;
     }
 
-    public static String deleteTwoCharsFromIdx(String string, int idx) {
-        String prefix = string.substring(0, idx);
-        String suffix = string.substring(idx + 2, string.length());
+    public static String deleteCharsBtwIdx(String string, int src, int dst) {
+        String prefix = string.substring(0, src);
+        String suffix = string.substring(dst+1);
         return prefix + suffix;
     }
 }
