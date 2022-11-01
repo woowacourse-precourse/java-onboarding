@@ -9,7 +9,7 @@ public class Problem6 {
         for (int start = 0; start < forms.size() - 1; start++) {
             for (int i = 2; i < forms.get(start).get(1).length(); i++) {
                 for (int k = 0; k < forms.get(start).get(1).length(); k++) {
-                    if((k+i) < forms.get(start).get(1).length()) {
+                    if ((k + i) < forms.get(start).get(1).length()) {
                         String checkName = forms.get(start).get(1).substring(k, k + i);
                         for (int confirm = start + 1; confirm < forms.size(); confirm++) {
                             if (checkName.length() <= forms.get(confirm).get(1).length()) {
@@ -19,7 +19,7 @@ public class Problem6 {
                                 }
                             }
                         }
-                    }else{
+                    } else {
                         break;
                     }
 

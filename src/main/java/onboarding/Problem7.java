@@ -38,7 +38,7 @@ public class Problem7 {
         entryList.sort((o1, o2) -> o2.getValue() - o1.getValue());
         result.entrySet().stream().sorted(Map.Entry.comparingByValue());
 
-        for(Map.Entry<String, Integer> entry : entryList){
+        for (Map.Entry<String, Integer> entry : entryList) {
             answer.add(entry.getKey());
         }
 

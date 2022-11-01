@@ -20,8 +20,8 @@ public class Problem2 {
 
             Stack newStack = calculation(stack);
 
-            if(stack.size() == 0 ||check(newStack)){
-                for(int i = 0 ; i < newStack.size(); i ++){
+            if (stack.size() == 0 || check(newStack)) {
+                for (int i = 0; i < newStack.size(); i++) {
                     answer += newStack.get(i);
                 }
                 break;
@@ -34,16 +34,16 @@ public class Problem2 {
         return answer;
     }
 
-    public static boolean check(Stack stack){
-        for (int i = 0 ; i < stack.size() -1; i ++){
-            if(String.valueOf(stack.get(i)).equals(String.valueOf(stack.get(i+1)))){
+    public static boolean check(Stack stack) {
+        for (int i = 0; i < stack.size() - 1; i++) {
+            if (String.valueOf(stack.get(i)).equals(String.valueOf(stack.get(i + 1)))) {
                 return false;
             }
         }
         return true;
     }
 
-    public static Stack calculation( Stack stack) {
+    public static Stack calculation(Stack stack) {
         List<String> crypto = new ArrayList<>(stack);
         Stack returnStack = new Stack();
         String last = crypto.get(0);
@@ -61,7 +61,7 @@ public class Problem2 {
                 sameLast = true;
             }
         }
-        if(sameLast == true){
+        if (sameLast == true) {
             returnStack.pop();
         }
         return returnStack;
