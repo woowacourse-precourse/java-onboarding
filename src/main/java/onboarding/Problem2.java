@@ -22,8 +22,6 @@ public class Problem2 {
         while(!compressed.isEmpty() && !before.equals(compressed)){
             before = compressed;
             compressed = compressString(compressed).toString();
-
-            System.out.println(compressed);
         }
 
         return compressed;
