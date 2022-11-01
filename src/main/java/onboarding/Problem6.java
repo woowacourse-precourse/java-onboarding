@@ -37,4 +37,14 @@ public class Problem6 {
             }
         }
     }
+
+    public static void duplicateNameDetectionMethod(List<List<String>> forms, int num) {
+        str.clear();
+        saveNameByTwoCharacters(forms.get(num).get(1));
+        for (int i = num + 1; i < forms.size(); i++) {
+            if (checkNameDuplication(str, i, forms)) {
+                isDuplicateName(num, i);
+            }
+        }
+    }
 }
