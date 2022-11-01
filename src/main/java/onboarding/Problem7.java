@@ -56,6 +56,20 @@ public class Problem7 {
         return friendsRecommend;
     }
 
+    // 기능 목록 4 : 친구 추천 알고리즘의 1점인 경우를 만족하는 사용자들의 점수를 계산하는 함수
+    public static Map<String, Integer> oneScoreCalculation(List<String> myfriends, List<String> visitors, Map<String, Integer> friendsRecommend){
+        for(String visitor:visitors){
+            if(!myfriends.contains(visitor)){
+                if(!friendsRecommend.containsKey(visitor)){
+                    friendsRecommend.put(visitor,0);
+                }
+                friendsRecommend.replace(visitor,friendsRecommend.get(visitor)+1);
+            }
+        }
+
+        return friendsRecommend;
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
