@@ -21,3 +21,15 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+### 기능목록
+
+- [x] 입력값 검증
+  - [x] 닉네임 범위 확인
+  - [x] 닉네임 한글 확인
+  - [x] 이메일 길이 확인
+  - [x] 이메일 도메인 확인
+  - [x] 크루 수 확인
+- [x] 구현
+  - [x] 닉네임 중복 확인
+  - [x] 중복된 닉네임의 이메일 가져오기

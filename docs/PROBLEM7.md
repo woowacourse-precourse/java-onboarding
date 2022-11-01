@@ -24,3 +24,14 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능목록
+
+- [x] 입력값 검증
+  - [x] 아이디 길이 확인
+  - [x] 아이디 소문자 확인
+- [x] 구현
+  - [x] 사용자와 함께 아는 친구의 수만큼 점수 주기
+  - [x] 사용자의 타임라인에 방문한 횟수 만큼 점수 주기
+  - [x] 추천점수 구하기
+  - [x] 추천할 친구 구하기
