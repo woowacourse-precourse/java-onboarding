@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
@@ -18,8 +15,16 @@ public class Problem6 {
                 }
             }
         }
+        List<String> answer = printEmail(list);
+        return answer;
+    }
+
+    public static List<String> printEmail(List<String> list) {
+        // 중복 제거
         Set<String> set = new HashSet<>(list);
         List<String> answer = new ArrayList<>(set);
+        // 오름차순 정렬
+        Collections.sort(answer);
         return answer;
     }
 
