@@ -10,89 +10,110 @@ public class Problem6 {
 	public static List<String> solution(List<List<String>> forms) {
 		List<String> answer = List.of("answer");
 
-		answer = getEmailList(forms);
+		ApplicationForm applicationForm = new ApplicationForm(forms);
+		answer = applicationForm.getSimilarEmailList();
 
 		return answer;
 	}
+}
+
+class ApplicationForm {
+
+	List<PeopleInfo> peopleInfoList;
+
 
 	/**
-     * 닉네임이 유사한 사람들의 이메일 목록을 반환한다.
-     * @param <이메일,이름>의 리스트 
-     * @return 닉네임이 유사한 사람들의 이메일 목록
-     */
-	private static List<String> getEmailList(List<List<String>> forms) {
-
-		Set<Integer> similarNicknameIndex = new HashSet<Integer>();
-
-		for (int index = 0; index < forms.size(); index++) {
-			similarNicknameIndex.addAll(findSimilarNickname(index, forms));
+	 * 유저 목록 인스턴스를 생성한다.
+	 * 
+	 * @param List<[이메일,닉네임]>
+	 */
+	public ApplicationForm(List<List<String>> forms) {
+		peopleInfoList = new ArrayList<PeopleInfo>();
+		for (List<String> form : forms) {
+			peopleInfoList.add(new PeopleInfo(form));
 		}
-		List<String> emailList = indexToEmailList(similarNicknameIndex, forms);
+
+	}
+
+	/**
+	 * 닉네임이 유사한 사람들의 이메일 목록을 반환한다.
+	 * 
+	 * @return 닉네임이 유사한 사람들의 이메일 목록
+	 */
+	public List<String> getSimilarEmailList() {
+
+		Set<PeopleInfo> similarNicknameIndex = new HashSet<PeopleInfo>();
+		similarNicknameIndex = findSimilarNicknameIndex();
+		List<String> emailList = indexToEmailList(similarNicknameIndex);
 
 		return emailList;
 	}
-	
+
 	/**
-     * 특정 index의 유저 닉네임과 닉네임이 유사한 사람들의 index를 반환한다
-     * @param 검색기준이 되는 index, <이메일,이름>의 리스트 
-     * @return 닉네임이 유사한 사람들 index 목록
-     */
-	private static Set<Integer> findSimilarNickname(int index, List<List<String>> forms) {
+	 * 다른 유저의 닉네임과 닉네임이 유사한 유저들의 목록을 반환한다.
+	 * 
+	 * @return 닉네임이 유사한 사람들 유저들의 목록
+	 */
+	private Set<PeopleInfo> findSimilarNicknameIndex() {
 
-		Set<Integer> set = new HashSet<Integer>();
+		Set<PeopleInfo> indexSet = new HashSet<PeopleInfo>();
 
-		String nickName = forms.get(index).get(1);
-		for (int i = 1; i < nickName.length(); i++) {
-			String comparativeString = Character.toString(nickName.charAt(i - 1))
-					+ Character.toString(nickName.charAt(i));
-			set.addAll(chcekOtherNickname(forms, index, comparativeString));
+		for (PeopleInfo peopleInfo : peopleInfoList) {
+			String nickName = peopleInfo.nickName;
+			for (int i = 1; i < nickName.length(); i++) {
+				String comparativeString = Character.toString(nickName.charAt(i - 1))
+						+ Character.toString(nickName.charAt(i));
+				indexSet.addAll(chcekOtherNickname(peopleInfo, comparativeString));
+			}
+
 		}
-
-		return set;
+		return indexSet;
 	}
 
 	/**
-     * 해당 철자가 다른 닉네임들과 유사한지 확인하고 그 index들을 밙환한다.
-     * @param  <이메일,이름>의 리스트, 검색기준이 되는 index, 비교하는 철자
-     * @return 닉네임이 유사한 사람들 index 목록
-     */
-	private static Set<Integer> chcekOtherNickname(List<List<String>> forms, int index, String comparativeString) {
-		Set<Integer> set = new HashSet<Integer>();
+	 * 유저 목록을 이메일 목록을 변환하여 반환한다.
+	 * 
+	 * @param 기준 유저, 비교 단어
+	 * @return 유저 Set
+	 */
 
-		for (int i = 0; i < forms.size(); i++) {
-			if (i != index) {
-				List<String> form = forms.get(i);
-				String nickName = form.get(1);
-				if (nickName.indexOf(comparativeString) != -1) {
-					set.add(i);
-				}
+	private Set<PeopleInfo> chcekOtherNickname(PeopleInfo target, String comparativeString) {
+
+		Set<PeopleInfo> indexSet = new HashSet<PeopleInfo>();
+
+		for (int j = 0; j < peopleInfoList.size(); j++) {
+			PeopleInfo peopleInfo = peopleInfoList.get(j);
+			if (!target.equals(peopleInfo) && peopleInfo.nickName.indexOf(comparativeString) != -1) {
+				indexSet.add(peopleInfo);
 			}
 		}
-		return set;
+
+		return indexSet;
 	}
 
 	/**
-     * 인덱스의 목록을 이메일 목록을 변환하여 반환
-     * @param  인덱스 목록, <이메일,이름>의 리스트
-     * @return 이메일 목록
-     */
-	private static List<String> indexToEmailList(Set<Integer> similarNicknameIndex, List<List<String>> forms) {
+	 * 유저목록을 이메일 목록으로 변환하여 반환한다.
+	 * 
+	 * @param Set<PeopleInfo>
+	 * @return 이메일 목록
+	 */
+	private static List<String> indexToEmailList(Set<PeopleInfo> similarNicknamePeople) {
 
 		List<String> emailList = new ArrayList<String>();
 
-		for (Integer index : similarNicknameIndex) {
-			List<String> form = forms.get(index);
-			emailList.add(form.get(0));
+		for (PeopleInfo peopleInfo : similarNicknamePeople) {
+			emailList.add(peopleInfo.email);
 		}
 
 		emailSort(emailList);
 		return emailList;
 	}
-	
+
 	/**
-     * 이메일 목록을 정렬한다.
-     * @param  이메일 목록
-     */
+	 * 이메일 목록을 정렬한다.
+	 * 
+	 * @param 이메일 목록
+	 */
 	private static void emailSort(List<String> emailList) {
 
 		Comparator<String> emailSort = new Comparator<String>() {
@@ -105,5 +126,23 @@ public class Problem6 {
 		};
 
 		emailList.sort(emailSort);
+	}
+
+}
+
+class PeopleInfo {
+
+	int index;
+	String email;
+	String nickName;
+
+	public PeopleInfo(List<String> form) {
+		this.email = form.get(0);
+		this.nickName = form.get(1);
+	}
+
+	@Override
+	public String toString() {
+		return "[" + email + ":" + nickName + "]";
 	}
 }
