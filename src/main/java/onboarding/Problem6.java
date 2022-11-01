@@ -20,6 +20,17 @@ public class Problem6 {
                 String nName1 = forms.get(i).get(1);
                 String nName2 = forms.get(j).get(1);
 
+                // 2. 하나의 이름의 두개의 연속되 문자를 앞에서부터 순서대로 검새해서 그 문자열이 나머지 이름의 문자열에 포함되어 있는지 검사
+                //    포함되어 있다면, answer에 해당하는 두 이름의 이메일들을 저장
+                for(int k=0;k<nName1.length();k++){
+                    if(k!=nName1.length()-1){
+                        if(nName2.contains(
+                                String.valueOf(nName1.charAt(k))+(nName1.charAt(k+1)))){
+                            answer.add(forms.get(i).get(0));
+                            answer.add(forms.get(j).get(0));
+                        }
+                    }
+                }
             }
         }
         return answer;
