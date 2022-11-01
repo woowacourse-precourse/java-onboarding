@@ -9,6 +9,7 @@ import java.util.stream.Collectors;
 public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
+        countScore(user, getUserFriends(user, friends), getAssociations(friends), visitors);
         return answer;
     }
     private static List<String> getUserFriends(String user, List<List<String>> friends) {
@@ -48,5 +49,24 @@ public class Problem7 {
         }
         System.out.println(associations);
         return associations;
+    }
+    private static HashMap<String, Integer> countScore(String user, List<String> userFriends, HashMap<String, List<String>> associations, List<String> visitors) {
+        HashMap<String, Integer> scoreMap = new HashMap<String, Integer>();
+        for(String key: associations.keySet().stream().filter(key -> key != user).collect(Collectors.toList())) {
+            scoreMap.put(key, 0);
+            for(String userFriend: userFriends) {
+                if(associations.get(key).contains(userFriend)) {
+                    scoreMap.put(key, scoreMap.get(key) + 10);
+                }
+            }
+        }
+        for(String visitor: visitors) {
+            if(!scoreMap.containsKey(visitor)) {
+                scoreMap.put(visitor, 1);
+            } else {
+                scoreMap.put(visitor, scoreMap.get(visitor) + 1);
+            }
+        }
+        return scoreMap;
     }
 }
