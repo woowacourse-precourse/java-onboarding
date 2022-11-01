@@ -3,17 +3,13 @@ package onboarding;
 import java.util.HashMap;
 
 public class Problem4 {
+    private static final HashMap<Character, Character> map = new HashMap<>();
     public static String solution(String word) {
-        HashMap<Character, Character> map = new HashMap<>();
-        StringBuilder answer = new StringBuilder();
-        setValue(map);
-        for(int i = 0; i < word.length(); i++){
-            answer.append(map.get(word.charAt(i)));
-        }
-        return answer.toString();
+        setValue();
+        return findWordOpposite(word);
     }
 
-    public static void setValue(HashMap<Character, Character> map){
+    public static void setValue(){
         int start = 0;
         map.put(' ', ' ');
         for(int i = 65; i < 91; i++){
@@ -25,5 +21,13 @@ public class Problem4 {
             map.put((char)i, (char)(122 - start));
             start += 1;
         }
+    }
+
+    public static String findWordOpposite(String word){
+        StringBuilder answer = new StringBuilder();
+        for(int i = 0; i < word.length(); i++){
+            answer.append(map.get(word.charAt(i)));
+        }
+        return answer.toString();
     }
 }
