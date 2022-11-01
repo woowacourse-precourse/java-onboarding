@@ -14,20 +14,21 @@ import java.util.List;
 //닉네임은 한글만 가능하고 전체 길이는 1자 이상 20자 미만이다.
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
+        Problem6 p6 = new Problem6();
         List<String> answer = List.of("answer");
-        HashMap<String, String> nameMap;
-        HashMap<String, Boolean> answerMap;
+        HashMap<String, String> nameMap = p6.initNameMap(forms);
+        HashMap<String, Boolean> answerMap = p6.initAnswerMap(forms);
 
         return answer;
     }
 
-//    public HashMap<String, String> initAMap(List<List<String>> forms) {
-//        HashMap<String, String> nameMap = new HashMap<>();
-//        for (List<String> s : forms) {
-//            nameMap = addMapIterList(nameMap, s);
-//        }
-//        return nameMap;
-//    }
+    public HashMap<String, Boolean> initAnswerMap(List<List<String>> forms) {
+        HashMap<String, Boolean> answerMap = new HashMap<>();
+        for (List<String> s : forms) {
+            answerMap.put(s.get(0), Boolean.FALSE);
+        }
+        return answerMap;
+    }
 
     public HashMap<String, String> initNameMap(List<List<String>> forms) {
         HashMap<String, String> nameMap = new HashMap<>();
