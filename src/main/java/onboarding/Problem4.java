@@ -12,5 +12,4 @@ public class Problem4 {
         }
         return new String(wordToStr);
     }
-    }
 }
