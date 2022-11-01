@@ -24,3 +24,10 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+## 📝 세부 기능 정리
+1. 전체 친구 목록 map 생성
+2. 추천 친구 map 생성
+   1. 함께 아는 친구 규칙 적용
+   2. 타임 라인 방문 횟수 규칙 적용
+3. 친구 추천 기능
