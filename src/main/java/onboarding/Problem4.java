@@ -5,11 +5,11 @@ public class Problem4 {
         String answer = "";
 
         char[] chars = word.toCharArray();
-        int reverse, tmp, ascii =0;
+        int reverse, tmp, ascii = 0 ;
 
         for (int i= 0; i < chars.length; i++) {
             if(Character.isUpperCase(chars[i])) {
-                ascii =65;
+                ascii = 65;
             } else if (Character.isLowerCase(chars[i])) {
                 ascii = 97;
             } else {
@@ -20,6 +20,7 @@ public class Problem4 {
             reverse = (ascii + 25) - tmp;
             answer = answer + ((char) reverse);
         }
+
         return answer;
     }
 }
