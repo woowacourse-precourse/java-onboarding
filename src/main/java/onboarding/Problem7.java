@@ -35,7 +35,16 @@ public class Problem7 {
                 score(friend.get(0), 10);
             }
         }
-        return answer; 구
+
+        // 방문 점수 update (+1)
+        for (String visitor : visitors) {
+            if (userFriends.contains(visitor)) {
+                continue;
+            }
+            score(visitor, 1);
+        }
+
+        return answer;
     }
 
     // 점수 update
