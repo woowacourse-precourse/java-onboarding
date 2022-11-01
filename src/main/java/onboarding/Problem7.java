@@ -76,6 +76,15 @@ public class Problem7 {
         }
         return userFriend.toArray(new String[userFriend.size()]);
     }
+    public static boolean checkStringExist(String str, String[] array){
+        int len = array.length;
+
+        for(int i = 0;i < len;i++){
+            if(array[i].equals(str))
+                return true;
+        }
+        return false;
+    }
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
