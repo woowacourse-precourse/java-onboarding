@@ -6,6 +6,8 @@ public class Problem7 {
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         Problem7 pb7 = new Problem7();
         List<String> answer = Collections.emptyList();
+        if(!pb7.isValidUserId(user)) return answer;
+
         List<String> userFriends = pb7.getUserFriends(user, friends);
         Map<String, Integer> listOfScore = new HashMap<>();
         pb7.getAcquaintance(user, listOfScore, userFriends, friends);
@@ -20,6 +22,8 @@ public class Problem7 {
         for (List<String> friend: friends) {
             String user1 = friend.get(0);
             String user2 = friend.get(1);
+
+            if(!isValidUserId(user1) || !isValidUserId(user2)) continue;
 
             if(user1.equals(user)) {
                 userFriends.add(user2);
@@ -37,6 +41,7 @@ public class Problem7 {
         for (String friendId: userFriends) {
             List<String> acquaintanceList = getUserFriends(friendId, friends);
             for (String acquaintance: acquaintanceList) {
+                if(!isValidUserId(acquaintance)) continue;
                 if(!acquaintance.equals(user) && !userFriends.contains(acquaintance)) {
                     setScore(listOfScore, acquaintance, acquaintanceScore);
                 }
@@ -47,6 +52,7 @@ public class Problem7 {
     public void getVisitorScore (Map<String, Integer> listOfScore, List<String> visitors, List<String> userFriends) {
         final int visitorScore = 1;
         for(String visitor: visitors) {
+            if(!isValidUserId(visitor)) continue;
             if(!userFriends.contains(visitor)) {
                 setScore(listOfScore, visitor, visitorScore);
             }
@@ -91,5 +97,11 @@ public class Problem7 {
         }
 
         return recommendList;
+    }
+
+    public boolean isValidUserId(String userId) {
+        boolean isLowerCase = userId.equals(userId.toLowerCase());
+        boolean isValidLength = userId.length() > 0 && userId.length() <= 30;
+        return isLowerCase && isValidLength;
     }
 }
