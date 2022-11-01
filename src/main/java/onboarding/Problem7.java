@@ -43,7 +43,7 @@ public class Problem7 {
 
     // 전달받은 파라미터가 user의 친구인지 확인하는 함수
     public static boolean checkUserFriends(HashMap<String, ArrayList<String>> friendGraph, String user, String other) {
-        return friendGraph.get(user).contains(other);
+        return friendGraph.containsKey(user) && friendGraph.get(user).contains(other);
     }
 
     // 점수를 갱신할 때 제한조건을 체크하는 함수
