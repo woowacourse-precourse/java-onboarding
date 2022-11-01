@@ -18,4 +18,9 @@ public class Problem6 {
         return size >= 1 && size <= 10000;
     }
 
+    private static boolean checkLength(String emails) {
+        int emailLength = emails.length();
+        return emailLength >= 11 && emailLength < 20;
+    }
+
 }
