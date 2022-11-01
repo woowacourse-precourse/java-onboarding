@@ -24,3 +24,12 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+## 기능 목록
+- user의 친구 목록을 만드는 기능
+  - 배열 [A, B] 중 어디에 user가 들어가던지 user의 친구를 찾아 추가하는 기능
+- user의 친구 목록에서 사용자와 함께 아는 친구(user 제외)에게 10점을 주는 기능
+- user의 타임 라인에 방문한 사람에게 점수를 주는 기능
+- 점수가 저장된 scoreBoard에 저장된 사람 중 추천친구 5명을 뽑아오는 기능
+  - 추천 친구 목록에는 내 친구가 포함되면 안됨
+  - 점수는 0점 이상인 친구가 출력되어야함 
