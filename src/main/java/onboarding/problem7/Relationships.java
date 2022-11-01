@@ -29,7 +29,11 @@ public class Relationships {
 	}
 
 	public boolean isTwoFriends(String user, String other) {
-		return relationships.get(user).contains(other);
+		List<String> relationships = this.relationships.get(user);
+		if(Objects.isNull(relationships)){
+			return false;
+		}
+		return relationships.contains(other);
 	}
 
 	public Set<String> getKnownUsers() {
