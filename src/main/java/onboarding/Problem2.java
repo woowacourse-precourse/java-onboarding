@@ -11,6 +11,30 @@ public class Problem2 {
         return answer;
     }
 
+    private static String removeDuplicateCharacter(String cryptogram) {
+        int OverlappedCharacterSize = 0;
+        String answer = "";
+        for (int i = 0; i < cryptogram.length(); i++) {
+            char now = cryptogram.charAt(i);
+            OverlappedCharacterSize += 1;
+            if (isLastIndex(cryptogram, i)) {
+                answer = addNonDuplicateCharacter(OverlappedCharacterSize, answer, now);
+                break;
+            }
+            if (isSameWithNextCharacter(cryptogram, i, now)) {
+                answer = addNonDuplicateCharacter(OverlappedCharacterSize, answer, now);
+                OverlappedCharacterSize = 0;
+            }
+        }
+        return answer;
+    }
+
+    private static boolean isLastIndex(String cryptogram, int i) {
+        return i == cryptogram.length() - 1;
+    }
+    private static boolean isSameWithNextCharacter(String cryptogram, int i, char now) {
+        return now != cryptogram.charAt(i + 1);
+    }
     private static String addNonDuplicateCharacter(int OverlappedCharacterSize, String answer,
         char now) {
         if (isNonDuplicate(OverlappedCharacterSize)) {
