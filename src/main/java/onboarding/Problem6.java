@@ -24,23 +24,24 @@ public class Problem6 {
     }
 
     public static List<String> getEmailListOfNicknameWarning (List<List<String>> forms) {
-        Set<Integer> formIndexOfNicknameWarning = new HashSet<>();
+        Set<String> warningEmailSet = new HashSet<>();
         for (Set<Integer> indexSet : twoLettersRepository.values()) {
             if ( indexSet.size() > 1 ) {
-                formIndexOfNicknameWarning.addAll(indexSet);
+                warningEmailSet.addAll(indexToEmailSet(indexSet, forms));
             }
         }
-        List<String> emailListOfNicknameWarning = indexToEmailList(forms, formIndexOfNicknameWarning);
-        Collections.sort(emailListOfNicknameWarning);
-        return emailListOfNicknameWarning;
+
+        List<String> warningEmailList = new ArrayList<>(warningEmailSet);
+        Collections.sort(warningEmailList);
+        return warningEmailList;
     }
 
-    public static List<String> indexToEmailList (List<List<String>> forms, Set<Integer> formIndexOfNicknameWarning) {
-        List<String> emailListOfNicknameWarning = new ArrayList<>();
-        for (int index : formIndexOfNicknameWarning) {
-            emailListOfNicknameWarning.add(forms.get(index).get(EMAIL));
+    public static Set<String> indexToEmailSet (Set<Integer> indexSet, List<List<String>> forms) {
+        Set<String> emailList = new HashSet<>();
+        for (int index : indexSet) {
+            emailList.add(forms.get(index).get(EMAIL));
         }
-        return emailListOfNicknameWarning;
+        return emailList;
     }
 
     public static void analyzeNickname (String nickname, int index) {
