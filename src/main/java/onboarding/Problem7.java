@@ -30,8 +30,8 @@ public class Problem7 {
         for(String name : userFriend){
             friendsPoint.remove(name);
         }
-
         answer = new ArrayList<String>(friendsPoint.keySet());
+        answer.sort((o1, o2) -> (friendsPoint.get(o2).compareTo(friendsPoint.get(o1))));
         if(answer.size() > 5)answer = answer.subList(0, 5);
         return answer;
     }
