@@ -21,3 +21,14 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+<br>
+
+---
+
+## 기능 구현 목록
+
+- [x] 닉네임과 이메일을 포함하는 User 클래스 구현
+- [x] 매개변수로 받은 리스트롤 User 리스트로 변환
+- [x] User의 닉네임을 문자열로 추출하고, 추출한 문자열을 블랙리스트에 넣는 기능 구현
+- [x] User의 닉네임이 블랙리스트에 있을 시 해당 User의 이메일을 결과 리스트에 넣는 기능 구현

@@ -24,3 +24,17 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+<br>
+
+---
+
+## 기능 구현 목록
+
+- [x] friends 배열의 아이디 B에 대한 점수를 계산하는 기능 구현
+- [x] friends 배열의 아이디 B가 본인의 아이디일 경우 제외하는 기능 구현
+- [x] visitors 배열의 아이디에 대한 점수를 계산하는 기능 구현
+- [x] visitors 배열의 아이디가 이미 사용자의 친구일 때 제외하는 기능 구현
+- [x] 추천 점수가 0인 아이디를 제외
+- [x] 최대 5명 추천
+- [x] 추천 점수가 같을 경우 이름순으로 정렬
