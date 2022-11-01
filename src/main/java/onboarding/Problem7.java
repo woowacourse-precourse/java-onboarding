@@ -30,6 +30,15 @@ public class Problem7 {
         return scoreTable;
     }
 
+    public static void checkVisitor(List<String> visitors, List<String> bestFriends, Map<String, Integer> scoreTable) {
+        for (String visitor : visitors) {
+            if (!bestFriends.contains(visitor)) {
+                if (scoreTable.containsKey(visitor)) scoreTable.put(visitor, scoreTable.get(visitor) + 1);
+                else scoreTable.put(visitor, 1);
+            }
+        }
+    }
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = Collections.emptyList();
         return answer;
