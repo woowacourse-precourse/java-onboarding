@@ -59,4 +59,12 @@ public class Problem7 {
             relation.get(visitor).set(0, String.valueOf(Integer.parseInt(relation.get(visitor).get(0)) + 1));
         }
     }
+    // 이미 친구면 제외
+    private static void removeAlreadyFriends(Map<String, Integer> user, List<String> userFriends) {
+        for (String name : userFriends) {
+            if (user.containsKey(name)) {
+                user.remove(name);
+            }
+        }
+    }
 }
