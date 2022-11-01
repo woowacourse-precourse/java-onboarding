@@ -56,9 +56,16 @@ public class Problem6 {
     }
 
     public static List<String> solution(List<List<String>> forms) {
-        List<String> result = new ArrayList<>();
         boolean[] isConsecutive = makeConsecutiveCheckArray(forms);
+        List<String> emailList = new ArrayList<>();
 
-        return result;
+        for (int i = 0; i < forms.size(); i++) {
+            if (isConsecutive[i]) {
+                String email = forms.get(i).get(0);
+                emailList.add(email);
+            }
+        }
+
+        return emailList;
     }
 }
