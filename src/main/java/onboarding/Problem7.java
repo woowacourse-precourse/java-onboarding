@@ -24,6 +24,18 @@ public class Problem7 {
                 list.add(fr);
             }
         }
+        for (List<String> friendlist : friends) {
+            String a = friendlist.get(0);
+            String b = friendlist.get(1);
+            if (list.contains(a) && !friendlist.contains(user)) {
+                list1.add(b);
+            } else if (list.contains(b) && !friendlist.contains(user)) {
+                list1.add(a);
+            }
+        }
+
+    }
+
 
         return answer;
     }
