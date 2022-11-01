@@ -8,10 +8,10 @@ class Utility{
     int[] makeArray(int endNumber){
         return IntStream.range(startNumber,endNumber+1).toArray();
     }
-    Stream<String> transform(int number){
+    Stream<String> divideEachDigit(int number){
         return Stream.of(String.valueOf(number).split(""));
     }
-    int[] map(Stream<String> digits){
+    int[] transformEachDigit(Stream<String> digits){
         return digits.mapToInt(Integer::parseInt).toArray();
     }
 }
@@ -38,8 +38,8 @@ class Game{
         Utility utility = new Utility();
 
         for (int number: numbers){
-            digitArray = utility.transform(number);
-            digits = utility.map(digitArray);
+            digitArray = utility.divideEachDigit(number);
+            digits = utility.transformEachDigit(digitArray);
             totalClapCount+=countClap(digits);
         }
         return totalClapCount;

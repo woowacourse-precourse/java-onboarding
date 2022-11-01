@@ -18,11 +18,13 @@ class Exception{
         return (bookPages.get(LEFT_PAGE) % 2!=1)||(bookPages.get(RIGHT_PAGE)%2!=0);
     }
     public boolean isWrongPage(List<Integer> bookPages){
-        return ((bookPages.get(1)-bookPages.get(0))!=DIFFERENCE_BETWEEN_PAGES);
+        return ((bookPages.get(RIGHT_PAGE)-bookPages.get(LEFT_PAGE))!=DIFFERENCE_BETWEEN_PAGES);
     }
     public boolean isFirstOrLastPage(List<Integer> bookPages){
+        final int INITIALIZER=0;
         boolean isTrue = false;
-        for(int i=0; i<CORRECT_LENGTH;i++){
+
+        for(int i=INITIALIZER; i<CORRECT_LENGTH;i++){
             int page = bookPages.get(i);
             isTrue |= (page==FINAL_PAGE||page==START_PAGE);
         }

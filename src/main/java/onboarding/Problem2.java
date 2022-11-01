@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Decryption {
+    final int START=0;
+    final int END=1;
     boolean isSameAlphabet(char previous, char next) {
         return previous == next;
     }
@@ -12,7 +14,7 @@ class Decryption {
     }
     void addRedundantIndex(List<Integer> redundantIndex, List<List<Integer>> redundantIndexes){
 
-        if(isRedundant(redundantIndex.get(0), redundantIndex.get(1))){
+        if(isRedundant(redundantIndex.get(START), redundantIndex.get(END))){
             redundantIndexes.add(redundantIndex);
         }
     }
@@ -27,17 +29,18 @@ class Decryption {
         return redundantCharacterIndex;
     }
     List<List<Integer>> redundantCheck(String cryptogram){
+        final int INITIALIZER=0;
         int cipherArrayLength = cryptogram.length()-2;
         List<List<Integer>> redundantIndex=new ArrayList<>();
         List<Integer> sequence;
-        for(int i=0;i<=cipherArrayLength;i++){
+        for(int i=INITIALIZER;i<=cipherArrayLength;i++){
             sequence=findRedundantAlphabet(cryptogram,i);
             addRedundantIndex(sequence, redundantIndex);
         }
         return redundantIndex;
     }
     String getRedundantAlphabet(String cryptogram, List<Integer> redundantIndex) {
-        return cryptogram.substring(redundantIndex.get(0), redundantIndex.get(1) + 1);
+        return cryptogram.substring(redundantIndex.get(START), redundantIndex.get(END) + 1);
     }
     List<String> getRedundantSequence(String cryptogram, List<List<Integer>> redundantIndex){
         List<String> redundantAlphabet = new ArrayList<>();
@@ -54,7 +57,8 @@ class Decryption {
         return newCipher;
     }
     boolean existsRedundantAlphabet(int numberOfRedundant){
-        return numberOfRedundant!=0;
+        final int NO_REDUNDANT=0;
+        return numberOfRedundant!=NO_REDUNDANT;
     }
 }
 public class Problem2 {

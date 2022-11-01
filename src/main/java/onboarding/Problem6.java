@@ -85,6 +85,14 @@ class Inspection{
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
+        TokenGroup tokenGroup = new TokenGroup();
+        tokenGroup.makeTokenGroup(forms);
+
+        Inspection inspection = new Inspection();
+        answer=inspection.getTotalEmails(tokenGroup);
+
+        answer.sort(Comparator.naturalOrder());
+
         return answer;
     }
 }
