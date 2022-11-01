@@ -15,6 +15,9 @@ public class Problem4 {
             if('a' <= c && c <= 'z') {
                 c = (char)('z' - c + 'a');
             }
+            else if ('A' <= c && c <= 'Z') {
+                c = (char)('Z' - c + 'A' );
+            }
         }
         return answer;
     }
