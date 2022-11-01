@@ -24,7 +24,7 @@ public class RandomPageGamer {
             throw new WrongInputException("Wrong input");
     }
 
-    private int resultOfGame(int aValue, int bValue) {
-        return aValue == bValue ? 0 : aValue > bValue ? 1 : 2;
+    private int resultOfGame(int playerOneValue, int playerTwoValue) {
+        return playerOneValue == playerTwoValue ? 0 : playerOneValue > playerTwoValue ? 1 : 2;
     }
 }
