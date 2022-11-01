@@ -71,4 +71,15 @@ public class Problem7 {
         }
         return scoreList;
     }
+
+    public static List<String> MemberFriendsList(String user, List<List<String>> friends, List<String> visitors){
+        List<String> friendsList=new ArrayList<>();
+        for(int i=0; i<orgainze(user, friends, visitors).size(); i++) {
+            Member m= makeMemberInfo(user, friends, visitors, i);
+            if(m.score!=0){
+                friendsList.add(m.user);
+            }
+        }
+        return friendsList;
+    }
 }
