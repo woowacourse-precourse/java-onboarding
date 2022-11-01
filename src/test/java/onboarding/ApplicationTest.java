@@ -33,6 +33,7 @@ class ApplicationTest {
             int result = -1;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
+
         @Test
         void case4() { //포비의 좌,우 페이지가 유효하지 않음
             List<Integer> pobi = List.of(99, 103);
@@ -51,7 +52,7 @@ class ApplicationTest {
 
         @Test
         void case6() {
-            List<Integer> pobi = List.of( 401, 402);
+            List<Integer> pobi = List.of(401, 402);
             List<Integer> crong = List.of(211, 212);
             int result = -1;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
@@ -64,6 +65,39 @@ class ApplicationTest {
             int result = -1;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
+
+        @Test
+        void case8() {
+            List<Integer> pobi = List.of(99, 100);
+            List<Integer> crong = List.of(399, 400);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
+        @Test
+        void case9() {
+            List<Integer> pobi = List.of(121, 122, 123);
+            List<Integer> crong = List.of(211, 212);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
+        @Test
+        void case10() {
+            List<Integer> pobi = List.of(121, 122);
+            List<Integer> crong = List.of(212);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
+        @Test
+        void case11() {
+            List<Integer> pobi = List.of(122, 121);
+            List<Integer> crong = List.of(211,212);
+            int result = -1;
+            assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
+        }
+
 
 
     }
@@ -83,6 +117,15 @@ class ApplicationTest {
             String result = "";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
+
+        @Test
+        void case3() {
+            String cryptogram = "abababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababab";
+            String result = "abababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababababab";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
+
+
     }
 
     @Nested
@@ -124,6 +167,34 @@ class ApplicationTest {
             String result = "R olev blf";
             assertThat(Problem4.solution(word)).isEqualTo(result);
         }
+
+        @Test
+        void case2() {
+            String word = "Hello  Everyone!";
+            String result = "Svool  Veviblmv!";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+
+        @Test
+        void case3() {
+            String word = "abcdefghijklmnopqrstuvwxyz";
+            String result = "zyxwvutsrqponmlkjihgfedcba";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+
+        @Test
+        void case4() {
+            String word = "abcdefghijklmnopqrstuvwxyz !@#!#  ";
+            String result = "zyxwvutsrqponmlkjihgfedcba !@#!#  ";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
+
+        @Test
+        void case5() {
+            String word = "Svool, Dliow! 123";
+            String result = "Hello, World! 123";
+            assertThat(Problem4.solution(word)).isEqualTo(result);
+        }
     }
 
     @Nested
@@ -139,6 +210,30 @@ class ApplicationTest {
         void case2() {
             int money = 15_000;
             List<Integer> result = List.of(0, 1, 1, 0, 0, 0, 0, 0, 0);
+            assertThat(Problem5.solution(money)).isEqualTo(result);
+        }
+
+        @Test
+        void case3() {
+            // 최소금액
+            int money = 1;
+            List<Integer> result = List.of(0, 0, 0, 0, 0, 0, 0, 0, 1);
+            assertThat(Problem5.solution(money)).isEqualTo(result);
+        }
+
+        @Test
+        void case4() {
+            // 5만원권 제외한 최대금액
+            int money = 49_999;
+            List<Integer> result = List.of(0, 4, 1, 4, 1, 4, 1, 4, 9);
+            assertThat(Problem5.solution(money)).isEqualTo(result);
+        }
+
+        @Test
+        void case5() {
+            // 최대금액
+            int money = 1_000_000;
+            List<Integer> result = List.of(20, 0, 0, 0, 0, 0, 0, 0, 0);
             assertThat(Problem5.solution(money)).isEqualTo(result);
         }
     }
@@ -182,6 +277,19 @@ class ApplicationTest {
                     List.of("jun@email.com", "왜ㅇㅡ이야")
             );
             List<String> result = List.of("jun@email.com", "kim@email.com", "nam@email.com");
+            assertThat(Problem6.solution(forms)).isEqualTo(result);
+        }
+
+        @Test
+        void case4() {
+            List<List<String>> forms = List.of(
+                    List.of("jm@email.com", "제이엠"),
+                    List.of("", "제이슨"),
+                    List.of("woniee@email.com", "워니"),
+                    List.of("mj@email.com", "엠제이"),
+                    List.of("nowm@email.com", "이제엠")
+            );
+            List<String> result = List.of("jm@email.com", "mj@email.com");
             assertThat(Problem6.solution(forms)).isEqualTo(result);
         }
 
@@ -236,7 +344,7 @@ class ApplicationTest {
                     List.of("shakevan", "jun"),
                     List.of("shakevan", "mrko")
             );
-            List<String> visitors = List.of("donut","shakevan");
+            List<String> visitors = List.of("donut", "shakevan");
             List<String> result = List.of("andole", "bedi");
             assertThat(Problem7.solution(user, friends, visitors)).isEqualTo(result);
         }
