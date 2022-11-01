@@ -7,13 +7,13 @@ class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
         if(isWrongInput(pobi, crong)) return -1;
 
-        int pobi_high_score0 = Math.max(plusScore(pobi.get(0)), multiplyScore(pobi.get(0)));
-        int pobi_high_score1 = Math.max(plusScore(pobi.get(1)), multiplyScore(pobi.get(1)));
-        int crong_high_score0 = Math.max(plusScore(crong.get(0)), multiplyScore(crong.get(0)));
-        int crong_high_score1 = Math.max(plusScore(crong.get(1)), multiplyScore(crong.get(1)));
+        int pobi_left_score = Math.max(plusScore(pobi.get(0)), multiplyScore(pobi.get(0)));
+        int pobi_right_score = Math.max(plusScore(pobi.get(1)), multiplyScore(pobi.get(1)));
+        int crong_left_score = Math.max(plusScore(crong.get(0)), multiplyScore(crong.get(0)));
+        int crong_right_score = Math.max(plusScore(crong.get(1)), multiplyScore(crong.get(1)));
 
-        int pobi_max_score = Math.max(pobi_high_score0, pobi_high_score1);
-        int crong_max_score = Math.max(crong_high_score0, crong_high_score1);
+        int pobi_max_score = Math.max(pobi_left_score, pobi_right_score);
+        int crong_max_score = Math.max(crong_left_score, crong_right_score);
 
         return (pobi_max_score > crong_max_score) ? 1 : (pobi_max_score < crong_max_score) ? 2 : 0;
     }
