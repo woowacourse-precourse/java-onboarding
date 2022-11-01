@@ -21,17 +21,35 @@ public class Problem7Debugging {
 
         HashMap<String, Integer> nameAndPoint = new HashMap<>();
 
+        for (int j = 0; j < visitors.size() ; j++){
+            String name = visitors.get(j);
+
+            if (nameAndPoint.containsKey(name)){
+                int presentPoint = nameAndPoint.get(name);
+                presentPoint += 1;
+                nameAndPoint.put(name,presentPoint);
+                continue;
+            }
+
+            nameAndPoint.put(name,1);
+
+
+        }
+
         for (int i = 0; i < 2 ; i++){
             for (int j = 0; j < friends.size() ; j++){
                 String name = friends.get(j).get(i);
+                if (nameAndPoint.containsKey(name)){
+                    continue;
+                }
+
                 nameAndPoint.put(name,0);
             }
         }
 
-        for (int j = 0; j < visitors.size() ; j++){
-            String name = visitors.get(j);
-            nameAndPoint.put(name,0);
-        }
+
+
+
 
         List<String> friendsOfUser = new ArrayList<>();
 
