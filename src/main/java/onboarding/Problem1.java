@@ -15,6 +15,11 @@ class Problem1 {
         int pobiScore = Math.max(pobiPlusScore, pobiMultiplyScore);
         int crongScore = Math.max(crongPlusScore, crongMultiplyScore);
 
+        if (pobiScore > crongScore) answer = 1;
+        else if (pobiScore < crongScore) answer = 2;
+        else if (pobiScore == crongScore) answer = 0;
+        else answer = -1;
+
         return answer;
     }
 
