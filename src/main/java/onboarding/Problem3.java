@@ -21,10 +21,16 @@ public class Problem3 {
         char[] threeNumber = {'3', '6', '9'};
         int clapCount = 0;
         for(int i = 0; i<stringNumber.length(); i++) {
-            for (char c : threeNumber) {
-                if (stringNumber.charAt(i) == c) {
-                    clapCount++;
-                }
+            clapCount += countThreeInNumber(stringNumber, threeNumber, i);
+        }
+        return clapCount;
+    }
+
+    private static int countThreeInNumber(String stringNumber, char[] threeNumber, int index) {
+        int clapCount = 0;
+        for (char c : threeNumber) {
+            if (stringNumber.charAt(index) == c) {
+                clapCount++;
             }
         }
         return clapCount;
