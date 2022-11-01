@@ -1,3 +1,21 @@
+## 기능 목록
+| Date  | Feature       | Method Name        | Parameter Type    | Return Type | Progress                 |
+|-------|---------------|--------------------|-------------------|-------------|--------------------------|
+| 10.27 | 각 자리 숫자 덧셈    | addDigits()        | int               | int         | committed                |
+| 10.27 | 각 자리 숫자 곱셈    | multiplyDigits()   | int               | int         | committed                |
+| 10.27 | 두 정수 비교       | compareNumbers()   | int, int          | int         | replaced with Math.max() |
+| 10.27 | 플레이어 최고 점수 계산 | getMax()           | List\<Integer\>   | int         | committed                |
+| 10.27 | 입력 예외 확인      | checkValidity()    | List<Integer>     | boolean     | committed                |
+| 10.27 | 입력 리스트 예외 확인  | checkListSize()    | List\<Integer\>   | boolean     | committed                |
+| 10.27 | 입력 범위 예외 확인   | checkNumberRange() | int               | boolean     | committed                |
+| 10.28 | 입력 페이지 간격 확인  | checkInterval()    | int, int          | boolean     | committed                |
+| 10.28 | 홀수 확인         | isOdd()            | int               | boolean     | committed                |
+| 10.28 | 짝수 확인         | isEven()           | int               | boolean     | committed                |
+| 11.01 | 승자 반환         | getWinner()        | List\<Integer\>, List\<Integer\> | int         |  committed  |
+
+### TODO
+
+
 ## 🚀 기능 요구 사항
 
 포비와 크롱이 페이지 번호가 1부터 시작되는 400 페이지의 책을 주웠다. 책을 살펴보니 왼쪽 페이지는 홀수, 오른쪽 페이지는 짝수 번호이고 모든 페이지에는 번호가 적혀있었다. 책이 마음에 든 포비와 크롱은 페이지 번호 게임을 통해 게임에서 이긴 사람이 책을 갖기로 한다. 페이지 번호 게임의 규칙은 아래와 같다.
@@ -23,3 +41,6 @@
 | [97, 98] | [197, 198] | 0 |
 | [131, 132] | [211, 212] | 1 |
 | [99, 102] | [211, 212] | -1 |
+
+
+

@@ -1,3 +1,23 @@
+## 기능 목록
+
+| Date  | Feature                        | Method Name                         | Parameter Type         | Return Type   | Progress  |
+|-------|--------------------------------|-------------------------------------|------------------------|---------------|-----------|
+| 10.31 | User 클래스 비교                    | compareTo()                         | User                   | int           | committed |
+| 10.31 | 새로운 User 생성                    | createNewUser()                     | String                 | User          | committed |
+| 10.31 | 주어진 이름의 User 반환                | getUserFromName()                   | String                 | User          | committed |
+| 10.31 | 각 User에 친구 추가                  | makeFriend()                        | User, User             | void          | committed |
+| 10.31 | 친구 관계 리스트 처리                   | processFriendsList()                | List\<List\<String\>\> | void          | committed |
+| 10.31 | User의 친구들에게 점수 추가              | addScoreToFriends()                 | int                    | void          | committed |
+| 10.31 | 방문자 리스트에 포함된 User에 1점 추가       | processVisitorsList()               | <List\<String\>        | void          | committed |
+| 10.31 | User의 친구의 친구들에게 점수 추가          | addScoreToMutualFriends()           | int                    | void          | committed |
+| 10.31 | User가 특정 User와 친구가 아닌지 확인      | isNotFriendWith()                   | User                   | boolean       | committed |
+| 10.31 | 특정 User와 친구가 아닌 User 리스트에 추가   | addNotFriendUserToList()            | <List\<User\>, User, User | void          | committed |
+|  10.31   | 특정 User와 친구가 아닌 전체 User 리스트 반환 | getListOfUsersNotFriendWithTarget() | String                 | <List\<User\> | committed |
+|  10.31   | 추천 점수 계산  | calculateScore() | String, <List\<String\> | void          | committed |
+|  10.31   | 점수 상위 최대 5명 이름 리스트 반환          | getListOfTopUserName()              | String                    |<List\<String\>  | committed|
+
+### TODO
+
 ## 🚀 기능 요구 사항
 
 레벨 2의 팀 프로젝트 미션으로 SNS(Social Networking Service)를 만들고자 하는 팀이 있다. 팀에 속한 크루 중 평소 알고리즘에 관심이 많은 미스터코는 친구 추천 알고리즘을 구현하고자 아래와 같은 규칙을 세웠다.

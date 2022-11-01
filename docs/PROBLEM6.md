@@ -1,3 +1,16 @@
+## 기능 목록
+
+| Date  | Feature                     | Method Name                      | Parameter Type         | Return Type    | Progress  |
+|-------|-----------------------------|----------------------------------|------------------------|----------------|-----------|
+| 10.29 | 각 신청 처리                     | processForms()                   | List\<List\<String\>\> | void           | committed |
+| 10.29 | 문자열을 두 글자 단위로 나눔            | splitStringEveryTwoCharacter()   | String                 | List\<String\> | committed |
+| 10.29 | 두 글자 리스트 중복 체크              | checkTwoCharacterListDuplicate() | List\<String\>         | void           | committed |
+| 11.01 | 두 글자가 맵에 존재하는지 체크           | checkMapContainsTwoCharacter()   | String, String| committed      |           |
+| 10.29 | 중복 두 글자 닉네임의 이메일 정답 Set에 추가 | addEmailOfDuplicate()            | String, String         | void           | committed |
+| 10.29 | Set에서 List로 중복 이메일 이동       | moveFromSetToList()              | List\<String\>         | void           | removed   |
+
+### TODO
+
 ## 🚀 기능 요구 사항
 
 우아한테크코스에서는 교육생(이하 크루) 간 소통 시 닉네임을 사용한다. 간혹 비슷한 닉네임을 정하는 경우가 있는데, 이러할 경우 소통할 때 혼란을 불러일으킬 수 있다.
