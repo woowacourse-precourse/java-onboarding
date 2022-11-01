@@ -1,6 +1,6 @@
 # 미션 - 온보딩
-## 기능 목록
-[기능목록](./docs/functionList.md)
+## 🚀기능 목록
+-   [기능 목록](./docs/functionList.md)
 
 ## 🔍 진행 방식
 
