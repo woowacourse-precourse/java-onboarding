@@ -39,6 +39,19 @@ public class Problem7 {
 
         recommendationList = makeRecommendationList(recommendationList, scoreMap);
 
+        int recommendSize;
+
+        if (recommendationList.size() > 5) {
+            recommendSize = 5;
+        } else {
+            recommendSize = recommendationList.size();
+        }
+
+        for (int i = 0; i < recommendSize; i++) {
+            String recName = recommendationList.get(i).name;
+            answer.add(recName);
+        }
+
         return answer;
     }
 
