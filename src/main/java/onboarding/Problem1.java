@@ -1,5 +1,7 @@
 package onboarding;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 class Problem1 {
@@ -7,6 +9,9 @@ class Problem1 {
         int answer = Integer.MAX_VALUE;
 
         if (isCorrectCondition(pobi) && isCorrectCondition(crong)) {
+            int pobiScore = calculateScore(pobi);
+            int crongScore = calculateScore(crong);
+
             answer = 1;
         } else {
             answer = -1;
@@ -30,6 +35,24 @@ class Problem1 {
         }
 
         return true;
+    }
+
+    public static int calculateScore(List<Integer> pageNumbers) {
+        int score = 0;
+
+        int leftPageNumber = pageNumbers.get(0);
+        int rightPageNumber = pageNumbers.get(1);
+
+        List<Integer> scores = new ArrayList<>();
+
+        scores.add(getSumOfEachDigit(leftPageNumber));
+        scores.add(getSumOfEachDigit(rightPageNumber));
+        scores.add(getMultiplyOfEachDigit(leftPageNumber));
+        scores.add(getMultiplyOfEachDigit(rightPageNumber));
+
+        score = Collections.max(scores);
+
+        return score;
     }
 
     public static int getSumOfEachDigit(int number) {
