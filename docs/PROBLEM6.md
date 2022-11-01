@@ -21,3 +21,8 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+- [ ]  닉네임을 각 2글자로 분리하는 기능
+- [ ] 분리된 닉네임이 겹치면 체크하는 기능
+- [ ] 겹치는 닉네임의 이메일을 반환하는 기능
+- [ ] 결과 이메일을 정렬하는 기능
