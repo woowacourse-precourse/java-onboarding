@@ -3,8 +3,9 @@ package onboarding.problem5;
 import java.util.ArrayList;
 import java.util.List;
 
+import static onboarding.problem5.ConstantsP5.CURRENCY;
+
 public class BankMachine {
-    private static final List<Integer> CURRENCY = List.of(50000, 10000, 5000, 1000, 500, 100, 50, 10, 1);
     private final Money money;
 
     public BankMachine(Money money) {

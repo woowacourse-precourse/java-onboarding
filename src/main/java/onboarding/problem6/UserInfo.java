@@ -1,10 +1,14 @@
 package onboarding.problem6;
 
 import java.util.List;
-import java.util.regex.Pattern;
+
+import static onboarding.problem6.ConstantsP6.KOREAN;
+import static onboarding.problem6.ConstantsP6.MAX_EMAIL_LENGTH;
+import static onboarding.problem6.ConstantsP6.MAX_NICKNAME_LENGTH;
+import static onboarding.problem6.ConstantsP6.MIN_EMAIL_LENGTH;
+import static onboarding.problem6.ConstantsP6.MIN_NICKNAME_LENGTH;
 
 public class UserInfo {
-    private static final Pattern KOREAN = Pattern.compile("^[ㄱ-ㅎㅏ-ㅣ가-힣]*$");
     private final List<String> emailAndNickname;
 
     public UserInfo(List<String> oneInfo) {
@@ -47,7 +51,7 @@ public class UserInfo {
         if (!email.endsWith("email.com")) {
             return false;
         }
-        return 11 <= email.length() && 20 > email.length();
+        return MIN_EMAIL_LENGTH <= email.length() && email.length() <= MAX_EMAIL_LENGTH;
     }
 
     private boolean isNicknameValid() {
@@ -55,6 +59,6 @@ public class UserInfo {
         if (!KOREAN.matcher(nickname).matches()) {
             return false;
         }
-        return 1 <= nickname.length() && nickname.length() < 20;
+        return MIN_NICKNAME_LENGTH <= nickname.length() && nickname.length() <= MAX_NICKNAME_LENGTH;
     }
 }

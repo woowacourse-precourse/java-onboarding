@@ -1,5 +1,9 @@
 package onboarding.problem2;
 
+import static onboarding.problem2.ConstantsP2.CIPHER_MAX_LENGTH;
+import static onboarding.problem2.ConstantsP2.CIPHER_MIN_LENGTH;
+import static onboarding.problem2.ConstantsP2.INPUT_PATTERN;
+
 public class Cipher {
     private final String cryptogram;
 
@@ -21,13 +25,16 @@ public class Cipher {
     }
 
     private void isInRange(String cryptogram) {
-        if (cryptogram.length() == 0 || cryptogram.length() >= 1001) {
+        if (cryptogram.length() < CIPHER_MIN_LENGTH) {
+            throw new IllegalArgumentException();
+        }
+        if (cryptogram.length() > CIPHER_MAX_LENGTH) {
             throw new IllegalArgumentException();
         }
     }
 
     private void isOnlySmallCase(String cryptogram) {
-        if (!cryptogram.toLowerCase().equals(cryptogram)) {
+        if (!INPUT_PATTERN.matcher(cryptogram).matches()) {
             throw new IllegalArgumentException();
         }
     }

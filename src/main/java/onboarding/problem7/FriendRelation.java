@@ -3,6 +3,9 @@ package onboarding.problem7;
 import java.util.ArrayList;
 import java.util.List;
 
+import static onboarding.problem7.ConstantsP7.MAX_FRIENDS_LENGTH;
+import static onboarding.problem7.ConstantsP7.MIN_FRIENDS_LENGTH;
+
 public class FriendRelation {
     private final List<List<UserId>> friends;
 
@@ -25,7 +28,7 @@ public class FriendRelation {
     }
 
     private void isSizeEnough(List<List<String>> friends) {
-        if (friends.size() == 0 || friends.size() > 10000) {
+        if (friends.size() < MIN_FRIENDS_LENGTH || friends.size() > MAX_FRIENDS_LENGTH) {
             throw new IllegalArgumentException();
         }
     }

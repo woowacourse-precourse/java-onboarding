@@ -3,6 +3,8 @@ package onboarding.problem7;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import static onboarding.problem7.ConstantsP7.MAX_VISITORS_LENGTH;
+
 public class Visitors {
     private final List<UserId> visitors;
 
@@ -23,7 +25,7 @@ public class Visitors {
     }
 
     private void isValidLength(List<String> visitors) {
-        if (visitors.size() > 10000) {
+        if (visitors.size() > MAX_VISITORS_LENGTH) {
             throw new IllegalArgumentException();
         }
     }

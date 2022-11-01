@@ -1,10 +1,11 @@
 package onboarding.problem7;
 
-import java.util.regex.Pattern;
+import static onboarding.problem7.ConstantsP7.MAX_USER_ID_LENGTH;
+import static onboarding.problem7.ConstantsP7.MIN_USER_ID_LENGTH;
+import static onboarding.problem7.ConstantsP7.USER_ID_PATTERN;
 
 public class UserId {
     private final String id;
-    private final Pattern smallAlphabet = Pattern.compile("^[a-z]*$");
 
     public UserId(String id) {
         this.id = id;
@@ -24,13 +25,13 @@ public class UserId {
     }
 
     private void isValidLength() {
-        if (id.length() == 0 || id.length() > 30) {
+        if (id.length() < MIN_USER_ID_LENGTH || id.length() > MAX_USER_ID_LENGTH) {
             throw new IllegalArgumentException();
         }
     }
 
     private void isSmallAlphabet() {
-        if (!smallAlphabet.matcher(id).matches()) {
+        if (!USER_ID_PATTERN.matcher(id).matches()) {
             throw new IllegalArgumentException();
         }
     }

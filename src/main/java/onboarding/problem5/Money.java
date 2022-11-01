@@ -1,5 +1,8 @@
 package onboarding.problem5;
 
+import static onboarding.problem5.ConstantsP5.MAX_MONEY;
+import static onboarding.problem5.ConstantsP5.MIN_MONEY;
+
 public class Money {
     private final int amount;
 
@@ -13,7 +16,7 @@ public class Money {
     }
 
     private void isInRange() {
-        if (amount <= 0 || amount > 1000000) {
+        if (amount < MIN_MONEY || amount > MAX_MONEY) {
             throw new IllegalArgumentException();
         }
     }

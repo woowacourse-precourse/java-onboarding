@@ -1,5 +1,8 @@
 package onboarding.problem4;
 
+import static onboarding.problem4.ConstantsP4.INPUT_MAX_LENGTH;
+import static onboarding.problem4.ConstantsP4.INPUT_MIN_LENGTH;
+
 public class NormalWord {
     private final String words;
 
@@ -20,7 +23,7 @@ public class NormalWord {
     }
 
     private void isNotInRange(String words) {
-        if (words.length() == 0 || words.length() > 1000) {
+        if (words.length() < INPUT_MIN_LENGTH || words.length() > INPUT_MAX_LENGTH) {
             throw new IllegalArgumentException();
         }
     }

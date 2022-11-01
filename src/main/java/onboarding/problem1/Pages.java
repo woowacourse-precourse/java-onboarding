@@ -2,6 +2,9 @@ package onboarding.problem1;
 
 import java.util.List;
 
+import static onboarding.problem1.ConstantsP1.FIRST_PAGE;
+import static onboarding.problem1.ConstantsP1.LAST_PAGE;
+
 public class Pages {
     private static final boolean ILLEGAL = true;
     private static final boolean LEGAL = false;
@@ -59,19 +62,19 @@ public class Pages {
     }
 
     private void isInRange() {
-        if (pageList.get(0) < 1 || pageList.get(0) > 400) {
+        if (pageList.get(0) < FIRST_PAGE || pageList.get(0) > LAST_PAGE) {
             throw new IllegalArgumentException();
         }
-        if (pageList.get(1) < 1 || pageList.get(1) > 400) {
+        if (pageList.get(1) < FIRST_PAGE || pageList.get(1) > LAST_PAGE) {
             throw new IllegalArgumentException();
         }
     }
 
     private void isNotEndOrBeginning() {
-        if (pageList.get(0) == 1) {
+        if (pageList.get(0) == FIRST_PAGE) {
             throw new IllegalArgumentException();
         }
-        if (pageList.get(1) == 400) {
+        if (pageList.get(1) == LAST_PAGE) {
             throw new IllegalArgumentException();
         }
     }
