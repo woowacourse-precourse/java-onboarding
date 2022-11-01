@@ -6,8 +6,11 @@ public class Problem4 {
   private static final char START_UPPER_ALPHABET = 'A';
   private static final char START_LOWER_ALPHABET = 'a';
   private static final int ALPHABET_NUMBER = 25;
+  private static final int MIN_RANGE_NUMBER = 1;
+  private static final int MAX_RANGE_NUMBER = 10000;
 
   public static String solution(String word) {
+    validate(word);
     String answer = "";
     StringBuilder stringBuilder = new StringBuilder();
     for (Character currentAlphabet : word.toCharArray()) {
@@ -19,6 +22,17 @@ public class Problem4 {
     }
     answer = stringBuilder.toString();
     return answer;
+  }
+
+  private static void validate(String word) {
+    int wordLength = word.length();
+    if (isInRange(wordLength)) {
+      throw new IllegalArgumentException("범위 초과");
+    }
+  }
+
+  private static boolean isInRange(int wordLength) {
+    return (wordLength < MIN_RANGE_NUMBER) || (wordLength > MAX_RANGE_NUMBER);
   }
 
   private static String convertByFrog(char alphabet) {
