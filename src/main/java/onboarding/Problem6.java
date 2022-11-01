@@ -19,7 +19,14 @@ public class Problem6 {
         }
 
         HashSet<String> duplicatedEmail = findDuplicateNickname(crews);
-        return new ArrayList<>();
+        for (int i = 0; i < crews.size(); i++) {
+            if(duplicatedEmail.contains(crews.get(i).nickname)) {
+                answer.add(crews.get(i).email);
+            }
+        }
+
+        Collections.sort(answer);
+        return answer;
     }
 
     public static HashSet<String> findDuplicateNickname(List<CrewInfo> crews) {
