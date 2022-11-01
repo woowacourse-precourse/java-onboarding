@@ -12,23 +12,23 @@ class ApplicationTest {
     class Problem1Test {
         @Test
         void case1() {
-            List<Integer> pobi = List.of(97, 98);
-            List<Integer> crong = List.of(197, 198);
-            int result = 0;
+            List<Integer> pobi = List.of(99, 100);
+            List<Integer> crong = List.of(-1, 0);
+            int result = -1;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
 
         @Test
         void case2() {
-            List<Integer> pobi = List.of(131, 132);
-            List<Integer> crong = List.of(211, 212);
-            int result = 1;
+            List<Integer> pobi = List.of(98, 99);
+            List<Integer> crong = List.of(193, 194);
+            int result = -1;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
         }
 
         @Test
         void case3() {
-            List<Integer> pobi = List.of(99, 102);
+            List<Integer> pobi = List.of(121, 122, 123);
             List<Integer> crong = List.of(211, 212);
             int result = -1;
             assertThat(Problem1.solution(pobi, crong)).isEqualTo(result);
@@ -39,8 +39,8 @@ class ApplicationTest {
     class Problem2Test {
         @Test
         void case1() {
-            String cryptogram = "browoanoommnaon";
-            String result = "brown";
+            String cryptogram = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus dui nunc, accumsan vel metus ac, auctor convallis arcu. Phasellus sollicitudin accumsan leo et malesuada. Cras auctor, nulla tincidunt rutrum aliquam, nisl metus interdum felis, id viverra velit orci ac lorem. Etiam felis mi, tempus id tincidunt vel, mollis at nulla. Sed nisi ex, malesuada ut consequat convallis, commodo id velit. Pellentesque et urna eleifend purus dictum dignissim ac id massa. Phasellus ullamcorper lorem odio, sed tempor est vehicula sed. Phasellus sagittis ipsum diam, vel consequat odio varius sit amet. Suspendisse pharetra nulla sit amet eros ultrices ultrices. Nullam quam mauris, posuere sed magna eu, bibendum varius augue. Praesent hendrerit diam ante, ut tempor justo luctus ac. Phasellus cursus elementum neque, sed semper orci venenatis nec. Ut quis rhoncus diam, congue tempus mauris. Maecenas ac metus a nunc consectetur consequat. Duis eget est sit amet nisl elementum tempus a vitae nunc. Pellentesque euismod ligula ac nunc suscipit ultricies.";
+            String result = "-1";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
 
