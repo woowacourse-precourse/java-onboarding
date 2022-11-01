@@ -16,4 +16,19 @@ public class Problem2 {
         }
         return String.valueOf(pattern).trim();
     }
+
+    /*
+    Example
+    | index | str | pattern |
+    |-------|-----|---------|
+    | 1     | b   | _b      |
+    | 2     | r   | _br     |
+    | 3     | o   | _bro    |
+    | 4     | w   | _brow   |
+    | 5     | o   | _browo  |
+    | 6     | a   | _browoa |
+    | 5     | a   | _browo  |
+    | 4     | o   | _brow   |
+    | 5     | n   | _brown  |
+     */
 }
