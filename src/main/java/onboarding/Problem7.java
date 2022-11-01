@@ -30,6 +30,13 @@ public class Problem7 {
             }
         }
 
+        //initialize score
+        for(String name: notFriend){
+            if(name != user){
+                score.put(name,0);
+            }
+        }
+
         return answer;
     }
 }
