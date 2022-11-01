@@ -24,3 +24,19 @@
 | user | friends | visitors | result |
 | --- | --- | --- | --- |
 | "mrko" | [ ["donut", "andole"], ["donut", "jun"], ["donut", "mrko"], ["shakevan", "andole"], ["shakevan", "jun"], ["shakevan", "mrko"] ] | ["bedi", "bedi", "donut", "bedi", "shakevan"] | ["andole", "jun", "bedi"] |
+
+### 기능 목록
+- 예외처리 기능
+- 그래프 초기화하는 기능
+- 다익스트라 알고리즘을 통해 최소 거리 정보 찾아내는 기능
+- 방문자 리스트, 그래프, 유저, 유저간 최소 거리를 이용해 추천 점수를 계산하는 기능 
+- 최대 5개의 유저를 추천하는 기능
+
+### 예외 처리
+- user 길이가 1~30인지 판단
+- friends id의 길이가 1~30 인지 판단
+- friends의 길이가 1~10000 인지 판단
+- friends의 원소 길이가 2인지 판단
+- visitors의 길이가 0~10000 인지 판단
+- 모든 아이디가 소문자 인지 판단
+- 위의 조건을 만족 안할때는 빈 리스트를 반환
