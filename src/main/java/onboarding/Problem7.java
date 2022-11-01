@@ -16,7 +16,8 @@ class Friend {
   List<String> visitors = new ArrayList<>();
   private HashMap<String, HashSet<String>> relationTable = new HashMap<>();
   private HashMap<String, Integer> scoreTable = new HashMap<>();
-  Friend(String user, List<List<String>> friends , List<String> visitors) {
+
+  Friend(String user, List<List<String>> friends, List<String> visitors) {
     ValidityCheckerProb7 vc = new ValidityCheckerProb7(user, friends, visitors);
     RelationMaker rm = new RelationMaker(friends, visitors);
     this.friends = friends;
@@ -25,28 +26,30 @@ class Friend {
     relationTable = rm.makeRelationTable();
     scoreTable = makeScoreTable();
   }
+
   private HashMap<String, Integer> makeScoreTable() {
-    for (int i = 0; i < friends.size(); i++) {
-      scoreTable.put(friends.get(i).get(0), 0);
-      scoreTable.put(friends.get(i).get(1), 0);
+    for (List<String> friend : friends) {
+      scoreTable.put(friend.get(0), 0);
+      scoreTable.put(friend.get(1), 0);
     }
-    for (int i = 0; i < visitors.size(); i++) {
-      scoreTable.put(visitors.get(i), 0);
+    for (String visitor : visitors) {
+      scoreTable.put(visitor, 0);
     }
     return scoreTable;
   }
+
   List<String> getAnswer() {
-    ScoreCalculator sc = new ScoreCalculator(user,visitors, relationTable, scoreTable);
+    ScoreCalculator sc = new ScoreCalculator(user, visitors, relationTable, scoreTable);
     if (!relationTable.containsKey(user)) {
       List<String> ExceptionCase = new ArrayList<>();
       HashMap<String, Integer> exceptionTable = new HashMap<>();
-      for (int i = 0; i < visitors.size(); i++) {
-        if (!exceptionTable.containsKey(visitors.get(i))) {
-          exceptionTable.put(visitors.get(i), 1);
+      for (String visitor : visitors) {
+        if (!exceptionTable.containsKey(visitor)) {
+          exceptionTable.put(visitor, 1);
         }
-        if (exceptionTable.containsKey(visitors.get(i))) {
-          int score = exceptionTable.get(visitors.get(i));
-          exceptionTable.put(visitors.get(i), score+1);
+        if (exceptionTable.containsKey(visitor)) {
+          int score = exceptionTable.get(visitor);
+          exceptionTable.put(visitor, score + 1);
         }
       }
       if (exceptionTable.containsKey(user)) {
@@ -59,7 +62,9 @@ class Friend {
         public int compare(Entry<String, Integer> obj1, Entry<String, Integer> obj2) {
           // 내림 차순 정렬
           int res = obj2.getValue() - obj1.getValue();
-          if (res !=  0) return res;
+          if (res != 0) {
+            return res;
+          }
           return obj1.getKey().compareTo(obj2.getKey());
         }
       });
@@ -78,48 +83,49 @@ class Friend {
 }
 
 class RelationMaker {
+
   private List<List<String>> friends;
   private List<String> visitors;
+
   RelationMaker(List<List<String>> friends, List<String> visitors) {
     this.friends = friends;
     this.visitors = visitors;
   }
+
   HashMap<String, HashSet<String>> makeRelationTable() {
     HashMap<String, HashSet<String>> relationTable = new HashMap<>();
-    for (int i = 0; i < friends.size(); i++) {
-      // 만약에 key가 없을 경우
-
-      if (!relationTable.containsKey(friends.get(i).get(0))) {   // 도넛이 관계테이블의 키로 없을 떄
+    for (List<String> friend : friends) {
+      if (!relationTable.containsKey(friend.get(0))) {
         HashSet<String> nameSet = new HashSet<>();
-        nameSet.add(friends.get(i).get(1));
-        relationTable.put(friends.get(i).get(0), nameSet);
+        nameSet.add(friend.get(1));
+        relationTable.put(friend.get(0), nameSet);
       }
-      if (!relationTable.containsKey(friends.get(i).get(1))) {   // 도넛이 관계테이블의 키로 없을 떄
-        HashSet<String> nameSet = new HashSet<>();         //map에서 Value로 들어갈 set
-        nameSet.add(friends.get(i).get(0));                 //set에 친구 박고 map에 넣기
-        relationTable.put(friends.get(i).get(1), nameSet);
+      if (!relationTable.containsKey(friend.get(1))) {
+        HashSet<String> nameSet = new HashSet<>();
+        nameSet.add(friend.get(0));
+        relationTable.put(friend.get(1), nameSet);
       }
-      // 이미 관계테이블에 이미 key가 있는 경우.
-      relationTable.get(friends.get(i).get(0)).add(friends.get(i).get(1));
-      relationTable.get(friends.get(i).get(1)).add(friends.get(i).get(0));
-      ////최종적으로 관계 테이블 완성 (1.)
-      /// 전체 이름과 점수를 담을 SCoreTable 에 이름들을 다 집어넣는다.
+      relationTable.get(friend.get(0)).add(friend.get(1));
+      relationTable.get(friend.get(1)).add(friend.get(0));
     }
     return relationTable;
   }
 }
 
 class ValidityCheckerProb7 {
+
   ValidityCheckerProb7(String user, List<List<String>> friends, List<String> visitors) {
     userValidityCheck(user);
     friendsValidityCheck(friends);
     visitorsValidityCheck(visitors);
   }
+
   private void userValidityCheck(String user) {
     if (user.length() < 1 || user.length() > 30) {
       throw new IllegalArgumentException("User's length out of range");
     }
   }
+
   private void friendsValidityCheck(List<List<String>> friends) {
     if (friends.size() < 1 || friends.size() > 30) {
       throw new IllegalArgumentException("friends length out of range.");
@@ -141,6 +147,7 @@ class ValidityCheckerProb7 {
       }
     }
   }
+
   private void visitorsValidityCheck(List<String> visitors) {
     for (int i = 0; i < visitors.size(); i++) {
       if (visitors.get(i).length() < 0 || visitors.get(i).length() > 10000) {
@@ -151,11 +158,14 @@ class ValidityCheckerProb7 {
 }
 
 class ScoreCalculator {
+
   String user;
   private HashMap<String, HashSet<String>> relationTable = new HashMap<>();
   private HashMap<String, Integer> scoreTable = new HashMap<>();
   List<String> visitors;
-  ScoreCalculator (String user, List<String> visitors ,HashMap<String, HashSet<String>> relationTable, HashMap<String, Integer> scoreTable) {
+
+  ScoreCalculator(String user, List<String> visitors,
+      HashMap<String, HashSet<String>> relationTable, HashMap<String, Integer> scoreTable) {
     this.visitors = visitors;
     this.relationTable = relationTable;
     this.scoreTable = scoreTable;
@@ -192,9 +202,10 @@ class ScoreCalculator {
       public int compare(Entry<String, Integer> obj1, Entry<String, Integer> obj2) {
         // 내림 차순 정렬
         int res = obj2.getValue() - obj1.getValue();
-        if (res != 0) return res;
-        return  obj1.getKey().compareTo(obj2.getKey());
-
+        if (res != 0) {
+          return res;
+        }
+        return obj1.getKey().compareTo(obj2.getKey());
       }
     });
     for (int i = 0; i < list_entries.size(); i++) {
@@ -206,6 +217,7 @@ class ScoreCalculator {
     return answer;
   }
 }
+
 public class Problem7 {
 
   public static List<String> solution(String user, List<List<String>> friends,
