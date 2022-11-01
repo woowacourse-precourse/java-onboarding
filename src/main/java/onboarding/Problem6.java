@@ -58,6 +58,5 @@ public class Problem6 {
         for (String value : result)
             System.out.println(value);
     }
-
 }
 

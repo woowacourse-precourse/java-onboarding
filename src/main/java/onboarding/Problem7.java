@@ -13,7 +13,6 @@ public class Problem7{
         }else {
             return id.toLowerCase();
         }
-
     }
 
     //친구들 배열 선언
@@ -136,10 +135,7 @@ public class Problem7{
             sortedMap.put(entry.getKey(), entry.getValue());
             System.out.println(entry.getKey());
         }
-
         //System.out.println(sortedMap.get(sortedMap));
-
-
     }
 
 }

@@ -1,6 +1,6 @@
 package onboarding;
 
-public class Problem2 {
+public class Problem2 {kwlr
 
     public String solution(String word) {
         StringBuilder str = new StringBuilder(word);
@@ -36,7 +36,6 @@ public class Problem2 {
         // TODO Auto-generated method stub
 
         Problem2 pb = new Problem2();
-
         pb.solution("browoanoommnaon");
     }
 

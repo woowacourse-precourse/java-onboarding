@@ -16,13 +16,11 @@ class Problem1 {
 
         int pobi_max_score = maxScore(pobi_sum_score, pobi_mul_score);
 
-
         //크롱 점수내기
         int crong_sum_score = sum(pobi);
         int crong_mul_score = mul(pobi);
 
         int crong_max_score = maxScore(crong_sum_score, pobi_mul_score);
-
 
         //점수리턴
         if (pobi_max_score > crong_max_score) {

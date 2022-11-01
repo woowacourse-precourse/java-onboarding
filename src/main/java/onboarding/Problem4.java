@@ -12,7 +12,6 @@ public class Problem4 {
         String str = sc.nextLine();
         System.out.println("sol : " + str);
         System.out.println(ra.solution(str));
-
     }
 
     public String solution(String word) {

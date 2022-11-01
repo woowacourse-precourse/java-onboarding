@@ -11,6 +11,7 @@ public class Problem5 {
         solution(sc.nextInt());
     }
 
+
     public static int[] solution(int money) {
         int result[] = new int[9];
 
