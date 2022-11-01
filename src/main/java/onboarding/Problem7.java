@@ -60,5 +60,10 @@ public class Problem7 {
         }
     }
 
+    public static boolean canUser(String user) {
+        if(user.length()>=USER_MIN && user.length()<=USER_MAX) return true;
+        return false;
+    }
+
 
 }
