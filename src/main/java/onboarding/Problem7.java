@@ -115,5 +115,13 @@ public class Problem7 {
         public int hashCode() {
             return Objects.hash(a, b);
         }
+
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            Friend friend = (Friend) o;
+            return a.equals(friend.a) && b.equals(friend.b);
+        }
     }
 }
