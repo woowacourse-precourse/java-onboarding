@@ -6,15 +6,29 @@ import java.util.List;
 public class Problem6 {
     public static List<String> solution(List<List<String>> forms) {
         List<String> answer = List.of("answer");
+        List<List<String>> wordsList = new ArrayList<>();
+
+        //중복이 안된 닉네임은 1, 중복이 있는 닉네임은 0
+        int[] duplicatedNickIdx = new int[forms.size()];
+        
+        for (int i=0; i < forms.size(); i++){
+            //0으로 배열 초기화
+            duplicatedNickIdx[i] = 1;
+        }
 
         for (List<String> crew : forms) {
             List<String> words = findWords(crew.get(1));
             System.out.println("words = " + words);
+            
+            duplicatedNickIdx = isContainWord(wordsList,words,duplicatedNickIdx);
 
-//            for (String w : words) {
-//
-//            }
+            wordsList.add(words);
+
         }
+
+
+
+
 
 
         return answer;
@@ -23,7 +37,7 @@ public class Problem6 {
 
     public static List<String> findWords (String nickname) {
         List<String> words = new ArrayList<String>();
-        //제이엠
+
         for (int i = 0; i < nickname.length()-1; i++) {
 
             for(int j = i+1; j < nickname.length(); j++) {
@@ -35,6 +49,22 @@ public class Problem6 {
         }
 
         return words;
+    }
+
+    public static int[] isContainWord (List<List<String>> wordsList,List<String> words,int[] duplicatedNickIdx) {
+        
+
+        for (String w : words) {
+
+            for (int i=0; i < wordsList.size(); i++) {
+                if (wordsList.get(i).contains(w)) {
+                    duplicatedNickIdx[i] = 0;
+                    duplicatedNickIdx[wordsList.size()] = 0;
+                }
+            }
+        }
+        
+        return duplicatedNickIdx;
     }
 
     public static void main(String[] args) {
