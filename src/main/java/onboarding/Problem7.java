@@ -12,6 +12,7 @@ public class Problem7 {
         searchFriend(user, friends, list);
         addScore(user, list, friends, score);
         addVisitScore(visitors, list, score);
+        removeOverLap(list, score);
         answer = sortScore(score);
 
         return answer;
@@ -37,14 +38,14 @@ public class Problem7 {
                 if (friend.equals(friends.get(j).get(0)) && !user.equals(friends.get(j).get(1))) {
                     score.put(friends.get(j).get(1), score.getOrDefault(friends.get(j).get(1), 0) + 10);
                 }
-                if (friend.equals(friends.get(j).get(1)) && !user.equals(friends.get(j).get(1))) {
+                if (friend.equals(friends.get(j).get(1)) && !user.equals(friends.get(j).get(0))) {
                     score.put(friends.get(j).get(0), score.getOrDefault(friends.get(j).get(0), 0) + 10);
                 }
             }
         }
     }
 
-    // 사용자의 타임 라인에 방문한 사람에게 점수를 부여하는 기능
+    // 사용자의 타임 라인에 방문한 사람에게 점수를 부여하는 메서드
     static void addVisitScore(List<String> visitors, List<String> list, TreeMap<String, Integer> score) {
         List<String> temp = new ArrayList<>(visitors);
         temp.removeAll(list);
@@ -54,7 +55,15 @@ public class Problem7 {
         }
     }
 
-    // 정렬하는 기능
+    // score에서 중복을 제거하는 메서드
+    static void removeOverLap(List<String> list, Map<String, Integer> score) {
+        for (int i = 0; i < list.size(); i++) {
+            score.containsKey(list.get(i));
+            score.remove(list.get(i));
+        }
+    }
+
+    // 정렬하는 메서드
     static List<String> sortScore(TreeMap<String, Integer> score) {
         List<String> result = new ArrayList<>(score.keySet());
         result.sort((Comparator.comparingInt(score::get).reversed()));
