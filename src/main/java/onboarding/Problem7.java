@@ -1,35 +1,56 @@
 package onboarding;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
 
 public class Problem7 {
+    static final HashMap<String, ArrayList<String>> friendRelationship = new HashMap<>();
+    static final HashMap<String, Integer> recommendationList = new HashMap<>();
+
     public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
         List<String> answer = new ArrayList<>();
-        HashMap<String, ArrayList<String>> friendship = new HashMap<>();
 
         if (!checkValidInput(user, friends, visitors)) {
             return Collections.emptyList();
         }
 
-        connectFriends(friends, friendship);
+        connectFriends(friends);
+
+        ArrayList<String> userFriends = friendRelationship.get(user);
+        calculateRecommendScore(visitors, userFriends);
 
         return answer;
     }
 
-    private static void connectFriends(List<List<String>> friends, HashMap<String, ArrayList<String>> friendship) {
+    private static void calculateRecommendScore(List<String> visitors, ArrayList<String> userFriends) {
+        userFriends.stream()
+                .map(friendRelationship::get)
+                .flatMap(Collection::stream)
+                .forEach(friendOfFriend -> recommendationList.put(
+                        friendOfFriend,
+                        recommendationList.getOrDefault(friendOfFriend, 0) + 10));
+
+        visitors.forEach(visitor ->
+                recommendationList.put(visitor, recommendationList.getOrDefault(visitor, 0) + 1));
+    }
+
+    private static void connectFriends(List<List<String>> friends) {
         for (List<String> friend : friends) {
             String userA = friend.get(0);
             String userB = friend.get(1);
 
-            if (!friendship.containsKey(userA)) {
-                friendship.put(userA, new ArrayList<>());
+            if (!friendRelationship.containsKey(userA)) {
+                friendRelationship.put(userA, new ArrayList<>());
             }
-            if (!friendship.containsKey(userB)) {
-                friendship.put(userB, new ArrayList<>());
+            if (!friendRelationship.containsKey(userB)) {
+                friendRelationship.put(userB, new ArrayList<>());
             }
 
-            friendship.get(userA).add(userB);
-            friendship.get(userB).add(userA);
+            friendRelationship.get(userA).add(userB);
+            friendRelationship.get(userB).add(userA);
         }
     }
 
