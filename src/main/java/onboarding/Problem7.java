@@ -9,7 +9,7 @@ public class Problem7 {
 	public static final int VISITOR_SCORE = 1;
 
 	public static List<String> solution(String user, List<List<String>> friends, List<String> visitors) {
-		Map<String, Integer> recommendFriends = new HashMap<>();
+		RecommendFriends recommendFriends = new RecommendFriends();
 		Set<String> userFriends = new HashSet<>();
 
 		for (List<String> friend : friends) {
@@ -32,9 +32,9 @@ public class Problem7 {
 
 			for (String userFriend : userFriends) {
 				if (userFriend.equals(idA)) {
-					addRecommendFriendScore(recommendFriends, idB);
+					recommendFriends.addRecommendFriendScore(idB);
 				} else if (userFriend.equals(idB)) {
-					addRecommendFriendScore(recommendFriends, idA);
+					recommendFriends.addRecommendFriendScore(idA);
 				}
 			}
 		}
@@ -43,31 +43,39 @@ public class Problem7 {
 			if (userFriends.contains(visitor)) {
 				continue;
 			}
-			addVisitorScore(recommendFriends, visitor);
+			recommendFriends.addVisitorScore(visitor);
 		}
 
-		return recommendFriends.entrySet()
-				.stream()
-				.sorted(Collections.reverseOrder(Map.Entry.<String, Integer>comparingByValue())
-						.thenComparing(Map.Entry.comparingByKey()))
-				.limit(5)
-				.map(Map.Entry::getKey)
-				.collect(toList());
+		return recommendFriends.getTotalFiveRecommendFriends();
 	}
 
-	private static void addVisitorScore(Map<String, Integer> recommendFriends, String id) {
-		if (recommendFriends.containsKey(id)) {
-			recommendFriends.put(id, recommendFriends.get(id) + VISITOR_SCORE);
-		} else {
-			recommendFriends.put(id, VISITOR_SCORE);
+	static class RecommendFriends {
+		private Map<String, Integer> recommendFriends = new HashMap<>();
+
+		public List<String> getTotalFiveRecommendFriends() {
+			return recommendFriends.entrySet()
+					.stream()
+					.sorted(Collections.reverseOrder(Map.Entry.<String, Integer>comparingByValue())
+							.thenComparing(Map.Entry.comparingByKey()))
+					.limit(5)
+					.map(Map.Entry::getKey)
+					.collect(toList());
 		}
-	}
 
-	private static void addRecommendFriendScore(Map<String, Integer> recommendFriends, String id) {
-		if (recommendFriends.containsKey(id)) {
-			recommendFriends.put(id, recommendFriends.get(id) + RECOMMEND_SCORE);
-		} else {
-			recommendFriends.put(id, RECOMMEND_SCORE);
+		public void addVisitorScore(String id) {
+			if (recommendFriends.containsKey(id)) {
+				recommendFriends.put(id, recommendFriends.get(id) + VISITOR_SCORE);
+			} else {
+				recommendFriends.put(id, VISITOR_SCORE);
+			}
+		}
+
+		public void addRecommendFriendScore(String id) {
+			if (recommendFriends.containsKey(id)) {
+				recommendFriends.put(id, recommendFriends.get(id) + RECOMMEND_SCORE);
+			} else {
+				recommendFriends.put(id, RECOMMEND_SCORE);
+			}
 		}
 	}
 }
