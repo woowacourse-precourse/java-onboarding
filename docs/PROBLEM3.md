@@ -19,25 +19,32 @@
 
 ## 구현 기능 목록
 
-- (1) int를 String로 변환하는 기능
+**onboarding/problem3/ThreeSixNineGame.java**
+
+- (1) ThreeSixNineGame 생성자
 
   ```java
-  private static String toString(int number)
+  public ThreeSixNineGame(int number)
   ```
-- (2) 3, 6, 9 가 존재하면 손뼉을 한번 치는 기능
+- (2) int를 String로 변환하는 기능
 
   ```java
-  public static int hasThreeSixNine(String number, int length)
+  public String toString(int number)
   ```
-- (3) 문자열 길이 계산 기능
+- (3) 3, 6, 9 가 존재하면 손뼉을 한번 치는 기능
 
   ```java
-  public static int getStringLength(String number)
+  public int hasThreeSixNine(String number, int length)
   ```
-- (4) 369게임 시작 기능
+- (4) 문자열 길이 계산 기능
 
   ```java
-  public static int runGame(int number)
+  public int getStringLength(String number)
+  ```
+- (5) 369게임 시작 기능
+
+  ```java
+  public int runGame()
   ```
 
-  - (1), (2), (3) 기능을 이용해 369게임 시작
+  - (2), (3), (4) 기능을 이용해 369게임 시작
