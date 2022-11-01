@@ -86,6 +86,13 @@ class ApplicationTest {
             String result = "z";
             assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
         }
+
+        @Test
+        void case6() {
+            String cryptogram = "acccabba";
+            String result = "";
+            assertThat(Problem2.solution(cryptogram)).isEqualTo(result);
+        }
     }
 
     @Nested

@@ -2,31 +2,38 @@ package onboarding;
 
 public class Problem2 {
     public static String solution(String cryptogram) {
-        String answer = "answer";
-        answer = decode(cryptogram);
+        String answer = decode(cryptogram);
+        String prev = cryptogram;
+        while (!answer.equals("") && !answer.equals(prev)) {
+            prev = answer;
+            answer = decode(answer);
+        }
         return answer;
     }
 
     public static String decode(String cryptogram) {
-        int i = 0;
+        StringBuilder decrypted = new StringBuilder(cryptogram.length());
         int len = cryptogram.length();
-        StringBuilder decrypted = new StringBuilder(len);
-
-        while (i < len) {
-            deleteContinuousDuplicated(decrypted, cryptogram.charAt(i));
-            ++i;
+        boolean isSequence = false;
+        for (int i = 0; i < len; ++i) {
+            int decryLen = decrypted.length();
+            char ch = cryptogram.charAt(i);
+            if (decryLen != 0 && decrypted.charAt(decryLen - 1) == ch) {
+                isSequence = true;
+                continue;
+            }
+            if (isSequence) {
+                decrypted.deleteCharAt(decryLen - 1);
+                --decryLen;
+                isSequence = false;
+            }
+            decrypted.append(ch);
+        }
+        if (isSequence) {
+            decrypted.deleteCharAt(decrypted.length() - 1);
         }
         return decrypted.toString();
     }
 
-    public static void deleteContinuousDuplicated(StringBuilder decrypted, char ch) {
-        int len = decrypted.length();
 
-        if (len != 0 && decrypted.charAt(len - 1) == ch) {
-            decrypted.deleteCharAt(len - 1);
-        }
-        else {
-            decrypted.append(ch);
-        }
-    }
 }
