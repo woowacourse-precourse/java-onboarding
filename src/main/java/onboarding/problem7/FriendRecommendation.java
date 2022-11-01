@@ -25,7 +25,7 @@ public class FriendRecommendation {
         return calculateRecommendationScore();
     }
 
-    
+
     private void makeFriendGraph(){
         for (List<String> friend : friends){
             String friend1 = friend.get(0);
