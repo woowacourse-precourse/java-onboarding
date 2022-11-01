@@ -2,16 +2,26 @@
 
 ## ✔ 기능 정의
 ### 컬렉션
-- { index : userEmail}인 userMap 만들기
-- { subString : 초기 index}인 subStrIndexMap 만들기
-- 중복 닉네임 가진 user의 index 값 넣는 duplicatedIndexList 만들기
+- { index : userEmail}의 userEmailMap
+- { subString : 초기 index}인 subStrUserIndexMap 
+  - 초기 index = 처음으로 해당 subString 값이 나온 닉네임에 해당하는 user의 index
+- 중복 닉네임 가진 user의 index 값 넣는 duplicatedIndexList 
+
 ### 기능
-- 각 닉네임별 subString 값을 이용하여 해당 값이 subStrIndexMap에 이미 있는 값인지 체크하는 함수 만들기
-  - 이미 있으면 현재 index값 + value인 초기 index값을 duplicatedIndexList에 추가
-  - 없으면 subStrIndexMap에 {subString : index} 추가
-- duplicatedIndex 중복값 제거
-- duplicatedIndex의 값을 key로 가지는 userEmail 추출해서 answer에 추가
-- answer 정렬
+- [X] forms를 활용하여, userEmailMap 초기화 (initUserEmailMap)
+- [X] subStrUserIndexMap 초기화 (initSubStrUserIndexMap)
+- [X] duplicatedIndexList 초기화 (initDuplicatedIndexList)
+- [X] 각 user의 nickname을 활용해 duplicatedIndexList 값 추가 (modifyDuplicatedIndexList)
+  - user의 nickname을 2자리씩 subString 처리
+  - 해당 subStr을 키로 가지는 user가 이미 있으면
+    - 그 user id값과, 해당 닉네임의 user id 값을 추가
+  - 없으면
+    - subStr에 해당 키로 값 초기화
+- [X] duplicatedIndexList에서 중복 제거한 list 반환 (getDistinctIndexList)
+- [X] indexList에 포함된 index를 가진 user의 email을 반환 (getSortedEmailListByIndex)
+  - duplicatedIndexList에 있는 index의 user email을 저장 -> userEmailMap 활용
+  - 해당 collection을 정렬
+
 
 # 🎈 본문
 ## 🚀 기능 요구 사항
