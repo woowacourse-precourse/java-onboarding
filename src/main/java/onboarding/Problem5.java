@@ -1,5 +1,10 @@
 package onboarding;
-
+/*
+ * 기능구현
+ * 1. money 범위 파악 함수 생성
+ * 2. Money 단위를 담는 배열 생성
+ * 3. 나머지연산과 나누기 연산으로 몫 합산
+ * */
 import java.util.ArrayList;
 import java.util.List;
 
