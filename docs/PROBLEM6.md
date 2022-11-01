@@ -21,3 +21,11 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+
+
+### 기능 명세
+
+1. 토큰에 대해 중복 검사 및 중복 저장 기능
+2. 닉네임을 두 글자의 토큰들로 나누는 기능
+3. 닉네임의 모든 토큰에 대해 중복 검사 기능
