@@ -13,7 +13,7 @@ public class Problem5 {
             return answer;
         }
 
-        answer = new ArrayList<Integer>();
+        answer = new ArrayList<>();
         for(int bill: bills){
             int count = money/bill;
             answer.add(count);
