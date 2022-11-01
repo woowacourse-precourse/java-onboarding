@@ -11,6 +11,13 @@ public class NicknameDuplicationManage {
         this.forms = forms;
     }
 
+    public List<String> start(){
+        saveSubstringNickname();
+        findDuplicateNickname();
+        sortEmailList();
+        return duplicateEmailList;
+    }
+    
     private void saveSubstringNickname(){
         for(List<String> form : forms){
             String email = form.get(0);
