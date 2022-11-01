@@ -100,7 +100,9 @@ public class Problem7 {
                 }
 
                 Collections.sort(temp);
-                answer.add(temp);
+                for (int i = start; i <= end; i++) {
+                    answer.add(temp.get(i));
+                };
             }
         }
 
