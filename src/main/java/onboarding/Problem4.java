@@ -14,7 +14,7 @@ public class Problem4 {
     }
 
     // 글자 변환
-    public static char changeCharacter(char ch) {
+    private static char changeCharacter(char ch) {
         // 대문자인 경우
         if (ch >= 'A' && ch <= 'Z') {
             return (char) ('A' + 'Z' - ch);
