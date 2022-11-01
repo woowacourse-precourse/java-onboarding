@@ -16,8 +16,7 @@ public class Problem7 {
         // 기능 3 : 각 사용자마다 점수 부여
         sns.setAllUserScore(friends);
         // 기능 4 : 최고 점수 가진 리스트 확보d
-
-        return answer;
+        return sns.getRecommendationList();
     }
 }
 
@@ -132,5 +131,53 @@ class SNS
                 scores[index2] += 10;
             }
         }
+    }
+    // 기능 4 : 최고 점수 가진 리스트 확보
+    List<String> getRecommendationList()
+    {
+        class Candidate implements Comparable<Candidate> {
+            String name;
+            int score;
+
+            Candidate(String name, int score)
+            {
+                this.name = name;
+                this.score = score;
+            }
+            int getScore() { return score; }
+            String getString() { return name; }
+
+            @Override
+            public int compareTo(Candidate o) {
+                if(this.score > o.score)
+                    return -1;
+                else if(this.score == o.getScore() && this.name.compareTo(o.getString()) < 0)
+                    return -1;
+                else
+                    return 1;
+            }
+        }
+        ArrayList<String> answer = new ArrayList<>(); // 정답 배열
+        ArrayList<Candidate> candidates = new ArrayList<>(); // 후보들의 점수 배열
+
+        // 최종 후보들의 이름과 점수 입력받기
+        for(int i = 0; i < len; ++i)
+        {
+            if(scores[i] == 0) // 추천 점수 없으면 배제
+                continue;
+            if(friends.contains(users.get(i))) // 이미 친구이면 배제
+                continue;
+            candidates.add(new Candidate(users.get(i), scores[i]));
+        }
+
+        Collections.sort(candidates);
+        for(int i = 0; i < candidates.size(); ++i)
+        {
+            // System.out.print(candidates.get(i).getString() + " : " + candidates.get(i).getScore());
+            if(i < 5) // 최대 5명
+                answer.add(candidates.get(i).getString());
+        }
+
+        return answer;
     }
 }
