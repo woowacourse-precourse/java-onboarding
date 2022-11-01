@@ -31,4 +31,21 @@ public class Problem6 {
             return nickname;
         }
     }
+
+    private static List<Trainee> validateEmailAndNickname(List<List<String>> forms) {
+        List<Trainee> validTrainees = new ArrayList<>();
+        for (List<String> form : forms) {
+            if (validateEmail(form.get(0)) && validateNickname(form.get(1))) {
+                validTrainees.add(new Trainee(form.get(0), form.get(1)));
+            }
+        }
+        return validTrainees;
+    }
+
+    private static boolean validateNickname(String nickname) {
+    }
+
+    private static boolean validateEmail(String email) {
+    }
+
 }
