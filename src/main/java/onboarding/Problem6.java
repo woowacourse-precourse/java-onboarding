@@ -1,9 +1,6 @@
 package onboarding;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Problem6 {
@@ -34,8 +31,18 @@ public class Problem6 {
         }
     }
 
-    public static List<String> getOverlapPersonEmail() {
-        return new ArrayList<>();
+    public static List<String> getOverlapPersonEmail(List<String> emails) {
+        List<String> result = new ArrayList<>();
+        for(int i=0; i<numOfPeople; i++) {
+            for(String twoChar: divTwoChar.get(i)) {
+                if(twoCharMap.get(twoChar)!=i) {
+                    result.add(emails.get(i));
+                    break;
+                }
+            }
+        }
+        Collections.sort(result);
+        return result;
     }
 
     public static List<String> solution(List<List<String>> forms) {
@@ -44,6 +51,8 @@ public class Problem6 {
                 .map(form -> form.get(1))
                 .collect(Collectors.toList()));
         makeTwoCharMap();
-        return getOverlapPersonEmail();
+        return getOverlapPersonEmail(forms.stream()
+                .map(form -> form.get(0))
+                .collect(Collectors.toList()));
     }
 }
