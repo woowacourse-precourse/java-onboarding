@@ -3,11 +3,11 @@ package onboarding.problem5;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PaymentCounter {
+public class MonetaryUnitCounter {
 
     private final int[] units;
 
-    public PaymentCounter(int[] units) {
+    public MonetaryUnitCounter(int[] units) {
         this.units = units;
     }
 
