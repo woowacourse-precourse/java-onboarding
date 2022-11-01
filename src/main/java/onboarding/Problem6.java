@@ -1,5 +1,6 @@
 package onboarding;
 
+import java.util.Collections;
 import java.util.List;
 
 public class Problem6 {
@@ -12,19 +13,14 @@ public class Problem6 {
     }
 
     private static List<String> getList(List<List<String>> forms){
-        List<String> find_overlap=getOverlap(forms);
-        List<String> result=sort_find_overlap(find_overlap);
+        List<String> result=getOverlap(forms);
+        Collections.sort(result);
         return result;
     }
 
     private static List<String> getOverlap(List<List<String>> forms){
-
+        
     }
-
-    private static List<String> sort_find_overlap(List<String> list){
-
-    }
-
 
     private static boolean input_exception(List<List<String>> forms){
         //true is 'exception excution'
