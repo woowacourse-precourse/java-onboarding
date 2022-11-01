@@ -27,28 +27,23 @@ public class Problem2 {
 		for (int i = 0; i < cryptogram.length(); i++) {
 			current = cryptogram.charAt(i);
 
-			if (decodedCryptogram.isEmpty()) { // 스택이 비어있을 때는 무조건 push
+			if (decodedCryptogram.isEmpty()) {
 				decodedCryptogram.push(current);
 				continue;
 			}
 			top = decodedCryptogram.peek();
-			if (current != top && current != duplicateCharacter) { // push 할 문자가 스택의 top 과 같지 않으면서 중복 문자도 아닐 때
+			if (current != top && current != duplicateCharacter) {
 				decodedCryptogram.push(current);
-				duplicateCharacter = ' '; // dup 초기화
+				duplicateCharacter = ' ';
 			}
-			if (current == top) { // push 할 문자와 스택의 top 이 같을 때
-				duplicateCharacter = top; // dup 업데이트
-				decodedCryptogram.pop(); // 중복 문자 제거
+			if (current == top) {
+				duplicateCharacter = top;
+				decodedCryptogram.pop();
 			}
 		}
 		return decodedCryptogram;
 	}
 
-	/**
-	 * 제한사항을 위배했는지 체크하는 메서드
-	 * @param cryptogram
-	 * @return
-	 */
 	private static Integer checkRestrictions(String cryptogram) {
 		if (!isCryptogramSizeValid(cryptogram)) {
 			return EXCEPTION;
@@ -59,7 +54,6 @@ public class Problem2 {
 		return 0;
 	}
 
-	// cryptogram 의 길이가 1 ~ 1000 이 아닌 경우 예외
 	private static boolean isCryptogramSizeValid(String cryptogram) {
 		if (cryptogram.length() < 1 || cryptogram.length() > 1000) {
 			return false;
@@ -67,7 +61,6 @@ public class Problem2 {
 		return true;
 	}
 
-	// cryptogram 이 알파벳 소문자로만 이루어지지 않은 경우 예외
 	private static boolean isCryptogramLowerCase(String cryptogram) {
 		if (!cryptogram.equals(cryptogram.toLowerCase())) {
 			return false;
