@@ -15,19 +15,16 @@ public class Problem3 {
 
 class Game{
     private static final String OUT_OF_RANGE = "1이상 10000이하를 입력해 주세요";
-
     static ArrayList<Integer> initGame(){
         ArrayList<Integer> dp = new ArrayList<>();
         dp.add(0, 0);
         dp.add(1,0);
         return dp;
     }
-
     public static void validateOutOfRange(int number) {
         if(number < 1 || number > 10000)
             throw new IllegalArgumentException(OUT_OF_RANGE);
     }
-
     static int countContainThree(int number){
         int cnt = 0;
         while(number != 0){
@@ -37,6 +34,4 @@ class Game{
         }
         return cnt;
     }
-
-
 }

@@ -19,6 +19,7 @@ class UserInfo{
     private static final int MAXIMUM_SIZE_VISITOR = 10000;
     private static final String NOT_LOWERCASE_MESSAGE = "영어 소문자만 입력해주세요";
     private static final String EMPTY_FRIENDSCASE_MESSAGE = "추천할 친구를 입력해주세요";
+    private static final String UNDERCASE_REGEX = "^[a-z]*$";
 
     public static void validate(String id, List<String> visitors){
         validateRange(id);
@@ -35,7 +36,7 @@ class UserInfo{
             throw new IllegalArgumentException(OUT_OF_SIZE);
     }
     static void validateUnderCaseId(String id){
-        if(!id.matches("^[a-z]*$")){
+        if(!id.matches(UNDERCASE_REGEX)){
             throw new IllegalArgumentException(NOT_LOWERCASE_MESSAGE);
         }
     }
@@ -66,7 +67,6 @@ class Point{
             if(maxIndex == -1) continue;
             // user를 지칭한 경우 친구에서 제외
             if(maxIndex == userIndex) continue;
-//            maxIndex의 사람 이름을 answer에 삽입
             answer.add(arrayFriends[maxIndex].toString());
             setValueToZeroIndexValue(scoreTable,maxIndex);
         }

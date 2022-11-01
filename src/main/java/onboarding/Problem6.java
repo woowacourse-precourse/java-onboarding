@@ -18,6 +18,7 @@ class User {
     private static final String NOT_MATCH_EMAIL_PATTERN = "이메일의 형식에 맞게 입력해 주세요";
     private static final String NOT_MATCH_EMAIL_SIZE = "이메일의 길이는 11 이상 20 미만으로 입력해야 합니다";
     private static final String ONLY_MATCH_KOREAN = "한글만 입력해주세요";
+    private static final String KOREAN_REGEX = "^[가-힣]*$";
 
 
     static List<String> getUserDuplicatedNickName(List<List<String>> forms){
@@ -71,7 +72,7 @@ class User {
     private static void validateNickNameOnlyKorean(List<List<String>> forms) {
         for (List<String> emailObject : forms) {
             String nickName = emailObject.get(1);
-            if(nickName.matches("^[가-힣]*$"))
+            if(nickName.matches(KOREAN_REGEX))
                 continue;
             else{
                 System.out.println("nickName = " + nickName);
