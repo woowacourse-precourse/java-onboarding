@@ -21,3 +21,11 @@
 | forms | result |
 | --- | --- |
 | [ ["jm@email.com", "제이엠"], ["jason@email.com", "제이슨"], ["woniee@email.com", "워니"], ["mj@email.com", "엠제이"], ["nowm@email.com", "이제엠"] ] | ["jason@email.com", "jm@email.com", "mj@email.com"] |
+
+
+### 구현할 기능
+1. 이메일과 닉네임을 포함하는 Hashmap 생성
+   - 닉네임 대신 모든 연속하는 문자로 교체
+2. 닉네임 중복 확인 
+3. 중복 이메일 목록 만들기 
+4. 목록 오름차순 정렬
