@@ -7,8 +7,13 @@ import java.util.List;
 class Problem1 {
     public static int solution(List<Integer> pobi, List<Integer> crong) {
 
-//pobi와 crong의 길이는 2이다.
+        //pobi와 crong의 길이는 2이다.
         if (pobi.size() != 2 && crong.size() != 2){
+            return -1;
+        }
+
+        //pobi와 crong에는 [왼쪽 페이지 번호, 오른쪽 페이지 번호]가 순서대로 들어있다.
+        if (pobi.get(1)-pobi.get(0) != 1 || crong.get(1)-crong.get(0) != 1){
             return -1;
         }
         return compareLogic(pobi, crong);
