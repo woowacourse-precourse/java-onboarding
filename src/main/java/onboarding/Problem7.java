@@ -16,6 +16,37 @@ public class Problem7 {
         int[][] intimacyArray = new int[maxNumberOfUsers][2];
         //최종 제출할 추천 친구 이름을 기록할 List
         List<String> recommendedFriends = new ArrayList<>();
+        //친구관계 기록하기
+        int totalNumberOfUsers = recordFriendNetwork(friends, userNameArray, userNameMap, friendsNetwork);
+
+        //사용자 함께 아는  친구의 수를 계산하여 친밀도 계산하기
+        Integer userIndex = userNameMap.get(user);
+        //친구가 있는 경우에만
+        if(userIndex != null) {
+            calculateIntimacyByCommonFriends(userIndex, friendsNetwork, intimacyArray);
+        }
+
+        //사용자의 타임라인에 방문한 횟수로 친밀도 계산하기(이미 친구이면 친밀도 안 높이기)
+        //user의 친구를 담은 Set만들기
+        Set<Integer> myFriendsSet = makeMyFriendsSet(userIndex, friendsNetwork);
+        totalNumberOfUsers = calculateIntimacyByTimeLineVisits(visitors, userNameMap, userNameArray, intimacyArray, totalNumberOfUsers, myFriendsSet);
+
+        //총 사용자 수만큼 array에 index기록
+        for(int i = 0; i < totalNumberOfUsers; i++) {
+            intimacyArray[i][1] = i;
+        }
+
+        //정렬하기
+        intimacyArray = sort(intimacyArray, totalNumberOfUsers, userNameArray);
+
+        //상위 5등까지만 친구 이름 기록
+        for(int i = 0; i < 5; i++) {
+            if(intimacyArray[i][0] == 0) break;
+            String friendName = userNameArray[intimacyArray[i][1]];
+            recommendedFriends.add(friendName);
+        }
+
+        return recommendedFriends;
     }
 
     private static int recordFriendNetwork(List<List<String>> friends, String[] userNameListWithIndex,
