@@ -25,6 +25,9 @@ public class Problem7 {
         List<String> myfriend = relation.get(user);
         knowMyFriend(myfriend, relation, scoreMap);
 
+        // 방문자 목록 확인해서 점수 주기(1점)
+        checkVisitors(visitors, scoreMap);
+
 
         List<String> answer = Collections.emptyList();
         return answer;
@@ -79,6 +82,18 @@ public class Problem7 {
                 scoreMap.put(friend, value + 10);
             }
         }
+    }
+
+    // 방문자 목록 확인
+    public static void checkVisitors(List<String> visitors, HashMap<String, Integer> scoreMap) {
+
+        for (int i = 0; i < visitors.size(); i++) {
+            String friend = visitors.get(i);
+            // 방문자에게 1점 부여
+            scoreMap.put(friend, scoreMap.get(friend) + 1);
+
+        }
+
     }
 
 }
