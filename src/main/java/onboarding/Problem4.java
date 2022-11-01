@@ -8,6 +8,22 @@ public class Problem4 {
 
     public static String solution(String word) {
         String answer = "";
+        answer = checkEachCharacter(word, answer);
+        return answer;
+    }
+
+    private static String checkEachCharacter(String word, String answer) {
+        for (int i = 0; i < word.length(); ++i) {
+            // 각 문자 추출
+            String str = word.substring(i, i + 1);
+            int index = 0;
+            // str이 소문자 알파벳 문자열 상수에 포함돼 있다면 인덱스를 반환, 없다면 -1
+            index = isContainAlphabetOrOtherCharacter(str);
+            if (index != -1) {
+                str = convertReverseAlphabet(str, index);
+            }
+            answer = appendCharacter(answer, str);
+        }
         return answer;
     }
 }
