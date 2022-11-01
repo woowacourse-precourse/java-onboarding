@@ -28,6 +28,7 @@ public class Problem2 {
             if (start == -1 && end == -1) {
                 break;
             }
+            answer = answer.substring(0, start) + answer.substring(end + 1);
         }
         return answer;
     }
