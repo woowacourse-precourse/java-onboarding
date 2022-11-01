@@ -5,14 +5,19 @@ import java.util.List;
 class Problem1 {
     private static final int maxPageNum = 400;
     private static final int minPageNum = 1;
-    
+
     private static final int crongWin = 2;
     private static final int pobiWin = 1;
     private static final int draw = 0;
+    private static final int exception = -1;
+
 
     public static int solution(List<Integer> pobi, List<Integer> crong) {
-        int answer = Integer.MAX_VALUE;
-        return answer;
+
+        if(!isExceptionCase(pobi) || !isExceptionCase(crong))
+            return exception;
+
+        return getResult(pobi, crong);
     }
 
     private static boolean isExceptionCase(List<Integer> list) {
