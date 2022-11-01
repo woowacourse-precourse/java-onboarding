@@ -13,19 +13,6 @@ public class User {
         this.friend = new Friend();
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return Objects.equals(userId, user.userId);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(userId);
-    }
-
     public void addFriend(User otherUser) {
         this.friend.add(otherUser.userId);
     }
@@ -44,5 +31,18 @@ public class User {
 
     public int commonFriendCount(User otherUser) {
         return friend.commonFriendCount(otherUser.friend);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equals(userId, user.userId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(userId);
     }
 }
