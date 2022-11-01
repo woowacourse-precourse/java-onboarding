@@ -24,7 +24,6 @@ class Problem6Test {
         checkNicknames(forms);
         List<String> answer = new ArrayList<>(emails);
         answer.sort(Comparator.naturalOrder());
-        System.out.println("end");
     }
 
     // 닉네임 2글자씩 나누어 중복 체크 함수 호출

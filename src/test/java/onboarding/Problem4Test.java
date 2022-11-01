@@ -7,7 +7,7 @@ import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 class Problem4Test {
 
     @Test
-    void 문자판별() {
+    void test01() {
         assertThat(check('a')).isEqualTo('z');
         assertThat(check('A')).isEqualTo('Z');
         assertThat(check(';')).isEqualTo(';');
